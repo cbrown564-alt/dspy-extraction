@@ -35,6 +35,13 @@ Quality flags:
 
 Benchmark-facing metrics should use the canonical scoring views. Raw annotations, raw diagnoses, and quality flags are diagnostic context and should be reported separately.
 
+Implemented scorer:
+
+- `exect_field_family_deterministic_v1` scores the audited S0/S1 core only: canonical diagnosis, seizure type, and annotated medication.
+- Field-family metrics report precision, recall, F1, and support separately for diagnosis, seizure type, and annotated medication, plus an overall micro-average across those families.
+- Medication metrics use the annotated prescription view and intentionally do not score planned/current status as benchmark-facing because the ExECT prescription gold lacks reliable temporality.
+- Investigation, patient history, birth history, aetiology, onset, diagnosis-date, and ExECT seizure-frequency scoring remain deferred until their source files and scorer semantics are audited.
+
 ## Gan 2026
 
 Gold source:

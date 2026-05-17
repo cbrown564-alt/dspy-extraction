@@ -246,38 +246,56 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: Future ExECT scorer tests should use audited examples only.
 - Notes: Investigation, history, birth history, aetiology, onset, and diagnosis-date scoring require separate audit-and-loader cards before they become benchmark-facing metrics. Evidence diagnostics can remain generic and reusable.
 
-## Review
-
-No active review card is claimed in this plan.
-
-## Ready
-
 ### Implement ExECT field-family scorers
 
 - Outcome: Diagnosis, seizure-type, and annotated-medication scorer modules expose field-level and document-level metrics for the audited ExECT S0/S1 core.
 - Dependencies: ExECT regression cases; shared prediction and evidence schemas.
 - Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Field scorer tests from audited examples in `tests/test_exect_loader.py` and new scorer fixtures.
-- Notes: Benchmark-facing medication scoring excludes planned/current status for now because the ExECT prescription gold lacks reliable temporality. Investigation and history scorers are deferred until their source files are audited and loaded.
+- Owner: Codex.
+- Validation: `tests/test_exect_scoring.py`; `tests/test_exect_loader.py`; `tests/test_prediction_schemas.py`.
+- Notes: `clinical_extraction.evaluation.exect` implements `exect_field_family_deterministic_v1` with field-level and micro metrics for diagnosis, seizure type, and annotated medication. Benchmark-facing medication scoring excludes planned/current status for now because the ExECT prescription gold lacks reliable temporality. Investigation and history scorers are deferred until their source files are audited and loaded.
 
 ### Implement Gan S0 DSPy program contract
 
 - Outcome: A narrow Gan frequency extraction signature/module contract maps mocked LM outputs into `PredictionSet` artifacts with prompt/config metadata.
 - Dependencies: Choose first Gan DSPy implementation boundary; shared prediction and evidence schemas; baseline evaluation CLI; run artifact layout and metadata contract.
 - Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Unit tests with mocked LM outputs, schema validation, prediction mapping checks, and run-artifact checks.
-- Notes: Scope this to `gan_frequency_s0`: single-pass frequency label plus evidence. Do not add real provider adapters or the full DSPy module surface in this card.
+- Owner: Codex.
+- Validation: `tests/test_gan_s0_program.py`; `tests/test_gan_scoring.py`; `tests/test_evaluation_cli.py`; `tests/test_run_artifacts.py`.
+- Notes: `clinical_extraction.programs.gan_frequency_s0` defines the mocked-execution contract for `gan_frequency_s0_single_pass`: one frequency label plus evidence, prompt/config metadata, abstention flags, and run metadata. No real provider adapters or broad DSPy module surface were added.
 
 ### Extract published benchmark metrics and definitions
 
 - Outcome: A cited methods note records ExECTv2 and Gan published benchmark values, metric definitions, and whether current repo metrics are aligned, partial, or not comparable.
 - Dependencies: Deterministic scorer semantics; access to benchmark definitions in `data/` papers.
 - Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_published_benchmark_metrics_doc.py`.
+- Notes: `docs/published_benchmark_metrics.md` records ExECTv2 Table 1 values, Gan micro-F1 headline/Table 6-8 values, metric definitions, and explicit alignment caveats. No benchmark constants or code-level comparison tests were added.
+
+## Review
+
+No active review card is claimed in this plan.
+
+## Ready
+
+### Add LLM provider adapters
+
+- Outcome: Configurable adapters support local Ollama Qwen models and closed providers without changing extraction code.
+- Dependencies: Run artifact layout and metadata contract; Implement Gan S0 DSPy program contract.
+- Parallelizable: yes.
 - Owner: unassigned.
-- Validation: Methods note with citations to local papers and explicit scorer caveats.
-- Notes: This is documentation-first. Do not add benchmark constants or comparison tests until the note has resolved metric interpretation.
+- Validation: Mock adapter tests and one opt-in smoke run.
+- Notes: Adapters should target the Gan S0 program contract first, then generalize only when additional program variants require it.
+
+### Add benchmark reference constants and comparison caveats
+
+- Outcome: Repo contains benchmark reference values extracted from the papers and a comparison helper or fixture that labels current metrics as aligned, partial, or not comparable.
+- Dependencies: Extract published benchmark metrics and definitions.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Constants or comparison tests plus `docs/published_benchmark_metrics.md`.
+- Notes: Do not claim published benchmark reproduction yet. ExECTv2 full comparison still needs CUI/feature-aware scoring across all Table 1 families; Gan real-letter comparison still needs the Real(300)/Real(150) evaluation sets or an explicit synthetic-only caveat.
 
 ## In Progress
 
@@ -287,21 +305,12 @@ No active implementation card is claimed in this plan.
 
 ### Reproduce published ExECTv2 and Gan benchmark numbers
 
-- Outcome: Repo contains benchmark reference values extracted from the papers and a comparison note explaining metric alignment or mismatch.
-- Dependencies: Extract published benchmark metrics and definitions.
-- Parallelizable: after Extract published benchmark metrics and definitions.
+- Outcome: Repo can run benchmark-aligned reproduction or comparison against the published ExECTv2 and Gan values.
+- Dependencies: Add benchmark reference constants and comparison caveats; CUI/feature-aware ExECT all-family scorer; access to or reconstruction of Gan Real(300)/Real(150) evaluation sets.
+- Parallelizable: after benchmark references and missing scorer/data prerequisites.
 - Owner: unassigned.
-- Validation: Benchmark reference constants or comparison tests plus the cited methods note.
-- Notes: Blocked until paper metric interpretation is manually checked and documented. Do not wire code-level benchmark comparisons before the cited note exists.
-
-### Add LLM provider adapters
-
-- Outcome: Configurable adapters support local Ollama Qwen models and closed providers without changing extraction code.
-- Dependencies: Run artifact layout and metadata contract; Implement Gan S0 DSPy program contract.
-- Parallelizable: after Implement Gan S0 DSPy program contract.
-- Owner: unassigned.
-- Validation: Mock adapter tests and one opt-in smoke run.
-- Notes: Deferred by deterministic foundation decision. Adapters should target the Gan S0 program contract first, then generalize only when additional program variants require it.
+- Validation: Benchmark-aligned comparison tests and a report that states exact metric alignment.
+- Notes: Current repo metrics are partial/diagnostic for published-benchmark purposes. Do not claim reproduction from the current synthetic Gan subset or ExECT S0/S1 field-family scorer.
 
 ### Build DSPy extraction modules
 
