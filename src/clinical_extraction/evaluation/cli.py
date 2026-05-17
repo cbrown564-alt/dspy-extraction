@@ -6,8 +6,10 @@ from pathlib import Path
 from typing import Any, Sequence
 
 from clinical_extraction.datasets.gan import load_gan_records
+from clinical_extraction.evaluation.evidence import score_evidence_support
+from clinical_extraction.evaluation.error_analysis import ErrorTaxonomy
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
-from clinical_extraction.schemas import DocumentPrediction, PredictionSet
+from clinical_extraction.schemas import DocumentPrediction, ExtractedValue, PredictionSet
 
 GAN_FREQUENCY_FIELD = "seizure_frequency_number"
 
@@ -71,18 +73,64 @@ def evaluate_gan_predictions(
     }
     invalid_predictions: list[dict[str, Any]] = []
     error_samples: list[dict[str, Any]] = []
+    evidence_error_samples: list[dict[str, Any]] = []
+    evidence_counts = {
+        "predictions_with_evidence": 0,
+        "predictions_with_offsets": 0,
+        "quote_supported": 0,
+        "offsets_valid": 0,
+        "gold_evidence_locatable": 0,
+        "overlap_scored": 0,
+        "overlap_exact": 0,
+    }
+    taxonomy = ErrorTaxonomy(max_examples=max_errors)
+
+    for record_id in missing_ids:
+        taxonomy.add(
+            "schema.missing_prediction",
+            record_id=record_id,
+            reason="gold record has no prediction",
+        )
+    for record_id in extra_ids:
+        taxonomy.add(
+            "schema.extra_prediction",
+            record_id=record_id,
+            reason="prediction does not match a gold record",
+        )
 
     for record_id in evaluated_ids:
         gold = gold_by_id[record_id]
         prediction = predictions_by_id[record_id]
-        predicted_label = _gan_frequency_label(prediction)
-        if predicted_label is None:
+        predicted_value = _gan_frequency_value(prediction)
+        if predicted_value is None:
             invalid_predictions.append(
                 {
                     "record_id": record_id,
                     "reason": f"missing {GAN_FREQUENCY_FIELD} prediction",
                     "gold_label": gold.gold_label,
                 }
+            )
+            taxonomy.add(
+                "schema.missing_field",
+                record_id=record_id,
+                reason=f"missing {GAN_FREQUENCY_FIELD} prediction",
+                details={"gold_label": gold.gold_label},
+            )
+            continue
+        predicted_label = _prediction_label(predicted_value)
+        if predicted_label is None:
+            invalid_predictions.append(
+                {
+                    "record_id": record_id,
+                    "reason": f"missing {GAN_FREQUENCY_FIELD} label value",
+                    "gold_label": gold.gold_label,
+                }
+            )
+            taxonomy.add(
+                "schema.missing_value",
+                record_id=record_id,
+                reason=f"missing {GAN_FREQUENCY_FIELD} label value",
+                details={"gold_label": gold.gold_label},
             )
             continue
 
@@ -100,6 +148,15 @@ def evaluate_gan_predictions(
                     "predicted_label": predicted_label,
                 }
             )
+            taxonomy.add(
+                "normalization.invalid_label",
+                record_id=record_id,
+                reason=str(exc),
+                details={
+                    "gold_label": gold.gold_label,
+                    "predicted_label": predicted_label,
+                },
+            )
             continue
 
         metric_counts["raw_exact_match"] += gold.gold_label == predicted_label
@@ -107,6 +164,73 @@ def evaluate_gan_predictions(
         metric_counts["monthly_frequency_match"] += score.monthly_frequency_match
         metric_counts["purist_category_match"] += score.purist_category_match
         metric_counts["pragmatic_category_match"] += score.pragmatic_category_match
+
+        if not score.exact_normalized_match:
+            taxonomy.add(
+                "normalization.label_mismatch",
+                record_id=record_id,
+                reason="normalized predicted label differs from gold",
+                details={
+                    "normalized_gold_label": score.normalized_gold_label,
+                    "normalized_predicted_label": score.normalized_predicted_label,
+                },
+            )
+        if not score.monthly_frequency_match:
+            taxonomy.add(
+                "normalization.monthly_frequency_mismatch",
+                record_id=record_id,
+                reason="monthly frequency differs from gold",
+                details={
+                    "gold_monthly_frequency": score.gold_monthly_frequency,
+                    "predicted_monthly_frequency": score.predicted_monthly_frequency,
+                },
+            )
+        if not score.purist_category_match:
+            taxonomy.add(
+                "classification.purist_category_mismatch",
+                record_id=record_id,
+                reason="Purist category differs from gold",
+                details={
+                    "gold_purist_category": score.gold_purist_category,
+                    "predicted_purist_category": score.predicted_purist_category,
+                },
+            )
+        if not score.pragmatic_category_match:
+            taxonomy.add(
+                "classification.pragmatic_category_mismatch",
+                record_id=record_id,
+                reason="Pragmatic category differs from gold",
+                details={
+                    "gold_pragmatic_category": score.gold_pragmatic_category,
+                    "predicted_pragmatic_category": score.predicted_pragmatic_category,
+                },
+            )
+        if predicted_value.negation not in ("affirmed", "not_applicable", "unknown"):
+            taxonomy.add(
+                "negation.non_affirmed_prediction",
+                record_id=record_id,
+                reason="prediction carries a non-affirmed negation status",
+                details={"negation": predicted_value.negation},
+            )
+        if predicted_value.temporality in ("historical", "planned", "future"):
+            taxonomy.add(
+                "temporality.non_current_prediction",
+                record_id=record_id,
+                reason="prediction carries a non-current temporality status",
+                details={"temporality": predicted_value.temporality},
+            )
+        if "abstained" in predicted_value.quality_flags:
+            taxonomy.add(
+                "abstention.predicted_abstention",
+                record_id=record_id,
+                reason="prediction value is flagged as abstained",
+            )
+        if predicted_value.metadata.get("repair_applied") is True:
+            taxonomy.add(
+                "repair.applied",
+                record_id=record_id,
+                reason="prediction metadata indicates repair was applied",
+            )
 
         if not score.monthly_frequency_match and len(error_samples) < max_errors:
             error_samples.append(
@@ -121,8 +245,74 @@ def evaluate_gan_predictions(
                 }
             )
 
+        evidence_score = score_evidence_support(
+            document_text=gold.note_text,
+            gold_evidence_text=gold.gold_evidence,
+            predicted_evidence=predicted_value.evidence,
+        )
+        if evidence_score.predicted_evidence_count:
+            evidence_counts["predictions_with_evidence"] += 1
+            evidence_counts["predictions_with_offsets"] += (
+                evidence_score.predicted_evidence_with_offsets > 0
+            )
+            evidence_counts["quote_supported"] += evidence_score.quote_supported
+            evidence_counts["offsets_valid"] += evidence_score.offsets_valid is True
+            evidence_counts["gold_evidence_locatable"] += (
+                evidence_score.gold_evidence_locatable is True
+            )
+            evidence_counts["overlap_scored"] += evidence_score.best_iou is not None
+            evidence_counts["overlap_exact"] += evidence_score.best_iou == 1.0
+            if evidence_score.offsets_valid is False:
+                taxonomy.add(
+                    "evidence.invalid_offsets",
+                    record_id=record_id,
+                    reason="predicted evidence offsets do not match document text",
+                )
+            if evidence_score.gold_evidence_locatable is False:
+                taxonomy.add(
+                    "evidence.gold_unlocatable",
+                    record_id=record_id,
+                    reason="gold evidence quote could not be located in document text",
+                    details={"gold_evidence": gold.gold_evidence},
+                )
+            if evidence_score.best_iou is not None and evidence_score.best_iou < 1.0:
+                taxonomy.add(
+                    "evidence.partial_overlap",
+                    record_id=record_id,
+                    reason="predicted evidence overlaps gold evidence but is not exact",
+                    details={"best_iou": evidence_score.best_iou},
+                )
+            if (
+                not evidence_score.quote_supported
+                and len(evidence_error_samples) < max_errors
+            ):
+                taxonomy.add(
+                    "evidence.unsupported_quote",
+                    record_id=record_id,
+                    reason="predicted evidence quote or offsets not supported by document text",
+                )
+                evidence_error_samples.append(
+                    {
+                        "record_id": record_id,
+                        "gold_evidence": gold.gold_evidence,
+                        "predicted_evidence": [
+                            evidence.model_dump(mode="json")
+                            for evidence in predicted_value.evidence
+                        ],
+                        "reason": "predicted evidence quote or offsets not supported by document text",
+                    }
+                )
+        else:
+            taxonomy.add(
+                "evidence.missing_prediction_evidence",
+                record_id=record_id,
+                reason="prediction has no evidence spans",
+            )
+
     denominator = len(evaluated_ids)
     valid_denominator = denominator - len(invalid_predictions)
+    evidence_denominator = evidence_counts["predictions_with_evidence"]
+    offset_denominator = evidence_counts["predictions_with_offsets"]
     return {
         "dataset": prediction_set.dataset,
         "schema_level": prediction_set.schema_level,
@@ -155,28 +345,52 @@ def evaluate_gan_predictions(
                 metric_counts["normalized_label_match"], valid_denominator
             ),
             "schema_valid_prediction_rate": _ratio(valid_denominator, denominator),
+            "evidence_quote_support_rate": _ratio(
+                evidence_counts["quote_supported"], evidence_denominator
+            ),
+            "evidence_offsets_valid_rate": _ratio(
+                evidence_counts["offsets_valid"], offset_denominator
+            ),
+            "evidence_offsets_present_rate": _ratio(
+                evidence_counts["predictions_with_offsets"], evidence_denominator
+            ),
+            "gold_evidence_locatable_rate": _ratio(
+                evidence_counts["gold_evidence_locatable"], evidence_denominator
+            ),
+            "evidence_overlap_scored_rate": _ratio(
+                evidence_counts["overlap_scored"], evidence_denominator
+            ),
+            "evidence_exact_overlap_rate": _ratio(
+                evidence_counts["overlap_exact"], evidence_counts["overlap_scored"]
+            ),
         },
         "caveats": [
             "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
             "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
+            "Evidence metrics are diagnostic; some Gan gold evidence quotes are not verbatim locatable in note text.",
         ],
         "errors": {
             "missing_prediction_ids": missing_ids[:max_errors],
             "extra_prediction_ids": extra_ids[:max_errors],
             "invalid_predictions": invalid_predictions[:max_errors],
             "monthly_frequency_mismatches": error_samples,
+            "evidence_support_errors": evidence_error_samples,
         },
+        "error_analysis": taxonomy.to_report(),
     }
 
 
-def _gan_frequency_label(prediction: DocumentPrediction) -> str | None:
+def _gan_frequency_value(prediction: DocumentPrediction) -> ExtractedValue | None:
     for value in prediction.values:
-        if value.field_name != GAN_FREQUENCY_FIELD:
-            continue
-        if isinstance(value.normalized_value, str):
-            return value.normalized_value
-        return value.raw_value
+        if value.field_name == GAN_FREQUENCY_FIELD:
+            return value
     return None
+
+
+def _prediction_label(value: ExtractedValue) -> str | None:
+    if isinstance(value.normalized_value, str):
+        return value.normalized_value
+    return value.raw_value
 
 
 def _ratio(numerator: int, denominator: int) -> float | None:

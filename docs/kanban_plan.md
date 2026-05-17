@@ -156,6 +156,24 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `tests/test_run_artifacts.py`.
 - Notes: `clinical_extraction.runs` defines required run metadata and creates the standard run directory with metadata, config, prompts, predictions, metrics, errors, and artifact paths. Model/provider fields remain plain metadata until adapters are introduced.
 
+### Add evidence support scoring
+
+- Outcome: Evidence span overlap/support metrics are available for Gan and reusable for ExECT predictions.
+- Dependencies: Shared prediction and evidence schemas; baseline evaluation CLI.
+- Parallelizable: after Create baseline deterministic evaluation CLI.
+- Owner: Codex.
+- Validation: `tests/test_evidence_scoring.py`; `tests/test_evaluation_cli.py`.
+- Notes: `clinical_extraction.evaluation.evidence` scores quote support, offset validity, gold evidence locatability, overlap ratio, and IoU. Gan evaluation reports evidence diagnostics separately from benchmark-facing frequency metrics.
+
+### Add error analysis reports
+
+- Outcome: Evaluation writes failure taxonomies for negation, temporality, normalization, evidence, schema validity, abstention, and repair.
+- Dependencies: Baseline evaluation CLI; evidence scoring.
+- Parallelizable: after Add evidence support scoring.
+- Owner: Codex.
+- Validation: `tests/test_evaluation_cli.py`.
+- Notes: Gan evaluation now emits `error_analysis` with bounded examples and category counts for schema coverage, normalization, category mismatches, evidence support, negation, temporality, abstention, and repair metadata.
+
 ## Review
 
 No active review card is claimed in this plan.
@@ -216,24 +234,6 @@ No active implementation card is claimed in this plan.
 - Owner: unassigned.
 - Validation: Field scorer tests from audited examples.
 - Notes: Avoid adding broad scorer semantics without documented policy.
-
-### Add evidence support scoring
-
-- Outcome: Evidence span overlap/support metrics are available for Gan and ExECT predictions.
-- Dependencies: Shared prediction and evidence schemas; baseline evaluation CLI.
-- Parallelizable: after Create baseline deterministic evaluation CLI.
-- Owner: unassigned.
-- Validation: Span overlap and support fixtures.
-- Notes: Evidence quote validity and normalized-value support may diverge.
-
-### Add error analysis reports
-
-- Outcome: Evaluation writes failure taxonomies for negation, temporality, normalization, evidence, schema validity, abstention, and repair.
-- Dependencies: Baseline evaluation CLI; evidence scoring.
-- Parallelizable: after Add evidence support scoring.
-- Owner: unassigned.
-- Validation: Report fixture tests and manually reviewed sample output.
-- Notes: Useful before ablations become numerous.
 
 ### Add experiment config files
 
