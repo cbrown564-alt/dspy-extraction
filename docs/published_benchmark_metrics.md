@@ -2,7 +2,7 @@
 
 Date: 2026-05-17
 
-This note records the published benchmark values and metric definitions that are relevant to this repo. It is intentionally documentation-only: do not add benchmark constants or automated pass/fail comparisons until the alignment caveats below are resolved in code and experiment reports.
+This note records the published benchmark values and metric definitions that are relevant to this repo. Code-level references live in `clinical_extraction.evaluation.benchmarks`, but those constants are comparison aids only: they carry alignment labels and caveats, and must not be used to claim published benchmark reproduction unless the relevant scorer and dataset caveats are resolved.
 
 ## Local Sources
 
@@ -71,3 +71,4 @@ Current repo alignment:
 - ExECTv2 reproduction needs CUI/feature-aware scoring across all Table 1 annotation families before comparing to the published `All` F1 values.
 - Gan reproduction needs the paper's real-letter evaluation sets or a clear statement that a synthetic-only subset is being used.
 - Future reports should cite scorer mode, dataset split, schema level, and whether they are benchmark-aligned, partially aligned, or diagnostic-only.
+- `clinical_extraction.evaluation.benchmarks` may be used to attach reference values and caveats to reports. Values labeled `partial` or `not_comparable` are not reproduction claims.

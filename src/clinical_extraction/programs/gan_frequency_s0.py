@@ -2,8 +2,12 @@ from __future__ import annotations
 
 from collections.abc import Callable, Iterable
 
+import json
+from typing import Any
+
 from pydantic import BaseModel, ConfigDict, Field
 
+from clinical_extraction.llms import ChatAdapter, ChatMessage
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.schemas import (
     DocumentPrediction,
@@ -131,10 +135,89 @@ class GanFrequencyS0Program:
             metric_caveats=[
                 "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
                 "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
-                "This contract supports mocked execution only; provider adapters are a later card.",
+                "Provider adapters target this narrow Gan S0 contract before broader DSPy modules.",
             ],
             metadata={"prompt_config": self.prompt_config()},
         )
+
+
+def build_gan_frequency_s0_extractor(
+    adapter: ChatAdapter,
+) -> Callable[[GanFrequencyS0Input], GanFrequencyS0Output]:
+    def extract(input_record: GanFrequencyS0Input) -> GanFrequencyS0Output:
+        content = adapter.complete_json(
+            _gan_frequency_s0_messages(input_record),
+            response_schema=GAN_FREQUENCY_S0_RESPONSE_SCHEMA,
+        )
+        payload = _parse_json_object(content)
+        return GanFrequencyS0Output.model_validate(payload)
+
+    return extract
+
+
+GAN_FREQUENCY_S0_RESPONSE_SCHEMA: dict[str, Any] = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "seizure_frequency_number": {
+            "type": ["string", "null"],
+            "description": "The Gan seizure_frequency_number label, or null when abstaining.",
+        },
+        "evidence_text": {
+            "type": ["string", "null"],
+            "description": "A direct quote from the note supporting the label.",
+        },
+        "confidence": {
+            "type": ["number", "null"],
+            "minimum": 0,
+            "maximum": 1,
+        },
+        "abstained": {"type": "boolean"},
+        "metadata": {
+            "type": "object",
+            "additionalProperties": {"type": ["string", "number", "boolean", "null"]},
+        },
+    },
+    "required": [
+        "seizure_frequency_number",
+        "evidence_text",
+        "confidence",
+        "abstained",
+        "metadata",
+    ],
+}
+
+
+def _gan_frequency_s0_messages(input_record: GanFrequencyS0Input) -> list[ChatMessage]:
+    return [
+        ChatMessage(
+            role="system",
+            content=(
+                "Return strict JSON for the Gan seizure-frequency S0 extraction task. "
+                "Extract exactly one seizure_frequency_number label and evidence quote. "
+                "Use null for the label and set abstained=true when the note does not "
+                "support a frequency label. Do not infer beyond the note text."
+            ),
+        ),
+        ChatMessage(
+            role="user",
+            content=(
+                f"record_id: {input_record.record_id}\n"
+                f"target_field: {input_record.target_field}\n\n"
+                f"clinical_note:\n{input_record.note_text}"
+            ),
+        ),
+    ]
+
+
+def _parse_json_object(content: str) -> dict[str, Any]:
+    try:
+        parsed = json.loads(content)
+    except json.JSONDecodeError as exc:
+        raise ValueError("Gan S0 adapter response was not valid JSON.") from exc
+    if not isinstance(parsed, dict):
+        raise ValueError("Gan S0 adapter response must be a JSON object.")
+    return parsed
 
 
 def _evidence_spans(

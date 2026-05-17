@@ -271,7 +271,25 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Parallelizable: yes.
 - Owner: Codex.
 - Validation: `tests/test_published_benchmark_metrics_doc.py`.
-- Notes: `docs/published_benchmark_metrics.md` records ExECTv2 Table 1 values, Gan micro-F1 headline/Table 6-8 values, metric definitions, and explicit alignment caveats. No benchmark constants or code-level comparison tests were added.
+- Notes: `docs/published_benchmark_metrics.md` records ExECTv2 Table 1 values, Gan micro-F1 headline/Table 6-8 values, metric definitions, and explicit alignment caveats. Code-level constants were added later with explicit non-reproduction caveats.
+
+### Add LLM provider adapters
+
+- Outcome: Configurable adapters support local Ollama Qwen models and closed providers without changing extraction code.
+- Dependencies: Run artifact layout and metadata contract; Implement Gan S0 DSPy program contract.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_llm_adapters.py`; opt-in `scripts/smoke_gan_s0_adapter.py`.
+- Notes: `clinical_extraction.llms` provides a deterministic mock adapter and an OpenAI-compatible chat-completions adapter used by Ollama, OpenAI, Gemini, and custom OpenAI-compatible endpoints. The Gan S0 program now exposes `build_gan_frequency_s0_extractor(adapter)` so provider calls map into the existing `PredictionSet` contract. Model config examples live under `configs/models/`.
+
+### Add benchmark reference constants and comparison caveats
+
+- Outcome: Repo contains benchmark reference values extracted from the papers and a comparison helper or fixture that labels current metrics as aligned, partial, or not comparable.
+- Dependencies: Extract published benchmark metrics and definitions.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_benchmark_references.py`; `tests/test_published_benchmark_metrics_doc.py`.
+- Notes: `clinical_extraction.evaluation.benchmarks` records selected ExECTv2 Table 1 and Gan Table 6/Table 8 reference values with alignment labels and caveats. `benchmark_alignment()` marks current ExECT field-family scoring as partial and current Gan synthetic-subset comparisons as partial rather than published real-letter reproduction.
 
 ## Review
 
@@ -279,23 +297,7 @@ No active review card is claimed in this plan.
 
 ## Ready
 
-### Add LLM provider adapters
-
-- Outcome: Configurable adapters support local Ollama Qwen models and closed providers without changing extraction code.
-- Dependencies: Run artifact layout and metadata contract; Implement Gan S0 DSPy program contract.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Mock adapter tests and one opt-in smoke run.
-- Notes: Adapters should target the Gan S0 program contract first, then generalize only when additional program variants require it.
-
-### Add benchmark reference constants and comparison caveats
-
-- Outcome: Repo contains benchmark reference values extracted from the papers and a comparison helper or fixture that labels current metrics as aligned, partial, or not comparable.
-- Dependencies: Extract published benchmark metrics and definitions.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Constants or comparison tests plus `docs/published_benchmark_metrics.md`.
-- Notes: Do not claim published benchmark reproduction yet. ExECTv2 full comparison still needs CUI/feature-aware scoring across all Table 1 families; Gan real-letter comparison still needs the Real(300)/Real(150) evaluation sets or an explicit synthetic-only caveat.
+No active ready card is claimed in this plan.
 
 ## In Progress
 
@@ -403,23 +405,23 @@ No active implementation card is claimed in this plan.
 
 - Shared contracts should stay single-threaded: schemas, scorer semantics, run metadata, and split definitions affect every later card.
 - ExECT and Gan regression tests can expand in parallel because they touch different dataset-specific behavior.
-- Narrow Gan S0 DSPy contract work is unblocked; broader DSPy verifier, repair, abstention, and field-group modules remain blocked until that first path is proven.
-- Model adapters are intentionally deferred until the Gan S0 program contract exists.
-- Benchmark reproduction depends on careful paper metric interpretation and should start with a cited note before code-level constants or comparisons.
+- Narrow Gan S0 provider-backed smoke runs are unblocked; broader DSPy verifier, repair, abstention, and field-group modules remain blocked until that first path has real-model lessons.
+- Model adapters now target the Gan S0 program contract; generalize them only when additional program variants require it.
+- Benchmark reproduction has reference constants and caveats, but still depends on CUI/feature-aware ExECT scoring and Gan real-letter evaluation access.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: `Implement ExECT field-family scorers`, `Implement Gan S0 DSPy program contract`, `Extract published benchmark metrics and definitions`, and continued review-export polish.
+- Safe immediately in parallel: constrained JSON decoding decision, narrow Gan S0 experiment config schema, and continued review-export polish.
 - The moved `exect-explorer/` app can be inspected or rewired later, but it should not block the simple review export workflow.
 - Blocked on the broad DSPy module card: experiment configs and broader verifier/repair/field-group ablations.
-- Blocked on Gan S0 contract plus provider adapters: first LLM baseline.
-- Blocked on provider adapters: model configs and comparable model matrix runs.
+- Blocked on opt-in credentials or local Ollama availability: first LLM baseline.
+- Blocked on stable experiment configs and first baseline lessons: comparable model matrix runs.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata contract, and split generation policy.
 
 ## Recommended Next Pull
 
-1. Implement ExECT field-family scorers.
-2. Implement Gan S0 DSPy program contract.
-3. Extract published benchmark metrics and definitions.
+1. Decide constrained JSON decoding strategy.
+2. Add experiment config files for the narrow Gan S0 baseline.
+3. Run an opt-in Gan first LLM extraction baseline when credentials or local Ollama runtime are available.
 
-These cards broaden deterministic evaluation coverage, prepare the first DSPy implementation without opening the full DSPy surface, and unblock benchmark comparison only after the paper metrics are interpreted.
+These cards move from mocked execution into reproducible model runs while keeping scorer semantics, benchmark caveats, and provider-specific structured output behavior explicit.
