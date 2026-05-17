@@ -112,6 +112,34 @@ def make_gan_dspy_examples(records: list[GanRecord]) -> list[dspy.Example]:
 
 
 # ---------------------------------------------------------------------------
+# BootstrapFewShot compilation helper
+# ---------------------------------------------------------------------------
+
+def compile_gan_s0_module(
+    records: list[GanRecord],
+    *,
+    max_bootstrapped_demos: int = 4,
+    max_labeled_demos: int = 0,
+    max_rounds: int = 1,
+) -> GanFrequencyS0Module:
+    """Compile GanFrequencyS0Module with BootstrapFewShot on labeled training records.
+
+    Runs the teacher module on each record and keeps traces that pass
+    ``gan_frequency_s0_metric`` (pragmatic category match) as few-shot
+    demonstrations. Returns the compiled module with demos baked in.
+    """
+    trainset = make_gan_dspy_examples(records)
+    optimizer = dspy.BootstrapFewShot(
+        metric=gan_frequency_s0_metric,
+        max_bootstrapped_demos=max_bootstrapped_demos,
+        max_labeled_demos=max_labeled_demos,
+        max_rounds=max_rounds,
+    )
+    module = GanFrequencyS0Module()
+    return optimizer.compile(module, trainset=trainset)
+
+
+# ---------------------------------------------------------------------------
 # Bridge: DSPy Prediction → PredictionSet artifact
 # ---------------------------------------------------------------------------
 

@@ -8,6 +8,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
     GanFrequencyS0Module,
+    compile_gan_s0_module,
     gan_frequency_s0_metric,
     gan_frequency_s0_run_metadata,
     make_gan_dspy_examples,
@@ -136,6 +137,44 @@ def test_make_gan_dspy_examples_sets_note_text_as_input_and_gold_label_as_output
         assert example.note_text == record.note_text
         assert example.seizure_frequency_number == record.gold_label
         assert "note_text" in example.inputs()
+
+
+def test_compile_gan_s0_module_bootstrap_returns_callable_module():
+    """BootstrapFewShot compilation with DummyLM produces a callable compiled module."""
+    records = load_gan_records()[:4]
+    # Supply one correct response per bootstrap teacher call plus one for the prediction call.
+    # follow_cycles=True guards against off-by-one in bootstrap internal calls.
+    answers = [
+        {
+            "reasoning": "Found seizure frequency in note.",
+            "seizure_frequency_number": r.gold_label,
+            "evidence_text": None,
+        }
+        for r in records
+    ]
+    # Provide enough answers: one per bootstrap teacher call plus extra for prediction.
+    answers = answers * 4
+    _configure_dummy(answers)
+
+    compiled = compile_gan_s0_module(
+        records,
+        max_bootstrapped_demos=2,
+        max_labeled_demos=0,
+        max_rounds=1,
+    )
+
+    assert isinstance(compiled, GanFrequencyS0Module)
+
+    result = predict_gan_records(
+        compiled,
+        [records[0]],
+        model_provider="mock",
+        model_name="dummy-bootstrap",
+        prompt_version="gan_frequency_s0_bootstrap_v1",
+    )
+    assert result.dataset == "gan_2026"
+    assert len(result.predictions) == 1
+    assert result.metadata["program_variant"] == GAN_FREQUENCY_S0_VARIANT
 
 
 def test_gan_frequency_s0_run_metadata_builds_correct_artifact_contract():

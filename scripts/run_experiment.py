@@ -22,6 +22,7 @@ from clinical_extraction.experiments.config import load_experiment_config
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
 from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0Module,
+    compile_gan_s0_module,
     gan_frequency_s0_run_metadata,
     predict_gan_records,
 )
@@ -88,6 +89,25 @@ def main(argv: list[str] | None = None) -> int:
 
     module = GanFrequencyS0Module()
 
+    if config.optimizer is not None:
+        dev_ids: list[str] = split_data.get("development", [])
+        if config.optimizer.trainset_size is not None:
+            dev_ids = dev_ids[: config.optimizer.trainset_size]
+        dev_records = [all_records[rid] for rid in dev_ids if rid in all_records]
+        print(
+            f"Compiling with BootstrapFewShot on {len(dev_records)} dev records "
+            f"(max_bootstrapped_demos={config.optimizer.max_bootstrapped_demos}, "
+            f"max_labeled_demos={config.optimizer.max_labeled_demos}, "
+            f"max_rounds={config.optimizer.max_rounds})..."
+        )
+        module = compile_gan_s0_module(
+            dev_records,
+            max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
+            max_labeled_demos=config.optimizer.max_labeled_demos,
+            max_rounds=config.optimizer.max_rounds,
+        )
+        print("Compilation complete.")
+
     run_id = args.run_id or _make_run_id(config.experiment_id)
     metadata = gan_frequency_s0_run_metadata(
         run_id=run_id,
@@ -108,18 +128,16 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(config.model_dump(mode="json"), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+    prompts_data: dict[str, Any] = {
+        "signature": "GanFrequencyS0Signature",
+        "module": "GanFrequencyS0Module",
+        "prompt_version": config.prompt_version,
+        "structured_output_strategy": config.structured_output_strategy,
+    }
+    if config.optimizer is not None:
+        prompts_data["optimizer"] = config.optimizer.model_dump()
     paths["prompts"].write_text(
-        json.dumps(
-            {
-                "signature": "GanFrequencyS0Signature",
-                "module": "GanFrequencyS0Module",
-                "prompt_version": config.prompt_version,
-                "structured_output_strategy": config.structured_output_strategy,
-            },
-            indent=2,
-            sort_keys=True,
-        )
-        + "\n",
+        json.dumps(prompts_data, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
 

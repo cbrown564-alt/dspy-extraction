@@ -20,6 +20,16 @@ StructuredOutputStrategy = Literal[
 ]
 
 
+class OptimizerConfig(FrozenModel):
+    """BootstrapFewShot hyperparameters for DSPy module compilation."""
+
+    name: Literal["BootstrapFewShot"] = "BootstrapFewShot"
+    max_bootstrapped_demos: int = Field(default=4, ge=1)
+    max_labeled_demos: int = Field(default=0, ge=0)
+    max_rounds: int = Field(default=1, ge=1)
+    trainset_size: int | None = Field(default=None, gt=0)
+
+
 class ExperimentControls(FrozenModel):
     few_shot_policy: str
     context_policy: str
@@ -58,6 +68,7 @@ class ExperimentConfig(FrozenModel):
     max_records: int | None = Field(default=None, gt=0)
     report_on_test_split: bool = False
     metric_caveats: list[str] = Field(default_factory=list)
+    optimizer: OptimizerConfig | None = None
 
     @model_validator(mode="after")
     def validate_experiment_context(self) -> ExperimentConfig:

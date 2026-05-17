@@ -1,0 +1,36 @@
+{
+  "experiment_id": "gan_s0_bootstrap_gpt4_1_mini",
+  "hypothesis": "BootstrapFewShot on 50 Gan dev records improves schema validity and pragmatic category accuracy over the zero-shot ChainOfThought baseline (32% schema validity).",
+  "dataset": "gan_2026",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "schema_level": "gan_frequency_s0",
+  "program_variant": "gan_frequency_s0_single_pass",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "prompt_version": "gan_frequency_s0_bootstrap_v1",
+  "controls": {
+    "few_shot_policy": "bootstrap_fewshot_dev_split",
+    "context_policy": "full_note",
+    "verifier_policy": "none",
+    "repair_policy": "none",
+    "abstention_policy": "allow_explicit_abstain_flag"
+  },
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "output_root": "runs",
+  "max_records": 25,
+  "report_on_test_split": false,
+  "optimizer": {
+    "name": "BootstrapFewShot",
+    "max_bootstrapped_demos": 4,
+    "max_labeled_demos": 0,
+    "max_rounds": 1,
+    "trainset_size": 50
+  },
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction.",
+    "BootstrapFewShot demonstrations are drawn from the development split; ordering is deterministic by split assignment but DSPy bootstrap selection is not seeded."
+  ]
+}
