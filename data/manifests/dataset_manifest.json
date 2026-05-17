@@ -3,9 +3,10 @@
   "datasets": {
     "exectv2": {
       "role": "primary",
-      "root": "data/ExECT 2 (2025)",
-      "letters_dir": "data/ExECT 2 (2025)/Gold1-200_corrected_spelling",
-      "annotation_format": "BRAT standoff .ann plus .txt source letters",
+      "root": "data/ExECTv2 (2025)",
+      "letters_dir": "data/ExECTv2 (2025)/Gold1-200_corrected_spelling",
+      "json_annotations_dir": "data/ExECTv2 (2025)/Json",
+      "annotation_format": "Per-document JSON annotations are primary structured gold; .txt files are source letters; BRAT .ann files are retained as secondary reference.",
       "document_count": 200,
       "documents": [
         "EA0001",
@@ -209,14 +210,15 @@
         "EA0199",
         "EA0200"
       ],
-      "annotation_config": "data/ExECT 2 (2025)/Gold1-200_corrected_spelling/annotation.conf",
+      "annotation_config": "data/ExECTv2 (2025)/Gold1-200_corrected_spelling/annotation.conf",
       "derived_split_file": "data/splits/exectv2_splits.json"
     },
     "gan_2026": {
       "role": "auxiliary",
       "root": "data/Gan (2026)",
       "primary_file": "data/Gan (2026)/synthetic_data_subset_1500.json",
-      "record_count": 1500
+      "record_count": 1500,
+      "derived_split_file": "data/splits/gan_2026_splits.json"
     }
   }
 }
