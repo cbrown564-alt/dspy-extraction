@@ -1,13 +1,10 @@
+"""Gan seizure-frequency S0 DSPy program."""
 from __future__ import annotations
 
-from collections.abc import Callable, Iterable
+from typing import Optional
 
-import json
-from typing import Any
+import dspy
 
-from pydantic import BaseModel, ConfigDict, Field
-
-from clinical_extraction.llms import ChatAdapter, ChatMessage
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.schemas import (
     DocumentPrediction,
@@ -23,222 +20,209 @@ GAN_FREQUENCY_S0_VARIANT = "gan_frequency_s0_single_pass"
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 
 
-class GanFrequencyS0Input(BaseModel):
-    model_config = ConfigDict(frozen=True)
+class GanFrequencyS0Signature(dspy.Signature):
+    """Extract the Gan seizure-frequency label and supporting evidence from a clinical note.
 
-    record_id: str
-    note_text: str
-    target_field: str = GAN_FREQUENCY_S0_FIELD
-
-
-class GanFrequencyS0Output(BaseModel):
-    model_config = ConfigDict(frozen=True)
-
-    seizure_frequency_number: str | None
-    evidence_text: str | None = None
-    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
-    abstained: bool = False
-    metadata: dict[str, str | int | float | bool | None] = Field(default_factory=dict)
-
-
-class GanFrequencyS0Program:
-    """Narrow mocked-execution contract for first Gan frequency extraction runs.
-
-    Real DSPy modules and provider adapters can target the same input/output
-    shape later. For now, tests inject an extractor callable so the artifact and
-    schema contract can stabilize without model calls.
+    The label must match the Gan annotation vocabulary exactly. Abstain (null) only when
+    the note contains no usable seizure-frequency information.
     """
 
-    def __init__(
-        self,
-        *,
-        extractor: Callable[[GanFrequencyS0Input], GanFrequencyS0Output],
-        model_provider: str,
-        model_name: str,
-        prompt_version: str = "gan_frequency_s0_v1",
-    ) -> None:
-        self.extractor = extractor
-        self.model_provider = model_provider
-        self.model_name = model_name
-        self.prompt_version = prompt_version
-
-    def predict_records(self, records: Iterable[GanRecord]) -> PredictionSet:
-        predictions = [self.predict_record(record) for record in records]
-        return PredictionSet(
-            dataset="gan_2026",
-            schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-            predictions=predictions,
-            metadata={
-                "program_variant": GAN_FREQUENCY_S0_VARIANT,
-                "model_provider": self.model_provider,
-                "model_name": self.model_name,
-                "prompt_version": self.prompt_version,
-                "scorer_mode": GAN_FREQUENCY_S0_SCORER,
-            },
+    note_text: str = dspy.InputField(desc="Clinical neurology note text")
+    seizure_frequency_number: Optional[str] = dspy.OutputField(
+        desc=(
+            "Seizure frequency in Gan label format. One of: "
+            "'{count} per {unit}' e.g. '2 per week', '1 per 3 month'; "
+            "'{count} cluster per {unit}, {n} per cluster'; "
+            "'unknown'; 'no seizure frequency reference'; "
+            "or null to abstain. Unit must be singular: day/week/month/year."
         )
+    )
+    evidence_text: Optional[str] = dspy.OutputField(
+        desc="Direct verbatim quote from the note supporting the label. Null if abstaining."
+    )
 
-    def predict_record(self, record: GanRecord) -> DocumentPrediction:
-        input_record = GanFrequencyS0Input(
-            record_id=record.record_id,
-            note_text=record.note_text,
+
+class GanFrequencyS0Module(dspy.Module):
+    """Narrow Gan seizure-frequency S0 DSPy module.
+
+    Uses ChainOfThought so the model reasons before committing to a label.
+    Compile with BootstrapFewShot or MIPROv2 + ``gan_frequency_s0_metric``
+    before running on the evaluation split.
+    """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(GanFrequencyS0Signature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(note_text=note_text)
+
+
+# ---------------------------------------------------------------------------
+# DSPy metric for optimizer training
+# ---------------------------------------------------------------------------
+
+def gan_frequency_s0_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+) -> float:
+    """DSPy metric for Gan S0 optimizer training.
+
+    Uses pragmatic category match (infrequent / frequent / unknown) as the
+    optimization target — it is the coarsest benchmark-facing signal and
+    therefore most stable across minor label format variation.
+
+    Returns 1.0 on pragmatic category match, 0.0 on mismatch or invalid label.
+    """
+    from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+
+    predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
+    gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+
+    if not predicted or not gold:
+        return 0.0
+
+    try:
+        score = score_gan_frequency_prediction(
+            gold_label=gold, predicted_label=predicted
         )
-        output = self.extractor(input_record)
-        value = ExtractedValue(
-            field_name=GAN_FREQUENCY_S0_FIELD,
-            raw_value=output.seizure_frequency_number,
-            normalized_value=output.seizure_frequency_number,
-            evidence=_evidence_spans(record, output),
-            temporality="unknown",
-            negation="unknown",
-            confidence=output.confidence,
-            quality_flags=["abstained"] if output.abstained else [],
-            metadata=output.metadata,
-        )
-        return DocumentPrediction(
-            document_id=record.record_id,
-            dataset="gan_2026",
-            schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-            values=[value],
-            metadata={
-                "program_variant": GAN_FREQUENCY_S0_VARIANT,
-                "prompt_config": self.prompt_config(),
-            },
-        )
-
-    def prompt_config(self) -> dict[str, str]:
-        return {
-            "signature": "GanFrequencyS0Signature",
-            "module": "GanFrequencyS0Program",
-            "prompt_version": self.prompt_version,
-            "target_field": GAN_FREQUENCY_S0_FIELD,
-            "instruction": (
-                "Extract one Gan seizure-frequency label and supporting evidence "
-                "from the clinical note."
-            ),
-            "few_shot_policy": "none",
-            "context_policy": "full_note",
-            "verifier_policy": "none",
-            "repair_policy": "none",
-            "abstention_policy": "allow_explicit_abstain_flag",
-        }
-
-    def run_metadata(self, *, run_id: str, split_name: str) -> RunMetadata:
-        return RunMetadata(
-            run_id=run_id,
-            dataset="gan_2026",
-            split_name=split_name,
-            model_provider=self.model_provider,
-            model_name=self.model_name,
-            schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-            program_variant=GAN_FREQUENCY_S0_VARIANT,
-            scorer_mode=GAN_FREQUENCY_S0_SCORER,
-            metric_caveats=[
-                "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
-                "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
-                "Provider adapters target this narrow Gan S0 contract before broader DSPy modules.",
-            ],
-            metadata={"prompt_config": self.prompt_config()},
-        )
+        return float(score.pragmatic_category_match)
+    except ValueError:
+        return 0.0
 
 
-def build_gan_frequency_s0_extractor(
-    adapter: ChatAdapter,
-) -> Callable[[GanFrequencyS0Input], GanFrequencyS0Output]:
-    def extract(input_record: GanFrequencyS0Input) -> GanFrequencyS0Output:
-        content = adapter.complete_json(
-            _gan_frequency_s0_messages(input_record),
-            response_schema=GAN_FREQUENCY_S0_RESPONSE_SCHEMA,
-        )
-        payload = _parse_json_object(content)
-        return GanFrequencyS0Output.model_validate(payload)
+# ---------------------------------------------------------------------------
+# DSPy Example helpers
+# ---------------------------------------------------------------------------
 
-    return extract
+def make_gan_dspy_examples(records: list[GanRecord]) -> list[dspy.Example]:
+    """Convert Gan records into DSPy Examples for training or evaluation.
 
-
-GAN_FREQUENCY_S0_RESPONSE_SCHEMA: dict[str, Any] = {
-    "type": "object",
-    "additionalProperties": False,
-    "properties": {
-        "seizure_frequency_number": {
-            "type": ["string", "null"],
-            "description": "The Gan seizure_frequency_number label, or null when abstaining.",
-        },
-        "evidence_text": {
-            "type": ["string", "null"],
-            "description": "A direct quote from the note supporting the label.",
-        },
-        "confidence": {
-            "type": ["number", "null"],
-            "minimum": 0,
-            "maximum": 1,
-        },
-        "abstained": {"type": "boolean"},
-        "metadata": {
-            "type": "object",
-            "additionalProperties": {"type": ["string", "number", "boolean", "null"]},
-        },
-    },
-    "required": [
-        "seizure_frequency_number",
-        "evidence_text",
-        "confidence",
-        "abstained",
-        "metadata",
-    ],
-}
-
-
-def _gan_frequency_s0_messages(input_record: GanFrequencyS0Input) -> list[ChatMessage]:
+    Each example exposes ``note_text`` as input and ``seizure_frequency_number``
+    (the gold label) as the expected output for the metric.
+    """
     return [
-        ChatMessage(
-            role="system",
-            content=(
-                "Return strict JSON for the Gan seizure-frequency S0 extraction task. "
-                "Extract exactly one seizure_frequency_number label and evidence quote. "
-                "Use null for the label and set abstained=true when the note does not "
-                "support a frequency label. Do not infer beyond the note text."
-            ),
-        ),
-        ChatMessage(
-            role="user",
-            content=(
-                f"record_id: {input_record.record_id}\n"
-                f"target_field: {input_record.target_field}\n\n"
-                f"clinical_note:\n{input_record.note_text}"
-            ),
-        ),
+        dspy.Example(
+            note_text=record.note_text,
+            seizure_frequency_number=record.gold_label,
+        ).with_inputs("note_text")
+        for record in records
     ]
 
 
-def _parse_json_object(content: str) -> dict[str, Any]:
-    try:
-        parsed = json.loads(content)
-    except json.JSONDecodeError as exc:
-        raise ValueError("Gan S0 adapter response was not valid JSON.") from exc
-    if not isinstance(parsed, dict):
-        raise ValueError("Gan S0 adapter response must be a JSON object.")
-    return parsed
+# ---------------------------------------------------------------------------
+# Bridge: DSPy Prediction → PredictionSet artifact
+# ---------------------------------------------------------------------------
+
+def predict_gan_records(
+    module: GanFrequencyS0Module,
+    records: list[GanRecord],
+    *,
+    model_provider: str,
+    model_name: str,
+    prompt_version: str = "gan_frequency_s0_v1",
+) -> PredictionSet:
+    """Run ``module`` on each Gan record and return a ``PredictionSet`` artifact."""
+    predictions = [_predict_record(module, record) for record in records]
+    return PredictionSet(
+        dataset="gan_2026",
+        schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+        predictions=predictions,
+        metadata={
+            "program_variant": GAN_FREQUENCY_S0_VARIANT,
+            "model_provider": model_provider,
+            "model_name": model_name,
+            "prompt_version": prompt_version,
+            "scorer_mode": GAN_FREQUENCY_S0_SCORER,
+        },
+    )
+
+
+_ABSTAIN_STRINGS = frozenset({"none", "null", ""})
+
+
+def _predict_record(
+    module: GanFrequencyS0Module, record: GanRecord
+) -> DocumentPrediction:
+    pred = module(note_text=record.note_text)
+    label: str | None = pred.seizure_frequency_number
+    evidence_text: str | None = pred.evidence_text
+
+    # Normalize sentinel strings to Python None (DummyLM and some adapters
+    # return the string "None" / "null" instead of Python None for null fields).
+    if isinstance(label, str) and label.strip().lower() in _ABSTAIN_STRINGS:
+        label = None
+    if isinstance(evidence_text, str) and evidence_text.strip().lower() in _ABSTAIN_STRINGS:
+        evidence_text = None
+
+    value = ExtractedValue(
+        field_name=GAN_FREQUENCY_S0_FIELD,
+        raw_value=label,
+        normalized_value=label,
+        evidence=_evidence_spans(record, evidence_text),
+        temporality="unknown",
+        negation="unknown",
+        confidence=None,
+        quality_flags=["abstained"] if label is None else [],
+    )
+    return DocumentPrediction(
+        document_id=record.record_id,
+        dataset="gan_2026",
+        schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+        values=[value],
+        metadata={"program_variant": GAN_FREQUENCY_S0_VARIANT},
+    )
 
 
 def _evidence_spans(
-    record: GanRecord,
-    output: GanFrequencyS0Output,
+    record: GanRecord, evidence_text: str | None
 ) -> list[EvidenceSpan]:
-    if not output.evidence_text:
+    if not evidence_text:
         return []
-    start = record.note_text.find(output.evidence_text)
+    start = record.note_text.find(evidence_text)
     if start == -1:
-        return [
-            EvidenceSpan(
-                text=output.evidence_text,
-                document_id=record.record_id,
-            )
-        ]
+        return [EvidenceSpan(text=evidence_text, document_id=record.record_id)]
     return [
         EvidenceSpan(
-            text=output.evidence_text,
+            text=evidence_text,
             start=start,
-            end=start + len(output.evidence_text),
+            end=start + len(evidence_text),
             document_id=record.record_id,
         )
     ]
+
+
+# ---------------------------------------------------------------------------
+# Run metadata helper
+# ---------------------------------------------------------------------------
+
+def gan_frequency_s0_run_metadata(
+    run_id: str,
+    split_name: str,
+    model_provider: str,
+    model_name: str,
+    *,
+    prompt_version: str = "gan_frequency_s0_v1",
+    extra: dict | None = None,
+) -> RunMetadata:
+    """Build a ``RunMetadata`` for a Gan S0 run."""
+    return RunMetadata(
+        run_id=run_id,
+        dataset="gan_2026",
+        split_name=split_name,
+        model_provider=model_provider,
+        model_name=model_name,
+        schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+        program_variant=GAN_FREQUENCY_S0_VARIANT,
+        scorer_mode=GAN_FREQUENCY_S0_SCORER,
+        metric_caveats=[
+            "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+            "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+            "Provider adapters target this narrow Gan S0 contract before broader DSPy modules.",
+        ],
+        metadata={
+            "prompt_version": prompt_version,
+            **(extra or {}),
+        },
+    )

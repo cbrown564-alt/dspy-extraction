@@ -1,52 +1,29 @@
 import json
 
-from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.llms import (
     ChatMessage,
     LLMProviderConfig,
     MockChatAdapter,
     OpenAICompatibleChatAdapter,
     build_chat_adapter,
-)
-from clinical_extraction.programs.gan_frequency_s0 import (
-    GanFrequencyS0Program,
-    build_gan_frequency_s0_extractor,
+    build_dspy_lm,
 )
 
 
-def test_mock_adapter_drives_gan_s0_program_without_changing_program_contract():
-    record = next(
-        record
-        for record in load_gan_records()
-        if record.gold_evidence and record.gold_evidence in record.note_text
-    )
-    adapter = MockChatAdapter(
-        provider="mock",
-        model="fixture-json",
-        responses=[
-            {
-                "seizure_frequency_number": record.gold_label,
-                "evidence_text": record.gold_evidence,
-                "confidence": 0.82,
-            }
-        ],
-    )
-    program = GanFrequencyS0Program(
-        extractor=build_gan_frequency_s0_extractor(adapter),
-        model_provider=adapter.provider,
-        model_name=adapter.model,
-    )
+def test_build_dspy_lm_resolves_openai_provider_config():
+    import dspy
+    config = LLMProviderConfig(provider="openai", model="gpt-4.1-mini", api_key="test-key")
+    lm = build_dspy_lm(config)
+    assert isinstance(lm, dspy.LM)
+    assert "gpt-4.1-mini" in lm.model
 
-    prediction_set = program.predict_records([record])
 
-    assert prediction_set.metadata["model_provider"] == "mock"
-    assert prediction_set.metadata["model_name"] == "fixture-json"
-    assert adapter.calls[0][0].role == "system"
-    assert "Return strict JSON" in adapter.calls[0][0].content
-    value = prediction_set.predictions[0].values[0]
-    assert value.raw_value == record.gold_label
-    assert value.evidence[0].text == record.gold_evidence
-    assert value.confidence == 0.82
+def test_build_dspy_lm_resolves_ollama_provider_config():
+    import dspy
+    config = LLMProviderConfig(provider="ollama", model="qwen3.6:35b")
+    lm = build_dspy_lm(config)
+    assert isinstance(lm, dspy.LM)
+    assert "qwen3.6:35b" in lm.model
 
 
 def test_build_chat_adapter_resolves_supported_provider_configs():

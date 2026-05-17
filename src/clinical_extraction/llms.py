@@ -7,6 +7,7 @@ import urllib.request
 from collections.abc import Callable, Iterable
 from typing import Any, Literal, Protocol
 
+import dspy
 from pydantic import Field, model_validator
 
 from clinical_extraction.schemas import FrozenModel
@@ -184,6 +185,35 @@ def _api_key_from_env(env_var: str | None) -> str | None:
     return os.environ.get(env_var)
 
 
+def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
+    """Build a ``dspy.LM`` from an ``LLMProviderConfig``.
+
+    Gemini routes through LiteLLM's native Gemini support (``gemini/`` prefix).
+    All other providers use the OpenAI-compatible path (``openai/`` prefix),
+    with ``api_base`` set for non-default endpoints (Ollama, custom).
+    """
+    api_key = config.api_key or _api_key_from_env(config.api_key_env) or "dummy"
+
+    if config.provider == "gemini":
+        return dspy.LM(
+            model=f"gemini/{config.model}",
+            api_key=api_key,
+            temperature=config.temperature,
+            timeout=config.timeout_seconds,
+        )
+
+    base_url = config.base_url or _default_base_url(config.provider)
+    kwargs: dict[str, Any] = {
+        "model": f"openai/{config.model}",
+        "api_key": api_key,
+        "temperature": config.temperature,
+        "timeout": config.timeout_seconds,
+    }
+    if config.provider != "openai" or config.base_url:
+        kwargs["api_base"] = base_url
+    return dspy.LM(**kwargs)
+
+
 def _urlopen_json(
     url: str,
     headers: dict[str, str],
@@ -199,5 +229,13 @@ def _urlopen_json(
     try:
         with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
             return json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        try:
+            error_body = exc.read().decode("utf-8")
+        except Exception:
+            error_body = "(could not read response body)"
+        raise RuntimeError(
+            f"LLM provider request failed: {exc} — {error_body}"
+        ) from exc
     except urllib.error.URLError as exc:
         raise RuntimeError(f"LLM provider request failed: {exc}") from exc

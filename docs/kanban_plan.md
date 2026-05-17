@@ -291,6 +291,51 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `tests/test_benchmark_references.py`; `tests/test_published_benchmark_metrics_doc.py`.
 - Notes: `clinical_extraction.evaluation.benchmarks` records selected ExECTv2 Table 1 and Gan Table 6/Table 8 reference values with alignment labels and caveats. `benchmark_alignment()` marks current ExECT field-family scoring as partial and current Gan synthetic-subset comparisons as partial rather than published real-letter reproduction.
 
+### Decide constrained JSON decoding strategy
+
+- Outcome: Decision recorded for provider-specific JSON-schema or structured-output support.
+- Dependencies: LLM provider adapters.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_experiment_configs.py`; `docs/constrained_json_decoding_strategy.md`.
+- Notes: Use provider JSON-schema response formatting when available, but always treat Pydantic validation against the active program output model as the source of truth. Providers without JSON-schema support use the strict JSON prompt fallback and must record that strategy in run metadata.
+
+### Add narrow Gan S0 experiment config
+
+- Outcome: A validated experiment config captures the first provider-backed Gan S0 baseline controls before opt-in model runs.
+- Dependencies: Implement Gan S0 DSPy program contract; Add LLM provider adapters; run metadata contract.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_experiment_configs.py`; `configs/experiments/gan_s0_baseline_gpt4_1_mini.json`.
+- Notes: `clinical_extraction.experiments.config` validates dataset, split, model config path, schema level, program variant, scorer mode, prompt controls, structured-output strategy, metric caveats, and an explicit test-set reporting guard. The initial config targets GPT 4.1-mini on the fixed Gan validation split with `max_records=25`.
+
+### Add model comparison configs
+
+- Outcome: Configs cover Qwen3.6:35b, Qwen3.5:9b, Gemini 3 Flash, GPT 5.5, and GPT 4.1-mini.
+- Dependencies: LLM provider adapters; run metadata contract.
+- Parallelizable: after Add LLM provider adapters.
+- Owner: Codex.
+- Validation: `tests/test_model_comparison_configs.py`.
+- Notes: All five model configs in `configs/models/` validate as `LLMProviderConfig` and resolve to `OpenAICompatibleChatAdapter` with the expected provider, model, and base URL.
+
+### Add run experiment script
+
+- Outcome: `scripts/run_experiment.py` integrates experiment config, split loading, DSPy LM, program execution, run artifact layout, and evaluation into a single command.
+- Dependencies: Experiment config; `build_dspy_lm`; run artifact layout; baseline evaluation CLI.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `--dry-run` validates config and record loading without model calls; full run produces run artifact with metadata, config, prompts, predictions, metrics, and errors.
+- Notes: Accepts `--env-file .env` for loading API keys. Run ID is auto-generated as `{experiment_id}_{timestamp}`. DSPy adapter handles JSON schema and prompt construction; no manual system prompts or response schemas.
+
+### Build Gan S0 DSPy extraction module
+
+- Outcome: `clinical_extraction.programs.gan_frequency_s0` provides `GanFrequencyS0Signature`, `GanFrequencyS0Module` (ChainOfThought), `gan_frequency_s0_metric`, `make_gan_dspy_examples`, `predict_gan_records`, and `gan_frequency_s0_run_metadata`.
+- Dependencies: DSPy library; shared prediction schemas; run artifact layout.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_gan_s0_program.py`; dry-run and live baseline runs in `runs/`.
+- Notes: Replaced the custom `ChatAdapter`-based contract with proper `dspy.Signature` + `dspy.ChainOfThought`. `build_dspy_lm(config)` in `llms.py` translates `LLMProviderConfig` to `dspy.LM` via LiteLLM. DummyLM tests use response dicts with `reasoning` key (required by ChainOfThought). Abstain sentinel normalization handles `"None"` / `"null"` strings returned by DummyLM for null Optional fields.
+
 ## Review
 
 No active review card is claimed in this plan.
@@ -317,11 +362,11 @@ No active implementation card is claimed in this plan.
 ### Build DSPy extraction modules
 
 - Outcome: DSPy signatures/modules exist for context selection, field-group extraction, evidence verification, repair, and abstention.
-- Dependencies: Implement Gan S0 DSPy program contract; first LLM baseline lessons.
-- Parallelizable: after Implement Gan S0 DSPy program contract.
+- Dependencies: Narrow Gan S0 DSPy module; first LLM baseline lessons; BootstrapFewShot optimization pass.
+- Parallelizable: after Gan S0 DSPy module and optimization.
 - Owner: unassigned.
 - Validation: Unit tests with mocked LM outputs plus one small real-model smoke run.
-- Notes: Keep broad verifier, repair, abstention, and field-group surfaces blocked until the narrow Gan S0 path has a working contract and evaluation loop.
+- Notes: Narrow Gan S0 module is now unblocked and implemented. First DSPy zero-shot baseline (ChainOfThought, no optimization) showed 32% schema validity on 25 validation records; 87.5% pragmatic category accuracy on valid predictions. Lesson: BootstrapFewShot with training split examples is required to teach the model the Gan label vocabulary format before running on larger splits. Broad verifier, repair, abstention, and field-group surfaces remain blocked until optimization is validated.
 
 ## Backlog
 
@@ -334,25 +379,7 @@ No active implementation card is claimed in this plan.
 - Validation: Config schema validation.
 - Notes: Treat program variants as first-class experiments, not prompt-only changes.
 
-### Add model comparison configs
-
-- Outcome: Configs cover Qwen3.6:35b, Qwen3.5:9b, Gemini 3 Flash, GPT 5.5, and GPT 4.1-mini.
-- Dependencies: LLM provider adapters; run metadata contract.
-- Parallelizable: after Add LLM provider adapters.
-- Owner: unassigned.
-- Validation: Config validation and mock adapter resolution.
-- Notes: Early iteration may use GPT 4.1-mini on Mac; local Qwen target is Windows with Nvidia GPU.
-
 ## Questions
-
-### Decide constrained JSON decoding strategy
-
-- Outcome: Decision recorded for provider-specific JSON-schema or structured-output support.
-- Dependencies: LLM provider adapters.
-- Parallelizable: after Add LLM provider adapters.
-- Owner: unassigned.
-- Validation: Adapter capability matrix.
-- Notes: Keep deterministic schema validation as the source of truth regardless of provider.
 
 ## Experiments
 
@@ -361,9 +388,12 @@ No active implementation card is claimed in this plan.
 - Outcome: Single-pass Gan frequency extraction baseline with evidence capture on the fixed Gan split.
 - Dependencies: Implement Gan S0 DSPy program contract; LLM provider adapters; run metadata contract.
 - Parallelizable: after Implement Gan S0 DSPy program contract and Add LLM provider adapters.
-- Owner: unassigned.
-- Validation: Run artifact with metrics, prompts/config, predictions, and errors.
-- Notes: Use GPT 4.1-mini for rapid iteration before local Qwen runs.
+- Owner: Codex (completed).
+- Validation: Run artifacts in `runs/`.
+- Notes: Two DSPy ChainOfThought zero-shot baseline runs with GPT 4.1-mini on 25 validation records.
+  - v1 zero-shot without optimization: 32% schema validity, 87.5% pragmatic category accuracy on valid predictions, 0% evidence quote support. Lesson: BootstrapFewShot optimization with labeled training examples is required to teach the Gan label vocabulary format.
+  - v2 manual vocab-guided prompt (pre-DSPy refactor, now superseded): 92% schema validity, 70% pragmatic category accuracy — demonstrates the vocabulary learning gap, but was implemented as manual prompt engineering. This approach was abandoned in favour of DSPy optimization.
+  - Next: run BootstrapFewShot optimization on the dev split, re-evaluate on the validation split.
 
 ### ExECT S0/S1 field-family baseline
 
@@ -420,8 +450,8 @@ No active implementation card is claimed in this plan.
 
 ## Recommended Next Pull
 
-1. Decide constrained JSON decoding strategy.
-2. Add experiment config files for the narrow Gan S0 baseline.
-3. Run an opt-in Gan first LLM extraction baseline when credentials or local Ollama runtime are available.
+1. Run `BootstrapFewShot` optimization on the Gan dev split using `gan_frequency_s0_metric`, then re-evaluate on the validation split to compare against the zero-shot baseline (32% schema validity → target >90%).
+2. After the optimized module reaches stable schema validity, expand to the full validation split (remove `max_records` cap) to get stable confidence intervals.
+3. Add broader DSPy extraction module configs after optimization is validated.
 
 These cards move from mocked execution into reproducible model runs while keeping scorer semantics, benchmark caveats, and provider-specific structured output behavior explicit.
