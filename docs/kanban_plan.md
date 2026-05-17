@@ -174,13 +174,65 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `tests/test_evaluation_cli.py`.
 - Notes: Gan evaluation now emits `error_analysis` with bounded examples and category counts for schema coverage, normalization, category mismatches, evidence support, negation, temporality, abstention, and repair metadata.
 
+### Gan deterministic-normalization baseline
+
+- Outcome: Baseline report showing how deterministic normalization and category scoring behave on Gan gold labels and simple prediction fixtures.
+- Dependencies: Score Gan frequency predictions; baseline evaluation CLI.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_gan_baseline_report.py`; `docs/gan_deterministic_normalization_baseline.json`.
+- Notes: Report fixtures compare gold-copy, pluralized surface variants, and Pragmatic bucket proxy predictions. The report preserves the distinction between raw exact diagnostics, normalized labels, monthly-frequency benchmark semantics, and Pragmatic/Purist category scoring.
+
+### Choose schema level sequence for first DSPy runs
+
+- Outcome: Decision recorded for whether first experiments run Gan-only, ExECT S0, ExECT S1, or a paired Gan plus ExECT S0 comparison.
+- Dependencies: Shared prediction and evidence schemas.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_experiment_design_docs.py`; `docs/first_dspy_schema_sequence.md`.
+- Notes: Decision is Gan frequency first, then ExECT S0/S1. The broad DSPy module card remains blocked until it is split into a narrow Gan S0 frequency extraction implementation card.
+
+### Implement sectioning and context selection
+
+- Outcome: Deterministic note segmentation and section-aware context selection feed field-specific extractors.
+- Dependencies: Shared prediction and evidence schemas.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_sectioning_context.py`.
+- Notes: `clinical_extraction.pipeline.sectioning` provides offset-preserving section spans and field-keyword context selection that returns reusable `EvidenceSpan` objects.
+
 ## Review
 
 No active review card is claimed in this plan.
 
 ## Ready
 
-No ready implementation card is currently unblocked without promoting a Backlog or Questions card.
+### Implement ExECT field-family scorers
+
+- Outcome: Diagnosis, seizure, medication, investigation, history, and evidence scorer modules expose field-level and document-level metrics.
+- Dependencies: ExECT regression cases; shared prediction and evidence schemas.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Field scorer tests from audited examples.
+- Notes: Avoid adding broad scorer semantics without documented policy.
+
+### Build bootstrap confidence interval reporting
+
+- Outcome: Evaluation reports include uncertainty intervals for key metrics across splits and program variants.
+- Dependencies: Baseline evaluation CLI; experiment run artifacts.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Statistical fixture tests with stable seeds.
+- Notes: Needed before comparing close model or ablation results.
+
+### Create review UI or annotation export
+
+- Outcome: Low-confidence or conflicting extractions can be reviewed through export or a lightweight UI.
+- Dependencies: Error analysis reports; evidence schemas.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Export fixture and manual review smoke test.
+- Notes: BRAT, Prodigy, Label Studio, or Markup-compatible export may be enough initially.
 
 ## In Progress
 
@@ -210,30 +262,12 @@ No active implementation card is claimed in this plan.
 
 - Outcome: DSPy signatures/modules exist for context selection, field-group extraction, evidence verification, repair, and abstention.
 - Dependencies: Shared prediction and evidence schemas; baseline evaluation CLI; run metadata contract.
-- Parallelizable: after dependencies.
+- Parallelizable: after choosing the first schema level sequence.
 - Owner: unassigned.
 - Validation: Unit tests with mocked LM outputs plus one small real-model smoke run.
-- Notes: Start with Gan S0/S1-style frequency extraction before full ExECT schema breadth.
+- Notes: Keep blocked until the first schema sequence is recorded. Prefer replacing or splitting this broad card into a narrower first implementation card such as Gan S0 frequency extraction rather than opening the full DSPy surface at once.
 
 ## Backlog
-
-### Implement sectioning and context selection
-
-- Outcome: Deterministic note segmentation and section-aware context selection feed field-specific extractors.
-- Dependencies: Shared prediction and evidence schemas.
-- Parallelizable: after Define shared prediction and evidence schemas.
-- Owner: unassigned.
-- Validation: Sectioning fixtures and context-selection coverage tests.
-- Notes: This supports section-aware and context-injected DSPy variants.
-
-### Implement ExECT field-family scorers
-
-- Outcome: Diagnosis, seizure, medication, investigation, history, and evidence scorer modules expose field-level and document-level metrics.
-- Dependencies: ExECT regression cases; shared prediction and evidence schemas.
-- Parallelizable: after Add ExECT medication and seizure-type regression cases.
-- Owner: unassigned.
-- Validation: Field scorer tests from audited examples.
-- Notes: Avoid adding broad scorer semantics without documented policy.
 
 ### Add experiment config files
 
@@ -253,24 +287,6 @@ No active implementation card is claimed in this plan.
 - Validation: Config validation and mock adapter resolution.
 - Notes: Early iteration may use GPT 4.1-mini on Mac; local Qwen target is Windows with Nvidia GPU.
 
-### Build bootstrap confidence interval reporting
-
-- Outcome: Evaluation reports include uncertainty intervals for key metrics across splits and program variants.
-- Dependencies: Baseline evaluation CLI; experiment run artifacts.
-- Parallelizable: after Create run artifact layout and metadata contract.
-- Owner: unassigned.
-- Validation: Statistical fixture tests with stable seeds.
-- Notes: Needed before comparing close model or ablation results.
-
-### Create review UI or annotation export
-
-- Outcome: Low-confidence or conflicting extractions can be reviewed through export or a lightweight UI.
-- Dependencies: Error analysis reports; evidence schemas.
-- Parallelizable: after Add error analysis reports.
-- Owner: unassigned.
-- Validation: Export fixture and manual review smoke test.
-- Notes: BRAT, Prodigy, Label Studio, or Markup-compatible export may be enough initially.
-
 ## Questions
 
 ### Choose ExECT planned/current medication policy
@@ -282,15 +298,6 @@ No active implementation card is claimed in this plan.
 - Validation: Decision note linked from scorer documentation.
 - Notes: The audit warns that original ExECT gold may not encode planned/current status cleanly.
 
-### Choose schema level sequence for first DSPy runs
-
-- Outcome: Decision recorded for whether first experiments run Gan-only, ExECT S0, ExECT S1, or a paired Gan plus ExECT S0 comparison.
-- Dependencies: Shared prediction and evidence schemas.
-- Parallelizable: after Define shared prediction and evidence schemas.
-- Owner: unassigned.
-- Validation: Experiment design note.
-- Notes: Recommended default is Gan frequency first, then ExECT S0/S1.
-
 ### Decide constrained JSON decoding strategy
 
 - Outcome: Decision recorded for provider-specific JSON-schema or structured-output support.
@@ -301,15 +308,6 @@ No active implementation card is claimed in this plan.
 - Notes: Keep deterministic schema validation as the source of truth regardless of provider.
 
 ## Experiments
-
-### Gan deterministic-normalization baseline
-
-- Outcome: Baseline report showing how deterministic normalization and category scoring behave on Gan gold labels and simple prediction fixtures.
-- Dependencies: Score Gan frequency predictions; baseline evaluation CLI.
-- Parallelizable: after Create baseline deterministic evaluation CLI.
-- Owner: unassigned.
-- Validation: Metrics report artifact and sampled error review.
-- Notes: Hypothesis: normalized and category metrics are more meaningful than raw exact match.
 
 ### Gan first LLM extraction baseline
 
@@ -366,15 +364,16 @@ No active implementation card is claimed in this plan.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: `Verify deterministic foundation as a milestone`, `Review Gan split metadata against audit guidance`, `Add dataset manifest validation`, `Add ExECT medication and seizure-type regression cases`, and `Document deterministic scorer semantics`.
-- Blocked on shared schemas: sectioning/context selection, evidence scoring, DSPy modules, and most experiment configs.
-- Blocked on run metadata: provider adapters, model configs, bootstrap reporting, and comparable model matrix runs.
+- Safe immediately in parallel: `Implement ExECT field-family scorers`, `Build bootstrap confidence interval reporting`, and `Create review UI or annotation export`.
+- Unblocked after schema-sequence decision: split `Build DSPy extraction modules` into a narrow first `Gan S0 frequency extraction module` card before implementing the broader DSPy surface.
+- Blocked on DSPy modules: experiment configs, first LLM baseline, and most model comparison work.
+- Blocked on provider adapters: model configs and comparable model matrix runs.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata contract, and split generation policy.
 
 ## Recommended Next Pull
 
-1. Verify deterministic foundation as a milestone.
-2. Review Gan split metadata against audit guidance.
-3. Document deterministic scorer semantics.
+1. Implement ExECT field-family scorers.
+2. Split the broad DSPy module card into a narrow Gan S0 frequency extraction module card.
+3. Build bootstrap confidence interval reporting.
 
-These three cards give the project a stable floor: tests prove the current code works, split metadata is trustworthy, and future experiments know which metrics are benchmark-facing versus diagnostic.
+These cards broaden deterministic evaluation coverage and prepare the first DSPy implementation without opening the full DSPy surface at once.
