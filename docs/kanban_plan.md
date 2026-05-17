@@ -129,38 +129,40 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `docs/deterministic_scorer_semantics.md` reviewed against audit and foundation notes.
 - Notes: This prevents future experiment reports from mixing incompatible scorer meanings.
 
-## Review
-
-No active review card is claimed in this plan.
-
-## Ready
-
 ### Define shared prediction and evidence schemas
 
 - Outcome: Pydantic models represent extracted values, normalized values, evidence spans, temporality, negation, confidence, and quality flags.
 - Dependencies: Document deterministic scorer semantics.
 - Parallelizable: after Document deterministic scorer semantics.
-- Owner: unassigned.
-- Validation: Schema unit tests and sample serialization fixtures.
-- Notes: Keep schema levels S0-S4 as experiment parameters, not hardcoded assumptions.
+- Owner: Codex.
+- Validation: `tests/test_prediction_schemas.py`.
+- Notes: `EvidenceSpan`, `ExtractedValue`, `DocumentPrediction`, and `PredictionSet` now cover normalized values, evidence, temporality, negation, confidence, metadata, and quality flags. Schema level remains free run metadata so S0-S4 and task-specific variants are experiment parameters.
 
 ### Create baseline deterministic evaluation CLI
 
 - Outcome: A script evaluates stored predictions against deterministic scorers and writes metrics plus error samples.
 - Dependencies: Document deterministic scorer semantics; Define shared prediction and evidence schemas.
 - Parallelizable: after Define shared prediction and evidence schemas.
-- Owner: unassigned.
-- Validation: CLI smoke test against tiny fixture predictions.
-- Notes: This is the harness DSPy variants must plug into later.
+- Owner: Codex.
+- Validation: `tests/test_evaluation_cli.py`.
+- Notes: `scripts/evaluate_predictions.py` delegates to `clinical_extraction.evaluation.cli`; current deterministic support covers Gan seizure-frequency predictions and separates benchmark-facing metrics from diagnostic metrics.
 
 ### Create run artifact layout and metadata contract
 
 - Outcome: Runs record dataset, split, model/provider, schema level, program variant, scorer mode, prompts/configs, predictions, metrics, and errors.
 - Dependencies: Create baseline deterministic evaluation CLI.
 - Parallelizable: after Create baseline deterministic evaluation CLI.
-- Owner: unassigned.
-- Validation: Contract tests for required run metadata fields.
-- Notes: Keep model/provider configuration minimal until actual DSPy calls begin.
+- Owner: Codex.
+- Validation: `tests/test_run_artifacts.py`.
+- Notes: `clinical_extraction.runs` defines required run metadata and creates the standard run directory with metadata, config, prompts, predictions, metrics, errors, and artifact paths. Model/provider fields remain plain metadata until adapters are introduced.
+
+## Review
+
+No active review card is claimed in this plan.
+
+## Ready
+
+No ready implementation card is currently unblocked without promoting a Backlog or Questions card.
 
 ## In Progress
 
