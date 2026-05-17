@@ -6,6 +6,9 @@ from pathlib import Path
 from typing import Any, Sequence
 
 from clinical_extraction.datasets.gan import load_gan_records
+from clinical_extraction.evaluation.bootstrap import (
+    build_bootstrap_confidence_intervals,
+)
 from clinical_extraction.evaluation.evidence import score_evidence_support
 from clinical_extraction.evaluation.error_analysis import ErrorTaxonomy
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
@@ -26,6 +29,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         type=int,
         help="Maximum number of diagnostic error samples to write.",
     )
+    parser.add_argument(
+        "--bootstrap-samples",
+        default=1000,
+        type=int,
+        help="Bootstrap resamples for metric confidence intervals.",
+    )
+    parser.add_argument(
+        "--bootstrap-seed",
+        default=0,
+        type=int,
+        help="Seed for bootstrap confidence interval resampling.",
+    )
     args = parser.parse_args(argv)
 
     prediction_set = PredictionSet.model_validate_json(
@@ -40,6 +55,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     report = evaluate_gan_predictions(
         prediction_set,
         max_errors=args.max_errors,
+        bootstrap_samples=args.bootstrap_samples,
+        bootstrap_seed=args.bootstrap_seed,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
@@ -53,6 +70,8 @@ def evaluate_gan_predictions(
     prediction_set: PredictionSet,
     *,
     max_errors: int = 20,
+    bootstrap_samples: int = 1000,
+    bootstrap_seed: int = 0,
 ) -> dict[str, Any]:
     gold_by_id = {record.record_id: record for record in load_gan_records()}
     predictions_by_id = {
@@ -83,6 +102,20 @@ def evaluate_gan_predictions(
         "overlap_scored": 0,
         "overlap_exact": 0,
     }
+    metric_observations: dict[str, list[int]] = {
+        "monthly_frequency_accuracy": [],
+        "purist_category_accuracy": [],
+        "pragmatic_category_accuracy": [],
+        "raw_exact_accuracy": [],
+        "normalized_label_accuracy": [],
+        "schema_valid_prediction_rate": [],
+        "evidence_quote_support_rate": [],
+        "evidence_offsets_valid_rate": [],
+        "evidence_offsets_present_rate": [],
+        "gold_evidence_locatable_rate": [],
+        "evidence_overlap_scored_rate": [],
+        "evidence_exact_overlap_rate": [],
+    }
     taxonomy = ErrorTaxonomy(max_examples=max_errors)
 
     for record_id in missing_ids:
@@ -103,6 +136,7 @@ def evaluate_gan_predictions(
         prediction = predictions_by_id[record_id]
         predicted_value = _gan_frequency_value(prediction)
         if predicted_value is None:
+            metric_observations["schema_valid_prediction_rate"].append(0)
             invalid_predictions.append(
                 {
                     "record_id": record_id,
@@ -119,6 +153,7 @@ def evaluate_gan_predictions(
             continue
         predicted_label = _prediction_label(predicted_value)
         if predicted_label is None:
+            metric_observations["schema_valid_prediction_rate"].append(0)
             invalid_predictions.append(
                 {
                     "record_id": record_id,
@@ -140,6 +175,7 @@ def evaluate_gan_predictions(
                 predicted_label=predicted_label,
             )
         except ValueError as exc:
+            metric_observations["schema_valid_prediction_rate"].append(0)
             invalid_predictions.append(
                 {
                     "record_id": record_id,
@@ -159,11 +195,27 @@ def evaluate_gan_predictions(
             )
             continue
 
+        metric_observations["schema_valid_prediction_rate"].append(1)
         metric_counts["raw_exact_match"] += gold.gold_label == predicted_label
         metric_counts["normalized_label_match"] += score.exact_normalized_match
         metric_counts["monthly_frequency_match"] += score.monthly_frequency_match
         metric_counts["purist_category_match"] += score.purist_category_match
         metric_counts["pragmatic_category_match"] += score.pragmatic_category_match
+        metric_observations["raw_exact_accuracy"].append(
+            int(gold.gold_label == predicted_label)
+        )
+        metric_observations["normalized_label_accuracy"].append(
+            int(score.exact_normalized_match)
+        )
+        metric_observations["monthly_frequency_accuracy"].append(
+            int(score.monthly_frequency_match)
+        )
+        metric_observations["purist_category_accuracy"].append(
+            int(score.purist_category_match)
+        )
+        metric_observations["pragmatic_category_accuracy"].append(
+            int(score.pragmatic_category_match)
+        )
 
         if not score.exact_normalized_match:
             taxonomy.add(
@@ -262,6 +314,26 @@ def evaluate_gan_predictions(
             )
             evidence_counts["overlap_scored"] += evidence_score.best_iou is not None
             evidence_counts["overlap_exact"] += evidence_score.best_iou == 1.0
+            metric_observations["evidence_quote_support_rate"].append(
+                int(evidence_score.quote_supported)
+            )
+            metric_observations["evidence_offsets_present_rate"].append(
+                int(evidence_score.predicted_evidence_with_offsets > 0)
+            )
+            if evidence_score.offsets_valid is not None:
+                metric_observations["evidence_offsets_valid_rate"].append(
+                    int(evidence_score.offsets_valid)
+                )
+            metric_observations["gold_evidence_locatable_rate"].append(
+                int(evidence_score.gold_evidence_locatable is True)
+            )
+            metric_observations["evidence_overlap_scored_rate"].append(
+                int(evidence_score.best_iou is not None)
+            )
+            if evidence_score.best_iou is not None:
+                metric_observations["evidence_exact_overlap_rate"].append(
+                    int(evidence_score.best_iou == 1.0)
+                )
             if evidence_score.offsets_valid is False:
                 taxonomy.add(
                     "evidence.invalid_offsets",
@@ -313,6 +385,11 @@ def evaluate_gan_predictions(
     valid_denominator = denominator - len(invalid_predictions)
     evidence_denominator = evidence_counts["predictions_with_evidence"]
     offset_denominator = evidence_counts["predictions_with_offsets"]
+    confidence_intervals = build_bootstrap_confidence_intervals(
+        metric_observations,
+        samples=bootstrap_samples,
+        seed=bootstrap_seed,
+    )
     return {
         "dataset": prediction_set.dataset,
         "schema_level": prediction_set.schema_level,
@@ -364,6 +441,7 @@ def evaluate_gan_predictions(
                 evidence_counts["overlap_exact"], evidence_counts["overlap_scored"]
             ),
         },
+        "confidence_intervals": confidence_intervals,
         "caveats": [
             "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
             "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",

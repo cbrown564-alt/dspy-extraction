@@ -62,6 +62,10 @@ def test_gan_evaluation_cli_writes_metrics_and_error_samples(tmp_path):
             str(output_path),
             "--max-errors",
             "5",
+            "--bootstrap-samples",
+            "200",
+            "--bootstrap-seed",
+            "17",
         ]
     )
 
@@ -72,7 +76,16 @@ def test_gan_evaluation_cli_writes_metrics_and_error_samples(tmp_path):
     assert report["counts"]["predicted_records"] == 2
     assert report["counts"]["valid_predictions"] == 2
     assert report["benchmark_metrics"]["monthly_frequency_accuracy"] == 0.5
+    monthly_interval = report["confidence_intervals"]["monthly_frequency_accuracy"]
+    assert monthly_interval["point_estimate"] == 0.5
+    assert monthly_interval["bootstrap_samples"] == 200
+    assert monthly_interval["seed"] == 17
+    assert monthly_interval["n"] == 2
+    assert monthly_interval["method"] == "percentile_bootstrap_mean"
     assert report["diagnostic_metrics"]["schema_valid_prediction_rate"] == 1.0
+    assert report["confidence_intervals"]["schema_valid_prediction_rate"][
+        "point_estimate"
+    ] == 1.0
     assert report["diagnostic_metrics"]["evidence_quote_support_rate"] == 1.0
     assert report["diagnostic_metrics"]["evidence_offsets_present_rate"] == 0.0
     assert report["diagnostic_metrics"]["evidence_offsets_valid_rate"] is None

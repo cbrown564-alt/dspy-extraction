@@ -190,7 +190,7 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Parallelizable: yes.
 - Owner: Codex.
 - Validation: `tests/test_experiment_design_docs.py`; `docs/first_dspy_schema_sequence.md`.
-- Notes: Decision is Gan frequency first, then ExECT S0/S1. The broad DSPy module card remains blocked until it is split into a narrow Gan S0 frequency extraction implementation card.
+- Notes: Decision is Gan frequency first, then ExECT S0/S1. The broad DSPy module card has been split by adding a narrow Gan S0 program-contract card before provider adapters or broad module work.
 
 ### Implement sectioning and context selection
 
@@ -201,6 +201,51 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `tests/test_sectioning_context.py`.
 - Notes: `clinical_extraction.pipeline.sectioning` provides offset-preserving section spans and field-keyword context selection that returns reusable `EvidenceSpan` objects.
 
+### Build bootstrap confidence interval reporting
+
+- Outcome: Evaluation reports include uncertainty intervals for key metrics across splits and program variants.
+- Dependencies: Baseline evaluation CLI; experiment run artifacts.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_bootstrap_confidence.py`; `tests/test_evaluation_cli.py`.
+- Notes: `clinical_extraction.evaluation.bootstrap` provides seeded percentile bootstrap mean intervals. Gan evaluation now reports confidence intervals for benchmark-facing frequency metrics and diagnostic validity/evidence metrics without changing scorer semantics.
+
+### Create review annotation export
+
+- Outcome: Low-confidence or conflicting extractions can be reviewed through a simple tool-agnostic export.
+- Dependencies: Error analysis reports; evidence schemas.
+- Parallelizable: yes.
+- Owner: Codex.
+- Validation: `tests/test_review_export.py`.
+- Notes: `clinical_extraction.review.export` flattens bounded evaluation error-analysis examples into deterministic JSONL review queue items. `scripts/export_review_queue.py` exports any evaluation report into a tool-agnostic review queue. The moved `exect-explorer/` React app is a future UI foundation, not a near-term dependency.
+
+### Choose ExECT planned/current medication policy
+
+- Outcome: Decision recorded that planned/current medication status is excluded from benchmark-facing ExECT medication metrics for now.
+- Dependencies: ExECT audit review.
+- Parallelizable: yes.
+- Owner: User; Codex.
+- Validation: Decision reflected in this plan and should be linked from scorer documentation when ExECT field-family scorers are implemented.
+- Notes: The ExECT audit shows the original prescription markup has no temporality column and tags planned/tapering medications alongside current medications. Benchmark-facing medication scoring should treat the loaded medication view as annotated medications, with planned/current status reserved for diagnostic or challenge-set analysis until corrected gold exists.
+
+### Choose first Gan DSPy implementation boundary
+
+- Outcome: Decision recorded to implement a narrow Gan S0 DSPy program contract with mocked execution before real provider adapters.
+- Dependencies: Choose schema level sequence for first DSPy runs; run artifact layout and metadata contract.
+- Parallelizable: yes.
+- Owner: User; Codex.
+- Validation: Future `Implement Gan S0 DSPy program contract` card should include mocked-LM tests and run-artifact checks.
+- Notes: This breaks the dependency loop between first DSPy modules and LLM provider adapters. Provider adapters should target the narrow contract after it exists.
+
+### Choose initial ExECT S0/S1 scorer scope
+
+- Outcome: Decision recorded that benchmark-facing ExECT S0/S1 scoring is limited to audited diagnosis, seizure type, and annotated medication fields.
+- Dependencies: ExECT audit review; shared prediction and evidence schemas.
+- Parallelizable: yes.
+- Owner: User; Codex.
+- Validation: Future ExECT scorer tests should use audited examples only.
+- Notes: Investigation, history, birth history, aetiology, onset, and diagnosis-date scoring require separate audit-and-loader cards before they become benchmark-facing metrics. Evidence diagnostics can remain generic and reusable.
+
 ## Review
 
 No active review card is claimed in this plan.
@@ -209,30 +254,30 @@ No active review card is claimed in this plan.
 
 ### Implement ExECT field-family scorers
 
-- Outcome: Diagnosis, seizure, medication, investigation, history, and evidence scorer modules expose field-level and document-level metrics.
+- Outcome: Diagnosis, seizure-type, and annotated-medication scorer modules expose field-level and document-level metrics for the audited ExECT S0/S1 core.
 - Dependencies: ExECT regression cases; shared prediction and evidence schemas.
 - Parallelizable: yes.
 - Owner: unassigned.
-- Validation: Field scorer tests from audited examples.
-- Notes: Avoid adding broad scorer semantics without documented policy.
+- Validation: Field scorer tests from audited examples in `tests/test_exect_loader.py` and new scorer fixtures.
+- Notes: Benchmark-facing medication scoring excludes planned/current status for now because the ExECT prescription gold lacks reliable temporality. Investigation and history scorers are deferred until their source files are audited and loaded.
 
-### Build bootstrap confidence interval reporting
+### Implement Gan S0 DSPy program contract
 
-- Outcome: Evaluation reports include uncertainty intervals for key metrics across splits and program variants.
-- Dependencies: Baseline evaluation CLI; experiment run artifacts.
+- Outcome: A narrow Gan frequency extraction signature/module contract maps mocked LM outputs into `PredictionSet` artifacts with prompt/config metadata.
+- Dependencies: Choose first Gan DSPy implementation boundary; shared prediction and evidence schemas; baseline evaluation CLI; run artifact layout and metadata contract.
 - Parallelizable: yes.
 - Owner: unassigned.
-- Validation: Statistical fixture tests with stable seeds.
-- Notes: Needed before comparing close model or ablation results.
+- Validation: Unit tests with mocked LM outputs, schema validation, prediction mapping checks, and run-artifact checks.
+- Notes: Scope this to `gan_frequency_s0`: single-pass frequency label plus evidence. Do not add real provider adapters or the full DSPy module surface in this card.
 
-### Create review UI or annotation export
+### Extract published benchmark metrics and definitions
 
-- Outcome: Low-confidence or conflicting extractions can be reviewed through export or a lightweight UI.
-- Dependencies: Error analysis reports; evidence schemas.
+- Outcome: A cited methods note records ExECTv2 and Gan published benchmark values, metric definitions, and whether current repo metrics are aligned, partial, or not comparable.
+- Dependencies: Deterministic scorer semantics; access to benchmark definitions in `data/` papers.
 - Parallelizable: yes.
 - Owner: unassigned.
-- Validation: Export fixture and manual review smoke test.
-- Notes: BRAT, Prodigy, Label Studio, or Markup-compatible export may be enough initially.
+- Validation: Methods note with citations to local papers and explicit scorer caveats.
+- Notes: This is documentation-first. Do not add benchmark constants or comparison tests until the note has resolved metric interpretation.
 
 ## In Progress
 
@@ -243,29 +288,29 @@ No active implementation card is claimed in this plan.
 ### Reproduce published ExECTv2 and Gan benchmark numbers
 
 - Outcome: Repo contains benchmark reference values extracted from the papers and a comparison note explaining metric alignment or mismatch.
-- Dependencies: Deterministic scorer semantics; access to benchmark definitions in `data/` papers.
-- Parallelizable: after Document deterministic scorer semantics.
+- Dependencies: Extract published benchmark metrics and definitions.
+- Parallelizable: after Extract published benchmark metrics and definitions.
 - Owner: unassigned.
-- Validation: Methods note with citations to local papers and scorer caveats.
-- Notes: Blocked until the metric interpretation is checked carefully against the papers.
+- Validation: Benchmark reference constants or comparison tests plus the cited methods note.
+- Notes: Blocked until paper metric interpretation is manually checked and documented. Do not wire code-level benchmark comparisons before the cited note exists.
 
 ### Add LLM provider adapters
 
 - Outcome: Configurable adapters support local Ollama Qwen models and closed providers without changing extraction code.
-- Dependencies: Run artifact layout and metadata contract; first DSPy program contract.
-- Parallelizable: after Create run artifact layout and metadata contract.
+- Dependencies: Run artifact layout and metadata contract; Implement Gan S0 DSPy program contract.
+- Parallelizable: after Implement Gan S0 DSPy program contract.
 - Owner: unassigned.
 - Validation: Mock adapter tests and one opt-in smoke run.
-- Notes: Deferred by deterministic foundation decision; do not implement in the first milestone.
+- Notes: Deferred by deterministic foundation decision. Adapters should target the Gan S0 program contract first, then generalize only when additional program variants require it.
 
 ### Build DSPy extraction modules
 
 - Outcome: DSPy signatures/modules exist for context selection, field-group extraction, evidence verification, repair, and abstention.
-- Dependencies: Shared prediction and evidence schemas; baseline evaluation CLI; run metadata contract.
-- Parallelizable: after choosing the first schema level sequence.
+- Dependencies: Implement Gan S0 DSPy program contract; first LLM baseline lessons.
+- Parallelizable: after Implement Gan S0 DSPy program contract.
 - Owner: unassigned.
 - Validation: Unit tests with mocked LM outputs plus one small real-model smoke run.
-- Notes: Keep blocked until the first schema sequence is recorded. Prefer replacing or splitting this broad card into a narrower first implementation card such as Gan S0 frequency extraction rather than opening the full DSPy surface at once.
+- Notes: Keep broad verifier, repair, abstention, and field-group surfaces blocked until the narrow Gan S0 path has a working contract and evaluation loop.
 
 ## Backlog
 
@@ -289,15 +334,6 @@ No active implementation card is claimed in this plan.
 
 ## Questions
 
-### Choose ExECT planned/current medication policy
-
-- Outcome: Decision recorded on whether planned/current medication status is scored, treated as challenge-set only, or excluded from benchmark-facing metrics.
-- Dependencies: ExECT audit review.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Decision note linked from scorer documentation.
-- Notes: The audit warns that original ExECT gold may not encode planned/current status cleanly.
-
 ### Decide constrained JSON decoding strategy
 
 - Outcome: Decision recorded for provider-specific JSON-schema or structured-output support.
@@ -312,8 +348,8 @@ No active implementation card is claimed in this plan.
 ### Gan first LLM extraction baseline
 
 - Outcome: Single-pass Gan frequency extraction baseline with evidence capture on the fixed Gan split.
-- Dependencies: DSPy extraction modules; LLM provider adapters; run metadata contract.
-- Parallelizable: after Build DSPy extraction modules and Add LLM provider adapters.
+- Dependencies: Implement Gan S0 DSPy program contract; LLM provider adapters; run metadata contract.
+- Parallelizable: after Implement Gan S0 DSPy program contract and Add LLM provider adapters.
 - Owner: unassigned.
 - Validation: Run artifact with metrics, prompts/config, predictions, and errors.
 - Notes: Use GPT 4.1-mini for rapid iteration before local Qwen runs.
@@ -325,7 +361,7 @@ No active implementation card is claimed in this plan.
 - Parallelizable: after Implement ExECT field-family scorers and Build DSPy extraction modules.
 - Owner: unassigned.
 - Validation: Field-level and document-level report with schema-validity rate.
-- Notes: This tests schema breadth before full ExECT-like S4 extraction.
+- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. Benchmark-facing metrics should cover diagnosis, seizure type, and annotated medication only.
 
 ### Extract-verify-repair ablation
 
@@ -358,22 +394,23 @@ No active implementation card is claimed in this plan.
 
 - Shared contracts should stay single-threaded: schemas, scorer semantics, run metadata, and split definitions affect every later card.
 - ExECT and Gan regression tests can expand in parallel because they touch different dataset-specific behavior.
-- DSPy work is blocked by deterministic schemas, scorer semantics, and run artifact contracts.
-- Model adapters are intentionally deferred until there is a stable program and evaluation harness to plug into.
-- Benchmark reproduction depends on careful paper metric interpretation and should not be rushed into the first coding pass.
+- Narrow Gan S0 DSPy contract work is unblocked; broader DSPy verifier, repair, abstention, and field-group modules remain blocked until that first path is proven.
+- Model adapters are intentionally deferred until the Gan S0 program contract exists.
+- Benchmark reproduction depends on careful paper metric interpretation and should start with a cited note before code-level constants or comparisons.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: `Implement ExECT field-family scorers`, `Build bootstrap confidence interval reporting`, and `Create review UI or annotation export`.
-- Unblocked after schema-sequence decision: split `Build DSPy extraction modules` into a narrow first `Gan S0 frequency extraction module` card before implementing the broader DSPy surface.
-- Blocked on DSPy modules: experiment configs, first LLM baseline, and most model comparison work.
+- Safe immediately in parallel: `Implement ExECT field-family scorers`, `Implement Gan S0 DSPy program contract`, `Extract published benchmark metrics and definitions`, and continued review-export polish.
+- The moved `exect-explorer/` app can be inspected or rewired later, but it should not block the simple review export workflow.
+- Blocked on the broad DSPy module card: experiment configs and broader verifier/repair/field-group ablations.
+- Blocked on Gan S0 contract plus provider adapters: first LLM baseline.
 - Blocked on provider adapters: model configs and comparable model matrix runs.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata contract, and split generation policy.
 
 ## Recommended Next Pull
 
 1. Implement ExECT field-family scorers.
-2. Split the broad DSPy module card into a narrow Gan S0 frequency extraction module card.
-3. Build bootstrap confidence interval reporting.
+2. Implement Gan S0 DSPy program contract.
+3. Extract published benchmark metrics and definitions.
 
-These cards broaden deterministic evaluation coverage and prepare the first DSPy implementation without opening the full DSPy surface at once.
+These cards broaden deterministic evaluation coverage, prepare the first DSPy implementation without opening the full DSPy surface, and unblock benchmark comparison only after the paper metrics are interpreted.
