@@ -20,6 +20,30 @@ The goal is to turn vague intent into a board where each card is independently u
 7. Call out blockers, open questions, and decision points.
 8. Suggest the first pull of work: the smallest set of cards that unblocks the rest.
 
+## Maintenance Mode
+
+Use maintenance mode when a run, implementation task, or research note has changed the state of the project.
+
+1. Find the existing card or section that the work belongs to before adding a new card.
+2. Move completed work to `Done` or update its notes with concrete artifacts.
+3. Record run IDs, metric snapshots, important caveats, and validation commands.
+4. Move newly discovered failure modes into `Ready`, `Blocked`, or `Questions` instead of burying them in prose.
+5. Refresh `Dependency Notes`, `Parallelization Opportunities`, and `Recommended Next Pull` when the result changes sequencing.
+6. Avoid duplicating cards whose outcome is already represented elsewhere.
+
+## Visual Companion
+
+For complex boards, maintain a visual dependency view in addition to the Markdown board.
+
+Preferred path:
+
+1. Keep the Markdown Kanban as the source of truth.
+2. If the user only needs a quick visual, generate a minimal Mermaid DAG from card titles and `Dependencies` fields.
+3. If visuals will be reused, prefer a persistent generated artifact over regenerating diagrams in conversation. A script that parses `docs/kanban_plan.md` and emits a Mermaid file or static HTML DAG is better long-term than hand-written diagrams.
+4. Build a standalone UI only after the card format is regular enough to parse automatically and the UI can read from the source board without manual transcription.
+
+Visuals should show dependencies and blockers, not every note. Keep detailed rationale in the Markdown board so the graph stays compact.
+
 ## Board Shape
 
 Use these columns by default:
@@ -73,3 +97,5 @@ Before finishing, provide:
 - dependency notes
 - parallelization opportunities
 - recommended next pull of work
+- changed cards or sections, when updating an existing board
+- visual artifact path or Mermaid diagram, when a visual companion was requested or updated

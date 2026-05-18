@@ -30,12 +30,22 @@ Follow this workflow:
 - Do not encode clinical uncertainty only in prose. Use explicit fields where uncertainty affects scoring or review.
 - Make schema breadth an experimental parameter rather than letting fields accrete casually.
 
+## Benchmark-Facing Versus Clinically Rich Schemas
+
+Separate annotation-policy alignment from clinical expressiveness when they conflict.
+
+- Benchmark-facing schemas should expose the label surface that the audited scorer expects, even if a richer clinical label would be reasonable.
+- Clinically rich schemas may preserve finer-grained source concepts, but reports must not score them directly against coarse benchmark labels unless a mapping layer is explicit and tested.
+- For ExECT S0/S1, be especially careful not to infer diagnosis labels from seizure-type evidence or emit ILAE-specific seizure surfaces when the benchmark-facing view expects a coarser label.
+- For Gan S0, the schema should preserve the canonical Gan label and evidence quote separately from any normalized monthly-frequency value.
+
 ## Clinical Pitfalls
 
 - Seizure frequency can refer to a specific seizure type, historical period, or current status.
 - Medication mentions can be current, previous, planned, refused, stopped, or adverse-effect related.
 - Diagnosis mentions can be generic, specific, negated, uncertain, historical, or family-history only.
 - Evidence spans can support a raw mention without supporting the normalized interpretation.
+- A model can be clinically plausible and still wrong under the benchmark annotation policy.
 
 ## Completion Criteria
 
@@ -43,5 +53,6 @@ Before finishing, summarize:
 
 - schema level or task targeted
 - fields added or changed
+- whether the schema is benchmark-facing, clinically rich, or a bridge between the two
 - how evidence, uncertainty, negation, and temporality are represented
 - scorer or validator changes needed next

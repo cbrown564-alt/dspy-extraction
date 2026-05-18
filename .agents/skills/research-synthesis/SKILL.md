@@ -112,11 +112,21 @@ For this project, always consider whether the writeup should mention:
 - scorer mode and normalization rules
 - gold-label caveats from the audit docs
 
+For model-backed experiment results, also mention:
+
+- run ID and artifact directory
+- whether the run was capped, full validation, or test reporting
+- optimizer metric and compiled-state artifact, when present
+- benchmark-facing metrics versus diagnostic metrics
+- confidence intervals, if generated
+- the next decision the result supports
+
 ## Completion Criteria
 
 Before finishing, provide:
 
 - the research log entry or standalone writeup
 - artifact references used
+- run IDs, configs, and metric files used when summarizing experiments
 - claims that remain tentative
 - recommended next research or engineering step

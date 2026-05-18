@@ -15,6 +15,17 @@ Follow this workflow:
 4. Change one experimental factor at a time unless the experiment explicitly tests an interaction.
 5. Record enough configuration for the run to be reproduced later.
 
+## Run Lifecycle
+
+For model-backed experiments, use this sequence unless the task is only a code or config review:
+
+1. Validate the experiment config and model config before any model calls.
+2. Run a dry run or capped run first when a new program, prompt policy, optimizer, provider, or split is involved.
+3. Inspect the produced run artifacts before scaling up: config, prompts, predictions, metrics, errors, and compiled state when an optimizer is used.
+4. Promote to full validation only after the capped run clears the stated validity and evidence gates.
+5. After full validation, write or update an error-read note before choosing the next implementation target.
+6. Update the Kanban board with completed run IDs, metric caveats, and the recommended next pull.
+
 ## Required Experiment Metadata
 
 Every experiment should make these explicit:
@@ -44,6 +55,8 @@ Use named variants rather than anonymous prompt edits:
 
 When optimizing with DSPy, keep the optimized object, training examples, metric, and compilation settings tied together in artifacts.
 
+Do not treat an optimizer metric as the benchmark scorer. Optimizer-only metrics may include evidence or formatting gates, but reports must still state the benchmark-facing scorer mode separately.
+
 ## Ablation Discipline
 
 - Define the baseline before the ablation.
@@ -51,6 +64,8 @@ When optimizing with DSPy, keep the optimized object, training examples, metric,
 - Track latency, token usage, or local inference time alongside quality metrics.
 - Preserve failed examples for error analysis.
 - Do not compare runs if scorer semantics changed unless the report says so explicitly.
+- Do not compare capped runs and full-validation runs without saying which split and record cap each metric used.
+- Do not move to test-set reporting unless the experiment config explicitly allows it.
 
 ## Completion Criteria
 
@@ -60,4 +75,5 @@ Before finishing, summarize:
 - experimental factor changed
 - fixed controls
 - artifacts produced or expected
+- run IDs or artifact paths inspected
 - metric caveats

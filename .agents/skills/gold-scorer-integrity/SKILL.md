@@ -27,6 +27,20 @@ Follow this workflow:
 - Make `unknown`, abstention, and no-reference behavior explicit.
 - Preserve enough per-document detail for error analysis, not just aggregate metrics.
 
+## Repair Boundary
+
+Keep deterministic surface repair separate from semantic repair.
+
+Allowed deterministic repair:
+
+- fixes a format surface that has one unambiguous canonical form
+- preserves the raw model output
+- records a quality flag such as `normalized_label_repaired`
+- has regression tests for both the repaired surface and nearby non-repair cases
+- does not change benchmark scorer semantics
+
+Semantic repair requires evidence-aware logic, a verifier, or an explicit model/program variant. Do not fill missing cluster counts, infer temporality, turn abstentions into labels, or reinterpret `unknown` versus `no seizure frequency reference` through a postprocessor unless the evidence and scorer contract explicitly support that behavior.
+
 ## ExECTv2 Scoring Notes
 
 - Diagnosis specificity and certainty handling can change apparent performance dramatically.
@@ -40,6 +54,7 @@ Follow this workflow:
 - Handle cluster expressions through deterministic conversion.
 - Apply plural unit normalization before conversion.
 - Label/reference disagreement is a difficulty flag, not a replacement gold label.
+- Evidence quote support is diagnostic unless an experiment explicitly defines an evidence-facing objective. Do not let evidence diagnostics replace the primary frequency gold.
 
 ## Completion Criteria
 
