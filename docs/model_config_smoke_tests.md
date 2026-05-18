@@ -33,9 +33,15 @@ All smoke configs use:
 | --- | --- | --- |
 | `gan_s0_gpt4_1_mini.json` | Completed | `runs/gan_s0_smoke_gpt4_1_mini_20260518T130500Z` |
 | `gan_s0_gpt5_5_openai.json` | Completed after config fix | `runs/gan_s0_smoke_gpt5_5_openai_20260518T130600Z` |
-| `gan_s0_gemini3_flash.json` | Blocked | Google returned 404 for `models/gemini-3-flash` through LiteLLM's Gemini path. Confirm the Gemini 3 Flash model identifier/API version before retrying. Partial artifact: `runs/gan_s0_smoke_gemini3_flash_20260518T130620Z`. |
+| `gan_s0_gemini3_flash.json` | Completed after model-id fix | `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`; config uses `gemini-3-flash-preview`. Previous blocker was a 404 for invalid `models/gemini-3-flash`. The smoke run completed but produced an invalid Gan label on the one record, so treat this as provider/runtime compatibility only. |
 | `gan_s0_qwen35b_ollama.json` | Deferred to Windows laptop | Local Qwen runs should be performed on the Windows laptop with the target GPU. This Mac's Ollama tags do not include `qwen3.6:35b`. |
 | `gan_s0_qwen9b_ollama.json` | Deferred to Windows laptop | Local Qwen runs should be performed on the Windows laptop for comparability with the 35B target runtime. A Mac attempt was stopped before prediction completion. Partial artifact: `runs/gan_s0_smoke_qwen9b_ollama_20260518T130640Z`. |
+
+Gemini 3 Flash currently uses the preview model code
+`gemini-3-flash-preview`, confirmed against the Google model list API on
+2026-05-18. The one-record smoke run completed and wrote a standard artifact,
+but Gemini predicted an unsupported label (`'2 per 4 month'`) for the sampled
+record, so schema validity was 0/1.
 
 GPT-5.5 rejected `temperature=0`, so `configs/models/gan_s0_gpt5_5_openai.json`
 now sets `"temperature": null`. The provider adapter omits temperature when the

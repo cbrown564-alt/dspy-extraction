@@ -95,12 +95,12 @@ The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline
 
 ### Resolve Gemini 3 Flash model identifier
 
-- Outcome: `configs/models/gan_s0_gemini3_flash.json` uses a Gemini 3 Flash model identifier and API path that the current DSPy/LiteLLM adapter can actually call.
-- Dependencies: Confirm the available Gemini 3 Flash model name/API version for the configured Google API key and LiteLLM provider path.
+- Outcome: Complete. `configs/models/gan_s0_gemini3_flash.json` uses the API-listed Gemini 3 Flash Preview model identifier, `gemini-3-flash-preview`.
+- Dependencies: Confirmed with the configured Google API key that `models/gemini-3-flash-preview` is available and supports `generateContent`.
 - Parallelizable: yes.
 - Owner: unassigned.
-- Validation: Re-run `configs/experiments/gan_s0_smoke_gemini3_flash.json` and record a standard run artifact.
-- Notes: The Mac smoke attempt reached Google but failed with 404 for `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`.
+- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-run `configs/experiments/gan_s0_smoke_gemini3_flash.json`; completed smoke artifact `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`.
+- Notes: The Mac smoke attempt reached Google but failed with 404 for invalid `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`. The fixed smoke run completed but produced one invalid Gan label, so it validates provider/runtime compatibility rather than extraction quality.
 
 ## In Progress
 

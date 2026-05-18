@@ -47,7 +47,7 @@ def test_build_chat_adapter_resolves_supported_provider_configs():
     gemini = build_chat_adapter(
         LLMProviderConfig(
             provider="gemini",
-            model="gemini-3-flash",
+            model="gemini-3-flash-preview",
             api_key="test-key",
         )
     )
