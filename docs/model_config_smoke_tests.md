@@ -9,6 +9,11 @@ Gan S0 single-pass DSPy contract and write the standard run artifact layout.
 They are one-record compatibility checks only. They are not performance
 estimates, model comparisons, or published Gan benchmark reproduction.
 
+For local Qwen scaling decisions, also read
+`docs/qwen_dspy_latency_policy.md`. In particular, Qwen3.6:35b should not use
+`ChainOfThought + BootstrapFewShot` as the default experiment path while it is
+partially offloaded to system RAM.
+
 All smoke configs use:
 
 - Dataset/split: `gan_2026_fixed_v1:validation`

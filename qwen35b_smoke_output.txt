@@ -1,0 +1,45 @@
+19:52:30 - LiteLLM:WARNING: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape � Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+19:52:30 - LiteLLM:WARNING: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape � SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+{
+  "dataset": "gan_2026",
+  "metadata": {
+    "model_name": "qwen3.6:35b",
+    "model_provider": "ollama",
+    "program_variant": "gan_frequency_s0_single_pass",
+    "prompt_version": "gan_frequency_s0_v1",
+    "scorer_mode": "gan_frequency_deterministic_v1"
+  },
+  "predictions": [
+    {
+      "dataset": "gan_2026",
+      "document_id": "gan_11118",
+      "metadata": {
+        "program_variant": "gan_frequency_s0_single_pass"
+      },
+      "quality_flags": [],
+      "schema_level": "gan_frequency_s0",
+      "values": [
+        {
+          "confidence": null,
+          "evidence": [
+            {
+              "document_id": "gan_11118",
+              "end": 1292,
+              "section": null,
+              "start": 1230,
+              "text": "Cluster days twice this month; typically six seizures in 24 h."
+            }
+          ],
+          "field_name": "seizure_frequency_number",
+          "metadata": {},
+          "negation": "unknown",
+          "normalized_value": "2 cluster per month, 6 per cluster",
+          "quality_flags": [],
+          "raw_value": "2 cluster per month, 6 per cluster",
+          "temporality": "unknown"
+        }
+      ]
+    }
+  ],
+  "schema_level": "gan_frequency_s0"
+}
