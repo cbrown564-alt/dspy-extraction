@@ -8,7 +8,7 @@ Last refreshed: 2026-05-18
 
 Build a hybrid deterministic and DSPy-based clinical extraction research system that can specialize across the broad ExECTv2 schema and the focused Gan seizure-frequency task, while preserving dataset fidelity, reproducible splits, auditable scoring, and experiment traceability.
 
-The project has moved beyond the deterministic foundation milestone. The current execution focus is tightening the first ExECT S0/S1 field-family baseline after a capped model-backed smoke exposed label-policy and medication-scope errors.
+The project has moved beyond the deterministic foundation milestone. The current execution focus is tightening the first ExECT S0/S1 field-family baseline after capped model-backed smokes exposed label-policy, medication-scope, seizure-type granularity, and evidence-quote errors.
 
 ## Definitions Of Done
 
@@ -80,18 +80,18 @@ The first full-validation error read and surface-repair pass is complete in `doc
 
 The post-repair replay is complete in `docs/gan_s0_post_repair_validation_replay.md`. Replaying the current artifact bridge over the stored full-validation raw outputs changed exactly three predictions, reducing invalid predictions from 8 to 5 and improving schema validity from 97.3% to 98.3% without changing scorer semantics. Remaining Gan failures are semantic or evidence-grounding failures and should be handled only by an explicit verifier/repair or abstention-calibration variant.
 
-The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline_design.md`, and the first capped GPT 4.1-mini smoke is inspected in `docs/exect_s0_s1_smoke_inspection.md`. The model-backed path is scoped to audited diagnosis, seizure type, and annotated medication field families under `exect_field_family_deterministic_v1`; broader clinical fields and medication temporality remain deferred. The capped smoke validated the artifact path but showed the zero-shot prompt is too permissive about clinically plausible labels, planned/previous medication mentions, and richer seizure-type surfaces.
+The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline_design.md`, and capped GPT 4.1-mini smokes are inspected in `docs/exect_s0_s1_smoke_inspection.md`. The model-backed path is scoped to audited diagnosis, seizure type, and annotated medication field families under `exect_field_family_deterministic_v1`; broader clinical fields and medication temporality remain deferred. The first capped smoke validated the artifact path but showed the zero-shot prompt was too permissive about clinically plausible labels, planned/previous medication mentions, and richer seizure-type surfaces. The v2 label-policy smoke improved the same capped slice to micro F1 84.2%, diagnosis F1 100.0%, and annotated-medication F1 100.0%, but seizure-type granularity and exact evidence quote support remain unresolved.
 
 ## Ready
 
-### Add ExECT S0/S1 label-policy examples
+### Tighten ExECT seizure-type granularity and evidence policy
 
-- Outcome: The ExECT S0/S1 single-pass field-family baseline has prompt examples or equivalent policy guidance for audited diagnosis labels, benchmark-facing seizure-type granularity, and excluding planned/previous medication mentions from the benchmark-facing annotated-medication output.
-- Dependencies: Capped ExECT S0/S1 smoke inspection.
+- Outcome: The ExECT S0/S1 single-pass field-family baseline handles fused seizure-type surfaces such as `temporal lobe onset focal seizures` against the current audited scorer view and has an explicit evidence-support inspection or aggregation path before full validation.
+- Dependencies: ExECT S0/S1 label-policy v2 capped smoke.
 - Parallelizable: yes, subject to API credentials and rate limits.
 - Owner: unassigned.
-- Validation: Focused mocked-LM tests for planned/previous medication exclusion, canonical seizure-type granularity, and diagnosis label preservation; dry-run and capped GPT 4.1-mini smoke using the same validation cap or a sibling config that changes only the prompt/example policy.
-- Notes: This should not change scorer semantics. Treat it as benchmark-facing annotation-policy alignment, not as clinically rich extraction.
+- Validation: Focused mocked-LM tests for fused seizure-type policy and evidence quote behavior; dry-run and capped GPT 4.1-mini smoke using the same validation cap. Inspect `predictions.json`, `errors.json`, and evidence offsets before scaling.
+- Notes: This should not silently change scorer semantics. If normalization or label splitting is added outside the prompt, document whether it is benchmark-facing bridge behavior or a scorer-policy change.
 
 ### Run Qwen Gan S0 smoke tests on Windows laptop
 
@@ -164,6 +164,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. A capped GPT 4.1-mini validation smoke run exists for the ExECT S0/S1 field-family baseline, with predictions, metrics, errors, prompts/config snapshots, and an artifact inspection note in `docs/exect_s0_s1_smoke_inspection.md`.
 - Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`.
 - Notes: The run validated the artifact path and produced partial capped metrics: micro precision 61.5%, micro recall 80.0%, micro F1 69.6%; diagnosis F1 50.0%, seizure-type F1 80.0%, annotated-medication F1 66.7%. This is not a performance estimate. Main failure modes were label-policy granularity, planned/previous medication scope, and evidence quote quality.
+
+### Add ExECT S0/S1 label-policy examples
+
+- Outcome: Complete. The ExECT S0/S1 single-pass field-family baseline now has v2 benchmark-facing prompt policy and examples for audited diagnosis labels, medication-scope exclusion, seizure-type surfaces, and evidence quote expectations.
+- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`; capped run `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`.
+- Notes: Scorer semantics are unchanged. Final v2 capped smoke on the same three validation records: micro precision 88.9%, micro recall 80.0%, micro F1 84.2%; diagnosis F1 100.0%, seizure-type F1 66.7%, annotated-medication F1 100.0%. The policy corrected medication scope and current-scorer diagnosis alignment, but EA0018 still needs seizure-type granularity handling and evidence quote support remains diagnostic-only.
 
 ## Blocked
 
@@ -290,8 +296,8 @@ Completed work is summarized in the background sections above rather than repeat
 - Dependencies: Build ExECT S0/S1 DSPy field-family baseline.
 - Parallelizable: after implementation.
 - Owner: unassigned.
-- Validation: Initial capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`; next validation should change only the prompt/example policy and repeat a capped smoke before full validation.
-- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. The first capped smoke indicates prompt policy needs tightening before full validation.
+- Validation: Initial capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`; label-policy v2 capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`.
+- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. The v2 capped smoke improved medication scope and diagnosis alignment, but seizure-type granularity and evidence quote support should be addressed before full validation.
 
 ### Section-aware versus monolithic ExECT ablation
 
@@ -324,7 +330,7 @@ Completed work is summarized in the background sections above rather than repeat
 ### Phase 2: Establish The First ExECT S0/S1 Baseline
 
 - Design a narrow, audited ExECT baseline around diagnosis, seizure type, and annotated medications.
-- Carry forward prior ExECT label-policy guidance: benchmark-facing label constraints, symptomatic-to-focal normalization, single-event diagnosis null policy, and no seizure-type inference from diagnosis alone.
+- Carry forward current ExECT label-policy guidance: benchmark-facing label constraints grounded in the active scorer vocabulary, single-event diagnosis null policy, medication-scope exclusion, and no seizure-type inference from diagnosis alone.
 - Run capped provider-backed experiments before full validation.
 - Use error analysis to decide whether ExECT needs separate field-family modules, stronger section selection, or verifier/repair before moving wider.
 
@@ -370,8 +376,8 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Recommended Next Pull
 
-1. Add ExECT S0/S1 benchmark-facing label-policy examples or equivalent prompt policy, with mocked-LM coverage for medication scope, seizure-type granularity, and diagnosis labels.
-2. Re-run a capped ExECT S0/S1 GPT 4.1-mini smoke that changes only the prompt/example policy from the first smoke.
+1. Tighten ExECT S0/S1 seizure-type granularity for fused surfaces such as `temporal lobe onset focal seizures`, and add explicit evidence-support inspection before full validation.
+2. Re-run the same capped ExECT S0/S1 GPT 4.1-mini smoke after that seizure-type/evidence follow-up.
 3. Smoke-test Qwen Gan S0 on the Windows laptop when the local Ollama runtime is available.
 
 The plan is now organized so completed work serves as background and the foreground path is: tighten the combined ExECT S0/S1 baseline after the first capped run, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.

@@ -5,9 +5,13 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_FIELD_FAMILIES,
+    EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
+    EXECT_S0_S1_POLICY_EXAMPLES,
+    EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_VARIANT,
+    ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     exect_s0_s1_run_metadata,
     make_exect_s0_s1_dspy_examples,
@@ -134,6 +138,114 @@ def test_exect_s0_s1_bridge_does_not_infer_seizure_type_from_diagnosis():
     assert [value.field_name for value in prediction_set.predictions[0].values] == [
         "diagnosis"
     ]
+
+
+def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
+    policy_text = " ".join(EXECT_S0_S1_LABEL_POLICY_GUIDANCE).lower()
+    signature_text = ExectS0S1FieldFamilySignature.__doc__.lower()
+    example_cases = {example["case"] for example in EXECT_S0_S1_POLICY_EXAMPLES}
+
+    assert EXECT_S0_S1_PROMPT_VERSION == "exect_s0_s1_field_family_v2_label_policy"
+    assert "planned starts" in policy_text
+    assert "previous trials" in policy_text
+    assert "focal seizures with altered awareness" in policy_text
+    assert "single seizure event" in policy_text
+    assert "symptomatic structural focal epilepsy" in signature_text
+    assert {
+        "planned_medication_exclusion",
+        "previous_medication_exclusion",
+        "canonical_seizure_type_granularity",
+        "diagnosis_label_preservation",
+        "plural_seizure_type_preservation",
+        "single_event_diagnosis_null",
+    }.issubset(example_cases)
+
+
+def test_exect_s0_s1_policy_fixture_excludes_planned_and_previous_medications():
+    record = load_exect_gold_document("EA0018")
+    _configure_dummy([{
+        "reasoning": (
+            "The benchmark-facing policy excludes planned and previously tried "
+            "medications, leaving no audited prescription-style medication output."
+        ),
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    assert [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ] == []
+
+
+def test_exect_s0_s1_policy_fixture_uses_canonical_seizure_type_surface():
+    record = load_exect_gold_document("EA0018")
+    _configure_dummy([{
+        "reasoning": "Richer temporal-lobe-onset wording is mapped to the benchmark surface.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": ["temporal lobe seizure"],
+        "seizure_type_evidence": ["temporal lobe"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert len(seizure_values) == 1
+    assert seizure_values[0].raw_value == "temporal lobe seizure"
+    assert seizure_values[0].normalized_value == "temporal lobe seizure"
+
+
+def test_exect_s0_s1_policy_fixture_preserves_audited_diagnosis_label():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([{
+        "reasoning": "The modifier-rich diagnosis is preserved as the audited label.",
+        "diagnosis": ["symptomatic structural focal epilepsy"],
+        "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert len(diagnosis_values) == 1
+    assert diagnosis_values[0].normalized_value == "symptomatic structural focal epilepsy"
+    assert "unsupported_label" not in diagnosis_values[0].quality_flags
 
 
 def test_make_exect_s0_s1_dspy_examples_sets_note_text_input_and_gold_outputs():

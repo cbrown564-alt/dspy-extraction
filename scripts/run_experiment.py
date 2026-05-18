@@ -24,6 +24,8 @@ from clinical_extraction.experiments.config import load_experiment_config
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_FIELD_FAMILIES,
+    EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
+    EXECT_S0_S1_POLICY_EXAMPLES,
     EXECT_S0_S1_PROMPT_VERSION,
     ExectS0S1FieldFamilyModule,
     exect_s0_s1_run_metadata,
@@ -248,10 +250,8 @@ def _prompts_data(
             "module": "ExectS0S1FieldFamilyModule",
             "prompt_version": prompt_version or EXECT_S0_S1_PROMPT_VERSION,
             "field_families": EXECT_S0_S1_FIELD_FAMILIES,
-            "label_policy": (
-                "Audited benchmark-facing diagnosis, seizure-type, and "
-                "annotated-medication labels only; medication temporality is not scored."
-            ),
+            "label_policy_guidance": EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
+            "label_policy_examples": EXECT_S0_S1_POLICY_EXAMPLES,
             "structured_output_strategy": structured_output_strategy,
         }
     raise SystemExit(f"Unsupported dataset: {dataset!r}")

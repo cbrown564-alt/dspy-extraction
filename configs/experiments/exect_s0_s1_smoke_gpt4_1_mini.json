@@ -2,13 +2,13 @@
   "controls": {
     "abstention_policy": "empty_lists_for_no_supported_field_values",
     "context_policy": "full_note",
-    "few_shot_policy": "none",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
     "repair_policy": "none",
     "verifier_policy": "none"
   },
   "dataset": "exect_v2",
   "experiment_id": "exect_s0_s1_smoke_gpt4_1_mini",
-  "hypothesis": "A capped ExECT S0/S1 field-family smoke run verifies that the benchmark-facing diagnosis, seizure-type, and annotated-medication DSPy contract can produce standard prediction artifacts before full validation.",
+  "hypothesis": "A capped ExECT S0/S1 field-family smoke run tests whether embedded benchmark-facing label-policy guidance reduces diagnosis, seizure-type, and medication-scope errors without changing scorer semantics.",
   "max_records": 3,
   "metric_caveats": [
     "This capped smoke run validates the ExECT S0/S1 field-family program contract only; it is not a performance estimate.",
@@ -20,7 +20,7 @@
   "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
   "output_root": "runs",
   "program_variant": "exect_s0_s1_field_family_single_pass",
-  "prompt_version": "exect_s0_s1_field_family_v1",
+  "prompt_version": "exect_s0_s1_field_family_v2_label_policy",
   "report_on_test_split": false,
   "schema_level": "exect_s0_s1_field_family",
   "scorer_mode": "exect_field_family_deterministic_v1",

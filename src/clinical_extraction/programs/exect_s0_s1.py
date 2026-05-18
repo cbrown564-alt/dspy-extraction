@@ -24,20 +24,105 @@ EXECT_DATASET = "exect_v2"
 EXECT_S0_S1_SCHEMA_LEVEL = "exect_s0_s1_field_family"
 EXECT_S0_S1_VARIANT = "exect_s0_s1_field_family_single_pass"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
-EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v1"
+EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v2_label_policy"
 EXECT_S0_S1_FIELD_FAMILIES = (
     "diagnosis",
     "seizure_type",
     "annotated_medication",
 )
+EXECT_S0_S1_LABEL_POLICY_GUIDANCE = (
+    "Return benchmark-facing annotation labels only; do not expand into clinically richer labels.",
+    "Diagnosis labels should preserve the explicit audited diagnosis surface after deterministic "
+    "canonicalization; do not force all focal, temporal-lobe, symptomatic, refractory, or syndrome "
+    "phrases into a five-label diagnosis set unless the scorer has an explicit mapping.",
+    "Do not output a diagnosis for a single seizure event unless the note separately states an "
+    "established epilepsy diagnosis.",
+    "Use the audited seizure-type surface supported by the note. Preserve plural and modifier "
+    "surfaces such as focal seizures with altered awareness or occipital lobe seizures when those "
+    "are the benchmark-facing labels.",
+    "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a "
+    "separate current seizure type unless the note independently names it as current.",
+    "Annotated medication means medications in the audited prescription annotation view only; do "
+    "not include planned starts, previous trials, taper/stop instructions, or medication history "
+    "mentions unless they are also prescription-style annotated medication entries.",
+    "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or "
+    "unsupported evidence.",
+)
+EXECT_S0_S1_POLICY_EXAMPLES = (
+    {
+        "case": "planned_medication_exclusion",
+        "note_fragment": "Current anti-epileptic medication: lamotrigine 75mg bd. To start levetiracetam.",
+        "benchmark_output": {"annotated_medication": ["lamotrigine"]},
+        "policy": "Exclude planned medication starts from the benchmark-facing medication list.",
+    },
+    {
+        "case": "previous_medication_exclusion",
+        "note_fragment": "Previously tried carbamazepine. Current treatment is sodium valproate.",
+        "benchmark_output": {"annotated_medication": ["sodium valproate"]},
+        "policy": "Exclude historical medication mentions from the benchmark-facing medication list.",
+    },
+    {
+        "case": "canonical_seizure_type_granularity",
+        "note_fragment": "The events are temporal-lobe-onset focal seizures.",
+        "benchmark_output": {"seizure_type": ["temporal lobe seizure"]},
+        "policy": "Use the audited coarse seizure-type surface rather than a richer clinical phrase.",
+    },
+    {
+        "case": "diagnosis_label_preservation",
+        "note_fragment": "Diagnosis: symptomatic structural focal epilepsy.",
+        "benchmark_output": {"diagnosis": ["symptomatic structural focal epilepsy"]},
+        "policy": "Preserve the audited diagnosis surface rather than forcing a five-label collapse.",
+    },
+    {
+        "case": "plural_seizure_type_preservation",
+        "note_fragment": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks.",
+        "benchmark_output": {"seizure_type": ["focal seizures with altered awareness"]},
+        "policy": "Preserve audited plural seizure-type surfaces when that is the scorer label.",
+    },
+    {
+        "case": "single_event_diagnosis_null",
+        "note_fragment": "This was a single focal seizure. There is no established epilepsy diagnosis.",
+        "benchmark_output": {"diagnosis": []},
+        "policy": "Do not convert a single seizure event into an established epilepsy diagnosis.",
+    },
+)
 
 ALLOWED_DIAGNOSIS_LABELS = frozenset(
     {
+        "drug",
+        "drug refractory epilepsies",
+        "drug refractory epilepsy",
+        "drug resistant epilepsy",
         "epilepsy",
+        "epilepsy due to stroke",
+        "epilepsy with generalized tonic clonic seizure alone",
+        "epilepsy with generalized tonic clonic seizures alone",
+        "epilepsy with generalized tonic clonic seizures on awakening",
+        "epilepsy, generalized",
+        "focal",
         "focal epilepsy",
+        "focal onset epilepsy",
+        "focal symptomatic epilepsy",
+        "frontal",
+        "frontal lobe epilepsy",
         "generalized epilepsy",
+        "genetic generalized epilepsy",
+        "intractable epilepsy",
+        "jme",
+        "juvenile absence epilepsy",
         "juvenile myoclonic epilepsy",
+        "localisation related epilepsy",
+        "occipital",
+        "occipital lobe epilepsy",
+        "parietal lobe epilepsy",
+        "primary generalized epilepsy",
+        "refractory epilepsies",
         "status epilepticus",
+        "symptomatic",
+        "symptomatic epilepsy",
+        "symptomatic focal epilepsy",
+        "symptomatic structural focal epilepsy",
+        "temporal lobe epilepsy",
     }
 )
 
@@ -49,21 +134,44 @@ class ExectS0S1FieldFamilySignature(dspy.Signature):
     aligned task, not a clinically rich free extraction task.
 
     Policy:
-    - diagnosis: established epilepsy diagnoses only. Do not infer epilepsy from a
-      single seizure event, and do not infer subtype from seizure-type evidence alone.
-    - seizure_type: seizure-type labels independently named in the note. Do not infer
-      seizure type from diagnosis alone.
-    - annotated_medication: prescription-style medication mentions only. Do not emit
-      current/planned/historical status as a benchmark-facing label.
+    - diagnosis: established epilepsy diagnoses only. Preserve the explicit audited
+      diagnosis surface after deterministic canonicalization; do not force every focal,
+      temporal-lobe, symptomatic, refractory, or syndrome phrase into a five-label set
+      unless the scorer has an explicit mapping. Do not infer epilepsy from a single
+      seizure event, and do not infer subtype from seizure-type evidence alone.
+    - seizure_type: seizure-type labels independently named in the note. Use the
+      audited benchmark-facing surface supported by the note, preserving plural and
+      modifier forms such as focal seizures with altered awareness or occipital lobe
+      seizures when those are the scorer labels. Do not infer seizure type from
+      diagnosis alone. Secondary generalisation is not a separate current seizure type
+      unless independently named as current.
+    - annotated_medication: audited prescription-style medication mentions only. Do
+      not include planned starts, previous trials, taper/stop instructions, or medication
+      history mentions in the benchmark-facing medication list.
     - evidence lists should align by index with the corresponding value lists and
       contain exact contiguous source quotes where possible.
+
+    Boundary examples:
+    - "Current anti-epileptic medication: lamotrigine 75mg bd. To start levetiracetam."
+      -> annotated_medication = ["lamotrigine"]; exclude the planned levetiracetam start.
+    - "Previously tried carbamazepine. Current treatment is sodium valproate."
+      -> annotated_medication = ["sodium valproate"]; exclude previous carbamazepine.
+    - "The events are temporal-lobe-onset focal seizures."
+      -> seizure_type = ["temporal lobe seizure"]; avoid richer non-benchmark wording.
+    - "Diagnosis: symptomatic structural focal epilepsy."
+      -> diagnosis = ["symptomatic structural focal epilepsy"]; preserve the audited label.
+    - "Seizure type and frequency: focal seizures with altered awareness every 3 weeks."
+      -> seizure_type = ["focal seizures with altered awareness"]; preserve plural wording.
+    - "This was a single focal seizure. There is no established epilepsy diagnosis."
+      -> diagnosis = []; do not convert a single event into established epilepsy.
     """
 
     note_text: str = dspy.InputField(desc="Synthetic epilepsy clinic letter text")
     diagnosis: list[str] = dspy.OutputField(
         desc=(
-            "Benchmark-facing epilepsy diagnosis labels. Allowed examples include "
-            "epilepsy, focal epilepsy, generalized epilepsy, juvenile myoclonic epilepsy."
+            "Benchmark-facing epilepsy diagnosis labels only. Preserve the explicit audited "
+            "diagnosis surface after deterministic canonicalization; use [] for single "
+            "seizure events without established epilepsy."
         )
     )
     diagnosis_evidence: list[str] = dspy.OutputField(
@@ -72,14 +180,18 @@ class ExectS0S1FieldFamilySignature(dspy.Signature):
     seizure_type: list[str] = dspy.OutputField(
         desc=(
             "Benchmark-facing seizure-type labels explicitly named in the note. "
-            "Do not infer these from diagnosis alone."
+            "Preserve audited plural and modifier surfaces when supported; do not infer "
+            "these from diagnosis alone."
         )
     )
     seizure_type_evidence: list[str] = dspy.OutputField(
         desc="Exact source quotes supporting each seizure-type label, aligned by index."
     )
     annotated_medication: list[str] = dspy.OutputField(
-        desc="Prescription-style anti-seizure medication names explicitly mentioned."
+        desc=(
+            "Audited prescription-style anti-seizure medication names. Exclude planned, "
+            "previous, taper/stop, and medication-history-only mentions."
+        )
     )
     annotated_medication_evidence: list[str] = dspy.OutputField(
         desc="Exact source quotes supporting each medication label, aligned by index."

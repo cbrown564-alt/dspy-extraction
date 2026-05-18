@@ -9,6 +9,7 @@ from clinical_extraction.experiments.config import (
     load_experiment_config,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_VARIANT,
@@ -93,7 +94,10 @@ def test_exect_s0_s1_smoke_config_records_field_family_contract():
     assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
     assert config.program_variant == EXECT_S0_S1_VARIANT
     assert config.scorer_mode == EXECT_S0_S1_SCORER
-    assert config.prompt_version == "exect_s0_s1_field_family_v1"
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.controls.few_shot_policy == (
+        "embedded benchmark-facing label-policy examples"
+    )
     assert config.controls.context_policy == "full_note"
     assert config.controls.verifier_policy == "none"
     assert config.controls.repair_policy == "none"
