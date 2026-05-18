@@ -11,6 +11,7 @@ from clinical_extraction.datasets.exect import (
     canonical_medication_name,
     collapse_diagnoses_to_most_specific,
 )
+from clinical_extraction.pipeline.sectioning import select_context
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.schemas import (
     DocumentPrediction,
@@ -23,6 +24,7 @@ from clinical_extraction.schemas import (
 EXECT_DATASET = "exect_v2"
 EXECT_S0_S1_SCHEMA_LEVEL = "exect_s0_s1_field_family"
 EXECT_S0_S1_VARIANT = "exect_s0_s1_field_family_single_pass"
+EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
 EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v3_seizure_evidence_policy"
 EXECT_S0_S1_FIELD_FAMILIES = (
@@ -224,6 +226,98 @@ class ExectS0S1FieldFamilyModule(dspy.Module):
         return self.extract(note_text=note_text)
 
 
+class ExectS0S1DiagnosisSignature(dspy.Signature):
+    """Extract benchmark-facing ExECT diagnosis labels only."""
+
+    note_text: str = dspy.InputField(desc="Section-aware ExECT note context for diagnosis")
+    diagnosis: list[str] = dspy.OutputField(
+        desc=(
+            "Benchmark-facing epilepsy diagnosis labels only. Preserve the explicit audited "
+            "diagnosis surface after deterministic canonicalization; use [] for single "
+            "seizure events without established epilepsy."
+        )
+    )
+    diagnosis_evidence: list[str] = dspy.OutputField(
+        desc="Exact source quotes supporting each diagnosis label, aligned by index."
+    )
+
+
+class ExectS0S1SeizureTypeSignature(dspy.Signature):
+    """Extract benchmark-facing ExECT seizure-type labels only."""
+
+    note_text: str = dspy.InputField(desc="Section-aware ExECT note context for seizure type")
+    seizure_type: list[str] = dspy.OutputField(
+        desc=(
+            "Benchmark-facing seizure-type labels explicitly named in the note. "
+            "Preserve audited plural and modifier surfaces when supported; do not infer "
+            "these from diagnosis alone."
+        )
+    )
+    seizure_type_evidence: list[str] = dspy.OutputField(
+        desc="Exact source quotes supporting each seizure-type label, aligned by index."
+    )
+
+
+class ExectS0S1MedicationSignature(dspy.Signature):
+    """Extract benchmark-facing ExECT annotated medications only."""
+
+    note_text: str = dspy.InputField(desc="Section-aware ExECT note context for medication")
+    annotated_medication: list[str] = dspy.OutputField(
+        desc=(
+            "Audited prescription-style anti-seizure medication names. Exclude planned, "
+            "previous, taper/stop, and medication-history-only mentions."
+        )
+    )
+    annotated_medication_evidence: list[str] = dspy.OutputField(
+        desc="Exact source quotes supporting each medication label, aligned by index."
+    )
+
+
+class ExectS0S1SectionAwareFieldFamilyModule(dspy.Module):
+    """Section-aware ExECT S0/S1 field-family extractor."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract_diagnosis = dspy.ChainOfThought(ExectS0S1DiagnosisSignature)
+        self.extract_seizure_type = dspy.ChainOfThought(ExectS0S1SeizureTypeSignature)
+        self.extract_medication = dspy.ChainOfThought(ExectS0S1MedicationSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        diagnosis_context = _family_context(
+            note_text,
+            target_field="diagnosis",
+            max_sections=2,
+        )
+        seizure_context = _family_context(
+            note_text,
+            target_field="seizure_type",
+            max_sections=3,
+        )
+        medication_context = _family_context(
+            note_text,
+            target_field="medication",
+            max_sections=2,
+        )
+
+        diagnosis = self.extract_diagnosis(note_text=diagnosis_context)
+        seizure_type = self.extract_seizure_type(note_text=seizure_context)
+        medication = self.extract_medication(note_text=medication_context)
+        return dspy.Prediction(
+            diagnosis=_as_list(getattr(diagnosis, "diagnosis", [])),
+            diagnosis_evidence=_as_list(getattr(diagnosis, "diagnosis_evidence", [])),
+            seizure_type=_as_list(getattr(seizure_type, "seizure_type", [])),
+            seizure_type_evidence=_as_list(
+                getattr(seizure_type, "seizure_type_evidence", [])
+            ),
+            annotated_medication=_as_list(
+                getattr(medication, "annotated_medication", [])
+            ),
+            annotated_medication_evidence=_as_list(
+                getattr(medication, "annotated_medication_evidence", [])
+            ),
+        )
+
+
 def make_exect_s0_s1_dspy_examples(
     records: list[ExectGoldDocument],
 ) -> list[dspy.Example]:
@@ -240,19 +334,20 @@ def make_exect_s0_s1_dspy_examples(
 
 
 def predict_exect_records(
-    module: ExectS0S1FieldFamilyModule,
+    module: dspy.Module,
     records: list[ExectGoldDocument],
     *,
     model_provider: str,
     model_name: str,
     prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    program_variant: str = EXECT_S0_S1_VARIANT,
     progress_callback: Callable[[int, int, str], None] | None = None,
 ) -> PredictionSet:
     """Run ``module`` on ExECT records and return a shared ``PredictionSet``."""
     predictions = []
     total = len(records)
     for index, record in enumerate(records, start=1):
-        predictions.append(_predict_record(module, record))
+        predictions.append(_predict_record(module, record, program_variant=program_variant))
         if progress_callback is not None:
             progress_callback(index, total, record.document_id)
     return PredictionSet(
@@ -260,7 +355,7 @@ def predict_exect_records(
         schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
         predictions=predictions,
         metadata={
-            "program_variant": EXECT_S0_S1_VARIANT,
+            "program_variant": program_variant,
             "model_provider": model_provider,
             "model_name": model_name,
             "prompt_version": prompt_version,
@@ -270,8 +365,10 @@ def predict_exect_records(
 
 
 def _predict_record(
-    module: ExectS0S1FieldFamilyModule,
+    module: dspy.Module,
     record: ExectGoldDocument,
+    *,
+    program_variant: str,
 ) -> DocumentPrediction:
     pred = module(note_text=record.text)
     values: list[ExtractedValue] = []
@@ -310,8 +407,24 @@ def _predict_record(
         schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
         values=values,
         quality_flags=record.quality_flags,
-        metadata={"program_variant": EXECT_S0_S1_VARIANT},
+        metadata={"program_variant": program_variant},
     )
+
+
+def _family_context(note_text: str, *, target_field: str, max_sections: int) -> str:
+    selected = select_context(
+        note_text,
+        target_field=target_field,
+        max_sections=max_sections,
+    )
+    if not selected:
+        return note_text
+
+    formatted = []
+    for span in selected:
+        label = span.section or "document"
+        formatted.append(f"Section: {label}\n{span.text.strip()}")
+    return "\n\n".join(chunk for chunk in formatted if chunk.strip()) or note_text
 
 
 def _normalize_diagnoses(raw_values: list[str]) -> tuple[list[str], list[str]]:
@@ -505,6 +618,7 @@ def exect_s0_s1_run_metadata(
     model_name: str,
     *,
     prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    program_variant: str = EXECT_S0_S1_VARIANT,
     extra: dict | None = None,
 ) -> RunMetadata:
     """Build run metadata for an ExECT S0/S1 field-family run."""
@@ -515,7 +629,7 @@ def exect_s0_s1_run_metadata(
         model_provider=model_provider,
         model_name=model_name,
         schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
-        program_variant=EXECT_S0_S1_VARIANT,
+        program_variant=program_variant,
         scorer_mode=EXECT_S0_S1_SCORER,
         metric_caveats=[
             "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",

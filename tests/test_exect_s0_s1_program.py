@@ -10,9 +10,11 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
+    EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
+    ExectS0S1SectionAwareFieldFamilyModule,
     exect_s0_s1_run_metadata,
     make_exect_s0_s1_dspy_examples,
     predict_exect_records,
@@ -297,6 +299,66 @@ def test_exect_s0_s1_bridge_repairs_ellipsis_evidence_to_contiguous_quote():
     assert "evidence_repair:ellipsis_contiguous_span" in medication_values[0].quality_flags
 
 
+def test_exect_s0_s1_section_aware_module_routes_family_specific_contexts():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([
+        {
+            "reasoning": "Diagnosis section states the established diagnosis.",
+            "diagnosis": ["symptomatic structural focal epilepsy"],
+            "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+        },
+        {
+            "reasoning": "Seizure section states the active seizure type.",
+            "seizure_type": ["focal-seizures-with-altered-awareness"],
+            "seizure_type_evidence": ["focal-seizures-with-altered-awareness"],
+        },
+        {
+            "reasoning": "Medication section states the current medication.",
+            "annotated_medication": ["Lamotrigine"],
+            "annotated_medication_evidence": ["lamotrigine"],
+        },
+    ])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1SectionAwareFieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S0_S1_SECTION_AWARE_VARIANT,
+    )
+
+    assert prediction_set.metadata["program_variant"] == EXECT_S0_S1_SECTION_AWARE_VARIANT
+    assert prediction_set.predictions[0].metadata["program_variant"] == (
+        EXECT_S0_S1_SECTION_AWARE_VARIANT
+    )
+
+    values_by_field = {value.field_name: value for value in prediction_set.predictions[0].values}
+    assert set(values_by_field) == set(EXECT_S0_S1_FIELD_FAMILIES)
+    assert values_by_field["diagnosis"].normalized_value == (
+        "symptomatic structural focal epilepsy"
+    )
+    assert values_by_field["seizure_type"].normalized_value == (
+        "focal seizures with altered awareness"
+    )
+    assert values_by_field["annotated_medication"].normalized_value == "lamotrigine"
+
+    lm_history = dspy.settings.lm.history
+    assert len(lm_history) == 3
+
+    diagnosis_prompt = lm_history[0]["messages"][-1]["content"].lower()
+    seizure_prompt = lm_history[1]["messages"][-1]["content"].lower()
+    medication_prompt = lm_history[2]["messages"][-1]["content"].lower()
+
+    assert "section: diagnosis" in diagnosis_prompt
+    assert "diagnosis:" in diagnosis_prompt
+    assert "section:" in seizure_prompt
+    assert "seizure" in seizure_prompt
+    assert "seizure type and frequency" in seizure_prompt
+    assert "section:" in medication_prompt
+    assert "medication" in medication_prompt
+    assert "current anti-epileptic medication" in medication_prompt
+
+
 def test_exect_s0_s1_policy_fixture_preserves_audited_diagnosis_label():
     record = load_exect_gold_document("EA0008")
     _configure_dummy([{
@@ -355,3 +417,15 @@ def test_exect_s0_s1_run_metadata_builds_correct_artifact_contract():
     assert metadata.program_variant == EXECT_S0_S1_VARIANT
     assert metadata.scorer_mode == EXECT_S0_S1_SCORER
     assert "partial ExECT" in " ".join(metadata.metric_caveats)
+
+
+def test_exect_s0_s1_run_metadata_can_record_section_aware_variant():
+    metadata = exect_s0_s1_run_metadata(
+        run_id="exect_s0_s1_section_aware_test",
+        split_name="exectv2_fixed_v1:validation",
+        model_provider="mock",
+        model_name="dummy",
+        program_variant=EXECT_S0_S1_SECTION_AWARE_VARIANT,
+    )
+
+    assert metadata.program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT

@@ -9,6 +9,7 @@ from pydantic import Field, model_validator
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
+    EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
@@ -74,6 +75,7 @@ class ExperimentConfig(FrozenModel):
     program_variant: Literal[
         "gan_frequency_s0_single_pass",
         "exect_s0_s1_field_family_single_pass",
+        "exect_s0_s1_field_family_section_aware",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -102,24 +104,27 @@ class ExperimentConfig(FrozenModel):
         expected_contracts = {
             "gan_2026": (
                 GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-                GAN_FREQUENCY_S0_VARIANT,
+                {GAN_FREQUENCY_S0_VARIANT},
                 GAN_FREQUENCY_S0_SCORER,
             ),
             "exect_v2": (
                 EXECT_S0_S1_SCHEMA_LEVEL,
-                EXECT_S0_S1_VARIANT,
+                {
+                    EXECT_S0_S1_VARIANT,
+                    EXECT_S0_S1_SECTION_AWARE_VARIANT,
+                },
                 EXECT_S0_S1_SCORER,
             ),
         }
-        expected_schema, expected_variant, expected_scorer = expected_contracts[self.dataset]
+        expected_schema, expected_variants, expected_scorer = expected_contracts[self.dataset]
         if (
-            self.schema_level,
-            self.program_variant,
-            self.scorer_mode,
-        ) != (expected_schema, expected_variant, expected_scorer):
+            self.schema_level != expected_schema
+            or self.program_variant not in expected_variants
+            or self.scorer_mode != expected_scorer
+        ):
             raise ValueError(
                 f"{self.dataset} experiment configs must use schema_level="
-                f"{expected_schema!r}, program_variant={expected_variant!r}, "
+                f"{expected_schema!r}, program_variant in {sorted(expected_variants)!r}, "
                 f"and scorer_mode={expected_scorer!r}."
             )
 

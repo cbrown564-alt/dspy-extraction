@@ -86,15 +86,6 @@ A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence
 
 ## Ready
 
-### Implement section-aware ExECT S0/S1 field-family module variant
-
-- Outcome: A new ExECT program variant uses deterministic section-aware context selection for diagnosis, seizure type, and annotated medication while preserving the current S0/S1 output contract, benchmark bridge behavior, and scorer semantics.
-- Dependencies: Run larger capped ExECT S0/S1 field-family validation; Design section-aware versus monolithic ExECT ablation; existing `src/clinical_extraction/pipeline/sectioning.py` utilities; unchanged `exect_field_family_deterministic_v1` scorer.
-- Parallelizable: no for ExECT architecture implementation, because module shape and shared bridge behavior should stay single-threaded; yes relative to Windows Qwen Gan S0 runtime smokes.
-- Owner: unassigned.
-- Validation: Add mocked-LM coverage for per-family section-aware routing and merged prediction output; run `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py tests/test_sectioning_context.py`; dry-run a sibling section-aware config on the same 25-record validation slice; complete one capped comparison run and inspect `predictions.json`, `metrics.json`, and `errors.json` against the monolithic baseline.
-- Notes: Keep architecture as the experimental factor. Reuse the v3 label policy, fused seizure-type bridge, and ellipsis evidence repair unchanged so the comparison remains monolithic versus section-aware rather than prompt-policy versus prompt-policy.
-
 ### Run Qwen Gan S0 smoke tests on Windows laptop
 
 - Outcome: Qwen3.6:35b and Qwen3.5:9b each have a one-record Gan S0 smoke run from the Windows laptop, using the same single-pass smoke configs and standard run artifact layout.
@@ -187,6 +178,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. `docs/exect_section_aware_ablation_design.md` defines the first ExECT architecture ablation around the audited S0/S1 field-family contract and the existing deterministic sectioning/context-selection utilities.
 - Validation: Design reviewed against `docs/exect_gold_label_audit.md`, `docs/exect_s0_s1_baseline_design.md`, `docs/exect_s0_s1_validation_cap25_inspection.md`, `src/clinical_extraction/pipeline/sectioning.py`, and `tests/test_sectioning_context.py`.
 - Notes: The design keeps dataset, split, model, schema level, scorer mode, prompt policy, fused seizure-type bridge, and ellipsis evidence repair fixed. The experimental factor is architecture only: current monolithic single-pass extraction versus a section-aware per-family variant that merges outputs through the same artifact bridge.
+
+### Implement section-aware ExECT S0/S1 field-family module variant
+
+- Outcome: Complete. `src/clinical_extraction/programs/exect_s0_s1.py` now includes a section-aware ExECT S0/S1 program variant that uses deterministic per-family context selection for diagnosis, seizure type, and annotated medication while preserving the shared ExECT bridge and scorer contract.
+- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py tests/test_sectioning_context.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_section_aware_cap25_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_section_aware_cap25_gpt4_1_mini_20260518T174714Z`; inspection note `docs/exect_section_aware_cap25_inspection.md`.
+- Notes: Scorer semantics, schema level, prompt version, fused seizure-type bridge, and ellipsis evidence repair were held fixed. The first section-aware cap underperformed the monolithic cap-25 baseline: micro F1 73.7% -> 65.6%, diagnosis F1 60.5% -> 44.9%, seizure-type F1 65.8% -> 59.7%, annotated-medication F1 92.1% -> 88.9%, evidence quote support 92.1% -> 75.5%. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor.
 
 ### Resolve Gemini 3 Flash model identifier
 
@@ -399,8 +396,8 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Recommended Next Pull
 
-1. Implement the first section-aware ExECT S0/S1 field-family module variant using the existing deterministic sectioning/context-selection utilities while keeping the current scorer and bridge behavior fixed.
-2. Add a sibling capped section-aware ExECT config and run a paired comparison against the monolithic cap-25 baseline.
-3. Smoke-test Qwen Gan S0 on the Windows laptop when the local Ollama runtime is available.
+1. Run Qwen Gan S0 smoke tests on the Windows laptop when the local Ollama runtime is available.
+2. If ExECT architecture work continues before wider modules, strengthen the section-aware per-family instruction surface and evidence-quote behavior before retrying the ablation.
+3. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor for future architecture experiments.
 
 The plan is now organized so completed work serves as background and the foreground path is: use the validated ExECT S0/S1 baseline to test architecture under fixed scorer semantics, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.

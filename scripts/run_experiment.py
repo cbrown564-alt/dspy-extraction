@@ -27,7 +27,10 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
     EXECT_S0_S1_POLICY_EXAMPLES,
     EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_SECTION_AWARE_VARIANT,
+    EXECT_S0_S1_VARIANT,
     ExectS0S1FieldFamilyModule,
+    ExectS0S1SectionAwareFieldFamilyModule,
     exect_s0_s1_run_metadata,
     predict_exect_records,
 )
@@ -99,7 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     lm = build_dspy_lm(model_config)
     dspy.configure(lm=lm)
 
-    module = _build_module(config.dataset)
+    module = _build_module(config.dataset, config.program_variant)
 
     if config.optimizer is not None:
         if config.dataset != "gan_2026":
@@ -132,6 +135,7 @@ def main(argv: list[str] | None = None) -> int:
         model_provider=model_config.provider,
         model_name=model_config.model,
         prompt_version=config.prompt_version,
+        program_variant=config.program_variant,
         extra={
             "experiment_id": config.experiment_id,
             "structured_output_strategy": config.structured_output_strategy,
@@ -145,7 +149,12 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(config.model_dump(mode="json"), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
-    prompts_data = _prompts_data(config.dataset, config.prompt_version, config.structured_output_strategy)
+    prompts_data = _prompts_data(
+        config.dataset,
+        config.program_variant,
+        config.prompt_version,
+        config.structured_output_strategy,
+    )
     if config.optimizer is not None:
         prompts_data["optimizer"] = config.optimizer.model_dump()
         _write_compiled_state(module, paths["artifacts"])
@@ -162,6 +171,7 @@ def main(argv: list[str] | None = None) -> int:
         model_provider=model_config.provider,
         model_name=model_config.model,
         prompt_version=config.prompt_version,
+        program_variant=config.program_variant,
         progress_callback=_print_prediction_progress,
     )
     paths["predictions"].write_text(
@@ -192,10 +202,12 @@ def _load_records_by_id(dataset: str) -> dict[str, Any]:
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
 
-def _build_module(dataset: str) -> dspy.Module:
+def _build_module(dataset: str, program_variant: str) -> dspy.Module:
     if dataset == "gan_2026":
         return GanFrequencyS0Module()
     if dataset == "exect_v2":
+        if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
+            return ExectS0S1SectionAwareFieldFamilyModule()
         return ExectS0S1FieldFamilyModule()
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
@@ -208,6 +220,7 @@ def _run_metadata(
     model_provider: str,
     model_name: str,
     prompt_version: str,
+    program_variant: str,
     extra: dict[str, Any],
 ):
     if dataset == "gan_2026":
@@ -226,6 +239,7 @@ def _run_metadata(
             model_provider=model_provider,
             model_name=model_name,
             prompt_version=prompt_version,
+            program_variant=program_variant,
             extra=extra,
         )
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
@@ -233,6 +247,7 @@ def _run_metadata(
 
 def _prompts_data(
     dataset: str,
+    program_variant: str,
     prompt_version: str,
     structured_output_strategy: str,
 ) -> dict[str, Any]:
@@ -246,8 +261,18 @@ def _prompts_data(
         }
     if dataset == "exect_v2":
         return {
-            "signature": "ExectS0S1FieldFamilySignature",
-            "module": "ExectS0S1FieldFamilyModule",
+            "signature": (
+                "ExectS0S1FieldFamilySignature"
+                if program_variant == EXECT_S0_S1_VARIANT
+                else "ExectS0S1DiagnosisSignature + "
+                "ExectS0S1SeizureTypeSignature + ExectS0S1MedicationSignature"
+            ),
+            "module": (
+                "ExectS0S1FieldFamilyModule"
+                if program_variant == EXECT_S0_S1_VARIANT
+                else "ExectS0S1SectionAwareFieldFamilyModule"
+            ),
+            "program_variant": program_variant,
             "prompt_version": prompt_version or EXECT_S0_S1_PROMPT_VERSION,
             "field_families": EXECT_S0_S1_FIELD_FAMILIES,
             "label_policy_guidance": EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
@@ -265,6 +290,7 @@ def _predict_records(
     model_provider: str,
     model_name: str,
     prompt_version: str,
+    program_variant: str,
     progress_callback: Callable[[int, int, str], None] | None,
 ) -> Any:
     if dataset == "gan_2026":
@@ -283,6 +309,7 @@ def _predict_records(
             model_provider=model_provider,
             model_name=model_name,
             prompt_version=prompt_version,
+            program_variant=program_variant,
             progress_callback=progress_callback,
         )
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
