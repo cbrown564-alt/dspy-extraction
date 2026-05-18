@@ -78,43 +78,11 @@ Full-validation summary on 299 validation records:
 
 The first full-validation error read and surface-repair pass is complete in `docs/gan_s0_full_validation_error_read.md`. The artifact bridge now preserves raw model output while normalizing repairable surface forms such as quoted special labels and matching-count denominator ranges. Incomplete cluster labels, `unknown per cluster`, abstentions, and semantic cluster-to-unknown mistakes remain unresolved because repairing them requires additional evidence-aware rule or model logic.
 
+The post-repair replay is complete in `docs/gan_s0_post_repair_validation_replay.md`. Replaying the current artifact bridge over the stored full-validation raw outputs changed exactly three predictions, reducing invalid predictions from 8 to 5 and improving schema validity from 97.3% to 98.3% without changing scorer semantics. Remaining Gan failures are semantic or evidence-grounding failures and should be handled only by an explicit verifier/repair or abstention-calibration variant.
+
+The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline_design.md`. The initial ExECT model-backed path is scoped to audited diagnosis, seizure type, and annotated medication field families under `exect_field_family_deterministic_v1`; broader clinical fields and medication temporality remain deferred.
+
 ## Ready
-
-### Inspect post-repair Gan S0 validation behavior
-
-- Outcome: A short report identifies which Gan S0 errors remain after the current surface repairs and quantifies whether the repairs improved validation metrics without changing scorer semantics.
-- Dependencies: `docs/gan_s0_full_validation_error_read.md`; repaired Gan S0 artifact bridge.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: New or refreshed run artifact plus a note comparing pre-repair and post-repair schema validity, normalized-label accuracy, monthly/Purist/Pragmatic accuracy, and evidence support.
-- Notes: Keep label scoring separate from evidence diagnostics. Do not treat semantic repair as a deterministic normalization issue unless the evidence rule is explicit and tested.
-
-### Decide next Gan repair boundary
-
-- Outcome: Decision recorded for whether the next Gan change is deterministic postprocessing, a DSPy verifier/repair module, abstention calibration, or no further Gan repair before ExECT.
-- Dependencies: Inspect post-repair Gan S0 validation behavior.
-- Parallelizable: no, because it changes the next implementation path.
-- Owner: User; Codex.
-- Validation: Decision captured in this plan and, if needed, a short design note linked from the relevant implementation card.
-- Notes: The decision should explicitly separate repairable output-surface errors from semantic errors such as cluster-to-unknown, no-reference/unknown confusion, and temporal-window denominator mistakes.
-
-### Add targeted Gan failure regression fixtures
-
-- Outcome: Regression fixtures cover the recurring Gan full-validation failure classes before any new repair/verifier implementation changes behavior.
-- Dependencies: Inspect post-repair Gan S0 validation behavior.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Focused tests assert current or intended behavior for incomplete cluster labels, `unknown per cluster`, frequent-to-unknown mismatches, no-reference/unknown confusion, denominator-window errors, abstentions, missing evidence, and unsupported evidence quotes.
-- Notes: Use Gan audit guidance. Preserve the distinction between `unknown` and `no seizure frequency reference`.
-
-### Draft ExECT S0/S1 baseline design
-
-- Outcome: A short design note defines the first ExECT S0/S1 field-family DSPy baseline, including schema fields, label-policy constraints, context strategy, evidence expectations, scorer mode, and report format.
-- Dependencies: ExECT field-family scorers; shared prediction/evidence schemas; prior ExECT error-analysis synthesis.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Design note reviewed against `docs/exect_gold_label_audit.md`, `docs/deterministic_scorer_semantics.md`, and `docs/prior_prompt_error_analysis_synthesis.md`.
-- Notes: Benchmark-facing fields remain diagnosis, seizure type, and annotated medications only. Investigation, history, birth history, aetiology, onset, and diagnosis-date scoring require separate audit-and-loader work before becoming benchmark-facing metrics.
 
 ### Smoke-test model configs on Gan S0
 
@@ -136,6 +104,30 @@ No active review card is claimed in this plan.
 ## Done
 
 Completed work is summarized in the background sections above rather than repeated as foreground cards.
+
+### Inspect post-repair Gan S0 validation behavior
+
+- Outcome: Complete. `docs/gan_s0_post_repair_validation_replay.md` compares the original full-validation run with a post-repair replay.
+- Validation: Derived artifact `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_surface_replay_20260518T000000Z`; invalid predictions 8 -> 5; schema validity 97.3% -> 98.3%; normalized-label accuracy 51.5% -> 52.0%; monthly/Purist/Pragmatic accuracy 62.9%/70.1%/73.9% -> 63.3%/70.4%/74.1%; evidence quote support 89.9% -> 90.0%.
+- Notes: Scorer semantics are preserved. Remaining Gan errors are not deterministic surface-repair candidates.
+
+### Decide next Gan repair boundary
+
+- Outcome: Complete. No further deterministic Gan repair should be added before ExECT; semantic Gan work should be an explicit verifier/repair or abstention-calibration variant.
+- Validation: Decision recorded in `docs/gan_s0_post_repair_validation_replay.md` and this plan.
+- Notes: Incomplete clusters, `unknown per cluster`, abstentions, unknown/no-reference confusion, and temporal-window denominator errors remain outside deterministic postprocessing.
+
+### Add targeted Gan failure regression fixtures
+
+- Outcome: Complete. Regression coverage now asserts the current boundary for incomplete clusters, frequent-to-unknown mismatches, unknown/no-reference confusion, denominator/window mismatch, abstentions, missing evidence, and unsupported evidence quotes.
+- Validation: `uv run --extra dev pytest tests/test_evaluation_cli.py tests/test_gan_s0_program.py tests/test_gan_scoring.py`.
+- Notes: The evaluator now records `abstention.predicted_abstention` even when the abstention is schema-invalid because the label value is missing.
+
+### Draft ExECT S0/S1 baseline design
+
+- Outcome: Complete. `docs/exect_s0_s1_baseline_design.md` defines the combined audited diagnosis, seizure-type, and annotated-medication baseline.
+- Validation: Design reviewed against `docs/exect_gold_label_audit.md`, `docs/deterministic_scorer_semantics.md`, `docs/prior_prompt_error_analysis_synthesis.md`, existing ExECT loader/scorer code, and current shared prediction schema.
+- Notes: Benchmark-facing fields remain diagnosis, seizure type, and annotated medications only. Investigation, history, birth history, aetiology, onset, diagnosis-date, seizure frequency, and medication temporality remain deferred.
 
 ## Blocked
 
@@ -351,9 +343,8 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Recommended Next Pull
 
-1. Inspect post-repair Gan S0 validation behavior and produce a short before/after metrics note.
-2. Draft the ExECT S0/S1 baseline design for a combined diagnosis, seizure-type, and annotated-medication task.
-3. Add targeted Gan regression fixtures around the agreed repair boundary before any later verifier/repair implementation.
-4. Keep Gan verifier/repair and abstention calibration as explicit follow-up ablations after the ExECT baseline path is opened.
+1. Build the ExECT S0/S1 DSPy field-family baseline from `docs/exect_s0_s1_baseline_design.md`.
+2. Smoke-test model configs on Gan S0 for closed providers with available credentials and document local Ollama blockers for Qwen if needed.
+3. Keep Gan verifier/repair and abstention calibration as explicit follow-up ablations after the ExECT baseline path is opened.
 
-The plan is now organized so completed work serves as background and the foreground path is: verify the Gan S0 surface-repair impact, open the combined ExECT S0/S1 baseline, then use Gan and ExECT as complementary testbeds for architecture and model comparisons.
+The plan is now organized so completed work serves as background and the foreground path is: implement the combined ExECT S0/S1 baseline, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.

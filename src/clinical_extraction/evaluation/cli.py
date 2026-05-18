@@ -148,6 +148,12 @@ def evaluate_gan_predictions(
         predicted_label = _prediction_label(predicted_value)
         if predicted_label is None:
             metric_observations["schema_valid_prediction_rate"].append(0)
+            if "abstained" in predicted_value.quality_flags:
+                taxonomy.add(
+                    "abstention.predicted_abstention",
+                    record_id=record_id,
+                    reason="prediction value is flagged as abstained",
+                )
             invalid_predictions.append(
                 {
                     "record_id": record_id,

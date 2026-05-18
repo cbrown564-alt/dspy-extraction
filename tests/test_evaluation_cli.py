@@ -282,3 +282,171 @@ def test_gan_evaluation_cli_reports_unsupported_evidence(tmp_path):
             "reason": "predicted evidence quote or offsets not supported by document text",
         }
     ]
+
+
+def test_gan_evaluation_surfaces_full_validation_failure_boundaries(monkeypatch):
+    records = [
+        GanRecord(
+            record_id="gan-fixture-cluster-to-unknown",
+            source_row_index=1,
+            note_text="Diary: one cluster each week, usually three seizures per cluster.",
+            gold_label="1 cluster per week, multiple per cluster",
+            gold_evidence="one cluster each week, usually three seizures per cluster",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+        GanRecord(
+            record_id="gan-fixture-unknown-to-no-reference",
+            source_row_index=2,
+            note_text="Seizures are mentioned, but the frequency cannot be estimated.",
+            gold_label="unknown",
+            gold_evidence="the frequency cannot be estimated",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+        GanRecord(
+            record_id="gan-fixture-denominator-window",
+            source_row_index=3,
+            note_text="The current baseline is one seizure per day.",
+            gold_label="1 per day",
+            gold_evidence="one seizure per day",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+        GanRecord(
+            record_id="gan-fixture-incomplete-cluster",
+            source_row_index=4,
+            note_text="One cluster is reported each week, but cluster size is stated elsewhere.",
+            gold_label="1 cluster per week, multiple per cluster",
+            gold_evidence="One cluster is reported each week",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+        GanRecord(
+            record_id="gan-fixture-abstention",
+            source_row_index=5,
+            note_text="There are multiple seizures each day.",
+            gold_label="multiple per day",
+            gold_evidence="multiple seizures each day",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+        GanRecord(
+            record_id="gan-fixture-missing-evidence",
+            source_row_index=6,
+            note_text="The patient has one seizure per month.",
+            gold_label="1 per month",
+            gold_evidence="one seizure per month",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+        GanRecord(
+            record_id="gan-fixture-unsupported-evidence",
+            source_row_index=7,
+            note_text="The patient has two seizures per month.",
+            gold_label="2 per month",
+            gold_evidence="two seizures per month",
+            row_ok=True,
+            labels_match_all_categories=True,
+            quotes_ok_all_categories=True,
+            raw={},
+        ),
+    ]
+    monkeypatch.setattr(
+        "clinical_extraction.evaluation.cli.load_gan_records",
+        lambda: records,
+    )
+
+    predictions = PredictionSet(
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        predictions=[
+            _gan_prediction(
+                "gan-fixture-cluster-to-unknown",
+                "unknown",
+                evidence_text="one cluster each week, usually three seizures per cluster",
+            ),
+            _gan_prediction(
+                "gan-fixture-unknown-to-no-reference",
+                "no seizure frequency reference",
+                evidence_text="the frequency cannot be estimated",
+            ),
+            _gan_prediction(
+                "gan-fixture-denominator-window",
+                "1 to 2 per month",
+                evidence_text="one seizure per day",
+            ),
+            _gan_prediction(
+                "gan-fixture-incomplete-cluster",
+                "1 cluster per week",
+                evidence_text="One cluster is reported each week",
+            ),
+            _gan_prediction("gan-fixture-abstention", None, quality_flags=["abstained"]),
+            _gan_prediction("gan-fixture-missing-evidence", "1 per month"),
+            _gan_prediction(
+                "gan-fixture-unsupported-evidence",
+                "2 per month",
+                evidence_text="two monthly seizures",
+            ),
+        ],
+    )
+
+    report = evaluate_gan_predictions(predictions, max_errors=10, bootstrap_samples=10)
+
+    assert report["counts"]["invalid_predictions"] == 2
+    assert report["error_analysis"]["counts"]["normalization.invalid_label"] == 1
+    assert report["error_analysis"]["counts"]["schema.missing_value"] == 1
+    assert report["error_analysis"]["counts"]["abstention.predicted_abstention"] == 1
+    assert report["error_analysis"]["counts"][
+        "normalization.monthly_frequency_mismatch"
+    ] == 3
+    assert report["error_analysis"]["counts"][
+        "classification.pragmatic_category_mismatch"
+    ] == 2
+    assert report["error_analysis"]["counts"][
+        "evidence.missing_prediction_evidence"
+    ] == 1
+    assert report["error_analysis"]["counts"]["evidence.unsupported_quote"] == 1
+    assert {
+        sample["record_id"]
+        for sample in report["errors"]["monthly_frequency_mismatches"]
+    } == {
+        "gan-fixture-cluster-to-unknown",
+        "gan-fixture-unknown-to-no-reference",
+        "gan-fixture-denominator-window",
+    }
+
+
+def _gan_prediction(
+    record_id: str,
+    label: str | None,
+    *,
+    evidence_text: str | None = None,
+    quality_flags: list[str] | None = None,
+) -> DocumentPrediction:
+    return DocumentPrediction(
+        document_id=record_id,
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        values=[
+            ExtractedValue(
+                field_name="seizure_frequency_number",
+                raw_value=label,
+                normalized_value=label,
+                evidence=[EvidenceSpan(text=evidence_text)] if evidence_text else [],
+                quality_flags=quality_flags or [],
+            )
+        ],
+    )
