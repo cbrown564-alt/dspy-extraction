@@ -183,3 +183,46 @@ def test_exect_prediction_set_scorer_reports_evidence_quote_diagnostics():
             "reason": "predicted evidence quote or offsets not supported by document text",
         },
     ]
+
+
+def test_exect_prediction_set_scorer_separates_exact_and_repaired_evidence_quotes():
+    gold = load_exect_gold_document("EA0018")
+    prediction_set = PredictionSet(
+        dataset="exect_v2",
+        schema_level="exect_s0_s1",
+        predictions=[
+            DocumentPrediction(
+                document_id="EA0018",
+                dataset="exect_v2",
+                schema_level="exect_s0_s1",
+                values=[
+                    ExtractedValue(
+                        field_name="diagnosis",
+                        raw_value=gold.diagnoses[0],
+                        evidence=[
+                            {
+                                "text": "with epilepsy",
+                            }
+                        ],
+                    ),
+                    ExtractedValue(
+                        field_name="current_medication",
+                        raw_value=gold.current_medications[0],
+                        evidence=[
+                            {
+                                "text": "Currently she is taking sodium valproate 500 mg twice a day and levetiracetam 1000 mg twice today.",
+                            }
+                        ],
+                        quality_flags=["evidence_repair:ellipsis_contiguous_span"],
+                    ),
+                ],
+            ),
+        ],
+    )
+
+    report = score_exect_prediction_set(prediction_set, gold_documents=[gold])
+
+    assert report["diagnostic_metrics"]["evidence_quote_support_rate"] == 1.0
+    assert report["diagnostic_metrics"]["evidence_quote_support_rate_without_repairs"] == 1.0
+    assert report["diagnostic_metrics"]["evidence_quote_support_rate_repaired"] == 1.0
+    assert report["diagnostic_metrics"]["evidence_quote_repair_rate"] == 0.5

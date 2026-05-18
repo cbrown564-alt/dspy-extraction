@@ -363,6 +363,15 @@ def _print_summary(report: dict[str, Any], metric_caveats: list[str]) -> None:
             f"{pct(diag.get('documents_with_gold_quality_flags'))}"
         )
         print(f"  Evidence quote support rate: {pct(diag.get('evidence_quote_support_rate'))}")
+        print(
+            "  Evidence quote support rate (exact only): "
+            f"{pct(diag.get('evidence_quote_support_rate_without_repairs'))}"
+        )
+        print(
+            "  Evidence quote support rate (ellipsis repairs): "
+            f"{pct(diag.get('evidence_quote_support_rate_repaired'))}"
+        )
+        print(f"  Evidence quote repair rate: {pct(diag.get('evidence_quote_repair_rate'))}")
         print(f"  Evidence offsets present rate: {pct(diag.get('evidence_offsets_present_rate'))}")
         print(f"  Evidence offsets valid rate:   {pct(diag.get('evidence_offsets_valid_rate'))}")
     else:

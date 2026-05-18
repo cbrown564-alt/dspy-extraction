@@ -183,6 +183,18 @@ def score_exect_prediction_set(
                 evidence_diagnostics["quote_supported"],
                 evidence_diagnostics["values_with_evidence"],
             ),
+            "evidence_quote_support_rate_without_repairs": _ratio(
+                evidence_diagnostics["unrepaired_quote_supported"],
+                evidence_diagnostics["unrepaired_values_with_evidence"],
+            ),
+            "evidence_quote_support_rate_repaired": _ratio(
+                evidence_diagnostics["repaired_quote_supported"],
+                evidence_diagnostics["repaired_values_with_evidence"],
+            ),
+            "evidence_quote_repair_rate": _ratio(
+                evidence_diagnostics["repaired_values_with_evidence"],
+                evidence_diagnostics["values_with_evidence"],
+            ),
             "evidence_offsets_present_rate": _ratio(
                 evidence_diagnostics["values_with_offsets"],
                 evidence_diagnostics["values_with_evidence"],
@@ -272,6 +284,10 @@ def _evidence_diagnostics(
     values_with_offsets = 0
     quote_supported = 0
     offsets_valid = 0
+    repaired_values_with_evidence = 0
+    repaired_quote_supported = 0
+    unrepaired_values_with_evidence = 0
+    unrepaired_quote_supported = 0
     errors: list[dict[str, Any]] = []
 
     for document_id in evaluated_ids:
@@ -296,11 +312,18 @@ def _evidence_diagnostics(
                 document_text=gold.text,
                 predicted_evidence=value.evidence,
             )
+            used_repair = "evidence_repair:ellipsis_contiguous_span" in value.quality_flags
             values_with_evidence += 1
             has_offsets = evidence_score.predicted_evidence_with_offsets > 0
             values_with_offsets += int(has_offsets)
             quote_supported += int(evidence_score.quote_supported)
             offsets_valid += int(evidence_score.offsets_valid is True)
+            if used_repair:
+                repaired_values_with_evidence += 1
+                repaired_quote_supported += int(evidence_score.quote_supported)
+            else:
+                unrepaired_values_with_evidence += 1
+                unrepaired_quote_supported += int(evidence_score.quote_supported)
 
             if not evidence_score.quote_supported:
                 errors.append(
@@ -321,6 +344,10 @@ def _evidence_diagnostics(
         "values_with_offsets": values_with_offsets,
         "quote_supported": quote_supported,
         "offsets_valid": offsets_valid,
+        "repaired_values_with_evidence": repaired_values_with_evidence,
+        "repaired_quote_supported": repaired_quote_supported,
+        "unrepaired_values_with_evidence": unrepaired_values_with_evidence,
+        "unrepaired_quote_supported": unrepaired_quote_supported,
         "errors": errors,
     }
 

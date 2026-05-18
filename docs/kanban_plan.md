@@ -86,6 +86,15 @@ A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence
 
 ## Ready
 
+### Run larger capped ExECT S0/S1 field-family validation
+
+- Outcome: A 25-record GPT 4.1-mini validation-cap run exists for the ExECT S0/S1 field-family baseline using the v3 label policy plus the narrow ellipsis evidence bridge, with standard run artifacts and an inspection note.
+- Dependencies: Completed ExECT S0/S1 v3 capped smoke; ellipsis evidence bridge; unchanged `exect_s0_s1_field_family_single_pass` contract; unchanged `exect_field_family_deterministic_v1` scorer.
+- Parallelizable: no for ExECT architecture work, because this inspection gates section-aware versus monolithic ablation design; yes relative to Windows Qwen Gan S0 runtime smokes.
+- Owner: unassigned.
+- Validation: Add sibling config such as `configs/experiments/exect_s0_s1_validation_cap25_gpt4_1_mini.json` rather than editing the existing 3-record smoke config; run `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run the new config; complete a capped model run; inspect `metadata.json`, `config.json`, `prompts.json`, `predictions.json`, `metrics.json`, and `errors.json`.
+- Notes: This remains a diagnostic validation cap, not a performance estimate or published ExECTv2 benchmark reproduction. The inspection should classify remaining errors as label-policy, evidence-grounding, medication-scope/gold limitation, schema-validity, or architecture/context-selection failures. Report evidence quote support both overall and with `evidence_repair:ellipsis_contiguous_span` bridge repairs separated from model-supplied exact quotes.
+
 ### Run Qwen Gan S0 smoke tests on Windows laptop
 
 - Outcome: Qwen3.6:35b and Qwen3.5:9b each have a one-record Gan S0 smoke run from the Windows laptop, using the same single-pass smoke configs and standard run artifact layout.
@@ -94,15 +103,6 @@ A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence
 - Owner: unassigned.
 - Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry runs for `configs/experiments/gan_s0_smoke_qwen35b_ollama.json` and `configs/experiments/gan_s0_smoke_qwen9b_ollama.json`; completed run artifacts for both Qwen smoke configs.
 - Notes: Handoff commands and Mac-side smoke results are documented in `docs/model_config_smoke_tests.md`. Treat these one-record runs as runtime compatibility checks only, not performance estimates.
-
-### Resolve Gemini 3 Flash model identifier
-
-- Outcome: Complete. `configs/models/gan_s0_gemini3_flash.json` uses the API-listed Gemini 3 Flash Preview model identifier, `gemini-3-flash-preview`.
-- Dependencies: Confirmed with the configured Google API key that `models/gemini-3-flash-preview` is available and supports `generateContent`.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-run `configs/experiments/gan_s0_smoke_gemini3_flash.json`; completed smoke artifact `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`.
-- Notes: The Mac smoke attempt reached Google but failed with 404 for invalid `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`. The fixed smoke run completed but produced one invalid Gan label, so it validates provider/runtime compatibility rather than extraction quality.
 
 ## In Progress
 
@@ -175,6 +175,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. The ExECT S0/S1 artifact bridge now converts literal `...` evidence quotes into a single exact contiguous source quote when all fragments are found in order within a short same-paragraph span.
 - Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`.
 - Notes: Benchmark-facing scorer semantics are unchanged. Repaired evidence is tagged with `evidence_repair:ellipsis_contiguous_span` so future reports can separate model-supplied exact quotes from deterministic evidence bridge repairs.
+
+### Resolve Gemini 3 Flash model identifier
+
+- Outcome: Complete. `configs/models/gan_s0_gemini3_flash.json` uses the API-listed Gemini 3 Flash Preview model identifier, `gemini-3-flash-preview`.
+- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-run `configs/experiments/gan_s0_smoke_gemini3_flash.json`; completed smoke artifact `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`.
+- Notes: The Mac smoke attempt reached Google but failed with 404 for invalid `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`. The fixed smoke run completed but produced one invalid Gan label, so it validates provider/runtime compatibility rather than extraction quality.
 
 ## Blocked
 
@@ -301,8 +307,8 @@ Completed work is summarized in the background sections above rather than repeat
 - Dependencies: Build ExECT S0/S1 DSPy field-family baseline.
 - Parallelizable: after implementation.
 - Owner: unassigned.
-- Validation: Initial capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`; label-policy v2 capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`.
-- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. The v2 capped smoke improved medication scope and diagnosis alignment, but seizure-type granularity and evidence quote support should be addressed before full validation.
+- Validation: Initial capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`; label-policy v2 capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`; v3 seizure/evidence capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T160445Z`; ellipsis evidence bridge dry-run complete.
+- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. The v3 capped smoke plus ellipsis bridge cleared the immediate three-record label-policy and evidence-quote blockers, but a larger capped validation and artifact inspection should gate full validation and section-aware architecture ablations.
 
 ### Section-aware versus monolithic ExECT ablation
 
@@ -367,15 +373,15 @@ Completed work is summarized in the background sections above rather than repeat
 
 - Shared contracts should stay single-threaded: scorer semantics, schema contracts, run metadata, split generation policy, and benchmark-alignment language affect every later card.
 - Gan repair work and ExECT baseline design can proceed in parallel because they touch different task surfaces.
-- ExECT implementation has opened the S0/S1 field-family path; the next dependency is label-policy prompt/example tightening before full validation or architecture ablations.
+- ExECT implementation has opened the S0/S1 field-family path; the next dependency is a larger capped validation and artifact inspection before full validation or architecture ablations.
 - Model smoke tests are unblocked for closed providers with credentials in `.env`; Qwen runs remain blocked on local Ollama availability.
 - Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: ExECT S0/S1 label-policy example work and closed-provider Gan S0 smoke tests.
-- Safe after the next Gan decision: targeted Gan fixtures and verifier/repair design.
-- Blocked on module interfaces: ablation config files and broad program-architecture comparisons; ExECT section-aware work should wait until the label-policy-aligned S0/S1 capped smoke is inspected.
+- Safe immediately in parallel: larger capped ExECT S0/S1 validation work and Windows Qwen Gan S0 smoke tests, because they touch different task surfaces and runtime dependencies.
+- Safe after explicit design: Gan verifier/repair and abstention-calibration work.
+- Blocked on module interfaces: ablation config files and broad program-architecture comparisons; ExECT section-aware work should wait until the larger S0/S1 validation cap is inspected.
 - Blocked on local runtime: Qwen-backed model comparisons.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata changes, split policy, and benchmark-reproduction claims.
 
