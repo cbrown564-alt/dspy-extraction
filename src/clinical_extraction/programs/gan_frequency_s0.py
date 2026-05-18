@@ -19,6 +19,7 @@ from clinical_extraction.schemas import (
 GAN_FREQUENCY_S0_FIELD = "seizure_frequency_number"
 GAN_FREQUENCY_S0_SCHEMA_LEVEL = "gan_frequency_s0"
 GAN_FREQUENCY_S0_VARIANT = "gan_frequency_s0_single_pass"
+GAN_FREQUENCY_S0_DIRECT_VARIANT = "gan_frequency_s0_direct_single_pass"
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
 
@@ -38,6 +39,9 @@ GAN_FREQUENCY_SYNTHESIS_GUIDANCE = (
 
 class GanFrequencyS0Signature(dspy.Signature):
     """Extract the Gan seizure-frequency label and supporting evidence from a clinical note.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
 
     The label must match the Gan annotation vocabulary exactly. Abstain (null) only when
     the note contains no usable seizure-frequency information.
@@ -87,6 +91,17 @@ class GanFrequencyS0Module(dspy.Module):
     def __init__(self) -> None:
         super().__init__()
         self.extract = dspy.ChainOfThought(GanFrequencyS0Signature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(note_text=note_text)
+
+
+class GanFrequencyS0DirectModule(dspy.Module):
+    """Gan S0 module that predicts the structured fields without a reasoning output."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.Predict(GanFrequencyS0Signature)
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(note_text=note_text)
@@ -250,11 +265,12 @@ GAN_FREQUENCY_S0_OPTIMIZER_METRICS = {
 def compile_gan_s0_module(
     records: list[GanRecord],
     *,
+    program_variant: str = GAN_FREQUENCY_S0_VARIANT,
     max_bootstrapped_demos: int = 4,
     max_labeled_demos: int = 0,
     max_rounds: int = 1,
     optimizer_metric: str = "pragmatic_category",
-) -> GanFrequencyS0Module:
+) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
     """Compile GanFrequencyS0Module with BootstrapFewShot on labeled training records.
 
     Runs the teacher module on each record and keeps traces that pass
@@ -278,8 +294,18 @@ def compile_gan_s0_module(
         max_labeled_demos=max_labeled_demos,
         max_rounds=max_rounds,
     )
-    module = GanFrequencyS0Module()
+    module = build_gan_s0_module(program_variant)
     return optimizer.compile(module, trainset=trainset)
+
+
+def build_gan_s0_module(
+    program_variant: str,
+) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
+    if program_variant == GAN_FREQUENCY_S0_VARIANT:
+        return GanFrequencyS0Module()
+    if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
+        return GanFrequencyS0DirectModule()
+    raise ValueError(f"Unsupported Gan S0 program variant: {program_variant!r}")
 
 
 # ---------------------------------------------------------------------------
@@ -287,19 +313,20 @@ def compile_gan_s0_module(
 # ---------------------------------------------------------------------------
 
 def predict_gan_records(
-    module: GanFrequencyS0Module,
+    module: GanFrequencyS0Module | GanFrequencyS0DirectModule,
     records: list[GanRecord],
     *,
     model_provider: str,
     model_name: str,
     prompt_version: str = "gan_frequency_s0_v1",
+    program_variant: str = GAN_FREQUENCY_S0_VARIANT,
     progress_callback: Callable[[int, int, str], None] | None = None,
 ) -> PredictionSet:
     """Run ``module`` on each Gan record and return a ``PredictionSet`` artifact."""
     predictions = []
     total = len(records)
     for index, record in enumerate(records, start=1):
-        predictions.append(_predict_record(module, record))
+        predictions.append(_predict_record(module, record, program_variant=program_variant))
         if progress_callback is not None:
             progress_callback(index, total, record.record_id)
     return PredictionSet(
@@ -307,7 +334,7 @@ def predict_gan_records(
         schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
         predictions=predictions,
         metadata={
-            "program_variant": GAN_FREQUENCY_S0_VARIANT,
+            "program_variant": program_variant,
             "model_provider": model_provider,
             "model_name": model_name,
             "prompt_version": prompt_version,
@@ -320,7 +347,10 @@ _ABSTAIN_STRINGS = frozenset({"none", "null", ""})
 
 
 def _predict_record(
-    module: GanFrequencyS0Module, record: GanRecord
+    module: GanFrequencyS0Module | GanFrequencyS0DirectModule,
+    record: GanRecord,
+    *,
+    program_variant: str,
 ) -> DocumentPrediction:
     pred = module(note_text=record.note_text)
     label: str | None = pred.seizure_frequency_number
@@ -353,7 +383,7 @@ def _predict_record(
         dataset="gan_2026",
         schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
         values=[value],
-        metadata={"program_variant": GAN_FREQUENCY_S0_VARIANT},
+        metadata={"program_variant": program_variant},
     )
 
 
@@ -439,6 +469,7 @@ def gan_frequency_s0_run_metadata(
     model_name: str,
     *,
     prompt_version: str = "gan_frequency_s0_v1",
+    program_variant: str = GAN_FREQUENCY_S0_VARIANT,
     extra: dict | None = None,
 ) -> RunMetadata:
     """Build a ``RunMetadata`` for a Gan S0 run."""
@@ -449,7 +480,7 @@ def gan_frequency_s0_run_metadata(
         model_provider=model_provider,
         model_name=model_name,
         schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-        program_variant=GAN_FREQUENCY_S0_VARIANT,
+        program_variant=program_variant,
         scorer_mode=GAN_FREQUENCY_S0_SCORER,
         metric_caveats=[
             "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",

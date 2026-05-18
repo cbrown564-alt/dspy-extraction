@@ -28,6 +28,8 @@ class LLMProviderConfig(FrozenModel):
     api_key_env: str | None = None
     timeout_seconds: float = Field(default=60.0, gt=0)
     temperature: float | None = Field(default=0.0, ge=0.0)
+    max_tokens: int | None = Field(default=None, gt=0)
+    num_retries: int = Field(default=3, ge=0)
     mock_responses: list[dict[str, Any] | str] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -100,6 +102,7 @@ class OpenAICompatibleChatAdapter:
         api_key: str | None = None,
         timeout_seconds: float = 60.0,
         temperature: float | None = 0.0,
+        max_tokens: int | None = None,
         transport: Transport | None = None,
     ) -> None:
         self.provider = provider
@@ -108,6 +111,7 @@ class OpenAICompatibleChatAdapter:
         self.api_key = api_key
         self.timeout_seconds = timeout_seconds
         self.temperature = temperature
+        self.max_tokens = max_tokens
         self._transport = transport or _urlopen_json
 
     def complete_json(
@@ -122,6 +126,8 @@ class OpenAICompatibleChatAdapter:
         }
         if self.temperature is not None:
             payload["temperature"] = self.temperature
+        if self.max_tokens is not None:
+            payload["max_tokens"] = self.max_tokens
         if response_schema is not None:
             payload["response_format"] = {
                 "type": "json_schema",
@@ -165,6 +171,7 @@ def build_chat_adapter(config: LLMProviderConfig) -> ChatAdapter:
         api_key=api_key,
         timeout_seconds=config.timeout_seconds,
         temperature=config.temperature,
+        max_tokens=config.max_tokens,
     )
 
 
@@ -190,8 +197,10 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
     """Build a ``dspy.LM`` from an ``LLMProviderConfig``.
 
     Gemini routes through LiteLLM's native Gemini support (``gemini/`` prefix).
-    All other providers use the OpenAI-compatible path (``openai/`` prefix),
-    with ``api_base`` set for non-default endpoints (Ollama, custom).
+    Ollama routes through LiteLLM's native ``ollama_chat/`` provider so the
+    thinking toggle is respected by local Qwen reasoning models. Other
+    providers use the OpenAI-compatible path (``openai/`` prefix), with
+    ``api_base`` set for non-default endpoints.
     """
     api_key = config.api_key or _api_key_from_env(config.api_key_env) or "dummy"
 
@@ -200,19 +209,39 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
             "model": f"gemini/{config.model}",
             "api_key": api_key,
             "timeout": config.timeout_seconds,
+            "num_retries": config.num_retries,
         }
         if config.temperature is not None:
             kwargs["temperature"] = config.temperature
+        if config.max_tokens is not None:
+            kwargs["max_tokens"] = config.max_tokens
         return dspy.LM(**kwargs)
 
     base_url = config.base_url or _default_base_url(config.provider)
+    if config.provider == "ollama":
+        kwargs = {
+            "model": f"ollama_chat/{config.model}",
+            "api_base": base_url.removesuffix("/v1"),
+            "timeout": config.timeout_seconds,
+            "num_retries": config.num_retries,
+            "extra_body": {"think": False},
+        }
+        if config.temperature is not None:
+            kwargs["temperature"] = config.temperature
+        if config.max_tokens is not None:
+            kwargs["max_tokens"] = config.max_tokens
+        return dspy.LM(**kwargs)
+
     kwargs: dict[str, Any] = {
         "model": f"openai/{config.model}",
         "api_key": api_key,
         "timeout": config.timeout_seconds,
+        "num_retries": config.num_retries,
     }
     if config.temperature is not None:
         kwargs["temperature"] = config.temperature
+    if config.max_tokens is not None:
+        kwargs["max_tokens"] = config.max_tokens
     if config.provider != "openai" or config.base_url:
         kwargs["api_base"] = base_url
     return dspy.LM(**kwargs)

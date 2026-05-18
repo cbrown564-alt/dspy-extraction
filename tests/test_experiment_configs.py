@@ -16,6 +16,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
+    GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
@@ -201,6 +202,67 @@ def test_gan_s0_provider_smoke_configs_are_one_record_single_pass_runs(
     assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
     assert "smoke run" in " ".join(config.metric_caveats).lower()
     assert not config.report_on_test_split
+
+
+@pytest.mark.parametrize(
+    "filename,program_variant,optimizer_expected",
+    [
+        (
+            "gan_s0_latency_qwen9b_direct_cap3.json",
+            GAN_FREQUENCY_S0_DIRECT_VARIANT,
+            False,
+        ),
+        (
+            "gan_s0_latency_qwen9b_cot_cap3.json",
+            GAN_FREQUENCY_S0_VARIANT,
+            False,
+        ),
+        (
+            "gan_s0_latency_qwen9b_direct_bootstrap_cap3.json",
+            GAN_FREQUENCY_S0_DIRECT_VARIANT,
+            True,
+        ),
+        (
+            "gan_s0_latency_qwen9b_cot_bootstrap_cap3.json",
+            GAN_FREQUENCY_S0_VARIANT,
+            True,
+        ),
+    ],
+)
+def test_qwen9b_latency_ablation_configs_hold_split_and_cap_fixed(
+    filename,
+    program_variant,
+    optimizer_expected,
+):
+    config = load_experiment_config(Path("configs/experiments") / filename)
+
+    assert config.dataset == "gan_2026"
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen9b_ollama.json")
+    assert config.split_name == "gan_2026_fixed_v1:validation"
+    assert config.max_records == 3
+    assert config.program_variant == program_variant
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert (config.optimizer is not None) is optimizer_expected
+    assert "latency" in " ".join(config.metric_caveats).lower()
+
+
+def test_qwen35b_direct_gate_configs_avoid_reasoning_and_optimizer():
+    smoke = load_experiment_config(
+        Path("configs/experiments/gan_s0_smoke_qwen35b_direct_ollama.json")
+    )
+    cap = load_experiment_config(
+        Path("configs/experiments/gan_s0_latency_qwen35b_direct_cap3.json")
+    )
+
+    for config in [smoke, cap]:
+        assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+        assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+        assert config.optimizer is None
+        assert "avoids chainofthought and bootstrapfewshot" in (
+            " ".join(config.metric_caveats).lower()
+        )
+    assert smoke.max_records == 1
+    assert cap.max_records == 3
 
 
 def test_experiment_config_rejects_test_reporting_without_explicit_flag():

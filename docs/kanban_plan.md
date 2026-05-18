@@ -2,13 +2,14 @@
 
 Source: `docs/outline.md`  
 Grounding note: `docs/deterministic_foundation_decisions.md`  
+Local-model policy: `docs/qwen_dspy_latency_policy.md`  
 Last refreshed: 2026-05-18
 
 ## Goal
 
 Build a hybrid deterministic and DSPy-based clinical extraction research system that can specialize across the broad ExECTv2 schema and the focused Gan seizure-frequency task, while preserving dataset fidelity, reproducible splits, auditable scoring, and experiment traceability.
 
-The project has moved beyond the deterministic foundation milestone. The current execution focus is using the first larger ExECT S0/S1 validation-cap read to open the section-aware versus monolithic architecture cycle without changing audited scorer semantics.
+The project has moved beyond the deterministic foundation milestone. The current execution focus is split between using the ExECT S0/S1 validation-cap read to guide architecture work and adding a small local-Qwen latency workstream that tests DSPy component costs on the Windows laptop before making Qwen3.6:35b part of routine capped validation.
 
 ## Definitions Of Done
 
@@ -86,14 +87,23 @@ A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence
 
 ## Ready
 
-### Run Qwen Gan S0 smoke tests on Windows laptop
+### Decide bounded Qwen reasoning strategy
 
-- Outcome: Qwen3.6:35b and Qwen3.5:9b each have a one-record Gan S0 smoke run from the Windows laptop, using the same single-pass smoke configs and standard run artifact layout.
-- Dependencies: Windows laptop with Ollama running; `qwen3.6:35b` and `qwen3.5:9b` installed; repo dependencies installed with `uv`; `.env` present if needed by shared scripts.
-- Parallelizable: no, because both runs depend on the Windows local-model runtime.
+- Outcome: Either keep local Qwen on direct extraction only, or define a bounded reasoning variant that emits label/evidence before any rationale and can be measured separately from DSPy's unconstrained `ChainOfThought`.
+- Dependencies: `docs/qwen_local_latency_experiment_20260518.md`.
+- Parallelizable: yes, if scoped to prompt/program design and not scorer semantics.
 - Owner: unassigned.
-- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry runs for `configs/experiments/gan_s0_smoke_qwen35b_ollama.json` and `configs/experiments/gan_s0_smoke_qwen9b_ollama.json`; completed run artifacts for both Qwen smoke configs.
-- Notes: Handoff commands and Mac-side smoke results are documented in `docs/model_config_smoke_tests.md`. Treat these one-record runs as runtime compatibility checks only, not performance estimates.
+- Validation: Design note or config diff states whether the next Qwen experiment uses direct extraction, bounded rationale, or no reasoning at all.
+- Notes: Unconstrained DSPy `ChainOfThought` was too verbose for Qwen3.5:9b on the tiny Gan S0 latency matrix, and `ChainOfThought + BootstrapFewShot` did not complete under `max_tokens=1536`.
+
+### Add token and residency capture for local model runs
+
+- Outcome: Local-model run artifacts record token usage when available and Qwen residency/offload notes close to run time instead of only relying on manual `ollama ps` checks.
+- Dependencies: Current runtime metadata fields.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Metrics or metadata artifacts include token counts where LiteLLM exposes them and a `model_residency` value that is not `not_recorded` for local Ollama runs.
+- Notes: Manual `ollama ps` after the Qwen3.6:35b run reported 74% CPU / 26% GPU residency.
 
 ## In Progress
 
@@ -106,6 +116,24 @@ No active review card is claimed in this plan.
 ## Done
 
 Completed work is summarized in the background sections above rather than repeated as foreground cards.
+
+### Add direct Gan S0 DSPy module variant and Qwen latency configs
+
+- Outcome: Complete. Gan S0 now supports `gan_frequency_s0_direct_single_pass` alongside the existing `gan_frequency_s0_single_pass` ChainOfThought variant, and local-Qwen latency configs exist for Qwen3.5:9b and Qwen3.6:35b.
+- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_gan_s0_program.py tests/test_experiment_configs.py`; dry runs passed for the new Qwen3.5:9b latency matrix and Qwen3.6:35b direct gate configs.
+- Notes: DSPy Ollama construction now uses LiteLLM `ollama_chat/` with `think=false` because Ollama's OpenAI-compatible `/v1` route returned hidden reasoning with empty final content for Qwen tags.
+
+### Add latency and call-count capture to run artifacts
+
+- Outcome: Complete. Experiment `metrics.json` files now include runtime metadata: compile duration, prediction duration, prediction seconds per record, evaluation duration, total duration, estimated model-call count, optimizer settings, and model residency placeholder.
+- Validation: Runtime fields are present in completed Qwen runs such as `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z/metrics.json` and `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z/metrics.json`.
+- Notes: Token counts and automatic residency capture remain future work.
+
+### Run Qwen local Gan S0 latency and pace experiments
+
+- Outcome: Complete. `docs/qwen_local_latency_experiment_20260518.md` records the Qwen3.5:9b DSPy component latency matrix and the Qwen3.6:35b direct-extraction pace gate.
+- Validation: Completed artifacts: `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z`, `runs/gan_s0_latency_qwen9b_cot_cap3_20260518T201247Z`, `runs/gan_s0_latency_qwen9b_direct_bootstrap_cap3_20260518T201540Z`, `runs/gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z`, and `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z`. The combined Qwen3.5:9b `ChainOfThought + BootstrapFewShot` attempt `runs/gan_s0_latency_qwen9b_cot_bootstrap_cap3_20260518T201609Z` failed during prediction before metrics were written.
+- Notes: On Qwen3.5:9b, direct extraction completed at 3.91 prediction seconds/record, ChainOfThought completed at 53.74 seconds/record with truncation warnings, and direct plus tiny BootstrapFewShot completed with 3.92s compile time and 4.62 prediction seconds/record. ChainOfThought plus BootstrapFewShot did not function under `max_tokens=1536`. Qwen3.6:35b direct extraction completed a one-record smoke and a warm three-record cap; manual `ollama ps` showed 74% CPU / 26% GPU residency after the run.
 
 ### Inspect post-repair Gan S0 validation behavior
 
@@ -205,11 +233,11 @@ Completed work is summarized in the background sections above rather than repeat
 ### Run Qwen-backed local model comparisons
 
 - Outcome: Qwen3.6:35b and Qwen3.5:9b runs are included in the model comparison matrix.
-- Dependencies: Local Ollama availability; validated Qwen model configs; stable task config.
-- Parallelizable: after local runtime availability is confirmed.
+- Dependencies: Local Ollama availability; validated Qwen model configs; stable task config; Qwen3.5:9b latency ablation results; Qwen3.6:35b direct-extraction pace gate.
+- Parallelizable: after local runtime availability and latency gates are confirmed.
 - Owner: unassigned.
 - Validation: Run artifacts with identical split, scorer, schema level, and program variant to the closed-provider runs.
-- Notes: This is an environment blocker, not a code-design blocker.
+- Notes: This is partly an environment blocker and partly a policy gate. Do not include Qwen3.6:35b in routine comparison runs with `ChainOfThought` or `BootstrapFewShot` unless the run is explicitly labeled as an overnight optimizer/reasoning experiment.
 
 ## Backlog
 
@@ -337,6 +365,24 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: Run table with identical split, scorer, schema level, program variant, and metric caveats.
 - Notes: Start with Gan S0 because it is already instrumented, then repeat on ExECT S0/S1 after that baseline stabilizes.
 
+### Qwen3.5:9b DSPy component latency ablation
+
+- Outcome: Complete. `docs/qwen_local_latency_experiment_20260518.md` quantifies whether Qwen3.5:9b can complete direct extraction, `ChainOfThought`, direct `BootstrapFewShot`, and `ChainOfThought + BootstrapFewShot` on a three-record Gan S0 cap.
+- Dependencies: Build Qwen3.5:9b Gan S0 latency ablation configs; completed Qwen3.5:9b hardware smoke.
+- Parallelizable: no on the Windows laptop, because local GPU/RAM measurements should be isolated from competing model workloads.
+- Owner: unassigned.
+- Validation: Direct run `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z`; ChainOfThought run `runs/gan_s0_latency_qwen9b_cot_cap3_20260518T201247Z`; direct BootstrapFewShot run `runs/gan_s0_latency_qwen9b_direct_bootstrap_cap3_20260518T201540Z`; failed ChainOfThought plus BootstrapFewShot attempt `runs/gan_s0_latency_qwen9b_cot_bootstrap_cap3_20260518T201609Z`.
+- Notes: Direct extraction worked at 3.91 prediction seconds/record. ChainOfThought worked but was about 13.7x slower and less schema-stable. Direct plus tiny BootstrapFewShot worked with modest overhead. ChainOfThought plus BootstrapFewShot did not complete prediction under `max_tokens=1536`.
+
+### Qwen3.6:35b direct-extraction pace experiment
+
+- Outcome: Complete. Qwen3.6:35b completed a direct-only one-record smoke and a direct-only three-record Gan S0 cap without `ChainOfThought` or `BootstrapFewShot`.
+- Dependencies: Build Qwen3.6:35b direct-extraction pace gate; completed Qwen3.6:35b hardware smoke.
+- Parallelizable: no on the Windows laptop, because this specifically measures partially offloaded local-model runtime.
+- Owner: unassigned.
+- Validation: Smoke `runs/gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z`; cap `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z`; synthesis note `docs/qwen_local_latency_experiment_20260518.md`.
+- Notes: The one-record smoke took 35.83 prediction seconds/record; the warm three-record cap took 8.83 prediction seconds/record. Manual `ollama ps` after the run reported Qwen3.6:35b at 74% CPU / 26% GPU residency, so direct 35B caps are feasible but should be paced jobs, not default interactive loops.
+
 ## Long-Term Plan
 
 ### Phase 1: Consolidate Gan S0 Into A Reliable Reference Task
@@ -363,6 +409,8 @@ Completed work is summarized in the background sections above rather than repeat
 ### Phase 4: Compare Models Under Fixed Conditions
 
 - Run GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b on the same split, schema level, program variant, scorer mode, and structured-output strategy where possible.
+- Before broad local-Qwen comparisons, complete the Qwen3.5:9b DSPy component latency ablation and the Qwen3.6:35b direct-extraction pace experiment.
+- Use Qwen3.5:9b to test whether `ChainOfThought`, `BootstrapFewShot`, or their combination is locally feasible; do not transfer that policy to Qwen3.6:35b unless the 35B direct pace gate is already acceptable and the heavier run is explicitly justified.
 - Report provider-specific caveats such as constrained JSON support, local runtime availability, rate limits, and token/context constraints.
 - Avoid cross-model claims when model runs used different scorer semantics or materially different prompts/configs.
 
@@ -383,21 +431,26 @@ Completed work is summarized in the background sections above rather than repeat
 - Shared contracts should stay single-threaded: scorer semantics, schema contracts, run metadata, split generation policy, and benchmark-alignment language affect every later card.
 - Gan repair work and ExECT baseline design can proceed in parallel because they touch different task surfaces.
 - ExECT implementation has opened the S0/S1 field-family path; the larger capped validation and artifact inspection are now complete, so the next dependency is a section-aware module implementation that keeps the current scorer and bridge behavior fixed.
-- Model smoke tests are unblocked for closed providers with credentials in `.env`; Qwen runs remain blocked on local Ollama availability.
+- Model smoke tests are unblocked for closed providers with credentials in `.env`; local Qwen runs now require Ollama's native LiteLLM `ollama_chat/` route with `think=false`, not the OpenAI-compatible `/v1` route.
+- The direct Gan S0 variant and runtime metadata fields are implemented, so Qwen can now join model comparisons only under latency-gated direct-extraction configs.
+- Qwen3.5:9b can run direct extraction and tiny direct BootstrapFewShot, but unconstrained ChainOfThought is very slow and `ChainOfThought + BootstrapFewShot` did not complete under `max_tokens=1536`.
+- Qwen3.6:35b can run direct extraction on a tiny cap, but because it was observed at 74% CPU / 26% GPU residency, avoid reasoning and optimizer-expanded prompts except for explicitly scheduled overnight experiments.
 - Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: section-aware ExECT implementation work and Windows Qwen Gan S0 smoke tests, because they touch different task surfaces and runtime dependencies.
+- Safe immediately in parallel: ExECT architecture follow-up work and token/residency capture for local model artifacts, because they touch different task surfaces.
+- Safe after explicit design: bounded-Qwen-reasoning prompt/module work, if still desired.
 - Safe after explicit design: Gan verifier/repair and abstention-calibration work.
-- Blocked on module interfaces: ablation config files and broad program-architecture comparisons; ExECT section-aware comparison now depends on implementing the new module variant and sibling config.
-- Blocked on local runtime: Qwen-backed model comparisons.
+- Blocked on local runtime availability: any larger Qwen-backed model comparison.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata changes, split policy, and benchmark-reproduction claims.
 
 ## Recommended Next Pull
 
-1. Run Qwen Gan S0 smoke tests on the Windows laptop when the local Ollama runtime is available.
-2. If ExECT architecture work continues before wider modules, strengthen the section-aware per-family instruction surface and evidence-quote behavior before retrying the ablation.
-3. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor for future architecture experiments.
+1. Keep local Qwen model-comparison runs on direct extraction by default.
+2. Add token and automatic residency capture to local-model artifacts if Qwen timing remains a near-term research question.
+3. Decide whether a bounded reasoning variant is worth designing for Qwen3.5:9b; do not reuse unconstrained DSPy `ChainOfThought` as the default.
+4. Keep Qwen3.6:35b out of `ChainOfThought` and `BootstrapFewShot` loops unless the run is explicitly scheduled as an overnight stress test.
+5. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor for future architecture experiments.
 
-The plan is now organized so completed work serves as background and the foreground path is: use the validated ExECT S0/S1 baseline to test architecture under fixed scorer semantics, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.
+The plan is now organized so completed work serves as background and the foreground path is: use the validated ExECT S0/S1 baseline to test architecture under fixed scorer semantics, use Gan S0 as the focused smoke-test and local-Qwen latency testbed, then use only latency-gated local models for broader architecture and model comparisons.

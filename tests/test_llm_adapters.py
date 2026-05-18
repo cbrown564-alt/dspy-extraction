@@ -20,10 +20,16 @@ def test_build_dspy_lm_resolves_openai_provider_config():
 
 def test_build_dspy_lm_resolves_ollama_provider_config():
     import dspy
-    config = LLMProviderConfig(provider="ollama", model="qwen3.6:35b")
+    config = LLMProviderConfig(
+        provider="ollama",
+        model="qwen3.6:35b",
+        max_tokens=256,
+        num_retries=0,
+    )
     lm = build_dspy_lm(config)
     assert isinstance(lm, dspy.LM)
     assert "qwen3.6:35b" in lm.model
+    assert lm.model.startswith("ollama_chat/")
 
 
 def test_build_chat_adapter_resolves_supported_provider_configs():
@@ -109,6 +115,26 @@ def test_openai_compatible_adapter_posts_chat_completion_payload_offline():
     ]
     assert captured["body"]["temperature"] == 0.0
     assert captured["body"]["response_format"]["type"] == "json_schema"
+
+
+def test_openai_compatible_adapter_includes_max_tokens_when_configured():
+    captured = {}
+
+    def transport(url, headers, body, timeout_seconds):
+        captured["body"] = json.loads(body)
+        return {"choices": [{"message": {"content": "{}"}}]}
+
+    adapter = OpenAICompatibleChatAdapter(
+        provider="ollama",
+        model="qwen3.5:9b",
+        base_url="http://localhost:11434/v1",
+        max_tokens=128,
+        transport=transport,
+    )
+
+    adapter.complete_json([ChatMessage(role="user", content="note text")])
+
+    assert captured["body"]["max_tokens"] == 128
 
 
 def test_openai_compatible_adapter_omits_temperature_when_config_uses_default():

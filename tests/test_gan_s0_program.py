@@ -4,10 +4,13 @@ from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.programs.gan_frequency_s0 import (
+    GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_FIELD,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
+    GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    build_gan_s0_module,
     compile_gan_s0_module,
     gan_frequency_s0_metric,
     gan_frequency_s0_synthesis_metric,
@@ -61,6 +64,40 @@ def test_gan_s0_module_maps_dspy_prediction_to_prediction_set():
     assert (
         record.note_text[value.evidence[0].start: value.evidence[0].end]
         == record.gold_evidence
+    )
+
+
+def test_gan_s0_direct_module_maps_prediction_without_reasoning_field():
+    record = next(
+        r for r in load_gan_records()
+        if r.gold_evidence and r.gold_evidence in r.note_text
+    )
+    _configure_dummy([{
+        "seizure_frequency_number": record.gold_label,
+        "evidence_text": record.gold_evidence,
+    }])
+
+    module = GanFrequencyS0DirectModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    )
+
+    assert prediction_set.metadata["program_variant"] == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert prediction_set.predictions[0].metadata["program_variant"] == (
+        GAN_FREQUENCY_S0_DIRECT_VARIANT
+    )
+    assert prediction_set.predictions[0].values[0].normalized_value == record.gold_label
+
+
+def test_build_gan_s0_module_dispatches_program_variants():
+    assert isinstance(build_gan_s0_module(GAN_FREQUENCY_S0_VARIANT), GanFrequencyS0Module)
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_DIRECT_VARIANT),
+        GanFrequencyS0DirectModule,
     )
 
 
@@ -465,3 +502,15 @@ def test_gan_frequency_s0_run_metadata_builds_correct_artifact_contract():
     assert metadata.program_variant == GAN_FREQUENCY_S0_VARIANT
     assert metadata.scorer_mode == "gan_frequency_deterministic_v1"
     assert "monthly-frequency" in " ".join(metadata.metric_caveats).lower()
+
+
+def test_gan_frequency_s0_run_metadata_accepts_direct_variant():
+    metadata = gan_frequency_s0_run_metadata(
+        run_id="gan_s0_direct_dspy_test",
+        split_name="gan_2026_fixed_v1:validation",
+        model_provider="mock",
+        model_name="dummy",
+        program_variant=GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    )
+
+    assert metadata.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT

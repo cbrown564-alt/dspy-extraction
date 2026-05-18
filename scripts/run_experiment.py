@@ -12,6 +12,7 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+from time import perf_counter
 from typing import Any, Callable
 
 import dspy
@@ -36,7 +37,10 @@ from clinical_extraction.programs.exect_s0_s1 import (
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
+    GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    build_gan_s0_module,
     compile_gan_s0_module,
     gan_frequency_s0_run_metadata,
     predict_gan_records,
@@ -103,6 +107,8 @@ def main(argv: list[str] | None = None) -> int:
     dspy.configure(lm=lm)
 
     module = _build_module(config.dataset, config.program_variant)
+    run_started = perf_counter()
+    compile_duration_seconds: float | None = None
 
     if config.optimizer is not None:
         if config.dataset != "gan_2026":
@@ -118,13 +124,16 @@ def main(argv: list[str] | None = None) -> int:
             f"max_labeled_demos={config.optimizer.max_labeled_demos}, "
             f"max_rounds={config.optimizer.max_rounds})..."
         )
+        compile_started = perf_counter()
         module = compile_gan_s0_module(
             dev_records,
+            program_variant=config.program_variant,
             max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
             max_labeled_demos=config.optimizer.max_labeled_demos,
             max_rounds=config.optimizer.max_rounds,
             optimizer_metric=config.optimizer.metric_name,
         )
+        compile_duration_seconds = perf_counter() - compile_started
         print("Compilation complete.")
 
     run_id = args.run_id or _make_run_id(config.experiment_id)
@@ -164,6 +173,7 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     print(f"Running {len(records)} predictions...")
+    prediction_started = perf_counter()
     prediction_set = _predict_records(
         dataset=config.dataset,
         module=module,
@@ -174,13 +184,24 @@ def main(argv: list[str] | None = None) -> int:
         program_variant=config.program_variant,
         progress_callback=_print_prediction_progress,
     )
+    prediction_duration_seconds = perf_counter() - prediction_started
     paths["predictions"].write_text(
         json.dumps(prediction_set.model_dump(mode="json"), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
 
     print("Evaluating...")
+    evaluation_started = perf_counter()
     report = _evaluate_predictions(prediction_set)
+    evaluation_duration_seconds = perf_counter() - evaluation_started
+    report["runtime"] = _runtime_report(
+        records=len(records),
+        optimizer=config.optimizer.model_dump() if config.optimizer else None,
+        compile_duration_seconds=compile_duration_seconds,
+        prediction_duration_seconds=prediction_duration_seconds,
+        evaluation_duration_seconds=evaluation_duration_seconds,
+        total_duration_seconds=perf_counter() - run_started,
+    )
     paths["metrics"].write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -204,7 +225,7 @@ def _load_records_by_id(dataset: str) -> dict[str, Any]:
 
 def _build_module(dataset: str, program_variant: str) -> dspy.Module:
     if dataset == "gan_2026":
-        return GanFrequencyS0Module()
+        return build_gan_s0_module(program_variant)
     if dataset == "exect_v2":
         if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
             return ExectS0S1SectionAwareFieldFamilyModule()
@@ -230,6 +251,7 @@ def _run_metadata(
             model_provider=model_provider,
             model_name=model_name,
             prompt_version=prompt_version,
+            program_variant=program_variant,
             extra=extra,
         )
     if dataset == "exect_v2":
@@ -254,7 +276,17 @@ def _prompts_data(
     if dataset == "gan_2026":
         return {
             "signature": "GanFrequencyS0Signature",
-            "module": "GanFrequencyS0Module",
+            "module": (
+                "GanFrequencyS0DirectModule"
+                if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+                else "GanFrequencyS0Module"
+            ),
+            "predictor": (
+                "dspy.Predict"
+                if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+                else "dspy.ChainOfThought"
+            ),
+            "program_variant": program_variant,
             "prompt_version": prompt_version,
             "synthesis_guidance": GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
             "structured_output_strategy": structured_output_strategy,
@@ -300,6 +332,7 @@ def _predict_records(
             model_provider=model_provider,
             model_name=model_name,
             prompt_version=prompt_version,
+            program_variant=program_variant,
             progress_callback=progress_callback,
         )
     if dataset == "exect_v2":
@@ -350,7 +383,10 @@ def _load_env_file(path: Path) -> None:
             os.environ[key] = value
 
 
-def _write_compiled_state(module: GanFrequencyS0Module, artifact_dir: Path) -> None:
+def _write_compiled_state(
+    module: GanFrequencyS0Module | GanFrequencyS0DirectModule,
+    artifact_dir: Path,
+) -> None:
     dump_state = getattr(module, "dump_state", None)
     if not callable(dump_state):
         return
@@ -359,6 +395,34 @@ def _write_compiled_state(module: GanFrequencyS0Module, artifact_dir: Path) -> N
         json.dumps(state, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+
+
+def _runtime_report(
+    *,
+    records: int,
+    optimizer: dict[str, Any] | None,
+    compile_duration_seconds: float | None,
+    prediction_duration_seconds: float,
+    evaluation_duration_seconds: float,
+    total_duration_seconds: float,
+) -> dict[str, Any]:
+    prediction_seconds_per_record = (
+        prediction_duration_seconds / records if records else None
+    )
+    estimated_model_calls = records
+    if optimizer is not None:
+        estimated_model_calls += int(optimizer.get("trainset_size") or 0)
+    return {
+        "records": records,
+        "estimated_model_calls": estimated_model_calls,
+        "optimizer": optimizer,
+        "compile_duration_seconds": compile_duration_seconds,
+        "prediction_duration_seconds": prediction_duration_seconds,
+        "prediction_seconds_per_record": prediction_seconds_per_record,
+        "evaluation_duration_seconds": evaluation_duration_seconds,
+        "total_duration_seconds": total_duration_seconds,
+        "model_residency": "not_recorded",
+    }
 
 
 def _print_summary(report: dict[str, Any], metric_caveats: list[str]) -> None:
