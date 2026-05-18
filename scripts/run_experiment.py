@@ -21,6 +21,7 @@ from clinical_extraction.evaluation.cli import evaluate_gan_predictions
 from clinical_extraction.experiments.config import load_experiment_config
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
 from clinical_extraction.programs.gan_frequency_s0 import (
+    GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
     GanFrequencyS0Module,
     compile_gan_s0_module,
     gan_frequency_s0_run_metadata,
@@ -96,7 +97,8 @@ def main(argv: list[str] | None = None) -> int:
         dev_records = [all_records[rid] for rid in dev_ids if rid in all_records]
         print(
             f"Compiling with BootstrapFewShot on {len(dev_records)} dev records "
-            f"(max_bootstrapped_demos={config.optimizer.max_bootstrapped_demos}, "
+            f"(metric={config.optimizer.metric_name}, "
+            f"max_bootstrapped_demos={config.optimizer.max_bootstrapped_demos}, "
             f"max_labeled_demos={config.optimizer.max_labeled_demos}, "
             f"max_rounds={config.optimizer.max_rounds})..."
         )
@@ -105,6 +107,7 @@ def main(argv: list[str] | None = None) -> int:
             max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
             max_labeled_demos=config.optimizer.max_labeled_demos,
             max_rounds=config.optimizer.max_rounds,
+            optimizer_metric=config.optimizer.metric_name,
         )
         print("Compilation complete.")
 
@@ -132,10 +135,12 @@ def main(argv: list[str] | None = None) -> int:
         "signature": "GanFrequencyS0Signature",
         "module": "GanFrequencyS0Module",
         "prompt_version": config.prompt_version,
+        "synthesis_guidance": GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
         "structured_output_strategy": config.structured_output_strategy,
     }
     if config.optimizer is not None:
         prompts_data["optimizer"] = config.optimizer.model_dump()
+        _write_compiled_state(module, paths["artifacts"])
     paths["prompts"].write_text(
         json.dumps(prompts_data, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -189,6 +194,17 @@ def _load_env_file(path: Path) -> None:
             value = value[1:-1]
         if key and key not in os.environ:
             os.environ[key] = value
+
+
+def _write_compiled_state(module: GanFrequencyS0Module, artifact_dir: Path) -> None:
+    dump_state = getattr(module, "dump_state", None)
+    if not callable(dump_state):
+        return
+    state = dump_state()
+    (artifact_dir / "compiled_state.json").write_text(
+        json.dumps(state, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
 
 
 def _print_summary(report: dict[str, Any], metric_caveats: list[str]) -> None:

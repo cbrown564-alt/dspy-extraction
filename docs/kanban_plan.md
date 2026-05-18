@@ -336,6 +336,24 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `tests/test_gan_s0_program.py`; dry-run and live baseline runs in `runs/`.
 - Notes: Replaced the custom `ChatAdapter`-based contract with proper `dspy.Signature` + `dspy.ChainOfThought`. `build_dspy_lm(config)` in `llms.py` translates `LLMProviderConfig` to `dspy.LM` via LiteLLM. DummyLM tests use response dicts with `reasoning` key (required by ChainOfThought). Abstain sentinel normalization handles `"None"` / `"null"` strings returned by DummyLM for null Optional fields.
 
+### Synthesize prior prompt and error-analysis guidance
+
+- Outcome: Prior hand-crafted prompt lessons and previous ExECT/Gan error analyses are converted into concrete optimization guidance before the full validation run.
+- Dependencies: Gan first LLM extraction baseline; first BootstrapFewShot run; `docs/previously_effective_prompts.md`; `docs/previous_exect_error_analysis.md`; `docs/previous_gan_frequency_error_analysis.md`.
+- Parallelizable: no, because it changes the next optimization target and validation-readiness decision.
+- Owner: Codex.
+- Validation: `docs/prior_prompt_error_analysis_synthesis.md` records the synthesis and this board keeps full validation after synthesis-backed optimization.
+- Notes: Reuse the old prompt strengths as optimization priors rather than reverting to manual prompting: explicit Gan canonical-frequency rules, 6-month seizure-free threshold examples, year-to-date denominator handling, cluster formatting, and evidence-quote support; for ExECT, carry forward coarse benchmark label mapping, symptomatic-to-focal diagnosis normalization, single-event diagnosis null policy, and "do not infer seizure type from diagnosis" examples. The synthesis implies the next Gan optimization pass should target unit/window errors and evidence support before spending a full validation run, while the later ExECT baseline should start with benchmark-facing label constraints rather than broad clinical label freedom.
+
+### Implement synthesis-backed Gan S0 optimization
+
+- Outcome: Gan S0 optimization uses compact synthesis-backed guidance, exact-label-plus-evidence optimizer scoring, locatable-evidence demos, compiled-state artifacts, and a capped validation check before full validation.
+- Dependencies: Synthesize prior prompt and error-analysis guidance; Gan first LLM extraction baseline; run artifact layout and metadata contract.
+- Parallelizable: no, because it changes the optimizer target and validation gate for the next Gan run.
+- Owner: Codex.
+- Validation: `tests/test_gan_s0_program.py`; `tests/test_experiment_configs.py`; `uv run --extra dev pytest`; capped run `runs/gan_s0_synthesis_bootstrap_gpt4_1_mini_20260518T062451Z`.
+- Notes: Best capped run preserved 96% schema validity while improving normalized-label accuracy to 37.5%, monthly and Purist accuracy to 54.2%, Pragmatic category accuracy to 79.2%, and evidence quote support to 87.0%. The remaining invalid is an incomplete cluster label missing the per-cluster component. This is now ready for a full validation run with the same config after removing the `max_records` cap.
+
 ## Review
 
 No active review card is claimed in this plan.
@@ -393,7 +411,9 @@ No active implementation card is claimed in this plan.
 - Notes: Two DSPy ChainOfThought zero-shot baseline runs with GPT 4.1-mini on 25 validation records.
   - v1 zero-shot without optimization: 32% schema validity, 87.5% pragmatic category accuracy on valid predictions, 0% evidence quote support. Lesson: BootstrapFewShot optimization with labeled training examples is required to teach the Gan label vocabulary format.
   - v2 manual vocab-guided prompt (pre-DSPy refactor, now superseded): 92% schema validity, 70% pragmatic category accuracy — demonstrates the vocabulary learning gap, but was implemented as manual prompt engineering. This approach was abandoned in favour of DSPy optimization.
-  - Next: run BootstrapFewShot optimization on the dev split, re-evaluate on the validation split.
+  - v3 BootstrapFewShot (4 demos from 50 dev records): 96% schema validity, 58.3% pragmatic category accuracy on valid predictions, 0% evidence quote support. Schema validity target achieved. Categorical accuracy lower than zero-shot per-valid rate (87.5%) but overall pragmatic accuracy more than doubled (~28% → 58.3%) because nearly all records now produce valid labels. Normalized label accuracy 16.7% — frequency unit errors are the likely next bottleneck.
+  - v4 synthesis-backed BootstrapFewShot (`runs/gan_s0_synthesis_bootstrap_gpt4_1_mini_20260518T062451Z`): 96% schema validity, 37.5% normalized-label accuracy, 54.2% monthly/Purist accuracy, 79.2% Pragmatic category accuracy, and 87.0% evidence quote support on the capped 25-record validation slice. The strict synthesis metric accepted four full traces after eight dev examples and the run artifact includes compiled state.
+  - Next: run the synthesis-backed config on the full validation split for stable confidence intervals; inspect the remaining incomplete-cluster and temporal-window errors in `errors.json`.
 
 ### ExECT S0/S1 field-family baseline
 
@@ -436,6 +456,7 @@ No active implementation card is claimed in this plan.
 - Shared contracts should stay single-threaded: schemas, scorer semantics, run metadata, and split definitions affect every later card.
 - ExECT and Gan regression tests can expand in parallel because they touch different dataset-specific behavior.
 - Narrow Gan S0 provider-backed smoke runs are unblocked; broader DSPy verifier, repair, abstention, and field-group modules remain blocked until that first path has real-model lessons.
+- Full-validation Gan runs should wait until prior prompt and error-analysis guidance has been synthesized into the optimization target; otherwise the run will mostly re-measure known unit/window and evidence-support failures.
 - Model adapters now target the Gan S0 program contract; generalize them only when additional program variants require it.
 - Benchmark reproduction has reference constants and caveats, but still depends on CUI/feature-aware ExECT scoring and Gan real-letter evaluation access.
 
@@ -450,8 +471,8 @@ No active implementation card is claimed in this plan.
 
 ## Recommended Next Pull
 
-1. Run `BootstrapFewShot` optimization on the Gan dev split using `gan_frequency_s0_metric`, then re-evaluate on the validation split to compare against the zero-shot baseline (32% schema validity → target >90%).
-2. After the optimized module reaches stable schema validity, expand to the full validation split (remove `max_records` cap) to get stable confidence intervals.
-3. Add broader DSPy extraction module configs after optimization is validated.
+1. Run `configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json` on the full validation split after removing the `max_records` cap, preserving `synthesis_exact_with_evidence` and compiled-state artifact capture.
+2. Inspect full-validation `errors.json` for incomplete cluster labels, year/window denominator errors, and residual no-reference over-abstention.
+3. Only after the full Gan validation read, decide whether to add a repair/verifier module or move to the ExECT S0/S1 benchmark-facing label-policy ablation.
 
 These cards move from mocked execution into reproducible model runs while keeping scorer semantics, benchmark caveats, and provider-specific structured output behavior explicit.

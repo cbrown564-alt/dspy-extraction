@@ -39,6 +39,24 @@ def test_gan_s0_baseline_experiment_config_records_required_controls():
     assert "monthly-frequency" in " ".join(config.metric_caveats).lower()
 
 
+def test_gan_s0_synthesis_bootstrap_config_records_optimizer_target():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "gan_s0_synthesis_bootstrap_gpt4_1_mini"
+    assert config.prompt_version == "gan_frequency_s0_synthesis_v1"
+    assert config.max_records == 25
+    assert config.optimizer is not None
+    assert config.optimizer.metric_name == "synthesis_exact_with_evidence"
+    assert config.optimizer.max_labeled_demos == 4
+    assert config.optimizer.trainset_size == 50
+    assert config.controls.few_shot_policy == (
+        "BootstrapFewShot with synthesis exact-label and evidence-support metric"
+    )
+    assert "evidence" in " ".join(config.metric_caveats).lower()
+
+
 def test_experiment_config_rejects_test_reporting_without_explicit_flag():
     payload = json.loads(
         Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(

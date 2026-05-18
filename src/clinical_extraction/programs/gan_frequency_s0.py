@@ -1,6 +1,7 @@
 """Gan seizure-frequency S0 DSPy program."""
 from __future__ import annotations
 
+import re
 from typing import Optional
 
 import dspy
@@ -18,6 +19,20 @@ GAN_FREQUENCY_S0_FIELD = "seizure_frequency_number"
 GAN_FREQUENCY_S0_SCHEMA_LEVEL = "gan_frequency_s0"
 GAN_FREQUENCY_S0_VARIANT = "gan_frequency_s0_single_pass"
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
+GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
+
+GAN_FREQUENCY_SYNTHESIS_GUIDANCE = (
+    "Synthesis-backed Gan frequency policy: output only canonical Gan labels; "
+    "use singular units day/week/month/year; convert daily or nightly to 1 per day; "
+    "convert every N unit to 1 per N unit; use 'to' for numeric ranges; "
+    "choose the highest current quantified seizure-type frequency; use full cluster "
+    "format 'N cluster per unit, M per cluster'; for year-to-date counts use months "
+    "elapsed since January as the denominator; treat a quarter as an observation "
+    "window when the note gives a per-month rate over the last quarter; use seizure "
+    "free labels only for seizure freedom of 6 months or longer, otherwise compute "
+    "the rate from total events over the described period; return an exact contiguous "
+    "source quote for every present claim."
+)
 
 
 class GanFrequencyS0Signature(dspy.Signature):
@@ -25,6 +40,24 @@ class GanFrequencyS0Signature(dspy.Signature):
 
     The label must match the Gan annotation vocabulary exactly. Abstain (null) only when
     the note contains no usable seizure-frequency information.
+
+    Synthesis-backed policy:
+    - Output only canonical Gan labels: N per unit, N to M per unit, N per M unit,
+      N cluster per unit, M per cluster, seizure free for N unit, unknown, or
+      no seizure frequency reference.
+    - Use singular units: day, week, month, year.
+    - Convert daily/nightly to 1 per day, every N unit to 1 per N unit, and
+      numeric "or" ranges to "to" ranges.
+    - Choose the highest current quantified seizure-type frequency.
+    - Use the full cluster format; do not drop either the cluster period or
+      the per-cluster count.
+    - Use seizure free for N unit only when seizure freedom is at least 6 months.
+      If seizure freedom is shorter than 6 months, compute the rate from the
+      total events over the described period.
+    - For year-to-date counts, use months elapsed since January as the denominator.
+    - Treat "over the last quarter" as an observation window when the note gives
+      a per-month rate; do not automatically convert it to per 3 month.
+    - evidence_text must be an exact contiguous quote from the note.
     """
 
     note_text: str = dspy.InputField(desc="Clinical neurology note text")
@@ -92,6 +125,59 @@ def gan_frequency_s0_metric(
         return 0.0
 
 
+def gan_frequency_s0_synthesis_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+) -> float:
+    """Stricter optimizer metric for synthesis-backed Gan S0 compilation.
+
+    This metric is intentionally optimizer-facing. It does not change the
+    benchmark evaluator. A trace passes only when the predicted label matches
+    the normalized gold label and, when a locatable gold evidence quote exists,
+    the prediction supplies an exact contiguous quote from the note.
+    """
+    from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+
+    predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
+    gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+
+    if not predicted or not gold:
+        return 0.0
+
+    try:
+        score = score_gan_frequency_prediction(
+            gold_label=gold, predicted_label=predicted
+        )
+    except ValueError:
+        return 0.0
+
+    if not score.exact_normalized_match:
+        return 0.0
+
+    predicted_evidence = getattr(pred, "evidence_text", None)
+    if gold == "no seizure frequency reference":
+        return float(predicted_evidence is None or not str(predicted_evidence).strip())
+
+    gold_evidence = getattr(example, "evidence_text", None)
+    if not _requires_evidence_support(gold, gold_evidence, example.note_text):
+        return 1.0
+
+    if not isinstance(predicted_evidence, str) or not predicted_evidence.strip():
+        return 0.0
+    return float(predicted_evidence.strip() in example.note_text)
+
+
+def _requires_evidence_support(
+    gold_label: str, gold_evidence: str | None, note_text: str
+) -> bool:
+    if gold_label == "no seizure frequency reference":
+        return False
+    if not gold_evidence or "..." in gold_evidence:
+        return False
+    return gold_evidence in note_text
+
+
 # ---------------------------------------------------------------------------
 # DSPy Example helpers
 # ---------------------------------------------------------------------------
@@ -111,9 +197,54 @@ def make_gan_dspy_examples(records: list[GanRecord]) -> list[dspy.Example]:
     ]
 
 
+def make_gan_synthesis_dspy_examples(records: list[GanRecord]) -> list[dspy.Example]:
+    """Convert Gan records into synthesis-backed examples with gold evidence."""
+    return [
+        dspy.Example(
+            note_text=record.note_text,
+            seizure_frequency_number=record.gold_label,
+            evidence_text=record.gold_evidence,
+        ).with_inputs("note_text")
+        for record in sorted(records, key=_synthesis_example_priority)
+    ]
+
+
+def _synthesis_example_priority(record: GanRecord) -> tuple[int, int, str]:
+    has_locatable_evidence = (
+        bool(record.gold_evidence)
+        and "..." not in record.gold_evidence
+        and record.gold_evidence in record.note_text
+    )
+    if has_locatable_evidence:
+        evidence_rank = 0
+    elif record.gold_label == "no seizure frequency reference":
+        evidence_rank = 2
+    else:
+        evidence_rank = 1
+
+    label = record.gold_label
+    if "cluster" in label:
+        label_rank = 0
+    elif label.startswith("seizure free"):
+        label_rank = 1
+    elif " per " in label:
+        label_rank = 2
+    elif label == "unknown":
+        label_rank = 3
+    else:
+        label_rank = 4
+    return (evidence_rank, label_rank, record.record_id)
+
+
 # ---------------------------------------------------------------------------
 # BootstrapFewShot compilation helper
 # ---------------------------------------------------------------------------
+
+GAN_FREQUENCY_S0_OPTIMIZER_METRICS = {
+    "pragmatic_category": gan_frequency_s0_metric,
+    "synthesis_exact_with_evidence": gan_frequency_s0_synthesis_metric,
+}
+
 
 def compile_gan_s0_module(
     records: list[GanRecord],
@@ -121,16 +252,27 @@ def compile_gan_s0_module(
     max_bootstrapped_demos: int = 4,
     max_labeled_demos: int = 0,
     max_rounds: int = 1,
+    optimizer_metric: str = "pragmatic_category",
 ) -> GanFrequencyS0Module:
     """Compile GanFrequencyS0Module with BootstrapFewShot on labeled training records.
 
     Runs the teacher module on each record and keeps traces that pass
-    ``gan_frequency_s0_metric`` (pragmatic category match) as few-shot
-    demonstrations. Returns the compiled module with demos baked in.
+    the selected optimizer metric as few-shot demonstrations. Returns the
+    compiled module with demos baked in.
     """
-    trainset = make_gan_dspy_examples(records)
+    try:
+        metric = GAN_FREQUENCY_S0_OPTIMIZER_METRICS[optimizer_metric]
+    except KeyError as exc:
+        allowed = ", ".join(sorted(GAN_FREQUENCY_S0_OPTIMIZER_METRICS))
+        raise ValueError(f"Unknown optimizer_metric {optimizer_metric!r}; use {allowed}.") from exc
+
+    trainset = (
+        make_gan_synthesis_dspy_examples(records)
+        if optimizer_metric == "synthesis_exact_with_evidence"
+        else make_gan_dspy_examples(records)
+    )
     optimizer = dspy.BootstrapFewShot(
-        metric=gan_frequency_s0_metric,
+        metric=metric,
         max_bootstrapped_demos=max_bootstrapped_demos,
         max_labeled_demos=max_labeled_demos,
         max_rounds=max_rounds,
@@ -184,15 +326,20 @@ def _predict_record(
     if isinstance(evidence_text, str) and evidence_text.strip().lower() in _ABSTAIN_STRINGS:
         evidence_text = None
 
+    normalized_label = _normalize_predicted_label(label)
+    quality_flags = ["abstained"] if label is None else []
+    if label != normalized_label:
+        quality_flags.append("normalized_label_repaired")
+
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,
         raw_value=label,
-        normalized_value=label,
+        normalized_value=normalized_label,
         evidence=_evidence_spans(record, evidence_text),
         temporality="unknown",
         negation="unknown",
         confidence=None,
-        quality_flags=["abstained"] if label is None else [],
+        quality_flags=quality_flags,
     )
     return DocumentPrediction(
         document_id=record.record_id,
@@ -201,6 +348,26 @@ def _predict_record(
         values=[value],
         metadata={"program_variant": GAN_FREQUENCY_S0_VARIANT},
     )
+
+
+_EVERY_DAY_RANGE_RE = re.compile(r"^1 per day to 1 per (?P<end>\d+) day$")
+_DAILY_COUNT_RE = re.compile(r"^(?P<count>\d+(?:\.\d+)?) per day$")
+
+
+def _normalize_predicted_label(label: str | None) -> str | None:
+    if label is None:
+        return None
+
+    stripped = label.strip()
+    every_day_range = _EVERY_DAY_RANGE_RE.match(stripped)
+    if every_day_range:
+        return f"1 per 1 to {every_day_range.group('end')} day"
+
+    daily_count = _DAILY_COUNT_RE.match(stripped)
+    if daily_count and float(daily_count.group("count")) > 33:
+        return "multiple per day"
+
+    return stripped
 
 
 def _evidence_spans(

@@ -24,6 +24,10 @@ class OptimizerConfig(FrozenModel):
     """BootstrapFewShot hyperparameters for DSPy module compilation."""
 
     name: Literal["BootstrapFewShot"] = "BootstrapFewShot"
+    metric_name: Literal[
+        "pragmatic_category",
+        "synthesis_exact_with_evidence",
+    ] = "pragmatic_category"
     max_bootstrapped_demos: int = Field(default=4, ge=1)
     max_labeled_demos: int = Field(default=0, ge=0)
     max_rounds: int = Field(default=1, ge=1)

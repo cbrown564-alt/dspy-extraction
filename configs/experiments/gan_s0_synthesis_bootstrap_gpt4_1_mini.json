@@ -1,0 +1,37 @@
+{
+  "controls": {
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
+    "context_policy": "full_note",
+    "few_shot_policy": "BootstrapFewShot with synthesis exact-label and evidence-support metric",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_synthesis_bootstrap_gpt4_1_mini",
+  "hypothesis": "A compact synthesis-backed BootstrapFewShot pass that optimizes exact normalized labels plus source-quote support will preserve schema validity while improving Gan label accuracy and evidence grounding before full validation.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The optimizer metric is stricter than benchmark scoring: bootstrapped traces must match the normalized gold label and provide exact source-quote support when locatable.",
+    "This capped validation config is a pre-full-validation optimization check, not a published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "optimizer": {
+    "max_bootstrapped_demos": 4,
+    "max_labeled_demos": 4,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence",
+    "name": "BootstrapFewShot",
+    "trainset_size": 50
+  },
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

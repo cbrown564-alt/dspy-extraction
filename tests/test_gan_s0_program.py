@@ -10,8 +10,10 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0Module,
     compile_gan_s0_module,
     gan_frequency_s0_metric,
+    gan_frequency_s0_synthesis_metric,
     gan_frequency_s0_run_metadata,
     make_gan_dspy_examples,
+    make_gan_synthesis_dspy_examples,
     predict_gan_records,
 )
 
@@ -84,6 +86,48 @@ def test_gan_s0_module_records_abstention_when_label_is_null():
     assert "abstained" in value.quality_flags
 
 
+def test_gan_s0_module_preserves_raw_label_when_normalizing_repairable_surface_form():
+    record = load_gan_records()[0]
+    _configure_dummy([{
+        "reasoning": "The note supports a range around daily events.",
+        "seizure_frequency_number": "1 per day to 1 per 2 day",
+        "evidence_text": "dummy evidence",
+    }])
+
+    module = GanFrequencyS0Module()
+    prediction_set = predict_gan_records(
+        module, [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == "1 per day to 1 per 2 day"
+    assert value.normalized_value == "1 per 1 to 2 day"
+    assert "normalized_label_repaired" in value.quality_flags
+
+
+def test_gan_s0_module_repairs_extreme_daily_count_to_multiple_per_day():
+    record = load_gan_records()[0]
+    _configure_dummy([{
+        "reasoning": "Hourly electrographic seizures should not exceed Gan scale.",
+        "seizure_frequency_number": "96 per day",
+        "evidence_text": "dummy evidence",
+    }])
+
+    module = GanFrequencyS0Module()
+    prediction_set = predict_gan_records(
+        module, [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == "96 per day"
+    assert value.normalized_value == "multiple per day"
+    assert "normalized_label_repaired" in value.quality_flags
+
+
 def test_gan_frequency_s0_metric_returns_1_on_pragmatic_category_match():
     example = dspy.Example(
         note_text="...",
@@ -128,6 +172,64 @@ def test_gan_frequency_s0_metric_returns_0_on_null_prediction():
     assert score == 0.0
 
 
+def test_gan_frequency_s0_synthesis_metric_requires_exact_label_and_quote_support():
+    example = dspy.Example(
+        note_text="He reports 3 focal seizures per week despite medication.",
+        seizure_frequency_number="3 per week",
+        evidence_text="3 focal seizures per week",
+    ).with_inputs("note_text")
+
+    exact_with_quote = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text="3 focal seizures per week",
+    )
+    pragmatic_only = dspy.Prediction(
+        seizure_frequency_number="4 per week",
+        evidence_text="3 focal seizures per week",
+    )
+    missing_quote = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text=None,
+    )
+    paraphrased_quote = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text="three seizures weekly",
+    )
+
+    assert gan_frequency_s0_synthesis_metric(example, exact_with_quote) == 1.0
+    assert gan_frequency_s0_synthesis_metric(example, pragmatic_only) == 0.0
+    assert gan_frequency_s0_synthesis_metric(example, missing_quote) == 0.0
+    assert gan_frequency_s0_synthesis_metric(example, paraphrased_quote) == 0.0
+
+
+def test_gan_frequency_s0_synthesis_metric_allows_no_reference_without_quote():
+    example = dspy.Example(
+        note_text="This administrative letter confirms the appointment was cancelled.",
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text=None,
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text=None,
+    )
+
+    assert gan_frequency_s0_synthesis_metric(example, pred) == 1.0
+
+
+def test_gan_frequency_s0_synthesis_metric_rejects_no_reference_paraphrase():
+    example = dspy.Example(
+        note_text="This administrative letter confirms the appointment was cancelled.",
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text=None,
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text="No direct mention of seizure frequency is present.",
+    )
+
+    assert gan_frequency_s0_synthesis_metric(example, pred) == 0.0
+
+
 def test_make_gan_dspy_examples_sets_note_text_as_input_and_gold_label_as_output():
     records = load_gan_records()[:5]
     examples = make_gan_dspy_examples(records)
@@ -137,6 +239,34 @@ def test_make_gan_dspy_examples_sets_note_text_as_input_and_gold_label_as_output
         assert example.note_text == record.note_text
         assert example.seizure_frequency_number == record.gold_label
         assert "note_text" in example.inputs()
+
+
+def test_make_gan_synthesis_dspy_examples_includes_gold_evidence_for_optimizer():
+    records = [
+        r for r in load_gan_records()
+        if r.gold_evidence and "..." not in r.gold_evidence and r.gold_evidence in r.note_text
+    ][:5]
+    examples = make_gan_synthesis_dspy_examples(records)
+    records_by_note = {record.note_text: record for record in records}
+
+    assert len(examples) == 5
+    for example in examples:
+        record = records_by_note[example.note_text]
+        assert example.note_text == record.note_text
+        assert example.seizure_frequency_number == record.gold_label
+        assert example.evidence_text == record.gold_evidence
+        assert "note_text" in example.inputs()
+
+
+def test_make_gan_synthesis_dspy_examples_prioritizes_locatable_evidence():
+    records = load_gan_records()
+    examples = make_gan_synthesis_dspy_examples(records[:50])
+
+    first = examples[0]
+    assert first.seizure_frequency_number != "no seizure frequency reference"
+    assert first.evidence_text
+    assert "..." not in first.evidence_text
+    assert first.evidence_text in first.note_text
 
 
 def test_compile_gan_s0_module_bootstrap_returns_callable_module():
