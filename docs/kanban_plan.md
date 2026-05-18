@@ -84,14 +84,23 @@ The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline
 
 ## Ready
 
-### Smoke-test model configs on Gan S0
+### Run Qwen Gan S0 smoke tests on Windows laptop
 
-- Outcome: Provider/model configs that are expected to work in the current environment have at least one small Gan S0 smoke run or a documented runtime blocker.
-- Dependencies: Model credentials in `.env`; model comparison configs; run experiment script.
-- Parallelizable: yes, except shared API rate limits.
+- Outcome: Qwen3.6:35b and Qwen3.5:9b each have a one-record Gan S0 smoke run from the Windows laptop, using the same single-pass smoke configs and standard run artifact layout.
+- Dependencies: Windows laptop with Ollama running; `qwen3.6:35b` and `qwen3.5:9b` installed; repo dependencies installed with `uv`; `.env` present if needed by shared scripts.
+- Parallelizable: no, because both runs depend on the Windows local-model runtime.
 - Owner: unassigned.
-- Validation: Run artifacts or documented blockers for GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b.
-- Notes: Closed-provider credentials are available in `.env`. Local Ollama availability remains a separate machine/runtime check for Qwen runs.
+- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry runs for `configs/experiments/gan_s0_smoke_qwen35b_ollama.json` and `configs/experiments/gan_s0_smoke_qwen9b_ollama.json`; completed run artifacts for both Qwen smoke configs.
+- Notes: Handoff commands and Mac-side smoke results are documented in `docs/model_config_smoke_tests.md`. Treat these one-record runs as runtime compatibility checks only, not performance estimates.
+
+### Resolve Gemini 3 Flash model identifier
+
+- Outcome: `configs/models/gan_s0_gemini3_flash.json` uses a Gemini 3 Flash model identifier and API path that the current DSPy/LiteLLM adapter can actually call.
+- Dependencies: Confirm the available Gemini 3 Flash model name/API version for the configured Google API key and LiteLLM provider path.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Re-run `configs/experiments/gan_s0_smoke_gemini3_flash.json` and record a standard run artifact.
+- Notes: The Mac smoke attempt reached Google but failed with 404 for `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`.
 
 ## In Progress
 
@@ -128,6 +137,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. `docs/exect_s0_s1_baseline_design.md` defines the combined audited diagnosis, seizure-type, and annotated-medication baseline.
 - Validation: Design reviewed against `docs/exect_gold_label_audit.md`, `docs/deterministic_scorer_semantics.md`, `docs/prior_prompt_error_analysis_synthesis.md`, existing ExECT loader/scorer code, and current shared prediction schema.
 - Notes: Benchmark-facing fields remain diagnosis, seizure type, and annotated medications only. Investigation, history, birth history, aetiology, onset, diagnosis-date, seizure frequency, and medication temporality remain deferred.
+
+### Prepare Gan S0 provider smoke configs and Windows Qwen handoff
+
+- Outcome: Complete. One-record Gan S0 smoke experiment configs exist for GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b, and the Windows Qwen handoff is documented in `docs/model_config_smoke_tests.md`.
+- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-runs passed for all five smoke configs.
+- Notes: GPT 4.1-mini completed `runs/gan_s0_smoke_gpt4_1_mini_20260518T130500Z`; GPT 5.5 completed `runs/gan_s0_smoke_gpt5_5_openai_20260518T130600Z` after changing its config to omit unsupported temperature. Gemini is blocked on model identifier/API-version 404. Qwen smoke runs are deferred to the Windows laptop.
 
 ## Blocked
 

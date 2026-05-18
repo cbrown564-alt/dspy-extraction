@@ -75,6 +75,55 @@ def test_gan_s0_synthesis_full_validation_config_removes_precheck_cap():
     assert "full fixed synthetic validation" in " ".join(config.metric_caveats)
 
 
+@pytest.mark.parametrize(
+    "filename,model_config_path,experiment_id",
+    [
+        (
+            "gan_s0_smoke_gpt4_1_mini.json",
+            "configs/models/gan_s0_gpt4_1_mini.json",
+            "gan_s0_smoke_gpt4_1_mini",
+        ),
+        (
+            "gan_s0_smoke_gpt5_5_openai.json",
+            "configs/models/gan_s0_gpt5_5_openai.json",
+            "gan_s0_smoke_gpt5_5_openai",
+        ),
+        (
+            "gan_s0_smoke_gemini3_flash.json",
+            "configs/models/gan_s0_gemini3_flash.json",
+            "gan_s0_smoke_gemini3_flash",
+        ),
+        (
+            "gan_s0_smoke_qwen35b_ollama.json",
+            "configs/models/gan_s0_qwen35b_ollama.json",
+            "gan_s0_smoke_qwen35b_ollama",
+        ),
+        (
+            "gan_s0_smoke_qwen9b_ollama.json",
+            "configs/models/gan_s0_qwen9b_ollama.json",
+            "gan_s0_smoke_qwen9b_ollama",
+        ),
+    ],
+)
+def test_gan_s0_provider_smoke_configs_are_one_record_single_pass_runs(
+    filename,
+    model_config_path,
+    experiment_id,
+):
+    config = load_experiment_config(Path("configs/experiments") / filename)
+
+    assert config.experiment_id == experiment_id
+    assert config.model_config_path == Path(model_config_path)
+    assert config.dataset == "gan_2026"
+    assert config.split_name == "gan_2026_fixed_v1:validation"
+    assert config.max_records == 1
+    assert config.optimizer is None
+    assert config.program_variant == GAN_FREQUENCY_S0_VARIANT
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert "smoke run" in " ".join(config.metric_caveats).lower()
+    assert not config.report_on_test_split
+
+
 def test_experiment_config_rejects_test_reporting_without_explicit_flag():
     payload = json.loads(
         Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(

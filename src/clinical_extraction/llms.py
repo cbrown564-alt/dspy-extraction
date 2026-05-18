@@ -27,7 +27,7 @@ class LLMProviderConfig(FrozenModel):
     api_key: str | None = None
     api_key_env: str | None = None
     timeout_seconds: float = Field(default=60.0, gt=0)
-    temperature: float = Field(default=0.0, ge=0.0)
+    temperature: float | None = Field(default=0.0, ge=0.0)
     mock_responses: list[dict[str, Any] | str] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -99,7 +99,7 @@ class OpenAICompatibleChatAdapter:
         base_url: str,
         api_key: str | None = None,
         timeout_seconds: float = 60.0,
-        temperature: float = 0.0,
+        temperature: float | None = 0.0,
         transport: Transport | None = None,
     ) -> None:
         self.provider = provider
@@ -119,8 +119,9 @@ class OpenAICompatibleChatAdapter:
         payload: dict[str, Any] = {
             "model": self.model,
             "messages": [message.model_dump() for message in messages],
-            "temperature": self.temperature,
         }
+        if self.temperature is not None:
+            payload["temperature"] = self.temperature
         if response_schema is not None:
             payload["response_format"] = {
                 "type": "json_schema",
@@ -195,20 +196,23 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
     api_key = config.api_key or _api_key_from_env(config.api_key_env) or "dummy"
 
     if config.provider == "gemini":
-        return dspy.LM(
-            model=f"gemini/{config.model}",
-            api_key=api_key,
-            temperature=config.temperature,
-            timeout=config.timeout_seconds,
-        )
+        kwargs: dict[str, Any] = {
+            "model": f"gemini/{config.model}",
+            "api_key": api_key,
+            "timeout": config.timeout_seconds,
+        }
+        if config.temperature is not None:
+            kwargs["temperature"] = config.temperature
+        return dspy.LM(**kwargs)
 
     base_url = config.base_url or _default_base_url(config.provider)
     kwargs: dict[str, Any] = {
         "model": f"openai/{config.model}",
         "api_key": api_key,
-        "temperature": config.temperature,
         "timeout": config.timeout_seconds,
     }
+    if config.temperature is not None:
+        kwargs["temperature"] = config.temperature
     if config.provider != "openai" or config.base_url:
         kwargs["api_base"] = base_url
     return dspy.LM(**kwargs)

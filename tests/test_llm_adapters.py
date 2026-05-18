@@ -107,4 +107,26 @@ def test_openai_compatible_adapter_posts_chat_completion_payload_offline():
         {"role": "system", "content": "Return JSON."},
         {"role": "user", "content": "note text"},
     ]
+    assert captured["body"]["temperature"] == 0.0
     assert captured["body"]["response_format"]["type"] == "json_schema"
+
+
+def test_openai_compatible_adapter_omits_temperature_when_config_uses_default():
+    captured = {}
+
+    def transport(url, headers, body, timeout_seconds):
+        captured["body"] = json.loads(body)
+        return {"choices": [{"message": {"content": "{}"}}]}
+
+    adapter = OpenAICompatibleChatAdapter(
+        provider="openai",
+        model="gpt-5.5",
+        base_url="https://api.openai.com/v1",
+        api_key="test-key",
+        temperature=None,
+        transport=transport,
+    )
+
+    adapter.complete_json([ChatMessage(role="user", content="note text")])
+
+    assert "temperature" not in captured["body"]
