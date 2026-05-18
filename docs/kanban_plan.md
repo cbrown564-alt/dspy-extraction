@@ -354,6 +354,15 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Validation: `tests/test_gan_s0_program.py`; `tests/test_experiment_configs.py`; capped run `runs/gan_s0_synthesis_bootstrap_gpt4_1_mini_20260518T062451Z`; full validation run `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z`.
 - Notes: Best capped run preserved 96% schema validity while improving normalized-label accuracy to 37.5%, monthly and Purist accuracy to 54.2%, Pragmatic category accuracy to 79.2%, and evidence quote support to 87.0%. Full validation on 299 records reached 97.3% schema validity, 51.5% normalized-label accuracy, 62.9% monthly-frequency accuracy, 70.1% Purist category accuracy, 73.9% Pragmatic category accuracy, and 89.9% evidence quote support. Remaining failures are dominated by label mismatches, monthly-frequency mismatches, category mismatches, unsupported evidence quotes, missing evidence, and invalid cluster/quoted-unknown labels.
 
+### Review Gan S0 full-validation errors and add surface repairs
+
+- Outcome: Full-validation errors are summarized and repairable prediction-surface forms are normalized without changing Gan scorer semantics.
+- Dependencies: Implement synthesis-backed Gan S0 optimization; Gan audit guidance; gold scorer integrity.
+- Parallelizable: yes, before broader verifier/repair module work.
+- Owner: Codex.
+- Validation: `tests/test_gan_s0_program.py`; `docs/gan_s0_full_validation_error_read.md`.
+- Notes: The error read keeps label scoring separate from evidence diagnostics. The artifact bridge now preserves raw model outputs while normalizing quoted special labels such as `"unknown"` and matching-count denominator ranges such as `1 per 10 day to 1 per 7 day`. Incomplete cluster labels, `unknown per cluster`, abstentions, and semantic cluster-to-unknown mistakes remain unresolved because repairing them would require additional evidence-aware model or rule logic.
+
 ## Review
 
 No active review card is claimed in this plan.

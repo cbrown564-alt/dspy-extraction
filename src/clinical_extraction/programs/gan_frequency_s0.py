@@ -359,6 +359,15 @@ def _predict_record(
 
 _EVERY_DAY_RANGE_RE = re.compile(r"^1 per day to 1 per (?P<end>\d+) day$")
 _DAILY_COUNT_RE = re.compile(r"^(?P<count>\d+(?:\.\d+)?) per day$")
+_QUOTED_SPECIAL_LABEL_RE = re.compile(
+    r"^[\"'](?P<label>unknown|no seizure frequency reference)[\"']$",
+    re.IGNORECASE,
+)
+_MATCHING_RATE_RANGE_RE = re.compile(
+    r"^(?P<count>\d+(?:\.\d+)?) per (?P<first>\d+(?:\.\d+)?) "
+    r"(?P<first_unit>day|week|month|year) to (?P=count) per "
+    r"(?P<second>\d+(?:\.\d+)?) (?P<second_unit>day|week|month|year)$"
+)
 
 
 def _normalize_predicted_label(label: str | None) -> str | None:
@@ -366,15 +375,39 @@ def _normalize_predicted_label(label: str | None) -> str | None:
         return None
 
     stripped = label.strip()
+    quoted_special = _QUOTED_SPECIAL_LABEL_RE.match(stripped)
+    if quoted_special:
+        return quoted_special.group("label").lower()
+
     every_day_range = _EVERY_DAY_RANGE_RE.match(stripped)
     if every_day_range:
         return f"1 per 1 to {every_day_range.group('end')} day"
+
+    matching_rate_range = _MATCHING_RATE_RANGE_RE.match(stripped)
+    if (
+        matching_rate_range
+        and matching_rate_range.group("first_unit") == matching_rate_range.group("second_unit")
+    ):
+        first = matching_rate_range.group("first")
+        second = matching_rate_range.group("second")
+        low, high = sorted((float(first), float(second)))
+        return (
+            f"{matching_rate_range.group('count')} per "
+            f"{_format_number(low)} to {_format_number(high)} "
+            f"{matching_rate_range.group('first_unit')}"
+        )
 
     daily_count = _DAILY_COUNT_RE.match(stripped)
     if daily_count and float(daily_count.group("count")) > 33:
         return "multiple per day"
 
     return stripped
+
+
+def _format_number(value: float) -> str:
+    if value.is_integer():
+        return str(int(value))
+    return str(value)
 
 
 def _evidence_spans(

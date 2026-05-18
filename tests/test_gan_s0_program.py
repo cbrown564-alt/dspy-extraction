@@ -163,6 +163,38 @@ def test_gan_s0_module_repairs_extreme_daily_count_to_multiple_per_day():
     assert "normalized_label_repaired" in value.quality_flags
 
 
+@pytest.mark.parametrize(
+    ("raw_label", "normalized_label"),
+    [
+        ('"unknown"', "unknown"),
+        ("'unknown'", "unknown"),
+        ("1 per 3 week to 1 per 2 week", "1 per 2 to 3 week"),
+        ("1 per 10 day to 1 per 7 day", "1 per 7 to 10 day"),
+    ],
+)
+def test_gan_s0_module_repairs_full_validation_surface_errors(
+    raw_label: str, normalized_label: str
+):
+    record = load_gan_records()[0]
+    _configure_dummy([{
+        "reasoning": "The note supports a repairable surface-form label.",
+        "seizure_frequency_number": raw_label,
+        "evidence_text": "dummy evidence",
+    }])
+
+    module = GanFrequencyS0Module()
+    prediction_set = predict_gan_records(
+        module, [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == raw_label
+    assert value.normalized_value == normalized_label
+    assert "normalized_label_repaired" in value.quality_flags
+
+
 def test_gan_frequency_s0_metric_returns_1_on_pragmatic_category_match():
     example = dspy.Example(
         note_text="...",
