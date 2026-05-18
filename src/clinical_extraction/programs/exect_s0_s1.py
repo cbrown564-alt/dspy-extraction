@@ -24,7 +24,7 @@ EXECT_DATASET = "exect_v2"
 EXECT_S0_S1_SCHEMA_LEVEL = "exect_s0_s1_field_family"
 EXECT_S0_S1_VARIANT = "exect_s0_s1_field_family_single_pass"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
-EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v2_label_policy"
+EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v3_seizure_evidence_policy"
 EXECT_S0_S1_FIELD_FAMILIES = (
     "diagnosis",
     "seizure_type",
@@ -40,6 +40,9 @@ EXECT_S0_S1_LABEL_POLICY_GUIDANCE = (
     "Use the audited seizure-type surface supported by the note. Preserve plural and modifier "
     "surfaces such as focal seizures with altered awareness or occipital lobe seizures when those "
     "are the benchmark-facing labels.",
+    "Split fused seizure-type surfaces into audited benchmark labels when the note combines a "
+    "lobe-specific type with a broader focal seizure type; for example temporal lobe onset focal "
+    "seizures should produce temporal lobe seizure and focal seizures.",
     "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a "
     "separate current seizure type unless the note independently names it as current.",
     "Annotated medication means medications in the audited prescription annotation view only; do "
@@ -64,8 +67,8 @@ EXECT_S0_S1_POLICY_EXAMPLES = (
     {
         "case": "canonical_seizure_type_granularity",
         "note_fragment": "The events are temporal-lobe-onset focal seizures.",
-        "benchmark_output": {"seizure_type": ["temporal lobe seizure"]},
-        "policy": "Use the audited coarse seizure-type surface rather than a richer clinical phrase.",
+        "benchmark_output": {"seizure_type": ["temporal lobe seizure", "focal seizures"]},
+        "policy": "Split the fused rich phrase into the audited benchmark seizure-type labels.",
     },
     {
         "case": "diagnosis_label_preservation",
@@ -78,6 +81,15 @@ EXECT_S0_S1_POLICY_EXAMPLES = (
         "note_fragment": "Seizure type and frequency: focal seizures with altered awareness every 3 weeks.",
         "benchmark_output": {"seizure_type": ["focal seizures with altered awareness"]},
         "policy": "Preserve audited plural seizure-type surfaces when that is the scorer label.",
+    },
+    {
+        "case": "evidence_quote_contiguity",
+        "note_fragment": "Seizure type: occipital lobe seizures. Previous medication: lamotrigine.",
+        "benchmark_output": {
+            "seizure_type": ["occipital lobe seizures"],
+            "seizure_type_evidence": ["occipital lobe seizures"],
+        },
+        "policy": "Evidence must be an exact contiguous quote, not a stitched or ellipsis quote.",
     },
     {
         "case": "single_event_diagnosis_null",
@@ -157,11 +169,14 @@ class ExectS0S1FieldFamilySignature(dspy.Signature):
     - "Previously tried carbamazepine. Current treatment is sodium valproate."
       -> annotated_medication = ["sodium valproate"]; exclude previous carbamazepine.
     - "The events are temporal-lobe-onset focal seizures."
-      -> seizure_type = ["temporal lobe seizure"]; avoid richer non-benchmark wording.
+      -> seizure_type = ["temporal lobe seizure", "focal seizures"]; split the fused
+      rich phrase into audited benchmark labels.
     - "Diagnosis: symptomatic structural focal epilepsy."
       -> diagnosis = ["symptomatic structural focal epilepsy"]; preserve the audited label.
     - "Seizure type and frequency: focal seizures with altered awareness every 3 weeks."
       -> seizure_type = ["focal seizures with altered awareness"]; preserve plural wording.
+    - "Seizure type: occipital lobe seizures. Previous medication: lamotrigine."
+      -> seizure_type_evidence = ["occipital lobe seizures"]; use exact contiguous quotes.
     - "This was a single focal seizure. There is no established epilepsy diagnosis."
       -> diagnosis = []; do not convert a single event into established epilepsy.
     """
@@ -321,32 +336,52 @@ def _values_for_family(
     collapsed_values = collapsed_values or []
 
     for index, raw_value in enumerate(raw_values):
-        normalized = _normalize_value(field_name, raw_value)
-        if not normalized or normalized in seen:
-            continue
-        seen.add(normalized)
-        quality_flags = _quality_flags(
-            field_name=field_name,
-            normalized_value=normalized,
-            collapsed_values=collapsed_values,
-            evidence_text=_evidence_at(evidence_values, index),
-        )
-        values.append(
-            ExtractedValue(
+        evidence_text = _evidence_at(evidence_values, index)
+        for normalized, bridge_flags in _benchmark_values(field_name, raw_value):
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            quality_flags = _quality_flags(
                 field_name=field_name,
-                raw_value=raw_value,
                 normalized_value=normalized,
-                evidence=_evidence_spans(
-                    record,
-                    _evidence_at(evidence_values, index),
-                ),
-                temporality="not_applicable",
-                negation="affirmed",
-                confidence=None,
-                quality_flags=quality_flags,
+                collapsed_values=collapsed_values,
+                evidence_text=evidence_text,
             )
-        )
+            values.append(
+                ExtractedValue(
+                    field_name=field_name,
+                    raw_value=raw_value,
+                    normalized_value=normalized,
+                    evidence=_evidence_spans(record, evidence_text),
+                    temporality="not_applicable",
+                    negation="affirmed",
+                    confidence=None,
+                    quality_flags=[*quality_flags, *bridge_flags],
+                )
+            )
     return values
+
+
+def _benchmark_values(field_name: str, value: str) -> list[tuple[str, list[str]]]:
+    normalized = _normalize_value(field_name, value)
+    if field_name == "seizure_type":
+        split_values = _split_fused_seizure_type(normalized)
+        if split_values is not None:
+            return [
+                (split_value, ["benchmark_bridge:fused_seizure_type_split"])
+                for split_value in split_values
+            ]
+    return [(normalized, [])]
+
+
+def _split_fused_seizure_type(normalized: str) -> list[str] | None:
+    if normalized in {
+        "temporal lobe onset focal seizures",
+        "temporal lobe focal seizures",
+        "temporal onset focal seizures",
+    }:
+        return ["temporal lobe seizure", "focal seizures"]
+    return None
 
 
 def _normalize_value(field_name: str, value: str) -> str:

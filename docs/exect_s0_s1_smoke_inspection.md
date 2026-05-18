@@ -204,3 +204,71 @@ This is still a capped 3-record smoke, not a performance estimate and not publis
 1. Add an explicit seizure-type policy example or normalization decision for fused surfaces such as `temporal lobe onset focal seizures` when the current gold expects separate `temporal lobe seizure` and `focal seizures`.
 2. Add ExECT evidence-support aggregation or a focused artifact inspection check before any full validation run.
 3. Re-run the same capped smoke after the seizure-type follow-up before moving to full validation or section-aware ablations.
+
+## 2026-05-18 Seizure-Type And Evidence Follow-Up
+
+### Context
+
+The v2 label-policy smoke fixed medication scope and diagnosis alignment on the capped slice, but EA0018 still exposed a fused seizure-type surface: the model emitted `temporal lobe onset focal seizures` while the current audited scorer view expects two benchmark-facing labels, `temporal lobe seizure` and `focal seizures`. The same run also showed that evidence quote quality needed an explicit diagnostic aggregation path before any full validation.
+
+### Work Completed
+
+Code and config changes:
+
+- `src/clinical_extraction/programs/exect_s0_s1.py`: bumped the prompt version to `exect_s0_s1_field_family_v3_seizure_evidence_policy`, added a fused seizure-type policy example, and added a narrow benchmark bridge that splits `temporal lobe onset focal seizures`-style outputs into `temporal lobe seizure` plus `focal seizures`.
+- `src/clinical_extraction/evaluation/exect.py`: added ExECT value-level evidence quote diagnostics using the shared deterministic evidence support check. These diagnostics report quote support, offset presence, offset validity, and bounded evidence errors without changing field-family scorer semantics.
+- `scripts/run_experiment.py`: prints ExECT evidence diagnostics in the run summary.
+- `configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json`: now records the v3 prompt policy.
+- `tests/test_exect_s0_s1_program.py` and `tests/test_exect_scoring.py`: added mocked-LM coverage for fused seizure-type bridge behavior and ExECT evidence aggregation.
+
+Validation:
+
+```text
+uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py
+```
+
+Result: 26 passed.
+
+Dry run:
+
+```text
+uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run
+```
+
+Result: config resolved the same capped 3-record validation slice.
+
+Final capped model run:
+
+```text
+uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --env-file .env
+```
+
+Run artifact:
+
+- `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T160445Z`
+
+### Results
+
+On the same three capped validation records:
+
+| Metric | V2 label-policy smoke | V3 seizure/evidence smoke |
+|---|---:|---:|
+| Micro precision | 88.9% | 100.0% |
+| Micro recall | 80.0% | 100.0% |
+| Micro F1 | 84.2% | 100.0% |
+| Diagnosis F1 | 100.0% | 100.0% |
+| Seizure-type F1 | 66.7% | 100.0% |
+| Annotated-medication F1 | 100.0% | 100.0% |
+| Evidence quote support | not aggregated | 90.0% |
+| Evidence offsets present | not aggregated | 90.0% |
+| Evidence offsets valid | not aggregated | 100.0% |
+
+### Observations
+
+The bridge split EA0018's fused `temporal lobe onset focal seizures` output into the two current benchmark-facing labels and tagged both values with `benchmark_bridge:fused_seizure_type_split`. This is bridge behavior, not a scorer semantic change.
+
+Evidence diagnostics now surface the remaining source-grounding issue: one EA0018 medication evidence quote used an ellipsis (`Currently she is taking ... levetiracetam 1000 mg twice today`) and was counted as unsupported because it is not a contiguous source quote.
+
+### Interpretation
+
+The capped v3 smoke clears the immediate seizure-type granularity blocker and adds the evidence-support aggregation needed before scaling. The capped slice is still too small for performance claims. Before full validation, the remaining open question is whether unsupported ellipsis evidence quotes are common enough to justify a verifier/repair step or stricter prompt/evidence example work.

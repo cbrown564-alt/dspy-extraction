@@ -145,7 +145,10 @@ def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
     signature_text = ExectS0S1FieldFamilySignature.__doc__.lower()
     example_cases = {example["case"] for example in EXECT_S0_S1_POLICY_EXAMPLES}
 
-    assert EXECT_S0_S1_PROMPT_VERSION == "exect_s0_s1_field_family_v2_label_policy"
+    assert (
+        EXECT_S0_S1_PROMPT_VERSION
+        == "exect_s0_s1_field_family_v3_seizure_evidence_policy"
+    )
     assert "planned starts" in policy_text
     assert "previous trials" in policy_text
     assert "focal seizures with altered awareness" in policy_text
@@ -157,6 +160,7 @@ def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
         "canonical_seizure_type_granularity",
         "diagnosis_label_preservation",
         "plural_seizure_type_preservation",
+        "evidence_quote_contiguity",
         "single_event_diagnosis_null",
     }.issubset(example_cases)
 
@@ -217,6 +221,44 @@ def test_exect_s0_s1_policy_fixture_uses_canonical_seizure_type_surface():
     assert len(seizure_values) == 1
     assert seizure_values[0].raw_value == "temporal lobe seizure"
     assert seizure_values[0].normalized_value == "temporal lobe seizure"
+
+
+def test_exect_s0_s1_bridge_splits_fused_temporal_lobe_onset_focal_seizures():
+    record = load_exect_gold_document("EA0018")
+    _configure_dummy([{
+        "reasoning": "The model emitted a fused clinical surface for two audited labels.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": ["temporal lobe onset focal seizures"],
+        "seizure_type_evidence": ["temporal lobe onset focal seizures"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert [value.normalized_value for value in seizure_values] == [
+        "temporal lobe seizure",
+        "focal seizures",
+    ]
+    assert all(
+        value.raw_value == "temporal lobe onset focal seizures"
+        for value in seizure_values
+    )
+    assert all(
+        "benchmark_bridge:fused_seizure_type_split" in value.quality_flags
+        for value in seizure_values
+    )
 
 
 def test_exect_s0_s1_policy_fixture_preserves_audited_diagnosis_label():

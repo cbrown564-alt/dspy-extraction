@@ -114,3 +114,72 @@ def test_exect_prediction_set_scorer_reports_field_and_micro_metrics():
     assert report["benchmark_metrics"]["field_f1"]["diagnosis"] == 1.0
     assert report["benchmark_metrics"]["field_f1"]["seizure_type"] == 0.6666666666666666
     assert report["diagnostic_metrics"]["documents_with_gold_quality_flags"] == 0.0
+
+
+def test_exect_prediction_set_scorer_reports_evidence_quote_diagnostics():
+    gold = load_exect_gold_document("EA0008")
+    prediction_set = PredictionSet(
+        dataset="exect_v2",
+        schema_level="exect_s0_s1",
+        predictions=[
+            DocumentPrediction(
+                document_id="EA0008",
+                dataset="exect_v2",
+                schema_level="exect_s0_s1",
+                values=[
+                    ExtractedValue(
+                        field_name="diagnosis",
+                        raw_value=gold.diagnoses[0],
+                        evidence=[],
+                    ),
+                    ExtractedValue(
+                        field_name="seizure_type",
+                        raw_value=gold.seizure_types[0],
+                        evidence=[
+                            {
+                                "text": "focal seizures with altered awareness",
+                            }
+                        ],
+                    ),
+                    ExtractedValue(
+                        field_name="current_medication",
+                        raw_value=gold.current_medications[0],
+                        evidence=[
+                            {
+                                "text": "not a contiguous quote from this note",
+                            }
+                        ],
+                    ),
+                ],
+            ),
+        ],
+    )
+
+    report = score_exect_prediction_set(prediction_set, gold_documents=[gold])
+
+    assert report["diagnostic_metrics"]["evidence_quote_support_rate"] == 0.5
+    assert report["diagnostic_metrics"]["evidence_offsets_present_rate"] == 0.0
+    assert report["diagnostic_metrics"]["evidence_offsets_valid_rate"] is None
+    assert report["errors"]["evidence_support_errors"] == [
+        {
+            "document_id": "EA0008",
+            "field_name": "diagnosis",
+            "raw_value": gold.diagnoses[0],
+            "reason": "prediction has no evidence spans",
+        },
+        {
+            "document_id": "EA0008",
+            "field_name": "current_medication",
+            "raw_value": gold.current_medications[0],
+            "predicted_evidence": [
+                {
+                    "document_id": None,
+                    "end": None,
+                    "section": None,
+                    "start": None,
+                    "text": "not a contiguous quote from this note",
+                }
+            ],
+            "reason": "predicted evidence quote or offsets not supported by document text",
+        },
+    ]

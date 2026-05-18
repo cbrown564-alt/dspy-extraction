@@ -362,6 +362,9 @@ def _print_summary(report: dict[str, Any], metric_caveats: list[str]) -> None:
             "  Documents with gold quality flags: "
             f"{pct(diag.get('documents_with_gold_quality_flags'))}"
         )
+        print(f"  Evidence quote support rate: {pct(diag.get('evidence_quote_support_rate'))}")
+        print(f"  Evidence offsets present rate: {pct(diag.get('evidence_offsets_present_rate'))}")
+        print(f"  Evidence offsets valid rate:   {pct(diag.get('evidence_offsets_valid_rate'))}")
     else:
         print("\n--- Benchmark metrics (not published reproduction) ---")
         print(f"  Monthly frequency accuracy:  {pct(bm.get('monthly_frequency_accuracy'))}")

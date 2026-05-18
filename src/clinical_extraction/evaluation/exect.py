@@ -10,6 +10,7 @@ from clinical_extraction.datasets.exect import (
     canonical_medication_name,
     load_exect_gold_documents,
 )
+from clinical_extraction.evaluation.evidence import score_evidence_support
 from clinical_extraction.schemas import DocumentPrediction, ExectGoldDocument, PredictionSet
 
 EXECT_DATASET = "exect_v2"
@@ -136,6 +137,11 @@ def score_exect_prediction_set(
     documents_with_flags = sum(
         bool(document_score.gold_quality_flags) for document_score in document_scores
     )
+    evidence_diagnostics = _evidence_diagnostics(
+        gold_by_id=gold_by_id,
+        predictions_by_id=predictions_by_id,
+        evaluated_ids=evaluated_ids,
+    )
 
     return {
         "dataset": prediction_set.dataset,
@@ -173,11 +179,24 @@ def score_exect_prediction_set(
                 documents_with_flags,
                 len(document_scores),
             ),
+            "evidence_quote_support_rate": _ratio(
+                evidence_diagnostics["quote_supported"],
+                evidence_diagnostics["values_with_evidence"],
+            ),
+            "evidence_offsets_present_rate": _ratio(
+                evidence_diagnostics["values_with_offsets"],
+                evidence_diagnostics["values_with_evidence"],
+            ),
+            "evidence_offsets_valid_rate": _ratio(
+                evidence_diagnostics["offsets_valid"],
+                evidence_diagnostics["values_with_offsets"],
+            ),
         },
         "caveats": [
             "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
             "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
             "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
+            "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         ],
         "errors": {
             "missing_prediction_ids": missing_ids,
@@ -194,6 +213,7 @@ def score_exect_prediction_set(
                 for family, field_score in document_score.field_scores.items()
                 if field_score.false_positives or field_score.false_negatives
             ],
+            "evidence_support_errors": evidence_diagnostics["errors"],
         },
     }
 
@@ -240,6 +260,69 @@ def _prediction_values_by_family(
             if normalized and normalized not in values_by_family[family]:
                 values_by_family[family].append(normalized)
     return values_by_family
+
+
+def _evidence_diagnostics(
+    *,
+    gold_by_id: dict[str, ExectGoldDocument],
+    predictions_by_id: dict[str, DocumentPrediction],
+    evaluated_ids: list[str],
+) -> dict[str, Any]:
+    values_with_evidence = 0
+    values_with_offsets = 0
+    quote_supported = 0
+    offsets_valid = 0
+    errors: list[dict[str, Any]] = []
+
+    for document_id in evaluated_ids:
+        gold = gold_by_id[document_id]
+        prediction = predictions_by_id[document_id]
+        for value in prediction.values:
+            family = _FIELD_ALIASES.get(value.field_name)
+            if family is None:
+                continue
+            if not value.evidence:
+                errors.append(
+                    {
+                        "document_id": document_id,
+                        "field_name": value.field_name,
+                        "raw_value": value.raw_value,
+                        "reason": "prediction has no evidence spans",
+                    }
+                )
+                continue
+
+            evidence_score = score_evidence_support(
+                document_text=gold.text,
+                predicted_evidence=value.evidence,
+            )
+            values_with_evidence += 1
+            has_offsets = evidence_score.predicted_evidence_with_offsets > 0
+            values_with_offsets += int(has_offsets)
+            quote_supported += int(evidence_score.quote_supported)
+            offsets_valid += int(evidence_score.offsets_valid is True)
+
+            if not evidence_score.quote_supported:
+                errors.append(
+                    {
+                        "document_id": document_id,
+                        "field_name": value.field_name,
+                        "raw_value": value.raw_value,
+                        "predicted_evidence": [
+                            evidence.model_dump(mode="json")
+                            for evidence in value.evidence
+                        ],
+                        "reason": "predicted evidence quote or offsets not supported by document text",
+                    }
+                )
+
+    return {
+        "values_with_evidence": values_with_evidence,
+        "values_with_offsets": values_with_offsets,
+        "quote_supported": quote_supported,
+        "offsets_valid": offsets_valid,
+        "errors": errors,
+    }
 
 
 def _raw_prediction_values(normalized_value: Any, raw_value: str | None) -> list[str]:
