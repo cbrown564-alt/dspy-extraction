@@ -8,6 +8,11 @@ from clinical_extraction.experiments.config import (
     ExperimentConfig,
     load_experiment_config,
 )
+from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_SCHEMA_LEVEL,
+    EXECT_S0_S1_SCORER,
+    EXECT_S0_S1_VARIANT,
+)
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
@@ -73,6 +78,27 @@ def test_gan_s0_synthesis_full_validation_config_removes_precheck_cap():
     assert config.optimizer is not None
     assert config.optimizer.metric_name == "synthesis_exact_with_evidence"
     assert "full fixed synthetic validation" in " ".join(config.metric_caveats)
+
+
+def test_exect_s0_s1_smoke_config_records_field_family_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s0_s1_smoke_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.split_file == Path("data/splits/exectv2_splits.json")
+    assert config.model_config_path == Path("configs/models/gan_s0_gpt4_1_mini.json")
+    assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.prompt_version == "exect_s0_s1_field_family_v1"
+    assert config.controls.context_policy == "full_note"
+    assert config.controls.verifier_policy == "none"
+    assert config.controls.repair_policy == "none"
+    assert config.max_records == 3
+    assert "partial ExECT S0/S1" in " ".join(config.metric_caveats)
 
 
 @pytest.mark.parametrize(

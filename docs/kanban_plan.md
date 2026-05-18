@@ -84,6 +84,15 @@ The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline
 
 ## Ready
 
+### Run capped ExECT S0/S1 field-family smoke
+
+- Outcome: A capped GPT 4.1-mini validation smoke run exists for the ExECT S0/S1 field-family baseline, with predictions, metrics, errors, prompts/config snapshots, and a short artifact inspection note.
+- Dependencies: ExECT S0/S1 DSPy field-family baseline contract.
+- Parallelizable: yes, subject to API credentials and rate limits.
+- Owner: unassigned.
+- Validation: `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --env-file .env`; inspect the produced run directory for schema-valid prediction shape, per-family metrics, evidence quote behavior, and gold-quality flags.
+- Notes: The config is capped at three validation records and is not a performance estimate. The test split remains untouched.
+
 ### Run Qwen Gan S0 smoke tests on Windows laptop
 
 - Outcome: Qwen3.6:35b and Qwen3.5:9b each have a one-record Gan S0 smoke run from the Windows laptop, using the same single-pass smoke configs and standard run artifact layout.
@@ -144,6 +153,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-runs passed for all five smoke configs.
 - Notes: GPT 4.1-mini completed `runs/gan_s0_smoke_gpt4_1_mini_20260518T130500Z`; GPT 5.5 completed `runs/gan_s0_smoke_gpt5_5_openai_20260518T130600Z` after changing its config to omit unsupported temperature. Gemini is blocked on model identifier/API-version 404. Qwen smoke runs are deferred to the Windows laptop.
 
+### Implement ExECT S0/S1 DSPy field-family baseline contract
+
+- Outcome: Complete. `clinical_extraction.programs.exect_s0_s1` defines the benchmark-facing ExECT S0/S1 DSPy signature/module, example helper, artifact bridge, and run metadata for diagnosis, seizure type, and annotated medication field families.
+- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`.
+- Notes: The bridge preserves raw model phrases, normalizes benchmark-facing values with audited ExECT normalizers, collapses parent diagnosis labels when a more specific child is emitted, flags unsupported diagnosis labels and missing evidence, and does not infer seizure types from diagnosis. `scripts/run_experiment.py` now dispatches Gan and ExECT configs through the appropriate loader, module, metadata, and evaluator.
+
 ## Blocked
 
 ### Reproduce published ExECTv2 and Gan benchmark numbers
@@ -183,15 +198,6 @@ Completed work is summarized in the background sections above rather than repeat
 - Owner: unassigned.
 - Validation: Evaluation report includes abstention rate, accuracy on non-abstained predictions, evidence support on non-abstained predictions, and examples.
 - Notes: This should not inflate headline accuracy without reporting coverage.
-
-### Build ExECT S0/S1 DSPy field-family baseline
-
-- Outcome: A model-backed baseline extracts audited ExECT S0/S1 field families and writes field-level and document-level metrics.
-- Dependencies: Draft ExECT S0/S1 baseline design; ExECT field-family scorers; run artifact layout; provider adapters.
-- Parallelizable: after design.
-- Owner: unassigned.
-- Validation: Mocked-LM tests plus a capped real-model run; report includes schema validity, diagnosis metrics, seizure-type metrics, annotated-medication metrics, evidence diagnostics, and error samples.
-- Notes: Start with benchmark-facing label constraints rather than broad clinical label freedom.
 
 ### Add field-group and section-aware DSPy modules
 
@@ -344,7 +350,7 @@ Completed work is summarized in the background sections above rather than repeat
 
 - Shared contracts should stay single-threaded: scorer semantics, schema contracts, run metadata, split generation policy, and benchmark-alignment language affect every later card.
 - Gan repair work and ExECT baseline design can proceed in parallel because they touch different task surfaces.
-- ExECT implementation should wait for the ExECT baseline design decision so field scope and label policy do not drift.
+- ExECT implementation has opened the S0/S1 field-family path; the next dependency is capped model-backed artifact inspection before full validation or architecture ablations.
 - Model smoke tests are unblocked for closed providers with credentials in `.env`; Qwen runs remain blocked on local Ollama availability.
 - Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
 
@@ -352,14 +358,14 @@ Completed work is summarized in the background sections above rather than repeat
 
 - Safe immediately in parallel: post-repair Gan validation inspection, ExECT S0/S1 baseline design, and closed-provider Gan S0 smoke tests.
 - Safe after the next Gan decision: targeted Gan fixtures and verifier/repair design.
-- Blocked on module interfaces: ablation config files and broad program-architecture comparisons.
+- Blocked on module interfaces: ablation config files and broad program-architecture comparisons; ExECT section-aware work should wait until the capped S0/S1 smoke is inspected.
 - Blocked on local runtime: Qwen-backed model comparisons.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata changes, split policy, and benchmark-reproduction claims.
 
 ## Recommended Next Pull
 
-1. Build the ExECT S0/S1 DSPy field-family baseline from `docs/exect_s0_s1_baseline_design.md`.
-2. Smoke-test model configs on Gan S0 for closed providers with available credentials and document local Ollama blockers for Qwen if needed.
-3. Keep Gan verifier/repair and abstention calibration as explicit follow-up ablations after the ExECT baseline path is opened.
+1. Run and inspect the capped ExECT S0/S1 field-family smoke config now that the module and runner path exist.
+2. Smoke-test Qwen Gan S0 on the Windows laptop when the local Ollama runtime is available.
+3. Keep Gan verifier/repair, abstention calibration, and section-aware ExECT modules as explicit follow-up ablations after the first ExECT smoke artifacts are inspected.
 
-The plan is now organized so completed work serves as background and the foreground path is: implement the combined ExECT S0/S1 baseline, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.
+The plan is now organized so completed work serves as background and the foreground path is: validate the combined ExECT S0/S1 baseline on a capped run, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.

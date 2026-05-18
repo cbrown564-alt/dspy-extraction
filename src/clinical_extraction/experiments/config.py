@@ -6,6 +6,11 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
+from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_SCHEMA_LEVEL,
+    EXECT_S0_S1_SCORER,
+    EXECT_S0_S1_VARIANT,
+)
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
@@ -58,13 +63,22 @@ class ExperimentControls(FrozenModel):
 class ExperimentConfig(FrozenModel):
     experiment_id: str
     hypothesis: str
-    dataset: Literal["gan_2026"]
+    dataset: Literal["gan_2026", "exect_v2"]
     split_name: str
     split_file: Path
     model_config_path: Path
-    schema_level: Literal["gan_frequency_s0"] = GAN_FREQUENCY_S0_SCHEMA_LEVEL
-    program_variant: Literal["gan_frequency_s0_single_pass"] = GAN_FREQUENCY_S0_VARIANT
-    scorer_mode: Literal["gan_frequency_deterministic_v1"] = GAN_FREQUENCY_S0_SCORER
+    schema_level: Literal[
+        "gan_frequency_s0",
+        "exect_s0_s1_field_family",
+    ] = GAN_FREQUENCY_S0_SCHEMA_LEVEL
+    program_variant: Literal[
+        "gan_frequency_s0_single_pass",
+        "exect_s0_s1_field_family_single_pass",
+    ] = GAN_FREQUENCY_S0_VARIANT
+    scorer_mode: Literal[
+        "gan_frequency_deterministic_v1",
+        "exect_field_family_deterministic_v1",
+    ] = GAN_FREQUENCY_S0_SCORER
     prompt_version: str
     controls: ExperimentControls
     structured_output_strategy: StructuredOutputStrategy
@@ -85,9 +99,33 @@ class ExperimentConfig(FrozenModel):
             if not getattr(self, field).strip():
                 raise ValueError(f"{field} must be a non-empty string.")
 
+        expected_contracts = {
+            "gan_2026": (
+                GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+                GAN_FREQUENCY_S0_VARIANT,
+                GAN_FREQUENCY_S0_SCORER,
+            ),
+            "exect_v2": (
+                EXECT_S0_S1_SCHEMA_LEVEL,
+                EXECT_S0_S1_VARIANT,
+                EXECT_S0_S1_SCORER,
+            ),
+        }
+        expected_schema, expected_variant, expected_scorer = expected_contracts[self.dataset]
+        if (
+            self.schema_level,
+            self.program_variant,
+            self.scorer_mode,
+        ) != (expected_schema, expected_variant, expected_scorer):
+            raise ValueError(
+                f"{self.dataset} experiment configs must use schema_level="
+                f"{expected_schema!r}, program_variant={expected_variant!r}, "
+                f"and scorer_mode={expected_scorer!r}."
+            )
+
         if self.split_name.endswith(":test") and not self.report_on_test_split:
             raise ValueError(
-                "Gan S0 experiment configs must explicitly set "
+                "Experiment configs must explicitly set "
                 "report_on_test_split=true before reporting on the test split."
             )
         return self
