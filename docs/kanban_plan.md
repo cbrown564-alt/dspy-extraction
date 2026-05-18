@@ -351,8 +351,8 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Dependencies: Synthesize prior prompt and error-analysis guidance; Gan first LLM extraction baseline; run artifact layout and metadata contract.
 - Parallelizable: no, because it changes the optimizer target and validation gate for the next Gan run.
 - Owner: Codex.
-- Validation: `tests/test_gan_s0_program.py`; `tests/test_experiment_configs.py`; `uv run --extra dev pytest`; capped run `runs/gan_s0_synthesis_bootstrap_gpt4_1_mini_20260518T062451Z`.
-- Notes: Best capped run preserved 96% schema validity while improving normalized-label accuracy to 37.5%, monthly and Purist accuracy to 54.2%, Pragmatic category accuracy to 79.2%, and evidence quote support to 87.0%. The remaining invalid is an incomplete cluster label missing the per-cluster component. This is now ready for a full validation run with the same config after removing the `max_records` cap.
+- Validation: `tests/test_gan_s0_program.py`; `tests/test_experiment_configs.py`; capped run `runs/gan_s0_synthesis_bootstrap_gpt4_1_mini_20260518T062451Z`; full validation run `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z`.
+- Notes: Best capped run preserved 96% schema validity while improving normalized-label accuracy to 37.5%, monthly and Purist accuracy to 54.2%, Pragmatic category accuracy to 79.2%, and evidence quote support to 87.0%. Full validation on 299 records reached 97.3% schema validity, 51.5% normalized-label accuracy, 62.9% monthly-frequency accuracy, 70.1% Purist category accuracy, 73.9% Pragmatic category accuracy, and 89.9% evidence quote support. Remaining failures are dominated by label mismatches, monthly-frequency mismatches, category mismatches, unsupported evidence quotes, missing evidence, and invalid cluster/quoted-unknown labels.
 
 ## Review
 
@@ -413,7 +413,7 @@ No active implementation card is claimed in this plan.
   - v2 manual vocab-guided prompt (pre-DSPy refactor, now superseded): 92% schema validity, 70% pragmatic category accuracy — demonstrates the vocabulary learning gap, but was implemented as manual prompt engineering. This approach was abandoned in favour of DSPy optimization.
   - v3 BootstrapFewShot (4 demos from 50 dev records): 96% schema validity, 58.3% pragmatic category accuracy on valid predictions, 0% evidence quote support. Schema validity target achieved. Categorical accuracy lower than zero-shot per-valid rate (87.5%) but overall pragmatic accuracy more than doubled (~28% → 58.3%) because nearly all records now produce valid labels. Normalized label accuracy 16.7% — frequency unit errors are the likely next bottleneck.
   - v4 synthesis-backed BootstrapFewShot (`runs/gan_s0_synthesis_bootstrap_gpt4_1_mini_20260518T062451Z`): 96% schema validity, 37.5% normalized-label accuracy, 54.2% monthly/Purist accuracy, 79.2% Pragmatic category accuracy, and 87.0% evidence quote support on the capped 25-record validation slice. The strict synthesis metric accepted four full traces after eight dev examples and the run artifact includes compiled state.
-  - Next: run the synthesis-backed config on the full validation split for stable confidence intervals; inspect the remaining incomplete-cluster and temporal-window errors in `errors.json`.
+  - v5 full synthesis-backed validation (`runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z`): 299 validation records; 97.3% schema validity, 51.5% normalized-label accuracy, 62.9% monthly-frequency accuracy, 70.1% Purist category accuracy, 73.9% Pragmatic category accuracy, and 89.9% evidence quote support. Invalid labels include incomplete cluster forms such as `1 cluster per week`, cluster labels with `unknown per cluster`, and quoted `"unknown"`. The next error read should focus on frequent-to-unknown monthly mismatches, cluster format repair, and unsupported quote patterns.
 
 ### ExECT S0/S1 field-family baseline
 
@@ -471,8 +471,8 @@ No active implementation card is claimed in this plan.
 
 ## Recommended Next Pull
 
-1. Run `configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json` on the full validation split after removing the `max_records` cap, preserving `synthesis_exact_with_evidence` and compiled-state artifact capture.
-2. Inspect full-validation `errors.json` for incomplete cluster labels, year/window denominator errors, and residual no-reference over-abstention.
-3. Only after the full Gan validation read, decide whether to add a repair/verifier module or move to the ExECT S0/S1 benchmark-facing label-policy ablation.
+1. Inspect full-validation `errors.json` and `metrics.json` in `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z` for incomplete cluster labels, frequent-to-unknown monthly mismatches, temporal-window denominator errors, unsupported evidence quotes, and residual no-reference/unknown confusion.
+2. Decide whether the next Gan change should be a narrow deterministic postprocessor for repairable surface forms, a DSPy verifier/repair module, or an ExECT S0/S1 benchmark-facing label-policy ablation.
+3. If staying on Gan, add targeted regression fixtures before changing repair/verifier behavior so normalized-label and evidence-support semantics remain traceable.
 
 These cards move from mocked execution into reproducible model runs while keeping scorer semantics, benchmark caveats, and provider-specific structured output behavior explicit.

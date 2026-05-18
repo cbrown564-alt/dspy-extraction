@@ -64,6 +64,40 @@ def test_gan_s0_module_maps_dspy_prediction_to_prediction_set():
     )
 
 
+def test_gan_s0_prediction_progress_callback_reports_each_completed_record():
+    records = load_gan_records()[:2]
+    _configure_dummy([
+        {
+            "reasoning": "The first note mentions the gold frequency.",
+            "seizure_frequency_number": records[0].gold_label,
+            "evidence_text": records[0].gold_evidence,
+        },
+        {
+            "reasoning": "The second note mentions the gold frequency.",
+            "seizure_frequency_number": records[1].gold_label,
+            "evidence_text": records[1].gold_evidence,
+        },
+    ])
+    progress: list[tuple[int, int, str]] = []
+
+    module = GanFrequencyS0Module()
+    prediction_set = predict_gan_records(
+        module,
+        records,
+        model_provider="mock",
+        model_name="dummy-fixture",
+        progress_callback=lambda index, total, record_id: progress.append(
+            (index, total, record_id)
+        ),
+    )
+
+    assert len(prediction_set.predictions) == 2
+    assert progress == [
+        (1, 2, records[0].record_id),
+        (2, 2, records[1].record_id),
+    ]
+
+
 def test_gan_s0_module_records_abstention_when_label_is_null():
     record = load_gan_records()[0]
     _configure_dummy([{

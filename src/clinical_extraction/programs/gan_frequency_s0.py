@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from typing import Optional
 
 import dspy
@@ -292,9 +293,15 @@ def predict_gan_records(
     model_provider: str,
     model_name: str,
     prompt_version: str = "gan_frequency_s0_v1",
+    progress_callback: Callable[[int, int, str], None] | None = None,
 ) -> PredictionSet:
     """Run ``module`` on each Gan record and return a ``PredictionSet`` artifact."""
-    predictions = [_predict_record(module, record) for record in records]
+    predictions = []
+    total = len(records)
+    for index, record in enumerate(records, start=1):
+        predictions.append(_predict_record(module, record))
+        if progress_callback is not None:
+            progress_callback(index, total, record.record_id)
     return PredictionSet(
         dataset="gan_2026",
         schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,

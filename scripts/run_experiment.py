@@ -153,6 +153,7 @@ def main(argv: list[str] | None = None) -> int:
         model_provider=model_config.provider,
         model_name=model_config.model,
         prompt_version=config.prompt_version,
+        progress_callback=_print_prediction_progress,
     )
     paths["predictions"].write_text(
         json.dumps(prediction_set.model_dump(mode="json"), indent=2, sort_keys=True) + "\n",
@@ -172,6 +173,11 @@ def main(argv: list[str] | None = None) -> int:
 
     _print_summary(report, config.metric_caveats)
     return 0
+
+
+def _print_prediction_progress(index: int, total: int, record_id: str) -> None:
+    if index == 1 or index == total or index % 10 == 0:
+        print(f"  Predicted {index}/{total} records (last={record_id})", flush=True)
 
 
 def _make_run_id(experiment_id: str) -> str:
