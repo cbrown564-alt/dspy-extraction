@@ -98,9 +98,6 @@ def evaluate_gan_predictions(
         "predictions_with_offsets": 0,
         "quote_supported": 0,
         "offsets_valid": 0,
-        "gold_evidence_locatable": 0,
-        "overlap_scored": 0,
-        "overlap_exact": 0,
     }
     metric_observations: dict[str, list[int]] = {
         "monthly_frequency_accuracy": [],
@@ -112,9 +109,6 @@ def evaluate_gan_predictions(
         "evidence_quote_support_rate": [],
         "evidence_offsets_valid_rate": [],
         "evidence_offsets_present_rate": [],
-        "gold_evidence_locatable_rate": [],
-        "evidence_overlap_scored_rate": [],
-        "evidence_exact_overlap_rate": [],
     }
     taxonomy = ErrorTaxonomy(max_examples=max_errors)
 
@@ -299,7 +293,6 @@ def evaluate_gan_predictions(
 
         evidence_score = score_evidence_support(
             document_text=gold.note_text,
-            gold_evidence_text=gold.gold_evidence,
             predicted_evidence=predicted_value.evidence,
         )
         if evidence_score.predicted_evidence_count:
@@ -309,11 +302,6 @@ def evaluate_gan_predictions(
             )
             evidence_counts["quote_supported"] += evidence_score.quote_supported
             evidence_counts["offsets_valid"] += evidence_score.offsets_valid is True
-            evidence_counts["gold_evidence_locatable"] += (
-                evidence_score.gold_evidence_locatable is True
-            )
-            evidence_counts["overlap_scored"] += evidence_score.best_iou is not None
-            evidence_counts["overlap_exact"] += evidence_score.best_iou == 1.0
             metric_observations["evidence_quote_support_rate"].append(
                 int(evidence_score.quote_supported)
             )
@@ -324,35 +312,11 @@ def evaluate_gan_predictions(
                 metric_observations["evidence_offsets_valid_rate"].append(
                     int(evidence_score.offsets_valid)
                 )
-            metric_observations["gold_evidence_locatable_rate"].append(
-                int(evidence_score.gold_evidence_locatable is True)
-            )
-            metric_observations["evidence_overlap_scored_rate"].append(
-                int(evidence_score.best_iou is not None)
-            )
-            if evidence_score.best_iou is not None:
-                metric_observations["evidence_exact_overlap_rate"].append(
-                    int(evidence_score.best_iou == 1.0)
-                )
             if evidence_score.offsets_valid is False:
                 taxonomy.add(
                     "evidence.invalid_offsets",
                     record_id=record_id,
                     reason="predicted evidence offsets do not match document text",
-                )
-            if evidence_score.gold_evidence_locatable is False:
-                taxonomy.add(
-                    "evidence.gold_unlocatable",
-                    record_id=record_id,
-                    reason="gold evidence quote could not be located in document text",
-                    details={"gold_evidence": gold.gold_evidence},
-                )
-            if evidence_score.best_iou is not None and evidence_score.best_iou < 1.0:
-                taxonomy.add(
-                    "evidence.partial_overlap",
-                    record_id=record_id,
-                    reason="predicted evidence overlaps gold evidence but is not exact",
-                    details={"best_iou": evidence_score.best_iou},
                 )
             if (
                 not evidence_score.quote_supported
@@ -366,7 +330,6 @@ def evaluate_gan_predictions(
                 evidence_error_samples.append(
                     {
                         "record_id": record_id,
-                        "gold_evidence": gold.gold_evidence,
                         "predicted_evidence": [
                             evidence.model_dump(mode="json")
                             for evidence in predicted_value.evidence
@@ -431,21 +394,12 @@ def evaluate_gan_predictions(
             "evidence_offsets_present_rate": _ratio(
                 evidence_counts["predictions_with_offsets"], evidence_denominator
             ),
-            "gold_evidence_locatable_rate": _ratio(
-                evidence_counts["gold_evidence_locatable"], evidence_denominator
-            ),
-            "evidence_overlap_scored_rate": _ratio(
-                evidence_counts["overlap_scored"], evidence_denominator
-            ),
-            "evidence_exact_overlap_rate": _ratio(
-                evidence_counts["overlap_exact"], evidence_counts["overlap_scored"]
-            ),
         },
         "confidence_intervals": confidence_intervals,
         "caveats": [
             "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
             "Raw exact and normalized-label exact metrics are diagnostic, not benchmark-facing.",
-            "Evidence metrics are diagnostic; some Gan gold evidence quotes are not verbatim locatable in note text.",
+            "Evidence metrics are diagnostic source-grounding checks: predicted evidence is evaluated by deterministic quote/offset support in the note text, not by overlap with Gan evidence annotations.",
         ],
         "errors": {
             "missing_prediction_ids": missing_ids[:max_errors],

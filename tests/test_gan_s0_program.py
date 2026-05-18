@@ -16,6 +16,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     make_gan_synthesis_dspy_examples,
     predict_gan_records,
 )
+from clinical_extraction.schemas import GanRecord
 
 
 @pytest.fixture(autouse=True)
@@ -202,6 +203,30 @@ def test_gan_frequency_s0_synthesis_metric_requires_exact_label_and_quote_suppor
     assert gan_frequency_s0_synthesis_metric(example, paraphrased_quote) == 0.0
 
 
+def test_gan_frequency_s0_synthesis_metric_requires_quote_when_gold_evidence_is_paraphrased():
+    example = dspy.Example(
+        note_text="History: she reports one seizure per month since March.",
+        seizure_frequency_number="1 per 1 month",
+        evidence_text="Patient has monthly seizures after March.",
+    ).with_inputs("note_text")
+    exact_with_source_quote = dspy.Prediction(
+        seizure_frequency_number="1 per 1 month",
+        evidence_text="one seizure per month",
+    )
+    exact_missing_quote = dspy.Prediction(
+        seizure_frequency_number="1 per 1 month",
+        evidence_text=None,
+    )
+    exact_with_paraphrase = dspy.Prediction(
+        seizure_frequency_number="1 per 1 month",
+        evidence_text="Patient has monthly seizures after March.",
+    )
+
+    assert gan_frequency_s0_synthesis_metric(example, exact_with_source_quote) == 1.0
+    assert gan_frequency_s0_synthesis_metric(example, exact_missing_quote) == 0.0
+    assert gan_frequency_s0_synthesis_metric(example, exact_with_paraphrase) == 0.0
+
+
 def test_gan_frequency_s0_synthesis_metric_allows_no_reference_without_quote():
     example = dspy.Example(
         note_text="This administrative letter confirms the appointment was cancelled.",
@@ -256,6 +281,27 @@ def test_make_gan_synthesis_dspy_examples_includes_gold_evidence_for_optimizer()
         assert example.seizure_frequency_number == record.gold_label
         assert example.evidence_text == record.gold_evidence
         assert "note_text" in example.inputs()
+
+
+def test_make_gan_synthesis_dspy_examples_does_not_use_paraphrased_gold_as_quote():
+    record = GanRecord(
+        record_id="gan-paraphrase-demo",
+        source_row_index=1,
+        note_text="History: she reports one seizure per month since March.",
+        gold_label="1 per 1 month",
+        gold_evidence="Patient has monthly seizures after March.",
+        reference_label=None,
+        reference_evidence=None,
+        row_ok=True,
+        labels_match_all_categories=True,
+        quotes_ok_all_categories=False,
+        flags=["paraphrased_gold_evidence"],
+        raw={},
+    )
+
+    examples = make_gan_synthesis_dspy_examples([record])
+
+    assert examples[0].evidence_text is None
 
 
 def test_make_gan_synthesis_dspy_examples_prioritizes_locatable_evidence():

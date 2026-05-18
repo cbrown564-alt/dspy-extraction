@@ -134,8 +134,8 @@ def gan_frequency_s0_synthesis_metric(
 
     This metric is intentionally optimizer-facing. It does not change the
     benchmark evaluator. A trace passes only when the predicted label matches
-    the normalized gold label and, when a locatable gold evidence quote exists,
-    the prediction supplies an exact contiguous quote from the note.
+    the normalized gold label and, unless the gold label is no-reference, the
+    prediction supplies an exact contiguous quote from the note.
     """
     from clinical_extraction.gan.scoring import score_gan_frequency_prediction
 
@@ -159,8 +159,7 @@ def gan_frequency_s0_synthesis_metric(
     if gold == "no seizure frequency reference":
         return float(predicted_evidence is None or not str(predicted_evidence).strip())
 
-    gold_evidence = getattr(example, "evidence_text", None)
-    if not _requires_evidence_support(gold, gold_evidence, example.note_text):
+    if not _requires_evidence_support(gold):
         return 1.0
 
     if not isinstance(predicted_evidence, str) or not predicted_evidence.strip():
@@ -168,14 +167,8 @@ def gan_frequency_s0_synthesis_metric(
     return float(predicted_evidence.strip() in example.note_text)
 
 
-def _requires_evidence_support(
-    gold_label: str, gold_evidence: str | None, note_text: str
-) -> bool:
-    if gold_label == "no seizure frequency reference":
-        return False
-    if not gold_evidence or "..." in gold_evidence:
-        return False
-    return gold_evidence in note_text
+def _requires_evidence_support(gold_label: str) -> bool:
+    return gold_label != "no seizure frequency reference"
 
 
 # ---------------------------------------------------------------------------
@@ -198,24 +191,31 @@ def make_gan_dspy_examples(records: list[GanRecord]) -> list[dspy.Example]:
 
 
 def make_gan_synthesis_dspy_examples(records: list[GanRecord]) -> list[dspy.Example]:
-    """Convert Gan records into synthesis-backed examples with gold evidence."""
+    """Convert Gan records into synthesis-backed examples.
+
+    Evidence outputs are included only when the annotation text is a contiguous
+    source quote. Paraphrased or elided Gan evidence is not used as a quote demo.
+    """
     return [
         dspy.Example(
             note_text=record.note_text,
             seizure_frequency_number=record.gold_label,
-            evidence_text=record.gold_evidence,
+            evidence_text=_locatable_gold_evidence(record),
         ).with_inputs("note_text")
         for record in sorted(records, key=_synthesis_example_priority)
     ]
 
 
+def _locatable_gold_evidence(record: GanRecord) -> str | None:
+    if not record.gold_evidence or "..." in record.gold_evidence:
+        return None
+    if record.gold_evidence not in record.note_text:
+        return None
+    return record.gold_evidence
+
+
 def _synthesis_example_priority(record: GanRecord) -> tuple[int, int, str]:
-    has_locatable_evidence = (
-        bool(record.gold_evidence)
-        and "..." not in record.gold_evidence
-        and record.gold_evidence in record.note_text
-    )
-    if has_locatable_evidence:
+    if _locatable_gold_evidence(record):
         evidence_rank = 0
     elif record.gold_label == "no seizure frequency reference":
         evidence_rank = 2

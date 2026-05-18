@@ -163,7 +163,7 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Parallelizable: after Create baseline deterministic evaluation CLI.
 - Owner: Codex.
 - Validation: `tests/test_evidence_scoring.py`; `tests/test_evaluation_cli.py`.
-- Notes: `clinical_extraction.evaluation.evidence` scores quote support, offset validity, gold evidence locatability, overlap ratio, and IoU. Gan evaluation reports evidence diagnostics separately from benchmark-facing frequency metrics.
+- Notes: `clinical_extraction.evaluation.evidence` scores predicted quote support and offset validity against the source note text. Gan evidence diagnostics are separate from benchmark-facing frequency metrics and do not compare predicted quotes against Gan evidence annotations, which may be paraphrased or elided.
 
 ### Add error analysis reports
 

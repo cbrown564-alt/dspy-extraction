@@ -1,12 +1,13 @@
 import json
 
 from clinical_extraction.datasets.gan import load_gan_records
-from clinical_extraction.evaluation.cli import main
+from clinical_extraction.evaluation.cli import evaluate_gan_predictions, main
 from clinical_extraction.gan.frequency import label_to_monthly_frequency
 from clinical_extraction.schemas import (
     DocumentPrediction,
     EvidenceSpan,
     ExtractedValue,
+    GanRecord,
     PredictionSet,
 )
 
@@ -89,7 +90,6 @@ def test_gan_evaluation_cli_writes_metrics_and_error_samples(tmp_path):
     assert report["diagnostic_metrics"]["evidence_quote_support_rate"] == 1.0
     assert report["diagnostic_metrics"]["evidence_offsets_present_rate"] == 0.0
     assert report["diagnostic_metrics"]["evidence_offsets_valid_rate"] is None
-    assert report["diagnostic_metrics"]["evidence_exact_overlap_rate"] == 1.0
     assert report["errors"]["evidence_support_errors"] == []
     assert report["errors"]["monthly_frequency_mismatches"] == [
         {
@@ -130,6 +130,55 @@ def test_gan_evaluation_cli_writes_metrics_and_error_samples(tmp_path):
             "predicted_monthly_frequency": 1.0,
         }
     ]
+
+
+def test_gan_evaluation_scores_evidence_against_source_text_only(monkeypatch):
+    record = GanRecord(
+        record_id="gan-paraphrase-1",
+        source_row_index=1,
+        note_text="History: she reports one seizure per month since March.",
+        gold_label="1 per 1 month",
+        gold_evidence="Patient has monthly seizures after March.",
+        reference_label=None,
+        reference_evidence=None,
+        row_ok=True,
+        labels_match_all_categories=True,
+        quotes_ok_all_categories=False,
+        flags=["paraphrased_gold_evidence"],
+        raw={},
+    )
+    monkeypatch.setattr(
+        "clinical_extraction.evaluation.cli.load_gan_records",
+        lambda: [record],
+    )
+    predictions = PredictionSet(
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        predictions=[
+            DocumentPrediction(
+                document_id=record.record_id,
+                dataset="gan_2026",
+                schema_level="gan_frequency_s0",
+                values=[
+                    ExtractedValue(
+                        field_name="seizure_frequency_number",
+                        raw_value=record.gold_label,
+                        normalized_value=record.gold_label,
+                        evidence=[EvidenceSpan(text="one seizure per month")],
+                    )
+                ],
+            )
+        ],
+    )
+
+    report = evaluate_gan_predictions(predictions, bootstrap_samples=10)
+
+    assert report["diagnostic_metrics"]["evidence_quote_support_rate"] == 1.0
+    assert "gold_evidence_locatable_rate" not in report["diagnostic_metrics"]
+    assert "evidence_overlap_scored_rate" not in report["diagnostic_metrics"]
+    assert "evidence_exact_overlap_rate" not in report["diagnostic_metrics"]
+    assert "evidence.gold_unlocatable" not in report["error_analysis"]["counts"]
+    assert "evidence.partial_overlap" not in report["error_analysis"]["counts"]
 
 
 def test_gan_evaluation_cli_reports_invalid_labels(tmp_path):
@@ -221,7 +270,6 @@ def test_gan_evaluation_cli_reports_unsupported_evidence(tmp_path):
     assert report["errors"]["evidence_support_errors"] == [
         {
             "record_id": record.record_id,
-            "gold_evidence": record.gold_evidence,
             "predicted_evidence": [
                 {
                     "text": "not in the source letter",
