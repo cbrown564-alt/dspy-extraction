@@ -5,12 +5,11 @@ raw .txt files, and structured .json files.
 """
 
 import json
-import os
 import re
 from pathlib import Path
 from collections import defaultdict
 
-BASE_DIR = Path("data/ExECT 2 (2025)")
+BASE_DIR = Path("data/ExECTv2 (2025)")
 TXT_DIR = BASE_DIR / "Gold1-200_corrected_spelling"
 ANN_DIR = BASE_DIR / "Gold1-200_corrected_spelling"
 JSON_DIR = BASE_DIR / "Json"
