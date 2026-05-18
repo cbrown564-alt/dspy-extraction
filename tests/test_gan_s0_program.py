@@ -195,6 +195,36 @@ def test_gan_s0_module_repairs_full_validation_surface_errors(
     assert "normalized_label_repaired" in value.quality_flags
 
 
+@pytest.mark.parametrize(
+    "raw_label",
+    [
+        "1 cluster per week",
+        "2 cluster per 3 month",
+        "1 cluster per 5 day",
+        "1 cluster per month, unknown per cluster",
+    ],
+)
+def test_gan_s0_module_does_not_repair_semantic_cluster_failures(raw_label: str):
+    record = load_gan_records()[0]
+    _configure_dummy([{
+        "reasoning": "The note does not support enough information to complete the cluster label.",
+        "seizure_frequency_number": raw_label,
+        "evidence_text": "dummy evidence",
+    }])
+
+    module = GanFrequencyS0Module()
+    prediction_set = predict_gan_records(
+        module, [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == raw_label
+    assert value.normalized_value == raw_label
+    assert "normalized_label_repaired" not in value.quality_flags
+
+
 def test_gan_frequency_s0_metric_returns_1_on_pragmatic_category_match():
     example = dspy.Example(
         note_text="...",

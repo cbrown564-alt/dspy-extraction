@@ -55,3 +55,5 @@ Verifier/repair DSPy work is still warranted, but it should target the remaining
 - matching-count denominator ranges such as `1 per 10 day to 1 per 7 day` to `1 per 7 to 10 day`
 
 The scorer semantics did not change. Raw exact, normalized-label, monthly-frequency, Purist, Pragmatic, and evidence-support metrics remain separate.
+
+Follow-up regression coverage now also locks the non-repair boundary for semantic cluster failures observed in the same run. Incomplete labels such as `1 cluster per week`, `2 cluster per 3 month`, and `1 cluster per month, unknown per cluster` must remain unrepaired by the deterministic artifact bridge because adding the missing per-cluster count would require evidence-aware model or rule logic.

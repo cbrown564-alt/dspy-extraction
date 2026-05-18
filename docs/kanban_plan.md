@@ -361,7 +361,16 @@ The first execution milestone remains deterministic only: loaders, gold-label re
 - Parallelizable: yes, before broader verifier/repair module work.
 - Owner: Codex.
 - Validation: `tests/test_gan_s0_program.py`; `docs/gan_s0_full_validation_error_read.md`.
-- Notes: The error read keeps label scoring separate from evidence diagnostics. The artifact bridge now preserves raw model outputs while normalizing quoted special labels such as `"unknown"` and matching-count denominator ranges such as `1 per 10 day to 1 per 7 day`. Incomplete cluster labels, `unknown per cluster`, abstentions, and semantic cluster-to-unknown mistakes remain unresolved because repairing them would require additional evidence-aware model or rule logic.
+- Notes: The error read keeps label scoring separate from evidence diagnostics. The artifact bridge now preserves raw model outputs while normalizing quoted special labels such as `"unknown"` and matching-count denominator ranges such as `1 per 10 day to 1 per 7 day`. Regression coverage now locks incomplete cluster labels and `unknown per cluster` as deliberately unrepaired deterministic outputs; abstentions and semantic cluster-to-unknown mistakes remain unresolved because repairing them would require additional evidence-aware model or rule logic.
+
+### Confirm model credentials are available
+
+- Outcome: Model-backed experiment tasks can assume provider credentials are available in `.env`.
+- Dependencies: LLM provider adapters.
+- Parallelizable: yes.
+- Owner: User.
+- Validation: User confirmed credentials are present in `.env` on 2026-05-18.
+- Notes: Do not treat closed-provider credentials as a blocker for future GPT/Gemini-backed runs in this workspace. Local Ollama availability remains a separate machine/runtime check for Qwen runs.
 
 ## Review
 
@@ -474,7 +483,7 @@ No active implementation card is claimed in this plan.
 - Safe immediately in parallel: constrained JSON decoding decision, narrow Gan S0 experiment config schema, and continued review-export polish.
 - The moved `exect-explorer/` app can be inspected or rewired later, but it should not block the simple review export workflow.
 - Blocked on the broad DSPy module card: experiment configs and broader verifier/repair/field-group ablations.
-- Blocked on opt-in credentials or local Ollama availability: first LLM baseline.
+- Blocked on local Ollama availability: Qwen-backed local model runs. Closed-provider credentials are available in `.env`.
 - Blocked on stable experiment configs and first baseline lessons: comparable model matrix runs.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata contract, and split generation policy.
 
