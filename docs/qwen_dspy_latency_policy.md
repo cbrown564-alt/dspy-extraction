@@ -2,6 +2,29 @@
 
 Date: 2026-05-18
 
+## Correction From Max-Budget Follow-Up
+
+The original policy over-attributed the failed `ChainOfThought +
+BootstrapFewShot` run to Qwen3.6:35b CPU/RAM offload. The corrected diagnosis is
+more specific:
+
+- the earlier Qwen configs used completion budgets that were too small for
+  visible DSPy reasoning plus demonstration-expanded prompts;
+- local Qwen models must use Ollama/LiteLLM with `think=false`;
+- setting `max_tokens=81920` is not enough by itself if Ollama keeps the active
+  context at its default `4096`; max-budget runs should also request
+  `num_ctx=262144`;
+- even when truncation is removed, unconstrained `ChainOfThought` can be very
+  slow and can still degrade schema validity.
+
+The current max-budget configs are:
+
+- `configs/models/gan_s0_qwen9b_ollama_max81920.json`
+- `configs/models/gan_s0_qwen35b_ollama_max81920.json`
+
+Use these only for explicit latency/reasoning stress tests, not as ordinary
+interactive defaults.
+
 ## Decision
 
 Do not make `ChainOfThought + BootstrapFewShot` the default path for
@@ -13,9 +36,10 @@ Windows laptop. Only about 8 GB is resident in VRAM, with roughly another
 reasoning-token generation, repeated compile-time calls, and few-shot-expanded
 prediction prompts too slow for normal interactive or capped validation loops.
 
-The larger local-model workstream should prefer direct structured extraction
-without model-visible reasoning unless the experiment is explicitly testing
-reasoning or optimizer effects.
+The larger local-model workstream should still prefer direct structured
+extraction without model-visible reasoning unless the experiment is explicitly
+testing reasoning or optimizer effects. This is now a measured latency and
+schema-stability decision, not just a partial-offload assumption.
 
 ## Why ChainOfThought Is Expensive Here
 

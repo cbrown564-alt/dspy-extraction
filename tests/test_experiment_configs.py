@@ -265,6 +265,76 @@ def test_qwen35b_direct_gate_configs_avoid_reasoning_and_optimizer():
     assert cap.max_records == 3
 
 
+@pytest.mark.parametrize(
+    "filename,model_config_path,program_variant,optimizer_expected,max_records",
+    [
+        (
+            "gan_s0_maxbudget_qwen9b_direct_cap3.json",
+            "configs/models/gan_s0_qwen9b_ollama_max81920.json",
+            GAN_FREQUENCY_S0_DIRECT_VARIANT,
+            False,
+            3,
+        ),
+        (
+            "gan_s0_maxbudget_qwen9b_cot_cap3.json",
+            "configs/models/gan_s0_qwen9b_ollama_max81920.json",
+            GAN_FREQUENCY_S0_VARIANT,
+            False,
+            3,
+        ),
+        (
+            "gan_s0_maxbudget_qwen9b_direct_bootstrap_cap3.json",
+            "configs/models/gan_s0_qwen9b_ollama_max81920.json",
+            GAN_FREQUENCY_S0_DIRECT_VARIANT,
+            True,
+            3,
+        ),
+        (
+            "gan_s0_maxbudget_qwen9b_cot_bootstrap_cap3.json",
+            "configs/models/gan_s0_qwen9b_ollama_max81920.json",
+            GAN_FREQUENCY_S0_VARIANT,
+            True,
+            3,
+        ),
+        (
+            "gan_s0_maxbudget_qwen35b_direct_cap1.json",
+            "configs/models/gan_s0_qwen35b_ollama_max81920.json",
+            GAN_FREQUENCY_S0_DIRECT_VARIANT,
+            False,
+            1,
+        ),
+        (
+            "gan_s0_maxbudget_qwen35b_cot_cap1.json",
+            "configs/models/gan_s0_qwen35b_ollama_max81920.json",
+            GAN_FREQUENCY_S0_VARIANT,
+            False,
+            1,
+        ),
+    ],
+)
+def test_qwen_maxbudget_configs_raise_output_budget_without_changing_split_or_scorer(
+    filename,
+    model_config_path,
+    program_variant,
+    optimizer_expected,
+    max_records,
+):
+    config = load_experiment_config(Path("configs/experiments") / filename)
+    model_config_payload = json.loads(Path(model_config_path).read_text(encoding="utf-8"))
+
+    assert config.dataset == "gan_2026"
+    assert config.model_config_path == Path(model_config_path)
+    assert model_config_payload["max_tokens"] == 81920
+    assert model_config_payload["extra_body"]["options"]["num_ctx"] == 262144
+    assert config.split_name == "gan_2026_fixed_v1:validation"
+    assert config.max_records == max_records
+    assert config.program_variant == program_variant
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert (config.optimizer is not None) is optimizer_expected
+    assert "max_tokens" in " ".join(config.metric_caveats).lower()
+    assert "thinking disabled" in " ".join(config.metric_caveats).lower()
+
+
 def test_experiment_config_rejects_test_reporting_without_explicit_flag():
     payload = json.loads(
         Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(

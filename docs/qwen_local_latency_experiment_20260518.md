@@ -72,3 +72,40 @@ interactive loops.
   field or stricter prompt that forces label/evidence before explanation.
 - Add token-count capture if LiteLLM/Ollama exposes reliable usage metadata in
   DSPy artifacts.
+
+## Max-Budget Follow-Up
+
+After the first run, the latency policy interpretation was corrected. The
+primary issue was not only Qwen3.6:35b CPU/RAM offload. Qwen was also still
+able to spend output on thinking/reasoning-like text, and the earlier
+`max_tokens` values were too low for `ChainOfThought` plus demonstration-heavy
+prediction prompts.
+
+Qwen's current model cards recommend `max_tokens=32768` for most queries and
+`max_tokens=81920` for complex benchmark tasks. Local `ollama show` reports a
+`262144` context length for both `qwen3.5:9b` and `qwen3.6:35b`. The max-budget
+configs therefore set:
+
+- `max_tokens=81920`
+- `extra_body={"options": {"num_ctx": 262144}}`
+- the existing DSPy Ollama adapter default `extra_body={"think": false}`
+
+The first max-budget 9B run accidentally reused Ollama's default active
+`CONTEXT 4096`; those artifacts are superseded by the later runs below, where
+`ollama ps` confirmed `CONTEXT 262144`.
+
+| Run | Model | Variant | Optimizer | Records | Prediction seconds / record | Schema validity | Evidence support | Notes |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| `runs/gan_s0_maxbudget_qwen9b_direct_cap3_20260518T205611Z` | Qwen3.5:9b | direct | none | 3 | 15.60 | 100.0% | 0.0% | Full-context direct baseline; slower than the earlier default-context direct run. |
+| `runs/gan_s0_maxbudget_qwen9b_cot_cap3_20260518T205711Z` | Qwen3.5:9b | `ChainOfThought` | none | 3 | 186.16 | 100.0% | 33.3% | Completed, but visible reasoning remained about 11.9x slower than direct. |
+| `runs/gan_s0_maxbudget_qwen9b_direct_bootstrap_cap3_20260518T210732Z` | Qwen3.5:9b | direct | tiny `BootstrapFewShot` | 3 | 27.06 | 100.0% | 66.7% | Compile took 59.18s and found 0 full traces under the strict optimizer metric. |
+| `runs/gan_s0_maxbudget_qwen9b_cot_bootstrap_cap3_20260518T210921Z` | Qwen3.5:9b | `ChainOfThought` | tiny `BootstrapFewShot` | 3 | 388.58 | 66.7% | 50.0% | Completed where the earlier low-budget run failed, but remained very slow and schema-fragile. |
+| `runs/gan_s0_maxbudget_qwen35b_direct_cap1_20260518T212905Z` | Qwen3.6:35b | direct | none | 1 | 35.30 | 100.0% | 100.0% | Ollama confirmed `CONTEXT 262144`; residency was 79% CPU / 21% GPU. |
+| `runs/gan_s0_maxbudget_qwen35b_cot_cap1_20260518T212944Z` | Qwen3.6:35b | `ChainOfThought` | none | 1 | 96.29 | 100.0% | 0.0% | One-record CoT smoke completed, about 2.7x slower than direct on the same first validation record. |
+
+Interpretation: raising the output and context budget changes the failure mode.
+`ChainOfThought + BootstrapFewShot` on Qwen3.5:9b is no longer simply blocked by
+truncation, but it is still not a good default because it is very slow and still
+schema-fragile. Qwen3.6:35b can run a one-record full-context CoT smoke, but the
+observed pace does not justify promoting visible reasoning or bootstrap-expanded
+prompts to the routine local 35B path.

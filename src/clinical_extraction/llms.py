@@ -29,6 +29,7 @@ class LLMProviderConfig(FrozenModel):
     timeout_seconds: float = Field(default=60.0, gt=0)
     temperature: float | None = Field(default=0.0, ge=0.0)
     max_tokens: int | None = Field(default=None, gt=0)
+    extra_body: dict[str, Any] = Field(default_factory=dict)
     num_retries: int = Field(default=3, ge=0)
     mock_responses: list[dict[str, Any] | str] = Field(default_factory=list)
 
@@ -219,12 +220,13 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
 
     base_url = config.base_url or _default_base_url(config.provider)
     if config.provider == "ollama":
+        extra_body = {"think": False, **config.extra_body}
         kwargs = {
             "model": f"ollama_chat/{config.model}",
             "api_base": base_url.removesuffix("/v1"),
             "timeout": config.timeout_seconds,
             "num_retries": config.num_retries,
-            "extra_body": {"think": False},
+            "extra_body": extra_body,
         }
         if config.temperature is not None:
             kwargs["temperature"] = config.temperature

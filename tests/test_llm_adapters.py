@@ -30,6 +30,24 @@ def test_build_dspy_lm_resolves_ollama_provider_config():
     assert isinstance(lm, dspy.LM)
     assert "qwen3.6:35b" in lm.model
     assert lm.model.startswith("ollama_chat/")
+    assert lm.kwargs["extra_body"] == {"think": False}
+
+
+def test_build_dspy_lm_passes_ollama_extra_body_with_thinking_disabled():
+    config = LLMProviderConfig(
+        provider="ollama",
+        model="qwen3.5:9b",
+        max_tokens=81920,
+        extra_body={"options": {"num_ctx": 262144}},
+    )
+
+    lm = build_dspy_lm(config)
+
+    assert lm.kwargs["max_tokens"] == 81920
+    assert lm.kwargs["extra_body"] == {
+        "think": False,
+        "options": {"num_ctx": 262144},
+    }
 
 
 def test_build_chat_adapter_resolves_supported_provider_configs():
