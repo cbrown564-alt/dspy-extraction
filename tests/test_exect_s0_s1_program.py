@@ -261,6 +261,42 @@ def test_exect_s0_s1_bridge_splits_fused_temporal_lobe_onset_focal_seizures():
     )
 
 
+def test_exect_s0_s1_bridge_repairs_ellipsis_evidence_to_contiguous_quote():
+    record = load_exect_gold_document("EA0018")
+    _configure_dummy([{
+        "reasoning": "The model stitched the medication evidence with an ellipsis.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": ["levetiracetam"],
+        "annotated_medication_evidence": [
+            "Currently she is taking ... levetiracetam 1000 mg twice today"
+        ],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    medication_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ]
+    assert len(medication_values) == 1
+    assert medication_values[0].evidence[0].text == (
+        "Currently she is taking sodium valproate 500 mg twice a day and "
+        "levetiracetam 1000 mg twice today"
+    )
+    assert medication_values[0].evidence[0].start == 537
+    assert medication_values[0].evidence[0].end == 634
+    assert "evidence_repair:ellipsis_contiguous_span" in medication_values[0].quality_flags
+
+
 def test_exect_s0_s1_policy_fixture_preserves_audited_diagnosis_label():
     record = load_exect_gold_document("EA0008")
     _configure_dummy([{

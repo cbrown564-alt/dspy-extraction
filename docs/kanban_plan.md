@@ -82,6 +82,8 @@ The post-repair replay is complete in `docs/gan_s0_post_repair_validation_replay
 
 The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline_design.md`, and capped GPT 4.1-mini smokes are inspected in `docs/exect_s0_s1_smoke_inspection.md`. The model-backed path is scoped to audited diagnosis, seizure type, and annotated medication field families under `exect_field_family_deterministic_v1`; broader clinical fields and medication temporality remain deferred. The first capped smoke validated the artifact path but showed the zero-shot prompt was too permissive about clinically plausible labels, planned/previous medication mentions, and richer seizure-type surfaces. The v2 label-policy smoke improved the same capped slice to micro F1 84.2%, diagnosis F1 100.0%, and annotated-medication F1 100.0%. The v3 seizure/evidence smoke added a narrow benchmark bridge for fused `temporal lobe onset focal seizures` surfaces and ExECT evidence diagnostics; the same capped slice reached 100.0% micro F1 with 90.0% evidence quote support, but this remains a three-record smoke, not a performance estimate.
 
+A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence quotes when all fragments can be deterministically located in order inside one short source span. This is tagged as diagnostic bridge behavior (`evidence_repair:ellipsis_contiguous_span`) and does not change benchmark-facing field-family scorer semantics.
+
 ## Ready
 
 ### Run Qwen Gan S0 smoke tests on Windows laptop
@@ -167,6 +169,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. The ExECT S0/S1 single-pass field-family baseline now handles fused seizure-type surfaces such as `temporal lobe onset focal seizures` against the current audited scorer view and reports explicit evidence quote/offset diagnostics before scaling.
 - Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`; capped run `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T160445Z`.
 - Notes: Scorer semantics are unchanged. The fused seizure-type handling is explicitly tagged benchmark bridge behavior (`benchmark_bridge:fused_seizure_type_split`), not a scorer-policy change. On the same capped three-record slice, v3 produced micro F1 100.0%, diagnosis F1 100.0%, seizure-type F1 100.0%, annotated-medication F1 100.0%, evidence quote support 90.0%, evidence offsets present 90.0%, and evidence offsets valid 100.0%. One EA0018 medication evidence quote remained unsupported because it used an ellipsis/non-contiguous quote.
+
+### Add ExECT ellipsis evidence quote bridge
+
+- Outcome: Complete. The ExECT S0/S1 artifact bridge now converts literal `...` evidence quotes into a single exact contiguous source quote when all fragments are found in order within a short same-paragraph span.
+- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`.
+- Notes: Benchmark-facing scorer semantics are unchanged. Repaired evidence is tagged with `evidence_repair:ellipsis_contiguous_span` so future reports can separate model-supplied exact quotes from deterministic evidence bridge repairs.
 
 ## Blocked
 
@@ -373,7 +381,7 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Recommended Next Pull
 
-1. Decide whether to run a larger ExECT S0/S1 validation cap with v3 or first add a small evidence-quote verifier/repair pass for ellipsis/non-contiguous quotes.
+1. Build the ExECT S0/S1 larger validation cap with the v3 label policy plus the narrow ellipsis evidence bridge, then inspect whether remaining errors are label-policy, evidence-grounding, or broader architecture failures.
 2. Smoke-test Qwen Gan S0 on the Windows laptop when the local Ollama runtime is available.
 3. After ExECT v3 is stable beyond the three-record cap, start the section-aware versus monolithic ExECT ablation design.
 

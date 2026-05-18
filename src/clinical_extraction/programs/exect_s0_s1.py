@@ -341,6 +341,7 @@ def _values_for_family(
             if not normalized or normalized in seen:
                 continue
             seen.add(normalized)
+            evidence_spans, evidence_flags = _evidence_spans(record, evidence_text)
             quality_flags = _quality_flags(
                 field_name=field_name,
                 normalized_value=normalized,
@@ -352,11 +353,11 @@ def _values_for_family(
                     field_name=field_name,
                     raw_value=raw_value,
                     normalized_value=normalized,
-                    evidence=_evidence_spans(record, evidence_text),
+                    evidence=evidence_spans,
                     temporality="not_applicable",
                     negation="affirmed",
                     confidence=None,
-                    quality_flags=[*quality_flags, *bridge_flags],
+                    quality_flags=[*quality_flags, *bridge_flags, *evidence_flags],
                 )
             )
     return values
@@ -417,20 +418,63 @@ def _evidence_at(evidence_values: list[str], index: int) -> str | None:
 def _evidence_spans(
     record: ExectGoldDocument,
     evidence_text: str | None,
-) -> list[EvidenceSpan]:
+) -> tuple[list[EvidenceSpan], list[str]]:
     if not evidence_text:
-        return []
+        return [], []
     start = record.text.find(evidence_text)
-    if start == -1:
-        return [EvidenceSpan(text=evidence_text, document_id=record.document_id)]
-    return [
-        EvidenceSpan(
-            text=evidence_text,
-            start=start,
-            end=start + len(evidence_text),
-            document_id=record.document_id,
-        )
-    ]
+    if start != -1:
+        return [
+            EvidenceSpan(
+                text=evidence_text,
+                start=start,
+                end=start + len(evidence_text),
+                document_id=record.document_id,
+            )
+        ], []
+
+    repaired_span = _repair_ellipsis_evidence_span(record, evidence_text)
+    if repaired_span is not None:
+        return [repaired_span], ["evidence_repair:ellipsis_contiguous_span"]
+
+    return [EvidenceSpan(text=evidence_text, document_id=record.document_id)], []
+
+
+def _repair_ellipsis_evidence_span(
+    record: ExectGoldDocument,
+    evidence_text: str,
+) -> EvidenceSpan | None:
+    if "..." not in evidence_text:
+        return None
+
+    fragments = [fragment.strip() for fragment in evidence_text.split("...") if fragment.strip()]
+    if len(fragments) < 2:
+        return None
+
+    search_from = 0
+    first_start: int | None = None
+    last_end: int | None = None
+    for fragment in fragments:
+        start = record.text.find(fragment, search_from)
+        if start == -1:
+            return None
+        if first_start is None:
+            first_start = start
+        last_end = start + len(fragment)
+        search_from = last_end
+
+    if first_start is None or last_end is None:
+        return None
+
+    repaired_text = record.text[first_start:last_end]
+    if len(repaired_text) > 300 or "\n\n" in repaired_text:
+        return None
+
+    return EvidenceSpan(
+        text=repaired_text,
+        start=first_start,
+        end=last_end,
+        document_id=record.document_id,
+    )
 
 
 def _as_list(value: Optional[object]) -> list[str]:

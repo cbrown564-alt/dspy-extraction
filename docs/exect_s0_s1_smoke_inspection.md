@@ -272,3 +272,38 @@ Evidence diagnostics now surface the remaining source-grounding issue: one EA001
 ### Interpretation
 
 The capped v3 smoke clears the immediate seizure-type granularity blocker and adds the evidence-support aggregation needed before scaling. The capped slice is still too small for performance claims. Before full validation, the remaining open question is whether unsupported ellipsis evidence quotes are common enough to justify a verifier/repair step or stricter prompt/evidence example work.
+
+## 2026-05-18 Ellipsis Evidence Bridge Follow-Up
+
+### Context
+
+The v3 capped smoke left one unsupported medication evidence quote on EA0018 because the model returned a literal ellipsis quote: `Currently she is taking ... levetiracetam 1000 mg twice today`. The source sentence was contiguous, so this was a recoverable artifact-bridge issue rather than a label scorer issue.
+
+### Work Completed
+
+Code changes:
+
+- `src/clinical_extraction/programs/exect_s0_s1.py`: added a narrow evidence bridge that repairs literal `...` quotes only when all non-empty fragments can be located in order inside one short same-paragraph source span.
+- `tests/test_exect_s0_s1_program.py`: added regression coverage using EA0018's levetiracetam evidence quote.
+
+Validation:
+
+```text
+uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py
+```
+
+Result: 27 passed.
+
+Dry run:
+
+```text
+uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run
+```
+
+Result: config resolved the same capped 3-record validation slice.
+
+### Interpretation
+
+This is diagnostic bridge behavior, not benchmark-facing scorer behavior. Repaired spans are tagged with `evidence_repair:ellipsis_contiguous_span`, allowing later reports to separate model-provided exact quotes from deterministic quote repairs.
+
+The next reasonable ExECT pull is a larger capped validation run with the same label policy and bridge behavior, followed by artifact inspection before any full validation or section-aware ablation.
