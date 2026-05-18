@@ -8,7 +8,7 @@ Last refreshed: 2026-05-18
 
 Build a hybrid deterministic and DSPy-based clinical extraction research system that can specialize across the broad ExECTv2 schema and the focused Gan seizure-frequency task, while preserving dataset fidelity, reproducible splits, auditable scoring, and experiment traceability.
 
-The project has moved beyond the deterministic foundation milestone. The current execution focus is tightening the first ExECT S0/S1 field-family baseline after capped model-backed smokes exposed label-policy, medication-scope, seizure-type granularity, and evidence-quote errors.
+The project has moved beyond the deterministic foundation milestone. The current execution focus is using the first larger ExECT S0/S1 validation-cap read to open the section-aware versus monolithic architecture cycle without changing audited scorer semantics.
 
 ## Definitions Of Done
 
@@ -86,14 +86,14 @@ A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence
 
 ## Ready
 
-### Run larger capped ExECT S0/S1 field-family validation
+### Implement section-aware ExECT S0/S1 field-family module variant
 
-- Outcome: A 25-record GPT 4.1-mini validation-cap run exists for the ExECT S0/S1 field-family baseline using the v3 label policy plus the narrow ellipsis evidence bridge, with standard run artifacts and an inspection note.
-- Dependencies: Completed ExECT S0/S1 v3 capped smoke; ellipsis evidence bridge; unchanged `exect_s0_s1_field_family_single_pass` contract; unchanged `exect_field_family_deterministic_v1` scorer.
-- Parallelizable: no for ExECT architecture work, because this inspection gates section-aware versus monolithic ablation design; yes relative to Windows Qwen Gan S0 runtime smokes.
+- Outcome: A new ExECT program variant uses deterministic section-aware context selection for diagnosis, seizure type, and annotated medication while preserving the current S0/S1 output contract, benchmark bridge behavior, and scorer semantics.
+- Dependencies: Run larger capped ExECT S0/S1 field-family validation; Design section-aware versus monolithic ExECT ablation; existing `src/clinical_extraction/pipeline/sectioning.py` utilities; unchanged `exect_field_family_deterministic_v1` scorer.
+- Parallelizable: no for ExECT architecture implementation, because module shape and shared bridge behavior should stay single-threaded; yes relative to Windows Qwen Gan S0 runtime smokes.
 - Owner: unassigned.
-- Validation: Add sibling config such as `configs/experiments/exect_s0_s1_validation_cap25_gpt4_1_mini.json` rather than editing the existing 3-record smoke config; run `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run the new config; complete a capped model run; inspect `metadata.json`, `config.json`, `prompts.json`, `predictions.json`, `metrics.json`, and `errors.json`.
-- Notes: This remains a diagnostic validation cap, not a performance estimate or published ExECTv2 benchmark reproduction. The inspection should classify remaining errors as label-policy, evidence-grounding, medication-scope/gold limitation, schema-validity, or architecture/context-selection failures. Report evidence quote support both overall and with `evidence_repair:ellipsis_contiguous_span` bridge repairs separated from model-supplied exact quotes.
+- Validation: Add mocked-LM coverage for per-family section-aware routing and merged prediction output; run `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py tests/test_sectioning_context.py`; dry-run a sibling section-aware config on the same 25-record validation slice; complete one capped comparison run and inspect `predictions.json`, `metrics.json`, and `errors.json` against the monolithic baseline.
+- Notes: Keep architecture as the experimental factor. Reuse the v3 label policy, fused seizure-type bridge, and ellipsis evidence repair unchanged so the comparison remains monolithic versus section-aware rather than prompt-policy versus prompt-policy.
 
 ### Run Qwen Gan S0 smoke tests on Windows laptop
 
@@ -176,6 +176,18 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`.
 - Notes: Benchmark-facing scorer semantics are unchanged. Repaired evidence is tagged with `evidence_repair:ellipsis_contiguous_span` so future reports can separate model-supplied exact quotes from deterministic evidence bridge repairs.
 
+### Run larger capped ExECT S0/S1 field-family validation
+
+- Outcome: Complete. A 25-record GPT 4.1-mini validation-cap run exists for the ExECT S0/S1 field-family baseline using the v3 label policy plus the narrow ellipsis evidence bridge, with standard run artifacts and an inspection note in `docs/exect_s0_s1_validation_cap25_inspection.md`.
+- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_validation_cap25_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_validation_cap25_gpt4_1_mini_20260518T172431Z`.
+- Notes: Scorer semantics are unchanged. On the capped 25-record validation slice, micro precision/recall/F1 reached 68.8%/79.5%/73.7%; diagnosis F1 60.5%; seizure-type F1 65.8%; annotated-medication F1 92.1%; evidence quote support 92.1% overall, 92.0% on exact model quotes, and 100.0% on ellipsis repairs. The inspection classified remaining issues as mostly label-policy or normalization errors, with a smaller architecture-shaped subset suggesting cross-family leakage.
+
+### Design section-aware versus monolithic ExECT ablation
+
+- Outcome: Complete. `docs/exect_section_aware_ablation_design.md` defines the first ExECT architecture ablation around the audited S0/S1 field-family contract and the existing deterministic sectioning/context-selection utilities.
+- Validation: Design reviewed against `docs/exect_gold_label_audit.md`, `docs/exect_s0_s1_baseline_design.md`, `docs/exect_s0_s1_validation_cap25_inspection.md`, `src/clinical_extraction/pipeline/sectioning.py`, and `tests/test_sectioning_context.py`.
+- Notes: The design keeps dataset, split, model, schema level, scorer mode, prompt policy, fused seizure-type bridge, and ellipsis evidence repair fixed. The experimental factor is architecture only: current monolithic single-pass extraction versus a section-aware per-family variant that merges outputs through the same artifact bridge.
+
 ### Resolve Gemini 3 Flash model identifier
 
 - Outcome: Complete. `configs/models/gan_s0_gemini3_flash.json` uses the API-listed Gemini 3 Flash Preview model identifier, `gemini-3-flash-preview`.
@@ -225,7 +237,7 @@ Completed work is summarized in the background sections above rather than repeat
 ### Add field-group and section-aware DSPy modules
 
 - Outcome: Reusable DSPy modules support monolithic extraction, field-group extraction, section-aware context-then-extract, and context selection as explicit program variants.
-- Dependencies: ExECT S0/S1 baseline design; existing sectioning/context selection utilities.
+- Dependencies: Design section-aware versus monolithic ExECT ablation; Implement section-aware ExECT S0/S1 field-family module variant.
 - Parallelizable: after ExECT baseline design, but coordinate with ExECT baseline implementation.
 - Owner: unassigned.
 - Validation: Unit tests with mocked LM outputs plus at least one capped real-model smoke run.
@@ -307,13 +319,13 @@ Completed work is summarized in the background sections above rather than repeat
 - Dependencies: Build ExECT S0/S1 DSPy field-family baseline.
 - Parallelizable: after implementation.
 - Owner: unassigned.
-- Validation: Initial capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`; label-policy v2 capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`; v3 seizure/evidence capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T160445Z`; ellipsis evidence bridge dry-run complete.
-- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. The v3 capped smoke plus ellipsis bridge cleared the immediate three-record label-policy and evidence-quote blockers, but a larger capped validation and artifact inspection should gate full validation and section-aware architecture ablations.
+- Validation: Initial capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`; label-policy v2 capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`; v3 seizure/evidence capped smoke complete in `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T160445Z`; ellipsis evidence bridge dry-run complete; validation-cap inspection complete in `docs/exect_s0_s1_validation_cap25_inspection.md`.
+- Notes: This tests audited S0/S1 schema breadth before full ExECT-like S4 extraction. The larger validation cap showed that evidence and medication scope are no longer the main blockers; the next cycle should test whether section-aware architecture reduces cross-family leakage without changing scorer semantics.
 
 ### Section-aware versus monolithic ExECT ablation
 
 - Outcome: Comparison of monolithic note-to-schema extraction against section-aware field-group extraction.
-- Dependencies: ExECT S0/S1 baseline; field-group and section-aware DSPy modules.
+- Dependencies: ExECT S0/S1 field-family baseline; Design section-aware versus monolithic ExECT ablation; Implement section-aware ExECT S0/S1 field-family module variant.
 - Parallelizable: after ExECT baseline.
 - Owner: unassigned.
 - Validation: Ablation report with temporality, negation, evidence, and field-family breakdown.
@@ -373,22 +385,22 @@ Completed work is summarized in the background sections above rather than repeat
 
 - Shared contracts should stay single-threaded: scorer semantics, schema contracts, run metadata, split generation policy, and benchmark-alignment language affect every later card.
 - Gan repair work and ExECT baseline design can proceed in parallel because they touch different task surfaces.
-- ExECT implementation has opened the S0/S1 field-family path; the next dependency is a larger capped validation and artifact inspection before full validation or architecture ablations.
+- ExECT implementation has opened the S0/S1 field-family path; the larger capped validation and artifact inspection are now complete, so the next dependency is a section-aware module implementation that keeps the current scorer and bridge behavior fixed.
 - Model smoke tests are unblocked for closed providers with credentials in `.env`; Qwen runs remain blocked on local Ollama availability.
 - Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: larger capped ExECT S0/S1 validation work and Windows Qwen Gan S0 smoke tests, because they touch different task surfaces and runtime dependencies.
+- Safe immediately in parallel: section-aware ExECT implementation work and Windows Qwen Gan S0 smoke tests, because they touch different task surfaces and runtime dependencies.
 - Safe after explicit design: Gan verifier/repair and abstention-calibration work.
-- Blocked on module interfaces: ablation config files and broad program-architecture comparisons; ExECT section-aware work should wait until the larger S0/S1 validation cap is inspected.
+- Blocked on module interfaces: ablation config files and broad program-architecture comparisons; ExECT section-aware comparison now depends on implementing the new module variant and sibling config.
 - Blocked on local runtime: Qwen-backed model comparisons.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata changes, split policy, and benchmark-reproduction claims.
 
 ## Recommended Next Pull
 
-1. Build the ExECT S0/S1 larger validation cap with the v3 label policy plus the narrow ellipsis evidence bridge, then inspect whether remaining errors are label-policy, evidence-grounding, or broader architecture failures.
-2. Smoke-test Qwen Gan S0 on the Windows laptop when the local Ollama runtime is available.
-3. After ExECT v3 is stable beyond the three-record cap, start the section-aware versus monolithic ExECT ablation design.
+1. Implement the first section-aware ExECT S0/S1 field-family module variant using the existing deterministic sectioning/context-selection utilities while keeping the current scorer and bridge behavior fixed.
+2. Add a sibling capped section-aware ExECT config and run a paired comparison against the monolithic cap-25 baseline.
+3. Smoke-test Qwen Gan S0 on the Windows laptop when the local Ollama runtime is available.
 
-The plan is now organized so completed work serves as background and the foreground path is: tighten the combined ExECT S0/S1 baseline after the first capped run, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.
+The plan is now organized so completed work serves as background and the foreground path is: use the validated ExECT S0/S1 baseline to test architecture under fixed scorer semantics, keep Gan as the focused smoke-test and verifier/repair testbed, then use both tasks for architecture and model comparisons.
