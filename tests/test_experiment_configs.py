@@ -98,8 +98,10 @@ def test_gan_s0_gepa_direct_config_records_shared_optimizer_contract():
     assert config.optimizer.metric_name == "synthesis_exact_with_evidence_feedback"
     assert config.optimizer.trainset_size == 4
     assert config.optimizer.max_metric_calls == 8
+    assert config.optimizer.max_full_evals is None
     assert config.optimizer.reflection_minibatch_size == 1
     assert config.optimizer.add_format_failure_as_feedback
+    assert config.optimizer.use_cloudpickle
     assert "optimizer-facing only" in " ".join(config.metric_caveats)
 
 
@@ -113,6 +115,18 @@ def test_gepa_optimizer_config_requires_feedback_metric():
     payload["optimizer"]["max_metric_calls"] = 4
 
     with pytest.raises(ValidationError, match="feedback metric"):
+        ExperimentConfig.model_validate(payload)
+
+
+def test_gepa_optimizer_config_rejects_multiple_budget_controls():
+    payload = json.loads(
+        Path("configs/experiments/gan_s0_gepa_direct_cap5_gpt4_1_mini.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    payload["optimizer"]["max_full_evals"] = 2
+
+    with pytest.raises(ValidationError, match="exactly one"):
         ExperimentConfig.model_validate(payload)
 
 

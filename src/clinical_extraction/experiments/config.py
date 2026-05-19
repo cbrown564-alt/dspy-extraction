@@ -49,6 +49,7 @@ class OptimizerConfig(FrozenModel):
     add_format_failure_as_feedback: bool = False
     track_stats: bool = False
     track_best_outputs: bool = False
+    use_cloudpickle: bool = False
     num_threads: int | None = Field(default=None, gt=0)
     seed: int | None = 0
 
@@ -63,9 +64,18 @@ class OptimizerConfig(FrozenModel):
 
         if self.metric_name != "synthesis_exact_with_evidence_feedback":
             raise ValueError("GEPA optimizer configs must use a feedback metric.")
-        if self.auto is None and self.max_full_evals is None and self.max_metric_calls is None:
+        configured_budgets = sum(
+            value is not None
+            for value in (self.auto, self.max_full_evals, self.max_metric_calls)
+        )
+        if configured_budgets == 0:
             raise ValueError(
                 "GEPA optimizer configs must set auto, max_full_evals, or max_metric_calls."
+            )
+        if configured_budgets != 1:
+            raise ValueError(
+                "GEPA optimizer configs must set exactly one of auto, max_full_evals, "
+                "or max_metric_calls."
             )
         return self
 

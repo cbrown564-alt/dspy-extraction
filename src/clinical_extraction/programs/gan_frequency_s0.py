@@ -397,9 +397,11 @@ def compile_gan_s0_module_gepa(
     add_format_failure_as_feedback: bool = False,
     track_stats: bool = False,
     track_best_outputs: bool = False,
+    use_cloudpickle: bool = False,
     num_threads: int | None = None,
     seed: int | None = 0,
     log_dir: Path | None = None,
+    reflection_lm: dspy.LM | None = None,
 ) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
     """Compile a Gan S0 module with GEPA and a feedback metric."""
     try:
@@ -416,6 +418,7 @@ def compile_gan_s0_module_gepa(
         max_metric_calls=max_metric_calls,
         reflection_minibatch_size=reflection_minibatch_size,
         candidate_selection_strategy=candidate_selection_strategy,
+        reflection_lm=reflection_lm or dspy.settings.lm,
         skip_perfect_score=skip_perfect_score,
         add_format_failure_as_feedback=add_format_failure_as_feedback,
         track_stats=track_stats,
@@ -423,6 +426,7 @@ def compile_gan_s0_module_gepa(
         num_threads=num_threads,
         seed=seed,
         log_dir=str(log_dir) if log_dir is not None else None,
+        gepa_kwargs={"use_cloudpickle": use_cloudpickle},
     )
     module = build_gan_s0_module(program_variant)
     return optimizer.compile(module, trainset=trainset)

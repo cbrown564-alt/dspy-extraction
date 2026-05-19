@@ -12,6 +12,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0Module,
     build_gan_s0_module,
     compile_gan_s0_module,
+    compile_gan_s0_module_gepa,
     gan_frequency_s0_metric,
     gan_frequency_s0_synthesis_metric,
     gan_frequency_s0_run_metadata,
@@ -484,6 +485,38 @@ def test_compile_gan_s0_module_bootstrap_returns_callable_module():
     assert result.dataset == "gan_2026"
     assert len(result.predictions) == 1
     assert result.metadata["program_variant"] == GAN_FREQUENCY_S0_VARIANT
+
+
+def test_compile_gan_s0_module_gepa_uses_reflection_lm(monkeypatch):
+    records = load_gan_records()[:2]
+    captured: dict[str, object] = {}
+    configured_lm = DummyLM(
+        answers=[
+            {
+                "seizure_frequency_number": records[0].gold_label,
+                "evidence_text": None,
+            }
+        ]
+    )
+
+    class FakeGEPA:
+        def __init__(self, **kwargs):
+            captured.update(kwargs)
+
+        def compile(self, module, trainset):
+            captured["module"] = module
+            captured["trainset"] = trainset
+            return module
+
+    monkeypatch.setattr(dspy, "GEPA", FakeGEPA)
+    dspy.configure(lm=configured_lm)
+
+    compiled = compile_gan_s0_module_gepa(records)
+
+    assert isinstance(compiled, GanFrequencyS0DirectModule)
+    assert captured["reflection_lm"] is configured_lm
+    assert captured["gepa_kwargs"] == {"use_cloudpickle": False}
+    assert len(captured["trainset"]) == 2
 
 
 def test_gan_frequency_s0_run_metadata_builds_correct_artifact_contract():

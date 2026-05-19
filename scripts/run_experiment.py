@@ -107,6 +107,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     lm = build_dspy_lm(model_config)
     dspy.configure(lm=lm)
+    reflection_lm = None
+    if config.optimizer is not None and config.optimizer.name == "GEPA":
+        reflection_config = model_config.model_copy(update={"temperature": 1.0})
+        reflection_lm = build_dspy_lm(reflection_config)
 
     run_id = args.run_id or _make_run_id(config.experiment_id)
     metadata = _run_metadata(
@@ -160,9 +164,11 @@ def main(argv: list[str] | None = None) -> int:
                 ),
                 track_stats=config.optimizer.track_stats,
                 track_best_outputs=config.optimizer.track_best_outputs,
+                use_cloudpickle=config.optimizer.use_cloudpickle,
                 num_threads=config.optimizer.num_threads,
                 seed=config.optimizer.seed,
                 log_dir=paths["optimizer_logs"],
+                reflection_lm=reflection_lm,
             )
         else:
             module = compile_gan_s0_module(

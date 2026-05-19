@@ -97,7 +97,7 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 - Parallelizable: after GEPA optimizer contract exists.
 - Owner: unassigned.
 - Validation: Unit tests exercise feedback strings for representative Gan failures; capped GPT 4.1-mini run compares current synthesis prompt versus GEPA-optimized direct extraction under unchanged `gan_frequency_deterministic_v1` scorer semantics.
-- Notes: This is the recommended first optimizer experiment. The metric is optimizer-facing only and must not replace the benchmark-facing deterministic scorer.
+- Notes: The capped GEPA harness smoke now exists in `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` and is summarized in `docs/gan_s0_gepa_harness_run_20260519.md`, but the current feedback metric is still narrower than this card's target taxonomy. The metric is optimizer-facing only and must not replace the benchmark-facing deterministic scorer.
 
 ### Add token and residency capture for local model runs
 
@@ -128,15 +128,7 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 
 ## In Progress
 
-### Add GEPA optimizer support to experiment configs and run artifacts
-
-- Outcome: Experiment configs can select `dspy.GEPA` in addition to `BootstrapFewShot`, and run artifacts preserve GEPA logs, candidate programs, selected instructions, optimizer settings, and detailed results.
-- Dependencies: `docs/dspy_gepa_react_best_practices_deep_dive.md`; current `OptimizerConfig`; current `scripts/run_experiment.py` optimizer path.
-- Parallelizable: no, because it changes the shared optimizer contract and run artifact schema.
-- Owner: Codex.
-- Validation: Config validation tests cover GEPA and BootstrapFewShot variants; dry-run shows GEPA budget/reflection settings without making model calls; a tiny mocked or capped run writes GEPA artifacts under the run directory.
-- Progress: Added shared `GEPA` optimizer config validation, feedback-metric harness support, optimizer artifact/log directories, and `configs/experiments/gan_s0_gepa_direct_cap5_gpt4_1_mini.json`. Dry-run validation is complete; the capped model-backed artifact write remains next.
-- Notes: Start with hosted/faster models for GEPA optimization. Do not make GEPA or visible reasoning a routine Qwen3.6:35b path.
+No active card is currently claimed in this plan.
 
 ## Review
 
@@ -151,6 +143,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. `docs/dspy_gepa_react_best_practices_deep_dive.md` summarizes current DSPy optimizer guidance, GEPA/ReAct case studies, project overlap, and a recommended experiment sequence.
 - Validation: Official DSPy docs, GEPA/ReAct tutorials, the DSPy and GEPA papers, a 2026 instruction-optimization fact-verification paper, and local project artifacts were reviewed; `uv run python` confirmed DSPy `3.2.1` exposes `dspy.GEPA`, `dspy.ReAct`, and `dspy.SIMBA`.
 - Notes: Recommendation is GEPA first for Gan S0 direct extraction with rich deterministic feedback, ReAct later as a bounded Gan temporal-tools probe, and no routine optimizer-heavy path for Qwen3.6:35b.
+
+### Add GEPA optimizer support to experiment configs and run artifacts
+
+- Outcome: Complete. Experiment configs can select `dspy.GEPA` in addition to `BootstrapFewShot`, and run artifacts preserve GEPA logs, optimizer settings, and compiled-state artifacts.
+- Validation: `uv run --extra dev pytest tests/test_experiment_configs.py tests/test_gan_s0_program.py tests/test_run_artifacts.py`; dry-run validation succeeded; capped GPT 4.1-mini harness run `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` wrote `artifacts/optimizer/logs/`, `artifacts/optimizer/summary.json`, and `artifacts/compiled_state.json`.
+- Notes: The real run exposed and fixed two DSPy-runtime gaps not caught by dry-run alone: GEPA budget selection must set exactly one of `auto`, `max_full_evals`, or `max_metric_calls`, and DSPy dynamic signatures required `use_cloudpickle=true` for GEPA state persistence. The harness now also supplies a reflection LM for GEPA by default. Remaining work has moved from shared infrastructure to richer Gan-specific feedback design.
 
 ### Add direct Gan S0 DSPy module variant and Qwen latency configs
 
@@ -380,7 +378,7 @@ Completed work is summarized in the background sections above rather than repeat
 - Parallelizable: after shared GEPA support exists.
 - Owner: unassigned.
 - Validation: Capped GPT 4.1-mini diagnostic run reports schema-valid rate, normalized-label exact, monthly/Purist/Pragmatic accuracy, invalid-label count, evidence quote support, prompt length, prediction seconds/record, GEPA selected instruction, and metric caveats.
-- Notes: Success means fewer canonical/temporal-window failures without evidence-support regression or prompt bloat. Use hosted/faster models first; Qwen3.6:35b should consume only compact resulting guidance, not perform routine GEPA optimization.
+- Notes: Shared GEPA support is no longer the blocker. The current harness smoke `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` gives a starting point with schema validity `80.0%`, normalized-label accuracy `50.0%`, pragmatic accuracy `75.0%`, and evidence quote support `25.0%` on a five-record cap, but it still uses a narrow exact-label-plus-evidence feedback signal and train-as-val GEPA tracking. Success means fewer canonical/temporal-window failures without evidence-support regression or prompt bloat. Use hosted/faster models first; Qwen3.6:35b should consume only compact resulting guidance, not perform routine GEPA optimization.
 
 ### Gan post-repair validation
 
@@ -556,8 +554,8 @@ Completed work is summarized in the background sections above rather than repeat
 ## Recommended Next Pull
 
 1. Add shared GEPA optimizer support to experiment configs and run artifacts.
-2. Add the Gan S0 GEPA feedback metric and capped GPT 4.1-mini optimizer config.
-3. Run the Gan S0 GEPA capped diagnostic before opening the ReAct temporal-tools probe.
+2. Enrich the Gan S0 GEPA feedback metric from the current exact-label-plus-evidence harness to the planned failure taxonomy.
+3. Re-run the Gan S0 GEPA capped diagnostic with the richer feedback signal before opening the ReAct temporal-tools probe.
 4. Keep local Qwen model-comparison runs on direct extraction by default, and transfer only compact optimized guidance to Qwen unless an overnight stress test is explicitly scheduled.
 5. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor; use ExECT GEPA only after the Gan GEPA path proves the shared optimizer harness.
 
