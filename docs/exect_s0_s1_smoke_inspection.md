@@ -307,3 +307,29 @@ Result: config resolved the same capped 3-record validation slice.
 This is diagnostic bridge behavior, not benchmark-facing scorer behavior. Repaired spans are tagged with `evidence_repair:ellipsis_contiguous_span`, allowing later reports to separate model-provided exact quotes from deterministic quote repairs.
 
 The next reasonable ExECT pull is a larger capped validation run with the same label policy and bridge behavior, followed by artifact inspection before any full validation or section-aware ablation.
+
+## 2026-05-19 Label-Policy V4 Follow-Up
+
+### Context
+
+After the v3 monolithic full-validation read (`docs/exect_s0_s1_validation_full_inspection.md`, micro F1 67.8%), the next Kanban pull targeted benchmark label-policy alignment without scorer changes: seizure-type splitting (secondary generalisation), convulsive modifiers on focal to bilateral seizures, diagnosis uncertainty stripping, cross-family leakage boundaries, and symptomatic structural focal preservation.
+
+### Work Completed
+
+- `src/clinical_extraction/programs/exect_s0_s1.py`: prompt version `exect_s0_s1_field_family_v4_label_policy`; expanded guidance/examples; deterministic bridges for fused secondary-generalisation splits, focal-to-bilateral convulsive modifier, and diagnosis uncertainty prefix stripping. Preserved `EXECT_S0_S1_V3_PROMPT_VERSION` for anchor configs.
+- `data/fixtures/exect_s0_label_policy_error_regression_slice.json`: 12-record slice from full-validation failure clusters.
+- `configs/experiments/exect_s0_s1_label_policy_regression_slice_gpt4_1_mini.json`: v4 regression-slice gate config.
+- `configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json`: smoke now tracks v4; cap-25/full validation configs remain on v3 anchor.
+- Tests: 3 new bridge tests + regression-slice config contract.
+
+### Validation
+
+```text
+uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py -k exect_s0_s1 -q
+uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_label_policy_regression_slice_gpt4_1_mini.json --dry-run
+```
+
+### Next Pull
+
+1. Run the 12-record regression slice with `--env-file .env` and inspect artifacts before cap-25/full re-run.
+2. Keep v3 runs as the comparison anchor until v4 clears the slice gate.

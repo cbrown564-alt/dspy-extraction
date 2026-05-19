@@ -7,6 +7,7 @@ from typing import Literal
 from pydantic import Field, model_validator
 
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
@@ -16,6 +17,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
@@ -149,8 +151,10 @@ class ExperimentConfig(FrozenModel):
         "gan_frequency_s0_single_pass",
         "gan_frequency_s0_direct_single_pass",
         "gan_frequency_s0_direct_verify_repair",
+        "gan_frequency_s0_temporal_candidates_verify_repair",
         "exect_s0_s1_field_family_single_pass",
         "exect_s0_s1_field_family_section_aware",
+        "exect_s0_s1_field_family_diagnosis_recall",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -180,7 +184,12 @@ class ExperimentConfig(FrozenModel):
         expected_contracts = {
             "gan_2026": (
                 GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-                {GAN_FREQUENCY_S0_VARIANT, GAN_FREQUENCY_S0_DIRECT_VARIANT, GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT},
+                {
+                    GAN_FREQUENCY_S0_VARIANT,
+                    GAN_FREQUENCY_S0_DIRECT_VARIANT,
+                    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
+                    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+                },
                 GAN_FREQUENCY_S0_SCORER,
             ),
             "exect_v2": (
@@ -188,6 +197,7 @@ class ExperimentConfig(FrozenModel):
                 {
                     EXECT_S0_S1_VARIANT,
                     EXECT_S0_S1_SECTION_AWARE_VARIANT,
+                    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
                 },
                 EXECT_S0_S1_SCORER,
             ),

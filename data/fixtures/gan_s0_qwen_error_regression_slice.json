@@ -1,6 +1,6 @@
 {
   "description": "Deterministic Gan S0 validation slice for recurrent Qwen3.6:35b direct-path failure modes. Use as record_ids filter in experiment configs for fast pre-full-validation gates.",
-  "name": "gan_s0_qwen_error_regression_v1",
+  "name": "gan_s0_qwen_error_regression_v2",
   "records": [
     {
       "failure_mode": "unknown_vs_no_reference",
@@ -41,6 +41,22 @@
     {
       "failure_mode": "short_seizure_free_threshold",
       "record_id": "gan_10410"
+    },
+    {
+      "failure_mode": "infrequent_quantified_over_unknown",
+      "record_id": "gan_13123"
+    },
+    {
+      "failure_mode": "infrequent_quantified_over_unknown",
+      "record_id": "gan_14485"
+    },
+    {
+      "failure_mode": "infrequent_quantified_over_unknown",
+      "record_id": "gan_14881"
+    },
+    {
+      "failure_mode": "infrequent_quantified_over_unknown",
+      "record_id": "gan_15306"
     }
   ],
   "split_name": "gan_2026_fixed_v1:validation"

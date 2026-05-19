@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair with deterministic temporal-candidate hints and v1.1 candidate-gated repair guards"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation",
+  "hypothesis": "Temporal-candidates verify-repair v1.1 (deterministic confirm-first + candidate-gated guards) improves cap-25 monthly frequency versus v2.2 direct guardrails (37.5% monthly anchor) after clearing the 14-record regression slice at 100%.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This 25-record cap compares temporal-candidates verify-repair v1.1 against direct v2.2 guardrails cap-25 anchor (37.5% monthly).",
+    "Temporal candidates are deterministic diagnostic hints; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "Verify-repair doubles model calls versus direct extraction; latency is not comparable to direct-only runs.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Normalized-label exact, schema validity, abstention, evidence support, temporal-candidate coverage, and verifier decisions are diagnostic.",
+    "Promotion gate: material monthly/Purist gain without invalid-cluster or short seizure-free regression vs direct v2.2 cap-25.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_qwen35b_ollama_verify_repair.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

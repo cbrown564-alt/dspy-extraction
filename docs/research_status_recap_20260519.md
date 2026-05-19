@@ -2,6 +2,8 @@
 
 Date: 2026-05-19
 
+Use `docs/kanban_plan.md` as the active tracker (session handoff, gates, next pull); this recap is the narrative research archive.
+
 ## Research Question
 
 Where is the project now, what has it discovered so far, what are the main

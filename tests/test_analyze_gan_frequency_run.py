@@ -26,6 +26,37 @@ def test_analysis_record_ids_uses_config_record_ids_filter(tmp_path: Path):
     assert record_ids == ["gan_10509", "gan_10751"]
 
 
+def test_analysis_record_ids_cli_override_takes_precedence(tmp_path: Path):
+    from clinical_extraction.evaluation.gan_run_analysis import analysis_record_ids
+
+    run_dir = tmp_path / "run"
+    run_dir.mkdir()
+    (run_dir / "config.json").write_text(
+        json.dumps({"record_ids": ["gan_10509", "gan_10751"]}),
+        encoding="utf-8",
+    )
+    record_ids, scope = analysis_record_ids(
+        run_dir=run_dir,
+        split_file=Path("data/splits/gan_2026_splits.json"),
+        split_name="gan_2026_fixed_v1:validation",
+        predictions_by_id={"gan_13123": object(), "gan_15306": object()},
+        record_ids_override=["gan_13123", "gan_15306"],
+    )
+    assert scope == "record_ids_filter"
+    assert record_ids == ["gan_13123", "gan_15306"]
+
+
+def test_load_record_ids_filter_reads_regression_slice_fixture():
+    from clinical_extraction.evaluation.gan_run_analysis import load_record_ids_filter
+    from clinical_extraction.datasets.gan_qwen_regression_slice import (
+        gan_qwen_error_regression_record_ids,
+    )
+
+    path = Path("data/fixtures/gan_s0_qwen_error_regression_slice.json")
+    assert load_record_ids_filter(path) == gan_qwen_error_regression_record_ids(path)
+    assert len(load_record_ids_filter(path)) == 14
+
+
 def _scored_row(**overrides):
     base = {
         "status": "scored",
@@ -99,3 +130,69 @@ def test_unknown_vs_no_reference_remains_benchmark_severe():
     failure_class = classify_gan_frequency_failure(row)
     assert failure_class == "unknown_vs_no_reference"
     assert failure_action_tier(failure_class) == "benchmark_severe"
+
+
+def test_build_gan_stratified_reporting_includes_operational_and_valid_denominators():
+    from clinical_extraction.evaluation.gan_run_analysis import (
+        build_gan_stratified_reporting,
+    )
+
+    rows = [
+        {
+            "status": "scored",
+            "hard_case": False,
+            "row_ok": True,
+            "gold_pragmatic_category": "infrequent",
+            "normalized_exact_match": True,
+            "monthly_match": True,
+            "purist_match": True,
+            "pragmatic_match": True,
+            "failure_action_tier": "diagnostic_only",
+        },
+        {
+            "status": "invalid",
+            "hard_case": True,
+            "row_ok": False,
+            "gold_pragmatic_category": "frequent",
+            "failure_class": "invalid_predicted_label",
+        },
+        {
+            "status": "scored",
+            "hard_case": True,
+            "row_ok": True,
+            "gold_pragmatic_category": "frequent",
+            "normalized_exact_match": False,
+            "monthly_match": False,
+            "purist_match": False,
+            "pragmatic_match": False,
+            "failure_action_tier": "benchmark_severe",
+        },
+    ]
+    report = build_gan_stratified_reporting(rows)
+
+    overall = report["overall"]
+    assert overall["all_records"] == 3
+    assert overall["valid_scored"] == 2
+    assert overall["invalid_or_missing"] == 1
+    assert overall["operational_failures"] == 2
+    assert overall["operational_failure_rate"] == 2 / 3
+    assert report["hard_case"]["true"]["all_records"] == 2
+    assert report["row_ok"]["false"]["all_records"] == 1
+    assert "infrequent" in report["gold_pragmatic_category"]
+
+
+def test_build_temporal_candidate_diagnostics_reports_gold_coverage():
+    from clinical_extraction.datasets.gan import load_gan_records
+    from clinical_extraction.evaluation.gan_run_analysis import (
+        build_temporal_candidate_diagnostics,
+    )
+
+    gold_by_id = {record.record_id: record for record in load_gan_records()}
+    diagnostics = build_temporal_candidate_diagnostics(
+        record_ids=["gan_13123", "gan_14485", "gan_14881", "gan_15306"],
+        gold_by_id=gold_by_id,
+    )
+
+    assert diagnostics["gold_covered_count"] == 4
+    assert diagnostics["gold_covered_rate"] == 1.0
+    assert all(row["gold_in_candidates"] for row in diagnostics["records"])

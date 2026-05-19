@@ -1,0 +1,45 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples plus diagnosis-recall add-only pass",
+    "repair_policy": "add_only_diagnosis_recall_merge_with_deterministic_guards",
+    "verifier_policy": "confirm_first_monolithic_extraction_then_diagnosis_recall_pass"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini",
+  "hypothesis": "A bounded add-only diagnosis-recall pass after v4.2 monolithic extraction improves diagnosis recall on tail records with missed co-listed lobe/syndrome or generic epilepsy labels without reopening seizure-type or medication fields.",
+  "metric_caveats": [
+    "This 14-record diagnosis-recall slice uses record_ids from data/fixtures/exect_s0_diagnosis_recall_regression_slice.json.",
+    "Diagnosis recall doubles model calls versus monolithic v4.2; latency is not comparable to single-pass runs.",
+    "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields remain diagnosis, seizure type, and annotated medication; recall pass only adds diagnosis labels.",
+    "Do not extrapolate slice metrics to full-validation performance."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_diagnosis_recall",
+  "prompt_version": "exect_s0_s1_diagnosis_recall_v1",
+  "record_ids": [
+    "EA0045",
+    "EA0061",
+    "EA0098",
+    "EA0116",
+    "EA0125",
+    "EA0131",
+    "EA0137",
+    "EA0143",
+    "EA0148",
+    "EA0150",
+    "EA0170",
+    "EA0173",
+    "EA0174",
+    "EA0188"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

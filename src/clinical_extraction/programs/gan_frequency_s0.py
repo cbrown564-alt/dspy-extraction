@@ -22,13 +22,19 @@ GAN_FREQUENCY_S0_SCHEMA_LEVEL = "gan_frequency_s0"
 GAN_FREQUENCY_S0_VARIANT = "gan_frequency_s0_single_pass"
 GAN_FREQUENCY_S0_DIRECT_VARIANT = "gan_frequency_s0_direct_single_pass"
 GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT = "gan_frequency_s0_direct_verify_repair"
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_verify_repair"
+)
 GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
-    "gan_frequency_s0_direct_verify_repair_v2"
+    "gan_frequency_s0_direct_verify_repair_v2_4"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
 )
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
 GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION = (
-    "gan_frequency_s0_direct_guardrails_v2_1"
+    "gan_frequency_s0_direct_guardrails_v2_2"
 )
 
 GAN_FREQUENCY_SYNTHESIS_GUIDANCE = (
@@ -52,8 +58,10 @@ class GanFrequencyS0Signature(dspy.Signature):
     Do not use hidden reasoning. Emit only the requested output fields.
 
     The label must match the Gan annotation vocabulary exactly. Abstain (null) only when
-    the note contains no usable seizure-frequency information. When seizures are discussed
-    but not quantifiable, output unknown — never null.
+    the note contains no usable seizure-frequency information at all. When seizures are
+    discussed but not quantifiable, output unknown — never null. Administrative or
+    no-clinical-content letters MUST output no seizure frequency reference (not null,
+    not unknown).
 
     Synthesis-backed policy:
     - Output only canonical Gan labels: N per unit, N to M per unit, N per M unit,
@@ -65,12 +73,22 @@ class GanFrequencyS0Signature(dspy.Signature):
     - Choose the highest current quantified seizure-type frequency.
     - Quantified rates beat unknown: when the note states an explicit event count
       over a time window — even infrequent — output the canonical N per M unit rate.
-      Do NOT collapse low-frequency quantified counts to unknown. Examples:
-      "two seizures in the last three months" → "2 per 3 month"; "about once a month"
-      → "1 per month"; "one seizure per year" → "1 per year"; "10 seizures over
-      six months" → "10 per 6 month"; "2 to 3 events in 15 months" →
-      "2 to 3 per 15 month". Reserve unknown for qualitative or pattern-only
-      descriptions where no count+window can be extracted from the note.
+      Do NOT collapse low-frequency quantified counts to unknown. Infrequent explicit
+      rates are still quantified — never answer unknown when both count and window
+      are present. Worked examples (output the rate, NOT unknown):
+      "two seizures in the last three months" → "2 per 3 month";
+      "about once a month" → "1 per month";
+      "one seizure per year" / "once yearly" → "1 per year";
+      "10 seizures over six months" → "10 per 6 month";
+      "2 to 3 events in 15 months" → "2 to 3 per 15 month".
+      Reserve unknown for qualitative or pattern-only descriptions where no
+      count+window can be extracted from the note.
+    - Multiple vs undercount: when the note uses multiple, several, a few, or similar
+      without an exact count for the highest current rate, output multiple per unit
+      (e.g. multiple per week). Do NOT round vague multiplicity down to 1 per week
+      or 1 per month. When several quantified rates appear, choose the highest
+      current rate; if that rate is expressed as multiple/severe/vague multiplicity,
+      preserve multiple in the label.
     - Cluster format is mandatory: every cluster label must include BOTH parts
       separated by a comma — "N cluster per unit, M per cluster". Never emit an
       incomplete cluster such as "1 cluster per week" alone. When the per-cluster
@@ -95,11 +113,14 @@ class GanFrequencyS0Signature(dspy.Signature):
       count+time-window can be extracted. If the note gives N events over M
       months/weeks/years, output the rate — not unknown. Use no seizure frequency
       reference ONLY when the note lacks usable seizure-frequency information
-      (including administrative or no-clinical-content letters). Do NOT output
-      no seizure frequency reference when seizures are mentioned — that is unknown.
-      Examples: "clusters after poor sleep" with no counts → unknown; "last seizure
-      on DATE" without an ongoing rate → unknown; "none in 4 months but bursts with
-      travel" → unknown; "two in three months" → "2 per 3 month" (NOT unknown).
+      (including administrative or no-clinical-content letters). For admin or
+      no-clinical-content letters, output no seizure frequency reference — never
+      null and never unknown. Do NOT output no seizure frequency reference when
+      seizures are mentioned with clinical frequency content — that is unknown.
+      Examples: admin/scheduling-only letter → no seizure frequency reference;
+      "clusters after poor sleep" with no counts → unknown; "last seizure on DATE"
+      without an ongoing rate → unknown; "none in 4 months but bursts with travel"
+      → unknown; "two in three months" → "2 per 3 month" (NOT unknown).
       Do not output null for no-content cases.
     - When multiple quantified seizure-type frequencies are present, choose the
       highest current rate for the primary label.
@@ -158,45 +179,82 @@ class GanFrequencyS0VerifierSignature(dspy.Signature):
     /no_think
     Do not use hidden reasoning. Emit only the requested output fields.
 
-    Review the initial prediction against the source note. Prefer confirm or
-    repair toward a better canonical label. Abstain only as a last resort.
+    Review the initial prediction against the source note. **Confirm-first:** when
+    the initial label is already canonical, note-supported, and initial_evidence is
+    an exact contiguous note substring, confirm without repair. Repair only for a
+    strictly better supported label. Abstain only as a last resort.
 
     Canonical Gan vocabulary (singular units: day, week, month, year):
     - N per unit, N to M per unit, N per M unit
-    - N cluster per unit, M per cluster
+    - N cluster per unit, M per cluster — BOTH parts required; "multiple per cluster"
+      is a standard Gan unit when per-cluster count is undocumented
     - seizure free for N unit — VALID and canonical when N is at least 6 months
       (e.g. seizure free for 7 month, seizure free for 35 year)
     - unknown — note discusses seizures but frequency cannot be quantified
     - no seizure frequency reference — note lacks usable frequency information
 
     Decision policy:
-    - confirm: initial label is already canonical, note-supported, and evidence is
-      an exact contiguous note substring. Do not add quotes or wrapper punctuation.
+    - confirm: default when initial label is canonical, note-supported, and evidence
+      is an exact contiguous note substring. Do not add quotes or wrapper punctuation.
     - repair: fix a specific error to a strictly better canonical label supported
       by the note. Do not repair imprecise-but-valid labels to unknown.
     - abstain: last resort only — set final_label to null when no confident
       canonical label is supported.
 
-    Confirm rules (do not over-repair):
+    Confirm-first rules (do not over-repair):
+    - If initial_label and initial_evidence already match the note, confirm unchanged.
     - Keep correct seizure-free labels such as seizure free for 7 month.
     - seizure free for N unit is canonical when seizure freedom is >= 6 months;
       never reject it as non-canonical or replace it with no seizure frequency
       reference.
-    - If the initial label and evidence already match the note, confirm unchanged.
+    - Year-to-date (YTD): if initial_label uses months elapsed since January for a
+      "this year to date" / YTD note (e.g. 9 per month in January, 5 per 2 month in
+      February), confirm — never expand YTD to a 12-month or per-year denominator.
+    - Full cluster labels: if initial_label includes "N cluster per unit, M per cluster"
+      (including ", multiple per cluster"), confirm — never strip the second clause
+      or collapse to "N per week" / "N per month".
+    - Confirm initial_label unknown when seizures are discussed but the pattern is
+      qualitative only: clusters without counts; trigger-dependent infrequency
+      (e.g. none at home but bursts with travel); last-seizure date without an ongoing
+      rate window; "none in N months" without a stable canonical rate.
 
     Repair rules:
-    - Incomplete cluster labels: add the per-cluster count when the note states it.
+    - Incomplete cluster labels: add the per-cluster count when the note states it
+      and initial_label omitted it — preserve ", multiple per cluster" when count
+      is still undocumented.
     - Short seizure-free periods (< 6 months): compute a rate from total events over
-      the described period; do not emit unknown unless the note is truly ambiguous.
+      the described period; do NOT emit seizure free for N unit when N < 6 months.
+    - Infrequent quantified rates over unknown — span discipline: repair unknown
+      to a canonical N per M unit rate ONLY when initial_label is unknown AND the
+      note gives an explicit event count AND an explicit/shared time window in ONE
+      contiguous evidence span (count and window together). Worked examples:
+      "two to three single jerks remain since 12/2020" over ~15 months →
+      "2 to 3 per 15 month"; "two seizures in the last three months" → "2 per 3 month".
+      Do NOT repair when count and window require stitching non-adjacent spans,
+      when a longer stability window conflicts with a recent event only, or when
+      partial phrases (e.g. "three Saturdays ago") lack a shared denominator with
+      the count. Do NOT repair unknown using only "no further events since DATE"
+      when earlier dated events define the rate.
     - Imprecise but valid labels (e.g. multiple per week): sharpen toward the
       nearest supported canonical form or confirm; do not collapse to unknown.
     - Unknown vs no-reference: use unknown when seizures are discussed but not
       quantifiable; use no-reference only when the note lacks frequency information.
+    - Do not repair unknown to a quantified rate when the note only gives qualitative
+      infrequency, clusters without counts, or a last-seizure date without an ongoing
+      rate window.
+
+    Anti-over-repair (never do these):
+    - Do not repair unknown to no seizure frequency reference when seizures,
+      episodes, clusters, or a last-seizure date are discussed.
+    - Do not repair unknown to seizure free for N unit when N < 6 months.
+    - Do not repair a correct YTD-based initial_label to per year or per 12 month.
+    - Do not strip ", multiple per cluster" or collapse cluster labels to simple rates.
 
     Evidence rules:
     - final_evidence must be the shortest exact contiguous substring of note_text.
     - On confirm, preserve initial_evidence when it already supports the label.
-    - On repair, update evidence only when needed to support the repaired label.
+    - On repair off unknown, final_evidence must contain BOTH the count and the
+      time-window phrase used for the denominator in one contiguous quote.
     - Never replace a note-contained quote with an unsupported or invented quote.
 
     Arithmetic and temporal guardrails:
@@ -211,6 +269,7 @@ class GanFrequencyS0VerifierSignature(dspy.Signature):
     - Short seizure-free periods labeled as seizure free
     - Misrejecting valid seizure free for N unit labels
     - Over-repairing to unknown or no seizure frequency reference
+    - Over-unknown on infrequent quantified rates (unknown when count+window present)
     - Unknown vs no seizure frequency reference confusion
     - Non-canonical or unsupported evidence quotes
     """
@@ -291,6 +350,106 @@ class GanFrequencyS0VerifyRepairModule(dspy.Module):
             verifier_reason=verified.reason,
             initial_label=initial.seizure_frequency_number,
             initial_evidence=initial.evidence_text,
+        )
+
+
+class GanFrequencyS0TemporalVerifierSignature(GanFrequencyS0VerifierSignature):
+    """Verify/repair with deterministic temporal-candidate hints.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    In addition to the base verifier policy, temporal_candidates lists auditable
+    event/window interpretations extracted deterministically from the note. These
+    are diagnostic hints, not gold labels.
+
+    Temporal-candidate policy (v1.1 confirm-first):
+    - Candidate repair is allowed ONLY when initial_label is unknown or abstain/null.
+    - When initial_label is any other canonical label, ALWAYS confirm unchanged —
+      never repair to a candidate or alternative aggregation, even if candidates differ.
+    - When initial_label is unknown, repair ONLY to a listed candidate label when that
+      candidate's evidence_text is an exact contiguous substring of note_text and the
+      candidate derivation matches the note's event/window structure.
+    - Never repair to seizure free for N unit when N < 6 months, including from
+      candidates or when no candidate supports seizure-free.
+    - If initial_label is unknown, candidates exist, and a repair target is not in the
+      candidate list, prefer the first note-supported candidate over an invented label.
+    - If no candidate fits or candidates conflict with confirm-first rules, keep
+      unknown or abstain rather than inventing a label.
+    """
+
+    temporal_candidates: str = dspy.InputField(
+        desc=(
+            "Deterministic temporal frequency candidates: canonical labels with "
+            "event counts, windows, derivations, and evidence spans from the note."
+        )
+    )
+
+
+class GanFrequencyS0TemporalVerifierModule(dspy.Module):
+    """Verifier that receives deterministic temporal-candidate structure."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.verify = dspy.Predict(GanFrequencyS0TemporalVerifierSignature)
+
+    def forward(
+        self,
+        note_text: str,
+        initial_label: str | None,
+        initial_evidence: str | None,
+        temporal_candidates: str,
+    ) -> dspy.Prediction:
+        return self.verify(
+            note_text=note_text,
+            initial_label=initial_label,
+            initial_evidence=initial_evidence,
+            temporal_candidates=temporal_candidates,
+        )
+
+
+class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
+    """Direct extraction plus temporal-candidate-aware verify/repair."""
+
+    def __init__(self, extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT) -> None:
+        super().__init__()
+        self.extractor = build_gan_s0_module(extractor_variant)
+        self.verifier = GanFrequencyS0TemporalVerifierModule()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+            temporal_candidate_to_dict,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.extractor(note_text=note_text)
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_temporal_verifier_guards(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=verified.final_label,
+            evidence_text=verified.final_evidence,
+            verifier_decision=verified.decision,
+            verifier_reason=verified.reason,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+            temporal_candidate_labels=[c.canonical_label for c in candidates],
+            temporal_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in candidates
+            ],
         )
 
 
@@ -839,7 +998,12 @@ def compile_gan_s0_module(
     max_rounds: int = 1,
     num_candidate_programs: int = 16,
     optimizer_metric: str = "semantic_frequency_with_evidence",
-) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
+) -> (
+    GanFrequencyS0Module
+    | GanFrequencyS0DirectModule
+    | GanFrequencyS0VerifyRepairModule
+    | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+):
     """Compile a Gan S0 module with a few-shot DSPy optimizer.
 
     Supports ``LabeledFewShot``, ``BootstrapFewShot``, and
@@ -847,12 +1011,24 @@ def compile_gan_s0_module(
     samples labeled demonstrations from the trainset without bootstrapping.
     BootstrapFewShot keeps teacher traces that pass the optimizer metric.
     BootstrapFewShotWithRandomSearch searches over candidate demo sets.
+
+    For verify-repair variants, LabeledFewShot compiles only the extractor
+    sub-module so trainset demos stay on the direct extraction signature.
     """
     trainset = _gan_s0_optimizer_trainset(records, optimizer_metric=optimizer_metric)
     module = build_gan_s0_module(program_variant)
 
     if optimizer_name == "LabeledFewShot":
         optimizer = dspy.LabeledFewShot(k=max_labeled_demos)
+        if isinstance(
+            module,
+            (
+                GanFrequencyS0VerifyRepairModule,
+                GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+            ),
+        ):
+            module.extractor = optimizer.compile(module.extractor, trainset=trainset)
+            return module
         return optimizer.compile(module, trainset=trainset)
 
     try:
@@ -937,13 +1113,20 @@ def compile_gan_s0_module_gepa(
 
 def build_gan_s0_module(
     program_variant: str,
-) -> GanFrequencyS0Module | GanFrequencyS0DirectModule | GanFrequencyS0VerifyRepairModule:
+) -> (
+    GanFrequencyS0Module
+    | GanFrequencyS0DirectModule
+    | GanFrequencyS0VerifyRepairModule
+    | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+):
     if program_variant == GAN_FREQUENCY_S0_VARIANT:
         return GanFrequencyS0Module()
     if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
         return GanFrequencyS0DirectModule()
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
         return GanFrequencyS0VerifyRepairModule()
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
+        return GanFrequencyS0TemporalCandidatesVerifyRepairModule()
     raise ValueError(f"Unsupported Gan S0 program variant: {program_variant!r}")
 
 
@@ -983,10 +1166,102 @@ def predict_gan_records(
 
 
 _ABSTAIN_STRINGS = frozenset({"none", "null", ""})
+_SHORT_SEIZURE_FREE_RE = re.compile(
+    r"^seizure free for (?P<count>\d+(?:\.\d+)?) (?P<unit>week|month|year)s?$"
+)
+
+
+def _is_unknown_or_abstain_label(label: str | None) -> bool:
+    if label is None:
+        return True
+    return label.strip().lower() in _ABSTAIN_STRINGS | {"unknown"}
+
+
+def _seizure_free_window_in_months(label: str) -> float | None:
+    normalized = _apply_canonical_surface_repairs(label.strip())
+    match = _SHORT_SEIZURE_FREE_RE.match(normalized)
+    if not match:
+        return None
+    count = float(match.group("count"))
+    unit = match.group("unit").rstrip("s")
+    if unit == "week":
+        return count / 4.345
+    if unit == "month":
+        return count
+    if unit == "year":
+        return count * 12
+    return None
+
+
+def _apply_temporal_verifier_guards(
+    *,
+    initial_label: str | None,
+    initial_evidence: str | None,
+    verified: dspy.Prediction,
+    candidates: list[Any],
+) -> dspy.Prediction:
+    """Deterministic confirm-first and candidate-gated repair for temporal verify-repair."""
+    from clinical_extraction.gan.frequency import normalize_label
+
+    final_label = verified.final_label
+    decision = verified.decision
+
+    if not _is_unknown_or_abstain_label(initial_label):
+        if decision == "repair" or (
+            decision == "confirm"
+            and final_label is not None
+            and initial_label is not None
+            and normalize_label(final_label) != normalize_label(initial_label)
+        ):
+            return dspy.Prediction(
+                final_label=initial_label,
+                final_evidence=initial_evidence,
+                decision="confirm",
+                reason=(
+                    f"Confirm-first guard preserved initial label {initial_label!r} "
+                    f"instead of verifier {decision} to {final_label!r}."
+                ),
+            )
+        return verified
+
+    candidate_labels = [candidate.canonical_label for candidate in candidates]
+    candidate_norms = {normalize_label(label) for label in candidate_labels}
+
+    if decision == "repair" and final_label and candidate_labels:
+        if normalize_label(final_label) not in candidate_norms:
+            best = candidates[0]
+            return dspy.Prediction(
+                final_label=best.canonical_label,
+                final_evidence=best.evidence_text,
+                decision="repair",
+                reason=(
+                    f"Candidate-gated repair replaced verifier label {final_label!r} "
+                    f"with listed candidate {best.canonical_label!r}."
+                ),
+            )
+
+    if decision == "repair" and final_label:
+        months = _seizure_free_window_in_months(final_label)
+        if months is not None and months < 6:
+            return dspy.Prediction(
+                final_label="unknown",
+                final_evidence=initial_evidence or verified.final_evidence,
+                decision="confirm",
+                reason=(
+                    f"Short seizure-free guard kept unknown instead of {final_label!r}."
+                ),
+            )
+
+    return verified
 
 
 def _predict_record(
-    module: GanFrequencyS0Module | GanFrequencyS0DirectModule | GanFrequencyS0VerifyRepairModule,
+    module: (
+        GanFrequencyS0Module
+        | GanFrequencyS0DirectModule
+        | GanFrequencyS0VerifyRepairModule
+        | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+    ),
     record: GanRecord,
     *,
     program_variant: str,
@@ -1019,6 +1294,10 @@ def _predict_record(
         metadata["initial_label"] = pred.initial_label
     if hasattr(pred, "initial_evidence"):
         metadata["initial_evidence"] = pred.initial_evidence
+    if hasattr(pred, "temporal_candidate_labels"):
+        metadata["temporal_candidate_labels"] = pred.temporal_candidate_labels
+    if hasattr(pred, "temporal_candidate_records"):
+        metadata["temporal_candidate_records"] = pred.temporal_candidate_records
 
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,
@@ -1071,6 +1350,33 @@ _EVIDENCE_PROMPT_FOOTER_MARKERS = (
     "[[ ## ",
     "In adhering to this structure",
 )
+_PER_HOUR_RATE_RE = re.compile(r"^(?P<count>\d+(?:\.\d+)?) per hour$")
+_MALFORMED_CLUSTER_SUFFIX_RE = re.compile(
+    r"^(?P<rate>.+?) per (?P<unit>day|week|month|year), "
+    r"(?P<per_cluster>.+?) per cluster$"
+)
+
+
+def _repair_forbidden_hour_rate(label: str) -> str:
+    """Convert forbidden per-hour rates to per-day before scorer validation."""
+    match = _PER_HOUR_RATE_RE.match(label)
+    if match is None:
+        return label
+    daily = float(match.group("count")) * 24
+    return f"{_format_number(daily)} per day"
+
+
+def _repair_malformed_cluster_suffix(label: str) -> str:
+    """Insert missing 'cluster' when a rate is followed by ', N per cluster'."""
+    if " cluster per " in label:
+        return label
+    match = _MALFORMED_CLUSTER_SUFFIX_RE.match(label)
+    if match is None:
+        return label
+    return (
+        f"{match.group('rate')} cluster per {match.group('unit')}, "
+        f"{match.group('per_cluster')} per cluster"
+    )
 
 
 def _normalize_predicted_label(label: str | None) -> str | None:
@@ -1088,6 +1394,8 @@ def _normalize_predicted_label(label: str | None) -> str | None:
         return quoted_special.group("label").lower()
 
     normalized = _apply_canonical_surface_repairs(stripped)
+    normalized = _repair_forbidden_hour_rate(normalized)
+    normalized = _repair_malformed_cluster_suffix(normalized)
 
     every_day_range = _EVERY_DAY_RANGE_RE.match(normalized)
     if every_day_range:

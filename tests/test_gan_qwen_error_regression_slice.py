@@ -17,7 +17,7 @@ def test_gan_qwen_error_regression_slice_records_remain_in_validation_split():
     validation_ids = set(split_data["validation"])
     record_ids = gan_qwen_error_regression_record_ids()
     assert slice_payload["split_name"] == "gan_2026_fixed_v1:validation"
-    assert len(record_ids) == 10
+    assert len(record_ids) == 14
     assert set(record_ids) <= validation_ids
 
 
@@ -30,6 +30,7 @@ def test_gan_qwen_error_regression_slice_covers_documented_failure_modes():
     assert "incomplete_cluster_label" in modes
     assert "cluster_multiplier_preservation" in modes
     assert "short_seizure_free_threshold" in modes
+    assert "infrequent_quantified_over_unknown" in modes
 
 
 def test_qwen_regression_slice_experiment_config_uses_record_ids_filter():

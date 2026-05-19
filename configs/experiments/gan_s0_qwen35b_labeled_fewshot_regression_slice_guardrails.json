@@ -1,22 +1,31 @@
 {
   "controls": {
-    "abstention_policy": "allow_explicit_abstain_flag",
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
     "context_policy": "full_note",
-    "few_shot_policy": "none",
+    "few_shot_policy": "LabeledFewShot with synthesis-labeled demonstrations (k=4) on guardrails v2.2 direct path",
     "repair_policy": "artifact_bridge_surface_normalization_only",
     "verifier_policy": "none"
   },
   "dataset": "gan_2026",
-  "experiment_id": "gan_s0_qwen35b_direct_regression_slice_guardrails",
-  "hypothesis": "A targeted Qwen3.6:35b direct run on recurrent validation failure modes (unknown/no-reference, no-content nulls, highest-current frequency, year-to-date denominators, cluster shape, short seizure-free threshold, infrequent quantified over-unknown) gates prompt v2.2 before cap-25 or full validation.",
+  "experiment_id": "gan_s0_qwen35b_labeled_fewshot_regression_slice_guardrails",
+  "hypothesis": "LabeledFewShot with four synthesis-labeled train demos on the local Qwen3.6:35b guardrails v2.2 direct path teaches infrequent quantified rates without verify-repair latency cost.",
   "metric_caveats": [
     "This 14-record slice uses record_ids from data/fixtures/gan_s0_qwen_error_regression_slice.json.",
+    "LabeledFewShot compiles on development train records before predicting the slice; compile time is diagnostic.",
     "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
     "Normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
     "Do not extrapolate slice metrics to full-validation performance.",
     "This is not published Gan benchmark reproduction."
   ],
   "model_config_path": "configs/models/gan_s0_qwen35b_ollama.json",
+  "optimizer": {
+    "max_bootstrapped_demos": 0,
+    "max_labeled_demos": 4,
+    "max_rounds": 1,
+    "metric_name": "synthesis_exact_with_evidence",
+    "name": "LabeledFewShot",
+    "trainset_size": 50
+  },
   "output_root": "runs",
   "program_variant": "gan_frequency_s0_direct_single_pass",
   "prompt_version": "gan_frequency_s0_direct_guardrails_v2_2",

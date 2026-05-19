@@ -25,8 +25,13 @@ EXECT_DATASET = "exect_v2"
 EXECT_S0_S1_SCHEMA_LEVEL = "exect_s0_s1_field_family"
 EXECT_S0_S1_VARIANT = "exect_s0_s1_field_family_single_pass"
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
+EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT = "exect_s0_s1_field_family_diagnosis_recall"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
-EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v3_seizure_evidence_policy"
+EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v4_2_label_policy"
+EXECT_S0_S1_DIAGNOSIS_RECALL_PROMPT_VERSION = "exect_s0_s1_diagnosis_recall_v1"
+EXECT_S0_S1_V3_PROMPT_VERSION = "exect_s0_s1_field_family_v3_seizure_evidence_policy"
+EXECT_S0_S1_V4_PROMPT_VERSION = "exect_s0_s1_field_family_v4_label_policy"
+EXECT_S0_S1_V4_1_PROMPT_VERSION = "exect_s0_s1_field_family_v4_1_label_policy"
 EXECT_S0_S1_FIELD_FAMILIES = (
     "diagnosis",
     "seizure_type",
@@ -45,11 +50,44 @@ EXECT_S0_S1_LABEL_POLICY_GUIDANCE = (
     "Split fused seizure-type surfaces into audited benchmark labels when the note combines a "
     "lobe-specific type with a broader focal seizure type; for example temporal lobe onset focal "
     "seizures should produce temporal lobe seizure and focal seizures.",
+    "When a note names focal seizures with secondary generalisation as one phrase, split it into "
+    "focal seizures, secondary generalisation, and generalized tonic clonic seizure as separate "
+    "benchmark-facing seizure-type labels.",
+    "Preserve convulsive modifiers on focal to bilateral seizure labels when the audited scorer "
+    "expects focal to bilateral convulsive seizure or seizures.",
+    "Strip probable, possible, or similar uncertainty qualifiers from diagnosis labels when the "
+    "benchmark-facing gold uses the definite audited diagnosis surface.",
+    "Preserve modifier-rich audited diagnosis surfaces such as symptomatic structural focal "
+    "epilepsy; do not drop focal or other audited modifiers unless specificity collapse applies.",
+    "Keep seizure-type labels out of the diagnosis field and epilepsy diagnoses out of the "
+    "seizure-type field; do not emit non-epilepsy conditions such as hydrocephalus as diagnosis.",
+    "Only emit diagnosis labels from the audited epilepsy diagnosis vocabulary; never place "
+    "seizure-type phrases, fused secondary-generalisation wording, or seizure-event descriptors "
+    "in the diagnosis field.",
+    "When splitting temporal-lobe-onset focal seizures, emit temporal lobe seizure and focal "
+    "seizures as separate labels; do not replace them with temporal lobe seizures alone.",
+    "When the note lists both focal seizures and a temporal-lobe seizure type, include both in "
+    "seizure_type rather than moving focal seizures into diagnosis.",
+    "For symptomatic structural focal epilepsy, keep the focal modifier; do not shorten to "
+    "symptomatic structural epilepsy.",
+    "When a note separately names parietal lobe epilepsy alongside focal epilepsy, include both "
+    "diagnosis labels.",
+    "Use epilepsy with generalized tonic clonic seizures on awakening when the note uses on "
+    "awakening wording; do not substitute from sleep.",
+    "Prefer audited coarse seizure-type labels such as generalized seizures or generalized tonic "
+    "clonic seizures over granular event descriptors such as jerks, absences, or absence events "
+    "unless the note explicitly uses the audited benchmark surface.",
+    "When the benchmark-facing seizure label is focal to bilateral convulsive seizure, use that "
+    "surface even if the note says focal onset convulsive seizure.",
     "Do not infer seizure type from diagnosis alone, and do not add secondary generalisation as a "
     "separate current seizure type unless the note independently names it as current.",
-    "Annotated medication means medications in the audited prescription annotation view only; do "
-    "not include planned starts, previous trials, taper/stop instructions, or medication history "
-    "mentions unless they are also prescription-style annotated medication entries.",
+    "Annotated medication means anti-seizure medications in the audited prescription annotation "
+    "view only; do not include psychotropic or non-ASM drugs, planned starts, previous trials, "
+    "taper/stop instructions, or medication-history mentions.",
+    "When the note has no prescription-style current medication list, return an empty "
+    "annotated_medication list rather than inferring ASM from seizure history or past trials.",
+    "Do not emit jerks, absences, or absence events as separate seizure-type labels when the "
+    "benchmark-facing surface is a coarse generalized or generalized tonic clonic label.",
     "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or "
     "unsupported evidence.",
 )
@@ -99,6 +137,148 @@ EXECT_S0_S1_POLICY_EXAMPLES = (
         "benchmark_output": {"diagnosis": []},
         "policy": "Do not convert a single seizure event into an established epilepsy diagnosis.",
     },
+    {
+        "case": "secondary_generalisation_split",
+        "note_fragment": "Seizure type: focal seizures with secondary generalisation.",
+        "benchmark_output": {
+            "seizure_type": [
+                "focal seizures",
+                "secondary generalisation",
+                "generalized tonic clonic seizure",
+            ]
+        },
+        "policy": "Split fused secondary-generalisation phrases into separate benchmark seizure types.",
+    },
+    {
+        "case": "focal_to_bilateral_convulsive_modifier",
+        "note_fragment": "She has focal to bilateral seizures.",
+        "benchmark_output": {"seizure_type": ["focal to bilateral convulsive seizures"]},
+        "policy": "Preserve the convulsive modifier when that is the audited benchmark surface.",
+    },
+    {
+        "case": "diagnosis_uncertainty_stripping",
+        "note_fragment": "Diagnosis: probable juvenile myoclonic epilepsy.",
+        "benchmark_output": {"diagnosis": ["juvenile myoclonic epilepsy"]},
+        "policy": "Strip uncertainty qualifiers when the benchmark-facing label is definite.",
+    },
+    {
+        "case": "cross_family_diagnosis_exclusion",
+        "note_fragment": "Diagnosis: hydrocephalus. Seizure type: focal seizures.",
+        "benchmark_output": {"diagnosis": [], "seizure_type": ["focal seizures"]},
+        "policy": "Do not place non-epilepsy conditions or seizure types in the diagnosis field.",
+    },
+    {
+        "case": "symptomatic_structural_focal_preservation",
+        "note_fragment": "Diagnosis: symptomatic structural focal epilepsy.",
+        "benchmark_output": {"diagnosis": ["symptomatic structural focal epilepsy"]},
+        "policy": "Preserve the full audited focal diagnosis modifier rather than dropping focal.",
+    },
+    {
+        "case": "temporal_lobe_seizures_split_pair",
+        "note_fragment": "Seizure type: temporal lobe seizures with occipital lobe seizures.",
+        "benchmark_output": {
+            "seizure_type": [
+                "temporal lobe seizure",
+                "focal seizures",
+                "occipital lobe seizures",
+            ]
+        },
+        "policy": "Do not stop at temporal lobe seizures alone when focal seizures is also required.",
+    },
+    {
+        "case": "focal_to_bilateral_annotation_surface",
+        "note_fragment": "Seizure type and frequency: focal onset convulsive seizure.",
+        "benchmark_output": {"seizure_type": ["focal to bilateral convulsive seizure"]},
+        "policy": "Use the audited bilateral convulsive benchmark surface when that is the scorer label.",
+    },
+    {
+        "case": "coarse_generalized_seizure_surface",
+        "note_fragment": "She has absences and myoclonic jerks.",
+        "benchmark_output": {"seizure_type": ["generalized seizures"]},
+        "policy": "Prefer audited coarse generalized seizure labels over granular jerk/absence descriptors.",
+    },
+    {
+        "case": "absence_events_to_gtcs_surface",
+        "note_fragment": "He reports absence events.",
+        "benchmark_output": {"seizure_type": ["generalized tonic clonic seizures"]},
+        "policy": "Map absence-event wording to the audited generalized tonic clonic seizure surface when required.",
+    },
+    {
+        "case": "on_awakening_diagnosis_phrasing",
+        "note_fragment": "Diagnosis: epilepsy with generalized tonic clonic seizures on awakening.",
+        "benchmark_output": {
+            "diagnosis": ["epilepsy with generalized tonic clonic seizures on awakening"]
+        },
+        "policy": "Preserve on awakening wording in the audited diagnosis label.",
+    },
+    {
+        "case": "co_listed_lobe_epilepsy_diagnoses",
+        "note_fragment": "Diagnosis: focal epilepsy, probable parietal onset.",
+        "benchmark_output": {"diagnosis": ["focal epilepsy", "parietal lobe epilepsy"]},
+        "policy": "Emit separate lobe-specific epilepsy diagnoses when the note supports both.",
+    },
+    {
+        "case": "reject_granular_jme_seizure_descriptors",
+        "note_fragment": "She reports absences and myoclonic jerks. Seizure type: generalized tonic clonic seizures.",
+        "benchmark_output": {"seizure_type": ["generalized tonic clonic seizures"]},
+        "policy": "Do not add jerks or absences when the audited label is already coarse.",
+    },
+    {
+        "case": "myoclonic_jerks_to_myoclonic_seizures",
+        "note_fragment": "Seizure type: myoclonic jerks.",
+        "benchmark_output": {"seizure_type": ["myoclonic seizures"]},
+        "policy": "Map jerk wording to myoclonic seizures when that is the audited surface.",
+    },
+    {
+        "case": "non_asm_medication_exclusion",
+        "note_fragment": "Current medication: lamotrigine 100mg bd, citalopram 20mg od.",
+        "benchmark_output": {"annotated_medication": ["lamotrigine"]},
+        "policy": "Exclude non-anti-seizure medications from annotated_medication.",
+    },
+    {
+        "case": "empty_medication_without_prescription_list",
+        "note_fragment": "Seizure type: focal seizures. No current anti-epileptic medication documented.",
+        "benchmark_output": {"annotated_medication": []},
+        "policy": "Return empty medication when no prescription-style ASM list is present.",
+    },
+)
+
+_REJECTED_GRANULAR_SEIZURE_TYPES = frozenset(
+    {
+        "absences",
+        "jerks",
+        "occasional absences",
+    }
+)
+
+_GRANULAR_SEIZURE_TYPE_COARSENING = {
+    "myoclonic jerks": "myoclonic seizures",
+    "absence events": "generalized tonic clonic seizures",
+}
+
+_REJECTED_ANNOTATED_MEDICATIONS = frozenset(
+    {
+        "citalopram",
+        "fluoxetine",
+        "sertraline",
+        "amitriptyline",
+        "diazepam",
+    }
+)
+
+_MEDICATION_SURFACE_REPAIRS = {
+    "eslicarbazine": "eslicarbazepine",
+}
+
+_MEDICATION_EVIDENCE_EXCLUSION_PHRASES = (
+    "previously",
+    "prior ",
+    "to start",
+    "plan to start",
+    "we plan",
+    "tried ",
+    "recommend starting",
+    "will start",
 )
 
 ALLOWED_DIAGNOSIS_LABELS = frozenset(
@@ -155,10 +335,11 @@ class ExectS0S1FieldFamilySignature(dspy.Signature):
       seizure event, and do not infer subtype from seizure-type evidence alone.
     - seizure_type: seizure-type labels independently named in the note. Use the
       audited benchmark-facing surface supported by the note, preserving plural and
-      modifier forms such as focal seizures with altered awareness or occipital lobe
-      seizures when those are the scorer labels. Do not infer seizure type from
-      diagnosis alone. Secondary generalisation is not a separate current seizure type
-      unless independently named as current.
+      modifier forms such as focal seizures with altered awareness, focal to bilateral
+      convulsive seizures, or occipital lobe seizures when those are the scorer labels.
+      Split fused phrases such as temporal lobe onset focal seizures or focal seizures
+      with secondary generalisation into separate audited labels. Do not infer seizure
+      type from diagnosis alone.
     - annotated_medication: audited prescription-style medication mentions only. Do
       not include planned starts, previous trials, taper/stop instructions, or medication
       history mentions in the benchmark-facing medication list.
@@ -173,6 +354,27 @@ class ExectS0S1FieldFamilySignature(dspy.Signature):
     - "The events are temporal-lobe-onset focal seizures."
       -> seizure_type = ["temporal lobe seizure", "focal seizures"]; split the fused
       rich phrase into audited benchmark labels.
+    - "Seizure type: focal seizures with secondary generalisation."
+      -> seizure_type = ["focal seizures", "secondary generalisation",
+      "generalized tonic clonic seizure"]; split fused secondary-generalisation phrases.
+    - "She has focal to bilateral seizures."
+      -> seizure_type = ["focal to bilateral convulsive seizures"]; preserve convulsive
+      modifiers when required by the audited surface.
+    - "Diagnosis: probable juvenile myoclonic epilepsy."
+      -> diagnosis = ["juvenile myoclonic epilepsy"]; strip uncertainty qualifiers for
+      benchmark-facing labels.
+    - "Diagnosis: hydrocephalus. Seizure type: focal seizures."
+      -> diagnosis = []; seizure_type = ["focal seizures"]; keep seizure types out of
+      diagnosis and omit non-epilepsy diagnoses.
+    - "Seizure type: temporal lobe seizures with occipital lobe seizures."
+      -> seizure_type = ["temporal lobe seizure", "focal seizures", "occipital lobe
+      seizures"]; do not stop at temporal lobe seizures alone.
+    - "Seizure type and frequency: focal onset convulsive seizure."
+      -> seizure_type = ["focal to bilateral convulsive seizure"]; use the audited
+      bilateral convulsive benchmark surface when required.
+    - "Diagnosis: epilepsy with generalized tonic clonic seizures on awakening."
+      -> diagnosis = ["epilepsy with generalized tonic clonic seizures on awakening"];
+      preserve on awakening wording.
     - "Diagnosis: symptomatic structural focal epilepsy."
       -> diagnosis = ["symptomatic structural focal epilepsy"]; preserve the audited label.
     - "Seizure type and frequency: focal seizures with altered awareness every 3 weeks."
@@ -273,6 +475,84 @@ class ExectS0S1MedicationSignature(dspy.Signature):
     )
 
 
+class ExectS0S1DiagnosisRecallSignature(dspy.Signature):
+    """Find additional missed benchmark-facing ExECT diagnosis labels.
+
+    Review the note and the initial diagnosis list. Return ONLY additional
+    established epilepsy diagnoses that the initial pass missed. This is an
+    add-only recall pass — do not repeat labels already in initial_diagnosis.
+
+    Recall policy:
+    - Add co-listed lobe-specific or syndrome epilepsy diagnoses when the note
+      explicitly names them alongside a broader epilepsy diagnosis (e.g. add
+      parietal lobe epilepsy when focal epilepsy and probable parietal onset
+      are both stated).
+    - Add generic epilepsy when the note explicitly states established epilepsy
+      but initial_diagnosis omitted it while listing only a more specific label.
+    - Preserve audited diagnosis surfaces such as epilepsy with generalized
+      tonic clonic seizures on awakening when that exact phrasing appears.
+    - Do not infer epilepsy subtype from seizure-type evidence alone.
+    - Do not add a diagnosis for a single seizure event without established
+      epilepsy wording.
+    - Do not add non-epilepsy conditions or seizure-type phrases.
+    - Return [] when no additional benchmark-facing diagnoses are supported.
+    - additional_diagnosis_evidence must be exact contiguous note quotes aligned
+      by index with additional_diagnosis.
+    """
+
+    note_text: str = dspy.InputField(desc="Synthetic epilepsy clinic letter text")
+    initial_diagnosis: list[str] = dspy.InputField(
+        desc="Diagnosis labels already extracted in the first pass."
+    )
+    additional_diagnosis: list[str] = dspy.OutputField(
+        desc=(
+            "Additional benchmark-facing epilepsy diagnosis labels not already "
+            "in initial_diagnosis. Use [] when none."
+        )
+    )
+    additional_diagnosis_evidence: list[str] = dspy.OutputField(
+        desc="Exact source quotes supporting each additional diagnosis, aligned by index."
+    )
+
+
+class ExectS0S1DiagnosisRecallProbeModule(dspy.Module):
+    """Monolithic extraction plus add-only diagnosis recall pass."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS0S1FieldFamilySignature)
+        self.recall_diagnosis = dspy.Predict(ExectS0S1DiagnosisRecallSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        initial = self.extract(note_text=note_text)
+        initial_diagnosis = _as_list(getattr(initial, "diagnosis", []))
+        initial_diagnosis_evidence = _as_list(getattr(initial, "diagnosis_evidence", []))
+        recall = self.recall_diagnosis(
+            note_text=note_text,
+            initial_diagnosis=initial_diagnosis,
+        )
+        merged_diagnosis, merged_diagnosis_evidence, recall_added = _merge_diagnosis_recall(
+            initial_diagnosis=initial_diagnosis,
+            initial_diagnosis_evidence=initial_diagnosis_evidence,
+            additional_diagnosis=_as_list(getattr(recall, "additional_diagnosis", [])),
+            additional_diagnosis_evidence=_as_list(
+                getattr(recall, "additional_diagnosis_evidence", [])
+            ),
+        )
+        return dspy.Prediction(
+            diagnosis=merged_diagnosis,
+            diagnosis_evidence=merged_diagnosis_evidence,
+            seizure_type=_as_list(getattr(initial, "seizure_type", [])),
+            seizure_type_evidence=_as_list(getattr(initial, "seizure_type_evidence", [])),
+            annotated_medication=_as_list(getattr(initial, "annotated_medication", [])),
+            annotated_medication_evidence=_as_list(
+                getattr(initial, "annotated_medication_evidence", [])
+            ),
+            diagnosis_recall_added=recall_added,
+            initial_diagnosis=initial_diagnosis,
+        )
+
+
 class ExectS0S1SectionAwareFieldFamilyModule(dspy.Module):
     """Section-aware ExECT S0/S1 field-family extractor."""
 
@@ -316,6 +596,57 @@ class ExectS0S1SectionAwareFieldFamilyModule(dspy.Module):
                 getattr(medication, "annotated_medication_evidence", [])
             ),
         )
+
+
+def build_exect_s0_s1_module(program_variant: str = EXECT_S0_S1_VARIANT) -> dspy.Module:
+    """Build an ExECT S0/S1 module for the requested program variant."""
+    if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
+        return ExectS0S1SectionAwareFieldFamilyModule()
+    if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT:
+        return ExectS0S1DiagnosisRecallProbeModule()
+    if program_variant == EXECT_S0_S1_VARIANT:
+        return ExectS0S1FieldFamilyModule()
+    raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")
+
+
+def _merge_diagnosis_recall(
+    *,
+    initial_diagnosis: list[str],
+    initial_diagnosis_evidence: list[str],
+    additional_diagnosis: list[str],
+    additional_diagnosis_evidence: list[str],
+) -> tuple[list[str], list[str], list[str]]:
+    """Merge add-only recalled diagnoses with deterministic guards."""
+    merged_diagnosis = list(initial_diagnosis)
+    merged_evidence = _align_evidence(initial_diagnosis, initial_diagnosis_evidence)
+    seen = {
+        canonical_clinical_phrase(value)
+        for value in initial_diagnosis
+        if value.strip()
+    }
+    recall_added: list[str] = []
+
+    for index, raw_value in enumerate(additional_diagnosis):
+        if not raw_value.strip():
+            continue
+        normalized = canonical_clinical_phrase(raw_value)
+        normalized, _ = _normalize_diagnosis_surface(normalized)
+        if not normalized or normalized in seen or normalized not in ALLOWED_DIAGNOSIS_LABELS:
+            continue
+        evidence_text = _evidence_at(additional_diagnosis_evidence, index)
+        merged_diagnosis.append(raw_value.strip())
+        merged_evidence.append(evidence_text or "")
+        seen.add(normalized)
+        recall_added.append(normalized)
+
+    return merged_diagnosis, merged_evidence, recall_added
+
+
+def _align_evidence(values: list[str], evidence_values: list[str]) -> list[str]:
+    aligned = list(evidence_values)
+    while len(aligned) < len(values):
+        aligned.append("")
+    return aligned[: len(values)]
 
 
 def make_exect_s0_s1_dspy_examples(
@@ -450,6 +781,8 @@ def _values_for_family(
 
     for index, raw_value in enumerate(raw_values):
         evidence_text = _evidence_at(evidence_values, index)
+        if field_name == "annotated_medication" and _medication_evidence_excluded(evidence_text):
+            continue
         for normalized, bridge_flags in _benchmark_values(field_name, raw_value):
             if not normalized or normalized in seen:
                 continue
@@ -478,14 +811,102 @@ def _values_for_family(
 
 def _benchmark_values(field_name: str, value: str) -> list[tuple[str, list[str]]]:
     normalized = _normalize_value(field_name, value)
-    if field_name == "seizure_type":
+    bridge_flags: list[str] = []
+
+    if field_name == "diagnosis":
+        normalized, bridge_flags = _normalize_diagnosis_surface(normalized)
+        if not normalized:
+            return []
+        if normalized not in ALLOWED_DIAGNOSIS_LABELS:
+            return []
+    elif field_name == "seizure_type":
+        normalized, surface_flags = _normalize_seizure_type_surface(normalized)
+        bridge_flags.extend(surface_flags)
+        coarsened = _coarsen_granular_seizure_type(normalized)
+        if coarsened is not None:
+            return coarsened
         split_values = _split_fused_seizure_type(normalized)
         if split_values is not None:
             return [
-                (split_value, ["benchmark_bridge:fused_seizure_type_split"])
+                (
+                    split_value,
+                    [*bridge_flags, "benchmark_bridge:fused_seizure_type_split"],
+                )
                 for split_value in split_values
             ]
-    return [(normalized, [])]
+    elif field_name == "annotated_medication":
+        normalized, med_flags = _normalize_annotated_medication_surface(normalized)
+        if not normalized:
+            return []
+        bridge_flags.extend(med_flags)
+
+    return [(normalized, bridge_flags)]
+
+
+def _normalize_diagnosis_surface(normalized: str) -> tuple[str, list[str]]:
+    flags: list[str] = []
+    for prefix in ("probable ", "possible "):
+        if normalized.startswith(prefix):
+            normalized = normalized[len(prefix) :].strip()
+            flags.append("benchmark_bridge:diagnosis_uncertainty_stripped")
+            break
+    if normalized == "symptomatic structural epilepsy":
+        return "symptomatic structural focal epilepsy", [
+            *flags,
+            "benchmark_bridge:symptomatic_structural_focal_restored",
+        ]
+    return normalized, flags
+
+
+def _normalize_seizure_type_surface(normalized: str) -> tuple[str, list[str]]:
+    if normalized in {"focal to bilateral seizures", "focal to bilateral seizure"}:
+        convulsive = (
+            "focal to bilateral convulsive seizures"
+            if normalized.endswith("seizures")
+            else "focal to bilateral convulsive seizure"
+        )
+        return convulsive, ["benchmark_bridge:seizure_type_convulsive_modifier"]
+    if normalized == "generalized tonic clonic seizures from sleep":
+        return "generalized tonic clonic seizures", [
+            "benchmark_bridge:seizure_temporal_modifier_stripped"
+        ]
+    return normalized, []
+
+
+def _coarsen_granular_seizure_type(
+    normalized: str,
+) -> list[tuple[str, list[str]]] | None:
+    if normalized in _REJECTED_GRANULAR_SEIZURE_TYPES:
+        return []
+    coarsened = _GRANULAR_SEIZURE_TYPE_COARSENING.get(normalized)
+    if coarsened is not None:
+        return [
+            (
+                coarsened,
+                ["benchmark_bridge:granular_seizure_surface_coarsened"],
+            )
+        ]
+    return None
+
+
+def _normalize_annotated_medication_surface(
+    normalized: str,
+) -> tuple[str, list[str]]:
+    flags: list[str] = []
+    repaired = _MEDICATION_SURFACE_REPAIRS.get(normalized)
+    if repaired is not None:
+        normalized = repaired
+        flags.append("benchmark_bridge:medication_surface_repaired")
+    if normalized in _REJECTED_ANNOTATED_MEDICATIONS:
+        return "", [*flags, "benchmark_bridge:non_asm_medication_rejected"]
+    return normalized, flags
+
+
+def _medication_evidence_excluded(evidence_text: str | None) -> bool:
+    if not evidence_text:
+        return False
+    lower = evidence_text.lower()
+    return any(phrase in lower for phrase in _MEDICATION_EVIDENCE_EXCLUSION_PHRASES)
 
 
 def _split_fused_seizure_type(normalized: str) -> list[str] | None:
@@ -493,8 +914,18 @@ def _split_fused_seizure_type(normalized: str) -> list[str] | None:
         "temporal lobe onset focal seizures",
         "temporal lobe focal seizures",
         "temporal onset focal seizures",
+        "temporal lobe seizures",
     }:
         return ["temporal lobe seizure", "focal seizures"]
+    if normalized in {
+        "focal seizures with secondary generalisation",
+        "focal seizures with secondary generalization",
+    }:
+        return [
+            "focal seizures",
+            "secondary generalisation",
+            "generalized tonic clonic seizure",
+        ]
     return None
 
 

@@ -7,15 +7,14 @@
     "verifier_policy": "none"
   },
   "dataset": "exect_v2",
-  "experiment_id": "exect_s0_s1_smoke_gpt4_1_mini",
-  "hypothesis": "A capped ExECT S0/S1 field-family smoke run tests whether v4 label-policy guidance (seizure splitting, diagnosis surface, cross-family boundaries) reduces diagnosis, seizure-type, and medication-scope errors without changing scorer semantics.",
-  "max_records": 3,
+  "experiment_id": "exect_s0_s1_validation_full_gpt4_1_mini",
+  "hypothesis": "The v4.2 monolithic ExECT S0/S1 field-family baseline on the full fixed validation split (40 records) yields an updated benchmark-facing estimate after regression-slice and cap-25 gates cleared without changing scorer semantics.",
   "metric_caveats": [
-    "This capped smoke run validates the ExECT S0/S1 field-family program contract only; it is not a performance estimate.",
-    "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 benchmark reproduction.",
     "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
     "Medication temporality is intentionally excluded from benchmark-facing metrics for this baseline.",
-    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+    "Compare to v3 (67.8% micro F1), v4.1 full (75.3%), and v4.2 cap-25 (86.4%) in docs/exect_s0_label_policy_v4_2_implementation.md.",
+    "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs."
   ],
   "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
   "output_root": "runs",

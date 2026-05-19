@@ -1,41 +1,41 @@
-# Gan S0 Error Analysis: gan_s0_qwen35b_direct_regression_slice_guardrails
+# Gan S0 Error Analysis: gan_s0_qwen35b_labeled_fewshot_regression_slice_guardrails
 
 ## Run
 
-- Artifact directory: `runs\gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T151933Z`
+- Artifact directory: `runs\gan_s0_qwen35b_labeled_fewshot_regression_slice_guardrails_20260519T160348Z`
 - Split: `gan_2026_fixed_v1:validation`
 - Analysis scope: `record_ids_filter`
 - Records in split: 299
 - Records analyzed: 14
-- Valid scored predictions: 14
-- Invalid or missing predictions: 0
+- Valid scored predictions: 13
+- Invalid or missing predictions: 1
 
 ## Metrics snapshot (valid predictions only)
 
 | Metric | Accuracy | Correct | Denominator |
 | --- | ---: | ---: | ---: |
-| normalized_label | 71.4% | 10 | 14 |
-| monthly_frequency | 71.4% | 10 | 14 |
-| purist_category | 71.4% | 10 | 14 |
-| pragmatic_category | 71.4% | 10 | 14 |
+| normalized_label | 69.2% | 9 | 13 |
+| monthly_frequency | 69.2% | 9 | 13 |
+| purist_category | 69.2% | 9 | 13 |
+| pragmatic_category | 69.2% | 9 | 13 |
 
 Benchmark-facing metrics are monthly frequency, Purist category, and Pragmatic category. Normalized-label exact is diagnostic format fidelity.
 
 ## Stratified operational reporting
 
-- All-record denominator: 14 (valid scored: 14; invalid/missing: 0)
-- Overall operational failure rate: 28.6% (4 failures)
+- All-record denominator: 14 (valid scored: 13; invalid/missing: 1)
+- Overall operational failure rate: 35.7% (5 failures)
 
 | Stratum | All records | Valid scored | Operational failure rate | Monthly (valid only) |
 | --- | ---: | ---: | ---: | ---: |
 | hard_case=true | 0 | 0 | n/a | n/a |
-| hard_case=false | 14 | 14 | 28.6% | 71.4% |
-| row_ok=true | 12 | 12 | 25.0% | 75.0% |
+| hard_case=false | 14 | 13 | 35.7% | 69.2% |
+| row_ok=true | 12 | 11 | 33.3% | 72.7% |
 | row_ok=false | 2 | 2 | 50.0% | 50.0% |
 | gold_pragmatic=frequent | 6 | 6 | 0.0% | 100.0% |
 | gold_pragmatic=infrequent | 4 | 4 | 100.0% | 0.0% |
 | gold_pragmatic=no_seizure_information | 1 | 1 | 0.0% | 100.0% |
-| gold_pragmatic=unknown | 3 | 3 | 0.0% | 100.0% |
+| gold_pragmatic=unknown | 3 | 2 | 33.3% | 100.0% |
 
 ## Do the four metrics move together?
 
@@ -43,14 +43,14 @@ Bit order in patterns is `normalized | monthly | purist | pragmatic` (1 = match)
 
 | Pattern | Label | Count | Share |
 | --- | --- | ---: | ---: |
-| `1111` | all_four_match | 10 | 71.4% |
-| `0000` | all_four_wrong | 4 | 28.6% |
+| `1111` | all_four_match | 9 | 69.2% |
+| `0000` | all_four_wrong | 4 | 30.8% |
 
 ### Logical containment on this run
 
-- Normalized exact (10 records): always co-occurs with monthly, Purist, and Pragmatic match.
-- Monthly match (10 records): always implies Purist and Pragmatic; 10 also have normalized exact.
-- Purist match (10 records): always implies Pragmatic; 10 also match monthly.
+- Normalized exact (9 records): always co-occurs with monthly, Purist, and Pragmatic match.
+- Monthly match (9 records): always implies Purist and Pragmatic; 9 also have normalized exact.
+- Purist match (9 records): always implies Pragmatic; 9 also match monthly.
 - Pragmatic-only wins (pattern `0001`): 0 records.
 - Purist-without-monthly (pattern `0010`/`0011`): 0 + 0 records.
 
@@ -87,6 +87,7 @@ Benchmark-severe classes should drive prompt or verifier work. Diagnostic-only c
 
 | Failure class | Count |
 | --- | ---: |
+| abstention_or_missing_value | 1 |
 
 ### Taxonomy grouped by which metric failed
 
@@ -126,7 +127,7 @@ There are 0 **pragmatic-only** successes: same coarse bucket (infrequent vs freq
 
 Purist-without-monthly cases: 0; pragmatic-without-monthly: 0. These arise when different labels land in the same bin but convert to different seizures/month.
 
-Outside scored metrics: 0 abstentions/null outputs and 0 schema-invalid labels (mostly incomplete cluster surfaces and unsupported per-hour rates). These are excluded from the 281-record denominator but are full failures operationally.
+Outside scored metrics: 1 abstentions/null outputs and 0 schema-invalid labels (mostly incomplete cluster surfaces and unsupported per-hour rates). These are excluded from the 281-record denominator but are full failures operationally.
 
 ## Record index
 
@@ -135,7 +136,7 @@ Full per-record rows are in the companion `records.jsonl` in the run `analysis/`
 | record_id | status | norm | mo | pur | prag | failure_class | gold | predicted |
 | --- | --- | :---: | :---: | :---: | :---: | --- | --- | --- |
 | gan_10509 | scored | Y | Y | Y | Y | all_metrics_match | unknown | unknown |
-| gan_10751 | scored | Y | Y | Y | Y | all_metrics_match | unknown | unknown |
+| gan_10751 | invalid | - | - | - | - | abstention_or_missing_value | unknown | None |
 | gan_11221 | scored | Y | Y | Y | Y | all_metrics_match | unknown | unknown |
 | gan_11733 | scored | Y | Y | Y | Y | all_metrics_match | no seizure frequency reference | no seizure frequency reference |
 | gan_12130 | scored | Y | Y | Y | Y | all_metrics_match | multiple per week | multiple per week |

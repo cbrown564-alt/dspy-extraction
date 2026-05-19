@@ -9,6 +9,9 @@ from clinical_extraction.experiments.config import (
     load_experiment_config,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+    EXECT_S0_S1_V3_PROMPT_VERSION,
+    EXECT_S0_S1_V4_1_PROMPT_VERSION,
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
@@ -20,6 +23,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
 
@@ -208,6 +212,88 @@ def test_exect_s0_s1_validation_cap25_config_records_diagnostic_cap_contract():
     assert "diagnostic validation cap" in " ".join(config.metric_caveats).lower()
 
 
+def test_exect_s0_s1_validation_full_config_removes_precheck_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s0_s1_validation_full_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s0_s1_validation_full_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert "full fixed ExECTv2 validation split" in " ".join(config.metric_caveats)
+
+
+def test_exect_s0_s1_label_policy_regression_slice_config_records_v4_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s0_s1_label_policy_regression_slice_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s0_s1_label_policy_regression_slice_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.record_ids == [
+        "EA0018",
+        "EA0047",
+        "EA0059",
+        "EA0061",
+        "EA0068",
+        "EA0090",
+        "EA0098",
+        "EA0109",
+        "EA0116",
+        "EA0124",
+        "EA0137",
+        "EA0150",
+        "EA0029",
+        "EA0053",
+        "EA0078",
+    ]
+    assert "label-policy regression slice" in " ".join(config.metric_caveats).lower()
+
+
+def test_exect_s0_s1_diagnosis_recall_regression_slice_config_records_probe_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT
+    assert config.prompt_version == "exect_s0_s1_diagnosis_recall_v1"
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.record_ids == [
+        "EA0045",
+        "EA0061",
+        "EA0098",
+        "EA0116",
+        "EA0125",
+        "EA0131",
+        "EA0137",
+        "EA0143",
+        "EA0148",
+        "EA0150",
+        "EA0170",
+        "EA0173",
+        "EA0174",
+        "EA0188",
+    ]
+    assert config.controls.repair_policy == "add_only_diagnosis_recall_merge_with_deterministic_guards"
+    assert "diagnosis-recall slice" in " ".join(config.metric_caveats).lower()
+
+
 def test_exect_s0_s1_section_aware_cap25_config_keeps_non_architecture_controls_fixed():
     config = load_experiment_config(
         Path("configs/experiments/exect_s0_s1_section_aware_cap25_gpt4_1_mini.json")
@@ -221,7 +307,7 @@ def test_exect_s0_s1_section_aware_cap25_config_keeps_non_architecture_controls_
     assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
     assert config.program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT
     assert config.scorer_mode == EXECT_S0_S1_SCORER
-    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.prompt_version == EXECT_S0_S1_V3_PROMPT_VERSION
     assert config.controls.few_shot_policy == (
         "embedded benchmark-facing label-policy examples"
     )
@@ -352,7 +438,7 @@ def test_qwen35b_guardrails_validation_config_pins_direct_path_and_cap25():
     assert config.experiment_id == "gan_s0_qwen35b_direct_cap25_guardrails_validation"
     assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
     assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
-    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_1"
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_2"
     assert config.max_records == 25
     assert config.optimizer is None
     assert config.controls.repair_policy == "artifact_bridge_surface_normalization_only"
@@ -463,7 +549,7 @@ def test_qwen35b_full_validation_guardrails_config_removes_cap():
     assert config.experiment_id == "gan_s0_qwen35b_direct_full_validation_guardrails"
     assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
     assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
-    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_1"
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_2"
     assert config.max_records is None
     assert config.optimizer is None
     assert config.controls.repair_policy == "artifact_bridge_surface_normalization_only"
@@ -480,7 +566,7 @@ def test_qwen35b_regression_slice_config_uses_record_ids_filter():
 
     assert config.experiment_id == "gan_s0_qwen35b_direct_regression_slice_guardrails"
     assert config.record_ids is not None
-    assert len(config.record_ids) == 10
+    assert len(config.record_ids) == 14
     assert "gan_10509" in config.record_ids
     assert config.max_records is None
 
@@ -771,3 +857,185 @@ def test_gan_s0_semantic_gepa_cap25_config_records_semantic_feedback_metric():
     caveats = " ".join(config.metric_caveats).lower()
     assert "optimizer-facing only" in caveats
     assert "verify-repair v2" in caveats
+
+
+def test_qwen35b_verify_repair_regression_slice_config_uses_v2_4_and_record_ids():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_verify_repair_regression_slice_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_verify_repair_regression_slice_guardrails"
+    )
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_qwen35b_ollama_verify_repair.json"
+    )
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2_4"
+    assert config.record_ids is not None
+    assert len(config.record_ids) == 14
+    assert "gan_13123" in config.record_ids
+    assert config.optimizer is None
+    assert "confirm-first" in config.controls.verifier_policy.lower()
+
+
+def test_qwen35b_verify_repair_cap25_config_uses_v2_4():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_verify_repair_cap25_guardrails_validation.json"
+        )
+    )
+
+    assert config.experiment_id == "gan_s0_qwen35b_verify_repair_cap25_guardrails_validation"
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_qwen35b_ollama_verify_repair.json"
+    )
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2_4"
+    assert config.max_records == 25
+    assert config.optimizer is None
+    assert "37.5%" in " ".join(config.metric_caveats)
+
+
+def test_qwen35b_verify_repair_model_config_raises_max_tokens_for_verifier_reason():
+    model_config = json.loads(
+        Path("configs/models/gan_s0_qwen35b_ollama_verify_repair.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    baseline = json.loads(
+        Path("configs/models/gan_s0_qwen35b_ollama.json").read_text(encoding="utf-8")
+    )
+
+    assert model_config["max_tokens"] > baseline["max_tokens"]
+
+
+def test_qwen35b_labeled_fewshot_regression_slice_config_uses_synthesis_optimizer():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_labeled_fewshot_regression_slice_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_labeled_fewshot_regression_slice_guardrails"
+    )
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_2"
+    assert config.record_ids is not None
+    assert len(config.record_ids) == 14
+    assert config.optimizer is not None
+    assert config.optimizer.name == "LabeledFewShot"
+    assert config.optimizer.metric_name == "synthesis_exact_with_evidence"
+    assert config.optimizer.max_labeled_demos == 4
+
+
+def test_qwen35b_labeled_fewshot_verify_repair_regression_slice_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_labeled_fewshot_verify_repair_regression_slice_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_labeled_fewshot_verify_repair_regression_slice_guardrails"
+    )
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_qwen35b_ollama_verify_repair.json"
+    )
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2_4"
+    assert config.record_ids is not None
+    assert len(config.record_ids) == 14
+    assert config.optimizer is not None
+    assert config.optimizer.name == "LabeledFewShot"
+    assert config.optimizer.metric_name == "synthesis_exact_with_evidence"
+    assert config.optimizer.max_labeled_demos == 4
+    assert "hybrid" in config.hypothesis.lower()
+    assert "confirm-first" in config.controls.verifier_policy.lower()
+
+
+def test_qwen35b_temporal_candidates_verify_repair_regression_slice_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails"
+    )
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_qwen35b_ollama_verify_repair.json"
+    )
+    assert (
+        config.program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+    )
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+    assert config.record_ids is not None
+    assert len(config.record_ids) == 14
+    assert config.optimizer is None
+    assert "temporal" in config.hypothesis.lower()
+    assert "temporal" in config.controls.context_policy.lower()
+
+
+def test_qwen35b_temporal_candidates_verify_repair_cap25_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation"
+    )
+    assert config.max_records == 25
+    assert (
+        config.program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+    )
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+    assert config.record_ids is None
+    assert "37.5%" in " ".join(config.metric_caveats)
+
+
+def test_qwen35b_temporal_candidates_verify_repair_full_validation_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails"
+    )
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_qwen35b_ollama_verify_repair.json"
+    )
+    assert config.max_records is None
+    assert (
+        config.program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+    )
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+    assert config.record_ids is None
+    assert config.optimizer is None
+    assert "55.9%" in " ".join(config.metric_caveats)
+    assert "cap-25" in " ".join(config.metric_caveats).lower()

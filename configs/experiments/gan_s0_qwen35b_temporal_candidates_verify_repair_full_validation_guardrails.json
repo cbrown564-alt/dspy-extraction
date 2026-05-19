@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair with deterministic temporal-candidate hints and v1.1 candidate-gated repair guards"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails",
+  "hypothesis": "Temporal-candidates verify-repair v1.1 on the full Gan validation split improves monthly frequency and Purist category versus the Qwen direct guardrails anchor (55.9% monthly, 61.9% Purist) while maintaining schema validity and evidence support after clearing slice and cap-25 promotion gates.",
+  "metric_caveats": [
+    "This full-validation run promotes temporal-candidates verify-repair v1.1 after cap-25 gate cleared at runs/gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation_20260519T183213Z (44% monthly on 25 records, 100% schema, 100% evidence).",
+    "Compare benchmark-facing metrics to Qwen direct guardrails full validation runs/gan_s0_qwen35b_direct_full_validation_guardrails_20260519T102249Z (55.9% monthly, 99.6% evidence) and hosted quality anchor runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z (65.4% monthly, 92.7% evidence).",
+    "Temporal candidates are deterministic diagnostic hints; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "Verify-repair doubles model calls versus direct extraction; latency is not comparable to direct-only runs.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Normalized-label exact, schema validity, abstention, evidence support, temporal-candidate coverage, and verifier decisions are diagnostic.",
+    "Promotion expectation: schema >= 95%, evidence >= 99%, monthly materially above direct full-validation baseline where comparable.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_qwen35b_ollama_verify_repair.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

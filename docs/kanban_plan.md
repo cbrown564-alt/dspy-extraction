@@ -1,747 +1,246 @@
 # Clinical Extraction Kanban Plan
 
 Source: `docs/outline.md`  
-Grounding note: `docs/deterministic_foundation_decisions.md`  
-Local-model policy: `docs/qwen_dspy_latency_policy.md`  
-Optimizer/agent strategy: `docs/dspy_gepa_react_best_practices_deep_dive.md`  
-Current research recap: `docs/research_status_recap_20260519.md`  
-Last refreshed: 2026-05-19 (v2.1 slice + cap-25 complete)
+Grounding: `docs/deterministic_foundation_decisions.md`  
+Local Qwen policy: `docs/qwen_dspy_latency_policy.md`  
+Deep recap (metrics, decisions, citations): `docs/research_status_recap_20260519.md` (narrative archive; this file is the active tracker)  
+Alignment audit: `docs/research_drift_audit_20260519.md`  
+Architecture review: `docs/codebase_architecture_review_20260519.md`  
+Last refreshed: 2026-05-19 (cap-25 gate **cleared** — 100% schema, 44% monthly)
 
-## Session Handoff (pick up here)
+## Session Handoff
 
-**Active track:** Gan S0 Qwen3.6:35b direct extraction under `gan_frequency_s0_direct_guardrails_v2_1` — v2.1 runs complete; prompt text did **not** fix cap-25 over-`unknown`. Best cap-25 monthly remains v2 (37.5%). Hold full validation; next work is prompt v2.2 or bounded local verify-repair.
+**Active tracks:**
 
-**Hosted quality anchor (do not replace):** GPT 4.1-mini verify-repair v2 — `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z` (evidence 92.7%, monthly 65.4%).
+| Track | Status | Artifact / command |
+| --- | --- | --- |
+| Gan S0 Qwen temporal v1.1 full validation | **Review** — promotion packet | `…183614Z`; `docs/gan_s0_temporal_candidates_v1_1_full_validation_decision_20260519.md`; log `runs/temporal_candidates_v1_1_full_validation_run.log` |
+| ExECT S0/S1 monolithic full validation v4.2 (GPT 4.1-mini) | **Done** — micro F1 **78.5%** (40 records); new anchor | `runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T202626Z`; `docs/exect_s0_label_policy_v4_2_implementation.md` |
+| ExECT diagnosis-recall probe v1 | **Negative** — slice recall flat, precision regressed | `runs/exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini_20260519T202910Z`; `docs/exect_s0_s1_diagnosis_recall_probe_inspection_20260519.md` |
+| ExECT S0/S1 monolithic full validation v4.1 | **Historical** — 75.3% micro F1 | `runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T201721Z` |
+| ExECT S0/S1 monolithic full validation v3 | **Historical** — 67.8% micro F1 | `runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T200017Z` |
 
-**Local Qwen reference (full validation):** `runs/gan_s0_qwen35b_direct_full_validation_guardrails_20260519T102249Z` — schema 94.0%, monthly **55.9%**, evidence 99.6% (v1 prompt). No v2/v2.1 full validation yet.
+**Slice comparison (14 records, same scorer):**
 
-**Latest v2.1 artifacts:**
+| Variant | Monthly | Schema valid | Original 10 | Infrequent 4 |
+| --- | ---: | ---: | ---: | ---: |
+| v2.4 hybrid | 71.4% (10/14) | 14/14 | 9/10 | 1/4 |
+| Temporal v1 (prompt only) | 50.0% (7/14) | 11/14 | 5/10 | 3/4 |
+| **Temporal v1.1 (guards)** | **100% (14/14)** | **14/14** | **10/10** | **4/4** |
 
-| Run | Role |
+**Promotion gates:**
+
+| Gate | Requirement | Status |
+| --- | --- | --- |
+| Slice → cap-25 | ≥3/4 infrequent gold-correct, original ≥10/10, schema 100%, evidence 100% | **Cleared** (`…180329Z`) |
+| Cap-25 → full validation | Material monthly/Purist gain without invalid-cluster or short seizure-free regression | **Cleared** (`…183213Z`) — 100% schema (25/25), 44% monthly (+6.5pp vs direct), 100% evidence |
+
+**Latest artifacts:**
+
+| Artifact | Role |
 | --- | --- |
-| `runs/gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T145053Z` | Slice v2.1 |
-| `runs/gan_s0_qwen35b_direct_cap25_guardrails_validation_20260519T145440Z` | Cap-25 v2.1 |
-| `docs/gan_s0_qwen35b_regression_slice_inspection_20260519.md` | Slice inspection |
-| `docs/gan_s0_qwen35b_direct_cap25_guardrails_validation_error_analysis.md` | Cap-25 analyzer |
+| `runs/gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails_20260519T180329Z` | **Slice gate run** — temporal v1.1, 100% all metrics |
+| `docs/gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails_error_analysis.md` | Post-run analyzer (updated for v1.1 run) |
+| `src/clinical_extraction/programs/gan_frequency_s0.py` | `_apply_temporal_verifier_guards` confirm-first + candidate-gated repair |
+| `runs/gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation_20260519T183213Z` | **Cap-25 post-repair** — 44% monthly, **100% schema** (25/25) |
+| `runs/gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation_20260519T181053Z` | Cap-25 pre-repair — 45.5% monthly, 88% schema (3 invalid) |
+| `configs/experiments/gan_s0_qwen35b_temporal_candidates_verify_repair_cap25_guardrails_validation.json` | Cap-25 config |
+| `runs/gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails_20260519T175345Z` | Temporal v1 baseline (regressed original/schema) |
+| `runs/gan_s0_qwen35b_labeled_fewshot_verify_repair_regression_slice_guardrails_20260519T171413Z` | v2.4 hybrid (prior best balanced row) |
+| `docs/gan_s0_temporal_candidate_pivot_20260519.md` | Pivot rationale |
 
-**Slice v2.1 (9/10 valid):** monthly **88.9%** on valid (↓ from v2 100%). Hits: `gan_10509` unknown (fixed v2 abstention), all unknown/YTD/cluster targets. Regressions: `gan_11733` abstained (was no-reference hit on v2); `gan_12130` `1 per week` vs gold `multiple per week`.
+**Quality anchors (do not replace):**
 
-**Cap-25 v2.1 (22/25 valid):** schema **88%** (↓ v2 96%), monthly **36.4%** (↓ v2 37.5%), Purist **54.5%** (↑ v2 45.8%), Pragmatic **77.3%** (↑ v2 66.7%), evidence **100%**, invalid **3**. Over-`unknown` **unchanged** on `gan_13123`/`gan_14485`/`gan_14881`/`gan_15306`. Partial: `gan_16825` now quantified (`10 per 3 month`). New invalids: `gan_12679` malformed cluster label, `gan_4702`/`gan_4709` `per hour`.
+| Path | Monthly | Evidence | Notes |
+| --- | --- | --- | --- |
+| GPT 4.1-mini verify-repair v2 full validation `…084732Z` | 65.4% | 92.7% | Hosted quality anchor |
+| Qwen3.6:35b direct full validation guardrails `…102249Z` | 55.9% | 99.6% | Local baseline (v1 prompt) |
+| Qwen3.6:35b direct cap-25 v2 `…140952Z` | 37.5% | 100% | Best local cap-25 monthly |
 
-**Promotion gates:** slice→cap-25 still OK on slice core modes. **Cap-25→full-validation not cleared** (36.4% monthly vs 55.9% baseline; v2.1 primary hypothesis failed).
-
-**Commands for next session:**
+**Commands:**
 
 ```powershell
-uv run python scripts/run_experiment.py --experiment configs/experiments/gan_s0_qwen35b_direct_regression_slice_guardrails.json --env-file .env
+uv run --extra dev pytest tests/test_gan_temporal_candidates.py tests/test_gan_frequency.py tests/test_gan_scoring.py tests/test_gan_qwen_error_regression_slice.py tests/test_gan_s0_program.py tests/test_experiment_configs.py tests/test_analyze_gan_frequency_run.py
 
-uv run python scripts/analyze_gan_frequency_run.py runs/<run_id> --split-name gan_2026_fixed_v1:validation --markdown docs/gan_s0_qwen35b_regression_slice_inspection_20260519.md
+uv run python scripts/run_experiment.py --experiment configs/experiments/gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails.json --env-file .env
+
+uv run python scripts/analyze_gan_frequency_run.py runs/<run_id> --split-name gan_2026_fixed_v1:validation --markdown docs/gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails_error_analysis.md
+
+# Slice replay on a full-validation run dir (promotion packet B):
+uv run python scripts/analyze_gan_frequency_run.py runs/<run_id> --split-name gan_2026_fixed_v1:validation --record-ids-file data/fixtures/gan_s0_qwen_error_regression_slice.json --markdown docs/gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_from_full_validation_error_analysis.md
 ```
 
-**Infrastructure landed this session:** `record_ids` on experiment configs; `clinical_extraction.evaluation.gan_failure_taxonomy` + `gan_run_analysis` (analyzer uses `record_ids_filter` scope, not full 299-record split).
-
-**Explicitly deprioritized:** semantic bootstrap/GEPA full validation; Gemini verify-repair scale-up (cluster-stripping on cap-25); routine GEPA on Qwen 35B.
+**Deprioritized:** semantic bootstrap/GEPA full validation; Gemini verify-repair scale-up; routine GEPA on Qwen 35B.
 
 ## Goal
 
-Build a hybrid deterministic and DSPy-based clinical extraction research system that can specialize across the broad ExECTv2 schema and the focused Gan seizure-frequency task, while preserving dataset fidelity, reproducible splits, auditable scoring, and experiment traceability.
+Hybrid deterministic + DSPy clinical extraction across ExECTv2 (broad) and Gan seizure-frequency (focused), with dataset fidelity, reproducible splits, auditable scoring, and experiment traceability.
 
-The project has moved beyond the deterministic foundation milestone. The current execution focus is Gan S0 as the tight reference task: **hosted** work is anchored on GPT 4.1-mini verify-repair v2; **local** work is Qwen3.6:35b direct extraction with guardrails, gated by the 10-record regression slice before larger validation runs. GEPA and semantic optimizers are not the active path. ReAct remains a bounded future probe, not a default extractor.
+**Execution focus:** Gan S0 as the tight reference task. **Hosted** anchor: GPT 4.1-mini verify-repair v2. **Local** path: Qwen3.6:35b direct + guardrails, gated by the 14-record regression slice. GEPA/semantic optimizers are not the active path. ExECT S0/S1 monolithic baseline is the broader-schema anchor, not the current implementation gate.
 
 ## Definitions Of Done
 
-- ExECTv2 and Gan gold labels load from the agreed primary sources without silently changing scorer semantics.
-- Raw values, normalized values, quality flags, evidence diagnostics, and benchmark-facing scoring views remain separable.
-- Gan has reproducible train/dev/test splits with documented salt, allocation policy, stratification metadata, and hard-case counts.
-- Deterministic scorers expose benchmark-facing metrics and diagnostic metrics separately.
-- DSPy programs record dataset, split, model/provider, schema level, program variant, scorer mode, prompts/configs, predictions, metrics, errors, artifacts, and metric caveats.
-- Experiment reports do not compare across changed scorer semantics unless the report says so explicitly.
+- ExECTv2 and Gan gold load from agreed sources without silent scorer changes.
+- Raw, normalized, flags, evidence diagnostics, and benchmark-facing views stay separable.
+- Gan splits are reproducible with documented salt, allocation, stratification, and hard-case counts.
+- Scorers expose benchmark-facing and diagnostic metrics separately.
+- DSPy runs record dataset, split, model, schema, variant, scorer, configs, predictions, metrics, errors, artifacts, and caveats.
+- Cross-run comparisons state when scorer semantics differ.
 
-## Background: Completed Foundation
+## Historical Context
 
-The deterministic foundation is complete enough to support model-backed experiments. The repo now has the `clinical_extraction` package, pytest configuration, ExECTv2 and Gan loaders, Gan normalization, Gan deterministic scoring, reproducible Gan splits, dataset manifest validation, deterministic scorer semantics documentation, shared prediction/evidence schemas, a baseline evaluation CLI, run artifact layout, evidence support scoring, error-analysis reports, bootstrap confidence intervals, and review queue export.
+Summarized only — full narratives, run tables, and error reads live in linked docs and `docs/research_status_recap_20260519.md`.
 
-Key validation and documentation artifacts:
+### Deterministic foundation (complete)
 
-- `tests/test_exect_loader.py`
-- `tests/test_gan_loader_and_splits.py`
-- `tests/test_gan_frequency.py`
-- `tests/test_gan_scoring.py`
-- `tests/test_dataset_manifest.py`
-- `tests/test_prediction_schemas.py`
-- `tests/test_evaluation_cli.py`
-- `tests/test_run_artifacts.py`
-- `tests/test_evidence_scoring.py`
-- `tests/test_bootstrap_confidence.py`
-- `tests/test_review_export.py`
-- `docs/deterministic_scorer_semantics.md`
-- `docs/gan_deterministic_normalization_baseline.json`
+Loaders, normalization, `gan_frequency_deterministic_v1` / ExECT field-family scorers, splits, manifests, prediction/evidence schemas, evaluation CLI, run artifacts, evidence support, bootstrap CIs, review export. Policy: Gan `seizure_frequency_number[0]` is gold; ExECT benchmark-facing S0/S1 = diagnosis, seizure type, annotated medications only.
 
-Important dataset-policy decisions are also recorded. ExECT benchmark-facing S0/S1 scoring is limited to audited diagnosis, seizure type, and annotated medication fields. Planned/current medication status is excluded from benchmark-facing medication metrics for now because the ExECT prescription gold lacks reliable temporality. Gan `seizure_frequency_number[0]` remains the gold label, while `reference[0]` is metadata and a difficulty signal.
+Key refs: `docs/deterministic_scorer_semantics.md`, `docs/gan_2026_label_audit.md`, `docs/exect_gold_label_audit.md`, `tests/test_gan_scoring.py`, `tests/test_exect_scoring.py`.
 
-## Background: Completed DSPy And Experiment Infrastructure
+### Gan S0 model-backed arc
 
-The first model-backed path is implemented around a narrow Gan S0 seizure-frequency task. The repo has provider/model configuration, constrained JSON strategy documentation, experiment config validation, model comparison configs, a run experiment script, DSPy/LiteLLM integration, and a proper `dspy.Signature` plus `dspy.ChainOfThought` Gan S0 module.
+| Phase | Outcome | Primary artifact |
+| --- | --- | --- |
+| Synthesis BootstrapFewShot | Strongest **hosted direct** reference | `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z` (monthly 62.9%, evidence 89.9%) |
+| Surface repair replay | Schema 97.3%→98.3%; semantic gaps remain | `docs/gan_s0_post_repair_validation_replay.md` |
+| Verify-repair v2 (GPT) | **Hosted quality anchor** | `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z` |
+| GEPA / semantic optimizers | Rejected for scale-up; prompt bloat | `docs/gan_s0_gepa_vs_synthesis_decision_20260519.md` |
+| Qwen guardrails + full validation | Stable evidence; label gap vs hosted | `runs/gan_s0_qwen35b_direct_full_validation_guardrails_20260519T102249Z` |
+| Prompt v2 → v2.4 + hybrid | Slice original targets recovered; **infrequent stuck at 1/4** | Pivot: `docs/gan_s0_temporal_candidate_pivot_20260519.md` |
+| Temporal candidates v1.1 slice | **Gate cleared** — 100% all metrics, 4/4 infrequent | `…180329Z`; deterministic verifier guards |
+| Temporal candidates v1 slice | 3/4 infrequent; original/schema regression | `…175345Z` |
 
-Completed infrastructure and decision artifacts include:
+Infrastructure landed: `record_ids` on experiment configs; `gan_failure_taxonomy` + scoped `gan_run_analysis` (`analysis_scope=record_ids_filter`); stratified operational reporting in analyzer output.
 
-- `clinical_extraction.programs.gan_frequency_s0`
-- `clinical_extraction.llms`
-- `clinical_extraction.experiments.config`
-- `scripts/run_experiment.py`
-- `configs/models/`
-- `configs/experiments/gan_s0_baseline_gpt4_1_mini.json`
-- `docs/first_dspy_schema_sequence.md`
-- `docs/constrained_json_decoding_strategy.md`
-- `docs/published_benchmark_metrics.md`
+### ExECT S0/S1 (anchored, not active frontier)
 
-The current model-backed Gan S0 sequence has already produced useful lessons:
+Monolithic field-family baseline: **v4.2 anchor** (full 78.5% micro F1, +10.7pp vs v3). Cap-25 v4.2 was 86.4% (optimistic vs full). Section-aware **underperformed** — deprioritized.
 
-- Zero-shot GPT 4.1-mini on 25 validation records had low schema validity, showing that the model needed label-vocabulary examples.
-- BootstrapFewShot improved valid output coverage but exposed frequency unit/window errors and weak evidence quote support.
-- Synthesis-backed BootstrapFewShot, using prior prompt/error-analysis guidance, produced the current strongest full-validation run.
+### Hosted model comparison
 
-Most recent full-validation artifact:
+`docs/gan_s0_hosted_model_comparison_matrix.md` — Gemini 3.1 Flash-Lite competitive on labels/latency/cost; **evidence trails GPT verify-repair** (84.9% vs 92.7% full validation).
 
-- `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z`
+## Kanban
 
-Full-validation summary on 299 validation records:
+### Ready
 
-- Schema validity: 97.3%
-- Normalized-label accuracy: 51.5%
-- Monthly-frequency accuracy: 62.9%
-- Purist category accuracy: 70.1%
-- Pragmatic category accuracy: 73.9%
-- Evidence quote support: 89.9%
+No card claimed.
 
-The first full-validation error read and surface-repair pass is complete in `docs/gan_s0_full_validation_error_read.md`. The artifact bridge now preserves raw model output while normalizing repairable surface forms such as quoted special labels and matching-count denominator ranges. Incomplete cluster labels, `unknown per cluster`, abstentions, and semantic cluster-to-unknown mistakes remain unresolved because repairing them requires additional evidence-aware rule or model logic.
+### In Progress
 
-The post-repair replay is complete in `docs/gan_s0_post_repair_validation_replay.md`. Replaying the current artifact bridge over the stored full-validation raw outputs changed exactly three predictions, reducing invalid predictions from 8 to 5 and improving schema validity from 97.3% to 98.3% without changing scorer semantics. Remaining Gan failures are semantic or evidence-grounding failures and should be handled only by an explicit verifier/repair or abstention-calibration variant.
+No card claimed.
 
-The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline_design.md`, and capped GPT 4.1-mini smokes are inspected in `docs/exect_s0_s1_smoke_inspection.md`. The model-backed path is scoped to audited diagnosis, seizure type, and annotated medication field families under `exect_field_family_deterministic_v1`; broader clinical fields and medication temporality remain deferred. The first capped smoke validated the artifact path but showed the zero-shot prompt was too permissive about clinically plausible labels, planned/previous medication mentions, and richer seizure-type surfaces. The v2 label-policy smoke improved the same capped slice to micro F1 84.2%, diagnosis F1 100.0%, and annotated-medication F1 100.0%. The v3 seizure/evidence smoke added a narrow benchmark bridge for fused `temporal lobe onset focal seizures` surfaces and ExECT evidence diagnostics; the same capped slice reached 100.0% micro F1 with 90.0% evidence quote support, but this remains a three-record smoke, not a performance estimate.
+### Review
 
-A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence quotes when all fragments can be deterministically located in order inside one short source span. This is tagged as diagnostic bridge behavior (`evidence_repair:ellipsis_contiguous_span`) and does not change benchmark-facing field-family scorer semantics.
+#### Temporal-candidates v1.1 full validation — promotion decision
 
-The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practices_deep_dive.md`. The main conclusion is that GEPA is a strong near-term fit because this repo already has deterministic scorers, error categories, benchmark-policy audits, and small train/dev splits that can produce rich textual feedback. ReAct is promising only as a narrow temporal-reasoning architecture with deterministic tools for candidate retrieval, calendar math, canonical Gan label validation, and quote support.
+- **Run:** `runs/gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails_20260519T183614Z` (log: `runs/temporal_candidates_v1_1_full_validation_run.log`)
+- **Decision doc:** `docs/gan_s0_temporal_candidates_v1_1_full_validation_decision_20260519.md` (tiers + A–F packet pre-registered)
+- **On completion:** Run analyzer (A) + slice replay (B) per decision doc; fill headline table; assign tier 1/2/3; update Session Handoff
+- **Do not start until tier signed:** B1/B2/ReAct/hosted port (see decision doc engineering fork)
 
-## Ready
+### Done (recent)
 
-### Iterate Qwen guardrails v2.2 for infrequent quantified rates
+| Card | Outcome |
+| --- | --- |
+| ExECT diagnosis-recall probe (v1) | **Negative** — 14-record slice: diagnosis recall flat (36%), precision 90%→53%; `…202910Z`; `docs/exect_s0_s1_diagnosis_recall_probe_inspection_20260519.md` |
+| ExECT S0/S1 monolithic full validation (GPT 4.1-mini) | `…200017Z` — micro F1 67.8%, evidence 87.6%; cap-25 was optimistic (73.7%); inspection `docs/exect_s0_s1_validation_full_inspection.md` |
+| Cap-25 re-run post schema surface repairs | `…183213Z` — 100% schema (25/25), 44% monthly, 100% evidence; error analysis refreshed |
+| Cap-25 schema-invalid surface repairs | `per hour` → daily/`multiple per day`; rate+`, N per cluster` → insert `cluster`; 6 new tests; scorer unchanged |
+| Temporal-candidates v1.1 cap-25 validation (pre-repair) | 45.5% monthly (+8pp vs direct anchor); 88% schema (3 invalid); `…181053Z` |
+| Temporal verifier v1.1 confirm-first + candidate-gated guards | Deterministic guards; slice 100% (`…180329Z`); 4 new tests |
+| Run temporal-candidates verify-repair on Qwen regression slice | v1 run `…175345Z` exposed verifier over-repair; led to v1.1 |
+| Wire temporal candidates into experiment + analyzer | Program variant, metadata fields, `temporal_candidate_diagnostics` in analyzer; slice config ready |
+| Temporal-candidate pivot report + scaffold | `docs/gan_s0_temporal_candidate_pivot_20260519.md`; `temporal_candidates.py` + tests (4/4 infrequent gold in candidate set) |
+| LabeledFewShot + verify-repair v2.4 hybrid probe | Ties v2.4 (71.4%, 1/4 infrequent); `docs/gan_s0_qwen35b_labeled_fewshot_verify_repair_regression_slice_guardrails_error_analysis.md` |
+| Verify-repair v2.4 regression slice | 4096 tokens clears truncation; 9/10 original, 1/4 infrequent |
+| Bounded verify-repair + LabeledFewShot infrequent probe | v2.3 over-repair; LabeledFewShot 0/4 infrequent |
+| Qwen guardrails v2.2 | Original 10/10; infrequent 0/4; cap-25 monthly regressed |
+| Gan stratified operational reporting | Strata in `summary.json` + Markdown |
+| Qwen regression slice + analyzer taxonomy | Fixture `gan_s0_qwen_error_regression_v1`; `record_ids_filter` scope |
+| GPT verify-repair v2 full validation | Hosted anchor run + inspection docs |
+| ExECT label-policy v4.2 (granular seizure + medication guardrails) | Prompt + bridges; 15-record slice expanded; scorer unchanged |
+| ExECT label-policy v4/v4.1 (seizure split + diagnosis surface) | Full v4.1 anchor 75.3% micro F1; comparison docs |
+| ExECT S0/S1 monolithic baseline + cap-25 | Field-family contract; section-aware negative result recorded |
 
-- Outcome: Fix cap-25 over-`unknown` on explicit infrequent gold (`gan_13123`, `gan_14485`, `gan_14881`, `gan_15306`) without regressing v2/v2.1 slice wins (unknown/no-reference, YTD, cluster format, `gan_10509`).
-- Dependencies: v2.1 runs `…145053Z` (slice), `…145440Z` (cap-25); cap-25 v2 anchor `…140952Z` for comparison.
-- Parallelizable: no (single-threaded on `gan_frequency_s0.py`).
-- Owner: unassigned.
-- Validation: Extend regression slice with cap-25 failure IDs or re-run cap-25; target ≥4/6 infrequent-unknown fixes with schema ≥90% and monthly ≥37.5%.
-- Notes: v2.1 text alone insufficient — consider few-shot examples from synthesis train set or bounded local verify-repair if v2.2 text fails again. Also fix `multiple` vs numeric undercall (`gan_12130`) and no-content abstention regression (`gan_11733`).
-
-### Add Gan stratified operational reporting
-
-- Outcome: Extend run summaries and analyzer output with hard/non-hard, `row_ok` true/false, gold pragmatic category, and all-record operational failure rates alongside valid-only benchmark metrics.
-- Dependencies: Refine Gan run analyzer action taxonomy (complete).
-- Parallelizable: yes, alongside prompt iteration if analyzer files are not contested.
-- Owner: unassigned.
-- Validation: Regenerated `summary.json` and Markdown reports include `analysis_scope`, valid denominator, all-record denominator, and hard-case / `row_ok` breakdowns.
-- Notes: Full-validation guardrails read (`docs/gan_s0_qwen35b_direct_full_validation_guardrails_error_analysis.md`) should be regenerated with `record_ids_filter` or full-split scope as appropriate. Hard cases were not the main miss source on Qwen guardrails full validation.
-
-## In Progress
-
-No active in-progress card is currently claimed.
-
-## Review
-
-No active review card is claimed in this plan.
-
-## Done
-
-Completed work is summarized in the background sections above rather than repeated as foreground cards.
-
-### Re-run Qwen regression slice and cap-25 with v2.1 prompt
-
-- Outcome: Complete. Slice `runs/gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T145053Z`; cap-25 `runs/gan_s0_qwen35b_direct_cap25_guardrails_validation_20260519T145440Z`.
-- Validation: Slice 9/10 valid, 88.9% monthly on valid; cap-25 schema 88%, monthly 36.4%, Purist 54.5%, Pragmatic 77.3%, evidence 100%, invalid 3. Inspection/analyzer docs updated.
-- Notes: v2.1 fixed `gan_10509` abstention but regressed `gan_11733` (abstain) and `gan_12130` (`1 per week` vs `multiple per week`). Cap-25 over-`unknown` on 4 infrequent records unchanged. Purist/Pragmatic up vs v2 cap-25; monthly/schema down. **Do not run full validation.**
-
-### Draft Qwen guardrails v2.1 anti-over-unknown prompt
-
-- Outcome: Complete. `gan_frequency_s0_direct_guardrails_v2_1` adds quantified-rate priority over unknown for explicit count+window statements (including infrequent), narrows unknown to non-extractable cases, and forbids `per hour` units.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py::test_gan_frequency_s0_signature_documents_qwen_direct_policy_boundaries tests/test_experiment_configs.py`; configs updated to v2_1; model-tested on slice + cap-25 above.
-- Notes: Primary hypothesis failed — 4/6 cap-25 infrequent-unknown cases unchanged. Consider v2.2 with few-shot examples or local verify-repair.
-
-### Run Qwen cap-25 guardrails validation with v2 prompt
-
-- Outcome: Complete. Cap-25 run `runs/gan_s0_qwen35b_direct_cap25_guardrails_validation_20260519T140952Z` under guardrails v2.
-- Validation: Analyzer `docs/gan_s0_qwen35b_direct_cap25_guardrails_validation_error_analysis.md`; vs v1 cap-25 schema 84%→96%, monthly 33.3%→37.5%, Purist 33.3%→45.8%, invalid 4→1, evidence 100%.
-- Notes: Slice→cap-25 gate cleared on schema/Purist/evidence. Cap-25→full-validation gate **not** cleared (37.5% monthly vs 55.9% v1 full-validation baseline). Main v2 regression: over-`unknown` on quantified infrequent rates.
-
-### Iterate Qwen direct prompt on regression-slice failures
-
-- Outcome: Complete. `GanFrequencyS0Signature` guardrails v2 strengthens unknown vs no-reference, YTD anti-`per year`, mandatory cluster format with `multiple per cluster`, cluster period vs per-cluster distinction, and anti-abstention when seizures are discussed.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py::test_gan_frequency_s0_signature_documents_qwen_direct_policy_boundaries tests/test_experiment_configs.py`; slice run `runs/gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T140141Z`; inspection `docs/gan_s0_qwen35b_regression_slice_inspection_20260519.md`.
-- Notes: Slice improved from 8 valid / 6 benchmark-severe to 9 valid / 0 benchmark-severe on scored records. Remaining edge: `gan_10509` abstained (null) vs gold `unknown`; anti-abstention rule added post-run. Promotion gate cleared for cap-25.
-
-### Record Gemini billing and update model comparison matrix
-
-- Outcome: Complete. Hosted Gan S0 comparison table with token usage, latency, label metrics, evidence support, and paid-tier billing estimates for Gemini 3.1 Flash-Lite vs GPT 4.1-mini verify-repair v2.
-- Validation: `docs/gan_s0_hosted_model_comparison_matrix.md`; cross-check `runs/gan_s0_direct_full_validation_gemini31_flash_lite_20260519T101710Z`, `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z`, and cap-25 Gemini/GPT artifacts.
-- Notes: Gemini direct full validation est. ~$0.11 vs GPT verify-repair est. ~$0.40 per 299-record run at 2026-05-19 list prices; evidence 84.9% vs 92.7%. GPT verify-repair v2 remains the hosted quality anchor.
-
-### Build Gan Qwen error-regression slice
-
-- Outcome: Complete. Fixture, helpers, experiment `record_ids` support, and a Qwen regression-slice config for fast pre-full-validation gates.
-- Validation: `data/fixtures/gan_s0_qwen_error_regression_slice.json`; `src/clinical_extraction/datasets/gan_qwen_regression_slice.py`; `configs/experiments/gan_s0_qwen35b_direct_regression_slice_guardrails.json`; `uv run --extra dev pytest tests/test_gan_qwen_error_regression_slice.py tests/test_experiment_configs.py::test_qwen35b_regression_slice_config_uses_record_ids_filter`.
-- Notes: Ten validation records cover unknown/no-reference, no-content nulls, highest-current frequency, year-to-date denominators, cluster shape, and short seizure-free threshold cases.
-
-### Tighten Gan Qwen direct extraction decision policy
-
-- Outcome: Complete. `GanFrequencyS0Signature` now documents unknown vs no-reference, no-clinical-content → `no seizure frequency reference` (not null), highest-current quantified frequency, and year-to-date denominator policy for the direct/guardrails path.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py::test_gan_frequency_s0_signature_documents_qwen_direct_policy_boundaries`; regression-slice run `runs/gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T135112Z`; inspection `docs/gan_s0_qwen35b_regression_slice_inspection_20260519.md`.
-- Notes: Slice did **not** clear promotion gate (monthly 25%, 6/6 benchmark-severe misses). Unknown/no-reference unchanged on 3/3; new `per year` denominator errors on `gan_12810`/`gan_12823`; 2 incomplete-cluster invalids. Hits: `gan_11733` (no-reference), `gan_12130` (multiple per week).
-
-### Run Gan Qwen regression slice on Windows Qwen
-
-- Outcome: Complete. First targeted 10-record Qwen3.6:35b direct guardrails run on `gan_s0_qwen_error_regression_v1`.
-- Validation: `runs/gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T135112Z`; `docs/gan_s0_qwen35b_regression_slice_inspection_20260519.md`; analyzer respects `record_ids` filter (`analysis_scope=record_ids_filter`).
-- Notes: Do not promote to cap-25 until benchmark-severe misses drop materially (especially unknown/no-reference and YTD/denominator cases).
-
-### Refine Gan run analyzer action taxonomy
-
-- Outcome: Complete. Failure taxonomy in `src/clinical_extraction/evaluation/gan_failure_taxonomy.py`; scope selection in `clinical_extraction/evaluation/gan_run_analysis.py` (`record_ids_filter`, `predicted_subset`, `full_split`). Analyzer markdown includes action-tier tables.
-- Validation: `uv run --extra dev pytest tests/test_analyze_gan_frequency_run.py`; slice analysis `runs/gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T135112Z/analysis/summary.json` shows `analysis_scope: record_ids_filter`.
-- Notes: Scorer semantics unchanged. Optional follow-up: regenerate full-validation guardrails error analysis with corrected scope (not 289 false `missing_prediction` rows).
-
-### Run Gan S0 few-shot optimizer baseline ladder
-
-- Outcome: Complete. Experiment configs and optimizer plumbing now support `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` on the direct synthesis Gan S0 path. Cap-25 GPT 4.1-mini ladder runs compared compile time, prediction latency, schema validity, label metrics, and evidence support.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py`; configs `configs/experiments/gan_s0_ladder_*_cap25_gpt4_1_mini.json`; runs `runs/gan_s0_ladder_labeled_fewshot_cap25_gpt4_1_mini_20260519T091940Z`, `runs/gan_s0_ladder_bootstrap_cap25_gpt4_1_mini_20260519T092020Z`, `runs/gan_s0_ladder_bootstrap_rs_cap25_gpt4_1_mini_20260519T092117Z`; inspection `docs/gan_s0_few_shot_ladder_cap25_inspection_20260519.md`.
-- Notes: On the direct path cap-25, `LabeledFewShot` led all label metrics (normalized exact 34.8%, monthly 43.5%, Purist 56.5%, Pragmatic 69.6%) with near-zero compile cost. Plain `BootstrapFewShot` underperformed labeled-only. `BootstrapRS` improved schema validity to 96.0% but still trailed labeled demos on labels with ~166 s compile and high token use. Do not promote bootstrap/search optimizers for routine direct extraction; keep verify-repair v2 as the hosted quality anchor.
-
-### Compare hosted-path Gan S0 GEPA against synthesis baseline and decide next path
-
-- Outcome: Complete. Comparison document `docs/gan_s0_gepa_vs_synthesis_decision_20260519.md` analyzes GEPA cap5 prompt length (3,249 chars / 508 words), label metrics, evidence support, and runtime against the synthesis-backed BootstrapFewShot baseline. Decision: **pivot to verifier/repair**, do not scale GEPA on GPT 4.1-mini.
-- Validation: Artifact inspection of `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z` and documented synthesis baseline. Qwen GEPA probes corroborate prompt-bloat pattern.
-- Notes: GEPA trades label accuracy for schema validity and produces bloated instructions. Evidence support is already solved on the direct path. Semantic failures require an explicit verifier/repair variant.
-
-### Implement Gan S0 evidence-aware verifier/repair module
-
-- Outcome: Complete. The `gan_frequency_s0_direct_verify_repair` variant is implemented as a two-stage DSPy pipeline (`GanFrequencyS0VerifyRepairModule`) with auditable `confirm`/`repair`/`abstain` metadata. Capped real-model runs compared extraction-only versus verify-repair on 25 matched records.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py`; dry-runs and real-model runs `runs/gan_s0_direct_cap25_gpt4_1_mini_20260519T081439Z` and `runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T081441Z`; inspection note `docs/gan_s0_verify_repair_cap25_inspection_20260519.md`.
-- Notes: Post-quote-fix schema validity reached 92.0% for both variants. Verify-repair improved monthly-frequency (+4.3 pp) and Purist (+4.4 pp) but hurt normalized-label exact (-4.3 pp) and evidence support (-3.0 pp). The verifier misapplied the `seizure free` canonicality rule and over-repaired to `unknown`. A prompt v2 refinement is needed before promotion.
-
-### Tighten Gan S0 verifier/repair prompt v2
-
-- Outcome: Complete. `GanFrequencyS0VerifierSignature` v2 documents canonical `seizure free for N unit` (N ≥ 6 months), confirm-vs-repair-vs-abstain policy, evidence preservation, arithmetic guardrails, and anti-over-repair guidance. Config `configs/experiments/gan_s0_verify_repair_cap25_gpt4_1_mini.json` uses `gan_frequency_s0_direct_verify_repair_v2`.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py tests/test_kanban_visuals.py`; cap-25 rerun `runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T084511Z`; inspection `docs/gan_s0_verify_repair_cap25_v2_inspection_20260519.md`.
-- Notes: v2 meets the cap-25 promotion gate vs direct: normalized-label exact tied at 26.1%, evidence support 91.3% (+56.5 pp), `gan_4956` correct label confirmed instead of destroyed. v1 inspection: `docs/gan_s0_verify_repair_cap25_inspection_20260519.md`.
-
-### Run Gan S0 verify-repair v2 full validation
-
-- Outcome: Complete. Full 299-record GPT 4.1-mini validation run for verify-repair v2 with config `configs/experiments/gan_s0_verify_repair_full_validation_gpt4_1_mini.json`.
-- Validation: `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z`; inspection `docs/gan_s0_verify_repair_full_validation_v2_20260519.md`; `test_verify_repair_full_validation_config_has_no_cap`.
-- Notes: vs synthesis BootstrapFewShot baseline — normalized exact 52.9% (+1.4 pp), monthly 65.4% (+2.5 pp), Purist 72.7% (+2.6 pp), Pragmatic 79.2% (+5.3 pp), evidence support 92.7% (+2.8 pp); schema validity 96.7% (−0.6 pp). Verifier decisions: 242 confirm, 53 repair, 4 abstain. Runtime ~2.81 s/record (~14 min total).
-
-### Add Gan S0 GEPA feedback metric and capped optimizer config
-
-- Outcome: Complete. `gan_frequency_s0_synthesis_feedback_metric` returns GEPA-compatible score plus textual feedback for exact-label, pragmatic-category, invalid-format, evidence-support, temporal-window, seizure-free-threshold, cluster-format, forbidden-unit, and abstention failures.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py`; capped GPT 4.1-mini runs `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` and `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z`; run notes `docs/gan_s0_gepa_harness_run_20260519.md` and `docs/gan_s0_gepa_feedback_run_20260519.md`.
-- Notes: The richer feedback improved schema validity and evidence support on the five-record cap but did not yet improve label metrics and introduced prompt-bloat risk. The metric is optimizer-facing only and does not replace `gan_frequency_deterministic_v1` scoring.
-
-### Tighten Gan direct-output canonicalization for local Qwen runs
-
-- Outcome: Complete. The Gan S0 artifact bridge now repairs additional local-Qwen surface forms: `few`/`several` to `multiple`, hyphen/`or` ranges to `to` ranges, `per quarter` to `per 3 month`, and `fortnight`/`fortnightly`/`biweekly` adjective rates to canonical forms.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py`; scorer semantics preserved via regression coverage for semantic cluster non-repair cases.
-- Notes: Dropped cluster structure and quarter-as-window semantic mistakes remain outside deterministic repair. The default `Qwen3.6:35b` direct config returned to `max_tokens=256` after the `1024` full-validation comparison showed no quality gain.
-
-### Add evidence-length guardrail for Gan direct extraction
-
-- Outcome: Complete. The Gan S0 artifact bridge now strips prompt-footer leakage from evidence quotes and truncates over-long evidence to the longest note-contained prefix, tagging repairs with `evidence_repaired:prompt_footer_stripped` and `evidence_repaired:truncated_to_note_span`.
-- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py`; signature guidance now asks for the shortest exact contiguous quote without wrapper text.
-- Notes: This targets the `gan_11044` failure mode observed when raising completion caps caused prompt-footer spillage instead of fixing truncation.
-
-### Re-run Qwen3.6:35b direct cap-25 post-guardrails validation
-
-- Outcome: Complete. A fresh 25-record Qwen3.6:35b direct validation run measured post-canonicalization and evidence-guardrail behavior under unchanged `gan_frequency_deterministic_v1` scoring.
-- Validation: Config `configs/experiments/gan_s0_qwen35b_direct_cap25_guardrails_validation.json`; dry-run and capped run `runs/gan_s0_qwen35b_direct_cap25_guardrails_validation_20260519T071524Z`; inspection note `docs/gan_s0_qwen35b_guardrails_cap25_validation_20260519.md`.
-- Notes: On this cap, schema validity was `84.0%` with four `normalization.invalid_label` failures (incomplete cluster, quoted label, forbidden `hour` units). Evidence quote support on valid predictions was `100.0%`. Invalid-label shape matches the documented semantic repair boundary rather than the new surface canonicalizations. Optional follow-up: full-validation rerun against the overnight 35B baseline artifact when available.
-
-### Run Qwen3.6:35b direct full validation with guardrails
-
-- Outcome: Complete. A full 299-record Qwen3.6:35b direct-validation rerun quantified the effect of post-canonicalization and evidence guardrails against the earlier overnight local-Qwen baseline while keeping `gan_frequency_deterministic_v1` scorer semantics fixed.
-- Validation: Config `configs/experiments/gan_s0_qwen35b_direct_full_validation_guardrails.json`; run `runs/gan_s0_qwen35b_direct_full_validation_guardrails_20260519T102249Z`; comparison baseline `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260519T035636Z`.
-- Notes: Guardrails improved schema validity from `89.0%` to `94.0%` (invalid predictions `33 -> 18`) and evidence quote support from `94.0%` to `99.6%`, while modestly improving speed from `9.99` to `9.61` s/record with recorded residency `74%/26% CPU/GPU (context=4096)`. Benchmark-facing label metrics were effectively flat: monthly `55.6% -> 55.9%`, Purist `61.7% -> 61.9%`, Pragmatic `69.2% -> 70.5%`, while normalized exact remained diagnostic and slightly lower at `44.7% -> 43.8%`. The result strengthens the local-Qwen direct path as a stable evidence-grounded baseline, but the remaining gap is still semantic label control and abstention behavior rather than surface canonicalization alone.
-
-### Capture DSPy GEPA and ReAct best-practices deep dive
-
-- Outcome: Complete. `docs/dspy_gepa_react_best_practices_deep_dive.md` summarizes current DSPy optimizer guidance, GEPA/ReAct case studies, project overlap, and a recommended experiment sequence.
-- Validation: Official DSPy docs, GEPA/ReAct tutorials, the DSPy and GEPA papers, a 2026 instruction-optimization fact-verification paper, and local project artifacts were reviewed; `uv run python` confirmed DSPy `3.2.1` exposes `dspy.GEPA`, `dspy.ReAct`, and `dspy.SIMBA`.
-- Notes: Recommendation is GEPA first for Gan S0 direct extraction with rich deterministic feedback, ReAct later as a bounded Gan temporal-tools probe, and no routine optimizer-heavy path for Qwen3.6:35b.
-
-### Add GEPA optimizer support to experiment configs and run artifacts
-
-- Outcome: Complete. Experiment configs can select `dspy.GEPA` in addition to `BootstrapFewShot`, and run artifacts preserve GEPA logs, optimizer settings, and compiled-state artifacts.
-- Validation: `uv run --extra dev pytest tests/test_experiment_configs.py tests/test_gan_s0_program.py tests/test_run_artifacts.py`; dry-run validation succeeded; capped GPT 4.1-mini harness run `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` wrote `artifacts/optimizer/logs/`, `artifacts/optimizer/summary.json`, and `artifacts/compiled_state.json`.
-- Notes: The real run exposed and fixed two DSPy-runtime gaps not caught by dry-run alone: GEPA budget selection must set exactly one of `auto`, `max_full_evals`, or `max_metric_calls`, and DSPy dynamic signatures required `use_cloudpickle=true` for GEPA state persistence. The harness now also supplies a reflection LM for GEPA by default. Remaining work has moved from shared infrastructure to richer Gan-specific feedback design.
-
-### Add direct Gan S0 DSPy module variant and Qwen latency configs
-
-- Outcome: Complete. Gan S0 now supports `gan_frequency_s0_direct_single_pass` alongside the existing `gan_frequency_s0_single_pass` ChainOfThought variant, and local-Qwen latency configs exist for Qwen3.5:9b and Qwen3.6:35b.
-- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_gan_s0_program.py tests/test_experiment_configs.py`; dry runs passed for the new Qwen3.5:9b latency matrix and Qwen3.6:35b direct gate configs.
-- Notes: DSPy Ollama construction now uses LiteLLM `ollama_chat/` with `think=false` because Ollama's OpenAI-compatible `/v1` route returned hidden reasoning with empty final content for Qwen tags.
-
-### Add latency and call-count capture to run artifacts
-
-- Outcome: Complete. Experiment `metrics.json` files now include runtime metadata: compile duration, prediction duration, prediction seconds per record, evaluation duration, total duration, estimated model-call count, optimizer settings, and model residency placeholder.
-- Validation: Runtime fields are present in completed Qwen runs such as `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z/metrics.json` and `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z/metrics.json`.
-- Notes: Token counts and automatic residency capture remain future work.
-
-### Add token and residency capture for local model runs
-
-- Outcome: Complete. Runtime artifacts now aggregate token usage from DSPy LM history when the provider exposes usage metadata and capture a post-run `ollama ps` residency snapshot automatically for local Ollama runs.
-- Validation: Added focused coverage in `tests/test_run_experiment_runtime.py` plus regression coverage in `tests/test_experiment_configs.py` and `tests/test_llm_adapters.py`; `uv run --extra dev pytest tests/test_run_experiment_runtime.py tests/test_experiment_configs.py tests/test_llm_adapters.py`; OpenAI validation smoke `runs/gan_s0_smoke_gpt4_1_mini_token_usage_smoke_20260519T000000Z` wrote `runtime.token_usage={"prompt_tokens":1413,"completion_tokens":332,"total_tokens":1745,"history_entries":1}`; local Qwen smoke `runs/gan_s0_smoke_qwen35b_direct_ollama_token_residency_smoke_20260519T000000Z` wrote `runtime.model_residency="72%/28% CPU/GPU (context=4096)"`.
-- Notes: Ollama/LiteLLM did not expose token usage on the local Qwen smoke, so `runtime.token_usage` remained `null` there, which is expected under the current "when available" contract. Non-Ollama providers now record `model_residency="not_applicable"` instead of the older `not_recorded` placeholder.
-
-### Run Qwen local Gan S0 latency and pace experiments
-
-- Outcome: Complete. `docs/qwen_local_latency_experiment_20260518.md` records the Qwen3.5:9b DSPy component latency matrix and the Qwen3.6:35b direct-extraction pace gate.
-- Validation: Completed artifacts: `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z`, `runs/gan_s0_latency_qwen9b_cot_cap3_20260518T201247Z`, `runs/gan_s0_latency_qwen9b_direct_bootstrap_cap3_20260518T201540Z`, `runs/gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z`, and `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z`. The combined Qwen3.5:9b `ChainOfThought + BootstrapFewShot` attempt `runs/gan_s0_latency_qwen9b_cot_bootstrap_cap3_20260518T201609Z` failed during prediction before metrics were written.
-- Notes: On Qwen3.5:9b, direct extraction completed at 3.91 prediction seconds/record, ChainOfThought completed at 53.74 seconds/record with truncation warnings, and direct plus tiny BootstrapFewShot completed with 3.92s compile time and 4.62 prediction seconds/record. ChainOfThought plus BootstrapFewShot did not function under `max_tokens=1536`. Qwen3.6:35b direct extraction completed a one-record smoke and a warm three-record cap; manual `ollama ps` showed 74% CPU / 26% GPU residency after the run.
-
-### Probe Qwen3.6:35b GEPA latency and transfer on Gan S0
-
-- Outcome: Complete. A tiny local-Qwen GEPA probe now exists and shows that `Qwen3.6:35b` can execute the GEPA harness end to end, but the current optimizer transfer does not justify promoting GEPA to the routine local 35B path.
-- Validation: Added reproducible config `configs/experiments/gan_s0_gepa_direct_cap5_qwen35b_ollama.json`, dedicated model config `configs/models/gan_s0_qwen35b_ollama_gepa_max10000.json`, plus focused config coverage in `tests/test_experiment_configs.py` and `tests/test_model_comparison_configs.py`; dry-runs passed; capped runs `runs/gan_s0_gepa_direct_cap5_qwen35b_ollama_20260519T055049Z` and `runs/gan_s0_gepa_direct_cap5_qwen35b_ollama_20260519T060700Z`; run notes `docs/gan_s0_gepa_qwen35b_probe_run_20260519.md` and `docs/gan_s0_gepa_qwen35b_max10000_followup_20260519.md`.
-- Notes: The first run at `max_tokens=1024` compiled in `267.81s`, predicted in `70.34s` or `14.07s/record`, kept schema validity and evidence support at `100.0%`, but reached only `20.0%` normalized-label/monthly/Purist accuracy and `40.0%` Pragmatic accuracy while logging a DSPy reflection truncation warning. The follow-up rerun raised only the active Qwen GEPA budget to `10000`, which improved the same five-record cap to `25.0%` normalized-label accuracy and `50.0%` monthly/Purist/Pragmatic accuracy, with prediction time improving to `11.98s/record`. But compile time expanded to `535.80s`, total runtime to `595.97s`, and the selected GEPA instruction ballooned from `3936` chars / `664` words to `10562` chars / `1819` words. The higher-budget run also introduced one invalid non-canonical label (`several per week` for `gan_10434`), so the updated conclusion is narrower: the earlier `1024` recommendation was too pessimistic as a test of deeper GEPA reflection, but the current local-Qwen GEPA path still shows prompt bloat and canonicalization drift and should not replace the validated direct path.
-
-### Inspect post-repair Gan S0 validation behavior
-
-- Outcome: Complete. `docs/gan_s0_post_repair_validation_replay.md` compares the original full-validation run with a post-repair replay.
-- Validation: Derived artifact `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_surface_replay_20260518T000000Z`; invalid predictions 8 -> 5; schema validity 97.3% -> 98.3%; normalized-label accuracy 51.5% -> 52.0%; monthly/Purist/Pragmatic accuracy 62.9%/70.1%/73.9% -> 63.3%/70.4%/74.1%; evidence quote support 89.9% -> 90.0%.
-- Notes: Scorer semantics are preserved. Remaining Gan errors are not deterministic surface-repair candidates.
-
-### Decide next Gan repair boundary
-
-- Outcome: Complete. No further deterministic Gan repair should be added before ExECT; semantic Gan work should be an explicit verifier/repair or abstention-calibration variant.
-- Validation: Decision recorded in `docs/gan_s0_post_repair_validation_replay.md` and this plan.
-- Notes: Incomplete clusters, `unknown per cluster`, abstentions, unknown/no-reference confusion, and temporal-window denominator errors remain outside deterministic postprocessing.
-
-### Add targeted Gan failure regression fixtures
-
-- Outcome: Complete. Regression coverage now asserts the current boundary for incomplete clusters, frequent-to-unknown mismatches, unknown/no-reference confusion, denominator/window mismatch, abstentions, missing evidence, and unsupported evidence quotes.
-- Validation: `uv run --extra dev pytest tests/test_evaluation_cli.py tests/test_gan_s0_program.py tests/test_gan_scoring.py`.
-- Notes: The evaluator now records `abstention.predicted_abstention` even when the abstention is schema-invalid because the label value is missing.
-
-### Draft ExECT S0/S1 baseline design
-
-- Outcome: Complete. `docs/exect_s0_s1_baseline_design.md` defines the combined audited diagnosis, seizure-type, and annotated-medication baseline.
-- Validation: Design reviewed against `docs/exect_gold_label_audit.md`, `docs/deterministic_scorer_semantics.md`, `docs/prior_prompt_error_analysis_synthesis.md`, existing ExECT loader/scorer code, and current shared prediction schema.
-- Notes: Benchmark-facing fields remain diagnosis, seizure type, and annotated medications only. Investigation, history, birth history, aetiology, onset, diagnosis-date, seizure frequency, and medication temporality remain deferred.
-
-### Prepare Gan S0 provider smoke configs and Windows Qwen handoff
-
-- Outcome: Complete. One-record Gan S0 smoke experiment configs exist for GPT 4.1-mini, GPT 5.5, Gemini 3 Flash Preview, Qwen3.6:35b, and Qwen3.5:9b, and the Windows Qwen handoff is documented in `docs/model_config_smoke_tests.md`.
-- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-runs passed for all five smoke configs.
-- Notes: GPT 4.1-mini completed `runs/gan_s0_smoke_gpt4_1_mini_20260518T130500Z`; GPT 5.5 completed `runs/gan_s0_smoke_gpt5_5_openai_20260518T130600Z` after changing its config to omit unsupported temperature. Gemini is blocked on model identifier/API-version 404. Qwen smoke runs are deferred to the Windows laptop.
-
-### Implement ExECT S0/S1 DSPy field-family baseline contract
-
-- Outcome: Complete. `clinical_extraction.programs.exect_s0_s1` defines the benchmark-facing ExECT S0/S1 DSPy signature/module, example helper, artifact bridge, and run metadata for diagnosis, seizure type, and annotated medication field families.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`.
-- Notes: The bridge preserves raw model phrases, normalizes benchmark-facing values with audited ExECT normalizers, collapses parent diagnosis labels when a more specific child is emitted, flags unsupported diagnosis labels and missing evidence, and does not infer seizure types from diagnosis. `scripts/run_experiment.py` now dispatches Gan and ExECT configs through the appropriate loader, module, metadata, and evaluator.
-
-### Run capped ExECT S0/S1 field-family smoke
-
-- Outcome: Complete. A capped GPT 4.1-mini validation smoke run exists for the ExECT S0/S1 field-family baseline, with predictions, metrics, errors, prompts/config snapshots, and an artifact inspection note in `docs/exect_s0_s1_smoke_inspection.md`.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T154456Z`.
-- Notes: The run validated the artifact path and produced partial capped metrics: micro precision 61.5%, micro recall 80.0%, micro F1 69.6%; diagnosis F1 50.0%, seizure-type F1 80.0%, annotated-medication F1 66.7%. This is not a performance estimate. Main failure modes were label-policy granularity, planned/previous medication scope, and evidence quote quality.
-
-### Add ExECT S0/S1 label-policy examples
-
-- Outcome: Complete. The ExECT S0/S1 single-pass field-family baseline now has v2 benchmark-facing prompt policy and examples for audited diagnosis labels, medication-scope exclusion, seizure-type surfaces, and evidence quote expectations.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`; capped run `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T155638Z`.
-- Notes: Scorer semantics are unchanged. Final v2 capped smoke on the same three validation records: micro precision 88.9%, micro recall 80.0%, micro F1 84.2%; diagnosis F1 100.0%, seizure-type F1 66.7%, annotated-medication F1 100.0%. The policy corrected medication scope and current-scorer diagnosis alignment, but EA0018 still needs seizure-type granularity handling and evidence quote support remains diagnostic-only.
-
-### Tighten ExECT seizure-type granularity and evidence policy
-
-- Outcome: Complete. The ExECT S0/S1 single-pass field-family baseline now handles fused seizure-type surfaces such as `temporal lobe onset focal seizures` against the current audited scorer view and reports explicit evidence quote/offset diagnostics before scaling.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`; capped run `runs/exect_s0_s1_smoke_gpt4_1_mini_20260518T160445Z`.
-- Notes: Scorer semantics are unchanged. The fused seizure-type handling is explicitly tagged benchmark bridge behavior (`benchmark_bridge:fused_seizure_type_split`), not a scorer-policy change. On the same capped three-record slice, v3 produced micro F1 100.0%, diagnosis F1 100.0%, seizure-type F1 100.0%, annotated-medication F1 100.0%, evidence quote support 90.0%, evidence offsets present 90.0%, and evidence offsets valid 100.0%. One EA0018 medication evidence quote remained unsupported because it used an ellipsis/non-contiguous quote.
-
-### Add ExECT ellipsis evidence quote bridge
-
-- Outcome: Complete. The ExECT S0/S1 artifact bridge now converts literal `...` evidence quotes into a single exact contiguous source quote when all fragments are found in order within a short same-paragraph span.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json --dry-run`.
-- Notes: Benchmark-facing scorer semantics are unchanged. Repaired evidence is tagged with `evidence_repair:ellipsis_contiguous_span` so future reports can separate model-supplied exact quotes from deterministic evidence bridge repairs.
-
-### Run larger capped ExECT S0/S1 field-family validation
-
-- Outcome: Complete. A 25-record GPT 4.1-mini validation-cap run exists for the ExECT S0/S1 field-family baseline using the v3 label policy plus the narrow ellipsis evidence bridge, with standard run artifacts and an inspection note in `docs/exect_s0_s1_validation_cap25_inspection.md`.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_validation_cap25_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_validation_cap25_gpt4_1_mini_20260518T172431Z`.
-- Notes: Scorer semantics are unchanged. On the capped 25-record validation slice, micro precision/recall/F1 reached 68.8%/79.5%/73.7%; diagnosis F1 60.5%; seizure-type F1 65.8%; annotated-medication F1 92.1%; evidence quote support 92.1% overall, 92.0% on exact model quotes, and 100.0% on ellipsis repairs. The inspection classified remaining issues as mostly label-policy or normalization errors, with a smaller architecture-shaped subset suggesting cross-family leakage.
-
-### Design section-aware versus monolithic ExECT ablation
-
-- Outcome: Complete. `docs/exect_section_aware_ablation_design.md` defines the first ExECT architecture ablation around the audited S0/S1 field-family contract and the existing deterministic sectioning/context-selection utilities.
-- Validation: Design reviewed against `docs/exect_gold_label_audit.md`, `docs/exect_s0_s1_baseline_design.md`, `docs/exect_s0_s1_validation_cap25_inspection.md`, `src/clinical_extraction/pipeline/sectioning.py`, and `tests/test_sectioning_context.py`.
-- Notes: The design keeps dataset, split, model, schema level, scorer mode, prompt policy, fused seizure-type bridge, and ellipsis evidence repair fixed. The experimental factor is architecture only: current monolithic single-pass extraction versus a section-aware per-family variant that merges outputs through the same artifact bridge.
-
-### Implement section-aware ExECT S0/S1 field-family module variant
-
-- Outcome: Complete. `src/clinical_extraction/programs/exect_s0_s1.py` now includes a section-aware ExECT S0/S1 program variant that uses deterministic per-family context selection for diagnosis, seizure type, and annotated medication while preserving the shared ExECT bridge and scorer contract.
-- Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py tests/test_sectioning_context.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_section_aware_cap25_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_section_aware_cap25_gpt4_1_mini_20260518T174714Z`; inspection note `docs/exect_section_aware_cap25_inspection.md`.
-- Notes: Scorer semantics, schema level, prompt version, fused seizure-type bridge, and ellipsis evidence repair were held fixed. The first section-aware cap underperformed the monolithic cap-25 baseline: micro F1 73.7% -> 65.6%, diagnosis F1 60.5% -> 44.9%, seizure-type F1 65.8% -> 59.7%, annotated-medication F1 92.1% -> 88.9%, evidence quote support 92.1% -> 75.5%. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor.
-
-### Resolve historical Gemini 3 Flash Preview model identifier
-
-- Outcome: Complete. `configs/models/gan_s0_gemini3_flash.json` uses the API-listed Gemini 3 Flash Preview model identifier, `gemini-3-flash-preview`.
-- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-run `configs/experiments/gan_s0_smoke_gemini3_flash.json`; completed smoke artifact `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`.
-- Notes: The Mac smoke attempt reached Google but failed with 404 for invalid `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`. The fixed smoke run completed but produced one invalid Gan label, so it validates provider/runtime compatibility rather than extraction quality. This historical Gemini 3 Flash Preview path is separate from the new cost-focused Flash-Lite candidate, currently planned as `gemini-3.1-flash-lite`.
-
-### Create Gan S0 semantic-optimizer experiment configs
-
-- Outcome: Complete. Capped and full-validation configs exist for `semantic_frequency_with_evidence` on the direct Gan S0 path with unchanged `gan_frequency_deterministic_v1` reporting.
-- Validation: `uv run --extra dev pytest tests/test_experiment_configs.py tests/test_gan_s0_program.py tests/test_model_comparison_configs.py`; dry-runs for `configs/experiments/gan_s0_semantic_bootstrap_cap25_gpt4_1_mini.json` and `configs/experiments/gan_s0_semantic_bootstrap_full_validation_gpt4_1_mini.json`.
-- Notes: Configs use `BootstrapFewShot` on `gan_frequency_s0_direct_single_pass` with synthesis-labeled train examples. Full validation is gated on cap-25 results.
-
-### Verify Gemini 3.1 Flash-Lite model config
-
-- Outcome: Complete. `configs/models/gan_s0_gemini31_flash_lite.json` uses API model string `gemini-3.1-flash-lite` with the existing Gemini/LiteLLM adapter (`temperature=0.0`, `timeout_seconds=60.0`, `GEMINI_API_KEY`).
-- Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-run and one-record smoke `runs/gan_s0_smoke_gemini31_flash_lite_20260519T100246Z`; smoke config `configs/experiments/gan_s0_smoke_gemini31_flash_lite.json`.
-- Notes: Live smoke confirmed the model identifier works through the OpenAI-compatible Gemini route. Schema validity and evidence support were 100% on the one-record smoke; label accuracy on the sampled record was wrong, so this validates runtime compatibility only.
-
-### Run Gan S0 semantic-optimizer cap on GPT 4.1-mini
-
-- Outcome: Complete. Cap-25 semantic bootstrap run compared `semantic_frequency_with_evidence` against verify-repair v2 and direct-path ladder anchors.
-- Validation: Run `runs/gan_s0_semantic_bootstrap_cap25_gpt4_1_mini_20260519T100255Z`; inspection `docs/gan_s0_semantic_bootstrap_cap25_inspection_20260519.md`.
-- Notes: Schema validity 96.0%, evidence support 100.0%, normalized exact 20.8%, monthly 33.3%, Purist 41.7%, Pragmatic 66.7%. Did **not** clear the monthly/Purist promotion gate versus verify-repair v2. Do not promote semantic full validation yet.
-
-### Smoke Gan S0 on Gemini 3.1 Flash-Lite
-
-- Outcome: Complete. Gemini 3.1 Flash-Lite runs the direct Gan S0 contract under the same schema, split, scorer, and artifact layout as GPT 4.1-mini.
-- Validation: `runs/gan_s0_smoke_gemini31_flash_lite_20260519T100246Z`; config `configs/experiments/gan_s0_smoke_gemini31_flash_lite.json`; documented in `docs/model_config_smoke_tests.md`.
-- Notes: One-record smoke: schema validity 100%, evidence support 100%, prediction ~1.14 s/record. Next step is a matched cap-25 quality comparison, not cost claims.
-
-### Run matched Gemini 3.1 Flash-Lite cap-25 on direct Gan S0
-
-- Outcome: Complete. Matched 25-record direct cap on `gemini-3.1-flash-lite` with unchanged schema, split, scorer, and artifact contract.
-- Validation: Config `configs/experiments/gan_s0_direct_cap25_gemini31_flash_lite.json`; run `runs/gan_s0_direct_cap25_gemini31_flash_lite_20260519T100621Z`; inspection `docs/gan_s0_gemini31_flash_lite_cap25_inspection_20260519.md`.
-- Notes: Schema validity 92.0%, normalized exact 34.8%, monthly 52.2%, Purist 56.5%, Pragmatic 73.9%, evidence support 86.4%, ~0.61 s/record. Beats verify-repair v2 on monthly/Purist but trails on evidence. Not a primary-model decision.
-
-### Test semantic optimizer with LabeledFewShot or semantic GEPA feedback
-
-- Outcome: Complete. Capped GPT 4.1-mini runs tested semantic metric with `LabeledFewShot` and `GEPA` (`semantic_frequency_with_evidence_feedback`, `max_metric_calls=16`).
-- Validation: Configs `configs/experiments/gan_s0_semantic_labeled_fewshot_cap25_gpt4_1_mini.json`, `configs/experiments/gan_s0_semantic_gepa_cap25_gpt4_1_mini.json`; runs `runs/gan_s0_semantic_labeled_fewshot_cap25_gpt4_1_mini_20260519T100621Z`, `runs/gan_s0_semantic_gepa_cap25_gpt4_1_mini_20260519T100648Z`; inspection `docs/gan_s0_semantic_optimizer_cap25_followup_20260519.md`.
-- Notes: Semantic LabeledFewShot matches synthesis LabeledFewShot exactly (metric is neutral at compile). Semantic GEPA did not reflect (budget consumed by base eval) and evidence support collapsed to 34.8%. Do not promote semantic full validation.
-
-### Run Gemini 3.1 Flash-Lite verify-repair cap-25
-
-- Outcome: Complete. Matched 25-record verify-repair v2 cap on `gemini-3.1-flash-lite` compared against Gemini direct and GPT verify-repair v2 anchors.
-- Validation: Config `configs/experiments/gan_s0_verify_repair_cap25_gemini31_flash_lite.json`; run `runs/gan_s0_verify_repair_cap25_gemini31_flash_lite_20260519T101555Z`; inspection `docs/gan_s0_gemini31_flash_lite_verify_repair_cap25_inspection_20260519.md`; `test_gan_s0_verify_repair_cap25_gemini31_flash_lite_config_records_v2_contract`.
-- Notes: Evidence support 95.0% (+8.6 pp vs Gemini direct, +3.7 pp vs GPT VR v2). Schema validity 84.0% (−8.0 pp vs direct) due to verifier cluster-stripping repairs (`gan_10434`, `gan_10618`). Monthly tied with direct; Purist −4.1 pp. Do not scale Gemini verify-repair to full validation.
-
-### Run Gemini 3.1 Flash-Lite direct full validation
-
-- Outcome: Complete. 299-record direct validation on `gemini-3.1-flash-lite` with standard run artifacts and comparison against GPT verify-repair v2 and synthesis baselines.
-- Validation: Config `configs/experiments/gan_s0_direct_full_validation_gemini31_flash_lite.json`; run `runs/gan_s0_direct_full_validation_gemini31_flash_lite_20260519T101710Z`; inspection `docs/gan_s0_gemini31_flash_lite_full_validation_inspection_20260519.md`; `test_gan_s0_direct_full_validation_gemini31_flash_lite_config_has_no_cap`.
-- Notes: Schema validity 97.3%; monthly 63.9%, Purist 71.8%, Pragmatic 81.4%, normalized exact 50.5%, evidence 84.9%, ~0.57 s/record. Competitive label metrics vs synthesis/GPT anchor but evidence trails GPT verify-repair v2 (92.7%). Gemini is a latency/cost candidate, not a quality-anchor replacement.
+Older completed cards (GEPA harness, Gemini caps, few-shot ladder, overnight Qwen ladder, ExECT smokes, runtime/token capture, etc.) are recorded in git history and `docs/research_status_recap_20260519.md` — not duplicated here.
 
 ## Blocked
 
-### Reproduce published ExECTv2 and Gan benchmark numbers
+#### Reproduce published ExECTv2 and Gan benchmark numbers
 
-- Outcome: Repo can run benchmark-aligned reproduction or comparison against the published ExECTv2 and Gan values.
-- Dependencies: Benchmark reference constants and caveats; CUI/feature-aware ExECT all-family scorer; access to or reconstruction of Gan Real(300)/Real(150) evaluation sets.
-- Parallelizable: after missing scorer/data prerequisites.
-- Owner: unassigned.
-- Validation: Benchmark-aligned comparison tests and a report that states exact metric alignment.
-- Notes: Current repo metrics are partial/diagnostic for published-benchmark purposes. Do not claim reproduction from the current synthetic Gan subset or ExECT S0/S1 field-family scorer.
+- **Blocked on:** CUI/feature-aware ExECT all-family scorer; Gan Real(300)/Real(150) access; benchmark alignment tests.
+- **Notes:** Current metrics are partial/diagnostic for published-benchmark claims.
 
-### Run Qwen-backed local model comparisons
+#### Run Qwen-backed local model comparisons (matrix)
 
-- Outcome: Qwen3.6:35b and Qwen3.5:9b runs are included in the model comparison matrix under the validated direct-extraction policy.
-- Dependencies: Regression slice promotion gate; stable direct guardrails prompt after slice iteration.
-- Parallelizable: after slice → cap-25 gate.
-- Owner: unassigned.
-- Validation: Extend `docs/gan_s0_hosted_model_comparison_matrix.md` with Qwen3.6:35b guardrails full-validation row (already present) and Qwen3.5:9b when a matched cap exists; identical split/scorer/schema caveats.
-- Notes: Environment blocker is resolved. Qwen3.6:35b is in the matrix via `runs/gan_s0_qwen35b_direct_full_validation_guardrails_20260519T102249Z`, but label metrics are not competitive with hosted anchor until slice-driven prompt work lands. Keep 35B on direct extraction only.
+- **Blocked on:** Cap-25 temporal-candidate validation; slice gate now cleared.
+- **Notes:** 35B full-validation row exists; cap-25/monthly still trails until cap-25 gate clears.
 
 ## Backlog
 
-### Add Gan abstention calibration
+#### Consolidate experiment runner and program modules
 
-- Outcome: Gan S0 reports distinguish wrong labels, invalid labels, unsupported evidence, and explicit abstentions with a clear threshold or policy.
-- Dependencies: Gan verifier/repair design or decision to keep extraction-only.
-- Parallelizable: after next Gan repair boundary.
-- Owner: unassigned.
-- Validation: Evaluation report includes abstention rate, accuracy on non-abstained predictions, evidence support on non-abstained predictions, and examples.
-- Notes: This should not inflate headline accuracy without reporting coverage.
+- **Report:** `docs/codebase_architecture_review_20260519.md`
+- **Goal:** Reduce orchestration branching and god-module coupling without changing scorer semantics or active experiment contracts.
+- **Blocked on:** Gan temporal v1.1 promotion tier signed (do not refactor during active full-validation interpretation).
+- **Phase 1 (runner):** Extract `clinical_extraction/experiments/runner.py`; add `ExperimentBackend` registry for `gan_2026` and `exect_v2`; thin `scripts/run_experiment.py` to CLI only; keep `tests/test_run_experiment_runtime.py` green.
+- **Phase 2 (programs):** Split `programs/gan_frequency_s0.py` into `programs/gan/` (signatures, modules, metrics, predict); mirror for ExECT when Gan split is stable.
+- **Phase 3 (evaluation):** Unify `evaluation/cli.py` for Gan + ExECT `PredictionSet`; extract shared prediction/evidence helpers.
+- **Phase 4 (hygiene):** Relocate `kanban.py` out of `src/clinical_extraction/`; optional `pyproject.toml` console entry points.
+- **Out of scope:** `gan_frequency_deterministic_v1`, split policy, benchmark-reproduction scorer alignment, prompt-policy content changes bundled with structural moves.
 
-### Add field-group and section-aware DSPy modules
+| Card | Outcome / dependency |
+| --- | --- |
+| Consolidate experiment runner and program modules | See detailed card above; unblocks “Experiment configs for architecture ablations” |
+| ExECT full verify-repair confirm-first probe | After diagnosis-recall v1 negative; bounded all-field verify-repair |
+| Gan abstention calibration | After verifier/repair boundary is stable |
+| Field-group / section-aware DSPy modules | New hypothesis only (ExECT section-aware failed) |
+| Experiment configs for architecture ablations | After runner registry + program module split (architecture review Phase 1–2) |
+| Review workflow on JSONL export | Independent of model path |
+| Gan ReAct temporal-tools probe | Design before agentic runs; `docs/dspy_gepa_react_best_practices_deep_dive.md` |
+| ExECT S0/S1 GEPA feedback | After Gan GEPA path justified (currently deprioritized) |
+| Gold-label ambiguity audit (DSPy-assisted) | Horizon; diagnostic flags only |
+| Schema omission / selection-rule quantification | Horizon; Gan + ExECT audits |
+| Seizure-letter complexity taxonomy | After ambiguity + schema audits |
 
-- Outcome: Reusable DSPy modules support monolithic extraction, field-group extraction, section-aware context-then-extract, and context selection as explicit program variants.
-- Dependencies: A new architecture hypothesis that justifies reopening reusable section-aware or field-group work after the current ExECT negative result.
-- Parallelizable: after ExECT baseline design, but coordinate with ExECT baseline implementation.
-- Owner: unassigned.
-- Validation: Unit tests with mocked LM outputs plus at least one capped real-model smoke run.
-- Notes: Treat program variants as first-class experiment factors, not prompt-only changes.
+## Questions (resolved)
 
-### Add experiment config files for ablations
+| Question | Decision |
+| --- | --- |
+| Gan before ExECT? | **Yes** for optimization; ExECT monolithic is comparison anchor |
+| Acceptable semantic Gan repair? | Surface-only in deterministic bridge; meaning changes → explicit verifier/repair variant |
+| First ExECT baseline breadth? | Diagnosis + seizure type + annotated medications only |
 
-- Outcome: Configs define monolithic, field-group, section-aware, context-then-extract, extract-verify-repair, and abstention variants.
-- Dependencies: Field-group/section-aware DSPy modules; Gan verifier/repair module where relevant.
-- Parallelizable: after module interfaces stabilize.
-- Owner: unassigned.
-- Validation: Config schema validation.
-- Notes: Configs must pin dataset, split, model, schema level, program variant, scorer mode, structured-output strategy, and metric caveats.
+## Long-Term Phases
 
-### Improve review workflow around exported queues
+1. **Gan S0** — temporal-candidate path → slice gate → cap-25 → full validation; keep hosted verify-repair v2 as quality ceiling.
+2. **ExECT S0/S1** — monolithic-first improvements; reopen section-aware only with new hypothesis.
+3. **Architecture comparison** — monolithic vs field-group vs section-aware vs verify-repair; ReAct only as bounded Gan temporal probe.
+4. **Model matrix** — fixed split/scorer/variant; Qwen direct-only on 35B.
+5. **ExECT breadth** — additional families after scorer audits.
+6. **Benchmark reproduction** — long-term; explicit alignment caveats.
 
-- Outcome: Low-confidence or conflicting extractions can be reviewed in a lightweight workflow that consumes the existing JSONL review export.
-- Dependencies: Review export; current or future UI choice.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: A sample review queue can be opened, reviewed, and linked back to run artifacts.
-- Notes: The moved `exect-explorer/` React app is a possible future UI foundation, but should not block the simple export workflow.
+## Dependency Notes (current)
 
-### Design Gan ReAct temporal-tools probe
+- **Single-threaded:** scorer semantics, `gan_frequency_deterministic_v1`, split policy, benchmark-reproduction claims.
+- **Active lever:** temporal-candidates v1.1 cleared slice + cap-25 gates; next is full validation.
+- **Plateau broken on slice:** v1.1 100% vs v2.4 hybrid 71.4%; cap-25 100% schema vs 88% pre-repair.
+- **Anchors:** GPT verify-repair v2 hosted; Qwen v1 guardrails full validation; best local cap-25 = v2 direct (37.5% monthly).
+- **Deprioritized:** GEPA/semantic full validation at scale; Gemini verify-repair scale-up.
+- **ExECT:** monolithic cap-25 anchor; section-aware negative result stands.
+- **Horizon:** gold-ambiguity audit, schema-omission analysis, complexity taxonomy — do not block Gan slice work.
 
-- Outcome: A narrow `gan_frequency_s0_react_temporal_tools` program design defines deterministic tools, max-iteration policy, final output contract, run artifacts, and hard-case slice selection before any agentic run.
-- Dependencies: `docs/dspy_gepa_react_best_practices_deep_dive.md`; Gan hard-case/error-analysis artifacts; current direct Gan S0 baseline.
-- Parallelizable: after Gan GEPA metric work is scoped, but should not share files with optimizer-contract changes.
-- Owner: unassigned.
-- Validation: Design note lists tools, inputs/outputs, failure modes, success criteria, and a direct-vs-ReAct comparison plan on matched hard cases.
-- Notes: Candidate tools should retrieve frequency mentions, extract temporal anchors, compute elapsed months, validate/canonicalize Gan labels, validate cluster structure, and locate exact quotes. Tools should be deterministic; avoid tools that are just extra LLM calls wearing a hat.
+## Parallelization
 
-### Add ExECT S0/S1 GEPA feedback pass
-
-- Outcome: ExECT S0/S1 has a GEPA-compatible feedback strategy for diagnosis, seizure-type, and annotated-medication predictors under the fixed audited field-family scorer.
-- Dependencies: ExECT S0/S1 monolithic baseline artifacts; `docs/exect_section_aware_cap25_inspection.md`; `docs/dspy_gepa_react_best_practices_deep_dive.md`; Gan-first GEPA sequencing.
-- Parallelizable: after the Gan GEPA feedback metric work is stable.
-- Owner: unassigned.
-- Validation: Capped ExECT run compares unoptimized monolithic baseline versus GEPA-optimized field-family instructions without widening beyond S0/S1 or changing scorer semantics.
-- Notes: GEPA should target label-policy and cross-family leakage feedback. The previous section-aware architecture underperformed, so start from the active monolithic anchor unless a new design justifies re-testing section-aware prompts.
-
-### Design DSPy-assisted gold-label ambiguity audit
-
-- Outcome: A DSPy-assisted review pipeline is designed to flag and classify likely gold-label imperfections without silently changing scorer semantics, separating probable annotation mistakes, multi-valid-reading ambiguity, schema-underfit cases, and plain model failures.
-- Dependencies: `docs/gan_2026_label_audit.md`; `docs/exect_gold_label_audit.md`; current Gan and ExECT error-analysis/report artifacts; existing review-export workflow.
-- Parallelizable: after the current Gan and ExECT anchor runs are stable.
-- Owner: unassigned.
-- Validation: Design note plus a small adjudicated pilot slice with counts by ambiguity/error class, representative examples, and a clear rule that audit outputs are diagnostic flags rather than benchmark-label rewrites.
-- Notes: This should focus first on subtle cases that are hard to see by manual scanning alone. For Gan, the 197 label/reference disagreements are difficulty signals, not automatic gold failures. For ExECT, gold gaps should be surfaced as quality flags or caveats rather than treated as clean negative evidence.
-
-### Quantify schema omissions and selection rules in Gan and ExECT
-
-- Outcome: A dataset-behavior note measures where the published schemas deliberately compress richer clinical content, including how often Gan letters contain multiple seizure events or frequency statements and how often ExECT letters contain past/planned medication, seizure-event dates, onset, or diagnosis-date information that is outside the active benchmark-facing schema.
-- Dependencies: `docs/gan_2026_label_audit.md`; `docs/exect_gold_label_audit.md`; dataset manifests/loaders; stable field-family and Gan baseline artifacts for cross-checking examples.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Analysis artifact reports counts, illustrative records, and explicit distinctions between deliberate schema omissions, unresolved annotation gaps, and cases that may imply an upper bound on benchmark-facing performance.
-- Notes: For Gan, test the hypothesis that many synthetic letters really only contain one seizure event and one frequency statement, and document what happens when they do not. For ExECT, document the practical consequences of the missing prescription temporality column and incomplete coverage for richer event/date fields before widening our own schema.
-
-### Build seizure-letter complexity taxonomy and ceiling analysis
-
-- Outcome: A complexity-classification pipeline tags letters for factors such as copy-and-paste artifacts, internal contradiction, ambiguous temporal anchoring, multiple active seizure narratives, schema mismatch, and evidence-location difficulty, then reports performance stratified by those complexity classes.
-- Dependencies: Gold-label ambiguity audit design; schema-omission audit; Gan and ExECT error-analysis surfaces; review queue export.
-- Parallelizable: after the ambiguity and schema-omission taxonomies are stable.
-- Owner: unassigned.
-- Validation: Tagged sample or full-slice report with prevalence by complexity class, spot-checked reviewer agreement, and a comparison between overall metrics and complexity-stratified metrics.
-- Notes: Use the existing inter-annotator-agreement context as a ceiling guide rather than a hard cap. The goal is to estimate achievable performance bands and identify where optimization effort should stop because the note or gold is intrinsically ambiguous.
-
-## Questions
-
-### Should Gan continue before ExECT?
-
-- Decision: Keep Gan as the active optimization frontier for GEPA feedback and direct-path Qwen cleanup, while treating the established ExECT S0/S1 monolithic baseline as the broader-schema anchor for later optimization.
-- Outcome: Resolved. ExECT baseline establishment is complete enough for comparison anchoring, but the next implementation cycle remains Gan-first.
-- Dependencies: Current Gan GEPA feedback metric card; established ExECT S0/S1 monolithic baseline artifacts.
-- Parallelizable: no, because it selects the next implementation path.
-- Owner: User; Codex.
-- Validation: This plan and the relevant implementation card reflect the decision.
-- Notes: ExECT is no longer blocked, but it is not the immediate next implementation gate. Future ExECT work should reopen only under explicit optimization hypotheses such as monolithic GEPA feedback or new architecture designs.
-
-### What counts as an acceptable semantic Gan repair?
-
-- Decision: Deterministic Gan repair may only normalize output surfaces that preserve model meaning. Any evidence-dependent or meaning-changing repair must be implemented as a separate verifier/repair program variant and reported with repair rate, abstention rate, extraction-only metrics, and post-repair metrics.
-- Outcome: Resolved. Surface normalization and semantic repair remain separate experiment surfaces.
-- Dependencies: Current deterministic repair boundary and regression coverage.
-- Parallelizable: no, because it affects scorer and repair interpretation.
-- Owner: User; Codex.
-- Validation: Fixtures and reports separate repair rates from extraction-only metrics.
-- Notes: Acceptable deterministic repairs include quote stripping, sentinel normalization, and canonical unit/range formatting. Semantic repairs such as unknown/no-reference conversion, filling missing cluster counts, choosing a temporal window, or turning an abstention into a label require an explicit verifier/repair stage.
-
-### How broad should the first ExECT baseline be?
-
-- Decision: The first ExECT baseline is a combined audited S0/S1 field-family task covering diagnosis, seizure type, and annotated medications only.
-- Outcome: Resolved. The baseline should test realistic audited schema breadth while reporting per-family metrics and overall micro-average.
-- Dependencies: Draft ExECT S0/S1 baseline design.
-- Parallelizable: no, because it defines the ExECT baseline contract.
-- Owner: User; Codex.
-- Validation: ExECT baseline design and run report state the chosen field scope.
-- Notes: Do not include seizure frequency, investigations, history, birth history, aetiology, onset, diagnosis-date, or medication temporality as benchmark-facing metrics in the first baseline. Report diagnosis, seizure-type, annotated-medication, schema-validity, evidence-support, and label-policy failure diagnostics separately.
-
-## Experiments
-
-### Gan S0 GEPA feedback optimization
-
-- Outcome: GEPA-optimized Gan S0 direct extraction is compared against the current synthesis-backed direct/BootstrapFewShot baselines under unchanged deterministic scorer semantics.
-- Dependencies: Add Gan S0 GEPA feedback metric and capped optimizer config.
-- Parallelizable: after the richer Gan feedback taxonomy is implemented.
-- Owner: unassigned.
-- Validation: Capped GPT 4.1-mini diagnostic run reports schema-valid rate, normalized-label exact, monthly/Purist/Pragmatic accuracy, invalid-label count, evidence quote support, prompt length, prediction seconds/record, GEPA selected instruction, and metric caveats.
-- Notes: The harness smoke `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` gave a starting point with schema validity `80.0%`, normalized-label accuracy `50.0%`, pragmatic accuracy `75.0%`, and evidence quote support `25.0%` on a five-record cap. The richer-feedback rerun `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z` improved schema validity to `100.0%` and evidence support to `80.0%`, but normalized-label accuracy fell to `40.0%` and pragmatic accuracy to `60.0%`, while the selected GEPA instruction became much longer. Success still means fewer canonical/temporal-window failures without evidence-support regression or prompt bloat. Local `Qwen3.6:35b` transfer is deferred to an explicitly scheduled stress-test only if this path first produces compact benchmark-contract-preserving guidance on the faster hosted path.
-
-### Gan extract-verify-repair ablation
-
-- Outcome: Comparison of extraction-only versus evidence-aware verifier/repair and abstention variants.
-- Dependencies: Gan verifier/repair module; evidence support scoring; error analysis reports.
-- Parallelizable: after verifier/repair module exists.
-- Owner: unassigned.
-- Validation: Ablation report with normalized-label accuracy, monthly/Purist/Pragmatic accuracy, evidence support, repair rate, abstention rate, and coverage.
-- Notes: Hypothesis: verifier improves evidence support and semantic precision, possibly at the cost of coverage.
-
-### Gan hard-case ReAct temporal-tools probe
-
-- Outcome: A bounded ReAct agent with deterministic temporal and label-validation tools is compared against direct Gan S0 extraction on hard temporal/window cases.
-- Dependencies: Design Gan ReAct temporal-tools probe; current direct Gan S0 baseline; hard-case slice from prior Gan error analysis.
-- Parallelizable: after the ReAct design card; do not run concurrently with local Qwen timing experiments on the same machine.
-- Owner: unassigned.
-- Validation: Report includes exact/pragmatic match, invalid-label rate, evidence support, tool-call count, max-iteration stops, latency, and bounded examples for wins/losses versus direct extraction.
-- Notes: This is a probe, not a default architecture. It should target multiple seizure events, recent seizure-free conflicts, clusters, year-to-date denominators, and multi-type frequency assignment.
-
-### ExECT S0/S1 GEPA label-policy optimization
-
-- Outcome: GEPA is tested as a prompt-instruction optimizer for the active ExECT S0/S1 field-family baseline without changing dataset, split, scorer, schema level, or benchmark-facing field scope.
-- Dependencies: Add ExECT S0/S1 GEPA feedback pass; active ExECT S0/S1 monolithic baseline artifacts; Gan-first GEPA sequencing.
-- Parallelizable: after the Gan GEPA path proves useful enough to justify ExECT follow-on work.
-- Owner: unassigned.
-- Validation: Capped validation comparison reports micro/per-family F1, evidence quote support, unsupported-label flags, diagnosis/seizure-type leakage examples, selected GEPA instructions, and metric caveats.
-- Notes: Feedback should be predictor-specific where possible: diagnosis, seizure type, and annotated medication have different policy boundaries.
-
-### Model comparison matrix
-
-- Outcome: Comparable reports for Qwen3.6:35b, Qwen3.5:9b, Gemini 3.1 Flash-Lite, GPT 5.5, and GPT 4.1-mini on fixed tasks.
-- Dependencies: Stable experiment configs; model adapters; stable Gan S0 direct-reference config under unchanged scorer semantics; Gemini 3.1 Flash-Lite smoke run.
-- Parallelizable: after config and runtime readiness, subject to rate limits.
-- Owner: unassigned.
-- Validation: Run table with identical split, scorer, schema level, program variant, and metric caveats.
-- Notes: Start with Gan S0 because it is already instrumented, then repeat on ExECT S0/S1 after that baseline stabilizes. Treat Gemini 3.1 Flash-Lite as the candidate primary hosted model only after matched cap/full-validation quality, schema validity, evidence support, latency, and actual billing/cost observations are recorded against GPT 4.1-mini.
-
-### Qwen3.5:9b DSPy component latency ablation
-
-- Outcome: Complete. `docs/qwen_local_latency_experiment_20260518.md` quantifies whether Qwen3.5:9b can complete direct extraction, `ChainOfThought`, direct `BootstrapFewShot`, and `ChainOfThought + BootstrapFewShot` on a three-record Gan S0 cap.
-- Dependencies: Build Qwen3.5:9b Gan S0 latency ablation configs; completed Qwen3.5:9b hardware smoke.
-- Parallelizable: no on the Windows laptop, because local GPU/RAM measurements should be isolated from competing model workloads.
-- Owner: unassigned.
-- Validation: Direct run `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z`; ChainOfThought run `runs/gan_s0_latency_qwen9b_cot_cap3_20260518T201247Z`; direct BootstrapFewShot run `runs/gan_s0_latency_qwen9b_direct_bootstrap_cap3_20260518T201540Z`; failed ChainOfThought plus BootstrapFewShot attempt `runs/gan_s0_latency_qwen9b_cot_bootstrap_cap3_20260518T201609Z`.
-- Notes: Direct extraction worked at 3.91 prediction seconds/record. ChainOfThought worked but was about 13.7x slower and less schema-stable. Direct plus tiny BootstrapFewShot worked with modest overhead. ChainOfThought plus BootstrapFewShot did not complete prediction under `max_tokens=1536`.
-
-### Qwen3.6:35b direct-extraction pace experiment
-
-- Outcome: Complete. Qwen3.6:35b completed a direct-only one-record smoke and a direct-only three-record Gan S0 cap without `ChainOfThought` or `BootstrapFewShot`.
-- Dependencies: Build Qwen3.6:35b direct-extraction pace gate; completed Qwen3.6:35b hardware smoke.
-- Parallelizable: no on the Windows laptop, because this specifically measures partially offloaded local-model runtime.
-- Owner: unassigned.
-- Validation: Smoke `runs/gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z`; cap `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z`; synthesis note `docs/qwen_local_latency_experiment_20260518.md`.
-- Notes: The one-record smoke took 35.83 prediction seconds/record; the warm three-record cap took 8.83 prediction seconds/record. Manual `ollama ps` after the run reported Qwen3.6:35b at 74% CPU / 26% GPU residency, so direct 35B caps are feasible but should be paced jobs, not default interactive loops.
-
-### Run overnight local-Qwen Gan S0 validation ladder
-
-- Outcome: Complete. The overnight queue produced 35B direct scale-ladder runs, a 35B max-budget comparison, a tiny 35B CoT stress run, and 9B comparison/stress runs on the fixed Gan validation split.
-- Dependencies: Qwen local Gan S0 latency and pace experiments; max-budget Qwen configs; overnight queue launcher.
-- Parallelizable: no on the Windows laptop, because the queue was explicitly serialized to measure paced local-model behavior.
-- Owner: unassigned.
-- Validation: Completed artifacts `runs/gan_s0_overnight_qwen35b_direct_cap25_20260518T222114Z`, `runs/gan_s0_overnight_qwen35b_direct_cap100_20260518T222527Z`, `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z`, `runs/gan_s0_overnight_qwen35b_direct_maxbudget_cap25_20260518T230954Z`, `runs/gan_s0_overnight_qwen35b_cot_maxbudget_cap3_20260518T231512Z`, `runs/gan_s0_overnight_qwen9b_direct_maxbudget_cap25_20260518T231950Z`, and `runs/gan_s0_overnight_qwen9b_direct_bootstrap_maxbudget_cap10_20260518T232628Z`.
-- Notes: The strongest local-Qwen run was the 35B direct full validation artifact on 299 records with monthly/Purist/Pragmatic accuracy `55.6%`/`61.7%`/`69.2%`, schema validity `89.0%`, and evidence support `94.0%`. The 35B max-budget cap underperformed the standard direct cap, and the tiny 35B CoT stress run was much slower without showing quality benefit.
-
-### Decide default `max_tokens` policy for Qwen3.6:35b direct
-
-- Outcome: Complete. A full-validation rerun tested whether increasing the default direct `Qwen3.6:35b` completion cap from `256` to `1024` improved Gan S0 results.
-- Dependencies: Overnight 35B direct full-validation artifact; full-validation rerun with updated model config.
-- Parallelizable: no, because it changes the default local 35B direct runtime contract.
-- Owner: unassigned.
-- Validation: Comparison recorded in `docs/qwen_local_latency_experiment_20260518.md` between `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z` and `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260519T035636Z`.
-- Notes: Raising the cap to `1024` left benchmark-facing metrics, schema validity, normalized-label exact, and invalid counts unchanged, slightly reduced evidence support, and slowed prediction from `6.55` to `9.99` seconds/record. One long-evidence case changed from mid-span truncation to prompt-footer leakage. The next safe step is a targeted evidence-length or prompt-scope fix, not a blanket larger completion budget.
-
-## Long-Term Plan
-
-### Phase 1: Optimize Gan S0 As The Active Reference Task
-
-- Finish the richer Gan S0 GEPA feedback metric and compare the optimized direct path against the current synthesis-backed baseline under unchanged scorer semantics.
-- Tighten local-Qwen direct-output canonicalization and evidence-length guardrails without turning deterministic postprocessing into semantic repair.
-- Decide whether a verifier/repair or abstention-calibration variant is justified after the current extraction-only direct path is better characterized.
-- Keep local `Qwen3.6:35b` on the validated direct path by default; limit GEPA-transfer follow-up to explicitly scheduled stress tests with prompt-length and runtime reporting.
-- Keep Gan as the fast, focused task for provider smoke tests, GEPA experiments, ReAct temporal-tool probes, and evidence-support diagnostics.
-
-### Phase 2: Optimize The Established ExECT S0/S1 Monolithic Anchor
-
-- Preserve the active audited ExECT S0/S1 monolithic baseline around diagnosis, seizure type, and annotated medications as the comparison anchor.
-- Use monolithic-first GEPA or other bounded prompt-policy improvements before reopening section-aware ExECT work.
-- Reopen section-aware or other ExECT architecture variants only under a new explicit hypothesis that explains why the prior negative result should change.
-- Use capped provider-backed comparisons and error analysis to decide whether ExECT needs verifier/repair or broader field coverage before moving wider.
-
-### Phase 3: Compare Program Architectures
-
-- Implement and compare monolithic extraction, field-group extraction, section-aware context-then-extract, and extract-verify-repair variants.
-- Treat ReAct as a targeted architecture only when deterministic tools can answer a specific hard subproblem, starting with Gan temporal reasoning rather than broad full-schema extraction.
-- Treat each architecture as a first-class program variant with its own config, metadata, prompt/config snapshot, and metric caveats.
-- Evaluate not only accuracy, but also schema validity, evidence support, abstention behavior, repair rate, temporality failures, negation failures, and field-family-specific errors.
-
-### Phase 4: Compare Models Under Fixed Conditions
-
-- Run GPT 4.1-mini, GPT 5.5, Gemini 3.1 Flash-Lite, Qwen3.6:35b, and Qwen3.5:9b on the same split, schema level, program variant, scorer mode, and structured-output strategy where possible.
-- Verify any Gemini model string against official Google/API-facing documentation before running; the current Flash-Lite target is `gemini-3.1-flash-lite`.
-- Before broad local-Qwen comparisons, complete the Qwen3.5:9b DSPy component latency ablation and the Qwen3.6:35b direct-extraction pace experiment.
-- Use Qwen3.5:9b to test whether `ChainOfThought`, `BootstrapFewShot`, or their combination is locally feasible; do not transfer that policy to Qwen3.6:35b unless the 35B direct pace gate is already acceptable and the heavier run is explicitly justified.
-- When comparing few-shot optimizers, start with `LabeledFewShot`, then `BootstrapFewShot`, then `BootstrapFewShotWithRandomSearch` / `BootstrapRS` before escalating to GEPA or broader agentic optimization.
-- Use hosted/faster models for optimizer search when possible, then test whether the resulting compact guidance transfers to local Qwen direct extraction.
-- Report provider-specific caveats such as constrained JSON support, local runtime availability, rate limits, and token/context constraints.
-- Avoid cross-model claims when model runs used different scorer semantics or materially different prompts/configs.
-
-### Phase 5: Move Toward Benchmark-Relevant ExECT Breadth
-
-- Audit and load additional ExECT source families before making them benchmark-facing: investigation, history, birth history, aetiology, onset, and diagnosis-date fields.
-- Add CUI/feature-aware scoring only after the relevant gold-label source quirks are documented and tested.
-- Keep partial S0/S1 metrics clearly labeled as partial until all benchmark-aligned prerequisites exist.
-
-### Phase 6: Revisit Published Benchmark Reproduction
-
-- Use the benchmark reference constants and caveats as guardrails, not as proof of reproduction.
-- Reproduction requires CUI/feature-aware ExECT all-family scoring and access to or reconstruction of Gan Real(300)/Real(150) evaluation sets.
-- Any benchmark comparison report must state whether each metric is aligned, partial, diagnostic, or not comparable.
-
-## Dependency Notes
-
-- Shared contracts should stay single-threaded: scorer semantics, schema contracts, run metadata, split generation policy, and benchmark-alignment language affect every later card.
-- Gan GEPA feedback work should precede the ReAct temporal-tools probe because it is narrower, cheaper, and directly targets currently observed Gan direct-output failures.
-- ExECT implementation has opened the S0/S1 field-family path; the section-aware ablation is complete and underperformed the monolithic anchor, so future ExECT optimization should start from the monolithic baseline unless a new architecture design changes the hypothesis.
-- Model smoke tests are unblocked for closed providers with credentials in `.env`; local Qwen runs now require Ollama's native LiteLLM `ollama_chat/` route with `think=false`, not the OpenAI-compatible `/v1` route.
-- The direct Gan S0 variant and runtime metadata fields are implemented, so Qwen can now join model comparisons only under latency-gated direct-extraction configs.
-- Qwen3.5:9b can run direct extraction and tiny direct BootstrapFewShot, but unconstrained ChainOfThought is very slow and `ChainOfThought + BootstrapFewShot` did not complete under `max_tokens=1536`.
-- Because plain `BootstrapFewShot` was not enough to justify a local-Qwen policy shift, the next few-shot comparison should explicitly include `LabeledFewShot` as the simple baseline and `BootstrapFewShotWithRandomSearch` / `BootstrapRS` as the larger-data search baseline.
-- Qwen3.6:35b can run direct extraction on a tiny cap, but because it was observed at 74% CPU / 26% GPU residency, avoid reasoning and optimizer-expanded prompts except for explicitly scheduled overnight experiments.
-- The overnight Gan queue promoted Qwen3.6:35b direct extraction from a tiny-cap pace gate to a full fixed-validation reference run. The current local 35B bottleneck is canonical Gan label control and evidence-span behavior, not broad output-budget starvation.
-- Max-budget follow-up corrected the Qwen policy: both local Qwen models report 262144 context, and Qwen recommends max_tokens=81920 for complex benchmarks. New max-budget configs set `max_tokens=81920`, `num_ctx=262144`, and `think=false`. Qwen3.5:9b `ChainOfThought + BootstrapFewShot` then completed but remained very slow at 388.58 prediction seconds/record with 66.7% schema validity on a 3-record cap. Qwen3.6:35b completed direct and ChainOfThought one-record full-context smokes at 35.30s and 96.29s respectively, with Ollama reporting 79% CPU / 21% GPU residency.
-- A direct full-validation rerun with `Qwen3.6:35b` `max_tokens=1024` did not improve monthly/Purist/Pragmatic accuracy or schema validity over the `max_tokens=256` baseline and was materially slower, so the plan should not treat larger default completion caps as a quality lever by themselves.
-- ReAct/tool-use is not a default extraction path. It depends on a bounded design with deterministic tools, a hard-case slice, and explicit latency/tool-call metrics.
-- Hosted-model comparison is recorded in `docs/gan_s0_hosted_model_comparison_matrix.md`. Gemini 3.1 Flash-Lite is a cost/latency candidate, not a quality-anchor replacement (evidence 84.9% vs GPT verify-repair 92.7% on full validation).
-- Semantic bootstrap / semantic GEPA caps underperformed verify-repair v2; do not scale to full validation.
-- The active local-model question is whether v2.2 (examples, verify-repair, or tighter infrequent-rate policy) can fix cap-25 over-`unknown` while keeping v2 schema/monthly gains; full validation remains blocked at 36–38% cap-25 monthly vs 55.9% baseline.
-- Regression slice infrastructure: `record_ids` on `ExperimentConfig`, fixture `gan_s0_qwen_error_regression_v1`, analyzer `analysis_scope=record_ids_filter`.
-- The new gold-quality and schema-coverage audit cards are intentionally horizon work. They should inform future ceiling analysis, schema widening, and benchmark-interpretation caveats, but they should not block the current Gan-first optimization sequence.
-- Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
-
-## Parallelization Opportunities
-
-- Safe now in parallel: **Gan stratified operational reporting** (analyzer tiers are in place) while **Qwen prompt iteration** is single-threaded on `gan_frequency_s0.py`.
-- Safe after slice promotion: Qwen cap-25 guardrails rerun (`configs/experiments/gan_s0_qwen35b_direct_cap25_guardrails_validation.json`), then full validation only if cap-25 improves monthly/Purist without invalid-cluster regression.
-- Safe as hosted sidecar (lower priority than Qwen slice): Gemini quote-policy / artifact-bridge for evidence gap — not Gemini verify-repair scale-up.
-- Safe as horizon research: gold-ambiguity audit, schema-omission audit, ReAct design — do not pull ahead of Qwen slice gate.
-- Keep single-threaded: scorer semantics, schema contracts, split policy, benchmark-reproduction claims, and any change to `gan_frequency_deterministic_v1`.
+- **Now:** Gan temporal v1.1 full validation in Review (`…183614Z`; Qwen sequential).
+- **ExECT anchor (done):** full validation `docs/exect_s0_s1_validation_full_inspection.md` (67.8% micro F1); cap-25 73.7% was optimistic; section-aware deprioritized.
+- **Defer until Gan tier signed:** B1/B2, hosted Gan port, ReAct, GEPA.
+- **Single-threaded:** scorer semantics, `gan_frequency_deterministic_v1`, split policy, benchmark-reproduction claims.
 
 ## Recommended Next Pull
 
-1. **Iterate v2.2** for infrequent quantified rates — extend regression slice with `gan_13123`/`gan_14485`/`gan_14881`/`gan_15306` or use few-shot/verify-repair if text-only fails again.
-2. Fix slice regressions: `gan_11733` no-content abstention, `gan_12130` `multiple` vs `1 per week`.
-3. **Hold full validation** until cap-25 monthly ≥40% with schema ≥90% and stable evidence.
-4. Optional parallel: **stratified operational reporting**.
-5. Anchors unchanged: GPT verify-repair v2 hosted quality; v1 full-validation local baseline (`55.9%` monthly).
+1. Monitor full-validation run (`gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails`); on completion, run analyzer and compare to anchors.
+2. Compare full-validation monthly/Purist/evidence to Qwen direct guardrails anchor (`…102249Z`) and hosted GPT verify-repair v2 (`…084732Z`).
+3. Do not reopen text-only prompt iteration unless tied to candidate selection policy.
+4. Keep anchors unchanged for cross-run claims (GPT verify-repair v2; Qwen full-validation v1; v2 direct cap-25).

@@ -1,8 +1,8 @@
-# Gan S0 Error Analysis: gan_s0_qwen35b_direct_regression_slice_guardrails
+# Gan S0 Error Analysis: gan_s0_qwen35b_labeled_fewshot_verify_repair_regression_slice_guardrails
 
 ## Run
 
-- Artifact directory: `runs\gan_s0_qwen35b_direct_regression_slice_guardrails_20260519T151933Z`
+- Artifact directory: `runs\gan_s0_qwen35b_labeled_fewshot_verify_repair_regression_slice_guardrails_20260519T171413Z`
 - Split: `gan_2026_fixed_v1:validation`
 - Analysis scope: `record_ids_filter`
 - Records in split: 299
@@ -33,9 +33,9 @@ Benchmark-facing metrics are monthly frequency, Purist category, and Pragmatic c
 | row_ok=true | 12 | 12 | 25.0% | 75.0% |
 | row_ok=false | 2 | 2 | 50.0% | 50.0% |
 | gold_pragmatic=frequent | 6 | 6 | 0.0% | 100.0% |
-| gold_pragmatic=infrequent | 4 | 4 | 100.0% | 0.0% |
+| gold_pragmatic=infrequent | 4 | 4 | 75.0% | 25.0% |
 | gold_pragmatic=no_seizure_information | 1 | 1 | 0.0% | 100.0% |
-| gold_pragmatic=unknown | 3 | 3 | 0.0% | 100.0% |
+| gold_pragmatic=unknown | 3 | 3 | 33.3% | 66.7% |
 
 ## Do the four metrics move together?
 
@@ -75,13 +75,17 @@ Benchmark-severe classes should drive prompt or verifier work. Diagnostic-only c
 
 | Failure class | Count |
 | --- | ---: |
-| other_semantic_mismatch | 4 |
+| other_semantic_mismatch | 2 |
+| missed_frequency_reference | 1 |
+| unknown_vs_seizure_free | 1 |
 
 ### Scored misses (normalized label wrong)
 
 | Failure class | Count |
 | --- | ---: |
-| other_semantic_mismatch | 4 |
+| other_semantic_mismatch | 2 |
+| unknown_vs_seizure_free | 1 |
+| missed_frequency_reference | 1 |
 
 ### Invalid / abstained / missing
 
@@ -94,31 +98,39 @@ Benchmark-severe classes should drive prompt or verifier work. Diagnostic-only c
 
 | Failure class | Count |
 | --- | ---: |
-| other_semantic_mismatch | 4 |
+| other_semantic_mismatch | 2 |
+| missed_frequency_reference | 1 |
+| unknown_vs_seizure_free | 1 |
 
 #### Misses against **monthly**
 
 | Failure class | Count |
 | --- | ---: |
-| other_semantic_mismatch | 4 |
+| other_semantic_mismatch | 2 |
+| missed_frequency_reference | 1 |
+| unknown_vs_seizure_free | 1 |
 
 #### Misses against **purist**
 
 | Failure class | Count |
 | --- | ---: |
-| other_semantic_mismatch | 4 |
+| other_semantic_mismatch | 2 |
+| missed_frequency_reference | 1 |
+| unknown_vs_seizure_free | 1 |
 
 #### Misses against **pragmatic**
 
 | Failure class | Count |
 | --- | ---: |
-| other_semantic_mismatch | 4 |
+| other_semantic_mismatch | 2 |
+| missed_frequency_reference | 1 |
+| unknown_vs_seizure_free | 1 |
 
 ## Interpretation
 
 The four metrics form a strict hierarchy on valid predictions: normalized exact ⊂ monthly ⊂ Purist ⊂ Pragmatic. They do **not** always improve together in the sense that fixing one layer can leave coarser layers unchanged, but finer success never appears without coarser success.
 
-The leading benchmark-severe failure class on this run is `other_semantic_mismatch` (4 scored misses). These are the first prompt or verifier targets; lower-tier metric wins should not hide them.
+The leading benchmark-severe failure class on this run is `other_semantic_mismatch` (2 scored misses). These are the first prompt or verifier targets; lower-tier metric wins should not hide them.
 
 Cluster-format errors account for 0 scored misses, split between incomplete cluster labels (invalid), cluster structure swaps, and cluster collapsed to simple rates.
 
@@ -136,7 +148,7 @@ Full per-record rows are in the companion `records.jsonl` in the run `analysis/`
 | --- | --- | :---: | :---: | :---: | :---: | --- | --- | --- |
 | gan_10509 | scored | Y | Y | Y | Y | all_metrics_match | unknown | unknown |
 | gan_10751 | scored | Y | Y | Y | Y | all_metrics_match | unknown | unknown |
-| gan_11221 | scored | Y | Y | Y | Y | all_metrics_match | unknown | unknown |
+| gan_11221 | scored | N | N | N | N | unknown_vs_seizure_free | unknown | seizure free for 4 month |
 | gan_11733 | scored | Y | Y | Y | Y | all_metrics_match | no seizure frequency reference | no seizure frequency reference |
 | gan_12130 | scored | Y | Y | Y | Y | all_metrics_match | multiple per week | multiple per week |
 | gan_12810 | scored | Y | Y | Y | Y | all_metrics_match | 5 per 2 month | 5 per 2 month |
@@ -145,6 +157,6 @@ Full per-record rows are in the companion `records.jsonl` in the run `analysis/`
 | gan_10052 | scored | Y | Y | Y | Y | all_metrics_match | 4 cluster per 3 month, multiple per cluster | 4 cluster per 3 month, multiple per cluster |
 | gan_10410 | scored | Y | Y | Y | Y | all_metrics_match | 1 cluster per week, 3 to 4 per cluster | 1 cluster per week, 3 to 4 per cluster |
 | gan_13123 | scored | N | N | N | N | other_semantic_mismatch | 1 per year | unknown |
-| gan_14485 | scored | N | N | N | N | other_semantic_mismatch | 2 per 3 month | unknown |
-| gan_14881 | scored | N | N | N | N | other_semantic_mismatch | 1 per month | unknown |
-| gan_15306 | scored | N | N | N | N | other_semantic_mismatch | 2 to 3 per 15 month | unknown |
+| gan_14485 | scored | N | N | N | N | other_semantic_mismatch | 2 per 3 month | seizure free for 1 month |
+| gan_14881 | scored | N | N | N | N | missed_frequency_reference | 1 per month | no seizure frequency reference |
+| gan_15306 | scored | Y | Y | Y | Y | all_metrics_match | 2 to 3 per 15 month | 2 to 3 per 15 month |

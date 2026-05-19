@@ -8,7 +8,7 @@
   },
   "dataset": "exect_v2",
   "experiment_id": "exect_s0_s1_validation_cap25_gpt4_1_mini",
-  "hypothesis": "A 25-record ExECT S0/S1 diagnostic validation cap tests whether the v3 label-policy baseline plus the narrow ellipsis evidence bridge stays stable beyond the three-record smoke without changing scorer semantics.",
+  "hypothesis": "A 25-record ExECT S0/S1 diagnostic validation cap tests whether the v4.2 label-policy baseline (granular seizure coarsening, medication guardrails) generalizes beyond the regression slice without changing scorer semantics.",
   "max_records": 25,
   "metric_caveats": [
     "This diagnostic validation cap is a gating check for ExECT S0/S1 architecture work; it is not a performance estimate.",
@@ -20,7 +20,7 @@
   "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
   "output_root": "runs",
   "program_variant": "exect_s0_s1_field_family_single_pass",
-  "prompt_version": "exect_s0_s1_field_family_v3_seizure_evidence_policy",
+  "prompt_version": "exect_s0_s1_field_family_v4_2_label_policy",
   "report_on_test_split": false,
   "schema_level": "exect_s0_s1_field_family",
   "scorer_mode": "exect_field_family_deterministic_v1",

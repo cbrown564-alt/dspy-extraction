@@ -18,6 +18,8 @@ from clinical_extraction.evaluation.gan_failure_taxonomy import (
 )
 from clinical_extraction.evaluation.gan_run_analysis import (
     analysis_record_ids,
+    build_gan_stratified_reporting,
+    build_temporal_candidate_diagnostics,
     load_split_ids,
 )
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
@@ -47,6 +49,7 @@ def analyze_run(
     run_dir: Path,
     split_file: Path,
     split_name: str,
+    record_ids_override: list[str] | None = None,
 ) -> dict[str, Any]:
     prediction_set = PredictionSet.model_validate_json(
         (run_dir / "predictions.json").read_text(encoding="utf-8")
@@ -61,6 +64,7 @@ def analyze_run(
         split_file=split_file,
         split_name=split_name,
         predictions_by_id=predictions_by_id,
+        record_ids_override=record_ids_override,
     )
 
     rows: list[dict[str, Any]] = []
@@ -339,6 +343,11 @@ def analyze_run(
         "boundary_case_counts": {
             key: len(value) for key, value in boundary_cases.items()
         },
+        "stratified_reporting": build_gan_stratified_reporting(rows),
+        "temporal_candidate_diagnostics": build_temporal_candidate_diagnostics(
+            record_ids=analysis_record_ids_list,
+            gold_by_id=gold_by_id,
+        ),
     }
 
     return {
@@ -388,6 +397,73 @@ def _render_markdown(analysis: dict[str, Any], experiment_id: str) -> str:
         "Benchmark-facing metrics are monthly frequency, Purist category, and Pragmatic category. "
         "Normalized-label exact is diagnostic format fidelity."
     )
+    lines.append("")
+    lines.append("## Stratified operational reporting")
+    lines.append("")
+    stratified = summary.get("stratified_reporting", {})
+    overall = stratified.get("overall", {})
+    lines.append(
+        f"- All-record denominator: {overall.get('all_records', 0)} "
+        f"(valid scored: {overall.get('valid_scored', 0)}; "
+        f"invalid/missing: {overall.get('invalid_or_missing', 0)})"
+    )
+    op_rate = overall.get("operational_failure_rate")
+    if op_rate is not None:
+        lines.append(
+            f"- Overall operational failure rate: {op_rate:.1%} "
+            f"({overall.get('operational_failures', 0)} failures)"
+        )
+    lines.append("")
+    lines.append("| Stratum | All records | Valid scored | Operational failure rate | Monthly (valid only) |")
+    lines.append("| --- | ---: | ---: | ---: | ---: |")
+    for stratum_name, payload in (
+        ("hard_case=true", stratified.get("hard_case", {}).get("true", {})),
+        ("hard_case=false", stratified.get("hard_case", {}).get("false", {})),
+        ("row_ok=true", stratified.get("row_ok", {}).get("true", {})),
+        ("row_ok=false", stratified.get("row_ok", {}).get("false", {})),
+    ):
+        monthly = payload.get("accuracies_valid_only", {}).get("monthly_frequency")
+        monthly_text = f"{monthly:.1%}" if monthly is not None else "n/a"
+        stratum_op = payload.get("operational_failure_rate")
+        stratum_op_text = f"{stratum_op:.1%}" if stratum_op is not None else "n/a"
+        lines.append(
+            f"| {stratum_name} | {payload.get('all_records', 0)} | "
+            f"{payload.get('valid_scored', 0)} | {stratum_op_text} | {monthly_text} |"
+        )
+    for category, payload in stratified.get("gold_pragmatic_category", {}).items():
+        monthly = payload.get("accuracies_valid_only", {}).get("monthly_frequency")
+        monthly_text = f"{monthly:.1%}" if monthly is not None else "n/a"
+        stratum_op = payload.get("operational_failure_rate")
+        stratum_op_text = f"{stratum_op:.1%}" if stratum_op is not None else "n/a"
+        lines.append(
+            f"| gold_pragmatic={category} | {payload.get('all_records', 0)} | "
+            f"{payload.get('valid_scored', 0)} | {stratum_op_text} | {monthly_text} |"
+        )
+    temporal = summary.get("temporal_candidate_diagnostics", {})
+    if temporal:
+        lines.append("")
+        lines.append("## Temporal candidate diagnostics (deterministic scaffold)")
+        lines.append("")
+        lines.append(
+            "These candidates are extracted without model calls and do not change "
+            "benchmark-facing scoring."
+        )
+        covered = temporal.get("gold_covered_count", 0)
+        total_diag = len(temporal.get("records", []))
+        rate = temporal.get("gold_covered_rate")
+        rate_text = f"{rate:.1%}" if rate is not None else "n/a"
+        lines.append(
+            f"- Gold label present in candidate set: {covered}/{total_diag} ({rate_text})"
+        )
+        lines.append("")
+        lines.append("| Record | Gold | Candidates | Gold in candidates |")
+        lines.append("| --- | --- | --- | --- |")
+        for row in temporal.get("records", []):
+            candidates = ", ".join(f"`{label}`" for label in row["candidate_labels"]) or "—"
+            lines.append(
+                f"| `{row['record_id']}` | `{row['gold_label']}` | {candidates} | "
+                f"{'yes' if row['gold_in_candidates'] else 'no'} |"
+            )
     lines.append("")
     lines.append("## Do the four metrics move together?")
     lines.append("")
@@ -622,12 +698,35 @@ def main() -> None:
         default=None,
         help="Optional markdown output path",
     )
+    record_ids_group = parser.add_mutually_exclusive_group()
+    record_ids_group.add_argument(
+        "--record-ids",
+        nargs="+",
+        help="Analyze only these record IDs (must be in the split).",
+    )
+    record_ids_group.add_argument(
+        "--record-ids-file",
+        type=Path,
+        help=(
+            "JSON file listing record IDs (record_ids array or records with "
+            "record_id fields, e.g. data/fixtures/gan_s0_qwen_error_regression_slice.json)."
+        ),
+    )
     args = parser.parse_args()
+
+    record_ids_override: list[str] | None = None
+    if args.record_ids is not None:
+        record_ids_override = list(args.record_ids)
+    elif args.record_ids_file is not None:
+        from clinical_extraction.evaluation.gan_run_analysis import load_record_ids_filter
+
+        record_ids_override = load_record_ids_filter(args.record_ids_file)
 
     analysis = analyze_run(
         run_dir=args.run_dir,
         split_file=args.split_file,
         split_name=args.split_name,
+        record_ids_override=record_ids_override,
     )
     output_dir = args.output_dir or (args.run_dir / "analysis")
     output_dir.mkdir(parents=True, exist_ok=True)

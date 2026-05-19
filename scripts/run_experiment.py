@@ -26,23 +26,25 @@ from clinical_extraction.evaluation.cli import evaluate_gan_predictions
 from clinical_extraction.experiments.config import load_experiment_config
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
     EXECT_S0_S1_POLICY_EXAMPLES,
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
-    ExectS0S1FieldFamilyModule,
-    ExectS0S1SectionAwareFieldFamilyModule,
+    build_exect_s0_s1_module,
     exect_s0_s1_run_metadata,
     predict_exect_records,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    GanFrequencyS0TemporalCandidatesVerifyRepairModule,
     GanFrequencyS0VerifyRepairModule,
     build_gan_s0_module,
     compile_gan_s0_module_gepa,
@@ -279,9 +281,7 @@ def _build_module(dataset: str, program_variant: str) -> dspy.Module:
     if dataset == "gan_2026":
         return build_gan_s0_module(program_variant)
     if dataset == "exect_v2":
-        if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
-            return ExectS0S1SectionAwareFieldFamilyModule()
-        return ExectS0S1FieldFamilyModule()
+        return build_exect_s0_s1_module(program_variant)
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
 
@@ -334,6 +334,11 @@ def _prompts_data(
         elif program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
             module_name = "GanFrequencyS0VerifyRepairModule"
             predictor_name = "dspy.Predict + dspy.Predict"
+        elif program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
+            module_name = "GanFrequencyS0TemporalCandidatesVerifyRepairModule"
+            predictor_name = (
+                "dspy.Predict + deterministic temporal candidates + dspy.Predict"
+            )
         return {
             "signature": "GanFrequencyS0Signature",
             "module": module_name,
@@ -344,18 +349,31 @@ def _prompts_data(
             "structured_output_strategy": structured_output_strategy,
         }
     if dataset == "exect_v2":
+        if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT:
+            module_name = "ExectS0S1DiagnosisRecallProbeModule"
+            predictor_name = "dspy.ChainOfThought + dspy.Predict"
+        elif program_variant == EXECT_S0_S1_VARIANT:
+            module_name = "ExectS0S1FieldFamilyModule"
+            predictor_name = "dspy.ChainOfThought"
+        else:
+            module_name = "ExectS0S1SectionAwareFieldFamilyModule"
+            predictor_name = (
+                "dspy.ChainOfThought (diagnosis) + dspy.ChainOfThought (seizure) + "
+                "dspy.ChainOfThought (medication)"
+            )
         return {
             "signature": (
-                "ExectS0S1FieldFamilySignature"
-                if program_variant == EXECT_S0_S1_VARIANT
-                else "ExectS0S1DiagnosisSignature + "
-                "ExectS0S1SeizureTypeSignature + ExectS0S1MedicationSignature"
+                "ExectS0S1FieldFamilySignature + ExectS0S1DiagnosisRecallSignature"
+                if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT
+                else (
+                    "ExectS0S1FieldFamilySignature"
+                    if program_variant == EXECT_S0_S1_VARIANT
+                    else "ExectS0S1DiagnosisSignature + "
+                    "ExectS0S1SeizureTypeSignature + ExectS0S1MedicationSignature"
+                )
             ),
-            "module": (
-                "ExectS0S1FieldFamilyModule"
-                if program_variant == EXECT_S0_S1_VARIANT
-                else "ExectS0S1SectionAwareFieldFamilyModule"
-            ),
+            "module": module_name,
+            "predictor": predictor_name,
             "program_variant": program_variant,
             "prompt_version": prompt_version or EXECT_S0_S1_PROMPT_VERSION,
             "field_families": EXECT_S0_S1_FIELD_FAMILIES,
