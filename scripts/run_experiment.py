@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from time import perf_counter
@@ -219,6 +221,13 @@ def main(argv: list[str] | None = None) -> int:
     evaluation_started = perf_counter()
     report = _evaluate_predictions(prediction_set)
     evaluation_duration_seconds = perf_counter() - evaluation_started
+    token_usage = _collect_lm_token_usage(
+        [candidate for candidate in [lm, reflection_lm] if candidate is not None]
+    )
+    model_residency = _capture_local_model_residency(
+        model_config.provider,
+        model_config.model,
+    )
     report["runtime"] = _runtime_report(
         records=len(records),
         optimizer=config.optimizer.model_dump() if config.optimizer else None,
@@ -226,6 +235,8 @@ def main(argv: list[str] | None = None) -> int:
         prediction_duration_seconds=prediction_duration_seconds,
         evaluation_duration_seconds=evaluation_duration_seconds,
         total_duration_seconds=perf_counter() - run_started,
+        token_usage=token_usage,
+        model_residency=model_residency,
     )
     paths["metrics"].write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n",
@@ -492,6 +503,8 @@ def _runtime_report(
     prediction_duration_seconds: float,
     evaluation_duration_seconds: float,
     total_duration_seconds: float,
+    token_usage: dict[str, int] | None,
+    model_residency: str,
 ) -> dict[str, Any]:
     prediction_seconds_per_record = (
         prediction_duration_seconds / records if records else None
@@ -508,8 +521,96 @@ def _runtime_report(
         "prediction_seconds_per_record": prediction_seconds_per_record,
         "evaluation_duration_seconds": evaluation_duration_seconds,
         "total_duration_seconds": total_duration_seconds,
-        "model_residency": "not_recorded",
+        "token_usage": token_usage,
+        "model_residency": model_residency,
     }
+
+
+def _collect_lm_token_usage(lms: list[dspy.LM]) -> dict[str, int] | None:
+    prompt_tokens = 0
+    completion_tokens = 0
+    total_tokens = 0
+    history_entries = 0
+    saw_usage = False
+
+    for lm in lms:
+        for entry in getattr(lm, "history", []):
+            usage = entry.get("usage") if isinstance(entry, dict) else None
+            if not isinstance(usage, dict) or not usage:
+                continue
+            saw_usage = True
+            history_entries += 1
+            prompt_value = _usage_int(usage, "prompt_tokens", "input_tokens")
+            completion_value = _usage_int(usage, "completion_tokens", "output_tokens")
+            total_value = _usage_int(usage, "total_tokens")
+            prompt_tokens += prompt_value
+            completion_tokens += completion_value
+            total_tokens += total_value or (prompt_value + completion_value)
+
+    if not saw_usage:
+        return None
+
+    return {
+        "history_entries": history_entries,
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+        "total_tokens": total_tokens,
+    }
+
+
+def _usage_int(usage: dict[str, Any], *keys: str) -> int:
+    for key in keys:
+        value = usage.get(key)
+        if isinstance(value, bool):
+            continue
+        if isinstance(value, int):
+            return value
+        if isinstance(value, float):
+            return int(value)
+    return 0
+
+
+def _capture_local_model_residency(
+    provider: str,
+    model_name: str,
+    *,
+    runner: Callable[..., Any] = subprocess.run,
+) -> str:
+    if provider != "ollama":
+        return "not_applicable"
+    try:
+        completed = runner(
+            ["ollama", "ps"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return "unavailable"
+
+    output = (completed.stdout or "").strip()
+    if not output:
+        return "unavailable"
+
+    residency = _parse_ollama_ps_output(output, model_name)
+    return residency or "unavailable"
+
+
+def _parse_ollama_ps_output(output: str, model_name: str) -> str | None:
+    lines = [line.rstrip() for line in output.splitlines() if line.strip()]
+    if len(lines) < 2:
+        return None
+
+    for line in lines[1:]:
+        columns = re.split(r"\s{2,}", line.strip())
+        if len(columns) < 5 or columns[0] != model_name:
+            continue
+        processor = columns[3]
+        context = columns[4]
+        if not processor:
+            return None
+        return f"{processor} (context={context})"
+    return None
 
 
 def _print_summary(report: dict[str, Any], metric_caveats: list[str]) -> None:

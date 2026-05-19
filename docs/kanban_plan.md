@@ -99,24 +99,6 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 - Validation: Unit tests exercise feedback strings for representative Gan failures; capped GPT 4.1-mini run compares current synthesis prompt versus GEPA-optimized direct extraction under unchanged `gan_frequency_deterministic_v1` scorer semantics.
 - Notes: The capped GEPA harness smoke exists in `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` and is summarized in `docs/gan_s0_gepa_harness_run_20260519.md`. The richer feedback rerun `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z` is summarized in `docs/gan_s0_gepa_feedback_run_20260519.md` and improved schema validity and evidence support on the five-record cap, but label metrics remained mixed and the selected instruction grew longer. The metric is optimizer-facing only and must not replace the benchmark-facing deterministic scorer.
 
-### Probe Qwen3.6:35b GEPA latency and transfer on Gan S0
-
-- Outcome: A tiny Gan S0 GEPA run establishes whether `Qwen3.6:35b` can use optimizer-produced guidance effectively enough to justify local GEPA follow-up under the validated direct-extraction policy.
-- Dependencies: Add Gan S0 GEPA feedback metric and capped optimizer config; `docs/gan_s0_gepa_feedback_run_20260519.md`; current local-Qwen latency notes in `docs/qwen_local_latency_experiment_20260518.md`.
-- Parallelizable: yes, but do not run concurrently with other local-Qwen workloads on the same machine.
-- Owner: unassigned.
-- Validation: A capped `Qwen3.6:35b` GEPA run reports compile duration, prediction duration, prediction seconds/record, schema-valid rate, normalized-label exact, monthly/Purist/Pragmatic accuracy, evidence quote support, selected instruction length/shape, and any residency metadata available at run time.
-- Notes: This is a latency-and-transfer probe, not a new default workflow. Success means the stronger local model uses compact optimized guidance without unacceptable compile/prediction cost or major prompt-bloat regression.
-
-### Add token and residency capture for local model runs
-
-- Outcome: Local-model run artifacts record token usage when available and Qwen residency/offload notes close to run time instead of only relying on manual `ollama ps` checks.
-- Dependencies: Current runtime metadata fields.
-- Parallelizable: yes.
-- Owner: unassigned.
-- Validation: Metrics or metadata artifacts include token counts where LiteLLM exposes them and a `model_residency` value that is not `not_recorded` for local Ollama runs.
-- Notes: Manual `ollama ps` after the Qwen3.6:35b run reported 74% CPU / 26% GPU residency.
-
 ### Tighten Gan direct-output canonicalization for local Qwen runs
 
 - Outcome: The Gan S0 direct path preserves the current scorer semantics but reduces invalid local-Qwen labels by enforcing the existing canonical surface vocabulary more tightly.
@@ -171,11 +153,23 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: Runtime fields are present in completed Qwen runs such as `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z/metrics.json` and `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z/metrics.json`.
 - Notes: Token counts and automatic residency capture remain future work.
 
+### Add token and residency capture for local model runs
+
+- Outcome: Complete. Runtime artifacts now aggregate token usage from DSPy LM history when the provider exposes usage metadata and capture a post-run `ollama ps` residency snapshot automatically for local Ollama runs.
+- Validation: Added focused coverage in `tests/test_run_experiment_runtime.py` plus regression coverage in `tests/test_experiment_configs.py` and `tests/test_llm_adapters.py`; `uv run --extra dev pytest tests/test_run_experiment_runtime.py tests/test_experiment_configs.py tests/test_llm_adapters.py`; OpenAI validation smoke `runs/gan_s0_smoke_gpt4_1_mini_token_usage_smoke_20260519T000000Z` wrote `runtime.token_usage={"prompt_tokens":1413,"completion_tokens":332,"total_tokens":1745,"history_entries":1}`; local Qwen smoke `runs/gan_s0_smoke_qwen35b_direct_ollama_token_residency_smoke_20260519T000000Z` wrote `runtime.model_residency="72%/28% CPU/GPU (context=4096)"`.
+- Notes: Ollama/LiteLLM did not expose token usage on the local Qwen smoke, so `runtime.token_usage` remained `null` there, which is expected under the current "when available" contract. Non-Ollama providers now record `model_residency="not_applicable"` instead of the older `not_recorded` placeholder.
+
 ### Run Qwen local Gan S0 latency and pace experiments
 
 - Outcome: Complete. `docs/qwen_local_latency_experiment_20260518.md` records the Qwen3.5:9b DSPy component latency matrix and the Qwen3.6:35b direct-extraction pace gate.
 - Validation: Completed artifacts: `runs/gan_s0_latency_qwen9b_direct_cap3_20260518T201228Z`, `runs/gan_s0_latency_qwen9b_cot_cap3_20260518T201247Z`, `runs/gan_s0_latency_qwen9b_direct_bootstrap_cap3_20260518T201540Z`, `runs/gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z`, and `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z`. The combined Qwen3.5:9b `ChainOfThought + BootstrapFewShot` attempt `runs/gan_s0_latency_qwen9b_cot_bootstrap_cap3_20260518T201609Z` failed during prediction before metrics were written.
 - Notes: On Qwen3.5:9b, direct extraction completed at 3.91 prediction seconds/record, ChainOfThought completed at 53.74 seconds/record with truncation warnings, and direct plus tiny BootstrapFewShot completed with 3.92s compile time and 4.62 prediction seconds/record. ChainOfThought plus BootstrapFewShot did not function under `max_tokens=1536`. Qwen3.6:35b direct extraction completed a one-record smoke and a warm three-record cap; manual `ollama ps` showed 74% CPU / 26% GPU residency after the run.
+
+### Probe Qwen3.6:35b GEPA latency and transfer on Gan S0
+
+- Outcome: Complete. A tiny local-Qwen GEPA probe now exists and shows that `Qwen3.6:35b` can execute the GEPA harness end to end, but the current optimizer transfer does not justify promoting GEPA to the routine local 35B path.
+- Validation: Added reproducible config `configs/experiments/gan_s0_gepa_direct_cap5_qwen35b_ollama.json` plus focused config coverage in `tests/test_experiment_configs.py`; dry-run passed; capped run `runs/gan_s0_gepa_direct_cap5_qwen35b_ollama_20260519T055049Z`; run note `docs/gan_s0_gepa_qwen35b_probe_run_20260519.md`.
+- Notes: Compile took `267.81s`; prediction took `70.34s` or `14.07s/record`; schema validity and evidence support were both `100.0%`, but normalized-label exact/monthly/Purist accuracy were only `20.0%` and Pragmatic accuracy `40.0%`. The selected GEPA instruction expanded to `3936` characters / `664` words versus `3249` / `508` for the earlier GPT 4.1-mini GEPA run, and DSPy logged a reflection-LM truncation warning at `max_tokens=1024`. A post-run `ollama ps` snapshot showed `72%/28% CPU/GPU` residency with `CONTEXT 4096`. Recommendation: keep Qwen on the validated direct path and prioritize canonicalization, evidence-length guardrails, and local token/residency capture before any further local GEPA work.
 
 ### Inspect post-repair Gan S0 validation behavior
 
@@ -565,7 +559,7 @@ Completed work is summarized in the background sections above rather than repeat
 1. Add shared GEPA optimizer support to experiment configs and run artifacts.
 2. Enrich the Gan S0 GEPA feedback metric from the current exact-label-plus-evidence harness to the planned failure taxonomy.
 3. Re-run the Gan S0 GEPA capped diagnostic with the richer feedback signal before opening the ReAct temporal-tools probe.
-4. Run a tiny `Qwen3.6:35b` GEPA Gan S0 latency-and-transfer probe before treating local Qwen as a realistic optimizer consumer.
+4. Keep local `Qwen3.6:35b` on the direct-extraction path; do not promote GEPA follow-up unless a compact transferable instruction can be produced without the current compile and prompt-bloat costs.
 5. Keep local Qwen model-comparison runs on direct extraction by default, and transfer only compact optimized guidance to Qwen unless an overnight stress test is explicitly scheduled.
 6. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor; use ExECT GEPA only after the Gan GEPA path proves the shared optimizer harness.
 

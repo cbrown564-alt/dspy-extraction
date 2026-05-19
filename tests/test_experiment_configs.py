@@ -105,6 +105,31 @@ def test_gan_s0_gepa_direct_config_records_shared_optimizer_contract():
     assert "optimizer-facing only" in " ".join(config.metric_caveats)
 
 
+def test_qwen35b_gepa_probe_config_keeps_gepa_contract_but_marks_local_latency_scope():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_gepa_direct_cap5_qwen35b_ollama.json")
+    )
+
+    assert config.experiment_id == "gan_s0_gepa_direct_cap5_qwen35b_ollama"
+    assert config.dataset == "gan_2026"
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert config.max_records == 5
+    assert config.optimizer is not None
+    assert config.optimizer.name == "GEPA"
+    assert config.optimizer.metric_name == "synthesis_exact_with_evidence_feedback"
+    assert config.optimizer.trainset_size == 4
+    assert config.optimizer.max_metric_calls == 8
+    assert config.optimizer.max_full_evals is None
+    assert config.optimizer.reflection_minibatch_size == 1
+    assert config.optimizer.add_format_failure_as_feedback
+    assert config.optimizer.use_cloudpickle
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "latency-and-transfer probe" in caveats
+    assert "explicit optimizer experiment" in caveats
+
+
 def test_gepa_optimizer_config_requires_feedback_metric():
     payload = json.loads(
         Path("configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json").read_text(
