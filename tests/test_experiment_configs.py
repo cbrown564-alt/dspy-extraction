@@ -352,7 +352,7 @@ def test_qwen35b_guardrails_validation_config_pins_direct_path_and_cap25():
     assert config.experiment_id == "gan_s0_qwen35b_direct_cap25_guardrails_validation"
     assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
     assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
-    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v1"
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_1"
     assert config.max_records == 25
     assert config.optimizer is None
     assert config.controls.repair_policy == "artifact_bridge_surface_normalization_only"
@@ -463,11 +463,26 @@ def test_qwen35b_full_validation_guardrails_config_removes_cap():
     assert config.experiment_id == "gan_s0_qwen35b_direct_full_validation_guardrails"
     assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
     assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
-    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v1"
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v2_1"
     assert config.max_records is None
     assert config.optimizer is None
     assert config.controls.repair_policy == "artifact_bridge_surface_normalization_only"
     assert "full-validation" in " ".join(config.metric_caveats).lower()
+
+
+def test_qwen35b_regression_slice_config_uses_record_ids_filter():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_direct_regression_slice_guardrails.json"
+        )
+    )
+
+    assert config.experiment_id == "gan_s0_qwen35b_direct_regression_slice_guardrails"
+    assert config.record_ids is not None
+    assert len(config.record_ids) == 10
+    assert "gan_10509" in config.record_ids
+    assert config.max_records is None
 
 
 def test_experiment_config_accepts_verify_repair_variant():

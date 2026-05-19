@@ -12,6 +12,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    GanFrequencyS0Signature,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -1077,3 +1078,18 @@ def test_gan_s0_verifier_module_is_callable_standalone():
     assert result.final_label == "3 per week"
     assert result.decision == "repair"
     assert result.reason == "Corrected denominator."
+
+
+def test_gan_frequency_s0_signature_documents_qwen_direct_policy_boundaries():
+    doc = GanFrequencyS0Signature.__doc__ or ""
+    assert "Unknown vs no seizure frequency reference" in doc
+    assert "no-clinical-content" in doc
+    assert "highest current" in doc
+    assert "Year-to-date" in doc or "year to date" in doc.lower()
+    assert "NEVER use \"N per year\"" in doc
+    assert "multiple per cluster" in doc
+    assert "Do NOT output" in doc
+    assert "output unknown — never null" in doc
+    assert "Quantified rates beat unknown" in doc
+    assert "Do NOT collapse low-frequency quantified counts to unknown" in doc
+    assert "Never use hour" in doc

@@ -9,6 +9,9 @@ Gan S0 single-pass DSPy contract and write the standard run artifact layout.
 They are one-record compatibility checks only. They are not performance
 estimates, model comparisons, or published Gan benchmark reproduction.
 
+For hosted model quality, latency, and billing comparisons on Gan S0, read
+`docs/gan_s0_hosted_model_comparison_matrix.md`.
+
 For local Qwen scaling decisions, also read
 `docs/qwen_dspy_latency_policy.md`. In particular, Qwen3.6:35b should not use
 `ChainOfThought + BootstrapFewShot` as the default experiment path while it is

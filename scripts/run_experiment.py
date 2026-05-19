@@ -84,6 +84,16 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     ordered_split_ids: list[str] = split_data[split_subset]
+    if config.record_ids is not None:
+        split_id_set = set(ordered_split_ids)
+        missing_from_split = [
+            record_id for record_id in config.record_ids if record_id not in split_id_set
+        ]
+        if missing_from_split:
+            raise SystemExit(
+                f"record_ids not in split {config.split_name!r}: {missing_from_split}"
+            )
+        ordered_split_ids = list(config.record_ids)
     if config.max_records is not None:
         ordered_split_ids = ordered_split_ids[: config.max_records]
 
@@ -96,10 +106,12 @@ def main(argv: list[str] | None = None) -> int:
             f"{missing_from_dataset[:5]}"
         )
 
-    print(
-        f"Records:    {len(records)}"
-        + (f" (capped at max_records={config.max_records})" if config.max_records else "")
-    )
+    record_note = ""
+    if config.record_ids is not None:
+        record_note = f" (record_ids filter, n={len(config.record_ids)})"
+    elif config.max_records is not None:
+        record_note = f" (capped at max_records={config.max_records})"
+    print(f"Records:    {len(records)}{record_note}")
     _print_optimizer_plan(config.optimizer)
 
     if args.dry_run:

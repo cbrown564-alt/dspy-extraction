@@ -27,6 +27,9 @@ GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
 )
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
+GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION = (
+    "gan_frequency_s0_direct_guardrails_v2_1"
+)
 
 GAN_FREQUENCY_SYNTHESIS_GUIDANCE = (
     "Synthesis-backed Gan frequency policy: output only canonical Gan labels; "
@@ -49,24 +52,57 @@ class GanFrequencyS0Signature(dspy.Signature):
     Do not use hidden reasoning. Emit only the requested output fields.
 
     The label must match the Gan annotation vocabulary exactly. Abstain (null) only when
-    the note contains no usable seizure-frequency information.
+    the note contains no usable seizure-frequency information. When seizures are discussed
+    but not quantifiable, output unknown — never null.
 
     Synthesis-backed policy:
     - Output only canonical Gan labels: N per unit, N to M per unit, N per M unit,
       N cluster per unit, M per cluster, seizure free for N unit, unknown, or
       no seizure frequency reference.
-    - Use singular units: day, week, month, year.
+    - Use singular units: day, week, month, year. Never use hour or other units.
     - Convert daily/nightly to 1 per day, every N unit to 1 per N unit, and
       numeric "or" ranges to "to" ranges.
     - Choose the highest current quantified seizure-type frequency.
-    - Use the full cluster format; do not drop either the cluster period or
-      the per-cluster count.
+    - Quantified rates beat unknown: when the note states an explicit event count
+      over a time window — even infrequent — output the canonical N per M unit rate.
+      Do NOT collapse low-frequency quantified counts to unknown. Examples:
+      "two seizures in the last three months" → "2 per 3 month"; "about once a month"
+      → "1 per month"; "one seizure per year" → "1 per year"; "10 seizures over
+      six months" → "10 per 6 month"; "2 to 3 events in 15 months" →
+      "2 to 3 per 15 month". Reserve unknown for qualitative or pattern-only
+      descriptions where no count+window can be extracted from the note.
+    - Cluster format is mandatory: every cluster label must include BOTH parts
+      separated by a comma — "N cluster per unit, M per cluster". Never emit an
+      incomplete cluster such as "1 cluster per week" alone. When the per-cluster
+      count is unknown or not documented, use "multiple per cluster". Example:
+      "weekly clusters, number per cluster not documented" →
+      "1 cluster per week, multiple per cluster"; "4 clusters this quarter" →
+      "4 cluster per 3 month, multiple per cluster". Distinguish cluster period
+      from seizures per cluster: "now weekly, 3 or 4 per cluster" →
+      "1 cluster per week, 3 to 4 per cluster" (NOT "3 to 4 cluster per week").
     - Use seizure free for N unit only when seizure freedom is at least 6 months.
       If seizure freedom is shorter than 6 months, compute the rate from the
       total events over the described period.
-    - For year-to-date counts, use months elapsed since January as the denominator.
+    - Year-to-date counts: NEVER use "N per year" for "this year to date" or YTD
+      phrasing. Divide the count by months elapsed since January through the
+      clinic or letter date — e.g. 5 seizures YTD in February → "5 per 2 month";
+      9 seizures YTD in January → "9 per month". Reserve "N per year" only for
+      explicit full-calendar-year or "per year" wording, not YTD counts.
     - Treat "over the last quarter" as an observation window when the note gives
       a per-month rate; do not automatically convert it to per 3 month.
+    - Unknown vs no seizure frequency reference: use unknown ONLY when seizures,
+      episodes, clusters, or a last-seizure date are discussed but no explicit
+      count+time-window can be extracted. If the note gives N events over M
+      months/weeks/years, output the rate — not unknown. Use no seizure frequency
+      reference ONLY when the note lacks usable seizure-frequency information
+      (including administrative or no-clinical-content letters). Do NOT output
+      no seizure frequency reference when seizures are mentioned — that is unknown.
+      Examples: "clusters after poor sleep" with no counts → unknown; "last seizure
+      on DATE" without an ongoing rate → unknown; "none in 4 months but bursts with
+      travel" → unknown; "two in three months" → "2 per 3 month" (NOT unknown).
+      Do not output null for no-content cases.
+    - When multiple quantified seizure-type frequencies are present, choose the
+      highest current rate for the primary label.
     - evidence_text must be an exact contiguous quote from the note.
     """
 
@@ -75,7 +111,8 @@ class GanFrequencyS0Signature(dspy.Signature):
         desc=(
             "Seizure frequency in Gan label format. One of: "
             "'{count} per {unit}' e.g. '2 per week', '1 per 3 month'; "
-            "'{count} cluster per {unit}, {n} per cluster'; "
+            "'{count} cluster per {unit}, {n} per cluster' (both parts required; "
+            "use 'multiple per cluster' when count unknown); "
             "'unknown'; 'no seizure frequency reference'; "
             "or null to abstain. Unit must be singular: day/week/month/year."
         )

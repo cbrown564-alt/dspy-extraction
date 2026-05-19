@@ -161,6 +161,7 @@ class ExperimentConfig(FrozenModel):
     structured_output_strategy: StructuredOutputStrategy
     output_root: Path = Path("runs")
     max_records: int | None = Field(default=None, gt=0)
+    record_ids: list[str] | None = None
     report_on_test_split: bool = False
     metric_caveats: list[str] = Field(default_factory=list)
     optimizer: OptimizerConfig | None = None
@@ -208,6 +209,11 @@ class ExperimentConfig(FrozenModel):
                 "Experiment configs must explicitly set "
                 "report_on_test_split=true before reporting on the test split."
             )
+        if self.record_ids is not None:
+            if not self.record_ids:
+                raise ValueError("record_ids must be a non-empty list when set.")
+            if any(not record_id.strip() for record_id in self.record_ids):
+                raise ValueError("record_ids entries must be non-empty strings.")
         return self
 
 
