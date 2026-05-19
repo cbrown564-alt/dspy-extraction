@@ -99,7 +99,7 @@ _No misses._
 
 The four metrics form a strict hierarchy on valid predictions: normalized exact ⊂ monthly ⊂ Purist ⊂ Pragmatic. They do **not** always improve together in the sense that fixing one layer can leave coarser layers unchanged, but finer success never appears without coarser success.
 
-The dominant semantic failure mode is **unknown versus no seizure frequency reference** (0 scored misses). This collapses monthly frequency from 1000.0 to 0.0 and fails all four metrics simultaneously (pattern `0000`).
+The leading benchmark-severe failure class on this run is `pragmatic_match_monthly_divergence` (1 scored miss). These are the first prompt or verifier targets; lower-tier metric wins should not hide them.
 
 Cluster-format errors account for 0 scored misses, split between incomplete cluster labels (invalid), cluster structure swaps, and cluster collapsed to simple rates.
 

@@ -150,7 +150,7 @@ Bit order in patterns is `normalized | monthly | purist | pragmatic` (1 = match)
 
 The four metrics form a strict hierarchy on valid predictions: normalized exact ⊂ monthly ⊂ Purist ⊂ Pragmatic. They do **not** always improve together in the sense that fixing one layer can leave coarser layers unchanged, but finer success never appears without coarser success.
 
-The dominant semantic failure mode is **unknown versus no seizure frequency reference** (26 scored misses). This collapses monthly frequency from 1000.0 to 0.0 and fails all four metrics simultaneously (pattern `0000`).
+The leading benchmark-severe failure classes on this run are `missed_frequency_reference` and `unknown_vs_no_reference` (22 scored misses each). These are the first prompt or verifier targets; lower-tier metric wins should not hide them.
 
 Cluster-format errors account for 21 scored misses, split between incomplete cluster labels (invalid), cluster structure swaps, and cluster collapsed to simple rates.
 

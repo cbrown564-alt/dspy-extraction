@@ -530,17 +530,38 @@ def _interpretation(
         "can leave coarser layers unchanged, but finer success never appears without coarser success."
     )
     parts.append("")
-    unkn = sum(
-        1
-        for row in valid
-        if not row["normalized_exact_match"]
-        and row["failure_class"] in ("unknown_vs_no_reference", "unknown_cluster_vs_no_reference")
+    benchmark_failures = summary.get("failure_taxonomy_by_action_tier", {}).get(
+        "benchmark_severe", {}
     )
-    parts.append(
-        f"The dominant semantic failure mode is **unknown versus no seizure frequency reference** "
-        f"({unkn} scored misses). This collapses monthly frequency from 1000.0 to 0.0 and fails all "
-        f"four metrics simultaneously (pattern `0000`)."
-    )
+    if benchmark_failures:
+        sorted_failures = sorted(
+            benchmark_failures.items(), key=lambda item: (-item[1], item[0])
+        )
+        top_count = sorted_failures[0][1]
+        top_failures = [
+            failure_class
+            for failure_class, count in sorted_failures
+            if count == top_count
+        ]
+        top_failure_text = ", ".join(f"`{failure}`" for failure in top_failures)
+        miss_text = (
+            "1 scored miss"
+            if top_count == 1
+            else f"{top_count} scored misses"
+        )
+        count_suffix = " each" if len(top_failures) > 1 else ""
+        parts.append(
+            f"The leading benchmark-severe failure class"
+            f"{'es' if len(top_failures) > 1 else ''} on this run "
+            f"{'are' if len(top_failures) > 1 else 'is'} {top_failure_text} "
+            f"({miss_text}{count_suffix}). These are the first prompt or "
+            f"verifier targets; lower-tier metric wins should not hide them."
+        )
+    else:
+        parts.append(
+            "No benchmark-severe scored misses appear in this run; remaining cleanup is "
+            "diagnostic-only or operational invalid/abstention handling."
+        )
     parts.append("")
     cluster = sum(
         1
