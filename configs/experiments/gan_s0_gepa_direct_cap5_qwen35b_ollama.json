@@ -8,16 +8,17 @@
   },
   "dataset": "gan_2026",
   "experiment_id": "gan_s0_gepa_direct_cap5_qwen35b_ollama",
-  "hypothesis": "A tiny GEPA compile pass can test whether Qwen3.6:35b benefits from optimizer-produced Gan S0 guidance enough to justify paced local follow-up under the direct-extraction policy.",
+  "hypothesis": "A tiny GEPA compile pass can test whether Qwen3.6:35b benefits from optimizer-produced Gan S0 guidance enough to justify paced local follow-up under the direct-extraction policy when the local reflection/output budget is raised beyond the earlier truncated setting.",
   "max_records": 5,
   "metric_caveats": [
     "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
     "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
     "The GEPA feedback metric is optimizer-facing only and does not replace gan_frequency_deterministic_v1 scoring.",
     "This capped validation config is a local Qwen latency-and-transfer probe, not a published Gan benchmark reproduction.",
+    "This probe intentionally raises max_tokens to 10000 for the local Qwen GEPA path so reflection truncation at 1024 does not decide the outcome in advance.",
     "This is an explicit optimizer experiment for Qwen3.6:35b and should not be treated as the default local-Qwen workflow."
   ],
-  "model_config_path": "configs/models/gan_s0_qwen35b_ollama.json",
+  "model_config_path": "configs/models/gan_s0_qwen35b_ollama_gepa_max10000.json",
   "optimizer": {
     "add_format_failure_as_feedback": true,
     "auto": null,

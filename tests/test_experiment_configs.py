@@ -112,7 +112,9 @@ def test_qwen35b_gepa_probe_config_keeps_gepa_contract_but_marks_local_latency_s
 
     assert config.experiment_id == "gan_s0_gepa_direct_cap5_qwen35b_ollama"
     assert config.dataset == "gan_2026"
-    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_qwen35b_ollama_gepa_max10000.json"
+    )
     assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
     assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
     assert config.max_records == 5
@@ -127,6 +129,8 @@ def test_qwen35b_gepa_probe_config_keeps_gepa_contract_but_marks_local_latency_s
     assert config.optimizer.use_cloudpickle
     caveats = " ".join(config.metric_caveats).lower()
     assert "latency-and-transfer probe" in caveats
+    assert "10000" in caveats
+    assert "truncation" in caveats
     assert "explicit optimizer experiment" in caveats
 
 

@@ -17,6 +17,7 @@ MODEL_CONFIG_FILES = [
     ("gan_s0_gpt5_5_openai.json", "openai", "gpt-5.5", "https://api.openai.com/v1"),
     ("gan_s0_gemini3_flash.json", "gemini", "gemini-3-flash-preview", "https://generativelanguage.googleapis.com/v1beta/openai"),
     ("gan_s0_qwen35b_ollama.json", "ollama", "qwen3.6:35b", "http://localhost:11434/v1"),
+    ("gan_s0_qwen35b_ollama_gepa_max10000.json", "ollama", "qwen3.6:35b", "http://localhost:11434/v1"),
     ("gan_s0_qwen9b_ollama.json", "ollama", "qwen3.5:9b", "http://localhost:11434/v1"),
     ("gan_s0_qwen35b_ollama_max81920.json", "ollama", "qwen3.6:35b", "http://localhost:11434/v1"),
     ("gan_s0_qwen9b_ollama_max81920.json", "ollama", "qwen3.5:9b", "http://localhost:11434/v1"),
