@@ -193,9 +193,10 @@ def gan_frequency_s0_synthesis_feedback_metric(
 ):
     """GEPA-compatible Gan S0 feedback metric.
 
-    This is a shared optimizer-harness metric. The richer Gan-specific failure
-    taxonomy is a follow-on workstream card; this version preserves the current
-    exact-label-plus-evidence target while returning natural-language feedback.
+    This metric is optimizer-facing only. It preserves the benchmark scorer
+    contract while surfacing richer textual feedback for common Gan failure
+    modes such as canonical-label drift, temporal-window errors, cluster-format
+    failures, abstentions, and unsupported evidence quotes.
     """
     from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
 
@@ -203,13 +204,15 @@ def gan_frequency_s0_synthesis_feedback_metric(
 
     predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
     gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+    note_text = getattr(example, "note_text", "") or ""
 
     if not predicted:
         return ScoreWithFeedback(
             score=0.0,
             feedback=(
-                "The prediction did not provide seizure_frequency_number. "
-                "Return a canonical Gan label or no seizure frequency reference."
+                "[abstention] The prediction did not provide seizure_frequency_number. "
+                "Return a canonical Gan label or no seizure frequency reference, and "
+                "abstain only when the note truly lacks usable seizure-frequency information."
             ),
         )
     if not gold:
@@ -223,42 +226,98 @@ def gan_frequency_s0_synthesis_feedback_metric(
             gold_label=gold, predicted_label=predicted
         )
     except ValueError as exc:
-        return ScoreWithFeedback(
-            score=0.0,
-            feedback=(
+        feedback = [
+            (
+                "[invalid-format] "
                 f"The predicted label {predicted!r} is not a valid canonical Gan "
                 f"frequency label: {exc}."
-            ),
+            )
+        ]
+        if _looks_like_cluster_failure(str(predicted)):
+            feedback.append(
+                "[cluster-format] Cluster labels must use the full format "
+                "'N cluster per unit, M per cluster' and must not drop the "
+                "per-cluster count."
+            )
+        forbidden_unit = _forbidden_unit(str(predicted))
+        if forbidden_unit is not None:
+            feedback.append(
+                f"[forbidden-unit] Replace {forbidden_unit!r} with canonical Gan "
+                "units day, week, month, or year."
+            )
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback=" ".join(feedback),
         )
 
     predicted_evidence = getattr(pred, "evidence_text", None)
     feedback: list[str] = []
-    metric_score = 1.0
+    metric_score = 0.8 if score.exact_normalized_match else 0.0
 
     if not score.exact_normalized_match:
-        metric_score = 0.0
         feedback.append(
+            "[exact-label] "
             f"Expected normalized Gan label {gold!r}, but the prediction was "
             f"{predicted!r}. Preserve the benchmark-facing label semantics."
         )
+        if score.pragmatic_category_match:
+            metric_score = 0.3
+        else:
+            feedback.append(
+                "[pragmatic-category] The prediction crossed the benchmark-facing "
+                f"Pragmatic bucket from {score.gold_pragmatic_category!r} to "
+                f"{score.predicted_pragmatic_category!r}."
+            )
+        if (
+            _looks_like_cluster_failure(score.predicted_label)
+            or "cluster" in score.normalized_gold_label
+        ):
+            feedback.append(
+                "[cluster-format] Preserve the cluster structure exactly. Do not "
+                "drop the cluster period or the per-cluster count, and do not back "
+                "off to unknown when the note gives both values."
+            )
+        if _is_short_seizure_free_label(score.normalized_predicted_label):
+            feedback.append(
+                "[seizure-free-threshold] Use seizure-free labels only for 6 months "
+                "or longer. Shorter seizure-free periods should be converted into "
+                "the appropriate quantified rate."
+            )
+        if _has_temporal_window_mismatch(
+            note_text,
+            gold_label=score.normalized_gold_label,
+            predicted_label=score.normalized_predicted_label,
+        ):
+            feedback.append(
+                "[temporal-window] The note looks like a year-to-date or bounded-window "
+                "case. Use the described observation window as the denominator; for "
+                "year-to-date counts, use months elapsed since January."
+            )
 
+    evidence_ok = True
     if gold == "no seizure frequency reference":
         if isinstance(predicted_evidence, str) and predicted_evidence.strip():
-            metric_score = 0.0
+            evidence_ok = False
             feedback.append(
-                "No-reference labels should not include supporting frequency evidence."
+                "[evidence-support] No-reference labels should not include supporting "
+                "frequency evidence."
             )
     elif _requires_evidence_support(gold):
         if not isinstance(predicted_evidence, str) or not predicted_evidence.strip():
-            metric_score = 0.0
+            evidence_ok = False
             feedback.append(
-                "The prediction must include an exact contiguous source quote as evidence."
+                "[evidence-support] The prediction must include an exact contiguous "
+                "source quote as evidence."
             )
         elif predicted_evidence.strip() not in example.note_text:
-            metric_score = 0.0
+            evidence_ok = False
             feedback.append(
-                "The evidence_text is not an exact contiguous quote from the note."
+                "[evidence-support][unsupported-quote] The evidence_text is not an "
+                "exact contiguous quote from the note."
             )
+
+    if evidence_ok:
+        metric_score += 0.2
 
     if not feedback:
         feedback.append(
@@ -269,6 +328,40 @@ def gan_frequency_s0_synthesis_feedback_metric(
 
 def _requires_evidence_support(gold_label: str) -> bool:
     return gold_label != "no seizure frequency reference"
+
+
+def _looks_like_cluster_failure(label: str) -> bool:
+    normalized = label.strip().lower()
+    return "cluster" in normalized and " per cluster" not in normalized
+
+
+def _forbidden_unit(label: str) -> str | None:
+    match = _FORBIDDEN_UNIT_RE.search(label)
+    if match is None:
+        return None
+    return match.group(1).lower()
+
+
+def _is_short_seizure_free_label(label: str) -> bool:
+    match = _SEIZURE_FREE_RE.match(label)
+    if match is None:
+        return False
+    count = float(match.group("count"))
+    months = count * 12 if match.group("unit") == "year" else count
+    return months < 6
+
+
+def _has_temporal_window_mismatch(
+    note_text: str,
+    *,
+    gold_label: str,
+    predicted_label: str,
+) -> bool:
+    if not _YTD_NOTE_RE.search(note_text):
+        return False
+    if gold_label == predicted_label:
+        return False
+    return " per " in gold_label and " per " in predicted_label
 
 
 # ---------------------------------------------------------------------------
@@ -531,6 +624,14 @@ _MATCHING_RATE_RANGE_RE = re.compile(
     r"^(?P<count>\d+(?:\.\d+)?) per (?P<first>\d+(?:\.\d+)?) "
     r"(?P<first_unit>day|week|month|year) to (?P=count) per "
     r"(?P<second>\d+(?:\.\d+)?) (?P<second_unit>day|week|month|year)$"
+)
+_SEIZURE_FREE_RE = re.compile(
+    r"^seizure free for (?P<count>\d+(?:\.\d+)?) (?P<unit>month|year)$"
+)
+_YTD_NOTE_RE = re.compile(r"\b(year to date|ytd|since january)\b", re.IGNORECASE)
+_FORBIDDEN_UNIT_RE = re.compile(
+    r"\b(quarter|quarters|fortnight|fortnights|night|nights|hour|hours)\b",
+    re.IGNORECASE,
 )
 
 

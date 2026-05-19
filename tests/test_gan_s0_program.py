@@ -13,6 +13,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     build_gan_s0_module,
     compile_gan_s0_module,
     compile_gan_s0_module_gepa,
+    gan_frequency_s0_synthesis_feedback_metric,
     gan_frequency_s0_metric,
     gan_frequency_s0_synthesis_metric,
     gan_frequency_s0_run_metadata,
@@ -387,6 +388,168 @@ def test_gan_frequency_s0_synthesis_metric_rejects_no_reference_paraphrase():
     )
 
     assert gan_frequency_s0_synthesis_metric(example, pred) == 0.0
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_accepts_exact_label_and_quote():
+    example = dspy.Example(
+        note_text="He reports 3 focal seizures per week despite medication.",
+        seizure_frequency_number="3 per week",
+        evidence_text="3 focal seizures per week",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text="3 focal seizures per week",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 1.0
+    assert "matched the normalized Gan label and evidence policy" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_invalid_forbidden_unit():
+    example = dspy.Example(
+        note_text="Over the last quarter she had two to three seizures per month.",
+        seizure_frequency_number="2 to 3 per month",
+        evidence_text="two to three seizures per month",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="2 to 3 per quarter",
+        evidence_text="two to three seizures per month",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 0.0
+    assert "invalid-format" in result.feedback
+    assert "forbidden-unit" in result.feedback
+    assert "quarter" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_cluster_format_failure():
+    example = dspy.Example(
+        note_text="Diary: one cluster each week, usually three seizures per cluster.",
+        seizure_frequency_number="1 cluster per week, multiple per cluster",
+        evidence_text="one cluster each week, usually three seizures per cluster",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="1 cluster per week",
+        evidence_text="one cluster each week, usually three seizures per cluster",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 0.0
+    assert "invalid-format" in result.feedback
+    assert "cluster-format" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_pragmatic_and_exact_mismatch():
+    example = dspy.Example(
+        note_text="She has one seizure every six months.",
+        seizure_frequency_number="1 per 6 month",
+        evidence_text="one seizure every six months",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text="3 per week",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score < 0.5
+    assert "exact-label" in result.feedback
+    assert "pragmatic-category" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_temporal_window_error():
+    example = dspy.Example(
+        note_text="Year to date she has had two seizures since January.",
+        seizure_frequency_number="2 per 5 month",
+        evidence_text="two seizures since January",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="2 per year",
+        evidence_text="two seizures since January",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score < 1.0
+    assert "temporal-window" in result.feedback
+    assert "year-to-date" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_short_seizure_free_threshold():
+    example = dspy.Example(
+        note_text="She has been seizure free for 3 months after one seizure in the prior 3 months.",
+        seizure_frequency_number="1 per 3 month",
+        evidence_text="one seizure in the prior 3 months",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="seizure free for 3 month",
+        evidence_text="seizure free for 3 months",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score < 1.0
+    assert "seizure-free-threshold" in result.feedback
+    assert "6 months or longer" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_missing_evidence():
+    example = dspy.Example(
+        note_text="The patient has one seizure per month.",
+        seizure_frequency_number="1 per month",
+        evidence_text="one seizure per month",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="1 per month",
+        evidence_text=None,
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 0.8
+    assert "evidence-support" in result.feedback
+    assert "exact contiguous source quote" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_unsupported_quote():
+    example = dspy.Example(
+        note_text="The patient has two seizures per month.",
+        seizure_frequency_number="2 per month",
+        evidence_text="two seizures per month",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="2 per month",
+        evidence_text="two monthly seizures",
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 0.8
+    assert "evidence-support" in result.feedback
+    assert "unsupported-quote" in result.feedback
+
+
+def test_gan_frequency_s0_synthesis_feedback_metric_flags_abstention_failure():
+    example = dspy.Example(
+        note_text="There are multiple seizures each day.",
+        seizure_frequency_number="multiple per day",
+        evidence_text="multiple seizures each day",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number=None,
+        evidence_text=None,
+    )
+
+    result = gan_frequency_s0_synthesis_feedback_metric(example, pred)
+
+    assert result.score == 0.0
+    assert "abstention" in result.feedback
+    assert "canonical Gan label" in result.feedback
 
 
 def test_make_gan_dspy_examples_sets_note_text_as_input_and_gold_label_as_output():

@@ -97,7 +97,16 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 - Parallelizable: after GEPA optimizer contract exists.
 - Owner: unassigned.
 - Validation: Unit tests exercise feedback strings for representative Gan failures; capped GPT 4.1-mini run compares current synthesis prompt versus GEPA-optimized direct extraction under unchanged `gan_frequency_deterministic_v1` scorer semantics.
-- Notes: The capped GEPA harness smoke now exists in `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` and is summarized in `docs/gan_s0_gepa_harness_run_20260519.md`, but the current feedback metric is still narrower than this card's target taxonomy. The metric is optimizer-facing only and must not replace the benchmark-facing deterministic scorer.
+- Notes: The capped GEPA harness smoke exists in `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` and is summarized in `docs/gan_s0_gepa_harness_run_20260519.md`. The richer feedback rerun `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z` is summarized in `docs/gan_s0_gepa_feedback_run_20260519.md` and improved schema validity and evidence support on the five-record cap, but label metrics remained mixed and the selected instruction grew longer. The metric is optimizer-facing only and must not replace the benchmark-facing deterministic scorer.
+
+### Probe Qwen3.6:35b GEPA latency and transfer on Gan S0
+
+- Outcome: A tiny Gan S0 GEPA run establishes whether `Qwen3.6:35b` can use optimizer-produced guidance effectively enough to justify local GEPA follow-up under the validated direct-extraction policy.
+- Dependencies: Add Gan S0 GEPA feedback metric and capped optimizer config; `docs/gan_s0_gepa_feedback_run_20260519.md`; current local-Qwen latency notes in `docs/qwen_local_latency_experiment_20260518.md`.
+- Parallelizable: yes, but do not run concurrently with other local-Qwen workloads on the same machine.
+- Owner: unassigned.
+- Validation: A capped `Qwen3.6:35b` GEPA run reports compile duration, prediction duration, prediction seconds/record, schema-valid rate, normalized-label exact, monthly/Purist/Pragmatic accuracy, evidence quote support, selected instruction length/shape, and any residency metadata available at run time.
+- Notes: This is a latency-and-transfer probe, not a new default workflow. Success means the stronger local model uses compact optimized guidance without unacceptable compile/prediction cost or major prompt-bloat regression.
 
 ### Add token and residency capture for local model runs
 
@@ -378,7 +387,7 @@ Completed work is summarized in the background sections above rather than repeat
 - Parallelizable: after shared GEPA support exists.
 - Owner: unassigned.
 - Validation: Capped GPT 4.1-mini diagnostic run reports schema-valid rate, normalized-label exact, monthly/Purist/Pragmatic accuracy, invalid-label count, evidence quote support, prompt length, prediction seconds/record, GEPA selected instruction, and metric caveats.
-- Notes: Shared GEPA support is no longer the blocker. The current harness smoke `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` gives a starting point with schema validity `80.0%`, normalized-label accuracy `50.0%`, pragmatic accuracy `75.0%`, and evidence quote support `25.0%` on a five-record cap, but it still uses a narrow exact-label-plus-evidence feedback signal and train-as-val GEPA tracking. Success means fewer canonical/temporal-window failures without evidence-support regression or prompt bloat. Use hosted/faster models first; Qwen3.6:35b should consume only compact resulting guidance, not perform routine GEPA optimization.
+- Notes: Shared GEPA support is no longer the blocker. The harness smoke `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T052124Z` gave a starting point with schema validity `80.0%`, normalized-label accuracy `50.0%`, pragmatic accuracy `75.0%`, and evidence quote support `25.0%` on a five-record cap. The richer-feedback rerun `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z` improved schema validity to `100.0%` and evidence support to `80.0%`, but normalized-label accuracy fell to `40.0%` and pragmatic accuracy to `60.0%`, while the selected GEPA instruction became much longer. Success still means fewer canonical/temporal-window failures without evidence-support regression or prompt bloat. The next question is whether `Qwen3.6:35b` can benefit from the optimized guidance enough to justify its local latency cost.
 
 ### Gan post-repair validation
 
@@ -556,7 +565,8 @@ Completed work is summarized in the background sections above rather than repeat
 1. Add shared GEPA optimizer support to experiment configs and run artifacts.
 2. Enrich the Gan S0 GEPA feedback metric from the current exact-label-plus-evidence harness to the planned failure taxonomy.
 3. Re-run the Gan S0 GEPA capped diagnostic with the richer feedback signal before opening the ReAct temporal-tools probe.
-4. Keep local Qwen model-comparison runs on direct extraction by default, and transfer only compact optimized guidance to Qwen unless an overnight stress test is explicitly scheduled.
-5. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor; use ExECT GEPA only after the Gan GEPA path proves the shared optimizer harness.
+4. Run a tiny `Qwen3.6:35b` GEPA Gan S0 latency-and-transfer probe before treating local Qwen as a realistic optimizer consumer.
+5. Keep local Qwen model-comparison runs on direct extraction by default, and transfer only compact optimized guidance to Qwen unless an overnight stress test is explicitly scheduled.
+6. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor; use ExECT GEPA only after the Gan GEPA path proves the shared optimizer harness.
 
 The plan is now organized so completed work serves as background and the foreground path is: add GEPA as the next reproducible optimizer layer for Gan S0, keep ReAct as a bounded temporal-reasoning probe with deterministic tools, preserve Qwen3.6:35b as a direct-extraction local model, and use the monolithic ExECT S0/S1 baseline as the current broader-schema anchor.
