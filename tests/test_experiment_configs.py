@@ -342,6 +342,23 @@ def test_qwen35b_direct_gate_configs_avoid_reasoning_and_optimizer():
     assert cap.max_records == 3
 
 
+def test_qwen35b_guardrails_validation_config_pins_direct_path_and_cap25():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_qwen35b_direct_cap25_guardrails_validation.json"
+        )
+    )
+
+    assert config.experiment_id == "gan_s0_qwen35b_direct_cap25_guardrails_validation"
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v1"
+    assert config.max_records == 25
+    assert config.optimizer is None
+    assert config.controls.repair_policy == "artifact_bridge_surface_normalization_only"
+    assert "post-guardrail" in " ".join(config.metric_caveats).lower()
+
+
 @pytest.mark.parametrize(
     "filename,model_config_path,program_variant,optimizer_expected,max_records",
     [
@@ -434,6 +451,23 @@ def test_constrained_json_decoding_strategy_note_records_decision_and_fallback()
     assert "Pydantic validation" in note
     assert "strict JSON prompt fallback" in note
     assert "GanFrequencyS0Signature" in note
+
+
+def test_qwen35b_full_validation_guardrails_config_removes_cap():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_qwen35b_direct_full_validation_guardrails.json"
+        )
+    )
+
+    assert config.experiment_id == "gan_s0_qwen35b_direct_full_validation_guardrails"
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_guardrails_v1"
+    assert config.max_records is None
+    assert config.optimizer is None
+    assert config.controls.repair_policy == "artifact_bridge_surface_normalization_only"
+    assert "full-validation" in " ".join(config.metric_caveats).lower()
 
 
 def test_experiment_config_accepts_verify_repair_variant():

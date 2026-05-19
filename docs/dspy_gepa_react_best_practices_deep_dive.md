@@ -47,13 +47,22 @@ Implication for this repo: keep every GEPA/ReAct exploration behind an explicit 
 
 ### 2. Use the simplest optimizer that matches the failure mode
 
-The DSPy docs recommend starting with few-shot optimizers when data is small, moving to random-search or MIPROv2 when there is more data and budget, and using GEPA when textual feedback can explain why a trace failed. Our current state already validates that progression:
+The DSPy docs recommend starting with simple few-shot baselines, then moving to search-based few-shot optimization when there is enough data and budget, and using GEPA when textual feedback can explain why a trace failed. In current DSPy terms, that means treating `LabeledFewShot` as the simplest baseline, `BootstrapFewShot` as the cheap bootstrapped-demo path, and `BootstrapFewShotWithRandomSearch` (also exposed as `BootstrapRS`) as the stronger search-based few-shot option once the trainset is large enough to justify extra compile cost. Our current state already validates that progression:
 
+- `LabeledFewShot` is worth keeping as the minimum-demo baseline whenever we want to separate "did demos help?" from "did optimizer search help?"
 - BootstrapFewShot helped the synthesis-backed Gan S0 path when evidence was included in the optimizer metric.
+- Plain `BootstrapFewShot` did not give us a compelling local `Qwen3.6:35b` path by itself, so any larger-data few-shot follow-up should prefer `BootstrapFewShotWithRandomSearch` over simply repeating the same small bootstrap recipe.
 - Hand-authored long prompt/example bundles created negative interactions and runtime pressure.
 - Local Qwen latency tests show visible ChainOfThought plus BootstrapFewShot is too slow and fragile for routine Qwen3.6:35b work.
 
-Recommended rule: use `BootstrapFewShot` for cheap demo selection, use `GEPA` for instruction refinement from rich failure feedback, and only use MIPROv2/SIMBA/ReAct optimization when the program architecture genuinely needs multi-step or tool behavior.
+Recommended rule:
+
+- Start optimizer comparisons with `LabeledFewShot` as the minimum-demo baseline.
+- Use `BootstrapFewShot` when the goal is cheap demo selection on a small trainset.
+- Use `BootstrapFewShotWithRandomSearch` / `BootstrapRS` when the dataset is large enough that demo search is more appropriate than a single cheap bootstrap pass.
+- Use `GEPA` for instruction refinement from rich failure feedback, not as a substitute for basic few-shot baselines.
+- Only use MIPROv2/SIMBA/ReAct optimization when the program architecture genuinely needs multi-step or tool behavior.
+- For local `Qwen3.6:35b`, do not make any optimizer-heavy few-shot path the routine default unless a hosted-path result first shows a compact, auditable gain that survives transfer.
 
 ### 3. GEPA is strongest when the metric returns diagnostic text
 
@@ -234,6 +243,26 @@ This should not come before the simpler field-family and temporal probes. The sc
 
 ## Proposed Experiment Sequence
 
+### Experiment 0: Gan S0 few-shot optimizer baseline ladder
+
+Dataset/split: Gan development for optimizer selection, capped validation for comparison.
+
+Program variant: `gan_frequency_s0_direct_single_pass`.
+
+Fixed controls:
+
+- scorer: `gan_frequency_deterministic_v1`
+- structured output: current Pydantic/JSON strategy
+- prompt basis: current synthesis guidance
+- no ReAct
+- compare `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` / `BootstrapRS`
+
+Success criteria:
+
+- Establish whether gains come from demos at all, from bootstrapping, or from search over demos.
+- Report compile time, prediction seconds per record, prompt length, selected demo counts, schema validity, evidence support, and capped label metrics.
+- Use hosted/faster models for the search-heavy pass first; treat local-Qwen transfer as a separate follow-up, not the main optimizer-selection run.
+
 ### Experiment 1: Gan S0 GEPA feedback metric on GPT 4.1-mini
 
 Dataset/split: Gan development for optimization, capped validation for diagnostic evaluation.
@@ -255,6 +284,7 @@ Success criteria:
 - Invalid-label count decreases.
 - Normalized-label exact and pragmatic category improve on capped validation.
 - GEPA-generated instruction is auditable and not bloated.
+- Comparison is made against the few-shot baseline ladder, not only against the current best single bootstrap run.
 
 ### Experiment 2: Gan hard-case ReAct probe
 

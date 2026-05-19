@@ -91,7 +91,14 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 
 ## Ready
 
-No active ready card is currently foregrounded in this plan.
+### Run Gan S0 few-shot optimizer baseline ladder
+
+- Outcome: Compare `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` (`BootstrapRS`) on the fixed Gan S0 direct baseline so we can distinguish demo value, bootstrap value, and search value before making stronger optimizer claims.
+- Dependencies: Stable `gan_frequency_s0_direct_single_pass` artifact path; unchanged `gan_frequency_deterministic_v1` scorer; current synthesis guidance; capped Gan dev/validation slice.
+- Parallelizable: yes on hosted/faster models; local-Qwen transfer should wait until a hosted-path winner is identified.
+- Owner: unassigned.
+- Validation: Capped comparison report with compile time, prediction seconds per record, prompt length, selected demo counts, schema validity, evidence support, normalized/monthly/Purist/Pragmatic metrics, and artifact paths for each optimizer setting.
+- Notes: Treat `LabeledFewShot` as the simplest baseline. Prefer `BootstrapFewShotWithRandomSearch` over repeating plain `BootstrapFewShot` when the trainset is large enough to justify search. Do not promote optimizer-heavy few-shot paths to the routine local `Qwen3.6:35b` policy without a compact hosted-path gain that survives transfer.
 
 ## In Progress
 
@@ -499,6 +506,7 @@ Completed work is summarized in the background sections above rather than repeat
 - Run GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b on the same split, schema level, program variant, scorer mode, and structured-output strategy where possible.
 - Before broad local-Qwen comparisons, complete the Qwen3.5:9b DSPy component latency ablation and the Qwen3.6:35b direct-extraction pace experiment.
 - Use Qwen3.5:9b to test whether `ChainOfThought`, `BootstrapFewShot`, or their combination is locally feasible; do not transfer that policy to Qwen3.6:35b unless the 35B direct pace gate is already acceptable and the heavier run is explicitly justified.
+- When comparing few-shot optimizers, start with `LabeledFewShot`, then `BootstrapFewShot`, then `BootstrapFewShotWithRandomSearch` / `BootstrapRS` before escalating to GEPA or broader agentic optimization.
 - Use hosted/faster models for optimizer search when possible, then test whether the resulting compact guidance transfers to local Qwen direct extraction.
 - Report provider-specific caveats such as constrained JSON support, local runtime availability, rate limits, and token/context constraints.
 - Avoid cross-model claims when model runs used different scorer semantics or materially different prompts/configs.
@@ -523,6 +531,7 @@ Completed work is summarized in the background sections above rather than repeat
 - Model smoke tests are unblocked for closed providers with credentials in `.env`; local Qwen runs now require Ollama's native LiteLLM `ollama_chat/` route with `think=false`, not the OpenAI-compatible `/v1` route.
 - The direct Gan S0 variant and runtime metadata fields are implemented, so Qwen can now join model comparisons only under latency-gated direct-extraction configs.
 - Qwen3.5:9b can run direct extraction and tiny direct BootstrapFewShot, but unconstrained ChainOfThought is very slow and `ChainOfThought + BootstrapFewShot` did not complete under `max_tokens=1536`.
+- Because plain `BootstrapFewShot` was not enough to justify a local-Qwen policy shift, the next few-shot comparison should explicitly include `LabeledFewShot` as the simple baseline and `BootstrapFewShotWithRandomSearch` / `BootstrapRS` as the larger-data search baseline.
 - Qwen3.6:35b can run direct extraction on a tiny cap, but because it was observed at 74% CPU / 26% GPU residency, avoid reasoning and optimizer-expanded prompts except for explicitly scheduled overnight experiments.
 - The overnight Gan queue promoted Qwen3.6:35b direct extraction from a tiny-cap pace gate to a full fixed-validation reference run. The current local 35B bottleneck is canonical Gan label control and evidence-span behavior, not broad output-budget starvation.
 - Max-budget follow-up corrected the Qwen policy: both local Qwen models report 262144 context, and Qwen recommends max_tokens=81920 for complex benchmarks. New max-budget configs set `max_tokens=81920`, `num_ctx=262144`, and `think=false`. Qwen3.5:9b `ChainOfThought + BootstrapFewShot` then completed but remained very slow at 388.58 prediction seconds/record with 66.7% schema validity on a 3-record cap. Qwen3.6:35b completed direct and ChainOfThought one-record full-context smokes at 35.30s and 96.29s respectively, with Ollama reporting 79% CPU / 21% GPU residency.
@@ -546,5 +555,6 @@ Completed work is summarized in the background sections above rather than repeat
 2. Optional: matched **direct-only full validation** on GPT 4.1-mini for strict ablation vs verify-repair v2.
 3. Optional: rerun Qwen3.6:35b direct full validation with post-guardrail bridge (`configs/experiments/gan_s0_qwen35b_direct_full_validation_guardrails.json`).
 4. Keep local `Qwen3.6:35b` on direct extraction; treat GEPA transfer as explicitly scheduled stress-test work only.
+5. Ready when we want the next optimizer ablation: run the Gan S0 few-shot baseline ladder with `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` / `BootstrapRS` on a hosted path first.
 
 Verify-repair v2 full validation is complete and competitive with the synthesis BootstrapFewShot baseline on label and evidence metrics at ~2× latency. Monolithic ExECT S0/S1 remains the broader-schema anchor.

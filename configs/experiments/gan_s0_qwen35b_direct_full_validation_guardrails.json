@@ -1,0 +1,31 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_qwen35b_direct_full_validation_guardrails",
+  "hypothesis": "Full-validation rerun of Qwen3.6:35b direct extraction with post-canonicalization and evidence guardrails to quantify invalid-label and evidence deltas against the pre-guardrail overnight baseline.",
+  "metric_caveats": [
+    "This full-validation run quantifies post-guardrail direct-path behavior against the pre-guardrail overnight baseline runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z.",
+    "Artifact-bridge repairs for few/several, hyphen/or ranges, quarter/fortnight units, and evidence-length guardrails are diagnostic and tagged separately from model-supplied outputs.",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA under the Qwen DSPy latency policy.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "Record local Ollama residency/offload separately when inspecting this run.",
+    "This is not a published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_qwen35b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_direct_guardrails_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}
