@@ -95,7 +95,7 @@ No active ready card is currently foregrounded in this plan.
 
 ## In Progress
 
-No active card is currently claimed in this plan.
+No active in-progress card is currently claimed.
 
 ## Review
 
@@ -104,6 +104,30 @@ No active review card is claimed in this plan.
 ## Done
 
 Completed work is summarized in the background sections above rather than repeated as foreground cards.
+
+### Compare hosted-path Gan S0 GEPA against synthesis baseline and decide next path
+
+- Outcome: Complete. Comparison document `docs/gan_s0_gepa_vs_synthesis_decision_20260519.md` analyzes GEPA cap5 prompt length (3,249 chars / 508 words), label metrics, evidence support, and runtime against the synthesis-backed BootstrapFewShot baseline. Decision: **pivot to verifier/repair**, do not scale GEPA on GPT 4.1-mini.
+- Validation: Artifact inspection of `runs/gan_s0_gepa_direct_cap5_gpt4_1_mini_20260519T054057Z` and documented synthesis baseline. Qwen GEPA probes corroborate prompt-bloat pattern.
+- Notes: GEPA trades label accuracy for schema validity and produces bloated instructions. Evidence support is already solved on the direct path. Semantic failures require an explicit verifier/repair variant.
+
+### Implement Gan S0 evidence-aware verifier/repair module
+
+- Outcome: Complete. The `gan_frequency_s0_direct_verify_repair` variant is implemented as a two-stage DSPy pipeline (`GanFrequencyS0VerifyRepairModule`) with auditable `confirm`/`repair`/`abstain` metadata. Capped real-model runs compared extraction-only versus verify-repair on 25 matched records.
+- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py`; dry-runs and real-model runs `runs/gan_s0_direct_cap25_gpt4_1_mini_20260519T081439Z` and `runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T081441Z`; inspection note `docs/gan_s0_verify_repair_cap25_inspection_20260519.md`.
+- Notes: Post-quote-fix schema validity reached 92.0% for both variants. Verify-repair improved monthly-frequency (+4.3 pp) and Purist (+4.4 pp) but hurt normalized-label exact (-4.3 pp) and evidence support (-3.0 pp). The verifier misapplied the `seizure free` canonicality rule and over-repaired to `unknown`. A prompt v2 refinement is needed before promotion.
+
+### Tighten Gan S0 verifier/repair prompt v2
+
+- Outcome: Complete. `GanFrequencyS0VerifierSignature` v2 documents canonical `seizure free for N unit` (N ≥ 6 months), confirm-vs-repair-vs-abstain policy, evidence preservation, arithmetic guardrails, and anti-over-repair guidance. Config `configs/experiments/gan_s0_verify_repair_cap25_gpt4_1_mini.json` uses `gan_frequency_s0_direct_verify_repair_v2`.
+- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py tests/test_kanban_visuals.py`; cap-25 rerun `runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T084511Z`; inspection `docs/gan_s0_verify_repair_cap25_v2_inspection_20260519.md`.
+- Notes: v2 meets the cap-25 promotion gate vs direct: normalized-label exact tied at 26.1%, evidence support 91.3% (+56.5 pp), `gan_4956` correct label confirmed instead of destroyed. v1 inspection: `docs/gan_s0_verify_repair_cap25_inspection_20260519.md`.
+
+### Run Gan S0 verify-repair v2 full validation
+
+- Outcome: Complete. Full 299-record GPT 4.1-mini validation run for verify-repair v2 with config `configs/experiments/gan_s0_verify_repair_full_validation_gpt4_1_mini.json`.
+- Validation: `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z`; inspection `docs/gan_s0_verify_repair_full_validation_v2_20260519.md`; `test_verify_repair_full_validation_config_has_no_cap`.
+- Notes: vs synthesis BootstrapFewShot baseline — normalized exact 52.9% (+1.4 pp), monthly 65.4% (+2.5 pp), Purist 72.7% (+2.6 pp), Pragmatic 79.2% (+5.3 pp), evidence support 92.7% (+2.8 pp); schema validity 96.7% (−0.6 pp). Verifier decisions: 242 confirm, 53 repair, 4 abstain. Runtime ~2.81 s/record (~14 min total).
 
 ### Add Gan S0 GEPA feedback metric and capped optimizer config
 
@@ -122,6 +146,12 @@ Completed work is summarized in the background sections above rather than repeat
 - Outcome: Complete. The Gan S0 artifact bridge now strips prompt-footer leakage from evidence quotes and truncates over-long evidence to the longest note-contained prefix, tagging repairs with `evidence_repaired:prompt_footer_stripped` and `evidence_repaired:truncated_to_note_span`.
 - Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py`; signature guidance now asks for the shortest exact contiguous quote without wrapper text.
 - Notes: This targets the `gan_11044` failure mode observed when raising completion caps caused prompt-footer spillage instead of fixing truncation.
+
+### Re-run Qwen3.6:35b direct cap-25 post-guardrails validation
+
+- Outcome: Complete. A fresh 25-record Qwen3.6:35b direct validation run measured post-canonicalization and evidence-guardrail behavior under unchanged `gan_frequency_deterministic_v1` scoring.
+- Validation: Config `configs/experiments/gan_s0_qwen35b_direct_cap25_guardrails_validation.json`; dry-run and capped run `runs/gan_s0_qwen35b_direct_cap25_guardrails_validation_20260519T071524Z`; inspection note `docs/gan_s0_qwen35b_guardrails_cap25_validation_20260519.md`.
+- Notes: On this cap, schema validity was `84.0%` with four `normalization.invalid_label` failures (incomplete cluster, quoted label, forbidden `hour` units). Evidence quote support on valid predictions was `100.0%`. Invalid-label shape matches the documented semantic repair boundary rather than the new surface canonicalizations. Optional follow-up: full-validation rerun against the overnight 35B baseline artifact when available.
 
 ### Capture DSPy GEPA and ReAct best-practices deep dive
 
@@ -270,15 +300,6 @@ Completed work is summarized in the background sections above rather than repeat
 - Notes: The environment blocker is resolved for Gan S0 local-Qwen runs. Keep Qwen3.6:35b on direct extraction only; do not include routine `ChainOfThought` or `BootstrapFewShot` comparisons unless they are explicitly labeled as overnight stress tests.
 
 ## Backlog
-
-### Implement Gan evidence-aware verifier and repair module
-
-- Outcome: A DSPy verifier/repair step can accept Gan S0 predictions, source text, and initial evidence, then either confirm, repair, or abstain with auditable metadata.
-- Dependencies: Explicit verifier/repair design choice after the current extraction-only Gan path is better characterized.
-- Parallelizable: after decision and fixture cards.
-- Owner: unassigned.
-- Validation: Mocked-LM tests plus a capped real-model run comparing extraction-only versus extract-verify-repair.
-- Notes: The module should target semantic failures that deterministic surface repair should not handle: temporal-window errors, no-reference/unknown confusion, unsupported evidence quotes, and cluster semantics.
 
 ### Add Gan abstention calibration
 
@@ -521,10 +542,9 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Recommended Next Pull
 
-1. Re-run a capped or full Gan S0 Qwen3.6:35b direct validation to measure whether the new canonicalization and evidence guardrails reduce `normalization.invalid_label` and evidence-support failures without changing scorer semantics.
-2. Re-run the Gan S0 GEPA capped diagnostic with the richer feedback signal and compare prompt length, label metrics, and evidence support against the synthesis-backed baseline before opening the ReAct temporal-tools probe.
-3. Keep local `Qwen3.6:35b` on the direct-extraction path; treat GEPA transfer as later stress-test work unless a compact benchmark-contract-preserving instruction first emerges on the hosted path.
-4. Decide whether a Gan verifier/repair or abstention-calibration variant is justified after the updated direct-path controls are measured on validation artifacts.
-5. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor; use ExECT GEPA only after the Gan GEPA path proves useful enough to justify the follow-on work.
+1. **Error-read verify-repair v2 full validation** — repair decisions (53 records), invalid labels (10), and label-mismatch clusters; artifact `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z`; note `docs/gan_s0_verify_repair_full_validation_v2_20260519.md`.
+2. Optional: matched **direct-only full validation** on GPT 4.1-mini for strict ablation vs verify-repair v2.
+3. Optional: rerun Qwen3.6:35b direct full validation with post-guardrail bridge (`configs/experiments/gan_s0_qwen35b_direct_full_validation_guardrails.json`).
+4. Keep local `Qwen3.6:35b` on direct extraction; treat GEPA transfer as explicitly scheduled stress-test work only.
 
-The plan is now organized as a live execution board: the Gan S0 direct-path cleanup slice is complete pending validation reruns, GEPA feedback remains the next optimizer experiment gate, completed measurements and negative-result ablations live in history rather than the foreground, and the monolithic ExECT S0/S1 baseline stays parked as the broader-schema anchor for later optimization.
+Verify-repair v2 full validation is complete and competitive with the synthesis BootstrapFewShot baseline on label and evidence metrics at ~2× latency. Monolithic ExECT S0/S1 remains the broader-schema anchor.

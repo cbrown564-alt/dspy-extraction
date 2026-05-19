@@ -40,8 +40,10 @@ from clinical_extraction.programs.exect_s0_s1 import (
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    GanFrequencyS0VerifyRepairModule,
     build_gan_s0_module,
     compile_gan_s0_module_gepa,
     compile_gan_s0_module,
@@ -310,18 +312,18 @@ def _prompts_data(
     structured_output_strategy: str,
 ) -> dict[str, Any]:
     if dataset == "gan_2026":
+        module_name = "GanFrequencyS0Module"
+        predictor_name = "dspy.ChainOfThought"
+        if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
+            module_name = "GanFrequencyS0DirectModule"
+            predictor_name = "dspy.Predict"
+        elif program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
+            module_name = "GanFrequencyS0VerifyRepairModule"
+            predictor_name = "dspy.Predict + dspy.Predict"
         return {
             "signature": "GanFrequencyS0Signature",
-            "module": (
-                "GanFrequencyS0DirectModule"
-                if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
-                else "GanFrequencyS0Module"
-            ),
-            "predictor": (
-                "dspy.Predict"
-                if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
-                else "dspy.ChainOfThought"
-            ),
+            "module": module_name,
+            "predictor": predictor_name,
             "program_variant": program_variant,
             "prompt_version": prompt_version,
             "synthesis_guidance": GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
@@ -420,7 +422,7 @@ def _load_env_file(path: Path) -> None:
 
 
 def _write_compiled_state(
-    module: GanFrequencyS0Module | GanFrequencyS0DirectModule,
+    module: GanFrequencyS0Module | GanFrequencyS0DirectModule | GanFrequencyS0VerifyRepairModule,
     compiled_state_path: Path,
 ) -> None:
     dump_state = getattr(module, "dump_state", None)

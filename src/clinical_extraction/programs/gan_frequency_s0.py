@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from collections.abc import Callable
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 import dspy
 
@@ -21,6 +21,10 @@ GAN_FREQUENCY_S0_FIELD = "seizure_frequency_number"
 GAN_FREQUENCY_S0_SCHEMA_LEVEL = "gan_frequency_s0"
 GAN_FREQUENCY_S0_VARIANT = "gan_frequency_s0_single_pass"
 GAN_FREQUENCY_S0_DIRECT_VARIANT = "gan_frequency_s0_direct_single_pass"
+GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT = "gan_frequency_s0_direct_verify_repair"
+GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
+    "gan_frequency_s0_direct_verify_repair_v2"
+)
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
 
@@ -109,6 +113,148 @@ class GanFrequencyS0DirectModule(dspy.Module):
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(note_text=note_text)
+
+
+class GanFrequencyS0VerifierSignature(dspy.Signature):
+    """Verify and optionally repair a Gan seizure-frequency prediction.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    Review the initial prediction against the source note. Prefer confirm or
+    repair toward a better canonical label. Abstain only as a last resort.
+
+    Canonical Gan vocabulary (singular units: day, week, month, year):
+    - N per unit, N to M per unit, N per M unit
+    - N cluster per unit, M per cluster
+    - seizure free for N unit — VALID and canonical when N is at least 6 months
+      (e.g. seizure free for 7 month, seizure free for 35 year)
+    - unknown — note discusses seizures but frequency cannot be quantified
+    - no seizure frequency reference — note lacks usable frequency information
+
+    Decision policy:
+    - confirm: initial label is already canonical, note-supported, and evidence is
+      an exact contiguous note substring. Do not add quotes or wrapper punctuation.
+    - repair: fix a specific error to a strictly better canonical label supported
+      by the note. Do not repair imprecise-but-valid labels to unknown.
+    - abstain: last resort only — set final_label to null when no confident
+      canonical label is supported.
+
+    Confirm rules (do not over-repair):
+    - Keep correct seizure-free labels such as seizure free for 7 month.
+    - seizure free for N unit is canonical when seizure freedom is >= 6 months;
+      never reject it as non-canonical or replace it with no seizure frequency
+      reference.
+    - If the initial label and evidence already match the note, confirm unchanged.
+
+    Repair rules:
+    - Incomplete cluster labels: add the per-cluster count when the note states it.
+    - Short seizure-free periods (< 6 months): compute a rate from total events over
+      the described period; do not emit unknown unless the note is truly ambiguous.
+    - Imprecise but valid labels (e.g. multiple per week): sharpen toward the
+      nearest supported canonical form or confirm; do not collapse to unknown.
+    - Unknown vs no-reference: use unknown when seizures are discussed but not
+      quantifiable; use no-reference only when the note lacks frequency information.
+
+    Evidence rules:
+    - final_evidence must be the shortest exact contiguous substring of note_text.
+    - On confirm, preserve initial_evidence when it already supports the label.
+    - On repair, update evidence only when needed to support the repaired label.
+    - Never replace a note-contained quote with an unsupported or invented quote.
+
+    Arithmetic and temporal guardrails:
+    - Do not invent monthly rates without explicit support (e.g. one seizure in
+      three weeks → 1 per 3 week, not 3 per month).
+    - Apply the 6-month seizure-free threshold before labeling seizure free.
+    - For year-to-date counts, use months elapsed since January as denominator.
+
+    Target failure modes:
+    - Incomplete cluster labels (missing per-cluster count)
+    - Temporal-window or denominator errors (year-to-date, quarter misinterpretation)
+    - Short seizure-free periods labeled as seizure free
+    - Misrejecting valid seizure free for N unit labels
+    - Over-repairing to unknown or no seizure frequency reference
+    - Unknown vs no seizure frequency reference confusion
+    - Non-canonical or unsupported evidence quotes
+    """
+
+    note_text: str = dspy.InputField(desc="Clinical neurology note text")
+    initial_label: Optional[str] = dspy.InputField(
+        desc="Initial predicted seizure-frequency label"
+    )
+    initial_evidence: Optional[str] = dspy.InputField(
+        desc="Initial predicted evidence quote"
+    )
+    final_label: Optional[str] = dspy.OutputField(
+        desc=(
+            "Confirmed or repaired canonical Gan label without wrapper quotes. "
+            "Formats: N per unit, N to M per unit, N per M unit, "
+            "N cluster per unit, M per cluster, seizure free for N unit (>= 6 months), "
+            "unknown, no seizure frequency reference, or null to abstain."
+        )
+    )
+    final_evidence: Optional[str] = dspy.OutputField(
+        desc=(
+            "Shortest exact contiguous quote from note_text supporting final_label. "
+            "Preserve initial_evidence on confirm when it already matches the note. "
+            "Null only when abstaining or final_label is no seizure frequency reference."
+        )
+    )
+    decision: str = dspy.OutputField(
+        desc=(
+            "confirm when the initial prediction is already correct; "
+            "repair only for a strictly better supported canonical label; "
+            "abstain only as a last resort"
+        )
+    )
+    reason: str = dspy.OutputField(
+        desc="Brief explanation citing the note span and why confirm/repair/abstain"
+    )
+
+
+class GanFrequencyS0VerifierModule(dspy.Module):
+    """Standalone verifier for Gan S0 predictions."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.verify = dspy.Predict(GanFrequencyS0VerifierSignature)
+
+    def forward(
+        self,
+        note_text: str,
+        initial_label: str | None,
+        initial_evidence: str | None,
+    ) -> dspy.Prediction:
+        return self.verify(
+            note_text=note_text,
+            initial_label=initial_label,
+            initial_evidence=initial_evidence,
+        )
+
+
+class GanFrequencyS0VerifyRepairModule(dspy.Module):
+    """Gan S0 module that extracts then verifies/repairs the prediction."""
+
+    def __init__(self, extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT) -> None:
+        super().__init__()
+        self.extractor = build_gan_s0_module(extractor_variant)
+        self.verifier = GanFrequencyS0VerifierModule()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        initial = self.extractor(note_text=note_text)
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=verified.final_label,
+            evidence_text=verified.final_evidence,
+            verifier_decision=verified.decision,
+            verifier_reason=verified.reason,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -530,11 +676,13 @@ def compile_gan_s0_module_gepa(
 
 def build_gan_s0_module(
     program_variant: str,
-) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
+) -> GanFrequencyS0Module | GanFrequencyS0DirectModule | GanFrequencyS0VerifyRepairModule:
     if program_variant == GAN_FREQUENCY_S0_VARIANT:
         return GanFrequencyS0Module()
     if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
         return GanFrequencyS0DirectModule()
+    if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
+        return GanFrequencyS0VerifyRepairModule()
     raise ValueError(f"Unsupported Gan S0 program variant: {program_variant!r}")
 
 
@@ -577,7 +725,7 @@ _ABSTAIN_STRINGS = frozenset({"none", "null", ""})
 
 
 def _predict_record(
-    module: GanFrequencyS0Module | GanFrequencyS0DirectModule,
+    module: GanFrequencyS0Module | GanFrequencyS0DirectModule | GanFrequencyS0VerifyRepairModule,
     record: GanRecord,
     *,
     program_variant: str,
@@ -601,6 +749,16 @@ def _predict_record(
     evidence_text, evidence_flags = _guard_evidence_text(record.note_text, evidence_text)
     quality_flags.extend(evidence_flags)
 
+    metadata: dict[str, Any] = {"program_variant": program_variant}
+    if hasattr(pred, "verifier_decision"):
+        metadata["verifier_decision"] = pred.verifier_decision
+    if hasattr(pred, "verifier_reason"):
+        metadata["verifier_reason"] = pred.verifier_reason
+    if hasattr(pred, "initial_label"):
+        metadata["initial_label"] = pred.initial_label
+    if hasattr(pred, "initial_evidence"):
+        metadata["initial_evidence"] = pred.initial_evidence
+
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,
         raw_value=label,
@@ -616,7 +774,7 @@ def _predict_record(
         dataset="gan_2026",
         schema_level=GAN_FREQUENCY_S0_SCHEMA_LEVEL,
         values=[value],
-        metadata={"program_variant": program_variant},
+        metadata=metadata,
     )
 
 
@@ -659,6 +817,11 @@ def _normalize_predicted_label(label: str | None) -> str | None:
         return None
 
     stripped = label.strip()
+    # Strip outer quotes from any fully-quoted label (model sometimes wraps
+    # output in single or double quotes). This is surface normalization only.
+    if len(stripped) >= 2 and stripped[0] in '"\'' and stripped[-1] == stripped[0]:
+        stripped = stripped[1:-1].strip()
+
     quoted_special = _QUOTED_SPECIAL_LABEL_RE.match(stripped)
     if quoted_special:
         return quoted_special.group("label").lower()

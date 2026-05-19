@@ -12,7 +12,7 @@ def test_parse_kanban_plan_extracts_standard_cards() -> None:
     assert "Draft ExECT S0/S1 baseline design" in titles
     assert "Gan extract-verify-repair ablation" in titles
     assert "Design section-aware versus monolithic ExECT ablation" in titles
-    assert plan.recommended_next_pull[0].startswith("Re-run a capped or full Gan S0 Qwen3.6:35b direct validation")
+    assert "verify-repair" in plan.recommended_next_pull[0].lower()
     assert plan.roadmap["Phase 1: Optimize Gan S0 As The Active Reference Task"]
 
 

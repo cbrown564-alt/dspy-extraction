@@ -20,6 +20,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
+    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
 
 
@@ -433,3 +434,47 @@ def test_constrained_json_decoding_strategy_note_records_decision_and_fallback()
     assert "Pydantic validation" in note
     assert "strict JSON prompt fallback" in note
     assert "GanFrequencyS0Signature" in note
+
+
+def test_experiment_config_accepts_verify_repair_variant():
+    payload = json.loads(
+        Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    payload["program_variant"] = GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    payload["controls"]["verifier_policy"] = "dspy_predict_verifier_after_extraction"
+
+    config = ExperimentConfig.model_validate(payload)
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.controls.verifier_policy == "dspy_predict_verifier_after_extraction"
+
+
+def test_verify_repair_full_validation_config_has_no_cap():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_verify_repair_full_validation_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "gan_s0_verify_repair_full_validation_gpt4_1_mini"
+    )
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2"
+    assert config.max_records is None
+    assert config.optimizer is None
+    assert "full fixed synthetic validation" in " ".join(config.metric_caveats).lower()
+
+
+def test_verify_repair_cap25_config_uses_v2_prompt():
+    config = ExperimentConfig.model_validate(
+        json.loads(
+            Path(
+                "configs/experiments/gan_s0_verify_repair_cap25_gpt4_1_mini.json"
+            ).read_text(encoding="utf-8")
+        )
+    )
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2"

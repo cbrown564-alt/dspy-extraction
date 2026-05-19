@@ -1,0 +1,30 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_direct_cap25_gpt4_1_mini",
+  "hypothesis": "Direct single-pass Gan S0 extraction on a 25-record cap establishes the extraction-only baseline for comparison against the verify-repair variant on matched records.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This 25-record cap compares direct extraction-only against verify-repair on the same records.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "Artifact-bridge surface normalization is applied identically to both variants.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_direct_guardrails_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

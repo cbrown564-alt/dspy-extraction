@@ -17,6 +17,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
+    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
 from clinical_extraction.schemas import FrozenModel
 
@@ -115,6 +116,7 @@ class ExperimentConfig(FrozenModel):
     program_variant: Literal[
         "gan_frequency_s0_single_pass",
         "gan_frequency_s0_direct_single_pass",
+        "gan_frequency_s0_direct_verify_repair",
         "exect_s0_s1_field_family_single_pass",
         "exect_s0_s1_field_family_section_aware",
     ] = GAN_FREQUENCY_S0_VARIANT
@@ -145,7 +147,7 @@ class ExperimentConfig(FrozenModel):
         expected_contracts = {
             "gan_2026": (
                 GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-                {GAN_FREQUENCY_S0_VARIANT, GAN_FREQUENCY_S0_DIRECT_VARIANT},
+                {GAN_FREQUENCY_S0_VARIANT, GAN_FREQUENCY_S0_DIRECT_VARIANT, GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT},
                 GAN_FREQUENCY_S0_SCORER,
             ),
             "exect_v2": (

@@ -8,8 +8,13 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_FIELD,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
+    GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    GanFrequencyS0VerifyRepairModule,
+    GanFrequencyS0VerifierModule,
+    GanFrequencyS0VerifierSignature,
     build_gan_s0_module,
     compile_gan_s0_module,
     compile_gan_s0_module_gepa,
@@ -100,6 +105,10 @@ def test_build_gan_s0_module_dispatches_program_variants():
     assert isinstance(
         build_gan_s0_module(GAN_FREQUENCY_S0_DIRECT_VARIANT),
         GanFrequencyS0DirectModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT),
+        GanFrequencyS0VerifyRepairModule,
     )
 
 
@@ -822,3 +831,132 @@ def test_gan_frequency_s0_run_metadata_accepts_direct_variant():
     )
 
     assert metadata.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+
+
+def test_gan_s0_verifier_signature_documents_v2_policy_guardrails():
+    doc = (GanFrequencyS0VerifierSignature.__doc__ or "").lower()
+
+    assert "seizure free for" in doc
+    assert "6 month" in doc
+    assert "last resort" in doc
+    assert "preserve" in doc and "evidence" in doc
+    assert "1 per 3 week" in doc or "per 3 week" in doc
+    assert GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION.endswith("_v2")
+
+
+def test_gan_s0_verify_repair_module_runs_extraction_then_verification():
+    record = next(
+        r for r in load_gan_records()
+        if r.gold_evidence and r.gold_evidence in r.note_text
+    )
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "1 cluster per week",
+            "evidence_text": "one cluster each week",
+        },
+        {
+            "final_label": "1 cluster per week, 3 per cluster",
+            "final_evidence": "one cluster each week, usually three seizures per cluster",
+            "decision": "repair",
+            "reason": "Initial cluster label was missing the per-cluster count.",
+        },
+    ])
+
+    module = GanFrequencyS0VerifyRepairModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
+    )
+
+    assert prediction_set.metadata["program_variant"] == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["program_variant"] == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert pred.metadata["verifier_decision"] == "repair"
+    assert "per-cluster count" in pred.metadata["verifier_reason"]
+    assert pred.metadata["initial_label"] == "1 cluster per week"
+    assert pred.values[0].raw_value == "1 cluster per week, 3 per cluster"
+
+
+def test_gan_s0_verify_repair_module_confirms_valid_prediction():
+    record = next(
+        r for r in load_gan_records()
+        if r.gold_evidence and r.gold_evidence in r.note_text
+    )
+    _configure_dummy([
+        {
+            "seizure_frequency_number": record.gold_label,
+            "evidence_text": record.gold_evidence,
+        },
+        {
+            "final_label": record.gold_label,
+            "final_evidence": record.gold_evidence,
+            "decision": "confirm",
+            "reason": "Initial prediction matches the note exactly.",
+        },
+    ])
+
+    module = GanFrequencyS0VerifyRepairModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["verifier_decision"] == "confirm"
+    assert pred.values[0].normalized_value == record.gold_label
+
+
+def test_gan_s0_verify_repair_module_abstains_when_uncertain():
+    record = load_gan_records()[0]
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "2 per week",
+            "evidence_text": "two seizures per week",
+        },
+        {
+            "final_label": None,
+            "final_evidence": None,
+            "decision": "abstain",
+            "reason": "The note does not clearly support a quantified frequency.",
+        },
+    ])
+
+    module = GanFrequencyS0VerifyRepairModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["verifier_decision"] == "abstain"
+    assert pred.values[0].raw_value is None
+    assert "abstained" in pred.values[0].quality_flags
+
+
+def test_gan_s0_verifier_module_is_callable_standalone():
+    _configure_dummy([{
+        "final_label": "3 per week",
+        "final_evidence": "three seizures weekly",
+        "decision": "repair",
+        "reason": "Corrected denominator.",
+    }])
+
+    verifier = GanFrequencyS0VerifierModule()
+    result = verifier(
+        note_text="Patient reports three seizures every week.",
+        initial_label="3 per month",
+        initial_evidence="three seizures every week",
+    )
+
+    assert result.final_label == "3 per week"
+    assert result.decision == "repair"
+    assert result.reason == "Corrected denominator."
