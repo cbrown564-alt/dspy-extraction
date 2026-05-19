@@ -31,15 +31,21 @@ StructuredOutputStrategy = Literal[
 class OptimizerConfig(FrozenModel):
     """DSPy optimizer hyperparameters for module compilation."""
 
-    name: Literal["BootstrapFewShot", "GEPA"] = "BootstrapFewShot"
+    name: Literal[
+        "BootstrapFewShot",
+        "BootstrapFewShotWithRandomSearch",
+        "LabeledFewShot",
+        "GEPA",
+    ] = "BootstrapFewShot"
     metric_name: Literal[
         "pragmatic_category",
         "synthesis_exact_with_evidence",
         "synthesis_exact_with_evidence_feedback",
     ] = "pragmatic_category"
-    max_bootstrapped_demos: int = Field(default=4, ge=1)
+    max_bootstrapped_demos: int = Field(default=4, ge=0)
     max_labeled_demos: int = Field(default=0, ge=0)
     max_rounds: int = Field(default=1, ge=1)
+    num_candidate_programs: int = Field(default=16, ge=1)
     trainset_size: int | None = Field(default=None, gt=0)
     auto: Literal["light", "medium", "heavy"] | None = None
     max_full_evals: int | None = Field(default=None, gt=0)
@@ -56,10 +62,25 @@ class OptimizerConfig(FrozenModel):
 
     @model_validator(mode="after")
     def validate_optimizer_settings(self) -> OptimizerConfig:
-        if self.name == "BootstrapFewShot":
+        if self.name == "LabeledFewShot":
+            if self.max_labeled_demos < 1:
+                raise ValueError(
+                    "LabeledFewShot optimizer configs must set max_labeled_demos >= 1."
+                )
             if self.metric_name == "synthesis_exact_with_evidence_feedback":
                 raise ValueError(
-                    "BootstrapFewShot optimizer configs must use a scalar metric."
+                    "LabeledFewShot optimizer configs must use a scalar metric."
+                )
+            return self
+
+        if self.name in {"BootstrapFewShot", "BootstrapFewShotWithRandomSearch"}:
+            if self.max_bootstrapped_demos < 1:
+                raise ValueError(
+                    f"{self.name} optimizer configs must set max_bootstrapped_demos >= 1."
+                )
+            if self.metric_name == "synthesis_exact_with_evidence_feedback":
+                raise ValueError(
+                    f"{self.name} optimizer configs must use a scalar metric."
                 )
             return self
 

@@ -733,6 +733,44 @@ def test_make_gan_synthesis_dspy_examples_prioritizes_locatable_evidence():
     assert first.evidence_text in first.note_text
 
 
+def test_compile_gan_s0_module_labeled_fewshot_returns_callable_module():
+    records = load_gan_records()[:4]
+    compiled = compile_gan_s0_module(
+        records,
+        optimizer_name="LabeledFewShot",
+        max_labeled_demos=2,
+    )
+
+    assert isinstance(compiled, GanFrequencyS0Module)
+    _, predictor = compiled.named_predictors()[0]
+    assert len(predictor.demos) == 2
+
+
+def test_compile_gan_s0_module_bootstrap_rs_uses_random_search_optimizer(monkeypatch):
+    records = load_gan_records()[:2]
+    captured: dict[str, object] = {}
+
+    class FakeBootstrapRS:
+        def __init__(self, **kwargs):
+            captured.update(kwargs)
+
+        def compile(self, module, trainset):
+            captured["trainset"] = trainset
+            return module
+
+    monkeypatch.setattr(dspy, "BootstrapFewShotWithRandomSearch", FakeBootstrapRS)
+
+    compile_gan_s0_module(
+        records,
+        optimizer_name="BootstrapFewShotWithRandomSearch",
+        num_candidate_programs=6,
+        optimizer_metric="pragmatic_category",
+    )
+
+    assert captured["num_candidate_programs"] == 6
+    assert captured["trainset"] is not None
+
+
 def test_compile_gan_s0_module_bootstrap_returns_callable_module():
     """BootstrapFewShot compilation with DummyLM produces a callable compiled module."""
     records = load_gan_records()[:4]

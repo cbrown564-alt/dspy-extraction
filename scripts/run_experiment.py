@@ -178,9 +178,11 @@ def main(argv: list[str] | None = None) -> int:
             module = compile_gan_s0_module(
                 dev_records,
                 program_variant=config.program_variant,
+                optimizer_name=config.optimizer.name,
                 max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
                 max_labeled_demos=config.optimizer.max_labeled_demos,
                 max_rounds=config.optimizer.max_rounds,
+                num_candidate_programs=config.optimizer.num_candidate_programs,
                 optimizer_metric=config.optimizer.metric_name,
             )
         compile_duration_seconds = perf_counter() - compile_started
@@ -467,6 +469,26 @@ def _print_optimizer_plan(optimizer: Any | None) -> None:
         )
         return
 
+    if optimizer.name == "LabeledFewShot":
+        print(
+            "Optimizer: LabeledFewShot "
+            f"(max_labeled_demos={optimizer.max_labeled_demos}, "
+            f"trainset_size={optimizer.trainset_size})"
+        )
+        return
+
+    if optimizer.name == "BootstrapFewShotWithRandomSearch":
+        print(
+            "Optimizer: BootstrapFewShotWithRandomSearch "
+            f"(metric={optimizer.metric_name}, "
+            f"max_bootstrapped_demos={optimizer.max_bootstrapped_demos}, "
+            f"max_labeled_demos={optimizer.max_labeled_demos}, "
+            f"max_rounds={optimizer.max_rounds}, "
+            f"num_candidate_programs={optimizer.num_candidate_programs}, "
+            f"trainset_size={optimizer.trainset_size})"
+        )
+        return
+
     print(
         "Optimizer: BootstrapFewShot "
         f"(metric={optimizer.metric_name}, "
@@ -485,6 +507,24 @@ def _print_compile_message(optimizer: Any, dev_record_count: int) -> None:
             f"auto={optimizer.auto}, "
             f"max_full_evals={optimizer.max_full_evals}, "
             f"max_metric_calls={optimizer.max_metric_calls})..."
+        )
+        return
+
+    if optimizer.name == "LabeledFewShot":
+        print(
+            f"Compiling with LabeledFewShot on {dev_record_count} dev records "
+            f"(max_labeled_demos={optimizer.max_labeled_demos})..."
+        )
+        return
+
+    if optimizer.name == "BootstrapFewShotWithRandomSearch":
+        print(
+            f"Compiling with BootstrapFewShotWithRandomSearch on {dev_record_count} dev records "
+            f"(metric={optimizer.metric_name}, "
+            f"max_bootstrapped_demos={optimizer.max_bootstrapped_demos}, "
+            f"max_labeled_demos={optimizer.max_labeled_demos}, "
+            f"max_rounds={optimizer.max_rounds}, "
+            f"num_candidate_programs={optimizer.num_candidate_programs})..."
         )
         return
 

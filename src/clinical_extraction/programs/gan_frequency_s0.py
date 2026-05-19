@@ -589,39 +589,70 @@ GAN_FREQUENCY_S0_OPTIMIZER_METRICS = {
 }
 
 
+def _gan_s0_optimizer_trainset(
+    records: list[GanRecord],
+    *,
+    optimizer_metric: str,
+) -> list[dspy.Example]:
+    if optimizer_metric == "synthesis_exact_with_evidence":
+        return make_gan_synthesis_dspy_examples(records)
+    return make_gan_dspy_examples(records)
+
+
 def compile_gan_s0_module(
     records: list[GanRecord],
     *,
     program_variant: str = GAN_FREQUENCY_S0_VARIANT,
+    optimizer_name: str = "BootstrapFewShot",
     max_bootstrapped_demos: int = 4,
     max_labeled_demos: int = 0,
     max_rounds: int = 1,
+    num_candidate_programs: int = 16,
     optimizer_metric: str = "pragmatic_category",
 ) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
-    """Compile GanFrequencyS0Module with BootstrapFewShot on labeled training records.
+    """Compile a Gan S0 module with a few-shot DSPy optimizer.
 
-    Runs the teacher module on each record and keeps traces that pass
-    the selected optimizer metric as few-shot demonstrations. Returns the
-    compiled module with demos baked in.
+    Supports ``LabeledFewShot``, ``BootstrapFewShot``, and
+    ``BootstrapFewShotWithRandomSearch`` (``BootstrapRS``). LabeledFewShot
+    samples labeled demonstrations from the trainset without bootstrapping.
+    BootstrapFewShot keeps teacher traces that pass the optimizer metric.
+    BootstrapFewShotWithRandomSearch searches over candidate demo sets.
     """
+    trainset = _gan_s0_optimizer_trainset(records, optimizer_metric=optimizer_metric)
+    module = build_gan_s0_module(program_variant)
+
+    if optimizer_name == "LabeledFewShot":
+        optimizer = dspy.LabeledFewShot(k=max_labeled_demos)
+        return optimizer.compile(module, trainset=trainset)
+
     try:
         metric = GAN_FREQUENCY_S0_OPTIMIZER_METRICS[optimizer_metric]
     except KeyError as exc:
         allowed = ", ".join(sorted(GAN_FREQUENCY_S0_OPTIMIZER_METRICS))
         raise ValueError(f"Unknown optimizer_metric {optimizer_metric!r}; use {allowed}.") from exc
 
-    trainset = (
-        make_gan_synthesis_dspy_examples(records)
-        if optimizer_metric == "synthesis_exact_with_evidence"
-        else make_gan_dspy_examples(records)
-    )
+    if optimizer_name == "BootstrapFewShotWithRandomSearch":
+        optimizer = dspy.BootstrapFewShotWithRandomSearch(
+            metric=metric,
+            max_bootstrapped_demos=max_bootstrapped_demos,
+            max_labeled_demos=max_labeled_demos,
+            max_rounds=max_rounds,
+            num_candidate_programs=num_candidate_programs,
+        )
+        return optimizer.compile(module, trainset=trainset)
+
+    if optimizer_name != "BootstrapFewShot":
+        raise ValueError(
+            f"Unsupported few-shot optimizer {optimizer_name!r}; use "
+            "LabeledFewShot, BootstrapFewShot, or BootstrapFewShotWithRandomSearch."
+        )
+
     optimizer = dspy.BootstrapFewShot(
         metric=metric,
         max_bootstrapped_demos=max_bootstrapped_demos,
         max_labeled_demos=max_labeled_demos,
         max_rounds=max_rounds,
     )
-    module = build_gan_s0_module(program_variant)
     return optimizer.compile(module, trainset=trainset)
 
 

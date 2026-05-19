@@ -502,6 +502,62 @@ def test_verify_repair_full_validation_config_has_no_cap():
     assert "full fixed synthetic validation" in " ".join(config.metric_caveats).lower()
 
 
+@pytest.mark.parametrize(
+    "filename,optimizer_name,max_labeled_demos,max_bootstrapped_demos",
+    [
+        (
+            "gan_s0_ladder_labeled_fewshot_cap25_gpt4_1_mini.json",
+            "LabeledFewShot",
+            4,
+            0,
+        ),
+        (
+            "gan_s0_ladder_bootstrap_cap25_gpt4_1_mini.json",
+            "BootstrapFewShot",
+            4,
+            4,
+        ),
+        (
+            "gan_s0_ladder_bootstrap_rs_cap25_gpt4_1_mini.json",
+            "BootstrapFewShotWithRandomSearch",
+            4,
+            4,
+        ),
+    ],
+)
+def test_gan_s0_few_shot_ladder_configs_pin_direct_synthesis_contract(
+    filename,
+    optimizer_name,
+    max_labeled_demos,
+    max_bootstrapped_demos,
+):
+    config = load_experiment_config(Path("configs/experiments") / filename)
+
+    assert config.dataset == "gan_2026"
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_synthesis_v1"
+    assert config.max_records == 25
+    assert config.optimizer is not None
+    assert config.optimizer.name == optimizer_name
+    assert config.optimizer.metric_name == "synthesis_exact_with_evidence"
+    assert config.optimizer.trainset_size == 50
+    assert config.optimizer.max_labeled_demos == max_labeled_demos
+    assert config.optimizer.max_bootstrapped_demos == max_bootstrapped_demos
+    assert "direct single-pass path" in " ".join(config.metric_caveats).lower()
+
+
+def test_labeled_fewshot_optimizer_config_requires_positive_demo_count():
+    payload = json.loads(
+        Path(
+            "configs/experiments/gan_s0_ladder_labeled_fewshot_cap25_gpt4_1_mini.json"
+        ).read_text(encoding="utf-8")
+    )
+    payload["optimizer"]["max_labeled_demos"] = 0
+
+    with pytest.raises(ValidationError, match="max_labeled_demos"):
+        ExperimentConfig.model_validate(payload)
+
+
 def test_verify_repair_cap25_config_uses_v2_prompt():
     config = ExperimentConfig.model_validate(
         json.loads(

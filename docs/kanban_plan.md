@@ -91,14 +91,7 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 
 ## Ready
 
-### Run Gan S0 few-shot optimizer baseline ladder
-
-- Outcome: Compare `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` (`BootstrapRS`) on the fixed Gan S0 direct baseline so we can distinguish demo value, bootstrap value, and search value before making stronger optimizer claims.
-- Dependencies: Stable `gan_frequency_s0_direct_single_pass` artifact path; unchanged `gan_frequency_deterministic_v1` scorer; current synthesis guidance; capped Gan dev/validation slice.
-- Parallelizable: yes on hosted/faster models; local-Qwen transfer should wait until a hosted-path winner is identified.
-- Owner: unassigned.
-- Validation: Capped comparison report with compile time, prediction seconds per record, prompt length, selected demo counts, schema validity, evidence support, normalized/monthly/Purist/Pragmatic metrics, and artifact paths for each optimizer setting.
-- Notes: Treat `LabeledFewShot` as the simplest baseline. Prefer `BootstrapFewShotWithRandomSearch` over repeating plain `BootstrapFewShot` when the trainset is large enough to justify search. Do not promote optimizer-heavy few-shot paths to the routine local `Qwen3.6:35b` policy without a compact hosted-path gain that survives transfer.
+No active ready card is currently queued.
 
 ## In Progress
 
@@ -111,6 +104,12 @@ No active review card is claimed in this plan.
 ## Done
 
 Completed work is summarized in the background sections above rather than repeated as foreground cards.
+
+### Run Gan S0 few-shot optimizer baseline ladder
+
+- Outcome: Complete. Experiment configs and optimizer plumbing now support `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` on the direct synthesis Gan S0 path. Cap-25 GPT 4.1-mini ladder runs compared compile time, prediction latency, schema validity, label metrics, and evidence support.
+- Validation: `uv run --extra dev pytest tests/test_gan_s0_program.py tests/test_experiment_configs.py`; configs `configs/experiments/gan_s0_ladder_*_cap25_gpt4_1_mini.json`; runs `runs/gan_s0_ladder_labeled_fewshot_cap25_gpt4_1_mini_20260519T091940Z`, `runs/gan_s0_ladder_bootstrap_cap25_gpt4_1_mini_20260519T092020Z`, `runs/gan_s0_ladder_bootstrap_rs_cap25_gpt4_1_mini_20260519T092117Z`; inspection `docs/gan_s0_few_shot_ladder_cap25_inspection_20260519.md`.
+- Notes: On the direct path cap-25, `LabeledFewShot` led all label metrics (normalized exact 34.8%, monthly 43.5%, Purist 56.5%, Pragmatic 69.6%) with near-zero compile cost. Plain `BootstrapFewShot` underperformed labeled-only. `BootstrapRS` improved schema validity to 96.0% but still trailed labeled demos on labels with ~166 s compile and high token use. Do not promote bootstrap/search optimizers for routine direct extraction; keep verify-repair v2 as the hosted quality anchor.
 
 ### Compare hosted-path Gan S0 GEPA against synthesis baseline and decide next path
 
@@ -554,7 +553,7 @@ Completed work is summarized in the background sections above rather than repeat
 1. **Error-read verify-repair v2 full validation** — repair decisions (53 records), invalid labels (10), and label-mismatch clusters; artifact `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z`; note `docs/gan_s0_verify_repair_full_validation_v2_20260519.md`.
 2. Optional: matched **direct-only full validation** on GPT 4.1-mini for strict ablation vs verify-repair v2.
 3. Optional: rerun Qwen3.6:35b direct full validation with post-guardrail bridge (`configs/experiments/gan_s0_qwen35b_direct_full_validation_guardrails.json`).
-4. Keep local `Qwen3.6:35b` on direct extraction; treat GEPA transfer as explicitly scheduled stress-test work only.
-5. Ready when we want the next optimizer ablation: run the Gan S0 few-shot baseline ladder with `LabeledFewShot`, `BootstrapFewShot`, and `BootstrapFewShotWithRandomSearch` / `BootstrapRS` on a hosted path first.
+4. Keep local `Qwen3.6:35b` on direct extraction without routine bootstrap/search optimizers; the few-shot ladder showed labeled demos beat bootstrap on the direct cap-25 path (`docs/gan_s0_few_shot_ladder_cap25_inspection_20260519.md`).
+5. Backlog when needed: Gan abstention calibration, ExECT monolithic GEPA feedback, or Gan ReAct temporal-tools design.
 
-Verify-repair v2 full validation is complete and competitive with the synthesis BootstrapFewShot baseline on label and evidence metrics at ~2× latency. Monolithic ExECT S0/S1 remains the broader-schema anchor.
+Verify-repair v2 full validation remains the hosted quality anchor. The few-shot ladder is complete: use synthesis `LabeledFewShot` on direct if demos are needed; do not default to bootstrap/search on GPT 4.1-mini direct. Monolithic ExECT S0/S1 remains the broader-schema anchor.
