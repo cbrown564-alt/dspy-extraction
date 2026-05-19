@@ -109,3 +109,95 @@ truncation, but it is still not a good default because it is very slow and still
 schema-fragile. Qwen3.6:35b can run a one-record full-context CoT smoke, but the
 observed pace does not justify promoting visible reasoning or bootstrap-expanded
 prompts to the routine local 35B path.
+
+## 2026-05-19 Follow-Up - Qwen3.6:35b Direct `max_tokens=1024`
+
+### Context
+
+The overnight full-validation Gan S0 run for `Qwen3.6:35b` direct extraction used
+`configs/models/gan_s0_qwen35b_ollama.json` with `max_tokens=256` and logged a
+single DSPy truncation warning. The follow-up question was whether that cap was
+artificially depressing full-validation quality and should be raised for the
+default 35B direct path.
+
+### Work Completed
+
+- Updated `configs/models/gan_s0_qwen35b_ollama.json` from `max_tokens=256` to
+  `max_tokens=1024`.
+- Re-ran full Gan S0 validation with
+  `configs/experiments/gan_s0_overnight_qwen35b_direct_full_validation.json`.
+- New run artifact:
+  `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260519T035636Z`
+- Baseline comparison artifact:
+  `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z`
+- Dataset/split: `gan_2026_fixed_v1:validation`
+- Schema level: `gan_frequency_s0`
+- Program variant: `gan_frequency_s0_direct_single_pass`
+- Scorer: `gan_frequency_deterministic_v1`
+
+### Observations
+
+- The benchmark-facing metrics were identical between the two runs:
+  - monthly-frequency accuracy: `55.6%`
+  - Purist category accuracy: `61.7%`
+  - Pragmatic category accuracy: `69.2%`
+- The main diagnostic rates were also unchanged except for a small evidence drop:
+  - schema-valid prediction rate: `89.0%` in both runs
+  - normalized-label exact: `44.7%` in both runs
+  - evidence quote support: `94.0%` at `256` versus `93.6%` at `1024`
+- The invalid-prediction count stayed exactly the same:
+  - `33` invalid predictions
+  - `25` `normalization.invalid_label`
+  - `8` `schema.missing_value`
+- Runtime got materially worse:
+  - `256` run: `6.55` prediction seconds/record, `1957.9s` total
+  - `1024` run: `9.99` prediction seconds/record, `2988.9s` total
+- The invalid examples stayed the same shape: non-canonical surface forms such as
+  `quarter`, `fortnight`, `several`, `few`, `1-2`, dropped cluster structure,
+  and null/abstained labels where the scorer requires a label.
+- A representative long-evidence case changed failure mode. In record `gan_11044`,
+  the earlier `256` run returned a long quote truncated mid-word (`Continue levet`).
+  The `1024` rerun returned an even longer quote that continued past the note into
+  prompt wrapper text beginning `Respond with the corresponding output fields...`.
+  That output remained schema-valid for the label, but it worsened evidence
+  grounding.
+
+### Interpretation
+
+The full-validation artifact comparison does not support raising the default 35B
+direct cap from `256` to `1024` as a quality improvement. The higher cap did not
+change label validity, normalized-label accuracy, monthly-frequency accuracy, or
+category accuracy on this 299-record validation set.
+
+The dominant failure mode in the 35B direct path remains canonicalization, not
+completion budget. The model is mostly producing short labels successfully under
+the existing JSON-schema contract, but it still drifts into unsupported Gan
+surface forms and occasionally abstains where a label is expected.
+
+Increasing the cap did change output behavior for long evidence spans, but not in
+the desired direction. Instead of cleanly fixing the one obvious truncation case,
+the model sometimes over-generated and copied prompt footer text into the evidence
+field. That makes a larger blanket output budget look less attractive for the
+default direct path.
+
+### Caveats
+
+- This comparison changes only one runtime control, but it does so after the
+  overnight run rather than in an interleaved A/B schedule.
+- The evidence-support change is small and diagnostic-only; it should not be
+  over-read as a benchmark-quality regression.
+- `metrics.json` stores only sampled invalid examples in `errors.invalid_predictions`;
+  the full invalid counts come from `error_analysis.counts`.
+- This remains fixed-validation exploratory work, not published Gan benchmark
+  reproduction.
+
+### Next Steps
+
+- Revert the default `Qwen3.6:35b` direct config to the smaller cap unless a
+  separate evidence-length control is added.
+- If long evidence remains a concern, test a targeted intervention instead:
+  instruct the model to return the shortest sufficient contiguous quote, or cap
+  evidence length post-hoc while preserving raw artifacts.
+- Prioritize canonical label control next: cluster structure retention, forbidden
+  units (`quarter`, `fortnight`), forbidden lexical alternatives (`few`,
+  `several`), and range formatting (`1 to 2`, not `1-2`).
