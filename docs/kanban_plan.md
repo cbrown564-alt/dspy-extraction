@@ -3,13 +3,14 @@
 Source: `docs/outline.md`  
 Grounding note: `docs/deterministic_foundation_decisions.md`  
 Local-model policy: `docs/qwen_dspy_latency_policy.md`  
-Last refreshed: 2026-05-18
+Optimizer/agent strategy: `docs/dspy_gepa_react_best_practices_deep_dive.md`  
+Last refreshed: 2026-05-19
 
 ## Goal
 
 Build a hybrid deterministic and DSPy-based clinical extraction research system that can specialize across the broad ExECTv2 schema and the focused Gan seizure-frequency task, while preserving dataset fidelity, reproducible splits, auditable scoring, and experiment traceability.
 
-The project has moved beyond the deterministic foundation milestone. The current execution focus is split between using the ExECT S0/S1 validation-cap read to guide architecture work and adding a small local-Qwen latency workstream that tests DSPy component costs on the Windows laptop before making Qwen3.6:35b part of routine capped validation.
+The project has moved beyond the deterministic foundation milestone. The current execution focus is now to use Gan S0 as the tight reference task for GEPA-style optimizer work, keep Qwen3.6:35b on the validated direct-extraction path, and treat ReAct/tool-use as a bounded temporal-reasoning probe rather than a default extractor.
 
 ## Definitions Of Done
 
@@ -85,16 +86,27 @@ The first ExECT S0/S1 baseline contract is drafted in `docs/exect_s0_s1_baseline
 
 A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence quotes when all fragments can be deterministically located in order inside one short source span. This is tagged as diagnostic bridge behavior (`evidence_repair:ellipsis_contiguous_span`) and does not change benchmark-facing field-family scorer semantics.
 
+The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practices_deep_dive.md`. The main conclusion is that GEPA is a strong near-term fit because this repo already has deterministic scorers, error categories, benchmark-policy audits, and small train/dev splits that can produce rich textual feedback. ReAct is promising only as a narrow temporal-reasoning architecture with deterministic tools for candidate retrieval, calendar math, canonical Gan label validation, and quote support.
+
 ## Ready
 
-### Decide bounded Qwen reasoning strategy
+### Add GEPA optimizer support to experiment configs and run artifacts
 
-- Outcome: Either keep local Qwen on direct extraction only, or define a bounded reasoning variant that emits label/evidence before any rationale and can be measured separately from DSPy's unconstrained `ChainOfThought`.
-- Dependencies: `docs/qwen_local_latency_experiment_20260518.md`.
-- Parallelizable: yes, if scoped to prompt/program design and not scorer semantics.
+- Outcome: Experiment configs can select `dspy.GEPA` in addition to `BootstrapFewShot`, and run artifacts preserve GEPA logs, candidate programs, selected instructions, optimizer settings, and detailed results.
+- Dependencies: `docs/dspy_gepa_react_best_practices_deep_dive.md`; current `OptimizerConfig`; current `scripts/run_experiment.py` optimizer path.
+- Parallelizable: no, because it changes the shared optimizer contract and run artifact schema.
 - Owner: unassigned.
-- Validation: Design note or config diff states whether the next Qwen experiment uses direct extraction, bounded rationale, or no reasoning at all.
-- Notes: Unconstrained DSPy `ChainOfThought` was too verbose for Qwen3.5:9b on the tiny Gan S0 latency matrix, and `ChainOfThought + BootstrapFewShot` did not complete under `max_tokens=1536`.
+- Validation: Config validation tests cover GEPA and BootstrapFewShot variants; dry-run shows GEPA budget/reflection settings without making model calls; a tiny mocked or capped run writes GEPA artifacts under the run directory.
+- Notes: Start with hosted/faster models for GEPA optimization. Do not make GEPA or visible reasoning a routine Qwen3.6:35b path.
+
+### Add Gan S0 GEPA feedback metric and capped optimizer config
+
+- Outcome: Gan S0 has a GEPA-compatible feedback metric that returns score plus textual failure feedback for exact-label, pragmatic-category, invalid-format, evidence-support, temporal-window, seizure-free-threshold, cluster-format, forbidden-unit, and abstention failures.
+- Dependencies: Add GEPA optimizer support to experiment configs and run artifacts; `docs/gan_s0_full_validation_error_read.md`; `docs/prior_prompt_error_analysis_synthesis.md`; `docs/dspy_gepa_react_best_practices_deep_dive.md`.
+- Parallelizable: after GEPA optimizer contract exists.
+- Owner: unassigned.
+- Validation: Unit tests exercise feedback strings for representative Gan failures; capped GPT 4.1-mini run compares current synthesis prompt versus GEPA-optimized direct extraction under unchanged `gan_frequency_deterministic_v1` scorer semantics.
+- Notes: This is the recommended first optimizer experiment. The metric is optimizer-facing only and must not replace the benchmark-facing deterministic scorer.
 
 ### Add token and residency capture for local model runs
 
@@ -104,6 +116,24 @@ A narrow ExECT evidence bridge now repairs literal ellipsis-style model evidence
 - Owner: unassigned.
 - Validation: Metrics or metadata artifacts include token counts where LiteLLM exposes them and a `model_residency` value that is not `not_recorded` for local Ollama runs.
 - Notes: Manual `ollama ps` after the Qwen3.6:35b run reported 74% CPU / 26% GPU residency.
+
+### Tighten Gan direct-output canonicalization for local Qwen runs
+
+- Outcome: The Gan S0 direct path preserves the current scorer semantics but reduces invalid local-Qwen labels by enforcing the existing canonical surface vocabulary more tightly.
+- Dependencies: `docs/qwen_local_latency_experiment_20260518.md`; `docs/gan_2026_label_audit.md`; full-validation artifacts `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z` and `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260519T035636Z`.
+- Parallelizable: yes, if scoped to prompt/module output control or narrow artifact-bridge normalization that does not change meaning.
+- Owner: unassigned.
+- Validation: A capped or full Gan S0 rerun reduces `normalization.invalid_label` counts without changing scorer semantics, especially for `quarter`, `fortnight`, `1-2`, `few`, `several`, and dropped cluster structure.
+- Notes: The latest 35B full-validation rerun showed that raising `max_tokens` from `256` to `1024` did not change benchmark-facing metrics or invalid counts; the main remaining local-Qwen failure mode is canonicalization, not output budget.
+
+### Add evidence-length guardrail for Gan direct extraction
+
+- Outcome: Long evidence quotes no longer truncate mid-span or spill prompt-wrapper text into the evidence field on local Qwen direct runs.
+- Dependencies: `docs/qwen_local_latency_experiment_20260518.md`; representative failure record `gan_11044` in `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z` and `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260519T035636Z`.
+- Parallelizable: yes.
+- Owner: unassigned.
+- Validation: Evidence-support diagnostics improve or remain stable on a capped rerun, and inspection confirms the model returns the shortest sufficient contiguous quote without prompt-footer leakage.
+- Notes: The `max_tokens=1024` rerun replaced one obvious truncation with over-generation into the prompt footer, so the next fix should target evidence behavior directly rather than just raising the completion cap.
 
 ## In Progress
 
@@ -116,6 +146,12 @@ No active review card is claimed in this plan.
 ## Done
 
 Completed work is summarized in the background sections above rather than repeated as foreground cards.
+
+### Capture DSPy GEPA and ReAct best-practices deep dive
+
+- Outcome: Complete. `docs/dspy_gepa_react_best_practices_deep_dive.md` summarizes current DSPy optimizer guidance, GEPA/ReAct case studies, project overlap, and a recommended experiment sequence.
+- Validation: Official DSPy docs, GEPA/ReAct tutorials, the DSPy and GEPA papers, a 2026 instruction-optimization fact-verification paper, and local project artifacts were reviewed; `uv run python` confirmed DSPy `3.2.1` exposes `dspy.GEPA`, `dspy.ReAct`, and `dspy.SIMBA`.
+- Notes: Recommendation is GEPA first for Gan S0 direct extraction with rich deterministic feedback, ReAct later as a bounded Gan temporal-tools probe, and no routine optimizer-heavy path for Qwen3.6:35b.
 
 ### Add direct Gan S0 DSPy module variant and Qwen latency configs
 
@@ -232,12 +268,12 @@ Completed work is summarized in the background sections above rather than repeat
 
 ### Run Qwen-backed local model comparisons
 
-- Outcome: Qwen3.6:35b and Qwen3.5:9b runs are included in the model comparison matrix.
-- Dependencies: Local Ollama availability; validated Qwen model configs; stable task config; Qwen3.5:9b latency ablation results; Qwen3.6:35b direct-extraction pace gate.
-- Parallelizable: after local runtime availability and latency gates are confirmed.
+- Outcome: Qwen3.6:35b and Qwen3.5:9b runs are included in the model comparison matrix under the validated direct-extraction policy.
+- Dependencies: Stable task config; validated Qwen model configs; Qwen3.5:9b latency ablation results; Qwen3.6:35b direct full-validation baseline; explicit policy on whether the default 35B direct config returns to the smaller completion cap.
+- Parallelizable: after direct-path policy is frozen.
 - Owner: unassigned.
 - Validation: Run artifacts with identical split, scorer, schema level, and program variant to the closed-provider runs.
-- Notes: This is partly an environment blocker and partly a policy gate. Do not include Qwen3.6:35b in routine comparison runs with `ChainOfThought` or `BootstrapFewShot` unless the run is explicitly labeled as an overnight optimizer/reasoning experiment.
+- Notes: The environment blocker is resolved for Gan S0 local-Qwen runs. Keep Qwen3.6:35b on direct extraction only; do not include routine `ChainOfThought` or `BootstrapFewShot` comparisons unless they are explicitly labeled as overnight stress tests.
 
 ## Backlog
 
@@ -286,6 +322,24 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: A sample review queue can be opened, reviewed, and linked back to run artifacts.
 - Notes: The moved `exect-explorer/` React app is a possible future UI foundation, but should not block the simple export workflow.
 
+### Design Gan ReAct temporal-tools probe
+
+- Outcome: A narrow `gan_frequency_s0_react_temporal_tools` program design defines deterministic tools, max-iteration policy, final output contract, run artifacts, and hard-case slice selection before any agentic run.
+- Dependencies: `docs/dspy_gepa_react_best_practices_deep_dive.md`; Gan hard-case/error-analysis artifacts; current direct Gan S0 baseline.
+- Parallelizable: after Gan GEPA metric work is scoped, but should not share files with optimizer-contract changes.
+- Owner: unassigned.
+- Validation: Design note lists tools, inputs/outputs, failure modes, success criteria, and a direct-vs-ReAct comparison plan on matched hard cases.
+- Notes: Candidate tools should retrieve frequency mentions, extract temporal anchors, compute elapsed months, validate/canonicalize Gan labels, validate cluster structure, and locate exact quotes. Tools should be deterministic; avoid tools that are just extra LLM calls wearing a hat.
+
+### Add ExECT S0/S1 GEPA feedback pass
+
+- Outcome: ExECT S0/S1 has a GEPA-compatible feedback strategy for diagnosis, seizure-type, and annotated-medication predictors under the fixed audited field-family scorer.
+- Dependencies: Add GEPA optimizer support to experiment configs and run artifacts; ExECT S0/S1 baseline and section-aware artifacts; `docs/exect_section_aware_cap25_inspection.md`; `docs/dspy_gepa_react_best_practices_deep_dive.md`.
+- Parallelizable: after shared GEPA support exists.
+- Owner: unassigned.
+- Validation: Capped ExECT run compares unoptimized monolithic baseline versus GEPA-optimized field-family instructions without widening beyond S0/S1 or changing scorer semantics.
+- Notes: GEPA should target label-policy and cross-family leakage feedback. The previous section-aware architecture underperformed, so start from the active monolithic anchor unless a new design justifies re-testing section-aware prompts.
+
 ## Questions
 
 ### Should Gan continue before ExECT?
@@ -320,6 +374,15 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Experiments
 
+### Gan S0 GEPA feedback optimization
+
+- Outcome: GEPA-optimized Gan S0 direct extraction is compared against the current synthesis-backed direct/BootstrapFewShot baselines under unchanged deterministic scorer semantics.
+- Dependencies: Add GEPA optimizer support to experiment configs and run artifacts; Add Gan S0 GEPA feedback metric and capped optimizer config.
+- Parallelizable: after shared GEPA support exists.
+- Owner: unassigned.
+- Validation: Capped GPT 4.1-mini diagnostic run reports schema-valid rate, normalized-label exact, monthly/Purist/Pragmatic accuracy, invalid-label count, evidence quote support, prompt length, prediction seconds/record, GEPA selected instruction, and metric caveats.
+- Notes: Success means fewer canonical/temporal-window failures without evidence-support regression or prompt bloat. Use hosted/faster models first; Qwen3.6:35b should consume only compact resulting guidance, not perform routine GEPA optimization.
+
 ### Gan post-repair validation
 
 - Outcome: A refreshed Gan S0 run or replay quantifies the impact of current surface repairs against the full validation split.
@@ -338,6 +401,15 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: Ablation report with normalized-label accuracy, monthly/Purist/Pragmatic accuracy, evidence support, repair rate, abstention rate, and coverage.
 - Notes: Hypothesis: verifier improves evidence support and semantic precision, possibly at the cost of coverage.
 
+### Gan hard-case ReAct temporal-tools probe
+
+- Outcome: A bounded ReAct agent with deterministic temporal and label-validation tools is compared against direct Gan S0 extraction on hard temporal/window cases.
+- Dependencies: Design Gan ReAct temporal-tools probe; current direct Gan S0 baseline; hard-case slice from prior Gan error analysis.
+- Parallelizable: after the ReAct design card; do not run concurrently with local Qwen timing experiments on the same machine.
+- Owner: unassigned.
+- Validation: Report includes exact/pragmatic match, invalid-label rate, evidence support, tool-call count, max-iteration stops, latency, and bounded examples for wins/losses versus direct extraction.
+- Notes: This is a probe, not a default architecture. It should target multiple seizure events, recent seizure-free conflicts, clusters, year-to-date denominators, and multi-type frequency assignment.
+
 ### ExECT S0/S1 field-family baseline
 
 - Outcome: Baseline for audited diagnosis, seizure type, and annotated medication extraction.
@@ -355,6 +427,15 @@ Completed work is summarized in the background sections above rather than repeat
 - Owner: unassigned.
 - Validation: Ablation report with temporality, negation, evidence, and field-family breakdown.
 - Notes: Most relevant for broad ExECT schema complexity.
+
+### ExECT S0/S1 GEPA label-policy optimization
+
+- Outcome: GEPA is tested as a prompt-instruction optimizer for the active ExECT S0/S1 field-family baseline without changing dataset, split, scorer, schema level, or benchmark-facing field scope.
+- Dependencies: Add ExECT S0/S1 GEPA feedback pass; shared GEPA optimizer support.
+- Parallelizable: after GEPA support exists, but sequence after the Gan GEPA path unless there is spare closed-provider budget.
+- Owner: unassigned.
+- Validation: Capped validation comparison reports micro/per-family F1, evidence quote support, unsupported-label flags, diagnosis/seizure-type leakage examples, selected GEPA instructions, and metric caveats.
+- Notes: Feedback should be predictor-specific where possible: diagnosis, seizure type, and annotated medication have different policy boundaries.
 
 ### Model comparison matrix
 
@@ -383,15 +464,34 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: Smoke `runs/gan_s0_smoke_qwen35b_direct_ollama_20260518T201840Z`; cap `runs/gan_s0_latency_qwen35b_direct_cap3_20260518T201925Z`; synthesis note `docs/qwen_local_latency_experiment_20260518.md`.
 - Notes: The one-record smoke took 35.83 prediction seconds/record; the warm three-record cap took 8.83 prediction seconds/record. Manual `ollama ps` after the run reported Qwen3.6:35b at 74% CPU / 26% GPU residency, so direct 35B caps are feasible but should be paced jobs, not default interactive loops.
 
+### Run overnight local-Qwen Gan S0 validation ladder
+
+- Outcome: Complete. The overnight queue produced 35B direct scale-ladder runs, a 35B max-budget comparison, a tiny 35B CoT stress run, and 9B comparison/stress runs on the fixed Gan validation split.
+- Dependencies: Qwen local Gan S0 latency and pace experiments; max-budget Qwen configs; overnight queue launcher.
+- Parallelizable: no on the Windows laptop, because the queue was explicitly serialized to measure paced local-model behavior.
+- Owner: unassigned.
+- Validation: Completed artifacts `runs/gan_s0_overnight_qwen35b_direct_cap25_20260518T222114Z`, `runs/gan_s0_overnight_qwen35b_direct_cap100_20260518T222527Z`, `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z`, `runs/gan_s0_overnight_qwen35b_direct_maxbudget_cap25_20260518T230954Z`, `runs/gan_s0_overnight_qwen35b_cot_maxbudget_cap3_20260518T231512Z`, `runs/gan_s0_overnight_qwen9b_direct_maxbudget_cap25_20260518T231950Z`, and `runs/gan_s0_overnight_qwen9b_direct_bootstrap_maxbudget_cap10_20260518T232628Z`.
+- Notes: The strongest local-Qwen run was the 35B direct full validation artifact on 299 records with monthly/Purist/Pragmatic accuracy `55.6%`/`61.7%`/`69.2%`, schema validity `89.0%`, and evidence support `94.0%`. The 35B max-budget cap underperformed the standard direct cap, and the tiny 35B CoT stress run was much slower without showing quality benefit.
+
+### Decide default `max_tokens` policy for Qwen3.6:35b direct
+
+- Outcome: Complete. A full-validation rerun tested whether increasing the default direct `Qwen3.6:35b` completion cap from `256` to `1024` improved Gan S0 results.
+- Dependencies: Overnight 35B direct full-validation artifact; full-validation rerun with updated model config.
+- Parallelizable: no, because it changes the default local 35B direct runtime contract.
+- Owner: unassigned.
+- Validation: Comparison recorded in `docs/qwen_local_latency_experiment_20260518.md` between `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260518T223713Z` and `runs/gan_s0_overnight_qwen35b_direct_full_validation_20260519T035636Z`.
+- Notes: Raising the cap to `1024` left benchmark-facing metrics, schema validity, normalized-label exact, and invalid counts unchanged, slightly reduced evidence support, and slowed prediction from `6.55` to `9.99` seconds/record. One long-evidence case changed from mid-span truncation to prompt-footer leakage. The next safe step is a targeted evidence-length or prompt-scope fix, not a blanket larger completion budget.
+
 ## Long-Term Plan
 
 ### Phase 1: Consolidate Gan S0 Into A Reliable Reference Task
 
+- Add GEPA optimizer support and a Gan S0 feedback metric so temporal-window, evidence, abstention, and canonical-label failures become optimizer-visible text feedback.
 - Decide whether to stop at the current extraction-only baseline or add verifier/repair.
 - Quantify post-repair validation metrics on the full validation split.
 - Add fixtures for the recurring failure modes so future changes do not silently change label semantics.
 - If verifier/repair is added, report extraction-only and extract-verify-repair metrics side by side.
-- Keep Gan as the fast, focused task for provider smoke tests, optimizer experiments, and evidence-support diagnostics.
+- Keep Gan as the fast, focused task for provider smoke tests, GEPA experiments, ReAct temporal-tool probes, and evidence-support diagnostics.
 
 ### Phase 2: Establish The First ExECT S0/S1 Baseline
 
@@ -403,6 +503,7 @@ Completed work is summarized in the background sections above rather than repeat
 ### Phase 3: Compare Program Architectures
 
 - Implement and compare monolithic extraction, field-group extraction, section-aware context-then-extract, and extract-verify-repair variants.
+- Treat ReAct as a targeted architecture only when deterministic tools can answer a specific hard subproblem, starting with Gan temporal reasoning rather than broad full-schema extraction.
 - Treat each architecture as a first-class program variant with its own config, metadata, prompt/config snapshot, and metric caveats.
 - Evaluate not only accuracy, but also schema validity, evidence support, abstention behavior, repair rate, temporality failures, negation failures, and field-family-specific errors.
 
@@ -411,6 +512,7 @@ Completed work is summarized in the background sections above rather than repeat
 - Run GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b on the same split, schema level, program variant, scorer mode, and structured-output strategy where possible.
 - Before broad local-Qwen comparisons, complete the Qwen3.5:9b DSPy component latency ablation and the Qwen3.6:35b direct-extraction pace experiment.
 - Use Qwen3.5:9b to test whether `ChainOfThought`, `BootstrapFewShot`, or their combination is locally feasible; do not transfer that policy to Qwen3.6:35b unless the 35B direct pace gate is already acceptable and the heavier run is explicitly justified.
+- Use hosted/faster models for optimizer search when possible, then test whether the resulting compact guidance transfers to local Qwen direct extraction.
 - Report provider-specific caveats such as constrained JSON support, local runtime availability, rate limits, and token/context constraints.
 - Avoid cross-model claims when model runs used different scorer semantics or materially different prompts/configs.
 
@@ -429,29 +531,35 @@ Completed work is summarized in the background sections above rather than repeat
 ## Dependency Notes
 
 - Shared contracts should stay single-threaded: scorer semantics, schema contracts, run metadata, split generation policy, and benchmark-alignment language affect every later card.
-- Gan repair work and ExECT baseline design can proceed in parallel because they touch different task surfaces.
-- ExECT implementation has opened the S0/S1 field-family path; the larger capped validation and artifact inspection are now complete, so the next dependency is a section-aware module implementation that keeps the current scorer and bridge behavior fixed.
+- Shared GEPA optimizer support should be implemented before task-specific GEPA cards so Gan and ExECT do not fork incompatible config/artifact conventions.
+- Gan GEPA feedback work should precede the ReAct temporal-tools probe because it is narrower, cheaper, and directly targets currently observed Gan direct-output failures.
+- ExECT implementation has opened the S0/S1 field-family path; the section-aware ablation is complete and underperformed the monolithic anchor, so future ExECT optimization should start from the monolithic baseline unless a new architecture design changes the hypothesis.
 - Model smoke tests are unblocked for closed providers with credentials in `.env`; local Qwen runs now require Ollama's native LiteLLM `ollama_chat/` route with `think=false`, not the OpenAI-compatible `/v1` route.
 - The direct Gan S0 variant and runtime metadata fields are implemented, so Qwen can now join model comparisons only under latency-gated direct-extraction configs.
 - Qwen3.5:9b can run direct extraction and tiny direct BootstrapFewShot, but unconstrained ChainOfThought is very slow and `ChainOfThought + BootstrapFewShot` did not complete under `max_tokens=1536`.
 - Qwen3.6:35b can run direct extraction on a tiny cap, but because it was observed at 74% CPU / 26% GPU residency, avoid reasoning and optimizer-expanded prompts except for explicitly scheduled overnight experiments.
+- The overnight Gan queue promoted Qwen3.6:35b direct extraction from a tiny-cap pace gate to a full fixed-validation reference run. The current local 35B bottleneck is canonical Gan label control and evidence-span behavior, not broad output-budget starvation.
 - Max-budget follow-up corrected the Qwen policy: both local Qwen models report 262144 context, and Qwen recommends max_tokens=81920 for complex benchmarks. New max-budget configs set `max_tokens=81920`, `num_ctx=262144`, and `think=false`. Qwen3.5:9b `ChainOfThought + BootstrapFewShot` then completed but remained very slow at 388.58 prediction seconds/record with 66.7% schema validity on a 3-record cap. Qwen3.6:35b completed direct and ChainOfThought one-record full-context smokes at 35.30s and 96.29s respectively, with Ollama reporting 79% CPU / 21% GPU residency.
+- A direct full-validation rerun with `Qwen3.6:35b` `max_tokens=1024` did not improve monthly/Purist/Pragmatic accuracy or schema validity over the `max_tokens=256` baseline and was materially slower, so the plan should not treat larger default completion caps as a quality lever by themselves.
+- ReAct/tool-use is not a default extraction path. It depends on a bounded design with deterministic tools, a hard-case slice, and explicit latency/tool-call metrics.
 - Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
 
 ## Parallelization Opportunities
 
-- Safe immediately in parallel: ExECT architecture follow-up work and token/residency capture for local model artifacts, because they touch different task surfaces.
-- Safe after explicit design: bounded-Qwen-reasoning prompt/module work, if still desired.
+- Safe immediately in parallel: shared GEPA support design and token/residency capture for local model artifacts, if file ownership is kept separate.
+- Safe after explicit design: Gan direct-output canonicalization and evidence-length guardrail work.
 - Safe after explicit design: Gan verifier/repair and abstention-calibration work.
-- Blocked on local runtime availability: any larger Qwen-backed model comparison.
+- Safe after shared GEPA support: Gan GEPA feedback metric and ExECT GEPA feedback pass, though Gan should remain the first optimizer experiment.
+- Safe after ReAct design: deterministic temporal-tool helpers and hard-case slice assembly, if they do not modify the shared experiment config layer.
+- No longer blocked on local runtime availability: larger Gan S0 Qwen direct comparisons, as long as they stay within the validated direct-extraction policy.
 - Keep single-threaded: scorer semantics, schema contracts, run metadata changes, split policy, and benchmark-reproduction claims.
 
 ## Recommended Next Pull
 
-1. Keep local Qwen model-comparison runs on direct extraction by default.
-2. Add token and automatic residency capture to local-model artifacts if Qwen timing remains a near-term research question.
-3. Decide whether a bounded reasoning variant is worth designing for Qwen3.5:9b; do not reuse unconstrained DSPy `ChainOfThought` as the default.
-4. Keep Qwen3.6:35b out of `ChainOfThought` and `BootstrapFewShot` loops unless the run is explicitly scheduled as an overnight stress test.
-5. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor for future architecture experiments.
+1. Add shared GEPA optimizer support to experiment configs and run artifacts.
+2. Add the Gan S0 GEPA feedback metric and capped GPT 4.1-mini optimizer config.
+3. Run the Gan S0 GEPA capped diagnostic before opening the ReAct temporal-tools probe.
+4. Keep local Qwen model-comparison runs on direct extraction by default, and transfer only compact optimized guidance to Qwen unless an overnight stress test is explicitly scheduled.
+5. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor; use ExECT GEPA only after the Gan GEPA path proves the shared optimizer harness.
 
-The plan is now organized so completed work serves as background and the foreground path is: use the validated ExECT S0/S1 baseline to test architecture under fixed scorer semantics, use Gan S0 as the focused smoke-test and local-Qwen latency testbed, then use only latency-gated local models for broader architecture and model comparisons.
+The plan is now organized so completed work serves as background and the foreground path is: add GEPA as the next reproducible optimizer layer for Gan S0, keep ReAct as a bounded temporal-reasoning probe with deterministic tools, preserve Qwen3.6:35b as a direct-extraction local model, and use the monolithic ExECT S0/S1 baseline as the current broader-schema anchor.
