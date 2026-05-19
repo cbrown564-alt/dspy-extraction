@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Callable
+from pathlib import Path
 from typing import Optional
 
 import dspy
@@ -183,6 +184,89 @@ def gan_frequency_s0_synthesis_metric(
     return float(predicted_evidence.strip() in example.note_text)
 
 
+def gan_frequency_s0_synthesis_feedback_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+    pred_name=None,
+    pred_trace=None,
+):
+    """GEPA-compatible Gan S0 feedback metric.
+
+    This is a shared optimizer-harness metric. The richer Gan-specific failure
+    taxonomy is a follow-on workstream card; this version preserves the current
+    exact-label-plus-evidence target while returning natural-language feedback.
+    """
+    from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
+
+    from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+
+    predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
+    gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+
+    if not predicted:
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback=(
+                "The prediction did not provide seizure_frequency_number. "
+                "Return a canonical Gan label or no seizure frequency reference."
+            ),
+        )
+    if not gold:
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback="The training example is missing the gold Gan frequency label.",
+        )
+
+    try:
+        score = score_gan_frequency_prediction(
+            gold_label=gold, predicted_label=predicted
+        )
+    except ValueError as exc:
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback=(
+                f"The predicted label {predicted!r} is not a valid canonical Gan "
+                f"frequency label: {exc}."
+            ),
+        )
+
+    predicted_evidence = getattr(pred, "evidence_text", None)
+    feedback: list[str] = []
+    metric_score = 1.0
+
+    if not score.exact_normalized_match:
+        metric_score = 0.0
+        feedback.append(
+            f"Expected normalized Gan label {gold!r}, but the prediction was "
+            f"{predicted!r}. Preserve the benchmark-facing label semantics."
+        )
+
+    if gold == "no seizure frequency reference":
+        if isinstance(predicted_evidence, str) and predicted_evidence.strip():
+            metric_score = 0.0
+            feedback.append(
+                "No-reference labels should not include supporting frequency evidence."
+            )
+    elif _requires_evidence_support(gold):
+        if not isinstance(predicted_evidence, str) or not predicted_evidence.strip():
+            metric_score = 0.0
+            feedback.append(
+                "The prediction must include an exact contiguous source quote as evidence."
+            )
+        elif predicted_evidence.strip() not in example.note_text:
+            metric_score = 0.0
+            feedback.append(
+                "The evidence_text is not an exact contiguous quote from the note."
+            )
+
+    if not feedback:
+        feedback.append(
+            "The prediction matched the normalized Gan label and evidence policy."
+        )
+    return ScoreWithFeedback(score=metric_score, feedback=" ".join(feedback))
+
+
 def _requires_evidence_support(gold_label: str) -> bool:
     return gold_label != "no seizure frequency reference"
 
@@ -259,6 +343,7 @@ def _synthesis_example_priority(record: GanRecord) -> tuple[int, int, str]:
 GAN_FREQUENCY_S0_OPTIMIZER_METRICS = {
     "pragmatic_category": gan_frequency_s0_metric,
     "synthesis_exact_with_evidence": gan_frequency_s0_synthesis_metric,
+    "synthesis_exact_with_evidence_feedback": gan_frequency_s0_synthesis_feedback_metric,
 }
 
 
@@ -293,6 +378,51 @@ def compile_gan_s0_module(
         max_bootstrapped_demos=max_bootstrapped_demos,
         max_labeled_demos=max_labeled_demos,
         max_rounds=max_rounds,
+    )
+    module = build_gan_s0_module(program_variant)
+    return optimizer.compile(module, trainset=trainset)
+
+
+def compile_gan_s0_module_gepa(
+    records: list[GanRecord],
+    *,
+    program_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    optimizer_metric: str = "synthesis_exact_with_evidence_feedback",
+    auto: str | None = None,
+    max_full_evals: int | None = None,
+    max_metric_calls: int | None = None,
+    reflection_minibatch_size: int = 3,
+    candidate_selection_strategy: str = "pareto",
+    skip_perfect_score: bool = True,
+    add_format_failure_as_feedback: bool = False,
+    track_stats: bool = False,
+    track_best_outputs: bool = False,
+    num_threads: int | None = None,
+    seed: int | None = 0,
+    log_dir: Path | None = None,
+) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
+    """Compile a Gan S0 module with GEPA and a feedback metric."""
+    try:
+        metric = GAN_FREQUENCY_S0_OPTIMIZER_METRICS[optimizer_metric]
+    except KeyError as exc:
+        allowed = ", ".join(sorted(GAN_FREQUENCY_S0_OPTIMIZER_METRICS))
+        raise ValueError(f"Unknown optimizer_metric {optimizer_metric!r}; use {allowed}.") from exc
+
+    trainset = make_gan_synthesis_dspy_examples(records)
+    optimizer = dspy.GEPA(
+        metric=metric,
+        auto=auto,
+        max_full_evals=max_full_evals,
+        max_metric_calls=max_metric_calls,
+        reflection_minibatch_size=reflection_minibatch_size,
+        candidate_selection_strategy=candidate_selection_strategy,
+        skip_perfect_score=skip_perfect_score,
+        add_format_failure_as_feedback=add_format_failure_as_feedback,
+        track_stats=track_stats,
+        track_best_outputs=track_best_outputs,
+        num_threads=num_threads,
+        seed=seed,
+        log_dir=str(log_dir) if log_dir is not None else None,
     )
     module = build_gan_s0_module(program_variant)
     return optimizer.compile(module, trainset=trainset)

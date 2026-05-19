@@ -90,15 +90,6 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 
 ## Ready
 
-### Add GEPA optimizer support to experiment configs and run artifacts
-
-- Outcome: Experiment configs can select `dspy.GEPA` in addition to `BootstrapFewShot`, and run artifacts preserve GEPA logs, candidate programs, selected instructions, optimizer settings, and detailed results.
-- Dependencies: `docs/dspy_gepa_react_best_practices_deep_dive.md`; current `OptimizerConfig`; current `scripts/run_experiment.py` optimizer path.
-- Parallelizable: no, because it changes the shared optimizer contract and run artifact schema.
-- Owner: unassigned.
-- Validation: Config validation tests cover GEPA and BootstrapFewShot variants; dry-run shows GEPA budget/reflection settings without making model calls; a tiny mocked or capped run writes GEPA artifacts under the run directory.
-- Notes: Start with hosted/faster models for GEPA optimization. Do not make GEPA or visible reasoning a routine Qwen3.6:35b path.
-
 ### Add Gan S0 GEPA feedback metric and capped optimizer config
 
 - Outcome: Gan S0 has a GEPA-compatible feedback metric that returns score plus textual failure feedback for exact-label, pragmatic-category, invalid-format, evidence-support, temporal-window, seizure-free-threshold, cluster-format, forbidden-unit, and abstention failures.
@@ -137,7 +128,15 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 
 ## In Progress
 
-No active implementation card is claimed in this plan.
+### Add GEPA optimizer support to experiment configs and run artifacts
+
+- Outcome: Experiment configs can select `dspy.GEPA` in addition to `BootstrapFewShot`, and run artifacts preserve GEPA logs, candidate programs, selected instructions, optimizer settings, and detailed results.
+- Dependencies: `docs/dspy_gepa_react_best_practices_deep_dive.md`; current `OptimizerConfig`; current `scripts/run_experiment.py` optimizer path.
+- Parallelizable: no, because it changes the shared optimizer contract and run artifact schema.
+- Owner: Codex.
+- Validation: Config validation tests cover GEPA and BootstrapFewShot variants; dry-run shows GEPA budget/reflection settings without making model calls; a tiny mocked or capped run writes GEPA artifacts under the run directory.
+- Progress: Added shared `GEPA` optimizer config validation, feedback-metric harness support, optimizer artifact/log directories, and `configs/experiments/gan_s0_gepa_direct_cap5_gpt4_1_mini.json`. Dry-run validation is complete; the capped model-backed artifact write remains next.
+- Notes: Start with hosted/faster models for GEPA optimization. Do not make GEPA or visible reasoning a routine Qwen3.6:35b path.
 
 ## Review
 

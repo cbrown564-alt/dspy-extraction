@@ -38,6 +38,9 @@ def test_run_metadata_contract_requires_experiment_context():
         "metrics": "metrics.json",
         "errors": "errors.json",
         "artifacts": "artifacts",
+        "compiled_state": "artifacts/compiled_state.json",
+        "optimizer_artifacts": "artifacts/optimizer",
+        "optimizer_logs": "artifacts/optimizer/logs",
     }
 
 
@@ -72,7 +75,10 @@ def test_create_run_artifact_layout_writes_metadata_and_artifact_directory(tmp_p
 
     assert paths["run"] == tmp_path / "run_1"
     assert paths["artifacts"].is_dir()
+    assert paths["optimizer_artifacts"].is_dir()
+    assert paths["optimizer_logs"].is_dir()
     assert paths["metadata"].is_file()
     written = json.loads(paths["metadata"].read_text(encoding="utf-8"))
     assert written["run_id"] == "run_1"
     assert written["artifact_paths"]["predictions"] == "predictions.json"
+    assert written["artifact_paths"]["optimizer_logs"] == "artifacts/optimizer/logs"

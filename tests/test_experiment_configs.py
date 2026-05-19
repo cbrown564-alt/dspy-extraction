@@ -83,6 +83,39 @@ def test_gan_s0_synthesis_full_validation_config_removes_precheck_cap():
     assert "full fixed synthetic validation" in " ".join(config.metric_caveats)
 
 
+def test_gan_s0_gepa_direct_config_records_shared_optimizer_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_gepa_direct_cap5_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "gan_s0_gepa_direct_cap5_gpt4_1_mini"
+    assert config.dataset == "gan_2026"
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert config.max_records == 5
+    assert config.optimizer is not None
+    assert config.optimizer.name == "GEPA"
+    assert config.optimizer.metric_name == "synthesis_exact_with_evidence_feedback"
+    assert config.optimizer.trainset_size == 4
+    assert config.optimizer.max_metric_calls == 8
+    assert config.optimizer.reflection_minibatch_size == 1
+    assert config.optimizer.add_format_failure_as_feedback
+    assert "optimizer-facing only" in " ".join(config.metric_caveats)
+
+
+def test_gepa_optimizer_config_requires_feedback_metric():
+    payload = json.loads(
+        Path("configs/experiments/gan_s0_synthesis_bootstrap_gpt4_1_mini.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    payload["optimizer"]["name"] = "GEPA"
+    payload["optimizer"]["max_metric_calls"] = 4
+
+    with pytest.raises(ValidationError, match="feedback metric"):
+        ExperimentConfig.model_validate(payload)
+
+
 def test_exect_s0_s1_smoke_config_records_field_family_contract():
     config = load_experiment_config(
         Path("configs/experiments/exect_s0_s1_smoke_gpt4_1_mini.json")

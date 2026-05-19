@@ -19,6 +19,9 @@ class RunArtifactPaths(FrozenModel):
     metrics: str = "metrics.json"
     errors: str = "errors.json"
     artifacts: str = "artifacts"
+    compiled_state: str = "artifacts/compiled_state.json"
+    optimizer_artifacts: str = "artifacts/optimizer"
+    optimizer_logs: str = "artifacts/optimizer/logs"
 
 
 class RunMetadata(FrozenModel):
@@ -65,7 +68,10 @@ def create_run_artifact_layout(
 ) -> dict[str, Path]:
     directory = run_directory(metadata.run_id, root=root)
     artifact_dir = directory / metadata.artifact_paths.artifacts
+    optimizer_dir = directory / metadata.artifact_paths.optimizer_artifacts
+    optimizer_log_dir = directory / metadata.artifact_paths.optimizer_logs
     artifact_dir.mkdir(parents=True, exist_ok=True)
+    optimizer_log_dir.mkdir(parents=True, exist_ok=True)
 
     paths = {
         "run": directory,
@@ -76,6 +82,9 @@ def create_run_artifact_layout(
         "metrics": directory / metadata.artifact_paths.metrics,
         "errors": directory / metadata.artifact_paths.errors,
         "artifacts": artifact_dir,
+        "compiled_state": directory / metadata.artifact_paths.compiled_state,
+        "optimizer_artifacts": optimizer_dir,
+        "optimizer_logs": optimizer_log_dir,
     }
     paths["metadata"].write_text(
         json.dumps(metadata.model_dump(mode="json"), indent=2, sort_keys=True) + "\n",

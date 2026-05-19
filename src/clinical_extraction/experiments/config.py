@@ -28,17 +28,46 @@ StructuredOutputStrategy = Literal[
 
 
 class OptimizerConfig(FrozenModel):
-    """BootstrapFewShot hyperparameters for DSPy module compilation."""
+    """DSPy optimizer hyperparameters for module compilation."""
 
-    name: Literal["BootstrapFewShot"] = "BootstrapFewShot"
+    name: Literal["BootstrapFewShot", "GEPA"] = "BootstrapFewShot"
     metric_name: Literal[
         "pragmatic_category",
         "synthesis_exact_with_evidence",
+        "synthesis_exact_with_evidence_feedback",
     ] = "pragmatic_category"
     max_bootstrapped_demos: int = Field(default=4, ge=1)
     max_labeled_demos: int = Field(default=0, ge=0)
     max_rounds: int = Field(default=1, ge=1)
     trainset_size: int | None = Field(default=None, gt=0)
+    auto: Literal["light", "medium", "heavy"] | None = None
+    max_full_evals: int | None = Field(default=None, gt=0)
+    max_metric_calls: int | None = Field(default=None, gt=0)
+    reflection_minibatch_size: int = Field(default=3, ge=1)
+    candidate_selection_strategy: Literal["pareto", "current_best"] = "pareto"
+    skip_perfect_score: bool = True
+    add_format_failure_as_feedback: bool = False
+    track_stats: bool = False
+    track_best_outputs: bool = False
+    num_threads: int | None = Field(default=None, gt=0)
+    seed: int | None = 0
+
+    @model_validator(mode="after")
+    def validate_optimizer_settings(self) -> OptimizerConfig:
+        if self.name == "BootstrapFewShot":
+            if self.metric_name == "synthesis_exact_with_evidence_feedback":
+                raise ValueError(
+                    "BootstrapFewShot optimizer configs must use a scalar metric."
+                )
+            return self
+
+        if self.metric_name != "synthesis_exact_with_evidence_feedback":
+            raise ValueError("GEPA optimizer configs must use a feedback metric.")
+        if self.auto is None and self.max_full_evals is None and self.max_metric_calls is None:
+            raise ValueError(
+                "GEPA optimizer configs must set auto, max_full_evals, or max_metric_calls."
+            )
+        return self
 
 
 class ExperimentControls(FrozenModel):

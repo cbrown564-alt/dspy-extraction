@@ -41,6 +41,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
     build_gan_s0_module,
+    compile_gan_s0_module_gepa,
     compile_gan_s0_module,
     gan_frequency_s0_run_metadata,
     predict_gan_records,
@@ -95,6 +96,7 @@ def main(argv: list[str] | None = None) -> int:
         f"Records:    {len(records)}"
         + (f" (capped at max_records={config.max_records})" if config.max_records else "")
     )
+    _print_optimizer_plan(config.optimizer)
 
     if args.dry_run:
         print("\nDry run — exiting before model calls.")
@@ -105,36 +107,6 @@ def main(argv: list[str] | None = None) -> int:
     )
     lm = build_dspy_lm(model_config)
     dspy.configure(lm=lm)
-
-    module = _build_module(config.dataset, config.program_variant)
-    run_started = perf_counter()
-    compile_duration_seconds: float | None = None
-
-    if config.optimizer is not None:
-        if config.dataset != "gan_2026":
-            raise SystemExit("Only Gan S0 experiments currently support DSPy optimization.")
-        dev_ids: list[str] = split_data.get("development", [])
-        if config.optimizer.trainset_size is not None:
-            dev_ids = dev_ids[: config.optimizer.trainset_size]
-        dev_records = [all_records[rid] for rid in dev_ids if rid in all_records]
-        print(
-            f"Compiling with BootstrapFewShot on {len(dev_records)} dev records "
-            f"(metric={config.optimizer.metric_name}, "
-            f"max_bootstrapped_demos={config.optimizer.max_bootstrapped_demos}, "
-            f"max_labeled_demos={config.optimizer.max_labeled_demos}, "
-            f"max_rounds={config.optimizer.max_rounds})..."
-        )
-        compile_started = perf_counter()
-        module = compile_gan_s0_module(
-            dev_records,
-            program_variant=config.program_variant,
-            max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
-            max_labeled_demos=config.optimizer.max_labeled_demos,
-            max_rounds=config.optimizer.max_rounds,
-            optimizer_metric=config.optimizer.metric_name,
-        )
-        compile_duration_seconds = perf_counter() - compile_started
-        print("Compilation complete.")
 
     run_id = args.run_id or _make_run_id(config.experiment_id)
     metadata = _run_metadata(
@@ -158,6 +130,52 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(config.model_dump(mode="json"), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+
+    module = _build_module(config.dataset, config.program_variant)
+    run_started = perf_counter()
+    compile_duration_seconds: float | None = None
+
+    if config.optimizer is not None:
+        if config.dataset != "gan_2026":
+            raise SystemExit("Only Gan S0 experiments currently support DSPy optimization.")
+        dev_ids: list[str] = split_data.get("development", [])
+        if config.optimizer.trainset_size is not None:
+            dev_ids = dev_ids[: config.optimizer.trainset_size]
+        dev_records = [all_records[rid] for rid in dev_ids if rid in all_records]
+        _print_compile_message(config.optimizer, len(dev_records))
+        compile_started = perf_counter()
+        if config.optimizer.name == "GEPA":
+            module = compile_gan_s0_module_gepa(
+                dev_records,
+                program_variant=config.program_variant,
+                optimizer_metric=config.optimizer.metric_name,
+                auto=config.optimizer.auto,
+                max_full_evals=config.optimizer.max_full_evals,
+                max_metric_calls=config.optimizer.max_metric_calls,
+                reflection_minibatch_size=config.optimizer.reflection_minibatch_size,
+                candidate_selection_strategy=config.optimizer.candidate_selection_strategy,
+                skip_perfect_score=config.optimizer.skip_perfect_score,
+                add_format_failure_as_feedback=(
+                    config.optimizer.add_format_failure_as_feedback
+                ),
+                track_stats=config.optimizer.track_stats,
+                track_best_outputs=config.optimizer.track_best_outputs,
+                num_threads=config.optimizer.num_threads,
+                seed=config.optimizer.seed,
+                log_dir=paths["optimizer_logs"],
+            )
+        else:
+            module = compile_gan_s0_module(
+                dev_records,
+                program_variant=config.program_variant,
+                max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
+                max_labeled_demos=config.optimizer.max_labeled_demos,
+                max_rounds=config.optimizer.max_rounds,
+                optimizer_metric=config.optimizer.metric_name,
+            )
+        compile_duration_seconds = perf_counter() - compile_started
+        print("Compilation complete.")
+
     prompts_data = _prompts_data(
         config.dataset,
         config.program_variant,
@@ -166,7 +184,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     if config.optimizer is not None:
         prompts_data["optimizer"] = config.optimizer.model_dump()
-        _write_compiled_state(module, paths["artifacts"])
+        _write_compiled_state(module, paths["compiled_state"])
+        _write_optimizer_summary(config.optimizer.model_dump(), paths["optimizer_artifacts"])
     paths["prompts"].write_text(
         json.dumps(prompts_data, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -385,15 +404,77 @@ def _load_env_file(path: Path) -> None:
 
 def _write_compiled_state(
     module: GanFrequencyS0Module | GanFrequencyS0DirectModule,
-    artifact_dir: Path,
+    compiled_state_path: Path,
 ) -> None:
     dump_state = getattr(module, "dump_state", None)
     if not callable(dump_state):
         return
     state = dump_state()
-    (artifact_dir / "compiled_state.json").write_text(
+    compiled_state_path.write_text(
         json.dumps(state, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
+    )
+
+
+def _write_optimizer_summary(optimizer: dict[str, Any], optimizer_dir: Path) -> None:
+    optimizer_dir.mkdir(parents=True, exist_ok=True)
+    summary = {
+        "optimizer": optimizer,
+        "artifact_files": {
+            "compiled_state": "../compiled_state.json",
+            "gepa_logs": "logs" if optimizer.get("name") == "GEPA" else None,
+        },
+    }
+    (optimizer_dir / "summary.json").write_text(
+        json.dumps(summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _print_optimizer_plan(optimizer: Any | None) -> None:
+    if optimizer is None:
+        print("Optimizer: none")
+        return
+
+    if optimizer.name == "GEPA":
+        print(
+            "Optimizer: GEPA "
+            f"(metric={optimizer.metric_name}, "
+            f"auto={optimizer.auto}, "
+            f"max_full_evals={optimizer.max_full_evals}, "
+            f"max_metric_calls={optimizer.max_metric_calls}, "
+            f"reflection_minibatch_size={optimizer.reflection_minibatch_size}, "
+            f"candidate_selection={optimizer.candidate_selection_strategy})"
+        )
+        return
+
+    print(
+        "Optimizer: BootstrapFewShot "
+        f"(metric={optimizer.metric_name}, "
+        f"max_bootstrapped_demos={optimizer.max_bootstrapped_demos}, "
+        f"max_labeled_demos={optimizer.max_labeled_demos}, "
+        f"max_rounds={optimizer.max_rounds}, "
+        f"trainset_size={optimizer.trainset_size})"
+    )
+
+
+def _print_compile_message(optimizer: Any, dev_record_count: int) -> None:
+    if optimizer.name == "GEPA":
+        print(
+            f"Compiling with GEPA on {dev_record_count} dev records "
+            f"(metric={optimizer.metric_name}, "
+            f"auto={optimizer.auto}, "
+            f"max_full_evals={optimizer.max_full_evals}, "
+            f"max_metric_calls={optimizer.max_metric_calls})..."
+        )
+        return
+
+    print(
+        f"Compiling with BootstrapFewShot on {dev_record_count} dev records "
+        f"(metric={optimizer.metric_name}, "
+        f"max_bootstrapped_demos={optimizer.max_bootstrapped_demos}, "
+        f"max_labeled_demos={optimizer.max_labeled_demos}, "
+        f"max_rounds={optimizer.max_rounds})..."
     )
 
 
