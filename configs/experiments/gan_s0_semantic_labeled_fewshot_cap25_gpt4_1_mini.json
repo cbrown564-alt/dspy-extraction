@@ -1,0 +1,39 @@
+{
+  "controls": {
+    "abstention_policy": "Gan 6-month seizure-free threshold; use no seizure frequency reference only when no seizure frequency information is present",
+    "context_policy": "full_note",
+    "few_shot_policy": "LabeledFewShot with synthesis-labeled demonstrations (k=4) and semantic_frequency_with_evidence compile metric",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_semantic_labeled_fewshot_cap25_gpt4_1_mini",
+  "hypothesis": "LabeledFewShot with the semantic_frequency_with_evidence optimizer metric improves monthly/Purist accuracy versus semantic BootstrapFewShot and verify-repair v2 while preserving evidence support and unchanged gan_frequency_deterministic_v1 reporting.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "The optimizer metric semantic_frequency_with_evidence is optimizer-facing only and does not replace gan_frequency_deterministic_v1 benchmark scoring.",
+    "Compare against verify-repair v2, semantic bootstrap, and synthesis LabeledFewShot ladder anchors on the same capped validation slice.",
+    "Do not promote semantic full validation unless monthly/Purist clear verify-repair v2 on this cap.",
+    "This capped validation config is not published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "optimizer": {
+    "max_bootstrapped_demos": 0,
+    "max_labeled_demos": 4,
+    "max_rounds": 1,
+    "metric_name": "semantic_frequency_with_evidence",
+    "name": "LabeledFewShot",
+    "trainset_size": 50
+  },
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_single_pass",
+  "prompt_version": "gan_frequency_s0_synthesis_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

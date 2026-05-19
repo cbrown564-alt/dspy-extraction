@@ -1,6 +1,6 @@
 # Gan S0 Model-Config Smoke Tests
 
-Last updated: 2026-05-18
+Last updated: 2026-05-19
 
 ## Purpose
 
@@ -29,6 +29,7 @@ All smoke configs use:
 - `configs/experiments/gan_s0_smoke_gpt4_1_mini.json`
 - `configs/experiments/gan_s0_smoke_gpt5_5_openai.json`
 - `configs/experiments/gan_s0_smoke_gemini3_flash.json`
+- `configs/experiments/gan_s0_smoke_gemini31_flash_lite.json`
 - `configs/experiments/gan_s0_smoke_qwen35b_ollama.json`
 - `configs/experiments/gan_s0_smoke_qwen9b_ollama.json`
 
@@ -39,6 +40,7 @@ All smoke configs use:
 | `gan_s0_gpt4_1_mini.json` | Completed | `runs/gan_s0_smoke_gpt4_1_mini_20260518T130500Z` |
 | `gan_s0_gpt5_5_openai.json` | Completed after config fix | `runs/gan_s0_smoke_gpt5_5_openai_20260518T130600Z` |
 | `gan_s0_gemini3_flash.json` | Completed after model-id fix | `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`; config uses `gemini-3-flash-preview`. Previous blocker was a 404 for invalid `models/gemini-3-flash`. The smoke run completed but produced an invalid Gan label on the one record, so treat this as provider/runtime compatibility only. |
+| `gan_s0_gemini31_flash_lite.json` | Completed | Uses **GA** model id `gemini-3.1-flash-lite` per [Gemini 3.1 Flash-Lite docs](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite), not `gemini-3.1-flash-lite-preview`. Smoke: `runs/gan_s0_smoke_gemini31_flash_lite_20260519T100246Z`, GA re-smoke `runs/gan_s0_smoke_gemini31_flash_lite_20260519T101222Z`. Cap-25 direct: `runs/gan_s0_direct_cap25_gemini31_flash_lite_20260519T100621Z` (see `docs/gan_s0_gemini31_flash_lite_cap25_inspection_20260519.md`). Cap-25: schema 92.0%, monthly 52.2%, Purist 56.5%, evidence 86.4%, ~0.61 s/record. Promising labels/latency; evidence gap vs verify-repair v2 before primary-model claims. |
 | `gan_s0_qwen35b_ollama.json` | Deferred to Windows laptop | Local Qwen runs should be performed on the Windows laptop with the target GPU. This Mac's Ollama tags do not include `qwen3.6:35b`. |
 | `gan_s0_qwen9b_ollama.json` | Deferred to Windows laptop | Local Qwen runs should be performed on the Windows laptop for comparability with the 35B target runtime. A Mac attempt was stopped before prediction completion. Partial artifact: `runs/gan_s0_smoke_qwen9b_ollama_20260518T130640Z`. |
 

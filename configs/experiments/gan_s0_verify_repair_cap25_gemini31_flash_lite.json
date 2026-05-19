@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm/repair/abstain with evidence-aware semantic checks for cluster completeness, temporal-window correctness, seizure-free threshold, unknown vs no-reference, and evidence quote support"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_verify_repair_cap25_gemini31_flash_lite",
+  "hypothesis": "Gemini 3.1 Flash-Lite verify-repair v2 closes the evidence-support gap observed on Gemini direct cap-25 (86.4%) while preserving monthly/Purist label gains versus GPT 4.1-mini verify-repair v2.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This 25-record cap compares Gemini verify-repair v2 against Gemini direct and GPT 4.1-mini verify-repair v2 on matched records.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Raw exact, normalized-label exact, schema validity, abstention, and evidence support are diagnostic.",
+    "Verifier decisions (confirm/repair/abstain) and reasons are preserved in prediction metadata.",
+    "Artifact-bridge surface normalization is applied identically across compared variants.",
+    "Do not claim primary-model candidacy until evidence support and full-scale behavior are confirmed.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_gemini31_flash_lite.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_direct_verify_repair",
+  "prompt_version": "gan_frequency_s0_direct_verify_repair_v2",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

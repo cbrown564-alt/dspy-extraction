@@ -626,3 +626,133 @@ def test_verify_repair_cap25_config_uses_v2_prompt():
     )
     assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
     assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2"
+
+
+def test_gan_s0_semantic_bootstrap_cap25_config_records_semantic_optimizer():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_semantic_bootstrap_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "gan_s0_semantic_bootstrap_cap25_gpt4_1_mini"
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert config.max_records == 25
+    assert config.optimizer is not None
+    assert config.optimizer.name == "BootstrapFewShot"
+    assert config.optimizer.metric_name == "semantic_frequency_with_evidence"
+    assert config.optimizer.trainset_size == 50
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "optimizer-facing only" in caveats
+    assert "gan_frequency_deterministic_v1" in caveats
+    assert "verify-repair v2" in caveats
+
+
+def test_gan_s0_semantic_bootstrap_full_validation_config_has_no_cap():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_semantic_bootstrap_full_validation_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == "gan_s0_semantic_bootstrap_full_validation_gpt4_1_mini"
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.max_records is None
+    assert config.optimizer is not None
+    assert config.optimizer.metric_name == "semantic_frequency_with_evidence"
+    assert "full fixed synthetic validation" in " ".join(config.metric_caveats).lower()
+
+
+def test_gan_s0_smoke_gemini31_flash_lite_config_records_direct_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_smoke_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "gan_s0_smoke_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records == 1
+    assert config.optimizer is None
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    assert config.scorer_mode == GAN_FREQUENCY_S0_SCORER
+    assert "gemini-3.1-flash-lite" in " ".join(config.metric_caveats).lower()
+    assert "smoke run" in " ".join(config.metric_caveats).lower()
+
+
+def test_gan_s0_direct_cap25_gemini31_flash_lite_config_records_matched_slice():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_direct_cap25_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "gan_s0_direct_cap25_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records == 25
+    assert config.optimizer is None
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "verify-repair v2" in caveats
+    assert "gemini-3.1-flash-lite" in caveats
+
+
+def test_gan_s0_verify_repair_cap25_gemini31_flash_lite_config_records_v2_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_verify_repair_cap25_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "gan_s0_verify_repair_cap25_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records == 25
+    assert config.optimizer is None
+    assert config.program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_direct_verify_repair_v2"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "gemini" in caveats
+    assert "verify-repair v2" in caveats
+
+
+def test_gan_s0_direct_full_validation_gemini31_flash_lite_config_has_no_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_direct_full_validation_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "gan_s0_direct_full_validation_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records is None
+    assert config.optimizer is None
+    assert config.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "full fixed synthetic validation" in caveats
+    assert "gemini" in caveats
+
+
+def test_gan_s0_semantic_labeled_fewshot_cap25_config_records_semantic_metric():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_semantic_labeled_fewshot_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "gan_s0_semantic_labeled_fewshot_cap25_gpt4_1_mini"
+    assert config.max_records == 25
+    assert config.optimizer is not None
+    assert config.optimizer.name == "LabeledFewShot"
+    assert config.optimizer.metric_name == "semantic_frequency_with_evidence"
+    assert config.optimizer.max_bootstrapped_demos == 0
+    assert config.optimizer.max_labeled_demos == 4
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "optimizer-facing only" in caveats
+    assert "verify-repair v2" in caveats
+
+
+def test_gan_s0_semantic_gepa_cap25_config_records_semantic_feedback_metric():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_semantic_gepa_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "gan_s0_semantic_gepa_cap25_gpt4_1_mini"
+    assert config.max_records == 25
+    assert config.optimizer is not None
+    assert config.optimizer.name == "GEPA"
+    assert config.optimizer.metric_name == "semantic_frequency_with_evidence_feedback"
+    assert config.optimizer.max_metric_calls == 16
+    assert config.optimizer.trainset_size == 50
+    assert config.optimizer.use_cloudpickle
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "optimizer-facing only" in caveats
+    assert "verify-repair v2" in caveats
