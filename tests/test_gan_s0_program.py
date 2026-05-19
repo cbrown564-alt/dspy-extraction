@@ -18,6 +18,8 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     build_gan_s0_module,
     compile_gan_s0_module,
     compile_gan_s0_module_gepa,
+    gan_frequency_s0_semantic_evidence_feedback_metric,
+    gan_frequency_s0_semantic_evidence_metric,
     gan_frequency_s0_synthesis_feedback_metric,
     gan_frequency_s0_metric,
     gan_frequency_s0_synthesis_metric,
@@ -457,6 +459,83 @@ def test_gan_frequency_s0_synthesis_metric_requires_exact_label_and_quote_suppor
     assert gan_frequency_s0_synthesis_metric(example, pragmatic_only) == 0.0
     assert gan_frequency_s0_synthesis_metric(example, missing_quote) == 0.0
     assert gan_frequency_s0_synthesis_metric(example, paraphrased_quote) == 0.0
+
+
+def test_gan_frequency_s0_semantic_evidence_metric_rewards_frequency_grades():
+    example = dspy.Example(
+        note_text="He reports 4 focal seizures per week despite medication.",
+        seizure_frequency_number="4 per week",
+    ).with_inputs("note_text")
+
+    exact = dspy.Prediction(
+        seizure_frequency_number="4 per week",
+        evidence_text="4 focal seizures per week",
+    )
+    same_purist = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text="4 focal seizures per week",
+    )
+    pragmatic_only = dspy.Prediction(
+        seizure_frequency_number="2 per month",
+        evidence_text="4 focal seizures per week",
+    )
+    wrong_bucket = dspy.Prediction(
+        seizure_frequency_number="unknown",
+        evidence_text="4 focal seizures per week",
+    )
+
+    assert gan_frequency_s0_semantic_evidence_metric(example, exact) == 1.0
+    assert gan_frequency_s0_semantic_evidence_metric(example, same_purist) == 0.65
+    assert gan_frequency_s0_semantic_evidence_metric(example, pragmatic_only) == 0.4
+    assert gan_frequency_s0_semantic_evidence_metric(example, wrong_bucket) == 0.0
+
+
+def test_gan_frequency_s0_semantic_evidence_metric_gates_missing_evidence():
+    example = dspy.Example(
+        note_text="He reports 4 focal seizures per week despite medication.",
+        seizure_frequency_number="4 per week",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="4 per week",
+        evidence_text=None,
+    )
+
+    assert gan_frequency_s0_semantic_evidence_metric(example, pred) == 0.0
+
+
+def test_gan_frequency_s0_semantic_evidence_metric_rewards_no_reference_without_evidence():
+    example = dspy.Example(
+        note_text="This administrative letter confirms the appointment was cancelled.",
+        seizure_frequency_number="no seizure frequency reference",
+    ).with_inputs("note_text")
+
+    clean_no_reference = dspy.Prediction(
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text=None,
+    )
+    hallucinated_evidence = dspy.Prediction(
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text="appointment was cancelled",
+    )
+
+    assert gan_frequency_s0_semantic_evidence_metric(example, clean_no_reference) == 1.0
+    assert gan_frequency_s0_semantic_evidence_metric(example, hallucinated_evidence) == 0.0
+
+
+def test_gan_frequency_s0_semantic_evidence_feedback_metric_reports_partial_credit():
+    example = dspy.Example(
+        note_text="He reports 4 focal seizures per week despite medication.",
+        seizure_frequency_number="4 per week",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="3 per week",
+        evidence_text="4 focal seizures per week",
+    )
+
+    result = gan_frequency_s0_semantic_evidence_feedback_metric(example, pred)
+
+    assert result.score == 0.65
+    assert "[purist-category]" in result.feedback
 
 
 def test_gan_frequency_s0_synthesis_metric_requires_quote_when_gold_evidence_is_paraphrased():

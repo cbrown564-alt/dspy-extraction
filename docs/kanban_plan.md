@@ -91,7 +91,41 @@ The DSPy GEPA/ReAct deep dive is recorded in `docs/dspy_gepa_react_best_practice
 
 ## Ready
 
-No active ready card is currently queued.
+### Create Gan S0 semantic-optimizer experiment configs
+
+- Outcome: Capped and full-validation Gan S0 experiment configs exist for the new `semantic_frequency_with_evidence` optimizer metric, preserving `gan_frequency_deterministic_v1` as the benchmark-facing scorer.
+- Dependencies: Implemented `semantic_frequency_with_evidence` and `semantic_frequency_with_evidence_feedback` optimizer metrics; current GPT 4.1-mini Gan S0 verify-repair and synthesis baselines.
+- Parallelizable: yes, with the Gemini model-config verification card if file ownership stays separate.
+- Owner: unassigned.
+- Validation: `uv run --extra dev pytest tests/test_experiment_configs.py tests/test_gan_s0_program.py`; dry-run config validation succeeds; configs state that the optimizer metric changed while benchmark scorer semantics did not.
+- Notes: Start with a cap-25 GPT 4.1-mini run so the new objective can be compared against the existing synthesis exact/evidence and verify-repair v2 anchors before spending a full validation pass.
+
+### Verify Gemini Flash-Lite model config
+
+- Outcome: A checked Gemini model config exists for the cost-focused Flash-Lite candidate, with provider-specific parameters compatible with the DSPy/LiteLLM Gemini path.
+- Dependencies: Current `clinical_extraction.llms` Gemini adapter; Google Gemini model documentation.
+- Parallelizable: yes, alongside semantic-optimizer GPT 4.1-mini config work.
+- Owner: unassigned.
+- Validation: Config validation plus a one-record or cap-3 Gan S0 dry/smoke run using the Gemini provider; record any provider-specific structured-output, temperature, max-token, timeout, or API-key caveats.
+- Notes: As of the 2026-05-19 check, Google announcements identify Gemini 3.1 Flash-Lite as the current cost-focused Flash-Lite candidate. Use API model string `gemini-3.1-flash-lite`, but confirm it with an actual provider smoke because Gemini API, Vertex, and third-party OpenAI-compatible routes can differ in accepted identifiers.
+
+### Run Gan S0 semantic-optimizer cap on GPT 4.1-mini
+
+- Outcome: A capped GPT 4.1-mini run measures whether `semantic_frequency_with_evidence` improves monthly/Purist accuracy and preserves evidence support versus the exact-label/evidence optimizer and verify-repair v2 baseline.
+- Dependencies: Create Gan S0 semantic-optimizer experiment configs.
+- Parallelizable: after config validation.
+- Owner: unassigned.
+- Validation: Cap-25 run artifact reports schema validity, normalized-label accuracy, monthly/Purist/Pragmatic accuracy, evidence quote support, invalid-label count, optimizer settings, compile duration, prediction seconds/record, and selected demos/compiled state.
+- Notes: Success means improved monthly/Purist behavior without evidence-support regression or a larger invalid-label tail. If it only improves Pragmatic accuracy, it has not answered the metric-balance concern.
+
+### Smoke Gan S0 on Gemini 3.1 Flash-Lite
+
+- Outcome: Gemini 3.1 Flash-Lite can run the Gan S0 direct or semantic-optimizer config under the same schema, split, scorer, and artifact contract as GPT 4.1-mini.
+- Dependencies: Verify Gemini Flash-Lite model config.
+- Parallelizable: after model-config validation; can run independently of the GPT 4.1-mini semantic cap once the config exists.
+- Owner: unassigned.
+- Validation: One-record or cap-3 smoke artifact with schema-valid prediction, evidence quote support check, runtime metadata, and provider caveats.
+- Notes: If Gemini fails structured output or rejects parameters, fix the model config/adapter before any cost/performance comparison. Do not compare price or quality until the smoke confirms the same output contract is being evaluated.
 
 ## In Progress
 
@@ -227,7 +261,7 @@ Completed work is summarized in the background sections above rather than repeat
 
 ### Prepare Gan S0 provider smoke configs and Windows Qwen handoff
 
-- Outcome: Complete. One-record Gan S0 smoke experiment configs exist for GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b, and the Windows Qwen handoff is documented in `docs/model_config_smoke_tests.md`.
+- Outcome: Complete. One-record Gan S0 smoke experiment configs exist for GPT 4.1-mini, GPT 5.5, Gemini 3 Flash Preview, Qwen3.6:35b, and Qwen3.5:9b, and the Windows Qwen handoff is documented in `docs/model_config_smoke_tests.md`.
 - Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-runs passed for all five smoke configs.
 - Notes: GPT 4.1-mini completed `runs/gan_s0_smoke_gpt4_1_mini_20260518T130500Z`; GPT 5.5 completed `runs/gan_s0_smoke_gpt5_5_openai_20260518T130600Z` after changing its config to omit unsupported temperature. Gemini is blocked on model identifier/API-version 404. Qwen smoke runs are deferred to the Windows laptop.
 
@@ -279,11 +313,11 @@ Completed work is summarized in the background sections above rather than repeat
 - Validation: `uv run --extra dev pytest tests/test_exect_s0_s1_program.py tests/test_experiment_configs.py tests/test_exect_scoring.py tests/test_sectioning_context.py`; dry-run `uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s0_s1_section_aware_cap25_gpt4_1_mini.json --env-file .env --dry-run`; capped run `runs/exect_s0_s1_section_aware_cap25_gpt4_1_mini_20260518T174714Z`; inspection note `docs/exect_section_aware_cap25_inspection.md`.
 - Notes: Scorer semantics, schema level, prompt version, fused seizure-type bridge, and ellipsis evidence repair were held fixed. The first section-aware cap underperformed the monolithic cap-25 baseline: micro F1 73.7% -> 65.6%, diagnosis F1 60.5% -> 44.9%, seizure-type F1 65.8% -> 59.7%, annotated-medication F1 92.1% -> 88.9%, evidence quote support 92.1% -> 75.5%. Keep the monolithic ExECT S0/S1 baseline as the active comparison anchor.
 
-### Resolve Gemini 3 Flash model identifier
+### Resolve historical Gemini 3 Flash Preview model identifier
 
 - Outcome: Complete. `configs/models/gan_s0_gemini3_flash.json` uses the API-listed Gemini 3 Flash Preview model identifier, `gemini-3-flash-preview`.
 - Validation: `uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py`; dry-run `configs/experiments/gan_s0_smoke_gemini3_flash.json`; completed smoke artifact `runs/gan_s0_smoke_gemini3_flash_20260518T134109Z`.
-- Notes: The Mac smoke attempt reached Google but failed with 404 for invalid `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`. The fixed smoke run completed but produced one invalid Gan label, so it validates provider/runtime compatibility rather than extraction quality.
+- Notes: The Mac smoke attempt reached Google but failed with 404 for invalid `models/gemini-3-flash`; see `docs/model_config_smoke_tests.md`. The fixed smoke run completed but produced one invalid Gan label, so it validates provider/runtime compatibility rather than extraction quality. This historical Gemini 3 Flash Preview path is separate from the new cost-focused Flash-Lite candidate, currently planned as `gemini-3.1-flash-lite`.
 
 ## Blocked
 
@@ -433,12 +467,12 @@ Completed work is summarized in the background sections above rather than repeat
 
 ### Model comparison matrix
 
-- Outcome: Comparable reports for Qwen3.6:35b, Qwen3.5:9b, Gemini 3 Flash, GPT 5.5, and GPT 4.1-mini on fixed tasks.
-- Dependencies: Stable experiment configs; model adapters; stable Gan S0 direct-reference config under unchanged scorer semantics.
+- Outcome: Comparable reports for Qwen3.6:35b, Qwen3.5:9b, Gemini 3.1 Flash-Lite, GPT 5.5, and GPT 4.1-mini on fixed tasks.
+- Dependencies: Stable experiment configs; model adapters; stable Gan S0 direct-reference config under unchanged scorer semantics; Gemini 3.1 Flash-Lite smoke run.
 - Parallelizable: after config and runtime readiness, subject to rate limits.
 - Owner: unassigned.
 - Validation: Run table with identical split, scorer, schema level, program variant, and metric caveats.
-- Notes: Start with Gan S0 because it is already instrumented, then repeat on ExECT S0/S1 after that baseline stabilizes.
+- Notes: Start with Gan S0 because it is already instrumented, then repeat on ExECT S0/S1 after that baseline stabilizes. Treat Gemini 3.1 Flash-Lite as the candidate primary hosted model only after matched cap/full-validation quality, schema validity, evidence support, latency, and actual billing/cost observations are recorded against GPT 4.1-mini.
 
 ### Qwen3.5:9b DSPy component latency ablation
 
@@ -502,7 +536,8 @@ Completed work is summarized in the background sections above rather than repeat
 
 ### Phase 4: Compare Models Under Fixed Conditions
 
-- Run GPT 4.1-mini, GPT 5.5, Gemini 3 Flash, Qwen3.6:35b, and Qwen3.5:9b on the same split, schema level, program variant, scorer mode, and structured-output strategy where possible.
+- Run GPT 4.1-mini, GPT 5.5, Gemini 3.1 Flash-Lite, Qwen3.6:35b, and Qwen3.5:9b on the same split, schema level, program variant, scorer mode, and structured-output strategy where possible.
+- Verify any Gemini model string against official Google/API-facing documentation before running; the current Flash-Lite target is `gemini-3.1-flash-lite`.
 - Before broad local-Qwen comparisons, complete the Qwen3.5:9b DSPy component latency ablation and the Qwen3.6:35b direct-extraction pace experiment.
 - Use Qwen3.5:9b to test whether `ChainOfThought`, `BootstrapFewShot`, or their combination is locally feasible; do not transfer that policy to Qwen3.6:35b unless the 35B direct pace gate is already acceptable and the heavier run is explicitly justified.
 - When comparing few-shot optimizers, start with `LabeledFewShot`, then `BootstrapFewShot`, then `BootstrapFewShotWithRandomSearch` / `BootstrapRS` before escalating to GEPA or broader agentic optimization.
@@ -536,10 +571,14 @@ Completed work is summarized in the background sections above rather than repeat
 - Max-budget follow-up corrected the Qwen policy: both local Qwen models report 262144 context, and Qwen recommends max_tokens=81920 for complex benchmarks. New max-budget configs set `max_tokens=81920`, `num_ctx=262144`, and `think=false`. Qwen3.5:9b `ChainOfThought + BootstrapFewShot` then completed but remained very slow at 388.58 prediction seconds/record with 66.7% schema validity on a 3-record cap. Qwen3.6:35b completed direct and ChainOfThought one-record full-context smokes at 35.30s and 96.29s respectively, with Ollama reporting 79% CPU / 21% GPU residency.
 - A direct full-validation rerun with `Qwen3.6:35b` `max_tokens=1024` did not improve monthly/Purist/Pragmatic accuracy or schema validity over the `max_tokens=256` baseline and was materially slower, so the plan should not treat larger default completion caps as a quality lever by themselves.
 - ReAct/tool-use is not a default extraction path. It depends on a bounded design with deterministic tools, a hard-case slice, and explicit latency/tool-call metrics.
+- The active hosted-model question is now whether `gemini-3.1-flash-lite` can replace GPT 4.1-mini as the cheaper primary model without losing Gan S0 schema validity, monthly/Purist accuracy, or evidence quote support. This requires a provider smoke before any matched model comparison.
+- The active optimizer question is whether `semantic_frequency_with_evidence` improves the balance between exact-label fidelity, monthly/Purist semantics, Pragmatic category, and evidence support. It is optimizer-facing only and must not be reported as a benchmark scorer change.
 - Benchmark reproduction remains a long-term dependency chain, not a near-term claim.
 
 ## Parallelization Opportunities
 
+- Safe immediately in parallel: create the semantic-optimizer GPT 4.1-mini configs and verify the Gemini 3.1 Flash-Lite model config.
+- Safe after config validation: run the GPT 4.1-mini semantic cap and Gemini cap-3 smoke as separate hosted-provider jobs, subject to API limits.
 - Safe after explicit design: Gan direct-output canonicalization and evidence-length guardrail work.
 - Safe after explicit design: Gan verifier/repair and abstention-calibration work.
 - Safe after the active Gan GEPA slice is stable: Gan direct-output canonicalization and evidence-length guardrail work, if file ownership stays separate.
@@ -550,10 +589,10 @@ Completed work is summarized in the background sections above rather than repeat
 
 ## Recommended Next Pull
 
-1. **Error-read verify-repair v2 full validation** — repair decisions (53 records), invalid labels (10), and label-mismatch clusters; artifact `runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z`; note `docs/gan_s0_verify_repair_full_validation_v2_20260519.md`.
-2. Optional: matched **direct-only full validation** on GPT 4.1-mini for strict ablation vs verify-repair v2.
-3. Optional: rerun Qwen3.6:35b direct full validation with post-guardrail bridge (`configs/experiments/gan_s0_qwen35b_direct_full_validation_guardrails.json`).
-4. Keep local `Qwen3.6:35b` on direct extraction without routine bootstrap/search optimizers; the few-shot ladder showed labeled demos beat bootstrap on the direct cap-25 path (`docs/gan_s0_few_shot_ladder_cap25_inspection_20260519.md`).
-5. Backlog when needed: Gan abstention calibration, ExECT monolithic GEPA feedback, or Gan ReAct temporal-tools design.
+1. **Create Gan S0 semantic-optimizer experiment configs** for GPT 4.1-mini cap-25 and full-validation follow-up using `semantic_frequency_with_evidence`, with unchanged `gan_frequency_deterministic_v1` reporting.
+2. **Verify Gemini 3.1 Flash-Lite model config** — confirm `gemini-3.1-flash-lite` works through the existing Gemini/LiteLLM path and document any provider-specific identifier or parameter differences.
+3. **Run Gan S0 semantic-optimizer cap on GPT 4.1-mini** and compare against verify-repair v2 plus the synthesis exact/evidence optimizer.
+4. **Smoke Gan S0 on Gemini 3.1 Flash-Lite** with cap-1 or cap-3 before any cost/performance claim.
+5. If both caps clear: run a matched Gemini 3.1 Flash-Lite cap-25 against the same semantic optimizer and decide whether it is credible as the primary hosted model candidate.
 
-Verify-repair v2 full validation remains the hosted quality anchor. The few-shot ladder is complete: use synthesis `LabeledFewShot` on direct if demos are needed; do not default to bootstrap/search on GPT 4.1-mini direct. Monolithic ExECT S0/S1 remains the broader-schema anchor.
+Verify-repair v2 full validation remains the current hosted quality anchor until the new semantic-optimizer and Gemini Flash-Lite runs produce comparable artifacts. The near-term question is now two-part: better optimizer reward balance first, cheaper hosted primary model second.

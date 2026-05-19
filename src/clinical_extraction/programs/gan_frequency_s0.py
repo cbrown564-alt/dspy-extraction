@@ -475,6 +475,190 @@ def gan_frequency_s0_synthesis_feedback_metric(
     return ScoreWithFeedback(score=metric_score, feedback=" ".join(feedback))
 
 
+def gan_frequency_s0_semantic_evidence_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+) -> float:
+    """Graded optimizer metric for Gan frequency extraction.
+
+    This optimizer-facing metric keeps benchmark reporting unchanged while
+    matching the practical research objective more closely than Pragmatic-only
+    or exact-label-only rewards. Invalid labels and unsupported evidence receive
+    zero; valid, grounded predictions then receive graded credit for exact
+    monthly frequency, Purist category, or Pragmatic category agreement.
+    """
+    from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+
+    predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
+    gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+
+    if not predicted or not gold:
+        return 0.0
+
+    try:
+        score = score_gan_frequency_prediction(
+            gold_label=gold, predicted_label=predicted
+        )
+    except ValueError:
+        return 0.0
+
+    predicted_evidence = getattr(pred, "evidence_text", None)
+    if not _evidence_policy_ok(
+        gold_label=gold,
+        predicted_evidence=predicted_evidence,
+        note_text=getattr(example, "note_text", "") or "",
+    ):
+        return 0.0
+
+    return _semantic_frequency_reward(score)
+
+
+def gan_frequency_s0_semantic_evidence_feedback_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+    pred_name=None,
+    pred_trace=None,
+):
+    """GEPA-compatible graded Gan S0 feedback metric."""
+    from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
+
+    from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+
+    predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
+    gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+    note_text = getattr(example, "note_text", "") or ""
+
+    if not predicted:
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback=(
+                "[abstention] The prediction did not provide seizure_frequency_number. "
+                "Return a canonical Gan label or no seizure frequency reference."
+            ),
+        )
+    if not gold:
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback="The training example is missing the gold Gan frequency label.",
+        )
+
+    try:
+        score = score_gan_frequency_prediction(
+            gold_label=gold, predicted_label=predicted
+        )
+    except ValueError as exc:
+        return ScoreWithFeedback(
+            score=0.0,
+            feedback=(
+                "[invalid-format] "
+                f"The predicted label {predicted!r} is not a valid canonical Gan "
+                f"frequency label: {exc}."
+            ),
+        )
+
+    predicted_evidence = getattr(pred, "evidence_text", None)
+    evidence_feedback = _evidence_policy_feedback(
+        gold_label=gold,
+        predicted_evidence=predicted_evidence,
+        note_text=note_text,
+    )
+    if evidence_feedback is not None:
+        return ScoreWithFeedback(score=0.0, feedback=evidence_feedback)
+
+    metric_score = _semantic_frequency_reward(score)
+    feedback = _semantic_frequency_feedback(score)
+    return ScoreWithFeedback(score=metric_score, feedback=feedback)
+
+
+def _semantic_frequency_reward(score) -> float:
+    if score.exact_normalized_match:
+        return 1.0
+    if score.monthly_frequency_match:
+        return 0.85
+    if score.purist_category_match:
+        return 0.65
+    if score.pragmatic_category_match:
+        return 0.4
+    return 0.0
+
+
+def _semantic_frequency_feedback(score) -> str:
+    if score.exact_normalized_match:
+        return (
+            "[exact-label][evidence-support] The prediction matched the normalized "
+            "Gan label and evidence policy."
+        )
+    if score.monthly_frequency_match:
+        return (
+            "[monthly-frequency] The prediction converts to the correct seizures "
+            "per month, but the canonical Gan label surface differs from gold."
+        )
+    if score.purist_category_match:
+        return (
+            "[purist-category] The prediction preserves the fine-grained Purist "
+            "frequency category but misses the exact monthly value or canonical label."
+        )
+    if score.pragmatic_category_match:
+        return (
+            "[pragmatic-category] The prediction preserves only the coarse "
+            "infrequent/frequent/unknown/no-reference bucket. Improve the temporal "
+            "window, cluster details, or numeric conversion."
+        )
+    return (
+        "[frequency-semantics] The prediction crossed the benchmark-facing "
+        f"Pragmatic bucket from {score.gold_pragmatic_category!r} to "
+        f"{score.predicted_pragmatic_category!r}."
+    )
+
+
+def _evidence_policy_ok(
+    *,
+    gold_label: str,
+    predicted_evidence: str | None,
+    note_text: str,
+) -> bool:
+    return (
+        _evidence_policy_feedback(
+            gold_label=gold_label,
+            predicted_evidence=predicted_evidence,
+            note_text=note_text,
+        )
+        is None
+    )
+
+
+def _evidence_policy_feedback(
+    *,
+    gold_label: str,
+    predicted_evidence: str | None,
+    note_text: str,
+) -> str | None:
+    if gold_label == "no seizure frequency reference":
+        if isinstance(predicted_evidence, str) and predicted_evidence.strip():
+            return (
+                "[evidence-support] No-reference labels should not include "
+                "supporting frequency evidence."
+            )
+        return None
+
+    if not _requires_evidence_support(gold_label):
+        return None
+
+    if not isinstance(predicted_evidence, str) or not predicted_evidence.strip():
+        return (
+            "[evidence-support] The prediction must include an exact contiguous "
+            "source quote as evidence."
+        )
+    if predicted_evidence.strip() not in note_text:
+        return (
+            "[evidence-support][unsupported-quote] The evidence_text is not an "
+            "exact contiguous quote from the note."
+        )
+    return None
+
+
 def _requires_evidence_support(gold_label: str) -> bool:
     return gold_label != "no seizure frequency reference"
 
@@ -584,6 +768,10 @@ def _synthesis_example_priority(record: GanRecord) -> tuple[int, int, str]:
 
 GAN_FREQUENCY_S0_OPTIMIZER_METRICS = {
     "pragmatic_category": gan_frequency_s0_metric,
+    "semantic_frequency_with_evidence": gan_frequency_s0_semantic_evidence_metric,
+    "semantic_frequency_with_evidence_feedback": (
+        gan_frequency_s0_semantic_evidence_feedback_metric
+    ),
     "synthesis_exact_with_evidence": gan_frequency_s0_synthesis_metric,
     "synthesis_exact_with_evidence_feedback": gan_frequency_s0_synthesis_feedback_metric,
 }
@@ -594,7 +782,12 @@ def _gan_s0_optimizer_trainset(
     *,
     optimizer_metric: str,
 ) -> list[dspy.Example]:
-    if optimizer_metric == "synthesis_exact_with_evidence":
+    if optimizer_metric in {
+        "semantic_frequency_with_evidence",
+        "semantic_frequency_with_evidence_feedback",
+        "synthesis_exact_with_evidence",
+        "synthesis_exact_with_evidence_feedback",
+    }:
         return make_gan_synthesis_dspy_examples(records)
     return make_gan_dspy_examples(records)
 
@@ -608,7 +801,7 @@ def compile_gan_s0_module(
     max_labeled_demos: int = 0,
     max_rounds: int = 1,
     num_candidate_programs: int = 16,
-    optimizer_metric: str = "pragmatic_category",
+    optimizer_metric: str = "semantic_frequency_with_evidence",
 ) -> GanFrequencyS0Module | GanFrequencyS0DirectModule:
     """Compile a Gan S0 module with a few-shot DSPy optimizer.
 
@@ -660,7 +853,7 @@ def compile_gan_s0_module_gepa(
     records: list[GanRecord],
     *,
     program_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT,
-    optimizer_metric: str = "synthesis_exact_with_evidence_feedback",
+    optimizer_metric: str = "semantic_frequency_with_evidence_feedback",
     auto: str | None = None,
     max_full_evals: int | None = None,
     max_metric_calls: int | None = None,

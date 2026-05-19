@@ -73,6 +73,12 @@ Diagnostic metrics:
 - Normalized-label exact match is stricter than monthly-frequency or category matching and should be interpreted as a format-fidelity diagnostic unless an experiment explicitly targets label-scheme reproduction.
 - Reference-label agreement is a difficulty/audit feature, not a gold-label alternative.
 
+Optimizer-facing metrics:
+
+- `semantic_frequency_with_evidence` is the preferred scalar optimization objective for Gan S0 compilation. It is not a benchmark scorer. It gives zero credit for schema-invalid labels or evidence-policy failures, then gives graded credit for normalized-label exact match, monthly-frequency match, Purist category match, and Pragmatic category match.
+- `semantic_frequency_with_evidence_feedback` is the corresponding GEPA feedback objective. It preserves the same hard evidence gate and graded frequency reward while returning textual feedback for optimization.
+- Earlier optimizer objectives remain available for reproducibility: `pragmatic_category` is intentionally coarse, while `synthesis_exact_with_evidence` and `synthesis_exact_with_evidence_feedback` are intentionally strict exact-label/evidence objectives.
+
 ## Split And Reporting Caveats
 
 - `data/splits/gan_2026_splits.json` is deterministic and salted with `gan-2026-fixed-splits-v1`.

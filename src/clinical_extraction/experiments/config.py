@@ -39,9 +39,11 @@ class OptimizerConfig(FrozenModel):
     ] = "BootstrapFewShot"
     metric_name: Literal[
         "pragmatic_category",
+        "semantic_frequency_with_evidence",
+        "semantic_frequency_with_evidence_feedback",
         "synthesis_exact_with_evidence",
         "synthesis_exact_with_evidence_feedback",
-    ] = "pragmatic_category"
+    ] = "semantic_frequency_with_evidence"
     max_bootstrapped_demos: int = Field(default=4, ge=0)
     max_labeled_demos: int = Field(default=0, ge=0)
     max_rounds: int = Field(default=1, ge=1)
@@ -67,7 +69,10 @@ class OptimizerConfig(FrozenModel):
                 raise ValueError(
                     "LabeledFewShot optimizer configs must set max_labeled_demos >= 1."
                 )
-            if self.metric_name == "synthesis_exact_with_evidence_feedback":
+            if self.metric_name in {
+                "semantic_frequency_with_evidence_feedback",
+                "synthesis_exact_with_evidence_feedback",
+            }:
                 raise ValueError(
                     "LabeledFewShot optimizer configs must use a scalar metric."
                 )
@@ -78,13 +83,19 @@ class OptimizerConfig(FrozenModel):
                 raise ValueError(
                     f"{self.name} optimizer configs must set max_bootstrapped_demos >= 1."
                 )
-            if self.metric_name == "synthesis_exact_with_evidence_feedback":
+            if self.metric_name in {
+                "semantic_frequency_with_evidence_feedback",
+                "synthesis_exact_with_evidence_feedback",
+            }:
                 raise ValueError(
                     f"{self.name} optimizer configs must use a scalar metric."
                 )
             return self
 
-        if self.metric_name != "synthesis_exact_with_evidence_feedback":
+        if self.metric_name not in {
+            "semantic_frequency_with_evidence_feedback",
+            "synthesis_exact_with_evidence_feedback",
+        }:
             raise ValueError("GEPA optimizer configs must use a feedback metric.")
         configured_budgets = sum(
             value is not None
