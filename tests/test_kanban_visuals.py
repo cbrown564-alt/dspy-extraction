@@ -12,8 +12,8 @@ def test_parse_kanban_plan_extracts_standard_cards() -> None:
     assert "Draft ExECT S0/S1 baseline design" in titles
     assert "Gan extract-verify-repair ablation" in titles
     assert "Design section-aware versus monolithic ExECT ablation" in titles
-    assert plan.recommended_next_pull[0].startswith("Add shared GEPA optimizer support")
-    assert plan.roadmap["Phase 1: Consolidate Gan S0 Into A Reliable Reference Task"]
+    assert plan.recommended_next_pull[0].startswith("Re-run a capped or full Gan S0 Qwen3.6:35b direct validation")
+    assert plan.roadmap["Phase 1: Optimize Gan S0 As The Active Reference Task"]
 
 
 def test_parse_card_dependencies_are_split_on_semicolons() -> None:

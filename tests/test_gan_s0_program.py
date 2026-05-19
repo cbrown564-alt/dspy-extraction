@@ -264,6 +264,118 @@ def test_gan_s0_module_does_not_repair_semantic_cluster_failures(raw_label: str)
     assert "normalized_label_repaired" not in value.quality_flags
 
 
+@pytest.mark.parametrize(
+    ("raw_label", "normalized_label"),
+    [
+        ("several per week", "multiple per week"),
+        ("few per month", "multiple per month"),
+        ("1-2 per week", "1 to 2 per week"),
+        ("3 or 4 per week", "3 to 4 per week"),
+        ("11 to 28 per quarter", "11 to 28 per 3 month"),
+        ("1 per fortnight", "1 per 2 week"),
+        ("fortnightly", "1 per 2 week"),
+    ],
+)
+def test_gan_s0_module_repairs_local_qwen_canonicalization_surfaces(
+    raw_label: str, normalized_label: str
+):
+    record = load_gan_records()[0]
+    _configure_dummy([{
+        "seizure_frequency_number": raw_label,
+        "evidence_text": "dummy evidence",
+    }])
+
+    module = GanFrequencyS0DirectModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == raw_label
+    assert value.normalized_value == normalized_label
+    assert "normalized_label_repaired" in value.quality_flags
+
+
+def test_gan_s0_module_strips_prompt_footer_from_evidence():
+    note_text = (
+        "Continue levetiracetam at 750 mg twice daily. "
+        "She reports one seizure per month."
+    )
+    record = GanRecord(
+        record_id="gan_test_evidence",
+        source_row_index=1,
+        note_text=note_text,
+        gold_label="1 per month",
+        gold_evidence="one seizure per month",
+        reference_label=None,
+        reference_evidence=None,
+        row_ok=True,
+        labels_match_all_categories=True,
+        quotes_ok_all_categories=True,
+        raw={},
+    )
+    _configure_dummy([{
+        "seizure_frequency_number": "1 per month",
+        "evidence_text": (
+            "She reports one seizure per month. "
+            "Respond with the corresponding output fields and start with [[ ## "
+        ),
+    }])
+
+    module = GanFrequencyS0DirectModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.evidence[0].text == "She reports one seizure per month."
+    assert value.evidence[0].start == note_text.index("She reports one seizure per month.")
+    assert "evidence_repaired:prompt_footer_stripped" in value.quality_flags
+
+
+def test_gan_s0_module_truncates_evidence_to_longest_note_prefix():
+    note_text = "Continue levetiracetam at 750 mg twice daily."
+    record = GanRecord(
+        record_id="gan_test_truncated_evidence",
+        source_row_index=2,
+        note_text=note_text,
+        gold_label="unknown",
+        gold_evidence=None,
+        reference_label=None,
+        reference_evidence=None,
+        row_ok=True,
+        labels_match_all_categories=True,
+        quotes_ok_all_categories=True,
+        raw={},
+    )
+    _configure_dummy([{
+        "seizure_frequency_number": "unknown",
+        "evidence_text": "Continue levetiracetam at 750 mg twice daily. extra spill",
+    }])
+
+    module = GanFrequencyS0DirectModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.evidence[0].text == note_text
+    assert value.evidence[0].start == 0
+    assert "evidence_repaired:truncated_to_note_span" in value.quality_flags
+
+
 def test_gan_frequency_s0_metric_returns_1_on_pragmatic_category_match():
     example = dspy.Example(
         note_text="...",

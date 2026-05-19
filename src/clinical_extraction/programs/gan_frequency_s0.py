@@ -77,7 +77,10 @@ class GanFrequencyS0Signature(dspy.Signature):
         )
     )
     evidence_text: Optional[str] = dspy.OutputField(
-        desc="Direct verbatim quote from the note supporting the label. Null if abstaining."
+        desc=(
+            "Shortest exact contiguous quote from the note supporting the label. "
+            "Do not include prompt instructions or wrapper text. Null if abstaining."
+        )
     )
 
 
@@ -595,6 +598,9 @@ def _predict_record(
     if label != normalized_label:
         quality_flags.append("normalized_label_repaired")
 
+    evidence_text, evidence_flags = _guard_evidence_text(record.note_text, evidence_text)
+    quality_flags.extend(evidence_flags)
+
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,
         raw_value=label,
@@ -633,6 +639,19 @@ _FORBIDDEN_UNIT_RE = re.compile(
     r"\b(quarter|quarters|fortnight|fortnights|night|nights|hour|hours)\b",
     re.IGNORECASE,
 )
+_ADJECTIVE_RATE_LABELS = {
+    "daily": "1 per day",
+    "nightly": "1 per day",
+    "weekly": "1 per week",
+    "monthly": "1 per month",
+    "biweekly": "1 per 2 week",
+    "fortnightly": "1 per 2 week",
+}
+_EVIDENCE_PROMPT_FOOTER_MARKERS = (
+    "Respond with the corresponding output fields",
+    "[[ ## ",
+    "In adhering to this structure",
+)
 
 
 def _normalize_predicted_label(label: str | None) -> str | None:
@@ -644,11 +663,13 @@ def _normalize_predicted_label(label: str | None) -> str | None:
     if quoted_special:
         return quoted_special.group("label").lower()
 
-    every_day_range = _EVERY_DAY_RANGE_RE.match(stripped)
+    normalized = _apply_canonical_surface_repairs(stripped)
+
+    every_day_range = _EVERY_DAY_RANGE_RE.match(normalized)
     if every_day_range:
         return f"1 per 1 to {every_day_range.group('end')} day"
 
-    matching_rate_range = _MATCHING_RATE_RANGE_RE.match(stripped)
+    matching_rate_range = _MATCHING_RATE_RANGE_RE.match(normalized)
     if (
         matching_rate_range
         and matching_rate_range.group("first_unit") == matching_rate_range.group("second_unit")
@@ -662,11 +683,69 @@ def _normalize_predicted_label(label: str | None) -> str | None:
             f"{matching_rate_range.group('first_unit')}"
         )
 
-    daily_count = _DAILY_COUNT_RE.match(stripped)
+    daily_count = _DAILY_COUNT_RE.match(normalized)
     if daily_count and float(daily_count.group("count")) > 33:
         return "multiple per day"
 
-    return stripped
+    return normalized
+
+
+def _apply_canonical_surface_repairs(label: str) -> str:
+    normalized = re.sub(r"\s+", " ", label.strip().lower())
+    normalized = re.sub(
+        r"^(?:<=|>=|<|>|at most|at least|up to)\s*",
+        "",
+        normalized,
+    )
+    if normalized in _ADJECTIVE_RATE_LABELS:
+        return _ADJECTIVE_RATE_LABELS[normalized]
+
+    normalized = re.sub(r"\b(few|several)\b", "multiple", normalized)
+    normalized = re.sub(
+        r"(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)",
+        r"\1 to \2",
+        normalized,
+    )
+    normalized = re.sub(
+        r"(\d+(?:\.\d+)?)\s+or\s+(\d+(?:\.\d+)?)",
+        r"\1 to \2",
+        normalized,
+    )
+    normalized = re.sub(r"\bper\s+fortnight\b", "per 2 week", normalized)
+    normalized = re.sub(r"\bper\s+fortnights\b", "per 2 week", normalized)
+    normalized = re.sub(r"\bper\s+quarter\b", "per 3 month", normalized)
+    normalized = re.sub(r"\bper\s+quarters\b", "per 3 month", normalized)
+    return normalized
+
+
+def _guard_evidence_text(
+    note_text: str,
+    evidence_text: str | None,
+) -> tuple[str | None, list[str]]:
+    if not evidence_text:
+        return None, []
+
+    flags: list[str] = []
+    cleaned = evidence_text.strip()
+
+    for marker in _EVIDENCE_PROMPT_FOOTER_MARKERS:
+        marker_index = cleaned.find(marker)
+        if marker_index != -1:
+            cleaned = cleaned[:marker_index].rstrip()
+            if "evidence_repaired:prompt_footer_stripped" not in flags:
+                flags.append("evidence_repaired:prompt_footer_stripped")
+
+    if cleaned in note_text:
+        return cleaned, flags
+
+    prefix = cleaned
+    while prefix and prefix not in note_text:
+        prefix = prefix[:-1].rstrip()
+    if prefix and prefix != cleaned:
+        flags.append("evidence_repaired:truncated_to_note_span")
+        return prefix, flags
+
+    return cleaned, flags
 
 
 def _format_number(value: float) -> str:
