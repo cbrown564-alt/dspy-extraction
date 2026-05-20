@@ -1,84 +1,89 @@
 # Taxonomy Primitive Catalog
 
 Date: 2026-05-20  
-Status: Seed catalog  
-Related: `docs/taxonomy_primitive_contract.md`, `docs/taxonomy_primitives_workstream_plan_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, `docs/gan_s0_temporal_candidate_pivot_20260519.md`
+Status: Catalog aligned with primitive coverage audit  
+Related: `docs/taxonomy_primitive_contract.md`, `docs/taxonomy_primitives_workstream_plan_20260520.md`, `docs/taxonomy_primitive_coverage_audit_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, `docs/gan_s0_temporal_candidate_pivot_20260519.md`
 
 ## Purpose
 
 This catalog lists current and planned reusable primitives by clinical operation and taxonomy position. The typed contract lives in `src/clinical_extraction/primitives.py`; this document is the review surface for deciding which primitives should be implemented, tested, promoted, or deferred.
 
+`Registry status` describes implementation state in the typed primitive registry. `Evidence status` describes the current research role from `docs/taxonomy_primitive_coverage_audit_20260520.md`. A primitive being implemented or validated does not imply that it is promoted for model-backed use.
+
 ## Candidate Generation
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Intended experiments | Caveats |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `gan.frequency.temporal_candidates.v1` | Gan 2026 | frequency | pre | soft hint | implemented | Gan temporal candidates / H2-H4 frequency arms | Preserve Gan `seizure_frequency_number[0]` as gold; monthly normalization does not transfer directly to ExECT; shared candidate payload contract now exists for future adapter work. |
-| `exect.frequency.rate_candidates.v1` | ExECTv2 | frequency | pre | soft hint | implemented | S4 seizure-frequency deterministic probes | Use ExECT MarkupSeizureFrequency templates, not Gan monthly policy; cap-25 H2 pre-vocab was rejected so keep off default paths. |
-| `exect.frequency.benchmark_bridge.v1` | ExECTv2 | frequency | post | posthoc correction | implemented | S4 raw vs bridge and post-classifier follow-ups | Repairs near-miss quantified rates, strips seizure-type confusion, blocks non-audited periods, and note-anchors qualitative co-labels; abstention is empty-list, not Gan no-reference. |
-| `exect.medication.rx_candidates.v1` | ExECTv2 | medication | pre | soft hint | implemented | Medication-only H2 slices or post-classifier fixtures | Broad S1 pre-vocabulary was rejected; keep candidate lists medication-scoped; planned/previous candidates are diagnostic, not S1 current prescription outputs. |
-| `exect.sections.family_spans.v1` | ExECTv2 | multi_family | pre | soft hint | planned | Section-aware or family-filtered extraction arms | Section filtering is not automatically promotable; preserve full-note baselines. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Intended experiments | Caveats |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gan.frequency.temporal_candidates.v1` | Gan 2026 | frequency | pre | soft hint | implemented | promoted | Gan temporal candidates / H2-H4 frequency arms | Promoted only for Gan S0 synthetic validation under fixed scorer semantics, paired with LLM adjudication/verify-repair. Preserve Gan `seizure_frequency_number[0]` as gold; monthly normalization does not transfer directly to ExECT. |
+| `exect.frequency.rate_candidates.v1` | ExECTv2 | frequency | pre | soft hint | implemented | rejected_for_current_arm | Redesigned S4 seizure-frequency mechanisms only | Use ExECT MarkupSeizureFrequency templates, not Gan monthly policy; cap-25 H2 pre-candidates regressed seizure_frequency F1, so do not rerun the same pre-vocab arm. |
+| `exect.frequency.benchmark_bridge.v1` | ExECTv2 | frequency | post | posthoc correction | implemented | diagnostic_only | S4 raw vs bridge diagnostics and redesigned post-template follow-ups | Existing bridge policy is infrastructure around ExECT frequency surfaces, not a promoted new arm; abstention is empty-list, not Gan no-reference. |
+| `exect.medication.rx_candidates.v1` | ExECTv2 | medication | pre | soft hint | implemented | rejected_for_current_arm | Medication fixtures or redesigned narrow arms | Medication-only H2 slice regressed; keep candidate lists medication-scoped and off default S1 current-prescription paths unless a new preregistered mechanism changes presentation or repair behavior. |
+| `exect.sections.family_spans.v1` | ExECTv2 | multi_family | pre | soft hint | planned | planned | Section-aware or family-filtered extraction arms | Section filtering has no promotion evidence; preserve full-note baselines. |
 
 ## Broad ExECT Family Backlog (Card 11)
 
 Sparse S2–S4 families sketched for catalog review. Implementation waits until S1/S4 high-signal probes settle.
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Intended experiments | Caveats |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `exect.investigation.surface_bridge.v1` | ExECTv2 | investigation | post | posthoc correction | planned | S4 investigation normalization follow-ups | Modality+result canonical strings; separate from planned-scan guard. |
-| `exect.investigation.planned_scan_guard.v1` | ExECTv2 | investigation | post | posthoc correction | planned | S4 unavailable/planned scan repair | Do not score future-tense plans as completed results. |
-| `exect.comorbidity.overlap_policy.v1` | ExECTv2 | comorbidity | post | posthoc correction | planned | S3 overlap resolver slices | Cause and comorbidity gold are independent; scorer does not deduplicate. |
-| `exect.birth_development.cui_phrase_bridge.v1` | ExECTv2 | birth_development | post | posthoc correction | planned | S3 sparse-family bridge probes | Very sparse validation support; paraphrase mismatch common. |
-| `exect.onset.cui_phrase_bridge.v1` | ExECTv2 | onset | post | posthoc correction | planned | S3 onset canonicalization | CUIPhrase surfaces; age/year attributes are not benchmark labels. |
-| `exect.epilepsy_cause.cui_phrase_bridge.v1` | ExECTv2 | epilepsy_cause | post | posthoc correction | planned | S3 cause versus comorbidity slices | Same phrase may score in both cause and comorbidity. |
-| `exect.when_diagnosed.cui_phrase_bridge.v1` | ExECTv2 | when_diagnosed | post | posthoc correction | planned | S3 timing-surface repair | Duplicate predictions across diagnosis and when_diagnosed are expected noise. |
-| `exect.family_history.cui_phrase_bridge.v1` | ExECTv2 | family_history | post | posthoc correction | planned | Future patient-history arms | Defer until higher-signal S1/S4 probes settle. |
-| `exect.social_history.cui_phrase_bridge.v1` | ExECTv2 | social_history | post | posthoc correction | planned | Patient-history normalization | Published Table 1 uses Patient History naming. |
-| `exect.driving.cui_phrase_bridge.v1` | ExECTv2 | driving | post | posthoc correction | planned | Sparse-family design only | Low priority until S4 frequency/temporality probed. |
-| `exect.pregnancy.cui_phrase_bridge.v1` | ExECTv2 | pregnancy | post | posthoc correction | planned | Sparse-family design only | Design only; not an active interleaving target. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Intended experiments | Caveats |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect.investigation.surface_bridge.v1` | ExECTv2 | investigation | post | posthoc correction | planned | planned | S4 investigation normalization follow-ups | Planned metadata only; modality+result canonical strings remain separate from planned-scan guard. |
+| `exect.investigation.planned_scan_guard.v1` | ExECTv2 | investigation | post | posthoc correction | planned | planned | S4 unavailable/planned scan repair | Planned metadata only; do not score future-tense plans as completed results. |
+| `exect.comorbidity.overlap_policy.v1` | ExECTv2 | comorbidity | post | posthoc correction | planned | planned | S3 overlap resolver slices | Planned metadata only; cause and comorbidity gold are independent, and scorer does not deduplicate. |
+| `exect.birth_development.cui_phrase_bridge.v1` | ExECTv2 | birth_development | post | posthoc correction | planned | planned | S3 sparse-family bridge probes | CUI/phrase work is deferred until benchmark-reproduction scope is reopened; sparse validation support makes this diagnostic design only. |
+| `exect.onset.cui_phrase_bridge.v1` | ExECTv2 | onset | post | posthoc correction | planned | planned | S3 onset canonicalization | CUI/phrase work is deferred until benchmark-reproduction scope is reopened; age/year attributes are not benchmark labels. |
+| `exect.epilepsy_cause.cui_phrase_bridge.v1` | ExECTv2 | epilepsy_cause | post | posthoc correction | planned | planned | S3 cause versus comorbidity slices | CUI/phrase work is deferred until benchmark-reproduction scope is reopened; same phrase may score in both cause and comorbidity. |
+| `exect.when_diagnosed.cui_phrase_bridge.v1` | ExECTv2 | when_diagnosed | post | posthoc correction | planned | planned | S3 timing-surface repair | CUI/phrase work is deferred until benchmark-reproduction scope is reopened; duplicate predictions across diagnosis and when_diagnosed are expected noise. |
+| `exect.family_history.cui_phrase_bridge.v1` | ExECTv2 | family_history | post | posthoc correction | planned | planned | Future patient-history arms | Planned sparse-family metadata only; defer until higher-signal S1/S4 probes settle. |
+| `exect.social_history.cui_phrase_bridge.v1` | ExECTv2 | social_history | post | posthoc correction | planned | planned | Patient-history normalization | Planned sparse-family metadata only; published Table 1 uses Patient History naming. |
+| `exect.driving.cui_phrase_bridge.v1` | ExECTv2 | driving | post | posthoc correction | planned | planned | Sparse-family design only | Planned sparse-family metadata only; not an active interleaving target. |
+| `exect.pregnancy.cui_phrase_bridge.v1` | ExECTv2 | pregnancy | post | posthoc correction | planned | planned | Sparse-family design only | Planned sparse-family metadata only; not an active interleaving target. |
 
 ## Normalization And Benchmark Bridges
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Intended experiments | Caveats |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `exect.medication.benchmark_bridge.v1` | ExECTv2 | medication | post | posthoc correction | implemented | H1 post bridge, medication temporality follow-up | Benchmark prescription alignment is not the same as clinically rich medication status; brand surfaces are preserved when the note uses an audited brand form and non-ASM medications are rejected. |
-| `exect.seizure_type.benchmark_bridge.v1` | ExECTv2 | seizure_type | post | posthoc correction | implemented | S1 raw vs bridge and Qwen seizure-gap probes | Coarsens granular focal surfaces, splits fused temporal-lobe and secondary-generalisation phrases, rejects jerk/absence descriptors, and can co-list the secondary token; avoid using seizure-frequency spans as seizure-type evidence unless the audit supports it. |
-| `exect.diagnosis.benchmark_bridge.v1` | ExECTv2 | diagnosis | post | posthoc correction | implemented | S1 raw vs bridge and diagnosis recall checks | Strips uncertainty qualifiers, applies audited specificity collapse, restores symptomatic/on-awakening surfaces, and note-gates co-list augmentation; do not infer diagnosis from seizure type alone. |
-| `gan.frequency.label_policy_bridge.v1` | Gan 2026 | frequency | post/eval_only | posthoc correction/diagnostic_only | implemented | Gan frequency repair diagnostics and scorer-only audits | Keep scorer semantics fixed; bridge output preserves raw, canonical, benchmark-facing, monthly, Purist, and Pragmatic values separately. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Intended experiments | Caveats |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect.medication.benchmark_bridge.v1` | ExECTv2 | medication | post | posthoc correction | implemented | diagnostic_only | Frozen S1 benchmark-policy bridge path and bridge-contribution diagnostics | Benchmark prescription alignment is scorer-policy infrastructure, not a promoted H1 intervention; it is not equivalent to clinically rich medication status. |
+| `exect.seizure_type.benchmark_bridge.v1` | ExECTv2 | seizure_type | post | posthoc correction | implemented | diagnostic_only | S1 raw vs bridge diagnostics and Qwen seizure-gap error analysis | Quantifies bridge contribution, but Qwen seizure gap persists after bridging; next work should diagnose model/prompt policy rather than rerun post-bridge arms. |
+| `exect.diagnosis.benchmark_bridge.v1` | ExECTv2 | diagnosis | post | posthoc correction | implemented | diagnostic_only | S1 raw vs bridge diagnostics and diagnosis recall checks | Bridge remains scorer-policy infrastructure; do not infer diagnosis from seizure type alone. |
+| `gan.frequency.label_policy_bridge.v1` | Gan 2026 | frequency | post/eval_only | posthoc correction/diagnostic_only | implemented | diagnostic_only | Gan frequency repair diagnostics and scorer-only audits | Keep scorer semantics fixed; bridge output preserves raw, canonical, benchmark-facing, monthly, Purist, and Pragmatic values separately. |
 
 ## Evidence Support
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Intended experiments | Caveats |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `shared.evidence.substring_support.v1` | shared | multi_family | eval_only | diagnostic_only | implemented | Evidence diagnostics across Gan and ExECT | Exact quote support can validate a raw quote without validating the normalized interpretation. |
-| `shared.evidence.verified_quote.v1` | shared | multi_family | post | posthoc correction | planned | H1 evidence guard and verifier-repair policies | Must distinguish unsupported quotes from no-reference cases. |
-| `gan.frequency.evidence_guard.v1` | Gan 2026 | frequency | post/eval_only | posthoc correction/diagnostic_only | implemented | Gan frequency guardrails and repair comparisons | Evidence support remains diagnostic unless a decision doc says it affects prediction; elided Gan gold evidence is ordered multi-span support, not an exact quote. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Intended experiments | Caveats |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `shared.evidence.substring_support.v1` | shared | multi_family | eval_only | diagnostic_only | implemented | diagnostic_only | Evidence diagnostics across Gan and ExECT | Exact quote support can validate a raw quote without validating the normalized interpretation. |
+| `shared.evidence.verified_quote.v1` | shared | multi_family | post | posthoc correction | planned | planned | H1 evidence guard and verifier-repair policies | Needs a comparison group before prediction-affecting use; must distinguish unsupported quotes from no-reference cases. |
+| `gan.frequency.evidence_guard.v1` | Gan 2026 | frequency | post/eval_only | posthoc correction/diagnostic_only | implemented | diagnostic_only | Gan frequency guardrails and repair comparisons | Evidence support is required for interpretation but remains diagnostic unless a decision doc makes it prediction-affecting; elided Gan gold evidence is ordered multi-span support, not an exact quote. |
 
 ## Verification, Repair, And Tool Interfaces
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Intended experiments | Caveats |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `gan.frequency.verify_repair_policy.v1` | Gan 2026 | frequency | post | posthoc correction | implemented | Gan verify-repair variants | Hosted GPT benefited; local Qwen verifier damaged some correct temporal labels. |
-| `gan.frequency.temporal_tool.v1` | Gan 2026 | frequency | tool_during | tool affordance | implemented | Gan ReAct / H3 negative-control comparisons | Do not make H3 default after the negative ReAct result. |
-| `exect.medication_temporality.post_classifier.v1` | ExECTv2 | medication | post/eval_only | posthoc correction/diagnostic_only | implemented | S4 medication-temporality precision probe | Cue-based because MarkupPrescriptions has no temporality column; current prescription lines with taper instructions remain current unless the medication is only a separate stop/plan mention. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Intended experiments | Caveats |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gan.frequency.verify_repair_policy.v1` | Gan 2026 | frequency | post | posthoc correction | implemented | promoted | Gan verify-repair variants | Promoted as part of the Gan temporal-candidates default, not as a standalone verifier-only claim; local Qwen verifier-only variants remain caveated by slice regressions. |
+| `gan.frequency.temporal_tool.v1` | Gan 2026 | frequency | tool_during | tool affordance | implemented | rejected_for_current_arm | Gan ReAct / H3 negative-control comparisons | Tool-during ReAct did not replace preconditioning; keep as negative control, not default path. |
+| `exect.medication_temporality.post_classifier.v1` | ExECTv2 | medication | post/eval_only | posthoc correction/diagnostic_only | implemented | rejected_for_current_arm | Redesigned S4 medication-temporality fallback only | Full-validation H1 rejected because broad abstention over-pruned dose-only current ASM evidence; a dose-only fallback would be a new preregistered mechanism. |
 
 ## Fixtures And Inspection
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Intended experiments | Caveats |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `shared.fixtures.primitive_cases.v1` | shared | multi_family | eval_only | diagnostic_only | implemented | Deterministic primitive tests | Fixture library in `data/fixtures/primitive_cases.json`; loader and invoker in `src/clinical_extraction/fixtures/primitive_cases.py`. |
-| `shared.reporting.primitive_inspection.v1` | shared | multi_family | eval_only | diagnostic_only | implemented | Inspection/decision templates | Templates in `docs/templates/`; section contracts in `src/clinical_extraction/experiments/inspection_templates.py`. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Intended experiments | Caveats |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `shared.fixtures.primitive_cases.v1` | shared | multi_family | eval_only | diagnostic_only | implemented | diagnostic_only | Deterministic primitive tests | Fixture library supports validation, not model-backed claims. |
+| `shared.reporting.primitive_inspection.v1` | shared | multi_family | eval_only | diagnostic_only | implemented | diagnostic_only | Inspection/decision templates | Reporting infrastructure for traceability. |
 
 ## Deferred Or Blocked
 
-| Primitive ID | Dataset | Family | Position | Control | Status | Decision |
-| --- | --- | --- | --- | --- | --- | --- |
-| `exect.ontology.cui_alignment.v1` | ExECTv2 | multi_family | post/eval_only | posthoc correction/diagnostic_only | planned | Deferred until published ExECT benchmark reproduction work is explicitly in scope. |
-| `gan.frequency.real_set_validation.v1` | Gan 2026 | frequency | eval_only | diagnostic_only | planned | Blocked on Real(300)/Real(150)-style data access. |
+| Primitive ID | Dataset | Family | Position | Control | Registry status | Evidence status | Decision |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect.ontology.cui_alignment.v1` | ExECTv2 | multi_family | post/eval_only | posthoc correction/diagnostic_only | planned | blocked | Deferred until published ExECT benchmark reproduction work is explicitly in scope. |
+| `gan.frequency.real_set_validation.v1` | Gan 2026 | frequency | eval_only | diagnostic_only | planned | blocked | Blocked on Real(300)/Real(150)-style data access. |
 
 ## Open Review Notes
 
 - The catalog is intentionally broader than the initial typed seed registry. It should not be treated as proof that a primitive is useful.
 - Promotion still requires valid comparison groups, fixed scorer semantics, and inspection documents.
+- Current promoted primitives are limited to Gan S0 temporal candidates plus verify-repair under synthetic validation. ExECT implemented primitives are diagnostic infrastructure, planned metadata, or rejected for the current H1/H2 arm shapes.
+- ExECT medication, seizure-type, diagnosis, and frequency benchmark bridges remain useful scorer-policy infrastructure, but they do not justify another post-bridge rerun by themselves.
+- ExECT medication, medication-temporality, and frequency candidate/classifier primitives require a new mechanism before any model-backed reuse.
 - Shared candidate, normalization, and evidence payload models now exist as initial contracts. The primitive fixture library now exercises implemented Gan and ExECT packs without model calls.
 - Card 11 broad ExECT family sketches are registered as planned metadata in `src/clinical_extraction/exect/family_backlog.py`; implementation waits until S1/S4 high-signal probes settle.
 - Cards 17 and 18 decisions are recorded in `docs/taxonomy_tool_interface_decision_20260520.md` and `docs/taxonomy_ontology_cui_scope_decision_20260520.md`.

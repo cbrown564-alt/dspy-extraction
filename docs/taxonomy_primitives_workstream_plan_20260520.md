@@ -1,7 +1,7 @@
 # Taxonomy Primitives Workstream Plan
 
 Date: 2026-05-20  
-Status: Core infrastructure complete; handoff/audit phase ready. Cards 19–20 remain blocked on external dependencies.  
+Status: Core infrastructure complete; coverage audit, catalog alignment, and Phase 2 no-model preregistration complete. Cards 19–20 remain blocked on external dependencies.  
 Related: `docs/kanban_plan.md`, `docs/exect_negative_probe_synthesis_20260520.md`, `docs/taxonomy_primitive_coverage_audit_20260520.md`, `docs/experiment_taxonomy_schema.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`
 
 ## Purpose
@@ -152,27 +152,9 @@ Owner: completed 2026-05-20
 Validation: `uv run python scripts/validate_primitives.py --errors-only`; reviewed against `docs/experiment_registry.json`, `docs/exect_field_family_deterministic_support_map_20260520.md`, and the closed ExECT inspection docs.  
 Notes: This is a documentation/research-memory card. Do not change primitive behavior unless the audit finds a concrete mismatch.
 
-#### Card 24 - Align Primitive Catalog With Next-Phase Kanban
-
-Outcome: `docs/taxonomy_primitive_catalog.md` clearly separates implemented primitives that are reusable infrastructure from primitives that should not be used to justify rerunning rejected H2/H1 arms.
-
-Dependencies: Card 23  
-Parallelizable: after Card 23  
-Owner: unassigned  
-Validation: Catalog rows cite intended experiments, current status, and caveats; no row implies promotion from existence alone.  
-Notes: Especially important for ExECT medication, seizure-type, frequency, and medication-temporality primitives, where implemented primitives supported rejected model-backed arms.
-
 ### Backlog
 
-#### Card 25 - Design Next ExECT Mechanism Preregistration
-
-Outcome: A preregistration for one new ExECT mechanism, or an explicit no-run decision, using primitive IDs and taxonomy arm templates.
-
-Dependencies: Card 23 and `docs/kanban_plan.md` Phase 2 decision  
-Parallelizable: no  
-Owner: unassigned  
-Validation: Preregistration states dataset, split, schema, model, scorer mode, baseline, varied factor, primitive IDs, run scope, gate, and reject/hold/promote criteria.  
-Notes: Candidate directions are Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, or S4 medication temporality dose-only fallback. Do not use this card for S1 post-bridge reruns or broad H2 pre-vocab reruns.
+No unblocked primitive-workstream cards. Next work is the no-model Qwen S1 seizure-gap error analysis preregistered in `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md`.
 
 ### Questions
 
@@ -408,6 +390,26 @@ Owner: project
 Validation: `uv run python scripts/validate_primitives.py --errors-only`; `uv run pytest tests/test_primitive_registry_validation.py -q`.
 Notes: Implemented in `scripts/validate_primitives.py` and `src/clinical_extraction/experiments/primitive_registry_validation.py`.
 
+#### Card 24 - Align Primitive Catalog With Next-Phase Kanban
+
+Outcome: `docs/taxonomy_primitive_catalog.md` clearly separates implemented primitives that are reusable infrastructure from primitives that should not be used to justify rerunning rejected H2/H1 arms.
+
+Dependencies: Card 23  
+Parallelizable: after Card 23  
+Owner: project  
+Validation: Catalog rows cite intended experiments, current status, and caveats; no row implies promotion from existence alone.  
+Notes: Completed 2026-05-20. The catalog now separates `Registry status` from `Evidence status`, limits promoted primitive claims to Gan S0 temporal-candidates plus verify-repair, and marks ExECT bridge/candidate/classifier primitives as diagnostic, planned, blocked, or rejected for current arm shapes.
+
+#### Card 25 - Design Next ExECT Mechanism Preregistration
+
+Outcome: A preregistration for one new ExECT mechanism, or an explicit no-run decision, using primitive IDs and taxonomy arm templates.
+
+Dependencies: Card 23 and `docs/kanban_plan.md` Phase 2 decision  
+Parallelizable: no  
+Owner: project  
+Validation: Preregistration states dataset, split, schema, model, scorer mode, baseline, varied factor, primitive IDs, run scope, gate, and reject/hold/promote criteria.  
+Notes: Completed 2026-05-20 as a no-model Phase 2 first step rather than a model-backed run. See `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md`. The decision selects Qwen seizure-gap error analysis using frozen artifacts before any prompt-policy, post-template repair, or synthesis-pause decision.
+
 ## Dependency Notes
 
 Cards 1 through 22 define the completed primitive infrastructure. They should now be treated as a stable contract layer unless the coverage audit finds a mismatch with documented scorer or audit semantics.
@@ -440,8 +442,8 @@ Should stay single-threaded:
 
 ## Recommended Next Pull
 
-1. Complete Card 24 by aligning the catalog with `docs/taxonomy_primitive_coverage_audit_20260520.md`.
-2. Use the audit to decide whether the next ExECT phase is Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, medication temporality fallback, or synthesis pause.
+1. Execute the preregistered Qwen S1 seizure-gap error analysis and write `docs/exect_qwen_s1_seizure_gap_error_analysis_20260520.md`.
+2. Use the analysis to decide whether to preregister a prompt-policy arm, a narrow post-template repair, manual audit review, or a synthesis pause.
 
 ## Execution Policy
 

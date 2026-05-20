@@ -4,12 +4,13 @@
 **Current synthesis:** `docs/experiment_taxonomy_research_synthesis_20260520.md`  
 **Negative-probe synthesis:** `docs/exect_negative_probe_synthesis_20260520.md`  
 **Primitive coverage audit:** `docs/taxonomy_primitive_coverage_audit_20260520.md`  
+**Phase 2 preregistration:** `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md`  
 **Taxonomy decision:** `docs/hybrid_component_taxonomy_decision_20260520.md`  
 **Phase roadmap:** `docs/next_major_phases_20260520.md`  
 **Registry:** `docs/experiment_registry.json` · **Matrix export:** `docs/experiment_registry_matrix_20260520.md`  
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
-**Last refreshed:** 2026-05-20, after documentation tidy and next-phase scoping
+**Last refreshed:** 2026-05-20, after Qwen S1 seizure-gap error-analysis preregistration
 **Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`  
 **Taxonomy primitives:** `docs/taxonomy_primitives_workstream_plan_20260520.md` (catalog: `docs/taxonomy_primitive_catalog.md`)
 
@@ -92,7 +93,7 @@ Still blocked: Card 19 published ExECT CUI benchmark pack; Card 20 Gan Real(300)
 
 **Current mode:** documentation consolidation and next-phase scoping.
 
-**Next model-backed comparison group:** **not selected**. `exect_s1_interleaving_qwen_validation_v1` is closed as a reject-port narrative; do not start another ExECT run until a new mechanism, comparison group, gate, and inspection plan are named.
+**Next model-backed comparison group:** **not selected**. `exect_s1_interleaving_qwen_validation_v1` is closed as a reject-port narrative; do not start another ExECT run until the preregistered Qwen S1 seizure-gap error analysis either names a clean new mechanism or recommends a synthesis pause.
 
 No runs in flight. S1 interleaving GPT v2 + Qwen v1 and all S1/S4 family-isolated GPT probes **closed**.
 
@@ -113,6 +114,8 @@ Validation: documentation links resolve; claims cite inspection docs or run IDs;
 ### Phase 2 - Select the next ExECT hypothesis
 
 Outcome: one preregistered ExECT comparison group, or an explicit decision to pause ExECT model-backed work.
+
+Current decision: start with a no-model Qwen S1 seizure-gap error analysis before any new ExECT model-backed run. Preregistration: `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md`.
 
 Candidate directions:
 
@@ -147,6 +150,8 @@ Validation: each scale-up varies one explicit factor or is documented as an inte
 
 ## Recently Completed (2026-05-20)
 
+- **Primitive catalog aligned with coverage audit:** `docs/taxonomy_primitive_catalog.md` now separates registry implementation status from evidence status; Gan S0 temporal-candidates plus verify-repair are the only promoted deterministic primitive path, while ExECT implemented primitives are marked diagnostic, planned, blocked, or rejected for current arm shapes.
+- **Qwen S1 seizure-gap error analysis preregistered:** `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md` selects a no-model Phase 2 first step using frozen Qwen/GPT H1 artifacts before any new ExECT run.
 - **S1 interleaving Qwen v1 complete:** cap-25 + full — L1 raw 66.2% / H1 post 79.0% micro full (`…210719Z` / `…210722Z`); inspection `docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md` — **reject port**; bridge Δ +12.8pp full (GPT v2 +23.7pp); H1 **null** vs Qwen production anchor; seizure gap −34.8pp vs GPT H1.
 - **S1 seizure pre-vocab slice GPT complete:** L1 91.5% / H2 83.3% seizure_type F1 (`…205806Z` / `…205814Z`); inspection `docs/exect_s1_seizure_pre_vocab_slice_gpt_inspection_20260520.md` — **reject** H2 (−8.2pp); program `exect_s0_s1_field_family_seizure_pre_vocab_single_pass` + configs + fixture + tests.
 - **S4 medication temporality planned/taper error-read:** `docs/exect_s4_temporality_planned_taper_error_read_20260520.md` — 19 H1-new FNs analyzed; 4/19 planned/taper slice, 17/19 unknown-drop on dose-only ASM evidence; **no taper retune warranted**
@@ -229,11 +234,10 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 
 ## Recommended Next Pull
 
-1. Align the primitive catalog with `docs/taxonomy_primitive_coverage_audit_20260520.md` so implementation status cannot be mistaken for promotion evidence.
-2. Decide whether Phase 2 should target Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, medication-temporality fallback, or a no-run synthesis pause.
-3. If Phase 2 selects a run, preregister dataset, split, schema, model, scorer mode, baseline, varied factor, primitive IDs, run scope, gate, and reject/hold/promote criteria before execution.
-4. Keep L1 frozen as ExECT S1/S4 GPT default; keep Qwen S1 production anchor frozen at 79.0% micro.
-5. Regenerate `docs/experiment_registry_matrix_20260520.md` after registry changes.
+1. Execute the preregistered Qwen S1 seizure-gap error analysis and write `docs/exect_qwen_s1_seizure_gap_error_analysis_20260520.md`.
+2. Use that analysis to decide whether the next model-backed path is prompt-policy preregistration, narrow post-template repair, manual audit review, or synthesis pause.
+3. Keep L1 frozen as ExECT S1/S4 GPT default; keep Qwen S1 production anchor frozen at 79.0% micro.
+4. Regenerate `docs/experiment_registry_matrix_20260520.md` after registry changes.
 
 ## Parallelization
 
