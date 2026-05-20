@@ -38,9 +38,13 @@ Benchmark-facing metrics should use the canonical scoring views. Raw annotations
 Implemented scorer:
 
 - `exect_field_family_deterministic_v1` scores the audited S0/S1 core only: canonical diagnosis, seizure type, and annotated medication.
+- `exect_s2_field_family_deterministic_v1` extends S1 with investigation (modality+result strings) and comorbidity (affirmed non-seizure PatientHistory phrases).
 - Field-family metrics report precision, recall, F1, and support separately for diagnosis, seizure type, and annotated medication, plus an overall micro-average across those families.
 - Medication metrics use the annotated prescription view and intentionally do not score planned/current status as benchmark-facing because the ExECT prescription gold lacks reliable temporality.
-- Investigation, patient history, birth history, aetiology, onset, diagnosis-date, and ExECT seizure-frequency scoring remain deferred until their source files and scorer semantics are audited.
+- `exect_s3_field_family_deterministic_v1` extends S2 with birth history, onset, epilepsy cause, and when diagnosed (affirmed JSON entities).
+- `exect_s4_field_family_deterministic_v1` extends S3 with seizure frequency (`SeizureFrequency` JSON) and medication temporality (`Prescription` span inference). See `docs/exect_s4_gold_policy.md`.
+- Medication temporality gold is span-inferred; planned drugs not tagged as `Prescription` remain absent from gold.
+- CUI-aware Table 1 reproduction and per-type frequency-by-CUI linking remain deferred.
 
 ## Gan 2026
 

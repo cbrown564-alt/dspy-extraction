@@ -6,8 +6,14 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict
 
 from clinical_extraction.datasets.exect import (
+    canonical_birth_history_label,
     canonical_clinical_phrase,
+    canonical_comorbidity_label,
+    canonical_epilepsy_cause_label,
     canonical_medication_name,
+    canonical_onset_label,
+    canonical_when_diagnosed_label,
+    normalize_investigation_phrase,
     load_exect_gold_documents,
 )
 from clinical_extraction.evaluation.evidence import score_evidence_support
@@ -15,8 +21,30 @@ from clinical_extraction.schemas import DocumentPrediction, ExectGoldDocument, P
 
 EXECT_DATASET = "exect_v2"
 EXECT_SCORER = "exect_field_family_deterministic_v1"
+EXECT_S2_SCORER = "exect_s2_field_family_deterministic_v1"
+EXECT_S3_SCORER = "exect_s3_field_family_deterministic_v1"
+EXECT_S4_SCORER = "exect_s4_field_family_deterministic_v1"
 
 FIELD_FAMILIES = ("diagnosis", "seizure_type", "annotated_medication")
+S2_FIELD_FAMILIES = (
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication",
+    "investigation",
+    "comorbidity",
+)
+S3_FIELD_FAMILIES = (
+    *S2_FIELD_FAMILIES,
+    "birth_history",
+    "onset",
+    "epilepsy_cause",
+    "when_diagnosed",
+)
+S4_FIELD_FAMILIES = (
+    *S3_FIELD_FAMILIES,
+    "seizure_frequency",
+    "medication_temporality",
+)
 
 _FIELD_ALIASES = {
     "diagnosis": "diagnosis",
@@ -30,6 +58,39 @@ _FIELD_ALIASES = {
     "annotated_medications": "annotated_medication",
     "medication": "annotated_medication",
     "medications": "annotated_medication",
+}
+
+_S2_FIELD_ALIASES = {
+    **_FIELD_ALIASES,
+    "investigation": "investigation",
+    "investigations": "investigation",
+    "eeg_finding": "investigation",
+    "eeg_findings": "investigation",
+    "mri_finding": "investigation",
+    "mri_findings": "investigation",
+    "ct_finding": "investigation",
+    "comorbidity": "comorbidity",
+    "comorbidities": "comorbidity",
+}
+
+_S3_FIELD_ALIASES = {
+    **_S2_FIELD_ALIASES,
+    "birth_history": "birth_history",
+    "birth_histories": "birth_history",
+    "onset": "onset",
+    "onsets": "onset",
+    "epilepsy_cause": "epilepsy_cause",
+    "epilepsy_causes": "epilepsy_cause",
+    "when_diagnosed": "when_diagnosed",
+}
+
+_S4_FIELD_ALIASES = {
+    **_S3_FIELD_ALIASES,
+    "seizure_frequency": "seizure_frequency",
+    "seizure_frequencies": "seizure_frequency",
+    "current_seizure_frequency": "seizure_frequency",
+    "medication_temporality": "medication_temporality",
+    "medication_temporalities": "medication_temporality",
 }
 
 
@@ -64,19 +125,73 @@ def score_exect_document(
     gold: ExectGoldDocument,
     prediction: DocumentPrediction,
 ) -> ExectDocumentScore:
-    gold_by_family = {
-        "diagnosis": gold.diagnoses,
-        "seizure_type": gold.seizure_types,
-        "annotated_medication": gold.current_medications,
-    }
-    predicted_by_family = _prediction_values_by_family(prediction)
+    return _score_exect_document_for_families(
+        gold=gold,
+        prediction=prediction,
+        field_families=FIELD_FAMILIES,
+        field_aliases=_FIELD_ALIASES,
+    )
+
+
+def score_exect_s2_document(
+    *,
+    gold: ExectGoldDocument,
+    prediction: DocumentPrediction,
+) -> ExectDocumentScore:
+    return _score_exect_document_for_families(
+        gold=gold,
+        prediction=prediction,
+        field_families=S2_FIELD_FAMILIES,
+        field_aliases=_S2_FIELD_ALIASES,
+    )
+
+
+def score_exect_s3_document(
+    *,
+    gold: ExectGoldDocument,
+    prediction: DocumentPrediction,
+) -> ExectDocumentScore:
+    return _score_exect_document_for_families(
+        gold=gold,
+        prediction=prediction,
+        field_families=S3_FIELD_FAMILIES,
+        field_aliases=_S3_FIELD_ALIASES,
+    )
+
+
+def score_exect_s4_document(
+    *,
+    gold: ExectGoldDocument,
+    prediction: DocumentPrediction,
+) -> ExectDocumentScore:
+    return _score_exect_document_for_families(
+        gold=gold,
+        prediction=prediction,
+        field_families=S4_FIELD_FAMILIES,
+        field_aliases=_S4_FIELD_ALIASES,
+    )
+
+
+def _score_exect_document_for_families(
+    *,
+    gold: ExectGoldDocument,
+    prediction: DocumentPrediction,
+    field_families: tuple[str, ...],
+    field_aliases: dict[str, str],
+) -> ExectDocumentScore:
+    gold_by_family = _gold_values_by_family(gold, field_families=field_families)
+    predicted_by_family = _prediction_values_by_family(
+        prediction,
+        field_families=field_families,
+        field_aliases=field_aliases,
+    )
     field_scores = {
         family: _score_field_family(
             field_family=family,
             gold_values=gold_by_family[family],
             predicted_values=predicted_by_family[family],
         )
-        for family in FIELD_FAMILIES
+        for family in field_families
     }
     tp = sum(len(score.true_positives) for score in field_scores.values())
     fp = sum(len(score.false_positives) for score in field_scores.values())
@@ -92,10 +207,123 @@ def score_exect_document(
     )
 
 
+def _gold_values_by_family(
+    gold: ExectGoldDocument,
+    *,
+    field_families: tuple[str, ...],
+) -> dict[str, list[str]]:
+    mapping = {
+        "diagnosis": gold.diagnoses,
+        "seizure_type": gold.seizure_types,
+        "annotated_medication": gold.current_medications,
+        "investigation": gold.investigations,
+        "comorbidity": gold.comorbidities,
+        "birth_history": gold.birth_histories,
+        "onset": gold.onsets,
+        "epilepsy_cause": gold.epilepsy_causes,
+        "when_diagnosed": gold.when_diagnosed,
+        "seizure_frequency": gold.seizure_frequencies,
+        "medication_temporality": gold.medication_temporalities,
+    }
+    return {family: mapping[family] for family in field_families}
+
+
 def score_exect_prediction_set(
     prediction_set: PredictionSet,
     *,
     gold_documents: Iterable[ExectGoldDocument] | None = None,
+) -> dict[str, Any]:
+    return _score_exect_prediction_set_for_families(
+        prediction_set,
+        gold_documents=gold_documents,
+        field_families=FIELD_FAMILIES,
+        field_aliases=_FIELD_ALIASES,
+        scorer=EXECT_SCORER,
+        caveats=[
+            "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+            "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
+            "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
+            "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
+        ],
+    )
+
+
+def score_exect_s2_prediction_set(
+    prediction_set: PredictionSet,
+    *,
+    gold_documents: Iterable[ExectGoldDocument] | None = None,
+) -> dict[str, Any]:
+    return _score_exect_prediction_set_for_families(
+        prediction_set,
+        gold_documents=gold_documents,
+        field_families=S2_FIELD_FAMILIES,
+        field_aliases=_S2_FIELD_ALIASES,
+        scorer=EXECT_S2_SCORER,
+        caveats=[
+            "ExECT S2 benchmark-facing fields extend audited S1 with investigation and comorbidity families.",
+            "Investigation labels use modality+result canonical strings (eeg/mri/ct + normal/abnormal/unknown).",
+            "Comorbidity labels come from affirmed PatientHistory annotations excluding seizure-history phrases.",
+            "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
+            "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
+            "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
+        ],
+    )
+
+
+def score_exect_s3_prediction_set(
+    prediction_set: PredictionSet,
+    *,
+    gold_documents: Iterable[ExectGoldDocument] | None = None,
+) -> dict[str, Any]:
+    return _score_exect_prediction_set_for_families(
+        prediction_set,
+        gold_documents=gold_documents,
+        field_families=S3_FIELD_FAMILIES,
+        field_aliases=_S3_FIELD_ALIASES,
+        scorer=EXECT_S3_SCORER,
+        caveats=[
+            "ExECT S3 benchmark-facing fields extend frozen S2 with birth history, onset, epilepsy cause, and when diagnosed.",
+            "S3 gold uses affirmed BirthHistory, Onset, EpilepsyCause, and WhenDiagnosed JSON entities only.",
+            "Overlapping phrases across families (for example meningitis as cause vs comorbidity) are scored independently per family.",
+            "Onset and when_diagnosed gold are CUIPhrase surfaces; temporal age/year attributes are not benchmark labels.",
+            "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
+            "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
+            "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
+        ],
+    )
+
+
+def score_exect_s4_prediction_set(
+    prediction_set: PredictionSet,
+    *,
+    gold_documents: Iterable[ExectGoldDocument] | None = None,
+) -> dict[str, Any]:
+    return _score_exect_prediction_set_for_families(
+        prediction_set,
+        gold_documents=gold_documents,
+        field_families=S4_FIELD_FAMILIES,
+        field_aliases=_S4_FIELD_ALIASES,
+        scorer=EXECT_S4_SCORER,
+        caveats=[
+            "ExECT S4 benchmark-facing fields extend frozen S3 with seizure frequency and medication temporality.",
+            "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
+            "Medication temporality gold is inferred from annotated Prescription span text; JSON has no temporality column.",
+            "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
+            "Overlapping phrases across families are scored independently per family.",
+            "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
+            "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
+        ],
+    )
+
+
+def _score_exect_prediction_set_for_families(
+    prediction_set: PredictionSet,
+    *,
+    gold_documents: Iterable[ExectGoldDocument] | None,
+    field_families: tuple[str, ...],
+    field_aliases: dict[str, str],
+    scorer: str,
+    caveats: list[str],
 ) -> dict[str, Any]:
     if prediction_set.dataset != EXECT_DATASET:
         raise ValueError(f"Unsupported ExECT scorer dataset: {prediction_set.dataset!r}")
@@ -114,15 +342,17 @@ def score_exect_prediction_set(
     extra_ids = sorted(predicted_ids - expected_ids)
 
     document_scores = [
-        score_exect_document(
+        _score_exect_document_for_families(
             gold=gold_by_id[document_id],
             prediction=predictions_by_id[document_id],
+            field_families=field_families,
+            field_aliases=field_aliases,
         )
         for document_id in evaluated_ids
     ]
 
     field_totals = {
-        family: {"tp": 0, "fp": 0, "fn": 0, "support": 0} for family in FIELD_FAMILIES
+        family: {"tp": 0, "fp": 0, "fn": 0, "support": 0} for family in field_families
     }
     for document_score in document_scores:
         for family, field_score in document_score.field_scores.items():
@@ -141,12 +371,13 @@ def score_exect_prediction_set(
         gold_by_id=gold_by_id,
         predictions_by_id=predictions_by_id,
         evaluated_ids=evaluated_ids,
+        field_aliases=field_aliases,
     )
 
     return {
         "dataset": prediction_set.dataset,
         "schema_level": prediction_set.schema_level,
-        "scorer": EXECT_SCORER,
+        "scorer": scorer,
         "counts": {
             "gold_records": len(expected_ids),
             "predicted_records": len(predicted_ids),
@@ -204,12 +435,7 @@ def score_exect_prediction_set(
                 evidence_diagnostics["values_with_offsets"],
             ),
         },
-        "caveats": [
-            "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
-            "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
-            "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
-            "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
-        ],
+        "caveats": caveats,
         "errors": {
             "missing_prediction_ids": missing_ids,
             "extra_prediction_ids": extra_ids,
@@ -261,10 +487,13 @@ def _score_field_family(
 
 def _prediction_values_by_family(
     prediction: DocumentPrediction,
+    *,
+    field_families: tuple[str, ...] = FIELD_FAMILIES,
+    field_aliases: dict[str, str] = _FIELD_ALIASES,
 ) -> dict[str, list[str]]:
-    values_by_family = {family: [] for family in FIELD_FAMILIES}
+    values_by_family = {family: [] for family in field_families}
     for value in prediction.values:
-        family = _FIELD_ALIASES.get(value.field_name)
+        family = field_aliases.get(value.field_name)
         if family is None:
             continue
         for raw_value in _raw_prediction_values(value.normalized_value, value.raw_value):
@@ -279,6 +508,7 @@ def _evidence_diagnostics(
     gold_by_id: dict[str, ExectGoldDocument],
     predictions_by_id: dict[str, DocumentPrediction],
     evaluated_ids: list[str],
+    field_aliases: dict[str, str] = _FIELD_ALIASES,
 ) -> dict[str, Any]:
     values_with_evidence = 0
     values_with_offsets = 0
@@ -294,7 +524,7 @@ def _evidence_diagnostics(
         gold = gold_by_id[document_id]
         prediction = predictions_by_id[document_id]
         for value in prediction.values:
-            family = _FIELD_ALIASES.get(value.field_name)
+            family = field_aliases.get(value.field_name)
             if family is None:
                 continue
             if not value.evidence:
@@ -366,6 +596,25 @@ def _raw_prediction_values(normalized_value: Any, raw_value: str | None) -> list
 def _normalize_prediction_value(field_family: str, value: str) -> str:
     if field_family == "annotated_medication":
         return canonical_medication_name(value)
+    if field_family == "investigation":
+        return normalize_investigation_phrase(value)
+    if field_family == "comorbidity":
+        return canonical_comorbidity_label(value)
+    if field_family == "birth_history":
+        return canonical_birth_history_label(value)
+    if field_family == "onset":
+        return canonical_onset_label(value)
+    if field_family == "epilepsy_cause":
+        return canonical_epilepsy_cause_label(value)
+    if field_family == "when_diagnosed":
+        return canonical_when_diagnosed_label(value)
+    if field_family == "seizure_frequency":
+        return canonical_clinical_phrase(value)
+    if field_family == "medication_temporality":
+        if "|" not in value:
+            return canonical_clinical_phrase(value)
+        medication, temporality = value.split("|", 1)
+        return f"{canonical_medication_name(medication)}|{canonical_clinical_phrase(temporality)}"
     return canonical_clinical_phrase(value)
 
 

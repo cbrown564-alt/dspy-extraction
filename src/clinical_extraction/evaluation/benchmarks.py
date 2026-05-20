@@ -231,6 +231,36 @@ def _exect_alignment(context: AlignmentContext) -> BenchmarkAlignment:
                 "Planned/current medication status is excluded from benchmark-facing repo metrics until reliable temporality gold exists.",
             ),
         )
+    if context.scorer_mode == "exect_s2_field_family_deterministic_v1":
+        return BenchmarkAlignment(
+            label=AlignmentLabel.PARTIAL,
+            reference=reference,
+            caveats=(
+                "Current ExECT S2 scoring extends S1 with investigation and comorbidity families only.",
+                "Published ExECTv2 Table 1 values require CUI/feature-aware scoring across all annotation families.",
+                "Investigation labels use modality+result strings; comorbidities exclude seizure-history PatientHistory phrases.",
+            ),
+        )
+    if context.scorer_mode == "exect_s3_field_family_deterministic_v1":
+        return BenchmarkAlignment(
+            label=AlignmentLabel.PARTIAL,
+            reference=reference,
+            caveats=(
+                "Current ExECT S3 scoring extends frozen S2 with birth history, onset, epilepsy cause, and when diagnosed.",
+                "Published ExECTv2 Table 1 values require CUI/feature-aware scoring across all annotation families.",
+                "Overlapping CUIPhrases across families are scored per entity type; see docs/exect_s3_phase1_overlap_policy.md.",
+            ),
+        )
+    if context.scorer_mode == "exect_s4_field_family_deterministic_v1":
+        return BenchmarkAlignment(
+            label=AlignmentLabel.PARTIAL,
+            reference=reference,
+            caveats=(
+                "Current ExECT S4 scoring extends frozen S3 with seizure frequency and medication temporality.",
+                "Published ExECTv2 Table 1 values require CUI/feature-aware scoring across all annotation families.",
+                "Medication temporality is inferred from prescription span text; see docs/exect_s4_gold_policy.md.",
+            ),
+        )
     return BenchmarkAlignment(
         label=AlignmentLabel.NOT_COMPARABLE,
         reference=reference,

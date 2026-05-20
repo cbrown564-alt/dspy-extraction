@@ -1,0 +1,31 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "confirm_first_verifier_with_deterministic_guards",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair on diagnosis, seizure type, and annotated medication with evidence quote repair; no add-only diagnosis recall"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s0_s1_verify_repair_cap25_gpt4_1_mini",
+  "hypothesis": "A bounded confirm-first verify-repair pass after v4.2 monolithic extraction improves medication false-positive removal and evidence quote support without reopening add-only diagnosis recall.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This 25-record cap compares verify-repair against v4.2 monolithic direct extraction on matched records.",
+    "Verify-repair doubles model calls versus monolithic v4.2; latency is not comparable to single-pass runs.",
+    "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "Deterministic verifier guards block add-only diagnosis and medication labels; scorer unchanged.",
+    "Compare to v4.2 cap-25 anchor (86.4% micro F1) in docs/exect_s0_label_policy_v4_2_implementation.md."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_verify_repair",
+  "prompt_version": "exect_s0_s1_field_family_verify_repair_v1",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

@@ -2,7 +2,7 @@
 
 Date: 2026-05-19
 
-Use `docs/kanban_plan.md` as the active tracker (session handoff, gates, next pull); this recap is the narrative research archive.
+Use `docs/kanban_plan.md` as the active tracker (session handoff, gates, next pull). Frozen-thread run tables and configs: `docs/kanban_frozen_threads_history.md`. This recap is the narrative research archive.
 
 ## Research Question
 

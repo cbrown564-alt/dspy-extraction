@@ -33,7 +33,7 @@ Scorer unchanged.
 
 ### Regression slice
 
-Expanded to 15 records (+EA0029, EA0053, EA0078).
+Expanded to 15 records (+EA0029, EA0053, EA0078). Further expanded to **23 records** after v4.2 full medication read (+EA0045, EA0052, EA0136, EA0142, EA0143, EA0153, EA0188, EA0026). See `docs/exect_s0_s1_validation_full_v4_2_medication_evidence_inspection.md`.
 
 ## Slice gate (15 records)
 

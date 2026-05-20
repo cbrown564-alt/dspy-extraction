@@ -1,10 +1,14 @@
 {
-  "description": "Deterministic ExECT S0/S1 validation slice for recurrent full-validation label-policy failure modes from the v3 monolithic baseline. Use as record_ids filter in experiment configs for fast pre-full-validation gates.",
-  "name": "exect_s0_label_policy_regression_v1",
+  "description": "Deterministic ExECT S0/S1 validation slice for recurrent full-validation label-policy failure modes from the v3 monolithic baseline through v4.4 full-validation reads. Retains green canonical anchors from earlier gates; adds v4.4 residual clusters (JME seizure surfaces, generic epilepsy co-list gaps, medication/evidence). Use as record_ids filter in experiment configs for fast pre-full-validation gates.",
+  "name": "exect_s0_label_policy_regression_v3",
   "records": [
     {
       "failure_mode": "fused_temporal_lobe_onset_split",
       "record_id": "EA0018"
+    },
+    {
+      "failure_mode": "single_event_null_diagnosis_anchor",
+      "record_id": "EA0016"
     },
     {
       "failure_mode": "diagnosis_uncertainty_stripping",
@@ -61,6 +65,90 @@
     {
       "failure_mode": "missing_gold_medication_overprediction",
       "record_id": "EA0078"
+    },
+    {
+      "failure_mode": "planned_prescription_lamotrigine_fp",
+      "record_id": "EA0045"
+    },
+    {
+      "failure_mode": "planned_eslicarbazepine_switch_fp",
+      "record_id": "EA0052"
+    },
+    {
+      "failure_mode": "wrong_asm_surface_vs_epilim_chrono",
+      "record_id": "EA0136"
+    },
+    {
+      "failure_mode": "brand_vs_canonical_lamictal_fn",
+      "record_id": "EA0142"
+    },
+    {
+      "failure_mode": "historical_medication_after_self_stop",
+      "record_id": "EA0143"
+    },
+    {
+      "failure_mode": "planned_to_start_lamotrigine_fp",
+      "record_id": "EA0153"
+    },
+    {
+      "failure_mode": "medication_surface_typo_specificity_collapse",
+      "record_id": "EA0188"
+    },
+    {
+      "failure_mode": "granular_myoclonic_seizure_coarsening",
+      "record_id": "EA0026"
+    },
+    {
+      "failure_mode": "medication_lamotrigine_prescription_fn",
+      "record_id": "EA0008"
+    },
+    {
+      "failure_mode": "jme_tonic_clonic_vs_myoclonic_coarsening",
+      "record_id": "EA0048"
+    },
+    {
+      "failure_mode": "myoclonic_jerks_specificity_collapsed_fp",
+      "record_id": "EA0050"
+    },
+    {
+      "failure_mode": "jme_gtcs_vs_myoclonic_surface",
+      "record_id": "EA0069"
+    },
+    {
+      "failure_mode": "focal_motor_seizure_fn",
+      "record_id": "EA0072"
+    },
+    {
+      "failure_mode": "jme_abbreviation_and_myoclonic_fp",
+      "record_id": "EA0125"
+    },
+    {
+      "failure_mode": "generic_epilepsy_diagnosis_co_list_fn",
+      "record_id": "EA0131"
+    },
+    {
+      "failure_mode": "dissociative_vs_focal_seizure_slot",
+      "record_id": "EA0135"
+    },
+    {
+      "failure_mode": "generic_epilepsy_diagnosis_co_list_fn",
+      "record_id": "EA0148"
+    },
+    {
+      "failure_mode": "generic_epilepsy_diagnosis_co_list_fn",
+      "record_id": "EA0170"
+    },
+    {
+      "failure_mode": "generic_epilepsy_diagnosis_co_list_fn",
+      "record_id": "EA0173"
+    },
+    {
+      "failure_mode": "descriptive_seizure_vs_epileptic_seizures",
+      "record_id": "EA0174"
+    },
+    {
+      "failure_mode": "questionable_complex_partial_from_differential",
+      "record_id": "EA0179"
     }
   ]
 }

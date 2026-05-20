@@ -17,6 +17,26 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
+    EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+)
+from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_PROMPT_VERSION,
+    EXECT_S2_SCHEMA_LEVEL,
+    EXECT_S2_SCORER,
+    EXECT_S2_VARIANT,
+)
+from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_PROMPT_VERSION,
+    EXECT_S3_SCHEMA_LEVEL,
+    EXECT_S3_SCORER,
+    EXECT_S3_VARIANT,
+)
+from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_PROMPT_VERSION,
+    EXECT_S4_SCHEMA_LEVEL,
+    EXECT_S4_SCORER,
+    EXECT_S4_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
@@ -24,6 +44,8 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
 
@@ -188,6 +210,156 @@ def test_exect_s0_s1_smoke_config_records_field_family_contract():
     assert "partial ExECT S0/S1" in " ".join(config.metric_caveats)
 
 
+def test_exect_s2_smoke_config_records_s2_field_family_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s2_smoke_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s2_smoke_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.schema_level == EXECT_S2_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S2_VARIANT
+    assert config.scorer_mode == EXECT_S2_SCORER
+    assert config.prompt_version == EXECT_S2_PROMPT_VERSION
+    assert config.max_records == 3
+    assert "partial ExECT S2" in " ".join(config.metric_caveats)
+
+
+def test_exect_s3_smoke_config_records_s3_field_family_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s3_smoke_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s3_smoke_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.schema_level == EXECT_S3_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S3_VARIANT
+    assert config.scorer_mode == EXECT_S3_SCORER
+    assert config.prompt_version == EXECT_S3_PROMPT_VERSION
+    assert config.max_records == 3
+    assert "partial ExECT S3" in " ".join(config.metric_caveats)
+    assert "nine" in " ".join(config.metric_caveats).lower()
+
+
+def test_exect_s3_validation_cap25_config_records_s3_diagnostic_cap_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s3_validation_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s3_validation_cap25_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.schema_level == EXECT_S3_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S3_VARIANT
+    assert config.scorer_mode == EXECT_S3_SCORER
+    assert config.prompt_version == EXECT_S3_PROMPT_VERSION
+    assert config.max_records == 25
+    assert "diagnostic validation cap" in " ".join(config.metric_caveats).lower()
+    assert "frozen v1.3" in " ".join(config.metric_caveats) or "frozen S2" in " ".join(
+        config.metric_caveats
+    )
+
+
+def test_exect_s3_validation_full_config_removes_precheck_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s3_validation_full_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s3_validation_full_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.schema_level == EXECT_S3_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S3_VARIANT
+    assert config.scorer_mode == EXECT_S3_SCORER
+    assert config.prompt_version == EXECT_S3_PROMPT_VERSION
+    assert "full fixed ExECTv2 validation split" in " ".join(config.metric_caveats)
+
+
+def test_exect_s4_smoke_config_records_s4_field_family_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s4_smoke_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s4_smoke_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.schema_level == EXECT_S4_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S4_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert config.max_records == 3
+    assert "partial ExECT S4" in " ".join(config.metric_caveats)
+    assert "eleven" in " ".join(config.metric_caveats).lower()
+
+
+def test_exect_s4_validation_cap25_config_records_s4_diagnostic_cap_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s4_validation_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s4_validation_cap25_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.schema_level == EXECT_S4_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S4_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert config.max_records == 25
+    assert "diagnostic validation cap" in " ".join(config.metric_caveats).lower()
+    assert "frozen v1.2" in " ".join(config.metric_caveats) or "frozen S3" in " ".join(
+        config.metric_caveats
+    )
+
+
+def test_exect_s4_validation_full_config_removes_precheck_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s4_validation_full_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s4_validation_full_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.schema_level == EXECT_S4_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S4_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert "full fixed ExECTv2 validation split" in " ".join(config.metric_caveats)
+
+
+def test_exect_s2_validation_cap25_config_records_s2_diagnostic_cap_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s2_validation_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s2_validation_cap25_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.schema_level == EXECT_S2_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S2_VARIANT
+    assert config.scorer_mode == EXECT_S2_SCORER
+    assert config.prompt_version == EXECT_S2_PROMPT_VERSION
+    assert config.max_records == 25
+    assert "diagnostic validation cap" in " ".join(config.metric_caveats).lower()
+    assert "frozen v4.10" in " ".join(config.metric_caveats)
+
+
+def test_exect_s2_validation_full_config_removes_precheck_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s2_validation_full_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s2_validation_full_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.schema_level == EXECT_S2_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S2_VARIANT
+    assert config.scorer_mode == EXECT_S2_SCORER
+    assert config.prompt_version == EXECT_S2_PROMPT_VERSION
+    assert "full fixed ExECTv2 validation split" in " ".join(config.metric_caveats)
+
+
 def test_exect_s0_s1_validation_cap25_config_records_diagnostic_cap_contract():
     config = load_experiment_config(
         Path("configs/experiments/exect_s0_s1_validation_cap25_gpt4_1_mini.json")
@@ -226,7 +398,33 @@ def test_exect_s0_s1_validation_full_config_removes_precheck_cap():
     assert "full fixed ExECTv2 validation split" in " ".join(config.metric_caveats)
 
 
+def test_exect_s0_s1_validation_test_config_records_one_shot_holdout_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s0_s1_validation_test_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s0_s1_validation_test_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:test"
+    assert config.split_file == Path("data/splits/exectv2_splits.json")
+    assert config.max_records is None
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.report_on_test_split
+    assert not config.record_ids
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "one-shot" in caveats
+    assert "do not tune" in caveats
+    assert "92.3%" in " ".join(config.metric_caveats)
+
+
 def test_exect_s0_s1_label_policy_regression_slice_config_records_v4_contract():
+    fixture = json.loads(
+        Path("data/fixtures/exect_s0_label_policy_error_regression_slice.json").read_text(
+            encoding="utf-8"
+        )
+    )
     config = load_experiment_config(
         Path(
             "configs/experiments/"
@@ -240,24 +438,24 @@ def test_exect_s0_s1_label_policy_regression_slice_config_records_v4_contract():
     assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
     assert config.program_variant == EXECT_S0_S1_VARIANT
     assert config.scorer_mode == EXECT_S0_S1_SCORER
-    assert config.record_ids == [
-        "EA0018",
-        "EA0047",
-        "EA0059",
-        "EA0061",
-        "EA0068",
-        "EA0090",
-        "EA0098",
-        "EA0109",
-        "EA0116",
-        "EA0124",
-        "EA0137",
-        "EA0150",
-        "EA0029",
-        "EA0053",
-        "EA0078",
-    ]
+    fixture_ids = [record["record_id"] for record in fixture["records"]]
+    assert config.record_ids == fixture_ids
+    assert len(fixture_ids) == 37
     assert "label-policy regression slice" in " ".join(config.metric_caveats).lower()
+
+
+def test_exect_s0_s1_verify_repair_cap25_config_records_probe_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s0_s1_verify_repair_cap25_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s0_s1_verify_repair_cap25_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT
+    assert config.prompt_version == EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION
+    assert config.max_records == 25
+    assert config.scorer_mode == "exect_field_family_deterministic_v1"
+    assert "confirm-first" in config.controls.verifier_policy
 
 
 def test_exect_s0_s1_diagnosis_recall_regression_slice_config_records_probe_contract():
@@ -992,6 +1190,47 @@ def test_qwen35b_temporal_candidates_verify_repair_regression_slice_config():
     assert "temporal" in config.controls.context_policy.lower()
 
 
+def test_qwen35b_temporal_event_table_regression_slice_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_temporal_event_table_regression_slice_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_temporal_event_table_regression_slice_guardrails"
+    )
+    assert (
+        config.program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT
+    )
+    assert config.prompt_version == "gan_frequency_s0_temporal_event_table_verify_repair_v1_0"
+    assert len(config.record_ids or []) == 14
+    assert "event table" in config.hypothesis.lower()
+    assert "event_table" in config.controls.context_policy.lower()
+
+
+def test_qwen35b_react_temporal_tools_regression_slice_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails"
+    )
+    assert config.program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT
+    assert config.prompt_version == "gan_frequency_s0_react_temporal_tools_v1_1"
+    assert len(config.record_ids or []) == 14
+    assert "react" in config.hypothesis.lower()
+    assert "react" in config.controls.context_policy.lower()
+
+
 def test_qwen35b_temporal_candidates_verify_repair_cap25_config():
     config = load_experiment_config(
         Path(
@@ -1039,3 +1278,176 @@ def test_qwen35b_temporal_candidates_verify_repair_full_validation_config():
     assert config.optimizer is None
     assert "55.9%" in " ".join(config.metric_caveats)
     assert "cap-25" in " ".join(config.metric_caveats).lower()
+
+
+EXECT_QWEN35B_MODEL_CONFIG = Path("configs/models/exect_qwen35b_ollama.json")
+
+
+@pytest.mark.parametrize(
+    "filename,expected_id,prompt_version,program_variant,schema_level,scorer_mode,max_records",
+    [
+        (
+            "exect_s0_s1_smoke_qwen35b_ollama.json",
+            "exect_s0_s1_smoke_qwen35b_ollama",
+            EXECT_S0_S1_PROMPT_VERSION,
+            EXECT_S0_S1_VARIANT,
+            EXECT_S0_S1_SCHEMA_LEVEL,
+            EXECT_S0_S1_SCORER,
+            3,
+        ),
+        (
+            "exect_s0_s1_validation_cap25_qwen35b_ollama.json",
+            "exect_s0_s1_validation_cap25_qwen35b_ollama",
+            EXECT_S0_S1_PROMPT_VERSION,
+            EXECT_S0_S1_VARIANT,
+            EXECT_S0_S1_SCHEMA_LEVEL,
+            EXECT_S0_S1_SCORER,
+            25,
+        ),
+        (
+            "exect_s0_s1_validation_full_qwen35b_ollama.json",
+            "exect_s0_s1_validation_full_qwen35b_ollama",
+            EXECT_S0_S1_PROMPT_VERSION,
+            EXECT_S0_S1_VARIANT,
+            EXECT_S0_S1_SCHEMA_LEVEL,
+            EXECT_S0_S1_SCORER,
+            None,
+        ),
+        (
+            "exect_s0_s1_label_policy_regression_slice_qwen35b_ollama.json",
+            "exect_s0_s1_label_policy_regression_slice_qwen35b_ollama",
+            EXECT_S0_S1_PROMPT_VERSION,
+            EXECT_S0_S1_VARIANT,
+            EXECT_S0_S1_SCHEMA_LEVEL,
+            EXECT_S0_S1_SCORER,
+            None,
+        ),
+        (
+            "exect_s2_smoke_qwen35b_ollama.json",
+            "exect_s2_smoke_qwen35b_ollama",
+            EXECT_S2_PROMPT_VERSION,
+            EXECT_S2_VARIANT,
+            EXECT_S2_SCHEMA_LEVEL,
+            EXECT_S2_SCORER,
+            3,
+        ),
+        (
+            "exect_s2_validation_cap25_qwen35b_ollama.json",
+            "exect_s2_validation_cap25_qwen35b_ollama",
+            EXECT_S2_PROMPT_VERSION,
+            EXECT_S2_VARIANT,
+            EXECT_S2_SCHEMA_LEVEL,
+            EXECT_S2_SCORER,
+            25,
+        ),
+        (
+            "exect_s2_validation_full_qwen35b_ollama.json",
+            "exect_s2_validation_full_qwen35b_ollama",
+            EXECT_S2_PROMPT_VERSION,
+            EXECT_S2_VARIANT,
+            EXECT_S2_SCHEMA_LEVEL,
+            EXECT_S2_SCORER,
+            None,
+        ),
+        (
+            "exect_s3_smoke_qwen35b_ollama.json",
+            "exect_s3_smoke_qwen35b_ollama",
+            EXECT_S3_PROMPT_VERSION,
+            EXECT_S3_VARIANT,
+            EXECT_S3_SCHEMA_LEVEL,
+            EXECT_S3_SCORER,
+            3,
+        ),
+        (
+            "exect_s3_validation_cap25_qwen35b_ollama.json",
+            "exect_s3_validation_cap25_qwen35b_ollama",
+            EXECT_S3_PROMPT_VERSION,
+            EXECT_S3_VARIANT,
+            EXECT_S3_SCHEMA_LEVEL,
+            EXECT_S3_SCORER,
+            25,
+        ),
+        (
+            "exect_s3_validation_full_qwen35b_ollama.json",
+            "exect_s3_validation_full_qwen35b_ollama",
+            EXECT_S3_PROMPT_VERSION,
+            EXECT_S3_VARIANT,
+            EXECT_S3_SCHEMA_LEVEL,
+            EXECT_S3_SCORER,
+            None,
+        ),
+        (
+            "exect_s4_smoke_qwen35b_ollama.json",
+            "exect_s4_smoke_qwen35b_ollama",
+            EXECT_S4_PROMPT_VERSION,
+            EXECT_S4_VARIANT,
+            EXECT_S4_SCHEMA_LEVEL,
+            EXECT_S4_SCORER,
+            3,
+        ),
+        (
+            "exect_s4_validation_cap25_qwen35b_ollama.json",
+            "exect_s4_validation_cap25_qwen35b_ollama",
+            EXECT_S4_PROMPT_VERSION,
+            EXECT_S4_VARIANT,
+            EXECT_S4_SCHEMA_LEVEL,
+            EXECT_S4_SCORER,
+            25,
+        ),
+        (
+            "exect_s4_validation_full_qwen35b_ollama.json",
+            "exect_s4_validation_full_qwen35b_ollama",
+            EXECT_S4_PROMPT_VERSION,
+            EXECT_S4_VARIANT,
+            EXECT_S4_SCHEMA_LEVEL,
+            EXECT_S4_SCORER,
+            None,
+        ),
+    ],
+)
+def test_exect_qwen35b_ladder_configs_pin_frozen_prompts_and_local_model(
+    filename: str,
+    expected_id: str,
+    prompt_version: str,
+    program_variant: str,
+    schema_level: str,
+    scorer_mode: str,
+    max_records: int | None,
+) -> None:
+    config = load_experiment_config(Path("configs/experiments") / filename)
+
+    assert config.experiment_id == expected_id
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.model_config_path == EXECT_QWEN35B_MODEL_CONFIG
+    assert config.prompt_version == prompt_version
+    assert config.program_variant == program_variant
+    assert config.schema_level == schema_level
+    assert config.scorer_mode == scorer_mode
+    assert config.max_records == max_records
+    assert config.optimizer is None
+    assert config.report_on_test_split is False
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "chainofthought" in caveats
+    assert "bootstrapfewshot" in caveats
+    assert "do not compare" in caveats
+
+
+def test_exect_qwen35b_regression_slice_config_has_37_record_ids():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s0_s1_label_policy_regression_slice_qwen35b_ollama.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s0_s1_label_policy_regression_slice_qwen35b_ollama"
+    assert len(config.record_ids or []) == 37
+
+
+def test_exect_qwen35b_model_config_raises_output_budget_for_structured_extraction():
+    payload = json.loads(EXECT_QWEN35B_MODEL_CONFIG.read_text(encoding="utf-8"))
+
+    assert payload["model"] == "qwen3.6:35b"
+    assert payload["max_tokens"] >= 8192
+    assert payload["extra_body"]["options"]["num_ctx"] >= 32768

@@ -1,0 +1,33 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s4_validation_full_qwen35b_ollama",
+  "hypothesis": "Frozen v1.2 monolithic ExECT S4 field-family label policy on the full fixed validation split (40 records) with Qwen3.6:35b establishes the Thread E local-model anchor parallel to hosted GPT 4.1-mini S4 gates (…071248Z).",
+  "metric_caveats": [
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 Table 1 reproduction.",
+    "These are partial ExECT S4 diagnostics (eleven families), not CUI-aware all-family benchmark reproduction.",
+    "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
+    "S3 label-policy bridges from frozen v1.2 are reused; see docs/exect_s4_gold_policy.md.",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/qwen_dspy_latency_policy.md.",
+    "Do not compare this run to GPT full validation as the same experiment.",
+    "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (…235439Z).",
+    "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs/models/exect_qwen35b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

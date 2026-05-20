@@ -39,6 +39,61 @@ _MEDICATION_SYNONYMS = {
 
 _GOLD_NOISE_TERMS = {"seizure", "seizures"}
 
+_INVESTIGATION_MODALITIES = ("eeg", "mri", "ct")
+_INVESTIGATION_RESULTS = {"normal", "abnormal", "unknown"}
+
+_FREQUENCY_CHANGE_LABELS = {
+    "Increased": "frequency increased",
+    "Decreased": "frequency decreased",
+    "Infrequent": "infrequent",
+}
+
+_PLANNED_RX_PHRASES = (
+    "to start",
+    "plan to start",
+    "will start",
+    "due to start",
+    "commence",
+)
+
+_PREVIOUS_RX_PHRASES = (
+    "previously",
+    "had been on",
+    "had been taking",
+    "stopped",
+    "discontinued",
+    "weaned",
+)
+
+_CURRENT_RX_MARKERS = (
+    "current anti",
+    "current-antiepileptic",
+    "current medication",
+)
+
+_COMORBIDITY_EXCLUDED_PHRASES = {
+    "absence",
+    "absences",
+    "altered awareness and consciousness",
+    "cluster of seizures",
+    "convulsive seizure",
+    "convulsive seizures",
+    "dissociative seizures",
+    "febrile seizure",
+    "febrile seizures",
+    "jerks",
+    "loss of consciousness",
+    "myoclonic jerks",
+    "non epileptic",
+    "non epileptic attacks",
+    "non epileptic psychogenic seizures",
+    "photosensitivity",
+    "seizure",
+    "seizures",
+    "transient",
+    "transient loss of consciousness",
+}
+
 
 def load_exect_gold_document(
     document_id: str,
@@ -55,6 +110,14 @@ def load_exect_gold_document(
     raw_diagnoses: list[str] = []
     seizure_types: list[str] = []
     medications: list[str] = []
+    investigations: list[str] = []
+    comorbidities: list[str] = []
+    birth_histories: list[str] = []
+    onsets: list[str] = []
+    epilepsy_causes: list[str] = []
+    when_diagnosed: list[str] = []
+    seizure_frequencies: list[str] = []
+    medication_temporalities: list[str] = []
 
     for annotation in annotations:
         entity = annotation.get("entity")
@@ -74,10 +137,52 @@ def load_exect_gold_document(
             )
             if medication:
                 medications.append(medication)
+                temporality = infer_prescription_temporality(annotation.get("text", ""))
+                medication_temporalities.append(
+                    format_medication_temporality_label(medication, temporality)
+                )
+        elif entity == "Investigations":
+            investigation = canonical_investigation_label(attrs)
+            if investigation:
+                investigations.append(investigation)
+        elif entity == "PatientHistory":
+            phrase = attrs.get("CUIPhrase") or annotation.get("text", "")
+            if is_comorbidity_patient_history(phrase, attrs):
+                comorbidity = canonical_comorbidity_label(phrase)
+                if comorbidity:
+                    comorbidities.append(comorbidity)
+        elif entity == "BirthHistory" and _is_affirmed_high_certainty(attrs):
+            label = canonical_birth_history_label(attrs.get("CUIPhrase") or annotation.get("text", ""))
+            if label:
+                birth_histories.append(label)
+        elif entity == "Onset" and _is_affirmed_high_certainty(attrs):
+            label = canonical_onset_label(attrs.get("CUIPhrase") or annotation.get("text", ""))
+            if label:
+                onsets.append(label)
+        elif entity == "EpilepsyCause" and _is_affirmed_high_certainty(attrs):
+            label = canonical_epilepsy_cause_label(attrs.get("CUIPhrase") or annotation.get("text", ""))
+            if label:
+                epilepsy_causes.append(label)
+        elif entity == "WhenDiagnosed" and _is_affirmed_high_certainty(attrs):
+            label = canonical_when_diagnosed_label(attrs.get("CUIPhrase") or annotation.get("text", ""))
+            if label:
+                when_diagnosed.append(label)
+        elif entity == "SeizureFrequency":
+            label = canonical_seizure_frequency_label(attrs)
+            if label:
+                seizure_frequencies.append(label)
 
     diagnoses, collapsed = collapse_diagnoses_to_most_specific(_dedupe(raw_diagnoses))
     seizure_types = _dedupe(seizure_types)
     medications = _dedupe(medications)
+    investigations = _dedupe(investigations)
+    comorbidities = _dedupe(comorbidities)
+    birth_histories = _dedupe(birth_histories)
+    onsets = _dedupe(onsets)
+    epilepsy_causes = _dedupe(epilepsy_causes)
+    when_diagnosed = _dedupe(when_diagnosed)
+    seizure_frequencies = _dedupe(seizure_frequencies)
+    medication_temporalities = _dedupe(medication_temporalities)
 
     quality_flags = _quality_flags(
         diagnoses=diagnoses,
@@ -94,6 +199,14 @@ def load_exect_gold_document(
         diagnoses=diagnoses,
         seizure_types=seizure_types,
         current_medications=medications,
+        investigations=investigations,
+        comorbidities=comorbidities,
+        birth_histories=birth_histories,
+        onsets=onsets,
+        epilepsy_causes=epilepsy_causes,
+        when_diagnosed=when_diagnosed,
+        seizure_frequencies=seizure_frequencies,
+        medication_temporalities=medication_temporalities,
         quality_flags=quality_flags,
     )
 
@@ -120,6 +233,122 @@ def canonical_clinical_phrase(value: str | None) -> str:
 def canonical_medication_name(value: str | None) -> str:
     phrase = canonical_clinical_phrase(value)
     return _MEDICATION_SYNONYMS.get(phrase, phrase)
+
+
+def canonical_investigation_label(attrs: dict[str, Any]) -> str | None:
+    for modality in _INVESTIGATION_MODALITIES:
+        performed_key = f"{modality.upper()}_Performed"
+        results_key = f"{modality.upper()}_Results"
+        if attrs.get(performed_key) == "Yes" and attrs.get(results_key):
+            result = canonical_clinical_phrase(str(attrs[results_key]))
+            if result in _INVESTIGATION_RESULTS:
+                return f"{modality} {result}"
+
+    phrase = canonical_clinical_phrase(attrs.get("CUIPhrase"))
+    return _canonical_investigation_phrase(phrase)
+
+
+def normalize_investigation_phrase(value: str | None) -> str:
+    phrase = canonical_clinical_phrase(value)
+    canonical = _canonical_investigation_phrase(phrase)
+    return canonical or phrase
+
+
+def _canonical_investigation_phrase(phrase: str | None) -> str | None:
+    if not phrase:
+        return None
+
+    tokens = phrase.split()
+    if len(tokens) == 2:
+        left, right = tokens
+        if left in _INVESTIGATION_MODALITIES and right in _INVESTIGATION_RESULTS:
+            return f"{left} {right}"
+        if right in _INVESTIGATION_MODALITIES and left in _INVESTIGATION_RESULTS:
+            return f"{right} {left}"
+
+    if phrase in _INVESTIGATION_MODALITIES:
+        return None
+
+    return None
+
+
+def is_comorbidity_patient_history(phrase: str | None, attrs: dict[str, Any]) -> bool:
+    if not _is_affirmed_high_certainty(attrs):
+        return False
+    canonical = canonical_comorbidity_label(phrase)
+    if not canonical:
+        return False
+    if canonical in _COMORBIDITY_EXCLUDED_PHRASES:
+        return False
+    if canonical.startswith(("seizure", "convulsive", "non epileptic")):
+        return False
+    return True
+
+
+def canonical_comorbidity_label(value: str | None) -> str:
+    return canonical_clinical_phrase(value)
+
+
+def canonical_birth_history_label(value: str | None) -> str:
+    return canonical_clinical_phrase(value)
+
+
+def canonical_onset_label(value: str | None) -> str:
+    return canonical_clinical_phrase(value)
+
+
+def canonical_epilepsy_cause_label(value: str | None) -> str:
+    return canonical_clinical_phrase(value)
+
+
+def canonical_when_diagnosed_label(value: str | None) -> str:
+    return canonical_clinical_phrase(value)
+
+
+def canonical_seizure_frequency_label(attrs: dict[str, Any]) -> str | None:
+    phrase = canonical_clinical_phrase(attrs.get("CUIPhrase"))
+    number_of_seizures = attrs.get("NumberOfSeizures")
+    frequency_change = attrs.get("FrequencyChange")
+
+    if phrase == "seizure free" or (
+        number_of_seizures == "0" and phrase in {"seizure free", "seizure", "seizures"}
+    ):
+        year = attrs.get("YearDate")
+        if year:
+            return f"seizure free since {year}"
+        return "seizure free"
+
+    if number_of_seizures == "0" and attrs.get("YearDate"):
+        return f"seizure free since {attrs['YearDate']}"
+
+    if frequency_change:
+        return _FREQUENCY_CHANGE_LABELS.get(
+            frequency_change,
+            f"frequency {canonical_clinical_phrase(frequency_change)}",
+        )
+
+    number_of_time_periods = attrs.get("NumberOfTimePeriods")
+    time_period = attrs.get("TimePeriod")
+    if number_of_time_periods and time_period:
+        count = number_of_seizures or "1"
+        return f"{count} per {number_of_time_periods} {canonical_clinical_phrase(time_period)}"
+
+    return None
+
+
+def infer_prescription_temporality(span_text: str) -> str:
+    lower = span_text.lower()
+    if any(marker in lower for marker in _CURRENT_RX_MARKERS):
+        return "current"
+    if any(phrase in lower for phrase in _PREVIOUS_RX_PHRASES):
+        return "previous"
+    if any(phrase in lower for phrase in _PLANNED_RX_PHRASES):
+        return "planned"
+    return "current"
+
+
+def format_medication_temporality_label(medication: str, temporality: str) -> str:
+    return f"{medication}|{temporality}"
 
 
 def collapse_diagnoses_to_most_specific(diagnoses: list[str]) -> tuple[list[str], list[str]]:

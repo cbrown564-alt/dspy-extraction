@@ -9,13 +9,17 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_FIELD,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
+    GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    GanFrequencyS0ReactTemporalToolsModule,
     GanFrequencyS0Signature,
     GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+    GanFrequencyS0TemporalEventTableVerifyRepairModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -119,6 +123,10 @@ def test_build_gan_s0_module_dispatches_program_variants():
     assert isinstance(
         build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT),
         GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT),
+        GanFrequencyS0ReactTemporalToolsModule,
     )
 
 
@@ -1258,6 +1266,138 @@ def test_gan_s0_temporal_verify_repair_blocks_short_seizure_free_from_unknown():
     pred = prediction_set.predictions[0]
     assert pred.metadata["verifier_decision"] == "confirm"
     assert pred.values[0].raw_value == "unknown"
+
+
+def test_gan_s0_temporal_event_table_verify_repair_rescues_confirmed_unknown_with_sole_candidate():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_14881")
+    event_table_json = (
+        '{"events":[{"raw_phrase":"His last episode was recorded on 26 February",'
+        '"evidence_text":"His last episode was recorded on 26 February",'
+        '"role":"seizure_event"}],'
+        '"seizure_free_intervals":[{"raw_phrase":"he has remained well since",'
+        '"evidence_text":"His last episode was recorded on 26 February and he has remained well since.",'
+        '"qualifies_for_seizure_free_label":false}],'
+        '"selected_window_note":null}'
+    )
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "unknown",
+            "evidence_text": "His last episode was recorded on 26 February",
+        },
+        {"event_table_json": event_table_json},
+        {
+            "final_label": "unknown",
+            "final_evidence": "His last episode was recorded on 26 February and he has remained well since.",
+            "decision": "confirm",
+            "reason": "Verifier kept unknown due to short post-episode window.",
+            "temporal_candidates": "ignored by DummyLM",
+            "temporal_event_table": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0TemporalEventTableVerifyRepairModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["verifier_decision"] == "repair"
+    assert "Event-table candidate rescue" in pred.metadata["verifier_reason"]
+    assert pred.values[0].raw_value == "1 per month"
+
+
+def test_gan_s0_temporal_event_table_verify_repair_passes_event_table_to_verifier():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    event_table_json = (
+        '{"events":[{"raw_phrase":"tonic seizure three Saturdays ago",'
+        '"event_count":"1","window_phrase":"after nearly a year seizure-free",'
+        '"evidence_text":"tonic seizure three Saturdays ago","role":"seizure_event"}],'
+        '"seizure_free_intervals":[{"raw_phrase":"no seizures for nearly a year",'
+        '"duration_phrase":"nearly a year",'
+        '"evidence_text":"no seizures for nearly a year",'
+        '"qualifies_for_seizure_free_label":true}],'
+        '"selected_window_note":"Use breakthrough event over long quiet period."}'
+    )
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "unknown",
+            "evidence_text": "no seizures for nearly a year",
+        },
+        {
+            "event_table_json": event_table_json,
+        },
+        {
+            "final_label": "1 per year",
+            "final_evidence": (
+                "no seizures for nearly a year before a single breakthrough tonic seizure"
+            ),
+            "decision": "repair",
+            "reason": "Event table supports breakthrough-after-year window.",
+            "temporal_candidates": "ignored by DummyLM",
+            "temporal_event_table": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0TemporalEventTableVerifyRepairModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["verifier_decision"] == "repair"
+    assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
+    assert pred.metadata["temporal_event_table_records"]["events"][0]["event_count"] == "1"
+    assert pred.values[0].raw_value == "1 per year"
+
+
+def test_build_gan_s0_module_supports_temporal_event_table_variant():
+    module = build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT)
+    assert isinstance(module, GanFrequencyS0TemporalEventTableVerifyRepairModule)
+
+
+def test_gan_s0_react_temporal_tools_module_records_tool_metadata():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    _configure_dummy([
+        {
+            "next_thought": "Inspect deterministic temporal candidates first.",
+            "next_tool_name": "find_temporal_frequency_candidates",
+            "next_tool_args": {"note_text": record.note_text},
+        },
+        {
+            "next_thought": "Candidates are sufficient.",
+            "next_tool_name": "finish",
+            "next_tool_args": {},
+        },
+        {
+            "reasoning": "Breakthrough after nearly a year supports 1 per year.",
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": "no seizures for nearly a year",
+        },
+    ])
+
+    module = GanFrequencyS0ReactTemporalToolsModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["react_tool_call_count"] == 1
+    assert pred.metadata["react_trajectory"]["tool_name_0"] == (
+        "find_temporal_frequency_candidates"
+    )
+    assert pred.values[0].raw_value == "1 per year"
 
 
 def test_gan_s0_verify_repair_module_abstains_when_uncertain():

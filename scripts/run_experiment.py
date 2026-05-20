@@ -21,10 +21,48 @@ import dspy
 
 from clinical_extraction.datasets.exect import load_exect_gold_documents
 from clinical_extraction.datasets.gan import load_gan_records
-from clinical_extraction.evaluation.exect import score_exect_prediction_set
+from clinical_extraction.evaluation.exect import (
+    score_exect_prediction_set,
+    score_exect_s2_prediction_set,
+    score_exect_s3_prediction_set,
+    score_exect_s4_prediction_set,
+)
 from clinical_extraction.evaluation.cli import evaluate_gan_predictions
 from clinical_extraction.experiments.config import load_experiment_config
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
+from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_FIELD_FAMILIES,
+    EXECT_S2_LABEL_POLICY_GUIDANCE,
+    EXECT_S2_POLICY_EXAMPLES,
+    EXECT_S2_PROMPT_VERSION,
+    EXECT_S2_SCHEMA_LEVEL,
+    EXECT_S2_VARIANT,
+    build_exect_s2_module,
+    exect_s2_run_metadata,
+    predict_exect_s2_records,
+)
+from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_FIELD_FAMILIES,
+    EXECT_S3_LABEL_POLICY_GUIDANCE,
+    EXECT_S3_POLICY_EXAMPLES,
+    EXECT_S3_PROMPT_VERSION,
+    EXECT_S3_SCHEMA_LEVEL,
+    EXECT_S3_VARIANT,
+    build_exect_s3_module,
+    exect_s3_run_metadata,
+    predict_exect_s3_records,
+)
+from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_FIELD_FAMILIES,
+    EXECT_S4_LABEL_POLICY_GUIDANCE,
+    EXECT_S4_POLICY_EXAMPLES,
+    EXECT_S4_PROMPT_VERSION,
+    EXECT_S4_SCHEMA_LEVEL,
+    EXECT_S4_VARIANT,
+    build_exect_s4_module,
+    exect_s4_run_metadata,
+    predict_exect_s4_records,
+)
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
@@ -41,10 +79,14 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
+    GanFrequencyS0ReactTemporalToolsModule,
     GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+    GanFrequencyS0TemporalEventTableVerifyRepairModule,
     GanFrequencyS0VerifyRepairModule,
     build_gan_s0_module,
     compile_gan_s0_module_gepa,
@@ -281,6 +323,12 @@ def _build_module(dataset: str, program_variant: str) -> dspy.Module:
     if dataset == "gan_2026":
         return build_gan_s0_module(program_variant)
     if dataset == "exect_v2":
+        if program_variant == EXECT_S4_VARIANT:
+            return build_exect_s4_module(program_variant)
+        if program_variant == EXECT_S3_VARIANT:
+            return build_exect_s3_module(program_variant)
+        if program_variant == EXECT_S2_VARIANT:
+            return build_exect_s2_module(program_variant)
         return build_exect_s0_s1_module(program_variant)
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
@@ -307,6 +355,36 @@ def _run_metadata(
             extra=extra,
         )
     if dataset == "exect_v2":
+        if program_variant == EXECT_S4_VARIANT:
+            return exect_s4_run_metadata(
+                run_id=run_id,
+                split_name=split_name,
+                model_provider=model_provider,
+                model_name=model_name,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                extra=extra,
+            )
+        if program_variant == EXECT_S3_VARIANT:
+            return exect_s3_run_metadata(
+                run_id=run_id,
+                split_name=split_name,
+                model_provider=model_provider,
+                model_name=model_name,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                extra=extra,
+            )
+        if program_variant == EXECT_S2_VARIANT:
+            return exect_s2_run_metadata(
+                run_id=run_id,
+                split_name=split_name,
+                model_provider=model_provider,
+                model_name=model_name,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                extra=extra,
+            )
         return exect_s0_s1_run_metadata(
             run_id=run_id,
             split_name=split_name,
@@ -339,6 +417,15 @@ def _prompts_data(
             predictor_name = (
                 "dspy.Predict + deterministic temporal candidates + dspy.Predict"
             )
+        elif program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT:
+            module_name = "GanFrequencyS0TemporalEventTableVerifyRepairModule"
+            predictor_name = (
+                "dspy.Predict + deterministic temporal candidates + "
+                "dspy.Predict(event table) + dspy.Predict"
+            )
+        elif program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
+            module_name = "GanFrequencyS0ReactTemporalToolsModule"
+            predictor_name = "dspy.ReAct + deterministic temporal tools + dspy.ChainOfThought"
         return {
             "signature": "GanFrequencyS0Signature",
             "module": module_name,
@@ -349,6 +436,42 @@ def _prompts_data(
             "structured_output_strategy": structured_output_strategy,
         }
     if dataset == "exect_v2":
+        if program_variant == EXECT_S4_VARIANT:
+            return {
+                "signature": "ExectS4FieldFamilySignature",
+                "module": "ExectS4FieldFamilyModule",
+                "predictor": "dspy.ChainOfThought",
+                "program_variant": program_variant,
+                "prompt_version": prompt_version or EXECT_S4_PROMPT_VERSION,
+                "field_families": EXECT_S4_FIELD_FAMILIES,
+                "label_policy_guidance": EXECT_S4_LABEL_POLICY_GUIDANCE,
+                "label_policy_examples": EXECT_S4_POLICY_EXAMPLES,
+                "structured_output_strategy": structured_output_strategy,
+            }
+        if program_variant == EXECT_S3_VARIANT:
+            return {
+                "signature": "ExectS3FieldFamilySignature",
+                "module": "ExectS3FieldFamilyModule",
+                "predictor": "dspy.ChainOfThought",
+                "program_variant": program_variant,
+                "prompt_version": prompt_version or EXECT_S3_PROMPT_VERSION,
+                "field_families": EXECT_S3_FIELD_FAMILIES,
+                "label_policy_guidance": EXECT_S3_LABEL_POLICY_GUIDANCE,
+                "label_policy_examples": EXECT_S3_POLICY_EXAMPLES,
+                "structured_output_strategy": structured_output_strategy,
+            }
+        if program_variant == EXECT_S2_VARIANT:
+            return {
+                "signature": "ExectS2FieldFamilySignature",
+                "module": "ExectS2FieldFamilyModule",
+                "predictor": "dspy.ChainOfThought",
+                "program_variant": program_variant,
+                "prompt_version": prompt_version or EXECT_S2_PROMPT_VERSION,
+                "field_families": EXECT_S2_FIELD_FAMILIES,
+                "label_policy_guidance": EXECT_S2_LABEL_POLICY_GUIDANCE,
+                "label_policy_examples": EXECT_S2_POLICY_EXAMPLES,
+                "structured_output_strategy": structured_output_strategy,
+            }
         if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT:
             module_name = "ExectS0S1DiagnosisRecallProbeModule"
             predictor_name = "dspy.ChainOfThought + dspy.Predict"
@@ -406,6 +529,36 @@ def _predict_records(
             progress_callback=progress_callback,
         )
     if dataset == "exect_v2":
+        if program_variant == EXECT_S4_VARIANT:
+            return predict_exect_s4_records(
+                module,
+                records,
+                model_provider=model_provider,
+                model_name=model_name,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                progress_callback=progress_callback,
+            )
+        if program_variant == EXECT_S3_VARIANT:
+            return predict_exect_s3_records(
+                module,
+                records,
+                model_provider=model_provider,
+                model_name=model_name,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                progress_callback=progress_callback,
+            )
+        if program_variant == EXECT_S2_VARIANT:
+            return predict_exect_s2_records(
+                module,
+                records,
+                model_provider=model_provider,
+                model_name=model_name,
+                prompt_version=prompt_version,
+                program_variant=program_variant,
+                progress_callback=progress_callback,
+            )
         return predict_exect_records(
             module,
             records,
@@ -422,6 +575,12 @@ def _evaluate_predictions(prediction_set) -> dict[str, Any]:
     if prediction_set.dataset == "gan_2026":
         return evaluate_gan_predictions(prediction_set)
     if prediction_set.dataset == "exect_v2":
+        if prediction_set.schema_level == EXECT_S4_SCHEMA_LEVEL:
+            return score_exect_s4_prediction_set(prediction_set)
+        if prediction_set.schema_level == EXECT_S3_SCHEMA_LEVEL:
+            return score_exect_s3_prediction_set(prediction_set)
+        if prediction_set.schema_level == EXECT_S2_SCHEMA_LEVEL:
+            return score_exect_s2_prediction_set(prediction_set)
         return score_exect_prediction_set(prediction_set)
     raise SystemExit(f"Unsupported dataset: {prediction_set.dataset!r}")
 

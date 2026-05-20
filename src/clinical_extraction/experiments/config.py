@@ -12,12 +12,30 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+)
+from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_SCHEMA_LEVEL,
+    EXECT_S2_SCORER,
+    EXECT_S2_VARIANT,
+)
+from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_SCHEMA_LEVEL,
+    EXECT_S3_SCORER,
+    EXECT_S3_VARIANT,
+)
+from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_SCHEMA_LEVEL,
+    EXECT_S4_SCORER,
+    EXECT_S4_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
@@ -146,19 +164,31 @@ class ExperimentConfig(FrozenModel):
     schema_level: Literal[
         "gan_frequency_s0",
         "exect_s0_s1_field_family",
+        "exect_s2_field_family",
+        "exect_s3_field_family",
+        "exect_s4_field_family",
     ] = GAN_FREQUENCY_S0_SCHEMA_LEVEL
     program_variant: Literal[
         "gan_frequency_s0_single_pass",
         "gan_frequency_s0_direct_single_pass",
         "gan_frequency_s0_direct_verify_repair",
         "gan_frequency_s0_temporal_candidates_verify_repair",
+        "gan_frequency_s0_temporal_event_table_verify_repair",
+        "gan_frequency_s0_react_temporal_tools",
         "exect_s0_s1_field_family_single_pass",
         "exect_s0_s1_field_family_section_aware",
         "exect_s0_s1_field_family_diagnosis_recall",
+        "exect_s0_s1_field_family_verify_repair",
+        "exect_s2_field_family_single_pass",
+        "exect_s3_field_family_single_pass",
+        "exect_s4_field_family_single_pass",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
         "exect_field_family_deterministic_v1",
+        "exect_s2_field_family_deterministic_v1",
+        "exect_s3_field_family_deterministic_v1",
+        "exect_s4_field_family_deterministic_v1",
     ] = GAN_FREQUENCY_S0_SCORER
     prompt_version: str
     controls: ExperimentControls
@@ -182,36 +212,58 @@ class ExperimentConfig(FrozenModel):
                 raise ValueError(f"{field} must be a non-empty string.")
 
         expected_contracts = {
-            "gan_2026": (
-                GAN_FREQUENCY_S0_SCHEMA_LEVEL,
-                {
-                    GAN_FREQUENCY_S0_VARIANT,
-                    GAN_FREQUENCY_S0_DIRECT_VARIANT,
-                    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
-                    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
-                },
-                GAN_FREQUENCY_S0_SCORER,
-            ),
-            "exect_v2": (
-                EXECT_S0_S1_SCHEMA_LEVEL,
-                {
-                    EXECT_S0_S1_VARIANT,
-                    EXECT_S0_S1_SECTION_AWARE_VARIANT,
-                    EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
-                },
-                EXECT_S0_S1_SCORER,
-            ),
+            "gan_2026": [
+                (
+                    GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+                    {
+                        GAN_FREQUENCY_S0_VARIANT,
+                        GAN_FREQUENCY_S0_DIRECT_VARIANT,
+                        GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
+                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+                        GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+                        GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
+                    },
+                    GAN_FREQUENCY_S0_SCORER,
+                )
+            ],
+            "exect_v2": [
+                (
+                    EXECT_S0_S1_SCHEMA_LEVEL,
+                    {
+                        EXECT_S0_S1_VARIANT,
+                        EXECT_S0_S1_SECTION_AWARE_VARIANT,
+                        EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+                        EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+                    },
+                    EXECT_S0_S1_SCORER,
+                ),
+                (
+                    EXECT_S2_SCHEMA_LEVEL,
+                    {EXECT_S2_VARIANT},
+                    EXECT_S2_SCORER,
+                ),
+                (
+                    EXECT_S3_SCHEMA_LEVEL,
+                    {EXECT_S3_VARIANT},
+                    EXECT_S3_SCORER,
+                ),
+                (
+                    EXECT_S4_SCHEMA_LEVEL,
+                    {EXECT_S4_VARIANT},
+                    EXECT_S4_SCORER,
+                ),
+            ],
         }
-        expected_schema, expected_variants, expected_scorer = expected_contracts[self.dataset]
-        if (
-            self.schema_level != expected_schema
-            or self.program_variant not in expected_variants
-            or self.scorer_mode != expected_scorer
+        valid_contracts = expected_contracts[self.dataset]
+        if not any(
+            self.schema_level == expected_schema
+            and self.program_variant in expected_variants
+            and self.scorer_mode == expected_scorer
+            for expected_schema, expected_variants, expected_scorer in valid_contracts
         ):
             raise ValueError(
-                f"{self.dataset} experiment configs must use schema_level="
-                f"{expected_schema!r}, program_variant in {sorted(expected_variants)!r}, "
-                f"and scorer_mode={expected_scorer!r}."
+                f"{self.dataset} experiment configs must use one of the registered "
+                f"schema_level/program_variant/scorer_mode contracts."
             )
 
         if self.split_name.endswith(":test") and not self.report_on_test_split:

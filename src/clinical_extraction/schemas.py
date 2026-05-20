@@ -105,6 +105,14 @@ class ExectGoldDocument(FrozenModel):
     diagnoses: list[str] = Field(default_factory=list)
     seizure_types: list[str] = Field(default_factory=list)
     current_medications: list[str] = Field(default_factory=list)
+    investigations: list[str] = Field(default_factory=list)
+    comorbidities: list[str] = Field(default_factory=list)
+    birth_histories: list[str] = Field(default_factory=list)
+    onsets: list[str] = Field(default_factory=list)
+    epilepsy_causes: list[str] = Field(default_factory=list)
+    when_diagnosed: list[str] = Field(default_factory=list)
+    seizure_frequencies: list[str] = Field(default_factory=list)
+    medication_temporalities: list[str] = Field(default_factory=list)
     quality_flags: list[str] = Field(default_factory=list)
 
 

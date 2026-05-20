@@ -96,3 +96,72 @@ def test_format_temporal_candidates_for_prompt_handles_empty_list():
     assert "No deterministic temporal frequency candidates" in (
         format_temporal_candidates_for_prompt([])
     )
+
+
+def test_temporal_candidates_represent_ytd_documented_count_as_monthly_rate():
+    candidates = build_temporal_frequency_candidates(_record("gan_12810"))
+
+    assert "5 per 2 month" in {candidate.canonical_label for candidate in candidates}
+    candidate = next(c for c in candidates if c.canonical_label == "5 per 2 month")
+    assert candidate.event_count == "5"
+    assert candidate.window_count == "2"
+    assert candidate.window_unit == "month"
+    assert "documented this year to date" in candidate.evidence_text
+
+
+def test_temporal_candidates_represent_ytd_count_as_single_month_rate():
+    candidates = build_temporal_frequency_candidates(_record("gan_12823"))
+
+    assert "9 per month" in {candidate.canonical_label for candidate in candidates}
+    candidate = next(c for c in candidates if c.canonical_label == "9 per month")
+    assert candidate.event_count == "9"
+    assert candidate.window_count == "1"
+    assert candidate.window_unit == "month"
+
+
+def test_temporal_candidates_represent_clusters_this_quarter():
+    candidates = build_temporal_frequency_candidates(_record("gan_10052"))
+
+    assert "4 cluster per 3 month, multiple per cluster" in {
+        candidate.canonical_label for candidate in candidates
+    }
+    candidate = next(
+        c for c in candidates if c.canonical_label == "4 cluster per 3 month, multiple per cluster"
+    )
+    assert "4 clusters this quarter" in candidate.evidence_text
+
+
+def test_temporal_candidates_represent_weekly_cluster_with_per_cluster_range():
+    candidates = build_temporal_frequency_candidates(_record("gan_10410"))
+
+    assert "1 cluster per week, 3 to 4 per cluster" in {
+        candidate.canonical_label for candidate in candidates
+    }
+    candidate = next(
+        c
+        for c in candidates
+        if c.canonical_label == "1 cluster per week, 3 to 4 per cluster"
+    )
+    assert "weekly, 3 or 4 per cluster" in candidate.evidence_text
+
+
+def test_temporal_candidates_represent_weekly_clusters_without_per_cluster_count():
+    candidates = build_temporal_frequency_candidates(_record("gan_10003"))
+
+    assert "1 cluster per week, multiple per cluster" in {
+        candidate.canonical_label for candidate in candidates
+    }
+    candidate = next(
+        c
+        for c in candidates
+        if c.canonical_label == "1 cluster per week, multiple per cluster"
+    )
+    assert "number per cluster not documented" in candidate.evidence_text
+
+
+def test_temporal_candidates_represent_several_times_each_week_as_multiple_per_week():
+    candidates = build_temporal_frequency_candidates(_record("gan_12130"))
+
+    assert "multiple per week" in {candidate.canonical_label for candidate in candidates}
+    candidate = next(c for c in candidates if c.canonical_label == "multiple per week")
+    assert "several times each week" in candidate.evidence_text

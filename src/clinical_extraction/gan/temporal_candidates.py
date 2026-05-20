@@ -66,6 +66,11 @@ def build_temporal_frequency_candidates_from_note(
     candidates.extend(_two_dated_events_window(note_text))
     candidates.extend(_last_episode_monthly_candidate(note_text))
     candidates.extend(_count_range_since_prior_month_year(note_text))
+    candidates.extend(_ytd_documented_seizure_count(note_text))
+    candidates.extend(_clusters_this_quarter(note_text))
+    candidates.extend(_weekly_cluster_with_per_cluster_range(note_text))
+    candidates.extend(_weekly_clusters_without_per_cluster_count(note_text))
+    candidates.extend(_several_times_each_week(note_text))
     return _dedupe_candidates(candidates)
 
 
@@ -245,6 +250,157 @@ def _count_range_since_prior_month_year(
     ]
 
 
+NUMBER_WORDS = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9",
+    "ten": "10",
+}
+
+
+def _ytd_documented_seizure_count(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*\b(?P<count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\b"
+        r"[^.]*seizures documented this year to date[^.]*)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    clinic_date = _clinic_date(note_text)
+    if clinic_date is None:
+        return []
+
+    event_count = _number_token_to_label(match.group("count"))
+    window_months = max(1, clinic_date.month)
+    canonical_label = _simple_rate_label(event_count, window_months, "month")
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=canonical_label,
+            event_count=event_count,
+            window_count=str(window_months),
+            window_unit="month",
+            evidence_text=evidence,
+            derivation=(
+                "year-to-date seizure count anchored to calendar months elapsed "
+                "before the clinic date"
+            ),
+        )
+    ]
+
+
+def _clusters_this_quarter(note_text: str) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*\b(?P<count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\b"
+        r"\s+clusters this quarter[^.]*)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    cluster_count = _number_token_to_label(match.group("count"))
+    evidence = match.group("evidence").strip()
+    canonical_label = f"{cluster_count} cluster per 3 month, multiple per cluster"
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=canonical_label,
+            event_count=f"{cluster_count} cluster",
+            window_count="3",
+            window_unit="month",
+            evidence_text=evidence,
+            derivation="explicit cluster count over a calendar quarter",
+        )
+    ]
+
+
+def _weekly_cluster_with_per_cluster_range(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*\bweekly,\s*"
+        r"(?P<low>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+or\s+"
+        r"(?P<high>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+per cluster[^.]*)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    low = _number_token_to_label(match.group("low"))
+    high = _number_token_to_label(match.group("high"))
+    per_cluster = low if low == high else f"{low} to {high}"
+    evidence = match.group("evidence").strip()
+    canonical_label = f"1 cluster per week, {per_cluster} per cluster"
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=canonical_label,
+            event_count="1 cluster",
+            window_count="1",
+            window_unit="week",
+            evidence_text=evidence,
+            derivation="weekly cluster cadence with explicit per-cluster count range",
+        )
+    ]
+
+
+def _weekly_clusters_without_per_cluster_count(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*\bweekly[^.]*clusters reported;\s*"
+        r"number per cluster not documented[^.]*)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label="1 cluster per week, multiple per cluster",
+            event_count="1 cluster",
+            window_count="1",
+            window_unit="week",
+            evidence_text=evidence,
+            derivation="weekly cluster cadence without a documented per-cluster multiplier",
+        )
+    ]
+
+
+def _several_times_each_week(note_text: str) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*several times each week[^.]*)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label="multiple per week",
+            event_count="multiple",
+            window_count="1",
+            window_unit="week",
+            evidence_text=evidence,
+            derivation="qualitative several-times-per-week phrasing maps to multiple per week",
+        )
+    ]
+
+
 def _clinic_date(note_text: str) -> date | None:
     match = re.search(
         rf"(?:Clinic Date|Date):\s*(?P<day>\d{{1,2}}) "
@@ -274,6 +430,19 @@ def _count_phrase_to_label(count_phrase: str) -> str:
     if normalized == "three":
         return "3"
     raise ValueError(f"Unsupported count phrase: {count_phrase!r}")
+
+
+def _number_token_to_label(token: str) -> str:
+    normalized = token.lower().strip()
+    if normalized in NUMBER_WORDS:
+        return NUMBER_WORDS[normalized]
+    return normalized
+
+
+def _simple_rate_label(event_count: str, window_count: int, window_unit: str) -> str:
+    if window_unit == "month" and window_count == 1:
+        return f"{event_count} per month"
+    return f"{event_count} per {window_count} {window_unit}"
 
 
 def _dedupe_candidates(

@@ -25,11 +25,23 @@ GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT = "gan_frequency_s0_direct_verify_repair"
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT = (
     "gan_frequency_s0_temporal_candidates_verify_repair"
 )
+GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT = (
+    "gan_frequency_s0_temporal_event_table_verify_repair"
+)
+GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT = (
+    "gan_frequency_s0_react_temporal_tools"
+)
 GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
     "gan_frequency_s0_direct_verify_repair_v2_4"
 )
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+)
+GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_event_table_verify_repair_v1_0"
+)
+GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_PROMPT_VERSION = (
+    "gan_frequency_s0_react_temporal_tools_v1_1"
 )
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
@@ -450,6 +462,252 @@ class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
             temporal_candidate_records=[
                 temporal_candidate_to_dict(candidate) for candidate in candidates
             ],
+        )
+
+
+class GanFrequencyS0TemporalEventTableSignature(dspy.Signature):
+    """Extract a structured seizure event table from a clinical note.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    Build an auditable event table before final Gan label selection:
+    - List distinct seizure, cluster, and aura mentions as separate events.
+    - List seizure-free intervals separately from counted seizure events.
+    - Preserve raw phrases and exact evidence spans from the note.
+    - Do not invent counts, dates, or windows that are not stated in the note.
+    - When a count and window appear together, keep both on the same event row.
+    - Mark seizure-free intervals as qualifying for a seizure-free label only
+      when the note states at least six months of seizure freedom.
+    - Optionally add selected_window_note when multiple windows compete and one
+      appears annotation-relevant for the current frequency statement.
+
+    Output event_table_json as a JSON object with keys:
+    events, seizure_free_intervals, selected_window_note.
+    Each event requires raw_phrase and evidence_text. Each seizure-free interval
+    requires raw_phrase and evidence_text.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    event_table_json: str = dspy.OutputField(
+        desc=(
+            "JSON object with events, seizure_free_intervals, and optional "
+            "selected_window_note. Every evidence_text must be an exact "
+            "contiguous substring of note_text."
+        )
+    )
+
+
+class GanFrequencyS0TemporalEventTableVerifierSignature(
+    GanFrequencyS0TemporalVerifierSignature
+):
+    """Verify/repair with deterministic candidates plus a model event table.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    In addition to temporal_candidates, temporal_event_table lists structured
+    seizure events and seizure-free intervals extracted from the note. These are
+    diagnostic hints, not gold labels.
+
+    Event-table policy:
+    - Prefer event rows whose evidence_text is note-supported when choosing a
+      denominator window for unknown initial labels.
+    - Do not repair to seizure free for N unit when the event table only shows
+      short seizure-free intervals under six months.
+    - Keep confirm-first rules from temporal-candidate v1.1 unchanged.
+    """
+
+    temporal_event_table: str = dspy.InputField(
+        desc=(
+            "Structured seizure event table with events, seizure-free intervals, "
+            "and optional selected-window note."
+        )
+    )
+
+
+class GanFrequencyS0TemporalEventTableExtractorModule(dspy.Module):
+    """Model pass that emits a structured temporal event table."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.Predict(GanFrequencyS0TemporalEventTableSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(note_text=note_text)
+
+
+class GanFrequencyS0TemporalEventTableVerifierModule(dspy.Module):
+    """Verifier that receives deterministic candidates and an event table."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.verify = dspy.Predict(GanFrequencyS0TemporalEventTableVerifierSignature)
+
+    def forward(
+        self,
+        note_text: str,
+        initial_label: str | None,
+        initial_evidence: str | None,
+        temporal_candidates: str,
+        temporal_event_table: str,
+    ) -> dspy.Prediction:
+        return self.verify(
+            note_text=note_text,
+            initial_label=initial_label,
+            initial_evidence=initial_evidence,
+            temporal_candidates=temporal_candidates,
+            temporal_event_table=temporal_event_table,
+        )
+
+
+class GanFrequencyS0TemporalEventTableVerifyRepairModule(dspy.Module):
+    """Direct extraction, model event table, then temporal verify/repair."""
+
+    def __init__(self, extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT) -> None:
+        super().__init__()
+        self.extractor = build_gan_s0_module(extractor_variant)
+        self.event_table_extractor = GanFrequencyS0TemporalEventTableExtractorModule()
+        self.verifier = GanFrequencyS0TemporalEventTableVerifierModule()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+            temporal_candidate_to_dict,
+        )
+        from clinical_extraction.gan.temporal_events import (
+            format_temporal_event_table_for_prompt,
+            parse_temporal_event_table_json,
+            temporal_event_table_to_dict,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.extractor(note_text=note_text)
+        event_table_raw = self.event_table_extractor(note_text=note_text)
+        event_table = parse_temporal_event_table_json(
+            event_table_raw.event_table_json,
+            note_text=note_text,
+        )
+        temporal_event_table_text = format_temporal_event_table_for_prompt(event_table)
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+            temporal_event_table=temporal_event_table_text,
+        )
+        verified = _apply_temporal_verifier_guards(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            event_table=event_table,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=verified.final_label,
+            evidence_text=verified.final_evidence,
+            verifier_decision=verified.decision,
+            verifier_reason=verified.reason,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+            temporal_candidate_labels=[c.canonical_label for c in candidates],
+            temporal_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in candidates
+            ],
+            temporal_event_table=temporal_event_table_text,
+            temporal_event_table_records=temporal_event_table_to_dict(event_table),
+        )
+
+
+class GanFrequencyS0ReactTemporalToolsSignature(dspy.Signature):
+    """Extract Gan seizure frequency using bounded ReAct temporal tools.
+
+    /no_think
+    Do not use hidden reasoning in the final answer fields. Use tools first,
+    then emit only the requested output fields.
+
+    ReAct turn rules (mandatory on every tool step):
+    - Keep next_thought to at most two short sentences.
+    - ALWAYS emit next_tool_name and next_tool_args together; never emit
+      next_thought alone.
+    - If tool observations are sufficient, call finish on the next turn.
+    - If stuck after two tool rounds, call finish and decide from observations.
+
+    Policy:
+    - Use deterministic tools to gather temporal candidates, clinic dates,
+      frequency mention spans, label validation, and evidence support before
+      committing to a label.
+    - Prefer note-supported quantified rates over unknown when count and window
+      can be assembled from tool observations.
+    - Use seizure free for N unit only when seizure freedom is at least 6 months.
+    - Cluster labels must include both cluster period and per-cluster count.
+    - evidence_text must be an exact contiguous substring of note_text.
+    - Call finish once tool observations are sufficient to choose the label.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    seizure_frequency_number: str = dspy.OutputField(
+        desc=(
+            "Canonical Gan seizure-frequency label, unknown, "
+            "no seizure frequency reference, or abstain/null."
+        )
+    )
+    evidence_text: str = dspy.OutputField(
+        desc="Exact contiguous quote from note_text supporting the label."
+    )
+
+
+class GanFrequencyS0ReactTemporalToolsModule(dspy.Module):
+    """Bounded ReAct probe with deterministic temporal helper tools."""
+
+    def __init__(
+        self,
+        *,
+        max_iters: int | None = None,
+    ) -> None:
+        from clinical_extraction.gan.react_tools import (
+            GAN_REACT_TEMPORAL_MAX_ITERS,
+            GAN_REACT_TEMPORAL_TOOLS,
+        )
+
+        super().__init__()
+        self.max_iters = max_iters or GAN_REACT_TEMPORAL_MAX_ITERS
+        self.react = dspy.ReAct(
+            GanFrequencyS0ReactTemporalToolsSignature,
+            tools=GAN_REACT_TEMPORAL_TOOLS,
+            max_iters=self.max_iters,
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.react_tools import (
+            count_react_tool_calls,
+            serialize_react_trajectory,
+        )
+
+        try:
+            result = self.react(note_text=note_text)
+        except Exception as exc:
+            return dspy.Prediction(
+                seizure_frequency_number="unknown",
+                evidence_text=None,
+                react_trajectory={},
+                react_tool_call_count=0,
+                react_error=f"{type(exc).__name__}: {exc}",
+            )
+
+        trajectory = getattr(result, "trajectory", {}) or {}
+        return dspy.Prediction(
+            seizure_frequency_number=result.seizure_frequency_number,
+            evidence_text=result.evidence_text,
+            react_trajectory=serialize_react_trajectory(trajectory),
+            react_tool_call_count=count_react_tool_calls(trajectory),
         )
 
 
@@ -1118,6 +1376,8 @@ def build_gan_s0_module(
     | GanFrequencyS0DirectModule
     | GanFrequencyS0VerifyRepairModule
     | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+    | GanFrequencyS0TemporalEventTableVerifyRepairModule
+    | GanFrequencyS0ReactTemporalToolsModule
 ):
     if program_variant == GAN_FREQUENCY_S0_VARIANT:
         return GanFrequencyS0Module()
@@ -1127,6 +1387,10 @@ def build_gan_s0_module(
         return GanFrequencyS0VerifyRepairModule()
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
         return GanFrequencyS0TemporalCandidatesVerifyRepairModule()
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT:
+        return GanFrequencyS0TemporalEventTableVerifyRepairModule()
+    if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
+        return GanFrequencyS0ReactTemporalToolsModule()
     raise ValueError(f"Unsupported Gan S0 program variant: {program_variant!r}")
 
 
@@ -1199,6 +1463,7 @@ def _apply_temporal_verifier_guards(
     initial_evidence: str | None,
     verified: dspy.Prediction,
     candidates: list[Any],
+    event_table: Any | None = None,
 ) -> dspy.Prediction:
     """Deterministic confirm-first and candidate-gated repair for temporal verify-repair."""
     from clinical_extraction.gan.frequency import normalize_label
@@ -1252,7 +1517,51 @@ def _apply_temporal_verifier_guards(
                 ),
             )
 
+    rescued = _apply_event_table_candidate_rescue(
+        initial_label=initial_label,
+        verified=verified,
+        candidates=candidates,
+        event_table=event_table,
+    )
+    if rescued is not None:
+        return rescued
+
     return verified
+
+
+def _apply_event_table_candidate_rescue(
+    *,
+    initial_label: str | None,
+    verified: dspy.Prediction,
+    candidates: list[Any],
+    event_table: Any | None,
+) -> dspy.Prediction | None:
+    """Repair confirmed-unknown when B2 event table shows no qualifying seizure-free gap."""
+    if event_table is None or not _is_unknown_or_abstain_label(initial_label):
+        return None
+    if verified.decision != "confirm" or not _is_unknown_or_abstain_label(
+        verified.final_label
+    ):
+        return None
+    if len(candidates) != 1:
+        return None
+    if any(
+        interval.qualifies_for_seizure_free_label
+        for interval in event_table.seizure_free_intervals
+    ):
+        return None
+
+    candidate = candidates[0]
+    return dspy.Prediction(
+        final_label=candidate.canonical_label,
+        final_evidence=candidate.evidence_text,
+        decision="repair",
+        reason=(
+            "Event-table candidate rescue repaired from confirmed unknown "
+            f"to sole listed candidate {candidate.canonical_label!r} "
+            "(no qualifying seizure-free interval in event table)."
+        ),
+    )
 
 
 def _predict_record(
@@ -1261,6 +1570,8 @@ def _predict_record(
         | GanFrequencyS0DirectModule
         | GanFrequencyS0VerifyRepairModule
         | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+        | GanFrequencyS0TemporalEventTableVerifyRepairModule
+        | GanFrequencyS0ReactTemporalToolsModule
     ),
     record: GanRecord,
     *,
@@ -1298,6 +1609,14 @@ def _predict_record(
         metadata["temporal_candidate_labels"] = pred.temporal_candidate_labels
     if hasattr(pred, "temporal_candidate_records"):
         metadata["temporal_candidate_records"] = pred.temporal_candidate_records
+    if hasattr(pred, "temporal_event_table_records"):
+        metadata["temporal_event_table_records"] = pred.temporal_event_table_records
+    if hasattr(pred, "react_trajectory"):
+        metadata["react_trajectory"] = pred.react_trajectory
+    if hasattr(pred, "react_tool_call_count"):
+        metadata["react_tool_call_count"] = pred.react_tool_call_count
+    if hasattr(pred, "react_error"):
+        metadata["react_error"] = pred.react_error
 
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,

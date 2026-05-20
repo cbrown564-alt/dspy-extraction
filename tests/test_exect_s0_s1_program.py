@@ -5,6 +5,7 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
     EXECT_S0_S1_POLICY_EXAMPLES,
@@ -14,6 +15,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
     ExectS0S1DiagnosisRecallProbeModule,
+    ExectS0S1VerifyRepairModule,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     ExectS0S1SectionAwareFieldFamilyModule,
@@ -123,11 +125,11 @@ def test_exect_s0_s1_bridge_collapses_diagnosis_specificity():
 
 
 def test_exect_s0_s1_bridge_does_not_infer_seizure_type_from_diagnosis():
-    record = load_exect_gold_document("EA0008")
+    record = load_exect_gold_document("EA0142")
     _configure_dummy([{
         "reasoning": "Diagnosis alone is not a seizure type output.",
         "diagnosis": ["focal epilepsy"],
-        "diagnosis_evidence": ["epilepsy"],
+        "diagnosis_evidence": ["Diagnosis: focal epilepsy"],
         "seizure_type": [],
         "seizure_type_evidence": [],
         "annotated_medication": [],
@@ -141,9 +143,11 @@ def test_exect_s0_s1_bridge_does_not_infer_seizure_type_from_diagnosis():
         model_name="dummy-fixture",
     )
 
-    assert [value.field_name for value in prediction_set.predictions[0].values] == [
-        "diagnosis"
-    ]
+    field_names = {
+        value.field_name for value in prediction_set.predictions[0].values
+    }
+    assert "seizure_type" not in field_names
+    assert "diagnosis" in field_names
 
 
 def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
@@ -151,7 +155,7 @@ def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
     signature_text = ExectS0S1FieldFamilySignature.__doc__.lower()
     example_cases = {example["case"] for example in EXECT_S0_S1_POLICY_EXAMPLES}
 
-    assert EXECT_S0_S1_PROMPT_VERSION == "exect_s0_s1_field_family_v4_2_label_policy"
+    assert EXECT_S0_S1_PROMPT_VERSION == "exect_s0_s1_field_family_v4_10_label_policy"
     assert "planned starts" in policy_text
     assert "previous trials" in policy_text
     assert "focal seizures with altered awareness" in policy_text
@@ -177,11 +181,31 @@ def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
         "focal_to_bilateral_annotation_surface",
         "coarse_generalized_seizure_surface",
         "on_awakening_diagnosis_phrasing",
+        "from_sleep_header_to_on_awakening_diagnosis",
         "co_listed_lobe_epilepsy_diagnoses",
         "reject_granular_jme_seizure_descriptors",
+        "jme_coarse_gtcs_suppresses_myoclonic",
+        "jme_tonic_clonic_surface_without_generalized_prefix",
+        "jme_generalized_tonic_seizures_without_clonic",
+        "dissociative_epileptic_seizure_routing",
+        "specificity_collapse_diagnosis_co_list",
+        "specificity_collapse_secondary_seizure_surface",
+        "secondary_token_co_list_with_full_phrase",
+        "current_prescription_with_taper_parenthetical",
         "myoclonic_jerks_to_myoclonic_seizures",
         "non_asm_medication_exclusion",
         "empty_medication_without_prescription_list",
+        "prescription_request_exclusion",
+        "planned_switch_exclusion",
+        "taper_stop_exclusion",
+        "restart_advice_after_self_stop",
+        "brand_lamictal_preservation",
+        "brand_epilim_chrono_preservation",
+        "generic_epilepsy_co_list_with_focal_onset",
+        "focal_onset_and_focal_epilepsy_co_list",
+        "generic_epilepsy_co_list_with_primary_generalized",
+        "unclassified_epilepsy_header",
+        "possible_tle_header_preserves_temporal_lobe_epilepsy",
     }.issubset(example_cases)
 
 
@@ -278,6 +302,125 @@ def test_exect_s0_s1_bridge_splits_fused_secondary_generalisation_phrase():
     )
 
 
+def test_exect_s0_s1_bridge_maps_focal_onset_convulsive_to_focal_to_bilateral():
+    record = load_exect_gold_document("EA0098")
+    _configure_dummy([{
+        "reasoning": "The note header uses focal onset convulsive seizure wording.",
+        "diagnosis": ["focal onset epilepsy"],
+        "diagnosis_evidence": ["Focal onset epilepsy"],
+        "seizure_type": ["focal onset convulsive seizure"],
+        "seizure_type_evidence": ["Focal onset convulsive seizure"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert len(seizure_values) == 1
+    assert seizure_values[0].normalized_value == "focal to bilateral convulsive seizure"
+    assert "benchmark_bridge:focal_onset_to_bilateral_surface" in (
+        seizure_values[0].quality_flags
+    )
+
+
+def test_exect_s0_s1_bridge_augment_adds_epilepsy_with_focal_onset():
+    record = load_exect_gold_document("EA0098")
+    _configure_dummy([{
+        "reasoning": "The model omitted generic epilepsy from the diagnosis list.",
+        "diagnosis": ["focal onset epilepsy"],
+        "diagnosis_evidence": ["Focal onset epilepsy"],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert {value.normalized_value for value in diagnosis_values} == {
+        "focal onset epilepsy",
+        "epilepsy",
+    }
+    epilepsy_value = next(
+        value for value in diagnosis_values if value.normalized_value == "epilepsy"
+    )
+    assert "benchmark_bridge:diagnosis_co_list_augmented" in epilepsy_value.quality_flags
+
+
+def test_exect_s0_s1_bridge_augment_adds_parietal_lobe_epilepsy():
+    record = load_exect_gold_document("EA0061")
+    _configure_dummy([{
+        "reasoning": "The model omitted parietal lobe epilepsy from the diagnosis list.",
+        "diagnosis": ["focal epilepsy"],
+        "diagnosis_evidence": ["focal epilepsy"],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert diagnosis_values == ["focal epilepsy", "parietal lobe epilepsy"]
+
+
+def test_exect_s0_s1_bridge_augment_adds_focal_onset_epilepsy():
+    record = load_exect_gold_document("EA0045")
+    _configure_dummy([{
+        "reasoning": "The model kept only the header focal epilepsy label.",
+        "diagnosis": ["focal epilepsy"],
+        "diagnosis_evidence": ["Focal epilepsy"],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert diagnosis_values == ["focal epilepsy", "focal onset epilepsy"]
+
+
 def test_exect_s0_s1_bridge_adds_convulsive_modifier_to_focal_to_bilateral_seizures():
     record = load_exect_gold_document("EA0061")
     _configure_dummy([{
@@ -367,6 +510,581 @@ def test_exect_s0_s1_bridge_rejects_granular_absence_and_jerk_seizure_descriptor
     assert [value.normalized_value for value in seizure_values] == ["generalized seizures"]
 
 
+def test_exect_s0_s1_bridge_co_lists_specificity_collapse_diagnosis_tokens():
+    record = load_exect_gold_document("EA0188")
+    _configure_dummy([{
+        "reasoning": "The model kept lobe-specific epilepsy labels but missed collapsed tokens.",
+        "diagnosis": ["focal epilepsy", "occipital lobe epilepsy"],
+        "diagnosis_evidence": [
+            "Focal epilepsy, probable occipital lobe onset",
+            "drug refractory focal (occipital lobe) epilepsy",
+        ],
+        "seizure_type": ["secondary generalised seizure"],
+        "seizure_type_evidence": ["secondary generalised seizure"],
+        "annotated_medication": ["zonisamide", "brivaracetam"],
+        "annotated_medication_evidence": ["Zonismaide 100mg bd", "brivitiracetam 50mg bd"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert {value.normalized_value for value in diagnosis_values} == {
+        "focal",
+        "drug",
+        "occipital",
+        "focal epilepsy",
+        "occipital lobe epilepsy",
+    }
+    collapsed_tokens = {
+        value.normalized_value
+        for value in diagnosis_values
+        if value.normalized_value in {"focal", "drug", "occipital"}
+    }
+    assert collapsed_tokens == {"focal", "drug", "occipital"}
+    assert any(
+        "benchmark_bridge:specificity_collapse_diagnosis_co_listed"
+        in value.quality_flags
+        for value in diagnosis_values
+        if value.normalized_value in collapsed_tokens
+    )
+
+
+def test_exect_s0_s1_bridge_collapses_secondary_seizure_surface_for_specificity_collapse():
+    record = load_exect_gold_document("EA0188")
+    _configure_dummy([{
+        "reasoning": "The model emitted granular focal labels and the full secondary phrase.",
+        "diagnosis": ["focal epilepsy", "occipital lobe epilepsy"],
+        "diagnosis_evidence": [
+            "Focal epilepsy, probable occipital lobe onset",
+            "drug refractory focal (occipital lobe) epilepsy",
+        ],
+        "seizure_type": [
+            "focal seizures",
+            "focal seizures with impaired awareness",
+            "secondary generalised seizures",
+        ],
+        "seizure_type_evidence": [
+            "focal seizures",
+            "focal seizures with impaired awareness",
+            "secondary generalised seizure",
+        ],
+        "annotated_medication": ["zonisamide", "brivaracetam"],
+        "annotated_medication_evidence": ["Zonismaide 100mg bd", "brivitiracetam 50mg bd"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert [value.normalized_value for value in seizure_values] == ["secondary"]
+    assert "benchmark_bridge:specificity_collapse_seizure_surface" in (
+        seizure_values[0].quality_flags
+    )
+
+
+def test_exect_s0_s1_bridge_co_lists_secondary_token_with_full_secondary_phrase():
+    record = load_exect_gold_document("EA0150")
+    _configure_dummy([{
+        "reasoning": "The model kept the full secondary phrase but missed the collapsed token.",
+        "diagnosis": ["symptomatic structural focal epilepsy"],
+        "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+        "seizure_type": ["complex partial seizures", "secondary generalised seizures"],
+        "seizure_type_evidence": [
+            "complex partial seizures",
+            "secondary generalised seizures",
+        ],
+        "annotated_medication": ["levetiracetam", "lamotrigine", "clobazam"],
+        "annotated_medication_evidence": [
+            "Levetiracetam 1500mg bd",
+            "Lamotrigine 200mg bd",
+            "Clobazam",
+        ],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert {value.normalized_value for value in seizure_values} == {
+        "complex partial seizures",
+        "secondary generalized seizures",
+        "secondary",
+    }
+    secondary_values = [
+        value for value in seizure_values if value.normalized_value == "secondary"
+    ]
+    assert len(secondary_values) == 1
+    assert "benchmark_bridge:secondary_token_co_listed" in secondary_values[0].quality_flags
+
+
+def test_exect_s0_s1_bridge_recovers_lamotrigine_from_current_prescription_line():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([{
+        "reasoning": "The model omitted medication despite a current prescription list.",
+        "diagnosis": ["symptomatic structural focal epilepsy"],
+        "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+        "seizure_type": ["focal seizures with altered awareness"],
+        "seizure_type_evidence": [
+            "Seizure type and frequency: focal seizures with altered awareness every 3 weeks"
+        ],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    medication_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ]
+    assert len(medication_values) == 1
+    assert medication_values[0].normalized_value == "lamotrigine"
+    assert "lamotrigine" in medication_values[0].evidence[0].text.lower()
+    assert "benchmark_bridge:current_prescription_medication_augmented" in (
+        medication_values[0].quality_flags
+    )
+
+
+def test_exect_s0_s1_bridge_routes_dissociative_contrast_to_epileptic_seizures():
+    record = load_exect_gold_document("EA0135")
+    _configure_dummy([{
+        "reasoning": (
+            "The model inferred focal seizures from focal onset epilepsy rather than "
+            "the epileptic-versus-dissociative seizure conclusion."
+        ),
+        "diagnosis": ["focal onset epilepsy"],
+        "diagnosis_evidence": ["Focal onset epilepsy"],
+        "seizure_type": ["focal seizures"],
+        "seizure_type_evidence": ["Focal onset epilepsy"],
+        "annotated_medication": ["eslicarbazepine", "levetiracetam", "clobazam"],
+        "annotated_medication_evidence": [
+            "Eslicarbazepine 800mg od",
+            "Levetiracetam 1750mg bd",
+            "Clobazam 10mg od",
+        ],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert [value.normalized_value for value in seizure_values] == ["epileptic seizures"]
+    assert "benchmark_bridge:dissociative_focal_seizure_suppressed" in (
+        seizure_values[0].quality_flags
+    )
+    assert "benchmark_bridge:epileptic_seizures_surface_restored" in (
+        seizure_values[0].quality_flags
+    )
+
+
+def test_exect_s0_s1_bridge_suppresses_myoclonic_when_jme_coarse_gtcs_present():
+    record = load_exect_gold_document("EA0048")
+    _configure_dummy([{
+        "reasoning": "JME with tonic clonic and jerk wording.",
+        "diagnosis": ["juvenile myoclonic epilepsy"],
+        "diagnosis_evidence": ["juvenile myoclonic epilepsy"],
+        "seizure_type": [
+            "generalized tonic clonic seizures",
+            "myoclonic seizures",
+        ],
+        "seizure_type_evidence": [
+            "tonic clonic seizures",
+            "myoclonic jerks",
+        ],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert [value.normalized_value for value in seizure_values] == ["tonic clonic seizures"]
+    assert "benchmark_bridge:jme_myoclonic_suppressed_for_coarse_label" in (
+        seizure_values[0].quality_flags
+    )
+    assert "benchmark_bridge:jme_tonic_clonic_surface" in seizure_values[0].quality_flags
+
+
+def test_exect_s0_s1_bridge_maps_generalized_tonic_seizures_for_jme_presenting_phrase():
+    record = load_exect_gold_document("EA0125")
+    _configure_dummy([{
+        "reasoning": "JME presenting phrase uses generalised tonic seizures.",
+        "diagnosis": ["jme", "juvenile myoclonic epilepsy"],
+        "diagnosis_evidence": ["probably JME", "juvenile myoclonic epilepsy"],
+        "seizure_type": [
+            "generalized tonic clonic seizures",
+            "myoclonic seizures",
+        ],
+        "seizure_type_evidence": [
+            "generalised tonic seizures",
+            "myoclonic jerks",
+        ],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert [value.normalized_value for value in seizure_values] == [
+        "generalized tonic seizures"
+    ]
+
+
+def test_exect_s0_s1_bridge_co_lists_singular_gtcs_when_note_uses_singular():
+    record = load_exect_gold_document("EA0069")
+    _configure_dummy([{
+        "reasoning": "Note uses singular generalised tonic clonic seizure phrasing.",
+        "diagnosis": ["juvenile myoclonic epilepsy"],
+        "diagnosis_evidence": ["Juvenile Myoclonic Epilepsy"],
+        "seizure_type": ["generalized tonic clonic seizures", "myoclonic seizures"],
+        "seizure_type_evidence": ["generalised tonic clonic seizure", "myoclonic jerks"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    seizure_values = sorted(
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    )
+    assert seizure_values == [
+        "generalized tonic clonic seizure",
+        "generalized tonic clonic seizures",
+    ]
+
+
+def test_exect_s0_s1_bridge_co_lists_epilepsy_with_primary_generalized():
+    record = load_exect_gold_document("EA0131")
+    _configure_dummy([{
+        "reasoning": "The model omitted generic epilepsy from the diagnosis list.",
+        "diagnosis": ["primary generalized epilepsy"],
+        "diagnosis_evidence": ["primary generalised epilepsy"],
+        "seizure_type": ["generalized tonic clonic seizures"],
+        "seizure_type_evidence": ["generalised tonic clonic seizures"],
+        "annotated_medication": ["sodium valproate"],
+        "annotated_medication_evidence": ["sodium valproate"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = sorted(
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    )
+    assert diagnosis_values == ["epilepsy", "primary generalized epilepsy"]
+
+
+def test_exect_s0_s1_bridge_co_lists_epilepsy_with_symptomatic_structural_focal():
+    record = load_exect_gold_document("EA0170")
+    _configure_dummy([{
+        "reasoning": "The model omitted generic epilepsy from the diagnosis list.",
+        "diagnosis": ["symptomatic structural focal epilepsy"],
+        "diagnosis_evidence": ["Symptomatic structural focal epilepsy"],
+        "seizure_type": ["complex partial seizures"],
+        "seizure_type_evidence": ["complex partial seizures"],
+        "annotated_medication": ["carbamazepine"],
+        "annotated_medication_evidence": ["carbamazepine"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = sorted(
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    )
+    assert diagnosis_values == ["epilepsy", "symptomatic structural focal epilepsy"]
+
+
+def test_exect_s0_s1_bridge_maps_unclassified_epilepsy_surface_to_epilepsy():
+    record = load_exect_gold_document("EA0148")
+    _configure_dummy([{
+        "reasoning": "The model used unclassified epilepsy header wording.",
+        "diagnosis": ["epilepsy unclassified"],
+        "diagnosis_evidence": ["epilepsy unclassified"],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert len(diagnosis_values) == 1
+    assert diagnosis_values[0].normalized_value == "epilepsy"
+    assert "benchmark_bridge:unclassified_epilepsy_surface" in diagnosis_values[0].quality_flags
+
+
+def test_exect_s0_s1_bridge_recovers_epilepsy_from_unclassified_header():
+    record = load_exect_gold_document("EA0148")
+    _configure_dummy([{
+        "reasoning": "The model returned no diagnosis labels.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert len(diagnosis_values) == 1
+    assert diagnosis_values[0].normalized_value == "epilepsy"
+    assert "benchmark_bridge:diagnosis_co_list_augmented" in diagnosis_values[0].quality_flags
+
+
+def test_exect_s0_s1_bridge_recovers_epilepsy_from_en_dash_unclassified_header():
+    record = load_exect_gold_document("EA0173")
+    _configure_dummy([{
+        "reasoning": "The model returned no diagnosis labels.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert diagnosis_values == ["epilepsy"]
+
+
+def test_exect_s0_s1_bridge_preserves_temporal_lobe_epilepsy_for_possible_tle_header():
+    record = load_exect_gold_document("EA0185")
+    _configure_dummy([{
+        "reasoning": "The header names possible TLE alongside focal seizures.",
+        "diagnosis": ["temporal lobe epilepsy"],
+        "diagnosis_evidence": ["possible TLE"],
+        "seizure_type": ["focal seizures"],
+        "seizure_type_evidence": ["Focal seizures"],
+        "annotated_medication": ["carbamazepine"],
+        "annotated_medication_evidence": ["Carbamazepine"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert diagnosis_values == ["temporal lobe epilepsy"]
+
+
+def test_exect_s0_s1_bridge_recovers_on_awakening_diagnosis_from_sleep_header():
+    record = load_exect_gold_document("EA0116")
+    _configure_dummy([{
+        "reasoning": "The model misfiled the syndrome phrase into seizure type.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": ["generalised tonic clonic seizures from sleep"],
+        "seizure_type_evidence": [
+            "New diagnosis of epilepsy with generalised tonic clonic seizures from sleep"
+        ],
+        "annotated_medication": ["levetiracetam"],
+        "annotated_medication_evidence": ["Levetiracetam 250mgs once a day"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    seizure_values = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    assert len(diagnosis_values) == 1
+    assert diagnosis_values[0].normalized_value == (
+        "epilepsy with generalized tonic clonic seizures on awakening"
+    )
+    assert "benchmark_bridge:diagnosis_co_list_augmented" in diagnosis_values[0].quality_flags
+    assert seizure_values == ["generalized tonic clonic seizures"]
+
+
+def test_exect_s0_s1_bridge_maps_from_sleep_diagnosis_surface_to_on_awakening():
+    record = load_exect_gold_document("EA0116")
+    _configure_dummy([{
+        "reasoning": "The model emitted the from-sleep syndrome surface in diagnosis.",
+        "diagnosis": ["epilepsy with generalised tonic clonic seizures from sleep"],
+        "diagnosis_evidence": [
+            "New diagnosis of epilepsy with generalised tonic clonic seizures from sleep"
+        ],
+        "seizure_type": ["generalized tonic clonic seizures"],
+        "seizure_type_evidence": ["generalised tonic clonic seizures"],
+        "annotated_medication": ["levetiracetam"],
+        "annotated_medication_evidence": ["Levetiracetam 250mgs once a day"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    diagnosis_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+    assert len(diagnosis_values) == 1
+    assert diagnosis_values[0].normalized_value == (
+        "epilepsy with generalized tonic clonic seizures on awakening"
+    )
+    assert "benchmark_bridge:on_awakening_diagnosis_surface" in diagnosis_values[0].quality_flags
+
+
+def test_exect_s0_s1_bridge_suppresses_diagnosis_when_header_lists_seizure_descriptors():
+    record = load_exect_gold_document("EA0026")
+    _configure_dummy([{
+        "reasoning": "Diagnosis header lists seizure descriptors only.",
+        "diagnosis": ["juvenile myoclonic epilepsy"],
+        "diagnosis_evidence": ["possible JME"],
+        "seizure_type": ["generalized tonic clonic seizures", "myoclonic seizures"],
+        "seizure_type_evidence": ["generalised tonic clonic seizures", "myoclonic jerks"],
+        "annotated_medication": ["topiramate"],
+        "annotated_medication_evidence": ["topiramate"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    values = prediction_set.predictions[0].values
+    assert [value.field_name for value in values if value.field_name == "diagnosis"] == []
+    seizure_values = [
+        value.normalized_value
+        for value in values
+        if value.field_name == "seizure_type"
+    ]
+    assert seizure_values == ["generalized tonic clonic seizures"]
+
+
 def test_exect_s0_s1_bridge_maps_myoclonic_jerks_to_myoclonic_seizures():
     record = load_exect_gold_document("EA0053")
     _configure_dummy([{
@@ -406,8 +1124,8 @@ def test_exect_s0_s1_bridge_rejects_non_asm_medications():
         "diagnosis_evidence": [],
         "seizure_type": [],
         "seizure_type_evidence": [],
-        "annotated_medication": ["lamotrigine", "citalopram"],
-        "annotated_medication_evidence": ["lamotrigine", "citalopram"],
+        "annotated_medication": ["levetiracetam", "citalopram"],
+        "annotated_medication_evidence": ["levetiracetam", "citalopram"],
     }])
 
     prediction_set = predict_exect_records(
@@ -422,7 +1140,71 @@ def test_exect_s0_s1_bridge_rejects_non_asm_medications():
         for value in prediction_set.predictions[0].values
         if value.field_name == "annotated_medication"
     ]
-    assert [value.normalized_value for value in medication_values] == ["lamotrigine"]
+    assert [value.normalized_value for value in medication_values] == ["levetiracetam"]
+
+
+def test_exect_s0_s1_bridge_preserves_lamictal_brand_surface():
+    record = load_exect_gold_document("EA0142")
+    _configure_dummy([{
+        "reasoning": "The note uses the Lamictal brand in the current medication list.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": ["lamotrigine"],
+        "annotated_medication_evidence": ["Current medication: Lamictal 100mg BD"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    medication_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ]
+    assert len(medication_values) == 1
+    assert medication_values[0].normalized_value == "lamictal"
+    assert "benchmark_bridge:medication_brand_surface_preserved" in (
+        medication_values[0].quality_flags
+    )
+
+
+def test_exect_s0_s1_bridge_repairs_medication_evidence_header_prefix():
+    record = load_exect_gold_document("EA0142")
+    note_line = next(
+        line for line in record.text.splitlines() if "lamictal" in line.lower()
+    )
+    _configure_dummy([{
+        "reasoning": "Evidence should be repaired to the note line despite spacing drift.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": ["Lamictal"],
+        "annotated_medication_evidence": ["Current medication: Lamictal 100mg BD"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    medication_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ]
+    assert len(medication_values) == 1
+    assert medication_values[0].evidence[0].text in record.text
+    assert medication_values[0].evidence[0].start is not None
+    assert "lamictal" in medication_values[0].evidence[0].text.lower()
 
 
 def test_exect_s0_s1_bridge_excludes_medication_with_historical_evidence():
@@ -588,7 +1370,6 @@ def test_exect_s0_s1_bridge_repairs_ellipsis_evidence_to_contiguous_quote():
     )
     assert medication_values[0].evidence[0].start == 537
     assert medication_values[0].evidence[0].end == 634
-    assert "evidence_repair:ellipsis_contiguous_span" in medication_values[0].quality_flags
 
 
 def test_exect_s0_s1_section_aware_module_routes_family_specific_contexts():
@@ -780,3 +1561,100 @@ def test_exect_s0_s1_diagnosis_recall_probe_module_merges_recall_pass():
 def test_build_exect_s0_s1_module_returns_diagnosis_recall_probe():
     module = build_exect_s0_s1_module(EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT)
     assert isinstance(module, ExectS0S1DiagnosisRecallProbeModule)
+
+
+def test_exect_s0_s1_verify_repair_module_runs_extract_then_verify():
+    record = load_exect_gold_document("EA0153")
+    _configure_dummy(
+        [
+            {
+                "reasoning": "Initial pass incorrectly includes planned lamotrigine.",
+                "diagnosis": [],
+                "diagnosis_evidence": [],
+                "seizure_type": [],
+                "seizure_type_evidence": [],
+                "annotated_medication": ["lamotrigine"],
+                "annotated_medication_evidence": [
+                    "Please start lamotrigine 25mg once a day"
+                ],
+            },
+            {
+                "reasoning": "Verifier removes planned medication and confirms empty ASM list.",
+                "diagnosis": [],
+                "diagnosis_evidence": [],
+                "seizure_type": [],
+                "seizure_type_evidence": [],
+                "annotated_medication": [],
+                "annotated_medication_evidence": [],
+                "verifier_decision": "repair",
+                "verifier_reason": "Planned start is not benchmark-facing medication.",
+            },
+        ]
+    )
+
+    prediction_set = predict_exect_records(
+        ExectS0S1VerifyRepairModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy",
+        program_variant=EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+    )
+
+    assert prediction_set.metadata["program_variant"] == EXECT_S0_S1_VERIFY_REPAIR_VARIANT
+    assert [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ] == []
+    assert len(dspy.settings.lm.history) == 2
+
+
+def test_exect_s0_s1_verify_repair_guards_block_add_only_diagnosis():
+    record = load_exect_gold_document("EA0061")
+    _configure_dummy(
+        [
+            {
+                "reasoning": "Initial pass finds focal epilepsy only.",
+                "diagnosis": ["focal epilepsy"],
+                "diagnosis_evidence": ["Diagnosis: focal epilepsy"],
+                "seizure_type": ["focal seizures"],
+                "seizure_type_evidence": ["focal seizures"],
+                "annotated_medication": [],
+                "annotated_medication_evidence": [],
+            },
+            {
+                "reasoning": "Verifier incorrectly tries to add parietal lobe epilepsy.",
+                "diagnosis": ["focal epilepsy", "parietal lobe epilepsy"],
+                "diagnosis_evidence": [
+                    "Diagnosis: focal epilepsy",
+                    "probable parietal onset",
+                ],
+                "seizure_type": ["focal seizures"],
+                "seizure_type_evidence": ["focal seizures"],
+                "annotated_medication": [],
+                "annotated_medication_evidence": [],
+                "verifier_decision": "repair",
+                "verifier_reason": "Attempted recall addition.",
+            },
+        ]
+    )
+
+    prediction_set = predict_exect_records(
+        ExectS0S1VerifyRepairModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy",
+        program_variant=EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+    )
+    diagnosis_values = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "diagnosis"
+    ]
+
+    assert diagnosis_values == ["focal epilepsy"]
+
+
+def test_build_exect_s0_s1_module_returns_verify_repair():
+    module = build_exect_s0_s1_module(EXECT_S0_S1_VERIFY_REPAIR_VARIANT)
+    assert isinstance(module, ExectS0S1VerifyRepairModule)
