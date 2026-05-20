@@ -1,0 +1,41 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_plus_precomputed_seizure_frequency_candidates",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s4_frequency_h2_pre_vocab_cap25_gpt4_1_mini",
+  "hypothesis": "Seizure-frequency-only pre-candidate injection (note-anchored ExECT surfaces plus filtered Gan temporal hints) improves seizure_frequency F1 on cap-25 without changing S4 schema or scorer.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Cap-25 gate for exect_s4_frequency_deterministic_v1; not a full-validation performance estimate.",
+    "Only seizure_frequency candidates are injected; S1–S3 and medication_temporality pre-vocab lists are omitted.",
+    "Seizure_frequency F1 is the primary decision metric; pooled micro F1 is diagnostic only.",
+    "Gan monthly labels are adapted only when they map to audited ExECT frequency surfaces.",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_frequency_pre_vocab_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["frequency"],
+    "comparison_group": "exect_s4_frequency_deterministic_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["H2_pre_deterministic"],
+    "intended_decision": "pending",
+    "interleaving_positions": ["pre", "during"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s4",
+    "varied_factor": "interleaving_position"
+  }
+}

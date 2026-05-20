@@ -54,6 +54,7 @@ from clinical_extraction.programs.exect_s3 import (
 )
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FIELD_FAMILIES,
+    EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_POLICY_EXAMPLES,
     EXECT_S4_PROMPT_VERSION,
@@ -62,6 +63,10 @@ from clinical_extraction.programs.exect_s4 import (
     build_exect_s4_module,
     exect_s4_run_metadata,
     predict_exect_s4_records,
+)
+
+_EXECT_S4_PROGRAM_VARIANTS = frozenset(
+    {EXECT_S4_VARIANT, EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT}
 )
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
@@ -324,7 +329,7 @@ def _build_module(dataset: str, program_variant: str) -> dspy.Module:
     if dataset == "gan_2026":
         return build_gan_s0_module(program_variant)
     if dataset == "exect_v2":
-        if program_variant == EXECT_S4_VARIANT:
+        if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return build_exect_s4_module(program_variant)
         if program_variant == EXECT_S3_VARIANT:
             return build_exect_s3_module(program_variant)
@@ -356,7 +361,7 @@ def _run_metadata(
             extra=extra,
         )
     if dataset == "exect_v2":
-        if program_variant == EXECT_S4_VARIANT:
+        if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return exect_s4_run_metadata(
                 run_id=run_id,
                 split_name=split_name,
@@ -437,10 +442,15 @@ def _prompts_data(
             "structured_output_strategy": structured_output_strategy,
         }
     if dataset == "exect_v2":
-        if program_variant == EXECT_S4_VARIANT:
+        if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
+            module_name = (
+                "ExectS4FrequencyPreVocabFieldFamilyModule"
+                if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT
+                else "ExectS4FieldFamilyModule"
+            )
             return {
                 "signature": "ExectS4FieldFamilySignature",
-                "module": "ExectS4FieldFamilyModule",
+                "module": module_name,
                 "predictor": "dspy.ChainOfThought",
                 "program_variant": program_variant,
                 "prompt_version": prompt_version or EXECT_S4_PROMPT_VERSION,
@@ -531,7 +541,7 @@ def _predict_records(
             progress_callback=progress_callback,
         )
     if dataset == "exect_v2":
-        if program_variant == EXECT_S4_VARIANT:
+        if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return predict_exect_s4_records(
                 module,
                 records,

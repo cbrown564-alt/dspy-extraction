@@ -3,16 +3,16 @@
     "abstention_policy": "empty_lists_for_no_supported_field_values",
     "context_policy": "full_note",
     "few_shot_policy": "embedded benchmark-facing label-policy examples",
-    "repair_policy": "artifact_benchmark_bridge_only",
+    "repair_policy": "raw_no_benchmark_bridges",
     "verifier_policy": "none"
   },
   "dataset": "exect_v2",
-  "experiment_id": "exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini",
-  "hypothesis": "Cap-25 gate for H1 post-bridge-only benchmark normalization after single-pass extraction.",
+  "experiment_id": "exect_s1_interleaving_l1_raw_no_bridges_cap25_gpt4_1_mini",
+  "hypothesis": "Cap-25 gate for L1 raw (bridge-free) arm before full interleaving v2 validation.",
   "max_records": 25,
   "metric_caveats": [
     "Diagnostic cap-25 gate for exect_s1_interleaving_gpt_validation_v2; not a full-validation performance estimate.",
-    "Compare to L1 raw arm and frozen L1 anchor exect_s0_s1_validation_full_gpt4_1_mini (92.3% micro).",
+    "L1 raw arm: repair_policy raw_no_benchmark_bridges.",
     "See docs/exect_field_family_deterministic_support_map_20260520.md."
   ],
   "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
@@ -29,9 +29,9 @@
     "clinical_task_family": ["diagnosis", "seizure_type", "medication"],
     "comparison_group": "exect_s1_interleaving_gpt_validation_v2",
     "dataset": "exect_v2",
-    "hybrid_balance_class": ["H1_post_deterministic"],
+    "hybrid_balance_class": ["L1_llm_constrained"],
     "intended_decision": "pending",
-    "interleaving_positions": ["during", "post"],
+    "interleaving_positions": ["during"],
     "program_architecture": "single_pass",
     "schema_complexity": "exect_s1",
     "varied_factor": "interleaving_position"

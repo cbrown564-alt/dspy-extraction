@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_plus_precomputed_medication_candidates",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_interleaving_h2_medication_pre_vocab_slice_gpt4_1_mini",
+  "hypothesis": "Medication-only pre-vocabulary injection improves annotated_medication recall/normalization on Rx-heavy records without the full-note H2 seizure regression seen in exect_s1_interleaving_gpt_validation_v1.",
+  "metric_caveats": [
+    "14-record slice from data/fixtures/exect_s1_medication_pre_vocab_regression_slice.json.",
+    "Only annotated_medication candidates are injected; diagnosis and seizure_type pre-vocab lists are omitted.",
+    "Medication F1 is the primary decision metric; pooled micro is diagnostic only.",
+    "Do not extrapolate slice metrics to full-validation performance.",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "record_ids": [
+    "EA0135",
+    "EA0150",
+    "EA0052",
+    "EA0018",
+    "EA0026",
+    "EA0059",
+    "EA0050",
+    "EA0188",
+    "EA0047",
+    "EA0069",
+    "EA0072",
+    "EA0124",
+    "EA0137",
+    "EA0174"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["medication"],
+    "comparison_group": "exect_s1_medication_pre_vocab_slice_gpt_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["H2_pre_deterministic"],
+    "intended_decision": "pending",
+    "interleaving_positions": ["pre", "during"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "varied_factor": "interleaving_position"
+  }
+}

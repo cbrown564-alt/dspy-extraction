@@ -16,17 +16,21 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
     ExectS0S1DiagnosisRecallProbeModule,
+    ExectS0S1MedicationPreVocabFieldFamilyModule,
     ExectS0S1PreVocabFieldFamilyModule,
     ExectS0S1VerifyRepairModule,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     ExectS0S1SectionAwareFieldFamilyModule,
+    EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
+    REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
     _merge_diagnosis_recall,
     build_exect_s0_s1_module,
     build_precomputed_family_candidates,
     exect_s0_s1_run_metadata,
     format_note_with_precomputed_family_candidates,
+    format_note_with_precomputed_medication_candidates,
     make_exect_s0_s1_dspy_examples,
     predict_exect_records,
 )
@@ -1678,6 +1682,120 @@ def test_format_note_with_precomputed_family_candidates_injects_vocabularies():
     assert "lamotrigine" in candidates["annotated_medication"]
 
 
+def test_build_exect_s0_s1_module_returns_medication_pre_vocab_single_pass():
+    module = build_exect_s0_s1_module(EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT)
+    assert isinstance(module, ExectS0S1MedicationPreVocabFieldFamilyModule)
+
+
+def test_format_note_with_precomputed_medication_candidates_omits_other_families():
+    record = load_exect_gold_document("EA0008")
+    formatted = format_note_with_precomputed_medication_candidates(record.text)
+
+    assert "Precomputed benchmark-facing candidates" in formatted
+    assert "annotated_medication:" in formatted
+    assert "diagnosis:" not in formatted
+    assert "seizure_type:" not in formatted
+    assert formatted.endswith(record.text)
+
+
+def test_exect_s0_s1_raw_repair_policy_skips_benchmark_bridges():
+    record = load_exect_gold_document("EA0090")
+    dummy_answer = {
+        "reasoning": "The model emitted one fused secondary-generalisation phrase.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": ["focal seizures with secondary generalisation"],
+        "seizure_type_evidence": ["focal seizures with secondary generalisation"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }
+    _configure_dummy([dummy_answer, dummy_answer])
+
+    bridged = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+    raw = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        repair_policy=REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
+    )
+
+    bridged_seizures = [
+        value
+        for value in bridged.predictions[0].values
+        if value.field_name == "seizure_type"
+    ]
+    raw_seizures = [
+        value for value in raw.predictions[0].values if value.field_name == "seizure_type"
+    ]
+
+    assert [value.normalized_value for value in bridged_seizures] == [
+        "focal seizures",
+        "secondary generalisation",
+        "generalized tonic clonic seizure",
+    ]
+    assert len(raw_seizures) == 1
+    assert raw_seizures[0].normalized_value == (
+        "focal seizures with secondary generalisation"
+    )
+    assert not any(
+        flag.startswith("benchmark_bridge:")
+        for value in raw_seizures
+        for flag in value.quality_flags
+    )
+
+
+def test_exect_s0_s1_raw_repair_policy_differs_from_inline_bridged_policy():
+    record = load_exect_gold_document("EA0090")
+    dummy_answer = {
+        "reasoning": "The model emitted one fused secondary-generalisation phrase.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": ["focal seizures with secondary generalisation"],
+        "seizure_type_evidence": ["focal seizures with secondary generalisation"],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+    }
+    _configure_dummy([dummy_answer, dummy_answer, dummy_answer])
+
+    inline = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        repair_policy="none",
+    )
+    post = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        repair_policy=REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
+    )
+    raw = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        repair_policy=REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
+    )
+
+    def seizure_labels(prediction_set):
+        return {
+            value.normalized_value
+            for value in prediction_set.predictions[0].values
+            if value.field_name == "seizure_type"
+        }
+
+    assert seizure_labels(inline) == seizure_labels(post)
+    assert seizure_labels(raw) != seizure_labels(inline)
+
+
 def test_exect_s0_s1_post_bridge_repair_policy_records_bridge_stage_metadata():
     record = load_exect_gold_document("EA0008")
     _configure_dummy([{
@@ -1700,8 +1818,35 @@ def test_exect_s0_s1_post_bridge_repair_policy_records_bridge_stage_metadata():
 
     metadata = prediction_set.predictions[0].metadata
     assert metadata["bridge_stage"] == "post"
+    assert metadata["apply_benchmark_bridges"] is True
     assert metadata["repair_policy"] == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
     assert prediction_set.metadata["repair_policy"] == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
+
+
+def test_exect_s0_s1_raw_repair_policy_records_bridge_free_metadata():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([{
+        "reasoning": "The note explicitly names diagnosis, seizure type, and medication.",
+        "diagnosis": ["focal epilepsy"],
+        "diagnosis_evidence": ["epilepsy"],
+        "seizure_type": ["focal-seizures-with-altered-awareness"],
+        "seizure_type_evidence": ["focal-seizures-with-altered-awareness"],
+        "annotated_medication": ["Lamotrigine"],
+        "annotated_medication_evidence": ["lamotrigine"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        repair_policy=REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
+    )
+
+    metadata = prediction_set.predictions[0].metadata
+    assert metadata["bridge_stage"] == "none"
+    assert metadata["apply_benchmark_bridges"] is False
+    assert metadata["repair_policy"] == REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
 
 
 def test_build_exect_s0_s1_module_returns_verify_repair():

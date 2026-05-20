@@ -8,6 +8,7 @@ from pydantic import Field, model_validator
 
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+    EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
@@ -26,6 +27,7 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_VARIANT,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
     EXECT_S4_VARIANT,
@@ -183,12 +185,14 @@ class ExperimentConfig(FrozenModel):
         "gan_frequency_s0_react_temporal_tools",
         "exect_s0_s1_field_family_single_pass",
         "exect_s0_s1_field_family_pre_vocab_single_pass",
+        "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
         "exect_s0_s1_field_family_section_aware",
         "exect_s0_s1_field_family_diagnosis_recall",
         "exect_s0_s1_field_family_verify_repair",
         "exect_s2_field_family_single_pass",
         "exect_s3_field_family_single_pass",
         "exect_s4_field_family_single_pass",
+        "exect_s4_field_family_frequency_pre_vocab_single_pass",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -255,6 +259,7 @@ class ExperimentConfig(FrozenModel):
                     {
                         EXECT_S0_S1_VARIANT,
                         EXECT_S0_S1_PRE_VOCAB_VARIANT,
+                        EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
                         EXECT_S0_S1_SECTION_AWARE_VARIANT,
                         EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
                         EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
@@ -273,7 +278,7 @@ class ExperimentConfig(FrozenModel):
                 ),
                 (
                     EXECT_S4_SCHEMA_LEVEL,
-                    {EXECT_S4_VARIANT},
+                    {EXECT_S4_VARIANT, EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT},
                     EXECT_S4_SCORER,
                 ),
             ],

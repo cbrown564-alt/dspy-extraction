@@ -6,7 +6,8 @@
 **Registry:** `docs/experiment_registry.json`  
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
-**Last refreshed:** 2026-05-20, after S1 interleaving GPT phase 1 (H1/H2 cap-25 + full validation)
+**Last refreshed:** 2026-05-20, after S4 frequency pre-candidate cap-25 (reject H2)
+**Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`
 
 ---
 
@@ -73,42 +74,27 @@ Research interpretation: taxonomy is now part of experiment design. Avoid more b
 
 ## Active Work
 
-### 1. ExECT field-family deterministic support map
+### 1. S4 medication temporality post classifier (GPT)
 
-Build the compact table described under **Ready After Active Work** (GPT/Qwen performance, deterministic roles, candidate interleaving positions). This is now the primary ExECT planning artifact after S1 interleaving GPT phase 1 closed without a promotable arm.
-
-### 2. Fix H1 null comparison (optional follow-up)
-
-S1 interleaving H1 full tied L1 at 92.3% because `_build_s1_field_family_values` applies benchmark bridges for both `repair_policy=none` and `artifact_benchmark_bridge_only`. Before Qwen phase 2 or H3, either add a bridge-free L1 scoring path or split bridge application so post-only is measurable. See `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`.
+Precision-primary probe on planned/taper phrases (`exect_s4_temporality_deterministic_v1`); after or in parallel with frequency probe if configs do not share program paths.
 
 ## Recently Completed (2026-05-20)
 
+- **S4 frequency pre-candidate cap-25 GPT complete:** L1 49.1% / H2 47.1% seizure_frequency F1 (`…191914Z` / `…191951Z`); inspection `docs/exect_s4_frequency_deterministic_gpt_inspection_20260520.md` — **reject** H2 (−2.0pp); program `exect_s4_field_family_frequency_pre_vocab_single_pass` + configs + preregistration.
+- **Medication pre-vocab slice GPT complete:** L1 98.3% / H2 95.1% medication F1 (`…191336Z` / `…191345Z`); inspection `docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md` — **reject** H2 (−3.2pp medication F1); registry rows added.
+- **Interleaving v2 registry rows:** four rows under `exect_s1_interleaving_gpt_validation_v2` (`docs/experiment_registry.json`).
+- **S1 interleaving v2 GPT complete:** L1 raw 68.6% / H1 post 92.3% full micro (`…190804Z` / `…190807Z`); inspection `docs/exect_s1_interleaving_gpt_validation_v2_inspection_20260520.md` — bridges contribute ~24pp micro vs raw.
+- **Medication-only H2 slice scaffold:** `exect_s0_s1_field_family_medication_pre_vocab_single_pass`, slice fixture, L1/H2 slice configs, tests (`exect_s1_medication_pre_vocab_slice_gpt_v1`).
+- **Bridge-free S1 repair policy:** `REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES` in `exect_s0_s1.py`; interleaving v2 configs `exect_s1_interleaving_l1_raw_no_bridges_{cap25,full}_gpt4_1_mini.json`.
+- **ExECT field-family deterministic support map:** `docs/exect_field_family_deterministic_support_map_20260520.md` — S1–S4 per-family GPT/Qwen anchors, deterministic inventory, interleaving lessons, ranked experiment queue (bridge-free baseline → family-isolated probes).
 - **S1 interleaving GPT phase 1 complete:** H1 cap-25/full + H2 cap-25/full; inspection `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`; registry rows under `exect_s1_interleaving_gpt_validation_v1`. H1 **hold (null)** vs L1; H2 **reject** (−4.8pp full micro); H3 deferred.
 - S1 interleaving H1/H2 program paths + cap-25/full configs (`src/clinical_extraction/programs/exect_s0_s1.py`, `scripts/run_experiment.py`)
 - ExECT Qwen S4 full inspection: `docs/exect_s4_validation_full_qwen35b_ollama_inspection_20260520.md` (`…160914Z`, 67.5% micro, +2.0pp vs GPT v1.2)
 - Registry row: `exect_s4_validation_full_qwen35b_ollama` (cap-25 row `…133930Z` remains gate-only)
-- S1 interleaving pre-registration + stub configs (see Active Work §1)
+- S1 interleaving pre-registration + v2 configs (see v2 inspection doc)
 - Gan Qwen H1 full comparator: **deferred** — slice evidence sufficient; see **Current Decisions**
 
 ## Ready After Active Work
-
-### ExECT field-family deterministic support map
-
-Build a compact table of ExECT field families showing:
-
-- current GPT and Qwen performance
-- existing deterministic roles
-- candidate knowledge source
-- candidate interleaving position
-- likely clinical/scorer caveat
-
-Likely high-value targets:
-
-- medication: controlled vocabulary or deterministic mapping
-- medication temporality: planned/current/previous bridge
-- seizure type: benchmark-policy versus clinical-specificity boundary
-- diagnosis: certainty/specificity policy
-- seizure frequency: whether Gan temporal scaffolding transfers to ExECT S4 frequency fields
 
 ### Paper-ready registry matrix export
 
@@ -157,8 +143,13 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 | Experiment loop | Explore primarily on GPT 4.1-mini; reserve Qwen35b for selected high-value focus experiments |
 | Gan default architecture | Temporal-candidates verify-repair (`H2` + `H4`) |
 | Gan ReAct H3 | Rejected as default path; keep as negative control |
-| ExECT next experiment | Field-family deterministic support map; S1 interleaving GPT phase 1 closed (H1 null, H2 reject) |
-| ExECT S1 interleaving H1 | **Hold (null)** — identical labels to frozen L1; bridge metadata only |
+| ExECT next experiment | S4 medication temporality post classifier (`exect_s4_temporality_deterministic_v1`) |
+| ExECT S4 frequency H2 pre-vocab | **Reject** — 47.1% vs 49.1% seizure_frequency F1 on cap-25 (−2.0pp) |
+| ExECT medication H2 slice | **Reject** — 95.1% vs 98.3% medication F1 on 14-record Rx-heavy slice (−3.2pp) |
+| ExECT interleaving v2 registry | **Done** — four rows in `exect_s1_interleaving_gpt_validation_v2` |
+| ExECT S1 interleaving H1 (v2) | **Hold (null vs production L1)** — 92.3% full micro; bridges match `repair_policy=none` |
+| ExECT S1 interleaving L1 raw (v2) | **Diagnostic** — 68.6% full micro without bridges; ~24pp bridge contribution measured |
+| ExECT S1 interleaving H1 (v1) | **Superseded** — v1 null explained by always-on bridges; see v2 inspection |
 | ExECT S1 interleaving H2 | **Reject** — pre-vocab regressed full micro to 87.5% (−4.8pp vs L1) |
 | ExECT S1 interleaving H3 | **Defer** — no positive signal from H1/H2 |
 | Registry policy | Taxonomy fields required for new configs or registry rows |
@@ -169,10 +160,17 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 
 ## Recommended Next Pull
 
-1. Build the ExECT field-family deterministic support map (medication, seizure type, diagnosis, temporality, frequency transfer candidates).
-2. Decide whether to fix the H1 null arm (bridge-free L1 baseline) before any Qwen interleaving port.
-3. Keep L1 frozen as ExECT S1 GPT default; do not iterate H2 pre-vocab without a narrow family-specific probe.
-4. Paper-ready registry matrix export remains optional methods prep.
+1. Design + run S4 medication temporality post-classifier probe (`exect_s4_temporality_deterministic_v1`; precision-primary).
+2. Keep L1 frozen as ExECT S1/S4 GPT default; do not promote any H2 pre-vocab variant (S1, medication slice, or S4 frequency).
+3. Paper-ready registry matrix export remains optional methods prep.
+
+## Parallelization
+
+| Safe in parallel | Single-threaded |
+| --- | --- |
+| Support map doc (done) + registry matrix export | Interleaving v2 cap-25/full runs (same comparison group) |
+| S4 frequency cap-25 design + run | S4 temporality classifier design (if shared scorer paths) |
+| S4 frequency experiment design doc | Qwen ports (after GPT ≥2pp full-validation gain) |
 
 ## Long-Term Research Arc
 

@@ -26,8 +26,12 @@ EXECT_DATASET = "exect_v2"
 EXECT_S0_S1_SCHEMA_LEVEL = "exect_s0_s1_field_family"
 EXECT_S0_S1_VARIANT = "exect_s0_s1_field_family_single_pass"
 EXECT_S0_S1_PRE_VOCAB_VARIANT = "exect_s0_s1_field_family_pre_vocab_single_pass"
+EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT = (
+    "exect_s0_s1_field_family_medication_pre_vocab_single_pass"
+)
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
 REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY = "artifact_benchmark_bridge_only"
+REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES = "raw_no_benchmark_bridges"
 EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT = "exect_s0_s1_field_family_diagnosis_recall"
 EXECT_S0_S1_VERIFY_REPAIR_VARIANT = "exect_s0_s1_field_family_verify_repair"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
@@ -855,6 +859,19 @@ class ExectS0S1PreVocabFieldFamilyModule(dspy.Module):
         )
 
 
+class ExectS0S1MedicationPreVocabFieldFamilyModule(dspy.Module):
+    """Single-pass extractor with medication-only pre-vocabulary candidate hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS0S1FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_note_with_precomputed_medication_candidates(note_text)
+        )
+
+
 class ExectS0S1DiagnosisSignature(dspy.Signature):
     """Extract benchmark-facing ExECT diagnosis labels only."""
 
@@ -1186,6 +1203,8 @@ def build_exect_s0_s1_module(program_variant: str = EXECT_S0_S1_VARIANT) -> dspy
         return ExectS0S1VerifyRepairModule()
     if program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT:
         return ExectS0S1PreVocabFieldFamilyModule()
+    if program_variant == EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT:
+        return ExectS0S1MedicationPreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_VARIANT:
         return ExectS0S1FieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")
@@ -1367,26 +1386,61 @@ def predict_exect_records(
 
 
 def _s1_single_pass_variants() -> frozenset[str]:
-    return frozenset({EXECT_S0_S1_VARIANT, EXECT_S0_S1_PRE_VOCAB_VARIANT})
+    return frozenset(
+        {
+            EXECT_S0_S1_VARIANT,
+            EXECT_S0_S1_PRE_VOCAB_VARIANT,
+            EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+        }
+    )
 
 
-def build_precomputed_family_candidates(note_text: str) -> dict[str, list[str]]:
-    """Build note-aware audited candidate lists for H2 pre-vocabulary injection."""
+def _repair_policy_applies_benchmark_bridges(repair_policy: str) -> bool:
+    """Return whether audited S1 benchmark bridges run after single-pass extraction."""
+    return repair_policy != REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
+
+
+def _bridge_stage_for_repair_policy(repair_policy: str) -> str:
+    if not _repair_policy_applies_benchmark_bridges(repair_policy):
+        return "none"
+    if repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY:
+        return "post"
+    return "inline"
+
+
+def build_precomputed_medication_candidates(note_text: str) -> list[str]:
+    """Build note-anchored prescription medication candidates for narrow H2 probes."""
     note_lower = note_text.lower()
-    diagnosis_candidates = sorted(ALLOWED_DIAGNOSIS_LABELS)
-    seizure_candidates = sorted(_PRE_VOCAB_SEIZURE_TYPE_SURFACES)
-    medication_candidates = sorted(
+    return sorted(
         {
             medication
             for medication in _KNOWN_PRESCRIPTION_MEDICATIONS
             if re.search(rf"\b{re.escape(medication)}\b", note_lower)
         }
     )
+
+
+def build_precomputed_family_candidates(note_text: str) -> dict[str, list[str]]:
+    """Build note-aware audited candidate lists for H2 pre-vocabulary injection."""
     return {
-        "diagnosis": diagnosis_candidates,
-        "seizure_type": seizure_candidates,
-        "annotated_medication": medication_candidates,
+        "diagnosis": sorted(ALLOWED_DIAGNOSIS_LABELS),
+        "seizure_type": sorted(_PRE_VOCAB_SEIZURE_TYPE_SURFACES),
+        "annotated_medication": build_precomputed_medication_candidates(note_text),
     }
+
+
+def format_note_with_precomputed_medication_candidates(note_text: str) -> str:
+    """Inject medication-only audited candidates before the clinical note."""
+    medication_candidates = build_precomputed_medication_candidates(note_text)
+    lines = [
+        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
+        f"annotated_medication: {', '.join(medication_candidates)}",
+        "",
+        "---",
+        "",
+        note_text,
+    ]
+    return "\n".join(lines)
 
 
 def format_note_with_precomputed_family_candidates(note_text: str) -> str:
@@ -1415,14 +1469,16 @@ def _predict_record(
     pred = module(note_text=record.text)
 
     if program_variant in _s1_single_pass_variants():
-        bridge_stage = (
-            "post"
-            if repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
-            else "inline"
+        apply_benchmark_bridges = _repair_policy_applies_benchmark_bridges(repair_policy)
+        bridge_stage = _bridge_stage_for_repair_policy(repair_policy)
+        values = _build_s1_field_family_values(
+            record,
+            pred,
+            apply_benchmark_bridges=apply_benchmark_bridges,
         )
-        values = _build_s1_field_family_values(record, pred)
         metadata = {
             "program_variant": program_variant,
+            "apply_benchmark_bridges": apply_benchmark_bridges,
             "bridge_stage": bridge_stage,
             "repair_policy": repair_policy,
         }
@@ -1430,6 +1486,12 @@ def _predict_record(
             metadata["precomputed_candidates"] = build_precomputed_family_candidates(
                 record.text
             )
+        if program_variant == EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT:
+            metadata["precomputed_candidates"] = {
+                "annotated_medication": build_precomputed_medication_candidates(
+                    record.text
+                )
+            }
         return DocumentPrediction(
             document_id=record.document_id,
             dataset=EXECT_DATASET,
@@ -1492,21 +1554,32 @@ def _predict_record(
 def _build_s1_field_family_values(
     record: ExectGoldDocument,
     pred: dspy.Prediction,
+    *,
+    apply_benchmark_bridges: bool = True,
 ) -> list[ExtractedValue]:
-    """Apply audited S1 benchmark bridges to a single-pass model prediction."""
+    """Map a single-pass model prediction to scored S1 field-family values."""
     values: list[ExtractedValue] = []
 
     diagnosis_inputs = _as_list(getattr(pred, "diagnosis", []))
-    diagnosis_inputs, diagnosis_header_flags = _filter_diagnosis_for_seizure_descriptor_header(
-        diagnosis_inputs,
-        record.text,
-    )
-    diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
-        _augment_diagnosis_co_lists(
-            diagnosis_inputs,
-            record.text,
+    diagnosis_header_flags: list[str] = []
+    diagnosis_augmented: set[str] = set()
+    specificity_collapse_augmented: set[str] = set()
+    if apply_benchmark_bridges:
+        diagnosis_inputs, diagnosis_header_flags = (
+            _filter_diagnosis_for_seizure_descriptor_header(
+                diagnosis_inputs,
+                record.text,
+            )
         )
-    )
+        diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
+            _augment_diagnosis_co_lists(
+                diagnosis_inputs,
+                record.text,
+            )
+        )
+    else:
+        diagnosis_raw = diagnosis_inputs
+
     diagnoses, collapsed = _normalize_diagnoses(diagnosis_raw)
     diagnosis_evidence = _as_list(getattr(pred, "diagnosis_evidence", []))
     values.extend(
@@ -1519,22 +1592,42 @@ def _build_s1_field_family_values(
             augmented_values=diagnosis_augmented,
             specificity_collapse_augmented=specificity_collapse_augmented,
             extra_quality_flags=diagnosis_header_flags,
+            apply_benchmark_bridges=apply_benchmark_bridges,
         )
     )
-    values.extend(
-        _seizure_type_values_for_record(
-            record=record,
-            raw_values=_as_list(getattr(pred, "seizure_type", [])),
-            evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
+
+    seizure_raw = _as_list(getattr(pred, "seizure_type", []))
+    seizure_evidence = _as_list(getattr(pred, "seizure_type_evidence", []))
+    if apply_benchmark_bridges:
+        values.extend(
+            _seizure_type_values_for_record(
+                record=record,
+                raw_values=seizure_raw,
+                evidence_values=seizure_evidence,
+            )
         )
-    )
-    medication_raw, medication_evidence, medication_augmented = (
-        _augment_current_prescription_medications(
-            _as_list(getattr(pred, "annotated_medication", [])),
-            _as_list(getattr(pred, "annotated_medication_evidence", [])),
-            record.text,
+    else:
+        values.extend(
+            _values_for_family(
+                record=record,
+                field_name="seizure_type",
+                raw_values=seizure_raw,
+                evidence_values=seizure_evidence,
+                apply_benchmark_bridges=False,
+            )
         )
-    )
+
+    medication_raw = _as_list(getattr(pred, "annotated_medication", []))
+    medication_evidence = _as_list(getattr(pred, "annotated_medication_evidence", []))
+    medication_augmented: set[str] = set()
+    if apply_benchmark_bridges:
+        medication_raw, medication_evidence, medication_augmented = (
+            _augment_current_prescription_medications(
+                medication_raw,
+                medication_evidence,
+                record.text,
+            )
+        )
     values.extend(
         _values_for_family(
             record=record,
@@ -1542,6 +1635,7 @@ def _build_s1_field_family_values(
             raw_values=medication_raw,
             evidence_values=medication_evidence,
             augmented_values=medication_augmented,
+            apply_benchmark_bridges=apply_benchmark_bridges,
         )
     )
     return values
@@ -2066,6 +2160,7 @@ def _values_for_family(
     extra_quality_flags: list[str] | None = None,
     fixed_normalized: str | None = None,
     fixed_bridge_flags: list[str] | None = None,
+    apply_benchmark_bridges: bool = True,
 ) -> list[ExtractedValue]:
     values: list[ExtractedValue] = []
     seen: set[str] = set()
@@ -2083,7 +2178,7 @@ def _values_for_family(
         benchmark_pairs: list[tuple[str, list[str]]]
         if fixed_normalized is not None:
             benchmark_pairs = [(fixed_normalized, list(fixed_bridge_flags or []))]
-        else:
+        elif apply_benchmark_bridges:
             benchmark_pairs = list(
                 _benchmark_values(
                     field_name,
@@ -2092,6 +2187,11 @@ def _values_for_family(
                     evidence_text=evidence_text,
                 )
             )
+        else:
+            normalized = _normalize_value(field_name, raw_value)
+            if not normalized:
+                continue
+            benchmark_pairs = [(normalized, [])]
         for normalized, bridge_flags in benchmark_pairs:
             if not normalized or normalized in seen:
                 continue

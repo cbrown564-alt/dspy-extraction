@@ -1,0 +1,20 @@
+{
+  "description": "ExECT validation slice for medication-only H2 pre-vocabulary probes. Rx-heavy records with >=2 gold annotated medications or >=2 note-anchored prescription candidates; excludes full-note seizure/diagnosis pre-vocab injection.",
+  "name": "exect_s1_medication_pre_vocab_regression_v1",
+  "records": [
+    {"record_id": "EA0135", "selection_reason": "three_gold_medications"},
+    {"record_id": "EA0150", "selection_reason": "three_gold_medications"},
+    {"record_id": "EA0052", "selection_reason": "two_gold_medications_five_note_candidates"},
+    {"record_id": "EA0018", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0026", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0059", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0050", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0188", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0047", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0069", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0072", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0124", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0137", "selection_reason": "two_gold_medications"},
+    {"record_id": "EA0174", "selection_reason": "two_gold_medications"}
+  ]
+}

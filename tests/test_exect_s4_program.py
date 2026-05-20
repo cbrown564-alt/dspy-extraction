@@ -5,11 +5,16 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FIELD_FAMILIES,
+    EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_VARIANT,
     ExectS4FieldFamilyModule,
+    ExectS4FrequencyPreVocabFieldFamilyModule,
+    build_exect_s4_module,
+    build_precomputed_seizure_frequency_candidates,
+    format_note_with_precomputed_seizure_frequency_candidates,
     _recover_s4_investigation_raw_values,
     _recover_s4_medication_temporality_raw_values,
     _recover_s4_seizure_frequency_raw_values,
@@ -167,6 +172,80 @@ def test_recover_s4_investigation_raw_values_drops_planned_scan_unknown():
     )
     assert recovered == []
     assert "s4_bridge:investigation_unknown_removed" in flags
+
+
+def test_build_exect_s4_module_returns_frequency_pre_vocab_single_pass():
+    module = build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT)
+    assert isinstance(module, ExectS4FrequencyPreVocabFieldFamilyModule)
+
+
+def test_build_precomputed_seizure_frequency_candidates_from_note_text():
+    note = (
+        "He has about one focal seizure every three weeks and the frequency has increased. "
+        "He remains seizure free since 2017 on good days."
+    )
+    candidates = build_precomputed_seizure_frequency_candidates(note)
+
+    assert "1 per 3 week" in candidates
+    assert "frequency increased" in candidates
+
+
+def test_format_note_with_precomputed_seizure_frequency_candidates_omits_other_families():
+    record = load_exect_gold_document("EA0008")
+    formatted = format_note_with_precomputed_seizure_frequency_candidates(record.text)
+
+    assert "Precomputed benchmark-facing candidates" in formatted
+    assert "seizure_frequency:" in formatted
+    assert "annotated_medication:" not in formatted
+    assert "diagnosis:" not in formatted
+    assert formatted.endswith(record.text)
+
+
+def test_predict_exect_s4_frequency_pre_vocab_records_candidate_metadata():
+    record = load_exect_gold_document("EA0008")
+    dspy.configure(
+        lm=DummyLM(
+            answers=[
+                {
+                    "reasoning": "Frequency hints only.",
+                    "diagnosis": [],
+                    "diagnosis_evidence": [],
+                    "seizure_type": [],
+                    "seizure_type_evidence": [],
+                    "annotated_medication": [],
+                    "annotated_medication_evidence": [],
+                    "investigation": [],
+                    "investigation_evidence": [],
+                    "comorbidity": [],
+                    "comorbidity_evidence": [],
+                    "birth_history": [],
+                    "birth_history_evidence": [],
+                    "onset": [],
+                    "onset_evidence": [],
+                    "epilepsy_cause": [],
+                    "epilepsy_cause_evidence": [],
+                    "when_diagnosed": [],
+                    "when_diagnosed_evidence": [],
+                    "seizure_frequency": ["1 per 3 week"],
+                    "seizure_frequency_evidence": ["one every three weeks"],
+                    "medication_temporality": [],
+                    "medication_temporality_evidence": [],
+                }
+            ]
+        )
+    )
+
+    prediction_set = predict_exect_s4_records(
+        build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    )
+
+    metadata = prediction_set.predictions[0].metadata
+    assert metadata["program_variant"] == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT
+    assert "seizure_frequency" in metadata["precomputed_candidates"]
 
 
 def test_recover_s4_investigation_raw_values_keeps_unavailable_results_unknown():

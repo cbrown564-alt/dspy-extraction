@@ -43,6 +43,9 @@ from clinical_extraction.schemas import (
 
 EXECT_S4_SCHEMA_LEVEL = "exect_s4_field_family"
 EXECT_S4_VARIANT = "exect_s4_field_family_single_pass"
+EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT = (
+    "exect_s4_field_family_frequency_pre_vocab_single_pass"
+)
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
     *EXECT_S3_FIELD_FAMILIES,
@@ -360,9 +363,26 @@ class ExectS4FieldFamilyModule(dspy.Module):
         return self.extract(note_text=note_text)
 
 
+class ExectS4FrequencyPreVocabFieldFamilyModule(dspy.Module):
+    """Single-pass S4 extractor with seizure-frequency-only pre-vocabulary hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS4FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_note_with_precomputed_seizure_frequency_candidates(
+                note_text
+            )
+        )
+
+
 def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Module:
     if program_variant == EXECT_S4_VARIANT:
         return ExectS4FieldFamilyModule()
+    if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
+        return ExectS4FrequencyPreVocabFieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S4 program variant: {program_variant!r}")
 
 
@@ -409,13 +429,20 @@ def _predict_s4_record(
     values.extend(_s3_field_values_from_prediction(pred, record))
     values = _replace_s4_investigation_values(values, pred, record)
     values.extend(_s4_field_values_from_prediction(pred, record))
+    metadata: dict[str, object] = {"program_variant": program_variant}
+    if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
+        metadata["precomputed_candidates"] = {
+            "seizure_frequency": build_precomputed_seizure_frequency_candidates(
+                record.text
+            )
+        }
     return DocumentPrediction(
         document_id=record.document_id,
         dataset=EXECT_DATASET,
         schema_level=EXECT_S4_SCHEMA_LEVEL,
         values=values,
         quality_flags=record.quality_flags,
-        metadata={"program_variant": program_variant},
+        metadata=metadata,
     )
 
 
@@ -666,6 +693,138 @@ def _recover_s4_seizure_frequency_raw_values(
     recovered, co_label_flags = _augment_s4_seizure_frequency_co_labels(recovered, note_text)
     flags.extend(co_label_flags)
     return recovered, flags
+
+
+_COUNT_WORDS = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9",
+    "ten": "10",
+}
+_PERIOD_UNIT = r"weeks?|months?|days?|years?"
+_QUANTIFIED_FREQUENCY_NOTE_RE = re.compile(
+    rf"\b(?P<count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+    rf"(?:seizures?\s+)?(?:every|per)\s+(?P<period_count>\d+\s+)?"
+    rf"(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_ZERO_RATE_FREQUENCY_NOTE_RE = re.compile(
+    rf"\b(?:no|zero|0)\s+seizures?\s+per\s+(?P<period_count>\d+)\s+"
+    rf"(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_SEIZURE_EVERY_N_PERIOD_RE = re.compile(
+    rf"seizures?\s+every\s+"
+    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+    rf"(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _normalize_period_unit(period: str) -> str:
+    return period.lower().rstrip("s")
+_SEIZURE_FREE_SINCE_RE = re.compile(
+    r"seizure[- ]free since (\d{4})",
+    flags=re.IGNORECASE,
+)
+
+
+def _accept_precomputed_seizure_frequency_candidate(label: str) -> str | None:
+    canonical = canonical_clinical_phrase(label)
+    if not canonical or _looks_like_seizure_type_not_frequency(canonical):
+        return None
+    repaired, _ = _repair_s4_seizure_frequency_surface(canonical)
+    if _is_non_audited_frequency_surface(repaired):
+        return None
+    if not _looks_like_seizure_frequency_label(repaired):
+        return None
+    return repaired
+
+
+def build_precomputed_seizure_frequency_candidates(note_text: str) -> list[str]:
+    """Build note-anchored ExECT seizure-frequency candidates for narrow H2 probes."""
+    from clinical_extraction.gan.temporal_candidates import (
+        build_temporal_frequency_candidates_from_note,
+    )
+
+    candidates: set[str] = set()
+    note_lower = note_text.lower()
+
+    for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
+        if any(cue in note_lower for cue in cues):
+            accepted = _accept_precomputed_seizure_frequency_candidate(label)
+            if accepted:
+                candidates.add(accepted)
+
+    if "seizure free" in note_lower:
+        since_match = _SEIZURE_FREE_SINCE_RE.search(note_text)
+        if since_match:
+            accepted = _accept_precomputed_seizure_frequency_candidate(
+                f"seizure free since {since_match.group(1)}"
+            )
+        else:
+            accepted = _accept_precomputed_seizure_frequency_candidate("seizure free")
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _QUANTIFIED_FREQUENCY_NOTE_RE.finditer(note_text):
+        count_token = match.group("count").lower()
+        count = _COUNT_WORDS.get(count_token, count_token)
+        period_count = (match.group("period_count") or "1 ").strip().split()[0]
+        period = _normalize_period_unit(match.group("period"))
+        accepted = _accept_precomputed_seizure_frequency_candidate(
+            f"{count} per {period_count} {period}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _ZERO_RATE_FREQUENCY_NOTE_RE.finditer(note_text):
+        period_count = match.group("period_count")
+        period = _normalize_period_unit(match.group("period"))
+        accepted = _accept_precomputed_seizure_frequency_candidate(
+            f"0 per {period_count} {period}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _SEIZURE_EVERY_N_PERIOD_RE.finditer(note_text):
+        period_token = match.group("period_count").lower()
+        period_count = _COUNT_WORDS.get(period_token, period_token)
+        period = _normalize_period_unit(match.group("period"))
+        accepted = _accept_precomputed_seizure_frequency_candidate(
+            f"1 per {period_count} {period}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
+        accepted = _accept_precomputed_seizure_frequency_candidate(
+            temporal_candidate.canonical_label
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    return sorted(candidates)
+
+
+def format_note_with_precomputed_seizure_frequency_candidates(note_text: str) -> str:
+    """Inject seizure-frequency-only audited candidates before the clinical note."""
+    frequency_candidates = build_precomputed_seizure_frequency_candidates(note_text)
+    lines = [
+        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
+        f"seizure_frequency: {', '.join(frequency_candidates)}",
+        "",
+        "---",
+        "",
+        note_text,
+    ]
+    return "\n".join(lines)
 
 
 def _normalize_medication_temporality_surface(value: str) -> str:

@@ -24,7 +24,9 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+    EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
+    REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
 )
 from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_PROMPT_VERSION,
@@ -39,6 +41,7 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_VARIANT,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -1563,6 +1566,20 @@ def test_react_temporal_tools_slice_config_records_taxonomy_metadata():
     assert config.taxonomy.varied_factor == "interleaving_position"
 
 
+def test_exect_s1_interleaving_l1_raw_config_records_bridge_free_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_l1_raw_no_bridges_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s1_interleaving_l1_raw_no_bridges_gpt4_1_mini"
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.controls.repair_policy == REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == "exect_s1_interleaving_gpt_validation_v2"
+
+
 def test_exect_s1_interleaving_h1_config_records_post_bridge_contract():
     config = load_experiment_config(
         Path("configs/experiments/exect_s1_interleaving_h1_post_bridge_gpt4_1_mini.json")
@@ -1573,7 +1590,7 @@ def test_exect_s1_interleaving_h1_config_records_post_bridge_contract():
     assert config.controls.repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
     assert config.taxonomy is not None
     assert config.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
-    assert config.taxonomy.comparison_group == "exect_s1_interleaving_gpt_validation_v1"
+    assert config.taxonomy.comparison_group == "exect_s1_interleaving_gpt_validation_v2"
 
 
 def test_exect_s1_interleaving_h2_config_records_pre_vocab_contract():
@@ -1603,6 +1620,56 @@ def test_exect_s1_interleaving_cap25_configs_record_gates():
     assert h2.max_records == 25
     assert h1.controls.repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
     assert h2.program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT
+
+    l1_raw = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_l1_raw_no_bridges_cap25_gpt4_1_mini.json"
+        )
+    )
+    assert l1_raw.controls.repair_policy == REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
+
+
+def test_exect_s4_frequency_cap25_configs_record_contract():
+    l1 = load_experiment_config(
+        Path("configs/experiments/exect_s4_frequency_l1_baseline_cap25_gpt4_1_mini.json")
+    )
+    h2 = load_experiment_config(
+        Path("configs/experiments/exect_s4_frequency_h2_pre_vocab_cap25_gpt4_1_mini.json")
+    )
+
+    assert l1.max_records == 25
+    assert h2.max_records == 25
+    assert h2.program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT
+    assert (
+        h2.controls.context_policy
+        == "full_note_plus_precomputed_seizure_frequency_candidates"
+    )
+    assert l1.taxonomy is not None
+    assert h2.taxonomy is not None
+    assert l1.taxonomy.comparison_group == "exect_s4_frequency_deterministic_v1"
+    assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
+
+
+def test_exect_s1_medication_pre_vocab_slice_configs_record_contract():
+    l1 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_l1_baseline_medication_slice_gpt4_1_mini.json"
+        )
+    )
+    h2 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_h2_medication_pre_vocab_slice_gpt4_1_mini.json"
+        )
+    )
+
+    assert len(l1.record_ids or []) == 14
+    assert l1.record_ids == h2.record_ids
+    assert h2.program_variant == EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT
+    assert h2.controls.context_policy == "full_note_plus_precomputed_medication_candidates"
+    assert l1.taxonomy is not None
+    assert h2.taxonomy is not None
+    assert l1.taxonomy.comparison_group == "exect_s1_medication_pre_vocab_slice_gpt_v1"
+    assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
 
 
 def test_experiment_config_rejects_conflicting_taxonomy_and_exemption():
