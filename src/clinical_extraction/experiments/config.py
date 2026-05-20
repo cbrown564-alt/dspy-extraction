@@ -9,6 +9,7 @@ from pydantic import Field, model_validator
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
@@ -187,6 +188,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s0_s1_field_family_single_pass",
         "exect_s0_s1_field_family_pre_vocab_single_pass",
         "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
+        "exect_s0_s1_field_family_seizure_pre_vocab_single_pass",
         "exect_s0_s1_field_family_section_aware",
         "exect_s0_s1_field_family_diagnosis_recall",
         "exect_s0_s1_field_family_verify_repair",
@@ -262,6 +264,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S0_S1_VARIANT,
                         EXECT_S0_S1_PRE_VOCAB_VARIANT,
                         EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+                        EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
                         EXECT_S0_S1_SECTION_AWARE_VARIANT,
                         EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
                         EXECT_S0_S1_VERIFY_REPAIR_VARIANT,

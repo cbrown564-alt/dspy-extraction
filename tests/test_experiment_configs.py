@@ -25,6 +25,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
     REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
 )
@@ -45,6 +46,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
+    EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
@@ -1629,6 +1631,50 @@ def test_exect_s1_interleaving_cap25_configs_record_gates():
     assert l1_raw.controls.repair_policy == REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
 
 
+def test_exect_s1_interleaving_qwen_l1_raw_config_records_bridge_free_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_l1_raw_no_bridges_qwen35b_ollama.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s1_interleaving_l1_raw_no_bridges_qwen35b_ollama"
+    assert config.model_config_path.name == "exect_qwen35b_ollama.json"
+    assert config.controls.repair_policy == REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES
+    assert config.taxonomy.comparison_group == "exect_s1_interleaving_qwen_validation_v1"
+
+
+def test_exect_s1_interleaving_qwen_h1_config_records_post_bridge_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_h1_post_bridge_qwen35b_ollama.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s1_interleaving_h1_post_bridge_qwen35b_ollama"
+    assert config.controls.repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
+    assert config.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+    assert config.taxonomy.comparison_group == "exect_s1_interleaving_qwen_validation_v1"
+
+
+def test_exect_s1_interleaving_qwen_cap25_configs_record_gates():
+    l1_raw = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_l1_raw_no_bridges_cap25_qwen35b_ollama.json"
+        )
+    )
+    h1 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_h1_post_bridge_cap25_qwen35b_ollama.json"
+        )
+    )
+
+    assert l1_raw.max_records == 25
+    assert h1.max_records == 25
+    assert l1_raw.taxonomy.comparison_group == "exect_s1_interleaving_qwen_validation_v1"
+    assert h1.taxonomy.comparison_group == "exect_s1_interleaving_qwen_validation_v1"
+
+
 def test_exect_s4_frequency_cap25_configs_record_contract():
     l1 = load_experiment_config(
         Path("configs/experiments/exect_s4_frequency_l1_baseline_cap25_gpt4_1_mini.json")
@@ -1650,6 +1696,36 @@ def test_exect_s4_frequency_cap25_configs_record_contract():
     assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
 
 
+def test_exect_s4_temporality_configs_record_contract():
+    l1_cap = load_experiment_config(
+        Path("configs/experiments/exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini.json")
+    )
+    h1_cap = load_experiment_config(
+        Path("configs/experiments/exect_s4_temporality_h1_post_classifier_cap25_gpt4_1_mini.json")
+    )
+    l1_full = load_experiment_config(
+        Path("configs/experiments/exect_s4_temporality_l1_baseline_full_gpt4_1_mini.json")
+    )
+    h1_full = load_experiment_config(
+        Path("configs/experiments/exect_s4_temporality_h1_post_classifier_full_gpt4_1_mini.json")
+    )
+
+    assert l1_cap.max_records == 25
+    assert h1_cap.max_records == 25
+    assert l1_full.max_records is None
+    assert h1_full.max_records is None
+    assert h1_cap.program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT
+    assert h1_full.program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT
+    assert (
+        h1_cap.controls.repair_policy
+        == "artifact_medication_temporality_post_classifier_only"
+    )
+    assert l1_cap.taxonomy is not None
+    assert h1_full.taxonomy is not None
+    assert l1_cap.taxonomy.comparison_group == "exect_s4_temporality_deterministic_v1"
+    assert h1_full.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+
+
 def test_exect_s1_medication_pre_vocab_slice_configs_record_contract():
     l1 = load_experiment_config(
         Path(
@@ -1669,6 +1745,28 @@ def test_exect_s1_medication_pre_vocab_slice_configs_record_contract():
     assert l1.taxonomy is not None
     assert h2.taxonomy is not None
     assert l1.taxonomy.comparison_group == "exect_s1_medication_pre_vocab_slice_gpt_v1"
+    assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
+
+
+def test_exect_s1_seizure_pre_vocab_slice_configs_record_contract():
+    l1 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_l1_baseline_seizure_slice_gpt4_1_mini.json"
+        )
+    )
+    h2 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_h2_seizure_pre_vocab_slice_gpt4_1_mini.json"
+        )
+    )
+
+    assert len(l1.record_ids or []) == 15
+    assert l1.record_ids == h2.record_ids
+    assert h2.program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT
+    assert h2.controls.context_policy == "full_note_plus_precomputed_seizure_type_candidates"
+    assert l1.taxonomy is not None
+    assert h2.taxonomy is not None
+    assert l1.taxonomy.comparison_group == "exect_s1_seizure_pre_vocab_slice_gpt_v1"
     assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
 
 

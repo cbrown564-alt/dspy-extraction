@@ -115,8 +115,9 @@ flowchart LR
 | 1 | **L1 raw vs H1 post bridge** *(complete)* | `exect_s1_interleaving_gpt_validation_v2` | `repair_policy`: `raw_no_benchmark_bridges` vs `artifact_benchmark_bridge_only` | Full: raw 68.6% / H1 92.3% micro; ~24pp bridge effect — `docs/exect_s1_interleaving_gpt_validation_v2_inspection_20260520.md` |
 | 2 | **Medication-only pre-vocab slice** *(complete)* | `exect_s1_medication_pre_vocab_slice_gpt_v1` | `H2_pre_deterministic` × medication only | **Reject** H2: 95.1% vs 98.3% medication F1 — `docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md` |
 | 3 | **S4 seizure-frequency pre candidates** *(complete)* | `exect_s4_frequency_deterministic_v1` | `H2_pre_deterministic` on S4 only | **Reject** H2: 47.1% vs 49.1% seizure_frequency F1 cap-25 — `docs/exect_s4_frequency_deterministic_gpt_inspection_20260520.md` |
-| 4 | **Medication temporality post classifier** | `exect_s4_temporality_deterministic_v1` | `H1_post_deterministic` | Precision-primary metric; slice with planned/taper phrases |
-| 5 | **Qwen port of winning GPT arm** | `exect_qwen_interleaving_validation_v1` | model_track only | After ≥2pp full-validation gain on GPT |
+| 4 | **Medication temporality post classifier** *(complete)* | `exect_s4_temporality_deterministic_v1` | `H1_post_deterministic` | **Reject** H1 full — `docs/exect_s4_temporality_deterministic_gpt_inspection_20260520.md` |
+| 5 | **Seizure-type-only pre-vocab slice** *(complete)* | `exect_s1_seizure_pre_vocab_slice_gpt_v1` | `H2_pre_deterministic` × seizure only | **Reject** H2: 83.3% vs 91.5% seizure_type F1 — `docs/exect_s1_seizure_pre_vocab_slice_gpt_inspection_20260520.md` |
+| 6 | **Qwen interleaving v1 (bridge matrix port)** | `exect_s1_interleaving_qwen_validation_v1` | `interleaving_position` (+ cross-track `model_track`) | **Complete — reject port** — full bridge Δ +12.8pp micro vs GPT +23.7pp; H1 null vs Qwen anchor — `docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md` |
 
 **Defer:** H3 tool normalization (Gan ReAct negative control sufficient); full-note H2 rerun; broad S2–S4 architecture ablation.
 

@@ -7,13 +7,13 @@
     "verifier_policy": "none"
   },
   "dataset": "exect_v2",
-  "experiment_id": "exect_s4_temporality_h1_post_classifier_cap25_gpt4_1_mini",
-  "hypothesis": "Evidence-aligned medication-temporality post classification (H1) improves medication_temporality precision on cap-25 without changing S4 schema, scorer, or prompt policy.",
-  "max_records": 25,
+  "experiment_id": "exect_s4_temporality_h1_post_classifier_full_gpt4_1_mini",
+  "hypothesis": "Evidence-aligned medication-temporality post classification (H1) improves medication_temporality precision on the full fixed validation split (40 records) after cap-25 gate clearance (+14.5pp precision, F1 stable on cap-25).",
   "metric_caveats": [
-    "Cap-25 gate for exect_s4_temporality_deterministic_v1; not a full-validation performance estimate.",
+    "Full fixed ExECTv2 validation split (40 records) for exect_s4_temporality_deterministic_v1; not published Table 1 reproduction.",
     "Only medication_temporality recovery uses exect.medication_temporality.post_classifier.v1; other families unchanged.",
     "Medication_temporality precision is the primary decision metric; recall and pooled micro are diagnostic.",
+    "Cap-25 anchor: H1 61.3% MT precision (+14.5pp vs L1 46.8%; F1 -0.4pp) at runs/exect_s4_temporality_h1_post_classifier_cap25_gpt4_1_mini_20260520T203803Z.",
     "Non-ASM temporality predictions are dropped post-hoc to target precision collapse from over-extraction.",
     "See docs/exect_field_family_deterministic_support_map_20260520.md."
   ],
@@ -32,7 +32,7 @@
     "comparison_group": "exect_s4_temporality_deterministic_v1",
     "dataset": "exect_v2",
     "hybrid_balance_class": ["H1_post_deterministic"],
-    "intended_decision": "hold",
+    "intended_decision": "reject",
     "interleaving_positions": ["during", "post"],
     "program_architecture": "single_pass",
     "schema_complexity": "exect_s4",

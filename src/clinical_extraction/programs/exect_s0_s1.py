@@ -29,6 +29,9 @@ EXECT_S0_S1_PRE_VOCAB_VARIANT = "exect_s0_s1_field_family_pre_vocab_single_pass"
 EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT = (
     "exect_s0_s1_field_family_medication_pre_vocab_single_pass"
 )
+EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT = (
+    "exect_s0_s1_field_family_seizure_pre_vocab_single_pass"
+)
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
 REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY = "artifact_benchmark_bridge_only"
 REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES = "raw_no_benchmark_bridges"
@@ -872,6 +875,19 @@ class ExectS0S1MedicationPreVocabFieldFamilyModule(dspy.Module):
         )
 
 
+class ExectS0S1SeizurePreVocabFieldFamilyModule(dspy.Module):
+    """Single-pass extractor with seizure-type-only pre-vocabulary candidate hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS0S1FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_note_with_precomputed_seizure_type_candidates(note_text)
+        )
+
+
 class ExectS0S1DiagnosisSignature(dspy.Signature):
     """Extract benchmark-facing ExECT diagnosis labels only."""
 
@@ -1205,6 +1221,8 @@ def build_exect_s0_s1_module(program_variant: str = EXECT_S0_S1_VARIANT) -> dspy
         return ExectS0S1PreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT:
         return ExectS0S1MedicationPreVocabFieldFamilyModule()
+    if program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT:
+        return ExectS0S1SeizurePreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_VARIANT:
         return ExectS0S1FieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")
@@ -1391,6 +1409,7 @@ def _s1_single_pass_variants() -> frozenset[str]:
             EXECT_S0_S1_VARIANT,
             EXECT_S0_S1_PRE_VOCAB_VARIANT,
             EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+            EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
         }
     )
 
@@ -1435,6 +1454,25 @@ def format_note_with_precomputed_medication_candidates(note_text: str) -> str:
     lines = [
         "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
         f"annotated_medication: {', '.join(medication_candidates)}",
+        "",
+        "---",
+        "",
+        note_text,
+    ]
+    return "\n".join(lines)
+
+
+def build_precomputed_seizure_type_candidates() -> list[str]:
+    """Build static audited seizure-type surfaces for narrow H2 pre-vocab probes."""
+    return sorted(_PRE_VOCAB_SEIZURE_TYPE_SURFACES)
+
+
+def format_note_with_precomputed_seizure_type_candidates(note_text: str) -> str:
+    """Inject seizure-type-only audited candidates before the clinical note."""
+    seizure_candidates = build_precomputed_seizure_type_candidates()
+    lines = [
+        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
+        f"seizure_type: {', '.join(seizure_candidates)}",
         "",
         "---",
         "",
@@ -1491,6 +1529,10 @@ def _predict_record(
                 "annotated_medication": build_precomputed_medication_candidates(
                     record.text
                 )
+            }
+        if program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT:
+            metadata["precomputed_candidates"] = {
+                "seizure_type": build_precomputed_seizure_type_candidates()
             }
         return DocumentPrediction(
             document_id=record.document_id,

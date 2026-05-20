@@ -35,6 +35,8 @@ H1 applies `exect.medication_temporality.post_classifier.v1` per aligned evidenc
 | --- | --- | --- |
 | L1 baseline | `exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini.json` | `exect_s4_field_family_single_pass` |
 | H1 post classifier | `exect_s4_temporality_h1_post_classifier_cap25_gpt4_1_mini.json` | `exect_s4_field_family_temporality_post_classifier_single_pass` |
+| L1 full validation | `exect_s4_temporality_l1_baseline_full_gpt4_1_mini.json` | `exect_s4_field_family_single_pass` |
+| H1 full validation | `exect_s4_temporality_h1_post_classifier_full_gpt4_1_mini.json` | `exect_s4_field_family_temporality_post_classifier_single_pass` |
 
 ## Primary metric
 
@@ -51,7 +53,7 @@ H1 applies `exect.medication_temporality.post_classifier.v1` per aligned evidenc
 ## Promotion gate
 
 - Cap-25: require **≥2pp** `medication_temporality` precision vs L1 **and** `medication_temporality` F1 must not regress **≥2pp** vs L1 on the same 25 records
-- Full validation (40): only if cap-25 gate passes
+- Full validation (40): same precision and F1 gates on the full fixed validation split; only run after cap-25 gate passes (**passed 2026-05-20**)
 
 ## Expected reject paths
 

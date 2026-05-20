@@ -17,12 +17,14 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VARIANT,
     ExectS0S1DiagnosisRecallProbeModule,
     ExectS0S1MedicationPreVocabFieldFamilyModule,
+    ExectS0S1SeizurePreVocabFieldFamilyModule,
     ExectS0S1PreVocabFieldFamilyModule,
     ExectS0S1VerifyRepairModule,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     ExectS0S1SectionAwareFieldFamilyModule,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
     REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
     _merge_diagnosis_recall,
@@ -31,6 +33,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     exect_s0_s1_run_metadata,
     format_note_with_precomputed_family_candidates,
     format_note_with_precomputed_medication_candidates,
+    format_note_with_precomputed_seizure_type_candidates,
+    build_precomputed_seizure_type_candidates,
     make_exect_s0_s1_dspy_examples,
     predict_exect_records,
 )
@@ -1696,6 +1700,23 @@ def test_format_note_with_precomputed_medication_candidates_omits_other_families
     assert "diagnosis:" not in formatted
     assert "seizure_type:" not in formatted
     assert formatted.endswith(record.text)
+
+
+def test_build_exect_s0_s1_module_returns_seizure_pre_vocab_single_pass():
+    module = build_exect_s0_s1_module(EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT)
+    assert isinstance(module, ExectS0S1SeizurePreVocabFieldFamilyModule)
+
+
+def test_format_note_with_precomputed_seizure_type_candidates_omits_other_families():
+    record = load_exect_gold_document("EA0008")
+    formatted = format_note_with_precomputed_seizure_type_candidates(record.text)
+
+    assert "Precomputed benchmark-facing candidates" in formatted
+    assert "seizure_type:" in formatted
+    assert "diagnosis:" not in formatted
+    assert "annotated_medication:" not in formatted
+    assert formatted.endswith(record.text)
+    assert "focal seizures" in build_precomputed_seizure_type_candidates()
 
 
 def test_exect_s0_s1_raw_repair_policy_skips_benchmark_bridges():

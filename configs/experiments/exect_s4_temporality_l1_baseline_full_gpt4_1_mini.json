@@ -7,12 +7,13 @@
     "verifier_policy": "none"
   },
   "dataset": "exect_v2",
-  "experiment_id": "exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini",
-  "hypothesis": "Frozen S4 single-pass baseline on cap-25 is the reference arm for medication-temporality post-classifier recovery (H1).",
-  "max_records": 25,
+  "experiment_id": "exect_s4_temporality_l1_baseline_full_gpt4_1_mini",
+  "hypothesis": "Frozen S4 single-pass baseline on the full fixed validation split (40 records) is the reference arm for medication-temporality post-classifier recovery (H1) after cap-25 gate clearance.",
   "metric_caveats": [
-    "Cap-25 gate for exect_s4_temporality_deterministic_v1; not a full-validation performance estimate.",
+    "Full fixed ExECTv2 validation split (40 records) for exect_s4_temporality_deterministic_v1; not published Table 1 reproduction.",
     "Medication_temporality precision is the primary decision metric; F1 and pooled micro are diagnostic.",
+    "Cap-25 anchor: L1 46.8% MT precision (runs/exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini_20260520T203755Z).",
+    "Cap-25 ExECT runs are systematically optimistic vs full validation; compare with per-family breakdown.",
     "Eleven-family S4 scope unchanged; only post-recovery policy varies in the paired H1 arm.",
     "See docs/exect_field_family_deterministic_support_map_20260520.md."
   ],

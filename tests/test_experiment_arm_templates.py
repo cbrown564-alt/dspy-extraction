@@ -15,6 +15,7 @@ from clinical_extraction.experiments.arm_templates import (
 from clinical_extraction.experiments.config import ExperimentConfig
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
@@ -59,6 +60,15 @@ def test_build_comparison_group_id_follows_taxonomy_convention():
 
     assert group_id == "exect_s1_interleaving_gpt_validation_v2"
     validate_comparison_group_id(group_id, dataset="exect_v2")
+
+    qwen_group = build_comparison_group_id(
+        schema_complexity="exect_s1",
+        factor="interleaving",
+        model_track="qwen",
+        scope="validation",
+        version=1,
+    )
+    assert qwen_group == "exect_s1_interleaving_qwen_validation_v1"
 
 
 def test_validate_comparison_group_id_rejects_invalid_suffix():
@@ -160,6 +170,41 @@ def test_build_experiment_arm_config_matches_exect_s1_h2_medication_slice_shape(
     )
     assert config.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
     assert config.taxonomy.comparison_group == "exect_s1_medication_pre_vocab_slice_gpt_v1"
+
+
+def test_build_experiment_arm_config_matches_exect_s1_h2_seizure_slice_shape():
+    ctx = ArmStudyContext(
+        dataset="exect_v2",
+        schema_complexity="exect_s1",
+        program_architecture="single_pass",
+        clinical_task_family=["seizure_type"],
+        comparison_group="exect_s1_seizure_pre_vocab_slice_gpt_v1",
+    )
+
+    config = build_experiment_arm_config(
+        "H2",
+        ctx,
+        experiment_id="exect_s1_interleaving_h2_seizure_pre_vocab_slice_gpt4_1_mini",
+        hypothesis="Seizure-type-only pre-vocabulary injection improves seizure_type recall.",
+        split_name="exectv2_fixed_v1:validation",
+        split_file="data/splits/exectv2_splits.json",
+        model_config_path="configs/models/gan_s0_gpt4_1_mini.json",
+        schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
+        program_variant=EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
+        scorer_mode=EXECT_S0_S1_SCORER,
+        prompt_version=EXECT_S0_S1_PROMPT_VERSION,
+        metric_caveats=["15-record seizure slice."],
+        record_ids=["EA0008", "EA0016"],
+    )
+
+    assert isinstance(config, ExperimentConfig)
+    assert config.program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT
+    assert (
+        config.controls.context_policy
+        == "full_note_plus_precomputed_seizure_type_candidates"
+    )
+    assert config.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
+    assert config.taxonomy.comparison_group == "exect_s1_seizure_pre_vocab_slice_gpt_v1"
 
 
 def test_build_experiment_arm_config_matches_exect_s4_frequency_l1_baseline():

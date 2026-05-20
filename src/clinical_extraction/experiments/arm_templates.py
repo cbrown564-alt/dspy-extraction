@@ -254,6 +254,11 @@ def _default_context_policy(
             pid.startswith("exect.medication.") for pid in primitive_ids
         ):
             return "full_note_plus_precomputed_medication_candidates"
+        if family_label == "seizure_type" or any(
+            pid.startswith("exect.seizure_type.") and "candidates" in pid
+            for pid in primitive_ids
+        ):
+            return "full_note_plus_precomputed_seizure_type_candidates"
         if family_label == "frequency" or any(
             pid.startswith("exect.frequency.") or pid.startswith("gan.frequency.")
             for pid in primitive_ids

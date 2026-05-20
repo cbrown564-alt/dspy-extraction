@@ -1,0 +1,21 @@
+{
+  "description": "ExECT validation slice for seizure-type-only H2 pre-vocabulary probes. Seizure-heavy records with >=2 gold seizure_type labels or >=2 note-anchored hits from audited seizure-type surfaces; excludes full-note diagnosis/medication pre-vocab injection.",
+  "name": "exect_s1_seizure_pre_vocab_regression_v1",
+  "records": [
+    {"record_id": "EA0008", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0016", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0018", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0045", "selection_reason": "two_note_anchored_seizure_surfaces"},
+    {"record_id": "EA0059", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0061", "selection_reason": "two_note_anchored_seizure_surfaces"},
+    {"record_id": "EA0069", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0072", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0090", "selection_reason": "two_note_anchored_seizure_surfaces"},
+    {"record_id": "EA0109", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0116", "selection_reason": "two_note_anchored_seizure_surfaces"},
+    {"record_id": "EA0124", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0143", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0150", "selection_reason": "two_gold_seizure_types"},
+    {"record_id": "EA0153", "selection_reason": "two_note_anchored_seizure_surfaces"}
+  ]
+}

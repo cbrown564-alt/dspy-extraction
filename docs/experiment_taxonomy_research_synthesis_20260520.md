@@ -278,7 +278,9 @@ but it should become an explicit next experimental question.
 
 ## Caveats
 
-The registry is not yet a final paper-ready analysis table.
+A paper-ready curated matrix export lives at `docs/experiment_registry_matrix_20260520.md`
+(regenerate with `uv run python scripts/export_experiment_registry_matrix.py`). Retrospective
+rows outside that export may still need clinical review.
 
 Retrospective tagging is partly inferred from config and run metadata. Historical
 experiments may have changed multiple factors at once, so comparison groups are
