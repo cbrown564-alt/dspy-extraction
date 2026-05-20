@@ -269,6 +269,7 @@ def main(argv: list[str] | None = None) -> int:
         model_name=model_config.model,
         prompt_version=config.prompt_version,
         program_variant=config.program_variant,
+        repair_policy=config.controls.repair_policy,
         progress_callback=_print_prediction_progress,
     )
     prediction_duration_seconds = perf_counter() - prediction_started
@@ -516,6 +517,7 @@ def _predict_records(
     model_name: str,
     prompt_version: str,
     program_variant: str,
+    repair_policy: str,
     progress_callback: Callable[[int, int, str], None] | None,
 ) -> Any:
     if dataset == "gan_2026":
@@ -566,6 +568,7 @@ def _predict_records(
             model_name=model_name,
             prompt_version=prompt_version,
             program_variant=program_variant,
+            repair_policy=repair_policy,
             progress_callback=progress_callback,
         )
     raise SystemExit(f"Unsupported dataset: {dataset!r}")

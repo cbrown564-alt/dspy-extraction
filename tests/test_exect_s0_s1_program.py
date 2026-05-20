@@ -5,6 +5,7 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+    EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
@@ -15,13 +16,17 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
     ExectS0S1DiagnosisRecallProbeModule,
+    ExectS0S1PreVocabFieldFamilyModule,
     ExectS0S1VerifyRepairModule,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     ExectS0S1SectionAwareFieldFamilyModule,
+    REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
     _merge_diagnosis_recall,
     build_exect_s0_s1_module,
+    build_precomputed_family_candidates,
     exect_s0_s1_run_metadata,
+    format_note_with_precomputed_family_candidates,
     make_exect_s0_s1_dspy_examples,
     predict_exect_records,
 )
@@ -1653,6 +1658,50 @@ def test_exect_s0_s1_verify_repair_guards_block_add_only_diagnosis():
     ]
 
     assert diagnosis_values == ["focal epilepsy"]
+
+
+def test_build_exect_s0_s1_module_returns_pre_vocab_single_pass():
+    module = build_exect_s0_s1_module(EXECT_S0_S1_PRE_VOCAB_VARIANT)
+    assert isinstance(module, ExectS0S1PreVocabFieldFamilyModule)
+
+
+def test_format_note_with_precomputed_family_candidates_injects_vocabularies():
+    record = load_exect_gold_document("EA0008")
+    formatted = format_note_with_precomputed_family_candidates(record.text)
+
+    assert "Precomputed benchmark-facing candidates" in formatted
+    assert "diagnosis:" in formatted
+    assert "seizure_type:" in formatted
+    assert "annotated_medication:" in formatted
+    assert formatted.endswith(record.text)
+    candidates = build_precomputed_family_candidates(record.text)
+    assert "lamotrigine" in candidates["annotated_medication"]
+
+
+def test_exect_s0_s1_post_bridge_repair_policy_records_bridge_stage_metadata():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([{
+        "reasoning": "The note explicitly names diagnosis, seizure type, and medication.",
+        "diagnosis": ["focal epilepsy"],
+        "diagnosis_evidence": ["epilepsy"],
+        "seizure_type": ["focal-seizures-with-altered-awareness"],
+        "seizure_type_evidence": ["focal-seizures-with-altered-awareness"],
+        "annotated_medication": ["Lamotrigine"],
+        "annotated_medication_evidence": ["lamotrigine"],
+    }])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        repair_policy=REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
+    )
+
+    metadata = prediction_set.predictions[0].metadata
+    assert metadata["bridge_stage"] == "post"
+    assert metadata["repair_policy"] == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
+    assert prediction_set.metadata["repair_policy"] == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
 
 
 def test_build_exect_s0_s1_module_returns_verify_repair():

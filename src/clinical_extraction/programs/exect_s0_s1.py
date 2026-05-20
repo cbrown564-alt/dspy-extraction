@@ -25,7 +25,9 @@ from clinical_extraction.schemas import (
 EXECT_DATASET = "exect_v2"
 EXECT_S0_S1_SCHEMA_LEVEL = "exect_s0_s1_field_family"
 EXECT_S0_S1_VARIANT = "exect_s0_s1_field_family_single_pass"
+EXECT_S0_S1_PRE_VOCAB_VARIANT = "exect_s0_s1_field_family_pre_vocab_single_pass"
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
+REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY = "artifact_benchmark_bridge_only"
 EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT = "exect_s0_s1_field_family_diagnosis_recall"
 EXECT_S0_S1_VERIFY_REPAIR_VARIANT = "exect_s0_s1_field_family_verify_repair"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
@@ -672,6 +674,27 @@ _GENERIC_EPILEPSY_CO_LIST_TRIGGERS = (
     "genetic generalized epilepsy",
 )
 
+_PRE_VOCAB_SEIZURE_TYPE_SURFACES = (
+    "epileptic seizures",
+    "focal seizure",
+    "focal seizures",
+    "focal seizures with altered awareness",
+    "focal to bilateral convulsive seizure",
+    "focal to bilateral convulsive seizures",
+    "generalized seizures",
+    "generalized tonic clonic seizure",
+    "generalized tonic clonic seizures",
+    "generalized tonic seizures",
+    "myoclonic seizures",
+    "occipital lobe seizures",
+    "secondary",
+    "secondary generalisation",
+    "secondary generalized",
+    "temporal lobe seizure",
+    "temporal lobe seizures",
+    "tonic clonic seizures",
+)
+
 ALLOWED_DIAGNOSIS_LABELS = frozenset(
     {
         "drug",
@@ -817,6 +840,19 @@ class ExectS0S1FieldFamilyModule(dspy.Module):
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(note_text=note_text)
+
+
+class ExectS0S1PreVocabFieldFamilyModule(dspy.Module):
+    """Single-pass extractor with audited pre-vocabulary candidate hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS0S1FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_note_with_precomputed_family_candidates(note_text)
+        )
 
 
 class ExectS0S1DiagnosisSignature(dspy.Signature):
@@ -1148,6 +1184,8 @@ def build_exect_s0_s1_module(program_variant: str = EXECT_S0_S1_VARIANT) -> dspy
         return ExectS0S1DiagnosisRecallProbeModule()
     if program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT:
         return ExectS0S1VerifyRepairModule()
+    if program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT:
+        return ExectS0S1PreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_VARIANT:
         return ExectS0S1FieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")
@@ -1296,13 +1334,21 @@ def predict_exect_records(
     model_name: str,
     prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
     program_variant: str = EXECT_S0_S1_VARIANT,
+    repair_policy: str = "none",
     progress_callback: Callable[[int, int, str], None] | None = None,
 ) -> PredictionSet:
     """Run ``module`` on ExECT records and return a shared ``PredictionSet``."""
     predictions = []
     total = len(records)
     for index, record in enumerate(records, start=1):
-        predictions.append(_predict_record(module, record, program_variant=program_variant))
+        predictions.append(
+            _predict_record(
+                module,
+                record,
+                program_variant=program_variant,
+                repair_policy=repair_policy,
+            )
+        )
         if progress_callback is not None:
             progress_callback(index, total, record.document_id)
     return PredictionSet(
@@ -1314,9 +1360,49 @@ def predict_exect_records(
             "model_provider": model_provider,
             "model_name": model_name,
             "prompt_version": prompt_version,
+            "repair_policy": repair_policy,
             "scorer_mode": EXECT_S0_S1_SCORER,
         },
     )
+
+
+def _s1_single_pass_variants() -> frozenset[str]:
+    return frozenset({EXECT_S0_S1_VARIANT, EXECT_S0_S1_PRE_VOCAB_VARIANT})
+
+
+def build_precomputed_family_candidates(note_text: str) -> dict[str, list[str]]:
+    """Build note-aware audited candidate lists for H2 pre-vocabulary injection."""
+    note_lower = note_text.lower()
+    diagnosis_candidates = sorted(ALLOWED_DIAGNOSIS_LABELS)
+    seizure_candidates = sorted(_PRE_VOCAB_SEIZURE_TYPE_SURFACES)
+    medication_candidates = sorted(
+        {
+            medication
+            for medication in _KNOWN_PRESCRIPTION_MEDICATIONS
+            if re.search(rf"\b{re.escape(medication)}\b", note_lower)
+        }
+    )
+    return {
+        "diagnosis": diagnosis_candidates,
+        "seizure_type": seizure_candidates,
+        "annotated_medication": medication_candidates,
+    }
+
+
+def format_note_with_precomputed_family_candidates(note_text: str) -> str:
+    """Inject audited candidate vocabularies before the clinical note."""
+    candidates = build_precomputed_family_candidates(note_text)
+    lines = [
+        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
+        f"diagnosis: {', '.join(candidates['diagnosis'])}",
+        f"seizure_type: {', '.join(candidates['seizure_type'])}",
+        f"annotated_medication: {', '.join(candidates['annotated_medication'])}",
+        "",
+        "---",
+        "",
+        note_text,
+    ]
+    return "\n".join(lines)
 
 
 def _predict_record(
@@ -1324,27 +1410,41 @@ def _predict_record(
     record: ExectGoldDocument,
     *,
     program_variant: str,
+    repair_policy: str = "none",
 ) -> DocumentPrediction:
     pred = module(note_text=record.text)
-    values: list[ExtractedValue] = []
 
-    diagnosis_inputs = _as_list(getattr(pred, "diagnosis", []))
-    if program_variant == EXECT_S0_S1_VARIANT:
-        diagnosis_inputs, diagnosis_header_flags = _filter_diagnosis_for_seizure_descriptor_header(
-            diagnosis_inputs,
-            record.text,
+    if program_variant in _s1_single_pass_variants():
+        bridge_stage = (
+            "post"
+            if repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
+            else "inline"
         )
-        diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
-            _augment_diagnosis_co_lists(
-                diagnosis_inputs,
-                record.text,
+        values = _build_s1_field_family_values(record, pred)
+        metadata = {
+            "program_variant": program_variant,
+            "bridge_stage": bridge_stage,
+            "repair_policy": repair_policy,
+        }
+        if program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT:
+            metadata["precomputed_candidates"] = build_precomputed_family_candidates(
+                record.text
             )
+        return DocumentPrediction(
+            document_id=record.document_id,
+            dataset=EXECT_DATASET,
+            schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
+            values=values,
+            quality_flags=record.quality_flags,
+            metadata=metadata,
         )
-    else:
-        diagnosis_raw = diagnosis_inputs
-        diagnosis_augmented = set()
-        specificity_collapse_augmented = set()
-        diagnosis_header_flags = []
+
+    values: list[ExtractedValue] = []
+    diagnosis_inputs = _as_list(getattr(pred, "diagnosis", []))
+    diagnosis_raw = diagnosis_inputs
+    diagnosis_augmented: set[str] = set()
+    specificity_collapse_augmented: set[str] = set()
+    diagnosis_header_flags: list[str] = []
     diagnoses, collapsed = _normalize_diagnoses(diagnosis_raw)
     diagnosis_evidence = _as_list(getattr(pred, "diagnosis_evidence", []))
     values.extend(
@@ -1359,42 +1459,23 @@ def _predict_record(
             extra_quality_flags=diagnosis_header_flags,
         )
     )
-    if program_variant == EXECT_S0_S1_VARIANT:
-        values.extend(
-            _seizure_type_values_for_record(
-                record=record,
-                raw_values=_as_list(getattr(pred, "seizure_type", [])),
-                evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
-            )
+    values.extend(
+        _values_for_family(
+            record=record,
+            field_name="seizure_type",
+            raw_values=_as_list(getattr(pred, "seizure_type", [])),
+            evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
         )
-    else:
-        values.extend(
-            _values_for_family(
-                record=record,
-                field_name="seizure_type",
-                raw_values=_as_list(getattr(pred, "seizure_type", [])),
-                evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
-            )
-        )
-    if program_variant == EXECT_S0_S1_VARIANT:
-        medication_raw, medication_evidence, medication_augmented = (
-            _augment_current_prescription_medications(
-                _as_list(getattr(pred, "annotated_medication", [])),
-                _as_list(getattr(pred, "annotated_medication_evidence", [])),
-                record.text,
-            )
-        )
-    else:
-        medication_raw = _as_list(getattr(pred, "annotated_medication", []))
-        medication_evidence = _as_list(getattr(pred, "annotated_medication_evidence", []))
-        medication_augmented = set()
+    )
+    medication_raw = _as_list(getattr(pred, "annotated_medication", []))
+    medication_evidence = _as_list(getattr(pred, "annotated_medication_evidence", []))
     values.extend(
         _values_for_family(
             record=record,
             field_name="annotated_medication",
             raw_values=medication_raw,
             evidence_values=medication_evidence,
-            augmented_values=medication_augmented,
+            augmented_values=set(),
         )
     )
 
@@ -1404,8 +1485,66 @@ def _predict_record(
         schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
         values=values,
         quality_flags=record.quality_flags,
-        metadata={"program_variant": program_variant},
+        metadata={"program_variant": program_variant, "repair_policy": repair_policy},
     )
+
+
+def _build_s1_field_family_values(
+    record: ExectGoldDocument,
+    pred: dspy.Prediction,
+) -> list[ExtractedValue]:
+    """Apply audited S1 benchmark bridges to a single-pass model prediction."""
+    values: list[ExtractedValue] = []
+
+    diagnosis_inputs = _as_list(getattr(pred, "diagnosis", []))
+    diagnosis_inputs, diagnosis_header_flags = _filter_diagnosis_for_seizure_descriptor_header(
+        diagnosis_inputs,
+        record.text,
+    )
+    diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
+        _augment_diagnosis_co_lists(
+            diagnosis_inputs,
+            record.text,
+        )
+    )
+    diagnoses, collapsed = _normalize_diagnoses(diagnosis_raw)
+    diagnosis_evidence = _as_list(getattr(pred, "diagnosis_evidence", []))
+    values.extend(
+        _values_for_family(
+            record=record,
+            field_name="diagnosis",
+            raw_values=diagnoses,
+            evidence_values=diagnosis_evidence,
+            collapsed_values=collapsed,
+            augmented_values=diagnosis_augmented,
+            specificity_collapse_augmented=specificity_collapse_augmented,
+            extra_quality_flags=diagnosis_header_flags,
+        )
+    )
+    values.extend(
+        _seizure_type_values_for_record(
+            record=record,
+            raw_values=_as_list(getattr(pred, "seizure_type", [])),
+            evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
+        )
+    )
+    medication_raw, medication_evidence, medication_augmented = (
+        _augment_current_prescription_medications(
+            _as_list(getattr(pred, "annotated_medication", [])),
+            _as_list(getattr(pred, "annotated_medication_evidence", [])),
+            record.text,
+        )
+    )
+    values.extend(
+        _values_for_family(
+            record=record,
+            field_name="annotated_medication",
+            raw_values=medication_raw,
+            evidence_values=medication_evidence,
+            augmented_values=medication_augmented,
+        )
+    )
+    return values
 
 
 def _family_context(note_text: str, *, target_field: str, max_sections: int) -> str:

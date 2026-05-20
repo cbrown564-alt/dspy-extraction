@@ -6,7 +6,7 @@
 **Registry:** `docs/experiment_registry.json`  
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
-**Last refreshed:** 2026-05-20, after ExECT Qwen S4 inspection/registry, S1 interleaving pre-registration, and Gan ReAct H3 rejection
+**Last refreshed:** 2026-05-20, after S1 interleaving GPT phase 1 (H1/H2 cap-25 + full validation)
 
 ---
 
@@ -73,26 +73,18 @@ Research interpretation: taxonomy is now part of experiment design. Avoid more b
 
 ## Active Work
 
-### 1. Implement and run ExECT S1 interleaving (GPT phase 1)
+### 1. ExECT field-family deterministic support map
 
-Pre-registration complete: `docs/exect_s1_interleaving_experiment_preregistration_20260520.md`
+Build the compact table described under **Ready After Active Work** (GPT/Qwen performance, deterministic roles, candidate interleaving positions). This is now the primary ExECT planning artifact after S1 interleaving GPT phase 1 closed without a promotable arm.
 
-Stub configs (implementation pending):
+### 2. Fix H1 null comparison (optional follow-up)
 
-- `configs/experiments/exect_s1_interleaving_h1_post_bridge_gpt4_1_mini.json`
-- `configs/experiments/exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini.json`
-- H3 config deferred until `exect_s0_s1_field_family_react_normalize_tools` is registered in `ExperimentConfig`
-
-L1 baseline anchor (frozen, no new run): `exect_s0_s1_validation_full_gpt4_1_mini` — 92.3% micro.
-
-Run order: cap-25 gates for new arms → full validation (40) → inspection + registry rows under `exect_s1_interleaving_gpt_validation_v1`.
-
-### 2. ExECT field-family deterministic support map
-
-Build the compact table described under **Ready After Active Work** (GPT/Qwen performance, deterministic roles, candidate interleaving positions). Can proceed in parallel with S1 implementation planning.
+S1 interleaving H1 full tied L1 at 92.3% because `_build_s1_field_family_values` applies benchmark bridges for both `repair_policy=none` and `artifact_benchmark_bridge_only`. Before Qwen phase 2 or H3, either add a bridge-free L1 scoring path or split bridge application so post-only is measurable. See `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`.
 
 ## Recently Completed (2026-05-20)
 
+- **S1 interleaving GPT phase 1 complete:** H1 cap-25/full + H2 cap-25/full; inspection `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`; registry rows under `exect_s1_interleaving_gpt_validation_v1`. H1 **hold (null)** vs L1; H2 **reject** (−4.8pp full micro); H3 deferred.
+- S1 interleaving H1/H2 program paths + cap-25/full configs (`src/clinical_extraction/programs/exect_s0_s1.py`, `scripts/run_experiment.py`)
 - ExECT Qwen S4 full inspection: `docs/exect_s4_validation_full_qwen35b_ollama_inspection_20260520.md` (`…160914Z`, 67.5% micro, +2.0pp vs GPT v1.2)
 - Registry row: `exect_s4_validation_full_qwen35b_ollama` (cap-25 row `…133930Z` remains gate-only)
 - S1 interleaving pre-registration + stub configs (see Active Work §1)
@@ -165,7 +157,10 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 | Experiment loop | Explore primarily on GPT 4.1-mini; reserve Qwen35b for selected high-value focus experiments |
 | Gan default architecture | Temporal-candidates verify-repair (`H2` + `H4`) |
 | Gan ReAct H3 | Rejected as default path; keep as negative control |
-| ExECT next experiment | S1-only interleaving, not S5 or broad architecture expansion |
+| ExECT next experiment | Field-family deterministic support map; S1 interleaving GPT phase 1 closed (H1 null, H2 reject) |
+| ExECT S1 interleaving H1 | **Hold (null)** — identical labels to frozen L1; bridge metadata only |
+| ExECT S1 interleaving H2 | **Reject** — pre-vocab regressed full micro to 87.5% (−4.8pp vs L1) |
+| ExECT S1 interleaving H3 | **Defer** — no positive signal from H1/H2 |
 | Registry policy | Taxonomy fields required for new configs or registry rows |
 | Benchmark claims | Keep separate from local validation until scorer/data blockers clear |
 | Mass historical backfill | Defer low-value exploratory Gan direct rows |
@@ -174,10 +169,10 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 
 ## Recommended Next Pull
 
-1. Implement H1 post-bridge-only program path (smallest diff vs frozen L1).
-2. Run GPT cap-25 for H1, then full validation if gates pass.
-3. Implement H2 pre-vocabulary arm; repeat cap-25 → full ladder.
-4. Defer or implement H3 tools only if H1/H2 show interleaving position matters on GPT.
+1. Build the ExECT field-family deterministic support map (medication, seizure type, diagnosis, temporality, frequency transfer candidates).
+2. Decide whether to fix the H1 null arm (bridge-free L1 baseline) before any Qwen interleaving port.
+3. Keep L1 frozen as ExECT S1 GPT default; do not iterate H2 pre-vocab without a narrow family-specific probe.
+4. Paper-ready registry matrix export remains optional methods prep.
 
 ## Long-Term Research Arc
 

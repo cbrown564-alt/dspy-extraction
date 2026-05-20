@@ -10,14 +10,14 @@
   "experiment_id": "exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini",
   "hypothesis": "Pre-injected audited diagnosis, seizure-type, and medication candidate vocabularies before single-pass extraction improve recall and normalization versus L1 prompt policy alone (H2 pre interleaving).",
   "metric_caveats": [
-    "Pre-registered interleaving arm; program path not yet implemented.",
+    "H2 pre-vocabulary arm: exect_s0_s1_field_family_pre_vocab_single_pass injects audited candidates before extraction.",
     "Benchmark-facing fields: diagnosis, seizure_type, annotated_medication only (exect_s1 scope).",
     "Compare to frozen L1 anchor exect_s0_s1_validation_full_gpt4_1_mini (92.3% micro).",
     "See docs/exect_s1_interleaving_experiment_preregistration_20260520.md."
   ],
   "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
   "output_root": "runs",
-  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "program_variant": "exect_s0_s1_field_family_pre_vocab_single_pass",
   "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
   "report_on_test_split": false,
   "schema_level": "exect_s0_s1_field_family",

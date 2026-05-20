@@ -14,6 +14,7 @@ from clinical_extraction.experiments.taxonomy import (
 )
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
+    EXECT_S0_S1_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_V3_PROMPT_VERSION,
     EXECT_S0_S1_V4_1_PROMPT_VERSION,
     EXECT_S0_S1_PROMPT_VERSION,
@@ -23,6 +24,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+    REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
 )
 from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_PROMPT_VERSION,
@@ -1559,6 +1561,48 @@ def test_react_temporal_tools_slice_config_records_taxonomy_metadata():
     assert config.taxonomy.interleaving_positions == ["tool_during", "during"]
     assert config.taxonomy.intended_decision == "reject"
     assert config.taxonomy.varied_factor == "interleaving_position"
+
+
+def test_exect_s1_interleaving_h1_config_records_post_bridge_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s1_interleaving_h1_post_bridge_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s1_interleaving_h1_post_bridge_gpt4_1_mini"
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.controls.repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
+    assert config.taxonomy is not None
+    assert config.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+    assert config.taxonomy.comparison_group == "exect_s1_interleaving_gpt_validation_v1"
+
+
+def test_exect_s1_interleaving_h2_config_records_pre_vocab_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini"
+    assert config.program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT
+    assert config.controls.context_policy == "full_note_plus_precomputed_family_candidates"
+    assert config.controls.repair_policy == "none"
+    assert config.taxonomy is not None
+    assert config.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
+
+
+def test_exect_s1_interleaving_cap25_configs_record_gates():
+    h1 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini.json"
+        )
+    )
+    h2 = load_experiment_config(
+        Path("configs/experiments/exect_s1_interleaving_h2_pre_vocab_cap25_gpt4_1_mini.json")
+    )
+
+    assert h1.max_records == 25
+    assert h2.max_records == 25
+    assert h1.controls.repair_policy == REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY
+    assert h2.program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT
 
 
 def test_experiment_config_rejects_conflicting_taxonomy_and_exemption():

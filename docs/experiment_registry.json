@@ -7147,6 +7147,340 @@
         "gan_s0_architecture_gpt_validation_v1"
       ],
       "comparison_caveat": "Clean hosted full-validation architecture comparison against synthesis and temporal-candidates on the same Gan validation split/scorer."
+    },
+    {
+      "experiment_id": "exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "benchmark_bridge",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_interleaving_gpt_validation_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "interleaving_position",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini_20260520T185424Z",
+      "outcome": "exploratory",
+      "decision_doc": "docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "ExECT S1 interleaving matrix; compare only within exect_s1_interleaving_gpt_validation_v1.",
+        "Frozen L1 anchor: exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro).",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_interleaving_h1_post_bridge_cap25_gpt4_1_mini_20260520T185424Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9575757575757576
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "config_paths": null,
+      "notes": "Cap-25 gate for H1 post-bridge arm; matches L1 cap-25 micro (95.8%).",
+      "comparison_groups": [
+        "exect_s1_interleaving_gpt_validation_v1"
+      ],
+      "comparison_caveat": "Hold varied factor to interleaving_position; do not compare to S2-S4 ladder pooled micro."
+    },
+    {
+      "experiment_id": "exect_s1_interleaving_h1_post_bridge_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "benchmark_bridge",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_interleaving_gpt_validation_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "interleaving_position",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s1_interleaving_h1_post_bridge_gpt4_1_mini_20260520T185747Z",
+      "outcome": "hold",
+      "decision_doc": "docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "ExECT S1 interleaving matrix; compare only within exect_s1_interleaving_gpt_validation_v1.",
+        "Frozen L1 anchor: exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro).",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_interleaving_h1_post_bridge_gpt4_1_mini_20260520T185747Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9230769230769231
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "config_paths": null,
+      "notes": "Null vs frozen L1: identical normalized labels on all 40 records; repair_policy changes metadata only until bridge path is split.",
+      "comparison_groups": [
+        "exect_s1_interleaving_gpt_validation_v1"
+      ],
+      "comparison_caveat": "Hold varied factor to interleaving_position; do not compare to S2-S4 ladder pooled micro."
+    },
+    {
+      "experiment_id": "exect_s1_interleaving_h2_pre_vocab_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "controlled_vocabulary_filter",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "candidate_injected",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "list_constrained",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_interleaving_gpt_validation_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "interleaving_position",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s1_interleaving_h2_pre_vocab_cap25_gpt4_1_mini_20260520T185434Z",
+      "outcome": "exploratory",
+      "decision_doc": "docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "ExECT S1 interleaving matrix; compare only within exect_s1_interleaving_gpt_validation_v1.",
+        "Frozen L1 anchor: exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro).",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_interleaving_h2_pre_vocab_cap25_gpt4_1_mini_20260520T185434Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9090909090909091
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "config_paths": null,
+      "notes": "Cap-25 gate passed schema/evidence but underperformed L1 cap-25 by 4.9pp micro.",
+      "comparison_groups": [
+        "exect_s1_interleaving_gpt_validation_v1"
+      ],
+      "comparison_caveat": "Hold varied factor to interleaving_position; do not compare to S2-S4 ladder pooled micro."
+    },
+    {
+      "experiment_id": "exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "controlled_vocabulary_filter",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "candidate_injected",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "list_constrained",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_interleaving_gpt_validation_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "interleaving_position",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini_20260520T185755Z",
+      "outcome": "reject",
+      "decision_doc": "docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "ExECT S1 interleaving matrix; compare only within exect_s1_interleaving_gpt_validation_v1.",
+        "Frozen L1 anchor: exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro).",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_interleaving_h2_pre_vocab_gpt4_1_mini_20260520T185755Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.875
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "config_paths": null,
+      "notes": "Pre-vocab injection regressed full micro to 87.5% (-4.8pp vs L1); seizure F1 79.2%.",
+      "comparison_groups": [
+        "exect_s1_interleaving_gpt_validation_v1"
+      ],
+      "comparison_caveat": "Hold varied factor to interleaving_position; do not compare to S2-S4 ladder pooled micro."
     }
   ]
 }

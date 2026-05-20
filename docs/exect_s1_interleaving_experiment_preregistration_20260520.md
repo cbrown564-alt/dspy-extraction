@@ -1,7 +1,7 @@
 # ExECT S1-Only Interleaving Experiment — Pre-Registration
 
 Date: 2026-05-20  
-Status: **Pre-registered** (configs stubbed; implementation pending)  
+Status: **Completed (GPT phase 1)** — inspection `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`  
 Related: `docs/kanban_plan.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/experiment_taxonomy_schema.md`
 
 ## Research question
@@ -95,9 +95,10 @@ This is the ExECT counterpart to the Gan hard-slice interleaving matrix (`gan_s0
 
 ## Implementation checklist
 
-- [ ] Implement H1 post-bridge-only program path (artifact normalization hook)  
-- [ ] Implement H2 pre-vocabulary program variant + candidate builders  
+- [x] Implement H1 post-bridge-only program path (`repair_policy=artifact_benchmark_bridge_only`, `bridge_stage=post` metadata)  
+- [x] Implement H2 pre-vocabulary program variant + candidate builders (`exect_s0_s1_field_family_pre_vocab_single_pass`)  
 - [ ] Implement H3 bounded ReAct tools module (or defer if Gan-negative-control is sufficient)  
-- [ ] Add cap-25 configs for H1/H2/H3  
-- [ ] Run GPT cap-25 → full ladder  
-- [ ] Write inspection docs + registry rows
+- [x] Add cap-25 configs for H1/H2  
+- [x] Run GPT cap-25 → full ladder  
+- [x] Write inspection docs + registry rows  
+- [ ] Fix H1 null comparison (bridge-free L1 or true post-only bridge path) before Qwen phase 2
