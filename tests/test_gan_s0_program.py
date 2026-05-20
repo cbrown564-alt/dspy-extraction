@@ -5,6 +5,7 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
 from clinical_extraction.programs.gan_frequency_s0 import (
+    _guard_evidence_text,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_FIELD,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
@@ -409,6 +410,93 @@ def test_gan_s0_module_strips_prompt_footer_from_evidence():
     assert value.evidence[0].text == "She reports one seizure per month."
     assert value.evidence[0].start == note_text.index("She reports one seizure per month.")
     assert "evidence_repaired:prompt_footer_stripped" in value.quality_flags
+
+
+def test_guard_evidence_text_strips_outer_double_quotes():
+    note_text = (
+        "Over the past six months; he continues to suffer one to two "
+        "generalised tonic-clonic seizures per month, with a longest "
+        "seizure-free interval of two weeks."
+    )
+    quoted = (
+        '"he continues to suffer one to two generalised tonic-clonic '
+        'seizures per month"'
+    )
+
+    repaired, flags = _guard_evidence_text(note_text, quoted)
+
+    assert repaired == (
+        "he continues to suffer one to two generalised tonic-clonic seizures per month"
+    )
+    assert repaired in note_text
+    assert "evidence_repaired:outer_quotes_stripped" in flags
+
+
+def test_guard_evidence_text_selects_locatable_ellipsis_segment():
+    note_text = (
+        "facial twitching. A second event occurred in Italy the following "
+        "July 2019, once more during the night, lasting four minutes. "
+        "Since returning to the UK, there have been no further events reported."
+    )
+    spliced = (
+        '"A second event occurred in Italy the following July 2019... '
+        'Since returning to the UK, there have been no further events reported."'
+    )
+
+    repaired, flags = _guard_evidence_text(note_text, spliced)
+
+    assert repaired in note_text
+    assert repaired.startswith("Since returning to the UK")
+    assert "evidence_repaired:outer_quotes_stripped" in flags
+    assert "evidence_repaired:ellipsis_segment_selected" in flags
+
+
+def test_guard_evidence_text_prefers_longest_temporal_candidate_fallback():
+    note_text = (
+        "Seizure history: His initial event was in April 2019 in Germany, arising "
+        "from sleep. He awoke with jerking. A second event occurred in Italy the "
+        "following July 2019, once more during the night, lasting four minutes."
+    )
+    bad_summary = (
+        '"A second event occurred in Italy the following July 2019... '
+        'Since returning to the UK, there have been no further events reported."'
+    )
+    candidate_span = (
+        "His initial event was in April 2019 in Germany, arising from sleep. "
+        "He awoke with jerking. A second event occurred in Italy the following "
+        "July 2019, once more during the night, lasting four minutes."
+    )
+
+    repaired, flags = _guard_evidence_text(
+        note_text,
+        bad_summary,
+        fallback_evidence_texts=[candidate_span],
+    )
+
+    assert repaired == candidate_span
+    assert "evidence_repaired:temporal_candidate_fallback" in flags
+
+
+def test_guard_evidence_text_repairs_gpt_temporal_cap25_failure_snippets():
+    by_id = {record.record_id: record for record in load_gan_records()}
+    cases = [
+        (
+            "gan_12679",
+            '"he continues to suffer one to two generalised tonic-clonic seizures per month"',
+        ),
+        (
+            "gan_16251",
+            '"She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun"',
+        ),
+        (
+            "gan_16825",
+            '"In October he had six nocturnal seizures"',
+        ),
+    ]
+    for record_id, quoted in cases:
+        record = by_id[record_id]
+        repaired, _flags = _guard_evidence_text(record.note_text, quoted)
+        assert repaired in record.note_text, record_id
 
 
 def test_gan_s0_module_truncates_evidence_to_longest_note_prefix():

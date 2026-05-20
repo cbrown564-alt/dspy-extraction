@@ -24,7 +24,15 @@ Use this skill when an experiment moves from code/config into model execution or
    - Qwen3.5:9b may be used to test `ChainOfThought + BootstrapFewShot` because it should fit in GPU VRAM, but that is a secondary workstream.
 5. Start with a capped run when changing the program, prompt policy, optimizer, provider, model, split, or structured-output strategy.
 6. For Qwen3.6:35b, prefer direct structured extraction without model-visible reasoning unless reasoning is the experimental factor.
-7. Inspect artifacts before scaling:
+7. **For local Ollama runs on Windows (Qwen3.6:35b and other long jobs), launch outside Cursor/IDE background shells.** Cursor background terminals have repeatedly stalled or killed cap-25/full runs (log frozen at `1/N` or ~`20/25`, Python CPU flat while Ollama stays loaded). This is a process-tree issue, not a bad experiment config.
+   - **Do not** start long local runs via Cursor agent background shells or `block_until_ms: 0` terminal jobs.
+   - **Do** use the repo detached launchers: `scripts/run_exect_s*_cap25_qwen35b.ps1` / `run_exect_s*_full_qwen35b.ps1` with logging under `runs/overnight_logs/`.
+   - **Do** spawn those launchers via `Start-Process` so they are not children of the IDE terminal: `scripts/start_exect_s4_cap25_qwen35b_detached.ps1`, `scripts/start_exect_s4_full_qwen35b_detached.ps1` (mirror for other steps as added).
+   - **Or** run the launcher directly from an external PowerShell window.
+   - **Monitor** via log tail, not terminal attachment: `Get-Content runs\overnight_logs\<run>_*.log -Tail 20 -Wait`. Progress prints at records 1, 10, 20, and N only — silence for several minutes between lines is normal on live inference.
+   - **Stall signal:** log mtime unchanged for 30+ min past record 1 with flat Python CPU → kill and relaunch detached; partial predictions may remain in DSPy disk cache.
+   - **Ollama contention:** do not overlap long ExECT ladder steps with Gan ReAct or other local Qwen jobs on the same machine.
+8. Inspect artifacts before scaling:
    - `metadata.json`
    - `config.json`
    - `prompts.json`
@@ -32,8 +40,8 @@ Use this skill when an experiment moves from code/config into model execution or
    - `metrics.json`
    - `errors.json`
    - `artifacts/compiled_state.json`, when present
-8. Promote to full validation only if the capped run clears the explicit gate for schema validity, evidence support, latency feasibility, and the target benchmark-facing metric.
-9. After a full validation run, write or update an error-read note and refresh `docs/kanban_plan.md`.
+9. Promote to full validation only if the capped run clears the explicit gate for schema validity, evidence support, latency feasibility, and the target benchmark-facing metric.
+10. After a full validation run, write or update an error-read note and refresh `docs/kanban_plan.md`.
 
 ## Reporting Rules
 
@@ -55,6 +63,20 @@ Use existing scripts and configs rather than ad hoc runners:
 ```bash
 uv run python scripts/run_experiment.py --experiment <config> --env-file .env --dry-run
 uv run python scripts/run_experiment.py --experiment <config> --env-file .env
+```
+
+**Local Qwen on Windows — dry run and smokes only in IDE terminals; cap-25/full via detached PS:**
+
+```powershell
+# OK in IDE / agent shell (no model calls or very short)
+uv run python scripts/run_experiment.py --experiment <config> --env-file .env --dry-run
+
+# Long Ollama runs — use Start-Process wrapper or external PowerShell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_exect_s4_cap25_qwen35b_detached.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start_exect_s4_full_qwen35b_detached.ps1
+
+# Monitor (any shell)
+Get-Content runs\overnight_logs\exect_s4_cap25_qwen35b_*.log -Tail 20 -Wait
 ```
 
 Run focused tests after code changes that affect experiment contracts:

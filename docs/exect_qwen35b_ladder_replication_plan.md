@@ -51,7 +51,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_overnight_exect_
 
 Logs: `runs/overnight_logs/exect_qwen35b_ladder_phases_0_1_2_<timestamp>.log` and `.summary.txt`.
 
-**Ollama scheduling:** run after **Gan ReAct slice** completes; may run **in parallel** with **GPT temporal-candidates cap-25** (hosted, no Ollama).
+**Ollama scheduling (2026-05-20 grill):** run **ExECT Qwen S4 cap-25/full first** on dedicated Ollama; **Gan ReAct slice after** S4 full + `docs/exect_s4_validation_full_qwen35b_ollama_inspection_*.md`. Hosted **GPT temporal-candidates** cap-25/full may run **in parallel** with S4 (no Ollama); does not require ReAct completion.
 
 ### Phase 0 — Contract (12 calls)
 
@@ -81,7 +81,7 @@ Per level in order S2 → S3 → S4 (dependencies in prompt anchors):
 | 2a | `exect_s2_validation_cap25_qwen35b_ollama` | 25 |
 | 2b | `exect_s2_validation_full_qwen35b_ollama` | 40 |
 | 2c | `exect_s3_validation_cap25_qwen35b_ollama` | 25 |
-| 2d | `exect_s3_validation_full_qwen35b_ollama` | 40 |
+| 2d | `exect_s3_validation_full_qwen35b_ollama` | 40 | **Done** `…092244Z` 72.2% micro (+0.1pp vs GPT `…235439Z`) — `docs/exect_s3_validation_full_qwen35b_ollama_inspection_20260520.md` |
 | 2e | `exect_s4_validation_cap25_qwen35b_ollama` | 25 |
 | 2f | `exect_s4_validation_full_qwen35b_ollama` | 40 |
 

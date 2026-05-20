@@ -1,0 +1,32 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair with deterministic temporal-candidate hints and v1.1 candidate-gated repair guards"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails",
+  "hypothesis": "Temporal-candidates verify-repair v1.1 on GPT 4.1-mini full validation improves monthly frequency versus verify-repair v2 full anchor (65.4% monthly at runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z) while maintaining schema validity and evidence support after cap-25 promotion gates clear.",
+  "metric_caveats": [
+    "Launch immediately when cap-25 promotion gates pass (monthly >=40%, schema 100%, evidence >=90%, no evidence-regression vs verify-repair cap-25 at runs/gan_s0_verify_repair_cap25_gpt4_1_mini_20260519T084511Z).",
+    "Cap-25 hold reference: runs/gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_cap25_guardrails_validation_20260520T125302Z (44% monthly, 100% schema, 84% evidence).",
+    "Compare benchmark-facing metrics to hosted verify-repair v2 full runs/gan_s0_verify_repair_full_validation_gpt4_1_mini_20260519T084732Z (65.4% monthly, 92.7% evidence) and Qwen temporal v1.1 full runs/gan_s0_qwen35b_temporal_candidates_verify_repair_full_validation_guardrails_20260519T230324Z (65.8% monthly, 100% evidence).",
+    "Temporal candidates are deterministic diagnostic hints; gan_frequency_deterministic_v1 scoring is unchanged.",
+    "Verify-repair doubles model calls versus direct extraction; latency is not comparable to direct-only runs.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+    "Normalized-label exact, schema validity, abstention, evidence support, temporal-candidate coverage, and verifier decisions are diagnostic.",
+    "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+}

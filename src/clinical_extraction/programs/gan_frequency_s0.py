@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import re
-from collections.abc import Callable
+from collections.abc import Callable, Iterable
 from pathlib import Path
 from typing import Any, Optional
 
@@ -1593,7 +1593,19 @@ def _predict_record(
     if label != normalized_label:
         quality_flags.append("normalized_label_repaired")
 
-    evidence_text, evidence_flags = _guard_evidence_text(record.note_text, evidence_text)
+    fallback_evidence_texts: list[str] = []
+    if hasattr(pred, "temporal_candidate_records") and pred.temporal_candidate_records:
+        for item in pred.temporal_candidate_records:
+            if isinstance(item, dict):
+                candidate_evidence = item.get("evidence_text")
+                if isinstance(candidate_evidence, str) and candidate_evidence.strip():
+                    fallback_evidence_texts.append(candidate_evidence)
+
+    evidence_text, evidence_flags = _guard_evidence_text(
+        record.note_text,
+        evidence_text,
+        fallback_evidence_texts=fallback_evidence_texts or None,
+    )
     quality_flags.extend(evidence_flags)
 
     metadata: dict[str, Any] = {"program_variant": program_variant}
@@ -1769,9 +1781,40 @@ def _apply_canonical_surface_repairs(label: str) -> str:
     return normalized
 
 
+_EVIDENCE_ELLIPSIS_RE = re.compile(r"\.\.\.|…")
+
+
+def _strip_outer_quotes_for_evidence(text: str) -> tuple[str, bool]:
+    stripped = text.strip()
+    if len(stripped) >= 2 and stripped[0] in '"\'' and stripped[-1] == stripped[0]:
+        return stripped[1:-1].strip(), True
+    return stripped, False
+
+
+def _ellipsis_segments(text: str) -> list[str]:
+    return [
+        segment.strip()
+        for segment in _EVIDENCE_ELLIPSIS_RE.split(text)
+        if segment.strip()
+    ]
+
+
+def _longest_locatable_in_note(note_text: str, candidate: str) -> str | None:
+    if not candidate:
+        return None
+    if candidate in note_text:
+        return candidate
+    prefix = candidate
+    while prefix and prefix not in note_text:
+        prefix = prefix[:-1].rstrip()
+    return prefix or None
+
+
 def _guard_evidence_text(
     note_text: str,
     evidence_text: str | None,
+    *,
+    fallback_evidence_texts: Iterable[str] | None = None,
 ) -> tuple[str | None, list[str]]:
     if not evidence_text:
         return None, []
@@ -1786,17 +1829,41 @@ def _guard_evidence_text(
             if "evidence_repaired:prompt_footer_stripped" not in flags:
                 flags.append("evidence_repaired:prompt_footer_stripped")
 
+    unquoted, had_outer_quotes = _strip_outer_quotes_for_evidence(cleaned)
+    if had_outer_quotes:
+        flags.append("evidence_repaired:outer_quotes_stripped")
+        cleaned = unquoted
+
     if cleaned in note_text:
         return cleaned, flags
 
-    prefix = cleaned
-    while prefix and prefix not in note_text:
-        prefix = prefix[:-1].rstrip()
-    if prefix and prefix != cleaned:
-        flags.append("evidence_repaired:truncated_to_note_span")
-        return prefix, flags
+    locate_candidates: list[tuple[str, str]] = [("primary", cleaned)]
+    for segment in _ellipsis_segments(cleaned):
+        locate_candidates.append(("ellipsis", segment))
+    for fallback in fallback_evidence_texts or []:
+        fallback_text = fallback.strip()
+        if fallback_text:
+            locate_candidates.append(("temporal_candidate", fallback_text))
 
-    return cleaned, flags
+    best: str | None = None
+    best_source: str | None = None
+    for source, candidate in locate_candidates:
+        located = _longest_locatable_in_note(note_text, candidate)
+        if located and (best is None or len(located) > len(best)):
+            best = located
+            best_source = source
+
+    if not best:
+        return cleaned, flags
+
+    if best_source == "ellipsis":
+        flags.append("evidence_repaired:ellipsis_segment_selected")
+    elif best_source == "temporal_candidate":
+        flags.append("evidence_repaired:temporal_candidate_fallback")
+    elif best_source == "primary" and best != cleaned:
+        flags.append("evidence_repaired:truncated_to_note_span")
+
+    return best, flags
 
 
 def _format_number(value: float) -> str:

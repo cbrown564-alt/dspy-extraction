@@ -29,6 +29,7 @@ Available project skills:
 - `dspy-experiment-design`: use when creating or changing DSPy programs, experiment configs, optimizer runs, ablations, model comparisons, or run tracking.
 - `plan-to-kanban`: use to convert loose plans into dependency-aware Kanban boards with blockers and parallelization opportunities.
 - `research-synthesis`: use to convert engineering work, results, architecture notes, or Kanban progress into research logs or standalone research writeups.
+- `research-supervisor-review`: use to review the repo like a critical research supervisor, assess alignment, rigor, scope, reproducibility, and recommend the next high-value work.
 - `tdd`: use for behavior changes where tests should drive the implementation.
 - `grill-with-docs`: use to stress-test a plan against repo docs and existing patterns before implementation.
 

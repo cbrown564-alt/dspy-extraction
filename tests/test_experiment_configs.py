@@ -1253,6 +1253,52 @@ def test_qwen35b_temporal_candidates_verify_repair_cap25_config():
     assert "37.5%" in " ".join(config.metric_caveats)
 
 
+def test_gpt4_1_mini_temporal_candidates_verify_repair_cap25_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_cap25_guardrails_validation.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_cap25_guardrails_validation"
+    )
+    assert config.model_config_path == Path("configs/models/gan_s0_gpt4_1_mini.json")
+    assert config.max_records == 25
+    assert (
+        config.program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+    )
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+    assert config.record_ids is None
+    assert "34.8%" in " ".join(config.metric_caveats)
+
+
+def test_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_config():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails"
+    )
+    assert config.model_config_path == Path("configs/models/gan_s0_gpt4_1_mini.json")
+    assert config.max_records is None
+    assert (
+        config.program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+    )
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+    assert config.record_ids is None
+    assert "65.4%" in " ".join(config.metric_caveats)
+
+
 def test_qwen35b_temporal_candidates_verify_repair_full_validation_config():
     config = load_experiment_config(
         Path(

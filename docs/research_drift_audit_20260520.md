@@ -154,11 +154,11 @@ Work has shifted from **optimization** (May 19: Gan temporal + parallel ExECT la
 
 ## Recommended Next Pull
 
-**Continue (in order):**
+**Continue (in order)** — aligned with `docs/kanban_plan.md` grill sync 2026-05-20:
 
-1. Let ExECT Qwen S3/S4 queue finish — read vs frozen GPT anchors; report schema validity and evidence separately from F1.
-2. **Gan ReAct slice** on dedicated Ollama — exit = non-regression + E-guard vs B2 `…235058Z`.
-3. **GPT temporal-candidates cap-25** after ReAct pass — tiered gate per kanban.
+1. **ExECT Qwen S4 cap-25/full** on dedicated Ollama — cap-25 metrics/gates; full inspection doc before ReAct.
+2. **GPT temporal-candidates** (hosted, parallel with S4) — cap `…125302Z` **hold** (84% evidence); full 299 on immediate promote when tier gates pass.
+3. **Gan ReAct slice** after S4 inspection — E-guard = infrequent quartet parity vs B2 `…235058Z` + global ≥13/14 monthly.
 
 **Do not start yet:**
 
