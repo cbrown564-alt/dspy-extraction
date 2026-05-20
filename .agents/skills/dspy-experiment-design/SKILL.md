@@ -41,6 +41,32 @@ Every experiment should make these explicit:
 - scorer and metric mode
 - output artifact paths
 
+## Hybrid Taxonomy (required on new configs)
+
+Add a `taxonomy` block to every new `configs/experiments/*.json` file, or add the
+experiment to `docs/experiment_registry.json` in the same change. Controlled
+values live in `docs/experiment_taxonomy_schema.md`.
+
+Minimum config fields:
+
+- `dataset`
+- `schema_complexity`
+- `program_architecture`
+- `hybrid_balance_class`
+- `interleaving_positions`
+- `varied_factor`
+- `comparison_group`
+- `intended_decision`
+
+When writing a promotion, freeze, hold, or reject note, include a **Taxonomy**
+section with the same dimensions plus `clinical_task_family` and `outcome`.
+
+After adding or editing configs or registry rows, run:
+
+```powershell
+uv run python scripts/validate_experiment_taxonomy.py --errors-only
+```
+
 ## Program Variant Guidance
 
 Use named variants rather than anonymous prompt edits:

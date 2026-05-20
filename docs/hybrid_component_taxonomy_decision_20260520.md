@@ -394,7 +394,7 @@ Examples:
 
 Rows outside a shared comparison group should not be compared without explicit caveats.
 
-### Step 5: Require taxonomy tags for new experiment configs
+### Step 5: Require taxonomy tags for new experiment configs (done 2026-05-20)
 
 Add taxonomy metadata to new experiment configs or to the registry immediately when a config is added. At minimum:
 
@@ -409,7 +409,7 @@ Add taxonomy metadata to new experiment configs or to the registry immediately w
 
 This converts the taxonomy from retrospective cleanup into experiment design discipline.
 
-### Step 6: Update decision docs to cite taxonomy fields
+### Step 6: Update decision docs to cite taxonomy fields (done 2026-05-20)
 
 Promotion, freeze, hold, and reject docs should include a short "Taxonomy" block:
 
@@ -426,7 +426,7 @@ Outcome:
 
 This makes decision provenance analyzable later.
 
-### Step 7: Add lightweight validation
+### Step 7: Add lightweight validation (done 2026-05-20)
 
 Add tests or a small script that checks:
 

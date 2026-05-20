@@ -39,6 +39,11 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
 )
+from clinical_extraction.experiments.taxonomy import (
+    ExperimentTaxonomy,
+    TaxonomyExemptionValue,
+    taxonomy_covers_config,
+)
 from clinical_extraction.schemas import FrozenModel
 
 
@@ -199,6 +204,22 @@ class ExperimentConfig(FrozenModel):
     report_on_test_split: bool = False
     metric_caveats: list[str] = Field(default_factory=list)
     optimizer: OptimizerConfig | None = None
+    taxonomy: ExperimentTaxonomy | None = None
+    taxonomy_exemption: TaxonomyExemptionValue | None = None
+
+    @model_validator(mode="after")
+    def validate_taxonomy_fields(self) -> ExperimentConfig:
+        if self.taxonomy is not None and self.taxonomy_exemption is not None:
+            raise ValueError(
+                "Experiment configs must set either taxonomy or taxonomy_exemption, not both."
+            )
+        if self.taxonomy is not None and not taxonomy_covers_config(
+            self.dataset, self.taxonomy
+        ):
+            raise ValueError(
+                "taxonomy.dataset must match the top-level dataset field on the config."
+            )
+        return self
 
     @model_validator(mode="after")
     def validate_experiment_context(self) -> ExperimentConfig:

@@ -6,6 +6,17 @@ Date: 2026-05-19
 
 Compare the hosted-path Gan S0 GEPA capped runs against the current synthesis-backed BootstrapFewShot baseline on prompt length, label metrics, evidence support, and runtime. Use the comparison to decide whether to scale GEPA on GPT 4.1-mini or pivot to a verifier/repair architecture.
 
+## Taxonomy
+
+- **Dataset:** gan_2026
+- **Schema complexity:** gan_s0
+- **Clinical task family:** frequency
+- **Hybrid balance class:** L1_llm_constrained
+- **Interleaving positions:** during, eval_only
+- **Varied factor:** optimizer_strategy
+- **Comparison group:** gan_s0_architecture_gpt_validation_v1
+- **Outcome:** reject
+
 ## Baseline: Synthesis-Backed BootstrapFewShot
 
 Artifact: `runs/gan_s0_synthesis_bootstrap_full_validation_gpt4_1_mini_20260518T065115Z`  

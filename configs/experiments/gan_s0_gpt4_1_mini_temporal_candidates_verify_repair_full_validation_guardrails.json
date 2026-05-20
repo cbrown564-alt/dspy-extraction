@@ -28,5 +28,23 @@
   "scorer_mode": "gan_frequency_deterministic_v1",
   "split_file": "data/splits/gan_2026_splits.json",
   "split_name": "gan_2026_fixed_v1:validation",
-  "structured_output_strategy": "provider_json_schema_with_pydantic_validation"
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_architecture_gpt_validation_v1",
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "intended_decision": "promote",
+    "interleaving_positions": [
+      "pre",
+      "during",
+      "post"
+    ],
+    "program_architecture": "temporal_candidates_verify_repair",
+    "schema_complexity": "gan_s0",
+    "varied_factor": "program_architecture"
+  }
 }

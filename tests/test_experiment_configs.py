@@ -8,6 +8,10 @@ from clinical_extraction.experiments.config import (
     ExperimentConfig,
     load_experiment_config,
 )
+from clinical_extraction.experiments.taxonomy import (
+    ExperimentTaxonomy,
+    registry_experiment_ids,
+)
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_V3_PROMPT_VERSION,
@@ -1497,3 +1501,83 @@ def test_exect_qwen35b_model_config_raises_output_budget_for_structured_extracti
     assert payload["model"] == "qwen3.6:35b"
     assert payload["max_tokens"] >= 8192
     assert payload["extra_body"]["options"]["num_ctx"] >= 32768
+
+
+EXPERIMENT_CONFIG_DIR = Path("configs/experiments")
+REGISTRY_IDS = registry_experiment_ids()
+
+
+@pytest.mark.parametrize(
+    "filename",
+    sorted(path.name for path in EXPERIMENT_CONFIG_DIR.glob("*.json")),
+)
+def test_experiment_config_has_inline_taxonomy_or_registry_coverage(filename: str):
+    config = load_experiment_config(EXPERIMENT_CONFIG_DIR / filename)
+
+    if config.taxonomy is not None:
+        assert config.taxonomy_exemption is None
+        assert config.taxonomy.dataset == config.dataset
+        return
+
+    if config.taxonomy_exemption is not None:
+        assert config.taxonomy is None
+        return
+
+    assert config.experiment_id in REGISTRY_IDS, (
+        f"{filename} must include a taxonomy block, taxonomy_exemption, or a matching "
+        f"row in docs/experiment_registry.json."
+    )
+
+
+def test_gpt_temporal_full_validation_config_records_taxonomy_metadata():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_gpt4_1_mini_temporal_candidates_verify_repair_full_validation_guardrails.json"
+        )
+    )
+
+    assert config.taxonomy is not None
+    assert config.taxonomy.schema_complexity == "gan_s0"
+    assert config.taxonomy.program_architecture == "temporal_candidates_verify_repair"
+    assert "H2_pre_deterministic" in config.taxonomy.hybrid_balance_class
+    assert config.taxonomy.comparison_group == "gan_s0_architecture_gpt_validation_v1"
+    assert config.taxonomy.intended_decision == "promote"
+    assert config.taxonomy.varied_factor == "program_architecture"
+
+
+def test_react_temporal_tools_slice_config_records_taxonomy_metadata():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails.json"
+        )
+    )
+
+    assert config.taxonomy is not None
+    assert config.taxonomy.hybrid_balance_class == ["H3_interleaved_tool_hybrid"]
+    assert config.taxonomy.interleaving_positions == ["tool_during", "during"]
+    assert config.taxonomy.intended_decision == "pending"
+    assert config.taxonomy.varied_factor == "interleaving_position"
+
+
+def test_experiment_config_rejects_conflicting_taxonomy_and_exemption():
+    payload = json.loads(
+        Path("configs/experiments/gan_s0_baseline_gpt4_1_mini.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    payload["taxonomy"] = {
+        "dataset": "gan_2026",
+        "schema_complexity": "gan_s0",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["L1_llm_constrained"],
+        "interleaving_positions": ["during"],
+        "varied_factor": "program_architecture",
+        "comparison_group": "gan_s0_architecture_gpt_validation_v1",
+        "intended_decision": "exploratory",
+    }
+    payload["taxonomy_exemption"] = "legacy_registry"
+
+    with pytest.raises(ValidationError):
+        ExperimentConfig.model_validate(payload)

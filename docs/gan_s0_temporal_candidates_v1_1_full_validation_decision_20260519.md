@@ -7,6 +7,17 @@ Status: **Tier 1 — Promote** (full validation complete `…230324Z`)
 
 Assign promotion tier for `gan_frequency_s0_temporal_candidates_verify_repair_v1_1` after the full Gan validation run completes, using a pre-registered packet (grill-with-docs 2026-05-19).
 
+## Taxonomy
+
+- **Dataset:** gan_2026
+- **Schema complexity:** gan_s0
+- **Clinical task family:** frequency
+- **Hybrid balance class:** H2_pre_deterministic, H4_deterministic_first_llm_adjudicates
+- **Interleaving positions:** pre, during, post
+- **Varied factor:** program_architecture
+- **Comparison group:** gan_s0_architecture_qwen_validation_v1
+- **Outcome:** promote
+
 ## Artifacts
 
 | Role | Path |

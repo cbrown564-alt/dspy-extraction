@@ -9,6 +9,17 @@ Assign the hosted Gan S0 default path after porting `gan_frequency_s0_temporal_c
 
 **Scope:** Hosted GPT track only. Local Qwen Tier 1 (`…230324Z`) and the ReAct bounded probe remain on separate promotion criteria.
 
+## Taxonomy
+
+- **Dataset:** gan_2026
+- **Schema complexity:** gan_s0
+- **Clinical task family:** frequency
+- **Hybrid balance class:** H2_pre_deterministic, H4_deterministic_first_llm_adjudicates
+- **Interleaving positions:** pre, during, post
+- **Varied factor:** program_architecture
+- **Comparison group:** gan_s0_architecture_gpt_validation_v1
+- **Outcome:** promote
+
 ## Artifacts
 
 | Role | Path |
