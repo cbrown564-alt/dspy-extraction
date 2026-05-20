@@ -2,7 +2,7 @@
 
 Date: 2026-05-20  
 Status: Planning note after S1 interleaving Qwen validation v1 closed as reject port  
-Related: `docs/kanban_plan.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, `docs/taxonomy_primitives_workstream_plan_20260520.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`
+Related: `docs/kanban_plan.md`, `docs/exect_negative_probe_synthesis_20260520.md`, `docs/taxonomy_primitive_coverage_audit_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, `docs/taxonomy_primitives_workstream_plan_20260520.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`
 
 ## Context
 
@@ -17,8 +17,8 @@ Research question: What can we safely claim from the completed taxonomy-governed
 Deliverables:
 
 - Aligned steering docs with no stale next-run queue.
-- A negative-probe synthesis note covering the closed ExECT arms.
-- Primitive coverage audit that labels implemented primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`.
+- A negative-probe synthesis note covering the closed ExECT arms: `docs/exect_negative_probe_synthesis_20260520.md`.
+- Primitive coverage audit that labels implemented primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`: `docs/taxonomy_primitive_coverage_audit_20260520.md`.
 - Refreshed registry matrix if registry metadata changes.
 
 Definition of done:
@@ -75,6 +75,6 @@ Definition of done:
 
 ## Recommended Next Pull
 
-1. Complete the Phase 1 documentation consolidation.
-2. Audit primitive coverage against closed experiments.
+1. Align the primitive catalog with the negative-probe synthesis and primitive coverage audit.
+2. Preregister the selected Phase 2 path, or explicitly record a no-run synthesis pause.
 3. Decide whether Phase 2 starts with Qwen seizure-gap error analysis, S4 frequency redesign, medication-temporality fallback, or a synthesis pause.

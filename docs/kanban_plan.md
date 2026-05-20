@@ -2,6 +2,8 @@
 
 **Core direction:** `docs/outline.md`  
 **Current synthesis:** `docs/experiment_taxonomy_research_synthesis_20260520.md`  
+**Negative-probe synthesis:** `docs/exect_negative_probe_synthesis_20260520.md`  
+**Primitive coverage audit:** `docs/taxonomy_primitive_coverage_audit_20260520.md`  
 **Taxonomy decision:** `docs/hybrid_component_taxonomy_decision_20260520.md`  
 **Phase roadmap:** `docs/next_major_phases_20260520.md`  
 **Registry:** `docs/experiment_registry.json` · **Matrix export:** `docs/experiment_registry_matrix_20260520.md`  
@@ -103,8 +105,8 @@ Outcome: a clean research memory layer that tells the story of what has been tri
 Ready cards:
 
 - **Refresh steering docs:** remove stale next-run language, align `docs/kanban_plan.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, and `docs/taxonomy_primitives_workstream_plan_20260520.md`.
-- **Synthesize negative ExECT probes:** write a compact decision note explaining why S1 interleaving, H2 pre-vocab, S4 frequency pre-candidates, and S4 temporality H1 did not promote.
-- **Audit primitive-to-experiment coverage:** classify implemented primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`.
+- **Synthesize negative ExECT probes:** `docs/exect_negative_probe_synthesis_20260520.md` explains why S1 interleaving, H2 pre-vocab, S4 frequency pre-candidates, S4 temporality H1, and Qwen interleaving v1 did not promote.
+- **Audit primitive-to-experiment coverage:** `docs/taxonomy_primitive_coverage_audit_20260520.md` classifies implemented and planned primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`.
 
 Validation: documentation links resolve; claims cite inspection docs or run IDs; no placeholder item implies a runnable experiment.
 
@@ -227,9 +229,9 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 
 ## Recommended Next Pull
 
-1. Finish Phase 1 consolidation: align the Kanban, support map, primitive workstream plan, and registry matrix language around the closed ExECT probes.
-2. Draft the negative-probe synthesis note: S1 interleaving, medication H2, seizure H2, S4 frequency H2, S4 temporality H1, and Qwen interleaving v1.
-3. Decide whether Phase 2 should target Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, or a no-run synthesis pause.
+1. Align the primitive catalog with `docs/taxonomy_primitive_coverage_audit_20260520.md` so implementation status cannot be mistaken for promotion evidence.
+2. Decide whether Phase 2 should target Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, medication-temporality fallback, or a no-run synthesis pause.
+3. If Phase 2 selects a run, preregister dataset, split, schema, model, scorer mode, baseline, varied factor, primitive IDs, run scope, gate, and reject/hold/promote criteria before execution.
 4. Keep L1 frozen as ExECT S1/S4 GPT default; keep Qwen S1 production anchor frozen at 79.0% micro.
 5. Regenerate `docs/experiment_registry_matrix_20260520.md` after registry changes.
 

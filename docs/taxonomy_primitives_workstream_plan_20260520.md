@@ -2,7 +2,7 @@
 
 Date: 2026-05-20  
 Status: Core infrastructure complete; handoff/audit phase ready. Cards 19–20 remain blocked on external dependencies.  
-Related: `docs/kanban_plan.md`, `docs/experiment_taxonomy_schema.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`
+Related: `docs/kanban_plan.md`, `docs/exect_negative_probe_synthesis_20260520.md`, `docs/taxonomy_primitive_coverage_audit_20260520.md`, `docs/experiment_taxonomy_schema.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`
 
 ## Purpose
 
@@ -142,14 +142,14 @@ This phase is complete when the repository has:
 
 ### Ready
 
-#### Card 23 - Audit Primitive Coverage Against Closed Experiments
+#### Card 23 - Audit Primitive Coverage Against Closed Experiments (complete)
 
-Outcome: A compact classification of implemented primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`, tied to the inspection docs and comparison groups that justify the status.
+Outcome: `docs/taxonomy_primitive_coverage_audit_20260520.md` classifies implemented and planned primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`, tied to the inspection docs and comparison groups that justify the status.
 
 Dependencies: Cards 1-18 and 22  
 Parallelizable: yes  
-Owner: unassigned  
-Validation: `uv run python scripts/validate_primitives.py --errors-only`; review against `docs/experiment_registry.json`, `docs/exect_field_family_deterministic_support_map_20260520.md`, and the closed ExECT inspection docs.  
+Owner: completed 2026-05-20  
+Validation: `uv run python scripts/validate_primitives.py --errors-only`; reviewed against `docs/experiment_registry.json`, `docs/exect_field_family_deterministic_support_map_20260520.md`, and the closed ExECT inspection docs.  
 Notes: This is a documentation/research-memory card. Do not change primitive behavior unless the audit finds a concrete mismatch.
 
 #### Card 24 - Align Primitive Catalog With Next-Phase Kanban
@@ -440,9 +440,8 @@ Should stay single-threaded:
 
 ## Recommended Next Pull
 
-1. Complete Card 23 and classify primitives against closed experiments.
-2. Update the catalog and support map so implemented primitives do not imply rejected arms should be rerun.
-3. Use the audit to decide whether the next ExECT phase is Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, medication temporality fallback, or synthesis pause.
+1. Complete Card 24 by aligning the catalog with `docs/taxonomy_primitive_coverage_audit_20260520.md`.
+2. Use the audit to decide whether the next ExECT phase is Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, medication temporality fallback, or synthesis pause.
 
 ## Execution Policy
 

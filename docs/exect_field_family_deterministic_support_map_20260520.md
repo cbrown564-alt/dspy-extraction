@@ -2,7 +2,7 @@
 
 Date: 2026-05-20  
 Status: Planning artifact; initial recommended queue complete/rejected; next phase requires new hypothesis selection  
-Related: `docs/kanban_plan.md`, `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_gold_label_audit.md`
+Related: `docs/kanban_plan.md`, `docs/exect_negative_probe_synthesis_20260520.md`, `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_gold_label_audit.md`
 
 ## Purpose
 
@@ -66,7 +66,7 @@ Registry rows: `exect_s0_s1_validation_full_gpt4_1_mini`, `exect_s2_validation_f
 | --- | --- | --- | --- | --- | --- |
 | **diagnosis** | Prompt policy; post bridges: uncertainty strip, specificity collapse, co-list augmentation, JME/symptomatic surfaces, seizure-descriptor header suppression | Audited diagnosis vocabulary (`ALLOWED_DIAGNOSIS_LABELS`); gold audit DiagCategory rules | **Post** (measurable only after H1 null fix) or **during** prompt-only | Do not infer epilepsy from seizure type alone; empty-list semantics matter | Low — near ceiling on GPT; Qwen gap smaller than seizure |
 | **seizure_type** | Prompt policy; post bridges: fused-phrase split, coarse collapse, JME/GTCS surfaces, secondary token co-list, dissociative suppress, ILAE granularity coarsen | Audited seizure surfaces; **not** MarkupSeizureFrequency spans (audit Bug 1) | **Post** family-specific bridges (already heavy); **avoid** full-note pre-vocab (H2 −11.3pp seizure) | Benchmark coarser than clinical ILAE; plural/singular and “secondary” token FPs common | **High** — largest Qwen gap; H2 proved blind pre-vocab harmful |
-| **annotated_medication** | Prompt policy; post bridges: brand preserve, non-ASM reject, surface repair; note-anchored pre-vocab list (`_KNOWN_PRESCRIPTION_MEDICATIONS`) | Rx JSON loader; brand/generic normalization table | **Pre** medication-only candidates (narrow slice) or **post** mapping | Scores annotated prescriptions only; planned/historical not benchmark-facing at S1 | Medium — try **medication-only** H2 slice before any full pre-vocab rerun |
+| **annotated_medication** | Prompt policy; post bridges: brand preserve, non-ASM reject, surface repair; note-anchored pre-vocab list (`_KNOWN_PRESCRIPTION_MEDICATIONS`) | Rx JSON loader; brand/generic normalization table | **Post** mapping; avoid tested **pre** medication-only H2 shape | Scores annotated prescriptions only; planned/historical not benchmark-facing at S1 | Closed for current H2 shape — medication-only slice rejected (95.1% vs 98.3% F1) |
 | **investigation** | S2+ `_normalize_investigation_surface`; S4 unknown guard for planned scans; modality+result canonical strings | Investigation modality/result enum; unavailable-results cues | **Post** normalization (proven +10.5pp investigation at S4 v1.2) | Clinical prose (`mri brain normal`) ≠ gold (`mri normal`) | Low for S1 — not in S1 schema; keep S4 guards frozen |
 | **comorbidity** | S2 overlap policy; S2 normalization candidate recovery | Comorbidity vs cause overlap table (`exect_s3_phase1_overlap_policy.md`) | **During** prompt priority vs **post** overlap resolver | Same phrase may score in multiple families independently | Medium — S3 cap/full gap; defer until S1 probes settle |
 | **medication_temporality** | S4 `format_medication_temporality_label`; pipe-format policy in prompt | Context patterns (“to start”, taper verbs); challenge-set temporality gold (sparse) | **Post** planned/current classifier on Rx spans (Gan-style preconditioning analogue) | Precision collapse from non-ASM and wrong status tags | **High** at S4 — Qwen +6.8pp vs GPT but mechanism is over-extraction |
@@ -106,7 +106,7 @@ flowchart LR
 
 1. **Post bridges are already on the critical path** — measured F1 includes them; moving them later (H1) changed metadata only.
 2. **Pre-vocab without family isolation hurts seizure_type** — candidate lists anchor over-specific surfaces.
-3. **Qwen seizure gap (−35pp at S1)** suggests deterministic scaffolding may help local models more than hosted GPT — but only after a **clean interleaving comparison** (bridge-free raw scorer path).
+3. **Qwen seizure gap (−35pp at S1)** persists after the clean bridge-free versus post-bridge comparison; further work should diagnose prompt/model-policy behavior, not add more S1 bridges by default.
 
 ## Completed experiment queue (taxonomy-governed)
 
