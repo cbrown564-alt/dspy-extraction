@@ -51,10 +51,14 @@ Optional fields include `normalization_scope`, `caveats`, `intended_comparison_g
 
 ## Initial Example Records
 
-The deterministic test suite validates three representative records:
+The deterministic test suite validates representative records:
 
 - `gan.frequency.temporal_candidates.v1`: Gan frequency candidate generation using temporal and regex rules, gold audit policy, and pre-model soft hints.
+- `gan.frequency.label_policy_bridge.v1`: Gan label-policy normalization preserving raw, canonical, benchmark-facing, monthly, Purist, and Pragmatic values.
+- `gan.frequency.evidence_guard.v1`: Gan-specific evidence support checks that preserve unknown/no-reference distinctions and treat `...` evidence as multi-span support.
 - `exect.medication.benchmark_bridge.v1`: ExECT medication normalization and benchmark bridge as a posthoc correction.
+- `exect.seizure_type.benchmark_bridge.v1`: ExECT seizure-type bridge for granular-surface coarsening, fused-phrase splits, secondary-token handling, and benchmark-facing seizure labels.
+- `exect.diagnosis.benchmark_bridge.v1`: ExECT diagnosis bridge for uncertainty stripping, specificity collapse, note-gated co-listing, symptomatic/on-awakening surface repair, empty-list header recovery, and explicit certainty-policy diagnostics.
 - `shared.evidence.substring_support.v1`: shared deterministic evidence support diagnostics for exact substring, unsupported quote, normalized-interpretation, and no-reference cases.
 
 ## Payload Models
@@ -66,8 +70,8 @@ The first shared payload contracts are implemented in `src/clinical_extraction/p
 - `EvidenceSupportResult`: deterministic support records for exact quote support, normalized-interpretation support, unsupported quote, and no-reference cases.
 - `check_evidence_support`: a no-model helper for exact substring and interpretation-evidence checks. This helper is deliberately conservative: exact quote support does not imply that the normalized interpretation is valid.
 
-The payload models are shared infrastructure. Dataset-specific primitive packs still need to decide whether and how these records affect prediction, post-processing, or diagnostic reporting.
+The payload models are shared infrastructure. Dataset-specific primitive packs still need to decide whether and how these records affect prediction, post-processing, or diagnostic reporting. The initial Gan pack uses the shared records in scorer-only/diagnostic mode by default; callers must explicitly opt into prediction-affecting bridge behavior.
 
 ## Caveats
 
-This contract now covers the initial metadata and payload layers. It does not yet implement dataset-specific primitive packs, interleaving adapters, fixture libraries, experiment arm templates, or reporting templates.
+This contract now covers the initial metadata and payload layers plus the first Gan frequency, ExECT medication, ExECT seizure-type, and ExECT diagnosis primitive packs. It does not yet implement interleaving adapters, fixture libraries, experiment arm templates, or reporting templates.

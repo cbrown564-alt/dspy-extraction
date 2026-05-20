@@ -377,6 +377,32 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         ],
     ),
     PrimitiveMetadata(
+        primitive_id="exect.medication.rx_candidates.v1",
+        name="ExECT medication prescription candidates",
+        dataset="exect_v2",
+        field_families=["medication"],
+        clinical_operation="candidate_generation",
+        knowledge_sources=["regex_rules", "controlled_vocabulary", "gold_audit_policy"],
+        hybrid_balance_class=[
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        interleaving_positions=["pre"],
+        control_modes=["soft_hint"],
+        input_contract="ExECT note text with prescription-style medication surfaces.",
+        output_contract=(
+            "Note-anchored medication candidates with raw surface, canonical ASM, "
+            "benchmark-facing value when current, temporality, and caveats."
+        ),
+        compatible_experiment_arms=["H2", "H4"],
+        status="implemented",
+        caveats=[
+            "Broad S1 pre-vocabulary prompting was rejected; this primitive is medication-scoped.",
+            "Planned and previous medications are surfaced diagnostically, not as S1 current prescriptions.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
         primitive_id="exect.medication.benchmark_bridge.v1",
         name="ExECT medication benchmark bridge",
         dataset="exect_v2",
@@ -391,9 +417,110 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Raw, canonical, benchmark-facing, and caveated medication values."
         ),
         compatible_experiment_arms=["H1"],
-        status="planned",
+        status="implemented",
         caveats=[
-            "Do not reintroduce broad pre-vocabulary prompting as the default S1 medication path."
+            "Do not reintroduce broad pre-vocabulary prompting as the default S1 medication path.",
+            "Brand surfaces are preserved when the note uses an audited brand form.",
+            "Non-ASM medications are rejected from benchmark-facing annotated medication output.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
+        primitive_id="exect.medication_temporality.post_classifier.v1",
+        name="ExECT medication temporality post-classifier",
+        dataset="exect_v2",
+        field_families=["medication"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["temporal_rules", "benchmark_label_policy", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic", "D1_deterministic_only"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract="Medication evidence text or prescription-line context.",
+        output_contract=(
+            "Current, planned, previous, or unknown medication temporality with S1 "
+            "benchmark-inclusion semantics and cue metadata."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        caveats=[
+            "MarkupPrescriptions has no temporality column; this is cue-based support, not raw gold.",
+            "Current prescription lines with taper instructions remain current for S1 unless the medication is only a separate stop/plan mention.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
+        primitive_id="exect.seizure_type.benchmark_bridge.v1",
+        name="ExECT seizure-type benchmark bridge",
+        dataset="exect_v2",
+        field_families=["seizure_type"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["controlled_vocabulary", "benchmark_label_policy", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic"],
+        interleaving_positions=["post"],
+        control_modes=["posthoc_correction"],
+        input_contract="Raw seizure-type prediction surface plus optional note text.",
+        output_contract=(
+            "Raw, canonical, benchmark-facing, and caveated seizure-type values, "
+            "including fused-phrase splits and secondary-token co-list decisions."
+        ),
+        compatible_experiment_arms=["H1"],
+        status="implemented",
+        caveats=[
+            "Do not use MarkupSeizureFrequency spans as seizure-type evidence.",
+            "Benchmark-facing labels may be coarser than clinically rich ILAE surfaces.",
+            "Full-note pre-vocabulary prompting remains rejected for S1 seizure type.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
+        primitive_id="exect.diagnosis.benchmark_bridge.v1",
+        name="ExECT diagnosis benchmark bridge",
+        dataset="exect_v2",
+        field_families=["diagnosis"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["controlled_vocabulary", "benchmark_label_policy", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic"],
+        interleaving_positions=["post"],
+        control_modes=["posthoc_correction"],
+        input_contract="Raw diagnosis prediction surfaces plus optional note text.",
+        output_contract=(
+            "Raw, canonical, benchmark-facing, and caveated diagnosis values, "
+            "including uncertainty stripping, specificity collapse, and note-gated co-list decisions."
+        ),
+        compatible_experiment_arms=["H1"],
+        status="implemented",
+        caveats=[
+            "Do not infer epilepsy subtype from seizure-type evidence alone.",
+            "Single-event seizure diagnosis headers must not become established epilepsy diagnoses.",
+            "Certainty and specificity rules follow the audited ExECT JSON diagnosis policy.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
+        primitive_id="gan.frequency.label_policy_bridge.v1",
+        name="Gan frequency label-policy bridge",
+        dataset="gan_2026",
+        field_families=["frequency"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["benchmark_label_policy", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic", "D1_deterministic_only"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract="Raw Gan frequency label string from gold or prediction.",
+        output_contract=(
+            "Raw, canonical, benchmark-facing, monthly-frequency, Purist, and "
+            "Pragmatic label-policy values."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        caveats=[
+            "Gan seizure_frequency_number[0] remains the benchmark-facing gold label.",
+            "Unknown and no seizure frequency reference are separate label-policy classes.",
+            "Default helper use is scorer-only unless a caller explicitly makes it prediction-affecting.",
+        ],
+        implementation_refs=[
+            "src/clinical_extraction/gan/primitives.py",
+            "src/clinical_extraction/gan/frequency.py",
         ],
     ),
     PrimitiveMetadata(
@@ -412,6 +539,33 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         ),
         compatible_experiment_arms=["D1"],
         status="planned",
+    ),
+    PrimitiveMetadata(
+        primitive_id="gan.frequency.evidence_guard.v1",
+        name="Gan frequency evidence guard",
+        dataset="gan_2026",
+        field_families=["frequency"],
+        clinical_operation="evidence_support",
+        knowledge_sources=["regex_rules", "gold_audit_policy", "diagnostic_metric"],
+        hybrid_balance_class=["H1_post_deterministic", "D1_deterministic_only"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract="Gan note text, frequency label, and model or gold evidence text.",
+        output_contract=(
+            "Exact, elided multi-span, unsupported, or no-reference evidence support "
+            "with Gan label-policy caveats."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        caveats=[
+            "Elided Gan gold evidence can be supported by ordered fragments without being one exact quote.",
+            "Evidence support remains diagnostic unless a decision document makes it prediction-affecting.",
+            "Unknown still implies frequency context; no-reference means no seizure frequency reference.",
+        ],
+        implementation_refs=[
+            "src/clinical_extraction/gan/primitives.py",
+            "src/clinical_extraction/gan/react_tools.py",
+        ],
     ),
 )
 

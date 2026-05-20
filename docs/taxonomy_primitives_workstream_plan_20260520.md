@@ -63,51 +63,43 @@ This phase is complete when the repository has:
 - Evidence tests now distinguish exact substring support, normalized-interpretation support, unsupported quote, and no-reference cases.
 - Focused no-model validation: `uv run pytest tests/test_primitive_contracts.py -q`.
 
+2026-05-20 third pull:
+
+- Card 6 initial Gan frequency primitive pack implemented in `src/clinical_extraction/gan/primitives.py`.
+- Added shared-contract adapters for Gan temporal candidates, Gan label-policy normalization, and Gan evidence guard behavior.
+- Registered `gan.frequency.label_policy_bridge.v1` and `gan.frequency.evidence_guard.v1` in the typed primitive registry.
+- Gan audit assumptions preserved: `seizure_frequency_number[0]` remains gold, `unknown` and `no seizure frequency reference` remain distinct, and elided evidence is treated as ordered multi-span support rather than exact quote support.
+- Focused no-model validation: `uv run pytest tests/test_gan_frequency_primitives.py -q`; `uv run pytest tests/test_primitive_contracts.py -q`; `uv run pytest tests/test_gan_temporal_candidates.py tests/test_gan_frequency.py tests/test_gan_scoring.py -q`.
+
+2026-05-20 fourth pull:
+
+- Card 7 initial ExECT medication primitive pack implemented in `src/clinical_extraction/exect/primitives.py`.
+- Added note-anchored Rx candidate payloads, ExECT medication benchmark bridge behavior, and cue-based medication temporality classification.
+- Registered `exect.medication.rx_candidates.v1`, `exect.medication.benchmark_bridge.v1`, and `exect.medication_temporality.post_classifier.v1` in the typed primitive registry.
+- ExECT audit assumptions preserved: MarkupPrescriptions has no temporality column, planned/previous medications are not S1 current prescription outputs, and the rejected broad S1 pre-vocabulary approach remains rejected.
+- Focused no-model validation: `uv run pytest tests/test_exect_medication_primitives.py -q`.
+
+2026-05-20 fifth pull:
+
+- Card 8 initial ExECT seizure-type benchmark bridge implemented in `src/clinical_extraction/exect/primitives.py`.
+- Added deterministic bridge behavior for granular focal surfaces, fused temporal-lobe and secondary-generalisation phrases, rejected jerk/absence descriptors, focal-to-bilateral convulsive repair, and secondary-token co-listing.
+- Registered `exect.seizure_type.benchmark_bridge.v1` in the typed primitive registry.
+- ExECT audit assumptions preserved: seizure-type policy is based on audited Diagnosis/JSON seizure-type surfaces and explicitly does not use MarkupSeizureFrequency spans as seizure-type evidence.
+- Focused no-model validation: `uv run pytest tests/test_exect_seizure_type_primitives.py -q`; `uv run pytest tests/test_primitive_contracts.py -q`; `uv run pytest tests/test_exect_medication_primitives.py tests/test_exect_seizure_type_primitives.py tests/test_exect_s0_s1_program.py -q`.
+
+2026-05-20 sixth pull:
+
+- Card 9 initial ExECT diagnosis benchmark bridge implemented in `src/clinical_extraction/exect/primitives.py`.
+- Added deterministic bridge behavior for uncertainty stripping, audited specificity collapse, note-gated co-list augmentation, symptomatic structural focal restoration, on-awakening surface repair, seizure-descriptor header suppression, empty-list header recovery, and explicit JSON diagnosis-row certainty policy.
+- Registered `exect.diagnosis.benchmark_bridge.v1` in the typed primitive registry.
+- ExECT audit assumptions preserved: Diagnosis JSON rows remain the policy source, `Certainty >= 4` stays explicit, single seizure events do not become established epilepsy diagnoses, and seizure-type evidence does not create diagnosis subtype labels.
+- Focused no-model validation: `uv run pytest tests/test_exect_diagnosis_primitives.py -q`; `uv run pytest tests/test_primitive_contracts.py -q`; `uv run pytest tests/test_exect_medication_primitives.py tests/test_exect_seizure_type_primitives.py tests/test_exect_s0_s1_program.py -q`.
+
 ## Board
 
 ### Ready
 
 ### Backlog
-
-#### Card 6 - Gan Frequency Primitive Pack
-
-Outcome: Gan-specific temporal/frequency primitive pack covering temporal candidate generation, current-window policy, unknown versus no-reference distinction, and evidence guard behavior.
-
-Dependencies: Cards 3 and 5  
-Parallelizable: after shared candidate and evidence models  
-Owner: unassigned  
-Validation: Deterministic tests using audited Gan examples and the hard-slice fixture.  
-Notes: Keep monthly normalization separate from ExECT frequency templates.
-
-#### Card 7 - ExECT Medication Primitive Pack
-
-Outcome: Medication candidate, brand/generic, ASM/non-ASM, benchmark prescription, and temporality helper primitives for S1 and S4.
-
-Dependencies: Cards 3 and 4  
-Parallelizable: after shared candidate and normalization models  
-Owner: unassigned  
-Validation: Tests on Rx-heavy slice examples and planned/taper phrase fixtures.  
-Notes: Existing H2 medication pre-vocab was rejected; this pack should support post-classifier and narrow candidate experiments, not reintroduce broad pre-vocab by default.
-
-#### Card 8 - ExECT Seizure-Type Primitive Pack
-
-Outcome: Seizure-type surface, coarsening, fused-phrase split, secondary-token handling, and benchmark-policy bridge primitives.
-
-Dependencies: Cards 3 and 4  
-Parallelizable: after shared candidate and normalization models  
-Owner: unassigned  
-Validation: Tests include Qwen failure examples and S1 bridge-free versus bridge-applied cases.  
-Notes: Avoid using MarkupSeizureFrequency spans as seizure-type evidence unless the audit explicitly supports it.
-
-#### Card 9 - ExECT Diagnosis Primitive Pack
-
-Outcome: Diagnosis specificity, certainty, co-list augmentation, uncertainty stripping, symptomatic/JME surfaces, and empty-list handling primitives.
-
-Dependencies: Card 4  
-Parallelizable: yes, after normalization model  
-Owner: unassigned  
-Validation: Tests from S1 diagnosis bridge examples and audit caveats.  
-Notes: Lower priority because GPT is near ceiling, but still needed for coherent S1 contracts.
 
 #### Card 10 - ExECT S4 Frequency Primitive Pack
 
@@ -290,6 +282,46 @@ Parallelizable: complete
 Owner: project  
 Validation: `uv run python scripts/validate_experiment_taxonomy.py --errors-only`; `uv run pytest tests/test_experiment_registry_validation.py -q` previously passed.  
 Notes: This plan builds on that completed taxonomy infrastructure.
+
+#### Card 6 - Gan Frequency Primitive Pack
+
+Outcome: Gan-specific temporal/frequency primitive pack covering temporal candidate generation, current-window policy, unknown versus no-reference distinction, and evidence guard behavior.
+
+Dependencies: Cards 3 and 5
+Parallelizable: after shared candidate and evidence models
+Owner: project
+Validation: `uv run pytest tests/test_gan_frequency_primitives.py -q`; `uv run pytest tests/test_gan_temporal_candidates.py tests/test_gan_frequency.py tests/test_gan_scoring.py -q`.
+Notes: Implemented in `src/clinical_extraction/gan/primitives.py`; typed registry entries added for `gan.frequency.label_policy_bridge.v1` and `gan.frequency.evidence_guard.v1`. Monthly normalization remains Gan-specific and separate from ExECT frequency templates.
+
+#### Card 7 - ExECT Medication Primitive Pack
+
+Outcome: Medication candidate, brand/generic, ASM/non-ASM, benchmark prescription, and temporality helper primitives for S1 and S4.
+
+Dependencies: Cards 3 and 4
+Parallelizable: after shared candidate and normalization models
+Owner: project
+Validation: `uv run pytest tests/test_exect_medication_primitives.py -q`.
+Notes: Implemented in `src/clinical_extraction/exect/primitives.py`; typed registry entries added for `exect.medication.rx_candidates.v1`, `exect.medication.benchmark_bridge.v1`, and `exect.medication_temporality.post_classifier.v1`. Existing H2 medication pre-vocab remains rejected; this pack supports post-classifier and narrow candidate experiments, not broad S1 pre-vocab promotion.
+
+#### Card 8 - ExECT Seizure-Type Primitive Pack
+
+Outcome: Seizure-type surface, coarsening, fused-phrase split, secondary-token handling, and benchmark-policy bridge primitives.
+
+Dependencies: Cards 3 and 4
+Parallelizable: after shared candidate and normalization models
+Owner: project
+Validation: `uv run pytest tests/test_exect_seizure_type_primitives.py -q`; `uv run pytest tests/test_exect_s0_s1_program.py -q`.
+Notes: Implemented in `src/clinical_extraction/exect/primitives.py`; typed registry entry added for `exect.seizure_type.benchmark_bridge.v1`. Tests include Qwen-style granular focal failure examples, fused phrase splits, secondary-token co-listing, and prediction-affecting versus scorer-only bridge semantics. MarkupSeizureFrequency remains excluded as seizure-type evidence.
+
+#### Card 9 - ExECT Diagnosis Primitive Pack
+
+Outcome: Diagnosis specificity, certainty, co-list augmentation, uncertainty stripping, symptomatic/JME surfaces, and empty-list handling primitives.
+
+Dependencies: Card 4
+Parallelizable: yes, after normalization model
+Owner: project
+Validation: `uv run pytest tests/test_exect_diagnosis_primitives.py -q`; `uv run pytest tests/test_exect_s0_s1_program.py -q`.
+Notes: Implemented in `src/clinical_extraction/exect/primitives.py`; typed registry entry added for `exect.diagnosis.benchmark_bridge.v1`. Tests cover uncertainty stripping, specificity collapse, symptomatic structural focal restoration, note-gated generic epilepsy co-listing, empty-list header recovery, seizure-descriptor header suppression, and explicit Certainty >= 4 annotation policy.
 
 ## Dependency Notes
 
