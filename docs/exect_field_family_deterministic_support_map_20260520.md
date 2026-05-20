@@ -1,7 +1,7 @@
 # ExECT Field-Family Deterministic Support Map
 
 Date: 2026-05-20  
-Status: Planning artifact (post S1 interleaving GPT phase 1)  
+Status: Planning artifact; initial recommended queue complete/rejected; next phase requires new hypothesis selection  
 Related: `docs/kanban_plan.md`, `docs/exect_s1_interleaving_gpt_validation_v1_inspection_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_gold_label_audit.md`
 
 ## Purpose
@@ -108,7 +108,9 @@ flowchart LR
 2. **Pre-vocab without family isolation hurts seizure_type** — candidate lists anchor over-specific surfaces.
 3. **Qwen seizure gap (−35pp at S1)** suggests deterministic scaffolding may help local models more than hosted GPT — but only after a **clean interleaving comparison** (bridge-free raw scorer path).
 
-## Recommended experiment queue (taxonomy-governed)
+## Completed experiment queue (taxonomy-governed)
+
+The initial queue below has been run or explicitly closed. Do not treat it as the next-run queue. The next ExECT model-backed comparison group should be selected only after a new mechanism is named and preregistered in `docs/kanban_plan.md`.
 
 | Order | Probe | Comparison group | Varied factor | Gate |
 | ---: | --- | --- | --- | --- |
@@ -120,6 +122,19 @@ flowchart LR
 | 6 | **Qwen interleaving v1 (bridge matrix port)** | `exect_s1_interleaving_qwen_validation_v1` | `interleaving_position` (+ cross-track `model_track`) | **Complete — reject port** — full bridge Δ +12.8pp micro vs GPT +23.7pp; H1 null vs Qwen anchor — `docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md` |
 
 **Defer:** H3 tool normalization (Gan ReAct negative control sufficient); full-note H2 rerun; broad S2–S4 architecture ablation.
+
+## Next hypothesis selection
+
+Current state: no ExECT model-backed run is active or ready by default.
+
+Candidate directions for the next decision phase:
+
+1. **Qwen seizure-gap diagnosis:** start with error analysis to decide whether the S1 seizure deficit reflects prompt/model-policy behavior rather than missing deterministic surfaces. Do not reopen H2 pre-vocab injection without a new presentation mechanism.
+2. **S4 frequency mechanism redesign:** revisit frequency only if the varied factor differs from the rejected pre-candidate arm, such as prompt policy, candidate presentation, or post-template repair.
+3. **S4 medication temporality fallback:** consider only a narrow dose-only abstention fallback motivated by the full-validation recall collapse. Do not rerun the broad H1 post-classifier as-is.
+4. **Synthesis pause:** if none of the above can be preregistered cleanly, consolidate negative ExECT results and move attention to reproduction blockers.
+
+Gate before any run: dataset, split, schema, model, scorer, baseline, varied factor, primitive IDs, cap/full scope, and reject/hold/promote criteria must be written before execution.
 
 ## Gan → ExECT transfer assessment
 

@@ -1,7 +1,7 @@
 # Taxonomy Primitives Workstream Plan
 
 Date: 2026-05-20  
-Status: In progress — core infrastructure complete; Cards 19–20 remain blocked on external dependencies.  
+Status: Core infrastructure complete; handoff/audit phase ready. Cards 19–20 remain blocked on external dependencies.  
 Related: `docs/kanban_plan.md`, `docs/experiment_taxonomy_schema.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`
 
 ## Purpose
@@ -22,7 +22,7 @@ This workstream should produce a standardized component library for:
 - experiment config templates
 - registry and inspection/reporting conventions
 
-Model-backed execution can then happen later under fixed controls, with the primitives already inspected, unit-tested, and documented.
+Model-backed execution can now happen later under fixed controls, with the primitives inspected, unit-tested, and documented. The next task is not to add more primitives by default; it is to decide which implemented primitives are promoted, diagnostic-only, rejected for the current arm, planned, or blocked.
 
 ## Guiding Principles
 
@@ -142,15 +142,43 @@ This phase is complete when the repository has:
 
 ### Ready
 
-No cards yet.
+#### Card 23 - Audit Primitive Coverage Against Closed Experiments
+
+Outcome: A compact classification of implemented primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`, tied to the inspection docs and comparison groups that justify the status.
+
+Dependencies: Cards 1-18 and 22  
+Parallelizable: yes  
+Owner: unassigned  
+Validation: `uv run python scripts/validate_primitives.py --errors-only`; review against `docs/experiment_registry.json`, `docs/exect_field_family_deterministic_support_map_20260520.md`, and the closed ExECT inspection docs.  
+Notes: This is a documentation/research-memory card. Do not change primitive behavior unless the audit finds a concrete mismatch.
+
+#### Card 24 - Align Primitive Catalog With Next-Phase Kanban
+
+Outcome: `docs/taxonomy_primitive_catalog.md` clearly separates implemented primitives that are reusable infrastructure from primitives that should not be used to justify rerunning rejected H2/H1 arms.
+
+Dependencies: Card 23  
+Parallelizable: after Card 23  
+Owner: unassigned  
+Validation: Catalog rows cite intended experiments, current status, and caveats; no row implies promotion from existence alone.  
+Notes: Especially important for ExECT medication, seizure-type, frequency, and medication-temporality primitives, where implemented primitives supported rejected model-backed arms.
 
 ### Backlog
 
-No cards yet.
+#### Card 25 - Design Next ExECT Mechanism Preregistration
+
+Outcome: A preregistration for one new ExECT mechanism, or an explicit no-run decision, using primitive IDs and taxonomy arm templates.
+
+Dependencies: Card 23 and `docs/kanban_plan.md` Phase 2 decision  
+Parallelizable: no  
+Owner: unassigned  
+Validation: Preregistration states dataset, split, schema, model, scorer mode, baseline, varied factor, primitive IDs, run scope, gate, and reject/hold/promote criteria.  
+Notes: Candidate directions are Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, or S4 medication temporality dose-only fallback. Do not use this card for S1 post-bridge reruns or broad H2 pre-vocab reruns.
 
 ### Questions
 
-No open questions.
+- Which implemented primitives should be described as reusable infrastructure versus experimentally rejected interventions?
+- Is the next ExECT step a new model-backed hypothesis or a synthesis pause before benchmark reproduction work?
+- Should Qwen seizure-gap work begin as error analysis only, or as a preregistered prompt/model-policy intervention?
 
 ### Blocked
 
@@ -382,50 +410,40 @@ Notes: Implemented in `scripts/validate_primitives.py` and `src/clinical_extract
 
 ## Dependency Notes
 
-Cards 1 through 5 define the shared contracts. They should stay relatively single-threaded or be reviewed together because they determine the language used by every later primitive.
+Cards 1 through 22 define the completed primitive infrastructure. They should now be treated as a stable contract layer unless the coverage audit finds a mismatch with documented scorer or audit semantics.
 
-Dataset packs can proceed in parallel once the shared candidate, normalization, and evidence models exist. Gan frequency, ExECT medication, ExECT seizure type, and ExECT diagnosis should not share benchmark-policy assumptions without explicit adapter code.
+Dataset packs can support new experiments, but primitive existence is not promotion evidence. Gan frequency, ExECT medication, ExECT seizure type, and ExECT diagnosis should not share benchmark-policy assumptions without explicit adapter code and a named comparison group.
 
-Experiment arm templates should wait until interleaving adapters exist. Otherwise the templates may encode today’s program shapes instead of the taxonomy dimensions we actually want to test.
+Experiment arm templates and interleaving adapters now exist. New configs should use them to make the varied factor explicit before a model-backed run starts.
 
-Fixture work can start early once the shared object models are stable. It is especially valuable because it exercises primitive behavior without model cost.
+Fixture work is available for no-model validation. Add fixtures when a new primitive behavior or failure mode is being introduced, not as a substitute for model-backed promotion evidence.
 
 ## Parallelization Opportunities
 
-Safe in parallel after Card 1:
+Safe in parallel now:
 
-- Card 2 primitive catalog
-- Card 3 candidate model
-- Card 4 normalization model
-- Card 5 evidence support model
-- Card 18 ontology/CUI scope decision
+- Card 23 primitive coverage audit
+- Kanban/support-map documentation cleanup
+- Registry matrix regeneration after metadata edits
+- Negative-probe synthesis drafting
 
-Safe in parallel after shared models:
+Blocked on Card 23:
 
-- Card 6 Gan frequency pack
-- Card 7 ExECT medication pack
-- Card 8 ExECT seizure-type pack
-- Card 9 ExECT diagnosis pack
-- Card 10 ExECT S4 frequency pack
-- Card 14 fixture library
-- Card 15 inspection templates
+- Card 24 catalog alignment
+- Card 25 next ExECT mechanism preregistration
 
 Should stay single-threaded:
 
-- Card 1 primitive contract schema
-- Card 12 interleaving adapters
-- Card 13 experiment arm templates
-- Card 16 primitive registry location
+- Any change to primitive contracts, registry source-of-truth policy, or scorer semantics
+- Any model-backed comparison group selection
+- Published ExECT benchmark reproduction design
 
-## Recommended First Pull
+## Recommended Next Pull
 
-1. Define the primitive contract schema.
-2. Decide the primitive registry location.
-3. Seed `docs/taxonomy_primitive_catalog.md` from Gan frequency and ExECT S1/S4 support maps.
-4. Implement the candidate, normalization, and evidence support models with deterministic tests.
-
-That first pull creates the shared language and data contracts. After it lands, the dataset-specific primitive packs can be built in parallel without turning into disconnected helper code.
+1. Complete Card 23 and classify primitives against closed experiments.
+2. Update the catalog and support map so implemented primitives do not imply rejected arms should be rerun.
+3. Use the audit to decide whether the next ExECT phase is Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, medication temporality fallback, or synthesis pause.
 
 ## Execution Policy
 
-This is a build-before-run phase. New model-backed experiments should be limited to cases that answer an active research decision already in `docs/kanban_plan.md`, such as the S4 medication temporality post-classifier. The primitive workstream should otherwise favor deterministic validation, fixture design, config generation, and inspection templates until the component library is coherent enough to support the next systematic run batch.
+The build-before-run phase has produced the core component library. New model-backed experiments should now be limited to cases that answer an active research decision already in `docs/kanban_plan.md` and have a preregistered comparison group. The primitive workstream should favor coverage audit, catalog alignment, deterministic validation, and inspection traceability over adding more helper code.

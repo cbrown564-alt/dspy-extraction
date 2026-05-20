@@ -3,10 +3,11 @@
 **Core direction:** `docs/outline.md`  
 **Current synthesis:** `docs/experiment_taxonomy_research_synthesis_20260520.md`  
 **Taxonomy decision:** `docs/hybrid_component_taxonomy_decision_20260520.md`  
+**Phase roadmap:** `docs/next_major_phases_20260520.md`  
 **Registry:** `docs/experiment_registry.json` · **Matrix export:** `docs/experiment_registry_matrix_20260520.md`  
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
-**Last refreshed:** 2026-05-20, after full: S1 interleaving Qwen validation v1 **complete (reject port)**
+**Last refreshed:** 2026-05-20, after documentation tidy and next-phase scoping
 **Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`  
 **Taxonomy primitives:** `docs/taxonomy_primitives_workstream_plan_20260520.md` (catalog: `docs/taxonomy_primitive_catalog.md`)
 
@@ -57,7 +58,7 @@ Current anchors:
 | S3 | 72.1% micro | 72.2% micro | Qwen essentially matches GPT. |
 | S4 | 65.5% micro | 67.5% micro (`...160914Z`) | Qwen slightly exceeds GPT on the 11-family S4 diagnostic view. |
 
-Research interpretation: schema breadth changes the field-family surface, so the ladder is not a simple learning curve. S1 interleaving v2 and all S1/S4 family-isolated pre-vocab probes are **closed** with no promotable GPT arm; the next ExECT probe is **Qwen interleaving v1** (replicate bridge-free vs post-bridge matrix on local model track).
+Research interpretation: schema breadth changes the field-family surface, so the ladder is not a simple learning curve. S1 interleaving v2, Qwen interleaving v1, and all S1/S4 family-isolated pre-vocab probes are **closed** with no promotable intervention. The next ExECT step is a decision phase, not another automatic port: choose a new hypothesis from the support map or pause model-backed ExECT runs for synthesis.
 
 ### Experiment taxonomy
 
@@ -87,9 +88,60 @@ Still blocked: Card 19 published ExECT CUI benchmark pack; Card 20 Gan Real(300)
 
 ## Active Work
 
-**Next model-backed comparison group:** **TBD** — `exect_s1_interleaving_qwen_validation_v1` **closed** (reject port narrative); revisit support-map queue for new hypothesis.
+**Current mode:** documentation consolidation and next-phase scoping.
+
+**Next model-backed comparison group:** **not selected**. `exect_s1_interleaving_qwen_validation_v1` is closed as a reject-port narrative; do not start another ExECT run until a new mechanism, comparison group, gate, and inspection plan are named.
 
 No runs in flight. S1 interleaving GPT v2 + Qwen v1 and all S1/S4 family-isolated GPT probes **closed**.
+
+## Next Major Phases
+
+### Phase 1 - Consolidate the taxonomy-governed evidence base
+
+Outcome: a clean research memory layer that tells the story of what has been tried, which mechanisms were rejected, which anchors are frozen, and which claims are safe.
+
+Ready cards:
+
+- **Refresh steering docs:** remove stale next-run language, align `docs/kanban_plan.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, and `docs/taxonomy_primitives_workstream_plan_20260520.md`.
+- **Synthesize negative ExECT probes:** write a compact decision note explaining why S1 interleaving, H2 pre-vocab, S4 frequency pre-candidates, and S4 temporality H1 did not promote.
+- **Audit primitive-to-experiment coverage:** classify implemented primitives as `promoted`, `diagnostic_only`, `rejected_for_current_arm`, `planned`, or `blocked`.
+
+Validation: documentation links resolve; claims cite inspection docs or run IDs; no placeholder item implies a runnable experiment.
+
+### Phase 2 - Select the next ExECT hypothesis
+
+Outcome: one preregistered ExECT comparison group, or an explicit decision to pause ExECT model-backed work.
+
+Candidate directions:
+
+- **Qwen seizure-gap diagnosis:** inspect whether the S1 seizure gap is prompt/model-policy failure rather than a missing deterministic bridge. This should start with error analysis, not pre-vocab injection.
+- **S4 frequency mechanism redesign:** revisit ExECT frequency only if the varied factor is new, such as prompt policy, candidate presentation shape, or post-template repair, not the rejected H2 pre-candidate arm.
+- **S4 medication temporality fallback:** only consider a dose-only abstention fallback if it is framed as a narrow repair to the observed recall collapse, not a broad temporality classifier retune.
+
+Validation: a pre-registration states dataset, split, schema, model, scorer, frozen baseline, varied factor, primitive IDs, gate, and reject/hold/promote criteria.
+
+### Phase 3 - Reproduction and external validity
+
+Outcome: separate local diagnostic claims from published benchmark reproduction and external-data claims.
+
+Blocked cards:
+
+- Published ExECTv2 reproduction remains blocked on CUI-aware all-family scoring and ontology-aligned primitives.
+- Gan Real(300)/Real(150) validation remains blocked on data access.
+
+Validation: use `dataset-audit-first` and `gold-scorer-integrity`; do not compare published benchmark claims with local field-family diagnostics without caveats.
+
+### Phase 4 - Scale-up and ablation expansion
+
+Outcome: reopen broad architecture, optimizer, and model-family studies only after the narrow mechanism evidence is coherent.
+
+Deferred cards:
+
+- Broad ExECT architecture matrix.
+- DSPy optimizer scale-up.
+- Additional local/closed model comparisons beyond focused Qwen confirmation.
+
+Validation: each scale-up varies one explicit factor or is documented as an interaction study.
 
 ## Recently Completed (2026-05-20)
 
@@ -114,11 +166,15 @@ No runs in flight. S1 interleaving GPT v2 + Qwen v1 and all S1/S4 family-isolate
 - S1 interleaving pre-registration + v2 configs (see v2 inspection doc)
 - Gan Qwen H1 full comparator: **deferred** — slice evidence sufficient; see **Current Decisions**
 
-## Ready After Active Work
+## Ready After Consolidation
 
 ### Optional Gan model-interaction robustness slice
 
 Only run this if the Gan narrative needs model-interaction evidence. Keep the same records, scorer, schema, and temporal-candidates architecture across GPT and Qwen.
+
+### ExECT next-hypothesis pre-registration
+
+Ready after Phase 1 synthesis identifies a mechanism worth testing. The preregistration must name the baseline, run scope, scorer mode, primitive IDs, and decision gate before any model-backed execution.
 
 ## Blocked Or Deferred
 
@@ -148,7 +204,7 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 | Gan default architecture | Temporal-candidates verify-repair (`H2` + `H4`) |
 | Gan ReAct H3 | Rejected as default path; keep as negative control |
 | ExECT S1 interleaving Qwen v1 | **Complete — reject port** — full bridge Δ +12.8pp micro; H1 null vs Qwen anchor; does not close GPT seizure gap |
-| ExECT next experiment | **TBD** — no further S1 interleaving without new hypothesis (prompt/model, not more post bridges) |
+| ExECT next experiment | **Decision phase** — no further S1 interleaving or H2 pre-vocab reruns without a new mechanism and preregistered comparison group |
 | ExECT S1 seizure H2 slice | **Reject** — 83.3% vs 91.5% seizure_type F1 on 15-record slice (−8.2pp) |
 | ExECT S1 seizure L1 slice | **Hold (slice reference)** — 91.5% seizure_type F1 |
 | ExECT S4 temporality error-read | **Done** — dose-only unknown-abstention caused recall collapse; planned/taper slice 4/19 FNs; no taper retune |
@@ -171,24 +227,26 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 
 ## Recommended Next Pull
 
-1. Choose next probe from `docs/exect_field_family_deterministic_support_map_20260520.md` with a **new hypothesis** (not S1 post-bridge or H2 pre-vocab reruns).
-2. Keep L1 frozen as ExECT S1/S4 GPT default; Qwen production anchor frozen at 79.0% micro.
-3. Regenerate `docs/experiment_registry_matrix_20260520.md` after registry changes.
-4. **Deferred:** S4 temporality H1 retune — dose-only abstention fallback only.
-5. **Closed:** `exect_s1_interleaving_qwen_validation_v1` — see `docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md`.
+1. Finish Phase 1 consolidation: align the Kanban, support map, primitive workstream plan, and registry matrix language around the closed ExECT probes.
+2. Draft the negative-probe synthesis note: S1 interleaving, medication H2, seizure H2, S4 frequency H2, S4 temporality H1, and Qwen interleaving v1.
+3. Decide whether Phase 2 should target Qwen seizure-gap diagnosis, S4 frequency mechanism redesign, or a no-run synthesis pause.
+4. Keep L1 frozen as ExECT S1/S4 GPT default; keep Qwen S1 production anchor frozen at 79.0% micro.
+5. Regenerate `docs/experiment_registry_matrix_20260520.md` after registry changes.
 
 ## Parallelization
 
 | Safe in parallel | Single-threaded |
 | --- | --- |
-| Seizure slice fixture + program variant (deterministic) | L1/H2 seizure slice GPT runs (same comparison group) |
-| Registry matrix / kanban doc updates | Qwen interleaving cap-25 pair (same comparison group, sequential OK) |
-| Taxonomy primitive validation (`validate_primitives.py`) | Full validation 40 (only after slice promotion gate passes) |
+| Kanban/support-map wording cleanup | Choosing the next model-backed ExECT comparison group |
+| Primitive catalog coverage audit | Any preregistration that changes scorer, schema, or baseline semantics |
+| Registry matrix regeneration after metadata edits | Model-backed full validation runs |
+| Negative-probe synthesis drafting | Published benchmark reproduction design |
 
 ## Long-Term Research Arc
 
-1. Stabilize taxonomy-governed evidence and keep decision docs linked to registry rows.
+1. Consolidate taxonomy-governed evidence and keep decision docs linked to registry rows.
 2. Use Gan as the completed temporal-frequency case study for deterministic preconditioning versus tool-during reasoning.
-3. Use ExECT S1 as the next causal test of benchmark policy, deterministic bridges, controlled vocabularies, and tool-mediated normalization.
-4. Port only the strongest GPT-discovered interventions to Qwen and test whether local Qwen benefits more from deterministic scaffolding than hosted GPT under fixed comparison groups.
-5. Only then reopen broad architecture ablations, optimizers, and benchmark reproduction infrastructure.
+3. Treat ExECT as a mechanism-selection problem: only run new S1/S4 probes when the varied factor differs from the rejected post-bridge and H2 pre-vocab shapes.
+4. Port only promotable GPT-discovered interventions to Qwen; use Qwen diagnostics when the research question is local-model feasibility or model-specific failure.
+5. Separate local diagnostic validation from published benchmark reproduction until CUI-aware ExECT scoring and Gan real-set access are resolved.
+6. Reopen broad architecture ablations and optimizers only after the next narrow mechanism has a clean hold/promote signal.
