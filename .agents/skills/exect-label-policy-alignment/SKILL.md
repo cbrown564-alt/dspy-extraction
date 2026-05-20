@@ -14,13 +14,23 @@ Read:
 - `docs/exect_gold_label_audit.md`
 - `docs/deterministic_scorer_semantics.md`
 - `docs/prior_prompt_error_analysis_synthesis.md`
-- relevant ExECT loader, schema, scorer, and test files
+- `docs/taxonomy_primitive_catalog.md` for implemented ExECT benchmark bridges
+- relevant ExECT loader, schema, scorer, primitive, and test files
 
 ## Core Principle
 
 Separate benchmark-facing annotation policy from clinically rich extraction.
 
 A label may be clinically plausible but wrong for the audited ExECT scoring view. Benchmark-facing outputs should match the current canonical scoring view; clinically richer outputs should be preserved only through an explicit bridge or separate schema level.
+
+Implemented benchmark bridges live in `src/clinical_extraction/exect/primitives.py` and the typed registry, including:
+
+- `exect.diagnosis.benchmark_bridge.v1`
+- `exect.seizure_type.benchmark_bridge.v1`
+- `exect.medication.benchmark_bridge.v1`
+- `exect.frequency.benchmark_bridge.v1`
+
+When changing label-policy behavior, update or extend these primitives rather than duplicating bridge logic in program modules. CUI/ontology-aware reproduction primitives remain deferred to the blocked Card 19 workstream.
 
 ## Diagnosis Checks
 

@@ -13,6 +13,7 @@ Read these before drawing conclusions:
 
 - `docs/gan_2026_label_audit.md`
 - `docs/deterministic_scorer_semantics.md`
+- `docs/taxonomy_primitive_catalog.md` for Gan frequency primitives
 - latest relevant Gan run note, especially `docs/gan_s0_full_validation_error_read.md` when working from the current S0 baseline
 - the run's `metrics.json`, `errors.json`, and `predictions.json`
 
@@ -51,6 +52,13 @@ Do not deterministically repair:
 - temporal-window choices that require reading the note
 
 For non-repairable failures, prefer verifier/repair DSPy work, prompt/example policy changes, or targeted schema/metric changes with tests.
+
+When changing deterministic Gan frequency behavior, check the typed primitives in `src/clinical_extraction/gan/primitives.py` first:
+
+- `gan.frequency.label_policy_bridge.v1`
+- `gan.frequency.evidence_guard.v1`
+
+Add or reuse fixture cases in `data/fixtures/primitive_cases.json` for regression coverage before changing bridge or evidence-guard logic.
 
 ## Evidence Rules
 

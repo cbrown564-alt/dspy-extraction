@@ -19,6 +19,9 @@ PrimitiveFieldFamilyValue = Literal[
     "investigation",
     "comorbidity",
     "birth_development",
+    "onset",
+    "epilepsy_cause",
+    "when_diagnosed",
     "family_history",
     "social_history",
     "driving",
@@ -497,6 +500,60 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         implementation_refs=["src/clinical_extraction/exect/primitives.py"],
     ),
     PrimitiveMetadata(
+        primitive_id="exect.frequency.rate_candidates.v1",
+        name="ExECT seizure-frequency rate candidates",
+        dataset="exect_v2",
+        field_families=["frequency"],
+        clinical_operation="candidate_generation",
+        knowledge_sources=["regex_rules", "temporal_rules", "benchmark_label_policy"],
+        hybrid_balance_class=[
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        interleaving_positions=["pre"],
+        control_modes=["soft_hint"],
+        input_contract="ExECT note text with quantified rates, qualitative change cues, or filtered Gan temporal hints.",
+        output_contract=(
+            "Note-anchored seizure-frequency candidates with benchmark-facing "
+            "templates, source spans, and Gan-filter caveats."
+        ),
+        compatible_experiment_arms=["H2", "H4"],
+        status="implemented",
+        caveats=[
+            "Do not reuse Gan monthly normalization or unknown/no-reference label policy.",
+            "Cap-25 H2 pre-vocab probe was rejected; keep this primitive off default S4 paths.",
+            "Gan temporal hints are accepted only when they map to audited ExECT templates.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
+        primitive_id="exect.frequency.benchmark_bridge.v1",
+        name="ExECT seizure-frequency benchmark bridge",
+        dataset="exect_v2",
+        field_families=["frequency"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["benchmark_label_policy", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic"],
+        interleaving_positions=["post"],
+        control_modes=["posthoc_correction"],
+        input_contract="Raw seizure-frequency prediction surfaces plus note text for co-label augmentation.",
+        output_contract=(
+            "Benchmark-facing frequency templates with near-miss repair, "
+            "seizure-type stripping, non-audited period blocking, and multi-label co-label flags."
+        ),
+        compatible_experiment_arms=["H1"],
+        status="implemented",
+        caveats=[
+            "ExECT abstention uses empty lists, not Gan no seizure frequency reference.",
+            "Seizure-free prose may collapse to seizure free while gold may use zero-rate templates.",
+            "Co-label augmentation requires explicit note cues; it does not invent qualitative changes.",
+        ],
+        implementation_refs=[
+            "src/clinical_extraction/exect/primitives.py",
+            "src/clinical_extraction/programs/exect_s4.py",
+        ],
+    ),
+    PrimitiveMetadata(
         primitive_id="gan.frequency.label_policy_bridge.v1",
         name="Gan frequency label-policy bridge",
         dataset="gan_2026",
@@ -538,7 +595,34 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "Supported, unsupported, no-reference, or normalized-interpretation support result."
         ),
         compatible_experiment_arms=["D1"],
-        status="planned",
+        status="implemented",
+        implementation_refs=["src/clinical_extraction/primitives.py"],
+    ),
+    PrimitiveMetadata(
+        primitive_id="shared.fixtures.primitive_cases.v1",
+        name="Primitive fixture case library",
+        dataset="shared",
+        field_families=["multi_family"],
+        clinical_operation="fixture_definition",
+        knowledge_sources=["manual_examples", "gold_audit_policy"],
+        hybrid_balance_class=["D1_deterministic_only"],
+        interleaving_positions=["eval_only"],
+        control_modes=["diagnostic_only"],
+        input_contract="Fixture case inputs keyed by primitive_id and failure mode.",
+        output_contract=(
+            "Deterministic primitive outputs validated against expected fields "
+            "without model calls."
+        ),
+        compatible_experiment_arms=["D1"],
+        status="implemented",
+        caveats=[
+            "Fixture cases are curated examples, not a substitute for dataset-wide audits.",
+            "Cases should cover positive, negative, ambiguous, absent, historical, planned, and unsupported-evidence modes.",
+        ],
+        implementation_refs=[
+            "data/fixtures/primitive_cases.json",
+            "src/clinical_extraction/fixtures/primitive_cases.py",
+        ],
     ),
     PrimitiveMetadata(
         primitive_id="gan.frequency.evidence_guard.v1",
@@ -567,6 +651,18 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
             "src/clinical_extraction/gan/react_tools.py",
         ],
     ),
+)
+
+
+def _load_planned_exect_family_primitives() -> tuple[PrimitiveMetadata, ...]:
+    from clinical_extraction.deferred_primitives import DEFERRED_CATALOG_PRIMITIVES
+    from clinical_extraction.exect.family_backlog import PLANNED_EXECT_FAMILY_PRIMITIVES
+
+    return (*PLANNED_EXECT_FAMILY_PRIMITIVES, *DEFERRED_CATALOG_PRIMITIVES)
+
+
+PRIMITIVE_REGISTRY = (
+    PRIMITIVE_REGISTRY + _load_planned_exect_family_primitives()
 )
 
 

@@ -7,7 +7,8 @@
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
 **Last refreshed:** 2026-05-20, after S4 frequency pre-candidate cap-25 (reject H2)
-**Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`
+**Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`  
+**Taxonomy primitives:** `docs/taxonomy_primitives_workstream_plan_20260520.md` (catalog: `docs/taxonomy_primitive_catalog.md`)
 
 ---
 
@@ -72,14 +73,31 @@ Completed:
 
 Research interpretation: taxonomy is now part of experiment design. Avoid more broad exploratory runs that cannot isolate the varied factor.
 
+### Taxonomy primitives (build-before-run)
+
+**Workstream plan:** `docs/taxonomy_primitives_workstream_plan_20260520.md`  
+**Catalog / contract:** `docs/taxonomy_primitive_catalog.md`, `docs/taxonomy_primitive_contract.md`  
+**Validation:** `uv run python scripts/validate_primitives.py --errors-only`
+
+Core infrastructure is in place for taxonomy-governed experiments: shared candidate, normalization, and evidence contracts; typed primitive registry; Gan frequency and ExECT S1/S4 primitive packs; interleaving adapters; L1/H1/H2/H3/H4/D1 arm templates; deterministic fixture library; inspection templates. New model-backed runs should compose these primitives rather than ad hoc helper changes.
+
+Decisions recorded: minimal H3 tool interface only (`docs/taxonomy_tool_interface_decision_20260520.md`); CUI/ontology primitives deferred to published benchmark reproduction (`docs/taxonomy_ontology_cui_scope_decision_20260520.md`). Broad ExECT sparse-family sketches (investigation, comorbidity, onset, etc.) are catalogued as `planned` metadata only.
+
+Still blocked: Card 19 published ExECT CUI benchmark pack; Card 20 Gan Real(300)/Real(150) primitive validation (data access).
+
 ## Active Work
 
 ### 1. S4 medication temporality post classifier (GPT)
 
-Precision-primary probe on planned/taper phrases (`exect_s4_temporality_deterministic_v1`); after or in parallel with frequency probe if configs do not share program paths.
+Precision-primary probe on planned/taper phrases (`exect_s4_temporality_deterministic_v1`).
+
+**Scaffold ready (2026-05-20):** `recover_exect_medication_temporality_with_post_classifier`, program variant `exect_s4_field_family_temporality_post_classifier_single_pass`, cap-25 L1/H1 configs, pre-registration `docs/exect_s4_temporality_deterministic_preregistration_20260520.md`.
+
+**Next:** run L1 + H1 cap-25 arms, inspect precision-primary gate, update registry + kanban decision.
 
 ## Recently Completed (2026-05-20)
 
+- **Taxonomy primitives workstream:** core phase complete — registry, catalog, adapters, arm templates, fixtures, `scripts/validate_primitives.py`; see `docs/taxonomy_primitives_workstream_plan_20260520.md`.
 - **S4 frequency pre-candidate cap-25 GPT complete:** L1 49.1% / H2 47.1% seizure_frequency F1 (`…191914Z` / `…191951Z`); inspection `docs/exect_s4_frequency_deterministic_gpt_inspection_20260520.md` — **reject** H2 (−2.0pp); program `exect_s4_field_family_frequency_pre_vocab_single_pass` + configs + preregistration.
 - **Medication pre-vocab slice GPT complete:** L1 98.3% / H2 95.1% medication F1 (`…191336Z` / `…191345Z`); inspection `docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md` — **reject** H2 (−3.2pp medication F1); registry rows added.
 - **Interleaving v2 registry rows:** four rows under `exect_s1_interleaving_gpt_validation_v2` (`docs/experiment_registry.json`).
@@ -160,7 +178,7 @@ Deferred. ExECT compile infrastructure can be reopened later, but optimizers sho
 
 ## Recommended Next Pull
 
-1. Design + run S4 medication temporality post-classifier probe (`exect_s4_temporality_deterministic_v1`; precision-primary).
+1. **Run** S4 medication temporality cap-25 L1/H1 (`exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini`, `exect_s4_temporality_h1_post_classifier_cap25_gpt4_1_mini`); inspect per `docs/exect_s4_temporality_deterministic_preregistration_20260520.md`.
 2. Keep L1 frozen as ExECT S1/S4 GPT default; do not promote any H2 pre-vocab variant (S1, medication slice, or S4 frequency).
 3. Paper-ready registry matrix export remains optional methods prep.
 

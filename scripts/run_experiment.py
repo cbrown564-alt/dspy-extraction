@@ -59,6 +59,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_POLICY_EXAMPLES,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
+    EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     build_exect_s4_module,
     exect_s4_run_metadata,
@@ -66,7 +67,11 @@ from clinical_extraction.programs.exect_s4 import (
 )
 
 _EXECT_S4_PROGRAM_VARIANTS = frozenset(
-    {EXECT_S4_VARIANT, EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT}
+    {
+        EXECT_S4_VARIANT,
+        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+        EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+    }
 )
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,

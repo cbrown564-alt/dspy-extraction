@@ -9,14 +9,16 @@ Follow this loop:
 
 1. Understand the requested behavior.
 2. Find the closest existing test file or test pattern.
-3. Write the smallest failing test that captures the new behavior.
-4. Run only the relevant test first.
-5. Confirm the failure is meaningful and caused by the missing behavior, not setup issues.
-6. Implement the smallest production-code change that makes the test pass.
-7. Re-run the focused test.
-8. Run the broader relevant test suite.
-9. Refactor only after tests pass.
-10. Summarize:
+3. For primitive or bridge behavior, check `data/fixtures/primitive_cases.json` and add a deterministic fixture case when the edge case should be reusable.
+4. Write the smallest failing test that captures the new behavior.
+5. Run only the relevant test first.
+6. Confirm the failure is meaningful and caused by the missing behavior, not setup issues.
+7. Implement the smallest production-code change that makes the test pass.
+8. Re-run the focused test.
+9. Run the broader relevant test suite.
+10. For primitive registry or adapter changes, also run `uv run python scripts/validate_primitives.py --errors-only`.
+11. Refactor only after tests pass.
+12. Summarize:
    - test added
    - implementation changed
    - commands run

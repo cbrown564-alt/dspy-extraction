@@ -8,6 +8,7 @@ from clinical_extraction.datasets.exect import (
     canonical_clinical_phrase,
     canonical_medication_name,
     collapse_diagnoses_to_most_specific,
+    format_medication_temporality_label,
 )
 from clinical_extraction.primitives import NormalizationResult, PrimitiveCandidate
 
@@ -23,6 +24,10 @@ EXECT_SEIZURE_TYPE_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
 )
 EXECT_DIAGNOSIS_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
     "exect.diagnosis.benchmark_bridge.v1"
+)
+EXECT_FREQUENCY_RATE_CANDIDATE_PRIMITIVE_ID = "exect.frequency.rate_candidates.v1"
+EXECT_FREQUENCY_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
+    "exect.frequency.benchmark_bridge.v1"
 )
 
 _ASM_CANONICAL_MEDICATIONS = frozenset(
@@ -428,6 +433,71 @@ def infer_exect_medication_temporality(evidence_text: str | None) -> Normalizati
             "cues": cues,
         },
     )
+
+
+_VALID_RX_TEMPORALITIES = frozenset({"current", "planned", "previous"})
+
+
+def recover_exect_medication_temporality_with_post_classifier(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Recover S4 medication-temporality labels with evidence-aligned post classification."""
+
+    flags: list[str] = []
+    recovered: list[str] = []
+    seen: set[str] = set()
+
+    for index, raw in enumerate(raw_values):
+        if not raw.strip():
+            continue
+        evidence = (
+            evidence_values[index].strip()
+            if index < len(evidence_values) and evidence_values[index]
+            else ""
+        )
+        model_status: str | None = None
+        if "|" in raw:
+            medication_part, status_part = raw.split("|", 1)
+            medication_name = canonical_medication_name(medication_part)
+            model_status = canonical_clinical_phrase(status_part)
+            context = evidence or note_text
+        else:
+            medication_name = canonical_medication_name(raw)
+            context = evidence or note_text
+
+        if not medication_name:
+            flags.append("s4_bridge:medication_temporality_unrecognized")
+            continue
+        if (
+            medication_name in _NON_ASM_MEDICATIONS
+            or medication_name not in _ASM_CANONICAL_MEDICATIONS
+        ):
+            flags.append("s4_bridge:medication_temporality_non_asm_removed")
+            continue
+
+        classification = infer_exect_medication_temporality(context)
+        status = classification.canonical_value
+        if status not in _VALID_RX_TEMPORALITIES:
+            if status == "unknown":
+                flags.append("s4_bridge:medication_temporality_unknown_removed")
+            else:
+                flags.append("s4_bridge:medication_temporality_invalid_status_removed")
+            continue
+        if (
+            model_status in _VALID_RX_TEMPORALITIES
+            and model_status != status
+        ):
+            flags.append("s4_bridge:medication_temporality_status_reclassified")
+
+        label = format_medication_temporality_label(medication_name, status)
+        if label in seen:
+            continue
+        seen.add(label)
+        recovered.append(label)
+
+    return recovered, flags
 
 
 def exect_seizure_type_benchmark_bridge(
@@ -1001,4 +1071,497 @@ def _local_context(note_text: str, start: int, end: int) -> str:
 def _has_current_prescription_marker(text: str) -> bool:
     return any(marker in text for marker in _CURRENT_MARKERS) or bool(
         re.search(r"^medications?\s*[:\s-]", text)
+    )
+
+
+_FREQUENCY_MARKERS = (
+    " per ",
+    "seizure free",
+    "frequency increased",
+    "frequency decreased",
+    "infrequent",
+)
+_NEAR_MISS_QUANTIFIED_FREQUENCY = re.compile(
+    r"^(?P<count>\d+) per (?P<period>week|month|day|year)$"
+)
+_FREQUENCY_CHANGE_SYNONYMS = {
+    "increased frequency": "frequency increased",
+    "frequency has increased": "frequency increased",
+    "decreased frequency": "frequency decreased",
+    "frequency has decreased": "frequency decreased",
+}
+_SEIZURE_TYPE_FREQUENCY_CONFUSION = (
+    "seizure",
+    "seizures",
+    "tonic clonic",
+    "convulsive",
+    "absence",
+    "myoclonic",
+    "focal aware",
+    "impaired awareness",
+    "altered awareness",
+    "temporal lobe",
+    "occipital lobe",
+)
+_QUANTIFIED_FREQUENCY_RE = re.compile(
+    r"^(?:\d+|several) per (?:\d+ )?(?:week|month|day|year)$"
+)
+_NON_AUDITED_FREQUENCY_RES = (
+    re.compile(r" per 30 day$"),
+    re.compile(r"previous appointment"),
+    re.compile(r"^several per"),
+    re.compile(r" per \d+ \d+ week$"),
+)
+_FREQUENCY_CO_LABEL_CUES = {
+    "frequency increased": (
+        "frequency increased",
+        "frequency has increased",
+        "increased frequency",
+    ),
+    "frequency decreased": (
+        "frequency decreased",
+        "frequency has decreased",
+        "decreased frequency",
+    ),
+    "infrequent": ("infrequent",),
+}
+_COUNT_WORDS = {
+    "one": "1",
+    "two": "2",
+    "three": "3",
+    "four": "4",
+    "five": "5",
+    "six": "6",
+    "seven": "7",
+    "eight": "8",
+    "nine": "9",
+    "ten": "10",
+}
+_PERIOD_UNIT = r"weeks?|months?|days?|years?"
+_QUANTIFIED_FREQUENCY_NOTE_RE = re.compile(
+    rf"\b(?P<count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+    rf"(?:seizures?\s+)?(?:every|per)\s+(?P<period_count>\d+\s+)?"
+    rf"(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_ZERO_RATE_FREQUENCY_NOTE_RE = re.compile(
+    rf"\b(?:no|zero|0)\s+seizures?\s+per\s+(?P<period_count>\d+)\s+"
+    rf"(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_SEIZURE_EVERY_N_PERIOD_RE = re.compile(
+    rf"seizures?\s+every\s+"
+    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
+    rf"(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_SEIZURE_FREE_SINCE_RE = re.compile(
+    r"seizure[- ]free since (\d{4})",
+    flags=re.IGNORECASE,
+)
+_AUDITED_QUALITATIVE_FREQUENCY_LABELS = frozenset(
+    {
+        "frequency increased",
+        "frequency decreased",
+        "infrequent",
+        "seizure free",
+    }
+)
+
+
+def build_exect_frequency_candidate_payloads(note_text: str) -> list[PrimitiveCandidate]:
+    """Return note-anchored ExECT seizure-frequency candidates as shared payloads."""
+
+    payloads: list[PrimitiveCandidate] = []
+    for label in _build_exect_frequency_label_set(note_text):
+        span = _frequency_label_span(note_text, label)
+        payloads.append(
+            PrimitiveCandidate(
+                primitive_id=EXECT_FREQUENCY_RATE_CANDIDATE_PRIMITIVE_ID,
+                dataset="exect_v2",
+                field_family="frequency",
+                raw_text=span or label,
+                normalized_value=label,
+                benchmark_value=label,
+                source_span_text=span or label,
+                start=note_text.find(span) if span and span in note_text else None,
+                end=(
+                    note_text.find(span) + len(span)
+                    if span and span in note_text
+                    else None
+                ),
+                rule_name=_frequency_candidate_rule_name(label, note_text),
+                confidence=1.0,
+                caveats=[
+                    "ExECT seizure-frequency candidates are soft hints for narrow S4 probes.",
+                    "Gan monthly normalization and label-policy classes do not transfer to ExECT.",
+                    "MarkupSeizureFrequency templates remain the benchmark-facing gold surface.",
+                ],
+                metadata={
+                    "candidate_source": _frequency_candidate_source(label, note_text),
+                    "gan_temporal_filtered": _frequency_candidate_source(label, note_text)
+                    == "gan_temporal_filtered",
+                },
+            )
+        )
+    return payloads
+
+
+def build_exect_frequency_pre_vocab_labels(note_text: str) -> list[str]:
+    """Build sorted benchmark-facing seizure-frequency labels for H2 pre-vocab probes."""
+
+    return sorted(_build_exect_frequency_label_set(note_text))
+
+
+def format_exect_frequency_pre_vocab_note(note_text: str) -> str:
+    """Inject seizure-frequency-only audited candidates before the clinical note."""
+
+    frequency_candidates = build_exect_frequency_pre_vocab_labels(note_text)
+    lines = [
+        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
+        f"seizure_frequency: {', '.join(frequency_candidates)}",
+        "",
+        "---",
+        "",
+        note_text,
+    ]
+    return "\n".join(lines)
+
+
+def repair_exect_frequency_surface(canonical: str) -> tuple[str, list[str]]:
+    """Repair near-miss quantified rates and qualitative frequency-change synonyms."""
+
+    flags: list[str] = []
+    repaired = canonical
+
+    synonym = _FREQUENCY_CHANGE_SYNONYMS.get(canonical)
+    if synonym:
+        return synonym, ["s4_bridge:frequency_change_synonym"]
+
+    near_miss = _NEAR_MISS_QUANTIFIED_FREQUENCY.match(canonical)
+    if near_miss:
+        repaired = (
+            f"{near_miss.group('count')} per 1 {near_miss.group('period')}"
+        )
+        flags.append("s4_bridge:frequency_missing_time_period_inserted")
+
+    if canonical.startswith("seizure free") and canonical != "seizure free":
+        return "seizure free", [*flags, "s4_bridge:seizure_free_prose_collapsed"]
+
+    return repaired, flags
+
+
+def recover_exect_frequency_benchmark_values(
+    raw_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Recover benchmark-facing seizure-frequency labels from model outputs."""
+
+    flags: list[str] = []
+    recovered: list[str] = []
+    seen: set[str] = set()
+
+    for raw in raw_values:
+        if not raw.strip():
+            continue
+        canonical = canonical_clinical_phrase(raw)
+        if not canonical:
+            continue
+        if _looks_like_seizure_type_not_frequency(raw):
+            flags.append("s4_bridge:seizure_type_removed_from_frequency")
+            continue
+        repaired, repair_flags = repair_exect_frequency_surface(canonical)
+        flags.extend(repair_flags)
+        canonical = repaired
+        if _is_non_audited_frequency_surface(canonical):
+            flags.append("s4_bridge:non_audited_frequency_removed")
+            continue
+        if not _is_audited_exect_frequency_template(canonical):
+            flags.append("s4_bridge:unsupported_frequency_removed")
+            continue
+        if canonical in seen:
+            continue
+        seen.add(canonical)
+        recovered.append(canonical)
+
+    recovered, co_label_flags = _augment_exect_frequency_co_labels(recovered, note_text)
+    flags.extend(co_label_flags)
+    return recovered, flags
+
+
+def exect_frequency_benchmark_bridge(
+    raw_values: list[str],
+    *,
+    note_text: str = "",
+    prediction_affecting: bool = True,
+) -> list[NormalizationResult]:
+    """Map seizure-frequency predictions to audited ExECT benchmark templates."""
+
+    recovered, flags = recover_exect_frequency_benchmark_values(raw_values, note_text)
+    if not recovered:
+        return [
+            NormalizationResult(
+                primitive_id=EXECT_FREQUENCY_BENCHMARK_BRIDGE_PRIMITIVE_ID,
+                dataset="exect_v2",
+                field_family="frequency",
+                raw_value=None,
+                canonical_value=None,
+                benchmark_value=None,
+                clinical_caveat=(
+                    "ExECT seizure frequency abstains when no audited benchmark template "
+                    "survives bridge policy."
+                ),
+                transformation_rule="exect_frequency_abstention",
+                prediction_affecting=prediction_affecting,
+                scorer_only=not prediction_affecting,
+                metadata={
+                    "bridge_flags": flags,
+                    "abstention": True,
+                    "no_reference_policy": "empty_list_not_gan_no_reference",
+                },
+            )
+        ]
+
+    return [
+        _exect_frequency_normalization_result(
+            raw_value=label,
+            benchmark_value=label,
+            bridge_flags=flags,
+            prediction_affecting=prediction_affecting,
+        )
+        for label in recovered
+    ]
+
+
+def filter_gan_temporal_candidate_for_exect(canonical_label: str) -> str | None:
+    """Accept Gan temporal hints only when they map to audited ExECT frequency templates."""
+
+    return _accept_exect_frequency_candidate_label(canonical_label)
+
+
+def _build_exect_frequency_label_set(note_text: str) -> set[str]:
+    from clinical_extraction.gan.temporal_candidates import (
+        build_temporal_frequency_candidates_from_note,
+    )
+
+    candidates: set[str] = set()
+    note_lower = note_text.lower()
+
+    for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
+        if any(cue in note_lower for cue in cues):
+            accepted = _accept_exect_frequency_candidate_label(label)
+            if accepted:
+                candidates.add(accepted)
+
+    if "seizure free" in note_lower:
+        since_match = _SEIZURE_FREE_SINCE_RE.search(note_text)
+        if since_match:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"seizure free since {since_match.group(1)}"
+            )
+        else:
+            accepted = _accept_exect_frequency_candidate_label("seizure free")
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _QUANTIFIED_FREQUENCY_NOTE_RE.finditer(note_text):
+        count_token = match.group("count").lower()
+        count = _COUNT_WORDS.get(count_token, count_token)
+        period_count = (match.group("period_count") or "1 ").strip().split()[0]
+        period = _normalize_period_unit(match.group("period"))
+        accepted = _accept_exect_frequency_candidate_label(
+            f"{count} per {period_count} {period}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _ZERO_RATE_FREQUENCY_NOTE_RE.finditer(note_text):
+        period_count = match.group("period_count")
+        period = _normalize_period_unit(match.group("period"))
+        accepted = _accept_exect_frequency_candidate_label(
+            f"0 per {period_count} {period}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _SEIZURE_EVERY_N_PERIOD_RE.finditer(note_text):
+        period_token = match.group("period_count").lower()
+        period_count = _COUNT_WORDS.get(period_token, period_token)
+        period = _normalize_period_unit(match.group("period"))
+        accepted = _accept_exect_frequency_candidate_label(
+            f"1 per {period_count} {period}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
+        accepted = _accept_exect_frequency_candidate_label(
+            temporal_candidate.canonical_label
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    return candidates
+
+
+def _accept_exect_frequency_candidate_label(label: str) -> str | None:
+    canonical = canonical_clinical_phrase(label)
+    if not canonical or _looks_like_seizure_type_not_frequency(canonical):
+        return None
+    repaired, _ = repair_exect_frequency_surface(canonical)
+    if _is_non_audited_frequency_surface(repaired):
+        return None
+    if not _is_audited_exect_frequency_template(repaired):
+        return None
+    return repaired
+
+
+def _is_audited_exect_frequency_template(canonical: str) -> bool:
+    if canonical in _AUDITED_QUALITATIVE_FREQUENCY_LABELS:
+        return True
+    if re.match(r"seizure free since \d{4}$", canonical):
+        return True
+    return bool(_QUANTIFIED_FREQUENCY_RE.match(canonical))
+
+
+def _is_non_audited_frequency_surface(canonical: str) -> bool:
+    return any(pattern.search(canonical) for pattern in _NON_AUDITED_FREQUENCY_RES)
+
+
+def _is_quantified_frequency_label(canonical: str) -> bool:
+    return bool(_QUANTIFIED_FREQUENCY_RE.match(canonical))
+
+
+def _augment_exect_frequency_co_labels(
+    recovered: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    if not any(_is_quantified_frequency_label(label) for label in recovered):
+        return recovered, []
+
+    note = note_text.lower()
+    flags: list[str] = []
+    augmented = list(recovered)
+    seen = set(recovered)
+
+    for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
+        if label in seen:
+            continue
+        if any(cue in note for cue in cues):
+            augmented.append(label)
+            seen.add(label)
+            flags.append("s4_bridge:frequency_co_label_augmented")
+
+    return augmented, flags
+
+
+def _looks_like_seizure_frequency_label(value: str) -> bool:
+    canonical = canonical_clinical_phrase(value)
+    if not canonical:
+        return False
+    return any(marker in canonical for marker in _FREQUENCY_MARKERS)
+
+
+def _looks_like_seizure_type_not_frequency(value: str) -> bool:
+    canonical = canonical_clinical_phrase(value)
+    if not canonical:
+        return False
+    if _looks_like_seizure_frequency_label(canonical):
+        return False
+    return any(marker in canonical for marker in _SEIZURE_TYPE_FREQUENCY_CONFUSION)
+
+
+def _normalize_period_unit(period: str) -> str:
+    return period.lower().rstrip("s")
+
+
+def _frequency_label_span(note_text: str, label: str) -> str | None:
+    if label == "frequency increased":
+        for cue in _FREQUENCY_CO_LABEL_CUES["frequency increased"]:
+            index = note_text.lower().find(cue)
+            if index >= 0:
+                return note_text[index : index + len(cue)]
+    if label == "frequency decreased":
+        for cue in _FREQUENCY_CO_LABEL_CUES["frequency decreased"]:
+            index = note_text.lower().find(cue)
+            if index >= 0:
+                return note_text[index : index + len(cue)]
+    if label.startswith("seizure free"):
+        index = note_text.lower().find("seizure free")
+        if index >= 0:
+            return note_text[index : index + len("seizure free")]
+    match = _QUANTIFIED_FREQUENCY_NOTE_RE.search(note_text)
+    if match and label.startswith(match.group("count").lower()[:1]):
+        return match.group(0)
+    return None
+
+
+def _frequency_candidate_rule_name(label: str, note_text: str) -> str:
+    source = _frequency_candidate_source(label, note_text)
+    if source == "gan_temporal_filtered":
+        return "gan_temporal_to_exect_template"
+    if source == "qualitative_change_cue":
+        return "qualitative_frequency_change_cue"
+    if label.startswith("seizure free"):
+        return "seizure_free_surface"
+    if label.startswith("0 per "):
+        return "zero_rate_surface"
+    return "quantified_rate_surface"
+
+
+def _frequency_candidate_source(label: str, note_text: str) -> str:
+    from clinical_extraction.gan.temporal_candidates import (
+        build_temporal_frequency_candidates_from_note,
+    )
+
+    note_lower = note_text.lower()
+    if label in _FREQUENCY_CO_LABEL_CUES and any(
+        cue in note_lower for cue in _FREQUENCY_CO_LABEL_CUES[label]
+    ):
+        return "qualitative_change_cue"
+    if label.startswith("seizure free") and "seizure free" in note_lower:
+        return "seizure_free_surface"
+    for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
+        accepted = _accept_exect_frequency_candidate_label(
+            temporal_candidate.canonical_label
+        )
+        if accepted == label:
+            return "gan_temporal_filtered"
+    return "note_regex_quantified"
+
+
+def _exect_frequency_normalization_result(
+    *,
+    raw_value: str,
+    benchmark_value: str,
+    bridge_flags: list[str],
+    prediction_affecting: bool,
+) -> NormalizationResult:
+    caveat = None
+    if "s4_bridge:seizure_free_prose_collapsed" in bridge_flags:
+        caveat = (
+            "Clinical prose may state seizure-free duration; benchmark gold may use "
+            "quantified zero-rate templates instead."
+        )
+    elif "s4_bridge:frequency_co_label_augmented" in bridge_flags:
+        caveat = (
+            "Qualitative change labels are added only when note text contains explicit "
+            "frequency-change cues alongside a quantified rate."
+        )
+    return NormalizationResult(
+        primitive_id=EXECT_FREQUENCY_BENCHMARK_BRIDGE_PRIMITIVE_ID,
+        dataset="exect_v2",
+        field_family="frequency",
+        raw_value=raw_value,
+        canonical_value=benchmark_value,
+        benchmark_value=benchmark_value,
+        clinical_caveat=caveat,
+        transformation_rule="exect_frequency_benchmark_recovery",
+        prediction_affecting=prediction_affecting,
+        scorer_only=not prediction_affecting,
+        metadata={
+            "bridge_flags": bridge_flags,
+            "source_policy": "markup_seizure_frequency_templates",
+            "gan_monthly_policy_excluded": True,
+        },
     )

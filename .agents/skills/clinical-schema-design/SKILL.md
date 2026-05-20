@@ -18,8 +18,14 @@ Follow this workflow:
    - `docs/outline.md`
    - `docs/exect_gold_label_audit.md` for ExECTv2 fields
    - `docs/gan_2026_label_audit.md` for Gan frequency labels
-3. Search for existing schema, validation, and scorer patterns before adding new types.
+3. Search for existing schema, validation, scorer, and primitive payload patterns before adding new types.
 4. Design fields so validators and scorers can tell the difference between absent, unknown, negated, historical, planned, and present facts.
+
+Deterministic hint and bridge payloads should align with shared primitive contracts when applicable:
+
+- `PrimitiveCandidate` for note-anchored hints and candidate generation
+- `NormalizationResult` for raw, canonical, and benchmark-facing values
+- `EvidenceSupportResult` for quote and span support checks
 
 ## Schema Rules
 

@@ -1,0 +1,40 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini",
+  "hypothesis": "Frozen S4 single-pass baseline on cap-25 is the reference arm for medication-temporality post-classifier recovery (H1).",
+  "max_records": 25,
+  "metric_caveats": [
+    "Cap-25 gate for exect_s4_temporality_deterministic_v1; not a full-validation performance estimate.",
+    "Medication_temporality precision is the primary decision metric; F1 and pooled micro are diagnostic.",
+    "Eleven-family S4 scope unchanged; only post-recovery policy varies in the paired H1 arm.",
+    "See docs/exect_field_family_deterministic_support_map_20260520.md."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s4_field_family_single_pass",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s4_field_family",
+  "scorer_mode": "exect_s4_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["medication"],
+    "comparison_group": "exect_s4_temporality_deterministic_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["L1_llm_constrained"],
+    "intended_decision": "pending",
+    "interleaving_positions": ["during"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s4",
+    "varied_factor": "program_architecture"
+  }
+}

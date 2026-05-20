@@ -1,0 +1,290 @@
+{
+  "description": "Deterministic primitive fixture cases organized by dataset, field family, primitive, and failure mode. Used for no-model primitive validation without LLM calls.",
+  "name": "primitive_cases_v1",
+  "cases": [
+    {
+      "case_id": "shared.evidence.exact_substring.v1",
+      "primitive_id": "shared.evidence.substring_support.v1",
+      "dataset": "shared",
+      "field_family": "multi_family",
+      "failure_mode": "positive",
+      "inputs": {
+        "document_text": "She reports one seizure per month on levetiracetam.",
+        "quote": "one seizure per month",
+        "normalized_value": "1 per month"
+      },
+      "expected": {
+        "support_status": "exact_substring",
+        "raw_quote_supported": true,
+        "normalized_interpretation_supported": false
+      }
+    },
+    {
+      "case_id": "shared.evidence.normalized_interpretation.v1",
+      "primitive_id": "shared.evidence.substring_support.v1",
+      "dataset": "shared",
+      "field_family": "multi_family",
+      "failure_mode": "ambiguous",
+      "inputs": {
+        "document_text": "She reports one seizure per month on levetiracetam.",
+        "quote": "1 per month",
+        "normalized_value": "1 per month",
+        "interpretation_evidence_text": "one seizure per month"
+      },
+      "expected": {
+        "support_status": "normalized_interpretation",
+        "raw_quote_supported": false,
+        "normalized_interpretation_supported": true
+      }
+    },
+    {
+      "case_id": "shared.evidence.unsupported_quote.v1",
+      "primitive_id": "shared.evidence.substring_support.v1",
+      "dataset": "shared",
+      "field_family": "multi_family",
+      "failure_mode": "unsupported_evidence",
+      "inputs": {
+        "document_text": "No seizures have been documented since March.",
+        "quote": "one seizure per month"
+      },
+      "expected": {
+        "support_status": "unsupported_quote"
+      }
+    },
+    {
+      "case_id": "shared.evidence.no_reference.v1",
+      "primitive_id": "shared.evidence.substring_support.v1",
+      "dataset": "shared",
+      "field_family": "multi_family",
+      "failure_mode": "absent",
+      "inputs": {
+        "document_text": "No seizures have been documented since March.",
+        "quote": null
+      },
+      "expected": {
+        "support_status": "no_reference"
+      }
+    },
+    {
+      "case_id": "gan.frequency.evidence_guard.elided.v1",
+      "primitive_id": "gan.frequency.evidence_guard.v1",
+      "dataset": "gan_2026",
+      "field_family": "frequency",
+      "failure_mode": "positive",
+      "inputs": {
+        "note_text": "She had two seizures in January. She then had one seizure in March.",
+        "evidence_text": "two seizures in January ... one seizure in March",
+        "label": "3 per 3 month"
+      },
+      "expected": {
+        "support_status": "normalized_interpretation",
+        "normalized_interpretation_supported": true
+      }
+    },
+    {
+      "case_id": "gan.frequency.evidence_guard.no_reference.v1",
+      "primitive_id": "gan.frequency.evidence_guard.v1",
+      "dataset": "gan_2026",
+      "field_family": "frequency",
+      "failure_mode": "absent",
+      "inputs": {
+        "note_text": "Administrative letter confirming appointment cancellation.",
+        "evidence_text": null,
+        "label": "no seizure frequency reference"
+      },
+      "expected": {
+        "support_status": "no_reference"
+      }
+    },
+    {
+      "case_id": "gan.frequency.label_policy.unknown.v1",
+      "primitive_id": "gan.frequency.label_policy_bridge.v1",
+      "dataset": "gan_2026",
+      "field_family": "frequency",
+      "failure_mode": "ambiguous",
+      "inputs": {
+        "label": "unknown"
+      },
+      "expected": {
+        "canonical_value": "unknown",
+        "benchmark_value": "unknown",
+        "metadata_contains": {
+          "label_policy_class": "unknown_frequency"
+        }
+      }
+    },
+    {
+      "case_id": "gan.frequency.label_policy.no_reference.v1",
+      "primitive_id": "gan.frequency.label_policy_bridge.v1",
+      "dataset": "gan_2026",
+      "field_family": "frequency",
+      "failure_mode": "absent",
+      "inputs": {
+        "label": "no seizure frequency reference"
+      },
+      "expected": {
+        "canonical_value": "no seizure frequency reference",
+        "benchmark_value": "no seizure frequency reference",
+        "metadata_contains": {
+          "label_policy_class": "no_frequency_reference"
+        }
+      }
+    },
+    {
+      "case_id": "gan.frequency.temporal_candidates.monthly_rate.v1",
+      "primitive_id": "gan.frequency.temporal_candidates.v1",
+      "dataset": "gan_2026",
+      "field_family": "frequency",
+      "failure_mode": "positive",
+      "inputs": {
+        "note_text": "He reports about one seizure per month on lamotrigine."
+      },
+      "expected": {
+        "contains_benchmark_values": ["1 per month"]
+      }
+    },
+    {
+      "case_id": "exect.medication.rx_candidates.planned.v1",
+      "primitive_id": "exect.medication.rx_candidates.v1",
+      "dataset": "exect_v2",
+      "field_family": "medication",
+      "failure_mode": "planned",
+      "inputs": {
+        "note_text": "Current medication: Lamictal 100mg BD. To start levetiracetam 250mg nocte if seizures recur."
+      },
+      "expected": {
+        "contains_raw_texts": ["levetiracetam"],
+        "metadata_contains": {
+          "temporality": "planned"
+        },
+        "benchmark_value_is_null_for_raw_text": "levetiracetam"
+      }
+    },
+    {
+      "case_id": "exect.medication_temporality.previous.v1",
+      "primitive_id": "exect.medication_temporality.post_classifier.v1",
+      "dataset": "exect_v2",
+      "field_family": "medication",
+      "failure_mode": "historical",
+      "inputs": {
+        "evidence_text": "Previously tried carbamazepine."
+      },
+      "expected": {
+        "canonical_value": "previous",
+        "benchmark_value": null,
+        "metadata_contains": {
+          "benchmark_s1_included": false
+        }
+      }
+    },
+    {
+      "case_id": "exect.medication.benchmark_bridge.non_asm.v1",
+      "primitive_id": "exect.medication.benchmark_bridge.v1",
+      "dataset": "exect_v2",
+      "field_family": "medication",
+      "failure_mode": "negative",
+      "inputs": {
+        "raw_value": "citalopram",
+        "evidence_text": "Current medication: citalopram 20mg daily"
+      },
+      "expected": {
+        "benchmark_value": null,
+        "metadata_contains": {
+          "is_asm": false,
+          "rejected_reason": "non_asm_medication"
+        }
+      }
+    },
+    {
+      "case_id": "exect.medication.benchmark_bridge.brand_surface.v1",
+      "primitive_id": "exect.medication.benchmark_bridge.v1",
+      "dataset": "exect_v2",
+      "field_family": "medication",
+      "failure_mode": "positive",
+      "inputs": {
+        "raw_value": "lamotrigine",
+        "note_text": "Current medication: Lamictal 100mg BD",
+        "evidence_text": "Current medication: Lamictal 100mg BD"
+      },
+      "expected": {
+        "benchmark_value": "lamictal",
+        "metadata_contains": {
+          "benchmark_surface_policy": "brand_surface_preserved"
+        }
+      }
+    },
+    {
+      "case_id": "exect.frequency.rate_candidates.quantified.v1",
+      "primitive_id": "exect.frequency.rate_candidates.v1",
+      "dataset": "exect_v2",
+      "field_family": "frequency",
+      "failure_mode": "positive",
+      "inputs": {
+        "note_text": "He has about one focal seizure every three weeks and the frequency has increased."
+      },
+      "expected": {
+        "contains_benchmark_values": ["1 per 3 week", "frequency increased"]
+      }
+    },
+    {
+      "case_id": "exect.frequency.benchmark_bridge.near_miss_repair.v1",
+      "primitive_id": "exect.frequency.benchmark_bridge.v1",
+      "dataset": "exect_v2",
+      "field_family": "frequency",
+      "failure_mode": "positive",
+      "inputs": {
+        "raw_values": ["1 per day", "1 per month", "frequency increased"],
+        "note_text": "One seizure per day and one per month; frequency has increased."
+      },
+      "expected": {
+        "benchmark_values": ["1 per 1 day", "1 per 1 month", "frequency increased"]
+      }
+    },
+    {
+      "case_id": "exect.frequency.benchmark_bridge.abstention.v1",
+      "primitive_id": "exect.frequency.benchmark_bridge.v1",
+      "dataset": "exect_v2",
+      "field_family": "frequency",
+      "failure_mode": "absent",
+      "inputs": {
+        "raw_values": ["focal seizures"],
+        "note_text": "Seizure type: focal seizures only."
+      },
+      "expected": {
+        "benchmark_values": [null],
+        "metadata_contains": {
+          "abstention": true,
+          "no_reference_policy": "empty_list_not_gan_no_reference"
+        }
+      }
+    },
+    {
+      "case_id": "exect.diagnosis.benchmark_bridge.uncertainty_strip.v1",
+      "primitive_id": "exect.diagnosis.benchmark_bridge.v1",
+      "dataset": "exect_v2",
+      "field_family": "diagnosis",
+      "failure_mode": "positive",
+      "inputs": {
+        "raw_value": "probable juvenile myoclonic epilepsy"
+      },
+      "expected": {
+        "benchmark_values": ["juvenile myoclonic epilepsy"],
+        "metadata_flag_contains": "benchmark_bridge:diagnosis_uncertainty_stripped"
+      }
+    },
+    {
+      "case_id": "exect.seizure_type.benchmark_bridge.granular_coarsen.v1",
+      "primitive_id": "exect.seizure_type.benchmark_bridge.v1",
+      "dataset": "exect_v2",
+      "field_family": "seizure_type",
+      "failure_mode": "positive",
+      "inputs": {
+        "raw_value": "focal impaired awareness seizure"
+      },
+      "expected": {
+        "benchmark_values": ["focal seizure"],
+        "metadata_flag_contains": "benchmark_bridge:granular_seizure_surface_coarsened"
+      }
+    }
+  ]
+}

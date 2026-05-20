@@ -11,9 +11,10 @@ Follow this workflow:
 
 1. State the experiment hypothesis in one sentence.
 2. Identify the dataset, split, model config, schema level, and scorer before changing code.
-3. Search for existing DSPy signatures, modules, configs, and run artifact conventions.
-4. Change one experimental factor at a time unless the experiment explicitly tests an interaction.
-5. Record enough configuration for the run to be reproduced later.
+3. Search for existing DSPy signatures, modules, configs, primitive registry entries, and run artifact conventions.
+4. Compose deterministic helpers from typed primitives rather than ad hoc helper edits unless the experiment is explicitly testing a new primitive.
+5. Change one experimental factor at a time unless the experiment explicitly tests an interaction.
+6. Record enough configuration for the run to be reproduced later.
 
 ## Run Lifecycle
 
@@ -38,6 +39,7 @@ Every experiment should make these explicit:
 - few-shot/demo policy
 - context selection policy
 - verifier, repair, or abstention policy
+- primitive IDs and interleaving positions used
 - scorer and metric mode
 - output artifact paths
 
@@ -60,12 +62,46 @@ Minimum config fields:
 
 When writing a promotion, freeze, hold, or reject note, include a **Taxonomy**
 section with the same dimensions plus `clinical_task_family` and `outcome`.
+Use the inspection templates in `docs/templates/` and the section contracts in
+`src/clinical_extraction/experiments/inspection_templates.py`.
 
-After adding or editing configs or registry rows, run:
+## Taxonomy Primitives (required on new deterministic helpers)
+
+Prefer existing typed primitives from `docs/taxonomy_primitive_catalog.md` and
+`src/clinical_extraction/primitives.py` before adding new helper code inside a
+program module.
+
+For new L1/H1/H2/H3/H4/D1 arms, start from
+`src/clinical_extraction/experiments/arm_templates.py` via `build_experiment_arm_config`
+so taxonomy metadata, comparison groups, and primitive compatibility are checked
+before the config is emitted.
+
+Every experiment that uses deterministic helpers should make these explicit:
+
+- primitive IDs and versions
+- interleaving positions (`pre`, `during`, `tool_during`, `post`, `eval_only`)
+- control mode (soft hint, hard constraint, tool affordance, posthoc correction, diagnostic-only)
+- whether each primitive is prediction-affecting or scorer-only/diagnostic
+
+When adding or changing primitives, use `taxonomy-primitive-design`.
+
+After adding or editing configs, registry rows, or primitive metadata, run:
 
 ```powershell
 uv run python scripts/validate_experiment_taxonomy.py --errors-only
+uv run python scripts/validate_primitives.py --errors-only
 ```
+
+## Build-Before-Run Policy
+
+The taxonomy-primitives phase is complete enough that new model-backed runs should
+compose existing primitives rather than quietly changing bridge behavior, evidence
+policy, or prompt surfaces in program code.
+
+Limit new model-backed experiments to cases that answer an active research decision
+already tracked in `docs/kanban_plan.md`. Otherwise favor deterministic validation,
+fixture design, config generation, and inspection templates until the next
+systematic run batch.
 
 ## Program Variant Guidance
 

@@ -12,11 +12,12 @@ Follow this workflow:
 1. Read the relevant dataset audit before changing scorer behavior:
    - ExECTv2: `docs/exect_gold_label_audit.md`
    - Gan: `docs/gan_2026_label_audit.md`
-2. Identify whether the scorer is annotation-faithful, clinically corrected, or experimental. Do not mix these modes silently.
-3. Normalize labels before comparing values. Put normalization in explicit functions with focused tests.
-4. Preserve field-specific scoring where fields have different semantics.
-5. Add or update regression examples for edge cases described in the audits.
-6. Report metric definitions clearly in generated summaries and benchmark outputs.
+2. Check whether benchmark normalization or bridge behavior already exists as a typed primitive in `docs/taxonomy_primitive_catalog.md` before changing scorer-adjacent helper code.
+3. Identify whether the scorer is annotation-faithful, clinically corrected, or experimental. Do not mix these modes silently.
+4. Normalize labels before comparing values. Put normalization in explicit functions with focused tests, or reuse an existing benchmark-bridge primitive.
+5. Preserve field-specific scoring where fields have different semantics.
+6. Add or update regression examples for edge cases described in the audits.
+7. Report metric definitions clearly in generated summaries and benchmark outputs.
 
 ## Required Design Checks
 
@@ -30,6 +31,11 @@ Follow this workflow:
 ## Repair Boundary
 
 Keep deterministic surface repair separate from semantic repair.
+
+When benchmark-facing normalization or bridge behavior changes, prefer updating or
+adding a typed primitive that returns `NormalizationResult` with explicit
+`prediction_affecting` and `scorer_only` flags rather than scattering logic in
+program or scorer modules. Use `taxonomy-primitive-design` for that work.
 
 Allowed deterministic repair:
 

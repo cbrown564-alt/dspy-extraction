@@ -9,6 +9,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
+    EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     ExectS4FieldFamilyModule,
     ExectS4FrequencyPreVocabFieldFamilyModule,
@@ -177,6 +178,67 @@ def test_recover_s4_investigation_raw_values_drops_planned_scan_unknown():
 def test_build_exect_s4_module_returns_frequency_pre_vocab_single_pass():
     module = build_exect_s4_module(EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT)
     assert isinstance(module, ExectS4FrequencyPreVocabFieldFamilyModule)
+
+
+def test_build_exect_s4_module_returns_same_single_pass_for_temporality_post_classifier():
+    module = build_exect_s4_module(EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT)
+    assert isinstance(module, ExectS4FieldFamilyModule)
+
+
+def test_predict_exect_s4_temporality_post_classifier_applies_evidence_aligned_recovery():
+    record = load_exect_gold_document("EA0008")
+    dspy.configure(
+        lm=DummyLM(
+            answers=[
+                {
+                    "reasoning": "Post-classifier arm.",
+                    "diagnosis": [],
+                    "diagnosis_evidence": [],
+                    "seizure_type": [],
+                    "seizure_type_evidence": [],
+                    "annotated_medication": [],
+                    "annotated_medication_evidence": [],
+                    "investigation": [],
+                    "investigation_evidence": [],
+                    "comorbidity": [],
+                    "comorbidity_evidence": [],
+                    "birth_history": [],
+                    "birth_history_evidence": [],
+                    "onset": [],
+                    "onset_evidence": [],
+                    "epilepsy_cause": [],
+                    "epilepsy_cause_evidence": [],
+                    "when_diagnosed": [],
+                    "when_diagnosed_evidence": [],
+                    "seizure_frequency": [],
+                    "seizure_frequency_evidence": [],
+                    "medication_temporality": ["lamotrigine|planned", "thyroxine|current"],
+                    "medication_temporality_evidence": [
+                        "Current medication: lamotrigine 75mg bd as detailed below to reduce",
+                        "thyroxine 100mcg",
+                    ],
+                }
+            ]
+        )
+    )
+
+    prediction_set = predict_exect_s4_records(
+        build_exect_s4_module(EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+    )
+
+    temporality = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "medication_temporality"
+    ]
+    assert temporality == ["lamotrigine|current"]
+    assert prediction_set.predictions[0].metadata["post_classifier"][
+        "medication_temporality"
+    ] == "exect.medication_temporality.post_classifier.v1"
 
 
 def test_build_precomputed_seizure_frequency_candidates_from_note_text():

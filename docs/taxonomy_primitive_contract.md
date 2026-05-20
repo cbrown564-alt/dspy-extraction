@@ -74,4 +74,4 @@ The payload models are shared infrastructure. Dataset-specific primitive packs s
 
 ## Caveats
 
-This contract now covers the initial metadata and payload layers plus the first Gan frequency, ExECT medication, ExECT seizure-type, and ExECT diagnosis primitive packs. It does not yet implement interleaving adapters, fixture libraries, experiment arm templates, or reporting templates.
+This contract now covers the initial metadata and payload layers, the first Gan frequency, ExECT medication, ExECT seizure-type, ExECT diagnosis, and ExECT S4 frequency primitive packs, the initial interleaving adapter layer in `src/clinical_extraction/interleaving_adapters.py`, experiment arm templates in `src/clinical_extraction/experiments/arm_templates.py`, inspection templates under `docs/templates/`, the primitive fixture library in `data/fixtures/primitive_cases.json` with loader helpers in `src/clinical_extraction/fixtures/primitive_cases.py`, planned ExECT family sketches in `src/clinical_extraction/exect/family_backlog.py`, and consolidated registry validation via `scripts/validate_primitives.py`.

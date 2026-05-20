@@ -34,6 +34,13 @@ from clinical_extraction.programs.exect_s3 import (
     _s3_field_values_from_prediction,
 )
 from clinical_extraction.runs import RunMetadata
+from clinical_extraction.exect.primitives import (
+    build_exect_frequency_pre_vocab_labels as build_precomputed_seizure_frequency_candidates,
+    format_exect_frequency_pre_vocab_note as format_note_with_precomputed_seizure_frequency_candidates,
+    recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
+    recover_exect_medication_temporality_with_post_classifier,
+    repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
+)
 from clinical_extraction.schemas import (
     DocumentPrediction,
     ExectGoldDocument,
@@ -45,6 +52,9 @@ EXECT_S4_SCHEMA_LEVEL = "exect_s4_field_family"
 EXECT_S4_VARIANT = "exect_s4_field_family_single_pass"
 EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT = (
     "exect_s4_field_family_frequency_pre_vocab_single_pass"
+)
+EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT = (
+    "exect_s4_field_family_temporality_post_classifier_single_pass"
 )
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
@@ -179,57 +189,6 @@ EXECT_S4_POLICY_EXAMPLES = (
 )
 
 _VALID_RX_TEMPORALITIES = frozenset({"current", "planned", "previous"})
-_FREQUENCY_MARKERS = (
-    " per ",
-    "seizure free",
-    "frequency increased",
-    "frequency decreased",
-    "infrequent",
-)
-_NEAR_MISS_QUANTIFIED_FREQUENCY = re.compile(
-    r"^(?P<count>\d+) per (?P<period>week|month|day|year)$"
-)
-_FREQUENCY_CHANGE_SYNONYMS = {
-    "increased frequency": "frequency increased",
-    "frequency has increased": "frequency increased",
-    "decreased frequency": "frequency decreased",
-    "frequency has decreased": "frequency decreased",
-}
-_SEIZURE_TYPE_FREQUENCY_CONFUSION = (
-    "seizure",
-    "seizures",
-    "tonic clonic",
-    "convulsive",
-    "absence",
-    "myoclonic",
-    "focal aware",
-    "impaired awareness",
-    "altered awareness",
-    "temporal lobe",
-    "occipital lobe",
-)
-_QUANTIFIED_FREQUENCY_RE = re.compile(
-    r"^(?:\d+|several) per (?:\d+ )?(?:week|month|day|year)$"
-)
-_NON_AUDITED_FREQUENCY_RES = (
-    re.compile(r" per 30 day$"),
-    re.compile(r"previous appointment"),
-    re.compile(r"^several per"),
-    re.compile(r" per \d+ \d+ week$"),
-)
-_FREQUENCY_CO_LABEL_CUES = {
-    "frequency increased": (
-        "frequency increased",
-        "frequency has increased",
-        "increased frequency",
-    ),
-    "frequency decreased": (
-        "frequency decreased",
-        "frequency has decreased",
-        "decreased frequency",
-    ),
-    "infrequent": ("infrequent",),
-}
 _INVESTIGATION_MODALITIES = ("eeg", "mri", "ct")
 _PLANNED_INVESTIGATION_MARKERS = (
     "will arrange",
@@ -379,7 +338,10 @@ class ExectS4FrequencyPreVocabFieldFamilyModule(dspy.Module):
 
 
 def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Module:
-    if program_variant == EXECT_S4_VARIANT:
+    if program_variant in {
+        EXECT_S4_VARIANT,
+        EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+    }:
         return ExectS4FieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
         return ExectS4FrequencyPreVocabFieldFamilyModule()
@@ -428,13 +390,17 @@ def _predict_s4_record(
     values = _s2_field_values_from_prediction(pred, record)
     values.extend(_s3_field_values_from_prediction(pred, record))
     values = _replace_s4_investigation_values(values, pred, record)
-    values.extend(_s4_field_values_from_prediction(pred, record))
+    values.extend(_s4_field_values_from_prediction(pred, record, program_variant))
     metadata: dict[str, object] = {"program_variant": program_variant}
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
         metadata["precomputed_candidates"] = {
             "seizure_frequency": build_precomputed_seizure_frequency_candidates(
                 record.text
             )
+        }
+    if program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT:
+        metadata["post_classifier"] = {
+            "medication_temporality": "exect.medication_temporality.post_classifier.v1"
         }
     return DocumentPrediction(
         document_id=record.document_id,
@@ -477,6 +443,7 @@ def _replace_s4_investigation_values(
 def _s4_field_values_from_prediction(
     pred: dspy.Prediction,
     record: ExectGoldDocument,
+    program_variant: str = EXECT_S4_VARIANT,
 ) -> list[ExtractedValue]:
     values: list[ExtractedValue] = []
 
@@ -494,10 +461,19 @@ def _s4_field_values_from_prediction(
         )
     )
 
-    temporality_raw, _ = _recover_s4_medication_temporality_raw_values(
-        _as_list(getattr(pred, "medication_temporality", [])),
-        record.text,
-    )
+    temporality_predictions = _as_list(getattr(pred, "medication_temporality", []))
+    temporality_evidence = _as_list(getattr(pred, "medication_temporality_evidence", []))
+    if program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT:
+        temporality_raw, _ = recover_exect_medication_temporality_with_post_classifier(
+            temporality_predictions,
+            temporality_evidence,
+            record.text,
+        )
+    else:
+        temporality_raw, _ = _recover_s4_medication_temporality_raw_values(
+            temporality_predictions,
+            record.text,
+        )
     values.extend(
         _s2_values_for_family(
             record=record,
@@ -508,37 +484,6 @@ def _s4_field_values_from_prediction(
         )
     )
     return values
-
-
-def _is_non_audited_frequency_surface(canonical: str) -> bool:
-    return any(pattern.search(canonical) for pattern in _NON_AUDITED_FREQUENCY_RES)
-
-
-def _is_quantified_frequency_label(canonical: str) -> bool:
-    return bool(_QUANTIFIED_FREQUENCY_RE.match(canonical))
-
-
-def _augment_s4_seizure_frequency_co_labels(
-    recovered: list[str],
-    note_text: str,
-) -> tuple[list[str], list[str]]:
-    if not any(_is_quantified_frequency_label(label) for label in recovered):
-        return recovered, []
-
-    note = note_text.lower()
-    flags: list[str] = []
-    augmented = list(recovered)
-    seen = set(recovered)
-
-    for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
-        if label in seen:
-            continue
-        if any(cue in note for cue in cues):
-            augmented.append(label)
-            seen.add(label)
-            flags.append("s4_bridge:frequency_co_label_augmented")
-
-    return augmented, flags
 
 
 def _note_supports_investigation_unknown(modality: str, note_text: str) -> bool:
@@ -616,215 +561,6 @@ def _recover_s4_investigation_raw_values(
         flags.append("s4_bridge:investigation_unknown_removed")
 
     return recovered, flags
-
-
-def _looks_like_seizure_frequency_label(value: str) -> bool:
-    canonical = canonical_clinical_phrase(value)
-    if not canonical:
-        return False
-    return any(marker in canonical for marker in _FREQUENCY_MARKERS)
-
-
-def _looks_like_seizure_type_not_frequency(value: str) -> bool:
-    canonical = canonical_clinical_phrase(value)
-    if not canonical:
-        return False
-    if _looks_like_seizure_frequency_label(canonical):
-        return False
-    return any(marker in canonical for marker in _SEIZURE_TYPE_FREQUENCY_CONFUSION)
-
-
-def _repair_s4_seizure_frequency_surface(canonical: str) -> tuple[str, list[str]]:
-    flags: list[str] = []
-    repaired = canonical
-
-    synonym = _FREQUENCY_CHANGE_SYNONYMS.get(canonical)
-    if synonym:
-        return synonym, ["s4_bridge:frequency_change_synonym"]
-
-    near_miss = _NEAR_MISS_QUANTIFIED_FREQUENCY.match(canonical)
-    if near_miss:
-        repaired = (
-            f"{near_miss.group('count')} per 1 {near_miss.group('period')}"
-        )
-        flags.append("s4_bridge:frequency_missing_time_period_inserted")
-
-    since_year = re.match(r"seizure free since (\d{4})$", canonical)
-    if since_year:
-        return repaired, flags
-
-    if canonical.startswith("seizure free") and canonical != "seizure free":
-        return "seizure free", [*flags, "s4_bridge:seizure_free_prose_collapsed"]
-
-    return repaired, flags
-
-
-def _recover_s4_seizure_frequency_raw_values(
-    raw_values: list[str],
-    note_text: str,
-) -> tuple[list[str], list[str]]:
-    flags: list[str] = []
-    recovered: list[str] = []
-    seen: set[str] = set()
-
-    for raw in raw_values:
-        if not raw.strip():
-            continue
-        canonical = canonical_clinical_phrase(raw)
-        if not canonical:
-            continue
-        if _looks_like_seizure_type_not_frequency(raw):
-            flags.append("s4_bridge:seizure_type_removed_from_frequency")
-            continue
-        repaired, repair_flags = _repair_s4_seizure_frequency_surface(canonical)
-        flags.extend(repair_flags)
-        canonical = repaired
-        if _is_non_audited_frequency_surface(canonical):
-            flags.append("s4_bridge:non_audited_frequency_removed")
-            continue
-        if not _looks_like_seizure_frequency_label(canonical):
-            flags.append("s4_bridge:unsupported_frequency_removed")
-            continue
-        if canonical in seen:
-            continue
-        seen.add(canonical)
-        recovered.append(canonical)
-
-    recovered, co_label_flags = _augment_s4_seizure_frequency_co_labels(recovered, note_text)
-    flags.extend(co_label_flags)
-    return recovered, flags
-
-
-_COUNT_WORDS = {
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9",
-    "ten": "10",
-}
-_PERIOD_UNIT = r"weeks?|months?|days?|years?"
-_QUANTIFIED_FREQUENCY_NOTE_RE = re.compile(
-    rf"\b(?P<count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
-    rf"(?:seizures?\s+)?(?:every|per)\s+(?P<period_count>\d+\s+)?"
-    rf"(?P<period>{_PERIOD_UNIT})\b",
-    flags=re.IGNORECASE,
-)
-_ZERO_RATE_FREQUENCY_NOTE_RE = re.compile(
-    rf"\b(?:no|zero|0)\s+seizures?\s+per\s+(?P<period_count>\d+)\s+"
-    rf"(?P<period>{_PERIOD_UNIT})\b",
-    flags=re.IGNORECASE,
-)
-_SEIZURE_EVERY_N_PERIOD_RE = re.compile(
-    rf"seizures?\s+every\s+"
-    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
-    rf"(?P<period>{_PERIOD_UNIT})\b",
-    flags=re.IGNORECASE,
-)
-
-
-def _normalize_period_unit(period: str) -> str:
-    return period.lower().rstrip("s")
-_SEIZURE_FREE_SINCE_RE = re.compile(
-    r"seizure[- ]free since (\d{4})",
-    flags=re.IGNORECASE,
-)
-
-
-def _accept_precomputed_seizure_frequency_candidate(label: str) -> str | None:
-    canonical = canonical_clinical_phrase(label)
-    if not canonical or _looks_like_seizure_type_not_frequency(canonical):
-        return None
-    repaired, _ = _repair_s4_seizure_frequency_surface(canonical)
-    if _is_non_audited_frequency_surface(repaired):
-        return None
-    if not _looks_like_seizure_frequency_label(repaired):
-        return None
-    return repaired
-
-
-def build_precomputed_seizure_frequency_candidates(note_text: str) -> list[str]:
-    """Build note-anchored ExECT seizure-frequency candidates for narrow H2 probes."""
-    from clinical_extraction.gan.temporal_candidates import (
-        build_temporal_frequency_candidates_from_note,
-    )
-
-    candidates: set[str] = set()
-    note_lower = note_text.lower()
-
-    for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
-        if any(cue in note_lower for cue in cues):
-            accepted = _accept_precomputed_seizure_frequency_candidate(label)
-            if accepted:
-                candidates.add(accepted)
-
-    if "seizure free" in note_lower:
-        since_match = _SEIZURE_FREE_SINCE_RE.search(note_text)
-        if since_match:
-            accepted = _accept_precomputed_seizure_frequency_candidate(
-                f"seizure free since {since_match.group(1)}"
-            )
-        else:
-            accepted = _accept_precomputed_seizure_frequency_candidate("seizure free")
-        if accepted:
-            candidates.add(accepted)
-
-    for match in _QUANTIFIED_FREQUENCY_NOTE_RE.finditer(note_text):
-        count_token = match.group("count").lower()
-        count = _COUNT_WORDS.get(count_token, count_token)
-        period_count = (match.group("period_count") or "1 ").strip().split()[0]
-        period = _normalize_period_unit(match.group("period"))
-        accepted = _accept_precomputed_seizure_frequency_candidate(
-            f"{count} per {period_count} {period}"
-        )
-        if accepted:
-            candidates.add(accepted)
-
-    for match in _ZERO_RATE_FREQUENCY_NOTE_RE.finditer(note_text):
-        period_count = match.group("period_count")
-        period = _normalize_period_unit(match.group("period"))
-        accepted = _accept_precomputed_seizure_frequency_candidate(
-            f"0 per {period_count} {period}"
-        )
-        if accepted:
-            candidates.add(accepted)
-
-    for match in _SEIZURE_EVERY_N_PERIOD_RE.finditer(note_text):
-        period_token = match.group("period_count").lower()
-        period_count = _COUNT_WORDS.get(period_token, period_token)
-        period = _normalize_period_unit(match.group("period"))
-        accepted = _accept_precomputed_seizure_frequency_candidate(
-            f"1 per {period_count} {period}"
-        )
-        if accepted:
-            candidates.add(accepted)
-
-    for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
-        accepted = _accept_precomputed_seizure_frequency_candidate(
-            temporal_candidate.canonical_label
-        )
-        if accepted:
-            candidates.add(accepted)
-
-    return sorted(candidates)
-
-
-def format_note_with_precomputed_seizure_frequency_candidates(note_text: str) -> str:
-    """Inject seizure-frequency-only audited candidates before the clinical note."""
-    frequency_candidates = build_precomputed_seizure_frequency_candidates(note_text)
-    lines = [
-        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
-        f"seizure_frequency: {', '.join(frequency_candidates)}",
-        "",
-        "---",
-        "",
-        note_text,
-    ]
-    return "\n".join(lines)
 
 
 def _normalize_medication_temporality_surface(value: str) -> str:

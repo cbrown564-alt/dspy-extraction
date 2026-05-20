@@ -1,7 +1,7 @@
 # Taxonomy Primitives Workstream Plan
 
 Date: 2026-05-20  
-Status: In progress  
+Status: In progress — core infrastructure complete; Cards 19–20 remain blocked on external dependencies.  
 Related: `docs/kanban_plan.md`, `docs/experiment_taxonomy_schema.md`, `docs/experiment_taxonomy_research_synthesis_20260520.md`, `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`
 
 ## Purpose
@@ -43,7 +43,7 @@ This phase is complete when the repository has:
 - Deterministic tests for each primitive using fixtures or audited examples.
 - Config templates that compose primitives into L1/H1/H2/H3/H4 experiment arms without duplicating taxonomy metadata.
 - Inspection templates that report primitive use, scorer mode, normalization rules, evidence rules, and caveats.
-- A small set of no-model validation commands that prove the primitives and registry metadata are internally consistent.
+- A small set of no-model validation commands that prove the primitives and registry metadata are internally consistent (`uv run python scripts/validate_primitives.py --errors-only`).
 
 ## Progress Notes
 
@@ -79,6 +79,38 @@ This phase is complete when the repository has:
 - ExECT audit assumptions preserved: MarkupPrescriptions has no temporality column, planned/previous medications are not S1 current prescription outputs, and the rejected broad S1 pre-vocabulary approach remains rejected.
 - Focused no-model validation: `uv run pytest tests/test_exect_medication_primitives.py -q`.
 
+2026-05-20 seventh pull:
+
+- Card 10 initial ExECT S4 frequency primitive pack implemented in `src/clinical_extraction/exect/primitives.py`.
+- Added shared-contract adapters for note-anchored rate candidates, Gan temporal filtering to ExECT templates, and benchmark-facing frequency bridge behavior.
+- Registered `exect.frequency.rate_candidates.v1` and `exect.frequency.benchmark_bridge.v1` in the typed primitive registry.
+- Refactored `src/clinical_extraction/programs/exect_s4.py` to consume the primitive pack while preserving program-facing aliases.
+- ExECT audit assumptions preserved: MarkupSeizureFrequency templates remain gold; Gan monthly normalization and unknown/no-reference classes do not transfer; cap-25 H2 pre-vocab rejection remains documented.
+- Focused no-model validation: `uv run pytest tests/test_exect_frequency_primitives.py -q`; `uv run pytest tests/test_exect_s4_program.py tests/test_primitive_contracts.py -q`.
+
+2026-05-20 tenth pull:
+
+- Card 14 initial primitive fixture library implemented in `data/fixtures/primitive_cases.json` and `src/clinical_extraction/fixtures/primitive_cases.py`.
+- Added 18 deterministic cases across shared evidence, Gan frequency, and ExECT medication/diagnosis/seizure-type/frequency primitives.
+- Registered `shared.fixtures.primitive_cases.v1` in the typed primitive registry.
+- Cases cover positive, negative, ambiguous, absent, historical, planned, and unsupported-evidence failure modes.
+- Focused no-model validation: `uv run pytest tests/test_primitive_fixture_library.py -q`; `uv run pytest tests/test_primitive_contracts.py tests/test_gan_frequency_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_frequency_primitives.py -q`.
+
+2026-05-20 ninth pull:
+
+- Card 13 initial experiment arm templates implemented in `src/clinical_extraction/experiments/arm_templates.py`.
+- Added L1/H1/H2/H3/H4/D1 taxonomy defaults, comparison-group builders, primitive compatibility validation, default control presets, and `build_experiment_arm_config`.
+- Card 15 initial inspection templates implemented in `docs/templates/primitive_inspection_template.md`, `docs/templates/experiment_decision_template.md`, and `src/clinical_extraction/experiments/inspection_templates.py`.
+- Focused no-model validation: `uv run pytest tests/test_experiment_arm_templates.py tests/test_inspection_templates.py -q`; `uv run pytest tests/test_experiment_configs.py tests/test_primitive_contracts.py -q`; `uv run python scripts/validate_experiment_taxonomy.py --errors-only`.
+
+2026-05-20 eighth pull:
+
+- Card 12 initial interleaving adapter layer implemented in `src/clinical_extraction/interleaving_adapters.py`.
+- Added position-specific surfaces for pre injection, during prompt rules, tool-during callable output, post processing, and eval-only diagnostics.
+- Seeded bindings for Gan temporal candidates, Gan label-policy bridge, Gan evidence guard, and ExECT medication candidates/bridge.
+- No-model tests prove the same primitive core payload can be rendered at different taxonomy positions without changing underlying deterministic logic.
+- Focused no-model validation: `uv run pytest tests/test_interleaving_adapters.py -q`; `uv run pytest tests/test_primitive_contracts.py tests/test_gan_frequency_primitives.py tests/test_exect_medication_primitives.py -q`.
+
 2026-05-20 fifth pull:
 
 - Card 8 initial ExECT seizure-type benchmark bridge implemented in `src/clinical_extraction/exect/primitives.py`.
@@ -95,95 +127,30 @@ This phase is complete when the repository has:
 - ExECT audit assumptions preserved: Diagnosis JSON rows remain the policy source, `Certainty >= 4` stays explicit, single seizure events do not become established epilepsy diagnoses, and seizure-type evidence does not create diagnosis subtype labels.
 - Focused no-model validation: `uv run pytest tests/test_exect_diagnosis_primitives.py -q`; `uv run pytest tests/test_primitive_contracts.py -q`; `uv run pytest tests/test_exect_medication_primitives.py tests/test_exect_seizure_type_primitives.py tests/test_exect_s0_s1_program.py -q`.
 
+2026-05-20 eleventh pull:
+
+- Card 11 broad ExECT family primitive backlog sketched in `src/clinical_extraction/exect/family_backlog.py` and `docs/taxonomy_primitive_catalog.md`.
+- Added 12 planned metadata records for investigation, comorbidity, birth/development, onset, cause, when diagnosed, driving, social history, pregnancy, family history, and section spans.
+- Card 17 tool-interface boundary decision recorded in `docs/taxonomy_tool_interface_decision_20260520.md`: minimal adapter-level H3 support only; no broad tool-wrapper framework.
+- Card 18 ontology/CUI scope decision recorded in `docs/taxonomy_ontology_cui_scope_decision_20260520.md`: defer CUI-aware primitives to benchmark-reproduction phase; CUIPhrase bridges remain string-surface canonicalization.
+- Added consolidated no-model validation in `scripts/validate_primitives.py` and `src/clinical_extraction/experiments/primitive_registry_validation.py`.
+- Registered deferred catalog primitives (`gan.frequency.verify_repair_policy.v1`, `gan.frequency.temporal_tool.v1`, `shared.evidence.verified_quote.v1`, `exect.ontology.cui_alignment.v1`, `gan.frequency.real_set_validation.v1`).
+- Fixed `shared.evidence.substring_support.v1` registry status to `implemented`.
+- Focused no-model validation: `uv run python scripts/validate_primitives.py --errors-only`; `uv run pytest tests/test_primitive_registry_validation.py tests/test_primitive_contracts.py -q`.
+
 ## Board
 
 ### Ready
 
+No cards yet.
+
 ### Backlog
 
-#### Card 10 - ExECT S4 Frequency Primitive Pack
-
-Outcome: ExECT-specific frequency template primitives for rate candidates, qualitative change labels, multi-label blocks, no-reference handling, and benchmark-facing template repair.
-
-Dependencies: Cards 3, 4, and 5  
-Parallelizable: after shared models  
-Owner: unassigned  
-Validation: Deterministic tests on S4 frequency examples and cap-25 inspection failures.  
-Notes: Do not copy Gan monthly normalization directly; ExECT gold surfaces are different.
-
-#### Card 11 - Broad ExECT Family Primitive Backlog
-
-Outcome: Scoped primitive sketches for investigation, comorbidity, birth/development, onset, cause, when diagnosed, driving, social history, pregnancy, and family history.
-
-Dependencies: Card 2  
-Parallelizable: yes  
-Owner: unassigned  
-Validation: Catalog review only at first; implementation tests later for high-priority families.  
-Notes: Sparse families should be designed but not overbuilt until higher-signal S1/S4 probes settle.
-
-### Ready After Contracts
-
-#### Card 12 - Build Interleaving Adapters
-
-Outcome: Adapter layer that can expose one primitive as pre-injected context, during-prompt rules, tool-during callable helper, postprocessor, or eval-only diagnostic where appropriate.
-
-Dependencies: Cards 3, 4, and 5  
-Parallelizable: after shared models  
-Owner: unassigned  
-Validation: No-model tests show the same primitive can be represented with different taxonomy positions without changing its core logic.  
-Notes: This is the key to testing interleaving position rather than rewriting logic for each arm.
-
-#### Card 13 - Create Experiment Arm Templates
-
-Outcome: Config templates or builders for L1, H1, H2, H3, H4, and D1 experiment arms with taxonomy fields, fixed controls, intended decision, and comparison-group conventions prefilled.
-
-Dependencies: Card 12  
-Parallelizable: after adapters  
-Owner: unassigned  
-Validation: `uv run pytest tests/test_experiment_configs.py -q` plus taxonomy validator.  
-Notes: The templates should make invalid comparison groups harder to create.
-
-#### Card 14 - Create Primitive Fixture Library
-
-Outcome: Small deterministic fixture set organized by dataset, family, primitive, and failure mode.
-
-Dependencies: Cards 3, 4, and 5  
-Parallelizable: yes  
-Owner: unassigned  
-Validation: Tests prove fixtures load deterministically on Windows and feed primitive unit tests.  
-Notes: Include positive, negative, ambiguous, absent, historical, planned, and unsupported-evidence cases.
-
-#### Card 15 - Standardize Inspection Templates
-
-Outcome: Markdown templates for decision and inspection docs that require primitive IDs, taxonomy fields, scorer mode, normalization semantics, evidence semantics, run scope, and caveats.
-
-Dependencies: Card 2  
-Parallelizable: yes  
-Owner: unassigned  
-Validation: Existing inspection docs can be mapped onto the template without losing important caveats.  
-Notes: This should reduce result interpretation drift after runs execute.
+No cards yet.
 
 ### Questions
 
-#### Card 17 - Decide How Much To Generalize Tool Interfaces
-
-Outcome: Boundary decision for H3/tool-during support after Gan ReAct failed.
-
-Dependencies: Card 12  
-Parallelizable: after adapters  
-Owner: unassigned  
-Validation: Decision recorded before building broad tool wrappers.  
-Notes: Build enough interface to compare H3 cleanly later, but do not make H3 the default path.
-
-#### Card 18 - Decide Ontology/CUI Scope
-
-Outcome: Research decision on whether CUI/ontology primitives are included in this phase as stubs, deterministic lookup contracts, or deferred benchmark-reproduction infrastructure.
-
-Dependencies: Card 2  
-Parallelizable: yes  
-Owner: unassigned  
-Validation: Decision references the published ExECT benchmark reproduction blocker.  
-Notes: Avoid mixing CUI-aware reproduction with local field-family diagnostics unless the comparison group says so.
+No open questions.
 
 ### Blocked
 
@@ -322,6 +289,96 @@ Parallelizable: yes, after normalization model
 Owner: project
 Validation: `uv run pytest tests/test_exect_diagnosis_primitives.py -q`; `uv run pytest tests/test_exect_s0_s1_program.py -q`.
 Notes: Implemented in `src/clinical_extraction/exect/primitives.py`; typed registry entry added for `exect.diagnosis.benchmark_bridge.v1`. Tests cover uncertainty stripping, specificity collapse, symptomatic structural focal restoration, note-gated generic epilepsy co-listing, empty-list header recovery, seizure-descriptor header suppression, and explicit Certainty >= 4 annotation policy.
+
+#### Card 10 - ExECT S4 Frequency Primitive Pack
+
+Outcome: ExECT-specific frequency template primitives for rate candidates, qualitative change labels, multi-label blocks, no-reference handling, and benchmark-facing template repair.
+
+Dependencies: Cards 3, 4, and 5
+Parallelizable: after shared models
+Owner: project
+Validation: `uv run pytest tests/test_exect_frequency_primitives.py -q`; `uv run pytest tests/test_exect_s4_program.py -q`.
+Notes: Implemented in `src/clinical_extraction/exect/primitives.py`; typed registry entries added for `exect.frequency.rate_candidates.v1` and `exect.frequency.benchmark_bridge.v1`. Tests cover quantified and qualitative candidates, Gan temporal filtering, near-miss repair, seizure-type stripping, non-audited period blocking, co-label augmentation, seizure-free prose collapse, and empty-list abstention policy. Cap-25 H2 pre-vocab remains rejected per `docs/exect_s4_frequency_deterministic_gpt_inspection_20260520.md`.
+
+#### Card 12 - Build Interleaving Adapters
+
+Outcome: Adapter layer that can expose one primitive as pre-injected context, during-prompt rules, tool-during callable helper, postprocessor, or eval-only diagnostic where appropriate.
+
+Dependencies: Cards 3, 4, and 5
+Parallelizable: after shared models
+Owner: project
+Validation: `uv run pytest tests/test_interleaving_adapters.py -q`.
+Notes: Implemented in `src/clinical_extraction/interleaving_adapters.py`; initial bindings cover Gan temporal candidates, Gan label-policy bridge, Gan evidence guard, and ExECT medication candidates/bridge. Candidate primitives can render pre, during, and tool_during surfaces from one core invoke path; bridge and evidence primitives share post/eval_only payloads with different prediction-affecting flags.
+
+#### Card 13 - Create Experiment Arm Templates
+
+Outcome: Config templates or builders for L1, H1, H2, H3, H4, and D1 experiment arms with taxonomy fields, fixed controls, intended decision, and comparison-group conventions prefilled.
+
+Dependencies: Card 12
+Parallelizable: after adapters
+Owner: project
+Validation: `uv run pytest tests/test_experiment_arm_templates.py -q`; `uv run pytest tests/test_experiment_configs.py -q`; `uv run python scripts/validate_experiment_taxonomy.py --errors-only`.
+Notes: Implemented in `src/clinical_extraction/experiments/arm_templates.py`; builders validate primitive arm compatibility, comparison-group naming, and shared-suite metadata before emitting `ExperimentConfig` records.
+
+#### Card 15 - Standardize Inspection Templates
+
+Outcome: Markdown templates for decision and inspection docs that require primitive IDs, taxonomy fields, scorer mode, normalization semantics, evidence semantics, run scope, and caveats.
+
+Dependencies: Card 2
+Parallelizable: yes
+Owner: project
+Validation: `uv run pytest tests/test_inspection_templates.py -q`.
+Notes: Templates live under `docs/templates/` with section contracts in `src/clinical_extraction/experiments/inspection_templates.py`.
+
+#### Card 14 - Create Primitive Fixture Library
+
+Outcome: Small deterministic fixture set organized by dataset, family, primitive, and failure mode.
+
+Dependencies: Cards 3, 4, and 5
+Parallelizable: yes
+Owner: project
+Validation: `uv run pytest tests/test_primitive_fixture_library.py -q`.
+Notes: Implemented in `data/fixtures/primitive_cases.json` and `src/clinical_extraction/fixtures/primitive_cases.py`; cases cover all required failure modes and invoke primitives without LLM calls.
+
+#### Card 11 - Broad ExECT Family Primitive Backlog
+
+Outcome: Scoped primitive sketches for investigation, comorbidity, birth/development, onset, cause, when diagnosed, driving, social history, pregnancy, and family history.
+
+Dependencies: Card 2
+Parallelizable: yes
+Owner: project
+Validation: Catalog review plus `uv run python scripts/validate_primitives.py --errors-only`.
+Notes: Planned metadata in `src/clinical_extraction/exect/family_backlog.py`; implementation deferred until S1/S4 high-signal probes settle.
+
+#### Card 17 - Decide How Much To Generalize Tool Interfaces
+
+Outcome: Boundary decision for H3/tool-during support after Gan ReAct failed.
+
+Dependencies: Card 12
+Parallelizable: after adapters
+Owner: project
+Validation: Decision recorded in `docs/taxonomy_tool_interface_decision_20260520.md`.
+Notes: Minimal adapter-level H3 support only; do not make H3 the default path.
+
+#### Card 18 - Decide Ontology/CUI Scope
+
+Outcome: Research decision on whether CUI/ontology primitives are included in this phase as stubs, deterministic lookup contracts, or deferred benchmark-reproduction infrastructure.
+
+Dependencies: Card 2
+Parallelizable: yes
+Owner: project
+Validation: Decision recorded in `docs/taxonomy_ontology_cui_scope_decision_20260520.md`.
+Notes: Defer CUI-aware reproduction primitives to Card 19; CUIPhrase bridges remain string-surface canonicalization in this phase.
+
+#### Card 22 - Consolidated Primitive Validation Command
+
+Outcome: No-model validation command proving registry, catalog, fixture, and adapter metadata are internally consistent.
+
+Dependencies: Cards 1, 2, 14, and 16
+Parallelizable: after registry and catalog
+Owner: project
+Validation: `uv run python scripts/validate_primitives.py --errors-only`; `uv run pytest tests/test_primitive_registry_validation.py -q`.
+Notes: Implemented in `scripts/validate_primitives.py` and `src/clinical_extraction/experiments/primitive_registry_validation.py`.
 
 ## Dependency Notes
 

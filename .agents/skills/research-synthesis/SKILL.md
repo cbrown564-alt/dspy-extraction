@@ -116,10 +116,13 @@ For model-backed experiment results, also mention:
 
 - run ID and artifact directory
 - whether the run was capped, full validation, or test reporting
+- primitive IDs and interleaving positions used, when relevant
 - optimizer metric and compiled-state artifact, when present
 - benchmark-facing metrics versus diagnostic metrics
 - confidence intervals, if generated
 - the next decision the result supports
+
+For promotion, freeze, hold, or reject notes, prefer the templates in `docs/templates/` and include primitive IDs, taxonomy fields, scorer mode, normalization rules, and evidence rules when they affect interpretation.
 
 ## Completion Criteria
 
