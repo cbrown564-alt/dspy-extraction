@@ -1557,7 +1557,7 @@ def test_react_temporal_tools_slice_config_records_taxonomy_metadata():
     assert config.taxonomy is not None
     assert config.taxonomy.hybrid_balance_class == ["H3_interleaved_tool_hybrid"]
     assert config.taxonomy.interleaving_positions == ["tool_during", "during"]
-    assert config.taxonomy.intended_decision == "pending"
+    assert config.taxonomy.intended_decision == "reject"
     assert config.taxonomy.varied_factor == "interleaving_position"
 
 
