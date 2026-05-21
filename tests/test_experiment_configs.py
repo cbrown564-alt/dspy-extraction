@@ -1039,6 +1039,106 @@ def test_gan_s0_direct_full_validation_gemini31_flash_lite_config_has_no_cap():
     assert "gemini" in caveats
 
 
+def test_gan_s0_expanded_builders_prose_smoke_gemini31_flash_lite_config_records_f0_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_expanded_builders_prose_smoke_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "gan_s0_expanded_builders_prose_smoke_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records == 3
+    assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert config.taxonomy.comparison_group == "gan_s0_expanded_builders_prose_model_comparison_v1"
+    assert config.taxonomy.varied_factor == "model_track"
+    assert config.taxonomy.implementation_variant == "cand_prose_expanded_builders_v1"
+
+
+def test_gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite_config_records_f0_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records is None
+    assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
+    assert config.taxonomy.comparison_group == "gan_s0_expanded_builders_prose_model_comparison_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "073432z" in caveats
+    assert "68.1%" in " ".join(config.metric_caveats)
+
+
+def test_exect_s0_s1_smoke_gemini31_flash_lite_config_records_replay_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s0_s1_smoke_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "exect_s0_s1_smoke_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records == 3
+    assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == "exect_gemini_ladder_replay_v1"
+    assert config.taxonomy.varied_factor == "model_track"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "smoke" in caveats
+    assert "gemini-3.1-flash-lite" in caveats
+
+
+def test_exect_s0_s1_validation_full_gemini31_flash_lite_config_records_replay_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s0_s1_validation_full_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "exect_s0_s1_validation_full_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records is None
+    assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.taxonomy.comparison_group == "exect_gemini_ladder_replay_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "exect_gemini_ladder_replay_v1" in caveats
+    assert "221944z" in caveats
+
+
+def test_exect_s4_smoke_gemini31_flash_lite_config_records_replay_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s4_smoke_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "exect_s4_smoke_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records == 3
+    assert config.program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert config.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
+    assert config.taxonomy.comparison_group == "exect_gemini_ladder_replay_v1"
+
+
+def test_exect_s4_validation_full_gemini31_flash_lite_config_records_replay_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s4_validation_full_gemini31_flash_lite.json")
+    )
+
+    assert config.experiment_id == "exect_s4_validation_full_gemini31_flash_lite"
+    assert config.model_config_path == Path("configs/models/gan_s0_gemini31_flash_lite.json")
+    assert config.max_records is None
+    assert config.program_variant == EXECT_S4_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert config.taxonomy.comparison_group == "exect_gemini_ladder_replay_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "071248z" in caveats
+    assert "cause_bridge_k0_k1" in config.program_variant
+
+
 def test_gan_s0_semantic_labeled_fewshot_cap25_config_records_semantic_metric():
     config = load_experiment_config(
         Path("configs/experiments/gan_s0_semantic_labeled_fewshot_cap25_gpt4_1_mini.json")

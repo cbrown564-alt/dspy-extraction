@@ -55,6 +55,7 @@ EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION = "exect_s0_s1_field_family_l1_schema"
 EXECT_S0_S1_D1_PROMPT_VERSION = "exect_s0_s1_field_family_d1_feasibility"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
 EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v4_10_label_policy"
+EXECT_S0_S1_V4_12_PROMPT_VERSION = "exect_s0_s1_field_family_v4_12_label_policy"
 EXECT_S0_S1_V4_11_PROMPT_VERSION = "exect_s0_s1_field_family_v4_11_label_policy"
 EXECT_S0_S1_V4_9_PROMPT_VERSION = "exect_s0_s1_field_family_v4_9_label_policy"
 EXECT_S0_S1_V4_8_PROMPT_VERSION = "exect_s0_s1_field_family_v4_8_label_policy"
@@ -194,6 +195,19 @@ EXECT_S0_S1_V4_11_LABEL_POLICY_ADDENDUM = (
     "Do not add a separate secondary generalised tonic-clonic seizure type unless the letter "
     "names multiple distinct current seizure types; secondary generalisation is not an extra "
     "seizure type when only one audited seizure surface applies.",
+)
+EXECT_S0_S1_V4_12_LABEL_POLICY_ADDENDUM = (
+    "Apply the v4.11 seizure-type rules only inside seizure_type; do not let plural, "
+    "absence/myoclonic, or secondary-generalisation examples change diagnosis labels.",
+    "For diagnosis, keep the v4.10 audited epilepsy-diagnosis policy: do not replace a "
+    "generic epilepsy gold surface with focal epilepsy, focal onset epilepsy, or temporal "
+    "lobe epilepsy unless the diagnosis or impression line explicitly names that epilepsy "
+    "diagnosis surface.",
+    "Do not emit symptomatic structural focal epilepsy from MRI lesions, amygdala signal, "
+    "surgery history, or cause narrative alone; use that diagnosis only when the audited "
+    "diagnosis/impression surface itself names symptomatic or structural focal epilepsy.",
+    "When the diagnosis header states focal onset epilepsy, keep focal onset epilepsy as a "
+    "diagnosis; do not drop it because seizure-type rules also mention focal seizures.",
 )
 EXECT_S0_S1_POLICY_EXAMPLES = (
     {
@@ -639,6 +653,48 @@ EXECT_S0_S1_V4_11_POLICY_EXAMPLES = (
         ),
     },
 )
+EXECT_S0_S1_V4_12_POLICY_EXAMPLES = (
+    {
+        "case": "diagnosis_generic_epilepsy_not_focal_from_seizure_context",
+        "note_fragment": (
+            "Diagnosis: epilepsy. Seizure type: focal to bilateral convulsive seizure."
+        ),
+        "benchmark_output": {
+            "diagnosis": ["epilepsy"],
+            "seizure_type": ["focal to bilateral convulsive seizure"],
+        },
+        "policy": (
+            "Do not upgrade generic epilepsy to focal epilepsy from seizure-type wording; "
+            "keep the audited diagnosis surface separate from seizure_type."
+        ),
+    },
+    {
+        "case": "diagnosis_no_structural_overcall_from_mri_context",
+        "note_fragment": (
+            "She was diagnosed with epilepsy at the age of 22. MRI showed a small "
+            "hyperintensity in the right amygdala."
+        ),
+        "benchmark_output": {"diagnosis": ["epilepsy"]},
+        "policy": (
+            "Do not emit symptomatic structural focal epilepsy from structural imaging "
+            "context alone when the diagnosis surface is generic epilepsy."
+        ),
+    },
+    {
+        "case": "diagnosis_focal_onset_recall_kept",
+        "note_fragment": (
+            "Diagnosis: focal onset epilepsy. Seizure type: epileptic seizures."
+        ),
+        "benchmark_output": {
+            "diagnosis": ["focal onset epilepsy"],
+            "seizure_type": ["epileptic seizures"],
+        },
+        "policy": (
+            "Keep focal onset epilepsy when the diagnosis header names it; seizure-type "
+            "routing rules must not suppress diagnosis recall."
+        ),
+    },
+)
 
 
 def resolve_exect_s0_s1_extraction_prompt_version(
@@ -670,6 +726,19 @@ def resolve_exect_s0_s1_label_policy(
         return (
             (*EXECT_S0_S1_LABEL_POLICY_GUIDANCE, *EXECT_S0_S1_V4_11_LABEL_POLICY_ADDENDUM),
             (*EXECT_S0_S1_POLICY_EXAMPLES, *EXECT_S0_S1_V4_11_POLICY_EXAMPLES),
+        )
+    if prompt_version == EXECT_S0_S1_V4_12_PROMPT_VERSION:
+        return (
+            (
+                *EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
+                *EXECT_S0_S1_V4_11_LABEL_POLICY_ADDENDUM,
+                *EXECT_S0_S1_V4_12_LABEL_POLICY_ADDENDUM,
+            ),
+            (
+                *EXECT_S0_S1_POLICY_EXAMPLES,
+                *EXECT_S0_S1_V4_11_POLICY_EXAMPLES,
+                *EXECT_S0_S1_V4_12_POLICY_EXAMPLES,
+            ),
         )
     if prompt_version in {
         EXECT_S0_S1_PROMPT_VERSION,
@@ -1084,6 +1153,19 @@ EXECT_S0_S1_V4_11_SIGNATURE_BOUNDARY_ADDENDUM = """
       multiple audited current seizure types when each is named.
 """
 
+EXECT_S0_S1_V4_12_SIGNATURE_BOUNDARY_ADDENDUM = """
+    Additional v4.12 diagnosis-stability examples:
+    - "Diagnosis: epilepsy. Seizure type: focal to bilateral convulsive seizure."
+      -> diagnosis = ["epilepsy"]; seizure_type = ["focal to bilateral convulsive seizure"];
+      do not upgrade generic epilepsy to focal epilepsy from seizure-type wording.
+    - "She was diagnosed with epilepsy at age 22. MRI showed a small right amygdala hyperintensity."
+      -> diagnosis = ["epilepsy"]; do not infer symptomatic structural focal epilepsy from
+      structural imaging context alone.
+    - "Diagnosis: focal onset epilepsy. Seizure type: epileptic seizures."
+      -> diagnosis = ["focal onset epilepsy"]; keep diagnosis recall even when seizure-type
+      policy also applies.
+"""
+
 
 EXECT_S0_S1_V4_10_EVIDENCE_STRICT_SIGNATURE_ADDENDUM = """
     Evidence policy (strict; v4.10 label policy unchanged):
@@ -1120,6 +1202,18 @@ def build_exect_s0_s1_field_family_signature(
             "ExectS0S1FieldFamilyV411Signature",
             (ExectS0S1FieldFamilySignature,),
             {"__doc__": doc + EXECT_S0_S1_V4_11_SIGNATURE_BOUNDARY_ADDENDUM},
+        )
+    if prompt_version == EXECT_S0_S1_V4_12_PROMPT_VERSION:
+        return type(
+            "ExectS0S1FieldFamilyV412Signature",
+            (ExectS0S1FieldFamilySignature,),
+            {
+                "__doc__": (
+                    doc
+                    + EXECT_S0_S1_V4_11_SIGNATURE_BOUNDARY_ADDENDUM
+                    + EXECT_S0_S1_V4_12_SIGNATURE_BOUNDARY_ADDENDUM
+                )
+            },
         )
     if prompt_version == EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION:
         return type(

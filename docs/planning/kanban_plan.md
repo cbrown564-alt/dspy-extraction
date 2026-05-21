@@ -22,16 +22,17 @@
 
 ### Replay Gemini under current S-level architecture
 
-**Status:** **Ready to run** (preregister first).
+**Status:** **Done** — inspection `docs/experiments/exect/exect_gemini_ladder_replay_v1_inspection_20260521.md`.
 
 **Goal:** Decide whether prior Gemini champion evidence still matters under **today’s** frozen programs, scorers, bridges, and splits — not under Round-2 direct/verify-repair Gan arms.
 
 | Step | Scope | Notes |
 | --- | --- | --- |
-| 1 | **Preregister** comparison group `exect_gemini_ladder_replay_v1` | Single-factor: `model_track` = gemini; fixed program variants, bridge policy, scorer, split |
-| 2 | **ExECT S1 full validation** | Same production-shaped variant as GPT anchor (`92.3%` micro, `…221944Z`); compare to GPT and Qwen (`79.0%`) |
-| 3 | **ExECT S4 full validation** | Frozen `exect_s4_field_family_cause_bridge_k0_k1_single_pass` + current medication guard path; compare to GPT (`65.5%`, `…071248Z`) and Qwen (`67.5%`, `…160914Z`) |
-| 4 | **Optional Gan F0** | Port **expanded builders + prose** monthly leader (`68.1%` GPT F0, `…073432Z`) only if paper needs a three-provider Gan table |
+| 1 | ~~**Preregister** comparison group `exect_gemini_ladder_replay_v1`~~ | **Done** — `exect_gemini_ladder_replay_v1_preregistration_20260521.md`; configs under `configs/experiments/exect_*_gemini31_flash_lite.json` |
+| 1b | ~~**S1/S4 smoke** (3 records each)~~ | **Done** — `…093432Z` / `…093445Z` |
+| 2 | ~~**ExECT S1 full validation**~~ | **Done** — Gemini **90.3%** micro (`…093501Z`); GPT 92.3%, Qwen 79.0% |
+| 3 | ~~**ExECT S4 full validation**~~ | **Done** — Gemini **66.8%** micro (`…093556Z`); GPT 65.5%, Qwen 67.5%* |
+| 4 | **Optional Gan F0** | Port **expanded builders + prose** monthly leader — **Done** Gemini 72.6% vs GPT 68.1% |
 
 **Historical Gemini (stale architecture — do not treat as current defaults):**
 
@@ -141,7 +142,7 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | Gan S0 validation ladder | Done |
 | ExECT S1 field-family prompt graph | Done — PG0 hold; PG1/PG2 reject |
 | Run metadata audit | Done |
-| Fixture-to-real reality-gap audit | **Backlog** |
+| Fixture-to-real reality-gap audit | Done — `docs/experiments/synthesis/fixture_to_real_reality_gap_audit_20260521.md` |
 
 ### Prior-best reanalysis
 
@@ -151,7 +152,7 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | ExECT S4 frequency repair R1 | Done — reject (arm) |
 | ExECT S4 frequency structured slots S2 | Done — inconclusive |
 | ExECT S4 sparse-family policy memo | Done |
-| **Replay Gemini under current architecture** | **Next** — see § Next step |
+| **Replay Gemini under current architecture** | **Done** — hold (model-comparison); see inspection |
 
 ---
 
@@ -186,7 +187,7 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | ExECT S1 GPT v4_11 (cap-25) | Reject on GPT |
 | ExECT S1 optimizer bootstrap | Reject |
 | Qwen S1 v4_11 full | Hold promote blocked |
-| Next model work | **Gemini S1 + S4 replay** under frozen variants |
+| Next model work | **Gemini replay complete** (ExECT + Gan F0); optional Qwen F0 port if paper needs third Gan column |
 
 Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis_20260520.md`, `kanban_frozen_threads_history.md`.
 
@@ -195,8 +196,8 @@ Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis
 ## Long-term arc
 
 1. **Complete** hybrid cap-25 search (Gan + ExECT placement and targeted Axis-3 cells).
-2. **Now:** Gemini replay on frozen S1/S4 (+ optional Gan F0) for model-comparison evidence.
-3. **Hygiene:** fixture reality-gap; optional run-manifest metadata improvements from metadata audit.
+2. ~~**Now:** Gemini replay on frozen S1/S4 (+ optional Gan F0) for model-comparison evidence.~~ **Done** — `exect_gemini_ladder_replay_v1_inspection_20260521.md`.
+3. **Hygiene:** fixture reality-gap audit complete; optional run-manifest metadata improvements from metadata audit.
 4. **Later:** published benchmark reproduction when CUI/real-set blockers clear; optimizer compile rungs only with full ladder discipline.
 5. Keep registry `decision_scope` and mechanism status doc current; treat Lane A and negative probes as **arm libraries**, not closure.
 

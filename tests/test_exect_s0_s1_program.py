@@ -11,6 +11,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
     EXECT_S0_S1_POLICY_EXAMPLES,
     EXECT_S0_S1_V4_11_POLICY_EXAMPLES,
+    EXECT_S0_S1_V4_12_POLICY_EXAMPLES,
+    EXECT_S0_S1_V4_12_PROMPT_VERSION,
     EXECT_S0_S1_V4_11_PROMPT_VERSION,
     EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION,
     EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION,
@@ -273,6 +275,33 @@ def test_exect_s0_s1_v4_11_signature_extends_v4_10_boundary_doc():
     assert "generalized tonic clonic seizures" in doc
     assert "secondary generalisation" in doc
     assert "do not invent absence" in doc
+
+
+def test_exect_s0_s1_v4_12_label_policy_stabilizes_qwen_diagnosis_drift():
+    guidance, examples = resolve_exect_s0_s1_label_policy(EXECT_S0_S1_V4_12_PROMPT_VERSION)
+    guidance_text = " ".join(guidance).lower()
+    example_cases = {example["case"] for example in examples}
+
+    assert len(guidance) > len(resolve_exect_s0_s1_label_policy(EXECT_S0_S1_V4_11_PROMPT_VERSION)[0])
+    assert "v4.11 seizure-type rules only inside seizure_type" in guidance_text
+    assert "do not replace a generic epilepsy gold surface with focal epilepsy" in guidance_text
+    assert "do not emit symptomatic structural focal epilepsy from mri lesions" in guidance_text
+    assert {
+        "plural_gtcs_from_diagnosis_row",
+        "secondary_generalized_seizures_not_bare_secondary",
+        "diagnosis_generic_epilepsy_not_focal_from_seizure_context",
+        "diagnosis_no_structural_overcall_from_mri_context",
+        "diagnosis_focal_onset_recall_kept",
+    }.issubset(example_cases)
+    assert len(EXECT_S0_S1_V4_12_POLICY_EXAMPLES) == 3
+
+
+def test_exect_s0_s1_v4_12_signature_extends_v4_11_with_diagnosis_boundaries():
+    v4_12_signature = build_exect_s0_s1_field_family_signature(EXECT_S0_S1_V4_12_PROMPT_VERSION)
+    doc = (v4_12_signature.__doc__ or "").lower()
+    assert "generalized tonic clonic seizures" in doc
+    assert "do not upgrade generic epilepsy to focal epilepsy" in doc
+    assert "do not infer symptomatic structural focal epilepsy" in doc
 
 
 def test_exect_s0_s1_evidence_policy_signatures_keep_v4_10_label_policy():

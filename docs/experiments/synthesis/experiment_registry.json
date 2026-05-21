@@ -954,6 +954,93 @@
       "comparison_caveat": "ExECT Qwen replication group uses frozen GPT prompt/policy under matched schema, split, and scorer where possible; compare each schema level to its GPT counterpart."
     },
     {
+      "experiment_id": "exect_s0_s1_smoke_gemini31_flash_lite",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gemini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "eval_only"
+      ],
+      "comparison_group": "exect_gemini_ladder_replay_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "smoke",
+      "canonical_run_id": "exect_s0_s1_smoke_gemini31_flash_lite_20260521T093432Z",
+      "outcome": "hold",
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s0_s1_smoke_gemini31_flash_lite.json"
+      ],
+      "decision_doc": "docs/experiments/exect/exect_gemini_ladder_replay_v1_preregistration_20260521.md",
+      "notes": "decision_scope: arm. Provider smoke for exect_gemini_ladder_replay_v1 S1 arm; run pending.",
+      "comparison_groups": [
+        "exect_gemini_ladder_replay_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s0_s1_validation_full_gemini31_flash_lite",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gemini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "eval_only"
+      ],
+      "comparison_group": "exect_gemini_ladder_replay_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s0_s1_validation_full_gemini31_flash_lite_20260521T093501Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_gemini_ladder_replay_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Comparison group exect_gemini_ladder_replay_v1; varied_factor model_track.",
+        "GPT 4.1-mini frozen dev anchor: runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro F1).",
+        "Qwen3.6:35b anchor: runs/exect_s0_s1_validation_full_qwen35b_ollama_20260520T042117Z (79.0% micro F1).",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/exect_s0_s1_validation_full_gemini31_flash_lite_20260521T093501Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9029850746268656
+      },
+      "comparison_groups": [
+        "exect_gemini_ladder_replay_v1"
+      ],
+      "comparison_caveat": "Model-comparison group; same scorer and split as GPT/Qwen anchors; do not mechanism-close hybrid placement from Gemini alone."
+    },
+    {
       "experiment_id": "exect_s0_s1_validation_test_gpt4_1_mini",
       "dataset": "exect_v2",
       "schema_complexity": "exect_s1",
@@ -2627,6 +2714,93 @@
         "exect_qwen_replication_validation_v1"
       ],
       "comparison_caveat": "ExECT Qwen replication group; compare to GPT S4 v1.2 full anchor with per-family caveats, not pooled micro alone."
+    },
+    {
+      "experiment_id": "exect_s4_smoke_gemini31_flash_lite",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gemini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic",
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post",
+        "eval_only"
+      ],
+      "comparison_group": "exect_gemini_ladder_replay_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "smoke",
+      "canonical_run_id": "exect_s4_smoke_gemini31_flash_lite_20260521T093445Z",
+      "outcome": "hold",
+      "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s4_smoke_gemini31_flash_lite.json"
+      ],
+      "decision_doc": "docs/experiments/exect/exect_gemini_ladder_replay_v1_preregistration_20260521.md",
+      "notes": "decision_scope: arm. Provider smoke for exect_gemini_ladder_replay_v1 S4 K0+K1 arm; run pending.",
+      "comparison_groups": [
+        "exect_gemini_ladder_replay_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s4_validation_full_gemini31_flash_lite",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gemini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic",
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post",
+        "eval_only"
+      ],
+      "comparison_group": "exect_gemini_ladder_replay_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s4_validation_full_gemini31_flash_lite_20260521T093556Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_gemini_ladder_replay_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Comparison group exect_gemini_ladder_replay_v1; varied_factor model_track.",
+        "GPT 4.1-mini frozen anchor: runs/exect_s4_validation_full_gpt4_1_mini_20260520T071248Z (65.5% micro F1).",
+        "Qwen S4 anchor used pre-bridge L1 variant; Gemini uses current frozen K0+K1 path for GPT parity.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_validation_full_gemini31_flash_lite_20260521T093556Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.6675392670157068
+      },
+      "comparison_groups": [
+        "exect_gemini_ladder_replay_v1"
+      ],
+      "comparison_caveat": "Model-comparison group; Gemini uses current frozen K0+K1 S4 variant for GPT parity; Qwen anchor used pre-bridge L1 variant."
     },
     {
       "experiment_id": "exect_s4_validation_full_gpt4_1_mini",
@@ -14225,6 +14399,90 @@
       "comparison_groups": [
         "gan_s0_expanded_builders_prose_gpt_full_validation_v1"
       ]
+    },
+    {
+      "experiment_id": "gan_s0_expanded_builders_prose_smoke_gemini31_flash_lite",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gemini",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "gan_s0_expanded_builders_prose_model_comparison_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "smoke",
+      "canonical_run_id": "gan_s0_expanded_builders_prose_smoke_gemini31_flash_lite_20260521T094009Z",
+      "outcome": "hold",
+      "comparison_groups": [
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gemini",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "gan_s0_expanded_builders_prose_model_comparison_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini31_flash_lite.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite_20260521T094020Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_gemini_full_validation_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Same F0 skeleton as GPT F0; varied_factor model_track only.",
+        "GPT F0 anchor 68.1% monthly; Gemini 72.6% (+4.5pp).",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite_20260521T094020Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.725752508361204,
+        "secondary": {
+          "purist_category_accuracy": 0.782608695652174,
+          "pragmatic_category_accuracy": 0.8461538461538461,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "comparison_groups": [
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ],
+      "comparison_caveat": "Same F0 skeleton as GPT; no Qwen F0 port exists."
     },
     {
       "experiment_id": "gan_s0_expanded_builders_vr_full_validation_gpt4_1_mini",
