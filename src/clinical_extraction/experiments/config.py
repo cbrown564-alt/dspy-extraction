@@ -7,6 +7,7 @@ from typing import Literal
 from pydantic import Field, model_validator
 
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
@@ -36,10 +37,15 @@ from clinical_extraction.programs.exect_s4 import (
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_SCORER,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
@@ -73,6 +79,8 @@ class OptimizerConfig(FrozenModel):
         "semantic_frequency_with_evidence_feedback",
         "synthesis_exact_with_evidence",
         "synthesis_exact_with_evidence_feedback",
+        "exect_field_family_micro_f1",
+        "exect_field_family_micro_f1_raw",
     ] = "semantic_frequency_with_evidence"
     max_bootstrapped_demos: int = Field(default=4, ge=0)
     max_labeled_demos: int = Field(default=0, ge=0)
@@ -183,6 +191,15 @@ class ExperimentConfig(FrozenModel):
         "gan_frequency_s0_direct_single_pass",
         "gan_frequency_s0_direct_verify_repair",
         "gan_frequency_s0_temporal_candidates_verify_repair",
+        "gan_frequency_s0_temporal_candidates_single_pass",
+        "gan_frequency_s0_llm_temporal_candidates_single_pass",
+        "gan_frequency_s0_hybrid_temporal_candidates_single_pass",
+        "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair",
+        "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+        "gan_frequency_s0_temporal_candidates_adjudicate_det_evidence",
+        "gan_frequency_s0_temporal_candidates_adjudicate_confirm_only",
+        "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_no_guards",
+        "gan_frequency_s0_llm_temporal_candidates_verify_repair",
         "gan_frequency_s0_temporal_event_table_verify_repair",
         "gan_frequency_s0_react_temporal_tools",
         "exect_s0_s1_field_family_single_pass",
@@ -192,6 +209,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s0_s1_field_family_section_aware",
         "exect_s0_s1_field_family_diagnosis_recall",
         "exect_s0_s1_field_family_verify_repair",
+        "exect_s0_s1_field_family_deterministic_only",
         "exect_s2_field_family_single_pass",
         "exect_s3_field_family_single_pass",
         "exect_s4_field_family_single_pass",
@@ -251,6 +269,11 @@ class ExperimentConfig(FrozenModel):
                         GAN_FREQUENCY_S0_DIRECT_VARIANT,
                         GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
                         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+                        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+                        GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+                        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
+                        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
                         GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
                         GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
                     },
@@ -268,6 +291,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S0_S1_SECTION_AWARE_VARIANT,
                         EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
                         EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+                        EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
                     },
                     EXECT_S0_S1_SCORER,
                 ),

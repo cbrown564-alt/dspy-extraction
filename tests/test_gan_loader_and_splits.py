@@ -17,11 +17,11 @@ def test_gan_splits_are_deterministic_and_cover_all_records():
     split_b = make_gan_splits(records, salt="test-salt")
 
     assert split_a == split_b
-    assigned = split_a["development"] + split_a["validation"] + split_a["test"]
+    assigned = split_a["train"] + split_a["validation"] + split_a["test"]
     assert len(assigned) == len(records)
     assert len(set(assigned)) == len(records)
     assert split_a["counts"] == {
-        "development": len(split_a["development"]),
+        "train": len(split_a["train"]),
         "validation": len(split_a["validation"]),
         "test": len(split_a["test"]),
     }
@@ -33,7 +33,7 @@ def test_gan_split_metadata_documents_reproducibility_and_hard_cases():
 
     assert splits["salt"] == "test-salt"
     assert splits["split_ratios"] == {
-        "development": 0.6,
+        "train": 0.6,
         "validation": 0.2,
         "test": 0.2,
     }
@@ -49,5 +49,5 @@ def test_gan_split_metadata_documents_reproducibility_and_hard_cases():
     hard_case_ids = {record.record_id for record in records if "hard_case" in record.flags}
     hard_case_counts = splits["stratification"]["hard_case_counts"]
     assert sum(hard_case_counts.values()) == len(hard_case_ids)
-    for split in ["development", "validation", "test"]:
+    for split in ["train", "validation", "test"]:
         assert hard_case_counts[split] == len(hard_case_ids.intersection(splits[split]))

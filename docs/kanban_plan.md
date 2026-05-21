@@ -1,20 +1,27 @@
 # Clinical Extraction Kanban Plan
 
 **Core direction:** `docs/outline.md`  
-**Current synthesis:** `docs/experiment_taxonomy_research_synthesis_20260520.md`  
+**Research pivot (active doctrine):** `docs/hybrid_pipeline_research_pivot_20260521.md`  
+**Literature review:** `docs/multi_stage_llm_clinical_extraction_literature_review_20260521.md`  
+**Implementation plan:** `docs/hybrid_pipeline_exploration_implementation_plan_20260521.md`  
+**Mechanism status (open vs arm-reject):** `docs/hybrid_pipeline_mechanism_status_20260521.md`  
+**Agent skill:** `hybrid-pipeline-exploration`  
+**Historical snapshot:** `docs/hybrid_deterministic_placement_research_synthesis_20260521.md`  
+**Taxonomy implementation log:** `docs/experiment_taxonomy_research_synthesis_20260520.md`  
 **Negative-probe synthesis:** `docs/exect_negative_probe_synthesis_20260520.md`  
 **Primitive coverage audit:** `docs/taxonomy_primitive_coverage_audit_20260520.md`  
 **Phase 2 preregistration:** `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md`  
 **Phase 2 analysis:** `docs/exect_qwen_s1_seizure_gap_error_analysis_20260520.md`  
 **Phase 2 prompt-policy prereg:** `docs/exect_s1_seizure_prompt_policy_qwen_preregistration_20260520.md`  
 **Taxonomy decision:** `docs/hybrid_component_taxonomy_decision_20260520.md`  
+**DSPy optimizer investigation:** `docs/dspy_optimizer_investigation_20260521.md`  
 **Phase roadmap:** `docs/next_major_phases_20260520.md`  
 **Registry:** `docs/experiment_registry.json` · **Matrix export:** `docs/experiment_registry_matrix_20260520.md`  
 **Research atlas:** `docs/research_atlas.md` · **Evidence matrix:** `docs/research_atlas/evidence_matrix.md`  
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
-**Last refreshed:** 2026-05-21, after Lane A Gan GPT cap-25 runs + inspection (`docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`)
-**Lane A preregistrations:** `docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_prompt_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_verification_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_evidence_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_optimizer_gpt_cap25_v1_preregistration_20260521.md`
+**Last refreshed:** 2026-05-21, after multi-stage LLM clinical extraction literature review (`docs/multi_stage_llm_clinical_extraction_literature_review_20260521.md`)
+**Lane A preregistrations:** `docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md`, `docs/exect_s1_prompt_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_verification_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_evidence_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_optimizer_gpt_cap25_v1_preregistration_20260521.md`
 **Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`  
 **Taxonomy primitives:** `docs/taxonomy_primitives_workstream_plan_20260520.md` (catalog: `docs/taxonomy_primitive_catalog.md`)
 
@@ -22,21 +29,49 @@
 
 ## Current Research Focus
 
-The project has crossed from rapid prompt/program iteration into taxonomy-governed research. The immediate goal is no longer "find the next better prompt." It is to make the central scientific question measurable:
+**Pivot (2026-05-21):** Stop treating operational defaults as answered science. Explore hybrid pipelines on **three axes** with GPT 4.1-mini **cap-25 search grids** before narrowing again.
 
-**Where should deterministic clinical knowledge enter a DSPy extraction pipeline, and how does that differ by dataset, schema breadth, model track, and clinical task family?**
+| Axis | Question |
+| --- | --- |
+| **1** | How many stages should the pipeline have? (`pipeline_stage_graph`) |
+| **2** | At each stage: deterministic, LLM, or hybrid? (`stage_executor`) |
+| **3** | What concrete implementation for each stage? (`implementation_variant`) — **only after 1–2** |
 
-The experiment taxonomy is now the planning spine. New work should hold dataset, split, schema, scorer, and model fixed unless the varied factor explicitly says otherwise. Comparison groups matter more than local version names.
+**Doctrine:** distinguish **reject (arm)** vs **reject (mechanism)** vs **operational freeze**. See `docs/hybrid_pipeline_research_pivot_20260521.md` and skill `hybrid-pipeline-exploration`.
 
-The research atlas exposed a second near-term need: some apparently empty evidence-matrix cells are not empty because the idea was never attempted; they are empty because previous work bundled multiple factors together. The next rapid GPT workstream should therefore create **new clean factor-isolation experiments**, not recategorize historical rows after the fact.
+**Ontology (unchanged):** `docs/hybrid_component_taxonomy_decision_20260520.md` — `L0`–`D1`, interleaving positions, registry fields.
+
+**Lane A / ladder / negative probes (complete):** valuable **arm** evidence and repeat guardrails — **not** mechanism closure. Do not rerun identical probe configs; do run new stage-graph and executor grids.
 
 ## Experimentation Model
 
-Most experiment design should happen on **GPT 4.1-mini** because it gives the fastest loop for prompt, architecture, taxonomy, and scorer-facing iteration. Use it to discover whether an idea is coherent, whether the comparison group is clean, whether the metrics move in a meaningful direction, and whether failure modes are worth deeper study.
+**Search on GPT 4.1-mini cap-25** — rank arms, accept nulls, avoid mechanism-reject language on single configs.
 
-Run **Qwen35b** on longer, more expensive studies only after the GPT loop or prior evidence shows the experiment is valuable. Qwen runs should answer focused questions about local-model feasibility, transfer of a proven architecture, or whether deterministic scaffolding changes the local/hosted model tradeoff. Do not spend Qwen time on broad speculative sweeps when the same design question can be sharpened faster on GPT 4.1-mini.
+**Confirm on slice / full validation** — only for cap-25 winners per prereg.
 
-Practical rule: GPT 4.1-mini is the default exploration model; Qwen35b is the confirmatory and local-deployment model for selected high-value experiments.
+**Qwen35b** — confirmatory port of winning cells only; no broad speculative grids.
+
+**Comparison groups** — one primary `varied_factor` per group; name axis in prereg (`docs/hybrid_pipeline_exploration_implementation_plan_20260521.md`).
+
+## Literature-Informed Follow-Ups
+
+Source report: `docs/multi_stage_llm_clinical_extraction_literature_review_20260521.md`
+
+Interpretation: recent clinical IE papers support modular extraction, but mainly when each stage has a distinct reliability function: retrieval/context selection, schema constraint, field-family decomposition, evidence grounding, deterministic validation, targeted repair/judge review, or uncertainty routing. Do not add stages unless the varied mechanism is measurable.
+
+| Card | Status | Outcome | Dependencies | Parallelizable | Validation |
+| --- | --- | --- | --- | --- | --- |
+| Preregister evidence-first Gan S0 retrieval ablation | **Done** | `docs/gan_s0_retrieval_gpt_cap25_v1_preregistration_20260521.md` — cap-25 R1/R2/R3 context_selection_policy group | Current Gan temporal-candidates default; scorer semantics in `docs/gan_2026_label_audit.md` | yes | Next: R3 context-only program support + cap-25 configs/runs |
+| Design Gan S0 validation ladder | **Done** | Prereg `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md` — rungs V0–V7 on `g2_candidates_adjudicate` + det adjudicate; V8 judge deferred | Phase 2–3 cap-25 anchor (E1 52% monthly) | yes, after program variants V2–V5 | Implement det/LLM validation modules + cap-25 configs; no scorer changes |
+| Preregister ExECT S1 field-family prompt graph | **Ready** | Stage-graph comparison of current single-pass policy extraction vs diagnosis/seizure/medication field-family stages | Existing ExECT S1 stage-graph card; explicit bridge policy per arm | after bridge policy is fixed | Per-family F1, micro F1, evidence support, schema validity, bridge contribution, and merge-error analysis |
+| Run fixture-to-real reality-gap audit | **Backlog** | Small report comparing deterministic fixture outcomes, cap-25 dev behavior, and full validation behavior for one Gan and one ExECT family | Existing fixture coverage plus recent Gan/ExECT inspections | yes | Documents where fixtures overstate performance; updates failure-mode tags from real dev errors |
+| Audit run metadata for validation outcomes | **Backlog** | Check whether artifacts record model, prompt/schema versions, decoding settings, input IDs, validation failures, repair decisions, and scorer mode | none | yes | Gap report plus narrow implementation cards if missing metadata blocks literature-grade reporting |
+
+Dependency notes:
+
+- Pull Gan retrieval and validation-ladder preregistration first; they test mechanisms most directly supported by CLEAR, llm_extractinator, and the multi-stage validation framework.
+- Keep ExECT S1 field-family prompt graph aligned with the active stage-graph axis; bridge behavior must be explicit before results can be interpreted.
+- Treat fixture/reality-gap work as research hygiene, not a blocker for cap-25 exploration unless fixture claims are being used as performance evidence.
 
 ## What We Know Now
 
@@ -52,7 +87,7 @@ Key evidence:
 - GPT 4.1-mini promoted full-validation temporal-candidates run: `...130933Z`, 65.1% monthly, 76.5% Purist, 84.2% Pragmatic, 99.7% schema validity, 100% evidence support.
 - ReAct temporal-tools H3 slice rejected: `...173943Z`, 50% schema validity and 42.9% monthly accuracy on valid predictions.
 
-Research interpretation: deterministic temporal knowledge works best when precomputed and injected before LLM adjudication. Tool-during ReAct did not replace preconditioning under strict Gan label constraints.
+Research interpretation (operational, not mechanism-closed): promoted arm uses precomputed temporal candidates + LLM adjudication. **Open:** LLM-only candidate ID, stage-count optimum, tool-during with alternate implementations. ReAct slice = **arm-reject** for one H3 config only.
 
 ### ExECT S1-S4 schema ladder
 
@@ -67,7 +102,7 @@ Current anchors:
 | S3 | 72.1% micro | 72.2% micro | Qwen essentially matches GPT. |
 | S4 | 65.5% micro | 67.5% micro (`...160914Z`) | Qwen slightly exceeds GPT on the 11-family S4 diagnostic view. |
 
-Research interpretation: schema breadth changes the field-family surface, so the ladder is not a simple learning curve. S1 interleaving v2, Qwen interleaving v1, and all S1/S4 family-isolated pre-vocab probes are **closed** with no promotable intervention. The next ExECT step is not to wait for abstract hypothesis generation; it is to run clean GPT 4.1-mini factor-isolation groups for prompt policy, optimization, verification, and evidence, then port only useful results to Qwen.
+Research interpretation: schema breadth changes the field-family surface; ladder is not a simple learning curve. S1/S4 family probes = **arm-reject** for tested configs (repeat guardrail in negative-probe doc). **Next ExECT step:** Axis 1 stage-graph grid on S1 (after Gan Phase 2), not another single-factor prompt sweep unless Axis 3 on a winning skeleton.
 
 ### Experiment taxonomy
 
@@ -83,6 +118,21 @@ Completed:
 
 Research interpretation: taxonomy is now part of experiment design. Avoid more broad exploratory runs that cannot isolate the varied factor.
 
+### DSPy optimizers
+
+Full investigation: `docs/dspy_optimizer_investigation_20260521.md` (extends `docs/dspy_optimizer_vs_manual_engineering_audit_20260520.md`).
+
+Key evidence:
+
+- ExECT S1 bootstrap cap-25 **reject** (−5.1pp micro vs v4_10 baseline with embedded policy examples): `docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md`
+- Gan direct cap-25 ladder: **LabeledFewShot > Bootstrap > BootstrapRS** — `docs/gan_s0_few_shot_ladder_cap25_inspection_20260519.md`
+- Gan GEPA **reject** (prompt bloat, label regression) — `docs/gan_s0_gepa_vs_synthesis_decision_20260519.md`
+- Gan synthesis bootstrap full validation was a usable reference (62.9% monthly) but verify-repair v2 beat it (65.4%)
+
+Research interpretation: optimizer integration is sound; poor results reflect wrong failure mode, stacked few-shot confounds, and missing reference rungs — not broken wiring. Manual program engineering (verify-repair, temporal-candidates, label-policy ladders) outran compile-time search on active blockers.
+
+**Next optimizer work:** run the **full ablation ladder** from `D1_deterministic_only` through `L0_llm_only`, schema constraint, manual policy, then DSPy compile rungs — on **validation** for rungs 0–3; **train** (`exectv2_fixed_v1:train`, 120 records) for optimizer compile rungs 4–7 only; test holdout only to confirm. See `docs/dataset_splits_policy.md` and investigation doc § Proposed Full Ablation Ladder. Do not repeat bootstrap against v4_10 embedded examples without L0/L1 baselines.
+
 ### Taxonomy primitives (build-before-run)
 
 **Workstream plan:** `docs/taxonomy_primitives_workstream_plan_20260520.md`  
@@ -97,38 +147,80 @@ Still blocked: Card 19 published ExECT CUI benchmark pack; Card 20 Gan Real(300)
 
 ## Active Work
 
-**Current mode:** two-lane execution.
+**Current mode:** three-axis exploration (GPT cap-25 grids first).
 
-Lane Q: **`exect_s1_seizure_prompt_policy_qwen_v1`** — GPT + Qwen cap-25 **done**; Qwen full **approved** (diagnosis −2.6pp waived as cap-25 noise; seizure +11.6pp). Run `exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama.json`.
+Use skill **`hybrid-pipeline-exploration`** for all new experiment design and inspections.
 
-Lane A: design and run new clean GPT 4.1-mini factor-isolation experiments surfaced by `docs/research_atlas/evidence_matrix.md`. Do not recategorize old bundled rows as the clean evidence base; keep them as historical context and create new comparison groups.
+### Phase 0–1 (doctrine + inventory)
 
-**Next model-backed comparison group:** `exect_s1_seizure_prompt_policy_qwen_v1` — preregistered in `docs/exect_s1_seizure_prompt_policy_qwen_preregistration_20260520.md`; implementation in `docs/exect_s0_label_policy_v4_11_implementation.md`. Do not rerun H2 pre-vocab or add post bridges in this group.
+| Card | Status | Deliverable |
+| --- | --- | --- |
+| Pivot report + implementation plan | **Done** | `docs/hybrid_pipeline_research_pivot_20260521.md`, `docs/hybrid_pipeline_exploration_implementation_plan_20260521.md` |
+| Agent skill + AGENTS.md | **Done** | `.agents/skills/hybrid-pipeline-exploration/SKILL.md` |
+| Mechanism status table | **Done** | `docs/hybrid_pipeline_mechanism_status_20260521.md` |
+| Retag registry notes (canonical rows) | **Done** | `decision_scope` in high-value registry `notes` — `scripts/retag_registry_decision_scope.py` |
 
-**Cap-25 complete (2026-05-20):**
+### Phase 2 — Gan S0 Axis 1 (stage-graph grid) — **cap-25 complete**
 
-| Arm | Run | Seizure F1 | Gate |
-| --- | --- | ---: | --- |
-| GPT v4_11 | `…214222Z` | 93.9% (−1.5pp vs v4_10) | Pass |
-| Qwen v4_11 | `…214425Z` | 78.3% (+11.6pp vs `…210432Z`) | Pass (amended — diagnosis −2.6pp waived) |
+| Card | Status | Deliverable |
+| --- | --- | --- |
+| Preregister `gan_s0_pipeline_stage_graph_gpt_cap25_v1` | **Done** | `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_preregistration_20260521.md` — 5 arms, deterministic candidate-source control |
+| Program variants | **Done** | `temporal_candidates_single_pass` + `stage_graph_id` metadata in `gan_frequency_s0.py` |
+| Config batch + cap-25 runs | **Done** | `configs/experiments/gan_s0_stage_graph_*` — runs `…T012156Z`–`…T012243Z` |
+| Inspection | **Done** | `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md` — A3 hold, others reject (arm) |
+| Registry rows | **Done** | `scripts/backfill_hybrid_cap25_registry.py` (10 rows) |
 
-**Next (external PowerShell):** `exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama.json` — promote bar: seizure F1 ≥ 63.7% vs `…210722Z` (55.7%).
+### Phase 3–4 — Gan Axis 2–3 — **done**
 
-No runs in flight. S1 interleaving GPT v2 + Qwen v1 and all S1/S4 family-isolated GPT probes **closed**.
+| Card | Status | Deliverable |
+| --- | --- | --- |
+| Stage-executor grid | **Done** | `docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md` |
+| Implementation sweep (presentation) | **Done** | `docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md` — table/JSON/bullets 56% vs prose 52% |
 
-**Lane A cap-25 complete (2026-05-21):** Inspection `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md` — prompt **reject v4_11 on GPT**; verification **reject verify-repair** (−9.4pp micro); evidence **hold standard**, reject soft. No full-validation follow-ups for these three groups.
+### Phase 5 — Gan validation ladder + ExECT S1 stage-graph
 
-**Lane A preregistered — Gan configs next:**
+| Card | Status | Blocker |
+| --- | --- | --- |
+| Gan S0 validation ladder cap-25 | **Ready** | Prereg done — implement V2–V5 program variants + configs; V0/V6 exist |
+| ExECT S1 stage-graph cap-25 | **Ready** | Preregister `exect_s1_pipeline_stage_graph_gpt_cap25_v1`; tag `bridge_mode` per arm |
 
-| Card | Preregistration | Next step | Blocker |
-| --- | --- | --- | --- |
-| Gan S0 verification ablation | `docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 complete — hold (null factor)** | Inspection `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md` |
-| Gan S0 evidence-policy ablation | `docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 complete — reject optional & span-check** | Span-check abstained 7/25; not comparable |
-| Gan S0 prompt-policy ablation | `docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 complete — hold guardrails +4pp; reject synthesis** | Optional error-read on 6 label diffs |
-| ExECT S1 prompt-policy ablation | `docs/exect_s1_prompt_policy_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 done — reject v4_11 (GPT)** | None |
-| ExECT S1 verification ablation | `docs/exect_s1_verification_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 done — reject verify-repair** | None |
-| ExECT S1 evidence-policy ablation | `docs/exect_s1_evidence_policy_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 done — hold standard** | None |
-| ExECT S1 optimizer pilot | `docs/exect_s1_optimizer_gpt_cap25_v1_preregistration_20260521.md` | Add ExECT compile path in `run_experiment.py` | **Runner blocked** — Gan-only optimizer today |
+### Phase 5–6 — ExECT S1 + optimizer (Axis 3 on stripped graphs)
+
+| Card | Status | Notes |
+| --- | --- | --- |
+| ExECT S1 stage-graph cap-25 | **Pending** | Document `bridge_mode` every arm |
+| Optimizer automation thesis | **Deferred** | Axis 3 only — after Gan Phase 2–3 or explicit parallel slot |
+
+### Completed batches (arm evidence — not mechanism closure)
+
+| Batch | Inspection | Arm outcomes (not mechanism) |
+| --- | --- | --- |
+| Gan S0 stage-graph Axis 1 cap-25 | `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md` | A3 hold; A1/A2/A4/A5 reject (arm) |
+| Lane A GPT cap-25 (Gan + ExECT) | `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`, `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md` | See mechanism status doc |
+| ExECT S1 ladder rungs 0–3 | `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` | Decomposition reference |
+| Lane Q Qwen v4_11 | `docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md` | Hold promote blocked |
+| Negative probes | `docs/exect_negative_probe_synthesis_20260520.md` | Repeat guardrail only |
+
+**No runs in flight.** Gan Phases 2–4 cap-25 complete; validation ladder preregistered; next model-backed groups: Gan validation ladder V2–V6 (after impl) and ExECT S1 stage-graph Axis 1.
+
+**ExECT S1 optimizer pilot interpretation notes (2026-05-21):**
+
+- Judge the optimizer arm only against the paired in-group cap-25 baseline (`exect_s1_optimizer_baseline_cap25_gpt4_1_mini`), not against older full-validation S1 anchors.
+- Keep the first pilot's optimizer metric bridge-on: `exect_field_family_micro_f1` uses the same inline benchmark-bridge path as production `repair_policy=none`. Caveat any positive result as optimizer behavior under the current production bridge surface, not raw bridge-free model alignment.
+- Freeze the trainset as the first 40 records from `exectv2_fixed_v1:train`; changing the train subset after seeing cap-25 results requires a new preregistered optimizer design.
+- Interpret the preregistered "schema >= 95%" gate for ExECT S1 as: all 25 cap records produce Pydantic-valid `PredictionSet` / `DocumentPrediction` objects, zero missing predictions, and no material evidence-support regression versus the paired baseline. ExECT S1 does not currently expose a Gan-style `schema_valid_prediction_rate`; field-family errors remain F1 errors.
+
+**Next optimizer workstream (post-pilot):** see `docs/dspy_optimizer_investigation_20260521.md`. Preregister and implement the full reference ladder (D1 → L0 → L1 → policy → LabeledFewShot → Bootstrap → BootstrapRS → GEPA) on ExECT S1 dev before any further optimizer probes or test-holdout confirmation. Gan S0 can reuse the same ladder template.
+
+| Step | Status | Blocker |
+| --- | --- | --- |
+| Optimizer investigation report | **Done** | — |
+| ExECT S1 full-ladder preregistration | **Done** | `docs/exect_s1_full_ladder_gpt_validation_v1_preregistration_20260521.md` (supersedes dev draft) |
+| L0 prompt + D1 arm scaffolding | **Done** | `exect_s0_s1_field_family_l0_minimal`, `l1_schema`, `deterministic_only` variant |
+| Rungs 0–3 on validation | **Done** | D1 58.4% → L0 60.0% → L1 67.7% cap-25; L1+policy 92.3% full (matches frozen anchor) — `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` |
+| Optimizer automation thesis (rungs 4–5) | **Ready** | `docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md` — L0/L1 + LabeledFewShot/Bootstrap, no v4_10/bridges in prediction path |
+| Rungs 6–7 (BootstrapRS, GEPA) | **Deferred** | After rung 4–5 inspection |
+| Test holdout confirmation | **Deferred** | Only for arms clearing dev + cap gates |
 
 ## Next Major Phases
 
@@ -156,7 +248,7 @@ Ready cards:
 - **Gan S0 evidence-policy ablation:** no evidence requirement vs model quote required vs deterministic span-check or verified quote.
 - **Gan S0 prompt-policy ablation:** frozen baseline vs guardrails prompt vs temporal benchmark-policy prompt.
 - **ExECT S1 prompt-policy ablation:** v4_10 vs v4_11 seizure-focused policy vs one broader benchmark-policy prompt if justified.
-- **ExECT S1 optimizer pilot:** frozen prompt baseline vs optimizer-compiled variant on cap-25 before any full validation.
+- **ExECT S1 optimizer pilot:** frozen prompt baseline vs optimizer-compiled variant on cap-25 before any full validation. **Complete — reject bootstrap**; see `docs/dspy_optimizer_investigation_20260521.md` for full ladder follow-up.
 - **ExECT S1 verification ablation:** single-pass vs verify-repair with fixed prompt, scorer, split, and bridge policy.
 - **ExECT S1 evidence-policy ablation:** normal quote vs stricter evidence requirement vs diagnostic-only/no hard evidence policy.
 
@@ -180,20 +272,23 @@ Outcome: port only useful GPT-discovered factor-isolation results to Qwen and re
 Deferred cards:
 
 - Broad ExECT architecture matrix.
-- DSPy optimizer scale-up beyond the first ExECT S1 cap-25 pilot.
+- Ad hoc DSPy optimizer probes (bootstrap/GEPA) without the full reference ladder on dev.
 - Additional local/closed model comparisons beyond focused Qwen confirmation.
 
 Validation: each scale-up varies one explicit factor or is documented as an interaction study.
 
 ## Recently Completed (2026-05-21)
 
+- **DSPy optimizer investigation:** `docs/dspy_optimizer_investigation_20260521.md` — integration sound; historical rejects justified; defines full D1→L0→optimizer ladder on dev before test holdout.
+- **ExECT S1 optimizer cap-25 (2 runs):** `docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md` — baseline **hold** (95.8% micro); bootstrap **reject** (−5.1pp micro, −9.2pp seizure); runs `…000602Z` / `…000608Z`.
 - **ExECT S1 GPT factor-isolation cap-25 (3 groups, 7 runs):** `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md` — prompt v4_11 **reject** on GPT; verify-repair **reject** (−9.4pp micro); evidence standard **hold**, soft **reject**. Runs `…232829Z`–`…233326Z`.
 - **Lane A Gan GPT cap-25 (9 runs):** `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md` — verification null (44% all arms); evidence reject optional/span-check; prompt hold guardrails +4pp / reject synthesis.
-- **Lane A clean factor-isolation preregistrations (7 groups):** Gan + ExECT S1 groups preregistered; ExECT optimizer blocked on compile path.
+- **Lane A clean factor-isolation preregistrations (7 groups):** Gan + ExECT S1 groups preregistered; ExECT optimizer runner support now ready for cap-25 baseline + bootstrap execution.
 
 ## Recently Completed (2026-05-20)
 
-- **v4_11 seizure prompt-policy implementation:** `docs/exect_s0_label_policy_v4_11_implementation.md` — prompt-only addendum + 7 policy examples; `resolve_exect_s0_s1_label_policy` / versioned signature; configs `exect_s1_seizure_prompt_policy_v4_11_{cap25_gpt4_1_mini,cap25_qwen35b_ollama,full_qwen35b_ollama}.json`; dry-run OK; tests `test_exect_s0_s1_v4_11_*`, `test_exect_s1_seizure_prompt_policy_v4_11_configs_record_contract`.
+- **v4_11 seizure prompt-policy Qwen v1 full:** `exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama_20260520T231850Z` — seizure F1 **74.2%** (+18.5pp vs `…210722Z`), micro **84.3%**; **Hold (promote blocked)** — inspection `docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md`, error read `runs/exect_s1_seizure_prompt_policy_qwen_v1_error_read.json`.
+- **v4_11 seizure prompt-policy implementation:** `docs/exect_s0_label_policy_v4_11_implementation.md` — prompt-only addendum + 7 policy examples; cap-25 GPT/Qwen gates passed (Qwen cap-25 amended).
 - **Qwen S1 seizure-gap error analysis:** `docs/exect_qwen_s1_seizure_gap_error_analysis_20260520.md` — 19 Qwen vs 6 GPT mismatch docs; dominant Qwen-only modes are inflection (14 atoms), secondary-policy (14), absence/myoclonic overcall (6); **recommend prompt-policy preregistration**; script `scripts/analyze_exect_qwen_s1_seizure_gap_error_read.py`.
 - **Primitive catalog aligned with coverage audit:** `docs/taxonomy_primitive_catalog.md` now separates registry implementation status from evidence status; Gan S0 temporal-candidates plus verify-repair are the only promoted deterministic primitive path, while ExECT implemented primitives are marked diagnostic, planned, blocked, or rejected for current arm shapes.
 - **Qwen S1 seizure-gap error analysis preregistered:** `docs/exect_qwen_s1_seizure_gap_error_analysis_preregistration_20260520.md` selects a no-model Phase 2 first step using frozen Qwen/GPT H1 artifacts before any new ExECT run.
@@ -222,7 +317,7 @@ Validation: each scale-up varies one explicit factor or is documented as an inte
 
 ### Lane A clean GPT factor-isolation queue
 
-Ready now, after lightweight preregistration for each comparison group. Use GPT 4.1-mini for rapid execution while Qwen runs remain confirmatory. Preferred order is Gan verification/evidence/prompt policy, then ExECT prompt policy/verification/evidence, with ExECT optimizer pilot after confirming runner support.
+Lane A factor-isolation cap-25 groups are **complete** (see Lane A table above). Full reference ladder rungs **0–3 complete** on validation (`exect_s1_full_ladder_gpt_validation_v1`): policy+bridges account for ~25pp over schema-only L1; optimizer bootstrap already reject. **Train** reserved for optional rungs 4–7. See `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` and `docs/dataset_splits_policy.md`.
 
 ### Optional Gan model-interaction robustness slice
 
@@ -246,15 +341,19 @@ Deferred. S1 interleaving v1/v2 and S4 family-isolated probes are complete; reop
 
 ### Optimizer scale-up
 
-Start with one explicit ExECT S1 GPT cap-25 optimizer pilot. Broader optimizer scale-up remains deferred, and optimizers should be explicit ablation factors rather than silent prompt tuning.
+ExECT S1 cap-25 bootstrap pilot is **complete — reject**. Do not scale bootstrap or GEPA without the full reference ladder (`docs/dspy_optimizer_investigation_20260521.md`): D1 deterministic baseline → L0 bare LLM → L1 schema → manual policy → DSPy compile rungs, explored on **dev** first; test holdout only to confirm. Optimizers remain explicit ablation factors, not silent prompt tuning.
 
 ## Current Decisions
 
+**Reading guide (post-pivot):** Rows marked **Reject** below are **reject (arm)** unless `decision_scope: mechanism` is stated in the linked inspection. Operational defaults are **not** mechanism-closed. See `docs/hybrid_pipeline_mechanism_status_20260521.md`.
+
 | Decision | Current position |
 | --- | --- |
+| Research doctrine | **Three-axis exploration** — `docs/hybrid_pipeline_research_pivot_20260521.md` |
+| Decision language | **arm / operational / mechanism** — skill `hybrid-pipeline-exploration` |
 | Experiment loop | Explore primarily on GPT 4.1-mini; reserve Qwen35b for selected high-value focus experiments |
 | Gan default architecture | Temporal-candidates verify-repair (`H2` + `H4`) |
-| Gan ReAct H3 | Rejected as default path; keep as negative control |
+| Gan ReAct H3 | **arm-reject** (one tool surface); mechanism **open** — not default |
 | ExECT S1 interleaving Qwen v1 | **Complete — reject port** — full bridge Δ +12.8pp micro; H1 null vs Qwen anchor; does not close GPT seizure gap |
 | ExECT next experiment | **Clean factor-isolation queue** — prompt policy, optimizer pilot, verification, and evidence ablations on GPT 4.1-mini before Qwen confirmation |
 | Lane A policy | **New clean experiments only** — do not recategorize old bundled rows as the clean evidence base |
@@ -279,29 +378,46 @@ Start with one explicit ExECT S1 GPT cap-25 optimizer pilot. Broader optimizer s
 | ExECT S1 GPT prompt policy v4_11 (cap-25) | **Reject on GPT** — 93.9% seizure F1 vs 95.4% v4_10 (−1.5pp); Qwen port remains separate |
 | ExECT S1 GPT verify-repair (cap-25) | **Reject** — 86.4% micro vs 95.8% single-pass (−9.4pp) |
 | ExECT S1 GPT evidence policy (cap-25) | **Hold standard** — strict null (+0.6pp micro); soft reject (−3.1pp seizure, −4.4pp evidence) |
+| ExECT S1 GPT optimizer bootstrap (cap-25) | **Reject** — 90.7% micro vs 95.8% baseline (−5.1pp); seizure −9.2pp; no full validation |
+| ExECT S1 GPT optimizer baseline (cap-25) | **Hold (in-group anchor)** — 95.8% micro; matches clean v4_10 cap-25 reference |
+| DSPy optimizer strategy | **Full reference ladder next** — see `docs/dspy_optimizer_investigation_20260521.md`; dev-first, no ad hoc bootstrap vs embedded policy |
 | ExECT Qwen S4 full | **Hold** as local ladder anchor (`…160914Z`); +2.0pp pooled micro vs GPT but weaker seizure/diagnosis per-family |
+| ExECT Qwen S1 v4_11 full (seizure prompt-policy) | **Hold (promote blocked)** — seizure +18.5pp vs `…210722Z`; diagnosis −5.1pp; mismatch docs 14; Qwen prod stays v4_10 |
+| ExECT S1 full-ladder GPT validation v1 | **Ready to run** — validation cap-25 (D1/L0/L1) + full 40 (L1+policy); dev for optimizer compile only |
 
 ## Recommended Next Pull
 
-1. **Lane Q:** Qwen v4_11 full validation + error-read vs `…210722Z` (if not already complete).
-2. **Lane A (Gan — follow-up):** Registry/atlas for nine cap-25 runs; optional guardrails-port error-read (`…234051Z` vs `…233934Z`).
-3. **Lane A (ExECT GPT):** ExECT cap-25 groups per `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md` if not already closed.
-4. **Lane A (blocked):** ExECT optimizer pilot after ExECT compile path lands.
+1. **Implement Gan S0 validation ladder V2–V5:** program variants + cap-25 configs per `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md`; run V0→V6 on GPT cap-25.
+2. **Run Gan S0 retrieval cap-25 grid:** execute `gan_s0_retrieval_gpt_cap25_v1` per retrieval prereg (parallel if cap record order unchanged).
+3. **Preregister ExECT S1 field-family prompt graph / stage-graph:** bridge policy explicit per arm.
+4. **Keep Qwen ports deferred:** port only arms that survive GPT cap-25/focused validation.
+5. **Research hygiene parallel slot:** audit run metadata for validation/repair outcomes (Literature Card 5).
+
+## Operational Defaults vs Open Mechanisms
+
+| Operational default (freeze for runs) | Open mechanism class (must grid-search) |
+| --- | --- |
+| Gan temporal-candidates + VR v1.1 | Optimal stage count; LLM vs det candidate generation |
+| ExECT S1 GPT v4_10 + inline bridges | Optimal S1 stage graph; bridge placement; pre strategies (non-section-aware) |
+| ExECT S2–S4 GPT frozen ladder | Per-family det support on broad schema |
+
+Full table: `docs/hybrid_pipeline_mechanism_status_20260521.md`
 
 ## Parallelization
 
 | Safe in parallel | Single-threaded |
 | --- | --- |
 | Gan verification/evidence/prompt-policy cap-25 config drafts | Changing scorer semantics or benchmark label policy |
-| ExECT prompt/verification/evidence cap-25 config drafts | ExECT optimizer runner changes (compile path) |
+| ExECT full-ladder preregistration + L0/D1 scaffolding | ExECT optimizer runner changes (compile path — done) |
+| Ladder rungs 0–3 dev configs (after L0/D1 impl) | Qwen full validation runs |
 | Research atlas and matrix regeneration after metadata edits | Qwen full validation runs |
 | Gan prompt-policy port implementation (synthesis/guardrails onto temporal+VR) | Published benchmark reproduction design |
 
 ## Long-Term Research Arc
 
-1. Consolidate taxonomy-governed evidence and keep decision docs linked to registry rows.
-2. Use Gan as the temporal-frequency case study, but separate verification, evidence, and prompt-policy effects from the promoted architecture with new clean GPT comparisons.
-3. Treat ExECT as a factor-isolation problem before a mechanism-selection problem: prompt policy, verification, evidence, and optimizer effects need clean GPT rows before broader claims.
-4. Port only promotable GPT-discovered interventions to Qwen; use Qwen diagnostics when the research question is local-model feasibility or model-specific failure.
-5. Separate local diagnostic validation from published benchmark reproduction until CUI-aware ExECT scoring and Gan real-set access are resolved.
-6. Reopen broad architecture ablations and optimizers only after the next narrow mechanism has a clean hold/promote signal.
+1. **Search** hybrid pipelines on Axes 1→2→3 (GPT cap-25 grids) per `docs/hybrid_pipeline_exploration_implementation_plan_20260521.md`.
+2. **Confirm** only cap-25 winners on slice/full validation; **Qwen** ports winning cells only.
+3. Keep taxonomy registry and `decision_scope` discipline; mechanism status doc is the open/closed index.
+4. Gan leads Axis 1–2 (temporal frequency); ExECT S1 follows with bridge caveats; S2–S4 after S1 skeleton exists.
+5. Separate local diagnostic validation from published benchmark reproduction (CUI ExECT, Gan real-set).
+6. Treat Lane A, ladder, and negative probes as **arm libraries** — not permission to stop exploring placement.

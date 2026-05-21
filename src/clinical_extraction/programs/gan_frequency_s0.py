@@ -19,11 +19,38 @@ from clinical_extraction.schemas import (
 
 GAN_FREQUENCY_S0_FIELD = "seizure_frequency_number"
 GAN_FREQUENCY_S0_SCHEMA_LEVEL = "gan_frequency_s0"
+GAN_CONTEXT_POLICY_FULL_NOTE = "full_note"
+GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES = (
+    "full_note_plus_deterministic_temporal_candidates"
+)
+GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY = (
+    "deterministic_temporal_candidates_only"
+)
+GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB = (
+    "[No deterministic temporal frequency evidence windows were retrieved. "
+    "Adjudicate using temporal_candidates below; if empty, prefer "
+    "'no seizure frequency reference' or 'unknown' per Gan policy.]"
+)
 GAN_FREQUENCY_S0_VARIANT = "gan_frequency_s0_single_pass"
 GAN_FREQUENCY_S0_DIRECT_VARIANT = "gan_frequency_s0_direct_single_pass"
 GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT = "gan_frequency_s0_direct_verify_repair"
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT = (
     "gan_frequency_s0_temporal_candidates_verify_repair"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_single_pass"
+)
+GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_llm_temporal_candidates_single_pass"
+)
+GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_hybrid_temporal_candidates_single_pass"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair"
+)
+GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT = (
+    "gan_frequency_s0_llm_temporal_candidates_verify_repair"
 )
 GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT = (
     "gan_frequency_s0_temporal_event_table_verify_repair"
@@ -31,11 +58,41 @@ GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT = (
 GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT = (
     "gan_frequency_s0_react_temporal_tools"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_det_guards"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_det_evidence"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_confirm_only"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_no_guards"
+)
 GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
     "gan_frequency_s0_direct_verify_repair_v2_4"
 )
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
+)
+GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
+    "gan_frequency_s0_llm_temporal_candidates_v1_1"
+)
+GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_llm_temporal_candidates_single_pass_v1_1"
+)
+GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_hybrid_temporal_candidates_single_pass_v1_1"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_v1_1"
+)
+GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_PROMPT_VERSION = (
+    "gan_frequency_s0_llm_temporal_candidates_verify_repair_v1_1"
 )
 GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_event_table_verify_repair_v1_0"
@@ -44,6 +101,36 @@ GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_PROMPT_VERSION = (
     "gan_frequency_s0_react_temporal_tools_v1_1"
 )
 GAN_FREQUENCY_S0_SCORER = "gan_frequency_deterministic_v1"
+GAN_FREQUENCY_S0_STAGE_GRAPH_BY_VARIANT = {
+    GAN_FREQUENCY_S0_DIRECT_VARIANT: "g1_direct",
+    GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT: "g2_extract_repair",
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT: "g2_candidates_adjudicate",
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT: "g2_candidates_adjudicate",
+    GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT: (
+        "g3_candidates_extract_repair"
+    ),
+}
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
 GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION = (
     "gan_frequency_s0_direct_guardrails_v2_2"
@@ -59,6 +146,12 @@ GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_PROMPT_VERSION = (
 )
 GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_verify_repair_evidence_span_check_v1"
+)
+GAN_FREQUENCY_S0_ADJUDICATE_VERIFY_REPAIR_SPAN_CHECK_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_span_check_v1"
+)
+GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_confirm_only_v1_1"
 )
 
 GAN_FREQUENCY_SYNTHESIS_GUIDANCE = (
@@ -434,6 +527,51 @@ class GanFrequencyS0TemporalVerifierSignature(GanFrequencyS0VerifierSignature):
     )
 
 
+class GanFrequencyS0LlmTemporalCandidatesSignature(dspy.Signature):
+    """Extract auditable temporal frequency candidates from a clinical note.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    Build candidate interpretations that could support canonical Gan labels.
+    Each candidate must include an exact contiguous evidence_text substring
+    from note_text. Do not invent counts, windows, or labels unsupported by
+    the note.
+
+    Output temporal_candidates_json as a JSON object with key "candidates":
+    a list of objects with canonical_label, event_count, window_count,
+    window_unit, evidence_text, and derivation fields.
+    """
+
+    note_text: str = dspy.InputField(desc="Clinical neurology note text")
+    temporal_candidates_json: str = dspy.OutputField(
+        desc=(
+            'JSON object {"candidates": [...]} where each candidate includes '
+            "canonical_label, event_count, window_count, window_unit, "
+            "evidence_text, and derivation."
+        )
+    )
+
+
+class GanFrequencyS0TemporalAdjudicateSignature(GanFrequencyS0Signature):
+    """Adjudicate Gan seizure frequency with deterministic temporal-candidate hints.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    temporal_candidates lists auditable event/window interpretations extracted
+    deterministically from the note. Use them as diagnostic hints when choosing
+    the canonical label, not as gold labels.
+    """
+
+    temporal_candidates: str = dspy.InputField(
+        desc=(
+            "Deterministic temporal frequency candidates: canonical labels with "
+            "event counts, windows, derivations, and evidence spans from the note."
+        )
+    )
+
+
 GAN_FREQUENCY_S0_GUARDRAILS_PORT_EXTRACTOR_ADDENDUM = """
     Prompt policy (guardrails port on temporal verify-repair):
     Arithmetic and temporal guardrails:
@@ -456,15 +594,79 @@ GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_VERIFIER_ADDENDUM = """
     - On confirm, require initial_evidence to be note-supported when present.
 """
 
+GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_ADDENDUM = """
+    Validation-ladder confirm-only policy:
+    - decision MUST be confirm only.
+    - final_label and final_evidence MUST equal initial_label and initial_evidence.
+    - Do not repair or abstain.
+"""
+
+GAN_FREQUENCY_S0_ADJUDICATE_VR_SPAN_CHECK_PROMPT_VERSIONS = frozenset(
+    {
+        GAN_FREQUENCY_S0_ADJUDICATE_VERIFY_REPAIR_SPAN_CHECK_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
+    }
+)
+
+GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_GENERATOR_ADDENDUM = """
+    LLM temporal-candidate generation policy (v1.1):
+    - Propose auditable event/window interpretations that could map to canonical
+      Gan labels: N per unit, N to M per unit, N per M unit, cluster labels,
+      seizure free for N unit (>= 6 months), unknown, or no seizure frequency
+      reference when appropriate.
+    - Every candidate must include evidence_text as an exact contiguous substring
+      of note_text.
+    - Prefer quantified count+window pairs when the note states them.
+    - Do not emit duplicate candidates with the same label and evidence span.
+"""
+
+GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM = """
+    Temporal-candidate adjudication policy (v1.1):
+    - temporal_candidates lists auditable event/window interpretations extracted
+      deterministically from the note. These are diagnostic hints, not gold labels.
+    - Prefer note-supported quantified rates from candidates when they match the
+      note's event/window structure.
+    - Do not blindly copy a candidate label if the note supports a different
+      canonical label.
+    - Cluster labels must include both cluster period and per-cluster count.
+    - evidence_text must be an exact contiguous substring of note_text.
+"""
+
 
 def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
         return GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
         return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if (
+        program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT
+    ):
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
+        return GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_PROMPT_VERSION
+    if program_variant in {
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
+    }:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT:
+        return GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
         return GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION
     return "gan_frequency_s0_v1"
+
+
+def stage_graph_id_for_program_variant(program_variant: str) -> str | None:
+    return GAN_FREQUENCY_S0_STAGE_GRAPH_BY_VARIANT.get(program_variant)
 
 
 def resolve_gan_frequency_s0_extractor_prompt_version(
@@ -475,6 +677,23 @@ def resolve_gan_frequency_s0_extractor_prompt_version(
         "gan_frequency_s0_direct_verify_repair_v2",
     }:
         return GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION
+    if prompt_version in {
+        GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_ADJUDICATE_VERIFY_REPAIR_SPAN_CHECK_PROMPT_VERSION,
+    }:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    return prompt_version
+
+
+def resolve_gan_frequency_s0_verifier_prompt_version(
+    prompt_version: str,
+) -> str:
+    if prompt_version in {
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_ADJUDICATE_VERIFY_REPAIR_SPAN_CHECK_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION,
+    }:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION
     return prompt_version
 
 
@@ -522,6 +741,29 @@ def build_gan_frequency_s0_extractor_signature(
         "gan_frequency_s0_v1",
     }:
         return GanFrequencyS0Signature
+    if prompt_version == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION:
+        doc = (GanFrequencyS0Signature.__doc__ or "") + (
+            GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if prompt_version in {
+        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_PROMPT_VERSION,
+    }:
+        doc = (GanFrequencyS0Signature.__doc__ or "") + (
+            GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateExecutorExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
     raise ValueError(f"Unsupported Gan S0 extractor prompt version: {prompt_version!r}")
 
 
@@ -536,6 +778,22 @@ def build_gan_frequency_s0_verifier_signature(
         else GanFrequencyS0VerifierSignature
     )
     doc = base_cls.__doc__ or ""
+    if prompt_version == GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION:
+        doc = doc + GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_ADDENDUM
+        name = (
+            "GanFrequencyS0TemporalConfirmOnlyVerifierSignature"
+            if temporal
+            else "GanFrequencyS0ConfirmOnlyVerifierSignature"
+        )
+        return type(name, (base_cls,), {"__doc__": doc})
+    if prompt_version in GAN_FREQUENCY_S0_ADJUDICATE_VR_SPAN_CHECK_PROMPT_VERSIONS:
+        doc = doc + GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_VERIFIER_ADDENDUM
+        name = (
+            "GanFrequencyS0TemporalAdjudicateSpanCheckVerifierSignature"
+            if temporal
+            else "GanFrequencyS0AdjudicateSpanCheckVerifierSignature"
+        )
+        return type(name, (base_cls,), {"__doc__": doc})
     if prompt_version == GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION:
         doc = doc + GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_VERIFIER_ADDENDUM
         name = (
@@ -652,6 +910,674 @@ class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
             temporal_candidates=temporal_candidates_text,
             temporal_candidate_labels=[c.canonical_label for c in candidates],
             temporal_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in candidates
+            ],
+        )
+
+
+def _prompt_note_text_for_context_policy(
+    note_text: str,
+    candidates: list[Any],
+    *,
+    context_policy: str,
+) -> str:
+    """Assemble prompt-visible note text for retrieval/context-selection arms."""
+
+    if context_policy == GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY:
+        spans: list[str] = []
+        seen: set[str] = set()
+        for candidate in candidates:
+            evidence = getattr(candidate, "evidence_text", "")
+            if evidence and evidence not in seen:
+                seen.add(evidence)
+                spans.append(evidence)
+        if spans:
+            return "\n\n---\n\n".join(spans)
+        return GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB
+    return note_text
+
+
+class GanFrequencyS0TemporalCandidatesSinglePassModule(dspy.Module):
+    """Deterministic temporal candidates followed by a single LLM adjudication pass."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        candidate_presentation: str | None = None,
+        context_policy: str = (
+            GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES
+        ),
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.candidate_presentation = candidate_presentation
+        self.context_policy = context_policy
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            TemporalCandidatePresentation,
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        presentation: TemporalCandidatePresentation = (
+            self.candidate_presentation or "prose"
+        )
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            presentation=presentation,
+        )
+        prompt_note_text = _prompt_note_text_for_context_policy(
+            note_text,
+            candidates,
+            context_policy=self.context_policy,
+        )
+        result = self.adjudicate(
+            note_text=prompt_note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        return _temporal_adjudication_prediction(
+            result,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            candidate_source="deterministic",
+            extra_metadata={
+                "context_policy": self.context_policy,
+                "prompt_note_text_is_full_note": (
+                    self.context_policy
+                    != GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY
+                ),
+                "prompt_note_text_char_count": len(prompt_note_text),
+                "source_note_text_char_count": len(note_text),
+            },
+        )
+
+
+def _build_gan_frequency_s0_llm_candidate_generator_signature() -> type[
+    GanFrequencyS0LlmTemporalCandidatesSignature
+]:
+    doc = (GanFrequencyS0LlmTemporalCandidatesSignature.__doc__ or "") + (
+        GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_GENERATOR_ADDENDUM
+    )
+    return type(
+        "GanFrequencyS0LlmTemporalCandidatesGeneratorSignature",
+        (GanFrequencyS0LlmTemporalCandidatesSignature,),
+        {"__doc__": doc},
+    )
+
+
+class GanFrequencyS0LlmTemporalCandidatesGeneratorModule(dspy.Module):
+    """Model pass that emits structured temporal frequency candidates."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        signature_cls = _build_gan_frequency_s0_llm_candidate_generator_signature()
+        self.generate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.generate(note_text=note_text)
+
+
+def _temporal_adjudication_prediction(
+    result: dspy.Prediction,
+    *,
+    candidates: list[Any],
+    temporal_candidates_text: str,
+    candidate_source: str,
+    llm_candidate_records: list[dict[str, str]] | None = None,
+    extra_metadata: dict[str, Any] | None = None,
+) -> dspy.Prediction:
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    metadata: dict[str, Any] = {
+        "seizure_frequency_number": result.seizure_frequency_number,
+        "evidence_text": result.evidence_text,
+        "temporal_candidates": temporal_candidates_text,
+        "temporal_candidate_labels": [c.canonical_label for c in candidates],
+        "temporal_candidate_records": [
+            temporal_candidate_to_dict(candidate) for candidate in candidates
+        ],
+        "temporal_candidate_source": candidate_source,
+    }
+    if llm_candidate_records is not None:
+        metadata["llm_temporal_candidate_records"] = llm_candidate_records
+    if extra_metadata:
+        metadata.update(extra_metadata)
+    return dspy.Prediction(**metadata)
+
+
+def _synthetic_confirm_from_adjudicate(
+    *,
+    initial_label: str | None,
+    initial_evidence: str | None,
+    reason: str,
+) -> dspy.Prediction:
+    return dspy.Prediction(
+        final_label=initial_label,
+        final_evidence=initial_evidence,
+        decision="confirm",
+        reason=reason,
+    )
+
+
+def _apply_det_evidence_grounding(
+    note_text: str,
+    *,
+    initial_label: str | None,
+    initial_evidence: str | None,
+) -> dspy.Prediction:
+    """Deterministic in-note evidence check before plausibility guards (ladder V3+)."""
+    if initial_label in (None, "no seizure frequency reference"):
+        return _synthetic_confirm_from_adjudicate(
+            initial_label=initial_label,
+            initial_evidence=initial_evidence,
+            reason="Det evidence grounding skipped for abstain/no-reference.",
+        )
+    feedback = _evidence_policy_feedback(
+        gold_label=initial_label,
+        predicted_evidence=initial_evidence,
+        note_text=note_text,
+    )
+    if feedback is None:
+        return _synthetic_confirm_from_adjudicate(
+            initial_label=initial_label,
+            initial_evidence=initial_evidence,
+            reason="Det evidence grounding passed.",
+        )
+    return dspy.Prediction(
+        final_label=None,
+        final_evidence=None,
+        decision="abstain",
+        reason=f"Det evidence grounding abstained: {feedback}",
+    )
+
+
+def _prediction_from_temporal_adjudicate_validation(
+    *,
+    initial_label: str | None,
+    initial_evidence: str | None,
+    verified: dspy.Prediction,
+    candidates: list[Any],
+    temporal_candidates_text: str,
+    validation_ladder_rung: str,
+) -> dspy.Prediction:
+    from clinical_extraction.gan.temporal_candidates import temporal_candidate_to_dict
+
+    return dspy.Prediction(
+        seizure_frequency_number=verified.final_label,
+        evidence_text=verified.final_evidence,
+        verifier_decision=verified.decision,
+        verifier_reason=verified.reason,
+        initial_label=initial_label,
+        initial_evidence=initial_evidence,
+        temporal_candidates=temporal_candidates_text,
+        temporal_candidate_labels=[c.canonical_label for c in candidates],
+        temporal_candidate_records=[
+            temporal_candidate_to_dict(candidate) for candidate in candidates
+        ],
+        temporal_candidate_source="deterministic",
+        validation_ladder_rung=validation_ladder_rung,
+    )
+
+
+def _llm_temporal_candidates_from_prediction(
+    note_text: str,
+    prediction: dspy.Prediction,
+) -> list[Any]:
+    from clinical_extraction.gan.temporal_candidates import (
+        parse_llm_temporal_candidates_json,
+    )
+
+    return parse_llm_temporal_candidates_json(
+        prediction.temporal_candidates_json,
+        note_text=note_text,
+    )
+
+
+class GanFrequencyS0LlmTemporalCandidatesSinglePassModule(dspy.Module):
+    """LLM temporal candidates followed by a single LLM adjudication pass."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.candidate_generator = GanFrequencyS0LlmTemporalCandidatesGeneratorModule()
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            format_temporal_candidates_for_prompt,
+            temporal_candidate_to_dict,
+        )
+
+        generated = self.candidate_generator(note_text=note_text)
+        candidates = _llm_temporal_candidates_from_prediction(note_text, generated)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            source="llm",
+        )
+        result = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        return _temporal_adjudication_prediction(
+            result,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            candidate_source="llm",
+            llm_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in candidates
+            ],
+        )
+
+
+class GanFrequencyS0HybridTemporalCandidatesSinglePassModule(dspy.Module):
+    """Merged deterministic+LLM temporal candidates with LLM adjudication."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.candidate_generator = GanFrequencyS0LlmTemporalCandidatesGeneratorModule()
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+            merge_temporal_frequency_candidates,
+            temporal_candidate_to_dict,
+        )
+
+        deterministic_candidates = build_temporal_frequency_candidates_from_note(
+            note_text
+        )
+        generated = self.candidate_generator(note_text=note_text)
+        llm_candidates = _llm_temporal_candidates_from_prediction(note_text, generated)
+        candidates = merge_temporal_frequency_candidates(
+            deterministic_candidates,
+            llm_candidates,
+        )
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            source="hybrid",
+        )
+        result = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        return _temporal_adjudication_prediction(
+            result,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            candidate_source="hybrid",
+            llm_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in llm_candidates
+            ],
+        )
+
+
+class GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule(dspy.Module):
+    """Adjudicate then deterministic plausibility guards only (validation ladder V2)."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _synthetic_confirm_from_adjudicate(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            reason="Synthetic confirm for det-plausibility rung (no LLM verifier).",
+        )
+        verified = _apply_temporal_verifier_guards(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+        )
+        return _prediction_from_temporal_adjudicate_validation(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            validation_ladder_rung="det_plausibility",
+        )
+
+
+class GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule(dspy.Module):
+    """Adjudicate, deterministic evidence grounding, then plausibility guards (V3)."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_det_evidence_grounding(
+            note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+        )
+        if verified.decision != "abstain":
+            verified = _apply_temporal_verifier_guards(
+                initial_label=initial.seizure_frequency_number,
+                initial_evidence=initial.evidence_text,
+                verified=verified,
+                candidates=candidates,
+            )
+        return _prediction_from_temporal_adjudicate_validation(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            validation_ladder_rung="det_evidence_grounding",
+        )
+
+
+class GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule(dspy.Module):
+    """V3 stack plus LLM verifier restricted to confirm-only (V4)."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_CONFIRM_ONLY_VERIFIER_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        adjudicate_prompt = resolve_gan_frequency_s0_extractor_prompt_version(
+            prompt_version
+        )
+        signature_cls = build_gan_frequency_s0_extractor_signature(adjudicate_prompt)
+        self.adjudicate = dspy.Predict(signature_cls)
+        verifier_prompt = resolve_gan_frequency_s0_verifier_prompt_version(prompt_version)
+        self.verifier = GanFrequencyS0TemporalVerifierModule(
+            prompt_version=verifier_prompt
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_det_evidence_grounding(
+            note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+        )
+        if verified.decision == "abstain":
+            return _prediction_from_temporal_adjudicate_validation(
+                initial_label=initial.seizure_frequency_number,
+                initial_evidence=initial.evidence_text,
+                verified=verified,
+                candidates=candidates,
+                temporal_candidates_text=temporal_candidates_text,
+                validation_ladder_rung="llm_confirm_only",
+            )
+        verified = _apply_temporal_verifier_guards(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+        )
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=verified.final_label,
+            initial_evidence=verified.final_evidence,
+            temporal_candidates=temporal_candidates_text,
+        )
+        return _prediction_from_temporal_adjudicate_validation(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            validation_ladder_rung="llm_confirm_only",
+        )
+
+
+class GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule(dspy.Module):
+    """Det evidence grounding plus full LLM verify-repair without post-VR guards (V5)."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = (
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
+        ),
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        adjudicate_prompt = resolve_gan_frequency_s0_extractor_prompt_version(
+            prompt_version
+        )
+        signature_cls = build_gan_frequency_s0_extractor_signature(adjudicate_prompt)
+        self.adjudicate = dspy.Predict(signature_cls)
+        verifier_prompt = resolve_gan_frequency_s0_verifier_prompt_version(prompt_version)
+        self.verifier = GanFrequencyS0TemporalVerifierModule(
+            prompt_version=verifier_prompt
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_det_evidence_grounding(
+            note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+        )
+        if verified.decision == "abstain":
+            return _prediction_from_temporal_adjudicate_validation(
+                initial_label=initial.seizure_frequency_number,
+                initial_evidence=initial.evidence_text,
+                verified=verified,
+                candidates=candidates,
+                temporal_candidates_text=temporal_candidates_text,
+                validation_ladder_rung="llm_verify_repair",
+            )
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=verified.final_label,
+            initial_evidence=verified.final_evidence,
+            temporal_candidates=temporal_candidates_text,
+        )
+        return _prediction_from_temporal_adjudicate_validation(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            validation_ladder_rung="llm_verify_repair",
+        )
+
+
+class GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule(dspy.Module):
+    """Deterministic candidates, LLM adjudicate, then temporal verify-repair."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = (
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
+        ),
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+        verifier_prompt = resolve_gan_frequency_s0_verifier_prompt_version(prompt_version)
+        self.verifier = GanFrequencyS0TemporalVerifierModule(
+            prompt_version=verifier_prompt
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_temporal_verifier_guards(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+        )
+        if self.prompt_version in GAN_FREQUENCY_S0_ADJUDICATE_VR_SPAN_CHECK_PROMPT_VERSIONS:
+            verified = _apply_evidence_span_check_guard(
+                note_text,
+                verified,
+                initial_label=initial.seizure_frequency_number,
+                initial_evidence=initial.evidence_text,
+            )
+        ladder_rung = (
+            "llm_vr_det_guards_span_check"
+            if self.prompt_version in GAN_FREQUENCY_S0_ADJUDICATE_VR_SPAN_CHECK_PROMPT_VERSIONS
+            else "llm_verify_repair_det_guards"
+        )
+        return _prediction_from_temporal_adjudicate_validation(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            validation_ladder_rung=ladder_rung,
+        )
+
+
+class GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule(dspy.Module):
+    """LLM candidates, LLM adjudicate, then temporal verify-repair."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.candidate_generator = GanFrequencyS0LlmTemporalCandidatesGeneratorModule()
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+        self.verifier = GanFrequencyS0TemporalVerifierModule(
+            prompt_version=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            format_temporal_candidates_for_prompt,
+            temporal_candidate_to_dict,
+        )
+
+        generated = self.candidate_generator(note_text=note_text)
+        candidates = _llm_temporal_candidates_from_prediction(note_text, generated)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(
+            candidates,
+            source="llm",
+        )
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_temporal_verifier_guards(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=verified.final_label,
+            evidence_text=verified.final_evidence,
+            verifier_decision=verified.decision,
+            verifier_reason=verified.reason,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+            temporal_candidate_labels=[c.canonical_label for c in candidates],
+            temporal_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in candidates
+            ],
+            temporal_candidate_source="llm",
+            llm_temporal_candidate_records=[
                 temporal_candidate_to_dict(candidate) for candidate in candidates
             ],
         )
@@ -1453,6 +2379,7 @@ def compile_gan_s0_module(
     | GanFrequencyS0DirectModule
     | GanFrequencyS0VerifyRepairModule
     | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+    | GanFrequencyS0TemporalCandidatesSinglePassModule
 ):
     """Compile a Gan S0 module with a few-shot DSPy optimizer.
 
@@ -1565,11 +2492,14 @@ def build_gan_s0_module(
     program_variant: str,
     *,
     prompt_version: str | None = None,
+    candidate_presentation: str | None = None,
+    context_policy: str | None = None,
 ) -> (
     GanFrequencyS0Module
     | GanFrequencyS0DirectModule
     | GanFrequencyS0VerifyRepairModule
     | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+    | GanFrequencyS0TemporalCandidatesSinglePassModule
     | GanFrequencyS0TemporalEventTableVerifyRepairModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
@@ -1584,6 +2514,54 @@ def build_gan_s0_module(
         return GanFrequencyS0VerifyRepairModule(prompt_version=resolved_prompt_version)
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
         return GanFrequencyS0TemporalCandidatesVerifyRepairModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+        resolved_context_policy = (
+            context_policy
+            or GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES
+        )
+        return GanFrequencyS0TemporalCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version,
+            candidate_presentation=candidate_presentation,
+            context_policy=resolved_context_policy,
+        )
+    if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0LlmTemporalCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0HybridTemporalCandidatesSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT:
+        return GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT:
+        return GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT:
+        return GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule(
+            prompt_version=resolved_prompt_version
+        )
+    if (
+        program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT
+    ):
+        return GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule(
+            prompt_version=resolved_prompt_version
+        )
+    if (
+        program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT
+    ):
+        return GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
+        return GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT:
@@ -1809,6 +2787,7 @@ def _predict_record(
         | GanFrequencyS0DirectModule
         | GanFrequencyS0VerifyRepairModule
         | GanFrequencyS0TemporalCandidatesVerifyRepairModule
+        | GanFrequencyS0TemporalCandidatesSinglePassModule
         | GanFrequencyS0TemporalEventTableVerifyRepairModule
         | GanFrequencyS0ReactTemporalToolsModule
     ),
@@ -1860,6 +2839,12 @@ def _predict_record(
         metadata["temporal_candidate_labels"] = pred.temporal_candidate_labels
     if hasattr(pred, "temporal_candidate_records"):
         metadata["temporal_candidate_records"] = pred.temporal_candidate_records
+    if hasattr(pred, "temporal_candidate_source"):
+        metadata["temporal_candidate_source"] = pred.temporal_candidate_source
+    if hasattr(pred, "validation_ladder_rung"):
+        metadata["validation_ladder_rung"] = pred.validation_ladder_rung
+    if hasattr(pred, "llm_temporal_candidate_records"):
+        metadata["llm_temporal_candidate_records"] = pred.llm_temporal_candidate_records
     if hasattr(pred, "temporal_event_table_records"):
         metadata["temporal_event_table_records"] = pred.temporal_event_table_records
     if hasattr(pred, "react_trajectory"):
@@ -1868,6 +2853,14 @@ def _predict_record(
         metadata["react_tool_call_count"] = pred.react_tool_call_count
     if hasattr(pred, "react_error"):
         metadata["react_error"] = pred.react_error
+    if hasattr(pred, "context_policy"):
+        metadata["context_policy"] = pred.context_policy
+    if hasattr(pred, "prompt_note_text_is_full_note"):
+        metadata["prompt_note_text_is_full_note"] = pred.prompt_note_text_is_full_note
+    if hasattr(pred, "prompt_note_text_char_count"):
+        metadata["prompt_note_text_char_count"] = pred.prompt_note_text_char_count
+    if hasattr(pred, "source_note_text_char_count"):
+        metadata["source_note_text_char_count"] = pred.source_note_text_char_count
 
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,

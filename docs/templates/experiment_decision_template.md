@@ -8,6 +8,16 @@ Related: `docs/kanban_plan.md`, `docs/experiment_taxonomy_schema.md`, `docs/taxo
 
 One sentence stating what this comparison group decides.
 
+## Research axis and decision scope
+
+| Field | Value |
+| --- | --- |
+| Axis | 1 (stage graph) \| 2 (stage executor) \| 3 (implementation) |
+| `stage_graph_id` | e.g. `g2_candidates_adjudicate` |
+| `decision_scope` target | `arm` (default) \| `mechanism` (only if review criteria met) |
+
+See `docs/hybrid_pipeline_research_pivot_20260521.md` and skill `hybrid-pipeline-exploration`.
+
 ## Fixed controls (all arms)
 
 | Control | Value |

@@ -28,7 +28,10 @@ from clinical_extraction.evaluation.exect import (
     score_exect_s4_prediction_set,
 )
 from clinical_extraction.evaluation.cli import evaluate_gan_predictions
-from clinical_extraction.experiments.config import load_experiment_config
+from clinical_extraction.experiments.config import ExperimentConfig, load_experiment_config
+from clinical_extraction.gan.temporal_candidates import (
+    presentation_for_implementation_variant,
+)
 from clinical_extraction.llms import LLMProviderConfig, build_dspy_lm
 from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_FIELD_FAMILIES,
@@ -74,6 +77,7 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
     }
 )
 from clinical_extraction.programs.exect_s0_s1 import (
+    EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
     EXECT_S0_S1_PROMPT_VERSION,
@@ -81,6 +85,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
     build_exect_s0_s1_module,
+    compile_exect_s0_s1_module,
     exect_s0_s1_run_metadata,
     predict_exect_records,
     resolve_exect_s0_s1_extraction_prompt_version,
@@ -89,14 +94,24 @@ from clinical_extraction.programs.exect_s0_s1 import (
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
     GanFrequencyS0Module,
     GanFrequencyS0ReactTemporalToolsModule,
+    GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
+    GanFrequencyS0LlmTemporalCandidatesSinglePassModule,
+    GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
     GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+    GanFrequencyS0TemporalCandidatesSinglePassModule,
     GanFrequencyS0TemporalEventTableVerifyRepairModule,
     GanFrequencyS0VerifyRepairModule,
     build_gan_s0_module,
@@ -206,55 +221,70 @@ def main(argv: list[str] | None = None) -> int:
         encoding="utf-8",
     )
 
-    module = _build_module(
-        config.dataset,
-        config.program_variant,
-        prompt_version=config.prompt_version,
-    )
+    module = _build_module(config, prompt_version=config.prompt_version)
     run_started = perf_counter()
     compile_duration_seconds: float | None = None
 
     if config.optimizer is not None:
-        if config.dataset != "gan_2026":
-            raise SystemExit("Only Gan S0 experiments currently support DSPy optimization.")
-        dev_ids: list[str] = split_data.get("development", [])
+        train_ids: list[str] = split_data.get("train") or split_data.get("development", [])
         if config.optimizer.trainset_size is not None:
-            dev_ids = dev_ids[: config.optimizer.trainset_size]
-        dev_records = [all_records[rid] for rid in dev_ids if rid in all_records]
-        _print_compile_message(config.optimizer, len(dev_records))
+            train_ids = train_ids[: config.optimizer.trainset_size]
+        train_records = [all_records[rid] for rid in train_ids if rid in all_records]
+        _print_compile_message(config.optimizer, len(train_records))
         compile_started = perf_counter()
-        if config.optimizer.name == "GEPA":
-            module = compile_gan_s0_module_gepa(
-                dev_records,
+        if config.dataset == "gan_2026":
+            if config.optimizer.name == "GEPA":
+                module = compile_gan_s0_module_gepa(
+                    train_records,
+                    program_variant=config.program_variant,
+                    optimizer_metric=config.optimizer.metric_name,
+                    auto=config.optimizer.auto,
+                    max_full_evals=config.optimizer.max_full_evals,
+                    max_metric_calls=config.optimizer.max_metric_calls,
+                    reflection_minibatch_size=config.optimizer.reflection_minibatch_size,
+                    candidate_selection_strategy=config.optimizer.candidate_selection_strategy,
+                    skip_perfect_score=config.optimizer.skip_perfect_score,
+                    add_format_failure_as_feedback=(
+                        config.optimizer.add_format_failure_as_feedback
+                    ),
+                    track_stats=config.optimizer.track_stats,
+                    track_best_outputs=config.optimizer.track_best_outputs,
+                    use_cloudpickle=config.optimizer.use_cloudpickle,
+                    num_threads=config.optimizer.num_threads,
+                    seed=config.optimizer.seed,
+                    log_dir=paths["optimizer_logs"],
+                    reflection_lm=reflection_lm,
+                )
+            else:
+                module = compile_gan_s0_module(
+                    train_records,
+                    program_variant=config.program_variant,
+                    optimizer_name=config.optimizer.name,
+                    max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
+                    max_labeled_demos=config.optimizer.max_labeled_demos,
+                    max_rounds=config.optimizer.max_rounds,
+                    num_candidate_programs=config.optimizer.num_candidate_programs,
+                    optimizer_metric=config.optimizer.metric_name,
+                )
+        elif config.dataset == "exect_v2":
+            if config.optimizer.name == "GEPA":
+                raise SystemExit(
+                    "ExECT S0/S1 experiments do not support GEPA optimization yet."
+                )
+            module = compile_exect_s0_s1_module(
+                train_records,
                 program_variant=config.program_variant,
-                optimizer_metric=config.optimizer.metric_name,
-                auto=config.optimizer.auto,
-                max_full_evals=config.optimizer.max_full_evals,
-                max_metric_calls=config.optimizer.max_metric_calls,
-                reflection_minibatch_size=config.optimizer.reflection_minibatch_size,
-                candidate_selection_strategy=config.optimizer.candidate_selection_strategy,
-                skip_perfect_score=config.optimizer.skip_perfect_score,
-                add_format_failure_as_feedback=(
-                    config.optimizer.add_format_failure_as_feedback
-                ),
-                track_stats=config.optimizer.track_stats,
-                track_best_outputs=config.optimizer.track_best_outputs,
-                use_cloudpickle=config.optimizer.use_cloudpickle,
-                num_threads=config.optimizer.num_threads,
-                seed=config.optimizer.seed,
-                log_dir=paths["optimizer_logs"],
-                reflection_lm=reflection_lm,
-            )
-        else:
-            module = compile_gan_s0_module(
-                dev_records,
-                program_variant=config.program_variant,
+                prompt_version=config.prompt_version,
                 optimizer_name=config.optimizer.name,
                 max_bootstrapped_demos=config.optimizer.max_bootstrapped_demos,
                 max_labeled_demos=config.optimizer.max_labeled_demos,
                 max_rounds=config.optimizer.max_rounds,
                 num_candidate_programs=config.optimizer.num_candidate_programs,
                 optimizer_metric=config.optimizer.metric_name,
+            )
+        else:
+            raise SystemExit(
+                f"Unsupported dataset for DSPy optimization: {config.dataset!r}"
             )
         compile_duration_seconds = perf_counter() - compile_started
         print("Compilation complete.")
@@ -335,14 +365,30 @@ def _load_records_by_id(dataset: str) -> dict[str, Any]:
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
 
+def _candidate_presentation_from_config(
+    config: ExperimentConfig,
+) -> str | None:
+    if config.taxonomy is None:
+        return None
+    return presentation_for_implementation_variant(
+        config.taxonomy.implementation_variant
+    )
+
+
 def _build_module(
-    dataset: str,
-    program_variant: str,
+    config: ExperimentConfig,
     *,
     prompt_version: str,
 ) -> dspy.Module:
+    dataset = config.dataset
+    program_variant = config.program_variant
     if dataset == "gan_2026":
-        return build_gan_s0_module(program_variant, prompt_version=prompt_version)
+        return build_gan_s0_module(
+            program_variant,
+            prompt_version=prompt_version,
+            candidate_presentation=_candidate_presentation_from_config(config),
+            context_policy=config.controls.context_policy,
+        )
     if dataset == "exect_v2":
         if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return build_exect_s4_module(program_variant)
@@ -438,6 +484,36 @@ def _prompts_data(
             predictor_name = (
                 "dspy.Predict + deterministic temporal candidates + dspy.Predict"
             )
+        elif program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+            module_name = "GanFrequencyS0TemporalCandidatesSinglePassModule"
+            predictor_name = (
+                "deterministic temporal candidates + dspy.Predict(adjudicate)"
+            )
+        elif program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+            module_name = "GanFrequencyS0LlmTemporalCandidatesSinglePassModule"
+            predictor_name = (
+                "dspy.Predict(llm candidates) + dspy.Predict(adjudicate)"
+            )
+        elif program_variant == GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT:
+            module_name = "GanFrequencyS0HybridTemporalCandidatesSinglePassModule"
+            predictor_name = (
+                "deterministic + dspy.Predict(llm candidates) + dspy.Predict(adjudicate)"
+            )
+        elif (
+            program_variant
+            == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT
+        ):
+            module_name = "GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule"
+            predictor_name = (
+                "deterministic temporal candidates + dspy.Predict(adjudicate) + "
+                "dspy.Predict(temporal verify-repair)"
+            )
+        elif program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
+            module_name = "GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule"
+            predictor_name = (
+                "dspy.Predict(llm candidates) + dspy.Predict(adjudicate) + "
+                "dspy.Predict(temporal verify-repair)"
+            )
         elif program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT:
             module_name = "GanFrequencyS0TemporalEventTableVerifyRepairModule"
             predictor_name = (
@@ -506,6 +582,9 @@ def _prompts_data(
             predictor_name = (
                 "dspy.ChainOfThought (extract) + dspy.ChainOfThought (verify/repair)"
             )
+        elif program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:
+            module_name = "ExectS0S1DeterministicOnlyModule"
+            predictor_name = "deterministic_substring_match"
         elif program_variant == EXECT_S0_S1_VARIANT:
             module_name = "ExectS0S1FieldFamilyModule"
             predictor_name = "dspy.ChainOfThought"

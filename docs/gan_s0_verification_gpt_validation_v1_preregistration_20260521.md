@@ -42,13 +42,15 @@ Verify-repair and temporal-candidate preconditioning each contribute independent
 | **Temporal + verify-repair** | `verify_repair` (+ pre candidates) | `gan_frequency_s0_temporal_candidates_verify_repair` | `gan_frequency_s0_temporal_candidates_verify_repair_v1_1` | `gan_s0_verification_temporal_verify_repair_cap25_gpt4_1_mini.json` |
 | **Temporal, no repair** | `none` (+ pre candidates) | *(deferred — no registered variant)* | — | — |
 
-### Deferred arm: temporal-candidates without repair
+### Deferred arm: temporal-candidates without repair — **reopened**
 
-`src/clinical_extraction/programs/gan_frequency_s0.py` registers temporal injection only on verify-repair modules. Before adding this arm:
+**Status (2026-05-21):** Reassigned to Axis 1 comparison group `gan_s0_pipeline_stage_graph_gpt_cap25_v1` as arm **A3** (`g2_candidates_adjudicate`). See `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_preregistration_20260521.md`. LLM candidate ID remains deferred to Phase 3 (`gan_s0_stage_executor_gpt_cap25_v1`).
 
-1. Confirm a `gan_frequency_s0_temporal_candidates_single_pass` variant can inject pre-candidates without a verifier pass.
+Implementation prerequisites (unchanged):
+
+1. Add `gan_frequency_s0_temporal_candidates_single_pass` variant that injects pre-candidates without a verifier pass.
 2. Confirm scorer semantics and artifact-bridge behavior stay unchanged.
-3. If not feasible without scorer or bridge changes, **drop the arm** and document three-arm comparison only.
+3. If not feasible without scorer or bridge changes, **drop A3** and document four-arm comparison only.
 
 ## Historical priors (do not treat as clean single-factor evidence)
 

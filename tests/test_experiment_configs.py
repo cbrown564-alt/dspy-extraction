@@ -1817,6 +1817,186 @@ def test_gan_s0_verification_gpt_validation_v1_configs_record_contract():
     assert verify_repair.prompt_version == "gan_frequency_s0_direct_verify_repair_v2_4"
 
 
+def test_gan_s0_pipeline_stage_graph_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/gan_s0_stage_graph_g2_extract_repair_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_graph_g2_candidates_adjudicate_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_graph_g3_extract_verify_repair_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_graph_g3_candidates_extract_repair_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    stage_graph_ids = {
+        "gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini": "g1_direct",
+        "gan_s0_stage_graph_g2_extract_repair_cap25_gpt4_1_mini": "g2_extract_repair",
+        "gan_s0_stage_graph_g2_candidates_adjudicate_cap25_gpt4_1_mini": (
+            "g2_candidates_adjudicate"
+        ),
+        "gan_s0_stage_graph_g3_extract_verify_repair_cap25_gpt4_1_mini": (
+            "g3_extract_verify_repair"
+        ),
+        "gan_s0_stage_graph_g3_candidates_extract_repair_cap25_gpt4_1_mini": (
+            "g3_candidates_extract_repair"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "gan_s0_pipeline_stage_graph_gpt_cap25_v1"
+        assert config.taxonomy.varied_factor == "pipeline_stage_graph"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == stage_graph_ids[config.experiment_id]
+
+    adjudicate = configs[2]
+    assert adjudicate.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert adjudicate.taxonomy.program_architecture == "temporal_candidates_single_pass"
+
+
+def test_gan_s0_stage_executor_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_executor_e1_det_candidates_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_executor_e2_llm_candidates_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_executor_e3_hybrid_candidates_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_executor_e4_det_vr_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_stage_executor_e5_llm_vr_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    stage_executors = {
+        "gan_s0_stage_executor_e1_det_candidates_cap25_gpt4_1_mini": (
+            "det_candidates_llm_adjudicate"
+        ),
+        "gan_s0_stage_executor_e2_llm_candidates_cap25_gpt4_1_mini": (
+            "llm_candidates_llm_adjudicate"
+        ),
+        "gan_s0_stage_executor_e3_hybrid_candidates_cap25_gpt4_1_mini": (
+            "hybrid_candidates_llm_adjudicate"
+        ),
+        "gan_s0_stage_executor_e4_det_vr_cap25_gpt4_1_mini": (
+            "det_candidates_llm_adjudicate_llm_vr"
+        ),
+        "gan_s0_stage_executor_e5_llm_vr_cap25_gpt4_1_mini": (
+            "llm_candidates_llm_adjudicate_llm_vr"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "gan_s0_stage_executor_gpt_cap25_v1"
+        assert config.taxonomy.varied_factor == "stage_executor"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == "g2_candidates_adjudicate"
+        assert config.taxonomy.stage_executor == stage_executors[config.experiment_id]
+
+    e1, e2, e3, e4, e5 = configs
+    assert e1.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert e2.program_variant == "gan_frequency_s0_llm_temporal_candidates_single_pass"
+    assert e3.program_variant == "gan_frequency_s0_hybrid_temporal_candidates_single_pass"
+    assert (
+        e4.program_variant == "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair"
+    )
+    assert e5.program_variant == "gan_frequency_s0_llm_temporal_candidates_verify_repair"
+
+
+def test_gan_s0_implementation_variant_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_impl_i0_cand_prose_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_impl_i1_cand_table_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_impl_i2_cand_json_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_impl_i3_cand_bullets_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    implementation_variants = {
+        "gan_s0_impl_i0_cand_prose_cap25_gpt4_1_mini": "cand_prose_v1",
+        "gan_s0_impl_i1_cand_table_cap25_gpt4_1_mini": "cand_table_v1",
+        "gan_s0_impl_i2_cand_json_cap25_gpt4_1_mini": "cand_json_v1",
+        "gan_s0_impl_i3_cand_bullets_cap25_gpt4_1_mini": "cand_bullets_v1",
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert (
+            config.taxonomy.comparison_group
+            == "gan_s0_implementation_variant_gpt_cap25_v1"
+        )
+        assert config.taxonomy.varied_factor == "implementation_variant"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == "g2_candidates_adjudicate"
+        assert config.taxonomy.stage_executor == "det_candidates_llm_adjudicate"
+        assert (
+            config.taxonomy.implementation_variant
+            == implementation_variants[config.experiment_id]
+        )
+        assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+
+
 def test_gan_s0_evidence_policy_gpt_validation_v1_configs_record_contract():
     optional = load_experiment_config(
         Path("configs/experiments/gan_s0_evidence_optional_cap25_gpt4_1_mini.json")
@@ -1886,6 +2066,155 @@ def test_exect_s1_prompt_policy_gpt_validation_v1_configs_record_contract():
 
     assert v4_10.prompt_version == "exect_s0_s1_field_family_v4_10_label_policy"
     assert v4_11.prompt_version == "exect_s0_s1_field_family_v4_11_label_policy"
+
+
+def test_exect_s1_optimizer_gpt_cap25_v1_configs_record_contract():
+    baseline = load_experiment_config(
+        Path("configs/experiments/exect_s1_optimizer_baseline_cap25_gpt4_1_mini.json")
+    )
+    bootstrap = load_experiment_config(
+        Path("configs/experiments/exect_s1_optimizer_bootstrap_cap25_gpt4_1_mini.json")
+    )
+
+    for config in (baseline, bootstrap):
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "exect_s1_optimizer_gpt_cap25_v1"
+        assert config.taxonomy.varied_factor == "optimizer_strategy"
+        assert config.controls.repair_policy == "none"
+        assert config.max_records == 25
+        assert config.prompt_version == "exect_s0_s1_field_family_v4_10_label_policy"
+
+    assert baseline.optimizer is None
+    assert baseline.taxonomy.program_architecture == "single_pass"
+    assert "label-policy examples" in baseline.controls.few_shot_policy.lower()
+
+    assert bootstrap.optimizer is not None
+    assert bootstrap.optimizer.name == "BootstrapFewShot"
+    assert bootstrap.optimizer.metric_name == "exect_field_family_micro_f1"
+    assert bootstrap.optimizer.trainset_size == 40
+    assert bootstrap.taxonomy.program_architecture == "optimizer_compiled_single_pass"
+    assert "bootstrapfewshot" in bootstrap.controls.few_shot_policy.lower()
+    assert "optimizer-facing only" in " ".join(bootstrap.metric_caveats).lower()
+
+
+@pytest.mark.parametrize(
+    (
+        "config_path",
+        "rung",
+        "prompt_version",
+        "hybrid_class",
+        "repair_policy",
+        "program_variant",
+        "max_records",
+    ),
+    [
+        (
+            "configs/experiments/exect_s1_full_ladder_d1_cap25_gpt4_1_mini.json",
+            "D1",
+            "exect_s0_s1_field_family_d1_feasibility",
+            ["D1_deterministic_only"],
+            "raw_no_benchmark_bridges",
+            "exect_s0_s1_field_family_deterministic_only",
+            25,
+        ),
+        (
+            "configs/experiments/exect_s1_full_ladder_l0_cap25_gpt4_1_mini.json",
+            "L0",
+            "exect_s0_s1_field_family_l0_minimal",
+            ["L0_llm_only"],
+            "raw_no_benchmark_bridges",
+            "exect_s0_s1_field_family_single_pass",
+            25,
+        ),
+        (
+            "configs/experiments/exect_s1_full_ladder_l1_cap25_gpt4_1_mini.json",
+            "L1",
+            "exect_s0_s1_field_family_l1_schema",
+            ["L1_llm_constrained"],
+            "raw_no_benchmark_bridges",
+            "exect_s0_s1_field_family_single_pass",
+            25,
+        ),
+        (
+            "configs/experiments/exect_s1_full_ladder_l1_policy_full_gpt4_1_mini.json",
+            "L1+policy",
+            "exect_s0_s1_field_family_v4_10_label_policy",
+            ["L1_llm_constrained"],
+            "none",
+            "exect_s0_s1_field_family_single_pass",
+            None,
+        ),
+    ],
+)
+def test_exect_s1_full_ladder_gpt_validation_v1_configs_record_contract(
+    config_path: str,
+    rung: str,
+    prompt_version: str,
+    hybrid_class: list[str],
+    repair_policy: str,
+    program_variant: str,
+    max_records: int | None,
+):
+    config = load_experiment_config(Path(config_path))
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == "exect_s1_full_ladder_gpt_validation_v1"
+    assert config.taxonomy.varied_factor == "ladder_rung"
+    assert config.taxonomy.hybrid_balance_class == hybrid_class
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.prompt_version == prompt_version
+    assert config.controls.repair_policy == repair_policy
+    assert config.program_variant == program_variant
+    assert config.max_records == max_records
+    assert config.optimizer is None
+    assert rung in config.hypothesis
+
+
+@pytest.mark.parametrize(
+    ("config_path", "prompt_version", "hybrid_class", "optimizer_name", "compile_metric"),
+    [
+        (
+            "configs/experiments/exect_s1_full_ladder_l0_labeled_cap25_gpt4_1_mini.json",
+            "exect_s0_s1_field_family_l0_minimal",
+            ["L0_llm_only"],
+            "LabeledFewShot",
+            "exect_field_family_micro_f1",
+        ),
+        (
+            "configs/experiments/exect_s1_full_ladder_l0_bootstrap_cap25_gpt4_1_mini.json",
+            "exect_s0_s1_field_family_l0_minimal",
+            ["L0_llm_only"],
+            "BootstrapFewShot",
+            "exect_field_family_micro_f1_raw",
+        ),
+        (
+            "configs/experiments/exect_s1_full_ladder_l1_labeled_cap25_gpt4_1_mini.json",
+            "exect_s0_s1_field_family_l1_schema",
+            ["L1_llm_constrained"],
+            "LabeledFewShot",
+            "exect_field_family_micro_f1",
+        ),
+    ],
+)
+def test_exect_s1_ladder_optimizer_automation_v1_configs_record_contract(
+    config_path: str,
+    prompt_version: str,
+    hybrid_class: list[str],
+    optimizer_name: str,
+    compile_metric: str,
+):
+    config = load_experiment_config(Path(config_path))
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == "exect_s1_ladder_optimizer_automation_v1"
+    assert config.taxonomy.varied_factor == "ladder_rung"
+    assert config.taxonomy.hybrid_balance_class == hybrid_class
+    assert config.prompt_version == prompt_version
+    assert config.controls.repair_policy == "raw_no_benchmark_bridges"
+    assert config.program_variant == "exect_s0_s1_field_family_single_pass"
+    assert config.max_records == 25
+    assert config.optimizer is not None
+    assert config.optimizer.name == optimizer_name
+    assert config.optimizer.metric_name == compile_metric
+    assert config.optimizer.trainset_size == 40
 
 
 def test_exect_s1_seizure_prompt_policy_v4_11_configs_record_contract():

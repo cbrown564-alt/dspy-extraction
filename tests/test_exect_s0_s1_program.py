@@ -2,7 +2,7 @@ import dspy
 import pytest
 from dspy.utils import DummyLM
 
-from clinical_extraction.datasets.exect import load_exect_gold_document
+from clinical_extraction.datasets.exect import load_exect_gold_document, load_exect_gold_documents
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
@@ -10,6 +10,22 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_FIELD_FAMILIES,
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
     EXECT_S0_S1_POLICY_EXAMPLES,
+    EXECT_S0_S1_V4_11_POLICY_EXAMPLES,
+    EXECT_S0_S1_V4_11_PROMPT_VERSION,
+    EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION,
+    EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION,
+    EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
+    EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+    EXECT_S0_S1_D1_PROMPT_VERSION,
+    EXECT_S0_S1_L0_PROMPT_VERSION,
+    EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
+    ExectS0S1DeterministicOnlyModule,
+    ExectS0S1L0MinimalSignature,
+    ExectS0S1L1SchemaSignature,
+    build_exect_s0_s1_field_family_signature,
+    extract_d1_field_family_surfaces,
+    resolve_exect_s0_s1_extraction_prompt_version,
+    resolve_exect_s0_s1_label_policy,
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
@@ -30,6 +46,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     _merge_diagnosis_recall,
     build_exect_s0_s1_module,
     build_precomputed_family_candidates,
+    compile_exect_s0_s1_module,
+    exect_s0_s1_field_family_micro_f1_metric,
     exect_s0_s1_run_metadata,
     format_note_with_precomputed_family_candidates,
     format_note_with_precomputed_medication_candidates,
@@ -220,6 +238,122 @@ def test_exect_s0_s1_prompt_policy_covers_benchmark_boundary_cases():
         "unclassified_epilepsy_header",
         "possible_tle_header_preserves_temporal_lobe_epilepsy",
     }.issubset(example_cases)
+
+
+def test_exect_s0_s1_v4_11_label_policy_addendum_targets_qwen_gap_modes():
+    guidance, examples = resolve_exect_s0_s1_label_policy(EXECT_S0_S1_V4_11_PROMPT_VERSION)
+    guidance_text = " ".join(guidance).lower()
+    example_cases = {example["case"] for example in examples}
+
+    assert len(guidance) > len(EXECT_S0_S1_LABEL_POLICY_GUIDANCE)
+    assert "plural audited benchmark surface" in guidance_text
+    assert "do not emit absence seizure" in guidance_text
+    assert "bare secondary alone" in guidance_text
+    assert {
+        "plural_gtcs_from_diagnosis_row",
+        "plural_focal_to_bilateral_convulsive",
+        "no_seizure_types_without_absence_myoclonic_overcall",
+        "gtcs_only_no_absence_co_list",
+        "secondary_generalisation_full_phrase",
+        "secondary_generalized_seizures_not_bare_secondary",
+        "multi_type_secondary_generalized_co_list",
+    }.issubset(example_cases)
+    assert len(EXECT_S0_S1_V4_11_POLICY_EXAMPLES) == 7
+
+
+def test_exect_s0_s1_v4_11_signature_extends_v4_10_boundary_doc():
+    v4_11_signature = build_exect_s0_s1_field_family_signature(EXECT_S0_S1_V4_11_PROMPT_VERSION)
+    doc = (v4_11_signature.__doc__ or "").lower()
+    assert "generalized tonic clonic seizures" in doc
+    assert "secondary generalisation" in doc
+    assert "do not invent absence" in doc
+
+
+def test_exect_s0_s1_evidence_policy_signatures_keep_v4_10_label_policy():
+    strict_guidance, strict_examples = resolve_exect_s0_s1_label_policy(
+        EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION
+    )
+    soft_guidance, soft_examples = resolve_exect_s0_s1_label_policy(
+        EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION
+    )
+    assert strict_guidance == EXECT_S0_S1_LABEL_POLICY_GUIDANCE
+    assert soft_guidance == EXECT_S0_S1_LABEL_POLICY_GUIDANCE
+    assert strict_examples == EXECT_S0_S1_POLICY_EXAMPLES
+    assert soft_examples == EXECT_S0_S1_POLICY_EXAMPLES
+
+    strict_doc = (
+        build_exect_s0_s1_field_family_signature(
+            EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION
+        ).__doc__
+        or ""
+    ).lower()
+    soft_doc = (
+        build_exect_s0_s1_field_family_signature(
+            EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION
+        ).__doc__
+        or ""
+    ).lower()
+    assert "evidence policy (strict" in strict_doc
+    assert "evidence policy (soft diagnostic" in soft_doc
+
+
+def test_resolve_exect_s0_s1_extraction_prompt_version_maps_verify_repair():
+    assert (
+        resolve_exect_s0_s1_extraction_prompt_version(EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION)
+        == EXECT_S0_S1_PROMPT_VERSION
+    )
+
+
+def test_ladder_prompt_versions_strip_embedded_label_policy():
+    for prompt_version in (
+        EXECT_S0_S1_L0_PROMPT_VERSION,
+        EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
+        EXECT_S0_S1_D1_PROMPT_VERSION,
+    ):
+        guidance, examples = resolve_exect_s0_s1_label_policy(prompt_version)
+        assert guidance == ()
+        assert examples == ()
+
+
+def test_ladder_l0_and_l1_signatures_are_minimal_compared_to_v4_10():
+    l0_doc = (build_exect_s0_s1_field_family_signature(EXECT_S0_S1_L0_PROMPT_VERSION).__doc__ or "")
+    l1_doc = (build_exect_s0_s1_field_family_signature(EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION).__doc__ or "")
+    v4_doc = (ExectS0S1FieldFamilySignature.__doc__ or "")
+    assert len(l0_doc) < len(v4_doc) // 2
+    assert len(l1_doc) < len(v4_doc) // 2
+    assert "boundary examples" not in l0_doc.lower()
+    assert build_exect_s0_s1_field_family_signature(EXECT_S0_S1_L0_PROMPT_VERSION) is ExectS0S1L0MinimalSignature
+    assert build_exect_s0_s1_field_family_signature(EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION) is ExectS0S1L1SchemaSignature
+
+
+def test_d1_field_family_extraction_uses_note_anchored_surfaces():
+    record = load_exect_gold_document("EA0008")
+    surfaces = extract_d1_field_family_surfaces(record.text)
+    assert "lamotrigine" in surfaces["annotated_medication"]
+    module = ExectS0S1DeterministicOnlyModule()
+    pred = module(note_text=record.text)
+    assert list(getattr(pred, "annotated_medication", [])) == surfaces["annotated_medication"]
+
+
+def test_predict_exect_records_d1_variant_skips_benchmark_bridges():
+    record = load_exect_gold_document("EA0008")
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+        prompt_version=EXECT_S0_S1_D1_PROMPT_VERSION,
+    )
+    prediction_set = predict_exect_records(
+        module,
+        [record],
+        model_provider="deterministic",
+        model_name="d1-feasibility",
+        prompt_version=EXECT_S0_S1_D1_PROMPT_VERSION,
+        program_variant=EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+        repair_policy=REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
+    )
+    prediction = prediction_set.predictions[0]
+    assert prediction.metadata["apply_benchmark_bridges"] is False
+    assert prediction.metadata["bridge_stage"] == "none"
+    assert "d1_surfaces" in prediction.metadata
 
 
 def test_exect_s0_s1_policy_fixture_excludes_planned_and_previous_medications():
@@ -1484,6 +1618,7 @@ def test_make_exect_s0_s1_dspy_examples_sets_note_text_input_and_gold_outputs():
     assert examples[0].diagnosis == records[0].diagnoses
     assert examples[0].seizure_type == records[0].seizure_types
     assert examples[0].annotated_medication == records[0].current_medications
+    assert examples[0].document_id == records[0].document_id
     assert "note_text" in examples[0].inputs()
 
 
@@ -1871,5 +2006,122 @@ def test_exect_s0_s1_raw_repair_policy_records_bridge_free_metadata():
 
 
 def test_build_exect_s0_s1_module_returns_verify_repair():
-    module = build_exect_s0_s1_module(EXECT_S0_S1_VERIFY_REPAIR_VARIANT)
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+        prompt_version=EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
+    )
     assert isinstance(module, ExectS0S1VerifyRepairModule)
+    assert isinstance(module.extractor, ExectS0S1FieldFamilyModule)
+
+
+def test_exect_s0_s1_field_family_micro_f1_metric_returns_1_on_exact_match():
+    record = load_exect_gold_document("EA0008")
+    example = dspy.Example(
+        note_text=record.text,
+        document_id=record.document_id,
+        diagnosis=record.diagnoses,
+        seizure_type=record.seizure_types,
+        annotated_medication=record.current_medications,
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        diagnosis=record.diagnoses,
+        seizure_type=record.seizure_types,
+        annotated_medication=record.current_medications,
+    )
+
+    score = exect_s0_s1_field_family_micro_f1_metric(example, pred)
+
+    assert score == 1.0
+
+
+def test_exect_s0_s1_field_family_micro_f1_metric_penalizes_wrong_labels():
+    record = load_exect_gold_document("EA0008")
+    example = dspy.Example(
+        note_text=record.text,
+        document_id=record.document_id,
+        diagnosis=record.diagnoses,
+        seizure_type=record.seizure_types,
+        annotated_medication=record.current_medications,
+    ).with_inputs("note_text")
+    exact_pred = dspy.Prediction(
+        diagnosis=record.diagnoses,
+        seizure_type=record.seizure_types,
+        annotated_medication=record.current_medications,
+    )
+    wrong_pred = dspy.Prediction(
+        diagnosis=["wrong diagnosis"],
+        seizure_type=["wrong seizure type"],
+        annotated_medication=["wrong medication"],
+    )
+
+    exact_score = exect_s0_s1_field_family_micro_f1_metric(example, exact_pred)
+    wrong_score = exect_s0_s1_field_family_micro_f1_metric(example, wrong_pred)
+
+    assert exact_score == 1.0
+    assert wrong_score < exact_score
+
+
+def test_exect_s0_s1_field_family_micro_f1_raw_metric_omits_inline_bridges():
+    from clinical_extraction.programs.exect_s0_s1 import (
+        exect_s0_s1_field_family_micro_f1_raw_metric,
+    )
+
+    record = load_exect_gold_documents()[0]
+    example = dspy.Example(
+        note_text=record.text,
+        document_id=record.document_id,
+        diagnosis=record.diagnoses,
+        seizure_type=record.seizure_types,
+        annotated_medication=record.current_medications,
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        reasoning="test",
+        diagnosis=["focal"],
+        diagnosis_evidence=["focal"],
+        seizure_type=[],
+        seizure_type_evidence=[],
+        annotated_medication=[],
+        annotated_medication_evidence=[],
+    )
+
+    raw_score = exect_s0_s1_field_family_micro_f1_raw_metric(example, pred)
+    bridged_score = exect_s0_s1_field_family_micro_f1_metric(example, pred)
+
+    assert raw_score <= bridged_score
+
+
+def test_compile_exect_s0_s1_module_bootstrap_returns_callable_module():
+    records = load_exect_gold_documents()[:3]
+    answers = [
+        {
+            "reasoning": "Extract benchmark-facing labels.",
+            "diagnosis": record.diagnoses,
+            "diagnosis_evidence": record.diagnoses,
+            "seizure_type": record.seizure_types,
+            "seizure_type_evidence": record.seizure_types,
+            "annotated_medication": record.current_medications,
+            "annotated_medication_evidence": record.current_medications,
+        }
+        for record in records
+    ] * 4
+    _configure_dummy(answers)
+
+    compiled = compile_exect_s0_s1_module(
+        records,
+        max_bootstrapped_demos=2,
+        max_labeled_demos=0,
+        max_rounds=1,
+    )
+
+    assert isinstance(compiled, ExectS0S1FieldFamilyModule)
+
+    result = predict_exect_records(
+        compiled,
+        [records[0]],
+        model_provider="mock",
+        model_name="dummy-bootstrap",
+        prompt_version=EXECT_S0_S1_PROMPT_VERSION,
+    )
+    assert result.dataset == "exect_v2"
+    assert len(result.predictions) == 1
+    assert result.metadata["program_variant"] == EXECT_S0_S1_VARIANT

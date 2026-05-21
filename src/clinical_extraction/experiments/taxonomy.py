@@ -23,6 +23,16 @@ ProgramArchitectureValue = Literal[
     "single_pass",
     "direct_single_pass",
     "verify_repair",
+    "temporal_candidates_single_pass",
+    "temporal_candidates_single_pass",
+    "llm_temporal_candidates_single_pass",
+    "hybrid_temporal_candidates_single_pass",
+    "temporal_candidates_adjudicate_verify_repair",
+    "temporal_candidates_adjudicate_det_guards",
+    "temporal_candidates_adjudicate_det_evidence",
+    "temporal_candidates_adjudicate_confirm_only",
+    "temporal_candidates_adjudicate_verify_repair_no_guards",
+    "llm_temporal_candidates_verify_repair",
     "temporal_candidates_verify_repair",
     "temporal_event_table_verify_repair",
     "react_temporal_tools",
@@ -55,12 +65,30 @@ VariedFactorValue = Literal[
     "schema_complexity",
     "prompt_policy",
     "optimizer_strategy",
+    "ladder_rung",
+    "validation_ladder_rung",
     "run_scope",
     "normalization_strategy",
     "verification_strategy",
     "evidence_strategy",
     "control_mode",
+    "pipeline_stage_graph",
+    "stage_executor",
+    "implementation_variant",
+    "context_selection_policy",
     "multi_factor",
+]
+ContextSelectionPolicyValue = Literal[
+    "full_note",
+    "full_note_plus_deterministic_temporal_candidates",
+    "deterministic_temporal_candidates_only",
+]
+StageExecutorValue = Literal[
+    "det_candidates_llm_adjudicate",
+    "llm_candidates_llm_adjudicate",
+    "hybrid_candidates_llm_adjudicate",
+    "det_candidates_llm_adjudicate_llm_vr",
+    "llm_candidates_llm_adjudicate_llm_vr",
 ]
 IntendedDecisionValue = Literal[
     "promote",
@@ -102,6 +130,10 @@ class ExperimentTaxonomy(FrozenModel):
     clinical_task_family: ClinicalTaskFamilyValue | list[ClinicalTaskFamilyValue] | None = (
         None
     )
+    stage_graph_id: str | None = None
+    stage_executor: StageExecutorValue | None = None
+    implementation_variant: str | None = None
+    context_selection_policy: ContextSelectionPolicyValue | None = None
 
     @model_validator(mode="after")
     def validate_taxonomy_text_fields(self) -> ExperimentTaxonomy:

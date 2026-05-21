@@ -33,12 +33,21 @@ EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT = (
     "exect_s0_s1_field_family_seizure_pre_vocab_single_pass"
 )
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
+EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT = "exect_s0_s1_field_family_deterministic_only"
 REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY = "artifact_benchmark_bridge_only"
 REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES = "raw_no_benchmark_bridges"
 EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT = "exect_s0_s1_field_family_diagnosis_recall"
 EXECT_S0_S1_VERIFY_REPAIR_VARIANT = "exect_s0_s1_field_family_verify_repair"
+EXECT_S0_S1_STAGE_GRAPH_BY_VARIANT = {
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT: "g2_extract_verify",
+    EXECT_S0_S1_SECTION_AWARE_VARIANT: "g3_family_split_merge",
+}
+EXECT_S0_S1_L0_PROMPT_VERSION = "exect_s0_s1_field_family_l0_minimal"
+EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION = "exect_s0_s1_field_family_l1_schema"
+EXECT_S0_S1_D1_PROMPT_VERSION = "exect_s0_s1_field_family_d1_feasibility"
 EXECT_S0_S1_SCORER = "exect_field_family_deterministic_v1"
 EXECT_S0_S1_PROMPT_VERSION = "exect_s0_s1_field_family_v4_10_label_policy"
+EXECT_S0_S1_V4_11_PROMPT_VERSION = "exect_s0_s1_field_family_v4_11_label_policy"
 EXECT_S0_S1_V4_9_PROMPT_VERSION = "exect_s0_s1_field_family_v4_9_label_policy"
 EXECT_S0_S1_V4_8_PROMPT_VERSION = "exect_s0_s1_field_family_v4_8_label_policy"
 EXECT_S0_S1_V4_7_PROMPT_VERSION = "exect_s0_s1_field_family_v4_7_label_policy"
@@ -50,6 +59,12 @@ EXECT_S0_S1_V4_2_PROMPT_VERSION = "exect_s0_s1_field_family_v4_2_label_policy"
 EXECT_S0_S1_DIAGNOSIS_RECALL_PROMPT_VERSION = "exect_s0_s1_diagnosis_recall_v1"
 EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION = "exect_s0_s1_field_family_verify_repair_v1"
 EXECT_S0_S1_V3_PROMPT_VERSION = "exect_s0_s1_field_family_v3_seizure_evidence_policy"
+EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION = (
+    "exect_s0_s1_field_family_v4_10_evidence_strict_v1"
+)
+EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION = (
+    "exect_s0_s1_field_family_v4_10_evidence_soft_v1"
+)
 EXECT_S0_S1_V4_PROMPT_VERSION = "exect_s0_s1_field_family_v4_label_policy"
 EXECT_S0_S1_V4_1_PROMPT_VERSION = "exect_s0_s1_field_family_v4_1_label_policy"
 EXECT_S0_S1_FIELD_FAMILIES = (
@@ -154,6 +169,23 @@ EXECT_S0_S1_LABEL_POLICY_GUIDANCE = (
     "specificity-collapse context, co-list secondary alongside the full audited label.",
     "Use exact contiguous evidence quotes; omit a value rather than supplying non-contiguous or "
     "unsupported evidence.",
+)
+EXECT_S0_S1_V4_11_LABEL_POLICY_ADDENDUM = (
+    "When the diagnosis or seizure-type row uses a plural audited benchmark surface "
+    "(for example generalized tonic clonic seizures or focal seizures), emit that plural "
+    "benchmark label; do not singularize to generalized tonic clonic seizure or focal seizure "
+    "when the audited scorer expects the plural form.",
+    "Do not emit absence seizure, absence seizures, myoclonic seizure, or myoclonic seizures "
+    "unless the note explicitly names that seizure type as a current type in the diagnosis "
+    "or seizure-type surface; do not infer absence or myoclonic types from EEG narrative, "
+    "jerk wording, or diagnosis alone when the audited gold has no such seizure types.",
+    "When the note supports a full secondary-generalised benchmark phrase (for example secondary "
+    "generalisation, secondary generalized seizures, or secondarily generalized seizures), use "
+    "that audited surface; do not emit bare secondary alone unless specificity-collapse rules "
+    "require only secondary.",
+    "Do not add a separate secondary generalised tonic-clonic seizure type unless the letter "
+    "names multiple distinct current seizure types; secondary generalisation is not an extra "
+    "seizure type when only one audited seizure surface applies.",
 )
 EXECT_S0_S1_POLICY_EXAMPLES = (
     {
@@ -506,6 +538,140 @@ EXECT_S0_S1_POLICY_EXAMPLES = (
         "policy": "Preserve multi-word brand surfaces such as Epilim Chrono.",
     },
 )
+EXECT_S0_S1_V4_11_POLICY_EXAMPLES = (
+    {
+        "case": "plural_gtcs_from_diagnosis_row",
+        "note_fragment": (
+            "Diagnosis: generalized tonic clonic seizures. Seizure type and frequency: "
+            "generalized tonic clonic seizures."
+        ),
+        "benchmark_output": {"seizure_type": ["generalized tonic clonic seizures"]},
+        "policy": (
+            "Use the plural audited GTCS surface when the diagnosis or seizure row uses "
+            "generalized tonic clonic seizures."
+        ),
+    },
+    {
+        "case": "plural_focal_to_bilateral_convulsive",
+        "note_fragment": "Seizure type: focal to bilateral convulsive seizures.",
+        "benchmark_output": {"seizure_type": ["focal to bilateral convulsive seizures"]},
+        "policy": (
+            "Preserve the plural focal to bilateral convulsive seizures surface when "
+            "that is the audited benchmark label."
+        ),
+    },
+    {
+        "case": "no_seizure_types_without_absence_myoclonic_overcall",
+        "note_fragment": (
+            "Diagnosis: focal epilepsy. EEG shows occasional spike-wave activity. "
+            "No seizure type documented."
+        ),
+        "benchmark_output": {"seizure_type": []},
+        "policy": (
+            "Do not invent absence or myoclonic seizure types from EEG narrative when "
+            "no current seizure type is named."
+        ),
+    },
+    {
+        "case": "gtcs_only_no_absence_co_list",
+        "note_fragment": (
+            "Diagnosis: generalized tonic clonic seizures. Seizure type: "
+            "generalized tonic clonic seizures."
+        ),
+        "benchmark_output": {"seizure_type": ["generalized tonic clonic seizures"]},
+        "policy": (
+            "Do not add absence seizures when the audited surface is GTCS-only on the "
+            "diagnosis and seizure rows."
+        ),
+    },
+    {
+        "case": "secondary_generalisation_full_phrase",
+        "note_fragment": (
+            "Seizure type: complex partial seizures with secondary generalisation."
+        ),
+        "benchmark_output": {
+            "seizure_type": [
+                "complex partial seizures",
+                "secondary generalisation",
+            ]
+        },
+        "policy": (
+            "Emit secondary generalisation as its own audited label when the note names "
+            "secondary generalisation; do not collapse to bare secondary alone."
+        ),
+    },
+    {
+        "case": "secondary_generalized_seizures_not_bare_secondary",
+        "note_fragment": (
+            "She has focal seizures that secondarily generalize. Seizure type: "
+            "secondary generalized seizures."
+        ),
+        "benchmark_output": {
+            "seizure_type": ["focal seizures", "secondary generalized seizures"]
+        },
+        "policy": (
+            "Use the full secondary generalized seizures phrase when that is the audited "
+            "surface; do not emit secondary alone."
+        ),
+    },
+    {
+        "case": "multi_type_secondary_generalized_co_list",
+        "note_fragment": (
+            "Seizure type: complex partial seizures, secondary generalized seizures."
+        ),
+        "benchmark_output": {
+            "seizure_type": [
+                "complex partial seizures",
+                "secondary generalized seizures",
+            ]
+        },
+        "policy": (
+            "Co-list multiple audited current seizure types including secondary "
+            "generalized seizures when the note names each."
+        ),
+    },
+)
+
+
+def resolve_exect_s0_s1_extraction_prompt_version(
+    prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+) -> str:
+    """Map experiment prompt versions to the single-pass extraction policy version."""
+    if prompt_version in {
+        EXECT_S0_S1_L0_PROMPT_VERSION,
+        EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
+        EXECT_S0_S1_D1_PROMPT_VERSION,
+    }:
+        return prompt_version
+    if prompt_version == EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION:
+        return EXECT_S0_S1_PROMPT_VERSION
+    return prompt_version
+
+
+def resolve_exect_s0_s1_label_policy(
+    prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+) -> tuple[tuple[str, ...], tuple[dict[str, object], ...]]:
+    """Return label-policy guidance and examples for the requested prompt version."""
+    if prompt_version in {
+        EXECT_S0_S1_L0_PROMPT_VERSION,
+        EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
+        EXECT_S0_S1_D1_PROMPT_VERSION,
+    }:
+        return (), ()
+    if prompt_version == EXECT_S0_S1_V4_11_PROMPT_VERSION:
+        return (
+            (*EXECT_S0_S1_LABEL_POLICY_GUIDANCE, *EXECT_S0_S1_V4_11_LABEL_POLICY_ADDENDUM),
+            (*EXECT_S0_S1_POLICY_EXAMPLES, *EXECT_S0_S1_V4_11_POLICY_EXAMPLES),
+        )
+    if prompt_version in {
+        EXECT_S0_S1_PROMPT_VERSION,
+        EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION,
+        EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION,
+        EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
+    }:
+        return EXECT_S0_S1_LABEL_POLICY_GUIDANCE, EXECT_S0_S1_POLICY_EXAMPLES
+    raise ValueError(f"Unsupported ExECT S0/S1 prompt version: {prompt_version!r}")
+
 
 _REJECTED_GRANULAR_SEIZURE_TYPES = frozenset(
     {
@@ -742,6 +908,60 @@ ALLOWED_DIAGNOSIS_LABELS = frozenset(
 )
 
 
+class ExectS0S1L0MinimalSignature(dspy.Signature):
+    """Extract diagnosis, seizure_type, and annotated_medication from clinical note text.
+
+    Return label lists and parallel evidence quote lists aligned by index.
+    Use empty lists when a field has no supported values in the note.
+    """
+
+    note_text: str = dspy.InputField(desc="Clinical note text")
+    diagnosis: list[str] = dspy.OutputField(desc="Diagnosis labels supported by the note")
+    diagnosis_evidence: list[str] = dspy.OutputField(
+        desc="Source quotes for each diagnosis label, aligned by index"
+    )
+    seizure_type: list[str] = dspy.OutputField(
+        desc="Seizure-type labels supported by the note"
+    )
+    seizure_type_evidence: list[str] = dspy.OutputField(
+        desc="Source quotes for each seizure-type label, aligned by index"
+    )
+    annotated_medication: list[str] = dspy.OutputField(
+        desc="Medication labels supported by the note"
+    )
+    annotated_medication_evidence: list[str] = dspy.OutputField(
+        desc="Source quotes for each medication label, aligned by index"
+    )
+
+
+class ExectS0S1L1SchemaSignature(dspy.Signature):
+    """Extract structured field families from a clinical note.
+
+    Output JSON lists for diagnosis, seizure_type, and annotated_medication with
+    parallel evidence lists. Use empty lists when the note does not support a field.
+    """
+
+    note_text: str = dspy.InputField(desc="Clinical note text")
+    diagnosis: list[str] = dspy.OutputField(
+        desc="Epilepsy diagnosis labels explicitly supported by the note"
+    )
+    diagnosis_evidence: list[str] = dspy.OutputField(
+        desc="Exact quotes supporting each diagnosis label, aligned by index"
+    )
+    seizure_type: list[str] = dspy.OutputField(
+        desc="Seizure-type labels explicitly named in the note"
+    )
+    seizure_type_evidence: list[str] = dspy.OutputField(
+        desc="Exact quotes supporting each seizure-type label, aligned by index"
+    )
+    annotated_medication: list[str] = dspy.OutputField(
+        desc="Current prescription-style anti-seizure medication names in the note"
+    )
+    annotated_medication_evidence: list[str] = dspy.OutputField(
+        desc="Exact quotes supporting each medication label, aligned by index"
+    )
+
+
 class ExectS0S1FieldFamilySignature(dspy.Signature):
     """Extract audited ExECT S0/S1 benchmark-facing field families.
 
@@ -838,12 +1058,139 @@ class ExectS0S1FieldFamilySignature(dspy.Signature):
     )
 
 
+EXECT_S0_S1_V4_11_SIGNATURE_BOUNDARY_ADDENDUM = """
+    Additional v4.11 seizure-policy boundary examples:
+    - "Diagnosis: generalized tonic clonic seizures. Seizure type: generalized tonic clonic seizures."
+      -> seizure_type = ["generalized tonic clonic seizures"]; use plural GTCS when the audited
+      diagnosis or seizure row uses the plural surface.
+    - "Seizure type: focal to bilateral convulsive seizures."
+      -> seizure_type = ["focal to bilateral convulsive seizures"]; preserve plural convulsive
+      surfaces when required by the audited label.
+    - "Diagnosis: focal epilepsy. EEG shows spike-wave activity. No seizure type documented."
+      -> seizure_type = []; do not invent absence or myoclonic types from EEG alone.
+    - "Seizure type: complex partial seizures with secondary generalisation."
+      -> seizure_type = ["complex partial seizures", "secondary generalisation"]; use the full
+      secondary generalisation phrase, not bare secondary alone.
+    - "Seizure type: complex partial seizures, secondary generalized seizures."
+      -> seizure_type = ["complex partial seizures", "secondary generalized seizures"]; co-list
+      multiple audited current seizure types when each is named.
+"""
+
+
+EXECT_S0_S1_V4_10_EVIDENCE_STRICT_SIGNATURE_ADDENDUM = """
+    Evidence policy (strict; v4.10 label policy unchanged):
+    - Every emitted label requires an exact contiguous quote from note_text; omit the label if
+      no exact quote exists.
+    - Seizure-type evidence must come from an explicit seizure-type or diagnosis row, not EEG
+      or imaging narrative alone.
+    - Use the shortest exact contiguous substring that supports each label.
+"""
+
+
+EXECT_S0_S1_V4_10_EVIDENCE_SOFT_SIGNATURE_ADDENDUM = """
+    Evidence policy (soft diagnostic; v4.10 label policy unchanged):
+    - Prefer benchmark-facing labels supported by the note even when quote alignment is imperfect.
+    - Provide best-effort exact quotes when possible; do not abstain from a correct label solely
+      because quote extraction is difficult.
+    - Evidence quality is evaluated diagnostically; extraction favors recall on audited labels.
+"""
+
+
+def build_exect_s0_s1_field_family_signature(
+    prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+) -> type[ExectS0S1FieldFamilySignature]:
+    """Build a field-family signature for the requested label-policy prompt version."""
+    if prompt_version == EXECT_S0_S1_L0_PROMPT_VERSION:
+        return ExectS0S1L0MinimalSignature
+    if prompt_version == EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION:
+        return ExectS0S1L1SchemaSignature
+    if prompt_version == EXECT_S0_S1_D1_PROMPT_VERSION:
+        return ExectS0S1L0MinimalSignature
+    doc = ExectS0S1FieldFamilySignature.__doc__ or ""
+    if prompt_version == EXECT_S0_S1_V4_11_PROMPT_VERSION:
+        return type(
+            "ExectS0S1FieldFamilyV411Signature",
+            (ExectS0S1FieldFamilySignature,),
+            {"__doc__": doc + EXECT_S0_S1_V4_11_SIGNATURE_BOUNDARY_ADDENDUM},
+        )
+    if prompt_version == EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION:
+        return type(
+            "ExectS0S1FieldFamilyV410EvidenceStrictSignature",
+            (ExectS0S1FieldFamilySignature,),
+            {"__doc__": doc + EXECT_S0_S1_V4_10_EVIDENCE_STRICT_SIGNATURE_ADDENDUM},
+        )
+    if prompt_version == EXECT_S0_S1_V4_10_EVIDENCE_SOFT_PROMPT_VERSION:
+        return type(
+            "ExectS0S1FieldFamilyV410EvidenceSoftSignature",
+            (ExectS0S1FieldFamilySignature,),
+            {"__doc__": doc + EXECT_S0_S1_V4_10_EVIDENCE_SOFT_SIGNATURE_ADDENDUM},
+        )
+    extraction_version = resolve_exect_s0_s1_extraction_prompt_version(prompt_version)
+    if extraction_version != EXECT_S0_S1_PROMPT_VERSION:
+        raise ValueError(f"Unsupported ExECT S0/S1 prompt version: {prompt_version!r}")
+    return ExectS0S1FieldFamilySignature
+
+
+def _match_longest_substring_labels(
+    note_lower: str,
+    labels: tuple[str, ...] | frozenset[str],
+) -> list[str]:
+    """Return note-anchored labels using longest-first word-boundary matching."""
+    matched: list[str] = []
+    for label in sorted(labels, key=len, reverse=True):
+        if not label.strip():
+            continue
+        pattern = rf"\b{re.escape(label)}\b"
+        if re.search(pattern, note_lower):
+            matched.append(label)
+    return list(dict.fromkeys(matched))
+
+
+def extract_d1_field_family_surfaces(note_text: str) -> dict[str, list[str]]:
+    """Feasibility-bound extraction without an LLM (ladder rung D1)."""
+    note_lower = note_text.lower()
+    return {
+        "diagnosis": _match_longest_substring_labels(
+            note_lower,
+            ALLOWED_DIAGNOSIS_LABELS,
+        ),
+        "seizure_type": _match_longest_substring_labels(
+            note_lower,
+            _PRE_VOCAB_SEIZURE_TYPE_SURFACES,
+        ),
+        "annotated_medication": build_precomputed_medication_candidates(note_text),
+    }
+
+
+class ExectS0S1DeterministicOnlyModule(dspy.Module):
+    """D1 ladder rung: primitive-only substring extraction, no model calls."""
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        surfaces = extract_d1_field_family_surfaces(note_text)
+        empty_evidence = [""] * len(surfaces["diagnosis"])
+        empty_seizure_evidence = [""] * len(surfaces["seizure_type"])
+        empty_medication_evidence = [""] * len(surfaces["annotated_medication"])
+        return dspy.Prediction(
+            diagnosis=surfaces["diagnosis"],
+            diagnosis_evidence=empty_evidence,
+            seizure_type=surfaces["seizure_type"],
+            seizure_type_evidence=empty_seizure_evidence,
+            annotated_medication=surfaces["annotated_medication"],
+            annotated_medication_evidence=empty_medication_evidence,
+        )
+
+
 class ExectS0S1FieldFamilyModule(dspy.Module):
     """Single-pass ExECT S0/S1 field-family extractor."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.extract = dspy.ChainOfThought(ExectS0S1FieldFamilySignature)
+        signature_cls = build_exect_s0_s1_field_family_signature(prompt_version)
+        self.extract = dspy.ChainOfThought(signature_cls)
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(note_text=note_text)
@@ -1114,11 +1461,17 @@ class ExectS0S1VerifierModule(dspy.Module):
 
 
 class ExectS0S1VerifyRepairModule(dspy.Module):
-    """Monolithic v4.2 extraction plus confirm-first verify/repair pass."""
+    """v4.10 extraction plus confirm-first verify/repair pass."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        extraction_prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.extractor = ExectS0S1FieldFamilyModule()
+        self.extractor = ExectS0S1FieldFamilyModule(
+            prompt_version=extraction_prompt_version
+        )
         self.verifier = ExectS0S1VerifierModule()
 
     def forward(self, note_text: str) -> dspy.Prediction:
@@ -1209,22 +1562,33 @@ class ExectS0S1SectionAwareFieldFamilyModule(dspy.Module):
         )
 
 
-def build_exect_s0_s1_module(program_variant: str = EXECT_S0_S1_VARIANT) -> dspy.Module:
+def build_exect_s0_s1_module(
+    program_variant: str = EXECT_S0_S1_VARIANT,
+    *,
+    prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+) -> dspy.Module:
     """Build an ExECT S0/S1 module for the requested program variant."""
     if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
         return ExectS0S1SectionAwareFieldFamilyModule()
     if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT:
         return ExectS0S1DiagnosisRecallProbeModule()
     if program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT:
-        return ExectS0S1VerifyRepairModule()
+        extraction_prompt_version = resolve_exect_s0_s1_extraction_prompt_version(
+            prompt_version
+        )
+        return ExectS0S1VerifyRepairModule(
+            extraction_prompt_version=extraction_prompt_version
+        )
     if program_variant == EXECT_S0_S1_PRE_VOCAB_VARIANT:
         return ExectS0S1PreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT:
         return ExectS0S1MedicationPreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT:
         return ExectS0S1SeizurePreVocabFieldFamilyModule()
+    if program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:
+        return ExectS0S1DeterministicOnlyModule()
     if program_variant == EXECT_S0_S1_VARIANT:
-        return ExectS0S1FieldFamilyModule()
+        return ExectS0S1FieldFamilyModule(prompt_version=prompt_version)
     raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")
 
 
@@ -1355,6 +1719,7 @@ def make_exect_s0_s1_dspy_examples(
     return [
         dspy.Example(
             note_text=record.text,
+            document_id=record.document_id,
             diagnosis=record.diagnoses,
             seizure_type=record.seizure_types,
             annotated_medication=record.current_medications,
@@ -1410,6 +1775,7 @@ def _s1_single_pass_variants() -> frozenset[str]:
             EXECT_S0_S1_PRE_VOCAB_VARIANT,
             EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
             EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
+            EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
         }
     )
 
@@ -1534,6 +1900,8 @@ def _predict_record(
             metadata["precomputed_candidates"] = {
                 "seizure_type": build_precomputed_seizure_type_candidates()
             }
+        if program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:
+            metadata["d1_surfaces"] = extract_d1_field_family_surfaces(record.text)
         return DocumentPrediction(
             document_id=record.document_id,
             dataset=EXECT_DATASET,
@@ -1543,12 +1911,27 @@ def _predict_record(
             metadata=metadata,
         )
 
+    apply_benchmark_bridges = _repair_policy_applies_benchmark_bridges(repair_policy)
+    bridge_stage = _bridge_stage_for_repair_policy(repair_policy)
     values: list[ExtractedValue] = []
     diagnosis_inputs = _as_list(getattr(pred, "diagnosis", []))
     diagnosis_raw = diagnosis_inputs
     diagnosis_augmented: set[str] = set()
     specificity_collapse_augmented: set[str] = set()
     diagnosis_header_flags: list[str] = []
+    if apply_benchmark_bridges:
+        diagnosis_inputs, diagnosis_header_flags = (
+            _filter_diagnosis_for_seizure_descriptor_header(
+                diagnosis_inputs,
+                record.text,
+            )
+        )
+        diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
+            _augment_diagnosis_co_lists(
+                diagnosis_inputs,
+                record.text,
+            )
+        )
     diagnoses, collapsed = _normalize_diagnoses(diagnosis_raw)
     diagnosis_evidence = _as_list(getattr(pred, "diagnosis_evidence", []))
     values.extend(
@@ -1561,6 +1944,7 @@ def _predict_record(
             augmented_values=diagnosis_augmented,
             specificity_collapse_augmented=specificity_collapse_augmented,
             extra_quality_flags=diagnosis_header_flags,
+            apply_benchmark_bridges=apply_benchmark_bridges,
         )
     )
     values.extend(
@@ -1569,6 +1953,7 @@ def _predict_record(
             field_name="seizure_type",
             raw_values=_as_list(getattr(pred, "seizure_type", [])),
             evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
+            apply_benchmark_bridges=apply_benchmark_bridges,
         )
     )
     medication_raw = _as_list(getattr(pred, "annotated_medication", []))
@@ -1580,6 +1965,7 @@ def _predict_record(
             raw_values=medication_raw,
             evidence_values=medication_evidence,
             augmented_values=set(),
+            apply_benchmark_bridges=apply_benchmark_bridges,
         )
     )
 
@@ -1589,7 +1975,12 @@ def _predict_record(
         schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
         values=values,
         quality_flags=record.quality_flags,
-        metadata={"program_variant": program_variant, "repair_policy": repair_policy},
+        metadata={
+            "program_variant": program_variant,
+            "apply_benchmark_bridges": apply_benchmark_bridges,
+            "bridge_stage": bridge_stage,
+            "repair_policy": repair_policy,
+        },
     )
 
 
@@ -2642,6 +3033,160 @@ def _dedupe(values: list[str]) -> list[str]:
             seen.add(value)
             result.append(value)
     return result
+
+
+def _gold_document_from_optimizer_example(example: dspy.Example) -> ExectGoldDocument:
+    document_id = getattr(example, "document_id", None) or "optimizer_example"
+    return ExectGoldDocument(
+        document_id=document_id,
+        text=example.note_text,
+        diagnoses=_as_list(getattr(example, "diagnosis", [])),
+        seizure_types=_as_list(getattr(example, "seizure_type", [])),
+        current_medications=_as_list(getattr(example, "annotated_medication", [])),
+    )
+
+
+def _document_prediction_from_field_family_pred(
+    record: ExectGoldDocument,
+    pred: dspy.Prediction,
+    *,
+    apply_benchmark_bridges: bool = True,
+) -> DocumentPrediction:
+    """Map an optimizer prediction to the scored S1 field-family document shape."""
+    values = _build_s1_field_family_values(
+        record,
+        pred,
+        apply_benchmark_bridges=apply_benchmark_bridges,
+    )
+    return DocumentPrediction(
+        document_id=record.document_id,
+        dataset=EXECT_DATASET,
+        schema_level=EXECT_S0_S1_SCHEMA_LEVEL,
+        values=values,
+        quality_flags=record.quality_flags,
+        metadata={
+            "program_variant": EXECT_S0_S1_VARIANT,
+            "apply_benchmark_bridges": apply_benchmark_bridges,
+            "bridge_stage": "inline" if apply_benchmark_bridges else "none",
+            "repair_policy": "none",
+        },
+    )
+
+
+def exect_s0_s1_field_family_micro_f1_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+    *,
+    apply_benchmark_bridges: bool = True,
+) -> float:
+    """DSPy metric for ExECT S0/S1 optimizer training.
+
+    Uses pooled document micro F1 on the three S1 field families. When
+    ``apply_benchmark_bridges`` is true (default), uses the same inline
+    benchmark-bridge path as production ``repair_policy=none`` scoring.
+    When false, scores raw model surfaces only (matches
+    ``repair_policy=raw_no_benchmark_bridges`` eval for ladder rungs 4–5).
+
+    Optimizer-facing only; benchmark evaluation still uses
+    ``exect_field_family_deterministic_v1``.
+    """
+    from clinical_extraction.evaluation.exect import score_exect_document
+
+    gold = _gold_document_from_optimizer_example(example)
+    prediction = _document_prediction_from_field_family_pred(
+        gold,
+        pred,
+        apply_benchmark_bridges=apply_benchmark_bridges,
+    )
+    document_score = score_exect_document(gold=gold, prediction=prediction)
+    if document_score.document_micro_f1 is None:
+        return 0.0
+    return float(document_score.document_micro_f1)
+
+
+def exect_s0_s1_field_family_micro_f1_raw_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+) -> float:
+    """Optimizer metric without inline benchmark bridges (ladder L0/L1 compile)."""
+    return exect_s0_s1_field_family_micro_f1_metric(
+        example,
+        pred,
+        trace,
+        apply_benchmark_bridges=False,
+    )
+
+
+EXECT_S0_S1_OPTIMIZER_METRICS = {
+    "exect_field_family_micro_f1": exect_s0_s1_field_family_micro_f1_metric,
+    "exect_field_family_micro_f1_raw": exect_s0_s1_field_family_micro_f1_raw_metric,
+}
+
+
+def compile_exect_s0_s1_module(
+    records: list[ExectGoldDocument],
+    *,
+    program_variant: str = EXECT_S0_S1_VARIANT,
+    prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    optimizer_name: str = "BootstrapFewShot",
+    max_bootstrapped_demos: int = 4,
+    max_labeled_demos: int = 0,
+    max_rounds: int = 1,
+    num_candidate_programs: int = 16,
+    optimizer_metric: str = "exect_field_family_micro_f1",
+) -> ExectS0S1FieldFamilyModule:
+    """Compile an ExECT S0/S1 single-pass module with a few-shot DSPy optimizer."""
+    if program_variant != EXECT_S0_S1_VARIANT:
+        raise ValueError(
+            f"ExECT S0/S1 optimizer compilation supports {EXECT_S0_S1_VARIANT!r} only; "
+            f"got {program_variant!r}."
+        )
+
+    trainset = make_exect_s0_s1_dspy_examples(records)
+    module = build_exect_s0_s1_module(program_variant, prompt_version=prompt_version)
+    assert isinstance(module, ExectS0S1FieldFamilyModule)
+
+    if optimizer_name == "LabeledFewShot":
+        optimizer = dspy.LabeledFewShot(k=max_labeled_demos)
+        return optimizer.compile(module, trainset=trainset)
+
+    try:
+        metric = EXECT_S0_S1_OPTIMIZER_METRICS[optimizer_metric]
+    except KeyError as exc:
+        allowed = ", ".join(sorted(EXECT_S0_S1_OPTIMIZER_METRICS))
+        raise ValueError(
+            f"Unknown optimizer_metric {optimizer_metric!r}; use {allowed}."
+        ) from exc
+
+    if optimizer_name == "BootstrapFewShotWithRandomSearch":
+        optimizer = dspy.BootstrapFewShotWithRandomSearch(
+            metric=metric,
+            max_bootstrapped_demos=max_bootstrapped_demos,
+            max_labeled_demos=max_labeled_demos,
+            max_rounds=max_rounds,
+            num_candidate_programs=num_candidate_programs,
+        )
+        return optimizer.compile(module, trainset=trainset)
+
+    if optimizer_name != "BootstrapFewShot":
+        raise ValueError(
+            f"Unsupported ExECT S0/S1 optimizer {optimizer_name!r}; use "
+            "LabeledFewShot, BootstrapFewShot, or BootstrapFewShotWithRandomSearch."
+        )
+
+    optimizer = dspy.BootstrapFewShot(
+        metric=metric,
+        max_bootstrapped_demos=max_bootstrapped_demos,
+        max_labeled_demos=max_labeled_demos,
+        max_rounds=max_rounds,
+    )
+    return optimizer.compile(module, trainset=trainset)
+
+
+def stage_graph_id_for_program_variant(program_variant: str) -> str | None:
+    return EXECT_S0_S1_STAGE_GRAPH_BY_VARIANT.get(program_variant)
 
 
 def exect_s0_s1_run_metadata(

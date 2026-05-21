@@ -6,13 +6,22 @@ This view is lifted from the Kanban plan so the atlas stays connected to active 
 
 ## Active Work
 
-**Current mode:** two-lane execution.
+**Current mode:** three-axis hybrid-pipeline exploration (GPT cap-25 grids first).
 
-Lane Q: **`exect_s1_seizure_prompt_policy_qwen_v1`** — GPT + Qwen cap-25 **done**; Qwen full **approved** (diagnosis −2.6pp waived as cap-25 noise; seizure +11.6pp). Run `exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama.json`.
+Completed carryover: **`exect_s1_seizure_prompt_policy_qwen_v1`** — Hold (promote blocked); full `…231850Z` (seizure 74.2%, +18.5pp). Inspection `docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md`.
 
-Lane A: design and run new clean GPT 4.1-mini factor-isolation experiments surfaced by `docs/research_atlas/evidence_matrix.md`. Do not recategorize old bundled rows as the clean evidence base; keep them as historical context and create new comparison groups.
+Completed carryover: Lane A GPT factor-isolation cap-25 groups for Gan and ExECT S1 are now arm evidence, not mechanism closure.
 
-**Next model-backed comparison group:** `exect_s1_seizure_prompt_policy_qwen_v1` — preregistered in `docs/exect_s1_seizure_prompt_policy_qwen_preregistration_20260520.md`; implementation in `docs/exect_s0_label_policy_v4_11_implementation.md`. Do not rerun H2 pre-vocab or add post bridges in this group.
+**Next model-backed comparison group:** `exect_s1_pipeline_stage_graph_gpt_cap25_v1` — ExECT S1 Axis 1 stage-graph grid (Gan Phases 2–4 complete). Gan presentation sweep: `docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md`.
+
+**Gan stage-graph Axis 1 cap-25 complete (2026-05-21):**
+
+| Arm | `stage_graph_id` | Monthly | Outcome |
+| --- | --- | ---: | --- |
+| A3 | `g2_candidates_adjudicate` | 52.0% | hold → Phase 3 anchor |
+| A1/A2/A4/A5 | various | 44.0% | reject (arm) |
+
+Inspection: `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md`
 
 **Cap-25 complete (2026-05-20):**
 
@@ -21,7 +30,7 @@ Lane A: design and run new clean GPT 4.1-mini factor-isolation experiments surfa
 | GPT v4_11 | `…214222Z` | 93.9% (−1.5pp vs v4_10) | Pass |
 | Qwen v4_11 | `…214425Z` | 78.3% (+11.6pp vs `…210432Z`) | Pass (amended — diagnosis −2.6pp waived) |
 
-**Next (external PowerShell):** `exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama.json` — promote bar: seizure F1 ≥ 63.7% vs `…210722Z` (55.7%).
+**Lane Q closed:** v4_11 full `…231850Z` — promote blocked (mismatch docs 14, diagnosis −5.1pp); Qwen production stays v4_10 H1.
 
 No runs in flight. S1 interleaving GPT v2 + Qwen v1 and all S1/S4 family-isolated GPT probes **closed**.
 
@@ -37,20 +46,26 @@ No runs in flight. S1 interleaving GPT v2 + Qwen v1 and all S1/S4 family-isolate
 | ExECT S1 prompt-policy ablation | `docs/exect_s1_prompt_policy_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 done — reject v4_11 (GPT)** | None |
 | ExECT S1 verification ablation | `docs/exect_s1_verification_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 done — reject verify-repair** | None |
 | ExECT S1 evidence-policy ablation | `docs/exect_s1_evidence_policy_gpt_validation_v1_preregistration_20260521.md` | **Cap-25 done — hold standard** | None |
-| ExECT S1 optimizer pilot | `docs/exect_s1_optimizer_gpt_cap25_v1_preregistration_20260521.md` | Add ExECT compile path in `run_experiment.py` | **Runner blocked** — Gan-only optimizer today |
+| ExECT S1 optimizer pilot | `docs/exect_s1_optimizer_gpt_cap25_v1_preregistration_20260521.md` | **Cap-25 complete — reject bootstrap** | Inspection `docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md` |
+| ExECT S1 full ladder rungs 0–3 | `docs/exect_s1_full_ladder_gpt_validation_v1_preregistration_20260521.md` | **Complete** | Inspection `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` |
+| ExECT S1 optimizer automation thesis | `docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md` | **Ready — configs scaffolded** | L0/L1 + compile without hand-crafted policy |
 
 ## Recommended Next Pull
 
-1. **Lane Q:** Qwen v4_11 full validation + error-read vs `…210722Z` (if not already complete).
-2. **Lane A (Gan — follow-up):** Registry/atlas for nine cap-25 runs; optional guardrails-port error-read (`…234051Z` vs `…233934Z`).
-3. **Lane A (ExECT GPT):** ExECT cap-25 groups per `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md` if not already closed.
-4. **Lane A (blocked):** ExECT optimizer pilot after ExECT compile path lands.
+1. **Gan Axis 2 prereg:** `docs/gan_s0_stage_executor_gpt_cap25_v1_preregistration_20260521.md` — det vs LLM vs hybrid candidate generation on `g2_candidates_adjudicate`.
+2. **Implement + run** executor grid cap-25; inspect with `decision_scope: arm`.
+3. **Registry backfill** for Phase 2 (5 rows) and Phase 3 when runs land.
+4. **Consolidation:** Refresh registry matrix / atlas after new rows land.
 
 ## Ready After Consolidation
 
-### Lane A clean GPT factor-isolation queue
+### Gan stage-executor queue
 
-Ready now, after lightweight preregistration for each comparison group. Use GPT 4.1-mini for rapid execution while Qwen runs remain confirmatory. Preferred order is Gan verification/evidence/prompt policy, then ExECT prompt policy/verification/evidence, with ExECT optimizer pilot after confirming runner support.
+Ready for next session. Phase 2 ranked `g2_candidates_adjudicate` (52% monthly) over operational skeleton `g3_candidates_extract_repair` (44%). First implementation: `llm_temporal_candidates` program path.
+
+### Gan stage-graph queue (complete)
+
+Done. `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md`.
 
 ### Optional Gan model-interaction robustness slice
 
@@ -74,17 +89,19 @@ Deferred. S1 interleaving v1/v2 and S4 family-isolated probes are complete; reop
 
 ### Optimizer scale-up
 
-Start with one explicit ExECT S1 GPT cap-25 optimizer pilot. Broader optimizer scale-up remains deferred, and optimizers should be explicit ablation factors rather than silent prompt tuning.
+ExECT S1 cap-25 bootstrap is complete and rejected. Broader optimizer scale-up remains deferred until the reference ladder is interpreted under the three-axis plan.
 
 ## Current Decisions
 
 | Decision | Current position |
 | --- | --- |
+| Research doctrine | **Three-axis exploration** — `docs/hybrid_pipeline_research_pivot_20260521.md` |
 | Experiment loop | Explore primarily on GPT 4.1-mini; reserve Qwen35b for selected high-value focus experiments |
 | Gan default architecture | Temporal-candidates verify-repair (`H2` + `H4`) |
-| Gan ReAct H3 | Rejected as default path; keep as negative control |
+| Gan next experiment | Axis 1 stage-graph grid with deterministic candidate-source control |
+| Gan ReAct H3 | **arm-reject** (one tool surface); mechanism open |
 | ExECT S1 interleaving Qwen v1 | **Complete — reject port** — full bridge Δ +12.8pp micro; H1 null vs Qwen anchor; does not close GPT seizure gap |
-| ExECT next experiment | **Clean factor-isolation queue** — prompt policy, optimizer pilot, verification, and evidence ablations on GPT 4.1-mini before Qwen confirmation |
+| ExECT next experiment | Axis 1 stage-graph grid on S1 after Gan Phase 2, with bridge mode documented |
 | Lane A policy | **New clean experiments only** — do not recategorize old bundled rows as the clean evidence base |
 | ExECT S1 seizure H2 slice | **Reject** — 83.3% vs 91.5% seizure_type F1 on 15-record slice (−8.2pp) |
 | ExECT S1 seizure L1 slice | **Hold (slice reference)** — 91.5% seizure_type F1 |

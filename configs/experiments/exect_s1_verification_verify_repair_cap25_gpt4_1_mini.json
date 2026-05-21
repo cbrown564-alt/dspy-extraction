@@ -1,0 +1,40 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "confirm_first_verifier_with_deterministic_guards",
+    "verifier_policy": "explicit two-stage confirm-first verify/repair on diagnosis, seizure type, and annotated medication with evidence quote repair; no add-only diagnosis recall"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_verification_verify_repair_cap25_gpt4_1_mini",
+  "hypothesis": "Clean GPT factor-isolation treatment: v4_10 extraction plus confirm-first verify-repair improves micro F1 or evidence support versus single-pass on cap-25.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Clean comparison group exect_s1_verification_gpt_validation_v1; extraction uses v4_10 via verify_repair prompt mapping.",
+    "Verify-repair doubles model calls; latency not comparable to single-pass.",
+    "Deterministic verifier guards block add-only diagnosis and medication labels; scorer unchanged.",
+    "See docs/exect_s1_verification_gpt_validation_v1_preregistration_20260521.md."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_verify_repair",
+  "prompt_version": "exect_s0_s1_field_family_verify_repair_v1",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["diagnosis", "seizure_type", "medication"],
+    "comparison_group": "exect_s1_verification_gpt_validation_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["L1_llm_constrained"],
+    "intended_decision": "pending",
+    "interleaving_positions": ["during"],
+    "program_architecture": "verify_repair",
+    "schema_complexity": "exect_s1",
+    "varied_factor": "verification_strategy"
+  }
+}

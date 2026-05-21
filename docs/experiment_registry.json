@@ -15,7 +15,7 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 121,
+  "row_count": 143,
   "experiments": [
     {
       "experiment_id": "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini",
@@ -376,7 +376,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v3_seizure_evidence_policy",
       "config_paths": null,
-      "notes": "Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
+      "notes": "decision_scope: arm. Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
       "comparison_groups": [
         "exect_s1_architecture_gpt_cap25_v1"
       ],
@@ -725,7 +725,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1 with GPT); treat as schema and drift signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1 with GPT); treat as schema and drift signal only.",
         "Do not compare this run to GPT cap-25 or full validation as the same experiment.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs.",
@@ -856,7 +856,7 @@
         "exect_s0_s1_field_family_v4_9_label_policy"
       ],
       "config_paths": null,
-      "notes": "Frozen ExECT S0/S1 GPT v4.10 validation anchor for diagnosis, seizure type, and annotated medication. Benchmark-facing policy and bridges are part of the intervention.",
+      "notes": "decision_scope: operational. Frozen ExECT S0/S1 GPT v4.10 validation anchor for diagnosis, seizure type, and annotated medication. Benchmark-facing policy and bridges are part of the intervention.",
       "comparison_groups": [
         "exect_schema_complexity_gpt_validation_v1",
         "exect_qwen_replication_validation_v1",
@@ -932,7 +932,7 @@
         "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
         "GPT 4.1-mini frozen dev anchor: runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro F1).",
         "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
-        "Prior Qwen ExECT themes (seizure granularity, diagnosis specificity) may differ from GPT v4.10 residuals \u2014 see docs/previous_exect_error_analysis.md.",
+        "Prior Qwen ExECT themes (seizure granularity, diagnosis specificity) may differ from GPT v4.10 residuals — see docs/previous_exect_error_analysis.md.",
         "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
         "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
         "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/qwen_dspy_latency_policy.md.",
@@ -947,7 +947,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Completed ExECT S0/S1 Qwen replication of frozen GPT v4.10 policy. Held as local-model evidence, not a frozen default, because it trails the GPT validation anchor.",
+      "notes": "decision_scope: arm. Completed ExECT S0/S1 Qwen replication of frozen GPT v4.10 policy. Held as local-model evidence, not a frozen default, because it trails the GPT validation anchor.",
       "comparison_groups": [
         "exect_qwen_replication_validation_v1"
       ],
@@ -1018,7 +1018,7 @@
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs.",
         "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
-        "Frozen prompt exect_s0_s1_field_family_v4_10_label_policy \u2014 compare to dev validation anchor 92.3% (runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z) with full partial-view caveats.",
+        "Frozen prompt exect_s0_s1_field_family_v4_10_label_policy — compare to dev validation anchor 92.3% (runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z) with full partial-view caveats.",
         "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
         "Medication temporality is intentionally excluded from benchmark-facing metrics for this baseline.",
         "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
@@ -1034,7 +1034,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "One-shot held-out ExECT S0/S1 GPT v4.10 test anchor. Records validation-to-test generalization gap after development tuning stopped.",
+      "notes": "decision_scope: arm. One-shot held-out ExECT S0/S1 GPT v4.10 test anchor. Records validation-to-test generalization gap after development tuning stopped.",
       "comparison_groups": [
         "exect_s1_generalization_gpt_test_v1"
       ],
@@ -1353,7 +1353,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); treat as schema/gate signal only.",
         "Comorbidity labels come from affirmed PatientHistory annotations excluding seizure-history phrases.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
@@ -1529,7 +1529,7 @@
       "outcome": "freeze",
       "decision_doc": "docs/exect_s2_validation_full_gpt4_1_mini_inspection_20260520.md",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with family breakdown, not pooled micro vs S1-only cap-25.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); compare cap-25 and full with family breakdown, not pooled micro vs S1-only cap-25.",
         "Comorbidity labels come from affirmed PatientHistory annotations excluding seizure-history phrases.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
@@ -1556,7 +1556,7 @@
         "exect_s2_field_family_v1_3_label_policy"
       ],
       "config_paths": null,
-      "notes": "Frozen ExECT S2 GPT full-validation anchor. Extends S1 policy to investigation and comorbidity families; compare schema ladder only with caveats about changing family scope.",
+      "notes": "decision_scope: operational. Frozen ExECT S2 GPT full-validation anchor. Extends S1 policy to investigation and comorbidity families; compare schema ladder only with caveats about changing family scope.",
       "comparison_groups": [
         "exect_schema_complexity_gpt_validation_v1",
         "exect_qwen_replication_validation_v1"
@@ -1648,7 +1648,7 @@
       },
       "prompt_versions": "exect_s2_field_family_v1_3_label_policy",
       "config_paths": null,
-      "notes": "Completed ExECT S2 Qwen replication row. Useful local-model anchor; compare to GPT S2 under fixed scorer/split with caveats about provider and runtime differences.",
+      "notes": "decision_scope: arm. Completed ExECT S2 Qwen replication row. Useful local-model anchor; compare to GPT S2 under fixed scorer/split with caveats about provider and runtime differences.",
       "comparison_groups": [
         "exect_qwen_replication_validation_v1"
       ],
@@ -1880,7 +1880,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); treat as schema/gate signal only.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S3 benchmark-facing fields extend frozen S2 with birth history, onset, epilepsy cause, and when diagnosed.",
@@ -2057,7 +2057,7 @@
       "outcome": "freeze",
       "decision_doc": "docs/exect_s3_validation_full_gpt4_1_mini_inspection_20260520.md",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S2-only cap-25.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S2-only cap-25.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S3 benchmark-facing fields extend frozen S2 with birth history, onset, epilepsy cause, and when diagnosed.",
@@ -2065,7 +2065,7 @@
         "Onset and when_diagnosed gold are CUIPhrase surfaces; temporal age/year attributes are not benchmark labels.",
         "Overlapping phrases across families (for example meningitis as cause vs comorbidity) are scored independently per family.",
         "Pooled micro F1 across nine families is not comparable to frozen S2 five-family headlines.",
-        "Report per-family F1 and monitor frozen S2 families for regression vs S2 v1.3 full anchor (\u2026231223Z).",
+        "Report per-family F1 and monitor frozen S2 families for regression vs S2 v1.3 full anchor (…231223Z).",
         "S2 label-policy bridges from frozen v1.3 are reused for S1 and S2 families; see docs/exect_s3_phase1_overlap_policy.md.",
         "S3 gold uses affirmed BirthHistory, Onset, EpilepsyCause, and WhenDiagnosed JSON entities only.",
         "These are partial ExECT S3 diagnostics (nine families), not CUI-aware all-family benchmark reproduction.",
@@ -2088,7 +2088,7 @@
         "exect_s3_field_family_v1_2_label_policy"
       ],
       "config_paths": null,
-      "notes": "Frozen ExECT S3 GPT full-validation anchor. Schema ladder row; micro F1 aggregates a wider field-family set than S1/S2.",
+      "notes": "decision_scope: operational. Frozen ExECT S3 GPT full-validation anchor. Schema ladder row; micro F1 aggregates a wider field-family set than S1/S2.",
       "comparison_groups": [
         "exect_schema_complexity_gpt_validation_v1",
         "exect_qwen_replication_validation_v1"
@@ -2180,7 +2180,7 @@
       },
       "prompt_versions": "exect_s3_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Completed ExECT S3 Qwen replication row. Local-model performance approximately matches the GPT S3 full anchor under the same schema level and scorer.",
+      "notes": "decision_scope: arm. Completed ExECT S3 Qwen replication row. Local-model performance approximately matches the GPT S3 full anchor under the same schema level and scorer.",
       "comparison_groups": [
         "exect_qwen_replication_validation_v1"
       ],
@@ -2252,7 +2252,7 @@
         "Overlapping phrases across families are scored independently per family.",
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
-        "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/exect_s4_gold_policy.md.",
+        "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families; see docs/exect_s4_gold_policy.md.",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (S3 + seizure frequency + Rx temporality), not published ExECTv2 Table 1 reproduction.",
         "This capped smoke run validates the ExECT S4 eleven-family program contract only; it is not a performance estimate.",
@@ -2416,7 +2416,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); treat as schema/gate signal only.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S4 benchmark-facing fields extend frozen S3 with seizure frequency and medication temporality.",
@@ -2425,7 +2425,7 @@
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
         "Report per-family F1 and monitor frozen S3 families (diagnosis, seizure, medication, investigation, comorbidity, birth/onset/cause/when-diagnosed).",
-        "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/exect_s4_gold_policy.md.",
+        "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families; see docs/exect_s4_gold_policy.md.",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
         "This diagnostic validation cap is a gating check for ExECT S4 field expansion; it is not a performance estimate.",
@@ -2516,7 +2516,7 @@
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family headlines.",
         "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
-        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (\u2026235439Z).",
+        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (…235439Z).",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
         "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/qwen_dspy_latency_policy.md.",
@@ -2606,7 +2606,7 @@
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family headlines.",
         "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
-        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (\u2026235439Z).",
+        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (…235439Z).",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
         "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/qwen_dspy_latency_policy.md.",
@@ -2622,7 +2622,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Qwen Thread E S4 full-validation anchor. Completes local schema-ladder replication through S4; held as separate track from hosted GPT despite +2.0pp pooled micro.",
+      "notes": "decision_scope: arm. Qwen Thread E S4 full-validation anchor. Completes local schema-ladder replication through S4; held as separate track from hosted GPT despite +2.0pp pooled micro.",
       "comparison_groups": [
         "exect_qwen_replication_validation_v1"
       ],
@@ -2687,7 +2687,7 @@
       "outcome": "freeze",
       "decision_doc": "docs/exect_s4_validation_full_v1_2_gpt4_1_mini_inspection_20260520.md",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S3-only cap-25.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S3-only cap-25.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S4 benchmark-facing fields extend frozen S3 with seizure frequency and medication temporality.",
@@ -2695,8 +2695,8 @@
         "Overlapping phrases across families are scored independently per family.",
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
-        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 full anchor (\u2026235439Z).",
-        "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/exect_s4_gold_policy.md.",
+        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 full anchor (…235439Z).",
+        "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families; see docs/exect_s4_gold_policy.md.",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not CUI-aware all-family benchmark reproduction.",
         "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
@@ -2718,7 +2718,7 @@
         "exect_s4_field_family_v1_2_label_policy"
       ],
       "config_paths": null,
-      "notes": "Frozen ExECT S4 GPT v1.2 full-validation anchor. Broadest current ExECT schema; not directly comparable to S1 micro F1 without schema-scope caveats.",
+      "notes": "decision_scope: operational. Frozen ExECT S4 GPT v1.2 full-validation anchor. Broadest current ExECT schema; not directly comparable to S1 micro F1 without schema-scope caveats.",
       "comparison_groups": [
         "exect_schema_complexity_gpt_validation_v1"
       ],
@@ -3537,7 +3537,7 @@
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
       "config_paths": null,
-      "notes": "Canonical hosted Gan S0 temporal-candidates v1.1 full-validation anchor. Tests deterministic temporal candidate preconditioning plus LLM verify/repair against prior hosted verify-repair and synthesis references.",
+      "notes": "decision_scope: operational. Canonical hosted Gan S0 temporal-candidates v1.1 full-validation anchor. Tests deterministic temporal candidate preconditioning plus LLM verify/repair against prior hosted verify-repair and synthesis references.",
       "comparison_groups": [
         "gan_s0_architecture_gpt_validation_v1"
       ],
@@ -5378,7 +5378,7 @@
       },
       "prompt_versions": "gan_frequency_s0_direct_guardrails_v1",
       "config_paths": null,
-      "notes": "Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
+      "notes": "decision_scope: arm. Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
       "comparison_groups": [
         "gan_s0_architecture_qwen_validation_v1"
       ],
@@ -5479,7 +5479,7 @@
         "gan_frequency_s0_direct_guardrails_v2_2"
       ],
       "config_paths": null,
-      "notes": "Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
+      "notes": "decision_scope: arm. Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
       "comparison_groups": [
         "gan_s0_hard_slice_qwen_architecture_v1"
       ],
@@ -5840,7 +5840,7 @@
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
       "config_paths": null,
-      "notes": "Canonical local Qwen Gan S0 Tier 1 temporal-candidates v1.1 full-validation anchor. Promoted local default for the frequency task with deterministic temporal scaffolding and 100 percent diagnostic evidence support on valid predictions.",
+      "notes": "decision_scope: operational. Canonical local Qwen Gan S0 Tier 1 temporal-candidates v1.1 full-validation anchor. Promoted local default for the frequency task with deterministic temporal scaffolding and 100 percent diagnostic evidence support on valid predictions.",
       "comparison_groups": [
         "gan_s0_architecture_qwen_validation_v1"
       ],
@@ -5944,7 +5944,7 @@
         "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
       ],
       "config_paths": null,
-      "notes": "Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
+      "notes": "decision_scope: arm. Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
       "comparison_groups": [
         "gan_s0_hard_slice_qwen_architecture_v1"
       ],
@@ -6044,7 +6044,7 @@
       },
       "prompt_versions": "gan_frequency_s0_temporal_event_table_verify_repair_v1_0",
       "config_paths": null,
-      "notes": "Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
+      "notes": "decision_scope: arm. Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
       "comparison_groups": [
         "gan_s0_hard_slice_qwen_architecture_v1"
       ],
@@ -6140,7 +6140,7 @@
       },
       "prompt_versions": "gan_frequency_s0_react_temporal_tools_v1_1",
       "config_paths": "configs/experiments/gan_s0_qwen35b_react_temporal_tools_regression_slice_guardrails.json",
-      "notes": "First deliberate H3 interleaved-tool-hybrid probe on the Gan hard slice. Reject: 50% schema validity and 42.9% monthly on valid preds vs 100% temporal-candidates B1; supports pre-conditioning over tool-during interleaving.",
+      "notes": "decision_scope: arm. First deliberate H3 interleaved-tool-hybrid probe on the Gan hard slice. Reject: 50% schema validity and 42.9% monthly on valid preds vs 100% temporal-candidates B1; supports pre-conditioning over tool-during interleaving.",
       "comparison_groups": [
         "gan_s0_hard_slice_qwen_architecture_v1"
       ],
@@ -6243,7 +6243,7 @@
         "gan_frequency_s0_direct_verify_repair_v2_4"
       ],
       "config_paths": null,
-      "notes": "Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
+      "notes": "decision_scope: arm. Initial registry row generated from local metric-bearing run artifacts; taxonomy fields are conservative retrospective tags pending controlled-vocabulary validation.",
       "comparison_groups": [
         "gan_s0_hard_slice_qwen_architecture_v1"
       ],
@@ -6851,7 +6851,7 @@
         "frequency"
       ],
       "run_scope": "full_validation",
-      "notes": "Historical hosted Gan S0 synthesis BootstrapFewShot reference. Added from decision and methods docs because the metric-bearing artifact is documented but not present in the current local runs directory.",
+      "notes": "decision_scope: arm. Historical hosted Gan S0 synthesis BootstrapFewShot reference. Added from decision and methods docs because the metric-bearing artifact is documented but not present in the current local runs directory.",
       "control_modes": [
         "hard_constraint",
         "soft_hint",
@@ -7142,7 +7142,7 @@
       },
       "prompt_versions": "gan_frequency_s0_direct_verify_repair_v2",
       "config_paths": null,
-      "notes": "Hosted Gan verify-repair v2 full-validation anchor. Credible improvement over synthesis bootstrap, later superseded as default by temporal-candidates because temporal improved evidence/category behavior while preserving monthly parity.",
+      "notes": "decision_scope: arm. Hosted Gan verify-repair v2 full-validation anchor. Credible improvement over synthesis bootstrap, later superseded as default by temporal-candidates because temporal improved evidence/category behavior while preserving monthly parity.",
       "comparison_groups": [
         "gan_s0_architecture_gpt_validation_v1"
       ],
@@ -7225,7 +7225,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Cap-25 gate for H1 post-bridge arm; matches L1 cap-25 micro (95.8%).",
+      "notes": "decision_scope: arm. Cap-25 gate for H1 post-bridge arm; matches L1 cap-25 micro (95.8%).",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v1"
       ],
@@ -7308,7 +7308,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Null vs frozen L1: identical normalized labels on all 40 records; repair_policy changes metadata only until bridge path is split.",
+      "notes": "decision_scope: arm. Null vs frozen L1: identical normalized labels on all 40 records; repair_policy changes metadata only until bridge path is split.",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v1"
       ],
@@ -7392,7 +7392,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Cap-25 gate passed schema/evidence but underperformed L1 cap-25 by 4.9pp micro.",
+      "notes": "decision_scope: arm. Cap-25 gate passed schema/evidence but underperformed L1 cap-25 by 4.9pp micro.",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v1"
       ],
@@ -7476,7 +7476,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Pre-vocab injection regressed full micro to 87.5% (-4.8pp vs L1); seizure F1 79.2%.",
+      "notes": "decision_scope: arm. Pre-vocab injection regressed full micro to 87.5% (-4.8pp vs L1); seizure F1 79.2%.",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v1"
       ],
@@ -7556,7 +7556,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Bridge-free cap-25 gate; 72.8% micro vs 95.8% H1 post-bridge on same records.",
+      "notes": "decision_scope: arm. Bridge-free cap-25 gate; 72.8% micro vs 95.8% H1 post-bridge on same records.",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v2"
       ],
@@ -7635,7 +7635,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Bridge-free full validation; ~24pp micro gap vs H1 post-bridge quantifies benchmark-bridge contribution.",
+      "notes": "decision_scope: arm. Bridge-free full validation; ~24pp micro gap vs H1 post-bridge quantifies benchmark-bridge contribution.",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v2"
       ],
@@ -7717,7 +7717,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "v2 cap-25 H1 post-bridge; matches production L1 cap-25 micro (95.8%).",
+      "notes": "decision_scope: arm. v2 cap-25 H1 post-bridge; matches production L1 cap-25 micro (95.8%).",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v2"
       ],
@@ -7798,7 +7798,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "v2 full H1 post-bridge; identical to exect_s0_s1_validation_full_gpt4_1_mini anchor (92.3% micro).",
+      "notes": "decision_scope: arm. v2 full H1 post-bridge; identical to exect_s0_s1_validation_full_gpt4_1_mini anchor (92.3% micro).",
       "comparison_groups": [
         "exect_s1_interleaving_gpt_validation_v2"
       ],
@@ -7879,7 +7879,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Qwen bridge-free cap-25; 71.4% micro vs 80.7% H1 post-bridge on same records.",
+      "notes": "decision_scope: arm. Qwen bridge-free cap-25; 71.4% micro vs 80.7% H1 post-bridge on same records.",
       "comparison_groups": [
         "exect_s1_interleaving_qwen_validation_v1"
       ],
@@ -7962,7 +7962,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Qwen cap-25 H1 post-bridge; +9.3pp micro vs L1 raw. Full validation pending before closing qwen v1 matrix.",
+      "notes": "decision_scope: arm. Qwen cap-25 H1 post-bridge; +9.3pp micro vs L1 raw. Full validation pending before closing qwen v1 matrix.",
       "comparison_groups": [
         "exect_s1_interleaving_qwen_validation_v1"
       ],
@@ -8042,7 +8042,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Qwen bridge-free full validation; ~13pp micro gap vs H1 post-bridge quantifies benchmark-bridge contribution on local model.",
+      "notes": "decision_scope: arm. Qwen bridge-free full validation; ~13pp micro gap vs H1 post-bridge quantifies benchmark-bridge contribution on local model.",
       "comparison_groups": [
         "exect_s1_interleaving_qwen_validation_v1"
       ],
@@ -8124,11 +8124,263 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Qwen full H1 post-bridge; identical to exect_s0_s1_validation_full_qwen35b_ollama anchor (79.0% micro).",
+      "notes": "decision_scope: arm. Qwen full H1 post-bridge; identical to exect_s0_s1_validation_full_qwen35b_ollama anchor (79.0% micro).",
       "comparison_groups": [
         "exect_s1_interleaving_qwen_validation_v1"
       ],
       "comparison_caveat": "Varied bridge application (raw_no_benchmark_bridges vs artifact_benchmark_bridge_only); cross-track compare to exect_s1_interleaving_gpt_validation_v2 for model_track effect."
+    },
+    {
+      "experiment_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "benchmark_bridge",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_seizure_prompt_policy_qwen_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "prompt_policy",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini_20260520T214222Z",
+      "outcome": "hold",
+      "decision_doc": "docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "exect_s1_seizure_prompt_policy_qwen_v1; compare only within this group vs frozen v4_10 Qwen H1.",
+        "GPT regression guardrail: v4_11 must not regress seizure F1 more than 2pp vs v4_10 cap-25.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini_20260520T214222Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9512195121951219
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_11_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini.json"
+      ],
+      "notes": "decision_scope: arm. GPT cap-25 guardrail pass: seizure F1 93.9% (-1.5pp vs v4_10 cap-25 95.4%); cleared to run Qwen treatment.",
+      "comparison_groups": [
+        "exect_s1_seizure_prompt_policy_qwen_v1"
+      ],
+      "comparison_caveat": "Varied prompt_policy only (v4_11 treatment vs frozen v4_10 Qwen H1 baseline); H1 post-bridge path on Qwen arms."
+    },
+    {
+      "experiment_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_qwen35b_ollama",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "benchmark_bridge",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_seizure_prompt_policy_qwen_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\exect_qwen35b_ollama.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "prompt_policy",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s1_seizure_prompt_policy_v4_11_cap25_qwen35b_ollama_20260520T214425Z",
+      "outcome": "hold",
+      "decision_doc": "docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "exect_s1_seizure_prompt_policy_qwen_v1; compare only within this group vs frozen v4_10 Qwen H1.",
+        "Cap-25 gate: seizure F1 >= +5pp vs v4_10 H1 cap-25; diagnosis -2.6pp waived as slice noise (amended gate).",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_seizure_prompt_policy_v4_11_cap25_qwen35b_ollama_20260520T214425Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.8536585365853657
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_11_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_seizure_prompt_policy_v4_11_cap25_qwen35b_ollama.json"
+      ],
+      "notes": "decision_scope: arm. Qwen cap-25: seizure F1 78.3% (+11.6pp vs v4_10 cap-25); mismatch docs 12->9; amended gate cleared full run.",
+      "comparison_groups": [
+        "exect_s1_seizure_prompt_policy_qwen_v1"
+      ],
+      "comparison_caveat": "Varied prompt_policy only (v4_11 treatment vs frozen v4_10 Qwen H1 baseline); H1 post-bridge path on Qwen arms."
+    },
+    {
+      "experiment_id": "exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "benchmark_bridge",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s1_seizure_prompt_policy_qwen_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\exect_qwen35b_ollama.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "prompt_policy",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama_20260520T231850Z",
+      "outcome": "hold",
+      "decision_doc": "docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md",
+      "metric_caveats": [
+        "exect_s1_seizure_prompt_policy_qwen_v1; compare only within this group vs frozen v4_10 Qwen H1.",
+        "Promotion blocked: seizure F1 +18.5pp but mismatch docs 14 (>12) and diagnosis -5.1pp.",
+        "Qwen production prompt remains v4_10 H1 (exect_s1_interleaving_h1_post_bridge_qwen35b_ollama_20260520T210722Z).",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama_20260520T231850Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.8432835820895522
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_11_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama.json"
+      ],
+      "notes": "decision_scope: arm. Qwen full v4_11: seizure F1 74.2% (+18.5pp vs v4_10 H1 55.7%); promote blocked; error read runs/exect_s1_seizure_prompt_policy_qwen_v1_error_read.json.",
+      "comparison_groups": [
+        "exect_s1_seizure_prompt_policy_qwen_v1"
+      ],
+      "comparison_caveat": "Varied prompt_policy only (v4_11 treatment vs frozen v4_10 Qwen H1 baseline); H1 post-bridge path on Qwen arms."
     },
     {
       "experiment_id": "exect_s1_interleaving_l1_baseline_medication_slice_gpt4_1_mini",
@@ -8202,7 +8454,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Slice reference arm; 98.3% annotated_medication F1 (primary) on Rx-heavy records.",
+      "notes": "decision_scope: operational. Slice reference arm; 98.3% annotated_medication F1 (primary) on Rx-heavy records.",
       "comparison_groups": [
         "exect_s1_medication_pre_vocab_slice_gpt_v1"
       ],
@@ -8284,7 +8536,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": null,
-      "notes": "Medication-only H2 pre-vocab reject: 95.1% annotated_medication F1 (-3.2pp vs L1 slice 98.3%).",
+      "notes": "decision_scope: arm. Medication-only H2 pre-vocab reject: 95.1% annotated_medication F1 (-3.2pp vs L1 slice 98.3%).",
       "comparison_groups": [
         "exect_s1_medication_pre_vocab_slice_gpt_v1"
       ],
@@ -8364,7 +8616,7 @@
       "config_paths": [
         "configs/experiments/exect_s1_interleaving_l1_baseline_seizure_slice_gpt4_1_mini.json"
       ],
-      "notes": "Slice reference arm; 91.5% seizure_type F1 (primary) on seizure-heavy records.",
+      "notes": "decision_scope: operational. Slice reference arm; 91.5% seizure_type F1 (primary) on seizure-heavy records.",
       "comparison_groups": [
         "exect_s1_seizure_pre_vocab_slice_gpt_v1"
       ],
@@ -8448,7 +8700,7 @@
       "config_paths": [
         "configs/experiments/exect_s1_interleaving_h2_seizure_pre_vocab_slice_gpt4_1_mini.json"
       ],
-      "notes": "Seizure-only H2 pre-vocab reject: 83.3% vs 91.5% seizure_type F1 (-8.2pp vs L1 slice).",
+      "notes": "decision_scope: arm. Seizure-only H2 pre-vocab reject: 83.3% vs 91.5% seizure_type F1 (-8.2pp vs L1 slice).",
       "comparison_groups": [
         "exect_s1_seizure_pre_vocab_slice_gpt_v1"
       ],
@@ -8525,7 +8777,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Cap-25 L1 reference; 49.1% seizure_frequency F1 (primary).",
+      "notes": "decision_scope: operational. Cap-25 L1 reference; 49.1% seizure_frequency F1 (primary).",
       "comparison_groups": [
         "exect_s4_frequency_deterministic_v1"
       ],
@@ -8605,7 +8857,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Reject: 47.1% seizure_frequency F1 (-2.0pp vs L1 49.1% on cap-25).",
+      "notes": "decision_scope: arm. Reject: 47.1% seizure_frequency F1 (-2.0pp vs L1 49.1% on cap-25).",
       "comparison_groups": [
         "exect_s4_frequency_deterministic_v1"
       ],
@@ -8682,7 +8934,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Cap-25 L1 reference; 46.8% medication_temporality precision (primary).",
+      "notes": "decision_scope: operational. Cap-25 L1 reference; 46.8% medication_temporality precision (primary).",
       "comparison_groups": [
         "exect_s4_temporality_deterministic_v1"
       ],
@@ -8763,7 +9015,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Cap-25 gate passed (+14.5pp precision); full validation rejected (-6.6pp F1).",
+      "notes": "decision_scope: arm. Cap-25 gate passed (+14.5pp precision); full validation rejected (-6.6pp F1).",
       "comparison_groups": [
         "exect_s4_temporality_deterministic_v1"
       ],
@@ -8840,7 +9092,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Full-validation L1 reference; 46.4% medication_temporality precision.",
+      "notes": "decision_scope: operational. Full-validation L1 reference; 46.4% medication_temporality precision.",
       "comparison_groups": [
         "exect_s4_temporality_deterministic_v1"
       ],
@@ -8921,7 +9173,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": null,
-      "notes": "Reject: 56.5% MT precision (+10.1pp vs L1) but -6.6pp MT F1 (recall collapse). Do not port.",
+      "notes": "decision_scope: arm. Reject: 56.5% MT precision (+10.1pp vs L1) but -6.6pp MT F1 (recall collapse). Do not port.",
       "comparison_groups": [
         "exect_s4_temporality_deterministic_v1"
       ],
@@ -9002,7 +9254,7 @@
         "value": 0.9575757575757576
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
-      "notes": "Hold: GPT cap-25 anchor at 95.8% micro; matches historical v4_10 cap-25 reference.",
+      "notes": "decision_scope: arm. Hold: GPT cap-25 anchor at 95.8% micro; matches historical v4_10 cap-25 reference.",
       "comparison_caveat": "Varied prompt_policy only (v4_10 vs v4_11); bridges, verification, and scorer fixed.",
       "comparison_groups": [
         "exect_s1_prompt_policy_gpt_validation_v1"
@@ -9083,7 +9335,7 @@
         "value": 0.9512195121951219
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_11_label_policy",
-      "notes": "Reject: -0.7pp micro, -1.5pp seizure F1 vs v4_10; do not run GPT full validation.",
+      "notes": "decision_scope: arm. Reject: -0.7pp micro, -1.5pp seizure F1 vs v4_10; do not run GPT full validation.",
       "comparison_caveat": "Varied prompt_policy only (v4_10 vs v4_11); bridges, verification, and scorer fixed.",
       "comparison_groups": [
         "exect_s1_prompt_policy_gpt_validation_v1"
@@ -9164,7 +9416,7 @@
         "value": 0.9575757575757576
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
-      "notes": "Hold: verification-group anchor; metric-identical to v4_10 prompt-policy baseline on same 25 records.",
+      "notes": "decision_scope: arm. Hold: verification-group anchor; metric-identical to v4_10 prompt-policy baseline on same 25 records.",
       "comparison_caveat": "Varied verification_strategy only (none vs verify_repair); v4_10 extraction prompt fixed.",
       "comparison_groups": [
         "exect_s1_verification_gpt_validation_v1"
@@ -9248,7 +9500,7 @@
         "value": 0.8641975308641975
       },
       "prompt_versions": "exect_s0_s1_field_family_verify_repair_v1",
-      "notes": "Reject: -9.4pp micro vs single-pass; do not run full validation.",
+      "notes": "decision_scope: arm. Reject: -9.4pp micro vs single-pass; do not run full validation.",
       "comparison_caveat": "Varied verification_strategy only (none vs verify_repair); v4_10 extraction via verify_repair mapping.",
       "comparison_groups": [
         "exect_s1_verification_gpt_validation_v1"
@@ -9329,7 +9581,7 @@
         "value": 0.9575757575757576
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
-      "notes": "Hold: evidence-group anchor; no change to production evidence policy.",
+      "notes": "decision_scope: arm. Hold: evidence-group anchor; no change to production evidence policy.",
       "comparison_caveat": "Varied evidence_strategy only (standard vs strict vs soft addenda on v4_10 label policy).",
       "comparison_groups": [
         "exect_s1_evidence_policy_gpt_validation_v1"
@@ -9410,7 +9662,7 @@
         "value": 0.9634146341463414
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_evidence_strict_v1",
-      "notes": "Hold (null): +0.6pp micro vs standard but no evidence diagnostic gain; not promotable.",
+      "notes": "decision_scope: arm. Hold (null): +0.6pp micro vs standard but no evidence diagnostic gain; not promotable.",
       "comparison_caveat": "Varied evidence_strategy only (standard vs strict vs soft addenda on v4_10 label policy).",
       "comparison_groups": [
         "exect_s1_evidence_policy_gpt_validation_v1"
@@ -9491,7 +9743,7 @@
         "value": 0.9512195121951219
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_evidence_soft_v1",
-      "notes": "Reject: -3.1pp seizure F1, -4.4pp evidence support vs standard.",
+      "notes": "decision_scope: arm. Reject: -3.1pp seizure F1, -4.4pp evidence support vs standard.",
       "comparison_caveat": "Varied evidence_strategy only (standard vs strict vs soft addenda on v4_10 label policy).",
       "comparison_groups": [
         "exect_s1_evidence_policy_gpt_validation_v1"
@@ -9580,7 +9832,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_direct_guardrails_v2_2",
-      "notes": "Hold: verification-group anchor; 44% monthly on cap-25.",
+      "notes": "decision_scope: arm. Hold: verification-group anchor; 44% monthly on cap-25.",
       "comparison_caveat": "Varied verification_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_verification_gpt_validation_v1"
@@ -9673,7 +9925,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_direct_verify_repair_v2_4",
-      "notes": "Hold: null vs direct on monthly (44%); 8 label diffs.",
+      "notes": "decision_scope: arm. Hold: null vs direct on monthly (44%); 8 label diffs.",
       "comparison_caveat": "Varied verification_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_verification_gpt_validation_v1"
@@ -9770,7 +10022,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
-      "notes": "Hold: identical labels to direct on cap-25; null factor.",
+      "notes": "decision_scope: arm. Hold: identical labels to direct on cap-25; null factor.",
       "comparison_caveat": "Varied verification_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_verification_gpt_validation_v1"
@@ -9867,7 +10119,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
-      "notes": "Hold: evidence-group reference; 44% monthly.",
+      "notes": "decision_scope: arm. Hold: evidence-group reference; 44% monthly.",
       "comparison_caveat": "Varied evidence_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_evidence_policy_gpt_validation_v1"
@@ -9964,7 +10216,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_evidence_optional_v1",
-      "notes": "Reject: -4pp monthly vs model-quote; no evidence gain.",
+      "notes": "decision_scope: arm. Reject: -4pp monthly vs model-quote; no evidence gain.",
       "comparison_caveat": "Varied evidence_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_evidence_policy_gpt_validation_v1"
@@ -10061,7 +10313,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_evidence_span_check_v1",
-      "notes": "Reject: 7/25 abstentions; 55.6% monthly on 18 valid only.",
+      "notes": "decision_scope: arm. Reject: 7/25 abstentions; 55.6% monthly on 18 valid only.",
       "comparison_caveat": "Varied evidence_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_evidence_policy_gpt_validation_v1"
@@ -10157,7 +10409,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
-      "notes": "Hold: prompt-policy reference; 44% monthly.",
+      "notes": "decision_scope: arm. Hold: prompt-policy reference; 44% monthly.",
       "comparison_caveat": "Varied prompt_policy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_prompt_policy_gpt_validation_v1"
@@ -10253,7 +10505,7 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_synthesis_v1_port_temporal_v1",
-      "notes": "Reject: 39.1% monthly; 92% schema.",
+      "notes": "decision_scope: arm. Reject: 39.1% monthly; 92% schema.",
       "comparison_caveat": "Varied prompt_policy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_prompt_policy_gpt_validation_v1"
@@ -10349,13 +10601,1285 @@
         }
       },
       "prompt_versions": "gan_frequency_s0_guardrails_v2_2_port_temporal_v1",
-      "notes": "Hold: +4pp monthly vs v1.1 (48%); error-read before full.",
+      "notes": "decision_scope: arm. Hold: +4pp monthly vs v1.1 (48%); error-read before full.",
       "comparison_caveat": "Varied prompt_policy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
       "comparison_groups": [
         "gan_s0_prompt_policy_gpt_validation_v1"
       ],
       "verification_strategy": "verify_repair",
       "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_optimizer_gpt_cap25_v1",
+      "varied_factor": "optimizer_strategy",
+      "metric_caveats": [
+        "Clean GPT optimizer pilot; compare only within exect_s1_optimizer_gpt_cap25_v1.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Optimizer metric exect_field_family_micro_f1 is dev-facing only on bootstrap arm.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "comparison_caveat": "Varied optimizer_strategy only; prompt, bridges, verification, and scorer fixed.",
+      "comparison_groups": [
+        "exect_s1_optimizer_gpt_cap25_v1"
+      ],
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "experiment_id": "exect_s1_optimizer_baseline_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "canonical_run_id": "exect_s1_optimizer_baseline_cap25_gpt4_1_mini_20260521T000602Z",
+      "outcome": "hold",
+      "artifact_paths": [
+        "runs/exect_s1_optimizer_baseline_cap25_gpt4_1_mini_20260521T000602Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9575757575757576
+      },
+      "notes": "decision_scope: operational. Hold: in-group frozen baseline at 95.8% micro; matches clean v4_10 cap-25 anchor.",
+      "config_paths": "configs/experiments/exect_s1_optimizer_baseline_cap25_gpt4_1_mini.json"
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation",
+        "optimizer_candidate_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "bootstrapped_examples"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_optimizer_gpt_cap25_v1",
+      "varied_factor": "optimizer_strategy",
+      "metric_caveats": [
+        "Clean GPT optimizer pilot; compare only within exect_s1_optimizer_gpt_cap25_v1.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Optimizer metric exect_field_family_micro_f1 is dev-facing only on bootstrap arm.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "comparison_caveat": "Varied optimizer_strategy only; prompt, bridges, verification, and scorer fixed.",
+      "comparison_groups": [
+        "exect_s1_optimizer_gpt_cap25_v1"
+      ],
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "experiment_id": "exect_s1_optimizer_bootstrap_cap25_gpt4_1_mini",
+      "program_architecture": "optimizer_compiled_single_pass",
+      "example_strategy": "bootstrapped",
+      "canonical_run_id": "exect_s1_optimizer_bootstrap_cap25_gpt4_1_mini_20260521T000608Z",
+      "outcome": "reject",
+      "artifact_paths": [
+        "runs/exect_s1_optimizer_bootstrap_cap25_gpt4_1_mini_20260521T000608Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9068322981366459,
+        "secondary": {
+          "seizure_type_f1": 0.8615384615384615,
+          "evidence_quote_support_rate": 0.9285714285714286,
+          "compile_duration_seconds": 17.681110000004992,
+          "compiled_demo_count": 4
+        }
+      },
+      "notes": "decision_scope: arm. Reject: -5.1pp micro vs in-group baseline; seizure -9.2pp; no full validation.",
+      "config_paths": "configs/experiments/exect_s1_optimizer_bootstrap_cap25_gpt4_1_mini.json"
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_d1_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "D1_deterministic_only"
+      ],
+      "interleaving_positions": [
+        "eval_only"
+      ],
+      "comparison_group": "exect_s1_full_ladder_gpt_validation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "cap25",
+      "outcome": "exploratory",
+      "prompt_versions": "exect_s0_s1_field_family_d1_feasibility",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_d1_cap25_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md",
+      "canonical_run_id": "exect_s1_full_ladder_d1_cap25_gpt4_1_mini_20260521T003704Z",
+      "artifact_paths": [
+        "runs/exect_s1_full_ladder_d1_cap25_gpt4_1_mini_20260521T003704Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.5837320574162679,
+        "secondary": {
+          "diagnosis_f1": 0.5294117647058824,
+          "seizure_type_f1": 0.5,
+          "annotated_medication_f1": 0.7012987012987013,
+          "micro_precision": 0.48412698412698413,
+          "micro_recall": 0.7349397590361446
+        }
+      },
+      "notes": "decision_scope: arm. Rung D1 floor: deterministic substring match, no LLM; 58.4% micro cap-25.",
+      "comparison_groups": [
+        "exect_s1_full_ladder_gpt_validation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_l0_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L0_llm_only"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "comparison_group": "exect_s1_full_ladder_gpt_validation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "cap25",
+      "outcome": "exploratory",
+      "prompt_versions": "exect_s0_s1_field_family_l0_minimal",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_l0_cap25_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md",
+      "canonical_run_id": "exect_s1_full_ladder_l0_cap25_gpt4_1_mini_20260521T003707Z",
+      "artifact_paths": [
+        "runs/exect_s1_full_ladder_l0_cap25_gpt4_1_mini_20260521T003707Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.6,
+        "secondary": {
+          "diagnosis_f1": 0.4193548387096774,
+          "seizure_type_f1": 0.5945945945945946,
+          "annotated_medication_f1": 0.7567567567567567,
+          "evidence_quote_support_rate": 0.7868852459016393
+        }
+      },
+      "notes": "decision_scope: arm. Rung L0: bare LLM +1.6pp vs D1; not a production candidate.",
+      "comparison_groups": [
+        "exect_s1_full_ladder_gpt_validation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_l1_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "comparison_group": "exect_s1_full_ladder_gpt_validation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "cap25",
+      "outcome": "exploratory",
+      "prompt_versions": "exect_s0_s1_field_family_l1_schema",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_l1_cap25_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md",
+      "canonical_run_id": "exect_s1_full_ladder_l1_cap25_gpt4_1_mini_20260521T003924Z",
+      "artifact_paths": [
+        "runs/exect_s1_full_ladder_l1_cap25_gpt4_1_mini_20260521T003924Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.6774193548387097,
+        "secondary": {
+          "diagnosis_f1": 0.5098039215686274,
+          "seizure_type_f1": 0.619718309859155,
+          "annotated_medication_f1": 0.8750000000000001,
+          "evidence_quote_support_rate": 0.8556701030927835
+        }
+      },
+      "notes": "decision_scope: arm. Rung L1: schema-only +7.7pp vs L0; policy/bridges still required for production ceiling.",
+      "comparison_groups": [
+        "exect_s1_full_ladder_gpt_validation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_l1_policy_full_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "eval_only"
+      ],
+      "comparison_group": "exect_s1_full_ladder_gpt_validation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "full_validation",
+      "outcome": "hold",
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_l1_policy_full_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md",
+      "canonical_run_id": "exect_s1_full_ladder_l1_policy_full_gpt4_1_mini_20260521T004209Z",
+      "artifact_paths": [
+        "runs/exect_s1_full_ladder_l1_policy_full_gpt4_1_mini_20260521T004209Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9230769230769231,
+        "secondary": {
+          "diagnosis_f1": 0.9382716049382716,
+          "seizure_type_f1": 0.9052631578947369,
+          "annotated_medication_f1": 0.9278350515463918,
+          "evidence_quote_support_rate": 0.9576271186440678
+        }
+      },
+      "notes": "decision_scope: operational. Rung L1+policy: matches frozen full-validation anchor (92.3% micro); unlocks optimizer rungs 4-7 prereg.",
+      "comparison_groups": [
+        "exect_s1_full_ladder_gpt_validation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_l0_labeled_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "optimizer_compiled_single_pass",
+      "hybrid_balance_class": [
+        "L0_llm_only"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "comparison_group": "exect_s1_ladder_optimizer_automation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "cap25",
+      "outcome": "pending",
+      "prompt_versions": "exect_s0_s1_field_family_l0_minimal",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_l0_labeled_cap25_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md",
+      "notes": "decision_scope: arm. Thesis rung 4a: L0 + LabeledFewShot; raw_no_benchmark_bridges eval; run pending.",
+      "comparison_groups": [
+        "exect_s1_ladder_optimizer_automation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_l0_bootstrap_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "optimizer_compiled_single_pass",
+      "hybrid_balance_class": [
+        "L0_llm_only"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "comparison_group": "exect_s1_ladder_optimizer_automation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "cap25",
+      "outcome": "pending",
+      "prompt_versions": "exect_s0_s1_field_family_l0_minimal",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_l0_bootstrap_cap25_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md",
+      "notes": "decision_scope: arm. Thesis rung 4b: L0 + Bootstrap; exect_field_family_micro_f1_raw compile metric; run pending.",
+      "comparison_groups": [
+        "exect_s1_ladder_optimizer_automation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_full_ladder_l1_labeled_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "optimizer_compiled_single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "comparison_group": "exect_s1_ladder_optimizer_automation_v1",
+      "varied_factor": "ladder_rung",
+      "run_scope": "cap25",
+      "outcome": "pending",
+      "prompt_versions": "exect_s0_s1_field_family_l1_schema",
+      "config_paths": [
+        "configs/experiments/exect_s1_full_ladder_l1_labeled_cap25_gpt4_1_mini.json"
+      ],
+      "decision_doc": "docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md",
+      "notes": "decision_scope: arm. Thesis rung 4c: L1 schema + LabeledFewShot; secondary isolation arm; run pending.",
+      "comparison_groups": [
+        "exect_s1_ladder_optimizer_automation_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "direct_single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_pipeline_stage_graph_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "pipeline_stage_graph",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini_20260521T012156Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g1_direct; stage_executor=n/a."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini_20260521T012156Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_graph_g1_direct_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 1 cap-25 A1; 44% monthly; reject vs A3 winner.",
+      "comparison_groups": [
+        "gan_s0_pipeline_stage_graph_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_graph_g2_extract_repair_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "verify_repair",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_pipeline_stage_graph_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "pipeline_stage_graph",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_graph_g2_extract_repair_cap25_gpt4_1_mini_20260521T012200Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_extract_repair; stage_executor=n/a."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_graph_g2_extract_repair_cap25_gpt4_1_mini_20260521T012200Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.56,
+          "pragmatic_category_accuracy": 0.68,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_graph_g2_extract_repair_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 1 cap-25 A2; 44% monthly; reject vs A3.",
+      "comparison_groups": [
+        "gan_s0_pipeline_stage_graph_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_graph_g2_candidates_adjudicate_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_pipeline_stage_graph_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "pipeline_stage_graph",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_graph_g2_candidates_adjudicate_cap25_gpt4_1_mini_20260521T012204Z",
+      "outcome": "hold",
+      "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_candidates_adjudicate; stage_executor=n/a."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_graph_g2_candidates_adjudicate_cap25_gpt4_1_mini_20260521T012204Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.52,
+        "secondary": {
+          "purist_category_accuracy": 0.6,
+          "pragmatic_category_accuracy": 0.76,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_graph_g2_candidates_adjudicate_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 1 cap-25 A3 winner; 52% monthly; anchor for Axis 2/3.",
+      "comparison_groups": [
+        "gan_s0_pipeline_stage_graph_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_graph_g3_extract_verify_repair_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "verify_repair",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_pipeline_stage_graph_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "pipeline_stage_graph",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_graph_g3_extract_verify_repair_cap25_gpt4_1_mini_20260521T012239Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g3_extract_verify_repair; stage_executor=n/a."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_graph_g3_extract_verify_repair_cap25_gpt4_1_mini_20260521T012239Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.56,
+          "pragmatic_category_accuracy": 0.68,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_graph_g3_extract_verify_repair_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 1 cap-25 A4; 44% monthly; label-duplicate of A2.",
+      "comparison_groups": [
+        "gan_s0_pipeline_stage_graph_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_graph_g3_candidates_extract_repair_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_pipeline_stage_graph_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "pipeline_stage_graph",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_graph_g3_candidates_extract_repair_cap25_gpt4_1_mini_20260521T012243Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g3_candidates_extract_repair; stage_executor=n/a."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_graph_g3_candidates_extract_repair_cap25_gpt4_1_mini_20260521T012243Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_graph_g3_candidates_extract_repair_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 1 cap-25 A5; 44% monthly; promoted skeleton did not win Axis 1 search.",
+      "comparison_groups": [
+        "gan_s0_pipeline_stage_graph_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_executor_e1_det_candidates_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_stage_executor_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "stage_executor",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_executor_e1_det_candidates_cap25_gpt4_1_mini_20260521T013003Z",
+      "outcome": "hold",
+      "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_candidates_adjudicate; stage_executor=det_candidates_llm_adjudicate."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_executor_e1_det_candidates_cap25_gpt4_1_mini_20260521T013003Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.52,
+        "secondary": {
+          "purist_category_accuracy": 0.6,
+          "pragmatic_category_accuracy": 0.76,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_executor_e1_det_candidates_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 2 E1; 52% monthly; det-candidate anchor confirmed.",
+      "comparison_groups": [
+        "gan_s0_stage_executor_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_executor_e2_llm_candidates_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "llm_temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_stage_executor_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "stage_executor",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_executor_e2_llm_candidates_cap25_gpt4_1_mini_20260521T013007Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_candidates_adjudicate; stage_executor=llm_candidates_llm_adjudicate."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_executor_e2_llm_candidates_cap25_gpt4_1_mini_20260521T013007Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.2916666666666667,
+        "secondary": {
+          "purist_category_accuracy": 0.5,
+          "pragmatic_category_accuracy": 0.7083333333333334,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 0.96
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_executor_e2_llm_candidates_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 2 E2; 29.2% monthly; LLM JSON candidate path reject.",
+      "comparison_groups": [
+        "gan_s0_stage_executor_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_executor_e3_hybrid_candidates_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "hybrid_temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_stage_executor_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "stage_executor",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_executor_e3_hybrid_candidates_cap25_gpt4_1_mini_20260521T013205Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_candidates_adjudicate; stage_executor=hybrid_candidates_llm_adjudicate."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_executor_e3_hybrid_candidates_cap25_gpt4_1_mini_20260521T013205Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.4166666666666667,
+        "secondary": {
+          "purist_category_accuracy": 0.5833333333333334,
+          "pragmatic_category_accuracy": 0.7916666666666666,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 0.96
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_executor_e3_hybrid_candidates_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 2 E3; 41.7% monthly; hybrid merge reject vs det.",
+      "comparison_groups": [
+        "gan_s0_stage_executor_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_executor_e4_det_vr_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_adjudicate_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_stage_executor_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "stage_executor",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_executor_e4_det_vr_cap25_gpt4_1_mini_20260521T013234Z",
+      "outcome": "hold",
+      "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_candidates_adjudicate; stage_executor=det_candidates_llm_adjudicate_llm_vr."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_executor_e4_det_vr_cap25_gpt4_1_mini_20260521T013234Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.52,
+        "secondary": {
+          "purist_category_accuracy": 0.6,
+          "pragmatic_category_accuracy": 0.76,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_executor_e4_det_vr_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 2 E4 diagnostic; 52% monthly; VR neutral after adjudicate.",
+      "comparison_groups": [
+        "gan_s0_stage_executor_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_stage_executor_e5_llm_vr_cap25_gpt4_1_mini",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "llm_temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "frequency_normalization",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_required",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "llm_verify_repair",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_stage_executor_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "stage_executor",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_stage_executor_e5_llm_vr_cap25_gpt4_1_mini_20260521T013313Z",
+      "outcome": "reject",
+      "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "stage_graph_id=g2_candidates_adjudicate; stage_executor=llm_candidates_llm_adjudicate_llm_vr."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_stage_executor_e5_llm_vr_cap25_gpt4_1_mini_20260521T013313Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.2916666666666667,
+        "secondary": {
+          "purist_category_accuracy": 0.5,
+          "pragmatic_category_accuracy": 0.7083333333333334,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 0.96
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": "configs/experiments/gan_s0_stage_executor_e5_llm_vr_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. Axis 2 E5 diagnostic; 29.2% monthly; VR cannot rescue LLM candidates.",
+      "comparison_groups": [
+        "gan_s0_stage_executor_gpt_cap25_v1"
+      ]
     }
   ]
 }

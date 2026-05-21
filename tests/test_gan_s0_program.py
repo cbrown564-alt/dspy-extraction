@@ -4,14 +4,26 @@ from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.gan import load_gan_records
 from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+from clinical_extraction.gan.temporal_candidates import (
+    build_temporal_frequency_candidates_from_note,
+)
 from clinical_extraction.programs.gan_frequency_s0 import (
     _guard_evidence_text,
+    _prompt_note_text_for_context_policy,
+    GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
+    GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES,
+    GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB,
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_FIELD,
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
@@ -20,6 +32,11 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0ReactTemporalToolsModule,
     GanFrequencyS0Signature,
     GanFrequencyS0TemporalCandidatesVerifyRepairModule,
+    GanFrequencyS0TemporalCandidatesSinglePassModule,
+    GanFrequencyS0LlmTemporalCandidatesSinglePassModule,
+    GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
+    GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule,
     GanFrequencyS0TemporalEventTableVerifyRepairModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
@@ -28,6 +45,8 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION,
     GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    stage_graph_id_for_program_variant,
     _apply_evidence_span_check_guard,
     build_gan_frequency_s0_extractor_signature,
     build_gan_frequency_s0_verifier_signature,
@@ -133,9 +152,241 @@ def test_build_gan_s0_module_dispatches_program_variants():
         GanFrequencyS0TemporalCandidatesVerifyRepairModule,
     )
     assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT),
+        GanFrequencyS0TemporalCandidatesSinglePassModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT),
+        GanFrequencyS0LlmTemporalCandidatesSinglePassModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT),
+        GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT
+        ),
+        GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT),
+        GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule,
+    )
+    assert isinstance(
         build_gan_s0_module(GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT),
         GanFrequencyS0ReactTemporalToolsModule,
     )
+
+
+def test_stage_graph_id_for_program_variant_maps_known_variants():
+    assert stage_graph_id_for_program_variant(GAN_FREQUENCY_S0_DIRECT_VARIANT) == "g1_direct"
+    assert (
+        stage_graph_id_for_program_variant(GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT)
+        == "g2_extract_repair"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT
+        )
+        == "g2_candidates_adjudicate"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+        )
+        == "g3_candidates_extract_repair"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT
+        )
+        == "g2_candidates_adjudicate"
+    )
+
+
+def test_gan_s0_retrieval_candidates_only_context_policy_assembles_evidence_windows():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    candidates = build_temporal_frequency_candidates_from_note(record.note_text)
+    prompt_note = _prompt_note_text_for_context_policy(
+        record.note_text,
+        candidates,
+        context_policy=GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
+    )
+    assert prompt_note != record.note_text
+    for span in prompt_note.split("\n\n---\n\n"):
+        assert span in record.note_text
+
+    empty_prompt = _prompt_note_text_for_context_policy(
+        record.note_text,
+        [],
+        context_policy=GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
+    )
+    assert empty_prompt == GAN_FREQUENCY_S0_RETRIEVAL_EMPTY_CANDIDATES_NOTE_STUB
+
+    module = build_gan_s0_module(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        context_policy=GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
+    )
+    assert isinstance(module, GanFrequencyS0TemporalCandidatesSinglePassModule)
+    assert (
+        module.context_policy
+        == GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY
+    )
+
+    default_module = build_gan_s0_module(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        context_policy=GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES,
+    )
+    assert isinstance(default_module, GanFrequencyS0TemporalCandidatesSinglePassModule)
+    assert (
+        default_module.context_policy
+        == GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES
+    )
+
+
+def test_gan_s0_temporal_candidates_single_pass_injects_candidates_without_verifier():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": (
+                "no seizures for nearly a year before a single breakthrough tonic seizure"
+            ),
+            "temporal_candidates": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0TemporalCandidatesSinglePassModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert "verifier_decision" not in pred.metadata
+    assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
+    assert pred.values[0].raw_value == "1 per year"
+
+
+def test_gan_s0_llm_temporal_candidates_single_pass_uses_llm_candidates():
+    import json
+
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    supported_evidence = (
+        "In terms of seizure control, She had no seizures for nearly a year "
+        "following initiation of Valproate, then developed myoclonic jerks "
+        "leading to a tonic seizure three Saturdays ago"
+    )
+    candidate_payload = json.dumps(
+        {
+            "candidates": [
+                {
+                    "canonical_label": "1 per year",
+                    "event_count": "1",
+                    "window_count": "1",
+                    "window_unit": "year",
+                    "evidence_text": supported_evidence,
+                    "derivation": "llm_test",
+                }
+            ]
+        }
+    )
+    _configure_dummy([
+        {"temporal_candidates_json": candidate_payload},
+        {
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": supported_evidence,
+            "temporal_candidates": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0LlmTemporalCandidatesSinglePassModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["temporal_candidate_source"] == "llm"
+    assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
+    assert "verifier_decision" not in pred.metadata
+
+
+def test_gan_s0_hybrid_temporal_candidates_single_pass_merges_sources():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    _configure_dummy([
+        {
+            "temporal_candidates_json": (
+                '{"candidates": [{"canonical_label": "1 per month", '
+                '"event_count": "1", "window_count": "1", "window_unit": "month", '
+                '"evidence_text": "about once a month", "derivation": "llm_test"}]}'
+            ),
+        },
+        {
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": (
+                "no seizures for nearly a year before a single breakthrough tonic seizure"
+            ),
+            "temporal_candidates": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0HybridTemporalCandidatesSinglePassModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["temporal_candidate_source"] == "hybrid"
+    assert "1 per year" in pred.metadata["temporal_candidate_labels"]
+
+
+def test_gan_s0_temporal_candidates_adjudicate_verify_repair_runs_verifier():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    supported_evidence = (
+        "In terms of seizure control, She had no seizures for nearly a year "
+        "following initiation of Valproate, then developed myoclonic jerks "
+        "leading to a tonic seizure three Saturdays ago"
+    )
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": supported_evidence,
+            "temporal_candidates": "ignored by DummyLM",
+        },
+        {
+            "final_label": "1 per year",
+            "final_evidence": supported_evidence,
+            "decision": "confirm",
+            "reason": "already correct",
+            "temporal_candidates": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["verifier_decision"] == "confirm"
+    assert pred.metadata["temporal_candidate_source"] == "deterministic"
+    assert pred.values[0].raw_value == "1 per year"
 
 
 def test_gan_s0_prediction_progress_callback_reports_each_completed_record():

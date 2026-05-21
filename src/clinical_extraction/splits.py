@@ -9,7 +9,7 @@ from clinical_extraction.schemas import GanRecord
 
 DEFAULT_GAN_SPLIT_SALT = "gan-2026-fixed-splits-v1"
 GAN_SPLIT_RATIOS = {
-    "development": 0.6,
+    "train": 0.6,
     "validation": 0.2,
     "test": 0.2,
 }
@@ -25,7 +25,7 @@ def make_gan_splits(
     for record in records:
         strata[_gan_stratum(record)].append(record)
 
-    split_ids = {"development": [], "validation": [], "test": []}
+    split_ids = {"train": [], "validation": [], "test": []}
     stratum_counts: dict[str, dict[str, int]] = {}
 
     for stratum, stratum_records in sorted(strata.items()):
@@ -37,7 +37,7 @@ def make_gan_splits(
         dev_n = round(n * 0.6)
         val_n = round(n * 0.2)
         buckets = {
-            "development": ordered[:dev_n],
+            "train": ordered[:dev_n],
             "validation": ordered[dev_n : dev_n + val_n],
             "test": ordered[dev_n + val_n :],
         }
@@ -56,8 +56,12 @@ def make_gan_splits(
         "split_ratios": GAN_SPLIT_RATIOS,
         "allocation_policy": (
             "Within each stratum, records are sorted by sha256(record_id:salt); "
-            "development and validation counts are round(n * ratio), and the "
+            "train and validation counts are round(n * ratio), and the "
             "remaining records are assigned to test."
+        ),
+        "split_policy": (
+            "train: optimizer compile only (no benchmark eval configs). "
+            "validation: routine eval. test: holdout with report_on_test_split."
         ),
         "counts": {split: len(ids) for split, ids in split_ids.items()},
         "stratification": {

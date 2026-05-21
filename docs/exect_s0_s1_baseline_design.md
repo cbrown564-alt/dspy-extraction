@@ -17,7 +17,7 @@ A benchmark-facing, label-policy-constrained ExECT S0/S1 DSPy program will outpe
 - Dataset: `exect_v2`
 - Source text: `data/ExECTv2 (2025)/Gold1-200_corrected_spelling`
 - Primary gold: per-document JSON annotations under `data/ExECTv2 (2025)/Json`
-- Existing split source: `data/splits/exectv2_splits.json`
+- Existing split source: `data/splits/exectv2_splits.json` (`train` / `validation` / `test`; see `docs/dataset_splits_policy.md`)
 - Initial run policy: dry run, then capped validation smoke, then full validation only after schema validity and evidence diagnostics are inspected
 
 The test split should remain untouched until an explicit test-reporting config exists.

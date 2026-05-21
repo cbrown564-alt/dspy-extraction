@@ -6,11 +6,32 @@ for hard Gan S0 cases without changing benchmark-facing scorer semantics.
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from datetime import date
+from typing import Any, Literal
 
 from clinical_extraction.schemas import GanRecord
+
+TemporalCandidatePresentation = Literal["prose", "table", "json", "bullets"]
+
+IMPLEMENTATION_VARIANT_TO_PRESENTATION: dict[str, TemporalCandidatePresentation] = {
+    "cand_prose_v1": "prose",
+    "cand_table_v1": "table",
+    "cand_json_v1": "json",
+    "cand_bullets_v1": "bullets",
+}
+
+
+def presentation_for_implementation_variant(
+    implementation_variant: str | None,
+) -> TemporalCandidatePresentation | None:
+    """Map Axis-3 implementation_variant IDs to formatter presentation keys."""
+
+    if implementation_variant is None:
+        return None
+    return IMPLEMENTATION_VARIANT_TO_PRESENTATION.get(implementation_variant)
 
 
 @dataclass(frozen=True)
@@ -89,20 +110,36 @@ def temporal_candidate_to_dict(
     }
 
 
-def format_temporal_candidates_for_prompt(
-    candidates: list[GanTemporalFrequencyCandidate],
-) -> str:
-    """Format deterministic candidates for verifier/repair model input."""
-
-    if not candidates:
+def _temporal_candidate_header(source: str) -> str:
+    if source == "llm":
+        return "LLM-extracted temporal frequency candidates (diagnostic hints only):"
+    if source == "hybrid":
         return (
-            "No deterministic temporal frequency candidates were extracted from "
-            "this note."
+            "Hybrid deterministic+LLM temporal frequency candidates "
+            "(diagnostic hints only):"
         )
+    return "Deterministic temporal frequency candidates (diagnostic hints only):"
 
-    lines = [
-        "Deterministic temporal frequency candidates (diagnostic hints only):"
-    ]
+
+def _empty_temporal_candidate_message(source: str) -> str:
+    if source == "llm":
+        prefix = "LLM-extracted"
+    elif source == "hybrid":
+        prefix = "Hybrid deterministic+LLM"
+    else:
+        prefix = "Deterministic"
+    return (
+        f"No {prefix.lower()} temporal frequency candidates were extracted "
+        "from this note."
+    )
+
+
+def _format_temporal_candidates_prose(
+    candidates: list[GanTemporalFrequencyCandidate],
+    *,
+    header: str,
+) -> str:
+    lines = [header]
     for index, candidate in enumerate(candidates, start=1):
         lines.append(
             f"{index}. canonical_label={candidate.canonical_label!r}; "
@@ -112,6 +149,140 @@ def format_temporal_candidates_for_prompt(
             f"evidence_text={candidate.evidence_text!r}"
         )
     return "\n".join(lines)
+
+
+def _format_temporal_candidates_bullets(
+    candidates: list[GanTemporalFrequencyCandidate],
+    *,
+    header: str,
+) -> str:
+    lines = [header]
+    for candidate in candidates:
+        lines.append(
+            f"- {candidate.canonical_label!r}: "
+            f"{candidate.event_count} event(s) per "
+            f"{candidate.window_count} {candidate.window_unit}; "
+            f"{candidate.derivation}; evidence={candidate.evidence_text!r}"
+        )
+    return "\n".join(lines)
+
+
+def _format_temporal_candidates_table(
+    candidates: list[GanTemporalFrequencyCandidate],
+    *,
+    header: str,
+) -> str:
+    rows = [
+        "| # | canonical_label | event_count | window | derivation | evidence_text |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for index, candidate in enumerate(candidates, start=1):
+        window = f"{candidate.window_count} {candidate.window_unit}"
+        rows.append(
+            f"| {index} | {candidate.canonical_label!r} | {candidate.event_count} | "
+            f"{window} | {candidate.derivation} | {candidate.evidence_text!r} |"
+        )
+    return "\n".join([header, *rows])
+
+
+def _format_temporal_candidates_json(
+    candidates: list[GanTemporalFrequencyCandidate],
+    *,
+    header: str,
+) -> str:
+    payload = {
+        "candidates": [temporal_candidate_to_dict(candidate) for candidate in candidates]
+    }
+    return f"{header}\n{json.dumps(payload, indent=2)}"
+
+
+def format_temporal_candidates_for_prompt(
+    candidates: list[GanTemporalFrequencyCandidate],
+    *,
+    source: str = "deterministic",
+    presentation: TemporalCandidatePresentation = "prose",
+) -> str:
+    """Format temporal candidates for adjudication or verifier/repair input."""
+
+    if not candidates:
+        return _empty_temporal_candidate_message(source)
+
+    header = _temporal_candidate_header(source)
+    if presentation == "table":
+        return _format_temporal_candidates_table(candidates, header=header)
+    if presentation == "json":
+        return _format_temporal_candidates_json(candidates, header=header)
+    if presentation == "bullets":
+        return _format_temporal_candidates_bullets(candidates, header=header)
+    return _format_temporal_candidates_prose(candidates, header=header)
+
+
+def parse_llm_temporal_candidates_json(
+    payload: str | dict[str, Any] | None,
+    *,
+    note_text: str | None = None,
+) -> list[GanTemporalFrequencyCandidate]:
+    """Parse and validate model-generated temporal candidate JSON.
+
+    Returns an empty list when parsing fails. When ``note_text`` is provided,
+    drops candidates whose ``evidence_text`` is not an exact contiguous substring.
+    """
+
+    if payload is None:
+        return []
+    if isinstance(payload, str):
+        stripped = payload.strip()
+        if not stripped or stripped.lower() in {"none", "null"}:
+            return []
+        try:
+            raw = json.loads(stripped)
+        except json.JSONDecodeError:
+            return []
+    else:
+        raw = payload
+
+    if isinstance(raw, list):
+        candidate_rows = raw
+    elif isinstance(raw, dict):
+        candidate_rows = raw.get("candidates") or raw.get("temporal_candidates") or []
+    else:
+        return []
+
+    if not isinstance(candidate_rows, list):
+        return []
+
+    parsed: list[GanTemporalFrequencyCandidate] = []
+    for row in candidate_rows:
+        if not isinstance(row, dict):
+            continue
+        try:
+            candidate = GanTemporalFrequencyCandidate(
+                canonical_label=str(row["canonical_label"]).strip(),
+                event_count=str(row.get("event_count") or ""),
+                window_count=str(row.get("window_count") or ""),
+                window_unit=str(row.get("window_unit") or ""),
+                evidence_text=str(row.get("evidence_text") or "").strip(),
+                derivation=str(row.get("derivation") or "llm_candidate"),
+            )
+        except (KeyError, TypeError, ValueError):
+            continue
+        if not candidate.canonical_label or not candidate.evidence_text:
+            continue
+        if note_text is not None and candidate.evidence_text not in note_text:
+            continue
+        parsed.append(candidate)
+    return _dedupe_candidates(parsed)
+
+
+def merge_temporal_frequency_candidates(
+    *candidate_lists: list[GanTemporalFrequencyCandidate],
+) -> list[GanTemporalFrequencyCandidate]:
+    """Merge multiple candidate lists with canonical-label deduplication."""
+
+    merged: list[GanTemporalFrequencyCandidate] = []
+    for candidates in candidate_lists:
+        merged.extend(candidates)
+    return _dedupe_candidates(merged)
 
 
 def _breakthrough_after_nearly_year(

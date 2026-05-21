@@ -28,6 +28,7 @@ Available project skills:
 - `clinical-schema-design`: use when changing Pydantic models, JSON schemas, DSPy signatures, field groups, validators, or structured outputs.
 - `taxonomy-primitive-design`: use when adding or changing typed primitives, registry metadata, interleaving adapters, benchmark bridges, or primitive fixture cases.
 - `dspy-experiment-design`: use when creating or changing DSPy programs, experiment configs, optimizer runs, ablations, model comparisons, or run tracking.
+- `hybrid-pipeline-exploration`: use when designing stage-count / det-vs-LLM placement grids, writing outcomes with arm-vs-mechanism scope, or updating Kanban mechanism status (pivot: `docs/hybrid_pipeline_research_pivot_20260521.md`).
 - `experiment-run-lifecycle`: use when running, reviewing, or scaling model-backed experiments from configs, including dry runs, capped runs, and artifact inspection.
 - `exect-label-policy-alignment`: use when designing, prompting, scoring, or evaluating ExECT benchmark-facing S0/S1 field-family extraction.
 - `gan-frequency-error-forensics`: use when inspecting Gan seizure-frequency run artifacts or deciding the next Gan S0 improvement.
@@ -60,7 +61,7 @@ For implementation:
 
 For experiments:
 
-1. Use `dspy-experiment-design` and, for model execution, `experiment-run-lifecycle`.
+1. Use `hybrid-pipeline-exploration` and `dspy-experiment-design`, and for model execution, `experiment-run-lifecycle`.
 2. Define the hypothesis, dataset, split, model, schema level, program variant, scorer, and artifacts before running.
 3. Compose deterministic helpers from typed primitives in `docs/taxonomy_primitive_catalog.md` rather than ad hoc program edits.
 4. Change one experimental factor at a time unless explicitly testing an interaction.

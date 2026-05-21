@@ -104,7 +104,8 @@ def _validate_split_file(
     issues: list[ManifestIssue],
 ) -> None:
     split = json.loads(path.read_text(encoding="utf-8"))
-    assigned_ids = split.get("development", []) + split.get("validation", []) + split.get("test", [])
+    train_ids = split.get("train") or split.get("development", [])
+    assigned_ids = train_ids + split.get("validation", []) + split.get("test", [])
     assigned_set = set(assigned_ids)
 
     if len(assigned_ids) != len(assigned_set):
@@ -120,7 +121,7 @@ def _validate_split_file(
         )
 
     expected_counts = {
-        "development": len(split.get("development", [])),
+        "train": len(train_ids),
         "validation": len(split.get("validation", [])),
         "test": len(split.get("test", [])),
     }

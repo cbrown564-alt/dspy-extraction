@@ -30,7 +30,8 @@ least these fields (see `ExperimentTaxonomy` in
 - `comparison_group`
 - `intended_decision`
 
-Optional on configs: `clinical_task_family`.
+Optional on configs: `clinical_task_family`, `stage_graph_id`, `stage_executor`,
+`implementation_variant` (Axis 3 presentation / tooling IDs).
 
 Legacy configs may omit inline taxonomy when they already have a row in
 `docs/experiment_registry.json`. Early stubs may set `taxonomy_exemption` to
@@ -39,7 +40,10 @@ Legacy configs may omit inline taxonomy when they already have a row in
 Promotion, freeze, hold, and reject decision documents should include a
 **Taxonomy** section with dataset, schema complexity, clinical task family,
 hybrid balance class, interleaving positions, varied factor, comparison group,
-and outcome.
+outcome, and **`decision_scope`** (`operational` | `arm` | `mechanism`).
+
+Registry rows may store `decision_scope` in `notes` until a dedicated field is added.
+See `docs/hybrid_pipeline_research_pivot_20260521.md`.
 
 ## General Rules
 
@@ -422,7 +426,7 @@ Definitions:
 | --- | --- |
 | `promote` | Recommended current default for a task or model track. |
 | `freeze` | Stable reference result or prompt family; do not keep tuning casually. |
-| `reject` | Evidence argues against continuing this path under current controls. |
+| `reject` | Evidence argues against continuing **this arm** under current controls. Prefer `decision_scope: arm` in inspection docs. Mechanism-class closure requires a mechanism review (see `docs/hybrid_pipeline_research_pivot_20260521.md`). |
 | `hold` | Useful result, but blocked by caveats, cost, incomplete validation, or unclear next action. |
 | `superseded` | Historically important but replaced by a later promoted or frozen row. |
 | `exploratory` | Diagnostic, capped, slice, smoke, or early probe not intended as a final comparison anchor. |
@@ -467,11 +471,17 @@ Allowed values:
 - `schema_complexity`
 - `prompt_policy`
 - `optimizer_strategy`
+- `ladder_rung`
+- `validation_ladder_rung` — Gan S0 post-adjudicate validation layer (schema/surface, det plausibility, evidence grounding, LLM VR, guards, span-check); see `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md`
 - `run_scope`
 - `normalization_strategy`
 - `verification_strategy`
 - `evidence_strategy`
 - `control_mode`
+- `pipeline_stage_graph`
+- `stage_executor`
+- `implementation_variant`
+- `context_selection_policy`
 - `multi_factor`
 - `pending_backfill`
 

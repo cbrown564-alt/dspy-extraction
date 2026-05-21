@@ -1,9 +1,9 @@
 # Experiment Registry Matrix (Paper-Ready Export)
 
 **Generated:** 2026-05-21  
-**Source:** `docs/experiment_registry.json` (registry_rows=121)  
+**Source:** `docs/experiment_registry.json` (registry_rows=130)  
 **Filter mode:** `curated`  
-**Exported rows:** 63
+**Exported rows:** 72
 
 Grouped by `comparison_group`, then dataset, schema, model, and run scope. Compare rows only within the same comparison group and respect `metric_caveats` on each registry row.
 
@@ -56,6 +56,17 @@ Rows: 3
 | `exect_s1_evidence_standard_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=95.8% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
 | `exect_s1_evidence_strict_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=96.3% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
 
+## exect_s1_full_ladder_gpt_validation_v1
+
+Rows: 4
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_full_ladder_d1_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | D1_deterministic_only | eval_only | cap25 | **exploratory** | micro_f1=58.4% | [inspection](docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md) |
+| `exect_s1_full_ladder_l0_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L0_llm_only | during | cap25 | **exploratory** | micro_f1=60.0% | [inspection](docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md) |
+| `exect_s1_full_ladder_l1_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **exploratory** | micro_f1=67.7% | [inspection](docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md) |
+| `exect_s1_full_ladder_l1_policy_full` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during, eval_only | full_validation | **hold** | micro_f1=92.3% | [inspection](docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md) |
+
 ## exect_s1_generalization_gpt_test_v1
 
 Rows: 1
@@ -106,6 +117,15 @@ Rows: 2
 | `exect_s1_interleaving_h2_medication_pre_vocab_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | H2_pre_deterministic | pre, during | slice | **reject** | micro_f1=92.0% | [inspection](docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md) |
 | `exect_s1_interleaving_l1_baseline_medication_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | slice | **hold** | micro_f1=93.3% | [inspection](docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md) |
 
+## exect_s1_optimizer_gpt_cap25_v1
+
+Rows: 2
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_optimizer_bootstrap_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | optimizer_compiled_single_pass | L1_llm_constrained | during | cap25 | **reject** | micro_f1=90.7% | [inspection](docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md) |
+| `exect_s1_optimizer_baseline_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=95.8% | [inspection](docs/exect_s1_optimizer_gpt_cap25_v1_inspection_20260521.md) |
+
 ## exect_s1_prompt_policy_gpt_validation_v1
 
 Rows: 2
@@ -123,6 +143,16 @@ Rows: 2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `exect_s1_interleaving_h2_seizure_pre_vocab_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | H2_pre_deterministic | pre, during | slice | **reject** | micro_f1=90.3% | [inspection](docs/exect_s1_seizure_pre_vocab_slice_gpt_inspection_20260520.md) |
 | `exect_s1_interleaving_l1_baseline_seizure_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | slice | **hold** | micro_f1=93.5% | [inspection](docs/exect_s1_seizure_pre_vocab_slice_gpt_inspection_20260520.md) |
+
+## exect_s1_seizure_prompt_policy_qwen_v1
+
+Rows: 3
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_seizure_prompt_policy_v4_11_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during, post | cap25 | **hold** | micro_f1=95.1% | [inspection](docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md) |
+| `exect_s1_seizure_prompt_policy_v4_11_cap25_ollama` | exect_v2 | exect_s1 | qwen35b | single_pass | H1_post_deterministic | during, post | cap25 | **hold** | micro_f1=85.4% | [inspection](docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md) |
+| `exect_s1_seizure_prompt_policy_v4_11_full_ollama` | exect_v2 | exect_s1 | qwen35b | single_pass | H1_post_deterministic | during, post | full_validation | **hold** | micro_f1=84.3% | [inspection](docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md) |
 
 ## exect_s1_verification_gpt_validation_v1
 

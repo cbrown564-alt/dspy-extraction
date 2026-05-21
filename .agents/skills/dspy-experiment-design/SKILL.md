@@ -7,6 +7,10 @@ description: Use when creating or modifying DSPy signatures, modules, compiled p
 
 Treat each experiment as a reproducible program variant, not a loose prompt edit.
 
+**Research program (2026-05-21 pivot):** use `hybrid-pipeline-exploration` for stage-count,
+det-vs-LLM placement, and arm-vs-mechanism decision discipline. This skill covers config
+metadata, primitives, and run hygiene; the hybrid skill covers *what* to test next.
+
 Follow this workflow:
 
 1. State the experiment hypothesis in one sentence.
@@ -119,10 +123,22 @@ When optimizing with DSPy, keep the optimized object, training examples, metric,
 
 Do not treat an optimizer metric as the benchmark scorer. Optimizer-only metrics may include evidence or formatting gates, but reports must still state the benchmark-facing scorer mode separately.
 
+## Decision Scope (required in inspections)
+
+State `decision_scope` on every outcome:
+
+- `operational` — frozen default for reproducibility; does not close the mechanism class
+- `arm` — this specific config under these controls failed or passed gates
+- `mechanism` — hypothesis class closed only after mechanism review (≥2 arms or positions)
+
+Do not write "verify-repair is rejected" or "H2 is closed" in summaries unless
+`decision_scope: mechanism` is justified in the inspection doc.
+
 ## Ablation Discipline
 
 - Define the baseline before the ablation.
 - Keep the dataset, split, model, and scorer stable unless they are the factor under test.
+- State which **research axis** (1 stage graph, 2 stage executor, 3 implementation) the group tests.
 - Track latency, token usage, or local inference time alongside quality metrics.
 - Preserve failed examples for error analysis.
 - Do not compare runs if scorer semantics changed unless the report says so explicitly.

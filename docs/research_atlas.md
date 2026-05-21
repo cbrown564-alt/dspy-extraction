@@ -6,6 +6,9 @@ This atlas turns the experiment registry into navigable research memory: where t
 
 ## Source Of Truth
 
+- **Research pivot (doctrine):** `docs/hybrid_pipeline_research_pivot_20260521.md`
+- **Mechanism status:** `docs/hybrid_pipeline_mechanism_status_20260521.md`
+- **Historical snapshot:** `docs/hybrid_deterministic_placement_research_synthesis_20260521.md`
 - Registry: `docs/experiment_registry.json`
 - Current operating plan: `docs/kanban_plan.md`
 - Matrix export: `docs/experiment_registry_matrix_20260520.md`

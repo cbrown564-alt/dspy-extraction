@@ -1,8 +1,10 @@
 # ExECT Negative-Probe Synthesis
 
 Date: 2026-05-20  
-Status: Phase 1 consolidation note  
-Related: `docs/kanban_plan.md`, `docs/next_major_phases_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, `docs/taxonomy_primitive_catalog.md`, `docs/experiment_registry.json`
+Status: Phase 1 consolidation note — **arm-repeat guardrail** (not global mechanism closure)  
+Related: `docs/hybrid_pipeline_research_pivot_20260521.md`, `docs/hybrid_pipeline_mechanism_status_20260521.md`, `docs/kanban_plan.md`, `docs/next_major_phases_20260520.md`, `docs/exect_field_family_deterministic_support_map_20260520.md`, `docs/taxonomy_primitive_catalog.md`, `docs/experiment_registry.json`
+
+**Pivot note (2026-05-21):** Probes below are **reject (arm)** for named configs. They do **not** close Axis 2 mechanism classes (e.g. all `pre` placement, all verify-repair, all tool-during) without further grids per `hybrid-pipeline-exploration`.
 
 ## Research Question
 

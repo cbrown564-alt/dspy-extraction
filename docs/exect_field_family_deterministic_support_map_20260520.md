@@ -129,7 +129,7 @@ Current state: no ExECT model-backed run is active or ready by default.
 
 Candidate directions for the next decision phase:
 
-1. **Qwen seizure-gap diagnosis:** start with error analysis to decide whether the S1 seizure deficit reflects prompt/model-policy behavior rather than missing deterministic surfaces. Do not reopen H2 pre-vocab injection without a new presentation mechanism.
+1. **Qwen seizure prompt-policy v4_11 (active):** preregistered in `docs/exect_s1_seizure_prompt_policy_qwen_preregistration_20260520.md`; error analysis in `docs/exect_qwen_s1_seizure_gap_error_analysis_20260520.md`. Implement v4_11, GPT cap-25 guardrail, then Qwen cap-25/full. Do not reopen H2 pre-vocab in this group.
 2. **S4 frequency mechanism redesign:** revisit frequency only if the varied factor differs from the rejected pre-candidate arm, such as prompt policy, candidate presentation, or post-template repair.
 3. **S4 medication temporality fallback:** consider only a narrow dose-only abstention fallback motivated by the full-validation recall collapse. Do not rerun the broad H1 post-classifier as-is.
 4. **Synthesis pause:** if none of the above can be preregistered cleanly, consolidate negative ExECT results and move attention to reproduction blockers.
