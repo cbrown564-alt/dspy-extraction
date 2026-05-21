@@ -42,6 +42,9 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Tool-during (general) | **open** | Second tool implementation not tested |
 | Pre section-aware context (ExECT) | **arm-reject** | Section-aware cap-25 fail — short-note caveat |
 | Pre static vocab lists (ExECT S1/S4) | **arm-reject** | Slice/cap-25 configs in negative-probe synthesis |
+| S2 comorbidity atomization bridge (C0/C1) | **open** | Cap-25 null 85.7% all arms — `docs/experiments/exect/exect_s2_comorbidity_surface_bridge_gpt_cap25_v1_inspection_20260521.md` |
+| S2 investigation ECG drop guard (I0) | **open** | Cap-25 +5.6pp investigation F1 — `docs/experiments/exect/exect_ladder_investigation_guard_gpt_cap25_v1_inspection_20260521.md` |
+| S3 epilepsy_cause CUIPhrase bridge (K0+K1) | **open** | Cap-25 +20pp cause F1 (n=3 support; 1/25 doc) — `docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md` |
 | Pre context/candidate (general ExECT) | **open** | Other presentations and tasks not swept |
 | Post benchmark bridges (ExECT S1) | **operational-freeze** | Inline bridges in production; diagnostic bridge-free measured |
 | Post bridge as only intervention | **open** | Not same as bridge + policy decomposition |
@@ -62,6 +65,8 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | ReAct interface (Gan) | **arm-reject** | one implementation |
 | Candidate table vs JSON vs prose (Gan) | **open** | Cap-25: +4pp table vs prose; **cap-50 confirm null** (62% tie) — `docs/experiments/gan/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md` |
 | Canonical format examples (Gan adjudicate) | **open** | Cap-25 C1 +4pp exact (arm hold); residual 30-record replay null — `docs/experiments/gan/gan_s0_canonical_format_residual_slice_replay_20260521.md` |
+| ExECT S4 frequency structured slots | **open** | Cap-25 S2 null vs R0 (51.0% F1); mechanism class open — `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` |
+| ExECT S4 sparse-family prompt sweeps | **policy-gated / deferred** | Policy memo selects bridge-first; no cap-25 model spend until bridge scaffolds — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md` |
 
 ---
 

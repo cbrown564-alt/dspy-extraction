@@ -1388,6 +1388,51 @@ def recover_exect_frequency_benchmark_values_with_post_merge(
     return filtered, flags
 
 
+def recover_exect_frequency_benchmark_values_with_multi_label_retention(
+    raw_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Recover frequency labels with widened co-labels and partial multi-label slot fill.
+
+    Differs from post-merge: fills missing note-anchored labels only when the model
+    emitted at least one supported frequency label (partial block retention), and
+    augments qualitative co-labels when the note supports change cues even without a
+    quantified rate in model output.
+    """
+
+    recovered, flags = recover_exect_frequency_benchmark_values(raw_values, note_text)
+    recovered, co_flags = _augment_exect_frequency_co_labels_multi_label(
+        recovered,
+        note_text,
+    )
+    flags.extend(co_flags)
+
+    if recovered:
+        note_anchored = _build_exect_frequency_label_set(note_text)
+        seen = set(recovered)
+        for label in sorted(note_anchored):
+            if label in seen:
+                continue
+            recovered.append(label)
+            seen.add(label)
+            flags.append("s4_bridge:multi_label_slot_filled")
+
+    note_lower = note_text.lower()
+    filtered: list[str] = []
+    for label in recovered:
+        if label == "seizure free" and "seizure free" not in note_lower:
+            flags.append("s4_bridge:spurious_seizure_free_removed")
+            continue
+        if label.startswith("seizure free since ") and not _SEIZURE_FREE_SINCE_RE.search(
+            note_text
+        ):
+            flags.append("s4_bridge:spurious_seizure_free_removed")
+            continue
+        filtered.append(label)
+
+    return filtered, flags
+
+
 def exect_frequency_benchmark_bridge(
     raw_values: list[str],
     *,
@@ -1550,6 +1595,43 @@ def _augment_exect_frequency_co_labels(
             augmented.append(label)
             seen.add(label)
             flags.append("s4_bridge:frequency_co_label_augmented")
+
+    return augmented, flags
+
+
+def _augment_exect_frequency_co_labels_multi_label(
+    recovered: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Augment qualitative co-labels when note cues exist and model engaged frequency."""
+
+    if not recovered:
+        return recovered, []
+
+    note = note_text.lower()
+    note_anchored = _build_exect_frequency_label_set(note_text)
+    note_has_rate_block = any(
+        _is_quantified_frequency_label(label) or label.startswith("0 per")
+        for label in note_anchored
+    )
+    model_has_rate = any(
+        _is_quantified_frequency_label(label) or label.startswith("0 per")
+        for label in recovered
+    )
+    if not (note_has_rate_block or model_has_rate):
+        return _augment_exect_frequency_co_labels(recovered, note_text)
+
+    flags: list[str] = []
+    augmented = list(recovered)
+    seen = set(recovered)
+
+    for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
+        if label in seen:
+            continue
+        if any(cue in note for cue in cues):
+            augmented.append(label)
+            seen.add(label)
+            flags.append("s4_bridge:frequency_co_label_multi_label_retained")
 
     return augmented, flags
 

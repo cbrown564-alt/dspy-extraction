@@ -128,3 +128,29 @@ def test_recover_s3_epilepsy_cause_raw_values_drops_seizure_history():
     )
     assert recovered == ["meningitis"]
     assert "s3_bridge:seizure_history_cause_removed" in flags
+
+
+def test_s3_s2_field_values_apply_i0_investigation_guard():
+    from clinical_extraction.programs.exect_s3 import _s2_field_values_from_prediction
+
+    record = load_exect_gold_document("EA0016")
+    pred = dspy.Prediction(
+        diagnosis=[],
+        diagnosis_evidence=[],
+        seizure_type=[],
+        seizure_type_evidence=[],
+        annotated_medication=[],
+        annotated_medication_evidence=[],
+        investigation=["ecg normal", "ct abnormal"],
+        investigation_evidence=["ECG normal", "CT abnormal"],
+        comorbidity=[],
+        comorbidity_evidence=[],
+    )
+    values = _s2_field_values_from_prediction(pred, record)
+    investigation = [
+        value.normalized_value
+        for value in values
+        if value.field_name == "investigation"
+    ]
+    assert investigation == ["ct abnormal"]
+    assert "ecg normal" not in investigation

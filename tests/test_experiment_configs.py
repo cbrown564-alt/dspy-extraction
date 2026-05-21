@@ -30,6 +30,9 @@ from clinical_extraction.programs.exect_s0_s1 import (
     REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES,
 )
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+    EXECT_S2_COMORBIDITY_C0_VARIANT,
+    EXECT_S2_INV_GUARD_I0_VARIANT,
     EXECT_S2_PROMPT_VERSION,
     EXECT_S2_SCHEMA_LEVEL,
     EXECT_S2_SCORER,
@@ -1697,6 +1700,33 @@ def test_exect_s4_frequency_cap25_configs_record_contract():
     assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
 
 
+def test_exect_s4_frequency_structured_slots_cap25_configs_record_contract():
+    from clinical_extraction.programs.exect_s4 import EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT
+
+    r0 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s4_frequency_slots_r0_control_cap25_gpt4_1_mini.json"
+        )
+    )
+    s2 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s4_frequency_slots_s2_structured_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    assert r0.max_records == 25
+    assert s2.max_records == 25
+    assert s2.program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT
+    assert (
+        s2.controls.context_policy == "full_note_plus_exect_frequency_structured_slots"
+    )
+    assert s2.controls.repair_policy == "artifact_frequency_multi_label_retention"
+    assert r0.taxonomy.comparison_group == "exect_s4_frequency_structured_slots_gpt_cap25_v1"
+    assert s2.taxonomy.comparison_group == "exect_s4_frequency_structured_slots_gpt_cap25_v1"
+    assert r0.taxonomy.implementation_variant == "frequency_bridge_v1_2_control"
+    assert s2.taxonomy.implementation_variant == "frequency_structured_slots_v1"
+
+
 def test_exect_s4_frequency_surface_repair_cap25_configs_record_contract():
     r0 = load_experiment_config(
         Path(
@@ -1764,6 +1794,105 @@ def test_exect_s4_mt_guard_configs_record_contract():
     assert (
         g0_full.taxonomy.comparison_group
         == "exect_s4_medication_precision_guard_gpt_full_validation_v1"
+    )
+
+
+def test_exect_s2_comorbidity_bridge_configs_record_contract():
+    l1 = load_experiment_config(
+        Path("configs/experiments/exect_s2_comorbidity_l1_baseline_cap25_gpt4_1_mini.json")
+    )
+    c0 = load_experiment_config(
+        Path("configs/experiments/exect_s2_comorbidity_c0_cap25_gpt4_1_mini.json")
+    )
+    c0_c1 = load_experiment_config(
+        Path("configs/experiments/exect_s2_comorbidity_c0_c1_cap25_gpt4_1_mini.json")
+    )
+
+    assert l1.max_records == 25
+    assert c0.max_records == 25
+    assert c0_c1.max_records == 25
+    assert l1.program_variant == EXECT_S2_VARIANT
+    assert c0.program_variant == EXECT_S2_COMORBIDITY_C0_VARIANT
+    assert c0_c1.program_variant == EXECT_S2_COMORBIDITY_C0_C1_VARIANT
+    assert c0.controls.repair_policy == "artifact_comorbidity_atomization_c0_only"
+    assert c0_c1.controls.repair_policy == "artifact_comorbidity_atomization_c0_c1"
+    assert l1.taxonomy is not None
+    assert c0.taxonomy.comparison_group == "exect_s2_comorbidity_surface_bridge_gpt_cap25_v1"
+    assert c0.taxonomy.implementation_variant == "comorbidity_atomization_stroke_v1"
+
+
+def test_exect_s3_cause_bridge_configs_record_contract():
+    l1 = load_experiment_config(
+        Path("configs/experiments/exect_s3_cause_l1_baseline_cap25_gpt4_1_mini.json")
+    )
+    k01 = load_experiment_config(
+        Path("configs/experiments/exect_s3_cause_k0_k1_cap25_gpt4_1_mini.json")
+    )
+    l1_full = load_experiment_config(
+        Path("configs/experiments/exect_s3_cause_l1_baseline_full_gpt4_1_mini.json")
+    )
+    k01_full = load_experiment_config(
+        Path("configs/experiments/exect_s3_cause_k0_k1_full_gpt4_1_mini.json")
+    )
+
+    assert l1.max_records == 25
+    assert k01.max_records == 25
+    assert l1_full.max_records is None
+    assert k01_full.max_records is None
+    assert l1.program_variant == "exect_s3_field_family_single_pass"
+    assert k01.program_variant == "exect_s3_field_family_cause_bridge_k0_k1_single_pass"
+    assert k01.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
+    assert k01_full.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
+    assert l1.taxonomy.comparison_group == "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1"
+    assert l1_full.taxonomy.comparison_group == (
+        "exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1"
+    )
+    assert k01.taxonomy.implementation_variant == (
+        "cause_synonym_plural_v1+cause_modifier_strip_v1"
+    )
+    assert k01_full.taxonomy.implementation_variant == (
+        "cause_synonym_plural_v1+cause_modifier_strip_v1"
+    )
+
+
+def test_exect_ladder_investigation_guard_configs_record_contract():
+    l1 = load_experiment_config(
+        Path("configs/experiments/exect_ladder_inv_l1_baseline_cap25_gpt4_1_mini.json")
+    )
+    i0 = load_experiment_config(
+        Path("configs/experiments/exect_ladder_inv_i0_cap25_gpt4_1_mini.json")
+    )
+
+    assert l1.max_records == 25
+    assert i0.max_records == 25
+    assert l1.program_variant == EXECT_S2_VARIANT
+    assert i0.program_variant == EXECT_S2_INV_GUARD_I0_VARIANT
+    assert i0.controls.repair_policy == "artifact_investigation_drop_ecg_only"
+    assert l1.taxonomy.comparison_group == "exect_ladder_investigation_guard_gpt_cap25_v1"
+    assert i0.taxonomy.implementation_variant == "inv_guard_drop_ecg_v1"
+
+
+def test_exect_s4_cause_bridge_configs_record_contract():
+    l1_full = load_experiment_config(
+        Path("configs/experiments/exect_s4_cause_l1_baseline_full_gpt4_1_mini.json")
+    )
+    k01_full = load_experiment_config(
+        Path("configs/experiments/exect_s4_cause_k0_k1_full_gpt4_1_mini.json")
+    )
+
+    assert l1_full.max_records is None
+    assert k01_full.max_records is None
+    assert l1_full.program_variant == "exect_s4_field_family_single_pass"
+    assert k01_full.program_variant == "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+    assert k01_full.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
+    assert l1_full.taxonomy.comparison_group == (
+        "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1"
+    )
+    assert k01_full.taxonomy.comparison_group == (
+        "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1"
+    )
+    assert k01_full.taxonomy.implementation_variant == (
+        "cause_synonym_plural_v1+cause_modifier_strip_v1"
     )
 
 

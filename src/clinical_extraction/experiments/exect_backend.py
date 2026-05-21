@@ -17,6 +17,9 @@ from clinical_extraction.evaluation.exect import (
 from clinical_extraction.experiments.config import ExperimentConfig, OptimizerConfig
 from clinical_extraction.experiments.exect_prompts import exect_prompts_data
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+    EXECT_S2_COMORBIDITY_C0_VARIANT,
+    EXECT_S2_INV_GUARD_I0_VARIANT,
     EXECT_S2_SCHEMA_LEVEL,
     EXECT_S2_VARIANT,
     build_exect_s2_module,
@@ -24,6 +27,7 @@ from clinical_extraction.programs.exect_s2 import (
     predict_exect_s2_records,
 )
 from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S3_SCHEMA_LEVEL,
     EXECT_S3_VARIANT,
     build_exect_s3_module,
@@ -31,8 +35,10 @@ from clinical_extraction.programs.exect_s3 import (
     predict_exect_s3_records,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
@@ -49,13 +55,29 @@ from clinical_extraction.programs.exect_s0_s1 import (
 )
 from clinical_extraction.runs import RunMetadata
 
+_EXECT_S2_PROGRAM_VARIANTS = frozenset(
+    {
+        EXECT_S2_VARIANT,
+        EXECT_S2_COMORBIDITY_C0_VARIANT,
+        EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+        EXECT_S2_INV_GUARD_I0_VARIANT,
+    }
+)
+_EXECT_S3_PROGRAM_VARIANTS = frozenset(
+    {
+        EXECT_S3_VARIANT,
+        EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+    }
+)
 _EXECT_S4_PROGRAM_VARIANTS = frozenset(
     {
         EXECT_S4_VARIANT,
         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     }
 )
 
@@ -75,9 +97,9 @@ class ExectExperimentBackend:
         program_variant = config.program_variant
         if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return build_exect_s4_module(program_variant)
-        if program_variant == EXECT_S3_VARIANT:
+        if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
             return build_exect_s3_module(program_variant)
-        if program_variant == EXECT_S2_VARIANT:
+        if program_variant in _EXECT_S2_PROGRAM_VARIANTS:
             return build_exect_s2_module(program_variant)
         return build_exect_s0_s1_module(program_variant, prompt_version=prompt_version)
 
@@ -102,7 +124,7 @@ class ExectExperimentBackend:
                 program_variant=program_variant,
                 extra=extra,
             )
-        if program_variant == EXECT_S3_VARIANT:
+        if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
             return exect_s3_run_metadata(
                 run_id=run_id,
                 split_name=split_name,
@@ -112,7 +134,7 @@ class ExectExperimentBackend:
                 program_variant=program_variant,
                 extra=extra,
             )
-        if program_variant == EXECT_S2_VARIANT:
+        if program_variant in _EXECT_S2_PROGRAM_VARIANTS:
             return exect_s2_run_metadata(
                 run_id=run_id,
                 split_name=split_name,
@@ -154,7 +176,7 @@ class ExectExperimentBackend:
                 program_variant=program_variant,
                 progress_callback=progress_callback,
             )
-        if program_variant == EXECT_S3_VARIANT:
+        if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
             return predict_exect_s3_records(
                 module,
                 records,
@@ -164,7 +186,7 @@ class ExectExperimentBackend:
                 program_variant=program_variant,
                 progress_callback=progress_callback,
             )
-        if program_variant == EXECT_S2_VARIANT:
+        if program_variant in _EXECT_S2_PROGRAM_VARIANTS:
             return predict_exect_s2_records(
                 module,
                 records,

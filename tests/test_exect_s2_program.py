@@ -4,7 +4,10 @@ from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+    EXECT_S2_COMORBIDITY_C0_VARIANT,
     EXECT_S2_FIELD_FAMILIES,
+    EXECT_S2_INV_GUARD_I0_VARIANT,
     EXECT_S2_LABEL_POLICY_GUIDANCE,
     EXECT_S2_PROMPT_VERSION,
     EXECT_S2_SCHEMA_LEVEL,
@@ -14,6 +17,7 @@ from clinical_extraction.programs.exect_s2 import (
     _recover_s2_comorbidity_raw_values,
     _recover_s2_investigation_raw_values,
     _recover_s2_seizure_raw_values,
+    _s2_bridge_tiers,
     predict_exect_s2_records,
 )
 
@@ -190,3 +194,56 @@ def test_recover_s2_investigation_raw_values_drops_unknown_without_note():
     )
     assert recovered == ["eeg normal"]
     assert "s2_bridge:investigation_unknown_removed" in flags
+
+
+def test_recover_s2_comorbidity_c0_atomizes_traumatic_brain_injury():
+    note = (
+        "Past medical history: traumatic brain injury from road traffic accident. "
+        "Epilepsy secondary to traumatic brain injury."
+    )
+    tiers = _s2_bridge_tiers(EXECT_S2_COMORBIDITY_C0_VARIANT)
+    recovered, flags = _recover_s2_comorbidity_raw_values(
+        ["traumatic brain injury"],
+        note,
+        bridge_tiers=tiers,
+    )
+    assert recovered == ["traumatic", "brain injury"]
+    assert "s2_bridge:tbi_atomized" in flags
+
+
+def test_recover_s2_comorbidity_c0_c1_normalizes_haemorrhage_spelling():
+    note = "History of intracerebral haemorrhage and prior infarcts."
+    tiers = _s2_bridge_tiers(EXECT_S2_COMORBIDITY_C0_C1_VARIANT)
+    recovered, flags = _recover_s2_comorbidity_raw_values(
+        ["intracerebral haemorrhage", "infarcts"],
+        note,
+        bridge_tiers=tiers,
+    )
+    assert "intracerebral hemorrhage" in recovered
+    assert "infarct" in recovered
+    assert "s2_bridge:haemorrhage_spelling_normalized" in flags
+    assert "s2_bridge:infarct_plural_normalized" in flags
+
+
+def test_recover_s2_comorbidity_c1_preserves_learning_disabilities():
+    note = "She has mild learning disabilities."
+    tiers = _s2_bridge_tiers(EXECT_S2_COMORBIDITY_C0_C1_VARIANT)
+    recovered, flags = _recover_s2_comorbidity_raw_values(
+        ["mild learning disabilities"],
+        note,
+        bridge_tiers=tiers,
+    )
+    assert recovered == ["learning disabilities"]
+    assert "s2_bridge:learning_disabilities_modifier_stripped" in flags
+
+
+def test_recover_s2_investigation_i0_drops_ecg():
+    note = "Investigations: ECG normal. EEG normal."
+    tiers = _s2_bridge_tiers(EXECT_S2_INV_GUARD_I0_VARIANT)
+    recovered, flags = _recover_s2_investigation_raw_values(
+        ["ecg normal", "eeg normal"],
+        note,
+        bridge_tiers=tiers,
+    )
+    assert recovered == ["eeg normal"]
+    assert "s2_bridge:investigation_ecg_removed" in flags

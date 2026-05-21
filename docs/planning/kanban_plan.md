@@ -66,7 +66,7 @@ Interpretation: recent clinical IE papers support modular extraction, but mainly
 | Design Gan S0 validation ladder | **Done** | Prereg + implementation `docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md` — V0–V7 configs ready | Phase 2–3 cap-25 anchor (E1 52% monthly) | yes | Run cap-25 grid; inspection pending |
 | Preregister ExECT S1 field-family prompt graph | **Done** | Inspection `docs/experiments/exect/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md` — PG0 hold 95.8%; PG1/PG2 reject (arm) | Existing ExECT S1 stage-graph card; explicit bridge policy per arm | after bridge policy is fixed | Per-family F1, micro F1, evidence support, schema validity, bridge contribution, and merge-error analysis |
 | Run fixture-to-real reality-gap audit | **Backlog** | Small report comparing deterministic fixture outcomes, cap-25 dev behavior, and full validation behavior for one Gan and one ExECT family | Existing fixture coverage plus recent Gan/ExECT inspections | yes | Documents where fixtures overstate performance; updates failure-mode tags from real dev errors |
-| Audit run metadata for validation outcomes | **Backlog** | Check whether artifacts record model, prompt/schema versions, decoding settings, input IDs, validation failures, repair decisions, and scorer mode | none | yes | Gap report plus narrow implementation cards if missing metadata blocks literature-grade reporting |
+| Audit run metadata for validation outcomes | **Done** | `docs/experiments/synthesis/run_metadata_validation_repair_audit_20260521.md` — artifacts are adequate but split across files; recommends `run_manifest.json`, resolved model config copy, selected record IDs, and standardized `validation_outcomes` | none | yes | Gap report plus narrow implementation cards if missing metadata blocks literature-grade reporting |
 
 Dependency notes:
 
@@ -87,6 +87,8 @@ Interpretation: the older best-config report still carries useful prompt-policy 
 | Replay Gan exact-frequency residual slice | **Done** | `docs/experiments/gan/gan_s0_canonical_format_residual_slice_replay_20260521.md` — C0/C1 null on 30-record queue (1 recovery, 1 regression); cap-50 confirm deferred |
 | Preregister ExECT S4 frequency surface repair | **Done** | `docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_preregistration_20260521.md` — R0 v1.2 bridge vs R1 post-merge | Current S4 anchors `...071248Z` and `...160914Z`; `docs/experiments/exect/exect_s4_validation_full_v1_2_gpt4_1_mini_inspection_20260520.md` | yes | Prereg defines frequency-heavy slice or cap-25 gate, scorer `exect_s4_field_family_deterministic_v1`, no-regression checks for investigation/seizure/medication |
 | Implement ExECT S4 frequency surface repair cap-25 | **Done** | Inspection `docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md` — R1 reject (arm) 48.1% vs R0 51.0% freq F1 | Preregister ExECT S4 frequency surface repair | yes | Frequency F1 improves without material regression in frozen S3 families; update inspection doc before any full validation |
+| Preregister + run ExECT S4 frequency structured slots (Axis 3) | **Done** | Inspection `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` — S2 hold inconclusive 51.0% = R0 | Implementation plan item 23; R1 post-merge arm-reject | yes | New `frequency_structured_slots_v1`; not Gan monthly normalization |
+| ExECT S4 sparse-family surface policy memo | **Done** | `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md` — annotation-faithful + CUIPhrase bridges; model spend deferred until bridge scaffolds | Item 24 gate; residual synthesis | yes | Gates cap-25 sweeps on onset/when_diagnosed/cause/birth_history |
 | Replay Gemini under current S-level architecture | **Deferred** | Optional S1 first, then S4 only if needed, to decide whether the prior Gemini champion remains relevant under current prompts/scorers/bridges | Model-comparison need; stable S1/S4 anchors | no | Same split/scorer/bridge policy as GPT/Qwen anchors; report as model-comparison evidence, not stale Round 2 continuation |
 
 Dependency notes:
@@ -424,9 +426,15 @@ ExECT S1 cap-25 bootstrap pilot is **complete — reject**. Do not scale bootstr
 ## Recommended Next Pull
 
 1. ~~**Cap-50 prose+expanded-builders**~~ **Done** — confirm +6pp (`docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md`).
-2. **Research hygiene parallel slot:** audit run metadata for validation/repair outcomes (Literature Card 5).
-3. **New ExECT S4 frequency repair variant** only if revisiting — do not rerun R1 unchanged.
-4. **Gemini replay deferred:** only run if a model-comparison narrative requires current S1/S4 Gemini evidence.
+2. ~~**ExECT S4 frequency structured slots (item 23)**~~ **Done** — S2 null vs R0; inspection `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md`.
+3. ~~**Sparse-family surface policy memo (item 24 gate)**~~ **Done** — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md`.
+4. ~~**ExECT S1–S3 P0 fixtures + cap-25 grids**~~ **Done** — fixtures green; comorbidity bridge null on cap-25 (`exect_s2_comorbidity_surface_bridge_gpt_cap25_v1_inspection_20260521.md`); I0 investigation +5.6pp (`exect_ladder_investigation_guard_gpt_cap25_v1_inspection_20260521.md`); S3 cause bridge K0+K1 +20pp cause F1 (`exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md`).
+5. ~~**Next (ExECT S4, no-model):** wire K0+K1 cause bridge into S4 artifact recovery path~~ **Done** — `exect_s4_field_family_cause_bridge_k0_k1_single_pass`.
+6. ~~**Next (ExECT S1–S3):** S3 cause-bridge full-validation prereg on sparse-family qualitative queue~~ **Done** — prereg + 3-doc residual replay (null) — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_preregistration_20260521.md`.
+7. ~~**Next (ExECT S1–S3):** run S3 cause-bridge full validation (L1 vs K0+K1)~~ **Done** — K0+K1 +11.1pp cause F1; hold operational candidate — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`.
+8. ~~**Research hygiene parallel slot:** audit run metadata for validation/repair outcomes (Literature Card 5)~~ **Done** — `docs/experiments/synthesis/run_metadata_validation_repair_audit_20260521.md`.
+9. **New ExECT S4 frequency repair variant** only if revisiting — do not rerun R1 or S2 unchanged.
+10. **Gemini replay deferred:** only run if a model-comparison narrative requires current S1/S4 Gemini evidence.
 
 ## Operational Defaults vs Open Mechanisms
 

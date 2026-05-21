@@ -21,18 +21,24 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
 )
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+    EXECT_S2_COMORBIDITY_C0_VARIANT,
+    EXECT_S2_INV_GUARD_I0_VARIANT,
     EXECT_S2_SCHEMA_LEVEL,
     EXECT_S2_SCORER,
     EXECT_S2_VARIANT,
 )
 from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S3_SCHEMA_LEVEL,
     EXECT_S3_SCORER,
     EXECT_S3_VARIANT,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -221,12 +227,18 @@ class ExperimentConfig(FrozenModel):
         "exect_s0_s1_field_family_verify_repair",
         "exect_s0_s1_field_family_deterministic_only",
         "exect_s2_field_family_single_pass",
+        "exect_s2_field_family_comorbidity_c0_single_pass",
+        "exect_s2_field_family_comorbidity_c0_c1_single_pass",
+        "exect_s2_field_family_inv_guard_i0_single_pass",
         "exect_s3_field_family_single_pass",
+        "exect_s3_field_family_cause_bridge_k0_k1_single_pass",
         "exect_s4_field_family_single_pass",
         "exect_s4_field_family_frequency_pre_vocab_single_pass",
         "exect_s4_field_family_frequency_post_merge_single_pass",
+        "exect_s4_field_family_frequency_structured_slots_single_pass",
         "exect_s4_field_family_temporality_post_classifier_single_pass",
         "exect_s4_field_family_mt_guard_non_asm_single_pass",
+        "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -315,12 +327,20 @@ class ExperimentConfig(FrozenModel):
                 ),
                 (
                     EXECT_S2_SCHEMA_LEVEL,
-                    {EXECT_S2_VARIANT},
+                    {
+                        EXECT_S2_VARIANT,
+                        EXECT_S2_COMORBIDITY_C0_VARIANT,
+                        EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+                        EXECT_S2_INV_GUARD_I0_VARIANT,
+                    },
                     EXECT_S2_SCORER,
                 ),
                 (
                     EXECT_S3_SCHEMA_LEVEL,
-                    {EXECT_S3_VARIANT},
+                    {
+                        EXECT_S3_VARIANT,
+                        EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+                    },
                     EXECT_S3_SCORER,
                 ),
                 (
@@ -329,8 +349,10 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S4_VARIANT,
                         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
                         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+                        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
                         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
                         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+                        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
                     },
                     EXECT_S4_SCORER,
                 ),

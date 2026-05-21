@@ -15,7 +15,7 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 172,
+  "row_count": 177,
   "experiments": [
     {
       "experiment_id": "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini",
@@ -14308,6 +14308,578 @@
       "notes": "decision_scope: arm. V1 65.8% monthly; +0.7pp vs pre-exp VR, -2.3pp vs F0 68.1%; keep F0 as monthly leader.",
       "comparison_groups": [
         "gan_s0_expanded_builders_vr_gpt_full_validation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s4_frequency_surface_r0_control_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s4_frequency_surface_repair_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s4_frequency_surface_r0_control_cap25_gpt4_1_mini_20260521T072357Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "These are ExECT S4 field-family diagnostics, not published ExECTv2 benchmark reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; stage_executor=n/a; implementation_variant=frequency_bridge_v1_2_control."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_frequency_surface_r0_control_cap25_gpt4_1_mini_20260521T072357Z"
+      ],
+      "headline_metric": {
+        "name": "seizure_frequency_f1",
+        "value": 0.5098039215686274,
+        "secondary": {
+          "micro_f1": 0.6954643628509719,
+          "evidence_quote_support_rate": 0.8785425101214575
+        }
+      },
+      "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+      "config_paths": "configs/experiments/exect_s4_frequency_surface_r0_control_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. R0 control; 51.0% seizure_frequency F1; v1.2 inline bridge.",
+      "comparison_groups": [
+        "exect_s4_frequency_surface_repair_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "benchmark_bridge"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s4_frequency_surface_repair_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini_20260521T072445Z",
+      "outcome": "reject",
+      "decision_doc": "docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "These are ExECT S4 field-family diagnostics, not published ExECTv2 benchmark reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; stage_executor=n/a; implementation_variant=frequency_post_merge_v1_3."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini_20260521T072445Z"
+      ],
+      "headline_metric": {
+        "name": "seizure_frequency_f1",
+        "value": 0.48148148148148145,
+        "secondary": {
+          "micro_f1": 0.6909871244635193,
+          "evidence_quote_support_rate": 0.8785425101214575
+        }
+      },
+      "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+      "config_paths": "configs/experiments/exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. R1 post-merge; 48.1% seizure_frequency F1; −2.9pp vs R0.",
+      "comparison_groups": [
+        "exect_s4_frequency_surface_repair_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s4_frequency_slots_s2_structured_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "controlled_vocabulary_filter"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note_plus_exect_frequency_structured_slots",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s4_frequency_structured_slots_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s4_frequency_slots_s2_structured_cap25_gpt4_1_mini_20260521T075559Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "These are ExECT S4 field-family diagnostics, not published ExECTv2 benchmark reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; stage_executor=n/a; implementation_variant=frequency_structured_slots_v1."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_frequency_slots_s2_structured_cap25_gpt4_1_mini_20260521T075559Z"
+      ],
+      "headline_metric": {
+        "name": "seizure_frequency_f1",
+        "value": 0.5098039215686274,
+        "secondary": {
+          "micro_f1": 0.6954643628509719,
+          "evidence_quote_support_rate": 0.8623481781376519
+        }
+      },
+      "prompt_versions": "exect_s4_field_family_v1_2_label_policy_structured_frequency_slots",
+      "config_paths": "configs/experiments/exect_s4_frequency_slots_s2_structured_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. S2 structured slots; 51.0% seizure_frequency F1; null vs R0.",
+      "comparison_groups": [
+        "exect_s4_frequency_structured_slots_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s3_cause_l1_baseline_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s3",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "benchmark_bridge"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s3_field_family",
+        "scorer": "exect_s3_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s3_cause_l1_baseline_cap25_gpt4_1_mini_20260521T090542Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; stage_executor=n/a; implementation_variant=cause_bridge_l1_control."
+      ],
+      "artifact_paths": [
+        "runs/exect_s3_cause_l1_baseline_cap25_gpt4_1_mini_20260521T090542Z"
+      ],
+      "headline_metric": {
+        "name": "epilepsy_cause_f1",
+        "value": 0.0,
+        "secondary": {
+          "micro_f1": 0.7806451612903226,
+          "evidence_quote_support_rate": 0.9084967320261438
+        }
+      },
+      "prompt_versions": "exect_s3_field_family_v1_2_label_policy",
+      "config_paths": "configs/experiments/exect_s3_cause_l1_baseline_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. L1 control; 0.0% epilepsy_cause F1; nine-family v1.2 pass.",
+      "comparison_groups": [
+        "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s3_cause_k0_k1_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s3",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "benchmark_bridge"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s3_field_family",
+        "scorer": "exect_s3_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s3_cause_k0_k1_cap25_gpt4_1_mini_20260521T090550Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; stage_executor=n/a; implementation_variant=cause_synonym_plural_v1+cause_modifier_strip_v1."
+      ],
+      "artifact_paths": [
+        "runs/exect_s3_cause_k0_k1_cap25_gpt4_1_mini_20260521T090550Z"
+      ],
+      "headline_metric": {
+        "name": "epilepsy_cause_f1",
+        "value": 0.2,
+        "secondary": {
+          "micro_f1": 0.7870967741935483,
+          "evidence_quote_support_rate": 0.9084967320261438
+        }
+      },
+      "prompt_versions": "exect_s3_field_family_v1_2_label_policy",
+      "config_paths": "configs/experiments/exect_s3_cause_k0_k1_cap25_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. K0+K1 CUIPhrase bridges; 20.0% epilepsy_cause F1 (+20pp vs L1); cap-25 proceed.",
+      "comparison_groups": [
+        "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s4_cause_l1_baseline_full_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s4_cause_l1_baseline_full_gpt4_1_mini_20260521T092335Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Full fixed ExECTv2 validation split (40 records); not published Table 1 reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; implementation_variant=cause_bridge_l1_control.",
+        "Regression guards: medication_temporality, seizure_frequency, investigation."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_cause_l1_baseline_full_gpt4_1_mini_20260521T092335Z"
+      ],
+      "headline_metric": {
+        "name": "epilepsy_cause_f1",
+        "value": 0.10526315789473685,
+        "secondary": {
+          "micro_f1": 0.6649145860709592,
+          "medication_temporality_f1": 0.625,
+          "seizure_frequency_f1": 0.5057471264367817,
+          "investigation_f1": 0.9666666666666667
+        }
+      },
+      "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+      "config_paths": "configs/experiments/exect_s4_cause_l1_baseline_full_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. L1 control; 10.5% epilepsy_cause F1; eleven-family S4 pass.",
+      "comparison_groups": [
+        "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s4_cause_k0_k1_full_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "benchmark_bridge"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s4_cause_k0_k1_full_gpt4_1_mini_20260521T092346Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md",
+      "metric_caveats": [
+        "Full fixed ExECTv2 validation split (40 records); not published Table 1 reproduction.",
+        "stage_graph_id=g1_l1_policy_bridges; implementation_variant=cause_synonym_plural_v1+cause_modifier_strip_v1.",
+        "Regression guards passed: MT, seizure_frequency, investigation unchanged vs L1."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_cause_k0_k1_full_gpt4_1_mini_20260521T092346Z"
+      ],
+      "headline_metric": {
+        "name": "epilepsy_cause_f1",
+        "value": 0.2105263157894737,
+        "secondary": {
+          "micro_f1": 0.6675427069645204,
+          "medication_temporality_f1": 0.625,
+          "seizure_frequency_f1": 0.5057471264367817,
+          "investigation_f1": 0.9666666666666667
+        }
+      },
+      "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+      "config_paths": "configs/experiments/exect_s4_cause_k0_k1_full_gpt4_1_mini.json",
+      "notes": "decision_scope: arm. K0+K1 CUIPhrase bridges on S4; 21.1% epilepsy_cause F1 (+10.6pp vs L1); operational candidate.",
+      "comparison_groups": [
+        "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1"
       ]
     }
   ]

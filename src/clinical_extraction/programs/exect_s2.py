@@ -35,6 +35,20 @@ from clinical_extraction.schemas import (
 
 EXECT_S2_SCHEMA_LEVEL = "exect_s2_field_family"
 EXECT_S2_VARIANT = "exect_s2_field_family_single_pass"
+EXECT_S2_COMORBIDITY_C0_VARIANT = "exect_s2_field_family_comorbidity_c0_single_pass"
+EXECT_S2_COMORBIDITY_C0_C1_VARIANT = (
+    "exect_s2_field_family_comorbidity_c0_c1_single_pass"
+)
+EXECT_S2_INV_GUARD_I0_VARIANT = "exect_s2_field_family_inv_guard_i0_single_pass"
+INVESTIGATION_GUARD_DROP_ECG_TIER = "inv_guard_drop_ecg_v1"
+_EXECT_S2_PROGRAM_VARIANTS = frozenset(
+    {
+        EXECT_S2_VARIANT,
+        EXECT_S2_COMORBIDITY_C0_VARIANT,
+        EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+        EXECT_S2_INV_GUARD_I0_VARIANT,
+    }
+)
 EXECT_S2_PROMPT_VERSION = "exect_s2_field_family_v1_3_label_policy"
 EXECT_S2_FIELD_FAMILIES = (
     "diagnosis",
@@ -265,8 +279,27 @@ class ExectS2FieldFamilyModule(dspy.Module):
         return self.extract(note_text=note_text)
 
 
+def ladder_investigation_guard_bridge_tiers() -> frozenset[str]:
+    """I0 ECG drop guard — default on S3/S4 investigation recovery (regression guard)."""
+    return frozenset({INVESTIGATION_GUARD_DROP_ECG_TIER})
+
+
+def _s2_bridge_tiers(program_variant: str) -> frozenset[str]:
+    tiers: set[str] = set()
+    if program_variant in {
+        EXECT_S2_COMORBIDITY_C0_VARIANT,
+        EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
+    }:
+        tiers.add("comorbidity_atomization_tbi_v1")
+    if program_variant == EXECT_S2_COMORBIDITY_C0_C1_VARIANT:
+        tiers.add("comorbidity_surface_plural_v1")
+    if program_variant == EXECT_S2_INV_GUARD_I0_VARIANT:
+        tiers.add(INVESTIGATION_GUARD_DROP_ECG_TIER)
+    return frozenset(tiers)
+
+
 def build_exect_s2_module(program_variant: str = EXECT_S2_VARIANT) -> dspy.Module:
-    if program_variant == EXECT_S2_VARIANT:
+    if program_variant in _EXECT_S2_PROGRAM_VARIANTS:
         return ExectS2FieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S2 program variant: {program_variant!r}")
 
@@ -360,6 +393,7 @@ def _predict_s2_record(
     investigation_raw, _ = _recover_s2_investigation_raw_values(
         _as_list(getattr(pred, "investigation", [])),
         record.text,
+        bridge_tiers=_s2_bridge_tiers(program_variant),
     )
     values.extend(
         _s2_values_for_family(
@@ -373,6 +407,7 @@ def _predict_s2_record(
     comorbidity_raw, _ = _recover_s2_comorbidity_raw_values(
         _as_list(getattr(pred, "comorbidity", [])),
         record.text,
+        bridge_tiers=_s2_bridge_tiers(program_variant),
     )
     comorbidity_raw, _ = _augment_s2_comorbidity_from_note(comorbidity_raw, record.text)
     values.extend(
@@ -534,10 +569,13 @@ _COMORBIDITY_NOTE_RECALL_PATTERNS: tuple[tuple[str, str], ...] = (
 def _recover_s2_comorbidity_raw_values(
     raw_values: list[str],
     note_text: str,
+    *,
+    bridge_tiers: frozenset[str] | None = None,
 ) -> tuple[list[str], list[str]]:
     flags: list[str] = []
     note = note_text.lower()
     recovered: list[str] = []
+    tiers = bridge_tiers or frozenset()
 
     for raw in raw_values:
         if not raw.strip():
@@ -545,6 +583,15 @@ def _recover_s2_comorbidity_raw_values(
         value, value_flags = _normalize_s2_comorbidity_candidate(raw.strip(), note_text)
         flags.extend(value_flags)
         canonical = canonical_comorbidity_label(value)
+
+        if "comorbidity_surface_plural_v1" in tiers:
+            value, plural_flags = _apply_comorbidity_surface_plural_bridge(
+                value,
+                canonical,
+                note_text,
+            )
+            flags.extend(plural_flags)
+            canonical = canonical_comorbidity_label(value)
 
         if canonical in _COMORBIDITY_SEIZURE_HISTORY_SURFACES:
             flags.append("s2_bridge:seizure_history_comorbidity_removed")
@@ -556,9 +603,30 @@ def _recover_s2_comorbidity_raw_values(
             flags.append("s2_bridge:seizure_descriptor_jerk_removed")
             continue
 
-        if re.match(r"^(mild|moderate|severe)\s+learning difficult", canonical):
+        if re.match(r"^(mild|moderate|severe)\s+learning disabilit", canonical):
+            value = "learning disabilities"
+            flags.append("s2_bridge:learning_disabilities_modifier_stripped")
+        elif re.match(r"^(mild|moderate|severe)\s+learning difficult", canonical):
             value = "learning difficulties"
             flags.append("s2_bridge:learning_difficulties_modifier_stripped")
+
+        if "comorbidity_atomization_tbi_v1" in tiers and canonical in {
+            "traumatic brain injury",
+            "tbi",
+        }:
+            atoms: list[str] = []
+            if re.search(r"\btraumatic\b", note_text, re.IGNORECASE):
+                atoms.append("traumatic")
+            if re.search(
+                r"\b(?:brain injury|head injury|tbi)\b",
+                note_text,
+                re.IGNORECASE,
+            ):
+                atoms.append("brain injury")
+            if atoms:
+                recovered.extend(atoms)
+                flags.append("s2_bridge:tbi_atomized")
+                continue
 
         if canonical == "stroke":
             atoms: list[str] = []
@@ -607,6 +675,21 @@ def _normalize_s2_comorbidity_candidate(
     if canonical == "trisomy 21":
         return "trisomy", ["s2_bridge:trisomy_specificity_restored"]
 
+    return value, flags
+
+
+def _apply_comorbidity_surface_plural_bridge(
+    value: str,
+    canonical: str,
+    note_text: str,
+) -> tuple[str, list[str]]:
+    flags: list[str] = []
+    if "haemorrhage" in canonical:
+        value = canonical.replace("haemorrhage", "hemorrhage")
+        flags.append("s2_bridge:haemorrhage_spelling_normalized")
+    if canonical == "infarcts":
+        value = "infarct"
+        flags.append("s2_bridge:infarct_plural_normalized")
     return value, flags
 
 
@@ -714,15 +797,23 @@ def _augment_s2_comorbidity_from_note(
 def _recover_s2_investigation_raw_values(
     raw_values: list[str],
     note_text: str,
+    *,
+    bridge_tiers: frozenset[str] | None = None,
 ) -> tuple[list[str], list[str]]:
     flags: list[str] = []
     note = note_text.lower()
     recovered: list[str] = []
+    tiers = bridge_tiers or frozenset()
 
     for raw in raw_values:
         if not raw.strip():
             continue
         normalized = normalize_investigation_phrase(raw)
+        if INVESTIGATION_GUARD_DROP_ECG_TIER in tiers:
+            modality = normalized.split()[0] if normalized else raw.strip().split()[0].lower()
+            if modality == "ecg":
+                flags.append("s2_bridge:investigation_ecg_removed")
+                continue
         if normalized.endswith(" unknown"):
             modality = normalized.split()[0]
             if (

@@ -37,6 +37,7 @@ from clinical_extraction.programs.exect_s2 import (
     _recover_s2_seizure_raw_values,
     _s2_values_for_family,
     canonical_comorbidity_label,
+    ladder_investigation_guard_bridge_tiers,
     _normalize_investigation_surface,
 )
 from clinical_extraction.runs import RunMetadata
@@ -49,6 +50,15 @@ from clinical_extraction.schemas import (
 
 EXECT_S3_SCHEMA_LEVEL = "exect_s3_field_family"
 EXECT_S3_VARIANT = "exect_s3_field_family_single_pass"
+EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT = (
+    "exect_s3_field_family_cause_bridge_k0_k1_single_pass"
+)
+_EXECT_S3_PROGRAM_VARIANTS = frozenset(
+    {
+        EXECT_S3_VARIANT,
+        EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+    }
+)
 EXECT_S3_V1_0_PROMPT_VERSION = "exect_s3_field_family_v1_0_label_policy"
 EXECT_S3_V1_1_PROMPT_VERSION = "exect_s3_field_family_v1_1_label_policy"
 EXECT_S3_PROMPT_VERSION = "exect_s3_field_family_v1_2_label_policy"
@@ -283,8 +293,14 @@ class ExectS3FieldFamilyModule(dspy.Module):
         return self.extract(note_text=note_text)
 
 
+def _s3_bridge_tiers(program_variant: str) -> frozenset[str]:
+    if program_variant == EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT:
+        return frozenset({"cause_synonym_plural_v1", "cause_modifier_strip_v1"})
+    return frozenset()
+
+
 def build_exect_s3_module(program_variant: str = EXECT_S3_VARIANT) -> dspy.Module:
-    if program_variant == EXECT_S3_VARIANT:
+    if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
         return ExectS3FieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S3 program variant: {program_variant!r}")
 
@@ -328,7 +344,7 @@ def _predict_s3_record(
 ) -> DocumentPrediction:
     pred = module(note_text=record.text)
     values = _s2_field_values_from_prediction(pred, record)
-    values.extend(_s3_field_values_from_prediction(pred, record))
+    values.extend(_s3_field_values_from_prediction(pred, record, program_variant=program_variant))
     return DocumentPrediction(
         document_id=record.document_id,
         dataset=EXECT_DATASET,
@@ -395,6 +411,7 @@ def _s2_field_values_from_prediction(
     investigation_raw, _ = _recover_s2_investigation_raw_values(
         _as_list(getattr(pred, "investigation", [])),
         record.text,
+        bridge_tiers=ladder_investigation_guard_bridge_tiers(),
     )
     investigation_raw, _ = _recover_s3_investigation_raw_values(
         investigation_raw,
@@ -429,6 +446,8 @@ def _s2_field_values_from_prediction(
 def _s3_field_values_from_prediction(
     pred: dspy.Prediction,
     record: ExectGoldDocument,
+    *,
+    program_variant: str = EXECT_S3_VARIANT,
 ) -> list[ExtractedValue]:
     values: list[ExtractedValue] = []
 
@@ -462,6 +481,7 @@ def _s3_field_values_from_prediction(
     cause_raw, _ = _recover_s3_epilepsy_cause_raw_values(
         _as_list(getattr(pred, "epilepsy_cause", [])),
         record.text,
+        bridge_tiers=_s3_bridge_tiers(program_variant),
     )
     values.extend(
         _s2_values_for_family(
@@ -667,12 +687,62 @@ def _recover_s3_when_diagnosed_raw_values(
     return recovered, flags
 
 
+def _normalize_s3_epilepsy_cause_candidate(
+    value: str,
+    note_text: str,
+    *,
+    bridge_tiers: frozenset[str],
+) -> tuple[str, list[str]]:
+    flags: list[str] = []
+    canonical = canonical_epilepsy_cause_label(value)
+    if not canonical:
+        return value, flags
+
+    if "cause_synonym_plural_v1" in bridge_tiers:
+        if canonical == "strokes":
+            canonical = "stroke"
+            flags.append("s3_bridge:cause_plural_normalized")
+        if canonical in {"cerebrovascular accident", "cva"}:
+            if re.search(r"\bcva\b", note_text, re.IGNORECASE):
+                canonical = "cva"
+            elif re.search(r"\bstroke\b", note_text, re.IGNORECASE):
+                canonical = "stroke"
+            else:
+                canonical = "cva"
+            flags.append("s3_bridge:cause_synonym_mapped")
+        if "haemorrhage" in canonical and (
+            re.search(r"\bhemorrhage\b", note_text, re.IGNORECASE)
+            or not re.search(r"\bhaemorrhage\b", note_text, re.IGNORECASE)
+        ):
+            canonical = canonical.replace("haemorrhage", "hemorrhage")
+            flags.append("s3_bridge:cause_spelling_normalized")
+
+    if "cause_modifier_strip_v1" in bridge_tiers:
+        if canonical == "early life meningitis":
+            canonical = "meningitis"
+            flags.append("s3_bridge:cause_modifier_stripped")
+        ich_match = re.match(
+            r"^(?:recurrent\s+)?(?:right\s+hemisphere\s+)?intracerebral haemorrhage$",
+            canonical,
+        )
+        if ich_match:
+            canonical = "intracerebral hemorrhage"
+            flags.append("s3_bridge:cause_modifier_stripped")
+            if "s3_bridge:cause_spelling_normalized" not in flags:
+                flags.append("s3_bridge:cause_spelling_normalized")
+
+    return canonical, flags
+
+
 def _recover_s3_epilepsy_cause_raw_values(
     raw_values: list[str],
-    _note_text: str,
+    note_text: str,
+    *,
+    bridge_tiers: frozenset[str] | None = None,
 ) -> tuple[list[str], list[str]]:
     flags: list[str] = []
     recovered: list[str] = []
+    tiers = bridge_tiers or frozenset()
 
     for raw in raw_values:
         if not raw.strip():
@@ -682,6 +752,15 @@ def _recover_s3_epilepsy_cause_raw_values(
             continue
         if canonical in {"seizure", "seizures", "febrile seizure", "febrile seizures"}:
             flags.append("s3_bridge:seizure_history_cause_removed")
+            continue
+        if tiers:
+            value, bridge_flags = _normalize_s3_epilepsy_cause_candidate(
+                raw.strip(),
+                note_text,
+                bridge_tiers=tiers,
+            )
+            flags.extend(bridge_flags)
+            recovered.append(value)
             continue
         recovered.append(raw.strip())
 

@@ -21,12 +21,15 @@ from clinical_extraction.programs.exect_s0_s1 import (
 from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_PROMPT_VERSION,
     _recover_s2_investigation_raw_values,
+    ladder_investigation_guard_bridge_tiers,
 )
 from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S3_FIELD_FAMILIES,
     EXECT_S3_LABEL_POLICY_GUIDANCE,
     EXECT_S3_POLICY_EXAMPLES,
     EXECT_S3_PROMPT_VERSION,
+    EXECT_S3_VARIANT,
     _normalize_investigation_surface,
     _recover_s3_investigation_raw_values,
     _s2_field_values_from_prediction,
@@ -38,11 +41,13 @@ from clinical_extraction.exect.primitives import (
     build_exect_frequency_pre_vocab_labels as build_precomputed_seizure_frequency_candidates,
     format_exect_frequency_pre_vocab_note as format_note_with_precomputed_seizure_frequency_candidates,
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
+    recover_exect_frequency_benchmark_values_with_multi_label_retention as _recover_s4_seizure_frequency_multi_label_retention_raw_values,
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
+from clinical_extraction.exect.slot_payload import format_exect_frequency_slot_payload_for_prompt
 from clinical_extraction.schemas import (
     DocumentPrediction,
     ExectGoldDocument,
@@ -58,11 +63,20 @@ EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT = (
 EXECT_S4_FREQUENCY_POST_MERGE_VARIANT = (
     "exect_s4_field_family_frequency_post_merge_single_pass"
 )
+EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT = (
+    "exect_s4_field_family_frequency_structured_slots_single_pass"
+)
+EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_PROMPT_VERSION = (
+    "exect_s4_field_family_v1_2_label_policy_structured_frequency_slots"
+)
 EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT = (
     "exect_s4_field_family_temporality_post_classifier_single_pass"
 )
 EXECT_S4_MT_GUARD_NON_ASM_VARIANT = (
     "exect_s4_field_family_mt_guard_non_asm_single_pass"
+)
+EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT = (
+    "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
 )
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
@@ -345,17 +359,39 @@ class ExectS4FrequencyPreVocabFieldFamilyModule(dspy.Module):
         )
 
 
+class ExectS4FrequencyStructuredSlotsFieldFamilyModule(dspy.Module):
+    """Single-pass S4 extractor with ExECT structured frequency slot hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS4FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_exect_frequency_slot_payload_for_prompt(note_text)
+        )
+
+
 def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Module:
     if program_variant in {
         EXECT_S4_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     }:
         return ExectS4FieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
         return ExectS4FrequencyPreVocabFieldFamilyModule()
+    if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
+        return ExectS4FrequencyStructuredSlotsFieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S4 program variant: {program_variant!r}")
+
+
+def _s4_epilepsy_cause_bridge_s3_variant(program_variant: str) -> str:
+    if program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT:
+        return EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT
+    return EXECT_S3_VARIANT
 
 
 def predict_exect_s4_records(
@@ -398,7 +434,13 @@ def _predict_s4_record(
 ) -> DocumentPrediction:
     pred = module(note_text=record.text)
     values = _s2_field_values_from_prediction(pred, record)
-    values.extend(_s3_field_values_from_prediction(pred, record))
+    values.extend(
+        _s3_field_values_from_prediction(
+            pred,
+            record,
+            program_variant=_s4_epilepsy_cause_bridge_s3_variant(program_variant),
+        )
+    )
     values = _replace_s4_investigation_values(values, pred, record)
     values.extend(_s4_field_values_from_prediction(pred, record, program_variant))
     metadata: dict[str, object] = {"program_variant": program_variant}
@@ -412,6 +454,13 @@ def _predict_s4_record(
         metadata["post_merge"] = {
             "seizure_frequency": "exect.frequency.benchmark_bridge.v1:post_merge_v1_3"
         }
+    if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
+        metadata["structured_frequency_slots"] = {
+            "seizure_frequency": (
+                "exect.frequency.benchmark_bridge.v1:multi_label_retention_v1"
+            ),
+            "slot_payload": "exect.frequency.structured_slots.v1",
+        }
     if program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT:
         metadata["post_classifier"] = {
             "medication_temporality": "exect.medication_temporality.post_classifier.v1"
@@ -419,6 +468,10 @@ def _predict_s4_record(
     if program_variant == EXECT_S4_MT_GUARD_NON_ASM_VARIANT:
         metadata["post_guard"] = {
             "medication_temporality": "exect.medication_temporality.non_asm_guard.v1"
+        }
+    if program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT:
+        metadata["post_bridge"] = {
+            "epilepsy_cause": "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
         }
     return DocumentPrediction(
         document_id=record.document_id,
@@ -439,6 +492,7 @@ def _replace_s4_investigation_values(
     investigation_raw, _ = _recover_s2_investigation_raw_values(
         _as_list(getattr(pred, "investigation", [])),
         record.text,
+        bridge_tiers=ladder_investigation_guard_bridge_tiers(),
     )
     investigation_raw, _ = _recover_s3_investigation_raw_values(
         investigation_raw,
@@ -596,6 +650,10 @@ def _recover_s4_seizure_frequency_values(
 ) -> tuple[list[str], list[str]]:
     if program_variant == EXECT_S4_FREQUENCY_POST_MERGE_VARIANT:
         return _recover_s4_seizure_frequency_post_merge_raw_values(raw_values, note_text)
+    if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
+        return _recover_s4_seizure_frequency_multi_label_retention_raw_values(
+            raw_values, note_text
+        )
     return _recover_s4_seizure_frequency_raw_values(raw_values, note_text)
 
 

@@ -10,6 +10,7 @@ from clinical_extraction.programs.exect_s2 import (
     EXECT_S2_POLICY_EXAMPLES,
     EXECT_S2_PROMPT_VERSION,
     EXECT_S2_VARIANT,
+    _EXECT_S2_PROGRAM_VARIANTS,
 )
 from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_FIELD_FAMILIES,
@@ -17,11 +18,15 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_POLICY_EXAMPLES,
     EXECT_S3_PROMPT_VERSION,
     EXECT_S3_VARIANT,
+    _EXECT_S3_PROGRAM_VARIANTS,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S4_FIELD_FAMILIES,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_PROMPT_VERSION,
+    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_POLICY_EXAMPLES,
     EXECT_S4_PROMPT_VERSION,
@@ -48,8 +53,10 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
         EXECT_S4_VARIANT,
         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     }
 )
 
@@ -72,23 +79,31 @@ def exect_prompts_data(
     structured_output_strategy: str,
 ) -> dict[str, Any]:
     if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
-        module_name = (
-            "ExectS4FrequencyPreVocabFieldFamilyModule"
-            if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT
-            else "ExectS4FieldFamilyModule"
-        )
+        if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
+            module_name = "ExectS4FrequencyPreVocabFieldFamilyModule"
+        elif program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
+            module_name = "ExectS4FrequencyStructuredSlotsFieldFamilyModule"
+        else:
+            module_name = "ExectS4FieldFamilyModule"
         return {
             "signature": "ExectS4FieldFamilySignature",
             "module": module_name,
             "predictor": "dspy.ChainOfThought",
             "program_variant": program_variant,
-            "prompt_version": prompt_version or EXECT_S4_PROMPT_VERSION,
+            "prompt_version": (
+                prompt_version
+                or (
+                    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_PROMPT_VERSION
+                    if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT
+                    else EXECT_S4_PROMPT_VERSION
+                )
+            ),
             "field_families": _json_prompt_value(EXECT_S4_FIELD_FAMILIES),
             "label_policy_guidance": _json_prompt_value(EXECT_S4_LABEL_POLICY_GUIDANCE),
             "label_policy_examples": _json_prompt_value(EXECT_S4_POLICY_EXAMPLES),
             "structured_output_strategy": structured_output_strategy,
         }
-    if program_variant == EXECT_S3_VARIANT:
+    if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
         return {
             "signature": "ExectS3FieldFamilySignature",
             "module": "ExectS3FieldFamilyModule",
@@ -100,7 +115,7 @@ def exect_prompts_data(
             "label_policy_examples": _json_prompt_value(EXECT_S3_POLICY_EXAMPLES),
             "structured_output_strategy": structured_output_strategy,
         }
-    if program_variant == EXECT_S2_VARIANT:
+    if program_variant in _EXECT_S2_PROGRAM_VARIANTS:
         return {
             "signature": "ExectS2FieldFamilySignature",
             "module": "ExectS2FieldFamilyModule",

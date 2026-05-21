@@ -646,6 +646,122 @@ EXECT_GRID_ROWS: list[dict] = [
     },
 ]
 
+EXECT_S4_FREQUENCY_ROWS: list[dict] = [
+    {
+        "experiment_id": "exect_s4_frequency_surface_r0_control_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s4_frequency_surface_repair_gpt_cap25_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g1_l1_policy_bridges",
+        "implementation_variant": "frequency_bridge_v1_2_control",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["L1_llm_constrained"],
+        "interleaving_positions": ["during", "post"],
+        "clinical_task_family": ["frequency"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+        "schema_complexity": "exect_s4",
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "headline_metric_field": "seizure_frequency",
+        "outcome": "hold",
+        "decision_doc": "docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. R0 control; 51.0% seizure_frequency F1; v1.2 inline bridge.",
+    },
+    {
+        "experiment_id": "exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s4_frequency_surface_repair_gpt_cap25_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g1_l1_policy_bridges",
+        "implementation_variant": "frequency_post_merge_v1_3",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["H1_post_deterministic"],
+        "interleaving_positions": ["during", "post"],
+        "clinical_task_family": ["frequency"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
+        "schema_complexity": "exect_s4",
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "headline_metric_field": "seizure_frequency",
+        "outcome": "reject",
+        "decision_doc": "docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. R1 post-merge; 48.1% seizure_frequency F1; −2.9pp vs R0.",
+    },
+    {
+        "experiment_id": "exect_s4_frequency_slots_s2_structured_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s4_frequency_structured_slots_gpt_cap25_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g1_l1_policy_bridges",
+        "implementation_variant": "frequency_structured_slots_v1",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["H2_pre_deterministic"],
+        "interleaving_positions": ["pre", "during", "post"],
+        "clinical_task_family": ["frequency"],
+        "context_strategy": "full_note_plus_exect_frequency_structured_slots",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s4_field_family_v1_2_label_policy_structured_frequency_slots",
+        "schema_complexity": "exect_s4",
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "headline_metric_field": "seizure_frequency",
+        "outcome": "hold",
+        "decision_doc": "docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. S2 structured slots; 51.0% seizure_frequency F1; null vs R0.",
+    },
+]
+
+EXECT_S3_CAUSE_ROWS: list[dict] = [
+    {
+        "experiment_id": "exect_s3_cause_l1_baseline_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g1_l1_policy_bridges",
+        "implementation_variant": "cause_bridge_l1_control",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["H1_post_deterministic"],
+        "interleaving_positions": ["post"],
+        "clinical_task_family": ["multi_family"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_policy_prompt",
+        "prompt_versions": "exect_s3_field_family_v1_2_label_policy",
+        "schema_complexity": "exect_s3",
+        "schema_level": "exect_s3_field_family",
+        "scorer": "exect_s3_field_family_deterministic_v1",
+        "headline_metric_field": "epilepsy_cause",
+        "outcome": "hold",
+        "decision_doc": "docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. L1 control; 0.0% epilepsy_cause F1; nine-family v1.2 pass.",
+    },
+    {
+        "experiment_id": "exect_s3_cause_k0_k1_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s3_epilepsy_cause_bridge_gpt_cap25_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g1_l1_policy_bridges",
+        "implementation_variant": "cause_synonym_plural_v1+cause_modifier_strip_v1",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["H1_post_deterministic"],
+        "interleaving_positions": ["post"],
+        "clinical_task_family": ["multi_family"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s3_field_family_v1_2_label_policy",
+        "schema_complexity": "exect_s3",
+        "schema_level": "exect_s3_field_family",
+        "scorer": "exect_s3_field_family_deterministic_v1",
+        "headline_metric_field": "epilepsy_cause",
+        "outcome": "hold",
+        "decision_doc": "docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. K0+K1 CUIPhrase bridges; 20.0% epilepsy_cause F1 (+20pp vs L1); cap-25 proceed.",
+    },
+]
+
 EXECT_PROMPT_GRAPH_ROWS = [
     {
         "experiment_id": "exect_s1_prompt_graph_pg0_single_pass_cap25_gpt4_1_mini",
@@ -706,6 +822,8 @@ ALL_GRID_ROWS = (
     + GAN_LADDER_ROWS
     + GAN_CAP50_ROWS
     + EXECT_GRID_ROWS
+    + EXECT_S4_FREQUENCY_ROWS
+    + EXECT_S3_CAUSE_ROWS
     + EXECT_PROMPT_GRAPH_ROWS
 )
 
@@ -734,14 +852,30 @@ def _gan_headline_from_metrics(metrics_path: Path) -> dict | None:
     }
 
 
-def _exect_headline_from_metrics(metrics_path: Path) -> dict | None:
+def _exect_headline_from_metrics(
+    metrics_path: Path,
+    *,
+    primary_field: str | None = None,
+) -> dict | None:
     metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
     bench = metrics.get("benchmark_metrics") or {}
+    diag = metrics.get("diagnostic_metrics") or {}
+    field_f1 = bench.get("field_f1") or {}
+    if primary_field:
+        value = field_f1.get(primary_field)
+        if value is None:
+            return None
+        return {
+            "name": f"{primary_field}_f1",
+            "value": value,
+            "secondary": {
+                "micro_f1": bench.get("micro_f1"),
+                "evidence_quote_support_rate": diag.get("evidence_quote_support_rate"),
+            },
+        }
     micro_f1 = bench.get("micro_f1")
     if micro_f1 is None:
         return None
-    diag = metrics.get("diagnostic_metrics") or {}
-    field_f1 = bench.get("field_f1") or {}
     return {
         "name": "micro_f1",
         "value": micro_f1,
@@ -843,8 +977,19 @@ def _build_exect_row(spec: dict) -> dict | None:
     metrics_path = run_dir / "metrics.json"
     if not metrics_path.exists():
         return None
-    headline = _exect_headline_from_metrics(metrics_path)
+    headline = _exect_headline_from_metrics(
+        metrics_path,
+        primary_field=spec.get("headline_metric_field"),
+    )
     config_path = ROOT / "configs" / "experiments" / f"{spec['experiment_id']}.json"
+    schema_complexity = spec.get("schema_complexity", "exect_s1")
+    schema_level = spec.get("schema_level", "exect_s0_s1_field_family")
+    scorer = spec.get("scorer", "exect_field_family_deterministic_v1")
+    scope_label = (
+        "ExECT S4 field-family diagnostics"
+        if schema_complexity == "exect_s4"
+        else "partial ExECT S0/S1 diagnostics"
+    )
     llm_roles = [
         "benchmark_policy_application",
         "clinical_field_extraction",
@@ -878,7 +1023,7 @@ def _build_exect_row(spec: dict) -> dict | None:
     return {
         "experiment_id": spec["experiment_id"],
         "dataset": "exect_v2",
-        "schema_complexity": "exect_s1",
+        "schema_complexity": schema_complexity,
         "clinical_task_family": spec["clinical_task_family"],
         "model_track": "gpt4_1_mini",
         "program_architecture": spec["program_architecture"],
@@ -896,8 +1041,8 @@ def _build_exect_row(spec: dict) -> dict | None:
         "example_strategy": "manual_few_shot_or_policy_examples",
         "comparison_group": spec["comparison_group"],
         "fixed_controls": {
-            "schema_level": "exect_s0_s1_field_family",
-            "scorer": "exect_field_family_deterministic_v1",
+            "schema_level": schema_level,
+            "scorer": scorer,
             "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
             "split": "exectv2_fixed_v1:validation",
         },
@@ -908,9 +1053,10 @@ def _build_exect_row(spec: dict) -> dict | None:
         "decision_doc": spec["decision_doc"],
         "metric_caveats": [
             "Cap-25 search grid under hybrid pipeline pivot; not mechanism closure.",
-            "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+            f"These are {scope_label}, not published ExECTv2 benchmark reproduction.",
             f"stage_graph_id={spec.get('stage_graph_id')}; "
-            f"stage_executor={spec.get('stage_executor', 'n/a')}.",
+            f"stage_executor={spec.get('stage_executor', 'n/a')}; "
+            f"implementation_variant={spec.get('implementation_variant', 'n/a')}.",
         ],
         "artifact_paths": [f"runs/{run_dir.name}"],
         "headline_metric": headline,

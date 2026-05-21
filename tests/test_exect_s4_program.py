@@ -4,18 +4,20 @@ from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S4_FIELD_FAMILIES,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
-    EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     ExectS4FieldFamilyModule,
     ExectS4FrequencyPreVocabFieldFamilyModule,
+    ExectS4FrequencyStructuredSlotsFieldFamilyModule,
     build_exect_s4_module,
     build_precomputed_seizure_frequency_candidates,
     format_note_with_precomputed_seizure_frequency_candidates,
@@ -194,9 +196,19 @@ def test_build_exect_s4_module_returns_same_single_pass_for_mt_non_asm_guard():
     assert isinstance(module, ExectS4FieldFamilyModule)
 
 
+def test_build_exect_s4_module_returns_same_single_pass_for_cause_bridge_k0_k1():
+    module = build_exect_s4_module(EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT)
+    assert isinstance(module, ExectS4FieldFamilyModule)
+
+
 def test_build_exect_s4_module_returns_same_single_pass_for_frequency_post_merge():
     module = build_exect_s4_module(EXECT_S4_FREQUENCY_POST_MERGE_VARIANT)
     assert isinstance(module, ExectS4FieldFamilyModule)
+
+
+def test_build_exect_s4_module_returns_structured_slots_module():
+    module = build_exect_s4_module(EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT)
+    assert isinstance(module, ExectS4FrequencyStructuredSlotsFieldFamilyModule)
 
 
 def test_recover_s4_seizure_frequency_values_post_merge_abstains_without_note_support():
@@ -217,6 +229,26 @@ def test_recover_s4_seizure_frequency_values_control_skips_post_merge():
     )
     assert recovered == ["1 per 3 week"]
     assert "s4_bridge:note_anchored_frequency_merged" not in flags
+
+
+def test_recover_s4_seizure_frequency_values_structured_slots_uses_retention():
+    recovered, flags = _recover_s4_seizure_frequency_values(
+        ["1 per 3 week"],
+        (
+            "He has about one focal seizure every three weeks and the frequency "
+            "has increased."
+        ),
+        program_variant=EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
+    )
+    assert recovered == ["1 per 3 week", "frequency increased"]
+    assert any(
+        flag in flags
+        for flag in (
+            "s4_bridge:multi_label_slot_filled",
+            "s4_bridge:frequency_co_label_multi_label_retained",
+            "s4_bridge:frequency_co_label_augmented",
+        )
+    )
 
 
 def test_predict_exect_s4_temporality_post_classifier_applies_evidence_aligned_recovery():
@@ -332,6 +364,97 @@ def test_predict_exect_s4_mt_non_asm_guard_drops_non_asm_keeps_asm_status():
     assert prediction_set.predictions[0].metadata["post_guard"][
         "medication_temporality"
     ] == "exect.medication_temporality.non_asm_guard.v1"
+
+
+def _empty_s4_dummy_answer(**overrides):
+    answer = {
+        "reasoning": "Fixture answer.",
+        "diagnosis": [],
+        "diagnosis_evidence": [],
+        "seizure_type": [],
+        "seizure_type_evidence": [],
+        "annotated_medication": [],
+        "annotated_medication_evidence": [],
+        "investigation": [],
+        "investigation_evidence": [],
+        "comorbidity": [],
+        "comorbidity_evidence": [],
+        "birth_history": [],
+        "birth_history_evidence": [],
+        "onset": [],
+        "onset_evidence": [],
+        "epilepsy_cause": [],
+        "epilepsy_cause_evidence": [],
+        "when_diagnosed": [],
+        "when_diagnosed_evidence": [],
+        "seizure_frequency": [],
+        "seizure_frequency_evidence": [],
+        "medication_temporality": [],
+        "medication_temporality_evidence": [],
+    }
+    answer.update(overrides)
+    return answer
+
+
+def test_predict_exect_s4_cause_bridge_k0_k1_strips_early_life_meningitis():
+    record = load_exect_gold_document("EA0059")
+    dspy.configure(
+        lm=DummyLM(
+            answers=[
+                _empty_s4_dummy_answer(
+                    epilepsy_cause=["early life meningitis"],
+                    epilepsy_cause_evidence=["early life meningitis"],
+                )
+            ]
+        )
+    )
+
+    prediction_set = predict_exect_s4_records(
+        build_exect_s4_module(EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+    )
+
+    cause = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "epilepsy_cause"
+    ]
+    assert cause == ["meningitis"]
+    assert prediction_set.predictions[0].metadata["post_bridge"]["epilepsy_cause"] == (
+        "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
+    )
+
+
+def test_predict_exect_s4_default_preserves_unbridged_epilepsy_cause():
+    record = load_exect_gold_document("EA0059")
+    dspy.configure(
+        lm=DummyLM(
+            answers=[
+                _empty_s4_dummy_answer(
+                    epilepsy_cause=["early life meningitis"],
+                    epilepsy_cause_evidence=["early life meningitis"],
+                )
+            ]
+        )
+    )
+
+    prediction_set = predict_exect_s4_records(
+        ExectS4FieldFamilyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+    )
+
+    cause = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "epilepsy_cause"
+    ]
+    assert cause == ["early life meningitis"]
+    assert "post_bridge" not in prediction_set.predictions[0].metadata
 
 
 def test_build_precomputed_seizure_frequency_candidates_from_note_text():

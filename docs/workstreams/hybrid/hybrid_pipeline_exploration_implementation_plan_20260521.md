@@ -25,8 +25,16 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 | 8 — Gan exact-frequency slot payload | **Done (hold, cap-25)** | S1 +8pp monthly vs S0 52%; residual 30-record replay null — `docs/experiments/gan/gan_s0_exact_frequency_slot_payload_gpt_cap25_v1_inspection_20260521.md` |
 | 8b — Gan expanded builders cap-50 confirm | **Done (confirm, arm)** | B0 68% vs pre-expansion 62% (+6pp) — `docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md` |
 | 7 — Gan full-validation F0 | **Done (promote, arm)** | F0 **68.1%** monthly vs VR anchor **65.1%** (+3.0pp) — `docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_full_validation_v1_inspection_20260521.md` |
+| 5d-a — ExECT S1-S3 residual synthesis | **Done** | Full-val reads + qualitative queue/taxonomy: `exect_s1_s3_residual_qualitative_queue_and_taxonomy_20260521.md` |
+| 5f — ExECT S1–S3 P0 fixtures | **Done** | K0+K1 cause bridge, S2 C0/C0+C1 comorbidity, S2 I0 investigation guard — tests green |
+| 5g — ExECT S1–S3 cap-25 grids | **Done** | Comorbidity null (85.7% all arms); I0 investigation **+5.6pp** — inspections `exect_s2_comorbidity_surface_bridge_gpt_cap25_v1_inspection_20260521.md`, `exect_ladder_investigation_guard_gpt_cap25_v1_inspection_20260521.md` |
+| 5h — ExECT S3 cause-bridge cap-25 | **Done** | K0+K1 **+20pp** cause F1 (1/25 doc); hold proceed — `exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md` |
+| 5i — ExECT S3 cause-bridge full-val prereg | **Done** | 3-doc residual replay null; prereg + configs ready — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_preregistration_20260521.md` |
+| 5j — ExECT S3 cause-bridge full validation | **Done** | K0+K1 +11.1pp cause F1; hold operational candidate — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
+| 5k — ExECT S4 cause-bridge full validation | **Done** | K0+K1 +10.6pp cause F1; guards pass — `exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
 | 5d — ExECT S4 residual synthesis | **Done** | Full-val read `docs/experiments/exect/exect_s4_residual_error_analysis_20260521.md`; anchors `…071248Z` (GPT) / `…160914Z` (Qwen) |
 | 5e — ExECT S4 frequency surface repair (Axis 3) | **Done (reject, arm)** | R1 post-merge −2.9pp vs R0 on cap-25 — `docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md` |
+| 5e — ExECT S4 frequency structured slots (Axis 3) | **Done (hold, inconclusive)** | S2 **51.0%** = R0 on cap-25 — `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` |
 
 **Phase 2 headline:** A3 `g2_candidates_adjudicate` (temporal candidates → single-pass adjudicate) leads at **52%** monthly on cap-25; promoted skeleton A5 `g3_candidates_extract_repair` ties direct at **44%**. Verify-repair erases A3 label gains on this slice (A3 vs A5: 15/25 identical).
 
@@ -64,10 +72,23 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 20. ~~**ExECT S4 G0 guard cap-25 + full validation**~~ **Done (hold, operational candidate)** — full-val +11.3pp MT precision, +9.5pp MT F1 — `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_full_validation_v1_inspection_20260521.md`
 21. ~~**Next (Gan):** execute expanded builders + VR bundle V1~~ **Done (hold, arm)** — V1 **65.8%** monthly; F0 **68.1%** (−2.3pp); pre-exp VR **65.1%** (+0.7pp) — `docs/experiments/gan/gan_s0_expanded_builders_vr_gpt_full_validation_v1_inspection_20260521.md`
 22. ~~**Next (Gan, optional):** targeted builder gaps (seizure-type priority, long-window cluster phrasing)~~ **Done (builders)** — 24/30 gold-in-candidate; residual replay v3 **76.7%** monthly (+13.4pp vs v2) — `docs/experiments/gan/gan_s0_expanded_builders_residual_slice_replay_v3_20260521.md`
-23. **Next (ExECT S4, optional):** frequency Axis 3 only with **new** `implementation_variant` (structured frequency slots / multi-label retention); do **not** rerun R1 post-merge; do **not** port Gan monthly normalization
-24. **Defer (ExECT S4):** onset / when-diagnosed / epilepsy-cause / birth-history model spend until annotation-surface policy is decided; use qualitative queue EA0150, EA0016, EA0137, EA0143, EA0059 for cross-family reads
+23. ~~**Next (ExECT S4, optional):** frequency Axis 3 structured slots + multi-label retention~~ **Done (hold, inconclusive)** — S2 **51.0%** frequency F1 = R0; inspection `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md`; run `…T075559Z`
+24. ~~**Defer (ExECT S4):** sparse-family model spend until annotation-surface policy is decided~~ **Policy memo done** — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md`; **annotation-faithful + CUIPhrase bridges** selected; cap-25 model sweeps still deferred until bridge scaffolds exist
+25. ~~**ExECT S1–S3 P0 fixtures**~~ **Done** — K0+K1 `_recover_s3_epilepsy_cause_raw_values`, S2 C0/C1 comorbidity tiers, S2 I0 ECG guard; `tests/test_exect_s3_epilepsy_cause_bridge.py`, `tests/test_exect_s2_program.py`
+26. ~~**ExECT S1–S3 cap-25 grids**~~ **Done** — comorbidity C0/C0+C1 null on cap-25; I0 investigation +5.6pp (hold proceed)
+27. ~~**Next (ExECT S1–S3):** port I0 investigation guard to S3/S4 recovery~~ **Done** — `ladder_investigation_guard_bridge_tiers()` on S3/S4 recovery
+28. ~~**ExECT S1–S3:** comorbidity residual-slice replay~~ **Done** — C0 +14pp on 6-doc queue — `docs/experiments/exect/exect_s2_comorbidity_residual_slice_replay_20260521.md`
+29. ~~**ExECT S1–S3:** S3 cause-bridge cap-25 prereg~~ **Done** — `docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_preregistration_20260521.md` + configs
+30. ~~**Next (ExECT S1–S3):** run S3 cause-bridge cap-25 grid (L1 vs K0+K1)~~ **Done** — K0+K1 +20pp cause F1; 1/25 doc (EA0059 meningitis); inspection `exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md`
+31. ~~**Next (ExECT S4, no-model):** wire promoted S3 cause bridge into S4 artifact path when fixtures pass~~ **Done** — `EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT` routes K0+K1 via `_s3_field_values_from_prediction`; tests in `test_exect_s4_program.py`
+32. ~~**Next (ExECT S1–S3, optional):** S3 cause-bridge full-validation prereg on qualitative queue (EA0150, EA0016, EA0137)~~ **Done** — prereg + configs + 3-doc residual replay (null on anchor) — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_preregistration_20260521.md`, `exect_s3_epilepsy_cause_residual_slice_replay_20260521.md`
+33. ~~**Next (ExECT S1–S3):** run S3 cause-bridge full validation (L1 vs K0+K1, ~40 records each)~~ **Done** — K0+K1 +11.1pp cause F1 (1 TP EA0059); hold operational candidate — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`
+34. ~~**Next (parallel, research hygiene):** audit run metadata for validation/repair outcomes (Kanban Literature Card 5)~~ **Done** — `docs/experiments/synthesis/run_metadata_validation_repair_audit_20260521.md`
+35. ~~**Next (ExECT S4):** run S4 cause-bridge full validation (L1 vs K0+K1, regression guards MT/frequency/investigation)~~ **Done** — K0+K1 +10.6pp cause F1; hold operational candidate — `exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`
 
 **S4 residual headline (full validation, GPT v1.2):** pooled micro **65.5%**; dominant burden is **medication_temporality** precision (52 FP, 62.5% F1) and **seizure_frequency** (45.7% F1, 28 FP / 22 FN). Sparse surface families (onset, when_diagnosed) are poor F1 but low support — not primary search budget. See Phase 5d.
+
+**ExECT S1-S3 residual headline:** S1 GPT is near ceiling (**92.3%** micro) and should not receive broad prompt churn. S2 (**80.9%**) and S3 (**72.1%**) show schema-breadth drift: comorbidity remains the main high-support weakness, seizure surfaces degrade in wider passes, S3 medication becomes precision-limited, and sparse S3 families are annotation-surface-bound. Use S1/S2/S3 residual queues as regression guards and no-model policy inputs, not as justification for unscoped validation retuning.
 
 ---
 
@@ -249,6 +270,56 @@ Inspection: `docs/experiments/exect/exect_s1_stage_executor_gpt_cap25_v1_inspect
 
 **Do not** claim “H2 pre-vocab closed” without new `implementation_variant` IDs in prereg.
 
+### 5d-a — ExECT S1-S3 residual ladder synthesis — **DONE**
+
+**Sources:**
+
+- S1: `docs/experiments/exect/exect_s1_residual_error_analysis_20260521.md`
+- S2: `docs/experiments/exect/exect_s2_residual_error_analysis_20260521.md`
+- S3: `docs/experiments/exect/exect_s3_residual_error_analysis_20260521.md`
+
+**Full-validation anchors:**
+
+| Level | GPT anchor | Micro F1 | Main residual read |
+| --- | --- | ---: | --- |
+| S1 | `runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z` | **92.3%** | Near ceiling; residuals are small annotation-boundary cases, especially seizure modifier/uncertainty leakage. |
+| S2 | `runs/exect_s2_validation_full_gpt4_1_mini_20260519T231223Z` | **80.9%** | Comorbidity surface/atomization mismatch plus seizure drift inside five-family prompt. |
+| S3 | `runs/exect_s3_validation_full_gpt4_1_mini_20260519T235439Z` | **72.1%** | v1.2 repaired investigation/seizure collapses; remaining burden is comorbidity/medication drift plus sparse S3 surface families. |
+| S4 | `runs/exect_s4_validation_full_gpt4_1_mini_20260520T071248Z` | **65.5%** | Medication-temporality precision and seizure-frequency templates dominate; sparse families remain low-support policy issues. |
+
+**Hybrid-program implication:** the ladder does not support one broad “better ExECT prompt” objective. It supports family-specific Axis 3 cells and staged/regression-guard design:
+
+| Residual class | Levels | Recommended handling |
+| --- | --- | --- |
+| S1 residuals | S1 | Keep as qualitative regression queue; broad validation retuning is low value. |
+| Comorbidity surface/atomization | S2-S4 | No-model taxonomy and narrow surface-policy prereg; protect seizure and investigation. |
+| Medication precision drift | S3-S4 | Narrow guards only; avoid S1 medication pre-vocab reruns. |
+| Investigation modality/result | S2-S4 | Treat as regression guard after v1.2/v1.3 repairs. |
+| Sparse annotation-surface families | S3-S4 | Policy/bridge work before model sweeps; pooled micro is a poor objective. |
+| Seizure legacy surfaces | S1-S4 | Negative guards for generic modifiers/timing leakage; do not reopen rejected static pre-vocab arms without new variant IDs. |
+
+**Queued no-model work (complete):**
+
+| # | Task | Status | Deliverable |
+| --- | --- | --- | --- |
+| 1 | S1 residual qualitative tags | Done | `docs/experiments/exect/exect_s1_s3_residual_qualitative_queue_and_taxonomy_20260521.md` § S1 queue |
+| 2 | S2 residual qualitative tags | Done | same doc § S2 queue |
+| 3 | S3 residual qualitative tags | Done | same doc § S3 queue |
+| 4 | Cross-level residual taxonomy | Done | same doc § taxonomy + cross-level patterns |
+
+**Decision scope:** operational synthesis only. These residual reads do not mechanism-close staged extraction, bridge placement, pre-vocab hints, verification, or sparse-family repair.
+
+**Targeted actions (5d-style, no-model designs):** `docs/experiments/exect/exect_s1_s3_residual_targeted_actions_20260521.md`
+
+| Residual class | Design doc | Next implementation step |
+| --- | --- | --- |
+| Comorbidity atomization (S2–S4) | `exect_s2_comorbidity_surface_policy_design_20260521.md` | C0 fixtures + `exect_s2_comorbidity_surface_bridge_gpt_cap25_v1` prereg |
+| Investigation regression (S2–S4) | `exect_ladder_investigation_regression_guard_design_20260521.md` | I0 fixtures + S2 cap-25 |
+| Sparse cause/onset/when/birth (S3–S4) | `exect_s3_epilepsy_cause_cui_phrase_bridge_design_20260521.md` + S4 sparse policy | EC-* fixture tests; no model until green |
+| Medication precision (S3) | `exect_s3_annotated_medication_precision_guard_design_20260521.md` | M0 shared with S4 G0 |
+| Seizure drift (S1–S4) | `exect_ladder_seizure_surface_regression_design_20260521.md`, `exect_s1_seizure_modifier_negative_guard_design_20260521.md` | S1 N0 residual slice → S2 cap-25 |
+| Diagnosis specificity (S1–S3) | — | Hold — regression queue only |
+
 ### 5d — ExECT S4 post-full-validation synthesis (week 8+) — **DONE (synthesis); targeted Axis 3 queue open**
 
 **Source:** `docs/experiments/exect/exect_s4_residual_error_analysis_20260521.md`  
@@ -278,7 +349,7 @@ Inspection: `docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_
 | --- | --- | --- | --- |
 | 1 | Medication precision guard prereg | 3 | No-model FP taxonomy: non-ASM vs planned/previous vs brand/generic; target MT precision without H1-style recall collapse |
 | 2 | Frequency structured-slot or template-retention variant | 3 | ≥+3pp `seizure_frequency` F1 on cap-25; no ≥2pp regression on investigation, seizure_type, annotated_medication |
-| 3 | Sparse-family surface policy memo | — | Annotation-faithful vs clinical-normalized vs defer until CUI reproduction |
+| 3 | Sparse-family surface policy memo | — | **Done** — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md`; annotation-faithful + bridges |
 | 4 | Cross-family qualitative queue | — | EA0150, EA0016, EA0137, EA0143, EA0059 (+ EA0052, EA0136, EA0153, EA0109, EA0179); tag scorer-surface vs over-extraction vs evidence |
 
 **Do not** mechanism-close “S4 hybrid placement” or “frequency repair” from cap-25 R1 alone. Evidence guards may help precision but broad abstention **arm-rejects** from prior work.
@@ -327,8 +398,18 @@ Gan optimizer cells attach to **winning stage graph** from Phase 2, not direct-o
 | Gan implementation sweep | 4 | 3 | **Done** |
 | ExECT S1 stage-graph grid | 5a | 1 | **Done** |
 | ExECT S1 executor/bridge grid | 5b | 2 | **Done** |
+| ExECT S1 residual synthesis | 5d-a | — | **Done** — `docs/experiments/exect/exect_s1_residual_error_analysis_20260521.md` |
+| ExECT S2 residual synthesis | 5d-a | — | **Done** — `docs/experiments/exect/exect_s2_residual_error_analysis_20260521.md` |
+| ExECT S3 residual synthesis | 5d-a | — | **Done** — `docs/experiments/exect/exect_s3_residual_error_analysis_20260521.md` |
+| ExECT S1–S3 qualitative queue + taxonomy | 5d-a | — | **Done** — `docs/experiments/exect/exect_s1_s3_residual_qualitative_queue_and_taxonomy_20260521.md` |
+| ExECT S1–S3 targeted action designs | 5d-a | 3 | **Done** — `docs/experiments/exect/exect_s1_s3_residual_targeted_actions_20260521.md` + per-class design memos |
 | ExECT S4 residual synthesis | 5d | — | **Done** — `docs/experiments/exect/exect_s4_residual_error_analysis_20260521.md` |
 | ExECT S4 frequency surface repair | 5e | 3 | **Done** — R1 reject (arm); R0 hold |
+| ExECT S4 frequency structured slots | 5e | 3 | **Done** — S2 hold inconclusive 51.0% = R0 — `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` |
+| ExECT S4 sparse-family surface policy | 5d | — | **Done** — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md` |
+| ExECT S3 cause-bridge cap-25 | 5h | 3 | **Done** — K0+K1 +20pp cause F1; hold proceed — `docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md` |
+| ExECT S3 cause-bridge full-val prereg | 5i | 3 | **Done** — prereg + 3-doc residual replay null — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_preregistration_20260521.md` |
+| ExECT S3 cause-bridge full validation | 5j | 3 | **Done** — K0+K1 +11.1pp cause F1; hold operational candidate — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
 | Gan expanded builders VR bundle full validation | 7 | 3 | **Done (hold, arm)** — V1 65.8%; F0 68.1% remains monthly leader — `docs/experiments/gan/gan_s0_expanded_builders_vr_gpt_full_validation_v1_inspection_20260521.md` |
 | ExECT S4 medication precision guard | 5d queue | 3 | **Done** — G0 hold operational candidate; full-val inspection `exect_s4_medication_precision_guard_gpt_full_validation_v1_inspection_20260521.md` |
 | Optimizer automation thesis | 6 | 3 | **Done** — 4a–4c reject thesis; partial hold 4a/4c |
@@ -356,6 +437,7 @@ Gan optimizer cells attach to **winning stage graph** from Phase 2, not direct-o
 | Config explosion | Cap-25 only; preregister grids; generator script |
 | Bridge confound on ExECT | Tag `bridge_mode`; run bridge-free diagnostics in parallel |
 | S4 pooled micro hides family divergence | Rank and preregister per-family; GPT vs Qwen as separate tracks |
+| S2/S3 pooled micro hides inherited-family drift | Use residual queues and per-family regression guards; do not treat ladder micro as a single trajectory |
 | Gan frequency mechanisms ported to ExECT | ExECT S4 wants template/co-label surfaces; Gan monthly normalization is wrong target |
 | Sparse S4 families inflate “easy wins” | Fix surface policy before cap-25 sweeps on onset/when-diagnosed/cause/birth |
 | Retag churn | Mechanism status doc; incremental registry notes |
