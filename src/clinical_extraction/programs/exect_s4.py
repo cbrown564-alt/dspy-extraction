@@ -39,6 +39,7 @@ from clinical_extraction.exect.primitives import (
     format_exect_frequency_pre_vocab_note as format_note_with_precomputed_seizure_frequency_candidates,
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
+    recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
@@ -59,6 +60,9 @@ EXECT_S4_FREQUENCY_POST_MERGE_VARIANT = (
 )
 EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT = (
     "exect_s4_field_family_temporality_post_classifier_single_pass"
+)
+EXECT_S4_MT_GUARD_NON_ASM_VARIANT = (
+    "exect_s4_field_family_mt_guard_non_asm_single_pass"
 )
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
@@ -345,6 +349,7 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
     if program_variant in {
         EXECT_S4_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     }:
         return ExectS4FieldFamilyModule()
@@ -411,6 +416,10 @@ def _predict_s4_record(
         metadata["post_classifier"] = {
             "medication_temporality": "exect.medication_temporality.post_classifier.v1"
         }
+    if program_variant == EXECT_S4_MT_GUARD_NON_ASM_VARIANT:
+        metadata["post_guard"] = {
+            "medication_temporality": "exect.medication_temporality.non_asm_guard.v1"
+        }
     return DocumentPrediction(
         document_id=record.document_id,
         dataset=EXECT_DATASET,
@@ -475,6 +484,12 @@ def _s4_field_values_from_prediction(
     temporality_evidence = _as_list(getattr(pred, "medication_temporality_evidence", []))
     if program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT:
         temporality_raw, _ = recover_exect_medication_temporality_with_post_classifier(
+            temporality_predictions,
+            temporality_evidence,
+            record.text,
+        )
+    elif program_variant == EXECT_S4_MT_GUARD_NON_ASM_VARIANT:
+        temporality_raw, _ = recover_exect_medication_temporality_non_asm_guard(
             temporality_predictions,
             temporality_evidence,
             record.text,
@@ -652,9 +667,9 @@ def exect_s4_run_metadata(
         metric_caveats=[
             "These are partial ExECT S4 diagnostics (S3 + seizure frequency + Rx temporality), not published ExECTv2 Table 1 reproduction.",
             "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families without editing exect_s3.py.",
-            "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
+            "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
             "Medication temporality gold is inferred from Prescription span text; JSON has no temporality column.",
-            "Overlapping phrases across families are scored independently; see docs/exect_s3_phase1_overlap_policy.md.",
+            "Overlapping phrases across families are scored independently; see docs/experiments/exect/exect_s3_phase1_overlap_policy.md.",
             "Pooled micro F1 across eleven families is not comparable to S3 nine-family or S2 five-family headlines.",
             "Evidence quote support is diagnostic and should be reported separately from label metrics.",
         ],

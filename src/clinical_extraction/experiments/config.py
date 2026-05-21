@@ -33,6 +33,7 @@ from clinical_extraction.programs.exect_s3 import (
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
@@ -225,6 +226,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s4_field_family_frequency_pre_vocab_single_pass",
         "exect_s4_field_family_frequency_post_merge_single_pass",
         "exect_s4_field_family_temporality_post_classifier_single_pass",
+        "exect_s4_field_family_mt_guard_non_asm_single_pass",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -328,6 +330,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
                         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
                         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+                        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
                     },
                     EXECT_S4_SCORER,
                 ),

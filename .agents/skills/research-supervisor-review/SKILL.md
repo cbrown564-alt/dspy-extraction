@@ -22,10 +22,10 @@ Start with the minimum evidence needed for the review:
 
 1. `AGENTS.md`
 2. `docs/outline.md`
-3. `docs/kanban_plan.md`, if present
+3. `docs/planning/kanban_plan.md`, if present
 4. relevant audit docs before judging dataset, schema, scorer, benchmark, or evaluation work:
-   - `docs/exect_gold_label_audit.md`
-   - `docs/gan_2026_label_audit.md`
+   - `docs/datasets/exect/exect_gold_label_audit.md`
+   - `docs/datasets/gan/gan_2026_label_audit.md`
 5. recent research logs, synthesis docs, error analyses, experiment reports, or run artifacts relevant to the active workstream
 6. recent git history and current changed files
 

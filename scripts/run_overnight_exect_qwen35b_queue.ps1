@@ -1,5 +1,5 @@
 # Sequential overnight queue: ExECT Qwen3.6:35b ladder Phases 0-2.
-# See docs/exect_qwen35b_ladder_replication_plan.md
+# See docs/experiments/exect/exect_qwen35b_ladder_replication_plan.md
 $ErrorActionPreference = "Stop"
 $PSNativeCommandUseErrorActionPreference = $false
 Set-Location "C:\Users\cbrow\Code\dspy-extraction"

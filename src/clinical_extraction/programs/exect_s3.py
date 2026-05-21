@@ -711,7 +711,7 @@ def exect_s3_run_metadata(
             "These are partial ExECT S3 diagnostics (S2 + birth/onset/cause/when-diagnosed), not published ExECTv2 Table 1 reproduction.",
             "S2 label-policy bridges from frozen v1.3 are reused for S1 and S2 families without editing exect_s2.py.",
             "S3 gold uses CUIPhrase surfaces; temporal ages and years are not benchmark labels in Phase 1.",
-            "Overlapping phrases across families are scored independently; see docs/exect_s3_phase1_overlap_policy.md.",
+            "Overlapping phrases across families are scored independently; see docs/experiments/exect/exect_s3_phase1_overlap_policy.md.",
             "Evidence quote support is diagnostic and should be reported separately from label metrics.",
         ],
         metadata={

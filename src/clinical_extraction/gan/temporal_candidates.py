@@ -111,6 +111,8 @@ def build_temporal_frequency_candidates_from_note(
     candidates.extend(_breakthrough_after_months_seizure_free(note_text))
     candidates.extend(_withdrawal_moment_seizure_count(note_text))
     candidates.extend(_vague_grouped_spells_unknown(note_text))
+    candidates.extend(_last_convulsive_with_occasional_clusters(note_text))
+    candidates.extend(_daily_seizure_type_frequency(note_text))
     return _dedupe_candidates(candidates)
 
 
@@ -999,6 +1001,81 @@ def _vague_grouped_spells_unknown(
             window_unit="",
             evidence_text=evidence,
             derivation="grouped spells without benchmark-derivable cluster spacing",
+        )
+    ]
+
+
+def _months_between_month_year(clinic_date: date, month: int, year: int) -> int:
+    return max(1, (clinic_date.year - year) * 12 + clinic_date.month - month)
+
+
+def _last_convulsive_with_occasional_clusters(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*last convulsive seizure was recorded in "
+        r"(?:(?P<month_slash>\d{1,2})/(?P<year_slash>\d{4})|"
+        r"(?P<month_dash>\d{1,2})\s*-\s*(?P<year_dash>\d{4})), "
+        r"with occasional clusters of [^.]+ persisting[^.]*\.)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    clinic_date = _clinic_date(note_text)
+    if clinic_date is None:
+        return []
+
+    if match.group("month_slash"):
+        start_month = int(match.group("month_slash"))
+        start_year = int(match.group("year_slash"))
+    else:
+        start_month = int(match.group("month_dash"))
+        start_year = int(match.group("year_dash"))
+    window_months = _months_between_month_year(clinic_date, start_month, start_year)
+    evidence = match.group("evidence").strip()
+    canonical_label = (
+        f"multiple cluster per {window_months} month, multiple per cluster"
+    )
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=canonical_label,
+            event_count="multiple cluster",
+            window_count=str(window_months),
+            window_unit="month",
+            evidence_text=evidence,
+            derivation=(
+                "occasional clusters persisting since last convulsive seizure; "
+                "long-window cluster spacing from last convulsive month/year to clinic"
+            ),
+        )
+    ]
+
+
+def _daily_seizure_type_frequency(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>[^.]*\bdaily "
+        r"(?:drop attacks|absences|myoclonic jerks|myoclonic events)[^.]*\.)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label="1 per day",
+            event_count="1",
+            window_count="1",
+            window_unit="day",
+            evidence_text=evidence,
+            derivation=(
+                "explicit daily seizure-type frequency for concurrent-type selection"
+            ),
         )
     ]
 

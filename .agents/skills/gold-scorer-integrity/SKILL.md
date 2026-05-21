@@ -10,9 +10,9 @@ Scoring is part of the research claim. Treat scorer changes as high-risk even wh
 Follow this workflow:
 
 1. Read the relevant dataset audit before changing scorer behavior:
-   - ExECTv2: `docs/exect_gold_label_audit.md`
-   - Gan: `docs/gan_2026_label_audit.md`
-2. Check whether benchmark normalization or bridge behavior already exists as a typed primitive in `docs/taxonomy_primitive_catalog.md` before changing scorer-adjacent helper code.
+   - ExECTv2: `docs/datasets/exect/exect_gold_label_audit.md`
+   - Gan: `docs/datasets/gan/gan_2026_label_audit.md`
+2. Check whether benchmark normalization or bridge behavior already exists as a typed primitive in `docs/taxonomy/taxonomy_primitive_catalog.md` before changing scorer-adjacent helper code.
 3. Identify whether the scorer is annotation-faithful, clinically corrected, or experimental. Do not mix these modes silently.
 4. Normalize labels before comparing values. Put normalization in explicit functions with focused tests, or reuse an existing benchmark-bridge primitive.
 5. Preserve field-specific scoring where fields have different semantics.

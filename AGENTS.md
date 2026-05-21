@@ -8,8 +8,8 @@ Start with `docs/outline.md` for the overall research plan.
 
 The two core datasets have important quirks. Read the relevant audit before touching loaders, schemas, scorers, benchmark reproduction, or evaluation logic:
 
-- ExECTv2: `docs/exect_gold_label_audit.md`
-- Gan: `docs/gan_2026_label_audit.md`
+- ExECTv2: `docs/datasets/exect/exect_gold_label_audit.md`
+- Gan: `docs/datasets/gan/gan_2026_label_audit.md`
 
 Treat these audits as active project guidance. If the raw data or implementation appears to disagree with an audit, investigate before changing behavior.
 
@@ -28,7 +28,7 @@ Available project skills:
 - `clinical-schema-design`: use when changing Pydantic models, JSON schemas, DSPy signatures, field groups, validators, or structured outputs.
 - `taxonomy-primitive-design`: use when adding or changing typed primitives, registry metadata, interleaving adapters, benchmark bridges, or primitive fixture cases.
 - `dspy-experiment-design`: use when creating or changing DSPy programs, experiment configs, optimizer runs, ablations, model comparisons, or run tracking.
-- `hybrid-pipeline-exploration`: use when designing stage-count / det-vs-LLM placement grids, writing outcomes with arm-vs-mechanism scope, or updating Kanban mechanism status (pivot: `docs/hybrid_pipeline_research_pivot_20260521.md`).
+- `hybrid-pipeline-exploration`: use when designing stage-count / det-vs-LLM placement grids, writing outcomes with arm-vs-mechanism scope, or updating Kanban mechanism status (pivot: `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md`).
 - `experiment-run-lifecycle`: use when running, reviewing, or scaling model-backed experiments from configs, including dry runs, capped runs, and artifact inspection.
 - `exect-label-policy-alignment`: use when designing, prompting, scoring, or evaluating ExECT benchmark-facing S0/S1 field-family extraction.
 - `gan-frequency-error-forensics`: use when inspecting Gan seizure-frequency run artifacts or deciding the next Gan S0 improvement.
@@ -63,16 +63,16 @@ For experiments:
 
 1. Use `hybrid-pipeline-exploration` and `dspy-experiment-design`, and for model execution, `experiment-run-lifecycle`.
 2. Define the hypothesis, dataset, split, model, schema level, program variant, scorer, and artifacts before running.
-3. Compose deterministic helpers from typed primitives in `docs/taxonomy_primitive_catalog.md` rather than ad hoc program edits.
+3. Compose deterministic helpers from typed primitives in `docs/taxonomy/taxonomy_primitive_catalog.md` rather than ad hoc program edits.
 4. Change one experimental factor at a time unless explicitly testing an interaction.
 5. Preserve failed examples for later error analysis.
 
 For taxonomy primitives:
 
 1. Use `taxonomy-primitive-design`.
-2. Read `docs/taxonomy_primitive_contract.md` and the catalog before changing registry metadata or bridge behavior.
+2. Read `docs/taxonomy/taxonomy_primitive_contract.md` and the catalog before changing registry metadata or bridge behavior.
 3. Run `uv run python scripts/validate_primitives.py --errors-only` after primitive or adapter changes.
-4. See `docs/taxonomy_primitives_workstream_plan_20260520.md` for current status and blocked follow-ups.
+4. See `docs/taxonomy/taxonomy_primitives_workstream_plan_20260520.md` for current status and blocked follow-ups.
 
 For research memory:
 

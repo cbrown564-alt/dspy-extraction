@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from clinical_extraction.exect.primitives import (
+    recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
 )
 
@@ -36,6 +37,39 @@ def test_recover_medication_temporality_post_classifier_keeps_planned():
 
     assert recovered == ["levetiracetam|planned"]
     assert "s4_bridge:medication_temporality_status_reclassified" in flags
+
+
+def test_recover_medication_temporality_non_asm_guard_drops_non_asm():
+    recovered, flags = recover_exect_medication_temporality_non_asm_guard(
+        ["thyroxine|current", "citalopram|current"],
+        ["thyroxine 100mcg daily", "citalopram 20mg daily"],
+        "Current medication: thyroxine and citalopram.",
+    )
+
+    assert recovered == []
+    assert flags.count("s4_bridge:medication_temporality_non_asm_removed") == 2
+
+
+def test_recover_medication_temporality_non_asm_guard_keeps_asm_planned_without_reclassify():
+    recovered, flags = recover_exect_medication_temporality_non_asm_guard(
+        ["levetiracetam|planned"],
+        ["To start levetiracetam 250mg nocte if seizures recur."],
+        "Current medication: Lamictal 100mg BD.",
+    )
+
+    assert recovered == ["levetiracetam|planned"]
+    assert "s4_bridge:medication_temporality_status_reclassified" not in flags
+
+
+def test_recover_medication_temporality_non_asm_guard_keeps_dose_only_current():
+    recovered, flags = recover_exect_medication_temporality_non_asm_guard(
+        ["lamotrigine|current"],
+        ["lamotrigine 150 milligrams twice a day"],
+        "Discussed lamotrigine options at clinic.",
+    )
+
+    assert recovered == ["lamotrigine|current"]
+    assert "s4_bridge:medication_temporality_unknown_removed" not in flags
 
 
 def test_recover_medication_temporality_post_classifier_drops_unknown_without_cues():

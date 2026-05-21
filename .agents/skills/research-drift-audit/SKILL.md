@@ -1,6 +1,6 @@
 ---
 name: research-drift-audit
-description: Use when checking whether recent commits, current development focus, experiment plans, or active implementation work have drifted from the original research proposal, docs/outline.md, docs/kanban_plan.md, or documented research priorities.
+description: Use when checking whether recent commits, current development focus, experiment plans, or active implementation work have drifted from the original research proposal, docs/outline.md, docs/planning/kanban_plan.md, or documented research priorities.
 ---
 
 # Research Drift Audit
@@ -11,8 +11,8 @@ Use this skill when the user asks whether the repo is still aligned with the cor
 
 1. Read the core project direction:
    - `docs/outline.md`
-   - `docs/kanban_plan.md`
-   - `docs/deterministic_foundation_decisions.md`, if relevant
+   - `docs/planning/kanban_plan.md`
+   - `docs/policies/deterministic_foundation_decisions.md`, if relevant
    - latest research synthesis or error-analysis docs for the active workstream
 2. Inspect recent git history and changed files.
 3. Identify the active development focus by file clusters, commit messages, run artifacts, and updated docs.

@@ -2,7 +2,7 @@
 
 Date: YYYY-MM-DD  
 Status: Planned | In progress | Completed  
-Related: `docs/kanban_plan.md`, `docs/experiment_taxonomy_schema.md`, `docs/taxonomy_primitive_catalog.md`
+Related: `docs/planning/kanban_plan.md`, `docs/taxonomy/experiment_taxonomy_schema.md`, `docs/taxonomy/taxonomy_primitive_catalog.md`
 
 ## Research question
 
@@ -16,7 +16,7 @@ One sentence stating what this comparison group decides.
 | `stage_graph_id` | e.g. `g2_candidates_adjudicate` |
 | `decision_scope` target | `arm` (default) \| `mechanism` (only if review criteria met) |
 
-See `docs/hybrid_pipeline_research_pivot_20260521.md` and skill `hybrid-pipeline-exploration`.
+See `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md` and skill `hybrid-pipeline-exploration`.
 
 ## Fixed controls (all arms)
 
@@ -70,6 +70,6 @@ Summarize expected normalization and evidence behavior across arms so post-run i
 
 ## Caveats
 
-- Audit references (`docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`)
+- Audit references (`docs/datasets/exect/exect_gold_label_audit.md`, `docs/datasets/gan/gan_2026_label_audit.md`)
 - Rejected or blocked paths
 - Comparison validity limits

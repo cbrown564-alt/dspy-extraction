@@ -14,7 +14,7 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
 DEFAULT_OUTPUT_DIR = ROOT / "docs" / "research_atlas"
 
 DECISION_OUTCOMES = ("promote", "freeze", "hold", "reject", "superseded", "pending", "exploratory")
@@ -250,13 +250,51 @@ def render_evidence_matrix(reg: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def write_atlas(reg: dict, output_dir: Path) -> None:
+def _render_atlas_index(output_dir: Path) -> str:
+    return "\n".join(
+        [
+            "# Research Atlas",
+            "",
+            "- [Journey](research_atlas/journey.mmd)",
+            "- [Decision map](research_atlas/decision_map.mmd)",
+            "- [Evidence matrix](research_atlas/evidence_matrix.md)",
+            "- [Open frontiers](research_atlas/open_frontiers.md)",
+            "",
+            "Generated from the experiment registry.",
+            "",
+        ]
+    )
+
+
+def _render_open_frontiers(kanban: str) -> str:
+    marker = "## Recommended Next Pull"
+    if marker not in kanban:
+        return "# Open Frontiers\n\nNo `Recommended Next Pull` section found in the Kanban.\n"
+    return "# Open Frontiers\n\n" + kanban[kanban.index(marker) :]
+
+
+def write_atlas(
+    reg: dict,
+    output_dir_or_kanban: Path | str,
+    output_dir: Path | None = None,
+    index_path: Path | None = None,
+) -> None:
+    if output_dir is None:
+        kanban = None
+        output_dir = Path(output_dir_or_kanban)
+    else:
+        kanban = str(output_dir_or_kanban)
+
     output_dir.mkdir(parents=True, exist_ok=True)
     files = {
         output_dir / "journey.mmd": render_journey_mermaid(reg),
         output_dir / "decision_map.mmd": render_decision_map_mermaid(reg),
         output_dir / "evidence_matrix.md": render_evidence_matrix(reg),
     }
+    if kanban is not None:
+        files[output_dir / "open_frontiers.md"] = _render_open_frontiers(kanban)
+    if index_path is not None:
+        files[index_path] = _render_atlas_index(output_dir)
     for path, text in files.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding="utf-8")

@@ -11,12 +11,12 @@ Use this skill when deterministic helpers, benchmark bridges, evidence checks, o
 
 Read in this order:
 
-1. `docs/taxonomy_primitive_contract.md`
-2. `docs/taxonomy_primitive_catalog.md`
-3. `docs/taxonomy_primitives_workstream_plan_20260520.md` for current status and blocked cards
+1. `docs/taxonomy/taxonomy_primitive_contract.md`
+2. `docs/taxonomy/taxonomy_primitive_catalog.md`
+3. `docs/taxonomy/taxonomy_primitives_workstream_plan_20260520.md` for current status and blocked cards
 4. Dataset audit for the target family:
-   - Gan: `docs/gan_2026_label_audit.md`
-   - ExECT: `docs/exect_gold_label_audit.md`
+   - Gan: `docs/datasets/gan/gan_2026_label_audit.md`
+   - ExECT: `docs/datasets/exect/exect_gold_label_audit.md`
 5. Nearby implementation patterns in `src/clinical_extraction/primitives.py` and the relevant dataset pack under `src/clinical_extraction/gan/` or `src/clinical_extraction/exect/`
 
 ## Workflow
@@ -30,7 +30,7 @@ Read in this order:
 4. Implement deterministic logic in the dataset pack. Keep prediction-affecting behavior explicit; default bridges and evidence guards to scorer-only or diagnostic mode unless the experiment requires otherwise.
 5. Add interleaving bindings in `src/clinical_extraction/interleaving_adapters.py` when the primitive must appear at multiple taxonomy positions.
 6. Add focused tests and, when useful, fixture cases in `data/fixtures/primitive_cases.json`.
-7. Update `docs/taxonomy_primitive_catalog.md` if the primitive changes intended comparison groups or caveats.
+7. Update `docs/taxonomy/taxonomy_primitive_catalog.md` if the primitive changes intended comparison groups or caveats.
 8. Run validation before finishing.
 
 ## Registry Rules
@@ -58,8 +58,8 @@ uv run python scripts/validate_experiment_taxonomy.py --errors-only
 
 ## Scope Boundaries
 
-- Minimal H3/tool-during support only. Do not build a broad tool-wrapper framework. See `docs/taxonomy_tool_interface_decision_20260520.md`.
-- Defer CUI/ontology-aware primitives to published benchmark reproduction. See `docs/taxonomy_ontology_cui_scope_decision_20260520.md`.
+- Minimal H3/tool-during support only. Do not build a broad tool-wrapper framework. See `docs/taxonomy/taxonomy_tool_interface_decision_20260520.md`.
+- Defer CUI/ontology-aware primitives to published benchmark reproduction. See `docs/taxonomy/taxonomy_ontology_cui_scope_decision_20260520.md`.
 - Do not promote a primitive merely because it exists. Promotion still requires model-backed comparison groups and inspection documents.
 - Prefer family-specific primitives over broad full-note interventions unless the experiment explicitly tests broad context.
 

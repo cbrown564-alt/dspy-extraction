@@ -11,10 +11,10 @@ Use this skill after a Gan run or when changing Gan S0 repair, verifier, evidenc
 
 Read these before drawing conclusions:
 
-- `docs/gan_2026_label_audit.md`
-- `docs/deterministic_scorer_semantics.md`
-- `docs/taxonomy_primitive_catalog.md` for Gan frequency primitives
-- latest relevant Gan run note, especially `docs/gan_s0_full_validation_error_read.md` when working from the current S0 baseline
+- `docs/datasets/gan/gan_2026_label_audit.md`
+- `docs/policies/deterministic_scorer_semantics.md`
+- `docs/taxonomy/taxonomy_primitive_catalog.md` for Gan frequency primitives
+- latest relevant Gan run note, especially `docs/experiments/gan/gan_s0_full_validation_error_read.md` when working from the current S0 baseline
 - the run's `metrics.json`, `errors.json`, and `predictions.json`
 
 ## Error Triage

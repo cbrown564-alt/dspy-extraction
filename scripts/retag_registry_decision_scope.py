@@ -14,7 +14,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
 
 # Explicit operational anchors (hold/freeze/promote defaults for runs).
 OPERATIONAL_IDS = frozenset(

@@ -1,11 +1,11 @@
-"""Register Gan S0 Lane A cap-25 runs in docs/experiment_registry.json."""
+"""Register Gan S0 Lane A cap-25 runs in docs/experiments/synthesis/experiment_registry.json."""
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
 
 RUNS = [
     ("gan_s0_verification_direct_cap25_gpt4_1_mini", "gan_s0_verification_direct_cap25_gpt4_1_mini_20260520T233555Z", "hold"),
@@ -90,7 +90,7 @@ def base_gan_row() -> dict:
             "split": "gan_2026_fixed_v1:validation",
         },
         "run_scope": "cap25",
-        "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
         "config_paths": None,
     }
 
@@ -138,7 +138,7 @@ def build_row(eid: str, run_id: str, outcome: str) -> dict:
             "prompt_versions": cfg["prompt_version"],
             "notes": NOTES[eid],
             "comparison_caveat": (
-                f"Varied {varied} only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md."
+                f"Varied {varied} only; see docs/experiments/gan/gan_s0_lane_a_gpt_cap25_inspection_20260521.md."
             ),
             "comparison_groups": [comparison_group],
         }

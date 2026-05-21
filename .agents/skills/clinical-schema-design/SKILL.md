@@ -16,8 +16,8 @@ Follow this workflow:
    - schema ladder level S0-S4 from `docs/outline.md`
 2. Read the relevant project context:
    - `docs/outline.md`
-   - `docs/exect_gold_label_audit.md` for ExECTv2 fields
-   - `docs/gan_2026_label_audit.md` for Gan frequency labels
+   - `docs/datasets/exect/exect_gold_label_audit.md` for ExECTv2 fields
+   - `docs/datasets/gan/gan_2026_label_audit.md` for Gan frequency labels
 3. Search for existing schema, validation, scorer, and primitive payload patterns before adding new types.
 4. Design fields so validators and scorers can tell the difference between absent, unknown, negated, historical, planned, and present facts.
 

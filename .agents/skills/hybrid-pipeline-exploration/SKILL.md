@@ -9,10 +9,10 @@ Use this skill for the project's **active research program** after the 2026-05-2
 
 Read first:
 
-- `docs/hybrid_pipeline_research_pivot_20260521.md` — doctrine
-- `docs/hybrid_pipeline_exploration_implementation_plan_20260521.md` — phased queue
-- `docs/hybrid_component_taxonomy_decision_20260520.md` — ontology (`L0`–`D1`, interleaving positions)
-- `docs/hybrid_pipeline_mechanism_status_20260521.md` — open vs arm-reject vs operational freeze
+- `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md` — doctrine
+- `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md` — phased queue
+- `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md` — ontology (`L0`–`D1`, interleaving positions)
+- `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md` — open vs arm-reject vs operational freeze
 
 Pair with `dspy-experiment-design` and `experiment-run-lifecycle` for configs and runs.
 
@@ -160,4 +160,4 @@ Before finishing a task under this skill:
 - Run IDs and comparison group cited
 - Open cells listed (what was not tested)
 - Kanban/registry updated if outcomes changed
-- `docs/hybrid_pipeline_mechanism_status_20260521.md` updated if mechanism status changed
+- `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md` updated if mechanism status changed

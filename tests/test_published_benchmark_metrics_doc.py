@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 def test_published_benchmark_metrics_note_records_values_and_alignment_caveats():
-    note = Path("docs/published_benchmark_metrics.md").read_text(encoding="utf-8")
+    note = Path("docs/policies/published_benchmark_metrics.md").read_text(encoding="utf-8")
 
     assert "ExECTv2 per-item F1" in note
     assert "| Diagnosis | 572 | 0.85 | 0.94 | 0.83 |" in note

@@ -50,8 +50,8 @@ Every experiment should make these explicit:
 ## Hybrid Taxonomy (required on new configs)
 
 Add a `taxonomy` block to every new `configs/experiments/*.json` file, or add the
-experiment to `docs/experiment_registry.json` in the same change. Controlled
-values live in `docs/experiment_taxonomy_schema.md`.
+experiment to `docs/experiments/synthesis/experiment_registry.json` in the same change. Controlled
+values live in `docs/taxonomy/experiment_taxonomy_schema.md`.
 
 Minimum config fields:
 
@@ -71,7 +71,7 @@ Use the inspection templates in `docs/templates/` and the section contracts in
 
 ## Taxonomy Primitives (required on new deterministic helpers)
 
-Prefer existing typed primitives from `docs/taxonomy_primitive_catalog.md` and
+Prefer existing typed primitives from `docs/taxonomy/taxonomy_primitive_catalog.md` and
 `src/clinical_extraction/primitives.py` before adding new helper code inside a
 program module.
 
@@ -103,7 +103,7 @@ compose existing primitives rather than quietly changing bridge behavior, eviden
 policy, or prompt surfaces in program code.
 
 Limit new model-backed experiments to cases that answer an active research decision
-already tracked in `docs/kanban_plan.md`. Otherwise favor deterministic validation,
+already tracked in `docs/planning/kanban_plan.md`. Otherwise favor deterministic validation,
 fixture design, config generation, and inspection templates until the next
 systematic run batch.
 

@@ -452,6 +452,29 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         implementation_refs=["src/clinical_extraction/exect/primitives.py"],
     ),
     PrimitiveMetadata(
+        primitive_id="exect.medication_temporality.non_asm_guard.v1",
+        name="ExECT medication temporality non-ASM guard",
+        dataset="exect_v2",
+        field_families=["medication"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["benchmark_label_policy", "gold_audit_policy"],
+        hybrid_balance_class=["H1_post_deterministic"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract="Raw medication|status labels from S4 LLM extraction.",
+        output_contract=(
+            "ASM medication temporality labels with model-assigned status preserved; "
+            "non-ASM and unlisted medications removed."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        caveats=[
+            "Does not reclassify planned/previous/current from evidence (unlike post_classifier.v1).",
+            "Does not drop dose-only current ASM rows when model status is current.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
         primitive_id="exect.seizure_type.benchmark_bridge.v1",
         name="ExECT seizure-type benchmark bridge",
         dataset="exect_v2",

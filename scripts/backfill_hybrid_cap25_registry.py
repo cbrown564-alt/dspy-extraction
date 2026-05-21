@@ -1,4 +1,4 @@
-"""Append hybrid-grid cap-25 rows to docs/experiment_registry.json.
+"""Append hybrid-grid cap-25 rows to docs/experiments/synthesis/experiment_registry.json.
 
 Reads latest run under runs/ per experiment_id and builds minimal registry rows.
 Skips experiment_ids already present.
@@ -14,7 +14,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
 RUNS = ROOT / "runs"
 
 GAN_GRID_ROWS: list[dict] = [
@@ -27,7 +27,7 @@ GAN_GRID_ROWS: list[dict] = [
         "hybrid_balance_class": ["L1_llm_constrained"],
         "interleaving_positions": ["during"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 cap-25 A1; 44% monthly; reject vs A3 winner.",
     },
     {
@@ -39,7 +39,7 @@ GAN_GRID_ROWS: list[dict] = [
         "hybrid_balance_class": ["H1_post_deterministic"],
         "interleaving_positions": ["during", "post"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 cap-25 A2; 44% monthly; reject vs A3.",
     },
     {
@@ -54,7 +54,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during"],
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 cap-25 A3 winner; 52% monthly; anchor for Axis 2/3.",
     },
     {
@@ -66,7 +66,7 @@ GAN_GRID_ROWS: list[dict] = [
         "hybrid_balance_class": ["H1_post_deterministic"],
         "interleaving_positions": ["during", "post"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 cap-25 A4; 44% monthly; label-duplicate of A2.",
     },
     {
@@ -81,7 +81,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during", "post"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 cap-25 A5; 44% monthly; promoted skeleton did not win Axis 1 search.",
     },
     {
@@ -97,7 +97,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during"],
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E1; 52% monthly; det-candidate anchor confirmed.",
     },
     {
@@ -113,7 +113,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E2; 29.2% monthly; LLM JSON candidate path reject.",
     },
     {
@@ -129,7 +129,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E3; 41.7% monthly; hybrid merge reject vs det.",
     },
     {
@@ -145,7 +145,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during", "post"],
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E4 diagnostic; 52% monthly; VR neutral after adjudicate.",
     },
     {
@@ -161,7 +161,7 @@ GAN_GRID_ROWS: list[dict] = [
         ],
         "interleaving_positions": ["pre", "during", "post"],
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E5 diagnostic; 29.2% monthly; VR cannot rescue LLM candidates.",
     },
 ]
@@ -182,7 +182,7 @@ GAN_IMPL_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 3 I0; 52% monthly; prose control reject vs 56% non-prose.",
     },
     {
@@ -200,7 +200,7 @@ GAN_IMPL_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 3 I1; 56% monthly; table presentation hold (tied).",
     },
     {
@@ -218,7 +218,7 @@ GAN_IMPL_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 3 I2; 56% monthly; JSON presentation hold (tied).",
     },
     {
@@ -236,7 +236,7 @@ GAN_IMPL_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 3 I3; 56% monthly; bullets presentation hold (tied).",
     },
 ]
@@ -257,7 +257,7 @@ GAN_CAP50_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Cap-50 confirm control; 62% monthly; tie vs I1.",
     },
     {
@@ -275,7 +275,7 @@ GAN_CAP50_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Cap-50 confirm; 62% monthly; +4pp cap-25 not replicated.",
     },
     {
@@ -293,8 +293,45 @@ GAN_CAP50_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Cap-50 confirm vs pre-expansion prose 62%; 68% monthly (+6pp); expanded temporal_candidates builders.",
+    },
+    {
+        "experiment_id": "gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini",
+        "comparison_group": "gan_s0_expanded_builders_prose_gpt_full_validation_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g2_candidates_adjudicate",
+        "stage_executor": "det_candidates_llm_adjudicate",
+        "implementation_variant": "cand_prose_expanded_builders_v1",
+        "program_architecture": "temporal_candidates_single_pass",
+        "hybrid_balance_class": [
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        "interleaving_positions": ["pre", "during"],
+        "verification_strategy": "none",
+        "run_scope": "full_validation",
+        "outcome": "promote",
+        "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_full_validation_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. Full-validation F0; 68.1% monthly (+3.0pp vs VR anchor 65.1%); promote operational arm; adjudicate-only skeleton.",
+    },
+    {
+        "experiment_id": "gan_s0_expanded_builders_vr_full_validation_gpt4_1_mini",
+        "comparison_group": "gan_s0_expanded_builders_vr_gpt_full_validation_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g3_candidates_extract_repair",
+        "implementation_variant": "cand_prose_expanded_builders_vr_v1",
+        "program_architecture": "temporal_candidates_verify_repair",
+        "hybrid_balance_class": [
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        "interleaving_positions": ["pre", "during", "post"],
+        "verification_strategy": "llm_verify_repair",
+        "run_scope": "full_validation",
+        "outcome": "hold",
+        "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_vr_gpt_full_validation_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. V1 65.8% monthly; +0.7pp vs pre-exp VR, -2.3pp vs F0 68.1%; keep F0 as monthly leader.",
     },
 ]
 
@@ -314,7 +351,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during"],
         "verification_strategy": "none",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. V0 adjudicate-only; 52% monthly baseline.",
     },
     {
@@ -332,7 +369,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "post"],
         "verification_strategy": "deterministic_guards_only",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. V2 det plausibility; 52% monthly null vs V0.",
     },
     {
@@ -350,7 +387,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "post"],
         "verification_strategy": "deterministic_evidence_span_check",
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. V3 det evidence; 58.3% on 12 valid; 13 abstentions fail gates.",
     },
     {
@@ -368,7 +405,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during", "post"],
         "verification_strategy": "llm_confirm_only",
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": (
             "decision_scope: arm. V4 confirm-only rerun after verifier-prompt wiring fix; "
             "null vs V3 because 13 records abstain in deterministic evidence grounding "
@@ -390,7 +427,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during", "post"],
         "verification_strategy": "llm_verify_repair",
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. V5 LLM VR no guards; null vs V3; valid-count fail.",
     },
     {
@@ -408,7 +445,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during", "post"],
         "verification_strategy": "llm_verify_repair",
         "outcome": "hold",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. V6 LLM VR + det guards; 52% monthly; neutral vs V0.",
     },
     {
@@ -426,7 +463,7 @@ GAN_LADDER_ROWS: list[dict] = [
         "interleaving_positions": ["pre", "during", "post"],
         "verification_strategy": "llm_verify_repair",
         "outcome": "reject",
-        "decision_doc": "docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. V7 span-check after VR; 50% on 16 valid; 9 abstentions.",
     },
 ]
@@ -446,7 +483,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "hold",
-        "decision_doc": "docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 S1; 95.8% micro; production-shaped hold.",
     },
     {
@@ -463,7 +500,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "hold",
-        "decision_doc": "docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 S2 diagnostic; 72.8% micro; bridge-free reference.",
     },
     {
@@ -480,7 +517,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_verify_repair_v1",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 S3; 72.8% micro; verify-repair bridges-off reject.",
     },
     {
@@ -497,7 +534,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "hold",
-        "decision_doc": "docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 S4; 95.8% micro; ties S1 post-bridge hold.",
     },
     {
@@ -514,7 +551,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 1 S5; 83.3% micro; family-split reject.",
     },
     {
@@ -532,7 +569,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "hold",
-        "decision_doc": "docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E1; 95.8% micro; inline-bridge anchor.",
     },
     {
@@ -550,7 +587,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "benchmark_policy_prompt",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "hold",
-        "decision_doc": "docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E2; 95.8% micro; post-bridge null vs E1.",
     },
     {
@@ -568,7 +605,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "list_constrained",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E3; 90.9% micro; all-family hints reject.",
     },
     {
@@ -586,7 +623,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "list_constrained",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E4; 92.8% micro; seizure-only hints reject.",
     },
     {
@@ -604,7 +641,7 @@ EXECT_GRID_ROWS: list[dict] = [
         "normalization_strategy": "list_constrained",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. Axis 2 E5; 93.3% micro; medication-only hints reject.",
     },
 ]
@@ -624,7 +661,7 @@ EXECT_PROMPT_GRAPH_ROWS = [
         "normalization_strategy": "benchmark_bridge",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "hold",
-        "decision_doc": "docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. PG0 baseline; 95.8% micro; matches Phase 5a S1.",
     },
     {
@@ -641,7 +678,7 @@ EXECT_PROMPT_GRAPH_ROWS = [
         "normalization_strategy": "benchmark_bridge",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. PG1 parallel per-family; 86.5% micro; −9.3pp vs PG0.",
     },
     {
@@ -658,7 +695,7 @@ EXECT_PROMPT_GRAPH_ROWS = [
         "normalization_strategy": "benchmark_bridge",
         "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
         "outcome": "reject",
-        "decision_doc": "docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
+        "decision_doc": "docs/experiments/exect/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
         "notes": "decision_scope: arm. PG2 sequential chain; 87.1% micro; null vs PG1 (24/25).",
     },
 ]
@@ -772,7 +809,10 @@ def _build_gan_row(spec: dict) -> dict | None:
             "split": "gan_2026_fixed_v1:validation",
         },
         "varied_factor": spec["varied_factor"],
-        "run_scope": "slice" if "cap50" not in spec["experiment_id"] else "cap50",
+        "run_scope": spec.get(
+            "run_scope",
+            "cap50" if "cap50" in spec["experiment_id"] else "slice",
+        ),
         "canonical_run_id": run_dir.name,
         "outcome": spec["outcome"],
         "decision_doc": spec["decision_doc"],

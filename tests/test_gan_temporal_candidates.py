@@ -351,6 +351,17 @@ def test_temporal_candidates_emit_unknown_for_vague_grouped_spells_without_spaci
     assert any("per cluster" in label for label in labels)
 
 
+def test_temporal_candidates_represent_last_convulsive_long_window_clusters():
+    assert "multiple cluster per 12 month, multiple per cluster" in _labels("gan_15240")
+    assert "multiple cluster per 15 month, multiple per cluster" in _labels("gan_15255")
+
+
+def test_temporal_candidates_represent_daily_seizure_type_for_concurrent_priority():
+    assert "1 per day" in _labels("gan_12562")
+    assert "1 per day" in _labels("gan_12667")
+    assert "1 per day" in _labels("gan_12679")
+
+
 def test_residual_slice_gold_label_coverage_improves():
     from clinical_extraction.evaluation.gan_residual_slice import (
         load_residual_slice_record_ids,
@@ -365,4 +376,4 @@ def test_residual_slice_gold_label_coverage_improves():
         labels = _labels(record_id)
         if record.gold_label in labels:
             covered += 1
-    assert covered >= 12
+    assert covered >= 24

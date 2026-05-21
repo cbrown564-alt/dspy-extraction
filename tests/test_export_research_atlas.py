@@ -13,7 +13,7 @@ _spec.loader.exec_module(_export)
 
 
 def test_render_journey_mermaid_contains_major_research_phases():
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     mermaid = _export.render_journey_mermaid(reg)
     assert "flowchart LR" in mermaid
     assert "Gan temporal-candidates promoted" in mermaid
@@ -22,7 +22,7 @@ def test_render_journey_mermaid_contains_major_research_phases():
 
 
 def test_render_decision_map_groups_registered_comparisons():
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     mermaid = _export.render_decision_map_mermaid(reg)
     assert "flowchart TD" in mermaid
     assert "gan_s0_architecture_qwen_validation_v1" in mermaid
@@ -31,7 +31,7 @@ def test_render_decision_map_groups_registered_comparisons():
 
 
 def test_render_evidence_matrix_shows_open_empty_cells_and_metrics():
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     markdown = _export.render_evidence_matrix(reg)
     assert "# Evidence Matrix" in markdown
     assert "| gan_s0 |" in markdown
@@ -41,8 +41,8 @@ def test_render_evidence_matrix_shows_open_empty_cells_and_metrics():
 
 
 def test_write_atlas_creates_expected_files(tmp_path: Path):
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
-    kanban = Path("docs/kanban_plan.md").read_text(encoding="utf-8")
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
+    kanban = Path("docs/planning/kanban_plan.md").read_text(encoding="utf-8")
     output_dir = tmp_path / "research_atlas"
     index = tmp_path / "research_atlas.md"
     _export.write_atlas(reg, kanban, output_dir, index)

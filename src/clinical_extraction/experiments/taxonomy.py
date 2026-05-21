@@ -9,7 +9,7 @@ from pydantic import Field, model_validator
 
 from clinical_extraction.schemas import FrozenModel
 
-REGISTRY_PATH = Path("docs/experiment_registry.json")
+REGISTRY_PATH = Path("docs/experiments/synthesis/experiment_registry.json")
 
 DatasetValue = Literal["gan_2026", "exect_v2"]
 SchemaComplexityValue = Literal[

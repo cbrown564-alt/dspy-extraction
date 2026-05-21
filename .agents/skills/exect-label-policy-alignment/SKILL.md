@@ -11,10 +11,10 @@ Use this skill before ExECT S0/S1 benchmark-facing extraction or scorer work.
 
 Read:
 
-- `docs/exect_gold_label_audit.md`
-- `docs/deterministic_scorer_semantics.md`
-- `docs/prior_prompt_error_analysis_synthesis.md`
-- `docs/taxonomy_primitive_catalog.md` for implemented ExECT benchmark bridges
+- `docs/datasets/exect/exect_gold_label_audit.md`
+- `docs/policies/deterministic_scorer_semantics.md`
+- `docs/archive/prior-context/prior_prompt_error_analysis_synthesis.md`
+- `docs/taxonomy/taxonomy_primitive_catalog.md` for implemented ExECT benchmark bridges
 - relevant ExECT loader, schema, scorer, primitive, and test files
 
 ## Core Principle

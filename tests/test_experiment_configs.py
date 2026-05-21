@@ -739,7 +739,7 @@ def test_experiment_config_rejects_test_reporting_without_explicit_flag():
 
 
 def test_constrained_json_decoding_strategy_note_records_decision_and_fallback():
-    note = Path("docs/constrained_json_decoding_strategy.md").read_text(
+    note = Path("docs/policies/constrained_json_decoding_strategy.md").read_text(
         encoding="utf-8"
     )
 
@@ -1533,7 +1533,7 @@ def test_experiment_config_has_inline_taxonomy_or_registry_coverage(filename: st
 
     assert config.experiment_id in REGISTRY_IDS, (
         f"{filename} must include a taxonomy block, taxonomy_exemption, or a matching "
-        f"row in docs/experiment_registry.json."
+        f"row in docs/experiments/synthesis/experiment_registry.json."
     )
 
 
@@ -1720,6 +1720,51 @@ def test_exect_s4_frequency_surface_repair_cap25_configs_record_contract():
     assert r0.taxonomy.implementation_variant == "frequency_bridge_v1_2_control"
     assert r1.taxonomy.implementation_variant == "frequency_post_merge_v1_3"
     assert r1.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+
+
+def test_exect_s4_mt_guard_configs_record_contract():
+    from clinical_extraction.programs.exect_s4 import EXECT_S4_MT_GUARD_NON_ASM_VARIANT
+
+    l1 = load_experiment_config(
+        Path("configs/experiments/exect_s4_mt_guard_l1_baseline_cap25_gpt4_1_mini.json")
+    )
+    g0 = load_experiment_config(
+        Path("configs/experiments/exect_s4_mt_guard_g0_non_asm_cap25_gpt4_1_mini.json")
+    )
+    l1_full = load_experiment_config(
+        Path("configs/experiments/exect_s4_mt_guard_l1_baseline_full_gpt4_1_mini.json")
+    )
+    g0_full = load_experiment_config(
+        Path("configs/experiments/exect_s4_mt_guard_g0_non_asm_full_gpt4_1_mini.json")
+    )
+
+    assert l1.max_records == 25
+    assert g0.max_records == 25
+    assert l1_full.max_records is None
+    assert g0_full.max_records is None
+    assert g0.program_variant == EXECT_S4_MT_GUARD_NON_ASM_VARIANT
+    assert g0_full.program_variant == EXECT_S4_MT_GUARD_NON_ASM_VARIANT
+    assert (
+        g0.controls.repair_policy
+        == "artifact_medication_temporality_non_asm_guard_only"
+    )
+    assert (
+        g0_full.controls.repair_policy
+        == "artifact_medication_temporality_non_asm_guard_only"
+    )
+    assert l1.taxonomy is not None
+    assert g0.taxonomy is not None
+    assert l1.taxonomy.comparison_group == "exect_s4_medication_precision_guard_gpt_cap25_v1"
+    assert g0.taxonomy.implementation_variant == "mt_guard_non_asm_only_v1"
+    assert l1.taxonomy.implementation_variant == "mt_guard_l1_control"
+    assert (
+        l1_full.taxonomy.comparison_group
+        == "exect_s4_medication_precision_guard_gpt_full_validation_v1"
+    )
+    assert (
+        g0_full.taxonomy.comparison_group
+        == "exect_s4_medication_precision_guard_gpt_full_validation_v1"
+    )
 
 
 def test_exect_s4_temporality_configs_record_contract():

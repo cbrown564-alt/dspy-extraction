@@ -13,7 +13,7 @@ _spec.loader.exec_module(_export)
 
 
 def test_curated_matrix_includes_s4_temporality_group():
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     rows = _export._filter_rows(reg["experiments"], "curated")
     groups = {row["comparison_group"] for row in rows}
     assert "exect_s4_temporality_deterministic_v1" in groups
@@ -26,7 +26,7 @@ def test_curated_matrix_includes_s4_temporality_group():
 
 
 def test_render_matrix_contains_comparison_group_sections():
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     markdown = _export.render_matrix(reg, "decided")
     assert "## gan_s0_architecture_gpt_validation_v1" in markdown
     assert "monthly_frequency_accuracy=" in markdown
@@ -35,7 +35,7 @@ def test_render_matrix_contains_comparison_group_sections():
 
 
 def test_render_matrix_table_rows_are_contiguous():
-    reg = json.loads(Path("docs/experiment_registry.json").read_text(encoding="utf-8"))
+    reg = json.loads(Path("docs/experiments/synthesis/experiment_registry.json").read_text(encoding="utf-8"))
     markdown = _export.render_matrix(reg, "curated")
     assert "|\n\n|" not in markdown
     assert markdown.count("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |") >= 1

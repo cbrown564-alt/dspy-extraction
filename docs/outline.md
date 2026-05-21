@@ -50,7 +50,7 @@ The Gan task is difficult because it requires the model to perform complex tempo
 
 The data/splits folder already contains a suggested train/dev/test set for the ExECTv2 data. We need that for Gan too.
 
-Considerable effort needs to be put into understanding the data structure of the gold label schemas, loading and representing them accurately. There is a sufficient complexity here to misinterpret the data structure. Look at docs/exect_gold_label_audit.md and docs/gan_2026_label_audit.md for data audits from a previous project.
+Considerable effort needs to be put into understanding the data structure of the gold label schemas, loading and representing them accurately. There is a sufficient complexity here to misinterpret the data structure. Look at docs/datasets/exect/exect_gold_label_audit.md and docs/datasets/gan/gan_2026_label_audit.md for data audits from a previous project.
 
 ## Architecture
 

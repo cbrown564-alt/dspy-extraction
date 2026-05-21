@@ -11,8 +11,8 @@ Before implementing or changing behavior:
 
 1. Identify which dataset is affected: ExECTv2, Gan, or both.
 2. Read the relevant audit before making assumptions:
-   - ExECTv2: `docs/exect_gold_label_audit.md`
-   - Gan: `docs/gan_2026_label_audit.md`
+   - ExECTv2: `docs/datasets/exect/exect_gold_label_audit.md`
+   - Gan: `docs/datasets/gan/gan_2026_label_audit.md`
 3. Inspect the raw data shape or manifest when needed:
    - `data/manifests/dataset_manifest.json`
    - `data/splits/exectv2_splits.json`

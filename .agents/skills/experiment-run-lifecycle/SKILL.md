@@ -12,10 +12,10 @@ Use this skill when an experiment moves from code/config into model execution or
 1. Identify the experiment config, model config, dataset, split, schema level, program variant, scorer mode, and output root.
 2. Read the relevant experiment-design and audit docs before model calls:
    - `docs/outline.md`
-   - `docs/first_dspy_schema_sequence.md`
-   - `docs/deterministic_scorer_semantics.md`
-   - `docs/taxonomy_primitive_catalog.md`, when the run composes typed primitives
-   - `docs/qwen_dspy_latency_policy.md`, when using local Qwen models or changing DSPy reasoning/optimizer settings
+   - `docs/architecture/first_dspy_schema_sequence.md`
+   - `docs/policies/deterministic_scorer_semantics.md`
+   - `docs/taxonomy/taxonomy_primitive_catalog.md`, when the run composes typed primitives
+   - `docs/policies/qwen_dspy_latency_policy.md`, when using local Qwen models or changing DSPy reasoning/optimizer settings
    - dataset audit for the target dataset
 3. Validate the config path and model config path. Prefer a dry run before model calls.
 4. When the experiment uses deterministic helpers, confirm the primitive IDs, interleaving positions, and prediction-affecting flags are documented in the config or inspection note.
@@ -43,7 +43,7 @@ Use this skill when an experiment moves from code/config into model execution or
    - `errors.json`
    - `artifacts/compiled_state.json`, when present
 10. Promote to full validation only if the capped run clears the explicit gate for schema validity, evidence support, latency feasibility, and the target benchmark-facing metric.
-11. After a full validation run, write or update an error-read note using the templates in `docs/templates/` and refresh `docs/kanban_plan.md`.
+11. After a full validation run, write or update an error-read note using the templates in `docs/templates/` and refresh `docs/planning/kanban_plan.md`.
 
 ## Reporting Rules
 

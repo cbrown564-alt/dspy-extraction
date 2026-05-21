@@ -6,7 +6,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
 
 
 def hybrid_key(row: dict) -> str:

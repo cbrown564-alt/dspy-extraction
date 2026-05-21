@@ -1,4 +1,4 @@
-"""Export a paper-ready markdown matrix from docs/experiment_registry.json.
+"""Export a paper-ready markdown matrix from docs/experiments/synthesis/experiment_registry.json.
 
 Usage:
     uv run python scripts/export_experiment_registry_matrix.py
@@ -13,8 +13,8 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
-DEFAULT_OUTPUT = ROOT / "docs" / "experiment_registry_matrix_20260520.md"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
+DEFAULT_OUTPUT = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry_matrix_20260520.md"
 
 DECIDED_OUTCOMES = frozenset({"promote", "freeze", "hold", "reject", "superseded"})
 
@@ -98,7 +98,7 @@ def render_matrix(reg: dict, mode: str) -> str:
         "# Experiment Registry Matrix (Paper-Ready Export)",
         "",
         f"**Generated:** {generated}  ",
-        f"**Source:** `docs/experiment_registry.json` (registry_rows={len(reg['experiments'])})  ",
+        f"**Source:** `docs/experiments/synthesis/experiment_registry.json` (registry_rows={len(reg['experiments'])})  ",
         f"**Filter mode:** `{mode}`  ",
         f"**Exported rows:** {len(rows)}",
         "",

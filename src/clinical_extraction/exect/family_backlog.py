@@ -72,7 +72,7 @@ PLANNED_EXECT_FAMILY_PRIMITIVES: tuple[PrimitiveMetadata, ...] = (
             "EpilepsyCause and PatientHistory gold are independent; the scorer does not deduplicate across families.",
             "Prefer epilepsy_cause for aetiology framing and comorbidity for ongoing history when both apply.",
         ],
-        implementation_refs=["docs/exect_s3_phase1_overlap_policy.md"],
+        implementation_refs=["docs/experiments/exect/exect_s3_phase1_overlap_policy.md"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.birth_development.cui_phrase_bridge.v1",
@@ -138,7 +138,7 @@ PLANNED_EXECT_FAMILY_PRIMITIVES: tuple[PrimitiveMetadata, ...] = (
             "Same phrase may score in both epilepsy_cause and comorbidity when gold supports both.",
             "Do not infer cause from diagnosis subtype alone.",
         ],
-        implementation_refs=["docs/exect_s3_phase1_overlap_policy.md"],
+        implementation_refs=["docs/experiments/exect/exect_s3_phase1_overlap_policy.md"],
     ),
     PrimitiveMetadata(
         primitive_id="exect.when_diagnosed.cui_phrase_bridge.v1",

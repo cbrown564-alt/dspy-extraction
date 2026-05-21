@@ -306,7 +306,7 @@ def score_exect_s4_prediction_set(
         scorer=EXECT_S4_SCORER,
         caveats=[
             "ExECT S4 benchmark-facing fields extend frozen S3 with seizure frequency and medication temporality.",
-            "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/exect_s4_gold_policy.md.",
+            "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
             "Medication temporality gold is inferred from annotated Prescription span text; JSON has no temporality column.",
             "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
             "Overlapping phrases across families are scored independently per family.",

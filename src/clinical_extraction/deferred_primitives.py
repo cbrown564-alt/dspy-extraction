@@ -111,7 +111,7 @@ DEFERRED_CATALOG_PRIMITIVES: tuple[PrimitiveMetadata, ...] = (
             "Deferred until published ExECT benchmark reproduction is explicitly in scope.",
             "Do not mix CUI-aware reproduction with local field-family diagnostics unless the comparison group says so.",
         ],
-        implementation_refs=["docs/taxonomy_ontology_cui_scope_decision_20260520.md"],
+        implementation_refs=["docs/taxonomy/taxonomy_ontology_cui_scope_decision_20260520.md"],
     ),
     PrimitiveMetadata(
         primitive_id="gan.frequency.real_set_validation.v1",

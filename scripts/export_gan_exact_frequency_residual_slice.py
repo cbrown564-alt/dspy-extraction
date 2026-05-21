@@ -31,7 +31,7 @@ def main() -> None:
     parser.add_argument(
         "--doc-path",
         type=Path,
-        default=Path("docs/gan_s0_exact_frequency_residual_slice_error_read_20260521.md"),
+        default=Path("docs/experiments/gan/gan_s0_exact_frequency_residual_slice_error_read_20260521.md"),
         help="Markdown read-queue document path.",
     )
     args = parser.parse_args()

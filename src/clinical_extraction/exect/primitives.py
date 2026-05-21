@@ -9,6 +9,7 @@ from clinical_extraction.datasets.exect import (
     canonical_medication_name,
     collapse_diagnoses_to_most_specific,
     format_medication_temporality_label,
+    infer_prescription_temporality,
 )
 from clinical_extraction.primitives import NormalizationResult, PrimitiveCandidate
 
@@ -18,6 +19,9 @@ EXECT_MEDICATION_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
 )
 EXECT_MEDICATION_TEMPORALITY_PRIMITIVE_ID = (
     "exect.medication_temporality.post_classifier.v1"
+)
+EXECT_MEDICATION_TEMPORALITY_NON_ASM_GUARD_PRIMITIVE_ID = (
+    "exect.medication_temporality.non_asm_guard.v1"
 )
 EXECT_SEIZURE_TYPE_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
     "exect.seizure_type.benchmark_bridge.v1"
@@ -492,6 +496,62 @@ def recover_exect_medication_temporality_with_post_classifier(
             flags.append("s4_bridge:medication_temporality_status_reclassified")
 
         label = format_medication_temporality_label(medication_name, status)
+        if label in seen:
+            continue
+        seen.add(label)
+        recovered.append(label)
+
+    return recovered, flags
+
+
+def recover_exect_medication_temporality_non_asm_guard(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Drop non-ASM medication-temporality labels; keep model-assigned ASM status."""
+
+    del evidence_values  # G0 does not reclassify from evidence (unlike H1 post-classifier).
+
+    flags: list[str] = []
+    recovered: list[str] = []
+    seen: set[str] = set()
+
+    for raw in raw_values:
+        if not raw.strip():
+            continue
+        if "|" in raw:
+            medication_part, status_part = raw.split("|", 1)
+            medication_name = canonical_medication_name(medication_part)
+            status = canonical_clinical_phrase(status_part)
+            if not medication_name:
+                flags.append("s4_bridge:medication_temporality_unrecognized")
+                continue
+            if (
+                medication_name in _NON_ASM_MEDICATIONS
+                or medication_name not in _ASM_CANONICAL_MEDICATIONS
+            ):
+                flags.append("s4_bridge:medication_temporality_non_asm_removed")
+                continue
+            if status not in _VALID_RX_TEMPORALITIES:
+                flags.append("s4_bridge:medication_temporality_invalid_status_removed")
+                continue
+            label = format_medication_temporality_label(medication_name, status)
+        else:
+            medication_name = canonical_medication_name(raw)
+            if not medication_name:
+                flags.append("s4_bridge:medication_temporality_unrecognized")
+                continue
+            if (
+                medication_name in _NON_ASM_MEDICATIONS
+                or medication_name not in _ASM_CANONICAL_MEDICATIONS
+            ):
+                flags.append("s4_bridge:medication_temporality_non_asm_removed")
+                continue
+            status = infer_prescription_temporality(note_text)
+            label = format_medication_temporality_label(medication_name, status)
+            flags.append("s4_bridge:medication_temporality_status_inferred")
+
         if label in seen:
             continue
         seen.add(label)

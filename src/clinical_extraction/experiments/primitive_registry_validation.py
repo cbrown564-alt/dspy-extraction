@@ -14,7 +14,7 @@ from clinical_extraction.primitives import PRIMITIVE_REGISTRY, primitive_registr
 
 IssueLevel = Literal["error", "warning"]
 
-CATALOG_PATH = Path("docs/taxonomy_primitive_catalog.md")
+CATALOG_PATH = Path("docs/taxonomy/taxonomy_primitive_catalog.md")
 PRIMITIVE_ID_PATTERN = re.compile(r"`([a-z0-9]+(?:\.[a-z0-9_]+)+\.v[0-9]+)`")
 
 

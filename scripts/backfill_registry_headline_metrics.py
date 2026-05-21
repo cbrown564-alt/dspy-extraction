@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REG_PATH = ROOT / "docs" / "experiment_registry.json"
+REG_PATH = ROOT / "docs" / "experiments" / "synthesis" / "experiment_registry.json"
 
 BACKFILLS: dict[str, dict] = {
     "gan_s0_qwen35b_direct_full_validation_guardrails": {
@@ -60,19 +60,19 @@ BACKFILLS: dict[str, dict] = {
 
 DECISION_DOCS: dict[str, str] = {
     "gan_s0_qwen35b_direct_full_validation_guardrails": (
-        "docs/gan_s0_qwen35b_direct_full_validation_guardrails_error_analysis.md"
+        "docs/experiments/gan/gan_s0_qwen35b_direct_full_validation_guardrails_error_analysis.md"
     ),
     "gan_s0_qwen35b_direct_regression_slice_guardrails": (
-        "docs/gan_s0_qwen35b_regression_slice_inspection_20260519.md"
+        "docs/experiments/gan/gan_s0_qwen35b_regression_slice_inspection_20260519.md"
     ),
     "gan_s0_qwen35b_verify_repair_regression_slice_guardrails": (
-        "docs/gan_s0_qwen35b_verify_repair_regression_slice_guardrails_error_analysis.md"
+        "docs/experiments/gan/gan_s0_qwen35b_verify_repair_regression_slice_guardrails_error_analysis.md"
     ),
     "gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_guardrails": (
-        "docs/gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_b1_error_analysis.md"
+        "docs/experiments/gan/gan_s0_qwen35b_temporal_candidates_verify_repair_regression_slice_b1_error_analysis.md"
     ),
     "gan_s0_qwen35b_temporal_event_table_regression_slice_guardrails": (
-        "docs/gan_s0_qwen35b_temporal_event_table_regression_slice_b2_error_analysis.md"
+        "docs/experiments/gan/gan_s0_qwen35b_temporal_event_table_regression_slice_b2_error_analysis.md"
     ),
 }
 
