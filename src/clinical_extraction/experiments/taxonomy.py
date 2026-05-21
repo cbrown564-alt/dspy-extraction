@@ -32,6 +32,7 @@ ProgramArchitectureValue = Literal[
     "temporal_candidates_adjudicate_det_evidence",
     "temporal_candidates_adjudicate_confirm_only",
     "temporal_candidates_adjudicate_verify_repair_no_guards",
+    "temporal_candidates_adjudicate_verify_repair_span_check",
     "llm_temporal_candidates_verify_repair",
     "temporal_candidates_verify_repair",
     "temporal_event_table_verify_repair",
@@ -89,6 +90,11 @@ StageExecutorValue = Literal[
     "hybrid_candidates_llm_adjudicate",
     "det_candidates_llm_adjudicate_llm_vr",
     "llm_candidates_llm_adjudicate_llm_vr",
+    "llm_extract_inline_bridges",
+    "llm_extract_post_bridges",
+    "det_all_family_hints_llm_extract",
+    "det_seizure_hints_llm_extract",
+    "det_medication_hints_llm_extract",
 ]
 IntendedDecisionValue = Literal[
     "promote",
@@ -133,6 +139,7 @@ class ExperimentTaxonomy(FrozenModel):
     stage_graph_id: str | None = None
     stage_executor: StageExecutorValue | None = None
     implementation_variant: str | None = None
+    validation_ladder_rung: str | None = None
     context_selection_policy: ContextSelectionPolicyValue | None = None
 
     @model_validator(mode="after")

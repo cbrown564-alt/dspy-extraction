@@ -1,0 +1,42 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_plus_precomputed_family_candidates",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s1_stage_executor_e3_all_family_hints_cap25_gpt4_1_mini",
+  "hypothesis": "Axis 2 arm E3 (det_all_family_hints_llm_extract): all-family audited candidate hints before LLM extraction on g1_l1_policy_bridges for exect_s1_stage_executor_gpt_cap25_v1.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Comparison group exect_s1_stage_executor_gpt_cap25_v1; varied_factor stage_executor.",
+    "Full cap-25 H2 pre-vocab shape; distinct from interleaving v1 varied_factor.",
+    "Prior interleaving H2 cap-25 reference: 90.9% micro (exect_s1_interleaving_h2_pre_vocab_cap25_gpt4_1_mini).",
+    "Cap-25 search only — decision_scope arm."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_pre_vocab_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["diagnosis", "seizure_type", "medication"],
+    "comparison_group": "exect_s1_stage_executor_gpt_cap25_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["H2_pre_deterministic"],
+    "intended_decision": "pending",
+    "interleaving_positions": ["pre", "during"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "stage_executor": "det_all_family_hints_llm_extract",
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "varied_factor": "stage_executor"
+  }
+}

@@ -1,7 +1,7 @@
 # Gan S0 Evidence-First Retrieval GPT Cap-25 v1 Preregistration
 
 Date: 2026-05-21  
-Status: **Planned** — configs and optional R3 program support pending  
+Status: **Cap-25 complete** — see `docs/gan_s0_retrieval_gpt_cap25_v1_inspection_20260521.md`  
 Comparison group: `gan_s0_retrieval_gpt_cap25_v1`  
 Related: `docs/multi_stage_llm_clinical_extraction_literature_review_20260521.md`, `docs/hybrid_pipeline_research_pivot_20260521.md`, `docs/hybrid_pipeline_mechanism_status_20260521.md`, `docs/kanban_plan.md`, `docs/gan_2026_label_audit.md`
 
@@ -173,9 +173,9 @@ Per `docs/gan_2026_label_audit.md`: treat `unknown` and `no seizure frequency re
 
 ## Artifacts checklist
 
-- [ ] `context_selection_policy` in `docs/experiment_taxonomy_schema.md`
-- [ ] R3 context-only program support (if required)
-- [ ] Three cap-25 configs (`gan_s0_retrieval_r*_cap25_gpt4_1_mini.json`)
-- [ ] Cap-25 runs
-- [ ] Inspection doc
+- [x] `context_selection_policy` in `docs/experiment_taxonomy_schema.md`
+- [x] R3 context-only program support
+- [x] Three cap-25 configs (`gan_s0_retrieval_r*_cap25_gpt4_1_mini.json`)
+- [x] Cap-25 runs
+- [x] Inspection doc
 - [ ] Registry rows

@@ -36,6 +36,14 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0LlmTemporalCandidatesSinglePassModule,
     GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
     GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT,
     GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule,
     GanFrequencyS0TemporalEventTableVerifyRepairModule,
     GanFrequencyS0VerifyRepairModule,
@@ -176,6 +184,24 @@ def test_build_gan_s0_module_dispatches_program_variants():
     assert isinstance(
         build_gan_s0_module(GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT),
         GanFrequencyS0ReactTemporalToolsModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT),
+        GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT),
+        GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT),
+        GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT
+        ),
+        GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule,
     )
 
 
@@ -1856,3 +1882,82 @@ def test_gan_frequency_s0_signature_documents_qwen_direct_policy_boundaries():
     assert "Infrequent explicit" in doc or "infrequent" in doc.lower()
     assert "multiple per unit" in doc
     assert "admin/scheduling-only" in doc.lower() or "administrative" in doc.lower()
+
+
+def test_gan_s0_validation_ladder_det_guards_emits_ladder_metadata():
+    record = load_gan_records()[0]
+    _configure_dummy(
+        [{"seizure_frequency_number": "unknown", "evidence_text": "no clear rate"}]
+    )
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
+    )
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["validation_ladder_rung"] == "det_plausibility"
+    assert pred.metadata["verifier_decision"] == "confirm"
+
+
+def test_gan_s0_validation_ladder_det_evidence_abstains_on_unsupported_quote():
+    record = load_gan_records()[0]
+    _configure_dummy(
+        [{"seizure_frequency_number": "2 per week", "evidence_text": "NOT IN NOTE"}]
+    )
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
+    )
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["validation_ladder_rung"] == "det_evidence_grounding"
+    assert pred.metadata["verifier_decision"] == "abstain"
+    assert pred.values[0].raw_value is None
+
+
+def test_gan_s0_validation_ladder_confirm_only_runs_second_llm_pass():
+    record = load_gan_records()[0]
+    _configure_dummy(
+        [
+            {"seizure_frequency_number": "1 per month", "evidence_text": "monthly seizure"},
+            {
+                "final_label": "1 per month",
+                "final_evidence": "monthly seizure",
+                "decision": "confirm",
+                "reason": "Confirmed unchanged.",
+                "temporal_candidates": "ignored",
+            },
+        ]
+    )
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
+    )
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["validation_ladder_rung"] == "llm_confirm_only"
+    assert pred.metadata["verifier_decision"] == "confirm"
+
+
+def test_build_gan_frequency_s0_confirm_only_verifier_signature_restricts_decisions():
+    signature_cls = build_gan_frequency_s0_verifier_signature(
+        "gan_frequency_s0_temporal_candidates_confirm_only_v1_1",
+        temporal=True,
+    )
+    doc = signature_cls.__doc__ or ""
+    assert "confirm only" in doc.lower()
+    assert "MUST be confirm" in doc
+
+
+def test_gan_s0_confirm_only_module_wires_confirm_only_verifier_signature():
+    module = GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule()
+
+    doc = module.verifier.verify.signature.__doc__ or ""
+    assert "confirm only" in doc.lower()
+    assert "MUST be confirm" in doc

@@ -65,6 +65,11 @@ SINGLE_CONTROLLED_FIELDS: dict[str, frozenset[str]] = {
             "llm_temporal_candidates_single_pass",
             "hybrid_temporal_candidates_single_pass",
             "temporal_candidates_adjudicate_verify_repair",
+            "temporal_candidates_adjudicate_det_guards",
+            "temporal_candidates_adjudicate_det_evidence",
+            "temporal_candidates_adjudicate_confirm_only",
+            "temporal_candidates_adjudicate_verify_repair_no_guards",
+            "temporal_candidates_adjudicate_verify_repair_span_check",
             "llm_temporal_candidates_verify_repair",
             "temporal_event_table_verify_repair",
             "react_temporal_tools",
@@ -77,6 +82,7 @@ SINGLE_CONTROLLED_FIELDS: dict[str, frozenset[str]] = {
     "context_strategy": frozenset(
         {
             "full_note",
+            "full_note_plus_deterministic_temporal_candidates",
             "section_filtered",
             "candidate_injected",
             "retrieved_spans",
@@ -88,6 +94,7 @@ SINGLE_CONTROLLED_FIELDS: dict[str, frozenset[str]] = {
         {
             "absent",
             "model_quote",
+            "model_quote_required",
             "model_quote_with_diagnostic_span_check",
             "injected_candidates",
             "verified_quote",
@@ -113,6 +120,10 @@ SINGLE_CONTROLLED_FIELDS: dict[str, frozenset[str]] = {
         {
             "none",
             "llm_verifier",
+            "llm_verify_repair",
+            "llm_confirm_only",
+            "deterministic_guards_only",
+            "deterministic_evidence_span_check",
             "deterministic_validator",
             "verify_repair",
             "adjudicator",

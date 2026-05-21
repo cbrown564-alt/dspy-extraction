@@ -1926,12 +1926,15 @@ def _predict_record(
                 record.text,
             )
         )
-        diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
-            _augment_diagnosis_co_lists(
-                diagnosis_inputs,
-                record.text,
+        if program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT:
+            diagnosis_raw = diagnosis_inputs
+        else:
+            diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
+                _augment_diagnosis_co_lists(
+                    diagnosis_inputs,
+                    record.text,
+                )
             )
-        )
     diagnoses, collapsed = _normalize_diagnoses(diagnosis_raw)
     diagnosis_evidence = _as_list(getattr(pred, "diagnosis_evidence", []))
     values.extend(

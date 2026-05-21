@@ -1875,6 +1875,149 @@ def test_gan_s0_pipeline_stage_graph_gpt_cap25_v1_configs_record_contract():
     assert adjudicate.taxonomy.program_architecture == "temporal_candidates_single_pass"
 
 
+def test_exect_s1_pipeline_stage_graph_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_graph_g1_l1_policy_bridges_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_graph_g1_l1_policy_no_bridges_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_graph_g2_extract_verify_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_graph_g2_raw_post_bridge_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_graph_g3_family_split_merge_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    stage_graph_ids = {
+        "exect_s1_stage_graph_g1_l1_policy_bridges_cap25_gpt4_1_mini": (
+            "g1_l1_policy_bridges"
+        ),
+        "exect_s1_stage_graph_g1_l1_policy_no_bridges_cap25_gpt4_1_mini": (
+            "g1_l1_policy_no_bridges"
+        ),
+        "exect_s1_stage_graph_g2_extract_verify_cap25_gpt4_1_mini": "g2_extract_verify",
+        "exect_s1_stage_graph_g2_raw_post_bridge_cap25_gpt4_1_mini": (
+            "g2_raw_post_bridge"
+        ),
+        "exect_s1_stage_graph_g3_family_split_merge_cap25_gpt4_1_mini": (
+            "g3_family_split_merge"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == (
+            "exect_s1_pipeline_stage_graph_gpt_cap25_v1"
+        )
+        assert config.taxonomy.varied_factor == "pipeline_stage_graph"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == stage_graph_ids[config.experiment_id]
+        assert config.prompt_version == "exect_s0_s1_field_family_v4_10_label_policy" or (
+            config.program_variant == "exect_s0_s1_field_family_verify_repair"
+            and config.prompt_version == "exect_s0_s1_field_family_verify_repair_v1"
+        )
+
+    verify = configs[2]
+    assert verify.program_variant == "exect_s0_s1_field_family_verify_repair"
+    assert verify.controls.repair_policy == "raw_no_benchmark_bridges"
+
+    family_split = configs[4]
+    assert family_split.program_variant == "exect_s0_s1_field_family_section_aware"
+    assert family_split.controls.context_policy == "deterministic_section_aware_per_family"
+
+
+def test_exect_s1_stage_executor_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_executor_e1_inline_bridges_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_executor_e2_post_bridges_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_executor_e3_all_family_hints_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_executor_e4_seizure_hints_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_stage_executor_e5_medication_hints_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    stage_executors = {
+        "exect_s1_stage_executor_e1_inline_bridges_cap25_gpt4_1_mini": (
+            "llm_extract_inline_bridges"
+        ),
+        "exect_s1_stage_executor_e2_post_bridges_cap25_gpt4_1_mini": (
+            "llm_extract_post_bridges"
+        ),
+        "exect_s1_stage_executor_e3_all_family_hints_cap25_gpt4_1_mini": (
+            "det_all_family_hints_llm_extract"
+        ),
+        "exect_s1_stage_executor_e4_seizure_hints_cap25_gpt4_1_mini": (
+            "det_seizure_hints_llm_extract"
+        ),
+        "exect_s1_stage_executor_e5_medication_hints_cap25_gpt4_1_mini": (
+            "det_medication_hints_llm_extract"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "exect_s1_stage_executor_gpt_cap25_v1"
+        assert config.taxonomy.varied_factor == "stage_executor"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == "g1_l1_policy_bridges"
+        assert config.taxonomy.stage_executor == stage_executors[config.experiment_id]
+
+    inline = configs[0]
+    assert inline.program_variant == "exect_s0_s1_field_family_single_pass"
+    assert inline.controls.repair_policy == "none"
+
+    post = configs[1]
+    assert post.controls.repair_policy == "artifact_benchmark_bridge_only"
+
+    all_hints = configs[2]
+    assert all_hints.program_variant == "exect_s0_s1_field_family_pre_vocab_single_pass"
+
+
 def test_gan_s0_stage_executor_gpt_cap25_v1_configs_record_contract():
     configs = [
         load_experiment_config(
@@ -1943,6 +2086,62 @@ def test_gan_s0_stage_executor_gpt_cap25_v1_configs_record_contract():
         e4.program_variant == "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair"
     )
     assert e5.program_variant == "gan_frequency_s0_llm_temporal_candidates_verify_repair"
+
+
+def test_gan_s0_validation_ladder_gpt_cap25_v1_configs_record_contract():
+    ladder_rungs = {
+        "gan_s0_validation_ladder_v0_cap25_gpt4_1_mini": (
+            "adjudicate_only",
+            "gan_frequency_s0_temporal_candidates_single_pass",
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+        ),
+        "gan_s0_validation_ladder_v2_cap25_gpt4_1_mini": (
+            "det_plausibility",
+            "gan_frequency_s0_temporal_candidates_adjudicate_det_guards",
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+        ),
+        "gan_s0_validation_ladder_v3_cap25_gpt4_1_mini": (
+            "det_evidence_grounding",
+            "gan_frequency_s0_temporal_candidates_adjudicate_det_evidence",
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+        ),
+        "gan_s0_validation_ladder_v4_cap25_gpt4_1_mini": (
+            "llm_confirm_only",
+            "gan_frequency_s0_temporal_candidates_adjudicate_confirm_only",
+            "gan_frequency_s0_temporal_candidates_confirm_only_v1_1",
+        ),
+        "gan_s0_validation_ladder_v5_cap25_gpt4_1_mini": (
+            "llm_verify_repair",
+            "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_no_guards",
+            "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_v1_1",
+        ),
+        "gan_s0_validation_ladder_v6_cap25_gpt4_1_mini": (
+            "llm_verify_repair_det_guards",
+            "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair",
+            "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_v1_1",
+        ),
+        "gan_s0_validation_ladder_v7_cap25_gpt4_1_mini": (
+            "llm_vr_det_guards_span_check",
+            "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair",
+            "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_span_check_v1",
+        ),
+    }
+    for experiment_id, (
+        rung,
+        program_variant,
+        prompt_version,
+    ) in ladder_rungs.items():
+        config = load_experiment_config(
+            Path(f"configs/experiments/{experiment_id}.json")
+        )
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "gan_s0_validation_ladder_gpt_cap25_v1"
+        assert config.taxonomy.varied_factor == "validation_ladder_rung"
+        assert config.taxonomy.validation_ladder_rung == rung
+        assert config.taxonomy.stage_graph_id == "g2_candidates_adjudicate"
+        assert config.program_variant == program_variant
+        assert config.prompt_version == prompt_version
+        assert config.max_records == 25
 
 
 def test_gan_s0_implementation_variant_gpt_cap25_v1_configs_record_contract():

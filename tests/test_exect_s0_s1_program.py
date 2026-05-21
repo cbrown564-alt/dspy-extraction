@@ -1757,6 +1757,49 @@ def test_exect_s0_s1_verify_repair_module_runs_extract_then_verify():
     assert len(dspy.settings.lm.history) == 2
 
 
+def test_exect_s0_s1_verify_repair_respects_raw_no_benchmark_bridges_repair_policy():
+    record = load_exect_gold_document("EA0153")
+    _configure_dummy(
+        [
+            {
+                "reasoning": "Initial pass.",
+                "diagnosis": [],
+                "diagnosis_evidence": [],
+                "seizure_type": [],
+                "seizure_type_evidence": [],
+                "annotated_medication": ["lamotrigine"],
+                "annotated_medication_evidence": [
+                    "Please start lamotrigine 25mg once a day"
+                ],
+            },
+            {
+                "reasoning": "Verifier confirms planned medication removal.",
+                "diagnosis": [],
+                "diagnosis_evidence": [],
+                "seizure_type": [],
+                "seizure_type_evidence": [],
+                "annotated_medication": [],
+                "annotated_medication_evidence": [],
+                "verifier_decision": "repair",
+                "verifier_reason": "Planned start is not benchmark-facing medication.",
+            },
+        ]
+    )
+
+    prediction_set = predict_exect_records(
+        ExectS0S1VerifyRepairModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy",
+        program_variant=EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
+        repair_policy="raw_no_benchmark_bridges",
+    )
+
+    metadata = prediction_set.predictions[0].metadata
+    assert metadata["apply_benchmark_bridges"] is False
+    assert metadata["bridge_stage"] == "none"
+
+
 def test_exect_s0_s1_verify_repair_guards_block_add_only_diagnosis():
     record = load_exect_gold_document("EA0061")
     _configure_dummy(

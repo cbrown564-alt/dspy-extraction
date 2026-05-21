@@ -1,7 +1,7 @@
 # Gan S0 Validation Ladder — GPT Cap-25 v1 Pre-Registration
 
 Date: 2026-05-21  
-Status: **Design complete — implementation pending**  
+Status: **Cap-25 complete** — `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md`  
 Comparison group: `gan_s0_validation_ladder_gpt_cap25_v1`  
 Related: `docs/multi_stage_llm_clinical_extraction_literature_review_20260521.md` (Literature Card 2), `docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md`, `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`, `docs/gan_2026_label_audit.md`, `docs/hybrid_pipeline_mechanism_status_20260521.md`  
 Kanban: `docs/kanban_plan.md` (Literature-informed follow-ups)
@@ -153,16 +153,16 @@ No full-validation spend on null transitions (V4 confirm-only ≈ V3, V6 ≈ V0 
 
 Ordered before model-backed runs:
 
-1. [ ] Add `validation_ladder_rung` to taxonomy allowlist (`taxonomy.py`, `registry_validation.py`, `docs/experiment_taxonomy_schema.md`).
-2. [ ] **V2** — `GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule`: apply `_apply_temporal_verifier_guards` to adjudicate output with synthetic `decision=confirm` from adjudicate (no LLM verifier call).
-3. [ ] **V3** — extend V2 with prediction-affecting `_evidence_policy_feedback` abstain before emit.
-4. [ ] **V4** — `GanFrequencyS0TemporalVerifierModule` + confirm-only prompt variant (`decision` constrained to confirm; reject repair/abstain in signature).
-5. [ ] **V5** — adjudicate → temporal verifier **without** `_apply_temporal_verifier_guards` (isolates raw LLM VR).
-6. [ ] **V6** — wire existing `gan_frequency_s0_temporal_candidates_adjudicate_verify_repair` (E4 reproduction).
-7. [ ] **V7** — span-check prompt version on V6 path (reuse `GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION` pattern).
-8. [ ] Cap-25 configs `configs/experiments/gan_s0_validation_ladder_v{0,2,3,4,5,6,7}_cap25_gpt4_1_mini.json` with taxonomy block.
+1. [x] Add `validation_ladder_rung` to taxonomy allowlist (`taxonomy.py`, `registry_validation.py`, `docs/experiment_taxonomy_schema.md`).
+2. [x] **V2** — `GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule`.
+3. [x] **V3** — `GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule`.
+4. [x] **V4** — `GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule` + confirm-only verifier prompt.
+5. [x] **V5** — `GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule`.
+6. [x] **V6** — `gan_frequency_s0_temporal_candidates_adjudicate_verify_repair` (E4 reproduction).
+7. [x] **V7** — span-check via `gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_span_check_v1`.
+8. [x] Cap-25 configs `configs/experiments/gan_s0_validation_ladder_v{0,2,3,4,5,6,7}_cap25_gpt4_1_mini.json`.
 9. [ ] Extend run artifact summary or inspection script to aggregate validation-process metrics above.
-10. [ ] **V8 judge** — separate prereg `gan_s0_validation_ladder_judge_gpt_cap25_v1` after V0–V6 inspection.
+10. [ ] **V8 judge** — separate prereg after V0–V6 inspection.
 
 ## Run order
 

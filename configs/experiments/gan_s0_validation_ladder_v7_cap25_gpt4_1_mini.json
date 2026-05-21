@@ -1,0 +1,44 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "V6 stack + deterministic evidence span-check guard after verify-repair"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_validation_ladder_v7_cap25_gpt4_1_mini",
+  "hypothesis": "Validation ladder V7 (llm_vr_det_guards_span_check): V6 + post-VR evidence span-check abstention.",
+  "max_records": 25,
+  "metric_caveats": [
+    "Comparison group gan_s0_validation_ladder_gpt_cap25_v1; varied_factor validation_ladder_rung.",
+    "Two LLM calls per record.",
+    "Cap-25 search only — decision_scope arm."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_span_check_v1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_validation_ladder_gpt_cap25_v1",
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "intended_decision": "pending",
+    "interleaving_positions": ["pre", "during", "post"],
+    "program_architecture": "temporal_candidates_adjudicate_verify_repair",
+    "schema_complexity": "gan_s0",
+    "stage_graph_id": "g2_candidates_adjudicate",
+    "validation_ladder_rung": "llm_vr_det_guards_span_check",
+    "varied_factor": "validation_ladder_rung"
+  }
+}

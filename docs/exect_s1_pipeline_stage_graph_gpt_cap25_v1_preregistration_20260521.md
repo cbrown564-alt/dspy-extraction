@@ -1,7 +1,7 @@
 # ExECT S1 Pipeline Stage-Graph GPT Cap-25 v1 Preregistration
 
 Date: 2026-05-21  
-Status: Preregistered — configs ready, runs pending  
+Status: Cap-25 complete — see `docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md`  
 Comparison group: `exect_s1_pipeline_stage_graph_gpt_cap25_v1`  
 Related: `docs/hybrid_pipeline_research_pivot_20260521.md`, `docs/hybrid_pipeline_exploration_implementation_plan_20260521.md`, `docs/hybrid_pipeline_mechanism_status_20260521.md`, `docs/kanban_plan.md`
 

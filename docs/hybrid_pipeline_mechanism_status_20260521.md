@@ -36,7 +36,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Det temporal candidate generation (Gan) | **operational-freeze** | In promoted arm; **not mechanism-closed** |
 | LLM temporal candidate generation (Gan) | **open** | Cap-25 JSON path rejected as arm (E2/E5 29.2% vs E1 52%); presentation not swept — `docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md` |
 | LLM vs det for candidate stage (Gan) | **open** | Directional det > hybrid > LLM on cap-25; mechanism not closed (one LLM format) |
-| Verify-repair as second stage (Gan) | **open** | Cap-25 null on monthly; temporal+VR ≡ direct on labels in Lane A |
+| Verify-repair as second stage (Gan) | **open** | Cap-25 null on monthly; V6≡V0 (52%); det-evidence front-end harmful (V3–V5) — `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
 | Verify-repair (ExECT S1) | **arm-reject** | `exect_s1_verification_verify_repair_cap25` −9.4pp micro |
 | Tool-during temporal (Gan H3) | **arm-reject** | `gan_s0_qwen35b_react_temporal_tools` slice — one tool surface |
 | Tool-during (general) | **open** | Second tool implementation not tested |
@@ -55,7 +55,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Prompt v4_11 (GPT S1) | **arm-reject** | cap-25 seizure −1.5pp |
 | Prompt v4_11 (Qwen S1) | **operational-freeze** | Hold promote blocked; seizure +18.5pp full |
 | Evidence soft (ExECT S1) | **arm-reject** | cap-25 |
-| Evidence span-check (Gan) | **arm-reject** | confounded cap-25 |
+| Evidence span-check (Gan) | **arm-reject** | V7 + Lane A on g2 skeleton; 9/25 abstentions cap-25 — `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
 | Bootstrap optimizer (ExECT S1) | **arm-reject** | cap-25 −5.1pp |
 | DSPy optimizers (general) | **open** | Ladder rungs 4–5 not run |
 | GEPA (Gan) | **arm-reject** | historical full |
@@ -73,5 +73,5 @@ These are **arm-reject**, not mechanism-reject for the rows in that doc.
 
 ## Next status updates expected
 
-- After ExECT S1 stage-graph cap-25 → stage-count mechanism rows for ExECT S1
+- After ExECT optimizer thesis rungs 4a–4c → DSPy optimizers row (arm vs open)
 - Optional 50-record Gan presentation confirmation before operational default format change

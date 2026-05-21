@@ -16,18 +16,29 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 | 2 — Gan Axis 1 | **Done** | Inspection + registry backfill (10 hybrid-grid rows) |
 | 3 — Gan Axis 2 | **Done** | Inspection `docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md` |
 | 4 — Gan Axis 3 | **Done** | Inspection `docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md` |
-| 5–7 | **Next** | ExECT S1 stage-graph grid unblocked |
+| 5 — ExECT S1 Axes 1–2 | **Done** | Stage-graph + stage-executor cap-25 grids + inspections |
+| 5c — Gan validation ladder | **Done** | `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
+| 6 — ExECT optimizer (Axis 3) | **In progress** | Thesis prereg; configs ready; rungs 4a–4c pending |
+| 7 — Qwen / full validation | **Deferred** | Winners only |
 
 **Phase 2 headline:** A3 `g2_candidates_adjudicate` (temporal candidates → single-pass adjudicate) leads at **52%** monthly on cap-25; promoted skeleton A5 `g3_candidates_extract_repair` ties direct at **44%**. Verify-repair erases A3 label gains on this slice (A3 vs A5: 15/25 identical).
 
 **Phase 4 headline:** Table/JSON/bullets presentation (**56%** monthly) beats prose control (**52%**, E1 repro) by **+4pp** on cap-25; three formats tie; mechanism class stays open.
 
+**Phase 5a headline:** S1/S4 `g1_l1_policy_bridges` / `g2_raw_post_bridge` tie at **95.8%** micro on cap-25; bridge contribution **+23pp** vs bridge-free S2; S3 verify-repair and S5 family-split **reject (arm)**.
+
+**Phase 5b headline:** E1/E2 `llm_extract_inline_bridges` / `llm_extract_post_bridges` tie at **95.8%**; pre-vocab hint executors E3–E5 **reject (arm)** (−4.9pp to −2.5pp vs E1).
+
+**Phase 5c headline:** V0/V2/V6 hold at **52%** monthly (25/25 valid); V3–V5 fail valid-count gates (det evidence abstains 13/25); V7 span-check **reject** (50% on 16 valid).
+
 **Next session pull (ordered):**
 
-1. ~~Gan Axis 3 implementation sweep~~ Done — `gan_s0_implementation_variant_gpt_cap25_v1`
-2. **ExECT S1 stage-graph prereg + cap-25 grid** (`exect_s1_pipeline_stage_graph_gpt_cap25_v1`) — document `bridge_mode` every arm
-3. Optional: 50-record slice on `cand_table_v1` (or tie-break winner) before operational presentation change
-4. Do **not** mechanism-close candidate presentation from cap-25 alone
+1. ~~ExECT S1 stage-graph + stage-executor cap-25 grids~~ Done
+2. ~~Gan validation ladder V0–V7~~ Done
+3. ~~Phase 4 + ladder registry backfill~~ Done (`scripts/backfill_hybrid_cap25_registry.py`, +11 rows)
+4. **ExECT optimizer thesis rungs 4a–4c** — `exect_s1_ladder_optimizer_automation_v1` (Axis 3 only)
+5. Optional: 50-record Gan presentation confirmation (I1 table) before format operational change
+6. Do **not** mechanism-close bridge placement, verify-repair, or candidate presentation from cap-25 alone
 
 ---
 
@@ -177,24 +188,35 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 
 **Caveat:** Bridges and label policy confound raw extraction; document `bridge_mode` in every arm (`inline` | `post_module` | `none_diagnostic`).
 
-### 5a — Stage graph (Axis 1)
+### 5a — Stage graph (Axis 1) — **DONE**
 
 **Comparison group:** `exect_s1_pipeline_stage_graph_gpt_cap25_v1`
 
-| Arm | Graph |
-| --- | --- |
-| S1 | `g1_l1_policy_bridges` (production-shaped) |
-| S2 | `g1_l1_policy_no_bridges` (diagnostic) |
-| S3 | `g2_extract_verify` (verify-repair, bridges off) |
-| S4 | `g2_raw_post_bridge` (extract → bridge only) |
-| S5 | `g3_family_split_merge` (per-family extract → merge) — optional if program support exists |
+| Arm | Graph | Status |
+| --- | --- | --- |
+| S1 | `g1_l1_policy_bridges` (production-shaped) | hold — 95.8% micro |
+| S2 | `g1_l1_policy_no_bridges` (diagnostic) | hold (diagnostic) — 72.8% |
+| S3 | `g2_extract_verify` (verify-repair, bridges off) | reject (arm) — 72.8%, null vs S2 |
+| S4 | `g2_raw_post_bridge` (extract → bridge only) | hold — 95.8%, ties S1 |
+| S5 | `g3_family_split_merge` (per-family extract → merge) | reject (arm) — 83.3% |
 
-### 5b — Per-stage executor (Axis 2)
+**Cap-25 headline:** S1/S4 tie at **95.8%** micro; inline bridge contribution **+23pp** vs bridge-free (S2). Inspection: `docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md`.
 
-On fixed graph, vary:
+### 5b — Per-stage executor (Axis 2) — **DONE**
 
-- diagnosis / seizure / medication: LLM extract vs det-assisted pre-candidates (new shapes, not replay of rejected slice configs)
-- bridge: inline vs post (diagnostic for **placement** of benchmark policy)
+On fixed graph `g1_l1_policy_bridges`, vary bridge placement and pre-vocab hint executors.
+
+**Cap-25 results:**
+
+| Arm | `stage_executor` | Micro F1 | Outcome |
+| --- | --- | ---: | --- |
+| E1 | `llm_extract_inline_bridges` | **95.8%** | hold |
+| E2 | `llm_extract_post_bridges` | **95.8%** | hold (null vs E1) |
+| E5 | `det_medication_hints_llm_extract` | 93.3% | reject (arm) |
+| E4 | `det_seizure_hints_llm_extract` | 92.8% | reject (arm) |
+| E3 | `det_all_family_hints_llm_extract` | 90.9% | reject (arm) |
+
+Inspection: `docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md`.
 
 **Do not** claim “H2 pre-vocab closed” without new `implementation_variant` IDs in prereg.
 
@@ -238,12 +260,12 @@ Gan optimizer cells attach to **winning stage graph** from Phase 2, not direct-o
 | Gan stage-graph cap-25 grid | 2 | 1 | **Done** |
 | Gan stage-executor cap-25 grid | 3 | 2 | **Done** |
 | Gan implementation sweep | 4 | 3 | **Done** |
-| ExECT S1 stage-graph grid | 5a | 1 | **Ready** (Gan Axis 3 complete) |
-| ExECT S1 executor/bridge grid | 5b | 2 | Pending |
-| Optimizer automation thesis | 6 | 3 | Deferred |
+| ExECT S1 stage-graph grid | 5a | 1 | **Done** |
+| ExECT S1 executor/bridge grid | 5b | 2 | **Done** |
+| Optimizer automation thesis | 6 | 3 | **In progress** — configs ready; runs pending |
 | Mechanism status maintenance | 1 | — | Ongoing |
 | Phase 2–3 registry backfill | 2–3 | — | **Done** (`scripts/backfill_hybrid_cap25_registry.py`) |
-| Phase 4 registry backfill | 4 | — | Pending |
+| Phase 4 + validation ladder registry backfill | 4, 5c | — | **Done** (+11 rows) |
 
 **Deprioritized until Phase 3 advances:** broad “closed probe” reruns, Qwen interleaving ports, published benchmark reproduction, ExECT S1 stage-graph grid.
 

@@ -61,8 +61,8 @@ Interpretation: recent clinical IE papers support modular extraction, but mainly
 
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
-| Preregister evidence-first Gan S0 retrieval ablation | **Done** | `docs/gan_s0_retrieval_gpt_cap25_v1_preregistration_20260521.md` — cap-25 R1/R2/R3 context_selection_policy group | Current Gan temporal-candidates default; scorer semantics in `docs/gan_2026_label_audit.md` | yes | Next: R3 context-only program support + cap-25 configs/runs |
-| Design Gan S0 validation ladder | **Done** | Prereg `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md` — rungs V0–V7 on `g2_candidates_adjudicate` + det adjudicate; V8 judge deferred | Phase 2–3 cap-25 anchor (E1 52% monthly) | yes, after program variants V2–V5 | Implement det/LLM validation modules + cap-25 configs; no scorer changes |
+| Preregister evidence-first Gan S0 retrieval ablation | **Done** | Inspection `docs/gan_s0_retrieval_gpt_cap25_v1_inspection_20260521.md` — R2 hold 52%; R1/R3 reject (arm) | Current Gan temporal-candidates default; scorer semantics in `docs/gan_2026_label_audit.md` | yes | Registry rows optional follow-up |
+| Design Gan S0 validation ladder | **Done** | Prereg + implementation `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md` — V0–V7 configs ready | Phase 2–3 cap-25 anchor (E1 52% monthly) | yes | Run cap-25 grid; inspection pending |
 | Preregister ExECT S1 field-family prompt graph | **Ready** | Stage-graph comparison of current single-pass policy extraction vs diagnosis/seizure/medication field-family stages | Existing ExECT S1 stage-graph card; explicit bridge policy per arm | after bridge policy is fixed | Per-family F1, micro F1, evidence support, schema validity, bridge contribution, and merge-error analysis |
 | Run fixture-to-real reality-gap audit | **Backlog** | Small report comparing deterministic fixture outcomes, cap-25 dev behavior, and full validation behavior for one Gan and one ExECT family | Existing fixture coverage plus recent Gan/ExECT inspections | yes | Documents where fixtures overstate performance; updates failure-mode tags from real dev errors |
 | Audit run metadata for validation outcomes | **Backlog** | Check whether artifacts record model, prompt/schema versions, decoding settings, input IDs, validation failures, repair decisions, and scorer mode | none | yes | Gap report plus narrow implementation cards if missing metadata blocks literature-grade reporting |
@@ -179,29 +179,31 @@ Use skill **`hybrid-pipeline-exploration`** for all new experiment design and in
 
 ### Phase 5 — Gan validation ladder + ExECT S1 stage-graph
 
-| Card | Status | Blocker |
+| Card | Status | Deliverable |
 | --- | --- | --- |
-| Gan S0 validation ladder cap-25 | **Ready** | Prereg done — implement V2–V5 program variants + configs; V0/V6 exist |
-| ExECT S1 stage-graph cap-25 | **Ready** | Preregister `exect_s1_pipeline_stage_graph_gpt_cap25_v1`; tag `bridge_mode` per arm |
+| Gan S0 validation ladder cap-25 | **Done** | Inspection `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` — V0/V2/V6 hold; V3–V5/V7 reject |
+| ExECT S1 stage-graph cap-25 | **Done** | Prereg + 5 configs + runs + inspection + registry backfill |
 
-### Phase 5–6 — ExECT S1 + optimizer (Axis 3 on stripped graphs)
+### Phase 5–6 — ExECT S1 executor + optimizer (Axis 2–3)
 
 | Card | Status | Notes |
 | --- | --- | --- |
-| ExECT S1 stage-graph cap-25 | **Pending** | Document `bridge_mode` every arm |
-| Optimizer automation thesis | **Deferred** | Axis 3 only — after Gan Phase 2–3 or explicit parallel slot |
+| ExECT S1 stage-executor cap-25 | **Done** | Prereg + 5 configs + runs + inspection + registry backfill |
+| Optimizer automation thesis | **In progress** | Axis 3 — `docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md`; rungs 4a–4c executing |
 
 ### Completed batches (arm evidence — not mechanism closure)
 
 | Batch | Inspection | Arm outcomes (not mechanism) |
 | --- | --- | --- |
 | Gan S0 stage-graph Axis 1 cap-25 | `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md` | A3 hold; A1/A2/A4/A5 reject (arm) |
+| ExECT S1 stage-graph Axis 1 cap-25 | `docs/exect_s1_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md` | S1/S4 hold (95.8%); S3/S5 reject (arm); bridge Δ +23pp |
+| ExECT S1 stage-executor Axis 2 cap-25 | `docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md` | E1/E2 hold (95.8%); E3–E5 reject (arm); bridge placement null |
 | Lane A GPT cap-25 (Gan + ExECT) | `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`, `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md` | See mechanism status doc |
 | ExECT S1 ladder rungs 0–3 | `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` | Decomposition reference |
 | Lane Q Qwen v4_11 | `docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md` | Hold promote blocked |
 | Negative probes | `docs/exect_negative_probe_synthesis_20260520.md` | Repeat guardrail only |
 
-**No runs in flight.** Gan Phases 2–4 cap-25 complete; validation ladder preregistered; next model-backed groups: Gan validation ladder V2–V6 (after impl) and ExECT S1 stage-graph Axis 1.
+**Runs in flight:** ExECT S1 optimizer thesis rungs 4a–4c (`exect_s1_ladder_optimizer_automation_v1`, Axis 3). Gan/ExECT hybrid grids and validation ladder cap-25 complete; registry backfill +11 rows (impl + ladder).
 
 **ExECT S1 optimizer pilot interpretation notes (2026-05-21):**
 
@@ -387,9 +389,9 @@ ExECT S1 cap-25 bootstrap pilot is **complete — reject**. Do not scale bootstr
 
 ## Recommended Next Pull
 
-1. **Implement Gan S0 validation ladder V2–V5:** program variants + cap-25 configs per `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md`; run V0→V6 on GPT cap-25.
-2. **Run Gan S0 retrieval cap-25 grid:** execute `gan_s0_retrieval_gpt_cap25_v1` per retrieval prereg (parallel if cap record order unchanged).
-3. **Preregister ExECT S1 field-family prompt graph / stage-graph:** bridge policy explicit per arm.
+1. **Gan S0 validation ladder V2–V6:** program variants + cap-25 configs per validation-ladder prereg.
+2. **ExECT optimizer rungs 4–5 (Axis 3):** preregister stripped L0/L1 automation thesis before compile runs.
+3. **Gan S0 retrieval — done:** inspection `docs/gan_s0_retrieval_gpt_cap25_v1_inspection_20260521.md` (R2 hold 52%; R1/R3 reject arm).
 4. **Keep Qwen ports deferred:** port only arms that survive GPT cap-25/focused validation.
 5. **Research hygiene parallel slot:** audit run metadata for validation/repair outcomes (Literature Card 5).
 

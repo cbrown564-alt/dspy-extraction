@@ -82,3 +82,36 @@ def test_create_run_artifact_layout_writes_metadata_and_artifact_directory(tmp_p
     assert written["run_id"] == "run_1"
     assert written["artifact_paths"]["predictions"] == "predictions.json"
     assert written["artifact_paths"]["optimizer_logs"] == "artifacts/optimizer/logs"
+
+
+def test_create_run_artifact_layout_exposes_runner_phase7_contract_paths(tmp_path):
+    metadata = RunMetadata(
+        run_id="phase7_layout_run",
+        created_at=datetime(2026, 5, 21, tzinfo=timezone.utc),
+        dataset="gan_2026",
+        split_name="gan_2026_fixed_v1:validation",
+        model_provider="openai",
+        model_name="gpt-4.1-mini",
+        schema_level="gan_frequency_s0",
+        program_variant="gan_frequency_s0_single_pass",
+        scorer_mode="gan_frequency_deterministic_v1",
+    )
+
+    paths = create_run_artifact_layout(metadata, root=tmp_path)
+
+    assert set(paths) == {
+        "run",
+        "metadata",
+        "config",
+        "prompts",
+        "predictions",
+        "metrics",
+        "errors",
+        "artifacts",
+        "compiled_state",
+        "optimizer_artifacts",
+        "optimizer_logs",
+    }
+    assert paths["compiled_state"] == paths["run"] / "artifacts" / "compiled_state.json"
+    assert paths["optimizer_artifacts"] == paths["run"] / "artifacts" / "optimizer"
+    assert paths["optimizer_logs"] == paths["run"] / "artifacts" / "optimizer" / "logs"
