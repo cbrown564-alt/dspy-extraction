@@ -56,7 +56,11 @@ from clinical_extraction.schemas import (
 )
 
 EXECT_S4_SCHEMA_LEVEL = "exect_s4_field_family"
-EXECT_S4_VARIANT = "exect_s4_field_family_single_pass"
+EXECT_S4_L1_VARIANT = "exect_s4_field_family_single_pass"
+EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT = (
+    "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+)
+EXECT_S4_VARIANT = EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT
 EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT = (
     "exect_s4_field_family_frequency_pre_vocab_single_pass"
 )
@@ -74,9 +78,6 @@ EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT = (
 )
 EXECT_S4_MT_GUARD_NON_ASM_VARIANT = (
     "exect_s4_field_family_mt_guard_non_asm_single_pass"
-)
-EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT = (
-    "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
 )
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
@@ -375,6 +376,7 @@ class ExectS4FrequencyStructuredSlotsFieldFamilyModule(dspy.Module):
 def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Module:
     if program_variant in {
         EXECT_S4_VARIANT,
+        EXECT_S4_L1_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
@@ -389,7 +391,7 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
 
 
 def _s4_epilepsy_cause_bridge_s3_variant(program_variant: str) -> str:
-    if program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT:
+    if program_variant in {EXECT_S4_VARIANT, EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT}:
         return EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT
     return EXECT_S3_VARIANT
 
@@ -469,7 +471,7 @@ def _predict_s4_record(
         metadata["post_guard"] = {
             "medication_temporality": "exect.medication_temporality.non_asm_guard.v1"
         }
-    if program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT:
+    if program_variant in {EXECT_S4_VARIANT, EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT}:
         metadata["post_bridge"] = {
             "epilepsy_cause": "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
         }

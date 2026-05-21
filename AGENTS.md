@@ -42,6 +42,8 @@ Available project skills:
 - `grill-with-docs`: use to stress-test a plan against repo docs and existing patterns before implementation.
 - `windows-portability`: use when reviewing code, scripts, paths, or docs for Windows development assumptions.
 - `skill-system-review`: use when reviewing whether project skills still fit recent repo changes.
+- `paper-narrative-synthesis`: use when converting project artifacts into a coherent paper outline, manuscript section, argument map, or weak-point-driven revision plan.
+- `paper-critical-review`: use when critically reviewing a paper draft, outline, or argument for rigor, coherence, unsupported claims, methodological threats, and the next revision loop.
 
 ## Recommended Workflow
 

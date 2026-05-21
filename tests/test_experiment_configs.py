@@ -45,8 +45,10 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_VARIANT,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+    EXECT_S4_L1_VARIANT,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -1741,7 +1743,7 @@ def test_exect_s4_frequency_surface_repair_cap25_configs_record_contract():
 
     assert r0.max_records == 25
     assert r1.max_records == 25
-    assert r0.program_variant == "exect_s4_field_family_single_pass"
+    assert r0.program_variant == EXECT_S4_L1_VARIANT
     assert r1.program_variant == EXECT_S4_FREQUENCY_POST_MERGE_VARIANT
     assert r0.taxonomy is not None
     assert r1.taxonomy is not None
@@ -1882,8 +1884,8 @@ def test_exect_s4_cause_bridge_configs_record_contract():
 
     assert l1_full.max_records is None
     assert k01_full.max_records is None
-    assert l1_full.program_variant == "exect_s4_field_family_single_pass"
-    assert k01_full.program_variant == "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+    assert l1_full.program_variant == EXECT_S4_L1_VARIANT
+    assert k01_full.program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT
     assert k01_full.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
     assert l1_full.taxonomy.comparison_group == (
         "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1"

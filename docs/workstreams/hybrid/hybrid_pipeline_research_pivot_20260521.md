@@ -7,9 +7,9 @@ Related:
 
 - Ontology (unchanged): `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md`
 - Prior snapshot (historical bets, not closure): `docs/workstreams/hybrid/hybrid_deterministic_placement_research_synthesis_20260521.md`
-- Execution plan: `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md`
+- Operating board: `docs/planning/kanban_plan.md` (also `docs/kanban_plan.md`)
+- Retired phased archive: `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md`
 - Agent skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
-- Operating board: `docs/planning/kanban_plan.md`
 
 ---
 
@@ -219,6 +219,6 @@ We are “back on track” when:
 
 ## Immediate Next Step
 
-Execute Phase 0–1 in `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md`: doctrine embedded (this doc, skill, Kanban), then **Gan S0 Axis 1 stage-graph** preregistration and config batch. Axis 2 candidate-source arms follow only after the Axis 1 inspection ranks the skeletons.
+Doctrine is embedded (this doc, skill, Kanban). The hybrid cap-25 sprint in the retired implementation plan is **complete**; use `docs/planning/kanban_plan.md` for next pulls (currently **Gemini replay** on frozen S1/S4).
 
 Use skill: **`hybrid-pipeline-exploration`** for all new experiment design and decision writing.

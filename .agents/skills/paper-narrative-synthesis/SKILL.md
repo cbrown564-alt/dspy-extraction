@@ -1,85 +1,117 @@
 ---
 name: paper-narrative-synthesis
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: Use when converting this project's research material into a paper narrative, outline, manuscript section, abstract, introduction, methods, results, discussion, or revision plan. Trigger when the user wants to turn experiments, methods, results, error analyses, project design decisions, Kanban work, or research notes into a coherent publishable argument while preserving traceability, rigor caveats, and open weak points.
 ---
 
 # Paper Narrative Synthesis
 
-## Overview
+Use this skill to transform accumulated project work into a paper-shaped argument. The goal is not polished prose alone; the goal is a defensible narrative structure that exposes where the research story is strong, where it is under-evidenced, and what must be looped back into experiments or exposition.
 
-[TODO: 1-2 sentences explaining what this skill enables]
+Use alongside `research-synthesis` for artifact-grounded writeups, `research-supervisor-review` for repo-level judgment, and dataset/scorer skills when claims depend on benchmark semantics.
 
-## Structuring This Skill
+## Starting Context
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+Read the minimum set needed for the requested paper task:
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+1. `docs/outline.md`
+2. `docs/planning/kanban_plan.md`, if present
+3. recent synthesis, experiment, error-analysis, or workstream docs relevant to the paper claim
+4. `docs/experiments/synthesis/experiment_registry.json` and registry summaries when discussing experiments
+5. dataset audits before making dataset, label, scorer, or benchmark claims:
+   - `docs/datasets/exect/exect_gold_label_audit.md`
+   - `docs/datasets/gan/gan_2026_label_audit.md`
+6. policy docs that affect interpretation, especially scorer semantics, splits, deterministic foundations, and published benchmark metrics
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+Read `references/paper_argument_map.md` when building a full outline, introduction, discussion, or paper-wide revision plan.
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+## Workflow
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+1. Define the target artifact:
+   - paper outline
+   - thesis statement and contribution framing
+   - section draft
+   - argument map
+   - weak-point-driven revision plan
+2. Extract the raw material:
+   - research question
+   - datasets and splits
+   - methods and pipeline variants
+   - deterministic components and typed primitives
+   - models/providers
+   - scorer modes and normalization rules
+   - metrics and error analyses
+   - negative results, pivots, and design decisions
+3. Build the claim ladder:
+   - background problem
+   - concrete gap
+   - method or system contribution
+   - empirical result
+   - interpretation
+   - limitation
+   - next work
+4. Separate manuscript claims into:
+   - `Supported`: backed by artifacts, runs, tests, or docs
+   - `Plausible`: coherent but needs clearer evidence
+   - `Expository`: true enough but not yet explained well
+   - `Risky`: currently overclaiming or methodologically weak
+5. Draft the narrative around decisions, not chronology.
+6. Preserve traceability with file paths, run IDs, configs, splits, model names, scorer modes, and metric caveats.
+7. End with a revision loop: the smallest writing or experiment steps that would most improve the paper.
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+## Narrative Heuristics
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+- Prefer a single central thesis over a catalog of project work.
+- Treat engineering architecture as methodology only when it changes validity, reproducibility, or interpretability.
+- Explain why deterministic structure and LLM stages are combined, not just that they are.
+- Tie each experiment to the decision it was meant to inform.
+- Use negative results and pivots to strengthen the story of methodological control.
+- Do not hide dataset quirks; convert them into threats to validity, design constraints, or benchmark-policy discussion.
+- Avoid claiming clinical usefulness unless the evidence supports the downstream decision context.
+- Avoid comparing results across changed scorer semantics unless the text explicitly says the comparison is diagnostic rather than benchmark-equivalent.
 
-## [TODO: Replace with the first main section based on chosen structure]
+## Paper Skeleton
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+Use this default structure unless the target venue or user request implies a different one:
 
-## Resources (optional)
+```markdown
+# Working Title
 
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
+## Thesis
+One paragraph stating the paper's core claim and why this project is the right evidence for it.
 
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
+## Contributions
+- ...
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
+## Argument Map
+1. Problem and gap
+2. Dataset and benchmark constraints
+3. Method design
+4. Evaluation design
+5. Results and error analysis
+6. Interpretation and limitations
 
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
+## Section Plan
+### Introduction
+### Related Work
+### Data and Benchmark Policy
+### Methods
+### Experiments
+### Results
+### Discussion
+### Limitations
+### Reproducibility
 
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
+## Weak Points To Resolve
+| Weak point | Why it matters | Evidence needed | Smallest next action |
+| --- | --- | --- | --- |
+```
 
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
+## Completion Criteria
 
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
+Before finishing, include:
 
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
-
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
-
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
-
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
-
----
-
-**Not every skill requires all three types of resources.**
+- the drafted outline, section, argument map, or revision plan
+- artifacts inspected
+- claims that are supported, plausible, expository, or risky
+- dataset, split, model/provider, schema level, program variant, scorer mode, and metric caveats where applicable
+- the highest-value next revision loop

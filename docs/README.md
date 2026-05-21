@@ -7,7 +7,7 @@ should live under the nearest topic folder.
 ## Start Here
 
 - `outline.md` - overall research plan and system shape.
-- `planning/kanban_plan.md` - current execution board and active decisions.
+- `planning/kanban_plan.md` - current execution board and active decisions (alias: `kanban_plan.md`).
 - `research_atlas/` - registry-derived decision maps and evidence summaries.
 
 ## Stable Guidance

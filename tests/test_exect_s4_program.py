@@ -5,6 +5,7 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+    EXECT_S4_L1_VARIANT,
     EXECT_S4_FIELD_FAMILIES,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
@@ -428,7 +429,7 @@ def test_predict_exect_s4_cause_bridge_k0_k1_strips_early_life_meningitis():
     )
 
 
-def test_predict_exect_s4_default_preserves_unbridged_epilepsy_cause():
+def test_predict_exect_s4_default_applies_cause_bridge_k0_k1():
     record = load_exect_gold_document("EA0059")
     dspy.configure(
         lm=DummyLM(
@@ -442,10 +443,43 @@ def test_predict_exect_s4_default_preserves_unbridged_epilepsy_cause():
     )
 
     prediction_set = predict_exect_s4_records(
-        ExectS4FieldFamilyModule(),
+        build_exect_s4_module(),
         [record],
         model_provider="mock",
         model_name="dummy-fixture",
+        program_variant=EXECT_S4_VARIANT,
+    )
+
+    cause = [
+        value.normalized_value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "epilepsy_cause"
+    ]
+    assert cause == ["meningitis"]
+    assert prediction_set.predictions[0].metadata["post_bridge"]["epilepsy_cause"] == (
+        "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
+    )
+
+
+def test_predict_exect_s4_l1_preserves_unbridged_epilepsy_cause():
+    record = load_exect_gold_document("EA0059")
+    dspy.configure(
+        lm=DummyLM(
+            answers=[
+                _empty_s4_dummy_answer(
+                    epilepsy_cause=["early life meningitis"],
+                    epilepsy_cause_evidence=["early life meningitis"],
+                )
+            ]
+        )
+    )
+
+    prediction_set = predict_exect_s4_records(
+        build_exect_s4_module(EXECT_S4_L1_VARIANT),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S4_L1_VARIANT,
     )
 
     cause = [

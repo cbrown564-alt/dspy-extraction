@@ -44,7 +44,8 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Pre static vocab lists (ExECT S1/S4) | **arm-reject** | Slice/cap-25 configs in negative-probe synthesis |
 | S2 comorbidity atomization bridge (C0/C1) | **open** | Cap-25 null 85.7% all arms — `docs/experiments/exect/exect_s2_comorbidity_surface_bridge_gpt_cap25_v1_inspection_20260521.md` |
 | S2 investigation ECG drop guard (I0) | **open** | Cap-25 +5.6pp investigation F1 — `docs/experiments/exect/exect_ladder_investigation_guard_gpt_cap25_v1_inspection_20260521.md` |
-| S3 epilepsy_cause CUIPhrase bridge (K0+K1) | **open** | Cap-25 +20pp cause F1 (n=3 support; 1/25 doc) — `docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md` |
+| S3 epilepsy_cause CUIPhrase bridge (K0+K1) | **operational-freeze** | S3 full-val +11.1pp cause F1 — `docs/experiments/exect/exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`; S3 default variant not yet switched |
+| S4 epilepsy_cause CUIPhrase bridge (K0+K1) | **operational-freeze** | S4 full-val +10.6pp cause F1; `EXECT_S4_VARIANT` frozen — `docs/experiments/exect/exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
 | Pre context/candidate (general ExECT) | **open** | Other presentations and tasks not swept |
 | Post benchmark bridges (ExECT S1) | **operational-freeze** | Inline bridges in production; diagnostic bridge-free measured |
 | Post bridge as only intervention | **open** | Not same as bridge + policy decomposition |

@@ -1,8 +1,10 @@
 # Hybrid Pipeline Exploration — Implementation Plan
 
+> **RETIRED 2026-05-21.** The hybrid cap-25 sprint described here is complete. Use **`docs/planning/kanban_plan.md`** for active sequencing and next pulls. Doctrine: `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md`. Open mechanisms: `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md`.
+
 Date: 2026-05-21  
-Status: Active execution plan (companion to `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md`)  
-Horizon: ~8–12 weeks of GPT-first exploration, then selective Qwen/full validation  
+Status: **Retired archive** (superseded by `docs/planning/kanban_plan.md`)  
+Horizon: ~8–12 weeks of GPT-first exploration, then selective Qwen/full validation — **completed**  
 Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 
 ---
@@ -31,7 +33,7 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 | 5h — ExECT S3 cause-bridge cap-25 | **Done** | K0+K1 **+20pp** cause F1 (1/25 doc); hold proceed — `exect_s3_epilepsy_cause_bridge_gpt_cap25_v1_inspection_20260521.md` |
 | 5i — ExECT S3 cause-bridge full-val prereg | **Done** | 3-doc residual replay null; prereg + configs ready — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_preregistration_20260521.md` |
 | 5j — ExECT S3 cause-bridge full validation | **Done** | K0+K1 +11.1pp cause F1; hold operational candidate — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
-| 5k — ExECT S4 cause-bridge full validation | **Done** | K0+K1 +10.6pp cause F1; guards pass — `exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
+| 5k — ExECT S4 cause-bridge full validation | **Done (freeze, operational)** | K0+K1 +10.6pp cause F1; `EXECT_S4_VARIANT` frozen — `exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md` |
 | 5d — ExECT S4 residual synthesis | **Done** | Full-val read `docs/experiments/exect/exect_s4_residual_error_analysis_20260521.md`; anchors `…071248Z` (GPT) / `…160914Z` (Qwen) |
 | 5e — ExECT S4 frequency surface repair (Axis 3) | **Done (reject, arm)** | R1 post-merge −2.9pp vs R0 on cap-25 — `docs/experiments/exect/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md` |
 | 5e — ExECT S4 frequency structured slots (Axis 3) | **Done (hold, inconclusive)** | S2 **51.0%** = R0 on cap-25 — `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` |
@@ -84,7 +86,8 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 32. ~~**Next (ExECT S1–S3, optional):** S3 cause-bridge full-validation prereg on qualitative queue (EA0150, EA0016, EA0137)~~ **Done** — prereg + configs + 3-doc residual replay (null on anchor) — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_preregistration_20260521.md`, `exect_s3_epilepsy_cause_residual_slice_replay_20260521.md`
 33. ~~**Next (ExECT S1–S3):** run S3 cause-bridge full validation (L1 vs K0+K1, ~40 records each)~~ **Done** — K0+K1 +11.1pp cause F1 (1 TP EA0059); hold operational candidate — `exect_s3_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`
 34. ~~**Next (parallel, research hygiene):** audit run metadata for validation/repair outcomes (Kanban Literature Card 5)~~ **Done** — `docs/experiments/synthesis/run_metadata_validation_repair_audit_20260521.md`
-35. ~~**Next (ExECT S4):** run S4 cause-bridge full validation (L1 vs K0+K1, regression guards MT/frequency/investigation)~~ **Done** — K0+K1 +10.6pp cause F1; hold operational candidate — `exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`
+35. ~~**Next (ExECT S4):** run S4 cause-bridge full validation (L1 vs K0+K1, regression guards MT/frequency/investigation)~~ **Done** — K0+K1 +10.6pp cause F1; **freeze operational** — `exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1_inspection_20260521.md`
+36. ~~**Freeze S4 operational default to K0+K1 cause bridge**~~ **Done** — `EXECT_S4_VARIANT` = `exect_s4_field_family_cause_bridge_k0_k1_single_pass`; L1 = `EXECT_S4_L1_VARIANT`
 
 **S4 residual headline (full validation, GPT v1.2):** pooled micro **65.5%**; dominant burden is **medication_temporality** precision (52 FP, 62.5% F1) and **seizure_frequency** (45.7% F1, 28 FP / 22 FN). Sparse surface families (onset, when_diagnosed) are poor F1 but low support — not primary search budget. See Phase 5d.
 

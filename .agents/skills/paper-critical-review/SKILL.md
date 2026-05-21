@@ -1,85 +1,114 @@
 ---
 name: paper-critical-review
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: Use when critically reviewing a paper outline, manuscript draft, section draft, abstract, argument map, results narrative, or planned paper for rigor, coherence, weak points, missing exposition, unsupported claims, methodological threats, narrative gaps, or project-design issues that undermine the paper. Trigger for paper critique, adversarial review, reviewer-2 pass, claim audit, narrative coherence review, rigor review, or deciding what experiments or explanations are needed before submission.
 ---
 
 # Paper Critical Review
 
-## Overview
+Use this skill to critique the paper as both a research artifact and a narrative artifact. The aim is to identify where the manuscript's argument outruns the evidence, where project design has created narrative incoherence, and what concrete loop would most improve rigor.
 
-[TODO: 1-2 sentences explaining what this skill enables]
+Use alongside `research-supervisor-review` for repo-level supervision, `gold-scorer-integrity` for metric claims, `dataset-audit-first` for benchmark claims, and `research-drift-audit` when the paper story seems to diverge from the original research plan.
 
-## Structuring This Skill
+## Starting Context
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+Read the paper draft, outline, section, or argument map first. Then inspect only the evidence needed to verify its claims:
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+1. `docs/outline.md`
+2. `docs/planning/kanban_plan.md`, if the draft claims planned or completed scope
+3. experiment reports, preregistrations, inspections, and registry entries cited or implied by the draft
+4. scorer, split, and benchmark policy docs when metrics are discussed
+5. dataset audits when the paper makes ExECTv2 or Gan claims:
+   - `docs/datasets/exect/exect_gold_label_audit.md`
+   - `docs/datasets/gan/gan_2026_label_audit.md`
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+Read `references/review_rubric.md` for a full manuscript critique or when preparing a structured revision plan.
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+## Review Workflow
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+1. State the paper's apparent thesis in one sentence.
+2. List the main claims the paper needs readers to believe.
+3. For each claim, classify support:
+   - `Strong`: directly supported by artifacts and methods
+   - `Thin`: plausible but under-evidenced
+   - `Unclear`: support may exist but is not visible in the draft
+   - `Overclaim`: wording exceeds the evidence
+4. Evaluate the paper on two axes:
+   - methodological rigor
+   - narrative coherence
+5. Identify design-to-narrative leaks:
+   - unclear experiment sequencing
+   - inconsistent schema levels or field groups
+   - scorer semantics that changed midstream
+   - dataset-policy caveats not integrated into the story
+   - broad architecture work without a named claim
+6. Recommend the smallest revision loop:
+   - rewrite only
+   - add exposition
+   - run or rerun an experiment
+   - repair traceability
+   - narrow the thesis
+   - split into separate papers or sections
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+## Critical Dimensions
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+- thesis specificity
+- contribution novelty and scope control
+- benchmark and dataset fidelity
+- method reproducibility
+- experiment design and ablation discipline
+- metric validity and scorer stability
+- error-analysis depth
+- relation between deterministic and LLM components
+- clinical label-policy alignment
+- treatment of negative results
+- limitations and threats to validity
+- internal narrative order
+- reader confidence after each section
 
-## [TODO: Replace with the first main section based on chosen structure]
+## Output Shape
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
+Use this shape for normal reviews:
 
-## Resources (optional)
+```markdown
+## Apparent Thesis
 
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
+## Strongest Parts
 
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
+## Major Risks
+| Risk | Severity | Evidence | Fix |
+| --- | --- | --- | --- |
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
+## Claim Audit
+| Claim | Support | Problem | Needed revision |
+| --- | --- | --- | --- |
 
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
+## Narrative Coherence
 
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
+## Methodological Rigor
 
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
+## Recommended Revision Loop
+1. ...
+2. ...
+3. ...
+```
 
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
+For short drafts, compress the structure. For full manuscript review, cite paths, run IDs, configs, and metric files wherever possible.
 
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
+## Review Rules
 
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
+- Lead with the highest-risk issues, not copyediting.
+- Distinguish missing evidence from missing exposition.
+- Treat a confusing story as a research signal: it may reveal unclear project design, not just weak prose.
+- Do not ask for more experiments by reflex; first decide whether narrowing or explaining would solve the issue.
+- Prefer actionable fixes: paragraph move, claim rewording, figure/table addition, ablation, artifact audit, or limitation wording.
+- Preserve promising ideas even when the current framing is weak.
 
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
+## Completion Criteria
 
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
+Before finishing, include:
 
----
-
-**Not every skill requires all three types of resources.**
+- draft or outline reviewed
+- evidence artifacts inspected
+- highest-risk unsupported or unclear claim
+- whether the next loop is writing, analysis, experiment, or scope control
+- one to three concrete next actions

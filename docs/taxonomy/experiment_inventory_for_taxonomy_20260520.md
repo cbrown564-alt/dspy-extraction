@@ -44,7 +44,8 @@ Sources: four exploration passes, `configs/experiments/` (93 configs), local `ru
 | `exect_s0_s1_field_family_verify_repair` | ExECT 3 families | Extract → verify/repair | 1 | **Closed** (no beat v4.10) |
 | `exect_s2_field_family_single_pass` | ExECT 5 families | CoT monolithic | 6 | **Frozen** v1.3 |
 | `exect_s3_field_family_single_pass` | ExECT 9 families | CoT monolithic | 6 | **Frozen** v1.2 |
-| `exect_s4_field_family_single_pass` | ExECT 11 families | CoT monolithic | 6 | **Frozen** v1.2 (GPT); Qwen full pending |
+| `exect_s4_field_family_cause_bridge_k0_k1_single_pass` | ExECT 11 families | CoT monolithic + K0+K1 cause bridge | 6 | **Frozen** operational default (GPT) 2026-05-21 |
+| `exect_s4_field_family_single_pass` | ExECT 11 families | CoT monolithic (L1 control) | 6 | Grid control alias `EXECT_S4_L1_VARIANT`; historical anchor …071248Z |
 
 **Optimizer support:** Gan only (`BootstrapFewShot`, `LabeledFewShot`, `GEPA`). ExECT configs have no optimizer path in the runner.
 

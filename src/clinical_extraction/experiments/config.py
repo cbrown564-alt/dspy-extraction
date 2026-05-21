@@ -39,6 +39,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
+    EXECT_S4_L1_VARIANT,
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -347,6 +348,7 @@ class ExperimentConfig(FrozenModel):
                     EXECT_S4_SCHEMA_LEVEL,
                     {
                         EXECT_S4_VARIANT,
+                        EXECT_S4_L1_VARIANT,
                         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
                         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
                         EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,

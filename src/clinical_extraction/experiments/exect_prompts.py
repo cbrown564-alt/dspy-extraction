@@ -22,6 +22,7 @@ from clinical_extraction.programs.exect_s3 import (
 )
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+    EXECT_S4_L1_VARIANT,
     EXECT_S4_FIELD_FAMILIES,
     EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
@@ -51,6 +52,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
 _EXECT_S4_PROGRAM_VARIANTS = frozenset(
     {
         EXECT_S4_VARIANT,
+        EXECT_S4_L1_VARIANT,
         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
         EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,

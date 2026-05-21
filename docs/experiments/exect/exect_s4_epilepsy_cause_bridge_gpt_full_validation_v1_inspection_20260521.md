@@ -30,7 +30,7 @@ Configs: `exect_s4_cause_l1_baseline_full_gpt4_1_mini.json`, `exect_s4_cause_k0_
 | arm_id | outcome | decision_scope | Notes |
 | --- | --- | --- | --- |
 | L1 | hold (control) | arm | Matches external S4 v1.2 cause F1 (10.5%) |
-| K0+K1 | **hold (operational candidate)** | arm | +10.6pp cause F1; regression guards pass |
+| K0+K1 | **freeze (operational)** | operational | +10.6pp cause F1; regression guards pass; default `EXECT_S4_VARIANT` frozen 2026-05-21 |
 
 ## Primary metric read
 
@@ -90,6 +90,7 @@ Not claimed. One implementation variant on one model track; K2/K3 tiers untested
 
 ## Next steps
 
-1. Register both arms in `docs/experiments/synthesis/experiment_registry.json` with `decision_scope: arm`.
-2. Consider operational freeze of `exect_s4_field_family_cause_bridge_k0_k1_single_pass` for S4 cause recovery (paired with S3 default update).
+1. ~~Register both arms in experiment registry~~ **Done**.
+2. ~~Operational freeze `exect_s4_field_family_cause_bridge_k0_k1_single_pass` as `EXECT_S4_VARIANT`~~ **Done** (2026-05-21); L1 retained as `EXECT_S4_L1_VARIANT` for grid controls.
 3. Design K2 tier if EA0150 composite FPs persist.
+4. Optional: freeze S3 `EXECT_S3_VARIANT` to cause bridge (separate decision).
