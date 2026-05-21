@@ -12,6 +12,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_PRE_VOCAB_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
@@ -29,6 +31,7 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_VARIANT,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -211,6 +214,8 @@ class ExperimentConfig(FrozenModel):
         "exect_s0_s1_field_family_medication_pre_vocab_single_pass",
         "exect_s0_s1_field_family_seizure_pre_vocab_single_pass",
         "exect_s0_s1_field_family_section_aware",
+        "exect_s0_s1_field_family_prompt_graph_parallel",
+        "exect_s0_s1_field_family_prompt_graph_sequential",
         "exect_s0_s1_field_family_diagnosis_recall",
         "exect_s0_s1_field_family_verify_repair",
         "exect_s0_s1_field_family_deterministic_only",
@@ -218,6 +223,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s3_field_family_single_pass",
         "exect_s4_field_family_single_pass",
         "exect_s4_field_family_frequency_pre_vocab_single_pass",
+        "exect_s4_field_family_frequency_post_merge_single_pass",
         "exect_s4_field_family_temporality_post_classifier_single_pass",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
@@ -297,6 +303,8 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
                         EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
                         EXECT_S0_S1_SECTION_AWARE_VARIANT,
+                        EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+                        EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
                         EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
                         EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
                         EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
@@ -318,6 +326,7 @@ class ExperimentConfig(FrozenModel):
                     {
                         EXECT_S4_VARIANT,
                         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+                        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
                         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
                     },
                     EXECT_S4_SCORER,

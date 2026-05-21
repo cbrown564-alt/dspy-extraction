@@ -103,4 +103,4 @@ Full-validation promotion compares within this group only; do not auto-promote o
 - [ ] Full-validation configs for passing arms
 - [ ] Inspection doc with per-arm metrics and error clusters
 - [ ] Registry rows with `comparison_group: gan_s0_verification_gpt_validation_v1`
-- [ ] Regenerate `docs/experiment_registry_matrix_20260520.md` and `docs/research_atlas.md`
+- [ ] Regenerate `docs/experiment_registry_matrix_20260520.md` and `docs/research_atlas/evidence_matrix.md`

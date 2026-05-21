@@ -5,6 +5,7 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FIELD_FAMILIES,
+    EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_PROMPT_VERSION,
@@ -19,6 +20,7 @@ from clinical_extraction.programs.exect_s4 import (
     _recover_s4_investigation_raw_values,
     _recover_s4_medication_temporality_raw_values,
     _recover_s4_seizure_frequency_raw_values,
+    _recover_s4_seizure_frequency_values,
     _repair_s4_seizure_frequency_surface,
     predict_exect_s4_records,
 )
@@ -183,6 +185,31 @@ def test_build_exect_s4_module_returns_frequency_pre_vocab_single_pass():
 def test_build_exect_s4_module_returns_same_single_pass_for_temporality_post_classifier():
     module = build_exect_s4_module(EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT)
     assert isinstance(module, ExectS4FieldFamilyModule)
+
+
+def test_build_exect_s4_module_returns_same_single_pass_for_frequency_post_merge():
+    module = build_exect_s4_module(EXECT_S4_FREQUENCY_POST_MERGE_VARIANT)
+    assert isinstance(module, ExectS4FieldFamilyModule)
+
+
+def test_recover_s4_seizure_frequency_values_post_merge_abstains_without_note_support():
+    recovered, flags = _recover_s4_seizure_frequency_values(
+        ["seizure free"],
+        "Current medication: lamotrigine 75mg bd.",
+        program_variant=EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+    )
+    assert recovered == []
+    assert "s4_bridge:spurious_seizure_free_removed" in flags
+
+
+def test_recover_s4_seizure_frequency_values_control_skips_post_merge():
+    recovered, flags = _recover_s4_seizure_frequency_values(
+        ["1 per 3 week"],
+        "He has about one focal seizure every three weeks.",
+        program_variant=EXECT_S4_VARIANT,
+    )
+    assert recovered == ["1 per 3 week"]
+    assert "s4_bridge:note_anchored_frequency_merged" not in flags
 
 
 def test_predict_exect_s4_temporality_post_classifier_applies_evidence_aligned_recovery():

@@ -1,7 +1,7 @@
 # ExECT S1 — Can the Optimizer Replace Hand-Crafted Policy?
 
 Date: 2026-05-21  
-Status: **Preregistered — configs ready; runs pending**  
+Status: **Cap-25 complete** — `docs/exect_s1_ladder_optimizer_automation_inspection_20260521.md`  
 Comparison group: `exect_s1_ladder_optimizer_automation_v1`  
 Ladder context: `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` (rungs 0–3 complete)  
 Investigation: `docs/dspy_optimizer_investigation_20260521.md`

@@ -57,10 +57,7 @@ def test_temporal_candidates_represent_last_episode_as_monthly_rate():
 
 def test_temporal_candidates_represent_count_range_since_prior_date():
     candidates = build_temporal_frequency_candidates(_record("gan_15306"))
-
-    assert "2 to 3 per 15 month" in {
-        candidate.canonical_label for candidate in candidates
-    }
+    assert "2 to 3 per 15 month" in {c.canonical_label for c in candidates}
     candidate = next(c for c in candidates if c.canonical_label == "2 to 3 per 15 month")
     assert candidate.event_count == "2 to 3"
     assert candidate.window_count == "15"
@@ -68,6 +65,13 @@ def test_temporal_candidates_represent_count_range_since_prior_date():
     assert "No further tonic-clonic seizures have occurred since 12/2020" in (
         candidate.evidence_text
     )
+
+
+def test_temporal_candidates_represent_count_range_since_month_dash_year():
+    candidates = build_temporal_frequency_candidates(_record("gan_15302"))
+    assert "1 to 2 per 14 month" in {c.canonical_label for c in candidates}
+    candidate = next(c for c in candidates if c.canonical_label == "1 to 2 per 14 month")
+    assert "since 2 - 2021" in candidate.evidence_text
 
 
 def test_temporal_candidates_do_not_make_short_seizure_free_gan_label():
@@ -275,4 +279,90 @@ def test_presentation_for_implementation_variant_maps_axis3_ids():
 
     assert presentation_for_implementation_variant("cand_table_v1") == "table"
     assert presentation_for_implementation_variant("cand_json_v1") == "json"
+    assert presentation_for_implementation_variant("slot_payload_v1") == "slot_payload"
     assert presentation_for_implementation_variant("unknown") is None
+
+
+def _labels(record_id: str) -> set[str]:
+    return _candidate_labels(record_id)
+
+
+def test_temporal_candidates_aggregate_named_month_daytime_and_nocturnal_counts():
+    assert "8 per 2 month" in _labels("gan_15923")
+
+
+def test_temporal_candidates_aggregate_reverse_chronological_month_convulsions():
+    assert "14 per 4 month" in _labels("gan_16251")
+
+
+def test_temporal_candidates_aggregate_diary_named_month_event_counts():
+    assert "19 per 6 month" in _labels("gan_16753")
+
+
+def test_temporal_candidates_represent_following_week_as_monthly_benchmark_rate():
+    assert "2 per month" in _labels("gan_14250")
+    assert "2 to 3 per month" in _labels("gan_14271")
+
+
+def test_temporal_candidates_emit_unknown_for_unanchored_since_discharge_count():
+    assert "unknown" in _labels("gan_13993")
+
+
+def test_temporal_candidates_emit_unknown_for_drop_attacks_with_latest_date_only():
+    assert "unknown" in _labels("gan_14036")
+
+
+def test_temporal_candidates_emit_unknown_for_clobazam_count_with_latest_date_only():
+    assert "unknown" in _labels("gan_14137")
+
+
+def test_temporal_candidates_represent_morning_cluster_shorthand():
+    assert "2 cluster per month, 2 to 4 per cluster" in _labels("gan_10993")
+    assert "3 cluster per month, 3 to 4 per cluster" in _labels("gan_10984")
+
+
+def test_temporal_candidates_represent_month_beginning_cluster_bursts():
+    assert "1 cluster per month, multiple per cluster" in _labels("gan_10673")
+
+
+def test_temporal_candidates_represent_weekly_morning_grouped_spells():
+    assert "1 cluster per week, multiple per cluster" in _labels("gan_10031")
+
+
+def test_temporal_candidates_represent_several_mornings_with_intra_morning_repeats():
+    assert "multiple cluster per week, 2 to 3 per cluster" in _labels("gan_10434")
+
+
+def test_temporal_candidates_represent_seizure_free_then_single_day_cluster():
+    assert "1 cluster per 4 month, 3 to 4 per cluster" in _labels("gan_15404")
+
+
+def test_temporal_candidates_represent_breakthrough_after_long_seizure_free_window():
+    assert "2 per 6 month" in _labels("gan_13290")
+
+
+def test_temporal_candidates_represent_withdrawal_moment_count_over_elapsed_months():
+    assert "2 to 4 per 3 month" in _labels("gan_14354")
+
+
+def test_temporal_candidates_emit_unknown_for_vague_grouped_spells_without_spacing():
+    labels = _labels("gan_10618")
+    assert any(label.startswith("unknown") for label in labels)
+    assert any("per cluster" in label for label in labels)
+
+
+def test_residual_slice_gold_label_coverage_improves():
+    from clinical_extraction.evaluation.gan_residual_slice import (
+        load_residual_slice_record_ids,
+    )
+
+    record_ids = load_residual_slice_record_ids(
+        __import__("pathlib").Path("data/fixtures/gan_s0_exact_frequency_residual_slice.json")
+    )
+    covered = 0
+    for record_id in record_ids:
+        record = _record(record_id)
+        labels = _labels(record_id)
+        if record.gold_label in labels:
+            covered += 1
+    assert covered >= 12

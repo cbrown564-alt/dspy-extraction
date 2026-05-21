@@ -38,6 +38,7 @@ from clinical_extraction.exect.primitives import (
     build_exect_frequency_pre_vocab_labels as build_precomputed_seizure_frequency_candidates,
     format_exect_frequency_pre_vocab_note as format_note_with_precomputed_seizure_frequency_candidates,
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
+    recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
     recover_exect_medication_temporality_with_post_classifier,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
@@ -52,6 +53,9 @@ EXECT_S4_SCHEMA_LEVEL = "exect_s4_field_family"
 EXECT_S4_VARIANT = "exect_s4_field_family_single_pass"
 EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT = (
     "exect_s4_field_family_frequency_pre_vocab_single_pass"
+)
+EXECT_S4_FREQUENCY_POST_MERGE_VARIANT = (
+    "exect_s4_field_family_frequency_post_merge_single_pass"
 )
 EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT = (
     "exect_s4_field_family_temporality_post_classifier_single_pass"
@@ -341,6 +345,7 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
     if program_variant in {
         EXECT_S4_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     }:
         return ExectS4FieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
@@ -398,6 +403,10 @@ def _predict_s4_record(
                 record.text
             )
         }
+    if program_variant == EXECT_S4_FREQUENCY_POST_MERGE_VARIANT:
+        metadata["post_merge"] = {
+            "seizure_frequency": "exect.frequency.benchmark_bridge.v1:post_merge_v1_3"
+        }
     if program_variant == EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT:
         metadata["post_classifier"] = {
             "medication_temporality": "exect.medication_temporality.post_classifier.v1"
@@ -447,9 +456,10 @@ def _s4_field_values_from_prediction(
 ) -> list[ExtractedValue]:
     values: list[ExtractedValue] = []
 
-    frequency_raw, _ = _recover_s4_seizure_frequency_raw_values(
+    frequency_raw, _ = _recover_s4_seizure_frequency_values(
         _as_list(getattr(pred, "seizure_frequency", [])),
         record.text,
+        program_variant=program_variant,
     )
     values.extend(
         _s2_values_for_family(
@@ -561,6 +571,17 @@ def _recover_s4_investigation_raw_values(
         flags.append("s4_bridge:investigation_unknown_removed")
 
     return recovered, flags
+
+
+def _recover_s4_seizure_frequency_values(
+    raw_values: list[str],
+    note_text: str,
+    *,
+    program_variant: str = EXECT_S4_VARIANT,
+) -> tuple[list[str], list[str]]:
+    if program_variant == EXECT_S4_FREQUENCY_POST_MERGE_VARIANT:
+        return _recover_s4_seizure_frequency_post_merge_raw_values(raw_values, note_text)
+    return _recover_s4_seizure_frequency_raw_values(raw_values, note_text)
 
 
 def _normalize_medication_temporality_surface(value: str) -> str:

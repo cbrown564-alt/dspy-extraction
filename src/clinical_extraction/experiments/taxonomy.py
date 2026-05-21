@@ -38,6 +38,8 @@ ProgramArchitectureValue = Literal[
     "temporal_event_table_verify_repair",
     "react_temporal_tools",
     "section_aware",
+    "field_family_parallel",
+    "field_family_prompt_graph",
     "diagnosis_recall",
     "optimizer_compiled_single_pass",
 ]

@@ -9,6 +9,10 @@ flowchart TD
   exect --> exect_s1_architecture_gpt_cap25_v1
   exect_s1_evidence_policy_gpt_validation_v1["exect_s1_evidence_policy_gpt_validation_v1\nhold:2, reject:1\nanchor: micro_f1=95.8%"]
   exect --> exect_s1_evidence_policy_gpt_validation_v1
+  exect_s1_field_family_prompt_graph_gpt_cap25_v1["exect_s1_field_family_prompt_graph_gpt_cap25_v1\nhold:1, reject:2\nanchor: micro_f1=95.8%"]
+  exect --> exect_s1_field_family_prompt_graph_gpt_cap25_v1
+  exect_s1_full_ladder_gpt_validation_v1["exect_s1_full_ladder_gpt_validation_v1\nhold:1, exploratory:3\nanchor: micro_f1=92.3%"]
+  exect --> exect_s1_full_ladder_gpt_validation_v1
   exect_s1_generalization_gpt_test_v1["exect_s1_generalization_gpt_test_v1\nhold:1\nanchor: micro_f1=77.8%"]
   exect --> exect_s1_generalization_gpt_test_v1
   exect_s1_interleaving_gpt_validation_v1["exect_s1_interleaving_gpt_validation_v1\nhold:1, reject:1, exploratory:2\nanchor: micro_f1=92.3%"]
@@ -17,12 +21,22 @@ flowchart TD
   exect --> exect_s1_interleaving_gpt_validation_v2
   exect_s1_interleaving_qwen_validation_v1["exect_s1_interleaving_qwen_validation_v1\nhold:2, exploratory:2\nanchor: micro_f1=79.0%"]
   exect --> exect_s1_interleaving_qwen_validation_v1
+  exect_s1_ladder_optimizer_automation_v1["exect_s1_ladder_optimizer_automation_v1\npending:3\nanchor: -"]
+  exect --> exect_s1_ladder_optimizer_automation_v1
   exect_s1_medication_pre_vocab_slice_gpt_v1["exect_s1_medication_pre_vocab_slice_gpt_v1\nhold:1, reject:1\nanchor: micro_f1=93.3%"]
   exect --> exect_s1_medication_pre_vocab_slice_gpt_v1
+  exect_s1_optimizer_gpt_cap25_v1["exect_s1_optimizer_gpt_cap25_v1\nhold:1, reject:1\nanchor: micro_f1=95.8%"]
+  exect --> exect_s1_optimizer_gpt_cap25_v1
+  exect_s1_pipeline_stage_graph_gpt_cap25_v1["exect_s1_pipeline_stage_graph_gpt_cap25_v1\nhold:3, reject:2\nanchor: micro_f1=95.8%"]
+  exect --> exect_s1_pipeline_stage_graph_gpt_cap25_v1
   exect_s1_prompt_policy_gpt_validation_v1["exect_s1_prompt_policy_gpt_validation_v1\nhold:1, reject:1\nanchor: micro_f1=95.8%"]
   exect --> exect_s1_prompt_policy_gpt_validation_v1
   exect_s1_seizure_pre_vocab_slice_gpt_v1["exect_s1_seizure_pre_vocab_slice_gpt_v1\nhold:1, reject:1\nanchor: micro_f1=93.5%"]
   exect --> exect_s1_seizure_pre_vocab_slice_gpt_v1
+  exect_s1_seizure_prompt_policy_qwen_v1["exect_s1_seizure_prompt_policy_qwen_v1\nhold:3\nanchor: micro_f1=84.3%"]
+  exect --> exect_s1_seizure_prompt_policy_qwen_v1
+  exect_s1_stage_executor_gpt_cap25_v1["exect_s1_stage_executor_gpt_cap25_v1\nhold:2, reject:3\nanchor: micro_f1=95.8%"]
+  exect --> exect_s1_stage_executor_gpt_cap25_v1
   exect_s1_verification_gpt_validation_v1["exect_s1_verification_gpt_validation_v1\nhold:1, reject:1\nanchor: micro_f1=95.8%"]
   exect --> exect_s1_verification_gpt_validation_v1
   exect_s4_frequency_deterministic_v1["exect_s4_frequency_deterministic_v1\nhold:1, reject:1\nanchor: micro_f1=69.2%"]
@@ -39,8 +53,18 @@ flowchart TD
   gan --> gan_s0_evidence_policy_gpt_validation_v1
   gan_s0_hard_slice_qwen_architecture_v1["gan_s0_hard_slice_qwen_architecture_v1\nreject:1, exploratory:6\nanchor: monthly_frequency_accuracy=71.4%"]
   gan --> gan_s0_hard_slice_qwen_architecture_v1
+  gan_s0_implementation_variant_gpt_cap25_v1["gan_s0_implementation_variant_gpt_cap25_v1\nhold:3, reject:1\nanchor: monthly_frequency_accuracy=56.0%"]
+  gan --> gan_s0_implementation_variant_gpt_cap25_v1
+  gan_s0_implementation_variant_gpt_cap50_v1["gan_s0_implementation_variant_gpt_cap50_v1\nhold:2\nanchor: monthly_frequency_accuracy=62.0%"]
+  gan --> gan_s0_implementation_variant_gpt_cap50_v1
+  gan_s0_pipeline_stage_graph_gpt_cap25_v1["gan_s0_pipeline_stage_graph_gpt_cap25_v1\nhold:1, reject:4\nanchor: monthly_frequency_accuracy=52.0%"]
+  gan --> gan_s0_pipeline_stage_graph_gpt_cap25_v1
   gan_s0_prompt_policy_gpt_validation_v1["gan_s0_prompt_policy_gpt_validation_v1\nhold:2, reject:1\nanchor: monthly_frequency_accuracy=48.0%"]
   gan --> gan_s0_prompt_policy_gpt_validation_v1
+  gan_s0_stage_executor_gpt_cap25_v1["gan_s0_stage_executor_gpt_cap25_v1\nhold:2, reject:3\nanchor: monthly_frequency_accuracy=52.0%"]
+  gan --> gan_s0_stage_executor_gpt_cap25_v1
+  gan_s0_validation_ladder_gpt_cap25_v1["gan_s0_validation_ladder_gpt_cap25_v1\nhold:3, reject:4\nanchor: monthly_frequency_accuracy=52.0%"]
+  gan --> gan_s0_validation_ladder_gpt_cap25_v1
   gan_s0_verification_gpt_validation_v1["gan_s0_verification_gpt_validation_v1\nhold:3\nanchor: monthly_frequency_accuracy=44.0%"]
   gan --> gan_s0_verification_gpt_validation_v1
   classDef promote fill:#d8f3dc,stroke:#2d6a4f,color:#081c15;
@@ -54,13 +78,20 @@ flowchart TD
   class exect_qwen_s4_cap25_gate_v1 exploratory;
   class exect_s1_architecture_gpt_cap25_v1 exploratory;
   class exect_s1_evidence_policy_gpt_validation_v1 hold;
+  class exect_s1_field_family_prompt_graph_gpt_cap25_v1 hold;
+  class exect_s1_full_ladder_gpt_validation_v1 hold;
   class exect_s1_generalization_gpt_test_v1 hold;
   class exect_s1_interleaving_gpt_validation_v1 hold;
   class exect_s1_interleaving_gpt_validation_v2 hold;
   class exect_s1_interleaving_qwen_validation_v1 hold;
+  class exect_s1_ladder_optimizer_automation_v1 pending;
   class exect_s1_medication_pre_vocab_slice_gpt_v1 hold;
+  class exect_s1_optimizer_gpt_cap25_v1 hold;
+  class exect_s1_pipeline_stage_graph_gpt_cap25_v1 hold;
   class exect_s1_prompt_policy_gpt_validation_v1 hold;
   class exect_s1_seizure_pre_vocab_slice_gpt_v1 hold;
+  class exect_s1_seizure_prompt_policy_qwen_v1 hold;
+  class exect_s1_stage_executor_gpt_cap25_v1 hold;
   class exect_s1_verification_gpt_validation_v1 hold;
   class exect_s4_frequency_deterministic_v1 hold;
   class exect_s4_temporality_deterministic_v1 hold;
@@ -69,5 +100,10 @@ flowchart TD
   class gan_s0_architecture_qwen_validation_v1 promote;
   class gan_s0_evidence_policy_gpt_validation_v1 hold;
   class gan_s0_hard_slice_qwen_architecture_v1 exploratory;
+  class gan_s0_implementation_variant_gpt_cap25_v1 hold;
+  class gan_s0_implementation_variant_gpt_cap50_v1 hold;
+  class gan_s0_pipeline_stage_graph_gpt_cap25_v1 hold;
   class gan_s0_prompt_policy_gpt_validation_v1 hold;
+  class gan_s0_stage_executor_gpt_cap25_v1 hold;
+  class gan_s0_validation_ladder_gpt_cap25_v1 hold;
   class gan_s0_verification_gpt_validation_v1 hold;

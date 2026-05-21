@@ -20,6 +20,7 @@ from clinical_extraction.programs.exect_s3 import (
 )
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FIELD_FAMILIES,
+    EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_POLICY_EXAMPLES,
@@ -31,7 +32,10 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
+    EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
     EXECT_S0_S1_PROMPT_VERSION,
+    EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
     resolve_exect_s0_s1_extraction_prompt_version,
@@ -42,6 +46,7 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
     {
         EXECT_S4_VARIANT,
         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     }
 )
@@ -119,6 +124,24 @@ def exect_prompts_data(
     elif program_variant == EXECT_S0_S1_VARIANT:
         module_name = "ExectS0S1FieldFamilyModule"
         predictor_name = "dspy.ChainOfThought"
+    elif program_variant == EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT:
+        module_name = "ExectS0S1FieldFamilyPromptGraphParallelModule"
+        predictor_name = (
+            "dspy.ChainOfThought (diagnosis) + dspy.ChainOfThought (seizure) + "
+            "dspy.ChainOfThought (medication) [full note, parallel]"
+        )
+    elif program_variant == EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT:
+        module_name = "ExectS0S1FieldFamilyPromptGraphSequentialModule"
+        predictor_name = (
+            "dspy.ChainOfThought (diagnosis) -> dspy.ChainOfThought (seizure) -> "
+            "dspy.ChainOfThought (medication) [prior-context chain]"
+        )
+    elif program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
+        module_name = "ExectS0S1SectionAwareFieldFamilyModule"
+        predictor_name = (
+            "dspy.ChainOfThought (diagnosis) + dspy.ChainOfThought (seizure) + "
+            "dspy.ChainOfThought (medication) [section-aware]"
+        )
     else:
         module_name = "ExectS0S1SectionAwareFieldFamilyModule"
         predictor_name = (
@@ -142,9 +165,19 @@ def exect_prompts_data(
                 else (
                     "ExectS0S1FieldFamilySignature"
                     if program_variant == EXECT_S0_S1_VARIANT
-                    else "ExectS0S1DiagnosisSignature + "
-                    "ExectS0S1SeizureTypeSignature + "
-                    "ExectS0S1MedicationSignature"
+                    else (
+                        "ExectS0S1DiagnosisPolicySignature + "
+                        "ExectS0S1SeizureTypePolicySignature + "
+                        "ExectS0S1MedicationPolicySignature"
+                        if program_variant
+                        in {
+                            EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+                            EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
+                        }
+                        else "ExectS0S1DiagnosisSignature + "
+                        "ExectS0S1SeizureTypeSignature + "
+                        "ExectS0S1MedicationSignature"
+                    )
                 )
             )
         ),

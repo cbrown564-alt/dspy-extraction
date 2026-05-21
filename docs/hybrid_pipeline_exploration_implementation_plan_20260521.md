@@ -18,8 +18,14 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 | 4 — Gan Axis 3 | **Done** | Inspection `docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md` |
 | 5 — ExECT S1 Axes 1–2 | **Done** | Stage-graph + stage-executor cap-25 grids + inspections |
 | 5c — Gan validation ladder | **Done** | `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
-| 6 — ExECT optimizer (Axis 3) | **In progress** | Thesis prereg; configs ready; rungs 4a–4c pending |
-| 7 — Qwen / full validation | **Deferred** | Winners only |
+| 6 — ExECT optimizer (Axis 3) | **Done** | Rungs 4a–4c cap-25; thesis **not supported** (best 71.7% micro) |
+| 6b — ExECT prompt graph (literature) | **Done** | PG0 hold 95.8%; PG1/PG2 reject — `docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md` |
+| 7 — Qwen / full validation | **Done (arm reject)** | Qwen g2 cap-25 40% monthly vs GPT E1 52% — `docs/gan_s0_qwen35b_g2_candidates_adjudicate_cap25_v1_inspection_20260521.md` |
+| 7b — Gan canonical-format port | **Done (hold, cap-25 only)** | C1 +4pp on cap-25; residual 30-record replay null — `docs/gan_s0_canonical_format_residual_slice_replay_20260521.md` |
+| 8 — Gan exact-frequency slot payload | **Done (hold, cap-25)** | S1 +8pp monthly vs S0 52%; residual 30-record replay null — `docs/gan_s0_exact_frequency_slot_payload_gpt_cap25_v1_inspection_20260521.md` |
+| 8b — Gan expanded builders cap-50 confirm | **Done (confirm, arm)** | B0 68% vs pre-expansion 62% (+6pp) — `docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md` |
+| 5d — ExECT S4 residual synthesis | **Done** | Full-val read `docs/exect_s4_residual_error_analysis_20260521.md`; anchors `…071248Z` (GPT) / `…160914Z` (Qwen) |
+| 5e — ExECT S4 frequency surface repair (Axis 3) | **Done (reject, arm)** | R1 post-merge −2.9pp vs R0 on cap-25 — `docs/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md` |
 
 **Phase 2 headline:** A3 `g2_candidates_adjudicate` (temporal candidates → single-pass adjudicate) leads at **52%** monthly on cap-25; promoted skeleton A5 `g3_candidates_extract_repair` ties direct at **44%**. Verify-repair erases A3 label gains on this slice (A3 vs A5: 15/25 identical).
 
@@ -29,6 +35,8 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 
 **Phase 5b headline:** E1/E2 `llm_extract_inline_bridges` / `llm_extract_post_bridges` tie at **95.8%**; pre-vocab hint executors E3–E5 **reject (arm)** (−4.9pp to −2.5pp vs E1).
 
+**Phase 6b headline:** PG0 single-pass holds at **95.8%** micro; PG1 parallel per-family **86.5%** and PG2 sequential prompt graph **87.1%** both **reject (arm)**; PG1 vs PG2 null (24/25 identical).
+
 **Phase 5c headline:** V0/V2/V6 hold at **52%** monthly (25/25 valid); V3–V5 fail valid-count gates (det evidence abstains 13/25); V7 span-check **reject** (50% on 16 valid).
 
 **Next session pull (ordered):**
@@ -36,9 +44,28 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 1. ~~ExECT S1 stage-graph + stage-executor cap-25 grids~~ Done
 2. ~~Gan validation ladder V0–V7~~ Done
 3. ~~Phase 4 + ladder registry backfill~~ Done (`scripts/backfill_hybrid_cap25_registry.py`, +11 rows)
-4. **ExECT optimizer thesis rungs 4a–4c** — `exect_s1_ladder_optimizer_automation_v1` (Axis 3 only)
-5. Optional: 50-record Gan presentation confirmation (I1 table) before format operational change
-6. Do **not** mechanism-close bridge placement, verify-repair, or candidate presentation from cap-25 alone
+4. ~~ExECT optimizer thesis rungs 4a–4c~~ Done — inspection `docs/exect_s1_ladder_optimizer_automation_inspection_20260521.md`
+5. ~~50-record Gan presentation confirmation (I1 table)~~ Done — **hold (inconclusive)**; 62% tie on 50 (`docs/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md`)
+6. ~~ExECT S1 field-family prompt graph (literature card)~~ Done — PG0 hold 95.8%; PG1/PG2 reject (arm); inspection `docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md`
+7. Do **not** mechanism-close bridge placement, verify-repair, or candidate presentation from cap-25 alone
+8. ~~**Phase 7:** Run Gan Qwen cap-25 port of `g2_candidates_adjudicate`~~ Done — reject (arm) 40% monthly
+9. ~~**Phase 7b:** Implement + cap-25 run Gan canonical-format port~~ Done — C1 hold +4pp normalized exact
+10. ~~**Residual-slice replay C0 vs C1**~~ Done — null on 30-record queue (`docs/gan_s0_canonical_format_residual_slice_replay_20260521.md`); cap-50 confirm **deferred**
+11. ~~**Phase 8 scaffold:** Gan exact-frequency slot payload~~ Done — cap-25 S1 hold +8pp monthly; residual null
+12. ~~**Expand slot/candidate builders for arithmetic + unknown strata**~~ **Done (builders)** — 19/30 gold-in-candidate on residual queue (`docs/gan_s0_residual_candidate_builder_expansion_20260521.md`); slot-payload re-run deferred
+13. ~~**Residual-slice replay S0/S1 with expanded builders**~~ **Done** — S0 63.3% / S1 60.0% monthly on hard queue; builders dominate; S1 does not beat S0 — `docs/gan_s0_exact_frequency_slot_payload_residual_slice_replay_v2_20260521.md`
+14. ~~**ExECT S4 frequency surface repair prereg + R1 scaffold**~~ **Done** — prereg + cap-25 R0/R1; R1 **reject (arm)** −2.9pp vs R0 — `docs/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md`
+15. ~~**Cap-50 prose + expanded builders**~~ **Done** — confirm +6pp vs 62% baseline (`docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md`)
+16. ~~**ExECT S4 full-validation residual error analysis**~~ **Done** — `docs/exect_s4_residual_error_analysis_20260521.md`
+17. ~~**Gan full-validation prereg**~~ **Done** — `docs/gan_s0_expanded_builders_prose_gpt_full_validation_v1_preregistration_20260521.md` + config `gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini.json`; **run pending**
+18. ~~**ExECT S4 medication precision guard design**~~ **Done** — `docs/exect_s4_medication_precision_guard_design_20260521.md` (no-model FP taxonomy + tiered G0–G3 guards)
+19. **Next (Gan):** execute full-validation F0; inspection vs VR anchor `…130933Z`
+20. **Next (ExECT S4):** implement G0 guard + cap-25 prereg `exect_s4_medication_precision_guard_gpt_cap25_v1`
+21. **Next (Gan, optional):** targeted builder gaps (seizure-type priority, long-window cluster phrasing)
+19. **Next (ExECT S4, optional):** frequency Axis 3 only with **new** `implementation_variant` (structured frequency slots / multi-label retention); do **not** rerun R1 post-merge; do **not** port Gan monthly normalization
+20. **Defer (ExECT S4):** onset / when-diagnosed / epilepsy-cause / birth-history model spend until annotation-surface policy is decided; use qualitative queue EA0150, EA0016, EA0137, EA0143, EA0059 for cross-family reads
+
+**S4 residual headline (full validation, GPT v1.2):** pooled micro **65.5%**; dominant burden is **medication_temporality** precision (52 FP, 62.5% F1) and **seizure_frequency** (45.7% F1, 28 FP / 22 FN). Sparse surface families (onset, when_diagnosed) are poor F1 but low support — not primary search budget. See Phase 5d.
 
 ---
 
@@ -104,7 +131,7 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 | 3 | Config batch: `configs/experiments/gan_s0_stage_graph_*_cap25_gpt4_1_mini.json` (5 arms) | Done |
 | 4 | Cap-25 runs: `…T012156Z`–`…T012243Z` | Done |
 | 5 | Inspection: `docs/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md` | Done |
-| 6 | Registry rows: one per arm, `decision_scope: arm` | **Pending** |
+| 6 | Registry rows: one per arm, `decision_scope: arm` | **Done** — `scripts/backfill_hybrid_cap25_registry.py` |
 
 **Cap-25 results (monthly frequency):**
 
@@ -169,7 +196,7 @@ Skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 | 2 | `format_temporal_candidates_for_prompt` presentation modes + taxonomy field | Done |
 | 3 | Config batch: `gan_s0_impl_i{0..3}_*` (4 arms) | Done |
 | 4 | Cap-25 runs + inspection | Done |
-| 5 | Registry rows | Pending (post-inspection) |
+| 5 | Registry rows | **Done** — `scripts/backfill_hybrid_cap25_registry.py` |
 
 **Cap-25 results (monthly frequency):**
 
@@ -220,6 +247,40 @@ Inspection: `docs/exect_s1_stage_executor_gpt_cap25_v1_inspection_20260521.md`.
 
 **Do not** claim “H2 pre-vocab closed” without new `implementation_variant` IDs in prereg.
 
+### 5d — ExECT S4 post-full-validation synthesis (week 8+) — **DONE (synthesis); targeted Axis 3 queue open**
+
+**Source:** `docs/exect_s4_residual_error_analysis_20260521.md`  
+**Anchors:** GPT `runs/exect_s4_validation_full_gpt4_1_mini_20260520T071248Z` (65.5% micro); Qwen `runs/exect_s4_validation_full_qwen35b_ollama_20260520T160914Z` (67.5% micro). Treat as **separate model tracks** — Qwen wins pooled micro but GPT wins diagnosis/seizure_type; do not collapse to a single ranking.
+
+**Problem-type split (drives next prereg, not one “better S4 prompt”):**
+
+| Class | Families | Support | Residual shape | Hybrid-program implication |
+| --- | --- | ---: | --- | --- |
+| Scope / precision | `medication_temporality`, `annotated_medication` | High | 52 MT FPs (GPT); non-ASM leakage; planned/previous over-tag | Axis 3 **narrow precision guard**; prior broad H1 post-classifier **arm-reject** (recall collapse) — do not rerun |
+| S4 frequency templates | `seizure_frequency` | Medium | Qualitative co-labels, multi-label blocks, prose≠gold template | ExECT-specific repair only; **not** Gan monthly normalization; R1 post-merge **arm-reject** on cap-25 |
+| Sparse annotation surfaces | `onset`, `when_diagnosed`, `epilepsy_cause`, `birth_history` | 3–8 | Plausible clinical outputs ≠ CUIPhrase-like gold | Policy decision before model budget; pooled S4 micro is a poor objective here |
+| Near ceiling | `investigation`, `diagnosis`, `seizure_type` | — | v1.2 guard solved investigation; diagnosis ~91% | Freeze as regression guards in any S4 Axis 3 prereg |
+
+**Completed Axis 3 cell (frequency):**
+
+| Arm | `implementation_variant` | Frequency F1 (cap-25) | Outcome |
+| --- | --- | ---: | --- |
+| R0 | control (v1.2 inline bridge) | 51.0% | hold |
+| R1 | post-merge note-anchored repair | 48.1% | **reject (arm)** −2.9pp |
+
+Inspection: `docs/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md`. Open cells: structured frequency-slot output, narrower merge policies, prompt/example variants — each needs a **new** variant ID.
+
+**Queued ExECT S4 work (ordered):**
+
+| # | Task | Axis | Gate / note |
+| --- | --- | --- | --- |
+| 1 | Medication precision guard prereg | 3 | No-model FP taxonomy: non-ASM vs planned/previous vs brand/generic; target MT precision without H1-style recall collapse |
+| 2 | Frequency structured-slot or template-retention variant | 3 | ≥+3pp `seizure_frequency` F1 on cap-25; no ≥2pp regression on investigation, seizure_type, annotated_medication |
+| 3 | Sparse-family surface policy memo | — | Annotation-faithful vs clinical-normalized vs defer until CUI reproduction |
+| 4 | Cross-family qualitative queue | — | EA0150, EA0016, EA0137, EA0143, EA0059 (+ EA0052, EA0136, EA0153, EA0109, EA0179); tag scorer-surface vs over-extraction vs evidence |
+
+**Do not** mechanism-close “S4 hybrid placement” or “frequency repair” from cap-25 R1 alone. Evidence guards may help precision but broad abstention **arm-rejects** from prior work.
+
 ---
 
 ## Phase 6 — Optimizer as Axis 3 only (week 6–8, parallel-safe)
@@ -237,6 +298,8 @@ Gan optimizer cells attach to **winning stage graph** from Phase 2, not direct-o
 | Cap-25 arm wins by preregistered gate | 50-record slice or full 299/40 validation |
 | Mechanism review passes | Update operational default in Kanban + registry `freeze`/`promote` with `decision_scope: operational` |
 | Qwen | Port **winning cell** only — same `stage_graph_id` and executor tags |
+| ExECT S4 full-val residual read complete | Targeted Axis 3 on **medication guard** and **new frequency variant** only; sparse families deferred per `docs/exect_s4_residual_error_analysis_20260521.md` |
+| Gan expanded builders cap-50 confirm | Full-validation prereg for prose + expanded builders (primary Gan confirm path) |
 
 ---
 
@@ -262,7 +325,11 @@ Gan optimizer cells attach to **winning stage graph** from Phase 2, not direct-o
 | Gan implementation sweep | 4 | 3 | **Done** |
 | ExECT S1 stage-graph grid | 5a | 1 | **Done** |
 | ExECT S1 executor/bridge grid | 5b | 2 | **Done** |
-| Optimizer automation thesis | 6 | 3 | **In progress** — configs ready; runs pending |
+| ExECT S4 residual synthesis | 5d | — | **Done** — `docs/exect_s4_residual_error_analysis_20260521.md` |
+| ExECT S4 frequency surface repair | 5e | 3 | **Done** — R1 reject (arm); R0 hold |
+| Gan expanded builders full validation | 7 | 3 | **Ready** — prereg `docs/gan_s0_expanded_builders_prose_gpt_full_validation_v1_preregistration_20260521.md`; run pending |
+| ExECT S4 medication precision guard | 5d queue | 3 | **Design done** — `docs/exect_s4_medication_precision_guard_design_20260521.md`; implement G0 + cap-25 prereg next |
+| Optimizer automation thesis | 6 | 3 | **Done** — 4a–4c reject thesis; partial hold 4a/4c |
 | Mechanism status maintenance | 1 | — | Ongoing |
 | Phase 2–3 registry backfill | 2–3 | — | **Done** (`scripts/backfill_hybrid_cap25_registry.py`) |
 | Phase 4 + validation ladder registry backfill | 4, 5c | — | **Done** (+11 rows) |
@@ -286,8 +353,11 @@ Gan optimizer cells attach to **winning stage graph** from Phase 2, not direct-o
 | --- | --- |
 | Config explosion | Cap-25 only; preregister grids; generator script |
 | Bridge confound on ExECT | Tag `bridge_mode`; run bridge-free diagnostics in parallel |
+| S4 pooled micro hides family divergence | Rank and preregister per-family; GPT vs Qwen as separate tracks |
+| Gan frequency mechanisms ported to ExECT | ExECT S4 wants template/co-label surfaces; Gan monthly normalization is wrong target |
+| Sparse S4 families inflate “easy wins” | Fix surface policy before cap-25 sweeps on onset/when-diagnosed/cause/birth |
 | Retag churn | Mechanism status doc; incremental registry notes |
-| Re-litigating old arms | Negative-probe doc = repeat guardrail only |
+| Re-litigating old arms | Negative-probe doc = repeat guardrail only; includes S4 H1 temporality, H2 pre-vocab, R1 post-merge |
 
 ---
 

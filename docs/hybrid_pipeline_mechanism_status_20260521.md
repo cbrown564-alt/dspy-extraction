@@ -33,7 +33,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 
 | Mechanism class | Status | Evidence |
 | --- | --- | --- |
-| Det temporal candidate generation (Gan) | **operational-freeze** | In promoted arm; **not mechanism-closed** |
+| Det temporal candidate generation (Gan) | **operational-freeze** | Expanded builders default 2026-05-21; cap-50 confirm **68%** vs 62% pre-expansion (+6pp) — `docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md`; mechanism class still **open** |
 | LLM temporal candidate generation (Gan) | **open** | Cap-25 JSON path rejected as arm (E2/E5 29.2% vs E1 52%); presentation not swept — `docs/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md` |
 | LLM vs det for candidate stage (Gan) | **open** | Directional det > hybrid > LLM on cap-25; mechanism not closed (one LLM format) |
 | Verify-repair as second stage (Gan) | **open** | Cap-25 null on monthly; V6≡V0 (52%); det-evidence front-end harmful (V3–V5) — `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
@@ -57,10 +57,11 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Evidence soft (ExECT S1) | **arm-reject** | cap-25 |
 | Evidence span-check (Gan) | **arm-reject** | V7 + Lane A on g2 skeleton; 9/25 abstentions cap-25 — `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
 | Bootstrap optimizer (ExECT S1) | **arm-reject** | cap-25 −5.1pp |
-| DSPy optimizers (general) | **open** | Ladder rungs 4–5 not run |
+| DSPy optimizers (general) | **open** | ExECT stripped L0/L1 compile **arm-reject** for policy substitution (best 71.7% cap-25) — `docs/exect_s1_ladder_optimizer_automation_inspection_20260521.md` |
 | GEPA (Gan) | **arm-reject** | historical full |
 | ReAct interface (Gan) | **arm-reject** | one implementation |
-| Candidate table vs JSON vs prose (Gan) | **open** | Cap-25: table/JSON/bullets 56% vs prose 52% (+4pp); tied formats — `docs/gan_s0_implementation_variant_gpt_cap25_v1_inspection_20260521.md` |
+| Candidate table vs JSON vs prose (Gan) | **open** | Cap-25: +4pp table vs prose; **cap-50 confirm null** (62% tie) — `docs/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md` |
+| Canonical format examples (Gan adjudicate) | **open** | Cap-25 C1 +4pp exact (arm hold); residual 30-record replay null — `docs/gan_s0_canonical_format_residual_slice_replay_20260521.md` |
 
 ---
 
@@ -73,5 +74,6 @@ These are **arm-reject**, not mechanism-reject for the rows in that doc.
 
 ## Next status updates expected
 
-- After ExECT optimizer thesis rungs 4a–4c → DSPy optimizers row (arm vs open)
-- Optional 50-record Gan presentation confirmation before operational default format change
+- Run Gan full-validation F0 (`docs/gan_s0_expanded_builders_prose_gpt_full_validation_v1_preregistration_20260521.md`)
+- ExECT S4 medication precision guard G0 implementation + cap-25 grid (`docs/exect_s4_medication_precision_guard_design_20260521.md`)
+- Targeted builder gaps: seizure-type priority, long-window cluster phrasing

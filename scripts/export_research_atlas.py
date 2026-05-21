@@ -1,4 +1,4 @@
-"""Generate a research atlas from the experiment registry and Kanban notes.
+"""Generate registry-derived research evidence views.
 
 Usage:
     uv run python scripts/export_research_atlas.py
@@ -15,9 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REG_PATH = ROOT / "docs" / "experiment_registry.json"
-KANBAN_PATH = ROOT / "docs" / "kanban_plan.md"
 DEFAULT_OUTPUT_DIR = ROOT / "docs" / "research_atlas"
-DEFAULT_INDEX = ROOT / "docs" / "research_atlas.md"
 
 DECISION_OUTCOMES = ("promote", "freeze", "hold", "reject", "superseded", "pending", "exploratory")
 OUTCOME_PRIORITY = {
@@ -252,112 +250,12 @@ def render_evidence_matrix(reg: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
-def _extract_section(markdown: str, title: str) -> str:
-    pattern = re.compile(rf"^## {re.escape(title)}\s*$", re.MULTILINE)
-    match = pattern.search(markdown)
-    if not match:
-        return "_Section not found._"
-    start = match.end()
-    next_match = re.search(r"^## .+$", markdown[start:], flags=re.MULTILINE)
-    end = start + next_match.start() if next_match else len(markdown)
-    return markdown[start:end].strip()
-
-
-def render_open_frontiers(kanban_markdown: str) -> str:
-    sections = [
-        "Active Work",
-        "Recommended Next Pull",
-        "Ready After Consolidation",
-        "Blocked Or Deferred",
-        "Current Decisions",
-    ]
-    lines = [
-        "# Open Frontiers",
-        "",
-        f"Generated: {date.today().isoformat()}",
-        "",
-        "This view is lifted from the Kanban plan so the atlas stays connected to active research operations.",
-        "",
-    ]
-    for section in sections:
-        lines.append(f"## {section}")
-        lines.append("")
-        content = _extract_section(kanban_markdown, section)
-        lines.append(content)
-        lines.append("")
-    return "\n".join(lines)
-
-
-def render_index(reg: dict, output_dir_name: str = "research_atlas") -> str:
-    rows = _curated_rows(reg)
-    outcomes = Counter(row.get("outcome", "pending") for row in rows)
-    schemas = Counter(row.get("schema_complexity", "pending_backfill") for row in rows)
-    generated = date.today().isoformat()
-    lines = [
-        "# Research Atlas",
-        "",
-        f"Generated: {generated}",
-        "",
-        "This atlas turns the experiment registry into navigable research memory: where the project has been, "
-        "which hypotheses are anchored or closed, and which paths remain open.",
-        "",
-        "## Source Of Truth",
-        "",
-        "- Registry: `docs/experiment_registry.json`",
-        "- Current operating plan: `docs/kanban_plan.md`",
-        "- Matrix export: `docs/experiment_registry_matrix_20260520.md`",
-        "",
-        "## Generated Views",
-        "",
-        f"- Journey timeline: `docs/{output_dir_name}/journey.mmd`",
-        f"- Decision map: `docs/{output_dir_name}/decision_map.mmd`",
-        f"- Evidence matrix: `docs/{output_dir_name}/evidence_matrix.md`",
-        f"- Open frontiers: `docs/{output_dir_name}/open_frontiers.md`",
-        "",
-        "## Journey Timeline",
-        "",
-        "```mermaid",
-        render_journey_mermaid(reg).strip(),
-        "```",
-        "",
-        "## Decision Map",
-        "",
-        "```mermaid",
-        render_decision_map_mermaid(reg).strip(),
-        "```",
-        "",
-        "## Registry Snapshot",
-        "",
-        f"- Curated comparison rows: {len(rows)}",
-        "- Outcomes: "
-        + ", ".join(f"{name}={outcomes[name]}" for name in DECISION_OUTCOMES if outcomes.get(name)),
-        "- Schemas: " + ", ".join(f"{name}={count}" for name, count in sorted(schemas.items())),
-        "",
-        "## How To Read It",
-        "",
-        "- Use the journey timeline for narrative orientation.",
-        "- Use the decision map to see which branches are promoted, frozen, held, rejected, or superseded.",
-        "- Use the evidence matrix to spot gaps across schema scope and study type.",
-        "- Use open frontiers to choose the next concrete pull of work.",
-        "",
-        "Regenerate after registry or Kanban changes:",
-        "",
-        "```powershell",
-        "uv run python scripts/export_research_atlas.py",
-        "```",
-    ]
-    return "\n".join(lines) + "\n"
-
-
-def write_atlas(reg: dict, kanban_markdown: str, output_dir: Path, index_path: Path) -> None:
+def write_atlas(reg: dict, output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_dir_name = output_dir.name
     files = {
         output_dir / "journey.mmd": render_journey_mermaid(reg),
         output_dir / "decision_map.mmd": render_decision_map_mermaid(reg),
         output_dir / "evidence_matrix.md": render_evidence_matrix(reg),
-        output_dir / "open_frontiers.md": render_open_frontiers(kanban_markdown),
-        index_path: render_index(reg, output_dir_name=output_dir_name),
     }
     for path, text in files.items():
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -365,17 +263,14 @@ def write_atlas(reg: dict, kanban_markdown: str, output_dir: Path, index_path: P
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Export the research atlas.")
+    parser = argparse.ArgumentParser(description="Export registry-derived research evidence views.")
     parser.add_argument("--registry", type=Path, default=REG_PATH)
-    parser.add_argument("--kanban", type=Path, default=KANBAN_PATH)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--index", type=Path, default=DEFAULT_INDEX)
     args = parser.parse_args(argv)
 
     reg = json.loads(args.registry.read_text(encoding="utf-8"))
-    kanban_markdown = args.kanban.read_text(encoding="utf-8")
-    write_atlas(reg, kanban_markdown, args.output_dir, args.index)
-    print(f"Wrote research atlas to {args.index} and {args.output_dir}")
+    write_atlas(reg, args.output_dir)
+    print(f"Wrote research evidence views to {args.output_dir}")
     return 0
 
 

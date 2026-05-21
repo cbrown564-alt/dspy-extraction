@@ -400,6 +400,7 @@ Allowed values:
 - `cap5`
 - `cap10`
 - `cap25`
+- `cap50`
 - `cap100`
 - `slice`
 - `full_validation`

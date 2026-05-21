@@ -30,6 +30,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_SCHEMA_LEVEL,
     EXECT_S0_S1_SCORER,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+    EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
     EXECT_S0_S1_VARIANT,
     ExectS0S1DiagnosisRecallProbeModule,
     ExectS0S1MedicationPreVocabFieldFamilyModule,
@@ -39,6 +41,10 @@ from clinical_extraction.programs.exect_s0_s1 import (
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
     ExectS0S1SectionAwareFieldFamilyModule,
+    ExectS0S1FieldFamilyPromptGraphParallelModule,
+    ExectS0S1FieldFamilyPromptGraphSequentialModule,
+    build_exect_s0_s1_family_specific_signature,
+    stage_graph_id_for_program_variant,
     EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
     EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
     REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY,
@@ -1577,6 +1583,94 @@ def test_exect_s0_s1_section_aware_module_routes_family_specific_contexts():
     assert "section:" in medication_prompt
     assert "medication" in medication_prompt
     assert "current anti-epileptic medication" in medication_prompt
+
+
+def test_exect_s0_s1_family_specific_signature_includes_filtered_policy_examples():
+    signature = build_exect_s0_s1_family_specific_signature("diagnosis")
+    doc = signature.__doc__ or ""
+    assert "Boundary examples:" in doc
+    assert "diagnosis_label_preservation" in doc
+    assert "planned_medication_exclusion" not in doc
+
+
+def test_exect_s0_s1_prompt_graph_parallel_module_uses_full_note_context():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([
+        {
+            "reasoning": "Diagnosis is explicit.",
+            "diagnosis": ["symptomatic structural focal epilepsy"],
+            "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+        },
+        {
+            "reasoning": "Seizure type is explicit.",
+            "seizure_type": ["focal-seizures-with-altered-awareness"],
+            "seizure_type_evidence": ["focal-seizures-with-altered-awareness"],
+        },
+        {
+            "reasoning": "Medication is explicit.",
+            "annotated_medication": ["Lamotrigine"],
+            "annotated_medication_evidence": ["lamotrigine"],
+        },
+    ])
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyPromptGraphParallelModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT,
+    )
+
+    assert (
+        stage_graph_id_for_program_variant(EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT)
+        == "g2_field_family_parallel"
+    )
+    lm_history = dspy.settings.lm.history
+    assert len(lm_history) == 3
+    for call in lm_history:
+        prompt = call["messages"][-1]["content"]
+        assert record.text in prompt
+        assert "Section:" not in prompt
+
+
+def test_exect_s0_s1_prompt_graph_sequential_module_chains_prior_context():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy([
+        {
+            "reasoning": "Diagnosis is explicit.",
+            "diagnosis": ["symptomatic structural focal epilepsy"],
+            "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+        },
+        {
+            "reasoning": "Seizure type is explicit.",
+            "seizure_type": ["focal-seizures-with-altered-awareness"],
+            "seizure_type_evidence": ["focal-seizures-with-altered-awareness"],
+        },
+        {
+            "reasoning": "Medication is explicit.",
+            "annotated_medication": ["Lamotrigine"],
+            "annotated_medication_evidence": ["lamotrigine"],
+        },
+    ])
+
+    predict_exect_records(
+        ExectS0S1FieldFamilyPromptGraphSequentialModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT,
+    )
+
+    assert (
+        stage_graph_id_for_program_variant(EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT)
+        == "g2_field_family_prompt_graph"
+    )
+    seizure_prompt = dspy.settings.lm.history[1]["messages"][-1]["content"]
+    medication_prompt = dspy.settings.lm.history[2]["messages"][-1]["content"]
+    assert "Prior extractions from earlier prompt-graph stages:" in seizure_prompt
+    assert "symptomatic structural focal epilepsy" in seizure_prompt
+    assert "Prior extractions from earlier prompt-graph stages:" in medication_prompt
+    assert "focal-seizures-with-altered-awareness" in medication_prompt
 
 
 def test_exect_s0_s1_policy_fixture_preserves_audited_diagnosis_label():

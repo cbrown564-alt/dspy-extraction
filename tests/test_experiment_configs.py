@@ -42,6 +42,7 @@ from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_VARIANT,
 )
 from clinical_extraction.programs.exect_s4 import (
+    EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_PROMPT_VERSION,
     EXECT_S4_SCHEMA_LEVEL,
@@ -1696,6 +1697,31 @@ def test_exect_s4_frequency_cap25_configs_record_contract():
     assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
 
 
+def test_exect_s4_frequency_surface_repair_cap25_configs_record_contract():
+    r0 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s4_frequency_surface_r0_control_cap25_gpt4_1_mini.json"
+        )
+    )
+    r1 = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    assert r0.max_records == 25
+    assert r1.max_records == 25
+    assert r0.program_variant == "exect_s4_field_family_single_pass"
+    assert r1.program_variant == EXECT_S4_FREQUENCY_POST_MERGE_VARIANT
+    assert r0.taxonomy is not None
+    assert r1.taxonomy is not None
+    assert r0.taxonomy.comparison_group == "exect_s4_frequency_surface_repair_gpt_cap25_v1"
+    assert r1.taxonomy.comparison_group == "exect_s4_frequency_surface_repair_gpt_cap25_v1"
+    assert r0.taxonomy.implementation_variant == "frequency_bridge_v1_2_control"
+    assert r1.taxonomy.implementation_variant == "frequency_post_merge_v1_3"
+    assert r1.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+
+
 def test_exect_s4_temporality_configs_record_contract():
     l1_cap = load_experiment_config(
         Path("configs/experiments/exect_s4_temporality_l1_baseline_cap25_gpt4_1_mini.json")
@@ -2018,6 +2044,64 @@ def test_exect_s1_stage_executor_gpt_cap25_v1_configs_record_contract():
     assert all_hints.program_variant == "exect_s0_s1_field_family_pre_vocab_single_pass"
 
 
+def test_exect_s1_field_family_prompt_graph_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_prompt_graph_pg0_single_pass_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_prompt_graph_pg1_parallel_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "exect_s1_prompt_graph_pg2_sequential_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+    stage_graph_ids = {
+        "exect_s1_prompt_graph_pg0_single_pass_cap25_gpt4_1_mini": (
+            "g1_l1_policy_bridges"
+        ),
+        "exect_s1_prompt_graph_pg1_parallel_cap25_gpt4_1_mini": (
+            "g2_field_family_parallel"
+        ),
+        "exect_s1_prompt_graph_pg2_sequential_cap25_gpt4_1_mini": (
+            "g2_field_family_prompt_graph"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert (
+            config.taxonomy.comparison_group
+            == "exect_s1_field_family_prompt_graph_gpt_cap25_v1"
+        )
+        assert config.taxonomy.varied_factor == "pipeline_stage_graph"
+        assert config.max_records == 25
+        assert config.controls.repair_policy == "none"
+        assert config.prompt_version == "exect_s0_s1_field_family_v4_10_label_policy"
+        assert (
+            config.taxonomy.stage_graph_id == stage_graph_ids[config.experiment_id]
+        )
+
+    baseline, parallel, sequential = configs
+    assert baseline.program_variant == "exect_s0_s1_field_family_single_pass"
+    assert parallel.program_variant == "exect_s0_s1_field_family_prompt_graph_parallel"
+    assert (
+        sequential.program_variant
+        == "exect_s0_s1_field_family_prompt_graph_sequential"
+    )
+    assert parallel.controls.context_policy == "full_note"
+    assert sequential.controls.context_policy == "full_note"
+
+
 def test_gan_s0_stage_executor_gpt_cap25_v1_configs_record_contract():
     configs = [
         load_experiment_config(
@@ -2193,6 +2277,136 @@ def test_gan_s0_implementation_variant_gpt_cap25_v1_configs_record_contract():
             config.taxonomy.implementation_variant
             == implementation_variants[config.experiment_id]
         )
+        assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+
+
+def test_gan_s0_canonical_format_port_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_canonical_c0_control_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_canonical_c1_v3_examples_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    implementation_variants = {
+        "gan_s0_canonical_c0_control_cap25_gpt4_1_mini": "canonical_format_control_v1_1",
+        "gan_s0_canonical_c1_v3_examples_cap25_gpt4_1_mini": "canonical_format_v3_examples_v1",
+    }
+    prompt_versions = {
+        "gan_s0_canonical_c0_control_cap25_gpt4_1_mini": (
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
+        ),
+        "gan_s0_canonical_c1_v3_examples_cap25_gpt4_1_mini": (
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_2_canonical_examples"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert (
+            config.taxonomy.comparison_group
+            == "gan_s0_canonical_format_port_gpt_cap25_v1"
+        )
+        assert config.taxonomy.varied_factor == "implementation_variant"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == "g2_candidates_adjudicate"
+        assert config.taxonomy.stage_executor == "det_candidates_llm_adjudicate"
+        assert (
+            config.taxonomy.implementation_variant
+            == implementation_variants[config.experiment_id]
+        )
+        assert config.prompt_version == prompt_versions[config.experiment_id]
+        assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+
+
+def test_gan_s0_canonical_format_residual_slice_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_canonical_c0_residual_slice_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_canonical_c1_residual_slice_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    implementation_variants = {
+        "gan_s0_canonical_c0_residual_slice_gpt4_1_mini": "canonical_format_control_v1_1",
+        "gan_s0_canonical_c1_residual_slice_gpt4_1_mini": "canonical_format_v3_examples_v1",
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert (
+            config.taxonomy.comparison_group
+            == "gan_s0_canonical_format_residual_slice_gpt_v1"
+        )
+        assert config.record_ids is not None
+        assert len(config.record_ids) == 30
+        assert config.taxonomy.varied_factor == "implementation_variant"
+        assert (
+            config.taxonomy.implementation_variant
+            == implementation_variants[config.experiment_id]
+        )
+
+
+def test_gan_s0_exact_frequency_slot_payload_gpt_cap25_v1_configs_record_contract():
+    configs = [
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_slot_s0_prose_control_cap25_gpt4_1_mini.json"
+            )
+        ),
+        load_experiment_config(
+            Path(
+                "configs/experiments/"
+                "gan_s0_slot_s1_payload_cap25_gpt4_1_mini.json"
+            )
+        ),
+    ]
+
+    implementation_variants = {
+        "gan_s0_slot_s0_prose_control_cap25_gpt4_1_mini": "cand_prose_v1",
+        "gan_s0_slot_s1_payload_cap25_gpt4_1_mini": "slot_payload_v1",
+    }
+    prompt_versions = {
+        "gan_s0_slot_s0_prose_control_cap25_gpt4_1_mini": (
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
+        ),
+        "gan_s0_slot_s1_payload_cap25_gpt4_1_mini": (
+            "gan_frequency_s0_temporal_candidates_single_pass_v1_3_slot_payload"
+        ),
+    }
+
+    for config in configs:
+        assert config.taxonomy is not None
+        assert (
+            config.taxonomy.comparison_group
+            == "gan_s0_exact_frequency_slot_payload_gpt_cap25_v1"
+        )
+        assert config.taxonomy.varied_factor == "implementation_variant"
+        assert config.max_records == 25
+        assert config.taxonomy.stage_graph_id == "g2_candidates_adjudicate"
+        assert config.taxonomy.stage_executor == "det_candidates_llm_adjudicate"
+        assert (
+            config.taxonomy.implementation_variant
+            == implementation_variants[config.experiment_id]
+        )
+        assert config.prompt_version == prompt_versions[config.experiment_id]
         assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
 
 

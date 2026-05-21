@@ -241,6 +241,63 @@ GAN_IMPL_ROWS: list[dict] = [
     },
 ]
 
+GAN_CAP50_ROWS: list[dict] = [
+    {
+        "experiment_id": "gan_s0_impl_i0_cand_prose_cap50_gpt4_1_mini",
+        "comparison_group": "gan_s0_implementation_variant_gpt_cap50_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g2_candidates_adjudicate",
+        "stage_executor": "det_candidates_llm_adjudicate",
+        "implementation_variant": "cand_prose_v1",
+        "program_architecture": "temporal_candidates_single_pass",
+        "hybrid_balance_class": [
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        "interleaving_positions": ["pre", "during"],
+        "verification_strategy": "none",
+        "outcome": "hold",
+        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. Cap-50 confirm control; 62% monthly; tie vs I1.",
+    },
+    {
+        "experiment_id": "gan_s0_impl_i1_cand_table_cap50_gpt4_1_mini",
+        "comparison_group": "gan_s0_implementation_variant_gpt_cap50_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g2_candidates_adjudicate",
+        "stage_executor": "det_candidates_llm_adjudicate",
+        "implementation_variant": "cand_table_v1",
+        "program_architecture": "temporal_candidates_single_pass",
+        "hybrid_balance_class": [
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        "interleaving_positions": ["pre", "during"],
+        "verification_strategy": "none",
+        "outcome": "hold",
+        "decision_doc": "docs/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. Cap-50 confirm; 62% monthly; +4pp cap-25 not replicated.",
+    },
+    {
+        "experiment_id": "gan_s0_expanded_builders_prose_cap50_gpt4_1_mini",
+        "comparison_group": "gan_s0_expanded_builders_prose_gpt_cap50_v1",
+        "varied_factor": "implementation_variant",
+        "stage_graph_id": "g2_candidates_adjudicate",
+        "stage_executor": "det_candidates_llm_adjudicate",
+        "implementation_variant": "cand_prose_expanded_builders_v1",
+        "program_architecture": "temporal_candidates_single_pass",
+        "hybrid_balance_class": [
+            "H2_pre_deterministic",
+            "H4_deterministic_first_llm_adjudicates",
+        ],
+        "interleaving_positions": ["pre", "during"],
+        "verification_strategy": "none",
+        "outcome": "hold",
+        "decision_doc": "docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. Cap-50 confirm vs pre-expansion prose 62%; 68% monthly (+6pp); expanded temporal_candidates builders.",
+    },
+]
+
 GAN_LADDER_ROWS: list[dict] = [
     {
         "experiment_id": "gan_s0_validation_ladder_v0_cap25_gpt4_1_mini",
@@ -552,7 +609,68 @@ EXECT_GRID_ROWS: list[dict] = [
     },
 ]
 
-ALL_GRID_ROWS = GAN_GRID_ROWS + GAN_IMPL_ROWS + GAN_LADDER_ROWS + EXECT_GRID_ROWS
+EXECT_PROMPT_GRAPH_ROWS = [
+    {
+        "experiment_id": "exect_s1_prompt_graph_pg0_single_pass_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s1_field_family_prompt_graph_gpt_cap25_v1",
+        "varied_factor": "pipeline_stage_graph",
+        "stage_graph_id": "g1_l1_policy_bridges",
+        "program_architecture": "single_pass",
+        "hybrid_balance_class": ["L1_llm_constrained"],
+        "interleaving_positions": ["during"],
+        "clinical_task_family": ["diagnosis", "seizure_type", "medication"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+        "outcome": "hold",
+        "decision_doc": "docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. PG0 baseline; 95.8% micro; matches Phase 5a S1.",
+    },
+    {
+        "experiment_id": "exect_s1_prompt_graph_pg1_parallel_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s1_field_family_prompt_graph_gpt_cap25_v1",
+        "varied_factor": "pipeline_stage_graph",
+        "stage_graph_id": "g2_field_family_parallel",
+        "program_architecture": "field_family_parallel",
+        "hybrid_balance_class": ["L1_llm_constrained"],
+        "interleaving_positions": ["during"],
+        "clinical_task_family": ["diagnosis", "seizure_type", "medication"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+        "outcome": "reject",
+        "decision_doc": "docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. PG1 parallel per-family; 86.5% micro; −9.3pp vs PG0.",
+    },
+    {
+        "experiment_id": "exect_s1_prompt_graph_pg2_sequential_cap25_gpt4_1_mini",
+        "comparison_group": "exect_s1_field_family_prompt_graph_gpt_cap25_v1",
+        "varied_factor": "pipeline_stage_graph",
+        "stage_graph_id": "g2_field_family_prompt_graph",
+        "program_architecture": "field_family_prompt_graph",
+        "hybrid_balance_class": ["L1_llm_constrained"],
+        "interleaving_positions": ["during"],
+        "clinical_task_family": ["diagnosis", "seizure_type", "medication"],
+        "context_strategy": "full_note",
+        "verification_strategy": "none",
+        "normalization_strategy": "benchmark_bridge",
+        "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+        "outcome": "reject",
+        "decision_doc": "docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md",
+        "notes": "decision_scope: arm. PG2 sequential chain; 87.1% micro; null vs PG1 (24/25).",
+    },
+]
+
+ALL_GRID_ROWS = (
+    GAN_GRID_ROWS
+    + GAN_IMPL_ROWS
+    + GAN_LADDER_ROWS
+    + GAN_CAP50_ROWS
+    + EXECT_GRID_ROWS
+    + EXECT_PROMPT_GRAPH_ROWS
+)
 
 
 def _latest_run_dir(experiment_id: str) -> Path | None:
@@ -654,7 +772,7 @@ def _build_gan_row(spec: dict) -> dict | None:
             "split": "gan_2026_fixed_v1:validation",
         },
         "varied_factor": spec["varied_factor"],
-        "run_scope": "slice",
+        "run_scope": "slice" if "cap50" not in spec["experiment_id"] else "cap50",
         "canonical_run_id": run_dir.name,
         "outcome": spec["outcome"],
         "decision_doc": spec["decision_doc"],

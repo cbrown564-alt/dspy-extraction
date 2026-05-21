@@ -1251,6 +1251,12 @@ def repair_exect_frequency_surface(canonical: str) -> tuple[str, list[str]]:
     return repaired, flags
 
 
+def note_has_exect_frequency_support(note_text: str) -> bool:
+    """Return True when note text supports at least one audited frequency template."""
+
+    return bool(_build_exect_frequency_label_set(note_text))
+
+
 def recover_exect_frequency_benchmark_values(
     raw_values: list[str],
     note_text: str,
@@ -1287,6 +1293,39 @@ def recover_exect_frequency_benchmark_values(
     recovered, co_label_flags = _augment_exect_frequency_co_labels(recovered, note_text)
     flags.extend(co_label_flags)
     return recovered, flags
+
+
+def recover_exect_frequency_benchmark_values_with_post_merge(
+    raw_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Recover frequency labels with v1.2 bridge plus post-merge note anchoring."""
+
+    recovered, flags = recover_exect_frequency_benchmark_values(raw_values, note_text)
+    note_anchored = _build_exect_frequency_label_set(note_text)
+
+    seen = set(recovered)
+    for label in sorted(note_anchored):
+        if label in seen:
+            continue
+        recovered.append(label)
+        seen.add(label)
+        flags.append("s4_bridge:note_anchored_frequency_merged")
+
+    note_lower = note_text.lower()
+    filtered: list[str] = []
+    for label in recovered:
+        if label == "seizure free" and "seizure free" not in note_lower:
+            flags.append("s4_bridge:spurious_seizure_free_removed")
+            continue
+        if label.startswith("seizure free since ") and not _SEIZURE_FREE_SINCE_RE.search(
+            note_text
+        ):
+            flags.append("s4_bridge:spurious_seizure_free_removed")
+            continue
+        filtered.append(label)
+
+    return filtered, flags
 
 
 def exect_frequency_benchmark_bridge(

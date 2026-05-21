@@ -1414,6 +1414,48 @@ def test_build_gan_frequency_s0_extractor_signature_ports_policy_versions():
     assert "Arithmetic and temporal guardrails" in (guardrails.__doc__ or "")
 
 
+def test_build_gan_frequency_s0_extractor_signature_adds_canonical_format_examples():
+    from clinical_extraction.programs.gan_frequency_s0 import (
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_CANONICAL_EXAMPLES_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    )
+
+    control = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    )
+    canonical = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_CANONICAL_EXAMPLES_PROMPT_VERSION
+    )
+
+    control_doc = control.__doc__ or ""
+    canonical_doc = canonical.__doc__ or ""
+    assert "Temporal-candidate adjudication policy (v1.1)" in control_doc
+    assert "Canonical-format worked examples (v3/v5 port" not in control_doc
+    assert "11 to 28 events per quarter" in canonical_doc
+    assert len(canonical_doc) > len(control_doc)
+
+
+def test_build_gan_frequency_s0_extractor_signature_adds_slot_payload_policy():
+    from clinical_extraction.programs.gan_frequency_s0 import (
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_SLOT_PAYLOAD_PROMPT_VERSION,
+    )
+
+    control = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION
+    )
+    slot_payload = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_SLOT_PAYLOAD_PROMPT_VERSION
+    )
+
+    control_doc = control.__doc__ or ""
+    slot_doc = slot_payload.__doc__ or ""
+    assert "Structured slot-payload adjudication policy (v1.3)" in slot_doc
+    assert "denominator_status" in slot_doc
+    assert "Structured slot-payload adjudication policy (v1.3)" not in control_doc
+    assert len(slot_doc) > len(control_doc)
+
+
 def test_build_gan_s0_module_accepts_prompt_version_for_temporal_verify_repair():
     module = build_gan_s0_module(
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,

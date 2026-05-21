@@ -79,6 +79,12 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_CANONICAL_EXAMPLES_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_2_canonical_examples"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_SLOT_PAYLOAD_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_3_slot_payload"
+)
 GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_llm_temporal_candidates_v1_1"
 )
@@ -632,6 +638,56 @@ GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM = """
     - evidence_text must be an exact contiguous substring of note_text.
 """
 
+GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM = """
+    Canonical-format worked examples (v3/v5 port — output the label exactly):
+    - 'Two events over the last five months' -> "2 per 5 month"
+    - '3 to 4 focal seizures per month' -> "3 to 4 per month"
+    - 'Seizure-free for 18 months' -> "seizure free for 18 month"  [SF >= 6 months]
+    - 'Seizures are sporadic but frequency unclear' -> "unknown"
+    - '<= 6 to 7 per year' -> "6 to 7 per year"  [strip inequality qualifiers]
+    - 'daily' or 'nightly' -> "1 per day"
+    - 'biweekly' or 'fortnightly' -> "1 per 2 week"
+    - 'every 4 days' -> "1 per 4 day"
+    - '3 or 4 per week' -> "3 to 4 per week"  [or -> to]
+    - 'daily absences and 2 focal seizures per month' -> "1 per day"  [highest type]
+    - '2 cluster days per month; typically 4 to 6 seizures on each cluster day'
+      -> "2 cluster per month, 4 to 6 per cluster"
+    - 'Cluster frequency unclear this month; last month approximately 4 clusters'
+      -> "4 cluster per month, multiple per cluster"
+    - 'He had 4 seizures in February when withdrawing from medication; has remained
+      well since (now May, 3 months later)' -> "4 per 3 month"  [SF < 6 months: rate]
+    - 'Had 2 seizures in January; none since (now April, 3 months)' -> "2 per 3 month"
+    - 'Has been seizure-free for the past 2 weeks; typically has 1 to 2 seizures
+      per month' -> "1 to 2 per month"  [ongoing rate overrides short SF period]
+    - 'Currently seizure free; no events for the past 14 months on current medication'
+      -> "seizure free for 14 month"  [SF >= 6 months]
+    - '11 to 28 events per quarter' -> "11 to 28 per 3 month"  [quarter = 3 month]
+"""
+
+GAN_FREQUENCY_S0_SLOT_PAYLOAD_ADJUDICATE_ADDENDUM = """
+    Structured slot-payload adjudication policy (v1.3):
+    - temporal_candidates now expose structured slots: event_count_or_range,
+      event_type, target_priority_cue, window_count/window_unit, window_source,
+      denominator_status, cluster slots, unknown_policy_cue, supporting_quote.
+    - Prefer the benchmark-facing highest/current seizure-frequency target when
+      multiple concurrent seizure types are mentioned. Do not pick a lower-rate
+      tonic-clonic or last-event quote if a higher-frequency concurrent type
+      is present elsewhere in the note.
+    - When denominator_status is missing_or_ambiguous or unknown_policy_cue says
+      to prefer unknown, output "unknown" rather than inventing a per-month or
+      per-week denominator from an unanchored count or latest date alone.
+    - When window_source is calendar_aggregation or elapsed_since_date, derive
+      the denominator from the summed counts and elapsed window rather than
+      compressing to a single-month rate.
+    - For cluster slots, preserve cluster form when cluster_count_or_range is
+      present; do not collapse cluster spacing to a simple rate when
+      cluster_spacing_source is vague_recurrence unless the note gives explicit
+      spacing.
+    - candidate_label is a provisional canonical label from slot provenance only;
+      choose the final label after reading slots and the full note.
+    - evidence_text must remain an exact contiguous substring of note_text.
+"""
+
 
 def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
@@ -751,6 +807,34 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_CANONICAL_EXAMPLES_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_CANONICAL_FORMAT_EXAMPLES_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateCanonicalExamplesExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_SLOT_PAYLOAD_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_SLOT_PAYLOAD_ADJUDICATE_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateSlotPayloadExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )

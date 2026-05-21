@@ -8,7 +8,7 @@ Related:
 - **Taxonomy north star:** `docs/hybrid_component_taxonomy_decision_20260520.md`
 - **Taxonomy implementation:** `docs/experiment_taxonomy_schema.md`, `docs/experiment_registry.json`, `docs/experiment_taxonomy_research_synthesis_20260520.md`
 - **Operating plan:** `docs/kanban_plan.md`
-- **Navigation layer:** `docs/research_atlas.md`, `docs/research_atlas/evidence_matrix.md`, `docs/research_atlas/open_frontiers.md`
+- **Registry views:** `docs/research_atlas/evidence_matrix.md`
 - **Closed ExECT probes:** `docs/exect_negative_probe_synthesis_20260520.md`
 - **Latest measurements:** `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md`, `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md`, `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md`, `docs/dspy_optimizer_investigation_20260521.md`
 
@@ -37,7 +37,7 @@ This report states what the project **currently believes**, what it has **ruled 
 | **North star / ontology** | Defines `L0`–`D1`, intervention matrix, registry fields | `docs/hybrid_component_taxonomy_decision_20260520.md`, `docs/experiment_taxonomy_schema.md` |
 | **Evidence index** | Registry rows, comparison groups, outcomes | `docs/experiment_registry.json`, `docs/experiment_registry_matrix_20260520.md` |
 | **First taxonomy answers** | Registry-backed answers to taxonomy “near-term questions” (2026-05-20) | `docs/experiment_taxonomy_research_synthesis_20260520.md` |
-| **Execution tracker** | What ran, gates, next pull | `docs/kanban_plan.md`, `docs/research_atlas/open_frontiers.md` |
+| **Execution tracker** | What ran, gates, next pull | `docs/kanban_plan.md` |
 | **Closed mechanisms** | ExECT probes that should not repeat | `docs/exect_negative_probe_synthesis_20260520.md` |
 | **Decomposition (ExECT S1)** | How much each rung contributes | `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` |
 | **Single-factor isolation** | Prompt / verification / evidence on fixed arms | `docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md`, `docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md` |
@@ -335,4 +335,4 @@ That answer is **strong for Gan S0 frequency**, **decomposed but incomplete for 
 - Whether any Gan prompt-policy port (+4pp guardrails cap-25) matters at full validation on the promoted architecture.
 - Generalization of all findings to **published** benchmarks and external datasets.
 
-**Recommended maintainer action:** Link this doc from `docs/kanban_plan.md` header and `docs/research_atlas.md` as the **big-picture synthesis**; treat `docs/experiment_taxonomy_research_synthesis_20260520.md` as the implementation log unless updated.
+**Recommended maintainer action:** Link this doc from `docs/kanban_plan.md` header as the **big-picture synthesis**; treat `docs/experiment_taxonomy_research_synthesis_20260520.md` as the implementation log unless updated.

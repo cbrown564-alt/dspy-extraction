@@ -33,6 +33,12 @@ EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT = (
     "exect_s0_s1_field_family_seizure_pre_vocab_single_pass"
 )
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
+EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT = (
+    "exect_s0_s1_field_family_prompt_graph_parallel"
+)
+EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT = (
+    "exect_s0_s1_field_family_prompt_graph_sequential"
+)
 EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT = "exect_s0_s1_field_family_deterministic_only"
 REPAIR_POLICY_ARTIFACT_BENCHMARK_BRIDGE_ONLY = "artifact_benchmark_bridge_only"
 REPAIR_POLICY_RAW_NO_BENCHMARK_BRIDGES = "raw_no_benchmark_bridges"
@@ -41,6 +47,8 @@ EXECT_S0_S1_VERIFY_REPAIR_VARIANT = "exect_s0_s1_field_family_verify_repair"
 EXECT_S0_S1_STAGE_GRAPH_BY_VARIANT = {
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT: "g2_extract_verify",
     EXECT_S0_S1_SECTION_AWARE_VARIANT: "g3_family_split_merge",
+    EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT: "g2_field_family_parallel",
+    EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT: "g2_field_family_prompt_graph",
 }
 EXECT_S0_S1_L0_PROMPT_VERSION = "exect_s0_s1_field_family_l0_minimal"
 EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION = "exect_s0_s1_field_family_l1_schema"
@@ -1562,6 +1570,183 @@ class ExectS0S1SectionAwareFieldFamilyModule(dspy.Module):
         )
 
 
+_FAMILY_POLICY_OUTPUT_KEYS = {
+    "diagnosis": frozenset({"diagnosis"}),
+    "seizure_type": frozenset({"seizure_type", "seizure_type_evidence"}),
+    "annotated_medication": frozenset({"annotated_medication", "annotated_medication_evidence"}),
+}
+
+_FAMILY_SIGNATURE_BY_FIELD = {
+    "diagnosis": ExectS0S1DiagnosisSignature,
+    "seizure_type": ExectS0S1SeizureTypeSignature,
+    "annotated_medication": ExectS0S1MedicationSignature,
+}
+
+
+def _policy_examples_for_family(
+    examples: tuple[dict[str, object], ...],
+    field_name: str,
+) -> tuple[dict[str, object], ...]:
+    keys = _FAMILY_POLICY_OUTPUT_KEYS[field_name]
+    return tuple(
+        example
+        for example in examples
+        if any(key in example.get("benchmark_output", {}) for key in keys)
+    )
+
+
+def _format_family_policy_examples_block(
+    examples: tuple[dict[str, object], ...],
+) -> str:
+    if not examples:
+        return ""
+    lines = ["", "Boundary examples:"]
+    for example in examples:
+        case = example.get("case", "example")
+        fragment = example.get("note_fragment", "")
+        output = example.get("benchmark_output", {})
+        policy = example.get("policy", "")
+        lines.append(f'- {case}: "{fragment}" -> {output}. {policy}')
+    return "\n".join(lines)
+
+
+def build_exect_s0_s1_family_specific_signature(
+    field_name: str,
+    prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+) -> type[dspy.Signature]:
+    """Build a per-family signature enriched with v4_10 label-policy examples."""
+    if field_name not in _FAMILY_SIGNATURE_BY_FIELD:
+        raise ValueError(f"Unsupported ExECT S0/S1 field family: {field_name!r}")
+    _, policy_examples = resolve_exect_s0_s1_label_policy(prompt_version)
+    base_signature = _FAMILY_SIGNATURE_BY_FIELD[field_name]
+    family_examples = _policy_examples_for_family(policy_examples, field_name)
+    doc = (base_signature.__doc__ or "") + _format_family_policy_examples_block(
+        family_examples
+    )
+    suffix = {
+        "diagnosis": "Diagnosis",
+        "seizure_type": "SeizureType",
+        "annotated_medication": "Medication",
+    }[field_name]
+    class_name = f"ExectS0S1{suffix}PolicySignature"
+    return type(class_name, (base_signature,), {"__doc__": doc})
+
+
+def _format_prior_extractions_context(
+    *,
+    note_text: str,
+    prior: dict[str, list[str]],
+    target_field: str,
+) -> str:
+    lines = [note_text, "", "Prior extractions from earlier prompt-graph stages:"]
+    for field_name in EXECT_S0_S1_FIELD_FAMILIES:
+        if field_name == target_field:
+            continue
+        values = prior.get(field_name, [])
+        rendered = ", ".join(f'"{value}"' for value in values) if values else "(none)"
+        lines.append(f"- {field_name}: [{rendered}]")
+    return "\n".join(lines)
+
+
+class ExectS0S1FieldFamilyPromptGraphParallelModule(dspy.Module):
+    """Full-note per-family extraction with v4_10 label-policy examples per stage."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.extract_diagnosis = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature("diagnosis", prompt_version)
+        )
+        self.extract_seizure_type = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature("seizure_type", prompt_version)
+        )
+        self.extract_medication = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature(
+                "annotated_medication",
+                prompt_version,
+            )
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        diagnosis = self.extract_diagnosis(note_text=note_text)
+        seizure_type = self.extract_seizure_type(note_text=note_text)
+        medication = self.extract_medication(note_text=note_text)
+        return dspy.Prediction(
+            diagnosis=_as_list(getattr(diagnosis, "diagnosis", [])),
+            diagnosis_evidence=_as_list(getattr(diagnosis, "diagnosis_evidence", [])),
+            seizure_type=_as_list(getattr(seizure_type, "seizure_type", [])),
+            seizure_type_evidence=_as_list(
+                getattr(seizure_type, "seizure_type_evidence", [])
+            ),
+            annotated_medication=_as_list(
+                getattr(medication, "annotated_medication", [])
+            ),
+            annotated_medication_evidence=_as_list(
+                getattr(medication, "annotated_medication_evidence", [])
+            ),
+        )
+
+
+class ExectS0S1FieldFamilyPromptGraphSequentialModule(dspy.Module):
+    """Sequential prompt graph: diagnosis -> seizure -> medication with prior context."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = EXECT_S0_S1_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.extract_diagnosis = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature("diagnosis", prompt_version)
+        )
+        self.extract_seizure_type = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature("seizure_type", prompt_version)
+        )
+        self.extract_medication = dspy.ChainOfThought(
+            build_exect_s0_s1_family_specific_signature(
+                "annotated_medication",
+                prompt_version,
+            )
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        diagnosis = self.extract_diagnosis(note_text=note_text)
+        diagnosis_values = _as_list(getattr(diagnosis, "diagnosis", []))
+        seizure_context = _format_prior_extractions_context(
+            note_text=note_text,
+            prior={"diagnosis": diagnosis_values},
+            target_field="seizure_type",
+        )
+        seizure_type = self.extract_seizure_type(note_text=seizure_context)
+        seizure_values = _as_list(getattr(seizure_type, "seizure_type", []))
+        medication_context = _format_prior_extractions_context(
+            note_text=note_text,
+            prior={
+                "diagnosis": diagnosis_values,
+                "seizure_type": seizure_values,
+            },
+            target_field="annotated_medication",
+        )
+        medication = self.extract_medication(note_text=medication_context)
+        return dspy.Prediction(
+            diagnosis=diagnosis_values,
+            diagnosis_evidence=_as_list(getattr(diagnosis, "diagnosis_evidence", [])),
+            seizure_type=seizure_values,
+            seizure_type_evidence=_as_list(
+                getattr(seizure_type, "seizure_type_evidence", [])
+            ),
+            annotated_medication=_as_list(
+                getattr(medication, "annotated_medication", [])
+            ),
+            annotated_medication_evidence=_as_list(
+                getattr(medication, "annotated_medication_evidence", [])
+            ),
+        )
+
+
 def build_exect_s0_s1_module(
     program_variant: str = EXECT_S0_S1_VARIANT,
     *,
@@ -1570,6 +1755,14 @@ def build_exect_s0_s1_module(
     """Build an ExECT S0/S1 module for the requested program variant."""
     if program_variant == EXECT_S0_S1_SECTION_AWARE_VARIANT:
         return ExectS0S1SectionAwareFieldFamilyModule()
+    if program_variant == EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT:
+        return ExectS0S1FieldFamilyPromptGraphParallelModule(
+            prompt_version=prompt_version
+        )
+    if program_variant == EXECT_S0_S1_PROMPT_GRAPH_SEQUENTIAL_VARIANT:
+        return ExectS0S1FieldFamilyPromptGraphSequentialModule(
+            prompt_version=prompt_version
+        )
     if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT:
         return ExectS0S1DiagnosisRecallProbeModule()
     if program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT:

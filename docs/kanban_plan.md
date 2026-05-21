@@ -17,9 +17,10 @@
 **DSPy optimizer investigation:** `docs/dspy_optimizer_investigation_20260521.md`  
 **Phase roadmap:** `docs/next_major_phases_20260520.md`  
 **Registry:** `docs/experiment_registry.json` · **Matrix export:** `docs/experiment_registry_matrix_20260520.md`  
-**Research atlas:** `docs/research_atlas.md` · **Evidence matrix:** `docs/research_atlas/evidence_matrix.md`  
+**Evidence matrix:** `docs/research_atlas/evidence_matrix.md`  
 **Scorer and dataset guardrails:** `docs/deterministic_scorer_semantics.md`, `docs/exect_gold_label_audit.md`, `docs/gan_2026_label_audit.md`  
 **Frozen run archive:** `docs/kanban_frozen_threads_history.md`  
+**Prior-best reanalysis:** `docs/prior_best_vs_current_best_reanalysis_20260521.md`  
 **Last refreshed:** 2026-05-21, after multi-stage LLM clinical extraction literature review (`docs/multi_stage_llm_clinical_extraction_literature_review_20260521.md`)
 **Lane A preregistrations:** `docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md`, `docs/exect_s1_prompt_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_verification_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_evidence_policy_gpt_validation_v1_preregistration_20260521.md`, `docs/exect_s1_optimizer_gpt_cap25_v1_preregistration_20260521.md`
 **Support map:** `docs/exect_field_family_deterministic_support_map_20260520.md`  
@@ -63,7 +64,7 @@ Interpretation: recent clinical IE papers support modular extraction, but mainly
 | --- | --- | --- | --- | --- | --- |
 | Preregister evidence-first Gan S0 retrieval ablation | **Done** | Inspection `docs/gan_s0_retrieval_gpt_cap25_v1_inspection_20260521.md` — R2 hold 52%; R1/R3 reject (arm) | Current Gan temporal-candidates default; scorer semantics in `docs/gan_2026_label_audit.md` | yes | Registry rows optional follow-up |
 | Design Gan S0 validation ladder | **Done** | Prereg + implementation `docs/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md` — V0–V7 configs ready | Phase 2–3 cap-25 anchor (E1 52% monthly) | yes | Run cap-25 grid; inspection pending |
-| Preregister ExECT S1 field-family prompt graph | **Ready** | Stage-graph comparison of current single-pass policy extraction vs diagnosis/seizure/medication field-family stages | Existing ExECT S1 stage-graph card; explicit bridge policy per arm | after bridge policy is fixed | Per-family F1, micro F1, evidence support, schema validity, bridge contribution, and merge-error analysis |
+| Preregister ExECT S1 field-family prompt graph | **Done** | Inspection `docs/exect_s1_field_family_prompt_graph_gpt_cap25_v1_inspection_20260521.md` — PG0 hold 95.8%; PG1/PG2 reject (arm) | Existing ExECT S1 stage-graph card; explicit bridge policy per arm | after bridge policy is fixed | Per-family F1, micro F1, evidence support, schema validity, bridge contribution, and merge-error analysis |
 | Run fixture-to-real reality-gap audit | **Backlog** | Small report comparing deterministic fixture outcomes, cap-25 dev behavior, and full validation behavior for one Gan and one ExECT family | Existing fixture coverage plus recent Gan/ExECT inspections | yes | Documents where fixtures overstate performance; updates failure-mode tags from real dev errors |
 | Audit run metadata for validation outcomes | **Backlog** | Check whether artifacts record model, prompt/schema versions, decoding settings, input IDs, validation failures, repair decisions, and scorer mode | none | yes | Gap report plus narrow implementation cards if missing metadata blocks literature-grade reporting |
 
@@ -72,6 +73,28 @@ Dependency notes:
 - Pull Gan retrieval and validation-ladder preregistration first; they test mechanisms most directly supported by CLEAR, llm_extractinator, and the multi-stage validation framework.
 - Keep ExECT S1 field-family prompt graph aligned with the active stage-graph axis; bridge behavior must be explicit before results can be interpreted.
 - Treat fixture/reality-gap work as research hygiene, not a blocker for cap-25 exploration unless fixture claims are being used as performance evidence.
+
+## Prior-Best Reanalysis Follow-Ups
+
+Source report: `docs/prior_best_vs_current_best_reanalysis_20260521.md`
+
+Interpretation: the older best-config report still carries useful prompt-policy evidence, especially Gan v3/v5 canonical frequency-format discipline and ExECT label-contract examples. Current best pipelines are stronger architecture bundles, so the follow-up should port those older ingredients into fixed modern skeletons rather than rerunning stale conditions.
+
+| Card | Status | Outcome | Dependencies | Parallelizable | Validation |
+| --- | --- | --- | --- | --- | --- |
+| Preregister Gan S0 canonical-format port onto temporal-candidates | **Done** | `docs/gan_s0_canonical_format_port_gpt_cap25_v1_preregistration_20260521.md` — C0/C1 cap-25; normalized-label exact primary | `docs/prior_best_vs_current_best_reanalysis_20260521.md`; current Gan temporal-candidates default; scorer semantics in `docs/gan_2026_label_audit.md` | yes | Prereg names dataset/split, model, fixed skeleton, varied factor `implementation_variant`, metrics, gates, and residual-slice plan |
+| Implement Gan S0 canonical-format port cap-25 | **Done** | Inspection `docs/gan_s0_canonical_format_port_gpt_cap25_v1_inspection_20260521.md` — C1 hold +4pp normalized exact |
+| Replay Gan exact-frequency residual slice | **Done** | `docs/gan_s0_canonical_format_residual_slice_replay_20260521.md` — C0/C1 null on 30-record queue (1 recovery, 1 regression); cap-50 confirm deferred |
+| Preregister ExECT S4 frequency surface repair | **Done** | `docs/exect_s4_frequency_surface_repair_gpt_cap25_v1_preregistration_20260521.md` — R0 v1.2 bridge vs R1 post-merge | Current S4 anchors `...071248Z` and `...160914Z`; `docs/exect_s4_validation_full_v1_2_gpt4_1_mini_inspection_20260520.md` | yes | Prereg defines frequency-heavy slice or cap-25 gate, scorer `exect_s4_field_family_deterministic_v1`, no-regression checks for investigation/seizure/medication |
+| Implement ExECT S4 frequency surface repair cap-25 | **Done** | Inspection `docs/exect_s4_frequency_surface_repair_gpt_cap25_v1_inspection_20260521.md` — R1 reject (arm) 48.1% vs R0 51.0% freq F1 | Preregister ExECT S4 frequency surface repair | yes | Frequency F1 improves without material regression in frozen S3 families; update inspection doc before any full validation |
+| Replay Gemini under current S-level architecture | **Deferred** | Optional S1 first, then S4 only if needed, to decide whether the prior Gemini champion remains relevant under current prompts/scorers/bridges | Model-comparison need; stable S1/S4 anchors | no | Same split/scorer/bridge policy as GPT/Qwen anchors; report as model-comparison evidence, not stale Round 2 continuation |
+
+Dependency notes:
+
+- Keep the Gan canonical-format port single-factor: do not change candidate generation, adjudication skeleton, scorer semantics, evidence policy, or split at the same time.
+- The residual-slice replay should follow the cap-25 port, not replace it; otherwise slice wins may overfit the exact errors already inspected.
+- ExECT S4 frequency repair is independent of Gan S0 work because ExECT frequency surfaces include qualitative co-labels, zero-rate labels, and multi-row gold that Gan normalization does not model directly.
+- Gemini replay is deferred unless the paper/model-comparison story specifically needs it; it should not interrupt Qwen/full-validation confirmation work.
 
 ## What We Know Now
 
@@ -184,12 +207,23 @@ Use skill **`hybrid-pipeline-exploration`** for all new experiment design and in
 | Gan S0 validation ladder cap-25 | **Done** | Inspection `docs/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` — V0/V2/V6 hold; V3–V5/V7 reject |
 | ExECT S1 stage-graph cap-25 | **Done** | Prereg + 5 configs + runs + inspection + registry backfill |
 
+### Phase 7 — Qwen port + canonical-format follow-up
+
+| Card | Status | Deliverable |
+| --- | --- | --- |
+| Gan Qwen g2_candidates_adjudicate cap-25 | **Done** | Inspection `docs/gan_s0_qwen35b_g2_candidates_adjudicate_cap25_v1_inspection_20260521.md` — reject (arm) 40% monthly vs GPT E1 52% |
+| Gan canonical-format port prereg | **Done** | `docs/gan_s0_canonical_format_port_gpt_cap25_v1_preregistration_20260521.md` |
+| Gan canonical-format port cap-25 | **Done** | C1 hold +4pp normalized exact — inspection linked |
+| Residual-slice replay tooling | **Done** | `gan_residual_slice.py`, `export_gan_exact_frequency_residual_slice.py`, `replay_gan_canonical_format_residual_slice.py` |
+| Gan canonical-format residual-slice replay | **Done** | `docs/gan_s0_canonical_format_residual_slice_replay_20260521.md` — null on hard queue; no cap-50 promotion |
+| Gan exact-frequency slot payload prereg + scaffold | **Done** | Inspection `docs/gan_s0_exact_frequency_slot_payload_gpt_cap25_v1_inspection_20260521.md` — S1 hold +8pp monthly; residual null |
+
 ### Phase 5–6 — ExECT S1 executor + optimizer (Axis 2–3)
 
 | Card | Status | Notes |
 | --- | --- | --- |
 | ExECT S1 stage-executor cap-25 | **Done** | Prereg + 5 configs + runs + inspection + registry backfill |
-| Optimizer automation thesis | **In progress** | Axis 3 — `docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md`; rungs 4a–4c executing |
+| Optimizer automation thesis | **Done** | Axis 3 — `docs/exect_s1_ladder_optimizer_automation_inspection_20260521.md`; thesis not supported (best 71.7% micro) |
 
 ### Completed batches (arm evidence — not mechanism closure)
 
@@ -203,7 +237,7 @@ Use skill **`hybrid-pipeline-exploration`** for all new experiment design and in
 | Lane Q Qwen v4_11 | `docs/exect_s1_seizure_prompt_policy_qwen_v1_inspection_20260520.md` | Hold promote blocked |
 | Negative probes | `docs/exect_negative_probe_synthesis_20260520.md` | Repeat guardrail only |
 
-**Runs in flight:** ExECT S1 optimizer thesis rungs 4a–4c (`exect_s1_ladder_optimizer_automation_v1`, Axis 3). Gan/ExECT hybrid grids and validation ladder cap-25 complete; registry backfill +11 rows (impl + ladder).
+**No runs in flight.** Gan expanded-builders cap-50 confirm: **68.0%** monthly vs pre-expansion prose **62.0%** (+6pp) — **confirm (arm)** (`docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md`). **Next:** run Gan full-validation F0 (`gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini.json`); ExECT S4 implement medication guard G0 + cap-25 prereg (`docs/exect_s4_medication_precision_guard_design_20260521.md`).
 
 **ExECT S1 optimizer pilot interpretation notes (2026-05-21):**
 
@@ -220,8 +254,8 @@ Use skill **`hybrid-pipeline-exploration`** for all new experiment design and in
 | ExECT S1 full-ladder preregistration | **Done** | `docs/exect_s1_full_ladder_gpt_validation_v1_preregistration_20260521.md` (supersedes dev draft) |
 | L0 prompt + D1 arm scaffolding | **Done** | `exect_s0_s1_field_family_l0_minimal`, `l1_schema`, `deterministic_only` variant |
 | Rungs 0–3 on validation | **Done** | D1 58.4% → L0 60.0% → L1 67.7% cap-25; L1+policy 92.3% full (matches frozen anchor) — `docs/exect_s1_full_ladder_gpt_validation_v1_inspection_20260521.md` |
-| Optimizer automation thesis (rungs 4–5) | **Ready** | `docs/exect_s1_ladder_optimizer_automation_thesis_20260521.md` — L0/L1 + LabeledFewShot/Bootstrap, no v4_10/bridges in prediction path |
-| Rungs 6–7 (BootstrapRS, GEPA) | **Deferred** | After rung 4–5 inspection |
+| Optimizer automation thesis (rungs 4a–4c) | **Done** | `docs/exect_s1_ladder_optimizer_automation_inspection_20260521.md` — thesis not supported |
+| Rungs 6–7 (BootstrapRS, GEPA) | **Deferred** | Only if train-demo surface alignment fixed |
 | Test holdout confirmation | **Deferred** | Only for arms clearing dev + cap gates |
 
 ## Next Major Phases
@@ -389,11 +423,10 @@ ExECT S1 cap-25 bootstrap pilot is **complete — reject**. Do not scale bootstr
 
 ## Recommended Next Pull
 
-1. **Gan S0 validation ladder V2–V6:** program variants + cap-25 configs per validation-ladder prereg.
-2. **ExECT optimizer rungs 4–5 (Axis 3):** preregister stripped L0/L1 automation thesis before compile runs.
-3. **Gan S0 retrieval — done:** inspection `docs/gan_s0_retrieval_gpt_cap25_v1_inspection_20260521.md` (R2 hold 52%; R1/R3 reject arm).
-4. **Keep Qwen ports deferred:** port only arms that survive GPT cap-25/focused validation.
-5. **Research hygiene parallel slot:** audit run metadata for validation/repair outcomes (Literature Card 5).
+1. ~~**Cap-50 prose+expanded-builders**~~ **Done** — confirm +6pp (`docs/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md`).
+2. **Research hygiene parallel slot:** audit run metadata for validation/repair outcomes (Literature Card 5).
+3. **New ExECT S4 frequency repair variant** only if revisiting — do not rerun R1 unchanged.
+4. **Gemini replay deferred:** only run if a model-comparison narrative requires current S1/S4 Gemini evidence.
 
 ## Operational Defaults vs Open Mechanisms
 
@@ -411,6 +444,8 @@ Full table: `docs/hybrid_pipeline_mechanism_status_20260521.md`
 | --- | --- |
 | Gan verification/evidence/prompt-policy cap-25 config drafts | Changing scorer semantics or benchmark label policy |
 | ExECT full-ladder preregistration + L0/D1 scaffolding | ExECT optimizer runner changes (compile path — done) |
+| Gan canonical-format prereg + ExECT S4 frequency-repair prereg | Implementing shared frequency normalizers or scorers |
+| ExECT S4 frequency-repair prereg | Gan residual-mechanism primitive design |
 | Ladder rungs 0–3 dev configs (after L0/D1 impl) | Qwen full validation runs |
 | Research atlas and matrix regeneration after metadata edits | Qwen full validation runs |
 | Gan prompt-policy port implementation (synthesis/guardrails onto temporal+VR) | Published benchmark reproduction design |
