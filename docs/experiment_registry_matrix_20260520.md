@@ -1,9 +1,9 @@
 # Experiment Registry Matrix (Paper-Ready Export)
 
-**Generated:** 2026-05-20  
-**Source:** `docs/experiment_registry.json` (registry_rows=101)  
+**Generated:** 2026-05-21  
+**Source:** `docs/experiment_registry.json` (registry_rows=121)  
 **Filter mode:** `curated`  
-**Exported rows:** 43
+**Exported rows:** 63
 
 Grouped by `comparison_group`, then dataset, schema, model, and run scope. Compare rows only within the same comparison group and respect `metric_caveats` on each registry row.
 
@@ -46,6 +46,16 @@ Rows: 3
 | `exect_s0_s1_validation_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during, eval_only | cap25 | **exploratory** | micro_f1=95.8% | [inspection](pending_backfill) |
 | `exect_s0_s1_verify_repair_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | verify_repair | H1_post_deterministic | during, post | cap25 | **exploratory** | micro_f1=83.8% | [inspection](pending_backfill) |
 
+## exect_s1_evidence_policy_gpt_validation_v1
+
+Rows: 3
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_evidence_soft_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **reject** | micro_f1=95.1% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
+| `exect_s1_evidence_standard_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=95.8% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
+| `exect_s1_evidence_strict_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=96.3% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
+
 ## exect_s1_generalization_gpt_test_v1
 
 Rows: 1
@@ -76,6 +86,17 @@ Rows: 4
 | `exect_s1_interleaving_h1_post_bridge` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | H1_post_deterministic | during, post | full_validation | **hold** | micro_f1=92.3% | [inspection](docs/exect_s1_interleaving_gpt_validation_v2_inspection_20260520.md) |
 | `exect_s1_interleaving_l1_raw_no_bridges` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | full_validation | **exploratory** | micro_f1=68.6% | [inspection](docs/exect_s1_interleaving_gpt_validation_v2_inspection_20260520.md) |
 
+## exect_s1_interleaving_qwen_validation_v1
+
+Rows: 4
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_interleaving_h1_post_bridge_cap25_ollama` | exect_v2 | exect_s1 | qwen35b | single_pass | H1_post_deterministic | during, post | cap25 | **hold** | micro_f1=80.7% | [inspection](docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md) |
+| `exect_s1_interleaving_l1_raw_no_bridges_cap25_ollama` | exect_v2 | exect_s1 | qwen35b | single_pass | L1_llm_constrained | during | cap25 | **exploratory** | micro_f1=71.4% | [inspection](docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md) |
+| `exect_s1_interleaving_h1_post_bridge_ollama` | exect_v2 | exect_s1 | qwen35b | single_pass | H1_post_deterministic | during, post | full_validation | **hold** | micro_f1=79.0% | [inspection](docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md) |
+| `exect_s1_interleaving_l1_raw_no_bridges_ollama` | exect_v2 | exect_s1 | qwen35b | single_pass | L1_llm_constrained | during | full_validation | **exploratory** | micro_f1=66.2% | [inspection](docs/exect_s1_interleaving_qwen_validation_v1_inspection_20260520.md) |
+
 ## exect_s1_medication_pre_vocab_slice_gpt_v1
 
 Rows: 2
@@ -85,6 +106,15 @@ Rows: 2
 | `exect_s1_interleaving_h2_medication_pre_vocab_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | H2_pre_deterministic | pre, during | slice | **reject** | micro_f1=92.0% | [inspection](docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md) |
 | `exect_s1_interleaving_l1_baseline_medication_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | slice | **hold** | micro_f1=93.3% | [inspection](docs/exect_s1_medication_pre_vocab_slice_gpt_inspection_20260520.md) |
 
+## exect_s1_prompt_policy_gpt_validation_v1
+
+Rows: 2
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_prompt_policy_v4_10_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=95.8% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
+| `exect_s1_prompt_policy_v4_11_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **reject** | micro_f1=95.1% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
+
 ## exect_s1_seizure_pre_vocab_slice_gpt_v1
 
 Rows: 2
@@ -93,6 +123,15 @@ Rows: 2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `exect_s1_interleaving_h2_seizure_pre_vocab_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | H2_pre_deterministic | pre, during | slice | **reject** | micro_f1=90.3% | [inspection](docs/exect_s1_seizure_pre_vocab_slice_gpt_inspection_20260520.md) |
 | `exect_s1_interleaving_l1_baseline_seizure_slice` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | slice | **hold** | micro_f1=93.5% | [inspection](docs/exect_s1_seizure_pre_vocab_slice_gpt_inspection_20260520.md) |
+
+## exect_s1_verification_gpt_validation_v1
+
+Rows: 2
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `exect_s1_verification_single_pass_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | single_pass | L1_llm_constrained | during | cap25 | **hold** | micro_f1=95.8% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
+| `exect_s1_verification_verify_repair_cap25` | exect_v2 | exect_s1 | gpt4_1_mini | verify_repair | L1_llm_constrained | during | cap25 | **reject** | micro_f1=86.4% | [inspection](docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md) |
 
 ## exect_s4_frequency_deterministic_v1
 
@@ -144,6 +183,16 @@ Rows: 2
 | `gan_s0_direct_full_validation_guardrails` | gan_2026 | gan_s0 | qwen35b | direct_single_pass | L1_llm_constrained | during, eval_only | full_validation | **exploratory** | monthly_frequency_accuracy=55.9% | [inspection](docs/gan_s0_qwen35b_direct_full_validation_guardrails_error_analysis.md) |
 | `gan_s0_temporal_candidates_verify_repair_full_validation_guardrails` | gan_2026 | gan_s0 | qwen35b | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | full_validation | **promote** | monthly_frequency_accuracy=65.8% | [inspection](docs/gan_s0_temporal_candidates_v1_1_full_validation_decision_20260519.md) |
 
+## gan_s0_evidence_policy_gpt_validation_v1
+
+Rows: 3
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gan_s0_evidence_model_quote_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **hold** | monthly_frequency_accuracy=44.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+| `gan_s0_evidence_optional_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **reject** | monthly_frequency_accuracy=40.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+| `gan_s0_evidence_span_check_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **reject** | monthly_frequency_accuracy=55.6% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+
 ## gan_s0_hard_slice_qwen_architecture_v1
 
 Rows: 7
@@ -157,3 +206,23 @@ Rows: 7
 | `gan_s0_temporal_event_table_regression_slice_guardrails` | gan_2026 | gan_s0 | qwen35b | temporal_event_table_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | slice | **exploratory** | monthly_frequency_accuracy=100.0% | [inspection](docs/gan_s0_qwen35b_temporal_event_table_regression_slice_b2_error_analysis.md) |
 | `gan_s0_labeled_fewshot_verify_repair_regression_slice_guardrails` | gan_2026 | gan_s0 | qwen35b | verify_repair | H1_post_deterministic | during, post | slice | **exploratory** | — | [inspection](pending_backfill) |
 | `gan_s0_verify_repair_regression_slice_guardrails` | gan_2026 | gan_s0 | qwen35b | verify_repair | H1_post_deterministic | during, post | slice | **exploratory** | monthly_frequency_accuracy=46.2% | [inspection](docs/gan_s0_qwen35b_verify_repair_regression_slice_guardrails_error_analysis.md) |
+
+## gan_s0_prompt_policy_gpt_validation_v1
+
+Rows: 3
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gan_s0_prompt_policy_guardrails_port_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **hold** | monthly_frequency_accuracy=48.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+| `gan_s0_prompt_policy_synthesis_port_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **reject** | monthly_frequency_accuracy=39.1% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+| `gan_s0_prompt_policy_temporal_v1_1_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **hold** | monthly_frequency_accuracy=44.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+
+## gan_s0_verification_gpt_validation_v1
+
+Rows: 3
+
+| Experiment | Dataset | Schema | Model | Architecture | Hybrid | Interleave | Scope | Outcome | Headline metric | Decision doc |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `gan_s0_verification_direct_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | direct_single_pass | L1_llm_constrained | during | cap25 | **hold** | monthly_frequency_accuracy=44.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+| `gan_s0_verification_temporal_verify_repair_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | temporal_candidates_verify_repair | H2_pre_deterministic, H4_deterministic_first_llm_adjudicates | pre, during, post | cap25 | **hold** | monthly_frequency_accuracy=44.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |
+| `gan_s0_verification_verify_repair_cap25` | gan_2026 | gan_s0 | gpt4_1_mini | verify_repair | L1_llm_constrained | during | cap25 | **hold** | monthly_frequency_accuracy=44.0% | [inspection](docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md) |

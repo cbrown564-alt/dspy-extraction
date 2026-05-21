@@ -1748,6 +1748,177 @@ def test_exect_s1_medication_pre_vocab_slice_configs_record_contract():
     assert h2.taxonomy.hybrid_balance_class == ["H2_pre_deterministic"]
 
 
+def test_exect_s1_verification_gpt_validation_v1_configs_record_contract():
+    single_pass = load_experiment_config(
+        Path("configs/experiments/exect_s1_verification_single_pass_cap25_gpt4_1_mini.json")
+    )
+    verify_repair = load_experiment_config(
+        Path("configs/experiments/exect_s1_verification_verify_repair_cap25_gpt4_1_mini.json")
+    )
+
+    assert single_pass.taxonomy.comparison_group == "exect_s1_verification_gpt_validation_v1"
+    assert verify_repair.taxonomy.comparison_group == "exect_s1_verification_gpt_validation_v1"
+    assert single_pass.taxonomy.varied_factor == "verification_strategy"
+    assert verify_repair.taxonomy.varied_factor == "verification_strategy"
+    assert single_pass.taxonomy.program_architecture == "single_pass"
+    assert verify_repair.taxonomy.program_architecture == "verify_repair"
+    assert single_pass.program_variant == "exect_s0_s1_field_family_single_pass"
+    assert verify_repair.program_variant == "exect_s0_s1_field_family_verify_repair"
+    assert verify_repair.prompt_version == "exect_s0_s1_field_family_verify_repair_v1"
+
+
+def test_exect_s1_evidence_policy_gpt_validation_v1_configs_record_contract():
+    standard = load_experiment_config(
+        Path("configs/experiments/exect_s1_evidence_standard_cap25_gpt4_1_mini.json")
+    )
+    strict = load_experiment_config(
+        Path("configs/experiments/exect_s1_evidence_strict_cap25_gpt4_1_mini.json")
+    )
+    soft = load_experiment_config(
+        Path("configs/experiments/exect_s1_evidence_soft_cap25_gpt4_1_mini.json")
+    )
+
+    for config in (standard, strict, soft):
+        assert config.taxonomy.comparison_group == "exect_s1_evidence_policy_gpt_validation_v1"
+        assert config.taxonomy.varied_factor == "evidence_strategy"
+        assert config.max_records == 25
+
+    assert standard.taxonomy.varied_factor == "evidence_strategy"
+    assert strict.prompt_version == "exect_s0_s1_field_family_v4_10_evidence_strict_v1"
+    assert soft.prompt_version == "exect_s0_s1_field_family_v4_10_evidence_soft_v1"
+    assert standard.prompt_version == "exect_s0_s1_field_family_v4_10_label_policy"
+
+
+def test_gan_s0_verification_gpt_validation_v1_configs_record_contract():
+    direct = load_experiment_config(
+        Path("configs/experiments/gan_s0_verification_direct_cap25_gpt4_1_mini.json")
+    )
+    verify_repair = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_verification_verify_repair_cap25_gpt4_1_mini.json"
+        )
+    )
+    temporal = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_verification_temporal_verify_repair_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    for config in (direct, verify_repair, temporal):
+        assert config.taxonomy.comparison_group == "gan_s0_verification_gpt_validation_v1"
+        assert config.taxonomy.varied_factor == "verification_strategy"
+        assert config.max_records == 25
+
+    assert direct.taxonomy.program_architecture == "direct_single_pass"
+    assert verify_repair.taxonomy.program_architecture == "verify_repair"
+    assert temporal.taxonomy.program_architecture == "temporal_candidates_verify_repair"
+    assert direct.program_variant == "gan_frequency_s0_direct_single_pass"
+    assert verify_repair.prompt_version == "gan_frequency_s0_direct_verify_repair_v2_4"
+
+
+def test_gan_s0_evidence_policy_gpt_validation_v1_configs_record_contract():
+    optional = load_experiment_config(
+        Path("configs/experiments/gan_s0_evidence_optional_cap25_gpt4_1_mini.json")
+    )
+    model_quote = load_experiment_config(
+        Path("configs/experiments/gan_s0_evidence_model_quote_cap25_gpt4_1_mini.json")
+    )
+    span_check = load_experiment_config(
+        Path("configs/experiments/gan_s0_evidence_span_check_cap25_gpt4_1_mini.json")
+    )
+
+    for config in (optional, model_quote, span_check):
+        assert config.taxonomy.comparison_group == "gan_s0_evidence_policy_gpt_validation_v1"
+        assert config.taxonomy.varied_factor == "evidence_strategy"
+        assert config.program_variant == "gan_frequency_s0_temporal_candidates_verify_repair"
+
+    assert optional.prompt_version == (
+        "gan_frequency_s0_temporal_candidates_verify_repair_evidence_optional_v1"
+    )
+    assert span_check.prompt_version == (
+        "gan_frequency_s0_temporal_candidates_verify_repair_evidence_span_check_v1"
+    )
+
+
+def test_gan_s0_prompt_policy_gpt_validation_v1_configs_record_contract():
+    synthesis = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_prompt_policy_synthesis_port_cap25_gpt4_1_mini.json"
+        )
+    )
+    guardrails = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_prompt_policy_guardrails_port_cap25_gpt4_1_mini.json"
+        )
+    )
+    temporal = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_prompt_policy_temporal_v1_1_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    for config in (synthesis, guardrails, temporal):
+        assert config.taxonomy.comparison_group == "gan_s0_prompt_policy_gpt_validation_v1"
+        assert config.taxonomy.varied_factor == "prompt_policy"
+        assert config.max_records == 25
+
+    assert synthesis.prompt_version == "gan_frequency_s0_synthesis_v1_port_temporal_v1"
+    assert guardrails.prompt_version == "gan_frequency_s0_guardrails_v2_2_port_temporal_v1"
+    assert temporal.prompt_version == "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+
+
+def test_exect_s1_prompt_policy_gpt_validation_v1_configs_record_contract():
+    v4_10 = load_experiment_config(
+        Path("configs/experiments/exect_s1_prompt_policy_v4_10_cap25_gpt4_1_mini.json")
+    )
+    v4_11 = load_experiment_config(
+        Path("configs/experiments/exect_s1_prompt_policy_v4_11_cap25_gpt4_1_mini.json")
+    )
+
+    for config in (v4_10, v4_11):
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "exect_s1_prompt_policy_gpt_validation_v1"
+        assert config.taxonomy.varied_factor == "prompt_policy"
+        assert config.taxonomy.hybrid_balance_class == ["L1_llm_constrained"]
+        assert config.controls.repair_policy == "none"
+        assert config.max_records == 25
+
+    assert v4_10.prompt_version == "exect_s0_s1_field_family_v4_10_label_policy"
+    assert v4_11.prompt_version == "exect_s0_s1_field_family_v4_11_label_policy"
+
+
+def test_exect_s1_seizure_prompt_policy_v4_11_configs_record_contract():
+    gpt_cap = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_seizure_prompt_policy_v4_11_cap25_gpt4_1_mini.json"
+        )
+    )
+    qwen_cap = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_seizure_prompt_policy_v4_11_cap25_qwen35b_ollama.json"
+        )
+    )
+    qwen_full = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_seizure_prompt_policy_v4_11_full_qwen35b_ollama.json"
+        )
+    )
+
+    for config in (gpt_cap, qwen_cap, qwen_full):
+        assert config.prompt_version == "exect_s0_s1_field_family_v4_11_label_policy"
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "exect_s1_seizure_prompt_policy_qwen_v1"
+        assert config.taxonomy.varied_factor == "prompt_policy"
+        assert config.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+
+    assert gpt_cap.controls.repair_policy == "none"
+    assert gpt_cap.max_records == 25
+    assert qwen_cap.controls.repair_policy == "artifact_benchmark_bridge_only"
+    assert qwen_cap.max_records == 25
+    assert qwen_full.max_records is None
+
+
 def test_exect_s1_seizure_pre_vocab_slice_configs_record_contract():
     l1 = load_experiment_config(
         Path(

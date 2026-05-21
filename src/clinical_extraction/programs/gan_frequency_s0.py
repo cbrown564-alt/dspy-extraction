@@ -48,6 +48,18 @@ GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
 GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION = (
     "gan_frequency_s0_direct_guardrails_v2_2"
 )
+GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION = (
+    "gan_frequency_s0_synthesis_v1_port_temporal_v1"
+)
+GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION = (
+    "gan_frequency_s0_guardrails_v2_2_port_temporal_v1"
+)
+GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_verify_repair_evidence_optional_v1"
+)
+GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_verify_repair_evidence_span_check_v1"
+)
 
 GAN_FREQUENCY_SYNTHESIS_GUIDANCE = (
     "Synthesis-backed Gan frequency policy: output only canonical Gan labels; "
@@ -177,9 +189,14 @@ class GanFrequencyS0Module(dspy.Module):
 class GanFrequencyS0DirectModule(dspy.Module):
     """Gan S0 module that predicts the structured fields without a reasoning output."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.extract = dspy.Predict(GanFrequencyS0Signature)
+        signature_cls = build_gan_frequency_s0_extractor_signature(prompt_version)
+        self.extract = dspy.Predict(signature_cls)
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(note_text=note_text)
@@ -323,9 +340,17 @@ class GanFrequencyS0VerifierSignature(dspy.Signature):
 class GanFrequencyS0VerifierModule(dspy.Module):
     """Standalone verifier for Gan S0 predictions."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.verify = dspy.Predict(GanFrequencyS0VerifierSignature)
+        signature_cls = build_gan_frequency_s0_verifier_signature(
+            prompt_version,
+            temporal=False,
+        )
+        self.verify = dspy.Predict(signature_cls)
 
     def forward(
         self,
@@ -343,10 +368,21 @@ class GanFrequencyS0VerifierModule(dspy.Module):
 class GanFrequencyS0VerifyRepairModule(dspy.Module):
     """Gan S0 module that extracts then verifies/repairs the prediction."""
 
-    def __init__(self, extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT) -> None:
+    def __init__(
+        self,
+        extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.extractor = build_gan_s0_module(extractor_variant)
-        self.verifier = GanFrequencyS0VerifierModule()
+        extractor_prompt_version = resolve_gan_frequency_s0_extractor_prompt_version(
+            prompt_version
+        )
+        self.extractor = build_gan_s0_module(
+            extractor_variant,
+            prompt_version=extractor_prompt_version,
+        )
+        self.verifier = GanFrequencyS0VerifierModule(prompt_version=prompt_version)
 
     def forward(self, note_text: str) -> dspy.Prediction:
         initial = self.extractor(note_text=note_text)
@@ -398,12 +434,149 @@ class GanFrequencyS0TemporalVerifierSignature(GanFrequencyS0VerifierSignature):
     )
 
 
+GAN_FREQUENCY_S0_GUARDRAILS_PORT_EXTRACTOR_ADDENDUM = """
+    Prompt policy (guardrails port on temporal verify-repair):
+    Arithmetic and temporal guardrails:
+    - Do not invent monthly rates without explicit support (e.g. one seizure in
+      three weeks → 1 per 3 week, not 3 per month).
+    - Apply the 6-month seizure-free threshold before labeling seizure free.
+    - For year-to-date counts, use months elapsed since January as denominator.
+"""
+
+GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_ADDENDUM = """
+    Evidence policy (optional quote; Gan label policy unchanged):
+    - evidence_text may be null when the canonical label is still note-supported.
+    - Prefer an exact contiguous quote when one is readily available.
+"""
+
+GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_VERIFIER_ADDENDUM = """
+    Evidence policy (span-checked quote; Gan label policy unchanged):
+    - Reject or repair predictions whose final_evidence is not an exact contiguous
+      substring of note_text.
+    - On confirm, require initial_evidence to be note-supported when present.
+"""
+
+
+def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
+    if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
+        return GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
+        return GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION
+    return "gan_frequency_s0_v1"
+
+
+def resolve_gan_frequency_s0_extractor_prompt_version(
+    prompt_version: str,
+) -> str:
+    if prompt_version in {
+        GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+        "gan_frequency_s0_direct_verify_repair_v2",
+    }:
+        return GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION
+    return prompt_version
+
+
+def build_gan_frequency_s0_extractor_signature(
+    prompt_version: str = GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
+) -> type[GanFrequencyS0Signature]:
+    if prompt_version == GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION:
+        doc = (
+            "Extract the Gan seizure-frequency label and supporting evidence from a "
+            "clinical note.\n\n    /no_think\n    Do not use hidden reasoning. Emit "
+            "only the requested output fields.\n\n    "
+            f"{GAN_FREQUENCY_SYNTHESIS_GUIDANCE}\n    - evidence_text must be an exact "
+            "contiguous quote from the note when provided."
+        )
+        return type(
+            "GanFrequencyS0SynthesisPortSignature",
+            (GanFrequencyS0Signature,),
+            {"__doc__": doc},
+        )
+    doc = GanFrequencyS0Signature.__doc__ or ""
+    if prompt_version == GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION:
+        doc = doc + GAN_FREQUENCY_S0_GUARDRAILS_PORT_EXTRACTOR_ADDENDUM
+        return type(
+            "GanFrequencyS0GuardrailsPortSignature",
+            (GanFrequencyS0Signature,),
+            {"__doc__": doc},
+        )
+    if prompt_version in {
+        GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
+    }:
+        doc = doc + GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_ADDENDUM
+        return type(
+            "GanFrequencyS0EvidenceOptionalExtractorSignature",
+            (GanFrequencyS0Signature,),
+            {"__doc__": doc},
+        )
+    if prompt_version in {
+        GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION,
+        "gan_frequency_s0_direct_verify_repair_v2",
+        "gan_frequency_s0_v1",
+    }:
+        return GanFrequencyS0Signature
+    raise ValueError(f"Unsupported Gan S0 extractor prompt version: {prompt_version!r}")
+
+
+def build_gan_frequency_s0_verifier_signature(
+    prompt_version: str = GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+    *,
+    temporal: bool = False,
+) -> type[GanFrequencyS0VerifierSignature]:
+    base_cls = (
+        GanFrequencyS0TemporalVerifierSignature
+        if temporal
+        else GanFrequencyS0VerifierSignature
+    )
+    doc = base_cls.__doc__ or ""
+    if prompt_version == GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION:
+        doc = doc + GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_VERIFIER_ADDENDUM
+        name = (
+            "GanFrequencyS0TemporalEvidenceSpanCheckVerifierSignature"
+            if temporal
+            else "GanFrequencyS0EvidenceSpanCheckVerifierSignature"
+        )
+        return type(name, (base_cls,), {"__doc__": doc})
+    if prompt_version == GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_PROMPT_VERSION:
+        doc = doc + GAN_FREQUENCY_S0_EVIDENCE_OPTIONAL_ADDENDUM
+        name = (
+            "GanFrequencyS0TemporalEvidenceOptionalVerifierSignature"
+            if temporal
+            else "GanFrequencyS0EvidenceOptionalVerifierSignature"
+        )
+        return type(name, (base_cls,), {"__doc__": doc})
+    if prompt_version in {
+        GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION,
+        GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION,
+        "gan_frequency_s0_direct_verify_repair_v2",
+    }:
+        return base_cls
+    raise ValueError(f"Unsupported Gan S0 verifier prompt version: {prompt_version!r}")
+
+
 class GanFrequencyS0TemporalVerifierModule(dspy.Module):
     """Verifier that receives deterministic temporal-candidate structure."""
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.verify = dspy.Predict(GanFrequencyS0TemporalVerifierSignature)
+        signature_cls = build_gan_frequency_s0_verifier_signature(
+            prompt_version,
+            temporal=True,
+        )
+        self.verify = dspy.Predict(signature_cls)
 
     def forward(
         self,
@@ -423,10 +596,22 @@ class GanFrequencyS0TemporalVerifierModule(dspy.Module):
 class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
     """Direct extraction plus temporal-candidate-aware verify/repair."""
 
-    def __init__(self, extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT) -> None:
+    def __init__(
+        self,
+        extractor_variant: str = GAN_FREQUENCY_S0_DIRECT_VARIANT,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
+    ) -> None:
         super().__init__()
-        self.extractor = build_gan_s0_module(extractor_variant)
-        self.verifier = GanFrequencyS0TemporalVerifierModule()
+        self.prompt_version = prompt_version
+        extractor_prompt_version = resolve_gan_frequency_s0_extractor_prompt_version(
+            prompt_version
+        )
+        self.extractor = build_gan_s0_module(
+            extractor_variant,
+            prompt_version=extractor_prompt_version,
+        )
+        self.verifier = GanFrequencyS0TemporalVerifierModule(prompt_version=prompt_version)
 
     def forward(self, note_text: str) -> dspy.Prediction:
         from clinical_extraction.gan.temporal_candidates import (
@@ -450,6 +635,13 @@ class GanFrequencyS0TemporalCandidatesVerifyRepairModule(dspy.Module):
             verified=verified,
             candidates=candidates,
         )
+        if self.prompt_version == GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION:
+            verified = _apply_evidence_span_check_guard(
+                note_text,
+                verified,
+                initial_label=initial.seizure_frequency_number,
+                initial_evidence=initial.evidence_text,
+            )
         return dspy.Prediction(
             seizure_frequency_number=verified.final_label,
             evidence_text=verified.final_evidence,
@@ -1371,6 +1563,8 @@ def compile_gan_s0_module_gepa(
 
 def build_gan_s0_module(
     program_variant: str,
+    *,
+    prompt_version: str | None = None,
 ) -> (
     GanFrequencyS0Module
     | GanFrequencyS0DirectModule
@@ -1379,14 +1573,19 @@ def build_gan_s0_module(
     | GanFrequencyS0TemporalEventTableVerifyRepairModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
+    resolved_prompt_version = prompt_version or default_gan_frequency_s0_prompt_version(
+        program_variant
+    )
     if program_variant == GAN_FREQUENCY_S0_VARIANT:
         return GanFrequencyS0Module()
     if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
-        return GanFrequencyS0DirectModule()
+        return GanFrequencyS0DirectModule(prompt_version=resolved_prompt_version)
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
-        return GanFrequencyS0VerifyRepairModule()
+        return GanFrequencyS0VerifyRepairModule(prompt_version=resolved_prompt_version)
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
-        return GanFrequencyS0TemporalCandidatesVerifyRepairModule()
+        return GanFrequencyS0TemporalCandidatesVerifyRepairModule(
+            prompt_version=resolved_prompt_version
+        )
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT:
         return GanFrequencyS0TemporalEventTableVerifyRepairModule()
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
@@ -1455,6 +1654,46 @@ def _seizure_free_window_in_months(label: str) -> float | None:
     if unit == "year":
         return count * 12
     return None
+
+
+def _apply_evidence_span_check_guard(
+    note_text: str,
+    verified: dspy.Prediction,
+    *,
+    initial_label: str | None,
+    initial_evidence: str | None,
+) -> dspy.Prediction:
+    """Deterministic post-verifier guard for span-checked evidence policy arms."""
+    final_label = verified.final_label
+    if final_label in (None, "no seizure frequency reference"):
+        return verified
+    feedback = _evidence_policy_feedback(
+        gold_label=final_label,
+        predicted_evidence=verified.final_evidence,
+        note_text=note_text,
+    )
+    if feedback is None:
+        return verified
+    if (
+        isinstance(initial_evidence, str)
+        and initial_evidence.strip() in note_text
+        and initial_label not in (None, "no seizure frequency reference")
+    ):
+        return dspy.Prediction(
+            final_label=initial_label,
+            final_evidence=initial_evidence,
+            decision="confirm",
+            reason=(
+                "Evidence span-check guard preserved initial prediction: "
+                f"{feedback}"
+            ),
+        )
+    return dspy.Prediction(
+        final_label=None,
+        final_evidence=None,
+        decision="abstain",
+        reason=f"Evidence span-check guard abstained: {feedback}",
+    )
 
 
 def _apply_temporal_verifier_guards(

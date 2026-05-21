@@ -76,14 +76,15 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT,
     EXECT_S0_S1_FIELD_FAMILIES,
-    EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
-    EXECT_S0_S1_POLICY_EXAMPLES,
     EXECT_S0_S1_PROMPT_VERSION,
     EXECT_S0_S1_SECTION_AWARE_VARIANT,
     EXECT_S0_S1_VARIANT,
+    EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
     build_exect_s0_s1_module,
     exect_s0_s1_run_metadata,
     predict_exect_records,
+    resolve_exect_s0_s1_extraction_prompt_version,
+    resolve_exect_s0_s1_label_policy,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_SYNTHESIS_GUIDANCE,
@@ -205,7 +206,11 @@ def main(argv: list[str] | None = None) -> int:
         encoding="utf-8",
     )
 
-    module = _build_module(config.dataset, config.program_variant)
+    module = _build_module(
+        config.dataset,
+        config.program_variant,
+        prompt_version=config.prompt_version,
+    )
     run_started = perf_counter()
     compile_duration_seconds: float | None = None
 
@@ -330,9 +335,14 @@ def _load_records_by_id(dataset: str) -> dict[str, Any]:
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
 
-def _build_module(dataset: str, program_variant: str) -> dspy.Module:
+def _build_module(
+    dataset: str,
+    program_variant: str,
+    *,
+    prompt_version: str,
+) -> dspy.Module:
     if dataset == "gan_2026":
-        return build_gan_s0_module(program_variant)
+        return build_gan_s0_module(program_variant, prompt_version=prompt_version)
     if dataset == "exect_v2":
         if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return build_exect_s4_module(program_variant)
@@ -340,7 +350,7 @@ def _build_module(dataset: str, program_variant: str) -> dspy.Module:
             return build_exect_s3_module(program_variant)
         if program_variant == EXECT_S2_VARIANT:
             return build_exect_s2_module(program_variant)
-        return build_exect_s0_s1_module(program_variant)
+        return build_exect_s0_s1_module(program_variant, prompt_version=prompt_version)
     raise SystemExit(f"Unsupported dataset: {dataset!r}")
 
 
@@ -491,6 +501,11 @@ def _prompts_data(
         if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT:
             module_name = "ExectS0S1DiagnosisRecallProbeModule"
             predictor_name = "dspy.ChainOfThought + dspy.Predict"
+        elif program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT:
+            module_name = "ExectS0S1VerifyRepairModule"
+            predictor_name = (
+                "dspy.ChainOfThought (extract) + dspy.ChainOfThought (verify/repair)"
+            )
         elif program_variant == EXECT_S0_S1_VARIANT:
             module_name = "ExectS0S1FieldFamilyModule"
             predictor_name = "dspy.ChainOfThought"
@@ -500,24 +515,37 @@ def _prompts_data(
                 "dspy.ChainOfThought (diagnosis) + dspy.ChainOfThought (seizure) + "
                 "dspy.ChainOfThought (medication)"
             )
+        resolved_prompt_version = prompt_version or EXECT_S0_S1_PROMPT_VERSION
+        extraction_prompt_version = resolve_exect_s0_s1_extraction_prompt_version(
+            resolved_prompt_version
+        )
+        label_policy_guidance, label_policy_examples = resolve_exect_s0_s1_label_policy(
+            resolved_prompt_version
+        )
         return {
             "signature": (
                 "ExectS0S1FieldFamilySignature + ExectS0S1DiagnosisRecallSignature"
                 if program_variant == EXECT_S0_S1_DIAGNOSIS_RECALL_VARIANT
                 else (
-                    "ExectS0S1FieldFamilySignature"
-                    if program_variant == EXECT_S0_S1_VARIANT
-                    else "ExectS0S1DiagnosisSignature + "
-                    "ExectS0S1SeizureTypeSignature + ExectS0S1MedicationSignature"
+                    "ExectS0S1FieldFamilySignature + ExectS0S1VerifierSignature"
+                    if program_variant == EXECT_S0_S1_VERIFY_REPAIR_VARIANT
+                    else (
+                        "ExectS0S1FieldFamilySignature"
+                        if program_variant == EXECT_S0_S1_VARIANT
+                        else "ExectS0S1DiagnosisSignature + "
+                        "ExectS0S1SeizureTypeSignature + "
+                        "ExectS0S1MedicationSignature"
+                    )
                 )
             ),
             "module": module_name,
             "predictor": predictor_name,
             "program_variant": program_variant,
-            "prompt_version": prompt_version or EXECT_S0_S1_PROMPT_VERSION,
+            "prompt_version": resolved_prompt_version,
+            "extraction_prompt_version": extraction_prompt_version,
             "field_families": EXECT_S0_S1_FIELD_FAMILIES,
-            "label_policy_guidance": EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
-            "label_policy_examples": EXECT_S0_S1_POLICY_EXAMPLES,
+            "label_policy_guidance": label_policy_guidance,
+            "label_policy_examples": label_policy_examples,
             "structured_output_strategy": structured_output_strategy,
         }
     raise SystemExit(f"Unsupported dataset: {dataset!r}")

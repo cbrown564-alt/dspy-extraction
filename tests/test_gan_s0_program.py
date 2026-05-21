@@ -24,6 +24,13 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
+    GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
+    _apply_evidence_span_check_guard,
+    build_gan_frequency_s0_extractor_signature,
+    build_gan_frequency_s0_verifier_signature,
     build_gan_s0_module,
     compile_gan_s0_module,
     compile_gan_s0_module_gepa,
@@ -1115,6 +1122,50 @@ def test_gan_frequency_s0_run_metadata_accepts_direct_variant():
     )
 
     assert metadata.program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT
+
+
+def test_build_gan_frequency_s0_extractor_signature_ports_policy_versions():
+    synthesis = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION
+    )
+    guardrails = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_GUARDRAILS_PORT_TEMPORAL_PROMPT_VERSION
+    )
+
+    assert synthesis is not GanFrequencyS0Signature
+    assert "Synthesis-backed Gan frequency policy" in (synthesis.__doc__ or "")
+    assert "Arithmetic and temporal guardrails" in (guardrails.__doc__ or "")
+
+
+def test_build_gan_s0_module_accepts_prompt_version_for_temporal_verify_repair():
+    module = build_gan_s0_module(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+        prompt_version=GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION,
+    )
+
+    assert isinstance(module, GanFrequencyS0TemporalCandidatesVerifyRepairModule)
+    assert (
+        module.prompt_version
+        == GAN_FREQUENCY_S0_EVIDENCE_SPAN_CHECK_PROMPT_VERSION
+    )
+
+
+def test_apply_evidence_span_check_guard_preserves_note_supported_initial():
+    verified = dspy.Prediction(
+        final_label="2 per 3 month",
+        final_evidence="invented quote",
+        decision="repair",
+        reason="bad quote",
+    )
+    guarded = _apply_evidence_span_check_guard(
+        "She had two seizures in the last three months.",
+        verified,
+        initial_label="2 per 3 month",
+        initial_evidence="two seizures in the last three months",
+    )
+
+    assert guarded.decision == "confirm"
+    assert guarded.final_evidence == "two seizures in the last three months"
 
 
 def test_gan_s0_verifier_signature_documents_v2_4_policy_guardrails():

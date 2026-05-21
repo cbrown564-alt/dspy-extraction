@@ -1,6 +1,6 @@
 {
   "registry_version": 1,
-  "generated_on": "2026-05-20",
+  "generated_on": "2026-05-21",
   "row_grain": "one row per distinct metric-bearing experiment_id from local runs",
   "source_artifacts": [
     "runs/*/config.json",
@@ -15,7 +15,7 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 82,
+  "row_count": 121,
   "experiments": [
     {
       "experiment_id": "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini",
@@ -8926,6 +8926,1436 @@
         "exect_s4_temporality_deterministic_v1"
       ],
       "comparison_caveat": "Compare only within exect_s4_temporality_deterministic_v1; full validation split (40)."
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_prompt_policy_v4_10_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_prompt_policy_gpt_validation_v1",
+      "varied_factor": "prompt_policy",
+      "canonical_run_id": "exect_s1_prompt_policy_v4_10_cap25_gpt4_1_mini_20260520T232829Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Prompt-policy group: v4_10 production anchor; inline benchmark bridges (repair_policy none)."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_prompt_policy_v4_10_cap25_gpt4_1_mini_20260520T232829Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9575757575757576
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "notes": "Hold: GPT cap-25 anchor at 95.8% micro; matches historical v4_10 cap-25 reference.",
+      "comparison_caveat": "Varied prompt_policy only (v4_10 vs v4_11); bridges, verification, and scorer fixed.",
+      "comparison_groups": [
+        "exect_s1_prompt_policy_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_prompt_policy_v4_11_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_prompt_policy_gpt_validation_v1",
+      "varied_factor": "prompt_policy",
+      "canonical_run_id": "exect_s1_prompt_policy_v4_11_cap25_gpt4_1_mini_20260520T232833Z",
+      "outcome": "reject",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Prompt-policy group: v4_11 seizure-focused addendum; null/negative cap-25 signal on GPT."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_prompt_policy_v4_11_cap25_gpt4_1_mini_20260520T232833Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9512195121951219
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_11_label_policy",
+      "notes": "Reject: -0.7pp micro, -1.5pp seizure F1 vs v4_10; do not run GPT full validation.",
+      "comparison_caveat": "Varied prompt_policy only (v4_10 vs v4_11); bridges, verification, and scorer fixed.",
+      "comparison_groups": [
+        "exect_s1_prompt_policy_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_verification_single_pass_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_verification_gpt_validation_v1",
+      "varied_factor": "verification_strategy",
+      "canonical_run_id": "exect_s1_verification_single_pass_cap25_gpt4_1_mini_20260520T232837Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Verification group: single-pass anchor; repair_policy none with inline bridges."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_verification_single_pass_cap25_gpt4_1_mini_20260520T232837Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9575757575757576
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "notes": "Hold: verification-group anchor; metric-identical to v4_10 prompt-policy baseline on same 25 records.",
+      "comparison_caveat": "Varied verification_strategy only (none vs verify_repair); v4_10 extraction prompt fixed.",
+      "comparison_groups": [
+        "exect_s1_verification_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation",
+        "repair",
+        "verification"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_verification_verify_repair_cap25_gpt4_1_mini",
+      "program_architecture": "verify_repair",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "verify_repair",
+      "comparison_group": "exect_s1_verification_gpt_validation_v1",
+      "varied_factor": "verification_strategy",
+      "canonical_run_id": "exect_s1_verification_verify_repair_cap25_gpt4_1_mini_20260520T232841Z",
+      "outcome": "reject",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Verification group: confirm-first verify-repair; doubles model calls vs single-pass.",
+        "Deterministic verifier guards block add-only diagnosis and medication labels."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_verification_verify_repair_cap25_gpt4_1_mini_20260520T232841Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.8641975308641975
+      },
+      "prompt_versions": "exect_s0_s1_field_family_verify_repair_v1",
+      "notes": "Reject: -9.4pp micro vs single-pass; do not run full validation.",
+      "comparison_caveat": "Varied verification_strategy only (none vs verify_repair); v4_10 extraction via verify_repair mapping.",
+      "comparison_groups": [
+        "exect_s1_verification_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_evidence_standard_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_evidence_policy_gpt_validation_v1",
+      "varied_factor": "evidence_strategy",
+      "canonical_run_id": "exect_s1_evidence_standard_cap25_gpt4_1_mini_20260520T232844Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Evidence group: standard v4_10 contiguous-quote policy anchor."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_evidence_standard_cap25_gpt4_1_mini_20260520T232844Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9575757575757576
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
+      "notes": "Hold: evidence-group anchor; no change to production evidence policy.",
+      "comparison_caveat": "Varied evidence_strategy only (standard vs strict vs soft addenda on v4_10 label policy).",
+      "comparison_groups": [
+        "exect_s1_evidence_policy_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_evidence_strict_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "verified_quote",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_evidence_policy_gpt_validation_v1",
+      "varied_factor": "evidence_strategy",
+      "canonical_run_id": "exect_s1_evidence_strict_cap25_gpt4_1_mini_20260520T232848Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Evidence group: strict evidence-only signature addendum on v4_10 label policy."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_evidence_strict_cap25_gpt4_1_mini_20260520T232848Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9634146341463414
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_evidence_strict_v1",
+      "notes": "Hold (null): +0.6pp micro vs standard but no evidence diagnostic gain; not promotable.",
+      "comparison_caveat": "Varied evidence_strategy only (standard vs strict vs soft addenda on v4_10 label policy).",
+      "comparison_groups": [
+        "exect_s1_evidence_policy_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "clinical_field_extraction",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint"
+      ],
+      "context_strategy": "full_note",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/exect_s1_gpt_factor_isolation_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "exect_s1_evidence_soft_cap25_gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_policy_prompt",
+      "verification_strategy": "none",
+      "comparison_group": "exect_s1_evidence_policy_gpt_validation_v1",
+      "varied_factor": "evidence_strategy",
+      "canonical_run_id": "exect_s1_evidence_soft_cap25_gpt4_1_mini_20260520T233326Z",
+      "outcome": "reject",
+      "metric_caveats": [
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Evidence metrics are diagnostic and not part of benchmark-facing field-family F1.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction.",
+        "Evidence group: soft evidence-only signature addendum on v4_10 label policy."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_evidence_soft_cap25_gpt4_1_mini_20260520T233326Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9512195121951219
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_10_evidence_soft_v1",
+      "notes": "Reject: -3.1pp seizure F1, -4.4pp evidence support vs standard.",
+      "comparison_caveat": "Varied evidence_strategy only (standard vs strict vs soft addenda on v4_10 label policy).",
+      "comparison_groups": [
+        "exect_s1_evidence_policy_gpt_validation_v1"
+      ]
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_verification_direct_cap25_gpt4_1_mini",
+      "program_architecture": "direct_single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "context_strategy": "full_note",
+      "comparison_group": "gan_s0_verification_gpt_validation_v1",
+      "varied_factor": "verification_strategy",
+      "canonical_run_id": "gan_s0_verification_direct_cap25_gpt4_1_mini_20260520T233555Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_verification_gpt_validation_v1; varied_factor verification_strategy.",
+        "Compare to verify-repair and temporal-candidates verify-repair arms on matched cap-25 records only.",
+        "See docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_verification_direct_cap25_gpt4_1_mini_20260520T233555Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_direct_guardrails_v2_2",
+      "notes": "Hold: verification-group anchor; 44% monthly on cap-25.",
+      "comparison_caveat": "Varied verification_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_verification_gpt_validation_v1"
+      ],
+      "verification_strategy": "none",
+      "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_verification_verify_repair_cap25_gpt4_1_mini",
+      "program_architecture": "verify_repair",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during"
+      ],
+      "context_strategy": "full_note",
+      "comparison_group": "gan_s0_verification_gpt_validation_v1",
+      "varied_factor": "verification_strategy",
+      "canonical_run_id": "gan_s0_verification_verify_repair_cap25_gpt4_1_mini_20260520T233559Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_verification_gpt_validation_v1; varied_factor verification_strategy.",
+        "Verify-repair doubles model calls; latency not comparable to direct-only.",
+        "See docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_verification_verify_repair_cap25_gpt4_1_mini_20260520T233559Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.56,
+          "pragmatic_category_accuracy": 0.68,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_direct_verify_repair_v2_4",
+      "notes": "Hold: null vs direct on monthly (44%); 8 label diffs.",
+      "comparison_caveat": "Varied verification_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_verification_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_verification_temporal_verify_repair_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_verification_gpt_validation_v1",
+      "varied_factor": "verification_strategy",
+      "canonical_run_id": "gan_s0_verification_temporal_verify_repair_cap25_gpt4_1_mini_20260520T233701Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_verification_gpt_validation_v1; varied_factor verification_strategy.",
+        "Temporal candidates are deterministic diagnostic hints; gan_frequency_deterministic_v1 scoring is unchanged.",
+        "Verify-repair doubles model calls; latency not comparable to direct-only.",
+        "See docs/gan_s0_verification_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_verification_temporal_verify_repair_cap25_gpt4_1_mini_20260520T233701Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+      "notes": "Hold: identical labels to direct on cap-25; null factor.",
+      "comparison_caveat": "Varied verification_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_verification_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_evidence_model_quote_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_evidence_policy_gpt_validation_v1",
+      "varied_factor": "evidence_strategy",
+      "canonical_run_id": "gan_s0_evidence_model_quote_cap25_gpt4_1_mini_20260520T233707Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_evidence_policy_gpt_validation_v1; varied_factor evidence_strategy.",
+        "Should reproduce promoted temporal+VR band on cap-25 before interpreting other arms.",
+        "See docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_evidence_model_quote_cap25_gpt4_1_mini_20260520T233707Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+      "notes": "Hold: evidence-group reference; 44% monthly.",
+      "comparison_caveat": "Varied evidence_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_evidence_policy_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_evidence_optional_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_evidence_policy_gpt_validation_v1",
+      "varied_factor": "evidence_strategy",
+      "canonical_run_id": "gan_s0_evidence_optional_cap25_gpt4_1_mini_20260520T233713Z",
+      "outcome": "reject",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_evidence_policy_gpt_validation_v1; varied_factor evidence_strategy.",
+        "Evidence support is diagnostic unless inspection promotes an evidence policy.",
+        "See docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_evidence_optional_cap25_gpt4_1_mini_20260520T233713Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.4,
+        "secondary": {
+          "purist_category_accuracy": 0.56,
+          "pragmatic_category_accuracy": 0.76,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_evidence_optional_v1",
+      "notes": "Reject: -4pp monthly vs model-quote; no evidence gain.",
+      "comparison_caveat": "Varied evidence_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_evidence_policy_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "absent"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation",
+        "temporal_candidate_generation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_evidence_span_check_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_evidence_policy_gpt_validation_v1",
+      "varied_factor": "evidence_strategy",
+      "canonical_run_id": "gan_s0_evidence_span_check_cap25_gpt4_1_mini_20260520T233837Z",
+      "outcome": "reject",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_evidence_policy_gpt_validation_v1; varied_factor evidence_strategy.",
+        "Deterministic span-check guard is diagnostic; gan_frequency_deterministic_v1 scoring is unchanged.",
+        "See docs/gan_s0_evidence_policy_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_evidence_span_check_cap25_gpt4_1_mini_20260520T233837Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.5555555555555556,
+        "secondary": {
+          "purist_category_accuracy": 0.6111111111111112,
+          "pragmatic_category_accuracy": 0.7222222222222222,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 0.72
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_evidence_span_check_v1",
+      "notes": "Reject: 7/25 abstentions; 55.6% monthly on 18 valid only.",
+      "comparison_caveat": "Varied evidence_strategy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_evidence_policy_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_prompt_policy_temporal_v1_1_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_prompt_policy_gpt_validation_v1",
+      "varied_factor": "prompt_policy",
+      "canonical_run_id": "gan_s0_prompt_policy_temporal_v1_1_cap25_gpt4_1_mini_20260520T233934Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_prompt_policy_gpt_validation_v1; varied_factor prompt_policy.",
+        "Should match promoted temporal+VR cap-25 band before interpreting ported prompts.",
+        "See docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_prompt_policy_temporal_v1_1_cap25_gpt4_1_mini_20260520T233934Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.44,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_verify_repair_v1_1",
+      "notes": "Hold: prompt-policy reference; 44% monthly.",
+      "comparison_caveat": "Varied prompt_policy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_prompt_policy_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_prompt_policy_synthesis_port_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_prompt_policy_gpt_validation_v1",
+      "varied_factor": "prompt_policy",
+      "canonical_run_id": "gan_s0_prompt_policy_synthesis_port_cap25_gpt4_1_mini_20260520T233941Z",
+      "outcome": "reject",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_prompt_policy_gpt_validation_v1; varied_factor prompt_policy.",
+        "Architecture, evidence policy, split, model, and scorer fixed versus other arms.",
+        "See docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_prompt_policy_synthesis_port_cap25_gpt4_1_mini_20260520T233941Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.391304347826087,
+        "secondary": {
+          "purist_category_accuracy": 0.5652173913043478,
+          "pragmatic_category_accuracy": 0.782608695652174,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 0.92
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_synthesis_v1_port_temporal_v1",
+      "notes": "Reject: 39.1% monthly; 92% schema.",
+      "comparison_caveat": "Varied prompt_policy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_prompt_policy_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote"
+    },
+    {
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "deterministic_roles": [
+        "benchmark_label_policy",
+        "evidence_span_guard",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "evidence_quote_generation",
+        "frequency_interpretation",
+        "repair",
+        "verification"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "controlled_vocabulary",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation",
+        "temporal_rules"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction",
+        "soft_hint"
+      ],
+      "normalization_strategy": "list_constrained",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "run_scope": "cap25",
+      "decision_doc": "docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md",
+      "config_paths": null,
+      "experiment_id": "gan_s0_prompt_policy_guardrails_port_cap25_gpt4_1_mini",
+      "program_architecture": "temporal_candidates_verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "context_strategy": "candidate_injected",
+      "comparison_group": "gan_s0_prompt_policy_gpt_validation_v1",
+      "varied_factor": "prompt_policy",
+      "canonical_run_id": "gan_s0_prompt_policy_guardrails_port_cap25_gpt4_1_mini_20260520T234051Z",
+      "outcome": "hold",
+      "metric_caveats": [
+        "Clean comparison group gan_s0_prompt_policy_gpt_validation_v1; varied_factor prompt_policy.",
+        "Architecture, evidence policy, split, model, and scorer fixed versus other arms.",
+        "See docs/gan_s0_prompt_policy_gpt_validation_v1_preregistration_20260521.md.",
+        "Clean GPT factor-isolation group; compare only within the named comparison_group.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "Gan primary gold is check__Seizure Frequency Number.seizure_frequency_number[0].",
+        "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing.",
+        "Evidence metrics are diagnostic source-grounding checks.",
+        "This config targets the fixed Gan synthetic validation split and must not be described as published Gan benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_prompt_policy_guardrails_port_cap25_gpt4_1_mini_20260520T234051Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.48,
+        "secondary": {
+          "purist_category_accuracy": 0.64,
+          "pragmatic_category_accuracy": 0.72,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_guardrails_v2_2_port_temporal_v1",
+      "notes": "Hold: +4pp monthly vs v1.1 (48%); error-read before full.",
+      "comparison_caveat": "Varied prompt_policy only; see docs/gan_s0_lane_a_gpt_cap25_inspection_20260521.md.",
+      "comparison_groups": [
+        "gan_s0_prompt_policy_gpt_validation_v1"
+      ],
+      "verification_strategy": "verify_repair",
+      "evidence_strategy": "model_quote"
     }
   ]
 }
