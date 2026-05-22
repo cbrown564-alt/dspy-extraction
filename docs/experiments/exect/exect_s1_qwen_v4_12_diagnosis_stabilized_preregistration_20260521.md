@@ -1,7 +1,7 @@
 # ExECT S1 Qwen v4.12 Diagnosis-Stabilized Prompt - Preregistration
 
 Date: 2026-05-21  
-Status: Preregistered, not yet run  
+Status: Preregistered; cap-25 completed 2026-05-21 (reject arm)  
 Parent: `exect_s1_residual_error_analysis_20260521.md` and held v4.11 inspection  
 Comparison group: `exect_s1_qwen_diagnosis_stabilized_v1`
 

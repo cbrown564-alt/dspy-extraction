@@ -60,6 +60,8 @@ For research-heavy work, add:
 - `Questions`: unresolved decisions that change implementation.
 - `Experiments`: runs or ablations with hypotheses and metrics.
 
+**Canonical board path:** write and refresh **`docs/planning/kanban_plan.md` only**. Do not create or restore a top-level `docs/kanban_plan.md` redirect.
+
 ## Card Format
 
 Each card should include:

@@ -552,6 +552,11 @@ def test_exect_s0_s1_section_aware_cap25_config_keeps_non_architecture_controls_
             "gan_s0_smoke_gemini3_flash",
         ),
         (
+            "gan_s0_smoke_claude_sonnet_4_6_anthropic.json",
+            "configs/models/gan_s0_claude_sonnet_4_6_anthropic.json",
+            "gan_s0_smoke_claude_sonnet_4_6_anthropic",
+        ),
+        (
             "gan_s0_smoke_qwen35b_ollama.json",
             "configs/models/gan_s0_qwen35b_ollama.json",
             "gan_s0_smoke_qwen35b_ollama",
@@ -1069,6 +1074,44 @@ def test_gan_s0_expanded_builders_prose_full_validation_gemini31_flash_lite_conf
     assert "68.1%" in " ".join(config.metric_caveats)
 
 
+def test_gan_s0_expanded_builders_prose_smoke_qwen35b_ollama_config_records_f0_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_expanded_builders_prose_smoke_qwen35b_ollama.json")
+    )
+
+    assert config.experiment_id == "gan_s0_expanded_builders_prose_smoke_qwen35b_ollama"
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.max_records == 3
+    assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert config.taxonomy.comparison_group == "gan_s0_expanded_builders_prose_model_comparison_v1"
+    assert config.taxonomy.varied_factor == "model_track"
+    assert "qwen35b_ollama" in str(config.model_config_path)
+
+
+def test_gan_s0_expanded_builders_prose_cap25_qwen35b_ollama_config_records_f0_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_expanded_builders_prose_cap25_qwen35b_ollama.json")
+    )
+
+    assert config.experiment_id == "gan_s0_expanded_builders_prose_cap25_qwen35b_ollama"
+    assert config.max_records == 25
+    assert config.taxonomy.implementation_variant == "cand_prose_expanded_builders_v1"
+
+
+def test_gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama_config_records_f0_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama.json")
+    )
+
+    assert config.experiment_id == "gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama"
+    assert config.model_config_path == Path("configs/models/gan_s0_qwen35b_ollama.json")
+    assert config.max_records is None
+    assert config.taxonomy.comparison_group == "gan_s0_expanded_builders_prose_model_comparison_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "094020z" in caveats
+    assert "72.6%" in " ".join(config.metric_caveats)
+
+
 def test_exect_s0_s1_smoke_gemini31_flash_lite_config_records_replay_contract():
     config = load_experiment_config(
         Path("configs/experiments/exect_s0_s1_smoke_gemini31_flash_lite.json")
@@ -1137,6 +1180,166 @@ def test_exect_s4_validation_full_gemini31_flash_lite_config_records_replay_cont
     caveats = " ".join(config.metric_caveats).lower()
     assert "071248z" in caveats
     assert "cause_bridge_k0_k1" in config.program_variant
+
+
+def test_exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic_config_records_model_suite_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic.json"
+        )
+    )
+
+    assert config.experiment_id == "exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic"
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_claude_sonnet_4_6_anthropic.json"
+    )
+    assert config.max_records is None
+    assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.taxonomy.comparison_group == "model_suite_frozen_architecture_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "080538z" in caveats
+    assert "221944z" in caveats
+
+
+def test_exect_s4_validation_full_claude_sonnet_4_6_anthropic_config_records_model_suite_contract():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s4_validation_full_claude_sonnet_4_6_anthropic.json")
+    )
+
+    assert config.experiment_id == "exect_s4_validation_full_claude_sonnet_4_6_anthropic"
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_claude_sonnet_4_6_anthropic.json"
+    )
+    assert config.max_records is None
+    assert config.program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert config.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
+    assert config.taxonomy.comparison_group == "model_suite_frozen_architecture_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "080625z" in caveats
+    assert "071248z" in caveats
+
+
+def test_gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic_config_records_model_suite_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic.json"
+        )
+    )
+
+    assert (
+        config.experiment_id
+        == "gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic"
+    )
+    assert config.model_config_path == Path(
+        "configs/models/gan_s0_claude_sonnet_4_6_anthropic.json"
+    )
+    assert config.max_records is None
+    assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
+    assert config.taxonomy.comparison_group == "model_suite_frozen_architecture_v1"
+    assert config.taxonomy.implementation_variant == "cand_prose_expanded_builders_v1"
+    caveats = " ".join(config.metric_caveats).lower()
+    assert "080527z" in caveats
+    assert "073432z" in caveats
+    assert "68.1%" in " ".join(config.metric_caveats)
+
+
+@pytest.mark.parametrize(
+    "config_path,model_config,experiment_id",
+    [
+        (
+            "configs/experiments/exect_s0_s1_validation_full_gemini3_flash.json",
+            "configs/models/gan_s0_gemini3_flash.json",
+            "exect_s0_s1_validation_full_gemini3_flash",
+        ),
+        (
+            "configs/experiments/exect_s0_s1_validation_full_gpt5_5_openai.json",
+            "configs/models/gan_s0_gpt5_5_openai.json",
+            "exect_s0_s1_validation_full_gpt5_5_openai",
+        ),
+    ],
+)
+def test_exect_s0_s1_model_suite_full_validation_configs_record_frozen_contract(
+    config_path, model_config, experiment_id
+):
+    config = load_experiment_config(Path(config_path))
+
+    assert config.experiment_id == experiment_id
+    assert config.model_config_path == Path(model_config)
+    assert config.max_records is None
+    assert config.schema_level == EXECT_S0_S1_SCHEMA_LEVEL
+    assert config.program_variant == EXECT_S0_S1_VARIANT
+    assert config.scorer_mode == EXECT_S0_S1_SCORER
+    assert config.prompt_version == EXECT_S0_S1_PROMPT_VERSION
+    assert config.taxonomy.comparison_group == "model_suite_frozen_architecture_v1"
+    assert "221944z" in " ".join(config.metric_caveats).lower()
+
+
+@pytest.mark.parametrize(
+    "config_path,model_config,experiment_id",
+    [
+        (
+            "configs/experiments/exect_s4_validation_full_gemini3_flash.json",
+            "configs/models/gan_s0_gemini3_flash.json",
+            "exect_s4_validation_full_gemini3_flash",
+        ),
+        (
+            "configs/experiments/exect_s4_validation_full_gpt5_5_openai.json",
+            "configs/models/gan_s0_gpt5_5_openai.json",
+            "exect_s4_validation_full_gpt5_5_openai",
+        ),
+    ],
+)
+def test_exect_s4_model_suite_full_validation_configs_record_frozen_contract(
+    config_path, model_config, experiment_id
+):
+    config = load_experiment_config(Path(config_path))
+
+    assert config.experiment_id == experiment_id
+    assert config.model_config_path == Path(model_config)
+    assert config.max_records is None
+    assert config.program_variant == EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT
+    assert config.scorer_mode == EXECT_S4_SCORER
+    assert config.prompt_version == EXECT_S4_PROMPT_VERSION
+    assert config.controls.repair_policy == "artifact_epilepsy_cause_k0_k1_only"
+    assert config.taxonomy.comparison_group == "model_suite_frozen_architecture_v1"
+    assert "071248z" in " ".join(config.metric_caveats).lower()
+
+
+@pytest.mark.parametrize(
+    "config_path,model_config,experiment_id",
+    [
+        (
+            "configs/experiments/gan_s0_expanded_builders_prose_full_validation_gemini3_flash.json",
+            "configs/models/gan_s0_gemini3_flash.json",
+            "gan_s0_expanded_builders_prose_full_validation_gemini3_flash",
+        ),
+        (
+            "configs/experiments/gan_s0_expanded_builders_prose_full_validation_gpt5_5_openai.json",
+            "configs/models/gan_s0_gpt5_5_openai.json",
+            "gan_s0_expanded_builders_prose_full_validation_gpt5_5_openai",
+        ),
+    ],
+)
+def test_gan_s0_f0_model_suite_full_validation_configs_record_frozen_contract(
+    config_path, model_config, experiment_id
+):
+    config = load_experiment_config(Path(config_path))
+
+    assert config.experiment_id == experiment_id
+    assert config.model_config_path == Path(model_config)
+    assert config.max_records is None
+    assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert config.prompt_version == "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
+    assert config.taxonomy.comparison_group == "model_suite_frozen_architecture_v1"
+    assert config.taxonomy.implementation_variant == "cand_prose_expanded_builders_v1"
+    assert "073432z" in " ".join(config.metric_caveats).lower()
+    assert "68.1%" in " ".join(config.metric_caveats)
 
 
 def test_gan_s0_semantic_labeled_fewshot_cap25_config_records_semantic_metric():
@@ -1543,7 +1746,7 @@ EXECT_QWEN35B_MODEL_CONFIG = Path("configs/models/exect_qwen35b_ollama.json")
             "exect_s4_smoke_qwen35b_ollama.json",
             "exect_s4_smoke_qwen35b_ollama",
             EXECT_S4_PROMPT_VERSION,
-            EXECT_S4_VARIANT,
+            EXECT_S4_L1_VARIANT,
             EXECT_S4_SCHEMA_LEVEL,
             EXECT_S4_SCORER,
             3,
@@ -1552,7 +1755,7 @@ EXECT_QWEN35B_MODEL_CONFIG = Path("configs/models/exect_qwen35b_ollama.json")
             "exect_s4_validation_cap25_qwen35b_ollama.json",
             "exect_s4_validation_cap25_qwen35b_ollama",
             EXECT_S4_PROMPT_VERSION,
-            EXECT_S4_VARIANT,
+            EXECT_S4_L1_VARIANT,
             EXECT_S4_SCHEMA_LEVEL,
             EXECT_S4_SCORER,
             25,
@@ -1561,7 +1764,7 @@ EXECT_QWEN35B_MODEL_CONFIG = Path("configs/models/exect_qwen35b_ollama.json")
             "exect_s4_validation_full_qwen35b_ollama.json",
             "exect_s4_validation_full_qwen35b_ollama",
             EXECT_S4_PROMPT_VERSION,
-            EXECT_S4_VARIANT,
+            EXECT_S4_L1_VARIANT,
             EXECT_S4_SCHEMA_LEVEL,
             EXECT_S4_SCORER,
             None,
@@ -2904,6 +3107,38 @@ def test_exect_s1_ladder_optimizer_automation_v1_configs_record_contract(
     assert config.optimizer.name == optimizer_name
     assert config.optimizer.metric_name == compile_metric
     assert config.optimizer.trainset_size == 40
+
+
+def test_exect_s1_qwen_v4_12_diagnosis_stabilized_configs_record_contract():
+    gpt_cap = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_gpt4_1_mini.json"
+        )
+    )
+    qwen_cap = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_qwen35b_ollama.json"
+        )
+    )
+    qwen_full = load_experiment_config(
+        Path(
+            "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_full_qwen35b_ollama.json"
+        )
+    )
+
+    for config in (gpt_cap, qwen_cap, qwen_full):
+        assert config.prompt_version == "exect_s0_s1_field_family_v4_12_label_policy"
+        assert config.taxonomy is not None
+        assert config.taxonomy.comparison_group == "exect_s1_qwen_diagnosis_stabilized_v1"
+        assert config.taxonomy.varied_factor == "prompt_policy"
+        assert config.taxonomy.hybrid_balance_class == ["H1_post_deterministic"]
+
+    assert gpt_cap.controls.repair_policy == "none"
+    assert gpt_cap.max_records == 25
+    assert qwen_cap.controls.repair_policy == "artifact_benchmark_bridge_only"
+    assert qwen_cap.max_records == 25
+    assert qwen_cap.model_config_path == Path("configs/models/exect_qwen35b_ollama.json")
+    assert qwen_full.max_records is None
 
 
 def test_exect_s1_seizure_prompt_policy_v4_11_configs_record_contract():

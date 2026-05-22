@@ -10,7 +10,7 @@ Use this skill for the project's **active research program** after the 2026-05-2
 Read first:
 
 - `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md` — doctrine
-- `docs/planning/kanban_plan.md` — active execution queue (implementation plan retired 2026-05-21)
+- `docs/planning/kanban_plan.md` — sole active execution queue (implementation plan retired 2026-05-21; no top-level alias)
 - `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md` — ontology (`L0`–`D1`, interleaving positions)
 - `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md` — open vs arm-reject vs operational freeze
 

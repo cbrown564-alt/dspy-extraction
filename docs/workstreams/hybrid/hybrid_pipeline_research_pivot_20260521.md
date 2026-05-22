@@ -7,7 +7,7 @@ Related:
 
 - Ontology (unchanged): `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md`
 - Prior snapshot (historical bets, not closure): `docs/workstreams/hybrid/hybrid_deterministic_placement_research_synthesis_20260521.md`
-- Operating board: `docs/planning/kanban_plan.md` (also `docs/kanban_plan.md`)
+- Operating board: `docs/planning/kanban_plan.md`
 - Retired phased archive: `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md`
 - Agent skill: `.agents/skills/hybrid-pipeline-exploration/SKILL.md`
 
@@ -200,7 +200,7 @@ Listed in `docs/experiments/exect/exect_negative_probe_synthesis_20260520.md` an
 | `hybrid_component_taxonomy_decision_20260520.md` | Ontology — still valid |
 | `hybrid_deterministic_placement_research_synthesis_20260521.md` | **Historical snapshot** of bets; read pivot for doctrine |
 | `exect_negative_probe_synthesis_20260520.md` | **Arm-repeat guardrail** — not global mechanism closure |
-| `kanban_plan.md` | **Active queue** — three-axis grids replace “closed” narrative |
+| `docs/planning/kanban_plan.md` | **Active queue** — three-axis grids replace “closed” narrative |
 | `experiment_registry.json` | Add `decision_scope` in `notes` when updating rows |
 
 ---

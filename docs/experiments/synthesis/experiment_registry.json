@@ -1,6 +1,6 @@
 {
   "registry_version": 1,
-  "generated_on": "2026-05-21",
+  "generated_on": "2026-05-22",
   "row_grain": "one row per distinct metric-bearing experiment_id from local runs",
   "source_artifacts": [
     "runs/*/config.json",
@@ -15,7 +15,7 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 177,
+  "row_count": 180,
   "experiments": [
     {
       "experiment_id": "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini",
@@ -8557,6 +8557,153 @@
       "comparison_caveat": "Varied prompt_policy only (v4_11 treatment vs frozen v4_10 Qwen H1 baseline); H1 post-bridge path on Qwen arms."
     },
     {
+      "experiment_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_gpt4_1_mini",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "interleaving_positions": [
+        "post"
+      ],
+      "comparison_group": "exect_s1_qwen_diagnosis_stabilized_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\gan_s0_gpt4_1_mini.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "prompt_policy",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_gpt4_1_mini_20260521T095259Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_preregistration_20260521.md",
+      "metric_caveats": [
+        "exect_s1_qwen_diagnosis_stabilized_v1 GPT guardrail; compare vs v4_10/v4_11 GPT cap-25 anchors.",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_gpt4_1_mini_20260521T095259Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.9382716049382716,
+        "secondary": {
+          "diagnosis_f1": 0.975609756097561,
+          "seizure_type_f1": 0.923076923076923,
+          "annotated_medication_f1": 0.9285714285714286
+        }
+      },
+      "prompt_versions": "exect_s0_s1_field_family_v4_12_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_gpt4_1_mini.json"
+      ],
+      "notes": "decision_scope: arm. GPT cap-25 guardrail pass: micro 93.8% (-2.0pp vs v4_10 cap-25 95.8%); cleared Qwen cap-25 treatment.",
+      "comparison_groups": [
+        "exect_s1_qwen_diagnosis_stabilized_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_qwen35b_ollama",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "interleaving_positions": [
+        "post"
+      ],
+      "comparison_group": "exect_s1_qwen_diagnosis_stabilized_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\exect_qwen35b_ollama.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "prompt_policy",
+      "run_scope": "cap25",
+      "canonical_run_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_qwen35b_ollama_20260521T095620Z",
+      "outcome": "reject",
+      "prompt_versions": "exect_s0_s1_field_family_v4_12_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_qwen35b_ollama.json"
+      ],
+      "decision_doc": "docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md",
+      "metric_caveats": [
+        "exect_s1_qwen_diagnosis_stabilized_v1; cap-25 gate failed on seizure F1 (+0pp vs v4_10 cap, required +8pp).",
+        "Cap-25 runs are gate-only and systematically optimistic vs full validation.",
+        "These are partial ExECT S0/S1 diagnostics, not published ExECTv2 benchmark reproduction."
+      ],
+      "artifact_paths": [
+        "runs/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_qwen35b_ollama_20260521T095620Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.8383233532934132,
+        "secondary": {
+          "diagnosis_f1": 0.975609756097561,
+          "seizure_type_f1": 0.6666666666666666,
+          "annotated_medication_f1": 0.9473684210526316
+        }
+      },
+      "notes": "decision_scope: arm. Cap-25 reject: diagnosis +2.4pp vs v4_10 cap but seizure +0pp (tied 66.7%); −11.6pp vs v4_11 cap seizure. Full validation blocked.",
+      "comparison_groups": [
+        "exect_s1_qwen_diagnosis_stabilized_v1"
+      ]
+    },
+    {
+      "experiment_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_full_qwen35b_ollama",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic"
+      ],
+      "interleaving_positions": [
+        "post"
+      ],
+      "comparison_group": "exect_s1_qwen_diagnosis_stabilized_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\\\models\\\\exect_qwen35b_ollama.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "prompt_policy",
+      "run_scope": "full_validation",
+      "outcome": "blocked",
+      "prompt_versions": "exect_s0_s1_field_family_v4_12_label_policy",
+      "config_paths": [
+        "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_full_qwen35b_ollama.json"
+      ],
+      "decision_doc": "docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md",
+      "notes": "decision_scope: arm. Blocked — Qwen cap-25 gate failed (seizure +0pp vs v4_10 cap anchor).",
+      "comparison_groups": [
+        "exect_s1_qwen_diagnosis_stabilized_v1"
+      ]
+    },
+    {
       "experiment_id": "exect_s1_interleaving_l1_baseline_medication_slice_gpt4_1_mini",
       "dataset": "exect_v2",
       "schema_complexity": "exect_s1",
@@ -14485,6 +14632,134 @@
       "comparison_caveat": "Same F0 skeleton as GPT; no Qwen F0 port exists."
     },
     {
+      "experiment_id": "gan_s0_expanded_builders_prose_smoke_qwen35b_ollama",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "gan_s0_expanded_builders_prose_model_comparison_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "smoke",
+      "canonical_run_id": "gan_s0_expanded_builders_prose_smoke_qwen35b_ollama_20260521T095443Z",
+      "outcome": "hold",
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": [
+        "configs/experiments/gan_s0_expanded_builders_prose_smoke_qwen35b_ollama.json"
+      ],
+      "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md",
+      "metric_caveats": [
+        "Compatibility smoke only; not a performance estimate.",
+        "decision_scope: arm."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_expanded_builders_prose_smoke_qwen35b_ollama_20260521T095443Z"
+      ],
+      "headline_metric": {
+        "name": "schema_valid_prediction_rate",
+        "value": 1.0,
+        "secondary": {
+          "evidence_quote_support_rate": 1.0,
+          "model_residency": "74%/26% CPU/GPU"
+        }
+      },
+      "notes": "decision_scope: arm. Qwen F0 smoke pass; cap-25 queued after ExECT S1 v4.12 Qwen cap-25.",
+      "comparison_groups": [
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_expanded_builders_prose_cap25_qwen35b_ollama",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "gan_s0_expanded_builders_prose_model_comparison_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "cap25",
+      "outcome": "pending",
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": [
+        "configs/experiments/gan_s0_expanded_builders_prose_cap25_qwen35b_ollama.json"
+      ],
+      "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md",
+      "notes": "decision_scope: arm. Qwen F0 cap-25 gate before full validation; use detached launcher.",
+      "comparison_groups": [
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ]
+    },
+    {
+      "experiment_id": "gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "gan_s0_expanded_builders_prose_model_comparison_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_qwen35b_ollama.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "outcome": "pending",
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+      "config_paths": [
+        "configs/experiments/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama.json"
+      ],
+      "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md",
+      "notes": "decision_scope: arm. Qwen F0 full validation — completes three-provider Gan table; queued.",
+      "comparison_groups": [
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ],
+      "comparison_caveat": "Same F0 skeleton as GPT/Gemini; promote from cap-25 only after schema/evidence gates."
+    },
+    {
       "experiment_id": "gan_s0_expanded_builders_vr_full_validation_gpt4_1_mini",
       "dataset": "gan_2026",
       "schema_complexity": "gan_s0",
@@ -15139,6 +15414,165 @@
       "comparison_groups": [
         "exect_s4_epilepsy_cause_bridge_gpt_full_validation_v1"
       ]
+    },
+    {
+      "experiment_id": "exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "claude_sonnet46",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "eval_only"
+      ],
+      "comparison_group": "model_suite_frozen_architecture_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_claude_sonnet_4_6_anthropic.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic_20260522T090828Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+        "GPT anchor 92.3% micro; Claude 81.8% (−10.5pp); seizure_type dominant gap.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/exect_s0_s1_validation_full_claude_sonnet_4_6_anthropic_20260522T090828Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.8175182481751825,
+        "secondary": {
+          "seizure_type_f1": 0.6601941747572816,
+          "evidence_quote_support_rate": 0.9761904761904762,
+          "prediction_seconds_per_record": 13.410181537500467
+        }
+      },
+      "comparison_groups": [
+        "model_suite_frozen_architecture_v1"
+      ],
+      "comparison_caveat": "Model-comparison group; same scorer and split as GPT/Gemini/Qwen anchors."
+    },
+    {
+      "experiment_id": "exect_s4_validation_full_claude_sonnet_4_6_anthropic",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "claude_sonnet46",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic",
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post",
+        "eval_only"
+      ],
+      "comparison_group": "model_suite_frozen_architecture_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_claude_sonnet_4_6_anthropic.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s4_validation_full_claude_sonnet_4_6_anthropic_20260522T093634Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+        "GPT anchor 65.5% micro; Claude 65.1% (−0.4pp); per-family profile mixed.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_validation_full_claude_sonnet_4_6_anthropic_20260522T093634Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.6507304116865871,
+        "secondary": {
+          "annotated_medication_f1": 0.8440366972477064,
+          "evidence_quote_support_rate": 0.93,
+          "prediction_seconds_per_record": 19.47085961499979
+        }
+      },
+      "comparison_groups": [
+        "model_suite_frozen_architecture_v1"
+      ],
+      "comparison_caveat": "Pooled micro tied with GPT; per-family breakdown required."
+    },
+    {
+      "experiment_id": "gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "claude_sonnet46",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "model_suite_frozen_architecture_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_claude_sonnet_4_6_anthropic.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic_20260522T095634Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Same F0 skeleton as GPT/Gemini; varied_factor model_track only.",
+        "GPT F0 anchor 68.1% monthly; Claude 73.0% (+4.9pp); Gemini 72.6%.",
+        "Schema 98.0% (6 invalid); evidence 99.3%; ~5.0 s/rec.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthropic_20260522T095634Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.7303754266211604,
+        "secondary": {
+          "purist_category_accuracy": 0.7952218430034129,
+          "pragmatic_category_accuracy": 0.856655290102389,
+          "evidence_quote_support_rate": 0.9930555555555556,
+          "schema_valid_prediction_rate": 0.979933110367893,
+          "prediction_seconds_per_record": 5.039232577926504
+        }
+      },
+      "comparison_groups": [
+        "model_suite_frozen_architecture_v1",
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ],
+      "comparison_caveat": "Same F0 skeleton as GPT/Gemini; no operational promotion from suite alone."
     }
   ]
 }

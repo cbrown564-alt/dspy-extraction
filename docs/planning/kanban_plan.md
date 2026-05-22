@@ -1,6 +1,6 @@
 # Clinical Extraction Kanban Plan
 
-**Active steering doc** — execution board, operational defaults, and next pulls.
+**Active steering doc** — sole execution board, operational defaults, and next pulls (`docs/planning/kanban_plan.md` only; no top-level alias).
 
 | | |
 | --- | --- |
@@ -10,15 +10,140 @@
 | **Big-picture synthesis** | `docs/workstreams/hybrid/hybrid_deterministic_placement_research_synthesis_20260521.md` |
 | **Agent skill** | `hybrid-pipeline-exploration` |
 | **Registry** | `docs/experiments/synthesis/experiment_registry.json` |
+| **Model suite prereg** | `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md` |
 | **Scorer / dataset guardrails** | `docs/policies/deterministic_scorer_semantics.md`, `docs/datasets/exect/exect_gold_label_audit.md`, `docs/datasets/gan/gan_2026_label_audit.md` |
 | **Frozen run tables** | `docs/planning/kanban_frozen_threads_history.md` |
 | **Retired phased plan** | `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md` (archive only) |
 
-**Last refreshed:** 2026-05-21 — hybrid cap-25 sprint complete; Kanban restored as sole active queue.
+**Last refreshed:** 2026-05-22 — Claude Sonnet 4.6 **full validation done** (S1 **81.8%**, S4 **65.1%**, Gan F0 **73.0%** monthly); local phase-0 plumbing **complete** (Qwen 27b smokes `...091754Z` / `...095301Z` / `...102006Z`; Qwen 9b smoke `...092032Z`).
 
 ---
 
-## Next step
+## Key workstream: Full model suite alignment
+
+**Status:** **Active** — comparison group `model_suite_frozen_architecture_v1` — `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md`.
+
+**Goal:** Run the **same frozen programs**, scorers, and splits across the full target model set for **model-comparison evidence only** (`decision_scope: arm`). Do not mechanism-close hybrid placement or swap operational defaults from model sweeps alone.
+
+**GPT 4.1-mini** remains the **search and reproducibility anchor** (cap-25 discovery, frozen full-validation references). It is not a missing row in the suite — it is the fixed baseline other tracks compare against.
+
+### Target model set
+
+| Model track | Provider | Model config | Smoke | Status |
+| --- | --- | --- | --- | --- |
+| **Gemini 3 Flash** | Google | `configs/models/gan_s0_gemini3_flash.json` (`gemini-3-flash-preview`) | Done | **Replay pending** on frozen architecture |
+| **Gemini 3.1 Flash-Lite** | Google | `configs/models/gan_s0_gemini31_flash_lite.json` | Done | **Replay done** — ExECT S1/S4 + Gan F0 |
+| **Claude Sonnet 4.6** | Anthropic | `configs/models/gan_s0_claude_sonnet_4_6_anthropic.json` (`claude-sonnet-4-6`) | Done | **Full replay done** — S1 **81.8%**, S4 **65.1%**, Gan F0 **73.0%** monthly |
+| **Qwen 3.6:35b** | Ollama (local) | `configs/models/gan_s0_qwen35b_ollama.json` | Done (Win) | **Partial** — ExECT S1/S4 v4.10 done; Gan F0 cap-25 ready |
+| **Qwen 3.6:27b** | Ollama (local) | `configs/models/gan_s0_qwen27b_ollama.json`, `configs/models/exect_qwen27b_ollama.json` | Done (Win) | **Smokes pass** — Gan F0 / ExECT S1 / ExECT S4 (`...091754Z` / `...095301Z` / `...102006Z`); full ladder after 35b column |
+| **Qwen 3.5:9b** | Ollama (local) | `configs/models/gan_s0_qwen9b_ollama.json` | Done (Win) | **Smoke pass** — one-record Gan S0 runtime check (`...092032Z`); full ladder after 27b column |
+| **GPT 5.5** | OpenAI | `configs/models/gan_s0_gpt5_5_openai.json` | Done | **Replay pending** — port frozen-architecture configs |
+
+Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibility` skill. Hosted API keys are loaded from the local `.env`; the Claude config expects `ANTHROPIC_API_KEY`.
+
+### Frozen comparison surfaces (same across tracks)
+
+| Surface | Schema | Frozen program / variant | GPT 4.1-mini anchor | Varied factor |
+| --- | --- | --- | --- | --- |
+| **ExECT S1** | S0/S1 field family | `exect_s0_s1_field_family_single_pass` + v4_10 policy | **92.3%** micro (`…221944Z`) | `model_track` |
+| **ExECT S4** | S4 eleven-family | `exect_s4_field_family_cause_bridge_k0_k1_single_pass` | **65.5%** micro (`…071248Z`) | `model_track` |
+| **Gan S0 F0** | seizure frequency | `g2_candidates_adjudicate` + `cand_prose_expanded_builders_v1` | **68.1%** monthly (`…073432Z`) | `model_track` |
+
+**Do not** compare stale Round-2 or pre-F0 arms (e.g. Gemini direct full `…101710Z`, old Gan VR) without explicit architecture caveat.
+
+**Excluded from this suite:** ExECT S2/S3 (deferred — `model_suite_exect_s2_s3_extension_v1` if paper needs mid-ladder validation). Qwen S1 v4.12 (separate arm; **reject at cap-25**).
+
+### Coverage matrix (frozen architecture replay)
+
+| Model | ExECT S1 full | ExECT S4 full | Gan F0 full | Inspection / prereg |
+| --- | --- | --- | --- | --- |
+| GPT 4.1-mini | **92.3%** freeze | **65.5%** freeze | **68.1%** freeze | Anchor — not varied |
+| Gemini 3.1 Flash-Lite | **90.3%** done | **66.8%** done | **72.6%** done | `exect_gemini_ladder_replay_v1_inspection_20260521.md` |
+| Gemini 3 Flash | — | — | — | Smoke only; replay not started |
+| Claude Sonnet 4.6 | **81.8%** done | **65.1%** done | **73.0%** done | `model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md` |
+| Qwen 3.6:35b | 79.0% (v4.10) | 67.5% | *cap-25 ready* | Gan F0 prereg |
+| Qwen 3.6:27b | Smoke pass | Smoke pass | Smoke pass | After 35b column |
+| Qwen 3.5:9b | — | — | Smoke pass | After 27b column |
+| GPT 5.5 | — | — | — | Replay queued |
+
+### Sequencing
+
+**Runtime:** one Windows laptop — hosted API calls may run **in parallel** with one Ollama job; **never two Ollama jobs at once**.
+
+| Phase | Scope | Notes |
+| --- | --- | --- |
+| **0 — Provider plumbing (first)** | ~~Claude Sonnet 4.6 smokes~~ **done**; ~~Qwen 3.6:27b config + tag + smokes~~ **done**; ~~Qwen 3.5:9b smoke~~ **done** | Local smokes pass; hosted full replays unblocked; 27b ExECT uses bounded `num_ctx=65536` after 262k-context timeout |
+| **1 — Complete 35b column** | Gan F0 Qwen cap-25 → full | **In parallel with phase 0** — Ollama lane; S1 v4.12 **reject (arm)** |
+| **2 — Hosted full replays** | Gemini 3 Flash, GPT 5.5 on S1/S4/Gan F0 | Port from 3.1 Flash-Lite / GPT 4.1-mini templates |
+| **3 — Claude full replay** | ~~S1/S4/Gan F0~~ **Done** | `…090828Z` / `…093634Z` / `…095634Z` |
+| **4 — Local scaling ladder** | Qwen **27b** full ladder → Qwen **9b** full ladder | After 35b column stable; detached launchers; log latency + CPU/GPU residency |
+| **5 — Synthesis** | Provider tables + ExECT model-profile memo | Registry + paper-facing; Gemini Gan F0 **model-comparison only** |
+
+**Gates:** same splits and scorers as GPT anchors; v4_10 S1 policy on **all** tracks; report per-family breakdown on S4; record latency, tokens, and billing for hosted tracks; Ollama residency for local tracks.
+
+**Skills:** `model-config-compatibility`, `experiment-run-lifecycle`, `dspy-experiment-design`, `windows-portability`.
+
+---
+
+## Next step (active pulls under model suite)
+
+### Qwen S1 v4.12 diagnosis-stabilized follow-up
+
+**Status:** **Done — reject (arm) at cap-25** — inspection `docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md`.
+
+**Goal:** Preserve the Qwen v4.11 S1 seizure-type lift while repairing the diagnosis regression that blocked promotion.
+
+| Step | Scope | Notes |
+| --- | --- | --- |
+| 1 | ~~**Implement v4.12 prompt policy**~~ | **Done** — `exect_s0_s1_field_family_v4_12_label_policy`; prompt-only, no scorer/bridge change |
+| 2 | ~~**Preregister + configs**~~ | **Done** — `docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_preregistration_20260521.md`; configs under `configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_*.json` |
+| 3 | ~~**GPT cap-25 guardrail**~~ | **Done** — `…095259Z`: micro **93.8%**, diagnosis **97.6%**, seizure **92.3%** (−2.0pp vs v4_10 cap-25 95.8%; within cap-25 guardrail noise) |
+| 4 | ~~**Qwen cap-25**~~ | **Reject (arm)** — `…095620Z`: micro **83.8%**, diagnosis **97.6%** (+2.4pp vs v4_10 cap), seizure **66.7%** (+0pp vs v4_10 cap; **−11.6pp vs v4_11 cap**); prereg +8pp seizure gate failed |
+| 5 | ~~**Qwen full validation**~~ | **Blocked** — cap-25 gate did not pass |
+| 6 | ~~**Inspection + registry**~~ | **Done** — cap-25 inspection + registry updated |
+
+**Baselines:** Qwen v4.10 H1 full `…210722Z` (micro 79.0%, diagnosis 95.1%, seizure 55.7%); held Qwen v4.11 full `…231850Z` (micro 84.3%, diagnosis 90.0%, seizure 74.2%).
+
+**Gates:** full validation should keep seizure within 2pp of v4.11, improve diagnosis by at least 3pp over v4.11, and avoid medication regression ≥2pp versus v4.10. Promotion remains blocked if diagnosis stays near 90.0%.
+
+**Skills:** `exect-label-policy-alignment`, `dspy-experiment-design`, `experiment-run-lifecycle`.
+
+*Model suite track:* Qwen 3.6:35b · ExECT S1 surface.
+
+---
+
+### Qwen Gan F0 port (three-provider table)
+
+**Status:** **Ready for cap-25** — ExECT S1 v4.12 Qwen run finished; Ollama free.
+
+**Goal:** Complete the Gan S0 **F0** model-comparison table with Qwen3.6:35b on the same `cand_prose_expanded_builders_v1` skeleton as GPT (**68.1%** monthly) and Gemini (**72.6%**).
+
+| Step | Scope | Notes |
+| --- | --- | --- |
+| 1 | ~~**Preregister** Qwen arm~~ | **Done** — `gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md` |
+| 2 | ~~**Smoke** (3 records)~~ | **Done** — `…095443Z`: schema **100%**, evidence **100%**; 74%/26% CPU/GPU offload |
+| 3 | **Cap-25 gate** | **Ready** — `scripts/start_gan_s0_expanded_builders_prose_cap25_qwen35b_detached.ps1` |
+| 4 | **Full validation** (299) | After cap-25 passes |
+
+**Gates:** schema ≥ 90%, evidence ≥ 85% on cap-25 before full.
+
+*Model suite track:* Qwen 3.6:35b · Gan F0 surface.
+
+---
+
+### Model suite — provider plumbing (phase 0)
+
+**Status:** **Done — local provider plumbing complete** — hosted full replays and local scaling ladder unblocked.
+
+| Model | Next action |
+| --- | --- |
+| Claude Sonnet 4.6 | ~~Full validation~~ **Done** — inspection `model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md` |
+| Qwen 3.6:27b | ~~Confirm Ollama tag; add model config; smoke all 3 surfaces~~ **Done** — tag `qwen3.6:27b`; Gan F0 `runs/gan_s0_expanded_builders_prose_smoke_qwen27b_ollama_20260522T091754Z` (schema/evidence 100%); ExECT S1 `runs/exect_s0_s1_smoke_qwen27b_ollama_20260522T095301Z` (micro 94.7%, evidence 100%); ExECT S4 `runs/exect_s4_smoke_qwen27b_ollama_20260522T102006Z` (micro 68.0%, evidence 100%) |
+| Qwen 3.5:9b | ~~Run pending smoke on Windows (`gan_s0_qwen9b_ollama.json`)~~ **Done** — `runs/gan_s0_smoke_qwen9b_ollama_20260522T092032Z` (schema/evidence 100%; compatibility only) |
+| Gemini 3 Flash | Port frozen-architecture configs — full replay |
+| GPT 5.5 | Port frozen-architecture configs — full replay; `temperature: null` |
+
+---
 
 ### Replay Gemini under current S-level architecture
 
@@ -43,13 +168,13 @@
 
 **Skills:** `model-config-compatibility`, `experiment-run-lifecycle`, `dspy-experiment-design`, `dataset-audit-first`.
 
-**Parallel hygiene (non-blocking):** fixture-to-real reality-gap audit (Literature card backlog).
+**Parallel hygiene (non-blocking):** fixture-to-real reality-gap audit — done (`fixture_to_real_reality_gap_audit_20260521.md`).
 
 ---
 
 ## Current research focus
 
-**Mode (post-hybrid sprint):** Confirmatory **model comparison** and research hygiene — not new GPT cap-25 placement grids unless a new preregistered mechanism opens.
+**Mode:** **Full model suite alignment** on frozen ExECT S1/S4 + Gan F0 — confirmatory model comparison and research hygiene, not new GPT cap-25 placement grids unless a new preregistered mechanism opens.
 
 **Doctrine (unchanged):** Distinguish **reject (arm)** vs **reject (mechanism)** vs **operational freeze**. Operational defaults are not mechanism-closed. See pivot doc and `hybrid-pipeline-exploration` skill.
 
@@ -61,7 +186,8 @@
 | --- | --- |
 | Search | GPT 4.1-mini cap-25 — rank arms; accept nulls |
 | Confirm | Slice / full validation for cap-25 winners per prereg |
-| Qwen | Port winning cells only |
+| Model suite | Port **frozen** S1/S4/Gan F0 to each target track; one `model_track` factor |
+| Qwen local | Detached launchers on Windows; no IDE background for cap-25/full |
 | Comparison groups | One primary `varied_factor` per group; name axis in prereg |
 
 ---
@@ -71,7 +197,7 @@
 | Track | Default | Evidence |
 | --- | --- | --- |
 | **Gan S0** | Expanded builders + prose (F0); temporal-candidates + VR remains engineering baseline | F0 full val **68.1%** monthly (`…073432Z`) vs VR **65.1%** |
-| **ExECT S1** | GPT v4_10 + inline bridges | **92.3%** micro full (`…221944Z`) |
+| **ExECT S1** | **v4_10 + inline bridges on all tracks** | GPT **92.3%** micro full (`…221944Z`); Qwen v4.12 **reject (arm)** at cap-25; v4.11 full held on diagnosis drift |
 | **ExECT S2–S3** | GPT frozen ladder | S2 **80.9%**, S3 **72.1%** micro |
 | **ExECT S4** | `EXECT_S4_VARIANT` = `exect_s4_field_family_cause_bridge_k0_k1_single_pass`; G0 medication precision guard hold | **65.5%** micro GPT (`…071248Z`); cause bridge +10.6pp cause F1 full |
 
@@ -81,20 +207,24 @@
 
 ## What we know now
 
-### Gan S0 seizure frequency
+### Gan S0 F0 (expanded builders prose, full validation)
 
-- **Monthly leader:** F0 expanded builders prose **68.1%** full validation (+3.0pp vs pre-expansion VR 65.1%).
-- **Cap-25 search:** `g2_candidates_adjudicate` 52% monthly; table/JSON/bullets +4pp vs prose; Qwen port of g2 **arm-reject** (40%).
-- **Operational bundle:** temporal-candidates + verify-repair v1.1 — mechanism placement still **open** on cap-25 evidence alone.
+| Model | Monthly | Notes |
+| --- | ---: | --- |
+| GPT 4.1-mini | 68.1% | Operational arm promote (search anchor) |
+| Gemini 3.1 Flash-Lite | **72.6%** | Model-comparison only — **no operational promotion** |
+| Claude Sonnet 4.6 | **73.0%** | Model-comparison only — 98.0% schema, ~5 s/rec |
+| Qwen 3.6:35b | *queued* | Prereg done |
+| Others | — | Not yet replayed on F0 skeleton |
 
-### ExECT S1–S4 ladder
+### ExECT S1–S4 ladder (GPT anchor vs partial suite)
 
-| Schema | GPT 4.1-mini | Qwen35b | Read |
-| --- | ---: | ---: | --- |
-| S1 | 92.3% | 79.0% | Qwen lags narrow S1 policy surface |
-| S2 | 80.9% | 82.6% | Qwen ≈ GPT |
-| S3 | 72.1% | 72.2% | Matched |
-| S4 | 65.5% | 67.5% | Qwen +2.0pp pooled micro; per-family mixed |
+| Schema | GPT 4.1-mini | Qwen 3.6:35b | Gemini 3.1 Flash-Lite | Claude Sonnet 4.6 | Read |
+| --- | ---: | ---: | ---: | ---: | --- |
+| S1 | 92.3% | 79.0% (v4.10) | 90.3% | **81.8%** | Gemini near GPT; Claude −10.5pp vs GPT; seizure_type gap |
+| S2 | 80.9% | 82.6% | — | — | Qwen ≈ GPT; Gemini not replayed |
+| S3 | 72.1% | 72.2% | — | — | Qwen matched; Gemini not replayed |
+| S4 | 65.5% | 67.5% | 66.8% | **65.1%** | Per-family profiles diverge — no pooled ranking |
 
 **S4 residual burden (GPT):** medication_temporality precision (52 FP); seizure_frequency 45.7% F1. Frequency R1 post-merge and structured slots S2 **do not promote** (arm-reject / inconclusive). Sparse families: policy memo done; bridge work before model sweeps.
 
@@ -152,7 +282,9 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | ExECT S4 frequency repair R1 | Done — reject (arm) |
 | ExECT S4 frequency structured slots S2 | Done — inconclusive |
 | ExECT S4 sparse-family policy memo | Done |
-| **Replay Gemini under current architecture** | **Done** — hold (model-comparison); see inspection |
+| **Full model suite alignment** | **Active** — see § Key workstream |
+| **Replay Gemini 3.1 Flash-Lite** | **Done** — ExECT + Gan F0 |
+| **Qwen Gan F0 port** | **Cap-25 ready** — completes 35b Gan column |
 
 ---
 
@@ -166,7 +298,13 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | Optimizer rungs 6–7 (BootstrapRS, GEPA) | Deferred | After train-demo alignment |
 | Test holdout confirmation | Deferred | Arms clearing dev + cap gates |
 | New ExECT S4 frequency variant | Optional | Only with **new** variant ID; do not rerun R1/S2 |
-| Gemini replay (old Gan direct/VR) | **Superseded** | Use current S1/S4 replay in § Next step |
+| Gemini replay (old Gan direct/VR) | **Superseded** | Use frozen-architecture suite in § Key workstream |
+| Claude Sonnet 4.6 model config | **Full replay done** | S1 **81.8%**, S4 **65.1%**, Gan F0 **73.0%** monthly (`…090828Z` / `…093634Z` / `…095634Z`) |
+| Qwen 3.6:27b model config | **Smokes pass** | Phase 0 done; full ladder after 35b column. ExECT config uses bounded `num_ctx=65536`; 262k-context S1 attempt `runs/exect_s0_s1_smoke_qwen27b_ollama_20260522T092112Z` timed out before predictions. |
+| Qwen 3.5:9b smoke | **Smoke pass** | Phase 0 Gan one-record runtime check done; full ladder after 27b |
+| Gemini 3 Flash frozen replay | **Queued** | Port frozen-architecture configs |
+| GPT 5.5 frozen replay | **Queued** | Port frozen-architecture configs |
+| ExECT S2/S3 model suite extension | **Deferred** | `model_suite_exect_s2_s3_extension_v1` if paper needs it |
 
 ### Lane A clean factor-isolation (GPT)
 
@@ -187,7 +325,16 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | ExECT S1 GPT v4_11 (cap-25) | Reject on GPT |
 | ExECT S1 optimizer bootstrap | Reject |
 | Qwen S1 v4_11 full | Hold promote blocked |
-| Next model work | **Gemini replay complete** (ExECT + Gan F0); optional Qwen F0 port if paper needs third Gan column |
+| Qwen S1 v4.12 | **Reject (arm) at cap-25** — diagnosis restored, seizure lift lost |
+| Qwen S1 v4.12 full | **Blocked** — cap-25 gate failed |
+| Model suite workstream | **Active** — eight tracks (3 local Qwen + 4 hosted + GPT anchor) on frozen S1/S4/Gan F0; phase-0 local plumbing complete |
+| Model suite prereg | `model_suite_frozen_architecture_v1_preregistration_20260522.md` |
+| ExECT S1 policy | **v4_10 all tracks** — v4_12 reject (arm) |
+| Gemini Gan F0 lead | **Model-comparison only** — no operational promotion |
+| Next engineering | **Hosted full replays** (Gemini 3 Flash, GPT 5.5) + **Gan F0 Qwen cap-25** |
+| Next Ollama pull | **Gan F0 Qwen cap-25** (`start_gan_s0_expanded_builders_prose_cap25_qwen35b_detached.ps1`) |
+| Hosted full replays | **Unblocked** — Gemini 3 Flash, GPT 5.5, Claude full ladder |
+| Local scaling order | 35b column → **27b** → **9b** |
 
 Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis_20260520.md`, `kanban_frozen_threads_history.md`.
 
@@ -196,10 +343,11 @@ Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis
 ## Long-term arc
 
 1. **Complete** hybrid cap-25 search (Gan + ExECT placement and targeted Axis-3 cells).
-2. ~~**Now:** Gemini replay on frozen S1/S4 (+ optional Gan F0) for model-comparison evidence.~~ **Done** — `exect_gemini_ladder_replay_v1_inspection_20260521.md`.
-3. **Hygiene:** fixture reality-gap audit complete; optional run-manifest metadata improvements from metadata audit.
-4. **Later:** published benchmark reproduction when CUI/real-set blockers clear; optimizer compile rungs only with full ladder discipline.
-5. Keep registry `decision_scope` and mechanism status doc current; treat Lane A and negative probes as **arm libraries**, not closure.
+2. **Now:** **Full model suite alignment** — eight tracks on frozen ExECT S1/S4 + Gan F0 (`model_suite_frozen_architecture_v1`).
+3. **In flight:** Hosted full replays (Gemini 3 Flash, GPT 5.5) + Gan F0 Qwen 35b cap-25; Claude full replay **done**.
+4. **Next:** Local scaling 27b → 9b; phase-5 model-profile synthesis.
+5. **Later:** published benchmark reproduction when CUI/real-set blockers clear; optimizer compile rungs only with full ladder discipline.
+6. Keep registry `decision_scope` and mechanism status doc current; treat Lane A and negative probes as **arm libraries**, not closure.
 
 ---
 
@@ -210,4 +358,9 @@ Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis
 - Taxonomy ontology: `docs/workstreams/hybrid/hybrid_component_taxonomy_decision_20260520.md`
 - ExECT support map: `docs/experiments/exect/exect_field_family_deterministic_support_map_20260520.md`
 - Prior-best reanalysis: `docs/experiments/synthesis/prior_best_vs_current_best_reanalysis_20260521.md`
-- Phase roadmap (historical): `docs/planning/next_major_phases_20260520.md`
+- Hosted model matrix (historical): `docs/experiments/gan/gan_s0_hosted_model_comparison_matrix.md`
+- Gemini 3.1 replay: `docs/experiments/exect/exect_gemini_ladder_replay_v1_inspection_20260521.md`
+- Gan F0 Gemini: `docs/experiments/gan/gan_s0_expanded_builders_prose_gemini_full_validation_v1_inspection_20260521.md`
+- Qwen Gan F0 prereg: `docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md`
+- Model suite umbrella prereg: `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md`
+- v4_12 cap-25 reject: `docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md`

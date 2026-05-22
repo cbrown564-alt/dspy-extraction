@@ -129,7 +129,7 @@ A practical structure for the clinical extraction project could be:
 clinical-extraction-dspy/
 ├── README.md
 ├── pyproject.toml
-├── .env.example
+├── .env                  # local only; contains hosted provider API keys such as ANTHROPIC_API_KEY
 ├── configs/
 │   ├── models/
 │   │   ├── qwen_35b_local.yaml

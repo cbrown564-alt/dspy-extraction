@@ -12,7 +12,14 @@ from pydantic import Field, model_validator
 
 from clinical_extraction.schemas import FrozenModel
 
-ProviderName = Literal["mock", "ollama", "openai", "gemini", "openai_compatible"]
+ProviderName = Literal[
+    "mock",
+    "ollama",
+    "openai",
+    "gemini",
+    "anthropic",
+    "openai_compatible",
+]
 
 
 class ChatMessage(FrozenModel):
@@ -104,6 +111,7 @@ class OpenAICompatibleChatAdapter:
         timeout_seconds: float = 60.0,
         temperature: float | None = 0.0,
         max_tokens: int | None = None,
+        extra_body: dict[str, Any] | None = None,
         transport: Transport | None = None,
     ) -> None:
         self.provider = provider
@@ -113,6 +121,7 @@ class OpenAICompatibleChatAdapter:
         self.timeout_seconds = timeout_seconds
         self.temperature = temperature
         self.max_tokens = max_tokens
+        self.extra_body = extra_body or {}
         self._transport = transport or _urlopen_json
 
     def complete_json(
@@ -129,6 +138,7 @@ class OpenAICompatibleChatAdapter:
             payload["temperature"] = self.temperature
         if self.max_tokens is not None:
             payload["max_tokens"] = self.max_tokens
+        payload.update(self.extra_body)
         if response_schema is not None:
             payload["response_format"] = {
                 "type": "json_schema",
@@ -173,6 +183,7 @@ def build_chat_adapter(config: LLMProviderConfig) -> ChatAdapter:
         timeout_seconds=config.timeout_seconds,
         temperature=config.temperature,
         max_tokens=config.max_tokens,
+        extra_body=config.extra_body,
     )
 
 
@@ -183,6 +194,8 @@ def _default_base_url(provider: ProviderName) -> str:
         return "https://api.openai.com/v1"
     if provider == "gemini":
         return "https://generativelanguage.googleapis.com/v1beta/openai"
+    if provider == "anthropic":
+        return "https://api.anthropic.com/v1"
     if provider == "openai_compatible":
         raise ValueError("openai_compatible provider requires base_url.")
     raise ValueError(f"Unsupported provider: {provider}")
@@ -198,10 +211,11 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
     """Build a ``dspy.LM`` from an ``LLMProviderConfig``.
 
     Gemini routes through LiteLLM's native Gemini support (``gemini/`` prefix).
-    Ollama routes through LiteLLM's native ``ollama_chat/`` provider so the
-    thinking toggle is respected by local Qwen reasoning models. Other
-    providers use the OpenAI-compatible path (``openai/`` prefix), with
-    ``api_base`` set for non-default endpoints.
+    Anthropic routes through LiteLLM's native Anthropic support
+    (``anthropic/`` prefix). Ollama routes through LiteLLM's native
+    ``ollama_chat/`` provider so the thinking toggle is respected by local Qwen
+    reasoning models. Other providers use the OpenAI-compatible path
+    (``openai/`` prefix), with ``api_base`` set for non-default endpoints.
     """
     api_key = config.api_key or _api_key_from_env(config.api_key_env) or "dummy"
 
@@ -216,6 +230,21 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
             kwargs["temperature"] = config.temperature
         if config.max_tokens is not None:
             kwargs["max_tokens"] = config.max_tokens
+        return dspy.LM(**kwargs)
+
+    if config.provider == "anthropic":
+        kwargs = {
+            "model": f"anthropic/{config.model}",
+            "api_key": api_key,
+            "timeout": config.timeout_seconds,
+            "num_retries": config.num_retries,
+        }
+        if config.temperature is not None:
+            kwargs["temperature"] = config.temperature
+        if config.max_tokens is not None:
+            kwargs["max_tokens"] = config.max_tokens
+        if config.extra_body:
+            kwargs["extra_body"] = config.extra_body
         return dspy.LM(**kwargs)
 
     base_url = config.base_url or _default_base_url(config.provider)
