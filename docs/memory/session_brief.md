@@ -17,7 +17,7 @@ Decision scope: model-suite rows are for model-comparison evidence unless an ins
 | --- | --- | --- | --- | --- |
 | Qwen 3.6:35b Gan F0 cap-25 | `done` | `direct_source` | Full validation done — `…131822Z`, 64.4% monthly. | `docs/planning/kanban_plan.md` |
 | GPT 5.5 frozen full replay | `done` | `direct_source` | Full replay complete. | `docs/planning/kanban_plan.md` |
-| Local scaling ladder | `in_progress` | `direct_source` | 9b ladder in flight; 27b deferred overnight. | `docs/planning/kanban_plan.md` |
+| Local scaling ladder | `partial` | `direct_source` | 9b column done; 27b overnight next. | `docs/planning/kanban_plan.md`, `model_suite_qwen9b_full_validation_v1_inspection_20260522.md` |
 | Model-profile synthesis | `open` | `inferred_from_sources` | Draft after suite rows mature. | `docs/planning/kanban_plan.md` |
 
 ## Current Operational Defaults

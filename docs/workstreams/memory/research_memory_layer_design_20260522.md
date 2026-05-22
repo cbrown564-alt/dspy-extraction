@@ -1,7 +1,7 @@
 # Research Memory Layer Design
 
 Date: 2026-05-22
-Status: Phase 2 template added
+Status: Phase 2 candidate drafted
 Related:
 
 - `docs/outline.md`
@@ -359,6 +359,22 @@ Next recommended memory work:
 1. Use `docs/memory/dreams/TEMPLATE.md` for the next stale-claim or handoff consolidation pass.
 2. Promote only reviewed updates into `docs/memory/session_brief.md`, `docs/memory/workflow_index.md`, or future cache files.
 3. Defer `scripts/export_research_memory.py` until the manual candidate flow has been used at least once.
+
+## Phase 2 First Candidate Result
+
+Created:
+
+- `docs/memory/dreams/20260522_model_suite_handoff_candidate.md`
+
+The first candidate uses the dream template against the active model-suite handoff. It found one useful stale-control issue: `docs/planning/kanban_plan.md` has an internal sequencing mismatch where the refreshed header/tables say Qwen 9b is in flight and Qwen 27b is deferred, while a lower roadmap line still says to launch 27b then 9b.
+
+The candidate also proposes scoped wording for model-suite leader/default language, especially the distinction between operational/search-anchor Gan F0 leadership and Gemini/GPT/Claude model-comparison evidence. It does not promote updates into memory files yet.
+
+Next recommended memory work:
+
+1. Review the candidate and promote selected warnings into `docs/memory/session_brief.md` or `docs/memory/workflow_index.md`.
+2. Clean the Kanban sequencing mismatch only as an explicit source-doc edit.
+3. Fix or document registry controlled-vocabulary validation drift before building `scripts/export_research_memory.py`.
 
 ## Validation To Run
 

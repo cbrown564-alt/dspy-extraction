@@ -77,7 +77,7 @@ ExECT S2 and S3 are **excluded**. Mid-ladder Qwen vs GPT numbers remain contextu
 | Claude Sonnet 4.6 | — | — | — | Smoke ready |
 | Qwen 3.6:35b | 79.0% (v4.10) | 67.5% | cap-25 **48.0%**; full **ready** | `gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md` |
 | Qwen 3.6:27b | **ready** | **ready** | **ready** | Full configs + `scripts/start_qwen27b_model_suite_ladder_detached.ps1`; after 35b Gan F0 full |
-| Qwen 3.5:9b | — | — | — | After 27b column |
+| Qwen 3.5:9b | **79.4%** done | **64.0%** done | **65.9%** done | `model_suite_qwen9b_full_validation_v1_inspection_20260522.md` |
 
 ## Execution sequencing
 

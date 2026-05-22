@@ -85,6 +85,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_CANONICAL_EXAMPLES_PROMPT_VERSI
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_SLOT_PAYLOAD_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_3_slot_payload"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy"
+)
 GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_llm_temporal_candidates_v1_1"
 )
@@ -688,6 +691,37 @@ GAN_FREQUENCY_S0_SLOT_PAYLOAD_ADJUDICATE_ADDENDUM = """
     - evidence_text must remain an exact contiguous substring of note_text.
 """
 
+GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM = """
+    Error-taxonomy policy patch (v1.4; Gan S0 Qwen 2026-05-22 follow-up):
+    - Broad Gan grouping rule: group multiple recent events into the relevant
+      observation window, then compute a canonical rate from the grouped count
+      and denominator. When several separate current event frequencies or
+      seizure types are stated, choose the most frequent note-supported rate.
+    - Counted events followed by "no further events", "stable since", or
+      "well since" remain the counted-window label unless the note states a
+      seizure-free interval of at least 6 months. Do not convert these cases
+      to unknown only because the most recent status is stable.
+    - Use seizure free for N unit when the note explicitly says seizure-free,
+      no events, or no seizures over a duration or review interval of at least
+      6 months. Do not map multi-year remission/no-events language to unknown.
+    - Use unknown when a count is trigger-conditioned or pattern-only and lacks
+      a usable time denominator across calendar time, e.g. events after nights
+      of poor sleep without a rate for how often those nights/events occur.
+    - When temporal_candidates contains a note-supported count+window label,
+      treat it as the preferred answer. Override it only when the full note
+      clearly supports a higher current seizure-type frequency, a seizure-free
+      label of at least 6 months, or unknown/no-reference by Gan policy.
+    - If overriding a candidate, evidence_text must quote the text that justifies
+      the override rather than a later vague stability phrase alone.
+    - Multiple current seizure types: choose the highest current epileptic
+      seizure-frequency label, not the most severe seizure type and not merely
+      the most recent sentence.
+    - Cluster distinction: use cluster labels only when the note describes
+      events grouped into clusters. Repeated events within a period are not
+      automatically clusters. If per-cluster count is known but cluster spacing
+      is not, use "unknown, N per cluster" rather than inventing a spacing.
+"""
+
 
 def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
@@ -835,6 +869,20 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateSlotPayloadExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateErrorTaxonomyExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )

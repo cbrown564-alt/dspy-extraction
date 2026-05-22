@@ -54,6 +54,8 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SYNTHESIS_PORT_TEMPORAL_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION,
+    GanFrequencyS0TemporalAdjudicateSignature,
     stage_graph_id_for_program_variant,
     _apply_evidence_span_check_guard,
     build_gan_frequency_s0_extractor_signature,
@@ -229,6 +231,21 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
         )
         == "g2_candidates_adjudicate"
     )
+
+
+def test_gan_s0_error_taxonomy_prompt_patch_adds_candidate_override_policy():
+    signature_cls = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION
+    )
+
+    prompt_doc = signature_cls.__doc__ or ""
+
+    assert "Error-taxonomy policy patch" in prompt_doc
+    assert "Broad Gan grouping rule" in prompt_doc
+    assert "Counted events followed by" in prompt_doc
+    assert "treat it as the preferred answer" in prompt_doc
+    assert "Multiple current seizure types" in prompt_doc
+    assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
 
 
 def test_gan_s0_retrieval_candidates_only_context_policy_assembles_evidence_windows():

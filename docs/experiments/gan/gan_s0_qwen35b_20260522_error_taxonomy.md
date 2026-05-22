@@ -268,3 +268,15 @@ The path to 80%+ Purist and 90%+ Pragmatic is probably not another broad LLM cal
 3. Candidate-builder expansion: add deterministic builders for "last episode on DATE", "no further events since", month-by-month calendars, inter-seizure intervals, and "since treatment start" counts.
 4. Focused verifier: run a cheap second pass only when the prediction is `unknown`, when gold-like candidates exist, or when the label is cluster-shaped.
 5. Evidence-support hardening: add a diagnostic semantic-support check and minimum quote-length rule so evidence metrics distinguish valid offsets from useful clinical evidence.
+
+## Implemented Follow-Up Setup
+
+The first next experiment is now codified without changing the frozen model-comparison run or scorer semantics:
+
+- Prompt version: `gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy`
+- Config: `configs/experiments/gan_s0_qwen35b_error_taxonomy_policy_cap25.json`
+- Slice fixture: `data/fixtures/gan_s0_qwen35b_20260522_pragmatic_error_slice.json`
+
+The v1.4 prompt patch targets the taxonomy's dominant residual mode: quantified or seizure-free/no-information gold labels predicted as `unknown`. It adds explicit policy for the supervisor-facing Gan grouping rule: group multiple recent events into the relevant observation window, and when several separate current event frequencies or seizure types are stated, choose the most frequent note-supported rate. It also adds policy for counted windows followed by "no further events", multi-year seizure freedom/no-events language, trigger-conditioned counts without denominators, candidate override discipline, and cluster/rate distinction.
+
+The 25-record slice is selected from the 63 Pragmatic category mismatches in `gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama_20260522T131822Z`. It is a regression gate, not a full-validation claim. Gan `seizure_frequency_number[0]` remains the gold label; `reference[0]` remains a secondary difficulty signal; evidence support remains diagnostic.

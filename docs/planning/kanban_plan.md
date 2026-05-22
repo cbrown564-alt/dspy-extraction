@@ -11,17 +11,61 @@
 | **Agent skill** | `hybrid-pipeline-exploration` |
 | **Registry** | `docs/experiments/synthesis/experiment_registry.json` |
 | **Model suite prereg** | `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md` |
+| **Gan policy/pipeline log** | `docs/experiments/gan/gan_s0_policy_pipeline_learning_log.md` |
 | **Scorer / dataset guardrails** | `docs/policies/deterministic_scorer_semantics.md`, `docs/datasets/exect/exect_gold_label_audit.md`, `docs/datasets/gan/gan_2026_label_audit.md` |
 | **Frozen run tables** | `docs/planning/kanban_frozen_threads_history.md` |
 | **Retired phased plan** | `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md` (archive only) |
 
-**Last refreshed:** 2026-05-22 — Qwen 35b Gan F0 **full done** (`…131822Z`, **64.4%** monthly, 99.7% schema, 100% evidence); **Qwen 9b model-suite ladder in flight** via `start_qwen9b_model_suite_ladder_detached.ps1`; Qwen **27b** ladder deferred overnight.
+**Last refreshed:** 2026-05-22 — **Qwen 35b error-taxonomy policy cap-25 run completed** (G2 done: 16.0% monthly, 20.0% pragmatic on slice); **Qwen 9b model-suite ladder done** (S1 **79.4%**, S4 **64.0%**, Gan F0 **65.9%** monthly); Qwen 35b Gan F0 full done (`…131822Z`, **64.4%**); **next Ollama pull: Qwen 27b overnight**; Gan S0 policy/pipeline runway is primary engineering (`gan_s0_policy_pipeline_learning_log.md`).
 
 ---
 
-## Key workstream: Full model suite alignment
+## Key workstream: Gan S0 policy and hybrid pipeline runway
 
-**Status:** **Active** — comparison group `model_suite_frozen_architecture_v1` — `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md`.
+**Status:** **Active priority** — learning log `docs/experiments/gan/gan_s0_policy_pipeline_learning_log.md`; current implementation seed `gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy`.
+
+**Goal:** Treat Gan seizure-frequency extraction as the focused research playground for policy iteration and hybrid deterministic-probabilistic pipeline design. The immediate research target is not another one-off prompt tweak; it is a disciplined runway that decides which work belongs in deterministic candidate generation, LLM candidate extraction, LLM adjudication, examples, and verifier/repair.
+
+**Decision discipline:** GPT 4.1-mini is the rapid search model; Qwen 3.6:35b is the deep local evaluation model for informative cells. A failed implementation is **reject (arm)** unless a mechanism review explicitly tests multiple implementations or placements.
+
+### Research axes for this runway
+
+| Axis | Question | Current read | Next need |
+| --- | --- | --- | --- |
+| Candidate selection | Which possible frequency answers should be surfaced? | Deterministic expanded builders are the best current default but low coverage remains | Test LLM event-table / multiple-answer candidates without closing the mechanism from prior JSON failure |
+| Guideline density | How much policy text should the adjudicator see? | v1.1 under-specifies grouped events / no-further-events; v1.4 may be more complete but heavier | Compare v1.1, v1.4, and compact hierarchy on same slice |
+| Examples | Which examples move hard cases without broad regressions? | Generic LabeledFewShot did not unlock infrequent temporal aggregation | Build targeted examples for grouped events, highest frequency, cluster ambiguity, trigger-conditioned unknown |
+| Verification / repair | Should outputs be corrected, and by whom? | Unconstrained VR over-repairs; adjudicate-then-VR was neutral in one slice | Test candidate-constrained judge and deterministic selector over multiple proposed answers |
+| Evaluation | How do we avoid fooling ourselves? | Enriched slices explain failure modes but do not estimate full validation | Use slice gates for search, then full validation only for winners |
+
+### Active runway cards
+
+| Card | Status | Outcome | Dependencies | Parallelizable | Validation |
+| --- | --- | --- | --- | --- | --- |
+| **G1 — Run v1.4 policy slice on GPT 4.1-mini** | Done | Compare v1.4 vs v1.1: flat pragmatic (56%) but +12pp monthly (36%) and normalized (28%) | v1.4 config + slice done | yes | Metrics + brief inspection appended to learning log |
+| **G2 — Run v1.4 policy slice on Qwen 35b** | Done | 16.0% monthly (4/25) and 20.0% pragmatic (5/25) on slice. Moved Qwen off unknown default on hard cases, but introduced short-term stability regression cases (e.g., predicting recent stability as seizure-free instead of rate) | G1 | after G1 | Metrics, prediction deltas, over-quantification check |
+| **G3 — Preregister policy-density mini-grid** | Ready | Config set for v1.1 baseline, compact hierarchy, v1.4 full policy under fixed F0 skeleton | learning log | yes | Config validation + taxonomy fields pass |
+| **G4 — Design targeted example families** | Ready | Curated example plan for grouped events, highest-current-frequency, YTD, trigger-conditioned unknown, cluster ambiguity | none | yes | Example rationale recorded before model spend |
+| **G5 — Prototype LLM event-table candidate stage** | Backlog | LLM emits events/windows/ambiguities, not final labels; downstream adjudicator unchanged | G3/G4 helpful but not required | yes | Cap-25 arm with `varied_factor=stage_executor` or `implementation_variant` |
+| **G6 — Prototype multiple-answer + deterministic selector** | Backlog | LLM proposes possible canonical labels with ambiguity flags; deterministic selector applies Gan policy hierarchy | compact hierarchy from G3 | after G3 | Slice evaluation + selector audit on true `unknown` risks |
+| **G7 — Candidate-constrained judge / verifier** | Backlog | Verifier can confirm/reject to candidate/unknown/no-reference, but cannot free-form over-repair | G1/G3 and candidate schema decision | after G3 | Reduced over-repair vs historical VR slice |
+| **G8 — Update learning log after every run** | In Progress | `gan_s0_policy_pipeline_learning_log.md` remains source of truth for policy rationale/outcomes | every Gan policy run | no | New dated entry with run IDs, metrics, caveats, next cells |
+
+### Immediate pull order
+
+1. **G3 & G4 (GPT-first) [Parallel-Ready]** — Run the policy-density mini-grid (v1.1 baseline vs compact hierarchy vs v1.4 policy) and design/test targeted example families exclusively on GPT 4.1-mini first. These hosted API sweeps do not consume local resources and can run in a separate terminal session concurrently with Ollama jobs.
+2. **G5, G6, G7 (GPT-first) [Parallel-Ready]** — Prototype and evaluate stage graph changes (LLM event-table candidate stage, multiple-answer proposer, candidate-constrained verifier) on GPT 4.1-mini first.
+3. **Qwen Transfers** — Run confirmatory checks on Qwen 3.6:35b for winning configurations only (starting with G2/v1.4 policy slice if current run shows promise).
+
+**Do not:** run broad grids or early stage prototypes on Qwen 3.6:35b; use GPT 4.1-mini as the rapid search model to filter first.
+
+**Parallel Execution Note:** Since GPT 4.1-mini runs are hosted (API-backed), they should be launched in parallel terminal sessions while Qwen runs (like the Qwen 27b model-suite ladder) run locally via Ollama.
+
+---
+
+## Secondary workstream: Full model suite alignment
+
+**Status:** **Finish in flight / secondary** — comparison group `model_suite_frozen_architecture_v1` — `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md`.
 
 **Goal:** Run the **same frozen programs**, scorers, and splits across the full target model set for **model-comparison evidence only** (`decision_scope: arm`). Do not mechanism-close hybrid placement or swap operational defaults from model sweeps alone.
 
@@ -36,7 +80,7 @@
 | **Claude Sonnet 4.6** | Anthropic | `configs/models/gan_s0_claude_sonnet_4_6_anthropic.json` (`claude-sonnet-4-6`) | Done | **Full replay done** — S1 **81.8%**, S4 **65.1%**, Gan F0 **73.0%** monthly |
 | **Qwen 3.6:35b** | Ollama (local) | `configs/models/gan_s0_qwen35b_ollama.json` | Done (Win) | **Column done** — ExECT S1/S4 v4.10 full; Gan F0 full **64.4%** monthly (`…131822Z`) |
 | **Qwen 3.6:27b** | Ollama (local) | `configs/models/gan_s0_qwen27b_ollama.json`, `configs/models/exect_qwen27b_ollama.json` | Done (Win) | **Full ladder ready** — smokes pass; configs + `scripts/start_qwen27b_model_suite_ladder_detached.ps1`; execute after 35b Gan F0 full |
-| **Qwen 3.5:9b** | Ollama (local) | `configs/models/gan_s0_qwen9b_ollama.json`, `configs/models/exect_qwen9b_ollama.json` | Done (Win) | **Full ladder in flight** — `scripts/start_qwen9b_model_suite_ladder_detached.ps1` (S1→S4→Gan F0) |
+| **Qwen 3.5:9b** | Ollama (local) | `configs/models/gan_s0_qwen9b_ollama.json`, `configs/models/exect_qwen9b_ollama.json` | Done (Win) | **Full ladder done** — S1 **79.4%**, S4 **64.0%**, Gan F0 **65.9%** monthly (`…180406Z` / `…190626Z` / `…201156Z`) |
 | **GPT 5.5** | OpenAI | `configs/models/gan_s0_gpt5_5_openai.json` | Done | **Full replay done** — S1 **85.7%**, S4 **68.7%**, Gan F0 **74.9%** monthly (`…114349Z` / `…115403Z` / `…121010Z`) |
 
 Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibility` skill. Hosted API keys are loaded from the local `.env`; the Claude config expects `ANTHROPIC_API_KEY`.
@@ -63,12 +107,12 @@ Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibil
 | Claude Sonnet 4.6 | **81.8%** done | **65.1%** done | **73.0%** done | `model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md` |
 | Qwen 3.6:35b | 79.0% (v4.10) | 67.5% | **64.4%** done (`…131822Z`) | cap-25 `gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md` |
 | Qwen 3.6:27b | **Ready** | **Ready** | **Ready** | Deferred overnight — `start_qwen27b_model_suite_ladder_detached.ps1` |
-| Qwen 3.5:9b | **In flight** | **In flight** | **In flight** | `start_qwen9b_model_suite_ladder_detached.ps1` |
+| Qwen 3.5:9b | **79.4%** done | **64.0%** done | **65.9%** done | `model_suite_qwen9b_full_validation_v1_inspection_20260522.md` |
 | GPT 5.5 | **85.7%** done | **68.7%** done | **74.9%** done | `model_suite_gpt5_5_full_validation_v1_inspection_20260522.md` |
 
 ### Sequencing
 
-**Runtime:** one Windows laptop — hosted API calls may run **in parallel** with one Ollama job; **never two Ollama jobs at once**.
+**Runtime:** one Windows laptop — hosted API calls (GPT 4.1-mini sweeps) may run **in parallel** (in separate terminal windows/sessions) with one Ollama job (local Qwen runs); **never two Ollama jobs at once**.
 
 | Phase | Scope | Notes |
 | --- | --- | --- |
@@ -76,7 +120,7 @@ Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibil
 | **1 — Complete 35b column** | ~~Gan F0 Qwen cap-25~~ **done** → ~~full validation (299)~~ **done** (`…131822Z`, 64.4% monthly) | Cap-25 48.0%; full 64.4%; S1 v4.12 **reject (arm)** |
 | **2 — Hosted full replays** | Gemini 3 Flash, GPT 5.5 on S1/S4/Gan F0 | Port from 3.1 Flash-Lite / GPT 4.1-mini templates |
 | **3 — Claude full replay** | ~~S1/S4/Gan F0~~ **Done** | `…090828Z` / `…093634Z` / `…095634Z` |
-| **4 — Local scaling ladder** | Qwen **9b** full ladder **in flight** → Qwen **27b** overnight | 9b: `start_qwen9b_model_suite_ladder_detached.ps1`; 27b deferred |
+| **4 — Local scaling ladder** | ~~Qwen **9b** full ladder~~ **done** → Qwen **27b** overnight | 9b inspection `model_suite_qwen9b_full_validation_v1_inspection_20260522.md`; 27b: `start_qwen27b_model_suite_ladder_detached.ps1` |
 | **5 — Synthesis** | Provider tables + ExECT model-profile memo | Registry + paper-facing; Gemini Gan F0 **model-comparison only** |
 
 **Gates:** same splits and scorers as GPT anchors; v4_10 S1 policy on **all** tracks; report per-family breakdown on S4; record latency, tokens, and billing for hosted tracks; Ollama residency for local tracks.
@@ -85,7 +129,7 @@ Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibil
 
 ---
 
-## Next step (active pulls under model suite)
+## Secondary active pulls under model suite
 
 ### Qwen S1 v4.12 diagnosis-stabilized follow-up
 
@@ -174,20 +218,20 @@ Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibil
 
 ## Current research focus
 
-**Mode:** **Full model suite alignment** on frozen ExECT S1/S4 + Gan F0 — confirmatory model comparison and research hygiene, not new GPT cap-25 placement grids unless a new preregistered mechanism opens.
+**Mode:** **Gan S0 policy and hybrid pipeline exploration** — policy iteration, candidate-generation design, example strategy, and verifier/repair placement on the seizure-frequency task. The model suite remains a secondary finish-in-flight workstream for frozen-architecture model comparison.
 
 **Doctrine (unchanged):** Distinguish **reject (arm)** vs **reject (mechanism)** vs **operational freeze**. Operational defaults are not mechanism-closed. See pivot doc and `hybrid-pipeline-exploration` skill.
 
-**Three-axis program (2026-05-21):** Gan and ExECT cap-25 grids for stage graph, executor, and targeted Axis-3 cells are **complete**. Outcomes live in inspection docs and `hybrid_pipeline_mechanism_status_20260521.md`; do not rerun identical probe configs.
+**Three-axis program (2026-05-21):** Prior Gan and ExECT cap-25 grids for stage graph, executor, and targeted Axis-3 cells remain the evidence base. The new Gan runway reopens **implementation and policy search** on the winning Gan skeleton and adjacent open mechanisms; do not rerun identical probe configs without a new implementation variant.
 
 ### Experimentation model
 
 | Phase | Rule |
 | --- | --- |
-| Search | GPT 4.1-mini cap-25 — rank arms; accept nulls |
-| Confirm | Slice / full validation for cap-25 winners per prereg |
-| Model suite | Port **frozen** S1/S4/Gan F0 to each target track; one `model_track` factor |
-| Qwen local | Detached launchers on Windows; no IDE background for cap-25/full |
+| Search | GPT 4.1-mini slices/cap-25 — ALL broad policy, density grids, example families, candidate stage prototypes, and verifier sweeps run here first to rank and select candidates. Can be run in parallel with local Ollama scaling runs. |
+| Confirm | Qwen 3.6:35b — run only for key confirmatory evaluations of successful GPT-derived configurations or specific transferability tests. |
+| Model suite | Secondary: finish **frozen** S1/S4/Gan F0 target tracks; one `model_track` factor |
+| Qwen local | Detached launchers on Windows; no IDE background for cap-25/full; run in parallel/offline |
 | Comparison groups | One primary `varied_factor` per group; name axis in prereg |
 
 ---
@@ -216,16 +260,17 @@ Reference: `docs/policies/model_config_smoke_tests.md`, `model-config-compatibil
 | Gemini 3 Flash | **75.3%** | Model-comparison only — leads suite on monthly; S4 pooled micro below anchors |
 | Claude Sonnet 4.6 | **73.0%** | Model-comparison only — 98.0% schema, ~5 s/rec |
 | Qwen 3.6:35b | **64.4%** full | `gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md` |
+| Qwen 3.5:9b | **65.9%** full | Model-comparison only — 92.3% schema; ~7.4 s/rec; `model_suite_qwen9b_full_validation_v1_inspection_20260522.md` |
 | GPT 5.5 | **74.9%** | Model-comparison only — S1 below GPT anchor; S4/Gan F0 above |
 
 ### ExECT S1–S4 ladder (GPT anchor vs partial suite)
 
-| Schema | GPT 4.1-mini | Qwen 3.6:35b | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Claude Sonnet 4.6 | Read |
-| --- | ---: | ---: | ---: | ---: | ---: | --- |
-| S1 | 92.3% | 79.0% (v4.10) | 90.3% | **89.9%** | 81.8% | GPT 5.5 **85.7%** — seizure_type gap vs GPT |
+| Schema | GPT 4.1-mini | Qwen 3.6:35b | Qwen 3.5:9b | Gemini 3.1 Flash-Lite | Gemini 3 Flash | Claude Sonnet 4.6 | Read |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| S1 | 92.3% | 79.0% (v4.10) | **79.4%** | 90.3% | **89.9%** | 81.8% | GPT 5.5 **85.7%** — seizure_type gap vs GPT |
 | S2 | 80.9% | 82.6% | — | — | — | Qwen ≈ GPT; Gemini not replayed |
 | S3 | 72.1% | 72.2% | — | — | — | Qwen matched; Gemini not replayed |
-| S4 | 65.5% | 67.5% | 66.8% | **63.2%** | 65.1% | GPT 5.5 **68.7%** — above GPT anchor; Flash below |
+| S4 | 65.5% | 67.5% | **64.0%** | 66.8% | **63.2%** | 65.1% | GPT 5.5 **68.7%** — above GPT anchor; Flash below |
 
 **S4 residual burden (GPT):** medication_temporality precision (52 FP); seizure_frequency 45.7% F1. Frequency R1 post-merge and structured slots S2 **do not promote** (arm-reject / inconclusive). Sparse families: policy memo done; bridge work before model sweeps.
 
@@ -283,9 +328,9 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | ExECT S4 frequency repair R1 | Done — reject (arm) |
 | ExECT S4 frequency structured slots S2 | Done — inconclusive |
 | ExECT S4 sparse-family policy memo | Done |
-| **Full model suite alignment** | **Active** — see § Key workstream |
+| **Full model suite alignment** | **Secondary finish-in-flight** — see § Secondary workstream |
 | **Replay Gemini 3.1 Flash-Lite** | **Done** — ExECT + Gan F0 |
-| **Qwen Gan F0 port** | **35b full done** — 9b ladder in flight |
+| **Qwen Gan F0 port** | **35b + 9b full done** — 27b ladder next |
 
 ---
 
@@ -299,10 +344,10 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | Optimizer rungs 6–7 (BootstrapRS, GEPA) | Deferred | After train-demo alignment |
 | Test holdout confirmation | Deferred | Arms clearing dev + cap gates |
 | New ExECT S4 frequency variant | Optional | Only with **new** variant ID; do not rerun R1/S2 |
-| Gemini replay (old Gan direct/VR) | **Superseded** | Use frozen-architecture suite in § Key workstream |
+| Gemini replay (old Gan direct/VR) | **Superseded** | Use frozen-architecture suite in § Secondary workstream |
 | Claude Sonnet 4.6 model config | **Full replay done** | S1 **81.8%**, S4 **65.1%**, Gan F0 **73.0%** monthly (`…090828Z` / `…093634Z` / `…095634Z`) |
 | Qwen 3.6:27b model config | **Smokes pass** | Phase 0 done; full ladder after 35b column. ExECT config uses bounded `num_ctx=65536`; 262k-context S1 attempt `runs/exect_s0_s1_smoke_qwen27b_ollama_20260522T092112Z` timed out before predictions. |
-| Qwen 3.5:9b smoke | **Smoke pass** | Phase 0 Gan one-record runtime check done; full ladder after 27b |
+| Qwen 3.5:9b full ladder | **Done** | S1 **79.4%**, S4 **64.0%**, Gan F0 **65.9%** monthly (`…180406Z` / `…190626Z` / `…201156Z`) |
 | Gemini 3 Flash frozen replay | **Done** | S1 **89.9%**, S4 **63.2%**, Gan F0 **75.3%** monthly (`…111119Z` / `…111330Z` / `…111541Z`) |
 | GPT 5.5 frozen replay | **Done** | S1 **85.7%**, S4 **68.7%**, Gan F0 **74.9%** monthly |
 | ExECT S2/S3 model suite extension | **Deferred** | `model_suite_exect_s2_s3_extension_v1` if paper needs it |
@@ -328,14 +373,15 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | Qwen S1 v4_11 full | Hold promote blocked |
 | Qwen S1 v4.12 | **Reject (arm) at cap-25** — diagnosis restored, seizure lift lost |
 | Qwen S1 v4.12 full | **Blocked** — cap-25 gate failed |
-| Model suite workstream | **Active** — eight tracks (3 local Qwen + 4 hosted + GPT anchor) on frozen S1/S4/Gan F0; phase-0 local plumbing complete |
+| Gan policy/pipeline runway | **Major active priority** — living log + v1.4 policy slice ready; GPT rapid search before Qwen deep eval |
+| Model suite workstream | **Secondary finish-in-flight** — eight tracks (3 local Qwen + 4 hosted + GPT anchor) on frozen S1/S4/Gan F0; phase-0 local plumbing complete |
 | Model suite prereg | `model_suite_frozen_architecture_v1_preregistration_20260522.md` |
 | ExECT S1 policy | **v4_10 all tracks** — v4_12 reject (arm) |
 | Gemini Gan F0 lead | **Model-comparison only** — no operational promotion |
-| Next Ollama pull | **9b model-suite ladder in flight**; **27b overnight** (`start_qwen27b_model_suite_ladder_detached.ps1`) |
-| Next engineering | **Qwen 9b ladder inspection** → **27b overnight** → phase-5 synthesis |
+| Next Ollama pull | **Qwen 27b overnight** (`start_qwen27b_model_suite_ladder_detached.ps1`) |
+| Next engineering | **Gan G1/G3/G4 runway** (primary) + **27b model-suite ladder** when Ollama idle |
 | Hosted full replays | **GPT 5.5 done** — Gemini 3 Flash + Claude **done** |
-| Local scaling order | 35b **done** → **9b in flight** → **27b overnight** |
+| Local scaling order | 35b **done** → **9b done** → **27b overnight** |
 
 Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis_20260520.md`, `kanban_frozen_threads_history.md`.
 
@@ -344,9 +390,9 @@ Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis
 ## Long-term arc
 
 1. **Complete** hybrid cap-25 search (Gan + ExECT placement and targeted Axis-3 cells).
-2. **Now:** **Full model suite alignment** — eight tracks on frozen ExECT S1/S4 + Gan F0 (`model_suite_frozen_architecture_v1`).
-3. **In flight:** Gan F0 Qwen 35b **full validation (299)**; hosted full replays **done**.
-4. **Now:** Complete Qwen 35b Gan F0 full (299); launch Qwen **27b** model-suite ladder via detached queue; then **9b** column; phase-5 model-profile synthesis.
+2. **Now:** **Gan S0 policy/pipeline runway** — rapid GPT search over policy density, candidate extraction, examples, and verifier/repair; Qwen 35b deep evaluation for winners.
+3. **In flight:** **Full model suite alignment** — Qwen **9b done**; Qwen **27b** overnight; hosted full replays done.
+4. **Next synthesis:** convert Gan policy/pipeline outcomes into a staged hybrid design recommendation, then update mechanism status only when evidence warrants it.
 5. **Later:** published benchmark reproduction when CUI/real-set blockers clear; optimizer compile rungs only with full ladder discipline.
 6. Keep registry `decision_scope` and mechanism status doc current; treat Lane A and negative probes as **arm libraries**, not closure.
 
@@ -364,5 +410,6 @@ Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis
 - Gan F0 Gemini: `docs/experiments/gan/gan_s0_expanded_builders_prose_gemini_full_validation_v1_inspection_20260521.md`
 - Qwen Gan F0 prereg: `docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md`
 - Qwen Gan F0 cap-25: `docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md`
+- Gan policy/pipeline learning log: `docs/experiments/gan/gan_s0_policy_pipeline_learning_log.md`
 - Model suite umbrella prereg: `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md`
 - v4_12 cap-25 reject: `docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md`
