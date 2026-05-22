@@ -7,7 +7,7 @@ GPT F0 prereg: `docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_full_val
 
 ## Purpose
 
-Port **Gemini 3.1 Flash-Lite** onto the frozen Gan S0 **F0** skeleton (`cand_prose_expanded_builders_v1`, `g2_candidates_adjudicate`) for model-comparison against the GPT F0 monthly leader. **Qwen F0 port queued** — `gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md`.
+Port **Gemini 3.1 Flash-Lite** onto the frozen Gan S0 **F0** skeleton (`cand_prose_expanded_builders_v1`, `g2_candidates_adjudicate`) for model-comparison against the GPT F0 monthly leader. **Qwen F0** cap-25 done; full validation ready — `gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md`.
 
 ## Run artifacts
 
@@ -25,7 +25,7 @@ Port **Gemini 3.1 Flash-Lite** onto the frozen Gan S0 **F0** skeleton (`cand_pro
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | **Gemini** | `…094020Z` | **72.6%** | **78.3%** | **84.6%** | **61.2%** | **100%** | **100%** | **0.66** |
 | GPT 4.1-mini | `…073432Z` | 68.1% | 75.5% | 81.5% | 56.0% | 99.7% | 100% | 0.91 |
-| Qwen3.6:35b | — | *queued* | — | — | — | — | — | — |
+| Qwen3.6:35b | cap-25 `…091442Z` | **48.0%** (cap-25) | 60.0% | 72.0% | 40.0% | 100% | 100% | — |
 
 **External references (different architecture — not F0-comparable):**
 
@@ -57,7 +57,7 @@ Port **Gemini 3.1 Flash-Lite** onto the frozen Gan S0 **F0** skeleton (`cand_pro
 
 4. **Not an operational swap by default.** GPT F0 remains the frozen reproducibility anchor for the repo; this is **model-comparison evidence** (`decision_scope: arm`). Promoting Gemini would require explicit operational decision, billing review, and cross-dataset confirmation (ExECT S1 was −2.0pp vs GPT).
 
-5. **Qwen column queued.** Three-provider table completes after Qwen F0 smoke → cap-25 → full validation (`gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md`).
+5. **Qwen column in progress.** Cap-25 gates cleared (48.0% monthly on 25 records); full validation (299) is the remaining step (`gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md`).
 
 ## Taxonomy
 

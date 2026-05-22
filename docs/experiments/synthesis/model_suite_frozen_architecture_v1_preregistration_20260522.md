@@ -54,7 +54,7 @@ ExECT S2 and S3 are **excluded**. Mid-ladder Qwen vs GPT numbers remain contextu
 | `gemini3flash` | Google | `configs/models/gan_s0_gemini3_flash.json` | Hosted replay |
 | `claude_sonnet46` | Anthropic | `configs/models/gan_s0_claude_sonnet_4_6_anthropic.json` | Required track; smoke ready |
 | `qwen35b` | Ollama | `configs/models/gan_s0_qwen35b_ollama.json` | Local scaling — partial |
-| `qwen27b` | Ollama | *TBD — phase 0* | Local scaling — performance anchor |
+| `qwen27b` | Ollama | `configs/models/gan_s0_qwen27b_ollama.json`, `configs/models/exect_qwen27b_ollama.json` | Local scaling — full ladder ready |
 | `qwen9b` | Ollama | `configs/models/gan_s0_qwen9b_ollama.json` | Local scaling — latency floor |
 
 ## Sub-documents (existing arms aligned to this group)
@@ -63,7 +63,7 @@ ExECT S2 and S3 are **excluded**. Mid-ladder Qwen vs GPT numbers remain contextu
 | --- | --- | --- |
 | Gemini 3.1 ExECT S1/S4 | `exect_gemini_ladder_replay_v1` — `docs/experiments/exect/exect_gemini_ladder_replay_v1_preregistration_20260521.md` | **Done** |
 | Gemini 3.1 Gan F0 | `gan_s0_expanded_builders_prose_model_comparison_v1` — Gemini inspection | **Done** — 72.6% monthly |
-| Qwen 35b Gan F0 | `gan_s0_expanded_builders_prose_model_comparison_v1` — `docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md` | Cap-25 **ready** |
+| Qwen 35b Gan F0 | `gan_s0_expanded_builders_prose_model_comparison_v1` — `docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md` | Cap-25 **done** (48.0% monthly); full **ready** |
 | Qwen S1 v4.12 | `exect_s1_qwen_v4_12_diagnosis_stabilized_*` | **Reject (arm)** — not in suite |
 
 ## Coverage matrix (target)
@@ -72,11 +72,11 @@ ExECT S2 and S3 are **excluded**. Mid-ladder Qwen vs GPT numbers remain contextu
 | --- | --- | --- | --- | --- |
 | GPT 4.1-mini | **92.3%** | **65.5%** | **68.1%** | Anchor |
 | Gemini 3.1 Flash-Lite | **90.3%** | **66.8%** | **72.6%** | Done — Gan F0 model-comparison only |
-| Gemini 3 Flash | — | — | — | After Claude smokes |
+| Gemini 3 Flash | **89.9%** | **63.2%** | **75.3%** | Done — `model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md` |
 | GPT 5.5 | — | — | — | After Claude smokes |
 | Claude Sonnet 4.6 | — | — | — | Smoke ready |
-| Qwen 3.6:35b | 79.0% (v4.10) | 67.5% | *cap-25 ready* | Gan F0 in progress |
-| Qwen 3.6:27b | — | — | — | After 35b column; before 9b |
+| Qwen 3.6:35b | 79.0% (v4.10) | 67.5% | cap-25 **48.0%**; full **ready** | `gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md` |
+| Qwen 3.6:27b | **ready** | **ready** | **ready** | Full configs + `scripts/start_qwen27b_model_suite_ladder_detached.ps1`; after 35b Gan F0 full |
 | Qwen 3.5:9b | — | — | — | After 27b column |
 
 ## Execution sequencing
@@ -99,7 +99,7 @@ All execution on **one Windows laptop** unless noted.
 | **1 — Complete 35b column** | Gan F0 Qwen cap-25 → full (S1/S4 already at v4.10 full) |
 | **2 — Hosted full replays** | Gemini 3 Flash + GPT 5.5 on S1/S4/Gan F0 — **after Claude smokes pass** |
 | **3 — Claude full replay** | S1/S4/Gan F0 after phase 0 |
-| **4 — Local scaling** | Qwen **27b** full ladder, then Qwen **9b** full ladder |
+| **4 — Local scaling** | Qwen **27b** full ladder (`start_qwen27b_model_suite_ladder_detached.ps1`), then Qwen **9b** full ladder |
 | **5 — Synthesis** | Model-profile memo + provider tables; registry `comparison_group` alignment |
 
 ## Run lifecycle gates

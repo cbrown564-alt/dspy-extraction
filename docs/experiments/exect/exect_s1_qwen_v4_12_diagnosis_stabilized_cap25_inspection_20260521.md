@@ -45,4 +45,4 @@ Qwen cap-25: 79%/21% CPU/GPU offload, ~420 s/record, ~2.9 h total. Detached laun
 
 ## Next
 
-No further v4_12 runs without a new preregistered prompt variant. Ollama is free for **Gan F0 Qwen cap-25** (`scripts/start_gan_s0_expanded_builders_prose_cap25_qwen35b_detached.ps1`).
+No further v4_12 runs without a new preregistered prompt variant. Gan F0 Qwen cap-25 **done** (2026-05-22); next Ollama pull is **Gan F0 Qwen full validation** (`scripts/start_gan_s0_expanded_builders_prose_full_qwen35b_detached.ps1`).

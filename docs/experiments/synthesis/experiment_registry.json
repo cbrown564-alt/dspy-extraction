@@ -14679,7 +14679,7 @@
           "model_residency": "74%/26% CPU/GPU"
         }
       },
-      "notes": "decision_scope: arm. Qwen F0 smoke pass; cap-25 queued after ExECT S1 v4.12 Qwen cap-25.",
+      "notes": "decision_scope: arm. Qwen F0 smoke pass; cap-25 done 2026-05-22 (gates cleared).",
       "comparison_groups": [
         "gan_s0_expanded_builders_prose_model_comparison_v1"
       ]
@@ -14710,13 +14710,33 @@
       },
       "varied_factor": "model_track",
       "run_scope": "cap25",
-      "outcome": "pending",
+      "canonical_run_id": "gan_s0_expanded_builders_prose_cap25_qwen35b_ollama_20260522T091442Z",
+      "outcome": "hold",
       "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
       "config_paths": [
         "configs/experiments/gan_s0_expanded_builders_prose_cap25_qwen35b_ollama.json"
       ],
-      "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md",
-      "notes": "decision_scope: arm. Qwen F0 cap-25 gate before full validation; use detached launcher.",
+      "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Cap-25 gate only; not a full-validation performance claim.",
+        "Duplicate replay …104242Z matched metrics via DSPy cache; canonical run is …091442Z.",
+        "decision_scope: arm."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_expanded_builders_prose_cap25_qwen35b_ollama_20260522T091442Z",
+        "runs/gan_s0_expanded_builders_prose_cap25_qwen35b_ollama_20260522T104242Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.48,
+        "secondary": {
+          "schema_valid_prediction_rate": 1.0,
+          "evidence_quote_support_rate": 1.0,
+          "purist_category_accuracy": 0.6,
+          "pragmatic_category_accuracy": 0.72
+        }
+      },
+      "notes": "decision_scope: arm. Cap-25 gates cleared (schema/evidence 100%); full validation queued.",
       "comparison_groups": [
         "gan_s0_expanded_builders_prose_model_comparison_v1"
       ]
@@ -14753,11 +14773,11 @@
         "configs/experiments/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama.json"
       ],
       "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md",
-      "notes": "decision_scope: arm. Qwen F0 full validation — completes three-provider Gan table; queued.",
+      "notes": "decision_scope: arm. Qwen F0 full validation — cap-25 gates cleared 2026-05-22; ready for detached launcher.",
       "comparison_groups": [
         "gan_s0_expanded_builders_prose_model_comparison_v1"
       ],
-      "comparison_caveat": "Same F0 skeleton as GPT/Gemini; promote from cap-25 only after schema/evidence gates."
+      "comparison_caveat": "Same F0 skeleton as GPT/Gemini; cap-25 schema/evidence gates passed 2026-05-22."
     },
     {
       "experiment_id": "gan_s0_expanded_builders_vr_full_validation_gpt4_1_mini",
@@ -15573,6 +15593,165 @@
         "gan_s0_expanded_builders_prose_model_comparison_v1"
       ],
       "comparison_caveat": "Same F0 skeleton as GPT/Gemini; no operational promotion from suite alone."
+    },
+    {
+      "experiment_id": "exect_s0_s1_validation_full_gemini3_flash",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s1",
+      "clinical_task_family": [
+        "diagnosis",
+        "seizure_type",
+        "medication"
+      ],
+      "model_track": "gemini3flash",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "eval_only"
+      ],
+      "comparison_group": "model_suite_frozen_architecture_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s0_s1_field_family",
+        "scorer": "exect_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini3_flash.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s0_s1_validation_full_gemini3_flash_20260522T111119Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+        "GPT anchor 92.3% micro; Gemini 3 Flash 89.9% (−2.4pp); near Gemini 3.1 90.3%.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/exect_s0_s1_validation_full_gemini3_flash_20260522T111119Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.8992805755395683,
+        "secondary": {
+          "seizure_type_f1": 0.8080808080808081,
+          "evidence_quote_support_rate": 1.0,
+          "prediction_seconds_per_record": 1.9264689724994242
+        }
+      },
+      "comparison_groups": [
+        "model_suite_frozen_architecture_v1"
+      ],
+      "comparison_caveat": "Model-comparison group; same scorer and split as GPT/Gemini/Qwen anchors."
+    },
+    {
+      "experiment_id": "exect_s4_validation_full_gemini3_flash",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s4",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gemini3flash",
+      "program_architecture": "single_pass",
+      "hybrid_balance_class": [
+        "H1_post_deterministic",
+        "L1_llm_constrained"
+      ],
+      "interleaving_positions": [
+        "during",
+        "post",
+        "eval_only"
+      ],
+      "comparison_group": "model_suite_frozen_architecture_v1",
+      "fixed_controls": {
+        "schema_level": "exect_s4_field_family",
+        "scorer": "exect_s4_field_family_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini3_flash.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s4_validation_full_gemini3_flash_20260522T111330Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+        "GPT anchor 65.5% micro; Gemini 3 Flash 63.2% (−2.3pp); precision-heavy FP profile.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/exect_s4_validation_full_gemini3_flash_20260522T111330Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.6319702602230483,
+        "secondary": {
+          "annotated_medication_f1": 0.706766917293233,
+          "evidence_quote_support_rate": 0.9891067538126361,
+          "prediction_seconds_per_record": 3.2089512650010876
+        }
+      },
+      "comparison_groups": [
+        "model_suite_frozen_architecture_v1"
+      ],
+      "comparison_caveat": "Pooled micro below suite anchors; per-family breakdown required."
+    },
+    {
+      "experiment_id": "gan_s0_expanded_builders_prose_full_validation_gemini3_flash",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gemini3flash",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "comparison_group": "model_suite_frozen_architecture_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gemini3_flash.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "gan_s0_expanded_builders_prose_full_validation_gemini3_flash_20260522T111541Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Same F0 skeleton as GPT/Gemini 3.1/Claude; varied_factor model_track only.",
+        "GPT F0 anchor 68.1% monthly; Gemini 3 Flash 75.3% (+7.2pp); leads suite on monthly.",
+        "Schema 100%; evidence 100%; ~1.2 s/rec.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_expanded_builders_prose_full_validation_gemini3_flash_20260522T111541Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.7525083612040134,
+        "secondary": {
+          "purist_category_accuracy": 0.8127090301003345,
+          "pragmatic_category_accuracy": 0.862876254180602,
+          "evidence_quote_support_rate": 1.0,
+          "schema_valid_prediction_rate": 1.0,
+          "prediction_seconds_per_record": 1.1833162474915944
+        }
+      },
+      "comparison_groups": [
+        "model_suite_frozen_architecture_v1",
+        "gan_s0_expanded_builders_prose_model_comparison_v1"
+      ],
+      "comparison_caveat": "Same F0 skeleton as GPT/Gemini 3.1/Claude; no operational promotion from suite alone."
     }
   ]
 }

@@ -1,0 +1,53 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_expanded_builders_prose_full_validation_qwen9b_ollama",
+  "hypothesis": "Qwen3.5:9b port of frozen Gan S0 F0 (cand_prose_expanded_builders_v1 on g2_candidates_adjudicate) establishes local scaling latency-floor comparison evidence under model_suite_frozen_architecture_v1.",
+  "metric_caveats": [
+    "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+    "Same program, prompt, scorer, split, and expanded builders as GPT/Gemini/Qwen35b F0 — only model_track differs.",
+    "GPT F0 anchor: runs/gan_s0_expanded_builders_prose_full_validation_gpt4_1_mini_20260521T073432Z (68.1% monthly, 99.7% schema, 100% evidence).",
+    "Qwen3.6:35b F0 anchor: runs/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama_20260522T131822Z (64.4% monthly; 99.7% schema; 100% evidence).",
+    "Legacy Gan smoke only: runs/gan_s0_smoke_qwen9b_ollama_20260522T092032Z (1 record; schema/evidence 100%).",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
+    "Launch via detached PowerShell on Windows — not Cursor background terminals.",
+    "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_config_path": "configs/models/gan_s0_qwen9b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_1",
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "model_suite_frozen_architecture_v1",
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "implementation_variant": "cand_prose_expanded_builders_v1",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during"
+    ],
+    "program_architecture": "temporal_candidates_single_pass",
+    "schema_complexity": "gan_s0",
+    "stage_executor": "det_candidates_llm_adjudicate",
+    "stage_graph_id": "g2_candidates_adjudicate",
+    "varied_factor": "model_track"
+  }
+}

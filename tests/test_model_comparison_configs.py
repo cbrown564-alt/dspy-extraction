@@ -21,6 +21,7 @@ MODEL_CONFIG_FILES = [
     ("gan_s0_qwen35b_ollama.json", "ollama", "qwen3.6:35b", "http://localhost:11434/v1"),
     ("gan_s0_qwen27b_ollama.json", "ollama", "qwen3.6:27b", "http://localhost:11434/v1"),
     ("exect_qwen27b_ollama.json", "ollama", "qwen3.6:27b", "http://localhost:11434/v1"),
+    ("exect_qwen9b_ollama.json", "ollama", "qwen3.5:9b", "http://localhost:11434/v1"),
     ("gan_s0_qwen35b_ollama_gepa_max10000.json", "ollama", "qwen3.6:35b", "http://localhost:11434/v1"),
     ("gan_s0_qwen9b_ollama.json", "ollama", "qwen3.5:9b", "http://localhost:11434/v1"),
     ("gan_s0_qwen35b_ollama_max81920.json", "ollama", "qwen3.6:35b", "http://localhost:11434/v1"),

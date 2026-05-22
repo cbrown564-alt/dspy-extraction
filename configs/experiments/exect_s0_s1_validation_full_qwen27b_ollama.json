@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s0_s1_validation_full_qwen27b_ollama",
+  "hypothesis": "Frozen v4.10 monolithic ExECT S0/S1 label policy on the full fixed validation split (40 records) with Qwen3.6:27b establishes local scaling comparison evidence against GPT, Gemini, Claude, and Qwen3.6:35b anchors under model_suite_frozen_architecture_v1.",
+  "metric_caveats": [
+    "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
+    "This is the full fixed ExECTv2 validation split (40 records), not published ExECTv2 benchmark reproduction.",
+    "Benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
+    "GPT 4.1-mini frozen anchor: runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro F1).",
+    "Qwen3.6:35b anchor: runs/exect_s0_s1_validation_full_qwen35b_ollama_20260520T042117Z (79.0% micro F1).",
+    "Qwen3.6:27b smoke gate: runs/exect_s0_s1_smoke_qwen27b_ollama_20260522T095301Z (3 records; micro 94.7%; evidence 100%).",
+    "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
+    "Launch via detached PowerShell on Windows — not Cursor background terminals.",
+    "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
+    "Do not compare this run to GPT full validation as the same experiment; same scorer, different model track.",
+    "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs.",
+    "decision_scope arm; not mechanism closure."
+  ],
+  "model_config_path": "configs/models/exect_qwen27b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "exect_s0_s1_field_family_single_pass",
+  "prompt_version": "exect_s0_s1_field_family_v4_10_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s0_s1_field_family",
+  "scorer_mode": "exect_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": [
+      "diagnosis",
+      "seizure_type",
+      "medication"
+    ],
+    "comparison_group": "model_suite_frozen_architecture_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": [
+      "L1_llm_constrained"
+    ],
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "during",
+      "eval_only"
+    ],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s1",
+    "varied_factor": "model_track"
+  }
+}

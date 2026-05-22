@@ -1262,6 +1262,16 @@ def test_gan_s0_expanded_builders_prose_full_validation_claude_sonnet_4_6_anthro
             "configs/models/gan_s0_gpt5_5_openai.json",
             "exect_s0_s1_validation_full_gpt5_5_openai",
         ),
+        (
+            "configs/experiments/exect_s0_s1_validation_full_qwen27b_ollama.json",
+            "configs/models/exect_qwen27b_ollama.json",
+            "exect_s0_s1_validation_full_qwen27b_ollama",
+        ),
+        (
+            "configs/experiments/exect_s0_s1_validation_full_qwen9b_ollama.json",
+            "configs/models/exect_qwen9b_ollama.json",
+            "exect_s0_s1_validation_full_qwen9b_ollama",
+        ),
     ],
 )
 def test_exect_s0_s1_model_suite_full_validation_configs_record_frozen_contract(
@@ -1293,6 +1303,16 @@ def test_exect_s0_s1_model_suite_full_validation_configs_record_frozen_contract(
             "configs/models/gan_s0_gpt5_5_openai.json",
             "exect_s4_validation_full_gpt5_5_openai",
         ),
+        (
+            "configs/experiments/exect_s4_validation_full_qwen27b_ollama.json",
+            "configs/models/exect_qwen27b_ollama.json",
+            "exect_s4_validation_full_qwen27b_ollama",
+        ),
+        (
+            "configs/experiments/exect_s4_validation_full_qwen9b_ollama.json",
+            "configs/models/exect_qwen9b_ollama.json",
+            "exect_s4_validation_full_qwen9b_ollama",
+        ),
     ],
 )
 def test_exect_s4_model_suite_full_validation_configs_record_frozen_contract(
@@ -1323,6 +1343,16 @@ def test_exect_s4_model_suite_full_validation_configs_record_frozen_contract(
             "configs/experiments/gan_s0_expanded_builders_prose_full_validation_gpt5_5_openai.json",
             "configs/models/gan_s0_gpt5_5_openai.json",
             "gan_s0_expanded_builders_prose_full_validation_gpt5_5_openai",
+        ),
+        (
+            "configs/experiments/gan_s0_expanded_builders_prose_full_validation_qwen27b_ollama.json",
+            "configs/models/gan_s0_qwen27b_ollama.json",
+            "gan_s0_expanded_builders_prose_full_validation_qwen27b_ollama",
+        ),
+        (
+            "configs/experiments/gan_s0_expanded_builders_prose_full_validation_qwen9b_ollama.json",
+            "configs/models/gan_s0_qwen9b_ollama.json",
+            "gan_s0_expanded_builders_prose_full_validation_qwen9b_ollama",
         ),
     ],
 )

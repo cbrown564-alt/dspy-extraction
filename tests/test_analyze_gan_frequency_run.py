@@ -1,6 +1,13 @@
 import json
 from pathlib import Path
 
+from clinical_extraction.schemas import (
+    DocumentPrediction,
+    EvidenceSpan,
+    ExtractedValue,
+    GanRecord,
+    PredictionSet,
+)
 from clinical_extraction.evaluation.gan_failure_taxonomy import (
     classify_gan_frequency_failure,
     failure_action_tier,
@@ -196,3 +203,141 @@ def test_build_temporal_candidate_diagnostics_reports_gold_coverage():
     assert diagnostics["gold_covered_count"] == 4
     assert diagnostics["gold_covered_rate"] == 1.0
     assert all(row["gold_in_candidates"] for row in diagnostics["records"])
+
+
+def test_export_gan_record_report_csv_writes_full_text_as_final_column(tmp_path: Path):
+    from clinical_extraction.evaluation.gan_run_analysis import (
+        GAN_RECORD_REPORT_FIELDNAMES,
+        export_gan_record_report_csv,
+    )
+
+    gold = _gan_record(
+        record_id="gan_test",
+        note_text="Clinic letter says seizures occurring every 2 days.",
+        gold_label="1 per 2 day",
+        gold_evidence="seizures occurring every 2 days",
+    )
+    prediction_set = _gan_prediction_set(
+        _gan_prediction(
+            record_id="gan_test",
+            raw_label="1 per 2 day",
+            normalized_label="1 per 2 day",
+            evidence_text="seizures occurring every 2 days",
+            start=24,
+            end=55,
+        )
+    )
+    output = tmp_path / "report.csv"
+
+    export_gan_record_report_csv(
+        prediction_set=prediction_set,
+        gold_by_id={"gan_test": gold},
+        output_path=output,
+    )
+
+    rows = output.read_text(encoding="utf-8-sig").splitlines()
+    assert rows[0].split(",")[-1] == "full_text"
+    assert GAN_RECORD_REPORT_FIELDNAMES[-1] == "full_text"
+
+    import csv
+
+    parsed = list(csv.DictReader(output.open(encoding="utf-8-sig", newline="")))
+    assert parsed[0]["record_id"] == "gan_test"
+    assert parsed[0]["normalized_label_exact_match"] == "Y"
+    assert parsed[0]["monthly_frequency_match"] == "Y"
+    assert parsed[0]["full_text"] == gold.note_text
+
+
+def test_build_gan_record_report_rows_marks_invalid_label():
+    from clinical_extraction.evaluation.gan_run_analysis import (
+        build_gan_record_report_rows,
+    )
+
+    gold = _gan_record(
+        record_id="gan_invalid",
+        note_text="Clinic letter says four seizures in six weeks.",
+        gold_label="4 per 6 week",
+        gold_evidence="four seizures in six weeks",
+    )
+    prediction_set = _gan_prediction_set(
+        _gan_prediction(
+            record_id="gan_invalid",
+            raw_label="4 per 6 week, multiple per cluster",
+            normalized_label="4 per 6 week, multiple per cluster",
+            evidence_text="four seizures in six weeks",
+            start=19,
+            end=45,
+        )
+    )
+
+    rows = build_gan_record_report_rows(
+        prediction_set=prediction_set,
+        gold_by_id={"gan_invalid": gold},
+    )
+
+    assert rows[0]["status"] == "invalid"
+    assert rows[0]["failure_class"] == "invalid_predicted_label"
+    assert "Unsupported Gan frequency label" in rows[0]["invalid_reason"]
+    assert rows[0]["full_text"] == gold.note_text
+
+
+def _gan_record(
+    *,
+    record_id: str,
+    note_text: str,
+    gold_label: str,
+    gold_evidence: str,
+) -> GanRecord:
+    return GanRecord(
+        record_id=record_id,
+        source_row_index=1,
+        note_text=note_text,
+        gold_label=gold_label,
+        gold_evidence=gold_evidence,
+        reference_label=gold_label,
+        reference_evidence=gold_evidence,
+        row_ok=True,
+        labels_match_all_categories=True,
+        quotes_ok_all_categories=True,
+        flags=[],
+        raw={},
+    )
+
+
+def _gan_prediction_set(*predictions: DocumentPrediction) -> PredictionSet:
+    return PredictionSet(
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        predictions=list(predictions),
+    )
+
+
+def _gan_prediction(
+    *,
+    record_id: str,
+    raw_label: str,
+    normalized_label: str,
+    evidence_text: str,
+    start: int,
+    end: int,
+) -> DocumentPrediction:
+    return DocumentPrediction(
+        document_id=record_id,
+        dataset="gan_2026",
+        schema_level="gan_frequency_s0",
+        values=[
+            ExtractedValue(
+                field_name="seizure_frequency_number",
+                raw_value=raw_label,
+                normalized_value=normalized_label,
+                evidence=[
+                    EvidenceSpan(
+                        document_id=record_id,
+                        start=start,
+                        end=end,
+                        text=evidence_text,
+                    )
+                ],
+            )
+        ],
+    )

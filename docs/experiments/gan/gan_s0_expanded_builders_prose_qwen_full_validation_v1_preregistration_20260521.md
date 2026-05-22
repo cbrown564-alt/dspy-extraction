@@ -1,7 +1,7 @@
 # Gan S0 Expanded Builders Prose Qwen Full Validation v1 — Pre-Registration
 
 Date: 2026-05-21  
-Status: **Queued — smoke then cap-25 then full validation**  
+Status: **Cap-25 done — full validation (299) ready** — inspection `docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md`  
 Comparison group: `gan_s0_expanded_builders_prose_model_comparison_v1`  
 Gemini port: `docs/experiments/gan/gan_s0_expanded_builders_prose_gemini_full_validation_v1_inspection_20260521.md`  
 GPT F0 prereg: `docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_full_validation_v1_preregistration_20260521.md`  
@@ -44,7 +44,8 @@ Qwen may trail hosted GPT/Gemini on monthly accuracy (prior Qwen g2 cap-25 was *
 | --- | --- | ---: | ---: | ---: |
 | GPT F0 | `…073432Z` | 68.1% | 99.7% | 100% |
 | Gemini F0 | `…094020Z` | **72.6%** | 100% | 100% |
-| Qwen g2 cap-25 (pre-expansion builders) | `…` | 40% | — | — | *Different builder surface — not F0-comparable* |
+| Qwen g2 cap-25 (pre-expansion builders) | `…065534Z` | 40% | — | — | *Different builder surface — not F0-comparable* |
+| Qwen F0 cap-25 | **`…091442Z`** | **48.0%** | **100%** | **100%** | Gates cleared 2026-05-22 |
 
 ## Arms and configs
 

@@ -49,6 +49,19 @@ def test_build_dspy_lm_resolves_anthropic_provider_config():
     assert lm.kwargs["max_tokens"] == 4096
 
 
+def test_build_dspy_lm_defaults_gemini_3_reasoning_effort_to_minimal():
+    config = LLMProviderConfig(
+        provider="gemini",
+        model="gemini-3-flash-preview",
+        api_key="test-key",
+    )
+
+    lm = build_dspy_lm(config)
+
+    assert lm.model == "gemini/gemini-3-flash-preview"
+    assert lm.kwargs["reasoning_effort"] == "minimal"
+
+
 def test_build_dspy_lm_passes_ollama_extra_body_with_thinking_disabled():
     config = LLMProviderConfig(
         provider="ollama",
