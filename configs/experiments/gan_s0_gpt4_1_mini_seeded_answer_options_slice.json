@@ -1,0 +1,80 @@
+{
+  "controls": {
+    "abstention_policy": "seeded_selector_falls_back_to_unknown_when_no_valid_seeded_or_llm_options",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "deterministic_answer_selector_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_gpt4_1_mini_seeded_answer_options_slice",
+  "hypothesis": "G6b Axis 3 arm: seeded hybrid answer options that merge deterministic temporal candidates with LLM-proposed canonical options will avoid G6 candidate-recall collapse while preserving raw rejected LLM options for error forensics.",
+  "max_records": null,
+  "metric_caveats": [
+    "Comparison group gan_s0_gpt4_1_mini_seeded_answer_options_v1; varied_factor implementation_variant.",
+    "Record_ids are the same 25-record validation slice used for G1-G7 and targeted examples min7.",
+    "The slice is enriched for over-unknown, short-stability, grouped-event, cluster, and no-reference boundary errors; do not compare directly to full-validation metrics.",
+    "One LLM call proposes additional explicit canonical answer options after seeing deterministic temporal candidates; deterministic selector chooses the final answer.",
+    "Deterministic temporal candidates are always retained as seed options, so LLM option filtering cannot collapse candidate recall to zero.",
+    "Raw rejected LLM options are preserved in prediction metadata for error analysis. No verifier or repair pass.",
+    "Cap-25/slice search only — decision_scope arm."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_seeded_multiple_answer_det_selector",
+  "prompt_version": "gan_frequency_s0_seeded_multiple_answer_det_selector_v1_0",
+  "record_ids": [
+    "gan_13058",
+    "gan_13123",
+    "gan_13149",
+    "gan_13190",
+    "gan_13574",
+    "gan_13598",
+    "gan_14214",
+    "gan_14250",
+    "gan_14485",
+    "gan_14562",
+    "gan_14628",
+    "gan_14689",
+    "gan_14792",
+    "gan_14821",
+    "gan_14881",
+    "gan_14965",
+    "gan_14973",
+    "gan_15127",
+    "gan_15168",
+    "gan_15193",
+    "gan_15302",
+    "gan_15442",
+    "gan_16529",
+    "gan_16645",
+    "gan_16750"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_gpt4_1_mini_seeded_answer_options_v1",
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "L1_llm_constrained",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "implementation_variant": "seeded_hybrid_answer_options_det_selector_v1",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "post"
+    ],
+    "program_architecture": "seeded_multiple_answer_det_selector",
+    "schema_complexity": "gan_s0",
+    "stage_executor": "seeded_hybrid_answer_options_det_selector",
+    "stage_graph_id": "g2_candidates_adjudicate",
+    "varied_factor": "implementation_variant"
+  }
+}

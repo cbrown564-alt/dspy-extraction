@@ -749,6 +749,84 @@ Smaller targeted packs may isolate helpful grouped-event/YTD examples from clust
 Next steps:
 - Prefer G6b seeded hybrid answer options, or split example packs into narrower temporal vs abstention/cluster arms before additional model spend.
 
+### 2026-05-23 - Seeded Hybrid Answer Options GPT Slice
+
+Context:
+Test G6b after G6/G7/targeted examples failed to beat v1.4: merge deterministic temporal-candidate seeds with LLM-proposed canonical answer options, preserve raw rejected LLM options, and select by deterministic Gan-policy hierarchy.
+
+Work completed:
+Added `gan_frequency_s0_seeded_multiple_answer_det_selector`, a focused regression test for the G6 no-option collapse, taxonomy/config support, and an executable GPT slice config. Ran the fixed 25-record enriched validation slice on GPT 4.1-mini.
+
+Artifacts:
+- Config: `configs/experiments/gan_s0_gpt4_1_mini_seeded_answer_options_slice.json`
+- Run: `runs/gan_s0_gpt4_1_mini_seeded_answer_options_slice_20260523T074823Z/`
+- Inspection: `docs/experiments/gan/gan_s0_seeded_answer_options_gpt_slice_v1_inspection_20260523.md`
+- Metrics:
+  - Monthly Frequency Accuracy = 16.0%
+  - Pragmatic Category Accuracy = 20.0%
+  - Purist Category Accuracy = 16.0%
+  - Normalized Label Accuracy = 16.0%
+  - Schema Validity = 100.0%
+  - Evidence Quote Support = 100.0% on 8 supported-evidence predictions
+
+Policy / pipeline factor changed:
+Implementation variant: seeded hybrid answer-options selector over deterministic temporal candidates plus LLM-proposed canonical answer options under the same `g2_candidates_adjudicate` skeleton.
+
+Fixed controls:
+GPT 4.1-mini, same 25-record enriched validation slice as G1-G7 and targeted examples min7, deterministic Gan scorer, no verifier/repair, one LLM answer-option pass.
+
+Observations:
+The arm improved over unseeded G6 but remained far below v1.4 and G7. Selected sources were deterministic temporal candidate 4/25, LLM answer option 7/25, and no selected option 14/25. The deterministic seed wins were the four exact monthly matches (`gan_14250`, `gan_14485`, `gan_14881`, `gan_15302`). The LLM layer introduced severe false no-reference/zero-rate choices on quantified gold records, while 66 raw rejected LLM options were preserved for forensics.
+
+Interpretation:
+Reject G6b as tested for promotion (`decision_scope: arm`). Seeding prevents complete candidate collapse when deterministic builders find a candidate, but the current selector over-trusts LLM options and still cannot help records without deterministic candidate coverage.
+
+Caveats:
+The slice is enriched and does not estimate full-validation performance. Evidence support is diagnostic and only applies to predictions with evidence spans. No scorer semantics changed.
+
+Decision scope:
+Arm search.
+
+Open cells:
+Hybrid answer options remain open only with a stricter selector guard or a new candidate-builder hypothesis. The higher-value next engineering target is deterministic candidate-builder coverage for the 14/25 no-option fallbacks, not Qwen transfer of this failed arm.
+
+Next steps:
+- Keep v1.4 as the strongest no-example control.
+- Do not transfer G6b to Qwen.
+- Prioritize deterministic candidate-builder gap analysis for no-option fallbacks and consider selector guards only if they are preregistered as a new implementation variant.
+
+### 2026-05-23 - Deep Policy/Pipeline Synthesis And Next-Step Decision
+
+Context:
+After G5/G6/G6b/G7/G9 all failed to beat the v1.4 no-example control on the same enriched GPT slice, the runway needed a decision-level synthesis rather than another model-backed variant.
+
+Work completed:
+Reviewed the Gan audit, deterministic scorer semantics, primitive catalog, mechanism status, learning log, relevant inspection docs, run metrics/errors/predictions, and the current deterministic candidate-builder implementation. Added a standalone synthesis/decision note.
+
+Artifacts:
+- Synthesis: `docs/experiments/gan/gan_s0_policy_pipeline_synthesis_20260523.md`
+- Source runs: `runs/gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_1_slice_20260522T215239Z/`, `runs/gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_4_slice_20260522T215246Z/`, `runs/gan_s0_gpt4_1_mini_policy_density_compact_hierarchy_slice_20260522T221745Z/`, `runs/gan_s0_gpt4_1_mini_event_table_candidate_slice_20260522T222602Z/`, `runs/gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice_20260522T223556Z/`, `runs/gan_s0_gpt4_1_mini_constrained_verifier_slice_20260522T225947Z/`, `runs/gan_s0_gpt4_1_mini_targeted_examples_min7_slice_20260523T072443Z/`, `runs/gan_s0_gpt4_1_mini_seeded_answer_options_slice_20260523T074823Z/`
+
+Observations:
+- v1.4 remains the strongest no-example GPT slice control: 36.0% monthly, 56.0% pragmatic, 100.0% schema/evidence.
+- G7 and targeted examples tied v1.4 but added complexity or mixed regressions.
+- G6b underperformed v1.4: 16.0% monthly, 20.0% pragmatic, with false no-reference/zero-rate LLM options and many no-option fallbacks.
+- Current deterministic builders contain the exact gold label for only 5/25 enriched-slice records: 2/2 counted-window/no-further-events cases, 3/15 infrequent quantified cases, and 0 coverage for frequent quantified, seizure-free, vague-multiple, and cluster-frequency residuals.
+
+Interpretation:
+The dominant bottleneck is candidate coverage plus policy selection over missing candidates, not evidence support, schema validity, generic examples, or verifier freedom. Model-backed stages are downstream of too-thin candidate surfaces: constrained verification mostly confirms the initial answer when candidates are empty, while LLM option layers introduce new schema-valid but semantically wrong answers.
+
+Caveats:
+The slice is enriched for Qwen pragmatic misses and is not a full-validation estimate. This synthesis does not close LLM candidate extraction, examples, or verification as mechanisms; it rejects the tested arms for promotion and chooses the next operational pull.
+
+Decision scope:
+Operational synthesis plus arm-level decisions; no mechanism closure.
+
+Next steps:
+- Do not transfer G5/G6/G6b/G7/G9 to Qwen.
+- Keep v1.4 as the current no-example GPT slice control.
+- Pull deterministic candidate-builder gap analysis next: no-model inspection, regression fixtures, targeted builder implementation, primitive validation, then a single GPT slice only if coverage improves.
+
 ## Update Template
 
 

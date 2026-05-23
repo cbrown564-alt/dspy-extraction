@@ -27,6 +27,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+    GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
@@ -53,6 +54,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0TemporalEventTableVerifyRepairModule,
     GanFrequencyS0TemporalEventTableSinglePassModule,
     GanFrequencyS0MultipleAnswerDetSelectorModule,
+    GanFrequencyS0SeededMultipleAnswerDetSelectorModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -205,6 +207,12 @@ def test_build_gan_s0_module_dispatches_program_variants():
         GanFrequencyS0MultipleAnswerDetSelectorModule,
     )
     assert isinstance(
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT
+        ),
+        GanFrequencyS0SeededMultipleAnswerDetSelectorModule,
+    )
+    assert isinstance(
         build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT),
         GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
     )
@@ -269,6 +277,12 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
     assert (
         stage_graph_id_for_program_variant(
             GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT
+        )
+        == "g2_candidates_adjudicate"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT
         )
         == "g2_candidates_adjudicate"
     )
@@ -2016,6 +2030,45 @@ def test_gan_s0_multiple_answer_det_selector_filters_and_selects_options():
     assert pred.values[0].raw_value == "1 per year"
 
 
+def test_gan_s0_seeded_multiple_answer_selector_uses_deterministic_seed_when_llm_options_drop():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    _configure_dummy([
+        {
+            "answer_options_json": (
+                '{"answer_options": ['
+                '{"canonical_label": "unknown", '
+                '"evidence_text": "NOT IN NOTE", "status": "unknown", '
+                '"ambiguity_flags": ["denominator_missing"], '
+                '"rationale": "unsupported option should be preserved as rejected"}'
+                "]}"
+            )
+        }
+    ])
+
+    module = GanFrequencyS0SeededMultipleAnswerDetSelectorModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["temporal_candidate_source"] == (
+        "seeded_hybrid_multiple_answer_det_selector"
+    )
+    assert pred.metadata["verifier_decision"] == "deterministic_select"
+    assert pred.metadata["selected_answer_option"]["source"] == (
+        "deterministic_temporal_candidate"
+    )
+    assert pred.metadata["selected_answer_option"]["canonical_label"] == "1 per year"
+    assert pred.metadata["rejected_multiple_answer_options"][0]["canonical_label"] == (
+        "unknown"
+    )
+    assert pred.values[0].raw_value == "1 per year"
+
+
 def test_build_gan_s0_module_supports_temporal_event_table_variant():
     module = build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT)
     assert isinstance(module, GanFrequencyS0TemporalEventTableVerifyRepairModule)
@@ -2359,4 +2412,3 @@ def test_gan_s0_constrained_verifier_module_runs():
     assert pred.metadata["verifier_decision"] == "repair"
     # It should have reverted "1 per yr" to "1 per year"
     assert pred.values[0].raw_value == "1 per year"
-

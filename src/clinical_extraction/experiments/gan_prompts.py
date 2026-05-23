@@ -10,7 +10,9 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
+    GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
@@ -88,6 +90,15 @@ def gan_prompts_data(
         predictor_name = (
             "dspy.Predict + deterministic temporal candidates + "
             "dspy.Predict(event table) + dspy.Predict"
+        )
+    elif program_variant == GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
+        module_name = "GanFrequencyS0MultipleAnswerDetSelectorModule"
+        predictor_name = "dspy.Predict(answer options) + deterministic selector"
+    elif program_variant == GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
+        module_name = "GanFrequencyS0SeededMultipleAnswerDetSelectorModule"
+        predictor_name = (
+            "deterministic temporal candidates + dspy.Predict(answer options) + "
+            "deterministic selector"
         )
     elif program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
         module_name = "GanFrequencyS0ReactTemporalToolsModule"

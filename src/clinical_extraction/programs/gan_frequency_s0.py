@@ -62,6 +62,9 @@ GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT = (
 GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT = (
     "gan_frequency_s0_multiple_answer_det_selector"
 )
+GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT = (
+    "gan_frequency_s0_seeded_multiple_answer_det_selector"
+)
 GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT = (
     "gan_frequency_s0_react_temporal_tools"
 )
@@ -131,6 +134,9 @@ GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_PROMPT_VERSION = (
 GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION = (
     "gan_frequency_s0_multiple_answer_det_selector_v1_0"
 )
+GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION = (
+    "gan_frequency_s0_seeded_multiple_answer_det_selector_v1_0"
+)
 GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_PROMPT_VERSION = (
     "gan_frequency_s0_react_temporal_tools_v1_1"
 )
@@ -171,6 +177,9 @@ GAN_FREQUENCY_S0_STAGE_GRAPH_BY_VARIANT = {
         "g2_candidates_adjudicate"
     ),
     GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT: (
         "g2_candidates_adjudicate"
     ),
 }
@@ -847,6 +856,8 @@ def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
         return GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
         return GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
+        return GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION
     if program_variant in {
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
@@ -2196,13 +2207,81 @@ class GanFrequencyS0MultipleAnswerSignature(dspy.Signature):
     )
 
 
+class GanFrequencyS0SeededMultipleAnswerSignature(dspy.Signature):
+    """Propose additional canonical Gan answers after reading deterministic candidates.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    This is a G6b seeded hybrid answer-options arm. Deterministic temporal
+    candidates are already available to the selector; the model should add
+    plausible missing or competing readings, not restate the prompt.
+
+    Output answer_options_json as a JSON object with key "answer_options".
+    Each option must include canonical_label, evidence_text, status,
+    ambiguity_flags, and rationale.
+
+    Seeded policy:
+    - Treat temporal_candidates as note-derived seed options. Add an LLM option
+      only when it improves, competes with, or flags ambiguity in those seeds.
+    - Preserve exact count/window slots in canonical_label.
+    - Use exact contiguous evidence_text from the note for every option except
+      no seizure frequency reference.
+    - Include unknown only for genuine pattern-only or trigger-conditioned
+      readings without a denominator.
+    - Do not discard deterministic candidates; the deterministic selector will
+      merge them with these LLM options.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    temporal_candidates: str = dspy.InputField(
+        desc="Deterministic temporal frequency candidate labels and evidence."
+    )
+    answer_options_json: str = dspy.OutputField(
+        desc=(
+            'JSON object {"answer_options": [...]} with canonical_label, '
+            "evidence_text, status, ambiguity_flags, and rationale for each option."
+        )
+    )
+
+
 def _multiple_answer_option_to_dict(option: dict[str, Any]) -> dict[str, Any]:
-    return {
+    payload = {
         "canonical_label": option["canonical_label"],
         "evidence_text": option.get("evidence_text"),
         "status": option.get("status", ""),
         "ambiguity_flags": list(option.get("ambiguity_flags", [])),
         "rationale": option.get("rationale", ""),
+    }
+    if "source" in option:
+        payload["source"] = option["source"]
+    if "rejection_reason" in option:
+        payload["rejection_reason"] = option["rejection_reason"]
+    return payload
+
+
+def _raw_multiple_answer_option_to_dict(
+    row: dict[str, Any],
+    *,
+    rejection_reason: str,
+) -> dict[str, Any]:
+    flags_raw = row.get("ambiguity_flags") or []
+    if isinstance(flags_raw, str):
+        flags = [flags_raw]
+    elif isinstance(flags_raw, list):
+        flags = [str(flag) for flag in flags_raw if str(flag).strip()]
+    else:
+        flags = []
+    return {
+        "canonical_label": row.get("canonical_label"),
+        "evidence_text": row.get("evidence_text"),
+        "status": row.get("status"),
+        "ambiguity_flags": flags,
+        "rationale": row.get("rationale"),
+        "source": row.get("source", "llm_answer_option"),
+        "rejection_reason": rejection_reason,
     }
 
 
@@ -2211,16 +2290,38 @@ def _parse_multiple_answer_options_json(
     *,
     note_text: str,
 ) -> list[dict[str, Any]]:
+    parsed, _rejected = _parse_multiple_answer_options_json_with_rejections(
+        payload,
+        note_text=note_text,
+    )
+    return parsed
+
+
+def _parse_multiple_answer_options_json_with_rejections(
+    payload: str | dict[str, Any] | None,
+    *,
+    note_text: str,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     if payload is None:
-        return []
+        return [], []
     if isinstance(payload, str):
         stripped = payload.strip()
         if not stripped or stripped.lower() in {"none", "null"}:
-            return []
+            return [], []
         try:
             raw = json.loads(stripped)
         except json.JSONDecodeError:
-            return []
+            return [], [
+                {
+                    "canonical_label": None,
+                    "evidence_text": None,
+                    "status": None,
+                    "ambiguity_flags": [],
+                    "rationale": payload,
+                    "source": "llm_answer_option",
+                    "rejection_reason": "invalid_json",
+                }
+            ]
     else:
         raw = payload
 
@@ -2229,30 +2330,55 @@ def _parse_multiple_answer_options_json(
     elif isinstance(raw, dict):
         rows = raw.get("answer_options") or raw.get("candidates") or []
     else:
-        return []
+        return [], []
     if not isinstance(rows, list):
-        return []
+        return [], []
 
     parsed: list[dict[str, Any]] = []
+    rejected: list[dict[str, Any]] = []
     seen: set[tuple[str, str | None]] = set()
     for row in rows:
         if not isinstance(row, dict):
             continue
         label_raw = row.get("canonical_label")
         if not isinstance(label_raw, str) or not label_raw.strip():
+            rejected.append(
+                _raw_multiple_answer_option_to_dict(
+                    row,
+                    rejection_reason="missing_canonical_label",
+                )
+            )
             continue
         label = _normalize_predicted_label(label_raw)
         if not label:
+            rejected.append(
+                _raw_multiple_answer_option_to_dict(
+                    row,
+                    rejection_reason="empty_normalized_label",
+                )
+            )
             continue
         evidence = row.get("evidence_text")
         evidence_text = evidence.strip() if isinstance(evidence, str) else None
         if label != "no seizure frequency reference" and (
             not evidence_text or evidence_text not in note_text
         ):
+            rejected.append(
+                _raw_multiple_answer_option_to_dict(
+                    row,
+                    rejection_reason="unsupported_or_missing_evidence",
+                )
+            )
             continue
         try:
             _multiple_answer_label_class(label)
         except ValueError:
+            rejected.append(
+                _raw_multiple_answer_option_to_dict(
+                    row,
+                    rejection_reason="noncanonical_label",
+                )
+            )
             continue
         flags_raw = row.get("ambiguity_flags") or []
         if isinstance(flags_raw, str):
@@ -2268,13 +2394,20 @@ def _parse_multiple_answer_options_json(
             "status": status,
             "ambiguity_flags": flags,
             "rationale": str(row.get("rationale") or ""),
+            "source": str(row.get("source") or "llm_answer_option"),
         }
         key = (label, evidence_text)
         if key in seen:
+            rejected.append(
+                _raw_multiple_answer_option_to_dict(
+                    row,
+                    rejection_reason="duplicate_label_evidence",
+                )
+            )
             continue
         seen.add(key)
         parsed.append(option)
-    return parsed
+    return parsed, rejected
 
 
 def _multiple_answer_label_class(label: str) -> str:
@@ -2330,6 +2463,34 @@ def select_gan_multiple_answer_option(
     return max(options, key=_multiple_answer_selector_score)
 
 
+def _temporal_candidates_to_multiple_answer_options(
+    candidates: list[Any],
+) -> list[dict[str, Any]]:
+    options: list[dict[str, Any]] = []
+    for candidate in candidates:
+        label = _normalize_predicted_label(candidate.canonical_label)
+        if not label:
+            continue
+        try:
+            _multiple_answer_label_class(label)
+        except ValueError:
+            continue
+        options.append(
+            {
+                "canonical_label": label,
+                "evidence_text": candidate.evidence_text,
+                "status": "current",
+                "ambiguity_flags": [],
+                "rationale": (
+                    "Seeded from deterministic temporal candidate "
+                    f"{candidate.derivation}."
+                ),
+                "source": "deterministic_temporal_candidate",
+            }
+        )
+    return options
+
+
 class GanFrequencyS0MultipleAnswerGeneratorModule(dspy.Module):
     """Model pass that proposes canonical answer options for deterministic selection."""
 
@@ -2339,6 +2500,20 @@ class GanFrequencyS0MultipleAnswerGeneratorModule(dspy.Module):
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.generate(note_text=note_text)
+
+
+class GanFrequencyS0SeededMultipleAnswerGeneratorModule(dspy.Module):
+    """Model pass that proposes answer options after seeing deterministic seeds."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.generate = dspy.Predict(GanFrequencyS0SeededMultipleAnswerSignature)
+
+    def forward(self, note_text: str, temporal_candidates: str) -> dspy.Prediction:
+        return self.generate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates,
+        )
 
 
 class GanFrequencyS0MultipleAnswerDetSelectorModule(dspy.Module):
@@ -2385,6 +2560,84 @@ class GanFrequencyS0MultipleAnswerDetSelectorModule(dspy.Module):
             verifier_reason=(
                 "Selected by deterministic Gan policy hierarchy over explicit "
                 "canonical answer options."
+            ),
+            prompt_version=self.prompt_version,
+        )
+
+
+class GanFrequencyS0SeededMultipleAnswerDetSelectorModule(dspy.Module):
+    """Deterministic temporal seeds plus LLM options followed by deterministic selection."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = (
+            GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION
+        ),
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.generator = GanFrequencyS0SeededMultipleAnswerGeneratorModule()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+            temporal_candidate_to_dict,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        generated = self.generator(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        llm_options, rejected_options = (
+            _parse_multiple_answer_options_json_with_rejections(
+                generated.answer_options_json,
+                note_text=note_text,
+            )
+        )
+        seeded_options = _temporal_candidates_to_multiple_answer_options(candidates)
+        options = seeded_options + llm_options
+        selected = select_gan_multiple_answer_option(options)
+        if selected is None:
+            return dspy.Prediction(
+                seizure_frequency_number="unknown",
+                evidence_text=None,
+                temporal_candidates=temporal_candidates_text,
+                temporal_candidate_labels=[c.canonical_label for c in candidates],
+                temporal_candidate_records=[
+                    temporal_candidate_to_dict(candidate) for candidate in candidates
+                ],
+                multiple_answer_options=[],
+                rejected_multiple_answer_options=rejected_options,
+                selected_answer_option=None,
+                temporal_candidate_source="seeded_hybrid_multiple_answer_det_selector",
+                verifier_decision="abstain",
+                verifier_reason=(
+                    "Deterministic selector found no valid seeded or LLM answer options."
+                ),
+                prompt_version=self.prompt_version,
+            )
+        return dspy.Prediction(
+            seizure_frequency_number=selected["canonical_label"],
+            evidence_text=selected.get("evidence_text"),
+            temporal_candidates=temporal_candidates_text,
+            temporal_candidate_labels=[c.canonical_label for c in candidates],
+            temporal_candidate_records=[
+                temporal_candidate_to_dict(candidate) for candidate in candidates
+            ],
+            multiple_answer_options=[
+                _multiple_answer_option_to_dict(option) for option in options
+            ],
+            rejected_multiple_answer_options=rejected_options,
+            selected_answer_option=_multiple_answer_option_to_dict(selected),
+            temporal_candidate_source="seeded_hybrid_multiple_answer_det_selector",
+            verifier_decision="deterministic_select",
+            verifier_reason=(
+                "Selected by deterministic Gan policy hierarchy over deterministic "
+                "temporal seeds plus valid LLM answer options."
             ),
             prompt_version=self.prompt_version,
         )
@@ -3151,6 +3404,7 @@ def build_gan_s0_module(
     | GanFrequencyS0TemporalEventTableVerifyRepairModule
     | GanFrequencyS0TemporalEventTableSinglePassModule
     | GanFrequencyS0MultipleAnswerDetSelectorModule
+    | GanFrequencyS0SeededMultipleAnswerDetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     resolved_prompt_version = prompt_version or default_gan_frequency_s0_prompt_version(
@@ -3229,6 +3483,10 @@ def build_gan_s0_module(
         )
     if program_variant == GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
         return GanFrequencyS0MultipleAnswerDetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_SEEDED_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
+        return GanFrequencyS0SeededMultipleAnswerDetSelectorModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
@@ -3537,6 +3795,8 @@ def _predict_record(
         | GanFrequencyS0TemporalCandidatesVerifyRepairModule
         | GanFrequencyS0TemporalCandidatesSinglePassModule
         | GanFrequencyS0TemporalEventTableVerifyRepairModule
+        | GanFrequencyS0MultipleAnswerDetSelectorModule
+        | GanFrequencyS0SeededMultipleAnswerDetSelectorModule
         | GanFrequencyS0ReactTemporalToolsModule
     ),
     record: GanRecord,
@@ -3597,6 +3857,10 @@ def _predict_record(
         metadata["temporal_event_table_records"] = pred.temporal_event_table_records
     if hasattr(pred, "multiple_answer_options"):
         metadata["multiple_answer_options"] = pred.multiple_answer_options
+    if hasattr(pred, "rejected_multiple_answer_options"):
+        metadata["rejected_multiple_answer_options"] = (
+            pred.rejected_multiple_answer_options
+        )
     if hasattr(pred, "selected_answer_option"):
         metadata["selected_answer_option"] = pred.selected_answer_option
     if hasattr(pred, "react_trajectory"):

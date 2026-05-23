@@ -78,6 +78,7 @@ SINGLE_CONTROLLED_FIELDS: dict[str, frozenset[str]] = {
             "temporal_event_table_verify_repair",
             "temporal_event_table_single_pass",
             "multiple_answer_det_selector",
+            "seeded_multiple_answer_det_selector",
             "react_temporal_tools",
             "section_aware",
             "field_family_parallel",

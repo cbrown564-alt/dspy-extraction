@@ -68,6 +68,8 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Canonical format examples (Gan adjudicate) | **open** | Cap-25 C1 +4pp exact (arm hold); residual 30-record replay null — `docs/experiments/gan/gan_s0_canonical_format_residual_slice_replay_20260521.md` |
 | Candidate-constrained verifier (Gan G7) | **arm-reject** | GPT enriched slice tied v1.4 (36.0% monthly, 56.0% pragmatic) while adding a second LLM pass; 100.0% schema/evidence and no free-form drift, but no promotion lift — `docs/experiments/gan/gan_s0_candidate_constrained_verifier_gpt_slice_v1_inspection_20260522.md` |
 | Targeted examples min7 (Gan) | **arm-reject** | GPT enriched slice tied v1.4 (36.0% monthly, 56.0% pragmatic, 100.0% schema/evidence) with mixed rescues/regressions; example mechanism remains open — `docs/experiments/gan/gan_s0_targeted_examples_min7_gpt_slice_v1_inspection_20260523.md` |
+| Seeded hybrid answer options (Gan G6b) | **arm-reject** | GPT enriched slice underperformed v1.4 (16.0% monthly, 20.0% pragmatic, 100.0% schema/evidence on 8 supported-evidence predictions); deterministic seeds rescued four exact records, but LLM option selection introduced false no-reference/zero-rate errors and 14/25 fallback `unknown` — `docs/experiments/gan/gan_s0_seeded_answer_options_gpt_slice_v1_inspection_20260523.md` |
+| Gan S0 policy/pipeline synthesis | **operational-freeze** | Decision synthesis keeps v1.4 as no-example GPT slice control and F0 expanded builders + prose as full-validation operational default; next pull is deterministic candidate-builder gap analysis before more model spend — `docs/experiments/gan/gan_s0_policy_pipeline_synthesis_20260523.md` |
 | ExECT S4 frequency structured slots | **open** | Cap-25 S2 null vs R0 (51.0% F1); mechanism class open — `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` |
 | ExECT S4 sparse-family prompt sweeps | **policy-gated / deferred** | Policy memo selects bridge-first; no cap-25 model spend until bridge scaffolds — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md` |
 
@@ -85,4 +87,5 @@ These are **arm-reject**, not mechanism-reject for the rows in that doc.
 - Preregister expanded builders + VR bundle (`g3_candidates_extract_repair`) vs F0 adjudicate-only anchor — **Done** `docs/experiments/gan/gan_s0_expanded_builders_vr_gpt_full_validation_v1_preregistration_20260521.md`
 - Execute V1 full validation and inspection — **Done** `docs/experiments/gan/gan_s0_expanded_builders_vr_gpt_full_validation_v1_inspection_20260521.md` (hold; F0 remains monthly leader)
 - ExECT S4 medication precision guard full-validation L1/G0 pair
+- Gan deterministic candidate-builder gap analysis on enriched slice before more model spend
 - Targeted builder gaps: seizure-type priority, long-window cluster phrasing
