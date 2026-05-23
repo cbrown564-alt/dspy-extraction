@@ -477,6 +477,185 @@ Next steps:
 - Execute G3 (GPT-first) policy-density mini-grid on GPT 4.1-mini.
 - Execute G4 (GPT-first) targeted example families on GPT 4.1-mini.
 
+### 2026-05-22 - G3: GPT Policy-Density Mini-Grid
+
+Context:
+Test whether a compact Gan adjudication hierarchy can preserve the v1.4 policy gains while reducing regressions from heavier policy text. This is an Axis 3 prompt-policy density arm under the fixed `g2_candidates_adjudicate` skeleton.
+
+Work completed:
+Added and ran a compact hierarchy prompt arm against the same 25-record enriched Qwen pragmatic-error slice used for v1.1 and v1.4.
+
+Artifacts:
+- Config: `configs/experiments/gan_s0_gpt4_1_mini_policy_density_compact_hierarchy_slice.json`
+- Run: `runs/gan_s0_gpt4_1_mini_policy_density_compact_hierarchy_slice_20260522T221745Z/`
+- Inspection: `docs/experiments/gan/gan_s0_policy_density_gpt_slice_v1_inspection_20260522.md`
+- Metrics:
+  - v1.1 baseline: Pragmatic 56.0%, Monthly 24.0%, Purist 40.0%, Normalized 16.0%
+  - Compact hierarchy: Pragmatic 48.0%, Monthly 28.0%, Purist 36.0%, Normalized 20.0%
+  - v1.4 full policy: Pragmatic 56.0%, Monthly 36.0%, Purist 44.0%, Normalized 28.0%
+- Error analysis:
+  - Compact rescued `gan_14214` like v1.4.
+  - Compact lost v1.4 wins on `gan_13190` and `gan_14881`.
+  - Compact introduced pragmatic regressions on `gan_14689`, `gan_15442`, `gan_16529`, and `gan_16750`.
+
+Policy / pipeline factor changed:
+Prompt policy density (`v1.1` baseline vs compact hierarchy vs v1.4 full policy).
+
+Fixed controls:
+GPT 4.1-mini, Gan validation slice, `g2_candidates_adjudicate` architecture, deterministic temporal candidates, deterministic Gan scorer, no verifier, no few-shot examples.
+
+Observations:
+The compact hierarchy was not a useful middle ground on this slice. It improved monthly accuracy over v1.1 by one record but underperformed v1.4 on monthly, Purist, normalized, and pragmatic metrics.
+
+Interpretation:
+Reject compact hierarchy as tested (`decision_scope: arm`). v1.4 remains the better prompt-policy candidate for the next GPT-first search cells, but this does not close policy compression as a mechanism.
+
+Caveats:
+The 25-record slice is enriched for Qwen 35b pragmatic misses and does not estimate full-validation performance.
+
+Decision scope:
+Arm search.
+
+Open cells:
+Targeted example families and structured candidate/proposal stages may be more useful than compact policy prose alone.
+
+Next steps:
+- Execute G4 targeted example-family design before any example-backed model spend.
+- Use v1.4 as the stronger no-example policy control for subsequent GPT-first example and candidate-stage tests.
+
+### 2026-05-22 - G4: Targeted Example Families Designed
+
+Context:
+G3 showed that compact policy prose was weaker than v1.4 full policy on the enriched slice. The next likely lever is targeted demonstrations for recurring ambiguity families rather than another policy-density rewrite.
+
+Work completed:
+Recorded an example-family plan before model spend.
+
+Artifacts:
+- Plan: `docs/experiments/gan/gan_s0_targeted_example_families_plan_20260522.md`
+
+Policy / pipeline factor changed:
+None yet. This is preregistration/design for future `example_strategy` arms.
+
+Fixed controls for planned first test:
+GPT 4.1-mini, `g2_candidates_adjudicate`, deterministic temporal candidates, v1.4 no-example control, deterministic Gan scorer.
+
+Planned example families:
+- Grouped recent events.
+- Counted events followed by short stability/no-further-events.
+- Highest current seizure-frequency selection.
+- Year-to-date denominator.
+- Trigger-conditioned unknown.
+- Cluster ambiguity.
+- No-reference boundary.
+
+Interpretation:
+The next model-backed step should compare v1.4 no examples against a small targeted example pack, with validation-slice gates on pragmatic accuracy, monthly accuracy, schema validity, and evidence support.
+
+Caveats:
+No model result yet; this is a rationale checkpoint to prevent retrospective example cherry-picking.
+
+Decision scope:
+Planning/design for future arm search.
+
+Open cells:
+Implement one or more fixed example-pack prompt versions and run GPT-first before any Qwen transfer.
+
+### 2026-05-22 - G5: LLM Event-Table Candidate Stage GPT Slice
+
+Context:
+Prototype an Axis 3 implementation arm where the LLM first emits a structured temporal event table, then a second single-pass adjudicator selects the final Gan label. This tests whether event/window extraction as an intermediate candidate surface helps hard Qwen residual cases without adding verify/repair.
+
+Work completed:
+Added `gan_frequency_s0_temporal_event_table_single_pass`, a GPT-first enriched-slice config, and focused tests. Ran the 25-record slice on GPT 4.1-mini.
+
+Artifacts:
+- Config: `configs/experiments/gan_s0_gpt4_1_mini_event_table_candidate_slice.json`
+- Run: `runs/gan_s0_gpt4_1_mini_event_table_candidate_slice_20260522T222602Z/`
+- Inspection: `docs/experiments/gan/gan_s0_event_table_candidate_gpt_slice_v1_inspection_20260522.md`
+- Metrics:
+  - Monthly Frequency Accuracy = 8.3% (2/24 valid)
+  - Pragmatic Category Accuracy = 37.5% (9/24 valid)
+  - Purist Category Accuracy = 25.0% (6/24 valid)
+  - Schema Validity = 96.0% (24/25)
+  - Evidence Quote Support = 100.0%
+- Error analysis:
+  - The event table often found note-supported evidence spans but did not reliably preserve `event_count` or window slots.
+  - The adjudicator frequently backed off to `unknown` or `no seizure frequency reference` when event-table rows contained stability/no-event language.
+  - One invalid cluster label was emitted (`multiple per cluster per week, 2 per cluster`).
+
+Policy / pipeline factor changed:
+Implementation variant: LLM event-table candidate stage before final adjudication.
+
+Fixed controls:
+GPT 4.1-mini, same 25-record enriched validation slice as G1-G3, no verifier/repair, deterministic Gan scorer.
+
+Observations:
+This arm underperformed v1.1, v1.4, and compact-hierarchy controls on the same slice. Evidence grounding was not the blocker; slot fidelity and final policy selection were.
+
+Interpretation:
+Reject this event-table candidate-stage implementation as tested (`decision_scope: arm`). Do not transfer to Qwen. LLM candidate extraction remains open as a mechanism, but the next implementation should emit canonical answer options plus ambiguity flags, or make numeric slots mandatory before deterministic selection.
+
+Caveats:
+The slice is enriched for Qwen pragmatic misses and does not estimate full-validation performance.
+
+Decision scope:
+Arm search.
+
+Open cells:
+Multiple-answer proposer plus deterministic selector (G6) and candidate-constrained judge/verifier (G7) remain open.
+
+Next steps:
+- Pull G6: prototype multiple-answer candidate proposer with deterministic Gan policy selector.
+- Use G5 failure as a design constraint: event/evidence rows alone are too lossy unless count/window slots are mandatory.
+
+### 2026-05-22 - G6: Multiple-Answer Proposer + Deterministic Selector GPT Slice
+
+Context:
+Prototype an Axis 3 implementation arm where GPT 4.1-mini proposes explicit canonical Gan answer options (`canonical_label`, evidence, status, ambiguity flags), then deterministic code filters note-supported options and applies a fixed Gan policy hierarchy.
+
+Work completed:
+Added `gan_frequency_s0_multiple_answer_det_selector`, a GPT-first enriched-slice config, taxonomy vocabulary for the new program/stage executor, and focused tests. Ran the 25-record slice on GPT 4.1-mini.
+
+Artifacts:
+- Config: `configs/experiments/gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice.json`
+- Run: `runs/gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice_20260522T223556Z/`
+- Inspection: `docs/experiments/gan/gan_s0_multiple_answer_selector_gpt_slice_v1_inspection_20260522.md`
+- Metrics:
+  - Monthly Frequency Accuracy = 0.0%
+  - Pragmatic Category Accuracy = 0.0%
+  - Purist Category Accuracy = 0.0%
+  - Schema Validity = 100.0%
+  - Evidence Quote Support = 100.0% on the 4 predictions that retained supported evidence
+- Error analysis:
+  - 21/25 records had no valid answer options after parsing/evidence filtering and fell back to `unknown`.
+  - Surviving options mostly selected `unknown`; the proposer did not reliably emit benchmark-facing count/window labels.
+
+Policy / pipeline factor changed:
+Implementation variant: LLM explicit answer-option proposal plus deterministic post-selection.
+
+Fixed controls:
+GPT 4.1-mini, same 25-record enriched validation slice as G1-G5, no verifier/repair, deterministic Gan scorer.
+
+Observations:
+The stricter option schema avoided invalid labels but collapsed candidate recall. This was worse than both the G5 event-table stage and all deterministic-candidate policy controls.
+
+Interpretation:
+Reject this multiple-answer selector implementation as tested (`decision_scope: arm`). Do not transfer to Qwen. LLM candidate extraction and deterministic selection remain open mechanisms, but this strict one-pass option proposer is not a useful next default.
+
+Caveats:
+The slice is enriched for Qwen pragmatic misses and does not estimate full-validation performance. The run did not preserve raw rejected options, so the exact split between malformed JSON, unsupported evidence, and missing candidate options is inferred from retained prediction metadata.
+
+Decision scope:
+Arm search.
+
+Open cells:
+Hybrid deterministic+LLM answer options and candidate-constrained judge/verifier (G7) remain open.
+
+Next steps:
+- Pull G7: candidate-constrained judge/verifier over deterministic candidates, with no free-form over-repair.
+- If revisiting answer options later, seed with deterministic candidates and preserve raw rejected options in artifacts before filtering.
+
 ## Update Template
 
 

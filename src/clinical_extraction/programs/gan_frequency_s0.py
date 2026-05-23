@@ -1,6 +1,7 @@
 """Gan seizure-frequency S0 DSPy program."""
 from __future__ import annotations
 
+import json
 import re
 from collections.abc import Callable, Iterable
 from pathlib import Path
@@ -55,6 +56,12 @@ GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT = (
 GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT = (
     "gan_frequency_s0_temporal_event_table_verify_repair"
 )
+GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT = (
+    "gan_frequency_s0_temporal_event_table_single_pass"
+)
+GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT = (
+    "gan_frequency_s0_multiple_answer_det_selector"
+)
 GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT = (
     "gan_frequency_s0_react_temporal_tools"
 )
@@ -70,11 +77,17 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT = (
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT = (
     "gan_frequency_s0_temporal_candidates_adjudicate_verify_repair_no_guards"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier"
+)
 GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION = (
     "gan_frequency_s0_direct_verify_repair_v2_4"
 )
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_verify_repair_v1_1"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier_v1_1"
 )
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_1"
@@ -87,6 +100,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_SLOT_PAYLOAD_PROMPT_VERSION = (
 )
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy"
+)
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_5_compact_hierarchy"
 )
 GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_llm_temporal_candidates_v1_1"
@@ -105,6 +121,12 @@ GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_PROMPT_VERSION = (
 )
 GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_event_table_verify_repair_v1_0"
+)
+GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_event_table_single_pass_v1_0"
+)
+GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION = (
+    "gan_frequency_s0_multiple_answer_det_selector_v1_0"
 )
 GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_PROMPT_VERSION = (
     "gan_frequency_s0_react_temporal_tools_v1_1"
@@ -133,11 +155,20 @@ GAN_FREQUENCY_S0_STAGE_GRAPH_BY_VARIANT = {
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT: (
         "g2_candidates_adjudicate"
     ),
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT: (
         "g2_candidates_adjudicate"
     ),
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT: (
         "g3_candidates_extract_repair"
+    ),
+    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT: (
+        "g2_candidates_adjudicate"
+    ),
+    GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT: (
+        "g2_candidates_adjudicate"
     ),
 }
 GAN_FREQUENCY_S0_SYNTHESIS_PROMPT_VERSION = "gan_frequency_s0_synthesis_v1"
@@ -722,6 +753,30 @@ GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM = """
       is not, use "unknown, N per cluster" rather than inventing a spacing.
 """
 
+GAN_FREQUENCY_S0_COMPACT_HIERARCHY_POLICY_ADDENDUM = """
+    Compact Gan adjudication hierarchy (v1.5; policy-density mini-grid):
+    - First decide whether the note has clinical seizure-frequency content.
+      If not, output "no seizure frequency reference".
+    - If seizures are discussed but no count+window or cluster spacing can be
+      interpreted from the note, output "unknown".
+    - Prefer note-supported temporal_candidates with explicit count+window
+      evidence. Override candidates only for a clearly higher current rate, a
+      qualifying seizure-free interval, or a clearer Gan abstention category.
+    - Group multiple recent events into their shared observation window when
+      the note supports a common denominator.
+    - If multiple current seizure types or frequencies are stated, choose the
+      highest note-supported current frequency.
+    - Counted events followed by "stable", "no further events", or "well since"
+      remain counted-window labels unless the seizure-free interval is at least
+      6 months.
+    - Trigger-conditioned or pattern-only counts without calendar-time
+      denominator remain "unknown".
+    - Cluster labels require cluster spacing plus per-cluster count; if only the
+      per-cluster count is known, use "unknown, N per cluster".
+    - evidence_text must quote the source span that supports the selected label,
+      especially when overriding a temporal candidate.
+"""
+
 
 def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
@@ -741,6 +796,10 @@ def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
         return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
         return GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT:
+        return GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
+        return GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION
     if program_variant in {
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT,
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
@@ -752,6 +811,8 @@ def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
         return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT:
         return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION
     if program_variant == GAN_FREQUENCY_S0_DIRECT_VARIANT:
         return GAN_FREQUENCY_S0_DIRECT_GUARDRAILS_PROMPT_VERSION
     return "gan_frequency_s0_v1"
@@ -764,6 +825,8 @@ def stage_graph_id_for_program_variant(program_variant: str) -> str | None:
 def resolve_gan_frequency_s0_extractor_prompt_version(
     prompt_version: str,
 ) -> str:
+    if prompt_version == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION
     if prompt_version in {
         GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
         "gan_frequency_s0_direct_verify_repair_v2",
@@ -781,6 +844,8 @@ def resolve_gan_frequency_s0_extractor_prompt_version(
 def resolve_gan_frequency_s0_verifier_prompt_version(
     prompt_version: str,
 ) -> str:
+    if prompt_version == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION:
+        return GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION
     if prompt_version in {
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_PROMPT_VERSION,
         GAN_FREQUENCY_S0_ADJUDICATE_VERIFY_REPAIR_SPAN_CHECK_PROMPT_VERSION,
@@ -883,6 +948,20 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateErrorTaxonomyExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_COMPACT_HIERARCHY_POLICY_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateCompactHierarchyExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )
@@ -1656,6 +1735,61 @@ class GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule(dspy.Module):
         )
 
 
+class GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule(dspy.Module):
+    """Deterministic candidates, LLM adjudicate, then constrained verify-repair."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = (
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_PROMPT_VERSION
+        ),
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        extractor_prompt_version = resolve_gan_frequency_s0_extractor_prompt_version(prompt_version)
+        signature_cls = build_gan_frequency_s0_extractor_signature(extractor_prompt_version)
+        self.adjudicate = dspy.Predict(signature_cls)
+        verifier_prompt = resolve_gan_frequency_s0_verifier_prompt_version(prompt_version)
+        self.verifier = GanFrequencyS0TemporalVerifierModule(
+            prompt_version=verifier_prompt
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_candidates import (
+            build_temporal_frequency_candidates_from_note,
+            format_temporal_candidates_for_prompt,
+        )
+
+        candidates = build_temporal_frequency_candidates_from_note(note_text)
+        temporal_candidates_text = format_temporal_candidates_for_prompt(candidates)
+        initial = self.adjudicate(
+            note_text=note_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = self.verifier(
+            note_text=note_text,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            temporal_candidates=temporal_candidates_text,
+        )
+        verified = _apply_constrained_verifier_guard(
+            note_text=note_text,
+            verified=verified,
+            candidates=candidates,
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+        )
+        return _prediction_from_temporal_adjudicate_validation(
+            initial_label=initial.seizure_frequency_number,
+            initial_evidence=initial.evidence_text,
+            verified=verified,
+            candidates=candidates,
+            temporal_candidates_text=temporal_candidates_text,
+            validation_ladder_rung="constrained_verifier",
+        )
+
+
 class GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule(dspy.Module):
     """LLM candidates, LLM adjudicate, then temporal verify-repair."""
 
@@ -1783,6 +1917,43 @@ class GanFrequencyS0TemporalEventTableVerifierSignature(
     )
 
 
+class GanFrequencyS0TemporalEventTableAdjudicateSignature(GanFrequencyS0Signature):
+    """Adjudicate Gan seizure frequency from a model-extracted event table.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    This is a G5 event-table candidate-stage arm. The first model pass emits
+    seizure events, windows, and seizure-free intervals; this second pass
+    selects the final canonical Gan label and evidence quote. The event table is
+    a candidate-stage hint, not a gold label and not a free-form repair pass.
+
+    Event-table adjudication policy:
+    - Prefer note-supported counted event rows when they provide a count and
+      shared calendar window.
+    - Group multiple recent counted events into the relevant observation window
+      when the rows support a shared denominator.
+    - If several current seizure types or event frequencies are stated, choose
+      the highest note-supported current frequency.
+    - Counted events followed by short stability/no-further-events language
+      remain counted-window labels unless seizure freedom is at least 6 months.
+    - Use seizure-free labels only when a seizure_free_intervals row explicitly
+      qualifies for the seizure-free label.
+    - Trigger-conditioned or pattern-only rows without a calendar denominator
+      remain "unknown".
+    - If the note has no clinical seizure-frequency content, output
+      "no seizure frequency reference".
+    - evidence_text must be an exact contiguous quote from note_text.
+    """
+
+    temporal_event_table: str = dspy.InputField(
+        desc=(
+            "Structured seizure event table with counted events, windows, "
+            "seizure-free intervals, and optional selected-window note."
+        )
+    )
+
+
 class GanFrequencyS0TemporalEventTableExtractorModule(dspy.Module):
     """Model pass that emits a structured temporal event table."""
 
@@ -1876,6 +2047,284 @@ class GanFrequencyS0TemporalEventTableVerifyRepairModule(dspy.Module):
             ],
             temporal_event_table=temporal_event_table_text,
             temporal_event_table_records=temporal_event_table_to_dict(event_table),
+        )
+
+
+class GanFrequencyS0TemporalEventTableSinglePassModule(dspy.Module):
+    """Model event table followed by one final LLM adjudication pass."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.event_table_extractor = GanFrequencyS0TemporalEventTableExtractorModule()
+        self.adjudicate = dspy.Predict(GanFrequencyS0TemporalEventTableAdjudicateSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        from clinical_extraction.gan.temporal_events import (
+            format_temporal_event_table_for_prompt,
+            parse_temporal_event_table_json,
+            temporal_event_table_to_dict,
+        )
+
+        event_table_raw = self.event_table_extractor(note_text=note_text)
+        event_table = parse_temporal_event_table_json(
+            event_table_raw.event_table_json,
+            note_text=note_text,
+        )
+        temporal_event_table_text = format_temporal_event_table_for_prompt(event_table)
+        result = self.adjudicate(
+            note_text=note_text,
+            temporal_event_table=temporal_event_table_text,
+        )
+        return dspy.Prediction(
+            seizure_frequency_number=result.seizure_frequency_number,
+            evidence_text=result.evidence_text,
+            temporal_event_table=temporal_event_table_text,
+            temporal_event_table_records=temporal_event_table_to_dict(event_table),
+            temporal_candidate_source="llm_event_table",
+            prompt_version=self.prompt_version,
+        )
+
+
+class GanFrequencyS0MultipleAnswerSignature(dspy.Signature):
+    """Propose multiple canonical Gan seizure-frequency answers from the note.
+
+    /no_think
+    Do not use hidden reasoning. Emit only the requested output fields.
+
+    This is a G6 multiple-answer candidate-stage arm. The model should emit
+    explicit answer options rather than an event table. A deterministic selector
+    will choose among the options, so each option must expose enough policy
+    metadata to audit the choice.
+
+    Output answer_options_json as a JSON object with key "answer_options".
+    Each option must include:
+    - canonical_label: canonical Gan label, unknown, or no seizure frequency reference.
+    - evidence_text: exact contiguous note quote supporting the option; may be
+      null only for no seizure frequency reference.
+    - status: one of current, historical, seizure_free, unknown, no_reference.
+    - ambiguity_flags: list of short strings, e.g. denominator_missing,
+      trigger_conditioned, pattern_only, historical_only, no_clinical_content.
+    - rationale: short provenance note.
+
+    Proposer policy:
+    - Include all plausible benchmark-facing readings when the note is ambiguous.
+    - Preserve count/window slots inside canonical_label; do not emit event rows
+      that require the selector to reconstruct the label.
+    - Prefer exact count+window labels over unknown when both count and window
+      are present in the same current-frequency reading.
+    - Include unknown for trigger-conditioned or pattern-only events without a
+      calendar-time denominator.
+    - Include no seizure frequency reference only when the note lacks usable
+      clinical seizure-frequency content.
+    """
+
+    note_text: str = dspy.InputField(
+        desc="Full clinical note text for seizure-frequency extraction."
+    )
+    answer_options_json: str = dspy.OutputField(
+        desc=(
+            'JSON object {"answer_options": [...]} with canonical_label, '
+            "evidence_text, status, ambiguity_flags, and rationale for each option."
+        )
+    )
+
+
+def _multiple_answer_option_to_dict(option: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "canonical_label": option["canonical_label"],
+        "evidence_text": option.get("evidence_text"),
+        "status": option.get("status", ""),
+        "ambiguity_flags": list(option.get("ambiguity_flags", [])),
+        "rationale": option.get("rationale", ""),
+    }
+
+
+def _parse_multiple_answer_options_json(
+    payload: str | dict[str, Any] | None,
+    *,
+    note_text: str,
+) -> list[dict[str, Any]]:
+    if payload is None:
+        return []
+    if isinstance(payload, str):
+        stripped = payload.strip()
+        if not stripped or stripped.lower() in {"none", "null"}:
+            return []
+        try:
+            raw = json.loads(stripped)
+        except json.JSONDecodeError:
+            return []
+    else:
+        raw = payload
+
+    if isinstance(raw, list):
+        rows = raw
+    elif isinstance(raw, dict):
+        rows = raw.get("answer_options") or raw.get("candidates") or []
+    else:
+        return []
+    if not isinstance(rows, list):
+        return []
+
+    parsed: list[dict[str, Any]] = []
+    seen: set[tuple[str, str | None]] = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        label_raw = row.get("canonical_label")
+        if not isinstance(label_raw, str) or not label_raw.strip():
+            continue
+        label = _normalize_predicted_label(label_raw)
+        if not label:
+            continue
+        evidence = row.get("evidence_text")
+        evidence_text = evidence.strip() if isinstance(evidence, str) else None
+        if label != "no seizure frequency reference" and (
+            not evidence_text or evidence_text not in note_text
+        ):
+            continue
+        try:
+            _multiple_answer_label_class(label)
+        except ValueError:
+            continue
+        flags_raw = row.get("ambiguity_flags") or []
+        if isinstance(flags_raw, str):
+            flags = [flags_raw]
+        elif isinstance(flags_raw, list):
+            flags = [str(flag) for flag in flags_raw if str(flag).strip()]
+        else:
+            flags = []
+        status = str(row.get("status") or "").strip().lower()
+        option = {
+            "canonical_label": label,
+            "evidence_text": evidence_text,
+            "status": status,
+            "ambiguity_flags": flags,
+            "rationale": str(row.get("rationale") or ""),
+        }
+        key = (label, evidence_text)
+        if key in seen:
+            continue
+        seen.add(key)
+        parsed.append(option)
+    return parsed
+
+
+def _multiple_answer_label_class(label: str) -> str:
+    from clinical_extraction.gan.frequency import label_to_monthly_frequency
+
+    normalized = label.strip().lower()
+    if normalized == "no seizure frequency reference":
+        return "no_reference"
+    if normalized == "unknown" or normalized.startswith("unknown,"):
+        return "unknown"
+    if normalized.startswith("seizure free for "):
+        label_to_monthly_frequency(normalized)
+        return "seizure_free"
+    label_to_monthly_frequency(normalized)
+    return "quantified"
+
+
+def _multiple_answer_selector_score(option: dict[str, Any]) -> tuple[int, float, str]:
+    from clinical_extraction.gan.frequency import label_to_monthly_frequency
+
+    label = option["canonical_label"]
+    label_class = _multiple_answer_label_class(label)
+    flags = {str(flag).lower() for flag in option.get("ambiguity_flags", [])}
+    status = str(option.get("status") or "").lower()
+
+    if label_class == "quantified":
+        rank = 400
+        if status == "historical" or "historical_only" in flags:
+            rank -= 150
+        if {"denominator_missing", "trigger_conditioned", "pattern_only"} & flags:
+            rank -= 120
+        return (rank, label_to_monthly_frequency(label), label)
+    if label_class == "seizure_free":
+        rank = 350
+        if status == "historical" or "historical_only" in flags:
+            rank -= 150
+        return (rank, 0.0, label)
+    if label_class == "unknown":
+        rank = 300
+        if {"denominator_missing", "trigger_conditioned", "pattern_only"} & flags:
+            rank += 25
+        return (rank, 0.0, label)
+    return (100, 0.0, label)
+
+
+def select_gan_multiple_answer_option(
+    options: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    """Select one answer option with a deterministic Gan-policy hierarchy."""
+
+    if not options:
+        return None
+    return max(options, key=_multiple_answer_selector_score)
+
+
+class GanFrequencyS0MultipleAnswerGeneratorModule(dspy.Module):
+    """Model pass that proposes canonical answer options for deterministic selection."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.generate = dspy.Predict(GanFrequencyS0MultipleAnswerSignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.generate(note_text=note_text)
+
+
+class GanFrequencyS0MultipleAnswerDetSelectorModule(dspy.Module):
+    """LLM multiple-answer proposer followed by deterministic Gan-policy selector."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.prompt_version = prompt_version
+        self.generator = GanFrequencyS0MultipleAnswerGeneratorModule()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        generated = self.generator(note_text=note_text)
+        options = _parse_multiple_answer_options_json(
+            generated.answer_options_json,
+            note_text=note_text,
+        )
+        selected = select_gan_multiple_answer_option(options)
+        if selected is None:
+            return dspy.Prediction(
+                seizure_frequency_number="unknown",
+                evidence_text=None,
+                multiple_answer_options=[],
+                selected_answer_option=None,
+                temporal_candidate_source="llm_multiple_answer_det_selector",
+                verifier_decision="abstain",
+                verifier_reason=(
+                    "Deterministic selector found no valid note-supported answer options."
+                ),
+                prompt_version=self.prompt_version,
+            )
+        return dspy.Prediction(
+            seizure_frequency_number=selected["canonical_label"],
+            evidence_text=selected.get("evidence_text"),
+            multiple_answer_options=[
+                _multiple_answer_option_to_dict(option) for option in options
+            ],
+            selected_answer_option=_multiple_answer_option_to_dict(selected),
+            temporal_candidate_source="llm_multiple_answer_det_selector",
+            verifier_decision="deterministic_select",
+            verifier_reason=(
+                "Selected by deterministic Gan policy hierarchy over explicit "
+                "canonical answer options."
+            ),
+            prompt_version=self.prompt_version,
         )
 
 
@@ -2638,6 +3087,8 @@ def build_gan_s0_module(
     | GanFrequencyS0TemporalCandidatesVerifyRepairModule
     | GanFrequencyS0TemporalCandidatesSinglePassModule
     | GanFrequencyS0TemporalEventTableVerifyRepairModule
+    | GanFrequencyS0TemporalEventTableSinglePassModule
+    | GanFrequencyS0MultipleAnswerDetSelectorModule
     | GanFrequencyS0ReactTemporalToolsModule
 ):
     resolved_prompt_version = prompt_version or default_gan_frequency_s0_prompt_version(
@@ -2697,12 +3148,27 @@ def build_gan_s0_module(
         return GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule(
             prompt_version=resolved_prompt_version
         )
+    if (
+        program_variant
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT
+    ):
+        return GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule(
+            prompt_version=resolved_prompt_version
+        )
     if program_variant == GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT:
         return GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule(
             prompt_version=resolved_prompt_version
         )
     if program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT:
         return GanFrequencyS0TemporalEventTableVerifyRepairModule()
+    if program_variant == GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT:
+        return GanFrequencyS0TemporalEventTableSinglePassModule(
+            prompt_version=resolved_prompt_version
+        )
+    if program_variant == GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT:
+        return GanFrequencyS0MultipleAnswerDetSelectorModule(
+            prompt_version=resolved_prompt_version
+        )
     if program_variant == GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT:
         return GanFrequencyS0ReactTemporalToolsModule()
     raise ValueError(f"Unsupported Gan S0 program variant: {program_variant!r}")
@@ -2808,6 +3274,89 @@ def _apply_evidence_span_check_guard(
         final_evidence=None,
         decision="abstain",
         reason=f"Evidence span-check guard abstained: {feedback}",
+    )
+
+
+def _apply_constrained_verifier_guard(
+    *,
+    note_text: str,
+    verified: dspy.Prediction,
+    candidates: list[Any],
+    initial_label: str | None,
+    initial_evidence: str | None,
+) -> dspy.Prediction:
+    """Constrains verifier label to candidates, initial label, unknown, and no-reference.
+    Reverts out-of-bounds labels using difflib.get_close_matches, aligning evidence quotes.
+    """
+    from clinical_extraction.gan.frequency import normalize_label
+    import difflib
+
+    final_label = verified.final_label
+    decision = verified.decision or "confirm"
+    reason = verified.reason or "Constrained verifier guard applied."
+
+    # Build unique targets list
+    unique_targets = []
+    seen = set()
+    possible_sources = []
+    if initial_label:
+        possible_sources.append(initial_label)
+    for c in candidates:
+        possible_sources.append(c.canonical_label)
+    possible_sources.extend(["unknown", "no seizure frequency reference"])
+
+    for label in possible_sources:
+        if label and label not in seen:
+            unique_targets.append(label)
+            seen.add(label)
+
+    fallback_label = initial_label if initial_label else "unknown"
+
+    chosen_label = None
+    if final_label:
+        normalized_final = normalize_label(final_label)
+        for target in unique_targets:
+            if normalize_label(target) == normalized_final:
+                chosen_label = target
+                break
+
+        if chosen_label is None:
+            matches = difflib.get_close_matches(final_label, unique_targets, n=1, cutoff=0.5)
+            if matches:
+                chosen_label = matches[0]
+                decision = "repair"
+                reason = f"Out-of-bounds verifier label {final_label!r} reverted to closest match {chosen_label!r}."
+            else:
+                chosen_label = fallback_label
+                decision = "repair"
+                reason = f"Out-of-bounds verifier label {final_label!r} fallback to {chosen_label!r}."
+    else:
+        chosen_label = fallback_label
+        decision = "repair"
+        reason = f"Empty verifier label fallback to {chosen_label!r}."
+
+    # Align evidence text
+    chosen_evidence = None
+    candidate_match = None
+    for c in candidates:
+        if normalize_label(c.canonical_label) == normalize_label(chosen_label):
+            candidate_match = c
+            break
+
+    if candidate_match is not None:
+        chosen_evidence = candidate_match.evidence_text
+    elif initial_label and normalize_label(chosen_label) == normalize_label(initial_label):
+        chosen_evidence = initial_evidence
+    elif normalize_label(chosen_label) == normalize_label("unknown") and initial_label and normalize_label(initial_label) == normalize_label("unknown"):
+        chosen_evidence = initial_evidence
+    else:
+        chosen_evidence = None
+
+    return dspy.Prediction(
+        final_label=chosen_label,
+        final_evidence=chosen_evidence,
+        decision=decision,
+        reason=reason,
     )
 
 
@@ -2984,6 +3533,10 @@ def _predict_record(
         metadata["llm_temporal_candidate_records"] = pred.llm_temporal_candidate_records
     if hasattr(pred, "temporal_event_table_records"):
         metadata["temporal_event_table_records"] = pred.temporal_event_table_records
+    if hasattr(pred, "multiple_answer_options"):
+        metadata["multiple_answer_options"] = pred.multiple_answer_options
+    if hasattr(pred, "selected_answer_option"):
+        metadata["selected_answer_option"] = pred.selected_answer_option
     if hasattr(pred, "react_trajectory"):
         metadata["react_trajectory"] = pred.react_trajectory
     if hasattr(pred, "react_tool_call_count"):

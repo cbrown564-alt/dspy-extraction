@@ -25,6 +25,8 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
+    GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
     GanFrequencyS0DirectModule,
@@ -36,6 +38,8 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GanFrequencyS0LlmTemporalCandidatesSinglePassModule,
     GanFrequencyS0HybridTemporalCandidatesSinglePassModule,
     GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairModule,
+    GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule,
+    _apply_constrained_verifier_guard,
     GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
     GanFrequencyS0TemporalCandidatesAdjudicateDetEvidenceModule,
     GanFrequencyS0TemporalCandidatesAdjudicateConfirmOnlyModule,
@@ -44,8 +48,11 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_EVIDENCE_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONFIRM_ONLY_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_VERIFY_REPAIR_NO_GUARDS_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
     GanFrequencyS0LlmTemporalCandidatesVerifyRepairModule,
     GanFrequencyS0TemporalEventTableVerifyRepairModule,
+    GanFrequencyS0TemporalEventTableSinglePassModule,
+    GanFrequencyS0MultipleAnswerDetSelectorModule,
     GanFrequencyS0VerifyRepairModule,
     GanFrequencyS0VerifierModule,
     GanFrequencyS0VerifierSignature,
@@ -56,6 +63,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION,
     GanFrequencyS0TemporalAdjudicateSignature,
+    select_gan_multiple_answer_option,
     stage_graph_id_for_program_variant,
     _apply_evidence_span_check_guard,
     build_gan_frequency_s0_extractor_signature,
@@ -188,6 +196,14 @@ def test_build_gan_s0_module_dispatches_program_variants():
         GanFrequencyS0ReactTemporalToolsModule,
     )
     assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT),
+        GanFrequencyS0TemporalEventTableSinglePassModule,
+    )
+    assert isinstance(
+        build_gan_s0_module(GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT),
+        GanFrequencyS0MultipleAnswerDetSelectorModule,
+    )
+    assert isinstance(
         build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_DET_GUARDS_VARIANT),
         GanFrequencyS0TemporalCandidatesAdjudicateDetGuardsModule,
     )
@@ -205,6 +221,12 @@ def test_build_gan_s0_module_dispatches_program_variants():
         ),
         GanFrequencyS0TemporalCandidatesAdjudicateVerifyRepairNoGuardsModule,
     )
+    assert isinstance(
+        build_gan_s0_module(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT
+        ),
+        GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule,
+    )
 
 
 def test_stage_graph_id_for_program_variant_maps_known_variants():
@@ -221,6 +243,12 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
     )
     assert (
         stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT
+        )
+        == "g2_candidates_adjudicate"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
             GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
         )
         == "g3_candidates_extract_repair"
@@ -228,6 +256,18 @@ def test_stage_graph_id_for_program_variant_maps_known_variants():
     assert (
         stage_graph_id_for_program_variant(
             GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT
+        )
+        == "g2_candidates_adjudicate"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT
+        )
+        == "g2_candidates_adjudicate"
+    )
+    assert (
+        stage_graph_id_for_program_variant(
+            GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT
         )
         == "g2_candidates_adjudicate"
     )
@@ -245,6 +285,25 @@ def test_gan_s0_error_taxonomy_prompt_patch_adds_candidate_override_policy():
     assert "Counted events followed by" in prompt_doc
     assert "treat it as the preferred answer" in prompt_doc
     assert "Multiple current seizure types" in prompt_doc
+    assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
+
+
+def test_gan_s0_compact_hierarchy_prompt_adds_policy_density_arm():
+    from clinical_extraction.programs.gan_frequency_s0 import (
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSION,
+    )
+
+    signature_cls = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSION
+    )
+
+    prompt_doc = signature_cls.__doc__ or ""
+
+    assert "Compact Gan adjudication hierarchy" in prompt_doc
+    assert "policy-density mini-grid" in prompt_doc
+    assert "Group multiple recent events" in prompt_doc
+    assert "Trigger-conditioned or pattern-only counts" in prompt_doc
+    assert "Error-taxonomy policy patch" not in prompt_doc
     assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
 
 
@@ -1833,9 +1892,117 @@ def test_gan_s0_temporal_event_table_verify_repair_passes_event_table_to_verifie
     assert pred.values[0].raw_value == "1 per year"
 
 
+def test_gan_s0_temporal_event_table_single_pass_adjudicates_from_event_table():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    event_table_json = (
+        '{"events":[{"raw_phrase":"a tonic seizure three Saturdays ago",'
+        '"event_count":"1","window_phrase":"nearly a year",'
+        '"evidence_text":"a tonic seizure three Saturdays ago","role":"seizure_event"}],'
+        '"seizure_free_intervals":[{"raw_phrase":"no seizures for nearly a year",'
+        '"duration_phrase":"nearly a year",'
+        '"evidence_text":"no seizures for nearly a year",'
+        '"qualifies_for_seizure_free_label":true}],'
+        '"selected_window_note":"Breakthrough event after long quiet period."}'
+    )
+    _configure_dummy([
+        {"event_table_json": event_table_json},
+        {
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": (
+                "She had no seizures for nearly a year following initiation of Valproate"
+            ),
+            "temporal_event_table": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0TemporalEventTableSinglePassModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert "verifier_decision" not in pred.metadata
+    assert pred.metadata["temporal_candidate_source"] == "llm_event_table"
+    assert pred.metadata["temporal_event_table_records"]["events"][0]["event_count"] == "1"
+    assert pred.values[0].raw_value == "1 per year"
+
+
+def test_gan_s0_multiple_answer_selector_prefers_supported_quantified_option():
+    selected = select_gan_multiple_answer_option(
+        [
+            {
+                "canonical_label": "unknown",
+                "evidence_text": "clusters after poor sleep",
+                "status": "unknown",
+                "ambiguity_flags": ["trigger_conditioned", "denominator_missing"],
+                "rationale": "Trigger-conditioned pattern lacks denominator.",
+            },
+            {
+                "canonical_label": "2 per 3 month",
+                "evidence_text": "two seizures in the last three months",
+                "status": "current",
+                "ambiguity_flags": [],
+                "rationale": "Count and window are explicit.",
+            },
+        ]
+    )
+
+    assert selected is not None
+    assert selected["canonical_label"] == "2 per 3 month"
+
+
+def test_gan_s0_multiple_answer_det_selector_filters_and_selects_options():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    supported_evidence = (
+        "In terms of seizure control, She had no seizures for nearly a year "
+        "following initiation of Valproate, then developed myoclonic jerks "
+        "leading to a tonic seizure three Saturdays ago"
+    )
+    _configure_dummy([
+        {
+            "answer_options_json": (
+                '{"answer_options": ['
+                '{"canonical_label": "unknown", '
+                '"evidence_text": "NOT IN NOTE", "status": "unknown", '
+                '"ambiguity_flags": ["denominator_missing"], '
+                '"rationale": "unsupported option should be dropped"}, '
+                '{"canonical_label": "1 per year", '
+                f'"evidence_text": {supported_evidence!r}, '
+                '"status": "current", "ambiguity_flags": [], '
+                '"rationale": "breakthrough after nearly one year"}'
+                "]}"
+            ).replace("'", '"')
+        }
+    ])
+
+    module = GanFrequencyS0MultipleAnswerDetSelectorModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_MULTIPLE_ANSWER_DET_SELECTOR_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["temporal_candidate_source"] == (
+        "llm_multiple_answer_det_selector"
+    )
+    assert pred.metadata["verifier_decision"] == "deterministic_select"
+    assert pred.metadata["selected_answer_option"]["canonical_label"] == "1 per year"
+    assert len(pred.metadata["multiple_answer_options"]) == 1
+    assert pred.values[0].raw_value == "1 per year"
+
+
 def test_build_gan_s0_module_supports_temporal_event_table_variant():
     module = build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT)
     assert isinstance(module, GanFrequencyS0TemporalEventTableVerifyRepairModule)
+    single_pass = build_gan_s0_module(GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_SINGLE_PASS_VARIANT)
+    assert isinstance(single_pass, GanFrequencyS0TemporalEventTableSinglePassModule)
 
 
 def test_gan_s0_react_temporal_tools_module_records_tool_metadata():
@@ -2020,3 +2187,159 @@ def test_gan_s0_confirm_only_module_wires_confirm_only_verifier_signature():
     doc = module.verifier.verify.signature.__doc__ or ""
     assert "confirm only" in doc.lower()
     assert "MUST be confirm" in doc
+
+
+def test_apply_constrained_verifier_guard_preserves_allowed():
+    from types import SimpleNamespace
+    note_text = "Patient has 3 seizures per week."
+    candidates = [
+        SimpleNamespace(canonical_label="3 per week", evidence_text="3 seizures per week")
+    ]
+
+    # Test case 1: label is in candidates
+    verified = dspy.Prediction(final_label="3 per week", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label="unknown",
+        initial_evidence="no reference",
+    )
+    assert res.final_label == "3 per week"
+    assert res.final_evidence == "3 seizures per week"
+    assert res.decision == "confirm"
+
+    # Test case 2: label is the initial label
+    verified = dspy.Prediction(final_label="1 per month", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label="1 per month",
+        initial_evidence="monthly events",
+    )
+    assert res.final_label == "1 per month"
+    assert res.final_evidence == "monthly events"
+    assert res.decision == "confirm"
+
+    # Test case 3: label is "unknown"
+    verified = dspy.Prediction(final_label="unknown", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label="3 per week",
+        initial_evidence="3 seizures per week",
+    )
+    assert res.final_label == "unknown"
+    assert res.final_evidence is None
+    assert res.decision == "confirm"
+
+
+def test_apply_constrained_verifier_guard_reverts_close_matches():
+    from types import SimpleNamespace
+    note_text = "Patient has 3 seizures per week."
+    candidates = [
+        SimpleNamespace(canonical_label="3 per week", evidence_text="3 seizures per week")
+    ]
+
+    # Test case 1: close match to candidate label
+    verified = dspy.Prediction(final_label="3 per wk", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label="unknown",
+        initial_evidence=None,
+    )
+    assert res.final_label == "3 per week"
+    assert res.final_evidence == "3 seizures per week"
+    assert res.decision == "repair"
+    assert "reverted to closest match" in res.reason
+
+    # Test case 2: close match to initial label
+    verified = dspy.Prediction(final_label="1 per mon", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label="1 per month",
+        initial_evidence="monthly events",
+    )
+    assert res.final_label == "1 per month"
+    assert res.final_evidence == "monthly events"
+    assert res.decision == "repair"
+
+
+def test_apply_constrained_verifier_guard_fallbacks():
+    from types import SimpleNamespace
+    note_text = "Patient has 3 seizures per week."
+    candidates = [
+        SimpleNamespace(canonical_label="3 per week", evidence_text="3 seizures per week")
+    ]
+
+    # Test case 1: no close match, fallback to initial label
+    verified = dspy.Prediction(final_label="rarely", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label="3 per week",
+        initial_evidence="3 seizures per week",
+    )
+    assert res.final_label == "3 per week"
+    assert res.final_evidence == "3 seizures per week"
+    assert res.decision == "repair"
+    assert "fallback to" in res.reason
+
+    # Test case 2: no close match, no initial label, fallback to "unknown"
+    verified = dspy.Prediction(final_label="rarely", decision="confirm", reason="ok")
+    res = _apply_constrained_verifier_guard(
+        note_text=note_text,
+        verified=verified,
+        candidates=candidates,
+        initial_label=None,
+        initial_evidence=None,
+    )
+    assert res.final_label == "unknown"
+    assert res.final_evidence is None
+    assert res.decision == "repair"
+    assert "fallback to" in res.reason
+
+
+def test_gan_s0_constrained_verifier_module_runs():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+
+    # Configure DummyLM to simulate adjudicator returning "1 per year" (which is the gold label)
+    # and then verifier returning "1 per yr" (out of bounds close match)
+    _configure_dummy([
+        {
+            "seizure_frequency_number": "1 per year",
+            "evidence_text": "no seizures for nearly a year",
+            "temporal_candidates": "ignored by DummyLM",
+        },
+        {
+            "final_label": "1 per yr",
+            "final_evidence": "no seizures for nearly a year",
+            "decision": "repair",
+            "reason": "slightly wrong surface",
+            "temporal_candidates": "ignored by DummyLM",
+        },
+    ])
+
+    module = GanFrequencyS0TemporalCandidatesAdjudicateConstrainedVerifierModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_ADJUDICATE_CONSTRAINED_VERIFIER_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    assert pred.metadata["validation_ladder_rung"] == "constrained_verifier"
+    assert pred.metadata["verifier_decision"] == "repair"
+    # It should have reverted "1 per yr" to "1 per year"
+    assert pred.values[0].raw_value == "1 per year"
+
+

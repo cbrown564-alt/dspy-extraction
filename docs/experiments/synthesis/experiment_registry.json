@@ -15,8 +15,94 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 180,
+  "row_count": 181,
   "experiments": [
+    {
+      "experiment_id": "gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "multiple_answer_det_selector",
+      "hybrid_balance_class": [
+        "L1_llm_constrained",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "controlled_vocabulary_filter",
+        "frequency_normalization",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "candidate_selection",
+        "evidence_quote_generation",
+        "benchmark_policy_application"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "deterministic_mapping",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_gpt4_1_mini_multiple_answer_selector_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice_20260522T223556Z",
+      "outcome": "reject",
+      "decision_doc": "docs/experiments/gan/gan_s0_multiple_answer_selector_gpt_slice_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Same 25-record enriched validation slice as G1-G5; not comparable to full-validation metrics.",
+        "One LLM call proposes explicit canonical answer options; deterministic selector chooses final answer.",
+        "Strict option parsing/evidence filtering collapsed most records to unknown.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice_20260522T223556Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.0,
+        "secondary": {
+          "pragmatic_category_accuracy": 0.0,
+          "schema_valid_prediction_rate": 1.0,
+          "prediction_seconds_per_record": 3.8289280600007625
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_multiple_answer_det_selector_v1_0",
+      "config_paths": "configs/experiments/gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice.json",
+      "notes": "decision_scope: arm. Reject as tested; unseeded answer options plus strict evidence filtering collapsed most records to unknown.",
+      "comparison_groups": [
+        "gan_s0_gpt4_1_mini_multiple_answer_selector_v1"
+      ],
+      "comparison_caveat": "Axis 3 implementation arm on enriched slice; no Qwen transfer."
+    },
     {
       "experiment_id": "exect_s0_s1_diagnosis_recall_regression_slice_gpt4_1_mini",
       "dataset": "exect_v2",
@@ -8609,7 +8695,8 @@
       "notes": "decision_scope: arm. GPT cap-25 guardrail pass: micro 93.8% (-2.0pp vs v4_10 cap-25 95.8%); cleared Qwen cap-25 treatment.",
       "comparison_groups": [
         "exect_s1_qwen_diagnosis_stabilized_v1"
-      ]
+      ],
+      "comparison_caveat": "This group intentionally includes a GPT 4.1-mini guardrail row and Qwen 35b treatment rows; varied_factor remains prompt_policy within each model-specific gate."
     },
     {
       "experiment_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_qwen35b_ollama",
@@ -8664,7 +8751,8 @@
       "notes": "decision_scope: arm. Cap-25 reject: diagnosis +2.4pp vs v4_10 cap but seizure +0pp (tied 66.7%); −11.6pp vs v4_11 cap seizure. Full validation blocked.",
       "comparison_groups": [
         "exect_s1_qwen_diagnosis_stabilized_v1"
-      ]
+      ],
+      "comparison_caveat": "This group intentionally includes a GPT 4.1-mini guardrail row and Qwen 35b treatment rows; varied_factor remains prompt_policy within each model-specific gate."
     },
     {
       "experiment_id": "exect_s1_qwen_v4_12_diagnosis_stabilized_full_qwen35b_ollama",
@@ -8701,7 +8789,8 @@
       "notes": "decision_scope: arm. Blocked — Qwen cap-25 gate failed (seizure +0pp vs v4_10 cap anchor).",
       "comparison_groups": [
         "exect_s1_qwen_diagnosis_stabilized_v1"
-      ]
+      ],
+      "comparison_caveat": "This group intentionally includes a GPT 4.1-mini guardrail row and Qwen 35b treatment rows; varied_factor remains prompt_policy within each model-specific gate."
     },
     {
       "experiment_id": "exect_s1_interleaving_l1_baseline_medication_slice_gpt4_1_mini",
