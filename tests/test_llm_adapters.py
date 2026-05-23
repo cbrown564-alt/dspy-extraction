@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from clinical_extraction.llms import (
     ChatMessage,
     LLMProviderConfig,
@@ -77,6 +79,21 @@ def test_build_dspy_lm_passes_ollama_extra_body_with_thinking_disabled():
         "think": False,
         "options": {"num_ctx": 262144},
     }
+
+
+def test_gpt5_config_rejects_zero_temperature():
+    with pytest.raises(ValueError, match="GPT-5-family configs must set temperature to null"):
+        LLMProviderConfig(provider="openai", model="gpt-5.5", temperature=0.0)
+
+
+def test_ollama_large_output_budget_requires_num_ctx():
+    with pytest.raises(ValueError, match="extra_body.options.num_ctx"):
+        LLMProviderConfig(
+            provider="ollama",
+            model="qwen3.6:35b",
+            max_tokens=10000,
+            extra_body={},
+        )
 
 
 def test_build_chat_adapter_resolves_supported_provider_configs():

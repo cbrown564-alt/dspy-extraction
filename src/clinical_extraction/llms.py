@@ -47,6 +47,19 @@ class LLMProviderConfig(FrozenModel):
             raise ValueError("model must be a non-empty string.")
         if self.provider == "mock" and not self.mock_responses:
             raise ValueError("mock provider requires at least one mock response.")
+        if self.provider == "openai" and self.model.lower().startswith("gpt-5"):
+            if self.temperature == 0.0:
+                raise ValueError(
+                    "GPT-5-family configs must set temperature to null so the "
+                    "adapter omits unsupported temperature parameters."
+                )
+        if self.provider == "ollama" and self.max_tokens is not None:
+            num_ctx = (self.extra_body.get("options") or {}).get("num_ctx")
+            if self.max_tokens > 4096 and num_ctx is None:
+                raise ValueError(
+                    "Ollama configs with max_tokens > 4096 must set "
+                    "extra_body.options.num_ctx."
+                )
         return self
 
 

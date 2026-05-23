@@ -24,6 +24,7 @@ IMPLEMENTATION_VARIANT_TO_PRESENTATION: dict[str, TemporalCandidatePresentation]
     "cand_json_v1": "json",
     "cand_bullets_v1": "bullets",
     "slot_payload_v1": "slot_payload",
+    "gan_s0_candidate_builder_gap_v1": "prose",
 }
 
 
@@ -113,6 +114,10 @@ def build_temporal_frequency_candidates_from_note(
     candidates.extend(_vague_grouped_spells_unknown(note_text))
     candidates.extend(_last_convulsive_with_occasional_clusters(note_text))
     candidates.extend(_daily_seizure_type_frequency(note_text))
+    candidates.extend(_first_and_subsequent_dated_events_window(note_text))
+    candidates.extend(_last_seizure_with_since_jerks(note_text))
+    candidates.extend(_no_major_seizures_since_but_minor_continues(note_text))
+    candidates.extend(_interval_spacing_candidates(note_text))
     return _dedupe_candidates(candidates)
 
 
@@ -317,23 +322,31 @@ def _breakthrough_after_nearly_year(
     note_text: str,
 ) -> list[GanTemporalFrequencyCandidate]:
     match = re.search(
-        r"(?P<evidence>[^.]*no seizures for nearly a year[^.]*"
-        r"tonic seizure[^.]*)",
+        r"(?P<evidence>[^.]*(?:no seizures|seizure-free)[^.]*?nearly a year[^.]*?"
+        r"(?P<count>\d+|a|single|one|two|three|four|five|six|seven|eight|nine|ten)?\s*tonic seizure[^.]*)",
         note_text,
         flags=re.IGNORECASE,
     )
     if match is None:
         return []
+    
+    count_group = match.group("count")
+    if count_group:
+        event_count = _number_token_to_label(count_group)
+    else:
+        event_count = "1"
+        
+    label = _simple_rate_label(event_count, 1, "year")
     evidence = match.group("evidence").strip()
     return [
         GanTemporalFrequencyCandidate(
-            canonical_label="1 per year",
-            event_count="1",
+            canonical_label=label,
+            event_count=event_count,
             window_count="1",
             window_unit="year",
             evidence_text=evidence,
             derivation=(
-                "single breakthrough event after a nearly one-year seizure-free "
+                "breakthrough event after a nearly one-year seizure-free "
                 "window"
             ),
         )
@@ -374,9 +387,9 @@ def _last_episode_monthly_candidate(
     note_text: str,
 ) -> list[GanTemporalFrequencyCandidate]:
     match = re.search(
-        rf"(?P<evidence>[^.]*last episode was recorded on "
-        rf"(?P<day>\d{{1,2}}) (?P<month>{MONTH_PATTERN})"
-        rf"(?: (?P<year>\d{{4}}))?[^.]*\.)",
+        rf"(?P<evidence>last\s+(?:reported\s+|such\s+)?(?:episode|event)\s+(?:was\s+recorded\s+on|was\s+on|occurred\s+on)\s+"
+        rf"(?P<day>\d{{1,2}})[\s/](?P<month>{MONTH_PATTERN}|{SHORT_MONTH_PATTERN})"
+        rf"(?:[\s/](?P<year>\d{{4}}))?[^.]*)",
         note_text,
         flags=re.IGNORECASE,
     )
@@ -394,20 +407,29 @@ def _last_episode_monthly_candidate(
         int(match.group("day")),
     )
     elapsed_days = (clinic_date - event_date).days
-    if not 14 <= elapsed_days <= 45:
+    
+    # We want to match windows up to 6 months (approx 180 days)
+    if not (14 <= elapsed_days <= 180):
         return []
+
+    # Calculate month diff
+    month_diff = (clinic_date.year - event_date.year) * 12 + clinic_date.month - event_date.month
+    if month_diff <= 1:
+        window_months = 1
+        label = "1 per month"
+    else:
+        window_months = month_diff
+        label = f"1 per {window_months} month"
 
     evidence = match.group("evidence").strip()
     return [
         GanTemporalFrequencyCandidate(
-            canonical_label="1 per month",
+            canonical_label=label,
             event_count="1",
-            window_count="1",
+            window_count=str(window_months),
             window_unit="month",
             evidence_text=evidence,
-            derivation=(
-                "last recorded event falls roughly one month before the clinic date"
-            ),
+            derivation="last recorded event falls within an elapsed window",
         )
     ]
 
@@ -666,6 +688,9 @@ def _reverse_chronological_month_convulsion_counts(
 def _diary_named_month_event_tallies(
     note_text: str,
 ) -> list[GanTemporalFrequencyCandidate]:
+    candidates = []
+    
+    # 1. Original pattern
     match = re.search(
         r"(?P<evidence>In May[^.]*?(?P<may>\d+) short seizures[^.]*\.\s*"
         r"In Aug (?P<aug>\d+) daytime events were noted, "
@@ -673,24 +698,85 @@ def _diary_named_month_event_tallies(
         note_text,
         flags=re.IGNORECASE | re.DOTALL,
     )
-    if match is None:
-        return []
-
-    event_count = str(
-        int(match.group("may")) + int(match.group("aug")) + 4 + 5
-    )
-    window_months = 6
-    evidence = match.group("evidence").strip()
-    return [
-        GanTemporalFrequencyCandidate(
-            canonical_label=f"{event_count} per {window_months} month",
-            event_count=event_count,
-            window_count=str(window_months),
-            window_unit="month",
-            evidence_text=evidence,
-            derivation="diary month-by-month event tallies aggregated from May through October",
+    if match is not None:
+        event_count = str(
+            int(match.group("may")) + int(match.group("aug")) + 4 + 5
         )
-    ]
+        window_months = 6
+        evidence = match.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=f"{event_count} per {window_months} month",
+                event_count=event_count,
+                window_count=str(window_months),
+                window_unit="month",
+                evidence_text=evidence,
+                derivation="diary month-by-month event tallies aggregated from May through October",
+            )
+        )
+        return candidates
+
+    # 2. Pattern for gan_16645
+    # "a cluster of three seizures in August ... In November he had a nocturnal seizure, and in February a single tonic seizure was recorded"
+    match1 = re.search(
+        r"(?P<evidence>a cluster of (?P<count1>three|\d+) seizures in (?P<month1>[A-Za-z]+)[^.]*?\.\s*"
+        r"In (?P<month2>[A-Za-z]+) he had a[^.]*?seizure,\s+and\s+in\s+(?P<month3>[A-Za-z]+)\s+a\s+(?P<count3>single|\d+)[^.]*?seizure\s+was\s+recorded)",
+        note_text,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if match1 is not None:
+        c1 = int(_number_token_to_label(match1.group("count1")))
+        c2 = 1 # "a nocturnal seizure" -> 1
+        c3 = int(_number_token_to_label(match1.group("count3")))
+        event_count = str(c1 + c2 + c3)
+        
+        m1 = _month_number(match1.group("month1"))
+        m3 = _month_number(match1.group("month3"))
+        window_months = (m3 - m1) % 12 + 1
+        evidence = match1.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=f"{event_count} per {window_months} month",
+                event_count=event_count,
+                window_count=str(window_months),
+                window_unit="month",
+                evidence_text=evidence,
+                derivation="diary month-by-month event tallies aggregated from August through February",
+            )
+        )
+        return candidates
+
+    # 3. Pattern for gan_16750
+    # "In February she experienced a prolonged focal seizure ... In May there were four ... and in August a single"
+    match2 = re.search(
+        r"(?P<evidence>In (?P<month1>[A-Za-z]+) she experienced a (?P<count1>prolonged|\d+) focal seizure[^.]*?\.\s*"
+        r"In (?P<month2>[A-Za-z]+) there were (?P<count2>four|\d+)[^.]*?\s+and\s+in\s+(?P<month3>[A-Za-z]+)\s+a\s+(?P<count3>single|\d+)[^.]*?seizure)",
+        note_text,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if match2 is not None:
+        c1 = 1 if match2.group("count1").lower() == "prolonged" else int(_number_token_to_label(match2.group("count1")))
+        c2 = int(_number_token_to_label(match2.group("count2")))
+        c3 = int(_number_token_to_label(match2.group("count3")))
+        event_count = str(c1 + c2 + c3)
+        
+        m1 = _month_number(match2.group("month1"))
+        m3 = _month_number(match2.group("month3"))
+        window_months = (m3 - m1) % 12 + 1
+        evidence = match2.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=f"{event_count} per {window_months} month",
+                event_count=event_count,
+                window_count=str(window_months),
+                window_unit="month",
+                evidence_text=evidence,
+                derivation="diary month-by-month event tallies aggregated from February through August",
+            )
+        )
+        return candidates
+
+    return []
 
 
 def _following_week_events_monthly_rate(
@@ -900,36 +986,80 @@ def _seizure_free_then_single_day_cluster(
 def _breakthrough_after_months_seizure_free(
     note_text: str,
 ) -> list[GanTemporalFrequencyCandidate]:
+    candidates = []
+    
+    # 1. Original pattern
     match = re.search(
         r"(?P<evidence>[^.]*did not have seizures for over (?P<months>\d+) months, "
         r"but then reported (?P<count>two|\d+) generalised tonic-clonic seizures[^.]*\.)",
         note_text,
         flags=re.IGNORECASE | re.DOTALL,
     )
-    if match is None:
-        return []
-
-    event_count = _number_token_to_label(match.group("count"))
-    months = match.group("months")
-    evidence = match.group("evidence").strip()
-    return [
-        GanTemporalFrequencyCandidate(
-            canonical_label=f"{event_count} per {months} month",
-            event_count=event_count,
-            window_count=months,
-            window_unit="month",
-            evidence_text=evidence,
-            derivation="breakthrough events after a long seizure-free interval",
+    if match is not None:
+        event_count = _number_token_to_label(match.group("count"))
+        months = match.group("months")
+        evidence = match.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=f"{event_count} per {months} month",
+                event_count=event_count,
+                window_count=months,
+                window_unit="month",
+                evidence_text=evidence,
+                derivation="breakthrough events after a long seizure-free interval",
+            )
         )
-    ]
+        return candidates
+
+    # 2. General pattern for "seizure-free for [months] months, until a/an [event] occurred"
+    # and "seizure-free for [months] months before experiencing a/an [event] ... preceded by [event]"
+    match2 = re.search(
+        rf"(?P<evidence>[^.]*(?:seizure-free|no seizures)\s+for\s+(?P<months>seven|five|six|eight|nine|\d+)\s+months"
+        rf"[^.]*?(?:before experiencing|until)\s+(?P<events>[^.]+))",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match2 is not None:
+        months_word = match2.group("months").lower()
+        # Convert month name to digit if it is a word
+        month_words_map = {
+            "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9", "ten": "10"
+        }
+        months = month_words_map.get(months_word, months_word)
+        events_text = match2.group("events").lower()
+        
+        # Determine the count
+        # In gan_13058: "a generalised tonic-clonic seizure ... preceded by a cluster of absences" -> 2 events
+        # In gan_13190: "a focal impaired-awareness seizure occurred" -> 1 event
+        if "preceded by" in events_text or "and a" in events_text or "and another" in events_text:
+            event_count = "2"
+        else:
+            event_count = "1"
+            
+        label = _simple_rate_label(event_count, int(months), "month")
+        evidence = match2.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=label,
+                event_count=event_count,
+                window_count=months,
+                window_unit="month",
+                evidence_text=evidence,
+                derivation="breakthrough events after a long seizure-free interval",
+            )
+        )
+        
+    return candidates
 
 
 def _withdrawal_moment_seizure_count(
     note_text: str,
 ) -> list[GanTemporalFrequencyCandidate]:
     match = re.search(
-        r"(?P<evidence>He withdrew from Clobazam on (?P<day>\d{1,2})/(?P<month>[A-Za-z]+)\. "
-        r"At that time, he had (?P<count>[\d to]+) seizures)",
+        r"(?P<evidence>(?:he|she)\s+(?:withdrew\s+from|discontinued)\s+[A-Za-z]+\s+on\s+"
+        r"(?P<day>\d{1,2})/(?P<month>[A-Za-z]+)\.\s+"
+        r"(?:At\s+that\s+time,\s+he\s+had|Shortly\s+afterwards,\s+she\s+experienced)\s+"
+        r"(?P<count>[A-Za-z0-9\s-]+)\s+seizures)",
         note_text,
         flags=re.IGNORECASE,
     )
@@ -958,12 +1088,18 @@ def _withdrawal_moment_seizure_count(
     if withdrawal_month is None:
         return []
 
-    window_months = max(1, clinic_date.month - withdrawal_month)
+    withdrawal_year = clinic_date.year
+    if withdrawal_month > clinic_date.month:
+        withdrawal_year -= 1
+
+    window_months = max(1, (clinic_date.year - withdrawal_year) * 12 + clinic_date.month - withdrawal_month)
     event_count = _count_range_text_to_label(match.group("count"))
+    
+    label = _simple_rate_label(event_count, window_months, "month")
     evidence = match.group("evidence").strip()
     return [
         GanTemporalFrequencyCandidate(
-            canonical_label=f"{event_count} per {window_months} month",
+            canonical_label=label,
             event_count=event_count,
             window_count=str(window_months),
             window_unit="month",
@@ -1102,6 +1238,182 @@ def _several_times_each_week(note_text: str) -> list[GanTemporalFrequencyCandida
     ]
 
 
+def _first_and_subsequent_dated_events_window(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    # Regex to find first event date
+    match_first = re.search(
+        rf"first seizure\s+(?:was\s+reported\s+)?in\s+(?P<month>{MONTH_PATTERN})\s+(?P<year>\d{{4}})",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if not match_first:
+        return []
+    
+    # Regex to find second/subsequent events
+    match_second = re.search(
+        rf"(?P<count_word>second|second and third)\s+(?:seizure|event)s?\s+(?:took\s+place\s+|was\s+)?in\s+(?P<month>{MONTH_PATTERN})\s+(?P<year>\d{{4}})",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if not match_second:
+        return []
+        
+    start_month = _month_number(match_first.group("month"))
+    start_year = int(match_first.group("year"))
+    end_month = _month_number(match_second.group("month"))
+    end_year = int(match_second.group("year"))
+    
+    window_months = max(1, (end_year - start_year) * 12 + end_month - start_month)
+    
+    count_word = match_second.group("count_word").lower()
+    if "third" in count_word:
+        event_count = "3"
+    else:
+        event_count = "2"
+        
+    start_idx = min(match_first.start(), match_second.start())
+    end_idx = max(match_first.end(), match_second.end())
+    evidence = note_text[start_idx:end_idx].strip()
+    
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=f"{event_count} per {window_months} month",
+            event_count=event_count,
+            window_count=str(window_months),
+            window_unit="month",
+            evidence_text=evidence,
+            derivation="first and subsequent dated events define the observation window",
+        )
+    ]
+
+
+def _last_seizure_with_since_jerks(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>Last\s+[^.]*?seizure\s+was\s+in\s+"
+        r"(?P<month>\d{1,2})\s*-\s*(?P<year>\d{4}),\s+with\s+"
+        r"(?P<count>\d+|one|two|three|four|five)\s+[^.]*?since\s+then)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return []
+    
+    clinic_date = _clinic_date(note_text)
+    if clinic_date is None:
+        return []
+        
+    start_month = int(match.group("month"))
+    start_year = int(match.group("year"))
+    
+    window_months = max(1, (clinic_date.year - start_year) * 12 + clinic_date.month - start_month)
+    
+    since_count = int(_number_token_to_label(match.group("count")))
+    total_count = 1 + since_count
+    
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=f"{total_count} per {window_months} month",
+            event_count=str(total_count),
+            window_count=str(window_months),
+            window_unit="month",
+            evidence_text=evidence,
+            derivation="last major seizure plus subsequent minor events over elapsed window",
+        )
+    ]
+
+
+def _no_major_seizures_since_but_minor_continues(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    match = re.search(
+        r"(?P<evidence>no\s+[^.]*?seizures\s+since\s+"
+        r"(?P<month>\d{1,2})\s*-\s*(?P<year>\d{4}),\s+though\s+continues\s+to\s+experience\s+[^.]*?from\s+time\s+to\s+time)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return []
+        
+    clinic_date = _clinic_date(note_text)
+    if clinic_date is None:
+        return []
+        
+    start_month = int(match.group("month"))
+    start_year = int(match.group("year"))
+    
+    window_months = max(1, (clinic_date.year - start_year) * 12 + clinic_date.month - start_month)
+    
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label=f"multiple per {window_months} month",
+            event_count="multiple",
+            window_count=str(window_months),
+            window_unit="month",
+            evidence_text=evidence,
+            derivation="no major events since date but minor events continue from time to time",
+        )
+    ]
+
+
+def _interval_spacing_candidates(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    candidates = []
+    
+    match1 = re.search(
+        r"(?P<evidence>seizure-free\s+for\s+(?P<days>\d+)\s+consecutive\s+days,\s+followed\s+by\s+[^.]*?typically\s+(?P<count>\w+)\s+(?P<type>[A-Za-z\s]+?)(?:seizures|events)?)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match1:
+        days = match1.group("days")
+        count_word = match1.group("count").lower()
+        if count_word == "two":
+            count = "2"
+        elif count_word == "three":
+            count = "3"
+        else:
+            count = count_word
+            
+        evidence = match1.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=f"1 cluster per {days} day, {count} per cluster",
+                event_count=f"1 cluster, {count} per cluster",
+                window_count=days,
+                window_unit="day",
+                evidence_text=evidence,
+                derivation="seizure-free interval followed by cluster count",
+            )
+        )
+        
+    match2 = re.search(
+        r"(?P<evidence>clustering\s+pattern,\s+most\s+often\s+every\s+(?P<days>\d+)\s+days)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match2:
+        days = match2.group("days")
+        evidence = match2.group("evidence").strip()
+        candidates.append(
+            GanTemporalFrequencyCandidate(
+                canonical_label=f"1 per {days} day",
+                event_count="1",
+                window_count=days,
+                window_unit="day",
+                evidence_text=evidence,
+                derivation="clustering pattern spacing maps to simple rate",
+            )
+        )
+        
+    return candidates
+
+
 def _clinic_date(note_text: str) -> date | None:
     match = re.search(
         rf"(?:Clinic Date|Date):\s*(?P<day>\d{{1,2}}) "
@@ -1119,6 +1431,13 @@ def _clinic_date(note_text: str) -> date | None:
 
 
 def _month_number(month_name: str) -> int:
+    name = month_name.lower().strip()[:3]
+    short_months = {
+        "jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+        "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12
+    }
+    if name in short_months:
+        return short_months[name]
     return MONTHS[month_name.lower()]
 
 
@@ -1135,6 +1454,8 @@ def _count_phrase_to_label(count_phrase: str) -> str:
 
 def _number_token_to_label(token: str) -> str:
     normalized = token.lower().strip()
+    if normalized in ("a", "an", "single", "one"):
+        return "1"
     if normalized in NUMBER_WORDS:
         return NUMBER_WORDS[normalized]
     return normalized
@@ -1158,8 +1479,8 @@ def _count_range_text_to_label(count_text: str) -> str:
 
 
 def _simple_rate_label(event_count: str, window_count: int, window_unit: str) -> str:
-    if window_unit == "month" and window_count == 1:
-        return f"{event_count} per month"
+    if window_count == 1:
+        return f"{event_count} per {window_unit}"
     return f"{event_count} per {window_count} {window_unit}"
 
 

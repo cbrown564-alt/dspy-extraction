@@ -48,11 +48,13 @@ Validate:
 - `uv run pytest tests/test_experiment_configs.py`
 - `uv run pytest tests/test_experiment_registry_validation.py`
 - relevant program tests for the changed backend
+- Gan deterministic candidate-builder changes: read G11 audit/prereg, run `scripts/audit_gan_candidate_builder_gap.py`, validate `tests/test_gan_temporal_candidates.py` and `scripts/validate_primitives.py --errors-only`
 
 Memory warning:
 
 - State exactly one primary `varied_factor` per comparison group unless the preregistration explicitly permits multi-factor interpretation.
 - Preserve `decision_scope: arm | mechanism | operational`; failed single configs are arm evidence by default.
+- No scorer, prompt, or model edits hidden in candidate-builder cards.
 
 ## Taxonomy Primitives
 
@@ -152,6 +154,7 @@ Validate:
 Memory warning:
 
 - Memory files are derived review surfaces. Do not rewrite audits, scorers, registry rows, or Kanban from a memory consolidation pass unless the user explicitly asks for that source-doc edit.
+- Cursor SDK pilot (C1–C4): outputs under `docs/memory/dreams/` are review-only artifacts. Pilot validated on 2026-05-23 (C1–C3 completed successfully with zero SDK-agent edits to source-of-truth docs).
 
 ## Frontend Review Tooling
 

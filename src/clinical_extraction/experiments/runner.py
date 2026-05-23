@@ -302,6 +302,13 @@ def _usage_int(usage: dict[str, Any], *keys: str) -> int:
     return 0
 
 
+def gepa_reflection_config(base: LLMProviderConfig) -> LLMProviderConfig:
+    """Use a hotter reflection LM only when the provider accepts temperature."""
+    if base.temperature is None:
+        return base
+    return base.model_copy(update={"temperature": 1.0})
+
+
 def capture_local_model_residency(
     provider: str,
     model_name: str,
@@ -486,7 +493,7 @@ def run_experiment(
     dspy.configure(lm=lm)
     reflection_lm = None
     if config.optimizer is not None and config.optimizer.name == "GEPA":
-        reflection_config = model_config.model_copy(update={"temperature": 1.0})
+        reflection_config = gepa_reflection_config(model_config)
         reflection_lm = build_dspy_lm(reflection_config)
 
     resolved_run_id = run_id or make_run_id(config.experiment_id)

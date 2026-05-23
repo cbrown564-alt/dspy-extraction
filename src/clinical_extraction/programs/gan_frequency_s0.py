@@ -763,7 +763,62 @@ GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM = """
       events grouped into clusters. Repeated events within a period are not
       automatically clusters. If per-cluster count is known but cluster spacing
       is not, use "unknown, N per cluster" rather than inventing a spacing.
+    - EEG/electrographic seizure rates: frequent electrographic seizures captured
+      on EEG (e.g. "~4/h", "~6/h") indicate extremely active clinical events
+      and must map to "multiple per day". Do not treat active electrographic
+      seizures as unknown or subclinical.
+    - Flare/bad-week phrasing: frequency counts describing flares or worst-case
+      stretches (e.g., "up to seven in bad weeks", "up to 7 in bad weeks")
+      must map to the flare rate (e.g. "7 per week"), even if the note mentions
+      that events cluster or there are stretches of several weeks without any
+      seizures. Prioritize the flare rate over a cluster label or unknown.
+    - Trigger-conditioned counts: if a count is conditioned on a trigger (e.g.
+      "typically 1 to 2 events in the morning following nights with less than five
+      hours of rest", or "after lack of sleep"), you must output "unknown" unless
+      the note provides a specific rate of how often the trigger or the events occur
+      in calendar time (do not assume weekly/monthly rates for trigger-conditioned counts).
+    - Distinguish between "no seizure frequency reference" and "unknown": if the
+      note discusses epilepsy or active/interval/breakthrough seizures (even if
+      only in relation to missed doses, e.g. "Seizures with missed ASM doses", or
+      "breakthrough events"), but does not specify a calendar-time frequency rate,
+      you must output "unknown" rather than "no seizure frequency reference". Use
+      "no seizure frequency reference" only if seizures are not mentioned at all or
+      are explicitly confirmed as remote history only (e.g. seizure-free for multiple
+      years/remission).
+    - Multiple current seizure types details: if the note mentions multiple types of
+      seizures with different frequencies (e.g. generalised GTC seizures are rare at
+      "3 per year", but focal sensory or absence seizures occur "several times each
+      week" or "twice weekly"), you must prioritize the higher frequency rate
+      ("multiple per week" or "2 per week") over the lower frequency rate ("3 per year"
+      or "2 per 2 month"), regardless of seizure severity.
+    - Unanchored counts over vague intervals: if the note describes a count since an
+      unspecified date or event (e.g. "since beginning Clobazam...", "since her last
+      clinic appointment...", or "since last review..."), and the duration of that
+      interval is not explicitly stated in the note, you must output "unknown" (do
+      not invent a rate).
+    - Last/single event elapsed windows: if the note describes a last seizure or single event at a specific date less than 6 months ago, and the patient is stable/seizure-free since then, compute the rate over that elapsed window (e.g., last seizure on Jan 2nd and seen on Jan 28th maps to "1 per month"; last seizure on May 20th and seen on Aug 15th maps to "1 per 3 month"). Trust the corresponding candidate rates in temporal_candidates. Do not map these to "unknown" or "seizure free for N month" (since N is less than 6).
+    - Counted/withdrawal events followed by stability: counted events or withdrawal events followed by "stable since", "no further events", "seizure free since", or "well since" must remain the rate over the elapsed window (e.g. "4 per 3 month", "2 to 4 per 3 month") if the elapsed seizure-free duration is less than 6 months. Do not map these short-term stable periods (less than 6 months) to "seizure free for N month"; only use "seizure free for N unit" if the duration is at least 6 months. Prioritize these candidate rates over outputting "unknown".
+    - Specific seizure terms: when counting events, treat terms like "drop attack",
+      "myoclonic jerk", "absence", "convulsion", "focal event", or "prolonged event"
+      as active seizures. Do not output "no seizure frequency reference" or "unknown"
+      if these specific events are counted and dated in the note. Group them into the
+      observation window to compute a rate (e.g. 3 events from Jan to Jul maps to
+      "3 per 7 month").
+    - Seizure days: if the note states the number of seizure days in a month (e.g.
+      "Seizure days: 9/30 this month", "3/30 this month", "5/30"), map this to N per
+      month (e.g. "9/30 this month" maps to "9 per month", "3/30 this month" maps to
+      "3 per month"). Do not map "9/30" to "1 per month".
+    - Non-specific symptoms and seizure freedom: if the note describes the patient as
+      having no seizures/events since their last review (e.g. "no witnessed convulsions
+      and has continued with a stable spell without events", or "steady run without
+      clear seizures"), but mentions non-specific symptoms (e.g., "occasional brief
+      moments of lost thread during conversation occurring once every few weeks", or
+      "intermittent light-headedness"), do not treat these non-specific symptoms as
+      active seizures. Prioritize the seizure-free status and output "seizure free
+      for multiple month" (or the elapsed duration).
 """
+
+
 
 GAN_FREQUENCY_S0_COMPACT_HIERARCHY_POLICY_ADDENDUM = """
     Compact Gan adjudication hierarchy (v1.5; policy-density mini-grid):

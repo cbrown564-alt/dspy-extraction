@@ -32,6 +32,15 @@ def test_temporal_candidates_represent_breakthrough_after_nearly_year_window():
     assert "tonic seizure" in candidate.evidence_text
 
 
+def test_temporal_candidates_count_breakthrough_events_after_nearly_year_window():
+    assert "3 per year" in _labels("gan_13149")
+
+
+def test_temporal_candidates_represent_breakthrough_after_explicit_month_window():
+    assert "2 per 7 month" in _labels("gan_13058")
+    assert "1 per 5 month" in _labels("gan_13190")
+
+
 def test_temporal_candidates_represent_two_dated_events_over_three_months():
     candidates = build_temporal_frequency_candidates(_record("gan_14485"))
 
@@ -53,6 +62,19 @@ def test_temporal_candidates_represent_last_episode_as_monthly_rate():
     assert candidate.window_count == "1"
     assert candidate.window_unit == "month"
     assert "last episode was recorded on 26 February" in candidate.evidence_text
+
+
+def test_temporal_candidates_represent_generic_dated_event_windows():
+    assert "3 per 6 month" in _labels("gan_14562")
+    assert "2 per 2 month" in _labels("gan_14628")
+    assert "3 per 2 month" in _labels("gan_14689")
+
+
+def test_temporal_candidates_represent_last_event_elapsed_windows():
+    assert "1 per month" in _labels("gan_14792")
+    assert "1 per month" in _labels("gan_14821")
+    assert "1 per 3 month" in _labels("gan_14965")
+    assert "1 per month" in _labels("gan_14973")
 
 
 def test_temporal_candidates_represent_count_range_since_prior_date():
@@ -280,6 +302,7 @@ def test_presentation_for_implementation_variant_maps_axis3_ids():
     assert presentation_for_implementation_variant("cand_table_v1") == "table"
     assert presentation_for_implementation_variant("cand_json_v1") == "json"
     assert presentation_for_implementation_variant("slot_payload_v1") == "slot_payload"
+    assert presentation_for_implementation_variant("gan_s0_candidate_builder_gap_v1") == "prose"
     assert presentation_for_implementation_variant("unknown") is None
 
 
@@ -302,6 +325,10 @@ def test_temporal_candidates_aggregate_diary_named_month_event_counts():
 def test_temporal_candidates_represent_following_week_as_monthly_benchmark_rate():
     assert "2 per month" in _labels("gan_14250")
     assert "2 to 3 per month" in _labels("gan_14271")
+
+
+def test_temporal_candidates_represent_post_withdrawal_count_window():
+    assert "2 to 4 per month" in _labels("gan_14214")
 
 
 def test_temporal_candidates_emit_unknown_for_unanchored_since_discharge_count():
@@ -345,6 +372,28 @@ def test_temporal_candidates_represent_withdrawal_moment_count_over_elapsed_mont
     assert "2 to 4 per 3 month" in _labels("gan_14354")
 
 
+def test_temporal_candidates_represent_last_convulsion_plus_since_counts():
+    assert "5 per 13 month" in _labels("gan_15127")
+
+
+def test_temporal_candidates_represent_vague_multiple_with_anchored_window():
+    assert "multiple per 15 month" in _labels("gan_15168")
+    assert "multiple per 13 month" in _labels("gan_15193")
+
+
+def test_temporal_candidates_represent_explicit_cluster_spacing_and_count():
+    assert "1 cluster per 4 day, 2 per cluster" in _labels("gan_15442")
+
+
+def test_temporal_candidates_represent_cluster_interval_as_simple_rate():
+    assert "1 per 5 day" in _labels("gan_16529")
+
+
+def test_temporal_candidates_sum_named_month_diary_events_to_clinic_window():
+    assert "5 per 7 month" in _labels("gan_16645")
+    assert "6 per 7 month" in _labels("gan_16750")
+
+
 def test_temporal_candidates_emit_unknown_for_vague_grouped_spells_without_spacing():
     labels = _labels("gan_10618")
     assert any(label.startswith("unknown") for label in labels)
@@ -377,3 +426,19 @@ def test_residual_slice_gold_label_coverage_improves():
         if record.gold_label in labels:
             covered += 1
     assert covered >= 24
+
+
+def test_enriched_gap_slice_gold_label_coverage_improves():
+    import json
+    from pathlib import Path
+
+    payload = json.loads(
+        Path("data/fixtures/gan_s0_qwen35b_20260522_pragmatic_error_slice.json").read_text()
+    )
+    covered = 0
+    for row in payload["records"]:
+        record_id = row["record_id"]
+        record = _record(record_id)
+        if record.gold_label in _labels(record_id):
+            covered += 1
+    assert covered >= 23

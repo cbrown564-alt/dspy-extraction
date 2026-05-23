@@ -12,6 +12,8 @@
 | **Gan decision synthesis** | `docs/experiments/gan/gan_s0_policy_pipeline_synthesis_20260523.md` |
 | **Model suite prereg** | `docs/experiments/synthesis/model_suite_frozen_architecture_v1_preregistration_20260522.md` |
 | **Frozen run archive** | `docs/planning/kanban_frozen_threads_history.md` |
+| **Cursor SDK pilot** | `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md` |
+| **Cursor SDK assessment** | `docs/workstreams/cursor_sdk/cursor_sdk_value_reliability_assessment_20260523.md` |
 | **Scorer / dataset guardrails** | `docs/policies/deterministic_scorer_semantics.md`, `docs/datasets/exect/exect_gold_label_audit.md`, `docs/datasets/gan/gan_2026_label_audit.md` |
 
 **Last refreshed:** 2026-05-23. The board is now split into active pulls first, compact historical synthesis second. Detailed completed run ledgers live in the linked logs/inspections rather than inline here.
@@ -48,11 +50,12 @@ Gan S0 should stay on the `g2_candidates_adjudicate` skeleton, but the next usef
 
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
-| **G11 - Build candidate coverage audit** | Ready | A no-model table for all 25 enriched-slice records with gold label, current candidate labels, v1.4 prediction, candidate coverage flag, and failure family | Gan synthesis | yes | New inspection artifact under `docs/experiments/gan/`; table reconciles with 5/25 coverage claim |
-| **G12 - Preregister builder-gap variant** | Ready | A narrow candidate-builder hypothesis with explicit included/excluded patterns and regression cases before code changes | G11 | after G11 | Short prereg/section in inspection; no prompt/model changes hidden in the card |
-| **G13 - Implement smallest builder expansion** | Ready | Deterministic candidates for the highest-value uncovered families without changing scorer semantics | G11, G12 | no | Focused tests in `tests/test_gan_temporal_candidates.py`; no unrelated pipeline edits |
-| **G14 - Run no-model validation** | Ready | Candidate coverage improves on the enriched slice without broad grammar or primitive regressions | G13 | no | `uv run pytest tests/test_gan_temporal_candidates.py`; `uv run python scripts/validate_primitives.py --errors-only`; coverage audit rerun |
-| **G15 - Run one GPT slice only if coverage improves** | Blocked | Compare v1.4 control against builder-gap variant on the same enriched slice | G14 coverage lift | no | Monthly/pragmatic/schema/evidence metrics plus inspection; promotion requires clear lift or preregistered diagnostic value |
+| **G11 - Build candidate coverage audit** | Done | No-model audit for all 25 enriched-slice records with gold label, current candidate labels, v1.4 prediction, candidate coverage flag, and failure family: `docs/experiments/gan/gan_s0_candidate_builder_gap_audit_20260523.md` plus JSON companion | Gan synthesis | yes | `uv run python scripts/audit_gan_candidate_builder_gap.py`; reconciles with 5/25 coverage claim |
+| **G12 - Preregister builder-gap variant** | Done | Narrow candidate-builder hypothesis with included/excluded patterns and regression cases before code changes: `docs/experiments/gan/gan_s0_candidate_builder_gap_preregistration_20260523.md` | G11 | after G11 | No prompt/model/scorer changes hidden in the card |
+| **G13 - Implement smallest builder expansion** | Done | `gan_s0_candidate_builder_gap_v1` deterministic candidates cover high-value uncovered families without changing scorer semantics | G11, G12 | no | Focused tests added in `tests/test_gan_temporal_candidates.py`; no scorer/prompt/model edits |
+| **G14 - Run no-model validation** | Done | Candidate coverage improved from 5/25 to 23/25 on the enriched slice; remaining misses are seizure-free `multiple year` boundary cases | G13 | no | `uv run pytest tests/test_gan_temporal_candidates.py`; `uv run python scripts/validate_primitives.py --errors-only`; `uv run python scripts/audit_gan_candidate_builder_gap.py` |
+| **G15 - Run one GPT slice only if coverage improves** | Done | Builder-gap v1 beat v1.4 on the same enriched slice: 92.0% monthly / 96.0% pragmatic / 100% schema and evidence; inspection `docs/experiments/gan/gan_s0_candidate_builder_gap_v1_gpt_slice_inspection_20260523.md` | G14 coverage lift met | no | Run `runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice_20260523T093314Z`; promotion limited to enriched-slice gate |
+| **G16 - Broader GPT validation for builder-gap v1** | Ready / next pull | Test whether the builder expansion generalizes beyond the enriched slice before Qwen transfer or operational default changes | G15 | no | Broader validation metrics plus inspection; compare against F0 expanded builders + prose and v1.4 slice caveats |
 
 ### Candidate Families To Consider First
 
@@ -126,15 +129,66 @@ Gan S0 should stay on the `g2_candidates_adjudicate` skeleton, but the next usef
 | **R2 - Keep mechanism status aligned** | In Progress | Arm rejects do not become mechanism closure unless supported by a mechanism review | synthesis/inspection updates | yes | `hybrid_pipeline_mechanism_status_20260521.md` matches active decisions |
 | **R3 - Preserve frozen detail in the archive** | Done / maintenance | Old run IDs, freeze decisions, and completed ladders stay in `kanban_frozen_threads_history.md` | none | yes | Active board remains pull-oriented |
 
+## Active Priority 4 - Cursor SDK Research Operations
+
+**Status:** Promoted / constrained.  
+**Decision source:** `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md`; assessment `docs/workstreams/cursor_sdk/cursor_sdk_value_reliability_assessment_20260523.md`.  
+**Scope:** Review-only research operations. Cursor/Composer output is not a benchmark model track, scorer, clinical extractor, DSPy optimizer result, or source-of-truth update.  
+**Budget guard:** User-configured Cursor spend limit: GBP 15.
+
+### Purpose
+
+Use the Cursor Python SDK as a background drafting and review assistant for source-heavy research operations: memory candidates, experiment-inspection drafts, paper claim maps, model-compatibility scans, and hygiene reports. The pilot passed, but the authority boundary is now explicit: SDK output stays in draft folders until human/Codex review promotes selected findings.
+
+### Assessment
+
+The SDK is valuable for broad review-only synthesis and drift detection. C1-C3 produced useful drafts with source paths and no source-of-truth edits. Later drafts also surfaced useful technical leads, including a G16 full-validation inspection draft that flagged a slice/full candidate-emission mismatch and a model-compatibility report that identified adapter/config risk.
+
+Reliability is not high enough for unattended mutation in the shared dirty workspace. The `test-mutations` workflow restored `src/clinical_extraction/gan/temporal_candidates.py` to committed HEAD rather than the pre-session dirty baseline, so mutating SDK workflows are blocked unless run in a disposable clone/worktree with explicit rollback guarantees.
+
+### Active Cards
+
+| Card | Status | Outcome | Dependencies | Parallelizable | Validation |
+| --- | --- | --- | --- | --- | --- |
+| **C1 - Test automated research-memory pass** | Done | Prompt rehearsal plus live review-only candidate written to `docs/memory/dreams/20260523T093633Z_cursor_sdk_memory_pass_candidate.md`; candidate is useful for C4 scoring but not promoted memory | Cursor SDK setup; Windows bridge-discovery patch in `scripts/cursor_sdk_workflows.py` | yes | `uv run python scripts/cursor_sdk_workflows.py check`; `uv run python scripts/cursor_sdk_workflows.py memory-pass`; reviewed against `docs/memory/README.md` promotion checklist |
+| **C2 - Test experiment-inspection draft worker** | Done | Draft produced for G15 slice (`20260523T101141Z_inspection_draft.md`); names metadata, accuracy, run facts, and lists required human checks | Cursor SDK setup; run/config pointer | yes | Draft names dataset, split, model/provider, program variant, scorer mode, normalization rules, evidence policy, caveats, and required human checks |
+| **C3 - Test background repo hygiene scan** | Done | Hygiene scan completed (`20260523T101227Z_hygiene_scan.md`); identified 12 findings ranked by risk | Cursor SDK setup | yes | Findings are source-linked and do not propose direct scorer, dataset, registry, or operational-default changes |
+| **C4 - Decide whether to keep Cursor SDK workflow** | Done | SDK workflows promoted/accepted on 2026-05-23; SDK remains as review-only operations assistant | C1, C2, C3 | no | At least two useful drafts and zero source-of-truth edits by the SDK agent before promotion |
+| **C5 - Run targeted G16 inspection draft** | Ready / evening-suitable | Review-only draft reconciles `gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T161524Z`, F0 control, slice-vs-full candidate mismatch, and rerun criteria | G16 artifact exists; SDK guardrails | yes | Draft lists primary run artifacts, controls, scorer mode, caveats, and required human checks; no Kanban/registry edits |
+| **C6 - Run paper claim-map refresh** | Ready / evening-suitable | Draft paper claim map ties current Gan/model-suite claims to run IDs, metrics, decision scopes, and unsupported claims | registry and synthesis docs available | yes | `paper-synthesis` output includes exact run IDs and flags unsupported or post-narrative claims |
+| **C7 - Run post-refresh hygiene scan** | Ready / evening-suitable | Fresh drift report after this Kanban refresh; checks memory, mechanism status, workflow index, registry gaps, and SDK routing | C4 assessment | yes | Findings are ranked by risk and keep source-of-truth edits as follow-up cards only |
+| **C8 - Run model-compatibility follow-up** | Ready / evening-suitable | Draft provider/config compatibility review for local Qwen, hosted Gemini/OpenAI/Anthropic, adapter paths, and smoke-test gaps | model configs and adapter code | yes | Report proposes validations/tests only; no config or adapter patches |
+| **C9 - Constrain mutating SDK workflows** | Blocked in shared workspace | `test-mutations` and any SDK code-edit workflow may run only in a disposable clone/worktree, never against the current dirty workspace | disposable worktree plus rollback protocol | no | Pre/post `git status`; rollback restores disposable worktree only; no source-of-truth file in main workspace changed |
+
+### Guardrails
+
+- SDK outputs are drafts only; humans/Codex promote any accepted changes.
+- Do not expose or print `CURSOR_API_KEY`.
+- Do not send real sensitive clinical data through this workflow.
+- Do not let SDK-generated prose become evidence for paper claims unless it points to primary artifacts.
+- If a draft conflicts with dataset audits, policies, run artifacts, configs, or registry rows, trust the primary artifact.
+- Do not run mutating SDK workflows in the shared dirty workspace. Use review-only commands by default.
+- Keep long local Ollama inference out of Cursor/IDE background shells; use detached PowerShell launchers and log monitoring instead.
+
+### Evening-Suitable Queue
+
+These can run autonomously for a multi-hour evening pass because they only draft review artifacts:
+
+1. `uv run python scripts/cursor_sdk_workflows.py inspection-draft --topic "G16 builder-gap full-validation reconciliation" --run-dir runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T161524Z`
+2. `uv run python scripts/cursor_sdk_workflows.py paper-synthesis --topic "post-G16 model-suite and Gan builder-gap paper claim map"`
+3. `uv run python scripts/cursor_sdk_workflows.py hygiene-scan`
+4. `uv run python scripts/cursor_sdk_workflows.py model-compatibility`
+5. `uv run python scripts/cursor_sdk_workflows.py memory-pass`
+
+Do not run `test-mutations` tonight unless a clean disposable worktree has been created and explicitly selected as the target.
+
 ## Recommended Next Pull
 
-1. **G11 - Candidate coverage audit** over the 25-record Gan enriched slice.
-2. **G12/G13 - Builder-gap preregistration and smallest deterministic implementation** for uncovered candidate families.
-3. **G14 - No-model validation** with focused tests, primitive validation, and coverage rerun.
-4. **G15 - One GPT slice only if candidate coverage improves.**
-5. **M1 - Qwen 27b model-suite ladder** when Ollama is idle; do not let it block no-model Gan engineering.
+1. **G16 - Broader GPT validation** for `gan_s0_candidate_builder_gap_v1` before Qwen transfer or operational promotion.
+2. **G16 inspection / decision note** with full/cap metrics, residual errors, and overfit caveat.
+3. **M1 - Qwen 27b model-suite ladder** when Ollama is idle; do not let it block hosted GPT validation if API work is available.
 
-Parallel work is cleanest as: one person/agent does G11-G14, another prepares M2 synthesis shell or checks registry/model-suite docs. G13 should stay single-threaded because it changes the shared Gan candidate contract.
+Parallel work is cleanest as: one person/agent reconciles G16 artifacts and decides whether a rerun is needed, another prepares M2/model-suite synthesis shell or checks registry/model-suite docs, and a separate background Cursor SDK session runs C5-C8 review-only drafts. Source-changing Gan candidate work should stay single-threaded because it changes the shared Gan candidate contract.
 
 ## Operational Defaults
 
@@ -185,6 +239,7 @@ Bootstrap/optimizer probes did not support optimizer automation as the near-term
 | Model suite | Model-comparison only; no operational promotion from leaderboard results |
 | Gemini/GPT 5.5/Claude results | Useful for model profile, not mechanism closure |
 | S2/S3 model-suite extension | Deferred unless paper needs it |
+| Cursor SDK pilot | Review-only research-operations assistant; not part of benchmark extraction or scoring |
 
 ## Backlog And Deferred
 
@@ -211,3 +266,4 @@ Bootstrap/optimizer probes did not support optimizer automation as the near-term
 - Qwen v4.12 reject: `docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md`
 - Hybrid mechanism status: `docs/workstreams/hybrid/hybrid_pipeline_mechanism_status_20260521.md`
 - Deterministic placement synthesis: `docs/workstreams/hybrid/hybrid_deterministic_placement_research_synthesis_20260521.md`
+- Cursor SDK workflow pilot: `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md`

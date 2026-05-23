@@ -827,6 +827,80 @@ Next steps:
 - Keep v1.4 as the current no-example GPT slice control.
 - Pull deterministic candidate-builder gap analysis next: no-model inspection, regression fixtures, targeted builder implementation, primitive validation, then a single GPT slice only if coverage improves.
 
+### 2026-05-23 - Candidate Builder Gap V1 No-Model Gate
+
+Context:
+The 2026-05-23 synthesis identified deterministic candidate absence as the next Gan S0 bottleneck: current builders covered only 5/25 gold labels on the enriched Qwen pragmatic-error slice, while v1.4 GPT remained schema/evidence valid but often had no exact candidate surface to choose from.
+
+Work completed:
+- Added a reusable no-model coverage audit script: `scripts/audit_gan_candidate_builder_gap.py`.
+- Wrote the G11 audit artifact and JSON companion: `docs/experiments/gan/gan_s0_candidate_builder_gap_audit_20260523.md`, `docs/experiments/gan/gan_s0_candidate_builder_gap_audit_20260523.json`.
+- Preregistered the G12 builder-gap scope before code changes: `docs/experiments/gan/gan_s0_candidate_builder_gap_preregistration_20260523.md`.
+- Implemented `gan_s0_candidate_builder_gap_v1` deterministic builders in `src/clinical_extraction/gan/temporal_candidates.py`.
+- Added focused regression tests in `tests/test_gan_temporal_candidates.py`.
+
+Artifacts:
+
+- Fixture: `data/fixtures/gan_s0_qwen35b_20260522_pragmatic_error_slice.json`
+- Control run: `runs/gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_4_slice_20260522T215246Z`
+- Scorer: `gan_frequency_deterministic_v1`
+- Model/provider: none for this gate
+
+Observations:
+The no-model audit improved exact gold-in-candidate coverage from **5/25** to **23/25**. Coverage is now 100% for counted-window/no-further-events, infrequent quantified, frequent quantified, vague-multiple, and cluster-frequency failure families. The two remaining uncovered records are both seizure-free boundary cases with gold `seizure free for multiple year`.
+
+Validation:
+- `uv run pytest tests/test_gan_temporal_candidates.py` -> 49 passed.
+- `uv run python scripts/audit_gan_candidate_builder_gap.py` -> 23/25 coverage.
+- `uv run python scripts/validate_primitives.py --errors-only` -> no errors; existing warnings remain about catalog/adapter metadata drift.
+
+Interpretation:
+The result supports the candidate-coverage bottleneck diagnosis. The deterministic surface is now broad enough to justify a single GPT 4.1-mini slice, because the model will be choosing among relevant candidate labels for most of the enriched records rather than operating with empty candidate hints.
+
+Caveats:
+The enriched 25-record slice is a diagnostic search surface, not a full-validation estimate. The new builders are regex-style deterministic helpers and may still need broader regression review after a model slice. Scorer semantics and Gan gold-source policy were unchanged.
+
+Decision scope:
+No-model mechanism gate for builder coverage. No operational model promotion yet.
+
+Next steps:
+- Run one GPT 4.1-mini slice comparing v1.4 control against the builder-gap variant.
+- Keep Qwen transfer blocked until the GPT slice beats v1.4 or answers a preregistered transferability question.
+
+### 2026-05-23 - Candidate Builder Gap V1 GPT Slice
+
+Context:
+After no-model coverage improved from 5/25 to 23/25, G15 tested whether the same GPT 4.1-mini adjudicator and v1.4 prompt could use the new deterministic candidates on the enriched slice.
+
+Work completed:
+- Added slice config `configs/experiments/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice.json`.
+- Ran `uv run python scripts/run_experiment.py --experiment configs/experiments/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice.json --env-file .env`.
+- Wrote inspection `docs/experiments/gan/gan_s0_candidate_builder_gap_v1_gpt_slice_inspection_20260523.md`.
+
+Artifacts:
+
+- Run: `runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice_20260523T093314Z`
+- Control: `runs/gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_4_slice_20260522T215246Z`
+- Config: `configs/experiments/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice.json`
+- Metrics: `runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice_20260523T093314Z/metrics.json`
+- Errors: `runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice_20260523T093314Z/errors.json`
+
+Observations:
+The builder-gap slice reached **92.0% monthly**, **92.0% Purist**, **96.0% Pragmatic**, **84.0% normalized-label**, **100% schema validity**, and **100% evidence quote support**. Against the v1.4 control, this is +56pp monthly, +48pp Purist, and +40pp Pragmatic on the same 25 records.
+
+Interpretation:
+This supports the candidate-coverage bottleneck hypothesis. The same GPT model and prompt can recover most quantified and cluster residuals once the deterministic surface contains the right candidate labels.
+
+Caveats:
+The slice is enriched and should not be used as a full-validation estimate. Two monthly mismatches remain, both vague-multiple records (`gan_15168`, `gan_15193`), and the two seizure-free `multiple year` records remain exact-label mismatches while monthly/category correct.
+
+Decision scope:
+Promote past the enriched-slice gate only. Do not change full-validation operational default until broader GPT validation confirms no overfit/regression.
+
+Next steps:
+- Run a broader GPT validation for `gan_s0_candidate_builder_gap_v1`.
+- Keep Qwen transfer blocked until the broader GPT check confirms the builder expansion.
+
 ## Update Template
 
 

@@ -10,7 +10,12 @@ import pytest
 
 from clinical_extraction.experiments.backends import BACKENDS, get_backend
 from clinical_extraction.experiments.config import load_experiment_config
-from clinical_extraction.experiments.runner import resolve_split_record_ids, run_experiment
+from clinical_extraction.experiments.runner import (
+    gepa_reflection_config,
+    resolve_split_record_ids,
+    run_experiment,
+)
+from clinical_extraction.llms import LLMProviderConfig
 from clinical_extraction.paths import PROJECT_ROOT
 from scripts.run_experiment import main
 
@@ -274,3 +279,19 @@ def test_mock_runner_writes_optimizer_artifacts_when_config_has_optimizer(tmp_pa
     assert (run_dir / "artifacts" / "optimizer" / "summary.json").is_file()
     prompts_payload = json.loads((run_dir / "prompts.json").read_text(encoding="utf-8"))
     assert prompts_payload["optimizer"]["name"] == "BootstrapFewShot"
+
+
+def test_gepa_reflection_config_preserves_null_temperature():
+    base = LLMProviderConfig(provider="openai", model="gpt-5.5", temperature=None)
+
+    reflection = gepa_reflection_config(base)
+
+    assert reflection.temperature is None
+
+
+def test_gepa_reflection_config_uses_high_temperature_when_supported():
+    base = LLMProviderConfig(provider="openai", model="gpt-4.1-mini", temperature=0.0)
+
+    reflection = gepa_reflection_config(base)
+
+    assert reflection.temperature == 1.0
