@@ -1,7 +1,7 @@
 # Model Suite Pattern Interpretation
 
-Date: 2026-05-22
-Status: Draft synthesis
+Date: 2026-05-22; refreshed 2026-05-23 after Qwen3.6:27b completion
+Status: Complete frozen-suite synthesis
 Comparison group: `model_suite_frozen_architecture_v1`
 Decision scope: `arm` - model-comparison evidence only; no mechanism closure or operational promotion
 
@@ -35,13 +35,15 @@ The surfaces intentionally vary task shape: S1 is narrow and policy-sensitive, S
 | Claude Sonnet 4.6 | 81.8% | 65.1% | 73.0% | Weak S1 seizure-type profile; S4 near anchor; Gan strong but slower and less schema-stable. |
 | GPT 5.5 | 85.7% | **68.7%** | 74.9% | Best hosted S4; near-top Gan; S1 below anchor because of seizure-type gap. |
 | Qwen 3.6:35b | 79.0% | 67.5% | 64.4% | Local contrast: S4 competitive, S1 and Gan F0 below hosted leaders. |
+| Qwen 3.5:9b | 79.4% | 64.0% | 65.9% | Local latency-floor track; Gan faster than 35b but schema validity lower. |
+| Qwen 3.6:27b | 85.7% | **69.3%** | 74.9% | Strongest local track; best S4 pooled micro and near-top Gan, but very slow under partial CPU offload. |
 
 ### Family-level signals that explain the pooled scores
 
 | Surface | Observed pattern | Interpretation |
 | --- | --- | --- |
 | ExECT S1 | GPT 5.5 and Claude preserve diagnosis/medication reasonably but lose heavily on `seizure_type`; Gemini 3.1 remains close to GPT. | S1 rewards benchmark label-policy alignment, especially seizure-type policy, more than general extraction strength. |
-| ExECT S4 | GPT 5.5 gains in `seizure_frequency`, `epilepsy_cause`, and `annotated_medication`; Claude gains medication but loses diagnosis/seizure; Gemini 3 Flash has a precision-heavy FP profile. | S4 pooled micro hides divergent family tradeoffs. Per-family reporting is essential. |
+| ExECT S4 | Qwen 27b leads pooled micro at 69.3%; GPT 5.5 gains in `seizure_frequency`, `epilepsy_cause`, and `annotated_medication`; Claude gains medication but loses diagnosis/seizure; Gemini 3 Flash has a precision-heavy FP profile. | S4 pooled micro hides divergent family tradeoffs. Per-family reporting is essential. |
 | Gan F0 | All hosted tracks beat GPT 4.1-mini monthly; Gemini 3 Flash and GPT 5.5 are near-tied at the top, with perfect schema/evidence. | The F0 architecture converts the task into candidate adjudication, where newer hosted models appear stronger. |
 
 ## Interpretation
@@ -78,7 +80,8 @@ The important conclusion is not that GPT 5.5 or Claude are generally weaker. It 
 
 S4 contains 11 field families, including sparse and difficult families. Pooled micro F1 compresses several distinct behaviors:
 
-- GPT 5.5 leads at 68.7%, with gains in `seizure_frequency`, `epilepsy_cause`, and `annotated_medication`.
+- Qwen 3.6:27b leads at 69.3%, with strong recall and a high but still mixed family profile.
+- GPT 5.5 leads hosted tracks at 68.7%, with gains in `seizure_frequency`, `epilepsy_cause`, and `annotated_medication`.
 - Qwen 3.6:35b and Gemini 3.1 Flash-Lite are competitive at 67.5% and 66.8%.
 - Claude is near the GPT 4.1-mini anchor at 65.1%, but with a different profile: better medication, weaker diagnosis and seizure type.
 - Gemini 3 Flash drops to 63.2%, with the inspection noting a precision-driven false-positive profile.
@@ -166,6 +169,14 @@ Strongest hosted S4 result and nearly tied with Gemini 3 Flash on Gan F0. S1 und
 
 Useful local contrast. S4 is competitive, S1 lags substantially, and Gan F0 is below hosted tracks. This suggests local-model scaling is not enough by itself; model-side policy alignment and runtime-specific prompt behavior remain major factors.
 
+### Qwen 3.5:9b
+
+Useful local latency-floor track. It roughly matches 35b on S1, trails the stronger S4 rows, and improves slightly over 35b on Gan F0 while running faster. Its Gan schema validity is lower than 27b/35b, so it is a comparison point rather than a promotion candidate.
+
+### Qwen 3.6:27b
+
+Strongest local model-suite track. It reaches 85.7% on S1, leads S4 pooled micro at 69.3%, and reaches 74.9% Gan F0 monthly with 100% schema/evidence. The caveat is throughput: ExECT runs took roughly 578-743 seconds per record with 71%/29% CPU/GPU residency, so the result is methodologically valuable but operationally expensive.
+
 ## Limitations
 
 - These are validation-suite diagnostics, not published benchmark reproduction.
@@ -173,15 +184,16 @@ Useful local contrast. S4 is competitive, S1 lags substantially, and Gan F0 is b
 - Gan results depend on the fixed synthetic validation set and the F0 expanded-builders architecture.
 - S4 pooled micro can mislead if read without family breakdown.
 - The model suite varies only `model_track`; it does not identify whether prompt rewrites could close a model-specific gap.
+- Local Qwen results are confounded by Ollama residency, context settings, and quantized runtime behavior; 27b outperforming 35b should not be read as a pure parameter-scaling claim.
 - Hosted latency, billing, schema validity, and evidence support differ across tracks and should be included in any operational decision.
 - `decision_scope: arm` means no model should be operationally promoted from this report alone.
 
 ## Next Steps
 
-1. Write a phase-5 model-profile memo that reports each model by surface and by failure profile, not just by aggregate rank.
-2. For GPT 5.5, inspect S1 `seizure_type` failures against GPT 4.1-mini to decide whether the gap is prompt-policy mismatch, evidence-selection behavior, or benchmark normalization.
-3. For Gemini 3 Flash, inspect S4 false positives, especially medication and medication-temporality families, before treating it as worse on ExECT broadly.
-4. For Claude, inspect S1 seizure-type failures and Gan F0 invalid schema records before deciding whether it deserves additional prompt adaptation.
+1. Use this completed table as the model-profile source for paper-facing claims; do not promote operational defaults from the suite alone.
+2. Decide explicitly whether the paper needs an S2/S3 extension. If not, freeze the suite at S1/S4/Gan F0 and move effort back to Gan builder-gap validation.
+3. For GPT 5.5 and Qwen 27b, inspect S1 `seizure_type` failures against GPT 4.1-mini if a model-specific prompt adaptation workstream is opened.
+4. For S4, report per-family F1 alongside pooled micro because the top rows win through different family tradeoffs.
 5. Keep GPT 4.1-mini as the search and reproducibility anchor until a separate promotion review considers cost, latency, schema validity, evidence support, and cross-surface behavior.
 
 ## Artifact References
@@ -195,5 +207,7 @@ Useful local contrast. S4 is competitive, S1 lags substantially, and Gan F0 is b
 | `docs/experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md` | Gemini 3 Flash S1/S4/Gan results and family-level read. |
 | `docs/experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md` | Claude Sonnet 4.6 S1/S4/Gan results and latency/schema caveats. |
 | `docs/experiments/synthesis/model_suite_gpt5_5_full_validation_v1_inspection_20260522.md` | GPT 5.5 S1/S4/Gan results and billing/latency details. |
+| `docs/experiments/synthesis/model_suite_qwen9b_full_validation_v1_inspection_20260522.md` | Qwen 3.5:9b S1/S4/Gan local latency-floor results. |
+| `docs/experiments/synthesis/model_suite_qwen27b_full_validation_v1_inspection_20260523.md` | Qwen 3.6:27b S1/S4/Gan completion report and local latency caveats. |
 | `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md` | Doctrine separating model-comparison arms from mechanism closure and operational promotion. |
 | `docs/workstreams/hybrid/hybrid_deterministic_placement_research_synthesis_20260521.md` | Background synthesis on deterministic placement and task-specific bottlenecks. |
