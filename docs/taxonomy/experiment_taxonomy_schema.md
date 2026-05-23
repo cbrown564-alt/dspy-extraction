@@ -472,6 +472,7 @@ Allowed values:
 - `schema_complexity`
 - `prompt_policy`
 - `optimizer_strategy`
+- `example_strategy`
 - `ladder_rung`
 - `validation_ladder_rung` — Gan S0 post-adjudicate validation layer (schema/surface, det plausibility, evidence grounding, LLM VR, guards, span-check); see `docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_preregistration_20260521.md`
 - `run_scope`

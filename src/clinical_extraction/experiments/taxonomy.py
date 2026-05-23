@@ -71,6 +71,7 @@ VariedFactorValue = Literal[
     "schema_complexity",
     "prompt_policy",
     "optimizer_strategy",
+    "example_strategy",
     "ladder_rung",
     "validation_ladder_rung",
     "run_scope",

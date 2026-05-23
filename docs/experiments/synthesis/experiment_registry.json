@@ -15,8 +15,188 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 181,
+  "row_count": 183,
   "experiments": [
+    {
+      "experiment_id": "gan_s0_gpt4_1_mini_targeted_examples_min7_slice",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "temporal_candidate_generation",
+        "frequency_normalization",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "evidence_quote_generation",
+        "candidate_selection"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "temporal_rules",
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "manual_examples",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "soft_hint",
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "deterministic_mapping",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "gan_s0_gpt4_1_mini_targeted_examples_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "example_strategy",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_gpt4_1_mini_targeted_examples_min7_slice_20260523T072443Z",
+      "outcome": "reject",
+      "decision_doc": "docs/experiments/gan/gan_s0_targeted_examples_min7_gpt_slice_v1_inspection_20260523.md",
+      "metric_caveats": [
+        "Same 25-record enriched validation slice as G1-G7; not comparable to full-validation metrics.",
+        "Prompt-embedded seven-family targeted example pack added to v1.4 policy.",
+        "Tied v1.4 no-example control on all headline metrics with mixed per-record rescues and regressions.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_gpt4_1_mini_targeted_examples_min7_slice_20260523T072443Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.36,
+        "secondary": {
+          "pragmatic_category_accuracy": 0.56,
+          "schema_valid_prediction_rate": 1.0,
+          "prediction_seconds_per_record": 1.2025283439992926
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7",
+      "config_paths": "configs/experiments/gan_s0_gpt4_1_mini_targeted_examples_min7_slice.json",
+      "notes": "decision_scope: arm. Reject as tested for promotion; tied v1.4 while adding a fixed seven-family prompt example pack.",
+      "comparison_groups": [
+        "gan_s0_gpt4_1_mini_targeted_examples_v1",
+        "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1"
+      ],
+      "comparison_caveat": "Axis 3 example-strategy arm on enriched slice; no Qwen transfer."
+    },
+    {
+      "experiment_id": "gan_s0_gpt4_1_mini_constrained_verifier_slice",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_adjudicate_constrained_verifier",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "temporal_candidate_generation",
+        "controlled_vocabulary_filter",
+        "frequency_normalization",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "evidence_quote_generation",
+        "verification"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "deterministic_mapping",
+      "verification_strategy": "llm_verifier",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs\\models\\gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "verification_strategy",
+      "run_scope": "slice",
+      "canonical_run_id": "gan_s0_gpt4_1_mini_constrained_verifier_slice_20260522T225947Z",
+      "outcome": "reject",
+      "decision_doc": "docs/experiments/gan/gan_s0_candidate_constrained_verifier_gpt_slice_v1_inspection_20260522.md",
+      "metric_caveats": [
+        "Same 25-record enriched validation slice as G1-G6; not comparable to full-validation metrics.",
+        "Candidate-constrained verifier may confirm initial label or select deterministic candidates / sentinel labels only.",
+        "Tied v1.4 single-pass control while adding a second LLM pass.",
+        "decision_scope arm; not mechanism closure."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_gpt4_1_mini_constrained_verifier_slice_20260522T225947Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.36,
+        "secondary": {
+          "pragmatic_category_accuracy": 0.56,
+          "schema_valid_prediction_rate": 1.0,
+          "prediction_seconds_per_record": 1.6720289960014634
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_adjudicate_constrained_verifier_v1_1",
+      "config_paths": "configs/experiments/gan_s0_gpt4_1_mini_constrained_verifier_slice.json",
+      "notes": "decision_scope: arm. Reject as tested for promotion; constrained verifier avoided free-form drift but mostly confirmed v1.4 labels.",
+      "comparison_groups": [
+        "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1"
+      ],
+      "comparison_caveat": "Axis 3 verification-strategy arm on enriched slice; no Qwen transfer."
+    },
     {
       "experiment_id": "gan_s0_gpt4_1_mini_multiple_answer_det_selector_slice",
       "dataset": "gan_2026",

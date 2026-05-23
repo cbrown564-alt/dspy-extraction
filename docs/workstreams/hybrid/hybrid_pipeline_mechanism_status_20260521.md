@@ -66,6 +66,8 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | ReAct interface (Gan) | **arm-reject** | one implementation |
 | Candidate table vs JSON vs prose (Gan) | **open** | Cap-25: +4pp table vs prose; **cap-50 confirm null** (62% tie) — `docs/experiments/gan/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md` |
 | Canonical format examples (Gan adjudicate) | **open** | Cap-25 C1 +4pp exact (arm hold); residual 30-record replay null — `docs/experiments/gan/gan_s0_canonical_format_residual_slice_replay_20260521.md` |
+| Candidate-constrained verifier (Gan G7) | **arm-reject** | GPT enriched slice tied v1.4 (36.0% monthly, 56.0% pragmatic) while adding a second LLM pass; 100.0% schema/evidence and no free-form drift, but no promotion lift — `docs/experiments/gan/gan_s0_candidate_constrained_verifier_gpt_slice_v1_inspection_20260522.md` |
+| Targeted examples min7 (Gan) | **arm-reject** | GPT enriched slice tied v1.4 (36.0% monthly, 56.0% pragmatic, 100.0% schema/evidence) with mixed rescues/regressions; example mechanism remains open — `docs/experiments/gan/gan_s0_targeted_examples_min7_gpt_slice_v1_inspection_20260523.md` |
 | ExECT S4 frequency structured slots | **open** | Cap-25 S2 null vs R0 (51.0% F1); mechanism class open — `docs/experiments/exect/exect_s4_frequency_structured_slots_gpt_cap25_v1_inspection_20260521.md` |
 | ExECT S4 sparse-family prompt sweeps | **policy-gated / deferred** | Policy memo selects bridge-first; no cap-25 model spend until bridge scaffolds — `docs/experiments/exect/exect_s4_sparse_family_surface_policy_20260521.md` |
 

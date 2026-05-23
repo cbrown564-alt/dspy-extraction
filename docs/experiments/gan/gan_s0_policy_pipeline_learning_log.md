@@ -656,6 +656,99 @@ Next steps:
 - Pull G7: candidate-constrained judge/verifier over deterministic candidates, with no free-form over-repair.
 - If revisiting answer options later, seed with deterministic candidates and preserve raw rejected options in artifacts before filtering.
 
+### 2026-05-22 - G7: Candidate-Constrained Judge / Verifier GPT Slice
+
+Context:
+Prototype an Axis 3 verification arm where GPT 4.1-mini first adjudicates with deterministic temporal candidates, then a second pass may only confirm the initial label or select a deterministic candidate / `unknown` / `no seizure frequency reference`. The design constraint came from G5/G6: event rows and unseeded answer options were too brittle, but unconstrained VR historically over-repaired.
+
+Work completed:
+Ran the existing G7 candidate-constrained verifier config on the same 25-record enriched validation slice and wrote the inspection.
+
+Artifacts:
+- Config: `configs/experiments/gan_s0_gpt4_1_mini_constrained_verifier_slice.json`
+- Run: `runs/gan_s0_gpt4_1_mini_constrained_verifier_slice_20260522T225947Z/`
+- Inspection: `docs/experiments/gan/gan_s0_candidate_constrained_verifier_gpt_slice_v1_inspection_20260522.md`
+- Metrics:
+  - Monthly Frequency Accuracy = 36.0%
+  - Pragmatic Category Accuracy = 56.0%
+  - Purist Category Accuracy = 44.0%
+  - Normalized Label Accuracy = 28.0%
+  - Schema Validity = 100.0%
+  - Evidence Quote Support = 100.0%
+- Error analysis:
+  - Verifier decisions were 22 `confirm` and 3 guard-level `repair` decisions.
+  - Final labels matched the v1.4 no-verifier control on 24/25 records; the only visible difference stripped outer quotes from `gan_14881`.
+  - Remaining misses were denominator/window errors and over-unknown cases, especially when deterministic candidates were empty.
+
+Policy / pipeline factor changed:
+Verification strategy: candidate-constrained judge/verifier after deterministic-candidate adjudication.
+
+Fixed controls:
+GPT 4.1-mini, same 25-record enriched validation slice as G1-G6, deterministic temporal candidates, deterministic Gan scorer.
+
+Observations:
+The constraint successfully prevented free-form over-repair, but it did not improve benchmark-facing metrics over the v1.4 single-pass policy control. The second pass mostly confirmed existing labels, so candidate recall rather than verifier freedom appears to be the bottleneck for this implementation.
+
+Interpretation:
+Reject this G7 implementation as tested for promotion (`decision_scope: arm`). Do not transfer to Qwen. Candidate-constrained verification remains an open mechanism, but it needs better candidate coverage or a seeded hybrid option set before another verifier pass is likely to help.
+
+Caveats:
+The slice is enriched for Qwen pragmatic misses and does not estimate full-validation performance. The result should not be used to mechanism-close verifier/repair.
+
+Decision scope:
+Arm search.
+
+Open cells:
+Hybrid deterministic+LLM answer options seeded with deterministic candidates; targeted examples for grouped events, short stability after counted events, highest-current-frequency, and cluster ambiguity.
+
+Next steps:
+- Prefer targeted examples or G6b seeded hybrid answer options over another unconstrained verifier run.
+- Keep v1.4 as the strongest no-example GPT slice control until an implementation beats it on the same slice.
+
+### 2026-05-23 - Targeted Examples Min7 GPT Slice
+
+Context:
+Test whether the seven-family targeted example pack planned in G4 can move hard grouped-event, short-stability, highest-frequency, YTD, trigger-conditioned unknown, cluster, and no-reference cases beyond the v1.4 no-example control.
+
+Work completed:
+Added prompt version `gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7`, an executable GPT slice config, and focused tests. Ran the fixed 25-record enriched validation slice on GPT 4.1-mini.
+
+Artifacts:
+- Config: `configs/experiments/gan_s0_gpt4_1_mini_targeted_examples_min7_slice.json`
+- Run: `runs/gan_s0_gpt4_1_mini_targeted_examples_min7_slice_20260523T072443Z/`
+- Inspection: `docs/experiments/gan/gan_s0_targeted_examples_min7_gpt_slice_v1_inspection_20260523.md`
+- Metrics:
+  - Monthly Frequency Accuracy = 36.0%
+  - Pragmatic Category Accuracy = 56.0%
+  - Purist Category Accuracy = 44.0%
+  - Normalized Label Accuracy = 28.0%
+  - Schema Validity = 100.0%
+  - Evidence Quote Support = 100.0%
+
+Policy / pipeline factor changed:
+Example strategy: prompt-embedded `targeted_examples_min7_v1` added to the v1.4 policy under the same `g2_candidates_adjudicate` skeleton.
+
+Fixed controls:
+GPT 4.1-mini, same 25-record enriched validation slice as G1-G7, deterministic temporal candidates, deterministic Gan scorer, no verifier/repair.
+
+Observations:
+The example arm tied v1.4 on all headline metrics. It rescued `gan_16750` exactly and improved category outcomes on `gan_15442` and `gan_16645`, but regressed `gan_14881`, `gan_15193`, and `gan_16529`.
+
+Interpretation:
+Reject the seven-example pack as tested for promotion (`decision_scope: arm`). The result suggests examples can move individual failure families, but this fixed mixed pack is not a stable next default and should not transfer to Qwen.
+
+Caveats:
+The slice is enriched for Qwen pragmatic misses and does not estimate full-validation performance. Evidence quote support remains diagnostic.
+
+Decision scope:
+Arm search.
+
+Open cells:
+Smaller targeted packs may isolate helpful grouped-event/YTD examples from cluster/abstention regressions. Seeded hybrid deterministic+LLM answer options remain open.
+
+Next steps:
+- Prefer G6b seeded hybrid answer options, or split example packs into narrower temporal vs abstention/cluster arms before additional model spend.
+
 ## Update Template
 
 

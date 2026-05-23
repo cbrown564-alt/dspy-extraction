@@ -3244,3 +3244,32 @@ def test_experiment_config_rejects_conflicting_taxonomy_and_exemption():
 
     with pytest.raises(ValidationError):
         ExperimentConfig.model_validate(payload)
+
+
+def test_gan_s0_targeted_examples_min7_slice_config_records_example_strategy():
+    config = load_experiment_config(
+        Path("configs/experiments/gan_s0_gpt4_1_mini_targeted_examples_min7_slice.json")
+    )
+
+    assert config.experiment_id == "gan_s0_gpt4_1_mini_targeted_examples_min7_slice"
+    assert config.program_variant == "gan_frequency_s0_temporal_candidates_single_pass"
+    assert (
+        config.prompt_version
+        == "gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7"
+    )
+    assert config.controls.context_policy == (
+        "full_note_plus_deterministic_temporal_candidates"
+    )
+    assert config.controls.few_shot_policy == (
+        "prompt_embedded_targeted_examples_min7_v1"
+    )
+    assert config.record_ids is not None
+    assert len(config.record_ids) == 25
+    assert config.taxonomy is not None
+    assert (
+        config.taxonomy.comparison_group
+        == "gan_s0_gpt4_1_mini_targeted_examples_v1"
+    )
+    assert config.taxonomy.varied_factor == "example_strategy"
+    assert config.taxonomy.implementation_variant == "targeted_examples_min7_v1"
+    assert config.taxonomy.stage_graph_id == "g2_candidates_adjudicate"

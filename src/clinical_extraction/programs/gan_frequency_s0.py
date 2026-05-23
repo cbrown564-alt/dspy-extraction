@@ -104,6 +104,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION =
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_5_compact_hierarchy"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7"
+)
 GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_llm_temporal_candidates_v1_1"
 )
@@ -777,6 +780,50 @@ GAN_FREQUENCY_S0_COMPACT_HIERARCHY_POLICY_ADDENDUM = """
       especially when overriding a temporal candidate.
 """
 
+GAN_FREQUENCY_S0_TARGETED_EXAMPLES_MIN7_ADDENDUM = """
+    Targeted Gan example pack (v1.6 targeted_examples_min7_v1):
+    These examples supplement the v1.4 policy for known ambiguity families.
+    Follow the examples only when the note supports the same policy shape.
+
+    - Grouped recent events:
+      note: "Since review three months ago, she had one focal seizure in March
+      and two in April."
+      output: "3 per 3 month"; evidence_text: "one focal seizure in March
+      and two in April"
+
+    - Counted events plus short stability:
+      note: "He had four seizures during February but no further events since
+      then; seen in May."
+      output: "4 per 3 month"; evidence_text: "four seizures during February"
+
+    - Highest current frequency:
+      note: "Generalised tonic-clonic seizures are yearly, but focal aware
+      seizures continue twice each month."
+      output: "2 per month"; evidence_text: "focal aware seizures continue
+      twice each month"
+
+    - Year-to-date denominator:
+      note: "Clinic date is 15 February. She reports four seizures so far this
+      year."
+      output: "4 per 2 month"; evidence_text: "four seizures so far this year"
+
+    - Trigger-conditioned unknown:
+      note: "Events happen after sleep deprivation, but there is no pattern for
+      how often this occurs."
+      output: "unknown"; evidence_text: "Events happen after sleep deprivation"
+
+    - Cluster ambiguity:
+      note: "Her clusters contain three to four brief seizures, but the spacing
+      between clusters is unclear."
+      output: "unknown, 3 to 4 per cluster"; evidence_text: "clusters contain
+      three to four brief seizures"
+
+    - No-reference boundary:
+      note: "This letter confirms cancellation of the neurology appointment and
+      does not discuss seizures."
+      output: "no seizure frequency reference"; evidence_text: null
+"""
+
 
 def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
@@ -962,6 +1009,21 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateCompactHierarchyExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_TARGETED_EXAMPLES_MIN7_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateTargetedExamplesMin7ExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )

@@ -16,7 +16,7 @@
 | **Frozen run tables** | `docs/planning/kanban_frozen_threads_history.md` |
 | **Retired phased plan** | `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md` (archive only) |
 
-**Last refreshed:** 2026-05-22 — **G6 multiple-answer + deterministic selector rejected as tested on GPT 4.1-mini slice** (0.0% monthly/pragmatic; 100.0% schema; strict option filtering collapsed most records to `unknown`); **G5 LLM event-table candidate stage rejected as tested** (8.3% monthly, 37.5% pragmatic, 96.0% schema); **G3 policy-density mini-grid complete** (v1.4 strongest no-example control: 36.0% monthly, 56.0% pragmatic); **G4 targeted example-family design complete**; **Qwen 9b model-suite ladder done** (S1 **79.4%**, S4 **64.0%**, Gan F0 **65.9%** monthly); Qwen 35b Gan F0 full done (`…131822Z`, **64.4%**); **next Ollama pull: Qwen 27b overnight**; Gan S0 policy/pipeline runway is primary engineering (`gan_s0_policy_pipeline_learning_log.md`).
+**Last refreshed:** 2026-05-23 — **Targeted examples min7 rejected as tested for promotion** (36.0% monthly, 56.0% pragmatic, 100.0% schema/evidence; tied v1.4 with mixed per-record rescues/regressions); **G7 candidate-constrained verifier rejected as tested for promotion** (36.0% monthly, 56.0% pragmatic, 100.0% schema/evidence; tied v1.4 while adding a second LLM pass); **G6 multiple-answer + deterministic selector rejected as tested on GPT 4.1-mini slice** (0.0% monthly/pragmatic; 100.0% schema; strict option filtering collapsed most records to `unknown`); **G5 LLM event-table candidate stage rejected as tested** (8.3% monthly, 37.5% pragmatic, 96.0% schema); **G3 policy-density mini-grid complete** (v1.4 strongest no-example control: 36.0% monthly, 56.0% pragmatic); **Qwen 9b model-suite ladder done** (S1 **79.4%**, S4 **64.0%**, Gan F0 **65.9%** monthly); Qwen 35b Gan F0 full done (`…131822Z`, **64.4%**); **next Ollama pull: Qwen 27b overnight**; Gan S0 policy/pipeline runway is primary engineering (`gan_s0_policy_pipeline_learning_log.md`).
 
 ---
 
@@ -48,14 +48,14 @@
 | **G4 — Design targeted example families** | Done | Curated plan for grouped events, short stability after counted events, highest-current-frequency, YTD, trigger-conditioned unknown, cluster ambiguity, and no-reference boundary | none | yes | Example rationale recorded in `gan_s0_targeted_example_families_plan_20260522.md` before model spend |
 | **G5 — Prototype LLM event-table candidate stage** | Done | Reject as tested on GPT slice: 8.3% monthly (2/24 valid), 37.5% pragmatic, 96.0% schema, 100% evidence. Event table found evidence rows but did not preserve count/window slots well enough for final adjudication. | G3/G4 helpful but not required | yes | Inspection `gan_s0_event_table_candidate_gpt_slice_v1_inspection_20260522.md` |
 | **G6 — Prototype multiple-answer + deterministic selector** | Done | Reject as tested on GPT slice: 0.0% monthly/pragmatic; 100.0% schema; strict answer-option parsing/evidence filtering left most records with no usable candidates and fallback `unknown` | compact hierarchy from G3; G5 failure constraints | yes | Inspection `gan_s0_multiple_answer_selector_gpt_slice_v1_inspection_20260522.md` |
-| **G7 — Candidate-constrained judge / verifier** | Ready | Verifier can confirm/reject to candidate/unknown/no-reference, but cannot free-form over-repair | G1/G3 plus G5/G6 failure constraints | yes | Reduced over-repair vs historical VR slice |
+| **G7 — Candidate-constrained judge / verifier** | Done | Reject as tested for promotion: tied v1.4 on same GPT slice (36.0% monthly, 56.0% pragmatic) with 100.0% schema/evidence, but added a second LLM pass and mostly confirmed unchanged labels | G1/G3 plus G5/G6 failure constraints | yes | Inspection `gan_s0_candidate_constrained_verifier_gpt_slice_v1_inspection_20260522.md` |
+| **G9 — Test targeted examples min7** | Done | Reject as tested for promotion: tied v1.4 on same GPT slice (36.0% monthly, 56.0% pragmatic, 100.0% schema/evidence) with mixed rescues (`gan_16750`, `gan_15442`, `gan_16645`) and regressions (`gan_14881`, `gan_15193`, `gan_16529`) | G4 design + v1.4 control | yes | Inspection `gan_s0_targeted_examples_min7_gpt_slice_v1_inspection_20260523.md` |
 | **G8 — Update learning log after every run** | In Progress | `gan_s0_policy_pipeline_learning_log.md` remains source of truth for policy rationale/outcomes | every Gan policy run | no | New dated entry with run IDs, metrics, caveats, next cells |
 
 ### Immediate pull order
 
-1. **G7 (GPT-first)** — Prototype candidate-constrained judge/verifier using G5/G6 failures as constraints: event rows and unseeded answer options are too brittle, so the judge should be constrained to deterministic candidates plus explicit `unknown`/`no-reference` decisions.
-2. **Optional G6b (GPT-first)** — Only if needed after G7: hybrid deterministic+LLM answer options that seed the proposer with deterministic candidates and preserve raw rejected options.
-3. **Qwen Transfers** — Run confirmatory checks on Qwen 3.6:35b for winning configurations only (starting with G2/v1.4 policy slice if current run shows promise).
+1. **G6b seeded hybrid answer options (GPT-first)** — G7 and targeted examples min7 did not improve over v1.4; the next informative cell should test hybrid deterministic+LLM answer options seeded with deterministic candidates and raw rejected options preserved.
+2. **Qwen Transfers** — Run confirmatory checks on Qwen 3.6:35b for winning configurations only; do not transfer G5/G6/G7 failed GPT-first arms.
 
 **Do not:** run broad grids or early stage prototypes on Qwen 3.6:35b; use GPT 4.1-mini as the rapid search model to filter first.
 
@@ -379,7 +379,7 @@ All cards below are **Done** unless noted. Inspection paths are the source of tr
 | ExECT S1 policy | **v4_10 all tracks** — v4_12 reject (arm) |
 | Gemini Gan F0 lead | **Model-comparison only** — no operational promotion |
 | Next Ollama pull | **Qwen 27b overnight** (`start_qwen27b_model_suite_ladder_detached.ps1`) |
-| Next engineering | **Gan G7 candidate-constrained judge/verifier** (primary) + **27b model-suite ladder** when Ollama idle |
+| Next engineering | **Gan targeted examples or G6b seeded hybrid answer options** (primary) + **27b model-suite ladder** when Ollama idle |
 | Hosted full replays | **GPT 5.5 done** — Gemini 3 Flash + Claude **done** |
 | Local scaling order | 35b **done** → **9b done** → **27b overnight** |
 
@@ -390,7 +390,7 @@ Full decision history and arm-reject guardrails: `exect_negative_probe_synthesis
 ## Long-term arc
 
 1. **Complete** hybrid cap-25 search (Gan + ExECT placement and targeted Axis-3 cells).
-2. **Now:** **Gan S0 policy/pipeline runway** — rapid GPT search over policy density, candidate extraction, examples, and verifier/repair; Qwen 35b deep evaluation for winners. G5/G6 candidate-stage arms are rejected as tested; G7 candidate-constrained judging is next.
+2. **Now:** **Gan S0 policy/pipeline runway** — rapid GPT search over policy density, candidate extraction, examples, and verifier/repair; Qwen 35b deep evaluation for winners. G5/G6 candidate-stage arms and G7 candidate-constrained verification are rejected as tested for promotion; next pull should improve candidate coverage or add targeted examples.
 3. **In flight:** **Full model suite alignment** — Qwen **9b done**; Qwen **27b** overnight; hosted full replays done.
 4. **Next synthesis:** convert Gan policy/pipeline outcomes into a staged hybrid design recommendation, then update mechanism status only when evidence warrants it.
 5. **Later:** published benchmark reproduction when CUI/real-set blockers clear; optimizer compile rungs only with full ladder discipline.

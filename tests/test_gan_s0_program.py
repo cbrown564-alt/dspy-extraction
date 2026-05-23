@@ -62,6 +62,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION,
     GanFrequencyS0TemporalAdjudicateSignature,
     select_gan_multiple_answer_option,
     stage_graph_id_for_program_variant,
@@ -304,6 +305,23 @@ def test_gan_s0_compact_hierarchy_prompt_adds_policy_density_arm():
     assert "Group multiple recent events" in prompt_doc
     assert "Trigger-conditioned or pattern-only counts" in prompt_doc
     assert "Error-taxonomy policy patch" not in prompt_doc
+    assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
+
+
+def test_gan_s0_targeted_examples_prompt_adds_min7_example_pack():
+    signature_cls = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION
+    )
+
+    prompt_doc = signature_cls.__doc__ or ""
+
+    assert "Error-taxonomy policy patch" in prompt_doc
+    assert "Targeted Gan example pack" in prompt_doc
+    assert "targeted_examples_min7_v1" in prompt_doc
+    assert "Grouped recent events" in prompt_doc
+    assert "Counted events plus short stability" in prompt_doc
+    assert "Trigger-conditioned unknown" in prompt_doc
+    assert "no seizure frequency reference" in prompt_doc
     assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
 
 
@@ -2341,5 +2359,4 @@ def test_gan_s0_constrained_verifier_module_runs():
     assert pred.metadata["verifier_decision"] == "repair"
     # It should have reverted "1 per yr" to "1 per year"
     assert pred.values[0].raw_value == "1 per year"
-
 
