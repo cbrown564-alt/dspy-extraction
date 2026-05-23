@@ -181,3 +181,16 @@ Run IDs below use the `…` prefix for the timestamp suffix under `runs/` (e.g. 
 | Freeze S4 at v1.2 on hosted GPT? | Yes — freq 45.7% accepted as documented limitation |
 | Continue ExECT v4.x on validation? | No — frozen at v4.10 |
 | S2 seizure regression root cause | Model output drift in multi-family pass; v1.1 recovered cap-25 |
+
+---
+
+## Thread F — 2026-05-23 active-board cleanup pointers
+
+**Status:** Detailed recent findings removed from the active Kanban and replaced with source-document pointers. The active board now tracks only current pulls, gated near-future decisions, standing defaults, and compact references.
+
+| Topic | Outcome | Primary source |
+| --- | --- | --- |
+| Gan G11-G15 builder-gap work | Candidate-builder gap v1 passed no-model and enriched-slice gates; slice result remains diagnostic, not full-validation evidence | `docs/experiments/gan/gan_s0_candidate_builder_gap_audit_20260523.md`, `docs/experiments/gan/gan_s0_candidate_builder_gap_preregistration_20260523.md`, `docs/experiments/gan/gan_s0_candidate_builder_gap_v1_gpt_slice_inspection_20260523.md` |
+| Gan G16 full-validation artifact | Reconciled as stale-check / rerun-risk evidence because candidate-emission parity failed inside the full run | `docs/experiments/gan/gan_s0_candidate_builder_gap_v1_gpt_full_validation_reconciliation_20260523.md` |
+| Cursor SDK pilot and evening queue | Promoted only as review-only research-operations guidance; SDK drafts remain non-authoritative until manually promoted | `docs/workstreams/cursor_sdk/cursor_sdk_value_reliability_assessment_20260523.md`, `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md` |
+| Frozen model suite | Planned hosted/local tracks complete; model-suite outputs remain model-profile evidence, not operational defaults | `docs/experiments/synthesis/model_suite_pattern_interpretation_20260522.md`, `docs/experiments/synthesis/model_suite_qwen27b_full_validation_v1_inspection_20260523.md` |
