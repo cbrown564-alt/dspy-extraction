@@ -1,0 +1,59 @@
+{
+  "id": "gan_8631",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Health Centre  \n48 Mill Lane, Oxford OX1 3QJ  \n\nDear Dr Patel,                                                                                                         \n\nJames Walker, DOB: 22-11-1990, Hospital No: H738201 NHS No. 3849201756  \nFlat 3, 9 Meadow View, Oxford OX2 7HT  \n\nEpilepsy \n\nMedication: Continuing lamotrigine as previously prescribed. \n\nLamotrigine 100 mg twice daily (patient keeps a full supply at both weekly residences). \n\nLamotrigine Blood Level: \n\nNo recent level required; adherence reported and no clinical concerns at present. \n\nSeizures: No seizures in the interim. \n\nI conducted a scheduled telephone follow‑up today. The patient reports spending alternate parts of each week at two different households and has arranged duplicate medication supplies at both locations to avoid missed doses. She uses a weekly pill organiser at each address and a smartphone reminder; no missed doses reported since the last contact. Sleep pattern and general health stable. No adverse effects from lamotrigine, and no new neurological symptoms volunteered. Driving status unchanged and safety advice previously given remains understood. \n\nPlan: Continue current regimen and routines; arrange routine review in six months or sooner if concerns arise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 658,
+      "end": 695,
+      "text": "Seizures: No seizures in the interim.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 668,
+      "end": 694,
+      "text": "No seizures in the interim",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8631,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Health Centre  \n48 Mill Lane, Oxford OX1 3QJ  \n\nDear Dr Patel,                                                                                                         \n\nJames Walker, DOB: 22-11-1990, Hospital No: H738201 NHS No. 3849201756  \nFlat 3, 9 Meadow View, Oxford OX2 7HT  \n\nEpilepsy \n\nMedication: Continuing lamotrigine as previously prescribed. \n\nLamotrigine 100 mg twice daily (patient keeps a full supply at both weekly residences). \n\nLamotrigine Blood Level: \n\nNo recent level required; adherence reported and no clinical concerns at present. \n\nSeizures: No seizures in the interim. \n\nI conducted a scheduled telephone follow‑up today. The patient reports spending alternate parts of each week at two different households and has arranged duplicate medication supplies at both locations to avoid missed doses. She uses a weekly pill organiser at each address and a smartphone reminder; no missed doses reported since the last contact. Sleep pattern and general health stable. No adverse effects from lamotrigine, and no new neurological symptoms volunteered. Driving status unchanged and safety advice previously given remains understood. \n\nPlan: Continue current regimen and routines; arrange routine review in six months or sooner if concerns arise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly mentions seizures: 'Seizures: No seizures in the interim.' The clinic date is 21 September 2025. There is no explicit duration indicating at least 6 months seizure freedom. 'In the interim' suggests the period since the last contact, but no prior date is provided. Therefore, we cannot confirm 6 months of seizure freedom. Since seizures are mentioned and currently none are reported, but duration ≥6 months is not established, the correct normalized label is 'seizure free for multiple months' per instruction 8 (insufficient info to confirm or refute 6-month criterion allows 'multiple months').",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizures: No seizures in the interim."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures in the interim"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

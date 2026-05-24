@@ -1,0 +1,59 @@
+{
+  "id": "gan_9424",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 2 May 2023 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nSophie Bennett, DOB: 12-04-1992, Hospital No: H938271 NHS No. 9056174432  \n14 Brookside Close, London, W10 6AB \n\nMedication: \n\nLamotrigine 150 mg twice daily. Patient-reported good tolerability with mild intermittent nausea in the mornings. No other current antiseizure medicines. Folic acid 5 mg once daily started six weeks ago in readiness for planned pregnancy. \n\nThank you for asking me to see Sophie Bennett for pre-conception counselling. She and her partner are planning to try to conceive in the next 3–6 months. She reports that her events have been relatively stable over the past several months. To document recent frequency: Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0. 2023: Jan x1, Feb x1, Mar x1, Apr x2. She describes these as brief episodes with preserved awareness, tingling rising in the left arm with occasional speech hesitation, typically lasting under one minute, without generalised convulsions, injuries, or incontinence. Triggers noted include sleep deprivation and high work stress. No recent hospital admissions. \n\nWe discussed pre-conception considerations at length. She understands the importance of: \n- Continuing folic acid 5 mg daily through the first trimester.  \n- Maintaining a regular sleep pattern and avoiding missed doses.  \n- Contacting us promptly if pregnancy is confirmed so that levels and clinical status can be reviewed.  \n- Taking vitamin D and calcium as per general health guidance in pregnancy. \n\nShe is not driving and is aware to review DVLA guidance should there be any change in her events. She does not consume alcohol and has stopped vaping. There is no family history of congenital anomalies and no prior pregnancies. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily and folic acid 5 mg daily.  \n- Arrange pre-conception bloods including baseline lamotrigine trough level for future comparison in pregnancy, U&E, LFT, and vitamin D.  \n- Provide written information on medication safety in pregnancy, general seizure first aid, and peripartum planning.  \n- If seizures increase or if events evolve, she will contact us; otherwise routine review in four months, sooner if conception occurs. \n\nWe will see her back in four months or earlier if she becomes pregnant. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 819,
+      "end": 917,
+      "text": "Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0. 2023: Jan x1, Feb x1, Mar x1, Apr x2.",
+      "attributes": {
+        "Label": "10 per 9 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 819,
+      "end": 916,
+      "text": "Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0. 2023: Jan x1, Feb x1, Mar x1, Apr x2",
+      "attributes": {
+        "Label": "10 per 9 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9424,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 2 May 2023 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nSophie Bennett, DOB: 12-04-1992, Hospital No: H938271 NHS No. 9056174432  \n14 Brookside Close, London, W10 6AB \n\nMedication: \n\nLamotrigine 150 mg twice daily. Patient-reported good tolerability with mild intermittent nausea in the mornings. No other current antiseizure medicines. Folic acid 5 mg once daily started six weeks ago in readiness for planned pregnancy. \n\nThank you for asking me to see Sophie Bennett for pre-conception counselling. She and her partner are planning to try to conceive in the next 3–6 months. She reports that her events have been relatively stable over the past several months. To document recent frequency: Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0. 2023: Jan x1, Feb x1, Mar x1, Apr x2. She describes these as brief episodes with preserved awareness, tingling rising in the left arm with occasional speech hesitation, typically lasting under one minute, without generalised convulsions, injuries, or incontinence. Triggers noted include sleep deprivation and high work stress. No recent hospital admissions. \n\nWe discussed pre-conception considerations at length. She understands the importance of: \n- Continuing folic acid 5 mg daily through the first trimester.  \n- Maintaining a regular sleep pattern and avoiding missed doses.  \n- Contacting us promptly if pregnancy is confirmed so that levels and clinical status can be reviewed.  \n- Taking vitamin D and calcium as per general health guidance in pregnancy. \n\nShe is not driving and is aware to review DVLA guidance should there be any change in her events. She does not consume alcohol and has stopped vaping. There is no family history of congenital anomalies and no prior pregnancies. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily and folic acid 5 mg daily.  \n- Arrange pre-conception bloods including baseline lamotrigine trough level for future comparison in pregnancy, U&E, LFT, and vitamin D.  \n- Provide written information on medication safety in pregnancy, general seizure first aid, and peripartum planning.  \n- If seizures increase or if events evolve, she will contact us; otherwise routine review in four months, sooner if conception occurs. \n\nWe will see her back in four months or earlier if she becomes pregnant. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit monthly counts of focal seizures: 2022 Aug 0, Sep 2, Oct 1, Nov 2, Dec 0; 2023 Jan 1, Feb 1, Mar 1, Apr 2. Summing seizures: 0+2+1+2+0+1+1+1+2 = 10. Counting months from Aug 2022 through Apr 2023 inclusive gives 9 months. The patient is not seizure-free for 6 months (last seizures in Apr 2023), so a frequency must be calculated. Therefore, the seizure frequency is 10 per 9 months.",
+      "seizure_frequency_number": [
+        "10 per 9 month",
+        "Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0. 2023: Jan x1, Feb x1, Mar x1, Apr x2."
+      ],
+      "reference": [
+        "10 per 9 month",
+        "Focal seizure: 2022: Aug x0, Sep x2, Oct x1, Nov x2, Dec x0. 2023: Jan x1, Feb x1, Mar x1, Apr x2"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

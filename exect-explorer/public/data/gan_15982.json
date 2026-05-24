@@ -1,0 +1,59 @@
+{
+  "id": "gan_15982",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 25 July 2014\n\nDr Patel\nSt George’s University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nMichael Brown, DOB: 14-02-1987, Hospital No: H482917 NHS No. 9075312468\n12 Brookside Close, London, SW12 8DA\n\nDiagnoses:\n\nSeizure disorder under investigation.\n\nThank you for reviewing Michael Brown, who attended today with his partner. He works rotating shifts, including nights, and both he and his partner report that his circadian rhythm has been disrupted for several months due to frequent changes in start times. He has noticed that sleep deprivation after night shifts often precedes events.\n\nSince his last review he has not required emergency medication and there have been no injuries or prolonged events. In Jun he had a nocturnal seizure but no daytime events. In July he had three nocturnal seizures and 5 while awake. He and his partner kept a diary that correlates the nocturnal events with sequences of two or more late finishes, and the daytime events with early-morning starts following short sleep. There have been no clear focal warnings reported, and no consistent postictal confusion beyond brief fatigue. He denies alcohol or recreational drug use and has maintained regular meals despite the schedule.\n\nCurrent medications are unchanged from the last visit. He has not used any rescue therapy in this interval. There is no implanted device in situ and no previous neurosurgical intervention. He is using a smartphone alarm to prompt regular dosing and has started a sleep hygiene plan (patient-led) aimed at stabilising bedtime on non-working days.\n\nOn examination today he was well, with normal cardiorespiratory and neurological examination between events. We reiterated the importance of maintaining a seizure diary with precise timing relative to shift patterns. He will continue with the current regimen while we complete further diagnostics already arranged (including repeat EEG with sleep deprivation and serum levels, as discussed previously). We also provided written information on occupational safety around night work, which he and his employer can review.\n\nWe will plan a follow-up in three months, or sooner if there is any escalation in frequency, injuries, or events lasting longer than usual. He and his partner are aware of red flags and how to contact the service.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 797,
+      "end": 892,
+      "text": "In Jun he had a nocturnal seizure... In July he had three nocturnal seizures and 5 while awake.",
+      "attributes": {
+        "Label": "9 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 797,
+      "end": 911,
+      "text": "In Jun he had a nocturnal seizure but no daytime events. In July he had three nocturnal seizures and 5 while awake",
+      "attributes": {
+        "Label": "9 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15982,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 25 July 2014\n\nDr Patel\nSt George’s University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nMichael Brown, DOB: 14-02-1987, Hospital No: H482917 NHS No. 9075312468\n12 Brookside Close, London, SW12 8DA\n\nDiagnoses:\n\nSeizure disorder under investigation.\n\nThank you for reviewing Michael Brown, who attended today with his partner. He works rotating shifts, including nights, and both he and his partner report that his circadian rhythm has been disrupted for several months due to frequent changes in start times. He has noticed that sleep deprivation after night shifts often precedes events.\n\nSince his last review he has not required emergency medication and there have been no injuries or prolonged events. In Jun he had a nocturnal seizure but no daytime events. In July he had three nocturnal seizures and 5 while awake. He and his partner kept a diary that correlates the nocturnal events with sequences of two or more late finishes, and the daytime events with early-morning starts following short sleep. There have been no clear focal warnings reported, and no consistent postictal confusion beyond brief fatigue. He denies alcohol or recreational drug use and has maintained regular meals despite the schedule.\n\nCurrent medications are unchanged from the last visit. He has not used any rescue therapy in this interval. There is no implanted device in situ and no previous neurosurgical intervention. He is using a smartphone alarm to prompt regular dosing and has started a sleep hygiene plan (patient-led) aimed at stabilising bedtime on non-working days.\n\nOn examination today he was well, with normal cardiorespiratory and neurological examination between events. We reiterated the importance of maintaining a seizure diary with precise timing relative to shift patterns. He will continue with the current regimen while we complete further diagnostics already arranged (including repeat EEG with sleep deprivation and serum levels, as discussed previously). We also provided written information on occupational safety around night work, which he and his employer can review.\n\nWe will plan a follow-up in three months, or sooner if there is any escalation in frequency, injuries, or events lasting longer than usual. He and his partner are aware of red flags and how to contact the service.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit counts and timeframe mentioned in the letter. The letter states: 'In Jun he had a nocturnal seizure but no daytime events. In July he had three nocturnal seizures and 5 while awake.' This provides exact counts for two consecutive months: June = 1 seizure; July = 3 + 5 = 8 seizures. Total over 2 months = 1 + 8 = 9 seizures. Following the rule to select the highest frequency across provided periods and to normalize to allowed formats, we express this as '9 per 2 month'. There is no indication of a longer seizure-free period, so not seizure free.",
+      "seizure_frequency_number": [
+        "9 per 2 month",
+        "In Jun he had a nocturnal seizure... In July he had three nocturnal seizures and 5 while awake."
+      ],
+      "reference": [
+        "9 per 2 month",
+        "In Jun he had a nocturnal seizure but no daytime events. In July he had three nocturnal seizures and 5 while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

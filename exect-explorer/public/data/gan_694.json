@@ -1,0 +1,59 @@
+{
+  "id": "gan_694",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 12-05-1992, Hospital No: H384920 NHS No. 5938471026  \n24 Brookfield Road, London, W10 5LP \n\nMedication: \n\nSodium valproate 500 mg in the morning and 1000 mg at night. Patient reports improved daytime alertness on current regimen but still experiencing breakthrough events. \n\nBackground and current concerns: \n\nSophie Williams has a confirmed diagnosis of generalised epilepsy, with typical events described as sudden loss of awareness accompanied by generalised tonic–clonic movements lasting approximately 60–90 seconds, followed by post-ictal fatigue and myalgia for several hours. There is no consistent focal onset described. She reports brief morning myoclonic jerks on some days, particularly after poor sleep. \n\nSeizure frequency: \n\nOn current therapy she reports seizures once a week. These generally occur in the early morning, often after nights of reduced sleep or higher workplace stress. There have been no seizure-related injuries, and no clear catamenial pattern has been noted. \n\nExamination and investigations: \n\nNeurological examination today is non-focal. A prior EEG demonstrated generalised spike-and-wave discharges consistent with a generalised epilepsy syndrome. MRI brain previously normal. Routine blood tests in July were within normal limits. \n\nPlan: \n\n- Continue sodium valproate at current doses for the moment. Patient is aware to maintain strict adherence and sleep hygiene given morning susceptibility.  \n- We discussed safety including driving regulations relevant to ongoing seizures once a week; she confirms she is not driving and understands to inform the DVLA as appropriate.  \n- We will arrange a repeat EEG to reassess interictal activity and check trough valproate level prior to morning dose within the next 2–3 weeks.  \n- Patient-reported triggers include sleep deprivation and stress; she will keep a seizure diary to document timing, possible precipitating factors, and any evolution of myoclonic symptoms.  \n- Contraception and family planning were discussed in the context of generalised epilepsy and current medication; she plans to review options with primary care and will inform us of any changes. \n\nFollow-up: \n\nWe will see her back in three months, or sooner if seizure frequency increases or adverse effects emerge. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 950,
+      "end": 1002,
+      "text": "On current therapy she reports seizures once a week.",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 981,
+      "end": 1001,
+      "text": "seizures once a week",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 694,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 12-05-1992, Hospital No: H384920 NHS No. 5938471026  \n24 Brookfield Road, London, W10 5LP \n\nMedication: \n\nSodium valproate 500 mg in the morning and 1000 mg at night. Patient reports improved daytime alertness on current regimen but still experiencing breakthrough events. \n\nBackground and current concerns: \n\nSophie Williams has a confirmed diagnosis of generalised epilepsy, with typical events described as sudden loss of awareness accompanied by generalised tonic–clonic movements lasting approximately 60–90 seconds, followed by post-ictal fatigue and myalgia for several hours. There is no consistent focal onset described. She reports brief morning myoclonic jerks on some days, particularly after poor sleep. \n\nSeizure frequency: \n\nOn current therapy she reports seizures once a week. These generally occur in the early morning, often after nights of reduced sleep or higher workplace stress. There have been no seizure-related injuries, and no clear catamenial pattern has been noted. \n\nExamination and investigations: \n\nNeurological examination today is non-focal. A prior EEG demonstrated generalised spike-and-wave discharges consistent with a generalised epilepsy syndrome. MRI brain previously normal. Routine blood tests in July were within normal limits. \n\nPlan: \n\n- Continue sodium valproate at current doses for the moment. Patient is aware to maintain strict adherence and sleep hygiene given morning susceptibility.  \n- We discussed safety including driving regulations relevant to ongoing seizures once a week; she confirms she is not driving and understands to inform the DVLA as appropriate.  \n- We will arrange a repeat EEG to reassess interictal activity and check trough valproate level prior to morning dose within the next 2–3 weeks.  \n- Patient-reported triggers include sleep deprivation and stress; she will keep a seizure diary to document timing, possible precipitating factors, and any evolution of myoclonic symptoms.  \n- Contraception and family planning were discussed in the context of generalised epilepsy and current medication; she plans to review options with primary care and will inform us of any changes. \n\nFollow-up: \n\nWe will see her back in three months, or sooner if seizure frequency increases or adverse effects emerge. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency under 'Seizure frequency': \"On current therapy she reports seizures once a week.\" This is a clear numeric frequency. Convert 'once a week' to the allowed format '1 per week'. No other conflicting frequencies are given that would require summation or choosing a higher frequency.",
+      "seizure_frequency_number": [
+        "1 per week",
+        "On current therapy she reports seizures once a week."
+      ],
+      "reference": [
+        "1 per week",
+        "seizures once a week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

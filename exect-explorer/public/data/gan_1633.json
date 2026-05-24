@@ -1,0 +1,59 @@
+{
+  "id": "gan_1633",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 14 October 2025 \n\nDr A. Bennett\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Bennett\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-02-1989, Hospital No: KCH982314 NHS No. 9431182756  \n12 Brookfield Road, Peckham, London, SE15 4JP\n\nThank you for asking me to review your patient. He attended today with his partner and brought a brief diary of recent events. Over the last week he reports \"five myoclonic and seven petit mal in last week\". He describes the myoclonic events as brief, shock-like jerks predominantly of the upper limbs, most commonly shortly after waking, without loss of awareness. The petit mal episodes, per his wording, are brief staring spells with momentary unresponsiveness and rapid return to baseline, typically lasting under 10 seconds. He identifies sleep deprivation and missed morning meals as potential triggers. There have been no injuries, tongue biting, or incontinence reported.\n\nHe has previously trialled levetiracetam, which was stopped due to mood irritability, and is currently on lamotrigine 150 mg twice daily with generally good adherence. He denies alcohol misuse and reports one late night per week related to shift work. He has not been driving. He carries a seizure diary and a phone reminder for medications; we encouraged continuation of these strategies.\n\nNeurological examination today was unremarkable. There were no focal deficits, and gait and coordination were normal. Cardiovascular and general examination were within normal limits. Mood was calm and cooperative, with no evidence of thought disorder. He does not describe auras, prolonged confusional states, or nocturnal events. There is no history of status.\n\nGiven the current pattern of brief events and the patient’s report of increased frequency over the past fortnight, I have requested an outpatient EEG and updated bloods including lamotrigine level, FBC, U&E, LFT, and vitamin D. I have also asked our epilepsy nurse specialist to review medication adherence strategies and sleep hygiene. We discussed safety measures at home and at work, including avoidance of heights and open water. He is agreeable to a follow-up in 8–10 weeks or sooner if events escalate, with instruction to seek urgent review if any prolonged episode occurs or if recovery is atypical.\n\nThank you for your ongoing care and for sharing the diary summary; please let me know if there are additional concerns you would like me to address at the next visit.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 539,
+      "end": 588,
+      "text": "\"five myoclonic and seven petit mal in last week\"",
+      "attributes": {
+        "Label": "12 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 540,
+      "end": 587,
+      "text": "five myoclonic and seven petit mal in last week",
+      "attributes": {
+        "Label": "12 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1633,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 14 October 2025 \n\nDr A. Bennett\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Bennett\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-02-1989, Hospital No: KCH982314 NHS No. 9431182756  \n12 Brookfield Road, Peckham, London, SE15 4JP\n\nThank you for asking me to review your patient. He attended today with his partner and brought a brief diary of recent events. Over the last week he reports \"five myoclonic and seven petit mal in last week\". He describes the myoclonic events as brief, shock-like jerks predominantly of the upper limbs, most commonly shortly after waking, without loss of awareness. The petit mal episodes, per his wording, are brief staring spells with momentary unresponsiveness and rapid return to baseline, typically lasting under 10 seconds. He identifies sleep deprivation and missed morning meals as potential triggers. There have been no injuries, tongue biting, or incontinence reported.\n\nHe has previously trialled levetiracetam, which was stopped due to mood irritability, and is currently on lamotrigine 150 mg twice daily with generally good adherence. He denies alcohol misuse and reports one late night per week related to shift work. He has not been driving. He carries a seizure diary and a phone reminder for medications; we encouraged continuation of these strategies.\n\nNeurological examination today was unremarkable. There were no focal deficits, and gait and coordination were normal. Cardiovascular and general examination were within normal limits. Mood was calm and cooperative, with no evidence of thought disorder. He does not describe auras, prolonged confusional states, or nocturnal events. There is no history of status.\n\nGiven the current pattern of brief events and the patient’s report of increased frequency over the past fortnight, I have requested an outpatient EEG and updated bloods including lamotrigine level, FBC, U&E, LFT, and vitamin D. I have also asked our epilepsy nurse specialist to review medication adherence strategies and sleep hygiene. We discussed safety measures at home and at work, including avoidance of heights and open water. He is agreeable to a follow-up in 8–10 weeks or sooner if events escalate, with instruction to seek urgent review if any prolonged episode occurs or if recovery is atypical.\n\nThank you for your ongoing care and for sharing the diary summary; please let me know if there are additional concerns you would like me to address at the next visit.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the last week he reports 'five myoclonic and seven petit mal in last week'.\" This provides a clear numeric count within a one-week period. According to the rule for handling multiple frequencies, when multiple seizure types are provided for the same time frame, they should be summed if they belong to the same dimension (seizure events). Calculation: 5 myoclonic + 7 petit mal = 12 seizures per week. No other conflicting frequency is provided. Therefore, the normalized label is 12 per week.",
+      "seizure_frequency_number": [
+        "12 per week",
+        "\"five myoclonic and seven petit mal in last week\""
+      ],
+      "reference": [
+        "12 per week",
+        "five myoclonic and seven petit mal in last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_13841",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nThomas Reed, DOB: 22-11-1991, Hospital No: R517264 NHS No. 9835612470  \nFlat 4, 28 Highgate Road, London, NW5 1NS  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since March 2025  \n\nLamotrigine 100 mg twice daily (patient confirms identical supply kept at each residence)  \n\nLamotrigine Blood Level:  \n\n15 September 2025: 4.2 mg/L (reference 1.0–15.0 mg/L). Dose 100 mg twice daily  \n\nSeizures: The patient reports brief stress-related episodes have reduced in frequency and impact following structured anxiety management; these are currently being treated as non-epileptic in nature and are less disruptive day-to-day. No witnessed generalised convulsive events, no injuries, and no nocturnal occurrences reported in the last six months. \n\nI reviewed Thomas Reed via video consultation today. He alternates weekly between two households and has arranged separate medication boxes at both locations. He reports setting phone reminders tied to his changeover day (Sunday evenings) and has not missed any doses in the past eight weeks. He denies auras, tongue biting, incontinence, or post-ictal confusion with the recent stress episodes; they last under two minutes and resolve with paced breathing. Sleep and alcohol intake are stable; caffeine minimal. He is engaging with psychological therapies arranged by his GP, which he feels have helped him anticipate and prevent episodes. \n\nWe discussed practical adherence strategies around his split-living arrangement. He uses identical blister packs labelled by week at each address and a small wallet card noting current dose and pharmacy details. He will continue to obtain repeat prescriptions through the same community pharmacy, which now issues two synchronised collections monthly so that both sites remain stocked. \n\nNo medication changes today. We agreed to continue the current Lamotrigine dose and to monitor for any breakthrough events or clear epileptic features. Safety advice around driving, bathing, and lone working was reiterated in line with national guidance. He understands to contact us promptly if the character or frequency of events changes. \n\nPlan:  \n- Continue Lamotrigine 100 mg twice daily.  \n- Maintain dual-site medication supply and weekly reminders.  \n- Repeat Lamotrigine level and U&Es/LFTs in three months or sooner if clinical change.  \n- Follow-up in clinic in four months via telephone, sooner if concerns.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 882,
+      "end": 1000,
+      "text": "No witnessed generalised convulsive events, no injuries, and no nocturnal occurrences reported in the last six months.",
+      "attributes": {
+        "Label": "seizure free for 6 months",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13841,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nThomas Reed, DOB: 22-11-1991, Hospital No: R517264 NHS No. 9835612470  \nFlat 4, 28 Highgate Road, London, NW5 1NS  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since March 2025  \n\nLamotrigine 100 mg twice daily (patient confirms identical supply kept at each residence)  \n\nLamotrigine Blood Level:  \n\n15 September 2025: 4.2 mg/L (reference 1.0–15.0 mg/L). Dose 100 mg twice daily  \n\nSeizures: The patient reports brief stress-related episodes have reduced in frequency and impact following structured anxiety management; these are currently being treated as non-epileptic in nature and are less disruptive day-to-day. No witnessed generalised convulsive events, no injuries, and no nocturnal occurrences reported in the last six months. \n\nI reviewed Thomas Reed via video consultation today. He alternates weekly between two households and has arranged separate medication boxes at both locations. He reports setting phone reminders tied to his changeover day (Sunday evenings) and has not missed any doses in the past eight weeks. He denies auras, tongue biting, incontinence, or post-ictal confusion with the recent stress episodes; they last under two minutes and resolve with paced breathing. Sleep and alcohol intake are stable; caffeine minimal. He is engaging with psychological therapies arranged by his GP, which he feels have helped him anticipate and prevent episodes. \n\nWe discussed practical adherence strategies around his split-living arrangement. He uses identical blister packs labelled by week at each address and a small wallet card noting current dose and pharmacy details. He will continue to obtain repeat prescriptions through the same community pharmacy, which now issues two synchronised collections monthly so that both sites remain stocked. \n\nNo medication changes today. We agreed to continue the current Lamotrigine dose and to monitor for any breakthrough events or clear epileptic features. Safety advice around driving, bathing, and lone working was reiterated in line with national guidance. He understands to contact us promptly if the character or frequency of events changes. \n\nPlan:  \n- Continue Lamotrigine 100 mg twice daily.  \n- Maintain dual-site medication supply and weekly reminders.  \n- Repeat Lamotrigine level and U&Es/LFTs in three months or sooner if clinical change.  \n- Follow-up in clinic in four months via telephone, sooner if concerns.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes recent episodes as non-epileptic. It explicitly states there have been no witnessed generalized convulsive events and no nocturnal occurrences in the last six months, and there are no other epileptic features reported (denies auras, injuries, post-ictal confusion). Therefore, epileptic seizure frequency is zero over a six-month period as of the clinic date (02 Oct 2025). This meets the ≥6-month seizure-free criterion, so the appropriate normalized label is 'seizure free for 6 months'.",
+      "seizure_frequency_number": [
+        "seizure free for 6 months",
+        "No witnessed generalised convulsive events, no injuries, and no nocturnal occurrences reported in the last six months."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 months) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

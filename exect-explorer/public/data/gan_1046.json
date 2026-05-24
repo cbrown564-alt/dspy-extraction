@@ -1,0 +1,59 @@
+{
+  "id": "gan_1046",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 August 2024 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Patel,\n\nEpilepsy diagnosis:\nCombined generalised and focal epilepsy. The patient reports events consistent with both generalised seizures and focal seizures, including brief focal aware sensory auras that sometimes progress, as well as separate episodes with generalised onset.\n\nCurrent medication:\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg twice daily\n\nCurrent seizure frequency:\nThe patient reports uncertainty when recalling counts due to clustering; they believe there were 3 or 5 seizures last month. Two were typical brief focal aware episodes with right-hand paraesthesia and preserved awareness, and one to three events were generalised with loss of awareness, a brief convulsion, and post-event myalgia lasting several hours. No clear precipitant identified beyond poor sleep in the week prior.\n\nAssessment:\nThe history supports co-existing generalised and focal seizure types. There has been an apparent increase in generalised events over the last month despite good adherence and stable lamotrigine levels (patient-reported, awaiting serum confirmation). They deny intercurrent illness or new psychoactive substances. They note heightened stress at work and occasional missed meals, which may lower seizure threshold.\n\nPlan of action:\n- Continue lamotrigine 150 mg twice daily.\n- Increase topiramate to 75 mg twice daily for two weeks, then 100 mg twice daily if tolerated. Discussed potential cognitive side effects and the need for adequate hydration.\n- If further generalised events occur despite this, we will consider adding valproate if not contraindicated, or brivaracetam as an alternative; final choice to be guided by tolerability and comorbidities at next review.\n- Arrange MRI brain (epilepsy protocol) and routine EEG with sleep deprivation to better characterise both focal and generalised features.\n- Safety advice reinforced: no driving in accordance with DVLA guidance; avoid sleep deprivation and alcohol binges; ensure supervised bathing.\n- Follow-up in 3 months, sooner if further clusters occur.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 816,
+      "end": 866,
+      "text": "they believe there were 3 or 5 seizures last month",
+      "attributes": {
+        "Label": "3 to 5 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 840,
+      "end": 866,
+      "text": "3 or 5 seizures last month",
+      "attributes": {
+        "Label": "3 to 5 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1046,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 August 2024 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Patel,\n\nEpilepsy diagnosis:\nCombined generalised and focal epilepsy. The patient reports events consistent with both generalised seizures and focal seizures, including brief focal aware sensory auras that sometimes progress, as well as separate episodes with generalised onset.\n\nCurrent medication:\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg twice daily\n\nCurrent seizure frequency:\nThe patient reports uncertainty when recalling counts due to clustering; they believe there were 3 or 5 seizures last month. Two were typical brief focal aware episodes with right-hand paraesthesia and preserved awareness, and one to three events were generalised with loss of awareness, a brief convulsion, and post-event myalgia lasting several hours. No clear precipitant identified beyond poor sleep in the week prior.\n\nAssessment:\nThe history supports co-existing generalised and focal seizure types. There has been an apparent increase in generalised events over the last month despite good adherence and stable lamotrigine levels (patient-reported, awaiting serum confirmation). They deny intercurrent illness or new psychoactive substances. They note heightened stress at work and occasional missed meals, which may lower seizure threshold.\n\nPlan of action:\n- Continue lamotrigine 150 mg twice daily.\n- Increase topiramate to 75 mg twice daily for two weeks, then 100 mg twice daily if tolerated. Discussed potential cognitive side effects and the need for adequate hydration.\n- If further generalised events occur despite this, we will consider adding valproate if not contraindicated, or brivaracetam as an alternative; final choice to be guided by tolerability and comorbidities at next review.\n- Arrange MRI brain (epilepsy protocol) and routine EEG with sleep deprivation to better characterise both focal and generalised features.\n- Safety advice reinforced: no driving in accordance with DVLA guidance; avoid sleep deprivation and alcohol binges; ensure supervised bathing.\n- Follow-up in 3 months, sooner if further clusters occur.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a section titled 'Current seizure frequency' stating the patient is uncertain due to clustering but believes there were 3 or 5 seizures last month. This gives an explicit numeric range for the past month. No other timeframe contradicts this. According to the rules, prioritize explicit numeric expressions and represent ranges with 'to'. Therefore, the inferred frequency is 3 to 5 per month.",
+      "seizure_frequency_number": [
+        "3 to 5 per month",
+        "they believe there were 3 or 5 seizures last month"
+      ],
+      "reference": [
+        "3 to 5 per month",
+        "3 or 5 seizures last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

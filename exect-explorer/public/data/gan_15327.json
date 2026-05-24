@@ -1,0 +1,59 @@
+{
+  "id": "gan_15327",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 05 April 2020 \n\nDr Priya Kaur \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Priya Kaur, \n\nAlex Morgan, DOB: 12-08-2004, Hospital No: KCH9283746 NHS No. NHS-7429-1130  \nFlat 3B, 21 Meadow Lane, London, SE5 8QW  \n\nDiagnosis: \n\nRecurrent seizures with indeterminate classification based on patient-reported history and limited collateral information\n\nAetiology: \n\nUnclear; no prior neuroimaging or EEG available for review; no known family history of seizures\n\nOther Medical Problems: \n\nReported migraine without aura (self-reported); seasonal allergic rhinitis\n\nManagement Plan: \n\n- Arrange urgent outpatient EEG and MRI brain with epilepsy protocol to clarify seizure semiology and guide treatment.  \n- Provide a seizure diary template and advise the patient to log events, potential triggers (including sleep deprivation and prolonged screen time), recovery times and any injuries.  \n- University support: letter offered to the university disability and wellbeing service to discuss exam arrangements and rest breaks; signpost to local student support services.  \n- Safety advice discussed: avoid heights, unsupervised swimming, and operating machinery; adhere to UK driving regulations and not to drive unless meets DVLA criteria.  \n- Follow-up in six weeks or earlier if escalation occurs.\n\nHistory: \n\nThis second-year university student attended alone. The history is primarily patient-reported, with no witness account available for today’s visit. He describes events over the past three months that appear to be influenced by long study hours, irregular meals, and curtailed sleep in the run-up to examinations. He reports occasional brief warning sensations of \"pressure in the head\" and difficulty concentrating before an event, followed by loss of awareness of his surroundings according to his recollection of gaps in time. Post-event he feels fatigued and often needs to sleep. He has had minor tongue soreness twice, no significant injuries, and no hospital attendances.\n\nRegarding frequency, he states: \"He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six.\" He notes that these days often coincide with extended revision sessions and poor sleep. There is no known exposure to alcohol or recreational drugs recently; caffeine intake is high during revision periods.\n\nExamination today was unremarkable. Basic bloods last month at the university health centre were reportedly normal (values not available at the time of review). He is not currently on antiseizure medication and has never been treated for seizures previously. We discussed the uncertainty about the exact type of events at present, the need for further investigations, and pragmatic measures to reduce potential triggers while maintaining academic progress.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2120,
+      "end": 2259,
+      "text": "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six.",
+      "attributes": {
+        "Label": "1 cluster per 2 week, 3 to 6 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 2120,
+      "end": 2258,
+      "text": "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six",
+      "attributes": {
+        "Label": "1 cluster per 2 week, 3 to 6 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15327,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 05 April 2020 \n\nDr Priya Kaur \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Priya Kaur, \n\nAlex Morgan, DOB: 12-08-2004, Hospital No: KCH9283746 NHS No. NHS-7429-1130  \nFlat 3B, 21 Meadow Lane, London, SE5 8QW  \n\nDiagnosis: \n\nRecurrent seizures with indeterminate classification based on patient-reported history and limited collateral information\n\nAetiology: \n\nUnclear; no prior neuroimaging or EEG available for review; no known family history of seizures\n\nOther Medical Problems: \n\nReported migraine without aura (self-reported); seasonal allergic rhinitis\n\nManagement Plan: \n\n- Arrange urgent outpatient EEG and MRI brain with epilepsy protocol to clarify seizure semiology and guide treatment.  \n- Provide a seizure diary template and advise the patient to log events, potential triggers (including sleep deprivation and prolonged screen time), recovery times and any injuries.  \n- University support: letter offered to the university disability and wellbeing service to discuss exam arrangements and rest breaks; signpost to local student support services.  \n- Safety advice discussed: avoid heights, unsupervised swimming, and operating machinery; adhere to UK driving regulations and not to drive unless meets DVLA criteria.  \n- Follow-up in six weeks or earlier if escalation occurs.\n\nHistory: \n\nThis second-year university student attended alone. The history is primarily patient-reported, with no witness account available for today’s visit. He describes events over the past three months that appear to be influenced by long study hours, irregular meals, and curtailed sleep in the run-up to examinations. He reports occasional brief warning sensations of \"pressure in the head\" and difficulty concentrating before an event, followed by loss of awareness of his surroundings according to his recollection of gaps in time. Post-event he feels fatigued and often needs to sleep. He has had minor tongue soreness twice, no significant injuries, and no hospital attendances.\n\nRegarding frequency, he states: \"He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six.\" He notes that these days often coincide with extended revision sessions and poor sleep. There is no known exposure to alcohol or recreational drugs recently; caffeine intake is high during revision periods.\n\nExamination today was unremarkable. Basic bloods last month at the university health centre were reportedly normal (values not available at the time of review). He is not currently on antiseizure medication and has never been treated for seizures previously. We discussed the uncertainty about the exact type of events at present, the need for further investigations, and pragmatic measures to reduce potential triggers while maintaining academic progress.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a patient-reported frequency pattern: the patient can sometimes go nearly two weeks without seizures, but when they recur, he tends to have several in one day, often between three and six. This describes clustered seizures with an inter-cluster interval of about two weeks and 3 to 6 seizures per cluster. There is no more frequent alternative provided. Therefore, normalize to a cluster-based format: 1 cluster per 2 week, 3 to 6 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per 2 week, 3 to 6 per cluster",
+        "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six."
+      ],
+      "reference": [
+        "1 cluster per 2 week, 3 to 6 per cluster",
+        "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

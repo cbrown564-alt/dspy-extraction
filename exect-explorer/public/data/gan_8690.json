@@ -1,0 +1,54 @@
+{
+  "id": "gan_8690",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\n\nDear Dr Wang\n\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above gentleman in the Neurology Clinic today. I last assessed him in January 2025 following a left temporal lobectomy in May 2024 for drug-resistant focal seizures initially suspected to be due to mesial temporal sclerosis. Post-operative review, prolonged video-EEG telemetry, and subsequent clinic assessments have not demonstrated epileptiform activity, and his history since surgery has not included any events consistent with epileptic seizures. In light of these findings, we now consider that he does not have ongoing epilepsy.\n\nHe reports a steady improvement in memory and energy since the operation. He has had no convulsive events or episodes suggestive of impaired awareness since June 2024. He describes occasional brief light-headedness when standing quickly, which is non-epileptic and settles with hydration and slower postural changes. There have been no nocturnal events, tongue biting, injuries, or witnessed automatisms. Family observations corroborate this account.\n\nHe has been tapered off antiseizure medication under supervision. Levetiracetam was discontinued in November 2024 and lamotrigine was fully withdrawn by March 2025. He takes no antiseizure medicines at present and remains well. On today’s review he continues without any seizure-like episodes; in practical terms, he has remained event-free off treatment. Neurological examination is normal and his mood is good. A surveillance MRI in April 2025 showed expected post-surgical change without new pathology. Interictal EEG in May 2025 was normal.\n\nGiven the durable absence of epileptic events and normal investigations, I have reassured him that he does not currently have epilepsy. We discussed lifestyle measures, return to full activities, and standard safety advice. No further neurology follow-up is required routinely; however, he and his GP can re-refer if any new neurological symptoms arise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 868,
+      "end": 961,
+      "text": "He has had no convulsive events or episodes suggestive of impaired awareness since June 2024.",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8690,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\n\nDear Dr Wang\n\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above gentleman in the Neurology Clinic today. I last assessed him in January 2025 following a left temporal lobectomy in May 2024 for drug-resistant focal seizures initially suspected to be due to mesial temporal sclerosis. Post-operative review, prolonged video-EEG telemetry, and subsequent clinic assessments have not demonstrated epileptiform activity, and his history since surgery has not included any events consistent with epileptic seizures. In light of these findings, we now consider that he does not have ongoing epilepsy.\n\nHe reports a steady improvement in memory and energy since the operation. He has had no convulsive events or episodes suggestive of impaired awareness since June 2024. He describes occasional brief light-headedness when standing quickly, which is non-epileptic and settles with hydration and slower postural changes. There have been no nocturnal events, tongue biting, injuries, or witnessed automatisms. Family observations corroborate this account.\n\nHe has been tapered off antiseizure medication under supervision. Levetiracetam was discontinued in November 2024 and lamotrigine was fully withdrawn by March 2025. He takes no antiseizure medicines at present and remains well. On today’s review he continues without any seizure-like episodes; in practical terms, he has remained event-free off treatment. Neurological examination is normal and his mood is good. A surveillance MRI in April 2025 showed expected post-surgical change without new pathology. Interictal EEG in May 2025 was normal.\n\nGiven the durable absence of epileptic events and normal investigations, I have reassured him that he does not currently have epilepsy. We discussed lifestyle measures, return to full activities, and standard safety advice. No further neurology follow-up is required routinely; however, he and his GP can re-refer if any new neurological symptoms arise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter states he has had no events consistent with epileptic seizures since June 2024 and continues without any seizure-like episodes at present. Duration seizure-free: from June 2024 to Oct 2025 = 12 months (to June 2025) + 4 months (to Oct 2025) = 16 months. Meets the ≥6-month seizure-free criterion.",
+      "seizure_frequency_number": [
+        "seizure free for 16 month",
+        "He has had no convulsive events or episodes suggestive of impaired awareness since June 2024."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on current antiseizure regimen"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 16 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_3675",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside Medical Practice\n48 Mill Lane, London SW1A 2AA\n\nDear Dr Patel,\n\nJonathan Miller, DOB: 22-09-1960, Hospital No: U284915 NHS No. 7612043985\nFlat 3, 12 Brook Street, London W1K 4DG\n\nSummary/Diagnoses: Focal epilepsy; history of mild head injury in youth without lasting deficit; osteopenia under primary care surveillance; newly retired teacher living alone with a regular routine and reduced social contact; non-smoker; minimal alcohol.\n\nMedication: Levetiracetam 1000 mg twice daily. Lamotrigine 100 mg twice daily. Cholecalciferol 800 IU daily. Atorvastatin 20 mg nocte.\n\nI reviewed Jonathan Miller in clinic today. He attended alone. He reports settling into retirement with a structured daily routine (morning walks, light reading, and scheduled meals). He notes reduced social contact since leaving work but remains independent with activities of daily living. Sleep is generally 7–8 hours, though he occasionally has early morning awakenings. No recent intercurrent illness. He manages his own medications with a pill organiser and has not missed doses.\n\nSeizures: He has a confirmed diagnosis of focal epilepsy. He describes brief focal aware auras of a rising epigastric sensation lasting 10–20 seconds that may precede occasional convulsions. Over the last six months he reports TC x1/mo, typically in the late evening, often after a busier-than-usual day or poor sleep. He has a written seizure diary corroborating this pattern. Post-ictal confusion lasts 10–15 minutes with mild myalgia the following day. No injuries, no tongue biting beyond minor lateral abrasions, and no urinary incontinence reported. No status episodes and no emergency attendances.\n\nExamination: Alert and oriented, normal speech and language. Cranial nerves intact. Motor exam normal tone and power, no focal weakness. Coordination and gait normal. No rash. BP 128/76, pulse 68 regular.\n\nInvestigations: Previous MRI (2023) showed left mesial temporal signal change suggestive of hippocampal sclerosis; EEG (2023) demonstrated left temporal interictal epileptiform discharges. Routine bloods (July 2025): FBC, U&E, LFTs within normal limits; vitamin D low–normal.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily and lamotrigine 100 mg twice daily; no dose change today given stable pattern and tolerability.\n- Reinforce adherence and lifestyle measures (sleep regularity, hydration, and stress management) given evening seizure clustering.\n- Provide information on local peer support group to address reduced social contact, patient to consider attendance.\n- Safety advice reiterated for bathing, cooking, and lone activities in the evening when seizures more likely.\n- Arrange repeat vitamin D level in 6 months via GP.\n- Follow-up in 6 months, earlier if seizure frequency increases beyond TC x1/mo or if new features emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1378,
+      "end": 1422,
+      "text": "Over the last six months he reports TC x1/mo",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1414,
+      "end": 1422,
+      "text": "TC x1/mo",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3675,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside Medical Practice\n48 Mill Lane, London SW1A 2AA\n\nDear Dr Patel,\n\nJonathan Miller, DOB: 22-09-1960, Hospital No: U284915 NHS No. 7612043985\nFlat 3, 12 Brook Street, London W1K 4DG\n\nSummary/Diagnoses: Focal epilepsy; history of mild head injury in youth without lasting deficit; osteopenia under primary care surveillance; newly retired teacher living alone with a regular routine and reduced social contact; non-smoker; minimal alcohol.\n\nMedication: Levetiracetam 1000 mg twice daily. Lamotrigine 100 mg twice daily. Cholecalciferol 800 IU daily. Atorvastatin 20 mg nocte.\n\nI reviewed Jonathan Miller in clinic today. He attended alone. He reports settling into retirement with a structured daily routine (morning walks, light reading, and scheduled meals). He notes reduced social contact since leaving work but remains independent with activities of daily living. Sleep is generally 7–8 hours, though he occasionally has early morning awakenings. No recent intercurrent illness. He manages his own medications with a pill organiser and has not missed doses.\n\nSeizures: He has a confirmed diagnosis of focal epilepsy. He describes brief focal aware auras of a rising epigastric sensation lasting 10–20 seconds that may precede occasional convulsions. Over the last six months he reports TC x1/mo, typically in the late evening, often after a busier-than-usual day or poor sleep. He has a written seizure diary corroborating this pattern. Post-ictal confusion lasts 10–15 minutes with mild myalgia the following day. No injuries, no tongue biting beyond minor lateral abrasions, and no urinary incontinence reported. No status episodes and no emergency attendances.\n\nExamination: Alert and oriented, normal speech and language. Cranial nerves intact. Motor exam normal tone and power, no focal weakness. Coordination and gait normal. No rash. BP 128/76, pulse 68 regular.\n\nInvestigations: Previous MRI (2023) showed left mesial temporal signal change suggestive of hippocampal sclerosis; EEG (2023) demonstrated left temporal interictal epileptiform discharges. Routine bloods (July 2025): FBC, U&E, LFTs within normal limits; vitamin D low–normal.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily and lamotrigine 100 mg twice daily; no dose change today given stable pattern and tolerability.\n- Reinforce adherence and lifestyle measures (sleep regularity, hydration, and stress management) given evening seizure clustering.\n- Provide information on local peer support group to address reduced social contact, patient to consider attendance.\n- Safety advice reiterated for bathing, cooking, and lone activities in the evening when seizures more likely.\n- Arrange repeat vitamin D level in 6 months via GP.\n- Follow-up in 6 months, earlier if seizure frequency increases beyond TC x1/mo or if new features emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency statements. The letter states: \"Over the last six months he reports TC x1/mo\". TC refers to tonic-clonic seizures. There are also focal aware auras that may precede convulsions, but no explicit frequency for auras is provided. Following the rule to choose the highest frequency among types, we only have a quantified frequency for tonic-clonic seizures: 1 per month. No other seizure type has a quantified frequency to sum or compare. Therefore, the normalized label is 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Over the last six months he reports TC x1/mo"
+      ],
+      "reference": [
+        "1 per month",
+        "TC x1/mo"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

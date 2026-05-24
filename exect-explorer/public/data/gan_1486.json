@@ -1,0 +1,59 @@
+{
+  "id": "gan_1486",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 August 2022 10:22\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rachel O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nAssessment ongoing\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Metformin 1 g twice daily (for Type 2 diabetes, managed in primary care)\n\n\nPresent Seizure Frequency:\n\nThe patient reports two focal epileptic spasms and one focal non-motor in last month. These occurred without clear precipitant; the patient denies missed doses, intercurrent illness, alcohol intake, or sleep deprivation. Home blood glucose readings have been stable per patient report.\n\n\nPlan of Action:\n\n- Given the recent pattern, I recommend a cautious lamotrigine titration: increase to 100 mg in the morning and 125 mg at night for 2 weeks, then 125 mg twice daily thereafter, provided tolerated. The patient has previously tolerated lamotrigine without rash or mood change.\n- Arrange an EEG and updated MRI brain with epilepsy protocol to support ongoing diagnostic clarification.\n- Maintain a detailed seizure diary noting time of day, semiology, potential triggers, and recovery features; patient agrees.\n- Safety advice reinforced, including driving regulations and SUDEP education; the patient is not currently driving and understands DVLA requirements.\n- Type 2 diabetes continues under GP care; no current hypoglycaemia symptoms reported. No medication interactions of concern identified with the proposed lamotrigine adjustment.\n- Follow-up in 3 months, sooner if seizures cluster, evolve, or if adverse effects occur (rash, dizziness, visual disturbance, mood change). The patient and family have the rapid-access contact details for our service.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 564,
+      "end": 649,
+      "text": "The patient reports two focal epileptic spasms and one focal non-motor in last month.",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 584,
+      "end": 648,
+      "text": "two focal epileptic spasms and one focal non-motor in last month",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1486,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 August 2022 10:22\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rachel O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nAssessment ongoing\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Metformin 1 g twice daily (for Type 2 diabetes, managed in primary care)\n\n\nPresent Seizure Frequency:\n\nThe patient reports two focal epileptic spasms and one focal non-motor in last month. These occurred without clear precipitant; the patient denies missed doses, intercurrent illness, alcohol intake, or sleep deprivation. Home blood glucose readings have been stable per patient report.\n\n\nPlan of Action:\n\n- Given the recent pattern, I recommend a cautious lamotrigine titration: increase to 100 mg in the morning and 125 mg at night for 2 weeks, then 125 mg twice daily thereafter, provided tolerated. The patient has previously tolerated lamotrigine without rash or mood change.\n- Arrange an EEG and updated MRI brain with epilepsy protocol to support ongoing diagnostic clarification.\n- Maintain a detailed seizure diary noting time of day, semiology, potential triggers, and recovery features; patient agrees.\n- Safety advice reinforced, including driving regulations and SUDEP education; the patient is not currently driving and understands DVLA requirements.\n- Type 2 diabetes continues under GP care; no current hypoglycaemia symptoms reported. No medication interactions of concern identified with the proposed lamotrigine adjustment.\n- Follow-up in 3 months, sooner if seizures cluster, evolve, or if adverse effects occur (rash, dizziness, visual disturbance, mood change). The patient and family have the rapid-access contact details for our service.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports two focal epileptic spasms and one focal non-motor in last month.' This gives exact counts within the last month. Per the rules, when multiple seizure types are reported within the same time frame, sum them if they are in the same dimension. Here, 2 + 1 = 3 seizures in the last month. Normalize to allowed format: '3 per month'.",
+      "seizure_frequency_number": [
+        "3 per month",
+        "The patient reports two focal epileptic spasms and one focal non-motor in last month."
+      ],
+      "reference": [
+        "3 per month",
+        "two focal epileptic spasms and one focal non-motor in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

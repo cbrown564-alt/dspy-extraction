@@ -1,0 +1,59 @@
+{
+  "id": "gan_12826",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 23 April 2023 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and update on focal epilepsy management\n\nDear Dr Emily Carter,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy, patient-reported auras consistent with temporal onset; no secondary generalisation reported since medication adjustment began.\n\nBackground:\n\nThe patient acknowledges a historically high caffeine intake (multiple energy drinks and strong coffee daily). They have been reducing this over the past two months following lifestyle advice and report improved sleep quality and fewer morning headaches.\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Carbamazepine modified-release 200 mg twice daily\n\nSeizure Control:\n\nFollowing introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date. Prior to this, there were frequent focal aware auras and occasional focal impaired-awareness events. The patient reports that auras have reduced in intensity and duration. No clear medication side effects are reported beyond mild transient nausea in the initial titration phase.\n\nPlan of Action:\n\n- Continue lamotrigine 100 mg twice daily alongside carbamazepine MR 200 mg twice daily.\n- Maintain reduced caffeine intake and regular sleep schedule as per patient-led changes, as these appear beneficial.\n- Keep a seizure and trigger diary to monitor any temporal association with residual caffeine consumption or missed meals.\n- Safety advice around bathing, heights and machinery has been reinforced.\n- Routine follow-up in four months, sooner if breakthrough clusters occur or adverse effects emerge.\n\nPlease feel free to contact me if there are any concerns or if further community support is needed.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1022,
+      "end": 1098,
+      "text": "with just ten generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "10 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 936,
+      "end": 1098,
+      "text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "10 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12826,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 23 April 2023 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and update on focal epilepsy management\n\nDear Dr Emily Carter,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy, patient-reported auras consistent with temporal onset; no secondary generalisation reported since medication adjustment began.\n\nBackground:\n\nThe patient acknowledges a historically high caffeine intake (multiple energy drinks and strong coffee daily). They have been reducing this over the past two months following lifestyle advice and report improved sleep quality and fewer morning headaches.\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Carbamazepine modified-release 200 mg twice daily\n\nSeizure Control:\n\nFollowing introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date. Prior to this, there were frequent focal aware auras and occasional focal impaired-awareness events. The patient reports that auras have reduced in intensity and duration. No clear medication side effects are reported beyond mild transient nausea in the initial titration phase.\n\nPlan of Action:\n\n- Continue lamotrigine 100 mg twice daily alongside carbamazepine MR 200 mg twice daily.\n- Maintain reduced caffeine intake and regular sleep schedule as per patient-led changes, as these appear beneficial.\n- Keep a seizure and trigger diary to monitor any temporal association with residual caffeine consumption or missed meals.\n- Safety advice around bathing, heights and machinery has been reinforced.\n- Routine follow-up in four months, sooner if breakthrough clusters occur or adverse effects emerge.\n\nPlease feel free to contact me if there are any concerns or if further community support is needed.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"with just ten generalised tonic-clonic seizures documented this year to date.\" The letter date is 23 April 2023, so \"this year to date\" spans from 1 January 2023 to 23 April 2023, approximately 4 months. No other numeric seizure frequencies are provided; mentions of auras are qualitative. Although another line notes \"no secondary generalisation since medication adjustment began,\" its timeframe is unspecified and conflicts with the explicit numeric count. Per the instruction to prioritize explicit numeric expressions and select the higher frequency when conflicting, use 10 over the unspecified zero. Normalize to the allowed format as 10 per 4 month.",
+      "seizure_frequency_number": [
+        "10 per 4 month",
+        "with just ten generalised tonic-clonic seizures documented this year to date"
+      ],
+      "reference": [
+        "10 per 4 month",
+        "Following introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

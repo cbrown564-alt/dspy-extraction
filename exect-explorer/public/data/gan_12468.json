@@ -1,0 +1,59 @@
+{
+  "id": "gan_12468",
+  "text": "Department of Neurology \n\nClinic Date: 25 September 2020 \n\nDr Amelia Grant  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Grant,  \n\nEmily Carter, DOB: 14-02-1992, Hospital No: H274958 NHS No. 9038451127  \n12 Rowan Close, Sutton, SM2 6PT \n\nDiagnoses: \n\nGeneralised epilepsy with longstanding nocturnal generalised tonic-clonic seizures and intermittent tonic seizures. EEG (previous studies) demonstrated generalised spike-and-wave discharges consistent with primary generalised epilepsy. \n\nCurrent Medication: \n\nLevetiracetam 1 g bd  \nClobazam 10 mg nocte (intermittent rescue dosing for clusters as per prior plan) \n\nPlan: \n\n- Continue current anti-seizure medications without change.  \n- Maintain seizure calendar and bring to all appointments.  \n- Reinforce nocturnal safety measures as previously advised.  \n- Routine follow-up in 6 months, sooner if escalation in frequency or injury. \n\nI reviewed Emily Carter in clinic today, accompanied by her caregiver. She continues to use a paper seizure calendar rather than a smartphone app, and she reliably brings these logs to appointments. The logs over the past 12 months were consistent with her historical pattern. Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 4 times per year, this has been her enduring seizure profile for many years. There have been no reported status events, emergency presentations, or injuries since the last review. Triggers noted in the diary include sleep disturbance and intercurrent infections, with no clear catamenial pattern.\n\nShe tolerates Levetiracetam and intermittent Clobazam without significant daytime sedation. Mood is stable by both patient and caregiver report. Adherence appears excellent based on pill counts and the diary entries. We discussed technology options; she prefers to remain with the paper calendar given her established routine and finds it easy to review during consultations.\n\nGiven the absence of deterioration, the established generalised epilepsy diagnosis, and stable tolerability, I have not altered medication today. We will continue to monitor with her paper logs, which have proven reliable, and review again in six months. She and her caregiver know to contact the service sooner if seizures cluster, injuries occur, or there is any concern regarding prolonged events.\n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1336,
+      "end": 1395,
+      "text": "continues to have nightly generalised tonic-clonic seizures",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1255,
+      "end": 1503,
+      "text": "Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 4 times per year, this has been her enduring seizure profile for many years",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12468,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 25 September 2020 \n\nDr Amelia Grant  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Grant,  \n\nEmily Carter, DOB: 14-02-1992, Hospital No: H274958 NHS No. 9038451127  \n12 Rowan Close, Sutton, SM2 6PT \n\nDiagnoses: \n\nGeneralised epilepsy with longstanding nocturnal generalised tonic-clonic seizures and intermittent tonic seizures. EEG (previous studies) demonstrated generalised spike-and-wave discharges consistent with primary generalised epilepsy. \n\nCurrent Medication: \n\nLevetiracetam 1 g bd  \nClobazam 10 mg nocte (intermittent rescue dosing for clusters as per prior plan) \n\nPlan: \n\n- Continue current anti-seizure medications without change.  \n- Maintain seizure calendar and bring to all appointments.  \n- Reinforce nocturnal safety measures as previously advised.  \n- Routine follow-up in 6 months, sooner if escalation in frequency or injury. \n\nI reviewed Emily Carter in clinic today, accompanied by her caregiver. She continues to use a paper seizure calendar rather than a smartphone app, and she reliably brings these logs to appointments. The logs over the past 12 months were consistent with her historical pattern. Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 4 times per year, this has been her enduring seizure profile for many years. There have been no reported status events, emergency presentations, or injuries since the last review. Triggers noted in the diary include sleep disturbance and intercurrent infections, with no clear catamenial pattern.\n\nShe tolerates Levetiracetam and intermittent Clobazam without significant daytime sedation. Mood is stable by both patient and caregiver report. Adherence appears excellent based on pill counts and the diary entries. We discussed technology options; she prefers to remain with the paper calendar given her established routine and finds it easy to review during consultations.\n\nGiven the absence of deterioration, the established generalised epilepsy diagnosis, and stable tolerability, I have not altered medication today. We will continue to monitor with her paper logs, which have proven reliable, and review again in six months. She and her caregiver know to contact the service sooner if seizures cluster, injuries occur, or there is any concern regarding prolonged events.\n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"continues to have nightly generalised tonic-clonic seizures\" and also has \"intermittent tonic seizures 4 times per year.\" Using the rule to select the highest frequency when multiple seizure types are present, nightly corresponds to 1 per day, which is more frequent than 4 per year. Therefore, the final label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "continues to have nightly generalised tonic-clonic seizures"
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 4 times per year, this has been her enduring seizure profile for many years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

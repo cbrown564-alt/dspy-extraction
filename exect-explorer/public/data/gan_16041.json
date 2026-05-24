@@ -1,0 +1,59 @@
+{
+  "id": "gan_16041",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 10 January 2015\n\nDr Martin Hale  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Martin Hale,\n\nThomas Walker, DOB: 22-11-1984, Hospital No: H3928475 NHS No. 8459203671  \nFlat 3, 27 Linton Road, London, N1 8QU\n\nEpilepsy – Focal epilepsy\n\nMedication: The patient remains on carbamazepine modified release 400 mg twice daily, commenced August 2014, and reports good adherence without notable adverse effects. He is not on any other anti-seizure medicines. A routine carbamazepine level will be arranged at his local phlebotomy service prior to the next review.\n\nSeizure history and current frequency: The patient has a background of focal epilepsy with events typically starting with a déjà vu aura and epigastric rising sensation, sometimes progressing to impaired awareness with automatisms. He keeps a diary and, based on his report: In Oct he had no nocturnal seizures but 5 daytime events. In December he had two nocturnal seizures and two while awake. He relates the daytime events to work-related stress and missed meals. There have been no reported generalised tonic–clonic seizures in this period, and no injuries.\n\nReview details: I spoke with him today via scheduled telephone follow-up. He feels overall control is improving compared with earlier in the year, and he has been avoiding alcohol and maintaining regular sleep. He has not required emergency services and there have been no medication lapses. No new neurological symptoms were described. We discussed seizure safety at work and he confirms his employer is aware of his diagnosis. Driving status has been discussed and he understands current DVLA guidance for focal seizures with impaired awareness.\n\nPlan:\n- Continue carbamazepine MR 400 mg twice daily.\n- Arrange trough carbamazepine level and routine bloods (FBC, U&E, LFTs) before next appointment.\n- Maintain seizure diary, particularly noting sleep, meals, and stressors.\n- Telephone review in 3 months, with earlier contact if frequency increases or new features emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 908,
+      "end": 1028,
+      "text": "In Oct he had no nocturnal seizures but 5 daytime events. In December he had two nocturnal seizures and two while awake.",
+      "attributes": {
+        "Label": "9 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 908,
+      "end": 1027,
+      "text": "In Oct he had no nocturnal seizures but 5 daytime events. In December he had two nocturnal seizures and two while awake",
+      "attributes": {
+        "Label": "9 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16041,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 10 January 2015\n\nDr Martin Hale  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Martin Hale,\n\nThomas Walker, DOB: 22-11-1984, Hospital No: H3928475 NHS No. 8459203671  \nFlat 3, 27 Linton Road, London, N1 8QU\n\nEpilepsy – Focal epilepsy\n\nMedication: The patient remains on carbamazepine modified release 400 mg twice daily, commenced August 2014, and reports good adherence without notable adverse effects. He is not on any other anti-seizure medicines. A routine carbamazepine level will be arranged at his local phlebotomy service prior to the next review.\n\nSeizure history and current frequency: The patient has a background of focal epilepsy with events typically starting with a déjà vu aura and epigastric rising sensation, sometimes progressing to impaired awareness with automatisms. He keeps a diary and, based on his report: In Oct he had no nocturnal seizures but 5 daytime events. In December he had two nocturnal seizures and two while awake. He relates the daytime events to work-related stress and missed meals. There have been no reported generalised tonic–clonic seizures in this period, and no injuries.\n\nReview details: I spoke with him today via scheduled telephone follow-up. He feels overall control is improving compared with earlier in the year, and he has been avoiding alcohol and maintaining regular sleep. He has not required emergency services and there have been no medication lapses. No new neurological symptoms were described. We discussed seizure safety at work and he confirms his employer is aware of his diagnosis. Driving status has been discussed and he understands current DVLA guidance for focal seizures with impaired awareness.\n\nPlan:\n- Continue carbamazepine MR 400 mg twice daily.\n- Arrange trough carbamazepine level and routine bloods (FBC, U&E, LFTs) before next appointment.\n- Maintain seizure diary, particularly noting sleep, meals, and stressors.\n- Telephone review in 3 months, with earlier contact if frequency increases or new features emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit counts from the patient's seizure diary within the section titled 'Seizure history and current frequency.' It specifies: October had 5 daytime events (and no nocturnal), and December had 2 nocturnal plus 2 while awake, totaling 4. Summing these reported events gives 5 + 4 = 9 seizures. The clinic date is 10 January 2015, and the months referenced are October and December 2014, which sit within the recent three-month window October–December. Therefore, the current frequency over this three-month period is 9 per 3 month.",
+      "seizure_frequency_number": [
+        "9 per 3 month",
+        "In Oct he had no nocturnal seizures but 5 daytime events. In December he had two nocturnal seizures and two while awake."
+      ],
+      "reference": [
+        "9 per 3 month",
+        "In Oct he had no nocturnal seizures but 5 daytime events. In December he had two nocturnal seizures and two while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

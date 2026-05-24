@@ -1,0 +1,59 @@
+{
+  "id": "gan_9336",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 11:10\nTo: epilepsy.clinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rebecca Lin (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\nPresent Seizure Frequency:\n\nPatient reports several focal myoclonic in past week, predominantly in the right hand and forearm, often occurring in clusters shortly after waking and occasionally during prolonged screen use. No loss of awareness reported with these events.\n\nRelevant History:\n\n- Past antiseizure medication side effects documented historically, including rash with carbamazepine and gastrointestinal upset with valproate. No prior psychiatric adverse effects reported. Sleep has been irregular over the last fortnight due to work deadlines. No recent intercurrent illness. Alcohol intake minimal.\n\nExamination/Investigations (patient-reported context):\n\n- No new focal neurological symptoms. Patient-managed seizure diary suggests morning predominance and sensitivity to sleep deprivation. Last MRI (2023) reported left frontal cortical dysplasia; routine EEG (2024) showed left frontal interictal spikes.\n\nPlan of Action:\n\n- Given the increase in focal myoclonic events and the historical sensitivity to side effects, we will cautiously adjust current therapy. Please increase lamotrigine to 125 mg twice daily for two weeks, then to 150 mg twice daily thereafter, provided no rash or other adverse effects occur. Continue topiramate 50 mg at night during this up-titration.\n- If tolerated and seizures reduce, we will consider maintaining lamotrigine at 150 mg twice daily and review topiramate at next visit. If adverse effects develop (particularly rash), stop the lamotrigine titration and inform the clinic promptly.\n- Advise strict sleep regularity and paced screen use, as patient reports clear morning clustering and possible photic/screen triggers.\n- I have arranged a follow-up appointment in three months. If events escalate (prolonged clusters, spread to face, or impaired awareness), please contact our service sooner for expedited review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 552,
+      "text": "Patient reports several focal myoclonic in past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 516,
+      "end": 552,
+      "text": "several focal myoclonic in past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9336,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 11:10\nTo: epilepsy.clinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rebecca Lin (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\nPresent Seizure Frequency:\n\nPatient reports several focal myoclonic in past week, predominantly in the right hand and forearm, often occurring in clusters shortly after waking and occasionally during prolonged screen use. No loss of awareness reported with these events.\n\nRelevant History:\n\n- Past antiseizure medication side effects documented historically, including rash with carbamazepine and gastrointestinal upset with valproate. No prior psychiatric adverse effects reported. Sleep has been irregular over the last fortnight due to work deadlines. No recent intercurrent illness. Alcohol intake minimal.\n\nExamination/Investigations (patient-reported context):\n\n- No new focal neurological symptoms. Patient-managed seizure diary suggests morning predominance and sensitivity to sleep deprivation. Last MRI (2023) reported left frontal cortical dysplasia; routine EEG (2024) showed left frontal interictal spikes.\n\nPlan of Action:\n\n- Given the increase in focal myoclonic events and the historical sensitivity to side effects, we will cautiously adjust current therapy. Please increase lamotrigine to 125 mg twice daily for two weeks, then to 150 mg twice daily thereafter, provided no rash or other adverse effects occur. Continue topiramate 50 mg at night during this up-titration.\n- If tolerated and seizures reduce, we will consider maintaining lamotrigine at 150 mg twice daily and review topiramate at next visit. If adverse effects develop (particularly rash), stop the lamotrigine titration and inform the clinic promptly.\n- Advise strict sleep regularity and paced screen use, as patient reports clear morning clustering and possible photic/screen triggers.\n- I have arranged a follow-up appointment in three months. If events escalate (prolonged clusters, spread to face, or impaired awareness), please contact our service sooner for expedited review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: \"Patient reports several focal myoclonic in past week\". There is no exact count, only a vague quantifier \"several\" within the timeframe of the past week. According to the rules, when the number is vague, use 'multiple'. The timeframe is a week. Therefore, normalize to 'multiple per week'. No other conflicting frequency is provided, and there is no indication of seizure freedom.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "Patient reports several focal myoclonic in past week"
+      ],
+      "reference": [
+        "multiple per week",
+        "several focal myoclonic in past week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

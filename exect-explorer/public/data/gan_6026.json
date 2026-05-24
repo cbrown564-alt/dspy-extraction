@@ -1,0 +1,54 @@
+{
+  "id": "gan_6026",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 February 2019 11:20\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rachel Ahmed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Seizure management and medication plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy, likely temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (used on fewer than five occasions in the last year)\n\n\nPresent Seizure Frequency:\n\nThe patient reports short focal aware episodes with déjà vu and epigastric rising sensation, occurring predominantly when run down with a cold or after poor sleep; specifically, three events in the last two months coinciding with minor viral illnesses and disrupted rest. No generalised tonic–clonic seizures reported. No seizures during routine, well-rested periods.\n\n\nPlan of Action:\n\n- We discussed that these breakthrough focal aware events appear to emerge around periods of intercurrent viral symptoms and sleep disruption. The assistance dog in training has not interfered with medication adherence; in fact, the patient feels the structured routine for the dog has improved day-to-day compliance.\n- Optimise lamotrigine: increase to 175 mg twice daily for two weeks, then to 200 mg twice daily if well tolerated. Advise patient to report any rash or new adverse effects promptly.\n- Continue clobazam 5 mg nocte for up to three nights during clusters associated with minor illness, avoiding daytime sedation when handling the assistance dog’s training tasks. If cluster persists beyond three days, patient to contact the epilepsy service.\n- Lifestyle reinforcement: prioritise sleep hygiene around periods of minor illness; maintain regular hydration and meals during dog training sessions; continue seizure diary (including illness, sleep, and training schedule) to refine triggers.\n- Safety: no change to driving advice as there have been no impaired-awareness events; ensure dog training sessions avoid heights, open water, or lone working immediately after any aura.\n- Follow-up: review in 4 months in clinic. If seizure control remains suboptimal despite dose optimisation, will consider adding lacosamide or switching clobazam strategy.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 791,
+      "end": 826,
+      "text": "three events in the last two months",
+      "attributes": {
+        "Label": "3 per 2 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6026,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 February 2019 11:20\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rachel Ahmed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Seizure management and medication plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy, likely temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (used on fewer than five occasions in the last year)\n\n\nPresent Seizure Frequency:\n\nThe patient reports short focal aware episodes with déjà vu and epigastric rising sensation, occurring predominantly when run down with a cold or after poor sleep; specifically, three events in the last two months coinciding with minor viral illnesses and disrupted rest. No generalised tonic–clonic seizures reported. No seizures during routine, well-rested periods.\n\n\nPlan of Action:\n\n- We discussed that these breakthrough focal aware events appear to emerge around periods of intercurrent viral symptoms and sleep disruption. The assistance dog in training has not interfered with medication adherence; in fact, the patient feels the structured routine for the dog has improved day-to-day compliance.\n- Optimise lamotrigine: increase to 175 mg twice daily for two weeks, then to 200 mg twice daily if well tolerated. Advise patient to report any rash or new adverse effects promptly.\n- Continue clobazam 5 mg nocte for up to three nights during clusters associated with minor illness, avoiding daytime sedation when handling the assistance dog’s training tasks. If cluster persists beyond three days, patient to contact the epilepsy service.\n- Lifestyle reinforcement: prioritise sleep hygiene around periods of minor illness; maintain regular hydration and meals during dog training sessions; continue seizure diary (including illness, sleep, and training schedule) to refine triggers.\n- Safety: no change to driving advice as there have been no impaired-awareness events; ensure dog training sessions avoid heights, open water, or lone working immediately after any aura.\n- Follow-up: review in 4 months in clinic. If seizure control remains suboptimal despite dose optimisation, will consider adding lacosamide or switching clobazam strategy.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"three events in the last two months\" for focal aware seizures. This provides a concrete numeric frequency. Converting directly to the allowed format yields 3 per 2 month. The patient is not seizure free for 6 months, so 'seizure free' labels do not apply. Other mentions (e.g., no GTCs; clobazam used on fewer than five occasions in the last year) do not provide a higher or more precise seizure frequency than the focal aware count.",
+      "seizure_frequency_number": [
+        "3 per 2 month",
+        "three events in the last two months"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during intercurrent illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per 2 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

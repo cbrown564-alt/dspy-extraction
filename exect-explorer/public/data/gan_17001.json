@@ -1,0 +1,59 @@
+{
+  "id": "gan_17001",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Rajiv Menon  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Rajiv Menon,\n\nThomas Green, DOB: 22-11-1991, Hospital No: H583920 NHS No. 9842756310  \nFlat 4, Willow House, 28 Market Road, London, N7 9PW  \n\nEpilepsy – focal epilepsy\n\nMedication: Lamotrigine 150 mg twice daily; Levetiracetam 500 mg twice daily.\n\nI reviewed Thomas Green in our neurology clinic today. He resides in supported accommodation where rotating staff maintain detailed seizure charts; these have been used as the primary source for event frequency and timing since his last visit. The documented pattern is consistent with focal epilepsy without progression to secondary generalisation during the period under review.\n\nSeizures: He continues to suffer focal aware seizures five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory.\n\nThere have been no reported medication adverse effects, and adherence appears good per blister-pack returns and staff logs. Sleep routine is variable due to shift changes at the residence; staff are trialling a fixed evening wind‑down to reduce triggers. No recent hospital attendances. Neurological examination today is unchanged. Recent U&E/LFTs within normal limits (results available on ICE). We discussed seizure first aid and the continued use of the accommodation’s seizure recording sheets; staff will email monthly summaries.\n\nPlan: continue current antiepileptic regimen; no dose changes today. Safety advice reinforced regarding bathing and heights; driving not applicable. We will organise an EEG with temporal montage update before the next review and request a lamotrigine trough level for baseline only. Routine follow‑up in 6 months, sooner if increase in event burden or emergence of impaired awareness or convulsions.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 800,
+      "end": 863,
+      "text": "He continues to suffer focal aware seizures five times per week",
+      "attributes": {
+        "Label": "5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 800,
+      "end": 1060,
+      "text": "He continues to suffer focal aware seizures five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory",
+      "attributes": {
+        "Label": "5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17001,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Rajiv Menon  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Rajiv Menon,\n\nThomas Green, DOB: 22-11-1991, Hospital No: H583920 NHS No. 9842756310  \nFlat 4, Willow House, 28 Market Road, London, N7 9PW  \n\nEpilepsy – focal epilepsy\n\nMedication: Lamotrigine 150 mg twice daily; Levetiracetam 500 mg twice daily.\n\nI reviewed Thomas Green in our neurology clinic today. He resides in supported accommodation where rotating staff maintain detailed seizure charts; these have been used as the primary source for event frequency and timing since his last visit. The documented pattern is consistent with focal epilepsy without progression to secondary generalisation during the period under review.\n\nSeizures: He continues to suffer focal aware seizures five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory.\n\nThere have been no reported medication adverse effects, and adherence appears good per blister-pack returns and staff logs. Sleep routine is variable due to shift changes at the residence; staff are trialling a fixed evening wind‑down to reduce triggers. No recent hospital attendances. Neurological examination today is unchanged. Recent U&E/LFTs within normal limits (results available on ICE). We discussed seizure first aid and the continued use of the accommodation’s seizure recording sheets; staff will email monthly summaries.\n\nPlan: continue current antiepileptic regimen; no dose changes today. Safety advice reinforced regarding bathing and heights; driving not applicable. We will organise an EEG with temporal montage update before the next review and request a lamotrigine trough level for baseline only. Routine follow‑up in 6 months, sooner if increase in event burden or emergence of impaired awareness or convulsions.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He continues to suffer focal aware seizures five times per week.' No other seizure frequency is provided that is higher. There are no generalized convulsions in the past twelve months, but focal aware seizures occur with a clear numeric frequency. Convert 'five times per week' to the allowed format '5 per week'.",
+      "seizure_frequency_number": [
+        "5 per week",
+        "He continues to suffer focal aware seizures five times per week"
+      ],
+      "reference": [
+        "5 per week",
+        "He continues to suffer focal aware seizures five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_14370",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 06 May 2018\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. Since his last appointment here, his partner has observed predominantly nocturnal events; however, his partner was not present at today’s review, and we relied on the patient’s account and diary entries.\n\nHe reports that he withdrew from Clobazam on 2 February. At that time, he had 4 seizures, one precipitated by illness. He has remained stable without seizures since. He denies new daytime events and has had no further witnessed nocturnal episodes per his own recall; he continues to use a sleep diary and a phone-based nocturnal sound monitor to track any possible nighttime occurrences.\n\nCurrent antiepileptic regimen as reported today: Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 125 mg twice daily, and Valproate 500 mg twice daily. Clobazam has been discontinued as above. He reports acceptable tolerability overall, with intermittent tiredness that he attributes to poor sleep on work nights. No rash or new focal neurological complaints. He mentions occasional pruritus of the calves without visible lesions today; he will keep a record of timing and potential triggers.\n\nWe discussed maintaining the current regimen given the recent stability since February and the nocturnal predominance of prior events. He will continue his seizure diary, ensure adherence, and avoid sleep deprivation where possible. If there is any recurrence, particularly witnessed nocturnal convulsions or daytime episodes, we would consider repeat prolonged EEG monitoring to clarify activity before any medication changes.\n\nI plan to review him again in four months, sooner if there is any deterioration. I have asked him to bring his partner to the next appointment to aid with collateral history regarding nocturnal events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 558,
+      "end": 639,
+      "text": "At that time, he had 4 seizures... He has remained stable without seizures since.",
+      "attributes": {
+        "Label": "4 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 517,
+      "end": 665,
+      "text": "He withdrew from Clobazam on 2 February. At that time, he had 4 seizures, one precipitated by illness. He has remained stable without seizures since",
+      "attributes": {
+        "Label": "4 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14370,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 06 May 2018\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. Since his last appointment here, his partner has observed predominantly nocturnal events; however, his partner was not present at today’s review, and we relied on the patient’s account and diary entries.\n\nHe reports that he withdrew from Clobazam on 2 February. At that time, he had 4 seizures, one precipitated by illness. He has remained stable without seizures since. He denies new daytime events and has had no further witnessed nocturnal episodes per his own recall; he continues to use a sleep diary and a phone-based nocturnal sound monitor to track any possible nighttime occurrences.\n\nCurrent antiepileptic regimen as reported today: Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 125 mg twice daily, and Valproate 500 mg twice daily. Clobazam has been discontinued as above. He reports acceptable tolerability overall, with intermittent tiredness that he attributes to poor sleep on work nights. No rash or new focal neurological complaints. He mentions occasional pruritus of the calves without visible lesions today; he will keep a record of timing and potential triggers.\n\nWe discussed maintaining the current regimen given the recent stability since February and the nocturnal predominance of prior events. He will continue his seizure diary, ensure adherence, and avoid sleep deprivation where possible. If there is any recurrence, particularly witnessed nocturnal convulsions or daytime episodes, we would consider repeat prolonged EEG monitoring to clarify activity before any medication changes.\n\nI plan to review him again in four months, sooner if there is any deterioration. I have asked him to bring his partner to the next appointment to aid with collateral history regarding nocturnal events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 06 May 2018. The patient reports withdrawing Clobazam on 2 February and having 4 seizures at that time, with no seizures since. Therefore, over the interval from 2 February to 6 May (~3 months), there were 4 seizures. As seizure freedom is <6 months, we calculate frequency rather than label as long-term seizure free. Hence: 4 per 3 month.",
+      "seizure_frequency_number": [
+        "4 per 3 month",
+        "At that time, he had 4 seizures... He has remained stable without seizures since."
+      ],
+      "reference": [
+        "4 per 3 month",
+        "He withdrew from Clobazam on 2 February. At that time, he had 4 seizures, one precipitated by illness. He has remained stable without seizures since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

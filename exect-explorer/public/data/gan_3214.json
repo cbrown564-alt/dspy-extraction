@@ -1,0 +1,59 @@
+{
+  "id": "gan_3214",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nLiam Thompson, DOB: 12-04-1991, Hospital No: NHS8435271 NHS No. 6082194753  \nFlat 3B, 19 Market Street, London, W1F 8QA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient reports good daytime tolerability; occasional transient irritability noted during high-stress shifts. Rescue: Buccal midazolam supplied; not yet administered at work.\n\nHistory since last review: \n\nHe works as a line cook in a commercial kitchen with sustained high heat, sharp implements and heavy pans. He describes Monthly clusters, typically five or seven seizures over 24 h, almost always occurring on late-shift days following consecutive long hours. Events are reported to start with a brief warning of metallic taste and a sense of heat rushing to the head, followed by impaired awareness with automatic stirring or reaching movements; colleagues have witnessed brief periods of unresponsiveness lasting 30–60 seconds. There has been no generalized convulsion reported, and recovery is usually within minutes, though he feels fatigued and slow for several hours afterwards. He notes dehydration and missed meals during service as common antecedents; sleep restriction after double shifts is frequent. No clear intercurrent illness or alcohol trigger. \n\nWorkplace and safety: \n\nEpisodes have occurred at the sauté and grill stations with open flames. He and his manager have implemented a buddy system during late service, immediate step-back from the line at the earliest aura, and relocation to a cool rest area. Knives and hot pans are handed off when a warning is sensed. He wears heat-resistant gloves routinely and avoids high-level ladder access. No injuries to date. He has not required emergency attendance; colleagues time events and ensure supervised rest. \n\nPlan: \n\n- Continue levetiracetam 1000 mg twice daily. If the monthly clusters persist at the current pattern, he will keep a precise diary of shift times, sleep duration, hydration, and aura occurrence to guide potential dose optimisation.  \n- Maintain ready access to buccal midazolam per existing workplace protocol; training for two additional senior colleagues has been scheduled by his employer.  \n- Encourage regular hydration and scheduled carbohydrate intake before peak service; he has arranged short breaks at 18:00 and 20:00 on late shifts.  \n- We will obtain updated bloods (U&Es, LFTs) and review irritability symptoms; if troublesome, we can consider mitigation strategies.  \n- Provide a brief written workplace risk summary for his manager to reinforce existing precautions. \n\nFollow-up: \n\nWe will see him again in four months, sooner if cluster frequency increases beyond the described monthly pattern or if any convulsive events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 671,
+      "end": 744,
+      "text": "He describes Monthly clusters, typically five or seven seizures over 24 h",
+      "attributes": {
+        "Label": "1 cluster per month, 5 to 7 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 684,
+      "end": 744,
+      "text": "Monthly clusters, typically five or seven seizures over 24 h",
+      "attributes": {
+        "Label": "1 cluster per month, 5 to 7 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3214,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nLiam Thompson, DOB: 12-04-1991, Hospital No: NHS8435271 NHS No. 6082194753  \nFlat 3B, 19 Market Street, London, W1F 8QA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient reports good daytime tolerability; occasional transient irritability noted during high-stress shifts. Rescue: Buccal midazolam supplied; not yet administered at work.\n\nHistory since last review: \n\nHe works as a line cook in a commercial kitchen with sustained high heat, sharp implements and heavy pans. He describes Monthly clusters, typically five or seven seizures over 24 h, almost always occurring on late-shift days following consecutive long hours. Events are reported to start with a brief warning of metallic taste and a sense of heat rushing to the head, followed by impaired awareness with automatic stirring or reaching movements; colleagues have witnessed brief periods of unresponsiveness lasting 30–60 seconds. There has been no generalized convulsion reported, and recovery is usually within minutes, though he feels fatigued and slow for several hours afterwards. He notes dehydration and missed meals during service as common antecedents; sleep restriction after double shifts is frequent. No clear intercurrent illness or alcohol trigger. \n\nWorkplace and safety: \n\nEpisodes have occurred at the sauté and grill stations with open flames. He and his manager have implemented a buddy system during late service, immediate step-back from the line at the earliest aura, and relocation to a cool rest area. Knives and hot pans are handed off when a warning is sensed. He wears heat-resistant gloves routinely and avoids high-level ladder access. No injuries to date. He has not required emergency attendance; colleagues time events and ensure supervised rest. \n\nPlan: \n\n- Continue levetiracetam 1000 mg twice daily. If the monthly clusters persist at the current pattern, he will keep a precise diary of shift times, sleep duration, hydration, and aura occurrence to guide potential dose optimisation.  \n- Maintain ready access to buccal midazolam per existing workplace protocol; training for two additional senior colleagues has been scheduled by his employer.  \n- Encourage regular hydration and scheduled carbohydrate intake before peak service; he has arranged short breaks at 18:00 and 20:00 on late shifts.  \n- We will obtain updated bloods (U&Es, LFTs) and review irritability symptoms; if troublesome, we can consider mitigation strategies.  \n- Provide a brief written workplace risk summary for his manager to reinforce existing precautions. \n\nFollow-up: \n\nWe will see him again in four months, sooner if cluster frequency increases beyond the described monthly pattern or if any convulsive events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"He describes Monthly clusters, typically five or seven seizures over 24 h\" and follow-up mentions \"if cluster frequency increases beyond the described monthly pattern\". This indicates clusters occur once per month, with each cluster comprising 5 to 7 seizures within 24 hours. Therefore, the normalized label should be 1 cluster per month with 5 to 7 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per month, 5 to 7 per cluster",
+        "He describes Monthly clusters, typically five or seven seizures over 24 h"
+      ],
+      "reference": [
+        "1 cluster per month, 5 to 7 per cluster",
+        "Monthly clusters, typically five or seven seizures over 24 h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

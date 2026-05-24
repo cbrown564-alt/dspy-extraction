@@ -1,0 +1,59 @@
+{
+  "id": "gan_15094",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 09 May 2023 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily, continued. Tolerated well without adverse effects. \n\nI reviewed Emily Carter in clinic today for follow-up of her generalised epilepsy. She reports continuing improvement in overall control and day-to-day functioning. With ongoing psychological support, coping has improved, particularly around health-related anxiety and sleep routine, and she feels more confident managing triggers. Sleep hygiene has stabilised, and there has been a noticeable reduction in morning myoclonus frequency. \n\nSeizure history and current frequency: Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then. These brief morning jerks have not resulted in injury, and there is no associated loss of awareness. There have been no absences reported. She denies medication omissions and has maintained regular dosing. \n\nShe understands her diagnosis of generalised epilepsy and has been adhering to safety guidance including avoiding sleep deprivation and limiting alcohol. There are no new neurological symptoms. Mood and anxiety scores have improved with the psychological input, and she reports better coping at work and reduced anticipatory anxiety around seizures. \n\nExamination today was unremarkable. No focal neurological deficits. Bloods from her GP in March were within normal limits. We discussed that, given her stable control and improving psychosocial resilience, no medication change is indicated at present. She will continue levetiracetam at the current dose. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily.  \n- Continue psychological support, which appears to be contributing to improved coping and stability.  \n- Maintain sleep routine and adherence.  \n- Safety advice for generalised epilepsy reiterated; patient verbalised understanding.  \n- We will review in six months, or sooner if breakthrough generalised seizures occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 869,
+      "end": 944,
+      "text": "Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then.",
+      "attributes": {
+        "Label": "4 per 13 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 869,
+      "end": 943,
+      "text": "Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then",
+      "attributes": {
+        "Label": "4 per 13 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15094,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 09 May 2023 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily, continued. Tolerated well without adverse effects. \n\nI reviewed Emily Carter in clinic today for follow-up of her generalised epilepsy. She reports continuing improvement in overall control and day-to-day functioning. With ongoing psychological support, coping has improved, particularly around health-related anxiety and sleep routine, and she feels more confident managing triggers. Sleep hygiene has stabilised, and there has been a noticeable reduction in morning myoclonus frequency. \n\nSeizure history and current frequency: Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then. These brief morning jerks have not resulted in injury, and there is no associated loss of awareness. There have been no absences reported. She denies medication omissions and has maintained regular dosing. \n\nShe understands her diagnosis of generalised epilepsy and has been adhering to safety guidance including avoiding sleep deprivation and limiting alcohol. There are no new neurological symptoms. Mood and anxiety scores have improved with the psychological input, and she reports better coping at work and reduced anticipatory anxiety around seizures. \n\nExamination today was unremarkable. No focal neurological deficits. Bloods from her GP in March were within normal limits. We discussed that, given her stable control and improving psychosocial resilience, no medication change is indicated at present. She will continue levetiracetam at the current dose. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily.  \n- Continue psychological support, which appears to be contributing to improved coping and stability.  \n- Maintain sleep routine and adherence.  \n- Safety advice for generalised epilepsy reiterated; patient verbalised understanding.  \n- We will review in six months, or sooner if breakthrough generalised seizures occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 09 May 2023. The letter states: 'Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then.' Morning jerks are seizure events (myoclonic). Total seizures from Apr/2022 to 09 May 2023 = 1 tonic-clonic + 3 myoclonic = 4. Time interval from Apr/2022 to May/2023 is approximately 13 months. Therefore, frequency = 4 per 13 months. Not seizure free because there have been seizures within this period and the timing of the last jerk is not specified to confirm ≥6 months seizure freedom.",
+      "seizure_frequency_number": [
+        "4 per 13 month",
+        "Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then."
+      ],
+      "reference": [
+        "4 per 13 month",
+        "Last tonic-clonic seizure was in Apr/2022, with 3 morning jerks since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

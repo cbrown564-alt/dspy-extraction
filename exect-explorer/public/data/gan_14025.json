@@ -1,0 +1,65 @@
+{
+  "id": "gan_14025",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 14 May 2015\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: Generalised epilepsy; history of traumatic brain injury (remote); persistent cognitive deficits; osteoporosis; former alcohol dependence with alcoholic hepatitis (in remission); currently in supported accommodation; smoker. Past variability in pharmacy supply documented; historical adherence impacted at times.\n\nMedication:\n- Levetiracetam 1000 mg twice daily\n- Sodium valproate 500 mg twice daily\n- Vitamin B compound, Thiamine, Calcium/Vitamin D, Atorvastatin, Lansoprazole\n\nI reviewed William Harris in clinic today, accompanied by both parents and a key worker from his residence. They describe improved routine since the care team started supervising morning and evening medications, noting that previous gaps in pharmacy supply had occasionally led to missed doses. There has been no recent intercurrent illness, no new head injuries, and sleep has been more regular with a set bedtime. Appetite is stable and weight unchanged.\n\nEpilepsy details: He has generalised epilepsy with prior history of drop attacks and brief absence episodes. The family report he commenced a ketogenic diet under dietetic supervision six weeks ago. The parents state that since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan. They have not observed prolonged confusion afterwards, and there has been no rescue medication use. No clear triggers identified beyond occasional sleep deprivation. There have been no generalised tonic–clonic seizures reported since starting dietary therapy.\n\nExamination: Alert and cooperative, mild cognitive slowing but oriented to person and place. Speech clear. Cranial nerves intact. Tone and power normal in all limbs; gait steady with slightly broad base. No cerebellar signs. No injuries consistent with recent falls.\n\nInvestigations: Most recent bloods (U&E, LFTs, FBC) from March were within reference ranges. Lipids stable. DEXA from last year showed osteoporosis; supplements ongoing. We will liaise with the dietetics team to monitor serum lipids and bicarbonate given ketogenic diet.\n\nPlan:\n- Continue current antiepileptic regimen alongside ketogenic diet with dietetic oversight.\n- Reinforce supervised administration to mitigate the risk from historical supply variability and adherence lapses.\n- Arrange repeat bloods (U&E, LFTs, FBC, lipid profile, bicarbonate) in 6 weeks.\n- Seizure diary to be maintained by parents and residence staff; key worker to bring chart to next review.\n- Review in 3 months, or sooner if drop attacks increase or injuries occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1509,
+      "end": 1592,
+      "text": "since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1486,
+      "end": 1592,
+      "text": "The parents state that since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14025,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 14 May 2015\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: Generalised epilepsy; history of traumatic brain injury (remote); persistent cognitive deficits; osteoporosis; former alcohol dependence with alcoholic hepatitis (in remission); currently in supported accommodation; smoker. Past variability in pharmacy supply documented; historical adherence impacted at times.\n\nMedication:\n- Levetiracetam 1000 mg twice daily\n- Sodium valproate 500 mg twice daily\n- Vitamin B compound, Thiamine, Calcium/Vitamin D, Atorvastatin, Lansoprazole\n\nI reviewed William Harris in clinic today, accompanied by both parents and a key worker from his residence. They describe improved routine since the care team started supervising morning and evening medications, noting that previous gaps in pharmacy supply had occasionally led to missed doses. There has been no recent intercurrent illness, no new head injuries, and sleep has been more regular with a set bedtime. Appetite is stable and weight unchanged.\n\nEpilepsy details: He has generalised epilepsy with prior history of drop attacks and brief absence episodes. The family report he commenced a ketogenic diet under dietetic supervision six weeks ago. The parents state that since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan. They have not observed prolonged confusion afterwards, and there has been no rescue medication use. No clear triggers identified beyond occasional sleep deprivation. There have been no generalised tonic–clonic seizures reported since starting dietary therapy.\n\nExamination: Alert and cooperative, mild cognitive slowing but oriented to person and place. Speech clear. Cranial nerves intact. Tone and power normal in all limbs; gait steady with slightly broad base. No cerebellar signs. No injuries consistent with recent falls.\n\nInvestigations: Most recent bloods (U&E, LFTs, FBC) from March were within reference ranges. Lipids stable. DEXA from last year showed osteoporosis; supplements ongoing. We will liaise with the dietetics team to monitor serum lipids and bicarbonate given ketogenic diet.\n\nPlan:\n- Continue current antiepileptic regimen alongside ketogenic diet with dietetic oversight.\n- Reinforce supervised administration to mitigate the risk from historical supply variability and adherence lapses.\n- Arrange repeat bloods (U&E, LFTs, FBC, lipid profile, bicarbonate) in 6 weeks.\n- Seizure diary to be maintained by parents and residence staff; key worker to bring chart to next review.\n- Review in 3 months, or sooner if drop attacks increase or injuries occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "We need the current seizure frequency from the letter. The letter states: 'The parents state that since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan.' The clinic date is 14 May 2015, and the ketogenic diet started six weeks before the clinic, which would be around early April 2015. However, the quoted latest attack date '10-Jan' conflicts with the 'six weeks ago' start date. Given this inconsistency, there is insufficient clear information to compute a rate per time unit. There is also no confirmation of a 6-month seizure-free period. Therefore, a precise frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan"
+      ],
+      "reference": [
+        "unknown",
+        "The parents state that since starting ketogenic diet he has had two drop attacks, the latest one on 10-Jan"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

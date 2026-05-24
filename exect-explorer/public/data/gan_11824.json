@@ -1,0 +1,47 @@
+{
+  "id": "gan_11824",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Health Centre\n22 Wharf Road, London N1 7RW\n\nDear Dr Patel,\n\nDaniel Morgan, DOB: 12-05-1991, Hospital No: H483920 NHS No. 9056712440\nMooring 14, Regents Canal, London NW1 8AB\n\nSummary:\n\nHistory today is patient-reported. Daniel Morgan lives in a houseboat/mobile home and experiences occasional power outages, which at times affect device charging and daily routines. No safeguarding concerns. No recent injuries or admissions. Mood stable. Sleep generally adequate.\n\nPlan:\n- Practical advice provided on maintaining charged medical devices: carry a compact power bank, use low-power mode, and schedule regular charging when grid supply is available.\n- Provided written guidance on documenting symptoms and triggers using paper backup when devices are uncharged.\n- Community support information enclosed; patient encouraged to engage when convenient.\n- Follow-up in 6 months, or earlier via advice line if concerns arise.\n\nSupport contacts enclosed:\n- Epilepsy Action Helpline: 0808 800 5050, www.epilepsy.org.uk\n- Epilepsy Society Helpline: 01494 601400, www.epilepsysociety.org.uk\n- Young Epilepsy (for young adults): 01342 832243, www.youngepilepsy.org.uk\n- Local peer support (via Epilepsy Action): www.epilepsy.org.uk/local\n\nPlease let me know if you would like a joint plan around power continuity and device management for Daniel Morgan.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11824,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Health Centre\n22 Wharf Road, London N1 7RW\n\nDear Dr Patel,\n\nDaniel Morgan, DOB: 12-05-1991, Hospital No: H483920 NHS No. 9056712440\nMooring 14, Regents Canal, London NW1 8AB\n\nSummary:\n\nHistory today is patient-reported. Daniel Morgan lives in a houseboat/mobile home and experiences occasional power outages, which at times affect device charging and daily routines. No safeguarding concerns. No recent injuries or admissions. Mood stable. Sleep generally adequate.\n\nPlan:\n- Practical advice provided on maintaining charged medical devices: carry a compact power bank, use low-power mode, and schedule regular charging when grid supply is available.\n- Provided written guidance on documenting symptoms and triggers using paper backup when devices are uncharged.\n- Community support information enclosed; patient encouraged to engage when convenient.\n- Follow-up in 6 months, or earlier via advice line if concerns arise.\n\nSupport contacts enclosed:\n- Epilepsy Action Helpline: 0808 800 5050, www.epilepsy.org.uk\n- Epilepsy Society Helpline: 01494 601400, www.epilepsysociety.org.uk\n- Young Epilepsy (for young adults): 01342 832243, www.youngepilepsy.org.uk\n- Local peer support (via Epilepsy Action): www.epilepsy.org.uk/local\n\nPlease let me know if you would like a joint plan around power continuity and device management for Daniel Morgan.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter for any explicit mention of seizures or seizure frequency. The document discusses power outages, device charging, mood, sleep, and provides epilepsy-related support contacts, but it does not mention seizures occurring, their absence, or any numeric frequency. There are no references to seizure events, counts, or timeframes. Therefore, per the rule that if seizures are not mentioned at all, the output should be 'no seizure frequency reference', that label applies.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter enclosing contact details for epilepsy patient support groups"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

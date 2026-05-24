@@ -1,0 +1,59 @@
+{
+  "id": "gan_15642",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt. Cuthbert Community Health Centre  \n42 Mill Lane, Newcastle upon Tyne, NE3 4HT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-02-1991, Hospital No: NHS5482031 NHS No. 8374629501  \nFlat 3, 19 Orchard Close, Newcastle upon Tyne, NE2 5LP  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy.\n\nI reviewed Laura Bennett in clinic today with her partner present. She has a confirmed history of generalised epilepsy and remains under our service for ongoing management. She works in a care setting with irregular breaks and frequent patient transfers. Over recent months she describes cumulative fatigue, with perceived worsening of seizure control coinciding with longer shifts and disrupted sleep.\n\nFollowing the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, two to four times per week, whereas previously they only happened once or twice a month. She and her employer report missed cues at work and brief post-ictal confusion. She has not had any generalised tonic–clonic seizures since June but notes more frequent prodromal symptoms (sudden blankness, oral automatisms) during busy evening rounds. There have been no injuries, though she feels less confident performing manual handling tasks and has requested more consistent break scheduling.\n\nShe reports full adherence to prescribed medication and denies intercurrent illness or alcohol use. No new triggers identified beyond fatigue and irregular meals. There has been no recent requirement for emergency rescue therapy. Neurological examination in clinic today was unchanged. \n\nGiven the above, I am concerned that her overall condition is deteriorating, with increased seizure burden impacting occupational function. We discussed workplace adjustments and the importance of regular rest periods and hydration; she will explore options with her line manager. I have arranged an expedited review, seizure diary monitoring, and liaison with our epilepsy specialist nurse for safety planning at work. Bloods for therapeutic drug monitoring and routine biochemistry were taken today; we will contact her with results.\n\nI will see Laura Bennett again in 6–8 weeks or sooner if there is any further deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 821,
+      "end": 913,
+      "text": "focal impaired-awareness seizures have been occurring more often, two to four times per week",
+      "attributes": {
+        "Label": "2 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 777,
+      "end": 974,
+      "text": "Following the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, two to four times per week, whereas previously they only happened once or twice a month",
+      "attributes": {
+        "Label": "2 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15642,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt. Cuthbert Community Health Centre  \n42 Mill Lane, Newcastle upon Tyne, NE3 4HT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-02-1991, Hospital No: NHS5482031 NHS No. 8374629501  \nFlat 3, 19 Orchard Close, Newcastle upon Tyne, NE2 5LP  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy.\n\nI reviewed Laura Bennett in clinic today with her partner present. She has a confirmed history of generalised epilepsy and remains under our service for ongoing management. She works in a care setting with irregular breaks and frequent patient transfers. Over recent months she describes cumulative fatigue, with perceived worsening of seizure control coinciding with longer shifts and disrupted sleep.\n\nFollowing the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, two to four times per week, whereas previously they only happened once or twice a month. She and her employer report missed cues at work and brief post-ictal confusion. She has not had any generalised tonic–clonic seizures since June but notes more frequent prodromal symptoms (sudden blankness, oral automatisms) during busy evening rounds. There have been no injuries, though she feels less confident performing manual handling tasks and has requested more consistent break scheduling.\n\nShe reports full adherence to prescribed medication and denies intercurrent illness or alcohol use. No new triggers identified beyond fatigue and irregular meals. There has been no recent requirement for emergency rescue therapy. Neurological examination in clinic today was unchanged. \n\nGiven the above, I am concerned that her overall condition is deteriorating, with increased seizure burden impacting occupational function. We discussed workplace adjustments and the importance of regular rest periods and hydration; she will explore options with her line manager. I have arranged an expedited review, seizure diary monitoring, and liaison with our epilepsy specialist nurse for safety planning at work. Bloods for therapeutic drug monitoring and routine biochemistry were taken today; we will contact her with results.\n\nI will see Laura Bennett again in 6–8 weeks or sooner if there is any further deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"focal impaired-awareness seizures have been occurring more often, two to four times per week\". This provides a clear current seizure frequency range. It also notes no generalised tonic–clonic seizures since June, but that does not negate the ongoing focal seizures. Per the rule to select the highest frequency when multiple types are reported, we use the focal impaired-awareness seizure frequency of 2 to 4 per week.",
+      "seizure_frequency_number": [
+        "2 to 4 per week",
+        "focal impaired-awareness seizures have been occurring more often, two to four times per week"
+      ],
+      "reference": [
+        "2 to 4 per week",
+        "Following the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, two to four times per week, whereas previously they only happened once or twice a month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

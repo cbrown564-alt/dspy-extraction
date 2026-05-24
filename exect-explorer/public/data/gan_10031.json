@@ -1,0 +1,48 @@
+{
+  "id": "gan_10031",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Priya Anand\nRiverside Medical Practice\n48 Mill Lane, Bristol BS1 4QH\n\nDear Dr Priya Anand,\n\nAlex Turner, DOB: 22-11-1990, Hospital No: H384920 NHS No. 9912745630\nFlat 3, 27 Green Row, Bristol, BS2 8JP\n\nRe: Follow-up for episodes of transient loss of awareness\n\nMedication:\n- Levetiracetam 500 mg in the evening for 7 days, then 500 mg twice daily from 15 September 2025\n- No reported adverse effects other than mild fatigue in the first week, now settled\n\nTherapeutic Levels:\n- No antiepileptic drug levels indicated or checked\n\nSeizure history and current status:\n- Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded by the patient or witnesses. These have not led to injuries or emergency presentations.\n- No clear prodrome reported; partner has occasionally noticed brief pauses and unresponsiveness lasting under one minute, with quick recovery.\n- No nocturnal tongue biting or incontinence reported. Sleep deprivation and missed meals appear to precipitate episodes per patient account.\n\nClinical review today:\n- Telephone consultation conducted with the patient and their partner.\n- They report adherence to levetiracetam with no missed doses in the last month. Mood stable; no irritability beyond baseline. Driving has been self-suspended pending clinic advice per DVLA guidance as previously discussed.\n- We discussed keeping a structured diary to document event dates, timing relative to waking, estimated number of spells within the morning period, and potential triggers. A diary template has been emailed to the patient.\n\nPlan:\n- Continue levetiracetam 500 mg twice daily unchanged for now.\n- Arrange routine EEG and MRI brain with epilepsy protocol to aid further characterisation of the events.\n- Safety advice reiterated: shower rather than bathe unattended; caution with heights and hot surfaces; ensure adequate sleep and regular meals.\n- Follow-up in 10–12 weeks by video, or earlier if there is any escalation in frequency, injury, or prolonged events.\n\nPlease contact me if further information is required.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 655,
+      "end": 860,
+      "text": "Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10031,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Priya Anand\nRiverside Medical Practice\n48 Mill Lane, Bristol BS1 4QH\n\nDear Dr Priya Anand,\n\nAlex Turner, DOB: 22-11-1990, Hospital No: H384920 NHS No. 9912745630\nFlat 3, 27 Green Row, Bristol, BS2 8JP\n\nRe: Follow-up for episodes of transient loss of awareness\n\nMedication:\n- Levetiracetam 500 mg in the evening for 7 days, then 500 mg twice daily from 15 September 2025\n- No reported adverse effects other than mild fatigue in the first week, now settled\n\nTherapeutic Levels:\n- No antiepileptic drug levels indicated or checked\n\nSeizure history and current status:\n- Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded by the patient or witnesses. These have not led to injuries or emergency presentations.\n- No clear prodrome reported; partner has occasionally noticed brief pauses and unresponsiveness lasting under one minute, with quick recovery.\n- No nocturnal tongue biting or incontinence reported. Sleep deprivation and missed meals appear to precipitate episodes per patient account.\n\nClinical review today:\n- Telephone consultation conducted with the patient and their partner.\n- They report adherence to levetiracetam with no missed doses in the last month. Mood stable; no irritability beyond baseline. Driving has been self-suspended pending clinic advice per DVLA guidance as previously discussed.\n- We discussed keeping a structured diary to document event dates, timing relative to waking, estimated number of spells within the morning period, and potential triggers. A diary template has been emailed to the patient.\n\nPlan:\n- Continue levetiracetam 500 mg twice daily unchanged for now.\n- Arrange routine EEG and MRI brain with epilepsy protocol to aid further characterisation of the events.\n- Safety advice reiterated: shower rather than bathe unattended; caution with heights and hot surfaces; ensure adequate sleep and regular meals.\n- Follow-up in 10–12 weeks by video, or earlier if there is any escalation in frequency, injury, or prolonged events.\n\nPlease contact me if further information is required.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes episodes since mid-August 2025 that occur \"on some weeks\" and as grouped events in the mornings, with the exact number within each grouping not recorded. This indicates clustered events with an unknown number per cluster, and frequency occurring in some weeks (i.e., not every week but intermittently). There is no precise numeric count per week or per month, but the presence of grouping supports using the cluster format with unknown per cluster. The best normalization is a weekly cluster frequency with unknown events per cluster, as the timing is framed by weeks rather than days or months.",
+      "seizure_frequency_number": [
+        "1 cluster per week, multiple per cluster",
+        "Since mid-August 2025, the patient describes short-lived spells shortly after waking on some weeks, occurring as grouped events on those mornings; the exact count within each grouping has not been recorded"
+      ],
+      "reference": [
+        "1 cluster per week, multiple per cluster",
+        "Weekly morning clusters reported; number per cluster not documented"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

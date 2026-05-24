@@ -1,0 +1,59 @@
+{
+  "id": "gan_1433",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 19 July 2021 \n\nDr Amelia Price\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Price\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH-7285943 NHS No. 9012564378  \nFlat 12, 8 Rowan Court, London, SE15 3HT\n\nThank you for asking me to review your patient in the epilepsy clinic. He reports that he divides his week between two households and keeps identical medication sets at each location to maintain continuity. Over the last month he describes three drop attacks and one petit mal, with no clear triggers identified. He states these events are brief, with rapid return to awareness after the petit mal, and short confusion following the drop attacks. There have been no tongue bites or significant injuries reported.\n\nBased on his history, semiology, and previous outpatient EEG suggesting anterior temporal involvement, I consider this a focal epilepsy. He describes a consistent onset of a rising epigastric sensation and brief speech arrest before some events, which supports focal onset. The drop attacks appear to follow these focal symptoms on occasion, suggesting focal to bilateral evolution for some seizures.\n\nMedication adherence is generally good despite alternating residences. He keeps a written log and uses phone reminders at both homes. He has noticed that missed meals and poor sleep at either household may precede events, though this is not consistent. There is no current alcohol or recreational drug use. Family members at both addresses are aware of his seizure first-aid plan.\n\nExamination in clinic today was unremarkable with no focal neurological deficits. There are no current concerns regarding mood or psychosis; he reports mild situational anxiety related to balancing routines across the two homes but denies depressive symptoms or suicidal ideation. He is driving abstinent and understands DVLA regulations for seizure recurrence.\n\nPlan:  \n- Confirm focal epilepsy diagnosis in correspondence and continue current anti-seizure regimen unchanged pending review of his seizure diary over the next 8 weeks.  \n- Provide a single, portable medication checklist to minimise dosing errors when moving between households; he agreed to bring both medication boxes to the next visit for reconciliation.  \n- Arrange an updated ambulatory EEG and MRI epilepsy protocol to reassess for focal pathology given the recent three drop attacks and one petit mal in last month.  \n- Safety: reinforced use of a fall-alert app at both locations, and simple kitchen and bathroom precautions.  \n- Follow-up in 3 months, sooner if frequency increases or injuries occur.\n\nPlease let me know if there are additional concerns from your perspective.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 598,
+      "end": 667,
+      "text": "Over the last month he describes three drop attacks and one petit mal",
+      "attributes": {
+        "Label": "4 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 2526,
+      "end": 2576,
+      "text": "three drop attacks and one petit mal in last month",
+      "attributes": {
+        "Label": "4 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1433,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 19 July 2021 \n\nDr Amelia Price\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Price\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH-7285943 NHS No. 9012564378  \nFlat 12, 8 Rowan Court, London, SE15 3HT\n\nThank you for asking me to review your patient in the epilepsy clinic. He reports that he divides his week between two households and keeps identical medication sets at each location to maintain continuity. Over the last month he describes three drop attacks and one petit mal, with no clear triggers identified. He states these events are brief, with rapid return to awareness after the petit mal, and short confusion following the drop attacks. There have been no tongue bites or significant injuries reported.\n\nBased on his history, semiology, and previous outpatient EEG suggesting anterior temporal involvement, I consider this a focal epilepsy. He describes a consistent onset of a rising epigastric sensation and brief speech arrest before some events, which supports focal onset. The drop attacks appear to follow these focal symptoms on occasion, suggesting focal to bilateral evolution for some seizures.\n\nMedication adherence is generally good despite alternating residences. He keeps a written log and uses phone reminders at both homes. He has noticed that missed meals and poor sleep at either household may precede events, though this is not consistent. There is no current alcohol or recreational drug use. Family members at both addresses are aware of his seizure first-aid plan.\n\nExamination in clinic today was unremarkable with no focal neurological deficits. There are no current concerns regarding mood or psychosis; he reports mild situational anxiety related to balancing routines across the two homes but denies depressive symptoms or suicidal ideation. He is driving abstinent and understands DVLA regulations for seizure recurrence.\n\nPlan:  \n- Confirm focal epilepsy diagnosis in correspondence and continue current anti-seizure regimen unchanged pending review of his seizure diary over the next 8 weeks.  \n- Provide a single, portable medication checklist to minimise dosing errors when moving between households; he agreed to bring both medication boxes to the next visit for reconciliation.  \n- Arrange an updated ambulatory EEG and MRI epilepsy protocol to reassess for focal pathology given the recent three drop attacks and one petit mal in last month.  \n- Safety: reinforced use of a fall-alert app at both locations, and simple kitchen and bathroom precautions.  \n- Follow-up in 3 months, sooner if frequency increases or injuries occur.\n\nPlease let me know if there are additional concerns from your perspective.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the last month he describes three drop attacks and one petit mal.' Summing these events in the same month gives 3 + 1 = 4 seizures in the last month. No other conflicting frequencies are provided. Therefore, the normalized frequency is 4 per month.",
+      "seizure_frequency_number": [
+        "4 per month",
+        "Over the last month he describes three drop attacks and one petit mal"
+      ],
+      "reference": [
+        "4 per month",
+        "three drop attacks and one petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_3706",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.universityclinic@nhs.net\nCc: Dr Daniel Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Maya Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review ahead of exams\n\nDear Priya,\n\nEpilepsy diagnosis:\n\nGeneralised epilepsy\n\nBackground and current situation:\n\nSam is a university student approaching end-of-term examinations. History today is primarily patient-reported. She describes extended evening study sessions and irregular sleep over the past month, often working late into the night and waking early. She denies alcohol or recreational drug use and reports no intercurrent illness. There is no history of head injury. She has been studying in shared library spaces and occasionally forgets meals during long revision blocks. She is otherwise well.\n\nPresent medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 300 mg in the morning and 600 mg at night\n\nPresent seizure frequency:\n\nSam reports frequent events consistent with tonic–clonic seizures occurring TC x6/wk, typically clustering during periods of sleep deprivation and prolonged screen exposure. She notes brief postictal confusion and fatigue, without clear focal warning. No injuries reported, though she has bitten her tongue on two occasions.\n\nAssessment and plan:\n\nWe discussed that her pattern is consistent with generalised epilepsy and that recent lifestyle pressures around revision may be lowering her seizure threshold. She is keen to proceed with exam access arrangements and has contacted student support services. She will continue to record events in her seizure diary, including study hours, sleep duration, and timing relative to meals and caffeine. She has been advised to ensure safe study environments and to inform flatmates of basic first aid for seizures. We will review in six weeks with updated seizure counts and diary correlations.\n\nFollow-up:\n\nI have arranged a follow-up appointment in six weeks, or sooner if there is any deterioration or injury. She will email interim updates if the frequency worsens.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1136,
+      "end": 1154,
+      "text": "occurring TC x6/wk",
+      "attributes": {
+        "Label": "6 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1146,
+      "end": 1154,
+      "text": "TC x6/wk",
+      "attributes": {
+        "Label": "6 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3706,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.universityclinic@nhs.net\nCc: Dr Daniel Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Maya Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review ahead of exams\n\nDear Priya,\n\nEpilepsy diagnosis:\n\nGeneralised epilepsy\n\nBackground and current situation:\n\nSam is a university student approaching end-of-term examinations. History today is primarily patient-reported. She describes extended evening study sessions and irregular sleep over the past month, often working late into the night and waking early. She denies alcohol or recreational drug use and reports no intercurrent illness. There is no history of head injury. She has been studying in shared library spaces and occasionally forgets meals during long revision blocks. She is otherwise well.\n\nPresent medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 300 mg in the morning and 600 mg at night\n\nPresent seizure frequency:\n\nSam reports frequent events consistent with tonic–clonic seizures occurring TC x6/wk, typically clustering during periods of sleep deprivation and prolonged screen exposure. She notes brief postictal confusion and fatigue, without clear focal warning. No injuries reported, though she has bitten her tongue on two occasions.\n\nAssessment and plan:\n\nWe discussed that her pattern is consistent with generalised epilepsy and that recent lifestyle pressures around revision may be lowering her seizure threshold. She is keen to proceed with exam access arrangements and has contacted student support services. She will continue to record events in her seizure diary, including study hours, sleep duration, and timing relative to meals and caffeine. She has been advised to ensure safe study environments and to inform flatmates of basic first aid for seizures. We will review in six weeks with updated seizure counts and diary correlations.\n\nFollow-up:\n\nI have arranged a follow-up appointment in six weeks, or sooner if there is any deterioration or injury. She will email interim updates if the frequency worsens.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Present seizure frequency: Sam reports frequent events consistent with tonic–clonic seizures occurring TC x6/wk.' This provides a clear numeric frequency. Convert 'x6/wk' to the allowed format '6 per week'. No other conflicting frequencies are given, so no further calculation is needed.",
+      "seizure_frequency_number": [
+        "6 per week",
+        "occurring TC x6/wk"
+      ],
+      "reference": [
+        "6 per week",
+        "TC x6/wk"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

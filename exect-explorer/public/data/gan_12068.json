@@ -1,0 +1,59 @@
+{
+  "id": "gan_12068",
+  "text": "Department of Neurology\n\nClinic Date: 20 September 2024\n\nDr Amelia Kerr\nSt Cuthbert’s Neurology Centre\nOutpatients, 12 Hartwell Lane, Manchester M3 7QH\n\nDear Dr Amelia Kerr,\n\nMichael Turner, DOB: 14-02-1987, Hospital No: M394517 NHS No. 9034182756\nFlat 2, 18 Brookside Avenue, Manchester, M15 4LP\n\nDiagnoses:\n\nHistory of seizures\nEEG previously performed (details not definitive for classification)\n\nCurrent Medication:\n\nLamotrigine 75 mg bd\n\nPlan:\n\n- Continue current antiepileptic therapy and optimise adherence while we reassess\n- Arrange urgent repeat EEG and serum lamotrigine level\n- MRI brain with epilepsy protocol to exclude new structural cause\n- Safety counselling reinforced (including bathing supervision, sleep hygiene, alcohol moderation)\n- Bring forward follow‑up to 6 weeks; earlier review if further escalation\n\nI reviewed Michael Turner in clinic today following a recent viral illness two months ago, after which there has been a clear deterioration in seizure control. Prior to this intercurrent illness, he reported relative stability for a prolonged period. Since the illness, he and his partner describe clusters of brief, shock-like jerks predominantly in the mornings and with sleep deprivation. These myoclonic occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 9 months. He has noticed temporary cognitive fog and increased fatigue on days with frequent jerks. There are no new focal neurological symptoms between events.\n\nHe remains on lamotrigine 75 mg twice daily without missed doses reported. We discussed potential precipitants: the viral illness, disrupted sleep, and recent work-related stress. There is no excess alcohol use. Given the stepwise worsening after infection and the increase in daily myoclonic events, I am concerned about overall deterioration in control compared to his prior baseline.\n\nOn examination today, cardiorespiratory observations were stable. Neurological examination was non-focal. Given the change in pattern, I have requested an urgent repeat EEG, serum antiseizure medication level, and an MRI brain with an epilepsy protocol. We will review results promptly and consider treatment adjustments as needed once investigations are available. I reinforced safety measures and advised his partner to document events with dates and brief descriptions to aid assessment.\n\nI will see Michael Turner again in 6 weeks or sooner if there is any further worsening or injury. Please let me know if there are concerns in the interim.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1249,
+      "end": 1292,
+      "text": "near-daily basis, sometimes dozens in a day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1228,
+      "end": 1387,
+      "text": "myoclonic occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 9 months",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12068,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 20 September 2024\n\nDr Amelia Kerr\nSt Cuthbert’s Neurology Centre\nOutpatients, 12 Hartwell Lane, Manchester M3 7QH\n\nDear Dr Amelia Kerr,\n\nMichael Turner, DOB: 14-02-1987, Hospital No: M394517 NHS No. 9034182756\nFlat 2, 18 Brookside Avenue, Manchester, M15 4LP\n\nDiagnoses:\n\nHistory of seizures\nEEG previously performed (details not definitive for classification)\n\nCurrent Medication:\n\nLamotrigine 75 mg bd\n\nPlan:\n\n- Continue current antiepileptic therapy and optimise adherence while we reassess\n- Arrange urgent repeat EEG and serum lamotrigine level\n- MRI brain with epilepsy protocol to exclude new structural cause\n- Safety counselling reinforced (including bathing supervision, sleep hygiene, alcohol moderation)\n- Bring forward follow‑up to 6 weeks; earlier review if further escalation\n\nI reviewed Michael Turner in clinic today following a recent viral illness two months ago, after which there has been a clear deterioration in seizure control. Prior to this intercurrent illness, he reported relative stability for a prolonged period. Since the illness, he and his partner describe clusters of brief, shock-like jerks predominantly in the mornings and with sleep deprivation. These myoclonic occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 9 months. He has noticed temporary cognitive fog and increased fatigue on days with frequent jerks. There are no new focal neurological symptoms between events.\n\nHe remains on lamotrigine 75 mg twice daily without missed doses reported. We discussed potential precipitants: the viral illness, disrupted sleep, and recent work-related stress. There is no excess alcohol use. Given the stepwise worsening after infection and the increase in daily myoclonic events, I am concerned about overall deterioration in control compared to his prior baseline.\n\nOn examination today, cardiorespiratory observations were stable. Neurological examination was non-focal. Given the change in pattern, I have requested an urgent repeat EEG, serum antiseizure medication level, and an MRI brain with an epilepsy protocol. We will review results promptly and consider treatment adjustments as needed once investigations are available. I reinforced safety measures and advised his partner to document events with dates and brief descriptions to aid assessment.\n\nI will see Michael Turner again in 6 weeks or sooner if there is any further worsening or injury. Please let me know if there are concerns in the interim.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has two seizure types: myoclonic jerks that occur \"on a near-daily basis, sometimes dozens in a day\" and generalized convulsions \"once every 9 months.\" Per the rule to select the highest frequency, we use the myoclonic jerks. The exact count is not specified and varies (\"sometimes dozens\"), making accurate quantification challenging. Therefore, the appropriate normalized label is 'multiple per day'.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "near-daily basis, sometimes dozens in a day"
+      ],
+      "reference": [
+        "multiple per day",
+        "myoclonic occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 9 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

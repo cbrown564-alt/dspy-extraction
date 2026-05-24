@@ -1,0 +1,48 @@
+{
+  "id": "gan_8922",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 25 May 2021\n\nDr Patel\nSouth London Neurology Service\nFirst Floor, Jubilee Health Centre, 15 Brook Street, London SE15 4AB\n\nDear Dr Patel,\n\nLucy Morgan, DOB: 14-07-2002, Hospital No: H928374 NHS No. 8473629150\nFlat 3, 29 Willow Lane, London, SW8 1QF\n\nDiagnoses:\n\nGeneralised epilepsy.\n\nThank you for reviewing Lucy Morgan in our neurology clinic today. She attended with her mother and reports that, following a gradual titration of her antiseizure medication over the past three months, her convulsive and non-convulsive events have settled. She describes being without further seizures since the most recent dose increase, with no interim absences or myoclonic jerks reported by family or school staff. This pattern is consistent with being seizure-free subsequent to optimising the ASM dose.\n\nShe notes improved concentration and sleep, and denies adverse effects beyond mild, transient fatigue in the first week after each step-up. There have been no emergency presentations, no injuries, and no use of rescue medication. Adherence is reported as good with support from her family, and no missed doses in the past eight weeks.\n\nNeurological examination today is unchanged and unremarkable. Observations are within normal limits. We have reviewed seizure first-aid and maintained her existing rescue plan in case of any breakthrough events. There is no neurostimulation device in situ.\n\nPlan:\n- Continue current antiseizure medication at the present dose, given stability of her generalised epilepsy.\n- Provide school with an updated letter confirming current control and rescue protocol (for information only; no changes required).\n- Routine bloods at her GP in 3 months to monitor tolerability.\n- Follow-up in 6 months, or sooner if any recurrence of seizures, suspected side effects, or concerns about adherence.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 596,
+      "end": 676,
+      "text": "She describes being without further seizures since the most recent dose increase",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8922,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 25 May 2021\n\nDr Patel\nSouth London Neurology Service\nFirst Floor, Jubilee Health Centre, 15 Brook Street, London SE15 4AB\n\nDear Dr Patel,\n\nLucy Morgan, DOB: 14-07-2002, Hospital No: H928374 NHS No. 8473629150\nFlat 3, 29 Willow Lane, London, SW8 1QF\n\nDiagnoses:\n\nGeneralised epilepsy.\n\nThank you for reviewing Lucy Morgan in our neurology clinic today. She attended with her mother and reports that, following a gradual titration of her antiseizure medication over the past three months, her convulsive and non-convulsive events have settled. She describes being without further seizures since the most recent dose increase, with no interim absences or myoclonic jerks reported by family or school staff. This pattern is consistent with being seizure-free subsequent to optimising the ASM dose.\n\nShe notes improved concentration and sleep, and denies adverse effects beyond mild, transient fatigue in the first week after each step-up. There have been no emergency presentations, no injuries, and no use of rescue medication. Adherence is reported as good with support from her family, and no missed doses in the past eight weeks.\n\nNeurological examination today is unchanged and unremarkable. Observations are within normal limits. We have reviewed seizure first-aid and maintained her existing rescue plan in case of any breakthrough events. There is no neurostimulation device in situ.\n\nPlan:\n- Continue current antiseizure medication at the present dose, given stability of her generalised epilepsy.\n- Provide school with an updated letter confirming current control and rescue protocol (for information only; no changes required).\n- Routine bloods at her GP in 3 months to monitor tolerability.\n- Follow-up in 6 months, or sooner if any recurrence of seizures, suspected side effects, or concerns about adherence.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures and current control. It states the patient reports being without further seizures since the most recent dose increase after a gradual titration over the past three months. There is no explicit duration of seizure freedom reaching 6 months; the only temporal anchor is that titration occurred over the past three months and since the most recent increase she has had no seizures. Therefore, she is currently seizure-free for multiple months but less than six months is confirmed. According to the rules, if seizure-free status is present but the 6-month criterion cannot be confirmed, we may label as 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "She describes being without further seizures since the most recent dose increase"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free after dose escalation of ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

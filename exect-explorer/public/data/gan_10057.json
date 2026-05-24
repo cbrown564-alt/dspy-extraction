@@ -1,0 +1,59 @@
+{
+  "id": "gan_10057",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 11 August 2022\n\nDr Sarah Patel\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Sarah Patel,\n\nMr Daniel Harris, DOB: 22-08-1987, Hospital No: K847321 NHS No. 1045938276\nFlat 12, 4 Brookfield Road, London, SE15 4QX\n\nDiagnosis:\n\nFocal epilepsy with improvement following VNS optimisation; maintained on current anti-seizure medicines\n\nAetiology:\n\nLeft temporal cortical dysplasia suspected on prior MRI (stable)\n\nOther Medical Problems:\n\nMild migraine without aura, seasonal variation; well-controlled with simple analgesia as needed\n\nManagement Plan:\n\n- Continue current regimen: Lamotrigine 150 mg twice daily and Levetiracetam 1,000 mg twice daily, single consistent brands.\n- Vagus Nerve Stimulator (VNS) settings to remain at the last optimised parameters; patient has magnet for rescue and uses it appropriately.\n- Safety and self-management reinforced, including seizure diary and magnet use at aura.\n- Routine follow-up in six months; earlier review if clusters increase or new adverse effects emerge.\n\nSince the VNS optimisation at the previous visit, the patient reports a sustained improvement in seizure control and faster postictal recovery. He has focal epilepsy and notes clearer auras and better interruption of events with magnet use. Specifically, he has experienced 2 to 3 clusters this quarter, all shorter and less intense than before, without associated injuries or emergency presentations. Sleep and mood have also improved, and he has resumed light exercise without problems. There have been no new neurological symptoms, and medication tolerance remains good with no rash, mood lability, or sedation. He is maintaining regular sleep, hydration, and a consistent medication schedule.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1379,
+      "end": 1426,
+      "text": "he has experienced 2 to 3 clusters this quarter",
+      "attributes": {
+        "Label": "2 to 3 cluster per 3 month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1398,
+      "end": 1426,
+      "text": "2 to 3 clusters this quarter",
+      "attributes": {
+        "Label": "2 to 3 cluster per 3 month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10057,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 11 August 2022\n\nDr Sarah Patel\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Sarah Patel,\n\nMr Daniel Harris, DOB: 22-08-1987, Hospital No: K847321 NHS No. 1045938276\nFlat 12, 4 Brookfield Road, London, SE15 4QX\n\nDiagnosis:\n\nFocal epilepsy with improvement following VNS optimisation; maintained on current anti-seizure medicines\n\nAetiology:\n\nLeft temporal cortical dysplasia suspected on prior MRI (stable)\n\nOther Medical Problems:\n\nMild migraine without aura, seasonal variation; well-controlled with simple analgesia as needed\n\nManagement Plan:\n\n- Continue current regimen: Lamotrigine 150 mg twice daily and Levetiracetam 1,000 mg twice daily, single consistent brands.\n- Vagus Nerve Stimulator (VNS) settings to remain at the last optimised parameters; patient has magnet for rescue and uses it appropriately.\n- Safety and self-management reinforced, including seizure diary and magnet use at aura.\n- Routine follow-up in six months; earlier review if clusters increase or new adverse effects emerge.\n\nSince the VNS optimisation at the previous visit, the patient reports a sustained improvement in seizure control and faster postictal recovery. He has focal epilepsy and notes clearer auras and better interruption of events with magnet use. Specifically, he has experienced 2 to 3 clusters this quarter, all shorter and less intense than before, without associated injuries or emergency presentations. Sleep and mood have also improved, and he has resumed light exercise without problems. There have been no new neurological symptoms, and medication tolerance remains good with no rash, mood lability, or sedation. He is maintaining regular sleep, hydration, and a consistent medication schedule.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'Specifically, he has experienced 2 to 3 clusters this quarter.' A quarter is 3 months. No explicit number of seizures per cluster is given. Therefore, the frequency can be normalized as clusters per 3 months with unknown seizures per cluster. Using the allowed format for clusters when per-cluster count is not specified, we return 'unknown, <value> per cluster' combined with the cluster frequency, which becomes '2 to 3 cluster per 3 month, unknown per cluster'.",
+      "seizure_frequency_number": [
+        "2 to 3 cluster per 3 month, multiple per cluster",
+        "he has experienced 2 to 3 clusters this quarter"
+      ],
+      "reference": [
+        "2 to 3 cluster per 3 month, multiple per cluster",
+        "2 to 3 clusters this quarter"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

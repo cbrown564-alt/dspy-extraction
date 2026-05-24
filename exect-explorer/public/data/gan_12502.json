@@ -1,0 +1,59 @@
+{
+  "id": "gan_12502",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 04 September 2024 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nSophie Williams, DOB: 14-07-1992, Hospital No: H629514 NHS No. 8473629150  \n12 Brookside Avenue, London, SW12 8JP  \n\nDiagnoses: \n\nFocal epilepsy with secondary generalisation.\n\nI reviewed Sophie Williams in clinic today accompanied by her partner. She has been practising aura recognition strategies as previously discussed and was able to describe her typical warnings in her own words. She reports a rising epigastric sensation, a metallic taste, and a brief sense of detachment lasting 10–20 seconds, which she identifies as her focal aware phase. She has been using these early symptoms to alert others and to move to a safe position, which she feels has reduced injury risk.\n\nThere has been little alteration in seizure frequency over the past year; she experiences one to two generalised tonic-clonic seizures monthly with the longest seizure-free period being three weeks. She has 4 absences per day. In addition, she suffers clusters of myoclonic jerks and occasional tonic seizures, these occur roughly once a month. No seizures have been recorded since her last appointment.\n\nShe keeps a detailed seizure diary and has linked increased events with poor sleep and missed meals. She denies recent head injury, new medications, or intercurrent illness. No ambulance call-outs, emergency department attendances, or injuries have occurred since we last met.\n\nCurrent anti-seizure medications are unchanged per patient report. She continues to use a smartphone reminder for doses and her partner confirms adherence. She has not required rescue medication since the previous visit. There is no implanted neuromodulation device in situ.\n\nOn examination today she was alert and orientated, with normal speech and language. Cranial nerves, coordination, power, sensation, and gait were unremarkable. Cardiovascular and respiratory examinations were within normal limits.\n\nWe discussed ongoing self-management with particular emphasis on prompt response to auras, maintaining regular sleep and meals, and continuing the diary. She is aware of SUDEP information and first aid measures. We agreed to continue current management and to monitor for any evolution of her focal symptoms or change in seizure semiology. She will contact the service sooner if she notes prolonged clusters, injuries, or any adverse effects from medication.\n\nPlan:\n- Continue current anti-seizure therapy as tolerated.\n- Persist with aura recognition strategies and safety planning as practised.\n- Maintain seizure diary including potential triggers, duration, and recovery.\n- Routine follow-up in 4 months, or earlier if clinical change occurs.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1068,
+      "end": 1095,
+      "text": "She has 4 absences per day.",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 869,
+      "end": 1271,
+      "text": "There has been little alteration in seizure frequency over the past year; she experiences one to two generalised tonic-clonic seizures monthly with the longest seizure-free period being three weeks. She has 4 absences per day. In addition, she suffers clusters of myoclonic jerks and occasional tonic seizures, these occur roughly once a month. No seizures have been recorded since her last appointment",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12502,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 04 September 2024 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nSophie Williams, DOB: 14-07-1992, Hospital No: H629514 NHS No. 8473629150  \n12 Brookside Avenue, London, SW12 8JP  \n\nDiagnoses: \n\nFocal epilepsy with secondary generalisation.\n\nI reviewed Sophie Williams in clinic today accompanied by her partner. She has been practising aura recognition strategies as previously discussed and was able to describe her typical warnings in her own words. She reports a rising epigastric sensation, a metallic taste, and a brief sense of detachment lasting 10–20 seconds, which she identifies as her focal aware phase. She has been using these early symptoms to alert others and to move to a safe position, which she feels has reduced injury risk.\n\nThere has been little alteration in seizure frequency over the past year; she experiences one to two generalised tonic-clonic seizures monthly with the longest seizure-free period being three weeks. She has 4 absences per day. In addition, she suffers clusters of myoclonic jerks and occasional tonic seizures, these occur roughly once a month. No seizures have been recorded since her last appointment.\n\nShe keeps a detailed seizure diary and has linked increased events with poor sleep and missed meals. She denies recent head injury, new medications, or intercurrent illness. No ambulance call-outs, emergency department attendances, or injuries have occurred since we last met.\n\nCurrent anti-seizure medications are unchanged per patient report. She continues to use a smartphone reminder for doses and her partner confirms adherence. She has not required rescue medication since the previous visit. There is no implanted neuromodulation device in situ.\n\nOn examination today she was alert and orientated, with normal speech and language. Cranial nerves, coordination, power, sensation, and gait were unremarkable. Cardiovascular and respiratory examinations were within normal limits.\n\nWe discussed ongoing self-management with particular emphasis on prompt response to auras, maintaining regular sleep and meals, and continuing the diary. She is aware of SUDEP information and first aid measures. We agreed to continue current management and to monitor for any evolution of her focal symptoms or change in seizure semiology. She will contact the service sooner if she notes prolonged clusters, injuries, or any adverse effects from medication.\n\nPlan:\n- Continue current anti-seizure therapy as tolerated.\n- Persist with aura recognition strategies and safety planning as practised.\n- Maintain seizure diary including potential triggers, duration, and recovery.\n- Routine follow-up in 4 months, or earlier if clinical change occurs.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies mentioned. The letter states: (1) 'one to two generalised tonic-clonic seizures monthly' → 1 to 2 per month. (2) 'She has 4 absences per day' → 4 per day. (3) 'clusters of myoclonic jerks and occasional tonic seizures, these occur roughly once a month' → 1 per month for those clusters/tonic events. Apply the rule to select the highest frequency across types: 4 per day is more frequent than 1 to 2 per month or 1 per month. Although it says 'No seizures have been recorded since her last appointment,' there is no evidence of ≥6 months seizure freedom, so we must use the ongoing frequency. Therefore, final label: 4 per day.",
+      "seizure_frequency_number": [
+        "4 per day",
+        "She has 4 absences per day."
+      ],
+      "reference": [
+        "4 per day",
+        "There has been little alteration in seizure frequency over the past year; she experiences one to two generalised tonic-clonic seizures monthly with the longest seizure-free period being three weeks. She has 4 absences per day. In addition, she suffers clusters of myoclonic jerks and occasional tonic seizures, these occur roughly once a month. No seizures have been recorded since her last appointment"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

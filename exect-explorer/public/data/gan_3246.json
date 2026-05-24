@@ -1,0 +1,59 @@
+{
+  "id": "gan_3246",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 May 2015 10:15\nTo: kch.neuro.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow‑up and adherence supports\n\nDear Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with impaired awareness, likely temporal lobe onset (patient has focal epilepsy)\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nPatient reports 2 clusters this month; each ≈4 absences in the morning. These brief spells are described as sudden arrests of activity with blank staring and loss of awareness lasting 15–30 seconds, followed by mild confusion, without convulsive features. No nocturnal events reported.\n\nContext and Triggers (patient‑reported):\n\n- Missed morning doses were previously an issue, particularly on commuting days.\n- Since last visit, the patient has implemented smartphone alarms and NFC tag checkpoints at the kettle and front door to confirm dosing; this has reduced missed doses.\n- Morning stress and poor sleep the night before clusters are noted; no alcohol excess or intercurrent illness.\n\nPlan of Action:\n\n- Continue lamotrigine 150 mg twice daily and brivaracetam 50 mg twice daily without change today, given improved adherence with the smartphone alarm and NFC tag system.\n- Reinforce adherence strategy: patient to keep the double‑check NFC scan in the morning and a single alarm in the evening; pharmacy to dispense a blister pack aligned to morning/evening dosing.\n- Safety advice provided regarding morning routines and avoidance of operating machinery until 2 hours after typical cluster window.\n- Arrange sleep hygiene handout and consider sleep diary to assess pre‑cluster nights.\n- Bloods: lamotrigine trough level and routine FBC/U&Es/LFTs at local phlebotomy within 2 weeks to support ongoing review.\n- Review in clinic in 3 months, sooner if clusters increase or if convulsive activity occurs.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 591,
+      "end": 662,
+      "text": "Patient reports 2 clusters this month; each ≈4 absences in the morning.",
+      "attributes": {
+        "Label": "2 cluster per month, 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 607,
+      "end": 661,
+      "text": "2 clusters this month; each ≈4 absences in the morning",
+      "attributes": {
+        "Label": "2 cluster per month, 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3246,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 May 2015 10:15\nTo: kch.neuro.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow‑up and adherence supports\n\nDear Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with impaired awareness, likely temporal lobe onset (patient has focal epilepsy)\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nPatient reports 2 clusters this month; each ≈4 absences in the morning. These brief spells are described as sudden arrests of activity with blank staring and loss of awareness lasting 15–30 seconds, followed by mild confusion, without convulsive features. No nocturnal events reported.\n\nContext and Triggers (patient‑reported):\n\n- Missed morning doses were previously an issue, particularly on commuting days.\n- Since last visit, the patient has implemented smartphone alarms and NFC tag checkpoints at the kettle and front door to confirm dosing; this has reduced missed doses.\n- Morning stress and poor sleep the night before clusters are noted; no alcohol excess or intercurrent illness.\n\nPlan of Action:\n\n- Continue lamotrigine 150 mg twice daily and brivaracetam 50 mg twice daily without change today, given improved adherence with the smartphone alarm and NFC tag system.\n- Reinforce adherence strategy: patient to keep the double‑check NFC scan in the morning and a single alarm in the evening; pharmacy to dispense a blister pack aligned to morning/evening dosing.\n- Safety advice provided regarding morning routines and avoidance of operating machinery until 2 hours after typical cluster window.\n- Arrange sleep hygiene handout and consider sleep diary to assess pre‑cluster nights.\n- Bloods: lamotrigine trough level and routine FBC/U&Es/LFTs at local phlebotomy within 2 weeks to support ongoing review.\n- Review in clinic in 3 months, sooner if clusters increase or if convulsive activity occurs.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states under 'Present Seizure Frequency' that the patient reports '2 clusters this month; each ≈4 absences in the morning.' This provides a clear cluster-based frequency and number per cluster. No other conflicting frequencies are given. Therefore, normalize to the allowed cluster format: '<value1> cluster per <value2> <period>, <value3> per cluster' → '2 cluster per month, 4 per cluster'.",
+      "seizure_frequency_number": [
+        "2 cluster per month, 4 per cluster",
+        "Patient reports 2 clusters this month; each ≈4 absences in the morning."
+      ],
+      "reference": [
+        "2 cluster per month, 4 per cluster",
+        "2 clusters this month; each ≈4 absences in the morning"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

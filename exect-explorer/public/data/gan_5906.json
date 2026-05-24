@@ -1,0 +1,54 @@
+{
+  "id": "gan_5906",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 April 2021 10:12\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following kitchen incidents\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 250 mg in the morning and 500 mg at night\n\nPresent Seizure Frequency:\n\nPatient reports brief collapses with stiffening and unresponsiveness that have clustered during the latter portion of sleep, typically occurring after 3 a.m. on two occasions over the past six weeks. Additionally, there was one event on the hot line at work (commercial kitchen) during a rush period, with sudden loss of awareness for approximately 30–45 seconds, followed by confusion and a minor burn to the left forearm.\n\nPlan of Action:\n\nThe pattern suggests events emerging both during the tail end of the sleep period and intermittently under intense heat and time pressure in the kitchen. The patient denies missed doses but notes variable meal times on double shifts and occasional dehydration. We discussed practical measures: consistent dosing alarms, maintaining hydration and regular meals, and avoiding solo work at high-heat stations until further review. I have arranged an ambulatory EEG with sleep capture and requested serum lamotrigine and valproate levels (pre-morning dose) to assess adherence and metabolism. If levels are subtherapeutic, we will consider cautious dose optimisation at follow-up. The patient has been advised on first aid and to use a timer to prompt micro-breaks and fluids during peak service. Occupational health input has been requested to support safe duty allocation pending investigation results. I will review in clinic in 8 weeks or sooner if further events occur.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 598,
+      "end": 723,
+      "text": "have clustered during the latter portion of sleep, typically occurring after 3 a.m. on two occasions over the past six weeks.",
+      "attributes": {
+        "Label": "1 cluster per 3 week, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5906,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 April 2021 10:12\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following kitchen incidents\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 250 mg in the morning and 500 mg at night\n\nPresent Seizure Frequency:\n\nPatient reports brief collapses with stiffening and unresponsiveness that have clustered during the latter portion of sleep, typically occurring after 3 a.m. on two occasions over the past six weeks. Additionally, there was one event on the hot line at work (commercial kitchen) during a rush period, with sudden loss of awareness for approximately 30–45 seconds, followed by confusion and a minor burn to the left forearm.\n\nPlan of Action:\n\nThe pattern suggests events emerging both during the tail end of the sleep period and intermittently under intense heat and time pressure in the kitchen. The patient denies missed doses but notes variable meal times on double shifts and occasional dehydration. We discussed practical measures: consistent dosing alarms, maintaining hydration and regular meals, and avoiding solo work at high-heat stations until further review. I have arranged an ambulatory EEG with sleep capture and requested serum lamotrigine and valproate levels (pre-morning dose) to assess adherence and metabolism. If levels are subtherapeutic, we will consider cautious dose optimisation at follow-up. The patient has been advised on first aid and to use a timer to prompt micro-breaks and fluids during peak service. Occupational health input has been requested to support safe duty allocation pending investigation results. I will review in clinic in 8 weeks or sooner if further events occur.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency: the letter states events have 'clustered... on two occasions over the past six weeks,' which implies 2 cluster episodes in 6 weeks. Convert to allowed format: 2 per 6 weeks = 1 per 3 weeks. Number of seizures per cluster is not specified, but 'clustered' implies more than one, so use 'multiple per cluster.' There is also a single additional event at work in the same 6-week window (≈1 per 6 weeks). Per rule 7, select the higher frequency: the cluster rate (1 per 3 weeks) is higher than 1 per 6 weeks, so report the cluster frequency.",
+      "seizure_frequency_number": [
+        "1 cluster per 3 week, multiple per cluster",
+        "have clustered during the latter portion of sleep, typically occurring after 3 a.m. on two occasions over the past six weeks."
+      ],
+      "reference": [
+        "unknown",
+        "Seizure in second half of the night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 cluster per 3 week, multiple per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

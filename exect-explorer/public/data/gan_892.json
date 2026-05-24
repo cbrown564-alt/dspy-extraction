@@ -1,0 +1,48 @@
+{
+  "id": "gan_892",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 17 May 2020 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJames Rowe, DOB: 14-07-2006, Hospital No: H9283741 NHS No. 7465123980  \n82 Maple Crescent, London, SW12 8RJ  \n\nDiagnoses: \n\nCombined generalised and focal epilepsy (patient has both generalised and focal seizure types). \n\nToday was James Rowe’s first routine review in the adult service following transition from paediatrics. He attended with his mother, who provided collateral history consistent with his account. Over the past two months he reports brief focal aware seizures with right-hand tingling and speech hesitation occurring on alternate days or so, and generalised tonic–clonic seizures roughly twice per fortnight, often from sleep. He has noted that missed meals and late nights appear to lower his threshold. There have been no emergency department attendances since transition. Rescue medication is held at home but has not been required in the last three months.\n\nMedication adherence is reported as good with alarms set on his phone; no recent changes in prescribed doses. No new adverse effects were volunteered. He continues in college and is not currently driving. \n\nExamination today was unremarkable. We discussed seizure first aid, SUDEP risk factors, and safety around bathing and heights. His mother may attend future appointments when available to continue supporting collateral history as needed during this early period in adult services.\n\nPlan: \n- Continue current anti-seizure medication regimen unchanged for now, as agreed with patient.  \n- Arrange EEG with sleep deprivation to further characterise interictal activity given mixed semiology.  \n- Book MRI epilepsy protocol (if prior imaging not available from paediatrics).  \n- Provide written transition summary to patient and GP.  \n- Review in clinic in four months, sooner if the pattern accelerates or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 665,
+      "end": 772,
+      "text": "brief focal aware seizures with right-hand tingling and speech hesitation occurring on alternate days or so",
+      "attributes": {
+        "Label": "1 per 2 day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 892,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 17 May 2020 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJames Rowe, DOB: 14-07-2006, Hospital No: H9283741 NHS No. 7465123980  \n82 Maple Crescent, London, SW12 8RJ  \n\nDiagnoses: \n\nCombined generalised and focal epilepsy (patient has both generalised and focal seizure types). \n\nToday was James Rowe’s first routine review in the adult service following transition from paediatrics. He attended with his mother, who provided collateral history consistent with his account. Over the past two months he reports brief focal aware seizures with right-hand tingling and speech hesitation occurring on alternate days or so, and generalised tonic–clonic seizures roughly twice per fortnight, often from sleep. He has noted that missed meals and late nights appear to lower his threshold. There have been no emergency department attendances since transition. Rescue medication is held at home but has not been required in the last three months.\n\nMedication adherence is reported as good with alarms set on his phone; no recent changes in prescribed doses. No new adverse effects were volunteered. He continues in college and is not currently driving. \n\nExamination today was unremarkable. We discussed seizure first aid, SUDEP risk factors, and safety around bathing and heights. His mother may attend future appointments when available to continue supporting collateral history as needed during this early period in adult services.\n\nPlan: \n- Continue current anti-seizure medication regimen unchanged for now, as agreed with patient.  \n- Arrange EEG with sleep deprivation to further characterise interictal activity given mixed semiology.  \n- Book MRI epilepsy protocol (if prior imaging not available from paediatrics).  \n- Provide written transition summary to patient and GP.  \n- Review in clinic in four months, sooner if the pattern accelerates or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies. The letter states: 'brief focal aware seizures ... occurring on alternate days or so' and 'generalised tonic–clonic seizures roughly twice per fortnight'. Convert to standard units: 'alternate days or so' ≈ 1 every 2 days = 1 per 2 day. 'Twice per fortnight' = 2 per 14 days = 1 per 7 day (i.e., 1 per week). Apply the rule to select the highest frequency across types, which is the focal aware frequency at 1 per 2 day. No indication of seizure freedom for ≥6 months. Therefore final label is 1 per 2 day.",
+      "seizure_frequency_number": [
+        "1 per 2 day",
+        "brief focal aware seizures with right-hand tingling and speech hesitation occurring on alternate days or so"
+      ],
+      "reference": [
+        "1 per 2 day",
+        "every other day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

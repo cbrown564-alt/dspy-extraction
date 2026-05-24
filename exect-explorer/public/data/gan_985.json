@@ -1,0 +1,48 @@
+{
+  "id": "gan_985",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Priya Menon\nRiverside Medical Centre\n14 Riverside Way, London SE10 8TT\n\nDear Dr Priya Menon,\n\nSamuel Porter, DOB: 22-09-1991, Hospital No: U748215 NHS No. 1039456721\nFlat 3, 12 Kings Wharf, London, SE16 4JR\n\nSummary/ Diagnoses: Generalised epilepsy with predominantly absence and occasional generalised tonic–clonic seizures/high caffeine intake acknowledged/possible sleep disruption contributing to seizure threshold/migraine without aura. \n\nMedication: Sodium valproate 500 mg twice daily.\nLamotrigine 100 mg twice daily.\nSumatriptan 50 mg as required for migraine (maximum twice in 24 hours).\nVitamin D3 800 IU daily.  \n\nI reviewed Sam in clinic today, accompanied by his partner. He reports overall improved daytime alertness and fewer morning headaches. He works part-time in IT support and notes that stress peaks around software release dates. He also volunteered that he regularly drinks strong coffee and energy drinks, estimating 5–6 caffeinated beverages daily, especially late afternoon. He sleeps around 5–6 hours on work nights and longer at weekends. Neurological examination today was unremarkable. No new focal deficits. Weight stable; blood pressure 128/78 mmHg. \n\nSeizures: Sam describes a pattern of absence episodes now occurring roughly every other month, with brief lapses in awareness lasting 5–10 seconds, noticed more by colleagues than by himself. He has had one generalised tonic–clonic seizure this calendar year (in May), reportedly after a week of late nights and heavy caffeine use. There have been no injuries or tongue bites. Partner confirms a steady pattern of these short absence spells at that every-other-month interval, with no clustering. He carries a seizure diary on his phone which aligns with this account. Overall, this pattern is consistent with generalised epilepsy. \n\nPlan: \n- Continue sodium valproate and lamotrigine at current doses; no dose changes today.\n- Discussed lifestyle factors: patient acknowledges high caffeine intake; advised aiming to reduce total daily caffeine and avoid late-afternoon/late-evening caffeinated drinks, and to keep a note in the diary when intake is reduced to observe any impact on seizure pattern.\n- Reinforced sleep regularity and seizure first aid with partner; safety reviewed for bathing, swimming, and heights.\n- Routine bloods (FBC, U&E, LFTs, vitamin D) to be arranged via GP within the next month; last LFTs were normal in February 2025 per shared record.\n- DVLA advice reiterated: no current restrictions as per absence-only pattern and single GTC in May with stability since; asked patient to inform us promptly if any further GTC events occur.\n- Follow-up in 6 months, sooner if seizure frequency increases or adverse effects emerge.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1336,
+      "end": 1392,
+      "text": "absence episodes now occurring roughly every other month",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 985,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Priya Menon\nRiverside Medical Centre\n14 Riverside Way, London SE10 8TT\n\nDear Dr Priya Menon,\n\nSamuel Porter, DOB: 22-09-1991, Hospital No: U748215 NHS No. 1039456721\nFlat 3, 12 Kings Wharf, London, SE16 4JR\n\nSummary/ Diagnoses: Generalised epilepsy with predominantly absence and occasional generalised tonic–clonic seizures/high caffeine intake acknowledged/possible sleep disruption contributing to seizure threshold/migraine without aura. \n\nMedication: Sodium valproate 500 mg twice daily.\nLamotrigine 100 mg twice daily.\nSumatriptan 50 mg as required for migraine (maximum twice in 24 hours).\nVitamin D3 800 IU daily.  \n\nI reviewed Sam in clinic today, accompanied by his partner. He reports overall improved daytime alertness and fewer morning headaches. He works part-time in IT support and notes that stress peaks around software release dates. He also volunteered that he regularly drinks strong coffee and energy drinks, estimating 5–6 caffeinated beverages daily, especially late afternoon. He sleeps around 5–6 hours on work nights and longer at weekends. Neurological examination today was unremarkable. No new focal deficits. Weight stable; blood pressure 128/78 mmHg. \n\nSeizures: Sam describes a pattern of absence episodes now occurring roughly every other month, with brief lapses in awareness lasting 5–10 seconds, noticed more by colleagues than by himself. He has had one generalised tonic–clonic seizure this calendar year (in May), reportedly after a week of late nights and heavy caffeine use. There have been no injuries or tongue bites. Partner confirms a steady pattern of these short absence spells at that every-other-month interval, with no clustering. He carries a seizure diary on his phone which aligns with this account. Overall, this pattern is consistent with generalised epilepsy. \n\nPlan: \n- Continue sodium valproate and lamotrigine at current doses; no dose changes today.\n- Discussed lifestyle factors: patient acknowledges high caffeine intake; advised aiming to reduce total daily caffeine and avoid late-afternoon/late-evening caffeinated drinks, and to keep a note in the diary when intake is reduced to observe any impact on seizure pattern.\n- Reinforced sleep regularity and seizure first aid with partner; safety reviewed for bathing, swimming, and heights.\n- Routine bloods (FBC, U&E, LFTs, vitamin D) to be arranged via GP within the next month; last LFTs were normal in February 2025 per shared record.\n- DVLA advice reiterated: no current restrictions as per absence-only pattern and single GTC in May with stability since; asked patient to inform us promptly if any further GTC events occur.\n- Follow-up in 6 months, sooner if seizure frequency increases or adverse effects emerge.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states two seizure types with their frequencies: (1) absence episodes occur 'roughly every other month' and (2) one generalised tonic–clonic seizure this calendar year. Applying the rule to choose the highest frequency, we select the absence frequency. 'Every other month' equates to 1 per 2 months. No clustering is reported. Therefore the normalized label is '1 per 2 month'.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "absence episodes now occurring roughly every other month"
+      ],
+      "reference": [
+        "1 per 2 month",
+        "bimonthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

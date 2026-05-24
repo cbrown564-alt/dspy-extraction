@@ -1,0 +1,48 @@
+{
+  "id": "gan_7892",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMaria Evans, DOB: 14-02-1986, Hospital No: H927415 NHS No. 7401826395  \n12 Willow Close, Sutton, SM1 4BD  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nMaria Evans attended with the primary carer today. The carer described increasing fatigue related to overnight supervision and the practical demands of monitoring. They have arranged a shared rota within the family two nights per week, which has offered some respite. The patient reports stable wellbeing and no medication side effects since the last review. \n\nWith regard to seizure occurrence, there have been no events reported since our previous appointment four months ago. The carer keeps a diary and has noted several brief episodes of uncertainty about awareness that resolved spontaneously without escalation, but no witnessed convulsions or events requiring rescue medication. This pattern is consistent with a period without breakthrough episodes. There has been no use of buccal midazolam. \n\nCurrent treatment remains unchanged. Adherence is reported as good, with tablets taken under carer supervision. No new triggers have been identified. Sleep hygiene has been prioritised, though the carer’s fatigue persists due to ongoing nighttime checks; they have asked for written guidance to share with additional family members who assist with supervision. \n\nOn examination today, neurological assessment was unremarkable. Observations were within normal limits. We discussed safety planning and the importance of continuing the seizure diary. No device therapy is in use. No blood tests were indicated today based on the absence of adverse effects and stable clinical course. \n\nPlan:  \n- Continue current anti-seizure medication at existing doses.  \n- Provide a written summary of monitoring recommendations for the wider caregiving network.  \n- Maintain seizure diary and record any episodes of altered awareness.  \n- Routine follow-up in six months, or earlier if any events occur or concerns arise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 745,
+      "end": 826,
+      "text": "there have been no events reported since our previous appointment four months ago",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7892,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMaria Evans, DOB: 14-02-1986, Hospital No: H927415 NHS No. 7401826395  \n12 Willow Close, Sutton, SM1 4BD  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nMaria Evans attended with the primary carer today. The carer described increasing fatigue related to overnight supervision and the practical demands of monitoring. They have arranged a shared rota within the family two nights per week, which has offered some respite. The patient reports stable wellbeing and no medication side effects since the last review. \n\nWith regard to seizure occurrence, there have been no events reported since our previous appointment four months ago. The carer keeps a diary and has noted several brief episodes of uncertainty about awareness that resolved spontaneously without escalation, but no witnessed convulsions or events requiring rescue medication. This pattern is consistent with a period without breakthrough episodes. There has been no use of buccal midazolam. \n\nCurrent treatment remains unchanged. Adherence is reported as good, with tablets taken under carer supervision. No new triggers have been identified. Sleep hygiene has been prioritised, though the carer’s fatigue persists due to ongoing nighttime checks; they have asked for written guidance to share with additional family members who assist with supervision. \n\nOn examination today, neurological assessment was unremarkable. Observations were within normal limits. We discussed safety planning and the importance of continuing the seizure diary. No device therapy is in use. No blood tests were indicated today based on the absence of adverse effects and stable clinical course. \n\nPlan:  \n- Continue current anti-seizure medication at existing doses.  \n- Provide a written summary of monitoring recommendations for the wider caregiving network.  \n- Maintain seizure diary and record any episodes of altered awareness.  \n- Routine follow-up in six months, or earlier if any events occur or concerns arise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizure occurrence. It states: \"there have been no events reported since our previous appointment four months ago.\" It also notes no witnessed convulsions and no rescue medication use. To classify as seizure free, at least 6 months are required. Here, the documented period without events is four months, which is less than 6 months. Therefore, the patient is not 'seizure free' by the defined rule. We must express the current frequency. With zero seizures over a four-month period, the appropriate normalized label is '0 per 4 month' is not an allowed format; instead, the allowed category for such a period without seizures but under 6 months is 'seizure free for multiple months'. Since the precise months are less than 6 but multiple months, we select 'seizure free for multiple month'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no events reported since our previous appointment four months ago"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Complete control of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

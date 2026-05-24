@@ -1,0 +1,59 @@
+{
+  "id": "gan_2558",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Wright\nSt. Cuthbert’s Neurology Centre\nNeurology Outpatients, 12 Brookfield Lane, Manchester M13 9AL\n\nDear Dr Amelia Wright,\n\nMichael Turner, DOB: 23-02-1987, Hospital No: M472810 NHS No. 9045612378\nFlat 2, 18 Deansgate, Manchester, M3 4FN\n\nPresenting problem:\n\nThe patient reports 3 to 4 focal impaired awareness seizures during the last two months. These episodes are described as brief periods of behavioural arrest with staring, loss of awareness, and subsequent confusion lasting approximately 10–15 minutes. There has been no witnessed generalised tonic–clonic activity. He denies tongue biting or urinary incontinence. Post-event fatigue is common for several hours.\n\nBackground and recent course:\n\nHe wears a smartwatch with fall-detection enabled. Although none of the recent events triggered a fall alert, the device did mark abrupt activity pauses and heart rate variability at the following approximate timestamps: 12 Aug, 28 Aug, and 15 Sep. These alerts correlate with his diary entries made by his partner. He has also noted that episodes often occur in the late evening after a long workday. There is no clear photic sensitivity and no recent intercurrent illness. Sleep has been irregular due to shift work, which he feels may be contributory. Alcohol intake is minimal and there have been no recreational drugs.\n\nExamination and investigations:\n\nNeurological examination today was non-focal. Cardiovascular and general observations were within normal limits. No new imaging is available for review today. We discussed obtaining a routine EEG and, if events persist, ambulatory ECG/EEG correlation to support event characterisation. He is agreeable to further investigation. No previous EEG or MRI is available in our records.\n\nCurrent medication:\n\n- Lamotrigine 75 mg twice daily (patient-reported adherence good; no rash or dose-limiting side effects)\n\nSafety and lifestyle:\n\nHe continues to use the smartwatch’s fall-detection and has enabled emergency contact notifications. He and his partner will maintain a detailed seizure diary, including timestamp, context (sleep deprivation, stress), duration, and recovery profile. He has been advised to avoid swimming alone and to take extra care when bathing and cooking. Driving status has been discussed and he understands the requirement to follow DVLA guidance should further events occur.\n\nPlan:\n\n- Continue lamotrigine 75 mg twice daily while we gather further information on event frequency and triggers.\n- Arrange routine EEG; consider prolonged/ambulatory monitoring if events continue.\n- Baseline bloods including FBC, U&Es, LFTs, and lamotrigine level to assess adherence and metabolism.\n- Sleep hygiene reviewed; he will aim for regular sleep–wake times and avoid night shifts where possible.\n- Follow up in 3 months, or sooner if events escalate.\n\nPlease do not hesitate to contact me if you require further details. I will update you after investigations are completed.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 327,
+      "end": 415,
+      "text": "The patient reports 3 to 4 focal impaired awareness seizures during the last two months.",
+      "attributes": {
+        "Label": "3 to 4 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 347,
+      "end": 414,
+      "text": "3 to 4 focal impaired awareness seizures during the last two months",
+      "attributes": {
+        "Label": "3 to 4 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2558,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Wright\nSt. Cuthbert’s Neurology Centre\nNeurology Outpatients, 12 Brookfield Lane, Manchester M13 9AL\n\nDear Dr Amelia Wright,\n\nMichael Turner, DOB: 23-02-1987, Hospital No: M472810 NHS No. 9045612378\nFlat 2, 18 Deansgate, Manchester, M3 4FN\n\nPresenting problem:\n\nThe patient reports 3 to 4 focal impaired awareness seizures during the last two months. These episodes are described as brief periods of behavioural arrest with staring, loss of awareness, and subsequent confusion lasting approximately 10–15 minutes. There has been no witnessed generalised tonic–clonic activity. He denies tongue biting or urinary incontinence. Post-event fatigue is common for several hours.\n\nBackground and recent course:\n\nHe wears a smartwatch with fall-detection enabled. Although none of the recent events triggered a fall alert, the device did mark abrupt activity pauses and heart rate variability at the following approximate timestamps: 12 Aug, 28 Aug, and 15 Sep. These alerts correlate with his diary entries made by his partner. He has also noted that episodes often occur in the late evening after a long workday. There is no clear photic sensitivity and no recent intercurrent illness. Sleep has been irregular due to shift work, which he feels may be contributory. Alcohol intake is minimal and there have been no recreational drugs.\n\nExamination and investigations:\n\nNeurological examination today was non-focal. Cardiovascular and general observations were within normal limits. No new imaging is available for review today. We discussed obtaining a routine EEG and, if events persist, ambulatory ECG/EEG correlation to support event characterisation. He is agreeable to further investigation. No previous EEG or MRI is available in our records.\n\nCurrent medication:\n\n- Lamotrigine 75 mg twice daily (patient-reported adherence good; no rash or dose-limiting side effects)\n\nSafety and lifestyle:\n\nHe continues to use the smartwatch’s fall-detection and has enabled emergency contact notifications. He and his partner will maintain a detailed seizure diary, including timestamp, context (sleep deprivation, stress), duration, and recovery profile. He has been advised to avoid swimming alone and to take extra care when bathing and cooking. Driving status has been discussed and he understands the requirement to follow DVLA guidance should further events occur.\n\nPlan:\n\n- Continue lamotrigine 75 mg twice daily while we gather further information on event frequency and triggers.\n- Arrange routine EEG; consider prolonged/ambulatory monitoring if events continue.\n- Baseline bloods including FBC, U&Es, LFTs, and lamotrigine level to assess adherence and metabolism.\n- Sleep hygiene reviewed; he will aim for regular sleep–wake times and avoid night shifts where possible.\n- Follow up in 3 months, or sooner if events escalate.\n\nPlease do not hesitate to contact me if you require further details. I will update you after investigations are completed.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports 3 to 4 focal impaired awareness seizures during the last two months.' This provides a clear numeric range and a time window. No additional or conflicting frequencies are given. Therefore, normalize to the allowed format as a range per 2 months: '3 to 4 per 2 month'.",
+      "seizure_frequency_number": [
+        "3 to 4 per 2 month",
+        "The patient reports 3 to 4 focal impaired awareness seizures during the last two months."
+      ],
+      "reference": [
+        "3 to 4 per 2 month",
+        "3 to 4 focal impaired awareness seizures during the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

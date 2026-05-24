@@ -1,0 +1,59 @@
+{
+  "id": "gan_1911",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Lamotrigine restarted earlier this year following patient-led lapse; current adherence inconsistent per patient report.  \n\nCurrent dosing as reported today: Lamotrigine dispersible 25 mg in the morning and 50 mg at night. Patient admits to missing approximately two evening doses per week due to sedation. \n\nLamotrigine Blood Level: \n\n21 September 2025: 2.3 mg/L (laboratory reference range 1.0–15.0 mg/L). Sample taken mid-morning; last dose reportedly taken the previous evening. \n\nSeizures: The patient reports a clear deterioration over the past two months with events now associated with falls and minor injuries (bruising to right forearm and a superficial scalp graze requiring no sutures). Prior to this decline, the background history included frequent convulsions recently, but without injury. Over the most recent period the pattern has escalated to two drop attacks and five convulsions in the past two months. No consistent aura or warning has been identified; partner describes brief vocalisation followed by stiffening and rhythmic jerks in the convulsive events. Recovery has been slower than previously, with post-event confusion lasting up to 30 minutes. No known triggers identified; sleep disruption and intercurrent stress noted. \n\nI conducted a telephone review with Susan Miller today. They confirmed the recent increase in event burden and new occurrence of falls. They have not driven and have informed their employer of absences following events. They are open to further investigation and confirm willingness to improve dose regularity. We discussed maintaining a seizure and injury diary, ensuring medication adherence with phone reminders, and arranging urgent repeat blood levels if further injuries occur. I will liaise with the neurology team to expedite review and consider optimisation in light of the deterioration. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1257,
+      "end": 1317,
+      "text": "two drop attacks and five convulsions in the past two months",
+      "attributes": {
+        "Label": "7 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1257,
+      "end": 1317,
+      "text": "two drop attacks and five convulsions in the past two months",
+      "attributes": {
+        "Label": "7 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1911,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Lamotrigine restarted earlier this year following patient-led lapse; current adherence inconsistent per patient report.  \n\nCurrent dosing as reported today: Lamotrigine dispersible 25 mg in the morning and 50 mg at night. Patient admits to missing approximately two evening doses per week due to sedation. \n\nLamotrigine Blood Level: \n\n21 September 2025: 2.3 mg/L (laboratory reference range 1.0–15.0 mg/L). Sample taken mid-morning; last dose reportedly taken the previous evening. \n\nSeizures: The patient reports a clear deterioration over the past two months with events now associated with falls and minor injuries (bruising to right forearm and a superficial scalp graze requiring no sutures). Prior to this decline, the background history included frequent convulsions recently, but without injury. Over the most recent period the pattern has escalated to two drop attacks and five convulsions in the past two months. No consistent aura or warning has been identified; partner describes brief vocalisation followed by stiffening and rhythmic jerks in the convulsive events. Recovery has been slower than previously, with post-event confusion lasting up to 30 minutes. No known triggers identified; sleep disruption and intercurrent stress noted. \n\nI conducted a telephone review with Susan Miller today. They confirmed the recent increase in event burden and new occurrence of falls. They have not driven and have informed their employer of absences following events. They are open to further investigation and confirm willingness to improve dose regularity. We discussed maintaining a seizure and injury diary, ensuring medication adherence with phone reminders, and arranging urgent repeat blood levels if further injuries occur. I will liaise with the neurology team to expedite review and consider optimisation in light of the deterioration. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states a recent escalation: \"two drop attacks and five convulsions in the past two months.\" These are seizure events. Per the rule to sum frequencies in the same dimension, total events = 2 + 5 = 7 over the most recent two-month period. Convert to allowed format: 7 per 2 month.",
+      "seizure_frequency_number": [
+        "7 per 2 month",
+        "two drop attacks and five convulsions in the past two months"
+      ],
+      "reference": [
+        "7 per 2 month",
+        "two drop attacks and five convulsions in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

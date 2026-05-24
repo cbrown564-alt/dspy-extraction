@@ -1,0 +1,54 @@
+{
+  "id": "gan_790",
+  "text": "RIVER VIEW NEUROLOGY SERVICE\n\nClinic Date: 02 October 2025\n\nDr Patel\nHarbour View Medical Centre\n\n12 Quayside Road, Bristol, BS1 5AB\n\nDear Dr Patel\n\nMichael Turner, DOB: 21-11-1982, Hospital No: H728391 NHS No. 9473826150\nFlat 3, 28 Millpond Lane, Bristol, BS2 0DR\n\nI reviewed the above patient in the Neurology Clinic today for ongoing follow-up of his seizures. I last saw him in March this year. Since then, his events have continued at a fairly regular cadence, occurring roughly once every seven to ten days. He feels that the frequency has not shifted since our previous review despite good adherence to medication.\n\nCurrent medicines as reported today are: Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 100 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg at night. He notes manageable daytime sleepiness and occasional light-headedness on standing, without clear triggers for the events. He denies rashes but mentions intermittent tingling in his calves after longer walks. There have been no injuries, hospitalisations, or episodes requiring rescue therapy.\n\nHis partner has observed brief spells of reduced responsiveness on two occasions over the past month, each lasting under a minute, with rapid recovery and no confusion. He has also had one larger event about two weeks ago, witnessed at home, with whole-body stiffening and shaking described by his partner; recovery took approximately 30 minutes. These patterns are in keeping with his previous reports and remain at the same tempo. Sleep deprivation and missed meals seem to precede some attacks, though he is making efforts to maintain regular routines.\n\nNeurological examination today is unremarkable. Weight and blood pressure are stable. We discussed safety, work routines, and strategies to minimise sleep disruption. He is keen to avoid medication changes until after further diagnostic clarification. I have arranged ambulatory EEG monitoring within the next month to better characterise the events and to guide any subsequent adjustments. Until we have the recording results, I have advised him to continue his current regimen as above and to keep a simple diary noting any aura-like symptoms, potential precipitants, and recovery details.\n\nI will review him in clinic once the monitoring is completed. In the meantime, he has contact details for our epilepsy nurse specialist for practical advice and support.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 466,
+      "end": 512,
+      "text": "occurring roughly once every seven to ten days",
+      "attributes": {
+        "Label": "1 per 7 to 10 day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 790,
+    "clinic_date": "RIVER VIEW NEUROLOGY SERVICE\n\nClinic Date: 02 October 2025\n\nDr Patel\nHarbour View Medical Centre\n\n12 Quayside Road, Bristol, BS1 5AB\n\nDear Dr Patel\n\nMichael Turner, DOB: 21-11-1982, Hospital No: H728391 NHS No. 9473826150\nFlat 3, 28 Millpond Lane, Bristol, BS2 0DR\n\nI reviewed the above patient in the Neurology Clinic today for ongoing follow-up of his seizures. I last saw him in March this year. Since then, his events have continued at a fairly regular cadence, occurring roughly once every seven to ten days. He feels that the frequency has not shifted since our previous review despite good adherence to medication.\n\nCurrent medicines as reported today are: Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 100 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg at night. He notes manageable daytime sleepiness and occasional light-headedness on standing, without clear triggers for the events. He denies rashes but mentions intermittent tingling in his calves after longer walks. There have been no injuries, hospitalisations, or episodes requiring rescue therapy.\n\nHis partner has observed brief spells of reduced responsiveness on two occasions over the past month, each lasting under a minute, with rapid recovery and no confusion. He has also had one larger event about two weeks ago, witnessed at home, with whole-body stiffening and shaking described by his partner; recovery took approximately 30 minutes. These patterns are in keeping with his previous reports and remain at the same tempo. Sleep deprivation and missed meals seem to precede some attacks, though he is making efforts to maintain regular routines.\n\nNeurological examination today is unremarkable. Weight and blood pressure are stable. We discussed safety, work routines, and strategies to minimise sleep disruption. He is keen to avoid medication changes until after further diagnostic clarification. I have arranged ambulatory EEG monitoring within the next month to better characterise the events and to guide any subsequent adjustments. Until we have the recording results, I have advised him to continue his current regimen as above and to keep a simple diary noting any aura-like symptoms, potential precipitants, and recovery details.\n\nI will review him in clinic once the monitoring is completed. In the meantime, he has contact details for our epilepsy nurse specialist for practical advice and support.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the events are \"occurring roughly once every seven to ten days,\" which provides a clear numeric frequency. Additional details mention two brief spells in the past month and one larger event two weeks ago, consistent with approximately 3 events per month. Applying the rule to choose the highest frequency when multiple are present, the explicit \"once every seven to ten days\" corresponds to a higher frequency (about 3 to 4 per month). Therefore, normalize to 1 per 7 to 10 day.",
+      "seizure_frequency_number": [
+        "1 per 7 to 10 day",
+        "occurring roughly once every seven to ten days"
+      ],
+      "reference": [
+        "1 per week",
+        "weekly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 7 to 10 day) disagrees with Reference (1 per week)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

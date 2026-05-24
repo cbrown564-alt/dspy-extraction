@@ -1,0 +1,48 @@
+{
+  "id": "gan_8188",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nHistory of unprovoked seizures (first event 2006; recurrence August 2018). EEG (October 2018) reported generalised spike–wave discharges. Aetiology and classification remain under review.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\nContinue current antiseizure therapy. Provide written information on NHS pathways and local epilepsy support, including interpreter-facilitated appointments as needed. Safety counselling reinforced. Routine review in 18 months, earlier if events recur or concerns arise.\n\nI reviewed John Smith in clinic today. He is a recent migrant to the UK and is still familiarising himself with NHS services; he occasionally uses an interpreter, and today’s discussion included signposting to multilingual resources and how to access urgent and routine neurology care.\n\nFrom a seizure perspective, he reports that there have been no episodes since his last clinic assessment. He continues Lamotrigine 75 mg twice daily without adverse effects. He describes stable sleep habits and avoidance of recognised personal triggers. Neurological examination today was unremarkable. We discussed ongoing treatment; he prefers to maintain current therapy while he settles into the UK system and gains confidence with follow‑up arrangements. I advised him to seek urgent review should he experience any recurrent events, injuries, or medication side effects.\n\nAdministrative notes: we confirmed his GP registration details and arranged for clinic letters to include clear instructions on contacting the neurology advice line. Interpreter support can be booked for future appointments as required.\n\nI have arranged routine follow‑up in 18 months. I am happy to see him sooner if there are any changes.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1132,
+      "end": 1192,
+      "text": "there have been no episodes since his last clinic assessment",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8188,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nHistory of unprovoked seizures (first event 2006; recurrence August 2018). EEG (October 2018) reported generalised spike–wave discharges. Aetiology and classification remain under review.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\nContinue current antiseizure therapy. Provide written information on NHS pathways and local epilepsy support, including interpreter-facilitated appointments as needed. Safety counselling reinforced. Routine review in 18 months, earlier if events recur or concerns arise.\n\nI reviewed John Smith in clinic today. He is a recent migrant to the UK and is still familiarising himself with NHS services; he occasionally uses an interpreter, and today’s discussion included signposting to multilingual resources and how to access urgent and routine neurology care.\n\nFrom a seizure perspective, he reports that there have been no episodes since his last clinic assessment. He continues Lamotrigine 75 mg twice daily without adverse effects. He describes stable sleep habits and avoidance of recognised personal triggers. Neurological examination today was unremarkable. We discussed ongoing treatment; he prefers to maintain current therapy while he settles into the UK system and gains confidence with follow‑up arrangements. I advised him to seek urgent review should he experience any recurrent events, injuries, or medication side effects.\n\nAdministrative notes: we confirmed his GP registration details and arranged for clinic letters to include clear instructions on contacting the neurology advice line. Interpreter support can be booked for future appointments as required.\n\nI have arranged routine follow‑up in 18 months. I am happy to see him sooner if there are any changes.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states: \"From a seizure perspective, he reports that there have been no episodes since his last clinic assessment.\" There is no explicit date of the last clinic assessment provided. Without that date, we cannot confirm a seizure-free duration of at least 6 months. However, the patient currently has no seizures and has had none since the last assessment, implying a period of months may have passed but not quantifiable. According to the rules, if insufficient information exists to confirm or refute the 6-month criterion, the patient may be considered seizure free for multiple months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no episodes since his last clinic assessment"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures reported since last evaluation"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

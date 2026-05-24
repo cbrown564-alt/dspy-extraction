@@ -1,0 +1,59 @@
+{
+  "id": "gan_12949",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 23 June 2024\n\nDr Amelia Shah\nRiverside Health Centre\n\n12 Market Lane, Southwark, London SE1 3AB\n\nDear Dr Amelia Shah\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Generalised epilepsy with recent clinical improvement; dietetic input (ketogenic principles) commenced with positive response; previous EEG supportive of generalised onset. No structural lesion on prior imaging per historic report.\n\nCurrent medication: Lamotrigine 100 mg twice daily; Levetiracetam 1 g twice daily; Folic acid 5 mg daily. No rescue therapy required in the past six months.\n\nAllergies: No known drug allergies (patient-reported).\n\nInterval history: I reviewed Wendy Brown in clinic today, accompanied by her partner. Since her last visit, she has engaged with our dietetics team and adopted ketogenic-style dietary guidance. In parallel, we made a modest lamotrigine dose adjustment three months ago. She reports better sleep quality, improved daytime energy, and greater confidence with daily activities. Seizure burden has been substantially reduced following dose adjustment, with only nine focal impaired-awareness seizures reported so far this year. She has not had any generalised tonic–clonic events since February, and there have been no injuries or emergency presentations. She notes mild word-finding pauses on occasion but no mood disturbance or visual symptoms. Weight is stable; she remains well hydrated.\n\nExamination: Alert, fluent, and oriented. Normal cranial nerves. No cerebellar signs. Gait normal. Vitals within normal limits.\n\nInvestigations: Historical MRI reportedly without epileptogenic lesion. Prior EEGs demonstrated generalised spike–and–wave activity consistent with generalised epilepsy. Routine bloods earlier this month (FBC/U&Es/LFTs) were within normal limits.\n\nManagement plan:\n- Continue lamotrigine 100 mg twice daily and levetiracetam 1 g twice daily.\n- Maintain current dietetic plan; dietitian follow‑up in 8–10 weeks to ensure nutritional adequacy while sustaining seizure control.\n- Safety: no driving as per DVLA guidance until standard seizure‑free criteria met; continue personal safety measures in the bathroom and kitchen.\n- Monitoring: patient to keep a seizure and trigger diary; we will review in 4 months or sooner if seizures escalate or adverse effects emerge.\n\nOverall, the patient has generalised epilepsy with clear improvement over recent months, temporally associated with the lamotrigine optimisation and adherence to ketogenic-style dietetic guidance. I will keep you updated.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1199,
+      "end": 1274,
+      "text": "with only nine focal impaired-awareness seizures reported so far this year.",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1126,
+      "end": 1273,
+      "text": "Seizure burden has been substantially reduced following dose adjustment, with only nine focal impaired-awareness seizures reported so far this year",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12949,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 23 June 2024\n\nDr Amelia Shah\nRiverside Health Centre\n\n12 Market Lane, Southwark, London SE1 3AB\n\nDear Dr Amelia Shah\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Generalised epilepsy with recent clinical improvement; dietetic input (ketogenic principles) commenced with positive response; previous EEG supportive of generalised onset. No structural lesion on prior imaging per historic report.\n\nCurrent medication: Lamotrigine 100 mg twice daily; Levetiracetam 1 g twice daily; Folic acid 5 mg daily. No rescue therapy required in the past six months.\n\nAllergies: No known drug allergies (patient-reported).\n\nInterval history: I reviewed Wendy Brown in clinic today, accompanied by her partner. Since her last visit, she has engaged with our dietetics team and adopted ketogenic-style dietary guidance. In parallel, we made a modest lamotrigine dose adjustment three months ago. She reports better sleep quality, improved daytime energy, and greater confidence with daily activities. Seizure burden has been substantially reduced following dose adjustment, with only nine focal impaired-awareness seizures reported so far this year. She has not had any generalised tonic–clonic events since February, and there have been no injuries or emergency presentations. She notes mild word-finding pauses on occasion but no mood disturbance or visual symptoms. Weight is stable; she remains well hydrated.\n\nExamination: Alert, fluent, and oriented. Normal cranial nerves. No cerebellar signs. Gait normal. Vitals within normal limits.\n\nInvestigations: Historical MRI reportedly without epileptogenic lesion. Prior EEGs demonstrated generalised spike–and–wave activity consistent with generalised epilepsy. Routine bloods earlier this month (FBC/U&Es/LFTs) were within normal limits.\n\nManagement plan:\n- Continue lamotrigine 100 mg twice daily and levetiracetam 1 g twice daily.\n- Maintain current dietetic plan; dietitian follow‑up in 8–10 weeks to ensure nutritional adequacy while sustaining seizure control.\n- Safety: no driving as per DVLA guidance until standard seizure‑free criteria met; continue personal safety measures in the bathroom and kitchen.\n- Monitoring: patient to keep a seizure and trigger diary; we will review in 4 months or sooner if seizures escalate or adverse effects emerge.\n\nOverall, the patient has generalised epilepsy with clear improvement over recent months, temporally associated with the lamotrigine optimisation and adherence to ketogenic-style dietetic guidance. I will keep you updated.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"with only nine focal impaired-awareness seizures reported so far this year.\" The clinic date is 23 June 2024, so \"so far this year\" covers roughly January through late June (~6 months). There are no other higher-frequency seizure counts mentioned; generalized tonic–clonic events have been absent since February and do not add to the count. Therefore, the best normalized frequency is 9 per 6 months.",
+      "seizure_frequency_number": [
+        "9 per 6 month",
+        "with only nine focal impaired-awareness seizures reported so far this year."
+      ],
+      "reference": [
+        "9 per 6 month",
+        "Seizure burden has been substantially reduced following dose adjustment, with only nine focal impaired-awareness seizures reported so far this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

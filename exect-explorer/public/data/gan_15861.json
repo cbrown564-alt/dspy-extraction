@@ -1,0 +1,59 @@
+{
+  "id": "gan_15861",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Lamotrigine restarted in 2018 and continued since. Current regimen confirmed as lamotrigine dispersible 25 mg twice daily.\n\nLamotrigine Blood Level:\n- Most recent check (patient reports September 2025 at local surgery): result not available to view today; last documented result on file remains <1 mg/L (reference 1.0–15.0 mg/L) when taking 25 mg twice daily. We have requested an updated level from the practice.\n\nSeizures:\nSince our last routine contact, there has been a notable deterioration associated with the current exam/professional assessment period and heightened stress, which the patient reports has been difficult to manage. Drop attacks are now reported several times weekly, having previously occurred only sporadically, once every few months. There are no consistent preceding auras or warnings described. She notes sudden loss of postural control with brief unresponsiveness on occasion, followed by rapid recovery, and transient confusion in a minority of events. No clear injury to date, though there have been near-falls; she is now avoiding stairs when alone. No nocturnal events reported by household members. Triggers described include sleep restriction and high-stakes revision sessions. Alcohol intake remains minimal; caffeine use has increased modestly during revision.\n\nHistory Since Last Review:\n- Patient-reported adherence to lamotrigine 25 mg twice daily without missed doses, using a phone reminder app.\n- Increased stress due to upcoming professional examinations over the next six weeks.\n- Sleep curtailed to approximately 5–6 hours on weeknights.\n- No intercurrent illness, head injury, or medication changes otherwise. No over-the-counter remedies other than occasional paracetamol.\n\nPlan Discussed Today (patient-reported preferences and information requests):\n- The patient has asked for written information on stress management and sleep hygiene specific to seizure risk. She will trial structured breaks during revision and regular sleep–wake times.\n- She has agreed to maintain a detailed seizure and trigger diary and to record any injuries or clusters.\n- We have requested the GP surgery to repeat lamotrigine trough level, U&Es, LFTs, and a serum HCG as per our local protocol.\n- Safety advice reinforced verbally: caution with bathing unsupervised, cooking at height, and use of ladders/stepladders; patient confirms understanding and will share advice with her household.\n- We will bring forward her routine follow-up to a rapid-access review within 2–3 weeks by phone to reassess frequency and the laboratory results already requested from primary care.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 917,
+      "end": 967,
+      "text": "Drop attacks are now reported several times weekly",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 917,
+      "end": 1036,
+      "text": "Drop attacks are now reported several times weekly, having previously occurred only sporadically, once every few months",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15861,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Lamotrigine restarted in 2018 and continued since. Current regimen confirmed as lamotrigine dispersible 25 mg twice daily.\n\nLamotrigine Blood Level:\n- Most recent check (patient reports September 2025 at local surgery): result not available to view today; last documented result on file remains <1 mg/L (reference 1.0–15.0 mg/L) when taking 25 mg twice daily. We have requested an updated level from the practice.\n\nSeizures:\nSince our last routine contact, there has been a notable deterioration associated with the current exam/professional assessment period and heightened stress, which the patient reports has been difficult to manage. Drop attacks are now reported several times weekly, having previously occurred only sporadically, once every few months. There are no consistent preceding auras or warnings described. She notes sudden loss of postural control with brief unresponsiveness on occasion, followed by rapid recovery, and transient confusion in a minority of events. No clear injury to date, though there have been near-falls; she is now avoiding stairs when alone. No nocturnal events reported by household members. Triggers described include sleep restriction and high-stakes revision sessions. Alcohol intake remains minimal; caffeine use has increased modestly during revision.\n\nHistory Since Last Review:\n- Patient-reported adherence to lamotrigine 25 mg twice daily without missed doses, using a phone reminder app.\n- Increased stress due to upcoming professional examinations over the next six weeks.\n- Sleep curtailed to approximately 5–6 hours on weeknights.\n- No intercurrent illness, head injury, or medication changes otherwise. No over-the-counter remedies other than occasional paracetamol.\n\nPlan Discussed Today (patient-reported preferences and information requests):\n- The patient has asked for written information on stress management and sleep hygiene specific to seizure risk. She will trial structured breaks during revision and regular sleep–wake times.\n- She has agreed to maintain a detailed seizure and trigger diary and to record any injuries or clusters.\n- We have requested the GP surgery to repeat lamotrigine trough level, U&Es, LFTs, and a serum HCG as per our local protocol.\n- Safety advice reinforced verbally: caution with bathing unsupervised, cooking at height, and use of ladders/stepladders; patient confirms understanding and will share advice with her household.\n- We will bring forward her routine follow-up to a rapid-access review within 2–3 weeks by phone to reassess frequency and the laboratory results already requested from primary care.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Drop attacks are now reported several times weekly, having previously occurred only sporadically, once every few months.' This indicates current seizure frequency is qualitatively described as several times per week, without a precise number. No other seizure frequencies are provided that are higher than this. Therefore, per rules, use 'multiple per week' since exact number is not given.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "Drop attacks are now reported several times weekly"
+      ],
+      "reference": [
+        "multiple per week",
+        "Drop attacks are now reported several times weekly, having previously occurred only sporadically, once every few months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

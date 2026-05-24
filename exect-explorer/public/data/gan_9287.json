@@ -1,0 +1,59 @@
+{
+  "id": "gan_9287",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 August 2024 \n\nDr Asha Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Asha Patel, \n\nMs Sarah Turner, DOB: 22-08-1991, Hospital No: K784210 NHS No. 9437286150  \nFlat 12, 29 Brook Lane, London, SE15 3QP  \n\nDiagnosis: \n\nFocal epilepsy with persistent focal sensory seizures; prior trial of Carbamazepine limited by dizziness, currently on Lacosamide with partial benefit \n\nAetiology: \n\nRight parietal cortical dysplasia suspected on MRI (subtle cortical thickening and blurring at the postcentral gyrus) \n\nOther Medical Problems: \n\nMild asthma (as-needed salbutamol inhaler), seasonal allergic rhinitis, no known drug allergies \n\nManagement Plan: \n\n- Continue Lacosamide 100 mg mane and 150 mg nocte on a single brand; patient reports improved tolerability relative to Carbamazepine.  \n- Maintain seizure diary.  \n- Discussed safety around bathing, heights, and operating machinery. DVLA guidance reviewed; patient is not driving at present.  \n- Arrange EEG with sleep deprivation and repeat MRI epilepsy protocol in 12 months or sooner if clinical change.  \n- Consider adjunct Lamotrigine if no further improvement by next review.  \n- Follow-up in four months in the focal epilepsy clinic.\n\nThis patient has focal epilepsy presenting as brief contralateral paraesthesias in the left hand and forearm, sometimes radiating to the cheek, without loss of awareness. Prior to commencing Lacosamide, episodes occurred at a rate of three to five focal sensory per week. Since titration to the current dose, the frequency has remained unchanged, though the patient perceives reduced intensity and shorter duration (typically under 30 seconds). Triggers reported include sleep deprivation and prolonged keyboard use; no clear relation to alcohol or intercurrent illness. There have been no motor generalisations, no falls, and no injuries. Neurological examination in clinic was normal. Routine bloods (U&E, LFTs) were within reference ranges.\n\nWe reviewed medication options and agreed to continue current therapy for now, with attention to sleep hygiene and ergonomic adjustments at work; the patient’s employer has been supportive of flexible breaks. I have provided the patient with written information on focal sensory seizures and advised contacting the service if frequency increases, new features emerge, or adverse effects occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1594,
+      "end": 1667,
+      "text": "Since titration to the current dose, the frequency has remained unchanged",
+      "attributes": {
+        "Label": "3 to 5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1556,
+      "end": 1592,
+      "text": "three to five focal sensory per week",
+      "attributes": {
+        "Label": "3 to 5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9287,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 August 2024 \n\nDr Asha Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Asha Patel, \n\nMs Sarah Turner, DOB: 22-08-1991, Hospital No: K784210 NHS No. 9437286150  \nFlat 12, 29 Brook Lane, London, SE15 3QP  \n\nDiagnosis: \n\nFocal epilepsy with persistent focal sensory seizures; prior trial of Carbamazepine limited by dizziness, currently on Lacosamide with partial benefit \n\nAetiology: \n\nRight parietal cortical dysplasia suspected on MRI (subtle cortical thickening and blurring at the postcentral gyrus) \n\nOther Medical Problems: \n\nMild asthma (as-needed salbutamol inhaler), seasonal allergic rhinitis, no known drug allergies \n\nManagement Plan: \n\n- Continue Lacosamide 100 mg mane and 150 mg nocte on a single brand; patient reports improved tolerability relative to Carbamazepine.  \n- Maintain seizure diary.  \n- Discussed safety around bathing, heights, and operating machinery. DVLA guidance reviewed; patient is not driving at present.  \n- Arrange EEG with sleep deprivation and repeat MRI epilepsy protocol in 12 months or sooner if clinical change.  \n- Consider adjunct Lamotrigine if no further improvement by next review.  \n- Follow-up in four months in the focal epilepsy clinic.\n\nThis patient has focal epilepsy presenting as brief contralateral paraesthesias in the left hand and forearm, sometimes radiating to the cheek, without loss of awareness. Prior to commencing Lacosamide, episodes occurred at a rate of three to five focal sensory per week. Since titration to the current dose, the frequency has remained unchanged, though the patient perceives reduced intensity and shorter duration (typically under 30 seconds). Triggers reported include sleep deprivation and prolonged keyboard use; no clear relation to alcohol or intercurrent illness. There have been no motor generalisations, no falls, and no injuries. Neurological examination in clinic was normal. Routine bloods (U&E, LFTs) were within reference ranges.\n\nWe reviewed medication options and agreed to continue current therapy for now, with attention to sleep hygiene and ergonomic adjustments at work; the patient’s employer has been supportive of flexible breaks. I have provided the patient with written information on focal sensory seizures and advised contacting the service if frequency increases, new features emerge, or adverse effects occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify current seizure frequency. The letter states: 'Prior to commencing Lacosamide, episodes occurred at a rate of three to five ... per week.' Then: 'Since titration to the current dose, the frequency has remained unchanged.' Therefore, current frequency equals the prior explicit rate. Convert 'three to five ... per week' to allowed format '3 to 5 per week.' No other frequencies are provided; no seizure freedom. Thus final label is '3 to 5 per week.'",
+      "seizure_frequency_number": [
+        "3 to 5 per week",
+        "Since titration to the current dose, the frequency has remained unchanged"
+      ],
+      "reference": [
+        "3 to 5 per week",
+        "three to five focal sensory per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

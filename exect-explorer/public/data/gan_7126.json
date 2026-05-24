@@ -1,0 +1,54 @@
+{
+  "id": "gan_7126",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Eleanor Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 13 February 2017 10:12\nTo: kch.neuro-epilepsy@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Eleanor\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (maximum 10 days per month)\n\nPresent Seizure Frequency:\n\nPatient reports brief focal-aware events with occasional progression to impaired awareness. Over the past four months she has noticed a recurring mid-cycle surge in episodes, with a clear pattern of increased events approximately 10–14 days after menses onset. Outside this window, events are infrequent. No recent head injury, sleep deprivation, or intercurrent illness reported.\n\nPlan of Action:\n\n- Given the patterned mid-cycle worsening and her concurrent reports of heightened anxiety and low mood around the same time, we discussed optimising baseline therapy rather than rescue-only approaches. She is motivated to minimise sedating agents.\n- Increase Lamotrigine to 125 mg twice daily for two weeks, then to 150 mg twice daily if tolerated. She is aware of potential rash and will seek urgent advice if any occurs. Continue Clobazam 5 mg nocte prn as a short-term back-up for clusters, not exceeding current monthly limits.\n- We will arrange serum Lamotrigine level at the 150 mg bd stage (trough level), and routine bloods (FBC, U&E, LFTs) at the same time.\n- Mood/anxiety: patient describes ongoing anxiety and low mood, particularly peri-mid-cycle, without self-harm thoughts. She would welcome brief psychological support. Please consider local IAPT/self-referral guidance and safety-net with GP review if symptoms escalate.\n- Safety advice reinforced: adherence, regular sleep, limit alcohol, avoid swimming alone, and driving regulations discussed as applicable.\n- Follow-up arranged in 3 months. She will contact us earlier if seizure frequency increases, any rash occurs, or mood deteriorates.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 574,
+      "end": 878,
+      "text": "Patient reports brief focal-aware events with occasional progression to impaired awareness. Over the past four months she has noticed a recurring mid-cycle surge in episodes, with a clear pattern of increased events approximately 10–14 days after menses onset. Outside this window, events are infrequent.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7126,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Eleanor Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 13 February 2017 10:12\nTo: kch.neuro-epilepsy@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Eleanor\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (maximum 10 days per month)\n\nPresent Seizure Frequency:\n\nPatient reports brief focal-aware events with occasional progression to impaired awareness. Over the past four months she has noticed a recurring mid-cycle surge in episodes, with a clear pattern of increased events approximately 10–14 days after menses onset. Outside this window, events are infrequent. No recent head injury, sleep deprivation, or intercurrent illness reported.\n\nPlan of Action:\n\n- Given the patterned mid-cycle worsening and her concurrent reports of heightened anxiety and low mood around the same time, we discussed optimising baseline therapy rather than rescue-only approaches. She is motivated to minimise sedating agents.\n- Increase Lamotrigine to 125 mg twice daily for two weeks, then to 150 mg twice daily if tolerated. She is aware of potential rash and will seek urgent advice if any occurs. Continue Clobazam 5 mg nocte prn as a short-term back-up for clusters, not exceeding current monthly limits.\n- We will arrange serum Lamotrigine level at the 150 mg bd stage (trough level), and routine bloods (FBC, U&E, LFTs) at the same time.\n- Mood/anxiety: patient describes ongoing anxiety and low mood, particularly peri-mid-cycle, without self-harm thoughts. She would welcome brief psychological support. Please consider local IAPT/self-referral guidance and safety-net with GP review if symptoms escalate.\n- Safety advice reinforced: adherence, regular sleep, limit alcohol, avoid swimming alone, and driving regulations discussed as applicable.\n- Follow-up arranged in 3 months. She will contact us earlier if seizure frequency increases, any rash occurs, or mood deteriorates.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient is having seizures: 'brief focal-aware events with occasional progression to impaired awareness.' However, it provides no explicit numeric frequency. It notes a 'recurring mid-cycle surge' 10–14 days after menses with 'increased events,' and 'outside this window, events are infrequent.' There are no counts per day/week/month, no number of events per surge, and no duration quantification that can be converted to a rate. Therefore, the specific frequency cannot be determined and must be labeled as unknown per instructions.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Patient reports brief focal-aware events with occasional progression to impaired awareness. Over the past four months she has noticed a recurring mid-cycle surge in episodes, with a clear pattern of increased events approximately 10–14 days after menses onset. Outside this window, events are infrequent."
+      ],
+      "reference": [
+        "unknown",
+        "Peri-ovulatory increase in seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6408",
+  "text": "Department of Neurology\n\nClinic Date: 28 March 2022\n\nDr Eleanor Hart  \nSt. Cuthbert’s Neurology Centre  \nNeurology Department, 12 Mill Lane, Cambridge CB2 1RX  \n\nDear Dr Eleanor Hart,  \n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610  \n34 Kensington Road, London, W8 5NP \n\nDiagnoses:\n\nGeneralised epilepsy. Prior EEG previously reported generalised spike–wave activity in keeping with a primary generalised epilepsy syndrome.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily.\n\nPlan:\n\n- Continue current antiepileptic medication unchanged.\n- Provide written advice on managing exposure to flicker/bright light and screen use; patient reports photosensitivity.  \n- Safety counselling regarding triggers and sleep hygiene.  \n- Arrange follow-up in 12 months or earlier if clinical course changes.  \n\nI reviewed John today in clinic. He describes sensitivity to flashing lights and bright visual patterns, especially in retail displays and digital screens; he has started using blue-light filters and adjusting screen settings, which he finds helpful. He also mentioned that periods of disrupted routine around long-distance journeys and time-zone shifts have previously been challenging, though we did not quantify any recent events, and the current seizure frequency is not known. There is no history of focal neurological symptoms. Examination today was unremarkable.\n\nWe discussed that he has generalised epilepsy with photosensitivity features. He prefers to continue Lamotrigine 100 mg twice daily, which he tolerates without adverse effects. I provided guidance about managing exposure to flicker and maintaining regular sleep patterns when schedules change. I will review him in a year, or sooner if there are concerns.\n\nWith best wishes,\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1261,
+      "end": 1303,
+      "text": "the current seizure frequency is not known",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6408,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 28 March 2022\n\nDr Eleanor Hart  \nSt. Cuthbert’s Neurology Centre  \nNeurology Department, 12 Mill Lane, Cambridge CB2 1RX  \n\nDear Dr Eleanor Hart,  \n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610  \n34 Kensington Road, London, W8 5NP \n\nDiagnoses:\n\nGeneralised epilepsy. Prior EEG previously reported generalised spike–wave activity in keeping with a primary generalised epilepsy syndrome.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily.\n\nPlan:\n\n- Continue current antiepileptic medication unchanged.\n- Provide written advice on managing exposure to flicker/bright light and screen use; patient reports photosensitivity.  \n- Safety counselling regarding triggers and sleep hygiene.  \n- Arrange follow-up in 12 months or earlier if clinical course changes.  \n\nI reviewed John today in clinic. He describes sensitivity to flashing lights and bright visual patterns, especially in retail displays and digital screens; he has started using blue-light filters and adjusting screen settings, which he finds helpful. He also mentioned that periods of disrupted routine around long-distance journeys and time-zone shifts have previously been challenging, though we did not quantify any recent events, and the current seizure frequency is not known. There is no history of focal neurological symptoms. Examination today was unremarkable.\n\nWe discussed that he has generalised epilepsy with photosensitivity features. He prefers to continue Lamotrigine 100 mg twice daily, which he tolerates without adverse effects. I provided guidance about managing exposure to flicker and maintaining regular sleep patterns when schedules change. I will review him in a year, or sooner if there are concerns.\n\nWith best wishes,\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's epilepsy and photosensitivity but explicitly states that the current seizure frequency is not known. There are no numeric or time-based seizure frequency details provided, and no confirmation of seizure freedom for at least 6 months. Therefore, per the rules, since seizures are mentioned but frequency cannot be determined, the correct label is 'unknown.' Quote used is the explicit statement about unknown frequency.",
+      "seizure_frequency_number": [
+        "unknown",
+        "the current seizure frequency is not known"
+      ],
+      "reference": [
+        "unknown",
+        "seizure events during travel/jet lag"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

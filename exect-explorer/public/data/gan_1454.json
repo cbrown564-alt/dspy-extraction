@@ -1,0 +1,59 @@
+{
+  "id": "gan_1454",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nGreenfield Medical Practice\n24 Market Road, London NW1 8QH\n\nDear Dr Ahmed,\n\nSophie Bennett, DOB: 12-11-1990, Hospital No: H482930 NHS No. 9051736241\n15 Orchard Close, London, N7 6JP\n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg evening.\n\nI reviewed Sophie Bennett today. She works in gardening and groundskeeping, mainly outdoors, with periods of prolonged exertion and exposure to heat that vary seasonally. Over the past week she reports one tonic-clonic and six petit mal in last week. She notes that the shorter episodes often occur towards the end of longer, hotter shifts and tend to cluster on consecutive days when the weather is warmer. The single longer event was witnessed by a colleague in the late afternoon following several hours of continuous work; there was no reported injury, and recovery to baseline took approximately 45 minutes.\n\nShe feels generally well between episodes. She stays hydrated and has begun taking rest breaks but finds this is not always possible during peak workload. She has not identified consistent sleep deprivation, intercurrent illness, or missed doses. No new neurological symptoms were volunteered. She drives neither privately nor for work. Workplace first-aid support is available, and her supervisor is aware of her condition. She is open to discussing practical adjustments (e.g., shaded rest points, structured breaks, buddy system), which you may be able to facilitate in a fit note or occupational health referral if appropriate.\n\nOn the current regimen she has not experienced adverse effects such as rash, notable hyponatraemia symptoms, or significant dizziness. We discussed safety in heat and prolonged exertion, hydration strategies, and seizure first-aid. We also revisited adherence, timing of doses, and the importance of consistent routines given her variable workload.\n\nPlan:\n- Continue Oxcarbazepine 600 mg twice daily unchanged at present.\n- If episodes increase despite workplace adjustments and hydration measures, we will consider a targeted evening dose escalation after review and bloods (including sodium) in clinic.\n- Arrange serum sodium and routine bloods locally in 2–3 weeks, and again prior to next review.\n- Patient will keep a seizure and trigger diary noting temperature, exertion duration, and hydration.\n- Provide employer with factual information on safety measures as needed (patient will initiate).\n\nWe will see her back in three months, or earlier if there is any worsening.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 510,
+      "end": 589,
+      "text": "Over the past week she reports one tonic-clonic and six petit mal in last week.",
+      "attributes": {
+        "Label": "7 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 541,
+      "end": 588,
+      "text": "one tonic-clonic and six petit mal in last week",
+      "attributes": {
+        "Label": "7 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1454,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nGreenfield Medical Practice\n24 Market Road, London NW1 8QH\n\nDear Dr Ahmed,\n\nSophie Bennett, DOB: 12-11-1990, Hospital No: H482930 NHS No. 9051736241\n15 Orchard Close, London, N7 6JP\n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg evening.\n\nI reviewed Sophie Bennett today. She works in gardening and groundskeeping, mainly outdoors, with periods of prolonged exertion and exposure to heat that vary seasonally. Over the past week she reports one tonic-clonic and six petit mal in last week. She notes that the shorter episodes often occur towards the end of longer, hotter shifts and tend to cluster on consecutive days when the weather is warmer. The single longer event was witnessed by a colleague in the late afternoon following several hours of continuous work; there was no reported injury, and recovery to baseline took approximately 45 minutes.\n\nShe feels generally well between episodes. She stays hydrated and has begun taking rest breaks but finds this is not always possible during peak workload. She has not identified consistent sleep deprivation, intercurrent illness, or missed doses. No new neurological symptoms were volunteered. She drives neither privately nor for work. Workplace first-aid support is available, and her supervisor is aware of her condition. She is open to discussing practical adjustments (e.g., shaded rest points, structured breaks, buddy system), which you may be able to facilitate in a fit note or occupational health referral if appropriate.\n\nOn the current regimen she has not experienced adverse effects such as rash, notable hyponatraemia symptoms, or significant dizziness. We discussed safety in heat and prolonged exertion, hydration strategies, and seizure first-aid. We also revisited adherence, timing of doses, and the importance of consistent routines given her variable workload.\n\nPlan:\n- Continue Oxcarbazepine 600 mg twice daily unchanged at present.\n- If episodes increase despite workplace adjustments and hydration measures, we will consider a targeted evening dose escalation after review and bloods (including sodium) in clinic.\n- Arrange serum sodium and routine bloods locally in 2–3 weeks, and again prior to next review.\n- Patient will keep a seizure and trigger diary noting temperature, exertion duration, and hydration.\n- Provide employer with factual information on safety measures as needed (patient will initiate).\n\nWe will see her back in three months, or earlier if there is any worsening.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter states: 'Over the past week she reports one tonic-clonic and six petit mal in last week.' This gives concrete counts within a 1-week window. Apply the rule of summing frequencies in the same dimension: 1 + 6 = 7 seizures in the past week. Normalize to allowed format: '7 per week'. The quote should capture the explicit numeric expression.",
+      "seizure_frequency_number": [
+        "7 per week",
+        "Over the past week she reports one tonic-clonic and six petit mal in last week."
+      ],
+      "reference": [
+        "7 per week",
+        "one tonic-clonic and six petit mal in last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_4337",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 5 October 2021 \n\nDr Aisha Rahman \nConsultant Neurologist  \nRiverside Neurology Centre  \nSt. Cuthbert’s Hospital, Kingfisher Road, Leeds LS2 8AB  \n\nDear Dr Aisha Rahman, \n\nMs Lorna Whitfield, DOB: 22-07-1987, Hospital No: LQ39-7742 NHS No. 7462195830  \nFlat 3, 12 Mill Court, Leeds, LS6 3PR  \n\nDiagnosis: \n\nRecurrent seizures of uncertain classification; patient-reported clusters with variable semiology. \n\nAetiology: \n\nNot established; no structural lesion identified on prior imaging per patient report; awaiting updated investigations. \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms under primary care review; seasonal allergic rhinitis managed with as-needed antihistamine. \n\nManagement Plan: \n\n- Seizure events on 06-03, 06-13, 09-23 as recorded in the patient’s diary; patient describes brief impaired awareness with post-event fatigue on two occasions and a prolonged aura without loss of awareness on one occasion. No identified clear triggers other than poor sleep preceding the first two dates.  \n- Start Levetiracetam 250 mg twice daily for 2 weeks, then increase to 500 mg twice daily if tolerated; discuss brand consistency with community pharmacy.  \n- Rescue plan: Buccal midazolam 10 mg for events lasting >5 minutes or for recurrent events without full recovery; partner instructed to call 999 if used.  \n- Bloods today: FBC, U&E, LFTs, vitamin D.  \n- Request routine MRI brain with epilepsy protocol and outpatient EEG with sleep deprivation.  \n- Safety advice given regarding bathing, heights, operating machinery, and adherence to DVLA guidance for seizures; patient confirms they are not currently driving.  \n- Provide seizure diary template and signpost to Epilepsy Specialist Nurse for education and adherence support.  \n- Review in clinic in 12 weeks or sooner if events increase in frequency, duration, or severity; patient to contact the service via the nurse advice line for interim concerns. \n\nThis patient reports that prior to June they had no events for several months. They note poor sleep and high work-related stress around early June, which may have contributed to events on 06-03 and 06-13. The September event on 09-23 occurred after intercurrent viral illness; no alcohol use was reported. There have been no injuries, tongue-biting, or prolonged post-ictal confusion. No current anticoagulation or interacting medicines. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 770,
+      "end": 842,
+      "text": "Seizure events on 06-03, 06-13, 09-23 as recorded in the patient’s diary",
+      "attributes": {
+        "Label": "3 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 770,
+      "end": 807,
+      "text": "Seizure events on 06-03, 06-13, 09-23",
+      "attributes": {
+        "Label": "3 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4337,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 5 October 2021 \n\nDr Aisha Rahman \nConsultant Neurologist  \nRiverside Neurology Centre  \nSt. Cuthbert’s Hospital, Kingfisher Road, Leeds LS2 8AB  \n\nDear Dr Aisha Rahman, \n\nMs Lorna Whitfield, DOB: 22-07-1987, Hospital No: LQ39-7742 NHS No. 7462195830  \nFlat 3, 12 Mill Court, Leeds, LS6 3PR  \n\nDiagnosis: \n\nRecurrent seizures of uncertain classification; patient-reported clusters with variable semiology. \n\nAetiology: \n\nNot established; no structural lesion identified on prior imaging per patient report; awaiting updated investigations. \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms under primary care review; seasonal allergic rhinitis managed with as-needed antihistamine. \n\nManagement Plan: \n\n- Seizure events on 06-03, 06-13, 09-23 as recorded in the patient’s diary; patient describes brief impaired awareness with post-event fatigue on two occasions and a prolonged aura without loss of awareness on one occasion. No identified clear triggers other than poor sleep preceding the first two dates.  \n- Start Levetiracetam 250 mg twice daily for 2 weeks, then increase to 500 mg twice daily if tolerated; discuss brand consistency with community pharmacy.  \n- Rescue plan: Buccal midazolam 10 mg for events lasting >5 minutes or for recurrent events without full recovery; partner instructed to call 999 if used.  \n- Bloods today: FBC, U&E, LFTs, vitamin D.  \n- Request routine MRI brain with epilepsy protocol and outpatient EEG with sleep deprivation.  \n- Safety advice given regarding bathing, heights, operating machinery, and adherence to DVLA guidance for seizures; patient confirms they are not currently driving.  \n- Provide seizure diary template and signpost to Epilepsy Specialist Nurse for education and adherence support.  \n- Review in clinic in 12 weeks or sooner if events increase in frequency, duration, or severity; patient to contact the service via the nurse advice line for interim concerns. \n\nThis patient reports that prior to June they had no events for several months. They note poor sleep and high work-related stress around early June, which may have contributed to events on 06-03 and 06-13. The September event on 09-23 occurred after intercurrent viral illness; no alcohol use was reported. There have been no injuries, tongue-biting, or prolonged post-ictal confusion. No current anticoagulation or interacting medicines. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists seizure events on specific dates: 06-03, 06-13, and 09-23, stating these are recorded in the patient’s diary. That totals 3 events. These occur within a three-month span from June to September (June, July, August, September; the listed dates are two in June and one in September, which is roughly a 3-month period from early June to late September). The instruction is to infer current seizure frequency and normalize to allowed formats. Since the events are 3 over approximately 3 months, the frequency is 1 per month on average. However, the allowed format prefers explicit counts per unit; given exact count over three months, we can express as 3 per 3 month. The letter also notes prior seizure-free months but not 6 months and thus does not qualify as seizure free. No other higher-frequency description is provided, and cluster details are not quantifiable. Therefore, the final label is 3 per 3 month.",
+      "seizure_frequency_number": [
+        "3 per 3 month",
+        "Seizure events on 06-03, 06-13, 09-23 as recorded in the patient’s diary"
+      ],
+      "reference": [
+        "3 per 3 month",
+        "Seizure events on 06-03, 06-13, 09-23"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

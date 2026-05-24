@@ -1,0 +1,59 @@
+{
+  "id": "gan_16983",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 September 2014 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: K872319 NHS No. 9076543321  \n12 Hawthorn Close, London, SE15 3LP\n\nThank you for your referral. I reviewed him in our neurology clinic with his sister participating via scheduled speakerphone at his request, as he reports hearing difficulty and finds this format most comfortable for communication and clarification. He attended promptly and engaged well with questions when supported by his family member on the call.\n\nFrom the history provided by the patient and his sister, He continues to suffer focal aware seizures two to three times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory. There are occasional prompts from his sister to sit and rest when an event is sensed, and he typically resumes normal activity shortly afterwards without a prolonged post-event phase. He denies injuries, tongue biting, or incontinence, and there have been no emergency presentations this year. Sleep is generally adequate, and alcohol intake is minimal. He reports that missed meals and prolonged screen time in the evening may precede events.\n\nHe is currently taking Brivaracetam 100 mg twice daily without reported adverse effects. He prefers stability for now and declined any immediate medication adjustments, wishing instead to maintain a consistent routine and continue family-assisted monitoring. We discussed options for future review should the pattern change, and he agreed to keep a brief diary of event times and potential triggers, which he and his sister can complete together during speakerphone check-ins.\n\nOn examination today, he was alert and oriented, with normal speech content and no focal neurological deficits. Cardiovascular and general observations were unremarkable. There were no safeguarding concerns. He is not driving and confirms awareness of DVLA guidance as previously documented.\n\nPlan: \n- Continue current antiseizure regimen as tolerated. \n- Family-supported event diary to be maintained; we will review frequency and any functional impact at follow-up. \n- Arrange routine follow-up in six months, with provision for earlier telephone review via scheduled speakerphone if the pattern worsens or if there are new features such as loss of awareness with injuries. \n\nThank you for your ongoing care. Please let me know if there are specific questions you would like us to address at the next review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 793,
+      "end": 864,
+      "text": "He continues to suffer focal aware seizures two to three times per week",
+      "attributes": {
+        "Label": "2 to 3 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 793,
+      "end": 1061,
+      "text": "He continues to suffer focal aware seizures two to three times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory",
+      "attributes": {
+        "Label": "2 to 3 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16983,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 September 2014 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: K872319 NHS No. 9076543321  \n12 Hawthorn Close, London, SE15 3LP\n\nThank you for your referral. I reviewed him in our neurology clinic with his sister participating via scheduled speakerphone at his request, as he reports hearing difficulty and finds this format most comfortable for communication and clarification. He attended promptly and engaged well with questions when supported by his family member on the call.\n\nFrom the history provided by the patient and his sister, He continues to suffer focal aware seizures two to three times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory. There are occasional prompts from his sister to sit and rest when an event is sensed, and he typically resumes normal activity shortly afterwards without a prolonged post-event phase. He denies injuries, tongue biting, or incontinence, and there have been no emergency presentations this year. Sleep is generally adequate, and alcohol intake is minimal. He reports that missed meals and prolonged screen time in the evening may precede events.\n\nHe is currently taking Brivaracetam 100 mg twice daily without reported adverse effects. He prefers stability for now and declined any immediate medication adjustments, wishing instead to maintain a consistent routine and continue family-assisted monitoring. We discussed options for future review should the pattern change, and he agreed to keep a brief diary of event times and potential triggers, which he and his sister can complete together during speakerphone check-ins.\n\nOn examination today, he was alert and oriented, with normal speech content and no focal neurological deficits. Cardiovascular and general observations were unremarkable. There were no safeguarding concerns. He is not driving and confirms awareness of DVLA guidance as previously documented.\n\nPlan: \n- Continue current antiseizure regimen as tolerated. \n- Family-supported event diary to be maintained; we will review frequency and any functional impact at follow-up. \n- Arrange routine follow-up in six months, with provision for earlier telephone review via scheduled speakerphone if the pattern worsens or if there are new features such as loss of awareness with injuries. \n\nThank you for your ongoing care. Please let me know if there are specific questions you would like us to address at the next review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He continues to suffer focal aware seizures two to three times per week.\" This provides a clear numeric range for current seizure frequency. No other conflicting frequencies are mentioned. Therefore, normalize to the allowed format as a range per week.",
+      "seizure_frequency_number": [
+        "2 to 3 per week",
+        "He continues to suffer focal aware seizures two to three times per week"
+      ],
+      "reference": [
+        "2 to 3 per week",
+        "He continues to suffer focal aware seizures two to three times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_15174",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 11 May 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nMarcus Hill, DOB: 12-03-1986, Hospital No: M948210 NHS No. 5839201746  \n14 Brookside Close, London, W11 2AB \n\nDiagnosis: \nFocal epilepsy with retained awareness auras and occasional brief myoclonic jerks reported. \n\nMedication: \nLevetiracetam 1000 mg twice daily; Lacosamide 100 mg twice daily. No adverse effects reported beyond intermittent fatigue. \n\nHistory since last review: \nHe reports overall stability in his focal epilepsy. Employer occupational health provides periodic summaries; these have been reviewed as collateral information and corroborate his self-reported event diary and attendance records. He has had no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time. These are described as momentary shoulder twitches without loss of awareness, more noticeable with sleep deprivation and after late shifts. Occupational health notes indicate several short episodes during a particularly demanding project period, but no time off work and no safety incidents. There have been occasional focal auras (rising epigastric sensation lasting 10–20 seconds) roughly every few months, which he manages by pausing tasks and hydrating. \n\nExamination: \nNeurological examination today is unremarkable. No focal deficit. \n\nPlan: \n- Continue current doses of levetiracetam and lacosamide. \n- Reinforce sleep hygiene and regular meal pattern; he finds this reduces the brief jerks. \n- Occupational health summaries to continue quarterly as collateral documentation. \n- Safety: he is not driving and understands DVLA regulations; to notify us if any generalised events occur. \n- We will consider dose optimisation if the myoclonic jerks become functionally impairing or more frequent. \n\nFollow-up: \nReview in six months, sooner if there is any escalation in event frequency or a generalised seizure. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 797,
+      "end": 919,
+      "text": "He has had no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time.",
+      "attributes": {
+        "Label": "multiple per 15 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 797,
+      "end": 918,
+      "text": "He has had no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time",
+      "attributes": {
+        "Label": "multiple per 15 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15174,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 11 May 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nMarcus Hill, DOB: 12-03-1986, Hospital No: M948210 NHS No. 5839201746  \n14 Brookside Close, London, W11 2AB \n\nDiagnosis: \nFocal epilepsy with retained awareness auras and occasional brief myoclonic jerks reported. \n\nMedication: \nLevetiracetam 1000 mg twice daily; Lacosamide 100 mg twice daily. No adverse effects reported beyond intermittent fatigue. \n\nHistory since last review: \nHe reports overall stability in his focal epilepsy. Employer occupational health provides periodic summaries; these have been reviewed as collateral information and corroborate his self-reported event diary and attendance records. He has had no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time. These are described as momentary shoulder twitches without loss of awareness, more noticeable with sleep deprivation and after late shifts. Occupational health notes indicate several short episodes during a particularly demanding project period, but no time off work and no safety incidents. There have been occasional focal auras (rising epigastric sensation lasting 10–20 seconds) roughly every few months, which he manages by pausing tasks and hydrating. \n\nExamination: \nNeurological examination today is unremarkable. No focal deficit. \n\nPlan: \n- Continue current doses of levetiracetam and lacosamide. \n- Reinforce sleep hygiene and regular meal pattern; he finds this reduces the brief jerks. \n- Occupational health summaries to continue quarterly as collateral documentation. \n- Safety: he is not driving and understands DVLA regulations; to notify us if any generalised events occur. \n- We will consider dose optimisation if the myoclonic jerks become functionally impairing or more frequent. \n\nFollow-up: \nReview in six months, sooner if there is any escalation in event frequency or a generalised seizure. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify clinic date: 11 May 2025. 2) Extract seizure activity: The letter states ongoing brief myoclonic jerks \"from time to time\" and occasional focal auras \"roughly every few months.\" 3) Determine observation window tied to ongoing events: It specifies \"no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time,\" implying the jerks have continued over that period up to the clinic date. 4) Calculate the interval from 2-2024 to 11 May 2025: Feb 2024 to Feb 2025 = 12 months; plus Mar, Apr, May 2025 ≈ 3 more months, totaling ≈ 15 months. 5) Choose the highest-frequency event: myoclonic jerks (more frequent than auras), but exact count per shorter unit is not given. 6) Since multiple jerks occurred over the 15-month period but the exact count is unspecified, normalise as \"multiple per 15 month.\"",
+      "seizure_frequency_number": [
+        "multiple per 15 month",
+        "He has had no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time."
+      ],
+      "reference": [
+        "multiple per 15 month",
+        "He has had no generalised seizures since 2 - 2024, though continues to experience brief myoclonic jerks from time to time"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

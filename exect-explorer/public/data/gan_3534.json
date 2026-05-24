@@ -1,0 +1,65 @@
+{
+  "id": "gan_3534",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nMaple Gate Health Centre\n12 Brook Street, London W1D 3QF\n\nDear Dr Patel,\n\nAisha Khan, DOB: 04-11-1992, Hospital No: H847520 NHS No. 9054317762\nFlat 3, 29 Crescent Court, London, NW1 8AL\n\nMedication:\n\nLevetiracetam 1000 mg twice daily. Patient reports good tolerability with occasional fatigue. Uses buccal midazolam 10 mg as rescue, not required in the past seven months.\n\nI reviewed the multiple recent ED triage records and nursing documentation. These relate to brief attendances earlier this year for possible auras and one episode of anxiety with palpitations; no generalised convulsive activity was documented, observations were stable, and she was discharged after reassurance and advice. Since her last clinic review and after consolidating her dosing routine with a pill organiser, she describes her seizure control as Better over the past seven months. She has not required rescue medication in that period and there have been no injuries or admissions. She continues to notice occasional sleep disruption linked to shift work; she is trialling a fixed bedtime schedule and avoiding missed doses, which she feels has helped.\n\nNeurological examination in clinic today was unremarkable. There are no new focal symptoms, and she denies adverse neuropsychiatric effects beyond mild fatigue. She keeps a seizure diary and brings ED leaflets from prior visits; the timelines align with improved control since March. We discussed common triggers, the importance of adherence, and safety advice including driving regulations and first‑aid guidance; she confirms she is not currently driving and will update the DVLA only in accordance with legal criteria if appropriate in future.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily unchanged.\n- Maintain seizure diary and sleep hygiene measures; avoid missed doses.\n- Rescue buccal midazolam to remain available; no changes required.\n- If breakthrough events recur, we will consider serum levels and alternative add‑on therapy; she will contact us sooner via the epilepsy nurse line if this occurs.\n- Routine follow‑up in six months, sooner if problems.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 874,
+      "end": 944,
+      "text": "she describes her seizure control as Better over the past seven months",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 911,
+      "end": 944,
+      "text": "Better over the past seven months",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3534,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nMaple Gate Health Centre\n12 Brook Street, London W1D 3QF\n\nDear Dr Patel,\n\nAisha Khan, DOB: 04-11-1992, Hospital No: H847520 NHS No. 9054317762\nFlat 3, 29 Crescent Court, London, NW1 8AL\n\nMedication:\n\nLevetiracetam 1000 mg twice daily. Patient reports good tolerability with occasional fatigue. Uses buccal midazolam 10 mg as rescue, not required in the past seven months.\n\nI reviewed the multiple recent ED triage records and nursing documentation. These relate to brief attendances earlier this year for possible auras and one episode of anxiety with palpitations; no generalised convulsive activity was documented, observations were stable, and she was discharged after reassurance and advice. Since her last clinic review and after consolidating her dosing routine with a pill organiser, she describes her seizure control as Better over the past seven months. She has not required rescue medication in that period and there have been no injuries or admissions. She continues to notice occasional sleep disruption linked to shift work; she is trialling a fixed bedtime schedule and avoiding missed doses, which she feels has helped.\n\nNeurological examination in clinic today was unremarkable. There are no new focal symptoms, and she denies adverse neuropsychiatric effects beyond mild fatigue. She keeps a seizure diary and brings ED leaflets from prior visits; the timelines align with improved control since March. We discussed common triggers, the importance of adherence, and safety advice including driving regulations and first‑aid guidance; she confirms she is not currently driving and will update the DVLA only in accordance with legal criteria if appropriate in future.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily unchanged.\n- Maintain seizure diary and sleep hygiene measures; avoid missed doses.\n- Rescue buccal midazolam to remain available; no changes required.\n- If breakthrough events recur, we will consider serum levels and alternative add‑on therapy; she will contact us sooner via the epilepsy nurse line if this occurs.\n- Routine follow‑up in six months, sooner if problems.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses seizure control and ED visits for possible auras but provides no explicit numeric seizure frequency. It notes improved control since March, no rescue medication use for seven months, and no injuries or admissions, but it never states that the patient has had zero seizures or quantifies events. Without a clear count or an explicit statement of seizure freedom for at least six months, the specific current frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "she describes her seizure control as Better over the past seven months"
+      ],
+      "reference": [
+        "unknown",
+        "Better over the past seven months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

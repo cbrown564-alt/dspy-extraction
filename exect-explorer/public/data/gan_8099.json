@@ -1,0 +1,59 @@
+{
+  "id": "gan_8099",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 03 December 2022\n\nDr Singh\nElm Park Medical Practice\n\n12 Elm Park Road\nBromley\nKent BR2 0JT\nDear Dr Singh\nSophie Turner, DOB: 14-03-1991, Hospital No: H739521 NHS No. 8045129673\nFlat 12, 48 Northbridge Lane, Bromley, BR1 3KP \n\nDiagnoses/summary: Generalised epilepsy, currently well-controlled on long-term antiseizure therapy; prior bone-health monitoring recorded elsewhere.\n\nMRI/EEG: Historical EEG with generalised spike–wave discharges reported; no focal features noted. No structural lesion reported on prior imaging.\n\nPrevious medication: Sodium valproate (discontinued due to weight gain and menstrual irregularity); clonazepam PRN in the distant past.\n\nCurrent medication: Lamotrigine 200 mg twice daily (monotherapy); vitamin D and calcium supplements as per bone-health monitoring plan recorded elsewhere.\n\nAllergies: No known drug allergies.\n\nIntercurrent history: I reviewed Sophie Turner in clinic today. She attended alone. She reports stable mood, good sleep hygiene, and no recent intercurrent illness. Importantly, she states she has had no seizures for the past eighteen months, with no auras, absences, myoclonic jerks, or generalised tonic–clonic episodes reported. She has maintained regular adherence to medication and continues routine physical activity. There are no red-flag adverse effects volunteered.\n\nSocial/functional: She is working part-time and has resumed driving following DVLA guidance; she is aware to inform us immediately if events recur.\n\nPlan:\n- Continue lamotrigine 200 mg twice daily.\n- Bone-health surveillance is being conducted via primary care/osteoporosis clinic; records and results are noted as stored elsewhere. No action needed from our clinic today.\n- Seizure diary to be maintained; safety advice around swimming, heights, and machinery reiterated.\n- Annual review in neurology clinic, or sooner if any breakthrough events, medication side-effects, or pregnancy planning.\n\nThank you for your continued care of Sophie Turner.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1075,
+      "end": 1138,
+      "text": "she states she has had no seizures for the past eighteen months",
+      "attributes": {
+        "Label": "seizure free for 18 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1098,
+      "end": 1138,
+      "text": "No seizures for the past eighteen months",
+      "attributes": {
+        "Label": "seizure free for 18 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8099,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 03 December 2022\n\nDr Singh\nElm Park Medical Practice\n\n12 Elm Park Road\nBromley\nKent BR2 0JT\nDear Dr Singh\nSophie Turner, DOB: 14-03-1991, Hospital No: H739521 NHS No. 8045129673\nFlat 12, 48 Northbridge Lane, Bromley, BR1 3KP \n\nDiagnoses/summary: Generalised epilepsy, currently well-controlled on long-term antiseizure therapy; prior bone-health monitoring recorded elsewhere.\n\nMRI/EEG: Historical EEG with generalised spike–wave discharges reported; no focal features noted. No structural lesion reported on prior imaging.\n\nPrevious medication: Sodium valproate (discontinued due to weight gain and menstrual irregularity); clonazepam PRN in the distant past.\n\nCurrent medication: Lamotrigine 200 mg twice daily (monotherapy); vitamin D and calcium supplements as per bone-health monitoring plan recorded elsewhere.\n\nAllergies: No known drug allergies.\n\nIntercurrent history: I reviewed Sophie Turner in clinic today. She attended alone. She reports stable mood, good sleep hygiene, and no recent intercurrent illness. Importantly, she states she has had no seizures for the past eighteen months, with no auras, absences, myoclonic jerks, or generalised tonic–clonic episodes reported. She has maintained regular adherence to medication and continues routine physical activity. There are no red-flag adverse effects volunteered.\n\nSocial/functional: She is working part-time and has resumed driving following DVLA guidance; she is aware to inform us immediately if events recur.\n\nPlan:\n- Continue lamotrigine 200 mg twice daily.\n- Bone-health surveillance is being conducted via primary care/osteoporosis clinic; records and results are noted as stored elsewhere. No action needed from our clinic today.\n- Seizure diary to be maintained; safety advice around swimming, heights, and machinery reiterated.\n- Annual review in neurology clinic, or sooner if any breakthrough events, medication side-effects, or pregnancy planning.\n\nThank you for your continued care of Sophie Turner.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no seizures for the past eighteen months. This meets the criterion for seizure free (no seizures for at least 6 months). Therefore, the normalized label should be 'seizure free for 18 month'. No other seizure frequencies are provided that would override this.",
+      "seizure_frequency_number": [
+        "seizure free for 18 month",
+        "she states she has had no seizures for the past eighteen months"
+      ],
+      "reference": [
+        "seizure free for 18 month",
+        "No seizures for the past eighteen months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

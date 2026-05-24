@@ -1,0 +1,59 @@
+{
+  "id": "gan_2268",
+  "text": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Aisha Rahman  \nNorthgate Neurology Centre  \nNeurology Outpatients, 12 Northgate Way, Manchester M3 4PL  \n\nDear Dr Aisha Rahman,  \n\nEmily Carter, DOB: 23-02-1991, Hospital No: M429771 NHS No. 9073314826  \nFlat 3, 18 Brook Street, Manchester, M1 5DT \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification. Routine EEG and MRI previously non-diagnostic. \n\nCurrent Medication: \n\nLevetiracetam 1,000 mg twice daily  \nBuccolam (midazolam) oromucosal solution as rescue per plan \n\nPlan: \n\n- Continue current antiepileptic medication at present dose  \n- Maintain seizure diary and trigger log; continue reduced alcohol exposure as reported  \n- Safety counselling reinforced; rescue plan unchanged  \n- Follow up in 6 months, sooner if increase in frequency or prolonged clusters \n\nI reviewed Emily Carter in clinic today accompanied by a family member. They report that overall seizure control is improving. Since the last review, there have been about 5 to 6 seizures in the last three months, with fewer prolonged clusters and quicker recovery times. They have been reducing alcohol and are trying to avoid recognised triggers; this was reported in a neutral manner without specific difficulties.\n\nFor context, the seizure frequency before this improvement was as follows: overall seizure burden is stable. Most seizures continue to present in clusters, generally every two days, though there have been episodes of 3 seizures in one day. Buccolam was used once each in March, May, and July. Over the most recent quarter, Buccolam has not been required and there have been no emergency department presentations.\n\nOn examination today, there were no focal neurological deficits. Adherence to medication is reported as good with no significant adverse effects. We discussed ongoing self-management, including sleep regularity, hydration, and avoidance of triggers. No change to the antiepileptic regimen is proposed today given the gradual improvement noted.\n\nI will review Emily Carter again in approximately six months, or earlier if there is any deterioration or concern. Please do not hesitate to contact me if you require further information.\n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 968,
+      "end": 1053,
+      "text": "Since the last review, there have been about 5 to 6 seizures in the last three months",
+      "attributes": {
+        "Label": "5 to 6 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1007,
+      "end": 1053,
+      "text": "about 5 to 6 seizures in the last three months",
+      "attributes": {
+        "Label": "5 to 6 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2268,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Aisha Rahman  \nNorthgate Neurology Centre  \nNeurology Outpatients, 12 Northgate Way, Manchester M3 4PL  \n\nDear Dr Aisha Rahman,  \n\nEmily Carter, DOB: 23-02-1991, Hospital No: M429771 NHS No. 9073314826  \nFlat 3, 18 Brook Street, Manchester, M1 5DT \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification. Routine EEG and MRI previously non-diagnostic. \n\nCurrent Medication: \n\nLevetiracetam 1,000 mg twice daily  \nBuccolam (midazolam) oromucosal solution as rescue per plan \n\nPlan: \n\n- Continue current antiepileptic medication at present dose  \n- Maintain seizure diary and trigger log; continue reduced alcohol exposure as reported  \n- Safety counselling reinforced; rescue plan unchanged  \n- Follow up in 6 months, sooner if increase in frequency or prolonged clusters \n\nI reviewed Emily Carter in clinic today accompanied by a family member. They report that overall seizure control is improving. Since the last review, there have been about 5 to 6 seizures in the last three months, with fewer prolonged clusters and quicker recovery times. They have been reducing alcohol and are trying to avoid recognised triggers; this was reported in a neutral manner without specific difficulties.\n\nFor context, the seizure frequency before this improvement was as follows: overall seizure burden is stable. Most seizures continue to present in clusters, generally every two days, though there have been episodes of 3 seizures in one day. Buccolam was used once each in March, May, and July. Over the most recent quarter, Buccolam has not been required and there have been no emergency department presentations.\n\nOn examination today, there were no focal neurological deficits. Adherence to medication is reported as good with no significant adverse effects. We discussed ongoing self-management, including sleep regularity, hydration, and avoidance of triggers. No change to the antiepileptic regimen is proposed today given the gradual improvement noted.\n\nI will review Emily Carter again in approximately six months, or earlier if there is any deterioration or concern. Please do not hesitate to contact me if you require further information.\n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify current frequency statements. The letter states: \"Since the last review, there have been about 5 to 6 seizures in the last three months...\" This is an explicit numeric range over a defined period and pertains to the current period. Other descriptions refer to prior context (e.g., clusters every two days previously). Following the rule to prioritize explicit numeric expressions for the current status, we select 5 to 6 per 3 months. Convert to allowed format: '<value1> per <value2> <month>'. Therefore: '5 to 6 per 3 month'.",
+      "seizure_frequency_number": [
+        "5 to 6 per 3 month",
+        "Since the last review, there have been about 5 to 6 seizures in the last three months"
+      ],
+      "reference": [
+        "5 to 6 per 3 month",
+        "about 5 to 6 seizures in the last three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

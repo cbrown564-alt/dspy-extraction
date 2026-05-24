@@ -1,0 +1,54 @@
+{
+  "id": "gan_8564",
+  "text": "Riverside Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Ahmed  \nRiverside Medical Centre  \n14 Brookside Road, Manchester M3 5QA  \n\nDear Dr Ahmed,\n\nLiam O’Connor, DOB: 12-05-1987, Hospital No: M938417 NHS No. 8094523176  \n22 Fern Close, Manchester, M4 2LP\n\nDiagnosis: Generalised epilepsy.\n\nMedication:\n- Sodium valproate 500 mg twice daily.\n- Levetiracetam 750 mg twice daily.\n\nClinical summary:\nSince optimising the above regimen, there has been clear ongoing progress. The patient reports that day-to-day functioning has stabilised and, importantly, there have been effectively no spell-like events suggestive of seizures over the past six months. This represents a marked improvement on current medicines compared with earlier periods. For context, prior to this improvement, his first seizure occurred in November 2014 in Ireland, at night while asleep, with waking to rhythmic twitching of the right arm and a prominent sense of déjà vu. The second event was in June 2015 in Scotland, again during sleep, lasting about five minutes with a similar semiology.\n\nCurrent status and review:\n- No witnessed convulsions, no episodes of loss of awareness, and no nocturnal jerks reported by bed partner since the last visit.  \n- He notes steadier mood and better sleep quality after adhering to a regular bedtime routine and avoiding missed doses.  \n- No adverse effects from medication beyond mild transient morning nausea in the first fortnight after dose adjustment, now resolved.  \n\nLifestyle and counselling:\n- We discussed ongoing adherence, sleep hygiene, and avoidance of alcohol binges, which he is managing well.  \n- He does not drive and understands the DVLA guidance relating to epilepsy; he will inform us immediately should any events recur.  \n\nPlan:\n- Continue sodium valproate 500 mg twice daily and levetiracetam 750 mg twice daily without change.  \n- Routine bloods (FBC, LFTs, U&Es) at his GP surgery in three months as part of standard monitoring.  \n- We will review in six months, or sooner if there is any return of seizure-like activity.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 557,
+      "end": 654,
+      "text": "there have been effectively no spell-like events suggestive of seizures over the past six months.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8564,
+    "clinic_date": "Riverside Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Ahmed  \nRiverside Medical Centre  \n14 Brookside Road, Manchester M3 5QA  \n\nDear Dr Ahmed,\n\nLiam O’Connor, DOB: 12-05-1987, Hospital No: M938417 NHS No. 8094523176  \n22 Fern Close, Manchester, M4 2LP\n\nDiagnosis: Generalised epilepsy.\n\nMedication:\n- Sodium valproate 500 mg twice daily.\n- Levetiracetam 750 mg twice daily.\n\nClinical summary:\nSince optimising the above regimen, there has been clear ongoing progress. The patient reports that day-to-day functioning has stabilised and, importantly, there have been effectively no spell-like events suggestive of seizures over the past six months. This represents a marked improvement on current medicines compared with earlier periods. For context, prior to this improvement, his first seizure occurred in November 2014 in Ireland, at night while asleep, with waking to rhythmic twitching of the right arm and a prominent sense of déjà vu. The second event was in June 2015 in Scotland, again during sleep, lasting about five minutes with a similar semiology.\n\nCurrent status and review:\n- No witnessed convulsions, no episodes of loss of awareness, and no nocturnal jerks reported by bed partner since the last visit.  \n- He notes steadier mood and better sleep quality after adhering to a regular bedtime routine and avoiding missed doses.  \n- No adverse effects from medication beyond mild transient morning nausea in the first fortnight after dose adjustment, now resolved.  \n\nLifestyle and counselling:\n- We discussed ongoing adherence, sleep hygiene, and avoidance of alcohol binges, which he is managing well.  \n- He does not drive and understands the DVLA guidance relating to epilepsy; he will inform us immediately should any events recur.  \n\nPlan:\n- Continue sodium valproate 500 mg twice daily and levetiracetam 750 mg twice daily without change.  \n- Routine bloods (FBC, LFTs, U&Es) at his GP surgery in three months as part of standard monitoring.  \n- We will review in six months, or sooner if there is any return of seizure-like activity.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"there have been effectively no spell-like events suggestive of seizures over the past six months.\" Additionally, current status notes no witnessed convulsions or episodes of loss of awareness since the last visit. This indicates zero seizures for a continuous six-month period, satisfying the criterion for being seizure free for at least 6 months.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "there have been effectively no spell-like events suggestive of seizures over the past six months."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizure-like episodes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

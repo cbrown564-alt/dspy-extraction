@@ -1,0 +1,54 @@
+{
+  "id": "gan_8265",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Helen Carter  \nRiverside Medical Practice  \n14 Bridge Street, London SE1 3AB  \n\nDear Dr Helen Carter,  \n\nSarah Thompson, DOB: 22-07-1989, Hospital No: N782456 NHS No. 3048591027  \nFlat 3, 21 Willow Court, London, SE5 9QL \n\nSummary/ Diagnoses: Generalised epilepsy (primary generalised tonic–clonic and absence seizures)/migraine without aura/treated hypertension/vitamin D insufficiency/works part-time as a librarian/non-smoker/minimal alcohol use. \n\nMedication: Sodium valproate (Epilim) 500 mg twice daily.  \nPropranolol 20 mg twice daily.  \nCholecalciferol 800 IU once daily.  \nRamipril 5 mg once daily.  \n\nI reviewed Sarah in clinic today, accompanied by her partner. She reports good overall wellbeing and is back to her usual routine at work. She describes stable sleep and regular meals. She is cycling short distances and has not noticed any decline in stamina. Neurological examination today was normal with no focal deficits; gait steady and Romberg negative. \n\nSeizures: Sarah carries a seizure diary and electronic reminders. Since her last review six months ago, there have been no witnessed generalised tonic–clonic events and no absence episodes reported by her, her partner, or colleagues. She also wears a smartwatch with event tagging; this has not flagged any episodes. In short, she has remained without seizures over this interval. Prior to this, her last generalised tonic–clonic seizure was in January 2024 during a period of missed doses and intercurrent viral illness. She confirms full adherence to medication since March 2024. She has generalised epilepsy, and her previous EEG demonstrated generalised spike–wave discharges consistent with this diagnosis. \n\nHeadache: Migraines occur roughly once per month, responsive to hydration, rest, and simple analgesia; no red flags. \n\nLifestyle and safety: She avoids sleep deprivation and excessive alcohol. She does not currently drive and understands DVLA guidance; she will contact us before making any changes. \n\nPlan: \n- Continue sodium valproate 500 mg twice daily without change. \n- Routine safety bloods via GP in the next 2–3 weeks: FBC, LFTs, U&Es, and serum valproate level (trough). \n- Reinforce adherence and seizure diary maintenance; continue smartwatch tagging. \n- Provide letter for employer confirming stable seizure control over the current follow-up period. \n- Review in 6 months, sooner if any events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1154,
+      "end": 1343,
+      "text": "Since her last review six months ago, there have been no witnessed generalised tonic–clonic events and no absence episodes... In short, she has remained without seizures over this interval.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8265,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Helen Carter  \nRiverside Medical Practice  \n14 Bridge Street, London SE1 3AB  \n\nDear Dr Helen Carter,  \n\nSarah Thompson, DOB: 22-07-1989, Hospital No: N782456 NHS No. 3048591027  \nFlat 3, 21 Willow Court, London, SE5 9QL \n\nSummary/ Diagnoses: Generalised epilepsy (primary generalised tonic–clonic and absence seizures)/migraine without aura/treated hypertension/vitamin D insufficiency/works part-time as a librarian/non-smoker/minimal alcohol use. \n\nMedication: Sodium valproate (Epilim) 500 mg twice daily.  \nPropranolol 20 mg twice daily.  \nCholecalciferol 800 IU once daily.  \nRamipril 5 mg once daily.  \n\nI reviewed Sarah in clinic today, accompanied by her partner. She reports good overall wellbeing and is back to her usual routine at work. She describes stable sleep and regular meals. She is cycling short distances and has not noticed any decline in stamina. Neurological examination today was normal with no focal deficits; gait steady and Romberg negative. \n\nSeizures: Sarah carries a seizure diary and electronic reminders. Since her last review six months ago, there have been no witnessed generalised tonic–clonic events and no absence episodes reported by her, her partner, or colleagues. She also wears a smartwatch with event tagging; this has not flagged any episodes. In short, she has remained without seizures over this interval. Prior to this, her last generalised tonic–clonic seizure was in January 2024 during a period of missed doses and intercurrent viral illness. She confirms full adherence to medication since March 2024. She has generalised epilepsy, and her previous EEG demonstrated generalised spike–wave discharges consistent with this diagnosis. \n\nHeadache: Migraines occur roughly once per month, responsive to hydration, rest, and simple analgesia; no red flags. \n\nLifestyle and safety: She avoids sleep deprivation and excessive alcohol. She does not currently drive and understands DVLA guidance; she will contact us before making any changes. \n\nPlan: \n- Continue sodium valproate 500 mg twice daily without change. \n- Routine safety bloods via GP in the next 2–3 weeks: FBC, LFTs, U&Es, and serum valproate level (trough). \n- Reinforce adherence and seizure diary maintenance; continue smartwatch tagging. \n- Provide letter for employer confirming stable seizure control over the current follow-up period. \n- Review in 6 months, sooner if any events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Since her last review six months ago, there have been no witnessed generalised tonic–clonic events and no absence episodes... In short, she has remained without seizures over this interval.\" This confirms zero seizures for the past six months. The rule for seizure-free status requires at least 6 months without seizures, which is met. We cannot extend beyond 6 months because only the last 6 months are confirmed seizure-free for all types.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "Since her last review six months ago, there have been no witnessed generalised tonic–clonic events and no absence episodes... In short, she has remained without seizures over this interval."
+      ],
+      "reference": [
+        "unknown",
+        "Seizure-free throughout monitoring period"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12950",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 24 March 2017 \n\nDr Emily Carter\nRiverside Medical Practice\n\n12 Wharf Street, London, SE1 3AB\nDear Dr Emily Carter\nMichael Turner, DOB: 08-02-1979, Hospital No: H392774 NHS No. 7482910365\nMooring 27, South Dock Marina, London, SE16 7SZ \n\nI reviewed the above patient in the Neurology Clinic today. The history is patient-reported. He lives on a houseboat/mobile home and notes that occasional power outages interfere with charging of his phone and seizure-alert device.\n\nHe has a diagnosis of combined generalised and focal epilepsy, with events described as focal seizures with impaired awareness (often starting with a metallic taste and right-hand posturing) and separate generalised tonic–clonic seizures sometimes occurring from sleep. Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date. He also reports brief focal events approximately once every 2–3 weeks, usually clustering after poor sleep or during periods when his device alarms cannot be charged due to power interruptions.\n\nCurrent treatment is lamotrigine 150 mg b.d. and levetiracetam 1 g b.d. He reports good adherence and no rash, dizziness, or visual disturbance. Mild insomnia is noted, which he associates with variable noise from the marina; he does not drink alcohol and consumes one coffee each morning. No recent head injuries. There is no family history of epilepsy to his knowledge.\n\nNeurological examination today was unremarkable. Weight stable. No cognitive complaints beyond occasional word-finding difficulty after nocturnal seizures.\n\nWe reviewed safety: he avoids heights and swimming alone, and uses a kettle with auto shut-off. He has a smartphone seizure diary; I advised continuing entries and photographing any tongue biting or injuries for documentation. He is aware of DVLA regulations and confirms he is not driving.\n\nPlan:\n- Continue lamotrigine 150 mg b.d. and levetiracetam 1 g b.d. given the improved generalised seizure control.\n- Arrange routine EEG to further characterise interictal abnormalities in the context of combined generalised and focal features, and repeat serum lamotrigine level pre-morning dose in 8 weeks.\n- Provide written advice on sleep hygiene and strategies for managing power outages (portable battery pack for phone and alarm device; patient to consider). This was framed as patient choice.\n- Follow-up in 4 months, sooner if seizure frequency increases or adverse effects emerge.\n\nI will update you after the EEG and blood results. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 873,
+      "end": 946,
+      "text": "just seven generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 782,
+      "end": 946,
+      "text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12950,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 24 March 2017 \n\nDr Emily Carter\nRiverside Medical Practice\n\n12 Wharf Street, London, SE1 3AB\nDear Dr Emily Carter\nMichael Turner, DOB: 08-02-1979, Hospital No: H392774 NHS No. 7482910365\nMooring 27, South Dock Marina, London, SE16 7SZ \n\nI reviewed the above patient in the Neurology Clinic today. The history is patient-reported. He lives on a houseboat/mobile home and notes that occasional power outages interfere with charging of his phone and seizure-alert device.\n\nHe has a diagnosis of combined generalised and focal epilepsy, with events described as focal seizures with impaired awareness (often starting with a metallic taste and right-hand posturing) and separate generalised tonic–clonic seizures sometimes occurring from sleep. Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date. He also reports brief focal events approximately once every 2–3 weeks, usually clustering after poor sleep or during periods when his device alarms cannot be charged due to power interruptions.\n\nCurrent treatment is lamotrigine 150 mg b.d. and levetiracetam 1 g b.d. He reports good adherence and no rash, dizziness, or visual disturbance. Mild insomnia is noted, which he associates with variable noise from the marina; he does not drink alcohol and consumes one coffee each morning. No recent head injuries. There is no family history of epilepsy to his knowledge.\n\nNeurological examination today was unremarkable. Weight stable. No cognitive complaints beyond occasional word-finding difficulty after nocturnal seizures.\n\nWe reviewed safety: he avoids heights and swimming alone, and uses a kettle with auto shut-off. He has a smartphone seizure diary; I advised continuing entries and photographing any tongue biting or injuries for documentation. He is aware of DVLA regulations and confirms he is not driving.\n\nPlan:\n- Continue lamotrigine 150 mg b.d. and levetiracetam 1 g b.d. given the improved generalised seizure control.\n- Arrange routine EEG to further characterise interictal abnormalities in the context of combined generalised and focal features, and repeat serum lamotrigine level pre-morning dose in 8 weeks.\n- Provide written advice on sleep hygiene and strategies for managing power outages (portable battery pack for phone and alarm device; patient to consider). This was framed as patient choice.\n- Follow-up in 4 months, sooner if seizure frequency increases or adverse effects emerge.\n\nI will update you after the EEG and blood results. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit numeric seizure frequencies in the letter: (1) \"seven generalised tonic-clonic seizures documented this year to date\" and (2) \"brief focal events approximately once every 2–3 weeks.\" The clinic date is 24 March 2017, so \"this year to date\" spans roughly 3 months (Jan–Mar). Convert to comparable rates: 7 per ~3 months (~2.3/month) versus 1 per 2 to 3 weeks (~1.5 to ~2.2/month). Per the rule to select the highest frequency, 7 per ~3 months is higher. Therefore, the final label is 7 per 3 month.",
+      "seizure_frequency_number": [
+        "7 per 3 month",
+        "just seven generalised tonic-clonic seizures documented this year to date"
+      ],
+      "reference": [
+        "7 per 3 month",
+        "Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

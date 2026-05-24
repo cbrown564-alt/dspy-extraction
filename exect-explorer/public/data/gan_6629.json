@@ -1,0 +1,65 @@
+{
+  "id": "gan_6629",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 07 September 2018\n\nDr Jonathan Hale\nMeadowbrook Health Centre\n\n17 Brook Lane, Southwark, London SE1 3AB\nDear Dr Jonathan Hale\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe onset. Historic documentation of antiseizure medication side effects including rash and gastrointestinal upset. Prior EEGs consistent with focal onset; previous MRI without clear epileptogenic lesion.\n\nCurrent concerns: Wendy Brown attended today alone. She reports ongoing focal aware events evolving to impaired awareness, with a characteristic pattern of a brief aura (rising epigastric sensation and déjà vu) followed by loss of awareness. Seizure followed by postictal confusion lasting ~four minute(s). She notes clusters during periods of sleep deprivation. No recent injuries, no tongue biting, and no incontinence reported.\n\nMedication history: Extensive prior exposure with limited efficacy and/or adverse effects. Historical side effects include rash and GI upset documented with earlier trials (patient-reported and in prior notes). She is currently taking lamotrigine 100 mg twice daily and levetiracetam 750 mg twice daily. She feels levetiracetam may be contributing to irritability but wishes to continue for now pending review.\n\nInvestigations: MRI brain previously reported as showing no definite epileptogenic lesion. Routine EEGs have shown intermittent left temporal sharp activity. No recent bloods indicating metabolic contributors. Cardiac history unremarkable; no syncope.\n\nLifestyle and safety: She has stopped driving in line with DVLA guidance. She uses a smartphone seizure diary and has informed her workplace; reasonable adjustments are in place. She avoids sleep deprivation and alcohol excess. No pregnancies planned; contraception discussed.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily for now.\n- Maintain levetiracetam 750 mg twice daily; will reassess irritability at next review with option to adjust dose or consider alternative if mood issues persist.\n- Request repeat EEG including sleep-deprived protocol to re-characterise focal onset.\n- Arrange routine bloods (FBC, U&E, LFTs, vitamin D) and lamotrigine level for reference only.\n- Discussed non-pharmacological options including vagus nerve stimulation and referral for surgical work-up should seizures remain refractory; patient wishes to consider after results.\n- Safety reinforced: supervision around heights/water, nocturnal precautions, and rescue plan if clusters emerge.\n- Follow-up in 4 months, earlier if increased frequency, injuries, or mood deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 603,
+      "end": 731,
+      "text": "She reports ongoing focal aware events evolving to impaired awareness... She notes clusters during periods of sleep deprivation.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 793,
+      "end": 856,
+      "text": "Seizure followed by postictal confusion lasting ~four minute(s)",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6629,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 07 September 2018\n\nDr Jonathan Hale\nMeadowbrook Health Centre\n\n17 Brook Lane, Southwark, London SE1 3AB\nDear Dr Jonathan Hale\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe onset. Historic documentation of antiseizure medication side effects including rash and gastrointestinal upset. Prior EEGs consistent with focal onset; previous MRI without clear epileptogenic lesion.\n\nCurrent concerns: Wendy Brown attended today alone. She reports ongoing focal aware events evolving to impaired awareness, with a characteristic pattern of a brief aura (rising epigastric sensation and déjà vu) followed by loss of awareness. Seizure followed by postictal confusion lasting ~four minute(s). She notes clusters during periods of sleep deprivation. No recent injuries, no tongue biting, and no incontinence reported.\n\nMedication history: Extensive prior exposure with limited efficacy and/or adverse effects. Historical side effects include rash and GI upset documented with earlier trials (patient-reported and in prior notes). She is currently taking lamotrigine 100 mg twice daily and levetiracetam 750 mg twice daily. She feels levetiracetam may be contributing to irritability but wishes to continue for now pending review.\n\nInvestigations: MRI brain previously reported as showing no definite epileptogenic lesion. Routine EEGs have shown intermittent left temporal sharp activity. No recent bloods indicating metabolic contributors. Cardiac history unremarkable; no syncope.\n\nLifestyle and safety: She has stopped driving in line with DVLA guidance. She uses a smartphone seizure diary and has informed her workplace; reasonable adjustments are in place. She avoids sleep deprivation and alcohol excess. No pregnancies planned; contraception discussed.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily for now.\n- Maintain levetiracetam 750 mg twice daily; will reassess irritability at next review with option to adjust dose or consider alternative if mood issues persist.\n- Request repeat EEG including sleep-deprived protocol to re-characterise focal onset.\n- Arrange routine bloods (FBC, U&E, LFTs, vitamin D) and lamotrigine level for reference only.\n- Discussed non-pharmacological options including vagus nerve stimulation and referral for surgical work-up should seizures remain refractory; patient wishes to consider after results.\n- Safety reinforced: supervision around heights/water, nocturnal precautions, and rescue plan if clusters emerge.\n- Follow-up in 4 months, earlier if increased frequency, injuries, or mood deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states the patient continues to have seizures (“ongoing focal aware events evolving to impaired awareness” and “She notes clusters during periods of sleep deprivation”) but provides no explicit numeric frequency (no counts per day/week/month/year, no number of clusters, or per-cluster counts). There is insufficient information to quantify frequency. Therefore, per instruction, if seizures are mentioned but specific frequency cannot be determined, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "She reports ongoing focal aware events evolving to impaired awareness... She notes clusters during periods of sleep deprivation."
+      ],
+      "reference": [
+        "unknown",
+        "Seizure followed by postictal confusion lasting ~four minute(s)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

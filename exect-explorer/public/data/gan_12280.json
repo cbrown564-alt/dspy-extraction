@@ -1,0 +1,59 @@
+{
+  "id": "gan_12280",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 23 September 2022 \n\nDr Amit Shah\nRiverside Medical Centre\n\n22 Riverside Way, London, SE10 3AB\nDear Dr Amit Shah\nMs Emily Carter, DOB: 14-03-1990, Hospital No: H783920 NHS No. 7483920012\nFlat 4, 19 Willow Court, London, SE10 5PA \n\nI reviewed the above patient in the Neurology Clinic today. Since my last assessment six months ago, there has been a noticeable deterioration in day-to-day functioning linked to increasing fatigue and irregular routines at work. She is employed in a care setting with irregular breaks and frequent patient transfers; she reports cumulative fatigue over each shift with a perceived worsening of events by late afternoon. Her seizure control is variable, she continues to experience drop attack on four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years. However, the impact on her safety and recovery time has worsened in the context of the current work pattern.\n\nShe describes more frequent near-misses during transfers at work and has required assistance after several sudden collapses, though no major injuries have occurred. Morning clusters of myoclonus delay her start to the day and she often arrives at work already tired. Colleagues have observed brief pauses and confusion after events. She reports non-restorative sleep, increased daytime somnolence, and headache post-event, with cumulative tiredness across the week. There are no clear new precipitants beyond the irregular breaks, reduced hydration during shifts, and the physical demands of patient handling.\n\nShe is adherent to her current anti-seizure regimen and brings a pill diary and pharmacy records corroborating timely collection. She denies missed doses. She has not noticed consistent adverse effects apart from tiredness and occasional nausea. There is no new rash, no visual disturbance, and no new focal neurological symptoms. Alcohol intake is minimal and there is no recreational drug use. Menstrual cycles are regular and there is no pregnancy planned.\n\nOn examination today she was alert and oriented with normal speech and cranial nerve assessment. Motor and coordination were intact between events. Cardiovascular and respiratory examinations were unremarkable. No injuries were evident today.\n\nIn view of the occupational context and the reported deterioration in day-to-day safety, I have discussed maintaining a consistent break schedule, ensuring hydration, and limiting heavy patient transfers where feasible; she will raise this with her line manager and occupational health. I will arrange a repeat EEG and updated bloods (U&Es, LFTs, FBC, vitamin D) to exclude reversible contributors to fatigue. We also discussed safety planning including use of a falls alert at work and avoiding lone manual handling. I have asked her to continue her seizure diary with explicit notation of shift patterns, break times, and exertion level so we can better correlate events with workload.\n\nI will review her again in 8 weeks after investigations and occupational health input. She understands to contact us earlier if convulsive events cluster, injuries occur, or there is a step change in frequency or severity.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 726,
+      "end": 781,
+      "text": "she continues to experience drop attack on four per day",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 693,
+      "end": 923,
+      "text": "Her seizure control is variable, she continues to experience drop attack on four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12280,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 23 September 2022 \n\nDr Amit Shah\nRiverside Medical Centre\n\n22 Riverside Way, London, SE10 3AB\nDear Dr Amit Shah\nMs Emily Carter, DOB: 14-03-1990, Hospital No: H783920 NHS No. 7483920012\nFlat 4, 19 Willow Court, London, SE10 5PA \n\nI reviewed the above patient in the Neurology Clinic today. Since my last assessment six months ago, there has been a noticeable deterioration in day-to-day functioning linked to increasing fatigue and irregular routines at work. She is employed in a care setting with irregular breaks and frequent patient transfers; she reports cumulative fatigue over each shift with a perceived worsening of events by late afternoon. Her seizure control is variable, she continues to experience drop attack on four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years. However, the impact on her safety and recovery time has worsened in the context of the current work pattern.\n\nShe describes more frequent near-misses during transfers at work and has required assistance after several sudden collapses, though no major injuries have occurred. Morning clusters of myoclonus delay her start to the day and she often arrives at work already tired. Colleagues have observed brief pauses and confusion after events. She reports non-restorative sleep, increased daytime somnolence, and headache post-event, with cumulative tiredness across the week. There are no clear new precipitants beyond the irregular breaks, reduced hydration during shifts, and the physical demands of patient handling.\n\nShe is adherent to her current anti-seizure regimen and brings a pill diary and pharmacy records corroborating timely collection. She denies missed doses. She has not noticed consistent adverse effects apart from tiredness and occasional nausea. There is no new rash, no visual disturbance, and no new focal neurological symptoms. Alcohol intake is minimal and there is no recreational drug use. Menstrual cycles are regular and there is no pregnancy planned.\n\nOn examination today she was alert and oriented with normal speech and cranial nerve assessment. Motor and coordination were intact between events. Cardiovascular and respiratory examinations were unremarkable. No injuries were evident today.\n\nIn view of the occupational context and the reported deterioration in day-to-day safety, I have discussed maintaining a consistent break schedule, ensuring hydration, and limiting heavy patient transfers where feasible; she will raise this with her line manager and occupational health. I will arrange a repeat EEG and updated bloods (U&Es, LFTs, FBC, vitamin D) to exclude reversible contributors to fatigue. We also discussed safety planning including use of a falls alert at work and avoiding lone manual handling. I have asked her to continue her seizure diary with explicit notation of shift patterns, break times, and exertion level so we can better correlate events with workload.\n\nI will review her again in 8 weeks after investigations and occupational health input. She understands to contact us earlier if convulsive events cluster, injuries occur, or there is a step change in frequency or severity.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'she continues to experience drop attack on four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters.' The instruction is to select the highest frequency when multiple types are present. The drop attacks are quantified as four per day, which is the highest explicit frequency. Occasional GTCs and morning clusters are not numerically specified, so they do not change the highest frequency selection. Therefore, the normalized label is '4 per day'.",
+      "seizure_frequency_number": [
+        "4 per day",
+        "she continues to experience drop attack on four per day"
+      ],
+      "reference": [
+        "4 per day",
+        "Her seizure control is variable, she continues to experience drop attack on four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

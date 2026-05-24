@@ -1,0 +1,59 @@
+{
+  "id": "gan_9344",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophia Nguyen, DOB: 14-05-1993, Hospital No: N384205 NHS No. 9051736241  \n12 Brookfield Court, London, NW6 7QP \n\nMedication: \n\nLevetiracetam 1 g twice daily. Lamotrigine 150 mg twice daily. Rescue: Buccal midazolam 10 mg as needed for prolonged generalised events (not used in the past six months). \n\nDiagnosis and current status: \n\nShe has Combined Generalised and Focal Epilepsy Type, with a history consistent with both generalised and focal epilepsy. Generalised events have been infrequent this year (last tonic–clonic six months ago after a febrile illness). Focally, she reports several focal myoclonic in past day involving the right upper limb, each lasting seconds without loss of awareness, typically clustering in the late afternoon. There is no recent head injury, alcohol use, or sleep deprivation reported. \n\nContext and review: \n\nShe is currently not driving by self-report and understands to remain off driving until seizure control is sustained in accordance with DVLA guidance. She describes a new pattern over the past fortnight of brief right arm jerks sometimes preceded by a rising epigastric sensation and metallic taste. Family have noticed occasional morning eyelid myoclonus on waking. No tongue biting, incontinence, or post-ictal confusion with the focal jerks. Adherence is good; she uses phone reminders and has not missed doses. No adverse effects beyond mild morning nausea that settles with food. \n\nInvestigations: \n\n- Prior EEG (2023) showed generalised spike–wave discharges with additional left frontocentral sharp waves.  \n- MRI brain (2023) non-lesional.  \n- Routine bloods (Sept 2025) within normal limits including LFTs and U&Es. \n\nPlan: \n\n- Continue levetiracetam 1 g twice daily.  \n- Increase lamotrigine to 175 mg twice daily for one week, then 200 mg twice daily thereafter if tolerated, to target the recent focal myoclonic clusters.  \n- If the late-afternoon focal jerks persist beyond four weeks at the higher lamotrigine dose, consider adding clobazam 5 mg at 6 pm as an adjunct; we will review before initiating.  \n- Maintain seizure diary noting timing, potential triggers, and any auras.  \n- Safety advice reinforced regarding bathing, heights, and cooking with open flames.  \n- She will remain not driving and will contact us if any generalised convulsive seizures recur. \n\nFollow-up: \n\nWe will see her back in three months, sooner if the frequency of focal jerks increases or if any generalised events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 774,
+      "end": 809,
+      "text": "several focal myoclonic in past day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 774,
+      "end": 809,
+      "text": "several focal myoclonic in past day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9344,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophia Nguyen, DOB: 14-05-1993, Hospital No: N384205 NHS No. 9051736241  \n12 Brookfield Court, London, NW6 7QP \n\nMedication: \n\nLevetiracetam 1 g twice daily. Lamotrigine 150 mg twice daily. Rescue: Buccal midazolam 10 mg as needed for prolonged generalised events (not used in the past six months). \n\nDiagnosis and current status: \n\nShe has Combined Generalised and Focal Epilepsy Type, with a history consistent with both generalised and focal epilepsy. Generalised events have been infrequent this year (last tonic–clonic six months ago after a febrile illness). Focally, she reports several focal myoclonic in past day involving the right upper limb, each lasting seconds without loss of awareness, typically clustering in the late afternoon. There is no recent head injury, alcohol use, or sleep deprivation reported. \n\nContext and review: \n\nShe is currently not driving by self-report and understands to remain off driving until seizure control is sustained in accordance with DVLA guidance. She describes a new pattern over the past fortnight of brief right arm jerks sometimes preceded by a rising epigastric sensation and metallic taste. Family have noticed occasional morning eyelid myoclonus on waking. No tongue biting, incontinence, or post-ictal confusion with the focal jerks. Adherence is good; she uses phone reminders and has not missed doses. No adverse effects beyond mild morning nausea that settles with food. \n\nInvestigations: \n\n- Prior EEG (2023) showed generalised spike–wave discharges with additional left frontocentral sharp waves.  \n- MRI brain (2023) non-lesional.  \n- Routine bloods (Sept 2025) within normal limits including LFTs and U&Es. \n\nPlan: \n\n- Continue levetiracetam 1 g twice daily.  \n- Increase lamotrigine to 175 mg twice daily for one week, then 200 mg twice daily thereafter if tolerated, to target the recent focal myoclonic clusters.  \n- If the late-afternoon focal jerks persist beyond four weeks at the higher lamotrigine dose, consider adding clobazam 5 mg at 6 pm as an adjunct; we will review before initiating.  \n- Maintain seizure diary noting timing, potential triggers, and any auras.  \n- Safety advice reinforced regarding bathing, heights, and cooking with open flames.  \n- She will remain not driving and will contact us if any generalised convulsive seizures recur. \n\nFollow-up: \n\nWe will see her back in three months, sooner if the frequency of focal jerks increases or if any generalised events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify all seizure frequency mentions: (1) Generalised: last tonic–clonic six months ago (infrequent). (2) Focal: \"several focal myoclonic in past day\" with clustering in late afternoon; also \"occasional\" eyelid myoclonus. Applying the highest frequency rule, the focal myoclonic jerks occur multiple times within a day. Exact counts are not specified, so use 'multiple per day'. The patient is not seizure free because focal seizures are ongoing.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "several focal myoclonic in past day"
+      ],
+      "reference": [
+        "multiple per day",
+        "several focal myoclonic in past day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

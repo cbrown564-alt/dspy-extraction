@@ -1,0 +1,59 @@
+{
+  "id": "gan_17292",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 22 July 2014 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Rogers, DOB: 14-06-2001, Hospital No: H927451 NHS No. 7482103695  \n58 Willow Close, Sutton, SM2 7LP  \n\nDiagnoses: \n\nSeizure disorder, aetiology not established. \n\nThank you for reviewing Emily Rogers, who attended today with her mother. Since her last appointment three months ago, she describes a sustained improvement in day-to-day seizure control following VNS optimisation at the previous visit. Seizure activity is infrequent. She reports one absence seizure every 3 week and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function. She and her mother feel the pattern has been stable and clearly better compared to earlier in the year. \n\nShe reports good adherence to her current antiseizure medication regimen without adverse effects beyond mild, intermittent fatigue. Sleep hygiene has improved with a consistent bedtime, and she notes reduced stress since returning to part-time college studies. She carries her magnet and uses it rarely; when employed promptly for prodromal symptoms, she perceives faster recovery and shorter episodes. No injuries, emergency attendances, or use of rescue medication have occurred since the last review. \n\nVNS was interrogated in clinic today. Diagnostics were satisfactory with stable lead impedance at 2325 ohms, battery status not at elective replacement indicator, and normal mode functioning as expected. No parameter changes were made, as the current clinical response is favourable. Magnet usage logs show infrequent activation in keeping with her report. \n\nOn examination today, she was alert and oriented with normal speech and gait. Neurological examination was unremarkable. \n\nPlan: \n- Continue current antiseizure medication unchanged given clinical improvement and tolerability. \n- Maintain current VNS settings in the context of perceived benefit post-optimisation. \n- Safety advice reinforced, including consistent magnet carriage and seizure first-aid. \n- We will review in six months, or sooner if there is any deterioration, breakthrough tonic-clonic activity, or concerns regarding VNS function. \n\nPlease do not hesitate to contact me if further information is required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 642,
+      "end": 674,
+      "text": "one absence seizure every 3 week",
+      "attributes": {
+        "Label": "1 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 598,
+      "end": 860,
+      "text": "Seizure activity is infrequent. She reports one absence seizure every 3 week and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function",
+      "attributes": {
+        "Label": "1 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17292,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 22 July 2014 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Rogers, DOB: 14-06-2001, Hospital No: H927451 NHS No. 7482103695  \n58 Willow Close, Sutton, SM2 7LP  \n\nDiagnoses: \n\nSeizure disorder, aetiology not established. \n\nThank you for reviewing Emily Rogers, who attended today with her mother. Since her last appointment three months ago, she describes a sustained improvement in day-to-day seizure control following VNS optimisation at the previous visit. Seizure activity is infrequent. She reports one absence seizure every 3 week and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function. She and her mother feel the pattern has been stable and clearly better compared to earlier in the year. \n\nShe reports good adherence to her current antiseizure medication regimen without adverse effects beyond mild, intermittent fatigue. Sleep hygiene has improved with a consistent bedtime, and she notes reduced stress since returning to part-time college studies. She carries her magnet and uses it rarely; when employed promptly for prodromal symptoms, she perceives faster recovery and shorter episodes. No injuries, emergency attendances, or use of rescue medication have occurred since the last review. \n\nVNS was interrogated in clinic today. Diagnostics were satisfactory with stable lead impedance at 2325 ohms, battery status not at elective replacement indicator, and normal mode functioning as expected. No parameter changes were made, as the current clinical response is favourable. Magnet usage logs show infrequent activation in keeping with her report. \n\nOn examination today, she was alert and oriented with normal speech and gait. Neurological examination was unremarkable. \n\nPlan: \n- Continue current antiseizure medication unchanged given clinical improvement and tolerability. \n- Maintain current VNS settings in the context of perceived benefit post-optimisation. \n- Safety advice reinforced, including consistent magnet carriage and seizure first-aid. \n- We will review in six months, or sooner if there is any deterioration, breakthrough tonic-clonic activity, or concerns regarding VNS function. \n\nPlease do not hesitate to contact me if further information is required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states current seizure occurrences: \"one absence seizure every 3 week\" and \"Occasional morning myoclonic jerks continue\" but without a numeric rate. It also notes she has been free of tonic-clonic seizures for over nine months. Per rule 7, select the highest frequency among provided figures; the only explicit numeric frequency is 1 absence seizure every 3 weeks. The myoclonic jerks lack a quantifiable frequency, so they cannot be used. Therefore, the current seizure frequency is 1 per 3 weeks.",
+      "seizure_frequency_number": [
+        "1 per 3 week",
+        "one absence seizure every 3 week"
+      ],
+      "reference": [
+        "1 per 3 week",
+        "Seizure activity is infrequent. She reports one absence seizure every 3 week and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

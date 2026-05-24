@@ -1,0 +1,48 @@
+{
+  "id": "gan_9189",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 16 March 2023\n\nDr Ahmed Khan\nRiverside Health Centre\n\n12 Riverside Way, Southwark, London SE1 3AB\n\nDear Dr Ahmed Khan\n\nSara Malik, DOB: 14-03-1988, Hospital No: H739205 NHS No. 8024169351\nFlat 3, 25 Elm Court, Deptford, London SE8 4LR\n\nDiagnoses/summary: History of seizures under review; prior investigations include routine EEG and MRI without a definitive correlate. No current concerns raised from a cardiac perspective. Religious fasting periods may alter routine, and we discussed practical strategies around medication timing and hydration.\n\nCurrent status: Sara Malik reports no seizures for an extended interval and feels back to baseline in day-to-day activities. Her partner has not observed any events, and there have been no nocturnal episodes reported.\n\nMedication history: Previously tried and discontinued due to either lack of benefit or tolerability: valproate, carbamazepine, levetiracetam, and lamotrigine. Not trialled: topiramate, zonisamide, lacosamide. Current regular medicines: folic acid 5 mg daily (patient preference), and a multivitamin. No rescue medication in use.\n\nRecent issues: During religious fasting periods she occasionally experienced mild light-headedness around late afternoon but no events; we discussed spacing of doses, good hydration outside fasting hours, and monitoring for any change in pattern.\n\nPlan:\n- Continue current regimen without changes given stable period with no reported seizures.\n- Provide seizure diary template to document any future events, especially around fasting periods or sleep disruption.\n- Safety advice reinforced: driving regulations discussed in general terms; patient confirms no events and understands to inform DVLA if circumstances change.\n- Routine follow-up in 6 months, earlier review if any breakthrough events or concerns.\n\nPlease do not hesitate to contact me if you need further details.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 617,
+      "end": 661,
+      "text": "reports no seizures for an extended interval",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9189,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 16 March 2023\n\nDr Ahmed Khan\nRiverside Health Centre\n\n12 Riverside Way, Southwark, London SE1 3AB\n\nDear Dr Ahmed Khan\n\nSara Malik, DOB: 14-03-1988, Hospital No: H739205 NHS No. 8024169351\nFlat 3, 25 Elm Court, Deptford, London SE8 4LR\n\nDiagnoses/summary: History of seizures under review; prior investigations include routine EEG and MRI without a definitive correlate. No current concerns raised from a cardiac perspective. Religious fasting periods may alter routine, and we discussed practical strategies around medication timing and hydration.\n\nCurrent status: Sara Malik reports no seizures for an extended interval and feels back to baseline in day-to-day activities. Her partner has not observed any events, and there have been no nocturnal episodes reported.\n\nMedication history: Previously tried and discontinued due to either lack of benefit or tolerability: valproate, carbamazepine, levetiracetam, and lamotrigine. Not trialled: topiramate, zonisamide, lacosamide. Current regular medicines: folic acid 5 mg daily (patient preference), and a multivitamin. No rescue medication in use.\n\nRecent issues: During religious fasting periods she occasionally experienced mild light-headedness around late afternoon but no events; we discussed spacing of doses, good hydration outside fasting hours, and monitoring for any change in pattern.\n\nPlan:\n- Continue current regimen without changes given stable period with no reported seizures.\n- Provide seizure diary template to document any future events, especially around fasting periods or sleep disruption.\n- Safety advice reinforced: driving regulations discussed in general terms; patient confirms no events and understands to inform DVLA if circumstances change.\n- Routine follow-up in 6 months, earlier review if any breakthrough events or concerns.\n\nPlease do not hesitate to contact me if you need further details.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states the patient reports no seizures for an extended interval, feels back to baseline, partner has not observed events, and no nocturnal episodes. There is no explicit numeric duration given. The plan notes stable period with no reported seizures and routine follow-up in 6 months, but does not confirm a seizure-free period of at least 6 months. Therefore, per rules, if seizure-free but insufficient information to confirm 6 months, label as 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "reports no seizures for an extended interval"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free by patient report"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

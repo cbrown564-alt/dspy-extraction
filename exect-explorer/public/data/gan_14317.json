@@ -1,0 +1,59 @@
+{
+  "id": "gan_14317",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 05 June 2017 \n\nDr Alice Morton \nConsultant Neurologist  \nRiverside Neurology Centre  \nSt. Cuthbert Wing, Riverside General Hospital, York  \n\nDear Dr Alice Morton, \n\nSarah Collins, DOB: 22-09-1987, Hospital No: Y483920 NHS No. 9432175601  \nFlat 3, 12 Brook Lane, York, YO1 6AB  \n\nDiagnosis: \n\nGeneralised epilepsy with improving clinical stability; Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since. \n\nAetiology: \n\nNo clear structural cause identified; family history negative; EEG previously demonstrated generalised spike-wave discharges consistent with a generalised epilepsy syndrome. \n\nOther Medical Problems: \n\nMild migraine without aura, infrequent; seasonal allergic rhinitis managed with PRN non-sedating antihistamine. \n\nManagement Plan: \n\n- No immediate change to current regimen. She remains off Lamotrigine following planned withdrawal and has maintained seizure freedom since early April.  \n- Reinforced lifestyle measures: adequate sleep hygiene and avoidance of alcohol excess.  \n- Driving advice updated in line with DVLA guidance for generalised epilepsy; she understands to inform us immediately if further events occur.  \n- Review in six months, sooner if any recurrence or adverse symptoms.  \n\nInterval History and Current Status: \n\nSince our last contact, night-time childcare support was introduced and sleep has become more consolidated, which she reports has markedly improved daytime alertness and overall stability. Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since and there have been no myoclonic jerks on waking. She has returned to regular exercise and full-time work without limitations. There are no reported adverse effects from previous medication withdrawal, and mood has remained stable. Overall, her condition is improving with sustained seizure freedom in the context of better sleep and routine.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 407,
+      "end": 524,
+      "text": "Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures... She has not had any further events since.",
+      "attributes": {
+        "Label": "4 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 407,
+      "end": 551,
+      "text": "Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since",
+      "attributes": {
+        "Label": "4 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14317,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 05 June 2017 \n\nDr Alice Morton \nConsultant Neurologist  \nRiverside Neurology Centre  \nSt. Cuthbert Wing, Riverside General Hospital, York  \n\nDear Dr Alice Morton, \n\nSarah Collins, DOB: 22-09-1987, Hospital No: Y483920 NHS No. 9432175601  \nFlat 3, 12 Brook Lane, York, YO1 6AB  \n\nDiagnosis: \n\nGeneralised epilepsy with improving clinical stability; Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since. \n\nAetiology: \n\nNo clear structural cause identified; family history negative; EEG previously demonstrated generalised spike-wave discharges consistent with a generalised epilepsy syndrome. \n\nOther Medical Problems: \n\nMild migraine without aura, infrequent; seasonal allergic rhinitis managed with PRN non-sedating antihistamine. \n\nManagement Plan: \n\n- No immediate change to current regimen. She remains off Lamotrigine following planned withdrawal and has maintained seizure freedom since early April.  \n- Reinforced lifestyle measures: adequate sleep hygiene and avoidance of alcohol excess.  \n- Driving advice updated in line with DVLA guidance for generalised epilepsy; she understands to inform us immediately if further events occur.  \n- Review in six months, sooner if any recurrence or adverse symptoms.  \n\nInterval History and Current Status: \n\nSince our last contact, night-time childcare support was introduced and sleep has become more consolidated, which she reports has markedly improved daytime alertness and overall stability. Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since and there have been no myoclonic jerks on waking. She has returned to regular exercise and full-time work without limitations. There are no reported adverse effects from previous medication withdrawal, and mood has remained stable. Overall, her condition is improving with sustained seizure freedom in the context of better sleep and routine.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since.' Clinic date is 05 June 2017. From 4 April to 5 June is about 2 months. She has been seizure-free since early April but less than 6 months, so she cannot be labeled seizure free. The only explicit frequency given is 4 seizures around the period of stopping Lamotrigine, which corresponds to approximately 2 months before the clinic visit. Therefore, the current measurable frequency is 4 per 2 months.",
+      "seizure_frequency_number": [
+        "4 per 2 month",
+        "Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures... She has not had any further events since."
+      ],
+      "reference": [
+        "4 per 2 month",
+        "Lamotrigine was stopped on 4 Apr. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_2596",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:12\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Martin O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic update and medication optimisation\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nThe patient has generalised epilepsy. The classification aligns with a Generalised Epilepsy Type, with events described as arising without focal onset features and consistent with generalised tonic–clonic seizures emerging from sleep.\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nPresent Seizure Frequency:\n\nAccording to the patient and corroborated by recent employer occupational health summaries, nocturnal events have increased over the past six weeks and are occurring twice per night on average. These episodes are reported as brief generalised convulsions with immediate post-ictal confusion, tongue-biting on two occasions, and myalgia on waking. No daytime events have been reported. There is no clear precipitant identified other than disrupted sleep due to a recent shift pattern change.\n\nPlan of Action:\n\n- Given the recurrence pattern in a patient with generalised epilepsy and the nocturnal clustering (twice per night), we will optimise current therapy rather than introduce a wholly new agent at this stage. The dose of sodium valproate is suboptimal relative to body weight and prior tolerance. Please adjust sodium valproate to 750 mg twice daily for two weeks, then 1,000 mg twice daily if tolerated, with liver function tests and full blood count at baseline and at 4 weeks. The lamotrigine dose should remain unchanged for now; we will review interaction and clinical response at the next visit.\n- Sleep hygiene and shift rota: patient reports alternating early/late nights. Occupational health documentation supports sleep disruption. The patient will liaise with employer occupational health to trial a stable shift schedule for four weeks to reduce nocturnal triggers; this is patient-led and non-prescriptive.\n- Safety: advise continued use of nocturnal seizure precautions (low bed frame, padded headboard, and avoidance of sleeping face-down). No driving as per DVLA guidance given ongoing seizures; the patient understands and agrees.\n- Monitoring: patient to maintain a seizure diary noting timing, duration, and any prodrome or triggers. We have requested copies of the next occupational health summary for collateral correlation.\n- Follow-up: review in clinic in 8 weeks. If seizures persist at twice per night despite the above, we will consider adding topiramate or switching strategy depending on tolerability and laboratory results.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 895,
+      "end": 935,
+      "text": "are occurring twice per night on average",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 909,
+      "end": 924,
+      "text": "twice per night",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2596,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:12\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Martin O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic update and medication optimisation\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nThe patient has generalised epilepsy. The classification aligns with a Generalised Epilepsy Type, with events described as arising without focal onset features and consistent with generalised tonic–clonic seizures emerging from sleep.\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nPresent Seizure Frequency:\n\nAccording to the patient and corroborated by recent employer occupational health summaries, nocturnal events have increased over the past six weeks and are occurring twice per night on average. These episodes are reported as brief generalised convulsions with immediate post-ictal confusion, tongue-biting on two occasions, and myalgia on waking. No daytime events have been reported. There is no clear precipitant identified other than disrupted sleep due to a recent shift pattern change.\n\nPlan of Action:\n\n- Given the recurrence pattern in a patient with generalised epilepsy and the nocturnal clustering (twice per night), we will optimise current therapy rather than introduce a wholly new agent at this stage. The dose of sodium valproate is suboptimal relative to body weight and prior tolerance. Please adjust sodium valproate to 750 mg twice daily for two weeks, then 1,000 mg twice daily if tolerated, with liver function tests and full blood count at baseline and at 4 weeks. The lamotrigine dose should remain unchanged for now; we will review interaction and clinical response at the next visit.\n- Sleep hygiene and shift rota: patient reports alternating early/late nights. Occupational health documentation supports sleep disruption. The patient will liaise with employer occupational health to trial a stable shift schedule for four weeks to reduce nocturnal triggers; this is patient-led and non-prescriptive.\n- Safety: advise continued use of nocturnal seizure precautions (low bed frame, padded headboard, and avoidance of sleeping face-down). No driving as per DVLA guidance given ongoing seizures; the patient understands and agrees.\n- Monitoring: patient to maintain a seizure diary noting timing, duration, and any prodrome or triggers. We have requested copies of the next occupational health summary for collateral correlation.\n- Follow-up: review in clinic in 8 weeks. If seizures persist at twice per night despite the above, we will consider adding topiramate or switching strategy depending on tolerability and laboratory results.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: 'nocturnal events have increased over the past six weeks and are occurring twice per night on average.' No daytime events are reported. This directly provides a numeric frequency of 2 per day (nocturnal, but unit required is day). No other competing frequencies are given, so select this as the highest/current frequency. Convert 'twice per night' to '2 per day' per formatting rules.",
+      "seizure_frequency_number": [
+        "2 per day",
+        "are occurring twice per night on average"
+      ],
+      "reference": [
+        "2 per day",
+        "twice per night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

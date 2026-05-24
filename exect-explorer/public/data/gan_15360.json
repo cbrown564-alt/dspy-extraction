@@ -1,0 +1,59 @@
+{
+  "id": "gan_15360",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 06 January 2024\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. Since his last appointment, he reports a clear deterioration in overall control and tolerability of treatment. He can sometimes go nearly a week without seizures, but when they recur he tends to have several in one day, often between four and eight. These clusters are typically unprovoked from his perspective and have begun to interfere significantly with work and sleep.\n\nHe remains on multiple antiepileptic medicines as previously prescribed: Levetiracetam (Keppra) 1250 mg twice daily, Topiramate 125 mg twice daily, Valproate 500 mg twice daily, Clobazam 10 mg twice daily, and Carbamazepine 400 mg twice daily. He describes troublesome adverse effects that have become more prominent over recent months, including persistent fatigue, reduced concentration, intermittent dizziness, and pruritus affecting both lower legs with excoriation marks evident on examination. He also notes low mood and increased anxiety linked to the unpredictability of the clusters. No clear triggers have been identified. He denies recent head injury, alcohol misuse, or sleep deprivation beyond what is caused by nocturnal events.\n\nThere is no new focal neurological deficit on examination. Blood pressure and routine observations are within normal limits. He remains concerned that the medication burden is high and yet control remains suboptimal, and he is struggling to maintain employment due to frequent recovery time after clustered events.\n\nIn view of the above, I have discussed the situation with him at length, including the impact of ongoing adverse effects and the pattern of breakthrough clusters. He is keen for further evaluation to quantify seizure burden and to explore rationalisation of therapy once we have objective data. I will arrange expedited review in our monitoring pathway and will keep you updated on progress. In the meantime, he will continue his current regimen and maintain a seizure diary documenting timing, clustering, potential precipitants, and adverse effects.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 411,
+      "end": 549,
+      "text": "He can sometimes go nearly a week without seizures, but when they recur he tends to have several in one day, often between four and eight.",
+      "attributes": {
+        "Label": "1 cluster per week, 4 to 8 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 411,
+      "end": 548,
+      "text": "He can sometimes go nearly a week without seizures, but when they recur he tends to have several in one day, often between four and eight",
+      "attributes": {
+        "Label": "1 cluster per week, 4 to 8 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15360,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 06 January 2024\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. Since his last appointment, he reports a clear deterioration in overall control and tolerability of treatment. He can sometimes go nearly a week without seizures, but when they recur he tends to have several in one day, often between four and eight. These clusters are typically unprovoked from his perspective and have begun to interfere significantly with work and sleep.\n\nHe remains on multiple antiepileptic medicines as previously prescribed: Levetiracetam (Keppra) 1250 mg twice daily, Topiramate 125 mg twice daily, Valproate 500 mg twice daily, Clobazam 10 mg twice daily, and Carbamazepine 400 mg twice daily. He describes troublesome adverse effects that have become more prominent over recent months, including persistent fatigue, reduced concentration, intermittent dizziness, and pruritus affecting both lower legs with excoriation marks evident on examination. He also notes low mood and increased anxiety linked to the unpredictability of the clusters. No clear triggers have been identified. He denies recent head injury, alcohol misuse, or sleep deprivation beyond what is caused by nocturnal events.\n\nThere is no new focal neurological deficit on examination. Blood pressure and routine observations are within normal limits. He remains concerned that the medication burden is high and yet control remains suboptimal, and he is struggling to maintain employment due to frequent recovery time after clustered events.\n\nIn view of the above, I have discussed the situation with him at length, including the impact of ongoing adverse effects and the pattern of breakthrough clusters. He is keen for further evaluation to quantify seizure burden and to explore rationalisation of therapy once we have objective data. I will arrange expedited review in our monitoring pathway and will keep you updated on progress. In the meantime, he will continue his current regimen and maintain a seizure diary documenting timing, clustering, potential precipitants, and adverse effects.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) The letter confirms ongoing seizures and describes a clustered pattern: 'several in one day, often between four and eight,' which quantifies seizures per cluster as 4 to 8. 2) For cluster frequency over time, it states: 'He can sometimes go nearly a week without seizures.' This indicates the inter-cluster interval approaches one week; to normalize into the allowed format, this is treated as approximately weekly recurrence, i.e., 1 cluster per week. 3) There is no evidence of seizure freedom for at least 6 months. 4) No other competing frequencies are provided. Therefore, the normalized label is 1 cluster per week, 4 to 8 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per week, 4 to 8 per cluster",
+        "He can sometimes go nearly a week without seizures, but when they recur he tends to have several in one day, often between four and eight."
+      ],
+      "reference": [
+        "1 cluster per week, 4 to 8 per cluster",
+        "He can sometimes go nearly a week without seizures, but when they recur he tends to have several in one day, often between four and eight"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

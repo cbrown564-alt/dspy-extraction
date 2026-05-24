@@ -1,0 +1,54 @@
+{
+  "id": "gan_6251",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,\n\nJames O’Connor, DOB: 22-11-1990, Hospital No: Q384920 NHS No. 8472639154  \nFlat 3, 28 Turnpike Lane, London, N8 0PS  \n\nEpilepsy \n\nMedication: Initiated Levetiracetam August 2025\n\nLevetiracetam 500 mg twice daily\n\nLevetiracetam Blood Level:\n\nNot performed to date; no trough level available.\n\nSeizures: Patient describes rare events that occur exclusively during prolonged physical exertion at work and immediately after intensive lifting/ladder activity. No episodes reported at rest or during routine household activity. Last event: 3 weeks ago on-site following extended machinery loading; prior to that, one event in late May 2025 during a high-demand shift. No morning myoclonic jerks or nocturnal events reported. No clear preceding aura; colleagues observed brief unresponsiveness with limb stiffening for under one minute followed by confusion for approximately 10 minutes. No tongue biting or urinary incontinence reported in recent episodes.\n\nI reviewed James O’Connor today in follow‑up after starting levetiracetam in August for recurrent exertion-linked events that have impacted work on scaffolding and around powered equipment. He reports good tolerability with mild initial irritability that settled after two weeks. Since commencing treatment he has had one brief episode in a high-exertion context; otherwise no events. Sleep deprivation and skipped meals on longer shifts appear to lower his threshold according to his account. We discussed routine hydration, regular breaks where feasible, and ensuring adequate sleep as supportive strategies. He remains keen to continue in his role and is aware of workplace safety considerations when symptoms escalate or after an event.\n\nPlan: Continue levetiracetam 500 mg twice daily. If another event occurs in a similar setting despite adherence, consider titration to 750 mg twice daily after discussion at our next review. Arrange routine EEG and an MRI brain (epilepsy protocol) given the exertion-related pattern and occupational risks. I have provided a seizure diary template to correlate events with workload, sleep and hydration. He understands to seek urgent review if events cluster or recovery is prolonged.\n\nFollow‑up: Telephone review in 8 weeks or sooner if further episodes occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1391,
+      "end": 1495,
+      "text": "Since commencing treatment he has had one brief episode in a high-exertion context; otherwise no events.",
+      "attributes": {
+        "Label": "1 per 1 to 2 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6251,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,\n\nJames O’Connor, DOB: 22-11-1990, Hospital No: Q384920 NHS No. 8472639154  \nFlat 3, 28 Turnpike Lane, London, N8 0PS  \n\nEpilepsy \n\nMedication: Initiated Levetiracetam August 2025\n\nLevetiracetam 500 mg twice daily\n\nLevetiracetam Blood Level:\n\nNot performed to date; no trough level available.\n\nSeizures: Patient describes rare events that occur exclusively during prolonged physical exertion at work and immediately after intensive lifting/ladder activity. No episodes reported at rest or during routine household activity. Last event: 3 weeks ago on-site following extended machinery loading; prior to that, one event in late May 2025 during a high-demand shift. No morning myoclonic jerks or nocturnal events reported. No clear preceding aura; colleagues observed brief unresponsiveness with limb stiffening for under one minute followed by confusion for approximately 10 minutes. No tongue biting or urinary incontinence reported in recent episodes.\n\nI reviewed James O’Connor today in follow‑up after starting levetiracetam in August for recurrent exertion-linked events that have impacted work on scaffolding and around powered equipment. He reports good tolerability with mild initial irritability that settled after two weeks. Since commencing treatment he has had one brief episode in a high-exertion context; otherwise no events. Sleep deprivation and skipped meals on longer shifts appear to lower his threshold according to his account. We discussed routine hydration, regular breaks where feasible, and ensuring adequate sleep as supportive strategies. He remains keen to continue in his role and is aware of workplace safety considerations when symptoms escalate or after an event.\n\nPlan: Continue levetiracetam 500 mg twice daily. If another event occurs in a similar setting despite adherence, consider titration to 750 mg twice daily after discussion at our next review. Arrange routine EEG and an MRI brain (epilepsy protocol) given the exertion-related pattern and occupational risks. I have provided a seizure diary template to correlate events with workload, sleep and hydration. He understands to seek urgent review if events cluster or recovery is prolonged.\n\nFollow‑up: Telephone review in 8 weeks or sooner if further episodes occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly mentions seizures and provides timing of recent events. Last event was 3 weeks before the clinic date (02 Oct 2025). It also states that since starting levetiracetam in August 2025, he has had one brief episode and otherwise no events. Therefore, post-treatment (current) frequency is 1 event over the period since August to 02 Oct 2025. Because the exact August start date isn’t given, the follow-up window is approximately 1 to 2 months. Calculation: 1 seizure / ~1–2 months → 1 per 1 to 2 month.",
+      "seizure_frequency_number": [
+        "1 per 1 to 2 month",
+        "Since commencing treatment he has had one brief episode in a high-exertion context; otherwise no events."
+      ],
+      "reference": [
+        "unknown",
+        "Exercise-induced seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 1 to 2 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

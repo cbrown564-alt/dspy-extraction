@@ -1,0 +1,47 @@
+{
+  "id": "gan_11463",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 14 July 2018 \n\nDr Amelia Clarke  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Clarke,  \n\nMr Peter Lawson, DOB: 14-03-1956, Hospital No: K873920 NHS No. 9076543210  \n12 Meadow View, London, SE15 2AB\n\nThank you for your referral. I have scheduled a routine neurology appointment for the above patient, who is a newly retired teacher living alone with a regular daily routine and reduced social contact. To ensure an efficient first visit, please find a brief pre-appointment administrative checklist below.\n\nPre-appointment administrative checklist:\n- Current medication list: include doses, timings, and any recent changes.  \n- Previous neurology correspondence and imaging reports (MRI/CT) if available.  \n- Blood tests within the last 6–12 months (U&E, LFT, FBC, vitamin D, B12/folate, TFTs).  \n- Blood pressure readings (home or clinic) from the past 3 months.  \n- Falls risk or safeguarding concerns, given the patient lives alone—please flag if any.  \n- Contact details for next of kin or preferred emergency contact.  \n- Driving status and occupation/retirement confirmation for documentation.  \n- Any community or social care input (e.g., social prescriber, community nurse).  \n- Accessibility needs for the appointment (hearing, mobility, transport).  \n- Consent for sharing information with carers/family, if applicable.\n\nPatient preparation:\n- Bring a written summary of symptom timeline and any relevant triggers or contextual factors.  \n- Bring a 2–3 week diary of sleep, caffeine/alcohol intake, and notable daily activities.  \n- Bring home blood pressure log if available.  \n- Bring spectacles/hearing aids and a current medication box for reconciliation.  \n- Consider attending with a trusted friend/family member for collateral history if willing.\n\nOn the day:\n- Please arrive 10 minutes early for registration and medication reconciliation.  \n- Vital signs and basic cognitive screening may be performed, given the patient’s living circumstances and recent lifestyle changes.\n\nI will review the documentation and plan investigations as indicated at the appointment. Please let us know if there are safeguarding concerns or if a longer appointment slot is required.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11463,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 14 July 2018 \n\nDr Amelia Clarke  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Clarke,  \n\nMr Peter Lawson, DOB: 14-03-1956, Hospital No: K873920 NHS No. 9076543210  \n12 Meadow View, London, SE15 2AB\n\nThank you for your referral. I have scheduled a routine neurology appointment for the above patient, who is a newly retired teacher living alone with a regular daily routine and reduced social contact. To ensure an efficient first visit, please find a brief pre-appointment administrative checklist below.\n\nPre-appointment administrative checklist:\n- Current medication list: include doses, timings, and any recent changes.  \n- Previous neurology correspondence and imaging reports (MRI/CT) if available.  \n- Blood tests within the last 6–12 months (U&E, LFT, FBC, vitamin D, B12/folate, TFTs).  \n- Blood pressure readings (home or clinic) from the past 3 months.  \n- Falls risk or safeguarding concerns, given the patient lives alone—please flag if any.  \n- Contact details for next of kin or preferred emergency contact.  \n- Driving status and occupation/retirement confirmation for documentation.  \n- Any community or social care input (e.g., social prescriber, community nurse).  \n- Accessibility needs for the appointment (hearing, mobility, transport).  \n- Consent for sharing information with carers/family, if applicable.\n\nPatient preparation:\n- Bring a written summary of symptom timeline and any relevant triggers or contextual factors.  \n- Bring a 2–3 week diary of sleep, caffeine/alcohol intake, and notable daily activities.  \n- Bring home blood pressure log if available.  \n- Bring spectacles/hearing aids and a current medication box for reconciliation.  \n- Consider attending with a trusted friend/family member for collateral history if willing.\n\nOn the day:\n- Please arrive 10 minutes early for registration and medication reconciliation.  \n- Vital signs and basic cognitive screening may be performed, given the patient’s living circumstances and recent lifestyle changes.\n\nI will review the documentation and plan investigations as indicated at the appointment. Please let us know if there are safeguarding concerns or if a longer appointment slot is required.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the entire clinical letter. It is an administrative pre-appointment note for a routine neurology visit and does not mention seizures, epilepsy, blackouts, or any seizure frequency information. There are no explicit or implicit references to seizure occurrence or timing.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter with a pre-appointment administrative checklist for an epilepsy visit"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_5406",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 March 2016 10:12\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Ward (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Update on seizure management and work adjustments\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nCurrently under review (no specific classification assigned)\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (used rarely)\n\n\nPresent Seizure Frequency:\n\nReports only episodes without epileptic features in the past two months; no definite epileptic events documented in this interval. Patient notes clearer pattern recognition and reduced fatigue since commencing remote working three days per week.\n\n\nPlan of Action:\n\nOverall, the clinical picture is encouraging. Since adopting a hybrid/remote work pattern, the patient describes fewer stress-related spells and improved sleep regularity. There have been no injuries, no tongue biting, and recovery is rapid when episodes occur, aligning with non-epileptic-like events rather than electroclinical seizures. The patient and partner are maintaining a simple diary which corroborates this improvement.\n\nWe will continue lamotrigine at the current dose. No medication changes are indicated today given the favourable trend and absence of convincing epileptic seizures. Clobazam to remain as a rescue option for perceived clusters, though it has not been required recently. We reinforced sleep hygiene, hydration, and scheduled breaks during remote work. The patient prefers to continue with the hybrid arrangement as it appears to reduce fatigue and improve pattern predictability.\n\nI have arranged a follow-up in four months. If stability continues, we can consider gradual rationalisation of rescue medication at that time. The patient will contact the service sooner if there is any escalation, new neurological deficits, or events associated with loss of awareness resulting in injury.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 603,
+      "end": 733,
+      "text": "Reports only episodes without epileptic features in the past two months; no definite epileptic events documented in this interval.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5406,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 March 2016 10:12\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Ward (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Update on seizure management and work adjustments\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nCurrently under review (no specific classification assigned)\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (used rarely)\n\n\nPresent Seizure Frequency:\n\nReports only episodes without epileptic features in the past two months; no definite epileptic events documented in this interval. Patient notes clearer pattern recognition and reduced fatigue since commencing remote working three days per week.\n\n\nPlan of Action:\n\nOverall, the clinical picture is encouraging. Since adopting a hybrid/remote work pattern, the patient describes fewer stress-related spells and improved sleep regularity. There have been no injuries, no tongue biting, and recovery is rapid when episodes occur, aligning with non-epileptic-like events rather than electroclinical seizures. The patient and partner are maintaining a simple diary which corroborates this improvement.\n\nWe will continue lamotrigine at the current dose. No medication changes are indicated today given the favourable trend and absence of convincing epileptic seizures. Clobazam to remain as a rescue option for perceived clusters, though it has not been required recently. We reinforced sleep hygiene, hydration, and scheduled breaks during remote work. The patient prefers to continue with the hybrid arrangement as it appears to reduce fatigue and improve pattern predictability.\n\nI have arranged a follow-up in four months. If stability continues, we can consider gradual rationalisation of rescue medication at that time. The patient will contact the service sooner if there is any escalation, new neurological deficits, or events associated with loss of awareness resulting in injury.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses current seizure activity. It states: \"Reports only episodes without epileptic features in the past two months; no definite epileptic events documented in this interval.\" This indicates zero definite epileptic seizures over the last two months. To label as 'seizure free', the rule requires at least 6 months without seizures; here only two months are documented. Therefore, the patient is not classed as seizure free. The best normalized frequency is 0 epileptic seizures over 2 months, which corresponds to 0 per 2 months. However, the allowed formats do not include a '0' rate. In such cases, we infer the rate as 0 per month over the period: 0 in 2 months equals 0 per month, but zero rates are not allowed. The instruction says to calculate the patient's seizure frequency if <6 months; since the numeric rate cannot be expressed with the allowed forms, we must select the closest allowed label reflecting the absence of events over multiple months without meeting the 6-month criterion. The allowed format includes 'seizure free for multiple months' when insufficient to confirm 6 months. Thus, we choose 'seizure free for multiple months' based on two months of no definite epileptic events.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Reports only episodes without epileptic features in the past two months; no definite epileptic events documented in this interval."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "non-epileptic seizures only"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

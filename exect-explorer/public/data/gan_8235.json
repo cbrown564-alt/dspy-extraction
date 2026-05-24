@@ -1,0 +1,48 @@
+{
+  "id": "gan_8235",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 21 September 2025 \n\nDr Amelia Rhodes  \nRiverside Medical Practice  \n114 Riverside Way, London SE10 8AB  \n\nDear Dr Amelia Rhodes,  \n\nEmma Carter, DOB: 22-07-1989, Hospital No: A924671 NHS No. 4085197362  \nFlat 3, 27 Brookfield Lane, London, N7 9QF \n\nSummary/ Diagnoses: History of seizures with prior menstrual-related clustering; cognitive symptoms resolving; mood stable; bone health monitored due to previous low vitamin D; non-smoker; no alcohol misuse. \n\nMedication: Lamotrigine 150 mg twice daily.  \nFolic acid 5 mg once daily.  \nCholecalciferol 1000 IU once daily.  \n\nI reviewed Emma Carter in clinic today. She attended with her partner and brought a contemporaneous symptom diary and pharmacy refill records. She reports feeling well and more confident in daily activities. Sleep routine has improved and stress levels are lower with regular light exercise. Appetite is normal and weight stable. Neurologically she is alert and oriented, speech fluent, cranial nerves intact, tone and power normal in all limbs, coordination and gait normal. No focal neurological deficits on examination. \n\nSeizures: Prior to improvement, she described events occurring up to twice daily at worst, particularly around menstruation. Since adhering to the current regimen and cycle-tracking strategies, there have been no events recorded or witnessed over the current follow-up period. Her diary, her partner’s corroboration, and pharmacy records are all consistent with a sustained absence of seizures. \n\nMenstrual health: She reports that the previously clear menstrual-related pattern has settled with the existing approach (no new hormonal therapy introduced). Periods are now less symptomatic, and she has maintained regular lifestyle measures around the perimenstrual window. \n\nInvestigations: Recent routine bloods (FBC, U&E, LFTs, vitamin D) within normal limits; pregnancy test negative as per pre-conception counselling protocol; ECG unremarkable. \n\nPlan: \n- Continue lamotrigine at current dose; no changes required given ongoing stability. \n- Reinforce adherence and safety advice; continue diary and cycle tracking. \n- Maintain vitamin D supplementation and weight-bearing exercise. \n- Routine follow-up in six months, or earlier via advice line if any breakthrough events occur. \n\nOverall, her condition is improving with sustained clinical stability and better quality of life. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1387,
+      "end": 1587,
+      "text": "there have been no events recorded or witnessed over the current follow-up period. Her diary, her partner’s corroboration, and pharmacy records are all consistent with a sustained absence of seizures.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8235,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 21 September 2025 \n\nDr Amelia Rhodes  \nRiverside Medical Practice  \n114 Riverside Way, London SE10 8AB  \n\nDear Dr Amelia Rhodes,  \n\nEmma Carter, DOB: 22-07-1989, Hospital No: A924671 NHS No. 4085197362  \nFlat 3, 27 Brookfield Lane, London, N7 9QF \n\nSummary/ Diagnoses: History of seizures with prior menstrual-related clustering; cognitive symptoms resolving; mood stable; bone health monitored due to previous low vitamin D; non-smoker; no alcohol misuse. \n\nMedication: Lamotrigine 150 mg twice daily.  \nFolic acid 5 mg once daily.  \nCholecalciferol 1000 IU once daily.  \n\nI reviewed Emma Carter in clinic today. She attended with her partner and brought a contemporaneous symptom diary and pharmacy refill records. She reports feeling well and more confident in daily activities. Sleep routine has improved and stress levels are lower with regular light exercise. Appetite is normal and weight stable. Neurologically she is alert and oriented, speech fluent, cranial nerves intact, tone and power normal in all limbs, coordination and gait normal. No focal neurological deficits on examination. \n\nSeizures: Prior to improvement, she described events occurring up to twice daily at worst, particularly around menstruation. Since adhering to the current regimen and cycle-tracking strategies, there have been no events recorded or witnessed over the current follow-up period. Her diary, her partner’s corroboration, and pharmacy records are all consistent with a sustained absence of seizures. \n\nMenstrual health: She reports that the previously clear menstrual-related pattern has settled with the existing approach (no new hormonal therapy introduced). Periods are now less symptomatic, and she has maintained regular lifestyle measures around the perimenstrual window. \n\nInvestigations: Recent routine bloods (FBC, U&E, LFTs, vitamin D) within normal limits; pregnancy test negative as per pre-conception counselling protocol; ECG unremarkable. \n\nPlan: \n- Continue lamotrigine at current dose; no changes required given ongoing stability. \n- Reinforce adherence and safety advice; continue diary and cycle tracking. \n- Maintain vitamin D supplementation and weight-bearing exercise. \n- Routine follow-up in six months, or earlier via advice line if any breakthrough events occur. \n\nOverall, her condition is improving with sustained clinical stability and better quality of life. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states prior to improvement events occurred up to twice daily at worst. Currently: 'there have been no events recorded or witnessed over the current follow-up period' and notes 'sustained absence of seizures.' We must determine if seizure-free status meets the ≥6 months criterion. The clinic date is 21 September 2025, but the letter does not specify the exact duration of the follow-up period or give dates establishing at least 6 months of seizure freedom. Therefore, we cannot confirm ≥6 months. Per instructions, if seizure-free but insufficient information to confirm the 6-month criterion, label as 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no events recorded or witnessed over the current follow-up period. Her diary, her partner’s corroboration, and pharmacy records are all consistent with a sustained absence of seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

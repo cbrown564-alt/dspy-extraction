@@ -1,0 +1,47 @@
+{
+  "id": "gan_11408",
+  "text": "Department of Neurology\n\nClinic Date: 06 March 2022\n\nDr Aisha Rahman\nSt Thomas’ Hospital\nDepartment of Neurology, Westminster Bridge Road, London SE1 7EH\n\nDear Dr Aisha Rahman,\n\nMr Daniel Brooks, DOB: 14-03-1990, Hospital No: H372915 NHS No. 9045172638\nFlat 12, 5 Riverbank House, London SE11 4QX\n\nReason for letter:\n\nFollow-up epilepsy clinic booking request.\n\nBackground:\n\nMr Daniel Brooks works at a busy metro station gate line with prolonged standing and exposure to crowd surges. He reports intermittent light-headedness after long shifts and is keen to review safety planning around work patterns and hydration, and to discuss optimisation of current management and fitness-to-work advice.\n\nCurrent medication:\n\nLevetiracetam 500 mg twice daily\nVitamin D3 1000 IU daily\n\nPlan:\n\n- Book a routine follow-up appointment in the epilepsy clinic within 6–8 weeks (face-to-face preferred).\n- Request updated U&Es and vitamin D levels via GP prior to the appointment.\n- Provide interim workplace advice: regular hydration, scheduled brief seated breaks where possible, and avoidance of missed doses.\n- Patient has my clinic contact details for earlier review if symptoms escalate.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11408,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 06 March 2022\n\nDr Aisha Rahman\nSt Thomas’ Hospital\nDepartment of Neurology, Westminster Bridge Road, London SE1 7EH\n\nDear Dr Aisha Rahman,\n\nMr Daniel Brooks, DOB: 14-03-1990, Hospital No: H372915 NHS No. 9045172638\nFlat 12, 5 Riverbank House, London SE11 4QX\n\nReason for letter:\n\nFollow-up epilepsy clinic booking request.\n\nBackground:\n\nMr Daniel Brooks works at a busy metro station gate line with prolonged standing and exposure to crowd surges. He reports intermittent light-headedness after long shifts and is keen to review safety planning around work patterns and hydration, and to discuss optimisation of current management and fitness-to-work advice.\n\nCurrent medication:\n\nLevetiracetam 500 mg twice daily\nVitamin D3 1000 IU daily\n\nPlan:\n\n- Book a routine follow-up appointment in the epilepsy clinic within 6–8 weeks (face-to-face preferred).\n- Request updated U&Es and vitamin D levels via GP prior to the appointment.\n- Provide interim workplace advice: regular hydration, scheduled brief seated breaks where possible, and avoidance of missed doses.\n- Patient has my clinic contact details for earlier review if symptoms escalate.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the letter carefully. It discusses an epilepsy clinic follow-up, workplace safety, light-headedness, and current medication (levetiracetam), but it does not mention seizures occurring, their frequency, or seizure freedom duration. There is no explicit or implicit seizure count or timeframe provided. Per the rules, when the letter does not mention seizures at all, the correct output is 'no seizure frequency reference.'",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter about a follow-up epilepsy clinic booking request"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

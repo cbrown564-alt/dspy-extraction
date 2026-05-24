@@ -1,0 +1,59 @@
+{
+  "id": "gan_2725",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 10 July 2024\n\nDr Priya Anand\nRiverside Medical Practice\n214 Riverside Way, London SW1P 3AL\n\nDear Dr Priya Anand,\n\nDaniel Morris, DOB: 22-07-1984, Hospital No: U928417 NHS No. 6041932751\nFlat 3, 47 Arbury Court, London, N7 6QP\n\nSummary/Diagnoses: Focal epilepsy with preserved awareness auras; prior mild head injury (remote, non-disabling); mild anxiety symptoms related to seizure anticipation; otherwise well.\n\nMedication: Levetiracetam 750 mg twice daily. Vitamin D3 800 IU once daily. Omeprazole 20 mg once daily.\n\nI reviewed Daniel Morris in clinic today. He attended alone and brought a brief diary of events. Since our last contact, he has continued to practise aura recognition strategies and describes his warning features in his own words as a \"tight, rising flutter in the upper abdomen\" followed by a brief sense of déjà vu and a metallic taste, usually lasting under 30 seconds. He states that recognising this pattern allows him to pause, sit if needed, and perform slow breathing until the sensation subsides. He has not reported loss of awareness or generalised convulsions.\n\nSeizures: He reports a myoclonic jerk every other week, typically in the early morning within an hour of waking. These brief single twitches have not led to falls or injuries. In addition, he notes occasional focal auras as described above, occurring roughly once or twice per month, often during periods of poor sleep or higher stress. There have been no emergency presentations, and no episodes of tongue biting, incontinence, or post-ictal confusion. Overall, he feels the pattern is stable and manageable with his coping strategies.\n\nFocal epilepsy type: Based on the semiology and consistent focal auras with preserved awareness, the working diagnosis remains focal epilepsy, likely temporal onset. He is keen to continue with self-monitoring and aura management techniques.\n\nExamination: Alert and oriented. Speech fluent. Cranial nerves intact. Motor and coordination normal. Gait normal. No focal neurological deficits. Weight and blood pressure within target range.\n\nPlan:\n- Continue levetiracetam 750 mg twice daily; no dose change today as events are brief and non-injurious.\n- Reinforce aura recognition and safety measures (sit down, controlled breathing, avoid hazardous activity during warnings).\n- Sleep hygiene and stress reduction discussed; patient will continue diary documenting timing, context, and any triggers around auras and myoclonic events.\n- Routine bloods (FBC, U&E, LFTs, vitamin D) via GP in the next 4–6 weeks to monitor general health while on long-term therapy.\n- Provide patient with information on local epilepsy support group; he expressed interest in peer strategies for managing auras.\n- Review in 6 months, or sooner if events escalate, if any loss of awareness occurs, or if injuries develop.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1194,
+      "end": 1238,
+      "text": "He reports a myoclonic jerk every other week",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1207,
+      "end": 1238,
+      "text": "myoclonic jerk every other week",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2725,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 10 July 2024\n\nDr Priya Anand\nRiverside Medical Practice\n214 Riverside Way, London SW1P 3AL\n\nDear Dr Priya Anand,\n\nDaniel Morris, DOB: 22-07-1984, Hospital No: U928417 NHS No. 6041932751\nFlat 3, 47 Arbury Court, London, N7 6QP\n\nSummary/Diagnoses: Focal epilepsy with preserved awareness auras; prior mild head injury (remote, non-disabling); mild anxiety symptoms related to seizure anticipation; otherwise well.\n\nMedication: Levetiracetam 750 mg twice daily. Vitamin D3 800 IU once daily. Omeprazole 20 mg once daily.\n\nI reviewed Daniel Morris in clinic today. He attended alone and brought a brief diary of events. Since our last contact, he has continued to practise aura recognition strategies and describes his warning features in his own words as a \"tight, rising flutter in the upper abdomen\" followed by a brief sense of déjà vu and a metallic taste, usually lasting under 30 seconds. He states that recognising this pattern allows him to pause, sit if needed, and perform slow breathing until the sensation subsides. He has not reported loss of awareness or generalised convulsions.\n\nSeizures: He reports a myoclonic jerk every other week, typically in the early morning within an hour of waking. These brief single twitches have not led to falls or injuries. In addition, he notes occasional focal auras as described above, occurring roughly once or twice per month, often during periods of poor sleep or higher stress. There have been no emergency presentations, and no episodes of tongue biting, incontinence, or post-ictal confusion. Overall, he feels the pattern is stable and manageable with his coping strategies.\n\nFocal epilepsy type: Based on the semiology and consistent focal auras with preserved awareness, the working diagnosis remains focal epilepsy, likely temporal onset. He is keen to continue with self-monitoring and aura management techniques.\n\nExamination: Alert and oriented. Speech fluent. Cranial nerves intact. Motor and coordination normal. Gait normal. No focal neurological deficits. Weight and blood pressure within target range.\n\nPlan:\n- Continue levetiracetam 750 mg twice daily; no dose change today as events are brief and non-injurious.\n- Reinforce aura recognition and safety measures (sit down, controlled breathing, avoid hazardous activity during warnings).\n- Sleep hygiene and stress reduction discussed; patient will continue diary documenting timing, context, and any triggers around auras and myoclonic events.\n- Routine bloods (FBC, U&E, LFTs, vitamin D) via GP in the next 4–6 weeks to monitor general health while on long-term therapy.\n- Provide patient with information on local epilepsy support group; he expressed interest in peer strategies for managing auras.\n- Review in 6 months, or sooner if events escalate, if any loss of awareness occurs, or if injuries develop.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies in the letter. Two event types are described:\n- Myoclonic jerks: \"every other week\". Convert to frequency: every 2 weeks → 1 per 2 weeks.\n- Focal auras: \"once or twice per month\" → 1 to 2 per month. \nApply the rule to select the highest frequency (more frequent events). Compare 1 per 2 weeks vs 1 to 2 per month. Convert to a common period (per month ~4 weeks):\n- 1 per 2 weeks ≈ 2 per month.\n- 1 to 2 per month = 1 to 2 per month.\nThe highest frequency among these is approximately 2 per month for both, but the myoclonic jerks are clearly stated as regular \"every other week\" which maps cleanly to 1 per 2 weeks. Since multiple frequencies of different seizure types are present and are similar, we choose the highest precise expression per the rules; the myoclonic phrasing provides a precise rate of 1 per 2 weeks. No summation is indicated because they are different types and the rule says sum only when multiple frequencies are the same and belong to the same dimension; here they are different types and not identical frequencies. Therefore, the final label is 1 per 2 week.",
+      "seizure_frequency_number": [
+        "1 per 2 week",
+        "He reports a myoclonic jerk every other week"
+      ],
+      "reference": [
+        "1 per 2 week",
+        "myoclonic jerk every other week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

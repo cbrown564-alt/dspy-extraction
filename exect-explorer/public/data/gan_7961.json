@@ -1,0 +1,54 @@
+{
+  "id": "gan_7961",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Alisha Grant  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Alisha Grant,                                                                                                         \n\nHannah Patel, DOB: 22-11-1990, Hospital No: H237519 NHS No. 9842157630  \nFlat 3, 18 Larkspur Road, London, SW12 0AX  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since March 2023\n\nLevetiracetam 500 mg twice daily (patient-reported adherence without missed doses)\n\nLevetiracetam Blood Level:\n\n24 September 2025: 14 mg/L (laboratory therapeutic reference range 12–46 mg/L). Dose 500 mg twice daily\n\nSeizures: The patient reports no recent events suggestive of seizures, with the last confirmed episode occurring over two years ago. No auras or warning symptoms described. No nocturnal tongue biting, injuries, or witnessed events. Husband has not observed any abnormal behaviours overnight.\n\nI reviewed Hannah Patel in clinic today for routine follow-up. She recalls a history of childhood febrile seizures, with no episodes since early school age. As an adult, she experienced intermittent blackouts prior to 2023, for which Levetiracetam was initiated by the local service. Since dose stabilisation, she describes a sustained period of seizure stability with no impairment of daily activities; she works full-time and drives, reporting no concerns from colleagues or family. Sleep routine is regular and alcohol intake minimal. She denies mood change, irritability or cognitive issues on the current dose. Blood pressure and examination were unremarkable. We discussed the importance of ongoing seizure precaution awareness and maintaining adherence. No red flags or breakthrough events were identified. She will continue with current therapy.\n\nPlan:\n- Continue Levetiracetam 500 mg twice daily.\n- Routine annual blood monitoring at GP (U&E, FBC) and drug level only if clinically indicated.\n- Safety: patient to seek review if any suspected events, medication side effects, intercurrent illness, or pregnancy planning.\n- Follow-up in 12 months via telephone, sooner if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 687,
+      "end": 809,
+      "text": "The patient reports no recent events suggestive of seizures, with the last confirmed episode occurring over two years ago.",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7961,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Alisha Grant  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Alisha Grant,                                                                                                         \n\nHannah Patel, DOB: 22-11-1990, Hospital No: H237519 NHS No. 9842157630  \nFlat 3, 18 Larkspur Road, London, SW12 0AX  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since March 2023\n\nLevetiracetam 500 mg twice daily (patient-reported adherence without missed doses)\n\nLevetiracetam Blood Level:\n\n24 September 2025: 14 mg/L (laboratory therapeutic reference range 12–46 mg/L). Dose 500 mg twice daily\n\nSeizures: The patient reports no recent events suggestive of seizures, with the last confirmed episode occurring over two years ago. No auras or warning symptoms described. No nocturnal tongue biting, injuries, or witnessed events. Husband has not observed any abnormal behaviours overnight.\n\nI reviewed Hannah Patel in clinic today for routine follow-up. She recalls a history of childhood febrile seizures, with no episodes since early school age. As an adult, she experienced intermittent blackouts prior to 2023, for which Levetiracetam was initiated by the local service. Since dose stabilisation, she describes a sustained period of seizure stability with no impairment of daily activities; she works full-time and drives, reporting no concerns from colleagues or family. Sleep routine is regular and alcohol intake minimal. She denies mood change, irritability or cognitive issues on the current dose. Blood pressure and examination were unremarkable. We discussed the importance of ongoing seizure precaution awareness and maintaining adherence. No red flags or breakthrough events were identified. She will continue with current therapy.\n\nPlan:\n- Continue Levetiracetam 500 mg twice daily.\n- Routine annual blood monitoring at GP (U&E, FBC) and drug level only if clinically indicated.\n- Safety: patient to seek review if any suspected events, medication side effects, intercurrent illness, or pregnancy planning.\n- Follow-up in 12 months via telephone, sooner if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no recent events suggestive of seizures, with the last confirmed episode over two years ago. This indicates the patient is currently seizure-free and has maintained this for more than 24 months. The requirement for seizure-free status (at least 6 months) is clearly met and exceeded. Therefore, the normalized label should be 'seizure free for multiple years' because the exact count in years isn't numerically specified but is clearly more than one year.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "The patient reports no recent events suggestive of seizures, with the last confirmed episode occurring over two years ago."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Well-controlled epilepsy"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

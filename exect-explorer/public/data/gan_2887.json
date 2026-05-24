@@ -1,0 +1,59 @@
+{
+  "id": "gan_2887",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 September 2018 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Menon, \n\nMr Aaron Patel, DOB: 22-08-1991, Hospital No: KCH483920 NHS No. 9876543210  \nFlat 12, 4 Mill Wharf, Southwark, London, SE1 3AB  \n\nDiagnosis: \n\nGeneralised epilepsy with absence seizures, currently experiencing absence seizures twice a week; valproate intolerant; improved on ethosuximide; lamotrigine adjunct under consideration if further optimisation required \n\nAetiology: \n\nPresumed genetic generalised epilepsy; no structural lesion on prior MRI; normal development and no perinatal complications reported \n\nOther Medical Problems: \n\nMild intermittent tension-type headaches; seasonal allergic rhinitis; no known drug allergies \n\nManagement Plan: \n\n- Continue ethosuximide 250 mg mane and 500 mg nocte.  \n- Arrange ambulatory EEG to characterise frequency of generalised spike–wave discharges given ongoing brief events at work.  \n- Safety advice provided regarding working between tall racking and narrow aisles: advised to alert supervisor to ongoing brief absences, to avoid ladder climbing and work at unprotected heights, and to use a buddy system for heavy lifting where feasible.  \n- Letter for employer supplied to support reasonable adjustments to pace of tasks on late shifts.  \n- Review in four months; consider addition of lamotrigine if absence burden persists. \n\nThis gentleman works as a warehouse picker operating between tall racking in narrow aisles with variable lifting demands and shift-dependent pace. He reports brief staring spells with loss of awareness lasting 5–10 seconds and no post-event confusion, occurring as absence seizures twice a week. He notes these are more likely during faster-paced evening shifts. There is no associated myoclonus or tonic–clonic activity, and no injuries to date. Adherence to ethosuximide has been good with improved concentration and reduced event duration compared with baseline, though the frequency remains as above. He has not tolerated valproate previously due to weight gain and gastrointestinal upset. We discussed DVLA guidance for generalised epilepsy and he is not currently driving. No medication side effects reported beyond mild transient dyspepsia. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 409,
+      "end": 461,
+      "text": "currently experiencing absence seizures twice a week",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 432,
+      "end": 461,
+      "text": "absence seizures twice a week",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2887,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 September 2018 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Menon, \n\nMr Aaron Patel, DOB: 22-08-1991, Hospital No: KCH483920 NHS No. 9876543210  \nFlat 12, 4 Mill Wharf, Southwark, London, SE1 3AB  \n\nDiagnosis: \n\nGeneralised epilepsy with absence seizures, currently experiencing absence seizures twice a week; valproate intolerant; improved on ethosuximide; lamotrigine adjunct under consideration if further optimisation required \n\nAetiology: \n\nPresumed genetic generalised epilepsy; no structural lesion on prior MRI; normal development and no perinatal complications reported \n\nOther Medical Problems: \n\nMild intermittent tension-type headaches; seasonal allergic rhinitis; no known drug allergies \n\nManagement Plan: \n\n- Continue ethosuximide 250 mg mane and 500 mg nocte.  \n- Arrange ambulatory EEG to characterise frequency of generalised spike–wave discharges given ongoing brief events at work.  \n- Safety advice provided regarding working between tall racking and narrow aisles: advised to alert supervisor to ongoing brief absences, to avoid ladder climbing and work at unprotected heights, and to use a buddy system for heavy lifting where feasible.  \n- Letter for employer supplied to support reasonable adjustments to pace of tasks on late shifts.  \n- Review in four months; consider addition of lamotrigine if absence burden persists. \n\nThis gentleman works as a warehouse picker operating between tall racking in narrow aisles with variable lifting demands and shift-dependent pace. He reports brief staring spells with loss of awareness lasting 5–10 seconds and no post-event confusion, occurring as absence seizures twice a week. He notes these are more likely during faster-paced evening shifts. There is no associated myoclonus or tonic–clonic activity, and no injuries to date. Adherence to ethosuximide has been good with improved concentration and reduced event duration compared with baseline, though the frequency remains as above. He has not tolerated valproate previously due to weight gain and gastrointestinal upset. We discussed DVLA guidance for generalised epilepsy and he is not currently driving. No medication side effects reported beyond mild transient dyspepsia. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter states: 'currently experiencing absence seizures twice a week' in the Diagnosis section. Later in the narrative: 'occurring as absence seizures twice a week.' Both indicate the same current frequency. Convert 'twice a week' to the allowed format '2 per week'. No other seizure types/frequencies are given that are higher. Therefore, final label is 2 per week.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "currently experiencing absence seizures twice a week"
+      ],
+      "reference": [
+        "2 per week",
+        "absence seizures twice a week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

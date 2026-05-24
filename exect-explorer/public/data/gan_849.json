@@ -1,0 +1,59 @@
+{
+  "id": "gan_849",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Amelia Hart\nRiverside Medical Practice\n\n12 Brook Lane, Southwark, London SE1 3AB\n\nDear Dr Amelia Hart\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Recurrent seizures of uncertain cause; prior investigations reviewed; management ongoing.\n\nKey background: The patient wears a smartwatch with fall-detection; alert timestamps may support event chronology and corroborate witness accounts.\n\nI reviewed Wendy Brown in clinic today. She attended alone and brought a summary export from her smartwatch showing several automated fall alerts over the past few years. She reports that her events typically occur without clear warning, with brief unresponsiveness and occasional confusion afterwards. She denies any consistent trigger. Notably, she states that she can go many months without an event, describing her pattern as “yearly seizures,” with some years having one event and others none. The smartwatch records, while not diagnostic, appear to align with this yearly seizures pattern and may help us verify timing relative to medication changes or intercurrent illness.\n\nPrevious investigations: Historical routine EEGs reported non-specific findings; an MRI brain from 2016 was reported as normal. No prior prolonged video telemetry available in our records. Bloods in 2023 (U&E, LFTs, FBC) were within reference ranges. No known structural cardiac disease; prior community ECG normal.\n\nCurrent medication: None for seizures at present. She uses vitamin D and a multivitamin. No known drug allergies.\n\nPatient-reported course since last contact: She describes one collapse last winter at home, with the smartwatch flagging a fall and notifying her partner. There was tongue biting reported by her partner but no incontinence. Recovery to baseline within 30–40 minutes. She has returned to full activities and is currently driving; we discussed driving regulations and the need to seek advice if another event occurs.\n\nPlan:\n- Provide seizure diary guidance and continue using the smartwatch; she will share timestamps for correlation with any clinical events.\n- Offer optional education session with our epilepsy specialist nurse regarding safety planning (bathroom safety, cooking, public transport) and first-aid advice for witnesses.\n- Arrange repeat routine EEG and consider ambulatory EEG if events recur.\n- Blood tests: U&E, LFTs, FBC, glucose, bone profile, vitamin D.\n- Provide written information on when to seek urgent care (prolonged events >5 minutes, cluster of events, injury) and on SUDEP awareness.\n- Follow-up in 6 months, sooner if another event occurs, to review whether treatment is indicated based on recurrence. She understands that her current pattern is of yearly seizures and agrees to contact the service promptly if there is any change in frequency or severity.\n\nThank you for your ongoing care. Please let me know if there are any concerns or if you receive further information from the smartwatch alerts that would help our review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 896,
+      "end": 1047,
+      "text": "she states that she can go many months without an event, describing her pattern as “yearly seizures,” with some years having one event and others none.",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 980,
+      "end": 995,
+      "text": "yearly seizures",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 849,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Amelia Hart\nRiverside Medical Practice\n\n12 Brook Lane, Southwark, London SE1 3AB\n\nDear Dr Amelia Hart\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Recurrent seizures of uncertain cause; prior investigations reviewed; management ongoing.\n\nKey background: The patient wears a smartwatch with fall-detection; alert timestamps may support event chronology and corroborate witness accounts.\n\nI reviewed Wendy Brown in clinic today. She attended alone and brought a summary export from her smartwatch showing several automated fall alerts over the past few years. She reports that her events typically occur without clear warning, with brief unresponsiveness and occasional confusion afterwards. She denies any consistent trigger. Notably, she states that she can go many months without an event, describing her pattern as “yearly seizures,” with some years having one event and others none. The smartwatch records, while not diagnostic, appear to align with this yearly seizures pattern and may help us verify timing relative to medication changes or intercurrent illness.\n\nPrevious investigations: Historical routine EEGs reported non-specific findings; an MRI brain from 2016 was reported as normal. No prior prolonged video telemetry available in our records. Bloods in 2023 (U&E, LFTs, FBC) were within reference ranges. No known structural cardiac disease; prior community ECG normal.\n\nCurrent medication: None for seizures at present. She uses vitamin D and a multivitamin. No known drug allergies.\n\nPatient-reported course since last contact: She describes one collapse last winter at home, with the smartwatch flagging a fall and notifying her partner. There was tongue biting reported by her partner but no incontinence. Recovery to baseline within 30–40 minutes. She has returned to full activities and is currently driving; we discussed driving regulations and the need to seek advice if another event occurs.\n\nPlan:\n- Provide seizure diary guidance and continue using the smartwatch; she will share timestamps for correlation with any clinical events.\n- Offer optional education session with our epilepsy specialist nurse regarding safety planning (bathroom safety, cooking, public transport) and first-aid advice for witnesses.\n- Arrange repeat routine EEG and consider ambulatory EEG if events recur.\n- Blood tests: U&E, LFTs, FBC, glucose, bone profile, vitamin D.\n- Provide written information on when to seek urgent care (prolonged events >5 minutes, cluster of events, injury) and on SUDEP awareness.\n- Follow-up in 6 months, sooner if another event occurs, to review whether treatment is indicated based on recurrence. She understands that her current pattern is of yearly seizures and agrees to contact the service promptly if there is any change in frequency or severity.\n\nThank you for your ongoing care. Please let me know if there are any concerns or if you receive further information from the smartwatch alerts that would help our review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes the patient's pattern as “yearly seizures,” with some years having one event and others none. This indicates an approximate frequency of 1 per year (i.e., on average yearly). There are no mentions of more frequent events or clusters. The patient had one collapse last winter, consistent with the yearly pattern. According to the rules, select the highest frequency mentioned; here the explicit numeric implication is one event in a year, normalized to '1 per year'.",
+      "seizure_frequency_number": [
+        "1 per year",
+        "she states that she can go many months without an event, describing her pattern as “yearly seizures,” with some years having one event and others none."
+      ],
+      "reference": [
+        "1 per year",
+        "yearly seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

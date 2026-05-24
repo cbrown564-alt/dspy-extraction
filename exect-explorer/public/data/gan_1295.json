@@ -1,0 +1,59 @@
+{
+  "id": "gan_1295",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 14 May 2014 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nAlex Morgan, DOB: 22-07-1988, Hospital No: U748520 NHS No. 0037194628  \nFlat 12, 4 Stonebridge Court, London, NW1 8RJ \n\nSummary/ Diagnoses: Epilepsy/anxiety with low mood features/insomnia complaints/intermittent medication non-adherence reported. \n\nMedication: Levetiracetam 750mg twice daily.  \nSertraline 50mg once daily.  \nOmeprazole 20mg once daily.  \nVitamin D3 1000 IU once daily.  \n\nI reviewed the patient in clinic today, attending alone. They described a recent period of increased stress at work and difficulties with sleep initiation and maintenance over the past three weeks. Appetite is stable. No new neurological focal symptoms reported. On examination today, they were alert and oriented, with normal speech and language. Cranial nerves intact, power 5/5 throughout, tone and coordination normal, gait steady. No injuries noted. \n\nSeizures: The patient reports one seizures yesterday, occurring late afternoon after a disrupted night and having missed the morning dose of levetiracetam. They describe a brief prodrome of unease and palpitations followed by loss of awareness. There was a short post-event period of fatigue without head injury or tongue bite. They have otherwise not noticed events in the preceding weeks. No seizure diary was brought today; they plan to restart daily logging using a phone app. \n\nMood/anxiety: The patient reports persistent worry, early-morning waking, and reduced enjoyment of usual activities over the last month, attributing this to workplace pressures. They deny thoughts of self-harm. They feel sertraline is partially helpful and are open to psychological support. \n\nPlan:  \n- Continue levetiracetam 750mg twice daily; emphasised adherence and strategies to avoid missed doses (phone alarms and weekly pill organiser).  \n- Safety advice reinforced regarding sleep hygiene, regular meals, and avoiding alcohol excess.  \n- Continue sertraline 50mg daily; patient-reported benefit to be reviewed by GP/IAPT and consider talking therapies referral.  \n- Request practice to check recent bloods (U&E, LFT, vitamin D) and thyroid function given low mood and fatigue; please forward results.  \n- Patient to maintain seizure diary and contact the clinic if further events occur, injuries arise, or any medication side effects develop.  \n- Follow-up in neurology clinic in 4–6 months, sooner if needed.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1094,
+      "end": 1136,
+      "text": "The patient reports one seizures yesterday",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1114,
+      "end": 1136,
+      "text": "one seizures yesterday",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1295,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 14 May 2014 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nAlex Morgan, DOB: 22-07-1988, Hospital No: U748520 NHS No. 0037194628  \nFlat 12, 4 Stonebridge Court, London, NW1 8RJ \n\nSummary/ Diagnoses: Epilepsy/anxiety with low mood features/insomnia complaints/intermittent medication non-adherence reported. \n\nMedication: Levetiracetam 750mg twice daily.  \nSertraline 50mg once daily.  \nOmeprazole 20mg once daily.  \nVitamin D3 1000 IU once daily.  \n\nI reviewed the patient in clinic today, attending alone. They described a recent period of increased stress at work and difficulties with sleep initiation and maintenance over the past three weeks. Appetite is stable. No new neurological focal symptoms reported. On examination today, they were alert and oriented, with normal speech and language. Cranial nerves intact, power 5/5 throughout, tone and coordination normal, gait steady. No injuries noted. \n\nSeizures: The patient reports one seizures yesterday, occurring late afternoon after a disrupted night and having missed the morning dose of levetiracetam. They describe a brief prodrome of unease and palpitations followed by loss of awareness. There was a short post-event period of fatigue without head injury or tongue bite. They have otherwise not noticed events in the preceding weeks. No seizure diary was brought today; they plan to restart daily logging using a phone app. \n\nMood/anxiety: The patient reports persistent worry, early-morning waking, and reduced enjoyment of usual activities over the last month, attributing this to workplace pressures. They deny thoughts of self-harm. They feel sertraline is partially helpful and are open to psychological support. \n\nPlan:  \n- Continue levetiracetam 750mg twice daily; emphasised adherence and strategies to avoid missed doses (phone alarms and weekly pill organiser).  \n- Safety advice reinforced regarding sleep hygiene, regular meals, and avoiding alcohol excess.  \n- Continue sertraline 50mg daily; patient-reported benefit to be reviewed by GP/IAPT and consider talking therapies referral.  \n- Request practice to check recent bloods (U&E, LFT, vitamin D) and thyroid function given low mood and fatigue; please forward results.  \n- Patient to maintain seizure diary and contact the clinic if further events occur, injuries arise, or any medication side effects develop.  \n- Follow-up in neurology clinic in 4–6 months, sooner if needed.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"The patient reports one seizures yesterday... They have otherwise not noticed events in the preceding weeks.\" This indicates a single seizure occurred yesterday, with no other events in recent weeks. There is no longer-term seizure-free period of 6 months, so we should calculate current frequency based on the recent report. The highest explicit frequency is 1 seizure in 1 day (yesterday). Thus, normalize to '1 per day'.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "The patient reports one seizures yesterday"
+      ],
+      "reference": [
+        "1 per day",
+        "one seizures yesterday"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

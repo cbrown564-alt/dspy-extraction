@@ -1,0 +1,59 @@
+{
+  "id": "gan_15250",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 April 2022 \n\nDr Linh Patel\nNorthgate Medical Centre\n\n14 Northgate Road, London, SE5 3HT\nDear Dr Linh Patel\nMs Emily Carter, DOB: 21-11-1982, Hospital No: H728391 NHS No. 8076543321\n22B Larkspur Court, Peckham, London, SE15 4NZ \n\nI reviewed the above patient in the Neurology Clinic today. She has been practicing aura recognition strategies as previously discussed, and is able to describe warning features in her own words. She reports a rising internal sensation, a brief metallic taste, and a momentary sense of detachment that typically precede events by 10–30 seconds, allowing her to sit or alert family. Her last convulsive seizure was recorded in Jan-2021, with occasional clusters of myoclonic jerks persisting. She notes that the myoclonic clusters are more likely on mornings following poor sleep or heightened stress, and she has been keeping a diary to identify triggers.\n\nSince her last attendance, she has continued on Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. without adverse effects beyond mild morning lethargy. She denies rash, mood lability, or visual disturbance. There is no history of injury or incontinence with recent events. She does not drive. She has found the structured aura logging useful and has shared entries that include context, time of day, and possible precipitating factors (notably sleep disruption and missed meals). Family members have been shown her safety plan for when warning features occur, and she uses a phone alert to prompt a seated position and slow breathing exercises.\n\nNeurological examination today was unremarkable. There were no focal findings, and cognition and language were intact on bedside assessment. Routine bloods from last month (U&E, LFTs, FBC) were within normal limits. She is awaiting community sleep advice for insomnia strategies, which may further reduce morning myoclonic activity. We discussed that if the myoclonic clusters increase in frequency or begin occurring without her usual warning features, she should contact the service for earlier review. For now, given the stability with no convulsions since Jan-2021 and tolerability of her current regimen, I have not made changes to medication. I encouraged continuation of the seizure diary and aura description in her own words, as this has been helpful in anticipating events and improving safety.\n\nI will review her again in four months, or sooner if there is any deterioration, loss of warning features, or emergence of adverse effects.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 656,
+      "end": 764,
+      "text": "Her last convulsive seizure was recorded in Jan-2021, with occasional clusters of myoclonic jerks persisting",
+      "attributes": {
+        "Label": "multiple cluster per 15 month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 656,
+      "end": 764,
+      "text": "Her last convulsive seizure was recorded in Jan-2021, with occasional clusters of myoclonic jerks persisting",
+      "attributes": {
+        "Label": "multiple cluster per 15 month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15250,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 April 2022 \n\nDr Linh Patel\nNorthgate Medical Centre\n\n14 Northgate Road, London, SE5 3HT\nDear Dr Linh Patel\nMs Emily Carter, DOB: 21-11-1982, Hospital No: H728391 NHS No. 8076543321\n22B Larkspur Court, Peckham, London, SE15 4NZ \n\nI reviewed the above patient in the Neurology Clinic today. She has been practicing aura recognition strategies as previously discussed, and is able to describe warning features in her own words. She reports a rising internal sensation, a brief metallic taste, and a momentary sense of detachment that typically precede events by 10–30 seconds, allowing her to sit or alert family. Her last convulsive seizure was recorded in Jan-2021, with occasional clusters of myoclonic jerks persisting. She notes that the myoclonic clusters are more likely on mornings following poor sleep or heightened stress, and she has been keeping a diary to identify triggers.\n\nSince her last attendance, she has continued on Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. without adverse effects beyond mild morning lethargy. She denies rash, mood lability, or visual disturbance. There is no history of injury or incontinence with recent events. She does not drive. She has found the structured aura logging useful and has shared entries that include context, time of day, and possible precipitating factors (notably sleep disruption and missed meals). Family members have been shown her safety plan for when warning features occur, and she uses a phone alert to prompt a seated position and slow breathing exercises.\n\nNeurological examination today was unremarkable. There were no focal findings, and cognition and language were intact on bedside assessment. Routine bloods from last month (U&E, LFTs, FBC) were within normal limits. She is awaiting community sleep advice for insomnia strategies, which may further reduce morning myoclonic activity. We discussed that if the myoclonic clusters increase in frequency or begin occurring without her usual warning features, she should contact the service for earlier review. For now, given the stability with no convulsions since Jan-2021 and tolerability of her current regimen, I have not made changes to medication. I encouraged continuation of the seizure diary and aura description in her own words, as this has been helpful in anticipating events and improving safety.\n\nI will review her again in four months, or sooner if there is any deterioration, loss of warning features, or emergence of adverse effects.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify the review date: 11 April 2022. 2) Identify seizure activity: the patient has ongoing myoclonic seizures occurring in clusters (\"occasional clusters of myoclonic jerks persisting\"). 3) Identify the time anchor provided: \"Her last convulsive seizure was recorded in Jan-2021.\" The letter implies that since that time, myoclonic clusters have persisted. 4) Calculate the interval from Jan-2021 to 11-Apr-2022: Jan-2021 → Jan-2022 = 12 months; Jan-2022 → Apr-2022 = 3 months; total = 15 months. 5) Determine frequency: exact counts are not provided; \"occasional\" and the plural \"clusters\" indicate more than one cluster within this 15-month interval, so the cluster count is multiple. The number of jerks within a cluster is inherently more than one; exact count not given, so use \"multiple per cluster.\" 6) Apply highest-frequency rule: convulsive seizures are absent since Jan-2021, but myoclonic clusters are ongoing; therefore, the clusters represent the current seizure frequency to report. 7) Normalize to allowed format: \"multiple cluster per 15 month, multiple per cluster.\"",
+      "seizure_frequency_number": [
+        "multiple cluster per 15 month, multiple per cluster",
+        "Her last convulsive seizure was recorded in Jan-2021, with occasional clusters of myoclonic jerks persisting"
+      ],
+      "reference": [
+        "multiple cluster per 15 month, multiple per cluster",
+        "Her last convulsive seizure was recorded in Jan-2021, with occasional clusters of myoclonic jerks persisting"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

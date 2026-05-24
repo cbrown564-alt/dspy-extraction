@@ -1,0 +1,54 @@
+{
+  "id": "gan_1317",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 09 August 2024 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nMs Hannah Cooper, DOB: 22-03-1992, Hospital No: KCH482917 NHS No. 9432085617  \nTemporary Accommodation, Flat 3B, 12 Ashford Road, London, SE15 4QT  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; diagnostic classification not yet determined\n\nAetiology: \n\nUnclear; no structural lesion identified to date. Awaiting results of repeat EEG with sleep deprivation and ambulatory ECG to exclude cardiac overlap.\n\nOther Medical Problems: \n\nGeneralised anxiety symptoms under primary care monitoring. Seasonal allergic rhinitis managed with intermittent antihistamines. No history of head injury, CNS infection, or febrile convulsions reported.\n\nManagement Plan: \n\n- Continue Levetiracetam 750 mg twice daily; patient reports acceptable tolerability apart from mild irritability. \n- Provide a short course of Pyridoxine 10 mg daily for six weeks to assess impact on mood symptoms, with safety-net advice.\n- Arrange sleep-deprived EEG within 4 weeks; MRI brain (epilepsy protocol) already scheduled for next month.\n- Community epilepsy nurse to contact within 10 days for safety review and support around housing-related stress.\n- Seizure first-aid reinforced; advised to maintain a written and app-based seizure diary with witness accounts if possible.\n- Driving: standard DVLA guidance discussed; patient confirms they have informed DVLA and are not currently driving.\n- Review in clinic in 10–12 weeks or earlier if events escalate.\n\nSince the last appointment, Ms Hannah Cooper described a cluster of events over a single day, reporting multiple short episodes within that 24-hour period consistent with their typical events (brief loss of awareness with post-event confusion lasting 5–10 minutes, no tongue bite or incontinence). No clear trigger identified, though sleep disruption and increased stress were noted due to crowded temporary accommodation while awaiting relocation. Recovery was spontaneous and there was no injury. They had previously been largely event-free for several weeks.\n\nWe discussed lifestyle measures including sleep regularity, hydration, and limiting alcohol. They remain motivated to continue current therapy pending further investigations. I have not altered anti-seizure medication dosing today in view of the recent cluster occurring alongside poor sleep and environmental stressors; we will reassess after the EEG and MRI.\n\nPlease contact me if there are any concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1702,
+      "end": 1801,
+      "text": "a cluster of events over a single day, reporting multiple short episodes within that 24-hour period",
+      "attributes": {
+        "Label": "unknown, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1317,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 09 August 2024 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nMs Hannah Cooper, DOB: 22-03-1992, Hospital No: KCH482917 NHS No. 9432085617  \nTemporary Accommodation, Flat 3B, 12 Ashford Road, London, SE15 4QT  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; diagnostic classification not yet determined\n\nAetiology: \n\nUnclear; no structural lesion identified to date. Awaiting results of repeat EEG with sleep deprivation and ambulatory ECG to exclude cardiac overlap.\n\nOther Medical Problems: \n\nGeneralised anxiety symptoms under primary care monitoring. Seasonal allergic rhinitis managed with intermittent antihistamines. No history of head injury, CNS infection, or febrile convulsions reported.\n\nManagement Plan: \n\n- Continue Levetiracetam 750 mg twice daily; patient reports acceptable tolerability apart from mild irritability. \n- Provide a short course of Pyridoxine 10 mg daily for six weeks to assess impact on mood symptoms, with safety-net advice.\n- Arrange sleep-deprived EEG within 4 weeks; MRI brain (epilepsy protocol) already scheduled for next month.\n- Community epilepsy nurse to contact within 10 days for safety review and support around housing-related stress.\n- Seizure first-aid reinforced; advised to maintain a written and app-based seizure diary with witness accounts if possible.\n- Driving: standard DVLA guidance discussed; patient confirms they have informed DVLA and are not currently driving.\n- Review in clinic in 10–12 weeks or earlier if events escalate.\n\nSince the last appointment, Ms Hannah Cooper described a cluster of events over a single day, reporting multiple short episodes within that 24-hour period consistent with their typical events (brief loss of awareness with post-event confusion lasting 5–10 minutes, no tongue bite or incontinence). No clear trigger identified, though sleep disruption and increased stress were noted due to crowded temporary accommodation while awaiting relocation. Recovery was spontaneous and there was no injury. They had previously been largely event-free for several weeks.\n\nWe discussed lifestyle measures including sleep regularity, hydration, and limiting alcohol. They remain motivated to continue current therapy pending further investigations. I have not altered anti-seizure medication dosing today in view of the recent cluster occurring alongside poor sleep and environmental stressors; we will reassess after the EEG and MRI.\n\nPlease contact me if there are any concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states that since the last appointment the patient had a \"cluster of events over a single day\" with \"multiple short episodes within that 24-hour period.\" It also notes they had been largely event-free for several weeks prior. There is no explicit count of seizures within the cluster and no clear rate of clusters over a defined time period. Because a cluster is described but the frequency of clusters per time is not provided, the most accurate normalization is the cluster format with unknown cluster rate and 'multiple' seizures per cluster.",
+      "seizure_frequency_number": [
+        "unknown, multiple per cluster",
+        "a cluster of events over a single day, reporting multiple short episodes within that 24-hour period"
+      ],
+      "reference": [
+        "multiple per day",
+        "various seizures yesterday"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown, multiple per cluster) disagrees with Reference (multiple per day)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

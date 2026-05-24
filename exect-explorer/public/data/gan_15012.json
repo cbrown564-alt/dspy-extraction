@@ -1,0 +1,59 @@
+{
+  "id": "gan_15012",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 24 July 2017 \n\nDr Jonathan Reed  \nSt George’s Hospital  \nBlackshaw Road, Tooting, London SW17 0QT  \n\nDear Dr Jonathan Reed,  \n\nMichael Turner, DOB: 14-02-1999, Hospital No: A927451 NHS No. 8473629501  \n12 Oakfield Close, Sutton, SM2 6PL  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Michael Turner today in the general neurology clinic accompanied by his mother. He has remained on his usual anti‑seizure medication without recent dose changes and reports good adherence. There have been no emergency presentations or injuries since his last appointment. After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23-May his absences settled with treatment. The most recent episode was on 31-May, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage. \n\nNeurological examination today was unremarkable. No focal deficits were identified. Routine bloods from his GP last month (FBC, U&E, LFTs) were within normal limits by report. We discussed lifestyle triggers; he notes sleep deprivation may have preceded the earlier events and has since maintained a regular sleep schedule with good effect. He and his family feel confident with his current rescue plan and have not needed to use rescue medication recently. \n\nPlan: \n- Continue current anti‑seizure medication unchanged.  \n- Reinforce sleep hygiene and adherence.  \n- Safety advice reiterated; no driving as per DVLA guidance until standard seizure‑free requirements are met.  \n- Routine follow‑up in 6 months, or sooner if events recur or worsen.  \n\nPlease do not hesitate to contact me if further information is required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 777,
+      "end": 848,
+      "text": "The most recent episode was on 31-May, and since then he has been well.",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 625,
+      "end": 968,
+      "text": "After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23-May his absences settled with treatment. The most recent episode was on 31-May, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15012,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 24 July 2017 \n\nDr Jonathan Reed  \nSt George’s Hospital  \nBlackshaw Road, Tooting, London SW17 0QT  \n\nDear Dr Jonathan Reed,  \n\nMichael Turner, DOB: 14-02-1999, Hospital No: A927451 NHS No. 8473629501  \n12 Oakfield Close, Sutton, SM2 6PL  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Michael Turner today in the general neurology clinic accompanied by his mother. He has remained on his usual anti‑seizure medication without recent dose changes and reports good adherence. There have been no emergency presentations or injuries since his last appointment. After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23-May his absences settled with treatment. The most recent episode was on 31-May, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage. \n\nNeurological examination today was unremarkable. No focal deficits were identified. Routine bloods from his GP last month (FBC, U&E, LFTs) were within normal limits by report. We discussed lifestyle triggers; he notes sleep deprivation may have preceded the earlier events and has since maintained a regular sleep schedule with good effect. He and his family feel confident with his current rescue plan and have not needed to use rescue medication recently. \n\nPlan: \n- Continue current anti‑seizure medication unchanged.  \n- Reinforce sleep hygiene and adherence.  \n- Safety advice reiterated; no driving as per DVLA guidance until standard seizure‑free requirements are met.  \n- Routine follow‑up in 6 months, or sooner if events recur or worsen.  \n\nPlease do not hesitate to contact me if further information is required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 24 July 2017. The letter states the most recent seizure episode was on 31-May and that since then he has been well, implying no further seizures up to the clinic date. He is not seizure-free for ≥6 months, so we calculate frequency from the interval since the last seizure: 31-May to 24-Jul ≈ 54 days ≈ ~2 months. Therefore current frequency ≈ 1 per 2 month.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "The most recent episode was on 31-May, and since then he has been well."
+      ],
+      "reference": [
+        "1 per 2 month",
+        "After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23-May his absences settled with treatment. The most recent episode was on 31-May, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

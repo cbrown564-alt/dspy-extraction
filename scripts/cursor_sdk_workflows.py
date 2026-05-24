@@ -94,6 +94,51 @@ PATHWAY_A_CARD_BRIEFS = {
         "validation": "Mission brief must name cap-25 gate, fixed scorer mode, baseline comparison, guarded-family regression threshold, allowed files, tests, and stop rules.",
         "stop": "Do not propose high-precision pruning as the arm; that candidate narrowing arm is already rejected.",
     },
+    "A2I": {
+        "title": "A2 verifier implementation pilot",
+        "role": "disposable-worktree implementation lane",
+        "sources": [
+            "docs/workstreams/cursor_sdk/pathway_a/a2_verifier_mission_brief_20260524.md",
+            "docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md",
+            "docs/datasets/exect/exect_gold_label_audit.md",
+            "docs/policies/deterministic_scorer_semantics.md",
+            "docs/taxonomy/taxonomy_primitive_catalog.md",
+            "configs/experiments/exect_s5_frequency_pre_vocab_am_guard_cap25_gpt4_1_mini.json",
+            "src/clinical_extraction/programs/exect_s4.py",
+            "src/clinical_extraction/programs/exect_s0_s1.py",
+            "src/clinical_extraction/exect/primitives.py",
+            "src/clinical_extraction/experiments/exect_backend.py",
+            "src/clinical_extraction/experiments/config.py",
+            "tests/",
+        ],
+        "allowed": (
+            "Implementation edits only in the mission-brief allow-list: "
+            "src/clinical_extraction/programs/exect_s4.py; "
+            "src/clinical_extraction/exect/primitives.py only for small evidence/candidate-block guard helpers; "
+            "src/clinical_extraction/experiments/exect_backend.py; "
+            "src/clinical_extraction/experiments/config.py; "
+            "src/clinical_extraction/experiments/exect_prompts.py only if prompt routing requires it; "
+            "configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini.json; "
+            "tests/test_exect_s5_frequency_verifier.py; existing focused config/scorer tests if registration needs them; "
+            "and a disposable inspection draft under docs/experiments/exect/."
+        ),
+        "forbidden": (
+            "No raw data, gold labels, split definitions, scorer denominator, scorer normalization, "
+            "benchmark bridge semantics, high-recall candidate builder output/density, medication guard semantics, "
+            "registry rows, Kanban status, paper claims, operational defaults, or full-validation execution."
+        ),
+        "validation": (
+            "Run focused tests first: uv run --extra dev pytest tests/test_exect_s5_frequency_verifier.py "
+            "tests/test_exect_s5_scoring.py tests/test_experiment_configs.py -q; then "
+            "uv run python scripts/validate_experiment_taxonomy.py --errors-only. "
+            "Run the cap-25 experiment only after tests pass."
+        ),
+        "stop": (
+            "Stop if the verifier changes scorer/gold semantics, narrows candidates, adds labels or repairs FNs, "
+            "drops labels without note-evidence rationale, materially reduces frequency recall, regresses guard families, "
+            "or becomes a hidden normalization/scorer rewrite."
+        ),
+    },
     "A3D": {
         "title": "A3 prompt-policy design brief",
         "role": "design brief lane",
@@ -683,7 +728,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--topic")
     parser.add_argument(
         "--card",
-        help="Pathway A card ID for pathway-a-card, such as A1R, A2D, or A3D.",
+        help="Pathway A card ID for pathway-a-card, such as A1R, A2D, A2I, or A3D.",
     )
     parser.add_argument(
         "--lane",

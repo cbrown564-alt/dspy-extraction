@@ -1,0 +1,47 @@
+{
+  "id": "gan_11400",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 07 September 2022\n\nDr Patel\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Patel\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for referring the above patient for review in the Neurology Clinic. He reports a persistently high daily caffeine intake (multiple energy drinks and coffee), which he acknowledges and is willing to reduce. He is otherwise well with no new focal neurological complaints. Examination in clinic today was unremarkable.\n\nI have advised a gradual reduction of caffeine over two to three weeks to minimise withdrawal symptoms, increased hydration, regular sleep, and avoidance of energy drinks. I have requested a routine epilepsy clinic appointment within the next 6–8 weeks to assess progress and consider further management if required. No new medication has been started today.\n\nPlease could your team support the caffeine reduction plan and provide brief lifestyle advice in the interim. I will update you following the clinic appointment.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11400,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 07 September 2022\n\nDr Patel\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Patel\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for referring the above patient for review in the Neurology Clinic. He reports a persistently high daily caffeine intake (multiple energy drinks and coffee), which he acknowledges and is willing to reduce. He is otherwise well with no new focal neurological complaints. Examination in clinic today was unremarkable.\n\nI have advised a gradual reduction of caffeine over two to three weeks to minimise withdrawal symptoms, increased hydration, regular sleep, and avoidance of energy drinks. I have requested a routine epilepsy clinic appointment within the next 6–8 weeks to assess progress and consider further management if required. No new medication has been started today.\n\nPlease could your team support the caffeine reduction plan and provide brief lifestyle advice in the interim. I will update you following the clinic appointment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses caffeine reduction, lifestyle advice, and a plan for a routine epilepsy clinic appointment. It does not state that the patient is having seizures, provide any seizure counts, or indicate seizure-free duration. There is no explicit mention of seizures or seizure frequency.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter about a new epilepsy clinic appointment request"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

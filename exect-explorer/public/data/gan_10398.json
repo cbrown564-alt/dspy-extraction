@@ -1,0 +1,59 @@
+{
+  "id": "gan_10398",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Aisha Rahman\nSouth Thames Neurology Centre\nNeurology Department, St George’s Healthcare, Blackshaw Road, London SW17 0QT\n\nDear Dr Aisha Rahman,\n\nRe: Alex Turner, DOB: 14-03-1990, Hospital No: L392847, NHS No: 9057314628\nAddress: 12 Brookfield Close, Wimbledon, London SW19 4AB\n\nSummary:\n- History of episodic events compatible with seizures. Cluster burden increased since 1 January 2024; now weekly, two per cluster.\n- Prior EEG and MRI reportedly non-diagnostic per patient account (records not yet obtained).\n- Keeps an assistance dog in training that alerts to early behavioural changes prior to events.\n\nCurrent medication:\n- Lamotrigine 75 mg twice daily (patient reports good adherence, no notable adverse effects)\n\nClinic narrative:\nI reviewed Alex Turner in clinic today, accompanied by their assistance dog in training. Since our last contact, they report that the pattern of events has changed: cluster burden increased since 1 January 2024; now weekly, two per cluster. Each cluster typically involves brief loss of awareness with automatisms lasting under two minutes, followed by fatigue and headache. No clear injuries have occurred. The dog has begun alerting several minutes before events, allowing Alex Turner to reach a safe position.\n\nTriggers discussed include sleep disruption and high cognitive load at work; alcohol intake is minimal. There are no new neurological symptoms between events. They continue Lamotrigine 75 mg twice daily without rash, mood change, or dizziness. Driving is not being undertaken and workplace safety strategies are in place.\n\nExamination today was unremarkable. We do not yet have the external EEG/MRI reports; the patient recalls they were non-diagnostic. I have requested copies and will review when available.\n\nPlan:\n- Continue Lamotrigine 75 mg twice daily for now while we clarify the recent increase in cluster frequency.\n- Arrange repeat routine EEG with sleep deprivation protocol; consider ambulatory EEG if routine study is non-contributory.\n- Request prior imaging and EEG reports from the referring centre; consider updated MRI depending on results and evolution of symptoms.\n- Seizure safety reinforced, including use of the assistance dog alerts to reach a safe environment, maintaining regular sleep, and avoiding bathing unsupervised.\n- Provide a seizure diary template to document timing, clustering, potential triggers, and any prodromal cues noted by the dog.\n- Follow-up in 3 months, or sooner if events escalate, injuries occur, or new focal neurological features emerge.\n\nI will update you once the investigations and external records are reviewed. Please let me know if there are any concerns in the interim.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 447,
+      "end": 474,
+      "text": "now weekly, two per cluster",
+      "attributes": {
+        "Label": "1 cluster per week, 2 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 400,
+      "end": 474,
+      "text": "Cluster burden increased since 1 January 2024; now weekly, two per cluster",
+      "attributes": {
+        "Label": "1 cluster per week, 2 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10398,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Aisha Rahman\nSouth Thames Neurology Centre\nNeurology Department, St George’s Healthcare, Blackshaw Road, London SW17 0QT\n\nDear Dr Aisha Rahman,\n\nRe: Alex Turner, DOB: 14-03-1990, Hospital No: L392847, NHS No: 9057314628\nAddress: 12 Brookfield Close, Wimbledon, London SW19 4AB\n\nSummary:\n- History of episodic events compatible with seizures. Cluster burden increased since 1 January 2024; now weekly, two per cluster.\n- Prior EEG and MRI reportedly non-diagnostic per patient account (records not yet obtained).\n- Keeps an assistance dog in training that alerts to early behavioural changes prior to events.\n\nCurrent medication:\n- Lamotrigine 75 mg twice daily (patient reports good adherence, no notable adverse effects)\n\nClinic narrative:\nI reviewed Alex Turner in clinic today, accompanied by their assistance dog in training. Since our last contact, they report that the pattern of events has changed: cluster burden increased since 1 January 2024; now weekly, two per cluster. Each cluster typically involves brief loss of awareness with automatisms lasting under two minutes, followed by fatigue and headache. No clear injuries have occurred. The dog has begun alerting several minutes before events, allowing Alex Turner to reach a safe position.\n\nTriggers discussed include sleep disruption and high cognitive load at work; alcohol intake is minimal. There are no new neurological symptoms between events. They continue Lamotrigine 75 mg twice daily without rash, mood change, or dizziness. Driving is not being undertaken and workplace safety strategies are in place.\n\nExamination today was unremarkable. We do not yet have the external EEG/MRI reports; the patient recalls they were non-diagnostic. I have requested copies and will review when available.\n\nPlan:\n- Continue Lamotrigine 75 mg twice daily for now while we clarify the recent increase in cluster frequency.\n- Arrange repeat routine EEG with sleep deprivation protocol; consider ambulatory EEG if routine study is non-contributory.\n- Request prior imaging and EEG reports from the referring centre; consider updated MRI depending on results and evolution of symptoms.\n- Seizure safety reinforced, including use of the assistance dog alerts to reach a safe environment, maintaining regular sleep, and avoiding bathing unsupervised.\n- Provide a seizure diary template to document timing, clustering, potential triggers, and any prodromal cues noted by the dog.\n- Follow-up in 3 months, or sooner if events escalate, injuries occur, or new focal neurological features emerge.\n\nI will update you once the investigations and external records are reviewed. Please let me know if there are any concerns in the interim.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current pattern: \"cluster burden increased since 1 January 2024; now weekly, two per cluster.\" This provides both the cluster frequency (weekly) and the number of seizures per cluster (two). There are no other conflicting frequencies mentioned. Therefore, normalize to the allowed format indicating clusters per week and seizures per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per week, 2 per cluster",
+        "now weekly, two per cluster"
+      ],
+      "reference": [
+        "1 cluster per week, 2 per cluster",
+        "Cluster burden increased since 1 January 2024; now weekly, two per cluster"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

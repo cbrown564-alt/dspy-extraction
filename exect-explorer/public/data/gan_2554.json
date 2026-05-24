@@ -1,0 +1,59 @@
+{
+  "id": "gan_2554",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJordan Ellis, DOB: 14-05-1990, Hospital No: H928415 NHS No. 5839201746  \n12 Platform Mews, London, NW1 5AL \n\nMedication: \n\nLevetiracetam 750 mg twice daily. No adverse effects reported beyond mild initial fatigue which has since settled. Rescue medication not currently prescribed.\n\nHistory and current status: \n\nJordan Ellis works full-time on the gate line at a busy metropolitan station where prolonged standing, loud announcements, and intermittent crowd surges are routine. Over the review interval, they report 1 - 10 focal aware seizures during the last two months. These events typically last 30–60 seconds, with preserved awareness, a rising epigastric sensation, brief right-hand tingling, and occasional déjà vu. There is no loss of consciousness, falls, or post-event confusion. Episodes are more likely during late shifts after consecutive long days or when managing sudden influxes of passengers. No clear alcohol excess or sleep deprivation beyond shift-related variability. No recent head injury. \n\nWorkplace context: \n\nThey have adopted informal strategies at work such as stepping back from the barrier line and signalling colleagues when the aura begins. They report that bright LED signage and continuous standing near the ticket gates may act as non-specific stressors. They remain fit for duties from their perspective, as the events are brief and fully aware, but they would value a formal occupational health review to consider adjustments (e.g. scheduled micro-breaks, rotation away from peak surge periods) to reduce triggers. \n\nPlan: \n\n- Continue levetiracetam 750 mg twice daily. If the frequency increases or new features emerge (loss of awareness, injury, or generalisation), we will consider dose optimisation after serum level review and discuss alternative agents if needed.  \n- Provide a brief written summary for occupational health outlining the brief, aware nature of events and typical precipitating circumstances, at the patient’s request.  \n- Safety counselling reinforced regarding working near moving crowds and the importance of adequate rest between shifts. Driving advice remains per DVLA standards for their current event profile.  \n- Arrange routine EEG and updated MRI as part of ongoing evaluation.  \n\nFollow-up: \n\nWe will review in clinic in four months, sooner if there is any deterioration or change in semiology. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 693,
+      "end": 759,
+      "text": "they report 1 - 10 focal aware seizures during the last two months",
+      "attributes": {
+        "Label": "1 to 10 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 705,
+      "end": 759,
+      "text": "1 - 10 focal aware seizures during the last two months",
+      "attributes": {
+        "Label": "1 to 10 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2554,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJordan Ellis, DOB: 14-05-1990, Hospital No: H928415 NHS No. 5839201746  \n12 Platform Mews, London, NW1 5AL \n\nMedication: \n\nLevetiracetam 750 mg twice daily. No adverse effects reported beyond mild initial fatigue which has since settled. Rescue medication not currently prescribed.\n\nHistory and current status: \n\nJordan Ellis works full-time on the gate line at a busy metropolitan station where prolonged standing, loud announcements, and intermittent crowd surges are routine. Over the review interval, they report 1 - 10 focal aware seizures during the last two months. These events typically last 30–60 seconds, with preserved awareness, a rising epigastric sensation, brief right-hand tingling, and occasional déjà vu. There is no loss of consciousness, falls, or post-event confusion. Episodes are more likely during late shifts after consecutive long days or when managing sudden influxes of passengers. No clear alcohol excess or sleep deprivation beyond shift-related variability. No recent head injury. \n\nWorkplace context: \n\nThey have adopted informal strategies at work such as stepping back from the barrier line and signalling colleagues when the aura begins. They report that bright LED signage and continuous standing near the ticket gates may act as non-specific stressors. They remain fit for duties from their perspective, as the events are brief and fully aware, but they would value a formal occupational health review to consider adjustments (e.g. scheduled micro-breaks, rotation away from peak surge periods) to reduce triggers. \n\nPlan: \n\n- Continue levetiracetam 750 mg twice daily. If the frequency increases or new features emerge (loss of awareness, injury, or generalisation), we will consider dose optimisation after serum level review and discuss alternative agents if needed.  \n- Provide a brief written summary for occupational health outlining the brief, aware nature of events and typical precipitating circumstances, at the patient’s request.  \n- Safety counselling reinforced regarding working near moving crowds and the importance of adequate rest between shifts. Driving advice remains per DVLA standards for their current event profile.  \n- Arrange routine EEG and updated MRI as part of ongoing evaluation.  \n\nFollow-up: \n\nWe will review in clinic in four months, sooner if there is any deterioration or change in semiology. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the review interval, they report 1 - 10 focal aware seizures during the last two months.' This provides a numeric range and a time period. Normalize the hyphenated range to '1 to 10' and convert 'last two months' to 'per 2 month' per the allowed format. No other frequencies are provided that would supersede this. The patient is not seizure-free as events occurred within the last two months.",
+      "seizure_frequency_number": [
+        "1 to 10 per 2 month",
+        "they report 1 - 10 focal aware seizures during the last two months"
+      ],
+      "reference": [
+        "1 to 10 per 2 month",
+        "1 - 10 focal aware seizures during the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

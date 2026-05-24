@@ -1,0 +1,59 @@
+{
+  "id": "gan_16420",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Emilie Hart\nBrixton Hill Group Practice\n\n312 Brixton Hill, London, SW2 1NR\nDear Dr Emilie Hart\nMichael Turner, DOB: 21-11-1982, Hospital No: K823771 NHS No. 7483926150\nFlat 3, 27 Elmcourt Road, London, SE27 9BU \n\nI reviewed the above patient in the Neurology Clinic today. He was last seen in April 2025. Since then, he reports a deterioration around the exam and professional assessment period, with heightened stress levels noted by both himself and his family. He continues to take his regular antiepileptic medications as prescribed and states adherence has been good. He mentions worsened sleep quality, early-morning awakenings, and intermittent appetite reduction during high‑pressure weeks, which he associates with the run‑up to assessments.\n\nSeizure pattern appears largely unchanged, with events approximately every five days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September. He describes the more intense periods as clustering around deadlines, with post‑event fatigue and reduced concentration lasting up to 48 hours. He has not reported new focal neurological symptoms between events. There has been no head injury. A colleague witnessed one episode at work and described behavioural arrest with unresponsiveness followed by a prolonged period of disorientation.\n\nCurrent treatment includes Levetiracetam 1.5 g b.d., Lamotrigine 200 mg b.d., and Clobazam 10 mg nocte with an additional 5 mg prn for clusters on specialist advice. He carries buccal midazolam as rescue therapy via the community protocol. He tolerates medication reasonably but notes increased irritability and daytime tiredness, which he and his partner feel are worse during the assessment season. Routine bloods in June were satisfactory, including LFTs and U&Es. There is no rash or systemic symptomatology to suggest adverse drug reaction.\n\nGiven the temporal association with heightened stress and the recent requirement for rescue therapy, I am concerned that overall control is deteriorating under pressure, despite stable day‑to‑day background frequency. We discussed practical measures he is already using (structured sleep schedule, reducing late‑evening screen time, and logging events on his seizure diary). He is open to brief psychological support targeting stress management and anticipatory anxiety around assessments, and I have asked our epilepsy specialist nurse to make contact. He understands driving and safety guidance and continues to observe standard precautions at home and work.\n\nI will arrange an expedited review in 8 weeks, aiming to capture another assessment period. Should there be further escalation, particularly additional rescue medication use or injury, he will contact the service promptly. I will also request an updated occupational health note to support reasonable adjustments during assessments (flexible timing and rest breaks), as stress appears to be a significant exacerbating factor by patient report.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 815,
+      "end": 900,
+      "text": "Seizure pattern appears largely unchanged, with events approximately every five days.",
+      "attributes": {
+        "Label": "1 per 5 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 815,
+      "end": 999,
+      "text": "Seizure pattern appears largely unchanged, with events approximately every five days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September",
+      "attributes": {
+        "Label": "1 per 5 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16420,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Emilie Hart\nBrixton Hill Group Practice\n\n312 Brixton Hill, London, SW2 1NR\nDear Dr Emilie Hart\nMichael Turner, DOB: 21-11-1982, Hospital No: K823771 NHS No. 7483926150\nFlat 3, 27 Elmcourt Road, London, SE27 9BU \n\nI reviewed the above patient in the Neurology Clinic today. He was last seen in April 2025. Since then, he reports a deterioration around the exam and professional assessment period, with heightened stress levels noted by both himself and his family. He continues to take his regular antiepileptic medications as prescribed and states adherence has been good. He mentions worsened sleep quality, early-morning awakenings, and intermittent appetite reduction during high‑pressure weeks, which he associates with the run‑up to assessments.\n\nSeizure pattern appears largely unchanged, with events approximately every five days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September. He describes the more intense periods as clustering around deadlines, with post‑event fatigue and reduced concentration lasting up to 48 hours. He has not reported new focal neurological symptoms between events. There has been no head injury. A colleague witnessed one episode at work and described behavioural arrest with unresponsiveness followed by a prolonged period of disorientation.\n\nCurrent treatment includes Levetiracetam 1.5 g b.d., Lamotrigine 200 mg b.d., and Clobazam 10 mg nocte with an additional 5 mg prn for clusters on specialist advice. He carries buccal midazolam as rescue therapy via the community protocol. He tolerates medication reasonably but notes increased irritability and daytime tiredness, which he and his partner feel are worse during the assessment season. Routine bloods in June were satisfactory, including LFTs and U&Es. There is no rash or systemic symptomatology to suggest adverse drug reaction.\n\nGiven the temporal association with heightened stress and the recent requirement for rescue therapy, I am concerned that overall control is deteriorating under pressure, despite stable day‑to‑day background frequency. We discussed practical measures he is already using (structured sleep schedule, reducing late‑evening screen time, and logging events on his seizure diary). He is open to brief psychological support targeting stress management and anticipatory anxiety around assessments, and I have asked our epilepsy specialist nurse to make contact. He understands driving and safety guidance and continues to observe standard precautions at home and work.\n\nI will arrange an expedited review in 8 weeks, aiming to capture another assessment period. Should there be further escalation, particularly additional rescue medication use or injury, he will contact the service promptly. I will also request an updated occupational health note to support reasonable adjustments during assessments (flexible timing and rest breaks), as stress appears to be a significant exacerbating factor by patient report.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "From the letter: (1) The clinician states, \"Seizure pattern appears largely unchanged, with events approximately every five days,\" which provides a clear, explicit baseline frequency. Converting \"approximately every five days\" to the allowed format yields 1 per 5 day. (2) The letter also mentions that \"occasionally, frequency escalates to daily\" and that more intense periods cluster around deadlines, but these are described as occasional/episodic rather than the ongoing pattern, and there is no quantifiable cluster rate or per‑cluster count provided. (3) There is no indication of seizure freedom for six months or more, and insufficient detail to construct a cluster-based label. Therefore, the best single normalized label reflecting the stated ongoing frequency is 1 per 5 day.",
+      "seizure_frequency_number": [
+        "1 per 5 day",
+        "Seizure pattern appears largely unchanged, with events approximately every five days."
+      ],
+      "reference": [
+        "1 per 5 day",
+        "Seizure pattern appears largely unchanged, with events approximately every five days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

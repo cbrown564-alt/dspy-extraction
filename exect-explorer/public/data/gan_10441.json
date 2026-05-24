@@ -1,0 +1,54 @@
+{
+  "id": "gan_10441",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Hannah Lowe\nRiverside Health Centre\n22 Willow Road, Bristol BS8 2QJ\n\nDear Dr Hannah Lowe,\n\nAmelia Carter, DOB: 03-11-1991, Hospital No: B472910 NHS No. 9983126407\nFlat 4, 18 Park View, Bristol, BS1 5AL\n\nEpilepsy\n\nDiagnosis: Generalised epilepsy.\n\nMedication: Lamotrigine (dispersible) 25 mg twice daily.\n\nLamotrigine Blood Level:\n25 September 2025: 1.2 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 25 mg twice daily. No missed doses reported in the week preceding the test.\n\nSeizures: Since a viral illness approximately three weeks ago, the patient reports a deterioration with early-day groupings of events occurring more often, despite stating good adherence. She describes brief generalised events with abrupt onset, occasional tongue-biting, and post-event confusion lasting 10–15 minutes. Her partner has witnessed several episodes suggestive of generalised tonic–clonic seizures. Prior to the illness, events were infrequent and largely controlled for several months.\n\nHistory and Review: I conducted a telephone review with Amelia Carter today. She notes increased tiredness and disrupted sleep following the viral illness, and she has returned to work but feels more fatigued in the mornings. There is no new head injury, alcohol overuse, or missed medication according to her account. No new medications other than short courses of paracetamol and ibuprofen during the illness. She remains on lamotrigine 25 mg twice daily and utilises a pill organiser; adherence sounds reliable. There have been no auras or focal warnings. The pattern of generalised seizures is now more clustered shortly after waking on multiple days in the last fortnight.\n\nPlan: I have advised seizure diary updates, particularly noting morning patterns, potential triggers, and any further illness-related factors. I will discuss her case with the consultant team to consider next steps in view of suspected generalised epilepsy with recent worsening following viral illness. We will arrange repeat lamotrigine level and U&E/LFTs in 2–3 weeks, and an expedited routine follow-up appointment in clinic for reassessment. Safety counselling regarding driving and seizure first aid was reinforced.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1626,
+      "end": 1744,
+      "text": "The pattern of generalised seizures is now more clustered shortly after waking on multiple days in the last fortnight.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10441,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Hannah Lowe\nRiverside Health Centre\n22 Willow Road, Bristol BS8 2QJ\n\nDear Dr Hannah Lowe,\n\nAmelia Carter, DOB: 03-11-1991, Hospital No: B472910 NHS No. 9983126407\nFlat 4, 18 Park View, Bristol, BS1 5AL\n\nEpilepsy\n\nDiagnosis: Generalised epilepsy.\n\nMedication: Lamotrigine (dispersible) 25 mg twice daily.\n\nLamotrigine Blood Level:\n25 September 2025: 1.2 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 25 mg twice daily. No missed doses reported in the week preceding the test.\n\nSeizures: Since a viral illness approximately three weeks ago, the patient reports a deterioration with early-day groupings of events occurring more often, despite stating good adherence. She describes brief generalised events with abrupt onset, occasional tongue-biting, and post-event confusion lasting 10–15 minutes. Her partner has witnessed several episodes suggestive of generalised tonic–clonic seizures. Prior to the illness, events were infrequent and largely controlled for several months.\n\nHistory and Review: I conducted a telephone review with Amelia Carter today. She notes increased tiredness and disrupted sleep following the viral illness, and she has returned to work but feels more fatigued in the mornings. There is no new head injury, alcohol overuse, or missed medication according to her account. No new medications other than short courses of paracetamol and ibuprofen during the illness. She remains on lamotrigine 25 mg twice daily and utilises a pill organiser; adherence sounds reliable. There have been no auras or focal warnings. The pattern of generalised seizures is now more clustered shortly after waking on multiple days in the last fortnight.\n\nPlan: I have advised seizure diary updates, particularly noting morning patterns, potential triggers, and any further illness-related factors. I will discuss her case with the consultant team to consider next steps in view of suspected generalised epilepsy with recent worsening following viral illness. We will arrange repeat lamotrigine level and U&E/LFTs in 2–3 weeks, and an expedited routine follow-up appointment in clinic for reassessment. Safety counselling regarding driving and seizure first aid was reinforced.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly indicates ongoing seizures with increased frequency after a recent viral illness. Specific wording includes: 'early-day groupings of events occurring more often', 'brief generalised events', 'partner has witnessed several episodes suggestive of generalised tonic–clonic seizures', and crucially 'The pattern of generalised seizures is now more clustered shortly after waking on multiple days in the last fortnight.' There is no explicit numeric count of clusters per time, nor number of seizures per cluster. Therefore, a precise frequency (per day/week/month) cannot be determined. The presence of clusters suggests multiple seizures within a short period on those days, but the exact number is unspecified. According to the rules, when seizures are present but frequency cannot be determined, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The pattern of generalised seizures is now more clustered shortly after waking on multiple days in the last fortnight."
+      ],
+      "reference": [
+        "unknown",
+        "More frequent morning clusters despite adherence"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

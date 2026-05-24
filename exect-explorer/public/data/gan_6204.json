@@ -1,0 +1,54 @@
+{
+  "id": "gan_6204",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 12 September 2025 \n\nDr Khan  \nRiverside Health Centre  \n221A Riverside Way, London SE10 3AB  \n\nDear Dr Khan,  \n\nAamir Hussain, DOB: 05-11-1991, Hospital No: H943210 NHS No. 9182736450  \nFlat 12, 4 Cobblestone Court, London, SE10 8XY \n\nMedication: \n\nLevetiracetam 1 g twice daily. Lamotrigine 50 mg twice daily, commenced six weeks ago and titrating. Rescue: Buccal midazolam supplied with education. \n\nThank you for reviewing this recent migrant to the UK who is becoming familiar with NHS pathways and occasionally uses interpreter support (Urdu/English). He has focal epilepsy, likely temporal in onset, with semiology of an epigastric rising sensation, brief speech arrest, and behavioural pause; on two occasions these have secondarily generalised. He reports that most events occur when exposed to sudden sharp noises, such as a door slamming or a motorbike backfire, described by him as “shock-triggered spells.” These noise-triggered focal seizures occur about once every 3–4 weeks, more commonly in busy street environments or at work when unexpected alarms sound. Intervening background focal auras without loss of awareness occur approximately twice per month. \n\nSince adding lamotrigine alongside levetiracetam, he reports fewer generalised events and shorter post-ictal periods. No rash, mood change, or sleep disturbance. He carries midazolam as rescue but has not needed to use it. He avoids known precipitants where feasible (wears ear protection during certain tasks) and is engaging well with self-management. \n\nWe discussed safety, including driving regulations (not currently driving), seizure first aid, and occupational adjustments. He requested written summaries in plain English; we provided these and signposted to translated Epilepsy Action resources. We also clarified how to access urgent advice via NHS 111 and our epilepsy nurse helpline. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Increase lamotrigine to 75 mg twice daily in two weeks if tolerated, with bloods and rash counselling reviewed. \n- MRI brain with epilepsy protocol and EEG (including hyperventilation and photic; patient notes sound sensitivity so we will document noise precipitants for the lab). \n- Seizure diary with notation of environmental triggers and sleep. \n- Interpreter-supported follow-up with our epilepsy nurse for medication titration check in 6 weeks. \n- Clinic review in 4 months, sooner if breakthrough generalised seizures. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1132,
+      "end": 1229,
+      "text": "Intervening background focal auras without loss of awareness occur approximately twice per month.",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6204,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 12 September 2025 \n\nDr Khan  \nRiverside Health Centre  \n221A Riverside Way, London SE10 3AB  \n\nDear Dr Khan,  \n\nAamir Hussain, DOB: 05-11-1991, Hospital No: H943210 NHS No. 9182736450  \nFlat 12, 4 Cobblestone Court, London, SE10 8XY \n\nMedication: \n\nLevetiracetam 1 g twice daily. Lamotrigine 50 mg twice daily, commenced six weeks ago and titrating. Rescue: Buccal midazolam supplied with education. \n\nThank you for reviewing this recent migrant to the UK who is becoming familiar with NHS pathways and occasionally uses interpreter support (Urdu/English). He has focal epilepsy, likely temporal in onset, with semiology of an epigastric rising sensation, brief speech arrest, and behavioural pause; on two occasions these have secondarily generalised. He reports that most events occur when exposed to sudden sharp noises, such as a door slamming or a motorbike backfire, described by him as “shock-triggered spells.” These noise-triggered focal seizures occur about once every 3–4 weeks, more commonly in busy street environments or at work when unexpected alarms sound. Intervening background focal auras without loss of awareness occur approximately twice per month. \n\nSince adding lamotrigine alongside levetiracetam, he reports fewer generalised events and shorter post-ictal periods. No rash, mood change, or sleep disturbance. He carries midazolam as rescue but has not needed to use it. He avoids known precipitants where feasible (wears ear protection during certain tasks) and is engaging well with self-management. \n\nWe discussed safety, including driving regulations (not currently driving), seizure first aid, and occupational adjustments. He requested written summaries in plain English; we provided these and signposted to translated Epilepsy Action resources. We also clarified how to access urgent advice via NHS 111 and our epilepsy nurse helpline. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Increase lamotrigine to 75 mg twice daily in two weeks if tolerated, with bloods and rash counselling reviewed. \n- MRI brain with epilepsy protocol and EEG (including hyperventilation and photic; patient notes sound sensitivity so we will document noise precipitants for the lab). \n- Seizure diary with notation of environmental triggers and sleep. \n- Interpreter-supported follow-up with our epilepsy nurse for medication titration check in 6 weeks. \n- Clinic review in 4 months, sooner if breakthrough generalised seizures. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency mentions: (1) \"noise-triggered focal seizures occur about once every 3–4 weeks\" (~1 per 3 to 4 weeks) and (2) \"Intervening background focal auras ... occur approximately twice per month\" (2 per month). No clear current frequency for generalised seizures beyond \"fewer\". Apply Rule 7: choose the highest frequency among multiple types. 2 per month is more frequent than ~1 per 3–4 weeks. Convert to allowed format: \"2 per month\". Provide supporting quote.",
+      "seizure_frequency_number": [
+        "2 per month",
+        "Intervening background focal auras without loss of awareness occur approximately twice per month."
+      ],
+      "reference": [
+        "unknown",
+        "Startle-induced seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_13591",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nDaniel Harris, DOB: 22-11-1983, Hospital No: H374920 NHS No. 8837264501  \nFlat 9, 28 Red Lion Street, London, WC1R 4PS  \n\nGeneralised Epilepsy \n\nMedication: Continuing Sodium Valproate since 2016; unchanged for several years.  \n\nSodium Valproate modified-release 500 mg twice daily (patient-reported adherence good, uses pill organiser and travel reminders). \n\nValproate Blood Level: \n\n21 September 2025: 62 mg/L (laboratory therapeutic range 50–100 mg/L). Dose 500 mg twice daily at time of sampling.\n\nSeizures: He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years. \n\nI conducted a scheduled telephone review today as the patient is a frequent international business traveller with irregular sleep and time zone changes. He reports no auras, no myoclonus on waking, and no episodes of impaired awareness since his last review. He remains fully employed, travels long-haul monthly, and mitigates jet lag by maintaining dosing times within a 1–2 hour window using local alarms. He denies missed doses in the past six months and has not required emergency care or rescue medication. No adverse effects volunteered; specifically, no tremor, weight change, gastrointestinal upset, mood change, or hair changes. \n\nHe confirms he does not drive for 24 hours after overnight flights as a personal precaution despite sustained remission. Sleep hygiene remains a challenge during multi-city trips; he reports using noise-cancelling headphones and pre-flight rest, which he feels help. Alcohol intake is moderate (1–2 units/week) and he avoids binge drinking before flights. \n\nExamination was not performed (telephone consultation). No interim imaging or EEG since last normal EEG in 2019; not indicated at present given stability. Bloods from September 2025 show normal FBC and LFTs. \n\nImpression: Generalised epilepsy, long-term remission on stable sodium valproate, with excellent adherence despite frequent travel and circadian disruption. \n\nPlan: \n- Continue sodium valproate MR 500 mg twice daily.  \n- Routine monitoring: annual LFTs and valproate level, next due September 2026 or sooner if clinical change.  \n- Travel advice reinforced (maintain dosing window within 1–2 hours across time zones; carry supply split between cabin and checked luggage; keep written medication list).  \n- Telephone follow-up in 12 months, earlier if any breakthrough events, adverse effects, or difficulties with time zone adjustments. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 817,
+      "end": 886,
+      "text": "currently in long-term remission, having been seizure free for years.",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 672,
+      "end": 885,
+      "text": "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13591,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nDaniel Harris, DOB: 22-11-1983, Hospital No: H374920 NHS No. 8837264501  \nFlat 9, 28 Red Lion Street, London, WC1R 4PS  \n\nGeneralised Epilepsy \n\nMedication: Continuing Sodium Valproate since 2016; unchanged for several years.  \n\nSodium Valproate modified-release 500 mg twice daily (patient-reported adherence good, uses pill organiser and travel reminders). \n\nValproate Blood Level: \n\n21 September 2025: 62 mg/L (laboratory therapeutic range 50–100 mg/L). Dose 500 mg twice daily at time of sampling.\n\nSeizures: He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years. \n\nI conducted a scheduled telephone review today as the patient is a frequent international business traveller with irregular sleep and time zone changes. He reports no auras, no myoclonus on waking, and no episodes of impaired awareness since his last review. He remains fully employed, travels long-haul monthly, and mitigates jet lag by maintaining dosing times within a 1–2 hour window using local alarms. He denies missed doses in the past six months and has not required emergency care or rescue medication. No adverse effects volunteered; specifically, no tremor, weight change, gastrointestinal upset, mood change, or hair changes. \n\nHe confirms he does not drive for 24 hours after overnight flights as a personal precaution despite sustained remission. Sleep hygiene remains a challenge during multi-city trips; he reports using noise-cancelling headphones and pre-flight rest, which he feels help. Alcohol intake is moderate (1–2 units/week) and he avoids binge drinking before flights. \n\nExamination was not performed (telephone consultation). No interim imaging or EEG since last normal EEG in 2019; not indicated at present given stability. Bloods from September 2025 show normal FBC and LFTs. \n\nImpression: Generalised epilepsy, long-term remission on stable sodium valproate, with excellent adherence despite frequent travel and circadian disruption. \n\nPlan: \n- Continue sodium valproate MR 500 mg twice daily.  \n- Routine monitoring: annual LFTs and valproate level, next due September 2026 or sooner if clinical change.  \n- Travel advice reinforced (maintain dosing window within 1–2 hours across time zones; carry supply split between cabin and checked luggage; keep written medication list).  \n- Telephone follow-up in 12 months, earlier if any breakthrough events, adverse effects, or difficulties with time zone adjustments. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is in long-term remission and seizure free for years. Current review reports no auras, no myoclonus, and no episodes of impaired awareness since last review. The phrase 'seizure free for years' confirms more than 6 months of seizure freedom. Therefore, the correct normalized label is 'seizure free for multiple years' as the exact number of years is not specified.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "currently in long-term remission, having been seizure free for years."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

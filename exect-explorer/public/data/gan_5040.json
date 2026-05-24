@@ -1,0 +1,54 @@
+{
+  "id": "gan_5040",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Priya Nair\nRiverside Medical Centre\n\n14 Riverside Way, Deptford, London SE8 3JP\nDear Dr Priya Nair\nMichael Carter, DOB: 21-11-1982, Hospital No: H739204 NHS No. 6382749102\n22 Millwright Close, Bermondsey, London SE16 4PQ \n\nI reviewed the above patient in the Neurology Clinic today. He works in metal fabrication and welding, reporting intermittent arc-light exposure in the workshop; he consistently uses a protective visor and follows workplace safety procedures.\n\nSince I last saw him on 10 March 2025, he reports no further episodes suggestive of seizures. He describes day-to-day activities, including full-time work and commuting, without any events, blackouts, or abnormal movements. He denies nocturnal tongue biting, witnessed shaking, or unexplained injuries, and his partner has not observed concerning behaviours. He has remained clear of spells during this interval.\n\nCurrent medicines (unchanged today): Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He feels well on this regimen, with only mild tiredness after late shifts. No rashes, mood disturbance, or cognitive complaints are reported. He avoids alcohol on work nights and maintains good sleep hygiene. Caffeine intake is moderate. He has not noticed any sensitivity to the welding arc beyond transient eye strain, and he confirms that his visor is worn for all welding tasks.\n\nNeurological examination today was unremarkable. I have encouraged him to continue standard safety precautions at work, including consistent use of his visor and scheduled breaks. We agreed not to alter medication in the context of ongoing stability. He will maintain a symptom diary and attend if any concerning events occur. Routine follow-up is planned in six months, or earlier if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 532,
+      "end": 625,
+      "text": "Since I last saw him on 10 March 2025, he reports no further episodes suggestive of seizures.",
+      "attributes": {
+        "Label": "seizure free for 6 months",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5040,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Priya Nair\nRiverside Medical Centre\n\n14 Riverside Way, Deptford, London SE8 3JP\nDear Dr Priya Nair\nMichael Carter, DOB: 21-11-1982, Hospital No: H739204 NHS No. 6382749102\n22 Millwright Close, Bermondsey, London SE16 4PQ \n\nI reviewed the above patient in the Neurology Clinic today. He works in metal fabrication and welding, reporting intermittent arc-light exposure in the workshop; he consistently uses a protective visor and follows workplace safety procedures.\n\nSince I last saw him on 10 March 2025, he reports no further episodes suggestive of seizures. He describes day-to-day activities, including full-time work and commuting, without any events, blackouts, or abnormal movements. He denies nocturnal tongue biting, witnessed shaking, or unexplained injuries, and his partner has not observed concerning behaviours. He has remained clear of spells during this interval.\n\nCurrent medicines (unchanged today): Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He feels well on this regimen, with only mild tiredness after late shifts. No rashes, mood disturbance, or cognitive complaints are reported. He avoids alcohol on work nights and maintains good sleep hygiene. Caffeine intake is moderate. He has not noticed any sensitivity to the welding arc beyond transient eye strain, and he confirms that his visor is worn for all welding tasks.\n\nNeurological examination today was unremarkable. I have encouraged him to continue standard safety precautions at work, including consistent use of his visor and scheduled breaks. We agreed not to alter medication in the context of ongoing stability. He will maintain a symptom diary and attend if any concerning events occur. Routine follow-up is planned in six months, or earlier if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 21 Sep 2025. The letter states: \"Since I last saw him on 10 March 2025, he reports no further episodes suggestive of seizures\" and \"He has remained clear of spells during this interval.\" Calculate interval: 10 Mar 2025 to 10 Sep 2025 = 6 months, plus 11 days to 21 Sep 2025, so >6 months. Therefore, currently seizure-free for at least 6 months, meeting the seizure-free criterion.",
+      "seizure_frequency_number": [
+        "seizure free for 6 months",
+        "Since I last saw him on 10 March 2025, he reports no further episodes suggestive of seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Event-free"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 months) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

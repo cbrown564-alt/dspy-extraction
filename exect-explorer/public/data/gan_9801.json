@@ -1,0 +1,65 @@
+{
+  "id": "gan_9801",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr A. Karim  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A. Karim,                                                                                                         \n\nJordan Ellis, DOB: 22-11-1991, Hospital No: H372015 NHS No. 9842136750  \nFlat 3, 27 Gainsford Street, London SE1 2NE  \n\nEpilepsy \n\nMedication: Currently taking Levetiracetam 500 mg twice daily (patient-reported, commenced March 2025)\n\nLevetiracetam Blood Level: Not checked to date.\n\nSeizures: Skipping meals triggers focal onset seizures. Frequency could not be determined from today’s history. Peer supporters have witnessed brief behavioural arrest with lip-smacking on two occasions in the past year, but exact dates and total count remain unclear.\n\nI spoke with Jordan Ellis for a scheduled telephone review. They attend a local peer support group, and observations from peers supplemented the history. The patient describes episodes characterised by rising anxiety, a metallic taste, and brief unresponsiveness lasting under two minutes, followed by fatigue. Skipping meals triggers focal onset seizures; however, there is no reliable diary, and neither the patient nor peers could provide a clear count over any fixed interval. No injuries reported. No known sleep deprivation triggers. Alcohol intake minimal. \n\nPlan: \n- Encourage use of a seizure diary (paper or app) and to log meal patterns in relation to events. \n- Request serum Levetiracetam level prior to next review for context only. \n- Peer group to continue providing collateral observations when feasible. \n- Safety advice discussed (showers preferred to baths, avoid heights/unguarded water when alone). \n- Review in 3 months or earlier if events cluster. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 612,
+      "end": 667,
+      "text": "Frequency could not be determined from today’s history.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 566,
+      "end": 610,
+      "text": "Skipping meals triggers focal onset seizures",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9801,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr A. Karim  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A. Karim,                                                                                                         \n\nJordan Ellis, DOB: 22-11-1991, Hospital No: H372015 NHS No. 9842136750  \nFlat 3, 27 Gainsford Street, London SE1 2NE  \n\nEpilepsy \n\nMedication: Currently taking Levetiracetam 500 mg twice daily (patient-reported, commenced March 2025)\n\nLevetiracetam Blood Level: Not checked to date.\n\nSeizures: Skipping meals triggers focal onset seizures. Frequency could not be determined from today’s history. Peer supporters have witnessed brief behavioural arrest with lip-smacking on two occasions in the past year, but exact dates and total count remain unclear.\n\nI spoke with Jordan Ellis for a scheduled telephone review. They attend a local peer support group, and observations from peers supplemented the history. The patient describes episodes characterised by rising anxiety, a metallic taste, and brief unresponsiveness lasting under two minutes, followed by fatigue. Skipping meals triggers focal onset seizures; however, there is no reliable diary, and neither the patient nor peers could provide a clear count over any fixed interval. No injuries reported. No known sleep deprivation triggers. Alcohol intake minimal. \n\nPlan: \n- Encourage use of a seizure diary (paper or app) and to log meal patterns in relation to events. \n- Request serum Levetiracetam level prior to next review for context only. \n- Peer group to continue providing collateral observations when feasible. \n- Safety advice discussed (showers preferred to baths, avoid heights/unguarded water when alone). \n- Review in 3 months or earlier if events cluster. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that seizure frequency could not be determined from today's history. It also mentions two witnessed episodes in the past year but clarifies that exact dates and total count remain unclear, and there is no reliable diary. Therefore, despite mentions of seizures, the specific frequency cannot be determined. According to the instruction, when seizures are mentioned but frequency cannot be determined, return 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "Frequency could not be determined from today’s history."
+      ],
+      "reference": [
+        "unknown",
+        "Skipping meals triggers focal onset seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

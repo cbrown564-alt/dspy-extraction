@@ -1,0 +1,54 @@
+{
+  "id": "gan_9259",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 23 August 2020\n\nDr Samir Patel\nOakfield Medical Practice\n\n12 Oakfield Road, Bromley, Kent BR1 3AB\n\nDear Dr Samir Patel\n\nJordan Ellis, DOB: 14-03-1987, Hospital No: H739204 NHS No. 8429156073\nFlat 3, 27 Willow Close, Orpington, BR6 8TT\n\nDiagnoses/summary: No epilepsy. Historical episodes previously labelled as “possible seizures” now felt to be non-epileptic in origin; patient reports stability without events for an extended period. No antiseizure medicines in use. Following a ketogenic/modified diet supervised elsewhere; diet details recorded in clinic notes.\n\nHistory since last contact: I reviewed Jordan Ellis in clinic today, who attended alone. They described ongoing wellbeing and have kept a simple symptom diary. Over the past year there have been essentially no events of concern; they describe an absence of definite seizures. Occasional light-headedness has occurred in the context of missed meals or dehydration, resolving with rest and fluids, and without any features to suggest epileptic activity.\n\nEpilepsy status: The patient does not have epilepsy. Previous assessments, including normal routine neuroimaging and unremarkable interictal EEGs, together with the sustained lack of epileptic features, support the conclusion that prior episodes were non-epileptic. We discussed this at length and the patient is reassured.\n\nDietary therapy: Jordan Ellis has been following a structured ketogenic/modified diet program under external supervision. They report good adherence, regular monitoring of ketones, and dietetic input elsewhere. We recorded the dietary details provided, including meal timing, macronutrient targets, hydration plan, and vitamin/mineral supplementation schedule. They note improved energy consistency and better sleep hygiene since adopting the regimen. No history of renal stones, gastrointestinal intolerance, or mood change. Weight stable.\n\nMedications: None for seizures. No current antiseizure therapy. Routine supplements as per the diet plan (patient-reported) and checked against interactions; none relevant.\n\nExamination: General and neurological examinations were normal. Cardiovascular and respiratory examinations unremarkable. No cognitive concerns raised.\n\nPlan:\n- No diagnosis of epilepsy; no antiseizure medication indicated.\n- Continue current lifestyle approach and external dietary follow-up as arranged. Our records now include the diet information provided today for continuity.\n- Safety advice reiterated regarding driving regulations if any events recur; the patient currently reports a clear period without events consistent with guidance.\n- Routine follow-up in 6–9 months, or earlier if there are new symptoms suggestive of epileptic seizures.\n\nPlease feel free to contact me if you would like any further information. I will copy this letter to Jordan Ellis.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 768,
+      "end": 883,
+      "text": "Over the past year there have been essentially no events of concern; they describe an absence of definite seizures.",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9259,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 23 August 2020\n\nDr Samir Patel\nOakfield Medical Practice\n\n12 Oakfield Road, Bromley, Kent BR1 3AB\n\nDear Dr Samir Patel\n\nJordan Ellis, DOB: 14-03-1987, Hospital No: H739204 NHS No. 8429156073\nFlat 3, 27 Willow Close, Orpington, BR6 8TT\n\nDiagnoses/summary: No epilepsy. Historical episodes previously labelled as “possible seizures” now felt to be non-epileptic in origin; patient reports stability without events for an extended period. No antiseizure medicines in use. Following a ketogenic/modified diet supervised elsewhere; diet details recorded in clinic notes.\n\nHistory since last contact: I reviewed Jordan Ellis in clinic today, who attended alone. They described ongoing wellbeing and have kept a simple symptom diary. Over the past year there have been essentially no events of concern; they describe an absence of definite seizures. Occasional light-headedness has occurred in the context of missed meals or dehydration, resolving with rest and fluids, and without any features to suggest epileptic activity.\n\nEpilepsy status: The patient does not have epilepsy. Previous assessments, including normal routine neuroimaging and unremarkable interictal EEGs, together with the sustained lack of epileptic features, support the conclusion that prior episodes were non-epileptic. We discussed this at length and the patient is reassured.\n\nDietary therapy: Jordan Ellis has been following a structured ketogenic/modified diet program under external supervision. They report good adherence, regular monitoring of ketones, and dietetic input elsewhere. We recorded the dietary details provided, including meal timing, macronutrient targets, hydration plan, and vitamin/mineral supplementation schedule. They note improved energy consistency and better sleep hygiene since adopting the regimen. No history of renal stones, gastrointestinal intolerance, or mood change. Weight stable.\n\nMedications: None for seizures. No current antiseizure therapy. Routine supplements as per the diet plan (patient-reported) and checked against interactions; none relevant.\n\nExamination: General and neurological examinations were normal. Cardiovascular and respiratory examinations unremarkable. No cognitive concerns raised.\n\nPlan:\n- No diagnosis of epilepsy; no antiseizure medication indicated.\n- Continue current lifestyle approach and external dietary follow-up as arranged. Our records now include the diet information provided today for continuity.\n- Safety advice reiterated regarding driving regulations if any events recur; the patient currently reports a clear period without events consistent with guidance.\n- Routine follow-up in 6–9 months, or earlier if there are new symptoms suggestive of epileptic seizures.\n\nPlease feel free to contact me if you would like any further information. I will copy this letter to Jordan Ellis.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that over the past year there have been essentially no events of concern and an absence of definite seizures. This indicates zero seizures for at least 12 months, satisfying the >=6 months seizure-free criterion. Therefore, the normalized label is 'seizure free for 1 year'.",
+      "seizure_frequency_number": [
+        "seizure free for 1 year",
+        "Over the past year there have been essentially no events of concern; they describe an absence of definite seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No definite seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 1 year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

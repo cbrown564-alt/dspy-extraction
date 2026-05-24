@@ -1,0 +1,59 @@
+{
+  "id": "gan_3847",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 February 2018 \n\nDr Amelia Hart \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Hart, \n\nMs Priya Shah, DOB: 22-09-1989, Hospital No: K847203 NHS No. 9134726801  \nFlat 12, 3 Rowan Court, Brixton, London SW2 1AB  \n\nDiagnosis: \n\nEpilepsy with ongoing events; current clinical picture suggests deterioration in control despite treatment adjustments.\n\nAetiology: \n\nUnclear; no definitive structural, genetic, or metabolic cause identified to date based on available records and patient report.\n\nOther Medical Problems: \n\nIntermittent migraine without aura; mild generalised anxiety symptoms reported, no formal diagnosis.\n\nManagement Plan: \n\n- Emphasised that recent night shifts and curtailed sleep coincide with perceived deterioration. The patient links the timing of increased events with consecutive nights of reduced sleep and early starts.\n- Prior to this change in routine, seizure frequency before deterioration was: Partial response to ASM; residual events persist. At that time, the pattern was stable with infrequent focal-aware type sensations reported by the patient and no injuries. \n- Currently, the patient describes increased breakthrough episodes clustered after nights with <5 hours sleep; he records sz xone/d on multiple consecutive days during shift weeks, contrasting with fewer events on rest days. He reports brief speech arrest and a rising epigastric sensation followed by confusion for several minutes, without tongue bite or incontinence. \n- We discussed practical sleep hygiene measures and employer liaison. I will provide a clinic summary to support adjustments to rota patterns. The patient prefers to avoid medication changes today but is open to this at the next review if events persist.\n- Safety advice reinforced: avoid heights and open water when alone; use a shower chair; continue not driving and follow DVLA guidance.\n- Investigations: arrange repeat serum levels of current ASM, U&E/LFTs, vitamin D; book an ambulatory EEG and consider sleep-deprived protocol if tolerated; request an updated MRI if there is any further escalation or new semiology.\n- Follow-up: 10–12 weeks in clinic, sooner if further increase in frequency or any injury.\n\nSummary of Current Status: \n\nThis patient reports a clear deterioration in seizure control temporally associated with night work and curtailed sleep, with event frequency at times reaching sz xone/d during shift periods. Prior to this, there was partial response to ASM with residual but less frequent events. No recent injuries, but increased post-ictal fatigue and work disruption noted.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2469,
+      "end": 2533,
+      "text": "event frequency at times reaching sz xone/d during shift periods",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1349,
+      "end": 1358,
+      "text": "sz xone/d",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3847,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 February 2018 \n\nDr Amelia Hart \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Hart, \n\nMs Priya Shah, DOB: 22-09-1989, Hospital No: K847203 NHS No. 9134726801  \nFlat 12, 3 Rowan Court, Brixton, London SW2 1AB  \n\nDiagnosis: \n\nEpilepsy with ongoing events; current clinical picture suggests deterioration in control despite treatment adjustments.\n\nAetiology: \n\nUnclear; no definitive structural, genetic, or metabolic cause identified to date based on available records and patient report.\n\nOther Medical Problems: \n\nIntermittent migraine without aura; mild generalised anxiety symptoms reported, no formal diagnosis.\n\nManagement Plan: \n\n- Emphasised that recent night shifts and curtailed sleep coincide with perceived deterioration. The patient links the timing of increased events with consecutive nights of reduced sleep and early starts.\n- Prior to this change in routine, seizure frequency before deterioration was: Partial response to ASM; residual events persist. At that time, the pattern was stable with infrequent focal-aware type sensations reported by the patient and no injuries. \n- Currently, the patient describes increased breakthrough episodes clustered after nights with <5 hours sleep; he records sz xone/d on multiple consecutive days during shift weeks, contrasting with fewer events on rest days. He reports brief speech arrest and a rising epigastric sensation followed by confusion for several minutes, without tongue bite or incontinence. \n- We discussed practical sleep hygiene measures and employer liaison. I will provide a clinic summary to support adjustments to rota patterns. The patient prefers to avoid medication changes today but is open to this at the next review if events persist.\n- Safety advice reinforced: avoid heights and open water when alone; use a shower chair; continue not driving and follow DVLA guidance.\n- Investigations: arrange repeat serum levels of current ASM, U&E/LFTs, vitamin D; book an ambulatory EEG and consider sleep-deprived protocol if tolerated; request an updated MRI if there is any further escalation or new semiology.\n- Follow-up: 10–12 weeks in clinic, sooner if further increase in frequency or any injury.\n\nSummary of Current Status: \n\nThis patient reports a clear deterioration in seizure control temporally associated with night work and curtailed sleep, with event frequency at times reaching sz xone/d during shift periods. Prior to this, there was partial response to ASM with residual but less frequent events. No recent injuries, but increased post-ictal fatigue and work disruption noted.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter repeatedly states \"sz xone/d\" during shift periods, interpreted as seizures approximately once per day. It mentions clustering after nights with <5 hours sleep and \"multiple consecutive days during shift weeks,\" indicating periods with daily seizures. No higher numeric frequency is provided. Prior baseline was less frequent, so apply the rule to select the highest current frequency. Therefore, label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "event frequency at times reaching sz xone/d during shift periods"
+      ],
+      "reference": [
+        "1 per day",
+        "sz xone/d"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_14002",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 23 April 2018 \n\nDr Patel  \nSouth Thames Neurology Service  \nNeurosciences Outpatients, St George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-02-1986, Hospital No: H837462 NHS No. 9081763452  \nFlat 3, 27 Mill Wharf, London, SE16 4AB  \n\nDiagnoses: \n\nSeizure disorder (type not established). \n\nThank you for asking me to review Michael Harris in clinic following his recent hospital admission. He attended today with his partner. He works as a warehouse picker operating between tall racking in narrow aisles where lifting tasks and work pace vary by shift, and he reports that longer shifts with rapid picking seem more tiring. He explained that since discharge from hospital he has experienced several seizures, the last one being on 20 February. He recalls brief warnings of light-headedness on two occasions at work, each followed by witnessed loss of awareness; recovery was within minutes but he felt fatigued for the remainder of the day. There has been no clear pattern in relation to time of day. No tongue biting or urinary incontinence was reported. \n\nCurrent medication: none for seizures. He uses paracetamol intermittently for musculoskeletal aches related to lifting. He denies alcohol excess and has reduced caffeine. Sleep has been irregular due to early starts on some shifts. There is no known family history of seizures. \n\nExamination today was unremarkable with normal neurological findings. Routine blood tests from his admission were within reference ranges. We discussed a plan for further characterisation of events including ambulatory EEG and brain MRI. He agreed to maintain a seizure diary capturing date, time, antecedent activities, and recovery features, and to seek corroborative witness accounts from colleagues when possible. He understands local guidance on DVLA requirements and workplace safety reporting, as relayed by his occupational health team. \n\nI have provided information on first aid for seizures to his partner. We will review him after investigations are complete or sooner if events escalate. No rescue medication was issued today; he knows to attend ED for any prolonged event exceeding five minutes or for injury. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 775,
+      "end": 845,
+      "text": "he has experienced several seizures, the last one being on 20 February",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 727,
+      "end": 845,
+      "text": "He explained that since discharge from hospital he has experienced several seizures, the last one being on 20 February",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14002,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 23 April 2018 \n\nDr Patel  \nSouth Thames Neurology Service  \nNeurosciences Outpatients, St George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-02-1986, Hospital No: H837462 NHS No. 9081763452  \nFlat 3, 27 Mill Wharf, London, SE16 4AB  \n\nDiagnoses: \n\nSeizure disorder (type not established). \n\nThank you for asking me to review Michael Harris in clinic following his recent hospital admission. He attended today with his partner. He works as a warehouse picker operating between tall racking in narrow aisles where lifting tasks and work pace vary by shift, and he reports that longer shifts with rapid picking seem more tiring. He explained that since discharge from hospital he has experienced several seizures, the last one being on 20 February. He recalls brief warnings of light-headedness on two occasions at work, each followed by witnessed loss of awareness; recovery was within minutes but he felt fatigued for the remainder of the day. There has been no clear pattern in relation to time of day. No tongue biting or urinary incontinence was reported. \n\nCurrent medication: none for seizures. He uses paracetamol intermittently for musculoskeletal aches related to lifting. He denies alcohol excess and has reduced caffeine. Sleep has been irregular due to early starts on some shifts. There is no known family history of seizures. \n\nExamination today was unremarkable with normal neurological findings. Routine blood tests from his admission were within reference ranges. We discussed a plan for further characterisation of events including ambulatory EEG and brain MRI. He agreed to maintain a seizure diary capturing date, time, antecedent activities, and recovery features, and to seek corroborative witness accounts from colleagues when possible. He understands local guidance on DVLA requirements and workplace safety reporting, as relayed by his occupational health team. \n\nI have provided information on first aid for seizures to his partner. We will review him after investigations are complete or sooner if events escalate. No rescue medication was issued today; he knows to attend ED for any prolonged event exceeding five minutes or for injury. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has experienced several seizures since discharge, with the last one on 20 February. No explicit count over a defined time period is given, and no rate (per day/week/month/year) can be calculated. 'Several' is vague and lacks a timeframe and exact number. Therefore, the specific frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "he has experienced several seizures, the last one being on 20 February"
+      ],
+      "reference": [
+        "unknown",
+        "He explained that since discharge from hospital he has experienced several seizures, the last one being on 20 February"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_51",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 08 November 2023\n\nDr Helen Carter  \nRiverside Medical Practice  \n221 King Street, Hammersmith, London W6 9JT  \n\nDear Dr Helen Carter,\n\nThomas Greene, DOB: 23-11-1992, Hospital No: H6372491 NHS No. 9074512368  \nFlat 3, 18 Wharf Road, London N1 7RW  \n\nEpilepsy\n\nMedication: No current regular antiepileptic medication recorded.\n\nCaffeine intake: Patient reports high daily caffeine consumption (multiple energy drinks and strong coffee).\n\nSeizures: Patient reports brief episodes of loss of awareness with rapid recovery, occurring 5 per week. Descriptions vary slightly but commonly include a sudden pause in activity and a need to sit or steady themselves, with occasional tongue biting reported by partner post-event. No clear precipitating infections or sleep deprivation reported; however, high caffeine intake acknowledged by patient as potentially relevant. No injuries reported. Last prolonged event was approximately two months ago, witnessed, lasting around 2 minutes by partner’s estimate.\n\nI conducted a video consultation today to review ongoing episodes. The patient keeps a basic diary and notes that clusters tend to occur on workdays, often mid-afternoon. They have not initiated any antiseizure therapy previously and prefer to consider options after further discussion. They report no known medication allergies. There is no known family history of seizures. The patient is otherwise well, with stable mood, and denies alcohol or recreational drug use. Sleep pattern is variable, averaging 5–6 hours per night on weekdays.\n\nPlan discussed with the patient: arrange routine EEG and MRI brain (with epilepsy protocol) to aid further evaluation. Baseline bloods to include FBC, U&E, LFT, calcium, magnesium, glucose, vitamin B12, folate, and thyroid function. We also discussed general health measures and the patient will continue to document episodes in more detail, including timing relative to caffeine intake, meals, and sleep. The patient expressed interest in a follow-up appointment to review results and discuss treatment options once investigations are available. Safety advice regarding bathing, heights, and operating machinery was reiterated, and they report they do not currently drive.\n\nI will review once investigations and blood tests are available and will contact the patient with results and next steps. The patient understands and agrees with this plan.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 578,
+      "end": 598,
+      "text": "occurring 5 per week",
+      "attributes": {
+        "Label": "5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 588,
+      "end": 598,
+      "text": "5 per week",
+      "attributes": {
+        "Label": "5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 51,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 08 November 2023\n\nDr Helen Carter  \nRiverside Medical Practice  \n221 King Street, Hammersmith, London W6 9JT  \n\nDear Dr Helen Carter,\n\nThomas Greene, DOB: 23-11-1992, Hospital No: H6372491 NHS No. 9074512368  \nFlat 3, 18 Wharf Road, London N1 7RW  \n\nEpilepsy\n\nMedication: No current regular antiepileptic medication recorded.\n\nCaffeine intake: Patient reports high daily caffeine consumption (multiple energy drinks and strong coffee).\n\nSeizures: Patient reports brief episodes of loss of awareness with rapid recovery, occurring 5 per week. Descriptions vary slightly but commonly include a sudden pause in activity and a need to sit or steady themselves, with occasional tongue biting reported by partner post-event. No clear precipitating infections or sleep deprivation reported; however, high caffeine intake acknowledged by patient as potentially relevant. No injuries reported. Last prolonged event was approximately two months ago, witnessed, lasting around 2 minutes by partner’s estimate.\n\nI conducted a video consultation today to review ongoing episodes. The patient keeps a basic diary and notes that clusters tend to occur on workdays, often mid-afternoon. They have not initiated any antiseizure therapy previously and prefer to consider options after further discussion. They report no known medication allergies. There is no known family history of seizures. The patient is otherwise well, with stable mood, and denies alcohol or recreational drug use. Sleep pattern is variable, averaging 5–6 hours per night on weekdays.\n\nPlan discussed with the patient: arrange routine EEG and MRI brain (with epilepsy protocol) to aid further evaluation. Baseline bloods to include FBC, U&E, LFT, calcium, magnesium, glucose, vitamin B12, folate, and thyroid function. We also discussed general health measures and the patient will continue to document episodes in more detail, including timing relative to caffeine intake, meals, and sleep. The patient expressed interest in a follow-up appointment to review results and discuss treatment options once investigations are available. Safety advice regarding bathing, heights, and operating machinery was reiterated, and they report they do not currently drive.\n\nI will review once investigations and blood tests are available and will contact the patient with results and next steps. The patient understands and agrees with this plan.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizures: Patient reports brief episodes of loss of awareness with rapid recovery, occurring 5 per week.' This provides a clear current frequency. There are no conflicting frequencies that are higher; the mention of a 'last prolonged event ... two months ago' does not imply a higher ongoing frequency. Therefore, the normalized label is 5 per week.",
+      "seizure_frequency_number": [
+        "5 per week",
+        "occurring 5 per week"
+      ],
+      "reference": [
+        "5 per week",
+        "5 per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_31",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nJames Walker, DOB: 22-11-1991, Hospital No: H537920 NHS No. 9841265730  \nFlat 3, 41 Kingfisher Road, London, SE15 2AB  \n\nEpilepsy \n\nMedication: Patient reports continuing Levetiracetam since May 2025 without recent dose changes.  \n\nCurrent regimen (patient-reported): Levetiracetam 750 mg twice daily. \n\nLevetiracetam Blood Level: \n\nNo serum level available; patient has not had recent blood monitoring and no adverse effects reported. \n\nSeizures: Over the past month the patient describes variability in events coinciding with differing shift demands in a warehouse setting with tall racking and narrow aisles. He reports ≤ four seizures per day on busier late shifts with frequent lifting and faster picking pace, and fewer on lighter-duty shifts. He denies prolonged events, sustained clusters requiring emergency care, injuries, or missed workdays in the last four weeks. No specific prodrome identified; events are reported as brief with rapid recovery, and occur both at rest (break area) and during aisle navigation. \n\nI conducted a telephone review today. The patient attributes day-to-day fluctuation to shift pace and lifting tasks, noting that hydration and regular breaks may help, though he has not tracked this formally. He has informed his supervisor and states that a colleague accompanies him when working at height or in the narrowest aisles. He has not used rescue medication and has not presented to Emergency in the past six months. Sleep regularity varies between early and late shifts by his account. \n\nPlan discussed: The patient agrees to maintain a simple diary noting shift type, lifting load, rest breaks, sleep hours, and daily seizure count, to better characterise the reported pattern of ≤ four seizures per day on demanding shifts. He is content to continue current medication pending review of this diary. Blood tests (including U&Es, FBC, LFTs) have been requested through his GP surgery for baseline monitoring. He will contact the clinic earlier if events increase in intensity or duration, or if workplace incidents occur. Follow-up arranged in 8–10 weeks by telephone. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 887,
+      "end": 932,
+      "text": "≤ four seizures per day on busier late shifts",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 887,
+      "end": 910,
+      "text": "≤ four seizures per day",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 31,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nJames Walker, DOB: 22-11-1991, Hospital No: H537920 NHS No. 9841265730  \nFlat 3, 41 Kingfisher Road, London, SE15 2AB  \n\nEpilepsy \n\nMedication: Patient reports continuing Levetiracetam since May 2025 without recent dose changes.  \n\nCurrent regimen (patient-reported): Levetiracetam 750 mg twice daily. \n\nLevetiracetam Blood Level: \n\nNo serum level available; patient has not had recent blood monitoring and no adverse effects reported. \n\nSeizures: Over the past month the patient describes variability in events coinciding with differing shift demands in a warehouse setting with tall racking and narrow aisles. He reports ≤ four seizures per day on busier late shifts with frequent lifting and faster picking pace, and fewer on lighter-duty shifts. He denies prolonged events, sustained clusters requiring emergency care, injuries, or missed workdays in the last four weeks. No specific prodrome identified; events are reported as brief with rapid recovery, and occur both at rest (break area) and during aisle navigation. \n\nI conducted a telephone review today. The patient attributes day-to-day fluctuation to shift pace and lifting tasks, noting that hydration and regular breaks may help, though he has not tracked this formally. He has informed his supervisor and states that a colleague accompanies him when working at height or in the narrowest aisles. He has not used rescue medication and has not presented to Emergency in the past six months. Sleep regularity varies between early and late shifts by his account. \n\nPlan discussed: The patient agrees to maintain a simple diary noting shift type, lifting load, rest breaks, sleep hours, and daily seizure count, to better characterise the reported pattern of ≤ four seizures per day on demanding shifts. He is content to continue current medication pending review of this diary. Blood tests (including U&Es, FBC, LFTs) have been requested through his GP surgery for baseline monitoring. He will contact the clinic earlier if events increase in intensity or duration, or if workplace incidents occur. Follow-up arranged in 8–10 weeks by telephone. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's reported seizure frequency over the past month varies with work demands, with a maximum of '≤ four seizures per day' on busier late shifts. No other higher frequency is provided. Per the rule to select the highest frequency, the inferred current frequency is 4 per day.",
+      "seizure_frequency_number": [
+        "4 per day",
+        "≤ four seizures per day on busier late shifts"
+      ],
+      "reference": [
+        "4 per day",
+        "≤ four seizures per day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

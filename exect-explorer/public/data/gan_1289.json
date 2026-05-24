@@ -1,0 +1,59 @@
+{
+  "id": "gan_1289",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr A. Rahman\nRiverside Health Centre\n\n12 Queen Street, Southwark, London SE1 2AB\n\nDear Dr A. Rahman\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Longstanding seizure disorder with prior normal structural imaging; prior EEGs reported without a clear localising pattern. Social alcohol use reported and currently reducing.\n\nPrevious medication exposure reported: levetiracetam (partial benefit, fatigue), carbamazepine (rash), sodium valproate (weight gain), lamotrigine (titrated to moderate dose; equivocal benefit), topiramate (cognitive slowing), lacosamide (no sustained benefit), clobazam PRN, gabapentin. She has not tried perampanel, zonisamide, pregabalin, tiagabine, acetazolamide, primidone, retigabine, rufinamide.\n\nImaging/tests of record: Brain MRI in 2009 and again in 2016 reported no epileptogenic lesion. Routine and sleep‑deprived EEGs previously performed with non‑specific findings.\n\nI reviewed Wendy Brown in clinic today, accompanied by her partner. She volunteers that she has been cutting down social alcohol use over the past two months. She keeps a diary and notes 5 to 6 myoclonic this year, clustered around periods of poor sleep and work‑related stress. She denies convulsive episodes, tongue bite or injuries this year. No recent hospital admissions. She remains independent in activities of daily living and continues office-based work, though she avoids lone swimming and adheres to safety advice.\n\nCurrent medications: lamotrigine 100 mg twice daily; folic acid 5 mg daily; omeprazole 20 mg daily. No hormonal contraception. No known drug allergies.\n\nInterim history: Energy has improved since reducing alcohol and improving sleep hygiene. She reports occasional brief morning jerks of both upper limbs without loss of awareness, each under a second, with quick recovery. She prefers to avoid sedating add‑on treatment if possible. Mood is stable. Weight steady. No visual symptoms or renal colic.\n\nPlan discussed today: We agreed to focus on trigger management (sleep regularity, continued alcohol reduction, stress strategies) and to maintain a seizure and trigger diary. We discussed options for future therapy adjustment if needed, including cautious consideration of zonisamide or perampanel should events increase or impact safety. She will continue lamotrigine at the current dose for now. Safety counselling reinforced. We will arrange a routine follow‑up in six months, with earlier review if frequency worsens or if she develops new features such as prolonged events, injuries, or loss of awareness.\n\nThank you for your ongoing care and for supporting diary review and general health measures. Please let me know if any concerns arise in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1221,
+      "end": 1275,
+      "text": "She keeps a diary and notes 5 to 6 myoclonic this year",
+      "attributes": {
+        "Label": "5 to 6 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1249,
+      "end": 1275,
+      "text": "5 to 6 myoclonic this year",
+      "attributes": {
+        "Label": "5 to 6 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1289,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr A. Rahman\nRiverside Health Centre\n\n12 Queen Street, Southwark, London SE1 2AB\n\nDear Dr A. Rahman\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Longstanding seizure disorder with prior normal structural imaging; prior EEGs reported without a clear localising pattern. Social alcohol use reported and currently reducing.\n\nPrevious medication exposure reported: levetiracetam (partial benefit, fatigue), carbamazepine (rash), sodium valproate (weight gain), lamotrigine (titrated to moderate dose; equivocal benefit), topiramate (cognitive slowing), lacosamide (no sustained benefit), clobazam PRN, gabapentin. She has not tried perampanel, zonisamide, pregabalin, tiagabine, acetazolamide, primidone, retigabine, rufinamide.\n\nImaging/tests of record: Brain MRI in 2009 and again in 2016 reported no epileptogenic lesion. Routine and sleep‑deprived EEGs previously performed with non‑specific findings.\n\nI reviewed Wendy Brown in clinic today, accompanied by her partner. She volunteers that she has been cutting down social alcohol use over the past two months. She keeps a diary and notes 5 to 6 myoclonic this year, clustered around periods of poor sleep and work‑related stress. She denies convulsive episodes, tongue bite or injuries this year. No recent hospital admissions. She remains independent in activities of daily living and continues office-based work, though she avoids lone swimming and adheres to safety advice.\n\nCurrent medications: lamotrigine 100 mg twice daily; folic acid 5 mg daily; omeprazole 20 mg daily. No hormonal contraception. No known drug allergies.\n\nInterim history: Energy has improved since reducing alcohol and improving sleep hygiene. She reports occasional brief morning jerks of both upper limbs without loss of awareness, each under a second, with quick recovery. She prefers to avoid sedating add‑on treatment if possible. Mood is stable. Weight steady. No visual symptoms or renal colic.\n\nPlan discussed today: We agreed to focus on trigger management (sleep regularity, continued alcohol reduction, stress strategies) and to maintain a seizure and trigger diary. We discussed options for future therapy adjustment if needed, including cautious consideration of zonisamide or perampanel should events increase or impact safety. She will continue lamotrigine at the current dose for now. Safety counselling reinforced. We will arrange a routine follow‑up in six months, with earlier review if frequency worsens or if she develops new features such as prolonged events, injuries, or loss of awareness.\n\nThank you for your ongoing care and for supporting diary review and general health measures. Please let me know if any concerns arise in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit current frequency statements. The letter states: 'She keeps a diary and notes 5 to 6 myoclonic this year, clustered around periods of poor sleep and work‑related stress.' This provides a numeric range over the time unit 'this year'. No higher-frequency figure is given elsewhere. She denies convulsive episodes this year. Therefore, the current seizure frequency is 5 to 6 per year. Normalize to allowed format: '5 to 6 per year'.",
+      "seizure_frequency_number": [
+        "5 to 6 per year",
+        "She keeps a diary and notes 5 to 6 myoclonic this year"
+      ],
+      "reference": [
+        "5 to 6 per year",
+        "5 to 6 myoclonic this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

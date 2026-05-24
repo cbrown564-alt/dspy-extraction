@@ -1,0 +1,59 @@
+{
+  "id": "gan_10206",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 22 January 2015 10:12\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Shift-work related seizure clusters and monitoring plan\n\nHi Priya,\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation.\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-initiated per prior plan)\n\n\nPresent Seizure Frequency:\n\nClusters occur sporadically; typically two to four events when they happen.\n\n\nBackground and Current Concerns:\n\nThe patient is a rotating shift worker, including regular nights, with a markedly disrupted circadian rhythm. They report that clusters often follow sequences of rapid shift changes or after two consecutive night shifts. No clear aura is described. Events are brief with preserved awareness according to the patient, though post-event fatigue is common. There have been no reported injuries or tongue bites. No clear intercurrent illness or alcohol excess. Sleep restriction and variable meal timing are recurring themes in the 14‑day diary provided.\n\nPlan of Action:\n\n- Maintain current lamotrigine dose pending further data, as adherence has been good and no rash or other adverse effects reported.\n- Continue clobazam 5 mg nocte as needed at the onset of a cluster for up to three nights; patient to avoid operating machinery if taken.\n- Arrange ambulatory EEG with sleep capture and initiate actigraphy to correlate sleep–wake patterns with events; provide seizure and sleep diary templates.\n- Occupational advice: discuss with employer the possibility of stabilising shift rotations (aiming to reduce rapid flips between day and night) and ensuring protected recovery sleep windows after nights.\n- Safety: reinforce buddy notification when working lone night shifts, and advise temporary restriction from working at height until review.\n- Bloods: U&E, LFT, FBC, vitamin D, and lamotrigine level for baseline.\n- Follow-up: review in 12 weeks; earlier if cluster pattern changes or injuries occur. If clusters persist despite sleep schedule adjustments, we will consider dose optimisation or alternative therapy after EEG results.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 603,
+      "end": 678,
+      "text": "Clusters occur sporadically; typically two to four events when they happen.",
+      "attributes": {
+        "Label": "unknown, 2 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 603,
+      "end": 677,
+      "text": "Clusters occur sporadically; typically two to four events when they happen",
+      "attributes": {
+        "Label": "unknown, 2 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10206,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 22 January 2015 10:12\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Shift-work related seizure clusters and monitoring plan\n\nHi Priya,\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation.\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-initiated per prior plan)\n\n\nPresent Seizure Frequency:\n\nClusters occur sporadically; typically two to four events when they happen.\n\n\nBackground and Current Concerns:\n\nThe patient is a rotating shift worker, including regular nights, with a markedly disrupted circadian rhythm. They report that clusters often follow sequences of rapid shift changes or after two consecutive night shifts. No clear aura is described. Events are brief with preserved awareness according to the patient, though post-event fatigue is common. There have been no reported injuries or tongue bites. No clear intercurrent illness or alcohol excess. Sleep restriction and variable meal timing are recurring themes in the 14‑day diary provided.\n\nPlan of Action:\n\n- Maintain current lamotrigine dose pending further data, as adherence has been good and no rash or other adverse effects reported.\n- Continue clobazam 5 mg nocte as needed at the onset of a cluster for up to three nights; patient to avoid operating machinery if taken.\n- Arrange ambulatory EEG with sleep capture and initiate actigraphy to correlate sleep–wake patterns with events; provide seizure and sleep diary templates.\n- Occupational advice: discuss with employer the possibility of stabilising shift rotations (aiming to reduce rapid flips between day and night) and ensuring protected recovery sleep windows after nights.\n- Safety: reinforce buddy notification when working lone night shifts, and advise temporary restriction from working at height until review.\n- Bloods: U&E, LFT, FBC, vitamin D, and lamotrigine level for baseline.\n- Follow-up: review in 12 weeks; earlier if cluster pattern changes or injuries occur. If clusters persist despite sleep schedule adjustments, we will consider dose optimisation or alternative therapy after EEG results.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter includes a 'Present Seizure Frequency' section stating: 'Clusters occur sporadically; typically two to four events when they happen.' This provides the number of events per cluster (2 to 4) but does not specify how often clusters occur over a time unit (day/week/month/year). Therefore, the overall frequency is unknown, but the per-cluster event count is given. According to the allowed formats, when cluster timing is unknown but events per cluster are given, the correct output is 'unknown, <value> per cluster.'",
+      "seizure_frequency_number": [
+        "unknown, 2 to 4 per cluster",
+        "Clusters occur sporadically; typically two to four events when they happen."
+      ],
+      "reference": [
+        "unknown, 2 to 4 per cluster",
+        "Clusters occur sporadically; typically two to four events when they happen"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

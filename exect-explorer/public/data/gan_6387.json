@@ -1,0 +1,65 @@
+{
+  "id": "gan_6387",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 June 2022 \n\nDr Amelia Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s University Hospitals NHS Foundation Trust, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Khan, \n\nAlex Turner, DOB: 22-09-2003, Hospital No: H847520 NHS No. 9041127765  \nFlat 2, 14 Brookside Road, London, SW19 3AB  \n\nDiagnosis: \n\nFocal epilepsy with sleep deprivation and circadian disruption as prominent precipitants; reports seizure events during travel/jet lag \n\nAetiology: \n\nNo structural lesion identified on MRI; EEG with left temporal intermittent sharp activity \n\nOther Medical Problems: \n\nIntermittent migraines without aura; myopia; no known drug allergies \n\nManagement Plan: \n\n- Continue Lamotrigine 100 mg twice daily, single brand only.  \n- Optimise sleep hygiene with consistent bed and wake times; patient acknowledges prolonged evening screen exposure due to university esports leadership role.  \n- For long-haul trips and competition travel, implement structured sleep-shift plan and ensure medication timing remains on home schedule when feasible, given the clear pattern of seizure events during travel/jet lag.  \n- Rescue plan unchanged: Buccal midazolam 10 mg for any convulsive event >5 minutes; university esports staff informed.  \n- DVLA guidance has been discussed and reinforced.  \n- Bloods today: FBC, U&E, LFT, Lamotrigine trough level.  \n- Review in six months, sooner if breakthrough events occur.  \n\nThis student is the lead for the university esports club and frequently manages late-night practices, extended tournaments, and cross-time-zone travel for events. He describes reliable triggers as prolonged screen time into the early hours and abrupt sleep schedule changes. He remains otherwise well, with no adverse effects from Lamotrigine and good adherence. Since our last contact he had two brief focal aware seizures associated with a red-eye flight to North America and a subsequent return journey, consistent with seizure events during travel/jet lag. There have been no injuries or secondary generalisation. We discussed practical adjustments including blue-light filters, scheduled screen breaks, and a pre-travel sleep phase shift. He prefers to maintain Lamotrigine at the current dosing; I agree provided levels are satisfactory and events remain infrequent and clearly precipitated. No additional antiseizure medication is indicated at present. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1847,
+      "end": 1989,
+      "text": "Since our last contact he had two brief focal aware seizures associated with a red-eye flight to North America and a subsequent return journey",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 480,
+      "end": 516,
+      "text": "seizure events during travel/jet lag",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6387,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 June 2022 \n\nDr Amelia Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s University Hospitals NHS Foundation Trust, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Khan, \n\nAlex Turner, DOB: 22-09-2003, Hospital No: H847520 NHS No. 9041127765  \nFlat 2, 14 Brookside Road, London, SW19 3AB  \n\nDiagnosis: \n\nFocal epilepsy with sleep deprivation and circadian disruption as prominent precipitants; reports seizure events during travel/jet lag \n\nAetiology: \n\nNo structural lesion identified on MRI; EEG with left temporal intermittent sharp activity \n\nOther Medical Problems: \n\nIntermittent migraines without aura; myopia; no known drug allergies \n\nManagement Plan: \n\n- Continue Lamotrigine 100 mg twice daily, single brand only.  \n- Optimise sleep hygiene with consistent bed and wake times; patient acknowledges prolonged evening screen exposure due to university esports leadership role.  \n- For long-haul trips and competition travel, implement structured sleep-shift plan and ensure medication timing remains on home schedule when feasible, given the clear pattern of seizure events during travel/jet lag.  \n- Rescue plan unchanged: Buccal midazolam 10 mg for any convulsive event >5 minutes; university esports staff informed.  \n- DVLA guidance has been discussed and reinforced.  \n- Bloods today: FBC, U&E, LFT, Lamotrigine trough level.  \n- Review in six months, sooner if breakthrough events occur.  \n\nThis student is the lead for the university esports club and frequently manages late-night practices, extended tournaments, and cross-time-zone travel for events. He describes reliable triggers as prolonged screen time into the early hours and abrupt sleep schedule changes. He remains otherwise well, with no adverse effects from Lamotrigine and good adherence. Since our last contact he had two brief focal aware seizures associated with a red-eye flight to North America and a subsequent return journey, consistent with seizure events during travel/jet lag. There have been no injuries or secondary generalisation. We discussed practical adjustments including blue-light filters, scheduled screen breaks, and a pre-travel sleep phase shift. He prefers to maintain Lamotrigine at the current dosing; I agree provided levels are satisfactory and events remain infrequent and clearly precipitated. No additional antiseizure medication is indicated at present. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Since our last contact he had two brief focal aware seizures associated with a red-eye flight to North America and a subsequent return journey.\" It does not specify the exact time interval since the last contact, so we cannot convert this into a per day/week/month/year rate. It confirms seizures occurred but lacks a defined period, so the precise frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Since our last contact he had two brief focal aware seizures associated with a red-eye flight to North America and a subsequent return journey"
+      ],
+      "reference": [
+        "unknown",
+        "seizure events during travel/jet lag"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

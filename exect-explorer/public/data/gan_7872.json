@@ -1,0 +1,59 @@
+{
+  "id": "gan_7872",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 September 2019 \n\nDr Patel  \nNorth Thames Neurology Clinic  \nNeurosciences, 48 Riverbank Way, London, W6 7JP  \n\nDear Dr Patel,  \n\nJames Carter, DOB: 14-02-1988, Hospital No: H937521 NHS No. 8421596730  \n12 Millwright Court, London, E3 4LP  \n\nDiagnoses: \n\nSeizure disorder, aetiology and classification not determined. \n\nThank you for asking me to review James Carter in clinic today. He works in a manual, safety‑sensitive role that involves heights and machinery. He attended with his partner. He reports no new neurological symptoms and confirms complete control of seizures since his last review; specifically, there have been no episodes of loss of awareness, no myoclonic or focal features, and no events suggestive of breakthrough activity. He has not required emergency rescue medication or unscheduled care. Sleep and hydration are reported as stable, and he denies missed doses of medication.\n\nMedications: steady on current anti‑seizure therapy without recent changes. No adverse effects volunteered; no dizziness, diplopia or cognitive slowing reported. He remains fit for normal daily activities and is adhering to workplace safety protocols.\n\nExamination today was unremarkable. Observations within normal limits. Neurological assessment was non‑focal. No tongue biting scars or recent injuries were noted. \n\nInvestigations: Prior routine EEG and MRI were non‑diagnostic. No new investigations requested today in the context of clinical stability and complete control of seizures. We will reconsider further testing if there is any change in events or occupational requirements.\n\nOccupational context: Given his safety‑critical duties, we reiterated general precautions applicable to those working at heights and around machinery, including prompt reporting of any concerning symptoms and continued adherence to employer risk assessments. He understands to seek medical advice urgently should any events recur.\n\nPlan: \n- Continue current anti‑seizure medication unchanged. \n- Routine follow‑up in 6 months, or sooner if symptoms recur. \n- Provide an employer letter on request confirming current clinical status (complete control of seizures) without disclosing additional medical details. \n\nI will update you after the next review or earlier if there is any change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 606,
+      "end": 656,
+      "text": "complete control of seizures since his last review",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 606,
+      "end": 634,
+      "text": "Complete control of seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7872,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 September 2019 \n\nDr Patel  \nNorth Thames Neurology Clinic  \nNeurosciences, 48 Riverbank Way, London, W6 7JP  \n\nDear Dr Patel,  \n\nJames Carter, DOB: 14-02-1988, Hospital No: H937521 NHS No. 8421596730  \n12 Millwright Court, London, E3 4LP  \n\nDiagnoses: \n\nSeizure disorder, aetiology and classification not determined. \n\nThank you for asking me to review James Carter in clinic today. He works in a manual, safety‑sensitive role that involves heights and machinery. He attended with his partner. He reports no new neurological symptoms and confirms complete control of seizures since his last review; specifically, there have been no episodes of loss of awareness, no myoclonic or focal features, and no events suggestive of breakthrough activity. He has not required emergency rescue medication or unscheduled care. Sleep and hydration are reported as stable, and he denies missed doses of medication.\n\nMedications: steady on current anti‑seizure therapy without recent changes. No adverse effects volunteered; no dizziness, diplopia or cognitive slowing reported. He remains fit for normal daily activities and is adhering to workplace safety protocols.\n\nExamination today was unremarkable. Observations within normal limits. Neurological assessment was non‑focal. No tongue biting scars or recent injuries were noted. \n\nInvestigations: Prior routine EEG and MRI were non‑diagnostic. No new investigations requested today in the context of clinical stability and complete control of seizures. We will reconsider further testing if there is any change in events or occupational requirements.\n\nOccupational context: Given his safety‑critical duties, we reiterated general precautions applicable to those working at heights and around machinery, including prompt reporting of any concerning symptoms and continued adherence to employer risk assessments. He understands to seek medical advice urgently should any events recur.\n\nPlan: \n- Continue current anti‑seizure medication unchanged. \n- Routine follow‑up in 6 months, or sooner if symptoms recur. \n- Provide an employer letter on request confirming current clinical status (complete control of seizures) without disclosing additional medical details. \n\nI will update you after the next review or earlier if there is any change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had complete control of seizures since the last review, with no episodes suggestive of breakthrough activity. However, the exact duration since the last review is not specified. To label as seizure free, we need confirmation of at least 6 months seizure freedom. Because the letter does not provide a specific duration but indicates ongoing control, the appropriate normalized label is 'seizure free for multiple months' per the instruction that if insufficient information exists to confirm or refute the 6‑month criterion, we may consider seizure free for multiple months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "complete control of seizures since his last review"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Complete control of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12218",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Priya Menon\nSt Anne’s Community Health Centre\nNeurology Department, 14 Brookside Lane, Manchester M14 3DT\n\nDear Dr Priya Menon,\n\nEmily Carter, DOB: 23-02-1992, Hospital No: H392847 NHS No. 9045127836\nFlat 3, 18 Millfield Court, Chorlton, Manchester M21 8RQ\n\nDiagnoses:\n\nSeizure disorder of uncertain aetiology and classification; longstanding history with mixed seizure semiology. Brain MRI (2021) reportedly normal. Prior ambulatory EEG (2022) non-diagnostic.\n\nCurrent Medication:\n\nLevetiracetam 1 g twice daily\nClobazam 10 mg nocte\nVitamin D supplementation 800 IU daily\n\nPlan:\n\n- Continue current anti-seizure medications without dose change.\n- Maintain seizure diary; correlate with smartwatch fall-detection alerts to support event chronology.\n- Safety counselling reinforced; family to continue nocturnal supervision as currently arranged.\n- Routine bloods (U&Es, LFTs) via GP in the next 2–3 months given long-term therapy.\n- Follow-up in neurology clinic in 9 months, sooner if there is any escalation in frequency or injury.\n\nI reviewed Emily Carter in clinic today accompanied by a family member. Her seizure control is variable but the family feels it is acceptable, she continues to experience epileptic spasm on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years. The family confirms that these events tend to cluster around early mornings and periods of sleep deprivation. There have been no recent injuries, hospital admissions, or status episodes.\n\nShe wears a smartwatch with fall-detection enabled; the device has generated alerts that align with witnessed convulsive events. We discussed continuing to use these timestamps, alongside her diary entries, to support the chronology of events and to help identify any evolving triggers. She reports good adherence to medication and no troublesome adverse effects beyond occasional daytime fatigue. Sleep hygiene measures and regular routines are being maintained.\n\nAt this stage, given clinical stability over several years and acceptable day-to-day function as reported by the family, I have not recommended any medication changes. We agreed to continue monitoring with the aid of the smartwatch alerts and diary. Should there be any increase in frequency or severity, we would reconsider therapy, including optimisation of current agents or further investigation.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1236,
+      "end": 1296,
+      "text": "she continues to experience epileptic spasm on a daily basis",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1165,
+      "end": 1438,
+      "text": "Her seizure control is variable but the family feels it is acceptable, she continues to experience epileptic spasm on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12218,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Priya Menon\nSt Anne’s Community Health Centre\nNeurology Department, 14 Brookside Lane, Manchester M14 3DT\n\nDear Dr Priya Menon,\n\nEmily Carter, DOB: 23-02-1992, Hospital No: H392847 NHS No. 9045127836\nFlat 3, 18 Millfield Court, Chorlton, Manchester M21 8RQ\n\nDiagnoses:\n\nSeizure disorder of uncertain aetiology and classification; longstanding history with mixed seizure semiology. Brain MRI (2021) reportedly normal. Prior ambulatory EEG (2022) non-diagnostic.\n\nCurrent Medication:\n\nLevetiracetam 1 g twice daily\nClobazam 10 mg nocte\nVitamin D supplementation 800 IU daily\n\nPlan:\n\n- Continue current anti-seizure medications without dose change.\n- Maintain seizure diary; correlate with smartwatch fall-detection alerts to support event chronology.\n- Safety counselling reinforced; family to continue nocturnal supervision as currently arranged.\n- Routine bloods (U&Es, LFTs) via GP in the next 2–3 months given long-term therapy.\n- Follow-up in neurology clinic in 9 months, sooner if there is any escalation in frequency or injury.\n\nI reviewed Emily Carter in clinic today accompanied by a family member. Her seizure control is variable but the family feels it is acceptable, she continues to experience epileptic spasm on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years. The family confirms that these events tend to cluster around early mornings and periods of sleep deprivation. There have been no recent injuries, hospital admissions, or status episodes.\n\nShe wears a smartwatch with fall-detection enabled; the device has generated alerts that align with witnessed convulsive events. We discussed continuing to use these timestamps, alongside her diary entries, to support the chronology of events and to help identify any evolving triggers. She reports good adherence to medication and no troublesome adverse effects beyond occasional daytime fatigue. Sleep hygiene measures and regular routines are being maintained.\n\nAt this stage, given clinical stability over several years and acceptable day-to-day function as reported by the family, I have not recommended any medication changes. We agreed to continue monitoring with the aid of the smartwatch alerts and diary. Should there be any increase in frequency or severity, we would reconsider therapy, including optimisation of current agents or further investigation.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"she continues to experience epileptic spasm on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures.\" Per the rules, when multiple frequencies are present, choose the highest frequency. \"On a daily basis\" indicates at least 1 per day for epileptic spasms. The myoclonic jerks are in clusters but without a numeric frequency; GTCs are occasional without a numeric rate. Therefore, the highest explicit numeric frequency is daily, which normalizes to 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "she continues to experience epileptic spasm on a daily basis"
+      ],
+      "reference": [
+        "1 per day",
+        "Her seizure control is variable but the family feels it is acceptable, she continues to experience epileptic spasm on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

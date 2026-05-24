@@ -1,0 +1,54 @@
+{
+  "id": "gan_6987",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 December 2015 \n\nDr A. Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Khan, \n\nMr Thomas Green, DOB: 22-06-1989, Hospital No: K9123456 NHS No. 1045827396  \nFlat 3, 27 Willow Lane, London, SE15 4PQ  \n\nDiagnosis: \n\nFocal epilepsy with focal impaired awareness seizures; improved stability on current regimen \n\nAetiology: \n\nSuspected perinatal hypoxic–ischaemic injury with left temporal predominance on prior imaging \n\nOther Medical Problems: \n\nMild learning disability; anxiety symptoms managed with non-pharmacological strategies; no current psychotropic medication \n\nManagement Plan: \n\n- Continue Lamotrigine 150 mg twice daily, single-brand supply.  \n- Continue Levetiracetam 500 mg twice daily.  \n- Buccal midazolam 10 mg PRN for seizures lasting >5 minutes; carer trained and confident in administration.  \n- No driving; standard DVLA guidance reinforced.  \n- Provide accessible seizure action plan and pictorial diary; carer to continue assisting with communication and event logging.  \n- Routine bloods today (FBC, U&Es, LFTs) and trough Lamotrigine level prior to morning dose at next visit.  \n- Review in six months or sooner if increased seizure activity or adverse effects. \n\nThis gentleman has focal epilepsy. He attended with his carer, who helps with communication and keeps the seizure diary. The carer’s records indicate brief episodes of behavioural arrest with oral automatisms and post‑event confusion lasting approximately 10–15 minutes. He has had no generalised tonic–clonic seizures reported in over a year. He is unable to recall the timing of individual events; the carer notes that the most recent entry in the diary was “sometime early last month,” though the exact date was not captured. Overall, events appear infrequent and possibly clustering around periods of poor sleep.\n\nMedication tolerance remains good with no rash, mood lability, or daytime sedation reported. Sleep hygiene measures have been reinforced. We discussed SUDEP risk in accessible language; the carer has been provided with written information and a simplified seizure escalation plan. No changes to therapy today given apparent clinical stability and satisfactory adherence supported by the carer. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1441,
+      "end": 1632,
+      "text": "The carer’s records indicate brief episodes... Overall, events appear infrequent... the most recent entry in the diary was “sometime early last month,” though the exact date was not captured.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6987,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 December 2015 \n\nDr A. Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Khan, \n\nMr Thomas Green, DOB: 22-06-1989, Hospital No: K9123456 NHS No. 1045827396  \nFlat 3, 27 Willow Lane, London, SE15 4PQ  \n\nDiagnosis: \n\nFocal epilepsy with focal impaired awareness seizures; improved stability on current regimen \n\nAetiology: \n\nSuspected perinatal hypoxic–ischaemic injury with left temporal predominance on prior imaging \n\nOther Medical Problems: \n\nMild learning disability; anxiety symptoms managed with non-pharmacological strategies; no current psychotropic medication \n\nManagement Plan: \n\n- Continue Lamotrigine 150 mg twice daily, single-brand supply.  \n- Continue Levetiracetam 500 mg twice daily.  \n- Buccal midazolam 10 mg PRN for seizures lasting >5 minutes; carer trained and confident in administration.  \n- No driving; standard DVLA guidance reinforced.  \n- Provide accessible seizure action plan and pictorial diary; carer to continue assisting with communication and event logging.  \n- Routine bloods today (FBC, U&Es, LFTs) and trough Lamotrigine level prior to morning dose at next visit.  \n- Review in six months or sooner if increased seizure activity or adverse effects. \n\nThis gentleman has focal epilepsy. He attended with his carer, who helps with communication and keeps the seizure diary. The carer’s records indicate brief episodes of behavioural arrest with oral automatisms and post‑event confusion lasting approximately 10–15 minutes. He has had no generalised tonic–clonic seizures reported in over a year. He is unable to recall the timing of individual events; the carer notes that the most recent entry in the diary was “sometime early last month,” though the exact date was not captured. Overall, events appear infrequent and possibly clustering around periods of poor sleep.\n\nMedication tolerance remains good with no rash, mood lability, or daytime sedation reported. Sleep hygiene measures have been reinforced. We discussed SUDEP risk in accessible language; the carer has been provided with written information and a simplified seizure escalation plan. No changes to therapy today given apparent clinical stability and satisfactory adherence supported by the carer. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing focal impaired awareness seizures that are infrequent. It explicitly states no generalised tonic–clonic seizures in over a year, but for the focal events it gives no numeric frequency. The carer notes the most recent diary entry was “sometime early last month,” without an exact date, and overall events appear infrequent and possibly clustering around poor sleep. There is no precise rate (per day/week/month/year) provided, and we cannot infer a numeric frequency or confirm seizure freedom for ≥6 months. Therefore, per instruction, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The carer’s records indicate brief episodes... Overall, events appear infrequent... the most recent entry in the diary was “sometime early last month,” though the exact date was not captured."
+      ],
+      "reference": [
+        "unknown",
+        "Patient unsure of last event date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

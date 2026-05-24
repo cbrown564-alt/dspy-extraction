@@ -1,0 +1,59 @@
+{
+  "id": "gan_16704",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 22 September 2010\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 450 mg morning / 600 mg night. She reports improved day-time steadiness at work with fewer brief startles since titration. We discussed practical precautions in her warehouse role (working between tall racking and narrow aisles; lifting tasks and pace vary by shift) and the importance of regular hydration and sleep where shifts allow.\n\nInterval history:\n\nA prolonged event occurred in Apr (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Jul she had a drop attack, and in Sep seven myoclonic jerks were documented at college (not observed directly by parents). She links increased symptoms with night shifts and missed meals; no clear intercurrent illness. No injuries beyond minor bruising with the drop episode. No admissions.\n\nPlan:\n\n- Continue current Oxcarbazepine dose for now as she feels more stable overall at work. If early-morning startles recur on consecutive days, she will keep a diary and we will consider a small nocte increase after review.\n- Seizure diary to record shift pattern, meal timing, and any events witnessed by colleagues; we have provided a standardised form for supervisors to sign when possible.\n- Safety: advised using a spotter for high or awkward lifts and avoiding lone work at height; she will discuss with her line manager and occupational health.\n- Driving: regulations discussed; she confirms she is not driving.\n\nFollow-up: six months, sooner if events cluster or any further prolonged episode occurs.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 678,
+      "end": 940,
+      "text": "A prolonged event occurred in Apr (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Jul she had a drop attack, and in Sep seven myoclonic jerks were documented at college (not observed directly by parents).",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 678,
+      "end": 939,
+      "text": "A prolonged event occurred in Apr (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Jul she had a drop attack, and in Sep seven myoclonic jerks were documented at college (not observed directly by parents)",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16704,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 22 September 2010\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 450 mg morning / 600 mg night. She reports improved day-time steadiness at work with fewer brief startles since titration. We discussed practical precautions in her warehouse role (working between tall racking and narrow aisles; lifting tasks and pace vary by shift) and the importance of regular hydration and sleep where shifts allow.\n\nInterval history:\n\nA prolonged event occurred in Apr (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Jul she had a drop attack, and in Sep seven myoclonic jerks were documented at college (not observed directly by parents). She links increased symptoms with night shifts and missed meals; no clear intercurrent illness. No injuries beyond minor bruising with the drop episode. No admissions.\n\nPlan:\n\n- Continue current Oxcarbazepine dose for now as she feels more stable overall at work. If early-morning startles recur on consecutive days, she will keep a diary and we will consider a small nocte increase after review.\n- Seizure diary to record shift pattern, meal timing, and any events witnessed by colleagues; we have provided a standardised form for supervisors to sign when possible.\n- Safety: advised using a spotter for high or awkward lifts and avoiding lone work at height; she will discuss with her line manager and occupational health.\n- Driving: regulations discussed; she confirms she is not driving.\n\nFollow-up: six months, sooner if events cluster or any further prolonged episode occurs.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter’s interval history lists discrete seizure events with dates: 1 prolonged event in Apr, 1 drop attack in Jul, and 7 myoclonic jerks in Sep. Total events = 1 + 1 + 7 = 9. The clinic date is 22 September 2010, so the observation window spans approximately Apr to Sep (about 6 months). Therefore, the inferred frequency is 9 per 6 months.",
+      "seizure_frequency_number": [
+        "9 per 6 month",
+        "A prolonged event occurred in Apr (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Jul she had a drop attack, and in Sep seven myoclonic jerks were documented at college (not observed directly by parents)."
+      ],
+      "reference": [
+        "9 per 6 month",
+        "A prolonged event occurred in Apr (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Jul she had a drop attack, and in Sep seven myoclonic jerks were documented at college (not observed directly by parents)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

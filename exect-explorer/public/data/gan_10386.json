@@ -1,0 +1,59 @@
+{
+  "id": "gan_10386",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 12 September 2025 10:22\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Martin O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review – generalised epilepsy with weekly clustering\n\nDear Dr Shah,\n\nRe: Adult epilepsy review – history of childhood febrile seizures\n\nEpilepsy Diagnosis:\nThe patient has generalised epilepsy. There is a background of childhood febrile seizures, with no known structural lesion on prior MRI and normal development; current clinical focus remains adult epilepsy management.\n\nPresent Medication:\n1. Sodium valproate modified-release 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nSeizure Course and Frequency:\nPatient reports that cluster burden increased since 29 Jun 2022; now weekly, 2 - 3 per cluster. Clusters consist of brief myoclonic jerks on waking followed by a generalised absence episode; rarely progress to a generalised tonic–clonic event. No consistent precipitant identified beyond poor sleep and missed meals. No injuries reported. Adherence reported as good; no recent intercurrent illness. \n\nExamination and Investigations:\nNeurological examination today is normal. Last EEG (2024) showed generalised spike–wave discharges. Serum levels (Aug 2025): valproate within therapeutic range; lamotrigine mid-therapeutic. CMP and FBC unremarkable.\n\nPlan of Action:\n- Patient-reported trigger management reinforced (sleep hygiene, regular meals, hydration, stress reduction). \n- Diary and seizure first-aid reviewed; patient prefers to avoid medication changes today pending upcoming life events; we agreed to monitor closely.\n- Safety counselling provided regarding driving and water safety as per DVLA guidance applicable to generalised epilepsy.\n- Follow-up in 3 months, sooner if clusters escalate or injuries occur.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 892,
+      "end": 921,
+      "text": "now weekly, 2 - 3 per cluster",
+      "attributes": {
+        "Label": "1 cluster per week, 2 to 3 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 848,
+      "end": 921,
+      "text": "Cluster burden increased since 29 Jun 2022; now weekly, 2 - 3 per cluster",
+      "attributes": {
+        "Label": "1 cluster per week, 2 to 3 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10386,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 12 September 2025 10:22\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Martin O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review – generalised epilepsy with weekly clustering\n\nDear Dr Shah,\n\nRe: Adult epilepsy review – history of childhood febrile seizures\n\nEpilepsy Diagnosis:\nThe patient has generalised epilepsy. There is a background of childhood febrile seizures, with no known structural lesion on prior MRI and normal development; current clinical focus remains adult epilepsy management.\n\nPresent Medication:\n1. Sodium valproate modified-release 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nSeizure Course and Frequency:\nPatient reports that cluster burden increased since 29 Jun 2022; now weekly, 2 - 3 per cluster. Clusters consist of brief myoclonic jerks on waking followed by a generalised absence episode; rarely progress to a generalised tonic–clonic event. No consistent precipitant identified beyond poor sleep and missed meals. No injuries reported. Adherence reported as good; no recent intercurrent illness. \n\nExamination and Investigations:\nNeurological examination today is normal. Last EEG (2024) showed generalised spike–wave discharges. Serum levels (Aug 2025): valproate within therapeutic range; lamotrigine mid-therapeutic. CMP and FBC unremarkable.\n\nPlan of Action:\n- Patient-reported trigger management reinforced (sleep hygiene, regular meals, hydration, stress reduction). \n- Diary and seizure first-aid reviewed; patient prefers to avoid medication changes today pending upcoming life events; we agreed to monitor closely.\n- Safety counselling provided regarding driving and water safety as per DVLA guidance applicable to generalised epilepsy.\n- Follow-up in 3 months, sooner if clusters escalate or injuries occur.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"cluster burden increased since 29 Jun 2022; now weekly, 2 - 3 per cluster.\" This provides both the cluster frequency (weekly) and the number of seizures per cluster (2 to 3). There is no other conflicting frequency mentioned. Therefore, the correct normalized label is a cluster frequency with seizures per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per week, 2 to 3 per cluster",
+        "now weekly, 2 - 3 per cluster"
+      ],
+      "reference": [
+        "1 cluster per week, 2 to 3 per cluster",
+        "Cluster burden increased since 29 Jun 2022; now weekly, 2 - 3 per cluster"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

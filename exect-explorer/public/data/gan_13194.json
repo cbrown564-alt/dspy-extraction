@@ -1,0 +1,59 @@
+{
+  "id": "gan_13194",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nThomas Reynolds, DOB: 12-04-1985, Hospital No: H938421 NHS No. 5839201746  \n14 Brookside Close, London, W10 6DR \n\nMedication: \n\nCarbamazepine 400 mg twice daily. Tolerating well with no reported adverse effects; adherence good by patient report and blister pack checks.\n\nSince our last review, there has been a clear improvement in overall stability. Night-time childcare support was introduced six weeks ago, allowing him to obtain regular, uninterrupted sleep; he and his partner both report markedly consolidated sleep and better daytime functioning. On Carbamazepine monotherapy he was seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago. He recovered fully within an hour with no injury or tongue bite, and there were no witnessed generalised features. He reports no intercurrent illness, missed doses, or alcohol excess. No new neurological symptoms. Mood and energy have improved in parallel with the better sleep routine.\n\nHe has been keeping a calendar and electronic reminders; there are no additional events recorded, and his partner corroborates this. Driving status remains unchanged as previously advised; he understands notification and safety guidance. We discussed typical precipitants and he will continue the current sleep schedule with the overnight support in place, as this appears to have contributed to the recent period of stability.\n\nPlan: \n- Continue Carbamazepine 400 mg twice daily.  \n- Maintain sleep routine with ongoing night-time childcare support.  \n- Continue seizure diary; if further events occur, he will inform us promptly.  \n- Routine bloods (FBC, U&Es, LFTs) to be arranged via your practice within the next month as per monitoring guidance.  \n\nI will review him in four months, sooner if there is any change. Overall, the trajectory is encouraging, with improved stability and functioning.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 780,
+      "end": 874,
+      "text": "seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 744,
+      "end": 874,
+      "text": "On Carbamazepine monotherapy he was seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13194,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nThomas Reynolds, DOB: 12-04-1985, Hospital No: H938421 NHS No. 5839201746  \n14 Brookside Close, London, W10 6DR \n\nMedication: \n\nCarbamazepine 400 mg twice daily. Tolerating well with no reported adverse effects; adherence good by patient report and blister pack checks.\n\nSince our last review, there has been a clear improvement in overall stability. Night-time childcare support was introduced six weeks ago, allowing him to obtain regular, uninterrupted sleep; he and his partner both report markedly consolidated sleep and better daytime functioning. On Carbamazepine monotherapy he was seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago. He recovered fully within an hour with no injury or tongue bite, and there were no witnessed generalised features. He reports no intercurrent illness, missed doses, or alcohol excess. No new neurological symptoms. Mood and energy have improved in parallel with the better sleep routine.\n\nHe has been keeping a calendar and electronic reminders; there are no additional events recorded, and his partner corroborates this. Driving status remains unchanged as previously advised; he understands notification and safety guidance. We discussed typical precipitants and he will continue the current sleep schedule with the overnight support in place, as this appears to have contributed to the recent period of stability.\n\nPlan: \n- Continue Carbamazepine 400 mg twice daily.  \n- Maintain sleep routine with ongoing night-time childcare support.  \n- Continue seizure diary; if further events occur, he will inform us promptly.  \n- Routine bloods (FBC, U&Es, LFTs) to be arranged via your practice within the next month as per monitoring guidance.  \n\nI will review him in four months, sooner if there is any change. Overall, the trajectory is encouraging, with improved stability and functioning.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"On Carbamazepine monotherapy he was seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago.\" This indicates exactly 1 seizure in the past 3 months. He is not seizure free for ≥6 months, so we must calculate frequency. There are no other events recorded per diary and partner corroboration. Therefore, current frequency = 1 per 3 months.",
+      "seizure_frequency_number": [
+        "1 per 3 month",
+        "seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago"
+      ],
+      "reference": [
+        "1 per 3 month",
+        "On Carbamazepine monotherapy he was seizure-free for 3 months, until a focal impaired-awareness seizure occurred two Thursdays ago"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

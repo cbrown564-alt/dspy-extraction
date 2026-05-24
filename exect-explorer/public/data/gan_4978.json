@@ -1,0 +1,59 @@
+{
+  "id": "gan_4978",
+  "text": "Department of Neurology \n\nClinic Date: 28 September 2019 \n\nDr Amelia Kerr  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Kerr,  \n\nMichael Turner, DOB: 14-02-1987, Hospital No: H392774 NHS No. 9035184276  \n12 Brookfield Avenue, Tooting, London SW17 8QJ \n\nDiagnoses: \n\nRecurrent unprovoked seizures (first event 2015; most recent event 22 October 2018). Neuroimaging unremarkable (MRI brain March 2019). Routine EEG December 2018 did not demonstrate epileptiform activity. \n\nCurrent Medication: \n\nLevetiracetam 500 mg bd \n\nPlan: \n\n- Continue current antiepileptic medication without change.  \n- Safety and lifestyle: maintain regular sleep, avoid excess alcohol, and continue workplace protection with visor and welding mask; no photosensitive symptoms reported around arc-light exposure.  \n- Seizure precautions discussed, including driving regulations as applicable.  \n- Bloods (FBC, U&Es, LFTs) in primary care within 6 months.  \n- Open follow-up: routine review in 12 months, sooner if any further events or adverse effects.  \n\nI reviewed Michael Turner in clinic today. He works in metal fabrication and welding with intermittent arc-light exposure and reports consistent use of a protective visor as per workplace routine. He describes no episodes suggestive of breakthrough seizures or auras. Seizure-free interval since 22/Oct/2018. He feels well on Levetiracetam 500 mg twice daily, with no mood or cognitive side effects, and sleep is generally stable. There have been no new neurological symptoms. \n\nExamination today was unremarkable with normal cranial nerves, limb power, sensation, coordination and gait. Review of prior investigations: MRI brain (March 2019) was structurally normal; EEG (December 2018) showed no epileptiform discharges. We discussed ongoing risk reduction at work, including adherence to visor use and regular breaks, and he confirms no photosensitive triggers around welding arc-light. \n\nI have advised ongoing treatment at the current dose and will plan a routine review in one year. He will contact us sooner if there are any further events, concerns about side effects, or changes in occupational exposure. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1351,
+      "end": 1391,
+      "text": "Seizure-free interval since 22/Oct/2018.",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1351,
+      "end": 1390,
+      "text": "Seizure-free interval since 22/Oct/2018",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4978,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 28 September 2019 \n\nDr Amelia Kerr  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Kerr,  \n\nMichael Turner, DOB: 14-02-1987, Hospital No: H392774 NHS No. 9035184276  \n12 Brookfield Avenue, Tooting, London SW17 8QJ \n\nDiagnoses: \n\nRecurrent unprovoked seizures (first event 2015; most recent event 22 October 2018). Neuroimaging unremarkable (MRI brain March 2019). Routine EEG December 2018 did not demonstrate epileptiform activity. \n\nCurrent Medication: \n\nLevetiracetam 500 mg bd \n\nPlan: \n\n- Continue current antiepileptic medication without change.  \n- Safety and lifestyle: maintain regular sleep, avoid excess alcohol, and continue workplace protection with visor and welding mask; no photosensitive symptoms reported around arc-light exposure.  \n- Seizure precautions discussed, including driving regulations as applicable.  \n- Bloods (FBC, U&Es, LFTs) in primary care within 6 months.  \n- Open follow-up: routine review in 12 months, sooner if any further events or adverse effects.  \n\nI reviewed Michael Turner in clinic today. He works in metal fabrication and welding with intermittent arc-light exposure and reports consistent use of a protective visor as per workplace routine. He describes no episodes suggestive of breakthrough seizures or auras. Seizure-free interval since 22/Oct/2018. He feels well on Levetiracetam 500 mg twice daily, with no mood or cognitive side effects, and sleep is generally stable. There have been no new neurological symptoms. \n\nExamination today was unremarkable with normal cranial nerves, limb power, sensation, coordination and gait. Review of prior investigations: MRI brain (March 2019) was structurally normal; EEG (December 2018) showed no epileptiform discharges. We discussed ongoing risk reduction at work, including adherence to visor use and regular breaks, and he confirms no photosensitive triggers around welding arc-light. \n\nI have advised ongoing treatment at the current dose and will plan a routine review in one year. He will contact us sooner if there are any further events, concerns about side effects, or changes in occupational exposure. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The clinic date is 28 September 2019. The letter states the most recent seizure was on 22 October 2018 and explicitly says there has been a seizure-free interval since that date. Calculate seizure-free duration from 22 Oct 2018 to 28 Sep 2019: from 22 Oct 2018 to 22 Sep 2019 is 11 months; plus 6 additional days to 28 Sep 2019, which still counts as 11 months (not reaching 12 months). Therefore, the patient is seizure free for 11 months.",
+      "seizure_frequency_number": [
+        "seizure free for 11 month",
+        "Seizure-free interval since 22/Oct/2018."
+      ],
+      "reference": [
+        "seizure free for 11 month",
+        "Seizure-free interval since 22/Oct/2018"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

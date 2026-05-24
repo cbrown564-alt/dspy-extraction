@@ -1,0 +1,59 @@
+{
+  "id": "gan_14354",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 17 April 2017 \n\nDr Ahmed  \nRiverside Medical Centre  \nRiverside Medical Centre, 14 Barrow Street, London SE1 2AB  \n\nDear Dr Ahmed,  \n\nJames Walker, DOB: 23-11-1985, Hospital No: NHS4820317 NHS No. 9102746351  \n12 Brookfield Road, London, SW4 8HT \n\nMedication: \n\nLevetiracetam 1 g twice daily. No adverse effects reported. He prefers to continue with this regimen and has not used rescue medication since January. \n\nHe withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures, one precipitated by illness. He has remained stable without seizures since. This period has included several weeks of increased work-related stress and regular commuting by bicycle without incident, which he reports simply as part of his usual routine. Sleep pattern has been consistent, and there have been no intercurrent infections since the early January episode. \n\nWe discussed general progress, mood and cognition; he describes concentration as good and denies daytime somnolence. He has not noticed warning symptoms, auras, or nocturnal events since mid-January. No emergency attendances or injuries. \n\nHe would like to maintain the current plan and will contact us if there is any change. We will review him in six months or sooner if needed. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 474,
+      "end": 597,
+      "text": "He withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures... He has remained stable without seizures since.",
+      "attributes": {
+        "Label": "2 to 4 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 474,
+      "end": 623,
+      "text": "He withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures, one precipitated by illness. He has remained stable without seizures since",
+      "attributes": {
+        "Label": "2 to 4 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14354,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 17 April 2017 \n\nDr Ahmed  \nRiverside Medical Centre  \nRiverside Medical Centre, 14 Barrow Street, London SE1 2AB  \n\nDear Dr Ahmed,  \n\nJames Walker, DOB: 23-11-1985, Hospital No: NHS4820317 NHS No. 9102746351  \n12 Brookfield Road, London, SW4 8HT \n\nMedication: \n\nLevetiracetam 1 g twice daily. No adverse effects reported. He prefers to continue with this regimen and has not used rescue medication since January. \n\nHe withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures, one precipitated by illness. He has remained stable without seizures since. This period has included several weeks of increased work-related stress and regular commuting by bicycle without incident, which he reports simply as part of his usual routine. Sleep pattern has been consistent, and there have been no intercurrent infections since the early January episode. \n\nWe discussed general progress, mood and cognition; he describes concentration as good and denies daytime somnolence. He has not noticed warning symptoms, auras, or nocturnal events since mid-January. No emergency attendances or injuries. \n\nHe would like to maintain the current plan and will contact us if there is any change. We will review him in six months or sooner if needed. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: (1) He withdrew from Clobazam on 14/Jan and at that time had \"2 to 4\" seizures. (2) He has had no seizures since mid-January. (3) Clinic date is 17 April 2017. Therefore, from mid-January to mid-April is approximately 3 months. Because seizure-free status requires at least 6 months, we must calculate frequency over the current period. Total seizures in this roughly 3-month interval are 2 to 4, giving a frequency of 2 to 4 per 3 month.",
+      "seizure_frequency_number": [
+        "2 to 4 per 3 month",
+        "He withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures... He has remained stable without seizures since."
+      ],
+      "reference": [
+        "2 to 4 per 3 month",
+        "He withdrew from Clobazam on 14/Jan. At that time, he had 2 to 4 seizures, one precipitated by illness. He has remained stable without seizures since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

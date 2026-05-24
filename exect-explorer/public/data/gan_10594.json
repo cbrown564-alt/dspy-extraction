@@ -1,0 +1,59 @@
+{
+  "id": "gan_10594",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Daniels, DOB: 12-05-1991, Hospital No: H948320 NHS No. 8934751206  \n14 Brookside Close, London, W10 6JP \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient reports tolerating this without clear adverse effects apart from occasional fatigue. No recent dose changes.\n\nHistory since last review: \n\nShe describes intermittent nocturnal episodes over the past three months with post-event confusion on waking and occasional tongue-biting reported by her partner. She remains currently not driving by self-report. Clusters characterized by two focal impaired-awareness seizures; frequency unclear. She is keeping a basic diary but cannot specify how often these occur, as some events may be unwitnessed.\n\nShe notes increased stress at work and irregular sleep. No intercurrent illness, head injury, or new medications. Caffeine intake modest; no alcohol excess. Menses regular; no clear cyclical pattern noted by her. Family is supportive and monitoring overnight. No emergency department attendances. \n\nExamination today was unremarkable with normal speech, gait, and cranial nerve examination. Blood pressure 118/72 mmHg, pulse 72 bpm regular. \n\nPlan: \n\n- Continue levetiracetam 1000 mg twice daily for now. \n- Implement structured seizure and trigger diary with partner corroboration to help clarify timing and frequency of clusters and any precipitants (stress, sleep loss). \n- Safety counselling reiterated, including bathing precautions and avoidance of heights or open water when alone. She remains off driving and understands to inform DVLA as appropriate per current guidance. \n- Arrange routine EEG and updated serum biochemistry including U&E, LFT, and levetiracetam level (for reference only). \n- Provide information on sleep hygiene and stress management resources; patient agreeable. \n- We will review in clinic in 4 months or sooner if events escalate, any injury occurs, or if there is a change in pattern. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 710,
+      "end": 793,
+      "text": "Clusters characterized by two focal impaired-awareness seizures; frequency unclear.",
+      "attributes": {
+        "Label": "unknown, 2 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 710,
+      "end": 792,
+      "text": "Clusters characterized by two focal impaired-awareness seizures; frequency unclear",
+      "attributes": {
+        "Label": "unknown, 2 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10594,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Daniels, DOB: 12-05-1991, Hospital No: H948320 NHS No. 8934751206  \n14 Brookside Close, London, W10 6JP \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient reports tolerating this without clear adverse effects apart from occasional fatigue. No recent dose changes.\n\nHistory since last review: \n\nShe describes intermittent nocturnal episodes over the past three months with post-event confusion on waking and occasional tongue-biting reported by her partner. She remains currently not driving by self-report. Clusters characterized by two focal impaired-awareness seizures; frequency unclear. She is keeping a basic diary but cannot specify how often these occur, as some events may be unwitnessed.\n\nShe notes increased stress at work and irregular sleep. No intercurrent illness, head injury, or new medications. Caffeine intake modest; no alcohol excess. Menses regular; no clear cyclical pattern noted by her. Family is supportive and monitoring overnight. No emergency department attendances. \n\nExamination today was unremarkable with normal speech, gait, and cranial nerve examination. Blood pressure 118/72 mmHg, pulse 72 bpm regular. \n\nPlan: \n\n- Continue levetiracetam 1000 mg twice daily for now. \n- Implement structured seizure and trigger diary with partner corroboration to help clarify timing and frequency of clusters and any precipitants (stress, sleep loss). \n- Safety counselling reiterated, including bathing precautions and avoidance of heights or open water when alone. She remains off driving and understands to inform DVLA as appropriate per current guidance. \n- Arrange routine EEG and updated serum biochemistry including U&E, LFT, and levetiracetam level (for reference only). \n- Provide information on sleep hygiene and stress management resources; patient agreeable. \n- We will review in clinic in 4 months or sooner if events escalate, any injury occurs, or if there is a change in pattern. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing seizures but does not provide a clear numeric frequency. It mentions 'intermittent nocturnal episodes over the past three months' and that clusters are 'characterized by two focal impaired-awareness seizures', yet explicitly states 'frequency unclear' and that the patient 'cannot specify how often these occur'. Therefore, a specific rate per time cannot be determined. However, the per-cluster count is described as two seizures. Since overall frequency is unknown but per-cluster seizures are stated, the correct normalized label is 'unknown, 2 per cluster'.",
+      "seizure_frequency_number": [
+        "unknown, 2 per cluster",
+        "Clusters characterized by two focal impaired-awareness seizures; frequency unclear."
+      ],
+      "reference": [
+        "unknown, 2 per cluster",
+        "Clusters characterized by two focal impaired-awareness seizures; frequency unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

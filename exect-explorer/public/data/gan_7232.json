@@ -1,0 +1,54 @@
+{
+  "id": "gan_7232",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s Hospital  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMaya Rahman, DOB: 14-07-1992, Hospital No: H5839201 NHS No. 9472156038  \nFlat 3, 12 Brookside Close, London, SW18 4LX  \n\nDiagnoses: \n\nGeneralised epilepsy. \n\nI reviewed Maya Rahman in the neurology clinic today. She is a recent migrant to the UK and is learning how to access NHS services; on this occasion her partner attended and brief interpreter support was used for parts of the consultation. She describes brief generalised events occurring mainly in clusters linked with her most intense headache episodes. Specifically, she reports that on roughly 6 to 8 days per month, during periods of severe throbbing headaches with light sensitivity, she experiences short spells of unresponsiveness with eyelid fluttering and a rapid return to baseline within 1–2 minutes, followed by fatigue. Between these headache periods she does not describe independent events. There have been no reported injuries, tongue biting, or prolonged confusion. \n\nCurrent medication: sodium valproate 500 mg twice daily; levetiracetam 1 g twice daily. She has used buccal midazolam 10 mg once in the past three months for a longer cluster (approximately 4 minutes total), with good effect. She denies adverse effects beyond mild daytime drowsiness. No recent medication changes. \n\nBackground: She was diagnosed overseas three years ago with generalised epilepsy on clinical grounds, supported by an EEG at that time (record not yet available). She has not previously had neuroimaging. She does not drive. No known perinatal issues and no family history of epilepsy. \n\nExamination today was non-focal, observations stable. \n\nPlan: \n- Continue current anti-seizure medications unchanged. \n- Arrange MRI brain (epilepsy protocol) and repeat EEG to document current baseline. \n- Provide written seizure first-aid and NHS 111/urgent care access information in her preferred language; our epilepsy nurse specialist will telephone within two weeks to reinforce pathway navigation and rescue medicine use. \n- Prescribe a replacement buccal midazolam pack and demonstrate administration; partner observed and confirmed understanding. \n- Safety advice given regarding bathing, cooking with open heat, and sleeping position; she will avoid swimming unsupervised. \n- Seizure diary supplied; she will record events, noting temporal association with severe headaches, menses, sleep deprivation, and missed doses. \n- We will request previous records from her country of origin (with her consent) to clarify prior EEG details. \n\nFollow-up in four months, sooner if events increase in duration (>5 minutes), occur without headache association, or result in injury. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 728,
+      "end": 879,
+      "text": "on roughly 6 to 8 days per month, during periods of severe throbbing headaches with light sensitivity, she experiences short spells of unresponsiveness",
+      "attributes": {
+        "Label": "6 to 8 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7232,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s Hospital  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMaya Rahman, DOB: 14-07-1992, Hospital No: H5839201 NHS No. 9472156038  \nFlat 3, 12 Brookside Close, London, SW18 4LX  \n\nDiagnoses: \n\nGeneralised epilepsy. \n\nI reviewed Maya Rahman in the neurology clinic today. She is a recent migrant to the UK and is learning how to access NHS services; on this occasion her partner attended and brief interpreter support was used for parts of the consultation. She describes brief generalised events occurring mainly in clusters linked with her most intense headache episodes. Specifically, she reports that on roughly 6 to 8 days per month, during periods of severe throbbing headaches with light sensitivity, she experiences short spells of unresponsiveness with eyelid fluttering and a rapid return to baseline within 1–2 minutes, followed by fatigue. Between these headache periods she does not describe independent events. There have been no reported injuries, tongue biting, or prolonged confusion. \n\nCurrent medication: sodium valproate 500 mg twice daily; levetiracetam 1 g twice daily. She has used buccal midazolam 10 mg once in the past three months for a longer cluster (approximately 4 minutes total), with good effect. She denies adverse effects beyond mild daytime drowsiness. No recent medication changes. \n\nBackground: She was diagnosed overseas three years ago with generalised epilepsy on clinical grounds, supported by an EEG at that time (record not yet available). She has not previously had neuroimaging. She does not drive. No known perinatal issues and no family history of epilepsy. \n\nExamination today was non-focal, observations stable. \n\nPlan: \n- Continue current anti-seizure medications unchanged. \n- Arrange MRI brain (epilepsy protocol) and repeat EEG to document current baseline. \n- Provide written seizure first-aid and NHS 111/urgent care access information in her preferred language; our epilepsy nurse specialist will telephone within two weeks to reinforce pathway navigation and rescue medicine use. \n- Prescribe a replacement buccal midazolam pack and demonstrate administration; partner observed and confirmed understanding. \n- Safety advice given regarding bathing, cooking with open heat, and sleeping position; she will avoid swimming unsupervised. \n- Seizure diary supplied; she will record events, noting temporal association with severe headaches, menses, sleep deprivation, and missed doses. \n- We will request previous records from her country of origin (with her consent) to clarify prior EEG details. \n\nFollow-up in four months, sooner if events increase in duration (>5 minutes), occur without headache association, or result in injury. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has brief generalized events that occur mainly in clusters. It specifies: \"on roughly 6 to 8 days per month ... she experiences short spells of unresponsiveness...\" This indicates clustered seizure activity on 6–8 days per month, but the number of seizures within each cluster is not quantified. Using the allowed cluster format, this maps to 6 to 8 clusters per month with an indeterminate number per cluster.",
+      "seizure_frequency_number": [
+        "6 to 8 cluster per month, multiple per cluster",
+        "on roughly 6 to 8 days per month, during periods of severe throbbing headaches with light sensitivity, she experiences short spells of unresponsiveness"
+      ],
+      "reference": [
+        "unknown",
+        "seizure during migraines"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (6 to 8 cluster per month, multiple per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

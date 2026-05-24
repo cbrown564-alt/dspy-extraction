@@ -1,0 +1,65 @@
+{
+  "id": "gan_6624",
+  "text": "Riverside Neurology Centre\n\nOutpatient Clinic Date: 14 October 2025\n\nDr Patel\nRiverside Neurology Centre\n12 Quayside Road, London SE10 4AB\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154  NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nCurrent medication:\n• LevETIRAcetam 500 mg twice daily\n• Folic acid 5 mg once daily\n\nHistory and interval update:\nEmily Carter attended today reporting intermittent events over the past few months. She describes an episode characterised by a sudden break in awareness at home, witnessed by her partner, with a Seizure followed by postictal confusion lasting ~5 minute(s). She could not recall the immediate period after the event and felt fatigued thereafter. There are no reliable precipitants identified. She denies tongue-biting or incontinence. The exact occurrence pattern is not clear from her account and we were unable to establish a reliable count of events over a given time period.\n\nExamination today was unremarkable with normal cardiorespiratory and neurological bedside assessment. There are no focal deficits on examination. Bloods from her GP last month (FBC, U&Es, LFTs) were within reference ranges per the shared record.\n\nPlan:\n• Continue current medications unchanged.\n• We discussed maintaining a detailed event diary (including timing, context, recovery features, and any witnesses) and bringing this to the next review.\n• Safety counselling reinforced (sleep regularity, alcohol moderation, and general first aid advice as previously provided).\n• She will arrange for her partner to provide a short written account of the witnessed event for the record.\n• Awaiting community EEG appointment already requested by the GP; results to be shared via the usual pathway once available.\n\nFollow-up:\n• Review in neurology clinic in 6 months, sooner if concerns arise.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 809,
+      "end": 952,
+      "text": "The exact occurrence pattern is not clear from her account and we were unable to establish a reliable count of events over a given time period.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 570,
+      "end": 630,
+      "text": "Seizure followed by postictal confusion lasting ~5 minute(s)",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6624,
+    "clinic_date": "Riverside Neurology Centre\n\nOutpatient Clinic Date: 14 October 2025\n\nDr Patel\nRiverside Neurology Centre\n12 Quayside Road, London SE10 4AB\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154  NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nCurrent medication:\n• LevETIRAcetam 500 mg twice daily\n• Folic acid 5 mg once daily\n\nHistory and interval update:\nEmily Carter attended today reporting intermittent events over the past few months. She describes an episode characterised by a sudden break in awareness at home, witnessed by her partner, with a Seizure followed by postictal confusion lasting ~5 minute(s). She could not recall the immediate period after the event and felt fatigued thereafter. There are no reliable precipitants identified. She denies tongue-biting or incontinence. The exact occurrence pattern is not clear from her account and we were unable to establish a reliable count of events over a given time period.\n\nExamination today was unremarkable with normal cardiorespiratory and neurological bedside assessment. There are no focal deficits on examination. Bloods from her GP last month (FBC, U&Es, LFTs) were within reference ranges per the shared record.\n\nPlan:\n• Continue current medications unchanged.\n• We discussed maintaining a detailed event diary (including timing, context, recovery features, and any witnesses) and bringing this to the next review.\n• Safety counselling reinforced (sleep regularity, alcohol moderation, and general first aid advice as previously provided).\n• She will arrange for her partner to provide a short written account of the witnessed event for the record.\n• Awaiting community EEG appointment already requested by the GP; results to be shared via the usual pathway once available.\n\nFollow-up:\n• Review in neurology clinic in 6 months, sooner if concerns arise.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms that the patient has had seizure events recently but explicitly states that the occurrence pattern is unclear and a reliable count could not be established. There are no explicit numeric frequencies provided, nor enough detail to infer a rate over day/week/month/year. Therefore, per the rules, when seizures are mentioned but frequency cannot be determined, the correct label is 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "The exact occurrence pattern is not clear from her account and we were unable to establish a reliable count of events over a given time period."
+      ],
+      "reference": [
+        "unknown",
+        "Seizure followed by postictal confusion lasting ~5 minute(s)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

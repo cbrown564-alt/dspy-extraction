@@ -1,0 +1,48 @@
+{
+  "id": "gan_8736",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 July 2018 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Pre-conception counselling and ASM review\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy (primary generalised epilepsy)\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Folic acid 5 mg once daily (pre-conception)\n\n\nPresent Seizure Frequency:\n\nNo seizures reported since initiation of current antiseizure medicine; patient states she has remained without episodes for over 18 months and confirms no absences, myoclonus or tonic–clonic events in this interval.\n\n\nPlan of Action:\n\nWe reviewed pre-conception counselling in detail. She is planning pregnancy in the next 6–9 months. She reports excellent adherence to lamotrigine with good tolerability (no rash, mood change or dizziness). Sleep is generally regular and she avoids alcohol; no other potential triggers identified.\n\nI discussed the importance of high-dose folic acid pre-conception and during the first trimester, which she has already commenced. We agreed to continue lamotrigine as monotherapy given sustained seizure remission and favourable safety profile in pregnancy. I advised that lamotrigine clearance commonly increases during pregnancy; therefore, we will adopt trough level monitoring: obtain a baseline lamotrigine level now, then repeat at confirmation of pregnancy and approximately monthly thereafter, adjusting the dose to maintain her individual pre-pregnancy reference level. She understands the plan and consents.\n\nI reinforced seizure safety, driving regulations, and the importance of regular sleep. We covered peripartum considerations, the low risk profile for breastfeeding with lamotrigine, and the need to avoid abrupt medication changes. She will continue folic acid 5 mg daily until at least 12 weeks’ gestation. No additional antiseizure medicines are indicated at present. If breakthrough seizures occur or if significant dose adjustments are needed, I will review sooner.\n\nI have arranged a follow-up in three months or earlier if she confirms pregnancy, at which point we will coordinate a shared care plan with obstetrics (maternal medicine) and the epilepsy specialist midwife.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 566,
+      "end": 704,
+      "text": "No seizures reported since initiation of current antiseizure medicine; patient states she has remained without episodes for over 18 months",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8736,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 July 2018 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Pre-conception counselling and ASM review\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy (primary generalised epilepsy)\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Folic acid 5 mg once daily (pre-conception)\n\n\nPresent Seizure Frequency:\n\nNo seizures reported since initiation of current antiseizure medicine; patient states she has remained without episodes for over 18 months and confirms no absences, myoclonus or tonic–clonic events in this interval.\n\n\nPlan of Action:\n\nWe reviewed pre-conception counselling in detail. She is planning pregnancy in the next 6–9 months. She reports excellent adherence to lamotrigine with good tolerability (no rash, mood change or dizziness). Sleep is generally regular and she avoids alcohol; no other potential triggers identified.\n\nI discussed the importance of high-dose folic acid pre-conception and during the first trimester, which she has already commenced. We agreed to continue lamotrigine as monotherapy given sustained seizure remission and favourable safety profile in pregnancy. I advised that lamotrigine clearance commonly increases during pregnancy; therefore, we will adopt trough level monitoring: obtain a baseline lamotrigine level now, then repeat at confirmation of pregnancy and approximately monthly thereafter, adjusting the dose to maintain her individual pre-pregnancy reference level. She understands the plan and consents.\n\nI reinforced seizure safety, driving regulations, and the importance of regular sleep. We covered peripartum considerations, the low risk profile for breastfeeding with lamotrigine, and the need to avoid abrupt medication changes. She will continue folic acid 5 mg daily until at least 12 weeks’ gestation. No additional antiseizure medicines are indicated at present. If breakthrough seizures occur or if significant dose adjustments are needed, I will review sooner.\n\nI have arranged a follow-up in three months or earlier if she confirms pregnancy, at which point we will coordinate a shared care plan with obstetrics (maternal medicine) and the epilepsy specialist midwife.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"No seizures reported since initiation of current antiseizure medicine; patient states she has remained without episodes for over 18 months and confirms no absences, myoclonus or tonic–clonic events in this interval.\" This indicates the patient currently has no seizures and has been seizure-free for more than 18 months, which exceeds the 6-month criterion for being considered seizure free. Therefore, the normalized label should be 'seizure free for 18 months or more'. In the allowed format, this maps to 'seizure free for multiple month' and should be refined to a numeric value when possible. Since the text provides a clear duration 'over 18 months,' the most precise allowed form is 'seizure free for 18 to 19 months'—but ranges must be derived strictly from the letter. The letter only says 'over 18 months,' not an upper bound, so we should use 'seizure free for 18 month' if exact numeric minimum is allowed, but the format requires either a specific value or 'multiple'. To remain faithful and within allowed formats, use 'seizure free for multiple month.' However, the instruction allows being considered seizure free for multiple months if insufficient to confirm 6 months; here it clearly exceeds 6 months, so 'seizure free for multiple month' is acceptable but less precise. Given the formats, the best precise compliant option is 'seizure free for multiple month' with the supporting quote.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No seizures reported since initiation of current antiseizure medicine; patient states she has remained without episodes for over 18 months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on last ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

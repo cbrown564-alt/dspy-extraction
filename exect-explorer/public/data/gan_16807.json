@@ -1,0 +1,59 @@
+{
+  "id": "gan_16807",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 February 2012 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Albans Wing, KCH, London SE5 9RS  \n\nDear Dr Priya Menon, \n\nMr Thomas Keane, DOB: 22-03-1985, Hospital No: K8473921 NHS No. 1039485726  \nFlat 12, 4 Meadow Court, Brixton, London, SW2 1FG  \n\nDiagnosis: \n\nRecurrent seizures; phenotype not characterisable at present. \n\nAetiology: \n\nNo clear structural or genetic cause identified to date; work pattern involves rotating shifts including nights with significant circadian disruption. \n\nOther Medical Problems: \n\nMild iron-deficiency anaemia under GP monitoring; seasonal allergic rhinitis. \n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily without brand change.\n- Begin Clobazam 5 mg nocte as an adjunct; may consider cautious titration depending on tolerability and daytime sedation.\n- Sleep and shift-work hygiene reinforced; patient to avoid rapid shift rotations where possible and to maintain consistent sleep opportunity on off-days.\n- Arrange ambulatory EEG and serum levels in six weeks; safety counselling regarding bathing, heights, and machinery reiterated.\n- Review in three months; earlier review if events cluster or injuries occur.\n\nClinical Course and Current Status: \n\nSince the last review, the patient reports variable sleep due to alternating day and night duties. In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded. No significant injuries were sustained, though one drop resulted in minor bruising. He associates the events with sequences of consecutive night shifts and short turnarounds. He is maintaining a seizure diary and has informed occupational health. Medication adherence is good and there are no reported adverse effects other than occasional morning fatigue. I have provided a letter for his employer outlining the potential benefit of minimising rapid shift changes and clustering nights to reduce circadian misalignment.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1398,
+      "end": 1520,
+      "text": "In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded.",
+      "attributes": {
+        "Label": "8 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1398,
+      "end": 1519,
+      "text": "In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded",
+      "attributes": {
+        "Label": "8 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16807,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 February 2012 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Albans Wing, KCH, London SE5 9RS  \n\nDear Dr Priya Menon, \n\nMr Thomas Keane, DOB: 22-03-1985, Hospital No: K8473921 NHS No. 1039485726  \nFlat 12, 4 Meadow Court, Brixton, London, SW2 1FG  \n\nDiagnosis: \n\nRecurrent seizures; phenotype not characterisable at present. \n\nAetiology: \n\nNo clear structural or genetic cause identified to date; work pattern involves rotating shifts including nights with significant circadian disruption. \n\nOther Medical Problems: \n\nMild iron-deficiency anaemia under GP monitoring; seasonal allergic rhinitis. \n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily without brand change.\n- Begin Clobazam 5 mg nocte as an adjunct; may consider cautious titration depending on tolerability and daytime sedation.\n- Sleep and shift-work hygiene reinforced; patient to avoid rapid shift rotations where possible and to maintain consistent sleep opportunity on off-days.\n- Arrange ambulatory EEG and serum levels in six weeks; safety counselling regarding bathing, heights, and machinery reiterated.\n- Review in three months; earlier review if events cluster or injuries occur.\n\nClinical Course and Current Status: \n\nSince the last review, the patient reports variable sleep due to alternating day and night duties. In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded. No significant injuries were sustained, though one drop resulted in minor bruising. He associates the events with sequences of consecutive night shifts and short turnarounds. He is maintaining a seizure diary and has informed occupational health. Medication adherence is good and there are no reported adverse effects other than occasional morning fatigue. I have provided a letter for his employer outlining the potential benefit of minimising rapid shift changes and clustering nights to reduce circadian misalignment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit counts within a time window. The letter provides counts by month: 'In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded.' This is across three consecutive months (November, December, January). Total seizures/events = 5 + 2 + 1 = 8 over 3 months. Apply rule to use highest/more frequent/aggregate when same dimension; these are seizure events within the same overall seizure domain, so sum them. Convert to allowed format: '8 per 3 month'.",
+      "seizure_frequency_number": [
+        "8 per 3 month",
+        "In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded."
+      ],
+      "reference": [
+        "8 per 3 month",
+        "In Nov five brief absences were reported. In Dec two drop attacks occurred, and in Jan another tonic seizure was recorded"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

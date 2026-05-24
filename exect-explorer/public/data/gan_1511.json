@@ -1,0 +1,59 @@
+{
+  "id": "gan_1511",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nFocal Epilepsy\n\nMedication: Levetiracetam 750 mg twice daily; Clobazam 10 mg at night as required for breakthrough events (patient-reported, used on two occasions in the last month)\n\nSeizures: The patient reports six absence seizures and one petit mal in last month. These brief events are described as sudden pauses with staring and unresponsiveness for approximately 10–20 seconds, with full recovery and no post-ictal confusion for the absences; the single petit mal was accompanied by minor eyelid flutter and a brief loss of awareness per a witness account. They note a pattern of focal onset with subjective internal \"switching off\" immediately before the pauses. There have been no witnessed convulsions, tongue-biting, or injuries.\n\nProdrome/diary: The patient reports prodromal mood change and irritability before some events, typically emerging 12–24 hours beforehand. They have begun tracking this in a daily diary, recording mood ratings, sleep, and event times, and they find the diary helpful in anticipating higher-risk periods.\n\nEpilepsy type: The clinical picture and prior video-EEG (reported 2023) are consistent with focal epilepsy, likely with impaired awareness seizures and occasional generalisation to brief absence-like episodes. MRI brain (2022) reportedly normal. No new neurological symptoms.\n\nAdherence and tolerability: They report full adherence to levetiracetam with mild daytime fatigue and intermittent irritability that overlaps with their prodromal pattern. No rash, diplopia, or ataxia. Clobazam was well tolerated on both uses without sedation the following day.\n\nPlan: We discussed continuing current doses while we complete a two-month prospective seizure and mood diary to clarify any correlation between prodromal irritability and seizure occurrence. The patient prefers to avoid dose changes at present. Safety and SUDEP information was reiterated; they are not driving and understand DVLA guidance. I have requested a levetiracetam trough level for reference only (not routinely required) and will arrange a telephone review in eight weeks to evaluate diary data and consider optimisation (e.g., behavioural strategies for prodromal days, sleep regularity, or cautious levetiracetam adjustment if needed). The patient will contact the clinic if frequency increases, injuries occur, or events change character.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 461,
+      "end": 534,
+      "text": "The patient reports six absence seizures and one petit mal in last month.",
+      "attributes": {
+        "Label": "7 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 481,
+      "end": 533,
+      "text": "six absence seizures and one petit mal in last month",
+      "attributes": {
+        "Label": "7 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1511,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nFocal Epilepsy\n\nMedication: Levetiracetam 750 mg twice daily; Clobazam 10 mg at night as required for breakthrough events (patient-reported, used on two occasions in the last month)\n\nSeizures: The patient reports six absence seizures and one petit mal in last month. These brief events are described as sudden pauses with staring and unresponsiveness for approximately 10–20 seconds, with full recovery and no post-ictal confusion for the absences; the single petit mal was accompanied by minor eyelid flutter and a brief loss of awareness per a witness account. They note a pattern of focal onset with subjective internal \"switching off\" immediately before the pauses. There have been no witnessed convulsions, tongue-biting, or injuries.\n\nProdrome/diary: The patient reports prodromal mood change and irritability before some events, typically emerging 12–24 hours beforehand. They have begun tracking this in a daily diary, recording mood ratings, sleep, and event times, and they find the diary helpful in anticipating higher-risk periods.\n\nEpilepsy type: The clinical picture and prior video-EEG (reported 2023) are consistent with focal epilepsy, likely with impaired awareness seizures and occasional generalisation to brief absence-like episodes. MRI brain (2022) reportedly normal. No new neurological symptoms.\n\nAdherence and tolerability: They report full adherence to levetiracetam with mild daytime fatigue and intermittent irritability that overlaps with their prodromal pattern. No rash, diplopia, or ataxia. Clobazam was well tolerated on both uses without sedation the following day.\n\nPlan: We discussed continuing current doses while we complete a two-month prospective seizure and mood diary to clarify any correlation between prodromal irritability and seizure occurrence. The patient prefers to avoid dose changes at present. Safety and SUDEP information was reiterated; they are not driving and understand DVLA guidance. I have requested a levetiracetam trough level for reference only (not routinely required) and will arrange a telephone review in eight weeks to evaluate diary data and consider optimisation (e.g., behavioural strategies for prodromal days, sleep regularity, or cautious levetiracetam adjustment if needed). The patient will contact the clinic if frequency increases, injuries occur, or events change character.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports six absence seizures and one petit mal in last month.' These are seizure events within the same month. Following the rule to sum frequencies when they are in the same dimension and timeframe, total seizures in the last month = 6 + 1 = 7. Therefore, the normalized frequency is 7 per month.",
+      "seizure_frequency_number": [
+        "7 per month",
+        "The patient reports six absence seizures and one petit mal in last month."
+      ],
+      "reference": [
+        "7 per month",
+        "six absence seizures and one petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

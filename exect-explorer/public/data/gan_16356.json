@@ -1,0 +1,59 @@
+{
+  "id": "gan_16356",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Hannah Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: kch.neuroepilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Interval review and VNS usage update\n\nHi Hannah\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Valproate (modified-release) 500 mg in the morning and 1000 mg at night\n2. Clobazam 10 mg at night as needed for clusters (per personalised plan)\n3. Vitamin D3 1000 IU once daily\n\n\nPresent Seizure Frequency:\n\nSeizures remain relatively stable, typically occurring in clusters every 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review.\n\n\nContext and Patient-Reported Features:\n\n- The patient has generalised epilepsy with occasional cluster patterns linked to sleep loss, particularly after late shifts or long-haul travel. \n- A personalised plan for cluster management is documented elsewhere and remains unchanged; the patient is familiar with when to initiate the rescue protocol and when to present to emergency services.\n- Vagus nerve stimulator in situ since 2023; the patient reports more frequent magnet swiping at aura onset and during early cluster periods. No adverse effects beyond transient voice change. Battery status checked at last device clinic: satisfactory.\n- No recent hospital admissions. Headaches post-cluster respond to simple analgesia and hydration.\n- The patient is exploring sleep hygiene strategies (fixed bedtime, reduction of caffeine after midday) and has begun using a sleep diary to identify triggers.\n\n\nPlan of Action:\n\n- Continue current anti-seizure regimen without dose changes at this time, given stable overall frequency and effective use of the personalised rescue plan.\n- Reinforce sleep optimisation and adherence to the personalised plan. Patient to maintain seizure and sleep diary to better delineate the relationship with sleep loss and cluster timing.\n- No change to VNS parameters today; continue magnet use at aura onset and during clusters as per training. Next VNS device check at routine device clinic in 3 months or sooner if concerns.\n- Safety advice reiterated regarding water precautions, heights, and operating machinery. The patient confirms understanding and has support at home.\n- Follow-up in 4 months, or earlier if there is any increase in seizure severity, prolonged clusters, adverse effects, or concerns about VNS function.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 640,
+      "end": 720,
+      "text": "Seizures remain relatively stable, typically occurring in clusters every 4 days.",
+      "attributes": {
+        "Label": "1 per 4 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 640,
+      "end": 902,
+      "text": "Seizures remain relatively stable, typically occurring in clusters every 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review",
+      "attributes": {
+        "Label": "1 per 4 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16356,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Hannah Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: kch.neuroepilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Interval review and VNS usage update\n\nHi Hannah\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Valproate (modified-release) 500 mg in the morning and 1000 mg at night\n2. Clobazam 10 mg at night as needed for clusters (per personalised plan)\n3. Vitamin D3 1000 IU once daily\n\n\nPresent Seizure Frequency:\n\nSeizures remain relatively stable, typically occurring in clusters every 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review.\n\n\nContext and Patient-Reported Features:\n\n- The patient has generalised epilepsy with occasional cluster patterns linked to sleep loss, particularly after late shifts or long-haul travel. \n- A personalised plan for cluster management is documented elsewhere and remains unchanged; the patient is familiar with when to initiate the rescue protocol and when to present to emergency services.\n- Vagus nerve stimulator in situ since 2023; the patient reports more frequent magnet swiping at aura onset and during early cluster periods. No adverse effects beyond transient voice change. Battery status checked at last device clinic: satisfactory.\n- No recent hospital admissions. Headaches post-cluster respond to simple analgesia and hydration.\n- The patient is exploring sleep hygiene strategies (fixed bedtime, reduction of caffeine after midday) and has begun using a sleep diary to identify triggers.\n\n\nPlan of Action:\n\n- Continue current anti-seizure regimen without dose changes at this time, given stable overall frequency and effective use of the personalised rescue plan.\n- Reinforce sleep optimisation and adherence to the personalised plan. Patient to maintain seizure and sleep diary to better delineate the relationship with sleep loss and cluster timing.\n- No change to VNS parameters today; continue magnet use at aura onset and during clusters as per training. Next VNS device check at routine device clinic in 3 months or sooner if concerns.\n- Safety advice reiterated regarding water precautions, heights, and operating machinery. The patient confirms understanding and has support at home.\n- Follow-up in 4 months, or earlier if there is any increase in seizure severity, prolonged clusters, adverse effects, or concerns about VNS function.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter has a dedicated 'Present Seizure Frequency' section stating: 'Seizures remain relatively stable, typically occurring in clusters every 4 days.' This is the only explicit numeric frequency. There is no seizure-free interval and no competing frequency provided. The phrase 'every 4 days' provides a clear interval that can be normalized to a frequency. Since the number of seizures within each cluster is not quantified, the simplest normalization based on the explicit interval is 1 per 4 day.",
+      "seizure_frequency_number": [
+        "1 per 4 day",
+        "Seizures remain relatively stable, typically occurring in clusters every 4 days."
+      ],
+      "reference": [
+        "1 per 4 day",
+        "Seizures remain relatively stable, typically occurring in clusters every 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

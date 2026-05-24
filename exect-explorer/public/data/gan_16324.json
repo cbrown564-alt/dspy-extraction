@@ -1,0 +1,59 @@
+{
+  "id": "gan_16324",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 5 October 2018 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Hughes, DOB: 04-11-1982, Hospital No: H938417 NHS No. 5839201746  \n23 Brookfield Road, London, NW6 5LP \n\nMedication: \n\nLevetiracetam 750 mg twice daily. Patient reports generally good tolerability, occasional irritability noted; no rash, no dizziness. \n\nThank you for reviewing Mr Daniel Hughes in our neurology clinic. He has a history of focal epilepsy, with semiology consistent with right temporal onset: brief epigastric rising sensation followed by behavioural arrest and oral automatisms, sometimes with subsequent confusion. He has recorded three seizures to date in September, 4 in August and three in July, including nocturnal and daytime periods. These were corroborated by his partner’s diary and a smartphone seizure log. \n\nHe acknowledges high caffeine intake (four to six strong coffees daily, plus occasional energy drinks) which he feels may precede several daytime events. We discussed non-prescriptive lifestyle factors as patient-reported potential triggers; he will self-monitor caffeine use alongside sleep patterns. There is no recent intercurrent illness, no missed doses reported, and no alcohol excess. Sleep has been variable due to shift work. \n\nExamination today was unremarkable; no focal neurological deficits. Prior MRI (reported normal) and routine EEG (right temporal intermittent slowing, no definite epileptiform discharges) are on file. Overall picture remains in keeping with focal epilepsy. \n\nPlan: \n- Continue levetiracetam 750 mg twice daily for now. If further clusters occur, we may consider cautious up-titration to 1000 mg twice daily; we will review response before any change. \n- Patient will keep a structured diary of sleep, caffeine intake, and events (including nocturnal automatisms noted by partner). \n- Safety: standard seizure precautions discussed, including driving regulations already understood; no current driving as per DVLA guidance. \n- Bloods (U&E, FBC, LFTs) requested today for baseline monitoring; no prior abnormalities. \n\nWe will see him back in three months, or sooner if frequency escalates or adverse effects emerge. Please let us know if there are concerns your end. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 727,
+      "end": 809,
+      "text": "He has recorded three seizures to date in September, 4 in August and three in July",
+      "attributes": {
+        "Label": "10 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 727,
+      "end": 850,
+      "text": "He has recorded three seizures to date in September, 4 in August and three in July, including nocturnal and daytime periods",
+      "attributes": {
+        "Label": "10 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16324,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 5 October 2018 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Hughes, DOB: 04-11-1982, Hospital No: H938417 NHS No. 5839201746  \n23 Brookfield Road, London, NW6 5LP \n\nMedication: \n\nLevetiracetam 750 mg twice daily. Patient reports generally good tolerability, occasional irritability noted; no rash, no dizziness. \n\nThank you for reviewing Mr Daniel Hughes in our neurology clinic. He has a history of focal epilepsy, with semiology consistent with right temporal onset: brief epigastric rising sensation followed by behavioural arrest and oral automatisms, sometimes with subsequent confusion. He has recorded three seizures to date in September, 4 in August and three in July, including nocturnal and daytime periods. These were corroborated by his partner’s diary and a smartphone seizure log. \n\nHe acknowledges high caffeine intake (four to six strong coffees daily, plus occasional energy drinks) which he feels may precede several daytime events. We discussed non-prescriptive lifestyle factors as patient-reported potential triggers; he will self-monitor caffeine use alongside sleep patterns. There is no recent intercurrent illness, no missed doses reported, and no alcohol excess. Sleep has been variable due to shift work. \n\nExamination today was unremarkable; no focal neurological deficits. Prior MRI (reported normal) and routine EEG (right temporal intermittent slowing, no definite epileptiform discharges) are on file. Overall picture remains in keeping with focal epilepsy. \n\nPlan: \n- Continue levetiracetam 750 mg twice daily for now. If further clusters occur, we may consider cautious up-titration to 1000 mg twice daily; we will review response before any change. \n- Patient will keep a structured diary of sleep, caffeine intake, and events (including nocturnal automatisms noted by partner). \n- Safety: standard seizure precautions discussed, including driving regulations already understood; no current driving as per DVLA guidance. \n- Bloods (U&E, FBC, LFTs) requested today for baseline monitoring; no prior abnormalities. \n\nWe will see him back in three months, or sooner if frequency escalates or adverse effects emerge. Please let us know if there are concerns your end. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists the number of seizures over recent months: three in July, four in August, and three in September. These are consecutive months, summing to 3 + 4 + 3 = 10 seizures over a 3-month period. There is no indication of seizure freedom for 6 months. Therefore, normalize to '10 per 3 month' based on the highest applicable frequency over a defined period.",
+      "seizure_frequency_number": [
+        "10 per 3 month",
+        "He has recorded three seizures to date in September, 4 in August and three in July"
+      ],
+      "reference": [
+        "10 per 3 month",
+        "He has recorded three seizures to date in September, 4 in August and three in July, including nocturnal and daytime periods"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

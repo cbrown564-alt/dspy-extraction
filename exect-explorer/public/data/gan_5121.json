@@ -1,0 +1,48 @@
+{
+  "id": "gan_5121",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 08 August 2022 \n\nDr Patel  \nOakridge Health Centre  \n12 High Street, Bristol BS1 4AB  \n\nDear Dr Patel,                                                                                                         \n\nAmelia Carter, DOB: 22-11-1989, Hospital No: H728516 NHS No. 9842516730  \nFlat 3, 27 River View, Bristol, BS2 0QQ  \n\nEpilepsy \n\nMedication: None currently prescribed for seizures.\n\nDiabetes: Type 2 diabetes managed in primary care; patient reports stable home glucose readings and regular reviews with GP practice nurse. No hypoglycaemic episodes described.\n\nSeizures: Patient reports no events suggestive of seizures, warnings, or auras since last review; she and her partner have not witnessed any episodes.\n\nI conducted a scheduled telephone follow‑up with Amelia Carter today. She feels well and denies blackouts, convulsions, brief lapses, or nocturnal events. No new neurological symptoms. Sleep and stress levels are reported as stable. There have been no emergency attendances. We agreed to continue observation only. Safety advice around driving and general precautions was reiterated. She will contact the clinic promptly if any events occur.\n\nPlan:\n- Continue watchful monitoring; no antiseizure medication indicated at present.\n- Routine follow‑up in 6–9 months, sooner if symptoms arise.\n- Liaise with primary care to share this update alongside ongoing diabetes management.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 637,
+      "end": 777,
+      "text": "Patient reports no events suggestive of seizures, warnings, or auras since last review; she and her partner have not witnessed any episodes.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5121,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 08 August 2022 \n\nDr Patel  \nOakridge Health Centre  \n12 High Street, Bristol BS1 4AB  \n\nDear Dr Patel,                                                                                                         \n\nAmelia Carter, DOB: 22-11-1989, Hospital No: H728516 NHS No. 9842516730  \nFlat 3, 27 River View, Bristol, BS2 0QQ  \n\nEpilepsy \n\nMedication: None currently prescribed for seizures.\n\nDiabetes: Type 2 diabetes managed in primary care; patient reports stable home glucose readings and regular reviews with GP practice nurse. No hypoglycaemic episodes described.\n\nSeizures: Patient reports no events suggestive of seizures, warnings, or auras since last review; she and her partner have not witnessed any episodes.\n\nI conducted a scheduled telephone follow‑up with Amelia Carter today. She feels well and denies blackouts, convulsions, brief lapses, or nocturnal events. No new neurological symptoms. Sleep and stress levels are reported as stable. There have been no emergency attendances. We agreed to continue observation only. Safety advice around driving and general precautions was reiterated. She will contact the clinic promptly if any events occur.\n\nPlan:\n- Continue watchful monitoring; no antiseizure medication indicated at present.\n- Routine follow‑up in 6–9 months, sooner if symptoms arise.\n- Liaise with primary care to share this update alongside ongoing diabetes management.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states the patient reports no events suggestive of seizures since last review, denies various seizure types, and there have been no emergency attendances. However, it does not specify the duration since the last review, so we cannot confirm a seizure-free period of at least 6 months. Therefore, per rule 8, when insufficient information exists to confirm the 6‑month criterion but the patient currently has no seizures, we may consider 'seizure free for multiple months.' No other numeric frequency is provided.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Patient reports no events suggestive of seizures, warnings, or auras since last review; she and her partner have not witnessed any episodes."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No clinical seizures observed"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

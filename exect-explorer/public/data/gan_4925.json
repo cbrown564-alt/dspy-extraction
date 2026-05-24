@@ -1,0 +1,59 @@
+{
+  "id": "gan_4925",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 12 December 2016 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with prior cognitive complaints under review; vitamin D insufficiency on supplementation; mild hypertension controlled; ex-smoker. \n\nMedication: Levetiracetam 750 mg twice daily.  \nLacosamide 100 mg twice daily.  \nCholecalciferol 1000 units once daily.  \nAmlodipine 5 mg once daily.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a clear account of his recent progress. He reports improved energy, steadier gait, and better sleep quality. He is walking 30–40 minutes most days and has re-started part-time volunteering at a local charity shop without difficulty. He also notes improved concentration for reading and has resumed driving lessons subject to DVLA guidance. Blood pressure today was 126/78 mmHg, pulse 68 bpm, weight 76 kg (down 2 kg since last visit). Neurological examination was non-focal with normal speech, no tremor, and intact coordination. \n\nSeizures: At the last visit we made a minor adjustment (timing alignment of evening doses with a small reduction of levetiracetam from 1 g to 750 mg and introduction of lacosamide 100 mg twice daily), after which there has been sustained improvement. Prior to that change, the seizure frequency was about eight or ten seizures in the last two months. Since the adjustment, he has been free of seizures for one year, corroborated by his diary and his partner’s observations. He carries a rescue plan but has not needed to use it. \n\nPlan:  \n- Continue current antiepileptic regimen unchanged.  \n- Reinforce adherence to dosing times and sleep hygiene.  \n- Routine bloods (U&Es, LFTs, vitamin D) via GP in the next 3 months.  \n- DVLA and driving: he reports he has been seizure-free for one year; advised to continue to follow DVLA guidance and to notify if any events recur.  \n- Review in 6–9 months, sooner if breakthrough events or adverse effects arise.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1623,
+      "end": 1686,
+      "text": "Since the adjustment, he has been free of seizures for one year",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1657,
+      "end": 1686,
+      "text": "Free of seizures for one year",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4925,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 12 December 2016 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with prior cognitive complaints under review; vitamin D insufficiency on supplementation; mild hypertension controlled; ex-smoker. \n\nMedication: Levetiracetam 750 mg twice daily.  \nLacosamide 100 mg twice daily.  \nCholecalciferol 1000 units once daily.  \nAmlodipine 5 mg once daily.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a clear account of his recent progress. He reports improved energy, steadier gait, and better sleep quality. He is walking 30–40 minutes most days and has re-started part-time volunteering at a local charity shop without difficulty. He also notes improved concentration for reading and has resumed driving lessons subject to DVLA guidance. Blood pressure today was 126/78 mmHg, pulse 68 bpm, weight 76 kg (down 2 kg since last visit). Neurological examination was non-focal with normal speech, no tremor, and intact coordination. \n\nSeizures: At the last visit we made a minor adjustment (timing alignment of evening doses with a small reduction of levetiracetam from 1 g to 750 mg and introduction of lacosamide 100 mg twice daily), after which there has been sustained improvement. Prior to that change, the seizure frequency was about eight or ten seizures in the last two months. Since the adjustment, he has been free of seizures for one year, corroborated by his diary and his partner’s observations. He carries a rescue plan but has not needed to use it. \n\nPlan:  \n- Continue current antiepileptic regimen unchanged.  \n- Reinforce adherence to dosing times and sleep hygiene.  \n- Routine bloods (U&Es, LFTs, vitamin D) via GP in the next 3 months.  \n- DVLA and driving: he reports he has been seizure-free for one year; advised to continue to follow DVLA guidance and to notify if any events recur.  \n- Review in 6–9 months, sooner if breakthrough events or adverse effects arise.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes two periods: (1) Before medication adjustment: \"about eight or ten seizures in the last two months.\" This equates to a frequency range of 8 to 10 per 2 months, i.e., 4 to 5 per month. (2) Since the adjustment: \"he has been free of seizures for one year.\" The current status is seizure-free, and the duration is at least 12 months. Per the rules, if currently seizure-free for at least 6 months, label as seizure free for that duration. Therefore, the correct current seizure frequency label is 'seizure free for 1 year.'",
+      "seizure_frequency_number": [
+        "seizure free for 1 year",
+        "Since the adjustment, he has been free of seizures for one year"
+      ],
+      "reference": [
+        "seizure free for 1 year",
+        "Free of seizures for one year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_8932",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 15 April 2019 \n\nDr Eleanor Patel  \nSouth Camden Neurology Clinic  \n12 Wren Street, London, WC1N 2LL  \n\nDear Dr Eleanor Patel,  \n\nLaura Bennett, DOB: 14-02-1998, Hospital No: H392771 NHS No. 8472105639  \nFlat 3, 28 Brookfield Avenue, London, NW5 1TU  \n\nDiagnoses: \n\nEpilepsy under review.\n\nThank you for reviewing Laura Bennett in our neurology clinic today with her mother in attendance. Since VNS optimisation at a previous visit, there has been a sustained improvement. Prior to that optimisation, her typical pattern was every 2 - 3 months a cluster of approximately five brief absences. She now reports Seizure-free off ASMs since 10/07/2018. She discontinued antiseizure medicines after a gradual taper supervised in clinic last year, and there have been no events suggestive of seizures, no injuries, and no emergency medication use since then.\n\nThe VNS device was interrogated; diagnostics are satisfactory with stable impedance and no indicator for battery replacement. No changes were made to parameters today. She has a magnet available but has not needed to use it for the past nine months. She and her family feel that alertness and day-to-day functioning have improved since stopping ASMs, with no adverse effects reported.\n\nWe discussed ongoing safety precautions and agreed to continue routine follow-up. In view of the excellent clinical trajectory, we will review in six months, with earlier contact if any events recur. She will keep a simple event diary and inform us if there are any episodes of concern.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 647,
+      "end": 702,
+      "text": "She now reports Seizure-free off ASMs since 10/07/2018.",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 663,
+      "end": 701,
+      "text": "Seizure-free off ASMs since 10/07/2018",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8932,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 15 April 2019 \n\nDr Eleanor Patel  \nSouth Camden Neurology Clinic  \n12 Wren Street, London, WC1N 2LL  \n\nDear Dr Eleanor Patel,  \n\nLaura Bennett, DOB: 14-02-1998, Hospital No: H392771 NHS No. 8472105639  \nFlat 3, 28 Brookfield Avenue, London, NW5 1TU  \n\nDiagnoses: \n\nEpilepsy under review.\n\nThank you for reviewing Laura Bennett in our neurology clinic today with her mother in attendance. Since VNS optimisation at a previous visit, there has been a sustained improvement. Prior to that optimisation, her typical pattern was every 2 - 3 months a cluster of approximately five brief absences. She now reports Seizure-free off ASMs since 10/07/2018. She discontinued antiseizure medicines after a gradual taper supervised in clinic last year, and there have been no events suggestive of seizures, no injuries, and no emergency medication use since then.\n\nThe VNS device was interrogated; diagnostics are satisfactory with stable impedance and no indicator for battery replacement. No changes were made to parameters today. She has a magnet available but has not needed to use it for the past nine months. She and her family feel that alertness and day-to-day functioning have improved since stopping ASMs, with no adverse effects reported.\n\nWe discussed ongoing safety precautions and agreed to continue routine follow-up. In view of the excellent clinical trajectory, we will review in six months, with earlier contact if any events recur. She will keep a simple event diary and inform us if there are any episodes of concern.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient reports being seizure-free off ASMs since 10/07/2018. Clinic date is 15 April 2019, which is approximately 9 months after 10 July 2018. This meets the 6-month criterion for seizure freedom. No current seizures are reported. Therefore, the seizure frequency should be normalized as 'seizure free for 9 month'. Prior frequency before VNS optimization was every 2 to 3 months a cluster of approximately five absences, but current status supersedes and shows sustained seizure freedom. Calculation: From 10 July 2018 to 15 April 2019 ≈ 9 months.",
+      "seizure_frequency_number": [
+        "seizure free for 9 month",
+        "She now reports Seizure-free off ASMs since 10/07/2018."
+      ],
+      "reference": [
+        "seizure free for 9 month",
+        "Seizure-free off ASMs since 10/07/2018"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

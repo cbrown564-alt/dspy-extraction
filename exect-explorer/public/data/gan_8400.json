@@ -1,0 +1,59 @@
+{
+  "id": "gan_8400",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Ahmed Khan\nRiverside Medical Centre\n\n12 Riverside Way, London, SE1 9XX\nDear Dr Ahmed Khan\nMichael Green, DOB: 21-11-1982, Hospital No: M873920 NHS No. 7392018456\nFlat 3, 28 Millbank Court, London, SW1P 3AL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact he reports practising aura recognition strategies and is able to describe his warning features in his own words. He notices a brief “rising, hollow feeling in the chest” followed by “a metallic taste and a moment of fogginess,” typically lasting under a minute. He has been rehearsing grounding and pause techniques when these occur and is keeping a simple diary to capture timing and potential triggers.\n\nHe reports durable seizure control over the past several months, with no convulsive events and only occasional brief warning episodes as above, which do not progress further. He has not required emergency care. Sleep regularity and hydration have been prioritised and he feels these measures help. He denies new neurological symptoms, injuries, or medication side effects beyond mild intermittent fatigue later in the day.\n\nCurrent regular medications were unchanged today. He is adherent and brings consistent pharmacy records; no missed doses reported in the last two months. We discussed that his current pattern is stable and that ongoing self-monitoring with clear documentation of warning features remains useful for clinic review. He would like to continue the present approach and is aware of standard safety advice including driving and work-place precautions according to national guidance. He has not identified alcohol or specific stressors as precipitants but will continue to record context around any warning episodes.\n\nPlan:\n- Continue current regimen with no adjustments today given durable seizure control and absence of breakthrough convulsive events.\n- Continue aura recognition practice and diary keeping; bring entries to next review.\n- Routine bloods for antiepileptic monitoring and general health at the GP within the next 4–6 weeks.\n- Provide contact pathway for earlier review should warning features change in character, frequency, or duration, or should any convulsive event occur.\n\nI will review him again in approximately six months, or sooner if there is any deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 760,
+      "end": 850,
+      "text": "He reports durable seizure control over the past several months, with no convulsive events",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 771,
+      "end": 794,
+      "text": "Durable seizure control",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8400,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Ahmed Khan\nRiverside Medical Centre\n\n12 Riverside Way, London, SE1 9XX\nDear Dr Ahmed Khan\nMichael Green, DOB: 21-11-1982, Hospital No: M873920 NHS No. 7392018456\nFlat 3, 28 Millbank Court, London, SW1P 3AL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact he reports practising aura recognition strategies and is able to describe his warning features in his own words. He notices a brief “rising, hollow feeling in the chest” followed by “a metallic taste and a moment of fogginess,” typically lasting under a minute. He has been rehearsing grounding and pause techniques when these occur and is keeping a simple diary to capture timing and potential triggers.\n\nHe reports durable seizure control over the past several months, with no convulsive events and only occasional brief warning episodes as above, which do not progress further. He has not required emergency care. Sleep regularity and hydration have been prioritised and he feels these measures help. He denies new neurological symptoms, injuries, or medication side effects beyond mild intermittent fatigue later in the day.\n\nCurrent regular medications were unchanged today. He is adherent and brings consistent pharmacy records; no missed doses reported in the last two months. We discussed that his current pattern is stable and that ongoing self-monitoring with clear documentation of warning features remains useful for clinic review. He would like to continue the present approach and is aware of standard safety advice including driving and work-place precautions according to national guidance. He has not identified alcohol or specific stressors as precipitants but will continue to record context around any warning episodes.\n\nPlan:\n- Continue current regimen with no adjustments today given durable seizure control and absence of breakthrough convulsive events.\n- Continue aura recognition practice and diary keeping; bring entries to next review.\n- Routine bloods for antiepileptic monitoring and general health at the GP within the next 4–6 weeks.\n- Provide contact pathway for earlier review should warning features change in character, frequency, or duration, or should any convulsive event occur.\n\nI will review him again in approximately six months, or sooner if there is any deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses current seizure control. It states there have been no convulsive events for the past several months, but there are occasional brief warning episodes (auras) that do not progress to seizures. For seizure frequency, we consider actual seizures (convulsive or focal impaired awareness) rather than auras if they do not progress. The phrase 'durable seizure control over the past several months, with no convulsive events' implies seizure-free regarding convulsive seizures for multiple months. It does not specify exact months (≥6) to label as 'seizure free for 6 months', so per rules, if insufficient information for 6-month criterion, we can state 'seizure free for multiple months.' No other numeric frequency is provided for seizures; only 'occasional' warnings which are not seizures. Therefore, the normalized label is 'seizure free for multiple month'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "He reports durable seizure control over the past several months, with no convulsive events"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Durable seizure control"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

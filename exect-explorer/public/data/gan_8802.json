@@ -1,0 +1,54 @@
+{
+  "id": "gan_8802",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 10 January 2014 \n\nDr Patel  \nSt. George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Edwards, DOB: 14-02-1987, Hospital No: H392781 NHS No. 8472635910  \n12 Hawthorn Close, Sutton, SM1 3JP  \n\nDiagnoses: \n\nHistory of childhood febrile seizures. \n\nI reviewed Michael Edwards in clinic today with his partner in attendance. He reports no episodes suggestive of seizures since his last review and confirms there have been no witnessed events, nocturnal disturbances, or post‑event confusion. He has returned to full-time work and continues to drive, with no concerns raised by his employer or family. Wearable diary data reviewed over the past 12 months indicates a sustained absence of detected events, with device analytics showing a maintained event rate at baseline (no recorded episodes). \n\nThere have been no changes to his current antiseizure medication regimen in the past year, and he denies adverse effects. Sleep pattern and alcohol intake are stable; there has been no intercurrent illness. Neurological examination today was unremarkable. We discussed his history of febrile seizures in childhood; no new risk markers have emerged. Routine bloods from his GP last month were within reference ranges. \n\nPlan: \n- Continue current management without changes.  \n- Provide routine safety counselling and continue self-monitoring via diary/app.  \n- Arrange follow-up in 9–12 months, sooner if there are any suggestive events or concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 714,
+      "end": 906,
+      "text": "Wearable diary data reviewed over the past 12 months indicates a sustained absence of detected events, with device analytics showing a maintained event rate at baseline (no recorded episodes).",
+      "attributes": {
+        "Label": "seizure free for 12 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8802,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 10 January 2014 \n\nDr Patel  \nSt. George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Edwards, DOB: 14-02-1987, Hospital No: H392781 NHS No. 8472635910  \n12 Hawthorn Close, Sutton, SM1 3JP  \n\nDiagnoses: \n\nHistory of childhood febrile seizures. \n\nI reviewed Michael Edwards in clinic today with his partner in attendance. He reports no episodes suggestive of seizures since his last review and confirms there have been no witnessed events, nocturnal disturbances, or post‑event confusion. He has returned to full-time work and continues to drive, with no concerns raised by his employer or family. Wearable diary data reviewed over the past 12 months indicates a sustained absence of detected events, with device analytics showing a maintained event rate at baseline (no recorded episodes). \n\nThere have been no changes to his current antiseizure medication regimen in the past year, and he denies adverse effects. Sleep pattern and alcohol intake are stable; there has been no intercurrent illness. Neurological examination today was unremarkable. We discussed his history of febrile seizures in childhood; no new risk markers have emerged. Routine bloods from his GP last month were within reference ranges. \n\nPlan: \n- Continue current management without changes.  \n- Provide routine safety counselling and continue self-monitoring via diary/app.  \n- Arrange follow-up in 9–12 months, sooner if there are any suggestive events or concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no seizures since the last review and that wearable diary data over the past 12 months shows no recorded episodes. This confirms a seizure-free period of at least 12 months. As per the rules, this qualifies as seizure free for multiple months (≥6 months), and here it is specifically 12 months.",
+      "seizure_frequency_number": [
+        "seizure free for 12 month",
+        "Wearable diary data reviewed over the past 12 months indicates a sustained absence of detected events, with device analytics showing a maintained event rate at baseline (no recorded episodes)."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure burden 0% on device metrics"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 12 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

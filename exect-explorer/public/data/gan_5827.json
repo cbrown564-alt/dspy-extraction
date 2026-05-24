@@ -1,0 +1,54 @@
+{
+  "id": "gan_5827",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 September 2022 \n\nDr Amelia Singh \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital, Galsworthy Road, Kingston upon Thames, KT2 7QB  \n\nDear Dr Amelia Singh, \n\nMs Hannah Carter, DOB: 22-06-1993, Hospital No: K8473921 NHS No. 1039485726  \n12 Willow Crescent, Surbiton, KT6 5LP  \n\nDiagnosis: \n\nGeneralised epilepsy with increasing breakthrough events; previously stable on Valproate, now with suboptimal control postpartum \n\nAetiology: \n\nUnclear aetiology; normal structural MRI two years prior; family history of epilepsy in a first-degree relative \n\nOther Medical Problems: \n\nPost-partum low mood and fatigue (patient-reported); iron-deficiency anaemia treated with oral ferrous sulphate; breastfeeding established \n\nManagement Plan: \n\n- Continue Sodium Valproate 500 mg mane and 1000 mg nocte for now while we reassess.  \n- Arrange urgent serum levels (valproate trough), FBC, U&E, LFTs, ferritin, vitamin D, thyroid function tests.  \n- Initiate rescue plan education; provide written safety advice and SUDEP information; partner advised on monitoring nocturnal events.  \n- Sleep hygiene and fatigue management advice provided; patient to keep a seizure and mood diary.  \n- Expedite review in six weeks in the epilepsy clinic; earlier if further generalised convulsions occur.  \n- Refer to perinatal mental health team for assessment of mood and support; patient agreeable.  \n- Discussed contraception and future pregnancy planning at next visit; to avoid abrupt medication changes currently.  \n\nSince delivery six months ago, she reports a gradual decline in seizure control alongside notable tiredness and low mood. She describes brief absence-like spells on most days with two generalised tonic–clonic seizures in the past eight weeks, compared with none in the preceding year. She notes that episodes are clustered during waking hours, most commonly late morning and mid-afternoon, consistent with a primarily wake-time pattern rather than nocturnal predominance. Her partner has observed occasional myoclonic jerks on getting up quickly. There have been no injuries, but she feels her confidence is falling and perceives a worsening overall. Sleep is fragmented due to infant care. No clear infectious triggers; she denies alcohol use. Breastfeeding is ongoing. \n\nExamination today is unremarkable and observations are stable. Medication adherence is reported as good, though timing can be delayed around infant needs. We discussed the likely multifactorial contribution of sleep deprivation and post-partum physiological change to lowered seizure threshold. Given the deterioration, I have prioritised investigations and early review. We will consider dose optimisation or transition to an alternative broad-spectrum antiepileptic at the next visit, guided by results and breastfeeding considerations. Safety advice and driving regulations were reviewed. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1709,
+      "end": 1747,
+      "text": "brief absence-like spells on most days",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5827,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 September 2022 \n\nDr Amelia Singh \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital, Galsworthy Road, Kingston upon Thames, KT2 7QB  \n\nDear Dr Amelia Singh, \n\nMs Hannah Carter, DOB: 22-06-1993, Hospital No: K8473921 NHS No. 1039485726  \n12 Willow Crescent, Surbiton, KT6 5LP  \n\nDiagnosis: \n\nGeneralised epilepsy with increasing breakthrough events; previously stable on Valproate, now with suboptimal control postpartum \n\nAetiology: \n\nUnclear aetiology; normal structural MRI two years prior; family history of epilepsy in a first-degree relative \n\nOther Medical Problems: \n\nPost-partum low mood and fatigue (patient-reported); iron-deficiency anaemia treated with oral ferrous sulphate; breastfeeding established \n\nManagement Plan: \n\n- Continue Sodium Valproate 500 mg mane and 1000 mg nocte for now while we reassess.  \n- Arrange urgent serum levels (valproate trough), FBC, U&E, LFTs, ferritin, vitamin D, thyroid function tests.  \n- Initiate rescue plan education; provide written safety advice and SUDEP information; partner advised on monitoring nocturnal events.  \n- Sleep hygiene and fatigue management advice provided; patient to keep a seizure and mood diary.  \n- Expedite review in six weeks in the epilepsy clinic; earlier if further generalised convulsions occur.  \n- Refer to perinatal mental health team for assessment of mood and support; patient agreeable.  \n- Discussed contraception and future pregnancy planning at next visit; to avoid abrupt medication changes currently.  \n\nSince delivery six months ago, she reports a gradual decline in seizure control alongside notable tiredness and low mood. She describes brief absence-like spells on most days with two generalised tonic–clonic seizures in the past eight weeks, compared with none in the preceding year. She notes that episodes are clustered during waking hours, most commonly late morning and mid-afternoon, consistent with a primarily wake-time pattern rather than nocturnal predominance. Her partner has observed occasional myoclonic jerks on getting up quickly. There have been no injuries, but she feels her confidence is falling and perceives a worsening overall. Sleep is fragmented due to infant care. No clear infectious triggers; she denies alcohol use. Breastfeeding is ongoing. \n\nExamination today is unremarkable and observations are stable. Medication adherence is reported as good, though timing can be delayed around infant needs. We discussed the likely multifactorial contribution of sleep deprivation and post-partum physiological change to lowered seizure threshold. Given the deterioration, I have prioritised investigations and early review. We will consider dose optimisation or transition to an alternative broad-spectrum antiepileptic at the next visit, guided by results and breastfeeding considerations. Safety advice and driving regulations were reviewed. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify all seizure frequency mentions: 1) \"two generalised tonic–clonic seizures in the past eight weeks\" = 2 per 8 weeks = 0.25 per week ≈ 1 per month. 2) \"brief absence-like spells on most days\" indicates frequent daily occurrences but without a precise count. Per the rule to select the highest frequency, the daily ‘most days’ absence-like spells are more frequent than 1 per month. Because the exact number per day is not specified, normalise this to 'multiple per week'.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "brief absence-like spells on most days"
+      ],
+      "reference": [
+        "unknown",
+        "Predominantly daytime seizure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

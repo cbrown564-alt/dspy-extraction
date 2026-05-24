@@ -1,0 +1,48 @@
+{
+  "id": "gan_8581",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since May 2025  \n\nLamotrigine dispersible 50mg in the morning and 75mg at night (current regimen)  \n\nLamotrigine Blood Level:  \n\n24th September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 50mg AM / 75mg PM.  \n\nSeizures: The patient’s seizure diary app (reviewed together today) shows steady daily entries since June 2025. There have been no recorded spells suggestive of seizure activity or prodromal sensations; entries repeatedly note “no events” or “baseline day”. The last app notation of an atypical sensation was 12th June 2025, described as “brief lightheadedness without other features,” which has not recurred. Overall pattern indicates an absence of clinically concerning episodes over this period. \n\nI conducted a scheduled video follow‑up today. The patient confirms consistent use of the seizure diary app with timestamped logs and automated reminders. They deny missed doses in the two weeks prior to the recent blood test. Sleep has improved (average 7.5 hours/night per app-linked tracker), and caffeine intake has been reduced to one drink daily. No new triggers have been identified. They report no injuries, no tongue-biting, and no post‑event confusion during the interval. \n\nThey report occasional mild nausea after the evening dose, settling within 20–30 minutes; they prefer to continue current dosing times alongside food. No rash, visual disturbance, or mood change. The app’s medication adherence feature shows >95% adherence since August. Bloods arranged by the GP last month (FBC, U&Es, LFTs) were reportedly within local reference ranges; I have requested copies for our records. \n\nPlan:  \n- Continue Lamotrigine 50mg AM / 75mg PM.  \n- Maintain daily entries in the seizure diary app; continue exporting monthly summaries to the clinic email.  \n- Safety advice reinforced today (first‑aid and driving guidance previously provided; no changes indicated).  \n- Repeat Lamotrigine level and routine bloods in 3 months or sooner if clinical change.  \n- If the app flags any events (auras, witnessed spells, or post‑event confusion), they will contact the clinic promptly.  \n\nAdministrative: Next telephone review in 3 months. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 919,
+      "text": "There have been no recorded spells suggestive of seizure activity... Overall pattern indicates an absence of clinically concerning episodes over this period.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8581,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since May 2025  \n\nLamotrigine dispersible 50mg in the morning and 75mg at night (current regimen)  \n\nLamotrigine Blood Level:  \n\n24th September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 50mg AM / 75mg PM.  \n\nSeizures: The patient’s seizure diary app (reviewed together today) shows steady daily entries since June 2025. There have been no recorded spells suggestive of seizure activity or prodromal sensations; entries repeatedly note “no events” or “baseline day”. The last app notation of an atypical sensation was 12th June 2025, described as “brief lightheadedness without other features,” which has not recurred. Overall pattern indicates an absence of clinically concerning episodes over this period. \n\nI conducted a scheduled video follow‑up today. The patient confirms consistent use of the seizure diary app with timestamped logs and automated reminders. They deny missed doses in the two weeks prior to the recent blood test. Sleep has improved (average 7.5 hours/night per app-linked tracker), and caffeine intake has been reduced to one drink daily. No new triggers have been identified. They report no injuries, no tongue-biting, and no post‑event confusion during the interval. \n\nThey report occasional mild nausea after the evening dose, settling within 20–30 minutes; they prefer to continue current dosing times alongside food. No rash, visual disturbance, or mood change. The app’s medication adherence feature shows >95% adherence since August. Bloods arranged by the GP last month (FBC, U&Es, LFTs) were reportedly within local reference ranges; I have requested copies for our records. \n\nPlan:  \n- Continue Lamotrigine 50mg AM / 75mg PM.  \n- Maintain daily entries in the seizure diary app; continue exporting monthly summaries to the clinic email.  \n- Safety advice reinforced today (first‑aid and driving guidance previously provided; no changes indicated).  \n- Repeat Lamotrigine level and routine bloods in 3 months or sooner if clinical change.  \n- If the app flags any events (auras, witnessed spells, or post‑event confusion), they will contact the clinic promptly.  \n\nAdministrative: Next telephone review in 3 months. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures and the patient's diary. It states there have been no recorded spells suggestive of seizure activity since June 2025, with the last atypical sensation on 12 June 2025 and none since. Clinic date is 02 Oct 2025. Duration of seizure-free period: from mid-June 2025 to early October 2025 is approximately 3.5 to nearly 4 months. The rule for seizure-free status requires at least 6 months to label as seizure free; this threshold is not met. Therefore, use 'seizure free for multiple months' since the exact count is under 6 months but clearly spans several months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "There have been no recorded spells suggestive of seizure activity... Overall pattern indicates an absence of clinically concerning episodes over this period."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizure-like episodes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

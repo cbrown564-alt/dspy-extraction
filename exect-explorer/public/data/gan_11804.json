@@ -1,0 +1,47 @@
+{
+  "id": "gan_11804",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nRe: Temporary access changes for the epilepsy clinic\n\nWe are writing to advise of temporary site access changes affecting the epilepsy clinic at St Mary’s due to essential building works from 14 October to 29 November 2025. During this period, the clinic will operate from the Outpatient Suite (Ground Floor, Clarence Wing), with entry via the Praed Street entrance. Lift access is available; please allow extra time for wayfinding. \n\nAppointment times remain unchanged unless you are contacted. Prescription collection will continue onsite at Pharmacy A (Ground Floor), and telephone/video reviews are available on request. Parking is limited; public transport is recommended. \n\nGiven Emily Carter’s previous missed doses, we have noted their use of smartphone alarms and NFC tags for reminders; please continue these strategies during the access change period to support timely medication adherence. \n\nIf assistance is required on arrival, please speak to Reception or call 0207 123 4567 before your appointment. \n\nWe anticipate normal access will resume on 02 December 2025. \n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11804,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nRe: Temporary access changes for the epilepsy clinic\n\nWe are writing to advise of temporary site access changes affecting the epilepsy clinic at St Mary’s due to essential building works from 14 October to 29 November 2025. During this period, the clinic will operate from the Outpatient Suite (Ground Floor, Clarence Wing), with entry via the Praed Street entrance. Lift access is available; please allow extra time for wayfinding. \n\nAppointment times remain unchanged unless you are contacted. Prescription collection will continue onsite at Pharmacy A (Ground Floor), and telephone/video reviews are available on request. Parking is limited; public transport is recommended. \n\nGiven Emily Carter’s previous missed doses, we have noted their use of smartphone alarms and NFC tags for reminders; please continue these strategies during the access change period to support timely medication adherence. \n\nIf assistance is required on arrival, please speak to Reception or call 0207 123 4567 before your appointment. \n\nWe anticipate normal access will resume on 02 December 2025. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter concerns temporary site access changes for the epilepsy clinic and mentions medication adherence strategies due to previously missed doses. I carefully reviewed the content and found no mention of seizures, seizure occurrences, or any explicit or implicit seizure frequency. There is no statement about being seizure free or any timeframe related to seizures. Therefore, there is no seizure frequency reference in the letter.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter notifying patients of temporary site access changes affecting the epilepsy clinic"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

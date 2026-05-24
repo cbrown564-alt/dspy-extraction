@@ -1,0 +1,47 @@
+{
+  "id": "gan_11750",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr S Patel\nRookstone Medical Centre\n\n118 Rookstone Road, London, SE5 9QT\nDear Dr S Patel\nMichael Green, DOB: 14-02-1987, Hospital No: H829473 NHS No. 7749201836\nFlat 3, 25 Kenbury Street, London, SE5 9BL\n\nI reviewed the above patient in the Neurology Clinic today. He has focal epilepsy, managed under our service with stable follow‑up and collateral summaries from his employer’s occupational health team. Symptoms and work impact are corroborated in those periodic reports, which support his functional profile for administrative purposes.\n\nRegarding benefits documentation (e.g., PIP), our process is as follows:\n- The patient or primary care team should send the DWP/PIP request form to the Neurology Admin Office (King’s Neurology, Denmark Hill) or via secure NHS email. Please include NHS and hospital numbers.\n- We provide a factual clinician statement covering diagnosis (focal epilepsy), current treatment, frequency/patterns as documented in clinic and occupational health summaries, and functional impact on daily living and safety. We do not complete the claimant sections.\n- Typical turnaround is 15–20 working days from receipt of a complete request; urgent employer deadlines can be flagged but cannot be guaranteed. Ã‚Â·\n- Evidence sources: clinic letters, prescription records, and employer occupational health summaries (with patient consent). Where gaps exist, we may request a brief update from the patient or GP. ï¿½\n- Completed reports are returned directly to the requesting body and copied to the GP and patient unless otherwise specified. â€\n\nAction today: Admin pack sent to the patient with instructions; consent on file to reference occupational health summaries. No change to clinical follow‑up plan.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11750,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr S Patel\nRookstone Medical Centre\n\n118 Rookstone Road, London, SE5 9QT\nDear Dr S Patel\nMichael Green, DOB: 14-02-1987, Hospital No: H829473 NHS No. 7749201836\nFlat 3, 25 Kenbury Street, London, SE5 9BL\n\nI reviewed the above patient in the Neurology Clinic today. He has focal epilepsy, managed under our service with stable follow‑up and collateral summaries from his employer’s occupational health team. Symptoms and work impact are corroborated in those periodic reports, which support his functional profile for administrative purposes.\n\nRegarding benefits documentation (e.g., PIP), our process is as follows:\n- The patient or primary care team should send the DWP/PIP request form to the Neurology Admin Office (King’s Neurology, Denmark Hill) or via secure NHS email. Please include NHS and hospital numbers.\n- We provide a factual clinician statement covering diagnosis (focal epilepsy), current treatment, frequency/patterns as documented in clinic and occupational health summaries, and functional impact on daily living and safety. We do not complete the claimant sections.\n- Typical turnaround is 15–20 working days from receipt of a complete request; urgent employer deadlines can be flagged but cannot be guaranteed. Ã‚Â·\n- Evidence sources: clinic letters, prescription records, and employer occupational health summaries (with patient consent). Where gaps exist, we may request a brief update from the patient or GP. ï¿½\n- Completed reports are returned directly to the requesting body and copied to the GP and patient unless otherwise specified. â€\n\nAction today: Admin pack sent to the patient with instructions; consent on file to reference occupational health summaries. No change to clinical follow‑up plan.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's diagnosis of focal epilepsy and administrative processes for benefits documentation but provides no explicit mention of seizures or any numeric/vague seizure frequency. There is no statement indicating current seizure occurrence, counts, or seizure-free duration. As the word 'seizure' does not appear and no seizure frequency is specified, per the rules, this falls under 'no seizure frequency reference.'",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter explaining the process for benefits forms (e.g., PIP) related to epilepsy (admin only)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

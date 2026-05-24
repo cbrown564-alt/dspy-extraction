@@ -1,0 +1,59 @@
+{
+  "id": "gan_10771",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nEpilepsy Type: Combined Generalised and Focal Epilepsy (patient has both generalised and focal epilepsy)\n\nMedication: Ongoing Lamotrigine and Levetiracetam therapy  \n- Lamotrigine 100 mg twice daily  \n- Levetiracetam 1,000 mg twice daily\n\nLamotrigine Blood Level:  \n- 15 September 2025: 3.8 mg/L (reference range 1.0–15.0 mg/L) while on 100 mg twice daily\n\nSeizures: The patient reports use of practiced aura recognition strategies and can now describe warning features in their own words, typically noting a brief rising epigastric sensation with a momentary pause and loss of train of thought preceding some focal events. Separately, they describe brief staring spells with impaired awareness consistent with generalised absences. During recent monitoring, EMU admission captured a typical cluster: 6 absences in 2 h, which correlated with 3 Hz generalised spike–wave on EEG. Focal events were also recorded with right temporal onset, aligning with the reported auras.\n\nI reviewed Susan Miller today in clinic following their EMU assessment. They outlined that keeping a diary of auras (their words: “flutter in the stomach and a quick fade-out”) has helped them step away from busy environments and reduce secondary generalisation. No injuries or tonic–clonic seizures reported in the past six months. Sleep deprivation and missed meals remain recognisable precipitants by the patient’s account.\n\nWe discussed continuing the current regimen. No dose changes were made today. The patient prefers to maintain the present combination given improved recognition of early warning features and reduced impact on daily activities. We agreed to repeat lamotrigine levels if there are breakthrough focal seizures with impaired awareness or any change in concomitant medications. Safety advice and SUDEP information were revisited. The patient will continue their aura diary and will contact the epilepsy nurse specialist if clusters recur or if they experience any new patterns of events.\n\nPlan:  \n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 1,000 mg twice daily.  \n- Maintain aura diary; bring to next review.  \n- Bloods (lamotrigine level, U&E, LFTs) only if clinical change or new interacting medications.  \n- Routine follow-up in 6 months; earlier review via epilepsy nurse if further clusters occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1143,
+      "end": 1202,
+      "text": "EMU admission captured a typical cluster: 6 absences in 2 h",
+      "attributes": {
+        "Label": "unknown, 6 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1143,
+      "end": 1202,
+      "text": "EMU admission captured a typical cluster: 6 absences in 2 h",
+      "attributes": {
+        "Label": "unknown, 6 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10771,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nEpilepsy Type: Combined Generalised and Focal Epilepsy (patient has both generalised and focal epilepsy)\n\nMedication: Ongoing Lamotrigine and Levetiracetam therapy  \n- Lamotrigine 100 mg twice daily  \n- Levetiracetam 1,000 mg twice daily\n\nLamotrigine Blood Level:  \n- 15 September 2025: 3.8 mg/L (reference range 1.0–15.0 mg/L) while on 100 mg twice daily\n\nSeizures: The patient reports use of practiced aura recognition strategies and can now describe warning features in their own words, typically noting a brief rising epigastric sensation with a momentary pause and loss of train of thought preceding some focal events. Separately, they describe brief staring spells with impaired awareness consistent with generalised absences. During recent monitoring, EMU admission captured a typical cluster: 6 absences in 2 h, which correlated with 3 Hz generalised spike–wave on EEG. Focal events were also recorded with right temporal onset, aligning with the reported auras.\n\nI reviewed Susan Miller today in clinic following their EMU assessment. They outlined that keeping a diary of auras (their words: “flutter in the stomach and a quick fade-out”) has helped them step away from busy environments and reduce secondary generalisation. No injuries or tonic–clonic seizures reported in the past six months. Sleep deprivation and missed meals remain recognisable precipitants by the patient’s account.\n\nWe discussed continuing the current regimen. No dose changes were made today. The patient prefers to maintain the present combination given improved recognition of early warning features and reduced impact on daily activities. We agreed to repeat lamotrigine levels if there are breakthrough focal seizures with impaired awareness or any change in concomitant medications. Safety advice and SUDEP information were revisited. The patient will continue their aura diary and will contact the epilepsy nurse specialist if clusters recur or if they experience any new patterns of events.\n\nPlan:  \n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 1,000 mg twice daily.  \n- Maintain aura diary; bring to next review.  \n- Bloods (lamotrigine level, U&E, LFTs) only if clinical change or new interacting medications.  \n- Routine follow-up in 6 months; earlier review via epilepsy nurse if further clusters occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit numeric seizure frequency in the letter. The EMU admission captured a typical cluster: '6 absences in 2 h.' This provides a concrete count within a time window during monitored admission. No other explicit ongoing frequency is quantified; there are no tonic–clonic seizures in the past six months, but absences and focal events are still occurring, and clusters may recur. The letter does not state a sustained seizure-free period of ≥6 months. Applying the multiple frequencies rule, select the highest frequency available. The EMU documented rate translates to 6 per 2 hours; however, allowed units are day/week/month/year. Because the event is described as a 'cluster' with a known per-cluster count (6), but no clear periodicity (per day/week/month/year) for clusters is given, the correct normalized format is 'unknown, 6 per cluster.'",
+      "seizure_frequency_number": [
+        "unknown, 6 per cluster",
+        "EMU admission captured a typical cluster: 6 absences in 2 h"
+      ],
+      "reference": [
+        "unknown, 6 per cluster",
+        "EMU admission captured a typical cluster: 6 absences in 2 h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

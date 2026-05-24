@@ -1,0 +1,59 @@
+{
+  "id": "gan_12877",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 April 2016 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt Mary’s Wing, Riverside General Hospital, Leeds  \n\nDear Dr Sarah Ahmed, \n\nAdam Fletcher, DOB: 04-09-1987, Hospital No: L839204 NHS No. 3021679458  \n22 Willow Grove, Leeds, LS9 4HT  \n\nDiagnosis: \n\nSeizure disorder with ongoing review of classification and triggers; pattern under active assessment.\n\nAetiology: \n\nNo confirmed structural or genetic cause identified to date; routine MRI and prior EEG unremarkable. Further classification pending correlation with ambulatory EEG findings already scheduled.\n\nOther Medical Problems: \n\nHistory of migraine without aura (intermittent), vitamin D insufficiency previously treated, no current bone health concerns.\n\nManagement Plan: \n\n- Maintain current lamotrigine regimen at 100 mg mane and 200 mg nocte; remain on a single brand.  \n- Reinforce sleep hygiene and adherence to the personalised contingency plan (documented elsewhere) for managing anticipated periods of sleep loss, including staged rescue protocol.  \n- Arrange ambulatory EEG and drug level check in eight weeks; bloods today for trough lamotrigine level and routine biochemistry.  \n- DVLA advice reiterated per national guidance; patient confirms no driving at present.  \n- Review in six months or earlier if clusters recur or adverse effects emerge.  \n\nFollowing introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date. The patient reports occasional cluster patterns linked to sleep loss, consistent with prior history, and has been using the personalised plan (documented elsewhere) to pre-empt and de-escalate these episodes. No clear diurnal preference outside periods of curtailed sleep; no injuries reported since the last visit. He notes mild, transient dizziness at dose titration which has since resolved, and there have been no rashes or mood changes. Medication adherence has been good, and he is keeping a seizure diary which correlates with work-related shift changes and late nights. No alcohol excess reported.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1503,
+      "end": 1574,
+      "text": "just ten generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "10 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1412,
+      "end": 1574,
+      "text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "10 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12877,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 April 2016 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt Mary’s Wing, Riverside General Hospital, Leeds  \n\nDear Dr Sarah Ahmed, \n\nAdam Fletcher, DOB: 04-09-1987, Hospital No: L839204 NHS No. 3021679458  \n22 Willow Grove, Leeds, LS9 4HT  \n\nDiagnosis: \n\nSeizure disorder with ongoing review of classification and triggers; pattern under active assessment.\n\nAetiology: \n\nNo confirmed structural or genetic cause identified to date; routine MRI and prior EEG unremarkable. Further classification pending correlation with ambulatory EEG findings already scheduled.\n\nOther Medical Problems: \n\nHistory of migraine without aura (intermittent), vitamin D insufficiency previously treated, no current bone health concerns.\n\nManagement Plan: \n\n- Maintain current lamotrigine regimen at 100 mg mane and 200 mg nocte; remain on a single brand.  \n- Reinforce sleep hygiene and adherence to the personalised contingency plan (documented elsewhere) for managing anticipated periods of sleep loss, including staged rescue protocol.  \n- Arrange ambulatory EEG and drug level check in eight weeks; bloods today for trough lamotrigine level and routine biochemistry.  \n- DVLA advice reiterated per national guidance; patient confirms no driving at present.  \n- Review in six months or earlier if clusters recur or adverse effects emerge.  \n\nFollowing introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date. The patient reports occasional cluster patterns linked to sleep loss, consistent with prior history, and has been using the personalised plan (documented elsewhere) to pre-empt and de-escalate these episodes. No clear diurnal preference outside periods of curtailed sleep; no injuries reported since the last visit. He notes mild, transient dizziness at dose titration which has since resolved, and there have been no rashes or mood changes. Medication adherence has been good, and he is keeping a seizure diary which correlates with work-related shift changes and late nights. No alcohol excess reported.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"just ten generalised tonic-clonic seizures documented this year to date.\" The clinic date is 28 April 2016. \"This year to date\" refers to the period from 1 January 2016 up to 28 April 2016, which is approximately 4 months. Therefore, the frequency is 10 seizures over about 4 months. Normalize to allowed format: '10 per 4 month'.",
+      "seizure_frequency_number": [
+        "10 per 4 month",
+        "just ten generalised tonic-clonic seizures documented this year to date"
+      ],
+      "reference": [
+        "10 per 4 month",
+        "Following introduction of lamotrigine, there has been a clear improvement in control, with just ten generalised tonic-clonic seizures documented this year to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

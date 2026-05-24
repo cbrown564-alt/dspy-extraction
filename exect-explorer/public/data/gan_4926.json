@@ -1,0 +1,59 @@
+{
+  "id": "gan_4926",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 September 2019 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr David Khan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up review and medication tolerability\n\nHi Emma\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nFree of seizures for one year\n\nPlan of Action:\n\nThe patient reports excellent adherence to current medication and remains clinically stable, free of seizures for one year. Historically, they experienced rash with carbamazepine and gastrointestinal upset with valproate, both of which led to discontinuation at the time. No similar adverse effects have been reported on the current regimen. Mood, sleep, and daytime alertness are stable by patient report. No new triggers or injuries. Neurological examination today is unchanged from baseline.\n\nGiven stability and the past antiseizure medication side effects, we will continue the present regimen without change. Routine bloods (FBC, U&Es, LFTs) have been requested as monitoring; the patient is aware to contact us promptly if any rash, new gastrointestinal symptoms, or other adverse effects occur. If the patient remains well, I propose a routine review in 6 months, sooner if there is any breakthrough event or tolerability concern.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 501,
+      "end": 530,
+      "text": "Free of seizures for one year",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 501,
+      "end": 530,
+      "text": "Free of seizures for one year",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4926,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 September 2019 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr David Khan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up review and medication tolerability\n\nHi Emma\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nFree of seizures for one year\n\nPlan of Action:\n\nThe patient reports excellent adherence to current medication and remains clinically stable, free of seizures for one year. Historically, they experienced rash with carbamazepine and gastrointestinal upset with valproate, both of which led to discontinuation at the time. No similar adverse effects have been reported on the current regimen. Mood, sleep, and daytime alertness are stable by patient report. No new triggers or injuries. Neurological examination today is unchanged from baseline.\n\nGiven stability and the past antiseizure medication side effects, we will continue the present regimen without change. Routine bloods (FBC, U&Es, LFTs) have been requested as monitoring; the patient is aware to contact us promptly if any rash, new gastrointestinal symptoms, or other adverse effects occur. If the patient remains well, I propose a routine review in 6 months, sooner if there is any breakthrough event or tolerability concern.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states under 'Present Seizure Frequency' that the patient is free of seizures for one year. This meets the criterion for seizure free (no seizures for at least 6 months). There are no other conflicting frequencies mentioned. Therefore, the normalized label is 'seizure free for 1 year'.",
+      "seizure_frequency_number": [
+        "seizure free for 1 year",
+        "Free of seizures for one year"
+      ],
+      "reference": [
+        "seizure free for 1 year",
+        "Free of seizures for one year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_1694",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-05-1991, Hospital No: H938421 NHS No. 5839201746  \n24 Elm Grove, London, W8 6PA \n\nMedication: \n\nLevetiracetam 1 g twice daily; Sodium valproate 300 mg morning and 600 mg evening. No adverse effects reported beyond mild daytime tiredness.\n\nThank you for reviewing this patient in primary care for her type 2 diabetes, which remains under your management. She attended my neurology clinic today for review of her epilepsy. She has generalised epilepsy. Over the past fortnight she describes a run of brief generalised events, with three short episodes occurring on separate days, each with abrupt loss of awareness and limb jerks, followed by quick recovery and a mild postictal headache. There were no injuries. She links these to disrupted sleep and a missed evening dose of levetiracetam on one occasion. Alcohol intake is minimal and there has been no recent intercurrent illness.\n\nOn discussion, she has been generally stable for several months prior to this cluster. Neurological examination today is normal. She remains fit to continue current activities, avoiding known precipitants such as sleep deprivation. We reviewed adherence strategies; she has set phone reminders and will use a weekly pill organiser.\n\nPlan: \n- Continue levetiracetam 1 g twice daily and sodium valproate 300 mg morning, 600 mg evening. \n- If further breakthrough events occur despite full adherence and adequate sleep hygiene, we will consider a modest increase of levetiracetam at next review. \n- She understands standard seizure first-aid advice and safety precautions. She does not drive and is aware of DVLA regulations regarding seizure recurrence. \n- From a diabetes perspective, she reports good adherence to metformin prescribed by you, with no hypoglycaemia. No medication interactions of concern identified today.\n\nWe will review her again in four months, sooner if she experiences additional generalised seizures or any change in pattern.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 662,
+      "end": 787,
+      "text": "Over the past fortnight she describes a run of brief generalised events, with three short episodes occurring on separate days",
+      "attributes": {
+        "Label": "1 cluster per 2 week, 3 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1694,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-05-1991, Hospital No: H938421 NHS No. 5839201746  \n24 Elm Grove, London, W8 6PA \n\nMedication: \n\nLevetiracetam 1 g twice daily; Sodium valproate 300 mg morning and 600 mg evening. No adverse effects reported beyond mild daytime tiredness.\n\nThank you for reviewing this patient in primary care for her type 2 diabetes, which remains under your management. She attended my neurology clinic today for review of her epilepsy. She has generalised epilepsy. Over the past fortnight she describes a run of brief generalised events, with three short episodes occurring on separate days, each with abrupt loss of awareness and limb jerks, followed by quick recovery and a mild postictal headache. There were no injuries. She links these to disrupted sleep and a missed evening dose of levetiracetam on one occasion. Alcohol intake is minimal and there has been no recent intercurrent illness.\n\nOn discussion, she has been generally stable for several months prior to this cluster. Neurological examination today is normal. She remains fit to continue current activities, avoiding known precipitants such as sleep deprivation. We reviewed adherence strategies; she has set phone reminders and will use a weekly pill organiser.\n\nPlan: \n- Continue levetiracetam 1 g twice daily and sodium valproate 300 mg morning, 600 mg evening. \n- If further breakthrough events occur despite full adherence and adequate sleep hygiene, we will consider a modest increase of levetiracetam at next review. \n- She understands standard seizure first-aid advice and safety precautions. She does not drive and is aware of DVLA regulations regarding seizure recurrence. \n- From a diabetes perspective, she reports good adherence to metformin prescribed by you, with no hypoglycaemia. No medication interactions of concern identified today.\n\nWe will review her again in four months, sooner if she experiences additional generalised seizures or any change in pattern.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: over the past fortnight (2 weeks) the patient had three short generalised episodes on separate days. This gives a concrete count of 3 seizures in 2 weeks. The letter also refers to this as a cluster and notes she was stable for several months prior, but that does not change the recent highest frequency. Therefore, representing it as a cluster is appropriate: 1 cluster in 2 weeks with 3 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per 2 week, 3 per cluster",
+        "Over the past fortnight she describes a run of brief generalised events, with three short episodes occurring on separate days"
+      ],
+      "reference": [
+        "multiple per week",
+        "several focal seizures last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 cluster per 2 week, 3 per cluster) disagrees with Reference (multiple per week)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

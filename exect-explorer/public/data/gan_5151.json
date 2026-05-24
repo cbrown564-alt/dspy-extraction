@@ -1,0 +1,54 @@
+{
+  "id": "gan_5151",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Nair  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Priya Nair,                                                                                                         \n\nJanet Collins, DOB: 22-11-1956, Hospital No: H372915 NHS No. 9842037516  \nFlat 3, 28 Larkspur Close, London, N5 2QT  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine since February 2025  \n\nLamotrigine 100 mg each morning and 100 mg each evening (patient reports consistent adherence) \n\nLamotrigine Blood Level:  \n\n16th September 2025: 4.8 mg/L (reference range 1.0–15.0 mg/L). Dose at time of sampling: 100 mg twice daily.  \n\nSeizures: The patient describes having had no episodes, warnings, or transient events suggestive of seizure activity over the past 10 months; she notes a settled pattern with no interval events.\n\nI conducted a telephone review with Janet Collins today. She retired in July and now lives alone, maintaining a regular daily routine with reduced social contact. She reports good sleep hygiene, fixed meal times, and daily morning walks. She uses a weekly pill organiser and has not missed doses. There have been no new neurological symptoms, no injuries, and no episodes of loss of awareness reported by her or her niece, who checks in weekly. She does not drive. She denies alcohol use and has cut back on caffeine since retiring. No recent intercurrent illness. \n\nWe discussed common triggers; none identified recently. Weight stable and mood is reported as \"even\" since adopting a structured routine. She is content to continue with the current regimen. I advised her to continue maintaining a simple seizure and wellness diary for any future review and to contact the clinic if any concerning events occur. No immediate investigations are required given stability and therapeutic drug level. Routine review in 6–9 months, or earlier if there are any changes. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 699,
+      "end": 893,
+      "text": "Seizures: The patient describes having had no episodes, warnings, or transient events suggestive of seizure activity over the past 10 months; she notes a settled pattern with no interval events.",
+      "attributes": {
+        "Label": "seizure free for 10 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5151,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Nair  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Priya Nair,                                                                                                         \n\nJanet Collins, DOB: 22-11-1956, Hospital No: H372915 NHS No. 9842037516  \nFlat 3, 28 Larkspur Close, London, N5 2QT  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine since February 2025  \n\nLamotrigine 100 mg each morning and 100 mg each evening (patient reports consistent adherence) \n\nLamotrigine Blood Level:  \n\n16th September 2025: 4.8 mg/L (reference range 1.0–15.0 mg/L). Dose at time of sampling: 100 mg twice daily.  \n\nSeizures: The patient describes having had no episodes, warnings, or transient events suggestive of seizure activity over the past 10 months; she notes a settled pattern with no interval events.\n\nI conducted a telephone review with Janet Collins today. She retired in July and now lives alone, maintaining a regular daily routine with reduced social contact. She reports good sleep hygiene, fixed meal times, and daily morning walks. She uses a weekly pill organiser and has not missed doses. There have been no new neurological symptoms, no injuries, and no episodes of loss of awareness reported by her or her niece, who checks in weekly. She does not drive. She denies alcohol use and has cut back on caffeine since retiring. No recent intercurrent illness. \n\nWe discussed common triggers; none identified recently. Weight stable and mood is reported as \"even\" since adopting a structured routine. She is content to continue with the current regimen. I advised her to continue maintaining a simple seizure and wellness diary for any future review and to contact the clinic if any concerning events occur. No immediate investigations are required given stability and therapeutic drug level. Routine review in 6–9 months, or earlier if there are any changes. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that the patient has had no seizures or related events over the past 10 months. This meets the criterion for being seizure free for at least 6 months. Therefore, select the 'seizure free for <value> month' format with value 10.",
+      "seizure_frequency_number": [
+        "seizure free for 10 month",
+        "Seizures: The patient describes having had no episodes, warnings, or transient events suggestive of seizure activity over the past 10 months; she notes a settled pattern with no interval events."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No recurrence"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 10 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

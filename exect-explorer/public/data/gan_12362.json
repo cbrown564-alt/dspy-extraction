@@ -1,0 +1,59 @@
+{
+  "id": "gan_12362",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 06 October 2024 \n\nDr Patel  \nRiverside Community Health Centre  \nNeurology Outpatients, 14 Brook Lane, Manchester M3 4HT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 18-07-2002, Hospital No: M928374 NHS No. 8473629150  \n12 Fieldstone Grove, Salford, M6 7QP  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Michael Harris today in the general neurology clinic with his mother present. Since our last appointment three months ago he has experienced a clear deterioration following a recent viral illness approximately six weeks prior to review. He and his family report increased fatigue, poorer recovery after events, and greater clustering of episodes over several days at a time. There have been no recent changes to his prescribed medication regimen and adherence is reported as good. Sleep has been disrupted since the illness, and there is noted variability in morning alertness. \n\nHe still has focal clonic two to three times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change; however, the post-event confusion is now longer and there are more injuries associated with the drop attacks compared with earlier in the year. They also report that the clustering is tighter, with several drop attacks over a single afternoon, particularly in the week following intercurrent infections. Buccal midazolam has been used twice in the last month for prolonged events, whereas it had not been required in the preceding two months. \n\nExamination today is unchanged from baseline. Cardiovascular and respiratory observations are normal. Neurological examination reveals no new focal deficits. There is mild bruising over the left forearm consistent with recent falls. No features suggestive of acute systemic illness at present. \n\nWe discussed safety and rescue planning at length given the deterioration following the viral illness. I advised continuation of current prescribed therapy without alteration for now and reinforced the seizure action plan as previously documented. The family will continue to maintain a detailed seizure and trigger diary, including sleep patterns, intercurrent illness, and use of rescue medication. I have arranged blood tests to assess antiepileptic drug levels, full blood count, electrolytes, and liver profile, and I have requested an expedited EEG and updated MRI brain to reassess for any interval change given the recent worsening. \n\nI will review Michael Harris in six weeks or sooner if there are further prolonged events, head injuries, or any concern about increased frequency beyond current patterns. In the interim, the family has been given contact details for our nurse specialist for advice regarding clustering and rescue treatment use. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 962,
+      "end": 1014,
+      "text": "He still has focal clonic two to three times per day",
+      "attributes": {
+        "Label": "2 to 3 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 962,
+      "end": 1157,
+      "text": "He still has focal clonic two to three times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "2 to 3 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12362,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 06 October 2024 \n\nDr Patel  \nRiverside Community Health Centre  \nNeurology Outpatients, 14 Brook Lane, Manchester M3 4HT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 18-07-2002, Hospital No: M928374 NHS No. 8473629150  \n12 Fieldstone Grove, Salford, M6 7QP  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Michael Harris today in the general neurology clinic with his mother present. Since our last appointment three months ago he has experienced a clear deterioration following a recent viral illness approximately six weeks prior to review. He and his family report increased fatigue, poorer recovery after events, and greater clustering of episodes over several days at a time. There have been no recent changes to his prescribed medication regimen and adherence is reported as good. Sleep has been disrupted since the illness, and there is noted variability in morning alertness. \n\nHe still has focal clonic two to three times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change; however, the post-event confusion is now longer and there are more injuries associated with the drop attacks compared with earlier in the year. They also report that the clustering is tighter, with several drop attacks over a single afternoon, particularly in the week following intercurrent infections. Buccal midazolam has been used twice in the last month for prolonged events, whereas it had not been required in the preceding two months. \n\nExamination today is unchanged from baseline. Cardiovascular and respiratory observations are normal. Neurological examination reveals no new focal deficits. There is mild bruising over the left forearm consistent with recent falls. No features suggestive of acute systemic illness at present. \n\nWe discussed safety and rescue planning at length given the deterioration following the viral illness. I advised continuation of current prescribed therapy without alteration for now and reinforced the seizure action plan as previously documented. The family will continue to maintain a detailed seizure and trigger diary, including sleep patterns, intercurrent illness, and use of rescue medication. I have arranged blood tests to assess antiepileptic drug levels, full blood count, electrolytes, and liver profile, and I have requested an expedited EEG and updated MRI brain to reassess for any interval change given the recent worsening. \n\nI will review Michael Harris in six weeks or sooner if there are further prolonged events, head injuries, or any concern about increased frequency beyond current patterns. In the interim, the family has been given contact details for our nurse specialist for advice regarding clustering and rescue treatment use. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies mentioned. The letter states: 'He still has focal clonic two to three per day, drop attacks occurring in batches, and tonic-clonic seizures 2 per month.' According to the rule to select the highest frequency, compare: focal clonic 'two to three per day' vs drop attacks 'occurring in batches' (no numeric rate given) vs tonic-clonic '2 per month'. The highest explicit frequency is the focal clonic at 'two to three per day'. Therefore, the normalized label should be '2 to 3 per day'.",
+      "seizure_frequency_number": [
+        "2 to 3 per day",
+        "He still has focal clonic two to three times per day"
+      ],
+      "reference": [
+        "2 to 3 per day",
+        "He still has focal clonic two to three times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

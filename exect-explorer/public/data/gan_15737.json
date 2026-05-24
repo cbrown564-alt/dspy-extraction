@@ -1,0 +1,59 @@
+{
+  "id": "gan_15737",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia N. \nConsultant Neurologist  \nCentre for Epilepsy  \nQueen Charlotte Hospital, W12 0HS  \n\nDear Dr Amelia N., \n\nMr Thomas R., DOB: 22-08-1991, Hospital No: Q847215 NHS No. 9037712290  \nFlat 12, 5 Linton Court, London, W6 8AB  \n\nDiagnosis: \n\nSeizure disorder of undetermined classification; comorbid migraine without aura\n\nAetiology: \n\nNo structural, metabolic, or genetic cause identified to date; MRI brain (2024) and routine EEG (2024) non-diagnostic\n\nOther Medical Problems: \n\nMigraine without aura (intermittent), vitamin D insufficiency previously treated\n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily. Patient reports good tolerability, no mood change.  \n- Initiate a two-week ambulatory EEG to capture habitual events and clarify semiology.  \n- Check serum Levetiracetam trough level, U&Es, and vitamin D at next phlebotomy.  \n- Provide a Seizure Action Plan to patient and partner; reinforce safety advice around bathing, heights, and operating machinery.  \n- DVLA guidance discussed: patient has self-reported events consistent with seizures; advised to cease driving and notify DVLA.  \n- Review in 12 weeks via face-to-face clinic; earlier if events escalate or there is any injury.  \n\nSince his last review, he has noticed a clear increase in event frequency and impact on daily functioning. His absence seizures are now occurring on two to three days of the week, whereas previously they were restricted to once every couple of months. He describes brief episodes of behavioural arrest with loss of awareness lasting 10–20 seconds, often noticed by colleagues during conversations. There is no consistent aura, automatisms are occasional (lip pursing), and post-event confusion is minimal. No generalised tonic-clonic seizures have been reported. Triggers are suspected to include sleep deprivation and high-stress work periods; he has begun a sleep diary and has reduced caffeine to one cup daily. \n\nWe discussed treatment options. Given the recent step-up in event frequency, I have advised adherence checks, a pharmacokinetic level, and objective capture with ambulatory EEG before considering escalation. If events persist despite optimisation, we will consider Lamotrigine introduction with a careful titration schedule, mindful of interactions and potential rash; this remains contingent on the forthcoming EEG and clinic review. He prefers to avoid sodium valproate. \n\nHe has informed his employer and has moved to hybrid working to mitigate fatigue. Seizure first aid has been reviewed with his partner, and they feel confident in managing brief events. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1413,
+      "end": 1484,
+      "text": "His absence seizures are now occurring on two to three days of the week",
+      "attributes": {
+        "Label": "2 to 3 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1413,
+      "end": 1556,
+      "text": "His absence seizures are now occurring on two to three days of the week, whereas previously they were restricted to once every couple of months",
+      "attributes": {
+        "Label": "2 to 3 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15737,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia N. \nConsultant Neurologist  \nCentre for Epilepsy  \nQueen Charlotte Hospital, W12 0HS  \n\nDear Dr Amelia N., \n\nMr Thomas R., DOB: 22-08-1991, Hospital No: Q847215 NHS No. 9037712290  \nFlat 12, 5 Linton Court, London, W6 8AB  \n\nDiagnosis: \n\nSeizure disorder of undetermined classification; comorbid migraine without aura\n\nAetiology: \n\nNo structural, metabolic, or genetic cause identified to date; MRI brain (2024) and routine EEG (2024) non-diagnostic\n\nOther Medical Problems: \n\nMigraine without aura (intermittent), vitamin D insufficiency previously treated\n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily. Patient reports good tolerability, no mood change.  \n- Initiate a two-week ambulatory EEG to capture habitual events and clarify semiology.  \n- Check serum Levetiracetam trough level, U&Es, and vitamin D at next phlebotomy.  \n- Provide a Seizure Action Plan to patient and partner; reinforce safety advice around bathing, heights, and operating machinery.  \n- DVLA guidance discussed: patient has self-reported events consistent with seizures; advised to cease driving and notify DVLA.  \n- Review in 12 weeks via face-to-face clinic; earlier if events escalate or there is any injury.  \n\nSince his last review, he has noticed a clear increase in event frequency and impact on daily functioning. His absence seizures are now occurring on two to three days of the week, whereas previously they were restricted to once every couple of months. He describes brief episodes of behavioural arrest with loss of awareness lasting 10–20 seconds, often noticed by colleagues during conversations. There is no consistent aura, automatisms are occasional (lip pursing), and post-event confusion is minimal. No generalised tonic-clonic seizures have been reported. Triggers are suspected to include sleep deprivation and high-stress work periods; he has begun a sleep diary and has reduced caffeine to one cup daily. \n\nWe discussed treatment options. Given the recent step-up in event frequency, I have advised adherence checks, a pharmacokinetic level, and objective capture with ambulatory EEG before considering escalation. If events persist despite optimisation, we will consider Lamotrigine introduction with a careful titration schedule, mindful of interactions and potential rash; this remains contingent on the forthcoming EEG and clinic review. He prefers to avoid sodium valproate. \n\nHe has informed his employer and has moved to hybrid working to mitigate fatigue. Seizure first aid has been reviewed with his partner, and they feel confident in managing brief events. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current frequency: \"His absence seizures are now occurring on two to three days of the week.\" This provides a clear numeric range and specifies the unit as days per week. No other seizure types with higher frequency are reported; no GTCs. Therefore, select the highest-frequency measure mentioned. Convert to the allowed format as a range per week.",
+      "seizure_frequency_number": [
+        "2 to 3 per week",
+        "His absence seizures are now occurring on two to three days of the week"
+      ],
+      "reference": [
+        "2 to 3 per week",
+        "His absence seizures are now occurring on two to three days of the week, whereas previously they were restricted to once every couple of months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

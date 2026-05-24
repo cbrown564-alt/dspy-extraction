@@ -1,0 +1,59 @@
+{
+  "id": "gan_15768",
+  "text": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Hannah Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT  \n\nDear Dr Hannah Patel,  \n\nMr Daniel Reeves, DOB: 14-02-1990, Hospital No: H392774 NHS No. 9034271562  \nFlat 3, 12 Willow Grove, Mitcham, CR4 2NH \n\nDiagnoses: \n\nPrimary generalised epilepsy with absence seizures  \nEEG (May 2024): Generalised spike-and-wave discharges consistent with generalised epilepsy \n\nCurrent Medication: \n\nSodium Valproate 500 mg bd  \nClobazam 10 mg nocte (intermittent use for clusters) \n\nPlan: \n\n- Continue Sodium Valproate 500 mg twice daily  \n- Maintain seizure diary capturing work conditions (heat exposure, duration of exertion)  \n- Liaise with Occupational Health regarding heat mitigation and rest breaks outdoors  \n- Routine review in 4 months, earlier if further deterioration or safety concerns \n\nI reviewed Mr Daniel Reeves in clinic today. He works in gardening/groundskeeping outdoors, and he reports that heat and prolonged exertion vary seasonally. Over the last three months, he has noticed a clear increase in brief lapses of awareness while working in warmer conditions and during longer tasks. His absence seizures are now occurring on two - three days of the week, whereas previously they were restricted to once every couple of months. Episodes last 5–10 seconds without falls, tongue biting, or incontinence, but he occasionally needs to pause tasks and has twice misplaced tools during a lapse. There have been no generalised tonic–clonic seizures and no myoclonic jerks reported. Sleep is generally adequate; alcohol minimal; no recent intercurrent illness. \n\nHe remains adherent to Sodium Valproate 500 mg twice daily. He uses Clobazam 10 mg at night intermittently when he anticipates clusters; he reports mild morning grogginess but no other adverse effects. He has begun recording ambient temperature and workload in his seizure diary, which may help clarify a seasonal/environmental pattern. We discussed practical, non-prescriptive strategies he has tried at work (seeking shade when available, pacing tasks), which he feels help modestly. \n\nNeurological examination today was unremarkable. Given that this is primary generalised epilepsy with current absence predominance and a recent increase in frequency, I have recommended continuing his current antiepileptic regimen unchanged for now while we gather more structured diary data and liaise with Occupational Health regarding feasible adjustments to outdoor duties. If the pattern persists despite environmental measures, we will consider dose optimisation or an alternative adjunct at review. He is aware of DVLA guidance and confirms no driving. \n\nYours sincerely, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1226,
+      "end": 1296,
+      "text": "His absence seizures are now occurring on two - three days of the week",
+      "attributes": {
+        "Label": "2 to 3 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1226,
+      "end": 1368,
+      "text": "His absence seizures are now occurring on two - three days of the week, whereas previously they were restricted to once every couple of months",
+      "attributes": {
+        "Label": "2 to 3 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15768,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Hannah Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT  \n\nDear Dr Hannah Patel,  \n\nMr Daniel Reeves, DOB: 14-02-1990, Hospital No: H392774 NHS No. 9034271562  \nFlat 3, 12 Willow Grove, Mitcham, CR4 2NH \n\nDiagnoses: \n\nPrimary generalised epilepsy with absence seizures  \nEEG (May 2024): Generalised spike-and-wave discharges consistent with generalised epilepsy \n\nCurrent Medication: \n\nSodium Valproate 500 mg bd  \nClobazam 10 mg nocte (intermittent use for clusters) \n\nPlan: \n\n- Continue Sodium Valproate 500 mg twice daily  \n- Maintain seizure diary capturing work conditions (heat exposure, duration of exertion)  \n- Liaise with Occupational Health regarding heat mitigation and rest breaks outdoors  \n- Routine review in 4 months, earlier if further deterioration or safety concerns \n\nI reviewed Mr Daniel Reeves in clinic today. He works in gardening/groundskeeping outdoors, and he reports that heat and prolonged exertion vary seasonally. Over the last three months, he has noticed a clear increase in brief lapses of awareness while working in warmer conditions and during longer tasks. His absence seizures are now occurring on two - three days of the week, whereas previously they were restricted to once every couple of months. Episodes last 5–10 seconds without falls, tongue biting, or incontinence, but he occasionally needs to pause tasks and has twice misplaced tools during a lapse. There have been no generalised tonic–clonic seizures and no myoclonic jerks reported. Sleep is generally adequate; alcohol minimal; no recent intercurrent illness. \n\nHe remains adherent to Sodium Valproate 500 mg twice daily. He uses Clobazam 10 mg at night intermittently when he anticipates clusters; he reports mild morning grogginess but no other adverse effects. He has begun recording ambient temperature and workload in his seizure diary, which may help clarify a seasonal/environmental pattern. We discussed practical, non-prescriptive strategies he has tried at work (seeking shade when available, pacing tasks), which he feels help modestly. \n\nNeurological examination today was unremarkable. Given that this is primary generalised epilepsy with current absence predominance and a recent increase in frequency, I have recommended continuing his current antiepileptic regimen unchanged for now while we gather more structured diary data and liaise with Occupational Health regarding feasible adjustments to outdoor duties. If the pattern persists despite environmental measures, we will consider dose optimisation or an alternative adjunct at review. He is aware of DVLA guidance and confirms no driving. \n\nYours sincerely, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"His absence seizures are now occurring on two - three days of the week.\" This provides a current frequency in terms of days with seizures per week. There are no other competing frequencies reported for other seizure types (no GTCs or myoclonus). According to the rules, select the highest frequency; here it's given as a range, so we keep the range format. Convert wording to allowed format using 'to' instead of hyphen: '2 to 3 per week.'",
+      "seizure_frequency_number": [
+        "2 to 3 per week",
+        "His absence seizures are now occurring on two - three days of the week"
+      ],
+      "reference": [
+        "2 to 3 per week",
+        "His absence seizures are now occurring on two - three days of the week, whereas previously they were restricted to once every couple of months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

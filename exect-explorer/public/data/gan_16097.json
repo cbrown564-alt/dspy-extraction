@@ -1,0 +1,59 @@
+{
+  "id": "gan_16097",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 30 September 2010 \n\nDr Amelia Shah \nConsultant Neurologist  \nRiverside Health Centre  \n12 Wharf Road, Bristol BS1 4DG  \n\nDear Dr Amelia Shah, \n\nMs Hannah Kerr, DOB: 22-03-1985, Hospital No: B917204 NHS No. 6042198753  \nFlat 3, 29 Meadow Lane, Bristol, BS3 2QH  \n\nDiagnosis: \n\nRecurrent seizures of undetermined classification; pattern and semiology remain unclear pending further characterisation\n\nAetiology: \n\nNo definite structural, genetic, metabolic, infectious, or immune cause identified to date\n\nOther Medical Problems: \n\nBilateral sensorineural hearing difficulty; patient prefers scheduled speakerphone calls with a family member assisting communication. Mild seasonal allergic rhinitis\n\nManagement Plan: \n\n- Continue current antiseizure regimen unchanged: Lamotrigine 100 mg twice daily as currently tolerated without adverse effects reported. We will obtain trough levels before next review.  \n- Arrange prolonged ambulatory EEG with concurrent event diary and family-witness descriptions to aid classification.  \n- Book MRI brain with epilepsy protocol to exclude subtle structural correlates.  \n- Safety: reinforced seizure first-aid with the patient and accompanying family member; avoid swimming unsupervised, take showers instead of baths, and maintain regular sleep routine.  \n- Communication: all follow-up to be arranged as pre-booked speakerphone calls with her nominated family member present to support communication.  \n- Review in four months; earlier contact if events cluster or injuries occur.\n\nHistory and Current Status: \n\nShe reports fluctuating seizure activity over the summer months. She had a convulsion so far in September, 6 in August, six in July, four in June both from being awake and asleep. Events are described by her and a family witness as sudden loss of awareness with stiffening and rhythmic movements in some instances, and in other instances brief unresponsive spells without clear convulsive activity. Post-event confusion and headache last 10–30 minutes. No consistent daytime or nocturnal predominance; sleep deprivation appears to lower threshold. She denies recent head injury, fever, alcohol excess, or new medications. There is no known family history of epilepsy. She reports reliable adherence to prescribed medication using a dosette box. No rashes, mood change, diplopia, or ataxia reported on Lamotrigine.\n\nExamination today was unremarkable with stable observations and no focal neurological deficits. Routine bloods earlier this month (U&E, LFT, FBC) were within reference ranges. Prior routine EEG last year was normal; no prior prolonged monitoring has been performed.\n\nI will update you following the ambulatory EEG and MRI. Please let me know if there are interim concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1675,
+      "end": 1755,
+      "text": "She had a convulsion so far in September, 6 in August, six in July, four in June",
+      "attributes": {
+        "Label": "17 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1675,
+      "end": 1788,
+      "text": "She had a convulsion so far in September, 6 in August, six in July, four in June both from being awake and asleep",
+      "attributes": {
+        "Label": "17 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16097,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 30 September 2010 \n\nDr Amelia Shah \nConsultant Neurologist  \nRiverside Health Centre  \n12 Wharf Road, Bristol BS1 4DG  \n\nDear Dr Amelia Shah, \n\nMs Hannah Kerr, DOB: 22-03-1985, Hospital No: B917204 NHS No. 6042198753  \nFlat 3, 29 Meadow Lane, Bristol, BS3 2QH  \n\nDiagnosis: \n\nRecurrent seizures of undetermined classification; pattern and semiology remain unclear pending further characterisation\n\nAetiology: \n\nNo definite structural, genetic, metabolic, infectious, or immune cause identified to date\n\nOther Medical Problems: \n\nBilateral sensorineural hearing difficulty; patient prefers scheduled speakerphone calls with a family member assisting communication. Mild seasonal allergic rhinitis\n\nManagement Plan: \n\n- Continue current antiseizure regimen unchanged: Lamotrigine 100 mg twice daily as currently tolerated without adverse effects reported. We will obtain trough levels before next review.  \n- Arrange prolonged ambulatory EEG with concurrent event diary and family-witness descriptions to aid classification.  \n- Book MRI brain with epilepsy protocol to exclude subtle structural correlates.  \n- Safety: reinforced seizure first-aid with the patient and accompanying family member; avoid swimming unsupervised, take showers instead of baths, and maintain regular sleep routine.  \n- Communication: all follow-up to be arranged as pre-booked speakerphone calls with her nominated family member present to support communication.  \n- Review in four months; earlier contact if events cluster or injuries occur.\n\nHistory and Current Status: \n\nShe reports fluctuating seizure activity over the summer months. She had a convulsion so far in September, 6 in August, six in July, four in June both from being awake and asleep. Events are described by her and a family witness as sudden loss of awareness with stiffening and rhythmic movements in some instances, and in other instances brief unresponsive spells without clear convulsive activity. Post-event confusion and headache last 10–30 minutes. No consistent daytime or nocturnal predominance; sleep deprivation appears to lower threshold. She denies recent head injury, fever, alcohol excess, or new medications. There is no known family history of epilepsy. She reports reliable adherence to prescribed medication using a dosette box. No rashes, mood change, diplopia, or ataxia reported on Lamotrigine.\n\nExamination today was unremarkable with stable observations and no focal neurological deficits. Routine bloods earlier this month (U&E, LFT, FBC) were within reference ranges. Prior routine EEG last year was normal; no prior prolonged monitoring has been performed.\n\nI will update you following the ambulatory EEG and MRI. Please let me know if there are interim concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure counts within a defined recent period. The letter states: \"She had a convulsion so far in September, 6 in August, six in July, four in June\". Sum for June through September: June 4 + July 6 + August 6 + September 1 = 17 seizures over 4 months. No higher-frequency alternative is provided. Therefore, normalize to '17 per 4 month'.",
+      "seizure_frequency_number": [
+        "17 per 4 month",
+        "She had a convulsion so far in September, 6 in August, six in July, four in June"
+      ],
+      "reference": [
+        "17 per 4 month",
+        "She had a convulsion so far in September, 6 in August, six in July, four in June both from being awake and asleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

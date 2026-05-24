@@ -1,0 +1,59 @@
+{
+  "id": "gan_14530",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 14 June 2019\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for asking me to review this gentleman in the Neurology Clinic. He works in a cold-chain warehouse where sub-zero temperatures and the need for thick gloves occasionally slow his ability to access and operate rescue devices, which he finds anxiety-provoking during night shifts.\n\nHis initial event was in March 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following May 2019, once more during the night, lasting four minutes with similar semiology. He reports full recollection of the onset on both occasions, with post-event fatigue but no tongue biting or incontinence. There have been no further daytime episodes, and he denies any clear triggers aside from poor sleep around travel.\n\nAt present he is taking Levetiracetam 1 g twice daily. He started this after the second event and has tolerated it without mood change, rash, or dizziness. He uses a buccal midazolam rescue pack supplied by Occupational Health, though he has not needed to deploy it to date; he notes the gloves and cold can make handling slower, and he keeps a second pack in the warm break room. He does not drive and has informed his employer. Sleep hygiene has been discussed and he is avoiding consecutive night shifts where possible.\n\nExamination today was unremarkable with no focal neurological deficits. Baseline bloods (FBC, U&E, LFTs) from his GP last month were normal. We have arranged an MRI brain with epilepsy protocol and an outpatient EEG. I have advised him to continue Levetiracetam at the current dose pending investigations. We also discussed a referral to the epilepsy specialist nurse for workplace practicalities and rescue plan rehearsal; he is agreeable. I will review him after the tests or sooner if there are further events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 527,
+      "end": 621,
+      "text": "His initial event was in March 2019... A second event occurred in Italy the following May 2019",
+      "attributes": {
+        "Label": "2 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 527,
+      "end": 783,
+      "text": "His initial event was in March 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following May 2019, once more during the night, lasting four minutes with similar semiology",
+      "attributes": {
+        "Label": "2 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14530,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 14 June 2019\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for asking me to review this gentleman in the Neurology Clinic. He works in a cold-chain warehouse where sub-zero temperatures and the need for thick gloves occasionally slow his ability to access and operate rescue devices, which he finds anxiety-provoking during night shifts.\n\nHis initial event was in March 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following May 2019, once more during the night, lasting four minutes with similar semiology. He reports full recollection of the onset on both occasions, with post-event fatigue but no tongue biting or incontinence. There have been no further daytime episodes, and he denies any clear triggers aside from poor sleep around travel.\n\nAt present he is taking Levetiracetam 1 g twice daily. He started this after the second event and has tolerated it without mood change, rash, or dizziness. He uses a buccal midazolam rescue pack supplied by Occupational Health, though he has not needed to deploy it to date; he notes the gloves and cold can make handling slower, and he keeps a second pack in the warm break room. He does not drive and has informed his employer. Sleep hygiene has been discussed and he is avoiding consecutive night shifts where possible.\n\nExamination today was unremarkable with no focal neurological deficits. Baseline bloods (FBC, U&E, LFTs) from his GP last month were normal. We have arranged an MRI brain with epilepsy protocol and an outpatient EEG. I have advised him to continue Levetiracetam at the current dose pending investigations. We also discussed a referral to the epilepsy specialist nurse for workplace practicalities and rescue plan rehearsal; he is agreeable. I will review him after the tests or sooner if there are further events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter documents two seizure events: one in March 2019 and a second in May 2019. The clinic date is 14 June 2019. Since the second event, he started levetiracetam and has not needed rescue medication; there is no mention of any further events after May 2019. Therefore, over the last approximately 2 months (March to May includes two events; from May to mid-June no further events reported), the best explicit frequency we can infer is 2 seizures over 2 months. This matches the most recent period encompassing both documented events, and there is insufficient information to assert 6 months seizure freedom.",
+      "seizure_frequency_number": [
+        "2 per 2 month",
+        "His initial event was in March 2019... A second event occurred in Italy the following May 2019"
+      ],
+      "reference": [
+        "2 per 2 month",
+        "His initial event was in March 2019 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following May 2019, once more during the night, lasting four minutes with similar semiology"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

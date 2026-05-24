@@ -1,0 +1,59 @@
+{
+  "id": "gan_14953",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 December 2024 \n\nDr Priya Mehta\nGP Partner  \nBrixton Hill Health Centre  \n120 Brixton Hill, London SW2 1AA  \n\nDear Dr Priya Mehta\nGP Partner,  \n\nSarah Williams, DOB: 14-03-1989, Hospital No: K742861 NHS No. 9075312468  \n22 Larkspur Road, London, SE15 3DN\n\nThank you for your referral. I reviewed Sarah Williams in the neurology clinic for ongoing assessment of generalised epilepsy. She reports that her baseline is now considerably improved compared to earlier in the year. She commutes mainly by bicycle and notes that her daily routine has been stable, with no recent changes in sleep or caffeine usage. \n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 3 October, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 09 October and she has been stable since. Given her stability now, I do not propose further intervention for now. This fits with her broader pattern over recent months of improved seizure control and better day-to-day functioning. \n\nFrom a diagnostic perspective, she has generalised epilepsy, with a long-standing history of typical absence episodes previously confirmed on EEG with generalised spike-and-wave activity. There is no recent report of generalised tonic–clonic seizures, myoclonus, or nocturnal events. She denies new neurological symptoms, and there are no red flags such as focal deficits, prolonged confusional states, or injuries. \n\nExamination in clinic was unremarkable: normal cranial nerves, coordination, and gait; no asymmetry and no meningeal signs. Cardiovascular and general observations were within expected limits. \n\nWe discussed treatment adherence and her current regimen, which she reports taking reliably. She has not experienced notable adverse effects, and she feels her cognition and energy levels have improved as the brief dizziness and headaches settled. She continues her usual activities, including cycling to work, and reports steady sleep and appetite. \n\nPlan: In light of her stability since 09 October, and the reduced frequency of absences after 3 October on prescribed therapy, I have not made changes today. I will arrange routine follow-up in clinic in six months, with earlier review if there is any change in pattern, frequency, or character of events. No further investigations are requested at present. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 875,
+      "end": 950,
+      "text": "The last such episode occurred on 09 October and she has been stable since.",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 680,
+      "end": 1021,
+      "text": "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 3 October, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 09 October and she has been stable since. Given her stability now, I do not propose further intervention for now",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14953,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 December 2024 \n\nDr Priya Mehta\nGP Partner  \nBrixton Hill Health Centre  \n120 Brixton Hill, London SW2 1AA  \n\nDear Dr Priya Mehta\nGP Partner,  \n\nSarah Williams, DOB: 14-03-1989, Hospital No: K742861 NHS No. 9075312468  \n22 Larkspur Road, London, SE15 3DN\n\nThank you for your referral. I reviewed Sarah Williams in the neurology clinic for ongoing assessment of generalised epilepsy. She reports that her baseline is now considerably improved compared to earlier in the year. She commutes mainly by bicycle and notes that her daily routine has been stable, with no recent changes in sleep or caffeine usage. \n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 3 October, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 09 October and she has been stable since. Given her stability now, I do not propose further intervention for now. This fits with her broader pattern over recent months of improved seizure control and better day-to-day functioning. \n\nFrom a diagnostic perspective, she has generalised epilepsy, with a long-standing history of typical absence episodes previously confirmed on EEG with generalised spike-and-wave activity. There is no recent report of generalised tonic–clonic seizures, myoclonus, or nocturnal events. She denies new neurological symptoms, and there are no red flags such as focal deficits, prolonged confusional states, or injuries. \n\nExamination in clinic was unremarkable: normal cranial nerves, coordination, and gait; no asymmetry and no meningeal signs. Cardiovascular and general observations were within expected limits. \n\nWe discussed treatment adherence and her current regimen, which she reports taking reliably. She has not experienced notable adverse effects, and she feels her cognition and energy levels have improved as the brief dizziness and headaches settled. She continues her usual activities, including cycling to work, and reports steady sleep and appetite. \n\nPlan: In light of her stability since 09 October, and the reduced frequency of absences after 3 October on prescribed therapy, I have not made changes today. I will arrange routine follow-up in clinic in six months, with earlier review if there is any change in pattern, frequency, or character of events. No further investigations are requested at present. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter documents that the patient has generalised epilepsy with absence episodes. It states: \"The last such episode occurred on 09 October and she has been stable since.\" The clinic date is 04 December 2024. Calculate interval: 09 Oct to 04 Dec ≈ 56 days ≈ about 2 months. She has not yet been seizure-free for 6 months, so she cannot be labelled as seizure free. Based on one documented episode within the approximately 2 months prior to review (and none since), the current frequency is inferred as 1 per 2 months.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "The last such episode occurred on 09 October and she has been stable since."
+      ],
+      "reference": [
+        "1 per 2 month",
+        "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 3 October, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 09 October and she has been stable since. Given her stability now, I do not propose further intervention for now"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

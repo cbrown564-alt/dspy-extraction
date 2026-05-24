@@ -1,0 +1,54 @@
+{
+  "id": "gan_6836",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 May 2016 10:32\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment ï¿½\n\nHi Priya,\n\nEpilepsy Diagnosis:\n\nCurrently unclassified; diagnostic work-up ongoing. Remote history of mild traumatic brain injury noted (no focal neurological deficits on recent examination). Ã‚Â·\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 200 mg in the morning and 400 mg at night\n\n\nPresent Seizure Frequency:\n\nPatient describes brief staring episodes with momentary unresponsiveness occurring roughly once weekly over the past two months; events remain under evaluation and have not been definitively categorised. Family notes occasional eyelid fluttering and abrupt speech pause lasting 5–10 seconds, with immediate return to baseline and no post-ictal confusion. No generalised convulsive events reported in the last year. â€\n\n\nPlan of Action:\n\n- Given the persistence of these brief episodes and the absence of clear triggers, we will optimise lamotrigine cautiously. Please increase lamotrigine to 125 mg twice daily for 2 weeks, then to 150 mg twice daily if well tolerated. Monitor for rash, dizziness, and diplopia. ï¿½\n- Maintain sodium valproate at the current dose for now. If episodes reduce by >50% over 6–8 weeks and tolerability remains good, we will consider gradual valproate dose rationalisation at the next review.\n- Arrange an outpatient sleep-deprived EEG and provide a home event diary. If feasible, obtain a smartphone video during an event. \n- Safety: advised regarding bathing/swimming supervision, cooking precautions, and driving regulations; patient currently not driving. \n- Follow-up in clinic in 12 weeks. If episode frequency increases, please inform us sooner via the advice line.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 764,
+      "end": 818,
+      "text": "occurring roughly once weekly over the past two months",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6836,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 May 2016 10:32\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment ï¿½\n\nHi Priya,\n\nEpilepsy Diagnosis:\n\nCurrently unclassified; diagnostic work-up ongoing. Remote history of mild traumatic brain injury noted (no focal neurological deficits on recent examination). Ã‚Â·\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 200 mg in the morning and 400 mg at night\n\n\nPresent Seizure Frequency:\n\nPatient describes brief staring episodes with momentary unresponsiveness occurring roughly once weekly over the past two months; events remain under evaluation and have not been definitively categorised. Family notes occasional eyelid fluttering and abrupt speech pause lasting 5–10 seconds, with immediate return to baseline and no post-ictal confusion. No generalised convulsive events reported in the last year. â€\n\n\nPlan of Action:\n\n- Given the persistence of these brief episodes and the absence of clear triggers, we will optimise lamotrigine cautiously. Please increase lamotrigine to 125 mg twice daily for 2 weeks, then to 150 mg twice daily if well tolerated. Monitor for rash, dizziness, and diplopia. ï¿½\n- Maintain sodium valproate at the current dose for now. If episodes reduce by >50% over 6–8 weeks and tolerability remains good, we will consider gradual valproate dose rationalisation at the next review.\n- Arrange an outpatient sleep-deprived EEG and provide a home event diary. If feasible, obtain a smartphone video during an event. \n- Safety: advised regarding bathing/swimming supervision, cooking precautions, and driving regulations; patient currently not driving. \n- Follow-up in clinic in 12 weeks. If episode frequency increases, please inform us sooner via the advice line.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter’s Present Seizure Frequency section states the patient has brief staring episodes occurring “roughly once weekly over the past two months.” This provides an explicit frequency. There are no generalized convulsions in the last year, but ongoing weekly episodes mean the patient is not seizure-free. Applying the highest-frequency rule, the weekly episodes dominate. Convert “once weekly” to the required format “1 per week.”",
+      "seizure_frequency_number": [
+        "1 per week",
+        "occurring roughly once weekly over the past two months"
+      ],
+      "reference": [
+        "unknown",
+        "Absence-like spells suspected but not confirmed"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

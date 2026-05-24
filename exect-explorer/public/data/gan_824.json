@@ -1,0 +1,48 @@
+{
+  "id": "gan_824",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Khan  \nRiverside Medical Practice  \n221 King Street, Hammersmith, London W6 9JT  \n\nDear Dr Khan,  \n\nSophie Nguyen, DOB: 12-05-1992, Hospital No: N843027 NHS No. 9051183746  \nFlat 3, 14 Brookfield Road, London, N5 2TT \n\nMedication: \n\nLevetiracetam 1000 mg morning / 1000 mg evening. Tolerated without significant adverse effects aside from intermittent fatigue. No change in seizure pattern since last review.\n\nHistory since last appointment: \n\nOver the past several months, the patient reports brief loss-of-awareness episodes that tend to occur roughly once per calendar cycle, often clustering around times of increased stress at work. There has been no clear evolution in semiology. Witness accounts describe a brief pause with unresponsiveness for under a minute, followed by rapid recovery without confusion. No clear triggers identified besides variable sleep. There has been no associated tongue biting, injury, or incontinence. Headaches are noted on the day following the event. The frequency has remained at approximately this once-per-cycle pattern despite adherence to current therapy.\n\nAssessment and plan: \n\n- Continue Levetiracetam at the present dose as the patient is tolerating it and there has been no worsening in event pattern.  \n- We discussed sleep hygiene and limiting alcohol; patient will keep a detailed event diary including time, preceding sleep duration, and possible stressors.  \n- If the pattern alters (increase in frequency, prolonged events, injury, or emergence of new features), she will contact us via the advice line for earlier review.  \n- Routine bloods (U&E, FBC, LFT) to be checked locally to exclude intercurrent issues contributing to fatigue; results to be forwarded to clinic.  \n- Safety advice reinforced regarding bathing unsupervised, heights, and operating machinery until a longer seizure-free interval is achieved. The patient confirms no driving and is aware of DVLA guidance.\n\nFollow-up: \n\nWe will review her again in six months, or sooner if there is any change in the pattern described above.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 622,
+      "end": 659,
+      "text": "occur roughly once per calendar cycle",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 824,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Khan  \nRiverside Medical Practice  \n221 King Street, Hammersmith, London W6 9JT  \n\nDear Dr Khan,  \n\nSophie Nguyen, DOB: 12-05-1992, Hospital No: N843027 NHS No. 9051183746  \nFlat 3, 14 Brookfield Road, London, N5 2TT \n\nMedication: \n\nLevetiracetam 1000 mg morning / 1000 mg evening. Tolerated without significant adverse effects aside from intermittent fatigue. No change in seizure pattern since last review.\n\nHistory since last appointment: \n\nOver the past several months, the patient reports brief loss-of-awareness episodes that tend to occur roughly once per calendar cycle, often clustering around times of increased stress at work. There has been no clear evolution in semiology. Witness accounts describe a brief pause with unresponsiveness for under a minute, followed by rapid recovery without confusion. No clear triggers identified besides variable sleep. There has been no associated tongue biting, injury, or incontinence. Headaches are noted on the day following the event. The frequency has remained at approximately this once-per-cycle pattern despite adherence to current therapy.\n\nAssessment and plan: \n\n- Continue Levetiracetam at the present dose as the patient is tolerating it and there has been no worsening in event pattern.  \n- We discussed sleep hygiene and limiting alcohol; patient will keep a detailed event diary including time, preceding sleep duration, and possible stressors.  \n- If the pattern alters (increase in frequency, prolonged events, injury, or emergence of new features), she will contact us via the advice line for earlier review.  \n- Routine bloods (U&E, FBC, LFT) to be checked locally to exclude intercurrent issues contributing to fatigue; results to be forwarded to clinic.  \n- Safety advice reinforced regarding bathing unsupervised, heights, and operating machinery until a longer seizure-free interval is achieved. The patient confirms no driving and is aware of DVLA guidance.\n\nFollow-up: \n\nWe will review her again in six months, or sooner if there is any change in the pattern described above.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current events as 'brief loss-of-awareness episodes' occurring 'roughly once per calendar cycle' and states 'The frequency has remained at approximately this once-per-cycle pattern.' In clinical context, 'calendar cycle' most reasonably refers to a month. There is no indication of seizure freedom. Therefore, normalize to 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "occur roughly once per calendar cycle"
+      ],
+      "reference": [
+        "1 per month",
+        "monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

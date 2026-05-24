@@ -1,0 +1,59 @@
+{
+  "id": "gan_10862",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside NHS Neurology Clinic\n12 Millbank, London, SW1P 3GE\n\nDear Dr Patel,\n\nSophie Martin, DOB: 14-07-1992, Hospital No: H928374 NHS No. 8472630159\nFlat 3, 5 Alder Court, London, E3 4HT\n\nDiagnoses:\n\nSeizure disorder under ongoing review.\n\nI reviewed Sophie Martin today in the neurology clinic. She attended with her key worker from assisted living; key‑worker notes were available and have been reviewed. Since our last contact, there have been no changes to prescribed medicines and no emergency medication has been required. She reports intermittent brief warning sensations and occasional post‑event fatigue, but no injuries.\n\nHer home seizure diary entries are sparse; however, her wearable/device logs were synchronised in clinic today. Device metrics flag one cluster this week; duration 2 h. Outside of this flagged period there have been no additional objective events recorded by the device. The key worker corroborates a short spell of reduced responsiveness and automatisms during the same window, resolving without escalation.\n\nNeurological examination in clinic was unchanged. Cardiovascular and general observations were stable. No new psychosocial concerns were raised; she continues to engage with day activities and is supported with medication administration by staff.\n\nPlan:\n- Continue current anti‑seizure regimen without change.\n- Reinforce use of the event button on the wearable during witnessed episodes to improve correlation with diary notes.\n- Key worker to submit monthly summaries; we will review uploaded device data remotely in 6 weeks and again at the next face‑to‑face appointment.\n- Safety advice reiterated regarding bathing supervision and cooking when unattended.\n\nWe will see Sophie Martin again in three months, or sooner if there is a notable increase in events or any injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 825,
+      "end": 881,
+      "text": "Device metrics flag one cluster this week; duration 2 h.",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 825,
+      "end": 880,
+      "text": "Device metrics flag one cluster this week; duration 2 h",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10862,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside NHS Neurology Clinic\n12 Millbank, London, SW1P 3GE\n\nDear Dr Patel,\n\nSophie Martin, DOB: 14-07-1992, Hospital No: H928374 NHS No. 8472630159\nFlat 3, 5 Alder Court, London, E3 4HT\n\nDiagnoses:\n\nSeizure disorder under ongoing review.\n\nI reviewed Sophie Martin today in the neurology clinic. She attended with her key worker from assisted living; key‑worker notes were available and have been reviewed. Since our last contact, there have been no changes to prescribed medicines and no emergency medication has been required. She reports intermittent brief warning sensations and occasional post‑event fatigue, but no injuries.\n\nHer home seizure diary entries are sparse; however, her wearable/device logs were synchronised in clinic today. Device metrics flag one cluster this week; duration 2 h. Outside of this flagged period there have been no additional objective events recorded by the device. The key worker corroborates a short spell of reduced responsiveness and automatisms during the same window, resolving without escalation.\n\nNeurological examination in clinic was unchanged. Cardiovascular and general observations were stable. No new psychosocial concerns were raised; she continues to engage with day activities and is supported with medication administration by staff.\n\nPlan:\n- Continue current anti‑seizure regimen without change.\n- Reinforce use of the event button on the wearable during witnessed episodes to improve correlation with diary notes.\n- Key worker to submit monthly summaries; we will review uploaded device data remotely in 6 weeks and again at the next face‑to‑face appointment.\n- Safety advice reiterated regarding bathing supervision and cooking when unattended.\n\nWe will see Sophie Martin again in three months, or sooner if there is a notable increase in events or any injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter documents that the wearable/device logs flagged one cluster within the current week, with a duration of 2 hours. It states there were no additional objective events recorded outside this flagged period. No other time span with quantified frequency is provided. Therefore, the highest and only explicit frequency reference is 1 cluster in the current week. There is no numeric count of seizures within the cluster, only that a cluster occurred, so per-cluster seizure count cannot be specified.",
+      "seizure_frequency_number": [
+        "1 cluster per week, multiple per cluster",
+        "Device metrics flag one cluster this week; duration 2 h."
+      ],
+      "reference": [
+        "1 cluster per week, multiple per cluster",
+        "Device metrics flag one cluster this week; duration 2 h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

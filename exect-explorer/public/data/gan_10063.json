@@ -1,0 +1,59 @@
+{
+  "id": "gan_10063",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 17 May 2014 \n\nDr Priya Menon  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon,  \n\nAndrew Clarke, DOB: 14-03-1978, Hospital No: KCH-219874 NHS No. 9432276158  \n72 Willow Park Road, London, SE15 3QT\n\nThank you for asking me to review your patient. He attended today with his wife and we had a calm and collaborative discussion. He reports a sustained improvement in day-to-day stability over the past three months, coinciding with the introduction of a weekly pillbox and mobile reminders, which he and his wife feel have reduced missed doses. Sleep–wake routines are steadier and he has resumed light daily activities without difficulty.\n\nWith respect to seizures, he describes three clusters this quarter, each lasting 1–2 days with several brief episodes, and notably quicker returns to baseline afterwards. There have been no emergency presentations, and his wife has not observed prolonged unresponsiveness or extended recovery periods. He also notes fewer nocturnal disruptions and no new triggers identified. Medication tolerability is reported as good, and he denies adverse effects such as excessive sedation or mood lability.\n\nHis mood and anxiety appear more settled, and there have been no episodes suggestive of post‑event behavioural disturbance. He and his wife attribute the improvement primarily to better adherence through the pillbox/reminder system and a more structured daily routine. They are confident continuing with this approach. We discussed ongoing observation and maintaining a seizure diary to capture timing, potential precipitants, and recovery features. They are comfortable to proceed on this basis and to contact us if the pattern changes.\n\nPlan:  \n- Continue current anti-seizure regimen without change.  \n- Maintain pillbox and reminder strategy and continue seizure diary.  \n- Routine follow‑up in three months, sooner if clusters increase in frequency or duration, or if recovery becomes prolonged.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 804,
+      "end": 895,
+      "text": "he describes three clusters this quarter, each lasting 1–2 days with several brief episodes",
+      "attributes": {
+        "Label": "3 cluster per 3 month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 817,
+      "end": 844,
+      "text": "three clusters this quarter",
+      "attributes": {
+        "Label": "3 cluster per 3 month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10063,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 17 May 2014 \n\nDr Priya Menon  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon,  \n\nAndrew Clarke, DOB: 14-03-1978, Hospital No: KCH-219874 NHS No. 9432276158  \n72 Willow Park Road, London, SE15 3QT\n\nThank you for asking me to review your patient. He attended today with his wife and we had a calm and collaborative discussion. He reports a sustained improvement in day-to-day stability over the past three months, coinciding with the introduction of a weekly pillbox and mobile reminders, which he and his wife feel have reduced missed doses. Sleep–wake routines are steadier and he has resumed light daily activities without difficulty.\n\nWith respect to seizures, he describes three clusters this quarter, each lasting 1–2 days with several brief episodes, and notably quicker returns to baseline afterwards. There have been no emergency presentations, and his wife has not observed prolonged unresponsiveness or extended recovery periods. He also notes fewer nocturnal disruptions and no new triggers identified. Medication tolerability is reported as good, and he denies adverse effects such as excessive sedation or mood lability.\n\nHis mood and anxiety appear more settled, and there have been no episodes suggestive of post‑event behavioural disturbance. He and his wife attribute the improvement primarily to better adherence through the pillbox/reminder system and a more structured daily routine. They are confident continuing with this approach. We discussed ongoing observation and maintaining a seizure diary to capture timing, potential precipitants, and recovery features. They are comfortable to proceed on this basis and to contact us if the pattern changes.\n\nPlan:  \n- Continue current anti-seizure regimen without change.  \n- Maintain pillbox and reminder strategy and continue seizure diary.  \n- Routine follow‑up in three months, sooner if clusters increase in frequency or duration, or if recovery becomes prolonged.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizure activity: \"he describes three clusters this quarter, each lasting 1–2 days with several brief episodes.\" From this, the frequency over the past three months (a quarter) is 3 clusters, with the number of seizures per cluster described only as \"several brief episodes,\" which is non-numeric. Therefore, the cluster frequency is 3 per 3 months, and per-cluster seizure count is unknown/multiple. According to the allowed formats, this maps to '<value1> cluster per <value2> month, <value3> per cluster' with '3 cluster per 3 month, multiple per cluster.' There is no higher-frequency alternative provided. Not seizure-free. No need to sum or compare multiple frequencies.",
+      "seizure_frequency_number": [
+        "3 cluster per 3 month, multiple per cluster",
+        "he describes three clusters this quarter, each lasting 1–2 days with several brief episodes"
+      ],
+      "reference": [
+        "3 cluster per 3 month, multiple per cluster",
+        "three clusters this quarter"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

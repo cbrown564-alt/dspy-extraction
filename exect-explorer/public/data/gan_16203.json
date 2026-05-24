@@ -1,0 +1,59 @@
+{
+  "id": "gan_16203",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 9 October 2023 \n\nDr A. Reynolds\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Reynolds\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH827415 NHS No. 9473105621  \n72 Brookfield Road, London, SE15 3MX\n\nThank you for asking me to review your patient in clinic. He attended with his partner, who helped to clarify the recent history. He reports fluctuating sleep and high daily caffeine intake, including multiple energy drinks and coffee through the afternoon and evening. He feels this may be provoking spells, particularly on days with poor sleep. He has kept a simple written diary since July. He has recorded a seizure to date in September, five in August and 3 in July, including nocturnal and daytime periods. He describes brief warnings of a rising internal sensation and occasional nausea beforehand, followed by unresponsiveness according to his partner’s account, with variable post-event confusion lasting 10–40 minutes. There is no consistent trigger beyond stress, sleep disruption and caffeine. There has been no reported injury or tongue bite, and he has not driven for many months. \n\nHe is taking Brivaracetam 100 mg twice daily with good adherence by his report, and Levetiracetam was previously stopped due to mood effects. No recent infections, head injury or alcohol binges. He denies recreational drugs. He notes intermittent low mood and anxiety related to unpredictability of events and work absence; he is awaiting occupational health review. \n\nOn examination today he was alert and oriented with normal speech and language. Cranial nerves, motor exam, coordination and gait were unremarkable. No stigmata of systemic illness. Vitals stable. \n\nInvestigations: prior routine EEG from last year reportedly normal; MRI brain (2021) non-diagnostic. I have requested copies of the original reports to confirm details. Bloods today for U&E, LFTs, calcium, magnesium, FBC and vitamin D have been sent; we will check antiseizure medication levels where applicable. \n\nPlan: I discussed the value of further characterisation with ambulatory home EEG if available locally, or inpatient video-EEG telemetry if events remain frequent. He is agreeable to ambulatory monitoring as a first step. We reviewed safety, including bathing and cooking precautions, and ensuring a safe sleeping environment given nocturnal events as recorded. He will continue his current medication without change for now while we gather more information. I advised a reduction of caffeine to no more than one caffeinated drink in the morning and to avoid energy drinks entirely; he plans to taper intake over two weeks and maintain a sleep-wake routine. He will continue seizure diaries, noting time of day, context, sleep and caffeine exposure. We have provided information on local support resources. \n\nI will review him in 8–10 weeks with diary updates and any results. Please do contact me if there are concerns in the interim. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 779,
+      "end": 855,
+      "text": "He has recorded a seizure to date in September, five in August and 3 in July",
+      "attributes": {
+        "Label": "9 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 779,
+      "end": 896,
+      "text": "He has recorded a seizure to date in September, five in August and 3 in July, including nocturnal and daytime periods",
+      "attributes": {
+        "Label": "9 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16203,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 9 October 2023 \n\nDr A. Reynolds\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Reynolds\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH827415 NHS No. 9473105621  \n72 Brookfield Road, London, SE15 3MX\n\nThank you for asking me to review your patient in clinic. He attended with his partner, who helped to clarify the recent history. He reports fluctuating sleep and high daily caffeine intake, including multiple energy drinks and coffee through the afternoon and evening. He feels this may be provoking spells, particularly on days with poor sleep. He has kept a simple written diary since July. He has recorded a seizure to date in September, five in August and 3 in July, including nocturnal and daytime periods. He describes brief warnings of a rising internal sensation and occasional nausea beforehand, followed by unresponsiveness according to his partner’s account, with variable post-event confusion lasting 10–40 minutes. There is no consistent trigger beyond stress, sleep disruption and caffeine. There has been no reported injury or tongue bite, and he has not driven for many months. \n\nHe is taking Brivaracetam 100 mg twice daily with good adherence by his report, and Levetiracetam was previously stopped due to mood effects. No recent infections, head injury or alcohol binges. He denies recreational drugs. He notes intermittent low mood and anxiety related to unpredictability of events and work absence; he is awaiting occupational health review. \n\nOn examination today he was alert and oriented with normal speech and language. Cranial nerves, motor exam, coordination and gait were unremarkable. No stigmata of systemic illness. Vitals stable. \n\nInvestigations: prior routine EEG from last year reportedly normal; MRI brain (2021) non-diagnostic. I have requested copies of the original reports to confirm details. Bloods today for U&E, LFTs, calcium, magnesium, FBC and vitamin D have been sent; we will check antiseizure medication levels where applicable. \n\nPlan: I discussed the value of further characterisation with ambulatory home EEG if available locally, or inpatient video-EEG telemetry if events remain frequent. He is agreeable to ambulatory monitoring as a first step. We reviewed safety, including bathing and cooking precautions, and ensuring a safe sleeping environment given nocturnal events as recorded. He will continue his current medication without change for now while we gather more information. I advised a reduction of caffeine to no more than one caffeinated drink in the morning and to avoid energy drinks entirely; he plans to taper intake over two weeks and maintain a sleep-wake routine. He will continue seizure diaries, noting time of day, context, sleep and caffeine exposure. We have provided information on local support resources. \n\nI will review him in 8–10 weeks with diary updates and any results. Please do contact me if there are concerns in the interim. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"He has kept a simple written diary since July. He has recorded a seizure to date in September, five in August and 3 in July.\" These are explicit monthly counts over three consecutive months: July = 3, August = 5, September = 1. Total over 3 months = 3 + 5 + 1 = 9 seizures per 3 months. There is no higher-frequency alternative provided and no indication of seizure freedom for 6 months.",
+      "seizure_frequency_number": [
+        "9 per 3 month",
+        "He has recorded a seizure to date in September, five in August and 3 in July"
+      ],
+      "reference": [
+        "9 per 3 month",
+        "He has recorded a seizure to date in September, five in August and 3 in July, including nocturnal and daytime periods"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

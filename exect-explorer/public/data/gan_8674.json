@@ -1,0 +1,48 @@
+{
+  "id": "gan_8674",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr A. Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr A. Khan,  \n\nSophie Williams, DOB: 12-05-1990, Hospital No: H948275 NHS No. 5839201746  \n14 Brookfield Road, London, W10 6JP \n\nMedication:  \n\nNo regular antiseizure medication. Uses melatonin 2 mg nocte as needed for sleep initiation, patient-led and infrequent. \n\nThank you for reviewing Sophie Williams in our neurology clinic. She has been under assessment for recurrent night-time episodes previously suspected to be seizures. Following the introduction of structured night-time childcare support, her sleep has become consolidated and she reports a steady improvement in overall stability. Prior to this change, the reported event frequency was qod (every other week). \n\nOver the last several months she describes a complete absence of further episodes, and her day-to-day functioning has normalized. In line with this, neurological examination today is unremarkable. Importantly, based on clinical review and corroborative history, there is no evidence to support a current diagnosis of epilepsy. We have therefore categorized her as None Epilepsy, and she is not receiving antiseizure therapy. The previous events are most consistent with sleep fragmentation-related phenomena rather than epileptic seizures. \n\nAt present she remains episode-free on her current routine without antiseizure medication, with maintained sleep regularity since night-time support began. She understands common red flags (e.g., witnessed loss of awareness with tonic–clonic movements, tongue biting, prolonged post-event confusion) and agrees to seek reassessment should these arise. She also reports reduced daytime fatigue and improved concentration since sleep improved. \n\nNo further tests are planned at this time. If new features emerge suggestive of epileptic seizures, we would be happy to expedite review. Otherwise, I propose discharge back to your care with open access to our clinic for any future concerns. \n\nWe will not schedule a routine follow-up, but we remain available should her situation change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 855,
+      "end": 936,
+      "text": "Over the last several months she describes a complete absence of further episodes",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8674,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr A. Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr A. Khan,  \n\nSophie Williams, DOB: 12-05-1990, Hospital No: H948275 NHS No. 5839201746  \n14 Brookfield Road, London, W10 6JP \n\nMedication:  \n\nNo regular antiseizure medication. Uses melatonin 2 mg nocte as needed for sleep initiation, patient-led and infrequent. \n\nThank you for reviewing Sophie Williams in our neurology clinic. She has been under assessment for recurrent night-time episodes previously suspected to be seizures. Following the introduction of structured night-time childcare support, her sleep has become consolidated and she reports a steady improvement in overall stability. Prior to this change, the reported event frequency was qod (every other week). \n\nOver the last several months she describes a complete absence of further episodes, and her day-to-day functioning has normalized. In line with this, neurological examination today is unremarkable. Importantly, based on clinical review and corroborative history, there is no evidence to support a current diagnosis of epilepsy. We have therefore categorized her as None Epilepsy, and she is not receiving antiseizure therapy. The previous events are most consistent with sleep fragmentation-related phenomena rather than epileptic seizures. \n\nAt present she remains episode-free on her current routine without antiseizure medication, with maintained sleep regularity since night-time support began. She understands common red flags (e.g., witnessed loss of awareness with tonic–clonic movements, tongue biting, prolonged post-event confusion) and agrees to seek reassessment should these arise. She also reports reduced daytime fatigue and improved concentration since sleep improved. \n\nNo further tests are planned at this time. If new features emerge suggestive of epileptic seizures, we would be happy to expedite review. Otherwise, I propose discharge back to your care with open access to our clinic for any future concerns. \n\nWe will not schedule a routine follow-up, but we remain available should her situation change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses prior night-time episodes previously suspected to be seizures. It provides a past frequency: 'Prior to this change, the reported event frequency was qod (every other week).' It then states that over the last several months she has had a complete absence of further episodes and that there is no evidence to support a current diagnosis of epilepsy; categorized as None Epilepsy. For seizure frequency labeling, we focus on current status. The patient is episode-free for 'several months'. The rule requires at least 6 months to label 'seizure free for <value> months' definitively; when insufficient information to confirm 6 months but clearly multiple months, we can use 'seizure free for multiple months.' Therefore, the appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Over the last several months she describes a complete absence of further episodes"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on current antiseizure regimen"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

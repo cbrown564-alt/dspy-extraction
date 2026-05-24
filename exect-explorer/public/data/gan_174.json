@@ -1,0 +1,59 @@
+{
+  "id": "gan_174",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n12 Market Street, London SW1A 2AA  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 09-05-1991, Hospital No: L983472 NHS No. 9054173361  \nFlat 3, 45 Brook Street, London W1K 4HG \n\nMedication: \n\nLevetiracetam 1,000 mg twice daily; Lamotrigine 150 mg twice daily. Patient reports good adherence, no recent missed doses. \n\nI reviewed Sophie Williams in clinic today. She has Combined Generalised and Focal Epilepsy: she and her partner describe brief focal aware episodes with right-sided tingling and speech arrest that may evolve, and she also has generalised tonic–clonic seizures without warning. Over the past six weeks there has been a marked deterioration temporally associated with a change of workplace where there are strong and intermittently flickering overhead lights. She now experiences focal auras and occasional generalised events at a much higher rate, occurring every one or three days on average, with several episodes specifically triggered while at her desk or when walking through a corridor with strobing signage. Prior to the move she had only rare focal auras monthly and no generalised seizures for almost a year. \n\nShe reports photic sensitivity symptoms at work (eye strain, frontal headache, and a sense of visual shimmer) preceding the focal events; two generalised tonic–clonic seizures have occurred in the last month, both on-site. No intercurrent illness, sleep is somewhat reduced due to shift changes, caffeine intake has increased, and she has been under higher stress due to deadlines. There is no alcohol misuse. She denies missed doses and uses a pillbox with phone reminders. \n\nNeurological examination in clinic today was normal. There are no new focal neurological deficits. We discussed seizure safety in the workplace and the importance of minimising exposure to flickering light sources; she is engaging with her employer’s occupational health team to review lighting and screen settings. We also discussed SUDEP awareness and first aid with her partner present. \n\nPlan: given the sustained deterioration with events every one or three days, I have arranged urgent EEG with photic stimulation and an updated brain MRI to exclude structural progression. I will also request serum levels for lamotrigine to support dose optimisation. In the interim, I have advised temporary restriction from high-risk duties at work and avoidance of known visual triggers where feasible. Buccal midazolam has been prescribed for prolonged seizures as per local protocol, and she and her partner have been given written guidance. We will coordinate with occupational health regarding reasonable lighting adjustments. \n\nI will review her in six to eight weeks, or sooner if further generalised seizures occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 978,
+      "end": 1022,
+      "text": "occurring every one or three days on average",
+      "attributes": {
+        "Label": "1 per 1 to 3 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 988,
+      "end": 1011,
+      "text": "every one or three days",
+      "attributes": {
+        "Label": "1 per 1 to 3 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 174,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n12 Market Street, London SW1A 2AA  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 09-05-1991, Hospital No: L983472 NHS No. 9054173361  \nFlat 3, 45 Brook Street, London W1K 4HG \n\nMedication: \n\nLevetiracetam 1,000 mg twice daily; Lamotrigine 150 mg twice daily. Patient reports good adherence, no recent missed doses. \n\nI reviewed Sophie Williams in clinic today. She has Combined Generalised and Focal Epilepsy: she and her partner describe brief focal aware episodes with right-sided tingling and speech arrest that may evolve, and she also has generalised tonic–clonic seizures without warning. Over the past six weeks there has been a marked deterioration temporally associated with a change of workplace where there are strong and intermittently flickering overhead lights. She now experiences focal auras and occasional generalised events at a much higher rate, occurring every one or three days on average, with several episodes specifically triggered while at her desk or when walking through a corridor with strobing signage. Prior to the move she had only rare focal auras monthly and no generalised seizures for almost a year. \n\nShe reports photic sensitivity symptoms at work (eye strain, frontal headache, and a sense of visual shimmer) preceding the focal events; two generalised tonic–clonic seizures have occurred in the last month, both on-site. No intercurrent illness, sleep is somewhat reduced due to shift changes, caffeine intake has increased, and she has been under higher stress due to deadlines. There is no alcohol misuse. She denies missed doses and uses a pillbox with phone reminders. \n\nNeurological examination in clinic today was normal. There are no new focal neurological deficits. We discussed seizure safety in the workplace and the importance of minimising exposure to flickering light sources; she is engaging with her employer’s occupational health team to review lighting and screen settings. We also discussed SUDEP awareness and first aid with her partner present. \n\nPlan: given the sustained deterioration with events every one or three days, I have arranged urgent EEG with photic stimulation and an updated brain MRI to exclude structural progression. I will also request serum levels for lamotrigine to support dose optimisation. In the interim, I have advised temporary restriction from high-risk duties at work and avoidance of known visual triggers where feasible. Buccal midazolam has been prescribed for prolonged seizures as per local protocol, and she and her partner have been given written guidance. We will coordinate with occupational health regarding reasonable lighting adjustments. \n\nI will review her in six to eight weeks, or sooner if further generalised seizures occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states a recent deterioration with events occurring \"every one or three days on average\" and reiterates \"events every one or three days\" in the Plan. According to the rule to select the highest frequency (more frequent), between 1 day and 3 days, the more frequent is 1 per day. There are also two generalized tonic–clonic seizures in the last month, but the overall event rate (including focal auras and occasional generalized events) is given as every 1 or 3 days, which is more frequent than 2 per month. Therefore, the final normalized label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per 1 to 3 day",
+        "occurring every one or three days on average"
+      ],
+      "reference": [
+        "1 per 1 to 3 day",
+        "every one or three days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

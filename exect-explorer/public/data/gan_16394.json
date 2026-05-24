@@ -1,0 +1,59 @@
+{
+  "id": "gan_16394",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Health Centre  \n221B Queen's Road, London SW8 2HX  \n\nDear Dr Ahmed,  \n\nJordan Reeves, DOB: 14-02-1991, Hospital No: H928315 NHS No. 5938471026  \nFlat 5, 12 Larkspur Court, London, SE1 5JP \n\nMedication: \n\n- Lamotrigine 150 mg twice daily.  \n- Clobazam 10 mg at night as a regular adjunct.  \n- Midazolam 10 mg buccal as rescue.  \n- Vagus Nerve Stimulator (VNS) in situ; patient uses magnet as needed.  \n\nThank you for asking me to review Jordan Reeves in clinic today. They attended with their partner. They report feeling generally well between events and continue daily activities, including part-time work. Sleep has been variable due to late evenings and high caffeine intake, which the patient acknowledges (3–5 strong coffees daily and occasional energy drinks). \n\nSeizures remain relatively stable, typically occurring in clusters every 2 to 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review. They describe brief post-event fatigue lasting several hours but usually return to baseline the following day. No injuries or emergency department attendances were reported. \n\nThey note that days with higher caffeine consumption and reduced sleep seem to correlate with a greater likelihood of clusters. They are keen to trial gradual caffeine reduction and a more regular sleep schedule. There have been no new focal neurological symptoms, no concerns with adherence, and no significant mood or cognitive changes beyond transient postictal tiredness. \n\nOn examination today, observations were stable. Neurological examination was non-focal. VNS pocket site is healthy and non-tender. We interrogated the VNS; battery status satisfactory and lead impedance within expected range. \n\nPlan: \n- Continue current antiepileptic regimen unchanged.  \n- Continue VNS with magnet swipes as per current practice.  \n- Patient will keep a seizure and trigger diary, noting caffeine intake, sleep duration, and timing of events.  \n- Patient-reported intention to reduce caffeinated drinks gradually over the next 6–8 weeks and to avoid energy drinks; we discussed this as a potentially helpful lifestyle adjustment.  \n- Buccal midazolam to remain available; no changes to rescue protocol.  \n- Routine bloods (U&E, LFTs) arranged locally in the next fortnight as surveillance while on current therapy.  \n\nWe will review Jordan Reeves again in six months, or sooner if there is any deterioration, increased rescue use, or injury. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 867,
+      "end": 952,
+      "text": "Seizures remain relatively stable, typically occurring in clusters every 2 to 4 days.",
+      "attributes": {
+        "Label": "1 per 2 to 4 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 867,
+      "end": 1134,
+      "text": "Seizures remain relatively stable, typically occurring in clusters every 2 to 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review",
+      "attributes": {
+        "Label": "1 per 2 to 4 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16394,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Health Centre  \n221B Queen's Road, London SW8 2HX  \n\nDear Dr Ahmed,  \n\nJordan Reeves, DOB: 14-02-1991, Hospital No: H928315 NHS No. 5938471026  \nFlat 5, 12 Larkspur Court, London, SE1 5JP \n\nMedication: \n\n- Lamotrigine 150 mg twice daily.  \n- Clobazam 10 mg at night as a regular adjunct.  \n- Midazolam 10 mg buccal as rescue.  \n- Vagus Nerve Stimulator (VNS) in situ; patient uses magnet as needed.  \n\nThank you for asking me to review Jordan Reeves in clinic today. They attended with their partner. They report feeling generally well between events and continue daily activities, including part-time work. Sleep has been variable due to late evenings and high caffeine intake, which the patient acknowledges (3–5 strong coffees daily and occasional energy drinks). \n\nSeizures remain relatively stable, typically occurring in clusters every 2 to 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review. They describe brief post-event fatigue lasting several hours but usually return to baseline the following day. No injuries or emergency department attendances were reported. \n\nThey note that days with higher caffeine consumption and reduced sleep seem to correlate with a greater likelihood of clusters. They are keen to trial gradual caffeine reduction and a more regular sleep schedule. There have been no new focal neurological symptoms, no concerns with adherence, and no significant mood or cognitive changes beyond transient postictal tiredness. \n\nOn examination today, observations were stable. Neurological examination was non-focal. VNS pocket site is healthy and non-tender. We interrogated the VNS; battery status satisfactory and lead impedance within expected range. \n\nPlan: \n- Continue current antiepileptic regimen unchanged.  \n- Continue VNS with magnet swipes as per current practice.  \n- Patient will keep a seizure and trigger diary, noting caffeine intake, sleep duration, and timing of events.  \n- Patient-reported intention to reduce caffeinated drinks gradually over the next 6–8 weeks and to avoid energy drinks; we discussed this as a potentially helpful lifestyle adjustment.  \n- Buccal midazolam to remain available; no changes to rescue protocol.  \n- Routine bloods (U&E, LFTs) arranged locally in the next fortnight as surveillance while on current therapy.  \n\nWe will review Jordan Reeves again in six months, or sooner if there is any deterioration, increased rescue use, or injury. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that seizures occur in clusters every 2 to 4 days. There is no numeric information on the number of seizures within each cluster, so the cluster frequency is the most concrete figure available. Other data (e.g., rescue medication once in June and twice in August) are less frequent and do not represent overall seizure frequency. Therefore, normalize to a generic rate: 1 per 2 to 4 day.",
+      "seizure_frequency_number": [
+        "1 per 2 to 4 day",
+        "Seizures remain relatively stable, typically occurring in clusters every 2 to 4 days."
+      ],
+      "reference": [
+        "1 per 2 to 4 day",
+        "Seizures remain relatively stable, typically occurring in clusters every 2 to 4 days. Rescue medication was required once in June and twice in August. The patient has increased VNS swiping, but there has been no overall rise in seizure frequency since the last review"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

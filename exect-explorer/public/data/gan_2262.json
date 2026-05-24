@@ -1,0 +1,59 @@
+{
+  "id": "gan_2262",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 21 October 2013\n\nDr Patel\nSouth Thames Neurology Service\nOutpatient Department, St George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nI reviewed Anne Taylor today in the neurology clinic. She attended with her mother and support worker. They report that over the past three weeks she has experienced about seven to nine seizures in the last three weeks. These have included brief generalised episodes with loss of awareness and stiffening, as well as focal seizures arising from sleep with behavioural arrest and lip-smacking lasting 30–60 seconds, followed by several minutes of confusion. No clusters or status events have been reported.\n\nShe remains on stable background medication per her carer’s record and there have been no recent dose changes. Rescue therapy has not been required in this interval, and there have been no emergency department attendances. Triggers noted by the family include sleep disruption and intercurrent stress. They have been keeping a seizure diary which corroborates the pattern described above.\n\nOn examination today she was alert, with normal cardiorespiratory observations and no focal neurological deficits. There were no tongue bites or injuries reported since the last visit. We discussed safety and adherence strategies, including maintaining good sleep hygiene and continuing the seizure diary. No device therapy is in place, and there is no history of prior cranial surgery.\n\nPlan:\n- Continue current antiepileptic regimen unchanged pending further review of the diary trends.\n- Provide written seizure first-aid advice to family and support worker.\n- Arrange routine bloods for antiepileptic drug levels and general monitoring.\n- Follow-up in three months, sooner if seizure frequency escalates or new features emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 535,
+      "end": 633,
+      "text": "over the past three weeks she has experienced about seven to nine seizures in the last three weeks",
+      "attributes": {
+        "Label": "7 to 9 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 581,
+      "end": 633,
+      "text": "about seven to nine seizures in the last three weeks",
+      "attributes": {
+        "Label": "7 to 9 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2262,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 21 October 2013\n\nDr Patel\nSouth Thames Neurology Service\nOutpatient Department, St George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nI reviewed Anne Taylor today in the neurology clinic. She attended with her mother and support worker. They report that over the past three weeks she has experienced about seven to nine seizures in the last three weeks. These have included brief generalised episodes with loss of awareness and stiffening, as well as focal seizures arising from sleep with behavioural arrest and lip-smacking lasting 30–60 seconds, followed by several minutes of confusion. No clusters or status events have been reported.\n\nShe remains on stable background medication per her carer’s record and there have been no recent dose changes. Rescue therapy has not been required in this interval, and there have been no emergency department attendances. Triggers noted by the family include sleep disruption and intercurrent stress. They have been keeping a seizure diary which corroborates the pattern described above.\n\nOn examination today she was alert, with normal cardiorespiratory observations and no focal neurological deficits. There were no tongue bites or injuries reported since the last visit. We discussed safety and adherence strategies, including maintaining good sleep hygiene and continuing the seizure diary. No device therapy is in place, and there is no history of prior cranial surgery.\n\nPlan:\n- Continue current antiepileptic regimen unchanged pending further review of the diary trends.\n- Provide written seizure first-aid advice to family and support worker.\n- Arrange routine bloods for antiepileptic drug levels and general monitoring.\n- Follow-up in three months, sooner if seizure frequency escalates or new features emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"over the past three weeks she has experienced about seven to nine seizures in the last three weeks.\" This provides a numeric range and a time window. Normalize to the allowed format as a range per a 3-week period. No other conflicting frequencies are provided, and no seizure freedom period applies.",
+      "seizure_frequency_number": [
+        "7 to 9 per 3 week",
+        "over the past three weeks she has experienced about seven to nine seizures in the last three weeks"
+      ],
+      "reference": [
+        "7 to 9 per 3 week",
+        "about seven to nine seizures in the last three weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

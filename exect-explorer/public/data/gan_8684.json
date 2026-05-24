@@ -1,0 +1,54 @@
+{
+  "id": "gan_8684",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nJames Holloway, DOB: 22-11-1984, Hospital No: H983421 NHS No. 6082147753  \nFlat 3, Rosewood Supported Living, 14 Brookfield Road, London, W10 6AP \n\nMedication:  \n\nLevetiracetam 1000 mg twice daily. No changes made today. \n\nThank you for asking me to review James Holloway, who resides in supported accommodation where rotating staff complete daily seizure charts. I reviewed the most recent six months of entries together with the accompanying handover notes. According to these records, and corroborated by the patient, there have been no documented clinical events suggestive of seizures during this period. The staff describe consistent sleep–wake patterns and no witnessed episodes of loss of awareness, abnormal movements, or post-event confusion. \n\nThere have been two occasions where staff noted brief morning light-headedness associated with missed breakfast; these resolved with food and did not feature automatisms, unresponsiveness, or postictal features. No injuries, tongue biting, or nocturnal events have been reported. The accommodation staff confirm medication is administered by them and that adherence has been reliable with only one late evening dose recorded in the last three months. \n\nJames Holloway reports good overall wellbeing, stable mood, and no adverse effects from levetiracetam such as irritability or sleep disturbance. There have been no intercurrent illnesses, alcohol use is denied, and sleep hygiene is described as regular. The staff continue to maintain the seizure charts, and I have requested they highlight any witnessed behavioural arrest, involuntary movements, falls, or episodes of unresponsiveness should they occur. \n\nOn examination today, observations were within normal limits. Neurological examination was non-focal. \n\nPlan:  \n- Continue levetiracetam 1000 mg twice daily without change.  \n- Maintain staff-completed seizure charting as per current practice; please forward copies if any possible events are recorded.  \n- Safety advice reiterated regarding bathing supervision, cooking with care, and use of helmets not indicated at present based on current risk profile.  \n- Routine bloods not required today in the absence of side effects; consider annual review of FBC/U&Es with you.  \n- We will review in clinic in six months, sooner if any events are documented or if there are concerns about tolerability. \n\nI will update you after the next review. Please let me know if there are any changes in the interim. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 550,
+      "end": 795,
+      "text": "I reviewed the most recent six months of entries together with the accompanying handover notes. According to these records, and corroborated by the patient, there have been no documented clinical events suggestive of seizures during this period.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8684,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nJames Holloway, DOB: 22-11-1984, Hospital No: H983421 NHS No. 6082147753  \nFlat 3, Rosewood Supported Living, 14 Brookfield Road, London, W10 6AP \n\nMedication:  \n\nLevetiracetam 1000 mg twice daily. No changes made today. \n\nThank you for asking me to review James Holloway, who resides in supported accommodation where rotating staff complete daily seizure charts. I reviewed the most recent six months of entries together with the accompanying handover notes. According to these records, and corroborated by the patient, there have been no documented clinical events suggestive of seizures during this period. The staff describe consistent sleep–wake patterns and no witnessed episodes of loss of awareness, abnormal movements, or post-event confusion. \n\nThere have been two occasions where staff noted brief morning light-headedness associated with missed breakfast; these resolved with food and did not feature automatisms, unresponsiveness, or postictal features. No injuries, tongue biting, or nocturnal events have been reported. The accommodation staff confirm medication is administered by them and that adherence has been reliable with only one late evening dose recorded in the last three months. \n\nJames Holloway reports good overall wellbeing, stable mood, and no adverse effects from levetiracetam such as irritability or sleep disturbance. There have been no intercurrent illnesses, alcohol use is denied, and sleep hygiene is described as regular. The staff continue to maintain the seizure charts, and I have requested they highlight any witnessed behavioural arrest, involuntary movements, falls, or episodes of unresponsiveness should they occur. \n\nOn examination today, observations were within normal limits. Neurological examination was non-focal. \n\nPlan:  \n- Continue levetiracetam 1000 mg twice daily without change.  \n- Maintain staff-completed seizure charting as per current practice; please forward copies if any possible events are recorded.  \n- Safety advice reiterated regarding bathing supervision, cooking with care, and use of helmets not indicated at present based on current risk profile.  \n- Routine bloods not required today in the absence of side effects; consider annual review of FBC/U&Es with you.  \n- We will review in clinic in six months, sooner if any events are documented or if there are concerns about tolerability. \n\nI will update you after the next review. Please let me know if there are any changes in the interim. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that the clinician reviewed the most recent six months of seizure chart entries and that there were no documented clinical events suggestive of seizures during this period. This indicates zero seizures over six months. Per the criterion that at least six months without seizures qualifies as seizure free, the appropriate normalized label is 'seizure free for 6 month'. No other seizure frequencies are mentioned, and the brief light-headedness episodes are explicitly described as non-seizure.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "I reviewed the most recent six months of entries together with the accompanying handover notes. According to these records, and corroborated by the patient, there have been no documented clinical events suggestive of seizures during this period."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on current antiseizure regimen"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

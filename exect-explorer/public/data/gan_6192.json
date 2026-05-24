@@ -1,0 +1,54 @@
+{
+  "id": "gan_6192",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 21 October 2013\n\nDr Patel\nRiverside Neurology Clinic\n1 Riverside Way, Bristol BS1 4QF\n\nDear Dr Patel,\n\nRe: Emma Johnson, DOB: 14-07-1992, Hospital No: H482930, NHS No. 9074621835\nFlat 3, 12 Harbourside Court, Bristol BS8 1AB\n\nDiagnoses:\n\nHistory of migraine; current clinical focus is seizure evaluation.\n\nThank you for reviewing Emma Johnson. She attended today with her mother. They describe brief episodes characterised by a sudden pause and loss of awareness, occasionally accompanied by a subtle facial twitch and post-event fatigue. She reports that these events sometimes follow extended computer use, particularly towards the end of the day, and she now tries to take regular breaks. There has been no recent emergency treatment, and she has not required rescue medication. Frequency is not reliably documented at present; she has begun a symptom diary to help clarify the pattern.\n\nCurrent medicines include a prophylactic for migraine and simple analgesia as needed; no recent changes were made by us today. Neurological examination was non-focal. We discussed general safety advice and agreed to continue monitoring while we gather better event documentation. I have arranged routine bloods and an EEG; imaging will be considered once we have the initial results and diary data. No device therapy is in place.\n\nWe plan a follow-up in three months, sooner if the diary reveals clustering or prolonged events.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 837,
+      "end": 944,
+      "text": "Frequency is not reliably documented at present; she has begun a symptom diary to help clarify the pattern.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6192,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 21 October 2013\n\nDr Patel\nRiverside Neurology Clinic\n1 Riverside Way, Bristol BS1 4QF\n\nDear Dr Patel,\n\nRe: Emma Johnson, DOB: 14-07-1992, Hospital No: H482930, NHS No. 9074621835\nFlat 3, 12 Harbourside Court, Bristol BS8 1AB\n\nDiagnoses:\n\nHistory of migraine; current clinical focus is seizure evaluation.\n\nThank you for reviewing Emma Johnson. She attended today with her mother. They describe brief episodes characterised by a sudden pause and loss of awareness, occasionally accompanied by a subtle facial twitch and post-event fatigue. She reports that these events sometimes follow extended computer use, particularly towards the end of the day, and she now tries to take regular breaks. There has been no recent emergency treatment, and she has not required rescue medication. Frequency is not reliably documented at present; she has begun a symptom diary to help clarify the pattern.\n\nCurrent medicines include a prophylactic for migraine and simple analgesia as needed; no recent changes were made by us today. Neurological examination was non-focal. We discussed general safety advice and agreed to continue monitoring while we gather better event documentation. I have arranged routine bloods and an EEG; imaging will be considered once we have the initial results and diary data. No device therapy is in place.\n\nWe plan a follow-up in three months, sooner if the diary reveals clustering or prolonged events.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes brief episodes consistent with seizures but explicitly states that the frequency is not reliably documented and that the patient has started a symptom diary to clarify the pattern. There are no numeric or time-based frequency details provided. Therefore, the seizure frequency cannot be determined from the letter and must be labeled as unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Frequency is not reliably documented at present; she has begun a symptom diary to help clarify the pattern."
+      ],
+      "reference": [
+        "unknown",
+        "Seizures after prolonged screen time"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

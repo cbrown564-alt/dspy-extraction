@@ -1,0 +1,54 @@
+{
+  "id": "gan_10326",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 July 2016 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication adjustment and adherence support\n\nDear Priya,\n\nDiagnosis:\nSeizure disorder under review.\n\nCurrent Medication:\n1. Carbamazepine modified-release 400 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nSeizure Pattern:\nPatient reports brief events most often noted after busy weeks, with a tendency to bunch around Saturdays and Sundays; pattern not yet well characterised and we do not have enough data to quantify with confidence.\n\nBackground and Adherence Measures:\nThe patient previously missed several evening doses during shift work. They have now implemented smartphone alarm reminders and NFC tag prompts at home and work to confirm doses taken. Over the last month, electronic logs show improved on-time dosing on weekdays, with occasional late doses noted on Sunday evenings.\n\nAssessment:\nWith better adherence, weekday episodes appear reduced in frequency and intensity by the patient’s account, but weekend clustering is still suspected. No clear precipitants identified beyond fatigue and irregular sleep. No injuries, tongue-biting, or prolonged post-event confusion reported. We will continue to clarify semiology and timing using the patient’s smartphone diary and pharmacy refill data.\n\nPlan:\n- Maintain current doses of carbamazepine MR and lamotrigine for the next 8 weeks while adherence stabilises.\n- Continue smartphone alarm schedule and NFC tag check-ins; patient to export adherence logs before next appointment.\n- Arrange a weekend-focused ambulatory EEG if episodes persist over the next month.\n- Safety advice reinforced: avoid heights and unsupervised swimming; no driving until event-free in accordance with DVLA guidance.\n- Review in clinic in 8–10 weeks with seizure and adherence summaries. If weekend events continue despite confirmed adherence, we will consider rationalising therapy.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 654,
+      "end": 747,
+      "text": "pattern not yet well characterised and we do not have enough data to quantify with confidence",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10326,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 July 2016 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication adjustment and adherence support\n\nDear Priya,\n\nDiagnosis:\nSeizure disorder under review.\n\nCurrent Medication:\n1. Carbamazepine modified-release 400 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nSeizure Pattern:\nPatient reports brief events most often noted after busy weeks, with a tendency to bunch around Saturdays and Sundays; pattern not yet well characterised and we do not have enough data to quantify with confidence.\n\nBackground and Adherence Measures:\nThe patient previously missed several evening doses during shift work. They have now implemented smartphone alarm reminders and NFC tag prompts at home and work to confirm doses taken. Over the last month, electronic logs show improved on-time dosing on weekdays, with occasional late doses noted on Sunday evenings.\n\nAssessment:\nWith better adherence, weekday episodes appear reduced in frequency and intensity by the patient’s account, but weekend clustering is still suspected. No clear precipitants identified beyond fatigue and irregular sleep. No injuries, tongue-biting, or prolonged post-event confusion reported. We will continue to clarify semiology and timing using the patient’s smartphone diary and pharmacy refill data.\n\nPlan:\n- Maintain current doses of carbamazepine MR and lamotrigine for the next 8 weeks while adherence stabilises.\n- Continue smartphone alarm schedule and NFC tag check-ins; patient to export adherence logs before next appointment.\n- Arrange a weekend-focused ambulatory EEG if episodes persist over the next month.\n- Safety advice reinforced: avoid heights and unsupervised swimming; no driving until event-free in accordance with DVLA guidance.\n- Review in clinic in 8–10 weeks with seizure and adherence summaries. If weekend events continue despite confirmed adherence, we will consider rationalising therapy.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses a seizure disorder with reported brief events, noting a tendency to cluster around weekends. However, it explicitly states the pattern is not well characterised and there is not enough data to quantify with confidence. No numeric frequency is provided, and no clear count per time period can be inferred. The patient is not confirmed seizure-free for 6 months. Therefore, the seizure frequency cannot be determined from the information given and should be labeled as unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "pattern not yet well characterised and we do not have enough data to quantify with confidence"
+      ],
+      "reference": [
+        "unknown",
+        "Possible weekend clusters; insufficient data to quantify"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

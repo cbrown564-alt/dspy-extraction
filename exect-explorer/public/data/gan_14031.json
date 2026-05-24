@@ -1,0 +1,65 @@
+{
+  "id": "gan_14031",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 31 July 2019 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nOliver James, DOB: 22-11-2011, Hospital No: H382917 NHS No. 9845126730  \nFlat 3, 27 Maple Road, London, NW3 5HY  \n\nEpilepsy \n\nMedication: Ongoing ketogenic diet commenced May 2019; clonazepam 0.5 mg nocte PRN for clusters (parent-reported use twice in July); melatonin 2 mg nocte introduced by GP for sleep onset difficulty. \n\nMonitoring: Parents maintain a seizure and sleep log; no recent antiepileptic drug level monitoring as none currently prescribed on a regular basis. \n\nSeizures: The parents state that since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar. They add that events are typically brief (under 10 seconds) with immediate recovery but have resulted in two forehead bruises. They report night shifts and curtailed sleep coincide with perceived deterioration, with two of the four events occurring after consecutive nights of reduced sleep due to parental shift work affecting household routine. \n\nI conducted a telephone follow-up with both parents today. They report increasing concern over the past two months, noting greater daytime lethargy, irritability, and reduced attention span compared with earlier in the year. They feel the pattern of disrupted sleep has been associated with more frequent head-drops and near-falls, and school have documented missed morning sessions following poor nights. Although the ketogenic diet was started with optimism, they have not observed a sustained reduction in events since March. There have been no reported prolonged convulsions, no tongue bite, and no incontinence; however, the cumulative impact on confidence and daily functioning is worsening. \n\nSafety: Helmet now worn consistently at school and when outside; home environment further padded following two minor injuries. No emergency services involvement. \n\nPlan: Parents to continue detailed seizure and sleep diary and liaise with school for structured rest periods. We discussed sleep hygiene measures and maintaining consistent bedtimes despite shift-related household disruption; parents are trialling scheduled wind-down periods. They will email weekly summaries ahead of a case review meeting next month. I will obtain the ketogenic team’s notes and arrange a multidisciplinary review to assess response and tolerability. We will also organise an ambulatory EEG and sleep assessment to explore the reported deterioration temporally linked with curtailed sleep. \n\nI share the parents’ impression that his condition is deteriorating in the context of disrupted sleep patterns. We will review urgently if drop attacks increase in frequency, if injuries occur, or if events generalise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 772,
+      "end": 857,
+      "text": "since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 749,
+      "end": 856,
+      "text": "The parents state that since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14031,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 31 July 2019 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nOliver James, DOB: 22-11-2011, Hospital No: H382917 NHS No. 9845126730  \nFlat 3, 27 Maple Road, London, NW3 5HY  \n\nEpilepsy \n\nMedication: Ongoing ketogenic diet commenced May 2019; clonazepam 0.5 mg nocte PRN for clusters (parent-reported use twice in July); melatonin 2 mg nocte introduced by GP for sleep onset difficulty. \n\nMonitoring: Parents maintain a seizure and sleep log; no recent antiepileptic drug level monitoring as none currently prescribed on a regular basis. \n\nSeizures: The parents state that since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar. They add that events are typically brief (under 10 seconds) with immediate recovery but have resulted in two forehead bruises. They report night shifts and curtailed sleep coincide with perceived deterioration, with two of the four events occurring after consecutive nights of reduced sleep due to parental shift work affecting household routine. \n\nI conducted a telephone follow-up with both parents today. They report increasing concern over the past two months, noting greater daytime lethargy, irritability, and reduced attention span compared with earlier in the year. They feel the pattern of disrupted sleep has been associated with more frequent head-drops and near-falls, and school have documented missed morning sessions following poor nights. Although the ketogenic diet was started with optimism, they have not observed a sustained reduction in events since March. There have been no reported prolonged convulsions, no tongue bite, and no incontinence; however, the cumulative impact on confidence and daily functioning is worsening. \n\nSafety: Helmet now worn consistently at school and when outside; home environment further padded following two minor injuries. No emergency services involvement. \n\nPlan: Parents to continue detailed seizure and sleep diary and liaise with school for structured rest periods. We discussed sleep hygiene measures and maintaining consistent bedtimes despite shift-related household disruption; parents are trialling scheduled wind-down periods. They will email weekly summaries ahead of a case review meeting next month. I will obtain the ketogenic team’s notes and arrange a multidisciplinary review to assess response and tolerability. We will also organise an ambulatory EEG and sleep assessment to explore the reported deterioration temporally linked with curtailed sleep. \n\nI share the parents’ impression that his condition is deteriorating in the context of disrupted sleep patterns. We will review urgently if drop attacks increase in frequency, if injuries occur, or if events generalise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit numeric seizure counts and timeframes. The letter states: \"since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar.\" Clinic date is 31 July 2019, ketogenic diet commenced May 2019. Thus the period from May to 31 July is roughly 3 months. Four events over about 3 months approximates 1.3 per month. However, instructions require prioritizing explicit numeric expressions and to normalize to allowed formats; when exact frequency per unit isn't explicitly stated, we should avoid over-deriving. There is an explicit count (four) but no precise timeframe unit beyond \"since starting\" in May. Because the exact frequency per day/week/month/year cannot be determined precisely from the letter (only a total count since May), the safest outcome per rule 4 is \"unknown\" while providing a quote confirming seizures.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar."
+      ],
+      "reference": [
+        "unknown",
+        "The parents state that since starting ketogenic diet he has had four drop attacks, the latest one on 29/Mar"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

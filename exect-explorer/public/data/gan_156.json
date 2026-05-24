@@ -1,0 +1,59 @@
+{
+  "id": "gan_156",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Mehta (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 March 2014 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Daniel O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Communication needs and treatment update\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg at night\n\n\nPresent Seizure Frequency:\n\nPatient reports seizures every 6 days, typically brief focal aware episodes with auditory distortion and right-sided facial tingling. Family corroborates this pattern over the past two months.\n\n\nPlan of Action:\n\nThe patient describes consistent focal auras followed by brief behavioural arrest without generalisation. No clear precipitating factors have been identified. We agreed to maintain lamotrigine at the current dose and to increase topiramate to 50 mg twice daily in one week if tolerated, with a view to evaluating impact on the observed pattern of seizures every 6 days. Safety advice and SUDEP discussion have been noted at previous visits and were revisited briefly.\n\nGiven hearing difficulty, the patient prefers scheduled speakerphone calls with a family member assisting communication. Please route non-urgent matters via scheduled calls and written summaries. We will arrange a telephone review in six weeks, using speakerphone with the nominated family contact present, and a face-to-face review in three months. If any adverse effects occur (cognitive slowing, paraesthesia, visual symptoms), please advise the patient to contact the clinic for earlier review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 514,
+      "end": 551,
+      "text": "Patient reports seizures every 6 days",
+      "attributes": {
+        "Label": "1 per 6 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 530,
+      "end": 551,
+      "text": "seizures every 6 days",
+      "attributes": {
+        "Label": "1 per 6 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 156,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Mehta (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 March 2014 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Daniel O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Communication needs and treatment update\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg at night\n\n\nPresent Seizure Frequency:\n\nPatient reports seizures every 6 days, typically brief focal aware episodes with auditory distortion and right-sided facial tingling. Family corroborates this pattern over the past two months.\n\n\nPlan of Action:\n\nThe patient describes consistent focal auras followed by brief behavioural arrest without generalisation. No clear precipitating factors have been identified. We agreed to maintain lamotrigine at the current dose and to increase topiramate to 50 mg twice daily in one week if tolerated, with a view to evaluating impact on the observed pattern of seizures every 6 days. Safety advice and SUDEP discussion have been noted at previous visits and were revisited briefly.\n\nGiven hearing difficulty, the patient prefers scheduled speakerphone calls with a family member assisting communication. Please route non-urgent matters via scheduled calls and written summaries. We will arrange a telephone review in six weeks, using speakerphone with the nominated family contact present, and a face-to-face review in three months. If any adverse effects occur (cognitive slowing, paraesthesia, visual symptoms), please advise the patient to contact the clinic for earlier review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Patient reports seizures every 6 days' and reiterates evaluating impact on 'the observed pattern of seizures every 6 days.' This provides a clear numeric frequency. No other conflicting frequencies are given. Convert 'every 6 days' to the allowed format '1 per 6 day.'",
+      "seizure_frequency_number": [
+        "1 per 6 day",
+        "Patient reports seizures every 6 days"
+      ],
+      "reference": [
+        "1 per 6 day",
+        "seizures every 6 days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

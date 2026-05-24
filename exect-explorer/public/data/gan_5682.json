@@ -1,0 +1,54 @@
+{
+  "id": "gan_5682",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-06-1991, Hospital No: H529374 NHS No. 9473625811  \n58 Willowbank Court, London, SW18 4AB  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Jordan Evans in clinic today. They attended with a parent and reported a background of anxiety and low mood, for which they have been engaging with their GP. They describe recurrent seizure episodes occurring in clusters separated by periods without events. Over the past three months, they estimate 2–4 events per month, often with days to weeks between episodes when no symptoms occur. Triggers are not clearly identified, although Jordan Evans feels that stress and poor sleep may precede some events. There have been no reported injuries, tongue biting or prolonged confusional states. No emergency rescue medication has been required. \n\nCurrent medication: none for seizures. They occasionally use over-the-counter analgesia for headaches. No recent medication changes. \n\nSince the last review, there has been no hospital admission for seizures. Witness accounts describe a brief behavioural arrest with reduced responsiveness and occasional eyelid fluttering, typically lasting under two minutes, followed by rapid recovery. No consistent lateralising features have been observed. \n\nExamination today was unremarkable with normal cardiorespiratory and neurological findings. \n\nInvestigations: \n- MRI brain (report from July 2025): no acute intracranial abnormality.  \n- Routine EEG (August 2025): non-specific findings without definitive epileptiform discharges.  \n\nPlan: \n- We discussed strategies around sleep hygiene and stress management; Jordan Evans agrees these may help. \n- Safety advice reinforced, including supervised bathing, avoiding heights without protection, and not driving; they have self-reported to the DVLA and are currently not driving. \n- Seizure diary to capture event frequency, potential precipitants, and recovery. This will help characterise the pattern of episodes that recur with intervals of no symptoms. \n- Referral to local psychological services via GP to support management of anxiety/low mood; patient is agreeable. \n- Consider ambulatory EEG if diary suggests clustering or if event semiology changes. \n- No antiseizure medication initiated today; to reconsider if frequency increases, the semiology evolves, or further diagnostic information becomes available. \n\nFollow-up in four months, or sooner if events escalate or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 624,
+      "end": 753,
+      "text": "Over the past three months, they estimate 2–4 events per month, often with days to weeks between episodes when no symptoms occur.",
+      "attributes": {
+        "Label": "2 to 4 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5682,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-06-1991, Hospital No: H529374 NHS No. 9473625811  \n58 Willowbank Court, London, SW18 4AB  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Jordan Evans in clinic today. They attended with a parent and reported a background of anxiety and low mood, for which they have been engaging with their GP. They describe recurrent seizure episodes occurring in clusters separated by periods without events. Over the past three months, they estimate 2–4 events per month, often with days to weeks between episodes when no symptoms occur. Triggers are not clearly identified, although Jordan Evans feels that stress and poor sleep may precede some events. There have been no reported injuries, tongue biting or prolonged confusional states. No emergency rescue medication has been required. \n\nCurrent medication: none for seizures. They occasionally use over-the-counter analgesia for headaches. No recent medication changes. \n\nSince the last review, there has been no hospital admission for seizures. Witness accounts describe a brief behavioural arrest with reduced responsiveness and occasional eyelid fluttering, typically lasting under two minutes, followed by rapid recovery. No consistent lateralising features have been observed. \n\nExamination today was unremarkable with normal cardiorespiratory and neurological findings. \n\nInvestigations: \n- MRI brain (report from July 2025): no acute intracranial abnormality.  \n- Routine EEG (August 2025): non-specific findings without definitive epileptiform discharges.  \n\nPlan: \n- We discussed strategies around sleep hygiene and stress management; Jordan Evans agrees these may help. \n- Safety advice reinforced, including supervised bathing, avoiding heights without protection, and not driving; they have self-reported to the DVLA and are currently not driving. \n- Seizure diary to capture event frequency, potential precipitants, and recovery. This will help characterise the pattern of episodes that recur with intervals of no symptoms. \n- Referral to local psychological services via GP to support management of anxiety/low mood; patient is agreeable. \n- Consider ambulatory EEG if diary suggests clustering or if event semiology changes. \n- No antiseizure medication initiated today; to reconsider if frequency increases, the semiology evolves, or further diagnostic information becomes available. \n\nFollow-up in four months, or sooner if events escalate or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency: \"Over the past three months, they estimate 2–4 events per month.\" This is a clear numeric range. Convert the en dash to 'to' per format rules, yielding '2 to 4 per month'. Although clusters are mentioned, there is no quantification of clusters or events per cluster, so the simple monthly rate is used. No other conflicting frequencies are provided.",
+      "seizure_frequency_number": [
+        "2 to 4 per month",
+        "Over the past three months, they estimate 2–4 events per month, often with days to weeks between episodes when no symptoms occur."
+      ],
+      "reference": [
+        "unknown",
+        "Episodic seizure events with symptom-free intervals"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 to 4 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

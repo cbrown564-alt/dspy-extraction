@@ -1,0 +1,59 @@
+{
+  "id": "gan_4",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \nOxcarbazepine (Trileptal) 600 mg morning / 600 mg evening. Patient reports escalating events despite adherence. \n\nI reviewed Emily Carter today following a marked deterioration over the past six weeks. She describes that previously her events occurred once per day, but recently there has been a clear increase to 5 per day on most workdays, often clustering in the late afternoon when workload peaks. She links this change to sustained high workload and extended hours. Sleep has been fragmented and she has noted increased stress-related symptoms. There have also been brief auras characterised by a rising epigastric sensation and déjà vu lasting 10–20 seconds, frequently preceding the larger events. On two occasions she noted brief confusion post-event. No clear injuries, but she reports near-misses crossing roads. \n\nWe discussed potential triggers and she confirms that events tend to cluster on workdays, with relative reduction over weekends. She denies new intercurrent illness, alcohol excess, or missed doses. Family have noticed subtle lapses in conversation, and her line manager has raised concerns about performance. She has started informally adjusting her schedule but remains under pressure to meet deadlines. \n\nObservations in clinic were unremarkable; examination between events remains normal. She brought a diary indicating variable days with 3–5 brief events, and some days with no events; overall the typical frequency she experiences now is 5 per day on high-stress days. She is understandably anxious about safety, especially during commuting. ï¿½ She has requested documentation for workplace adjustments. \n\nGiven the progression from once per day to 5 per day, I have advised immediate review of workplace stressors and provision of temporary modified duties. She will continue her current medication for now while we arrange urgent investigations and diary-based correlation. We discussed common safety advice including avoidance of swimming alone and taking care with heights and hot surfaces. Ã‚Â· I have encouraged consistent sleep timing and hydration. \n\nPlan:  \n- Urgent EEG and updated bloods (including sodium) within 2 weeks.  \n- Consider dose optimisation at follow-up pending results and tolerability.  \n- Provide letter to employer supporting temporary workload modification; events appear to cluster on workdays as per patient report.  \n- Seizure diary to continue; please share copies with us monthly.  \n- Safety counselling reiterated; she will avoid driving and will use public transport with support where possible. \n\nWe will bring her back in 4 weeks given the current deterioration. Please contact us sooner if frequency escalates further or if there are injuries, prolonged confusion, or any new features. â€\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 610,
+      "end": 648,
+      "text": "increase to 5 per day on most workdays",
+      "attributes": {
+        "Label": "5 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 622,
+      "end": 631,
+      "text": "5 per day",
+      "attributes": {
+        "Label": "5 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \nOxcarbazepine (Trileptal) 600 mg morning / 600 mg evening. Patient reports escalating events despite adherence. \n\nI reviewed Emily Carter today following a marked deterioration over the past six weeks. She describes that previously her events occurred once per day, but recently there has been a clear increase to 5 per day on most workdays, often clustering in the late afternoon when workload peaks. She links this change to sustained high workload and extended hours. Sleep has been fragmented and she has noted increased stress-related symptoms. There have also been brief auras characterised by a rising epigastric sensation and déjà vu lasting 10–20 seconds, frequently preceding the larger events. On two occasions she noted brief confusion post-event. No clear injuries, but she reports near-misses crossing roads. \n\nWe discussed potential triggers and she confirms that events tend to cluster on workdays, with relative reduction over weekends. She denies new intercurrent illness, alcohol excess, or missed doses. Family have noticed subtle lapses in conversation, and her line manager has raised concerns about performance. She has started informally adjusting her schedule but remains under pressure to meet deadlines. \n\nObservations in clinic were unremarkable; examination between events remains normal. She brought a diary indicating variable days with 3–5 brief events, and some days with no events; overall the typical frequency she experiences now is 5 per day on high-stress days. She is understandably anxious about safety, especially during commuting. ï¿½ She has requested documentation for workplace adjustments. \n\nGiven the progression from once per day to 5 per day, I have advised immediate review of workplace stressors and provision of temporary modified duties. She will continue her current medication for now while we arrange urgent investigations and diary-based correlation. We discussed common safety advice including avoidance of swimming alone and taking care with heights and hot surfaces. Ã‚Â· I have encouraged consistent sleep timing and hydration. \n\nPlan:  \n- Urgent EEG and updated bloods (including sodium) within 2 weeks.  \n- Consider dose optimisation at follow-up pending results and tolerability.  \n- Provide letter to employer supporting temporary workload modification; events appear to cluster on workdays as per patient report.  \n- Seizure diary to continue; please share copies with us monthly.  \n- Safety counselling reiterated; she will avoid driving and will use public transport with support where possible. \n\nWe will bring her back in 4 weeks given the current deterioration. Please contact us sooner if frequency escalates further or if there are injuries, prolonged confusion, or any new features. â€\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states Emily previously had events once per day, but over the past six weeks there has been a clear increase. It specifies: 'increase to 5 per day on most workdays' and her diary shows 'variable days with 3–5 brief events, and some days with no events; overall the typical frequency she experiences now is 5 per day on high-stress days.' Per the rule to select the highest frequency, the maximum explicitly stated current frequency is 5 per day. No need to average over weekends since we pick the highest stated frequency.",
+      "seizure_frequency_number": [
+        "5 per day",
+        "increase to 5 per day on most workdays"
+      ],
+      "reference": [
+        "5 per day",
+        "5 per day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

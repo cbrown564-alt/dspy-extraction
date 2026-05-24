@@ -1,0 +1,59 @@
+{
+  "id": "gan_16436",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and ongoing management\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy)\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Levetiracetam 1,000 mg twice daily\n3. Midazolam 10 mg buccal as rescue, as required\n\nPresent Seizure Frequency:\n\nSeizure pattern appears largely unchanged, with events approximately every 3 - 4 days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September.\n\nClinical Update and Context:\n\nHe was reviewed in clinic today accompanied by his partner. He reports background anxiety and periods of low mood, with anticipatory worry around potential seizures when outside the home. He feels this may worsen sleep and has noticed more fragmented nights in the week preceding clusters. No new neurological symptoms. No recent head injuries, medication omissions, or intercurrent infections reported. Appetite remains stable. No alcohol or illicit drug use. He continues part-time work, though he avoids lone travel on days after a seizure. Family describe brief focal impaired-awareness episodes (staring, lip-smacking, right-hand fumbling) lasting 30–60 seconds, and occasional generalised tonic–clonic seizures typically out of sleep. Rescue midazolam was used appropriately on two occasions (July and September) when daily events escalated.\n\nPlan of Action:\n\n- Continue lamotrigine 150 mg twice daily and levetiracetam 1,000 mg twice daily without change at present.\n- Safety: Reinforced seizure first aid, rescue plan, and indications for midazolam use; partner confident with administration. Driving status and DVLA guidance re-discussed.\n- Triggers and lifestyle: Emphasised sleep regularity and stress management; patient will keep a detailed seizure and sleep diary to review at next visit.\n- Mental health: Given his background anxiety/low mood, he is agreeable to referral to neuro-psychology for anxiety management strategies and mood support; he will also speak with his GP regarding primary care mental health options (IAPT/CBT). He does not report suicidal ideation.\n- Investigations: No immediate investigations requested today. If clusters increase or semiology changes, we will consider repeat EEG with sleep deprivation and review prior MRI for concordance.\n- Follow-up: Review in clinic in 4 months, earlier if rescue medication is required again or if daily clusters persist beyond 24–48 hours.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 687,
+      "end": 768,
+      "text": "events approximately every 3 - 4 days. Occasionally, frequency escalates to daily",
+      "attributes": {
+        "Label": "1 per 3 to 4 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 639,
+      "end": 824,
+      "text": "Seizure pattern appears largely unchanged, with events approximately every 3 - 4 days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September",
+      "attributes": {
+        "Label": "1 per 3 to 4 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16436,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and ongoing management\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy)\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Levetiracetam 1,000 mg twice daily\n3. Midazolam 10 mg buccal as rescue, as required\n\nPresent Seizure Frequency:\n\nSeizure pattern appears largely unchanged, with events approximately every 3 - 4 days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September.\n\nClinical Update and Context:\n\nHe was reviewed in clinic today accompanied by his partner. He reports background anxiety and periods of low mood, with anticipatory worry around potential seizures when outside the home. He feels this may worsen sleep and has noticed more fragmented nights in the week preceding clusters. No new neurological symptoms. No recent head injuries, medication omissions, or intercurrent infections reported. Appetite remains stable. No alcohol or illicit drug use. He continues part-time work, though he avoids lone travel on days after a seizure. Family describe brief focal impaired-awareness episodes (staring, lip-smacking, right-hand fumbling) lasting 30–60 seconds, and occasional generalised tonic–clonic seizures typically out of sleep. Rescue midazolam was used appropriately on two occasions (July and September) when daily events escalated.\n\nPlan of Action:\n\n- Continue lamotrigine 150 mg twice daily and levetiracetam 1,000 mg twice daily without change at present.\n- Safety: Reinforced seizure first aid, rescue plan, and indications for midazolam use; partner confident with administration. Driving status and DVLA guidance re-discussed.\n- Triggers and lifestyle: Emphasised sleep regularity and stress management; patient will keep a detailed seizure and sleep diary to review at next visit.\n- Mental health: Given his background anxiety/low mood, he is agreeable to referral to neuro-psychology for anxiety management strategies and mood support; he will also speak with his GP regarding primary care mental health options (IAPT/CBT). He does not report suicidal ideation.\n- Investigations: No immediate investigations requested today. If clusters increase or semiology changes, we will consider repeat EEG with sleep deprivation and review prior MRI for concordance.\n- Follow-up: Review in clinic in 4 months, earlier if rescue medication is required again or if daily clusters persist beyond 24–48 hours.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current pattern: “events approximately every 3 - 4 days.” It also notes occasional escalations to daily during clusters, but these are not the usual pattern and lack sufficient detail to express as a cluster frequency. Therefore, the most representative single numeric frequency is 1 per 3 to 4 days.",
+      "seizure_frequency_number": [
+        "1 per 3 to 4 day",
+        "events approximately every 3 - 4 days. Occasionally, frequency escalates to daily"
+      ],
+      "reference": [
+        "1 per 3 to 4 day",
+        "Seizure pattern appears largely unchanged, with events approximately every 3 - 4 days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

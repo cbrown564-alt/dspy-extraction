@@ -1,0 +1,59 @@
+{
+  "id": "gan_2456",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Richardson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 April 2021 10:15\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nNot established\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nsix to seven seizures during the last two weeks\n\n\nPlan of Action:\n\nThe patient reports brief loss of awareness with sudden pauses and occasional right-hand jerks, often clustering in the evenings after work. Sleep has been fragmented due to early shifts, and there was a missed evening dose of lamotrigine last week. Despite adherence over the past month, frequency remains unchanged compared with earlier in the year, with six to seven seizures during the last two weeks by the patient’s diary.\n\nI recommend optimising the lamotrigine dose cautiously. Please increase lamotrigine to 125 mg twice daily for two weeks, then 150 mg twice daily if tolerated. Maintain clobazam 10 mg at night for now. Safety advice regarding driving, heights, and water has been reinforced. The patient has been asked to continue a seizure and trigger diary and to arrange an updated serum lamotrigine level two weeks after reaching 150 mg twice daily.\n\nI have requested an outpatient EEG and an MRI brain (epilepsy protocol) to aid further classification. We will review in clinic in 12 weeks or sooner if events escalate or adverse effects occur.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 547,
+      "text": "six to seven seizures during the last two weeks",
+      "attributes": {
+        "Label": "6 to 7 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 547,
+      "text": "six to seven seizures during the last two weeks",
+      "attributes": {
+        "Label": "6 to 7 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2456,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Richardson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 April 2021 10:15\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nNot established\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nsix to seven seizures during the last two weeks\n\n\nPlan of Action:\n\nThe patient reports brief loss of awareness with sudden pauses and occasional right-hand jerks, often clustering in the evenings after work. Sleep has been fragmented due to early shifts, and there was a missed evening dose of lamotrigine last week. Despite adherence over the past month, frequency remains unchanged compared with earlier in the year, with six to seven seizures during the last two weeks by the patient’s diary.\n\nI recommend optimising the lamotrigine dose cautiously. Please increase lamotrigine to 125 mg twice daily for two weeks, then 150 mg twice daily if tolerated. Maintain clobazam 10 mg at night for now. Safety advice regarding driving, heights, and water has been reinforced. The patient has been asked to continue a seizure and trigger diary and to arrange an updated serum lamotrigine level two weeks after reaching 150 mg twice daily.\n\nI have requested an outpatient EEG and an MRI brain (epilepsy protocol) to aid further classification. We will review in clinic in 12 weeks or sooner if events escalate or adverse effects occur.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency as 'six to seven seizures during the last two weeks' and reiterates this in the plan. Convert words to numerals and normalize to the allowed format. Two weeks is the time window; therefore label as '6 to 7 per 2 week'. No other conflicting frequencies are provided. Clustering is mentioned but without per-cluster counts, so the straightforward frequency applies.",
+      "seizure_frequency_number": [
+        "6 to 7 per 2 week",
+        "six to seven seizures during the last two weeks"
+      ],
+      "reference": [
+        "6 to 7 per 2 week",
+        "six to seven seizures during the last two weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

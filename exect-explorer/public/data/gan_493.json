@@ -1,0 +1,59 @@
+{
+  "id": "gan_493",
+  "text": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 24 July 2015\n\nDr A. Reynolds\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr A. Reynolds,\n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH748215 NHS No. 9783645120\n22 Brookfield Road, London, SE15 3JP\n\nThank you for asking me to review your patient, who has type 2 diabetes managed in primary care. Today’s consultation focused on his longstanding seizure problem. He attended with his partner, who helped provide the history. He reports brief warning sensations of “pressure in the head” followed by loss of awareness, with occasional stiffening noted by observers and a period of confusion afterwards. He does not recall any specific injuries. He keeps a diary and, over the past three months, the recorded frequency has averaged eleven per month. He feels these events tend to cluster around periods of poor sleep and high stress at work. No clear diurnal pattern was identified, and he is unsure about nocturnal events as he lives with his partner who is a deep sleeper.\n\nThere have been no recent medication changes related to seizures. He denies alcohol excess and recreational drug use. He acknowledges variable adherence to his general medications during busy weeks. He reports transient low mood after episodes but no persistent psychotic features, and there is no current suicidal ideation. He does not drive and understands DVLA requirements.\n\nNeurological examination today was unremarkable. There were no focal deficits. Cardiovascular observations were stable. Blood glucose on his meter today was within his usual range per patient report. He is open to further investigation to clarify the nature of these episodes and their precipitants, and he is willing to attend for outpatient video-EEG and an updated MRI brain as part of ongoing assessment. We also discussed safety measures at home and work, and he and his partner report they already use practical precautions (showers rather than baths, avoiding heights, and informing close colleagues).\n\nPlan as discussed with the patient:\n- Arrange routine EEG with extended video where feasible, and consider ambulatory monitoring if initial study is non-diagnostic.\n- Request MRI brain with epilepsy protocol.\n- Basic bloods via primary care for general health optimisation (FBC, U&E, LFT, bone profile, HbA1c as part of diabetes review), to be shared with our clinic once available.\n- Provide seizure diary template and event education material; he will continue documenting frequency (currently eleven per month) and potential triggers.\n- Follow-up in neurology clinic after investigations or sooner if events escalate or new features emerge (injury, prolonged confusion, or change in pattern).\n\nThank you for your ongoing management of his diabetes; he agrees to continue liaison with primary care regarding glycaemic control and medication adherence. Please feel free to contact me if there are concerns before his next appointment.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 790,
+      "end": 870,
+      "text": "over the past three months, the recorded frequency has averaged eleven per month",
+      "attributes": {
+        "Label": "11 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 854,
+      "end": 870,
+      "text": "eleven per month",
+      "attributes": {
+        "Label": "11 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 493,
+    "clinic_date": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 24 July 2015\n\nDr A. Reynolds\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr A. Reynolds,\n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH748215 NHS No. 9783645120\n22 Brookfield Road, London, SE15 3JP\n\nThank you for asking me to review your patient, who has type 2 diabetes managed in primary care. Today’s consultation focused on his longstanding seizure problem. He attended with his partner, who helped provide the history. He reports brief warning sensations of “pressure in the head” followed by loss of awareness, with occasional stiffening noted by observers and a period of confusion afterwards. He does not recall any specific injuries. He keeps a diary and, over the past three months, the recorded frequency has averaged eleven per month. He feels these events tend to cluster around periods of poor sleep and high stress at work. No clear diurnal pattern was identified, and he is unsure about nocturnal events as he lives with his partner who is a deep sleeper.\n\nThere have been no recent medication changes related to seizures. He denies alcohol excess and recreational drug use. He acknowledges variable adherence to his general medications during busy weeks. He reports transient low mood after episodes but no persistent psychotic features, and there is no current suicidal ideation. He does not drive and understands DVLA requirements.\n\nNeurological examination today was unremarkable. There were no focal deficits. Cardiovascular observations were stable. Blood glucose on his meter today was within his usual range per patient report. He is open to further investigation to clarify the nature of these episodes and their precipitants, and he is willing to attend for outpatient video-EEG and an updated MRI brain as part of ongoing assessment. We also discussed safety measures at home and work, and he and his partner report they already use practical precautions (showers rather than baths, avoiding heights, and informing close colleagues).\n\nPlan as discussed with the patient:\n- Arrange routine EEG with extended video where feasible, and consider ambulatory monitoring if initial study is non-diagnostic.\n- Request MRI brain with epilepsy protocol.\n- Basic bloods via primary care for general health optimisation (FBC, U&E, LFT, bone profile, HbA1c as part of diabetes review), to be shared with our clinic once available.\n- Provide seizure diary template and event education material; he will continue documenting frequency (currently eleven per month) and potential triggers.\n- Follow-up in neurology clinic after investigations or sooner if events escalate or new features emerge (injury, prolonged confusion, or change in pattern).\n\nThank you for your ongoing management of his diabetes; he agrees to continue liaison with primary care regarding glycaemic control and medication adherence. Please feel free to contact me if there are concerns before his next appointment.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states the patient keeps a diary and that over the past three months the recorded frequency has averaged eleven per month. This is an explicit numeric frequency for current events. No other differing frequencies are provided that would override this. Therefore, normalize to '11 per month'.",
+      "seizure_frequency_number": [
+        "11 per month",
+        "over the past three months, the recorded frequency has averaged eleven per month"
+      ],
+      "reference": [
+        "11 per month",
+        "eleven per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

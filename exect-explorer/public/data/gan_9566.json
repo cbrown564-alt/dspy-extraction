@@ -1,0 +1,65 @@
+{
+  "id": "gan_9566",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 06 March 2019 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and plan following clinic visit\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nThe patient keeps a paper seizure calendar and brings the monthly logs to each appointment. Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest. No secondary generalisation has been reported in this period. Aura remains consistent with brief right temporal tingling and a rising epigastric sensation lasting 20–40 seconds without loss of awareness.\n\n\nPlan of Action:\n\nWe reviewed the paper logs together and the pattern of sleep deprivation preceding events is clear. We discussed common lifestyle precipitants and the patient will continue using the paper calendar to track bedtime, wake time, caffeine, and shift patterns alongside seizure occurrences. No immediate drug changes are planned today given overall stability and tolerability of current therapy. We agreed to:\n- Continue lamotrigine 150 mg twice daily and brivaracetam 100 mg twice daily as currently prescribed.\n- Maintain a regular sleep schedule aiming for 7–8 hours per night and record any deviations on the calendar.\n- Bring the updated paper logs to the next review so we can correlate events with sleep duration more precisely.\n\nI have arranged a follow‑up appointment in three months. If the frequency increases or if there is any impairment of awareness, injury, or progression to bilateral tonic‑clonic seizures, the patient will contact the clinic sooner via the neurology advice line so we can consider adjustments.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 608,
+      "end": 781,
+      "text": "Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 635,
+      "end": 685,
+      "text": "simple partial seizures happen after lack of sleep",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9566,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 06 March 2019 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and plan following clinic visit\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nThe patient keeps a paper seizure calendar and brings the monthly logs to each appointment. Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest. No secondary generalisation has been reported in this period. Aura remains consistent with brief right temporal tingling and a rising epigastric sensation lasting 20–40 seconds without loss of awareness.\n\n\nPlan of Action:\n\nWe reviewed the paper logs together and the pattern of sleep deprivation preceding events is clear. We discussed common lifestyle precipitants and the patient will continue using the paper calendar to track bedtime, wake time, caffeine, and shift patterns alongside seizure occurrences. No immediate drug changes are planned today given overall stability and tolerability of current therapy. We agreed to:\n- Continue lamotrigine 150 mg twice daily and brivaracetam 100 mg twice daily as currently prescribed.\n- Maintain a regular sleep schedule aiming for 7–8 hours per night and record any deviations on the calendar.\n- Bring the updated paper logs to the next review so we can correlate events with sleep duration more precisely.\n\nI have arranged a follow‑up appointment in three months. If the frequency increases or if there is any impairment of awareness, injury, or progression to bilateral tonic‑clonic seizures, the patient will contact the clinic sooner via the neurology advice line so we can consider adjustments.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current seizures: \"Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest.\" There is no explicit count of how many sleep-deprived nights occurred over the eight weeks, only that when they occur, there are typically 1 to 2 events on those mornings. Without the number of such nights, we cannot compute a per day/week/month frequency. No secondary generalisation reported. Not seizure-free. Therefore, specific frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Over the last eight weeks, simple partial seizures happen after lack of sleep, typically one to two events in the morning following nights with less than five hours of rest."
+      ],
+      "reference": [
+        "unknown",
+        "simple partial seizures happen after lack of sleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

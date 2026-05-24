@@ -1,0 +1,59 @@
+{
+  "id": "gan_12438",
+  "text": "Department of Neurology\n\nClinic Date: 04 November 2015\n\nDr A. Patel\nEastborough Neurology Centre\nNeurology Outpatients, 12 Millbank Way, Eastborough EB2 4HT\n\nDear Dr A. Patel,\n\nEmily Carter, DOB: 14-03-1991, Hospital No: E927451 NHS No. 6045812379\nFlat 2, 16 Rowan Close, Eastborough EB3 1QP\n\nDiagnoses:\n\nAdult-onset seizure disorder; history of childhood febrile seizures noted.\n\nCurrent Medication:\n\n- Levetiracetam 1 g bd\n- Clobazam 10 mg nocte (intermittent use for clusters)\n\nPlan:\n\n- Continue current antiseizure regimen without changes today while we complete further evaluation.\n- Arrange prolonged ambulatory EEG and MRI brain with epilepsy protocol to clarify seizure onset and aid risk stratification.\n- Provide seizure first-aid and nocturnal supervision advice; reinforce SUDEP risk discussion given ongoing nocturnal events.\n- Safety counselling: bathing supervision, avoid heights/open water; driving not permitted and DVLA guidance reviewed.\n- Follow-up in 3 months, sooner if escalation occurs; consider medication optimisation or addition depending on results and tolerability.\n\nI reviewed Emily Carter in clinic today with her partner present. She reports a long-standing history of childhood febrile seizures, with no clear events through adolescence. In adulthood she developed recurrent seizures. Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 2 - 3 times per year, this has been her enduring seizure profile for many years. She describes the nocturnal events as occurring during sleep with a bitten tongue on several occasions and morning headache and myalgia. Daytime events are rare. There are no clear catamenial patterns. She identifies sleep deprivation and intercurrent illness as potential precipitants.\n\nShe is adherent with her current medication. Previous trials of lamotrigine were discontinued due to rash; topiramate caused cognitive side effects. No recent injuries, but there have been two prior bed falls without major harm. There is no family history of adult seizures. Neurological examination today is unremarkable. Routine blood tests earlier this month were within reference limits.\n\nWe discussed lifestyle measures, nocturnal safeguards (monitoring device, side-lying positioning), and the importance of regular sleep. An updated seizure diary was provided. I will review her after investigations to consider adjustments such as clobazam regularisation at night or alternative adjuncts depending on tolerability and findings.\n\nWith best wishes,\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1396,
+      "end": 1459,
+      "text": "she continues to have nightly generalised tonic-clonic seizures",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1319,
+      "end": 1571,
+      "text": "Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 2 - 3 times per year, this has been her enduring seizure profile for many years",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12438,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 04 November 2015\n\nDr A. Patel\nEastborough Neurology Centre\nNeurology Outpatients, 12 Millbank Way, Eastborough EB2 4HT\n\nDear Dr A. Patel,\n\nEmily Carter, DOB: 14-03-1991, Hospital No: E927451 NHS No. 6045812379\nFlat 2, 16 Rowan Close, Eastborough EB3 1QP\n\nDiagnoses:\n\nAdult-onset seizure disorder; history of childhood febrile seizures noted.\n\nCurrent Medication:\n\n- Levetiracetam 1 g bd\n- Clobazam 10 mg nocte (intermittent use for clusters)\n\nPlan:\n\n- Continue current antiseizure regimen without changes today while we complete further evaluation.\n- Arrange prolonged ambulatory EEG and MRI brain with epilepsy protocol to clarify seizure onset and aid risk stratification.\n- Provide seizure first-aid and nocturnal supervision advice; reinforce SUDEP risk discussion given ongoing nocturnal events.\n- Safety counselling: bathing supervision, avoid heights/open water; driving not permitted and DVLA guidance reviewed.\n- Follow-up in 3 months, sooner if escalation occurs; consider medication optimisation or addition depending on results and tolerability.\n\nI reviewed Emily Carter in clinic today with her partner present. She reports a long-standing history of childhood febrile seizures, with no clear events through adolescence. In adulthood she developed recurrent seizures. Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 2 - 3 times per year, this has been her enduring seizure profile for many years. She describes the nocturnal events as occurring during sleep with a bitten tongue on several occasions and morning headache and myalgia. Daytime events are rare. There are no clear catamenial patterns. She identifies sleep deprivation and intercurrent illness as potential precipitants.\n\nShe is adherent with her current medication. Previous trials of lamotrigine were discontinued due to rash; topiramate caused cognitive side effects. No recent injuries, but there have been two prior bed falls without major harm. There is no family history of adult seizures. Neurological examination today is unremarkable. Routine blood tests earlier this month were within reference limits.\n\nWe discussed lifestyle measures, nocturnal safeguards (monitoring device, side-lying positioning), and the importance of regular sleep. An updated seizure diary was provided. I will review her after investigations to consider adjustments such as clobazam regularisation at night or alternative adjuncts depending on tolerability and findings.\n\nWith best wishes,\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter states: 'she continues to have nightly generalised tonic-clonic seizures' and also 'intermittent tonic seizures 2 - 3 times per year.' Per rule, choose the highest (most frequent) rate when multiple types exist. 'Nightly' implies approximately 1 per day. Therefore final label is 1 per day. No need to sum since different seizure types; highest frequency dominates.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "she continues to have nightly generalised tonic-clonic seizures"
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised tonic-clonic seizures and intermittent tonic seizures 2 - 3 times per year, this has been her enduring seizure profile for many years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

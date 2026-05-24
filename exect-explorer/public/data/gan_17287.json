@@ -1,0 +1,59 @@
+{
+  "id": "gan_17287",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 25 March 2017 \n\nDr Amelia Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Andrews Wing, KCH, London  \n\nDear Dr Amelia Shah, \n\nMs Freya Collins, DOB: 22-07-1994, Hospital No: K873421 NHS No. 5062197843  \nFlat 12, 4 Rowan Court, London, SE5 8QP  \n\nDiagnosis: \n\nGeneralised epilepsy with absence, myoclonic, and previously documented generalised tonic-clonic seizures. Good response to Valproate; Topiramate poorly tolerated due to cognitive side effects. \n\nAetiology: \n\nPresumed genetic generalised epilepsy; normal MRI brain; prior routine EEG with generalised 3 Hz spike-and-wave discharges. \n\nOther Medical Problems: \n\nHistory of migraine without aura; iron deficiency previously addressed with oral supplementation. High caffeine intake acknowledged (self-reported 5–6 strong coffees per day). \n\nManagement Plan: \n\nContinue Sodium Valproate 500 mg mane and 1000 mg nocte. Reinforce adherence and single-brand prescribing. Arrange repeat trough valproate level, LFTs, FBC, and BMI check in three months. Provide written advice regarding sleep regularity and limiting caffeine, particularly late afternoon/evening, as she has noticed jitteriness and occasional palpitations on higher intake. DVLA guidance previously discussed and remains applicable. Review in six months or sooner if breakthrough generalised tonic-clonic seizures occur. \n\nSeizure activity is infrequent. She reports one absence seizure every one to two day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function. She links mild morning jerks and brief lapses in concentration to nights of shorter sleep and higher caffeine use; these episodes have not resulted in injuries or work absences. She remains in full-time employment and uses a smartphone diary to log events, which correlates with the above pattern. \n\nWe reviewed lifestyle factors today. She acknowledges high caffeine consumption and is considering reducing this gradually. We agreed a neutral monitoring approach, with her continuing to record intake, sleep duration, and any seizure activity. No medication changes were made during this visit. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1452,
+      "end": 1492,
+      "text": "one absence seizure every one to two day",
+      "attributes": {
+        "Label": "1 per 1 to 2 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1408,
+      "end": 1678,
+      "text": "Seizure activity is infrequent. She reports one absence seizure every one to two day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function",
+      "attributes": {
+        "Label": "1 per 1 to 2 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17287,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 25 March 2017 \n\nDr Amelia Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Andrews Wing, KCH, London  \n\nDear Dr Amelia Shah, \n\nMs Freya Collins, DOB: 22-07-1994, Hospital No: K873421 NHS No. 5062197843  \nFlat 12, 4 Rowan Court, London, SE5 8QP  \n\nDiagnosis: \n\nGeneralised epilepsy with absence, myoclonic, and previously documented generalised tonic-clonic seizures. Good response to Valproate; Topiramate poorly tolerated due to cognitive side effects. \n\nAetiology: \n\nPresumed genetic generalised epilepsy; normal MRI brain; prior routine EEG with generalised 3 Hz spike-and-wave discharges. \n\nOther Medical Problems: \n\nHistory of migraine without aura; iron deficiency previously addressed with oral supplementation. High caffeine intake acknowledged (self-reported 5–6 strong coffees per day). \n\nManagement Plan: \n\nContinue Sodium Valproate 500 mg mane and 1000 mg nocte. Reinforce adherence and single-brand prescribing. Arrange repeat trough valproate level, LFTs, FBC, and BMI check in three months. Provide written advice regarding sleep regularity and limiting caffeine, particularly late afternoon/evening, as she has noticed jitteriness and occasional palpitations on higher intake. DVLA guidance previously discussed and remains applicable. Review in six months or sooner if breakthrough generalised tonic-clonic seizures occur. \n\nSeizure activity is infrequent. She reports one absence seizure every one to two day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function. She links mild morning jerks and brief lapses in concentration to nights of shorter sleep and higher caffeine use; these episodes have not resulted in injuries or work absences. She remains in full-time employment and uses a smartphone diary to log events, which correlates with the above pattern. \n\nWe reviewed lifestyle factors today. She acknowledges high caffeine consumption and is considering reducing this gradually. We agreed a neutral monitoring approach, with her continuing to record intake, sleep duration, and any seizure activity. No medication changes were made during this visit. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states current seizure activity: \"one absence seizure every one to two day\", \"free of tonic-clonic seizures for over nine months\", and \"occasional morning myoclonic jerks\" that are mild without precise frequency. Per the rule to choose the highest frequency, the absence seizures at 1 per 1 to 2 days are more frequent than occasional myoclonic jerks (vague) and none for tonic-clonic seizures (>9 months seizure-free but not fully seizure-free overall). Therefore, the final normalized label should reflect 1 per 1 to 2 day.",
+      "seizure_frequency_number": [
+        "1 per 1 to 2 day",
+        "one absence seizure every one to two day"
+      ],
+      "reference": [
+        "1 per 1 to 2 day",
+        "Seizure activity is infrequent. She reports one absence seizure every one to two day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

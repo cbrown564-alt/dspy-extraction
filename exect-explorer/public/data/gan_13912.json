@@ -1,0 +1,65 @@
+{
+  "id": "gan_13912",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 16 April 2017\n\nDr Patel\nSt George’s University Hospitals NHS Foundation Trust\nBlackshaw Road, Tooting, London SW17 0QT\n\nDear Dr Patel,\n\nMargaret Wilson, DOB: 14-11-1952, Hospital No: H937521 NHS No. 7842169350\n12 Brookside Close, London, SW12 8RJ\n\nDiagnoses:\n\nFocal epilepsy.\n\nThank you for reviewing Margaret Wilson in our neurology clinic. She is a newly retired teacher living alone with a regular routine and reduced social contact. She attended today unaccompanied.\n\nSeizure history and current status:\nShe reported that since her medication was increased she has had two to three seizures, the most recent occurring on 13-Jan. These events were described as focal impaired-awareness episodes with behavioural arrest and automatisms, typically lasting 1–2 minutes, followed by brief confusion. There have been no generalised tonic–clonic seizures and no injuries. She has not required emergency rescue medication.\n\nTreatment and adherence:\nShe remains adherent to her antiseizure therapy and uses a pill organiser. She has not noticed significant adverse effects beyond mild morning lethargy which does not impair daily function. No vagus nerve stimulator is in place, and none has been used previously.\n\nLifestyle and safety:\nShe maintains a stable daily routine, avoids sleep deprivation and alcohol, and no longer drives. Living alone, she has arranged regular phone check-ins with a neighbour and has placed a seizure action plan on her refrigerator. She is open to community support groups to mitigate reduced social contact.\n\nInvestigations and examination:\nNeurological examination today was unremarkable. Prior MRI brain and EEG are consistent with focal onset epilepsy; there is no new neurological complaint.\n\nPlan:\n- Continue current antiseizure medication at the present dose given improved control as above.\n- Provide written seizure first-aid guidance and community resources.\n- Routine bloods for drug level and safety monitoring before next visit.\n- Review in 4–6 months, or earlier if seizure frequency increases or new features emerge.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 580,
+      "end": 648,
+      "text": "since her medication was increased she has had two to three seizures",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 562,
+      "end": 685,
+      "text": "She reported that since her medication was increased she has had two to three seizures, the most recent occurring on 13-Jan",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13912,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 16 April 2017\n\nDr Patel\nSt George’s University Hospitals NHS Foundation Trust\nBlackshaw Road, Tooting, London SW17 0QT\n\nDear Dr Patel,\n\nMargaret Wilson, DOB: 14-11-1952, Hospital No: H937521 NHS No. 7842169350\n12 Brookside Close, London, SW12 8RJ\n\nDiagnoses:\n\nFocal epilepsy.\n\nThank you for reviewing Margaret Wilson in our neurology clinic. She is a newly retired teacher living alone with a regular routine and reduced social contact. She attended today unaccompanied.\n\nSeizure history and current status:\nShe reported that since her medication was increased she has had two to three seizures, the most recent occurring on 13-Jan. These events were described as focal impaired-awareness episodes with behavioural arrest and automatisms, typically lasting 1–2 minutes, followed by brief confusion. There have been no generalised tonic–clonic seizures and no injuries. She has not required emergency rescue medication.\n\nTreatment and adherence:\nShe remains adherent to her antiseizure therapy and uses a pill organiser. She has not noticed significant adverse effects beyond mild morning lethargy which does not impair daily function. No vagus nerve stimulator is in place, and none has been used previously.\n\nLifestyle and safety:\nShe maintains a stable daily routine, avoids sleep deprivation and alcohol, and no longer drives. Living alone, she has arranged regular phone check-ins with a neighbour and has placed a seizure action plan on her refrigerator. She is open to community support groups to mitigate reduced social contact.\n\nInvestigations and examination:\nNeurological examination today was unremarkable. Prior MRI brain and EEG are consistent with focal onset epilepsy; there is no new neurological complaint.\n\nPlan:\n- Continue current antiseizure medication at the present dose given improved control as above.\n- Provide written seizure first-aid guidance and community resources.\n- Routine bloods for drug level and safety monitoring before next visit.\n- Review in 4–6 months, or earlier if seizure frequency increases or new features emerge.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"since her medication was increased she has had two to three seizures, the most recent occurring on 13-Jan.\" There is no explicit time frame given for the period since the medication increase, so the rate (per day/week/month/year) cannot be determined. She is not seizure-free because events occurred recently. Therefore, the specific frequency cannot be calculated from the provided information and must be labeled as unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since her medication was increased she has had two to three seizures"
+      ],
+      "reference": [
+        "unknown",
+        "She reported that since her medication was increased she has had two to three seizures, the most recent occurring on 13-Jan"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

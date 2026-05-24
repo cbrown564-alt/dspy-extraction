@@ -1,0 +1,59 @@
+{
+  "id": "gan_12330",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 17 November 2015 \n\nDr Priya Nair\nElmbridge Community Health Centre\n\n47 Brookmead Lane, Elmbridge, Surrey KT10 8JP\nDear Dr Priya Nair\nMichael Hartley, DOB: 14-03-1991, Hospital No: H837221 NHS No. 9045571182\n12 Willow Court, Flat 4, Elmbridge, Surrey KT10 8JN \n\nThank you for asking me to review the above patient in the Neurology Clinic. I last saw him six months ago. He uses a seizure diary smartphone app which he and his parents update daily; our discussion today was guided by these logs and their summaries over the past three months.\n\nHe has a diagnosis of focal epilepsy, with seizures arising from the right frontal region on prior EEG, and an MRI that shows a stable focal cortical dysplasia in the right superior frontal gyrus. He continues on Lamotrigine 200 mg b.d. and Lacosamide 150 mg b.d. with good tolerability; he reports occasional light-headedness on standing but no rash, mood change or cognitive adverse effects. He is independent in personal care and is currently not driving.\n\nAlthough his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures 3 - 4 nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change. The diary app entries corroborate this pattern, with nocturnal convulsions typically between 02:00–05:00, and short tonic events and clusters of brief atonic (drop) events interspersed through the week. There have been no seizure-related injuries in the last month; earlier in the summer he sustained minor bruising to the right shoulder during a drop attack without head trauma.\n\nSleep hygiene remains variable due to shift work, which may be a trigger. He denies missed doses and uses timed reminders on the app; adherence appears high from the recorded timestamps. There are no new neurological symptoms, and review of systems is otherwise unremarkable. Examination today is non-focal with normal gait and coordination.\n\nPlan:\n- Continue current antiseizure therapy (Lamotrigine and Lacosamide) unchanged for now, given stability of the long-standing pattern and absence of significant adverse effects.\n- Arrange repeat ambulatory EEG with sleep capture to reassess interictal burden given the predominantly nocturnal events.\n- Encourage continued use of the seizure diary app and export monthly summaries to share with the clinic.\n- Provide written advice on sleep regularity and safety for nocturnal convulsions (pillows, bed positioning, and supervision when feasible).\n- Review in 4 months, sooner if there is escalation, injury, or medication intolerance.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1130,
+      "end": 1198,
+      "text": "he still has generalised tonic-clonic seizures 3 - 4 nights per week",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1044,
+      "end": 1342,
+      "text": "Although his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures 3 - 4 nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12330,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 17 November 2015 \n\nDr Priya Nair\nElmbridge Community Health Centre\n\n47 Brookmead Lane, Elmbridge, Surrey KT10 8JP\nDear Dr Priya Nair\nMichael Hartley, DOB: 14-03-1991, Hospital No: H837221 NHS No. 9045571182\n12 Willow Court, Flat 4, Elmbridge, Surrey KT10 8JN \n\nThank you for asking me to review the above patient in the Neurology Clinic. I last saw him six months ago. He uses a seizure diary smartphone app which he and his parents update daily; our discussion today was guided by these logs and their summaries over the past three months.\n\nHe has a diagnosis of focal epilepsy, with seizures arising from the right frontal region on prior EEG, and an MRI that shows a stable focal cortical dysplasia in the right superior frontal gyrus. He continues on Lamotrigine 200 mg b.d. and Lacosamide 150 mg b.d. with good tolerability; he reports occasional light-headedness on standing but no rash, mood change or cognitive adverse effects. He is independent in personal care and is currently not driving.\n\nAlthough his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures 3 - 4 nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change. The diary app entries corroborate this pattern, with nocturnal convulsions typically between 02:00–05:00, and short tonic events and clusters of brief atonic (drop) events interspersed through the week. There have been no seizure-related injuries in the last month; earlier in the summer he sustained minor bruising to the right shoulder during a drop attack without head trauma.\n\nSleep hygiene remains variable due to shift work, which may be a trigger. He denies missed doses and uses timed reminders on the app; adherence appears high from the recorded timestamps. There are no new neurological symptoms, and review of systems is otherwise unremarkable. Examination today is non-focal with normal gait and coordination.\n\nPlan:\n- Continue current antiseizure therapy (Lamotrigine and Lacosamide) unchanged for now, given stability of the long-standing pattern and absence of significant adverse effects.\n- Arrange repeat ambulatory EEG with sleep capture to reassess interictal burden given the predominantly nocturnal events.\n- Encourage continued use of the seizure diary app and export monthly summaries to share with the clinic.\n- Provide written advice on sleep regularity and safety for nocturnal convulsions (pillows, bed positioning, and supervision when feasible).\n- Review in 4 months, sooner if there is escalation, injury, or medication intolerance.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit numeric seizure frequencies. The letter states: 'he still has generalised tonic-clonic seizures 3 - 4 nights per week' (which converts to '3 to 4 per week'). It also mentions 'drop attacks occurring in batches, and tonic seizures during both day and night' with clusters interspersed through the week, but without explicit numeric frequency per time period or per cluster. Per the rule to select the highest frequency, compare available explicit rates: the only clear numeric frequency is 3–4 per week for generalized tonic-clonic seizures. No other seizure type has a clearer or higher numeric frequency stated. Therefore, final label is '3 to 4 per week'.",
+      "seizure_frequency_number": [
+        "3 to 4 per week",
+        "he still has generalised tonic-clonic seizures 3 - 4 nights per week"
+      ],
+      "reference": [
+        "3 to 4 per week",
+        "Although his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures 3 - 4 nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_8790",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 April 2021 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since the last review, he reports a steady improvement in overall wellbeing, which he attributes to recent travel and a period of structured relaxation. He feels less tense day-to-day and reports better sleep continuity. He remains fully independent in activities of daily living and is working without restriction.\n\nMedication adherence is good with no missed doses reported in the past two months. He continues on Levetiracetam 1000 mg b.d. and Lamotrigine 200 mg b.d. without adverse effects. He specifically denies rash, imbalance, diplopia or mood lability. He notes occasional mild fatigue at the end of longer workdays but does not find this limiting.\n\nRegarding paroxysmal events, he has not experienced any episodes with loss of awareness, collapse, or involuntary movements since the previous appointment. He uses a wearable and a smartphone diary; both indicate no events recorded over the past 8 weeks. His home seizure-tracking application summarises “no detected episodes” across the monitoring period, and his implant-free wearable analytics reflect a “zero event rate on monitoring summaries,” which aligns with his subjective report. There have been no injuries, tongue biting, or post-event confusion reported, and no nocturnal disturbances noted by his partner.\n\nHe has recently returned from two short trips abroad. He reports that time away from work and regular relaxation practices have coincided with feeling more settled, with fewer stress triggers. He is not using alcohol to excess and is maintaining regular sleep hours.\n\nNeurological examination today is unremarkable. Vitals are stable. Routine bloods six weeks ago (FBC, U&E, LFTs) were within reference ranges as per local records. No new comorbidities declared.\n\nIn summary, there has been a clear improvement in his clinical picture with no reported events over two months and corroborating external tracking indicating a zero-event monitoring summary during this period. I have not amended his medication today. I have asked him to continue his diary and wearable logging and to contact us promptly should there be any breakthrough events. We will plan review in six months, or sooner if necessary.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2123,
+      "end": 2157,
+      "text": "no reported events over two months",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8790,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 April 2021 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since the last review, he reports a steady improvement in overall wellbeing, which he attributes to recent travel and a period of structured relaxation. He feels less tense day-to-day and reports better sleep continuity. He remains fully independent in activities of daily living and is working without restriction.\n\nMedication adherence is good with no missed doses reported in the past two months. He continues on Levetiracetam 1000 mg b.d. and Lamotrigine 200 mg b.d. without adverse effects. He specifically denies rash, imbalance, diplopia or mood lability. He notes occasional mild fatigue at the end of longer workdays but does not find this limiting.\n\nRegarding paroxysmal events, he has not experienced any episodes with loss of awareness, collapse, or involuntary movements since the previous appointment. He uses a wearable and a smartphone diary; both indicate no events recorded over the past 8 weeks. His home seizure-tracking application summarises “no detected episodes” across the monitoring period, and his implant-free wearable analytics reflect a “zero event rate on monitoring summaries,” which aligns with his subjective report. There have been no injuries, tongue biting, or post-event confusion reported, and no nocturnal disturbances noted by his partner.\n\nHe has recently returned from two short trips abroad. He reports that time away from work and regular relaxation practices have coincided with feeling more settled, with fewer stress triggers. He is not using alcohol to excess and is maintaining regular sleep hours.\n\nNeurological examination today is unremarkable. Vitals are stable. Routine bloods six weeks ago (FBC, U&E, LFTs) were within reference ranges as per local records. No new comorbidities declared.\n\nIn summary, there has been a clear improvement in his clinical picture with no reported events over two months and corroborating external tracking indicating a zero-event monitoring summary during this period. I have not amended his medication today. I have asked him to continue his diary and wearable logging and to contact us promptly should there be any breakthrough events. We will plan review in six months, or sooner if necessary.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no events with loss of awareness, collapse, or involuntary movements since the previous appointment, and corroborates this with wearable/smartphone diary data showing no events over the past 8 weeks. It also summarises 'no reported events over two months' and 'zero-event monitoring summary during this period.' To label as seizure free, at least 6 months of seizure freedom is required. Here, the duration documented is two months (8 weeks), which is less than 6 months. Therefore, the appropriate normalized label is 'seizure free for multiple months' (i.e., months but not reaching 6).",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no reported events over two months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure burden 0% on device metrics"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

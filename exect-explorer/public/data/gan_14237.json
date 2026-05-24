@@ -1,0 +1,59 @@
+{
+  "id": "gan_14237",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 24 March 2017 \n\nDr Ada Mensah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Ada Mensah, \n\nMr Karim Nasser, DOB: 04-09-1987, Hospital No: KCH918274 NHS No. 9438127096  \nFlat 3, 12 Brookside Road, London, SE15 4QP  \n\nDiagnosis: \n\nSeizure disorder under review; semiology and classification remain to be determined\n\nAetiology: \n\nUnclear at present\n\nOther Medical Problems: \n\nNone reported. No known drug allergies. Reports intermittent sleep disturbance related to shift work and settling in the UK\n\nManagement Plan: \n\n- Continue Lamotrigine 100 mg twice daily as currently tolerated; maintain same brand supply via community pharmacy  \n- Provide written seizure first-aid guidance and information on DVLA regulations; patient confirms not currently driving  \n- Arrange EEG with sleep-deprivation protocol and brain MRI with epilepsy protocol  \n- Book review in three months, sooner if further events occur  \n- Support referral to local community link worker and interpreting services to assist with NHS navigation  \n\nHistory and Progress: \n\nThis gentleman is a recent migrant to the UK who is learning to navigate NHS pathways and occasionally uses interpreter support for complex discussions. He describes episodic events characterised by loss of awareness with brief post-event confusion, without consistent focal signs reported. He has trialled antiepileptic therapy prior to registration with our service.\n\nHe came off Levetiracetam on 21 Feb. In the following week, he had 3 seizures, one associated with sleep deprivation. No further seizures have occurred since. He attributes improved stability to regular sleep and adherence to Lamotrigine, which he restarted under his GP’s guidance before today’s visit. He denies recent head injury, alcohol excess, or illicit drug use. There is no family history of seizures known to him. He reports that stress related to relocation and irregular work hours have impacted sleep, and he is working with his employer to regularise shifts.\n\nExamination today is unremarkable with normal neurological findings. We discussed the importance of consistent medication supply, sleep hygiene, and pathways for urgent review should events recur. He was provided translated written information (where available) and agrees to attend for EEG and MRI.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1572,
+      "end": 1693,
+      "text": "In the following week, he had 3 seizures, one associated with sleep deprivation. No further seizures have occurred since.",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1535,
+      "end": 1692,
+      "text": "He came off Levetiracetam on 21 Feb. In the following week, he had 3 seizures, one associated with sleep deprivation. No further seizures have occurred since",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14237,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 24 March 2017 \n\nDr Ada Mensah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Ada Mensah, \n\nMr Karim Nasser, DOB: 04-09-1987, Hospital No: KCH918274 NHS No. 9438127096  \nFlat 3, 12 Brookside Road, London, SE15 4QP  \n\nDiagnosis: \n\nSeizure disorder under review; semiology and classification remain to be determined\n\nAetiology: \n\nUnclear at present\n\nOther Medical Problems: \n\nNone reported. No known drug allergies. Reports intermittent sleep disturbance related to shift work and settling in the UK\n\nManagement Plan: \n\n- Continue Lamotrigine 100 mg twice daily as currently tolerated; maintain same brand supply via community pharmacy  \n- Provide written seizure first-aid guidance and information on DVLA regulations; patient confirms not currently driving  \n- Arrange EEG with sleep-deprivation protocol and brain MRI with epilepsy protocol  \n- Book review in three months, sooner if further events occur  \n- Support referral to local community link worker and interpreting services to assist with NHS navigation  \n\nHistory and Progress: \n\nThis gentleman is a recent migrant to the UK who is learning to navigate NHS pathways and occasionally uses interpreter support for complex discussions. He describes episodic events characterised by loss of awareness with brief post-event confusion, without consistent focal signs reported. He has trialled antiepileptic therapy prior to registration with our service.\n\nHe came off Levetiracetam on 21 Feb. In the following week, he had 3 seizures, one associated with sleep deprivation. No further seizures have occurred since. He attributes improved stability to regular sleep and adherence to Lamotrigine, which he restarted under his GP’s guidance before today’s visit. He denies recent head injury, alcohol excess, or illicit drug use. There is no family history of seizures known to him. He reports that stress related to relocation and irregular work hours have impacted sleep, and he is working with his employer to regularise shifts.\n\nExamination today is unremarkable with normal neurological findings. We discussed the importance of consistent medication supply, sleep hygiene, and pathways for urgent review should events recur. He was provided translated written information (where available) and agrees to attend for EEG and MRI.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit seizure count and timing: The letter states, \"In the following week, he had 3 seizures\" after coming off Levetiracetam on 21 Feb, and \"No further seizures have occurred since.\" 2) Establish the reference period to the clinic date: Clinic date is 24 March 2017. Time from 21 Feb to 24 March ≈ 7 days remaining in Feb + 24 days in March = ~31 days (~1 month). 3) Assess seizure-free criterion: He has not been seizure-free for ≥6 months, so we must compute a frequency rather than label as seizure-free. 4) Compute frequency over the most recent month-long period: total 3 seizures over ~1 month → normalize as 3 per month.",
+      "seizure_frequency_number": [
+        "3 per month",
+        "In the following week, he had 3 seizures, one associated with sleep deprivation. No further seizures have occurred since."
+      ],
+      "reference": [
+        "3 per month",
+        "He came off Levetiracetam on 21 Feb. In the following week, he had 3 seizures, one associated with sleep deprivation. No further seizures have occurred since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

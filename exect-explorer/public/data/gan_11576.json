@@ -1,0 +1,47 @@
+{
+  "id": "gan_11576",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Appointment reminders and attendance policy – focal epilepsy\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nPlanned Tests and Appointments:\n\n1. EEG with sleep deprivation – 14 October 2025 at 09:00, Neurophysiology Dept, Ruskin Wing.\n2. Brain MRI (epilepsy protocol) – 21 October 2025 at 13:30, Radiology Suite, Golden Jubilee Wing.\n3. Bloods (AED levels, FBC, U&E, LFTs) – please attend any weekday before 12:00 at Phlebotomy, Ground Floor, within the next 7 days.\n\nAttendance and Preparation:\n\n- Please arrive 15 minutes early for registration.\n- Bring your current medication list. Due to past variability in pharmacy supply, bring the exact boxes you are using so we can verify formulation and dose.\n- For EEG: avoid caffeine for 12 hours; maintain partial sleep deprivation as per the instruction sheet supplied.\n- For MRI: remove all metal items; inform Radiology in advance if you have implants.\n\nNon‑Attendance Policy:\n\nIf you cannot attend, contact bookings at least 48 hours in advance. Missed appointments without notice may lead to discharge back to your GP in line with Trust policy. Given prior supply-related adherence issues, maintaining scheduled tests is important to ensure safe and effective management.\n\nNext Steps:\n\nWe will review test results at your follow‑up clinic in four weeks. If pharmacy supply difficulties recur, notify us immediately so we can arrange alternatives.\n\nWith best wishes",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11576,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Appointment reminders and attendance policy – focal epilepsy\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nPlanned Tests and Appointments:\n\n1. EEG with sleep deprivation – 14 October 2025 at 09:00, Neurophysiology Dept, Ruskin Wing.\n2. Brain MRI (epilepsy protocol) – 21 October 2025 at 13:30, Radiology Suite, Golden Jubilee Wing.\n3. Bloods (AED levels, FBC, U&E, LFTs) – please attend any weekday before 12:00 at Phlebotomy, Ground Floor, within the next 7 days.\n\nAttendance and Preparation:\n\n- Please arrive 15 minutes early for registration.\n- Bring your current medication list. Due to past variability in pharmacy supply, bring the exact boxes you are using so we can verify formulation and dose.\n- For EEG: avoid caffeine for 12 hours; maintain partial sleep deprivation as per the instruction sheet supplied.\n- For MRI: remove all metal items; inform Radiology in advance if you have implants.\n\nNon‑Attendance Policy:\n\nIf you cannot attend, contact bookings at least 48 hours in advance. Missed appointments without notice may lead to discharge back to your GP in line with Trust policy. Given prior supply-related adherence issues, maintaining scheduled tests is important to ensure safe and effective management.\n\nNext Steps:\n\nWe will review test results at your follow‑up clinic in four weeks. If pharmacy supply difficulties recur, notify us immediately so we can arrange alternatives.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter for any explicit or implicit statements about seizure occurrence, counts, frequency, clusters, or seizure-free duration. The letter discusses diagnosis (focal epilepsy), scheduled tests, attendance policy, and medication supply issues, but it does not mention seizures, their frequency, or seizure-free status. Therefore, there is no seizure frequency information to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter reminding about epilepsy-related test appointments and the attendance policy"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

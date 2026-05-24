@@ -1,0 +1,54 @@
+{
+  "id": "gan_5351",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nRiverside Medical Practice  \n21 Meadow Lane, Oxford OX1 3QF  \n\nDear Dr Patel,                                                                                                         \n\nAmelia Turner, DOB: 22-11-1991, Hospital No: H382914 NHS No. 9482105736  \nFlat 3, 8 Willow Court, Oxford, OX2 7DN  \n\nEpilepsy \n\nMedication: Continuing Levetiracetam since March 2024  \n\nLevetiracetam 1000 mg twice daily (patient confirms adherence) \n\nLevetiracetam Blood Level: \n\n12 September 2025: within therapeutic range (laboratory reference available on file). Dose 1000 mg twice daily  \n\nSeizures: Patient reports no events, warnings, or auras for over 18 months; clinical picture suggests seizure control maintained without recent breakthrough. \n\nI conducted a video review today. She reports full daytime functioning, no medication side effects, and no missed doses. No safety concerns raised. Plan: continue current regimen; routine follow‑up in 6 months or sooner if any recurrence. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 691,
+      "end": 739,
+      "text": "no events, warnings, or auras for over 18 months",
+      "attributes": {
+        "Label": "seizure free for 18 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5351,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nRiverside Medical Practice  \n21 Meadow Lane, Oxford OX1 3QF  \n\nDear Dr Patel,                                                                                                         \n\nAmelia Turner, DOB: 22-11-1991, Hospital No: H382914 NHS No. 9482105736  \nFlat 3, 8 Willow Court, Oxford, OX2 7DN  \n\nEpilepsy \n\nMedication: Continuing Levetiracetam since March 2024  \n\nLevetiracetam 1000 mg twice daily (patient confirms adherence) \n\nLevetiracetam Blood Level: \n\n12 September 2025: within therapeutic range (laboratory reference available on file). Dose 1000 mg twice daily  \n\nSeizures: Patient reports no events, warnings, or auras for over 18 months; clinical picture suggests seizure control maintained without recent breakthrough. \n\nI conducted a video review today. She reports full daytime functioning, no medication side effects, and no missed doses. No safety concerns raised. Plan: continue current regimen; routine follow‑up in 6 months or sooner if any recurrence. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Patient reports no events, warnings, or auras for over 18 months,\" indicating sustained absence of seizures. This exceeds the 6‑month threshold for considering the patient seizure free. No other seizure frequencies are mentioned. Therefore, normalize to a seizure-free duration using the closest explicit numeric value.",
+      "seizure_frequency_number": [
+        "seizure free for 18 month",
+        "no events, warnings, or auras for over 18 months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable without seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 18 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_4562",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 12 October 2019 \n\nDr Patel  \nSt Cuthbert’s NHS Trust  \nNeurology Department, 12 Waverley Road, Bristol BS1 4QF  \n\nDear Dr Patel,  \n\nJordan Ellis, DOB: 14-11-1988, Hospital No: H392174 NHS No. 9081764521  \nFlat 3, 29 Brookfield Terrace, Bristol BS7 1NL  \n\nDiagnoses: \n\nFocal epilepsy, likely temporal lobe onset. \n\nI reviewed Jordan Ellis in the epilepsy clinic today. They remain on long-term antiseizure therapy, with bone-health monitoring recorded elsewhere. They report stereotyped focal aware episodes characterised by a brief rising epigastric sensation and déjà vu, occasionally progressing to impaired awareness with automatisms lasting 1–2 minutes, followed by mild post-ictal fatigue. There have been no generalised tonic–clonic seizures reported. Seizure clustering is not described.\n\nSince the last review, there has been no intercurrent illness, sleep pattern is stable, and there is no clear relation to menses or alcohol. Work attendance is good and no injuries have occurred. Importantly, the median inter-seizure interval ≈ six weeks, with the patient noting that stress and missed meals can shorten this interval, while regular routines appear protective.\n\nNeurological examination today was non-focal. No new adverse effects from medication were reported. Driving status and SUDEP risk were discussed; no red-flag features such as prolonged impaired awareness, cyanosis, or trauma were reported. Emergency care plans remain unchanged as seizures self-terminate within minutes and there has been no requirement for rescue medication.\n\nWe agreed to continue current management and to keep a detailed seizure diary capturing potential precipitants, duration, and level of awareness during events. Investigations and bone-health reviews are being coordinated through existing pathways and are documented elsewhere. We will plan routine follow-up in six months, or earlier should there be a change in frequency, semiology, or recovery profile.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1061,
+      "end": 1106,
+      "text": "the median inter-seizure interval ≈ six weeks",
+      "attributes": {
+        "Label": "1 per 6 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1065,
+      "end": 1106,
+      "text": "Median inter-seizure interval ≈ six weeks",
+      "attributes": {
+        "Label": "1 per 6 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4562,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 12 October 2019 \n\nDr Patel  \nSt Cuthbert’s NHS Trust  \nNeurology Department, 12 Waverley Road, Bristol BS1 4QF  \n\nDear Dr Patel,  \n\nJordan Ellis, DOB: 14-11-1988, Hospital No: H392174 NHS No. 9081764521  \nFlat 3, 29 Brookfield Terrace, Bristol BS7 1NL  \n\nDiagnoses: \n\nFocal epilepsy, likely temporal lobe onset. \n\nI reviewed Jordan Ellis in the epilepsy clinic today. They remain on long-term antiseizure therapy, with bone-health monitoring recorded elsewhere. They report stereotyped focal aware episodes characterised by a brief rising epigastric sensation and déjà vu, occasionally progressing to impaired awareness with automatisms lasting 1–2 minutes, followed by mild post-ictal fatigue. There have been no generalised tonic–clonic seizures reported. Seizure clustering is not described.\n\nSince the last review, there has been no intercurrent illness, sleep pattern is stable, and there is no clear relation to menses or alcohol. Work attendance is good and no injuries have occurred. Importantly, the median inter-seizure interval ≈ six weeks, with the patient noting that stress and missed meals can shorten this interval, while regular routines appear protective.\n\nNeurological examination today was non-focal. No new adverse effects from medication were reported. Driving status and SUDEP risk were discussed; no red-flag features such as prolonged impaired awareness, cyanosis, or trauma were reported. Emergency care plans remain unchanged as seizures self-terminate within minutes and there has been no requirement for rescue medication.\n\nWe agreed to continue current management and to keep a detailed seizure diary capturing potential precipitants, duration, and level of awareness during events. Investigations and bone-health reviews are being coordinated through existing pathways and are documented elsewhere. We will plan routine follow-up in six months, or earlier should there be a change in frequency, semiology, or recovery profile.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient continues to have focal aware episodes and sometimes focal impaired awareness, with no generalised tonic–clonic seizures. It provides an explicit frequency: 'the median inter-seizure interval ≈ six weeks'. This indicates approximately one seizure every six weeks. No other frequency is given that would be higher. Therefore, normalize to '1 per 6 week'.",
+      "seizure_frequency_number": [
+        "1 per 6 week",
+        "the median inter-seizure interval ≈ six weeks"
+      ],
+      "reference": [
+        "1 per 6 week",
+        "Median inter-seizure interval ≈ six weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

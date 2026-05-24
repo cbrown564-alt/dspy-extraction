@@ -1,0 +1,59 @@
+{
+  "id": "gan_4992",
+  "text": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 19 August 2019\n\nDr Patel\nRiverside NHS Neurology Clinic\n2A Millbank, London, SW1P 3GE\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder.\n\nThank you for reviewing Anne Taylor in clinic. Since VNS optimisation at a previous visit, both Anne Taylor and family report a sustained and meaningful improvement. Prior to that optimisation, seizures were occurring every 8 days on average. In contrast, there has been a Seizure-free interval since 12-Sep-2018, which they attribute to the combination of the adjusted VNS parameters and consistent adherence to the existing medication regimen.\n\nMedication remains unchanged. They have not required any emergency rescue medication in the community. There have been no reported adverse effects from stimulation such as cough, hoarseness, or throat discomfort. Sleep and daytime alertness have improved subjectively, and there has been a return to college activities without interruption.\n\nVNS device check today: normal mode diagnostics satisfactory; system impedance within expected range; battery status adequate with no indicator of impending replacement. Magnet available but not used in recent months given ongoing seizure freedom.\n\nPlan: continue current management and routine monitoring. We will review again in six months, or sooner if there is any breakthrough event or device concern. Safety advice reinforced and rescue plan remains in place although not recently required.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 550,
+      "end": 606,
+      "text": "there has been a Seizure-free interval since 12-Sep-2018",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 567,
+      "end": 606,
+      "text": "Seizure-free interval since 12-Sep-2018",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4992,
+    "clinic_date": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 19 August 2019\n\nDr Patel\nRiverside NHS Neurology Clinic\n2A Millbank, London, SW1P 3GE\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder.\n\nThank you for reviewing Anne Taylor in clinic. Since VNS optimisation at a previous visit, both Anne Taylor and family report a sustained and meaningful improvement. Prior to that optimisation, seizures were occurring every 8 days on average. In contrast, there has been a Seizure-free interval since 12-Sep-2018, which they attribute to the combination of the adjusted VNS parameters and consistent adherence to the existing medication regimen.\n\nMedication remains unchanged. They have not required any emergency rescue medication in the community. There have been no reported adverse effects from stimulation such as cough, hoarseness, or throat discomfort. Sleep and daytime alertness have improved subjectively, and there has been a return to college activities without interruption.\n\nVNS device check today: normal mode diagnostics satisfactory; system impedance within expected range; battery status adequate with no indicator of impending replacement. Magnet available but not used in recent months given ongoing seizure freedom.\n\nPlan: continue current management and routine monitoring. We will review again in six months, or sooner if there is any breakthrough event or device concern. Safety advice reinforced and rescue plan remains in place although not recently required.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states that prior to VNS optimisation, seizures were every 8 days on average. It then explicitly states there has been a seizure-free interval since 12-Sep-2018. Clinic date is 19 August 2019, which is approximately 11 months after 12-Sep-2018 (from 12-Sep-2018 to 12-Aug-2019 = 11 months, plus an additional week). This exceeds the 6-month criterion for considering the patient seizure free. Therefore, the current seizure frequency should be labelled as seizure free for 11 month.",
+      "seizure_frequency_number": [
+        "seizure free for 11 month",
+        "there has been a Seizure-free interval since 12-Sep-2018"
+      ],
+      "reference": [
+        "seizure free for 11 month",
+        "Seizure-free interval since 12-Sep-2018"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

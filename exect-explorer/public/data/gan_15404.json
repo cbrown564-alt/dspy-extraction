@@ -1,0 +1,59 @@
+{
+  "id": "gan_15404",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 12-04-1990, Hospital No: H938271 NHS No. 5839201746  \nFlat 5, 14 Forge Street, London, W10 6DF \n\nMedication: \n\nLevetiracetam 1 g twice daily. No adverse effects reported. Patient maintains good adherence using workplace shift-based reminders.\n\nHistory since last review: \n\nShe works in metal fabrication and welding, with intermittent arc-light exposure; she uses a protective visor as per workplace routine and reports that the visor is always down during active welding. She describes variable seizure occurrence: She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day. These clusters tend to happen without a clear warning, occasionally following periods of poor sleep after late shifts. She denies missed medication around these times. There is no consistent relation to alcohol (rare use) or intercurrent illness. She has not sustained injuries at work and confirms strict adherence to safety policies, including stepping away from active equipment at the first sign of feeling unwell.\n\nExamination today is unremarkable. No focal neurological deficits. Bloods from her GP in August were within reference ranges (including renal function). She reports stable mood and no cognitive concerns.\n\nPlan: \n\n- Continue levetiracetam 1 g twice daily. We discussed keeping a detailed seizure and sleep diary, including shift patterns and welding tasks, to identify any reproducible triggers related to circadian disruption or visual exposure. \n- She will liaise with occupational health to ensure existing control measures remain in place; she confirms appropriate visor use and avoidance of lone working during heavy welding tasks. \n- We agreed that if another cluster occurs, she will contact us promptly to consider an earlier review and potential dose optimisation or adjunctive therapy. \n- Safety: She has already informed her employer, and return-to-work arrangements after any event will continue to follow standard health and safety protocols. Driving advice remains as previously discussed according to DVLA regulations; she understands the requirements and will notify us of any changes.\n\nFollow-up: \n\nWe will review her in four months or sooner if she experiences another cluster day, worsening frequency, or any new features.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 722,
+      "end": 844,
+      "text": "She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day.",
+      "attributes": {
+        "Label": "1 cluster per 4 month, 3 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 722,
+      "end": 843,
+      "text": "She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day",
+      "attributes": {
+        "Label": "1 cluster per 4 month, 3 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15404,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 12-04-1990, Hospital No: H938271 NHS No. 5839201746  \nFlat 5, 14 Forge Street, London, W10 6DF \n\nMedication: \n\nLevetiracetam 1 g twice daily. No adverse effects reported. Patient maintains good adherence using workplace shift-based reminders.\n\nHistory since last review: \n\nShe works in metal fabrication and welding, with intermittent arc-light exposure; she uses a protective visor as per workplace routine and reports that the visor is always down during active welding. She describes variable seizure occurrence: She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day. These clusters tend to happen without a clear warning, occasionally following periods of poor sleep after late shifts. She denies missed medication around these times. There is no consistent relation to alcohol (rare use) or intercurrent illness. She has not sustained injuries at work and confirms strict adherence to safety policies, including stepping away from active equipment at the first sign of feeling unwell.\n\nExamination today is unremarkable. No focal neurological deficits. Bloods from her GP in August were within reference ranges (including renal function). She reports stable mood and no cognitive concerns.\n\nPlan: \n\n- Continue levetiracetam 1 g twice daily. We discussed keeping a detailed seizure and sleep diary, including shift patterns and welding tasks, to identify any reproducible triggers related to circadian disruption or visual exposure. \n- She will liaise with occupational health to ensure existing control measures remain in place; she confirms appropriate visor use and avoidance of lone working during heavy welding tasks. \n- We agreed that if another cluster occurs, she will contact us promptly to consider an earlier review and potential dose optimisation or adjunctive therapy. \n- Safety: She has already informed her employer, and return-to-work arrangements after any event will continue to follow standard health and safety protocols. Driving advice remains as previously discussed according to DVLA regulations; she understands the requirements and will notify us of any changes.\n\nFollow-up: \n\nWe will review her in four months or sooner if she experiences another cluster day, worsening frequency, or any new features.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day.' This indicates intermittent clusters. The explicit pattern given is a seizure-free interval up to 4 months, followed by a cluster day with 3 to 4 seizures. No alternative or more frequent pattern is provided. Therefore, the best normalized label is 1 cluster every 4 months with 3 to 4 seizures per cluster. This reflects the highest stated frequency pattern and uses the allowed cluster format.",
+      "seizure_frequency_number": [
+        "1 cluster per 4 month, 3 to 4 per cluster",
+        "She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day."
+      ],
+      "reference": [
+        "1 cluster per 4 month, 3 to 4 per cluster",
+        "She may remain seizure-free for up to 4 month, but then will experience clusters of three - four seizures in a single day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

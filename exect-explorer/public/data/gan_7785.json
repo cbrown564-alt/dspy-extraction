@@ -1,0 +1,54 @@
+{
+  "id": "gan_7785",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 21 September 2025 \n\nDr Helen Morris  \nRiverside Health Centre  \n48 Brook Street, London W1K 5DL  \n\nDear Dr Helen Morris,  \n\nDaniel Cooper, DOB: 22-07-1984, Hospital No: U784231 NHS No. 5432198765  \n19 Willow Grove, London, SE15 3QT \n\nSummary/ Diagnoses: Remote history of mild traumatic brain injury. Ongoing follow‑up for seizures. No current alcohol. Non-smoker. \n\nMedication: Levetiracetam 500 mg twice daily. Vitamin D3 1000 IU once daily. Omeprazole 20 mg once daily. \n\nI reviewed him in clinic today, accompanied by his partner. He reports good day-to-day function, working part-time and exercising regularly. Sleep and mood are stable. No headaches or focal neurological complaints. Neurological examination today was unremarkable, including normal gait and coordination. \n\nSeizures: He and his partner keep a shared electronic log. There has been no occurrence of events suggestive of seizures since his last review twelve months ago, and he describes no episodes of loss of awareness, convulsions, or auras. \n\nPlan: \n- Continue current antiseizure medication without change.  \n- Routine bloods (U&E, LFTs, FBC, vitamin D) via GP within the next 3 months as part of ongoing monitoring.  \n- Reinforced general safety advice and adherence.  \n- Follow-up in 12 months, sooner if any concerning events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 934,
+      "end": 1035,
+      "text": "There has been no occurrence of events suggestive of seizures since his last review twelve months ago",
+      "attributes": {
+        "Label": "seizure free for 12 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7785,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 21 September 2025 \n\nDr Helen Morris  \nRiverside Health Centre  \n48 Brook Street, London W1K 5DL  \n\nDear Dr Helen Morris,  \n\nDaniel Cooper, DOB: 22-07-1984, Hospital No: U784231 NHS No. 5432198765  \n19 Willow Grove, London, SE15 3QT \n\nSummary/ Diagnoses: Remote history of mild traumatic brain injury. Ongoing follow‑up for seizures. No current alcohol. Non-smoker. \n\nMedication: Levetiracetam 500 mg twice daily. Vitamin D3 1000 IU once daily. Omeprazole 20 mg once daily. \n\nI reviewed him in clinic today, accompanied by his partner. He reports good day-to-day function, working part-time and exercising regularly. Sleep and mood are stable. No headaches or focal neurological complaints. Neurological examination today was unremarkable, including normal gait and coordination. \n\nSeizures: He and his partner keep a shared electronic log. There has been no occurrence of events suggestive of seizures since his last review twelve months ago, and he describes no episodes of loss of awareness, convulsions, or auras. \n\nPlan: \n- Continue current antiseizure medication without change.  \n- Routine bloods (U&E, LFTs, FBC, vitamin D) via GP within the next 3 months as part of ongoing monitoring.  \n- Reinforced general safety advice and adherence.  \n- Follow-up in 12 months, sooner if any concerning events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"There has been no occurrence of events suggestive of seizures since his last review twelve months ago,\" and also notes no episodes of loss of awareness, convulsions, or auras. The clinic date is 21 September 2025, and the last review was twelve months prior, fulfilling the ≥6-month seizure-free criterion. Therefore, the patient is seizure free for 12 months.",
+      "seizure_frequency_number": [
+        "seizure free for 12 month",
+        "There has been no occurrence of events suggestive of seizures since his last review twelve months ago"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Without evidence of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 12 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

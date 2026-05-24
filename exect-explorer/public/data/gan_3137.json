@@ -1,0 +1,48 @@
+{
+  "id": "gan_3137",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 09 October 2023 \n\nDr Anika Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Anika Shah, \n\nMr Thomas Wade, DOB: 22-09-1991, Hospital No: K847261 NHS No. 9043187256  \nFlat 2B, 41 Brook Lane, London, SE5 0GY  \n\nDiagnosis: \n\nSeizure disorder with current treatment response to Sodium Valproate; prior trial of Topiramate poorly tolerated \n\nAetiology: \n\nNot established to date \n\nOther Medical Problems: \n\nMild essential hypertension managed by GP with Ramipril 5 mg od; intermittent migraine without aura, patient uses Sumatriptan prn with good effect \n\nManagement Plan: \n\n- Continue Sodium Valproate 500 mg mane, 1000 mg nocte.  \n- Arrange routine bloods (FBC, LFTs, U&E) in six weeks given dose maintenance.  \n- Provide updated seizure action plan to patient and ED liaison, reflecting recent attendances without confirmed epileptic activity.  \n- Review in clinic in six months; earlier review if breakthrough events occur.  \n\nSince the last appointment, the patient reports no definite seizure events; he describes feeling \"back to baseline\" with no witnessed episodes. Two recent Emergency Department presentations were recorded in triage, primarily for light-headedness and a brief episode of dissociation while at work. Nursing notes indicate normal bedside observations and resolution without intervention, and there was no tongue biting, incontinence, or post-event confusion. On both occasions he was discharged after reassurance. He has been sleeping better and has reduced caffeine as he felt palpitations preceded the ED visits. He denies missed doses and has maintained full-time employment. No driving at present; he is aware to inform DVLA if any further episodes suggestive of seizures occur. \n\nI have not made changes to medication today. I have reiterated general measures: regular sleep, hydration, and avoidance of excess alcohol. He has a seizure diary app which he will continue to use to capture any future events with timestamps and collateral descriptions from his partner where possible. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1053,
+      "end": 1127,
+      "text": "Since the last appointment, the patient reports no definite seizure events",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3137,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 09 October 2023 \n\nDr Anika Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Anika Shah, \n\nMr Thomas Wade, DOB: 22-09-1991, Hospital No: K847261 NHS No. 9043187256  \nFlat 2B, 41 Brook Lane, London, SE5 0GY  \n\nDiagnosis: \n\nSeizure disorder with current treatment response to Sodium Valproate; prior trial of Topiramate poorly tolerated \n\nAetiology: \n\nNot established to date \n\nOther Medical Problems: \n\nMild essential hypertension managed by GP with Ramipril 5 mg od; intermittent migraine without aura, patient uses Sumatriptan prn with good effect \n\nManagement Plan: \n\n- Continue Sodium Valproate 500 mg mane, 1000 mg nocte.  \n- Arrange routine bloods (FBC, LFTs, U&E) in six weeks given dose maintenance.  \n- Provide updated seizure action plan to patient and ED liaison, reflecting recent attendances without confirmed epileptic activity.  \n- Review in clinic in six months; earlier review if breakthrough events occur.  \n\nSince the last appointment, the patient reports no definite seizure events; he describes feeling \"back to baseline\" with no witnessed episodes. Two recent Emergency Department presentations were recorded in triage, primarily for light-headedness and a brief episode of dissociation while at work. Nursing notes indicate normal bedside observations and resolution without intervention, and there was no tongue biting, incontinence, or post-event confusion. On both occasions he was discharged after reassurance. He has been sleeping better and has reduced caffeine as he felt palpitations preceded the ED visits. He denies missed doses and has maintained full-time employment. No driving at present; he is aware to inform DVLA if any further episodes suggestive of seizures occur. \n\nI have not made changes to medication today. I have reiterated general measures: regular sleep, hydration, and avoidance of excess alcohol. He has a seizure diary app which he will continue to use to capture any future events with timestamps and collateral descriptions from his partner where possible. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Since the last appointment, the patient reports no definite seizure events.' It also describes two ED presentations without confirmed epileptic activity, implying no seizures during this interval. However, the duration since the last appointment is not specified, and there is no explicit confirmation of a seizure-free period of at least 6 months. Therefore, we cannot label as seizure free for 6+ months. The appropriate normalized label is 'seizure free for multiple months' when there is an ongoing period of no seizures but insufficient detail to confirm exact months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since the last appointment, the patient reports no definite seizure events"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures since last visit"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

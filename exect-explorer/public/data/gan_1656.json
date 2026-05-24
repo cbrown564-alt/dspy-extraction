@@ -1,0 +1,59 @@
+{
+  "id": "gan_1656",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 25 February 2020 10:15\nTo: kch.neuroclinics@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Turner,\n\nSummary:\nI reviewed Sam today in clinic. She keeps an assistance dog in training, which accompanies her to public places and at home. The dog has been helpful in alerting family to episodes of staring. There are no consistent triggers identified.\n\nDiagnosis:\nSeizure disorder, classification not specified at present.\n\nCurrent medication:\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\nPrevious medication (patient-reported):\n- Sodium valproate in the past, stopped due to weight gain and hair loss.\n\nSeizure history and frequency:\nOver the past month Sam reports two convulsions and three petit mal in last month. The convulsions were unwitnessed as to onset but involved loss of awareness with limb shaking and post-event fatigue. The briefer episodes were described by Sam and her partner as sudden staring with unresponsiveness for under a minute, often noticed first by the assistance dog nudging her.\n\nExamination and investigations:\nGeneral and neurological examinations today were unremarkable. Routine bloods earlier this month were within normal limits. We do not yet have a recent EEG or MRI available for review.\n\nPlan:\n- Increase lamotrigine to 125 mg twice daily over two weeks if tolerated, monitoring for rash or dizziness.\n- Continue topiramate 50 mg at night for now.\n- Arrange EEG and MRI brain with epilepsy protocol to aid classification and guide therapy.\n- Provide seizure first-aid leaflet and discuss safety around dog training sessions; advised keeping a diary of events and potential triggers.\n- Follow-up in 8–10 weeks, sooner if events escalate or adverse effects occur.\n\nPlease let me know if you would like any further details.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 906,
+      "end": 988,
+      "text": "Over the past month Sam reports two convulsions and three petit mal in last month.",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 938,
+      "end": 987,
+      "text": "two convulsions and three petit mal in last month",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1656,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 25 February 2020 10:15\nTo: kch.neuroclinics@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Turner,\n\nSummary:\nI reviewed Sam today in clinic. She keeps an assistance dog in training, which accompanies her to public places and at home. The dog has been helpful in alerting family to episodes of staring. There are no consistent triggers identified.\n\nDiagnosis:\nSeizure disorder, classification not specified at present.\n\nCurrent medication:\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\nPrevious medication (patient-reported):\n- Sodium valproate in the past, stopped due to weight gain and hair loss.\n\nSeizure history and frequency:\nOver the past month Sam reports two convulsions and three petit mal in last month. The convulsions were unwitnessed as to onset but involved loss of awareness with limb shaking and post-event fatigue. The briefer episodes were described by Sam and her partner as sudden staring with unresponsiveness for under a minute, often noticed first by the assistance dog nudging her.\n\nExamination and investigations:\nGeneral and neurological examinations today were unremarkable. Routine bloods earlier this month were within normal limits. We do not yet have a recent EEG or MRI available for review.\n\nPlan:\n- Increase lamotrigine to 125 mg twice daily over two weeks if tolerated, monitoring for rash or dizziness.\n- Continue topiramate 50 mg at night for now.\n- Arrange EEG and MRI brain with epilepsy protocol to aid classification and guide therapy.\n- Provide seizure first-aid leaflet and discuss safety around dog training sessions; advised keeping a diary of events and potential triggers.\n- Follow-up in 8–10 weeks, sooner if events escalate or adverse effects occur.\n\nPlease let me know if you would like any further details.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past month Sam reports two convulsions and three petit mal in last month.\" This gives explicit counts over a one-month period. Per rule 7, when multiple frequencies exist within the same dimension (month) and are of the same phenomenon (seizures), we sum them. Calculation: 2 (convulsions) + 3 (petit mal) = 5 seizures in the past month. Therefore, the normalized frequency is 5 per month.",
+      "seizure_frequency_number": [
+        "5 per month",
+        "Over the past month Sam reports two convulsions and three petit mal in last month."
+      ],
+      "reference": [
+        "5 per month",
+        "two convulsions and three petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

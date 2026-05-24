@@ -1,0 +1,59 @@
+{
+  "id": "gan_15317",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 April 2016 \n\nDr Helen Morris \nConsultant Neurologist  \nRiverside Neurology Clinic  \nRiverside NHS Trust, 221 King’s Way, London SE1 5AB  \n\nDear Dr Helen Morris, \n\nAlex Turner, DOB: 22-03-1991, Hospital No: K847210 NHS No. 9843201765  \nFlat 12, 4 Mill Lane, London, NW6 1QJ  \n\nDiagnosis: \n\nGeneralised epilepsy with good current control on Lamotrigine and Valproate\n\nAetiology: \n\nNo structural lesion identified on MRI; normal development; likely genetic/generalised epilepsy syndrome\n\nOther Medical Problems: \n\nMild migraine without aura, managed with simple analgesia as needed\n\nManagement Plan: \n\n- Continue Lamotrigine 100 mg mane and 200 mg nocte.  \n- Continue Sodium Valproate 500 mg mane and 500 mg nocte, single brand.  \n- Maintain regular sleep routine and stress-reduction measures that the patient reports have been beneficial.  \n- Routine bloods (LFTs, FBC) in primary care at 6-month interval while on Valproate.  \n- Review in 8 months; earlier if any breakthrough seizures or adverse effects.  \n\nClinical Summary: \n\nSince the last review, the patient reports a clear improvement in seizure control in the context of resigning from a high-intensity post and subsequently re-engaging in part-time work with reduced workload. They describe improved sleep regularity and lower stress levels. Importantly, No further tonic-clonic seizures have occurred since Jan-2015, although 2 to 3 single jerks remain. These jerks are brief, infrequent myoclonic events predominantly in the morning and without associated injury. There have been no absences reported by the patient or observed by family since late 2015. Medication adherence is good, and no dose omissions are reported. There are no current adverse effects beyond occasional mild fatigue.\n\nWe discussed ongoing safety, including avoidance of sleep deprivation and excessive alcohol. The patient feels improved control and confidence, and is keeping a seizure and trigger diary, which corroborates the reduced frequency and severity. Driving advice remains unchanged as per DVLA regulations; they understand to inform us of any change in seizure pattern. No changes to therapy are proposed today given the sustained improvement.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1376,
+      "end": 1475,
+      "text": "No further tonic-clonic seizures have occurred since Jan-2015, although 2 to 3 single jerks remain.",
+      "attributes": {
+        "Label": "2 to 3 per 15 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1376,
+      "end": 1474,
+      "text": "No further tonic-clonic seizures have occurred since Jan-2015, although 2 to 3 single jerks remain",
+      "attributes": {
+        "Label": "2 to 3 per 15 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15317,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 April 2016 \n\nDr Helen Morris \nConsultant Neurologist  \nRiverside Neurology Clinic  \nRiverside NHS Trust, 221 King’s Way, London SE1 5AB  \n\nDear Dr Helen Morris, \n\nAlex Turner, DOB: 22-03-1991, Hospital No: K847210 NHS No. 9843201765  \nFlat 12, 4 Mill Lane, London, NW6 1QJ  \n\nDiagnosis: \n\nGeneralised epilepsy with good current control on Lamotrigine and Valproate\n\nAetiology: \n\nNo structural lesion identified on MRI; normal development; likely genetic/generalised epilepsy syndrome\n\nOther Medical Problems: \n\nMild migraine without aura, managed with simple analgesia as needed\n\nManagement Plan: \n\n- Continue Lamotrigine 100 mg mane and 200 mg nocte.  \n- Continue Sodium Valproate 500 mg mane and 500 mg nocte, single brand.  \n- Maintain regular sleep routine and stress-reduction measures that the patient reports have been beneficial.  \n- Routine bloods (LFTs, FBC) in primary care at 6-month interval while on Valproate.  \n- Review in 8 months; earlier if any breakthrough seizures or adverse effects.  \n\nClinical Summary: \n\nSince the last review, the patient reports a clear improvement in seizure control in the context of resigning from a high-intensity post and subsequently re-engaging in part-time work with reduced workload. They describe improved sleep regularity and lower stress levels. Importantly, No further tonic-clonic seizures have occurred since Jan-2015, although 2 to 3 single jerks remain. These jerks are brief, infrequent myoclonic events predominantly in the morning and without associated injury. There have been no absences reported by the patient or observed by family since late 2015. Medication adherence is good, and no dose omissions are reported. There are no current adverse effects beyond occasional mild fatigue.\n\nWe discussed ongoing safety, including avoidance of sleep deprivation and excessive alcohol. The patient feels improved control and confidence, and is keeping a seizure and trigger diary, which corroborates the reduced frequency and severity. Driving advice remains unchanged as per DVLA regulations; they understand to inform us of any change in seizure pattern. No changes to therapy are proposed today given the sustained improvement.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 10 Apr 2016. The letter states there have been 2 to 3 single myoclonic jerks in the period referenced. The only explicit timeframe provided around these seizure counts is anchored by “since Jan-2015.” From Jan 2015 to 10 Apr 2016 is approximately 15 months. Therefore, frequency = 2 to 3 seizures per 15 months. No other seizure type has a higher current frequency (tonic-clonics: none since Jan 2015; absences: none since late 2015).",
+      "seizure_frequency_number": [
+        "2 to 3 per 15 month",
+        "No further tonic-clonic seizures have occurred since Jan-2015, although 2 to 3 single jerks remain."
+      ],
+      "reference": [
+        "2 to 3 per 15 month",
+        "No further tonic-clonic seizures have occurred since Jan-2015, although 2 to 3 single jerks remain"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

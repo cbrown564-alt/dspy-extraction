@@ -1,0 +1,59 @@
+{
+  "id": "gan_15302",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 11 April 2022 \n\nDr Patel  \nNorthwest Neurology Clinic  \n1 Wellington Place, Manchester M14 3AB  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 14-07-1990, Hospital No: H592014 NHS No. 8473629105  \n29 Brookside Avenue, Salford, M6 7LP  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Emily Carter today in the follow-up clinic with her partner in attendance. She reports adherence with current medication and good general health. No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain. These brief myoclonic-type events occur without clear triggers and do not lead to loss of awareness or injury. There have been no emergency presentations, no nocturnal events reported by her partner, and no new focal neurological symptoms. \n\nCurrent treatment remains unchanged and well tolerated, with no reported adverse effects. Sleep hygiene and stress management strategies continue to be employed by the patient, and she notes they have been helpful. She is not driving and understands the DVLA regulations; she will contact us if any change in event frequency occurs. \n\nInvestigations to date include prior MRI brain (reported normal) and routine EEG from last year demonstrating non-specific findings; we will repeat a sleep-deprived EEG to clarify ongoing brief events and will review bloods for drug levels and general biochemistry. Safety advice regarding bathing and operating at heights was reiterated. \n\nPlan: \n- Continue current anti-seizure medication at present doses.  \n- Arrange sleep-deprived EEG and trough drug level in the next 4–6 weeks.  \n- Provide seizure diary template to capture timing and potential precipitants of the single jerks.  \n- Telephone review once investigations are available; routine clinic review in 6 months, or sooner if events escalate. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 603,
+      "text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain.",
+      "attributes": {
+        "Label": "1 to 2 per 14 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 602,
+      "text": "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain",
+      "attributes": {
+        "Label": "1 to 2 per 14 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15302,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 11 April 2022 \n\nDr Patel  \nNorthwest Neurology Clinic  \n1 Wellington Place, Manchester M14 3AB  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 14-07-1990, Hospital No: H592014 NHS No. 8473629105  \n29 Brookside Avenue, Salford, M6 7LP  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Emily Carter today in the follow-up clinic with her partner in attendance. She reports adherence with current medication and good general health. No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain. These brief myoclonic-type events occur without clear triggers and do not lead to loss of awareness or injury. There have been no emergency presentations, no nocturnal events reported by her partner, and no new focal neurological symptoms. \n\nCurrent treatment remains unchanged and well tolerated, with no reported adverse effects. Sleep hygiene and stress management strategies continue to be employed by the patient, and she notes they have been helpful. She is not driving and understands the DVLA regulations; she will contact us if any change in event frequency occurs. \n\nInvestigations to date include prior MRI brain (reported normal) and routine EEG from last year demonstrating non-specific findings; we will repeat a sleep-deprived EEG to clarify ongoing brief events and will review bloods for drug levels and general biochemistry. Safety advice regarding bathing and operating at heights was reiterated. \n\nPlan: \n- Continue current anti-seizure medication at present doses.  \n- Arrange sleep-deprived EEG and trough drug level in the next 4–6 weeks.  \n- Provide seizure diary template to capture timing and potential precipitants of the single jerks.  \n- Telephone review once investigations are available; routine clinic review in 6 months, or sooner if events escalate. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 11 April 2022. The letter states: \"No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain.\" The only explicit numeric count is \"one or two\" for the single jerks. Interpreting the timeframe as the period since 2-2021 up to the clinic date: from February 2021 to April 2022 is approximately 14 months (Feb 2021 to Feb 2022 = 12 months; plus March and April = 2 months). Therefore, the inferred frequency is 1 to 2 events over 14 months.",
+      "seizure_frequency_number": [
+        "1 to 2 per 14 month",
+        "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain."
+      ],
+      "reference": [
+        "1 to 2 per 14 month",
+        "No further tonic-clonic seizures have occurred since 2 - 2021, although one or two single jerks remain"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

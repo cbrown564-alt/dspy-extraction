@@ -1,0 +1,59 @@
+{
+  "id": "gan_2513",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Amelia Cross\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Cross\nConsultant Neurologist,  \n\nDaniel Reeves, DOB: 14-03-1986, Hospital No: K742019 NHS No. 2045896713  \n19 Brookside Close, London, SE15 3HT\n\nThank you for your referral and the accompanying summary. I reviewed Daniel Reeves in clinic today. He reports a clear deterioration in his seizure control in the context of greater social pressure at work and increased alcohol exposure over the past month. Specifically, he has experienced 2 to 3 drop attacks during the last two weeks, described as abrupt loss of posture with brief unresponsiveness and rapid reorientation, though with post-event headache and myalgia lasting several hours. His partner corroborates these events and notes occasional early-morning jerks and brief staring spells on waking.\n\nHe has a prior diagnosis of generalised epilepsy, previously managed on sodium valproate with reasonable stability for over a year. He admits to missing evening doses on two occasions recently, often coinciding with social drinking. There has been no reported focal onset, aura, or lateralising features. No tongue-biting or urinary incontinence reported in the recent drop attacks. He denies prolonged confusion, but describes increased irritability and sleep disruption.\n\nNeurological examination today was non-focal. Cardiovascular observations were within normal limits. There were no injuries from the recent drop attacks beyond mild bruising to the knees. He is not currently driving and understands the DVLA regulations.\n\nIn my view, the pattern is consistent with a deterioration of seizure control in established generalised epilepsy, likely precipitated by stress, sleep disruption, and alcohol exposure. I discussed with him the importance of strict adherence to medication and avoidance of alcohol; he acknowledges the link between recent lifestyle changes and increased events. He is amenable to a brief period of closer monitoring and further investigation if needed.\n\nPlan discussed with the patient and partner:\n- Reinforce seizure diary keeping, including timing, potential triggers (alcohol, sleep deprivation), and injuries.\n- Safety advice provided for drop attacks (avoid heights, use of protective strategies at home such as shower rather than bath, caution with sharp objects). His partner is aware of basic first aid for generalised seizures.\n- I have arranged repeat routine EEG to reassess interictal generalised epileptiform activity, and will proceed to ambulatory EEG if events persist. Bloods requested today (U&E, LFTs, FBC) given valproate use.\n- I will review him again in 6 weeks, or sooner if there are further drop attacks, injuries, or any prolonged events.\n\nPlease let me know if you would like any further information. I will update you after the EEG and follow-up review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 658,
+      "end": 722,
+      "text": "he has experienced 2 to 3 drop attacks during the last two weeks",
+      "attributes": {
+        "Label": "2 to 3 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 677,
+      "end": 722,
+      "text": "2 to 3 drop attacks during the last two weeks",
+      "attributes": {
+        "Label": "2 to 3 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2513,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Amelia Cross\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Cross\nConsultant Neurologist,  \n\nDaniel Reeves, DOB: 14-03-1986, Hospital No: K742019 NHS No. 2045896713  \n19 Brookside Close, London, SE15 3HT\n\nThank you for your referral and the accompanying summary. I reviewed Daniel Reeves in clinic today. He reports a clear deterioration in his seizure control in the context of greater social pressure at work and increased alcohol exposure over the past month. Specifically, he has experienced 2 to 3 drop attacks during the last two weeks, described as abrupt loss of posture with brief unresponsiveness and rapid reorientation, though with post-event headache and myalgia lasting several hours. His partner corroborates these events and notes occasional early-morning jerks and brief staring spells on waking.\n\nHe has a prior diagnosis of generalised epilepsy, previously managed on sodium valproate with reasonable stability for over a year. He admits to missing evening doses on two occasions recently, often coinciding with social drinking. There has been no reported focal onset, aura, or lateralising features. No tongue-biting or urinary incontinence reported in the recent drop attacks. He denies prolonged confusion, but describes increased irritability and sleep disruption.\n\nNeurological examination today was non-focal. Cardiovascular observations were within normal limits. There were no injuries from the recent drop attacks beyond mild bruising to the knees. He is not currently driving and understands the DVLA regulations.\n\nIn my view, the pattern is consistent with a deterioration of seizure control in established generalised epilepsy, likely precipitated by stress, sleep disruption, and alcohol exposure. I discussed with him the importance of strict adherence to medication and avoidance of alcohol; he acknowledges the link between recent lifestyle changes and increased events. He is amenable to a brief period of closer monitoring and further investigation if needed.\n\nPlan discussed with the patient and partner:\n- Reinforce seizure diary keeping, including timing, potential triggers (alcohol, sleep deprivation), and injuries.\n- Safety advice provided for drop attacks (avoid heights, use of protective strategies at home such as shower rather than bath, caution with sharp objects). His partner is aware of basic first aid for generalised seizures.\n- I have arranged repeat routine EEG to reassess interictal generalised epileptiform activity, and will proceed to ambulatory EEG if events persist. Bloods requested today (U&E, LFTs, FBC) given valproate use.\n- I will review him again in 6 weeks, or sooner if there are further drop attacks, injuries, or any prolonged events.\n\nPlease let me know if you would like any further information. I will update you after the EEG and follow-up review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"he has experienced 2 to 3 drop attacks during the last two weeks.\" This provides a clear numeric range and a time window. No other seizure frequency with higher rate is quantified; other events (early-morning jerks, brief staring spells) are noted but not quantified. Therefore, the highest explicit frequency is 2 to 3 events over 2 weeks. Convert to allowed format: '2 to 3 per 2 week'.",
+      "seizure_frequency_number": [
+        "2 to 3 per 2 week",
+        "he has experienced 2 to 3 drop attacks during the last two weeks"
+      ],
+      "reference": [
+        "2 to 3 per 2 week",
+        "2 to 3 drop attacks during the last two weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

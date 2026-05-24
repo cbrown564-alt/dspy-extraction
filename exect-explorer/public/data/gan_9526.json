@@ -1,0 +1,59 @@
+{
+  "id": "gan_9526",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 August 2022 10:25\nTo: epilepsy.clinic@nhs.net\nCc: Dr Mohammed Khan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rachel Singh (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nHistory notable for childhood febrile seizures; current adult seizure disorder under ongoing evaluation. Aetiology and classification remain under investigation pending further correlation with EEG and MRI findings.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nFocal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0\n\nContext: The patient reports brief episodes of impaired awareness with automatisms, lasting under one minute, followed by mild fatigue. No clear precipitants identified. Sleep hygiene has improved and alcohol is minimal. No events reported since late May; June through August have been event-free by history and corroborated by partner.\n\nPlan of Action:\n\n- Continue lamotrigine 100 mg twice daily; maintain current clobazam 10 mg nocte for now.\n- Arrange repeat EEG including sleep deprivation within the next 6 weeks to aid classification. MRI brain with epilepsy protocol already booked for next month at Denmark Hill site.\n- Provide a rescue plan: if clusters recur (≥2 events in 24 hours) or any event with loss of awareness while in a hazardous setting, contact the epilepsy nurse line the same day for expedited review.\n- Safety advice reinforced: driving restrictions per DVLA guidance discussed; patient currently not driving. First aid for seizures reviewed and written leaflet provided.\n- Follow-up: face-to-face clinic in 4 months. If seizure-free continues, consider cautious reduction of clobazam while maintaining lamotrigine.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 698,
+      "end": 781,
+      "text": "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0",
+      "attributes": {
+        "Label": "4 per 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 698,
+      "end": 781,
+      "text": "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0",
+      "attributes": {
+        "Label": "4 per 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9526,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 August 2022 10:25\nTo: epilepsy.clinic@nhs.net\nCc: Dr Mohammed Khan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rachel Singh (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nHistory notable for childhood febrile seizures; current adult seizure disorder under ongoing evaluation. Aetiology and classification remain under investigation pending further correlation with EEG and MRI findings.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nFocal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0\n\nContext: The patient reports brief episodes of impaired awareness with automatisms, lasting under one minute, followed by mild fatigue. No clear precipitants identified. Sleep hygiene has improved and alcohol is minimal. No events reported since late May; June through August have been event-free by history and corroborated by partner.\n\nPlan of Action:\n\n- Continue lamotrigine 100 mg twice daily; maintain current clobazam 10 mg nocte for now.\n- Arrange repeat EEG including sleep deprivation within the next 6 weeks to aid classification. MRI brain with epilepsy protocol already booked for next month at Denmark Hill site.\n- Provide a rescue plan: if clusters recur (≥2 events in 24 hours) or any event with loss of awareness while in a hazardous setting, contact the epilepsy nurse line the same day for expedited review.\n- Safety advice reinforced: driving restrictions per DVLA guidance discussed; patient currently not driving. First aid for seizures reviewed and written leaflet provided.\n- Follow-up: face-to-face clinic in 4 months. If seizure-free continues, consider cautious reduction of clobazam while maintaining lamotrigine.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides monthly counts for focal seizures in 2022: Jan 1, Feb 1, Mar 0, Apr 0, May 2, Jun 0, Jul 0, Aug 0. Total events Jan–Aug = 1+1+0+0+2+0+0+0 = 4 seizures over 8 months. The instruction says to prioritize explicit numeric expressions and, when multiple frequencies exist, choose the highest frequency. Only one seizure type/frequency is provided. The patient is not seizure-free for ≥6 months (only June–August event-free), so calculate frequency rather than labeling seizure-free.",
+      "seizure_frequency_number": [
+        "4 per 8 month",
+        "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0"
+      ],
+      "reference": [
+        "4 per 8 month",
+        "Focal seizure: 2022: Jan x1, Feb x1, Mar x0, Apr x0, May x2, Jun x0, Jul x0, Aug x0"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

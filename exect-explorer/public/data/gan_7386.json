@@ -1,0 +1,54 @@
+{
+  "id": "gan_7386",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 16 November 2021 10:12\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Photosensitivity and medication review\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with probable right occipital onset, with visually triggered events noted\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters\n\n\nPresent Seizure Frequency:\n\nDose increases have been constrained by side effects, with breakthroughs persisting. Over the past eight weeks, the patient reports brief focal aware visual phenomena on five occasions and two focal seizures with secondary impairment of awareness. Episodes are more likely after exposure to flicker or bright, patterned light (e.g., sunlight through trees while on a bus, certain video content). No recent generalised convulsions.\n\n\nPlan of Action:\n\nThe clinical history and witness accounts suggest photosensitivity contributing to seizure precipitation. The patient notes nausea and dizziness when attempting higher doses of lamotrigine, which has limited further up‑titration despite incomplete seizure control. Given this tolerability‑bounded regimen with ongoing events, we discussed non‑pharmacological strategies and a cautious adjunctive option.\n\n- Non‑pharmacological: patient will trial tinted lenses and reduce exposure to known triggers (flicker/bright patterns), enable blue‑light reduction on devices, and avoid strobe‑like environments. Sleep hygiene and regular meals reinforced.\n- Safety: advised to sit away from windows on public transport when sunlight is dappled, and to take regular breaks from screens. Driving status to follow DVLA guidance for focal seizures with impaired awareness.\n- Medication: maintain lamotrigine 150 mg twice daily for now. If events persist over the next 6–8 weeks despite trigger mitigation, consider adding lacosamide as adjunct, starting at 50 mg at night for one week then 50 mg twice daily, contingent on tolerance and ECG if indicated. Clobazam to remain as rescue only for clustering.\n\nI will review in clinic in three months. The patient has been given written information on photosensitive seizures and strategies to minimise risk.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 692,
+      "end": 854,
+      "text": "Over the past eight weeks, the patient reports brief focal aware visual phenomena on five occasions and two focal seizures with secondary impairment of awareness.",
+      "attributes": {
+        "Label": "7 per 8 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7386,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 16 November 2021 10:12\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Photosensitivity and medication review\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with probable right occipital onset, with visually triggered events noted\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters\n\n\nPresent Seizure Frequency:\n\nDose increases have been constrained by side effects, with breakthroughs persisting. Over the past eight weeks, the patient reports brief focal aware visual phenomena on five occasions and two focal seizures with secondary impairment of awareness. Episodes are more likely after exposure to flicker or bright, patterned light (e.g., sunlight through trees while on a bus, certain video content). No recent generalised convulsions.\n\n\nPlan of Action:\n\nThe clinical history and witness accounts suggest photosensitivity contributing to seizure precipitation. The patient notes nausea and dizziness when attempting higher doses of lamotrigine, which has limited further up‑titration despite incomplete seizure control. Given this tolerability‑bounded regimen with ongoing events, we discussed non‑pharmacological strategies and a cautious adjunctive option.\n\n- Non‑pharmacological: patient will trial tinted lenses and reduce exposure to known triggers (flicker/bright patterns), enable blue‑light reduction on devices, and avoid strobe‑like environments. Sleep hygiene and regular meals reinforced.\n- Safety: advised to sit away from windows on public transport when sunlight is dappled, and to take regular breaks from screens. Driving status to follow DVLA guidance for focal seizures with impaired awareness.\n- Medication: maintain lamotrigine 150 mg twice daily for now. If events persist over the next 6–8 weeks despite trigger mitigation, consider adding lacosamide as adjunct, starting at 50 mg at night for one week then 50 mg twice daily, contingent on tolerance and ECG if indicated. Clobazam to remain as rescue only for clustering.\n\nI will review in clinic in three months. The patient has been given written information on photosensitive seizures and strategies to minimise risk.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter’s Present Seizure Frequency section states: over the past eight weeks there were five focal aware visual phenomena and two focal seizures with impaired awareness. Treating both as seizures and summing (same time window), total seizures = 5 + 2 = 7 over 8 weeks. To adhere to explicit numeric expressions, report as 7 per 8 week rather than approximating per week or per month.",
+      "seizure_frequency_number": [
+        "7 per 8 week",
+        "Over the past eight weeks, the patient reports brief focal aware visual phenomena on five occasions and two focal seizures with secondary impairment of awareness."
+      ],
+      "reference": [
+        "unknown",
+        "Tolerability-limited dosing with ongoing seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (7 per 8 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

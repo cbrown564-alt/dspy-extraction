@@ -1,0 +1,59 @@
+{
+  "id": "gan_13077",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Nisha Patel \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt. George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Nisha Patel, \n\nMr Andrew Collins, DOB: 14-08-1996, Hospital No: K842117 NHS No. 9087764321  \nFlat 12, 3 Willow Court, Kingston upon Thames, KT1 2AB  \n\nDiagnosis: \n\nFocal epilepsy with secondary generalisation\n\nAetiology: \n\nUnclear aetiology; normal MRI brain (2024) and normal routine EEG; extended sleep-deprived EEG pending\n\nOther Medical Problems: \n\nMild asthma (inhaled budesonide/formoterol), GORD on omeprazole 20 mg OD\n\nManagement Plan: \n\n- Continue Levetiracetam 500 mg twice daily. We discussed potential dose optimisation if further events occur; he prefers no change today pending EEG.  \n- Safety: reinforced SUDEP and seizure first aid, showers instead of baths, avoid sleep deprivation and excess alcohol.  \n- Driving: has not been driving; advised to continue to follow DVLA guidance and self-declare if applicable.  \n- Arrange sleep-deprived EEG and drug level (for adherence context), FBC/U&E/LFT as baseline monitoring.  \n- Review in clinic in 12 weeks, earlier if further seizures or adverse effects.  \n\nHistory and Current Status: \n\nThis 29-year-old right-handed gentleman with focal epilepsy reports overall improvement since commencing Levetiracetam. He remained seizure-free for three months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences. He describes the absences as brief behavioural arrest with staring and loss of awareness lasting 10–20 seconds, occurring several times that afternoon, followed later by the convulsive event at home; postictal confusion lasted approximately 30 minutes without injury. There was no intercurrent illness, sleep loss, or alcohol excess. He has had two seizures in the last three months in total when accounting for the convulsive event and one earlier brief focal impaired-awareness episode two months prior. No myoclonic jerks reported. No status epilepticus. Medication adherence reported as good; no adverse effects beyond mild irritability in the first fortnight, now resolved. Family history negative for epilepsy. Birth and development unremarkable. \n\nExamination today is normal, including neurological assessment. Weight stable; BP 122/76. \n\nI will update you following neurophysiology and bloods. Please contact me if there are any concerns before his next appointment.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1922,
+      "end": 1979,
+      "text": "He has had two seizures in the last three months in total",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1387,
+      "end": 1586,
+      "text": "He remained seizure-free for three months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13077,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Nisha Patel \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt. George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Nisha Patel, \n\nMr Andrew Collins, DOB: 14-08-1996, Hospital No: K842117 NHS No. 9087764321  \nFlat 12, 3 Willow Court, Kingston upon Thames, KT1 2AB  \n\nDiagnosis: \n\nFocal epilepsy with secondary generalisation\n\nAetiology: \n\nUnclear aetiology; normal MRI brain (2024) and normal routine EEG; extended sleep-deprived EEG pending\n\nOther Medical Problems: \n\nMild asthma (inhaled budesonide/formoterol), GORD on omeprazole 20 mg OD\n\nManagement Plan: \n\n- Continue Levetiracetam 500 mg twice daily. We discussed potential dose optimisation if further events occur; he prefers no change today pending EEG.  \n- Safety: reinforced SUDEP and seizure first aid, showers instead of baths, avoid sleep deprivation and excess alcohol.  \n- Driving: has not been driving; advised to continue to follow DVLA guidance and self-declare if applicable.  \n- Arrange sleep-deprived EEG and drug level (for adherence context), FBC/U&E/LFT as baseline monitoring.  \n- Review in clinic in 12 weeks, earlier if further seizures or adverse effects.  \n\nHistory and Current Status: \n\nThis 29-year-old right-handed gentleman with focal epilepsy reports overall improvement since commencing Levetiracetam. He remained seizure-free for three months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences. He describes the absences as brief behavioural arrest with staring and loss of awareness lasting 10–20 seconds, occurring several times that afternoon, followed later by the convulsive event at home; postictal confusion lasted approximately 30 minutes without injury. There was no intercurrent illness, sleep loss, or alcohol excess. He has had two seizures in the last three months in total when accounting for the convulsive event and one earlier brief focal impaired-awareness episode two months prior. No myoclonic jerks reported. No status epilepticus. Medication adherence reported as good; no adverse effects beyond mild irritability in the first fortnight, now resolved. Family history negative for epilepsy. Birth and development unremarkable. \n\nExamination today is normal, including neurological assessment. Weight stable; BP 122/76. \n\nI will update you following neurophysiology and bloods. Please contact me if there are any concerns before his next appointment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly quantifies recent seizures: \"He remained seizure-free for three months ... before experiencing a generalised tonic-clonic seizure three Tuesdays ago ... He has had two seizures in the last three months in total when accounting for the convulsive event and one earlier brief focal impaired-awareness episode two months prior.\" Therefore, within the last 3 months, total seizures = 2. Convert to allowed format: 2 per 3 month. No higher-frequency alternative is given. Not seizure-free for 6 months, so not 'seizure free' label.",
+      "seizure_frequency_number": [
+        "2 per 3 month",
+        "He has had two seizures in the last three months in total"
+      ],
+      "reference": [
+        "2 per 3 month",
+        "He remained seizure-free for three months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure three Tuesdays ago, preceded by a cluster of absences"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

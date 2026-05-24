@@ -1,0 +1,59 @@
+{
+  "id": "gan_280",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 December 2015 \n\nDr Anita Shah\nRiverside Medical Practice\n\n12 Riverside Way, London, SE1 9ZZ\nDear Dr Anita Shah\nMichael Carter, DOB: 21-11-1982, Hospital No: M827461 NHS No. 8845123367\nFlat 4, 29 Millstream Court, London, SE16 3LP \n\nI reviewed the above patient in the Neurology Clinic today. Since his last appointment there has been a notable deterioration in his condition. He reports recent job loss from his banking role, with associated stress and disrupted sleep patterns over several weeks. In the 24 hours prior to clinic he experienced multiple seizures in past day, described by him and his partner as brief episodes of loss of awareness with post-event confusion and marked fatigue. He also reports several near-miss episodes over the preceding week, including sudden staring and unresponsiveness lasting under a minute, followed by headaches and irritability.\n\nHe is currently taking Levetiracetam 1 g b.d. and Clobazam 10 mg nocte, both of which he states he has taken regularly. He denies missed doses but admits that sleep fragmentation and early waking have worsened his daytime somnolence and concentration. He also notes increased anxiety since becoming unemployed, with occasional palpitations and a sense of impending events before the episodes. There have been no clear triggers such as intercurrent infection or alcohol excess, though caffeine intake has risen. No injuries were reported, but there is concern from family regarding safety at home given the recent escalation.\n\nOn examination today he was alert and oriented with normal speech and cranial nerves. Motor and coordination were intact; no focal neurological deficits were identified. Cardiovascular and respiratory examinations were unremarkable. BP in clinic was mildly elevated, likely stress-related.\n\nGiven the clinical picture and the clear pattern of worsening events temporally associated with stress and sleep disruption, I have advised close observation and prompt contact if events cluster or if any convulsive episodes occur. I have arranged urgent ambulatory EEG within the next 1–2 weeks and will request updated serum drug levels and routine bloods (U&E, LFT, FBC). He has been provided seizure first-aid guidance for his partner and we discussed practical risk mitigation at home. He is aware of the DVLA guidance and understands he should not drive. I will review him in an expedited follow-up once the ambulatory EEG is completed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 543,
+      "end": 619,
+      "text": "In the 24 hours prior to clinic he experienced multiple seizures in past day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 590,
+      "end": 619,
+      "text": "multiple seizures in past day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 280,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 December 2015 \n\nDr Anita Shah\nRiverside Medical Practice\n\n12 Riverside Way, London, SE1 9ZZ\nDear Dr Anita Shah\nMichael Carter, DOB: 21-11-1982, Hospital No: M827461 NHS No. 8845123367\nFlat 4, 29 Millstream Court, London, SE16 3LP \n\nI reviewed the above patient in the Neurology Clinic today. Since his last appointment there has been a notable deterioration in his condition. He reports recent job loss from his banking role, with associated stress and disrupted sleep patterns over several weeks. In the 24 hours prior to clinic he experienced multiple seizures in past day, described by him and his partner as brief episodes of loss of awareness with post-event confusion and marked fatigue. He also reports several near-miss episodes over the preceding week, including sudden staring and unresponsiveness lasting under a minute, followed by headaches and irritability.\n\nHe is currently taking Levetiracetam 1 g b.d. and Clobazam 10 mg nocte, both of which he states he has taken regularly. He denies missed doses but admits that sleep fragmentation and early waking have worsened his daytime somnolence and concentration. He also notes increased anxiety since becoming unemployed, with occasional palpitations and a sense of impending events before the episodes. There have been no clear triggers such as intercurrent infection or alcohol excess, though caffeine intake has risen. No injuries were reported, but there is concern from family regarding safety at home given the recent escalation.\n\nOn examination today he was alert and oriented with normal speech and cranial nerves. Motor and coordination were intact; no focal neurological deficits were identified. Cardiovascular and respiratory examinations were unremarkable. BP in clinic was mildly elevated, likely stress-related.\n\nGiven the clinical picture and the clear pattern of worsening events temporally associated with stress and sleep disruption, I have advised close observation and prompt contact if events cluster or if any convulsive episodes occur. I have arranged urgent ambulatory EEG within the next 1–2 weeks and will request updated serum drug levels and routine bloods (U&E, LFT, FBC). He has been provided seizure first-aid guidance for his partner and we discussed practical risk mitigation at home. He is aware of the DVLA guidance and understands he should not drive. I will review him in an expedited follow-up once the ambulatory EEG is completed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current seizure activity. It states: \"In the 24 hours prior to clinic he experienced multiple seizures in past day\". This provides an explicit frequency over the last day but without a precise count. According to the rules, when the number is vague but indicates more than one within a day, we normalize to 'multiple per day'. There are also mentions of \"several near-miss episodes over the preceding week\" but these are not definite seizures. The highest (most frequent) clear seizure frequency is within the past day as multiple seizures.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "In the 24 hours prior to clinic he experienced multiple seizures in past day"
+      ],
+      "reference": [
+        "multiple per day",
+        "multiple seizures in past day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

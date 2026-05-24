@@ -1,0 +1,48 @@
+{
+  "id": "gan_2080",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr A. Mirza\nAlbion Street Group Practice\n\n12 Albion Street, London, SE16 7QX\nDear Dr A. Mirza\nMichael Turner, DOB: 21-11-1982, Hospital No: K9832741 NHS No. 7491023856\nFlat 4, 28 Merrion Close, London, SE16 3BL \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow‑up for recurrent episodes for which he continues on multiple antiseizure medicines. I last saw him in May this year. Since then he tells me there were a few events in the preceding month, describing “a couple of significant turns and several brief spells,” without clear triggers. He reports no injuries, tongue biting or incontinence. The pattern and frequency he describes are similar to what he experienced earlier in the year, and despite adherence to treatment there has been no meaningful change.\n\nMedication at present: Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 125 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg twice daily. He takes these regularly and tolerates them reasonably well, though he notes persistent tiredness and intermittent itchiness over the shins with excoriation marks on examination. No rash elsewhere. Weight and mood are stable; sleep is variable due to shift work. He does not drive.\n\nWe discussed ongoing management. He is keen to proceed with planned video-EEG telemetry to help clarify current activity and to inform any future adjustments. Given the stability of his recent pattern and pending investigations, I have not altered medication today. He would be open to speaking with our support team regarding coping strategies around health-related anxiety should this be helpful.\n\nI will review him after telemetry, or sooner if there is any change in the nature or frequency of his episodes.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 508,
+      "end": 613,
+      "text": "a few events in the preceding month, describing “a couple of significant turns and several brief spells,”",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2080,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr A. Mirza\nAlbion Street Group Practice\n\n12 Albion Street, London, SE16 7QX\nDear Dr A. Mirza\nMichael Turner, DOB: 21-11-1982, Hospital No: K9832741 NHS No. 7491023856\nFlat 4, 28 Merrion Close, London, SE16 3BL \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow‑up for recurrent episodes for which he continues on multiple antiseizure medicines. I last saw him in May this year. Since then he tells me there were a few events in the preceding month, describing “a couple of significant turns and several brief spells,” without clear triggers. He reports no injuries, tongue biting or incontinence. The pattern and frequency he describes are similar to what he experienced earlier in the year, and despite adherence to treatment there has been no meaningful change.\n\nMedication at present: Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 125 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg twice daily. He takes these regularly and tolerates them reasonably well, though he notes persistent tiredness and intermittent itchiness over the shins with excoriation marks on examination. No rash elsewhere. Weight and mood are stable; sleep is variable due to shift work. He does not drive.\n\nWe discussed ongoing management. He is keen to proceed with planned video-EEG telemetry to help clarify current activity and to inform any future adjustments. Given the stability of his recent pattern and pending investigations, I have not altered medication today. He would be open to speaking with our support team regarding coping strategies around health-related anxiety should this be helpful.\n\nI will review him after telemetry, or sooner if there is any change in the nature or frequency of his episodes.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes recent events: 'a few events in the preceding month, describing “a couple of significant turns and several brief spells,”' and notes the pattern and frequency are similar to earlier in the year with no meaningful change. This indicates multiple events within a single month, but exact counts are not specified. Therefore, the most precise normalized label is 'multiple per month' per the allowed formats.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "a few events in the preceding month, describing “a couple of significant turns and several brief spells,”"
+      ],
+      "reference": [
+        "multiple per month",
+        "a couple of seizures last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

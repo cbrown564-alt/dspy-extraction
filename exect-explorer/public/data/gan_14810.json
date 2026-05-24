@@ -1,0 +1,59 @@
+{
+  "id": "gan_14810",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 June 2023 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today following several recent attendances recorded in the Emergency Department triage system. Nursing documentation from those visits has been summarised in the notes; there were brief episodes of confusion with rapid spontaneous recovery, no focal neurological deficit documented, and routine observations remained stable. No injuries were reported. \n\nSince her last routine contact with our service she has resumed a consistent dosing schedule and is keeping a seizure and symptom diary. She reports good adherence and no missed evening doses in the past month. She had recurrent headaches following her seizures earlier this month, but these have now settled. On 12 May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 19 May and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes.\n\nCurrent medications (patient-reported and cross-checked with GP summary): Lamotrigine 100 mg b.d.; Levetiracetam 750 mg b.d.; Folic acid 5 mg daily. She denies rash, visual disturbance, or mood deterioration. Mild morning fatigue is noted but not functionally limiting, and she prefers to continue unchanged for now. \n\nExamination today was unremarkable with normal cardiorespiratory parameters, no lateralising signs, and normal gait. There is no history of recent head injury, alcohol excess, or intercurrent illness. Sleep has improved after basic sleep hygiene advice provided by the ED nursing team. \n\nPlan: I have advised continued adherence with her current regimen and ongoing diary keeping, including any warning symptoms, potential triggers, and menses-related variation. We discussed driving regulations and she confirms she is not currently driving. I will arrange a routine EEG only if breakthrough events recur; otherwise we will review in 4 months. She knows to seek urgent advice if events cluster, if any new neurological deficits emerge, or if there is a prolonged episode. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1043,
+      "end": 1117,
+      "text": "Her last reported event was on 19 May and she has been seizure-free since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 858,
+      "end": 1212,
+      "text": "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 12 May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 19 May and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14810,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 June 2023 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today following several recent attendances recorded in the Emergency Department triage system. Nursing documentation from those visits has been summarised in the notes; there were brief episodes of confusion with rapid spontaneous recovery, no focal neurological deficit documented, and routine observations remained stable. No injuries were reported. \n\nSince her last routine contact with our service she has resumed a consistent dosing schedule and is keeping a seizure and symptom diary. She reports good adherence and no missed evening doses in the past month. She had recurrent headaches following her seizures earlier this month, but these have now settled. On 12 May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 19 May and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes.\n\nCurrent medications (patient-reported and cross-checked with GP summary): Lamotrigine 100 mg b.d.; Levetiracetam 750 mg b.d.; Folic acid 5 mg daily. She denies rash, visual disturbance, or mood deterioration. Mild morning fatigue is noted but not functionally limiting, and she prefers to continue unchanged for now. \n\nExamination today was unremarkable with normal cardiorespiratory parameters, no lateralising signs, and normal gait. There is no history of recent head injury, alcohol excess, or intercurrent illness. Sleep has improved after basic sleep hygiene advice provided by the ED nursing team. \n\nPlan: I have advised continued adherence with her current regimen and ongoing diary keeping, including any warning symptoms, potential triggers, and menses-related variation. We discussed driving regulations and she confirms she is not currently driving. I will arrange a routine EEG only if breakthrough events recur; otherwise we will review in 4 months. She knows to seek urgent advice if events cluster, if any new neurological deficits emerge, or if there is a prolonged episode. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify timeline details: Clinic date is 12 June 2023. The letter states: 'Her last reported event was on 19 May and she has been seizure-free since' and that she has been 'stable for over 4 weeks.' 2) Determine if 'seizure-free' label applies: The patient has not been seizure-free for ≥6 months, so the 'seizure free' label cannot be used. 3) Estimate current frequency over a standard period: In approximately the last month leading up to review, there is one documented seizure (on 19 May) and none thereafter. 4) Other references (e.g., 'several recent attendances', 'episodes reduced significantly') are non-numeric or lack a clear timeframe, so they cannot provide a more precise or higher frequency. 5) Normalize to allowed format: 1 event in roughly one month → '1 per month.'",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Her last reported event was on 19 May and she has been seizure-free since."
+      ],
+      "reference": [
+        "1 per month",
+        "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 12 May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 19 May and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

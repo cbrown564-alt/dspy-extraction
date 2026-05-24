@@ -1,0 +1,54 @@
+{
+  "id": "gan_6852",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 11 February 2018\n\nDr Patel\nSt George's University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nEmily Carter, DOB: 14-07-1992, Hospital No: H629415 NHS No. 8473021596\n19 Willowbank Close, London, SW16 3PX\n\nDiagnoses:\n\nFocal epilepsy.\n\nI reviewed Emily Carter in clinic today accompanied by her primary carer. The carer reports increasing fatigue related to caregiving responsibilities, particularly overnight, as she often remains alert due to concerns about possible events. The patient describes brief episodes of behavioural pause with preserved awareness and occasional right arm twitching, typically clustering in the late evening. These events have not been captured on EEG recordings thus far, and therefore remain clinically described based on witness accounts and patient report. There have been no emergency presentations since the last review.\n\nThe overall pattern is of focal seizures arising from sleep or drowsiness, lasting 15–45 seconds, with post-event tiredness but no confusion. Frequency is estimated at 4–6 clinically suspected events per month, though objective confirmation has not yet been obtained as no events have been recorded during prior routine or ambulatory EEG sessions. There is no report of generalised tonic–clonic seizures.\n\nCurrent treatment is levetiracetam 1,000 mg twice daily, which the patient tolerates without notable mood disturbance. There have been no recent changes in medication and no rescue therapy has been required. She does not drive. Carer notes that improved sleep hygiene and regular routines have modestly reduced evening clustering.\n\nExamination today was unremarkable with no focal neurological deficit. MRI from last year was reported as normal. We discussed the plan to proceed with extended ambulatory EEG with home diary correlation to improve event capture and characterisation. We also agreed that, for now, no medication changes would be made pending objective data, given stable clinical status and acceptable tolerability.\n\nThe caregiving context was discussed: the carer reports cumulative fatigue and would value brief periods of respite, particularly on nights following clusters. We provided information on carer support services and community epilepsy nurse contact details for practical advice. The patient and carer will keep a detailed event and trigger diary.\n\nPlan:\n- Arrange 72-hour ambulatory EEG with video if feasible to improve likelihood of capturing typical events.\n- Continue levetiracetam 1,000 mg twice daily unchanged pending EEG results.\n- Provide access to epilepsy nurse specialist for carer support and education resources.\n- Safety advice around sleep positioning and seizure first aid reinforced (patient-reported understanding).\n- Review in clinic in three months, or earlier if event pattern changes or if prolonged events occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1086,
+      "end": 1153,
+      "text": "Frequency is estimated at 4–6 clinically suspected events per month",
+      "attributes": {
+        "Label": "4 to 6 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6852,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 11 February 2018\n\nDr Patel\nSt George's University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nEmily Carter, DOB: 14-07-1992, Hospital No: H629415 NHS No. 8473021596\n19 Willowbank Close, London, SW16 3PX\n\nDiagnoses:\n\nFocal epilepsy.\n\nI reviewed Emily Carter in clinic today accompanied by her primary carer. The carer reports increasing fatigue related to caregiving responsibilities, particularly overnight, as she often remains alert due to concerns about possible events. The patient describes brief episodes of behavioural pause with preserved awareness and occasional right arm twitching, typically clustering in the late evening. These events have not been captured on EEG recordings thus far, and therefore remain clinically described based on witness accounts and patient report. There have been no emergency presentations since the last review.\n\nThe overall pattern is of focal seizures arising from sleep or drowsiness, lasting 15–45 seconds, with post-event tiredness but no confusion. Frequency is estimated at 4–6 clinically suspected events per month, though objective confirmation has not yet been obtained as no events have been recorded during prior routine or ambulatory EEG sessions. There is no report of generalised tonic–clonic seizures.\n\nCurrent treatment is levetiracetam 1,000 mg twice daily, which the patient tolerates without notable mood disturbance. There have been no recent changes in medication and no rescue therapy has been required. She does not drive. Carer notes that improved sleep hygiene and regular routines have modestly reduced evening clustering.\n\nExamination today was unremarkable with no focal neurological deficit. MRI from last year was reported as normal. We discussed the plan to proceed with extended ambulatory EEG with home diary correlation to improve event capture and characterisation. We also agreed that, for now, no medication changes would be made pending objective data, given stable clinical status and acceptable tolerability.\n\nThe caregiving context was discussed: the carer reports cumulative fatigue and would value brief periods of respite, particularly on nights following clusters. We provided information on carer support services and community epilepsy nurse contact details for practical advice. The patient and carer will keep a detailed event and trigger diary.\n\nPlan:\n- Arrange 72-hour ambulatory EEG with video if feasible to improve likelihood of capturing typical events.\n- Continue levetiracetam 1,000 mg twice daily unchanged pending EEG results.\n- Provide access to epilepsy nurse specialist for carer support and education resources.\n- Safety advice around sleep positioning and seizure first aid reinforced (patient-reported understanding).\n- Review in clinic in three months, or earlier if event pattern changes or if prolonged events occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's current seizure frequency: \"Frequency is estimated at 4–6 clinically suspected events per month.\" According to the formatting rules, convert the range with an en dash to 'to' and express as '<value> per <month>'. No other numeric frequencies are provided that would supersede this. Therefore, the normalized label is '4 to 6 per month'.",
+      "seizure_frequency_number": [
+        "4 to 6 per month",
+        "Frequency is estimated at 4–6 clinically suspected events per month"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Events not captured on EEG to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (4 to 6 per month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

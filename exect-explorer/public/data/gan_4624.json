@@ -1,0 +1,59 @@
+{
+  "id": "gan_4624",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJordan Ellis, DOB: 12-05-1991, Hospital No: H938204 NHS No. 9842156730  \nFlat 3B, 22 Brookside House, London, W10 6PR \n\nMedication: \n\nLevetiracetam 1 g twice daily. Tolerating well with no reported mood change or somnolence. Rescue medication: Buccal midazolam 10 mg for prolonged focal to bilateral tonic–clonic seizures; not required since last review. \n\nDiagnosis and current status: \n\nThe patient has focal epilepsy, likely temporal lobe onset based on semiology of rising epigastric sensation, brief speech arrest, and automatisms lasting 30–60 seconds, with intact awareness in some events. Since moving into temporary accommodation, they report that seizure clusters have a predictable pattern with intervals ranging three - four days between focal aware seizures, often in the late evening. Two focal impaired-awareness events were noted in the past month, each following nights of disturbed sleep. No injuries, tongue bites, or incontinence reported. No recent generalised tonic–clonic seizures. \n\nContextual factors: \n\nThey are currently awaiting relocation from temporary accommodation; crowded living conditions noted with variable noise at night and limited personal space. The patient reports reduced sleep quality and higher stress on days preceding events. They have been using a calendar and smartphone app to log episodes, which correlates frequency with nights of fragmented sleep. Caffeine intake increased slightly during this period per patient report. \n\nInvestigations and review: \n\n- MRI brain (epilepsy protocol, 2023): Non-lesional.  \n- Routine EEG (2024): Left temporal intermittent slowing with occasional sharp transients, consistent with focal irritability.  \n- Bloods today: U&Es, LFTs, FBC requested; previous levetiracetam level therapeutic and stable. \n\nPlan: \n\n1) Continue levetiracetam 1 g twice daily. Patient prefers no dose change at present given stability of impaired-awareness events and absence of generalised convulsions.  \n2) Sleep hygiene measures reinforced as patient-reported triggers include noise-related awakenings. They will trial foam earplugs and a consistent bedtime routine while in temporary accommodation.  \n3) Continue seizure diary; maintain record of sleep duration, caffeine use, and stressors to refine trigger identification.  \n4) Safety advice reiterated regarding bathing, cooking with open flames, and heights. Driving remains not applicable as they do not currently hold a licence.  \n5) Community support: patient has contacted housing liaison; letters available on request to document health impact of current living conditions. \n\nFollow-up: \n\nWe will review in four months, sooner if seizure pattern worsens or if there are any generalised seizures, injuries, or medication intolerance. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 894,
+      "end": 958,
+      "text": "intervals ranging three - four days between focal aware seizures",
+      "attributes": {
+        "Label": "1 per 3 to 4 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 894,
+      "end": 929,
+      "text": "Intervals ranging three - four days",
+      "attributes": {
+        "Label": "1 per 3 to 4 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4624,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJordan Ellis, DOB: 12-05-1991, Hospital No: H938204 NHS No. 9842156730  \nFlat 3B, 22 Brookside House, London, W10 6PR \n\nMedication: \n\nLevetiracetam 1 g twice daily. Tolerating well with no reported mood change or somnolence. Rescue medication: Buccal midazolam 10 mg for prolonged focal to bilateral tonic–clonic seizures; not required since last review. \n\nDiagnosis and current status: \n\nThe patient has focal epilepsy, likely temporal lobe onset based on semiology of rising epigastric sensation, brief speech arrest, and automatisms lasting 30–60 seconds, with intact awareness in some events. Since moving into temporary accommodation, they report that seizure clusters have a predictable pattern with intervals ranging three - four days between focal aware seizures, often in the late evening. Two focal impaired-awareness events were noted in the past month, each following nights of disturbed sleep. No injuries, tongue bites, or incontinence reported. No recent generalised tonic–clonic seizures. \n\nContextual factors: \n\nThey are currently awaiting relocation from temporary accommodation; crowded living conditions noted with variable noise at night and limited personal space. The patient reports reduced sleep quality and higher stress on days preceding events. They have been using a calendar and smartphone app to log episodes, which correlates frequency with nights of fragmented sleep. Caffeine intake increased slightly during this period per patient report. \n\nInvestigations and review: \n\n- MRI brain (epilepsy protocol, 2023): Non-lesional.  \n- Routine EEG (2024): Left temporal intermittent slowing with occasional sharp transients, consistent with focal irritability.  \n- Bloods today: U&Es, LFTs, FBC requested; previous levetiracetam level therapeutic and stable. \n\nPlan: \n\n1) Continue levetiracetam 1 g twice daily. Patient prefers no dose change at present given stability of impaired-awareness events and absence of generalised convulsions.  \n2) Sleep hygiene measures reinforced as patient-reported triggers include noise-related awakenings. They will trial foam earplugs and a consistent bedtime routine while in temporary accommodation.  \n3) Continue seizure diary; maintain record of sleep duration, caffeine use, and stressors to refine trigger identification.  \n4) Safety advice reiterated regarding bathing, cooking with open flames, and heights. Driving remains not applicable as they do not currently hold a licence.  \n5) Community support: patient has contacted housing liaison; letters available on request to document health impact of current living conditions. \n\nFollow-up: \n\nWe will review in four months, sooner if seizure pattern worsens or if there are any generalised seizures, injuries, or medication intolerance. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current seizures. It states: 'intervals ranging three - four days between focal aware seizures,' which implies one focal aware seizure every 3 to 4 days. It also mentions 'Two focal impaired-awareness events were noted in the past month,' which is less frequent (approximately 2 per month). The rule is to select the highest frequency. Therefore, the focal aware seizure frequency of 1 per 3 to 4 days is the highest. Convert wording to allowed format using 'to' for ranges.",
+      "seizure_frequency_number": [
+        "1 per 3 to 4 day",
+        "intervals ranging three - four days between focal aware seizures"
+      ],
+      "reference": [
+        "1 per 3 to 4 day",
+        "Intervals ranging three - four days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

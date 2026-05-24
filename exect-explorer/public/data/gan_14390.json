@@ -1,0 +1,59 @@
+{
+  "id": "gan_14390",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 04 May 2022 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended with his assistance dog in training, which he reports has improved his confidence in day-to-day activities and travel. Since I last saw him, he has continued to prioritise regular sleep and hydration, and he has been keeping a detailed seizure and wellness diary, which he shared during the consultation.\n\nWe discussed the recent course in detail. He withdrew from Clobazam on 31/Jan. At that time, he had a pair of seizures, one precipitated by illness. He has remained stable without seizures since. He attributes this stability to consistent routines and avoiding known personal triggers, and there have been no emergency presentations or injuries.\n\nCurrent medicines (patient-reported and reconciled today): Carbamazepine 400 mg twice daily; Levetiracetam 1250 mg twice daily; Topiramate 125 mg twice daily; Valproate 500 mg twice daily. He is no longer taking Clobazam. He reports manageable daytime tiredness, which he feels is stable and not worsening, and occasional mild lower-leg itch without rash. No new neurological symptoms were volunteered. Weight and blood pressure are stable, and there is no report of mood decline; he continues to engage in light exercise as tolerated.\n\nWe reviewed practical safety and adherence. He uses phone alarms for dosing and has arranged local dog-training sessions that avoid early mornings to support sleep regularity. He is aware of local peer support groups and would consider meeting an epilepsy specialist nurse for further education and reassurance. He does not drive.\n\nPlan: No immediate changes agreed today in view of the recent period of stability. He will continue the current regimen and monitoring diary, and we will revisit any adjustments if there is breakthrough activity or adverse effects. Routine safety bloods to be arranged via primary care as per shared-care protocols. I will review him again in approximately six months, sooner if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 659,
+      "end": 812,
+      "text": "He withdrew from Clobazam on 31/Jan. At that time, he had a pair of seizures, one precipitated by illness. He has remained stable without seizures since.",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 659,
+      "end": 811,
+      "text": "He withdrew from Clobazam on 31/Jan. At that time, he had a pair of seizures, one precipitated by illness. He has remained stable without seizures since",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14390,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 04 May 2022 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended with his assistance dog in training, which he reports has improved his confidence in day-to-day activities and travel. Since I last saw him, he has continued to prioritise regular sleep and hydration, and he has been keeping a detailed seizure and wellness diary, which he shared during the consultation.\n\nWe discussed the recent course in detail. He withdrew from Clobazam on 31/Jan. At that time, he had a pair of seizures, one precipitated by illness. He has remained stable without seizures since. He attributes this stability to consistent routines and avoiding known personal triggers, and there have been no emergency presentations or injuries.\n\nCurrent medicines (patient-reported and reconciled today): Carbamazepine 400 mg twice daily; Levetiracetam 1250 mg twice daily; Topiramate 125 mg twice daily; Valproate 500 mg twice daily. He is no longer taking Clobazam. He reports manageable daytime tiredness, which he feels is stable and not worsening, and occasional mild lower-leg itch without rash. No new neurological symptoms were volunteered. Weight and blood pressure are stable, and there is no report of mood decline; he continues to engage in light exercise as tolerated.\n\nWe reviewed practical safety and adherence. He uses phone alarms for dosing and has arranged local dog-training sessions that avoid early mornings to support sleep regularity. He is aware of local peer support groups and would consider meeting an epilepsy specialist nurse for further education and reassurance. He does not drive.\n\nPlan: No immediate changes agreed today in view of the recent period of stability. He will continue the current regimen and monitoring diary, and we will revisit any adjustments if there is breakthrough activity or adverse effects. Routine safety bloods to be arranged via primary care as per shared-care protocols. I will review him again in approximately six months, sooner if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient had a pair (2) of seizures around 31 January, then none thereafter up to the clinic date of 04 May 2022. The seizure-free period is about 3 months, which is less than 6 months, so he cannot be classified as seizure free. Therefore, compute frequency over this interval: from 31 Jan to 04 May ≈ 3 months, with 2 seizures → 2 per 3 month.",
+      "seizure_frequency_number": [
+        "2 per 3 month",
+        "He withdrew from Clobazam on 31/Jan. At that time, he had a pair of seizures, one precipitated by illness. He has remained stable without seizures since."
+      ],
+      "reference": [
+        "2 per 3 month",
+        "He withdrew from Clobazam on 31/Jan. At that time, he had a pair of seizures, one precipitated by illness. He has remained stable without seizures since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

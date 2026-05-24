@@ -1,0 +1,59 @@
+{
+  "id": "gan_9294",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Morgan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Morgan,  \n\nSarah Whitfield, DOB: 22-04-1985, Hospital No: H938420 NHS No. 9057742219  \nLow Meadow Cottage, Green Hollow Farm, Near Brackenford, Cumbria CA11 8TX \n\nMedication: \n\nLevetiracetam 1 g twice daily. Patient reports good tolerability; occasional fatigue and irritability, no rash, no mood deterioration beyond baseline. Vitamin D supplementation continued as advised locally. \n\nThank you for arranging a remote review for this patient, who lives in a rural area with limited transport access; follow‑up is therefore usually by phone/video. On our most recent video consultation, she described ongoing events characterised by brief right hand jerks spreading up the arm with retained awareness, sometimes followed by a short period of clumsiness. These occur at a rate of three or four focal motor seizures per week, typically in the late afternoon. She notes triggers of poor sleep and higher physical activity on the farm. There have been no episodes of loss of awareness, no generalised convulsions, and no tongue biting or incontinence reported. Recovery is quick (minutes), and she can usually continue tasks after a brief pause. \n\nShe keeps a simple paper diary and has now started using her smartphone to log events; timestamps appear consistent with the above frequency. No clear cyclical pattern identified. She denies alcohol use and has reduced caffeine. Family have been shown first aid advice and safety measures for work around machinery and ladders have been reinforced. She avoids bathing unattended and uses a shower stool. \n\nWe discussed options. She prefers to maintain levetiracetam for now given ease of supply via the local pharmacy and limited travel options; she is aware that an alternative add‑on could be considered if the pattern worsens. Bloods last month through the GP were unremarkable (FBC, U&Es, LFTs within reference). No new neurological symptoms, headaches, or focal deficits. Sleep hygiene and regular meal routines were reviewed. \n\nIn view of the transport constraints, we will continue remote monitoring. She will send monthly seizure summaries by the secure portal; if the frequency rises above her current pattern of three or four focal motor seizures per week, or if there is any evolution in semiology or loss of awareness, we will arrange earlier contact and consider treatment adjustment. She has the emergency advice line number. \n\nWe plan a follow‑up video in four months, with interim phone check in six weeks. A copy of this letter is being shared with the community nursing team to facilitate local support. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 933,
+      "end": 1001,
+      "text": "These occur at a rate of three or four focal motor seizures per week",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 958,
+      "end": 1001,
+      "text": "three or four focal motor seizures per week",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9294,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Morgan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Morgan,  \n\nSarah Whitfield, DOB: 22-04-1985, Hospital No: H938420 NHS No. 9057742219  \nLow Meadow Cottage, Green Hollow Farm, Near Brackenford, Cumbria CA11 8TX \n\nMedication: \n\nLevetiracetam 1 g twice daily. Patient reports good tolerability; occasional fatigue and irritability, no rash, no mood deterioration beyond baseline. Vitamin D supplementation continued as advised locally. \n\nThank you for arranging a remote review for this patient, who lives in a rural area with limited transport access; follow‑up is therefore usually by phone/video. On our most recent video consultation, she described ongoing events characterised by brief right hand jerks spreading up the arm with retained awareness, sometimes followed by a short period of clumsiness. These occur at a rate of three or four focal motor seizures per week, typically in the late afternoon. She notes triggers of poor sleep and higher physical activity on the farm. There have been no episodes of loss of awareness, no generalised convulsions, and no tongue biting or incontinence reported. Recovery is quick (minutes), and she can usually continue tasks after a brief pause. \n\nShe keeps a simple paper diary and has now started using her smartphone to log events; timestamps appear consistent with the above frequency. No clear cyclical pattern identified. She denies alcohol use and has reduced caffeine. Family have been shown first aid advice and safety measures for work around machinery and ladders have been reinforced. She avoids bathing unattended and uses a shower stool. \n\nWe discussed options. She prefers to maintain levetiracetam for now given ease of supply via the local pharmacy and limited travel options; she is aware that an alternative add‑on could be considered if the pattern worsens. Bloods last month through the GP were unremarkable (FBC, U&Es, LFTs within reference). No new neurological symptoms, headaches, or focal deficits. Sleep hygiene and regular meal routines were reviewed. \n\nIn view of the transport constraints, we will continue remote monitoring. She will send monthly seizure summaries by the secure portal; if the frequency rises above her current pattern of three or four focal motor seizures per week, or if there is any evolution in semiology or loss of awareness, we will arrange earlier contact and consider treatment adjustment. She has the emergency advice line number. \n\nWe plan a follow‑up video in four months, with interim phone check in six weeks. A copy of this letter is being shared with the community nursing team to facilitate local support. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has ongoing focal motor seizures occurring at a rate of 'three or four ... per week.' There are no other seizure types with different frequencies reported. Apply the rule to select the highest frequency when multiple are given: 'three or four' => choose 4 per week. No indication of seizure freedom. Therefore, normalize to '4 per week.'",
+      "seizure_frequency_number": [
+        "3 to 4 per week",
+        "These occur at a rate of three or four focal motor seizures per week"
+      ],
+      "reference": [
+        "3 to 4 per week",
+        "three or four focal motor seizures per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_2907",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 September 2024 \n\nDr Maya Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Maya Patel, \n\nAlex Turner, DOB: 22-08-1991, Hospital No: A9135726 NHS No. 9432086157  \nFlat 12, 4 Beacon Yard, London, SE1 3AB  \n\nDiagnosis: \n\nRecurrent seizures of undetermined classification; current control satisfactory. Seizure-free since 27 March 2024 as per patient and collateral reports.\n\nAetiology: \n\nUnclear. No structural lesion identified on prior MRI (2022) and no clear precipitant identified beyond photic exposure at work.\n\nOther Medical Problems: \n\nMigraine without aura, intermittent; vitamin D insufficiency on replacement.\n\nManagement Plan: \n\nContinue Levetiracetam 1,000 mg twice daily and Sodium Valproate 300 mg mane, 600 mg nocte; maintain single consistent brands. Check trough levels and U&E/LFTs at next review. Arrange repeat EEG with photic stimulation protocol given occupational exposure. Occupational health note provided to advise reasonable adjustments around strobe sequences and ensuring supervised environment if exposures are unavoidable. Driving advice reiterated as per DVLA guidance. Review in six months or sooner if breakthrough events or adverse effects.\n\nThis stage lighting technician reports that colleagues may occasionally witness events during intense strobe sequences; however, he has been Seizure-free since 27 March 2024. He feels current treatment is well tolerated apart from mild irritability on Levetiracetam; he prefers to continue unchanged for now. We discussed keeping a brief event/trigger log, ensuring adequate sleep during touring schedules, and carrying rescue medication (Buccal Midazolam 10 mg) for use by trained staff if a prolonged event occurs; training has been offered to the venue safety team. No red flags on today’s review and neurological examination is stable.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 430,
+      "end": 462,
+      "text": "Seizure-free since 27 March 2024",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 430,
+      "end": 462,
+      "text": "Seizure-free since 27 March 2024",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2907,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 September 2024 \n\nDr Maya Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Maya Patel, \n\nAlex Turner, DOB: 22-08-1991, Hospital No: A9135726 NHS No. 9432086157  \nFlat 12, 4 Beacon Yard, London, SE1 3AB  \n\nDiagnosis: \n\nRecurrent seizures of undetermined classification; current control satisfactory. Seizure-free since 27 March 2024 as per patient and collateral reports.\n\nAetiology: \n\nUnclear. No structural lesion identified on prior MRI (2022) and no clear precipitant identified beyond photic exposure at work.\n\nOther Medical Problems: \n\nMigraine without aura, intermittent; vitamin D insufficiency on replacement.\n\nManagement Plan: \n\nContinue Levetiracetam 1,000 mg twice daily and Sodium Valproate 300 mg mane, 600 mg nocte; maintain single consistent brands. Check trough levels and U&E/LFTs at next review. Arrange repeat EEG with photic stimulation protocol given occupational exposure. Occupational health note provided to advise reasonable adjustments around strobe sequences and ensuring supervised environment if exposures are unavoidable. Driving advice reiterated as per DVLA guidance. Review in six months or sooner if breakthrough events or adverse effects.\n\nThis stage lighting technician reports that colleagues may occasionally witness events during intense strobe sequences; however, he has been Seizure-free since 27 March 2024. He feels current treatment is well tolerated apart from mild irritability on Levetiracetam; he prefers to continue unchanged for now. We discussed keeping a brief event/trigger log, ensuring adequate sleep during touring schedules, and carrying rescue medication (Buccal Midazolam 10 mg) for use by trained staff if a prolonged event occurs; training has been offered to the venue safety team. No red flags on today’s review and neurological examination is stable.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been seizure-free since 27 March 2024. Clinic date is 29 September 2024. Calculate duration from 27 March 2024 to 29 September 2024: March 27 to April 27 = 1 month; to May 27 = 2 months; to June 27 = 3 months; to July 27 = 4 months; to August 27 = 5 months; to September 27 = 6 months; plus 2 additional days to September 29. Therefore, the patient has been seizure-free for just over 6 months, satisfying the ≥6 months criterion for 'seizure free'.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "Seizure-free since 27 March 2024"
+      ],
+      "reference": [
+        "seizure free for 6 month",
+        "Seizure-free since 27 March 2024"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

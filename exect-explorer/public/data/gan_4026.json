@@ -1,0 +1,48 @@
+{
+  "id": "gan_4026",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 July 2020 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and progress update\n\nDear Priya,\n\nDiagnosis:\nSeizure disorder under ongoing evaluation.\n\nCurrent Medication:\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters (patient uses rarely)\n\nClinical Summary and Progress:\nSince our last appointment, the patient has implemented a structured seizure diary with phone reminders, which has markedly improved adherence to treatment and lifestyle routines. Before this improvement, they were experiencing six to seven absence-type events per month. Over the past eight weeks, the record shows a clear downward trend, with only a single brief spell in the most recent calendar month and none reported so far this month. The patient reports better sleep hygiene and consistent dosing times, which coincide with the reduction in events.\n\nPresent Seizure Frequency:\nNow down to roughly one brief absence episode in a typical month, with some months entirely event-free.\n\nPlan of Action:\n- Continue lamotrigine 100 mg twice daily without change.\n- Keep clobazam as an intermittent option for clusters, although none have occurred recently.\n- Maintain daily seizure diary entries and reminder prompts, as this appears to be a key factor in the recent improvement.\n- Safety advice reiterated; patient understands driving restrictions and when to seek urgent help.\n- Arrange follow-up in four months, or sooner if breakthrough events recur.\n\nOverall, the trend is encouraging and the patient feels more confident managing their condition with the current routine.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1141,
+      "end": 1244,
+      "text": "Now down to roughly one brief absence episode in a typical month, with some months entirely event-free.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4026,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 July 2020 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and progress update\n\nDear Priya,\n\nDiagnosis:\nSeizure disorder under ongoing evaluation.\n\nCurrent Medication:\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters (patient uses rarely)\n\nClinical Summary and Progress:\nSince our last appointment, the patient has implemented a structured seizure diary with phone reminders, which has markedly improved adherence to treatment and lifestyle routines. Before this improvement, they were experiencing six to seven absence-type events per month. Over the past eight weeks, the record shows a clear downward trend, with only a single brief spell in the most recent calendar month and none reported so far this month. The patient reports better sleep hygiene and consistent dosing times, which coincide with the reduction in events.\n\nPresent Seizure Frequency:\nNow down to roughly one brief absence episode in a typical month, with some months entirely event-free.\n\nPlan of Action:\n- Continue lamotrigine 100 mg twice daily without change.\n- Keep clobazam as an intermittent option for clusters, although none have occurred recently.\n- Maintain daily seizure diary entries and reminder prompts, as this appears to be a key factor in the recent improvement.\n- Safety advice reiterated; patient understands driving restrictions and when to seek urgent help.\n- Arrange follow-up in four months, or sooner if breakthrough events recur.\n\nOverall, the trend is encouraging and the patient feels more confident managing their condition with the current routine.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states current frequency: 'Present Seizure Frequency: Now down to roughly one brief absence episode in a typical month, with some months entirely event-free.' This indicates about 1 per month currently. Not seizure-free for 6 months (only recent months with 0-1), so label as 1 per month. No multiple different concurrent frequencies needing max rule; past frequency (six to seven per month) is historical, so current is 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Now down to roughly one brief absence episode in a typical month, with some months entirely event-free."
+      ],
+      "reference": [
+        "1 per month",
+        "abs *monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

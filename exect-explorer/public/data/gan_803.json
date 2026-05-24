@@ -1,0 +1,59 @@
+{
+  "id": "gan_803",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Sarah Bennett\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Sarah Bennett\nConsultant Neurologist,  \n\nJames Whitaker, DOB: 14-03-1981, Hospital No: KCH482917 NHS No. 9473201658  \n12 Brookside Close, London, SE15 3AB\n\nThank you for your referral and the accompanying updates. I reviewed James Whitaker in clinic today. He attended with his partner, and the discussion was calm and collaborative. We focused on recent changes in lifestyle and seizure control, and overall the clinical picture is encouraging.\n\nBy history, prior to the recent changes he reported seizures on average every eight days. Following structured dietetic input with a high-fat, low-carbohydrate plan provided by our dietetics team, both he and his partner feel there has been a meaningful improvement. He now describes months where he experiences only monthly seizures, with shorter recovery times and less post-event confusion. The events typically consist of an abrupt loss of awareness with intermittent rocking movements and vocalisation, followed by a brief period of fatigue; there are no consistent daytime triggers identified, and nocturnal events have become less prominent by his account. He has not required emergency care since adopting the dietary guidance, and there have been no injuries.\n\nHe keeps a diary that documents the transition from the previous pattern (every eight days on average) to the current pattern of monthly seizures. Sleep regularity, hydration, and diet adherence appear to correlate with better weeks. He feels more confident returning to light daily activities and short walks, and his partner reports fewer prolonged recoveries. There have been no features to suggest intercurrent infection, medication toxicity, or new neurological deficits. Mood and anxiety symptoms have also eased somewhat since the improvement in seizure burden, and he declines additional mental health support at present, though he knows he can contact us if this changes.\n\nOn examination today, he was settled, engaged, and able to provide a clear history. Neurological screening was unremarkable. We reviewed safety measures and the importance of ongoing diary documentation. He will continue the current care plan and maintain contact with our dietetic service, as this appears to be contributing to the observed benefit.\n\nIn summary, compared with his previous average of seizures every eight days, he now reports monthly seizures with shorter post-event recovery and no recent emergency presentations. We will continue to monitor, and I have arranged a routine follow-up in three months, with earlier review if the pattern changes or concerns arise.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 963,
+      "end": 1029,
+      "text": "he now describes months where he experiences only monthly seizures",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1013,
+      "end": 1029,
+      "text": "monthly seizures",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 803,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Sarah Bennett\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Sarah Bennett\nConsultant Neurologist,  \n\nJames Whitaker, DOB: 14-03-1981, Hospital No: KCH482917 NHS No. 9473201658  \n12 Brookside Close, London, SE15 3AB\n\nThank you for your referral and the accompanying updates. I reviewed James Whitaker in clinic today. He attended with his partner, and the discussion was calm and collaborative. We focused on recent changes in lifestyle and seizure control, and overall the clinical picture is encouraging.\n\nBy history, prior to the recent changes he reported seizures on average every eight days. Following structured dietetic input with a high-fat, low-carbohydrate plan provided by our dietetics team, both he and his partner feel there has been a meaningful improvement. He now describes months where he experiences only monthly seizures, with shorter recovery times and less post-event confusion. The events typically consist of an abrupt loss of awareness with intermittent rocking movements and vocalisation, followed by a brief period of fatigue; there are no consistent daytime triggers identified, and nocturnal events have become less prominent by his account. He has not required emergency care since adopting the dietary guidance, and there have been no injuries.\n\nHe keeps a diary that documents the transition from the previous pattern (every eight days on average) to the current pattern of monthly seizures. Sleep regularity, hydration, and diet adherence appear to correlate with better weeks. He feels more confident returning to light daily activities and short walks, and his partner reports fewer prolonged recoveries. There have been no features to suggest intercurrent infection, medication toxicity, or new neurological deficits. Mood and anxiety symptoms have also eased somewhat since the improvement in seizure burden, and he declines additional mental health support at present, though he knows he can contact us if this changes.\n\nOn examination today, he was settled, engaged, and able to provide a clear history. Neurological screening was unremarkable. We reviewed safety measures and the importance of ongoing diary documentation. He will continue the current care plan and maintain contact with our dietetic service, as this appears to be contributing to the observed benefit.\n\nIn summary, compared with his previous average of seizures every eight days, he now reports monthly seizures with shorter post-event recovery and no recent emergency presentations. We will continue to monitor, and I have arranged a routine follow-up in three months, with earlier review if the pattern changes or concerns arise.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly contrasts prior frequency with current frequency. Previously: \"seizures on average every eight days\". Currently: \"he now describes months where he experiences only monthly seizures\" and \"In summary... he now reports monthly seizures\". Per instruction to handle multiple frequencies by selecting the highest (more frequent) current rate, the current explicit numeric expression is monthly seizures, which normalizes to 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "he now describes months where he experiences only monthly seizures"
+      ],
+      "reference": [
+        "1 per month",
+        "monthly seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

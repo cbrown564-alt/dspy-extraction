@@ -1,0 +1,59 @@
+{
+  "id": "gan_610",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 15 July 2014 \n\n Dr Wang \n Saffron Park Hospital \n\n Saffron Park, London, E14 7JL \nDear  Dr Wang \n John Doe , DOB: 21-11-1982, Hospital No:  P546484  NHS No.  5484656746 \n Flat 15 Roundwood Road, London, E14 7JL  \n\nI reviewed the above patient in the Neurology Clinic today. Since my last review, he has been using a paper seizure calendar rather than a mobile application and brings these handwritten logs to appointments, which has been very helpful. According to his calendar entries and his account, he experiences seizures once every two or three months, with occasional brief warning sensations that he cannot clearly describe. There have been no hospital admissions since the previous visit and no reported injuries.\n\nCurrent antiepileptic medications recorded in his notes are: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He reports good adherence. He mentions intermittent daytime fatigue and mild word-finding pauses, both of which he feels are tolerable. No new rashes, no imbalance, and no visual disturbance. He has not noticed any definite triggers, though he has highlighted irregular sleep on his calendar around the time of two events. He does not drive. Ã‚Â·\n\nExamination today was unremarkable: alert, oriented, normal speech in clinic, cranial nerves intact, power 5/5 throughout, coordination normal, gait steady. Observations within normal limits. The seizure calendar entries he brought (spanning the last 10 months) show clustered annotations that corroborate the pattern of seizures once every two or three months; there are also notations about sleep and missed meals. He is maintaining a separate list of questions for clinic, which we reviewed. ï¿½\n\nWe discussed lifestyle regularity and ongoing documentation with the paper calendar, which he prefers. At present, given the stability described and the spacing of events, I have not altered treatment today. I have requested routine bloods (FBC, U&E, LFTs) for monitoring and will review these when available. We also agreed that if he records any change in pattern—such as increased frequency, new features, or injury—he will contact the clinic promptly. He is content with this plan. â€\n\nI will see him again in approximately six months, or sooner if the seizure calendar indicates increased activity. He will continue to bring his paper logs to each appointment.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 545,
+      "end": 599,
+      "text": "he experiences seizures once every two or three months",
+      "attributes": {
+        "Label": "1 per 2 to 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 560,
+      "end": 599,
+      "text": "seizures once every two or three months",
+      "attributes": {
+        "Label": "1 per 2 to 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 610,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 15 July 2014 \n\n Dr Wang \n Saffron Park Hospital \n\n Saffron Park, London, E14 7JL \nDear  Dr Wang \n John Doe , DOB: 21-11-1982, Hospital No:  P546484  NHS No.  5484656746 \n Flat 15 Roundwood Road, London, E14 7JL  \n\nI reviewed the above patient in the Neurology Clinic today. Since my last review, he has been using a paper seizure calendar rather than a mobile application and brings these handwritten logs to appointments, which has been very helpful. According to his calendar entries and his account, he experiences seizures once every two or three months, with occasional brief warning sensations that he cannot clearly describe. There have been no hospital admissions since the previous visit and no reported injuries.\n\nCurrent antiepileptic medications recorded in his notes are: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He reports good adherence. He mentions intermittent daytime fatigue and mild word-finding pauses, both of which he feels are tolerable. No new rashes, no imbalance, and no visual disturbance. He has not noticed any definite triggers, though he has highlighted irregular sleep on his calendar around the time of two events. He does not drive. Ã‚Â·\n\nExamination today was unremarkable: alert, oriented, normal speech in clinic, cranial nerves intact, power 5/5 throughout, coordination normal, gait steady. Observations within normal limits. The seizure calendar entries he brought (spanning the last 10 months) show clustered annotations that corroborate the pattern of seizures once every two or three months; there are also notations about sleep and missed meals. He is maintaining a separate list of questions for clinic, which we reviewed. ï¿½\n\nWe discussed lifestyle regularity and ongoing documentation with the paper calendar, which he prefers. At present, given the stability described and the spacing of events, I have not altered treatment today. I have requested routine bloods (FBC, U&E, LFTs) for monitoring and will review these when available. We also agreed that if he records any change in pattern—such as increased frequency, new features, or injury—he will contact the clinic promptly. He is content with this plan. â€\n\nI will see him again in approximately six months, or sooner if the seizure calendar indicates increased activity. He will continue to bring his paper logs to each appointment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's current seizure pattern: \"he experiences seizures once every two or three months,\" corroborated by the seizure calendar over the last 10 months. No other competing frequencies are given. Convert \"once every two or three months\" to the allowed format as a range: 1 per 2 to 3 month.",
+      "seizure_frequency_number": [
+        "1 per 2 to 3 month",
+        "he experiences seizures once every two or three months"
+      ],
+      "reference": [
+        "1 per 2 to 3 month",
+        "seizures once every two or three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

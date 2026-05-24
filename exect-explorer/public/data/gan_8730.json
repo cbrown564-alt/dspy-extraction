@@ -1,0 +1,54 @@
+{
+  "id": "gan_8730",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nElmwood Medical Centre\n\n12 Elmwood Road, London, SE15 3AB\nDear Dr Patel\nMichael Green, DOB: 09-04-1990, Hospital No: H729384 NHS No. 8472635190\n22 Brookside Close, London, SE15 4JT \n\nI reviewed the above patient in the Neurology Clinic today. He has a history of episodic events for which he has been under our care. I last saw him on 10 March 2025. Since that review, he reports no further episodes and there have been no witnessed attacks. He describes good day-to-day functioning without blackouts, collapses or convulsions. \n\nCurrent medication is Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d., both well tolerated with no adverse effects reported. He does note photosensitivity to flicker and bright light, particularly in supermarkets and with fast-changing screens, which he mitigates by using tinted lenses and avoiding strobe environments. Sleep is regular, alcohol intake minimal, and there is no recent illness. \n\nNeurological examination today is unremarkable. Routine bloods from last month (U&E, LFT, FBC) are within normal limits. He is engaging with self-management strategies and has kept a diary which corroborates that there have been no events since prior to his last visit. In short, there have been no seizures in this interval. \n\nPlan: continue present regimen and safety advice regarding photosensitive triggers and screen flicker. No change to medication at this stage. He will contact us if there are any new events or concerns. Follow-up in 6 months or sooner if required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1275,
+      "end": 1330,
+      "text": "In short, there have been no seizures in this interval.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8730,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nElmwood Medical Centre\n\n12 Elmwood Road, London, SE15 3AB\nDear Dr Patel\nMichael Green, DOB: 09-04-1990, Hospital No: H729384 NHS No. 8472635190\n22 Brookside Close, London, SE15 4JT \n\nI reviewed the above patient in the Neurology Clinic today. He has a history of episodic events for which he has been under our care. I last saw him on 10 March 2025. Since that review, he reports no further episodes and there have been no witnessed attacks. He describes good day-to-day functioning without blackouts, collapses or convulsions. \n\nCurrent medication is Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d., both well tolerated with no adverse effects reported. He does note photosensitivity to flicker and bright light, particularly in supermarkets and with fast-changing screens, which he mitigates by using tinted lenses and avoiding strobe environments. Sleep is regular, alcohol intake minimal, and there is no recent illness. \n\nNeurological examination today is unremarkable. Routine bloods from last month (U&E, LFT, FBC) are within normal limits. He is engaging with self-management strategies and has kept a diary which corroborates that there have been no events since prior to his last visit. In short, there have been no seizures in this interval. \n\nPlan: continue present regimen and safety advice regarding photosensitive triggers and screen flicker. No change to medication at this stage. He will contact us if there are any new events or concerns. Follow-up in 6 months or sooner if required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 21 Sep 2025. The patient was last seen on 10 Mar 2025. The letter states there have been no seizures in the interval since that review. Time between 10 Mar 2025 and 21 Sep 2025 is at least 6 months (10 Mar to 10 Sep = 6 months; plus 11 days). Therefore, the patient is currently seizure free for at least 6 months.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "In short, there have been no seizures in this interval."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on last ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

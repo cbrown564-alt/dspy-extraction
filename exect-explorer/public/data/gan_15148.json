@@ -1,0 +1,59 @@
+{
+  "id": "gan_15148",
+  "text": "Department of Neurology\n\nClinic Date: 10 January 2019\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nHistory of seizures of uncertain classification\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Continue current antiepileptic medication at present\n- Pre-conception counselling provided; written information given and folic acid discussed\n- Arrange routine bloods (including folate) and medication levels as baseline\n- Safety advice reinforced; no driving issues reported\n- Follow-up in 12 months or sooner if any change\n\nI reviewed John Smith in clinic today for pre-conception counselling. He reports that his last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then. He associates the rare morning jerks with nights of poor sleep. There have been no episodes of loss of awareness, injuries, or emergency attendances since 09/2017. He remains fully independent in daily activities and employment.\n\nHe is currently taking Lamotrigine 75 mg twice daily with good tolerance and no reported adverse effects. We discussed the importance of consistency with dosing, sleep hygiene, and avoidance of recognised personal triggers. As this appointment focused on pre-conception planning, we reviewed medication safety in pregnancy, the rationale for high-dose folic acid before conception and through the first trimester, and the need to inform maternity services early if a pregnancy is confirmed. Written resources and contact details were provided.\n\nOn examination today, observations were stable, and neurological examination was unremarkable. No new investigations were required urgently. I will arrange routine blood tests as a baseline in anticipation of potential pregnancy. He understands to contact the clinic promptly in the event of any change in seizure pattern or if a pregnancy is confirmed, so we can coordinate care with obstetrics.\n\nI have not scheduled a routine early review, but I am happy to see him sooner if needed, particularly if there are plans to actively conceive or if there are any breakthrough events.\n\nWith best wishes,\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 787,
+      "end": 890,
+      "text": "He reports that his last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then.",
+      "attributes": {
+        "Label": "2 to 3 per 16 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 807,
+      "end": 889,
+      "text": "Last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then",
+      "attributes": {
+        "Label": "2 to 3 per 16 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15148,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 10 January 2019\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nHistory of seizures of uncertain classification\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Continue current antiepileptic medication at present\n- Pre-conception counselling provided; written information given and folic acid discussed\n- Arrange routine bloods (including folate) and medication levels as baseline\n- Safety advice reinforced; no driving issues reported\n- Follow-up in 12 months or sooner if any change\n\nI reviewed John Smith in clinic today for pre-conception counselling. He reports that his last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then. He associates the rare morning jerks with nights of poor sleep. There have been no episodes of loss of awareness, injuries, or emergency attendances since 09/2017. He remains fully independent in daily activities and employment.\n\nHe is currently taking Lamotrigine 75 mg twice daily with good tolerance and no reported adverse effects. We discussed the importance of consistency with dosing, sleep hygiene, and avoidance of recognised personal triggers. As this appointment focused on pre-conception planning, we reviewed medication safety in pregnancy, the rationale for high-dose folic acid before conception and through the first trimester, and the need to inform maternity services early if a pregnancy is confirmed. Written resources and contact details were provided.\n\nOn examination today, observations were stable, and neurological examination was unremarkable. No new investigations were required urgently. I will arrange routine blood tests as a baseline in anticipation of potential pregnancy. He understands to contact the clinic promptly in the event of any change in seizure pattern or if a pregnancy is confirmed, so we can coordinate care with obstetrics.\n\nI have not scheduled a routine early review, but I am happy to see him sooner if needed, particularly if there are plans to actively conceive or if there are any breakthrough events.\n\nWith best wishes,\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify the clinic date: 10 January 2019. 2) Extract seizure history from the letter: \"last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then.\" 3) Define the time window discussed: from 09/2017 to 01/2019. 4) Calculate duration in months: (2019*12 + 1) - (2017*12 + 9) = 24229 - 24213 = 16 months. 5) Count events within this 16-month window: 1 tonic-clonic in 09/2017 plus 1 to 2 morning jerks thereafter = 2 to 3 total events over 16 months. 6) The patient is not seizure-free because at least 1 jerk occurred since 09/2017. 7) Normalize to allowed format: \"2 to 3 per 16 month.\"",
+      "seizure_frequency_number": [
+        "2 to 3 per 16 month",
+        "He reports that his last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then."
+      ],
+      "reference": [
+        "2 to 3 per 16 month",
+        "Last tonic-clonic seizure was in 09/2017, with one or two morning jerks since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

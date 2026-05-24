@@ -1,0 +1,48 @@
+{
+  "id": "gan_8160",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Centre\n\n12 Brookside Way, London, SE5 9QT\nDear Dr Patel\nMichael Green, DOB: 14-03-1987, Hospital No: H728391 NHS No. 9384756201\n23B Linden Court, Peckham, London, SE15 4DR \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow-up for recurrent episodes consistent with a seizure disorder, and I last saw him on 11th June 2025. Since that time he reports no witnessed convulsions and has continued with a stable spell without events that his partner has noticed. He describes occasional brief moments of lost thread during conversation, occurring perhaps once every few weeks, but without collapse, injury or tongue biting. These have not prompted any emergency attendances. He and his family feel he is in a steady run without clear seizures at present.\n\nHe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. He reports good tolerability overall, with intermittent morning nausea that settles after food, and some mild word-finding pauses which he attributes to tiredness. No rash, mood lability or suicidal thoughts. Sleep has improved since he started a regular bedtime routine; he also notes that missing meals tends to make him feel light-headed.\n\nNeurological examination today was unremarkable. Bloods from August 2025 (U&E, LFT, FBC) were within reference ranges. He is awaiting a repeat MRI brain with epilepsy protocol later this month to complement a prior normal EEG from April 2024. We discussed maintaining consistency with medication timing and sleep. He is driving-standard aware and confirms adherence to DVLA guidance as discussed previously.\n\nGiven the present quiet spell regarding events, I have not altered therapy today. We agreed to continue the current regimen while we await the MRI report. If his brief lapses increase in frequency or are witnessed with impaired awareness, we will consider prolonged ambulatory EEG to better characterise these episodes. He is happy with this plan and will contact the clinic sooner should there be any change.\n\nI will review him again in three months or earlier if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 445,
+      "end": 579,
+      "text": "Since that time he reports no witnessed convulsions... He and his family feel he is in a steady run without clear seizures at present.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8160,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Centre\n\n12 Brookside Way, London, SE5 9QT\nDear Dr Patel\nMichael Green, DOB: 14-03-1987, Hospital No: H728391 NHS No. 9384756201\n23B Linden Court, Peckham, London, SE15 4DR \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow-up for recurrent episodes consistent with a seizure disorder, and I last saw him on 11th June 2025. Since that time he reports no witnessed convulsions and has continued with a stable spell without events that his partner has noticed. He describes occasional brief moments of lost thread during conversation, occurring perhaps once every few weeks, but without collapse, injury or tongue biting. These have not prompted any emergency attendances. He and his family feel he is in a steady run without clear seizures at present.\n\nHe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. He reports good tolerability overall, with intermittent morning nausea that settles after food, and some mild word-finding pauses which he attributes to tiredness. No rash, mood lability or suicidal thoughts. Sleep has improved since he started a regular bedtime routine; he also notes that missing meals tends to make him feel light-headed.\n\nNeurological examination today was unremarkable. Bloods from August 2025 (U&E, LFT, FBC) were within reference ranges. He is awaiting a repeat MRI brain with epilepsy protocol later this month to complement a prior normal EEG from April 2024. We discussed maintaining consistency with medication timing and sleep. He is driving-standard aware and confirms adherence to DVLA guidance as discussed previously.\n\nGiven the present quiet spell regarding events, I have not altered therapy today. We agreed to continue the current regimen while we await the MRI report. If his brief lapses increase in frequency or are witnessed with impaired awareness, we will consider prolonged ambulatory EEG to better characterise these episodes. He is happy with this plan and will contact the clinic sooner should there be any change.\n\nI will review him again in three months or earlier if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses seizure activity since the last review on 11 June 2025. It states there have been no witnessed convulsions and that he is in a steady run without clear seizures at present. It mentions occasional brief moments of 'lost thread' during conversation occurring perhaps once every few weeks, but these are not clearly seizures and have not been witnessed with impaired awareness. Therefore, explicit seizure count is zero since last review. Time from last review (11 June 2025) to clinic date (02 October 2025) is approximately 3 months and 3 weeks, which is less than 6 months. Per rule 8, because he is currently without seizures but for less than 6 months, he cannot be labeled 'seizure free' (>=6 months). Instead, we should calculate seizure frequency; here it's zero over about 3.8 months. The allowed formats do not include '0 per ...', so we should use 'seizure free for multiple months' when seizure-free duration is multiple months but less than 6 months or when exact months are not specified. This matches the current situation.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since that time he reports no witnessed convulsions... He and his family feel he is in a steady run without clear seizures at present."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Ongoing seizure-free interval"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

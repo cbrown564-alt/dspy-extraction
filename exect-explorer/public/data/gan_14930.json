@@ -1,0 +1,59 @@
+{
+  "id": "gan_14930",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 18 August 2016 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since the last visit, her work rota was adjusted to regular daytime shifts with fewer overnight calls. Per plan, control is better now and she herself reports clearer mornings, improved concentration, and less daytime fatigue. Medication adherence has been steady, and she has not required any emergency care or unplanned GP visits.\n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 17-May, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 23-May and she has been stable since. Given her stability now, I do not propose further intervention for now.\n\nShe denies new adverse effects from her regular antiepileptic therapy. Sleep quality has improved with the rota change, and caffeine intake has been reduced on her own initiative. She remains fit for routine daily activities, and there have been no injuries, tongue-biting, or incontinence episodes reported. Family members have observed no behavioural changes or prolonged post-event confusion.\n\nI will continue to monitor her progress with routine follow-up and she knows to contact the service if there is any deterioration, breakthrough events, or intolerance of treatment. Overall, her condition is improving and current measures appear effective.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 828,
+      "end": 899,
+      "text": "The last such episode occurred on 23-May and she has been stable since.",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 636,
+      "end": 970,
+      "text": "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 17-May, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 23-May and she has been stable since. Given her stability now, I do not propose further intervention for now",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14930,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 18 August 2016 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since the last visit, her work rota was adjusted to regular daytime shifts with fewer overnight calls. Per plan, control is better now and she herself reports clearer mornings, improved concentration, and less daytime fatigue. Medication adherence has been steady, and she has not required any emergency care or unplanned GP visits.\n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 17-May, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 23-May and she has been stable since. Given her stability now, I do not propose further intervention for now.\n\nShe denies new adverse effects from her regular antiepileptic therapy. Sleep quality has improved with the rota change, and caffeine intake has been reduced on her own initiative. She remains fit for routine daily activities, and there have been no injuries, tongue-biting, or incontinence episodes reported. Family members have observed no behavioural changes or prolonged post-event confusion.\n\nI will continue to monitor her progress with routine follow-up and she knows to contact the service if there is any deterioration, breakthrough events, or intolerance of treatment. Overall, her condition is improving and current measures appear effective.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- The letter explicitly mentions a last seizure-type event (absences) on 23-May and that the patient has been stable since.\n- Clinic date is 18 August 2016.\n- Calculate interval from 23-May to 18-Aug: approximately 3 months (May 23 to June 23 = 1 month; to July 23 = 2 months; to Aug 18 ≈ 2 months 26 days ≈ ~3 months).\n- Seizure-free duration is <6 months, so cannot label as seizure free per the rule; instead, infer frequency over this period as 1 event in ~3 months.\n- Therefore, current seizure frequency is 1 per 3 month.",
+      "seizure_frequency_number": [
+        "1 per 3 month",
+        "The last such episode occurred on 23-May and she has been stable since."
+      ],
+      "reference": [
+        "1 per 3 month",
+        "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 17-May, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 23-May and she has been stable since. Given her stability now, I do not propose further intervention for now"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

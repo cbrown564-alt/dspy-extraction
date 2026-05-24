@@ -1,0 +1,59 @@
+{
+  "id": "gan_4110",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 23 January 2021 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic by scheduled telephone consultation today, coordinated to coincide with his onshore rotation from offshore work. He reports continuing episodes occurring at a frequency of q1 - 2d, which he describes as brief spells with loss of awareness, occasional lip-smacking, and post-event confusion lasting several minutes. His partner has noticed intermittent right-hand fumbling during some events. He denies any clear triggers but notes that poor sleep offshore and variable shift patterns may precede clusters. No new head injuries, alcohol intake is low offshore and modest onshore, and he remains compliant with medication by using a pill organiser and alarms.\n\nHe is currently taking Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. without recent dose changes. He reports mild irritability on Levetiracetam and sporadic headaches, but no rashes, visual disturbance, or gastrointestinal adverse effects. He has not missed doses during the current rotation. He has workplace support to avoid working at height or near open water during higher-risk periods, and he confirms adherence to driving restrictions as previously advised. He keeps a seizure diary and has shared entries corroborating the reported frequency of q1 - 2d over the past six weeks, with two short clusters during night shifts offshore.\n\nNeurological review of systems is otherwise unremarkable. There have been no emergency department attendances, and no tongue-biting or significant injuries. Sleep remains variable offshore; he is trialling earplugs and a fixed wind-down routine when feasible. He is agreeable to further remote reviews when onshore and will attend face-to-face if scheduling allows.\n\nPlan:\n- Continue current anti-seizure regimen unchanged for now, given stability of adverse effects and consistent adherence.\n- Arrange an onshore EEG and updated MRI brain (3T protocol) at the next available onshore window; patient is content to travel for the earliest slot.\n- Provide an employment-support letter outlining safety-critical task modifications offshore, based on current symptoms and frequency of q1 - 2d, to assist occupational health planning.\n- Recommend ongoing seizure diary entries, including sleep pattern, shift times, and any prodromal symptoms.\n- Schedule the next telephone review to align with his next onshore period in approximately 6–8 weeks, or sooner if events escalate or new features emerge.\n\nI will keep you updated after investigations. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 455,
+      "end": 475,
+      "text": "frequency of q1 - 2d",
+      "attributes": {
+        "Label": "1 per 1 to 2 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 468,
+      "end": 475,
+      "text": "q1 - 2d",
+      "attributes": {
+        "Label": "1 per 1 to 2 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4110,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 23 January 2021 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic by scheduled telephone consultation today, coordinated to coincide with his onshore rotation from offshore work. He reports continuing episodes occurring at a frequency of q1 - 2d, which he describes as brief spells with loss of awareness, occasional lip-smacking, and post-event confusion lasting several minutes. His partner has noticed intermittent right-hand fumbling during some events. He denies any clear triggers but notes that poor sleep offshore and variable shift patterns may precede clusters. No new head injuries, alcohol intake is low offshore and modest onshore, and he remains compliant with medication by using a pill organiser and alarms.\n\nHe is currently taking Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. without recent dose changes. He reports mild irritability on Levetiracetam and sporadic headaches, but no rashes, visual disturbance, or gastrointestinal adverse effects. He has not missed doses during the current rotation. He has workplace support to avoid working at height or near open water during higher-risk periods, and he confirms adherence to driving restrictions as previously advised. He keeps a seizure diary and has shared entries corroborating the reported frequency of q1 - 2d over the past six weeks, with two short clusters during night shifts offshore.\n\nNeurological review of systems is otherwise unremarkable. There have been no emergency department attendances, and no tongue-biting or significant injuries. Sleep remains variable offshore; he is trialling earplugs and a fixed wind-down routine when feasible. He is agreeable to further remote reviews when onshore and will attend face-to-face if scheduling allows.\n\nPlan:\n- Continue current anti-seizure regimen unchanged for now, given stability of adverse effects and consistent adherence.\n- Arrange an onshore EEG and updated MRI brain (3T protocol) at the next available onshore window; patient is content to travel for the earliest slot.\n- Provide an employment-support letter outlining safety-critical task modifications offshore, based on current symptoms and frequency of q1 - 2d, to assist occupational health planning.\n- Recommend ongoing seizure diary entries, including sleep pattern, shift times, and any prodromal symptoms.\n- Schedule the next telephone review to align with his next onshore period in approximately 6–8 weeks, or sooner if events escalate or new features emerge.\n\nI will keep you updated after investigations. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter repeatedly states the patient's current seizure/event frequency as 'q1 - 2d'. This appears three times and is corroborated by a seizure diary over the past six weeks. 'q1 - 2d' in clinical shorthand means every 1 to 2 days. There are mentions of two short clusters during night shifts offshore, but the primary and most explicit frequency is 'q1 - 2d'. Per the rules, choose the highest frequency if multiple exist; here the explicit numeric frequency is every 1 to 2 days, which normalizes to '1 to 2 per day' or '1 per 1 to 2 days'. The allowed output format for this phrasing is '<value1> per <value2> <day|week|month|year>'. Converting 'every 1 to 2 days' yields '1 per 1 to 2 day'.",
+      "seizure_frequency_number": [
+        "1 per 1 to 2 day",
+        "frequency of q1 - 2d"
+      ],
+      "reference": [
+        "1 per 1 to 2 day",
+        "q1 - 2d"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gan_11562",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSouth Thames NHS Neurology Service\nNeurosciences Outpatients, St Mark’s Hospital, London, SW1A 2AB\n\nDear Dr Patel,\n\nJames Walker, DOB: 14-07-1987, Hospital No: H592031 NHS No. 8475629301\n12 Orchard Close, Bromley, BR1 3XY\n\nReason for letter:\n\nAdministrative guidance for arranging a sleep-deprived EEG.\n\nSummary:\n\nThe patient undertakes gardening/groundskeeping work outdoors with variable heat exposure and periods of prolonged exertion depending on the season. To optimise recording quality and minimise scheduling disruption, please arrange a sleep-deprived EEG with the following administrative instructions:\n\n- Sleep deprivation: Limit sleep to 4–5 hours the night before; avoid daytime naps.\n- Hydration and safety: Encourage liberal oral fluids; avoid caffeine/energy drinks for 12 hours pre-test; bring water to the appointment.\n- Work planning: Prefer early morning appointment (08:00–10:00) on a non-intensive workday to reduce fatigue-related safety risks post-test.\n- Transport: Advise avoiding driving or operating machinery for the remainder of the day after the test; arrange alternative transport if needed.\n- Medications: Continue regular prescribed medicines unless we advise otherwise; bring a current medication list.\n- Triggers/environment: As work is outdoors, please ensure headwear/hair is clean and dry on the day; avoid hair products to facilitate electrode adhesion.\n- Duration: Allow 60–90 minutes total, including preparation and recovery time.\n\nAction:\n\nPlease book the sleep-deprived EEG at the next available morning slot and provide the above instructions in the appointment letter. Copy appointment details to our clinic secretary for tracking. We will review results in the next routine follow-up or sooner if advised by the neurophysiology report.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11562,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSouth Thames NHS Neurology Service\nNeurosciences Outpatients, St Mark’s Hospital, London, SW1A 2AB\n\nDear Dr Patel,\n\nJames Walker, DOB: 14-07-1987, Hospital No: H592031 NHS No. 8475629301\n12 Orchard Close, Bromley, BR1 3XY\n\nReason for letter:\n\nAdministrative guidance for arranging a sleep-deprived EEG.\n\nSummary:\n\nThe patient undertakes gardening/groundskeeping work outdoors with variable heat exposure and periods of prolonged exertion depending on the season. To optimise recording quality and minimise scheduling disruption, please arrange a sleep-deprived EEG with the following administrative instructions:\n\n- Sleep deprivation: Limit sleep to 4–5 hours the night before; avoid daytime naps.\n- Hydration and safety: Encourage liberal oral fluids; avoid caffeine/energy drinks for 12 hours pre-test; bring water to the appointment.\n- Work planning: Prefer early morning appointment (08:00–10:00) on a non-intensive workday to reduce fatigue-related safety risks post-test.\n- Transport: Advise avoiding driving or operating machinery for the remainder of the day after the test; arrange alternative transport if needed.\n- Medications: Continue regular prescribed medicines unless we advise otherwise; bring a current medication list.\n- Triggers/environment: As work is outdoors, please ensure headwear/hair is clean and dry on the day; avoid hair products to facilitate electrode adhesion.\n- Duration: Allow 60–90 minutes total, including preparation and recovery time.\n\nAction:\n\nPlease book the sleep-deprived EEG at the next available morning slot and provide the above instructions in the appointment letter. Copy appointment details to our clinic secretary for tracking. We will review results in the next routine follow-up or sooner if advised by the neurophysiology report.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Reviewed the letter for any mention of seizures, seizure frequency, or seizure-free duration. The content is purely administrative guidance for arranging a sleep-deprived EEG and discusses logistics (sleep, hydration, transport, medications) without referencing seizures, epilepsy, or any frequency or duration. Therefore, per the rule that if the letter does not mention seizures at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter with scheduling guidance for a sleep-deprived EEG related to epilepsy (admin only)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

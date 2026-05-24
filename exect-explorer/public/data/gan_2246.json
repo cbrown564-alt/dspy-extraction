@@ -1,0 +1,59 @@
+{
+  "id": "gan_2246",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 July 2014 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Naveen Iqbal (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Fiona McKay (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace considerations and rescue plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n\n2. Lamotrigine 100 mg twice daily\n\nPresent Seizure Frequency:\n\nabout 7 to 8 seizures in the last three weeks\n\nContext:\n\nThe patient reports working full-time in a cold-chain warehouse where ambient temperatures are routinely below -20°C. They wear insulated gloves and layered PPE, which they find makes fine motor tasks slower. They have noted that retrieving and opening their midazolam rescue device can be delayed in this setting, particularly when hands are numb from cold. No intercurrent illness, sleep deprivation, or missed doses reported. Caffeine intake minimal; alcohol nil. No new medications.\n\nPlan of Action:\n\n- Given the report of about 7 to 8 seizures in the last three weeks in the context of confirmed generalised epilepsy, we will arrange an urgent drug level check (valproate trough and lamotrigine level) and repeat FBC/LFTs within the next 7 days.\n- Workplace adjustments: the patient will discuss with their employer the feasibility of carrying a rescue device in an inner pocket to reduce cold exposure, and keeping a duplicate device in a break-room refrigerator at 2–8°C rather than the freezer area. A small break-glass pouch with easy-pull tab may help when using gloves; the patient will trial this and report back.\n- Safety: colleagues at the warehouse have been briefed on a stepwise seizure first-aid protocol and know when to call 999 if seizures cluster or last >5 minutes. The patient prefers a discrete alert card in their lanyard; this has been provided.\n- Monitoring: seizure diary to continue, with specific note of shift time, temperature zone, and any delays in accessing rescue medication.\n- Follow-up: telephone review in 2 weeks to assess frequency and access issues, with an in-person clinic review in 6 weeks. If levels are subtherapeutic or seizures persist, we will consider dose optimisation at that point.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 522,
+      "end": 567,
+      "text": "about 7 to 8 seizures in the last three weeks",
+      "attributes": {
+        "Label": "7 to 8 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 522,
+      "end": 567,
+      "text": "about 7 to 8 seizures in the last three weeks",
+      "attributes": {
+        "Label": "7 to 8 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2246,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 July 2014 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Naveen Iqbal (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Fiona McKay (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace considerations and rescue plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n\n2. Lamotrigine 100 mg twice daily\n\nPresent Seizure Frequency:\n\nabout 7 to 8 seizures in the last three weeks\n\nContext:\n\nThe patient reports working full-time in a cold-chain warehouse where ambient temperatures are routinely below -20°C. They wear insulated gloves and layered PPE, which they find makes fine motor tasks slower. They have noted that retrieving and opening their midazolam rescue device can be delayed in this setting, particularly when hands are numb from cold. No intercurrent illness, sleep deprivation, or missed doses reported. Caffeine intake minimal; alcohol nil. No new medications.\n\nPlan of Action:\n\n- Given the report of about 7 to 8 seizures in the last three weeks in the context of confirmed generalised epilepsy, we will arrange an urgent drug level check (valproate trough and lamotrigine level) and repeat FBC/LFTs within the next 7 days.\n- Workplace adjustments: the patient will discuss with their employer the feasibility of carrying a rescue device in an inner pocket to reduce cold exposure, and keeping a duplicate device in a break-room refrigerator at 2–8°C rather than the freezer area. A small break-glass pouch with easy-pull tab may help when using gloves; the patient will trial this and report back.\n- Safety: colleagues at the warehouse have been briefed on a stepwise seizure first-aid protocol and know when to call 999 if seizures cluster or last >5 minutes. The patient prefers a discrete alert card in their lanyard; this has been provided.\n- Monitoring: seizure diary to continue, with specific note of shift time, temperature zone, and any delays in accessing rescue medication.\n- Follow-up: telephone review in 2 weeks to assess frequency and access issues, with an in-person clinic review in 6 weeks. If levels are subtherapeutic or seizures persist, we will consider dose optimisation at that point.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency as \"about 7 to 8 seizures in the last three weeks.\" This provides a numeric range and a time window. Normalize to the allowed format using the range as <value1> and the period as 3 weeks: \"7 to 8 per 3 week.\" No other frequencies are provided. No need to convert to per week; the format allows ranges and multi-week units.",
+      "seizure_frequency_number": [
+        "7 to 8 per 3 week",
+        "about 7 to 8 seizures in the last three weeks"
+      ],
+      "reference": [
+        "7 to 8 per 3 week",
+        "about 7 to 8 seizures in the last three weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1636",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 September 2021 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening events and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under ongoing evaluation; classification not yet determined.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg twice daily\n\nPresent Seizure Frequency:\n\ntwo drop attacks and three petit mal in last month\n\nClinical Update and Concern:\n\nOver the past six weeks the patient reports clear deterioration. Specifically, aura characteristics have changed from a brief metallic taste to a new pattern of sudden heat flush, muffled hearing, and a rapid sense of detachment lasting 5–10 seconds, now evolving more quickly into impaired awareness. There is no consistent precipitant identified. Witness accounts describe abrupt loss of tone with forward slump on two occasions, resulting in minor facial bruising, and three brief staring spells with lip-smacking and unresponsiveness, each under one minute, followed by fatigue and headache. No recent intercurrent illness, alcohol, or sleep deprivation reported.\n\nExamination today is non-focal. Bloods last month (U&Es, LFTs, FBC) were within reference ranges. Lamotrigine and topiramate levels are not routinely measured here but adherence appears good by patient report and pharmacy refill history. A prior MRI (18 months ago) was unremarkable. Given the evolving auras and more rapid progression to events, this represents a deterioration from the previous stable period.\n\nPlan of Action:\n\n1) Safety: Advised strict adherence to seizure precautions including avoidance of heights, swimming unsupervised, and cooking with open flames. Reinforced DVLA guidance regarding events with impaired awareness or drop attacks; the patient understands not to drive.\n\n2) Medication: Increase topiramate from 50 mg twice daily to 50 mg in the morning and 75 mg at night for one week, then 75 mg twice daily thereafter if tolerated. Maintain lamotrigine at the current dose for now.\n\n3) Rescue strategy: Provided written advice for carers regarding recovery position and timing of events; no home rescue medication initiated at this stage as events remain brief without convulsive generalisation.\n\n4) Investigations: Arrange urgent outpatient video-EEG with hyperventilation and photic stimulation, and repeat MRI brain with epilepsy protocol given the change in semiology. We will also screen for metabolic precipitants (glucose, magnesium) and repeat routine bloods.\n\n5) Follow-up: I have brought the review forward to 6 weeks. If events continue or worsen despite the above adjustment, we will discuss alternative therapy at that visit.\n\nPlease let me know if you have any concerns in the interim.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 578,
+      "end": 628,
+      "text": "two drop attacks and three petit mal in last month",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 578,
+      "end": 628,
+      "text": "two drop attacks and three petit mal in last month",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1636,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 September 2021 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening events and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under ongoing evaluation; classification not yet determined.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg twice daily\n\nPresent Seizure Frequency:\n\ntwo drop attacks and three petit mal in last month\n\nClinical Update and Concern:\n\nOver the past six weeks the patient reports clear deterioration. Specifically, aura characteristics have changed from a brief metallic taste to a new pattern of sudden heat flush, muffled hearing, and a rapid sense of detachment lasting 5–10 seconds, now evolving more quickly into impaired awareness. There is no consistent precipitant identified. Witness accounts describe abrupt loss of tone with forward slump on two occasions, resulting in minor facial bruising, and three brief staring spells with lip-smacking and unresponsiveness, each under one minute, followed by fatigue and headache. No recent intercurrent illness, alcohol, or sleep deprivation reported.\n\nExamination today is non-focal. Bloods last month (U&Es, LFTs, FBC) were within reference ranges. Lamotrigine and topiramate levels are not routinely measured here but adherence appears good by patient report and pharmacy refill history. A prior MRI (18 months ago) was unremarkable. Given the evolving auras and more rapid progression to events, this represents a deterioration from the previous stable period.\n\nPlan of Action:\n\n1) Safety: Advised strict adherence to seizure precautions including avoidance of heights, swimming unsupervised, and cooking with open flames. Reinforced DVLA guidance regarding events with impaired awareness or drop attacks; the patient understands not to drive.\n\n2) Medication: Increase topiramate from 50 mg twice daily to 50 mg in the morning and 75 mg at night for one week, then 75 mg twice daily thereafter if tolerated. Maintain lamotrigine at the current dose for now.\n\n3) Rescue strategy: Provided written advice for carers regarding recovery position and timing of events; no home rescue medication initiated at this stage as events remain brief without convulsive generalisation.\n\n4) Investigations: Arrange urgent outpatient video-EEG with hyperventilation and photic stimulation, and repeat MRI brain with epilepsy protocol given the change in semiology. We will also screen for metabolic precipitants (glucose, magnesium) and repeat routine bloods.\n\n5) Follow-up: I have brought the review forward to 6 weeks. If events continue or worsen despite the above adjustment, we will discuss alternative therapy at that visit.\n\nPlease let me know if you have any concerns in the interim.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: \"two drop attacks and three petit mal in last month.\" This gives concrete counts within the same period (last month). Following the rule to sum frequencies when they are in the same time dimension, total events in the last month = 2 + 3 = 5. Normalize to the allowed format as '5 per month.'",
+      "seizure_frequency_number": [
+        "5 per month",
+        "two drop attacks and three petit mal in last month"
+      ],
+      "reference": [
+        "5 per month",
+        "two drop attacks and three petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

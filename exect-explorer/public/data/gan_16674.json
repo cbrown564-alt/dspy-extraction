@@ -1,0 +1,59 @@
+{
+  "id": "gan_16674",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 7 October 2011 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophie Bennett, DOB: 12-03-1998, Hospital No: H938420 NHS No. 5837201496  \n14 Brookfield Road, London, W10 5PR \n\nMedication: \n\nLamotrigine 100 mg twice daily, continued. Tolerated well with stable mood and no reported rash. Menstrual-related pattern improved under the existing approach. \n\nI reviewed Sophie Bennett in clinic today for known focal epilepsy. She reports a steady improvement overall with fewer events and shorter duration when they do occur. The family have kept a simple diary, which supports this trajectory. In Apr she experienced four short absences in a cluster (self-limited). In Jul there was 2 further brief absences, and in Sep another at school (not witnessed by family). There have been no convulsions, no injuries, and recovery has been rapid after each brief episode. She and her parents feel control is better compared to earlier in the year, and there has been no deterioration with school return. \n\nThe semiology remains consistent with focal onset: brief behavioural arrest with staring and loss of contact for seconds, occasional right-hand fidgeting, and prompt return to baseline without post-ictal confusion. No nocturnal events have been reported. She continues to identify menses as a prior trigger; however, with the current regimen and routine sleep measures, the perimenstrual clustering has lessened and the last cycle passed without events. \n\nExamination today was normal. There are no adverse effects of medication reported, and adherence is good. We discussed usual safety advice including sleep regularity and illness management; no changes in school activity are required. \n\nPlan: continue Lamotrigine 100 mg twice daily unchanged. Keep seizure diary and note temporal relation to menses. We will monitor for any return of clustering; at present, given the improvement and absence of functional impact, no dose adjustment is indicated. \n\nFollow-up in six months, sooner if there is any escalation in frequency, injury, or change in semiology. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 714,
+      "end": 844,
+      "text": "In Apr she experienced four short absences in a cluster... In Jul there was 2 further brief absences, and in Sep another at school",
+      "attributes": {
+        "Label": "7 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 714,
+      "end": 883,
+      "text": "In Apr she experienced four short absences in a cluster (self-limited). In Jul there was 2 further brief absences, and in Sep another at school (not witnessed by family)",
+      "attributes": {
+        "Label": "7 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16674,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 7 October 2011 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophie Bennett, DOB: 12-03-1998, Hospital No: H938420 NHS No. 5837201496  \n14 Brookfield Road, London, W10 5PR \n\nMedication: \n\nLamotrigine 100 mg twice daily, continued. Tolerated well with stable mood and no reported rash. Menstrual-related pattern improved under the existing approach. \n\nI reviewed Sophie Bennett in clinic today for known focal epilepsy. She reports a steady improvement overall with fewer events and shorter duration when they do occur. The family have kept a simple diary, which supports this trajectory. In Apr she experienced four short absences in a cluster (self-limited). In Jul there was 2 further brief absences, and in Sep another at school (not witnessed by family). There have been no convulsions, no injuries, and recovery has been rapid after each brief episode. She and her parents feel control is better compared to earlier in the year, and there has been no deterioration with school return. \n\nThe semiology remains consistent with focal onset: brief behavioural arrest with staring and loss of contact for seconds, occasional right-hand fidgeting, and prompt return to baseline without post-ictal confusion. No nocturnal events have been reported. She continues to identify menses as a prior trigger; however, with the current regimen and routine sleep measures, the perimenstrual clustering has lessened and the last cycle passed without events. \n\nExamination today was normal. There are no adverse effects of medication reported, and adherence is good. We discussed usual safety advice including sleep regularity and illness management; no changes in school activity are required. \n\nPlan: continue Lamotrigine 100 mg twice daily unchanged. Keep seizure diary and note temporal relation to menses. We will monitor for any return of clustering; at present, given the improvement and absence of functional impact, no dose adjustment is indicated. \n\nFollow-up in six months, sooner if there is any escalation in frequency, injury, or change in semiology. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter lists specific seizure counts over recent months in the same year up to the clinic date (7 October 2011): April had 4 short absences in a cluster, July had 2 further brief absences, and September had another (1) at school. Total events mentioned = 4 + 2 + 1 = 7 over April through September, which is a 6-month span (Apr, May, Jun, Jul, Aug, Sep). No other seizures (e.g., convulsions) are reported. Therefore, the current seizure frequency inferred from the documented period is 7 per 6 months. Not seizure-free for 6 months because September had an event.",
+      "seizure_frequency_number": [
+        "7 per 6 month",
+        "In Apr she experienced four short absences in a cluster... In Jul there was 2 further brief absences, and in Sep another at school"
+      ],
+      "reference": [
+        "7 per 6 month",
+        "In Apr she experienced four short absences in a cluster (self-limited). In Jul there was 2 further brief absences, and in Sep another at school (not witnessed by family)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

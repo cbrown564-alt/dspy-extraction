@@ -1,0 +1,65 @@
+{
+  "id": "gan_5504",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nDaniel Hughes, DOB: 12-05-1991, Hospital No: H583920 NHS No. 9081763452  \nFlat 4, 22 Kingfisher Court, London, W10 6AB \n\nMedication: \n\nLevetiracetam 1 g twice daily. Reported tolerability is good with only mild intermittent fatigue, no mood change. \n\nHistory since last review: \n\nHe works on construction sites involving heights and intermittent use of powered machinery. He reports \"Sporadic jerks this year\" occurring mainly in the early mornings shortly after waking, described as brief shock-like twitches of both arms without loss of awareness. No prolonged episodes, collapses, tongue-biting, or incontinence. No emergency attendances. Sleep deprivation and missed meals appear to precede some events; caffeine intake has been higher on shift-change weeks. Alcohol minimal. No new medications or recreational drugs. \n\nExamination today was normal including gait and coordination. He has had no recent head injuries. \n\nPlan: \n\n- Continue levetiracetam 1 g twice daily. If morning jerks become more frequent or evolve, we will consider dose escalation after review. \n- He will keep a simple diary of sleep patterns, shift times, and any jerks to help correlate triggers. \n- We discussed workplace safety: he will avoid working at unprotected heights or operating heavy machinery on any day he experiences morning jerks, and inform his site supervisor per company policy. \n- Routine bloods (U&E, FBC, LFTs) requested to monitor general health. \n- We will arrange an EEG and an MRI brain if not done previously in this service; results to be copied to you. \n\nFollow-up: \n\nReview in four months, sooner if events increase or any prolonged loss of awareness occurs. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 572,
+      "end": 596,
+      "text": "Sporadic jerks this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 572,
+      "end": 596,
+      "text": "Sporadic jerks this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5504,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nDaniel Hughes, DOB: 12-05-1991, Hospital No: H583920 NHS No. 9081763452  \nFlat 4, 22 Kingfisher Court, London, W10 6AB \n\nMedication: \n\nLevetiracetam 1 g twice daily. Reported tolerability is good with only mild intermittent fatigue, no mood change. \n\nHistory since last review: \n\nHe works on construction sites involving heights and intermittent use of powered machinery. He reports \"Sporadic jerks this year\" occurring mainly in the early mornings shortly after waking, described as brief shock-like twitches of both arms without loss of awareness. No prolonged episodes, collapses, tongue-biting, or incontinence. No emergency attendances. Sleep deprivation and missed meals appear to precede some events; caffeine intake has been higher on shift-change weeks. Alcohol minimal. No new medications or recreational drugs. \n\nExamination today was normal including gait and coordination. He has had no recent head injuries. \n\nPlan: \n\n- Continue levetiracetam 1 g twice daily. If morning jerks become more frequent or evolve, we will consider dose escalation after review. \n- He will keep a simple diary of sleep patterns, shift times, and any jerks to help correlate triggers. \n- We discussed workplace safety: he will avoid working at unprotected heights or operating heavy machinery on any day he experiences morning jerks, and inform his site supervisor per company policy. \n- Routine bloods (U&E, FBC, LFTs) requested to monitor general health. \n- We will arrange an EEG and an MRI brain if not done previously in this service; results to be copied to you. \n\nFollow-up: \n\nReview in four months, sooner if events increase or any prolonged loss of awareness occurs. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing events: “Sporadic jerks this year” occurring mainly in early mornings, brief twitches without loss of awareness. No explicit numeric frequency (per day/week/month/year) is provided. There is no statement of seizure freedom for ≥6 months. Therefore, seizures are present but the specific frequency cannot be determined. Per instructions, return 'unknown' when seizures are mentioned but frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Sporadic jerks this year"
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic jerks this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

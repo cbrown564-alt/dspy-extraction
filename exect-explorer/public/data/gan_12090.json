@@ -1,0 +1,59 @@
+{
+  "id": "gan_12090",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Amelia Shah\nElm Row Medical Centre\n\n12 Elm Row, London, SE5 9HT\nDear Dr Amelia Shah\nMichael Carter, DOB: 14-03-1990, Hospital No: H829417 NHS No. 7483926157\n22B Kestrel Court, Dulwich, London, SE21 8LA \n\nI reviewed the above patient in the Neurology Clinic today. As you know, he has a diagnosis of focal epilepsy, with semiology suggestive of right frontal onset based on his description of brief jerks and a sense of internal tension preceding events. He was last seen by our service in March 2025, at which point a gradual reduction of lacosamide was completed and brivaracetam was introduced.\n\nSince his last review, he reports that focal myoclonic occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically two - three events per year. He associates the clusters of evening myoclonus with fatigue after longer workdays and increased screen time. There have been no reported injuries, tongue biting, or incontinence with recent events. His partner notes brief startle-like jerks of the left arm and shoulder, occasionally with a momentary pause in speech, but preserved awareness in the majority of episodes.\n\nCurrent treatment is lamotrigine 150 mg b.d. and brivaracetam 100 mg b.d. He has tolerated this combination well with only intermittent mild dizziness in the mornings, no mood change, and stable sleep. He does not drive. There is no recent intercurrent illness, alcohol intake is minimal, and adherence is good by pill count and patient report. He uses a seizure diary which correlates with the above pattern. \n\nWe discussed seizure safety, work adjustments, and strategies to reduce evening triggers. He is awaiting a routine outpatient EEG with sleep activation next month and has a brain MRI (epilepsy protocol) scheduled thereafter due to the focal history and to update imaging (last MRI 2018 reported normal). Bloods today were taken for full blood count, U&E, LFTs, and lamotrigine level for baseline reference.\n\nPlan:\n- Continue lamotrigine 150 mg b.d. and brivaracetam 100 mg b.d. pending EEG and MRI results.\n- Maintain seizure diary with emphasis on timing, precipitating factors, and associated focal features.\n- Provide written advice on evening screen-time reduction and sleep hygiene (patient reported late-evening screen use preceding myoclonus).\n- Telephone review in 8 weeks to consider optimisation depending on EEG/imaging and diary trends; face-to-face in 4 months.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 700,
+      "end": 745,
+      "text": "focal myoclonic occur several times each week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 700,
+      "end": 857,
+      "text": "focal myoclonic occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically two - three events per year",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12090,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Amelia Shah\nElm Row Medical Centre\n\n12 Elm Row, London, SE5 9HT\nDear Dr Amelia Shah\nMichael Carter, DOB: 14-03-1990, Hospital No: H829417 NHS No. 7483926157\n22B Kestrel Court, Dulwich, London, SE21 8LA \n\nI reviewed the above patient in the Neurology Clinic today. As you know, he has a diagnosis of focal epilepsy, with semiology suggestive of right frontal onset based on his description of brief jerks and a sense of internal tension preceding events. He was last seen by our service in March 2025, at which point a gradual reduction of lacosamide was completed and brivaracetam was introduced.\n\nSince his last review, he reports that focal myoclonic occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically two - three events per year. He associates the clusters of evening myoclonus with fatigue after longer workdays and increased screen time. There have been no reported injuries, tongue biting, or incontinence with recent events. His partner notes brief startle-like jerks of the left arm and shoulder, occasionally with a momentary pause in speech, but preserved awareness in the majority of episodes.\n\nCurrent treatment is lamotrigine 150 mg b.d. and brivaracetam 100 mg b.d. He has tolerated this combination well with only intermittent mild dizziness in the mornings, no mood change, and stable sleep. He does not drive. There is no recent intercurrent illness, alcohol intake is minimal, and adherence is good by pill count and patient report. He uses a seizure diary which correlates with the above pattern. \n\nWe discussed seizure safety, work adjustments, and strategies to reduce evening triggers. He is awaiting a routine outpatient EEG with sleep activation next month and has a brain MRI (epilepsy protocol) scheduled thereafter due to the focal history and to update imaging (last MRI 2018 reported normal). Bloods today were taken for full blood count, U&E, LFTs, and lamotrigine level for baseline reference.\n\nPlan:\n- Continue lamotrigine 150 mg b.d. and brivaracetam 100 mg b.d. pending EEG and MRI results.\n- Maintain seizure diary with emphasis on timing, precipitating factors, and associated focal features.\n- Provide written advice on evening screen-time reduction and sleep hygiene (patient reported late-evening screen use preceding myoclonus).\n- Telephone review in 8 weeks to consider optimisation depending on EEG/imaging and diary trends; face-to-face in 4 months.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies mentioned. The letter states: 'focal myoclonic occur several times each week' and 'Generalised convulsions seizures are rare, typically two - three events per year.' Apply the rule to choose the highest frequency across types. 'Several times each week' is higher frequency than 'two - three per year'. Convert vague 'several times each week' to allowed format using 'multiple' when exact number is not given. Therefore final label: 'multiple per week'.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "focal myoclonic occur several times each week"
+      ],
+      "reference": [
+        "multiple per week",
+        "focal myoclonic occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically two - three events per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

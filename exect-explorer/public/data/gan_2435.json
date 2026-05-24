@@ -1,0 +1,59 @@
+{
+  "id": "gan_2435",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Priya Menon\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, Queen Square, London WC1N 3BG\n\nDear Dr Priya Menon,\n\nAlex Morgan, DOB: 21-09-2003, Hospital No: U918374 NHS No. 4839201756\nFlat 4, 12 Crescent Lane, London, WC1E 7AB\n\nSummary/Diagnoses: Epilepsy with prior head injury reported in adolescence; exam stress and prolonged study hours; sleep disruption; reports low mood at times; no recreational drug use; occasional caffeine use; non-smoker.\n\nMedication: Levetiracetam 1000 mg twice daily. Carbamazepine (Tegretol Retard) 400 mg twice daily. Topiramate 75 mg in the morning and 100 mg in the evening. Vitamin D and calcium supplements patient-reported.\n\nI reviewed Alex Morgan in clinic today. He attended alone and provided the history. He is a university student approaching end-of-term examinations and reports long study hours, frequently revising past midnight with irregular sleep. He describes increased academic pressure over the last month and intermittent missed meals. He denies recent intercurrent illness.\n\nSeizures: He keeps a brief phone diary and reports five to seven seizures during the last two weeks. He states these have been brief events without clear injury, occurring more often in the evening after prolonged study. There were no witnessed episodes available for corroboration today, and he has not presented to emergency care. He reports generally good adherence to medication but admits to missing “one or two” evening doses in the past fortnight during late study sessions.\n\nExamination: Alert and oriented. Speech fluent. Cranial nerves intact. No focal motor deficit; coordination and gait normal. Cardiovascular and respiratory examinations unremarkable. No tongue biting or injuries noted. Weight stable by patient report.\n\nInvestigations: No recent blood tests available today; last routine monitoring reportedly done by his GP earlier this year per patient recall. No recent neuroimaging since prior review. He has not used a seizure alarm or wearable device.\n\nPlan:\n- Continue current antiseizure medications without change today.\n- Encourage a regular sleep schedule and consistent medication adherence; he agreed to set phone reminders.\n- Ask practice to confirm date and results of most recent blood monitoring (U&E, LFTs, FBC) and arrange if overdue.\n- Provide a brief coursework/exam support note confirming recent seizure recurrence and the importance of regular sleep and dosing, as requested by the student support service.\n- Safety advice reviewed, including avoidance of sleep deprivation and maintaining hydration and nutrition during revision periods.\n- Follow-up in 6–8 weeks, or sooner if seizure frequency increases, injuries occur, or adherence issues persist.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1216,
+      "end": 1272,
+      "text": "reports five to seven seizures during the last two weeks",
+      "attributes": {
+        "Label": "5 to 7 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1224,
+      "end": 1272,
+      "text": "five to seven seizures during the last two weeks",
+      "attributes": {
+        "Label": "5 to 7 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2435,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Priya Menon\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, Queen Square, London WC1N 3BG\n\nDear Dr Priya Menon,\n\nAlex Morgan, DOB: 21-09-2003, Hospital No: U918374 NHS No. 4839201756\nFlat 4, 12 Crescent Lane, London, WC1E 7AB\n\nSummary/Diagnoses: Epilepsy with prior head injury reported in adolescence; exam stress and prolonged study hours; sleep disruption; reports low mood at times; no recreational drug use; occasional caffeine use; non-smoker.\n\nMedication: Levetiracetam 1000 mg twice daily. Carbamazepine (Tegretol Retard) 400 mg twice daily. Topiramate 75 mg in the morning and 100 mg in the evening. Vitamin D and calcium supplements patient-reported.\n\nI reviewed Alex Morgan in clinic today. He attended alone and provided the history. He is a university student approaching end-of-term examinations and reports long study hours, frequently revising past midnight with irregular sleep. He describes increased academic pressure over the last month and intermittent missed meals. He denies recent intercurrent illness.\n\nSeizures: He keeps a brief phone diary and reports five to seven seizures during the last two weeks. He states these have been brief events without clear injury, occurring more often in the evening after prolonged study. There were no witnessed episodes available for corroboration today, and he has not presented to emergency care. He reports generally good adherence to medication but admits to missing “one or two” evening doses in the past fortnight during late study sessions.\n\nExamination: Alert and oriented. Speech fluent. Cranial nerves intact. No focal motor deficit; coordination and gait normal. Cardiovascular and respiratory examinations unremarkable. No tongue biting or injuries noted. Weight stable by patient report.\n\nInvestigations: No recent blood tests available today; last routine monitoring reportedly done by his GP earlier this year per patient recall. No recent neuroimaging since prior review. He has not used a seizure alarm or wearable device.\n\nPlan:\n- Continue current antiseizure medications without change today.\n- Encourage a regular sleep schedule and consistent medication adherence; he agreed to set phone reminders.\n- Ask practice to confirm date and results of most recent blood monitoring (U&E, LFTs, FBC) and arrange if overdue.\n- Provide a brief coursework/exam support note confirming recent seizure recurrence and the importance of regular sleep and dosing, as requested by the student support service.\n- Safety advice reviewed, including avoidance of sleep deprivation and maintaining hydration and nutrition during revision periods.\n- Follow-up in 6–8 weeks, or sooner if seizure frequency increases, injuries occur, or adherence issues persist.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"reports five to seven seizures during the last two weeks.\" This provides a numeric range and a clear time window. Convert to the allowed format as a range per 2 weeks. No other conflicting frequencies are provided. Therefore, the normalized label is \"5 to 7 per 2 week.\"",
+      "seizure_frequency_number": [
+        "5 to 7 per 2 week",
+        "reports five to seven seizures during the last two weeks"
+      ],
+      "reference": [
+        "5 to 7 per 2 week",
+        "five to seven seizures during the last two weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

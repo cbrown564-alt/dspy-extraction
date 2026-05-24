@@ -1,0 +1,54 @@
+{
+  "id": "gan_7506",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 16 October 2019 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical update and medication review\n\nDear Priya,\n\nEpilepsy diagnosis:\n\nFocal epilepsy\n\nPresent medication:\n\n1. Carbamazepine MR 400 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nCurrent seizure description and frequency:\n\nPatient describes focal events arising from sleep with brief motor involvement and preserved awareness on some occasions, occasionally progressing to impaired awareness. The pattern has become less predictable recently; exact frequency is not clear at present.\n\nClinical course and concerns:\n\nThe patient previously reported better control over the past year, but over recent weeks there has been a relapse with a noticeable increase in nocturnal focal episodes, though they are not able to quantify how often. They deny new precipitants, and adherence is reported. There is increased morning post-event headache and fatigue, suggesting deterioration in control compared with their prior baseline.\n\nPlan of action:\n\n- Arrange ambulatory EEG and serum lamotrigine/carbamazepine levels to guide dose optimisation.\n- Reinforce seizure diary use to clarify timing and characteristics, particularly nocturnal events.\n- Safety counselling reviewed (no unattended bathing, caution with heights, and avoidance of sleep deprivation).\n- Follow-up in 8–10 weeks to review investigations and consider treatment adjustment based on results and tolerability.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 760,
+      "end": 799,
+      "text": "exact frequency is not clear at present",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7506,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 16 October 2019 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical update and medication review\n\nDear Priya,\n\nEpilepsy diagnosis:\n\nFocal epilepsy\n\nPresent medication:\n\n1. Carbamazepine MR 400 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nCurrent seizure description and frequency:\n\nPatient describes focal events arising from sleep with brief motor involvement and preserved awareness on some occasions, occasionally progressing to impaired awareness. The pattern has become less predictable recently; exact frequency is not clear at present.\n\nClinical course and concerns:\n\nThe patient previously reported better control over the past year, but over recent weeks there has been a relapse with a noticeable increase in nocturnal focal episodes, though they are not able to quantify how often. They deny new precipitants, and adherence is reported. There is increased morning post-event headache and fatigue, suggesting deterioration in control compared with their prior baseline.\n\nPlan of action:\n\n- Arrange ambulatory EEG and serum lamotrigine/carbamazepine levels to guide dose optimisation.\n- Reinforce seizure diary use to clarify timing and characteristics, particularly nocturnal events.\n- Safety counselling reviewed (no unattended bathing, caution with heights, and avoidance of sleep deprivation).\n- Follow-up in 8–10 weeks to review investigations and consider treatment adjustment based on results and tolerability.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing seizures: 'focal events arising from sleep' with increased nocturnal episodes recently. However, it explicitly states that the exact frequency is not clear and the patient is not able to quantify how often. There are no numeric frequencies provided, and no indication of seizure freedom for 6 months or more. According to the rules, when seizures are mentioned but the specific frequency cannot be determined, the correct output is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "exact frequency is not clear at present"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures primarily focal motor from sleep—frequency varies"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

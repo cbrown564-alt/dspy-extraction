@@ -1,0 +1,59 @@
+{
+  "id": "gan_16021",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 7 May 2023 \n\nDr A. Rahman  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A. Rahman,\n\nDaniel Cooper, DOB: 22-11-1991, Hospital No: Q374920 NHS No. 9812563470  \nFlat 3, Maple View Assisted Living, 4 Station Road, London, N7 8HP  \n\nEpilepsy \n\nBackground and setting: Patient resides in assisted living and is supported by a key worker; key‑worker notes reviewed where available. Communication today was via scheduled telephone review with additional information from the support log. Some entries were partially garbled in the shared copy (e.g., characters such as Ã‚Â·, ï¿½, â€), but the timing and counts were clear.\n\nMedication: Currently on Lamotrigine dispersible 25 mg twice daily as per unit medication administration record. The key worker confirmed administration at approximately 08:00 and 20:00 with no missed doses documented in the last 8 weeks. No other regular anticonvulsants reported.\n\nLamotrigine Blood Level:\n- 20 April 2023: 2.3 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 25 mg twice daily.\n\nSeizures: In Feb he had 3 in sleep and one while awake. In Apr he had five in sleep and no while awake. These counts are consistent across the patient’s own diary and the assisted‑living incident forms. No additional auras or premonitory symptoms were recorded; recovery described as rapid with brief post‑event fatigue only. No clear triggers identified; sleep routine reported as stable. \n\nReview summary: The patient feels overall pattern is variable month‑to‑month, with nocturnal events more common. He denies injuries, tongue bite, or prolonged confusion. The key worker notes include reassurance measures and positioning guidance having been followed during episodes. No emergency medication has been used and no hospital attendances occurred over this period. Appetite and mood stable; weight unchanged. No rash, headache escalation, or diplopia reported. He remains engaged in daytime activities with staff prompting, and there are no safeguarding concerns raised by the unit. Some diary pages contained stray symbols (Ã©, â€, ï¿½) from a scanning artefact; figures above have been cross‑checked against the original paper log.\n\nPlan: Continue current lamotrigine dose while we monitor trends with the assisted‑living team. We have asked the key worker to continue structured logging (date, time, sleep/wake state, duration, recovery) and to flag any clustering, injuries, or prolonged events. We will revisit the dosing schedule if frequency increases or daytime episodes recur. Follow‑up in 3 months via telephone unless concerns arise sooner.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1128,
+      "end": 1221,
+      "text": "In Feb he had 3 in sleep and one while awake. In Apr he had five in sleep and no while awake.",
+      "attributes": {
+        "Label": "9 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1128,
+      "end": 1220,
+      "text": "In Feb he had 3 in sleep and one while awake. In Apr he had five in sleep and no while awake",
+      "attributes": {
+        "Label": "9 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16021,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 7 May 2023 \n\nDr A. Rahman  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A. Rahman,\n\nDaniel Cooper, DOB: 22-11-1991, Hospital No: Q374920 NHS No. 9812563470  \nFlat 3, Maple View Assisted Living, 4 Station Road, London, N7 8HP  \n\nEpilepsy \n\nBackground and setting: Patient resides in assisted living and is supported by a key worker; key‑worker notes reviewed where available. Communication today was via scheduled telephone review with additional information from the support log. Some entries were partially garbled in the shared copy (e.g., characters such as Ã‚Â·, ï¿½, â€), but the timing and counts were clear.\n\nMedication: Currently on Lamotrigine dispersible 25 mg twice daily as per unit medication administration record. The key worker confirmed administration at approximately 08:00 and 20:00 with no missed doses documented in the last 8 weeks. No other regular anticonvulsants reported.\n\nLamotrigine Blood Level:\n- 20 April 2023: 2.3 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 25 mg twice daily.\n\nSeizures: In Feb he had 3 in sleep and one while awake. In Apr he had five in sleep and no while awake. These counts are consistent across the patient’s own diary and the assisted‑living incident forms. No additional auras or premonitory symptoms were recorded; recovery described as rapid with brief post‑event fatigue only. No clear triggers identified; sleep routine reported as stable. \n\nReview summary: The patient feels overall pattern is variable month‑to‑month, with nocturnal events more common. He denies injuries, tongue bite, or prolonged confusion. The key worker notes include reassurance measures and positioning guidance having been followed during episodes. No emergency medication has been used and no hospital attendances occurred over this period. Appetite and mood stable; weight unchanged. No rash, headache escalation, or diplopia reported. He remains engaged in daytime activities with staff prompting, and there are no safeguarding concerns raised by the unit. Some diary pages contained stray symbols (Ã©, â€, ï¿½) from a scanning artefact; figures above have been cross‑checked against the original paper log.\n\nPlan: Continue current lamotrigine dose while we monitor trends with the assisted‑living team. We have asked the key worker to continue structured logging (date, time, sleep/wake state, duration, recovery) and to flag any clustering, injuries, or prolonged events. We will revisit the dosing schedule if frequency increases or daytime episodes recur. Follow‑up in 3 months via telephone unless concerns arise sooner.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit seizure counts in the letter: \"In Feb he had 3 in sleep and one while awake\" (3 + 1 = 4 in February) and \"In Apr he had five in sleep and no while awake\" (5 + 0 = 5 in April). 2) Determine the time span: The clinic date is 7 May 2023, and the months explicitly referenced are February and April, which together span a 3‑month interval (February through April). 3) Sum the explicitly reported seizures across that interval: 4 (Feb) + 5 (Apr) = 9 total over 3 months. 4) Normalize to the required format: 9 per 3 month.",
+      "seizure_frequency_number": [
+        "9 per 3 month",
+        "In Feb he had 3 in sleep and one while awake. In Apr he had five in sleep and no while awake."
+      ],
+      "reference": [
+        "9 per 3 month",
+        "In Feb he had 3 in sleep and one while awake. In Apr he had five in sleep and no while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

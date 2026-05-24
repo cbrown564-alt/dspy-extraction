@@ -1,0 +1,59 @@
+{
+  "id": "gan_8208",
+  "text": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 23-02-1991, Hospital No: H392741 NHS No. 9045127783  \n12 Brookview Close, Tooting, London SW17 8JP \n\nDiagnoses: \n\nRecurrent blackouts under investigation; a definitive seizure disorder has not been confirmed. \n\nCurrent Medication: \n\nNone for seizure prevention. \n\nPlan: \n\n- Continue observation and documentation using paper seizure calendar.  \n- Safety advice reinforced; avoid sleep deprivation and excess alcohol as general measures.  \n- MRI brain previously normal (report reviewed today).  \n- EEG arranged for comparative purposes; results to be sent to you and the patient.  \n- Follow up in 9 months, sooner if events recur. \n\nI reviewed Emily Carter in clinic today. They attended with their paper seizure calendar and brought their monthly logs to the appointment. We went through the entries together. No seizures documented during follow-up. The calendars have been consistently maintained and cross-checked with family observations, and there have been no episodes suggestive of convulsive or non-convulsive events since their last review. \n\nThey report feeling well, maintaining regular sleep, and have not identified any new triggers. As there is no current indication for anti-seizure medication, we will continue to monitor and proceed with the planned EEG for completeness. They understand to contact us promptly if they experience any new episodes or concerning symptoms. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1001,
+      "end": 1148,
+      "text": "No seizures documented during follow-up. ... there have been no episodes suggestive of convulsive or non-convulsive events since their last review.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1001,
+      "end": 1040,
+      "text": "No seizures documented during follow-up",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8208,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 23-02-1991, Hospital No: H392741 NHS No. 9045127783  \n12 Brookview Close, Tooting, London SW17 8JP \n\nDiagnoses: \n\nRecurrent blackouts under investigation; a definitive seizure disorder has not been confirmed. \n\nCurrent Medication: \n\nNone for seizure prevention. \n\nPlan: \n\n- Continue observation and documentation using paper seizure calendar.  \n- Safety advice reinforced; avoid sleep deprivation and excess alcohol as general measures.  \n- MRI brain previously normal (report reviewed today).  \n- EEG arranged for comparative purposes; results to be sent to you and the patient.  \n- Follow up in 9 months, sooner if events recur. \n\nI reviewed Emily Carter in clinic today. They attended with their paper seizure calendar and brought their monthly logs to the appointment. We went through the entries together. No seizures documented during follow-up. The calendars have been consistently maintained and cross-checked with family observations, and there have been no episodes suggestive of convulsive or non-convulsive events since their last review. \n\nThey report feeling well, maintaining regular sleep, and have not identified any new triggers. As there is no current indication for anti-seizure medication, we will continue to monitor and proceed with the planned EEG for completeness. They understand to contact us promptly if they experience any new episodes or concerning symptoms. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly reviews the patient's seizure calendar and states there have been no seizures during follow-up and no episodes since their last review. However, it does not provide exact dates or the length of the follow-up period since the last review. The clinic date is 21 September 2025, but without knowing the date of the last review, I cannot confirm a duration of at least 6 months. Therefore, the safest normalized label is 'seizure free for multiple months' per rule 8 when the exact duration cannot be confirmed but ongoing seizure freedom over a follow-up period is indicated.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up. ... there have been no episodes suggestive of convulsive or non-convulsive events since their last review."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

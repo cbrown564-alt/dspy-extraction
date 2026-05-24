@@ -1,0 +1,59 @@
+{
+  "id": "gan_1171",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nReason for review: Worsening seizure control following recent viral illness\n\nMedication: Lamotrigine dispersible, currently 25 mg twice daily\n\nLamotrigine blood level:\n28 September 2025: 1.2 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 25 mg twice daily.\n\nClinical summary:\nI conducted a telephone review with Susan Miller today following her report of a recent viral illness (fever, myalgia, and sore throat approximately four weeks ago) and a subsequent deterioration in her seizure control. She reports 7 to 9 focal onset seizures in three weeks, describing brief episodes of impaired awareness with lip-smacking and a sense of fear, typically lasting under one minute and followed by mild confusion. These events were witnessed on two occasions at home by a family member. She denies generalised convulsions, tongue biting, or incontinence. There are no consistent auras reported, and no clear nocturnal clustering.\n\nComparison to prior baseline:\nPrior to the viral illness, she described several months of relative stability without clear events interfering with daily activities. The recent cluster represents a significant change from her usual pattern and indicates deterioration in control.\n\nAdherence and tolerability:\nShe reports taking lamotrigine as prescribed, without missed doses. No rash, no diplopia, and no gastrointestinal side effects. She has been more fatigued since the illness and notes increased stress at work, though sleep has been largely preserved.\n\nExamination/investigations:\nNo examination was performed during this telephone review. Home blood pressure readings have been normal. No new medications or over-the-counter remedies except short courses of paracetamol during the illness. No alcohol excess. Pregnancy not suspected. Lamotrigine level as above.\n\nPlan discussed with the patient:\n- Safety advice reinforced, including avoidance of high-risk activities during this period of worsening episodes. She will maintain a seizure diary and record timings, potential triggers, and recovery features.\n- She agrees to provide an updated account from her witness where possible to clarify semiology and frequency.\n- I will review her case with the consultant team promptly in light of the reported 7 to 9 focal onset seizures in three weeks following the viral illness and the observed deterioration.\n- We will arrange a follow-up telephone review within two weeks, or sooner if events escalate, and consider further investigations as needed depending on consultant recommendations.\n\nI will keep you informed of any changes after the multidisciplinary review. Please let me know if there are concerns from your side, especially if she presents to primary care with further clustering.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 755,
+      "end": 809,
+      "text": "she reports 7 to 9 focal onset seizures in three weeks",
+      "attributes": {
+        "Label": "7 to 9 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 767,
+      "end": 809,
+      "text": "7 to 9 focal onset seizures in three weeks",
+      "attributes": {
+        "Label": "7 to 9 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1171,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nReason for review: Worsening seizure control following recent viral illness\n\nMedication: Lamotrigine dispersible, currently 25 mg twice daily\n\nLamotrigine blood level:\n28 September 2025: 1.2 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 25 mg twice daily.\n\nClinical summary:\nI conducted a telephone review with Susan Miller today following her report of a recent viral illness (fever, myalgia, and sore throat approximately four weeks ago) and a subsequent deterioration in her seizure control. She reports 7 to 9 focal onset seizures in three weeks, describing brief episodes of impaired awareness with lip-smacking and a sense of fear, typically lasting under one minute and followed by mild confusion. These events were witnessed on two occasions at home by a family member. She denies generalised convulsions, tongue biting, or incontinence. There are no consistent auras reported, and no clear nocturnal clustering.\n\nComparison to prior baseline:\nPrior to the viral illness, she described several months of relative stability without clear events interfering with daily activities. The recent cluster represents a significant change from her usual pattern and indicates deterioration in control.\n\nAdherence and tolerability:\nShe reports taking lamotrigine as prescribed, without missed doses. No rash, no diplopia, and no gastrointestinal side effects. She has been more fatigued since the illness and notes increased stress at work, though sleep has been largely preserved.\n\nExamination/investigations:\nNo examination was performed during this telephone review. Home blood pressure readings have been normal. No new medications or over-the-counter remedies except short courses of paracetamol during the illness. No alcohol excess. Pregnancy not suspected. Lamotrigine level as above.\n\nPlan discussed with the patient:\n- Safety advice reinforced, including avoidance of high-risk activities during this period of worsening episodes. She will maintain a seizure diary and record timings, potential triggers, and recovery features.\n- She agrees to provide an updated account from her witness where possible to clarify semiology and frequency.\n- I will review her case with the consultant team promptly in light of the reported 7 to 9 focal onset seizures in three weeks following the viral illness and the observed deterioration.\n- We will arrange a follow-up telephone review within two weeks, or sooner if events escalate, and consider further investigations as needed depending on consultant recommendations.\n\nI will keep you informed of any changes after the multidisciplinary review. Please let me know if there are concerns from your side, especially if she presents to primary care with further clustering.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'she reports 7 to 9 focal onset seizures in three weeks.' No other conflicting frequency is given. This is the current reported frequency following the viral illness. Convert to allowed format: a numeric range with period unit. 'three weeks' maps to '3 week'. Therefore the normalized label is '7 to 9 per 3 week'.",
+      "seizure_frequency_number": [
+        "7 to 9 per 3 week",
+        "she reports 7 to 9 focal onset seizures in three weeks"
+      ],
+      "reference": [
+        "7 to 9 per 3 week",
+        "7 to 9 focal onset seizures in three weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_748",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart  \nSt George’s University Hospital  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Hart,  \n\nMichael Turner, DOB: 15-03-1987, Hospital No: H392774 NHS No. 9914825703  \n82 Larkhill Avenue, London, SW4 7PD \n\nDiagnoses: \n\nFocal epilepsy with secondary generalisation suspected from right temporal onset (MRI brain normal; EEG with right temporal sharp transients, March 2024). \n\nCurrent Medication: \n\nLamotrigine 100 mg twice daily \n\nPlan: \n\n- Continue Lamotrigine 100 mg twice daily.  \n- Safety counselling reinforced; maintain seizure log on paper calendar.  \n- Arrange repeat EEG in 6–9 months to reassess interictal changes.  \n- Review in clinic in 9 months, sooner if breakthrough events occur.  \n\nI reviewed Michael Turner in clinic today. He brought his paper seizure calendar, which he completes meticulously and brings to each appointment. His entries indicate that since increasing Lamotrigine to 100 mg twice daily in February 2025, he has had no convulsive events. Prior to that, his calendar showed brief focal aware episodes characterised by a rising epigastric sensation and déjà vu occurring on most weeks, typically one to two spells within a given week, sometimes clustering around periods of stress or disrupted sleep. He reports that over the last four months these focal aware events have reduced to only two isolated episodes, both without loss of awareness and each lasting under one minute, with no associated injury. \n\nOn history and investigation, these spells are most consistent with focal epilepsy. The semiology points to a temporal lobe focus, and this aligns with the right temporal sharp transients on EEG. We discussed triggers (notably poor sleep and excess caffeine) and he has been pacing his work schedule to minimise these. He prefers to continue documenting events on his paper calendar rather than using an app, which is entirely reasonable and provides clear trend data. \n\nGiven the significant improvement and absence of generalised seizures since the dose adjustment, I recommend ongoing treatment at the current dose. We will reconsider any medication changes after a sustained period of stability and after reviewing the follow‑up EEG. He is aware to contact us promptly if his calendar shows a return to more frequent focal symptoms or any loss of awareness. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1347,
+      "end": 1440,
+      "text": "over the last four months these focal aware events have reduced to only two isolated episodes",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 519,
+      "end": 524,
+      "text": "daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 748,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart  \nSt George’s University Hospital  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Hart,  \n\nMichael Turner, DOB: 15-03-1987, Hospital No: H392774 NHS No. 9914825703  \n82 Larkhill Avenue, London, SW4 7PD \n\nDiagnoses: \n\nFocal epilepsy with secondary generalisation suspected from right temporal onset (MRI brain normal; EEG with right temporal sharp transients, March 2024). \n\nCurrent Medication: \n\nLamotrigine 100 mg twice daily \n\nPlan: \n\n- Continue Lamotrigine 100 mg twice daily.  \n- Safety counselling reinforced; maintain seizure log on paper calendar.  \n- Arrange repeat EEG in 6–9 months to reassess interictal changes.  \n- Review in clinic in 9 months, sooner if breakthrough events occur.  \n\nI reviewed Michael Turner in clinic today. He brought his paper seizure calendar, which he completes meticulously and brings to each appointment. His entries indicate that since increasing Lamotrigine to 100 mg twice daily in February 2025, he has had no convulsive events. Prior to that, his calendar showed brief focal aware episodes characterised by a rising epigastric sensation and déjà vu occurring on most weeks, typically one to two spells within a given week, sometimes clustering around periods of stress or disrupted sleep. He reports that over the last four months these focal aware events have reduced to only two isolated episodes, both without loss of awareness and each lasting under one minute, with no associated injury. \n\nOn history and investigation, these spells are most consistent with focal epilepsy. The semiology points to a temporal lobe focus, and this aligns with the right temporal sharp transients on EEG. We discussed triggers (notably poor sleep and excess caffeine) and he has been pacing his work schedule to minimise these. He prefers to continue documenting events on his paper calendar rather than using an app, which is entirely reasonable and provides clear trend data. \n\nGiven the significant improvement and absence of generalised seizures since the dose adjustment, I recommend ongoing treatment at the current dose. We will reconsider any medication changes after a sustained period of stability and after reviewing the follow‑up EEG. He is aware to contact us promptly if his calendar shows a return to more frequent focal symptoms or any loss of awareness. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter dated 02 Oct 2025 states that over the last four months the patient had only two focal aware episodes. This provides a current frequency: 2 episodes in 4 months. Convert to the allowed format as 1 per 2 month. Earlier higher weekly frequencies were prior to the medication adjustment and are not current. He is not seizure-free because he had events within the last 6 months.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "over the last four months these focal aware events have reduced to only two isolated episodes"
+      ],
+      "reference": [
+        "1 per day",
+        "daily"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 month) disagrees with Reference (1 per day)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

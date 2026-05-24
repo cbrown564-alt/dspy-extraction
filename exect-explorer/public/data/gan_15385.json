@@ -1,0 +1,59 @@
+{
+  "id": "gan_15385",
+  "text": "City Neurology Service\n\nOutpatient Clinic Date: 02 October 2025\n\nDr Patel\nCity Neurology Service\nLevel 3, Riverside Health Centre, Manchester M3 4AB\n\nDear Dr Patel,\n\nEmily Carter, DOB: 12-07-1988, Hospital No: M847502, NHS No: 6042198735\nFlat 5, 28 Brookside Lane, Manchester, M15 6QP\n\nSummary/Diagnoses: Epilepsy with prior traumatic head injury history; persistent executive dysfunction; hypertension; vitamin D insufficiency; lives independently with community support; assistance dog currently in training.\n\nMedication:\n- Levetiracetam 1500 mg twice daily\n- Lamotrigine 150 mg twice daily\n- Cholecalciferol 1000 IU daily\n- Amlodipine 5 mg daily\n\nI reviewed her in clinic today, accompanied by her community key worker. She reports improved day-to-day structure since starting with an assistance dog in training, which prompts timely medication administration and supports outdoor activity. She denies alcohol use and does not smoke. Sleep has been variable but generally better with a fixed bedtime routine.\n\nSeizures: She describes a highly fluctuating pattern. She may remain seizure-free for up to 2 month, but then will experience clusters of three seizures in a single day. These cluster days are typically preceded by poor sleep and heightened stress. She usually recovers within 24–48 hours with fatigue and headaches but without prolonged confusion. There have been no injuries or emergency presentations in the last six months. She and her key worker keep a diary, and triggers appear to include missed meals and sleep deprivation. There is no clear diurnal preference. No auras are consistently recognised. She does not drive.\n\nExamination: Alert and oriented, normal speech and language. Cranial nerves intact. Power full throughout, tone and reflexes normal. Gait steady without aids. Cardiovascular and respiratory examinations unremarkable.\n\nInvestigations: Routine bloods from August 2025 showed normal FBC, U&E, LFTs; vitamin D borderline low at 22 nmol/L (supplementation commenced). ECG normal sinus rhythm. MRI brain (2023) unchanged compared to prior, with subtle encephalomalacia in the right frontal region post-trauma.\n\nPlan:\n- Continue current anti-seizure medications without change.\n- Rescue plan discussed for cluster days: patient to rest, maintain hydration, and contact community team if clusters persist beyond 24 hours or if recovery is atypical; she has a written plan with emergency contact numbers.\n- Reinforce adherence strategies using assistance dog prompts and phone alarms.\n- Sleep hygiene reviewed; advised consistent schedule and avoidance of screens before bedtime.\n- Check vitamin D level and routine bloods at next community blood draw (within 4–6 weeks) given recent supplementation.\n- Provide written guidance for assistance dog trainers regarding seizure recognition and safe responses.\n- Follow-up in 6 months, sooner if cluster frequency increases or injuries occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1067,
+      "end": 1182,
+      "text": "She may remain seizure-free for up to 2 month, but then will experience clusters of three seizures in a single day.",
+      "attributes": {
+        "Label": "1 cluster per 2 month, 3 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1067,
+      "end": 1181,
+      "text": "She may remain seizure-free for up to 2 month, but then will experience clusters of three seizures in a single day",
+      "attributes": {
+        "Label": "1 cluster per 2 month, 3 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15385,
+    "clinic_date": "City Neurology Service\n\nOutpatient Clinic Date: 02 October 2025\n\nDr Patel\nCity Neurology Service\nLevel 3, Riverside Health Centre, Manchester M3 4AB\n\nDear Dr Patel,\n\nEmily Carter, DOB: 12-07-1988, Hospital No: M847502, NHS No: 6042198735\nFlat 5, 28 Brookside Lane, Manchester, M15 6QP\n\nSummary/Diagnoses: Epilepsy with prior traumatic head injury history; persistent executive dysfunction; hypertension; vitamin D insufficiency; lives independently with community support; assistance dog currently in training.\n\nMedication:\n- Levetiracetam 1500 mg twice daily\n- Lamotrigine 150 mg twice daily\n- Cholecalciferol 1000 IU daily\n- Amlodipine 5 mg daily\n\nI reviewed her in clinic today, accompanied by her community key worker. She reports improved day-to-day structure since starting with an assistance dog in training, which prompts timely medication administration and supports outdoor activity. She denies alcohol use and does not smoke. Sleep has been variable but generally better with a fixed bedtime routine.\n\nSeizures: She describes a highly fluctuating pattern. She may remain seizure-free for up to 2 month, but then will experience clusters of three seizures in a single day. These cluster days are typically preceded by poor sleep and heightened stress. She usually recovers within 24–48 hours with fatigue and headaches but without prolonged confusion. There have been no injuries or emergency presentations in the last six months. She and her key worker keep a diary, and triggers appear to include missed meals and sleep deprivation. There is no clear diurnal preference. No auras are consistently recognised. She does not drive.\n\nExamination: Alert and oriented, normal speech and language. Cranial nerves intact. Power full throughout, tone and reflexes normal. Gait steady without aids. Cardiovascular and respiratory examinations unremarkable.\n\nInvestigations: Routine bloods from August 2025 showed normal FBC, U&E, LFTs; vitamin D borderline low at 22 nmol/L (supplementation commenced). ECG normal sinus rhythm. MRI brain (2023) unchanged compared to prior, with subtle encephalomalacia in the right frontal region post-trauma.\n\nPlan:\n- Continue current anti-seizure medications without change.\n- Rescue plan discussed for cluster days: patient to rest, maintain hydration, and contact community team if clusters persist beyond 24 hours or if recovery is atypical; she has a written plan with emergency contact numbers.\n- Reinforce adherence strategies using assistance dog prompts and phone alarms.\n- Sleep hygiene reviewed; advised consistent schedule and avoidance of screens before bedtime.\n- Check vitamin D level and routine bloods at next community blood draw (within 4–6 weeks) given recent supplementation.\n- Provide written guidance for assistance dog trainers regarding seizure recognition and safe responses.\n- Follow-up in 6 months, sooner if cluster frequency increases or injuries occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes a fluctuating pattern: she may remain seizure-free for up to 2 months, but then will experience clusters of three seizures in a single day. This provides a cluster frequency and seizures per cluster. There is no fixed regular interval, but the clearest numeric description is up to 2 months seizure-free followed by a cluster day with 3 seizures. Applying the allowed output format for clusters, we represent this as 1 cluster per 2 months with 3 per cluster. This reflects the most specific numeric pattern given. She is not seizure free for ≥6 months, so not 'seizure free'.",
+      "seizure_frequency_number": [
+        "1 cluster per 2 month, 3 per cluster",
+        "She may remain seizure-free for up to 2 month, but then will experience clusters of three seizures in a single day."
+      ],
+      "reference": [
+        "1 cluster per 2 month, 3 per cluster",
+        "She may remain seizure-free for up to 2 month, but then will experience clusters of three seizures in a single day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

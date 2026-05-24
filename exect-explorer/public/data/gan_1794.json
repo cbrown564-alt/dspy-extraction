@@ -1,0 +1,59 @@
+{
+  "id": "gan_1794",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 12-11-1993, Hospital No: H458210 NHS No. 5938472016  \n24 Brookside Avenue, London, W10 5LP \n\nMedication: \n\nLevetiracetam 1000 mg/1000 mg. Lamotrigine previously trialled up to 100 mg bd but stopped due to rash; topiramate discontinued after cognitive slowing. \n\nSince her last review she has been using a smartwatch with fall-detection enabled; the device has generated time-stamped alerts that align with events witnessed by her partner and entries in her symptom diary. Over the past two months she reports six drop attacks and two absence seizures in the past two months, typically occurring in the late afternoon. The smartwatch recorded three fall alerts corresponding to two witnessed collapses at home and one in the supermarket; the latter resulted in minor bruising to the right hip without head injury. The two absence episodes were brief (under 20 seconds) with immediate recovery, noted during conversations and corroborated by gaps in her activity log.\n\nShe denies clear triggers, though she notes poor sleep in the week preceding two of the drop attacks and higher work-related stress. No alcohol excess. She remains fully adherent to levetiracetam and uses a weekly pill organiser. No recent infections. Menses regular; she has not noted a cyclical pattern. Family have been educated on first aid, and she has enabled the smartwatch feature that texts her partner if a fall is detected.\n\nNeurological examination today is normal. Weight stable. No adverse effects from levetiracetam apart from mild irritability, which she considers manageable. I have advised maintaining her current regimen for now while we clarify the pattern of events. I have also asked her to continue synchronising smartwatch alerts with her diary and to bring screenshots of the alert timeline to the next visit. We discussed safety: avoiding baths unsupervised, taking showers with the door unlocked, and using the handset’s emergency SOS if she feels premonitory symptoms. She is not currently driving and understands to inform DVLA should events continue; we reviewed standard guidance.\n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. \n- Arrange EEG and MRI brain (epilepsy protocol) to aid further characterisation. \n- Bloods: FBC, U&Es, LFTs, vitamin D. \n- Provide written seizure first-aid advice and signpost to local support group. \n- Review in three months, sooner if drop attacks increase or injuries occur. \n\nWe will see her back in three months. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 682,
+      "end": 783,
+      "text": "Over the past two months she reports six drop attacks and two absence seizures in the past two months",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 719,
+      "end": 783,
+      "text": "six drop attacks and two absence seizures in the past two months",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1794,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 12-11-1993, Hospital No: H458210 NHS No. 5938472016  \n24 Brookside Avenue, London, W10 5LP \n\nMedication: \n\nLevetiracetam 1000 mg/1000 mg. Lamotrigine previously trialled up to 100 mg bd but stopped due to rash; topiramate discontinued after cognitive slowing. \n\nSince her last review she has been using a smartwatch with fall-detection enabled; the device has generated time-stamped alerts that align with events witnessed by her partner and entries in her symptom diary. Over the past two months she reports six drop attacks and two absence seizures in the past two months, typically occurring in the late afternoon. The smartwatch recorded three fall alerts corresponding to two witnessed collapses at home and one in the supermarket; the latter resulted in minor bruising to the right hip without head injury. The two absence episodes were brief (under 20 seconds) with immediate recovery, noted during conversations and corroborated by gaps in her activity log.\n\nShe denies clear triggers, though she notes poor sleep in the week preceding two of the drop attacks and higher work-related stress. No alcohol excess. She remains fully adherent to levetiracetam and uses a weekly pill organiser. No recent infections. Menses regular; she has not noted a cyclical pattern. Family have been educated on first aid, and she has enabled the smartwatch feature that texts her partner if a fall is detected.\n\nNeurological examination today is normal. Weight stable. No adverse effects from levetiracetam apart from mild irritability, which she considers manageable. I have advised maintaining her current regimen for now while we clarify the pattern of events. I have also asked her to continue synchronising smartwatch alerts with her diary and to bring screenshots of the alert timeline to the next visit. We discussed safety: avoiding baths unsupervised, taking showers with the door unlocked, and using the handset’s emergency SOS if she feels premonitory symptoms. She is not currently driving and understands to inform DVLA should events continue; we reviewed standard guidance.\n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. \n- Arrange EEG and MRI brain (epilepsy protocol) to aid further characterisation. \n- Bloods: FBC, U&Es, LFTs, vitamin D. \n- Provide written seizure first-aid advice and signpost to local support group. \n- Review in three months, sooner if drop attacks increase or injuries occur. \n\nWe will see her back in three months. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency: \"Over the past two months she reports six drop attacks and two absence seizures in the past two months\". Total seizures over 2 months = 6 + 2 = 8 over 2 months. Apply rule to sum same-dimension frequencies and present as per allowed format. Thus: 8 per 2 month.",
+      "seizure_frequency_number": [
+        "8 per 2 month",
+        "Over the past two months she reports six drop attacks and two absence seizures in the past two months"
+      ],
+      "reference": [
+        "8 per 2 month",
+        "six drop attacks and two absence seizures in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

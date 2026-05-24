@@ -1,0 +1,47 @@
+{
+  "id": "gan_11431",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Helen Carter\nRiverside Health Centre\n22 Riverside Way, Kingston upon Thames, KT1 1AA\n\nDear Dr Helen Carter,\n\nAmelia Thompson, DOB: 03-11-1991, Hospital No: H382914 NHS No. 9843216750\nFlat 4, 7 Larch Close, Surbiton, KT6 5PD\n\nEpilepsy Clinic\n\nI am writing to confirm cancellation of the scheduled outpatient appointment for Amelia Thompson on 09 October 2025 at 10:30. She has advised that, due to her work commitments as an early-years childcare worker in a high-noise, multitasking setting where midday rest breaks are often interrupted, she is unable to attend at that time.\n\nNo urgent concerns were reported during her call. We have offered alternative early-morning appointment options to minimise disruption to her work schedule, and our bookings team will contact her within 5 working days. She may also rebook via the Patient Booking Service on 0300 123 4567 or by emailing epilepsy.bookings@nhs.net.\n\nIf her circumstances change or if you feel an earlier review is required, please let us know and we will prioritise a suitable slot.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11431,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Helen Carter\nRiverside Health Centre\n22 Riverside Way, Kingston upon Thames, KT1 1AA\n\nDear Dr Helen Carter,\n\nAmelia Thompson, DOB: 03-11-1991, Hospital No: H382914 NHS No. 9843216750\nFlat 4, 7 Larch Close, Surbiton, KT6 5PD\n\nEpilepsy Clinic\n\nI am writing to confirm cancellation of the scheduled outpatient appointment for Amelia Thompson on 09 October 2025 at 10:30. She has advised that, due to her work commitments as an early-years childcare worker in a high-noise, multitasking setting where midday rest breaks are often interrupted, she is unable to attend at that time.\n\nNo urgent concerns were reported during her call. We have offered alternative early-morning appointment options to minimise disruption to her work schedule, and our bookings team will contact her within 5 working days. She may also rebook via the Patient Booking Service on 0300 123 4567 or by emailing epilepsy.bookings@nhs.net.\n\nIf her circumstances change or if you feel an earlier review is required, please let us know and we will prioritise a suitable slot.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter is solely about cancellation and rescheduling of an outpatient appointment. It mentions no clinical details about seizures, their presence, absence, or frequency. There are no numeric or qualitative statements regarding seizure occurrence. Therefore, there is no seizure frequency information to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter confirming cancellation of an epilepsy clinic appointment"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

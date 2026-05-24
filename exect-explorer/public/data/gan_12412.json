@@ -1,0 +1,59 @@
+{
+  "id": "gan_12412",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 05 December 2021 \n\nDr A Patel  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr A Patel,  \n\nMichael Harris, DOB: 14-07-1990, Hospital No: L928374 NHS No. 8429105637  \n12 Brookside Close, London, SW12 0AB  \n\nDiagnoses: \n\nSeizure disorder with ongoing events; aetiology not established. \n\nI reviewed Michael Harris in clinic today. He attended alone and provided a detailed account of recent weeks. He is working in a care setting with irregular breaks and frequent patient transfers. He reports cumulative fatigue across the week, with perceived worsening of seizure control on late and consecutive shifts. He still has focal impaired awareness seizures two times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change. However, he feels more drained after each cluster, with slower recovery times and greater post-event confusion when shifts run over or when staffing levels are short. \n\nThere have been no recent medication changes, no intercurrent illness, and no documented injuries, though he reports near-misses during patient manoeuvres. He has kept partial diaries which suggest clustering on days following interrupted sleep and heavy manual handling. No clear triggers beyond sleep disruption and fatigue are identified. He denies recent alcohol use and reports reliable adherence to prescribed treatment. \n\nOn review today, neurological examination between events was unchanged. No new focal neurological signs were elicited. We discussed work pattern influences and his impression of deterioration relates primarily to increased recovery time, reduced stamina between events, and increasing anxiety about safety at work, rather than a numerical escalation of seizures. \n\nA risk discussion was had around drop attacks during patient transfers. He understands the need to avoid lone handling where feasible and is seeking reasonable adjustments. We agreed he will liaise with his line manager and occupational health regarding shift regularity and rest breaks, and he will continue to maintain a structured seizure and fatigue diary to capture patterns around late shifts. \n\nPlan: \n- Continue current anti-seizure regimen unchanged (patient-reported stable adherence). \n- Occupational health referral requested by patient to explore regularised breaks, reduced consecutive late shifts, and assistance with heavy transfers where possible. \n- Seizure and fatigue diaries to be maintained, with emphasis on sleep duration, timing of meals, and manual-handling episodes. \n- Safety advice reiterated; he will avoid high-risk tasks immediately after any warning symptoms. \n- Follow-up in 8 weeks, sooner if injuries occur or if recovery periods lengthen further. \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 705,
+      "end": 849,
+      "text": "He still has focal impaired awareness seizures two times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 705,
+      "end": 912,
+      "text": "He still has focal impaired awareness seizures two times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12412,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 05 December 2021 \n\nDr A Patel  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr A Patel,  \n\nMichael Harris, DOB: 14-07-1990, Hospital No: L928374 NHS No. 8429105637  \n12 Brookside Close, London, SW12 0AB  \n\nDiagnoses: \n\nSeizure disorder with ongoing events; aetiology not established. \n\nI reviewed Michael Harris in clinic today. He attended alone and provided a detailed account of recent weeks. He is working in a care setting with irregular breaks and frequent patient transfers. He reports cumulative fatigue across the week, with perceived worsening of seizure control on late and consecutive shifts. He still has focal impaired awareness seizures two times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change. However, he feels more drained after each cluster, with slower recovery times and greater post-event confusion when shifts run over or when staffing levels are short. \n\nThere have been no recent medication changes, no intercurrent illness, and no documented injuries, though he reports near-misses during patient manoeuvres. He has kept partial diaries which suggest clustering on days following interrupted sleep and heavy manual handling. No clear triggers beyond sleep disruption and fatigue are identified. He denies recent alcohol use and reports reliable adherence to prescribed treatment. \n\nOn review today, neurological examination between events was unchanged. No new focal neurological signs were elicited. We discussed work pattern influences and his impression of deterioration relates primarily to increased recovery time, reduced stamina between events, and increasing anxiety about safety at work, rather than a numerical escalation of seizures. \n\nA risk discussion was had around drop attacks during patient transfers. He understands the need to avoid lone handling where feasible and is seeking reasonable adjustments. We agreed he will liaise with his line manager and occupational health regarding shift regularity and rest breaks, and he will continue to maintain a structured seizure and fatigue diary to capture patterns around late shifts. \n\nPlan: \n- Continue current anti-seizure regimen unchanged (patient-reported stable adherence). \n- Occupational health referral requested by patient to explore regularised breaks, reduced consecutive late shifts, and assistance with heavy transfers where possible. \n- Seizure and fatigue diaries to be maintained, with emphasis on sleep duration, timing of meals, and manual-handling episodes. \n- Safety advice reiterated; he will avoid high-risk tasks immediately after any warning symptoms. \n- Follow-up in 8 weeks, sooner if injuries occur or if recovery periods lengthen further. \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit frequencies for multiple seizure types: 'focal impaired awareness seizures two times per day', 'drop attacks occurring in batches' (no specific numeric frequency per time period), and 'tonic-clonic seizures 2 times per month'. Per the rule to select the highest frequency across multiple types, we choose the most frequent event type. 'Two times per day' is the highest frequency. Convert wording to allowed format: '2 per day'. No need to combine different seizure types since the rule specifies selecting the highest frequency rather than summing across different dimensions/types. The drop attacks are described as clustering without a clear per-time rate, so they do not override the daily rate for focal impaired awareness seizures.",
+      "seizure_frequency_number": [
+        "2 per day",
+        "He still has focal impaired awareness seizures two times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month"
+      ],
+      "reference": [
+        "2 per day",
+        "He still has focal impaired awareness seizures two times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

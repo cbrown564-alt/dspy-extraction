@@ -1,0 +1,59 @@
+{
+  "id": "gan_17200",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for asking me to review your patient in the Neurology Clinic today. Since my last assessment in March 2025, her diary and a menstrual tracking app together suggest a catamenial pattern to her events, with clusters tending to occur from two days before menstruation through day three of her cycle. She has been diligent in logging symptoms, sleep times, and medication doses.\n\nCurrent medication at the time of review is: Levetiracetam 1000 mg twice daily, Lamotrigine 150 mg twice daily, and Clobazam 5 mg at night; she also uses Folic Acid 400 micrograms once daily. She previously trialled Zonisamide (discontinued in January 2025 due to appetite loss and low mood) and a brief course of Brivaracetam (stopped due to dizziness without clear benefit). She reports mild fatigue in the late afternoon but no rash, diplopia, or significant mood lability. Liver function and full blood count from July 2025 were within reference limits.\n\nHer parents accompany her today and corroborate the pattern described. Her parents report a reduction in convulsive events, with only a single tonic-clonic seizure over the past six months. Brief myoclonic jerks persist monthly on awakening but are considered tolerable. There have been no prolonged or status episodes since treatment escalation. She notes that sleep disruption the night before menses remains a consistent trigger, and she has been using phone reminders around the perimenstrual window to reinforce adherence. There have been no injuries or emergency department attendances.\n\nWe discussed that, while the temporal association with her cycle is suggestive, we have not altered treatment pending further corroboration. She is agreeable to continuing her seizure and menstrual logging for another two cycles, and she has consented to share the app export with our service. She has also requested information about non-hormonal strategies for perimenstrual symptom management; I have provided written resources and signposted the epilepsy specialist nurse for practical support. She is not planning pregnancy in the next year and understands the need to contact us early if this changes.\n\nI will arrange a routine EEG with sleep deprivation and update you with the findings. For now, I have advised no medication changes and to maintain current dosing times. I will review her again in three months, sooner if there is any deterioration or recurrence of convulsive activity.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1375,
+      "end": 1425,
+      "text": "Brief myoclonic jerks persist monthly on awakening",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1256,
+      "end": 1530,
+      "text": "Her parents report a reduction in convulsive events, with only a single tonic-clonic seizure over the past six months. Brief myoclonic jerks persist monthly on awakening but are considered tolerable. There have been no prolonged or status episodes since treatment escalation",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17200,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for asking me to review your patient in the Neurology Clinic today. Since my last assessment in March 2025, her diary and a menstrual tracking app together suggest a catamenial pattern to her events, with clusters tending to occur from two days before menstruation through day three of her cycle. She has been diligent in logging symptoms, sleep times, and medication doses.\n\nCurrent medication at the time of review is: Levetiracetam 1000 mg twice daily, Lamotrigine 150 mg twice daily, and Clobazam 5 mg at night; she also uses Folic Acid 400 micrograms once daily. She previously trialled Zonisamide (discontinued in January 2025 due to appetite loss and low mood) and a brief course of Brivaracetam (stopped due to dizziness without clear benefit). She reports mild fatigue in the late afternoon but no rash, diplopia, or significant mood lability. Liver function and full blood count from July 2025 were within reference limits.\n\nHer parents accompany her today and corroborate the pattern described. Her parents report a reduction in convulsive events, with only a single tonic-clonic seizure over the past six months. Brief myoclonic jerks persist monthly on awakening but are considered tolerable. There have been no prolonged or status episodes since treatment escalation. She notes that sleep disruption the night before menses remains a consistent trigger, and she has been using phone reminders around the perimenstrual window to reinforce adherence. There have been no injuries or emergency department attendances.\n\nWe discussed that, while the temporal association with her cycle is suggestive, we have not altered treatment pending further corroboration. She is agreeable to continuing her seizure and menstrual logging for another two cycles, and she has consented to share the app export with our service. She has also requested information about non-hormonal strategies for perimenstrual symptom management; I have provided written resources and signposted the epilepsy specialist nurse for practical support. She is not planning pregnancy in the next year and understands the need to contact us early if this changes.\n\nI will arrange a routine EEG with sleep deprivation and update you with the findings. For now, I have advised no medication changes and to maintain current dosing times. I will review her again in three months, sooner if there is any deterioration or recurrence of convulsive activity.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes several seizure types and frequencies: (1) 'only a single tonic-clonic seizure over the past six months' → 1 in 6 months = approximately 0.167 per month. (2) 'Brief myoclonic jerks persist monthly on awakening' → at least 1 per month. No explicit count per month is given for the myoclonic jerks beyond 'persist monthly', but this establishes a higher frequency than 1 in 6 months. There is mention of catamenial clusters around menses, but no explicit number of events per cluster or per period. Applying the rule to select the highest frequency, we choose the monthly myoclonic jerks. Since the exact number per month is not specified, use '1 per month' as the minimal explicit monthly frequency implied by 'persist monthly.'",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Brief myoclonic jerks persist monthly on awakening"
+      ],
+      "reference": [
+        "1 per month",
+        "Her parents report a reduction in convulsive events, with only a single tonic-clonic seizure over the past six months. Brief myoclonic jerks persist monthly on awakening but are considered tolerable. There have been no prolonged or status episodes since treatment escalation"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

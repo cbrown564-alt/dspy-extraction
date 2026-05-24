@@ -1,0 +1,47 @@
+{
+  "id": "gan_11405",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 13 May 2018\n\nDr Patel\nRiverside Health Centre\n14 Brook Street, London SE1 2AB\n\nDear Dr Patel,\n\nArthur Bennett, DOB: 22-11-1939, Hospital No: U784320 NHS No. 3019984472\nFlat 2, 6 Willow Court, London, SE5 8JP\n\nSummary/Diagnoses: Focal epilepsy in a bedbound older adult; advanced frailty; hypertension; type 2 diabetes; chronic kidney disease stage 3; high risk of pressure ulcers; dysphagia requiring modified diet. Most history and day-to-day observations are provided by the live-in nurse/caregiver.\n\nMedication: Lamotrigine 100 mg twice daily. Amlodipine 5 mg once daily. Metformin 500 mg twice daily with meals. Atorvastatin 20 mg nightly. Vitamin D3 1000 IU daily. Senna 7.5 mg at night as needed. Thickening powder for fluids as per SALT guidance.\n\nI write to request a follow-up epilepsy clinic appointment for Arthur Bennett. He is bedbound at home and relies on a full-time nurse/caregiver, who will attend the appointment or join by phone. Transport assistance and wheelchair-accessible facilities will be required. A morning slot would be preferable to align with home care visits.\n\nPlease advise on the earliest available appointment and whether a virtual review would be acceptable. Pre-appointment bloods (U&Es, LFTs, FBC, HbA1c, vitamin D) can be arranged via the district nursing team if needed.\n\nPlan: Maintain current antiepileptic regimen pending review. Continue pressure area care and fluid/aspiration precautions. We will provide a caregiver summary for the clinic.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11405,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 13 May 2018\n\nDr Patel\nRiverside Health Centre\n14 Brook Street, London SE1 2AB\n\nDear Dr Patel,\n\nArthur Bennett, DOB: 22-11-1939, Hospital No: U784320 NHS No. 3019984472\nFlat 2, 6 Willow Court, London, SE5 8JP\n\nSummary/Diagnoses: Focal epilepsy in a bedbound older adult; advanced frailty; hypertension; type 2 diabetes; chronic kidney disease stage 3; high risk of pressure ulcers; dysphagia requiring modified diet. Most history and day-to-day observations are provided by the live-in nurse/caregiver.\n\nMedication: Lamotrigine 100 mg twice daily. Amlodipine 5 mg once daily. Metformin 500 mg twice daily with meals. Atorvastatin 20 mg nightly. Vitamin D3 1000 IU daily. Senna 7.5 mg at night as needed. Thickening powder for fluids as per SALT guidance.\n\nI write to request a follow-up epilepsy clinic appointment for Arthur Bennett. He is bedbound at home and relies on a full-time nurse/caregiver, who will attend the appointment or join by phone. Transport assistance and wheelchair-accessible facilities will be required. A morning slot would be preferable to align with home care visits.\n\nPlease advise on the earliest available appointment and whether a virtual review would be acceptable. Pre-appointment bloods (U&Es, LFTs, FBC, HbA1c, vitamin D) can be arranged via the district nursing team if needed.\n\nPlan: Maintain current antiepileptic regimen pending review. Continue pressure area care and fluid/aspiration precautions. We will provide a caregiver summary for the clinic.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a diagnosis of focal epilepsy and discusses medications and logistics for a follow-up appointment, but it does not mention seizures, their occurrence, timing, or any explicit frequency. There are no statements indicating whether the patient is currently having seizures, how often, or if they are seizure-free. Therefore, since seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter about a follow-up epilepsy clinic booking request"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_10371",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine since August 2023\n\nCurrent regimen: Lamotrigine dispersible 50 mg twice daily (patient-reported adherence confirmed; uses phone alarms during split shifts in the commercial kitchen).\n\nLamotrigine Blood Level:\n\n15 September 2025: 4.3 mg/L (laboratory therapeutic reference range 1.0–15.0 mg/L). Dose at sampling: 50 mg twice daily.\n\nSeizures: Patient reports good stability at work despite heat, noise, and rapid pace at the grill and sauté stations. Prior cluster pattern resolved since 11 Aug 2023. No events witnessed by colleagues during high-heat service periods, including double shifts and bank holiday brunch service. No prodromes reported. She continues to hydrate and take brief cool-down breaks as allowed by rota.\n\nHistory/Context:\n\nI conducted a telephone review today while the patient was off shift. She described the kitchen environment as high temperature with frequent steam exposure, rapid order turnover, and intermittent sleep disruption after late closes. She has arranged with her head chef to store medication in a labelled, dry cabinet away from the hot line and has a buddy check for the post-service dose. She denies missed doses over the last 3 months. She has not required any emergency assistance or time off due to events since the above date.\n\nPlan:\n\n- Continue Lamotrigine 50 mg twice daily.\n- Routine serum level and U&E/LFT monitoring in 6 months or sooner if clinical change.\n- Patient to maintain hydration strategies and scheduled brief cool-down breaks as currently in place.\n- She will contact the service if there is any recurrence of events, medication side effects, or workplace safety concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 748,
+      "end": 961,
+      "text": "Prior cluster pattern resolved since 11 Aug 2023. No events witnessed by colleagues during high-heat service periods... She has not required any emergency assistance or time off due to events since the above date.",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 748,
+      "end": 796,
+      "text": "Prior cluster pattern resolved since 11 Aug 2023",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10371,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine since August 2023\n\nCurrent regimen: Lamotrigine dispersible 50 mg twice daily (patient-reported adherence confirmed; uses phone alarms during split shifts in the commercial kitchen).\n\nLamotrigine Blood Level:\n\n15 September 2025: 4.3 mg/L (laboratory therapeutic reference range 1.0–15.0 mg/L). Dose at sampling: 50 mg twice daily.\n\nSeizures: Patient reports good stability at work despite heat, noise, and rapid pace at the grill and sauté stations. Prior cluster pattern resolved since 11 Aug 2023. No events witnessed by colleagues during high-heat service periods, including double shifts and bank holiday brunch service. No prodromes reported. She continues to hydrate and take brief cool-down breaks as allowed by rota.\n\nHistory/Context:\n\nI conducted a telephone review today while the patient was off shift. She described the kitchen environment as high temperature with frequent steam exposure, rapid order turnover, and intermittent sleep disruption after late closes. She has arranged with her head chef to store medication in a labelled, dry cabinet away from the hot line and has a buddy check for the post-service dose. She denies missed doses over the last 3 months. She has not required any emergency assistance or time off due to events since the above date.\n\nPlan:\n\n- Continue Lamotrigine 50 mg twice daily.\n- Routine serum level and U&E/LFT monitoring in 6 months or sooner if clinical change.\n- Patient to maintain hydration strategies and scheduled brief cool-down breaks as currently in place.\n- She will contact the service if there is any recurrence of events, medication side effects, or workplace safety concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures and indicates no events since 11 Aug 2023: \"Prior cluster pattern resolved since 11 Aug 2023. No events witnessed...\" and \"She has not required any emergency assistance or time off due to events since the above date.\" Clinic date is 02 Oct 2025. Calculate seizure-free duration: from 11 Aug 2023 to 11 Aug 2025 is 24 months; from 11 Aug 2025 to 02 Oct 2025 is approximately 1 month and 21 days, totaling over 26 months. This exceeds 6 months, so the patient qualifies as seizure free for years. Using allowed formats, choose 'seizure free for multiple years' since exact years not explicitly stated as a round number in the letter.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "Prior cluster pattern resolved since 11 Aug 2023. No events witnessed by colleagues during high-heat service periods... She has not required any emergency assistance or time off due to events since the above date."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Prior cluster pattern resolved since 11 Aug 2023"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

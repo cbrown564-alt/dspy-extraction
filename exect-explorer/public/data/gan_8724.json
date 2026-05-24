@@ -1,0 +1,48 @@
+{
+  "id": "gan_8724",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Martin, DOB: 12-11-1991, Hospital No: H384920 NHS No. 9053176421  \n14 Northbridge Court, London, W10 5QP \n\nMedication: \n\nLevetiracetam 1,000 mg twice daily. No breakthrough events reported since commencing this dose three months ago. Continue current regimen. \n\nSophie Martin works rotating shifts including nights and reports significant disruption to her sleep–wake cycle, with variable bedtimes and early morning finishes. Since titration to her current antiepileptic dose, she describes no episodes suggestive of seizures, including no nocturnal events, auras, or witnessed spells. Prior to dose stabilisation she had brief, rare spells of transient unresponsiveness after consecutive night shifts; these have not recurred. She denies adverse effects from medication beyond occasional irritability during changeover weeks, which she feels is manageable. \n\nShe keeps a diary of sleep and potential triggers and notes that longer stretches of consecutive night duties are the most challenging for fatigue. She has begun using blackout curtains and a consistent pre-sleep routine after nights, which she feels helps. She does not drive. Caffeine use is modest (one coffee near shift start) and she avoids energy drinks. Alcohol is minimal. \n\nExamination today was unremarkable. We discussed the importance of regular medication timing despite shift changes; she sets alarms and has not missed doses. We also reviewed general safety at work; she has informed her occupational health team and avoids lone working for high-risk tasks when fatigued. \n\nPlan: \n- Continue levetiracetam 1,000 mg twice daily without change. \n- Maintain sleep hygiene measures and shift diary. \n- If any possible seizure recurs, particularly after run of night shifts, she should contact us promptly; we would consider dose optimisation after review. \n- Routine bloods via GP in 6–9 months (U&E, FBC) as part of general monitoring. \n\nFollow-up in six months, sooner if there is any change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 352,
+      "end": 428,
+      "text": "No breakthrough events reported since commencing this dose three months ago.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8724,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Martin, DOB: 12-11-1991, Hospital No: H384920 NHS No. 9053176421  \n14 Northbridge Court, London, W10 5QP \n\nMedication: \n\nLevetiracetam 1,000 mg twice daily. No breakthrough events reported since commencing this dose three months ago. Continue current regimen. \n\nSophie Martin works rotating shifts including nights and reports significant disruption to her sleep–wake cycle, with variable bedtimes and early morning finishes. Since titration to her current antiepileptic dose, she describes no episodes suggestive of seizures, including no nocturnal events, auras, or witnessed spells. Prior to dose stabilisation she had brief, rare spells of transient unresponsiveness after consecutive night shifts; these have not recurred. She denies adverse effects from medication beyond occasional irritability during changeover weeks, which she feels is manageable. \n\nShe keeps a diary of sleep and potential triggers and notes that longer stretches of consecutive night duties are the most challenging for fatigue. She has begun using blackout curtains and a consistent pre-sleep routine after nights, which she feels helps. She does not drive. Caffeine use is modest (one coffee near shift start) and she avoids energy drinks. Alcohol is minimal. \n\nExamination today was unremarkable. We discussed the importance of regular medication timing despite shift changes; she sets alarms and has not missed doses. We also reviewed general safety at work; she has informed her occupational health team and avoids lone working for high-risk tasks when fatigued. \n\nPlan: \n- Continue levetiracetam 1,000 mg twice daily without change. \n- Maintain sleep hygiene measures and shift diary. \n- If any possible seizure recurs, particularly after run of night shifts, she should contact us promptly; we would consider dose optimisation after review. \n- Routine bloods via GP in 6–9 months (U&E, FBC) as part of general monitoring. \n\nFollow-up in six months, sooner if there is any change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that since titration to the current antiepileptic dose, there have been no episodes suggestive of seizures. It further specifies that this dose was commenced three months ago and there have been no breakthrough events since then. To classify as seizure free, the patient must have no seizures for at least 6 months. Here, the documented seizure-free duration is three months, which is less than 6 months. Therefore, per the rules, label as 'seizure free for multiple months' (not yet 6 months). Calculation: Dose commenced 3 months ago with no events → seizure free duration = 3 months < 6 months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No breakthrough events reported since commencing this dose three months ago."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on last ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

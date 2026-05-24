@@ -1,0 +1,54 @@
+{
+  "id": "gan_6677",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Aisha Rahman\nConsultant Neurologist\nNorth Downs Neurology Clinic\nMeadow House, Ash Vale, Surrey GU12 5AB\n\nDear Dr Aisha Rahman,\n\nSam Taylor, DOB: 22-03-1987, Hospital No: K8472051 NHS No. 3015592847\nWillow Cottage, Mill Lane, Hartfield, TN7 4AE\n\nDiagnosis:\n\nRecurrent episodes with unclassified features; current treatment with Lamotrigine and intermittent use of Midazolam rescue as per prior care plan.\n\nAetiology:\n\nNo confirmed structural or genetic cause identified to date. Awaiting upload of external MRI report from 2022 via shared care records.\n\nOther Medical Problems:\n\nVitamin D insufficiency on supplementation; borderline iron deficiency under GP monitoring.\n\nManagement Plan:\n\n- Continue Lamotrigine 150 mg twice daily, single consistent brand. Patient has adequate supply for 2 months.\n- Buccal Midazolam 10 mg as rescue for prolonged events, carer trained; no dose changes today.\n- Arrange community phlebotomy for Lamotrigine level, FBC, U&E, LFTs, ferritin, and vitamin D within the next 4 weeks given travel constraints.\n- Remote review (video) in 6 months; sooner via telephone if breakthrough events occur.\n- Safety: advised to maintain regular sleep pattern and avoid lone bathing. We discussed strategies for rural living with limited transport, including a seizure alarm and neighbour check-in system.\n\nInterim Progress:\n\nSince our last remote check-in, Sam Taylor reports three events over the past four months, typically in the early morning after disrupted sleep. Caregiver observations include mouth injury and loss of bladder control on two occasions, consistent with prior episodes. Post-event confusion lasts approximately 20–30 minutes. No clear triggers apart from sleep loss and high stress.\n\nMedication tolerance remains acceptable with occasional dizziness if a dose is taken without food. No rash or mood adverse effects reported. They have found remote appointments helpful due to limited local transport; pharmacy deliveries are arranged monthly via the community scheme. We will continue to coordinate care remotely where feasible and use local services for bloods.\n\nI will contact Sam Taylor with results and adjust treatment if required. Please let me know if there are any concerns from your side or if additional community support is needed.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1486,
+      "end": 1524,
+      "text": "three events over the past four months",
+      "attributes": {
+        "Label": "3 per 4 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6677,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Aisha Rahman\nConsultant Neurologist\nNorth Downs Neurology Clinic\nMeadow House, Ash Vale, Surrey GU12 5AB\n\nDear Dr Aisha Rahman,\n\nSam Taylor, DOB: 22-03-1987, Hospital No: K8472051 NHS No. 3015592847\nWillow Cottage, Mill Lane, Hartfield, TN7 4AE\n\nDiagnosis:\n\nRecurrent episodes with unclassified features; current treatment with Lamotrigine and intermittent use of Midazolam rescue as per prior care plan.\n\nAetiology:\n\nNo confirmed structural or genetic cause identified to date. Awaiting upload of external MRI report from 2022 via shared care records.\n\nOther Medical Problems:\n\nVitamin D insufficiency on supplementation; borderline iron deficiency under GP monitoring.\n\nManagement Plan:\n\n- Continue Lamotrigine 150 mg twice daily, single consistent brand. Patient has adequate supply for 2 months.\n- Buccal Midazolam 10 mg as rescue for prolonged events, carer trained; no dose changes today.\n- Arrange community phlebotomy for Lamotrigine level, FBC, U&E, LFTs, ferritin, and vitamin D within the next 4 weeks given travel constraints.\n- Remote review (video) in 6 months; sooner via telephone if breakthrough events occur.\n- Safety: advised to maintain regular sleep pattern and avoid lone bathing. We discussed strategies for rural living with limited transport, including a seizure alarm and neighbour check-in system.\n\nInterim Progress:\n\nSince our last remote check-in, Sam Taylor reports three events over the past four months, typically in the early morning after disrupted sleep. Caregiver observations include mouth injury and loss of bladder control on two occasions, consistent with prior episodes. Post-event confusion lasts approximately 20–30 minutes. No clear triggers apart from sleep loss and high stress.\n\nMedication tolerance remains acceptable with occasional dizziness if a dose is taken without food. No rash or mood adverse effects reported. They have found remote appointments helpful due to limited local transport; pharmacy deliveries are arranged monthly via the community scheme. We will continue to coordinate care remotely where feasible and use local services for bloods.\n\nI will contact Sam Taylor with results and adjust treatment if required. Please let me know if there are any concerns from your side or if additional community support is needed.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"three events over the past four months.\" These events are the patient's seizure-like episodes. There is no indication of seizure freedom for 6 months. Therefore, the current frequency is directly inferred as 3 events in 4 months, which maps to the allowed format as 3 per 4 month.",
+      "seizure_frequency_number": [
+        "3 per 4 month",
+        "three events over the past four months"
+      ],
+      "reference": [
+        "unknown",
+        "Tongue biting/incontinence reported with seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per 4 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

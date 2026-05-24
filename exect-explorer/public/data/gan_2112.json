@@ -1,0 +1,59 @@
+{
+  "id": "gan_2112",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 01 March 2022 \n\nDr Patel  \nRiverside Neurology Clinic  \nUnit 3, Waterside Health Hub, South Quay, London E14 9XY  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-07-1988, Hospital No: H392761 NHS No. 9472601835  \nMooring 12B, Limehouse Basin, London E14 7LB  \n\nDiagnoses: \n\nSeizure disorder (aetiology not established). \n\nThank you for asking me to review Jordan Evans in clinic today. History is patient-reported. Jordan Evans currently resides on a houseboat/mobile home and notes that intermittent power outages have occasionally affected timely charging of their seizure-detection and safety devices. Over the past week they describe several petit mal in the past week, typically brief lapses of awareness without clear motor features, each lasting a few seconds and occurring in clusters on two separate days. No tongue biting or post-ictal confusion was reported, and there have been no witnessed convulsions. Triggers are uncertain; tiredness and disrupted charging routines during outages are suspected by the patient. \n\nMedication adherence is reported as good. No rescue medication has been required. There have been no recent injuries. They use a smartphone reminder and a portable battery pack to maintain device charging; however, during longer outages the backup was depleted on one occasion. Sleep has been variable due to mooring changes and mechanical noise on the boat. Alcohol intake is rare. There is no new focal neurological symptomatology. \n\nOn examination today, general and neurological examinations were unremarkable. Observations were stable. No changes were made to medication at this visit. We discussed practical measures for maintaining device reliability during outages, including keeping a fully charged spare power bank and enabling low‑power modes. The patient will continue their current regimen and keep a seizure diary, noting any association with power interruptions, sleep loss, or stress. \n\nPlan: \n- Continue present antiseizure therapy without change. \n- Reinforce seizure diary with specific annotation of outage periods and sleep duration. \n- Provide clinic letter copy to the patient’s general practitioner for shared monitoring. \n- Arrange follow‑up in 3 months, sooner if events escalate, injuries occur, or convulsions are witnessed. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 688,
+      "end": 722,
+      "text": "several petit mal in the past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 688,
+      "end": 722,
+      "text": "several petit mal in the past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2112,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 01 March 2022 \n\nDr Patel  \nRiverside Neurology Clinic  \nUnit 3, Waterside Health Hub, South Quay, London E14 9XY  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-07-1988, Hospital No: H392761 NHS No. 9472601835  \nMooring 12B, Limehouse Basin, London E14 7LB  \n\nDiagnoses: \n\nSeizure disorder (aetiology not established). \n\nThank you for asking me to review Jordan Evans in clinic today. History is patient-reported. Jordan Evans currently resides on a houseboat/mobile home and notes that intermittent power outages have occasionally affected timely charging of their seizure-detection and safety devices. Over the past week they describe several petit mal in the past week, typically brief lapses of awareness without clear motor features, each lasting a few seconds and occurring in clusters on two separate days. No tongue biting or post-ictal confusion was reported, and there have been no witnessed convulsions. Triggers are uncertain; tiredness and disrupted charging routines during outages are suspected by the patient. \n\nMedication adherence is reported as good. No rescue medication has been required. There have been no recent injuries. They use a smartphone reminder and a portable battery pack to maintain device charging; however, during longer outages the backup was depleted on one occasion. Sleep has been variable due to mooring changes and mechanical noise on the boat. Alcohol intake is rare. There is no new focal neurological symptomatology. \n\nOn examination today, general and neurological examinations were unremarkable. Observations were stable. No changes were made to medication at this visit. We discussed practical measures for maintaining device reliability during outages, including keeping a fully charged spare power bank and enabling low‑power modes. The patient will continue their current regimen and keep a seizure diary, noting any association with power interruptions, sleep loss, or stress. \n\nPlan: \n- Continue present antiseizure therapy without change. \n- Reinforce seizure diary with specific annotation of outage periods and sleep duration. \n- Provide clinic letter copy to the patient’s general practitioner for shared monitoring. \n- Arrange follow‑up in 3 months, sooner if events escalate, injuries occur, or convulsions are witnessed. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter reports current seizures: \"several petit mal in the past week\" and that they \"occur[red] in clusters on two separate days.\" No exact count is given, but this clearly indicates multiple seizures within a one-week period. There is insufficient detail to quantify the number per cluster, so a general weekly frequency using 'multiple' is the most accurate normalized label.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "several petit mal in the past week"
+      ],
+      "reference": [
+        "multiple per week",
+        "several petit mal in the past week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

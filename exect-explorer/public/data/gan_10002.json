@@ -1,0 +1,59 @@
+{
+  "id": "gan_10002",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 05 July 2024 \n\nDr Patel  \nNorth Thames Neurology Service  \nOutpatient Department, 14 Brookside Way, London, NW6 3JP  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 12-07-1992, Hospital No: H483920 NHS No. 9473625811  \nFlat 3, 28 Willow Court, London, W9 1DT  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nLucy Morgan attended today accompanied by her carer, who assists with communication and maintains a seizure record. The primary concern raised was a pattern of early-day events: Weekly morning clusters reported; number per cluster not documented. The carer notes these typically occur within one hour of waking, often preceded by brief irritability and reduced responsiveness. No clear precipitating factors have been identified. There is no report of prolonged events, injury, or need for emergency rescue medication to date. \n\nCurrent anti-seizure medication is unchanged since the last review, and adherence is reported as good. No adverse effects have been observed beyond intermittent daytime fatigue on workdays. Sleep routine is variable according to the carer, and hydration/meal timing in the mornings is inconsistent. \n\nNeurological examination today was limited by communication difficulties but showed no new focal findings. Baseline bloods from the GP last month were within expected ranges. We discussed the value of more granular seizure logging, particularly documenting the number of events within each morning cluster and any associated behaviours, as well as noting wake time, first meal, and any intercurrent illness. \n\nPlan: \n- Continue current medication regimen without change at this stage.  \n- Request a detailed seizure diary with emphasis on morning routines and event counts within clusters.  \n- Arrange ambulatory EEG with morning capture if possible, to characterise events.  \n- Discuss reasonable adjustments with the day service to support consistent sleep/wake and breakfast timing.  \n- Safety advice reinforced to the carer regarding supervision during morning routines (bathroom and kitchen).  \n\nWe will review in clinic in three months or sooner if there is any prolonged event, injury, or an escalation in frequency or duration. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 539,
+      "end": 607,
+      "text": "Weekly morning clusters reported; number per cluster not documented.",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 539,
+      "end": 606,
+      "text": "Weekly morning clusters reported; number per cluster not documented",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10002,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 05 July 2024 \n\nDr Patel  \nNorth Thames Neurology Service  \nOutpatient Department, 14 Brookside Way, London, NW6 3JP  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 12-07-1992, Hospital No: H483920 NHS No. 9473625811  \nFlat 3, 28 Willow Court, London, W9 1DT  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nLucy Morgan attended today accompanied by her carer, who assists with communication and maintains a seizure record. The primary concern raised was a pattern of early-day events: Weekly morning clusters reported; number per cluster not documented. The carer notes these typically occur within one hour of waking, often preceded by brief irritability and reduced responsiveness. No clear precipitating factors have been identified. There is no report of prolonged events, injury, or need for emergency rescue medication to date. \n\nCurrent anti-seizure medication is unchanged since the last review, and adherence is reported as good. No adverse effects have been observed beyond intermittent daytime fatigue on workdays. Sleep routine is variable according to the carer, and hydration/meal timing in the mornings is inconsistent. \n\nNeurological examination today was limited by communication difficulties but showed no new focal findings. Baseline bloods from the GP last month were within expected ranges. We discussed the value of more granular seizure logging, particularly documenting the number of events within each morning cluster and any associated behaviours, as well as noting wake time, first meal, and any intercurrent illness. \n\nPlan: \n- Continue current medication regimen without change at this stage.  \n- Request a detailed seizure diary with emphasis on morning routines and event counts within clusters.  \n- Arrange ambulatory EEG with morning capture if possible, to characterise events.  \n- Discuss reasonable adjustments with the day service to support consistent sleep/wake and breakfast timing.  \n- Safety advice reinforced to the carer regarding supervision during morning routines (bathroom and kitchen).  \n\nWe will review in clinic in three months or sooner if there is any prolonged event, injury, or an escalation in frequency or duration. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states there are 'Weekly morning clusters' but the number of events within each cluster is not documented. This indicates cluster frequency is weekly, with an unknown count per cluster. No other explicit frequencies are provided. Therefore, normalize to a cluster frequency per week with unknown events per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per week, multiple per cluster",
+        "Weekly morning clusters reported; number per cluster not documented."
+      ],
+      "reference": [
+        "1 cluster per week, multiple per cluster",
+        "Weekly morning clusters reported; number per cluster not documented"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

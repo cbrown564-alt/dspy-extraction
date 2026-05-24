@@ -1,0 +1,59 @@
+{
+  "id": "gan_16512",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Thomas’ Hospital  \nDepartment of Neurology, Westminster Bridge Road, London SE1 7EH  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-1986, Hospital No: H927461 NHS No. 7482051936  \n12 Weaver Close, London, SE15 3JP  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nThank you for asking me to review Michael Harris in clinic today. He attended with his partner. He works in a manual, safety‑sensitive role that involves heights and proximity to moving machinery; we discussed workplace risk, triggers, and symptom recognition in detail. \n\nOverall seizure burden is stable. Most seizures continue to present in clusters, generally every several days, though there have been episodes of 1 seizures in one day. Buccolam was used once each in March, May, and July. He reports brief prodromal symptoms of light‑headedness and a rising internal sensation before some events; recovery is usually within 10–20 minutes, with post‑event fatigue. No tongue biting or witnessed prolonged confusion has been described. There has been no reported head injury, meningitis, or febrile convulsion history, and no known family history of seizures. Sleep restriction and missed meals appear to precede some clusters, per his diary. Alcohol intake is minimal. \n\nCurrent antiseizure medication: levetiracetam 1 g twice daily. Adherence is reported as good, with no significant mood change or cognitive adverse effects volunteered. Buccal midazolam (Buccolam) held as rescue; see usage above. No other regular medications. \n\nExamination today was unremarkable with normal cardiorespiratory and focused neurological assessment. \n\nPrior investigations: routine EEG (April 2025) showed non‑specific findings without clear epileptiform discharges. MRI brain (May 2025) reported no focal structural abnormality. Bloods (June 2025) including FBC, U&E, LFT, glucose, B12, folate, and thyroid function were within reference ranges. \n\nPlan: \n- Continue current levetiracetam dose and maintain seizure diary with particular focus on clustering pattern and potential work‑related triggers. \n- Safety counselling reinforced for work at height and around machinery; patient has informed his occupational health team and will continue task modification as agreed with employer. \n- Arrange ambulatory EEG (72‑hour) to improve event capture and characterisation of clusters. \n- Repeat MRI with epilepsy protocol only if electroclinical data later suggest a focal onset. \n- Rescue plan unchanged: Buccolam as previously instructed. \n- Review in clinic in 3 months, sooner if there is any increase in frequency, change in semiology, or injury. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 712,
+      "end": 740,
+      "text": "generally every several days",
+      "attributes": {
+        "Label": "1 per multiple day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 631,
+      "end": 851,
+      "text": "Overall seizure burden is stable. Most seizures continue to present in clusters, generally every several days, though there have been episodes of 1 seizures in one day. Buccolam was used once each in March, May, and July",
+      "attributes": {
+        "Label": "1 per multiple day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16512,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Thomas’ Hospital  \nDepartment of Neurology, Westminster Bridge Road, London SE1 7EH  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-1986, Hospital No: H927461 NHS No. 7482051936  \n12 Weaver Close, London, SE15 3JP  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nThank you for asking me to review Michael Harris in clinic today. He attended with his partner. He works in a manual, safety‑sensitive role that involves heights and proximity to moving machinery; we discussed workplace risk, triggers, and symptom recognition in detail. \n\nOverall seizure burden is stable. Most seizures continue to present in clusters, generally every several days, though there have been episodes of 1 seizures in one day. Buccolam was used once each in March, May, and July. He reports brief prodromal symptoms of light‑headedness and a rising internal sensation before some events; recovery is usually within 10–20 minutes, with post‑event fatigue. No tongue biting or witnessed prolonged confusion has been described. There has been no reported head injury, meningitis, or febrile convulsion history, and no known family history of seizures. Sleep restriction and missed meals appear to precede some clusters, per his diary. Alcohol intake is minimal. \n\nCurrent antiseizure medication: levetiracetam 1 g twice daily. Adherence is reported as good, with no significant mood change or cognitive adverse effects volunteered. Buccal midazolam (Buccolam) held as rescue; see usage above. No other regular medications. \n\nExamination today was unremarkable with normal cardiorespiratory and focused neurological assessment. \n\nPrior investigations: routine EEG (April 2025) showed non‑specific findings without clear epileptiform discharges. MRI brain (May 2025) reported no focal structural abnormality. Bloods (June 2025) including FBC, U&E, LFT, glucose, B12, folate, and thyroid function were within reference ranges. \n\nPlan: \n- Continue current levetiracetam dose and maintain seizure diary with particular focus on clustering pattern and potential work‑related triggers. \n- Safety counselling reinforced for work at height and around machinery; patient has informed his occupational health team and will continue task modification as agreed with employer. \n- Arrange ambulatory EEG (72‑hour) to improve event capture and characterisation of clusters. \n- Repeat MRI with epilepsy protocol only if electroclinical data later suggest a focal onset. \n- Rescue plan unchanged: Buccolam as previously instructed. \n- Review in clinic in 3 months, sooner if there is any increase in frequency, change in semiology, or injury. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit statements about seizure timing: the letter says, \"Most seizures continue to present in clusters, generally every several days,\" which provides a recurring interval. 2) Normalize \"every several days\" to the allowed format using 'multiple' for vague quantities, yielding a per-interval of 'per multiple day'. 3) The note about \"episodes of 1 seizures in one day\" indicates occasional single‑day events but does not establish a consistent daily frequency; thus it does not override the recurring pattern. 4) Buccolam usage (once in March, May, July) does not define seizure frequency. 5) No evidence of a ≥6‑month seizure‑free period. 6) Therefore, use the recurring interval as the current frequency: 1 per multiple day.",
+      "seizure_frequency_number": [
+        "1 per multiple day",
+        "generally every several days"
+      ],
+      "reference": [
+        "1 per multiple day",
+        "Overall seizure burden is stable. Most seizures continue to present in clusters, generally every several days, though there have been episodes of 1 seizures in one day. Buccolam was used once each in March, May, and July"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

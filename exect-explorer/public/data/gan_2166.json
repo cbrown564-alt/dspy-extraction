@@ -1,0 +1,65 @@
+{
+  "id": "gan_2166",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 27 June 2019 11:20\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Treatment review and guidance\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy\n\n\nPresent Medication:\n\n1. Sodium Valproate 300 mg in the morning and 500 mg at night\n2. Lamotrigine 50 mg twice daily\n\n\nPresent Seizure Frequency:\n\nPatient reports frequent petit mal recently, particularly on waking and during periods of prolonged screen use at work. No generalised tonic–clonic seizures for over a year.\n\n\nPlan of Action:\n\nThe patient describes increasing brief absence episodes over the past six weeks, with no clear illness, sleep deprivation, or missed doses identified. They feel work-related visual strain and stress may be contributory. Given the pattern in generalised epilepsy, I recommend a cautious optimisation of lamotrigine while maintaining sodium valproate.\n\nPlease adjust Lamotrigine as follows: increase to 75 mg twice daily for two weeks, then to 100 mg twice daily thereafter, provided no rash or adverse effects occur. Continue Sodium Valproate at the current dose. If sedation or tremor emerge, please let me know, as we may need to fine-tune the evening valproate dose.\n\nI have advised the patient on regular sleep, breaks from screen exposure (20–20–20 rule), and to keep a seizure diary documenting time of day, precipitating factors, and functional impact. They will also arrange an optometry review to reduce visual strain at work.\n\nI will review them in clinic in three months. If the frequent petit mal recently persist despite the above, we will consider substituting valproate with ethosuximide or adjusting therapy toward levetiracetam, balancing efficacy and tolerability.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 535,
+      "end": 654,
+      "text": "Patient reports frequent petit mal recently, particularly on waking and during periods of prolonged screen use at work.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 551,
+      "end": 578,
+      "text": "frequent petit mal recently",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2166,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 27 June 2019 11:20\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Treatment review and guidance\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy\n\n\nPresent Medication:\n\n1. Sodium Valproate 300 mg in the morning and 500 mg at night\n2. Lamotrigine 50 mg twice daily\n\n\nPresent Seizure Frequency:\n\nPatient reports frequent petit mal recently, particularly on waking and during periods of prolonged screen use at work. No generalised tonic–clonic seizures for over a year.\n\n\nPlan of Action:\n\nThe patient describes increasing brief absence episodes over the past six weeks, with no clear illness, sleep deprivation, or missed doses identified. They feel work-related visual strain and stress may be contributory. Given the pattern in generalised epilepsy, I recommend a cautious optimisation of lamotrigine while maintaining sodium valproate.\n\nPlease adjust Lamotrigine as follows: increase to 75 mg twice daily for two weeks, then to 100 mg twice daily thereafter, provided no rash or adverse effects occur. Continue Sodium Valproate at the current dose. If sedation or tremor emerge, please let me know, as we may need to fine-tune the evening valproate dose.\n\nI have advised the patient on regular sleep, breaks from screen exposure (20–20–20 rule), and to keep a seizure diary documenting time of day, precipitating factors, and functional impact. They will also arrange an optometry review to reduce visual strain at work.\n\nI will review them in clinic in three months. If the frequent petit mal recently persist despite the above, we will consider substituting valproate with ethosuximide or adjusting therapy toward levetiracetam, balancing efficacy and tolerability.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses current seizures. It states: 'Patient reports frequent petit mal recently' and 'increasing brief absence episodes over the past six weeks.' There is no explicit numeric frequency (per day/week/month) given. It also notes 'No generalised tonic–clonic seizures for over a year,' but absence seizures are occurring frequently. Since no numeric rate is provided and only a vague descriptor ('frequent') is used, the specific frequency cannot be determined. Therefore, per the rules, return 'unknown' with a supporting quote.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Patient reports frequent petit mal recently, particularly on waking and during periods of prolonged screen use at work."
+      ],
+      "reference": [
+        "unknown",
+        "frequent petit mal recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_6004",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nDiagnosis:\nCombined generalised and focal epilepsy. The patient describes events consistent with both generalised seizures (brief morning myoclonic jerks and a prior generalised tonic–clonic event) and focal seizures with retained awareness (brief right temporal aura with déjà vu and epigastric rising sensation) on separate occasions.\n\nMedication:\nLevetiracetam 1000 mg twice daily.\nLamotrigine 100 mg twice daily (slow titration completed two months ago).\n\nInterim history:\nSince the last review, Emily Carter reports that overall seizure control has been stable with no unprovoked events in day-to-day circumstances. However, she has experienced Seizures during intercurrent illness. Specifically, she had two short clusters of morning myoclonic jerks and one focal aware episode (déjà vu with a rising epigastric sensation lasting under a minute) during a febrile upper respiratory infection in January, and a single generalised tonic–clonic seizure at home during a 24-hour viral gastroenteritis in mid-February. Outside of these intercurrent illnesses, there have been no seizures, auras, or myoclonus reported. She notes good adherence to medication and no missed doses around these times.\n\nExamination:\nNormal neurological examination today. Weight stable. No intercurrent signs of systemic illness at present. No adverse effects reported from current antiepileptic medications beyond transient morning fatigue, which is tolerable.\n\nPlan:\n- Continue current regimen of levetiracetam and lamotrigine without change as baseline control is good and breakthrough events have occurred only with intercurrent infection.\n- We discussed illness management: maintaining hydration, regular dosing, and prompt treatment of fever. She will use simple antipyretics during infections and seek medical advice if fevers persist.\n- Safety counsel reiterated regarding bathing, swimming with supervision, and avoiding climbing when unwell.\n- No driving as per DVLA regulations for a period following the recent generalised tonic–clonic seizure; we have advised she consult the DVLA guidance and we will provide a supporting summary if required.\n- Arrange follow-up in six months, or sooner should there be further seizures outside of intercurrent illnesses, medication side effects, or difficulties during future infections.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 980,
+      "end": 1143,
+      "text": "she had two short clusters of morning myoclonic jerks and one focal aware episode ... in January, and a single generalised tonic–clonic seizure ... in mid-February",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 928,
+      "end": 964,
+      "text": "Seizures during intercurrent illness",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6004,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nDiagnosis:\nCombined generalised and focal epilepsy. The patient describes events consistent with both generalised seizures (brief morning myoclonic jerks and a prior generalised tonic–clonic event) and focal seizures with retained awareness (brief right temporal aura with déjà vu and epigastric rising sensation) on separate occasions.\n\nMedication:\nLevetiracetam 1000 mg twice daily.\nLamotrigine 100 mg twice daily (slow titration completed two months ago).\n\nInterim history:\nSince the last review, Emily Carter reports that overall seizure control has been stable with no unprovoked events in day-to-day circumstances. However, she has experienced Seizures during intercurrent illness. Specifically, she had two short clusters of morning myoclonic jerks and one focal aware episode (déjà vu with a rising epigastric sensation lasting under a minute) during a febrile upper respiratory infection in January, and a single generalised tonic–clonic seizure at home during a 24-hour viral gastroenteritis in mid-February. Outside of these intercurrent illnesses, there have been no seizures, auras, or myoclonus reported. She notes good adherence to medication and no missed doses around these times.\n\nExamination:\nNormal neurological examination today. Weight stable. No intercurrent signs of systemic illness at present. No adverse effects reported from current antiepileptic medications beyond transient morning fatigue, which is tolerable.\n\nPlan:\n- Continue current regimen of levetiracetam and lamotrigine without change as baseline control is good and breakthrough events have occurred only with intercurrent infection.\n- We discussed illness management: maintaining hydration, regular dosing, and prompt treatment of fever. She will use simple antipyretics during infections and seek medical advice if fevers persist.\n- Safety counsel reiterated regarding bathing, swimming with supervision, and avoiding climbing when unwell.\n- No driving as per DVLA regulations for a period following the recent generalised tonic–clonic seizure; we have advised she consult the DVLA guidance and we will provide a supporting summary if required.\n- Arrange follow-up in six months, or sooner should there be further seizures outside of intercurrent illnesses, medication side effects, or difficulties during future infections.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit seizure occurrences within the recent interval since last review. It states: two short clusters of morning myoclonic jerks, one focal aware episode during a febrile URI in January, and one generalised tonic–clonic seizure during a 24-hour gastroenteritis in mid-February. Outside illnesses, no seizures. There is no explicit duration of the overall reporting interval (time since last review), so a precise per unit time (day/week/month/year) frequency cannot be reliably calculated from the letter. The presence of seizures means the patient is not seizure free for ≥6 months. Because the time denominator is unspecified, the specific frequency per time unit cannot be determined. Therefore, the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "she had two short clusters of morning myoclonic jerks and one focal aware episode ... in January, and a single generalised tonic–clonic seizure ... in mid-February"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during intercurrent illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

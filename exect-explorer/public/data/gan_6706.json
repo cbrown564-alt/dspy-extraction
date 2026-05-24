@@ -1,0 +1,54 @@
+{
+  "id": "gan_6706",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 October 2025 10:12\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Shaw (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Reed\n\nEpilepsy diagnosis:\n\nThe patient has generalised epilepsy.\n\nCurrent background and context:\n\nShe is currently working with an assistance dog in training, which accompanies her during daily routines. She reports that the dog alerts to behavioural changes prior to episodes and has helped her manage recovery after events in public settings.\n\nPresent medication:\n\n1. Sodium valproate modified-release 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nPresent seizure frequency:\n\nShe describes two recent episodes over the past eight weeks that were associated with minor injuries consistent with unprotected drops to the floor, including a bruised shoulder after collapsing in the kitchen and a grazed knee following a sudden loss of awareness while exiting a bus. No tongue biting was reported. The assistance dog’s presence allowed prompt help on both occasions.\n\nPlan of action:\n\nShe notes increasing early-morning myoclonic jerks over the last month despite adherence. Given the recurrence and the injury-risk profile, we agreed to cautiously optimise therapy. I recommend introducing topiramate as adjunctive treatment while maintaining current doses of valproate and lamotrigine initially.\n\nPlease initiate topiramate as follows:\n- Week 1: 25 mg at night\n- Week 2: 25 mg twice daily\n- Week 3: 25 mg in the morning and 50 mg at night\n- Week 4: 50 mg twice daily\n\nContinue at 50 mg twice daily thereafter for three months, provided it is well tolerated. We discussed potential adverse effects (cognitive slowing, paraesthesia, appetite changes) and she will monitor with a medication diary. She will continue seizure safety strategies and will incorporate the assistance dog’s alert behaviours into her action plan.\n\nI have arranged a follow-up appointment in three months. If seizure control improves and side effects are acceptable, we will consider a gradual reduction of lamotrigine while maintaining valproate and topiramate. She will contact our team earlier if events increase, new injuries occur, or if she experiences problematic adverse effects.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 845,
+      "end": 890,
+      "text": "two recent episodes over the past eight weeks",
+      "attributes": {
+        "Label": "2 per 8 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6706,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 October 2025 10:12\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Shaw (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Reed\n\nEpilepsy diagnosis:\n\nThe patient has generalised epilepsy.\n\nCurrent background and context:\n\nShe is currently working with an assistance dog in training, which accompanies her during daily routines. She reports that the dog alerts to behavioural changes prior to episodes and has helped her manage recovery after events in public settings.\n\nPresent medication:\n\n1. Sodium valproate modified-release 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nPresent seizure frequency:\n\nShe describes two recent episodes over the past eight weeks that were associated with minor injuries consistent with unprotected drops to the floor, including a bruised shoulder after collapsing in the kitchen and a grazed knee following a sudden loss of awareness while exiting a bus. No tongue biting was reported. The assistance dog’s presence allowed prompt help on both occasions.\n\nPlan of action:\n\nShe notes increasing early-morning myoclonic jerks over the last month despite adherence. Given the recurrence and the injury-risk profile, we agreed to cautiously optimise therapy. I recommend introducing topiramate as adjunctive treatment while maintaining current doses of valproate and lamotrigine initially.\n\nPlease initiate topiramate as follows:\n- Week 1: 25 mg at night\n- Week 2: 25 mg twice daily\n- Week 3: 25 mg in the morning and 50 mg at night\n- Week 4: 50 mg twice daily\n\nContinue at 50 mg twice daily thereafter for three months, provided it is well tolerated. We discussed potential adverse effects (cognitive slowing, paraesthesia, appetite changes) and she will monitor with a medication diary. She will continue seizure safety strategies and will incorporate the assistance dog’s alert behaviours into her action plan.\n\nI have arranged a follow-up appointment in three months. If seizure control improves and side effects are acceptable, we will consider a gradual reduction of lamotrigine while maintaining valproate and topiramate. She will contact our team earlier if events increase, new injuries occur, or if she experiences problematic adverse effects.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter’s Present seizure frequency section states: “two recent episodes over the past eight weeks.” These episodes are described with features consistent with seizures (loss of awareness, drops to the floor). No other seizure type has a numeric frequency provided. Therefore, using the explicit numeric expression, the normalized frequency is 2 per 8 weeks. Calculations: 2 episodes / 8 weeks → '2 per 8 week' in the allowed format.",
+      "seizure_frequency_number": [
+        "2 per 8 week",
+        "two recent episodes over the past eight weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Injury related to seizure episodes (e.g., falls)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 8 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

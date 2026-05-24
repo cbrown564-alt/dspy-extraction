@@ -1,0 +1,59 @@
+{
+  "id": "gan_8474",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 300 mg in the morning and 600 mg at night. No recent changes.\n\nHistory since last review:\n\nEmily Carter reports ongoing difficulties with anxiety and periods of low mood, particularly in the evenings after work. She has been engaging in self-directed strategies such as paced breathing and short walks, which she feels are modestly helpful. Sleep is variable, with early morning awakenings on two to three nights per week. Caffeine intake has been reduced to one cup of tea in the morning.\n\nWith regard to paroxysmal events, there have been no witnessed episodes, collapses, injuries, or post-event confusion. She has maintained full-time employment and continues to drive within DVLA regulations. Importantly, she describes \"No events suggestive of seizures\" over this interval. She has not experienced any nocturnal disturbances that would raise concern from her partner, and there are no new neurological symptoms.\n\nExamination (telemedicine review):\n\nAlert, oriented, normal speech and language in conversation. No visible focal deficits on screening tasks. Weight stable by report. No medication adverse effects volunteered; specifically, she denies dizziness, diplopia, or rash.\n\nPlan:\n\n- Continue oxcarbazepine at the current regimen, given stability and \"No events suggestive of seizures\".\n- We discussed the interplay between anxiety/low mood and overall wellbeing. She is open to exploring talking therapies; she will consider self-referral to IAPT, and I have encouraged routine activity, regular sleep timing, and ongoing caffeine moderation. She understands this is supportive and not a substitute for medical therapy.\n- Basic safety advice reinforced, including adherence and avoiding abrupt medication changes.\n- Routine bloods via GP (U&E, LFTs, FBC) in the next 3–6 months as part of periodic monitoring, if convenient.\n\nFollow-up:\n\nWe will review her in 6–8 months, or sooner if there are any changes in symptoms or concerns.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1045,
+      "end": 1077,
+      "text": "No events suggestive of seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1045,
+      "end": 1077,
+      "text": "No events suggestive of seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8474,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 300 mg in the morning and 600 mg at night. No recent changes.\n\nHistory since last review:\n\nEmily Carter reports ongoing difficulties with anxiety and periods of low mood, particularly in the evenings after work. She has been engaging in self-directed strategies such as paced breathing and short walks, which she feels are modestly helpful. Sleep is variable, with early morning awakenings on two to three nights per week. Caffeine intake has been reduced to one cup of tea in the morning.\n\nWith regard to paroxysmal events, there have been no witnessed episodes, collapses, injuries, or post-event confusion. She has maintained full-time employment and continues to drive within DVLA regulations. Importantly, she describes \"No events suggestive of seizures\" over this interval. She has not experienced any nocturnal disturbances that would raise concern from her partner, and there are no new neurological symptoms.\n\nExamination (telemedicine review):\n\nAlert, oriented, normal speech and language in conversation. No visible focal deficits on screening tasks. Weight stable by report. No medication adverse effects volunteered; specifically, she denies dizziness, diplopia, or rash.\n\nPlan:\n\n- Continue oxcarbazepine at the current regimen, given stability and \"No events suggestive of seizures\".\n- We discussed the interplay between anxiety/low mood and overall wellbeing. She is open to exploring talking therapies; she will consider self-referral to IAPT, and I have encouraged routine activity, regular sleep timing, and ongoing caffeine moderation. She understands this is supportive and not a substitute for medical therapy.\n- Basic safety advice reinforced, including adherence and avoiding abrupt medication changes.\n- Routine bloods via GP (U&E, LFTs, FBC) in the next 3–6 months as part of periodic monitoring, if convenient.\n\nFollow-up:\n\nWe will review her in 6–8 months, or sooner if there are any changes in symptoms or concerns.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly addresses seizure-related events. It states: \"No events suggestive of seizures\" over this interval, with no witnessed episodes or concerning nocturnal disturbances. There is no explicit numeric duration provided for how long she has been seizure-free. The review interval implies a period since the last review, but the exact duration is not specified. According to the rules, if the patient currently has no seizures but the information is insufficient to confirm at least 6 months, we may consider 'seizure free for multiple months.' Therefore, the best normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No events suggestive of seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No events suggestive of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

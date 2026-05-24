@@ -1,0 +1,59 @@
+{
+  "id": "gan_13006",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 June 2014 10:25\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and dose adjustment\n\nHi Alice\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy), likely temporal lobe onset based on semiology and prior EEG with anterior temporal sharp waves.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg at night\n\nPresent Seizure Frequency:\n\nHis mother notes an overall improvement compared with previous years, with three tonic seizures documented in 2014 so far. These have each lasted under two minutes with prompt recovery, no injuries, and no clear precipitant identified. Day-to-day, he also reports brief focal aware episodes of déjà vu once every few weeks, which have been less intrusive since spring.\n\nRelevant Background:\n\nPast antiseizure medication side effects have been documented historically, including a morbilliform rash on carbamazepine in 2011 and gastrointestinal upset with sodium valproate trial in 2012, both of which resolved on cessation. He and his mother are aware of the need to report any recurrence of rash or persistent GI symptoms promptly.\n\nPlan of Action:\n\nGiven the sustained reduction in events this year and satisfactory tolerability of the current regimen, we will make a cautious optimisation:\n- Increase Topiramate to 50 mg twice daily after one week at the current dose, provided no cognitive slowing or GI upset emerges.\n- Maintain Lamotrigine at 150 mg twice daily.\n- Provide a written seizure action plan for school and family, including rescue measures if any convulsive seizure exceeds five minutes.\n\nI have arranged follow-up in three months. If seizure control remains stable without adverse effects, we will consider a slow reduction of Topiramate to minimise cognitive side effects; if recurrence occurs, we will discuss alternatives that avoid agents previously associated with rash or GI intolerance.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 699,
+      "end": 745,
+      "text": "three tonic seizures documented in 2014 so far",
+      "attributes": {
+        "Label": "3 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 624,
+      "end": 745,
+      "text": "His mother notes an overall improvement compared with previous years, with three tonic seizures documented in 2014 so far",
+      "attributes": {
+        "Label": "3 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13006,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 June 2014 10:25\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and dose adjustment\n\nHi Alice\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy), likely temporal lobe onset based on semiology and prior EEG with anterior temporal sharp waves.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Topiramate 50 mg at night\n\nPresent Seizure Frequency:\n\nHis mother notes an overall improvement compared with previous years, with three tonic seizures documented in 2014 so far. These have each lasted under two minutes with prompt recovery, no injuries, and no clear precipitant identified. Day-to-day, he also reports brief focal aware episodes of déjà vu once every few weeks, which have been less intrusive since spring.\n\nRelevant Background:\n\nPast antiseizure medication side effects have been documented historically, including a morbilliform rash on carbamazepine in 2011 and gastrointestinal upset with sodium valproate trial in 2012, both of which resolved on cessation. He and his mother are aware of the need to report any recurrence of rash or persistent GI symptoms promptly.\n\nPlan of Action:\n\nGiven the sustained reduction in events this year and satisfactory tolerability of the current regimen, we will make a cautious optimisation:\n- Increase Topiramate to 50 mg twice daily after one week at the current dose, provided no cognitive slowing or GI upset emerges.\n- Maintain Lamotrigine at 150 mg twice daily.\n- Provide a written seizure action plan for school and family, including rescue measures if any convulsive seizure exceeds five minutes.\n\nI have arranged follow-up in three months. If seizure control remains stable without adverse effects, we will consider a slow reduction of Topiramate to minimise cognitive side effects; if recurrence occurs, we will discuss alternatives that avoid agents previously associated with rash or GI intolerance.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit seizure frequency statements in the letter under 'Present Seizure Frequency': (a) 'three tonic seizures documented in 2014 so far.' (b) 'brief focal aware episodes of déjà vu once every few weeks.' 2) Determine the time window: the letter is dated 24 June 2014, so '2014 so far' spans approximately January 1 to June 24, i.e., about 6 months. 3) Convert the explicit count to a normalized rate: 3 seizures over ~6 months → '3 per 6 month.' 4) There is a second, more frequent but vague rate ('once every few weeks'); per instruction to prioritize explicit numeric expressions, use the explicit numeric figure for the final label.",
+      "seizure_frequency_number": [
+        "3 per 6 month",
+        "three tonic seizures documented in 2014 so far"
+      ],
+      "reference": [
+        "3 per 6 month",
+        "His mother notes an overall improvement compared with previous years, with three tonic seizures documented in 2014 so far"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

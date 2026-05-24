@@ -1,0 +1,59 @@
+{
+  "id": "gan_2306",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 21 April 2020 10:15\nTo: neuro.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Ruiz (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Patel,\n\nDiagnosis:\n\nSeizure disorder under ongoing evaluation. No definitive classification established to date.\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg nightly\n\nSeizure History and Current Frequency:\n\nThe patient reports brief, shock-like movements primarily in the upper limbs, usually occurring after waking and occasionally in the late afternoon when fatigued. Over the past six months the pattern has been consistent at eight or nine myoclonic jerks per month. There have been no prolonged episodes, loss of awareness, tongue biting or injuries. Following recent medication adjustments, the frequency has remained unchanged.\n\nAssessment:\n\nThe described events are short-lived, stereotyped jerks without clear precipitant other than sleep deprivation and stress as reported by the patient. Routine EEG earlier this year was non-diagnostic; MRI brain reported as normal. There is no clear focal neurological deficit on examination. Mood and sleep hygiene issues were discussed; the patient notes variable sleep duration and increased work-related stress in the past quarter.\n\nPlan of Action:\n\n- Optimise current regimen by adjusting lamotrigine upward: increase by 25 mg every two weeks as tolerated to a target of 150 mg twice daily, monitoring for rash or dizziness. Maintain topiramate at 50 mg nightly for now.\n- If no improvement after 8–10 weeks at the target dose, we will consider tapering topiramate and introducing brivaracetam, discussing risks/benefits at the next visit.\n- Provide seizure diary to document timing, possible triggers, and impact on daily activities, with specific notation of the eight or nine myoclonic jerks per month.\n- Safety counselling provided regarding driving regulations, bathing/showering precautions, and occupational risks.\n- Arrange sleep hygiene advice and offer referral to psychology for stress management if the patient agrees.\n\nFollow-up:\n\nI have arranged a review in three months. The patient has been advised to contact the clinic earlier if there is a significant change in the pattern, duration, or severity of the jerks, or if any adverse medication effects occur.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 745,
+      "end": 845,
+      "text": "Over the past six months the pattern has been consistent at eight or nine myoclonic jerks per month.",
+      "attributes": {
+        "Label": "8 to 9 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 805,
+      "end": 844,
+      "text": "eight or nine myoclonic jerks per month",
+      "attributes": {
+        "Label": "8 to 9 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2306,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 21 April 2020 10:15\nTo: neuro.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Ruiz (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Patel,\n\nDiagnosis:\n\nSeizure disorder under ongoing evaluation. No definitive classification established to date.\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg nightly\n\nSeizure History and Current Frequency:\n\nThe patient reports brief, shock-like movements primarily in the upper limbs, usually occurring after waking and occasionally in the late afternoon when fatigued. Over the past six months the pattern has been consistent at eight or nine myoclonic jerks per month. There have been no prolonged episodes, loss of awareness, tongue biting or injuries. Following recent medication adjustments, the frequency has remained unchanged.\n\nAssessment:\n\nThe described events are short-lived, stereotyped jerks without clear precipitant other than sleep deprivation and stress as reported by the patient. Routine EEG earlier this year was non-diagnostic; MRI brain reported as normal. There is no clear focal neurological deficit on examination. Mood and sleep hygiene issues were discussed; the patient notes variable sleep duration and increased work-related stress in the past quarter.\n\nPlan of Action:\n\n- Optimise current regimen by adjusting lamotrigine upward: increase by 25 mg every two weeks as tolerated to a target of 150 mg twice daily, monitoring for rash or dizziness. Maintain topiramate at 50 mg nightly for now.\n- If no improvement after 8–10 weeks at the target dose, we will consider tapering topiramate and introducing brivaracetam, discussing risks/benefits at the next visit.\n- Provide seizure diary to document timing, possible triggers, and impact on daily activities, with specific notation of the eight or nine myoclonic jerks per month.\n- Safety counselling provided regarding driving regulations, bathing/showering precautions, and occupational risks.\n- Arrange sleep hygiene advice and offer referral to psychology for stress management if the patient agrees.\n\nFollow-up:\n\nI have arranged a review in three months. The patient has been advised to contact the clinic earlier if there is a significant change in the pattern, duration, or severity of the jerks, or if any adverse medication effects occur.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past six months the pattern has been consistent at eight or nine myoclonic jerks per month.\" It also notes that after recent medication adjustments, the frequency has remained unchanged. Therefore, the current seizure frequency is a range of 8 to 9 per month. No other competing frequencies are provided, so apply that directly.",
+      "seizure_frequency_number": [
+        "8 to 9 per month",
+        "Over the past six months the pattern has been consistent at eight or nine myoclonic jerks per month."
+      ],
+      "reference": [
+        "8 to 9 per month",
+        "eight or nine myoclonic jerks per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

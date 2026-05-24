@@ -1,0 +1,59 @@
+{
+  "id": "gan_10795",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 18 July 2017 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with prior work-related heat exposure contributing to symptom exacerbation; history of workplace adjustments; improving stability; smoker. \n\nMedication: Levetiracetam 1000 mg twice daily.  \nLamotrigine 150 mg twice daily.  \nFolic acid 5 mg once daily.  \nOmeprazole 20 mg once daily.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a clear account of recent months. He reports that since being relocated from the hot cookline to a prep area with better ventilation at work, he feels markedly less fatigued and notes fewer prodromal symptoms. He describes sustained stability reported in recent months, with better sleep regularity and fewer missed meals. He denies any new neurological symptoms, and there have been no emergency department attendances. He is working full shifts and reports improved concentration and stamina. \n\nSeizures: Seizure diary shows 2 cluster days this month; sizes unrecorded. He reports that both cluster days were shorter than prior episodes and occurred after particularly long shifts before the rota change took full effect. There have been no reported injuries, no witnessed generalised convulsions, and recovery times are quicker. He continues to identify heat, dehydration, and missed meals as possible triggers and feels the workplace changes have helped. \n\nExamination: Alert and oriented; speech fluent. Cranial nerves intact. Motor exam normal tone and power in all limbs. Coordination and gait normal. No focal neurological deficit. \n\nInvestigations: No new imaging indicated today. Routine bloods (FBC, U&E, LFTs) from last month were within normal limits. Levetiracetam level not routinely monitored; no concerns from adherence or adverse effects. \n\nPlan: \n- Continue current anti-seizure medications without change. \n- Reinforce hydration and regular breaks at work; patient-led measures already effective following relocation to prep area with better ventilation. \n- Continue seizure diary; asked to record duration and features of events to assist trend monitoring. \n- Safety advice reviewed (sleep hygiene, alcohol moderation, adherence). \n- Provide a brief workplace note acknowledging improvement and recommending continuation of current adjustments. \n- Review in 6 months, sooner if frequency or severity increases, or if injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1243,
+      "end": 1307,
+      "text": "Seizure diary shows 2 cluster days this month; sizes unrecorded.",
+      "attributes": {
+        "Label": "2 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1243,
+      "end": 1306,
+      "text": "Seizure diary shows 2 cluster days this month; sizes unrecorded",
+      "attributes": {
+        "Label": "2 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10795,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 18 July 2017 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with prior work-related heat exposure contributing to symptom exacerbation; history of workplace adjustments; improving stability; smoker. \n\nMedication: Levetiracetam 1000 mg twice daily.  \nLamotrigine 150 mg twice daily.  \nFolic acid 5 mg once daily.  \nOmeprazole 20 mg once daily.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a clear account of recent months. He reports that since being relocated from the hot cookline to a prep area with better ventilation at work, he feels markedly less fatigued and notes fewer prodromal symptoms. He describes sustained stability reported in recent months, with better sleep regularity and fewer missed meals. He denies any new neurological symptoms, and there have been no emergency department attendances. He is working full shifts and reports improved concentration and stamina. \n\nSeizures: Seizure diary shows 2 cluster days this month; sizes unrecorded. He reports that both cluster days were shorter than prior episodes and occurred after particularly long shifts before the rota change took full effect. There have been no reported injuries, no witnessed generalised convulsions, and recovery times are quicker. He continues to identify heat, dehydration, and missed meals as possible triggers and feels the workplace changes have helped. \n\nExamination: Alert and oriented; speech fluent. Cranial nerves intact. Motor exam normal tone and power in all limbs. Coordination and gait normal. No focal neurological deficit. \n\nInvestigations: No new imaging indicated today. Routine bloods (FBC, U&E, LFTs) from last month were within normal limits. Levetiracetam level not routinely monitored; no concerns from adherence or adverse effects. \n\nPlan: \n- Continue current anti-seizure medications without change. \n- Reinforce hydration and regular breaks at work; patient-led measures already effective following relocation to prep area with better ventilation. \n- Continue seizure diary; asked to record duration and features of events to assist trend monitoring. \n- Safety advice reviewed (sleep hygiene, alcohol moderation, adherence). \n- Provide a brief workplace note acknowledging improvement and recommending continuation of current adjustments. \n- Review in 6 months, sooner if frequency or severity increases, or if injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizure diary shows 2 cluster days this month; sizes unrecorded.' This provides a numeric frequency of cluster days within a month but does not specify the number of seizures per cluster ('sizes unrecorded'). No other conflicting frequencies are given. Therefore, the seizure frequency is 2 cluster days per month with unknown number per cluster. Construct label per allowed formats: '<value1> cluster per <value2> <unit>, <value3> per cluster' with unknown allowed for per-cluster size.",
+      "seizure_frequency_number": [
+        "2 cluster per month, multiple per cluster",
+        "Seizure diary shows 2 cluster days this month; sizes unrecorded."
+      ],
+      "reference": [
+        "2 cluster per month, multiple per cluster",
+        "Seizure diary shows 2 cluster days this month; sizes unrecorded"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

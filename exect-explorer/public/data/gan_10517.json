@@ -1,0 +1,54 @@
+{
+  "id": "gan_10517",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 03 June 2019 \n\nDr Emily Harper \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Emily Harper, \n\nSarah Whitfield, DOB: 22-06-1994, Hospital No: K842617 NHS No. 9384726150  \nFlat 3, 27 Meadow Lane, Bromley, BR2 8QH  \n\nDiagnosis: \n\nSeizure disorder with recent increase in frequency and disrupted sleep pattern; current classification remains under review\n\nAetiology: \n\nNo confirmed structural or genetic cause identified to date; perinatal, developmental, and metabolic histories unremarkable. Awaiting correlation with prolonged ambulatory EEG and postpartum endocrine screening.\n\nOther Medical Problems: \n\nPost-partum low mood and fatigue; iron deficiency previously borderline, on oral supplementation; breastfeeding established. No history of migraine, head injury, or psychosis. \n\nManagement Plan: \n\n- Safety: We discussed enhanced nocturnal supervision and seizure first aid. Advised partner to consider a bed-side alarm device if tolerated. DVLA guidance reinforced; no driving until event-free for the legally required period.  \n- Medication: Continue current Levetiracetam 750 mg twice daily pending levels and review; no immediate dose change today due to breastfeeding considerations and patient preference. We will check trough level and renal profile.  \n- Investigations: Arrange 72-hour ambulatory EEG with video, serum prolactin post-event (if feasible), FBC, U&E, LFT, vitamin D, ferritin, TSH/T4, and HbA1c.  \n- Perinatal mental health: Urgent self-reported mood deterioration post-partum; PHQ-9 and GAD-7 completed in clinic (elevated). Referral made to perinatal mental health team and GP informed for consideration of psychological support.  \n- Follow-up: Early review in 6 weeks or sooner if events escalate. Patient provided with seizure/emergency plan and advised to present to ED if any injury, prolonged event >5 minutes, or clusters not settling with usual pattern.\n\nSince delivery, she reports a clear deterioration. Over the past 6 weeks she and her partner describe predominantly night-time events occurring on 3–4 nights per week, with several brief episodes grouped together during the night and occasional continuation into the first hours after waking. This new pattern of nocturnal bunching with early morning carry-over represents a change from her previous sporadic, isolated episodes pre-pregnancy. She feels more fatigued and low in mood, with disrupted sleep related to infant care, and perceives her seizure control to be worsening. There have been no significant injuries; tongue biting reported twice, no incontinence. Post-event confusion lasts 15–30 minutes. No clear daytime triggers beyond sleep deprivation. Breastfeeding continues and she prefers to avoid medication changes until we have EEG correlation and blood results, but accepts the need for close monitoring. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2148,
+      "end": 2243,
+      "text": "occurring on 3–4 nights per week, with several brief episodes grouped together during the night",
+      "attributes": {
+        "Label": "3 to 4 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10517,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 03 June 2019 \n\nDr Emily Harper \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Emily Harper, \n\nSarah Whitfield, DOB: 22-06-1994, Hospital No: K842617 NHS No. 9384726150  \nFlat 3, 27 Meadow Lane, Bromley, BR2 8QH  \n\nDiagnosis: \n\nSeizure disorder with recent increase in frequency and disrupted sleep pattern; current classification remains under review\n\nAetiology: \n\nNo confirmed structural or genetic cause identified to date; perinatal, developmental, and metabolic histories unremarkable. Awaiting correlation with prolonged ambulatory EEG and postpartum endocrine screening.\n\nOther Medical Problems: \n\nPost-partum low mood and fatigue; iron deficiency previously borderline, on oral supplementation; breastfeeding established. No history of migraine, head injury, or psychosis. \n\nManagement Plan: \n\n- Safety: We discussed enhanced nocturnal supervision and seizure first aid. Advised partner to consider a bed-side alarm device if tolerated. DVLA guidance reinforced; no driving until event-free for the legally required period.  \n- Medication: Continue current Levetiracetam 750 mg twice daily pending levels and review; no immediate dose change today due to breastfeeding considerations and patient preference. We will check trough level and renal profile.  \n- Investigations: Arrange 72-hour ambulatory EEG with video, serum prolactin post-event (if feasible), FBC, U&E, LFT, vitamin D, ferritin, TSH/T4, and HbA1c.  \n- Perinatal mental health: Urgent self-reported mood deterioration post-partum; PHQ-9 and GAD-7 completed in clinic (elevated). Referral made to perinatal mental health team and GP informed for consideration of psychological support.  \n- Follow-up: Early review in 6 weeks or sooner if events escalate. Patient provided with seizure/emergency plan and advised to present to ED if any injury, prolonged event >5 minutes, or clusters not settling with usual pattern.\n\nSince delivery, she reports a clear deterioration. Over the past 6 weeks she and her partner describe predominantly night-time events occurring on 3–4 nights per week, with several brief episodes grouped together during the night and occasional continuation into the first hours after waking. This new pattern of nocturnal bunching with early morning carry-over represents a change from her previous sporadic, isolated episodes pre-pregnancy. She feels more fatigued and low in mood, with disrupted sleep related to infant care, and perceives her seizure control to be worsening. There have been no significant injuries; tongue biting reported twice, no incontinence. Post-event confusion lasts 15–30 minutes. No clear daytime triggers beyond sleep deprivation. Breastfeeding continues and she prefers to avoid medication changes until we have EEG correlation and blood results, but accepts the need for close monitoring. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: over the past 6 weeks, events occur on 3–4 nights per week, with several brief episodes grouped together during the night, sometimes continuing into early morning. Nights with grouped episodes indicate seizure clusters. Frequency of clusters is given (3–4 nights per week), but the number of seizures within each cluster is vague ('several'), so use the cluster format with 'multiple per cluster'. No other higher-frequency figure is provided.",
+      "seizure_frequency_number": [
+        "3 to 4 cluster per week, multiple per cluster",
+        "occurring on 3–4 nights per week, with several brief episodes grouped together during the night"
+      ],
+      "reference": [
+        "unknown",
+        "New nocturnal clustering with early-morning spillover"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 to 4 cluster per week, multiple per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

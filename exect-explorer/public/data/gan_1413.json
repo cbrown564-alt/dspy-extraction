@@ -1,0 +1,59 @@
+{
+  "id": "gan_1413",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 31 March 2024 \n\nDr Amelia Hart\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Hart\nConsultant Neurologist,  \n\nDaniel Roberts, DOB: 14-03-1986, Hospital No: D762345 NHS No. 9988776655  \n12 Brookside Close, London, SE15 4DN\n\nThank you for asking me to review this patient in clinic today. He attended alone; his partner, who usually provides collateral, was unable to come. He reports that the majority of his events are at night, and this aligns with what his partner has previously told him. He keeps a basic diary at the bedside and cross-checks with his partner the following day to clarify what was observed.\n\nOver the past month he has recorded four focal sensory and five focal non-motors in last month, almost all occurring between 01:00 and 05:00, giving a total of nine events per month. He describes the sensory episodes as brief internal tingling with a rising abdominal sensation, preserved awareness, and no subsequent confusion. The non-motor episodes are described as sudden behavioural arrest noticed on waking (waking partially with awareness of being \"stuck\"), with subsequent fatigue but no tongue biting or incontinence. He denies clear daytime triggers, though he notes that poor sleep and late meals appear to correlate with clusters.\n\nThere is no new head injury, febrile illness, or medication change reported. He remains on Brivaracetam 100 mg twice daily and Lamotrigine 150 mg twice daily, taken reliably per his account. He has not driven for over a year and is aware of DVLA guidance. Neurological examination today was unremarkable, and there were no focal deficits. Mood was stable; he denies hallucinations or delusional ideas. Cognitive screening was within expected limits for age and education.\n\nGiven that the events are predominantly nocturnal and the partner was not present today, objective corroboration remains limited. I have advised continuation of the seizure diary and suggested using his smartphone to record overnight audio where feasible. I will arrange an ambulatory EEG with overnight capture to better characterise the events, and I have requested prior MRI images from his local radiology archive for review. We discussed general measures around sleep hygiene and medication adherence. He is agreeable to proceed with the investigations and a follow-up in three months or sooner if there is an escalation in frequency or any injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 773,
+      "end": 913,
+      "text": "Over the past month he has recorded four focal sensory and five focal non-motors in last month, ... giving a total of nine events per month.",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 809,
+      "end": 867,
+      "text": "four focal sensory and five focal non-motors in last month",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1413,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 31 March 2024 \n\nDr Amelia Hart\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Hart\nConsultant Neurologist,  \n\nDaniel Roberts, DOB: 14-03-1986, Hospital No: D762345 NHS No. 9988776655  \n12 Brookside Close, London, SE15 4DN\n\nThank you for asking me to review this patient in clinic today. He attended alone; his partner, who usually provides collateral, was unable to come. He reports that the majority of his events are at night, and this aligns with what his partner has previously told him. He keeps a basic diary at the bedside and cross-checks with his partner the following day to clarify what was observed.\n\nOver the past month he has recorded four focal sensory and five focal non-motors in last month, almost all occurring between 01:00 and 05:00, giving a total of nine events per month. He describes the sensory episodes as brief internal tingling with a rising abdominal sensation, preserved awareness, and no subsequent confusion. The non-motor episodes are described as sudden behavioural arrest noticed on waking (waking partially with awareness of being \"stuck\"), with subsequent fatigue but no tongue biting or incontinence. He denies clear daytime triggers, though he notes that poor sleep and late meals appear to correlate with clusters.\n\nThere is no new head injury, febrile illness, or medication change reported. He remains on Brivaracetam 100 mg twice daily and Lamotrigine 150 mg twice daily, taken reliably per his account. He has not driven for over a year and is aware of DVLA guidance. Neurological examination today was unremarkable, and there were no focal deficits. Mood was stable; he denies hallucinations or delusional ideas. Cognitive screening was within expected limits for age and education.\n\nGiven that the events are predominantly nocturnal and the partner was not present today, objective corroboration remains limited. I have advised continuation of the seizure diary and suggested using his smartphone to record overnight audio where feasible. I will arrange an ambulatory EEG with overnight capture to better characterise the events, and I have requested prior MRI images from his local radiology archive for review. We discussed general measures around sleep hygiene and medication adherence. He is agreeable to proceed with the investigations and a follow-up in three months or sooner if there is an escalation in frequency or any injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter states: 'Over the past month he has recorded four focal sensory and five focal non-motors in last month ... giving a total of nine events per month.' This provides a clear numeric monthly total. No other conflicting frequencies are given. Apply the rule to sum same-dimension events; already summed to nine per month.",
+      "seizure_frequency_number": [
+        "9 per month",
+        "Over the past month he has recorded four focal sensory and five focal non-motors in last month, ... giving a total of nine events per month."
+      ],
+      "reference": [
+        "9 per month",
+        "four focal sensory and five focal non-motors in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

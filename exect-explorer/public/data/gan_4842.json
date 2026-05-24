@@ -1,0 +1,48 @@
+{
+  "id": "gan_4842",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 21 October 2013 \n\nDr Patel  \nSouth London NHS Trust Neurology Service  \nNeurology Outpatients, 14 Briar Lane, London SE11 3AB  \n\nDear Dr Patel,  \n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410  \n24 Greenfield Road, London, N1 5QT  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Anne in clinic today accompanied by her mother. Since our last appointment, she has not experienced any seizures. She reports that episodes previously described as concerning have not recurred, and there have been no witnessed events suggestive of seizure activity. She has required no rescue medication and there have been no emergency presentations. Her current anti-seizure therapy remains unchanged, and adherence is reported as good.\n\nAnne described ongoing anxiety with periods of low mood, particularly around examinations and when travelling alone. She feels these symptoms have lessened since her seizures settled, but they remain intermittently intrusive and can affect sleep. She denies panic attacks or self-harm. She is engaging in regular routines and light exercise, and finds structured daily planning helpful. She is open to psychological support and will consider liaison with her GP for talking therapies; she prefers to avoid changes in medication for mood at present.\n\nNeurological examination today was unremarkable. There are no new neurological symptoms, no injuries, and no reported auras. We discussed lifestyle stability, sleep hygiene, and keeping a simple record of any future episodes that might raise concern. Safety advice was reinforced.\n\nPlan: \n- Continue current anti-seizure medication unchanged.  \n- No rescue therapy required as there have been no events.  \n- Encourage engagement with GP for anxiety/low mood support and consideration of IAPT referral.  \n- Routine follow-up in six months, sooner if any events occur or if mood symptoms worsen.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 418,
+      "end": 483,
+      "text": "Since our last appointment, she has not experienced any seizures.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4842,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 21 October 2013 \n\nDr Patel  \nSouth London NHS Trust Neurology Service  \nNeurology Outpatients, 14 Briar Lane, London SE11 3AB  \n\nDear Dr Patel,  \n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410  \n24 Greenfield Road, London, N1 5QT  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Anne in clinic today accompanied by her mother. Since our last appointment, she has not experienced any seizures. She reports that episodes previously described as concerning have not recurred, and there have been no witnessed events suggestive of seizure activity. She has required no rescue medication and there have been no emergency presentations. Her current anti-seizure therapy remains unchanged, and adherence is reported as good.\n\nAnne described ongoing anxiety with periods of low mood, particularly around examinations and when travelling alone. She feels these symptoms have lessened since her seizures settled, but they remain intermittently intrusive and can affect sleep. She denies panic attacks or self-harm. She is engaging in regular routines and light exercise, and finds structured daily planning helpful. She is open to psychological support and will consider liaison with her GP for talking therapies; she prefers to avoid changes in medication for mood at present.\n\nNeurological examination today was unremarkable. There are no new neurological symptoms, no injuries, and no reported auras. We discussed lifestyle stability, sleep hygiene, and keeping a simple record of any future episodes that might raise concern. Safety advice was reinforced.\n\nPlan: \n- Continue current anti-seizure medication unchanged.  \n- No rescue therapy required as there have been no events.  \n- Encourage engagement with GP for anxiety/low mood support and consideration of IAPT referral.  \n- Routine follow-up in six months, sooner if any events occur or if mood symptoms worsen.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has not experienced any seizures since the last appointment, with no witnessed events, no rescue medication, and no emergency visits. However, it does not specify the exact duration since the last appointment, so we cannot confirm a seizure-free period of at least 6 months. Per the rules, if seizure-free status duration is unclear but indicates ongoing seizure freedom, we classify as seizure free for multiple months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since our last appointment, she has not experienced any seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure freedom achieved"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

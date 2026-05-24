@@ -1,0 +1,59 @@
+{
+  "id": "gan_15685",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 21 November 2024\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: History of traumatic brain injury; persistent cognitive difficulties; osteoporosis; previous alcohol dependence with alcoholic hepatitis (currently abstinent); tobacco use. Lives across two households weekly and keeps medication supplies at both locations under support.\n\nMedication:\n- Levetiracetam 1000 mg twice daily\n- Carbamazepine (Tegretol Retard) 400 mg twice daily\n- Topiramate 75 mg each morning and 100 mg each evening\n- Thiamine; Vitamin B compound; Calcium/vitamin D; Atorvastatin; Lansoprazole; Bisoprolol; Ramipril; Carbocisteine; Emollients as required\n\nI reviewed the patient in clinic today accompanied by her key worker. She reports spending four days each week at one household and three days at the other, with identical pill organisers maintained at both addresses. She and her support team confirm good adherence since setting up matched dosette boxes last month, and no missed doses have been documented by carers.\n\nSeizures: Since the head injury, she has experienced clusters of myoclonic jerks almost daily, typically brief, occurring more often in the early morning and occasionally around periods of sleep deprivation when moving between households. She describes no recent prolonged events, loss of awareness, or injuries. There is no formal seizure diary yet in the new living arrangement, but carers have begun a shared digital log accessible from both homes so that episodes can be recorded consistently. She denies triggers other than fatigue and variable routine.\n\nNeurological examination today showed mild right-sided slowness without focal weakness. Gait is steady with a broad base. Cognitive screening suggests stable short-term memory impairment compared with prior notes.\n\nPlan:\n- Continue current anti-seizure regimen unchanged. No immediate dose adjustments requested by patient or carers.\n- Reinforce use of the shared seizure log across both households to capture daily myoclonic clusters and any evolution in pattern or duration.\n- Arrange routine blood monitoring (FBC, U&E, LFTs, bone profile) and vitamin D through the practice within the next four weeks, with results copied to our clinic.\n- Provide written guidance to both households on medication handling to avoid duplication and to maintain synchronised dosette schedules.\n- Follow-up in six months, sooner if there is any increase in event duration, emergence of impaired awareness, or injury.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1305,
+      "end": 1389,
+      "text": "Since the head injury, she has experienced clusters of myoclonic jerks almost daily,",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1305,
+      "end": 1389,
+      "text": "Since the head injury, she has experienced clusters of myoclonic jerks almost daily,",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15685,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 21 November 2024\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: History of traumatic brain injury; persistent cognitive difficulties; osteoporosis; previous alcohol dependence with alcoholic hepatitis (currently abstinent); tobacco use. Lives across two households weekly and keeps medication supplies at both locations under support.\n\nMedication:\n- Levetiracetam 1000 mg twice daily\n- Carbamazepine (Tegretol Retard) 400 mg twice daily\n- Topiramate 75 mg each morning and 100 mg each evening\n- Thiamine; Vitamin B compound; Calcium/vitamin D; Atorvastatin; Lansoprazole; Bisoprolol; Ramipril; Carbocisteine; Emollients as required\n\nI reviewed the patient in clinic today accompanied by her key worker. She reports spending four days each week at one household and three days at the other, with identical pill organisers maintained at both addresses. She and her support team confirm good adherence since setting up matched dosette boxes last month, and no missed doses have been documented by carers.\n\nSeizures: Since the head injury, she has experienced clusters of myoclonic jerks almost daily, typically brief, occurring more often in the early morning and occasionally around periods of sleep deprivation when moving between households. She describes no recent prolonged events, loss of awareness, or injuries. There is no formal seizure diary yet in the new living arrangement, but carers have begun a shared digital log accessible from both homes so that episodes can be recorded consistently. She denies triggers other than fatigue and variable routine.\n\nNeurological examination today showed mild right-sided slowness without focal weakness. Gait is steady with a broad base. Cognitive screening suggests stable short-term memory impairment compared with prior notes.\n\nPlan:\n- Continue current anti-seizure regimen unchanged. No immediate dose adjustments requested by patient or carers.\n- Reinforce use of the shared seizure log across both households to capture daily myoclonic clusters and any evolution in pattern or duration.\n- Arrange routine blood monitoring (FBC, U&E, LFTs, bone profile) and vitamin D through the practice within the next four weeks, with results copied to our clinic.\n- Provide written guidance to both households on medication handling to avoid duplication and to maintain synchronised dosette schedules.\n- Follow-up in six months, sooner if there is any increase in event duration, emergence of impaired awareness, or injury.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has \"clusters of myoclonic jerks almost daily.\" There is no numeric count per cluster and no other seizure type/frequency given. \"Almost daily\" indicates near-daily occurrence; to normalize to the allowed formats and select the highest frequency, this is best represented as 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "Since the head injury, she has experienced clusters of myoclonic jerks almost daily,"
+      ],
+      "reference": [
+        "1 per day",
+        "Since the head injury, she has experienced clusters of myoclonic jerks almost daily,"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

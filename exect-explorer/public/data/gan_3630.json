@@ -1,0 +1,59 @@
+{
+  "id": "gan_3630",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He has a remote history of a mild traumatic brain injury from a cycling incident in his early twenties without documented loss of consciousness or subsequent neurosurgical intervention. He reports intermittent episodes that he and his partner have kept a diary for over the past six months. On questioning, the current pattern is that these episodes can cluster, with frequency up to seven in bad weeks, though there are also stretches of one to two weeks with none at all. He describes a brief internal sense of rising unease, occasional staring, and afterwards feeling exhausted and foggy for several hours; he cannot always recall the events fully. There have been two occasions this year where he awoke on the floor with a bitten inner cheek and myalgia, reported by his partner to have followed a noisy fall from standing.\n\nHe is currently taking Levetiracetam 1000 mg twice daily and Lamotrigine 100 mg twice daily, both initiated by the local team before transfer of care. He reports good adherence, uses a smartphone reminder, and brings pharmacy refill dates that are consistent. He notes intermittent light-headedness late afternoon and mild sleep disturbance but denies mood change or rash. He does not drive and confirms DVLA notification. There is no known family history of similar episodes. He does not drink to excess and uses no recreational drugs. Sleep has been variable due to shift work.\n\nNeurological examination today was unremarkable. Weight 78 kg, BP 124/76, pulse 72 regular. No focal deficits. Prior routine EEG (Jan 2025) was reported as normal; MRI brain (3T, March 2025) showed no acute lesion and no mesial temporal signal change, with non-specific scattered small-vessel-type white matter hyperintensities only. Bloods from July 2025 including FBC, U&E, LFTs, and vitamin D were within reference ranges.\n\nGiven the fluctuating pattern and the impact on work, I have arranged an ambulatory EEG with event marker and a repeat MRI with epilepsy protocol for completeness. We discussed general measures around sleep regularity, alcohol moderation, and stress management, which he is willing to implement. For now I will not change medication until we have the ambulatory data and will review in 8–10 weeks. He has been advised to continue safety precautions at home (showers rather than baths, avoid heights and open flames when alone) and to maintain the event diary, noting time, triggers, and recovery. Emergency care advice was provided should prolonged episodes occur.\n\nI will update you after the investigations. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 638,
+      "end": 705,
+      "text": "these episodes can cluster, with frequency up to seven in bad weeks",
+      "attributes": {
+        "Label": "7 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 681,
+      "end": 705,
+      "text": "up to seven in bad weeks",
+      "attributes": {
+        "Label": "7 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3630,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He has a remote history of a mild traumatic brain injury from a cycling incident in his early twenties without documented loss of consciousness or subsequent neurosurgical intervention. He reports intermittent episodes that he and his partner have kept a diary for over the past six months. On questioning, the current pattern is that these episodes can cluster, with frequency up to seven in bad weeks, though there are also stretches of one to two weeks with none at all. He describes a brief internal sense of rising unease, occasional staring, and afterwards feeling exhausted and foggy for several hours; he cannot always recall the events fully. There have been two occasions this year where he awoke on the floor with a bitten inner cheek and myalgia, reported by his partner to have followed a noisy fall from standing.\n\nHe is currently taking Levetiracetam 1000 mg twice daily and Lamotrigine 100 mg twice daily, both initiated by the local team before transfer of care. He reports good adherence, uses a smartphone reminder, and brings pharmacy refill dates that are consistent. He notes intermittent light-headedness late afternoon and mild sleep disturbance but denies mood change or rash. He does not drive and confirms DVLA notification. There is no known family history of similar episodes. He does not drink to excess and uses no recreational drugs. Sleep has been variable due to shift work.\n\nNeurological examination today was unremarkable. Weight 78 kg, BP 124/76, pulse 72 regular. No focal deficits. Prior routine EEG (Jan 2025) was reported as normal; MRI brain (3T, March 2025) showed no acute lesion and no mesial temporal signal change, with non-specific scattered small-vessel-type white matter hyperintensities only. Bloods from July 2025 including FBC, U&E, LFTs, and vitamin D were within reference ranges.\n\nGiven the fluctuating pattern and the impact on work, I have arranged an ambulatory EEG with event marker and a repeat MRI with epilepsy protocol for completeness. We discussed general measures around sleep regularity, alcohol moderation, and stress management, which he is willing to implement. For now I will not change medication until we have the ambulatory data and will review in 8–10 weeks. He has been advised to continue safety precautions at home (showers rather than baths, avoid heights and open flames when alone) and to maintain the event diary, noting time, triggers, and recovery. Emergency care advice was provided should prolonged episodes occur.\n\nI will update you after the investigations. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes episodic events likely representing seizures. It states: \"these episodes can cluster, with frequency up to seven in bad weeks, though there are also stretches of one to two weeks with none at all.\" The instruction is to select the highest frequency when multiple are provided. The explicit numeric maximum frequency given is \"up to seven in bad weeks,\" which corresponds to 7 per week. There is no sustained 6-month seizure freedom; thus not seizure free. No other higher-frequency metric is specified.",
+      "seizure_frequency_number": [
+        "7 per week",
+        "these episodes can cluster, with frequency up to seven in bad weeks"
+      ],
+      "reference": [
+        "7 per week",
+        "up to seven in bad weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

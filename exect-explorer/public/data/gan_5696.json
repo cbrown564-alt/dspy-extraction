@@ -1,0 +1,54 @@
+{
+  "id": "gan_5696",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Carter,\n\nDiagnosis:\n\nSeizure disorder under ongoing evaluation (no definitive classification at present)\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-led use up to 10 mg)\n\nSeizure Pattern and Recent Course:\n\nThe patient is a newly retired teacher living alone, maintaining a steady daily routine with reduced social contact. Over the past four months, she describes occurrence-based seizure activity separated by clear periods without symptoms, consistent with a pattern of intermittent episodes punctuated by wholly normal intervals. She reports three events in that timeframe: two brief morning episodes characterised by a rising internal sensation and loss of awareness for under a minute, and one evening event with confusion lasting approximately 10 minutes. There is no consistent relationship with sleep deprivation or alcohol; she denies missed doses. She notes increased anxiety on quieter days but no clear precipitant.\n\nPlan of Action:\n\nGiven the intermittent nature of events despite adherence to lamotrigine, I advised optimisation of the current regimen while we continue diagnostic clarification.\n\n- Increase lamotrigine to 125 mg twice daily for two weeks, then 150 mg twice daily thereafter, provided tolerated (no rash, headache, or dizziness). She understands to seek urgent advice if rash or systemic symptoms occur.\n- Continue clobazam 5–10 mg at night on days with prodromal symptoms only, not more than three consecutive nights.\n- Arrange ambulatory EEG and update MRI brain (previous MRI 2018, non-diagnostic). She is agreeable to both.\n- Safety counselling reinforced for living alone: kettle use after events, shower rather than bath, and phone check-ins with a neighbour on days she feels off-colour.\n- We will review in three months or sooner if the frequency of intermittent episodes increases or if prolonged post-event confusion occurs.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 741,
+      "end": 917,
+      "text": "Over the past four months, she describes occurrence-based seizure activity... She reports three events in that timeframe: two brief morning episodes... and one evening event...",
+      "attributes": {
+        "Label": "3 per 4 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5696,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Carter,\n\nDiagnosis:\n\nSeizure disorder under ongoing evaluation (no definitive classification at present)\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-led use up to 10 mg)\n\nSeizure Pattern and Recent Course:\n\nThe patient is a newly retired teacher living alone, maintaining a steady daily routine with reduced social contact. Over the past four months, she describes occurrence-based seizure activity separated by clear periods without symptoms, consistent with a pattern of intermittent episodes punctuated by wholly normal intervals. She reports three events in that timeframe: two brief morning episodes characterised by a rising internal sensation and loss of awareness for under a minute, and one evening event with confusion lasting approximately 10 minutes. There is no consistent relationship with sleep deprivation or alcohol; she denies missed doses. She notes increased anxiety on quieter days but no clear precipitant.\n\nPlan of Action:\n\nGiven the intermittent nature of events despite adherence to lamotrigine, I advised optimisation of the current regimen while we continue diagnostic clarification.\n\n- Increase lamotrigine to 125 mg twice daily for two weeks, then 150 mg twice daily thereafter, provided tolerated (no rash, headache, or dizziness). She understands to seek urgent advice if rash or systemic symptoms occur.\n- Continue clobazam 5–10 mg at night on days with prodromal symptoms only, not more than three consecutive nights.\n- Arrange ambulatory EEG and update MRI brain (previous MRI 2018, non-diagnostic). She is agreeable to both.\n- Safety counselling reinforced for living alone: kettle use after events, shower rather than bath, and phone check-ins with a neighbour on days she feels off-colour.\n- We will review in three months or sooner if the frequency of intermittent episodes increases or if prolonged post-event confusion occurs.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the timeframe and the number of events: \"Over the past four months\" and \"She reports three events in that timeframe.\" Therefore, the frequency is 3 events over 4 months. According to the allowed output formats, this should be represented as \"3 per 4 month\" (using singular unit as required). No other competing frequencies are given.",
+      "seizure_frequency_number": [
+        "3 per 4 month",
+        "Over the past four months, she describes occurrence-based seizure activity... She reports three events in that timeframe: two brief morning episodes... and one evening event..."
+      ],
+      "reference": [
+        "unknown",
+        "Episodic seizure events with symptom-free intervals"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per 4 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

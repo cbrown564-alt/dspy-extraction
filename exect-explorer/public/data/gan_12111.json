@@ -1,0 +1,59 @@
+{
+  "id": "gan_12111",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman  \nRiverside Health Centre  \n112 Mill Lane, Bristol BS1 4AB  \n\nDear Dr A. Rahman,\n\nEmily Carter, DOB: 22-11-1991, Hospital No: H392615 NHS No. 8472035196  \nFlat 3, 9 Rowan Court, Bristol, BS6 7JP  \n\nFocal Epilepsy\n\nMedication: Lamotrigine 100 mg twice daily; Levetiracetam 750 mg twice daily (patient-reported adherence confirmed via pillbox checks)\n\nLamotrigine Blood Level:\n\n12 September 2025: 4.8 mg/L (laboratory therapeutic reference 1.0–15.0 mg/L). Dose at sampling: 100 mg twice daily; trough level.\n\nSeizures: The patient has focal epilepsy. As per diary review and today’s history, focal epileptic spasm occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically four events per year. She notes a prodromal phase of low mood and irritability before some evening events and has been tracking this in a paper diary and mobile calendar; the prodrome is absent before most rare generalised events.\n\nI conducted a face-to-face review today. She described brief, stereotyped focal spasms of the left shoulder and neck with awareness retained, often clustering around 8–10 pm, lasting seconds, occasionally in short runs. No injuries reported. The last generalised convulsion was in July 2025 after missed evening doses during a family trip; recovery was uneventful. Sleep deprivation and emotional stress appear to precipitate the evening spasms. She denies daytime drowsiness or new neurological symptoms. Menstrual pattern does not correlate clearly with events.\n\nWe reviewed her diary entries for the past three months, which show prodromal mood change and irritability beginning 1–3 hours prior to approximately half of the evening focal spasms. She finds that taking quiet time and reducing screen exposure may lessen the intensity but not frequency. She prefers to continue current doses for now while we gather more structured data on triggers.\n\nPlan discussed today (patient-reported preferences recorded):\n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily without changes at present.\n- Continue diary tracking, explicitly logging mood ratings (0–10), sleep duration, caffeine/alcohol intake, and timing of focal spasms and any convulsions.\n- Safety: She avoids baths when alone and uses a shower seat; no driving. She is aware of first aid measures and when to seek emergency help.\n- Investigations: Arrange repeat lamotrigine trough level and routine bloods in 8 weeks to coincide with next review; no immediate imaging changes requested.\n- Follow-up: Telephone review in 10 weeks to reassess frequency and prodromal features.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 680,
+      "end": 731,
+      "text": "focal epileptic spasm occur several times each week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 680,
+      "end": 836,
+      "text": "focal epileptic spasm occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically four events per year",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12111,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman  \nRiverside Health Centre  \n112 Mill Lane, Bristol BS1 4AB  \n\nDear Dr A. Rahman,\n\nEmily Carter, DOB: 22-11-1991, Hospital No: H392615 NHS No. 8472035196  \nFlat 3, 9 Rowan Court, Bristol, BS6 7JP  \n\nFocal Epilepsy\n\nMedication: Lamotrigine 100 mg twice daily; Levetiracetam 750 mg twice daily (patient-reported adherence confirmed via pillbox checks)\n\nLamotrigine Blood Level:\n\n12 September 2025: 4.8 mg/L (laboratory therapeutic reference 1.0–15.0 mg/L). Dose at sampling: 100 mg twice daily; trough level.\n\nSeizures: The patient has focal epilepsy. As per diary review and today’s history, focal epileptic spasm occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically four events per year. She notes a prodromal phase of low mood and irritability before some evening events and has been tracking this in a paper diary and mobile calendar; the prodrome is absent before most rare generalised events.\n\nI conducted a face-to-face review today. She described brief, stereotyped focal spasms of the left shoulder and neck with awareness retained, often clustering around 8–10 pm, lasting seconds, occasionally in short runs. No injuries reported. The last generalised convulsion was in July 2025 after missed evening doses during a family trip; recovery was uneventful. Sleep deprivation and emotional stress appear to precipitate the evening spasms. She denies daytime drowsiness or new neurological symptoms. Menstrual pattern does not correlate clearly with events.\n\nWe reviewed her diary entries for the past three months, which show prodromal mood change and irritability beginning 1–3 hours prior to approximately half of the evening focal spasms. She finds that taking quiet time and reducing screen exposure may lessen the intensity but not frequency. She prefers to continue current doses for now while we gather more structured data on triggers.\n\nPlan discussed today (patient-reported preferences recorded):\n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily without changes at present.\n- Continue diary tracking, explicitly logging mood ratings (0–10), sleep duration, caffeine/alcohol intake, and timing of focal spasms and any convulsions.\n- Safety: She avoids baths when alone and uses a shower seat; no driving. She is aware of first aid measures and when to seek emergency help.\n- Investigations: Arrange repeat lamotrigine trough level and routine bloods in 8 weeks to coincide with next review; no immediate imaging changes requested.\n- Follow-up: Telephone review in 10 weeks to reassess frequency and prodromal features.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency statements. The letter states: 'focal epileptic spasm occur several times each week' and 'Generalised convulsions seizures are rare, typically four events per year.' According to the rule to select the highest frequency, the focal spasms occurring several times each week are more frequent than four per year. The phrase 'several times each week' is vague without a precise number, so we must use 'multiple per week' per formatting rules.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "focal epileptic spasm occur several times each week"
+      ],
+      "reference": [
+        "multiple per week",
+        "focal epileptic spasm occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically four events per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

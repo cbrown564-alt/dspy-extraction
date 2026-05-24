@@ -1,0 +1,59 @@
+{
+  "id": "gan_16632",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 13 August 2024 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-11-1986, Hospital No: H392017 NHS No. 9475201836  \n58 Willowbank Close, London, SW12 0DA  \n\nDiagnoses: \n\nFocal epilepsy. \n\nI reviewed Michael Harris in clinic today. He remains on long-term antiseizure therapy; bone-health monitoring is being recorded elsewhere as part of his ongoing care. Adherence has been good and there have been no reported adverse effects beyond transient morning fatigue. No intercurrent illnesses were reported. \n\nSince his last visit, the seizure log kept by the family indicates the following pattern: In February he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In April two nocturnal seizures were noted, and in July a single generalised tonic-clonic seizure occurred (not witnessed by family). The semiology of the focal events remains consistent with a right temporal onset reported previously, with brief behavioural arrest and automatisms, and recovery within minutes. There have been no injuries. Buccal rescue medication was not required. \n\nExamination today was unremarkable. Routine bloods earlier this month (U&E, LFT) were within expected ranges as communicated from the GP; antiseizure medication levels were not repeated today in view of clinical stability. We discussed seizure first-aid, SUDEP awareness, and trigger management (sleep regularity and hydration). Driving advice remains unchanged in line with DVLA regulations. \n\nPlan: \n- Continue current antiseizure regimen without changes.  \n- Maintain the seizure diary and upload events to the patient portal.  \n- Bone-health surveillance to continue with primary care/osteoporosis service as previously arranged.  \n- Safety measures reviewed for nocturnal monitoring; family are content with current arrangements.  \n- Routine follow-up in 6 months, or earlier if seizure frequency increases or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 748,
+      "end": 915,
+      "text": "In February he presented with a cluster of three seizures... In April two nocturnal seizures were noted, and in July a single generalised tonic-clonic seizure occurred",
+      "attributes": {
+        "Label": "6 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 748,
+      "end": 981,
+      "text": "In February he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In April two nocturnal seizures were noted, and in July a single generalised tonic-clonic seizure occurred (not witnessed by family)",
+      "attributes": {
+        "Label": "6 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16632,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 13 August 2024 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-11-1986, Hospital No: H392017 NHS No. 9475201836  \n58 Willowbank Close, London, SW12 0DA  \n\nDiagnoses: \n\nFocal epilepsy. \n\nI reviewed Michael Harris in clinic today. He remains on long-term antiseizure therapy; bone-health monitoring is being recorded elsewhere as part of his ongoing care. Adherence has been good and there have been no reported adverse effects beyond transient morning fatigue. No intercurrent illnesses were reported. \n\nSince his last visit, the seizure log kept by the family indicates the following pattern: In February he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In April two nocturnal seizures were noted, and in July a single generalised tonic-clonic seizure occurred (not witnessed by family). The semiology of the focal events remains consistent with a right temporal onset reported previously, with brief behavioural arrest and automatisms, and recovery within minutes. There have been no injuries. Buccal rescue medication was not required. \n\nExamination today was unremarkable. Routine bloods earlier this month (U&E, LFT) were within expected ranges as communicated from the GP; antiseizure medication levels were not repeated today in view of clinical stability. We discussed seizure first-aid, SUDEP awareness, and trigger management (sleep regularity and hydration). Driving advice remains unchanged in line with DVLA regulations. \n\nPlan: \n- Continue current antiseizure regimen without changes.  \n- Maintain the seizure diary and upload events to the patient portal.  \n- Bone-health surveillance to continue with primary care/osteoporosis service as previously arranged.  \n- Safety measures reviewed for nocturnal monitoring; family are content with current arrangements.  \n- Routine follow-up in 6 months, or earlier if seizure frequency increases or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter lists specific seizure events: February had a cluster of three seizures; April had two seizures; July had one generalized tonic-clonic seizure. Total = 3 + 2 + 1 = 6 seizures. The timeframe spans from February to July 2024, which is 6 months. Therefore, the inferred frequency is 6 seizures per 6 months.",
+      "seizure_frequency_number": [
+        "6 per 6 month",
+        "In February he presented with a cluster of three seizures... In April two nocturnal seizures were noted, and in July a single generalised tonic-clonic seizure occurred"
+      ],
+      "reference": [
+        "6 per 6 month",
+        "In February he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In April two nocturnal seizures were noted, and in July a single generalised tonic-clonic seizure occurred (not witnessed by family)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6738",
+  "text": "Department of Neurology\n\nClinic Date: 24 July 2015\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nParoxysmal events under investigation; prior EEGs non-diagnostic.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\n- Continue current antiseizure therapy and sleep hygiene.\n- Maintain paper seizure calendar and bring logs to future appointments.\n- Safety counselling reinforced (driving, machinery, water safety, heights). \n- Routine review in 12 months, sooner if event pattern changes.\n\nI reviewed John Smith in clinic today. He brought his paper seizure calendar, which he keeps meticulously and brings to each visit. Over the past 9 months his log records brief episodes he describes as “blank moments” with subsequent patchy recollection and short-lived confusion; these events occur roughly once every 6–8 weeks. I have documented these as spells that raise concern for episodes with reduced awareness. There have been no convulsive events, tongue biting, or injuries recorded in the diary. He notes occasional clustering after nights of poor sleep. \n\nHe tolerates Lamotrigine 100 mg twice daily without notable adverse effects. He prefers paper logs to digital apps and will continue to record dates, times, potential triggers, and post-event symptoms. We discussed that a stable routine, adequate sleep, and limiting alcohol remain sensible. He understands DVLA guidance and confirms he is not currently driving.\n\nInvestigations to date include routine EEG and MRI brain from last year reported as unremarkable. Given the infrequency of events and good tolerability of medication, I have not changed therapy today. If the paper calendar shows increased frequency or evolution of symptoms, we will consider ambulatory EEG or prolonged video telemetry.\n\nI have arranged follow-up in 12 months, with open access for earlier review should his diary indicate any escalation or new features.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 960,
+      "end": 1008,
+      "text": "these events occur roughly once every 6–8 weeks.",
+      "attributes": {
+        "Label": "1 per 6 to 8 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6738,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 24 July 2015\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nParoxysmal events under investigation; prior EEGs non-diagnostic.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\n- Continue current antiseizure therapy and sleep hygiene.\n- Maintain paper seizure calendar and bring logs to future appointments.\n- Safety counselling reinforced (driving, machinery, water safety, heights). \n- Routine review in 12 months, sooner if event pattern changes.\n\nI reviewed John Smith in clinic today. He brought his paper seizure calendar, which he keeps meticulously and brings to each visit. Over the past 9 months his log records brief episodes he describes as “blank moments” with subsequent patchy recollection and short-lived confusion; these events occur roughly once every 6–8 weeks. I have documented these as spells that raise concern for episodes with reduced awareness. There have been no convulsive events, tongue biting, or injuries recorded in the diary. He notes occasional clustering after nights of poor sleep. \n\nHe tolerates Lamotrigine 100 mg twice daily without notable adverse effects. He prefers paper logs to digital apps and will continue to record dates, times, potential triggers, and post-event symptoms. We discussed that a stable routine, adequate sleep, and limiting alcohol remain sensible. He understands DVLA guidance and confirms he is not currently driving.\n\nInvestigations to date include routine EEG and MRI brain from last year reported as unremarkable. Given the infrequency of events and good tolerability of medication, I have not changed therapy today. If the paper calendar shows increased frequency or evolution of symptoms, we will consider ambulatory EEG or prolonged video telemetry.\n\nI have arranged follow-up in 12 months, with open access for earlier review should his diary indicate any escalation or new features.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that over the past 9 months the patient's events occur roughly once every 6–8 weeks. No other quantified frequencies are given. Although clustering is mentioned, there are no numeric details to adjust the frequency or use a cluster format. Therefore, use the stated range and convert the range separator to 'to' per rules.",
+      "seizure_frequency_number": [
+        "1 per 6 to 8 week",
+        "these events occur roughly once every 6–8 weeks."
+      ],
+      "reference": [
+        "unknown",
+        "Spells concerning for focal impaired awareness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 6 to 8 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

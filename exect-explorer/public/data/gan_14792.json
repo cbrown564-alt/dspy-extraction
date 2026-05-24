@@ -1,0 +1,59 @@
+{
+  "id": "gan_14792",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 28 January 2020 \n\nDr Patel  \nSt George’s Hospital  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nDaniel Morgan, DOB: 14-07-1988, Hospital No: H462019 NHS No. 8473629150  \n12 Mill Wharf Close, London, E3 2PD  \n\nDiagnoses: \n\nSeizure disorder under investigation.\n\nThank you for reviewing Daniel Morgan, who works as a warehouse picker navigating tall racking and narrow aisles with variable lifting demands depending on shift pace. He was seen in clinic for follow‑up regarding episodes of transient unresponsiveness and dizziness.\n\nSince his last appointment, he reports that his work pattern has remained irregular with occasional early starts. He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28 December his absences improved after medication adjustment. His last event was on 02 January and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present.\n\nCurrent anti-seizure medication: levetiracetam 1 g twice daily. No rescue medication has been required. He denies adverse effects beyond mild initial fatigue, which has improved. There have been no injuries at work, and he confirms adherence to safety protocols including avoiding lone working at height and taking scheduled hydration breaks.\n\nExamination today was unremarkable. Neurological assessment was normal. No new imaging was indicated. Routine bloods last month (U&E, LFTs) were within normal limits.\n\nPlan:\n- Continue levetiracetam 1 g twice daily without change.\n- Maintain workplace precautions already in place and continue to avoid working at unprotected heights or operating machinery immediately if unwell.\n- Provide seizure first-aid advice to his supervisor; patient to share written guidance supplied today.\n- Routine follow-up in 4 months, or earlier if further events occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 875,
+      "end": 1004,
+      "text": "His last event was on 02 January and he has remained well since. Given that there have been no further episodes in the past month",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 710,
+      "end": 1104,
+      "text": "He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28 December his absences improved after medication adjustment. His last event was on 02 January and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14792,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 28 January 2020 \n\nDr Patel  \nSt George’s Hospital  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nDaniel Morgan, DOB: 14-07-1988, Hospital No: H462019 NHS No. 8473629150  \n12 Mill Wharf Close, London, E3 2PD  \n\nDiagnoses: \n\nSeizure disorder under investigation.\n\nThank you for reviewing Daniel Morgan, who works as a warehouse picker navigating tall racking and narrow aisles with variable lifting demands depending on shift pace. He was seen in clinic for follow‑up regarding episodes of transient unresponsiveness and dizziness.\n\nSince his last appointment, he reports that his work pattern has remained irregular with occasional early starts. He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28 December his absences improved after medication adjustment. His last event was on 02 January and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present.\n\nCurrent anti-seizure medication: levetiracetam 1 g twice daily. No rescue medication has been required. He denies adverse effects beyond mild initial fatigue, which has improved. There have been no injuries at work, and he confirms adherence to safety protocols including avoiding lone working at height and taking scheduled hydration breaks.\n\nExamination today was unremarkable. Neurological assessment was normal. No new imaging was indicated. Routine bloods last month (U&E, LFTs) were within normal limits.\n\nPlan:\n- Continue levetiracetam 1 g twice daily without change.\n- Maintain workplace precautions already in place and continue to avoid working at unprotected heights or operating machinery immediately if unwell.\n- Provide seizure first-aid advice to his supervisor; patient to share written guidance supplied today.\n- Routine follow-up in 4 months, or earlier if further events occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses episodes of transient unresponsiveness/dizziness under investigation as seizures. It provides dates: 'On 28 December his absences improved after medication adjustment. His last event was on 02 January and he has remained well since.' Clinic date is 28 January 2020. Therefore, there has been approximately one event in January (on 02 January) and none thereafter up to the clinic date, with 'no further episodes in the past month.' This does not meet 6 months seizure-free. The most explicit current frequency we can infer is about 1 event in the past month. Convert to allowed format: '1 per month.'",
+      "seizure_frequency_number": [
+        "1 per month",
+        "His last event was on 02 January and he has remained well since. Given that there have been no further episodes in the past month"
+      ],
+      "reference": [
+        "1 per month",
+        "He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28 December his absences improved after medication adjustment. His last event was on 02 January and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

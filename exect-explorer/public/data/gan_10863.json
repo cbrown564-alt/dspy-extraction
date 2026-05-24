@@ -1,0 +1,70 @@
+{
+  "id": "gan_10863",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 21 September 2025 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-02-2007, Hospital No: KCH982341 NHS No. 4472201983  \n19 Willow Grove, Bromley, BR1 2HT\n\nThank you for asking me to see this young adult following transition from paediatric to adult services. He attended with his mother, who provided helpful collateral when invited. He is engaged with college part-time and uses a commercially available wearable seizure-detection device linked to a carer alert.\n\nRegarding current events, he and his mother report recurrent clusters rather than isolated episodes. Device metrics flag one cluster this week; duration four h. He describes several brief events within that block, with preserved awareness at the start and then a period he cannot fully account for. His mother notes repeated pauses in conversation, eyelid fluttering, and then a tendency to become withdrawn and fatigued for the rest of the day. Similar weekly clusters have been recorded on the device for the past month, and he recalls that heat, poor sleep, and academic stress may precipitate these bursts. There are no clear nocturnal events noticed by the family in the last fortnight, and there have been no injuries.\n\nHe has previously tried multiple medications in childhood. He currently takes lamotrigine as prescribed by paediatrics during transition, with good adherence by his report. There are no clear adverse effects beyond intermittent nausea. He does not drive and is aware of the DVLA regulations. Sleep routine has been variable since starting college placements.\n\nExamination today was unremarkable. Neurological screening was normal between events. Routine bloods from the transition pack three months ago were within reference ranges. Historic MRI (childhood) reportedly normal; I have requested the images for local review. We discussed updating neurophysiology given the present pattern and to support future planning.\n\nPlan:\n- Arrange prolonged ambulatory EEG with video to sample typical weekly clusters.\n- Obtain prior MRI for comparison; consider repeat MRI if indicated by EEG findings.\n- Continue current medication unchanged for now; no safety concerns raised today.\n- Provide seizure first-aid and cluster management education to patient and parent; confirm college support plan.\n- Review in clinic after neurophysiology, or sooner if clusters escalate in duration, frequency, or if any injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 790,
+      "end": 925,
+      "text": "Device metrics flag one cluster this week; duration four h. Similar weekly clusters have been recorded on the device for the past month",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 790,
+      "end": 848,
+      "text": "Device metrics flag one cluster this week; duration four h",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10863,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 21 September 2025 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-02-2007, Hospital No: KCH982341 NHS No. 4472201983  \n19 Willow Grove, Bromley, BR1 2HT\n\nThank you for asking me to see this young adult following transition from paediatric to adult services. He attended with his mother, who provided helpful collateral when invited. He is engaged with college part-time and uses a commercially available wearable seizure-detection device linked to a carer alert.\n\nRegarding current events, he and his mother report recurrent clusters rather than isolated episodes. Device metrics flag one cluster this week; duration four h. He describes several brief events within that block, with preserved awareness at the start and then a period he cannot fully account for. His mother notes repeated pauses in conversation, eyelid fluttering, and then a tendency to become withdrawn and fatigued for the rest of the day. Similar weekly clusters have been recorded on the device for the past month, and he recalls that heat, poor sleep, and academic stress may precipitate these bursts. There are no clear nocturnal events noticed by the family in the last fortnight, and there have been no injuries.\n\nHe has previously tried multiple medications in childhood. He currently takes lamotrigine as prescribed by paediatrics during transition, with good adherence by his report. There are no clear adverse effects beyond intermittent nausea. He does not drive and is aware of the DVLA regulations. Sleep routine has been variable since starting college placements.\n\nExamination today was unremarkable. Neurological screening was normal between events. Routine bloods from the transition pack three months ago were within reference ranges. Historic MRI (childhood) reportedly normal; I have requested the images for local review. We discussed updating neurophysiology given the present pattern and to support future planning.\n\nPlan:\n- Arrange prolonged ambulatory EEG with video to sample typical weekly clusters.\n- Obtain prior MRI for comparison; consider repeat MRI if indicated by EEG findings.\n- Continue current medication unchanged for now; no safety concerns raised today.\n- Provide seizure first-aid and cluster management education to patient and parent; confirm college support plan.\n- Review in clinic after neurophysiology, or sooner if clusters escalate in duration, frequency, or if any injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "Seizure Frequency Number",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Device metrics flag one cluster this week\" and also notes \"Similar weekly clusters have been recorded on the device for the past month.\" This indicates a current pattern of approximately one seizure cluster per week. Within each cluster, the patient has \"several brief events,\" which is a vague count and must be represented as 'multiple per cluster.' There is no evidence of seizure freedom for 6 months. Therefore, the appropriate normalized label is '1 cluster per week, multiple per cluster.'",
+      "seizure_frequency_number": [
+        "1 cluster per week, multiple per cluster",
+        "Device metrics flag one cluster this week; duration four h. Similar weekly clusters have been recorded on the device for the past month"
+      ],
+      "reference": [
+        "1 cluster per week, multiple per cluster",
+        "Device metrics flag one cluster this week; duration four h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "frequency_quote_issue",
+      "description": "Quote issue flagged for seizure frequency",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_3327",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 November 2015 \n\nDr A Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH, Denmark Hill, London SE5 9RS  \n\nDear Dr A Patel, \n\nAlex Morgan, DOB: 22-03-1987, Hospital No: H748392 NHS No. 1045827691  \nFlat 5, 12 Brook Lane, London, SE15 4QP  \n\nDiagnosis: \n\nRecurrent unprovoked seizures, frequency stable; About five - six seizure days per year as corroborated by entries in a seizure diary app. \n\nAetiology: \n\nNo structural, metabolic, or infectious cause identified to date. Prior MRI brain and routine EEG unremarkable. \n\nOther Medical Problems: \n\nMild generalised anxiety symptoms managed with guided self-help; vitamin D insufficiency treated with colecalciferol 800 IU once daily. \n\nManagement Plan: \n\n- Continue current antiseizure regimen unchanged: Lamotrigine 150 mg twice daily. Patient reports good tolerability with no dose-limiting adverse effects.  \n- Maintain consistent medication brand and timing.  \n- Continue use of seizure diary app; we reviewed exported logs which demonstrate About five - six seizure days per year over the last 12 months, typically brief events with rapid recovery and no injury.  \n- Safety: reinforced standard seizure first-aid with patient and partner; no baths, showers preferred; avoid sleep deprivation and excess alcohol.  \n- Driving: patient is not currently driving and understands DVLA requirements to inform the agency and meet applicable seizure-free intervals before resuming.  \n- Investigations: repeat serum lamotrigine trough level prior to next visit; routine bloods (U&E, LFT, FBC) today.  \n- Referral: signposted to local epilepsy nurse specialist for rescue plan education; no rescue medication indicated at present given short self-terminating events.  \n- Follow-up: review in 6 months, earlier if seizure pattern changes (clusters, prolonged events, new features) or adverse effects emerge. \n\nToday, Alex Morgan provided app-based logs showing consistent adherence and time-stamped events. The pattern suggests morning predominance after poor sleep, without clear focal features reported. There is no history of status epilepticus, injuries, or emergency attendances. Work continues full-time with agreed adjustments for flexible start times after nocturnal sleep disruption. No changes to therapy are proposed given current stability and tolerability. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 370,
+      "end": 408,
+      "text": "About five - six seizure days per year",
+      "attributes": {
+        "Label": "5 to 6 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 370,
+      "end": 408,
+      "text": "About five - six seizure days per year",
+      "attributes": {
+        "Label": "5 to 6 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3327,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 November 2015 \n\nDr A Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH, Denmark Hill, London SE5 9RS  \n\nDear Dr A Patel, \n\nAlex Morgan, DOB: 22-03-1987, Hospital No: H748392 NHS No. 1045827691  \nFlat 5, 12 Brook Lane, London, SE15 4QP  \n\nDiagnosis: \n\nRecurrent unprovoked seizures, frequency stable; About five - six seizure days per year as corroborated by entries in a seizure diary app. \n\nAetiology: \n\nNo structural, metabolic, or infectious cause identified to date. Prior MRI brain and routine EEG unremarkable. \n\nOther Medical Problems: \n\nMild generalised anxiety symptoms managed with guided self-help; vitamin D insufficiency treated with colecalciferol 800 IU once daily. \n\nManagement Plan: \n\n- Continue current antiseizure regimen unchanged: Lamotrigine 150 mg twice daily. Patient reports good tolerability with no dose-limiting adverse effects.  \n- Maintain consistent medication brand and timing.  \n- Continue use of seizure diary app; we reviewed exported logs which demonstrate About five - six seizure days per year over the last 12 months, typically brief events with rapid recovery and no injury.  \n- Safety: reinforced standard seizure first-aid with patient and partner; no baths, showers preferred; avoid sleep deprivation and excess alcohol.  \n- Driving: patient is not currently driving and understands DVLA requirements to inform the agency and meet applicable seizure-free intervals before resuming.  \n- Investigations: repeat serum lamotrigine trough level prior to next visit; routine bloods (U&E, LFT, FBC) today.  \n- Referral: signposted to local epilepsy nurse specialist for rescue plan education; no rescue medication indicated at present given short self-terminating events.  \n- Follow-up: review in 6 months, earlier if seizure pattern changes (clusters, prolonged events, new features) or adverse effects emerge. \n\nToday, Alex Morgan provided app-based logs showing consistent adherence and time-stamped events. The pattern suggests morning predominance after poor sleep, without clear focal features reported. There is no history of status epilepticus, injuries, or emergency attendances. Work continues full-time with agreed adjustments for flexible start times after nocturnal sleep disruption. No changes to therapy are proposed given current stability and tolerability. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's seizure frequency as \"About five - six seizure days per year\" and repeats this in the management plan as \"About five - six seizure days per year over the last 12 months.\" This provides a clear numeric range and a time unit (per year). No other conflicting frequencies are mentioned. Therefore, normalize to the allowed format as a range per year: \"5 to 6 per year.\"",
+      "seizure_frequency_number": [
+        "5 to 6 per year",
+        "About five - six seizure days per year"
+      ],
+      "reference": [
+        "5 to 6 per year",
+        "About five - six seizure days per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

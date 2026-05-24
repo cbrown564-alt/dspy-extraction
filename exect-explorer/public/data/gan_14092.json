@@ -1,0 +1,65 @@
+{
+  "id": "gan_14092",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 June 2017 \n\nDr Patel  \nSouth London NHS Neurology Service  \nOutpatient Neurology, Denmark Hill, London SE5 9RS  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 14-02-1992, Hospital No: H482019 NHS No. 9081726354  \n12 Alder Grove, London, SE15 3JP  \n\nDiagnoses: \n\nSeizure disorder (aetiology and classification not established). \n\nLucy Morgan attended clinic today with her father. Since her last review, she has been experimenting with digital adherence supports after previously missing several evening doses. She has linked her smartphone alarm schedule to bedside and kitchen NFC tags, and reports that the act of tapping the device to the tag has helped her confirm dose administration and avoid duplicate dosing. She brought her adherence log, which corresponds with pharmacy refill dates.\n\nShe told me that since her last clinic appointment she has had 5 myoclonic jerks, the last reported on 7 April. These were brief, occurred in the early morning within 30 minutes of waking, and did not lead to loss of awareness or falls. There have been no tonic–clonic events, no emergency department attendances, and no use of rescue medication. She denies new triggers, though notes that two events followed nights of reduced sleep and one followed a missed breakfast. She has not driven and continues to follow standard safety advice at home and work as previously documented.\n\nCurrent medication is unchanged in dose and timing from the last clinic letter. She reports good tolerability without rash, mood change, or cognitive complaints. She has set staggered alarms (primary at 07:00 and 21:00; confirmations at 07:10 and 21:10) and uses NFC tags placed on the medicine box and bedside lamp to log dose confirmation. Her personal record shows 1 delayed evening dose by >2 hours in the last month and otherwise on-time dosing.\n\nExamination today was unremarkable. Routine observations were within normal limits. No focal neurological signs were elicited. \n\nPlan: \n- Continue current anti-seizure medication at the present dose. \n- Maintain the smartphone alarm plus NFC tagging workflow, as this appears to support adherence; she will continue to export monthly adherence summaries to bring to clinic. \n- Keep a simple event diary noting sleep duration, missed meals, and any stressors around events, to help us refine trigger patterns. \n- Safety advice reiterated as previously discussed. \n- We will arrange routine bloods prior to next review as per monitoring schedule. \n\nWe will review Lucy Morgan again in four months, or sooner if her event pattern changes or she experiences any prolonged episodes, injury, or loss of awareness.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 896,
+      "end": 955,
+      "text": "she has had 5 myoclonic jerks, the last reported on 7 April",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 845,
+      "end": 955,
+      "text": "She told me that since her last clinic appointment she has had 5 myoclonic jerks, the last reported on 7 April",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14092,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 June 2017 \n\nDr Patel  \nSouth London NHS Neurology Service  \nOutpatient Neurology, Denmark Hill, London SE5 9RS  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 14-02-1992, Hospital No: H482019 NHS No. 9081726354  \n12 Alder Grove, London, SE15 3JP  \n\nDiagnoses: \n\nSeizure disorder (aetiology and classification not established). \n\nLucy Morgan attended clinic today with her father. Since her last review, she has been experimenting with digital adherence supports after previously missing several evening doses. She has linked her smartphone alarm schedule to bedside and kitchen NFC tags, and reports that the act of tapping the device to the tag has helped her confirm dose administration and avoid duplicate dosing. She brought her adherence log, which corresponds with pharmacy refill dates.\n\nShe told me that since her last clinic appointment she has had 5 myoclonic jerks, the last reported on 7 April. These were brief, occurred in the early morning within 30 minutes of waking, and did not lead to loss of awareness or falls. There have been no tonic–clonic events, no emergency department attendances, and no use of rescue medication. She denies new triggers, though notes that two events followed nights of reduced sleep and one followed a missed breakfast. She has not driven and continues to follow standard safety advice at home and work as previously documented.\n\nCurrent medication is unchanged in dose and timing from the last clinic letter. She reports good tolerability without rash, mood change, or cognitive complaints. She has set staggered alarms (primary at 07:00 and 21:00; confirmations at 07:10 and 21:10) and uses NFC tags placed on the medicine box and bedside lamp to log dose confirmation. Her personal record shows 1 delayed evening dose by >2 hours in the last month and otherwise on-time dosing.\n\nExamination today was unremarkable. Routine observations were within normal limits. No focal neurological signs were elicited. \n\nPlan: \n- Continue current anti-seizure medication at the present dose. \n- Maintain the smartphone alarm plus NFC tagging workflow, as this appears to support adherence; she will continue to export monthly adherence summaries to bring to clinic. \n- Keep a simple event diary noting sleep duration, missed meals, and any stressors around events, to help us refine trigger patterns. \n- Safety advice reiterated as previously discussed. \n- We will arrange routine bloods prior to next review as per monitoring schedule. \n\nWe will review Lucy Morgan again in four months, or sooner if her event pattern changes or she experiences any prolonged episodes, injury, or loss of awareness.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter reports explicit counts since the last clinic appointment: \"she has had 5 myoclonic jerks, the last reported on 7 April.\" No time interval length between appointments is provided, so an exact rate per day/week/month/year cannot be calculated. There have been no tonic–clonic events. She is not seizure-free for ≥6 months, as events occurred as recently as April and the clinic date is June. Therefore, the specific frequency cannot be determined from the provided timeframe.",
+      "seizure_frequency_number": [
+        "unknown",
+        "she has had 5 myoclonic jerks, the last reported on 7 April"
+      ],
+      "reference": [
+        "unknown",
+        "She told me that since her last clinic appointment she has had 5 myoclonic jerks, the last reported on 7 April"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

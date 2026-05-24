@@ -1,0 +1,59 @@
+{
+  "id": "gan_8852",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 19 September 2018 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-06-1984, Hospital No: A927451 NHS No. 7482936510  \n12 Willowbank Close, London, SW12 8JP  \n\nDiagnoses: \n\nSeizure disorder (type not determined). \n\nThank you for reviewing Michael Harris in the neurology clinic today. He attended with his partner. He reports a sustained improvement in his condition over the past eight months. Prior to this, his typical pattern involved seizures every two to three weeks. Since adopting a period of regular travel and structured relaxation, he describes improved general wellbeing; this is recorded here neutrally as patient-reported background. Importantly, wearable/device logs show no seizures since 14 January 2018, which aligns with his diary and collateral history. \n\nHe continues his current antiseizure regimen without changes and denies adverse effects. There have been no emergency presentations, no injuries, and he has not required rescue medication. Sleep and mood are stable by his report. Neurological examination today was unremarkable. \n\nWe discussed maintaining his current approach given the stability achieved. He will continue to use his wearable tracker and seizure diary for ongoing documentation. Safety advice previously provided was reviewed. No medication changes were made. \n\nPlan: \n- Continue present medication and monitoring.  \n- Routine follow-up in 6 months, sooner if any breakthrough events occur.  \n- Patient to contact the service if there is any return of events or concerns. \n\nIn summary, the clinical picture is of clear improvement from a baseline of seizures every two to three weeks, with objective corroboration from his device metrics: wearable/device logs show no seizures since 14 January 2018. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 813,
+      "end": 872,
+      "text": "wearable/device logs show no seizures since 14 January 2018",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 813,
+      "end": 872,
+      "text": "Wearable/device logs show no seizures since 14 January 2018",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8852,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 19 September 2018 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-06-1984, Hospital No: A927451 NHS No. 7482936510  \n12 Willowbank Close, London, SW12 8JP  \n\nDiagnoses: \n\nSeizure disorder (type not determined). \n\nThank you for reviewing Michael Harris in the neurology clinic today. He attended with his partner. He reports a sustained improvement in his condition over the past eight months. Prior to this, his typical pattern involved seizures every two to three weeks. Since adopting a period of regular travel and structured relaxation, he describes improved general wellbeing; this is recorded here neutrally as patient-reported background. Importantly, wearable/device logs show no seizures since 14 January 2018, which aligns with his diary and collateral history. \n\nHe continues his current antiseizure regimen without changes and denies adverse effects. There have been no emergency presentations, no injuries, and he has not required rescue medication. Sleep and mood are stable by his report. Neurological examination today was unremarkable. \n\nWe discussed maintaining his current approach given the stability achieved. He will continue to use his wearable tracker and seizure diary for ongoing documentation. Safety advice previously provided was reviewed. No medication changes were made. \n\nPlan: \n- Continue present medication and monitoring.  \n- Routine follow-up in 6 months, sooner if any breakthrough events occur.  \n- Patient to contact the service if there is any return of events or concerns. \n\nIn summary, the clinical picture is of clear improvement from a baseline of seizures every two to three weeks, with objective corroboration from his device metrics: wearable/device logs show no seizures since 14 January 2018. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a past baseline of seizures every two to three weeks but states that wearable/device logs show no seizures since 14 January 2018. The clinic date is 19 September 2018. Calculate seizure-free duration: from 14 January 2018 to 19 September 2018 is approximately 8 months and 5 days, which is at least 6 months. Therefore, the patient meets the criterion for being considered seizure free for months. As per rules, select the current frequency, which is seizure free for 8 months.",
+      "seizure_frequency_number": [
+        "seizure free for 8 month",
+        "wearable/device logs show no seizures since 14 January 2018"
+      ],
+      "reference": [
+        "seizure free for 8 month",
+        "Wearable/device logs show no seizures since 14 January 2018"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

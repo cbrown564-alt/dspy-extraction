@@ -1,0 +1,59 @@
+{
+  "id": "gan_4011",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 19 January 2021 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nJamie Edwards, DOB: 22-11-1991, Hospital No: H726391 NHS No. 9834512076  \nFlat 4, 28 Russell Street, London, WC2B 5HP  \n\nEpilepsy \n\nMedication: None currently prescribed for seizures.\n\nLamotrigine Blood Level:\n\nNo recent antiepileptic drug levels as the patient is not on therapy.\n\nSeizures: The patient reports brief episodes of loss of awareness occurring abs *monthly, typically in the late evening, each lasting under one minute with rapid recovery and no clear precipitant. No trauma, tongue-bite, or incontinence reported. Partner has noticed occasional brief staring with unresponsiveness but no convulsions. No clear auras or warnings identified.\n\nI reviewed the patient today via video consultation following a self-referral prompted by two recent episodes witnessed by their partner. They are currently not driving by self-report and understand DVLA guidance has been discussed previously with their GP. Sleep is fragmented due to shift work and caffeine intake is high; they are keeping a diary of events and potential triggers. We agreed to proceed with routine EEG and brain MRI as part of ongoing work-up. Safety advice around bathing, swimming supervision, and use of ladders was reinforced. The patient prefers to defer medication initiation until investigations are completed unless events escalate; they will contact the service if frequency increases or if any injury occurs.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 576,
+      "end": 634,
+      "text": "brief episodes of loss of awareness occurring abs *monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 622,
+      "end": 634,
+      "text": "abs *monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4011,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 19 January 2021 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nJamie Edwards, DOB: 22-11-1991, Hospital No: H726391 NHS No. 9834512076  \nFlat 4, 28 Russell Street, London, WC2B 5HP  \n\nEpilepsy \n\nMedication: None currently prescribed for seizures.\n\nLamotrigine Blood Level:\n\nNo recent antiepileptic drug levels as the patient is not on therapy.\n\nSeizures: The patient reports brief episodes of loss of awareness occurring abs *monthly, typically in the late evening, each lasting under one minute with rapid recovery and no clear precipitant. No trauma, tongue-bite, or incontinence reported. Partner has noticed occasional brief staring with unresponsiveness but no convulsions. No clear auras or warnings identified.\n\nI reviewed the patient today via video consultation following a self-referral prompted by two recent episodes witnessed by their partner. They are currently not driving by self-report and understand DVLA guidance has been discussed previously with their GP. Sleep is fragmented due to shift work and caffeine intake is high; they are keeping a diary of events and potential triggers. We agreed to proceed with routine EEG and brain MRI as part of ongoing work-up. Safety advice around bathing, swimming supervision, and use of ladders was reinforced. The patient prefers to defer medication initiation until investigations are completed unless events escalate; they will contact the service if frequency increases or if any injury occurs.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes current seizure pattern: 'brief episodes of loss of awareness occurring abs *monthly'. This indicates approximately monthly frequency. No other differing frequencies are provided. Not seizure free. Therefore normalize to '1 per month' as the closest explicit numeric form to 'monthly'.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "brief episodes of loss of awareness occurring abs *monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "abs *monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

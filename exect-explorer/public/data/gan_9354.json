@@ -1,0 +1,59 @@
+{
+  "id": "gan_9354",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nLiam Thompson, DOB: 12-05-1986, Hospital No: H938417 NHS No. 9052174631\nFlat 4, 23 Forge Street, London, W10 6AB\n\nMedication:\n\nLevetiracetam 1 g twice daily. No adverse effects reported. Patient carries a midazolam buccal rescue pack but has not needed to use it.\n\nHistory since last review:\n\nHe reports that his current pattern remains stable with a complex partial seizure once every two months. Episodes are described as a brief warning of \"time slowing\" followed by behavioural arrest and impaired awareness for 1–2 minutes, with post-event fatigue for up to an hour. No secondary generalisation has been witnessed. His partner has observed occasional right-hand fumbling during events.\n\nOccupational context:\n\nHe works in metal fabrication and welding with intermittent arc-light exposure. He states he consistently uses a protective visor and adheres to workplace safety procedures. He has not had any events while actively welding; two of the last three episodes occurred at home in the evening, one at work during a tea break away from active machinery. He denies missed doses around these times. He notes possible trigger of poor sleep prior to the workday with early shifts.\n\nPlan:\n\n- Continue levetiracetam 1 g twice daily given current stability and tolerability.\n- Reinforce adherence and sleep hygiene; he will keep a diary noting sleep, shifts, and any events to help identify modifiable factors.\n- He will maintain standard workplace precautions already in place, including supervised breaks and avoidance of lone working during any prodromal symptoms as agreed with his line manager (patient-reported).\n- No driving; he understands the current regulations and will inform us of any change in frequency or event characteristics.\n\nFollow-up in six months, or sooner if the pattern changes.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 490,
+      "end": 573,
+      "text": "current pattern remains stable with a complex partial seizure once every two months",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 528,
+      "end": 573,
+      "text": "complex partial seizure once every two months",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9354,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nLiam Thompson, DOB: 12-05-1986, Hospital No: H938417 NHS No. 9052174631\nFlat 4, 23 Forge Street, London, W10 6AB\n\nMedication:\n\nLevetiracetam 1 g twice daily. No adverse effects reported. Patient carries a midazolam buccal rescue pack but has not needed to use it.\n\nHistory since last review:\n\nHe reports that his current pattern remains stable with a complex partial seizure once every two months. Episodes are described as a brief warning of \"time slowing\" followed by behavioural arrest and impaired awareness for 1–2 minutes, with post-event fatigue for up to an hour. No secondary generalisation has been witnessed. His partner has observed occasional right-hand fumbling during events.\n\nOccupational context:\n\nHe works in metal fabrication and welding with intermittent arc-light exposure. He states he consistently uses a protective visor and adheres to workplace safety procedures. He has not had any events while actively welding; two of the last three episodes occurred at home in the evening, one at work during a tea break away from active machinery. He denies missed doses around these times. He notes possible trigger of poor sleep prior to the workday with early shifts.\n\nPlan:\n\n- Continue levetiracetam 1 g twice daily given current stability and tolerability.\n- Reinforce adherence and sleep hygiene; he will keep a diary noting sleep, shifts, and any events to help identify modifiable factors.\n- He will maintain standard workplace precautions already in place, including supervised breaks and avoidance of lone working during any prodromal symptoms as agreed with his line manager (patient-reported).\n- No driving; he understands the current regulations and will inform us of any change in frequency or event characteristics.\n\nFollow-up in six months, or sooner if the pattern changes.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"current pattern remains stable with a complex partial seizure once every two months.\" This provides a clear numeric frequency. No other seizure type/frequency is mentioned that would be more frequent. Therefore, normalize \"once every two months\" to the allowed format as \"1 per 2 month.\"",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "current pattern remains stable with a complex partial seizure once every two months"
+      ],
+      "reference": [
+        "1 per 2 month",
+        "complex partial seizure once every two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

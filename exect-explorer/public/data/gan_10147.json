@@ -1,0 +1,65 @@
+{
+  "id": "gan_10147",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Sarah Ahmed, \n\nMs Anna Clarke, DOB: 22-09-1991, Hospital No: A9134752 NHS No. 9843216507  \nFlat 12, 4 Kingfisher Court, Wandsworth, London SW18 1AB  \n\nDiagnosis: \n\nRecurrent seizures with variable semiology and no consistent triggers identified. Cluster frequency uncertain. \n\nAetiology: \n\nNo clear structural, genetic, or metabolic cause identified to date; prior MRI (2023) reported as normal by local radiology. \n\nOther Medical Problems: \n\nMild asthma (infrequent salbutamol use). Intermittent migraine without aura, managed conservatively. \n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily as tolerated. Patient reports occasional irritability; advised to keep a daily symptom and seizure diary, including potential precipitants and timing, to assist correlation at next review. \n- Arrange repeat MRI brain with epilepsy protocol and routine EEG; consider sleep-deprived EEG depending on initial results. \n- Basic bloods including FBC, U&E, LFT, vitamin D and B12 requested today. \n- Safety counselling reinforced regarding bathing, cooking with open flames, and working at heights; patient has self-reported avoidance strategies in place. \n- Driving: patient confirms not currently driving and understands DVLA guidance to inform licensing authority if applicable. \n- Review in four months; earlier review if increased event burden or new features. \n\nHistory and Current Status: \n\nMs Anna Clarke describes brief episodes of impaired awareness with occasional loss of responsiveness, sometimes preceded by a vague internal discomfort. Events occur in clusters according to family, but exact spacing and counts are not reliably captured; hence, cluster frequency uncertain. The last clearly witnessed event was approximately six weeks ago at home in the evening. There have been no injuries, tongue biting, or prolonged post-event confusion reported. Sleep deprivation and missed meals are suspected contributors by the patient, though not consistently present. \n\nExamination today was unremarkable with normal neurological findings. Blood pressure and pulse within normal limits. No medication side effects other than intermittent irritability attributed by the patient to Levetiracetam; we discussed non-pharmacological strategies and monitoring, with consideration of adjunctive vitamin B6 pending blood results and tolerability. \n\nI will update you following results of the investigations above. Please let me know if there are concerns in the interim. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 451,
+      "end": 479,
+      "text": "Cluster frequency uncertain.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 451,
+      "end": 478,
+      "text": "Cluster frequency uncertain",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10147,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Sarah Ahmed, \n\nMs Anna Clarke, DOB: 22-09-1991, Hospital No: A9134752 NHS No. 9843216507  \nFlat 12, 4 Kingfisher Court, Wandsworth, London SW18 1AB  \n\nDiagnosis: \n\nRecurrent seizures with variable semiology and no consistent triggers identified. Cluster frequency uncertain. \n\nAetiology: \n\nNo clear structural, genetic, or metabolic cause identified to date; prior MRI (2023) reported as normal by local radiology. \n\nOther Medical Problems: \n\nMild asthma (infrequent salbutamol use). Intermittent migraine without aura, managed conservatively. \n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily as tolerated. Patient reports occasional irritability; advised to keep a daily symptom and seizure diary, including potential precipitants and timing, to assist correlation at next review. \n- Arrange repeat MRI brain with epilepsy protocol and routine EEG; consider sleep-deprived EEG depending on initial results. \n- Basic bloods including FBC, U&E, LFT, vitamin D and B12 requested today. \n- Safety counselling reinforced regarding bathing, cooking with open flames, and working at heights; patient has self-reported avoidance strategies in place. \n- Driving: patient confirms not currently driving and understands DVLA guidance to inform licensing authority if applicable. \n- Review in four months; earlier review if increased event burden or new features. \n\nHistory and Current Status: \n\nMs Anna Clarke describes brief episodes of impaired awareness with occasional loss of responsiveness, sometimes preceded by a vague internal discomfort. Events occur in clusters according to family, but exact spacing and counts are not reliably captured; hence, cluster frequency uncertain. The last clearly witnessed event was approximately six weeks ago at home in the evening. There have been no injuries, tongue biting, or prolonged post-event confusion reported. Sleep deprivation and missed meals are suspected contributors by the patient, though not consistently present. \n\nExamination today was unremarkable with normal neurological findings. Blood pressure and pulse within normal limits. No medication side effects other than intermittent irritability attributed by the patient to Levetiracetam; we discussed non-pharmacological strategies and monitoring, with consideration of adjunctive vitamin B6 pending blood results and tolerability. \n\nI will update you following results of the investigations above. Please let me know if there are concerns in the interim. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient has recurrent seizures and mentions events occurring in clusters, but states that the exact spacing and counts are not reliably captured and that cluster frequency is uncertain. The only temporal detail provided is that the last clearly witnessed event was approximately six weeks ago, which does not establish seizure freedom for 6 months or provide a numeric frequency. Therefore, the specific seizure frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Cluster frequency uncertain."
+      ],
+      "reference": [
+        "unknown",
+        "Cluster frequency uncertain"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

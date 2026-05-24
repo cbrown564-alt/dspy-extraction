@@ -1,0 +1,59 @@
+{
+  "id": "gan_4910",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nRiverside Medical Practice\n\n12 Riverside Way, London, SE10 1AB\nDear Dr Ahmed\nMichael Green, DOB: 21-11-1982, Hospital No: H728391 NHS No. 7745129034\nFlat 3, 45 Mill Street, London, SE10 2BQ\n\nThank you for asking me to review this patient in the Neurology Clinic. He was last seen by our service in 2023 following a period of episodic blackouts that prompted initial assessment.\n\nSince then, he reports that he has been free of seizures for 2 year. He has not experienced further blackouts, convulsions, or focal neurological events, and there have been no witnessed episodes suggestive of epileptic activity. He commutes mainly by bicycle and has maintained his usual daily activities without limitation.\n\nReview of prior investigations, including normal EEG and brain MRI from 2023, alongside the stable clinical picture, supports that he does not have epilepsy. No antiepileptic medication has been prescribed, and none is required. He understands the plan and is comfortable with discharge from routine neurology follow‑up, with the option to re‑refer if new symptoms arise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 458,
+      "end": 513,
+      "text": "he reports that he has been free of seizures for 2 year",
+      "attributes": {
+        "Label": "seizure free for 2 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 486,
+      "end": 513,
+      "text": "Free of seizures for 2 year",
+      "attributes": {
+        "Label": "seizure free for 2 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4910,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nRiverside Medical Practice\n\n12 Riverside Way, London, SE10 1AB\nDear Dr Ahmed\nMichael Green, DOB: 21-11-1982, Hospital No: H728391 NHS No. 7745129034\nFlat 3, 45 Mill Street, London, SE10 2BQ\n\nThank you for asking me to review this patient in the Neurology Clinic. He was last seen by our service in 2023 following a period of episodic blackouts that prompted initial assessment.\n\nSince then, he reports that he has been free of seizures for 2 year. He has not experienced further blackouts, convulsions, or focal neurological events, and there have been no witnessed episodes suggestive of epileptic activity. He commutes mainly by bicycle and has maintained his usual daily activities without limitation.\n\nReview of prior investigations, including normal EEG and brain MRI from 2023, alongside the stable clinical picture, supports that he does not have epilepsy. No antiepileptic medication has been prescribed, and none is required. He understands the plan and is comfortable with discharge from routine neurology follow‑up, with the option to re‑refer if new symptoms arise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been free of seizures for 2 years. This satisfies the seizure-free criterion of at least 6 months. No other seizure frequencies are provided, and there are no recent events. Therefore, the normalized label should be 'seizure free for 2 year'.",
+      "seizure_frequency_number": [
+        "seizure free for 2 year",
+        "he reports that he has been free of seizures for 2 year"
+      ],
+      "reference": [
+        "seizure free for 2 year",
+        "Free of seizures for 2 year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

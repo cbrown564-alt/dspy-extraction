@@ -1,0 +1,65 @@
+{
+  "id": "gan_11380",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 April 2018 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since the last appointment there has been a clear deterioration in seizure control, with increased clustering around menstruation suggesting a catamenial pattern. The patient reports greater functional impact with more frequent post-ictal fatigue and difficulty maintaining work attendance. According to the patient a seizure occurred on 09-Feb, followed by several brief events over the subsequent two weeks, predominantly in the perimenstrual window. She keeps a diary which shows a similar pattern in December and January, with shorter inter-event intervals around menses compared to mid-cycle.\n\nMedication at present is unchanged since the previous review. She takes Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte, with regular adherence and no recent missed doses. She notes increased irritability and low mood, though without suicidal ideation. There is no recent head injury, infection, or sleep deprivation beyond baseline. She denies alcohol or recreational drug use. There is no new focal neurological complaint.\n\nGiven the progressive worsening and perimenstrual clustering, I have organised urgent ambulatory EEG and serum antiepileptic drug levels to be taken in the late luteal phase, aligned with her diary, to clarify whether the observed pattern corresponds with fluctuations in seizure threshold. I have also requested routine bloods (FBC, U&E, LFTs, bone profile, vitamin D, TSH) and will liaise with the epilepsy nurse specialist for focused self-management advice around the perimenstrual period. We discussed safety, including bathing supervision, cooking precautions, and prompt reporting of any prolonged events.\n\nI will review her again in six weeks with the diary, EEG, and blood results to guide further management. She understands to contact us sooner if clusters escalate or recovery is prolonged.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 617,
+      "end": 709,
+      "text": "a seizure occurred on 09-Feb, followed by several brief events over the subsequent two weeks",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 592,
+      "end": 645,
+      "text": "According to the patient a seizure occurred on 09-Feb",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11380,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 April 2018 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since the last appointment there has been a clear deterioration in seizure control, with increased clustering around menstruation suggesting a catamenial pattern. The patient reports greater functional impact with more frequent post-ictal fatigue and difficulty maintaining work attendance. According to the patient a seizure occurred on 09-Feb, followed by several brief events over the subsequent two weeks, predominantly in the perimenstrual window. She keeps a diary which shows a similar pattern in December and January, with shorter inter-event intervals around menses compared to mid-cycle.\n\nMedication at present is unchanged since the previous review. She takes Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte, with regular adherence and no recent missed doses. She notes increased irritability and low mood, though without suicidal ideation. There is no recent head injury, infection, or sleep deprivation beyond baseline. She denies alcohol or recreational drug use. There is no new focal neurological complaint.\n\nGiven the progressive worsening and perimenstrual clustering, I have organised urgent ambulatory EEG and serum antiepileptic drug levels to be taken in the late luteal phase, aligned with her diary, to clarify whether the observed pattern corresponds with fluctuations in seizure threshold. I have also requested routine bloods (FBC, U&E, LFTs, bone profile, vitamin D, TSH) and will liaise with the epilepsy nurse specialist for focused self-management advice around the perimenstrual period. We discussed safety, including bathing supervision, cooking precautions, and prompt reporting of any prolonged events.\n\nI will review her again in six weeks with the diary, EEG, and blood results to guide further management. She understands to contact us sooner if clusters escalate or recovery is prolonged.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms ongoing seizures with clustering around menstruation but does not provide a clear, quantifiable frequency over a standard time unit. It mentions a specific seizure on 09-Feb followed by 'several brief events over the subsequent two weeks' and that the diary shows a similar pattern in December and January, but the exact counts per week or month are not given. Without precise numbers or a reliably inferable rate, the specific frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "a seizure occurred on 09-Feb, followed by several brief events over the subsequent two weeks"
+      ],
+      "reference": [
+        "unknown",
+        "According to the patient a seizure occurred on 09-Feb"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

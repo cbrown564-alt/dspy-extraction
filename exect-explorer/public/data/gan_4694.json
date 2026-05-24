@@ -1,0 +1,59 @@
+{
+  "id": "gan_4694",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nLevetiracetam 1,000 mg twice daily. Carer-assisted administration is in place; no reported missed doses.\n\nI reviewed Emily Carter today in the neurology clinic. She attended with her carer, who supports communication and maintains a seizure log. The carer reports intermittent brief behavioural pauses and occasional non-specific nocturnal restlessness without clear clinical correlates. Importantly, recent prolonged video-EEG monitoring demonstrated the following: Electrographic seizures frequent on EEG (~9/h). These events were primarily subclinical during the daytime recording, with rare brief behavioural arrest noted by the physiologist but no clear motor phenomena. The carer’s home log often does not capture these subclinical events, highlighting the discordance between observed behaviour and EEG activity.\n\nSince commencing levetiracetam at the current dose three months ago, there has been no clear change in day-to-day alertness or mood according to the carer, and no adverse effects have been reported. Sleep pattern remains variable, which the carer attributes to routine changes in the supported living setting. There is no history of recent injury, status episodes, or emergency presentations. Triggers are uncertain; the carer notes increased episodes on days with higher sensory overstimulation, though this is anecdotal.\n\nWe discussed safety, adherence, and the importance of structured routines. The carer will continue to record observable behaviours, noting time, setting, potential triggers, and recovery features, and will bring logs to the next appointment. We have arranged an ambulatory EEG add-on report to compare with the current dataset and will review serum levetiracetam level for completeness. No medication changes were made today pending correlation of the carer’s diary with the EEG findings.\n\nWe will review Emily Carter in four months, earlier if there is any clinical deterioration, new injuries, or prolonged episodes.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 760,
+      "end": 807,
+      "text": "Electrographic seizures frequent on EEG (~9/h).",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 760,
+      "end": 806,
+      "text": "Electrographic seizures frequent on EEG (~9/h)",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4694,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nLevetiracetam 1,000 mg twice daily. Carer-assisted administration is in place; no reported missed doses.\n\nI reviewed Emily Carter today in the neurology clinic. She attended with her carer, who supports communication and maintains a seizure log. The carer reports intermittent brief behavioural pauses and occasional non-specific nocturnal restlessness without clear clinical correlates. Importantly, recent prolonged video-EEG monitoring demonstrated the following: Electrographic seizures frequent on EEG (~9/h). These events were primarily subclinical during the daytime recording, with rare brief behavioural arrest noted by the physiologist but no clear motor phenomena. The carer’s home log often does not capture these subclinical events, highlighting the discordance between observed behaviour and EEG activity.\n\nSince commencing levetiracetam at the current dose three months ago, there has been no clear change in day-to-day alertness or mood according to the carer, and no adverse effects have been reported. Sleep pattern remains variable, which the carer attributes to routine changes in the supported living setting. There is no history of recent injury, status episodes, or emergency presentations. Triggers are uncertain; the carer notes increased episodes on days with higher sensory overstimulation, though this is anecdotal.\n\nWe discussed safety, adherence, and the importance of structured routines. The carer will continue to record observable behaviours, noting time, setting, potential triggers, and recovery features, and will bring logs to the next appointment. We have arranged an ambulatory EEG add-on report to compare with the current dataset and will review serum levetiracetam level for completeness. No medication changes were made today pending correlation of the carer’s diary with the EEG findings.\n\nWe will review Emily Carter in four months, earlier if there is any clinical deterioration, new injuries, or prolonged episodes.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly documents an EEG-based seizure rate: \"Electrographic seizures frequent on EEG (~9/h).\" This is the only quantified frequency. However, this rate pertains to the monitored period (noted as during daytime recording) and may not represent a full 24-hour day. The carer’s diary does not capture most subclinical events, and no daily count is provided. Converting 9 per hour to a daily figure would require extrapolation beyond the provided data. Given the uncertainty about the true daily total, the safest normalization is to use a non-numeric daily label.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~9/h)."
+      ],
+      "reference": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~9/h)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

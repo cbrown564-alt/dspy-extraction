@@ -1,0 +1,59 @@
+{
+  "id": "gan_2812",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr A Patel,  \n\nMichael Foster, DOB: 14-11-1988, Hospital No: H294751 NHS No. 9074621538  \n82 Willowbank Close, London, SW12 0NR  \n\nDiagnoses: \n\nSeizures of uncertain classification. \n\nI reviewed Michael Foster in the general neurology clinic today with his partner present. He describes a fluctuating pattern of events over the past three months characterised by sudden loss of postural tone without warning, consistent with a drop attack daily. He reports brief confusion post-event lasting 1–2 minutes, with no clear precipitant identified. There has been no associated tongue bite or urinary incontinence. He does not drive. \n\nMedication: He remains on levetiracetam 1000 mg twice daily with good adherence, and has not used any rescue medication. No adverse effects reported other than mild irritability. No other antiepileptic drugs have been tried to date. \n\nInvestigations: A routine EEG (August 2025) was non-diagnostic with intermittent generalised slowing but no clear epileptiform discharges. MRI brain with epilepsy protocol (July 2025) was structurally normal. Bloods including FBC, U&E, LFT, calcium, magnesium and glucose were within reference ranges. \n\nHistory since last review: He has implemented regular sleep and hydration as discussed. Despite this, the pattern remains consistent with at least one drop attack daily, typically late morning. He has not sustained major injury but has had bruising to knees and elbows on two occasions. No emergency department attendances. \n\nExamination today was unremarkable with normal cardiorespiratory observations and a non-focal neurological examination. \n\nPlan: We discussed the uncertain classification of his events and the need for further characterisation. He consented to ambulatory EEG monitoring with event markers and a safety-focused physiotherapy assessment for falls prevention. He will also keep a detailed event diary noting time of day, activity, prodromal symptoms and recovery features. We provided an updated seizure safety plan for home and work, including advice on helmet use in settings where falls risk is high; he will consider this and discuss with occupational health. No medication changes were made today pending further data. \n\nFollow-up: Review in 8–10 weeks to assess ambulatory EEG results and diary correlation, or earlier if events escalate or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1515,
+      "end": 1545,
+      "text": "at least one drop attack daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 635,
+      "end": 652,
+      "text": "drop attack daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2812,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr A Patel,  \n\nMichael Foster, DOB: 14-11-1988, Hospital No: H294751 NHS No. 9074621538  \n82 Willowbank Close, London, SW12 0NR  \n\nDiagnoses: \n\nSeizures of uncertain classification. \n\nI reviewed Michael Foster in the general neurology clinic today with his partner present. He describes a fluctuating pattern of events over the past three months characterised by sudden loss of postural tone without warning, consistent with a drop attack daily. He reports brief confusion post-event lasting 1–2 minutes, with no clear precipitant identified. There has been no associated tongue bite or urinary incontinence. He does not drive. \n\nMedication: He remains on levetiracetam 1000 mg twice daily with good adherence, and has not used any rescue medication. No adverse effects reported other than mild irritability. No other antiepileptic drugs have been tried to date. \n\nInvestigations: A routine EEG (August 2025) was non-diagnostic with intermittent generalised slowing but no clear epileptiform discharges. MRI brain with epilepsy protocol (July 2025) was structurally normal. Bloods including FBC, U&E, LFT, calcium, magnesium and glucose were within reference ranges. \n\nHistory since last review: He has implemented regular sleep and hydration as discussed. Despite this, the pattern remains consistent with at least one drop attack daily, typically late morning. He has not sustained major injury but has had bruising to knees and elbows on two occasions. No emergency department attendances. \n\nExamination today was unremarkable with normal cardiorespiratory observations and a non-focal neurological examination. \n\nPlan: We discussed the uncertain classification of his events and the need for further characterisation. He consented to ambulatory EEG monitoring with event markers and a safety-focused physiotherapy assessment for falls prevention. He will also keep a detailed event diary noting time of day, activity, prodromal symptoms and recovery features. We provided an updated seizure safety plan for home and work, including advice on helmet use in settings where falls risk is high; he will consider this and discuss with occupational health. No medication changes were made today pending further data. \n\nFollow-up: Review in 8–10 weeks to assess ambulatory EEG results and diary correlation, or earlier if events escalate or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing events consistent with seizures: 'drop attack daily' and 'at least one drop attack daily'. There is no indication of seizure freedom. We should choose the highest frequency mentioned. The explicit frequency is daily, with wording 'at least one' indicating a minimum of 1 per day; no higher frequency is specified. Therefore, normalize to '1 per day'.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "at least one drop attack daily"
+      ],
+      "reference": [
+        "1 per day",
+        "drop attack daily"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

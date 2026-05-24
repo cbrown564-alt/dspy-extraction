@@ -1,0 +1,59 @@
+{
+  "id": "gan_1868",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Carter\nSouthside Neurology Centre\nNeurology Outpatients, 14 Queen Street, Manchester M2 5BQ\n\nDear Dr Amelia Carter,\n\nMichael Turner, DOB: 23-02-1990, Hospital No: H392774 NHS No. 9912047763\nFlat 3, 28 Brookfield Avenue, Manchester, M14 6DR\n\nDiagnoses:\n\nHistory of childhood febrile seizures; current adult seizure disorder under evaluation.\n\nCurrent Medication:\n\nLevetiracetam 1,000 mg twice daily\nClobazam 10 mg nocte\n\nPlan:\n\n- Continue current anti-seizure regimen and maintain seizure/symptom diary.\n- Arrange ambulatory EEG and MRI brain with epilepsy protocol to aid characterisation.\n- Discussed safety: adherence, sleep hygiene, alcohol moderation, and driving regulations.\n- Urgent review in 6 weeks or sooner if events escalate.\n\nI reviewed Michael Turner in clinic today. He reports a childhood history of febrile seizures without subsequent neurological sequelae. Over the past two months he describes one drop attacks and seven tonic-clonic in the past two months. The drop event was abrupt, without warning, resulting in a brief loss of postural tone and minor knee bruising; no clear trigger was identified. The tonic-clonic episodes were witnessed on three occasions by family, with bilateral limb stiffening followed by rhythmic jerking lasting 1–2 minutes and post-ictal confusion for up to 30 minutes. He notes poor sleep and recent work-related stress preceding several events. There is no consistent aura, focal neurological symptom, or clear diurnal pattern. He denies tongue-bite in most events but reports two instances of lateral tongue trauma; urinary incontinence occurred twice. No intercurrent illness, head injury, or medication non-adherence reported.\n\nHe has been taking levetiracetam for three weeks, uptitrated to 1,000 mg twice daily, and clobazam 10 mg at night was added by the on-call team after an emergency department presentation last week. He reports mild daytime fatigue since starting clobazam but no mood disturbance. Physical and neurological examinations in clinic were unremarkable. Routine blood tests from last week (FBC, U&E, LFT, glucose) were within reference ranges as per shared records. Previous EEG from 2019 was normal; no prior MRI available.\n\nGiven the recent cluster of events and incomplete characterisation, we agreed to proceed with ambulatory EEG and an MRI brain with epilepsy protocol. I advised strict adherence to medication, prioritising regular sleep, and avoiding binge alcohol. We discussed DVLA guidance relevant to recent tonic-clonic events; he understands the implications and will follow current regulations. A seizure diary will be maintained to document frequency, potential triggers, and timing, including any further drop episodes.\n\nI will review Michael Turner in 6 weeks, sooner via urgent access if further clusters occur or side effects emerge. He and his partner were given contact details for the neurology advice line.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 940,
+      "end": 1041,
+      "text": "Over the past two months he describes one drop attacks and seven tonic-clonic in the past two months.",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 978,
+      "end": 1040,
+      "text": "one drop attacks and seven tonic-clonic in the past two months",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1868,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Carter\nSouthside Neurology Centre\nNeurology Outpatients, 14 Queen Street, Manchester M2 5BQ\n\nDear Dr Amelia Carter,\n\nMichael Turner, DOB: 23-02-1990, Hospital No: H392774 NHS No. 9912047763\nFlat 3, 28 Brookfield Avenue, Manchester, M14 6DR\n\nDiagnoses:\n\nHistory of childhood febrile seizures; current adult seizure disorder under evaluation.\n\nCurrent Medication:\n\nLevetiracetam 1,000 mg twice daily\nClobazam 10 mg nocte\n\nPlan:\n\n- Continue current anti-seizure regimen and maintain seizure/symptom diary.\n- Arrange ambulatory EEG and MRI brain with epilepsy protocol to aid characterisation.\n- Discussed safety: adherence, sleep hygiene, alcohol moderation, and driving regulations.\n- Urgent review in 6 weeks or sooner if events escalate.\n\nI reviewed Michael Turner in clinic today. He reports a childhood history of febrile seizures without subsequent neurological sequelae. Over the past two months he describes one drop attacks and seven tonic-clonic in the past two months. The drop event was abrupt, without warning, resulting in a brief loss of postural tone and minor knee bruising; no clear trigger was identified. The tonic-clonic episodes were witnessed on three occasions by family, with bilateral limb stiffening followed by rhythmic jerking lasting 1–2 minutes and post-ictal confusion for up to 30 minutes. He notes poor sleep and recent work-related stress preceding several events. There is no consistent aura, focal neurological symptom, or clear diurnal pattern. He denies tongue-bite in most events but reports two instances of lateral tongue trauma; urinary incontinence occurred twice. No intercurrent illness, head injury, or medication non-adherence reported.\n\nHe has been taking levetiracetam for three weeks, uptitrated to 1,000 mg twice daily, and clobazam 10 mg at night was added by the on-call team after an emergency department presentation last week. He reports mild daytime fatigue since starting clobazam but no mood disturbance. Physical and neurological examinations in clinic were unremarkable. Routine blood tests from last week (FBC, U&E, LFT, glucose) were within reference ranges as per shared records. Previous EEG from 2019 was normal; no prior MRI available.\n\nGiven the recent cluster of events and incomplete characterisation, we agreed to proceed with ambulatory EEG and an MRI brain with epilepsy protocol. I advised strict adherence to medication, prioritising regular sleep, and avoiding binge alcohol. We discussed DVLA guidance relevant to recent tonic-clonic events; he understands the implications and will follow current regulations. A seizure diary will be maintained to document frequency, potential triggers, and timing, including any further drop episodes.\n\nI will review Michael Turner in 6 weeks, sooner via urgent access if further clusters occur or side effects emerge. He and his partner were given contact details for the neurology advice line.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter states: 'Over the past two months he describes one drop attacks and seven tonic-clonic in the past two months.' This gives concrete counts within a defined period. Apply Rule for Handling Multiple Frequencies: combine different seizure types occurring over the same time window to get total seizure count. Calculation: 1 (drop attack) + 7 (tonic-clonic) = 8 seizures over 2 months. Normalize to allowed format: '8 per 2 month'. Not seizure-free as events occurred within the last 2 months.",
+      "seizure_frequency_number": [
+        "8 per 2 month",
+        "Over the past two months he describes one drop attacks and seven tonic-clonic in the past two months."
+      ],
+      "reference": [
+        "8 per 2 month",
+        "one drop attacks and seven tonic-clonic in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

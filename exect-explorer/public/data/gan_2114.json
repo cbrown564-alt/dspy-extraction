@@ -1,0 +1,59 @@
+{
+  "id": "gan_2114",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 22-11-1992, Hospital No: H584209 NHS No. 9182746350  \nFlat 3, 12 Brook Mews, London, W2 4QH \n\nOccupation and context:\nShe works as an early-years childcare assistant in a high-noise, multitasking environment where midday rest breaks are frequently interrupted. She reports that the background noise and the stop-start nature of tasks can be fatiguing and occasionally stressful. \n\nPresent history:\nOver the past month she describes several myoclonic in the past month, typically brief, shock-like jerks of the upper limbs, more noticeable on days following poor sleep or when her midday break is cut short. No clear loss of awareness was reported, and there have been no injuries. She notes that these episodes are more likely in the late morning after a hectic start, and sometimes again mid-afternoon when nap supervision is disrupted. She denies new triggers beyond sleep disruption and cumulative fatigue. \n\nMedication:\nOxcarbazepine (Trileptal) 300 mg in the morning and 600 mg at night. She has been broadly adherent and has not reported adverse effects beyond mild dizziness on first standing, settling within minutes. She is not taking over-the-counter stimulants; occasional paracetamol for tension-type headache. \n\nManagement discussion:\nWe discussed practical strategies around sleep hygiene and minimising missed or curtailed breaks where feasible, acknowledging that her work setting often makes this difficult. She will trial setting gentle vibration reminders to pause and hydrate, and will keep a simple log noting sleep duration, break quality, and any brief jerks, to help us correlate patterns. She prefers not to adjust medication today while we monitor the pattern in her current work routine. \n\nSafety and work considerations:\nShe is using common-sense precautions with hot drinks and carrying children during periods when she feels overtired. Her employer is reportedly supportive; she will request flexible timing of her midday pause when staffing allows. No driving issues raised. \n\nPlan:\n- Continue Oxcarbazepine at current dosing.  \n- Keep a symptom and sleep/break diary over the next 8–12 weeks.  \n- If frequency increases or clusters emerge, she will contact the clinic promptly.  \n- We will review bloods at next visit if considering any dose change. \n\nFollow-up:\nReview in 4–6 months, sooner if problems escalate. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 606,
+      "end": 657,
+      "text": "Over the past month she describes several myoclonic",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 640,
+      "end": 675,
+      "text": "several myoclonic in the past month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2114,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 22-11-1992, Hospital No: H584209 NHS No. 9182746350  \nFlat 3, 12 Brook Mews, London, W2 4QH \n\nOccupation and context:\nShe works as an early-years childcare assistant in a high-noise, multitasking environment where midday rest breaks are frequently interrupted. She reports that the background noise and the stop-start nature of tasks can be fatiguing and occasionally stressful. \n\nPresent history:\nOver the past month she describes several myoclonic in the past month, typically brief, shock-like jerks of the upper limbs, more noticeable on days following poor sleep or when her midday break is cut short. No clear loss of awareness was reported, and there have been no injuries. She notes that these episodes are more likely in the late morning after a hectic start, and sometimes again mid-afternoon when nap supervision is disrupted. She denies new triggers beyond sleep disruption and cumulative fatigue. \n\nMedication:\nOxcarbazepine (Trileptal) 300 mg in the morning and 600 mg at night. She has been broadly adherent and has not reported adverse effects beyond mild dizziness on first standing, settling within minutes. She is not taking over-the-counter stimulants; occasional paracetamol for tension-type headache. \n\nManagement discussion:\nWe discussed practical strategies around sleep hygiene and minimising missed or curtailed breaks where feasible, acknowledging that her work setting often makes this difficult. She will trial setting gentle vibration reminders to pause and hydrate, and will keep a simple log noting sleep duration, break quality, and any brief jerks, to help us correlate patterns. She prefers not to adjust medication today while we monitor the pattern in her current work routine. \n\nSafety and work considerations:\nShe is using common-sense precautions with hot drinks and carrying children during periods when she feels overtired. Her employer is reportedly supportive; she will request flexible timing of her midday pause when staffing allows. No driving issues raised. \n\nPlan:\n- Continue Oxcarbazepine at current dosing.  \n- Keep a symptom and sleep/break diary over the next 8–12 weeks.  \n- If frequency increases or clusters emerge, she will contact the clinic promptly.  \n- We will review bloods at next visit if considering any dose change. \n\nFollow-up:\nReview in 4–6 months, sooner if problems escalate. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes that over the past month the patient had several myoclonic events: 'Over the past month she describes several myoclonic...' with no explicit numeric count. 'Several' indicates more than one within a month but not a precise number. No other explicit frequency is provided. Therefore, the frequency can be inferred only as vague multiple occurrences within a month. According to the rules, when the exact number cannot be determined, use 'multiple' with the appropriate unit.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "Over the past month she describes several myoclonic"
+      ],
+      "reference": [
+        "multiple per month",
+        "several myoclonic in the past month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

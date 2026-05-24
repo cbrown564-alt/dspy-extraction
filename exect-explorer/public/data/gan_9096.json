@@ -1,0 +1,59 @@
+{
+  "id": "gan_9096",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 September 2018 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review\n\nPresent Medication:\n\n1. Lamotrigine 100 mg in the morning and 100 mg at night\n2. Clobazam 10 mg at night as an adjunct\n\nPresent Seizure Frequency:\n\nDaytime events persist intermittently; there have been no reports of episodes occurring during sleep over the past six months. The patient notes brief warning sensations before some events, with occasional confusion after.\n\nPlan of Action:\n\nThe patient previously experienced a diffuse pruritic rash on carbamazepine and significant gastrointestinal discomfort on valproate; both agents were discontinued and listed as adverse reactions in the record. Current lamotrigine levels are within the expected therapeutic range and clobazam has been used for breakthrough events with partial benefit. Given ongoing daytime spells and the historical sensitivity to several antiseizure medicines, we discussed cautious optimisation rather than a wholesale change.\n\nI recommend a gradual increase of lamotrigine to 125 mg in the morning and 125 mg at night for two weeks, then 150 mg in the morning and 150 mg at night thereafter, provided there is no skin reaction or other intolerance. Clobazam 10 mg at night to continue unchanged for now, with the option to use an additional 5 mg on days with premonitory symptoms if sedation is not problematic. The patient will maintain a seizure and adverse effect diary, including any gastrointestinal symptoms or cutaneous changes, and avoid abrupt medication changes.\n\nWe have arranged bloods (FBC, U&E, LFTs) in four weeks to monitor general tolerability. I will review in clinic in three months, sooner if there is escalation in daytime events, emergence of events during sleep, or any rash.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 560,
+      "end": 686,
+      "text": "Daytime events persist intermittently; there have been no reports of episodes occurring during sleep over the past six months.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9096,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 September 2018 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review\n\nPresent Medication:\n\n1. Lamotrigine 100 mg in the morning and 100 mg at night\n2. Clobazam 10 mg at night as an adjunct\n\nPresent Seizure Frequency:\n\nDaytime events persist intermittently; there have been no reports of episodes occurring during sleep over the past six months. The patient notes brief warning sensations before some events, with occasional confusion after.\n\nPlan of Action:\n\nThe patient previously experienced a diffuse pruritic rash on carbamazepine and significant gastrointestinal discomfort on valproate; both agents were discontinued and listed as adverse reactions in the record. Current lamotrigine levels are within the expected therapeutic range and clobazam has been used for breakthrough events with partial benefit. Given ongoing daytime spells and the historical sensitivity to several antiseizure medicines, we discussed cautious optimisation rather than a wholesale change.\n\nI recommend a gradual increase of lamotrigine to 125 mg in the morning and 125 mg at night for two weeks, then 150 mg in the morning and 150 mg at night thereafter, provided there is no skin reaction or other intolerance. Clobazam 10 mg at night to continue unchanged for now, with the option to use an additional 5 mg on days with premonitory symptoms if sedation is not problematic. The patient will maintain a seizure and adverse effect diary, including any gastrointestinal symptoms or cutaneous changes, and avoid abrupt medication changes.\n\nWe have arranged bloods (FBC, U&E, LFTs) in four weeks to monitor general tolerability. I will review in clinic in three months, sooner if there is escalation in daytime events, emergence of events during sleep, or any rash.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter’s 'Present Seizure Frequency' states that daytime events continue but only describes them as 'intermittent' without a numeric rate. It also notes no nocturnal events for six months. Since seizures are ongoing and no quantifiable frequency is provided for the daytime events, the specific frequency cannot be determined. Per the rule, when seizures are present but frequency is unspecified, return 'unknown'. The absence of sleep events does not make the patient seizure-free overall.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Daytime events persist intermittently; there have been no reports of episodes occurring during sleep over the past six months."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No nocturnal seizures reported"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

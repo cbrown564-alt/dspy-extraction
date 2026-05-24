@@ -1,0 +1,65 @@
+{
+  "id": "gan_9562",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 11 November 2024 \n\nDr Patel  \nNorthborough NHS Neurology Clinic  \nNeurosciences Department, Northborough General Hospital, NR3 5HT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-07-1991, Hospital No: H928417 NHS No. 7426153902  \n58 Willowbank Close, Northborough, NR2 4DA  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nI reviewed Laura Bennett in clinic today. She is the primary caregiver for her young children, and her night-time sleep can be interrupted. She reports that her background seizure pattern has been stable with no recent emergency department visits. Of note, she describes that focal sensory happen after illness, typically following minor viral infections or periods of poor sleep while caring for the children. These brief sensory episodes last under a minute and occasionally cluster over 1–2 days after the illness, but she has not had prolonged events. She denies new neurological symptoms in between episodes.\n\nShe continues on her established anti-seizure medication regimen without recent dose changes, with good adherence reported. There have been no adverse effects limiting function. She does not currently use rescue medication and has not required paramedic assistance. She has not had any generalised tonic–clonic seizures for over a year. Importantly, she and her partner have identified that early rest and hydration during intercurrent illnesses seem to coincide with fewer of the brief sensory events, although they have not formally tracked this.\n\nExamination in clinic today was unremarkable. No new investigations were required at this visit. We discussed seizure safety tailored to her caregiving responsibilities, including strategies to minimise sleep disruption when possible and practical steps for night-time supervision of the children during periods when she is recovering from illness. She understands generalised epilepsy remains her primary diagnosis and knows to seek help if events become more frequent, prolonged, or change in character.\n\nPlan:\n- Continue current anti-seizure medication unchanged.\n- Patient to keep a simple diary for three months to log intercurrent illnesses, sleep disruption, and any sensory events, given the pattern that focal sensory happen after illness.\n- Provide written information on seizure first aid and practical safety measures relevant to childcare.\n- Routine follow-up in six months, or earlier if there is any deterioration or if generalised events recur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 653,
+      "end": 813,
+      "text": "focal sensory happen after illness, typically following minor viral infections or periods of poor sleep ... occasionally cluster over 1–2 days after the illness",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 653,
+      "end": 687,
+      "text": "focal sensory happen after illness",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9562,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 11 November 2024 \n\nDr Patel  \nNorthborough NHS Neurology Clinic  \nNeurosciences Department, Northborough General Hospital, NR3 5HT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-07-1991, Hospital No: H928417 NHS No. 7426153902  \n58 Willowbank Close, Northborough, NR2 4DA  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nI reviewed Laura Bennett in clinic today. She is the primary caregiver for her young children, and her night-time sleep can be interrupted. She reports that her background seizure pattern has been stable with no recent emergency department visits. Of note, she describes that focal sensory happen after illness, typically following minor viral infections or periods of poor sleep while caring for the children. These brief sensory episodes last under a minute and occasionally cluster over 1–2 days after the illness, but she has not had prolonged events. She denies new neurological symptoms in between episodes.\n\nShe continues on her established anti-seizure medication regimen without recent dose changes, with good adherence reported. There have been no adverse effects limiting function. She does not currently use rescue medication and has not required paramedic assistance. She has not had any generalised tonic–clonic seizures for over a year. Importantly, she and her partner have identified that early rest and hydration during intercurrent illnesses seem to coincide with fewer of the brief sensory events, although they have not formally tracked this.\n\nExamination in clinic today was unremarkable. No new investigations were required at this visit. We discussed seizure safety tailored to her caregiving responsibilities, including strategies to minimise sleep disruption when possible and practical steps for night-time supervision of the children during periods when she is recovering from illness. She understands generalised epilepsy remains her primary diagnosis and knows to seek help if events become more frequent, prolonged, or change in character.\n\nPlan:\n- Continue current anti-seizure medication unchanged.\n- Patient to keep a simple diary for three months to log intercurrent illnesses, sleep disruption, and any sensory events, given the pattern that focal sensory happen after illness.\n- Provide written information on seizure first aid and practical safety measures relevant to childcare.\n- Routine follow-up in six months, or earlier if there is any deterioration or if generalised events recur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing brief focal sensory events that occur after intercurrent illnesses or poor sleep, sometimes clustering over 1–2 days after the illness. It explicitly states she has had no generalised tonic–clonic seizures for over a year, but does not provide a numeric frequency for the current focal sensory events. The pattern is episodic and condition-triggered, with occasional clusters, but without a count per time period or per cluster. Therefore, a precise frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "focal sensory happen after illness, typically following minor viral infections or periods of poor sleep ... occasionally cluster over 1–2 days after the illness"
+      ],
+      "reference": [
+        "unknown",
+        "focal sensory happen after illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

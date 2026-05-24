@@ -1,0 +1,59 @@
+{
+  "id": "gan_12080",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He works in metal fabrication and welding with intermittent arc-light exposure; he reports that he uses a protective visor consistently as per workplace routine and has regular occupational health checks. He feels the visor is effective and has not noticed any clear light-triggered pattern to his events at work. \n\nSince his last review in February 2025, he describes that focal seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically 6 events per year. He and his partner have kept a diary, which supports this frequency, with clusters after prolonged days and poor sleep. He denies recent injuries at work and confirms he does not operate heavy machinery when unwell. He does not drive and remains aware of DVLA guidance pending sustained seizure control. \n\nCurrent medication (patient-reported and checked against records): Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He has tolerated this combination without rash, mood instability, or ataxia. He notes mild daytime somnolence and occasional word-finding difficulty late in the day. No recent infections, alcohol bingeing, or missed doses. He is keen to avoid sedation at work and requests that any further changes be staged. \n\nNeurological examination today was unremarkable with normal cranial nerve function, tone, power, coordination, and gait. No photoparoxysmal response has been documented previously. Routine bloods in August 2025 showed normal renal profile, LFTs, and full blood count. Lamotrigine level was within the expected therapeutic range for his dosing; Levetiracetam level was not measured. \n\nWe discussed seizure safety at work and at home, including consistent use of protective equipment, hydration, sleep regularity, and avoiding high platforms or uncontrolled heat sources during periods of increased symptoms. He will continue to maintain a seizure and trigger diary. \n\nPlan: \n- Continue current regimen for now while we obtain updated EEG with photic stimulation protocol and repeat MRI (last MRI 2018). \n- Arrange serum Levetiracetam level and repeat Vitamin D. \n- Provide workplace letter summarising functional limitations and the need for regular breaks, as requested by Occupational Health. \n- Telephone review in 8 weeks following investigations; face-to-face review in 4 months, or sooner if convulsions increase or injuries occur. \n\nI have provided information on local epilepsy nurse support and patient groups. He is aware of when to seek urgent care, including prolonged convulsions or a change in recovery pattern. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 677,
+      "end": 721,
+      "text": "focal seizures occur several times each week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 677,
+      "end": 823,
+      "text": "focal seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically 6 events per year",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12080,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He works in metal fabrication and welding with intermittent arc-light exposure; he reports that he uses a protective visor consistently as per workplace routine and has regular occupational health checks. He feels the visor is effective and has not noticed any clear light-triggered pattern to his events at work. \n\nSince his last review in February 2025, he describes that focal seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically 6 events per year. He and his partner have kept a diary, which supports this frequency, with clusters after prolonged days and poor sleep. He denies recent injuries at work and confirms he does not operate heavy machinery when unwell. He does not drive and remains aware of DVLA guidance pending sustained seizure control. \n\nCurrent medication (patient-reported and checked against records): Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He has tolerated this combination without rash, mood instability, or ataxia. He notes mild daytime somnolence and occasional word-finding difficulty late in the day. No recent infections, alcohol bingeing, or missed doses. He is keen to avoid sedation at work and requests that any further changes be staged. \n\nNeurological examination today was unremarkable with normal cranial nerve function, tone, power, coordination, and gait. No photoparoxysmal response has been documented previously. Routine bloods in August 2025 showed normal renal profile, LFTs, and full blood count. Lamotrigine level was within the expected therapeutic range for his dosing; Levetiracetam level was not measured. \n\nWe discussed seizure safety at work and at home, including consistent use of protective equipment, hydration, sleep regularity, and avoiding high platforms or uncontrolled heat sources during periods of increased symptoms. He will continue to maintain a seizure and trigger diary. \n\nPlan: \n- Continue current regimen for now while we obtain updated EEG with photic stimulation protocol and repeat MRI (last MRI 2018). \n- Arrange serum Levetiracetam level and repeat Vitamin D. \n- Provide workplace letter summarising functional limitations and the need for regular breaks, as requested by Occupational Health. \n- Telephone review in 8 weeks following investigations; face-to-face review in 4 months, or sooner if convulsions increase or injuries occur. \n\nI have provided information on local epilepsy nurse support and patient groups. He is aware of when to seek urgent care, including prolonged convulsions or a change in recovery pattern. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states two seizure types with frequencies: (1) focal seizures occur \"several times each week\"; (2) generalized convulsions are \"typically 6 events per year.\" Per the rule to select the highest frequency, we choose the more frequent category. \"Several times each week\" is a vague, non-numeric frequency occurring weekly. Since the exact number is not specified, we must use 'multiple' per 'week' according to the allowed formats.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "focal seizures occur several times each week"
+      ],
+      "reference": [
+        "multiple per week",
+        "focal seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically 6 events per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_666",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Maya Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 21 September 2025 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication supply arrangements\n\nDear Dr Patel,\n\nSummary:\nThe patient reports ongoing episodic seizures despite good adherence. They split time between two households each week and keep medication supplies at both locations to avoid missed doses.\n\nHistory since last contact:\n- They describe spells consistent with their usual events, with no new focal features reported. They note clear clustering: seizures twice every 2 to 3 months, often following disrupted sleep when moving between households.\n- No intercurrent illness, no alcohol excess, and they deny missed doses; pill counts at both homes match expected use. No reported injuries.\n\nCurrent medication:\n- Levetiracetam 750 mg twice daily\n- Carbamazepine modified release 400 mg twice daily\n\nAdherence and practicalities:\n- Patient has duplicate pill organisers and blister packs kept at each household. They set phone reminders tied to travel days to reduce risk of dosing errors when switching location mid‑week.\n\nExamination/investigations:\n- Neurological examination today is unremarkable. Routine bloods last month showed therapeutic carbamazepine level; renal and liver function within reference ranges. No recent EEG available.\n\nPlan:\n- Continue current doses for now while we collect further data.\n- Provide a single shared medication schedule card kept in both homes to maintain consistency.\n- Request seizure diary entries to capture timing around transition days and sleep duration.\n- Arrange routine EEG and consider ambulatory monitoring if events remain unchanged.\n- Safety advice reinforced regarding bathing, heights, and machinery.\n- Follow‑up in 4 months, sooner if escalation of events or adverse effects.\n\nKind regards,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 716,
+      "end": 750,
+      "text": "seizures twice every 2 to 3 months",
+      "attributes": {
+        "Label": "2 per 2 to 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 716,
+      "end": 750,
+      "text": "seizures twice every 2 to 3 months",
+      "attributes": {
+        "Label": "2 per 2 to 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 666,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Maya Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 21 September 2025 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication supply arrangements\n\nDear Dr Patel,\n\nSummary:\nThe patient reports ongoing episodic seizures despite good adherence. They split time between two households each week and keep medication supplies at both locations to avoid missed doses.\n\nHistory since last contact:\n- They describe spells consistent with their usual events, with no new focal features reported. They note clear clustering: seizures twice every 2 to 3 months, often following disrupted sleep when moving between households.\n- No intercurrent illness, no alcohol excess, and they deny missed doses; pill counts at both homes match expected use. No reported injuries.\n\nCurrent medication:\n- Levetiracetam 750 mg twice daily\n- Carbamazepine modified release 400 mg twice daily\n\nAdherence and practicalities:\n- Patient has duplicate pill organisers and blister packs kept at each household. They set phone reminders tied to travel days to reduce risk of dosing errors when switching location mid‑week.\n\nExamination/investigations:\n- Neurological examination today is unremarkable. Routine bloods last month showed therapeutic carbamazepine level; renal and liver function within reference ranges. No recent EEG available.\n\nPlan:\n- Continue current doses for now while we collect further data.\n- Provide a single shared medication schedule card kept in both homes to maintain consistency.\n- Request seizure diary entries to capture timing around transition days and sleep duration.\n- Arrange routine EEG and consider ambulatory monitoring if events remain unchanged.\n- Safety advice reinforced regarding bathing, heights, and machinery.\n- Follow‑up in 4 months, sooner if escalation of events or adverse effects.\n\nKind regards,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'They note clear clustering: seizures twice every 2 to 3 months.' This provides a numeric frequency. No other conflicting frequencies are mentioned. Therefore, the normalized label is '2 per 2 to 3 month'. No need to infer clusters beyond this since the count per time period is directly provided.",
+      "seizure_frequency_number": [
+        "2 per 2 to 3 month",
+        "seizures twice every 2 to 3 months"
+      ],
+      "reference": [
+        "2 per 2 to 3 month",
+        "seizures twice every 2 to 3 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

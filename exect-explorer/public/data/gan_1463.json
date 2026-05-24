@@ -1,0 +1,59 @@
+{
+  "id": "gan_1463",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 29 May 2016 \n\nDr A. Reynolds\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Reynolds\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1987, Hospital No: KCH4729102 NHS No. 9432115876  \n12 Rowan Works, Flat 3B, Camberwell, London SE5 7QX\n\nThank you for referring this patient, whom I reviewed in our neurology clinic today. He works in metal fabrication and welding, with intermittent exposure to arc light; he reports consistent use of a protective visor in line with workplace routine. He describes longstanding generalised epilepsy, and he is currently maintained on levetiracetam with good adherence. Over the last month he reports two focal sensory and one focal non-motor in last month, with brief paraesthesiae in both hands on two occasions and one spell of transient speech arrest without loss of awareness. There have been no recent generalised tonic–clonic seizures and no injuries.\n\nHe states that missed sleep and high visual flicker in the workshop can make him feel more “on edge,” but he has not identified a definite photic trigger for his current spells, and no events have occurred during active welding; the episodes have arisen either at home in the evening or shortly after early morning shifts. He denies tongue biting, incontinence, or prolonged post-event confusion. No nocturnal events have been witnessed by his partner in the past six months.\n\nOn examination today, general and neurological examinations were normal. There were no cognitive or language abnormalities at baseline, and mood screening did not indicate depressive or anxiety symptoms affecting daily activities. Blood pressure and pulse were stable, and there are no current concerns regarding medication adverse effects.\n\nFrom the clinical history and prior documentation, he has generalised epilepsy. The recent brief focal features may represent focal aware manifestations within a generalised epilepsy syndrome or non-epileptic sensory phenomena; however, given the background of generalised epilepsy and his stable course without generalised convulsions, I have advised continued routine seizure precautions and ongoing adherence to medication. He will keep a detailed event diary noting timing, potential precipitating factors (sleep deprivation, shift pattern, visual exposure), and duration. He understands DVLA guidance as previously discussed and confirms no driving.\n\nI have arranged an outpatient EEG with photic stimulation given his occupational context, and will repeat serum levetiracetam levels and routine bloods (U&E, LFTs, FBC) to ensure steady-state parameters. We will review him in three months, or sooner if he experiences any generalised convulsive seizures, sustained clusters, or events with impaired awareness at work.\n\nThank you for your ongoing care of this patient. Please let me know if there are any further concerns or if additional workplace documentation is needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 764,
+      "end": 850,
+      "text": "Over the last month he reports two focal sensory and one focal non-motor in last month",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 795,
+      "end": 850,
+      "text": "two focal sensory and one focal non-motor in last month",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1463,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 29 May 2016 \n\nDr A. Reynolds\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Reynolds\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1987, Hospital No: KCH4729102 NHS No. 9432115876  \n12 Rowan Works, Flat 3B, Camberwell, London SE5 7QX\n\nThank you for referring this patient, whom I reviewed in our neurology clinic today. He works in metal fabrication and welding, with intermittent exposure to arc light; he reports consistent use of a protective visor in line with workplace routine. He describes longstanding generalised epilepsy, and he is currently maintained on levetiracetam with good adherence. Over the last month he reports two focal sensory and one focal non-motor in last month, with brief paraesthesiae in both hands on two occasions and one spell of transient speech arrest without loss of awareness. There have been no recent generalised tonic–clonic seizures and no injuries.\n\nHe states that missed sleep and high visual flicker in the workshop can make him feel more “on edge,” but he has not identified a definite photic trigger for his current spells, and no events have occurred during active welding; the episodes have arisen either at home in the evening or shortly after early morning shifts. He denies tongue biting, incontinence, or prolonged post-event confusion. No nocturnal events have been witnessed by his partner in the past six months.\n\nOn examination today, general and neurological examinations were normal. There were no cognitive or language abnormalities at baseline, and mood screening did not indicate depressive or anxiety symptoms affecting daily activities. Blood pressure and pulse were stable, and there are no current concerns regarding medication adverse effects.\n\nFrom the clinical history and prior documentation, he has generalised epilepsy. The recent brief focal features may represent focal aware manifestations within a generalised epilepsy syndrome or non-epileptic sensory phenomena; however, given the background of generalised epilepsy and his stable course without generalised convulsions, I have advised continued routine seizure precautions and ongoing adherence to medication. He will keep a detailed event diary noting timing, potential precipitating factors (sleep deprivation, shift pattern, visual exposure), and duration. He understands DVLA guidance as previously discussed and confirms no driving.\n\nI have arranged an outpatient EEG with photic stimulation given his occupational context, and will repeat serum levetiracetam levels and routine bloods (U&E, LFTs, FBC) to ensure steady-state parameters. We will review him in three months, or sooner if he experiences any generalised convulsive seizures, sustained clusters, or events with impaired awareness at work.\n\nThank you for your ongoing care of this patient. Please let me know if there are any further concerns or if additional workplace documentation is needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'Over the last month he reports two focal sensory and one focal non-motor in last month,' which totals 3 seizure events in the last month. No other frequencies are provided that would be higher. He is not seizure-free for 6 months because events occurred in the last month. Therefore, the normalized label is 3 per month.",
+      "seizure_frequency_number": [
+        "3 per month",
+        "Over the last month he reports two focal sensory and one focal non-motor in last month"
+      ],
+      "reference": [
+        "3 per month",
+        "two focal sensory and one focal non-motor in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

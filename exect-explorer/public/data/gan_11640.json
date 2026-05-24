@@ -1,0 +1,47 @@
+{
+  "id": "gan_11640",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 01 March 2024\n\nDr Priya Desai\nMaple Grove Medical Centre\n\n12 Maple Grove, Bromley, BR1 4NT\nDear Dr Priya Desai\nMs Eleanor Wright, DOB: 07-03-1986, Hospital No: H829374 NHS No. 7483926150\nFlat 4, 22 Larkspur Court, Peckham, London, SE15 3QN\n\nI reviewed the above patient in the Neurology Clinic today regarding ongoing management of focal epilepsy. The patient remains under our Epilepsy Service and is stable from a neurological perspective. Employer occupational health provides periodic summaries, which we use as collateral sources to support care planning and workplace safety advice.\n\nWayfinding and site map information for the Epilepsy Service:\n- Main entrance: Denmark Hill, SE5 9RS. Follow signs to Golden Jubilee Wing, Level 2, Neurology Outpatients.\n- Epilepsy Service reception: Golden Jubilee Wing, Zone C, Desk C2. Check-in kiosks are available adjacent to the desk.\n- Phlebotomy: Ground floor, Golden Jubilee Wing, Zone A. No appointment required for clinic-requested tests.\n- EEG and ambulatory monitoring: Weston Education Centre (WEC), Ground floor, Neurophysiology. From the main entrance, follow blue line floor markers to WEC; permit parking available in the adjacent multi-storey.\n- Imaging (MRI/CT): Radiology, Golden Jubilee Wing, Zone B, Level -1. Lifts opposite Café Aroma.\n- Pharmacy: Outpatient Pharmacy, Ground floor, Golden Jubilee Wing, near main atrium.\n- Accessibility: Step-free access to all areas; hearing loops at reception; quiet waiting space available on request.\n- Transport: Denmark Hill (National Rail/Overground) 5–7 minutes’ walk via Bessemer Road; Buses 35/45/68/185/345 stop at Main Entrance. Patient drop-off bay at Golden Jubilee Wing. Limited Blue Badge parking on-site.\n- Contact: Epilepsy Service Advice Line 0207 555 1234 (Mon–Fri 09:00–16:30). For directions on arrival, call Neurology Reception 0207 555 5678.\n\nPlease share this information with the patient and employer occupational health as appropriate.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11640,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 01 March 2024\n\nDr Priya Desai\nMaple Grove Medical Centre\n\n12 Maple Grove, Bromley, BR1 4NT\nDear Dr Priya Desai\nMs Eleanor Wright, DOB: 07-03-1986, Hospital No: H829374 NHS No. 7483926150\nFlat 4, 22 Larkspur Court, Peckham, London, SE15 3QN\n\nI reviewed the above patient in the Neurology Clinic today regarding ongoing management of focal epilepsy. The patient remains under our Epilepsy Service and is stable from a neurological perspective. Employer occupational health provides periodic summaries, which we use as collateral sources to support care planning and workplace safety advice.\n\nWayfinding and site map information for the Epilepsy Service:\n- Main entrance: Denmark Hill, SE5 9RS. Follow signs to Golden Jubilee Wing, Level 2, Neurology Outpatients.\n- Epilepsy Service reception: Golden Jubilee Wing, Zone C, Desk C2. Check-in kiosks are available adjacent to the desk.\n- Phlebotomy: Ground floor, Golden Jubilee Wing, Zone A. No appointment required for clinic-requested tests.\n- EEG and ambulatory monitoring: Weston Education Centre (WEC), Ground floor, Neurophysiology. From the main entrance, follow blue line floor markers to WEC; permit parking available in the adjacent multi-storey.\n- Imaging (MRI/CT): Radiology, Golden Jubilee Wing, Zone B, Level -1. Lifts opposite Café Aroma.\n- Pharmacy: Outpatient Pharmacy, Ground floor, Golden Jubilee Wing, near main atrium.\n- Accessibility: Step-free access to all areas; hearing loops at reception; quiet waiting space available on request.\n- Transport: Denmark Hill (National Rail/Overground) 5–7 minutes’ walk via Bessemer Road; Buses 35/45/68/185/345 stop at Main Entrance. Patient drop-off bay at Golden Jubilee Wing. Limited Blue Badge parking on-site.\n- Contact: Epilepsy Service Advice Line 0207 555 1234 (Mon–Fri 09:00–16:30). For directions on arrival, call Neurology Reception 0207 555 5678.\n\nPlease share this information with the patient and employer occupational health as appropriate.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's focal epilepsy and provides service wayfinding information but gives no information about seizures occurring, their frequency, or seizure freedom. There are no explicit or implicit numeric or qualitative statements about seizure frequency or seizure-free duration. As the letter does not mention seizures at all, per the rules this is classified as 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter providing wayfinding and site map information for the epilepsy service"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

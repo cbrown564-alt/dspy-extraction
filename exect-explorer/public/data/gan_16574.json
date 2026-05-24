@@ -1,0 +1,59 @@
+{
+  "id": "gan_16574",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nThomas Reid, DOB: 12-04-1986, Hospital No: R518203 NHS No. 9843216750  \n23 Gardeners Row, London, W10 5PL \n\nMedication: \n\nLevetiracetam 1 g twice daily.  \nClobazam 10 mg at night as needed for clusters.  \nVagus Nerve Stimulator (VNS) active; patient-initiated magnet use.  \nRescue: Buccolam 10 mg buccal as directed for prolonged clusters. \n\nI reviewed Thomas Reid in clinic today. He works outdoors in gardening and groundskeeping, noting that heat and prolonged exertion vary by season and can make him feel more fatigued on summer afternoons. He has been careful with hydration and pacing, and he takes brief shade breaks when feasible. He does not drive. \n\nHis seizures typically occur in clusters, generally spaced four days apart, though brief periods of daily seizures have been reported. VNS is used more frequently, and Buccolam was administered once each month over the past 4 months. He reports that clusters are more likely after consecutive long days in hot weather; during cooler weeks he experiences fewer daytime events and relies less on the VNS magnet. Night-time rest has improved since adopting earlier bedtimes on work nights. There have been no injuries, and postictal recovery is usually under an hour. \n\nHe feels Levetiracetam is well tolerated without mood change. Clobazam is kept for early cluster signs, especially when he anticipates multiple consecutive outdoor shifts. He has a clear rescue plan at work: a colleague is aware of Buccolam location and when to contact emergency services. No missed doses reported. \n\nWe discussed practical measures he is already using at work—regular fluid intake, lighter tasks during peak heat when possible, and scheduled breaks. He will continue to record seizure timing relative to shift length, ambient temperature, and hydration, which may help us refine strategies. He will also note magnet use and any Buccolam doses. \n\nExamination today was unremarkable. Weight stable; no concerns raised regarding skin integrity or dehydration. VNS site looks healthy with no local tenderness. \n\nPlan: \n- Continue Levetiracetam 1 g twice daily.  \n- Continue access to Clobazam 10 mg at night for clusters as currently used.  \n- Maintain VNS magnet strategy and workplace rescue protocol with Buccolam available.  \n- Keep detailed seizure and trigger diary including work conditions (heat/exertion), hydration, and sleep.  \n- We will review in four months or sooner if seizure clusters escalate or rescue medication is required more than monthly. \n\nWe will see him back in four months. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 849,
+      "end": 923,
+      "text": "His seizures typically occur in clusters, generally spaced four days apart",
+      "attributes": {
+        "Label": "1 per 4 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 849,
+      "end": 1081,
+      "text": "His seizures typically occur in clusters, generally spaced four days apart, though brief periods of daily seizures have been reported. VNS is used more frequently, and Buccolam was administered once each month over the past 4 months",
+      "attributes": {
+        "Label": "1 per 4 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16574,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nThomas Reid, DOB: 12-04-1986, Hospital No: R518203 NHS No. 9843216750  \n23 Gardeners Row, London, W10 5PL \n\nMedication: \n\nLevetiracetam 1 g twice daily.  \nClobazam 10 mg at night as needed for clusters.  \nVagus Nerve Stimulator (VNS) active; patient-initiated magnet use.  \nRescue: Buccolam 10 mg buccal as directed for prolonged clusters. \n\nI reviewed Thomas Reid in clinic today. He works outdoors in gardening and groundskeeping, noting that heat and prolonged exertion vary by season and can make him feel more fatigued on summer afternoons. He has been careful with hydration and pacing, and he takes brief shade breaks when feasible. He does not drive. \n\nHis seizures typically occur in clusters, generally spaced four days apart, though brief periods of daily seizures have been reported. VNS is used more frequently, and Buccolam was administered once each month over the past 4 months. He reports that clusters are more likely after consecutive long days in hot weather; during cooler weeks he experiences fewer daytime events and relies less on the VNS magnet. Night-time rest has improved since adopting earlier bedtimes on work nights. There have been no injuries, and postictal recovery is usually under an hour. \n\nHe feels Levetiracetam is well tolerated without mood change. Clobazam is kept for early cluster signs, especially when he anticipates multiple consecutive outdoor shifts. He has a clear rescue plan at work: a colleague is aware of Buccolam location and when to contact emergency services. No missed doses reported. \n\nWe discussed practical measures he is already using at work—regular fluid intake, lighter tasks during peak heat when possible, and scheduled breaks. He will continue to record seizure timing relative to shift length, ambient temperature, and hydration, which may help us refine strategies. He will also note magnet use and any Buccolam doses. \n\nExamination today was unremarkable. Weight stable; no concerns raised regarding skin integrity or dehydration. VNS site looks healthy with no local tenderness. \n\nPlan: \n- Continue Levetiracetam 1 g twice daily.  \n- Continue access to Clobazam 10 mg at night for clusters as currently used.  \n- Maintain VNS magnet strategy and workplace rescue protocol with Buccolam available.  \n- Keep detailed seizure and trigger diary including work conditions (heat/exertion), hydration, and sleep.  \n- We will review in four months or sooner if seizure clusters escalate or rescue medication is required more than monthly. \n\nWe will see him back in four months. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Step 1: Identify explicit statements about seizure frequency in the letter. It states: \"His seizures typically occur in clusters, generally spaced four days apart,\" which provides a clear numeric interval of four days between events. Step 2: Note other frequency mentions. The letter also mentions \"brief periods of daily seizures,\" indicating occasional increases, but these are not the prevailing or current pattern. Step 3: Determine the current frequency. The word \"typically\" and \"generally\" indicate the dominant, ongoing pattern is events every four days. Step 4: Normalize to allowed format. Represent the frequency as 1 per 4 day.",
+      "seizure_frequency_number": [
+        "1 per 4 day",
+        "His seizures typically occur in clusters, generally spaced four days apart"
+      ],
+      "reference": [
+        "1 per 4 day",
+        "His seizures typically occur in clusters, generally spaced four days apart, though brief periods of daily seizures have been reported. VNS is used more frequently, and Buccolam was administered once each month over the past 4 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

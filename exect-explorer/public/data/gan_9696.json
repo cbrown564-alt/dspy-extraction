@@ -1,0 +1,65 @@
+{
+  "id": "gan_9696",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 30 June 2014 10:15\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following key‑worker input and medication adjustment\n\nDear Alice,\n\nEpilepsy diagnosis:\n- Patient has generalised epilepsy.\n\nBackground and setting:\n- The patient resides in assisted living and is supported by a key worker. I have reviewed the available key‑worker notes alongside the patient’s own report.\n\nCurrent medication:\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 50 mg twice daily\n\nSeizure description and frequency:\n- The key‑worker records, corroborated by the patient, describe brief, stereotyped sensory episodes with preserved awareness, tingling rising from both hands to the cheeks, without motor features or post‑ictal confusion. Typical focal sensory event duration eighteen seconds. No convulsive episodes have been reported during the past six months.\n\nInterim course and triggers:\n- Events cluster on days with missed sleep and high ambient noise in the communal dining room. No intercurrent illness, alcohol use, or new medications reported. Appetite and mood stable by key‑worker report.\n\nAssessment:\n- Generalised epilepsy with brief sensory events that may represent focal-onset features within a generalised epilepsy syndrome; no injuries or escalation. Adherence is supported by blister packs prepared by staff; no missed doses documented in the last month.\n\nPlan of action:\n- Maintain current regimen of sodium valproate 500 mg twice daily and lamotrigine 50 mg twice daily.\n- Key‑worker to continue event logging (time, setting, preceding sleep, and recovery), and to note any change in the pattern or duration of events.\n- We will review in clinic in four months or earlier if there is any increase in frequency, emergence of convulsive seizures, or adverse effects.\n\nPlease let me know if you require any further information.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 808,
+      "end": 941,
+      "text": "brief, stereotyped sensory episodes with preserved awareness... No convulsive episodes have been reported during the past six months.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 965,
+      "end": 1018,
+      "text": "Typical focal sensory event duration eighteen seconds",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9696,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 30 June 2014 10:15\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following key‑worker input and medication adjustment\n\nDear Alice,\n\nEpilepsy diagnosis:\n- Patient has generalised epilepsy.\n\nBackground and setting:\n- The patient resides in assisted living and is supported by a key worker. I have reviewed the available key‑worker notes alongside the patient’s own report.\n\nCurrent medication:\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 50 mg twice daily\n\nSeizure description and frequency:\n- The key‑worker records, corroborated by the patient, describe brief, stereotyped sensory episodes with preserved awareness, tingling rising from both hands to the cheeks, without motor features or post‑ictal confusion. Typical focal sensory event duration eighteen seconds. No convulsive episodes have been reported during the past six months.\n\nInterim course and triggers:\n- Events cluster on days with missed sleep and high ambient noise in the communal dining room. No intercurrent illness, alcohol use, or new medications reported. Appetite and mood stable by key‑worker report.\n\nAssessment:\n- Generalised epilepsy with brief sensory events that may represent focal-onset features within a generalised epilepsy syndrome; no injuries or escalation. Adherence is supported by blister packs prepared by staff; no missed doses documented in the last month.\n\nPlan of action:\n- Maintain current regimen of sodium valproate 500 mg twice daily and lamotrigine 50 mg twice daily.\n- Key‑worker to continue event logging (time, setting, preceding sleep, and recovery), and to note any change in the pattern or duration of events.\n- We will review in clinic in four months or earlier if there is any increase in frequency, emergence of convulsive seizures, or adverse effects.\n\nPlease let me know if you require any further information.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter reports ongoing brief, stereotyped sensory seizure events with preserved awareness. It notes no convulsive episodes in the past six months but does not provide any numeric frequency for the sensory events (no counts per day/week/month, no clustering counts). Therefore, although seizures are mentioned, the specific frequency cannot be determined from the text.",
+      "seizure_frequency_number": [
+        "unknown",
+        "brief, stereotyped sensory episodes with preserved awareness... No convulsive episodes have been reported during the past six months."
+      ],
+      "reference": [
+        "unknown",
+        "Typical focal sensory event duration eighteen seconds"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

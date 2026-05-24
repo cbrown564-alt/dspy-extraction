@@ -1,0 +1,59 @@
+{
+  "id": "gan_15772",
+  "text": "Neurology Clinic\n\nClinic Date: 15 June 2023\n\nDr Ahmed\nSouth Thames Neurology Service\nLevel 3, Riverside Health Centre, London SE1 2AB\n\nDear Dr Ahmed,\n\nRe: James Walker, DOB: 14-08-2008, Hospital No: H392740, NHS No: 8472615309\nFlat 2, 19 Brookside Avenue, London, SW11 4NP\n\nThank you for asking me to review James Walker in clinic today. He attended with his mother. Since our last contact, there has been a noticeable deterioration in his day-to-day control and tolerability of treatment. He describes increasing tiredness, reduced concentration, and intermittent dizziness, which he attributes to polytherapy; these adverse effects are becoming bothersome and are affecting his school attendance and social activities. Despite adherence, control remains suboptimal. His absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks. He and his mother report that brief behavioural arrests and blank spells are more intrusive, often clustering in the late morning.\n\nCurrent medication (patient-reported): valproate 500 mg twice daily; lamotrigine 100 mg twice daily; levetiracetam 750 mg twice daily. No recent dose changes from primary care. He has not required rescue medication and there have been no injuries, but he has missed several lessons due to post-event fatigue. There is no history of prolonged events, nocturnal generalised convulsions, or emergency admissions since his last appointment.\n\nExamination today was unremarkable; observations stable. No focal neurological deficit. We discussed trigger management (sleep hygiene, regular meals) and his mother feels stress at school may be contributing. He has kept a diary that corroborates the increased frequency outlined above.\n\nPlan discussed with patient and parent (patient-reported preferences):\n- Arrange routine bloods including FBC, U&Es, LFTs and vitamin D, given ongoing polytherapy adverse effects.\n- Book EEG and update seizure diary review at next visit to guide rationalisation of therapy, acknowledging his current concern that side effects are troublesome and control is not yet satisfactory.\n- Provide school with an updated seizure support letter per family request.\n\nWe will review him again in 10–12 weeks, sooner if events escalate or adverse effects worsen.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 768,
+      "end": 828,
+      "text": "His absence seizures are now occurring on 2 days of the week",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 768,
+      "end": 899,
+      "text": "His absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15772,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 15 June 2023\n\nDr Ahmed\nSouth Thames Neurology Service\nLevel 3, Riverside Health Centre, London SE1 2AB\n\nDear Dr Ahmed,\n\nRe: James Walker, DOB: 14-08-2008, Hospital No: H392740, NHS No: 8472615309\nFlat 2, 19 Brookside Avenue, London, SW11 4NP\n\nThank you for asking me to review James Walker in clinic today. He attended with his mother. Since our last contact, there has been a noticeable deterioration in his day-to-day control and tolerability of treatment. He describes increasing tiredness, reduced concentration, and intermittent dizziness, which he attributes to polytherapy; these adverse effects are becoming bothersome and are affecting his school attendance and social activities. Despite adherence, control remains suboptimal. His absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks. He and his mother report that brief behavioural arrests and blank spells are more intrusive, often clustering in the late morning.\n\nCurrent medication (patient-reported): valproate 500 mg twice daily; lamotrigine 100 mg twice daily; levetiracetam 750 mg twice daily. No recent dose changes from primary care. He has not required rescue medication and there have been no injuries, but he has missed several lessons due to post-event fatigue. There is no history of prolonged events, nocturnal generalised convulsions, or emergency admissions since his last appointment.\n\nExamination today was unremarkable; observations stable. No focal neurological deficit. We discussed trigger management (sleep hygiene, regular meals) and his mother feels stress at school may be contributing. He has kept a diary that corroborates the increased frequency outlined above.\n\nPlan discussed with patient and parent (patient-reported preferences):\n- Arrange routine bloods including FBC, U&Es, LFTs and vitamin D, given ongoing polytherapy adverse effects.\n- Book EEG and update seizure diary review at next visit to guide rationalisation of therapy, acknowledging his current concern that side effects are troublesome and control is not yet satisfactory.\n- Provide school with an updated seizure support letter per family request.\n\nWe will review him again in 10–12 weeks, sooner if events escalate or adverse effects worsen.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"His absence seizures are now occurring on 2 days of the week.\" No other numeric seizure frequencies are provided that are higher. Clustering is mentioned qualitatively (\"often clustering in the late morning\") without a number per cluster, so it cannot be used to form a cluster label. Therefore, normalize to 2 per week.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "His absence seizures are now occurring on 2 days of the week"
+      ],
+      "reference": [
+        "2 per week",
+        "His absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

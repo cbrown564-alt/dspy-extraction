@@ -1,0 +1,54 @@
+{
+  "id": "gan_6002",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Rhodes, DOB: 14-07-1988, Hospital No: W932715 NHS No. 8473621590  \n58 Willowbank Close, London, SW12 0DN  \n\nDiagnoses: \n\nSeizure disorder. \n\nEmily Rhodes attended today with her partner for routine VNS follow‑up. Since the last visit, she describes brief convulsive and non-convulsive episodes occurring predominantly on days when regular antiseizure medication timing has slipped, with a pattern she characterises as \"breakthroughs around delayed tablets.\" There have been four such events over the past six weeks, each lasting under two minutes with spontaneous recovery and no rescue therapy required. She reports that adherence has otherwise improved with use of a phone reminder app, though occasional evening doses are taken late when working late shifts. \n\nShe has not required buccal midazolam since the previous review. The VNS magnet is used infrequently; she estimates 3–4 swipes over the same period, which she feels may shorten the aura phase. No injury, tongue bite, or prolonged postictal confusion has been noted. Sleep has been irregular due to shift work, and she has reported higher stress preceding two of the episodes. Alcohol intake is minimal and unchanged. \n\nVNS assessment today showed: Normal mode diagnostics satisfactory; lead impedance 2458 ohms; IFI: no. Magnet activation count 1421; last swipe recorded 28 September 2025. No adjustments were made to stimulation parameters at this review, in line with her stable examination and preference. Device pocket site is well-healed with no local tenderness. \n\nWe discussed practical strategies to reduce timing variability for medication, including setting staggered alarms around shift changes and carrying a spare evening dose. She will continue to monitor events using her seizure diary app and will contact the clinic if she experiences clusters, prolonged events, or any change in semiology. \n\nPlan:  \n- Continue current antiseizure medications unchanged.  \n- No VNS programming changes today.  \n- Reinforce use of reminders for dose timing; patient-led adherence measures ongoing.  \n- Review in six months or sooner if clinical situation warrants.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 650,
+      "end": 706,
+      "text": "There have been four such events over the past six weeks",
+      "attributes": {
+        "Label": "4 per 6 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6002,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Rhodes, DOB: 14-07-1988, Hospital No: W932715 NHS No. 8473621590  \n58 Willowbank Close, London, SW12 0DN  \n\nDiagnoses: \n\nSeizure disorder. \n\nEmily Rhodes attended today with her partner for routine VNS follow‑up. Since the last visit, she describes brief convulsive and non-convulsive episodes occurring predominantly on days when regular antiseizure medication timing has slipped, with a pattern she characterises as \"breakthroughs around delayed tablets.\" There have been four such events over the past six weeks, each lasting under two minutes with spontaneous recovery and no rescue therapy required. She reports that adherence has otherwise improved with use of a phone reminder app, though occasional evening doses are taken late when working late shifts. \n\nShe has not required buccal midazolam since the previous review. The VNS magnet is used infrequently; she estimates 3–4 swipes over the same period, which she feels may shorten the aura phase. No injury, tongue bite, or prolonged postictal confusion has been noted. Sleep has been irregular due to shift work, and she has reported higher stress preceding two of the episodes. Alcohol intake is minimal and unchanged. \n\nVNS assessment today showed: Normal mode diagnostics satisfactory; lead impedance 2458 ohms; IFI: no. Magnet activation count 1421; last swipe recorded 28 September 2025. No adjustments were made to stimulation parameters at this review, in line with her stable examination and preference. Device pocket site is well-healed with no local tenderness. \n\nWe discussed practical strategies to reduce timing variability for medication, including setting staggered alarms around shift changes and carrying a spare evening dose. She will continue to monitor events using her seizure diary app and will contact the clinic if she experiences clusters, prolonged events, or any change in semiology. \n\nPlan:  \n- Continue current antiseizure medications unchanged.  \n- No VNS programming changes today.  \n- Reinforce use of reminders for dose timing; patient-led adherence measures ongoing.  \n- Review in six months or sooner if clinical situation warrants.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient had \"four such events over the past six weeks.\" No other seizure frequencies are provided that would override this. Magnet swipes are not seizure counts. The patient is not seizure-free, as events occurred within the last six weeks. Therefore, the normalized frequency is 4 per 6 week.",
+      "seizure_frequency_number": [
+        "4 per 6 week",
+        "There have been four such events over the past six weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures with missed ASM doses"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (4 per 6 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

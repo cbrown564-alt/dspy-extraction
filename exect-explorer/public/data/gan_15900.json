@@ -1,0 +1,59 @@
+{
+  "id": "gan_15900",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 March 2017 \n\nDr Priya Nayar\nRiverside Health Centre\n\n12 Bridgewater Way, Southwark, London SE1 9RT\nDear Dr Priya Nayar\nMs Sarah Bennett, DOB: 14-02-1986, Hospital No: K8374219 NHS No. 7483926158\nFlat 3, 29 Brook Crescent, London, SE16 4HQ \n\nI reviewed the above patient in the Neurology Clinic today. She attends following a period of deterioration in seizure control over the past two months. She reports recent cross-time-zone travel for work in late December, after which she experienced circadian disruption with perceived worsening of her events, particularly around early morning hours and late afternoons on return. \n\nSince I last saw her in October 2016, there has been a clear increase in frequency and functional impact. In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake. These were described as brief episodes with loss of awareness and subsequent confusion, occasionally preceded by a sense of unease, and two events were associated with tongue-biting and myalgia the following day. No injuries were reported, though she has required time off work and now avoids commuting alone at peak times. There is no current pregnancy and she denies alcohol or recreational drug use. Sleep has been fragmented since travel and she reports significant fatigue and stress related to work deadlines.\n\nMedication at present: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. She has tolerated these without rash or clear cognitive adverse effects, though she reports daytime somnolence and reduced concentration, which may relate to both medication and poor sleep. Adherence is reported as good; she uses phone reminders and a weekly pill organiser. There is no recent intercurrent illness. Family history is non-contributory. Neurological examination today is unremarkable. \n\nGiven the temporal association with circadian disruption following long-haul travel and the subsequent sustained worsening, I am concerned that her overall control is deteriorating. We discussed practical measures around sleep regularity, stress management, and maintaining a consistent routine. I have arranged an expedited ambulatory EEG with sleep capture and updated bloods (U&E, LFT, FBC, vitamin D, trough AED levels where available) to help contextualise the change. She will also keep a detailed seizure and sleep diary, noting travel, caffeine, and menstrual cycle correlations. We will review in six weeks with results, and sooner if there is any further escalation or injury.\n\nSafety advice regarding bathing, cooking with open flames, and public transport has been reinforced. She is aware of DVLA guidance and confirms she is not currently driving. She has contact details for our epilepsy nurse specialist for interim support.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 775,
+      "end": 887,
+      "text": "In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake.",
+      "attributes": {
+        "Label": "12 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 775,
+      "end": 886,
+      "text": "In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake",
+      "attributes": {
+        "Label": "12 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15900,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 March 2017 \n\nDr Priya Nayar\nRiverside Health Centre\n\n12 Bridgewater Way, Southwark, London SE1 9RT\nDear Dr Priya Nayar\nMs Sarah Bennett, DOB: 14-02-1986, Hospital No: K8374219 NHS No. 7483926158\nFlat 3, 29 Brook Crescent, London, SE16 4HQ \n\nI reviewed the above patient in the Neurology Clinic today. She attends following a period of deterioration in seizure control over the past two months. She reports recent cross-time-zone travel for work in late December, after which she experienced circadian disruption with perceived worsening of her events, particularly around early morning hours and late afternoons on return. \n\nSince I last saw her in October 2016, there has been a clear increase in frequency and functional impact. In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake. These were described as brief episodes with loss of awareness and subsequent confusion, occasionally preceded by a sense of unease, and two events were associated with tongue-biting and myalgia the following day. No injuries were reported, though she has required time off work and now avoids commuting alone at peak times. There is no current pregnancy and she denies alcohol or recreational drug use. Sleep has been fragmented since travel and she reports significant fatigue and stress related to work deadlines.\n\nMedication at present: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. She has tolerated these without rash or clear cognitive adverse effects, though she reports daytime somnolence and reduced concentration, which may relate to both medication and poor sleep. Adherence is reported as good; she uses phone reminders and a weekly pill organiser. There is no recent intercurrent illness. Family history is non-contributory. Neurological examination today is unremarkable. \n\nGiven the temporal association with circadian disruption following long-haul travel and the subsequent sustained worsening, I am concerned that her overall control is deteriorating. We discussed practical measures around sleep regularity, stress management, and maintaining a consistent routine. I have arranged an expedited ambulatory EEG with sleep capture and updated bloods (U&E, LFT, FBC, vitamin D, trough AED levels where available) to help contextualise the change. She will also keep a detailed seizure and sleep diary, noting travel, caffeine, and menstrual cycle correlations. We will review in six weeks with results, and sooner if there is any further escalation or injury.\n\nSafety advice regarding bathing, cooking with open flames, and public transport has been reinforced. She is aware of DVLA guidance and confirms she is not currently driving. She has contact details for our epilepsy nurse specialist for interim support.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit counts and timeframes. The letter provides monthly counts: 'In January she had a seizure during sleep and three while awake' = 1 + 3 = 4 in January. 'In Feb she had five in sleep and 3 while awake' = 5 + 3 = 8 in February. Total over two months = 4 + 8 = 12 seizures in 2 months. Per instructions, when multiple frequencies exist, select the highest frequency or sum when in the same dimension. Here, monthly counts are summed across two months to yield 12 per 2 months. No other more frequent metric (e.g., per week/day) is given. Therefore normalize to '12 per 2 month'.",
+      "seizure_frequency_number": [
+        "12 per 2 month",
+        "In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake."
+      ],
+      "reference": [
+        "12 per 2 month",
+        "In January she had a seizure during sleep and three while awake. In Feb she had five in sleep and 3 while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

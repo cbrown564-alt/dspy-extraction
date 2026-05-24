@@ -1,0 +1,54 @@
+{
+  "id": "gan_10621",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr James Hartley  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr James Hartley,                                                                                                         \n\nEmily Carter, DOB: 22-11-1991, Hospital No: H638251 NHS No. 9842156730  \nFlat 3, 19 Albany Road, London, SE5 0AJ  \n\nFocal Epilepsy \n\nMedication: Lamotrigine (ongoing) \n\nCurrent regimen: Lamotrigine 100 mg each morning and 150 mg each evening (patient-reported adherence; last community prescription issued 6 weeks ago). \n\nLamotrigine Blood Level: \n\nNo recent level available. Last documented level (April 2025): 3.2 mg/L (laboratory reference range 1.0–15.0 mg/L). \n\nSeizures: The patient reports a deterioration following a viral illness approximately three weeks ago, with a subsequent period of increased events. She describes focal aware sensory episodes progressing on occasion to focal impaired-awareness seizures. Over the past fortnight she notes small clusters occurring on most evenings, typically comprising around four to six short spells within a 2–3 hour window, often between 6 pm and 9 pm. Episodes last 20–60 seconds with right arm tingling, word-finding difficulty, and occasional brief staring. No generalised tonic–clonic seizures have been reported. She identifies fatigue and residual post-viral malaise as potential precipitants. No new injuries or tongue bites. \n\nI reviewed Emily Carter today via telephone due to service pressure and her preference. She reports that prior to the recent viral illness her seizure pattern had been relatively stable with isolated focal aware events roughly once every 2–3 weeks, without clustering. Since the infection she feels overall control has worsened, with increased frequency and evening clustering as above. She denies missed doses but admits late evening dosing on two occasions during the week she was most unwell. Sleep has been fragmented, and she has resumed work this week with increased stress. Menses are due in the coming days; she has occasionally observed peri-menstrual sensitivity in the past. \n\nThere are no new focal neurological deficits reported between attacks. No recent alcohol use and no recreational drugs. She does not drive and remains aware of DVLA guidance. She has a personal seizure action plan and her partner has observed the brief episodes without secondary generalisation. \n\nPlan: Given the recent post-viral decline and evening clustering in the context of known focal epilepsy, I will arrange: \n- Urgent lamotrigine trough level within the next 7 days to assess for subtherapeutic exposure post-illness. \n- Basic bloods (FBC, U&E, LFTs, CRP) to exclude systemic contributors. \n- Update seizure diary with timing, duration, potential triggers, and any progression. \n- Telephone follow-up in 2 weeks to review results and clinical course. \n\nIf clustering persists or escalates, she will contact the epilepsy nurse specialist for earlier review. Safety advice around baths, heights, and cooking has been reiterated. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1001,
+      "end": 1130,
+      "text": "Over the past fortnight she notes small clusters occurring on most evenings, typically comprising around four to six short spells",
+      "attributes": {
+        "Label": "multiple cluster per week, 4 to 6 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10621,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr James Hartley  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr James Hartley,                                                                                                         \n\nEmily Carter, DOB: 22-11-1991, Hospital No: H638251 NHS No. 9842156730  \nFlat 3, 19 Albany Road, London, SE5 0AJ  \n\nFocal Epilepsy \n\nMedication: Lamotrigine (ongoing) \n\nCurrent regimen: Lamotrigine 100 mg each morning and 150 mg each evening (patient-reported adherence; last community prescription issued 6 weeks ago). \n\nLamotrigine Blood Level: \n\nNo recent level available. Last documented level (April 2025): 3.2 mg/L (laboratory reference range 1.0–15.0 mg/L). \n\nSeizures: The patient reports a deterioration following a viral illness approximately three weeks ago, with a subsequent period of increased events. She describes focal aware sensory episodes progressing on occasion to focal impaired-awareness seizures. Over the past fortnight she notes small clusters occurring on most evenings, typically comprising around four to six short spells within a 2–3 hour window, often between 6 pm and 9 pm. Episodes last 20–60 seconds with right arm tingling, word-finding difficulty, and occasional brief staring. No generalised tonic–clonic seizures have been reported. She identifies fatigue and residual post-viral malaise as potential precipitants. No new injuries or tongue bites. \n\nI reviewed Emily Carter today via telephone due to service pressure and her preference. She reports that prior to the recent viral illness her seizure pattern had been relatively stable with isolated focal aware events roughly once every 2–3 weeks, without clustering. Since the infection she feels overall control has worsened, with increased frequency and evening clustering as above. She denies missed doses but admits late evening dosing on two occasions during the week she was most unwell. Sleep has been fragmented, and she has resumed work this week with increased stress. Menses are due in the coming days; she has occasionally observed peri-menstrual sensitivity in the past. \n\nThere are no new focal neurological deficits reported between attacks. No recent alcohol use and no recreational drugs. She does not drive and remains aware of DVLA guidance. She has a personal seizure action plan and her partner has observed the brief episodes without secondary generalisation. \n\nPlan: Given the recent post-viral decline and evening clustering in the context of known focal epilepsy, I will arrange: \n- Urgent lamotrigine trough level within the next 7 days to assess for subtherapeutic exposure post-illness. \n- Basic bloods (FBC, U&E, LFTs, CRP) to exclude systemic contributors. \n- Update seizure diary with timing, duration, potential triggers, and any progression. \n- Telephone follow-up in 2 weeks to review results and clinical course. \n\nIf clustering persists or escalates, she will contact the epilepsy nurse specialist for earlier review. Safety advice around baths, heights, and cooking has been reiterated. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Identify current period: \"Over the past fortnight\" indicates the recent/current pattern.\n- Frequency described: \"small clusters occurring on most evenings\". \"Most evenings\" is not an exact number per day, but clearly implies multiple clusters per week.\n- Per-cluster count: \"comprising around four to six short spells\" gives a numeric range of seizures per cluster.\n- Prior baseline (once every 2–3 weeks) is less frequent; per instruction, choose the highest (current) frequency.\n- Normalize using cluster format with vague cluster frequency: \"multiple cluster per week, 4 to 6 per cluster\".",
+      "seizure_frequency_number": [
+        "multiple cluster per week, 4 to 6 per cluster",
+        "Over the past fortnight she notes small clusters occurring on most evenings, typically comprising around four to six short spells"
+      ],
+      "reference": [
+        "unknown",
+        "Per-cluster load around 5 brief events; timing tends to be evenings"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple cluster per week, 4 to 6 per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

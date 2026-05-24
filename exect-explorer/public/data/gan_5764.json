@@ -1,0 +1,54 @@
+{
+  "id": "gan_5764",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 12-04-1992, Hospital No: H384920 NHS No. 9081774465  \nFlat 3, 22 Brookfield Road, London, W10 5QZ \n\nMedication:  \nLevetiracetam 1000 mg twice daily.  Carbazepine previously trialled and discontinued due to dizziness and low mood.\n\nI reviewed Daniel Morris in clinic today, accompanied by her carer who assists with communication and maintains a seizure diary. The carer’s records indicate that seizure activity remains ongoing, with brief events noted on three occasions over the past month, typically in the late afternoon. These are described as sudden behavioural arrest with unresponsiveness for under a minute, followed by rapid return to baseline. No clear injuries or tongue biting have been reported. There is no consistent trigger identified, though tiredness after day-centre activities is suspected. \n\nOn Levetiracetam, mood has been stable per carer report, and adherence is supported using a weekly blister pack. Sleep routine is regular. There have been no hospital attendances. The description of events remains insufficiently specific to characterise further, and neurological examination today was non-focal. \n\nPlan:  \n- Continue Levetiracetam 1000 mg twice daily without change.  \n- The carer will continue structured logging of events (time, duration, context, recovery features) using the clinic template provided today.  \n- We discussed simple safety measures around bathing and cooking; these were acknowledged by the carer.  \n- Routine bloods arranged locally (U&E, FBC, LFTs) to be done within the next two weeks to support ongoing therapy monitoring.  \n- If the spells increase in number or evolve in character, the carer will contact our advice line to expedite review. \n\nFollow-up:  \nI will see Daniel Morris again in four months. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 643,
+      "end": 700,
+      "text": "brief events noted on three occasions over the past month",
+      "attributes": {
+        "Label": "3 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5764,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 12-04-1992, Hospital No: H384920 NHS No. 9081774465  \nFlat 3, 22 Brookfield Road, London, W10 5QZ \n\nMedication:  \nLevetiracetam 1000 mg twice daily.  Carbazepine previously trialled and discontinued due to dizziness and low mood.\n\nI reviewed Daniel Morris in clinic today, accompanied by her carer who assists with communication and maintains a seizure diary. The carer’s records indicate that seizure activity remains ongoing, with brief events noted on three occasions over the past month, typically in the late afternoon. These are described as sudden behavioural arrest with unresponsiveness for under a minute, followed by rapid return to baseline. No clear injuries or tongue biting have been reported. There is no consistent trigger identified, though tiredness after day-centre activities is suspected. \n\nOn Levetiracetam, mood has been stable per carer report, and adherence is supported using a weekly blister pack. Sleep routine is regular. There have been no hospital attendances. The description of events remains insufficiently specific to characterise further, and neurological examination today was non-focal. \n\nPlan:  \n- Continue Levetiracetam 1000 mg twice daily without change.  \n- The carer will continue structured logging of events (time, duration, context, recovery features) using the clinic template provided today.  \n- We discussed simple safety measures around bathing and cooking; these were acknowledged by the carer.  \n- Routine bloods arranged locally (U&E, FBC, LFTs) to be done within the next two weeks to support ongoing therapy monitoring.  \n- If the spells increase in number or evolve in character, the carer will contact our advice line to expedite review. \n\nFollow-up:  \nI will see Daniel Morris again in four months. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states an explicit frequency: 'brief events noted on three occasions over the past month.' This indicates 3 events in 1 month, so normalize to '3 per month'. There are no other conflicting or additional frequencies. The patient is not seizure free, as events are ongoing.",
+      "seizure_frequency_number": [
+        "3 per month",
+        "brief events noted on three occasions over the past month"
+      ],
+      "reference": [
+        "unknown",
+        "Seizure events persist"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

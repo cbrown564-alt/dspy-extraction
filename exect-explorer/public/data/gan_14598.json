@@ -1,0 +1,59 @@
+{
+  "id": "gan_14598",
+  "text": "Department of Neurology\n\nClinic Date: 14 December 2023\n\nDr Amelia Patel\nSt George’s University Hospitals NHS Foundation Trust\nDepartment of Neurology, Blackshaw Road, London SW17 0QT\n\nDear Dr Amelia Patel,\n\nEmily Carter, DOB: 23-02-1992, Hospital No: NHS-49302718 NHS No. SGH-2023-118492\nFlat 5, 12 Lavender Close, London, SW18 4PX\n\nDiagnoses:\n\n- Focal epilepsy, likely right frontal onset (semiology: nocturnal left leg jerks), diagnosis 2023\n- MRI brain (September 2023): normal\n- EEG (October 2023): intermittent right frontal sharp waves during drowsiness\n\nCurrent Medication:\n\n- Levetiracetam 750 mg twice daily\n- Rescue: Buccal midazolam 10 mg for prolonged events (not yet used)\n\nPlan:\n\n- Continue Levetiracetam 750 mg twice daily; no change today given improving control\n- Maintain current rota with regular daytime shifts and minimised overnight calls\n- Seizure first aid and SUDEP counselling reinforced; driving advice per DVLA (not driving currently)\n- Follow up in 6 months, sooner if breakthrough seizures or adverse effects\n\nI reviewed Emily Carter in my clinic today. She describes a clear improvement in seizure control since her work rota changed to regular daytime shifts with fewer overnight calls. Per plan, control is better now and she feels more rested, with no adverse medication effects.\n\nSeizure history and frequency: She first experienced a seizure in March 2023 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2023 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology. This gives a total of 5 seizures over an 8‑month period. There have been no events since the rota change and dose optimisation in late November.\n\nExamination today is unremarkable with normal neurology. Given the consistent nocturnal focal motor semiology, interictal right frontal discharges on EEG, and normal MRI, the overall picture supports focal epilepsy. We discussed potential triggers; sleep disruption and night shifts appear contributory, and her improved schedule likely underpins the recent stability.\n\nI have not arranged additional investigations at this stage. Should there be any recurrence, we would consider ambulatory EEG or dose titration. She understands to contact us promptly if seizures recur or if she has any side‑effects.\n\nWith best wishes,\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1627,
+      "end": 1683,
+      "text": "This gives a total of 5 seizures over an 8‑month period.",
+      "attributes": {
+        "Label": "5 per 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1346,
+      "end": 1625,
+      "text": "She first experienced a seizure in March 2023 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2023 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology",
+      "attributes": {
+        "Label": "5 per 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14598,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 14 December 2023\n\nDr Amelia Patel\nSt George’s University Hospitals NHS Foundation Trust\nDepartment of Neurology, Blackshaw Road, London SW17 0QT\n\nDear Dr Amelia Patel,\n\nEmily Carter, DOB: 23-02-1992, Hospital No: NHS-49302718 NHS No. SGH-2023-118492\nFlat 5, 12 Lavender Close, London, SW18 4PX\n\nDiagnoses:\n\n- Focal epilepsy, likely right frontal onset (semiology: nocturnal left leg jerks), diagnosis 2023\n- MRI brain (September 2023): normal\n- EEG (October 2023): intermittent right frontal sharp waves during drowsiness\n\nCurrent Medication:\n\n- Levetiracetam 750 mg twice daily\n- Rescue: Buccal midazolam 10 mg for prolonged events (not yet used)\n\nPlan:\n\n- Continue Levetiracetam 750 mg twice daily; no change today given improving control\n- Maintain current rota with regular daytime shifts and minimised overnight calls\n- Seizure first aid and SUDEP counselling reinforced; driving advice per DVLA (not driving currently)\n- Follow up in 6 months, sooner if breakthrough seizures or adverse effects\n\nI reviewed Emily Carter in my clinic today. She describes a clear improvement in seizure control since her work rota changed to regular daytime shifts with fewer overnight calls. Per plan, control is better now and she feels more rested, with no adverse medication effects.\n\nSeizure history and frequency: She first experienced a seizure in March 2023 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2023 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology. This gives a total of 5 seizures over an 8‑month period. There have been no events since the rota change and dose optimisation in late November.\n\nExamination today is unremarkable with normal neurology. Given the consistent nocturnal focal motor semiology, interictal right frontal discharges on EEG, and normal MRI, the overall picture supports focal epilepsy. We discussed potential triggers; sleep disruption and night shifts appear contributory, and her improved schedule likely underpins the recent stability.\n\nI have not arranged additional investigations at this stage. Should there be any recurrence, we would consider ambulatory EEG or dose titration. She understands to contact us promptly if seizures recur or if she has any side‑effects.\n\nWith best wishes,\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit statements about seizure frequency. The letter states: “This gives a total of 5 seizures over an 8‑month period.” It also states, “There have been no events since the rota change and dose optimisation in late November.” Clinic date is 14 December 2023, meaning seizure-free for only a few weeks, not ≥6 months; thus cannot classify as seizure free. Highest explicit numeric frequency provided is 5 seizures over 8 months. Apply the rule to use explicit numeric expressions and output as normalized rate: 5 per 8 month.",
+      "seizure_frequency_number": [
+        "5 per 8 month",
+        "This gives a total of 5 seizures over an 8‑month period."
+      ],
+      "reference": [
+        "5 per 8 month",
+        "She first experienced a seizure in March 2023 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2023 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

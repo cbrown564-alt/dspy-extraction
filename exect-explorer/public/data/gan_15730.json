@@ -1,0 +1,59 @@
+{
+  "id": "gan_15730",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 October 2023 \n\nDr Priya Nair\nMaple Grove Health Centre\n\n47 Maple Grove, Bromley, BR1 2ST\nDear Dr Priya Nair\nMr Adam Fletcher, DOB: 14-03-1987, Hospital No: H892344 NHS No. 7483926150\n12 Oakfield Court, Bromley, BR2 8LN \n\nI reviewed the above patient in the Neurology Clinic today. He is known to our service with focal epilepsy, most likely originating from the left temporal region on prior EEG, and he reports a notable change in seizure pattern over the past three months. His absence seizures are now occurring on most days of the week, whereas previously they were restricted to once every couple of months. He describes these as brief episodes of impaired awareness with behavioural arrest and automatisms, often followed by a few minutes of confusion. He also recounts a previous focal to bilateral tonic–clonic seizure that occurred during air travel earlier this year, after a prolonged delay on the runway; he associates this with marked travel-related anxiety and poor sleep the night before.\n\nHe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. with good adherence. He denies rash, mood lability, or gastrointestinal side effects, though he notes mild irritability later in the day, which he feels is manageable. No missed doses were reported. He does not drink alcohol to excess and reports regular sleep except around travel. There is no new neurological deficit, and examination today was unremarkable.\n\nWe discussed the recent deterioration and the possible contribution of anticipatory stress related to flying. He is keen to continue air travel for work but acknowledges significant anxiety and has begun keeping a seizure diary, which correlates clusters with periods of travel planning. I have arranged an updated EEG and advised continuation of his current medications until results are available; we will then review whether a dose optimisation or adjunctive therapy is warranted in light of his focal epilepsy. I have also provided information about our epilepsy nurse specialist service for practical self-management strategies, and he is open to brief psychological support focused on travel anxiety.\n\nI will review him after the EEG report is available or sooner if he experiences further focal to bilateral events. He understands to seek urgent help if seizures are prolonged or occur in quick succession.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 521,
+      "end": 584,
+      "text": "His absence seizures are now occurring on most days of the week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 521,
+      "end": 656,
+      "text": "His absence seizures are now occurring on most days of the week, whereas previously they were restricted to once every couple of months",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15730,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 11 October 2023 \n\nDr Priya Nair\nMaple Grove Health Centre\n\n47 Maple Grove, Bromley, BR1 2ST\nDear Dr Priya Nair\nMr Adam Fletcher, DOB: 14-03-1987, Hospital No: H892344 NHS No. 7483926150\n12 Oakfield Court, Bromley, BR2 8LN \n\nI reviewed the above patient in the Neurology Clinic today. He is known to our service with focal epilepsy, most likely originating from the left temporal region on prior EEG, and he reports a notable change in seizure pattern over the past three months. His absence seizures are now occurring on most days of the week, whereas previously they were restricted to once every couple of months. He describes these as brief episodes of impaired awareness with behavioural arrest and automatisms, often followed by a few minutes of confusion. He also recounts a previous focal to bilateral tonic–clonic seizure that occurred during air travel earlier this year, after a prolonged delay on the runway; he associates this with marked travel-related anxiety and poor sleep the night before.\n\nHe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. with good adherence. He denies rash, mood lability, or gastrointestinal side effects, though he notes mild irritability later in the day, which he feels is manageable. No missed doses were reported. He does not drink alcohol to excess and reports regular sleep except around travel. There is no new neurological deficit, and examination today was unremarkable.\n\nWe discussed the recent deterioration and the possible contribution of anticipatory stress related to flying. He is keen to continue air travel for work but acknowledges significant anxiety and has begun keeping a seizure diary, which correlates clusters with periods of travel planning. I have arranged an updated EEG and advised continuation of his current medications until results are available; we will then review whether a dose optimisation or adjunctive therapy is warranted in light of his focal epilepsy. I have also provided information about our epilepsy nurse specialist service for practical self-management strategies, and he is open to brief psychological support focused on travel anxiety.\n\nI will review him after the EEG report is available or sooner if he experiences further focal to bilateral events. He understands to seek urgent help if seizures are prolonged or occur in quick succession.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"His absence seizures are now occurring on most days of the week, whereas previously they were restricted to once every couple of months.\" This indicates current seizures happen on most days, but no exact count per day is given. The highest frequency mentioned is these absence seizures occurring on most days. There is also mention of a previous focal to bilateral tonic–clonic seizure earlier this year, which is less frequent and thus not the highest frequency. Since the exact numeric frequency is not specified and 'most days' is vague, we should use 'multiple per week' to reflect frequent weekly occurrence without a precise number.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "His absence seizures are now occurring on most days of the week"
+      ],
+      "reference": [
+        "multiple per week",
+        "His absence seizures are now occurring on most days of the week, whereas previously they were restricted to once every couple of months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

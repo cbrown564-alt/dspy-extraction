@@ -1,0 +1,48 @@
+{
+  "id": "gan_8924",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Brown, DOB: 23-11-1992, Hospital No: N483620 NHS No. 9064152378  \n12 Brookfield Court, London, SW6 5QJ \n\nMedication: \n\nLevetiracetam 1 g twice daily. Tolerated without mood change or somnolence. \n\nI reviewed Amelia Brown in clinic today. She has been using a seizure diary app consistently since her last visit, with entries automatically timestamped and tagged. According to the app logs, she had brief nocturnal episodes with confusion and lip-smacking prior to the dose increase in May; since titration to the current dose she has had no recorded events. In essence, there have been no further attacks captured on the diary following the increase in antiseizure medication, corroborated by her partner’s observations and absence of injury or tongue biting. \n\nShe reports reliable medication adherence, using phone reminders linked to the diary. Sleep has improved after she limited late-night screen time based on diary prompts. She denies new neurological symptoms. There is no clear relationship to stress or menses on the log review. \n\nInvestigations: Routine bloods last month (U&E, LFTs, FBC) were within reference ranges. No medication interactions identified. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Maintain the seizure diary app; she will share exports if any events recur. \n- Safety advice reiterated, including showering rather than bathing and avoiding heights without supervision. Driving status discussed per DVLA guidance; she understands to inform DVLA and to abstain from driving if any further episodes occur. \n- If events return, consider ambulatory EEG and review of serum levels/adherence, with potential dose adjustment. \n\nWe will review her in six months, or sooner if the diary captures any breakthrough events. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 685,
+      "end": 751,
+      "text": "since titration to the current dose she has had no recorded events",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8924,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Brown, DOB: 23-11-1992, Hospital No: N483620 NHS No. 9064152378  \n12 Brookfield Court, London, SW6 5QJ \n\nMedication: \n\nLevetiracetam 1 g twice daily. Tolerated without mood change or somnolence. \n\nI reviewed Amelia Brown in clinic today. She has been using a seizure diary app consistently since her last visit, with entries automatically timestamped and tagged. According to the app logs, she had brief nocturnal episodes with confusion and lip-smacking prior to the dose increase in May; since titration to the current dose she has had no recorded events. In essence, there have been no further attacks captured on the diary following the increase in antiseizure medication, corroborated by her partner’s observations and absence of injury or tongue biting. \n\nShe reports reliable medication adherence, using phone reminders linked to the diary. Sleep has improved after she limited late-night screen time based on diary prompts. She denies new neurological symptoms. There is no clear relationship to stress or menses on the log review. \n\nInvestigations: Routine bloods last month (U&E, LFTs, FBC) were within reference ranges. No medication interactions identified. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Maintain the seizure diary app; she will share exports if any events recur. \n- Safety advice reiterated, including showering rather than bathing and avoiding heights without supervision. Driving status discussed per DVLA guidance; she understands to inform DVLA and to abstain from driving if any further episodes occur. \n- If events return, consider ambulatory EEG and review of serum levels/adherence, with potential dose adjustment. \n\nWe will review her in six months, or sooner if the diary captures any breakthrough events. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states that prior to a dose increase in May there were brief nocturnal episodes, but since titration to the current dose there have been no recorded events, corroborated by partner observations. Clinic date is 14 October 2025. The period of no recorded events is from May 2025 to October 2025, which is approximately 5 months, less than the 6-month threshold for confirmed seizure freedom. Therefore, per the rules, the patient can be considered seizure free for multiple months (not meeting the 6-month criterion).",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "since titration to the current dose she has had no recorded events"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free after dose escalation of ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_13485",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 29 July 2018 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nDaniel Cooper, DOB: 22-08-1983, Hospital No: U914275 NHS No. 4738291654  \n22 Holmwood Close, London, NW1 6RT  \n\nSummary/ Diagnoses: None Epilepsy (patient does not have epilepsy; prior events reassessed as non-epileptic and status now stable)/history of head injury in youth without residual neurological deficit/mild anxiety now well controlled with non-pharmacological strategies/ex-smoker. \n\nMedication: No antiseizure medication. \nVitamin D3 800 IU once daily. \nOmeprazole 20 mg once daily when needed for dyspepsia. \n\nI reviewed him in clinic today following our last appointment, during which we made a minor adjustment to his routine (advice on regular sleep–wake schedule and hydration, and discontinuation of a previously unnecessary evening caffeine supplement). This small change preceded steady improvement in his day-to-day wellbeing. He reports restored confidence in commuting, has returned to regular swimming twice weekly, and has had no episodes suggestive of syncope, presyncope, or transient neurological symptoms. Cognition is clear by history; he manages finances and work tasks without difficulty. Examination today was normal: alert and oriented, speech fluent, cranial nerves intact, normal tone, power and coordination in all limbs, gait steady, Romberg negative. \n\nSeizures: With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years. For completeness, it is important to note that after comprehensive review, he does not have current epilepsy. Previous events recorded several years ago were reclassified as non-epileptic (likely stress-related episodes without electrographic correlate), and he has remained entirely free of events since. He keeps a symptom diary, which shows no entries of concern since our last visit. \n\nPlan: \n- Reassurance provided; no antiseizure drugs indicated. \n- Maintain regular sleep, hydration and exercise; continue symptom diary. \n- No neuroimaging or EEG required at present given sustained stability and absence of red flags. \n- Routine review in 12 months, earlier if any new neurological symptoms arise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1646,
+      "end": 1743,
+      "text": "he has been seizure free for a long duration and has not reported seizures for over several years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1539,
+      "end": 1743,
+      "text": "With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13485,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 29 July 2018 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nDaniel Cooper, DOB: 22-08-1983, Hospital No: U914275 NHS No. 4738291654  \n22 Holmwood Close, London, NW1 6RT  \n\nSummary/ Diagnoses: None Epilepsy (patient does not have epilepsy; prior events reassessed as non-epileptic and status now stable)/history of head injury in youth without residual neurological deficit/mild anxiety now well controlled with non-pharmacological strategies/ex-smoker. \n\nMedication: No antiseizure medication. \nVitamin D3 800 IU once daily. \nOmeprazole 20 mg once daily when needed for dyspepsia. \n\nI reviewed him in clinic today following our last appointment, during which we made a minor adjustment to his routine (advice on regular sleep–wake schedule and hydration, and discontinuation of a previously unnecessary evening caffeine supplement). This small change preceded steady improvement in his day-to-day wellbeing. He reports restored confidence in commuting, has returned to regular swimming twice weekly, and has had no episodes suggestive of syncope, presyncope, or transient neurological symptoms. Cognition is clear by history; he manages finances and work tasks without difficulty. Examination today was normal: alert and oriented, speech fluent, cranial nerves intact, normal tone, power and coordination in all limbs, gait steady, Romberg negative. \n\nSeizures: With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years. For completeness, it is important to note that after comprehensive review, he does not have current epilepsy. Previous events recorded several years ago were reclassified as non-epileptic (likely stress-related episodes without electrographic correlate), and he has remained entirely free of events since. He keeps a symptom diary, which shows no entries of concern since our last visit. \n\nPlan: \n- Reassurance provided; no antiseizure drugs indicated. \n- Maintain regular sleep, hydration and exercise; continue symptom diary. \n- No neuroimaging or EEG required at present given sustained stability and absence of red flags. \n- Routine review in 12 months, earlier if any new neurological symptoms arise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses seizures explicitly. It states the patient has not reported seizures for over several years and clarifies he does not have current epilepsy and has remained entirely free of events since. This indicates current seizure freedom for a duration exceeding years. The 6-month criterion for seizure-free status is clearly met and exceeded. Therefore, the appropriate normalized label is 'seizure free for multiple years'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "he has been seizure free for a long duration and has not reported seizures for over several years"
+      ],
+      "reference": [
+        "seizure free for multiple year",
+        "With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

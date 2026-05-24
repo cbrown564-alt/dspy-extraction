@@ -1,0 +1,65 @@
+{
+  "id": "gan_14040",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 07 August 2018 \n\nDr Patel\nRiverside Medical Centre\n\n221 Riverside Way, London, SE10 9AB\nDear Dr Patel\nMichael Green, DOB: 03-02-1999, Hospital No: H839204 NHS No. 7745123098\n12 Brookfield Court, Deptford, London, SE8 4LT \n\nI reviewed the above patient in the Neurology Clinic today. He is known to this service and attends with his parents. Since our last correspondence he and his family report social alcohol use which he is currently reducing. He remains on his existing regimen of Levetiracetam 1000 mg b.d. and Clobazam 10 mg nocte; he reports tolerating these without notable adverse effects beyond occasional fatigue.\n\nWe discussed recent events at length. The parents state that since starting ketogenic diet he has had multiple drop attacks, the latest one on 05/Apr. They were unable to quantify how often these are occurring overall and have not kept a seizure diary. No clear triggers were identified beyond general stress and poor sleep on some nights. There have been no emergency department visits since the last appointment and no reported injuries.\n\nOn examination today he was alert and oriented with normal cranial nerve and limb examination; gait was steady. Routine bloods from his GP last month (FBC, U&E, LFTs) were within expected limits per family report; we will request copies for our records.\n\nPlan:\n- I have advised continuation of current antiepileptic medication for now and asked the family to maintain a detailed diary of events, including date, time, context and recovery, to clarify frequency and pattern.\n- We will arrange an outpatient EEG and review the ketogenic diet parameters with the dietetics team to ensure adherence and nutritional adequacy.\n- Safety advice around drop attacks reiterated (supervision near water, helmet use discussed if falls increase, and avoidance of heights). He will continue to reduce alcohol intake as discussed.\n- Follow-up in 3 months, or sooner if events escalate or injuries occur.\n\nPlease do not hesitate to contact me if you need further information.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 819,
+      "end": 885,
+      "text": "they were unable to quantify how often these are occurring overall",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 706,
+      "end": 817,
+      "text": "The parents state that since starting ketogenic diet he has had multiple drop attacks, the latest one on 05/Apr",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14040,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 07 August 2018 \n\nDr Patel\nRiverside Medical Centre\n\n221 Riverside Way, London, SE10 9AB\nDear Dr Patel\nMichael Green, DOB: 03-02-1999, Hospital No: H839204 NHS No. 7745123098\n12 Brookfield Court, Deptford, London, SE8 4LT \n\nI reviewed the above patient in the Neurology Clinic today. He is known to this service and attends with his parents. Since our last correspondence he and his family report social alcohol use which he is currently reducing. He remains on his existing regimen of Levetiracetam 1000 mg b.d. and Clobazam 10 mg nocte; he reports tolerating these without notable adverse effects beyond occasional fatigue.\n\nWe discussed recent events at length. The parents state that since starting ketogenic diet he has had multiple drop attacks, the latest one on 05/Apr. They were unable to quantify how often these are occurring overall and have not kept a seizure diary. No clear triggers were identified beyond general stress and poor sleep on some nights. There have been no emergency department visits since the last appointment and no reported injuries.\n\nOn examination today he was alert and oriented with normal cranial nerve and limb examination; gait was steady. Routine bloods from his GP last month (FBC, U&E, LFTs) were within expected limits per family report; we will request copies for our records.\n\nPlan:\n- I have advised continuation of current antiepileptic medication for now and asked the family to maintain a detailed diary of events, including date, time, context and recovery, to clarify frequency and pattern.\n- We will arrange an outpatient EEG and review the ketogenic diet parameters with the dietetics team to ensure adherence and nutritional adequacy.\n- Safety advice around drop attacks reiterated (supervision near water, helmet use discussed if falls increase, and avoidance of heights). He will continue to reduce alcohol intake as discussed.\n- Follow-up in 3 months, or sooner if events escalate or injuries occur.\n\nPlease do not hesitate to contact me if you need further information.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses ongoing seizures (“multiple drop attacks”) but provides no numeric frequency. The family “were unable to quantify how often these are occurring overall and have not kept a seizure diary.” There is a specific date for the latest event (05/Apr), but no count over a defined time period. Therefore, a precise frequency cannot be determined. According to the rules, when seizures are present but frequency cannot be determined, the correct output is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "they were unable to quantify how often these are occurring overall"
+      ],
+      "reference": [
+        "unknown",
+        "The parents state that since starting ketogenic diet he has had multiple drop attacks, the latest one on 05/Apr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_2366",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Menon (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 July 2018 10:15\nTo: kch.neuro-epilepsy@nhs.net\nCc: Dr David Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Progress update and medication optimisation\n\nDear Priya,\n\nEpilepsy Diagnosis:\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nCurrent Status and Context:\nSince being relocated from the hot cookline to a prep area with improved ventilation at work, the patient reports sustained stability over recent months, with fewer triggers and better daytime alertness. Overall, the clinical picture is improving.\n\nPresent Medication:\n1. Carbamazepine (modified release) 600 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nPresent Seizure Frequency:\nThe patient describes two or four seizures over the past year. These were brief and self-limiting, with no injuries. There have been no emergency attendances, and no clear nocturnal events reported.\n\nAssessment:\nImprovement aligns temporally with the environmental change at work and consistent adherence to medication. Behavioural side effects are not prominent at present. No new neurological deficits have been reported. Given the combination of generalised and focal features historically, continued monitoring for both seizure types is warranted, though the trend is favourable.\n\nPlan of Action:\n- Continue current doses of carbamazepine (modified release) and levetiracetam for now, as stability has been sustained and the condition is improving.\n- Maintain seizure diary and occupational adjustments (cooler, well-ventilated prep area) as these appear beneficial.\n- Routine bloods (FBC, U&E, LFTs) and carbamazepine level at next visit.\n- Safety advice reinforced; patient reports reliable adherence and has support at work.\n- Review in four months, sooner if the pattern changes or frequency increases.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 888,
+      "end": 950,
+      "text": "The patient describes two or four seizures over the past year.",
+      "attributes": {
+        "Label": "2 to 4 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 910,
+      "end": 949,
+      "text": "two or four seizures over the past year",
+      "attributes": {
+        "Label": "2 to 4 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2366,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Menon (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 July 2018 10:15\nTo: kch.neuro-epilepsy@nhs.net\nCc: Dr David Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Progress update and medication optimisation\n\nDear Priya,\n\nEpilepsy Diagnosis:\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nCurrent Status and Context:\nSince being relocated from the hot cookline to a prep area with improved ventilation at work, the patient reports sustained stability over recent months, with fewer triggers and better daytime alertness. Overall, the clinical picture is improving.\n\nPresent Medication:\n1. Carbamazepine (modified release) 600 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nPresent Seizure Frequency:\nThe patient describes two or four seizures over the past year. These were brief and self-limiting, with no injuries. There have been no emergency attendances, and no clear nocturnal events reported.\n\nAssessment:\nImprovement aligns temporally with the environmental change at work and consistent adherence to medication. Behavioural side effects are not prominent at present. No new neurological deficits have been reported. Given the combination of generalised and focal features historically, continued monitoring for both seizure types is warranted, though the trend is favourable.\n\nPlan of Action:\n- Continue current doses of carbamazepine (modified release) and levetiracetam for now, as stability has been sustained and the condition is improving.\n- Maintain seizure diary and occupational adjustments (cooler, well-ventilated prep area) as these appear beneficial.\n- Routine bloods (FBC, U&E, LFTs) and carbamazepine level at next visit.\n- Safety advice reinforced; patient reports reliable adherence and has support at work.\n- Review in four months, sooner if the pattern changes or frequency increases.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"The patient describes two or four seizures over the past year.\" This provides a numeric range for the past year. No other conflicting frequencies are mentioned. According to the rules, use explicit numeric expressions and normalize to allowed format with ranges using 'to'. Therefore, the seizure frequency is 2 to 4 per year.",
+      "seizure_frequency_number": [
+        "2 to 4 per year",
+        "The patient describes two or four seizures over the past year."
+      ],
+      "reference": [
+        "2 to 4 per year",
+        "two or four seizures over the past year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

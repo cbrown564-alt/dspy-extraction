@@ -1,0 +1,59 @@
+{
+  "id": "gan_685",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with previous dose adherence difficulties; mild memory complaints; tension-type headaches; ex-smoker; lives independently with community support.\n\nMedication: Levetiracetam 1500 mg twice a day.  \nLamotrigine 100 mg twice a day.  \nCholecalciferol 800 IU once daily.  \nOmeprazole 20 mg once daily.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a detailed account using his smartphone notes. Since the last appointment he has implemented a structured reminder system using smartphone alarms and Near Field Communication (NFC) tags placed by his pill organiser and bedside lamp. He reports this has markedly reduced missed doses after a short period earlier this year when several evening doses were forgotten. He has enabled a repeat alarm sequence and uses an app-based adherence log, which he shared during the consultation.\n\nSeizures: He describes brief daily events occurring once a day, typically in the late afternoon, characterised by a sudden pause in activity with intact awareness and rapid return to baseline within a minute. There have been no injuries or loss of continence. He relates the timing to periods before his scheduled evening medication, and since adopting the smartphone alarm with NFC tag confirmation two months ago, the duration has subjectively shortened. He has not required emergency care. He is keeping a simple tally in his phone which shows a consistent “once a day” entry over the last four weeks. \n\nExamination: Alert and oriented. Speech fluent. Cranial nerves normal. Motor exam normal bulk and tone, full power throughout. Reflexes symmetrical. Gait normal. No tongue bite, no focal neurological deficit.\n\nInvestigations: No recent bloods available today. Last MRI (2022) unchanged from prior report. No new imaging indicated based on current presentation.\n\nPlan:  \n- Continue current antiepileptic regimen without dose change.  \n- Reinforce adherence strategy; patient to continue smartphone alarms with NFC tag confirmation and app logging.  \n- Community epilepsy nurse to review the adherence log remotely in 6 weeks.  \n- Arrange routine blood tests in primary care (U&Es, LFTs, FBC, vitamin D) and share results to clinic.  \n- Safety advice reiterated regarding bathing, cooking with open flames, and ladder work; patient verbalised understanding.  \n- Follow-up in neurology clinic in 4 months, sooner if increase in frequency beyond once a day, occurrence of injury, loss of awareness, or prolonged events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1258,
+      "end": 1381,
+      "text": "brief daily events occurring once a day, ... his phone which shows a consistent “once a day” entry over the last four weeks",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1287,
+      "end": 1297,
+      "text": "once a day",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 685,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with previous dose adherence difficulties; mild memory complaints; tension-type headaches; ex-smoker; lives independently with community support.\n\nMedication: Levetiracetam 1500 mg twice a day.  \nLamotrigine 100 mg twice a day.  \nCholecalciferol 800 IU once daily.  \nOmeprazole 20 mg once daily.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a detailed account using his smartphone notes. Since the last appointment he has implemented a structured reminder system using smartphone alarms and Near Field Communication (NFC) tags placed by his pill organiser and bedside lamp. He reports this has markedly reduced missed doses after a short period earlier this year when several evening doses were forgotten. He has enabled a repeat alarm sequence and uses an app-based adherence log, which he shared during the consultation.\n\nSeizures: He describes brief daily events occurring once a day, typically in the late afternoon, characterised by a sudden pause in activity with intact awareness and rapid return to baseline within a minute. There have been no injuries or loss of continence. He relates the timing to periods before his scheduled evening medication, and since adopting the smartphone alarm with NFC tag confirmation two months ago, the duration has subjectively shortened. He has not required emergency care. He is keeping a simple tally in his phone which shows a consistent “once a day” entry over the last four weeks. \n\nExamination: Alert and oriented. Speech fluent. Cranial nerves normal. Motor exam normal bulk and tone, full power throughout. Reflexes symmetrical. Gait normal. No tongue bite, no focal neurological deficit.\n\nInvestigations: No recent bloods available today. Last MRI (2022) unchanged from prior report. No new imaging indicated based on current presentation.\n\nPlan:  \n- Continue current antiepileptic regimen without dose change.  \n- Reinforce adherence strategy; patient to continue smartphone alarms with NFC tag confirmation and app logging.  \n- Community epilepsy nurse to review the adherence log remotely in 6 weeks.  \n- Arrange routine blood tests in primary care (U&Es, LFTs, FBC, vitamin D) and share results to clinic.  \n- Safety advice reiterated regarding bathing, cooking with open flames, and ladder work; patient verbalised understanding.  \n- Follow-up in neurology clinic in 4 months, sooner if increase in frequency beyond once a day, occurrence of injury, loss of awareness, or prolonged events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes the patient's current seizure pattern: \"brief daily events occurring once a day\" and reiterates that his phone tally shows a consistent \"once a day\" entry over the last four weeks. This provides a clear numeric frequency. No other seizure frequencies are provided that are higher. Therefore, the normalized label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "brief daily events occurring once a day, ... his phone which shows a consistent “once a day” entry over the last four weeks"
+      ],
+      "reference": [
+        "1 per day",
+        "once a day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

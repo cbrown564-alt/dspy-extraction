@@ -1,0 +1,59 @@
+{
+  "id": "gan_15544",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 12-03-1992, Hospital No: H938271 NHS No. 5839201746  \n14 Brookfield Road, London, W10 6AB \n\nMedication: \n\nLevetiracetam 750 mg twice daily. He has been on this dose for six weeks without reported adverse effects. \n\nThank you for asking me to review your patient in clinic today regarding his ongoing seizures. He reports intermittent déjà vu sensations and brief episodes of disorientation preceding some events, though not consistently. He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours. He and his partner feel that sleep deprivation and missed meals are common antecedents. There is no clear association with intercurrent illness. He does not drive. \n\nSince starting levetiracetam, he feels his alertness has improved and he has had fewer post-event headaches. He has not noticed mood changes or irritability. There is no history of myoclonus or generalised tonic-clonic activity reported by witnesses, though a few events have included lip smacking and brief unresponsiveness lasting under a minute, followed by several minutes of fatigue. No injuries have occurred. \n\nMRI brain (reported locally in May 2025) was normal. Routine EEG (June 2025) showed no clear epileptiform activity; sleep was limited during the study. I have arranged an ambulatory EEG to capture typical events, and he is keeping a detailed seizure and trigger diary to support correlation. \n\nFor now, I have recommended maintaining levetiracetam at 750 mg twice daily while we complete further evaluation. If the ambulatory EEG or diary suggests a clear pattern of provocation, we will discuss targeted behavioural strategies. Should clustering persist despite adherence and adequate sleep, we will consider a small upward titration at our next review, balancing benefits and tolerability; he understands to contact us via the epilepsy nurse line if there is any sustained deterioration. \n\nWe discussed general safety: avoiding swimming alone, taking showers instead of baths, and using the back rings on the cooker where practical. He will continue not to drive, and he is aware of the need to inform the DVLA as applicable. He and his partner are content with the plan. \n\nI will see him again in three months, sooner if there are concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 648,
+      "end": 780,
+      "text": "He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours.",
+      "attributes": {
+        "Label": "1 cluster per 5 day, 2 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 648,
+      "end": 779,
+      "text": "He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours",
+      "attributes": {
+        "Label": "1 cluster per 5 day, 2 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15544,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 12-03-1992, Hospital No: H938271 NHS No. 5839201746  \n14 Brookfield Road, London, W10 6AB \n\nMedication: \n\nLevetiracetam 750 mg twice daily. He has been on this dose for six weeks without reported adverse effects. \n\nThank you for asking me to review your patient in clinic today regarding his ongoing seizures. He reports intermittent déjà vu sensations and brief episodes of disorientation preceding some events, though not consistently. He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours. He and his partner feel that sleep deprivation and missed meals are common antecedents. There is no clear association with intercurrent illness. He does not drive. \n\nSince starting levetiracetam, he feels his alertness has improved and he has had fewer post-event headaches. He has not noticed mood changes or irritability. There is no history of myoclonus or generalised tonic-clonic activity reported by witnesses, though a few events have included lip smacking and brief unresponsiveness lasting under a minute, followed by several minutes of fatigue. No injuries have occurred. \n\nMRI brain (reported locally in May 2025) was normal. Routine EEG (June 2025) showed no clear epileptiform activity; sleep was limited during the study. I have arranged an ambulatory EEG to capture typical events, and he is keeping a detailed seizure and trigger diary to support correlation. \n\nFor now, I have recommended maintaining levetiracetam at 750 mg twice daily while we complete further evaluation. If the ambulatory EEG or diary suggests a clear pattern of provocation, we will discuss targeted behavioural strategies. Should clustering persist despite adherence and adequate sleep, we will consider a small upward titration at our next review, balancing benefits and tolerability; he understands to contact us via the epilepsy nurse line if there is any sustained deterioration. \n\nWe discussed general safety: avoiding swimming alone, taking showers instead of baths, and using the back rings on the cooker where practical. He will continue not to drive, and he is aware of the need to inform the DVLA as applicable. He and his partner are content with the plan. \n\nI will see him again in three months, sooner if there are concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current seizures with clustering. Key sentences: \"He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours.\" This implies a pattern of seizure-free intervals up to about 5 days, followed by a cluster of 2 to 4 seizures within a 24-hour period. There is no exact average rate beyond this description, but an explicit numeric pattern is given: up to 5 days without seizures, then a cluster of 2–4 in a day. Following the rule to select the highest frequency representation and to use the allowed cluster format, the appropriate normalized label is a cluster frequency with seizures per cluster. Calculation/normalization: cluster frequency = 1 cluster per 5 days; seizures per cluster = 2 to 4 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per 5 day, 2 to 4 per cluster",
+        "He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours."
+      ],
+      "reference": [
+        "1 cluster per 5 day, 2 to 4 per cluster",
+        "He may go five days without seizures, but when they happen he often has them in batches, with two to four occurring within 24 hours"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

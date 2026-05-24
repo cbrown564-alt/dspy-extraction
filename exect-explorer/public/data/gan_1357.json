@@ -1,0 +1,59 @@
+{
+  "id": "gan_1357",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 September 2015 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nSt. Bartholomew’s Hospital, West Smithfield, London EC1A 7BE  \n\nDear Dr Aisha Rahman, \n\nMr Daniel Harper, DOB: 12-03-1991, Hospital No: K847193 NHS No. 0085627391  \n22 Brookfield Road, Hackney, London, E9 7BE  \n\nDiagnosis: \n\nGeneralised epilepsy with recent breakthrough event; good prior response to sodium valproate; lamotrigine adjunct under consideration.\n\nAetiology: \n\nNo clear structural or perinatal cause identified; family history positive for generalised epilepsy (mother, adolescent onset).\n\nOther Medical Problems: \n\nMild migraine without aura; vitamin D insufficiency on supplementation.\n\nManagement Plan: \n\n- The patient reported 1 tonic-clonic seizures yesterday, occurring in the late afternoon following two missed doses of sodium valproate over the preceding 48 hours and poor sleep. He recovered fully after a short post-ictal period without injury. \n- We discussed that this pattern is consistent with generalised epilepsy and that adherence, sleep hygiene, and avoidance of alcohol binges are key. \n- Continue sodium valproate 500 mg mane and 1000 mg nocte (same brand). A trough level will be checked in two weeks. \n- Provide a standby buccal midazolam plan for seizures lasting longer than 5 minutes; training and written guidance supplied. \n- Provisional consideration of adding lamotrigine if further generalised seizures occur despite therapeutic valproate levels and good adherence. \n- Driving advice provided in line with DVLA guidance following a generalised tonic-clonic seizure. \n- Review in three months, sooner if further events occur. \n\nHistory and Current Status: \n\nThis right-handed patient with established generalised epilepsy has been largely stable for the past 18 months on sodium valproate. He describes regular sleep disruption over the last week and admits to missing two doses prior to the breakthrough event. There were no focal features reported before or during the event, and his partner observed a typical generalised tonic-clonic pattern. There was no head injury, tongue bite was lateral, and recovery was within 30 minutes. He is otherwise well, working full-time, and prefers to avoid medication changes unless further seizures recur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 766,
+      "end": 820,
+      "text": "The patient reported 1 tonic-clonic seizures yesterday",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 787,
+      "end": 820,
+      "text": "1 tonic-clonic seizures yesterday",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1357,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 September 2015 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nSt. Bartholomew’s Hospital, West Smithfield, London EC1A 7BE  \n\nDear Dr Aisha Rahman, \n\nMr Daniel Harper, DOB: 12-03-1991, Hospital No: K847193 NHS No. 0085627391  \n22 Brookfield Road, Hackney, London, E9 7BE  \n\nDiagnosis: \n\nGeneralised epilepsy with recent breakthrough event; good prior response to sodium valproate; lamotrigine adjunct under consideration.\n\nAetiology: \n\nNo clear structural or perinatal cause identified; family history positive for generalised epilepsy (mother, adolescent onset).\n\nOther Medical Problems: \n\nMild migraine without aura; vitamin D insufficiency on supplementation.\n\nManagement Plan: \n\n- The patient reported 1 tonic-clonic seizures yesterday, occurring in the late afternoon following two missed doses of sodium valproate over the preceding 48 hours and poor sleep. He recovered fully after a short post-ictal period without injury. \n- We discussed that this pattern is consistent with generalised epilepsy and that adherence, sleep hygiene, and avoidance of alcohol binges are key. \n- Continue sodium valproate 500 mg mane and 1000 mg nocte (same brand). A trough level will be checked in two weeks. \n- Provide a standby buccal midazolam plan for seizures lasting longer than 5 minutes; training and written guidance supplied. \n- Provisional consideration of adding lamotrigine if further generalised seizures occur despite therapeutic valproate levels and good adherence. \n- Driving advice provided in line with DVLA guidance following a generalised tonic-clonic seizure. \n- Review in three months, sooner if further events occur. \n\nHistory and Current Status: \n\nThis right-handed patient with established generalised epilepsy has been largely stable for the past 18 months on sodium valproate. He describes regular sleep disruption over the last week and admits to missing two doses prior to the breakthrough event. There were no focal features reported before or during the event, and his partner observed a typical generalised tonic-clonic pattern. There was no head injury, tongue bite was lateral, and recovery was within 30 minutes. He is otherwise well, working full-time, and prefers to avoid medication changes unless further seizures recur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"The patient reported 1 tonic-clonic seizures yesterday\" indicating a single seizure on the previous day. There is no broader period frequency provided beyond this single recent event, and the patient is not seizure-free for ≥6 months due to this breakthrough seizure. Therefore, the current seizure frequency is taken as 1 per day based on the explicit report for yesterday.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "The patient reported 1 tonic-clonic seizures yesterday"
+      ],
+      "reference": [
+        "1 per day",
+        "1 tonic-clonic seizures yesterday"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_15127",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 March 2021 \n\nDr Aisha Rahman \nConsultant Neurologist  \nRiverside Neurology Clinic  \nNorthbank Wing, St Cuthbert’s Hospital, Manchester M3 4AB  \n\nDear Dr Aisha Rahman, \n\nAlex Morgan, DOB: 22-08-2002, Hospital No: M847261 NHS No. 9438215076  \nFlat 5, 12 Brook Street, Salford, M5 3HN  \n\nDiagnosis: \n\nSeizure disorder under ongoing assessment; pattern not yet clearly defined\n\nAetiology: \n\nNo confirmed structural, genetic, or metabolic cause identified to date; historical records from paediatric services requested\n\nOther Medical Problems: \n\nMild asthma managed with salbutamol inhaler as required; seasonal allergic rhinitis\n\nManagement Plan: \n\n- Continue current antiseizure therapy: Lamotrigine 100 mg twice daily. No change today.  \n- Collateral history to be incorporated when a parent attends; patient consents to shared discussion at future visits.  \n- Arrange updated routine bloods (FBC, U&E, LFTs) and Lamotrigine trough level prior to next review.  \n- Sleep hygiene advice and avoidance of missed doses reinforced.  \n- DVLA guidance discussed; patient currently not driving and understands requirements should circumstances change.  \n- Follow-up in 6 months, sooner if breakthrough events occur.  \n\nThis young adult has recently transitioned from paediatric to adult services. They attended alone today but reported that a parent may accompany them at subsequent appointments to provide collateral history from childhood, including early event descriptions and previous medication trials. Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then. The jerks occur shortly after waking, are brief, without loss of awareness, and have not resulted in injury. No clear precipitant identified other than occasional sleep deprivation. Medication adherence is reported as good, with no recent missed doses. There have been no emergency presentations since the last general review, and no adverse effects from Lamotrigine beyond mild intermittent nausea that does not impact daily activities. We will obtain the paediatric notes and imaging summaries to better characterise the history and will update the plan once the collateral information is available. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1561,
+      "end": 1636,
+      "text": "Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then.",
+      "attributes": {
+        "Label": "5 per 13 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1561,
+      "end": 1635,
+      "text": "Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then",
+      "attributes": {
+        "Label": "5 per 13 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15127,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 March 2021 \n\nDr Aisha Rahman \nConsultant Neurologist  \nRiverside Neurology Clinic  \nNorthbank Wing, St Cuthbert’s Hospital, Manchester M3 4AB  \n\nDear Dr Aisha Rahman, \n\nAlex Morgan, DOB: 22-08-2002, Hospital No: M847261 NHS No. 9438215076  \nFlat 5, 12 Brook Street, Salford, M5 3HN  \n\nDiagnosis: \n\nSeizure disorder under ongoing assessment; pattern not yet clearly defined\n\nAetiology: \n\nNo confirmed structural, genetic, or metabolic cause identified to date; historical records from paediatric services requested\n\nOther Medical Problems: \n\nMild asthma managed with salbutamol inhaler as required; seasonal allergic rhinitis\n\nManagement Plan: \n\n- Continue current antiseizure therapy: Lamotrigine 100 mg twice daily. No change today.  \n- Collateral history to be incorporated when a parent attends; patient consents to shared discussion at future visits.  \n- Arrange updated routine bloods (FBC, U&E, LFTs) and Lamotrigine trough level prior to next review.  \n- Sleep hygiene advice and avoidance of missed doses reinforced.  \n- DVLA guidance discussed; patient currently not driving and understands requirements should circumstances change.  \n- Follow-up in 6 months, sooner if breakthrough events occur.  \n\nThis young adult has recently transitioned from paediatric to adult services. They attended alone today but reported that a parent may accompany them at subsequent appointments to provide collateral history from childhood, including early event descriptions and previous medication trials. Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then. The jerks occur shortly after waking, are brief, without loss of awareness, and have not resulted in injury. No clear precipitant identified other than occasional sleep deprivation. Medication adherence is reported as good, with no recent missed doses. There have been no emergency presentations since the last general review, and no adverse effects from Lamotrigine beyond mild intermittent nausea that does not impact daily activities. We will obtain the paediatric notes and imaging summaries to better characterise the history and will update the plan once the collateral information is available. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 10 March 2021. The letter states: \"Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then.\" Treating morning jerks as seizures, total events from February 2020 to 10 March 2021 = 1 tonic-clonic + 4 jerks = 5 seizures. Interval length from February 2020 to March 2021 is approximately 13 months. Therefore, frequency = 5 per 13 month.",
+      "seizure_frequency_number": [
+        "5 per 13 month",
+        "Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then."
+      ],
+      "reference": [
+        "5 per 13 month",
+        "Last tonic-clonic seizure was in 2 - 2020, with 4 morning jerks since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

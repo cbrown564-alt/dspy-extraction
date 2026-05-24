@@ -1,0 +1,59 @@
+{
+  "id": "gan_1584",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nLaura Bennett, DOB: 05-11-1992, Hospital No: H483920 NHS No. 9182736450  \n12 Brookfield Road, London, W10 6AB \n\nMedication: \n\nLevetiracetam 1 g twice daily, well tolerated with no reported adverse effects. \n\nSince her last review she has kept a clear diary and reports five focal sensory and six focal non-motors in last month, with several occurring after nights of reduced sleep. She describes occasional cluster patterns linked to sleep loss, and she has a personalised plan documented elsewhere which she has found helpful for recognising early warning signs and for safety measures. There have been no injuries, no episodes of loss of awareness described, and recovery has been rapid when sleep has subsequently improved. She has not driven and is aware of DVLA guidance. \n\nShe notes that work-related shift changes have been a recent trigger for shorter sleep. Hydration and caffeine intake appear stable. She has not noticed a consistent relation with alcohol. She is open to reviewing lifestyle factors to support sleep regularity and will continue to use her diary to correlate sleep duration with episode timing. \n\nI have not made changes to medication today. Blood tests from her GP last month were within normal limits (U&E, LFT, FBC). We discussed safety around water and heights during periods of increased events, and she will continue to share her plan with family. \n\nWe will review in four months, sooner if the pattern escalates. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 451,
+      "end": 516,
+      "text": "reports five focal sensory and six focal non-motors in last month",
+      "attributes": {
+        "Label": "11 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 459,
+      "end": 516,
+      "text": "five focal sensory and six focal non-motors in last month",
+      "attributes": {
+        "Label": "11 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1584,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nLaura Bennett, DOB: 05-11-1992, Hospital No: H483920 NHS No. 9182736450  \n12 Brookfield Road, London, W10 6AB \n\nMedication: \n\nLevetiracetam 1 g twice daily, well tolerated with no reported adverse effects. \n\nSince her last review she has kept a clear diary and reports five focal sensory and six focal non-motors in last month, with several occurring after nights of reduced sleep. She describes occasional cluster patterns linked to sleep loss, and she has a personalised plan documented elsewhere which she has found helpful for recognising early warning signs and for safety measures. There have been no injuries, no episodes of loss of awareness described, and recovery has been rapid when sleep has subsequently improved. She has not driven and is aware of DVLA guidance. \n\nShe notes that work-related shift changes have been a recent trigger for shorter sleep. Hydration and caffeine intake appear stable. She has not noticed a consistent relation with alcohol. She is open to reviewing lifestyle factors to support sleep regularity and will continue to use her diary to correlate sleep duration with episode timing. \n\nI have not made changes to medication today. Blood tests from her GP last month were within normal limits (U&E, LFT, FBC). We discussed safety around water and heights during periods of increased events, and she will continue to share her plan with family. \n\nWe will review in four months, sooner if the pattern escalates. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'reports five focal sensory and six focal non-motors in last month.' These are explicit counts over the last month. According to the rule for multiple frequencies in the same dimension, we sum them: 5 + 6 = 11 in the last month. No other timeframes or higher-frequency measures are provided. Therefore, the normalized label is '11 per month.'",
+      "seizure_frequency_number": [
+        "11 per month",
+        "reports five focal sensory and six focal non-motors in last month"
+      ],
+      "reference": [
+        "11 per month",
+        "five focal sensory and six focal non-motors in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

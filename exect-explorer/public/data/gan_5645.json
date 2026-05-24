@@ -1,0 +1,59 @@
+{
+  "id": "gan_5645",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 10 January 2020 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/Diagnoses: Epilepsy with prior traumatic brain injury and persistent cognitive difficulties/osteoporosis/history of alcohol dependence with alcoholic hepatitis/now abstinent/current smoker/lives in supported accommodation. \n\nMedication: \n- Levetiracetam 1000 mg twice daily \n- Tegretol Retard 400 mg twice daily \n- Topiramate 75 mg morning, 100 mg evening \n- Vitamin B compound, Thiamine, Atorvastatin, Lansoprazole, Bisoprolol, Ramipril, Carbocisteine, Calcichew, Strontium sachets, Aqueous cream \n\nI reviewed Bill in clinic today. He attended independently and showed me his smartphone prompts and near‑field communication (NFC) tags that he now uses for medication reminders. He scans the tag by his pill organiser at breakfast and evening meals; this was introduced after several missed doses were noted by care staff earlier in the year. He reports good adherence since adopting this system, corroborated by his phone’s reminder log. He also keeps a brief note in his phone of any events he perceives as seizures. \n\nSeizures: Based on his digital diary and care notes, episodes are occurring every eight days on average. He describes brief spells of unresponsiveness with subsequent fatigue and mild confusion, typically lasting a few minutes; no injuries reported. There has been no recent hospital attendance for seizures. Sleep deprivation and acute stress seem to precede some events. No consistent aura is reported. \n\nExamination: He was alert and cooperative. Speech fluent. Cranial nerves intact. Tone mildly increased in the right lower limb, power otherwise full. Gait steady with a slow cadence; no new focal deficits. \n\nInvestigations: No new neuroimaging since last year. Routine bloods (including U&Es, LFTs, FBC, vitamin D) six months ago were within expected ranges for him; DEXA unchanged from previous. \n\nPlan: \n- Continue current anti-seizure regimen unchanged given stability and adherence improvements. \n- Encourage ongoing use of smartphone alarms and NFC tags; patient feels these have helped reduce missed doses. \n- Care team to export monthly seizure logs from his phone to the shared record. \n- Check trough carbamazepine level and routine bloods at next GP visit to ensure therapeutic range and monitor safety. \n- Safety counselling reinforced regarding bathing, cooking, and heights. \n- Review in 6 months, sooner if frequency increases or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1432,
+      "end": 1482,
+      "text": "episodes are occurring every eight days on average",
+      "attributes": {
+        "Label": "1 per 8 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1455,
+      "end": 1482,
+      "text": "Every eight days on average",
+      "attributes": {
+        "Label": "1 per 8 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5645,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 10 January 2020 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/Diagnoses: Epilepsy with prior traumatic brain injury and persistent cognitive difficulties/osteoporosis/history of alcohol dependence with alcoholic hepatitis/now abstinent/current smoker/lives in supported accommodation. \n\nMedication: \n- Levetiracetam 1000 mg twice daily \n- Tegretol Retard 400 mg twice daily \n- Topiramate 75 mg morning, 100 mg evening \n- Vitamin B compound, Thiamine, Atorvastatin, Lansoprazole, Bisoprolol, Ramipril, Carbocisteine, Calcichew, Strontium sachets, Aqueous cream \n\nI reviewed Bill in clinic today. He attended independently and showed me his smartphone prompts and near‑field communication (NFC) tags that he now uses for medication reminders. He scans the tag by his pill organiser at breakfast and evening meals; this was introduced after several missed doses were noted by care staff earlier in the year. He reports good adherence since adopting this system, corroborated by his phone’s reminder log. He also keeps a brief note in his phone of any events he perceives as seizures. \n\nSeizures: Based on his digital diary and care notes, episodes are occurring every eight days on average. He describes brief spells of unresponsiveness with subsequent fatigue and mild confusion, typically lasting a few minutes; no injuries reported. There has been no recent hospital attendance for seizures. Sleep deprivation and acute stress seem to precede some events. No consistent aura is reported. \n\nExamination: He was alert and cooperative. Speech fluent. Cranial nerves intact. Tone mildly increased in the right lower limb, power otherwise full. Gait steady with a slow cadence; no new focal deficits. \n\nInvestigations: No new neuroimaging since last year. Routine bloods (including U&Es, LFTs, FBC, vitamin D) six months ago were within expected ranges for him; DEXA unchanged from previous. \n\nPlan: \n- Continue current anti-seizure regimen unchanged given stability and adherence improvements. \n- Encourage ongoing use of smartphone alarms and NFC tags; patient feels these have helped reduce missed doses. \n- Care team to export monthly seizure logs from his phone to the shared record. \n- Check trough carbamazepine level and routine bloods at next GP visit to ensure therapeutic range and monitor safety. \n- Safety counselling reinforced regarding bathing, cooking, and heights. \n- Review in 6 months, sooner if frequency increases or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Based on his digital diary and care notes, episodes are occurring every eight days on average.\" This gives a clear numeric frequency. Convert \"every eight days\" to the allowed format: 1 per 8 day.",
+      "seizure_frequency_number": [
+        "1 per 8 day",
+        "episodes are occurring every eight days on average"
+      ],
+      "reference": [
+        "1 per 8 day",
+        "Every eight days on average"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

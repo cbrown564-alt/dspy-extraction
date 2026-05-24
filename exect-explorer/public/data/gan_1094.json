@@ -1,0 +1,59 @@
+{
+  "id": "gan_1094",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \nOxcarbazepine (Trileptal) 600 mg twice daily.\n\nI reviewed Emily Carter today following a period of international travel crossing multiple time zones for work. She reports significant circadian disruption over the past fortnight with erratic sleep-wake times. In this context, there has been a clear deterioration in her seizure control: she describes 3 to 5 seizures last week, predominantly occurring in the early hours of the morning after delayed bedtimes. She feels these events are more frequent and somewhat longer than her more settled baseline earlier this year. \n\nShe notes accompanying prodromal symptoms of internal unease and brief disorientation before the events, without clear triggers other than sleep loss and variable mealtimes. There has been no head injury, intercurrent illness, or alcohol excess. She denies missed doses but admits that dosing times have been inconsistent during flights and jet lag. No new neurological deficits have been reported post-event, and there have been no emergency attendances. \n\nWe discussed practical strategies to re-establish regular sleep and medication timing after long-haul travel. She has arranged to avoid further trans-meridian trips for the next month and will keep a detailed seizure and sleep diary. She will contact us sooner if the frequency escalates or if there is any injury or prolonged event. \n\nI will bring her back for review in eight weeks to reassess control once routine has stabilised, and we will consider further investigations if the pattern persists. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 645,
+      "end": 684,
+      "text": "she describes 3 to 5 seizures last week",
+      "attributes": {
+        "Label": "3 to 5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 659,
+      "end": 684,
+      "text": "3 to 5 seizures last week",
+      "attributes": {
+        "Label": "3 to 5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1094,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \nOxcarbazepine (Trileptal) 600 mg twice daily.\n\nI reviewed Emily Carter today following a period of international travel crossing multiple time zones for work. She reports significant circadian disruption over the past fortnight with erratic sleep-wake times. In this context, there has been a clear deterioration in her seizure control: she describes 3 to 5 seizures last week, predominantly occurring in the early hours of the morning after delayed bedtimes. She feels these events are more frequent and somewhat longer than her more settled baseline earlier this year. \n\nShe notes accompanying prodromal symptoms of internal unease and brief disorientation before the events, without clear triggers other than sleep loss and variable mealtimes. There has been no head injury, intercurrent illness, or alcohol excess. She denies missed doses but admits that dosing times have been inconsistent during flights and jet lag. No new neurological deficits have been reported post-event, and there have been no emergency attendances. \n\nWe discussed practical strategies to re-establish regular sleep and medication timing after long-haul travel. She has arranged to avoid further trans-meridian trips for the next month and will keep a detailed seizure and sleep diary. She will contact us sooner if the frequency escalates or if there is any injury or prolonged event. \n\nI will bring her back for review in eight weeks to reassess control once routine has stabilised, and we will consider further investigations if the pattern persists. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'she describes 3 to 5 seizures last week.' This provides a clear numeric range and time frame for current frequency. No other conflicting frequencies are provided. According to the rules, use the highest frequency if multiple exist; however, here it's a single stated range for the last week. Normalize to the allowed format as a range per week.",
+      "seizure_frequency_number": [
+        "3 to 5 per week",
+        "she describes 3 to 5 seizures last week"
+      ],
+      "reference": [
+        "3 to 5 per week",
+        "3 to 5 seizures last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

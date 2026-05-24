@@ -1,0 +1,54 @@
+{
+  "id": "gan_7401",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Patel  \nRiverside Health Centre  \n12 Millbank, London SW1P 3GE  \n\nDear Dr A. Patel,                                                                                                         \n\nEmily Carter, DOB: 22-11-1991, Hospital No: H374920 NHS No. 8473629154  \nFlat 5, 29 Green Lane, London, N4 2AB  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since March 2025  \n\nLamotrigine dispersible 50mg in the morning and 75mg at night (patient-reported)  \n\nLamotrigine Blood Level:  \n\n16th September 2025: 2.8 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 50mg AM / 75mg PM.  \n\nSeizures: The patient reports intermittent brief events persisting despite current regimen, with escalation constrained by side effects. She describes two clusters in the past six weeks, each comprising 1–2 brief focal-feeling spells with transient confusion and no injury. No clear prodrome. No generalised convulsions reported. Recovery within 10–15 minutes. \n\nI reviewed Emily Carter today via video consultation for routine follow-up. She reports increased daily caffeine intake (approximately 5–6 strong coffees and occasional energy drinks), noting that several recent episodes occurred on days with higher caffeine consumption and reduced sleep. She also reports dose-related dizziness and nausea when attempting to increase the evening Lamotrigine dose beyond 75mg, hence the current maintenance at a split dose. She denies missed doses in the past month and uses phone reminders for adherence. No new neurological symptoms, no head injuries, and no intercurrent illness. Menses regular; no pregnancy plans disclosed. \n\nWe discussed potential lifestyle contributors, and she recognises the temporal association with high caffeine and late nights. She prefers to maintain the present Lamotrigine dose for now due to tolerability issues and to monitor episode frequency while moderating caffeine intake. I have asked her to continue a diary recording sleep, caffeine quantity, and any events. She will arrange a repeat Lamotrigine level in 6–8 weeks, aiming for a trough sample before the morning dose for consistency. \n\nI will liaise with the wider team after we review her diary and blood results to consider next steps if events continue at the current rate. She knows to contact the service sooner if episodes increase or if she experiences any new features such as prolonged loss of awareness, injury, or prolonged post-event confusion. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 821,
+      "end": 917,
+      "text": "She describes two clusters in the past six weeks, each comprising 1–2 brief focal-feeling spells",
+      "attributes": {
+        "Label": "2 cluster per 6 week, 1 to 2 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7401,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Patel  \nRiverside Health Centre  \n12 Millbank, London SW1P 3GE  \n\nDear Dr A. Patel,                                                                                                         \n\nEmily Carter, DOB: 22-11-1991, Hospital No: H374920 NHS No. 8473629154  \nFlat 5, 29 Green Lane, London, N4 2AB  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since March 2025  \n\nLamotrigine dispersible 50mg in the morning and 75mg at night (patient-reported)  \n\nLamotrigine Blood Level:  \n\n16th September 2025: 2.8 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 50mg AM / 75mg PM.  \n\nSeizures: The patient reports intermittent brief events persisting despite current regimen, with escalation constrained by side effects. She describes two clusters in the past six weeks, each comprising 1–2 brief focal-feeling spells with transient confusion and no injury. No clear prodrome. No generalised convulsions reported. Recovery within 10–15 minutes. \n\nI reviewed Emily Carter today via video consultation for routine follow-up. She reports increased daily caffeine intake (approximately 5–6 strong coffees and occasional energy drinks), noting that several recent episodes occurred on days with higher caffeine consumption and reduced sleep. She also reports dose-related dizziness and nausea when attempting to increase the evening Lamotrigine dose beyond 75mg, hence the current maintenance at a split dose. She denies missed doses in the past month and uses phone reminders for adherence. No new neurological symptoms, no head injuries, and no intercurrent illness. Menses regular; no pregnancy plans disclosed. \n\nWe discussed potential lifestyle contributors, and she recognises the temporal association with high caffeine and late nights. She prefers to maintain the present Lamotrigine dose for now due to tolerability issues and to monitor episode frequency while moderating caffeine intake. I have asked her to continue a diary recording sleep, caffeine quantity, and any events. She will arrange a repeat Lamotrigine level in 6–8 weeks, aiming for a trough sample before the morning dose for consistency. \n\nI will liaise with the wider team after we review her diary and blood results to consider next steps if events continue at the current rate. She knows to contact the service sooner if episodes increase or if she experiences any new features such as prolonged loss of awareness, injury, or prolonged post-event confusion. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"two clusters in the past six weeks, each comprising 1–2 brief focal-feeling spells.\" This provides a clear cluster frequency and spells per cluster. Over 6 weeks, there were 2 clusters, with 1 to 2 spells per cluster. Using the allowed cluster format: <value1> cluster per <value2> <unit>, <value3> per cluster → 2 cluster per 6 week, 1 to 2 per cluster. No other more frequent or conflicting frequency is given.",
+      "seizure_frequency_number": [
+        "2 cluster per 6 week, 1 to 2 per cluster",
+        "She describes two clusters in the past six weeks, each comprising 1–2 brief focal-feeling spells"
+      ],
+      "reference": [
+        "unknown",
+        "Tolerability-limited dosing with ongoing seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 cluster per 6 week, 1 to 2 per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

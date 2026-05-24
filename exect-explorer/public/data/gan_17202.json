@@ -1,0 +1,59 @@
+{
+  "id": "gan_17202",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 03 August 2018 \n\nDr Patel  \nNorthgate University Hospital  \nNeurology Department, Northgate Way, Newcastle, NE1 4AB  \n\nDear Dr Patel,  \n\nThomas Reed, DOB: 14-07-1986, Hospital No: H938274 NHS No. 4729105638  \n58 Riverbank Close, Gateshead, NE10 0DR  \n\nDiagnoses: \n\nSeizure disorder. \n\nI reviewed Thomas Reed today in the VNS follow-up clinic, accompanied by his partner. He has experienced ongoing focal impaired-awareness seizures, typically 4 episodes weekly. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable. There have been no recent intercurrent illnesses, sleep pattern is stable, and he reports good adherence to prescribed antiseizure medication with no notable adverse effects. Alcohol intake is minimal and there have been no new head injuries. \n\nVNS assessment: The implanted VNS was interrogated in clinic. Lead impedance was within expected range and diagnostics were satisfactory. No parameter changes were made at this review. The patient and partner report intermittent magnet use at onset of events, which they feel can sometimes shorten episodes. Device site is well healed with no signs of infection or discomfort. \n\nPlan: \n- Continue current antiseizure medication regimen as previously prescribed.  \n- Reinforce timely magnet use at aura or early behavioural change.  \n- Maintain seizure diary, including any triggers and magnet swipes.  \n- Routine VNS check in 6 months, or sooner if seizure pattern worsens or magnet benefit diminishes. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 489,
+      "end": 516,
+      "text": "typically 4 episodes weekly",
+      "attributes": {
+        "Label": "4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 427,
+      "end": 717,
+      "text": "He has experienced ongoing focal impaired-awareness seizures, typically 4 episodes weekly. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable",
+      "attributes": {
+        "Label": "4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17202,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 03 August 2018 \n\nDr Patel  \nNorthgate University Hospital  \nNeurology Department, Northgate Way, Newcastle, NE1 4AB  \n\nDear Dr Patel,  \n\nThomas Reed, DOB: 14-07-1986, Hospital No: H938274 NHS No. 4729105638  \n58 Riverbank Close, Gateshead, NE10 0DR  \n\nDiagnoses: \n\nSeizure disorder. \n\nI reviewed Thomas Reed today in the VNS follow-up clinic, accompanied by his partner. He has experienced ongoing focal impaired-awareness seizures, typically 4 episodes weekly. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable. There have been no recent intercurrent illnesses, sleep pattern is stable, and he reports good adherence to prescribed antiseizure medication with no notable adverse effects. Alcohol intake is minimal and there have been no new head injuries. \n\nVNS assessment: The implanted VNS was interrogated in clinic. Lead impedance was within expected range and diagnostics were satisfactory. No parameter changes were made at this review. The patient and partner report intermittent magnet use at onset of events, which they feel can sometimes shorten episodes. Device site is well healed with no signs of infection or discomfort. \n\nPlan: \n- Continue current antiseizure medication regimen as previously prescribed.  \n- Reinforce timely magnet use at aura or early behavioural change.  \n- Maintain seizure diary, including any triggers and magnet swipes.  \n- Routine VNS check in 6 months, or sooner if seizure pattern worsens or magnet benefit diminishes. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He has experienced ongoing focal impaired-awareness seizures, typically 4 episodes weekly.' This provides a clear numeric frequency in episodes per week. No other conflicting frequencies are given. No generalized tonic-clonic seizures since last year does not affect current frequency of focal seizures. Therefore, normalize to '4 per week.'",
+      "seizure_frequency_number": [
+        "4 per week",
+        "typically 4 episodes weekly"
+      ],
+      "reference": [
+        "4 per week",
+        "He has experienced ongoing focal impaired-awareness seizures, typically 4 episodes weekly. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

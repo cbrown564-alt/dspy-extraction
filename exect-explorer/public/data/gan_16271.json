@@ -1,0 +1,59 @@
+{
+  "id": "gan_16271",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2018 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy\n\nMedication: Lamotrigine dispersible 25 mg twice daily (ongoing)\n\nLamotrigine Blood Level:\n- 6 September 2018: <1 mg/L (reference range 1.0–15.0 mg/L), on 25 mg twice daily\n\nSeizures: He experienced seven generalised tonic-clonic seizures so far in September, 1 in August, and five in July, occurring during both wakefulness and sleep.\n\nI conducted a scheduled telephone review with Susan Miller today. He reports keeping a daily diary since June to track prodromal features. He consistently notes periods of low mood and irritability emerging hours to a day before some events, which he now records alongside sleep patterns and missed doses. These mood changes are not universal but recur often enough that he recognises them as a possible prodrome.\n\nHe states adherence to lamotrigine at 25 mg twice daily and denies adverse effects. There is no report of auras or focal warning features preceding the convulsions. Post-ictal confusion and myalgia last several hours, with occasional tongue biting. No injuries requiring medical attention have occurred. He reports both nocturnal and daytime events, sometimes noted on waking with headache and lateralised shoulder soreness, and sometimes witnessed by a family member during the day.\n\nWe discussed safety measures he has already implemented, including avoiding heights and unsupervised swimming, and using a soft headrest at night. He will continue to maintain his seizure and prodrome diary and will bring it to the next review to help correlate timing, potential triggers, and medication timing. Given the low lamotrigine level recorded earlier this month on the current dose, I will confer with the supervising consultant regarding dosing strategy and monitoring, and will update him after that discussion. He is aware to seek urgent care if events cluster or recovery is prolonged.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 558,
+      "end": 719,
+      "text": "Seizures: He experienced seven generalised tonic-clonic seizures so far in September, 1 in August, and five in July, occurring during both wakefulness and sleep.",
+      "attributes": {
+        "Label": "13 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 568,
+      "end": 718,
+      "text": "He experienced seven generalised tonic-clonic seizures so far in September, 1 in August, and five in July, occurring during both wakefulness and sleep",
+      "attributes": {
+        "Label": "13 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16271,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2018 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy\n\nMedication: Lamotrigine dispersible 25 mg twice daily (ongoing)\n\nLamotrigine Blood Level:\n- 6 September 2018: <1 mg/L (reference range 1.0–15.0 mg/L), on 25 mg twice daily\n\nSeizures: He experienced seven generalised tonic-clonic seizures so far in September, 1 in August, and five in July, occurring during both wakefulness and sleep.\n\nI conducted a scheduled telephone review with Susan Miller today. He reports keeping a daily diary since June to track prodromal features. He consistently notes periods of low mood and irritability emerging hours to a day before some events, which he now records alongside sleep patterns and missed doses. These mood changes are not universal but recur often enough that he recognises them as a possible prodrome.\n\nHe states adherence to lamotrigine at 25 mg twice daily and denies adverse effects. There is no report of auras or focal warning features preceding the convulsions. Post-ictal confusion and myalgia last several hours, with occasional tongue biting. No injuries requiring medical attention have occurred. He reports both nocturnal and daytime events, sometimes noted on waking with headache and lateralised shoulder soreness, and sometimes witnessed by a family member during the day.\n\nWe discussed safety measures he has already implemented, including avoiding heights and unsupervised swimming, and using a soft headrest at night. He will continue to maintain his seizure and prodrome diary and will bring it to the next review to help correlate timing, potential triggers, and medication timing. Given the low lamotrigine level recorded earlier this month on the current dose, I will confer with the supervising consultant regarding dosing strategy and monitoring, and will update him after that discussion. He is aware to seek urgent care if events cluster or recovery is prolonged.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states seizure counts by month: seven so far in September, 1 in August, and five in July. Summing: 7 + 1 + 5 = 13 seizures. The observation window spans July through September (clinic date 21 September 2018), i.e., approximately 3 months. Therefore, the seizure frequency is 13 per 3 months. No other competing frequency is provided.",
+      "seizure_frequency_number": [
+        "13 per 3 month",
+        "Seizures: He experienced seven generalised tonic-clonic seizures so far in September, 1 in August, and five in July, occurring during both wakefulness and sleep."
+      ],
+      "reference": [
+        "13 per 3 month",
+        "He experienced seven generalised tonic-clonic seizures so far in September, 1 in August, and five in July, occurring during both wakefulness and sleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

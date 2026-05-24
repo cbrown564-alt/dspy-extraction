@@ -1,0 +1,59 @@
+{
+  "id": "gan_4591",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Helen Carter  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Helen Carter,\n\nDaniel Harris, DOB: 22-11-1990, Hospital No: H728415 NHS No. 9842157630  \nFlat 3, 45 North Wharf Road, London, W2 1LA\n\nEpilepsy – Focal Epilepsy Type\n\nMedication: Carbamazepine modified-release 400mg twice daily; Midazolam 10mg buccal as rescue\n\nCarbamazepine Blood Level:\n\n18 September 2025: 7.9 mg/L (laboratory therapeutic range 4–12 mg/L). Dose 400mg twice daily\n\nSeizures: Patient reports focal aware sensory onset from right hand progressing to impaired awareness on some occasions. Median inter-seizure interval ≈ five months over the past 18 months, with two events in colder months when working prolonged shifts in a cold-chain warehouse. No generalised tonic–clonic seizures in the last two years.\n\nI reviewed Daniel Harris today in face-to-face clinic. He works in a cold-chain warehouse (−20°C zones). He notes that low temperatures and the need for thick insulated gloves can delay access to his buccal midazolam rescue device, which he stores in a pocket within a thermal layer. He has discussed with his supervisor that colleagues are aware of where the kit is kept; he also wears a medical alert badge. He reports consistent adherence to carbamazepine without adverse effects other than mild, transient dizziness at the end of long night shifts.\n\nThere have been no auras or seizures at work in the past five months. The last focal impaired awareness seizure occurred at home after a night shift turnaround; no rescue midazolam was administered. Triggers he identifies are sleep restriction and extended exposure in sub-zero areas. He has begun taking scheduled breaks to warm hands to maintain dexterity for emergency access to rescue medication; he states this has improved confidence. He denies recent head injury, alcohol excess, or intercurrent illness.\n\nPlan: Continue carbamazepine MR 400mg twice daily. Maintain current rescue plan and workplace communication arrangement as reported by patient. We will repeat carbamazepine level and LFTs in six months or sooner if symptoms change. Safety counselling regarding sleep hygiene and consistent rescue kit placement at the start of each shift was reiterated.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 660,
+      "end": 727,
+      "text": "Median inter-seizure interval ≈ five months over the past 18 months",
+      "attributes": {
+        "Label": "1 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 660,
+      "end": 703,
+      "text": "Median inter-seizure interval ≈ five months",
+      "attributes": {
+        "Label": "1 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4591,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Helen Carter  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Helen Carter,\n\nDaniel Harris, DOB: 22-11-1990, Hospital No: H728415 NHS No. 9842157630  \nFlat 3, 45 North Wharf Road, London, W2 1LA\n\nEpilepsy – Focal Epilepsy Type\n\nMedication: Carbamazepine modified-release 400mg twice daily; Midazolam 10mg buccal as rescue\n\nCarbamazepine Blood Level:\n\n18 September 2025: 7.9 mg/L (laboratory therapeutic range 4–12 mg/L). Dose 400mg twice daily\n\nSeizures: Patient reports focal aware sensory onset from right hand progressing to impaired awareness on some occasions. Median inter-seizure interval ≈ five months over the past 18 months, with two events in colder months when working prolonged shifts in a cold-chain warehouse. No generalised tonic–clonic seizures in the last two years.\n\nI reviewed Daniel Harris today in face-to-face clinic. He works in a cold-chain warehouse (−20°C zones). He notes that low temperatures and the need for thick insulated gloves can delay access to his buccal midazolam rescue device, which he stores in a pocket within a thermal layer. He has discussed with his supervisor that colleagues are aware of where the kit is kept; he also wears a medical alert badge. He reports consistent adherence to carbamazepine without adverse effects other than mild, transient dizziness at the end of long night shifts.\n\nThere have been no auras or seizures at work in the past five months. The last focal impaired awareness seizure occurred at home after a night shift turnaround; no rescue midazolam was administered. Triggers he identifies are sleep restriction and extended exposure in sub-zero areas. He has begun taking scheduled breaks to warm hands to maintain dexterity for emergency access to rescue medication; he states this has improved confidence. He denies recent head injury, alcohol excess, or intercurrent illness.\n\nPlan: Continue carbamazepine MR 400mg twice daily. Maintain current rescue plan and workplace communication arrangement as reported by patient. We will repeat carbamazepine level and LFTs in six months or sooner if symptoms change. Safety counselling regarding sleep hygiene and consistent rescue kit placement at the start of each shift was reiterated.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Median inter-seizure interval ≈ five months over the past 18 months.\" This provides a numeric frequency basis. No evidence of complete seizure freedom for at least 6 months is confirmed; it says no auras or seizures at work in the past five months, but a seizure occurred at home after a night shift turnaround within that period, so not seizure-free ≥6 months. Using the stated median interval of approximately five months, convert to allowed format: 1 per 5 months.",
+      "seizure_frequency_number": [
+        "1 per 5 month",
+        "Median inter-seizure interval ≈ five months over the past 18 months"
+      ],
+      "reference": [
+        "1 per 5 month",
+        "Median inter-seizure interval ≈ five months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

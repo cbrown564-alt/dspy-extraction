@@ -1,0 +1,59 @@
+{
+  "id": "gan_4480",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr R Patel\nMaple Grove Medical Centre\n\n45 Maple Grove, London, SE5 2DL\nDear Dr R Patel\nMichael Green, DOB: 14-03-1990, Hospital No: H824559 NHS No. 7392018465\n12A Brookside Court, Peckham, London, SE15 4HT \n\nI reviewed the above patient in the Neurology Clinic today. He is known to have a history of childhood febrile seizures, with no documented events in adolescence, and has presented in adulthood with recurrent seizures. He reports that over the past week he experienced three - five episode of status epilepticus in the past week, necessitating attendance at the Emergency Department on two occasions where episodes terminated following intravenous therapy. He describes preceding hours of mounting anxiety, disturbed sleep, and missed meals due to shift work. His partner reports prolonged unresponsiveness and generalised stiffening with bilateral jerking movements lasting beyond five minutes on at least two occasions, with post-event confusion and myalgia.\n\nHe is currently prescribed Levetiracetam 1 g b.d. and Lamotrigine 150 mg b.d., which he has generally tolerated; he notes intermittent dizziness and reduced appetite since up-titration last month. He denies new rash, visual disturbance or mood lability beyond situational stress related to work. There is no recent head injury, alcohol excess, or recreational drug use by his account. Sleep is fragmented as he is working alternating night shifts. He uses a smartphone seizure diary and his entries correlate with periods of poor sleep and missed doses.\n\nNeurological examination today is non-focal. Cardiovascular and general examination are unremarkable. Routine bloods taken last week by his GP (FBC, U&E, LFTs) were within normal limits by his report; we have requested copies. He has not yet had an MRI brain or prolonged EEG in adulthood. Given the clustering this week and attendance to ED, we discussed emergency care planning, medication adherence, and avoidance of sleep deprivation. He and his partner have been given written advice regarding prolonged seizures and red flag features. He is agreeable to further investigations and to meet our epilepsy specialist nurse for education and support.\n\nPlan:\n- Urgent MRI brain with epilepsy protocol and prolonged video EEG (ambulatory if feasible) to characterise events and guide management.\n- Serum Levetiracetam and Lamotrigine levels to support adherence assessment; repeat routine bloods including LFTs and bone profile.\n- Epilepsy Specialist Nurse input for safety counselling, rescue plan reinforcement, and diary review.\n- Occupational advice: avoid lone working at height or near open water; ensure adequate sleep scheduling; employer letter offered if needed.\n- We have provided written emergency guidance for prolonged seizures and advised his partner on when to call 999.\n\nI will review him in clinic in four weeks or sooner if there are further prolonged events. A copy of this letter will be sent to the patient and the Epilepsy Specialist Nurse.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 503,
+      "end": 596,
+      "text": "over the past week he experienced three - five episode of status epilepticus in the past week",
+      "attributes": {
+        "Label": "3 to 5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 537,
+      "end": 596,
+      "text": "three - five episode of status epilepticus in the past week",
+      "attributes": {
+        "Label": "3 to 5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4480,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr R Patel\nMaple Grove Medical Centre\n\n45 Maple Grove, London, SE5 2DL\nDear Dr R Patel\nMichael Green, DOB: 14-03-1990, Hospital No: H824559 NHS No. 7392018465\n12A Brookside Court, Peckham, London, SE15 4HT \n\nI reviewed the above patient in the Neurology Clinic today. He is known to have a history of childhood febrile seizures, with no documented events in adolescence, and has presented in adulthood with recurrent seizures. He reports that over the past week he experienced three - five episode of status epilepticus in the past week, necessitating attendance at the Emergency Department on two occasions where episodes terminated following intravenous therapy. He describes preceding hours of mounting anxiety, disturbed sleep, and missed meals due to shift work. His partner reports prolonged unresponsiveness and generalised stiffening with bilateral jerking movements lasting beyond five minutes on at least two occasions, with post-event confusion and myalgia.\n\nHe is currently prescribed Levetiracetam 1 g b.d. and Lamotrigine 150 mg b.d., which he has generally tolerated; he notes intermittent dizziness and reduced appetite since up-titration last month. He denies new rash, visual disturbance or mood lability beyond situational stress related to work. There is no recent head injury, alcohol excess, or recreational drug use by his account. Sleep is fragmented as he is working alternating night shifts. He uses a smartphone seizure diary and his entries correlate with periods of poor sleep and missed doses.\n\nNeurological examination today is non-focal. Cardiovascular and general examination are unremarkable. Routine bloods taken last week by his GP (FBC, U&E, LFTs) were within normal limits by his report; we have requested copies. He has not yet had an MRI brain or prolonged EEG in adulthood. Given the clustering this week and attendance to ED, we discussed emergency care planning, medication adherence, and avoidance of sleep deprivation. He and his partner have been given written advice regarding prolonged seizures and red flag features. He is agreeable to further investigations and to meet our epilepsy specialist nurse for education and support.\n\nPlan:\n- Urgent MRI brain with epilepsy protocol and prolonged video EEG (ambulatory if feasible) to characterise events and guide management.\n- Serum Levetiracetam and Lamotrigine levels to support adherence assessment; repeat routine bloods including LFTs and bone profile.\n- Epilepsy Specialist Nurse input for safety counselling, rescue plan reinforcement, and diary review.\n- Occupational advice: avoid lone working at height or near open water; ensure adequate sleep scheduling; employer letter offered if needed.\n- We have provided written emergency guidance for prolonged seizures and advised his partner on when to call 999.\n\nI will review him in clinic in four weeks or sooner if there are further prolonged events. A copy of this letter will be sent to the patient and the Epilepsy Specialist Nurse.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'over the past week he experienced three - five episode of status epilepticus in the past week'. This provides a numeric range and a time frame of one week. No other differing frequency is provided. Therefore, normalize to '3 to 5 per week' based on the stated episodes in the past week.",
+      "seizure_frequency_number": [
+        "3 to 5 per week",
+        "over the past week he experienced three - five episode of status epilepticus in the past week"
+      ],
+      "reference": [
+        "3 to 5 per week",
+        "three - five episode of status epilepticus in the past week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

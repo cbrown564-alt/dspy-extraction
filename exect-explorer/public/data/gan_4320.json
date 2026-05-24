@@ -1,0 +1,59 @@
+{
+  "id": "gan_4320",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 30 August 2014 \n\nDr Priya Nair\nRiverside Neurology Clinic\n\n12 Mill Wharf, Southwark, London SE1 3QG\nDear Dr Priya Nair\nMichael Turner, DOB: 04-02-1990, Hospital No: R783920 NHS No. 7783920451\nFlat 4, 29 Kingfisher Court, Deptford, London SE8 4LP \n\nI reviewed the above patient in the Neurology Clinic today. He works as a stage lighting technician with frequent exposure to strobe and bright lights at concerts and theatre venues. Colleagues have on occasion witnessed his events, and he has been keeping a diary to help track patterns. He reports that the current seizure frequency eight/30, with events clustering around weeks containing multi-day shows and late finishes. He describes brief warnings of a rising sense of unease and occasional visual discomfort in bright environments, followed at times by loss of awareness; on three occasions this past month he was told he stiffened and jerked briefly. Recovery features include post-event fatigue and mild headache.\n\nHe is currently taking Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. without notable adverse effects beyond intermittent irritability and reduced sleep on show days. He denies rashes, diplopia, or new neurological symptoms. There is no history of recent head injury, alcohol or recreational drug use, and he remains otherwise well. He has trialled blue-light–reduction glasses at work; he is unsure of benefit. He has not yet had a formal occupational health assessment regarding lighting exposure.\n\nOver the past six months he has attempted to structure sleep and hydration around shift patterns. He notes that events are more likely after prolonged rehearsal with rapid strobe sequences. Colleagues are aware of basic first aid and have, on two occasions, guided him to a seated position safely. No status episodes or emergency department attendances have occurred. He continues to drive only for work-related equipment transport within venue sites and reports that he avoids driving immediately after any event.\n\nOn examination today he was alert, oriented, and neurologically intact. Cardiovascular and general examination were unremarkable. Prior routine EEG last year was non-diagnostic and brain MRI was reported as normal. We discussed further evaluation including prolonged video-EEG monitoring to clarify event semiology and potential precipitants. He is agreeable to proceeding, and I have requested a slot with our telemetry unit. I have also suggested that he continue his seizure diary with particular note of light patterns and sleep, and that his employer consider temporary adjustments to reduce direct strobe exposure pending further assessment. We will not alter medication until we have the additional data from monitoring.\n\nI will review him after telemetry or sooner if there is any clinical deterioration. He knows to seek urgent help for any prolonged convulsive event or injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 579,
+      "end": 633,
+      "text": "He reports that the current seizure frequency eight/30",
+      "attributes": {
+        "Label": "8 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 607,
+      "end": 633,
+      "text": "seizure frequency eight/30",
+      "attributes": {
+        "Label": "8 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4320,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 30 August 2014 \n\nDr Priya Nair\nRiverside Neurology Clinic\n\n12 Mill Wharf, Southwark, London SE1 3QG\nDear Dr Priya Nair\nMichael Turner, DOB: 04-02-1990, Hospital No: R783920 NHS No. 7783920451\nFlat 4, 29 Kingfisher Court, Deptford, London SE8 4LP \n\nI reviewed the above patient in the Neurology Clinic today. He works as a stage lighting technician with frequent exposure to strobe and bright lights at concerts and theatre venues. Colleagues have on occasion witnessed his events, and he has been keeping a diary to help track patterns. He reports that the current seizure frequency eight/30, with events clustering around weeks containing multi-day shows and late finishes. He describes brief warnings of a rising sense of unease and occasional visual discomfort in bright environments, followed at times by loss of awareness; on three occasions this past month he was told he stiffened and jerked briefly. Recovery features include post-event fatigue and mild headache.\n\nHe is currently taking Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. without notable adverse effects beyond intermittent irritability and reduced sleep on show days. He denies rashes, diplopia, or new neurological symptoms. There is no history of recent head injury, alcohol or recreational drug use, and he remains otherwise well. He has trialled blue-light–reduction glasses at work; he is unsure of benefit. He has not yet had a formal occupational health assessment regarding lighting exposure.\n\nOver the past six months he has attempted to structure sleep and hydration around shift patterns. He notes that events are more likely after prolonged rehearsal with rapid strobe sequences. Colleagues are aware of basic first aid and have, on two occasions, guided him to a seated position safely. No status episodes or emergency department attendances have occurred. He continues to drive only for work-related equipment transport within venue sites and reports that he avoids driving immediately after any event.\n\nOn examination today he was alert, oriented, and neurologically intact. Cardiovascular and general examination were unremarkable. Prior routine EEG last year was non-diagnostic and brain MRI was reported as normal. We discussed further evaluation including prolonged video-EEG monitoring to clarify event semiology and potential precipitants. He is agreeable to proceeding, and I have requested a slot with our telemetry unit. I have also suggested that he continue his seizure diary with particular note of light patterns and sleep, and that his employer consider temporary adjustments to reduce direct strobe exposure pending further assessment. We will not alter medication until we have the additional data from monitoring.\n\nI will review him after telemetry or sooner if there is any clinical deterioration. He knows to seek urgent help for any prolonged convulsive event or injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He reports that the current seizure frequency eight/30\". This appears to denote 8 events per 30 days, i.e., 8 per month. There are mentions of clustering around certain weeks, but no alternative numeric rate is provided that is higher or more specific than the monthly figure. No evidence of seizure freedom. Therefore normalize to 8 per month.",
+      "seizure_frequency_number": [
+        "8 per month",
+        "He reports that the current seizure frequency eight/30"
+      ],
+      "reference": [
+        "8 per month",
+        "seizure frequency eight/30"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

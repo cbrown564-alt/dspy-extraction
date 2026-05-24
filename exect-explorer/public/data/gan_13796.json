@@ -1,0 +1,59 @@
+{
+  "id": "gan_13796",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Mark Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Singh (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review ahead of exams\n\nHi Emily\n\nEpilepsy Diagnosis:\n\n(assessment ongoing; classification not established)\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Propranolol 10 mg as required for performance anxiety (patient-reported, used infrequently)\n\n\nPresent Seizure Frequency:\n\nHe reports brief collapses with shaking during periods of high stress, typically after prolonged study sessions and poor sleep. He describes preserved awareness in some episodes, rapid recovery, and no tongue biting or incontinence. He notes that these events have eased since improving sleep and hydration; events at present are non-epileptic in nature and reasonably settled now that his general health has picked up.\n\n\nPlan of Action:\n\nThe history is primarily patient-reported as he is a university student preparing for examinations with extended study hours. There are likely multiple contributors including sleep deprivation, caffeine excess, and anxiety. He is tolerating lamotrigine without adverse effects. No immediate change to anti-seizure therapy today. I have advised strict sleep hygiene, limiting caffeine, and taking regular meal breaks. We discussed safety: avoid heights, swimming alone, and operating machinery when overtired. He will keep a detailed event diary and, if possible, obtain a witness video of typical episodes.\n\nInvestigations: We will arrange an outpatient EEG and review prior MRI (patient believes normal; we will request images). If events recur despite improved sleep, we will consider ambulatory EEG during study period.\n\nFollow-up: I have arranged a review in 3 months, or sooner if events increase in frequency, duration, or if there is any injury or prolonged confusion. He knows how to contact the epilepsy specialist nurse for interim advice.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 900,
+      "end": 968,
+      "text": "events at present are non-epileptic in nature and reasonably settled",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13796,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Mark Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Singh (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review ahead of exams\n\nHi Emily\n\nEpilepsy Diagnosis:\n\n(assessment ongoing; classification not established)\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Propranolol 10 mg as required for performance anxiety (patient-reported, used infrequently)\n\n\nPresent Seizure Frequency:\n\nHe reports brief collapses with shaking during periods of high stress, typically after prolonged study sessions and poor sleep. He describes preserved awareness in some episodes, rapid recovery, and no tongue biting or incontinence. He notes that these events have eased since improving sleep and hydration; events at present are non-epileptic in nature and reasonably settled now that his general health has picked up.\n\n\nPlan of Action:\n\nThe history is primarily patient-reported as he is a university student preparing for examinations with extended study hours. There are likely multiple contributors including sleep deprivation, caffeine excess, and anxiety. He is tolerating lamotrigine without adverse effects. No immediate change to anti-seizure therapy today. I have advised strict sleep hygiene, limiting caffeine, and taking regular meal breaks. We discussed safety: avoid heights, swimming alone, and operating machinery when overtired. He will keep a detailed event diary and, if possible, obtain a witness video of typical episodes.\n\nInvestigations: We will arrange an outpatient EEG and review prior MRI (patient believes normal; we will request images). If events recur despite improved sleep, we will consider ambulatory EEG during study period.\n\nFollow-up: I have arranged a review in 3 months, or sooner if events increase in frequency, duration, or if there is any injury or prolonged confusion. He knows how to contact the epilepsy specialist nurse for interim advice.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The 'Present Seizure Frequency' section describes collapse/shaking episodes but explicitly states these events are currently non-epileptic and have eased. There is no numeric frequency given, no explicit count over any time period, and no clear statement that the patient has had zero epileptic seizures for a defined duration (e.g., ≥6 months). Without a quantifiable rate or confirmable seizure-free period, the seizure frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "events at present are non-epileptic in nature and reasonably settled"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures are currently non-epileptic and are not too bad now that he is feeling better"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

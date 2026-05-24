@@ -1,0 +1,59 @@
+{
+  "id": "gan_14282",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 10 January 2023 \n\nDr Patel  \nSt. George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, Tooting, London SW17 0QT  \n\nDear Dr Patel,  \n\nThomas Reed, DOB: 14-08-1988, Hospital No: H529476 NHS No. 9483726150  \n12 Brookside Close, Wimbledon, London SW19 3AX  \n\nDiagnoses: \n\nSeizure disorder. \n\nThank you for reviewing Thomas Reed, who attended clinic today with his partner. Over the past six weeks there has been a notable deterioration in his overall stability, with several recent events associated with falls or minor injuries reported at home and outdoors. He describes escalating post-ictal confusion and bruising to the knees and forearms following two unwitnessed collapses on stairs and when exiting public transport. He has not required emergency treatment, but these occurrences have increased his and his partner’s anxiety regarding safety and supervision. \n\nMedication and recent course: He came off Levetiracetam on 10 December. In the following week, he had several seizures, one associated with sleep deprivation. No further seizures have occurred since. He reports that sleep quality has been variable and that he occasionally misses meals when working late. No other anti-seizure medicines are currently prescribed, and there have been no recent intercurrent illnesses. He is using a smartphone seizure diary, which corroborates the timing of the early post-withdrawal events and the subsequent seizure-free interval. \n\nExamination today was unremarkable with normal cardiorespiratory observations and no focal neurological deficit. Gait was steady during assessment, though he remains apprehensive about uneven surfaces following the recent falls. There are fading ecchymoses on the left forearm and right patella without joint effusion. \n\nInvestigations and management plan: We discussed risk minimisation given the recent deterioration in functional safety. I advised practical measures around sleep regularity, hydration, and avoidance of alcohol excess; he has agreed to implement these. A community occupational therapy falls assessment has been requested to review his home environment (stairs lighting, bathroom rails) and street safety. I have arranged an ambulatory EEG and updated bloods (U&E, LFT, FBC, vitamin D) to exclude contributory factors. We will also obtain a repeat MRI (epilepsy protocol) given the step-change in injury pattern, even though there has been no definitive new neurological sign. \n\nWe have provided a work note recommending temporary modification of duties to reduce lone working at height and to allow scheduled rest breaks. He and his partner have been counselled on immediate first aid measures and timing of emergency escalation should further collapses occur. He has been given a written safety plan and instructed to continue the seizure diary. \n\nFollow-up: I will review him in six weeks or sooner if further seizures or injuries occur. If the falls persist or if there is any recurrence of seizures, we will reconsider initiation of anti-seizure medication after discussing options and potential side effects at that time. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1008,
+      "end": 1134,
+      "text": "In the following week, he had several seizures, one associated with sleep deprivation. No further seizures have occurred since",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 966,
+      "end": 1134,
+      "text": "He came off Levetiracetam on 10 December. In the following week, he had several seizures, one associated with sleep deprivation. No further seizures have occurred since",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14282,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 10 January 2023 \n\nDr Patel  \nSt. George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, Tooting, London SW17 0QT  \n\nDear Dr Patel,  \n\nThomas Reed, DOB: 14-08-1988, Hospital No: H529476 NHS No. 9483726150  \n12 Brookside Close, Wimbledon, London SW19 3AX  \n\nDiagnoses: \n\nSeizure disorder. \n\nThank you for reviewing Thomas Reed, who attended clinic today with his partner. Over the past six weeks there has been a notable deterioration in his overall stability, with several recent events associated with falls or minor injuries reported at home and outdoors. He describes escalating post-ictal confusion and bruising to the knees and forearms following two unwitnessed collapses on stairs and when exiting public transport. He has not required emergency treatment, but these occurrences have increased his and his partner’s anxiety regarding safety and supervision. \n\nMedication and recent course: He came off Levetiracetam on 10 December. In the following week, he had several seizures, one associated with sleep deprivation. No further seizures have occurred since. He reports that sleep quality has been variable and that he occasionally misses meals when working late. No other anti-seizure medicines are currently prescribed, and there have been no recent intercurrent illnesses. He is using a smartphone seizure diary, which corroborates the timing of the early post-withdrawal events and the subsequent seizure-free interval. \n\nExamination today was unremarkable with normal cardiorespiratory observations and no focal neurological deficit. Gait was steady during assessment, though he remains apprehensive about uneven surfaces following the recent falls. There are fading ecchymoses on the left forearm and right patella without joint effusion. \n\nInvestigations and management plan: We discussed risk minimisation given the recent deterioration in functional safety. I advised practical measures around sleep regularity, hydration, and avoidance of alcohol excess; he has agreed to implement these. A community occupational therapy falls assessment has been requested to review his home environment (stairs lighting, bathroom rails) and street safety. I have arranged an ambulatory EEG and updated bloods (U&E, LFT, FBC, vitamin D) to exclude contributory factors. We will also obtain a repeat MRI (epilepsy protocol) given the step-change in injury pattern, even though there has been no definitive new neurological sign. \n\nWe have provided a work note recommending temporary modification of duties to reduce lone working at height and to allow scheduled rest breaks. He and his partner have been counselled on immediate first aid measures and timing of emergency escalation should further collapses occur. He has been given a written safety plan and instructed to continue the seizure diary. \n\nFollow-up: I will review him in six weeks or sooner if further seizures or injuries occur. If the falls persist or if there is any recurrence of seizures, we will reconsider initiation of anti-seizure medication after discussing options and potential side effects at that time. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit seizure timing: The letter states he stopped Levetiracetam on 10 December. In the following week, he had \"several seizures\" and \"No further seizures have occurred since.\" 2) Establish the observation window: Clinic date is 10 January 2023. From 10 December to 10 January is approximately 1 month (about 31 days). 3) Aggregate seizures over this window: Within this ~1-month period, there were multiple (unspecified count >1) seizures confined to the first week, and none thereafter. 4) Map to allowed format: Since the exact number is not specified (\"several\"), use \"multiple\". Using the global ~1-month window, the rate is multiple per month. 5) Not seizure-free: He is not seizure-free for ≥6 months, so we report frequency rather than seizure-free status.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "In the following week, he had several seizures, one associated with sleep deprivation. No further seizures have occurred since"
+      ],
+      "reference": [
+        "multiple per month",
+        "He came off Levetiracetam on 10 December. In the following week, he had several seizures, one associated with sleep deprivation. No further seizures have occurred since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

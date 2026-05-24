@@ -1,0 +1,59 @@
+{
+  "id": "gan_2740",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 15 May 2017 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nThank you for asking me to review your patient in the Neurology Clinic today. He attended unaccompanied and provided a clear account of recent events. He continues to experience complex partial seizure monthly, typically preceded by a brief sense of unease and difficulty focusing, followed by behavioural arrest and impaired awareness for a few minutes, with fatigue thereafter. He denies tongue biting or incontinence. There have been no generalised convulsions reported over the past six months. He keeps a diary which corroborates the complex partial seizure monthly pattern since late spring.\n\nHe reports social alcohol use and is currently reducing, stating that he now limits himself to occasional drinks at weekends and avoids alcohol altogether in the days following a seizure. He feels this reduction has modestly improved his sleep quality. He denies recreational drug use. No recent head injuries, infections, or new neurological symptoms. He is working full time and has maintained driving cessation in line with prior advice following episodes.\n\nMedication adherence is good by his report, with no missed doses in the past month. He notes intermittent daytime lethargy and mild word-finding difficulty, but no clear mood disturbance. Sleep is variable, averaging 6–7 hours per night. He has not required emergency services or rescue medication since his last review.\n\nExamination today was unremarkable: he was alert and oriented with normal speech and language at baseline, intact cranial nerves, normal tone, power, coordination, and gait. No dermatological rash or tremor observed. Vitals were stable.\n\nPlan:\n- Continue current antiepileptic regimen unchanged for now, given the stable complex partial seizure monthly pattern and lack of generalised convulsions.\n- Reinforced seizure diary use, including potential triggers such as sleep loss and alcohol; he will continue his ongoing alcohol reduction as discussed.\n- Arrange routine bloods (FBC, U&E, LFTs) to monitor general health and medication tolerability.\n- Offer referral to the epilepsy nurse specialist for further education and support around lifestyle management and coping strategies, which he is willing to engage with.\n- Safety advice re-iterated, including bathing/showering precautions, working at heights, and machinery use.\n- Follow-up in 4 months, or sooner if the frequency increases beyond complex partial seizure monthly, any new features emerge, or if adverse effects become troublesome.\n\nPlease do not hesitate to contact me if you would like any further information.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 393,
+      "end": 448,
+      "text": "continues to experience complex partial seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 417,
+      "end": 448,
+      "text": "complex partial seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2740,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 15 May 2017 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nThank you for asking me to review your patient in the Neurology Clinic today. He attended unaccompanied and provided a clear account of recent events. He continues to experience complex partial seizure monthly, typically preceded by a brief sense of unease and difficulty focusing, followed by behavioural arrest and impaired awareness for a few minutes, with fatigue thereafter. He denies tongue biting or incontinence. There have been no generalised convulsions reported over the past six months. He keeps a diary which corroborates the complex partial seizure monthly pattern since late spring.\n\nHe reports social alcohol use and is currently reducing, stating that he now limits himself to occasional drinks at weekends and avoids alcohol altogether in the days following a seizure. He feels this reduction has modestly improved his sleep quality. He denies recreational drug use. No recent head injuries, infections, or new neurological symptoms. He is working full time and has maintained driving cessation in line with prior advice following episodes.\n\nMedication adherence is good by his report, with no missed doses in the past month. He notes intermittent daytime lethargy and mild word-finding difficulty, but no clear mood disturbance. Sleep is variable, averaging 6–7 hours per night. He has not required emergency services or rescue medication since his last review.\n\nExamination today was unremarkable: he was alert and oriented with normal speech and language at baseline, intact cranial nerves, normal tone, power, coordination, and gait. No dermatological rash or tremor observed. Vitals were stable.\n\nPlan:\n- Continue current antiepileptic regimen unchanged for now, given the stable complex partial seizure monthly pattern and lack of generalised convulsions.\n- Reinforced seizure diary use, including potential triggers such as sleep loss and alcohol; he will continue his ongoing alcohol reduction as discussed.\n- Arrange routine bloods (FBC, U&E, LFTs) to monitor general health and medication tolerability.\n- Offer referral to the epilepsy nurse specialist for further education and support around lifestyle management and coping strategies, which he is willing to engage with.\n- Safety advice re-iterated, including bathing/showering precautions, working at heights, and machinery use.\n- Follow-up in 4 months, or sooner if the frequency increases beyond complex partial seizure monthly, any new features emerge, or if adverse effects become troublesome.\n\nPlease do not hesitate to contact me if you would like any further information.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"continues to experience complex partial seizure monthly\" and that the diary \"corroborates the complex partial seizure monthly pattern since late spring.\" No generalised convulsions in past six months does not negate ongoing partial seizures. The highest/only stated frequency is one complex partial seizure per month. Therefore normalize to '1 per month'.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "continues to experience complex partial seizure monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "complex partial seizure monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_8512",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 30 September 2015 \n\nDr Priya Shah  \nSt Helier Hospital  \nNeurosciences Outpatients, Wrythe Lane, Carshalton, SM5 1AA  \n\nDear Dr Priya Shah,  \n\nJordan Evans, DOB: 14-11-1991, Hospital No: A9374652 NHS No. 7482201359  \n82 Brookside Avenue, Sutton, SM2 7QH  \n\nDiagnoses: \n\nUnder neurological follow‑up for recurrent transient loss of awareness/events under investigation. \n\nJordan Evans attended today with their partner. They report stable wellbeing since the last review. The patient wears a smartwatch with fall‑detection enabled; the companion app’s log was reviewed in clinic and no fall alerts or automated SOS triggers were recorded over the past three months. Interval history negative for seizures. The patient also keeps a personal diary, which shows no entries for events, injuries, or post‑event confusion over the same period. There have been no emergency presentations, medication changes, or new comorbid symptoms reported. Sleep and hydration have been adequate by patient report.\n\nCurrent therapy remains unchanged. No rescue medication has been required. Neurological examination today was unremarkable. Bloods from the prior visit were within reference ranges. We discussed continuing use of the smartwatch as an adjunct to history-taking; time‑stamped alerts may assist future event chronology if episodes recur.\n\nPlan: \n- Continue current management and self‑monitoring.  \n- Advise the patient to export smartwatch alert logs before the next visit so that any future events can be correlated with subjective symptoms.  \n- Routine follow‑up in six months, or sooner if any events occur.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 721,
+      "end": 760,
+      "text": "Interval history negative for seizures.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 721,
+      "end": 759,
+      "text": "Interval history negative for seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8512,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 30 September 2015 \n\nDr Priya Shah  \nSt Helier Hospital  \nNeurosciences Outpatients, Wrythe Lane, Carshalton, SM5 1AA  \n\nDear Dr Priya Shah,  \n\nJordan Evans, DOB: 14-11-1991, Hospital No: A9374652 NHS No. 7482201359  \n82 Brookside Avenue, Sutton, SM2 7QH  \n\nDiagnoses: \n\nUnder neurological follow‑up for recurrent transient loss of awareness/events under investigation. \n\nJordan Evans attended today with their partner. They report stable wellbeing since the last review. The patient wears a smartwatch with fall‑detection enabled; the companion app’s log was reviewed in clinic and no fall alerts or automated SOS triggers were recorded over the past three months. Interval history negative for seizures. The patient also keeps a personal diary, which shows no entries for events, injuries, or post‑event confusion over the same period. There have been no emergency presentations, medication changes, or new comorbid symptoms reported. Sleep and hydration have been adequate by patient report.\n\nCurrent therapy remains unchanged. No rescue medication has been required. Neurological examination today was unremarkable. Bloods from the prior visit were within reference ranges. We discussed continuing use of the smartwatch as an adjunct to history-taking; time‑stamped alerts may assist future event chronology if episodes recur.\n\nPlan: \n- Continue current management and self‑monitoring.  \n- Advise the patient to export smartwatch alert logs before the next visit so that any future events can be correlated with subjective symptoms.  \n- Routine follow‑up in six months, or sooner if any events occur.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Interval history negative for seizures.\" It also notes supporting evidence from the smartwatch log and personal diary showing no events over the past three months. This confirms no seizures in the recent period, but the duration of seizure freedom is only clearly documented as three months, which is less than the six-month threshold for 'seizure free' under the rules. Therefore, the appropriate normalized label is 'seizure free for multiple months' since the patient is currently seizure-free for several months but not confirmed for at least six months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Interval history negative for seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Interval history negative for seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

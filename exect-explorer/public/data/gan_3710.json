@@ -1,0 +1,59 @@
+{
+  "id": "gan_3710",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact, he reports ongoing brief collapses and convulsive episodes that have continued despite good adherence to medication. Occupational health at his employer has been providing periodic summaries, which he brought to clinic; these corroborate his own seizure diary entries and note frequent short episodes at work with occasional post-event confusion. In line with his diary, we documented the current frequency as TC *5/wk, with several being witnessed by colleagues. These appear to occur without a clear prodrome and are sometimes clustered after consecutive night shifts. He denies any new neurological symptoms between events.\n\nHe is currently taking Levetiracetam 1000 mg twice daily and Lamotrigine 150 mg twice daily. He has had no notable rashes or mood lability beyond intermittent irritability, which he attributes to poor sleep. No missed doses reported. He does not drive and confirms ongoing compliance with DVLA guidance. He has arranged adjustments with his employer to avoid lone working on machinery, and the occupational health summaries document these accommodations as effective in reducing injury risk, though not event frequency.\n\nOn examination today he was alert and oriented with normal cranial nerves, power, coordination and gait. No tongue lacerations were visible, and there were faint bruises over the right forearm consistent with recent falls. Routine bloods in August were unremarkable (U&E, LFTs, FBC within reference). He has not yet had prolonged EEG or video telemetry. He remains understandably anxious about work attendance and job security but declined formal counselling today; he would consider this if symptoms persist.\n\nPlan: I have requested an expedited prolonged EEG with video monitoring to better characterise events and to align with the collateral reports from occupational health. I will also arrange a medication level check for Lamotrigine to ensure therapeutic range, although clinical correlation will guide decisions. Pending these investigations, I have not altered his current regimen. He will continue to record events and bring both his diary and any updated occupational health summaries to the next review. We discussed seizure first aid and workplace safety; he is aware to seek urgent care for prolonged events or injury.\n\nI will write again when the investigations are available. Please let me know if there are any concerns from your side or if further workplace documentation is required.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 698,
+      "end": 745,
+      "text": "we documented the current frequency as TC *5/wk",
+      "attributes": {
+        "Label": "5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 737,
+      "end": 745,
+      "text": "TC *5/wk",
+      "attributes": {
+        "Label": "5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3710,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact, he reports ongoing brief collapses and convulsive episodes that have continued despite good adherence to medication. Occupational health at his employer has been providing periodic summaries, which he brought to clinic; these corroborate his own seizure diary entries and note frequent short episodes at work with occasional post-event confusion. In line with his diary, we documented the current frequency as TC *5/wk, with several being witnessed by colleagues. These appear to occur without a clear prodrome and are sometimes clustered after consecutive night shifts. He denies any new neurological symptoms between events.\n\nHe is currently taking Levetiracetam 1000 mg twice daily and Lamotrigine 150 mg twice daily. He has had no notable rashes or mood lability beyond intermittent irritability, which he attributes to poor sleep. No missed doses reported. He does not drive and confirms ongoing compliance with DVLA guidance. He has arranged adjustments with his employer to avoid lone working on machinery, and the occupational health summaries document these accommodations as effective in reducing injury risk, though not event frequency.\n\nOn examination today he was alert and oriented with normal cranial nerves, power, coordination and gait. No tongue lacerations were visible, and there were faint bruises over the right forearm consistent with recent falls. Routine bloods in August were unremarkable (U&E, LFTs, FBC within reference). He has not yet had prolonged EEG or video telemetry. He remains understandably anxious about work attendance and job security but declined formal counselling today; he would consider this if symptoms persist.\n\nPlan: I have requested an expedited prolonged EEG with video monitoring to better characterise events and to align with the collateral reports from occupational health. I will also arrange a medication level check for Lamotrigine to ensure therapeutic range, although clinical correlation will guide decisions. Pending these investigations, I have not altered his current regimen. He will continue to record events and bring both his diary and any updated occupational health summaries to the next review. We discussed seizure first aid and workplace safety; he is aware to seek urgent care for prolonged events or injury.\n\nI will write again when the investigations are available. Please let me know if there are any concerns from your side or if further workplace documentation is required.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"we documented the current frequency as TC *5/wk\". TC likely denotes tonic-clonic seizures, but per instructions we focus on the numeric frequency. This provides a clear current seizure frequency of 5 per week. No other conflicting frequencies are provided. Therefore, the normalized label is 5 per week.",
+      "seizure_frequency_number": [
+        "5 per week",
+        "we documented the current frequency as TC *5/wk"
+      ],
+      "reference": [
+        "5 per week",
+        "TC *5/wk"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

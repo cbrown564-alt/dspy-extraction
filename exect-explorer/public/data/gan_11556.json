@@ -1,0 +1,47 @@
+{
+  "id": "gan_11556",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 October 2016 10:15\nTo: neuro.preassessment@nhs.net\nCc: Dr Daniel Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Ms Rebecca Nolan (Clinic Coordinator) (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Pre-assessment clinic scheduling (admin only)\n\nHi Emily\n\nReason for contact:\nRotating shift worker, including nights, with disrupted circadian rhythm. Requires administrative scheduling for epilepsy pre-assessment clinic.\n\nScheduling plan (admin only):\n- Please book a 45-minute epilepsy pre-assessment clinic slot within 3–4 weeks.\n- Offer morning appointments between 09:00–11:00 to accommodate circadian disruption from night shifts.\n- If mornings are not feasible, provide a late-afternoon slot (after 16:00) on a non-post-night-shift day.\n- Arrange telephone pre-check (10 minutes) 48–72 hours prior to the appointment to confirm medication list, work rota for the preceding week, and transport needs.\n- Ensure access to a quiet waiting area on arrival.\n\nAdministrative notes:\n- No medication changes to be actioned as part of this booking.\n- Please confirm the appointment by email and SMS, with a reminder 72 hours prior.\n- If the patient reports an upcoming run of night shifts, offer a rapid rebook within 7 days.\n\nFollow-up:\nPlease send confirmed date/time and clinic location to this thread once booked.\n\nWith best wishes",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11556,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 October 2016 10:15\nTo: neuro.preassessment@nhs.net\nCc: Dr Daniel Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Ms Rebecca Nolan (Clinic Coordinator) (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Pre-assessment clinic scheduling (admin only)\n\nHi Emily\n\nReason for contact:\nRotating shift worker, including nights, with disrupted circadian rhythm. Requires administrative scheduling for epilepsy pre-assessment clinic.\n\nScheduling plan (admin only):\n- Please book a 45-minute epilepsy pre-assessment clinic slot within 3–4 weeks.\n- Offer morning appointments between 09:00–11:00 to accommodate circadian disruption from night shifts.\n- If mornings are not feasible, provide a late-afternoon slot (after 16:00) on a non-post-night-shift day.\n- Arrange telephone pre-check (10 minutes) 48–72 hours prior to the appointment to confirm medication list, work rota for the preceding week, and transport needs.\n- Ensure access to a quiet waiting area on arrival.\n\nAdministrative notes:\n- No medication changes to be actioned as part of this booking.\n- Please confirm the appointment by email and SMS, with a reminder 72 hours prior.\n- If the patient reports an upcoming run of night shifts, offer a rapid rebook within 7 days.\n\nFollow-up:\nPlease send confirmed date/time and clinic location to this thread once booked.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter is purely administrative regarding scheduling an epilepsy pre-assessment clinic. It contains no information about whether the patient currently has seizures or any seizure frequency. There are no numeric or qualitative statements about seizure occurrence, duration, or seizure-free intervals. Therefore, per rule 5, since seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter with scheduling information for an epilepsy pre-assessment clinic (admin only)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

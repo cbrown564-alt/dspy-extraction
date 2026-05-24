@@ -1,0 +1,59 @@
+{
+  "id": "gan_11076",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 March 2017 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis under ongoing evaluation\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient reports using on approximately one in three cluster episodes)\n\n\nPresent Seizure Frequency:\n\nEvery two months a cluster of ~two to four brief absences\n\n\nPlan of Action:\n\nThe patient describes brief episodes of behavioural arrest with rapid recovery, typically occurring in a short cluster approximately every eight weeks, without clear precipitant. They report good general tolerability of lamotrigine with occasional dizziness when dehydrated. Home and work routines are stable; sleep is generally adequate. They do not drive.\n\nGiven the pattern and the absence of a consistent trigger, we will optimise the current regimen before considering alternative agents. Please increase lamotrigine to 125 mg twice daily for two weeks, then 150 mg twice daily if tolerated. Continue clobazam 5 mg at night only at the onset of a cluster, with the option to repeat 5 mg on the subsequent night if episodes persist, avoiding daytime dosing due to sedation at work. We have discussed safety, including hydration, regular sleep, and recording events on a seizure diary app to clarify timing and potential associations.\n\nWe will arrange an ambulatory EEG within the next six weeks and repeat bloods (U&E, LFTs, FBC) prior to up-titration. If clusters persist at the same rate after four to six weeks at 150 mg twice daily, we will consider adding a second-line agent at the next review. Follow-up has been booked for three months. The patient knows to contact the team earlier if clusters become weekly, if events generalise, or if there are adverse effects such as rash or marked sedation.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 604,
+      "end": 661,
+      "text": "Every two months a cluster of ~two to four brief absences",
+      "attributes": {
+        "Label": "1 cluster per 2 months, 2 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 604,
+      "end": 661,
+      "text": "Every two months a cluster of ~two to four brief absences",
+      "attributes": {
+        "Label": "1 cluster per 2 months, 2 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11076,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 March 2017 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis under ongoing evaluation\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient reports using on approximately one in three cluster episodes)\n\n\nPresent Seizure Frequency:\n\nEvery two months a cluster of ~two to four brief absences\n\n\nPlan of Action:\n\nThe patient describes brief episodes of behavioural arrest with rapid recovery, typically occurring in a short cluster approximately every eight weeks, without clear precipitant. They report good general tolerability of lamotrigine with occasional dizziness when dehydrated. Home and work routines are stable; sleep is generally adequate. They do not drive.\n\nGiven the pattern and the absence of a consistent trigger, we will optimise the current regimen before considering alternative agents. Please increase lamotrigine to 125 mg twice daily for two weeks, then 150 mg twice daily if tolerated. Continue clobazam 5 mg at night only at the onset of a cluster, with the option to repeat 5 mg on the subsequent night if episodes persist, avoiding daytime dosing due to sedation at work. We have discussed safety, including hydration, regular sleep, and recording events on a seizure diary app to clarify timing and potential associations.\n\nWe will arrange an ambulatory EEG within the next six weeks and repeat bloods (U&E, LFTs, FBC) prior to up-titration. If clusters persist at the same rate after four to six weeks at 150 mg twice daily, we will consider adding a second-line agent at the next review. Follow-up has been booked for three months. The patient knows to contact the team earlier if clusters become weekly, if events generalise, or if there are adverse effects such as rash or marked sedation.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: \"Every two months a cluster of ~two to four brief absences.\" This indicates cluster-based seizures occurring once every two months, with approximately 2 to 4 events per cluster. Convert to the allowed format: '<value1> cluster per <value2> <month>, <value3> per cluster'. Here, value1 = 1, value2 = 2, value3 = '2 to 4'.",
+      "seizure_frequency_number": [
+        "1 cluster per 2 months, 2 to 4 per cluster",
+        "Every two months a cluster of ~two to four brief absences"
+      ],
+      "reference": [
+        "1 cluster per 2 months, 2 to 4 per cluster",
+        "Every two months a cluster of ~two to four brief absences"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

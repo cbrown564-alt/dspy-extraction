@@ -1,0 +1,59 @@
+{
+  "id": "gan_2274",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Khan  \nRiverside Medical Centre  \n14 Millbank, London SW1P 3GE  \n\nDear Dr Khan,  \n\nAisha Rahman, DOB: 05-11-1992, Hospital No: N845320 NHS No. 9081762345  \n22 Crescent Row, London EC1Y 0SR \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient reports good day-to-day tolerance with occasional mild irritability that settles without intervention. \n\nSince her last review, she describes about three or five seizures in the last three weeks. These have occurred predominantly in the late afternoon and have not led to injuries. She feels that recent religious fasting has altered her routine, particularly fluid intake and sleep timing, and she links the change in pattern to this period. She has been careful to take her medication at the correct total daily dose but acknowledges that dosing times have shifted on fasting days. \n\nWe discussed practical measures she wishes to try during fasting periods, including setting phone reminders to maintain consistent dose timing across sunrise/sunset schedules, prioritising adequate hydration at permitted times, and keeping a brief seizure diary noting sleep, meals, and medication timing. She also plans to avoid missed doses by preparing a weekly pill organiser; she will share the diary at the next visit. \n\nShe denies new focal neurological symptoms, reports no head injuries, and has had no emergency department attendances. No known medication interactions, and she is not using over-the-counter remedies regularly. She does not drive. \n\nNo changes have been made to treatment today. Bloods for safety monitoring (U&Es, FBC, LFTs) requested locally. If her seizure count rises further outside fasting periods, we can consider adjustment after reviewing the diary. \n\nWe will review her in three months, sooner if needed. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 470,
+      "end": 522,
+      "text": "about three or five seizures in the last three weeks",
+      "attributes": {
+        "Label": "3 to 5 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 470,
+      "end": 522,
+      "text": "about three or five seizures in the last three weeks",
+      "attributes": {
+        "Label": "3 to 5 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2274,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Khan  \nRiverside Medical Centre  \n14 Millbank, London SW1P 3GE  \n\nDear Dr Khan,  \n\nAisha Rahman, DOB: 05-11-1992, Hospital No: N845320 NHS No. 9081762345  \n22 Crescent Row, London EC1Y 0SR \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient reports good day-to-day tolerance with occasional mild irritability that settles without intervention. \n\nSince her last review, she describes about three or five seizures in the last three weeks. These have occurred predominantly in the late afternoon and have not led to injuries. She feels that recent religious fasting has altered her routine, particularly fluid intake and sleep timing, and she links the change in pattern to this period. She has been careful to take her medication at the correct total daily dose but acknowledges that dosing times have shifted on fasting days. \n\nWe discussed practical measures she wishes to try during fasting periods, including setting phone reminders to maintain consistent dose timing across sunrise/sunset schedules, prioritising adequate hydration at permitted times, and keeping a brief seizure diary noting sleep, meals, and medication timing. She also plans to avoid missed doses by preparing a weekly pill organiser; she will share the diary at the next visit. \n\nShe denies new focal neurological symptoms, reports no head injuries, and has had no emergency department attendances. No known medication interactions, and she is not using over-the-counter remedies regularly. She does not drive. \n\nNo changes have been made to treatment today. Bloods for safety monitoring (U&Es, FBC, LFTs) requested locally. If her seizure count rises further outside fasting periods, we can consider adjustment after reviewing the diary. \n\nWe will review her in three months, sooner if needed. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"she describes about three or five seizures in the last three weeks.\" This provides a numeric range and a time window. Convert this to the allowed format using a range for the count and specifying the time unit. No other conflicting frequencies are given. Therefore, the normalized label is \"3 to 5 per 3 week.\"",
+      "seizure_frequency_number": [
+        "3 to 5 per 3 week",
+        "about three or five seizures in the last three weeks"
+      ],
+      "reference": [
+        "3 to 5 per 3 week",
+        "about three or five seizures in the last three weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

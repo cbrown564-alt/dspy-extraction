@@ -1,0 +1,59 @@
+{
+  "id": "gan_1624",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Bowen  \nRiverside Medical Centre  \n12 Brook Street, London SE1 3AB  \n\nDear Dr Bowen,  \n\nJordan Ellis, DOB: 04-05-1992, Hospital No: H938421 NHS No. 9834572106  \nFlat 3, 29 Fenwick Court, London, SE16 4QP \n\nMedication: \n\nLevetiracetam 1 g/1 g daily. Patient reports good tolerance with occasional mood lability, no rash or gastrointestinal upset. \n\nHistory since last review: \n\nThe patient attended today accompanied by their primary carer, who reports notable fatigue and reduced stamina related to caregiving responsibilities at home. Over the last week, the patient describes five convulsions and seven petit mal in last week, occurring variably during late afternoon and overnight. The carer confirms brief post‑ictal confusion after the larger events, with quicker recovery after the briefer episodes. No clear triggers were identified, although both report disturbed sleep due to caregiving demands and increased daytime stress. No recent infections, head injury, or medication omissions were disclosed. \n\nThe patient and carer report that safety measures are in place at home (padded bed rails, shower rather than bath, and a seizure alert device). They are both keen to prioritise methods that may support rest and regular routines; they note that shared night‑time duties are limited due to the current caregiving context. \n\nExamination today was unremarkable. Cardiovascular and neurological examinations were within expected limits for the patient, with no focal deficits observed post‑ictally. \n\nPlan: \n\n- Continue current levetiracetam at present and maintain a detailed seizure and sleep diary, including timing, duration, potential precipitating factors, and recovery features.  \n- We discussed the observed pattern of increased events in a context of sleep disruption and fatigue. The patient and carer will explore available community and voluntary support to allow protected rest periods, and they plan to liaise with local carers’ services regarding respite options.  \n- Routine bloods requested (FBC, U&E, LFT, vitamin D) to exclude contributory factors for fatigue and to establish baseline surveillance.  \n- We will review in eight weeks with a view to treatment optimisation if the seizure burden remains at current levels or increases. The patient understands to seek urgent advice if there is any prolonged event or a clustering outside their usual pattern. \n\nWe will see them back in eight weeks. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 616,
+      "end": 707,
+      "text": "Over the last week, the patient describes five convulsions and seven petit mal in last week",
+      "attributes": {
+        "Label": "12 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 658,
+      "end": 707,
+      "text": "five convulsions and seven petit mal in last week",
+      "attributes": {
+        "Label": "12 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1624,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Bowen  \nRiverside Medical Centre  \n12 Brook Street, London SE1 3AB  \n\nDear Dr Bowen,  \n\nJordan Ellis, DOB: 04-05-1992, Hospital No: H938421 NHS No. 9834572106  \nFlat 3, 29 Fenwick Court, London, SE16 4QP \n\nMedication: \n\nLevetiracetam 1 g/1 g daily. Patient reports good tolerance with occasional mood lability, no rash or gastrointestinal upset. \n\nHistory since last review: \n\nThe patient attended today accompanied by their primary carer, who reports notable fatigue and reduced stamina related to caregiving responsibilities at home. Over the last week, the patient describes five convulsions and seven petit mal in last week, occurring variably during late afternoon and overnight. The carer confirms brief post‑ictal confusion after the larger events, with quicker recovery after the briefer episodes. No clear triggers were identified, although both report disturbed sleep due to caregiving demands and increased daytime stress. No recent infections, head injury, or medication omissions were disclosed. \n\nThe patient and carer report that safety measures are in place at home (padded bed rails, shower rather than bath, and a seizure alert device). They are both keen to prioritise methods that may support rest and regular routines; they note that shared night‑time duties are limited due to the current caregiving context. \n\nExamination today was unremarkable. Cardiovascular and neurological examinations were within expected limits for the patient, with no focal deficits observed post‑ictally. \n\nPlan: \n\n- Continue current levetiracetam at present and maintain a detailed seizure and sleep diary, including timing, duration, potential precipitating factors, and recovery features.  \n- We discussed the observed pattern of increased events in a context of sleep disruption and fatigue. The patient and carer will explore available community and voluntary support to allow protected rest periods, and they plan to liaise with local carers’ services regarding respite options.  \n- Routine bloods requested (FBC, U&E, LFT, vitamin D) to exclude contributory factors for fatigue and to establish baseline surveillance.  \n- We will review in eight weeks with a view to treatment optimisation if the seizure burden remains at current levels or increases. The patient understands to seek urgent advice if there is any prolonged event or a clustering outside their usual pattern. \n\nWe will see them back in eight weeks. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the last week, the patient describes five convulsions and seven petit mal in last week.' This provides a clear numeric frequency over a defined time period. Following the rule to sum multiple seizure types when in the same dimension, total seizures in the last week = 5 + 7 = 12 per week. No other conflicting frequencies are provided. Thus, the normalized label is '12 per week'.",
+      "seizure_frequency_number": [
+        "12 per week",
+        "Over the last week, the patient describes five convulsions and seven petit mal in last week"
+      ],
+      "reference": [
+        "12 per week",
+        "five convulsions and seven petit mal in last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

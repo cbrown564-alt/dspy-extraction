@@ -1,0 +1,59 @@
+{
+  "id": "gan_598",
+  "text": "Department of Neurology \n\nClinic Date: 25 November 2017 \n\nDr Eleanor Hayes  \nSt Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Eleanor Hayes,  \n\nMichael Turner, DOB: 14-03-1978, Hospital No: H392774 NHS No. 9842175036  \n12 Brookside Avenue, Romford, RM1 2QP \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset.  \nType 2 diabetes mellitus managed in primary care. \n\nCurrent Medication: \n\nLevetiracetam 1 g bd \nMetformin 1 g bd (primary care) \n\nPlan: \n\n- Continue levetiracetam 1 g twice daily.  \n- MRI brain (epilepsy protocol) has been completed previously; no focal lesion identified. No repeat imaging required unless clinical change.  \n- Safety counselling reinforced; patient has self-reported seizure frequency averaging 1 per eight months.  \n- DVLA guidance reiterated: must stop driving for the mandated period following any seizure with impaired awareness and notify DVLA as applicable.  \n- Lifestyle: maintain regular sleep, limit alcohol, and continue logging events in seizure diary.  \n- Follow-up in 12 months, sooner if frequency increases or new focal neurological features emerge. \n\nI reviewed Michael Turner in clinic today regarding focal epilepsy. He describes stereotyped episodes beginning with a rising epigastric sensation and brief déjà vu, followed by impaired awareness with oral automatisms and post-event fatigue lasting 30–60 minutes. He has not reported secondary generalisation. Over the past 16 months he has experienced two events, giving an average of 1 per eight months, with the most recent episode occurring after a period of sleep deprivation. His seizure diary is consistent with this pattern.\n\nHe remains adherent to levetiracetam 1 g twice daily without notable adverse effects. Neurological examination is unremarkable. Prior EEG showed left temporal intermittent rhythmic slowing without unequivocal epileptiform discharges; structural MRI (epilepsy protocol) last year was normal. Given stability and tolerability, I recommend continuation of the current antiepileptic regimen. \n\nWe briefly discussed potential triggers; he recognises poor sleep as a key factor and will continue to prioritise sleep hygiene. He does not drink to excess and denies recreational drug use. He monitors his Type 2 diabetes with his GP; capillary glucose readings have been stable and there is no evidence that hypoglycaemia has precipitated recent events. \n\nI have not altered his diabetes treatment as this is appropriately managed in primary care. I will be happy to review him earlier if there are any concerns regarding increased seizure frequency, new neurological symptoms, medication side effects, or if there is a wish to discuss alternative therapies should events become more frequent. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 761,
+      "end": 821,
+      "text": "self-reported seizure frequency averaging 1 per eight months",
+      "attributes": {
+        "Label": "1 per 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 803,
+      "end": 821,
+      "text": "1 per eight months",
+      "attributes": {
+        "Label": "1 per 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 598,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 25 November 2017 \n\nDr Eleanor Hayes  \nSt Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Eleanor Hayes,  \n\nMichael Turner, DOB: 14-03-1978, Hospital No: H392774 NHS No. 9842175036  \n12 Brookside Avenue, Romford, RM1 2QP \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset.  \nType 2 diabetes mellitus managed in primary care. \n\nCurrent Medication: \n\nLevetiracetam 1 g bd \nMetformin 1 g bd (primary care) \n\nPlan: \n\n- Continue levetiracetam 1 g twice daily.  \n- MRI brain (epilepsy protocol) has been completed previously; no focal lesion identified. No repeat imaging required unless clinical change.  \n- Safety counselling reinforced; patient has self-reported seizure frequency averaging 1 per eight months.  \n- DVLA guidance reiterated: must stop driving for the mandated period following any seizure with impaired awareness and notify DVLA as applicable.  \n- Lifestyle: maintain regular sleep, limit alcohol, and continue logging events in seizure diary.  \n- Follow-up in 12 months, sooner if frequency increases or new focal neurological features emerge. \n\nI reviewed Michael Turner in clinic today regarding focal epilepsy. He describes stereotyped episodes beginning with a rising epigastric sensation and brief déjà vu, followed by impaired awareness with oral automatisms and post-event fatigue lasting 30–60 minutes. He has not reported secondary generalisation. Over the past 16 months he has experienced two events, giving an average of 1 per eight months, with the most recent episode occurring after a period of sleep deprivation. His seizure diary is consistent with this pattern.\n\nHe remains adherent to levetiracetam 1 g twice daily without notable adverse effects. Neurological examination is unremarkable. Prior EEG showed left temporal intermittent rhythmic slowing without unequivocal epileptiform discharges; structural MRI (epilepsy protocol) last year was normal. Given stability and tolerability, I recommend continuation of the current antiepileptic regimen. \n\nWe briefly discussed potential triggers; he recognises poor sleep as a key factor and will continue to prioritise sleep hygiene. He does not drink to excess and denies recreational drug use. He monitors his Type 2 diabetes with his GP; capillary glucose readings have been stable and there is no evidence that hypoglycaemia has precipitated recent events. \n\nI have not altered his diabetes treatment as this is appropriately managed in primary care. I will be happy to review him earlier if there are any concerns regarding increased seizure frequency, new neurological symptoms, medication side effects, or if there is a wish to discuss alternative therapies should events become more frequent. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's self-reported seizure frequency as averaging 1 per eight months. It also reiterates that over the past 16 months he has experienced two events, which equals 2 events / 16 months = 1 per 8 months. No other differing frequencies are provided. Therefore, the normalized label is 1 per 8 month.",
+      "seizure_frequency_number": [
+        "1 per 8 month",
+        "self-reported seizure frequency averaging 1 per eight months"
+      ],
+      "reference": [
+        "1 per 8 month",
+        "1 per eight months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

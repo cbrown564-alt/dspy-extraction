@@ -1,0 +1,54 @@
+{
+  "id": "gan_8432",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 16 November 2023 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-11-1989, Hospital No: H9374621 NHS No. 8426175309  \n12 Larkspur Close, Wimbledon, London SW19 3AX  \n\nDiagnoses: \n\nFocal epilepsy with presumed temporal lobe onset. \n\nLaura attended with her partner for routine review. She reports rare brief focal aware auras (metallic taste and déjà vu) occurring no more than once every 2–3 months without loss of awareness and with no secondary generalisation in over a year, reflecting very stable seizure control. There have been no emergency presentations and no rescue medication use. Known triggers include sleep deprivation; she is adhering to regular sleep and limiting alcohol. \n\nCurrent treatment: lamotrigine 150 mg twice daily, levetiracetam 1000 mg twice daily. No adverse effects beyond occasional mild insomnia, which she manages with sleep hygiene. Neurological examination today was unremarkable. No device therapy in situ. \n\nPlan: continue current regimen unchanged; safety and SUDEP advice reinforced; driving guidance reviewed and unchanged given sustained seizure stability. Arrange routine bloods (U&E, LFTs) and lamotrigine level prior to next visit. Follow-up in 9 months, or sooner if breakthrough focal impaired awareness events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 498,
+      "end": 542,
+      "text": "occurring no more than once every 2–3 months",
+      "attributes": {
+        "Label": "1 per 2 to 3 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8432,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 16 November 2023 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-11-1989, Hospital No: H9374621 NHS No. 8426175309  \n12 Larkspur Close, Wimbledon, London SW19 3AX  \n\nDiagnoses: \n\nFocal epilepsy with presumed temporal lobe onset. \n\nLaura attended with her partner for routine review. She reports rare brief focal aware auras (metallic taste and déjà vu) occurring no more than once every 2–3 months without loss of awareness and with no secondary generalisation in over a year, reflecting very stable seizure control. There have been no emergency presentations and no rescue medication use. Known triggers include sleep deprivation; she is adhering to regular sleep and limiting alcohol. \n\nCurrent treatment: lamotrigine 150 mg twice daily, levetiracetam 1000 mg twice daily. No adverse effects beyond occasional mild insomnia, which she manages with sleep hygiene. Neurological examination today was unremarkable. No device therapy in situ. \n\nPlan: continue current regimen unchanged; safety and SUDEP advice reinforced; driving guidance reviewed and unchanged given sustained seizure stability. Arrange routine bloods (U&E, LFTs) and lamotrigine level prior to next visit. Follow-up in 9 months, or sooner if breakthrough focal impaired awareness events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'rare brief focal aware auras ... occurring no more than once every 2–3 months.' Focal aware auras are seizures, so the patient is not seizure-free. Another frequency is noted ('no secondary generalisation in over a year'), but per the rule to select the highest frequency, the focal aware seizure rate (1 per 2–3 months) is chosen. Normalize by converting the range with 'to' and keeping units singular.",
+      "seizure_frequency_number": [
+        "1 per 2 to 3 month",
+        "occurring no more than once every 2–3 months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Excellent seizure control"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 to 3 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

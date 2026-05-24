@@ -1,0 +1,59 @@
+{
+  "id": "gan_2622",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 16 September 2014 \n\nDr Jones  \nSt. Cuthbert NHS Neurology Clinic  \nNeurosciences Department, St. Cuthbert Hospital, York YO31 8HE  \n\nDear Dr Jones,  \n\nEmily Carter, DOB: 14-07-1988, Hospital No: H927451 NHS No. 7483926150  \n52 Millbrook Avenue, York, YO24 3HQ  \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, with secondary generalisation at times.\n\nI reviewed Emily Carter in clinic today with her partner in attendance. She reports a clear deterioration in seizure control over the past six weeks coinciding with starting a new job. The new workplace includes strong and intermittently flickering lights, and she notes a marked increase in events while on site and shortly after late shifts. Previously, her seizure frequency was characterised by clusters during certain weeks, with relatively settled periods in between. In contrast, she now describes seizures every night, often preceded by a déjà vu aura and epigastric rising sensation, followed by behavioural arrest and oral automatisms lasting 60–90 seconds. On three occasions this month there has been secondary generalisation during sleep.\n\nThere has been no intercurrent illness or change in prescribed medication, and she denies missed doses. Sleep has been fragmented since commencing shift work, and stress levels are higher. There is no alcohol or recreational drug use. She has noticed photic sensitivity in the workplace corridors where the lighting reportedly flickers. No tongue biting or incontinence has been reported with the focal events; post-ictal confusion persists for up to 20 minutes. There have been two minor falls without injury.\n\nNeurological examination in clinic today was unremarkable. No focal deficits were identified. We discussed seizure safety and the increased risk profile given the current deterioration and nocturnal pattern. She and her partner have instituted nocturnal supervision and a smartphone alert application; they are keeping a seizure diary and have captured two typical events on video for review.\n\nPlan: \n- Arrange urgent EEG with photic stimulation and sleep deprivation to evaluate photosensitivity and interictal changes. \n- Request MRI brain (epilepsy protocol) to reassess for any focal lesion given the step change in frequency. \n- Obtain serum anti-seizure medication levels and routine bloods (FBC, U&E, LFT). \n- Provide a fit note advising temporary adjustment to duties to minimise exposure to flickering lights pending occupational health review. \n- Reinforce seizure first aid and SUDEP risk discussion; written information provided. \n- Review in four weeks in the focal epilepsy clinic with results and to consider optimisation of therapy.\n\nI will update you following investigations. Please do not hesitate to contact me if there are concerns before the scheduled review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 900,
+      "end": 938,
+      "text": "she now describes seizures every night",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 918,
+      "end": 938,
+      "text": "seizures every night",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2622,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 16 September 2014 \n\nDr Jones  \nSt. Cuthbert NHS Neurology Clinic  \nNeurosciences Department, St. Cuthbert Hospital, York YO31 8HE  \n\nDear Dr Jones,  \n\nEmily Carter, DOB: 14-07-1988, Hospital No: H927451 NHS No. 7483926150  \n52 Millbrook Avenue, York, YO24 3HQ  \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, with secondary generalisation at times.\n\nI reviewed Emily Carter in clinic today with her partner in attendance. She reports a clear deterioration in seizure control over the past six weeks coinciding with starting a new job. The new workplace includes strong and intermittently flickering lights, and she notes a marked increase in events while on site and shortly after late shifts. Previously, her seizure frequency was characterised by clusters during certain weeks, with relatively settled periods in between. In contrast, she now describes seizures every night, often preceded by a déjà vu aura and epigastric rising sensation, followed by behavioural arrest and oral automatisms lasting 60–90 seconds. On three occasions this month there has been secondary generalisation during sleep.\n\nThere has been no intercurrent illness or change in prescribed medication, and she denies missed doses. Sleep has been fragmented since commencing shift work, and stress levels are higher. There is no alcohol or recreational drug use. She has noticed photic sensitivity in the workplace corridors where the lighting reportedly flickers. No tongue biting or incontinence has been reported with the focal events; post-ictal confusion persists for up to 20 minutes. There have been two minor falls without injury.\n\nNeurological examination in clinic today was unremarkable. No focal deficits were identified. We discussed seizure safety and the increased risk profile given the current deterioration and nocturnal pattern. She and her partner have instituted nocturnal supervision and a smartphone alert application; they are keeping a seizure diary and have captured two typical events on video for review.\n\nPlan: \n- Arrange urgent EEG with photic stimulation and sleep deprivation to evaluate photosensitivity and interictal changes. \n- Request MRI brain (epilepsy protocol) to reassess for any focal lesion given the step change in frequency. \n- Obtain serum anti-seizure medication levels and routine bloods (FBC, U&E, LFT). \n- Provide a fit note advising temporary adjustment to duties to minimise exposure to flickering lights pending occupational health review. \n- Reinforce seizure first aid and SUDEP risk discussion; written information provided. \n- Review in four weeks in the focal epilepsy clinic with results and to consider optimisation of therapy.\n\nI will update you following investigations. Please do not hesitate to contact me if there are concerns before the scheduled review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states there has been a deterioration with the patient now describing seizures every night. This implies a frequency of one seizure per day. There are also three secondary generalisations this month, but per the rule to select the highest frequency, 'every night' represents the more frequent seizure type. Convert 'every night' to '1 per day'.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "she now describes seizures every night"
+      ],
+      "reference": [
+        "1 per day",
+        "seizures every night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

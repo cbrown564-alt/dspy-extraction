@@ -1,0 +1,54 @@
+{
+  "id": "gan_7894",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Bennett, DOB: 12-05-1990, Hospital No: H938421 NHS No. 5839201746  \n14 Brookside Close, London, W10 5RT \n\nMedication:  \n\nNo regular antiepileptic medication prescribed. \n\nThank you for asking me to review Sophie Bennett in clinic. She reports a history of childhood febrile seizures, with no subsequent unprovoked seizures in adolescence or adulthood. She has not experienced any episodes suggestive of epilepsy, and there are no events with impaired awareness, convulsions, or stereotyped sensory phenomena. She does not describe any nocturnal events, tongue biting, or postictal confusion. There is no family history of epilepsy. \n\nOn today’s assessment, she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence. She is driving, working full time, and has had no safety incidents. She mentioned rare light-headedness during prolonged fasting, which resolves with hydration and food, without associated alteration in awareness or focal neurological features. \n\nNeurological examination is normal. Prior routine EEG from last year and a screening MRI brain (performed for headaches at that time) were unremarkable. Headaches have settled and are infrequent, responding to simple measures. \n\nOverall impression: She does not have epilepsy. Her childhood febrile seizures have not evolved into an epileptic disorder, and there is no current indication for antiseizure therapy or further neurological investigation. I have provided advice on general wellbeing (adequate sleep, hydration, and avoidance of binge alcohol). She understands to seek reassessment if any new, unprovoked events occur. \n\nFollow-up: No routine neurology follow‑up is required. I am happy to review if circumstances change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 852,
+      "end": 988,
+      "text": "she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence.",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7894,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Bennett, DOB: 12-05-1990, Hospital No: H938421 NHS No. 5839201746  \n14 Brookside Close, London, W10 5RT \n\nMedication:  \n\nNo regular antiepileptic medication prescribed. \n\nThank you for asking me to review Sophie Bennett in clinic. She reports a history of childhood febrile seizures, with no subsequent unprovoked seizures in adolescence or adulthood. She has not experienced any episodes suggestive of epilepsy, and there are no events with impaired awareness, convulsions, or stereotyped sensory phenomena. She does not describe any nocturnal events, tongue biting, or postictal confusion. There is no family history of epilepsy. \n\nOn today’s assessment, she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence. She is driving, working full time, and has had no safety incidents. She mentioned rare light-headedness during prolonged fasting, which resolves with hydration and food, without associated alteration in awareness or focal neurological features. \n\nNeurological examination is normal. Prior routine EEG from last year and a screening MRI brain (performed for headaches at that time) were unremarkable. Headaches have settled and are infrequent, responding to simple measures. \n\nOverall impression: She does not have epilepsy. Her childhood febrile seizures have not evolved into an epileptic disorder, and there is no current indication for antiseizure therapy or further neurological investigation. I have provided advice on general wellbeing (adequate sleep, hydration, and avoidance of binge alcohol). She understands to seek reassessment if any new, unprovoked events occur. \n\nFollow-up: No routine neurology follow‑up is required. I am happy to review if circumstances change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no unprovoked seizures in adolescence or adulthood and is entirely seizure-free in adult life. There is clear current status of no seizures and ongoing stability. While no exact duration in months/years is provided, the wording indicates persistent seizure freedom over an extended period in adult life, satisfying at least multiple months. Therefore, classify as 'seizure free for multiple years' given adult-life long seizure freedom.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "she remains entirely seizure-free in adult life; in practical terms, she has had uninterrupted stability without any seizure occurrence."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Complete control of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

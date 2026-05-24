@@ -1,0 +1,59 @@
+{
+  "id": "gan_15021",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 26 March 2017 \n\nDr Andrew Collins  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Andrew Collins,\n\nThomas Reynolds, DOB: 22-11-1989, Hospital No: H374920 NHS No. 9834175620  \n48 Thornhill Road, London, N1 1HW  \n\nEpilepsy \n\nDiagnosis: Generalised epilepsy, VNS in situ\n\nBackground and Progress: Following VNS optimisation at a previous visit, he reports a clear improvement in seizure control and day-to-day stability. There have been no intercurrent illnesses, and sleep and adherence are good. He is engaging with routine activities without new neurological concerns.\n\nMedication: \n- Levetiracetam 1000 mg twice daily\n- Sodium Valproate 300 mg in the morning and 600 mg at night\n\nVNS: Output and duty cycle were adjusted at the last review; he perceives better control and fewer postictal symptoms since then.\n\nSeizures: After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23 December his absences settled with treatment. The most recent episode was on 31 December, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage. Overall pattern is consistent with approximately one event per three months, in keeping with improving control of generalised epilepsy.\n\nPlan: \n- Continue current antiepileptic regimen and VNS settings.\n- Routine bloods (FBC, LFTs) at next community phlebotomy visit.\n- Safety and SUDEP advice reinforced; no driving until standard seizure-free criteria are met under DVLA guidance.\n- Telephone follow-up in 4 months, or earlier if recurrence or adverse effects.\n\nSummary: This is generalised epilepsy with improving control following VNS optimisation. Current seizure frequency approximates one per three months, with recent months stable and no complications. No change in management is required today.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1253,
+      "end": 1328,
+      "text": "Overall pattern is consistent with approximately one event per three months",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 898,
+      "end": 1251,
+      "text": "After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23 December his absences settled with treatment. The most recent episode was on 31 December, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15021,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 26 March 2017 \n\nDr Andrew Collins  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Andrew Collins,\n\nThomas Reynolds, DOB: 22-11-1989, Hospital No: H374920 NHS No. 9834175620  \n48 Thornhill Road, London, N1 1HW  \n\nEpilepsy \n\nDiagnosis: Generalised epilepsy, VNS in situ\n\nBackground and Progress: Following VNS optimisation at a previous visit, he reports a clear improvement in seizure control and day-to-day stability. There have been no intercurrent illnesses, and sleep and adherence are good. He is engaging with routine activities without new neurological concerns.\n\nMedication: \n- Levetiracetam 1000 mg twice daily\n- Sodium Valproate 300 mg in the morning and 600 mg at night\n\nVNS: Output and duty cycle were adjusted at the last review; he perceives better control and fewer postictal symptoms since then.\n\nSeizures: After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23 December his absences settled with treatment. The most recent episode was on 31 December, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage. Overall pattern is consistent with approximately one event per three months, in keeping with improving control of generalised epilepsy.\n\nPlan: \n- Continue current antiepileptic regimen and VNS settings.\n- Routine bloods (FBC, LFTs) at next community phlebotomy visit.\n- Safety and SUDEP advice reinforced; no driving until standard seizure-free criteria are met under DVLA guidance.\n- Telephone follow-up in 4 months, or earlier if recurrence or adverse effects.\n\nSummary: This is generalised epilepsy with improving control following VNS optimisation. Current seizure frequency approximates one per three months, with recent months stable and no complications. No change in management is required today.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency: \"Overall pattern is consistent with approximately one event per three months\" and reiterated in the summary: \"Current seizure frequency approximates one per three months.\" There is no indication of 6 months seizure-free; last episode was 31 December and the clinic date is 26 March 2017, which is less than 6 months. Therefore, the frequency should be normalized to '1 per 3 month'. No other conflicting frequencies are provided, so this is the final label.",
+      "seizure_frequency_number": [
+        "1 per 3 month",
+        "Overall pattern is consistent with approximately one event per three months"
+      ],
+      "reference": [
+        "1 per 3 month",
+        "After experiencing dizziness and headache on two occasions, his symptoms improved without complications. On 23 December his absences settled with treatment. The most recent episode was on 31 December, and since then he has been well. With no recurrence for the past months and overall stable epilepsy, no additional management is indicated at this stage"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

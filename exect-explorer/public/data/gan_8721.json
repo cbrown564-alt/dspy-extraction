@@ -1,0 +1,48 @@
+{
+  "id": "gan_8721",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nHillside Medical Practice  \n48 Meadow Lane, Bristol BS1 4QJ  \n\nDear Dr Patel,                                                                                                         \n\nDaniel Carter, DOB: 22-11-1991, Hospital No: H3726159 NHS No. 9842017365  \nFlat 3, 27 River Street, Bristol BS2 0DN  \n\nEpilepsy \n\nMedication: Lamotrigine modified-release 100 mg once daily (no recent changes reported)  \n\nLamotrigine Blood Level:  \nNo level checked recently; patient reports excellent adherence and no adverse effects.  \n\nSeizures: The patient reports no auras, warnings, or seizure events since the last clinic review. They remain without seizures and feel stable on current medication. Currently not driving by self-report.  \n\nI conducted a video review today. The patient describes good sleep and regular routines, with no missed doses. No new neurological symptoms were volunteered. We discussed general lifestyle precautions and agreed to continue current management, with open access to earlier review should concerns arise. Routine follow-up planned in 6 months or sooner if needed.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 642,
+      "end": 738,
+      "text": "no auras, warnings, or seizure events since the last clinic review. They remain without seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8721,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nHillside Medical Practice  \n48 Meadow Lane, Bristol BS1 4QJ  \n\nDear Dr Patel,                                                                                                         \n\nDaniel Carter, DOB: 22-11-1991, Hospital No: H3726159 NHS No. 9842017365  \nFlat 3, 27 River Street, Bristol BS2 0DN  \n\nEpilepsy \n\nMedication: Lamotrigine modified-release 100 mg once daily (no recent changes reported)  \n\nLamotrigine Blood Level:  \nNo level checked recently; patient reports excellent adherence and no adverse effects.  \n\nSeizures: The patient reports no auras, warnings, or seizure events since the last clinic review. They remain without seizures and feel stable on current medication. Currently not driving by self-report.  \n\nI conducted a video review today. The patient describes good sleep and regular routines, with no missed doses. No new neurological symptoms were volunteered. We discussed general lifestyle precautions and agreed to continue current management, with open access to earlier review should concerns arise. Routine follow-up planned in 6 months or sooner if needed.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports no auras, warnings, or seizure events since the last clinic review. They remain without seizures...' However, it does not provide the date of the last clinic review, only today's clinic date (21 September 2025). Without knowing the interval since the last review, we cannot confirm a seizure-free period of at least 6 months. Therefore, per the rules, when seizure freedom duration is unclear but current status is seizure-free, we classify as 'seizure free for multiple months or years.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no auras, warnings, or seizure events since the last clinic review. They remain without seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free on last ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

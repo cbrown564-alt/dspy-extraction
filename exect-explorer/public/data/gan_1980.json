@@ -1,0 +1,59 @@
+{
+  "id": "gan_1980",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Priya Menon\nRiverside Community Health Centre\n\n41 Willow Quay, London, SE1 9AB\nDear Dr Priya Menon\nMr Thomas Reid, DOB: 09-02-1988, Hospital No: H937421 NHS No. 7745129031\nFlat 4, 12 Mill Dock, London, SE16 3TZ \n\nI reviewed the above patient in the Neurology Clinic today. He works in a cold-chain warehouse where prolonged exposure to low temperatures and the need for insulated gloves can slow his ability to access rescue treatments. He reports that the workplace has been informed and his supervisor permits brief warm-up breaks when needed. He is keen to optimise practical strategies rather than alter his current medications today.\n\nSince I last saw him on 10 June 2025, he has remained generally well with intermittent sensory auras and brief events without clear loss of awareness. He noted that in busy shifts, particularly when moving between freezer bays, he is slower to open his rescue nasal spray due to gloves and stiffness in his hands. He now keeps a labelled kit in an inner pocket to reduce cold exposure time and has discussed buddy support for longer freezer tasks.\n\nOver the past quarter he has recorded three focal onset seizures and three focal epileptic spasms in the past three months. He describes the focal onset events as brief right arm pulling with tingling and preserved awareness, lasting under a minute, and the spasms as sudden truncal flexion clusters mainly on early mornings after night shifts. There have been no injuries or emergency attendances. Sleep disruption during rotating shifts may be a contributing factor. He denies new neurological symptoms, rashes or mood change. Appetite and weight are stable.\n\nCurrent medication: Levetiracetam 1000 mg b.d.; Lamotrigine 150 mg b.d. He reports good adherence and no dose omissions while at work. He carries a midazolam nasal spray for prolonged events but has not needed to use it during this interval. He is not driving.\n\nOn examination today he was alert and oriented. Speech, cranial nerves, coordination and gait were normal. There were no focal neurological deficits. Blood pressure was 122/78 mmHg, pulse 74 bpm regular. No skin rash.\n\nPlan:\n- No medication change today given the relatively stable pattern and his preference to continue with current regimen.\n- We discussed practical measures at work: keeping rescue treatment accessible within inner clothing layers, ensuring colleagues know where it is, and taking scheduled rest to improve sleep regularity after night shifts; he will continue these patient-initiated strategies.\n- Routine bloods (FBC, U&E, LFTs) requested today; results to be copied to you.\n- Follow-up in clinic in four months, sooner if events escalate or characteristics change.\n\nPlease let me know if you have any concerns or if workplace occupational health would like a short functional summary.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1154,
+      "end": 1277,
+      "text": "Over the past quarter he has recorded three focal onset seizures and three focal epileptic spasms in the past three months.",
+      "attributes": {
+        "Label": "6 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1192,
+      "end": 1276,
+      "text": "three focal onset seizures and three focal epileptic spasms in the past three months",
+      "attributes": {
+        "Label": "6 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1980,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Priya Menon\nRiverside Community Health Centre\n\n41 Willow Quay, London, SE1 9AB\nDear Dr Priya Menon\nMr Thomas Reid, DOB: 09-02-1988, Hospital No: H937421 NHS No. 7745129031\nFlat 4, 12 Mill Dock, London, SE16 3TZ \n\nI reviewed the above patient in the Neurology Clinic today. He works in a cold-chain warehouse where prolonged exposure to low temperatures and the need for insulated gloves can slow his ability to access rescue treatments. He reports that the workplace has been informed and his supervisor permits brief warm-up breaks when needed. He is keen to optimise practical strategies rather than alter his current medications today.\n\nSince I last saw him on 10 June 2025, he has remained generally well with intermittent sensory auras and brief events without clear loss of awareness. He noted that in busy shifts, particularly when moving between freezer bays, he is slower to open his rescue nasal spray due to gloves and stiffness in his hands. He now keeps a labelled kit in an inner pocket to reduce cold exposure time and has discussed buddy support for longer freezer tasks.\n\nOver the past quarter he has recorded three focal onset seizures and three focal epileptic spasms in the past three months. He describes the focal onset events as brief right arm pulling with tingling and preserved awareness, lasting under a minute, and the spasms as sudden truncal flexion clusters mainly on early mornings after night shifts. There have been no injuries or emergency attendances. Sleep disruption during rotating shifts may be a contributing factor. He denies new neurological symptoms, rashes or mood change. Appetite and weight are stable.\n\nCurrent medication: Levetiracetam 1000 mg b.d.; Lamotrigine 150 mg b.d. He reports good adherence and no dose omissions while at work. He carries a midazolam nasal spray for prolonged events but has not needed to use it during this interval. He is not driving.\n\nOn examination today he was alert and oriented. Speech, cranial nerves, coordination and gait were normal. There were no focal neurological deficits. Blood pressure was 122/78 mmHg, pulse 74 bpm regular. No skin rash.\n\nPlan:\n- No medication change today given the relatively stable pattern and his preference to continue with current regimen.\n- We discussed practical measures at work: keeping rescue treatment accessible within inner clothing layers, ensuring colleagues know where it is, and taking scheduled rest to improve sleep regularity after night shifts; he will continue these patient-initiated strategies.\n- Routine bloods (FBC, U&E, LFTs) requested today; results to be copied to you.\n- Follow-up in clinic in four months, sooner if events escalate or characteristics change.\n\nPlease let me know if you have any concerns or if workplace occupational health would like a short functional summary.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past quarter he has recorded three focal onset seizures and three focal epileptic spasms in the past three months.\" The past quarter equals three months. Summing the events across types per the rule to sum when in the same time dimension: 3 + 3 = 6 seizures in 3 months. Normalize to allowed format: '6 per 3 month'.",
+      "seizure_frequency_number": [
+        "6 per 3 month",
+        "Over the past quarter he has recorded three focal onset seizures and three focal epileptic spasms in the past three months."
+      ],
+      "reference": [
+        "6 per 3 month",
+        "three focal onset seizures and three focal epileptic spasms in the past three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

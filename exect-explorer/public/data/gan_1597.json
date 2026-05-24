@@ -1,0 +1,59 @@
+{
+  "id": "gan_1597",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 14 September 2025\n\nDr Alexandra Green\nConsultant Neurologist\nRiverside Neurology Clinic\n1 Millbank Way, Bristol BS1 4AB\n\nDear Dr Alexandra Green,\n\nSam Taylor, DOB: 22-06-1992, Hospital No: B784210 NHS No. 6139028471\nFlat 3, 27 Park Crescent, Bristol, BS8 2LR\n\nDiagnosis:\n\nSeizure disorder; medication response variable to date\n\nAetiology:\n\nNot established\n\nOther Medical Problems:\n\nSeasonal allergic rhinitis; mild iron deficiency under GP monitoring\n\nManagement Plan:\n\n- Continue current Lamotrigine 100 mg twice daily pending drug level review; no brand change advised at present.\n- Arrange ambulatory EEG and repeat serum levels in six weeks.\n- Safety advice reinforced regarding swimming unsupervised, working at heights, and operating machinery.\n- Review in clinic in three months or sooner if events escalate.\n\nClinical Summary:\n\nSam Taylor was seen in follow-up today. They report variable brief episodes over the past several months without clear precipitating factors. Specifically, they describe five absence seizures and seven petit mal in last month, each lasting seconds, with rapid recovery and no injuries. There is no associated fever, intercurrent illness, or missed doses reported. Sleep has been irregular due to shift work, and caffeine intake has increased; both were discussed as potential non-specific triggers. No history of head trauma, CNS infection, or perinatal complications is known to the patient.\n\nMedication history includes prior trial of Levetiracetam (fatigue and mood disturbance, discontinued), and current Lamotrigine with partial benefit. They have not used sodium valproate or topiramate previously. Driving has been voluntarily suspended and they are aware of statutory requirements. Work involves data entry in an office environment with no exposure to open water or heights; reasonable adjustments have been discussed with their manager.\n\nExamination today was unremarkable. Routine bloods last month showed normal electrolytes, liver and renal function; ferritin slightly low and being addressed by the GP. We will proceed with ambulatory EEG to better characterise the events and adjust treatment thereafter based on clinical correlation and tolerability.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1060,
+      "end": 1129,
+      "text": "they describe five absence seizures and seven petit mal in last month",
+      "attributes": {
+        "Label": "12 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1074,
+      "end": 1129,
+      "text": "five absence seizures and seven petit mal in last month",
+      "attributes": {
+        "Label": "12 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1597,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 14 September 2025\n\nDr Alexandra Green\nConsultant Neurologist\nRiverside Neurology Clinic\n1 Millbank Way, Bristol BS1 4AB\n\nDear Dr Alexandra Green,\n\nSam Taylor, DOB: 22-06-1992, Hospital No: B784210 NHS No. 6139028471\nFlat 3, 27 Park Crescent, Bristol, BS8 2LR\n\nDiagnosis:\n\nSeizure disorder; medication response variable to date\n\nAetiology:\n\nNot established\n\nOther Medical Problems:\n\nSeasonal allergic rhinitis; mild iron deficiency under GP monitoring\n\nManagement Plan:\n\n- Continue current Lamotrigine 100 mg twice daily pending drug level review; no brand change advised at present.\n- Arrange ambulatory EEG and repeat serum levels in six weeks.\n- Safety advice reinforced regarding swimming unsupervised, working at heights, and operating machinery.\n- Review in clinic in three months or sooner if events escalate.\n\nClinical Summary:\n\nSam Taylor was seen in follow-up today. They report variable brief episodes over the past several months without clear precipitating factors. Specifically, they describe five absence seizures and seven petit mal in last month, each lasting seconds, with rapid recovery and no injuries. There is no associated fever, intercurrent illness, or missed doses reported. Sleep has been irregular due to shift work, and caffeine intake has increased; both were discussed as potential non-specific triggers. No history of head trauma, CNS infection, or perinatal complications is known to the patient.\n\nMedication history includes prior trial of Levetiracetam (fatigue and mood disturbance, discontinued), and current Lamotrigine with partial benefit. They have not used sodium valproate or topiramate previously. Driving has been voluntarily suspended and they are aware of statutory requirements. Work involves data entry in an office environment with no exposure to open water or heights; reasonable adjustments have been discussed with their manager.\n\nExamination today was unremarkable. Routine bloods last month showed normal electrolytes, liver and renal function; ferritin slightly low and being addressed by the GP. We will proceed with ambulatory EEG to better characterise the events and adjust treatment thereafter based on clinical correlation and tolerability.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"they describe five absence seizures and seven petit mal in last month\". These are seizure counts over the last month. Following the rule to sum frequencies when they are in the same time dimension, total seizures last month = 5 + 7 = 12. Convert to the allowed format: 12 per month.",
+      "seizure_frequency_number": [
+        "12 per month",
+        "they describe five absence seizures and seven petit mal in last month"
+      ],
+      "reference": [
+        "12 per month",
+        "five absence seizures and seven petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

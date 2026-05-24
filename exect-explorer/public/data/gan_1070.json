@@ -1,0 +1,59 @@
+{
+  "id": "gan_1070",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Practice\n\n22 Riverside Way, London, SE10 9AB\nDear Dr Patel\nMichael Green, DOB: 14-03-1991, Hospital No: H738291 NHS No. 9988776655\nFlat 3, 12 Alder Court, Deptford, London, SE8 4PL \n\nI reviewed the above patient in the Neurology Clinic today. He is known to have generalised epilepsy and is followed up under our service. Since our last correspondence in May this year, he reports better consistency with his medication after introducing smartphone alarms and NFC tags at home to confirm dosing, following previous issues with missed doses.\n\nHe describes three or four seizures last week, all occurring in the evenings. These were patient-reported to have begun with sudden loss of awareness followed by generalised convulsive activity lasting under two minutes, with post-ictal fatigue and mild myalgia but no tongue biting or incontinence. His partner corroborates two of these events. There were no clear triggers apart from a few late nights due to shift work.\n\nHe remains on Sodium Valproate 500 mg b.d. and Levetiracetam 1 g b.d. He reports overall good tolerability, with intermittent daytime tiredness that he attributes partly to work pattern. He denies rash, mood deterioration, or gastrointestinal upset. He has had no emergency department attendances and no injuries. Sleep is variable due to shift changes; caffeine use is modest.\n\nGiven the pattern of generalised seizures and recent improvement in adherence strategies using smartphone alarms and NFC confirmation, I have advised continuation of the current regimen for now while we capture updated seizure frequency over the next six weeks. I have arranged repeat serum levels (Valproate trough) and a follow-up EEG to assess for generalised spike–wave burden. We discussed SUDEP risk in general terms and the importance of adherence, sleep regularity, and avoiding missed doses. He is using a paper and app-based seizure diary, which he will bring to the next review.\n\nSafety advice was reinforced regarding bathing, cooking with boiling liquids, and avoiding heights or unguarded machinery. He does not drive and understands the DVLA requirements. He is agreeable to referral to our epilepsy nurse specialist for further support around shift scheduling and adherence.\n\nI will review him in clinic in approximately 8–10 weeks or sooner if events escalate. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 629,
+      "end": 706,
+      "text": "He describes three or four seizures last week, all occurring in the evenings.",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 642,
+      "end": 674,
+      "text": "three or four seizures last week",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1070,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Practice\n\n22 Riverside Way, London, SE10 9AB\nDear Dr Patel\nMichael Green, DOB: 14-03-1991, Hospital No: H738291 NHS No. 9988776655\nFlat 3, 12 Alder Court, Deptford, London, SE8 4PL \n\nI reviewed the above patient in the Neurology Clinic today. He is known to have generalised epilepsy and is followed up under our service. Since our last correspondence in May this year, he reports better consistency with his medication after introducing smartphone alarms and NFC tags at home to confirm dosing, following previous issues with missed doses.\n\nHe describes three or four seizures last week, all occurring in the evenings. These were patient-reported to have begun with sudden loss of awareness followed by generalised convulsive activity lasting under two minutes, with post-ictal fatigue and mild myalgia but no tongue biting or incontinence. His partner corroborates two of these events. There were no clear triggers apart from a few late nights due to shift work.\n\nHe remains on Sodium Valproate 500 mg b.d. and Levetiracetam 1 g b.d. He reports overall good tolerability, with intermittent daytime tiredness that he attributes partly to work pattern. He denies rash, mood deterioration, or gastrointestinal upset. He has had no emergency department attendances and no injuries. Sleep is variable due to shift changes; caffeine use is modest.\n\nGiven the pattern of generalised seizures and recent improvement in adherence strategies using smartphone alarms and NFC confirmation, I have advised continuation of the current regimen for now while we capture updated seizure frequency over the next six weeks. I have arranged repeat serum levels (Valproate trough) and a follow-up EEG to assess for generalised spike–wave burden. We discussed SUDEP risk in general terms and the importance of adherence, sleep regularity, and avoiding missed doses. He is using a paper and app-based seizure diary, which he will bring to the next review.\n\nSafety advice was reinforced regarding bathing, cooking with boiling liquids, and avoiding heights or unguarded machinery. He does not drive and understands the DVLA requirements. He is agreeable to referral to our epilepsy nurse specialist for further support around shift scheduling and adherence.\n\nI will review him in clinic in approximately 8–10 weeks or sooner if events escalate. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He describes three or four seizures last week, all occurring in the evenings.' This provides a clear numeric range for the past week. No other conflicting frequencies are given. Therefore, normalize to '3 to 4 per week' per the allowed format.",
+      "seizure_frequency_number": [
+        "3 to 4 per week",
+        "He describes three or four seizures last week, all occurring in the evenings."
+      ],
+      "reference": [
+        "3 to 4 per week",
+        "three or four seizures last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

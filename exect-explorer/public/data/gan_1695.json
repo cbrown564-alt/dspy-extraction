@@ -1,0 +1,48 @@
+{
+  "id": "gan_1695",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 27 July 2024 \n\nDr Helen Morris  \nMaple Road Health Centre  \n12 Maple Road, London NW1 8QT  \n\nDear Dr Helen Morris,  \n\nRobert Jenkins, DOB: 22-07-1978, Hospital No: R842917 NHS No. 1035582294  \n4 Willow Close, London, N7 6PL \n\nSummary/ Diagnoses: Focal epilepsy (temporal lobe features)/post-concussive headaches/mild anxiety/possible sleep disturbance related to caregiving routine. Primary carer reports increased fatigue in the patient over the past six weeks. \n\nMedication: Lamotrigine 150 mg twice daily.  \nLevetiracetam 500 mg twice daily.  \nVitamin D3 800 IU daily.  \nOmeprazole 20 mg once daily.  \n\nI reviewed Robert Jenkins in clinic today, accompanied by his primary carer who provides day-to-day support at home. The carer reports that over the last month he has been noticeably more tired, particularly in the late afternoon, and that this has coincided with greater caregiving demands in the household. Sleep is described as fragmented with early-morning waking to assist with care tasks; caffeine intake has increased slightly. Appetite remains steady and weight is unchanged. No new neurological deficits reported. \n\nSeizures: He has focal epilepsy. According to the seizure diary and carer account, there were a handful of short focal events during the previous month, each lasting under two minutes, characterised by a rising epigastric sensation, brief speech arrest, and preserved awareness; recovery was rapid without confusion. No secondary generalisation, no injuries, and no hospital attendances. In the current month to date, no events have been recorded. Historically, triggers include sleep deprivation and stress; both appear pertinent given the caregiving context and reported fatigue. \n\nExamination: Observations stable. Neurological examination normal with intact cranial nerves, normal tone, power, and coordination. Gait steady. No rash or lymphadenopathy. \n\nPlan:  \n- Continue lamotrigine 150 mg twice daily and levetiracetam 500 mg twice daily without change.  \n- Arrange routine bloods in primary care (FBC, U&E, LFTs, vitamin D) within the next four weeks.  \n- Provide written advice on sleep hygiene and seizure trigger avoidance; discussed pacing strategies around caregiving tasks.  \n- Offer referral to carers’ support and community occupational therapy to review daily routines and reduce nocturnal disruptions if feasible (patient and carer in agreement).  \n- Safety reinforced: no driving; SUDEP education reviewed; ensure rescue plan not required at present given short, self-limiting focal events.  \n- Follow-up in neurology clinic in six months, sooner if there is any increase in seizure frequency, emergence of generalised seizures, or adverse effects from medication.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1308,
+      "end": 1376,
+      "text": "there were a handful of short focal events during the previous month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1695,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 27 July 2024 \n\nDr Helen Morris  \nMaple Road Health Centre  \n12 Maple Road, London NW1 8QT  \n\nDear Dr Helen Morris,  \n\nRobert Jenkins, DOB: 22-07-1978, Hospital No: R842917 NHS No. 1035582294  \n4 Willow Close, London, N7 6PL \n\nSummary/ Diagnoses: Focal epilepsy (temporal lobe features)/post-concussive headaches/mild anxiety/possible sleep disturbance related to caregiving routine. Primary carer reports increased fatigue in the patient over the past six weeks. \n\nMedication: Lamotrigine 150 mg twice daily.  \nLevetiracetam 500 mg twice daily.  \nVitamin D3 800 IU daily.  \nOmeprazole 20 mg once daily.  \n\nI reviewed Robert Jenkins in clinic today, accompanied by his primary carer who provides day-to-day support at home. The carer reports that over the last month he has been noticeably more tired, particularly in the late afternoon, and that this has coincided with greater caregiving demands in the household. Sleep is described as fragmented with early-morning waking to assist with care tasks; caffeine intake has increased slightly. Appetite remains steady and weight is unchanged. No new neurological deficits reported. \n\nSeizures: He has focal epilepsy. According to the seizure diary and carer account, there were a handful of short focal events during the previous month, each lasting under two minutes, characterised by a rising epigastric sensation, brief speech arrest, and preserved awareness; recovery was rapid without confusion. No secondary generalisation, no injuries, and no hospital attendances. In the current month to date, no events have been recorded. Historically, triggers include sleep deprivation and stress; both appear pertinent given the caregiving context and reported fatigue. \n\nExamination: Observations stable. Neurological examination normal with intact cranial nerves, normal tone, power, and coordination. Gait steady. No rash or lymphadenopathy. \n\nPlan:  \n- Continue lamotrigine 150 mg twice daily and levetiracetam 500 mg twice daily without change.  \n- Arrange routine bloods in primary care (FBC, U&E, LFTs, vitamin D) within the next four weeks.  \n- Provide written advice on sleep hygiene and seizure trigger avoidance; discussed pacing strategies around caregiving tasks.  \n- Offer referral to carers’ support and community occupational therapy to review daily routines and reduce nocturnal disruptions if feasible (patient and carer in agreement).  \n- Safety reinforced: no driving; SUDEP education reviewed; ensure rescue plan not required at present given short, self-limiting focal events.  \n- Follow-up in neurology clinic in six months, sooner if there is any increase in seizure frequency, emergence of generalised seizures, or adverse effects from medication.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes seizures in the recent period. It states: \"there were a handful of short focal events during the previous month\" and that in the current month to date, no events have been recorded. \"Handful\" is a vague quantifier without a specific number, so an exact count cannot be determined. The Seizure Frequency Number should therefore use 'multiple' with month as the unit. The patient is not seizure free for ≥6 months, as only the current month is event-free so far.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "there were a handful of short focal events during the previous month"
+      ],
+      "reference": [
+        "multiple per month",
+        "several focal seizures last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

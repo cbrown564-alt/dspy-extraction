@@ -1,0 +1,59 @@
+{
+  "id": "gan_12366",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 September 2014 10:12\nTo: epilepsy.neuroclinic@nhs.net\nCc: Dr Michael O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Recent deterioration following travel and seizure review\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nPresent Seizure Frequency:\n\nHe still has simple partial seizures 4 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change.\n\nClinical Summary and Context:\n\nHe returned from transcontinental travel two weeks ago (eastward, crossing eight time zones). Since then he has reported circadian disruption with fragmented sleep, early morning awakenings, and daytime somnolence. He and his partner perceive a worsening in day-to-day seizure burden and recovery time, with increased postictal fatigue and reduced confidence mobilising outdoors. Although the absolute counts above reflect his established baseline pattern, the functional impact has deteriorated, with more clustering of drop attacks in the late afternoon and a longer postictal phase after tonic–clonic events. No intercurrent illness, alcohol use, or missed doses were reported; however, sleep–wake schedule remains inconsistent despite attempts at gradual resynchronisation. He is using a seizure diary and wearable reminder for medications.\n\nPlan of Action:\n\n- We discussed sleep hygiene, light exposure on waking, and consistent timing of medication dosing to support body clock realignment after travel. He will continue his current anti-seizure medications unchanged for now and provide an updated diary over the next four weeks to document any shift back toward his usual pattern.\n- He was advised to avoid solo bathing and to use a helmet when outdoors until the drop attack clustering settles.\n- We will arrange an earlier follow-up within six weeks, with interim telephone review in two weeks to reassess seizure clustering and functional impact.\n- He will notify us urgently if tonic–clonic seizures increase in frequency, if injuries occur with drop attacks, or if there is any new neurological deficit.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 549,
+      "end": 601,
+      "text": "He still has simple partial seizures 4 times per day",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 549,
+      "end": 744,
+      "text": "He still has simple partial seizures 4 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12366,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 September 2014 10:12\nTo: epilepsy.neuroclinic@nhs.net\nCc: Dr Michael O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Recent deterioration following travel and seizure review\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\nPresent Seizure Frequency:\n\nHe still has simple partial seizures 4 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change.\n\nClinical Summary and Context:\n\nHe returned from transcontinental travel two weeks ago (eastward, crossing eight time zones). Since then he has reported circadian disruption with fragmented sleep, early morning awakenings, and daytime somnolence. He and his partner perceive a worsening in day-to-day seizure burden and recovery time, with increased postictal fatigue and reduced confidence mobilising outdoors. Although the absolute counts above reflect his established baseline pattern, the functional impact has deteriorated, with more clustering of drop attacks in the late afternoon and a longer postictal phase after tonic–clonic events. No intercurrent illness, alcohol use, or missed doses were reported; however, sleep–wake schedule remains inconsistent despite attempts at gradual resynchronisation. He is using a seizure diary and wearable reminder for medications.\n\nPlan of Action:\n\n- We discussed sleep hygiene, light exposure on waking, and consistent timing of medication dosing to support body clock realignment after travel. He will continue his current anti-seizure medications unchanged for now and provide an updated diary over the next four weeks to document any shift back toward his usual pattern.\n- He was advised to avoid solo bathing and to use a helmet when outdoors until the drop attack clustering settles.\n- We will arrange an earlier follow-up within six weeks, with interim telephone review in two weeks to reassess seizure clustering and functional impact.\n- He will notify us urgently if tonic–clonic seizures increase in frequency, if injuries occur with drop attacks, or if there is any new neurological deficit.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states current seizure frequencies: simple partial seizures 4 times per day, drop attacks occurring in batches (no numeric per time), and tonic-clonic seizures 2 times per month. Per the rule to select the highest frequency when multiple exist, 4 per day (simple partial) is the highest. Drop attacks are in clusters but without a clear per-time rate, so they cannot override the explicit 4/day. Thus the normalized label is 4 per day.",
+      "seizure_frequency_number": [
+        "4 per day",
+        "He still has simple partial seizures 4 times per day"
+      ],
+      "reference": [
+        "4 per day",
+        "He still has simple partial seizures 4 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

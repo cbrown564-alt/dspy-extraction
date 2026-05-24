@@ -1,0 +1,47 @@
+{
+  "id": "gan_11409",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 04 August 2019\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\nStaffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nSummary: Follow-up booking request to review symptom patterns associated with sleep loss and to align care with the patient’s personalised plan (documented elsewhere).\n\nBackground: The patient reports occasional cluster patterns linked to sleep loss. A personalised plan is already in place and referenced in the record.\n\nRequest: Please arrange a routine follow-up appointment in the neurology clinic within 8–10 weeks, sooner if the patient or primary care has concerns. At review, we will:\n- Reassess sleep hygiene and triggers\n- Check adherence and tolerability of current management\n- Confirm alignment with the personalised plan and update as needed\n\nInterim advice: Maintain consistent sleep schedule, minimise sleep disruption where feasible, and follow the personalised plan steps if patterns recur. Patient knows how to access urgent advice if required.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11409,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 04 August 2019\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\nStaffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nSummary: Follow-up booking request to review symptom patterns associated with sleep loss and to align care with the patient’s personalised plan (documented elsewhere).\n\nBackground: The patient reports occasional cluster patterns linked to sleep loss. A personalised plan is already in place and referenced in the record.\n\nRequest: Please arrange a routine follow-up appointment in the neurology clinic within 8–10 weeks, sooner if the patient or primary care has concerns. At review, we will:\n- Reassess sleep hygiene and triggers\n- Check adherence and tolerability of current management\n- Confirm alignment with the personalised plan and update as needed\n\nInterim advice: Maintain consistent sleep schedule, minimise sleep disruption where feasible, and follow the personalised plan steps if patterns recur. Patient knows how to access urgent advice if required.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses follow-up for symptom patterns associated with sleep loss and mentions 'occasional cluster patterns,' but it never explicitly mentions seizures or provides any numeric frequency. There are no explicit counts per time period, no confirmation of seizure presence, and no details about clusters per time or events per cluster. Therefore, per the instructions, since seizures are not explicitly mentioned, the correct label is 'no seizure frequency reference.'",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter about a follow-up epilepsy clinic booking request"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

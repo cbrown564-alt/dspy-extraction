@@ -1,0 +1,65 @@
+{
+  "id": "gan_6954",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night.\n\nHistory since last review: \n\nShe reports being the primary caregiver for her young children and notes that night-time sleep is frequently interrupted. She describes occasional brief nocturnal spells of sudden internal unease and a rising sensation lasting seconds without loss of awareness, after which she feels tired the next day. She has not required emergency care. Patient unsure of last event date; she states the timing is hard to recall due to disrupted nights and variable childcare demands.\n\nShe denies clear daytime events, tongue biting, or injuries. No new neurological symptoms. No recent infections or intercurrent illness. She has not noticed a consistent trigger, though sleep disruption and cumulative fatigue are commonly present before episodes by her report. She does not drive.\n\nPlan: \n- Continue current Oxcarbazepine 600 mg twice daily. No changes today.  \n- We discussed practical sleep hygiene measures compatible with night-time caregiving, such as scheduled rest periods when support is available; she will trial these.  \n- She will keep a simple event diary (including sleep quality and any nocturnal spells) to help clarify pattern and frequency, given that the Patient unsure of last event date at present.  \n- Safety advice reinforced, particularly around night-time infant care and bathing.  \n\nFollow-up: \n- Review in six months, or sooner if spells increase in frequency, occur in the daytime, or result in injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 515,
+      "end": 648,
+      "text": "She describes occasional brief nocturnal spells of sudden internal unease and a rising sensation... Patient unsure of last event date",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 734,
+      "end": 767,
+      "text": "Patient unsure of last event date",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6954,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night.\n\nHistory since last review: \n\nShe reports being the primary caregiver for her young children and notes that night-time sleep is frequently interrupted. She describes occasional brief nocturnal spells of sudden internal unease and a rising sensation lasting seconds without loss of awareness, after which she feels tired the next day. She has not required emergency care. Patient unsure of last event date; she states the timing is hard to recall due to disrupted nights and variable childcare demands.\n\nShe denies clear daytime events, tongue biting, or injuries. No new neurological symptoms. No recent infections or intercurrent illness. She has not noticed a consistent trigger, though sleep disruption and cumulative fatigue are commonly present before episodes by her report. She does not drive.\n\nPlan: \n- Continue current Oxcarbazepine 600 mg twice daily. No changes today.  \n- We discussed practical sleep hygiene measures compatible with night-time caregiving, such as scheduled rest periods when support is available; she will trial these.  \n- She will keep a simple event diary (including sleep quality and any nocturnal spells) to help clarify pattern and frequency, given that the Patient unsure of last event date at present.  \n- Safety advice reinforced, particularly around night-time infant care and bathing.  \n\nFollow-up: \n- Review in six months, or sooner if spells increase in frequency, occur in the daytime, or result in injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter mentions nocturnal spells suggestive of seizures: 'occasional brief nocturnal spells...' However, there is no explicit numeric frequency and the patient is unsure of the last event date. No clear count per time unit is given. She is not confirmed seizure-free for 6 months. Therefore, the specific current frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "She describes occasional brief nocturnal spells of sudden internal unease and a rising sensation... Patient unsure of last event date"
+      ],
+      "reference": [
+        "unknown",
+        "Patient unsure of last event date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

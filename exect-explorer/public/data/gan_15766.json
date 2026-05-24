@@ -1,0 +1,59 @@
+{
+  "id": "gan_15766",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Richardson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 September 2018 10:22\nTo: neuro.clinic@nhs.net\nCc: Dr Michael O’Connell (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment ï¿½\n\nHi Emma,\n\nEpilepsy Diagnosis:\n\nNot specified at this stage (diagnostic classification remains under review) â€\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 5 mg at night (intermittent use as advised previously)\n\nPresent Seizure Frequency:\n\nHis absence seizures are now occurring on four days of the week, whereas previously they were restricted to once every couple of weeks. This change has been captured consistently on his paper seizure calendar, which he brings to each appointment. There is no clear precipitant identified despite review of sleep, hydration, and stress records noted in the margins of his calendar pages.\n\nPlan of Action:\n\n- The calendar trend over the past eight weeks shows a stepwise increase coinciding with a winter viral illness but persisting beyond recovery. Given the timing and lack of other obvious triggers, we will first optimise lamotrigine dosing cautiously.\n- Please increase lamotrigine to 175 mg twice daily for two weeks, then to 200 mg twice daily if tolerated. If rash, new neurological symptoms, or significant dizziness occur, revert to the last tolerated dose and inform us immediately.\n- Continue clobazam 5 mg at night as needed for clusters up to three nights in a row; avoid daily continuous use unless advised. ï¿½\n- Bloods: U&E, LFTs, FBC within the next 7 days to establish baseline, and repeat 2 weeks after reaching 200 mg twice daily. â€˜\n- Safety: He should avoid swimming unsupervised and heights/ladders until stability returns. Driving remains prohibited under DVLA rules given current frequency.\n- Monitoring: He will continue to use the paper seizure calendar; we provided an updated template with columns for sleep duration and intercurrent illness to improve correlation tracking. Please ask him to bring the calendar to the next visit.\n- Follow-up: Review in clinic in 10–12 weeks. If the increase persists despite the above, we will discuss adding a further agent and arranging ambulatory EEG. ï¿½\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 620,
+      "end": 683,
+      "text": "His absence seizures are now occurring on four days of the week",
+      "attributes": {
+        "Label": "4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 620,
+      "end": 754,
+      "text": "His absence seizures are now occurring on four days of the week, whereas previously they were restricted to once every couple of weeks",
+      "attributes": {
+        "Label": "4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15766,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Richardson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 September 2018 10:22\nTo: neuro.clinic@nhs.net\nCc: Dr Michael O’Connell (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment ï¿½\n\nHi Emma,\n\nEpilepsy Diagnosis:\n\nNot specified at this stage (diagnostic classification remains under review) â€\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 5 mg at night (intermittent use as advised previously)\n\nPresent Seizure Frequency:\n\nHis absence seizures are now occurring on four days of the week, whereas previously they were restricted to once every couple of weeks. This change has been captured consistently on his paper seizure calendar, which he brings to each appointment. There is no clear precipitant identified despite review of sleep, hydration, and stress records noted in the margins of his calendar pages.\n\nPlan of Action:\n\n- The calendar trend over the past eight weeks shows a stepwise increase coinciding with a winter viral illness but persisting beyond recovery. Given the timing and lack of other obvious triggers, we will first optimise lamotrigine dosing cautiously.\n- Please increase lamotrigine to 175 mg twice daily for two weeks, then to 200 mg twice daily if tolerated. If rash, new neurological symptoms, or significant dizziness occur, revert to the last tolerated dose and inform us immediately.\n- Continue clobazam 5 mg at night as needed for clusters up to three nights in a row; avoid daily continuous use unless advised. ï¿½\n- Bloods: U&E, LFTs, FBC within the next 7 days to establish baseline, and repeat 2 weeks after reaching 200 mg twice daily. â€˜\n- Safety: He should avoid swimming unsupervised and heights/ladders until stability returns. Driving remains prohibited under DVLA rules given current frequency.\n- Monitoring: He will continue to use the paper seizure calendar; we provided an updated template with columns for sleep duration and intercurrent illness to improve correlation tracking. Please ask him to bring the calendar to the next visit.\n- Follow-up: Review in clinic in 10–12 weeks. If the increase persists despite the above, we will discuss adding a further agent and arranging ambulatory EEG. ï¿½\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"His absence seizures are now occurring on four days of the week.\" This indicates seizure occurrences on 4 days each week. No other higher-frequency seizure type is mentioned. Convert 'four days of the week' to the normalized format: '4 per week.'",
+      "seizure_frequency_number": [
+        "4 per week",
+        "His absence seizures are now occurring on four days of the week"
+      ],
+      "reference": [
+        "4 per week",
+        "His absence seizures are now occurring on four days of the week, whereas previously they were restricted to once every couple of weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

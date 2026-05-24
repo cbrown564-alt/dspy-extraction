@@ -1,0 +1,59 @@
+{
+  "id": "gan_12356",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Michael Evans (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.clinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Daniel O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Michael\n\nEpilepsy Diagnosis:\n\nCurrently under review; classification not established.\n\nPresent Medication:\n\n1. Lamotrigine 200 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nHe still has focal clonic 3 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change.\n\nClinical Summary:\n\nHe attended with his partner and provided a consistent history. He reports social alcohol use and is actively reducing his intake; no clear temporal link to events is identified, but he will continue to cut down. Sleep remains variable due to shift work, which may be contributory. Adherence is good by report, with no missed doses in the past month. No new neurological deficits, injuries, or hospital admissions. MRI (2023) unchanged; routine EEG (2024) non-specific without clear lateralising features.\n\nPlan of Action:\n\n- Adjust clobazam to 10 mg in the morning and 10 mg at night for two weeks, then review tolerability; if excessive daytime somnolence occurs, revert to night dosing only.\n- Continue lamotrigine 200 mg twice daily unchanged for now.\n- Arrange ambulatory EEG (48–72 hours) to capture habitual events and assist classification.\n- Request updated serum lamotrigine level, FBC, U&E, LFTs in two weeks.\n- Provide a written seizure diary template; partner to document witnessed features and potential precipitants (sleep loss, intercurrent illness, alcohol).\n- Safety advice reinforced regarding bathing, heights, and machinery; driving advice unchanged per DVLA guidance already provided at prior visit.\n- Follow-up in 3 months; earlier review if escalation or adverse effects.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 548,
+      "end": 669,
+      "text": "He still has focal clonic 3 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 548,
+      "end": 732,
+      "text": "He still has focal clonic 3 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12356,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Michael Evans (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.clinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Daniel O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Michael\n\nEpilepsy Diagnosis:\n\nCurrently under review; classification not established.\n\nPresent Medication:\n\n1. Lamotrigine 200 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nHe still has focal clonic 3 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change.\n\nClinical Summary:\n\nHe attended with his partner and provided a consistent history. He reports social alcohol use and is actively reducing his intake; no clear temporal link to events is identified, but he will continue to cut down. Sleep remains variable due to shift work, which may be contributory. Adherence is good by report, with no missed doses in the past month. No new neurological deficits, injuries, or hospital admissions. MRI (2023) unchanged; routine EEG (2024) non-specific without clear lateralising features.\n\nPlan of Action:\n\n- Adjust clobazam to 10 mg in the morning and 10 mg at night for two weeks, then review tolerability; if excessive daytime somnolence occurs, revert to night dosing only.\n- Continue lamotrigine 200 mg twice daily unchanged for now.\n- Arrange ambulatory EEG (48–72 hours) to capture habitual events and assist classification.\n- Request updated serum lamotrigine level, FBC, U&E, LFTs in two weeks.\n- Provide a written seizure diary template; partner to document witnessed features and potential precipitants (sleep loss, intercurrent illness, alcohol).\n- Safety advice reinforced regarding bathing, heights, and machinery; driving advice unchanged per DVLA guidance already provided at prior visit.\n- Follow-up in 3 months; earlier review if escalation or adverse effects.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit current seizure frequencies: 'focal clonic 3 times per day', 'drop attacks occurring in batches' (no numeric rate given, implies clusters without clear frequency), and 'tonic-clonic seizures 2 times per month'. Per the rule to select the highest frequency, 3 per day (focal clonic) is higher than 2 per month. The drop attacks are in batches but lack a quantifiable overall rate, so they cannot override the clear 3 per day frequency. Therefore, the normalized label is '3 per day'.",
+      "seizure_frequency_number": [
+        "3 per day",
+        "He still has focal clonic 3 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month"
+      ],
+      "reference": [
+        "3 per day",
+        "He still has focal clonic 3 times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

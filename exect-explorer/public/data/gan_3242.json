@@ -1,0 +1,59 @@
+{
+  "id": "gan_3242",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-1998, Hospital No: W392017 NHS No. 8421763095  \n12 Brookview Close, London, SW12 0AA  \n\nDiagnoses: \n\nFocal epilepsy with awareness impairment, likely temporal lobe onset.\n\nI reviewed Michael Harris in clinic today. He has been engaging regularly with a local peer support group, and observations shared by peers have helped to corroborate his own descriptions of events and triggers. Over the past four weeks he reports 2 clusters this month; each ≈five absences in the morning. He and peers describe brief staring episodes with behavioural arrest and subtle oroalimentary automatisms lasting 10–20 seconds, followed by a few minutes of slowed recovery without confusion. No generalised tonic–clonic seizures have occurred.\n\nCurrent medicines: lamotrigine 150 mg twice daily; levetiracetam 500 mg twice daily. He reports full adherence and no adverse effects beyond occasional mild irritability attributed to levetiracetam, which he feels is manageable. No rescue medication has been required. Sleep regularity has improved, and peers have noted that missed breakfast and early starts appear to precipitate the morning clusters.\n\nNeurological examination today was unremarkable. Review of previous MRI was non-lesional; prior EEG demonstrated left temporal intermittent rhythmic slowing with rare sharp activity. We discussed options including modest levetiracetam up-titration versus adding lacosamide if clusters persist. For now, given improvement in daily function and his preference to avoid changes before upcoming examinations, we agreed to continue current therapy and focus on behavioural measures (consistent breakfast, hydration, and morning routine), with close monitoring. He will keep a seizure and trigger diary, and his peer group has agreed to document witnessed features to supplement history at the next visit.\n\nPlan:  \n- Continue lamotrigine 150 mg twice daily and levetiracetam 500 mg twice daily.  \n- Seizure/trigger diary, including peer-witnessed notes on onset, duration, automatisms, and recovery.  \n- Safety advice reinforced; he does not drive and understands DVLA regulations.  \n- If cluster frequency increases or events generalise, he will contact the epilepsy nurse specialist for earlier review.  \n- Routine follow-up in three months; consider levetiracetam increase to 750 mg twice daily if clusters persist.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 572,
+      "end": 666,
+      "text": "Over the past four weeks he reports 2 clusters this month; each ≈five absences in the morning.",
+      "attributes": {
+        "Label": "2 cluster per month, 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 608,
+      "end": 665,
+      "text": "2 clusters this month; each ≈five absences in the morning",
+      "attributes": {
+        "Label": "2 cluster per month, 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3242,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-1998, Hospital No: W392017 NHS No. 8421763095  \n12 Brookview Close, London, SW12 0AA  \n\nDiagnoses: \n\nFocal epilepsy with awareness impairment, likely temporal lobe onset.\n\nI reviewed Michael Harris in clinic today. He has been engaging regularly with a local peer support group, and observations shared by peers have helped to corroborate his own descriptions of events and triggers. Over the past four weeks he reports 2 clusters this month; each ≈five absences in the morning. He and peers describe brief staring episodes with behavioural arrest and subtle oroalimentary automatisms lasting 10–20 seconds, followed by a few minutes of slowed recovery without confusion. No generalised tonic–clonic seizures have occurred.\n\nCurrent medicines: lamotrigine 150 mg twice daily; levetiracetam 500 mg twice daily. He reports full adherence and no adverse effects beyond occasional mild irritability attributed to levetiracetam, which he feels is manageable. No rescue medication has been required. Sleep regularity has improved, and peers have noted that missed breakfast and early starts appear to precipitate the morning clusters.\n\nNeurological examination today was unremarkable. Review of previous MRI was non-lesional; prior EEG demonstrated left temporal intermittent rhythmic slowing with rare sharp activity. We discussed options including modest levetiracetam up-titration versus adding lacosamide if clusters persist. For now, given improvement in daily function and his preference to avoid changes before upcoming examinations, we agreed to continue current therapy and focus on behavioural measures (consistent breakfast, hydration, and morning routine), with close monitoring. He will keep a seizure and trigger diary, and his peer group has agreed to document witnessed features to supplement history at the next visit.\n\nPlan:  \n- Continue lamotrigine 150 mg twice daily and levetiracetam 500 mg twice daily.  \n- Seizure/trigger diary, including peer-witnessed notes on onset, duration, automatisms, and recovery.  \n- Safety advice reinforced; he does not drive and understands DVLA regulations.  \n- If cluster frequency increases or events generalise, he will contact the epilepsy nurse specialist for earlier review.  \n- Routine follow-up in three months; consider levetiracetam increase to 750 mg twice daily if clusters persist.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Over the past four weeks he reports 2 clusters this month; each ≈five absences in the morning.\" This provides explicit numeric frequency: 2 clusters per month, with about five seizures per cluster. No other frequency mentioned is higher. Therefore, normalize to the cluster format with per-cluster count.",
+      "seizure_frequency_number": [
+        "2 cluster per month, 5 per cluster",
+        "Over the past four weeks he reports 2 clusters this month; each ≈five absences in the morning."
+      ],
+      "reference": [
+        "2 cluster per month, 5 per cluster",
+        "2 clusters this month; each ≈five absences in the morning"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

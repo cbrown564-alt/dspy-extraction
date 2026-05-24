@@ -1,0 +1,47 @@
+{
+  "id": "gan_11874",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Sarah Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, Praed Street, London W2 1NY  \n\nDear Dr Sarah Ahmed,  \n\nJonathan Mills, DOB: 14-05-1984, Hospital No: H938421 NHS No. 9834751026  \n12 Brookside Close, London, W10 6AB \n\nDiagnosis: Combined generalised and focal epilepsy (patient has both generalised and focal epilepsy).  \nSocial history: Social alcohol use reported and currently reducing. \n\nPolice information request protocol (epilepsy records): \n- All requests must be in writing on police headed paper or via a verified secure email, stating statutory basis (e.g., Data Protection Act 2018, Schedule 2/Part 1, or a court order). \n- We disclose the minimum necessary epilepsy-related information only, proportionate to the stated purpose. \n- Where feasible and lawful, we inform the patient of the request unless notification would prejudice the investigation or is legally prohibited. \n- Urgent safeguarding or risk-to-life requests are prioritised; verbal requests must be followed by written confirmation within 48 hours. \n- Each disclosure is reviewed by the Trust Caldicott Guardian/Information Governance team before release. \n- We record the request, legal basis, data disclosed, and decision-making rationale in the clinical record. \n- Police are advised that disclosed information remains confidential and must not be used beyond the stated lawful purpose. \n\nFor routine clinical matters we will continue standard follow-up. \n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11874,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Sarah Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, Praed Street, London W2 1NY  \n\nDear Dr Sarah Ahmed,  \n\nJonathan Mills, DOB: 14-05-1984, Hospital No: H938421 NHS No. 9834751026  \n12 Brookside Close, London, W10 6AB \n\nDiagnosis: Combined generalised and focal epilepsy (patient has both generalised and focal epilepsy).  \nSocial history: Social alcohol use reported and currently reducing. \n\nPolice information request protocol (epilepsy records): \n- All requests must be in writing on police headed paper or via a verified secure email, stating statutory basis (e.g., Data Protection Act 2018, Schedule 2/Part 1, or a court order). \n- We disclose the minimum necessary epilepsy-related information only, proportionate to the stated purpose. \n- Where feasible and lawful, we inform the patient of the request unless notification would prejudice the investigation or is legally prohibited. \n- Urgent safeguarding or risk-to-life requests are prioritised; verbal requests must be followed by written confirmation within 48 hours. \n- Each disclosure is reviewed by the Trust Caldicott Guardian/Information Governance team before release. \n- We record the request, legal basis, data disclosed, and decision-making rationale in the clinical record. \n- Police are advised that disclosed information remains confidential and must not be used beyond the stated lawful purpose. \n\nFor routine clinical matters we will continue standard follow-up. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter in full. It provides a diagnosis of combined generalised and focal epilepsy and includes administrative details about police information requests and social history. There is no mention of seizures, seizure frequency, seizure-free status, or any numeric frequency. According to the rules, when the letter does not mention seizures at all, the correct output is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter explaining the protocol for responding to police information requests related to epilepsy records"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

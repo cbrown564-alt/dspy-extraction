@@ -1,0 +1,65 @@
+{
+  "id": "gan_5476",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Helen Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 February 2023 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Neil (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Helen,\n\nDiagnosis:\n\nEpilepsy (type not specified in records)\n\nCurrent circumstances:\n\nThe patient reports ongoing stress while awaiting relocation from temporary accommodation; crowded living conditions have been noted and may be contributing to poor sleep and irregular routines.\n\nCurrent medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-led use approximately once monthly)\n\nCurrent seizure description and frequency:\n\nThe patient reports sporadic epileptic spasms this year, typically occurring on waking from fragmented sleep. Episodes are brief, sometimes in small clusters, without clear daytime triggers. No sustained convulsions have been described. No injuries reported. These events were described as more noticeable during periods of increased household disruption.\n\nAssessment and plan:\n\n- Given the sleep disruption and environmental stressors, we discussed practical measures to support sleep regularity and medication adherence. The patient agreed to keep a simple diary of sleep times, medication doses, and any spasms.\n- No immediate changes to lamotrigine today. We will introduce a slow titration of levetiracetam with the aim of improving control of the reported spasms, while monitoring tolerance and mood.\n\nLevetiracetam titration plan:\n- Week 1: 250 mg at night\n- Week 2: 250 mg twice daily\n- Week 3: 250 mg morning and 500 mg night\n- Week 4: 500 mg twice daily and maintain thereafter pending review\n\nClobazam remains as rescue for short clusters only, not more than 10 mg in 24 hours and not more than two days per week. The patient has been advised to contact the team if clusters escalate or if mood changes emerge.\n\nFollow-up:\n\nWe have arranged a review in three months, or earlier via the advice line if spasms increase in frequency or severity. A community epilepsy nurse check-in will occur in four weeks to support adherence and diary keeping.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 827,
+      "end": 936,
+      "text": "The patient reports sporadic epileptic spasms this year, typically occurring on waking from fragmented sleep.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 847,
+      "end": 882,
+      "text": "Sporadic epileptic spasms this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5476,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Helen Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 February 2023 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Neil (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Helen,\n\nDiagnosis:\n\nEpilepsy (type not specified in records)\n\nCurrent circumstances:\n\nThe patient reports ongoing stress while awaiting relocation from temporary accommodation; crowded living conditions have been noted and may be contributing to poor sleep and irregular routines.\n\nCurrent medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-led use approximately once monthly)\n\nCurrent seizure description and frequency:\n\nThe patient reports sporadic epileptic spasms this year, typically occurring on waking from fragmented sleep. Episodes are brief, sometimes in small clusters, without clear daytime triggers. No sustained convulsions have been described. No injuries reported. These events were described as more noticeable during periods of increased household disruption.\n\nAssessment and plan:\n\n- Given the sleep disruption and environmental stressors, we discussed practical measures to support sleep regularity and medication adherence. The patient agreed to keep a simple diary of sleep times, medication doses, and any spasms.\n- No immediate changes to lamotrigine today. We will introduce a slow titration of levetiracetam with the aim of improving control of the reported spasms, while monitoring tolerance and mood.\n\nLevetiracetam titration plan:\n- Week 1: 250 mg at night\n- Week 2: 250 mg twice daily\n- Week 3: 250 mg morning and 500 mg night\n- Week 4: 500 mg twice daily and maintain thereafter pending review\n\nClobazam remains as rescue for short clusters only, not more than 10 mg in 24 hours and not more than two days per week. The patient has been advised to contact the team if clusters escalate or if mood changes emerge.\n\nFollow-up:\n\nWe have arranged a review in three months, or earlier via the advice line if spasms increase in frequency or severity. A community epilepsy nurse check-in will occur in four weeks to support adherence and diary keeping.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient has epileptic spasms but provides no explicit numeric frequency. Phrases used are qualitative: 'sporadic epileptic spasms this year,' 'typically occurring on waking from fragmented sleep,' 'Episodes are brief, sometimes in small clusters,' and 'more noticeable during periods of increased household disruption.' There is no count per day/week/month/year, nor a clear range. Therefore, the specific frequency cannot be determined. As seizures are present but not quantified, the correct label is 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "The patient reports sporadic epileptic spasms this year, typically occurring on waking from fragmented sleep."
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic epileptic spasms this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

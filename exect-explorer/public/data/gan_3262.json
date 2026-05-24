@@ -1,0 +1,59 @@
+{
+  "id": "gan_3262",
+  "text": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSouth Thames Neurology Service\nSt George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nJames Walker, DOB: 14-07-1988, Hospital No: H629381 NHS No. 9473158620\nFlat 3, 12 Meadow Lane, London SE15 4AB\n\nDiagnoses:\n\nFocal epilepsy.\n\nThank you for reviewing James Walker, who works in a manual, safety‑sensitive role involving heights and machinery. He reports ongoing focal impaired‑awareness episodes with morning predominance. Over the past four weeks he has noticed two clusters this month; each ≈five absences in the morning. He describes these as brief periods of behavioural arrest with staring, loss of track of tasks, and automatic hand movements, followed by fatigue and mild headache. There is no clear convulsion, no tongue‑bite, and no incontinence. Triggers are suspected early starts and missed breakfast on shift days.\n\nHe remains on lamotrigine 150 mg twice daily with good tolerability (no rash, dizziness, or mood change). No rescue medication has been required. He has been fully adherent and uses a phone reminder. There is no recent intercurrent illness. Sleep is irregular on rotating shifts, and caffeine intake is high on night rotations. No alcohol excess. Family note occasional brief speech arrest preceding the episodes by a few seconds.\n\nNeurological examination today was unremarkable. Prior MRI (2023) showed a subtle left mesial temporal signal change without overt hippocampal volume loss. Routine EEG (2024) demonstrated left temporal sharp waves. These findings support a diagnosis of focal epilepsy with probable left temporal onset.\n\nGiven his safety‑critical duties, we discussed risk management at work. He understands the need to avoid tasks at height or near unguarded machinery if he experiences prodromal symptoms, and to inform occupational health. We provided written advice on sleep hygiene, regular meals, and hydration, and agreed on a seizure diary to document timing relative to shifts. We did not make medication changes today, but if clustering persists, we will consider a cautious lamotrigine increase or add‑on levetiracetam. He consents to us liaising with his employer’s occupational health team if needed.\n\nPlan:\n- Continue lamotrigine 150 mg twice daily.\n- Seizure diary focusing on shift pattern and morning events; note any aura or speech arrest.\n- Lifestyle measures: regular breakfast before early shifts; optimise sleep; reduce caffeine after midnight on nights.\n- Occupational health advice provided; avoid working at height or with moving machinery on days with prodrome or after a morning cluster.\n- Bloods today: FBC, U&E, LFTs—results to be copied to you.\n- Review in 8 weeks, sooner if there is any increase beyond two clusters per month or new features (convulsions, injury).\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 519,
+      "end": 619,
+      "text": "Over the past four weeks he has noticed two clusters this month; each ≈five absences in the morning.",
+      "attributes": {
+        "Label": "2 cluster per month, 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 559,
+      "end": 618,
+      "text": "two clusters this month; each ≈five absences in the morning",
+      "attributes": {
+        "Label": "2 cluster per month, 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3262,
+    "clinic_date": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSouth Thames Neurology Service\nSt George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nJames Walker, DOB: 14-07-1988, Hospital No: H629381 NHS No. 9473158620\nFlat 3, 12 Meadow Lane, London SE15 4AB\n\nDiagnoses:\n\nFocal epilepsy.\n\nThank you for reviewing James Walker, who works in a manual, safety‑sensitive role involving heights and machinery. He reports ongoing focal impaired‑awareness episodes with morning predominance. Over the past four weeks he has noticed two clusters this month; each ≈five absences in the morning. He describes these as brief periods of behavioural arrest with staring, loss of track of tasks, and automatic hand movements, followed by fatigue and mild headache. There is no clear convulsion, no tongue‑bite, and no incontinence. Triggers are suspected early starts and missed breakfast on shift days.\n\nHe remains on lamotrigine 150 mg twice daily with good tolerability (no rash, dizziness, or mood change). No rescue medication has been required. He has been fully adherent and uses a phone reminder. There is no recent intercurrent illness. Sleep is irregular on rotating shifts, and caffeine intake is high on night rotations. No alcohol excess. Family note occasional brief speech arrest preceding the episodes by a few seconds.\n\nNeurological examination today was unremarkable. Prior MRI (2023) showed a subtle left mesial temporal signal change without overt hippocampal volume loss. Routine EEG (2024) demonstrated left temporal sharp waves. These findings support a diagnosis of focal epilepsy with probable left temporal onset.\n\nGiven his safety‑critical duties, we discussed risk management at work. He understands the need to avoid tasks at height or near unguarded machinery if he experiences prodromal symptoms, and to inform occupational health. We provided written advice on sleep hygiene, regular meals, and hydration, and agreed on a seizure diary to document timing relative to shifts. We did not make medication changes today, but if clustering persists, we will consider a cautious lamotrigine increase or add‑on levetiracetam. He consents to us liaising with his employer’s occupational health team if needed.\n\nPlan:\n- Continue lamotrigine 150 mg twice daily.\n- Seizure diary focusing on shift pattern and morning events; note any aura or speech arrest.\n- Lifestyle measures: regular breakfast before early shifts; optimise sleep; reduce caffeine after midnight on nights.\n- Occupational health advice provided; avoid working at height or with moving machinery on days with prodrome or after a morning cluster.\n- Bloods today: FBC, U&E, LFTs—results to be copied to you.\n- Review in 8 weeks, sooner if there is any increase beyond two clusters per month or new features (convulsions, injury).\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the past four weeks he has noticed two clusters this month; each ≈five absences in the morning.' This provides a clear monthly frequency and the number per cluster. No other conflicting frequencies are mentioned. Therefore, frequency is 2 clusters per month, with about 5 seizures per cluster.",
+      "seizure_frequency_number": [
+        "2 cluster per month, 5 per cluster",
+        "Over the past four weeks he has noticed two clusters this month; each ≈five absences in the morning."
+      ],
+      "reference": [
+        "2 cluster per month, 5 per cluster",
+        "two clusters this month; each ≈five absences in the morning"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

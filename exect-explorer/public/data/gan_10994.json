@@ -1,0 +1,59 @@
+{
+  "id": "gan_10994",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nJames Holloway, DOB: 14-02-1986, Hospital No: H394028 NHS No. 9152047761  \nFlat 3, 29 Sparrow Court, London, W10 6QT \n\nMedication: \n\nLevetiracetam 1 g/1 g; lamotrigine 100 mg/150 mg. He reports good daytime tolerability and no mood change with levetiracetam at the current dose.\n\nDiagnosis and course: \n\nThis gentleman has focal epilepsy, likely right temporal onset on clinical grounds. He continues to describe brief rising epigastric sensations with auditory distortion and preserved awareness, occasionally progressing to behavioural arrest. Morning clusters three or four×/month; ~three events over 90 min. Between clusters he may go two to three weeks without events. No generalised tonic–clonic seizures reported for over a year.\n\nWork context: \n\nHe works as a warehouse picker between tall racking and narrow aisles where lifting demands and pace vary by shift. He times his breaks to coincide with early warning auras and will radio a colleague if symptoms begin while he is on a high step platform. He avoids operating ride-on equipment and confirms he is not driving.\n\nAssessment today: \n\nNeurological examination is non-focal. Sleep is fragmented on early starts; he notes clusters are more likely after consecutive 05:00 starts or after missed meals. He denies alcohol misuse. No new headaches, injuries, or tongue biting. Last MRI (2023) normal; routine EEG previously showed right temporal sharp transients. He is keeping a seizure diary and provided examples that support the above pattern. Adherence is good.\n\nPlan: \n\n- Continue levetiracetam 1 g twice daily and lamotrigine 100 mg morning/150 mg night.  \n- If cluster propensity increases, we discussed a targeted rescue plan: clonazepam 0.5 mg at aura onset, may repeat once after 30 minutes (maximum 1 mg per cluster). He understands to avoid operating equipment after use and to inform his line manager if taken during a shift.  \n- Occupational advice: maintain buddy system in narrow aisles; schedule heavier lifts later in the shift when he is fully alert; ensure hydration and regular meals on early starts. He will share this with his supervisor and occupational health.  \n- Bloods today for lamotrigine level, FBC, U&E, LFTs; results to you.  \n- Safety: first aid reviewed; colleagues to time events and keep him seated away from racking until recovery; call 999 if an event exceeds 5 minutes or if injuries occur.  \n\nWe will review in four months or sooner if clusters escalate or rescue medication is needed more than twice in a month.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 734,
+      "end": 799,
+      "text": "Morning clusters three or four×/month; ~three events over 90 min.",
+      "attributes": {
+        "Label": "3 to 4 cluster per month, 3 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 734,
+      "end": 798,
+      "text": "Morning clusters three or four×/month; ~three events over 90 min",
+      "attributes": {
+        "Label": "3 to 4 cluster per month, 3 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10994,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nJames Holloway, DOB: 14-02-1986, Hospital No: H394028 NHS No. 9152047761  \nFlat 3, 29 Sparrow Court, London, W10 6QT \n\nMedication: \n\nLevetiracetam 1 g/1 g; lamotrigine 100 mg/150 mg. He reports good daytime tolerability and no mood change with levetiracetam at the current dose.\n\nDiagnosis and course: \n\nThis gentleman has focal epilepsy, likely right temporal onset on clinical grounds. He continues to describe brief rising epigastric sensations with auditory distortion and preserved awareness, occasionally progressing to behavioural arrest. Morning clusters three or four×/month; ~three events over 90 min. Between clusters he may go two to three weeks without events. No generalised tonic–clonic seizures reported for over a year.\n\nWork context: \n\nHe works as a warehouse picker between tall racking and narrow aisles where lifting demands and pace vary by shift. He times his breaks to coincide with early warning auras and will radio a colleague if symptoms begin while he is on a high step platform. He avoids operating ride-on equipment and confirms he is not driving.\n\nAssessment today: \n\nNeurological examination is non-focal. Sleep is fragmented on early starts; he notes clusters are more likely after consecutive 05:00 starts or after missed meals. He denies alcohol misuse. No new headaches, injuries, or tongue biting. Last MRI (2023) normal; routine EEG previously showed right temporal sharp transients. He is keeping a seizure diary and provided examples that support the above pattern. Adherence is good.\n\nPlan: \n\n- Continue levetiracetam 1 g twice daily and lamotrigine 100 mg morning/150 mg night.  \n- If cluster propensity increases, we discussed a targeted rescue plan: clonazepam 0.5 mg at aura onset, may repeat once after 30 minutes (maximum 1 mg per cluster). He understands to avoid operating equipment after use and to inform his line manager if taken during a shift.  \n- Occupational advice: maintain buddy system in narrow aisles; schedule heavier lifts later in the shift when he is fully alert; ensure hydration and regular meals on early starts. He will share this with his supervisor and occupational health.  \n- Bloods today for lamotrigine level, FBC, U&E, LFTs; results to you.  \n- Safety: first aid reviewed; colleagues to time events and keep him seated away from racking until recovery; call 999 if an event exceeds 5 minutes or if injuries occur.  \n\nWe will review in four months or sooner if clusters escalate or rescue medication is needed more than twice in a month.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements: The letter states, 'Morning clusters three or four×/month; ~three events over 90 min.' This provides both cluster frequency per month (3 or 4 per month) and events per cluster (~3). It also mentions 'Between clusters he may go two to three weeks without events,' which is consistent but not higher frequency than the cluster description. No generalised tonic–clonic seizures for over a year is not the highest frequency. According to the rules, select the highest frequency and, since clusters and events per cluster are provided, use the cluster format. Normalize 'three or four×/month' to '3 to 4 cluster per month' and '~three events' to '3 per cluster.'",
+      "seizure_frequency_number": [
+        "3 to 4 cluster per month, 3 per cluster",
+        "Morning clusters three or four×/month; ~three events over 90 min."
+      ],
+      "reference": [
+        "3 to 4 cluster per month, 3 per cluster",
+        "Morning clusters three or four×/month; ~three events over 90 min"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

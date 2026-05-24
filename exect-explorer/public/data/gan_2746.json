@@ -1,0 +1,59 @@
+{
+  "id": "gan_2746",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Martin O’Connell (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Gardner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Work-context update and medication plan\n\nDear Priya,\n\nEpilepsy diagnosis:\n- The patient has generalised epilepsy.\n\nWork and symptom context:\n- The patient works as a commercial kitchen line cook in a high-heat, fast-paced environment. Episodes tend to be noticed during peak dinner service when heat exposure and sustained concentration are greatest.\n\nCurrent medication:\n1. Carbamazepine MR 600 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nPresent seizure frequency:\n- The patient reports a focal seizure monthly, typically brief with preserved awareness but transient speech arrest and right-hand clumsiness, occasionally prompting them to step back from the hot line for safety. No recent generalised tonic–clonic events have been reported.\n\nClinic assessment and plan:\n- Given the workplace hazards (open flames, hot oil, rapid task-switching), we reviewed strategies to minimise injury risk during episodes reported as a focal seizure monthly. The patient will continue current dosing of Carbamazepine MR and Levetiracetam for now while we monitor for any change in frequency or evolution of semiology in the kitchen setting.\n- We have advised the patient to log episodes with time of day, task, hydration status, and heat exposure to correlate environmental factors with breakthrough events. The patient agrees to share logs from the kitchen incident book where relevant.\n- We will reassess in three months and consider rationalisation of therapy if the pattern of a focal seizure monthly persists or if there is any progression to generalised events.\n\nFollow-up:\n- Review in clinic in three months, sooner if events increase or safety concerns arise at work.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 789,
+      "end": 832,
+      "text": "The patient reports a focal seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 811,
+      "end": 832,
+      "text": "focal seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2746,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Martin O’Connell (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Gardner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Work-context update and medication plan\n\nDear Priya,\n\nEpilepsy diagnosis:\n- The patient has generalised epilepsy.\n\nWork and symptom context:\n- The patient works as a commercial kitchen line cook in a high-heat, fast-paced environment. Episodes tend to be noticed during peak dinner service when heat exposure and sustained concentration are greatest.\n\nCurrent medication:\n1. Carbamazepine MR 600 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nPresent seizure frequency:\n- The patient reports a focal seizure monthly, typically brief with preserved awareness but transient speech arrest and right-hand clumsiness, occasionally prompting them to step back from the hot line for safety. No recent generalised tonic–clonic events have been reported.\n\nClinic assessment and plan:\n- Given the workplace hazards (open flames, hot oil, rapid task-switching), we reviewed strategies to minimise injury risk during episodes reported as a focal seizure monthly. The patient will continue current dosing of Carbamazepine MR and Levetiracetam for now while we monitor for any change in frequency or evolution of semiology in the kitchen setting.\n- We have advised the patient to log episodes with time of day, task, hydration status, and heat exposure to correlate environmental factors with breakthrough events. The patient agrees to share logs from the kitchen incident book where relevant.\n- We will reassess in three months and consider rationalisation of therapy if the pattern of a focal seizure monthly persists or if there is any progression to generalised events.\n\nFollow-up:\n- Review in clinic in three months, sooner if events increase or safety concerns arise at work.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: 'The patient reports a focal seizure monthly.' This is the clearest numeric expression of frequency. There are no additional frequencies that are higher; it also notes no recent generalised tonic–clonic events. Therefore, the normalized label is '1 per month'.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "The patient reports a focal seizure monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "focal seizure monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

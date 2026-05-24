@@ -1,0 +1,59 @@
+{
+  "id": "gan_804",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning and 600 mg night. No changes made today.\n\nThank you for reviewing this patient who attended neurology clinic reporting steady improvement in day-to-day control. She has focused on regularising her routine, and her sleep hygiene has improved with a more consistent bedtime and wake time; her sleep pattern appears more stable. Prior to this improvement, she described cluster days twice this month, typically two seizures in 24 hours on those days. Over the last several weeks she has noticed that episodes are now tending to occur at most on a monthly basis, and some months have passed without any events at all. This monthly pattern is patient-reported and coincides with the improvements in sleep and overall routine.\n\nShe has not reported new adverse effects on the current dose. There have been no witnessed convulsions, injuries, or emergency attendances. She has kept a diary, which corroborates the reduction in frequency and the emerging monthly pattern. Triggers previously suspected (fatigue and irregular sleep) have been addressed through the improved sleep routine. She is comfortable to continue with the current plan and understands to seek advice if the pattern changes or if events recur more than monthly.\n\nPlan:\n- Continue Oxcarbazepine 600 mg twice daily unchanged.\n- Maintain current sleep hygiene measures as they appear beneficial.\n- Continue seizure diary to monitor for any deviation from the current monthly pattern.\n- Routine follow-up in six months, earlier if clusters return or if frequency increases.\n\nWe will see her back in six months.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 844,
+      "end": 904,
+      "text": "episodes are now tending to occur at most on a monthly basis",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 891,
+      "end": 898,
+      "text": "monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 804,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning and 600 mg night. No changes made today.\n\nThank you for reviewing this patient who attended neurology clinic reporting steady improvement in day-to-day control. She has focused on regularising her routine, and her sleep hygiene has improved with a more consistent bedtime and wake time; her sleep pattern appears more stable. Prior to this improvement, she described cluster days twice this month, typically two seizures in 24 hours on those days. Over the last several weeks she has noticed that episodes are now tending to occur at most on a monthly basis, and some months have passed without any events at all. This monthly pattern is patient-reported and coincides with the improvements in sleep and overall routine.\n\nShe has not reported new adverse effects on the current dose. There have been no witnessed convulsions, injuries, or emergency attendances. She has kept a diary, which corroborates the reduction in frequency and the emerging monthly pattern. Triggers previously suspected (fatigue and irregular sleep) have been addressed through the improved sleep routine. She is comfortable to continue with the current plan and understands to seek advice if the pattern changes or if events recur more than monthly.\n\nPlan:\n- Continue Oxcarbazepine 600 mg twice daily unchanged.\n- Maintain current sleep hygiene measures as they appear beneficial.\n- Continue seizure diary to monitor for any deviation from the current monthly pattern.\n- Routine follow-up in six months, earlier if clusters return or if frequency increases.\n\nWe will see her back in six months.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient previously had cluster days twice in the month (two seizures in 24 hours on those days). More recently: \"episodes are now tending to occur at most on a monthly basis, and some months have passed without any events at all.\" The plan and diary corroborate a current monthly pattern. Not seizure-free for 6 months, so we label current frequency. The highest frequency mentioned refers to earlier in the same month (two cluster days), but the letter frames that as prior to improvement; the current pattern is monthly at most. No concurrent multiple frequencies to sum. Therefore, normalize to 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "episodes are now tending to occur at most on a monthly basis"
+      ],
+      "reference": [
+        "1 per month",
+        "monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

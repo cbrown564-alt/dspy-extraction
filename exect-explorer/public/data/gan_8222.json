@@ -1,0 +1,48 @@
+{
+  "id": "gan_8222",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 14-07-1991, Hospital No: H927451 NHS No. 7483201596  \n58 Willowbank Avenue, London, SW12 0NR  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation.\n\nLucy Morgan attended the clinic today with her partner. She described a previous seizure that occurred during an international flight approximately nine months ago, which led to significant anxiety around air travel. Since that episode, she reports careful adherence to her medication and regular sleep routines. Across this follow-up period, she notes an absence of any further witnessed events, and there have been no interim emergency presentations or rescue medication use reported by her or her partner.\n\nCurrent medication remains unchanged. She carries her rescue medication when travelling but has not needed to use it. She and her partner have developed a practical plan for flights, including early boarding to reduce stress and ensuring adequate hydration; they feel this has been reassuring. Screening bloods from her GP three months ago were unremarkable by her report, and she denies adverse effects from medication.\n\nOn examination today, she was well and neurologically unremarkable. We discussed the potential contribution of anticipatory anxiety around travel; she finds brief breathing exercises and a structured pre-flight routine helpful. She will continue with these strategies and will inform us if new episodes occur, particularly if there are features suggestive of recurrence during travel.\n\nFollow-up: We will review again in six months, or sooner if there is any change in event frequency or new symptoms. She has contact details for the epilepsy nurse specialist for interim queries, especially regarding upcoming flights.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 679,
+      "end": 761,
+      "text": "Across this follow-up period, she notes an absence of any further witnessed events",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8222,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nLucy Morgan, DOB: 14-07-1991, Hospital No: H927451 NHS No. 7483201596  \n58 Willowbank Avenue, London, SW12 0NR  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation.\n\nLucy Morgan attended the clinic today with her partner. She described a previous seizure that occurred during an international flight approximately nine months ago, which led to significant anxiety around air travel. Since that episode, she reports careful adherence to her medication and regular sleep routines. Across this follow-up period, she notes an absence of any further witnessed events, and there have been no interim emergency presentations or rescue medication use reported by her or her partner.\n\nCurrent medication remains unchanged. She carries her rescue medication when travelling but has not needed to use it. She and her partner have developed a practical plan for flights, including early boarding to reduce stress and ensuring adequate hydration; they feel this has been reassuring. Screening bloods from her GP three months ago were unremarkable by her report, and she denies adverse effects from medication.\n\nOn examination today, she was well and neurologically unremarkable. We discussed the potential contribution of anticipatory anxiety around travel; she finds brief breathing exercises and a structured pre-flight routine helpful. She will continue with these strategies and will inform us if new episodes occur, particularly if there are features suggestive of recurrence during travel.\n\nFollow-up: We will review again in six months, or sooner if there is any change in event frequency or new symptoms. She has contact details for the epilepsy nurse specialist for interim queries, especially regarding upcoming flights.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes a prior seizure about nine months ago during an international flight. Since that episode, the patient reports no further witnessed events, no emergency presentations, and no rescue medication use. Current status at clinic date (02 Oct 2025) indicates ongoing absence of seizures since that event. This supports seizure freedom for at least 6 months (approximately 9 months). Therefore, the normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Across this follow-up period, she notes an absence of any further witnessed events"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

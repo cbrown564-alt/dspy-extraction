@@ -1,0 +1,65 @@
+{
+  "id": "gan_13970",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 11 October 2018\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. He has a remote history of mild traumatic brain injury noted in prior records. He was discharged from hospital earlier this summer following assessment for recurrent events. He explained that since discharge from hospital he has experienced three seizures, the last one being on 10 August. He reports post‑event fatigue and transient confusion lasting up to an hour, without clear precipitating factors identified. There is no consistent aura described, and he denies tongue biting or significant injury with these recent events.\n\nHe is currently taking Carbamazepine 400 mg twice daily and Levetiracetam 1000 mg twice daily. He reports generally good adherence, though he missed one evening dose of Levetiracetam in late July. He describes intermittent daytime sleepiness, which he attributes in part to work schedule disruption. No rash or significant gastrointestinal adverse effects have been reported. Mood has been stable, though he notes occasional health‑related anxiety; he is open to speaking with our epilepsy nurse specialist for further education and support.\n\nNeurological examination today was unremarkable. Blood tests from last month showed normal full blood count, renal profile, and liver enzymes. We discussed driving and safety precautions in line with current guidance. Given the limited number of recent events and the temporal clustering soon after discharge, I have not altered medication today. I will arrange an outpatient EEG and update his MRI report from last year for comparison. I have asked him to maintain a detailed seizure diary and to contact the clinic if there is any increase in frequency or change in characteristics.\n\nI will review him again in three months or sooner if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 492,
+      "end": 555,
+      "text": "since discharge from hospital he has experienced three seizures",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 474,
+      "end": 588,
+      "text": "He explained that since discharge from hospital he has experienced three seizures, the last one being on 10 August",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13970,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 11 October 2018\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. He has a remote history of mild traumatic brain injury noted in prior records. He was discharged from hospital earlier this summer following assessment for recurrent events. He explained that since discharge from hospital he has experienced three seizures, the last one being on 10 August. He reports post‑event fatigue and transient confusion lasting up to an hour, without clear precipitating factors identified. There is no consistent aura described, and he denies tongue biting or significant injury with these recent events.\n\nHe is currently taking Carbamazepine 400 mg twice daily and Levetiracetam 1000 mg twice daily. He reports generally good adherence, though he missed one evening dose of Levetiracetam in late July. He describes intermittent daytime sleepiness, which he attributes in part to work schedule disruption. No rash or significant gastrointestinal adverse effects have been reported. Mood has been stable, though he notes occasional health‑related anxiety; he is open to speaking with our epilepsy nurse specialist for further education and support.\n\nNeurological examination today was unremarkable. Blood tests from last month showed normal full blood count, renal profile, and liver enzymes. We discussed driving and safety precautions in line with current guidance. Given the limited number of recent events and the temporal clustering soon after discharge, I have not altered medication today. I will arrange an outpatient EEG and update his MRI report from last year for comparison. I have asked him to maintain a detailed seizure diary and to contact the clinic if there is any increase in frequency or change in characteristics.\n\nI will review him again in three months or sooner if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"since discharge from hospital he has experienced three seizures, the last one being on 10 August.\" The clinic date is 11 October 2018, but no exact discharge date is provided. Without the time span over which the three seizures occurred, a normalized rate (per day/week/month/year) cannot be calculated. He is not seizure free for ≥6 months (last seizure was two months prior), so cannot be labeled seizure free. Therefore, frequency cannot be determined from the information given.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since discharge from hospital he has experienced three seizures"
+      ],
+      "reference": [
+        "unknown",
+        "He explained that since discharge from hospital he has experienced three seizures, the last one being on 10 August"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

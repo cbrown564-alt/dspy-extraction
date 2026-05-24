@@ -1,0 +1,59 @@
+{
+  "id": "gan_11131",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Ahmed Khan  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Ahmed Khan,                                                                                                         \n\nDaniel Harper, DOB: 22-11-1989, Hospital No: H732019 NHS No. 9843201765  \nFlat 4, 19 Copper Lane, Birmingham, B1 2JP  \n\nEpilepsy \n\nMedication: Lamotrigine (ongoing)\n\nCurrent regimen: Lamotrigine 50 mg in the morning and 75 mg at night (patient-reported). She uses a pill organiser and has not missed doses in the past month.\n\nLamotrigine Blood Level: \n\n23rd September 2025: 3.2 mg/L (assay reference 1.0–15.0 mg/L). Sample taken pre-morning dose.\n\nSeizures: Cluster days twice this month; typically three - four seizures in 24 h. She describes brief episodes with loss of awareness and post-event fatigue, without clear preceding warning. No significant injuries reported. She notes work-related arc-light exposure during metal fabrication; she consistently uses a protective visor per workplace routine. She has not identified a consistent trigger, though one cluster coincided with an extended welding shift.\n\nI reviewed Daniel Harper today in clinic. She reports stable medication adherence and no adverse drug reactions (no rash, no diplopia, no ataxia). Sleep has been irregular around shift work. She does not drive. We discussed safety at work; she confirms adherence to company protective measures and agreed to continue logging events against work patterns and sleep schedule.\n\nPlan: \n- Continue current lamotrigine dose for now while we complete a seizure and trigger diary over the next 6 weeks.  \n- Arrange repeat trough lamotrigine level in 6–8 weeks and routine bloods (U&Es, LFTs).  \n- Provide workplace seizure first-aid information and reinforce use of protective visor and scheduled breaks, as per employer policy.  \n- Follow-up in 8 weeks via telephone review, sooner if clusters escalate or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 732,
+      "end": 803,
+      "text": "Cluster days twice this month; typically three - four seizures in 24 h.",
+      "attributes": {
+        "Label": "2 cluster per month, 3 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 732,
+      "end": 802,
+      "text": "Cluster days twice this month; typically three - four seizures in 24 h",
+      "attributes": {
+        "Label": "2 cluster per month, 3 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11131,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Ahmed Khan  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Ahmed Khan,                                                                                                         \n\nDaniel Harper, DOB: 22-11-1989, Hospital No: H732019 NHS No. 9843201765  \nFlat 4, 19 Copper Lane, Birmingham, B1 2JP  \n\nEpilepsy \n\nMedication: Lamotrigine (ongoing)\n\nCurrent regimen: Lamotrigine 50 mg in the morning and 75 mg at night (patient-reported). She uses a pill organiser and has not missed doses in the past month.\n\nLamotrigine Blood Level: \n\n23rd September 2025: 3.2 mg/L (assay reference 1.0–15.0 mg/L). Sample taken pre-morning dose.\n\nSeizures: Cluster days twice this month; typically three - four seizures in 24 h. She describes brief episodes with loss of awareness and post-event fatigue, without clear preceding warning. No significant injuries reported. She notes work-related arc-light exposure during metal fabrication; she consistently uses a protective visor per workplace routine. She has not identified a consistent trigger, though one cluster coincided with an extended welding shift.\n\nI reviewed Daniel Harper today in clinic. She reports stable medication adherence and no adverse drug reactions (no rash, no diplopia, no ataxia). Sleep has been irregular around shift work. She does not drive. We discussed safety at work; she confirms adherence to company protective measures and agreed to continue logging events against work patterns and sleep schedule.\n\nPlan: \n- Continue current lamotrigine dose for now while we complete a seizure and trigger diary over the next 6 weeks.  \n- Arrange repeat trough lamotrigine level in 6–8 weeks and routine bloods (U&Es, LFTs).  \n- Provide workplace seizure first-aid information and reinforce use of protective visor and scheduled breaks, as per employer policy.  \n- Follow-up in 8 weeks via telephone review, sooner if clusters escalate or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizures: Cluster days twice this month; typically three - four seizures in 24 h.' This provides a clear frequency of cluster occurrence and the number of seizures per cluster day. There is no conflicting frequency elsewhere. Therefore, the normalized label should reflect clusters per month and seizures per cluster. Convert the hyphen range to 'to' per rules.",
+      "seizure_frequency_number": [
+        "2 cluster per month, 3 to 4 per cluster",
+        "Cluster days twice this month; typically three - four seizures in 24 h."
+      ],
+      "reference": [
+        "2 cluster per month, 3 to 4 per cluster",
+        "Cluster days twice this month; typically three - four seizures in 24 h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

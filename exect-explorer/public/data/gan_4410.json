@@ -1,0 +1,59 @@
+{
+  "id": "gan_4410",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 27 November 2016 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He has a known diagnosis of focal epilepsy and continues to self-monitor carefully using a paper seizure calendar, which he brings to each appointment. He reports no recent head injuries, medication non-adherence, or sleep deprivation beyond occasional broken sleep related to shift work.\n\nSince I last saw him in May 2016, he has kept an updated paper log. Seizure: 2016: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0. He describes his typical events as focal aware seizures with a rising epigastric sensation and brief speech arrest lasting 30–60 seconds, without loss of awareness, followed occasionally (approximately once every 2–3 months) by focal impaired-awareness episodes with automatisms and post-event fatigue for up to an hour. He denies any generalised convulsions this year.\n\nCurrent treatment: Carbamazepine modified-release 400 mg b.d. and Levetiracetam 1000 mg b.d. He reports good adherence, no rash, no diplopia, and only mild intermittent dizziness when dehydrated. No mood deterioration on Levetiracetam by his account. He does not drive and remains compliant with DVLA guidance.\n\nExamination today was unremarkable. Neurological examination was normal with no focal deficits. Weight and blood pressure stable. Routine bloods from September 2016 (U&E, LFT, FBC) were within normal limits. He brings his original paper calendars, which corroborate the above frequency and provide consistent timing patterns (late evening predominance on days following consecutive night shifts).\n\nPlan: Given the relative stability with focal seizures largely brief and aware, and no generalised events, I have not altered medication today. We discussed sleep hygiene and maintaining consistent dosing times. He will continue to use his paper seizure calendar and bring this to follow-up. I have requested a repeat Carbamazepine level and routine bloods via your surgery in 8–10 weeks, mainly for monitoring. If the frequency increases (two or more focal impaired-awareness events in a month) he will contact the clinic for earlier review.\n\nI will review him again in six months, sooner if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 662,
+      "end": 732,
+      "text": "Seizure: 2016: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0.",
+      "attributes": {
+        "Label": "4 per 7 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 662,
+      "end": 731,
+      "text": "Seizure: 2016: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0",
+      "attributes": {
+        "Label": "4 per 7 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4410,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 27 November 2016 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He has a known diagnosis of focal epilepsy and continues to self-monitor carefully using a paper seizure calendar, which he brings to each appointment. He reports no recent head injuries, medication non-adherence, or sleep deprivation beyond occasional broken sleep related to shift work.\n\nSince I last saw him in May 2016, he has kept an updated paper log. Seizure: 2016: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0. He describes his typical events as focal aware seizures with a rising epigastric sensation and brief speech arrest lasting 30–60 seconds, without loss of awareness, followed occasionally (approximately once every 2–3 months) by focal impaired-awareness episodes with automatisms and post-event fatigue for up to an hour. He denies any generalised convulsions this year.\n\nCurrent treatment: Carbamazepine modified-release 400 mg b.d. and Levetiracetam 1000 mg b.d. He reports good adherence, no rash, no diplopia, and only mild intermittent dizziness when dehydrated. No mood deterioration on Levetiracetam by his account. He does not drive and remains compliant with DVLA guidance.\n\nExamination today was unremarkable. Neurological examination was normal with no focal deficits. Weight and blood pressure stable. Routine bloods from September 2016 (U&E, LFT, FBC) were within normal limits. He brings his original paper calendars, which corroborate the above frequency and provide consistent timing patterns (late evening predominance on days following consecutive night shifts).\n\nPlan: Given the relative stability with focal seizures largely brief and aware, and no generalised events, I have not altered medication today. We discussed sleep hygiene and maintaining consistent dosing times. He will continue to use his paper seizure calendar and bring this to follow-up. I have requested a repeat Carbamazepine level and routine bloods via your surgery in 8–10 weeks, mainly for monitoring. If the frequency increases (two or more focal impaired-awareness events in a month) he will contact the clinic for earlier review.\n\nI will review him again in six months, sooner if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit monthly seizure counts for 2016 since last review in May: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0. Total from May through November is 4 seizures over 7 months (May–Nov inclusive). There is no statement of complete seizure freedom for ≥6 months (Jul, Sep, Nov are zero but not a continuous 6-month seizure-free span). Therefore, compute frequency as 4 per 7 months. No other higher-frequency figure is provided; the occasional impaired-awareness events are already encompassed by the monthly counts and are not quantified at a higher rate.",
+      "seizure_frequency_number": [
+        "4 per 7 month",
+        "Seizure: 2016: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0."
+      ],
+      "reference": [
+        "4 per 7 month",
+        "Seizure: 2016: May x1, Jun x1, Jul x0, Aug x1, Sep x0, Oct x1, Nov x0"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

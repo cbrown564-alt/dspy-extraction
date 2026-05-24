@@ -1,0 +1,59 @@
+{
+  "id": "gan_16050",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 4 October 2011 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. She has a background history of childhood febrile seizures and now presents with adult-onset epilepsy, which by clinical history and examination is most consistent with generalised epilepsy. There is no known structural brain lesion and no history of head injury. She reports that sleep deprivation and stress are frequent triggers.\n\nSince my last review three months ago we agreed a simple seizure diary and avoidance of missed doses. In August she had no nocturnal seizures but a daytime event. In Sep she had no nocturnal seizures and five while awake. She describes these as abrupt loss of awareness with generalised tonic-clonic activity witnessed on two occasions by family; post-ictally she experiences myalgia and fatigue for several hours without focal deficits. There are no clear auras and no focal neurological symptoms between events.\n\nCurrent medication is Valproate 500 mg b.d. and Levetiracetam 1 g b.d. She reports good adherence, no rash, and only mild transient nausea in the mornings. She does not drive and understands DVLA guidance. Sleep routine has improved; alcohol intake is minimal. There is no current pregnancy plan; contraception is in place and we discussed the importance of folic acid 5 mg daily, which she is taking.\n\nExamination today was unremarkable: normal cognition, cranial nerves intact, tone and power symmetric, reflexes brisk but equal, and gait normal. Recent bloods (U&E, LFTs, FBC) were within reference ranges. Prior EEG showed generalised spike-and-wave discharges with photoparoxysmal response; MRI brain was normal.\n\nImpression: Generalised epilepsy with ongoing daytime events but improvement in nocturnal seizure control over the last two months. Given tolerability and partial response, I propose continuing the current regimen and reviewing the diary trend over the next 8–12 weeks. We discussed trigger management, adherence, and seizure first aid. She would welcome contact with our epilepsy nurse for ongoing education and support; I have arranged this.\n\nPlan:\n- Continue Valproate 500 mg b.d. and Levetiracetam 1 g b.d.\n- Maintain seizure diary; emphasise regular sleep and stress management.\n- Epilepsy nurse follow-up within 2–3 weeks.\n- Repeat EEG with activation procedures if events persist at current frequency.\n- Review in clinic in three months, sooner if increased frequency or adverse effects.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 738,
+      "end": 857,
+      "text": "In August she had no nocturnal seizures but a daytime event. In Sep she had no nocturnal seizures and five while awake.",
+      "attributes": {
+        "Label": "6 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 738,
+      "end": 856,
+      "text": "In August she had no nocturnal seizures but a daytime event. In Sep she had no nocturnal seizures and five while awake",
+      "attributes": {
+        "Label": "6 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16050,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 4 October 2011 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. She has a background history of childhood febrile seizures and now presents with adult-onset epilepsy, which by clinical history and examination is most consistent with generalised epilepsy. There is no known structural brain lesion and no history of head injury. She reports that sleep deprivation and stress are frequent triggers.\n\nSince my last review three months ago we agreed a simple seizure diary and avoidance of missed doses. In August she had no nocturnal seizures but a daytime event. In Sep she had no nocturnal seizures and five while awake. She describes these as abrupt loss of awareness with generalised tonic-clonic activity witnessed on two occasions by family; post-ictally she experiences myalgia and fatigue for several hours without focal deficits. There are no clear auras and no focal neurological symptoms between events.\n\nCurrent medication is Valproate 500 mg b.d. and Levetiracetam 1 g b.d. She reports good adherence, no rash, and only mild transient nausea in the mornings. She does not drive and understands DVLA guidance. Sleep routine has improved; alcohol intake is minimal. There is no current pregnancy plan; contraception is in place and we discussed the importance of folic acid 5 mg daily, which she is taking.\n\nExamination today was unremarkable: normal cognition, cranial nerves intact, tone and power symmetric, reflexes brisk but equal, and gait normal. Recent bloods (U&E, LFTs, FBC) were within reference ranges. Prior EEG showed generalised spike-and-wave discharges with photoparoxysmal response; MRI brain was normal.\n\nImpression: Generalised epilepsy with ongoing daytime events but improvement in nocturnal seizure control over the last two months. Given tolerability and partial response, I propose continuing the current regimen and reviewing the diary trend over the next 8–12 weeks. We discussed trigger management, adherence, and seizure first aid. She would welcome contact with our epilepsy nurse for ongoing education and support; I have arranged this.\n\nPlan:\n- Continue Valproate 500 mg b.d. and Levetiracetam 1 g b.d.\n- Maintain seizure diary; emphasise regular sleep and stress management.\n- Epilepsy nurse follow-up within 2–3 weeks.\n- Repeat EEG with activation procedures if events persist at current frequency.\n- Review in clinic in three months, sooner if increased frequency or adverse effects.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure counts and timeframes in the letter. The letter provides a seizure diary for two specific months: August and September. Quotes: \"In August she had no nocturnal seizures but a daytime event\" (i.e., 1 event in August) and \"In Sep she had no nocturnal seizures and five while awake\" (i.e., 5 events in September). Sum over the two-month period: 1 + 5 = 6 seizures in 2 months. Select the highest applicable frequency; here the diary explicitly covers a 2-month window with a total count, so normalize to '6 per 2 month.'",
+      "seizure_frequency_number": [
+        "6 per 2 month",
+        "In August she had no nocturnal seizures but a daytime event. In Sep she had no nocturnal seizures and five while awake."
+      ],
+      "reference": [
+        "6 per 2 month",
+        "In August she had no nocturnal seizures but a daytime event. In Sep she had no nocturnal seizures and five while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

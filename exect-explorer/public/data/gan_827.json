@@ -1,0 +1,54 @@
+{
+  "id": "gan_827",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nMary Thompson, DOB: 22-07-1976, Hospital No: KCH482917 NHS No. 9437285106  \nFlat 3, 41 Brookfield Road, London, N16 0AY  \n\nDiagnosis: \n\nRecurrent unprovoked seizures with fluctuating occurrence and incomplete characterisation\n\nAetiology: \n\nNo definite structural, metabolic or infectious cause identified to date; prior routine MRI and screening blood tests unremarkable\n\nOther Medical Problems: \n\nBilateral sensorineural hearing difficulty per patient report; no hearing aids currently in use. Seasonal allergic rhinitis, intermittent, managed with over-the-counter antihistamine as needed.\n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily. Patient reports good tolerability without mood change or excessive somnolence.  \n- Arrange extended EEG with sleep deprivation and ambulatory recording to better capture habitual events.  \n- Repeat MRI brain with epilepsy protocol to reassess for subtle lesions.  \n- Safety counselling reinforced: advised on bathing supervision, ladder avoidance, and use of kettle rather than open pans when alone.  \n- Driving: patient has already self-reported cessation; we advised to follow DVLA guidance.  \n- Communication: due to hearing difficulty, future consultations to be pre-arranged via speakerphone with a nominated family member present, as per patient preference.  \n- Follow-up in three months to review investigation results and seizure diary.\n\nSummary of Current Status: \n\nSince our last contact, the patient describes brief loss-of-awareness episodes with occasional limb stiffening. These have tended to occur roughly every four to five weeks, sometimes clustering over a weekend, with no clear precipitants. There have been no observed tongue bites or incontinence. Post-event fatigue lasts a few hours. A seizure diary maintained by the family indicates two events in the past nine weeks. No emergency attendances. The household has adopted practical precautions, including showering rather than bathing when alone.\n\nCommunication and Support: \n\nThe patient reports difficulty following conversations in busy environments and benefits from speakerphone calls with a family member assisting to repeat or clarify questions. We will accommodate scheduled calls and provide written summaries after appointments. Patient is considering community audiology review and will inform us if hearing support devices are pursued.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1780,
+      "end": 1833,
+      "text": "have tended to occur roughly every four to five weeks",
+      "attributes": {
+        "Label": "1 per 4 to 5 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 827,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nMary Thompson, DOB: 22-07-1976, Hospital No: KCH482917 NHS No. 9437285106  \nFlat 3, 41 Brookfield Road, London, N16 0AY  \n\nDiagnosis: \n\nRecurrent unprovoked seizures with fluctuating occurrence and incomplete characterisation\n\nAetiology: \n\nNo definite structural, metabolic or infectious cause identified to date; prior routine MRI and screening blood tests unremarkable\n\nOther Medical Problems: \n\nBilateral sensorineural hearing difficulty per patient report; no hearing aids currently in use. Seasonal allergic rhinitis, intermittent, managed with over-the-counter antihistamine as needed.\n\nManagement Plan: \n\n- Continue current Levetiracetam 750 mg twice daily. Patient reports good tolerability without mood change or excessive somnolence.  \n- Arrange extended EEG with sleep deprivation and ambulatory recording to better capture habitual events.  \n- Repeat MRI brain with epilepsy protocol to reassess for subtle lesions.  \n- Safety counselling reinforced: advised on bathing supervision, ladder avoidance, and use of kettle rather than open pans when alone.  \n- Driving: patient has already self-reported cessation; we advised to follow DVLA guidance.  \n- Communication: due to hearing difficulty, future consultations to be pre-arranged via speakerphone with a nominated family member present, as per patient preference.  \n- Follow-up in three months to review investigation results and seizure diary.\n\nSummary of Current Status: \n\nSince our last contact, the patient describes brief loss-of-awareness episodes with occasional limb stiffening. These have tended to occur roughly every four to five weeks, sometimes clustering over a weekend, with no clear precipitants. There have been no observed tongue bites or incontinence. Post-event fatigue lasts a few hours. A seizure diary maintained by the family indicates two events in the past nine weeks. No emergency attendances. The household has adopted practical precautions, including showering rather than bathing when alone.\n\nCommunication and Support: \n\nThe patient reports difficulty following conversations in busy environments and benefits from speakerphone calls with a family member assisting to repeat or clarify questions. We will accommodate scheduled calls and provide written summaries after appointments. Patient is considering community audiology review and will inform us if hearing support devices are pursued.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements: (1) \"have tended to occur roughly every four to five weeks\" and (2) \"two events in the past nine weeks.\" Normalize: (1) → 1 per 4 to 5 week; (2) → 2 per 9 week. Compare frequencies: 1/4 to 1/5 per week = 0.25 to 0.2 per week; 2/9 per week ≈ 0.222 per week. Highest frequency is from (1), up to 0.25/week (more frequent than 0.222/week). Both statements are consistent; select the more frequent one per rule. No evidence of 6-month seizure freedom, and cluster details are insufficient to use cluster format.",
+      "seizure_frequency_number": [
+        "1 per 4 to 5 week",
+        "have tended to occur roughly every four to five weeks"
+      ],
+      "reference": [
+        "1 per month",
+        "monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 4 to 5 week) disagrees with Reference (1 per month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

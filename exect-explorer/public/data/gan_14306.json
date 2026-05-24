@@ -1,0 +1,59 @@
+{
+  "id": "gan_14306",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 13 October 2023 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Yasmin Ahmed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Carbamazepine MR 400 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\nPresent Seizure Frequency:\n\nLamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since.\n\nBackground and Current Concerns:\n\nShe works in metal fabrication with intermittent welding and arc‑light exposure and reports consistent use of a protective visor and standard workplace eye protection. No clear photic triggers were identified during or after welding tasks. Sleep has improved, and she has limited alcohol since the August episode. She denies new neurological symptoms, and no injuries were sustained during the August cluster.\n\nPlan of Action:\n\nGiven the stability since mid‑August and absence of further events, we will maintain the current regimen and focus on adherence and lifestyle measures. She will continue Carbamazepine MR 400 mg twice daily and Levetiracetam 750 mg twice daily. She will avoid binge alcohol and aim for regular sleep. No driving until she meets DVLA regulations following the August seizures; we have reiterated safety advice at work including continued visor use and stepping away from welding if prodromal symptoms occur. I have arranged follow‑up in four months, or sooner if there is any recurrence.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 507,
+      "end": 653,
+      "text": "Lamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since.",
+      "attributes": {
+        "Label": "4 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 507,
+      "end": 652,
+      "text": "Lamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since",
+      "attributes": {
+        "Label": "4 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14306,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 13 October 2023 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Yasmin Ahmed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Carbamazepine MR 400 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\nPresent Seizure Frequency:\n\nLamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since.\n\nBackground and Current Concerns:\n\nShe works in metal fabrication with intermittent welding and arc‑light exposure and reports consistent use of a protective visor and standard workplace eye protection. No clear photic triggers were identified during or after welding tasks. Sleep has improved, and she has limited alcohol since the August episode. She denies new neurological symptoms, and no injuries were sustained during the August cluster.\n\nPlan of Action:\n\nGiven the stability since mid‑August and absence of further events, we will maintain the current regimen and focus on adherence and lifestyle measures. She will continue Carbamazepine MR 400 mg twice daily and Levetiracetam 750 mg twice daily. She will avoid binge alcohol and aim for regular sleep. No driving until she meets DVLA regulations following the August seizures; we have reiterated safety advice at work including continued visor use and stepping away from welding if prodromal symptoms occur. I have arranged follow‑up in four months, or sooner if there is any recurrence.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Lamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures... She has not had any further events since.\" The letter date is 13 October 2023. Therefore, from 12 August to 13 October is approximately 2 months. With 4 seizures occurring around 12 August and none afterward, the measurable frequency over this period is 4 seizures per ~2 months. She is not seizure free for ≥6 months, so we calculate frequency rather than labeling as seizure free.",
+      "seizure_frequency_number": [
+        "4 per 2 month",
+        "Lamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since."
+      ],
+      "reference": [
+        "4 per 2 month",
+        "Lamotrigine was stopped on 12/Aug. Around that period, she had 4 seizures, one following alcohol intake. She has not had any further events since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

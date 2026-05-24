@@ -1,0 +1,59 @@
+{
+  "id": "gan_16251",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 22 September 2014 \n\nDr Elaine Harper  \nRiverside Health Centre  \n48 Millbank, London SW1P 4QP  \n\nDear Dr Elaine Harper,                                                                                                         \n\nChloe Bennett, DOB: 22-01-1989, Hospital No: H472915 NHS No. 9382645170  \nFlat 3, 27 Willow Road, London NW3 1TJ  \n\nEpilepsy \n\nMedication: Patient reports current use of sodium valproate 500 mg twice daily since May 2014. She also takes folic acid 5 mg once daily. No other regular antiepileptic medication. \n\nValproate Blood Level: \n\n15 September 2014: 58 mg/L (local reference 50–100 mg/L). Dose at time of sampling: 500 mg twice daily. \n\nSeizures: She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun both from being awake and asleep. She describes brief confusion afterwards lasting 10–20 minutes, with muscle soreness the following day. No tongue-biting recalled; occasional urinary incontinence has been reported. No consistent prodrome or warning noted. Triggers are uncertain; she wonders if poor sleep and alcohol the night before may have contributed to two of the recent events. \n\nHistory/Review: I conducted a face-to-face review today. She reports reliable adherence to valproate with only two missed doses in the last month. She has recently started a shift-based job which has disrupted her sleep pattern. No new neurological symptoms between events. Family history is negative for seizures. She does not drive and understands DVLA requirements. She keeps a diary and has arranged for a colleague to act as a witness at work if events occur on site. \n\nInvestigations: MRI brain (March 2013) reported as normal. Routine EEG (April 2013) normal in wakefulness and drowsiness. Repeat EEG is planned given the recent increase in convulsive events. \n\nPlan: \n- Continue current valproate dose pending further review of adherence and lifestyle factors; we discussed sleep regularity, minimising alcohol, and medication timing as patient-reported strategies. \n- Arrange repeat EEG with sleep deprivation and book a follow-up in 8 weeks. \n- Check repeat valproate level, FBC, LFTs in 4 weeks or sooner if further clusters occur. \n- Safety advice reinforced: supervision near water, avoid heights/ladders, and use of a seizure alarm at night as discussed. \n\nI will update you once the EEG and blood results are available and will consider adjustments at that point in light of the observed pattern and patient preferences. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 736,
+      "end": 803,
+      "text": "She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun",
+      "attributes": {
+        "Label": "14 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 736,
+      "end": 836,
+      "text": "She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun both from being awake and asleep",
+      "attributes": {
+        "Label": "14 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16251,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 22 September 2014 \n\nDr Elaine Harper  \nRiverside Health Centre  \n48 Millbank, London SW1P 4QP  \n\nDear Dr Elaine Harper,                                                                                                         \n\nChloe Bennett, DOB: 22-01-1989, Hospital No: H472915 NHS No. 9382645170  \nFlat 3, 27 Willow Road, London NW3 1TJ  \n\nEpilepsy \n\nMedication: Patient reports current use of sodium valproate 500 mg twice daily since May 2014. She also takes folic acid 5 mg once daily. No other regular antiepileptic medication. \n\nValproate Blood Level: \n\n15 September 2014: 58 mg/L (local reference 50–100 mg/L). Dose at time of sampling: 500 mg twice daily. \n\nSeizures: She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun both from being awake and asleep. She describes brief confusion afterwards lasting 10–20 minutes, with muscle soreness the following day. No tongue-biting recalled; occasional urinary incontinence has been reported. No consistent prodrome or warning noted. Triggers are uncertain; she wonders if poor sleep and alcohol the night before may have contributed to two of the recent events. \n\nHistory/Review: I conducted a face-to-face review today. She reports reliable adherence to valproate with only two missed doses in the last month. She has recently started a shift-based job which has disrupted her sleep pattern. No new neurological symptoms between events. Family history is negative for seizures. She does not drive and understands DVLA requirements. She keeps a diary and has arranged for a colleague to act as a witness at work if events occur on site. \n\nInvestigations: MRI brain (March 2013) reported as normal. Routine EEG (April 2013) normal in wakefulness and drowsiness. Repeat EEG is planned given the recent increase in convulsive events. \n\nPlan: \n- Continue current valproate dose pending further review of adherence and lifestyle factors; we discussed sleep regularity, minimising alcohol, and medication timing as patient-reported strategies. \n- Arrange repeat EEG with sleep deprivation and book a follow-up in 8 weeks. \n- Check repeat valproate level, FBC, LFTs in 4 weeks or sooner if further clusters occur. \n- Safety advice reinforced: supervision near water, avoid heights/ladders, and use of a seizure alarm at night as discussed. \n\nI will update you once the EEG and blood results are available and will consider adjustments at that point in light of the observed pattern and patient preferences. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states monthly counts: 7 in September (so far), 4 in August, 2 in July, and 1 in June. Summing these: 7 + 4 + 2 + 1 = 14 seizures. The observation window spans June through September (four months, with September being partial). Therefore the frequency can be expressed as 14 per 4 months.",
+      "seizure_frequency_number": [
+        "14 per 4 month",
+        "She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun"
+      ],
+      "reference": [
+        "14 per 4 month",
+        "She had 7 convulsions so far in Sep, 4 in Aug, 2 in Jul, one in Jun both from being awake and asleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

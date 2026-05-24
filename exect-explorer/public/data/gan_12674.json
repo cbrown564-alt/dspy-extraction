@@ -1,0 +1,59 @@
+{
+  "id": "gan_12674",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nThomas Reynolds, DOB: 14-02-1987, Hospital No: H938721 NHS No. 5839201746\nFlat 3, 22 Brookfield Road, London, W10 6PR\n\nMedication:\n\nLevetiracetam 1000 mg twice daily. Lamotrigine 150 mg twice daily.\n\nThank you for asking me to review Thomas Reynolds in clinic today. He attended alone and reports feeling generally well. He acknowledged a high intake of caffeine, typically four to five large coffees per day and occasional energy drinks, which he notes can make him feel jittery and worsen sleep quality. We discussed simple lifestyle measures; he plans to reduce caffeine gradually, particularly after midday, and to monitor any impact on his symptoms.\n\nSeizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per year, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal tonic with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported.\n\nThere have been no recent injuries, hospital admissions, or medication side effects. Sleep has been variable, often curtailed by late work shifts and the aforementioned caffeine use. He denies alcohol binges or recreational drug use. He is adherent with medication, using phone reminders, and has not missed doses since the last appointment. He does not drive and is aware of current DVLA guidance.\n\nExamination today was unremarkable with stable observations and no focal neurological deficits. I have made no changes to his current antiseizure regimen. We agreed he will keep a seizure and symptom diary, noting caffeine intake, sleep duration, and any precipitants, and will contact the service if there is any deterioration.\n\nPlan:\n- Continue current antiseizure medications unchanged.\n- Patient-reported plan to reduce high caffeine intake and improve sleep hygiene; he will monitor for any change in symptoms.\n- Safety advice reinforced, including supervision during bathing and avoiding heights.\n- Review in six months, or earlier if problems arise.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1043,
+      "end": 1065,
+      "text": "He has daily absences.",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 831,
+      "end": 1248,
+      "text": "Seizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per year, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal tonic with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12674,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nThomas Reynolds, DOB: 14-02-1987, Hospital No: H938721 NHS No. 5839201746\nFlat 3, 22 Brookfield Road, London, W10 6PR\n\nMedication:\n\nLevetiracetam 1000 mg twice daily. Lamotrigine 150 mg twice daily.\n\nThank you for asking me to review Thomas Reynolds in clinic today. He attended alone and reports feeling generally well. He acknowledged a high intake of caffeine, typically four to five large coffees per day and occasional energy drinks, which he notes can make him feel jittery and worsen sleep quality. We discussed simple lifestyle measures; he plans to reduce caffeine gradually, particularly after midday, and to monitor any impact on his symptoms.\n\nSeizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per year, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal tonic with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported.\n\nThere have been no recent injuries, hospital admissions, or medication side effects. Sleep has been variable, often curtailed by late work shifts and the aforementioned caffeine use. He denies alcohol binges or recreational drug use. He is adherent with medication, using phone reminders, and has not missed doses since the last appointment. He does not drive and is aware of current DVLA guidance.\n\nExamination today was unremarkable with stable observations and no focal neurological deficits. I have made no changes to his current antiseizure regimen. We agreed he will keep a seizure and symptom diary, noting caffeine intake, sleep duration, and any precipitants, and will contact the service if there is any deterioration.\n\nPlan:\n- Continue current antiseizure medications unchanged.\n- Patient-reported plan to reduce high caffeine intake and improve sleep hygiene; he will monitor for any change in symptoms.\n- Safety advice reinforced, including supervision during bathing and avoiding heights.\n- Review in six months, or earlier if problems arise.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify all explicit seizure frequencies in the letter:\n- \"one to two generalised tonic-clonic seizures per year\" → 1 to 2 per year.\n- \"He has daily absences\" → daily implies 1 or more per day; explicit numeric count not given, but frequency is at least daily.\n- \"focal tonic with disorientation every three to four weeks\" → roughly 1 per 3 to 4 weeks (i.e., about 1 per month).\n- \"together with drop attacks\" → no numeric frequency provided.\nRule for multiple frequencies: choose the highest frequency. Among listed, \"daily absences\" is the most frequent. Convert to allowed format: since exact count per day isn't specified, use the minimal clear frequency \"1 per day\" or consider 'multiple per day'? The letter only states \"daily\" without a count, so the safest normalized label is \"1 per day\" to reflect at least daily occurrence per the format constraints that require a number.\nPatient is not seizure-free.\nFinal: 1 per day, quoting the daily statement.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "He has daily absences."
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per year, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal tonic with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

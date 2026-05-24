@@ -1,0 +1,59 @@
+{
+  "id": "gan_4996",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 August 2019 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Daniel Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and monitoring plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nDiagnosis under review; classification not assigned at present\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nSeizure-free interval since 20/Apr/2018, corroborated by the patient’s paper seizure calendar which she brings to each appointment. No events recorded on the log since that date.\n\n\nPlan of Action:\n\nThe patient reports stable mood, sleep, and adherence. She prefers using a paper seizure calendar rather than an app and continues to bring her handwritten logs to clinic; this has been reliable and consistent. No adverse effects have been reported on the current regimen. Given sustained seizure freedom and good tolerability, we will continue the current doses without change. She has been counselled on maintaining hydration, regular sleep, and medication adherence. We discussed safety, including driving regulations and SUDEP information, and she has been provided with written advice.\n\nMonitoring: please arrange routine bloods via primary care (FBC, U&Es, LFTs) within the next 3 months to maintain baseline surveillance. If she remains well and seizure-free, we will review again in 6 months with her updated paper calendar. She will contact the service sooner if there are breakthrough events, side effects, pregnancy planning, or any changes in health or medications.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 544,
+      "end": 722,
+      "text": "Seizure-free interval since 20/Apr/2018, corroborated by the patient’s paper seizure calendar which she brings to each appointment. No events recorded on the log since that date.",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 544,
+      "end": 583,
+      "text": "Seizure-free interval since 20/Apr/2018",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4996,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 August 2019 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Daniel Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and monitoring plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nDiagnosis under review; classification not assigned at present\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nSeizure-free interval since 20/Apr/2018, corroborated by the patient’s paper seizure calendar which she brings to each appointment. No events recorded on the log since that date.\n\n\nPlan of Action:\n\nThe patient reports stable mood, sleep, and adherence. She prefers using a paper seizure calendar rather than an app and continues to bring her handwritten logs to clinic; this has been reliable and consistent. No adverse effects have been reported on the current regimen. Given sustained seizure freedom and good tolerability, we will continue the current doses without change. She has been counselled on maintaining hydration, regular sleep, and medication adherence. We discussed safety, including driving regulations and SUDEP information, and she has been provided with written advice.\n\nMonitoring: please arrange routine bloods via primary care (FBC, U&Es, LFTs) within the next 3 months to maintain baseline surveillance. If she remains well and seizure-free, we will review again in 6 months with her updated paper calendar. She will contact the service sooner if there are breakthrough events, side effects, pregnancy planning, or any changes in health or medications.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizure-free interval since 20/Apr/2018... No events recorded on the log since that date.\" The letter date is 29 August 2019. Calculate seizure-free duration: from 20 April 2018 to 29 August 2019. That is at least 16 months (April 20, 2018 to April 20, 2019 = 12 months; plus April 20 to August 29, 2019 ≈ 4 months and 9 days). This exceeds the 6-month criterion, so the patient is considered seizure free for 16+ months. Normalize to the allowed format: 'seizure free for 16 month' (rounding down to full months to fit numeric format).",
+      "seizure_frequency_number": [
+        "seizure free for 16 month",
+        "Seizure-free interval since 20/Apr/2018, corroborated by the patient’s paper seizure calendar which she brings to each appointment. No events recorded on the log since that date."
+      ],
+      "reference": [
+        "seizure free for 16 month",
+        "Seizure-free interval since 20/Apr/2018"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

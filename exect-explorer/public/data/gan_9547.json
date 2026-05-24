@@ -1,0 +1,65 @@
+{
+  "id": "gan_9547",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 30 March 2018 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Menon, \n\nAlex Morgan, DOB: 22-09-1992, Hospital No: K847392 NHS No. 9012746382  \nFlat 3, 24 Brook Lane, London, SE15 1AB  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; pattern and classification remain under evaluation. \n\nAetiology: \n\nNo confirmed structural or genetic cause identified to date; prior neuroimaging reportedly normal by patient account, external records pending. \n\nOther Medical Problems: \n\nMild seasonal allergic rhinitis; otherwise well. \n\nManagement Plan: \n\n- Continue current antiseizure medication regimen without changes pending review of outside records and recent ambulatory EEG report.  \n- Reinforced sleep hygiene measures given patient-reported triggers.  \n- Emergency plan: follows the personalised plan documented elsewhere, which the patient carries and has shared with family.  \n- Safety advice discussed regarding bathing, cooking with open flames, and operating at heights.  \n- DVLA guidance reiterated as per current national recommendations following any seizure; patient states they have already self-notified.  \n- Follow-up in three months, sooner if events escalate; we will consider further classification workup with repeat EEG and extended monitoring if indicated. \n\nHistory and Current Status: \n\nSince the last review, the patient describes infrequent events with variable spacing. They report that focal clonic happen after lack of sleep, typically in brief runs that may cluster over one to two days, especially after consecutive late nights. They associate these events with early morning periods and occasionally following transmeridian travel. There have been no injuries, status episodes, or emergency department presentations. The personalised plan (held by the patient and documented elsewhere) has been used to guide stepwise response during clusters, including rest, avoidance of solitary bathing, and contacting the on-call team if frequency increases. \n\nMedication Tolerance and Adherence: \n\nNo adverse effects reported; no missed doses in the past month by patient diary. Alcohol intake remains modest and is avoided on days preceding important commitments. \n\nInvestigations: \n\nAwaiting copies of prior MRI and EEG from an external provider; recent bloods (U&E, LFTs) per GP reported within normal limits by patient, to be verified when results are uploaded. \n\nPlease contact me if further information is required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1492,
+      "end": 1567,
+      "text": "infrequent events with variable spacing... may cluster over one to two days",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1550,
+      "end": 1589,
+      "text": "focal clonic happen after lack of sleep",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9547,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 30 March 2018 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Menon, \n\nAlex Morgan, DOB: 22-09-1992, Hospital No: K847392 NHS No. 9012746382  \nFlat 3, 24 Brook Lane, London, SE15 1AB  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; pattern and classification remain under evaluation. \n\nAetiology: \n\nNo confirmed structural or genetic cause identified to date; prior neuroimaging reportedly normal by patient account, external records pending. \n\nOther Medical Problems: \n\nMild seasonal allergic rhinitis; otherwise well. \n\nManagement Plan: \n\n- Continue current antiseizure medication regimen without changes pending review of outside records and recent ambulatory EEG report.  \n- Reinforced sleep hygiene measures given patient-reported triggers.  \n- Emergency plan: follows the personalised plan documented elsewhere, which the patient carries and has shared with family.  \n- Safety advice discussed regarding bathing, cooking with open flames, and operating at heights.  \n- DVLA guidance reiterated as per current national recommendations following any seizure; patient states they have already self-notified.  \n- Follow-up in three months, sooner if events escalate; we will consider further classification workup with repeat EEG and extended monitoring if indicated. \n\nHistory and Current Status: \n\nSince the last review, the patient describes infrequent events with variable spacing. They report that focal clonic happen after lack of sleep, typically in brief runs that may cluster over one to two days, especially after consecutive late nights. They associate these events with early morning periods and occasionally following transmeridian travel. There have been no injuries, status episodes, or emergency department presentations. The personalised plan (held by the patient and documented elsewhere) has been used to guide stepwise response during clusters, including rest, avoidance of solitary bathing, and contacting the on-call team if frequency increases. \n\nMedication Tolerance and Adherence: \n\nNo adverse effects reported; no missed doses in the past month by patient diary. Alcohol intake remains modest and is avoided on days preceding important commitments. \n\nInvestigations: \n\nAwaiting copies of prior MRI and EEG from an external provider; recent bloods (U&E, LFTs) per GP reported within normal limits by patient, to be verified when results are uploaded. \n\nPlease contact me if further information is required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has ongoing seizures but does not provide a numeric frequency. Phrases include 'infrequent events with variable spacing' and that they 'may cluster over one to two days,' but there is no count per time unit or per cluster. No explicit seizure-free duration is provided. Therefore, the specific frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "infrequent events with variable spacing... may cluster over one to two days"
+      ],
+      "reference": [
+        "unknown",
+        "focal clonic happen after lack of sleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_7650",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nRiverside Medical Centre\n\n23 Riverside Way, London, SE1 3AB\nDear Dr Patel\nMichael Brown, DOB: 03-02-1986, Hospital No: H829374 NHS No. 7392049183\n12 Haversham Court, Peckham, London, SE15 4JT \n\nI reviewed the above patient in the Neurology Clinic today. Since the last appointment, he describes a clear deterioration in his overall control and day-to-day functioning. He reports escalating social pressures at work and home, alongside a notable increase in alcohol exposure over recent weeks. He feels this has unsettled his condition, with more unpredictable events and greater post-event fatigue. \n\nHe cannot reliably quantify how often these episodes are occurring at present; the frequency is unclear as he has not been able to keep a diary consistently. He notes that, on some occasions, there is a fleeting unusual smell immediately before a short spell of disconnection, after which he feels drained and anxious. He also describes disturbed sleep, increased irritability, and difficulty concentrating since the deterioration started. There have been no obvious new triggers apart from the heightened social demands and alcohol use. No injuries have been reported, but his partner has noticed that he appears more confused after these episodes than previously. \n\nCurrent medicines (as brought to clinic and cross-checked against GP list): Levetiracetam 1000 mg twice daily, Lamotrigine 150 mg twice daily, and Clobazam 5 mg at night. He denies rash or gastrointestinal upset. He does report morning grogginess and intermittent headaches. Bloods from his GP in July were unremarkable (FBC, U&Es, LFTs). \n\nGiven the current deterioration and uncertainty around episode frequency, I have advised strict reduction of alcohol intake and resumption of a seizure diary, including any brief warning symptoms and recovery times. I will arrange an updated EEG and review his medication at the next visit once we have clearer data. I have also suggested signposting to our epilepsy specialist nurse for support around lifestyle factors and stress management, which he is keen to pursue. He has been advised regarding safety, including not driving, pending further assessment in line with DVLA guidance. \n\nI will see him again in 6–8 weeks or sooner if there is any further decline. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 672,
+      "end": 775,
+      "text": "He cannot reliably quantify how often these episodes are occurring at present; the frequency is unclear",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7650,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nRiverside Medical Centre\n\n23 Riverside Way, London, SE1 3AB\nDear Dr Patel\nMichael Brown, DOB: 03-02-1986, Hospital No: H829374 NHS No. 7392049183\n12 Haversham Court, Peckham, London, SE15 4JT \n\nI reviewed the above patient in the Neurology Clinic today. Since the last appointment, he describes a clear deterioration in his overall control and day-to-day functioning. He reports escalating social pressures at work and home, alongside a notable increase in alcohol exposure over recent weeks. He feels this has unsettled his condition, with more unpredictable events and greater post-event fatigue. \n\nHe cannot reliably quantify how often these episodes are occurring at present; the frequency is unclear as he has not been able to keep a diary consistently. He notes that, on some occasions, there is a fleeting unusual smell immediately before a short spell of disconnection, after which he feels drained and anxious. He also describes disturbed sleep, increased irritability, and difficulty concentrating since the deterioration started. There have been no obvious new triggers apart from the heightened social demands and alcohol use. No injuries have been reported, but his partner has noticed that he appears more confused after these episodes than previously. \n\nCurrent medicines (as brought to clinic and cross-checked against GP list): Levetiracetam 1000 mg twice daily, Lamotrigine 150 mg twice daily, and Clobazam 5 mg at night. He denies rash or gastrointestinal upset. He does report morning grogginess and intermittent headaches. Bloods from his GP in July were unremarkable (FBC, U&Es, LFTs). \n\nGiven the current deterioration and uncertainty around episode frequency, I have advised strict reduction of alcohol intake and resumption of a seizure diary, including any brief warning symptoms and recovery times. I will arrange an updated EEG and review his medication at the next visit once we have clearer data. I have also suggested signposting to our epilepsy specialist nurse for support around lifestyle factors and stress management, which he is keen to pursue. He has been advised regarding safety, including not driving, pending further assessment in line with DVLA guidance. \n\nI will see him again in 6–8 weeks or sooner if there is any further decline. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states the patient has had a deterioration with more episodes, but explicitly says he cannot quantify how often they are occurring and has not kept a diary. There is no numeric frequency or time-based rate given. Therefore, the specific frequency cannot be determined from the letter and should be labeled as unknown per the instructions.",
+      "seizure_frequency_number": [
+        "unknown",
+        "He cannot reliably quantify how often these episodes are occurring at present; the frequency is unclear"
+      ],
+      "reference": [
+        "unknown",
+        "Reports olfactory aura preceding brief spells"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

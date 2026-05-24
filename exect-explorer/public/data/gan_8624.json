@@ -1,0 +1,59 @@
+{
+  "id": "gan_8624",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nDaniel Hughes, DOB: 14-05-1986, Hospital No: H938210 NHS No. 6084729153  \nFlat 12, 4 Eastgate Court, London, W2 6QL \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Tolerating well with no noted mood change or sedation. No missed doses reported. \n\nThank you for reviewing this patient who works on the gate line at a busy metro station, where prolonged standing, crowd surges and variable shift patterns are routine. He reports good adherence to treatment and careful self-management around fatigue and hydration during shifts. Seizure-free period now 13 months. He last recalls an event prior to starting the current dose schedule; there have been no auras, blackouts or witnessed episodes since. \n\nHe describes intermittent sleep disruption following late turnaround duties, but he has instituted practical measures (earplugs, regular caffeine avoidance after midday, and structured wind-down) which he finds helpful. No alcohol excess. He remains mindful of heat and dehydration on the platforms and carries water routinely. There have been no injuries at work and no near-miss incidents. \n\nNeurological examination today is unremarkable. Bloods from last month (U&E, LFT, FBC) within normal limits. He has not required emergency care, and there have been no side effects prompting dose changes. He is aware of workplace safety considerations and continues to step back from platform edges during crowd surges per his employer’s guidance. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily without change.  \n- Maintain current sleep and hydration routines, particularly around late shifts, as patient-reported strategies appear effective.  \n- No driving queries raised today; he understands to inform DVLA should any further episodes occur.  \n- Routine follow-up in six months, sooner if any new events, auras, or concerns at work. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 718,
+      "end": 752,
+      "text": "Seizure-free period now 13 months.",
+      "attributes": {
+        "Label": "seizure free for 13 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 718,
+      "end": 751,
+      "text": "Seizure-free period now 13 months",
+      "attributes": {
+        "Label": "seizure free for 13 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8624,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nDaniel Hughes, DOB: 14-05-1986, Hospital No: H938210 NHS No. 6084729153  \nFlat 12, 4 Eastgate Court, London, W2 6QL \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Tolerating well with no noted mood change or sedation. No missed doses reported. \n\nThank you for reviewing this patient who works on the gate line at a busy metro station, where prolonged standing, crowd surges and variable shift patterns are routine. He reports good adherence to treatment and careful self-management around fatigue and hydration during shifts. Seizure-free period now 13 months. He last recalls an event prior to starting the current dose schedule; there have been no auras, blackouts or witnessed episodes since. \n\nHe describes intermittent sleep disruption following late turnaround duties, but he has instituted practical measures (earplugs, regular caffeine avoidance after midday, and structured wind-down) which he finds helpful. No alcohol excess. He remains mindful of heat and dehydration on the platforms and carries water routinely. There have been no injuries at work and no near-miss incidents. \n\nNeurological examination today is unremarkable. Bloods from last month (U&E, LFT, FBC) within normal limits. He has not required emergency care, and there have been no side effects prompting dose changes. He is aware of workplace safety considerations and continues to step back from platform edges during crowd surges per his employer’s guidance. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily without change.  \n- Maintain current sleep and hydration routines, particularly around late shifts, as patient-reported strategies appear effective.  \n- No driving queries raised today; he understands to inform DVLA should any further episodes occur.  \n- Routine follow-up in six months, sooner if any new events, auras, or concerns at work. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been seizure-free for 13 months. It also notes no auras, blackouts, or witnessed episodes since prior to starting the current dose schedule. This meets the criterion for being considered seizure-free for multiple months (>6 months). Therefore, the normalized label is 'seizure free for 13 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 13 month",
+        "Seizure-free period now 13 months."
+      ],
+      "reference": [
+        "seizure free for 13 month",
+        "Seizure-free period now 13 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_7275",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Priya Menon  \nSouthview Medical Centre  \n145 Queens Road, London SW1A 2AA  \n\nDear Dr Priya Menon,  \n\nAlex Turner, DOB: 22-11-1990, Hospital No: N782451 NHS No. 3049821765  \nFlat 5, 12 Brook Street, London W1K 4DG \n\nSummary/ Diagnoses: Seizure disorder with history of variable control/trauma-free since last review/mild sleep disturbance/anxiety symptoms under primary care monitoring/vitamin D insufficiency treated. \n\nMedication: Lamotrigine 150 mg twice daily.  \nLevetiracetam 500 mg twice daily.  \nCholecalciferol 800 IU once daily.  \nSertraline 50 mg once daily.  \n\nI reviewed Alex in clinic today. He attended alone and provided a written sleep and event log for the past three months. He reports feeling generally well, is working full time in retail, and is independently managing activities of daily living. Appetite is good and weight stable. He cycles to work three days a week without incident. No new neurological symptoms were volunteered. \n\nSeizures: Alex describes intermittent spells occurring more often on mornings after shorter nights, with occasional brief runs of events when rest has been fragmented. He notes that busier shifts and early starts tend to coincide with these episodes, and that longer, uninterrupted sleep is associated with quieter periods. He has a personalised plan for recognition and management of these clusters and early warning signs, which is documented elsewhere and remains unchanged. He denies injuries or emergency attendances. Over the last 12 weeks he recorded: July 0, August 2 brief events over one weekend, September 1 isolated event; no prolonged confusion reported. No missed doses reported. \n\nExamination: Alert and oriented, normal speech. Cranial nerves intact. Power 5/5 in all limbs, tone and coordination normal, gait steady. No tongue trauma or shoulder tenderness. \n\nInvestigations: Last U&Es, LFTs, FBC (June 2025) within reference ranges. Vitamin D replete on current supplementation. No medication interactions identified on current list. \n\nPlan: \n- Continue current antiseizure regimen without dose change.  \n- Reinforce sleep regularity strategies; Alex wishes to continue non-pharmacological measures and to follow his existing personalised plan for cluster recognition; copy of plan is held in community notes.  \n- Provide work letter confirming need for consistent shift scheduling where feasible.  \n- Safety advice reviewed including swimming with supervision and machinery use; no driving.  \n- Routine bloods (U&Es/LFTs) at 12 months unless clinical change.  \n- Follow-up in 6 months, earlier if increase in event frequency or change in pattern.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1594,
+      "end": 1704,
+      "text": "Over the last 12 weeks he recorded: July 0, August 2 brief events over one weekend, September 1 isolated event",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7275,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Priya Menon  \nSouthview Medical Centre  \n145 Queens Road, London SW1A 2AA  \n\nDear Dr Priya Menon,  \n\nAlex Turner, DOB: 22-11-1990, Hospital No: N782451 NHS No. 3049821765  \nFlat 5, 12 Brook Street, London W1K 4DG \n\nSummary/ Diagnoses: Seizure disorder with history of variable control/trauma-free since last review/mild sleep disturbance/anxiety symptoms under primary care monitoring/vitamin D insufficiency treated. \n\nMedication: Lamotrigine 150 mg twice daily.  \nLevetiracetam 500 mg twice daily.  \nCholecalciferol 800 IU once daily.  \nSertraline 50 mg once daily.  \n\nI reviewed Alex in clinic today. He attended alone and provided a written sleep and event log for the past three months. He reports feeling generally well, is working full time in retail, and is independently managing activities of daily living. Appetite is good and weight stable. He cycles to work three days a week without incident. No new neurological symptoms were volunteered. \n\nSeizures: Alex describes intermittent spells occurring more often on mornings after shorter nights, with occasional brief runs of events when rest has been fragmented. He notes that busier shifts and early starts tend to coincide with these episodes, and that longer, uninterrupted sleep is associated with quieter periods. He has a personalised plan for recognition and management of these clusters and early warning signs, which is documented elsewhere and remains unchanged. He denies injuries or emergency attendances. Over the last 12 weeks he recorded: July 0, August 2 brief events over one weekend, September 1 isolated event; no prolonged confusion reported. No missed doses reported. \n\nExamination: Alert and oriented, normal speech. Cranial nerves intact. Power 5/5 in all limbs, tone and coordination normal, gait steady. No tongue trauma or shoulder tenderness. \n\nInvestigations: Last U&Es, LFTs, FBC (June 2025) within reference ranges. Vitamin D replete on current supplementation. No medication interactions identified on current list. \n\nPlan: \n- Continue current antiseizure regimen without dose change.  \n- Reinforce sleep regularity strategies; Alex wishes to continue non-pharmacological measures and to follow his existing personalised plan for cluster recognition; copy of plan is held in community notes.  \n- Provide work letter confirming need for consistent shift scheduling where feasible.  \n- Safety advice reviewed including swimming with supervision and machinery use; no driving.  \n- Routine bloods (U&Es/LFTs) at 12 months unless clinical change.  \n- Follow-up in 6 months, earlier if increase in event frequency or change in pattern.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly quantifies seizures over the last 12 weeks: July 0, August 2, September 1, totaling 3 events in approximately 3 months. Calculating average frequency: 3 events / 3 months = 1 per month. Although clusters are mentioned, no precise cluster count or per-cluster rate is provided, so we use the explicit monthly tally.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Over the last 12 weeks he recorded: July 0, August 2 brief events over one weekend, September 1 isolated event"
+      ],
+      "reference": [
+        "unknown",
+        "Seizure exacerbations noted on work days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

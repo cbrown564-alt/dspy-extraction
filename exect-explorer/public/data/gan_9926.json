@@ -1,0 +1,59 @@
+{
+  "id": "gan_9926",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 May 2024 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nPatient has generalised epilepsy (primary generalised epilepsy).\n\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nMonthly clusters; within-cluster count unclear. The patient reports that episodes tend to occur towards the end of each calendar month, often over 24–48 hours, but is unable to quantify the exact number within each cluster due to brief impaired awareness. No clear convulsive injuries reported.\n\n\nAdditional History:\n\n- Social alcohol use reported and currently reducing; patient notes cutting down from 6 units/week to approximately 2–3 units/week over the past month. No clear temporal association identified between alcohol intake and cluster onset.\n- Sleep variability around shift changes may contribute; patient is trialling consistent sleep timing.\n- No recent intercurrent illness; no missed doses reported in the past six weeks.\n\n\nPlan of Action:\n\n- Maintain current antiseizure regimen for now while we clarify the temporal pattern of clustering and potential triggers. Patient will keep a detailed seizure diary (including approximate time, duration, premonitory symptoms, and any alcohol intake or sleep disruption) for the next 8–12 weeks.\n- Provide a rescue plan for clusters: prescribe buccal midazolam 10 mg to use if more than one seizure occurs within 24 hours or if a seizure lasts longer than 5 minutes (maximum two doses per cluster episode, at least 4 hours apart). Care partner to be shown administration technique by the epilepsy nurse specialist.\n- Bloods today: FBC, U&E, LFTs; check lamotrigine and valproate levels to confirm therapeutic range.\n- Safety counselling reinforced regarding driving regulations, bathing/showering, and working at heights.\n- Continue alcohol reduction and maintain good sleep hygiene; patient understands this is supportive rather than prescriptive advice.\n- Review in clinic in three months. If clusters persist despite current measures, we will discuss optimisation options (e.g., cautious lamotrigine uptitration or transition to levetiracetam with mood monitoring) at the next visit, informed by diary and blood results.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 552,
+      "end": 599,
+      "text": "Monthly clusters; within-cluster count unclear.",
+      "attributes": {
+        "Label": "1 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 552,
+      "end": 598,
+      "text": "Monthly clusters; within-cluster count unclear",
+      "attributes": {
+        "Label": "1 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9926,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 17 May 2024 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nPatient has generalised epilepsy (primary generalised epilepsy).\n\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nMonthly clusters; within-cluster count unclear. The patient reports that episodes tend to occur towards the end of each calendar month, often over 24–48 hours, but is unable to quantify the exact number within each cluster due to brief impaired awareness. No clear convulsive injuries reported.\n\n\nAdditional History:\n\n- Social alcohol use reported and currently reducing; patient notes cutting down from 6 units/week to approximately 2–3 units/week over the past month. No clear temporal association identified between alcohol intake and cluster onset.\n- Sleep variability around shift changes may contribute; patient is trialling consistent sleep timing.\n- No recent intercurrent illness; no missed doses reported in the past six weeks.\n\n\nPlan of Action:\n\n- Maintain current antiseizure regimen for now while we clarify the temporal pattern of clustering and potential triggers. Patient will keep a detailed seizure diary (including approximate time, duration, premonitory symptoms, and any alcohol intake or sleep disruption) for the next 8–12 weeks.\n- Provide a rescue plan for clusters: prescribe buccal midazolam 10 mg to use if more than one seizure occurs within 24 hours or if a seizure lasts longer than 5 minutes (maximum two doses per cluster episode, at least 4 hours apart). Care partner to be shown administration technique by the epilepsy nurse specialist.\n- Bloods today: FBC, U&E, LFTs; check lamotrigine and valproate levels to confirm therapeutic range.\n- Safety counselling reinforced regarding driving regulations, bathing/showering, and working at heights.\n- Continue alcohol reduction and maintain good sleep hygiene; patient understands this is supportive rather than prescriptive advice.\n- Review in clinic in three months. If clusters persist despite current measures, we will discuss optimisation options (e.g., cautious lamotrigine uptitration or transition to levetiracetam with mood monitoring) at the next visit, informed by diary and blood results.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency as 'Monthly clusters; within-cluster count unclear.' This indicates clusters occurring each month, but the number of seizures within each cluster is not quantified. Therefore, the correct normalized label should express one cluster per month with an unknown number per cluster. Using the allowed format, this is represented as '1 cluster per month, multiple per cluster' or equivalently 'unknown, multiple per cluster' if clusters frequency weren't known. Here, monthly is known, so we use the cluster-per-month format with 'multiple per cluster' to reflect the unclear within-cluster count.",
+      "seizure_frequency_number": [
+        "1 cluster per month, multiple per cluster",
+        "Monthly clusters; within-cluster count unclear."
+      ],
+      "reference": [
+        "1 cluster per month, multiple per cluster",
+        "Monthly clusters; within-cluster count unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

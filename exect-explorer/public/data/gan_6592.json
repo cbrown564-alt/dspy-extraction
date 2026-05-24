@@ -1,0 +1,65 @@
+{
+  "id": "gan_6592",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 04 August 2017\n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,\n\nEmily Johnson, DOB: 14-07-2001, Hospital No: H926415 NHS No. 7485209631  \n52 Willow Court, Battersea, London, SW11 3AB\n\nDiagnoses:\n\nGeneralised epilepsy.\n\nThank you for reviewing Emily Johnson in our neurology clinic today. She attended with her mother and support worker. She has a known history of generalised epilepsy and reports photosensitivity to flicker or bright light, particularly in supermarkets and during screen use. Over the past two months, she describes an overall stable pattern with brief generalised events occurring intermittently; however, there has been an Occasional prolonged seizure event up to 10 minutes. These longer events have been infrequent and self-terminating, with recovery to baseline within an hour. She denies any new focal neurological symptoms. There has been no recent head injury, intercurrent infection, or missed doses reported.\n\nCurrent anti-seizure treatment is unchanged by patient report, with good adherence noted by her mother. She avoids known visual triggers by using sunglasses outdoors and enabling blue-light filters on devices; they have also limited exposure to rapidly flickering lights at home. There have been no recent emergency department attendances, and rescue medication has not been required in the past eight weeks.\n\nOn examination today, she was well, cardiovascular and respiratory examinations were unremarkable, and there were no lateralising neurological signs. Photosensitivity precautions were discussed, including continuing to minimise exposure to flicker and bright light, taking rest breaks from screens, and ensuring consistent sleep. We also provided written information on managing visually triggered seizures for her school/work setting.\n\nPlan:\n- Continue current anti-seizure medication regimen without change, given clinical stability apart from the rare longer episode described as an Occasional prolonged seizure event up to 10 minutes.\n- Reinforce trigger avoidance strategies for photosensitivity and maintain sleep hygiene.\n- Seizure diary to document timing, context (light exposure/screen use), and duration of any further events.\n- Routine bloods for therapeutic drug monitoring arranged locally.\n- Follow-up in six months, or sooner if there is an increase in frequency, injuries, or any prolonged events beyond 10 minutes.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 657,
+      "end": 786,
+      "text": "brief generalised events occurring intermittently; however, there has been an Occasional prolonged seizure event up to 10 minutes",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 735,
+      "end": 786,
+      "text": "Occasional prolonged seizure event up to 10 minutes",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6592,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 04 August 2017\n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,\n\nEmily Johnson, DOB: 14-07-2001, Hospital No: H926415 NHS No. 7485209631  \n52 Willow Court, Battersea, London, SW11 3AB\n\nDiagnoses:\n\nGeneralised epilepsy.\n\nThank you for reviewing Emily Johnson in our neurology clinic today. She attended with her mother and support worker. She has a known history of generalised epilepsy and reports photosensitivity to flicker or bright light, particularly in supermarkets and during screen use. Over the past two months, she describes an overall stable pattern with brief generalised events occurring intermittently; however, there has been an Occasional prolonged seizure event up to 10 minutes. These longer events have been infrequent and self-terminating, with recovery to baseline within an hour. She denies any new focal neurological symptoms. There has been no recent head injury, intercurrent infection, or missed doses reported.\n\nCurrent anti-seizure treatment is unchanged by patient report, with good adherence noted by her mother. She avoids known visual triggers by using sunglasses outdoors and enabling blue-light filters on devices; they have also limited exposure to rapidly flickering lights at home. There have been no recent emergency department attendances, and rescue medication has not been required in the past eight weeks.\n\nOn examination today, she was well, cardiovascular and respiratory examinations were unremarkable, and there were no lateralising neurological signs. Photosensitivity precautions were discussed, including continuing to minimise exposure to flicker and bright light, taking rest breaks from screens, and ensuring consistent sleep. We also provided written information on managing visually triggered seizures for her school/work setting.\n\nPlan:\n- Continue current anti-seizure medication regimen without change, given clinical stability apart from the rare longer episode described as an Occasional prolonged seizure event up to 10 minutes.\n- Reinforce trigger avoidance strategies for photosensitivity and maintain sleep hygiene.\n- Seizure diary to document timing, context (light exposure/screen use), and duration of any further events.\n- Routine bloods for therapeutic drug monitoring arranged locally.\n- Follow-up in six months, or sooner if there is an increase in frequency, injuries, or any prolonged events beyond 10 minutes.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms ongoing seizures: 'brief generalised events occurring intermittently' over the past two months, with an 'Occasional prolonged seizure event up to 10 minutes.' There are no explicit numeric frequencies provided (no counts per time unit). Rescue medication not required in past eight weeks suggests events occurred but does not quantify frequency. Therefore, a specific numeric frequency cannot be determined from the letter. Per instructions, if seizures are mentioned but specific frequency cannot be determined, return 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "brief generalised events occurring intermittently; however, there has been an Occasional prolonged seizure event up to 10 minutes"
+      ],
+      "reference": [
+        "unknown",
+        "Occasional prolonged seizure event up to 10 minutes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

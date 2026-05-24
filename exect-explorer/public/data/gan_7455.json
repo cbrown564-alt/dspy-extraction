@@ -1,0 +1,65 @@
+{
+  "id": "gan_7455",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 14 September 2025\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: History of seizures with prior head trauma; mood symptoms under GP review; vitamin D insufficiency; lives independently with community support; ex-smoker.\n\nMedication: Levetiracetam 750 mg twice daily (switched to a different generic formulation by pharmacy in July 2025). Cholecalciferol 800 IU daily. Sertraline 50 mg daily. Omeprazole 20 mg daily.\n\nI reviewed William Harris in clinic today, attending alone. He reports improved sleep and fewer missed doses since setting phone reminders. No falls since last visit. Neurological examination today was non-focal; gait steady; no tongue bite scars or shoulder tenderness. Weight stable.\n\nSeizures: He keeps a brief phone log, though entries are sporadic. He recalls several minor events clustered in late August but is unsure whether they were the same as prior episodes. After switching formulation, frequency changed unclear direction. He cannot confidently state an increase or decrease, only that the pattern “feels different.” No clear triggers identified; stress and missed meals possibly contributory. No emergency attendances.\n\nPlan:\n- Continue levetiracetam at current dose; asked patient to request consistent-brand supply from pharmacy if possible and to record exact product name/appearance in his log.\n- Provide seizure diary template and reinforce documenting date, time, features, and any missed doses.\n- Arrange U&Es, FBC, LFTs, vitamin D in primary care; copy results to clinic.\n- Safety advice reviewed; driving not applicable.\n- Follow-up in 6 months or sooner if events cluster or injuries occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1063,
+      "end": 1179,
+      "text": "He recalls several minor events clustered in late August but is unsure whether they were the same as prior episodes.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1180,
+      "end": 1244,
+      "text": "After switching formulation, frequency changed unclear direction",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7455,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 14 September 2025\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: History of seizures with prior head trauma; mood symptoms under GP review; vitamin D insufficiency; lives independently with community support; ex-smoker.\n\nMedication: Levetiracetam 750 mg twice daily (switched to a different generic formulation by pharmacy in July 2025). Cholecalciferol 800 IU daily. Sertraline 50 mg daily. Omeprazole 20 mg daily.\n\nI reviewed William Harris in clinic today, attending alone. He reports improved sleep and fewer missed doses since setting phone reminders. No falls since last visit. Neurological examination today was non-focal; gait steady; no tongue bite scars or shoulder tenderness. Weight stable.\n\nSeizures: He keeps a brief phone log, though entries are sporadic. He recalls several minor events clustered in late August but is unsure whether they were the same as prior episodes. After switching formulation, frequency changed unclear direction. He cannot confidently state an increase or decrease, only that the pattern “feels different.” No clear triggers identified; stress and missed meals possibly contributory. No emergency attendances.\n\nPlan:\n- Continue levetiracetam at current dose; asked patient to request consistent-brand supply from pharmacy if possible and to record exact product name/appearance in his log.\n- Provide seizure diary template and reinforce documenting date, time, features, and any missed doses.\n- Arrange U&Es, FBC, LFTs, vitamin D in primary care; copy results to clinic.\n- Safety advice reviewed; driving not applicable.\n- Follow-up in 6 months or sooner if events cluster or injuries occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses seizures but provides no explicit numeric frequency. It mentions 'several minor events clustered in late August' without specifying the count or over what time frame, and the patient is unsure about changes after a formulation switch. No emergency attendances and no clear triggers, but no quantified frequency is given. Seizure freedom for ≥6 months cannot be established because events occurred in late August and the clinic date is 14 September 2025. Therefore, the specific frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "He recalls several minor events clustered in late August but is unsure whether they were the same as prior episodes."
+      ],
+      "reference": [
+        "unknown",
+        "After switching formulation, frequency changed unclear direction"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

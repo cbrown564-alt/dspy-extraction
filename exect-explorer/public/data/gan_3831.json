@@ -1,0 +1,59 @@
+{
+  "id": "gan_3831",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 22 May 2018\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nOccupation and exposure: Patient works in metal fabrication and welding with intermittent arc-light exposure; reports consistent use of a protective visor and adherence to workplace safety routines.\n\nMedication: Patient-reported use of Lamotrigine dispersible 25 mg in the morning and 25 mg at night. No other regular anti-seizure medicines reported. No recent dose changes.\n\nLamotrigine blood level: Not recently checked. Patient understands that timing of blood sampling should be a trough level if arranged.\n\nSeizures: Over the past month, patient describes brief episodes characterised by a sudden blank spell with loss of track of activity at the workstation, occasionally with a dropped tool, without clear preceding warning and with rapid recovery within a minute. Frequency currently documented as: sz xseven/mo. No consistent triggers identified; patient notes events have occurred both on and off shift days and irrespective of visor use. No known nocturnal events reported by housemate. No injuries.\n\nHistory since last review: Patient reports better sleep hygiene over the last six weeks and reduced caffeine intake. No alcohol misuse. No recreational drug use. Driving: not currently driving and aware to follow DVLA guidance if applicable.\n\nPlan discussed today: Patient prefers to continue present regimen for now while we gather further information. Agreed to keep a seizure diary (including time, context, and recovery) and to consider serum lamotrigine level if events persist at current rate. Workplace has been informed of brief episodes; patient confirms availability of supervised tasks during high-risk operations. Safety advice discussed for welding area (buddy awareness, clear floor space, and scheduled breaks).\n\nFollow-up: Telephone review in 6–8 weeks, or sooner if frequency changes or any injury occurs.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1034,
+      "end": 1082,
+      "text": "Frequency currently documented as: sz xseven/mo.",
+      "attributes": {
+        "Label": "7 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1069,
+      "end": 1081,
+      "text": "sz xseven/mo",
+      "attributes": {
+        "Label": "7 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3831,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 22 May 2018\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nOccupation and exposure: Patient works in metal fabrication and welding with intermittent arc-light exposure; reports consistent use of a protective visor and adherence to workplace safety routines.\n\nMedication: Patient-reported use of Lamotrigine dispersible 25 mg in the morning and 25 mg at night. No other regular anti-seizure medicines reported. No recent dose changes.\n\nLamotrigine blood level: Not recently checked. Patient understands that timing of blood sampling should be a trough level if arranged.\n\nSeizures: Over the past month, patient describes brief episodes characterised by a sudden blank spell with loss of track of activity at the workstation, occasionally with a dropped tool, without clear preceding warning and with rapid recovery within a minute. Frequency currently documented as: sz xseven/mo. No consistent triggers identified; patient notes events have occurred both on and off shift days and irrespective of visor use. No known nocturnal events reported by housemate. No injuries.\n\nHistory since last review: Patient reports better sleep hygiene over the last six weeks and reduced caffeine intake. No alcohol misuse. No recreational drug use. Driving: not currently driving and aware to follow DVLA guidance if applicable.\n\nPlan discussed today: Patient prefers to continue present regimen for now while we gather further information. Agreed to keep a seizure diary (including time, context, and recovery) and to consider serum lamotrigine level if events persist at current rate. Workplace has been informed of brief episodes; patient confirms availability of supervised tasks during high-risk operations. Safety advice discussed for welding area (buddy awareness, clear floor space, and scheduled breaks).\n\nFollow-up: Telephone review in 6–8 weeks, or sooner if frequency changes or any injury occurs.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes current seizure frequency: 'Frequency currently documented as: sz xseven/mo.' Interpret 'xseven/mo' as '7 per month.' No other conflicting frequencies are given. Therefore, the highest (and only) frequency is 7 per month. Not seizure free criteria. Output normalized to allowed format.",
+      "seizure_frequency_number": [
+        "7 per month",
+        "Frequency currently documented as: sz xseven/mo."
+      ],
+      "reference": [
+        "7 per month",
+        "sz xseven/mo"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

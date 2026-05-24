@@ -1,0 +1,47 @@
+{
+  "id": "gan_11660",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside Health Centre\n\n102 Riverside Way, London, SE10 4AB\nDear Dr Patel\nAlex Smith, DOB: 21-11-1982, Hospital No: K837492 NHS No. 7483920019\n12B Mariner Court, Greenwich, London, SE10 9DD\n\nThank you for your correspondence. I am writing to acknowledge receipt of a Subject Access Request submitted on behalf of the above patient for copies of their neurology records pertinent to pre-conception counselling and related care.\n\nWe have initiated our records search across clinic letters, investigation reports, medication summaries, and advice provided in the context of pre-conception planning. Copies will be prepared in line with UK GDPR and the Data Protection Act 2018. We anticipate completion within one calendar month of the date of this letter, and will notify you promptly if any clarification is required to refine the scope.\n\nIf you require the records in a specific format or wish to limit the request to defined date ranges or document types, please advise via our clinic admin team quoting Hospital No: K837492.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11660,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside Health Centre\n\n102 Riverside Way, London, SE10 4AB\nDear Dr Patel\nAlex Smith, DOB: 21-11-1982, Hospital No: K837492 NHS No. 7483920019\n12B Mariner Court, Greenwich, London, SE10 9DD\n\nThank you for your correspondence. I am writing to acknowledge receipt of a Subject Access Request submitted on behalf of the above patient for copies of their neurology records pertinent to pre-conception counselling and related care.\n\nWe have initiated our records search across clinic letters, investigation reports, medication summaries, and advice provided in the context of pre-conception planning. Copies will be prepared in line with UK GDPR and the Data Protection Act 2018. We anticipate completion within one calendar month of the date of this letter, and will notify you promptly if any clarification is required to refine the scope.\n\nIf you require the records in a specific format or wish to limit the request to defined date ranges or document types, please advise via our clinic admin team quoting Hospital No: K837492.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter for any mention of seizures or seizure frequency. The content is an administrative acknowledgement of a Subject Access Request concerning neurology records for pre-conception counselling. There are no statements about the patient’s seizures or their frequency, nor any indirect references that could imply a frequency. Therefore, there is no seizure frequency information to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging a Subject Access Request related to epilepsy records"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_1706",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Harper (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 August 2016 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic follow-up and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\n[Type not specified]\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Propranolol 20 mg twice daily (for tremor/anxiety)\n\n\nPresent Seizure Frequency:\n\nOver the past month, the patient reports a cluster of short events on multiple days, each beginning with a brief sense of disconnection and followed by a few minutes of confusion, without clear triggers identified.\n\n\nClinical Context:\n\nRecently retired teacher living alone with a structured daily routine. Social interactions have diminished since retirement; she notes longer periods at home, regular early mornings, and limited evening activities. Sleep is generally consistent, though she describes occasional early awakenings. No recent intercurrent illnesses. She denies alcohol use and has reduced caffeine to one cup in the morning. She keeps a detailed diary of events, which suggests possible stress-related variability on days with unexpected changes to her routine.\n\n\nPlan of Action:\n\n- Continue lamotrigine at 100 mg twice daily for one more week, then increase to 125 mg twice daily if tolerated. After a further two weeks, increase to 150 mg twice daily and maintain this dose until the next review.\n- Arrange an ambulatory EEG and repeat basic bloods (FBC, U&E, LFTs). Check lamotrigine level after reaching 150 mg twice daily (draw level at steady state, pre-dose).\n- Safety: advised not to drive and to observe standard precautions around heights, open water, and hot surfaces. Discussed use of a kettle with auto shut-off and keeping the bathroom door unlocked.\n- Self-management: continue event diary noting date, time, description, potential precipitants (sleep, stress, missed doses), and recovery time. Patient prefers paper diary; this is appropriate.\n- Social context: patient is willing to attend a local peer support group once monthly; details provided. She will also trial short daily outdoor walks to support routine and mood.\n- Follow-up: book review in 12 weeks or sooner if events escalate, duration prolongs, or injuries occur. She knows how to contact the epilepsy nurse helpline for interim concerns.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 550,
+      "end": 633,
+      "text": "Over the past month, the patient reports a cluster of short events on multiple days",
+      "attributes": {
+        "Label": "multiple cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1706,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Harper (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 August 2016 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic follow-up and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\n[Type not specified]\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Propranolol 20 mg twice daily (for tremor/anxiety)\n\n\nPresent Seizure Frequency:\n\nOver the past month, the patient reports a cluster of short events on multiple days, each beginning with a brief sense of disconnection and followed by a few minutes of confusion, without clear triggers identified.\n\n\nClinical Context:\n\nRecently retired teacher living alone with a structured daily routine. Social interactions have diminished since retirement; she notes longer periods at home, regular early mornings, and limited evening activities. Sleep is generally consistent, though she describes occasional early awakenings. No recent intercurrent illnesses. She denies alcohol use and has reduced caffeine to one cup in the morning. She keeps a detailed diary of events, which suggests possible stress-related variability on days with unexpected changes to her routine.\n\n\nPlan of Action:\n\n- Continue lamotrigine at 100 mg twice daily for one more week, then increase to 125 mg twice daily if tolerated. After a further two weeks, increase to 150 mg twice daily and maintain this dose until the next review.\n- Arrange an ambulatory EEG and repeat basic bloods (FBC, U&E, LFTs). Check lamotrigine level after reaching 150 mg twice daily (draw level at steady state, pre-dose).\n- Safety: advised not to drive and to observe standard precautions around heights, open water, and hot surfaces. Discussed use of a kettle with auto shut-off and keeping the bathroom door unlocked.\n- Self-management: continue event diary noting date, time, description, potential precipitants (sleep, stress, missed doses), and recovery time. Patient prefers paper diary; this is appropriate.\n- Social context: patient is willing to attend a local peer support group once monthly; details provided. She will also trial short daily outdoor walks to support routine and mood.\n- Follow-up: book review in 12 weeks or sooner if events escalate, duration prolongs, or injuries occur. She knows how to contact the epilepsy nurse helpline for interim concerns.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The 'Present Seizure Frequency' states: 'Over the past month, the patient reports a cluster of short events on multiple days.' This indicates that within the past month there were clusters occurring on more than one day, implying multiple clusters per month. The number of events within each cluster is not specified, only that they are 'a cluster of short events,' which implies more than one event per cluster but without a specific count. Therefore, using the cluster format: clusters per month = multiple; events per cluster = multiple.",
+      "seizure_frequency_number": [
+        "multiple cluster per month, multiple per cluster",
+        "Over the past month, the patient reports a cluster of short events on multiple days"
+      ],
+      "reference": [
+        "multiple per month",
+        "several focal seizures last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple cluster per month, multiple per cluster) disagrees with Reference (multiple per month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

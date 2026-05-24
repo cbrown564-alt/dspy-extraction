@@ -1,0 +1,59 @@
+{
+  "id": "gan_2233",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 September 2023 \n\nDr Sarah Kemp\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Sarah Kemp\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1983, Hospital No: K734592 NHS No. 9075612384  \n12 Hawthorn Close, Bromley, BR2 8QT\n\nThank you for your referral. I reviewed Daniel Carter in clinic today. He works outdoors in gardening/grounds maintenance and reports that heat and prolonged exertion vary considerably with the seasons. Over the late summer he noticed increased tiredness after longer shifts in direct sun, with occasional light-headedness before some of his events.\n\nHe describes his typical events as beginning with a tightening sensation in his chest and throat, brief unresponsiveness, and repetitive rocking of the torso with intermittent vocalisation. He is usually confused afterwards, with fatigue and headache lasting up to an hour. He does not consistently bite his tongue or have urinary incontinence. There is no reliable warning beyond a sense of “pressure” and a need to sit down when he can. He keeps a simple work diary and, based on this, he reports about 6 or 7 seizures in the last two months. He feels these have clustered on warmer days or after particularly strenuous tasks, though he cannot be certain.\n\nThere have also been occasional episodes described by his partner as emotionally charged spells with crying and tremulousness without clear loss of awareness; he recovers more quickly from these than from the events outlined above. Night-time events have not been witnessed recently, but he sometimes wakes unrefreshed with muscle soreness without clear recall.\n\nHe is adherent to current medication and denies recent intercurrent illness, alcohol excess, or sleep deprivation beyond early starts for work during peak season. He has not driven. There is no new neurological deficit on examination today. Cardiovascular and general examination were unremarkable, and his postural blood pressure was stable.\n\nGiven the ongoing events and the occupational context, I discussed further characterisation with video-EEG monitoring to capture typical episodes and clarify semiology and precipitants. He is open to proceeding, and I will arrange an elective admission for telemetry along with routine bloods. I have asked him to continue his event diary, noting ambient temperature, shift length, hydration, and timing relative to meals. No immediate changes to treatment were made today.\n\nI will update you following telemetry. Please let me know if there are workplace forms you would like me to complete regarding safety planning while we gather further information.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1222,
+      "end": 1277,
+      "text": "he reports about 6 or 7 seizures in the last two months",
+      "attributes": {
+        "Label": "6 to 7 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1233,
+      "end": 1277,
+      "text": "about 6 or 7 seizures in the last two months",
+      "attributes": {
+        "Label": "6 to 7 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2233,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 September 2023 \n\nDr Sarah Kemp\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Sarah Kemp\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1983, Hospital No: K734592 NHS No. 9075612384  \n12 Hawthorn Close, Bromley, BR2 8QT\n\nThank you for your referral. I reviewed Daniel Carter in clinic today. He works outdoors in gardening/grounds maintenance and reports that heat and prolonged exertion vary considerably with the seasons. Over the late summer he noticed increased tiredness after longer shifts in direct sun, with occasional light-headedness before some of his events.\n\nHe describes his typical events as beginning with a tightening sensation in his chest and throat, brief unresponsiveness, and repetitive rocking of the torso with intermittent vocalisation. He is usually confused afterwards, with fatigue and headache lasting up to an hour. He does not consistently bite his tongue or have urinary incontinence. There is no reliable warning beyond a sense of “pressure” and a need to sit down when he can. He keeps a simple work diary and, based on this, he reports about 6 or 7 seizures in the last two months. He feels these have clustered on warmer days or after particularly strenuous tasks, though he cannot be certain.\n\nThere have also been occasional episodes described by his partner as emotionally charged spells with crying and tremulousness without clear loss of awareness; he recovers more quickly from these than from the events outlined above. Night-time events have not been witnessed recently, but he sometimes wakes unrefreshed with muscle soreness without clear recall.\n\nHe is adherent to current medication and denies recent intercurrent illness, alcohol excess, or sleep deprivation beyond early starts for work during peak season. He has not driven. There is no new neurological deficit on examination today. Cardiovascular and general examination were unremarkable, and his postural blood pressure was stable.\n\nGiven the ongoing events and the occupational context, I discussed further characterisation with video-EEG monitoring to capture typical episodes and clarify semiology and precipitants. He is open to proceeding, and I will arrange an elective admission for telemetry along with routine bloods. I have asked him to continue his event diary, noting ambient temperature, shift length, hydration, and timing relative to meals. No immediate changes to treatment were made today.\n\nI will update you following telemetry. Please let me know if there are workplace forms you would like me to complete regarding safety planning while we gather further information.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency statements. The letter states: \"he reports about 6 or 7 seizures in the last two months.\" This provides a numeric range over a two-month period. No other explicit frequency contradicts or exceeds this. Convert to allowed format: use a range with 'to' and unit 'month'. Therefore: '6 to 7 per 2 month'.",
+      "seizure_frequency_number": [
+        "6 to 7 per 2 month",
+        "he reports about 6 or 7 seizures in the last two months"
+      ],
+      "reference": [
+        "6 to 7 per 2 month",
+        "about 6 or 7 seizures in the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

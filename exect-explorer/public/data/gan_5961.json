@@ -1,0 +1,54 @@
+{
+  "id": "gan_5961",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Nair  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Priya Nair,                                                                                                         \n\nDaniel Harper, DOB: 22-11-1991, Hospital No: H384920 NHS No. 9075614320  \nFlat 3, 28 Redchurch Street, London E2 7DP  \n\nEpilepsy \n\nMedication: Lamotrigine ongoing; adherence supported with smartphone alarms and NFC tag prompts following prior missed doses.\n\nCurrent dosing: Lamotrigine dispersible 50 mg twice daily (patient-reported, using phone schedule and NFC tag by medication box to confirm intake).\n\nLamotrigine Blood Level:\n\n24 September 2025: 3.6 mg/L (reference 1.0–15.0 mg/L). Dose at time: 50 mg twice daily. Sample taken 11:20, approximately 3 hours post-morning dose.\n\nSeizures: Patient describes brief focal episodes occurring predominantly when dozing in the early afternoon on the sofa, about once every 2–3 weeks, with rapid recovery and no injuries. No events reported during full nocturnal sleep or during active daytime periods. No clear prodrome reported; partner has observed brief behavioural arrest and lip-smacking on two occasions. No tonic–clonic activity witnessed since spring 2024.\n\nToday’s review was conducted by telephone. Daniel Harper reports improved dose consistency since introducing smartphone alarm pairs (primary alert and 10‑minute safety alert) and NFC tags at the bedside and on the kitchen cabinet to record each dose. She shared that the app log shows only one late dose in the past month, compared with multiple late or missed doses earlier this year. She denies adverse effects such as rash, diplopia, ataxia or mood change. Sleep and caffeine intake discussed; she has reduced afternoon caffeine which she feels may help. We discussed maintaining the current regimen and continuing the reminder system. She will continue to record events in her seizure diary and upload screenshots of medication logs before the next review.\n\nPlan:\n- Continue Lamotrigine 50 mg twice daily.\n- Maintain smartphone alarm and NFC tag confirmation workflow.\n- Safety advice reinforced; no driving. No injuries reported.\n- Arrange repeat Lamotrigine level in 8–10 weeks, morning sample 12 hours post-evening dose if feasible.\n- Follow-up in 3 months by telephone, sooner if event frequency increases or new features emerge.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 978,
+      "end": 1004,
+      "text": "about once every 2–3 weeks",
+      "attributes": {
+        "Label": "1 per 2 to 3 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5961,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Nair  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Priya Nair,                                                                                                         \n\nDaniel Harper, DOB: 22-11-1991, Hospital No: H384920 NHS No. 9075614320  \nFlat 3, 28 Redchurch Street, London E2 7DP  \n\nEpilepsy \n\nMedication: Lamotrigine ongoing; adherence supported with smartphone alarms and NFC tag prompts following prior missed doses.\n\nCurrent dosing: Lamotrigine dispersible 50 mg twice daily (patient-reported, using phone schedule and NFC tag by medication box to confirm intake).\n\nLamotrigine Blood Level:\n\n24 September 2025: 3.6 mg/L (reference 1.0–15.0 mg/L). Dose at time: 50 mg twice daily. Sample taken 11:20, approximately 3 hours post-morning dose.\n\nSeizures: Patient describes brief focal episodes occurring predominantly when dozing in the early afternoon on the sofa, about once every 2–3 weeks, with rapid recovery and no injuries. No events reported during full nocturnal sleep or during active daytime periods. No clear prodrome reported; partner has observed brief behavioural arrest and lip-smacking on two occasions. No tonic–clonic activity witnessed since spring 2024.\n\nToday’s review was conducted by telephone. Daniel Harper reports improved dose consistency since introducing smartphone alarm pairs (primary alert and 10‑minute safety alert) and NFC tags at the bedside and on the kitchen cabinet to record each dose. She shared that the app log shows only one late dose in the past month, compared with multiple late or missed doses earlier this year. She denies adverse effects such as rash, diplopia, ataxia or mood change. Sleep and caffeine intake discussed; she has reduced afternoon caffeine which she feels may help. We discussed maintaining the current regimen and continuing the reminder system. She will continue to record events in her seizure diary and upload screenshots of medication logs before the next review.\n\nPlan:\n- Continue Lamotrigine 50 mg twice daily.\n- Maintain smartphone alarm and NFC tag confirmation workflow.\n- Safety advice reinforced; no driving. No injuries reported.\n- Arrange repeat Lamotrigine level in 8–10 weeks, morning sample 12 hours post-evening dose if feasible.\n- Follow-up in 3 months by telephone, sooner if event frequency increases or new features emerge.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency: \"about once every 2–3 weeks\" for brief focal episodes. There are no other seizure types with a higher frequency; tonic–clonic seizures have not occurred since spring 2024. Therefore, the highest current frequency is the focal episodes at approximately once every 2–3 weeks. Convert this to the allowed format as a numeric range: 1 per 2 to 3 week. The patient is not seizure free, so we report the frequency.",
+      "seizure_frequency_number": [
+        "1 per 2 to 3 week",
+        "about once every 2–3 weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during daytime naps"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 to 3 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

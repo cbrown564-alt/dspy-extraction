@@ -1,0 +1,48 @@
+{
+  "id": "gan_5141",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nEmily Carter, DOB: 22-11-1990, Hospital No: Q372619 NHS No. 9842157630  \nFlat 3, 7 Larkspur Road, London, SE15 4JH  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine; no recent changes reported.  \n\nCurrent dosing as stated by patient: Lamotrigine dispersible 50 mg in the morning and 50 mg at night.  \n\nLamotrigine Blood Level:  \n20 September 2025: 3.8 mg/L (laboratory reference range 1.0 to 15.0 mg/L). Dose at sampling: 50 mg twice daily.  \n\nSeizures: Patient reports steady improvement. Since night-time childcare support began in mid-August and sleep has become more regular, there have been no further events suggestive of seizures; she describes the last episode as occurring in early August. She notes better daytime alertness and no auras or warnings since. \n\nI conducted a telephone review today. She attributes the improvement to consolidated sleep following the introduction of overnight childcare assistance, and she feels more stable overall. She has had no new neurological symptoms, no injuries, and no medication side effects. Adherence was confirmed. Safety advice and seizure first-aid guidance were revisited. No driving. \n\nPlan:  \n- Continue present regimen of Lamotrigine 50 mg twice daily.  \n- No dose adjustment required at this stage given stability and therapeutic level.  \n- Routine follow-up in 4–6 months, or sooner if any breakthrough events occur.  \n- She will maintain a simple event and sleep diary and contact the service if any suspicious episodes recur.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 843,
+      "end": 960,
+      "text": "there have been no further events suggestive of seizures; she describes the last episode as occurring in early August",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5141,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nEmily Carter, DOB: 22-11-1990, Hospital No: Q372619 NHS No. 9842157630  \nFlat 3, 7 Larkspur Road, London, SE15 4JH  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine; no recent changes reported.  \n\nCurrent dosing as stated by patient: Lamotrigine dispersible 50 mg in the morning and 50 mg at night.  \n\nLamotrigine Blood Level:  \n20 September 2025: 3.8 mg/L (laboratory reference range 1.0 to 15.0 mg/L). Dose at sampling: 50 mg twice daily.  \n\nSeizures: Patient reports steady improvement. Since night-time childcare support began in mid-August and sleep has become more regular, there have been no further events suggestive of seizures; she describes the last episode as occurring in early August. She notes better daytime alertness and no auras or warnings since. \n\nI conducted a telephone review today. She attributes the improvement to consolidated sleep following the introduction of overnight childcare assistance, and she feels more stable overall. She has had no new neurological symptoms, no injuries, and no medication side effects. Adherence was confirmed. Safety advice and seizure first-aid guidance were revisited. No driving. \n\nPlan:  \n- Continue present regimen of Lamotrigine 50 mg twice daily.  \n- No dose adjustment required at this stage given stability and therapeutic level.  \n- Routine follow-up in 4–6 months, or sooner if any breakthrough events occur.  \n- She will maintain a simple event and sleep diary and contact the service if any suspicious episodes recur.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states there have been no further events suggestive of seizures since mid-August, with the last episode occurring in early August 2025. Clinic date is 02 October 2025. Duration seizure-free is from early August to early October, which is approximately 2 months. This does not meet the 6-month criterion for 'seizure free' but supports 'seizure free for multiple months.' No explicit numeric frequency is given beyond being currently event-free for this period.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no further events suggestive of seizures; she describes the last episode as occurring in early August"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No recurrence"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

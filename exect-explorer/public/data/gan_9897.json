@@ -1,0 +1,65 @@
+{
+  "id": "gan_9897",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Priya Shah\nConsultant Neurologist\nCentre for Epilepsy\nSt George’s University Hospitals NHS Foundation Trust, Blackshaw Road, London SW17 0QT\n\nDear Dr Priya Shah,\n\nAlex Carter, DOB: 22-09-1992, Hospital No: K8473921 NHS No. 9437201568\n12 Brookfield Road, London, SW6 3AB\n\nDiagnosis:\n\nGeneralised epilepsy with recent deterioration in control; previously better control reported, now relapse/increase described without quantifying. Sporadic focal sensory this year, noted as patient-reported aura-like symptoms in the context of generalised epilepsy.\n\nAetiology:\n\nNo confirmed structural lesion on prior imaging; history not suggestive of perinatal focal insult.\n\nOther Medical Problems:\n\nVitamin D insufficiency under monitoring; no fractures. Mild migraine without aura.\n\nManagement Plan:\n\n- Continue Lamotrigine (same brand) 150 mg mane, 150 mg nocte while we reassess.\n- Initiate slow introduction of Sodium Valproate is not advised at this stage pending discussion of family planning; patient to read MHRA guidance and we will revisit next visit.\n- Arrange ambulatory EEG and serum lamotrigine level; repeat vitamin D and bone profile.\n- Safety counselling provided regarding breakthrough events and driving regulations discussed (patient not currently driving).\n- Review in eight weeks to consider optimisation or alternative broad-spectrum therapy depending on findings and tolerability.\n\nClinical Summary:\n\nSince the last review, Alex Carter describes a decline in stability of seizures. He previously reported better control; however, over recent months there has been a relapse/increase in episodes, without precise quantification. He specifically reports “Sporadic focal sensory this year,” describing brief unilateral tingling and a rising epigastric sensation on some occasions, which he experiences as warning symptoms preceding brief lapses in awareness. These events are occurring in the context of his known generalised epilepsy. He denies significant injury, but notes increased post-event fatigue and occasional confusion lasting several minutes. Sleep disruption and work-related stress were reported, and he acknowledges occasionally missing evening doses during particularly long shifts.\n\nNeurological examination today is non-focal. Medication adherence strategies were discussed, including use of reminders and blister packs. We have not altered therapy acutely beyond reinforcing brand consistency and arranging investigations to guide escalation to an alternative broad-spectrum regimen if needed. He understands to seek urgent advice if events cluster or if convulsions recur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1656,
+      "end": 1716,
+      "text": "relapse/increase in episodes, without precise quantification",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 508,
+      "end": 540,
+      "text": "Sporadic focal sensory this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9897,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Priya Shah\nConsultant Neurologist\nCentre for Epilepsy\nSt George’s University Hospitals NHS Foundation Trust, Blackshaw Road, London SW17 0QT\n\nDear Dr Priya Shah,\n\nAlex Carter, DOB: 22-09-1992, Hospital No: K8473921 NHS No. 9437201568\n12 Brookfield Road, London, SW6 3AB\n\nDiagnosis:\n\nGeneralised epilepsy with recent deterioration in control; previously better control reported, now relapse/increase described without quantifying. Sporadic focal sensory this year, noted as patient-reported aura-like symptoms in the context of generalised epilepsy.\n\nAetiology:\n\nNo confirmed structural lesion on prior imaging; history not suggestive of perinatal focal insult.\n\nOther Medical Problems:\n\nVitamin D insufficiency under monitoring; no fractures. Mild migraine without aura.\n\nManagement Plan:\n\n- Continue Lamotrigine (same brand) 150 mg mane, 150 mg nocte while we reassess.\n- Initiate slow introduction of Sodium Valproate is not advised at this stage pending discussion of family planning; patient to read MHRA guidance and we will revisit next visit.\n- Arrange ambulatory EEG and serum lamotrigine level; repeat vitamin D and bone profile.\n- Safety counselling provided regarding breakthrough events and driving regulations discussed (patient not currently driving).\n- Review in eight weeks to consider optimisation or alternative broad-spectrum therapy depending on findings and tolerability.\n\nClinical Summary:\n\nSince the last review, Alex Carter describes a decline in stability of seizures. He previously reported better control; however, over recent months there has been a relapse/increase in episodes, without precise quantification. He specifically reports “Sporadic focal sensory this year,” describing brief unilateral tingling and a rising epigastric sensation on some occasions, which he experiences as warning symptoms preceding brief lapses in awareness. These events are occurring in the context of his known generalised epilepsy. He denies significant injury, but notes increased post-event fatigue and occasional confusion lasting several minutes. Sleep disruption and work-related stress were reported, and he acknowledges occasionally missing evening doses during particularly long shifts.\n\nNeurological examination today is non-focal. Medication adherence strategies were discussed, including use of reminders and blister packs. We have not altered therapy acutely beyond reinforcing brand consistency and arranging investigations to guide escalation to an alternative broad-spectrum regimen if needed. He understands to seek urgent advice if events cluster or if convulsions recur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states there has been a recent deterioration with an increase in episodes but explicitly notes that this is 'without precise quantification.' It mentions 'Sporadic focal sensory this year' and warning symptoms preceding brief lapses in awareness, but no numeric frequency (per day/week/month/year) is provided. Therefore, despite confirming ongoing seizures, the specific frequency cannot be determined from the text.",
+      "seizure_frequency_number": [
+        "unknown",
+        "relapse/increase in episodes, without precise quantification"
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic focal sensory this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_9786",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 18 February 2018 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Davies (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening seizure control and access barriers at work\n\nDear Priya,\n\nDiagnosis:\n\nSeizure disorder of uncertain classification.\n\nCurrent Medicines:\n\n1. Carbamazepine modified‑release 400 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\nSeizure Course and Triggers:\n\nThe patient reports a clear deterioration over the past two months. Skipping meals triggers focal epileptic spasms, and this has become more frequent due to their shift pattern and restricted access to personal items at a cleanroom/data‑hall workplace. They describe brief clusters of spasms lasting seconds, sometimes progressing to confusion if a full dose has been missed. Workplace controls have delayed retrieval of rescue medication and refills on several occasions, leading to missed doses and a noticeable worsening of seizure control compared with earlier this year.\n\nContext and Contributing Factors:\n\n- The patient must request escorted access to lockers and pharmacy deliveries, often resulting in delays beyond dosing times.\n- Meal breaks are occasionally curtailed or rescheduled at short notice during maintenance windows, coinciding with increased spasms on fasted days.\n- No alcohol or recreational drug use reported; sleep is fragmented on night shifts.\n\nPlan:\n\n- Provide the patient with a written dosing schedule and a work letter requesting reasonable adjustments: guaranteed meal breaks aligned with dosing, timely escorted access to personal medication, and permission to carry a limited supply of non‑contaminating, sealed medication within permitted zones.\n- Issue a duplicate supply card for community pharmacy to reduce refill delays and encourage use of a monitored dosage system to mitigate missed doses.\n- Maintain current doses for now while the above adjustments are implemented; we will reassess frequency and severity at review in 8–10 weeks.\n- If access and adherence improve but spasms persist, we will discuss alternative therapies at next clinic visit.\n\nI have arranged follow‑up in the next available clinic. Please advise if workplace liaison documentation requires specific wording.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 829,
+      "end": 883,
+      "text": "They describe brief clusters of spasms lasting seconds",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 644,
+      "end": 690,
+      "text": "Skipping meals triggers focal epileptic spasms",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9786,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 18 February 2018 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Davies (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening seizure control and access barriers at work\n\nDear Priya,\n\nDiagnosis:\n\nSeizure disorder of uncertain classification.\n\nCurrent Medicines:\n\n1. Carbamazepine modified‑release 400 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\nSeizure Course and Triggers:\n\nThe patient reports a clear deterioration over the past two months. Skipping meals triggers focal epileptic spasms, and this has become more frequent due to their shift pattern and restricted access to personal items at a cleanroom/data‑hall workplace. They describe brief clusters of spasms lasting seconds, sometimes progressing to confusion if a full dose has been missed. Workplace controls have delayed retrieval of rescue medication and refills on several occasions, leading to missed doses and a noticeable worsening of seizure control compared with earlier this year.\n\nContext and Contributing Factors:\n\n- The patient must request escorted access to lockers and pharmacy deliveries, often resulting in delays beyond dosing times.\n- Meal breaks are occasionally curtailed or rescheduled at short notice during maintenance windows, coinciding with increased spasms on fasted days.\n- No alcohol or recreational drug use reported; sleep is fragmented on night shifts.\n\nPlan:\n\n- Provide the patient with a written dosing schedule and a work letter requesting reasonable adjustments: guaranteed meal breaks aligned with dosing, timely escorted access to personal medication, and permission to carry a limited supply of non‑contaminating, sealed medication within permitted zones.\n- Issue a duplicate supply card for community pharmacy to reduce refill delays and encourage use of a monitored dosage system to mitigate missed doses.\n- Maintain current doses for now while the above adjustments are implemented; we will reassess frequency and severity at review in 8–10 weeks.\n- If access and adherence improve but spasms persist, we will discuss alternative therapies at next clinic visit.\n\nI have arranged follow‑up in the next available clinic. Please advise if workplace liaison documentation requires specific wording.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states the patient is experiencing seizures (“focal epileptic spasms”) with worsening control, including “brief clusters of spasms lasting seconds,” sometimes progressing to confusion when doses are missed. However, there is no explicit numeric frequency given (no counts per day/week/month, nor number per cluster). The timing context (over past two months, more frequent on fasted days, due to shift patterns and access delays) does not quantify how often clusters occur or how many spasms per cluster. Therefore, a specific frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "They describe brief clusters of spasms lasting seconds"
+      ],
+      "reference": [
+        "unknown",
+        "Skipping meals triggers focal epileptic spasms"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1184",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Shah  \nRiverside Medical Practice  \n22 Hammersmith Grove, London W6 7HA  \n\nDear Dr Shah,  \n\nJacob Nguyen, DOB: 11-02-1992, Hospital No: N458732 NHS No. 9182746350  \nFlat 5, 12 Brookfield Road, London, N16 5AA \n\nMedication: \n\nLevetiracetam 1 g twice daily. No adverse effects reported. Lamotrigine titrating to 100 mg twice daily over the next 4 weeks. \n\nI reviewed Jacob Nguyen in clinic today regarding focal epilepsy. She describes brief déjà vu with rising epigastric discomfort and a metallic taste, sometimes followed by behavioural arrest and lip-smacking lasting 30–60 seconds, with full recovery but mild post-event fatigue. Prior to initiating lamotrigine, she reported six to fourteen epileptic spasms in three months, typically occurring in the late afternoon after work. Since adding lamotrigine and reaching 50 mg twice daily, she reports the same pattern and frequency has remained unchanged to date; we will continue up-titration to the target dose to assess effect fully. \n\nThere is no clear photic trigger. She notes increased likelihood after missed meals and poor sleep. No generalised tonic-clonic seizures. No injuries or tongue biting. Partner has observed brief unresponsiveness with oroalimentary automatisms on two occasions in the last month. Family history is negative for epilepsy. No history of febrile convulsions, CNS infection, or significant head injury. \n\nExamination today was unremarkable. MRI head (3T) last month showed left mesial temporal sclerosis features (hippocampal volume loss and increased T2 signal). Routine EEG previously demonstrated left temporal sharp waves. These findings support a diagnosis of focal epilepsy of presumed left temporal lobe onset. Driving advice has been reinforced in line with DVLA guidance, and she confirms she is not currently driving. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Complete lamotrigine titration to 100 mg twice daily (slow titration schedule supplied and discussed). \n- Seizure diary maintained; please ask her to record timing, potential precipitants, and any impaired awareness. \n- Safety advice reiterated (showers rather than baths, avoid heights/unguarded machinery, and kitchen precautions). \n- If, after reaching the target lamotrigine dose and maintaining for 6–8 weeks, the frequency remains at six to fourteen epileptic spasms in three months, we will discuss further options including medication adjustment or referral to the multidisciplinary epilepsy surgery pathway. \n\nWe will review her in three months or sooner if there is any deterioration. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 748,
+      "end": 887,
+      "text": "she reported six to fourteen epileptic spasms in three months ... she reports the same pattern and frequency has remained unchanged to date",
+      "attributes": {
+        "Label": "6 to 14 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 761,
+      "end": 809,
+      "text": "six to fourteen epileptic spasms in three months",
+      "attributes": {
+        "Label": "6 to 14 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1184,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Shah  \nRiverside Medical Practice  \n22 Hammersmith Grove, London W6 7HA  \n\nDear Dr Shah,  \n\nJacob Nguyen, DOB: 11-02-1992, Hospital No: N458732 NHS No. 9182746350  \nFlat 5, 12 Brookfield Road, London, N16 5AA \n\nMedication: \n\nLevetiracetam 1 g twice daily. No adverse effects reported. Lamotrigine titrating to 100 mg twice daily over the next 4 weeks. \n\nI reviewed Jacob Nguyen in clinic today regarding focal epilepsy. She describes brief déjà vu with rising epigastric discomfort and a metallic taste, sometimes followed by behavioural arrest and lip-smacking lasting 30–60 seconds, with full recovery but mild post-event fatigue. Prior to initiating lamotrigine, she reported six to fourteen epileptic spasms in three months, typically occurring in the late afternoon after work. Since adding lamotrigine and reaching 50 mg twice daily, she reports the same pattern and frequency has remained unchanged to date; we will continue up-titration to the target dose to assess effect fully. \n\nThere is no clear photic trigger. She notes increased likelihood after missed meals and poor sleep. No generalised tonic-clonic seizures. No injuries or tongue biting. Partner has observed brief unresponsiveness with oroalimentary automatisms on two occasions in the last month. Family history is negative for epilepsy. No history of febrile convulsions, CNS infection, or significant head injury. \n\nExamination today was unremarkable. MRI head (3T) last month showed left mesial temporal sclerosis features (hippocampal volume loss and increased T2 signal). Routine EEG previously demonstrated left temporal sharp waves. These findings support a diagnosis of focal epilepsy of presumed left temporal lobe onset. Driving advice has been reinforced in line with DVLA guidance, and she confirms she is not currently driving. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Complete lamotrigine titration to 100 mg twice daily (slow titration schedule supplied and discussed). \n- Seizure diary maintained; please ask her to record timing, potential precipitants, and any impaired awareness. \n- Safety advice reiterated (showers rather than baths, avoid heights/unguarded machinery, and kitchen precautions). \n- If, after reaching the target lamotrigine dose and maintaining for 6–8 weeks, the frequency remains at six to fourteen epileptic spasms in three months, we will discuss further options including medication adjustment or referral to the multidisciplinary epilepsy surgery pathway. \n\nWe will review her in three months or sooner if there is any deterioration. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify the explicit current seizure frequency. The letter states: prior to lamotrigine, six to fourteen epileptic spasms in three months. Then: since adding lamotrigine and reaching 50 mg twice daily, she reports the same pattern and frequency has remained unchanged to date. Therefore, the current frequency remains six to fourteen in three months. Convert to allowed format: '6 to 14 per 3 month'. No other frequencies provided; not seizure-free.",
+      "seizure_frequency_number": [
+        "6 to 14 per 3 month",
+        "she reported six to fourteen epileptic spasms in three months ... she reports the same pattern and frequency has remained unchanged to date"
+      ],
+      "reference": [
+        "6 to 14 per 3 month",
+        "six to fourteen epileptic spasms in three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1422",
+  "text": "Neurology Clinic\n\nClinic Date: 20 March 2022\n\nDr Patel\nSouthwark Neurology Service\nSt George's Wing, Riverside Health Centre, London SE1 3AB\n\nDear Dr Patel,\n\nJordan Reeves, DOB: 14-02-1990, Hospital No: H729451 NHS No. 9081763452\nFlat 12, 5 Millbank Court, London SW1P 3AL\n\nSummary:\nMultiple recent ED triage records exist and nursing documentation has been reviewed; key points are summarised below. The patient attended today with a family member. They report fluctuating events over recent weeks, with increased community care contacts and two ED attendances for observation only.\n\nCurrent events:\nThe patient describes nine events in the last week, specifically four focal tonic and five focal non-motors in last week, typically occurring in clusters in the evenings. No witnessed generalised convulsions were described. Short post-event confusion was noted by nursing staff on two occasions in the ED. No injuries, tongue bite or prolonged episodes were reported.\n\nBackground and review:\n- No known precipitants identified; sleep disruption and recent viral symptoms were documented by triage nurses on one ED visit.\n- Home rescue plan held; buccal midazolam available but not required in the last month.\n- Medication adherence reported as good; patient-managed blister pack confirmed by pharmacy reconciliation during ED triage.\n- No recent medication side effects volunteered. Appetite and mood stable by patient report.\n\nExamination and investigations today:\n- Neurological examination in clinic was non-focal.\n- Bloods from ED (FBC, U&E, LFTs, glucose) were within reference ranges; lactate mildly elevated post-event on one occasion, normalised on repeat.\n- Community ECG normal; no red flags for syncope raised.\n\nPlan:\n- Continue current anti-seizure regimen as per patient-held record; no changes today pending review of full ED notes and community nursing logs.\n- Provide event diary template and safety advice reinforced (supervision near water, cooking precautions, and sleep hygiene).\n- Request upload of ED triage observations and nursing timelines to the shared record, and arrange ambulatory EEG and updated MRI as outpatient to clarify semiology and burden.\n- We will review in 8 weeks with diary and results, sooner if events lengthen, cluster beyond usual, or if injury occurs.\n\nPatient understands the plan and agrees to follow safety guidance. A copy of this letter will be shared with community nursing and pharmacy teams for continuity of care.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 601,
+      "end": 721,
+      "text": "The patient describes nine events in the last week, specifically four focal tonic and five focal non-motors in last week",
+      "attributes": {
+        "Label": "9 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 666,
+      "end": 721,
+      "text": "four focal tonic and five focal non-motors in last week",
+      "attributes": {
+        "Label": "9 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1422,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 20 March 2022\n\nDr Patel\nSouthwark Neurology Service\nSt George's Wing, Riverside Health Centre, London SE1 3AB\n\nDear Dr Patel,\n\nJordan Reeves, DOB: 14-02-1990, Hospital No: H729451 NHS No. 9081763452\nFlat 12, 5 Millbank Court, London SW1P 3AL\n\nSummary:\nMultiple recent ED triage records exist and nursing documentation has been reviewed; key points are summarised below. The patient attended today with a family member. They report fluctuating events over recent weeks, with increased community care contacts and two ED attendances for observation only.\n\nCurrent events:\nThe patient describes nine events in the last week, specifically four focal tonic and five focal non-motors in last week, typically occurring in clusters in the evenings. No witnessed generalised convulsions were described. Short post-event confusion was noted by nursing staff on two occasions in the ED. No injuries, tongue bite or prolonged episodes were reported.\n\nBackground and review:\n- No known precipitants identified; sleep disruption and recent viral symptoms were documented by triage nurses on one ED visit.\n- Home rescue plan held; buccal midazolam available but not required in the last month.\n- Medication adherence reported as good; patient-managed blister pack confirmed by pharmacy reconciliation during ED triage.\n- No recent medication side effects volunteered. Appetite and mood stable by patient report.\n\nExamination and investigations today:\n- Neurological examination in clinic was non-focal.\n- Bloods from ED (FBC, U&E, LFTs, glucose) were within reference ranges; lactate mildly elevated post-event on one occasion, normalised on repeat.\n- Community ECG normal; no red flags for syncope raised.\n\nPlan:\n- Continue current anti-seizure regimen as per patient-held record; no changes today pending review of full ED notes and community nursing logs.\n- Provide event diary template and safety advice reinforced (supervision near water, cooking precautions, and sleep hygiene).\n- Request upload of ED triage observations and nursing timelines to the shared record, and arrange ambulatory EEG and updated MRI as outpatient to clarify semiology and burden.\n- We will review in 8 weeks with diary and results, sooner if events lengthen, cluster beyond usual, or if injury occurs.\n\nPatient understands the plan and agrees to follow safety guidance. A copy of this letter will be shared with community nursing and pharmacy teams for continuity of care.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient describes nine events in the last week, specifically four focal tonic and five focal non-motors in last week.' This provides a clear numeric frequency over a week. No other conflicting frequencies are provided. Therefore, the current seizure frequency is 9 per week.",
+      "seizure_frequency_number": [
+        "9 per week",
+        "The patient describes nine events in the last week, specifically four focal tonic and five focal non-motors in last week"
+      ],
+      "reference": [
+        "9 per week",
+        "four focal tonic and five focal non-motors in last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

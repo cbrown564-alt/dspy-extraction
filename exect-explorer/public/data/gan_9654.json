@@ -1,0 +1,59 @@
+{
+  "id": "gan_9654",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Reynolds  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Reynolds,  \n\nSophie Martin, DOB: 12-03-1990, Hospital No: H938472 NHS No. 9153746201  \n24 Brookfield Road, London, SW11 2JP \n\nMedication:  \n\nLevetiracetam 750 mg twice daily. No adverse effects reported. The patient has independently reduced caffeine over the past fortnight and wishes to continue this adjustment. \n\nHistory since last review:  \n\nThe patient reports improved sleep quality after cutting back on high-caffeine beverages (previously 5–6 cups of strong coffee daily plus energy drinks). Over the past eight weeks there have been intermittent brief sensations of internal unease without progression, occurring mainly under stress and after poor sleep. No focal non-motor-like episodes. There have been no witnessed convulsions, no injuries, and no emergency attendances. She denies new triggers other than previously high caffeine intake and variable sleep. \n\nExamination:  \n\nGeneral and neurological examination today is unremarkable. Observations stable. \n\nPlan:  \n\n1) Continue levetiracetam 750 mg twice daily without change.  \n2) Patient-led reduction of caffeine to be maintained; she reports this has been achievable and associated with steadier sleep.  \n3) Seizure/symptom diary to document any events, sleep pattern, and caffeine intake.  \n4) Routine bloods (U&E, FBC, LFT) arranged locally for monitoring.  \n5) Safety: standard precautions discussed including adequate sleep, avoiding sleep deprivation, and not swimming alone. Driving advice per DVLA guidance remains unchanged based on current report. \n\nFollow-up:  \n\nWe will review her again in six months, or sooner if there is any escalation of symptoms. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 964,
+      "text": "No focal non-motor-like episodes. There have been no witnessed convulsions, no injuries, and no emergency attendances.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 878,
+      "text": "No focal non-motor-like episodes",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9654,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Reynolds  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Reynolds,  \n\nSophie Martin, DOB: 12-03-1990, Hospital No: H938472 NHS No. 9153746201  \n24 Brookfield Road, London, SW11 2JP \n\nMedication:  \n\nLevetiracetam 750 mg twice daily. No adverse effects reported. The patient has independently reduced caffeine over the past fortnight and wishes to continue this adjustment. \n\nHistory since last review:  \n\nThe patient reports improved sleep quality after cutting back on high-caffeine beverages (previously 5–6 cups of strong coffee daily plus energy drinks). Over the past eight weeks there have been intermittent brief sensations of internal unease without progression, occurring mainly under stress and after poor sleep. No focal non-motor-like episodes. There have been no witnessed convulsions, no injuries, and no emergency attendances. She denies new triggers other than previously high caffeine intake and variable sleep. \n\nExamination:  \n\nGeneral and neurological examination today is unremarkable. Observations stable. \n\nPlan:  \n\n1) Continue levetiracetam 750 mg twice daily without change.  \n2) Patient-led reduction of caffeine to be maintained; she reports this has been achievable and associated with steadier sleep.  \n3) Seizure/symptom diary to document any events, sleep pattern, and caffeine intake.  \n4) Routine bloods (U&E, FBC, LFT) arranged locally for monitoring.  \n5) Safety: standard precautions discussed including adequate sleep, avoiding sleep deprivation, and not swimming alone. Driving advice per DVLA guidance remains unchanged based on current report. \n\nFollow-up:  \n\nWe will review her again in six months, or sooner if there is any escalation of symptoms. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"No focal non-motor-like episodes\" and \"There have been no witnessed convulsions\" in the described period. The only reported sensations were \"intermittent brief sensations of internal unease without progression,\" which the clinician distinguishes from focal non-motor episodes. The timeframe provided is the past eight weeks (~2 months). Therefore, there have been zero seizures over multiple months but less than six months. As there is a multi-month period without seizures and no evidence of seizures within that period, the appropriate normalized label is seizure free for multiple month.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No focal non-motor-like episodes. There have been no witnessed convulsions, no injuries, and no emergency attendances."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No focal non-motor-like episodes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6360",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Priya Malik\nMaple Street Health Centre\n\n12-18 Maple Street, London, W1T 5HA\nDear Dr Priya Malik\nAlex Carter, DOB: 21-11-1982, Hospital No: H829374 NHS No. 7845129036\nFlat 4, 27 Brookfield Road, London, N16 7AA \n\nI reviewed the above patient in the Neurology Clinic today. He reports ongoing episodes suggestive of seizures. Since I last assessed him in May this year, he has observed that brief periods of poor sleep and higher-than-usual intake of coffee appear to precede some of his events; he describes these as “jitters” followed by a blank spell and, on two occasions, a collapse with tongue biting and post-event confusion. He has independently reduced his coffee intake over the last month and notes a modest reduction in these episodes. He also reports sensitivity to visual flicker and glare, especially under supermarket strip lighting and when scrolling quickly on bright screens.\n\nCurrent treatment comprises Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. He has tolerated these without rash, mood change or significant dizziness. He occasionally uses Clonazepam 0.5 mg p.r.n. for clusters (no more than once every two weeks by his account). No missed doses reported. He does not drive. There is no alcohol misuse. No recent head injury or intercurrent infection.\n\nIn the past two months he estimates three brief blank spells per week and two more substantial convulsive events in total. He attributes a subset of these to days when he has “strong coffee on an empty stomach” and limited sleep, which he has started to avoid. There is no consistent aura. His partner has noticed eyelid fluttering and brief unresponsiveness under strong fluorescent lighting. He wears tinted lenses when shopping and finds this helpful. He has not noted a clear pattern with stress beyond the sleep disruption.\n\nNeurological examination today is normal. Bloods from last visit (U&E, LFTs, FBC, vitamin D) were within range. Lamotrigine level previously therapeutic. We discussed strategies to limit visually provocative stimuli given his photosensitivity, including moderated screen brightness and avoiding rapid flicker exposure where feasible. I have requested an EEG with photic stimulation to evaluate the reported light sensitivity. We will also arrange an ambulatory EEG to better capture typical events. MRI brain (3T epilepsy protocol) from last year was unremarkable.\n\nIn view of his report that some events seem temporally linked to high coffee intake and curtailed sleep, I have advised maintaining a diary noting beverages, sleep duration, lighting conditions and event timing. For now I will not change medication until we have EEG results; if events remain frequent despite behavioural measures, we can consider rationalising regimen or adjusting doses at the next review. Safety advice reinforced. He understands to seek urgent care if events are prolonged or occur in rapid succession.\n\nI will review him after investigations are completed, or sooner if there is any clinical deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1349,
+      "end": 1471,
+      "text": "In the past two months he estimates three brief blank spells per week and two more substantial convulsive events in total.",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6360,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Priya Malik\nMaple Street Health Centre\n\n12-18 Maple Street, London, W1T 5HA\nDear Dr Priya Malik\nAlex Carter, DOB: 21-11-1982, Hospital No: H829374 NHS No. 7845129036\nFlat 4, 27 Brookfield Road, London, N16 7AA \n\nI reviewed the above patient in the Neurology Clinic today. He reports ongoing episodes suggestive of seizures. Since I last assessed him in May this year, he has observed that brief periods of poor sleep and higher-than-usual intake of coffee appear to precede some of his events; he describes these as “jitters” followed by a blank spell and, on two occasions, a collapse with tongue biting and post-event confusion. He has independently reduced his coffee intake over the last month and notes a modest reduction in these episodes. He also reports sensitivity to visual flicker and glare, especially under supermarket strip lighting and when scrolling quickly on bright screens.\n\nCurrent treatment comprises Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. He has tolerated these without rash, mood change or significant dizziness. He occasionally uses Clonazepam 0.5 mg p.r.n. for clusters (no more than once every two weeks by his account). No missed doses reported. He does not drive. There is no alcohol misuse. No recent head injury or intercurrent infection.\n\nIn the past two months he estimates three brief blank spells per week and two more substantial convulsive events in total. He attributes a subset of these to days when he has “strong coffee on an empty stomach” and limited sleep, which he has started to avoid. There is no consistent aura. His partner has noticed eyelid fluttering and brief unresponsiveness under strong fluorescent lighting. He wears tinted lenses when shopping and finds this helpful. He has not noted a clear pattern with stress beyond the sleep disruption.\n\nNeurological examination today is normal. Bloods from last visit (U&E, LFTs, FBC, vitamin D) were within range. Lamotrigine level previously therapeutic. We discussed strategies to limit visually provocative stimuli given his photosensitivity, including moderated screen brightness and avoiding rapid flicker exposure where feasible. I have requested an EEG with photic stimulation to evaluate the reported light sensitivity. We will also arrange an ambulatory EEG to better capture typical events. MRI brain (3T epilepsy protocol) from last year was unremarkable.\n\nIn view of his report that some events seem temporally linked to high coffee intake and curtailed sleep, I have advised maintaining a diary noting beverages, sleep duration, lighting conditions and event timing. For now I will not change medication until we have EEG results; if events remain frequent despite behavioural measures, we can consider rationalising regimen or adjusting doses at the next review. Safety advice reinforced. He understands to seek urgent care if events are prolonged or occur in rapid succession.\n\nI will review him after investigations are completed, or sooner if there is any clinical deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit current frequencies: \"In the past two months he estimates three brief blank spells per week and two more substantial convulsive events in total.\" This yields 3 per week for blank spells and 2 total over 2 months (~1 per month) for convulsive seizures. Per rule 7, when multiple frequencies exist, select the highest frequency; thus 3 per week is the final seizure frequency. Mentions of clonazepam use for clusters (\"no more than once every two weeks\") lack seizures-per-cluster details and are less frequent than 3/week, so they do not override the highest frequency.",
+      "seizure_frequency_number": [
+        "3 per week",
+        "In the past two months he estimates three brief blank spells per week and two more substantial convulsive events in total."
+      ],
+      "reference": [
+        "unknown",
+        "Caffeine-associated seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

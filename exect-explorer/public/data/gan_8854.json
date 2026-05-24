@@ -1,0 +1,59 @@
+{
+  "id": "gan_8854",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nHannah Morris, DOB: 12-05-1991, Hospital No: H938420 NHS No. 5839201746  \n23 Alder Grove, London, W10 6QL \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Seizure cessation following initiation of last ASM. No adverse effects reported beyond initial mild fatigue that settled within two weeks. \n\nToday I reviewed Hannah Morris in clinic. She brought her paper seizure calendar covering the past 8 months, which she updates daily and brings to each appointment. Entries confirm Seizure cessation following initiation of last ASM, with the last marked event predating the start of levetiracetam. She has kept consistent sleep and hydration patterns as noted in her log. \n\nShe reports reliable adherence (no missed doses recorded on the calendar) and has noted improved confidence returning to usual activities. She does not drive. There have been no episodes suggestive of auras, blackouts, or nocturnal events according to her and her partner’s observations, and there are no entries for injuries, tongue-biting, or post-ictal confusion since starting treatment. Headaches were recorded intermittently in month one but have not persisted. \n\nWe discussed continuing the current regimen unchanged. She will maintain the paper calendar and bring it to follow-up; she prefers this format over digital apps, which she finds distracting. Bloods today (U&E, FBC, LFTs) have been arranged as a baseline for ongoing monitoring given continued therapy; results will be copied to you. \n\nWe plan to see her again in six months, sooner if there are any breakthrough events or tolerability concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 651,
+      "end": 783,
+      "text": "Entries confirm Seizure cessation following initiation of last ASM, with the last marked event predating the start of levetiracetam.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 345,
+      "end": 395,
+      "text": "Seizure cessation following initiation of last ASM",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8854,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nHannah Morris, DOB: 12-05-1991, Hospital No: H938420 NHS No. 5839201746  \n23 Alder Grove, London, W10 6QL \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Seizure cessation following initiation of last ASM. No adverse effects reported beyond initial mild fatigue that settled within two weeks. \n\nToday I reviewed Hannah Morris in clinic. She brought her paper seizure calendar covering the past 8 months, which she updates daily and brings to each appointment. Entries confirm Seizure cessation following initiation of last ASM, with the last marked event predating the start of levetiracetam. She has kept consistent sleep and hydration patterns as noted in her log. \n\nShe reports reliable adherence (no missed doses recorded on the calendar) and has noted improved confidence returning to usual activities. She does not drive. There have been no episodes suggestive of auras, blackouts, or nocturnal events according to her and her partner’s observations, and there are no entries for injuries, tongue-biting, or post-ictal confusion since starting treatment. Headaches were recorded intermittently in month one but have not persisted. \n\nWe discussed continuing the current regimen unchanged. She will maintain the paper calendar and bring it to follow-up; she prefers this format over digital apps, which she finds distracting. Bloods today (U&E, FBC, LFTs) have been arranged as a baseline for ongoing monitoring given continued therapy; results will be copied to you. \n\nWe plan to see her again in six months, sooner if there are any breakthrough events or tolerability concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states seizure cessation after starting levetiracetam. It mentions that the patient brought an 8-month seizure calendar with entries confirming cessation since initiation, and the last event predated starting levetiracetam. This implies no seizures for the duration covered by the calendar, i.e., the past 8 months. The criterion for seizure free requires at least 6 months of no seizures; here, the information supports at least 8 months seizure freedom. Therefore, label as seizure free for multiple months (more specifically >=6 months).",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Entries confirm Seizure cessation following initiation of last ASM, with the last marked event predating the start of levetiracetam."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure cessation following initiation of last ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

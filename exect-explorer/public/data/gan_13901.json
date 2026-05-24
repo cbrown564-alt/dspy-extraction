@@ -1,0 +1,65 @@
+{
+  "id": "gan_13901",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 08 October 2020 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nEmily Carter, DOB: 23-11-1992, Hospital No: H473920 NHS No. 8842106753  \nFlat 4, Maple Court, 28 Willow Lane, London, SE15 3QT  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since May 2020; dose increased by community team in August 2020.\n\nCurrent regimen: Levetiracetam 1000 mg twice daily (film-coated tablets).\n\nLevetiracetam Blood Level:\n\n22 September 2020: 19 µg/mL (typical reference 12–46 µg/mL). Dose at time of sampling: 1000 mg twice daily.\n\nSeizures: She reported that since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul. Key-worker observations corroborate brief loss of awareness with post-event fatigue; no documented injuries.\n\nI reviewed Emily Carter today via scheduled telephone appointment. She resides in assisted living and is supported by a key worker; key‑worker notes were reviewed where available. She and staff report medication adherence supported by a weekly blister pack system. No known medication side effects aside from mild morning irritability that settles after breakfast. Sleep pattern variable due to early morning care routines. No intercurrent infections reported. No alcohol or recreational drug use. Menstrual cycle regular. \n\nRescue plan: Buccal midazolam available on site per care plan, not required since July. Environmental safety checks in place (supervised bathing, shower chair, and padded bed rails). \n\nI have requested repeat U&Es and FBC with vitamin D as part of annual monitoring and asked the team to keep a seizure and trigger diary, including menses and sleep disruption. I will review again in 3 months or sooner if further events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 745,
+      "end": 839,
+      "text": "since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 727,
+      "end": 839,
+      "text": "She reported that since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13901,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 08 October 2020 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,                                                                                                         \n\nEmily Carter, DOB: 23-11-1992, Hospital No: H473920 NHS No. 8842106753  \nFlat 4, Maple Court, 28 Willow Lane, London, SE15 3QT  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since May 2020; dose increased by community team in August 2020.\n\nCurrent regimen: Levetiracetam 1000 mg twice daily (film-coated tablets).\n\nLevetiracetam Blood Level:\n\n22 September 2020: 19 µg/mL (typical reference 12–46 µg/mL). Dose at time of sampling: 1000 mg twice daily.\n\nSeizures: She reported that since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul. Key-worker observations corroborate brief loss of awareness with post-event fatigue; no documented injuries.\n\nI reviewed Emily Carter today via scheduled telephone appointment. She resides in assisted living and is supported by a key worker; key‑worker notes were reviewed where available. She and staff report medication adherence supported by a weekly blister pack system. No known medication side effects aside from mild morning irritability that settles after breakfast. Sleep pattern variable due to early morning care routines. No intercurrent infections reported. No alcohol or recreational drug use. Menstrual cycle regular. \n\nRescue plan: Buccal midazolam available on site per care plan, not required since July. Environmental safety checks in place (supervised bathing, shower chair, and padded bed rails). \n\nI have requested repeat U&Es and FBC with vitamin D as part of annual monitoring and asked the team to keep a seizure and trigger diary, including menses and sleep disruption. I will review again in 3 months or sooner if further events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul.\" The clinic date is 08 October 2020, and the dose increase occurred in August 2020 per earlier line; however, the sentence about seizures references the period since the medication was increased and gives a count of 3 seizures with the most recent on 07/Jul. This creates a temporal inconsistency (July predates August). Because of this ambiguity, we cannot reliably convert to a rate per time unit (day/week/month/year). There is a clear report of seizures occurring, but no unambiguous frequency that can be normalized to the required formats.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul"
+      ],
+      "reference": [
+        "unknown",
+        "She reported that since her medication was increased she has had 3 seizures, the most recent occurring on 07/Jul"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

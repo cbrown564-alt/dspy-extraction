@@ -1,0 +1,59 @@
+{
+  "id": "gan_531",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 21 September 2025\n\nDr Ahmed Khan\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Ahmed Khan,\n\nLaura Bennett, DOB: 03-02-1993, Hospital No: H372915 NHS No. 9842136750\nFlat 7, 28 Rose Lane, London, EC1A 9AB\n\nEpilepsy\n\nEpilepsy classification: Combined generalised and focal epilepsy (patient reports both generalised and focal seizures)\n\nBackground: Post-partum within the last six months with fragmented night-time sleep.\n\nMedication: Levetiracetam 1000 mg twice daily; Lamotrigine 100 mg twice daily. No recent changes reported.\n\nAdherence and tolerability: She reports full adherence using a daily pill organiser. Mild irritability on levetiracetam, otherwise no significant adverse effects. Breastfeeding ongoing; no noted impact from current regimen as per her account.\n\nSeizure history and current pattern: She describes a mixture of focal aware episodes (déjà vu with rising epigastric sensation and brief speech arrest) and generalised tonic–clonic seizures during sleep. Since delivery, frequency has increased in the context of fragmented sleep. Current estimated seizure frequency is 12 to 30 per quarter, with clusters typically following nights of interrupted rest. No injuries, tongue biting occasional, and post-ictal confusion lasting up to 20 minutes after generalised events. No specific auras preceding nocturnal generalised events; focal aware episodes can occur in the evening while settling the infant.\n\nTriggers and contextual factors: Sleep fragmentation and missed naps identified as likely triggers by the patient. She avoids alcohol and reports no intercurrent illness.\n\nInvestigations: No recent blood levels requested. Last EEG (prior to pregnancy) reportedly showed generalised spike–wave and left temporal sharp waves, consistent with combined generalised and focal epilepsy. MRI (2019) normal per previous records.\n\nPlan discussed today: We reviewed her current pattern in the post-partum period and the impact of sleep disruption. She wishes to continue breastfeeding and is keen to maintain current medications for now. I have advised seizure and sleep diaries to track correlation with night-time awakenings and will arrange routine bloods (FBC, U&Es, LFTs) for general monitoring. We will book a repeat EEG to reassess interictal changes post-partum. Safety advice discussed regarding nocturnal supervision, recovery position guidance, and avoiding co-sleeping when excessively sleep-deprived, as per standard practice. She understands to seek urgent help if seizures escalate in duration or frequency beyond her usual pattern. We agreed a telephone review in 6 weeks, with earlier contact if concerns arise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1123,
+      "end": 1182,
+      "text": "Current estimated seizure frequency is 12 to 30 per quarter",
+      "attributes": {
+        "Label": "12 to 30 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1162,
+      "end": 1182,
+      "text": "12 to 30 per quarter",
+      "attributes": {
+        "Label": "12 to 30 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 531,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 21 September 2025\n\nDr Ahmed Khan\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Ahmed Khan,\n\nLaura Bennett, DOB: 03-02-1993, Hospital No: H372915 NHS No. 9842136750\nFlat 7, 28 Rose Lane, London, EC1A 9AB\n\nEpilepsy\n\nEpilepsy classification: Combined generalised and focal epilepsy (patient reports both generalised and focal seizures)\n\nBackground: Post-partum within the last six months with fragmented night-time sleep.\n\nMedication: Levetiracetam 1000 mg twice daily; Lamotrigine 100 mg twice daily. No recent changes reported.\n\nAdherence and tolerability: She reports full adherence using a daily pill organiser. Mild irritability on levetiracetam, otherwise no significant adverse effects. Breastfeeding ongoing; no noted impact from current regimen as per her account.\n\nSeizure history and current pattern: She describes a mixture of focal aware episodes (déjà vu with rising epigastric sensation and brief speech arrest) and generalised tonic–clonic seizures during sleep. Since delivery, frequency has increased in the context of fragmented sleep. Current estimated seizure frequency is 12 to 30 per quarter, with clusters typically following nights of interrupted rest. No injuries, tongue biting occasional, and post-ictal confusion lasting up to 20 minutes after generalised events. No specific auras preceding nocturnal generalised events; focal aware episodes can occur in the evening while settling the infant.\n\nTriggers and contextual factors: Sleep fragmentation and missed naps identified as likely triggers by the patient. She avoids alcohol and reports no intercurrent illness.\n\nInvestigations: No recent blood levels requested. Last EEG (prior to pregnancy) reportedly showed generalised spike–wave and left temporal sharp waves, consistent with combined generalised and focal epilepsy. MRI (2019) normal per previous records.\n\nPlan discussed today: We reviewed her current pattern in the post-partum period and the impact of sleep disruption. She wishes to continue breastfeeding and is keen to maintain current medications for now. I have advised seizure and sleep diaries to track correlation with night-time awakenings and will arrange routine bloods (FBC, U&Es, LFTs) for general monitoring. We will book a repeat EEG to reassess interictal changes post-partum. Safety advice discussed regarding nocturnal supervision, recovery position guidance, and avoiding co-sleeping when excessively sleep-deprived, as per standard practice. She understands to seek urgent help if seizures escalate in duration or frequency beyond her usual pattern. We agreed a telephone review in 6 weeks, with earlier contact if concerns arise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current estimated seizure frequency as a numeric range: \"Current estimated seizure frequency is 12 to 30 per quarter.\" A quarter corresponds to 3 months. Therefore, normalize this to the allowed format as a range per 3 months: \"12 to 30 per 3 month.\" No other conflicting frequencies are provided, so we select this as the highest/current frequency.",
+      "seizure_frequency_number": [
+        "12 to 30 per 3 month",
+        "Current estimated seizure frequency is 12 to 30 per quarter"
+      ],
+      "reference": [
+        "12 to 30 per 3 month",
+        "12 to 30 per quarter"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -48,6 +48,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
 from clinical_extraction.evaluation.exect import EXECT_S5_SCORER
@@ -264,6 +265,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
         "exect_s5_am_guard_non_asm_brand_alias_v1",
         "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1",
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -404,6 +406,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
                         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
                         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
                     },
                     EXECT_S5_SCORER,
                 ),

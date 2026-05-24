@@ -1,0 +1,54 @@
+{
+  "id": "gan_7192",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSouth Thames Neurology Service  \nNeurosciences Department, St George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Johnson, DOB: 14-02-1992, Hospital No: H593742 NHS No. 9473625180  \n12 Rowan Mews, Croydon, CR0 6LP  \n\nDiagnoses: \n\nSeizure disorder, classification not established.\n\nI reviewed Emily Johnson today in the neurology clinic with her partner present. Over the past three months there has been a clear escalation in event burden, best described as a postnatal-related rise in event frequency, compared to her prior stable period. She reports clusters now occurring several times per week, with a shorter prodrome and faster progression than previously noted. The events are disproportionately triggered in environments with intense lighting and high ambient noise (for example, stage rigging during theatre set‑ups and on a factory floor), where she describes a rapid onset of disorientation, speech arrest, and subsequent loss of awareness within 10–20 seconds. Recovery is slower, with post‑event fatigue and headache lasting several hours.\n\nThere has been no recent intercurrent illness. Sleep has been fragmented since delivery, and caffeine intake has increased modestly; alcohol intake remains minimal. Adherence to prescribed medication is reported as good. No emergency rescue therapy has been required in the last month, but there were two paramedic attendances in August for prolonged confusion without generalised convulsions. No tongue biting or urinary incontinence has been documented. A colleague’s workplace incident report corroborates abrupt onset episodes in bright, high‑noise settings.\n\nNeurological examination today is unchanged. Routine bloods last week (U&E, LFTs, FBC) were within reference limits. We have arranged ambulatory EEG with event button and photic stimulation, together with repeat MRI brain (epilepsy protocol) given the change in semiology and tempo. Occupational health advice has been provided regarding avoidance of high‑risk workstations, bright strobe lighting, and unsupervised work at height. The patient has been reminded about DVLA guidance and confirms she is not driving.\n\nWe discussed strategies to reduce sensory load at work (noise‑attenuating ear protection and glare control) and maintaining a regular sleep pattern where possible. A follow‑up appointment is booked for six weeks, or sooner if further escalation occurs. We will review investigations and consider treatment adjustments once results are available.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 663,
+      "end": 708,
+      "text": "clusters now occurring several times per week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7192,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSouth Thames Neurology Service  \nNeurosciences Department, St George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Johnson, DOB: 14-02-1992, Hospital No: H593742 NHS No. 9473625180  \n12 Rowan Mews, Croydon, CR0 6LP  \n\nDiagnoses: \n\nSeizure disorder, classification not established.\n\nI reviewed Emily Johnson today in the neurology clinic with her partner present. Over the past three months there has been a clear escalation in event burden, best described as a postnatal-related rise in event frequency, compared to her prior stable period. She reports clusters now occurring several times per week, with a shorter prodrome and faster progression than previously noted. The events are disproportionately triggered in environments with intense lighting and high ambient noise (for example, stage rigging during theatre set‑ups and on a factory floor), where she describes a rapid onset of disorientation, speech arrest, and subsequent loss of awareness within 10–20 seconds. Recovery is slower, with post‑event fatigue and headache lasting several hours.\n\nThere has been no recent intercurrent illness. Sleep has been fragmented since delivery, and caffeine intake has increased modestly; alcohol intake remains minimal. Adherence to prescribed medication is reported as good. No emergency rescue therapy has been required in the last month, but there were two paramedic attendances in August for prolonged confusion without generalised convulsions. No tongue biting or urinary incontinence has been documented. A colleague’s workplace incident report corroborates abrupt onset episodes in bright, high‑noise settings.\n\nNeurological examination today is unchanged. Routine bloods last week (U&E, LFTs, FBC) were within reference limits. We have arranged ambulatory EEG with event button and photic stimulation, together with repeat MRI brain (epilepsy protocol) given the change in semiology and tempo. Occupational health advice has been provided regarding avoidance of high‑risk workstations, bright strobe lighting, and unsupervised work at height. The patient has been reminded about DVLA guidance and confirms she is not driving.\n\nWe discussed strategies to reduce sensory load at work (noise‑attenuating ear protection and glare control) and maintaining a regular sleep pattern where possible. A follow‑up appointment is booked for six weeks, or sooner if further escalation occurs. We will review investigations and consider treatment adjustments once results are available.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes current event frequency: \"clusters now occurring several times per week,\" indicating recurrent seizure-like events occurring multiple times each week. No exact count per week or per cluster is provided. There are no statements of seizure freedom. Therefore, normalize to a frequency using 'multiple' for the vague quantity and 'per week' for the unit. Cluster size is not specified, so the simple frequency format is used rather than the cluster-specific format.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "clusters now occurring several times per week"
+      ],
+      "reference": [
+        "unknown",
+        "Postpartum increase in seizure frequency"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

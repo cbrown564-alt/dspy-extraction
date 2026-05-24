@@ -1,0 +1,59 @@
+{
+  "id": "gan_17126",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Lawson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 27 June 2016 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Raj Mehta (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Linda Osei (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under ongoing review.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nSeizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on 3 days each month. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently.\n\nBackground and Current Concerns:\n\nHe reports ongoing anxiety and low mood, particularly in the week following clusters. He feels this impacts sleep initiation and daytime concentration. He denies alcohol or recreational drug use. Sleep hygiene is variable due to shift work. No recent head injuries or intercurrent infections. Family note occasional brief staring episodes that he does not always recall. He is adherent with medication and uses a smartphone reminder app. No safety incidents since last review.\n\nPlan of Action:\n\n1) Optimise current regimen: Increase lamotrigine to 175 mg twice daily for two weeks, then 200 mg twice daily thereafter if tolerated. Maintain clobazam 10 mg at night for now.\n\n2) Mood and anxiety: He agrees to a self-referral to IAPT for CBT-based support. Safety nets discussed. He will keep a mood and seizure diary noting sleep hours, stressors, and seizure clusters.\n\n3) Monitoring: Check U&Es, FBC, LFTs, vitamin D, and lamotrigine trough level prior to dose escalation review (forms provided). He will attend for bloods at his GP practice next week.\n\n4) Triggers and safety: Reinforce regular sleep pattern and stress-management strategies. Continue seizure precautions. Driving guidance unchanged as per DVLA regulations given recent events.\n\n5) Follow-up: Telephone review in 6 weeks to assess tolerability and seizure control. Face-to-face clinic review in 4 months. If clusters persist despite lamotrigine optimisation, we will discuss rationalising clobazam and consideration of adjunctive therapy.\n\nPlease let me know if you would like any further information.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 600,
+      "end": 661,
+      "text": "He suffers clusters of absence seizures on 3 days each month.",
+      "attributes": {
+        "Label": "3 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 524,
+      "end": 777,
+      "text": "Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on 3 days each month. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently",
+      "attributes": {
+        "Label": "3 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17126,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Lawson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 27 June 2016 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Raj Mehta (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Linda Osei (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under ongoing review.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nSeizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on 3 days each month. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently.\n\nBackground and Current Concerns:\n\nHe reports ongoing anxiety and low mood, particularly in the week following clusters. He feels this impacts sleep initiation and daytime concentration. He denies alcohol or recreational drug use. Sleep hygiene is variable due to shift work. No recent head injuries or intercurrent infections. Family note occasional brief staring episodes that he does not always recall. He is adherent with medication and uses a smartphone reminder app. No safety incidents since last review.\n\nPlan of Action:\n\n1) Optimise current regimen: Increase lamotrigine to 175 mg twice daily for two weeks, then 200 mg twice daily thereafter if tolerated. Maintain clobazam 10 mg at night for now.\n\n2) Mood and anxiety: He agrees to a self-referral to IAPT for CBT-based support. Safety nets discussed. He will keep a mood and seizure diary noting sleep hours, stressors, and seizure clusters.\n\n3) Monitoring: Check U&Es, FBC, LFTs, vitamin D, and lamotrigine trough level prior to dose escalation review (forms provided). He will attend for bloods at his GP practice next week.\n\n4) Triggers and safety: Reinforce regular sleep pattern and stress-management strategies. Continue seizure precautions. Driving guidance unchanged as per DVLA regulations given recent events.\n\n5) Follow-up: Telephone review in 6 weeks to assess tolerability and seizure control. Face-to-face clinic review in 4 months. If clusters persist despite lamotrigine optimisation, we will discuss rationalising clobazam and consideration of adjunctive therapy.\n\nPlease let me know if you would like any further information.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He suffers clusters of absence seizures on 3 days each month' and also mentions 'Nocturnal tonic seizures... around once per year.' According to the rule to select the highest frequency, the monthly cluster frequency is dominant. The number of seizures within each cluster is not specified, so it must be treated as 'multiple per cluster.' Therefore, the normalized label is '3 cluster per month, multiple per cluster.'",
+      "seizure_frequency_number": [
+        "3 cluster per month, multiple per cluster",
+        "He suffers clusters of absence seizures on 3 days each month."
+      ],
+      "reference": [
+        "3 cluster per month, multiple per cluster",
+        "Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on 3 days each month. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

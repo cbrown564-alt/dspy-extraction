@@ -1,0 +1,59 @@
+{
+  "id": "gan_2978",
+  "text": "Department of Neurology \n\nClinic Date: 30 March 2022 \n\nDr Eleanor Park  \nSt Martin’s Hospital  \nNeurology Department, 12 Brookfield Lane, Bath BA2 7RT  \n\nDear Dr Eleanor Park,  \n\nAlex Turner, DOB: 15-02-1990, Hospital No: H392781 NHS No. 9034512276  \n28 Riverbank Close, Bath, BA1 6GD \n\nDiagnoses: \n\nSeizure disorder of unclear classification; history of recurrent convulsive episodes. \n\nCurrent Medication: \n\nLevetiracetam 1000 mg bd  \nClobazam 10 mg nocte (as needed during prodromal periods) \n\nPlan: \n\n- Continue Levetiracetam 1000 mg twice daily.  \n- Clobazam 10 mg at night may be used short-term during high-risk periods if early warning symptoms recur.  \n- Maintain current workload adjustments and sleep hygiene; avoid known personal triggers.  \n- Safety and driving advice reinforced as per DVLA guidance following seizures; patient confirms adherence.  \n- Routine follow-up in 12 months, sooner if breakthrough events occur. \n\nI reviewed Alex Turner in clinic today. They report a clear improvement in seizure control over recent months, which they attribute in part to resigning from a high-intensity role and subsequently reducing their workload. They feel improved control and fewer prodromal symptoms. For context, prior to this improvement they experienced cluster days twice this month, typically 3 or 4 seizures in 24 h. Since then, episodes have settled substantially and there have been no recent events. Last seizure on 24/6/2021. \n\nThey have implemented regular sleep patterns, hydration, and stress management strategies, and have avoided previously identified triggers. Medication is well tolerated with no notable cognitive or mood adverse effects reported. Neurological examination today is unremarkable. We discussed the ongoing need for consistent adherence to treatment and lifestyle measures given the prior clustering pattern, and they are agreeable to continue the current regimen. \n\nI will arrange a routine follow-up in one year, with an open invitation for earlier review if any recurrence or concerns arise. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1424,
+      "end": 1450,
+      "text": "Last seizure on 24/6/2021.",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1424,
+      "end": 1449,
+      "text": "Last seizure on 24/6/2021",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2978,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 30 March 2022 \n\nDr Eleanor Park  \nSt Martin’s Hospital  \nNeurology Department, 12 Brookfield Lane, Bath BA2 7RT  \n\nDear Dr Eleanor Park,  \n\nAlex Turner, DOB: 15-02-1990, Hospital No: H392781 NHS No. 9034512276  \n28 Riverbank Close, Bath, BA1 6GD \n\nDiagnoses: \n\nSeizure disorder of unclear classification; history of recurrent convulsive episodes. \n\nCurrent Medication: \n\nLevetiracetam 1000 mg bd  \nClobazam 10 mg nocte (as needed during prodromal periods) \n\nPlan: \n\n- Continue Levetiracetam 1000 mg twice daily.  \n- Clobazam 10 mg at night may be used short-term during high-risk periods if early warning symptoms recur.  \n- Maintain current workload adjustments and sleep hygiene; avoid known personal triggers.  \n- Safety and driving advice reinforced as per DVLA guidance following seizures; patient confirms adherence.  \n- Routine follow-up in 12 months, sooner if breakthrough events occur. \n\nI reviewed Alex Turner in clinic today. They report a clear improvement in seizure control over recent months, which they attribute in part to resigning from a high-intensity role and subsequently reducing their workload. They feel improved control and fewer prodromal symptoms. For context, prior to this improvement they experienced cluster days twice this month, typically 3 or 4 seizures in 24 h. Since then, episodes have settled substantially and there have been no recent events. Last seizure on 24/6/2021. \n\nThey have implemented regular sleep patterns, hydration, and stress management strategies, and have avoided previously identified triggers. Medication is well tolerated with no notable cognitive or mood adverse effects reported. Neurological examination today is unremarkable. We discussed the ongoing need for consistent adherence to treatment and lifestyle measures given the prior clustering pattern, and they are agreeable to continue the current regimen. \n\nI will arrange a routine follow-up in one year, with an open invitation for earlier review if any recurrence or concerns arise. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit details: 'Last seizure on 24/6/2021.' The clinic date is 30 March 2022. Calculate seizure-free duration from 24 June 2021 to 30 March 2022: June 24 to July 24 = 1 month; to August 24 = 2 months; September 24 = 3; October 24 = 4; November 24 = 5; December 24 = 6; January 24 = 7; February 24 = 8; March 24 = 9 months, plus an additional 6 days to March 30, making it at least 9 months. The letter also states, 'there have been no recent events,' supporting ongoing seizure freedom. This meets the >=6 months criterion for 'seizure free.' Therefore, the normalized label is 'seizure free for 9 month.'",
+      "seizure_frequency_number": [
+        "seizure free for 9 month",
+        "Last seizure on 24/6/2021."
+      ],
+      "reference": [
+        "seizure free for 9 month",
+        "Last seizure on 24/6/2021"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_15992",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 24 January 2022 \n\nDr Emma Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Emma Patel,  \n\nJames Walker, DOB: 14-07-1989, Hospital No: H927451 NHS No. 9081763452  \n12 Brookside Close, London, SW19 4AB  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nThank you for asking me to review James Walker in clinic. He attended with his partner and infant today. He is post-partum within the household context (new baby born within the last six months) and reports markedly fragmented night-time sleep due to infant care. There have been no recent changes to prescribed medications and he reports taking them as directed, though acknowledges occasional delays in dosing overnight when he is awake with the baby. He denies recent intercurrent illness, alcohol excess, or recreational drug use. \n\nRegarding recent seizure activity, he and his partner keep a diary. In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake. He describes these daytime events as brief episodes of behavioral arrest with impaired awareness and lip-smacking noted by his partner, typically occurring late morning after a disrupted night. No tongue biting, significant injury, or prolonged post-ictal confusion has been reported. There have been no emergency department presentations and no use of rescue medication. \n\nWe discussed the likely contribution of sleep fragmentation to seizure threshold and the importance of maintaining regular medication timing. He is motivated to continue adherence strategies (alarm prompts on phone and use of a weekly pill box) and will continue the seizure diary, noting sleep duration and timing to help correlate events. There is no implanted device in situ. Neurological examination today was unremarkable. \n\nPlan: \n- Continue current anti-seizure medication regimen as documented in the prescribing record held by primary care; no dose changes made today.  \n- Bloods requested via GP: U&Es, LFTs, FBC, and trough anti-seizure medication level where applicable, for baseline monitoring.  \n- Safety reinforced: avoid heights, swimming unsupervised, and driving restrictions remain as per DVLA guidance following recent events.  \n- Continue detailed seizure and sleep diary; bring to next review.  \n- Consider ambulatory EEG if daytime events persist despite improved sleep; to be arranged after review of the diary at next appointment. \n\nFollow-up: I will review him in 10–12 weeks, sooner if events escalate or change in character. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 976,
+      "end": 1091,
+      "text": "In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake.",
+      "attributes": {
+        "Label": "7 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 976,
+      "end": 1090,
+      "text": "In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake",
+      "attributes": {
+        "Label": "7 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15992,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 24 January 2022 \n\nDr Emma Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Emma Patel,  \n\nJames Walker, DOB: 14-07-1989, Hospital No: H927451 NHS No. 9081763452  \n12 Brookside Close, London, SW19 4AB  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nThank you for asking me to review James Walker in clinic. He attended with his partner and infant today. He is post-partum within the household context (new baby born within the last six months) and reports markedly fragmented night-time sleep due to infant care. There have been no recent changes to prescribed medications and he reports taking them as directed, though acknowledges occasional delays in dosing overnight when he is awake with the baby. He denies recent intercurrent illness, alcohol excess, or recreational drug use. \n\nRegarding recent seizure activity, he and his partner keep a diary. In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake. He describes these daytime events as brief episodes of behavioral arrest with impaired awareness and lip-smacking noted by his partner, typically occurring late morning after a disrupted night. No tongue biting, significant injury, or prolonged post-ictal confusion has been reported. There have been no emergency department presentations and no use of rescue medication. \n\nWe discussed the likely contribution of sleep fragmentation to seizure threshold and the importance of maintaining regular medication timing. He is motivated to continue adherence strategies (alarm prompts on phone and use of a weekly pill box) and will continue the seizure diary, noting sleep duration and timing to help correlate events. There is no implanted device in situ. Neurological examination today was unremarkable. \n\nPlan: \n- Continue current anti-seizure medication regimen as documented in the prescribing record held by primary care; no dose changes made today.  \n- Bloods requested via GP: U&Es, LFTs, FBC, and trough anti-seizure medication level where applicable, for baseline monitoring.  \n- Safety reinforced: avoid heights, swimming unsupervised, and driving restrictions remain as per DVLA guidance following recent events.  \n- Continue detailed seizure and sleep diary; bring to next review.  \n- Consider ambulatory EEG if daytime events persist despite improved sleep; to be arranged after review of the diary at next appointment. \n\nFollow-up: I will review him in 10–12 weeks, sooner if events escalate or change in character. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit counts for recent months. It states: In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake. Therefore, over a 2-month period (December and January), the total number of seizures is 4 + 3 = 7 in 2 months. No other frequencies are provided. He is not seizure-free for 6 months, so we must compute frequency. Following the rule to use explicit numeric expressions and the most frequent applicable measure, we normalize this as 7 per 2 months.",
+      "seizure_frequency_number": [
+        "7 per 2 month",
+        "In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake."
+      ],
+      "reference": [
+        "7 per 2 month",
+        "In Dec he had no nocturnal seizures but four daytime events. In Jan he had no nocturnal seizures and 3 while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

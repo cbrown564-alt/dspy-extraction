@@ -1,0 +1,59 @@
+{
+  "id": "gan_2023",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 28 November 2024 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH783221 NHS No. 9432175609  \n12 Brookfield Road, London, SE15 3HT\n\nThank you for asking me to review your patient. He is known to have type 2 diabetes managed in primary care, but today’s consultation focused on his seizures. He attended with his partner, who keeps a diary of events. According to their records, he has had four absence seizures and one myoclonic this month. These have been brief, typically seconds for the absences with preserved posture, and a single morning myoclonic jerk that caused him to drop a cup. There has been no reported loss of continence, tongue biting, or prolonged post-event confusion. He has noticed that poor sleep and late nights seem to precede some of the absences. \n\nHe reports taking his current anti-seizure medication regularly, without missed doses, and denies alcohol or recreational drug use. There is no clear pattern to the timing of the absences other than occasional clustering on workdays when he skips breakfast. He has not driven and is aware of DVLA regulations as previously advised by his GP. He recalls a remote head injury in adolescence without hospitalisation; no family history of seizures was reported. \n\nNeurological examination today was unremarkable. Cardiovascular and general examination were stable. Capillary glucose in clinic was within his usual range per his home log, and he continues diabetes management through his GP. \n\nI have requested updated routine EEG and will arrange an outpatient MRI brain (epilepsy protocol) given the ongoing events. I have also asked him to continue the seizure diary and to record any potential triggers, especially sleep deprivation, missed meals, or intercurrent illness. We discussed basic safety measures at home and at work, and he agreed to share a brief summary with his line manager. \n\nI will review him after the investigations to reassess management. In the meantime, he will maintain current therapy and contact us earlier if the frequency worsens, if there are prolonged episodes, or if there is any injury. \n\nThank you for your referral and for continuing his diabetes care in primary care. Please let me know if there are concerns in the interim. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 631,
+      "end": 692,
+      "text": "he has had four absence seizures and one myoclonic this month",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 642,
+      "end": 692,
+      "text": "four absence seizures and one myoclonic this month",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2023,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 28 November 2024 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH783221 NHS No. 9432175609  \n12 Brookfield Road, London, SE15 3HT\n\nThank you for asking me to review your patient. He is known to have type 2 diabetes managed in primary care, but today’s consultation focused on his seizures. He attended with his partner, who keeps a diary of events. According to their records, he has had four absence seizures and one myoclonic this month. These have been brief, typically seconds for the absences with preserved posture, and a single morning myoclonic jerk that caused him to drop a cup. There has been no reported loss of continence, tongue biting, or prolonged post-event confusion. He has noticed that poor sleep and late nights seem to precede some of the absences. \n\nHe reports taking his current anti-seizure medication regularly, without missed doses, and denies alcohol or recreational drug use. There is no clear pattern to the timing of the absences other than occasional clustering on workdays when he skips breakfast. He has not driven and is aware of DVLA regulations as previously advised by his GP. He recalls a remote head injury in adolescence without hospitalisation; no family history of seizures was reported. \n\nNeurological examination today was unremarkable. Cardiovascular and general examination were stable. Capillary glucose in clinic was within his usual range per his home log, and he continues diabetes management through his GP. \n\nI have requested updated routine EEG and will arrange an outpatient MRI brain (epilepsy protocol) given the ongoing events. I have also asked him to continue the seizure diary and to record any potential triggers, especially sleep deprivation, missed meals, or intercurrent illness. We discussed basic safety measures at home and at work, and he agreed to share a brief summary with his line manager. \n\nI will review him after the investigations to reassess management. In the meantime, he will maintain current therapy and contact us earlier if the frequency worsens, if there are prolonged episodes, or if there is any injury. \n\nThank you for your referral and for continuing his diabetes care in primary care. Please let me know if there are concerns in the interim. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"he has had four absence seizures and one myoclonic this month.\" These are seizure events within the current month. Sum the counts because they are in the same time period and dimension (seizure events). Calculation: 4 (absence) + 1 (myoclonic) = 5 seizures in this month. Normalize to allowed format as '5 per month'.",
+      "seizure_frequency_number": [
+        "5 per month",
+        "he has had four absence seizures and one myoclonic this month"
+      ],
+      "reference": [
+        "5 per month",
+        "four absence seizures and one myoclonic this month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

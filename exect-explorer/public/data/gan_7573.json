@@ -1,0 +1,54 @@
+{
+  "id": "gan_7573",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 30 November 2021 \n\nDr Priya Menon\nConsultant Neurologist  \nRiverside Health Centre  \nRiverside Health Centre, 14 Brook Street, London SE1 3AB  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: H732915 NHS No. 9075614421  \n22 Oakfield Close, London, N7 5PL\n\nThank you for asking me to review your patient. He attended with his partner and provided a clear account of recent events. He has been using smartphone alarms linked to NFC tags placed by his pill box to prompt morning and evening doses after previously missing doses; he reports this has improved consistency over the past month.\n\nRegarding the paroxysmal events, he and his partner describe brief spells characterised by marked pallor and queasiness with a sense of internal “rush,” sometimes accompanied by a need to sit down. These autonomic episodes are occurring approximately once every two weeks, with occasional clusters under stress, and are concerning for a seizure-related phenomenon. There have been no witnessed convulsions, tongue biting, or injuries reported. Post-event fatigue lasts 10–20 minutes without clear confusion. No specific triggers are identified beyond poor sleep.\n\nMedications: He remains on his current antiseizure regimen without recent dose changes. He denies adverse effects beyond mild daytime tiredness. Adherence has improved with the phone/NFC reminder system; he estimates zero missed doses in the past four weeks compared with 2–3 missed evening doses per month previously.\n\nExamination today was unremarkable. Cardiovascular observations were stable and there were no focal neurological deficits. ECG from the GP last month was normal by report. He does not drive.\n\nPlan: \n- Continue current regimen and adherence supports (smartphone alarms and NFC tagging).\n- Request ambulatory EEG and sleep-deprived EEG to better characterise the events. \n- Baseline bloods (FBC, U&Es, LFTs, vitamin D, ASM levels where appropriate). \n- Provide seizure first-aid guidance to partner; safety advice reinforced, particularly around water and heights. \n- We will review in 3 months or sooner if events escalate or evolve.\n\nI have discussed the above with him and his partner; they are in agreement with the plan.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 901,
+      "end": 1013,
+      "text": "These autonomic episodes are occurring approximately once every two weeks, with occasional clusters under stress",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7573,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 30 November 2021 \n\nDr Priya Menon\nConsultant Neurologist  \nRiverside Health Centre  \nRiverside Health Centre, 14 Brook Street, London SE1 3AB  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: H732915 NHS No. 9075614421  \n22 Oakfield Close, London, N7 5PL\n\nThank you for asking me to review your patient. He attended with his partner and provided a clear account of recent events. He has been using smartphone alarms linked to NFC tags placed by his pill box to prompt morning and evening doses after previously missing doses; he reports this has improved consistency over the past month.\n\nRegarding the paroxysmal events, he and his partner describe brief spells characterised by marked pallor and queasiness with a sense of internal “rush,” sometimes accompanied by a need to sit down. These autonomic episodes are occurring approximately once every two weeks, with occasional clusters under stress, and are concerning for a seizure-related phenomenon. There have been no witnessed convulsions, tongue biting, or injuries reported. Post-event fatigue lasts 10–20 minutes without clear confusion. No specific triggers are identified beyond poor sleep.\n\nMedications: He remains on his current antiseizure regimen without recent dose changes. He denies adverse effects beyond mild daytime tiredness. Adherence has improved with the phone/NFC reminder system; he estimates zero missed doses in the past four weeks compared with 2–3 missed evening doses per month previously.\n\nExamination today was unremarkable. Cardiovascular observations were stable and there were no focal neurological deficits. ECG from the GP last month was normal by report. He does not drive.\n\nPlan: \n- Continue current regimen and adherence supports (smartphone alarms and NFC tagging).\n- Request ambulatory EEG and sleep-deprived EEG to better characterise the events. \n- Baseline bloods (FBC, U&Es, LFTs, vitamin D, ASM levels where appropriate). \n- Provide seizure first-aid guidance to partner; safety advice reinforced, particularly around water and heights. \n- We will review in 3 months or sooner if events escalate or evolve.\n\nI have discussed the above with him and his partner; they are in agreement with the plan.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing paroxysmal/autonomic episodes concerning for seizures. It gives an explicit frequency: \"approximately once every two weeks\" and mentions \"occasional clusters under stress\" without quantifying cluster frequency or events per cluster. Per the rules, use the highest quantified frequency; the cluster detail is insufficient to adjust. Normalize \"once every two weeks\" to \"1 per 2 week.\"",
+      "seizure_frequency_number": [
+        "1 per 2 week",
+        "These autonomic episodes are occurring approximately once every two weeks, with occasional clusters under stress"
+      ],
+      "reference": [
+        "unknown",
+        "Autonomic spells (pallor/nausea) concerning for seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

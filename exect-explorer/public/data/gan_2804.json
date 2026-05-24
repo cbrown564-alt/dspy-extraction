@@ -1,0 +1,59 @@
+{
+  "id": "gan_2804",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Johnson, DOB: 12-03-1991, Hospital No: H983420 NHS No. 5938420176  \n24 Brookside Avenue, London, W10 5LP \n\nMedication: \n\nLevetiracetam 750 mg twice daily. Tolerated without mood disturbance; mild fatigue improving with hydration advice. \n\nThank you for asking me to review Amelia Johnson in the neurology clinic. She has a history of migraine, usually with photophobia and occasional nausea, but our current focus is her epilepsy management. She describes an epileptic spasm weekly, typically brief clusters on weekend evenings, with a sudden axial jerk, brief unresponsiveness reported by her partner, and rapid recovery without post-ictal confusion. No clear injuries. Triggers are uncertain; she feels sleep loss and late meals may precede episodes. Alcohol intake is modest and she has now limited this to one drink or fewer on social occasions. \n\nSince starting levetiracetam three months ago and titrating to the current dose, overall intensity has reduced, though the pattern of an epileptic spasm weekly persists. There are no focal neurological complaints between events. She keeps a seizure and headache diary; migraine frequency remains approximately twice per month, generally responsive to rest and simple analgesia. \n\nExamination today was normal. Bloods from last month (U&E, LFT, FBC) were within reference limits. MRI brain (2023) reported no structural abnormality. Routine EEG (2024) was non-diagnostic. \n\nPlan: \n- Continue levetiracetam 750 mg twice daily for now. If frequency remains at an epileptic spasm weekly over the next 6–8 weeks, we will consider an incremental increase to 1 g twice daily after discussion with the patient. \n- Lifestyle measures reinforced: regular sleep, consistent meal times, hydration, and limiting alcohol. \n- Maintain the combined seizure–migraine diary, noting sleep pattern, meals, and stressors around each event. \n- Safety advice reiterated including supervision when bathing and caution with heights. Driving advice provided in line with current DVLA guidance; she is aware to inform DVLA as applicable. \n- For migraines, she prefers to defer preventive therapy at present and will continue with simple analgesia taken early in the attack; no triptans currently used. \n\nI will review her in four months, sooner if events escalate or injuries occur. Please let me know if there are any concerns or if her circumstances change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 651,
+      "end": 676,
+      "text": "an epileptic spasm weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 654,
+      "end": 676,
+      "text": "epileptic spasm weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2804,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Johnson, DOB: 12-03-1991, Hospital No: H983420 NHS No. 5938420176  \n24 Brookside Avenue, London, W10 5LP \n\nMedication: \n\nLevetiracetam 750 mg twice daily. Tolerated without mood disturbance; mild fatigue improving with hydration advice. \n\nThank you for asking me to review Amelia Johnson in the neurology clinic. She has a history of migraine, usually with photophobia and occasional nausea, but our current focus is her epilepsy management. She describes an epileptic spasm weekly, typically brief clusters on weekend evenings, with a sudden axial jerk, brief unresponsiveness reported by her partner, and rapid recovery without post-ictal confusion. No clear injuries. Triggers are uncertain; she feels sleep loss and late meals may precede episodes. Alcohol intake is modest and she has now limited this to one drink or fewer on social occasions. \n\nSince starting levetiracetam three months ago and titrating to the current dose, overall intensity has reduced, though the pattern of an epileptic spasm weekly persists. There are no focal neurological complaints between events. She keeps a seizure and headache diary; migraine frequency remains approximately twice per month, generally responsive to rest and simple analgesia. \n\nExamination today was normal. Bloods from last month (U&E, LFT, FBC) were within reference limits. MRI brain (2023) reported no structural abnormality. Routine EEG (2024) was non-diagnostic. \n\nPlan: \n- Continue levetiracetam 750 mg twice daily for now. If frequency remains at an epileptic spasm weekly over the next 6–8 weeks, we will consider an incremental increase to 1 g twice daily after discussion with the patient. \n- Lifestyle measures reinforced: regular sleep, consistent meal times, hydration, and limiting alcohol. \n- Maintain the combined seizure–migraine diary, noting sleep pattern, meals, and stressors around each event. \n- Safety advice reiterated including supervision when bathing and caution with heights. Driving advice provided in line with current DVLA guidance; she is aware to inform DVLA as applicable. \n- For migraines, she prefers to defer preventive therapy at present and will continue with simple analgesia taken early in the attack; no triptans currently used. \n\nI will review her in four months, sooner if events escalate or injuries occur. Please let me know if there are any concerns or if her circumstances change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has 'an epileptic spasm weekly' and that this pattern 'persists' since starting levetiracetam. This indicates a current seizure frequency of 1 per week. No other seizure types or differing frequencies are mentioned that would change this. Therefore, normalize to '1 per week'.",
+      "seizure_frequency_number": [
+        "1 per week",
+        "an epileptic spasm weekly"
+      ],
+      "reference": [
+        "1 per week",
+        "epileptic spasm weekly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

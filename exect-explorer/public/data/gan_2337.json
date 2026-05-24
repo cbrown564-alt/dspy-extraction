@@ -1,0 +1,59 @@
+{
+  "id": "gan_2337",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 23 July 2018 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Priya Menon, \n\nMr Alex Carter, DOB: 22-09-1991, Hospital No: G874210 NHS No. 1029384756  \nFlat 12, 5 Larkspur Court, London, SW11 3AB  \n\nDiagnosis: \n\nSeizure disorder under evaluation; pattern currently indeterminate with reported myoclonic jerks \n\nAetiology: \n\nUnclear. Noted rotating shift work including nights with disrupted circadian rhythm; no structural lesion identified on prior imaging as reported by patient \n\nOther Medical Problems: \n\nSeasonal allergic rhinitis managed with intermittent antihistamines; otherwise well \n\nManagement Plan: \n\n- Seizure frequency currently described as eight or ten myoclonic per week, typically clustering after consecutive night shifts and sleep deprivation. We discussed the strong temporal association with circadian disruption and variable sleep schedule.  \n- Arrange routine EEG with sleep deprivation protocol and consider ambulatory EEG if initial study is non-diagnostic. Request MRI brain with epilepsy protocol to review anatomy given ongoing events.  \n- Start Levetiracetam 250 mg twice daily for one week, then increase to 500 mg twice daily as tolerated; advise to maintain a single manufacturer brand for consistency. Discussed potential mood-related side effects; patient to report irritability or low mood.  \n- Safety counselling provided regarding heights, open water, and operating machinery at work; advised to shower rather than bathe and to avoid lone swimming.  \n- DVLA guidance discussed; patient currently does not drive. Should this change, he must follow current regulations for seizure disorders.  \n- Sleep hygiene measures emphasised: fixed anchor sleep period on rest days, strategic light exposure, minimising caffeine after midday, and use of blue-light reduction strategies on night rotations. Liaison letter offered to occupational health to explore more stable shift scheduling.  \n- Bloods today: FBC, U&E, LFT, vitamin D, B12/folate, and TSH to exclude reversible contributors.  \n- Follow-up in three months; sooner if frequency increases, adverse effects occur, or if events evolve in character. \n\nThis patient reports brief, shock-like jerks of the upper limbs without clear loss of awareness, worse when markedly sleep-deprived after night shifts. There have been no convulsions, tongue-biting, or incontinence. No known family history of seizures. He does not consume alcohol to excess and denies recreational drugs. We will proceed with the above diagnostic work-up while initiating treatment and addressing occupational factors that appear to precipitate the episodes. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 756,
+      "end": 828,
+      "text": "Seizure frequency currently described as eight or ten myoclonic per week",
+      "attributes": {
+        "Label": "8 to 10 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 797,
+      "end": 828,
+      "text": "eight or ten myoclonic per week",
+      "attributes": {
+        "Label": "8 to 10 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2337,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 23 July 2018 \n\nDr Priya Menon \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Priya Menon, \n\nMr Alex Carter, DOB: 22-09-1991, Hospital No: G874210 NHS No. 1029384756  \nFlat 12, 5 Larkspur Court, London, SW11 3AB  \n\nDiagnosis: \n\nSeizure disorder under evaluation; pattern currently indeterminate with reported myoclonic jerks \n\nAetiology: \n\nUnclear. Noted rotating shift work including nights with disrupted circadian rhythm; no structural lesion identified on prior imaging as reported by patient \n\nOther Medical Problems: \n\nSeasonal allergic rhinitis managed with intermittent antihistamines; otherwise well \n\nManagement Plan: \n\n- Seizure frequency currently described as eight or ten myoclonic per week, typically clustering after consecutive night shifts and sleep deprivation. We discussed the strong temporal association with circadian disruption and variable sleep schedule.  \n- Arrange routine EEG with sleep deprivation protocol and consider ambulatory EEG if initial study is non-diagnostic. Request MRI brain with epilepsy protocol to review anatomy given ongoing events.  \n- Start Levetiracetam 250 mg twice daily for one week, then increase to 500 mg twice daily as tolerated; advise to maintain a single manufacturer brand for consistency. Discussed potential mood-related side effects; patient to report irritability or low mood.  \n- Safety counselling provided regarding heights, open water, and operating machinery at work; advised to shower rather than bathe and to avoid lone swimming.  \n- DVLA guidance discussed; patient currently does not drive. Should this change, he must follow current regulations for seizure disorders.  \n- Sleep hygiene measures emphasised: fixed anchor sleep period on rest days, strategic light exposure, minimising caffeine after midday, and use of blue-light reduction strategies on night rotations. Liaison letter offered to occupational health to explore more stable shift scheduling.  \n- Bloods today: FBC, U&E, LFT, vitamin D, B12/folate, and TSH to exclude reversible contributors.  \n- Follow-up in three months; sooner if frequency increases, adverse effects occur, or if events evolve in character. \n\nThis patient reports brief, shock-like jerks of the upper limbs without clear loss of awareness, worse when markedly sleep-deprived after night shifts. There have been no convulsions, tongue-biting, or incontinence. No known family history of seizures. He does not consume alcohol to excess and denies recreational drugs. We will proceed with the above diagnostic work-up while initiating treatment and addressing occupational factors that appear to precipitate the episodes. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizure frequency currently described as eight or ten myoclonic per week\". This gives a numeric range per week. No other differing frequency is given. According to the rules, use numeric ranges with 'to'. Therefore, the normalized label is '8 to 10 per week'. No seizure-free period applies.",
+      "seizure_frequency_number": [
+        "8 to 10 per week",
+        "Seizure frequency currently described as eight or ten myoclonic per week"
+      ],
+      "reference": [
+        "8 to 10 per week",
+        "eight or ten myoclonic per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

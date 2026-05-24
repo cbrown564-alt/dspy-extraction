@@ -1,0 +1,59 @@
+{
+  "id": "gan_3918",
+  "text": "Department of Neurology \n\nClinic Date: 07 October 2025 \n\nDr Amelia Clarke  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Clarke,  \n\nMichael Turner, DOB: 14-02-1986, Hospital No: H392774 NHS No. 9912048837  \n21 Brookfield Close, London, SW16 3AB \n\nDiagnoses: \n\nCombined generalised and focal epilepsy: patient has both generalised and focal epilepsy. \n\nRecent clinical deterioration with increased event clustering on workdays. \n\nCurrent Medication: \n\nLamotrigine 75 mg bd (patient-reported adherence adequate) \n\nPlan: \n\n- Urgent optimisation of antiseizure therapy; continue lamotrigine 75 mg bd pending review.  \n- Arrange ambulatory EEG and serum lamotrigine level.  \n- Seizure diary to document timing, prodromes, and workday clustering.  \n- Workplace and sleep-hygiene advice; discuss reasonable adjustments with employer.  \n- Safety counselling provided (driving, heights, water).  \n- Review in 6 weeks; earlier if further escalation. \n\nI reviewed Michael Turner in clinic today. Unfortunately, his condition is deteriorating. He describes a clear increase in events over the past two months, particularly coinciding with a sustained high workload; events tend to cluster on workdays per patient report. Prior to this period, seizure control was stable (Stable seizure control maintained). At present, he reports sz ×9/wk, comprising brief focal aware episodes (aural distortion and right-hand tingling lasting 20–40 seconds) and intermittent generalised convulsive events witnessed by his partner on two Monday mornings in the past three weeks. He notes pronounced sleep curtailment before the clustered days and increased stress. There is no recent intercurrent illness or missed doses to account fully for the change. \n\nOn history today, focal features include a rising epigastric sensation followed by right upper limb paraesthesiae and speech arrest without loss of awareness in some episodes; generalised features include sudden loss of consciousness with tonic–clonic activity, tongue biting, and post-ictal confusion lasting 30–45 minutes. This mixed semiology supports combined generalised and focal epilepsy. A previous routine EEG was non-diagnostic; given the current deterioration, we will proceed with ambulatory monitoring and consider escalation to dual therapy depending on results and tolerability. \n\nRisk was discussed at length, including SUDEP, injury risk, and the impact of sleep deprivation. We reinforced adherence and introduced a structured sleep and workload plan. He agreed to maintain a detailed diary capturing timing relative to work shifts and caffeine use. \n\nI will update you following investigations. Please let me know if there are interim concerns or if work-related adjustments need medical correspondence. \n\nWith best wishes, \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1378,
+      "end": 1409,
+      "text": "At present, he reports sz ×9/wk",
+      "attributes": {
+        "Label": "9 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1401,
+      "end": 1409,
+      "text": "sz ×9/wk",
+      "attributes": {
+        "Label": "9 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3918,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 07 October 2025 \n\nDr Amelia Clarke  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Clarke,  \n\nMichael Turner, DOB: 14-02-1986, Hospital No: H392774 NHS No. 9912048837  \n21 Brookfield Close, London, SW16 3AB \n\nDiagnoses: \n\nCombined generalised and focal epilepsy: patient has both generalised and focal epilepsy. \n\nRecent clinical deterioration with increased event clustering on workdays. \n\nCurrent Medication: \n\nLamotrigine 75 mg bd (patient-reported adherence adequate) \n\nPlan: \n\n- Urgent optimisation of antiseizure therapy; continue lamotrigine 75 mg bd pending review.  \n- Arrange ambulatory EEG and serum lamotrigine level.  \n- Seizure diary to document timing, prodromes, and workday clustering.  \n- Workplace and sleep-hygiene advice; discuss reasonable adjustments with employer.  \n- Safety counselling provided (driving, heights, water).  \n- Review in 6 weeks; earlier if further escalation. \n\nI reviewed Michael Turner in clinic today. Unfortunately, his condition is deteriorating. He describes a clear increase in events over the past two months, particularly coinciding with a sustained high workload; events tend to cluster on workdays per patient report. Prior to this period, seizure control was stable (Stable seizure control maintained). At present, he reports sz ×9/wk, comprising brief focal aware episodes (aural distortion and right-hand tingling lasting 20–40 seconds) and intermittent generalised convulsive events witnessed by his partner on two Monday mornings in the past three weeks. He notes pronounced sleep curtailment before the clustered days and increased stress. There is no recent intercurrent illness or missed doses to account fully for the change. \n\nOn history today, focal features include a rising epigastric sensation followed by right upper limb paraesthesiae and speech arrest without loss of awareness in some episodes; generalised features include sudden loss of consciousness with tonic–clonic activity, tongue biting, and post-ictal confusion lasting 30–45 minutes. This mixed semiology supports combined generalised and focal epilepsy. A previous routine EEG was non-diagnostic; given the current deterioration, we will proceed with ambulatory monitoring and consider escalation to dual therapy depending on results and tolerability. \n\nRisk was discussed at length, including SUDEP, injury risk, and the impact of sleep deprivation. We reinforced adherence and introduced a structured sleep and workload plan. He agreed to maintain a detailed diary capturing timing relative to work shifts and caffeine use. \n\nI will update you following investigations. Please let me know if there are interim concerns or if work-related adjustments need medical correspondence. \n\nWith best wishes, \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency. The letter states: \"At present, he reports sz ×9/wk\" describing current events. This is a clear numeric expression of current seizure frequency. No other conflicting numeric frequency is given that is higher; mentions of clustering and specific recent GTCs (two Monday mornings in the past three weeks) do not exceed the weekly total and do not provide a higher rate. Therefore, use the explicit 9 per week. Convert 'sz ×9/wk' to the allowed format '9 per week'.",
+      "seizure_frequency_number": [
+        "9 per week",
+        "At present, he reports sz ×9/wk"
+      ],
+      "reference": [
+        "9 per week",
+        "sz ×9/wk"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

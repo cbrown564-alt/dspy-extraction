@@ -1,0 +1,65 @@
+{
+  "id": "gan_3507",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 31 August 2024\n\nDr Priya Menon\nConsultant Neurologist\nRiverside Neurology Clinic\nSt George’s Way, London SE17 2RT\n\nDear Dr Priya Menon,\n\nAlex Turner, DOB: 22-09-1987, Hospital No: A913204 NHS No. 1045829376\nFlat 12, 5 Willow Court, Brixton, London SW9 8JP\n\nDiagnosis:\n\nRecurrent unprovoked seizures; classification not determined at present. Prior medication trials with variable effect.\n\nAetiology:\n\nNo definitive structural, genetic or metabolic cause identified to date. Prior MRI (reported normal) and routine EEG (non-diagnostic) per previous records.\n\nOther Medical Problems:\n\nBorderline vitamin D insufficiency on supplementation; intermittent migraine without aura (patient-reported, managed with simple analgesia as needed).\n\nManagement Plan:\n\n- Continue current antiseizure regimen: Lamotrigine 100 mg twice daily. No change today.\n- Serum lamotrigine level to be rechecked in 3 months alongside vitamin D.\n- Safety advice reiterated regarding sleep regularity and alcohol moderation; driving advice unchanged in line with DVLA guidance previously provided.\n- Review in six months, sooner if events recur or adverse effects emerge.\n\nInterim Progress and Context:\n\nSince the last review, the patient increased lamotrigine from 75 mg twice daily to 100 mg twice daily under shared plan. Frequency reduced by 0.3 after dose increase, as corroborated by the patient’s seizure log and the employer occupational health summary received last month. The occupational health notes also confirm two near-miss episodes at work were avoided with rota adjustments (later start times), and no injuries have occurred. The patient reports better sleep with the adjusted shifts and no new adverse effects beyond mild, transient nausea in the mornings, now settled.\n\nWe will maintain close liaison with employer occupational health for periodic summaries, which have been a reliable collateral source for objective tracking of work attendance and reported events.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1363,
+      "end": 1407,
+      "text": "Frequency reduced by 0.3 after dose increase",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1363,
+      "end": 1407,
+      "text": "Frequency reduced by 0.3 after dose increase",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3507,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 31 August 2024\n\nDr Priya Menon\nConsultant Neurologist\nRiverside Neurology Clinic\nSt George’s Way, London SE17 2RT\n\nDear Dr Priya Menon,\n\nAlex Turner, DOB: 22-09-1987, Hospital No: A913204 NHS No. 1045829376\nFlat 12, 5 Willow Court, Brixton, London SW9 8JP\n\nDiagnosis:\n\nRecurrent unprovoked seizures; classification not determined at present. Prior medication trials with variable effect.\n\nAetiology:\n\nNo definitive structural, genetic or metabolic cause identified to date. Prior MRI (reported normal) and routine EEG (non-diagnostic) per previous records.\n\nOther Medical Problems:\n\nBorderline vitamin D insufficiency on supplementation; intermittent migraine without aura (patient-reported, managed with simple analgesia as needed).\n\nManagement Plan:\n\n- Continue current antiseizure regimen: Lamotrigine 100 mg twice daily. No change today.\n- Serum lamotrigine level to be rechecked in 3 months alongside vitamin D.\n- Safety advice reiterated regarding sleep regularity and alcohol moderation; driving advice unchanged in line with DVLA guidance previously provided.\n- Review in six months, sooner if events recur or adverse effects emerge.\n\nInterim Progress and Context:\n\nSince the last review, the patient increased lamotrigine from 75 mg twice daily to 100 mg twice daily under shared plan. Frequency reduced by 0.3 after dose increase, as corroborated by the patient’s seizure log and the employer occupational health summary received last month. The occupational health notes also confirm two near-miss episodes at work were avoided with rota adjustments (later start times), and no injuries have occurred. The patient reports better sleep with the adjusted shifts and no new adverse effects beyond mild, transient nausea in the mornings, now settled.\n\nWe will maintain close liaison with employer occupational health for periodic summaries, which have been a reliable collateral source for objective tracking of work attendance and reported events.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient has recurrent unprovoked seizures. It mentions that after increasing lamotrigine, the 'Frequency reduced by 0.3 after dose increase,' but it does not provide the absolute seizure frequency before or after the change, nor a clear time unit (day/week/month/year). There is no explicit statement of being seizure free for at least 6 months. Therefore, while seizures are referenced, a specific current frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Frequency reduced by 0.3 after dose increase"
+      ],
+      "reference": [
+        "unknown",
+        "Frequency reduced by 0.3 after dose increase"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

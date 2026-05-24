@@ -1,0 +1,59 @@
+{
+  "id": "gan_1887",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Whitfield \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Sarah Whitfield, \n\nAlex Morgan, DOB: 22-06-1991, Hospital No: K847391 NHS No. 9438201756  \nFlat 12, 4 Brookfield Road, London, N16 0AL  \n\nDiagnosis: \n\nSeizure disorder; classification not established at present\n\nAetiology: \n\nUndetermined; no structural lesion identified on prior imaging per patient report\n\nOther Medical Problems: \n\nMild gastro-oesophageal reflux disease; seasonal allergic rhinitis\n\nManagement Plan: \n\n- Continue current antiseizure regimen as presently tolerated; patient reports prior side effects on earlier agents, including rash and gastrointestinal upset, documented historically.  \n- Arrange updated MRI brain and routine EEG to assist with classification and guide therapy.  \n- Bloods today: FBC, U&E, LFTs, vitamin D, and antiseizure drug level as applicable.  \n- Safety: reinforced first aid, supervision near water, and avoidance of heights where possible.  \n- DVLA: discussed current guidance; patient aware of need to follow regulations based on seizure activity.  \n- Review in clinic in four months or earlier if events escalate or adverse effects recur.\n\nSince the last review, the patient describes three drop attacks and one convulsion in the past three months. The convulsion was witnessed at home in the evening with loss of awareness and generalised shaking lasting approximately two minutes, followed by post-ictal fatigue. The drop attacks were sudden collapses without clear warning, with brief confusion afterward; no head injury was reported, but there is concern regarding falls risk. There have been no clear precipitants identified, though the patient reports poor sleep during two of the weeks in question. Medication adherence is reported as good. \n\nHistorically, the patient experienced a diffuse pruritic rash on a previous antiseizure medication and gastrointestinal upset on another agent; these are recorded in prior notes and the patient carries this information on a medication alert card. Currently, the patient denies new rash, mood change, or significant GI disturbance. \n\nWe discussed lifestyle measures including sleep regularity, limiting alcohol, and maintaining hydration. A seizure diary will be continued with attention to potential triggers and temporal patterns. I will contact you with results of investigations and any interim changes if required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1298,
+      "end": 1406,
+      "text": "Since the last review, the patient describes three drop attacks and one convulsion in the past three months.",
+      "attributes": {
+        "Label": "4 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1343,
+      "end": 1405,
+      "text": "three drop attacks and one convulsion in the past three months",
+      "attributes": {
+        "Label": "4 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1887,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Whitfield \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Sarah Whitfield, \n\nAlex Morgan, DOB: 22-06-1991, Hospital No: K847391 NHS No. 9438201756  \nFlat 12, 4 Brookfield Road, London, N16 0AL  \n\nDiagnosis: \n\nSeizure disorder; classification not established at present\n\nAetiology: \n\nUndetermined; no structural lesion identified on prior imaging per patient report\n\nOther Medical Problems: \n\nMild gastro-oesophageal reflux disease; seasonal allergic rhinitis\n\nManagement Plan: \n\n- Continue current antiseizure regimen as presently tolerated; patient reports prior side effects on earlier agents, including rash and gastrointestinal upset, documented historically.  \n- Arrange updated MRI brain and routine EEG to assist with classification and guide therapy.  \n- Bloods today: FBC, U&E, LFTs, vitamin D, and antiseizure drug level as applicable.  \n- Safety: reinforced first aid, supervision near water, and avoidance of heights where possible.  \n- DVLA: discussed current guidance; patient aware of need to follow regulations based on seizure activity.  \n- Review in clinic in four months or earlier if events escalate or adverse effects recur.\n\nSince the last review, the patient describes three drop attacks and one convulsion in the past three months. The convulsion was witnessed at home in the evening with loss of awareness and generalised shaking lasting approximately two minutes, followed by post-ictal fatigue. The drop attacks were sudden collapses without clear warning, with brief confusion afterward; no head injury was reported, but there is concern regarding falls risk. There have been no clear precipitants identified, though the patient reports poor sleep during two of the weeks in question. Medication adherence is reported as good. \n\nHistorically, the patient experienced a diffuse pruritic rash on a previous antiseizure medication and gastrointestinal upset on another agent; these are recorded in prior notes and the patient carries this information on a medication alert card. Currently, the patient denies new rash, mood change, or significant GI disturbance. \n\nWe discussed lifestyle measures including sleep regularity, limiting alcohol, and maintaining hydration. A seizure diary will be continued with attention to potential triggers and temporal patterns. I will contact you with results of investigations and any interim changes if required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Since the last review, the patient describes three drop attacks and one convulsion in the past three months.' This gives a total of 3 + 1 = 4 seizures over 3 months. No other conflicting frequencies are provided. Therefore, the normalized frequency is 4 per 3 months.",
+      "seizure_frequency_number": [
+        "4 per 3 month",
+        "Since the last review, the patient describes three drop attacks and one convulsion in the past three months."
+      ],
+      "reference": [
+        "4 per 3 month",
+        "three drop attacks and one convulsion in the past three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

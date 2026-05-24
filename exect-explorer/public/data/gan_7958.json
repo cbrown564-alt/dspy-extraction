@@ -1,0 +1,54 @@
+{
+  "id": "gan_7958",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart  \nSt. George’s University Hospitals NHS Foundation Trust  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Hart,  \n\nMichael Turner, DOB: 14-03-1989, Hospital No: H273640 NHS No. 9074153221  \n12 Oakfield Close, Tooting, London SW17 8RA \n\nDiagnoses:  \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset (diagnosed 2017)  \nMRI brain (2017) – structurally normal  \nEEG (2017) – left temporal intermittent rhythmic delta activity  \n\nCurrent Medication:  \n\nLevetiracetam 1 g bd  \n\nPlan:  \n\n- Continue levetiracetam at current dose  \n- Safety advice and trigger management reinforced  \n- Routine follow-up in 12 months, earlier if any recurrence or adverse effects  \n\nI reviewed Michael Turner in clinic today. He reports no episodes of loss of awareness, automatisms, or secondary generalisation for over three years. Day-to-day functioning has been stable with no witnessed events by family or colleagues. On this basis, his seizure control has remained steady without breakthrough events. He confirms good adherence to medication and avoids common precipitating factors such as sleep deprivation and excess alcohol. \n\nWe discussed his history of antiseizure medication side effects documented previously, including a rash on carbamazepine and gastrointestinal upset with sodium valproate; neither has recurred since switching to levetiracetam. He denies mood change, irritability, or fatigue on the current regimen. Neurological examination today was unremarkable. \n\nGiven the diagnosis of focal epilepsy and sustained seizure stability, I recommend continuing levetiracetam 1 g twice daily. We also reviewed safety guidance including driving regulations, bathing/showering precautions, and the importance of adherence. He will contact us promptly if he experiences any aura, brief lapses, or suspected focal impaired-awareness episodes. \n\nI will arrange a routine review in one year. Should there be any concerns regarding adverse effects or seizure recurrence, I would be happy to see him sooner. \n\nWith best wishes,  ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 817,
+      "end": 924,
+      "text": "He reports no episodes of loss of awareness, automatisms, or secondary generalisation for over three years.",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7958,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart  \nSt. George’s University Hospitals NHS Foundation Trust  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Hart,  \n\nMichael Turner, DOB: 14-03-1989, Hospital No: H273640 NHS No. 9074153221  \n12 Oakfield Close, Tooting, London SW17 8RA \n\nDiagnoses:  \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset (diagnosed 2017)  \nMRI brain (2017) – structurally normal  \nEEG (2017) – left temporal intermittent rhythmic delta activity  \n\nCurrent Medication:  \n\nLevetiracetam 1 g bd  \n\nPlan:  \n\n- Continue levetiracetam at current dose  \n- Safety advice and trigger management reinforced  \n- Routine follow-up in 12 months, earlier if any recurrence or adverse effects  \n\nI reviewed Michael Turner in clinic today. He reports no episodes of loss of awareness, automatisms, or secondary generalisation for over three years. Day-to-day functioning has been stable with no witnessed events by family or colleagues. On this basis, his seizure control has remained steady without breakthrough events. He confirms good adherence to medication and avoids common precipitating factors such as sleep deprivation and excess alcohol. \n\nWe discussed his history of antiseizure medication side effects documented previously, including a rash on carbamazepine and gastrointestinal upset with sodium valproate; neither has recurred since switching to levetiracetam. He denies mood change, irritability, or fatigue on the current regimen. Neurological examination today was unremarkable. \n\nGiven the diagnosis of focal epilepsy and sustained seizure stability, I recommend continuing levetiracetam 1 g twice daily. We also reviewed safety guidance including driving regulations, bathing/showering precautions, and the importance of adherence. He will contact us promptly if he experiences any aura, brief lapses, or suspected focal impaired-awareness episodes. \n\nI will arrange a routine review in one year. Should there be any concerns regarding adverse effects or seizure recurrence, I would be happy to see him sooner. \n\nWith best wishes,  ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient reports no episodes for over three years and that seizure control has remained steady without breakthrough events. This indicates ongoing seizure freedom exceeding the 6-month threshold. No other seizure frequencies are provided that would override this. Therefore, label as seizure free for multiple years since the exact number beyond 'over three years' is not a precise numeral.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "He reports no episodes of loss of awareness, automatisms, or secondary generalisation for over three years."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Well-controlled epilepsy"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

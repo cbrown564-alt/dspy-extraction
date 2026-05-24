@@ -1,0 +1,59 @@
+{
+  "id": "gan_13517",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 06 June 2014 \n\nDr Priya Nair \nConsultant Neurologist  \nCentre for Epilepsy  \nQueen Charlotte Wing, KCH, London  \n\nDear Dr Priya Nair, \n\nMs Sarah Thompson, DOB: 22-11-1987, Hospital No: K842117 NHS No. 9081764321  \nFlat 12, 4 Rowan Court, London, SE15 3QP  \n\nDiagnosis: \n\nSeizure disorder with sustained remission on current regimen\n\nAetiology: \n\nUnclear; no structural lesion identified on previous imaging; no clear provoking factors reported\n\nOther Medical Problems: \n\nMild iron deficiency under GP monitoring; seasonal allergic rhinitis, managed with PRN non-sedating antihistamine\n\nManagement Plan: \n\n- Continue current anti-seizure medication at unchanged doses.  \n- Maintain improved sleep routine and regular mealtimes; patient finds this helpful.  \n- No rescue medication required at present given prolonged remission.  \n- Routine follow-up in 9 months, sooner if breakthrough events or adverse effects.  \n- DVLA guidance discussed and understood; no driving issues currently given sustained seizure freedom. \n\nShe has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 1 to 2 times per year, but seizure control has been excellent, and she has now been seizure free for 3 years. She reports that sleep hygiene improved; pattern appears more stable. She has set consistent bed and wake times, reduced screen exposure in the hour before sleep, and avoids missed meals and excessive caffeine. Since adopting these measures, she notes better daytime alertness and no episodes suggestive of aura or prodromal symptoms. There have been no injuries, no emergency presentations, and no medication side effects reported. \n\nMedication history indicates longstanding tolerance of her current anti-seizure therapy without mood change or cognitive complaints. She remains in full-time employment and has resumed light exercise without difficulty. We reviewed red flag features and a plan for urgent contact should any transient loss of awareness, sudden falls, myoclonic jerks, or nocturnal events recur. No changes are proposed today in view of the stable course and the patient’s preference to continue as is. \n\nI will write again following her next review or sooner if there is any change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1239,
+      "end": 1280,
+      "text": "she has now been seizure free for 3 years",
+      "attributes": {
+        "Label": "seizure free for 3 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1078,
+      "end": 1280,
+      "text": "She has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 1 to 2 times per year, but seizure control has been excellent, and she has now been seizure free for 3 years",
+      "attributes": {
+        "Label": "seizure free for 3 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13517,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 06 June 2014 \n\nDr Priya Nair \nConsultant Neurologist  \nCentre for Epilepsy  \nQueen Charlotte Wing, KCH, London  \n\nDear Dr Priya Nair, \n\nMs Sarah Thompson, DOB: 22-11-1987, Hospital No: K842117 NHS No. 9081764321  \nFlat 12, 4 Rowan Court, London, SE15 3QP  \n\nDiagnosis: \n\nSeizure disorder with sustained remission on current regimen\n\nAetiology: \n\nUnclear; no structural lesion identified on previous imaging; no clear provoking factors reported\n\nOther Medical Problems: \n\nMild iron deficiency under GP monitoring; seasonal allergic rhinitis, managed with PRN non-sedating antihistamine\n\nManagement Plan: \n\n- Continue current anti-seizure medication at unchanged doses.  \n- Maintain improved sleep routine and regular mealtimes; patient finds this helpful.  \n- No rescue medication required at present given prolonged remission.  \n- Routine follow-up in 9 months, sooner if breakthrough events or adverse effects.  \n- DVLA guidance discussed and understood; no driving issues currently given sustained seizure freedom. \n\nShe has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 1 to 2 times per year, but seizure control has been excellent, and she has now been seizure free for 3 years. She reports that sleep hygiene improved; pattern appears more stable. She has set consistent bed and wake times, reduced screen exposure in the hour before sleep, and avoids missed meals and excessive caffeine. Since adopting these measures, she notes better daytime alertness and no episodes suggestive of aura or prodromal symptoms. There have been no injuries, no emergency presentations, and no medication side effects reported. \n\nMedication history indicates longstanding tolerance of her current anti-seizure therapy without mood change or cognitive complaints. She remains in full-time employment and has resumed light exercise without difficulty. We reviewed red flag features and a plan for urgent contact should any transient loss of awareness, sudden falls, myoclonic jerks, or nocturnal events recur. No changes are proposed today in view of the stable course and the patient’s preference to continue as is. \n\nI will write again following her next review or sooner if there is any change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been seizure free for 3 years and describes sustained remission with no breakthrough events. This meets the criterion for seizure free ≥6 months. Past history includes 1 to 2 per year previously, but the current status is seizure-free for 3 years. According to the rule for multiple frequencies, we use the current highest frequency; however, since current frequency is zero with a duration specified, we label as 'seizure free for 3 years.' No calculation beyond recognizing '3 years' is needed.",
+      "seizure_frequency_number": [
+        "seizure free for 3 year",
+        "she has now been seizure free for 3 years"
+      ],
+      "reference": [
+        "seizure free for 3 year",
+        "She has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 1 to 2 times per year, but seizure control has been excellent, and she has now been seizure free for 3 years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

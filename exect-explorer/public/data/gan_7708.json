@@ -1,0 +1,48 @@
+{
+  "id": "gan_7708",
+  "text": "Department of Neurology\n\nClinic Date: 15 January 2019\n\nDr Eleanor Hughes\nSt Cuthbert Neurology Centre\nNeurology Outpatients, 12 Morley Lane, Leeds LS2 8AB\n\nDear Dr Eleanor Hughes,\n\nMichael Turner, DOB: 03-02-1991, Hospital No: L937520 NHS No. 9054312768\n22 Brookside Close, Leeds, LS7 3HT\n\nDiagnoses:\n\nFocal epilepsy with impaired awareness seizures; prior MRI unremarkable; interictal EEG previously normal.\n\nCurrent Management:\n\nKetogenic/modified diet (supervised by an external specialist dietetic team); diet details recorded in notes. No regular anti-seizure medicines at present.\n\nPlan:\n\nContinue current dietary therapy with ongoing external dietetic supervision and ensure copies of dietary reviews are shared with our service. Safety advice reinforced. Routine bloods (lipid profile, liver function, bicarbonate) via GP every 6 months while on diet. Review in neurology clinic in 12 months, or sooner if events recur or dietary intolerance emerges.\n\nI reviewed Michael Turner in clinic today. He reports a history consistent with focal epilepsy, characterised previously by brief episodes of behavioural arrest with automatisms and post‑event confusion lasting a few minutes. He has been following a clinician‑supervised ketogenic/modified diet for several months; the dietary protocol and ratios have been documented in the medical record. Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes by family or colleagues. He denies new neurological symptoms. Sleep and hydration are reported as stable. He is not currently taking lamotrigine or other anti‑seizure medicines.\n\nOn examination today he was well, with normal neurological findings. We discussed ongoing safety measures, driving regulations where applicable, and the importance of maintaining meticulous dietary adherence and regular monitoring while on this therapy. I have asked that the external dietetic team continue to supervise macronutrient ratios and provide periodic summaries for our records. Should any breakthrough focal events occur, we would reconsider pharmacological options and repeat EEG.\n\nI have arranged follow‑up in 12 months. He may contact the clinic earlier if there is any change in seizure pattern, adverse effects from the diet, or other concerns.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1351,
+      "end": 1480,
+      "text": "Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7708,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 15 January 2019\n\nDr Eleanor Hughes\nSt Cuthbert Neurology Centre\nNeurology Outpatients, 12 Morley Lane, Leeds LS2 8AB\n\nDear Dr Eleanor Hughes,\n\nMichael Turner, DOB: 03-02-1991, Hospital No: L937520 NHS No. 9054312768\n22 Brookside Close, Leeds, LS7 3HT\n\nDiagnoses:\n\nFocal epilepsy with impaired awareness seizures; prior MRI unremarkable; interictal EEG previously normal.\n\nCurrent Management:\n\nKetogenic/modified diet (supervised by an external specialist dietetic team); diet details recorded in notes. No regular anti-seizure medicines at present.\n\nPlan:\n\nContinue current dietary therapy with ongoing external dietetic supervision and ensure copies of dietary reviews are shared with our service. Safety advice reinforced. Routine bloods (lipid profile, liver function, bicarbonate) via GP every 6 months while on diet. Review in neurology clinic in 12 months, or sooner if events recur or dietary intolerance emerges.\n\nI reviewed Michael Turner in clinic today. He reports a history consistent with focal epilepsy, characterised previously by brief episodes of behavioural arrest with automatisms and post‑event confusion lasting a few minutes. He has been following a clinician‑supervised ketogenic/modified diet for several months; the dietary protocol and ratios have been documented in the medical record. Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes by family or colleagues. He denies new neurological symptoms. Sleep and hydration are reported as stable. He is not currently taking lamotrigine or other anti‑seizure medicines.\n\nOn examination today he was well, with normal neurological findings. We discussed ongoing safety measures, driving regulations where applicable, and the importance of maintaining meticulous dietary adherence and regular monitoring while on this therapy. I have asked that the external dietetic team continue to supervise macronutrient ratios and provide periodic summaries for our records. Should any breakthrough focal events occur, we would reconsider pharmacological options and repeat EEG.\n\nI have arranged follow‑up in 12 months. He may contact the clinic earlier if there is any change in seizure pattern, adverse effects from the diet, or other concerns.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that since adopting the clinician-supervised ketogenic/modified diet for several months, seizure occurrences have not been happening and there have been no witnessed episodes. There is no exact start date of seizure freedom given, only that it has been 'several months'. The 6-month criterion for confirmed seizure freedom is not explicitly met or dated. Therefore, per rules, classify as 'seizure free for multiple months'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since adopting the diet, he describes that seizure occurrences have not been happening, and there have been no witnessed episodes"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "seizure activity absent"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

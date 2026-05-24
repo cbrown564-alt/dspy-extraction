@@ -1,0 +1,59 @@
+{
+  "id": "gan_1500",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 27 May 2020 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He is known to have focal epilepsy. I last saw him six months ago. Since then, his primary carer has accompanied him to appointments and provided collateral information about day-to-day function. The carer reports ongoing fatigue, particularly in the late afternoon, which the patient feels has been more noticeable over the past two months. There is no recent intercurrent illness, weight loss or new medications other than his antiseizure regimen as outlined below. They describe the fatigue as fluctuating and worse after poor sleep nights when the patient has brief events.\n\nThe patient reports two focal aware seizures and one focal non-motor in last week. The focal aware episodes were described as brief right facial tingling with preserved awareness lasting under a minute and no post-event confusion. The focal non-motor event involved a rising epigastric sensation with déjà vu and transient speech arrest, again without loss of awareness or convulsion, and with full recovery within minutes. There have been no generalised tonic–clonic seizures, no injuries and no missed doses reported. Triggers noted by the patient and carer include sleep deprivation and higher stress on caregiving days.\n\nHe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. He denies rash, mood lability or diplopia. The carer notes mild irritability late in the day but no behavioural outbursts. There is no history of recent falls. Bloods from last month showed normal full blood count and liver profile; eGFR within normal range. We discussed sleep hygiene and recording seizure semiology in a shared diary to better correlate symptoms with dosing times and daily activities in the caregiving context.\n\nExamination today was unremarkable with no focal neurological deficit. Given the pattern of focal seizures and stable safety profile, I have not altered his medication today. I have requested an outpatient EEG to characterise interictal activity and will arrange a brain MRI with epilepsy protocol (3T if available) to update imaging, as his last study was over three years ago. I have provided information on local carer support and suggested that both patient and primary carer attend our epilepsy self-management session, as they are keen to optimise routines around caregiving responsibilities.\n\nI will review him again in three months, sooner if seizure frequency increases or if adverse effects emerge. The patient and carer understand the plan and know to contact us if there are prolonged events or any new features suggestive of secondary generalisation.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 878,
+      "end": 960,
+      "text": "The patient reports two focal aware seizures and one focal non-motor in last week.",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 898,
+      "end": 959,
+      "text": "two focal aware seizures and one focal non-motor in last week",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1500,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 27 May 2020 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He is known to have focal epilepsy. I last saw him six months ago. Since then, his primary carer has accompanied him to appointments and provided collateral information about day-to-day function. The carer reports ongoing fatigue, particularly in the late afternoon, which the patient feels has been more noticeable over the past two months. There is no recent intercurrent illness, weight loss or new medications other than his antiseizure regimen as outlined below. They describe the fatigue as fluctuating and worse after poor sleep nights when the patient has brief events.\n\nThe patient reports two focal aware seizures and one focal non-motor in last week. The focal aware episodes were described as brief right facial tingling with preserved awareness lasting under a minute and no post-event confusion. The focal non-motor event involved a rising epigastric sensation with déjà vu and transient speech arrest, again without loss of awareness or convulsion, and with full recovery within minutes. There have been no generalised tonic–clonic seizures, no injuries and no missed doses reported. Triggers noted by the patient and carer include sleep deprivation and higher stress on caregiving days.\n\nHe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. He denies rash, mood lability or diplopia. The carer notes mild irritability late in the day but no behavioural outbursts. There is no history of recent falls. Bloods from last month showed normal full blood count and liver profile; eGFR within normal range. We discussed sleep hygiene and recording seizure semiology in a shared diary to better correlate symptoms with dosing times and daily activities in the caregiving context.\n\nExamination today was unremarkable with no focal neurological deficit. Given the pattern of focal seizures and stable safety profile, I have not altered his medication today. I have requested an outpatient EEG to characterise interictal activity and will arrange a brain MRI with epilepsy protocol (3T if available) to update imaging, as his last study was over three years ago. I have provided information on local carer support and suggested that both patient and primary carer attend our epilepsy self-management session, as they are keen to optimise routines around caregiving responsibilities.\n\nI will review him again in three months, sooner if seizure frequency increases or if adverse effects emerge. The patient and carer understand the plan and know to contact us if there are prolonged events or any new features suggestive of secondary generalisation.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure counts/timeframe. The letter states: \"The patient reports two focal aware seizures and one focal non-motor in last week.\" That totals 3 seizures within the last week. No other conflicting frequencies are provided. Apply rule to sum frequencies in the same timeframe. Therefore: 3 per week.",
+      "seizure_frequency_number": [
+        "3 per week",
+        "The patient reports two focal aware seizures and one focal non-motor in last week."
+      ],
+      "reference": [
+        "3 per week",
+        "two focal aware seizures and one focal non-motor in last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

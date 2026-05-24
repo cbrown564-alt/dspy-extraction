@@ -1,0 +1,59 @@
+{
+  "id": "gan_10931",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Amelia Carter\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Amelia Carter,\n\nThomas Reynolds, DOB: 22-11-1989, Hospital No: H392771 NHS No. 9482106753\nFlat 5, 31 Northgate Road, London, N1 3AB\n\nEpilepsy – Focal Epilepsy Type\n\nHistory: Childhood febrile seizures are documented; current clinical focus is adult epilepsy with focal onset. No known perinatal complications. No family history of epilepsy reported. No prior neurosurgical intervention. Driving status discussed according to DVLA guidance.\n\nCurrent epilepsy characterisation: The patient reports focal impaired-awareness seizures with automatisms and brief post‑ictal confusion. Seizure diary reviewed today indicates 6 clusters this month; each ~4 focal impaired-awareness seizures. Clusters are precipitated by sleep deprivation and high work-related stress, most commonly in the late evening. No generalised tonic–clonic seizures reported this year. No consistent auras described.\n\nMedication: Lamotrigine immediate‑release, currently 100 mg twice daily. The patient reports good adherence using a weekly pill organiser. No rash, diplopia, or ataxia. Mild nausea in the mornings has improved with taking medication after food. No other antiseizure medicines at present.\n\nMonitoring and investigations: Last lamotrigine trough level (two weeks ago) was 4.8 mg/L (local reference 3–14 mg/L). Routine bloods within normal limits. MRI brain (3T, epilepsy protocol, 2023) reported normal. Prior EEG (2024) demonstrated left temporal intermittent rhythmic slowing with occasional sharp transients, consistent with focal epileptiform activity.\n\nRisk and safety: No recent injuries. The patient has implemented a cluster action plan (supervised rest, hydration, and avoidance of further triggers) and uses a smartphone alarm to prompt medication and sleep hygiene measures.\n\nPlan discussed today: Continue current lamotrigine regimen while we complete a two‑month seizure diary focusing on cluster timing, potential catamenial or sleep-related patterns, and precipitating factors. We will review the diary together at the next clinic visit to determine whether an adjunctive therapy is warranted. The patient is agreeable to this approach. Information on SUDEP risk reduction, adherence, alcohol moderation, and sleep hygiene reinforced.\n\nFollow‑up: Telephone review in eight weeks, with earlier contact via the epilepsy nurse specialist if cluster frequency increases or new features emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 730,
+      "end": 834,
+      "text": "Seizure diary reviewed today indicates 6 clusters this month; each ~4 focal impaired-awareness seizures.",
+      "attributes": {
+        "Label": "6 cluster per month, 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 769,
+      "end": 833,
+      "text": "6 clusters this month; each ~4 focal impaired-awareness seizures",
+      "attributes": {
+        "Label": "6 cluster per month, 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10931,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Amelia Carter\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Amelia Carter,\n\nThomas Reynolds, DOB: 22-11-1989, Hospital No: H392771 NHS No. 9482106753\nFlat 5, 31 Northgate Road, London, N1 3AB\n\nEpilepsy – Focal Epilepsy Type\n\nHistory: Childhood febrile seizures are documented; current clinical focus is adult epilepsy with focal onset. No known perinatal complications. No family history of epilepsy reported. No prior neurosurgical intervention. Driving status discussed according to DVLA guidance.\n\nCurrent epilepsy characterisation: The patient reports focal impaired-awareness seizures with automatisms and brief post‑ictal confusion. Seizure diary reviewed today indicates 6 clusters this month; each ~4 focal impaired-awareness seizures. Clusters are precipitated by sleep deprivation and high work-related stress, most commonly in the late evening. No generalised tonic–clonic seizures reported this year. No consistent auras described.\n\nMedication: Lamotrigine immediate‑release, currently 100 mg twice daily. The patient reports good adherence using a weekly pill organiser. No rash, diplopia, or ataxia. Mild nausea in the mornings has improved with taking medication after food. No other antiseizure medicines at present.\n\nMonitoring and investigations: Last lamotrigine trough level (two weeks ago) was 4.8 mg/L (local reference 3–14 mg/L). Routine bloods within normal limits. MRI brain (3T, epilepsy protocol, 2023) reported normal. Prior EEG (2024) demonstrated left temporal intermittent rhythmic slowing with occasional sharp transients, consistent with focal epileptiform activity.\n\nRisk and safety: No recent injuries. The patient has implemented a cluster action plan (supervised rest, hydration, and avoidance of further triggers) and uses a smartphone alarm to prompt medication and sleep hygiene measures.\n\nPlan discussed today: Continue current lamotrigine regimen while we complete a two‑month seizure diary focusing on cluster timing, potential catamenial or sleep-related patterns, and precipitating factors. We will review the diary together at the next clinic visit to determine whether an adjunctive therapy is warranted. The patient is agreeable to this approach. Information on SUDEP risk reduction, adherence, alcohol moderation, and sleep hygiene reinforced.\n\nFollow‑up: Telephone review in eight weeks, with earlier contact via the epilepsy nurse specialist if cluster frequency increases or new features emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizure diary reviewed today indicates 6 clusters this month; each ~4 focal impaired-awareness seizures.' This provides a numeric cluster frequency per month and the number of seizures per cluster. No other conflicting frequencies are mentioned. Therefore, use the cluster format with month unit and seizures per cluster.",
+      "seizure_frequency_number": [
+        "6 cluster per month, 4 per cluster",
+        "Seizure diary reviewed today indicates 6 clusters this month; each ~4 focal impaired-awareness seizures."
+      ],
+      "reference": [
+        "6 cluster per month, 4 per cluster",
+        "6 clusters this month; each ~4 focal impaired-awareness seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

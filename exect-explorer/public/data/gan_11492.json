@@ -1,0 +1,47 @@
+{
+  "id": "gan_11492",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 08 February 2022\n\nDr Amelia Jones\nRiverside Health Centre\n48 Brook Street, London, SW1A 1AA\n\nDear Dr Amelia Jones,\n\nMichael Harris, DOB: 14-06-1988, Hospital No: H927461 NHS No. 9021847365\n12 Willow Close, London, SE15 3DN\n\nDiagnoses:\n\nRemote history of mild traumatic brain injury.\n\nI reviewed Michael Harris in clinic today. We discussed the potential benefits of additional community-based support and practical assistance at home. With this in mind, I am writing to request your assistance in obtaining the patient’s consent for a referral to local social care services for assessment and ongoing epilepsy-related support, including education, safety planning at home, and access to community resources.\n\nIf Michael Harris is agreeable, please confirm consent so that I can proceed with the referral to social care. I will copy the patient into subsequent correspondence and ensure coordination with primary care.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11492,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 08 February 2022\n\nDr Amelia Jones\nRiverside Health Centre\n48 Brook Street, London, SW1A 1AA\n\nDear Dr Amelia Jones,\n\nMichael Harris, DOB: 14-06-1988, Hospital No: H927461 NHS No. 9021847365\n12 Willow Close, London, SE15 3DN\n\nDiagnoses:\n\nRemote history of mild traumatic brain injury.\n\nI reviewed Michael Harris in clinic today. We discussed the potential benefits of additional community-based support and practical assistance at home. With this in mind, I am writing to request your assistance in obtaining the patient’s consent for a referral to local social care services for assessment and ongoing epilepsy-related support, including education, safety planning at home, and access to community resources.\n\nIf Michael Harris is agreeable, please confirm consent so that I can proceed with the referral to social care. I will copy the patient into subsequent correspondence and ensure coordination with primary care.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the letter carefully for any statements about seizures or their frequency. The letter discusses referral for epilepsy-related support but provides no explicit mention of the patient having seizures, no counts, no timing, and no indication of being seizure-free. Since there is no direct reference to seizures or seizure frequency, the correct label is 'no seizure frequency reference' per the rules.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter requesting consent to refer to social care in relation to epilepsy support"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

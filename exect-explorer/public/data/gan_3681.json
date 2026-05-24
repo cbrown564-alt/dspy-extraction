@@ -1,0 +1,48 @@
+{
+  "id": "gan_3681",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,\n\nMartin Evans, DOB: 22-11-1991, Hospital No: H742915 NHS No. 9842135760  \nFlat 3, Oakview Supported Living, 18 Larch Road, London, NW5 2JP  \n\nEpilepsy – focal epilepsy\n\nBackground and setting: Martin Evans resides in supported accommodation and is assisted by a key worker; contemporaneous key‑worker notes were reviewed where available alongside today’s history.\n\nMedication: Lamotrigine dispersible 50 mg twice daily. No reported adverse effects apart from mild, intermittent nausea. Adherence supported by medication prompts from staff.\n\nLamotrigine Blood Level:\n12 September 2025: 4.8 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 50 mg twice daily.\n\nSeizures: The patient and key‑worker reports indicate recurrent focal impaired‑awareness seizures with occasional progression to bilateral tonic–clonic events. Frequency over the past three months is summarised as: TC nine/mo. Events are typically clustered in the late evening, often preceded by a brief right‑temporal aura described as a metallic taste and rising epigastric sensation, followed by behavioural arrest and oral automatisms. Post‑ictal confusion lasts 10–20 minutes. No consistent sleep deprivation or illness triggers identified.\n\nExamination (teleconsultation): Alert, oriented voice, fluent speech by description. No new focal neurological complaints reported.\n\nPlan: Continue current lamotrigine dose pending consultant review; maintain seizure diary with staff verification; ensure safety precautions within the residence as currently implemented. Will request a routine EEG and arrange follow‑up in three months, sooner if event pattern changes per key‑worker logs.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 979,
+      "end": 1045,
+      "text": "Frequency over the past three months is summarised as: TC nine/mo.",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3681,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Patel,\n\nMartin Evans, DOB: 22-11-1991, Hospital No: H742915 NHS No. 9842135760  \nFlat 3, Oakview Supported Living, 18 Larch Road, London, NW5 2JP  \n\nEpilepsy – focal epilepsy\n\nBackground and setting: Martin Evans resides in supported accommodation and is assisted by a key worker; contemporaneous key‑worker notes were reviewed where available alongside today’s history.\n\nMedication: Lamotrigine dispersible 50 mg twice daily. No reported adverse effects apart from mild, intermittent nausea. Adherence supported by medication prompts from staff.\n\nLamotrigine Blood Level:\n12 September 2025: 4.8 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 50 mg twice daily.\n\nSeizures: The patient and key‑worker reports indicate recurrent focal impaired‑awareness seizures with occasional progression to bilateral tonic–clonic events. Frequency over the past three months is summarised as: TC nine/mo. Events are typically clustered in the late evening, often preceded by a brief right‑temporal aura described as a metallic taste and rising epigastric sensation, followed by behavioural arrest and oral automatisms. Post‑ictal confusion lasts 10–20 minutes. No consistent sleep deprivation or illness triggers identified.\n\nExamination (teleconsultation): Alert, oriented voice, fluent speech by description. No new focal neurological complaints reported.\n\nPlan: Continue current lamotrigine dose pending consultant review; maintain seizure diary with staff verification; ensure safety precautions within the residence as currently implemented. Will request a routine EEG and arrange follow‑up in three months, sooner if event pattern changes per key‑worker logs.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Frequency over the past three months is summarised as: TC nine/mo.\" Interpreting 'TC' as tonic–clonic events, this provides a clear numeric frequency of nine per month. There is no other conflicting frequency stated. Therefore, the highest/only specified frequency is 9 per month.",
+      "seizure_frequency_number": [
+        "9 per month",
+        "Frequency over the past three months is summarised as: TC nine/mo."
+      ],
+      "reference": [
+        "9 per month",
+        "TC *nine/mo"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

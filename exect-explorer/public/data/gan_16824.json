@@ -1,0 +1,59 @@
+{
+  "id": "gan_16824",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 April 2011 \n\nDr Ahmed  \nGreenbrook Health Centre  \n145 Cranford Lane, Hounslow TW5 9EX  \n\nDear Dr Ahmed,  \n\nMichael Turner, DOB: 04-02-1983, Hospital No: H914276 NHS No. 8093172456  \nFlat 3, Oakview Supported Living, 12 Beech Road, Hounslow TW4 6JP \n\nMedication: \n\nLevetiracetam 1 g twice daily. Staff report good adherence, no notable mood change since the last visit. Rescue midazolam oromucosal 5 mg is available in the care plan but has not been required in the period under review. \n\nHe resides in supported accommodation where rotating staff maintain daily seizure charts and incident logs; copies were available today and used as the primary source alongside his account. He had a cluster of three seizures in Dec (short, not full convulsions, fluctuating awareness, self-terminating). In Feb he had 7 nocturnal seizures, and in Apr a single tonic seizure was recorded during respite care. There were no associated injuries documented. Post-event recovery was within 10–20 minutes on each occasion, and no emergency services were involved. \n\nPotential triggers noted by staff include poor sleep during room changes and increased anxiety around schedule alterations; caffeine intake has been reduced by the team with no clear effect yet. He has not had recent intercurrent illness. \n\nNeurological examination today is unchanged. We discussed maintaining consistent sleep routines in the residence and ensuring that new or temporary staff continue the current seizure documentation protocol. I have not altered his medication at this stage. Should the nocturnal events increase in frequency or duration, we would consider a dose optimisation of levetiracetam or alternative strategies after review of the updated charts. \n\nWe will review him again in four months, or earlier if the supported living team identify escalation or prolonged events. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 741,
+      "end": 868,
+      "text": "He had a cluster of three seizures in Dec... In Feb he had 7 nocturnal seizures, and in Apr a single tonic seizure was recorded",
+      "attributes": {
+        "Label": "11 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 741,
+      "end": 957,
+      "text": "He had a cluster of three seizures in Dec (short, not full convulsions, fluctuating awareness, self-terminating). In Feb he had 7 nocturnal seizures, and in Apr a single tonic seizure was recorded during respite care",
+      "attributes": {
+        "Label": "11 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16824,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 April 2011 \n\nDr Ahmed  \nGreenbrook Health Centre  \n145 Cranford Lane, Hounslow TW5 9EX  \n\nDear Dr Ahmed,  \n\nMichael Turner, DOB: 04-02-1983, Hospital No: H914276 NHS No. 8093172456  \nFlat 3, Oakview Supported Living, 12 Beech Road, Hounslow TW4 6JP \n\nMedication: \n\nLevetiracetam 1 g twice daily. Staff report good adherence, no notable mood change since the last visit. Rescue midazolam oromucosal 5 mg is available in the care plan but has not been required in the period under review. \n\nHe resides in supported accommodation where rotating staff maintain daily seizure charts and incident logs; copies were available today and used as the primary source alongside his account. He had a cluster of three seizures in Dec (short, not full convulsions, fluctuating awareness, self-terminating). In Feb he had 7 nocturnal seizures, and in Apr a single tonic seizure was recorded during respite care. There were no associated injuries documented. Post-event recovery was within 10–20 minutes on each occasion, and no emergency services were involved. \n\nPotential triggers noted by staff include poor sleep during room changes and increased anxiety around schedule alterations; caffeine intake has been reduced by the team with no clear effect yet. He has not had recent intercurrent illness. \n\nNeurological examination today is unchanged. We discussed maintaining consistent sleep routines in the residence and ensuring that new or temporary staff continue the current seizure documentation protocol. I have not altered his medication at this stage. Should the nocturnal events increase in frequency or duration, we would consider a dose optimisation of levetiracetam or alternative strategies after review of the updated charts. \n\nWe will review him again in four months, or earlier if the supported living team identify escalation or prolonged events. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides counts over specific recent months: a cluster of three seizures in December, seven nocturnal seizures in February, and one tonic seizure in April. These are within a 5-month span from December to April (Dec, Jan, Feb, Mar, Apr). Total seizures = 3 + 7 + 1 = 11 over 5 months. No indication of other months with seizures in this period. Therefore frequency = 11 per 5 months. Not seizure-free for 6 months.",
+      "seizure_frequency_number": [
+        "11 per 5 month",
+        "He had a cluster of three seizures in Dec... In Feb he had 7 nocturnal seizures, and in Apr a single tonic seizure was recorded"
+      ],
+      "reference": [
+        "11 per 5 month",
+        "He had a cluster of three seizures in Dec (short, not full convulsions, fluctuating awareness, self-terminating). In Feb he had 7 nocturnal seizures, and in Apr a single tonic seizure was recorded during respite care"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

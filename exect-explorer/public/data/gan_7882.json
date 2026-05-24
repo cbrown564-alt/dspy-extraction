@@ -1,0 +1,54 @@
+{
+  "id": "gan_7882",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 30 August 2019\n\nDr Patel\nSt George's Hospital\nBlackshaw Road, London, SW17 0QT\n\nDear Dr Patel,\n\nEmily Carter, DOB: 14-07-2001, Hospital No: H927461 NHS No. 8421597306\n58 Willow Crescent, London, SW15 3LD\n\nDiagnoses:\n\nSeizure disorder; remote history of mild traumatic brain injury.\n\nI reviewed Emily Carter today in clinic with her father. Since our last follow‑up six months ago, she reports that there have been no recognised events suggestive of seizures. She describes feeling well, with no episodes of loss of awareness, no witnessed convulsions, and no nocturnal disturbances reported by the family. She keeps a diary and there have been no entries for events or auras. This represents sustained absence of attacks over this interval, and she has resumed regular college activities without restriction.\n\nCurrent treatment: lamotrigine 100 mg twice daily, unchanged for the past year. She has not required any rescue medication and none is prescribed. There is no implanted device. She tolerates lamotrigine without adverse effects; no rash, mood change, or dizziness.\n\nBackground factors: she has a remote history of a mild traumatic brain injury in adolescence without lasting neurological deficit. There is no family history of seizures. Sleep and alcohol intake are stable, and she avoids known triggers such as sleep deprivation.\n\nExamination today was unremarkable. Observations normal. Neurological examination within normal limits.\n\nPlan:\n- Continue lamotrigine at the current dose.\n- Provide safety advice as discussed; she will continue to maintain a seizure diary.\n- Routine bloods not indicated today in the absence of adverse effects.\n- DVLA guidance re‑iterated; she meets current standards on the basis of the reported sustained absence of events, but must inform us immediately if symptoms recur.\n- Follow‑up in 9 months, sooner if there is any recurrence of events or concerns.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 394,
+      "end": 512,
+      "text": "Since our last follow‑up six months ago, she reports that there have been no recognised events suggestive of seizures.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7882,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 30 August 2019\n\nDr Patel\nSt George's Hospital\nBlackshaw Road, London, SW17 0QT\n\nDear Dr Patel,\n\nEmily Carter, DOB: 14-07-2001, Hospital No: H927461 NHS No. 8421597306\n58 Willow Crescent, London, SW15 3LD\n\nDiagnoses:\n\nSeizure disorder; remote history of mild traumatic brain injury.\n\nI reviewed Emily Carter today in clinic with her father. Since our last follow‑up six months ago, she reports that there have been no recognised events suggestive of seizures. She describes feeling well, with no episodes of loss of awareness, no witnessed convulsions, and no nocturnal disturbances reported by the family. She keeps a diary and there have been no entries for events or auras. This represents sustained absence of attacks over this interval, and she has resumed regular college activities without restriction.\n\nCurrent treatment: lamotrigine 100 mg twice daily, unchanged for the past year. She has not required any rescue medication and none is prescribed. There is no implanted device. She tolerates lamotrigine without adverse effects; no rash, mood change, or dizziness.\n\nBackground factors: she has a remote history of a mild traumatic brain injury in adolescence without lasting neurological deficit. There is no family history of seizures. Sleep and alcohol intake are stable, and she avoids known triggers such as sleep deprivation.\n\nExamination today was unremarkable. Observations normal. Neurological examination within normal limits.\n\nPlan:\n- Continue lamotrigine at the current dose.\n- Provide safety advice as discussed; she will continue to maintain a seizure diary.\n- Routine bloods not indicated today in the absence of adverse effects.\n- DVLA guidance re‑iterated; she meets current standards on the basis of the reported sustained absence of events, but must inform us immediately if symptoms recur.\n- Follow‑up in 9 months, sooner if there is any recurrence of events or concerns.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that since the last follow-up six months ago, there have been no recognised events suggestive of seizures. This indicates zero seizures over a clearly defined 6‑month interval, satisfying the criterion for seizure-free for at least 6 months. Therefore, the correct normalized label is 'seizure free for 6 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "Since our last follow‑up six months ago, she reports that there have been no recognised events suggestive of seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Complete control of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

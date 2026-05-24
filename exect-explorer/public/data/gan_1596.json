@@ -1,0 +1,59 @@
+{
+  "id": "gan_1596",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Hart (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 13 May 2021 10:12\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Chloe Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and monitoring update\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nNot yet classified\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nfive drop attacks and seven petit mal in last week\n\n\nPlan of Action:\n\nThe patient reports wearing a smartwatch with fall-detection enabled; device-generated alerts have corresponded with several of the described events and may support event chronology. They note that the drop events are brief, with rapid recovery, sometimes preceded by a sensation of “spacing out”. No clear daytime triggers have been identified. Sleep has been irregular over the past fortnight per patient report. No recent intercurrent illness.\n\nI have asked the patient to continue current medication unchanged for now and to keep a detailed seizure and alert diary, including smartwatch fall-detection timestamps and witness accounts where available. We will obtain and review the smartwatch alert log alongside the diary at the next appointment to help with classification and correlation. I have requested routine bloods (U&E, LFT, FBC) and a lamotrigine level to ensure therapeutic range. An updated EEG has been arranged, and we will consider further imaging depending on results and clinical evolution.\n\nA follow-up appointment has been booked for six weeks’ time. If the frequency persists or escalates, the patient has been advised to contact the clinic earlier so we can expedite review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 550,
+      "text": "five drop attacks and seven petit mal in last week",
+      "attributes": {
+        "Label": "12 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 500,
+      "end": 550,
+      "text": "five drop attacks and seven petit mal in last week",
+      "attributes": {
+        "Label": "12 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1596,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Hart (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 13 May 2021 10:12\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Chloe Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and monitoring update\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nNot yet classified\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nfive drop attacks and seven petit mal in last week\n\n\nPlan of Action:\n\nThe patient reports wearing a smartwatch with fall-detection enabled; device-generated alerts have corresponded with several of the described events and may support event chronology. They note that the drop events are brief, with rapid recovery, sometimes preceded by a sensation of “spacing out”. No clear daytime triggers have been identified. Sleep has been irregular over the past fortnight per patient report. No recent intercurrent illness.\n\nI have asked the patient to continue current medication unchanged for now and to keep a detailed seizure and alert diary, including smartwatch fall-detection timestamps and witness accounts where available. We will obtain and review the smartwatch alert log alongside the diary at the next appointment to help with classification and correlation. I have requested routine bloods (U&E, LFT, FBC) and a lamotrigine level to ensure therapeutic range. An updated EEG has been arranged, and we will consider further imaging depending on results and clinical evolution.\n\nA follow-up appointment has been booked for six weeks’ time. If the frequency persists or escalates, the patient has been advised to contact the clinic earlier so we can expedite review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: \"five drop attacks and seven petit mal in last week.\" Convert words to numbers and sum because they are within the same timeframe and both are seizure types. Calculation: 5 + 7 = 12 seizures in the last week. Therefore, normalize to '12 per week'.",
+      "seizure_frequency_number": [
+        "12 per week",
+        "five drop attacks and seven petit mal in last week"
+      ],
+      "reference": [
+        "12 per week",
+        "five drop attacks and seven petit mal in last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

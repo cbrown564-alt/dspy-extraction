@@ -1,0 +1,54 @@
+{
+  "id": "gan_6112",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Thomas’ Hospital  \nDepartment of Neurology, Westminster Bridge Road, London SE1 7EH  \n\nDear Dr Patel,  \n\nMichael Turner, DOB: 14-11-1990, Hospital No: H927415 NHS No. 7485209631  \n58 Riverside Walk, London, SE10 0RF  \n\nDiagnoses: \n\nFocal epilepsy, likely temporal lobe onset, with remote history of mild traumatic brain injury. \n\nI reviewed Michael Turner in the epilepsy clinic today. He describes brief focal impaired-awareness episodes characterised by a rising epigastric sensation, déjà vu and behavioural arrest, typically lasting 60–90 seconds, followed by several minutes of fatigue. He and his partner report that the spells tend to cluster during periods of heightened psychological pressure at work, which they have come to recognise as tension-linked seizure flurries. Outside such periods, events are infrequent. Over the past three months he notes approximately 3–5 focal seizures per month, with two short clusters coinciding with project deadlines. No convulsive generalisation has been reported.\n\nCurrent anti-seizure therapy is lamotrigine 150 mg twice daily, well tolerated with no rash, diplopia or mood disturbance. Adherence has been good. No rescue medication has been required. He does not drive. Sleep has been irregular during busy weeks, and caffeine intake has increased; both may be contributory. Alcohol intake remains low. There is no new neurological deficit, and examination today was unremarkable.\n\nRemote mild traumatic brain injury at age 19 (brief loss of consciousness, no surgery) was noted from prior records; MRI brain (2022) showed subtle left mesial temporal signal change without definite hippocampal sclerosis. Interictal EEG last year demonstrated left temporal sharp transients. These findings support a focal epilepsy syndrome. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily. We discussed that if further tension-linked clusters occur, we may consider a modest lamotrigine titration or add-on levetiracetam; no changes were made today at the patient’s preference. \n- Lifestyle measures were reviewed; he will aim for consistent sleep timing and reduce late-evening caffeine, as these appear temporally related to his flurries. \n- Seizure diary to document frequency, potential precipitants and any spread to bilateral tonic–clonic activity. \n- Safety advice reinforced; he remains off driving in accordance with DVLA guidance until criteria for resumption are met. \n- Follow-up in 4 months, sooner if seizure burden increases or events evolve. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 914,
+      "end": 1052,
+      "text": "Over the past three months he notes approximately 3–5 focal seizures per month, with two short clusters coinciding with project deadlines.",
+      "attributes": {
+        "Label": "3 to 5 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6112,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Thomas’ Hospital  \nDepartment of Neurology, Westminster Bridge Road, London SE1 7EH  \n\nDear Dr Patel,  \n\nMichael Turner, DOB: 14-11-1990, Hospital No: H927415 NHS No. 7485209631  \n58 Riverside Walk, London, SE10 0RF  \n\nDiagnoses: \n\nFocal epilepsy, likely temporal lobe onset, with remote history of mild traumatic brain injury. \n\nI reviewed Michael Turner in the epilepsy clinic today. He describes brief focal impaired-awareness episodes characterised by a rising epigastric sensation, déjà vu and behavioural arrest, typically lasting 60–90 seconds, followed by several minutes of fatigue. He and his partner report that the spells tend to cluster during periods of heightened psychological pressure at work, which they have come to recognise as tension-linked seizure flurries. Outside such periods, events are infrequent. Over the past three months he notes approximately 3–5 focal seizures per month, with two short clusters coinciding with project deadlines. No convulsive generalisation has been reported.\n\nCurrent anti-seizure therapy is lamotrigine 150 mg twice daily, well tolerated with no rash, diplopia or mood disturbance. Adherence has been good. No rescue medication has been required. He does not drive. Sleep has been irregular during busy weeks, and caffeine intake has increased; both may be contributory. Alcohol intake remains low. There is no new neurological deficit, and examination today was unremarkable.\n\nRemote mild traumatic brain injury at age 19 (brief loss of consciousness, no surgery) was noted from prior records; MRI brain (2022) showed subtle left mesial temporal signal change without definite hippocampal sclerosis. Interictal EEG last year demonstrated left temporal sharp transients. These findings support a focal epilepsy syndrome. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily. We discussed that if further tension-linked clusters occur, we may consider a modest lamotrigine titration or add-on levetiracetam; no changes were made today at the patient’s preference. \n- Lifestyle measures were reviewed; he will aim for consistent sleep timing and reduce late-evening caffeine, as these appear temporally related to his flurries. \n- Seizure diary to document frequency, potential precipitants and any spread to bilateral tonic–clonic activity. \n- Safety advice reinforced; he remains off driving in accordance with DVLA guidance until criteria for resumption are met. \n- Follow-up in 4 months, sooner if seizure burden increases or events evolve. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past three months he notes approximately 3–5 focal seizures per month, with two short clusters...\" This provides a clear numeric seizure frequency. Convert the range to the allowed format using 'to': 3 to 5 per month. Although clusters are mentioned, their frequency is lower and seizures per cluster are unspecified; per rule 7, select the highest frequency metric, which is seizures per month.",
+      "seizure_frequency_number": [
+        "3 to 5 per month",
+        "Over the past three months he notes approximately 3–5 focal seizures per month, with two short clusters coinciding with project deadlines."
+      ],
+      "reference": [
+        "unknown",
+        "Stress-related seizure episodes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 to 5 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

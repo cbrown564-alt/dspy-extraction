@@ -1,0 +1,59 @@
+{
+  "id": "gan_15964",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 24 May 2017 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nDaniel Morris, DOB: 12-11-1982, Hospital No: H594203 NHS No. 5839201746  \n14 Brookside Close, London, W10 6AB \n\nMedication:  \n\nLevetiracetam 1000 mg twice daily. Patient-reported good adherence; no significant adverse effects beyond mild irritability in the evenings. Naproxen 500 mg as needed for migraine; uses approximately twice per month with fair benefit. \n\nThank you for asking me to review him in clinic today with ongoing episodes suggestive of seizures, on a background of intermittent migraine without aura. The current clinical focus is epilepsy management, while noting his migraine history which has remained stable and is not the primary driver of today’s assessment. \n\nSince his last appointment, the patient and his partner have kept a diary of events. In March he had 3 in sleep and 2 while awake. In May he had 3 in sleep and 3 while awake. These were brief, self-terminating, and without clear provocation. No clear diurnal pattern beyond the nocturnal clustering was identified. He describes a subjective sense of internal \"rush\" and occasional metallic taste immediately beforehand, but there has been no tongue-biting, no prolonged post-event confusion, and no injury. He denies alcohol excess; sleep has been variable due to shift work. \n\nHe underwent routine bloods locally which were within reference limits (U&E, LFT, FBC). MRI brain from last year was reported as structurally unremarkable. A routine EEG performed previously was non-diagnostic. We discussed the potential value of ambulatory EEG if events persist at similar frequency; he is content to consider this. \n\nWe have not altered his antiseizure medication today. I advised continued diary-keeping, attention to sleep hygiene, and to continue migraine measures as currently used, noting that naproxen has not coincided with any change in event frequency. He will also trial a consistent pre-sleep routine for four weeks to reduce nocturnal variability. No driving reported; I reiterated standard safety precautions at home (showers rather than baths, avoid heights, and cooking with care). \n\nIf the nocturnal episodes continue at the current rate over the next 6–8 weeks or if any event lasts longer than five minutes or clusters without recovery, he should seek urgent review. Otherwise, we will see him back in three months. \n\nPlease let me know if there are any concerns in the interim. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 954,
+      "end": 1043,
+      "text": "In March he had 3 in sleep and 2 while awake. In May he had 3 in sleep and 3 while awake.",
+      "attributes": {
+        "Label": "11 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 954,
+      "end": 1042,
+      "text": "In March he had 3 in sleep and 2 while awake. In May he had 3 in sleep and 3 while awake",
+      "attributes": {
+        "Label": "11 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15964,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 24 May 2017 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nDaniel Morris, DOB: 12-11-1982, Hospital No: H594203 NHS No. 5839201746  \n14 Brookside Close, London, W10 6AB \n\nMedication:  \n\nLevetiracetam 1000 mg twice daily. Patient-reported good adherence; no significant adverse effects beyond mild irritability in the evenings. Naproxen 500 mg as needed for migraine; uses approximately twice per month with fair benefit. \n\nThank you for asking me to review him in clinic today with ongoing episodes suggestive of seizures, on a background of intermittent migraine without aura. The current clinical focus is epilepsy management, while noting his migraine history which has remained stable and is not the primary driver of today’s assessment. \n\nSince his last appointment, the patient and his partner have kept a diary of events. In March he had 3 in sleep and 2 while awake. In May he had 3 in sleep and 3 while awake. These were brief, self-terminating, and without clear provocation. No clear diurnal pattern beyond the nocturnal clustering was identified. He describes a subjective sense of internal \"rush\" and occasional metallic taste immediately beforehand, but there has been no tongue-biting, no prolonged post-event confusion, and no injury. He denies alcohol excess; sleep has been variable due to shift work. \n\nHe underwent routine bloods locally which were within reference limits (U&E, LFT, FBC). MRI brain from last year was reported as structurally unremarkable. A routine EEG performed previously was non-diagnostic. We discussed the potential value of ambulatory EEG if events persist at similar frequency; he is content to consider this. \n\nWe have not altered his antiseizure medication today. I advised continued diary-keeping, attention to sleep hygiene, and to continue migraine measures as currently used, noting that naproxen has not coincided with any change in event frequency. He will also trial a consistent pre-sleep routine for four weeks to reduce nocturnal variability. No driving reported; I reiterated standard safety precautions at home (showers rather than baths, avoid heights, and cooking with care). \n\nIf the nocturnal episodes continue at the current rate over the next 6–8 weeks or if any event lasts longer than five minutes or clusters without recovery, he should seek urgent review. Otherwise, we will see him back in three months. \n\nPlease let me know if there are any concerns in the interim. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 24 May 2017. The letter provides explicit counts for recent months: March and May. March: 3 (sleep) + 2 (awake) = 5. May: 3 (sleep) + 3 (awake) = 6. These months fall within the recent period March–May (a 3‑month span). Summing the reported events across this span gives 5 + 6 = 11 over approximately three months. Normalising to the allowed format yields 11 per 3 month.",
+      "seizure_frequency_number": [
+        "11 per 3 month",
+        "In March he had 3 in sleep and 2 while awake. In May he had 3 in sleep and 3 while awake."
+      ],
+      "reference": [
+        "11 per 3 month",
+        "In March he had 3 in sleep and 2 while awake. In May he had 3 in sleep and 3 while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

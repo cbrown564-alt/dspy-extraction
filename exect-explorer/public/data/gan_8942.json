@@ -1,0 +1,59 @@
+{
+  "id": "gan_8942",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 26 July 2022\n\nDr Patel\nRiverside Neurology Clinic\n12 Borough Way, London SE1 3AB\n\nDear Dr Patel,\n\nJordan Ellis, DOB: 14-02-1990, Hospital No: H938472 NHS No. 7492016835\nFlat 3, 27 Mill Lane, London NW6 1NT\n\nDiagnoses:\n\nHistory of seizures under review.\n\nI reviewed Jordan Ellis in clinic today with a focus on interval history and safety. By self-report, they are currently not driving. They report a past history of episodic loss of awareness with occasional collapses, previously assessed in our service. They elected to discontinue anti-seizure medication last year with prior discussion in clinic. Since that time they report no events suggestive of seizures and specifically describe being Seizure-free off ASMs since 20/11/2021. There have been no emergency attendances, no rescue medication use, and no new neurological symptoms. Sleep and general health are stable. There has been no recent intercurrent illness.\n\nExamination today was unremarkable. No medication changes were made. We discussed general safety and recognition of relapse, and they will continue to avoid driving and follow standard precautions as previously advised. We agreed on watchful follow-up given the sustained seizure freedom off treatment, with instructions to contact the service promptly if any events recur.\n\nPlan:\n- No ASMs currently; continue observation.\n- Routine follow-up in 6 months, sooner if any episodes occur.\n- Patient will maintain a simple diary of any concerning events.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 749,
+      "end": 788,
+      "text": "Seizure-free off ASMs since 20/11/2021.",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 749,
+      "end": 787,
+      "text": "Seizure-free off ASMs since 20/11/2021",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8942,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 26 July 2022\n\nDr Patel\nRiverside Neurology Clinic\n12 Borough Way, London SE1 3AB\n\nDear Dr Patel,\n\nJordan Ellis, DOB: 14-02-1990, Hospital No: H938472 NHS No. 7492016835\nFlat 3, 27 Mill Lane, London NW6 1NT\n\nDiagnoses:\n\nHistory of seizures under review.\n\nI reviewed Jordan Ellis in clinic today with a focus on interval history and safety. By self-report, they are currently not driving. They report a past history of episodic loss of awareness with occasional collapses, previously assessed in our service. They elected to discontinue anti-seizure medication last year with prior discussion in clinic. Since that time they report no events suggestive of seizures and specifically describe being Seizure-free off ASMs since 20/11/2021. There have been no emergency attendances, no rescue medication use, and no new neurological symptoms. Sleep and general health are stable. There has been no recent intercurrent illness.\n\nExamination today was unremarkable. No medication changes were made. We discussed general safety and recognition of relapse, and they will continue to avoid driving and follow standard precautions as previously advised. We agreed on watchful follow-up given the sustained seizure freedom off treatment, with instructions to contact the service promptly if any events recur.\n\nPlan:\n- No ASMs currently; continue observation.\n- Routine follow-up in 6 months, sooner if any episodes occur.\n- Patient will maintain a simple diary of any concerning events.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 26 July 2022. The letter states the patient has been \"Seizure-free off ASMs since 20/11/2021\" and reports no events suggestive of seizures since that date. Calculate duration from 20 Nov 2021 to 26 Jul 2022: Nov 20 to Dec 20 ≈ 1 month, then Dec 20 to Jul 20 ≈ 7 months, plus 6 days ≈ 8 months total. This exceeds 6 months, so they meet the seizure-free criterion. Therefore, the normalized label is 'seizure free for 8 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 8 month",
+        "Seizure-free off ASMs since 20/11/2021."
+      ],
+      "reference": [
+        "seizure free for 8 month",
+        "Seizure-free off ASMs since 20/11/2021"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

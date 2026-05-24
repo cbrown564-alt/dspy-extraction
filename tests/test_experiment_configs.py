@@ -54,6 +54,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_SCORER,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
@@ -407,6 +408,39 @@ def test_exect_s5_frequency_pre_vocab_am_guard_configs_record_contract(
     assert set(config.taxonomy.hybrid_balance_class) == {
         "H1_post_deterministic",
         "H2_pre_deterministic",
+    }
+    assert set(config.taxonomy.interleaving_positions) == {"pre", "during", "post"}
+
+
+def test_exect_s5_frequency_verify_cap25_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini"
+    )
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records == 25
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT
+    )
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.controls.verifier_policy == (
+        "frequency_evidence_verify_reject_only_v1"
+    )
+    assert config.taxonomy is not None
+    assert set(config.taxonomy.clinical_task_family) == {"frequency", "medication"}
+    assert set(config.taxonomy.hybrid_balance_class) == {
+        "H2_pre_deterministic",
+        "H1_post_deterministic",
+        "H4_deterministic_first_llm_adjudicates",
     }
     assert set(config.taxonomy.interleaving_positions) == {"pre", "during", "post"}
 

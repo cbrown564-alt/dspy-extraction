@@ -1,0 +1,59 @@
+{
+  "id": "gan_1534",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Khan\nRiverside Medical Practice\n28 Brook Street, London W2 5AB\n\nDear Dr Khan,\n\nHannah Lewis, DOB: 12-04-1992, Hospital No: N4839201 NHS No. 9054176382\nFlat 3, 14 Wharf Mews, London, W10 6PT\n\nDiagnosis: Combined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nOccupational context: She works as a warehouse picker operating between tall racking and narrow aisles, with variable lifting demands and shift-dependent pace.\n\nHistory since last review:\n- Over the last month she reports six tonic-clonic and three petit mal in last month. She describes the petit mal as brief staring spells with loss of awareness, often noticed by colleagues when she pauses mid-task. The tonic-clonic events have occurred both at home and once at work at the end of a night shift.\n- She continues to experience focal auras (metallic taste and rising epigastric sensation) on some mornings after rapid-paced shifts; these do not always generalise.\n- Triggers reported: sleep disruption due to alternating early/late shifts, missed meals during busier picking periods, and occasional dehydration in warm aisles.\n\nMedication:\n- Oxcarbazepine 600 mg twice daily (patient-reported adherence good, two missed doses in the last month across shift changes).\n- No adverse effects beyond mild morning dizziness on early starts.\n\nExamination (today):\n- Neurological examination unremarkable between events. No focal deficits.\n\nPlan and discussion:\n- We discussed the pattern being consistent with combined generalised and focal epilepsy, given the coexistence of generalised tonic–clonic seizures, absence-type episodes described as petit mal, and focal auras with impaired awareness at times.\n- She will continue current oxcarbazepine for now while we gather further data with a seizure diary aligned to shift patterns and hydration/meal timing, as she is keen to maintain stability at work pending investigations.\n- I have arranged an EEG with sleep deprivation and updated MRI to characterise both focal and generalised features.\n- She has informed her employer about the episodes. She reports the aisles are narrow with variable lifting demands; she is self-limiting ladder use and heavy lifts after nights. Workplace risk conversation ongoing per patient report.\n\nFollow-up:\n- Review in three months, sooner if events escalate or injuries occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 561,
+      "end": 644,
+      "text": "Over the last month she reports six tonic-clonic and three petit mal in last month.",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 593,
+      "end": 643,
+      "text": "six tonic-clonic and three petit mal in last month",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1534,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Khan\nRiverside Medical Practice\n28 Brook Street, London W2 5AB\n\nDear Dr Khan,\n\nHannah Lewis, DOB: 12-04-1992, Hospital No: N4839201 NHS No. 9054176382\nFlat 3, 14 Wharf Mews, London, W10 6PT\n\nDiagnosis: Combined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nOccupational context: She works as a warehouse picker operating between tall racking and narrow aisles, with variable lifting demands and shift-dependent pace.\n\nHistory since last review:\n- Over the last month she reports six tonic-clonic and three petit mal in last month. She describes the petit mal as brief staring spells with loss of awareness, often noticed by colleagues when she pauses mid-task. The tonic-clonic events have occurred both at home and once at work at the end of a night shift.\n- She continues to experience focal auras (metallic taste and rising epigastric sensation) on some mornings after rapid-paced shifts; these do not always generalise.\n- Triggers reported: sleep disruption due to alternating early/late shifts, missed meals during busier picking periods, and occasional dehydration in warm aisles.\n\nMedication:\n- Oxcarbazepine 600 mg twice daily (patient-reported adherence good, two missed doses in the last month across shift changes).\n- No adverse effects beyond mild morning dizziness on early starts.\n\nExamination (today):\n- Neurological examination unremarkable between events. No focal deficits.\n\nPlan and discussion:\n- We discussed the pattern being consistent with combined generalised and focal epilepsy, given the coexistence of generalised tonic–clonic seizures, absence-type episodes described as petit mal, and focal auras with impaired awareness at times.\n- She will continue current oxcarbazepine for now while we gather further data with a seizure diary aligned to shift patterns and hydration/meal timing, as she is keen to maintain stability at work pending investigations.\n- I have arranged an EEG with sleep deprivation and updated MRI to characterise both focal and generalised features.\n- She has informed her employer about the episodes. She reports the aisles are narrow with variable lifting demands; she is self-limiting ladder use and heavy lifts after nights. Workplace risk conversation ongoing per patient report.\n\nFollow-up:\n- Review in three months, sooner if events escalate or injuries occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the last month she reports six tonic-clonic and three petit mal in last month.' These are seizure events within the same month. Per the rule for handling multiple frequencies, when multiple types exist within the same timeframe, we sum them if they are in the same dimension. Calculation: 6 tonic-clonic + 3 petit mal = 9 seizures in the last month. Therefore the normalized label is '9 per month'.",
+      "seizure_frequency_number": [
+        "9 per month",
+        "Over the last month she reports six tonic-clonic and three petit mal in last month."
+      ],
+      "reference": [
+        "9 per month",
+        "six tonic-clonic and three petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

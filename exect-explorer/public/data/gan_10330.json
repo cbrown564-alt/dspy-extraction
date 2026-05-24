@@ -1,0 +1,54 @@
+{
+  "id": "gan_10330",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He continues to report episodes suggestive of seizures despite good adherence to current medication. I last met with him in early May 2025. Since then, he describes intermittent brief lapses in awareness and three occasions of generalised shaking witnessed by his partner. He and his partner have started a diary and note that the events seem more likely towards the end of the week, particularly after busier days; at present the information is limited, but there may be a tendency for clusters around weekends without a reliable count available. \n\nHe is currently taking Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He reports daytime fatigue and occasional morning headaches, but no rash, diplopia or mood lability beyond mild irritability that he feels is manageable. He has begun reducing social alcohol intake over the past month, now limiting this to one or two drinks on some weekends. There is no recreational drug use. Sleep is variable due to shift work. \n\nNeurological examination today is unremarkable. Weight stable at 78 kg, BP 126/78, pulse 72 regular. No new focal deficits. \n\nWe reviewed safety, including supervision around water and avoidance of heights or operating machinery when sleep-deprived. I have asked him to continue the seizure and trigger diary, including exact timing, alcohol exposure, sleep pattern and missed doses if any. I have arranged an up-to-date EEG and bloods for antiepileptic drug levels where applicable, FBC, U&E and LFTs. I will also schedule a follow-up in three months, or sooner if the diary suggests a clear escalation. \n\nAt this stage I have not altered medication, pending the EEG and a more complete diary. If the pattern persists, we can consider rationalising therapy to minimise fatigue and exploring alternative agents. He is agreeable to this plan. We briefly discussed referral to our epilepsy nurse specialist for education and support, which he would welcome. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 849,
+      "text": "there may be a tendency for clusters around weekends without a reliable count available",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10330,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He continues to report episodes suggestive of seizures despite good adherence to current medication. I last met with him in early May 2025. Since then, he describes intermittent brief lapses in awareness and three occasions of generalised shaking witnessed by his partner. He and his partner have started a diary and note that the events seem more likely towards the end of the week, particularly after busier days; at present the information is limited, but there may be a tendency for clusters around weekends without a reliable count available. \n\nHe is currently taking Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He reports daytime fatigue and occasional morning headaches, but no rash, diplopia or mood lability beyond mild irritability that he feels is manageable. He has begun reducing social alcohol intake over the past month, now limiting this to one or two drinks on some weekends. There is no recreational drug use. Sleep is variable due to shift work. \n\nNeurological examination today is unremarkable. Weight stable at 78 kg, BP 126/78, pulse 72 regular. No new focal deficits. \n\nWe reviewed safety, including supervision around water and avoidance of heights or operating machinery when sleep-deprived. I have asked him to continue the seizure and trigger diary, including exact timing, alcohol exposure, sleep pattern and missed doses if any. I have arranged an up-to-date EEG and bloods for antiepileptic drug levels where applicable, FBC, U&E and LFTs. I will also schedule a follow-up in three months, or sooner if the diary suggests a clear escalation. \n\nAt this stage I have not altered medication, pending the EEG and a more complete diary. If the pattern persists, we can consider rationalising therapy to minimise fatigue and exploring alternative agents. He is agreeable to this plan. We briefly discussed referral to our epilepsy nurse specialist for education and support, which he would welcome. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient continues to have episodes suggestive of seizures. It provides qualitative details: intermittent brief lapses in awareness and three occasions of generalised shaking since early May 2025. However, it does not give a clear time-normalised frequency. The diary is described as limited with no reliable count available, and mentions possible clustering around weekends but again without quantification. Because there is no explicit numeric frequency per day/week/month/year and no sufficient data to calculate one, the frequency cannot be determined. Not seizure free, and the period since last review (early May to Oct) includes events, so cannot label seizure free.",
+      "seizure_frequency_number": [
+        "unknown",
+        "there may be a tendency for clusters around weekends without a reliable count available"
+      ],
+      "reference": [
+        "unknown",
+        "Possible weekend clusters; insufficient data to quantify"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12882",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 20 April 2019 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Outpatient Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Reynolds, DOB: 14-08-1986, Hospital No: H482917 NHS No. 9045127368  \nFlat 12, 5 Oakmere Court, Wimbledon, London SW19 3EL  \n\nDiagnoses: \n\nFocal epilepsy, likely temporal lobe onset. \n\nI reviewed Michael Reynolds today in the epilepsy clinic, accompanied by his partner. He reports that seizure onset remains characterised by a rising epigastric sensation and déjà vu, occasionally progressing to behavioural arrest with automatisms and, less commonly, secondary generalisation. Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date, and a reduction in focal impaired-awareness episodes to brief auras occurring approximately once or twice per month.\n\nHe is currently taking lamotrigine 150 mg twice daily and levetiracetam 1 g twice daily, both well tolerated without rash, mood change, or cognitive adverse effects. He has not required rescue medication and there have been no emergency department attendances since January. Sleep regularity and medication adherence have been good by his report, and he has avoided known precipitants such as alcohol excess. \n\nNeurological examination in clinic was unremarkable. Review of prior investigations shows MRI brain (2017) with subtle T2/FLAIR hyperintensity in the left mesial temporal region without volume loss; routine EEG (2018) demonstrated intermittent left temporal sharp transients. No new investigations were required today. \n\nWe discussed ongoing management of his focal epilepsy. Given the improved seizure control and tolerability, I advised continuation of the current regimen. Driving advice and SUDEP risk were reviewed in line with DVLA guidance; he understands the requirement for seizure freedom with impaired awareness/generalised seizures before resuming driving. A written seizure action plan was provided, and he will continue to maintain a seizure diary. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily and levetiracetam 1 g twice daily. \n- No rescue medication required at present; patient prefers to defer unless frequency worsens. \n- Safety counselling reinforced; avoid sleep deprivation and alcohol excess. \n- Routine follow-up in 6 months, or earlier if escalation of focal impaired-awareness events or any adverse effects. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 807,
+      "end": 875,
+      "text": "seven generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "7 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 711,
+      "end": 875,
+      "text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "7 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12882,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 20 April 2019 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Outpatient Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Reynolds, DOB: 14-08-1986, Hospital No: H482917 NHS No. 9045127368  \nFlat 12, 5 Oakmere Court, Wimbledon, London SW19 3EL  \n\nDiagnoses: \n\nFocal epilepsy, likely temporal lobe onset. \n\nI reviewed Michael Reynolds today in the epilepsy clinic, accompanied by his partner. He reports that seizure onset remains characterised by a rising epigastric sensation and déjà vu, occasionally progressing to behavioural arrest with automatisms and, less commonly, secondary generalisation. Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date, and a reduction in focal impaired-awareness episodes to brief auras occurring approximately once or twice per month.\n\nHe is currently taking lamotrigine 150 mg twice daily and levetiracetam 1 g twice daily, both well tolerated without rash, mood change, or cognitive adverse effects. He has not required rescue medication and there have been no emergency department attendances since January. Sleep regularity and medication adherence have been good by his report, and he has avoided known precipitants such as alcohol excess. \n\nNeurological examination in clinic was unremarkable. Review of prior investigations shows MRI brain (2017) with subtle T2/FLAIR hyperintensity in the left mesial temporal region without volume loss; routine EEG (2018) demonstrated intermittent left temporal sharp transients. No new investigations were required today. \n\nWe discussed ongoing management of his focal epilepsy. Given the improved seizure control and tolerability, I advised continuation of the current regimen. Driving advice and SUDEP risk were reviewed in line with DVLA guidance; he understands the requirement for seizure freedom with impaired awareness/generalised seizures before resuming driving. A written seizure action plan was provided, and he will continue to maintain a seizure diary. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily and levetiracetam 1 g twice daily. \n- No rescue medication required at present; patient prefers to defer unless frequency worsens. \n- Safety counselling reinforced; avoid sleep deprivation and alcohol excess. \n- Routine follow-up in 6 months, or earlier if escalation of focal impaired-awareness events or any adverse effects. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit seizure frequency statements in the letter: (a) seven generalized tonic-clonic seizures documented this year to date; (b) brief auras occurring approximately once or twice per month. 2) Determine the time window for 'this year to date' relative to the clinic date of 20 April 2019: from 1 January 2019 to 20 April 2019, which is roughly 3.5 to 4 months. 3) Normalize the explicit count to allowed units: seven seizures over approximately four months → 7 per 4 month. 4) There is another approximate frequency (auras once or twice per month), but because it is approximate and the instruction prioritizes explicit numeric expressions, use the explicit count normalized to months for the final label.",
+      "seizure_frequency_number": [
+        "7 per 4 month",
+        "seven generalised tonic-clonic seizures documented this year to date"
+      ],
+      "reference": [
+        "7 per 4 month",
+        "Following introduction of lamotrigine, there has been a clear improvement in control, with just seven generalised tonic-clonic seizures documented this year to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

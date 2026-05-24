@@ -1,0 +1,48 @@
+{
+  "id": "gan_3407",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 September 2025 \n\nDr A Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Catherine’s Hospital, London  \n\nDear Dr A Patel, \n\nMr Thomas Green, DOB: 22-03-1987, Hospital No: X913472 NHS No. 7482195063  \nFlat 3, 12 Brook Lane, London, SE15 9QT  \n\nDiagnosis: \n\nFocal epilepsy with ongoing focal-onset seizures; previously responsive to carbamazepine, limited benefit from levetiracetam\n\nAetiology: \n\nLeft temporal cortical dysplasia suspected on prior imaging\n\nOther Medical Problems: \n\nMild asthma managed with PRN salbutamol inhaler; vitamin D insufficiency on supplementation\n\nManagement Plan: \n\n- Continue carbamazepine modified release 400 mg morning and 600 mg evening; remain on a single branded preparation.\n- Add-on lacosamide initiated at 50 mg twice daily for two weeks, then increase to 100 mg twice daily if tolerated.\n- Safety advice reinforced regarding bathing, heights, and operating machinery.\n- Arrange an updated MRI brain with epilepsy protocol and EEG with sleep deprivation to reassess lateralisation.\n- Review in 4 months with drug levels and U&Es/LFTs prior to appointment.\n\nClinical Summary:\n\nMr Thomas Green has focal epilepsy. He reports recurrent events arising from sleep with a familiar aura (a brief rising epigastric sensation) followed by right arm stiffening and brief impaired awareness, lasting under two minutes, with fatigue on waking. He describes disturbed nights with episodes occurring on the majority of nights each week, often clustering in the early hours around 2–3 a.m. This pattern of sleep-related seizures occurring most evenings in bed has been stable for several months and, notably, has persisted without meaningful change since commencing current therapy. Daytime events are rare. There have been no recent injuries, tongue biting is occasional, and there is no incontinence. Triggers include sleep deprivation and late shifts.\n\nMedication history includes prior trial of levetiracetam up to 1.5 g twice daily with irritability and minimal seizure reduction; best historical control was with carbamazepine. He has had no significant adverse effects on the present dose. He does not drive and understands DVLA guidance. He remains in employment as a warehouse supervisor and has requested a letter to support avoiding overnight shifts due to sleep-related seizure risk; I will provide this.\n\nExamination today was unremarkable with no focal neurological deficits. Weight stable; labs from last month show normal sodium and LFTs. We discussed treatment options and agreed to introduce lacosamide as adjunctive therapy, with counselling on side effects and slow titration. We will also revisit imaging and EEG to evaluate for potential surgical candidacy should drug resistance be confirmed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1482,
+      "end": 1580,
+      "text": "occurring on the majority of nights each week, often clustering in the early hours around 2–3 a.m.",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3407,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 September 2025 \n\nDr A Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Catherine’s Hospital, London  \n\nDear Dr A Patel, \n\nMr Thomas Green, DOB: 22-03-1987, Hospital No: X913472 NHS No. 7482195063  \nFlat 3, 12 Brook Lane, London, SE15 9QT  \n\nDiagnosis: \n\nFocal epilepsy with ongoing focal-onset seizures; previously responsive to carbamazepine, limited benefit from levetiracetam\n\nAetiology: \n\nLeft temporal cortical dysplasia suspected on prior imaging\n\nOther Medical Problems: \n\nMild asthma managed with PRN salbutamol inhaler; vitamin D insufficiency on supplementation\n\nManagement Plan: \n\n- Continue carbamazepine modified release 400 mg morning and 600 mg evening; remain on a single branded preparation.\n- Add-on lacosamide initiated at 50 mg twice daily for two weeks, then increase to 100 mg twice daily if tolerated.\n- Safety advice reinforced regarding bathing, heights, and operating machinery.\n- Arrange an updated MRI brain with epilepsy protocol and EEG with sleep deprivation to reassess lateralisation.\n- Review in 4 months with drug levels and U&Es/LFTs prior to appointment.\n\nClinical Summary:\n\nMr Thomas Green has focal epilepsy. He reports recurrent events arising from sleep with a familiar aura (a brief rising epigastric sensation) followed by right arm stiffening and brief impaired awareness, lasting under two minutes, with fatigue on waking. He describes disturbed nights with episodes occurring on the majority of nights each week, often clustering in the early hours around 2–3 a.m. This pattern of sleep-related seizures occurring most evenings in bed has been stable for several months and, notably, has persisted without meaningful change since commencing current therapy. Daytime events are rare. There have been no recent injuries, tongue biting is occasional, and there is no incontinence. Triggers include sleep deprivation and late shifts.\n\nMedication history includes prior trial of levetiracetam up to 1.5 g twice daily with irritability and minimal seizure reduction; best historical control was with carbamazepine. He has had no significant adverse effects on the present dose. He does not drive and understands DVLA guidance. He remains in employment as a warehouse supervisor and has requested a letter to support avoiding overnight shifts due to sleep-related seizure risk; I will provide this.\n\nExamination today was unremarkable with no focal neurological deficits. Weight stable; labs from last month show normal sodium and LFTs. We discussed treatment options and agreed to introduce lacosamide as adjunctive therapy, with counselling on side effects and slow titration. We will also revisit imaging and EEG to evaluate for potential surgical candidacy should drug resistance be confirmed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes recurrent sleep-related focal seizures occurring on the majority of nights each week, often clustering in the early hours. There is no exact numeric count per night, but the frequency is clearly more than once per week and less than daily every night. Phrases: 'on the majority of nights each week' and 'This pattern of sleep-related seizures occurring most evenings in bed has been stable for several months.' Since no precise number is given and clusters are mentioned without specifying number per cluster, the most accurate normalized label is 'multiple per week.'",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "occurring on the majority of nights each week, often clustering in the early hours around 2–3 a.m."
+      ],
+      "reference": [
+        "multiple per week",
+        "Nocturnal seizures most nights"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

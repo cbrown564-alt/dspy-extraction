@@ -1,0 +1,54 @@
+{
+  "id": "gan_7670",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Emma Patel\nGreenford Lane Medical Centre\n\n72 Greenford Lane, London, W7 2QH\nDear Dr Emma Patel\nMichael Carter, DOB: 21-11-1982, Hospital No: H8294753 NHS No. 6493820174\nFlat 4, 12 Brookside Close, London, W7 3LP \n\nI reviewed the above patient in the Neurology Clinic today. He remains on long-term antiseizure therapy and bone-health monitoring is being undertaken via his GP and recorded elsewhere. Since I last saw him six months ago, he describes brief daily events for which he retains awareness, often preceded by a distinct smell sensation and followed by fatigue lasting 10–15 minutes. He also reports two nocturnal convulsive episodes in August, witnessed by his partner, with tongue biting and myalgia the following day.\n\nCurrent medication: Levetiracetam 1500 mg b.d., Lamotrigine 200 mg b.d., and Clobazam 10 mg nocte. He has tolerated these without rash or mood instability, though he notes occasional daytime somnolence and mild concentration difficulties. No recent head injury, intercurrent infection, or missed doses were reported. Alcohol intake is minimal and sleep routine has improved with the use of a smartphone reminder for dosing. There is no new focal neurological complaint between events.\n\nExamination today was unremarkable with normal speech, extraocular movements, tone, power, and coordination. No ataxia or asymmetry was evident. Weight and blood pressure are stable.\n\nGiven the preserved awareness episodes with a preceding smell sensation occurring most days, alongside the two nocturnal convulsions in August, I have advised maintaining a detailed seizure diary and capturing any associated triggers. I will arrange an ambulatory EEG and update MRI brain with epilepsy protocol to reassess for any interval change. Routine safety advice was reinforced, including supervision around heights and water and adherence to driving regulations based on current symptoms. He is agreeable to referral to our epilepsy specialist nurse for further education and support. We will avoid medication changes today pending the investigation results, given current tolerability and the need to clarify event burden and pattern.\n\nI will review him in clinic after the tests or sooner if there is escalation in frequency or severity. He knows to contact the service if he experiences prolonged events, clustering, or injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1536,
+      "end": 1555,
+      "text": "occurring most days",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7670,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Emma Patel\nGreenford Lane Medical Centre\n\n72 Greenford Lane, London, W7 2QH\nDear Dr Emma Patel\nMichael Carter, DOB: 21-11-1982, Hospital No: H8294753 NHS No. 6493820174\nFlat 4, 12 Brookside Close, London, W7 3LP \n\nI reviewed the above patient in the Neurology Clinic today. He remains on long-term antiseizure therapy and bone-health monitoring is being undertaken via his GP and recorded elsewhere. Since I last saw him six months ago, he describes brief daily events for which he retains awareness, often preceded by a distinct smell sensation and followed by fatigue lasting 10–15 minutes. He also reports two nocturnal convulsive episodes in August, witnessed by his partner, with tongue biting and myalgia the following day.\n\nCurrent medication: Levetiracetam 1500 mg b.d., Lamotrigine 200 mg b.d., and Clobazam 10 mg nocte. He has tolerated these without rash or mood instability, though he notes occasional daytime somnolence and mild concentration difficulties. No recent head injury, intercurrent infection, or missed doses were reported. Alcohol intake is minimal and sleep routine has improved with the use of a smartphone reminder for dosing. There is no new focal neurological complaint between events.\n\nExamination today was unremarkable with normal speech, extraocular movements, tone, power, and coordination. No ataxia or asymmetry was evident. Weight and blood pressure are stable.\n\nGiven the preserved awareness episodes with a preceding smell sensation occurring most days, alongside the two nocturnal convulsions in August, I have advised maintaining a detailed seizure diary and capturing any associated triggers. I will arrange an ambulatory EEG and update MRI brain with epilepsy protocol to reassess for any interval change. Routine safety advice was reinforced, including supervision around heights and water and adherence to driving regulations based on current symptoms. He is agreeable to referral to our epilepsy specialist nurse for further education and support. We will avoid medication changes today pending the investigation results, given current tolerability and the need to clarify event burden and pattern.\n\nI will review him in clinic after the tests or sooner if there is escalation in frequency or severity. He knows to contact the service if he experiences prolonged events, clustering, or injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has ongoing events: \"brief daily events ... occurring most days\" with preserved awareness. This implies seizures on more than half of the days but not strictly every day, making the exact number per day unclear. It also mentions \"two nocturnal convulsive episodes in August\". Applying the rule to choose the highest frequency across types, the frequent aware events outweigh two in a month. Because the exact daily count is not specified, normalize to a vague weekly rate: multiple per week.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "occurring most days"
+      ],
+      "reference": [
+        "unknown",
+        "Reports olfactory aura preceding brief spells"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

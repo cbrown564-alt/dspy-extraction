@@ -1,0 +1,59 @@
+{
+  "id": "gan_4378",
+  "text": "Department of Neurology\n\nClinic Date: 20 September 2015\n\nDr Amelia Carter\nSt. Cuthbert Neurology Centre\nOutpatients, 12 Brookfield Way, Manchester M14 6QX\n\nDear Dr Amelia Carter,\n\nMichael Turner, DOB: 17-02-1976, Hospital No: M394820 NHS No. 9042751136\nFlat 3, 28 Redcliffe Street, Manchester, M15 4DZ\n\nDiagnoses:\n\n- Recurrent seizures – classification not established\n- Type 2 diabetes managed in primary care\n\nCurrent Medication:\n\n- Levetiracetam 500 mg twice daily\n- Metformin 1 g twice daily (from primary care records)\n\nPlan:\n\n- Continue levetiracetam 500 mg twice daily\n- Safety and trigger management advice provided\n- Arrange sleep-deprived EEG and MRI brain with epilepsy protocol to aid classification\n- DVLA guidance discussed in line with current standards\n- Liaise with GP regarding glycaemic control; no changes to diabetes regimen from neurology clinic\n- Follow-up in 6 months or sooner if further events\n\nI reviewed Michael Turner in clinic today regarding episodes suggestive of seizures. He reports three discrete events this year, documented in his personal diary as: \"Seizure events on 07-03, 07-08, 09-05\". He describes an abrupt loss of awareness on each occasion with brief stiffening witnessed by a family member during the July episodes, followed by several minutes of confusion. No clear focal warning has been identified, and there has been no tongue biting or urinary incontinence reported. He notes poor sleep preceding two of the events. There have been no injuries.\n\nHe has a background of Type 2 diabetes, which is followed and treated in primary care; capillary glucose around the time of the most recent event (self-checked) was 7.8 mmol/L. There is no history of head injury, CNS infection, or family history of seizures. He drinks alcohol occasionally and denies recreational drug use.\n\nExamination today was unremarkable with normal cardiorespiratory and neurological findings. Routine bloods from the GP last month were within expected parameters for his diabetes management and showed normal electrolytes. We discussed that, at present, the event type cannot be determined from history alone, and further investigations are required. Pending classification, I have continued levetiracetam at the current dose given his recent cluster of events and tolerability, with advice regarding adherence, sleep regularity, and avoidance of identified triggers.\n\nI provided written information about seizure first aid and signposted to local support resources. I also reviewed driving regulations and advised accordingly based on his reported events.\n\nI will write again when the EEG and MRI results are available. Please feel free to contact me if there are interim concerns.\n\nWith best wishes,\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1006,
+      "end": 1127,
+      "text": "He reports three discrete events this year, documented in his personal diary as: \"Seizure events on 07-03, 07-08, 09-05\".",
+      "attributes": {
+        "Label": "3 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1088,
+      "end": 1125,
+      "text": "Seizure events on 07-03, 07-08, 09-05",
+      "attributes": {
+        "Label": "3 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4378,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 20 September 2015\n\nDr Amelia Carter\nSt. Cuthbert Neurology Centre\nOutpatients, 12 Brookfield Way, Manchester M14 6QX\n\nDear Dr Amelia Carter,\n\nMichael Turner, DOB: 17-02-1976, Hospital No: M394820 NHS No. 9042751136\nFlat 3, 28 Redcliffe Street, Manchester, M15 4DZ\n\nDiagnoses:\n\n- Recurrent seizures – classification not established\n- Type 2 diabetes managed in primary care\n\nCurrent Medication:\n\n- Levetiracetam 500 mg twice daily\n- Metformin 1 g twice daily (from primary care records)\n\nPlan:\n\n- Continue levetiracetam 500 mg twice daily\n- Safety and trigger management advice provided\n- Arrange sleep-deprived EEG and MRI brain with epilepsy protocol to aid classification\n- DVLA guidance discussed in line with current standards\n- Liaise with GP regarding glycaemic control; no changes to diabetes regimen from neurology clinic\n- Follow-up in 6 months or sooner if further events\n\nI reviewed Michael Turner in clinic today regarding episodes suggestive of seizures. He reports three discrete events this year, documented in his personal diary as: \"Seizure events on 07-03, 07-08, 09-05\". He describes an abrupt loss of awareness on each occasion with brief stiffening witnessed by a family member during the July episodes, followed by several minutes of confusion. No clear focal warning has been identified, and there has been no tongue biting or urinary incontinence reported. He notes poor sleep preceding two of the events. There have been no injuries.\n\nHe has a background of Type 2 diabetes, which is followed and treated in primary care; capillary glucose around the time of the most recent event (self-checked) was 7.8 mmol/L. There is no history of head injury, CNS infection, or family history of seizures. He drinks alcohol occasionally and denies recreational drug use.\n\nExamination today was unremarkable with normal cardiorespiratory and neurological findings. Routine bloods from the GP last month were within expected parameters for his diabetes management and showed normal electrolytes. We discussed that, at present, the event type cannot be determined from history alone, and further investigations are required. Pending classification, I have continued levetiracetam at the current dose given his recent cluster of events and tolerability, with advice regarding adherence, sleep regularity, and avoidance of identified triggers.\n\nI provided written information about seizure first aid and signposted to local support resources. I also reviewed driving regulations and advised accordingly based on his reported events.\n\nI will write again when the EEG and MRI results are available. Please feel free to contact me if there are interim concerns.\n\nWith best wishes,\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"He reports three discrete events this year, documented in his personal diary as: 'Seizure events on 07-03, 07-08, 09-05'.\" The narrative also refers to \"the July episodes,\" confirming that 07-03 and 07-08 are July 3 and July 8, and 09-05 is September 5. Thus, there are 3 seizures between July 3 and September 5, approximately a 2-month span. This yields a frequency of 3 per 2 months. Although it also says \"three discrete events this year\" (which could be interpreted as 3 per year), per the rule to select the highest frequency, 3 per 2 month is chosen. The patient is not seizure-free for 6 months.",
+      "seizure_frequency_number": [
+        "3 per 2 month",
+        "He reports three discrete events this year, documented in his personal diary as: \"Seizure events on 07-03, 07-08, 09-05\"."
+      ],
+      "reference": [
+        "3 per 2 month",
+        "Seizure events on 07-03, 07-08, 09-05"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

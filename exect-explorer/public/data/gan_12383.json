@@ -1,0 +1,59 @@
+{
+  "id": "gan_12383",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 15 September 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nJames Carter, DOB: 14-03-1986, Hospital No: KCH472918 NHS No. 9473165820  \nFlat 12, 8 Millwright Lane, London, SE15 3AB\n\nThank you for your referral. I reviewed the patient in clinic following concerns about ongoing seizures in the context of his work with metal fabrication and intermittent arc-light exposure. He reports strict adherence to workplace safety practices, including a full protective welding visor and gloves, and says he does not remove the visor during active welding. He is otherwise in good general health. There is no recent history of head injury, meningitis, or alcohol misuse. Sleep has been variable due to shift changes at the workshop.\n\nRegarding current events, he still has focal onset seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change. He and his partner describe the focal episodes as brief lapses with a rising internal sensation and impaired awareness lasting under a minute, often clustering late morning. The drop attacks tend to occur in short runs over two to three days, typically in the early evening after work, with quick recovery but occasional bruising. The tonic-clonic events are usually nocturnal or in the early hours; he is sore and fatigued for the following day. He denies clear photic triggers, and states the seizure frequency does not vary with welding versus non-welding days. He continues his regular medication regimen as previously prescribed and has not missed doses.\n\nHe does not drive and remains in manual employment with modified duties when fatigued. His employer is aware of his condition and has implemented buddy supervision during hot-work tasks. There have been no burns or occupational incidents attributable to events on the shop floor. He reports that hydration, regular breaks, and consistent sleep help him feel steadier, though not changing the overall frequency. No new neurological symptoms were volunteered. Examination in clinic today was unremarkable with normal speech, cranial nerves, tone, and coordination; gait steady.\n\nI have advised ongoing documentation of events with dates, times, and context (workday versus rest day, sleep duration, and recent stressors), and asked him to bring his workplace risk assessment to the next appointment so that we can ensure appropriate safety planning remains in place. We also discussed continuing to avoid working at heights or near unguarded machinery during periods of increased events. He is agreeable to sharing seizure logs with your practice.\n\nI will arrange routine follow-up and will update you if any new information emerges from collateral reports or monitoring. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 946,
+      "end": 998,
+      "text": "he still has focal onset seizures four times per day",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 946,
+      "end": 1141,
+      "text": "He still has focal onset seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12383,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 15 September 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nJames Carter, DOB: 14-03-1986, Hospital No: KCH472918 NHS No. 9473165820  \nFlat 12, 8 Millwright Lane, London, SE15 3AB\n\nThank you for your referral. I reviewed the patient in clinic following concerns about ongoing seizures in the context of his work with metal fabrication and intermittent arc-light exposure. He reports strict adherence to workplace safety practices, including a full protective welding visor and gloves, and says he does not remove the visor during active welding. He is otherwise in good general health. There is no recent history of head injury, meningitis, or alcohol misuse. Sleep has been variable due to shift changes at the workshop.\n\nRegarding current events, he still has focal onset seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change. He and his partner describe the focal episodes as brief lapses with a rising internal sensation and impaired awareness lasting under a minute, often clustering late morning. The drop attacks tend to occur in short runs over two to three days, typically in the early evening after work, with quick recovery but occasional bruising. The tonic-clonic events are usually nocturnal or in the early hours; he is sore and fatigued for the following day. He denies clear photic triggers, and states the seizure frequency does not vary with welding versus non-welding days. He continues his regular medication regimen as previously prescribed and has not missed doses.\n\nHe does not drive and remains in manual employment with modified duties when fatigued. His employer is aware of his condition and has implemented buddy supervision during hot-work tasks. There have been no burns or occupational incidents attributable to events on the shop floor. He reports that hydration, regular breaks, and consistent sleep help him feel steadier, though not changing the overall frequency. No new neurological symptoms were volunteered. Examination in clinic today was unremarkable with normal speech, cranial nerves, tone, and coordination; gait steady.\n\nI have advised ongoing documentation of events with dates, times, and context (workday versus rest day, sleep duration, and recent stressors), and asked him to bring his workplace risk assessment to the next appointment so that we can ensure appropriate safety planning remains in place. We also discussed continuing to avoid working at heights or near unguarded machinery during periods of increased events. He is agreeable to sharing seizure logs with your practice.\n\nI will arrange routine follow-up and will update you if any new information emerges from collateral reports or monitoring. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequencies mentioned: (1) \"focal onset seizures four times per day\" → 4 per day. (2) \"drop attacks occurring in batches\" with runs over two to three days, but no explicit count per day or per cluster; frequency cannot be quantified. (3) \"tonic-clonic seizures 2 times per month\" → 2 per month. Apply rule: choose the highest frequency among different seizure types. 4 per day is more frequent than 2 per month. Therefore final label: 4 per day.",
+      "seizure_frequency_number": [
+        "4 per day",
+        "he still has focal onset seizures four times per day"
+      ],
+      "reference": [
+        "4 per day",
+        "He still has focal onset seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

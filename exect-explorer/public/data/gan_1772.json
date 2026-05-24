@@ -1,0 +1,59 @@
+{
+  "id": "gan_1772",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 27 March 2014 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Harper, DOB: 14-02-1990, Hospital No: H482917 NHS No. 9081764523  \n12 Willow Close, London, SW12 8JR  \n\nDiagnoses: \n\nRecurrent seizures. \n\nThank you for referring Emily Harper back to clinic. She attended today with her partner. She described fluctuating mood over the past year, with periods of anxiety and low mood particularly around times of uncertainty at work. She has not had any recent medication changes. She reports two drop attacks and nine absence seizures in the past six months. These were not clustered and there were no known triggers identified. No injuries were sustained, though she did report one near-fall at home and has since taken practical precautions (e.g. using handrails on stairs). \n\nShe is currently taking lamotrigine 150 mg twice daily and levetiracetam 1 g twice daily, which she has tolerated without rash, behavioural change, or dose-limiting adverse effects. Adherence is reported as good; she uses a phone reminder and a weekly pill organiser. Rescue medication is not prescribed, and there have been no attendances to A&E. She denies prolonged events, tongue biting, or incontinence. There is no recent sleep deprivation, alcohol misuse, or intercurrent illness reported. \n\nExamination in clinic was unremarkable with normal cardiorespiratory observations and no focal neurological deficit. No nystagmus or ataxia observed. \n\nWe discussed the interaction between mood/anxiety and seizure threshold. She feels the worry about having another event increases her day-to-day anxiety, particularly on public transport. She has not engaged with talking therapies previously but is open to self-referral to IAPT for support with anxiety/low mood. She prefers to avoid any changes to her current anti-seizure medicines at present, given tolerability and the relatively low frequency of events over the half-year period. \n\nPlan: \n- No changes to anti-seizure medication today at her request; continue lamotrigine and levetiracetam at current doses.  \n- Provide seizure diary and safety guidance; reinforce adherence and sleep hygiene.  \n- Signpost to local IAPT service for anxiety/low mood; patient to self-refer.  \n- Routine bloods arranged today (U&Es, LFTs, FBC) to monitor general health; no dose-related concerns identified clinically.  \n- DVLA guidance reviewed; patient confirms she is not currently driving and understands requirements to inform DVLA if applicable.  \n- Follow-up in six months, or sooner if the pattern changes (increase in frequency, injuries, or prolonged events). \n\nPlease do not hesitate to contact me if further information is required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 635,
+      "end": 713,
+      "text": "She reports two drop attacks and nine absence seizures in the past six months.",
+      "attributes": {
+        "Label": "11 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 647,
+      "end": 712,
+      "text": "two drop attacks and nine absence seizures in the past six months",
+      "attributes": {
+        "Label": "11 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1772,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 27 March 2014 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Harper, DOB: 14-02-1990, Hospital No: H482917 NHS No. 9081764523  \n12 Willow Close, London, SW12 8JR  \n\nDiagnoses: \n\nRecurrent seizures. \n\nThank you for referring Emily Harper back to clinic. She attended today with her partner. She described fluctuating mood over the past year, with periods of anxiety and low mood particularly around times of uncertainty at work. She has not had any recent medication changes. She reports two drop attacks and nine absence seizures in the past six months. These were not clustered and there were no known triggers identified. No injuries were sustained, though she did report one near-fall at home and has since taken practical precautions (e.g. using handrails on stairs). \n\nShe is currently taking lamotrigine 150 mg twice daily and levetiracetam 1 g twice daily, which she has tolerated without rash, behavioural change, or dose-limiting adverse effects. Adherence is reported as good; she uses a phone reminder and a weekly pill organiser. Rescue medication is not prescribed, and there have been no attendances to A&E. She denies prolonged events, tongue biting, or incontinence. There is no recent sleep deprivation, alcohol misuse, or intercurrent illness reported. \n\nExamination in clinic was unremarkable with normal cardiorespiratory observations and no focal neurological deficit. No nystagmus or ataxia observed. \n\nWe discussed the interaction between mood/anxiety and seizure threshold. She feels the worry about having another event increases her day-to-day anxiety, particularly on public transport. She has not engaged with talking therapies previously but is open to self-referral to IAPT for support with anxiety/low mood. She prefers to avoid any changes to her current anti-seizure medicines at present, given tolerability and the relatively low frequency of events over the half-year period. \n\nPlan: \n- No changes to anti-seizure medication today at her request; continue lamotrigine and levetiracetam at current doses.  \n- Provide seizure diary and safety guidance; reinforce adherence and sleep hygiene.  \n- Signpost to local IAPT service for anxiety/low mood; patient to self-refer.  \n- Routine bloods arranged today (U&Es, LFTs, FBC) to monitor general health; no dose-related concerns identified clinically.  \n- DVLA guidance reviewed; patient confirms she is not currently driving and understands requirements to inform DVLA if applicable.  \n- Follow-up in six months, or sooner if the pattern changes (increase in frequency, injuries, or prolonged events). \n\nPlease do not hesitate to contact me if further information is required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"She reports two drop attacks and nine absence seizures in the past six months.\" These are seizure events over a defined 6-month period. Per the rule to sum frequencies in the same dimension when they are over the same period, total seizures = 2 + 9 = 11 over 6 months. Convert to allowed format: '11 per 6 month'. There is no indication of seizure freedom for ≥6 months.",
+      "seizure_frequency_number": [
+        "11 per 6 month",
+        "She reports two drop attacks and nine absence seizures in the past six months."
+      ],
+      "reference": [
+        "11 per 6 month",
+        "two drop attacks and nine absence seizures in the past six months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

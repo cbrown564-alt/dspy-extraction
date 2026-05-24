@@ -1,0 +1,47 @@
+{
+  "id": "gan_11520",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nSouthgate Medical Centre\n\n82 High Street, Southgate, London N14 6DD\nDear Dr Patel\nMichael Turner, DOB: 21-11-1982, Hospital No: H389221 NHS No. 7482201934\nFlat 3, Willow Court, 19 Brook Lane, London N14 3AB \n\nThank you for your letter requesting a second opinion regarding epilepsy care for the above patient, whom I reviewed in clinic today. He is supported in assisted living and I have reviewed the available key‑worker notes, which provide helpful context on day-to-day function, medication adherence, and wellbeing.\n\nHe has generalised epilepsy. Current therapy is stable and there are no recent adverse effects reported by the patient or his key worker. Sleep routine and trigger avoidance strategies have been reinforced with the care team.\n\nFor the second opinion, I will obtain prior EEG and neuroimaging, review historic clinic correspondence, and confirm treatment history and tolerability with his key worker. I have requested updated bloods (FBC, U&E, LFTs, vitamin D) and will arrange an EEG review with our neurophysiology team. I will write back with recommendations once records are collated and tests completed.\n\nPlease advise if there are specific questions you wish addressed. We will continue to liaise with the assisted living key worker to ensure coordinated care.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11520,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nSouthgate Medical Centre\n\n82 High Street, Southgate, London N14 6DD\nDear Dr Patel\nMichael Turner, DOB: 21-11-1982, Hospital No: H389221 NHS No. 7482201934\nFlat 3, Willow Court, 19 Brook Lane, London N14 3AB \n\nThank you for your letter requesting a second opinion regarding epilepsy care for the above patient, whom I reviewed in clinic today. He is supported in assisted living and I have reviewed the available key‑worker notes, which provide helpful context on day-to-day function, medication adherence, and wellbeing.\n\nHe has generalised epilepsy. Current therapy is stable and there are no recent adverse effects reported by the patient or his key worker. Sleep routine and trigger avoidance strategies have been reinforced with the care team.\n\nFor the second opinion, I will obtain prior EEG and neuroimaging, review historic clinic correspondence, and confirm treatment history and tolerability with his key worker. I have requested updated bloods (FBC, U&E, LFTs, vitamin D) and will arrange an EEG review with our neurophysiology team. I will write back with recommendations once records are collated and tests completed.\n\nPlease advise if there are specific questions you wish addressed. We will continue to liaise with the assisted living key worker to ensure coordinated care.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's epilepsy diagnosis, stable therapy, and planned investigations but contains no mention of seizures occurring, their frequency, or seizure-free status. There are no explicit numeric expressions or qualitative statements about seizure frequency. Per the rules, if seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging a request for a second opinion regarding epilepsy care"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_9397",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Helen Carter \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH  \n\nDear Dr Helen Carter, \n\nMr Thomas Reed, DOB: 22-09-1987, Hospital No: K843920 NHS No. 1038475629  \n24 Market Road, London, SE5 9PL  \n\nDiagnosis: \n\nFocal epilepsy with focal impaired awareness seizure monthly; good tolerance of current regimen \n\nAetiology: \n\nNo structural lesion identified on prior MRI; normal perinatal history; family history negative for epilepsy \n\nOther Medical Problems: \n\nMild dyslipidaemia under primary care review; vitamin D insufficiency previously noted and repleted \n\nManagement Plan: \n\n- Continue Lamotrigine 150 mg twice daily.  \n- Maintain current ketogenic/modified diet as supervised externally; diet details recorded in our notes for reference.  \n- Routine bloods today (U&E, LFT, lipids, vitamin D) given dietary therapy.  \n- Seizure diary to be continued; if any increase beyond the current pattern of focal impaired awareness seizure monthly, patient to contact clinic.  \n- DVLA guidance discussed and understood.  \n- Review in six months, sooner if breakthrough clusters or new features.\n\nSince the last review, the patient reports stable focal epilepsy with a consistent pattern of focal impaired awareness seizure monthly, typically occurring in the late afternoon with brief behavioural arrest, oral automatisms, and post-event fatigue lasting 30–45 minutes. No generalised tonic–clonic seizures have occurred. There have been no injuries. Triggers noted by the patient include missed meals and poor sleep. He commenced a ketogenic/modified diet 10 months ago under the supervision of an external metabolic clinic; diet details have been recorded in our file, and he reports steady adherence without significant gastrointestinal intolerance. Weight has reduced by 4 kg over six months, which he finds acceptable. \n\nMedication adherence is good, with no rash, dizziness, or mood change on Lamotrigine. He declines additional antiseizure medication at present given functional stability and tolerability. We discussed options for future optimisation (e.g. slow titration of current therapy or alternative agents) should the pattern change. Safety and SUDEP risk counselling reinforced. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1248,
+      "end": 1310,
+      "text": "consistent pattern of focal impaired awareness seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 315,
+      "end": 355,
+      "text": "focal impaired awareness seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9397,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Helen Carter \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH  \n\nDear Dr Helen Carter, \n\nMr Thomas Reed, DOB: 22-09-1987, Hospital No: K843920 NHS No. 1038475629  \n24 Market Road, London, SE5 9PL  \n\nDiagnosis: \n\nFocal epilepsy with focal impaired awareness seizure monthly; good tolerance of current regimen \n\nAetiology: \n\nNo structural lesion identified on prior MRI; normal perinatal history; family history negative for epilepsy \n\nOther Medical Problems: \n\nMild dyslipidaemia under primary care review; vitamin D insufficiency previously noted and repleted \n\nManagement Plan: \n\n- Continue Lamotrigine 150 mg twice daily.  \n- Maintain current ketogenic/modified diet as supervised externally; diet details recorded in our notes for reference.  \n- Routine bloods today (U&E, LFT, lipids, vitamin D) given dietary therapy.  \n- Seizure diary to be continued; if any increase beyond the current pattern of focal impaired awareness seizure monthly, patient to contact clinic.  \n- DVLA guidance discussed and understood.  \n- Review in six months, sooner if breakthrough clusters or new features.\n\nSince the last review, the patient reports stable focal epilepsy with a consistent pattern of focal impaired awareness seizure monthly, typically occurring in the late afternoon with brief behavioural arrest, oral automatisms, and post-event fatigue lasting 30–45 minutes. No generalised tonic–clonic seizures have occurred. There have been no injuries. Triggers noted by the patient include missed meals and poor sleep. He commenced a ketogenic/modified diet 10 months ago under the supervision of an external metabolic clinic; diet details have been recorded in our file, and he reports steady adherence without significant gastrointestinal intolerance. Weight has reduced by 4 kg over six months, which he finds acceptable. \n\nMedication adherence is good, with no rash, dizziness, or mood change on Lamotrigine. He declines additional antiseizure medication at present given functional stability and tolerability. We discussed options for future optimisation (e.g. slow titration of current therapy or alternative agents) should the pattern change. Safety and SUDEP risk counselling reinforced. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The Diagnosis line states: 'Focal epilepsy with focal impaired awareness seizure monthly'. The Management Plan says: 'if any increase beyond the current pattern of focal impaired awareness seizure monthly'. The progress section reiterates: 'a consistent pattern of focal impaired awareness seizure monthly'. This clearly indicates approximately one seizure per month currently. No other seizure type with higher frequency is reported. No seizure-free period is indicated.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "consistent pattern of focal impaired awareness seizure monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "focal impaired awareness seizure monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

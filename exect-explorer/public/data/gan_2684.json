@@ -1,0 +1,59 @@
+{
+  "id": "gan_2684",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nRiverside Medical Centre  \n21 Severn Road, London SW1A 2AA  \n\nDear Dr Ahmed,  \n\nOlivia Bennett, DOB: 12-02-1991, Hospital No: NHS847320 NHS No. 9035716248  \nFlat 5, 10 Crescent Court, London, NW1 6PL \n\nMedication: \n\nLevetiracetam 1 g twice daily; Lacosamide 100 mg twice daily.\n\nThank you for reviewing Olivia Bennett who has suspected focal epilepsy arising from the right fronto-central region on history and semiology. She describes brief jerks of the left shoulder and upper arm occurring as she settles to sleep and again in the early hours; prior to treatment these were myoclonic every night and, despite current therapy, the frequency has remained unchanged. Episodes last a few seconds without loss of awareness, occasionally clustering in bursts over 2–3 minutes, with no progression to bilateral tonic–clonic activity. There is no tongue biting or incontinence. She reports a consistent sensory warning described as a \"pulling\" sensation in the left scapular area followed by a single shock-like movement. \n\nThere are no consistent daytime triggers; however, sleep restriction and late shifts appear to lower her threshold. Alcohol intake is minimal. No recent head injury, CNS infection, or new neurological deficits. Family history is negative for epilepsy. \n\nExamination today was normal, including power and coordination in the left upper limb. Routine bloods (U&Es, LFTs, FBC) last month were unremarkable. An MRI brain (epilepsy protocol) in 2023 showed subtle right precentral cortical FLAIR hyperintensity without mass effect; EEG in 2024 demonstrated right fronto-central interictal spikes without generalised discharges. Taken together, the features are consistent with focal epilepsy. \n\nGiven persistence of nocturnal myoclonic events at the same rate, we discussed options. She prefers to maintain current dosing for now while we optimise modifiable factors (sleep hygiene, avoiding night shifts where possible). I have not changed her medication today. If events continue unchanged or escalate, we will consider incremental Lacosamide titration and revisit surgical candidacy if MRI–EEG concordance remains stable. She understands seizure first aid and the need to avoid sleep deprivation. Driving advice has been reiterated in line with DVLA guidance for focal seizures without impaired awareness at night; she confirms she is not currently driving. \n\nPlan: \n- Continue Levetiracetam 1 g twice daily and Lacosamide 100 mg twice daily unchanged. \n- Sleep hygiene measures; keep a diary of nocturnal events and potential triggers. \n- Arrange repeat EEG with sleep activation and updated MRI (3T, epilepsy protocol) to reassess the right precentral focus. \n- Safety advice provided; call if clusters increase or if events occur in the daytime or with impaired awareness. \n\nWe will review her in three months, sooner if there is any deterioration. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 635,
+      "end": 753,
+      "text": "prior to treatment these were myoclonic every night and, despite current therapy, the frequency has remained unchanged",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 665,
+      "end": 686,
+      "text": "myoclonic every night",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2684,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nRiverside Medical Centre  \n21 Severn Road, London SW1A 2AA  \n\nDear Dr Ahmed,  \n\nOlivia Bennett, DOB: 12-02-1991, Hospital No: NHS847320 NHS No. 9035716248  \nFlat 5, 10 Crescent Court, London, NW1 6PL \n\nMedication: \n\nLevetiracetam 1 g twice daily; Lacosamide 100 mg twice daily.\n\nThank you for reviewing Olivia Bennett who has suspected focal epilepsy arising from the right fronto-central region on history and semiology. She describes brief jerks of the left shoulder and upper arm occurring as she settles to sleep and again in the early hours; prior to treatment these were myoclonic every night and, despite current therapy, the frequency has remained unchanged. Episodes last a few seconds without loss of awareness, occasionally clustering in bursts over 2–3 minutes, with no progression to bilateral tonic–clonic activity. There is no tongue biting or incontinence. She reports a consistent sensory warning described as a \"pulling\" sensation in the left scapular area followed by a single shock-like movement. \n\nThere are no consistent daytime triggers; however, sleep restriction and late shifts appear to lower her threshold. Alcohol intake is minimal. No recent head injury, CNS infection, or new neurological deficits. Family history is negative for epilepsy. \n\nExamination today was normal, including power and coordination in the left upper limb. Routine bloods (U&Es, LFTs, FBC) last month were unremarkable. An MRI brain (epilepsy protocol) in 2023 showed subtle right precentral cortical FLAIR hyperintensity without mass effect; EEG in 2024 demonstrated right fronto-central interictal spikes without generalised discharges. Taken together, the features are consistent with focal epilepsy. \n\nGiven persistence of nocturnal myoclonic events at the same rate, we discussed options. She prefers to maintain current dosing for now while we optimise modifiable factors (sleep hygiene, avoiding night shifts where possible). I have not changed her medication today. If events continue unchanged or escalate, we will consider incremental Lacosamide titration and revisit surgical candidacy if MRI–EEG concordance remains stable. She understands seizure first aid and the need to avoid sleep deprivation. Driving advice has been reiterated in line with DVLA guidance for focal seizures without impaired awareness at night; she confirms she is not currently driving. \n\nPlan: \n- Continue Levetiracetam 1 g twice daily and Lacosamide 100 mg twice daily unchanged. \n- Sleep hygiene measures; keep a diary of nocturnal events and potential triggers. \n- Arrange repeat EEG with sleep activation and updated MRI (3T, epilepsy protocol) to reassess the right precentral focus. \n- Safety advice provided; call if clusters increase or if events occur in the daytime or with impaired awareness. \n\nWe will review her in three months, sooner if there is any deterioration. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing nocturnal myoclonic events occurring as she settles to sleep and again in the early hours. It states they were every night prior to treatment and have remained unchanged despite therapy. Therefore, the current frequency is nightly, i.e., 1 per day. Clustering is mentioned (bursts over 2–3 minutes) but the base occurrence is every night, which is the highest-frequency descriptor. No exact count per night beyond at least one event is given, so 1 per day is the appropriate normalized label.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "prior to treatment these were myoclonic every night and, despite current therapy, the frequency has remained unchanged"
+      ],
+      "reference": [
+        "1 per day",
+        "myoclonic every night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

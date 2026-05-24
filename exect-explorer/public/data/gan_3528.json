@@ -1,0 +1,65 @@
+{
+  "id": "gan_3528",
+  "text": "Department of Neurology\n\nClinic Date: 22 September 2025\n\nDr Eleanor Patel\nSt. Catherine’s Neurology Centre\nNeurology Outpatients, 3rd Floor, St. Catherine’s Hospital, Mill Lane, Bristol BS2 8RJ\n\nDear Dr Eleanor Patel,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nPrimary generalised epilepsy with prior generalised tonic–clonic seizures (first in 2006, relapse August 2018). EEG (October 2018) demonstrated generalised spike-and-wave activity consistent with generalised epilepsy.\n\nCurrent Medication:\n\nLamotrigine 75 mg bd\n\nPlan:\n\nSafety counselling, driving advice reiterated, and close monitoring with seizure diary. Bloods (FBC/U&E/LFTs) and repeat drug level planned. Review in 3 months or sooner if further deterioration.\n\nI reviewed John in clinic today. He reports that after a period of improved control over the past year, his symptoms have recently worsened. Specifically, he describes more frequent brief morning jerks and intermittent episodes of loss of concentration suggestive of brief absences. Notably, frequency increased by ~50% after dose increase, which he associates with a recent attempt elsewhere to optimise adherence during a period of stress and disrupted sleep. He denies new head injury, intercurrent illness, or alcohol excess. Sleep has been irregular due to shift patterns, and he reports heightened anxiety around work deadlines.\n\nThere have been no witnessed generalised tonic–clonic seizures since 2018, but the relapse in smaller events is impacting function and confidence at work. He remains on Lamotrigine 75 mg twice daily, taken consistently. He has noticed no rash or systemic side effects, though he reports occasional dizziness on waking.\n\nWe discussed that he has generalised epilepsy and that the current pattern suggests clinical deterioration compared with his previously better control. I have advised strict sleep regularity, avoidance of missed doses, and continuation of a detailed seizure diary to capture jerks, absences, and potential triggers. I have arranged blood tests including routine safety monitoring and trough lamotrigine level, and I will reassess the results to guide any future medication adjustment. We also discussed DVLA guidance; he is currently driving, and I reiterated that any further generalised events or impaired awareness episodes while driving would require cessation and notification in line with regulations.\n\nI will review him in three months, sooner if events escalate or if there is any generalised convulsive seizure. He knows to seek urgent advice if there is any injury, prolonged confusion, or clustering of events.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 957,
+      "end": 1083,
+      "text": "he describes more frequent brief morning jerks and intermittent episodes of loss of concentration suggestive of brief absences",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1094,
+      "end": 1141,
+      "text": "Frequency increased by ~50% after dose increase",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3528,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 22 September 2025\n\nDr Eleanor Patel\nSt. Catherine’s Neurology Centre\nNeurology Outpatients, 3rd Floor, St. Catherine’s Hospital, Mill Lane, Bristol BS2 8RJ\n\nDear Dr Eleanor Patel,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nPrimary generalised epilepsy with prior generalised tonic–clonic seizures (first in 2006, relapse August 2018). EEG (October 2018) demonstrated generalised spike-and-wave activity consistent with generalised epilepsy.\n\nCurrent Medication:\n\nLamotrigine 75 mg bd\n\nPlan:\n\nSafety counselling, driving advice reiterated, and close monitoring with seizure diary. Bloods (FBC/U&E/LFTs) and repeat drug level planned. Review in 3 months or sooner if further deterioration.\n\nI reviewed John in clinic today. He reports that after a period of improved control over the past year, his symptoms have recently worsened. Specifically, he describes more frequent brief morning jerks and intermittent episodes of loss of concentration suggestive of brief absences. Notably, frequency increased by ~50% after dose increase, which he associates with a recent attempt elsewhere to optimise adherence during a period of stress and disrupted sleep. He denies new head injury, intercurrent illness, or alcohol excess. Sleep has been irregular due to shift patterns, and he reports heightened anxiety around work deadlines.\n\nThere have been no witnessed generalised tonic–clonic seizures since 2018, but the relapse in smaller events is impacting function and confidence at work. He remains on Lamotrigine 75 mg twice daily, taken consistently. He has noticed no rash or systemic side effects, though he reports occasional dizziness on waking.\n\nWe discussed that he has generalised epilepsy and that the current pattern suggests clinical deterioration compared with his previously better control. I have advised strict sleep regularity, avoidance of missed doses, and continuation of a detailed seizure diary to capture jerks, absences, and potential triggers. I have arranged blood tests including routine safety monitoring and trough lamotrigine level, and I will reassess the results to guide any future medication adjustment. We also discussed DVLA guidance; he is currently driving, and I reiterated that any further generalised events or impaired awareness episodes while driving would require cessation and notification in line with regulations.\n\nI will review him in three months, sooner if events escalate or if there is any generalised convulsive seizure. He knows to seek urgent advice if there is any injury, prolonged confusion, or clustering of events.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes recent worsening with more frequent brief morning jerks and intermittent absences, but provides no explicit numeric frequency (no counts per day/week/month). It notes no generalized tonic–clonic seizures since 2018, which does not establish overall seizure freedom because smaller events are occurring. The mention of ~50% increase lacks a baseline numeric figure, so a concrete frequency cannot be derived. Therefore, per instructions, since seizures are mentioned but frequency cannot be determined numerically, the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "he describes more frequent brief morning jerks and intermittent episodes of loss of concentration suggestive of brief absences"
+      ],
+      "reference": [
+        "unknown",
+        "Frequency increased by ~50% after dose increase"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

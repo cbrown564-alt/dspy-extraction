@@ -1,0 +1,54 @@
+{
+  "id": "gan_8241",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nJames Porter, DOB: 22-11-1991, Hospital No: H372915 NHS No. 9842173506\n44 Willow Road, London, NW3 1TR\n\nEpilepsy\n\nMedication: Continuing on Lamotrigine since February 2025\n\nCurrent regimen: Lamotrigine 100 mg in the morning and 150 mg in the evening (patient-reported adherence; uses phone reminders)\n\nLamotrigine Blood Level:\n\n16 September 2025: 4.8 mg/L (reference 1.0–15.0 mg/L). Dose at the time: 100 mg AM / 150 mg PM\n\nSeizures: During today’s face-to-face review, the patient reported no events suggestive of seizures since early April 2025. She specifically denies auras, blackouts, myoclonic jerks, or witnessed convulsions. She keeps a symptom diary which contains no entries for episodes over the past six months.\n\nPhotosensitivity: She describes sensitivity to bright light and flickering visual stimuli (e.g. supermarket lighting, scrolling video content, and fast-cut scenes on television) that can trigger eyestrain, brief nausea, and a need to avert gaze. She has not observed escalation to a seizure from these exposures. She now uses tinted lenses outdoors and enables reduced flicker settings on her devices, which she feels are helpful. We discussed maintaining consistent ambient lighting when possible and taking short visual breaks.\n\nInterim history: Sleep pattern generally stable (7–8 hours/night). No recent intercurrent illness. Caffeine limited to one coffee daily. Alcohol intake minimal. She has not missed doses; last late dose was in July without subsequent symptoms. No new neurological complaints.\n\nPlan: No change to current anti-seizure medication today. We will recheck a lamotrigine level at her next review or sooner if symptoms recur. She will continue practical measures to limit exposure to flicker/bright light as above. Safety advice and DVLA guidance previously provided were reiterated. She knows to contact the service if any events occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 825,
+      "end": 874,
+      "text": "no entries for episodes over the past six months.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8241,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nJames Porter, DOB: 22-11-1991, Hospital No: H372915 NHS No. 9842173506\n44 Willow Road, London, NW3 1TR\n\nEpilepsy\n\nMedication: Continuing on Lamotrigine since February 2025\n\nCurrent regimen: Lamotrigine 100 mg in the morning and 150 mg in the evening (patient-reported adherence; uses phone reminders)\n\nLamotrigine Blood Level:\n\n16 September 2025: 4.8 mg/L (reference 1.0–15.0 mg/L). Dose at the time: 100 mg AM / 150 mg PM\n\nSeizures: During today’s face-to-face review, the patient reported no events suggestive of seizures since early April 2025. She specifically denies auras, blackouts, myoclonic jerks, or witnessed convulsions. She keeps a symptom diary which contains no entries for episodes over the past six months.\n\nPhotosensitivity: She describes sensitivity to bright light and flickering visual stimuli (e.g. supermarket lighting, scrolling video content, and fast-cut scenes on television) that can trigger eyestrain, brief nausea, and a need to avert gaze. She has not observed escalation to a seizure from these exposures. She now uses tinted lenses outdoors and enables reduced flicker settings on her devices, which she feels are helpful. We discussed maintaining consistent ambient lighting when possible and taking short visual breaks.\n\nInterim history: Sleep pattern generally stable (7–8 hours/night). No recent intercurrent illness. Caffeine limited to one coffee daily. Alcohol intake minimal. She has not missed doses; last late dose was in July without subsequent symptoms. No new neurological complaints.\n\nPlan: No change to current anti-seizure medication today. We will recheck a lamotrigine level at her next review or sooner if symptoms recur. She will continue practical measures to limit exposure to flicker/bright light as above. Safety advice and DVLA guidance previously provided were reiterated. She knows to contact the service if any events occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter states: no events suggestive of seizures since early April 2025 and explicitly that the symptom diary has no entries for episodes over the past six months. This confirms at least 6 months seizure-free as of the clinic date. Therefore, label as seizure free for 6 month.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "no entries for episodes over the past six months."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

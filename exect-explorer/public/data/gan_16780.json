@@ -1,0 +1,59 @@
+{
+  "id": "gan_16780",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 28 July 2014 \n\nDr Patel\nHillside Medical Practice\n\n14 Hillside Road, London, SE15 2AB\nDear Dr Patel\nJane Smith, DOB: 21-11-1982, Hospital No: H728394 NHS No. 9076652319\n22 Brookfield Close, London, SE15 2AD \n\nI reviewed the above patient in the Neurology Clinic today. She attends as the primary caregiver for her young children, and reports that night-time sleep can be interrupted due to childcare demands. She feels this has at times affected her daytime alertness and confidence, particularly on mornings after multiple awakenings.\n\nSince her last review, she has kept a diary and provided collateral from college staff. A prolonged event occurred in Jan (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Apr she had a drop attack, and in Jul a myoclonic jerk were documented at college (not observed directly by parents). She did not require attendance at A&E and there was no reported injury. There are no consistent prodromes; she occasionally notes brief periods of difficulty concentrating beforehand. \n\nCurrent medication, unchanged for the past three months: Carbamazepine 400 mg b.d., Levetiracetam (Keppra) 1250 mg b.d., Topiramate 125 mg b.d., Valproate 500 mg b.d., and Clobazam 10 mg b.d. She reports tolerating this combination overall, but notes intermittent tiredness, which she attributes partly to disturbed sleep. No rash or systemic adverse effects have been observed; occasional leg itch has improved with emollients as advised by her GP. She is not driving. \n\nWe discussed practical measures around sleep hygiene and ensuring safe supervision when fatigued. She prefers to avoid medication changes today while we clarify current event patterns. I have arranged ambulatory EEG with event button and will request a medication level profile before her next visit. She has accepted a referral to the epilepsy specialist nurse service for education and support, and we provided seizure first-aid information to college staff with her consent. \n\nPlan:\n- Continue current medications unchanged pending investigations.\n- Ambulatory EEG and serum drug levels to be arranged.\n- Epilepsy specialist nurse input for education and safety planning.\n- Review in clinic in 3 months, or sooner if events cluster or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 667,
+      "end": 788,
+      "text": "A prolonged event occurred in Jan... In Apr she had a drop attack, and in Jul a myoclonic jerk were documented at college",
+      "attributes": {
+        "Label": "3 per 7 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 667,
+      "end": 923,
+      "text": "A prolonged event occurred in Jan (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Apr she had a drop attack, and in Jul a myoclonic jerk were documented at college (not observed directly by parents)",
+      "attributes": {
+        "Label": "3 per 7 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16780,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 28 July 2014 \n\nDr Patel\nHillside Medical Practice\n\n14 Hillside Road, London, SE15 2AB\nDear Dr Patel\nJane Smith, DOB: 21-11-1982, Hospital No: H728394 NHS No. 9076652319\n22 Brookfield Close, London, SE15 2AD \n\nI reviewed the above patient in the Neurology Clinic today. She attends as the primary caregiver for her young children, and reports that night-time sleep can be interrupted due to childcare demands. She feels this has at times affected her daytime alertness and confidence, particularly on mornings after multiple awakenings.\n\nSince her last review, she has kept a diary and provided collateral from college staff. A prolonged event occurred in Jan (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Apr she had a drop attack, and in Jul a myoclonic jerk were documented at college (not observed directly by parents). She did not require attendance at A&E and there was no reported injury. There are no consistent prodromes; she occasionally notes brief periods of difficulty concentrating beforehand. \n\nCurrent medication, unchanged for the past three months: Carbamazepine 400 mg b.d., Levetiracetam (Keppra) 1250 mg b.d., Topiramate 125 mg b.d., Valproate 500 mg b.d., and Clobazam 10 mg b.d. She reports tolerating this combination overall, but notes intermittent tiredness, which she attributes partly to disturbed sleep. No rash or systemic adverse effects have been observed; occasional leg itch has improved with emollients as advised by her GP. She is not driving. \n\nWe discussed practical measures around sleep hygiene and ensuring safe supervision when fatigued. She prefers to avoid medication changes today while we clarify current event patterns. I have arranged ambulatory EEG with event button and will request a medication level profile before her next visit. She has accepted a referral to the epilepsy specialist nurse service for education and support, and we provided seizure first-aid information to college staff with her consent. \n\nPlan:\n- Continue current medications unchanged pending investigations.\n- Ambulatory EEG and serum drug levels to be arranged.\n- Epilepsy specialist nurse input for education and safety planning.\n- Review in clinic in 3 months, or sooner if events cluster or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter documents specific seizure-like events since the last review, but does not give an explicit time span for 'since her last review.' However, it lists three discrete events with months: a prolonged event in January (~12 minutes), a drop attack in April, and a myoclonic jerk in July. These are within a single calendar year up to the clinic date (28 July 2014), giving 3 events over 7 months (January through July inclusive). There is no indication of additional events beyond these three or of a different, higher background frequency. Therefore, the highest identifiable frequency is 3 events in 7 months. This is not seizure-free and meets the numeric requirement.",
+      "seizure_frequency_number": [
+        "3 per 7 month",
+        "A prolonged event occurred in Jan... In Apr she had a drop attack, and in Jul a myoclonic jerk were documented at college"
+      ],
+      "reference": [
+        "3 per 7 month",
+        "A prolonged event occurred in Jan (approximately 12 minutes, alternating between focal and generalised features, settled spontaneously). In Apr she had a drop attack, and in Jul a myoclonic jerk were documented at college (not observed directly by parents)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

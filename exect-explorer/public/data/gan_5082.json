@@ -1,0 +1,48 @@
+{
+  "id": "gan_5082",
+  "text": "Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverbank Neurology Clinic\n2nd Floor, Riverside Health Centre, Manchester M3 4AB\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder (aetiology unclassified).\n\nI reviewed Anne today in follow‑up. She attended alone and provided a clear history. She has transitioned to a predominantly remote working arrangement over the past six months, which she feels has reduced fatigue and improved sleep regularity. Since implementing this change, her pattern has steadily improved and she reports a sustained period without any recurrence of her typical events.\n\nFor context, prior to this improvement she experienced her first seizure in February 2017 while on holiday in Spain, occurring in the early morning with sudden stiffness affecting both legs. A second event occurred in June 2017 at home in France during sleep, lasting approximately three minutes with the same clinical features. There have been no similar episodes reported in recent months, and she describes her current seizure control as stable with no interval events.\n\nMedications: no antiepileptic drugs at present. She is not using rescue therapy and has not required any urgent care. No device therapy in situ. She keeps a sleep diary and avoids overnight shifts, which she feels has been beneficial.\n\nExamination today was unremarkable. We discussed safety measures and maintaining consistent sleep. No changes to management were made. I have arranged routine follow‑up in six months, with earlier review if there is any change in symptoms.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 632,
+      "end": 707,
+      "text": "she reports a sustained period without any recurrence of her typical events",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5082,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverbank Neurology Clinic\n2nd Floor, Riverside Health Centre, Manchester M3 4AB\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder (aetiology unclassified).\n\nI reviewed Anne today in follow‑up. She attended alone and provided a clear history. She has transitioned to a predominantly remote working arrangement over the past six months, which she feels has reduced fatigue and improved sleep regularity. Since implementing this change, her pattern has steadily improved and she reports a sustained period without any recurrence of her typical events.\n\nFor context, prior to this improvement she experienced her first seizure in February 2017 while on holiday in Spain, occurring in the early morning with sudden stiffness affecting both legs. A second event occurred in June 2017 at home in France during sleep, lasting approximately three minutes with the same clinical features. There have been no similar episodes reported in recent months, and she describes her current seizure control as stable with no interval events.\n\nMedications: no antiepileptic drugs at present. She is not using rescue therapy and has not required any urgent care. No device therapy in situ. She keeps a sleep diary and avoids overnight shifts, which she feels has been beneficial.\n\nExamination today was unremarkable. We discussed safety measures and maintaining consistent sleep. No changes to management were made. I have arranged routine follow‑up in six months, with earlier review if there is any change in symptoms.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses Anne Taylor's seizure history and current status. It states she has had no recurrence of her typical events since transitioning to remote work over the past six months and that there have been no similar episodes in recent months. To classify as 'seizure free' per the rules, there must be at least 6 months seizure freedom. The letter indicates the change happened over the past six months and since implementing this change her pattern has improved with a sustained period without recurrence. This supports seizure freedom for approximately six months. As exact months are not numerically specified beyond 'past six months' and 'sustained period', we should use 'multiple months' rather than a precise number, per the instruction that if insufficient to confirm exact duration beyond months, we may consider seizure free for multiple months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "she reports a sustained period without any recurrence of her typical events"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No breakthrough seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

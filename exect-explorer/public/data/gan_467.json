@@ -1,0 +1,59 @@
+{
+  "id": "gan_467",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Hart, \n\nAlex Morgan, DOB: 22-06-1991, Hospital No: A917463 NHS No. 4478201936  \nFlat 5, 12 Riverside Walk, London, SE1 9DT  \n\nDiagnosis: \n\nFocal epilepsy with ongoing focal onset seizures; Levetiracetam previously ineffective, currently trialling Lamotrigine with partial response\n\nAetiology: \n\nSuspected remote perinatal parietal injury (patient-reported historical birth complications)\n\nOther Medical Problems: \n\nGeneralised anxiety symptoms related to travel; vitamin D insufficiency on supplementation\n\nManagement Plan: \n\n1) Continue Lamotrigine 150 mg twice daily, maintain single brand supply; check trough level and U&Es/LFTs at next visit.  \n2) Provide written seizure action plan for workplace and travel settings; letter offered to employer regarding reasonable adjustments.  \n3) Discussed strategies for flight-related anxiety and seizure risk mitigation (patient-reported benefit from aisle seating, hydration, and sleep hygiene).  \n4) Safety counselling reinforced: driving regulations reiterated as per DVLA guidance based on current seizure frequency.  \n5) Review in three months, earlier if increase in events or adverse effects.\n\nClinical Summary: \n\nAlex Morgan has confirmed focal epilepsy. Over the last eight weeks, they report a stable pattern of focal aware sensory episodes with occasional progression to impaired awareness. Current average frequency is 9 per month, which the patient tracks on a phone diary. The most recent clearly recalled escalation occurred during air travel; the patient describes that the previous seizure occurred during a flight’s descent, accompanied by marked travel-related anxiety. We discussed that the anxiety may act as a precipitant rather than a primary cause, and the patient felt reassured by having a plan for future journeys. No injuries reported. \n\nPhysical examination today was unremarkable; observations stable. No rash or adverse effects on Lamotrigine were reported. The patient wishes to continue Lamotrigine as they perceive reduced intensity of events, though frequency remains at 9 per month. We agreed to optimise dosing once level results are available and to consider adjunctive options at the next review if frequency does not improve. \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1560,
+      "end": 1600,
+      "text": "Current average frequency is 9 per month",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1589,
+      "end": 1600,
+      "text": "9 per month",
+      "attributes": {
+        "Label": "9 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 467,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Hart, \n\nAlex Morgan, DOB: 22-06-1991, Hospital No: A917463 NHS No. 4478201936  \nFlat 5, 12 Riverside Walk, London, SE1 9DT  \n\nDiagnosis: \n\nFocal epilepsy with ongoing focal onset seizures; Levetiracetam previously ineffective, currently trialling Lamotrigine with partial response\n\nAetiology: \n\nSuspected remote perinatal parietal injury (patient-reported historical birth complications)\n\nOther Medical Problems: \n\nGeneralised anxiety symptoms related to travel; vitamin D insufficiency on supplementation\n\nManagement Plan: \n\n1) Continue Lamotrigine 150 mg twice daily, maintain single brand supply; check trough level and U&Es/LFTs at next visit.  \n2) Provide written seizure action plan for workplace and travel settings; letter offered to employer regarding reasonable adjustments.  \n3) Discussed strategies for flight-related anxiety and seizure risk mitigation (patient-reported benefit from aisle seating, hydration, and sleep hygiene).  \n4) Safety counselling reinforced: driving regulations reiterated as per DVLA guidance based on current seizure frequency.  \n5) Review in three months, earlier if increase in events or adverse effects.\n\nClinical Summary: \n\nAlex Morgan has confirmed focal epilepsy. Over the last eight weeks, they report a stable pattern of focal aware sensory episodes with occasional progression to impaired awareness. Current average frequency is 9 per month, which the patient tracks on a phone diary. The most recent clearly recalled escalation occurred during air travel; the patient describes that the previous seizure occurred during a flight’s descent, accompanied by marked travel-related anxiety. We discussed that the anxiety may act as a precipitant rather than a primary cause, and the patient felt reassured by having a plan for future journeys. No injuries reported. \n\nPhysical examination today was unremarkable; observations stable. No rash or adverse effects on Lamotrigine were reported. The patient wishes to continue Lamotrigine as they perceive reduced intensity of events, though frequency remains at 9 per month. We agreed to optimise dosing once level results are available and to consider adjunctive options at the next review if frequency does not improve. \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current average seizure frequency. In the Clinical Summary: \"Current average frequency is 9 per month,\" and later reiterates \"frequency remains at 9 per month.\" No other differing frequencies are provided. Therefore, the highest/only frequency is 9 per month, and it is current. No need to consider seizure-free criteria.",
+      "seizure_frequency_number": [
+        "9 per month",
+        "Current average frequency is 9 per month"
+      ],
+      "reference": [
+        "9 per month",
+        "9 per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

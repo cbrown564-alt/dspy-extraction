@@ -1,0 +1,59 @@
+{
+  "id": "gan_12573",
+  "text": "St George's University Hospitals NHS Foundation Trust\n\nAtkinson Morley Neurosciences Centre\n\nClinic Date: 29 May 2015\n\nDr A Patel\nConsultant Neurologist\nSt George's University Hospitals NHS Foundation Trust\nAtkinson Morley Neurosciences Centre, Blackshaw Road, London SW17 0QT\n\nDear Dr A Patel\nConsultant Neurologist,\n\nDaniel Fraser, DOB: 14-03-1986, Hospital No: S9246713 NHS No. 4098765521\nFlat 3, 12 Rowan Court, Tooting, London SW17 8AB\n\nThank you for asking me to review your patient urgently following a marked deterioration described over recent months. He attended today with his partner. He has recently started a new job in a distribution centre where the warehouse uses strong overhead arrays and intermittently flickering inspection lamps. He and his employer have noted that his events cluster on shifts in the brightly lit packing zones, particularly after prolonged exposure. He reports increased anxiety about attending work and has begun to avoid certain aisles; his supervisor has documented multiple near-falls on site. He denies alcohol or recreational drug use and is taking his prescribed medicines reliably by his account.\n\nSeizure frequency remains unchanged over the last six months; he continues to have up to two generalised tonic-clonic seizures per month, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review. Notwithstanding the numerical stability, the functional impact is worsening: he has sustained two minor head injuries from daily collapses at work (no loss of consciousness reported on those occasions), and his partner describes escalating anticipatory anxiety and disrupted sleep after late shifts under the bright lighting. He also notes more prolonged post-event confusion on workdays with heavy visual stimuli compared to rest days.\n\nOn examination today he was alert and orientated with fluent speech and intact cranial nerves. Motor and coordination testing were unremarkable; gait was cautious but steady. There were no focal neurological deficits. Cardiovascular and systemic examination were within normal limits. I reviewed prior EEG and imaging summaries available in the record; there is no new interval data since your last correspondence.\n\nIn view of the reported triggers at the new workplace, I have discussed with him and his partner the importance of documenting the specific lighting conditions associated with events, and he is willing to complete a detailed diary noting shift location, lighting type, and symptom timing. I have also provided a neutral information leaflet about visual stimuli as potential precipitants, which he agreed to read. He intends to speak with his manager about non-clinical adjustments (eg, moving away from flickering inspection stations) and will update us on any practical changes made by the employer.\n\nI will continue to monitor closely. Please let me know if you become aware of further injuries or work-related incidents.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1347,
+      "end": 1378,
+      "text": "He also has daily drop attacks.",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1147,
+      "end": 1536,
+      "text": "Seizure frequency remains unchanged over the last six months; he continues to have up to two generalised tonic-clonic seizures per month, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12573,
+    "clinic_date": "St George's University Hospitals NHS Foundation Trust\n\nAtkinson Morley Neurosciences Centre\n\nClinic Date: 29 May 2015\n\nDr A Patel\nConsultant Neurologist\nSt George's University Hospitals NHS Foundation Trust\nAtkinson Morley Neurosciences Centre, Blackshaw Road, London SW17 0QT\n\nDear Dr A Patel\nConsultant Neurologist,\n\nDaniel Fraser, DOB: 14-03-1986, Hospital No: S9246713 NHS No. 4098765521\nFlat 3, 12 Rowan Court, Tooting, London SW17 8AB\n\nThank you for asking me to review your patient urgently following a marked deterioration described over recent months. He attended today with his partner. He has recently started a new job in a distribution centre where the warehouse uses strong overhead arrays and intermittently flickering inspection lamps. He and his employer have noted that his events cluster on shifts in the brightly lit packing zones, particularly after prolonged exposure. He reports increased anxiety about attending work and has begun to avoid certain aisles; his supervisor has documented multiple near-falls on site. He denies alcohol or recreational drug use and is taking his prescribed medicines reliably by his account.\n\nSeizure frequency remains unchanged over the last six months; he continues to have up to two generalised tonic-clonic seizures per month, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review. Notwithstanding the numerical stability, the functional impact is worsening: he has sustained two minor head injuries from daily collapses at work (no loss of consciousness reported on those occasions), and his partner describes escalating anticipatory anxiety and disrupted sleep after late shifts under the bright lighting. He also notes more prolonged post-event confusion on workdays with heavy visual stimuli compared to rest days.\n\nOn examination today he was alert and orientated with fluent speech and intact cranial nerves. Motor and coordination testing were unremarkable; gait was cautious but steady. There were no focal neurological deficits. Cardiovascular and systemic examination were within normal limits. I reviewed prior EEG and imaging summaries available in the record; there is no new interval data since your last correspondence.\n\nIn view of the reported triggers at the new workplace, I have discussed with him and his partner the importance of documenting the specific lighting conditions associated with events, and he is willing to complete a detailed diary noting shift location, lighting type, and symptom timing. I have also provided a neutral information leaflet about visual stimuli as potential precipitants, which he agreed to read. He intends to speak with his manager about non-clinical adjustments (eg, moving away from flickering inspection stations) and will update us on any practical changes made by the employer.\n\nI will continue to monitor closely. Please let me know if you become aware of further injuries or work-related incidents.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit frequencies for different seizure types: (1) 'up to two generalised tonic-clonic seizures per month' → 2 per month; (2) 'He also has daily drop attacks' → daily implies at least 1 per day; (3) 'focal impaired-awareness seizures ... every four to six weeks' → roughly 1 per 1 to 1.5 months, which is less frequent than daily. Applying the rule to select the highest frequency across multiple seizure types, 'daily drop attacks' is the most frequent. Therefore, the final normalized label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "He also has daily drop attacks."
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure frequency remains unchanged over the last six months; he continues to have up to two generalised tonic-clonic seizures per month, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

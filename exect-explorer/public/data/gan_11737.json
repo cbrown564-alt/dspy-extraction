@@ -1,0 +1,47 @@
+{
+  "id": "gan_11737",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 23 March 2022\n\nDr Sarah Whitfield\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Sarah Whitfield,\n\nAlex Thompson, DOB: 22-07-2003, Hospital No: K847210 NHS No. 9384726150\nFlat 12, 5 Maple Court, Camberwell, London SE5 8LA\n\nDiagnosis:\n\nGeneralised epilepsy, stable control on current regimen\n\nAetiology:\n\nPresumed genetic generalised epilepsy; no structural lesion identified on MRI\n\nOther Medical Problems:\n\nMild migraine without aura; vitamin D insufficiency treated with supplementation\n\nManagement Plan:\n\n- Continue valproate 500 mg mane and 1000 mg nocte; maintain single manufacturer brand.\n- Liaison with university disability services: with patient consent, I will provide a medical summary confirming generalised epilepsy, fluctuating fatigue, medication side-effects (occasional tremor and concentration lapses), and need for reasonable adjustments.\n- Recommended adjustments include flexible deadlines during periods of medication titration, permission to record lectures, access to quiet exam rooms with rest breaks, and option for morning scheduling to align with medication timings.\n- Employer occupational health provides periodic summaries; these may be shared with disability services as collateral sources, subject to the patient’s written consent.\n- Follow-up in six months, or earlier if clinical issues arise.\n\nThe patient is engaged with their course and has expressed interest in a study support plan; I would be happy to discuss specifics with the disability adviser once consent is in place.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11737,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 23 March 2022\n\nDr Sarah Whitfield\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Sarah Whitfield,\n\nAlex Thompson, DOB: 22-07-2003, Hospital No: K847210 NHS No. 9384726150\nFlat 12, 5 Maple Court, Camberwell, London SE5 8LA\n\nDiagnosis:\n\nGeneralised epilepsy, stable control on current regimen\n\nAetiology:\n\nPresumed genetic generalised epilepsy; no structural lesion identified on MRI\n\nOther Medical Problems:\n\nMild migraine without aura; vitamin D insufficiency treated with supplementation\n\nManagement Plan:\n\n- Continue valproate 500 mg mane and 1000 mg nocte; maintain single manufacturer brand.\n- Liaison with university disability services: with patient consent, I will provide a medical summary confirming generalised epilepsy, fluctuating fatigue, medication side-effects (occasional tremor and concentration lapses), and need for reasonable adjustments.\n- Recommended adjustments include flexible deadlines during periods of medication titration, permission to record lectures, access to quiet exam rooms with rest breaks, and option for morning scheduling to align with medication timings.\n- Employer occupational health provides periodic summaries; these may be shared with disability services as collateral sources, subject to the patient’s written consent.\n- Follow-up in six months, or earlier if clinical issues arise.\n\nThe patient is engaged with their course and has expressed interest in a study support plan; I would be happy to discuss specifics with the disability adviser once consent is in place.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the diagnosis of generalised epilepsy with stable control and outlines management, but it contains no explicit mention of seizures, their presence, absence, frequency, or duration of seizure freedom. There are no numeric or qualitative frequency statements and no seizure-free timeframe. Therefore, there is no seizure frequency reference in the text.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter introducing liaison with college or university disability services regarding epilepsy support"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

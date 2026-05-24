@@ -1,0 +1,59 @@
+{
+  "id": "gan_1290",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 09 May 2016 \n\nDr Patel\nRiverside Medical Centre\n\n12 Riverside Way, London, SE1 3AB\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: K8374201 NHS No. 9983726451\nFlat 4, 27 Kingsley Court, London, SE5 9JT \n\nI reviewed the above patient in the Neurology Clinic today. He remains on multiple antiepileptic medications and reports he has recently implemented smartphone alarms and NFC tag prompts to help with dose timing after several missed doses earlier in the year. He feels this has improved adherence over the last six weeks.\n\nHis current regimen is Levetiracetam 1500 mg b.d., Valproate 500 mg t.d.s., Lamotrigine 100 mg b.d., and Clobazam 10 mg nocte. He reports tolerating these reasonably, though he notes intermittent fatigue and mild word-finding difficulty which he attributes to polytherapy. No rashes or focal neurological symptoms were reported. He denies low mood but describes situational anxiety around breakthrough events, particularly when travelling.\n\nIn terms of events, he states he has had 8 or 9 tonic-clonic this year, with the most recent episode three weeks ago after a missed morning dose while commuting. He also describes occasional brief episodes of lost time without clear witnesses; he has begun using his phone’s activity logs to mark these, though details remain limited. There have been no injuries beyond minor tongue biting and bruising, and no hospital admissions.\n\nExamination today was unremarkable with normal cardiorespiratory and neurological findings. We discussed the importance of maintaining the adherence tools he has set up (alarms and NFC tags) and continuing to document events, possible triggers, and any missed doses. He will also bring video collateral if available. Given the recent improvement in adherence and the lack of clear adverse effects necessitating change today, I have not altered therapy at this visit. I have arranged repeat bloods (FBC, U&E, LFTs) and a trough valproate level prior to his morning dose next week, and I have requested an updated EEG. We will review in 3 months or sooner if the frequency escalates despite stable adherence.\n\nI have provided a seizure diary template and signposted him to our epilepsy specialist nurse for practical support with medication routines and safety advice. He is aware of DVLA guidance and confirms he is not currently driving.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1041,
+      "end": 1091,
+      "text": "he states he has had 8 or 9 tonic-clonic this year",
+      "attributes": {
+        "Label": "8 to 9 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1062,
+      "end": 1091,
+      "text": "8 or 9 tonic-clonic this year",
+      "attributes": {
+        "Label": "8 to 9 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1290,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 09 May 2016 \n\nDr Patel\nRiverside Medical Centre\n\n12 Riverside Way, London, SE1 3AB\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: K8374201 NHS No. 9983726451\nFlat 4, 27 Kingsley Court, London, SE5 9JT \n\nI reviewed the above patient in the Neurology Clinic today. He remains on multiple antiepileptic medications and reports he has recently implemented smartphone alarms and NFC tag prompts to help with dose timing after several missed doses earlier in the year. He feels this has improved adherence over the last six weeks.\n\nHis current regimen is Levetiracetam 1500 mg b.d., Valproate 500 mg t.d.s., Lamotrigine 100 mg b.d., and Clobazam 10 mg nocte. He reports tolerating these reasonably, though he notes intermittent fatigue and mild word-finding difficulty which he attributes to polytherapy. No rashes or focal neurological symptoms were reported. He denies low mood but describes situational anxiety around breakthrough events, particularly when travelling.\n\nIn terms of events, he states he has had 8 or 9 tonic-clonic this year, with the most recent episode three weeks ago after a missed morning dose while commuting. He also describes occasional brief episodes of lost time without clear witnesses; he has begun using his phone’s activity logs to mark these, though details remain limited. There have been no injuries beyond minor tongue biting and bruising, and no hospital admissions.\n\nExamination today was unremarkable with normal cardiorespiratory and neurological findings. We discussed the importance of maintaining the adherence tools he has set up (alarms and NFC tags) and continuing to document events, possible triggers, and any missed doses. He will also bring video collateral if available. Given the recent improvement in adherence and the lack of clear adverse effects necessitating change today, I have not altered therapy at this visit. I have arranged repeat bloods (FBC, U&E, LFTs) and a trough valproate level prior to his morning dose next week, and I have requested an updated EEG. We will review in 3 months or sooner if the frequency escalates despite stable adherence.\n\nI have provided a seizure diary template and signposted him to our epilepsy specialist nurse for practical support with medication routines and safety advice. He is aware of DVLA guidance and confirms he is not currently driving.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"he states he has had 8 or 9 tonic-clonic this year.\" This provides a numeric range over a year. There is mention of occasional brief episodes of lost time but without a quantifiable frequency, so they cannot be added. Following the rule to select the highest frequency when multiple exist, and since only one quantified frequency is provided, we normalize it to the allowed format as a yearly range.",
+      "seizure_frequency_number": [
+        "8 to 9 per year",
+        "he states he has had 8 or 9 tonic-clonic this year"
+      ],
+      "reference": [
+        "8 to 9 per year",
+        "8 or 9 tonic-clonic this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

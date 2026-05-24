@@ -1,0 +1,54 @@
+{
+  "id": "gan_8005",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Amelia Shore  \nRiverside Medical Practice  \n14 Brookside Road, London SE10 2JP  \n\nDear Dr Amelia Shore,  \n\nDaniel Morgan, DOB: 22-07-2003, Hospital No: U942175 NHS No. 3849201765  \nFlat 3, 28 Northgate Street, London, E2 7QL \n\nSummary/ Diagnoses: Seizure disorder with prior episodes under secondary care follow‑up/irregular sleep pattern/prolonged screen exposure due to university esports leadership role/intermittent caffeine overuse/recent stress related to tournament scheduling. \n\nMedication: Levetiracetam 750 mg twice daily.  \nVitamin D3 1000 IU once daily.  \n\nI reviewed Daniel Morgan in clinic today. He attended alone and reports that he is currently leading his university esports club, which involves late evening training blocks and weekend competitions. He routinely spends 6–8 hours most days at a screen, with additional time for strategy review. He describes variable sleep, typically 5–6 hours on training nights, with catch‑up sleep on off‑days. Caffeine intake peaks before matches (energy drinks) but is otherwise moderate. He denies alcohol or recreational drug use. He remains in full‑time study and is managing coursework, though notes occasional fatigue after late events. \n\nSeizures: He keeps a digital log on his phone. He reports no convulsive events or clear focal episodes for approximately 10 months. He recalls two brief episodes of transient loss of train of thought with momentary blankness during exam season last year; none since December. Taken together, seizure occurrence has stayed at a low and steady level without breakthrough events in the past academic year. He links his current stability to consistent medication use and setting alarms for doses during tournaments. No recent emergency attendances. No injuries. \n\nExamination: Alert and oriented. Speech fluent. Cranial nerves intact. No focal motor deficit. Gait normal. Cardiovascular and respiratory examinations unremarkable. \n\nPlan: \n- Continue levetiracetam 750 mg twice daily without change. \n- Reinforce adherence strategies around competition days; he is using timed reminders effectively. \n- Sleep hygiene advice discussed (patient‑reported willingness to target a more consistent sleep window when not competing). \n- Caffeine: advised to avoid high-caffeine energy drinks near bedtime; patient plans to substitute with water/electrolyte drinks after 20:00. \n- Safety: reminded regarding screen breaks and hydration during long sessions; he uses blue‑light filtering in the evenings. \n- Bloods: request U&E, FBC, LFTs, vitamin D through GP if not checked in the last 12 months. \n- Follow‑up in 6–9 months, sooner if any recurrence of events or concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1374,
+      "end": 1446,
+      "text": "no convulsive events or clear focal episodes for approximately 10 months",
+      "attributes": {
+        "Label": "seizure free for 10 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8005,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Amelia Shore  \nRiverside Medical Practice  \n14 Brookside Road, London SE10 2JP  \n\nDear Dr Amelia Shore,  \n\nDaniel Morgan, DOB: 22-07-2003, Hospital No: U942175 NHS No. 3849201765  \nFlat 3, 28 Northgate Street, London, E2 7QL \n\nSummary/ Diagnoses: Seizure disorder with prior episodes under secondary care follow‑up/irregular sleep pattern/prolonged screen exposure due to university esports leadership role/intermittent caffeine overuse/recent stress related to tournament scheduling. \n\nMedication: Levetiracetam 750 mg twice daily.  \nVitamin D3 1000 IU once daily.  \n\nI reviewed Daniel Morgan in clinic today. He attended alone and reports that he is currently leading his university esports club, which involves late evening training blocks and weekend competitions. He routinely spends 6–8 hours most days at a screen, with additional time for strategy review. He describes variable sleep, typically 5–6 hours on training nights, with catch‑up sleep on off‑days. Caffeine intake peaks before matches (energy drinks) but is otherwise moderate. He denies alcohol or recreational drug use. He remains in full‑time study and is managing coursework, though notes occasional fatigue after late events. \n\nSeizures: He keeps a digital log on his phone. He reports no convulsive events or clear focal episodes for approximately 10 months. He recalls two brief episodes of transient loss of train of thought with momentary blankness during exam season last year; none since December. Taken together, seizure occurrence has stayed at a low and steady level without breakthrough events in the past academic year. He links his current stability to consistent medication use and setting alarms for doses during tournaments. No recent emergency attendances. No injuries. \n\nExamination: Alert and oriented. Speech fluent. Cranial nerves intact. No focal motor deficit. Gait normal. Cardiovascular and respiratory examinations unremarkable. \n\nPlan: \n- Continue levetiracetam 750 mg twice daily without change. \n- Reinforce adherence strategies around competition days; he is using timed reminders effectively. \n- Sleep hygiene advice discussed (patient‑reported willingness to target a more consistent sleep window when not competing). \n- Caffeine: advised to avoid high-caffeine energy drinks near bedtime; patient plans to substitute with water/electrolyte drinks after 20:00. \n- Safety: reminded regarding screen breaks and hydration during long sessions; he uses blue‑light filtering in the evenings. \n- Bloods: request U&E, FBC, LFTs, vitamin D through GP if not checked in the last 12 months. \n- Follow‑up in 6–9 months, sooner if any recurrence of events or concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"no convulsive events or clear focal episodes for approximately 10 months\" and also \"none since December.\" Clinic date is 02 Oct 2025, so from Dec 2024 to Oct 2025 is about 10 months. This confirms seizure freedom for at least 6 months. Therefore, the normalized label is seizure free for 10 month.",
+      "seizure_frequency_number": [
+        "seizure free for 10 month",
+        "no convulsive events or clear focal episodes for approximately 10 months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable seizure control maintained"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 10 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

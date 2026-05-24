@@ -1,0 +1,48 @@
+{
+  "id": "gan_2071",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A Patel,                                                                                                         \n\nDaniel Harris, DOB: 22-11-1991, Hospital No: H382917 NHS No. 9043175628  \nFlat 3, 27 Elgin Avenue, London W9 3TD  \n\nGeneralised Epilepsy \n\nMedication: Ongoing Sodium Valproate since March 2024 \n\nSodium Valproate 500 mg twice daily (patient reports full adherence) \n\nValproate Blood Level:  \n24 September 2025: 62 mg/L (therapeutic reference range 50–100 mg/L). Dose 500 mg twice daily.  \n\nSeizures: The patient reports experiencing several brief generalised events over the past week, each lasting under a minute with rapid recovery, witnessed by a partner on two occasions. No specific auras or focal warning features described. \n\nI conducted a telephone review today. The patient has a remote history of mild traumatic brain injury in adolescence without loss of consciousness lasting beyond a few minutes and no residual neurological deficit. They describe typical generalised convulsive seizures with sudden onset, bilateral motor activity, tongue biting on one occasion, and post-ictal fatigue of approximately 30 minutes. There are no clear triggers identified, though sleep deprivation over the weekend was noted. No intercurrent illness, missed doses, or alcohol excess reported. \n\nThe clinical phenotype and available history are consistent with generalised epilepsy. There are no focal features on history to suggest a focal onset, and previous EEG (April 2024) reportedly showed generalised spike–wave discharges. Physical examination is not applicable today as this was a remote consultation; the patient feels otherwise well with normal appetite and energy between events. \n\nGiven the recent cluster of brief seizures despite therapeutic valproate levels, I have advised seizure precautions, including strict sleep hygiene and avoidance of driving in line with DVLA guidance following recent seizures. We will arrange an updated EEG and a serum valproate level recheck in 2 weeks to ensure stability. The patient prefers to defer any medication adjustment until results are available. Safety counselling provided regarding bathing/swimming supervision and use of showers rather than baths. \n\nPlan:  \n- Continue Sodium Valproate 500 mg twice daily.  \n- Repeat trough valproate level and liver function tests in 2 weeks.  \n- Outpatient EEG (sleep-deprived if possible) within 4–6 weeks.  \n- Telephone follow-up in 6 weeks, or sooner if further seizures occur.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 667,
+      "end": 751,
+      "text": "The patient reports experiencing several brief generalised events over the past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2071,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A Patel  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A Patel,                                                                                                         \n\nDaniel Harris, DOB: 22-11-1991, Hospital No: H382917 NHS No. 9043175628  \nFlat 3, 27 Elgin Avenue, London W9 3TD  \n\nGeneralised Epilepsy \n\nMedication: Ongoing Sodium Valproate since March 2024 \n\nSodium Valproate 500 mg twice daily (patient reports full adherence) \n\nValproate Blood Level:  \n24 September 2025: 62 mg/L (therapeutic reference range 50–100 mg/L). Dose 500 mg twice daily.  \n\nSeizures: The patient reports experiencing several brief generalised events over the past week, each lasting under a minute with rapid recovery, witnessed by a partner on two occasions. No specific auras or focal warning features described. \n\nI conducted a telephone review today. The patient has a remote history of mild traumatic brain injury in adolescence without loss of consciousness lasting beyond a few minutes and no residual neurological deficit. They describe typical generalised convulsive seizures with sudden onset, bilateral motor activity, tongue biting on one occasion, and post-ictal fatigue of approximately 30 minutes. There are no clear triggers identified, though sleep deprivation over the weekend was noted. No intercurrent illness, missed doses, or alcohol excess reported. \n\nThe clinical phenotype and available history are consistent with generalised epilepsy. There are no focal features on history to suggest a focal onset, and previous EEG (April 2024) reportedly showed generalised spike–wave discharges. Physical examination is not applicable today as this was a remote consultation; the patient feels otherwise well with normal appetite and energy between events. \n\nGiven the recent cluster of brief seizures despite therapeutic valproate levels, I have advised seizure precautions, including strict sleep hygiene and avoidance of driving in line with DVLA guidance following recent seizures. We will arrange an updated EEG and a serum valproate level recheck in 2 weeks to ensure stability. The patient prefers to defer any medication adjustment until results are available. Safety counselling provided regarding bathing/swimming supervision and use of showers rather than baths. \n\nPlan:  \n- Continue Sodium Valproate 500 mg twice daily.  \n- Repeat trough valproate level and liver function tests in 2 weeks.  \n- Outpatient EEG (sleep-deprived if possible) within 4–6 weeks.  \n- Telephone follow-up in 6 weeks, or sooner if further seizures occur.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"The patient reports experiencing several brief generalised events over the past week.\" This provides a timeframe (past week) and a vague count ('several'), without a precise number. No other explicit frequencies are given. According to rules, when only a vague number is provided within a week, use 'multiple per week'. There is no indication of seizure freedom for 6 months, so not seizure-free.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "The patient reports experiencing several brief generalised events over the past week"
+      ],
+      "reference": [
+        "multiple per week",
+        "a couple of seizures last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

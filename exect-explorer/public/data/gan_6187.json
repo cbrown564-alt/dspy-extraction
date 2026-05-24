@@ -1,0 +1,54 @@
+{
+  "id": "gan_6187",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Shah, \n\nMs Hannah Carter, DOB: 22-03-1993, Hospital No: K8475102 NHS No. 9430017286  \nFlat 12, 5 Rowan Close, London, SE15 3AB  \n\nDiagnosis: \n\nGeneralised epilepsy with myoclonic jerks and generalised tonic–clonic seizures; valproate effective, topiramate poorly tolerated \n\nAetiology: \n\nLikely genetic generalised epilepsy; no structural lesion on MRI and normal neurological examination \n\nOther Medical Problems: \n\nMild asthma managed with prn salbutamol inhaler; vitamin D insufficiency under GP monitoring \n\nManagement Plan: \n\nContinue sodium valproate (Epilim chrono) 500 mg mane and 1000 mg nocte. Maintain a single brand preparation. Arrange serum valproate level and LFTs in three months via GP. Seizure and trigger diary to continue. DVLA guidance reinforced; she is currently not driving and understands the regulations. Follow-up in six months or sooner if breakthrough generalised tonic–clonic seizures occur. \n\nThis patient describes infrequent generalised tonic–clonic seizures occurring approximately every 3–4 months, almost exclusively after extended periods of intensive laptop and smartphone use into the late evening, particularly when combined with sleep curtailment. She also reports brief morning myoclonic jerks on about two days per week, which have reduced in frequency since the valproate dose was optimised in June. Topiramate was discontinued due to cognitive slowing and word-finding difficulties. There is a family history of “fits” in a maternal aunt. MRI brain (2024) was normal and interictal EEG (generalised spike–wave discharges) supports a diagnosis of generalised epilepsy. We discussed practical measures: regular sleep, planned screen breaks with blue-light reduction, and avoiding late-night intensive device use, as these circumstances have preceded several of her events. No other medication changes today.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1401,
+      "end": 1555,
+      "text": "She also reports brief morning myoclonic jerks on about two days per week, which have reduced in frequency since the valproate dose was optimised in June.",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6187,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Shah, \n\nMs Hannah Carter, DOB: 22-03-1993, Hospital No: K8475102 NHS No. 9430017286  \nFlat 12, 5 Rowan Close, London, SE15 3AB  \n\nDiagnosis: \n\nGeneralised epilepsy with myoclonic jerks and generalised tonic–clonic seizures; valproate effective, topiramate poorly tolerated \n\nAetiology: \n\nLikely genetic generalised epilepsy; no structural lesion on MRI and normal neurological examination \n\nOther Medical Problems: \n\nMild asthma managed with prn salbutamol inhaler; vitamin D insufficiency under GP monitoring \n\nManagement Plan: \n\nContinue sodium valproate (Epilim chrono) 500 mg mane and 1000 mg nocte. Maintain a single brand preparation. Arrange serum valproate level and LFTs in three months via GP. Seizure and trigger diary to continue. DVLA guidance reinforced; she is currently not driving and understands the regulations. Follow-up in six months or sooner if breakthrough generalised tonic–clonic seizures occur. \n\nThis patient describes infrequent generalised tonic–clonic seizures occurring approximately every 3–4 months, almost exclusively after extended periods of intensive laptop and smartphone use into the late evening, particularly when combined with sleep curtailment. She also reports brief morning myoclonic jerks on about two days per week, which have reduced in frequency since the valproate dose was optimised in June. Topiramate was discontinued due to cognitive slowing and word-finding difficulties. There is a family history of “fits” in a maternal aunt. MRI brain (2024) was normal and interictal EEG (generalised spike–wave discharges) supports a diagnosis of generalised epilepsy. We discussed practical measures: regular sleep, planned screen breaks with blue-light reduction, and avoiding late-night intensive device use, as these circumstances have preceded several of her events. No other medication changes today.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides two seizure frequencies: (1) generalised tonic–clonic seizures approximately every 3–4 months, and (2) brief morning myoclonic jerks on about two days per week. Per the rule to select the highest frequency, the myoclonic jerks are more frequent than the GTCs. \"About two days per week\" is normalized to 2 per week. No seizure-free period is stated.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "She also reports brief morning myoclonic jerks on about two days per week, which have reduced in frequency since the valproate dose was optimised in June."
+      ],
+      "reference": [
+        "unknown",
+        "Seizures after prolonged screen time"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

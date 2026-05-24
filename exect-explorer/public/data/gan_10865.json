@@ -1,0 +1,59 @@
+{
+  "id": "gan_10865",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 03 November 2021 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Generalised epilepsy following adolescent onset/previous brief absence episodes evolving to generalised tonic–clonic seizures/has practiced aura recognition strategies and describes personal warning features/sleep-onset insomnia/seasonal allergic rhinitis/non-smoker. \n\nMedication: Sodium valproate modified-release 500 mg twice daily.  \nClobazam 10 mg at night as rescue for clustering (patient-directed protocol).  \nCetirizine 10 mg once daily as needed for allergic rhinitis.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a clear account of his current seizure control. He has generalised epilepsy. He reports that he continues to use his previously learned aura recognition strategies. In his own words, his typical warning features are “a rising chest fizz, a brief metallic taste, and a snap of light at the edge of vision,” which usually give him enough time to sit or lie down safely and notify a family member if nearby. He keeps a written and app-based diary and synchronises it with his seizure-detection device. \n\nSeizures: Device metrics flag one cluster this week; duration 2 h. He states the cluster followed two consecutive late nights and a missed evening dose. He activated his agreed home plan (rest, hydration, clobazam 10 mg) and there were no injuries or emergency attendances. No other events recorded this month by diary or device. \n\nExamination: BP 118/72, pulse 68 regular. Neurological examination normal; no focal deficits. Weight stable. No tremor or ataxia. \n\nInvestigations: Recent liver function tests (last month) normal. Ammonia not elevated. Valproate level within therapeutic range (62 mg/L). \n\nPlan: \n- Continue sodium valproate MR 500 mg twice daily. \n- Retain clobazam 10 mg as rescue for clustering; patient understands when to take and when to seek help. \n- Reinforce adherence and sleep hygiene; patient will use phone prompts linked to his device app to reduce missed doses. \n- No driving given breakthrough cluster this week; will review eligibility per DVLA guidance at next appointment. \n- Follow-up in 6 months, sooner if further clusters or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1438,
+      "end": 1494,
+      "text": "Device metrics flag one cluster this week; duration 2 h.",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1438,
+      "end": 1493,
+      "text": "Device metrics flag one cluster this week; duration 2 h",
+      "attributes": {
+        "Label": "1 cluster per week, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10865,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 03 November 2021 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Generalised epilepsy following adolescent onset/previous brief absence episodes evolving to generalised tonic–clonic seizures/has practiced aura recognition strategies and describes personal warning features/sleep-onset insomnia/seasonal allergic rhinitis/non-smoker. \n\nMedication: Sodium valproate modified-release 500 mg twice daily.  \nClobazam 10 mg at night as rescue for clustering (patient-directed protocol).  \nCetirizine 10 mg once daily as needed for allergic rhinitis.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a clear account of his current seizure control. He has generalised epilepsy. He reports that he continues to use his previously learned aura recognition strategies. In his own words, his typical warning features are “a rising chest fizz, a brief metallic taste, and a snap of light at the edge of vision,” which usually give him enough time to sit or lie down safely and notify a family member if nearby. He keeps a written and app-based diary and synchronises it with his seizure-detection device. \n\nSeizures: Device metrics flag one cluster this week; duration 2 h. He states the cluster followed two consecutive late nights and a missed evening dose. He activated his agreed home plan (rest, hydration, clobazam 10 mg) and there were no injuries or emergency attendances. No other events recorded this month by diary or device. \n\nExamination: BP 118/72, pulse 68 regular. Neurological examination normal; no focal deficits. Weight stable. No tremor or ataxia. \n\nInvestigations: Recent liver function tests (last month) normal. Ammonia not elevated. Valproate level within therapeutic range (62 mg/L). \n\nPlan: \n- Continue sodium valproate MR 500 mg twice daily. \n- Retain clobazam 10 mg as rescue for clustering; patient understands when to take and when to seek help. \n- Reinforce adherence and sleep hygiene; patient will use phone prompts linked to his device app to reduce missed doses. \n- No driving given breakthrough cluster this week; will review eligibility per DVLA guidance at next appointment. \n- Follow-up in 6 months, sooner if further clusters or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current events: \"Device metrics flag one cluster this week; duration 2 h.\" It further states \"No other events recorded this month by diary or device.\" There is an explicit numeric timeframe (this week) with one cluster. No explicit count of seizures within the cluster is provided. Following the rules, we prioritise explicit numeric expressions and use the cluster format when available. Frequency: 1 cluster per week; seizures per cluster are unspecified, so mark as unknown per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per week, multiple per cluster",
+        "Device metrics flag one cluster this week; duration 2 h."
+      ],
+      "reference": [
+        "1 cluster per week, multiple per cluster",
+        "Device metrics flag one cluster this week; duration 2 h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

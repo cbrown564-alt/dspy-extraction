@@ -1,0 +1,59 @@
+{
+  "id": "gan_3864",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n214 King Street, Hammersmith, London W6 0RA  \n\nDear Dr Ahmed,  \n\nSophie Martin, DOB: 12-11-1992, Hospital No: H583920 NHS No. 8392017456  \nFlat 5, 19 Brookfield Road, London, N6 4EL \n\nMedication: \n\nLevetiracetam 1000 mg/1500 mg daily (morning/evening). Tolerated without notable daytime sedation; occasional irritability reported. \n\nThank you for reviewing this patient after our interval follow‑up. The history today was obtained from the patient alone; the partner was not present at review, although the partner’s prior observations were referenced. The pattern remains predominantly nocturnal by partner report, with events often noted as brief arousals, occasional vocalisation, and subsequent morning fatigue. The patient describes waking with headache and tongue soreness on some mornings, uncertain of precise timing overnight. Daytime events are uncommon. On patient diary review, they record sz *three/d on several recent weeks, largely clustering during periods of poor sleep. \n\nSince increasing the evening dose two months ago, there has been some reduction in morning confusion, though the overnight events appear to persist in a similar pattern. The patient links exacerbations to disrupted sleep and late shifts. Alcohol intake is minimal. No clear association with intercurrent illness. There have been no new focal neurological symptoms. \n\nExamination today was unremarkable: normal speech, conjugate gaze, no asymmetry of power or coordination, gait steady. Blood pressure 122/74, pulse 68 regular. No rash. \n\nWe discussed practical measures focused on sleep regularity and adherence (alarms set for evening dose). The patient prefers to avoid further dose increases at present due to irritability, and will continue a detailed diary, including any witnessed behaviours if the partner can document typical episodes. If the nocturnal events remain frequent on this regimen, we can consider alternative strategies at the next review. \n\nI have requested an updated sleep‑deprived EEG and will arrange for ambulatory monitoring if feasible, to capture nocturnal patterns. The patient has been advised to avoid driving until event‑free in accordance with DVLA guidance and is aware of safety measures at night. \n\nWe will review again in four months, or sooner if there is escalation in frequency or any injury. Please let me know if there are concerns from your side. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1007,
+      "end": 1054,
+      "text": "they record sz *three/d on several recent weeks",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1019,
+      "end": 1030,
+      "text": "sz *three/d",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3864,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n214 King Street, Hammersmith, London W6 0RA  \n\nDear Dr Ahmed,  \n\nSophie Martin, DOB: 12-11-1992, Hospital No: H583920 NHS No. 8392017456  \nFlat 5, 19 Brookfield Road, London, N6 4EL \n\nMedication: \n\nLevetiracetam 1000 mg/1500 mg daily (morning/evening). Tolerated without notable daytime sedation; occasional irritability reported. \n\nThank you for reviewing this patient after our interval follow‑up. The history today was obtained from the patient alone; the partner was not present at review, although the partner’s prior observations were referenced. The pattern remains predominantly nocturnal by partner report, with events often noted as brief arousals, occasional vocalisation, and subsequent morning fatigue. The patient describes waking with headache and tongue soreness on some mornings, uncertain of precise timing overnight. Daytime events are uncommon. On patient diary review, they record sz *three/d on several recent weeks, largely clustering during periods of poor sleep. \n\nSince increasing the evening dose two months ago, there has been some reduction in morning confusion, though the overnight events appear to persist in a similar pattern. The patient links exacerbations to disrupted sleep and late shifts. Alcohol intake is minimal. No clear association with intercurrent illness. There have been no new focal neurological symptoms. \n\nExamination today was unremarkable: normal speech, conjugate gaze, no asymmetry of power or coordination, gait steady. Blood pressure 122/74, pulse 68 regular. No rash. \n\nWe discussed practical measures focused on sleep regularity and adherence (alarms set for evening dose). The patient prefers to avoid further dose increases at present due to irritability, and will continue a detailed diary, including any witnessed behaviours if the partner can document typical episodes. If the nocturnal events remain frequent on this regimen, we can consider alternative strategies at the next review. \n\nI have requested an updated sleep‑deprived EEG and will arrange for ambulatory monitoring if feasible, to capture nocturnal patterns. The patient has been advised to avoid driving until event‑free in accordance with DVLA guidance and is aware of safety measures at night. \n\nWe will review again in four months, or sooner if there is escalation in frequency or any injury. Please let me know if there are concerns from your side. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly indicates ongoing seizures/events predominantly nocturnal. The only explicit numeric frequency stated is: 'they record sz *three/d on several recent weeks'. Interpret 'sz *three/d' as 'seizures three per day'. This is presented as a recent pattern from the patient's diary, indicating current frequency. No other explicit numeric frequency contradicts or lowers this; thus select the highest frequency noted. Convert to allowed format: '3 per day'.",
+      "seizure_frequency_number": [
+        "3 per day",
+        "they record sz *three/d on several recent weeks"
+      ],
+      "reference": [
+        "3 per day",
+        "sz *three/d"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

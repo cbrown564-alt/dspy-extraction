@@ -1,0 +1,47 @@
+{
+  "id": "gan_11436",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Naveed Khan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Appointment reminder\n\nHi Alex\n\nThis is a reminder of your upcoming appointment at the Epilepsy Clinic. Your review is scheduled for Monday, 20 October 2025 at 09:30 in the Neurosciences Outpatient Department, King’s College Hospital. Please arrive 10 minutes early for check-in and bring an up-to-date list of medications, including any recent changes. A brief note of any associated symptoms since your last visit will also be helpful. Your history of migraine is noted in your record for discussion as needed.\n\nIf you are unable to attend or need to rearrange, please contact the clinic booking line on 0207 123 4567 at least 48 hours in advance.\n\nWith best wishes",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11436,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Naveed Khan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Appointment reminder\n\nHi Alex\n\nThis is a reminder of your upcoming appointment at the Epilepsy Clinic. Your review is scheduled for Monday, 20 October 2025 at 09:30 in the Neurosciences Outpatient Department, King’s College Hospital. Please arrive 10 minutes early for check-in and bring an up-to-date list of medications, including any recent changes. A brief note of any associated symptoms since your last visit will also be helpful. Your history of migraine is noted in your record for discussion as needed.\n\nIf you are unable to attend or need to rearrange, please contact the clinic booking line on 0207 123 4567 at least 48 hours in advance.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the letter carefully. It is an appointment reminder for the Epilepsy Clinic and discusses timing, location, bringing medication lists, and noting associated symptoms and migraine history. There is no mention of seizures or seizure frequency, and no numeric or qualitative description of seizure occurrences. Therefore, there is no seizure frequency information to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter reminding the patient of an upcoming epilepsy clinic appointment"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_13174",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \n- Current: Carbamazepine (Tegretol) 400 mg morning / 600 mg evening.  \n- Previous: Levetiracetam (Keppra) up to 1 g twice daily (stopped due to mood-related side effects).  \n\nSummary and interval history:  \nSince our last review, there has been a clear and sustained improvement on the current regimen compared with earlier periods. The patient reports better day-to-day stability, no adverse effects of note, and improved sleep quality. On Carbamazepine monotherapy he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred two Thursdays ago. This event was brief, with a short period of confusion afterwards, and there were no injuries or tongue biting. He identifies work-related sleep disruption the night before as a potential trigger. No further events since. He has resumed normal activities and continues to drive in accordance with current guidance previously discussed.  \n\nExamination today was unremarkable. Blood pressure and weight are stable. He describes good adherence and uses a pill organiser. No rash, dizziness, or diplopia. Liver function tests performed by his GP last month were normal as per the report he brought today.  \n\nPlan:  \n- Continue Carbamazepine at the present dose given the overall improvement and good tolerability.  \n- Maintain sleep hygiene and regular routines; he will keep a brief seizure and trigger diary.  \n- If further breakthrough events occur, we will review plasma carbamazepine levels and consider cautious dose optimisation.  \n- Safety advice reinforced; he understands to contact us if patterns change.  \n\nFollow-up: We will review him in six months, or sooner if there are recurrent episodes.  \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 773,
+      "end": 856,
+      "text": "he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred",
+      "attributes": {
+        "Label": "1 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 744,
+      "end": 874,
+      "text": "On Carbamazepine monotherapy he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred two Thursdays ago",
+      "attributes": {
+        "Label": "1 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13174,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \n- Current: Carbamazepine (Tegretol) 400 mg morning / 600 mg evening.  \n- Previous: Levetiracetam (Keppra) up to 1 g twice daily (stopped due to mood-related side effects).  \n\nSummary and interval history:  \nSince our last review, there has been a clear and sustained improvement on the current regimen compared with earlier periods. The patient reports better day-to-day stability, no adverse effects of note, and improved sleep quality. On Carbamazepine monotherapy he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred two Thursdays ago. This event was brief, with a short period of confusion afterwards, and there were no injuries or tongue biting. He identifies work-related sleep disruption the night before as a potential trigger. No further events since. He has resumed normal activities and continues to drive in accordance with current guidance previously discussed.  \n\nExamination today was unremarkable. Blood pressure and weight are stable. He describes good adherence and uses a pill organiser. No rash, dizziness, or diplopia. Liver function tests performed by his GP last month were normal as per the report he brought today.  \n\nPlan:  \n- Continue Carbamazepine at the present dose given the overall improvement and good tolerability.  \n- Maintain sleep hygiene and regular routines; he will keep a brief seizure and trigger diary.  \n- If further breakthrough events occur, we will review plasma carbamazepine levels and consider cautious dose optimisation.  \n- Safety advice reinforced; he understands to contact us if patterns change.  \n\nFollow-up: We will review him in six months, or sooner if there are recurrent episodes.  \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"On Carbamazepine monotherapy he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred two Thursdays ago... No further events since.\" This indicates 1 seizure over the last 4 months, with no others. Not seizure-free for ≥6 months, so we calculate frequency. Calculation: 1 seizure / 4 months = 1 per 4 months.",
+      "seizure_frequency_number": [
+        "1 per 4 month",
+        "he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred"
+      ],
+      "reference": [
+        "1 per 4 month",
+        "On Carbamazepine monotherapy he was seizure-free for 4 months, until a focal impaired-awareness seizure occurred two Thursdays ago"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_9250",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Priya Nair\nElm Grove Medical Centre\n\n24 Elm Grove, Bromley, Kent BR1 3XT\nDear Dr Priya Nair\nMichael Smith, DOB: 21-11-1982, Hospital No: H728391 NHS No. 7425563190\n12 Brookside Close, Bromley, Kent BR2 8QA\n\nThank you for asking me to review your patient in the Neurology Clinic today. He was last seen here in January 2025. Since then he reports good overall control and, on direct questioning, there have been essentially no clear-cut events to suggest recent seizures. He does describe that when he has marked sleep deprivation he occasionally experiences brief clusters of symptoms that he recognises as his usual warning features; these have not progressed to definite events and he has a personalised management plan (held in his notes and shared with him) which he follows during such periods. He links these brief clusters to nights of poor sleep and they tend to settle once sleep normalises.\n\nCurrent medicines: Levetiracetam 1.25 g twice daily, Carbamazepine 400 mg twice daily, Topiramate 100 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg at night. He remains generally tolerant of this regimen, though he notes low-grade tiredness and occasional difficulty with word-finding, which he feels are stable compared with previous reviews. No new rashes, mood change, or visual symptoms. He does not drive. There have been no injuries, tongue bites, or witnessed episodes reported by his partner since the last visit.\n\nExamination today was unremarkable with normal cardiorespiratory observations and no focal neurological deficits. Weight is stable. Routine bloods from last month (U&E, LFTs, FBC) were within reference ranges. He is maintaining a seizure diary and has incorporated regular sleep hygiene measures as outlined in his personalised plan.\n\nPlan: Given the current picture of apparent stability without unequivocal events, I have not altered his antiepileptic regimen today. We discussed reinforcing sleep routines and continuing to use his documented plan during periods of sleep loss. He will contact the clinic if he experiences any definite events, injuries, or change in pattern. I will review him again in 6 months, or sooner if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 456,
+      "end": 530,
+      "text": "there have been essentially no clear-cut events to suggest recent seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9250,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Priya Nair\nElm Grove Medical Centre\n\n24 Elm Grove, Bromley, Kent BR1 3XT\nDear Dr Priya Nair\nMichael Smith, DOB: 21-11-1982, Hospital No: H728391 NHS No. 7425563190\n12 Brookside Close, Bromley, Kent BR2 8QA\n\nThank you for asking me to review your patient in the Neurology Clinic today. He was last seen here in January 2025. Since then he reports good overall control and, on direct questioning, there have been essentially no clear-cut events to suggest recent seizures. He does describe that when he has marked sleep deprivation he occasionally experiences brief clusters of symptoms that he recognises as his usual warning features; these have not progressed to definite events and he has a personalised management plan (held in his notes and shared with him) which he follows during such periods. He links these brief clusters to nights of poor sleep and they tend to settle once sleep normalises.\n\nCurrent medicines: Levetiracetam 1.25 g twice daily, Carbamazepine 400 mg twice daily, Topiramate 100 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg at night. He remains generally tolerant of this regimen, though he notes low-grade tiredness and occasional difficulty with word-finding, which he feels are stable compared with previous reviews. No new rashes, mood change, or visual symptoms. He does not drive. There have been no injuries, tongue bites, or witnessed episodes reported by his partner since the last visit.\n\nExamination today was unremarkable with normal cardiorespiratory observations and no focal neurological deficits. Weight is stable. Routine bloods from last month (U&E, LFTs, FBC) were within reference ranges. He is maintaining a seizure diary and has incorporated regular sleep hygiene measures as outlined in his personalised plan.\n\nPlan: Given the current picture of apparent stability without unequivocal events, I have not altered his antiepileptic regimen today. We discussed reinforcing sleep routines and continuing to use his documented plan during periods of sleep loss. He will contact the clinic if he experiences any definite events, injuries, or change in pattern. I will review him again in 6 months, or sooner if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit statements about seizures. The letter states: \"there have been essentially no clear-cut events to suggest recent seizures\" since last seen in January 2025, and current clinic date is 02 October 2025. That suggests no definite seizures in the intervening period (~9 months). It also notes brief warning-feature clusters during sleep deprivation that have not progressed to definite events. No injuries, tongue bites, or witnessed episodes. He keeps a diary. Criterion for 'seizure free' requires no seizures for at least 6 months; here, there appear to be no definite seizures for approximately 9 months. Therefore, classify as seizure free for multiple months. Quote a supporting line.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been essentially no clear-cut events to suggest recent seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No definite seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

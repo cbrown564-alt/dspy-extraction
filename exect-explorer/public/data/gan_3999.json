@@ -1,0 +1,48 @@
+{
+  "id": "gan_3999",
+  "text": "NHS NEUROLOGY CLINIC LETTER\n\nClinic Date: 12 September 2025\n\nDr Priya Shah\nOakfield Medical Practice\n\n12 Oakfield Road, Harborne, Birmingham B17 0LR\n\nDear Dr Priya Shah,\n\nRe: Jordan Ellis, DOB: 14-03-1990, Hospital No: H873920, NHS No: 7482015693\nAddress: Flat 4, 28 Larch Grove, Stirchley, Birmingham B30 2HT\n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe onset. Long-standing condition with prior routine EEGs showing intermittent left temporal sharp activity; previous MRI (2017) reported structurally normal brain. No history of status epilepticus.\n\nCurrent presentation: I reviewed Jordan Ellis in clinic today, accompanied by their partner. They report ongoing focal impaired-awareness episodes with brief déjà vu, rising epigastric sensation, and subsequent confusion lasting 2–3 minutes, sometimes followed by fatigue for an hour. Seizure frequency is described as abs monthly, typically clustering around periods of sleep deprivation. No clear catamenial pattern reported. They deny generalised tonic–clonic seizures in the past two years. No injuries reported.\n\nMedication history:\n- Current: Lamotrigine 200 mg twice daily (well tolerated), Clobazam 10 mg nocte PRN for clusters (used sparingly, fewer than four doses per month), Folic acid 5 mg daily.\n- Previous: Levetiracetam (mood irritability), Carbamazepine (diplopia at higher doses), Lacosamide (dizziness), Valproate (weight gain), Zonisamide (word-finding difficulty), Gabapentin (ineffective).\n- Never tried: Topiramate, Perampanel, Brivaracetam.\n\nAllergies: No known drug allergies.\n\nComorbidities and relevant history: Mild generalised anxiety (managed with CBT; no psychotropic medication). Normal echocardiogram in 2021 for incidental systolic murmur. Non-smoker; minimal alcohol intake.\n\nInvestigations: Routine bloods today (FBC, U&E, LFTs) requested to monitor baseline prior to any future medication changes. Consider repeat MRI with epilepsy protocol if seizures escalate or pre-surgical discussion is contemplated.\n\nCounselling and safety: We discussed SUDEP risk, adherence, sleep hygiene, and alcohol moderation. Driving advice reiterated in line with DVLA guidance—patient is not driving. Seizure first-aid and trigger management reviewed.\n\nPlan:\n- Continue Lamotrigine 200 mg twice daily.\n- Maintain Clobazam PRN strategy for short clusters.\n- If further breakthrough events occur (more than abs monthly or with injury), we discussed options including Brivaracetam add-on versus trial of Topiramate, acknowledging previous cognitive sensitivity on Zonisamide; patient prefers to defer changes for now.\n- Arrange epilepsy nurse telephone review in 6–8 weeks to reassess frequency and tolerability, and to consider rescue plan refinement.\n- Provide written information on seizure diaries and lifestyle measures.\n- Routine follow-up in 6 months, with earlier review if seizures increase in frequency beyond abs monthly, become longer, or generalise.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 849,
+      "end": 894,
+      "text": "Seizure frequency is described as abs monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3999,
+    "clinic_date": "NHS NEUROLOGY CLINIC LETTER\n\nClinic Date: 12 September 2025\n\nDr Priya Shah\nOakfield Medical Practice\n\n12 Oakfield Road, Harborne, Birmingham B17 0LR\n\nDear Dr Priya Shah,\n\nRe: Jordan Ellis, DOB: 14-03-1990, Hospital No: H873920, NHS No: 7482015693\nAddress: Flat 4, 28 Larch Grove, Stirchley, Birmingham B30 2HT\n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe onset. Long-standing condition with prior routine EEGs showing intermittent left temporal sharp activity; previous MRI (2017) reported structurally normal brain. No history of status epilepticus.\n\nCurrent presentation: I reviewed Jordan Ellis in clinic today, accompanied by their partner. They report ongoing focal impaired-awareness episodes with brief déjà vu, rising epigastric sensation, and subsequent confusion lasting 2–3 minutes, sometimes followed by fatigue for an hour. Seizure frequency is described as abs monthly, typically clustering around periods of sleep deprivation. No clear catamenial pattern reported. They deny generalised tonic–clonic seizures in the past two years. No injuries reported.\n\nMedication history:\n- Current: Lamotrigine 200 mg twice daily (well tolerated), Clobazam 10 mg nocte PRN for clusters (used sparingly, fewer than four doses per month), Folic acid 5 mg daily.\n- Previous: Levetiracetam (mood irritability), Carbamazepine (diplopia at higher doses), Lacosamide (dizziness), Valproate (weight gain), Zonisamide (word-finding difficulty), Gabapentin (ineffective).\n- Never tried: Topiramate, Perampanel, Brivaracetam.\n\nAllergies: No known drug allergies.\n\nComorbidities and relevant history: Mild generalised anxiety (managed with CBT; no psychotropic medication). Normal echocardiogram in 2021 for incidental systolic murmur. Non-smoker; minimal alcohol intake.\n\nInvestigations: Routine bloods today (FBC, U&E, LFTs) requested to monitor baseline prior to any future medication changes. Consider repeat MRI with epilepsy protocol if seizures escalate or pre-surgical discussion is contemplated.\n\nCounselling and safety: We discussed SUDEP risk, adherence, sleep hygiene, and alcohol moderation. Driving advice reiterated in line with DVLA guidance—patient is not driving. Seizure first-aid and trigger management reviewed.\n\nPlan:\n- Continue Lamotrigine 200 mg twice daily.\n- Maintain Clobazam PRN strategy for short clusters.\n- If further breakthrough events occur (more than abs monthly or with injury), we discussed options including Brivaracetam add-on versus trial of Topiramate, acknowledging previous cognitive sensitivity on Zonisamide; patient prefers to defer changes for now.\n- Arrange epilepsy nurse telephone review in 6–8 weeks to reassess frequency and tolerability, and to consider rescue plan refinement.\n- Provide written information on seizure diaries and lifestyle measures.\n- Routine follow-up in 6 months, with earlier review if seizures increase in frequency beyond abs monthly, become longer, or generalise.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizure frequency is described as abs monthly.' This indicates approximately monthly focal impaired-awareness seizures. No other frequency is given that is higher. There is mention of clustering around sleep deprivation and PRN clobazam for clusters, but no numeric per-cluster count or rate beyond monthly, so the primary frequency to report is monthly. The patient has not had generalised tonic–clonic seizures in the past two years, but they are not seizure-free overall. Therefore, the normalized label is 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Seizure frequency is described as abs monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "abs *monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

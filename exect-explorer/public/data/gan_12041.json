@@ -1,0 +1,59 @@
+{
+  "id": "gan_12041",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nDaniel Harper, DOB: 22-11-1995, Hospital No: H374920 NHS No. 9834527610  \nFlat 2, 48 Ridley Road, London, E8 2NH  \n\nFocal Epilepsy Type \n\nMedication: Levetiracetam 1000mg twice daily; Clobazam 10mg at night (as needed for clusters)  \n\nLevetiracetam Blood Level:  \n15th September 2025: 16 mg/L (typical reference 12–46 mg/L). Dose 1000mg twice a day  \n\nSeizures: The patient has focal epilepsy, with carer-supported communication due to a learning disability. Petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 12 months. The carer’s seizure log corroborates frequent brief staring episodes with behavioural arrest and eyelid fluttering, each lasting 5–20 seconds, with rapid recovery and no clear post‑ictal confusion. Triggers reported by the carer include sleep deprivation and missed meals. \n\nI reviewed Daniel Harper in person with their carer present for history and seizure logging support. The carer provided a diary covering the past three months, which aligns with the above frequency pattern and notes that clusters of brief absences are more pronounced in the late afternoon. There is no recent head injury, intercurrent illness, or medication non‑adherence reported. No new focal neurological deficits on examination today. \n\nWe discussed treatment adherence strategies and use of a simplified pictorial medication chart to assist the carer with administration and logging. I have advised continuation of current doses while we obtain an updated EEG (including hyperventilation and photic stimulation) to better characterise the frequent brief events, which are likely focal impaired awareness seizures with rapid generalisation not observed. MRI brain (epilepsy protocol) from March 2023 showed no structural lesion. \n\nPlan:  \n- Continue Levetiracetam 1000mg twice daily.  \n- Clobazam 10mg nocte may be used for short cluster periods as previously, not exceeding three consecutive nights without clinician advice.  \n- Arrange routine EEG within 6–8 weeks; consider ambulatory EEG if events remain difficult to capture.  \n- Carer to maintain the current seizure log; we provided a revised template with tick‑box features to aid accuracy.  \n- Telephone review in 8 weeks, face‑to‑face in 4–6 months, or sooner if generalised convulsion recurs earlier than expected. \n\nCommunication/Support: Due to learning disability, information was delivered using simple language and visual prompts. The carer verbalised understanding of rescue plan and documentation requirements. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 723,
+      "end": 787,
+      "text": "Petit mal occur on a near-daily basis, sometimes dozens in a day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 723,
+      "end": 883,
+      "text": "petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 12 months",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12041,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nDaniel Harper, DOB: 22-11-1995, Hospital No: H374920 NHS No. 9834527610  \nFlat 2, 48 Ridley Road, London, E8 2NH  \n\nFocal Epilepsy Type \n\nMedication: Levetiracetam 1000mg twice daily; Clobazam 10mg at night (as needed for clusters)  \n\nLevetiracetam Blood Level:  \n15th September 2025: 16 mg/L (typical reference 12–46 mg/L). Dose 1000mg twice a day  \n\nSeizures: The patient has focal epilepsy, with carer-supported communication due to a learning disability. Petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 12 months. The carer’s seizure log corroborates frequent brief staring episodes with behavioural arrest and eyelid fluttering, each lasting 5–20 seconds, with rapid recovery and no clear post‑ictal confusion. Triggers reported by the carer include sleep deprivation and missed meals. \n\nI reviewed Daniel Harper in person with their carer present for history and seizure logging support. The carer provided a diary covering the past three months, which aligns with the above frequency pattern and notes that clusters of brief absences are more pronounced in the late afternoon. There is no recent head injury, intercurrent illness, or medication non‑adherence reported. No new focal neurological deficits on examination today. \n\nWe discussed treatment adherence strategies and use of a simplified pictorial medication chart to assist the carer with administration and logging. I have advised continuation of current doses while we obtain an updated EEG (including hyperventilation and photic stimulation) to better characterise the frequent brief events, which are likely focal impaired awareness seizures with rapid generalisation not observed. MRI brain (epilepsy protocol) from March 2023 showed no structural lesion. \n\nPlan:  \n- Continue Levetiracetam 1000mg twice daily.  \n- Clobazam 10mg nocte may be used for short cluster periods as previously, not exceeding three consecutive nights without clinician advice.  \n- Arrange routine EEG within 6–8 weeks; consider ambulatory EEG if events remain difficult to capture.  \n- Carer to maintain the current seizure log; we provided a revised template with tick‑box features to aid accuracy.  \n- Telephone review in 8 weeks, face‑to‑face in 4–6 months, or sooner if generalised convulsion recurs earlier than expected. \n\nCommunication/Support: Due to learning disability, information was delivered using simple language and visual prompts. The carer verbalised understanding of rescue plan and documentation requirements. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify seizure frequency statements. The letter states: 'Petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging.' Also: 'Generalised convulsions occur once every 12 months.' Apply rule to select the highest frequency across seizure types. The near-daily petit mal with 'sometimes dozens in a day' indicates multiple per day but without a precise count, so use 'multiple per day'. The annual generalized convulsions are less frequent and thus not selected. No evidence of seizure freedom. Therefore, final label: 'multiple per day'.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "Petit mal occur on a near-daily basis, sometimes dozens in a day"
+      ],
+      "reference": [
+        "multiple per day",
+        "petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 12 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

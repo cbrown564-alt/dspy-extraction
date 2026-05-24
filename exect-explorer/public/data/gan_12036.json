@@ -1,0 +1,59 @@
+{
+  "id": "gan_12036",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Mark Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and medication plan\n\nHi Emma\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 200 mg in the morning and 400 mg at night\n\nPresent Seizure Frequency:\n\nThe patient, a newly retired teacher living alone with a consistent daily routine and markedly reduced social contact, reports that petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 or 12 months. She keeps a diary but notes that brief lapses are difficult to tally, especially during reading and household tasks.\n\nPlan of Action:\n\nThe patient feels that since retirement her sleep is regular and alcohol intake is negligible, but she notes increased daytime solitude and prolonged screen time. No clear precipitant for the recent clusters of petit mal was identified. We discussed options and agreed to a cautious optimisation of existing therapy to minimise adverse effects.\n\nPlan:\n- Increase lamotrigine to 125 mg twice daily for two weeks, then to 150 mg twice daily if tolerated.\n- Continue sodium valproate at the current dose for now.\n- Arrange routine bloods (FBC, LFTs, U&Es) in 2–3 weeks.\n- Provide written seizure first-aid information and discuss community support services to address social isolation.\n- Encourage continued seizure diary with notes on time-of-day, screen exposure, and sleep.\n\nFollow-up:\n\nReview in clinic in 12 weeks. If petit mal frequency reduces without adverse effects, we will consider a gradual reduction of sodium valproate at that point. Patient knows to contact the team earlier if there is any increase in generalised convulsions, rash, mood change, or other concerning side effects.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 654,
+      "end": 718,
+      "text": "petit mal occur on a near-daily basis, sometimes dozens in a day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 654,
+      "end": 820,
+      "text": "petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 or 12 months",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12036,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Mark Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and medication plan\n\nHi Emma\n\nEpilepsy Diagnosis:\n\n—\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Sodium valproate 200 mg in the morning and 400 mg at night\n\nPresent Seizure Frequency:\n\nThe patient, a newly retired teacher living alone with a consistent daily routine and markedly reduced social contact, reports that petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 or 12 months. She keeps a diary but notes that brief lapses are difficult to tally, especially during reading and household tasks.\n\nPlan of Action:\n\nThe patient feels that since retirement her sleep is regular and alcohol intake is negligible, but she notes increased daytime solitude and prolonged screen time. No clear precipitant for the recent clusters of petit mal was identified. We discussed options and agreed to a cautious optimisation of existing therapy to minimise adverse effects.\n\nPlan:\n- Increase lamotrigine to 125 mg twice daily for two weeks, then to 150 mg twice daily if tolerated.\n- Continue sodium valproate at the current dose for now.\n- Arrange routine bloods (FBC, LFTs, U&Es) in 2–3 weeks.\n- Provide written seizure first-aid information and discuss community support services to address social isolation.\n- Encourage continued seizure diary with notes on time-of-day, screen exposure, and sleep.\n\nFollow-up:\n\nReview in clinic in 12 weeks. If petit mal frequency reduces without adverse effects, we will consider a gradual reduction of sodium valproate at that point. Patient knows to contact the team earlier if there is any increase in generalised convulsions, rash, mood change, or other concerning side effects.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly mentions two seizure types with frequencies: petit mal occur on a near-daily basis, sometimes dozens in a day, and generalised convulsions occur once every 11 or 12 months. Per rule to choose the highest frequency across types, the petit mal frequency dominates. However, the exact count per day is not quantifiable because it's described as near-daily and sometimes dozens, with difficulty tallying. Therefore, the appropriate normalized label is 'multiple per day'. No clustering structure is specified beyond 'sometimes dozens', which remains vague, so 'multiple per day' is the best fit.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "petit mal occur on a near-daily basis, sometimes dozens in a day"
+      ],
+      "reference": [
+        "multiple per day",
+        "petit mal occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 or 12 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

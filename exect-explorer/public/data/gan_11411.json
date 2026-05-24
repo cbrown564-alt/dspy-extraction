@@ -1,0 +1,47 @@
+{
+  "id": "gan_11411",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 11 July 2016\n\nDr Patel\nElm Grove Medical Practice\n78 Elm Grove, Brighton BN2 3DF\n\nDear Dr Patel,\n\nMichael Thompson, DOB: 22-11-1978, Hospital No: H392771 NHS No. 9431125876\n45 Seaside Road, Eastbourne BN21 3PX\n\nGeneralised Epilepsy\n\nThank you for your urgent referral. We acknowledge receipt of an urgent appointment request for triage regarding Michael Thompson, who has generalised epilepsy. The patient’s Type 2 diabetes is managed in primary care and will be noted for peri-appointment considerations.\n\nAction plan:\n- We will triage the referral within 5 working days.\n- We aim to offer the earliest suitable clinic slot; our team will contact the patient directly to schedule.\n- Please ensure a current medication list and any recent blood results are available via shared care records.\n\nIf there are any new concerns or if urgent neurological review is required sooner, please contact our triage line.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11411,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 11 July 2016\n\nDr Patel\nElm Grove Medical Practice\n78 Elm Grove, Brighton BN2 3DF\n\nDear Dr Patel,\n\nMichael Thompson, DOB: 22-11-1978, Hospital No: H392771 NHS No. 9431125876\n45 Seaside Road, Eastbourne BN21 3PX\n\nGeneralised Epilepsy\n\nThank you for your urgent referral. We acknowledge receipt of an urgent appointment request for triage regarding Michael Thompson, who has generalised epilepsy. The patient’s Type 2 diabetes is managed in primary care and will be noted for peri-appointment considerations.\n\nAction plan:\n- We will triage the referral within 5 working days.\n- We aim to offer the earliest suitable clinic slot; our team will contact the patient directly to schedule.\n- Please ensure a current medication list and any recent blood results are available via shared care records.\n\nIf there are any new concerns or if urgent neurological review is required sooner, please contact our triage line.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter is an administrative triage acknowledgement for a patient with generalised epilepsy. It contains no mention of seizures or seizure frequency, nor any statement about being seizure-free. There are no numeric or qualitative frequency descriptors. Therefore, there is no seizure frequency reference in the letter.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging receipt of an urgent epilepsy appointment request for triage"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

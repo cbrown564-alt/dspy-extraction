@@ -1,0 +1,54 @@
+{
+  "id": "gan_9114",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Singh  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Singh,  \n\nLaura Bennett, DOB: 03-11-1990, Hospital No: H948302 NHS No. 5839201746  \n12 Beech Grove, London, W10 5PA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Tolerated without mood change; mild daytime tiredness likely compounded by interrupted sleep due to childcare.\n\nI reviewed Laura Bennett, who has focal epilepsy presumed temporal lobe in origin. Since the last visit she describes brief déjà vu auras roughly once every 4–6 weeks, typically in the late evening when fatigued after settling the children. Importantly, there have been no events from sleep; she reports her nights have been free of seizure activity despite frequent awakenings to attend to her young children. Daytime awareness is preserved during the auras and there has been no secondary generalisation. \n\nShe links breakthrough auras to nights of reduced rest and increased stress. As primary caregiver, her sleep is often fragmented; she is exploring strategies to consolidate rest where possible. She has kept a seizure and sleep diary, which shows a correlation between short sleep duration and aura occurrence. \n\nNeurological examination today is unremarkable. No new focal deficits. No adverse effects beyond mild fatigue. Routine bloods in July were normal. We discussed safety and she is avoiding climbing ladders and unsupervised bathing of the children during periods when auras cluster. \n\nPlan:\n- Continue levetiracetam 1000 mg twice daily. If evening auras begin to cluster (≥2 per week) we can consider increasing the evening dose to 1500 mg, while maintaining 1000 mg in the morning. \n- Sleep hygiene advice reinforced; patient to continue diary. \n- Provide a rescue plan: if an aura persists or evolves, partner to observe and time; seek help if impaired awareness lasts >5 minutes or there is injury. \n- Driving: she is not currently driving and understands to inform DVLA if any impairment of awareness occurs. \n\nFollow-up in six months, sooner if aura frequency escalates or if any nocturnal events emerge. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 577,
+      "end": 625,
+      "text": "brief déjà vu auras roughly once every 4–6 weeks",
+      "attributes": {
+        "Label": "1 per 4 to 6 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9114,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Singh  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Singh,  \n\nLaura Bennett, DOB: 03-11-1990, Hospital No: H948302 NHS No. 5839201746  \n12 Beech Grove, London, W10 5PA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Tolerated without mood change; mild daytime tiredness likely compounded by interrupted sleep due to childcare.\n\nI reviewed Laura Bennett, who has focal epilepsy presumed temporal lobe in origin. Since the last visit she describes brief déjà vu auras roughly once every 4–6 weeks, typically in the late evening when fatigued after settling the children. Importantly, there have been no events from sleep; she reports her nights have been free of seizure activity despite frequent awakenings to attend to her young children. Daytime awareness is preserved during the auras and there has been no secondary generalisation. \n\nShe links breakthrough auras to nights of reduced rest and increased stress. As primary caregiver, her sleep is often fragmented; she is exploring strategies to consolidate rest where possible. She has kept a seizure and sleep diary, which shows a correlation between short sleep duration and aura occurrence. \n\nNeurological examination today is unremarkable. No new focal deficits. No adverse effects beyond mild fatigue. Routine bloods in July were normal. We discussed safety and she is avoiding climbing ladders and unsupervised bathing of the children during periods when auras cluster. \n\nPlan:\n- Continue levetiracetam 1000 mg twice daily. If evening auras begin to cluster (≥2 per week) we can consider increasing the evening dose to 1500 mg, while maintaining 1000 mg in the morning. \n- Sleep hygiene advice reinforced; patient to continue diary. \n- Provide a rescue plan: if an aura persists or evolves, partner to observe and time; seek help if impaired awareness lasts >5 minutes or there is injury. \n- Driving: she is not currently driving and understands to inform DVLA if any impairment of awareness occurs. \n\nFollow-up in six months, sooner if aura frequency escalates or if any nocturnal events emerge. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has brief déjà vu auras roughly once every 4–6 weeks. Auras in this context represent focal aware seizures, and there are no other seizure types occurring more frequently (no nocturnal events, no secondary generalisation). Therefore, the current seizure frequency is 1 per 4 to 6 weeks. The plan mentions a possible future threshold (≥2 per week) but that is not the current frequency.",
+      "seizure_frequency_number": [
+        "1 per 4 to 6 week",
+        "brief déjà vu auras roughly once every 4–6 weeks"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No nocturnal seizures reported"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 4 to 6 week) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

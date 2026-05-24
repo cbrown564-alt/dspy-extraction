@@ -1,0 +1,59 @@
+{
+  "id": "gan_704",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\n Dr Patel   \n St Mary's Hospital   \n Institute of Neurology, St Mary's Hospital, London W2 1NY   \n\nDear  Dr Patel ,  \n\n Emily Carter , DOB:  17-08-1989 , Hospital No:  C672154  NHS No.  4728395612   \n 78 Willow Lane, London, W9 3HT \n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning and 600 mg evening.\n\nThank you for asking me to review  Emily Carter . She reports brief nocturnal episodes with preserved awareness described as a rising internal sensation followed by a few minutes of unease and palpitations, occasionally with jaw tightness, and no clear post-event confusion. She has not had convulsions or injuries. Frequency is now reported as twice a month, often clustering around the late luteal phase. She has been using a menstrual tracking app and volunteered that the app highlights temporal proximity between entries labelled “warning episodes” and day −5 to +2 of menses.\n\nSince our last contact, adherence has been good and there are no dose-limiting adverse effects beyond mild morning dizziness on two occasions, settling with food. Sleep is variable due to work shifts, which she feels may also contribute. She does not drive.\n\nWe discussed that her pattern could be influenced by hormonal variation and that her tracking app entries may help to corroborate the timing. She is keen to continue logging events and cycle dates, and will export summaries before the next appointment. No immediate medication change is planned given current tolerability and the relatively predictable timing. If the twice a month pattern becomes more frequent or starts to occur outside the perimenstrual window, she will contact us via the advice line for earlier review.\n\nSafety advice has been reinforced, including supervision when bathing and maintaining consistent sleep where possible. We agreed to review in six months, sooner if escalation occurs.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 699,
+      "end": 741,
+      "text": "Frequency is now reported as twice a month",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 728,
+      "end": 741,
+      "text": "twice a month",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 704,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\n Dr Patel   \n St Mary's Hospital   \n Institute of Neurology, St Mary's Hospital, London W2 1NY   \n\nDear  Dr Patel ,  \n\n Emily Carter , DOB:  17-08-1989 , Hospital No:  C672154  NHS No.  4728395612   \n 78 Willow Lane, London, W9 3HT \n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning and 600 mg evening.\n\nThank you for asking me to review  Emily Carter . She reports brief nocturnal episodes with preserved awareness described as a rising internal sensation followed by a few minutes of unease and palpitations, occasionally with jaw tightness, and no clear post-event confusion. She has not had convulsions or injuries. Frequency is now reported as twice a month, often clustering around the late luteal phase. She has been using a menstrual tracking app and volunteered that the app highlights temporal proximity between entries labelled “warning episodes” and day −5 to +2 of menses.\n\nSince our last contact, adherence has been good and there are no dose-limiting adverse effects beyond mild morning dizziness on two occasions, settling with food. Sleep is variable due to work shifts, which she feels may also contribute. She does not drive.\n\nWe discussed that her pattern could be influenced by hormonal variation and that her tracking app entries may help to corroborate the timing. She is keen to continue logging events and cycle dates, and will export summaries before the next appointment. No immediate medication change is planned given current tolerability and the relatively predictable timing. If the twice a month pattern becomes more frequent or starts to occur outside the perimenstrual window, she will contact us via the advice line for earlier review.\n\nSafety advice has been reinforced, including supervision when bathing and maintaining consistent sleep where possible. We agreed to review in six months, sooner if escalation occurs.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Frequency is now reported as twice a month\" regarding the patient's current episodes, which are likely focal aware seizures. There are no other conflicting frequencies mentioned. Therefore, normalize \"twice a month\" to the allowed format \"2 per month.\" No seizure freedom for ≥6 months is indicated, so calculate frequency as given.",
+      "seizure_frequency_number": [
+        "2 per month",
+        "Frequency is now reported as twice a month"
+      ],
+      "reference": [
+        "2 per month",
+        "twice a month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

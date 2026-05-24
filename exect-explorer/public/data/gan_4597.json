@@ -1,0 +1,59 @@
+{
+  "id": "gan_4597",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 05 November 2014 \n\nDr Sarah Langford \nConsultant Neurologist  \nCentre for Epilepsy  \nSt. Michael’s Neurology Unit, Brixton, London  \n\nDear Dr Sarah Langford, \n\nAisha Khan, DOB: 22-09-1996, Hospital No: H874320 NHS No. 4098576321  \nFlat 12, 4 Willow Court, Peckham, London, SE15 3AB  \n\nDiagnosis: \n\nGeneralised epilepsy with good response to Valproate; partial benefit from Topiramate; Lamotrigine previously poorly tolerated due to rash.\n\nAetiology: \n\nPresumed genetic generalised epilepsy; normal MRI brain; EEG demonstrating generalised 3 Hz spike–wave discharges.\n\nOther Medical Problems: \n\nMild asthma managed with as-needed Salbutamol inhaler; vitamin D insufficiency on cholecalciferol 1000 IU daily; no known drug allergies aside from lamotrigine-associated rash.\n\nManagement Plan: \n\n1) Continue Sodium Valproate 500 mg mane and 1000 mg nocte.  \n2) Maintain Topiramate 50 mg nocte as adjunct pending reassessment.  \n3) Arrange repeat EEG in six months and serum valproate level at next visit.  \n4) Lifestyle advice discussed, including regular sleep and alcohol moderation; patient to keep a seizure diary.  \n5) Review in clinic in six months or sooner if breakthrough clusters occur.\n\nClinical Summary: \n\nThis patient has generalised epilepsy with absence seizures and occasional generalised tonic–clonic seizures (GTCS). Over the past four months, the patient reports that the Median inter-seizure interval ≈ three weeks, with shorter absence episodes typically preceding a single GTCS by 24–48 hours. There have been no myoclonic jerks in the mornings for the last eight weeks since titration of nighttime Valproate. Triggers noted by the patient include sleep deprivation during shift work and higher caffeine intake. No injuries, tongue biting only with the last GTCS, and prompt recovery within 30 minutes.\n\nMedication adherence is good, with no missed doses reported in the last eight weeks. Valproate has been well tolerated; weight stable and no mood symptoms. Topiramate associated with transient paraesthesia initially, now resolved. The patient drives only with supervision during lessons and has been advised regarding DVLA seizure-free interval requirements; we have reiterated guidance today.\n\nWe will continue current therapy given recent improvement and the reported stability of the seizure pattern. Should the diary show reduction beyond the current median interval, we will consider cautious Topiramate taper at the next review. The patient understands the plan and agrees.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1445,
+      "end": 1488,
+      "text": "Median inter-seizure interval ≈ three weeks",
+      "attributes": {
+        "Label": "1 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1445,
+      "end": 1488,
+      "text": "Median inter-seizure interval ≈ three weeks",
+      "attributes": {
+        "Label": "1 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4597,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 05 November 2014 \n\nDr Sarah Langford \nConsultant Neurologist  \nCentre for Epilepsy  \nSt. Michael’s Neurology Unit, Brixton, London  \n\nDear Dr Sarah Langford, \n\nAisha Khan, DOB: 22-09-1996, Hospital No: H874320 NHS No. 4098576321  \nFlat 12, 4 Willow Court, Peckham, London, SE15 3AB  \n\nDiagnosis: \n\nGeneralised epilepsy with good response to Valproate; partial benefit from Topiramate; Lamotrigine previously poorly tolerated due to rash.\n\nAetiology: \n\nPresumed genetic generalised epilepsy; normal MRI brain; EEG demonstrating generalised 3 Hz spike–wave discharges.\n\nOther Medical Problems: \n\nMild asthma managed with as-needed Salbutamol inhaler; vitamin D insufficiency on cholecalciferol 1000 IU daily; no known drug allergies aside from lamotrigine-associated rash.\n\nManagement Plan: \n\n1) Continue Sodium Valproate 500 mg mane and 1000 mg nocte.  \n2) Maintain Topiramate 50 mg nocte as adjunct pending reassessment.  \n3) Arrange repeat EEG in six months and serum valproate level at next visit.  \n4) Lifestyle advice discussed, including regular sleep and alcohol moderation; patient to keep a seizure diary.  \n5) Review in clinic in six months or sooner if breakthrough clusters occur.\n\nClinical Summary: \n\nThis patient has generalised epilepsy with absence seizures and occasional generalised tonic–clonic seizures (GTCS). Over the past four months, the patient reports that the Median inter-seizure interval ≈ three weeks, with shorter absence episodes typically preceding a single GTCS by 24–48 hours. There have been no myoclonic jerks in the mornings for the last eight weeks since titration of nighttime Valproate. Triggers noted by the patient include sleep deprivation during shift work and higher caffeine intake. No injuries, tongue biting only with the last GTCS, and prompt recovery within 30 minutes.\n\nMedication adherence is good, with no missed doses reported in the last eight weeks. Valproate has been well tolerated; weight stable and no mood symptoms. Topiramate associated with transient paraesthesia initially, now resolved. The patient drives only with supervision during lessons and has been advised regarding DVLA seizure-free interval requirements; we have reiterated guidance today.\n\nWe will continue current therapy given recent improvement and the reported stability of the seizure pattern. Should the diary show reduction beyond the current median interval, we will consider cautious Topiramate taper at the next review. The patient understands the plan and agrees.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Over the past four months, the patient reports that the Median inter-seizure interval ≈ three weeks, with shorter absence episodes typically preceding a single GTCS by 24–48 hours.\" This provides a clear numeric interval between seizures: approximately every three weeks. No seizure-free period of ≥6 months is reported, so not seizure free. Following the rule to prioritise explicit numeric expressions and convert intervals to frequency: an inter-seizure interval of three weeks corresponds to 1 per 3 week. There is mention of absence episodes preceding a GTCS, but no explicit count or independent frequency given for absence seizures; hence we cannot sum or choose a higher frequency for absences. Therefore, the overall seizure frequency is 1 per 3 week.",
+      "seizure_frequency_number": [
+        "1 per 3 week",
+        "Median inter-seizure interval ≈ three weeks"
+      ],
+      "reference": [
+        "1 per 3 week",
+        "Median inter-seizure interval ≈ three weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

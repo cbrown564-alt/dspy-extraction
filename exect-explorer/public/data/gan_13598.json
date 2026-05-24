@@ -1,0 +1,65 @@
+{
+  "id": "gan_13598",
+  "text": "Department of Neurology \n\nClinic Date: 19 January 2016 \n\nDr Amina Patel  \nSt Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Amina Patel,  \n\nMichael Turner, DOB: 23-02-1991, Hospital No: H392774 NHS No. 9038475621  \n12 Brookside Close, London, N7 8LP \n\nDiagnoses: \n\nSeizure disorder of undetermined classification  \nNormal neurological examination in clinic today  \n\nCurrent Medication: \n\nNone for seizure control at present  \nRescue plan not required for several years as per patient-reported remission\n\nPlan: \n\n- Continue dietary measures as tolerated under dietetic supervision  \n- Maintain adequate sleep hygiene and regular routine  \n- No routine antiepileptic medication restart indicated given long-term remission and patient preference  \n- Safety advice reinforced: driving per DVLA guidance if applicable, avoid high-risk activities when sleep deprived or unwell  \n- Open access back to clinic if any breakthrough events, new red flags, or concerns  \n\nI reviewed Michael Turner in my clinic today. He reports excellent overall progress and ongoing well-being. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years. He attributes this improvement to sustained lifestyle measures and dietetic guidance, specifically a structured ketogenic-style dietary approach followed with support from a specialist dietitian. He reports better sleep regularity, consistent hydration, and avoidance of known personal triggers. There have been no episodes suggestive of loss of awareness, no injuries, and no emergency attendances. \n\nOn examination today, observations were stable, and his neurological examination was unremarkable. He is not taking daily antiseizure medication and has had no need for rescue therapy in recent years. We discussed that ongoing adherence to dietetic advice has been helpful; he wishes to continue this, and I have supported continuation under dietetic follow-up in primary care or community services as available. \n\nGiven sustained remission over several years and the absence of concerning features, I have not arranged routine follow-up. However, I would be pleased to review him earlier should there be any new events, medication queries, or changes in health status. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1260,
+      "end": 1328,
+      "text": "currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1115,
+      "end": 1328,
+      "text": "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13598,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 19 January 2016 \n\nDr Amina Patel  \nSt Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Amina Patel,  \n\nMichael Turner, DOB: 23-02-1991, Hospital No: H392774 NHS No. 9038475621  \n12 Brookside Close, London, N7 8LP \n\nDiagnoses: \n\nSeizure disorder of undetermined classification  \nNormal neurological examination in clinic today  \n\nCurrent Medication: \n\nNone for seizure control at present  \nRescue plan not required for several years as per patient-reported remission\n\nPlan: \n\n- Continue dietary measures as tolerated under dietetic supervision  \n- Maintain adequate sleep hygiene and regular routine  \n- No routine antiepileptic medication restart indicated given long-term remission and patient preference  \n- Safety advice reinforced: driving per DVLA guidance if applicable, avoid high-risk activities when sleep deprived or unwell  \n- Open access back to clinic if any breakthrough events, new red flags, or concerns  \n\nI reviewed Michael Turner in my clinic today. He reports excellent overall progress and ongoing well-being. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years. He attributes this improvement to sustained lifestyle measures and dietetic guidance, specifically a structured ketogenic-style dietary approach followed with support from a specialist dietitian. He reports better sleep regularity, consistent hydration, and avoidance of known personal triggers. There have been no episodes suggestive of loss of awareness, no injuries, and no emergency attendances. \n\nOn examination today, observations were stable, and his neurological examination was unremarkable. He is not taking daily antiseizure medication and has had no need for rescue therapy in recent years. We discussed that ongoing adherence to dietetic advice has been helpful; he wishes to continue this, and I have supported continuation under dietetic follow-up in primary care or community services as available. \n\nGiven sustained remission over several years and the absence of concerning features, I have not arranged routine follow-up. However, I would be pleased to review him earlier should there be any new events, medication queries, or changes in health status. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is in long-term remission and has been seizure free for years. It also notes no need for rescue therapy in recent years and no episodes suggestive of loss of awareness. This confirms current seizure freedom with a duration clearly exceeding 6 months, and specifically indicates years. Therefore, the appropriate normalized label is 'seizure free for multiple years'. No other current frequency is provided; historical frequencies (e.g., convulsive events three times per year) are past and not current.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "currently in long-term remission, having been seizure free for years"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events three times per year, but is currently in long-term remission, having been seizure free for years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

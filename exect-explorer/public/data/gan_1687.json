@@ -1,0 +1,59 @@
+{
+  "id": "gan_1687",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 09 August 2016 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Aisha Rahman, \n\nSam Taylor, DOB: 22-08-1991, Hospital No: K847210 NHS No. 1039485726  \nFlat 12, 25 Brook Lane, London, SE5 9HT  \n\nDiagnosis: \n\nSeizure disorder with suboptimal control and troublesome treatment-related adverse effects \n\nAetiology: \n\nUndetermined despite prior routine EEG and MRI brain without a clear structural correlate \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms related to health, intermittent migraine without aura, vitamin D insufficiency on replacement \n\nManagement Plan: \n\n1. Rationalise current polytherapy due to adverse effects and limited benefit. Taper Topiramate by 25 mg every 2 weeks from 100 mg twice daily to discontinue, monitoring for breakthrough events and cognitive/word-finding improvement.\n2. Continue Lamotrigine 200 mg twice daily for now; arrange trough level prior to next review to assess adherence and exposure.\n3. Continue Levetiracetam 1,000 mg twice daily; discuss potential future substitution if mood irritability persists after Topiramate withdrawal.\n4. Initiate ambulatory EEG (72-hour) to clarify ictal patterns; repeat MRI brain with epilepsy protocol if EEG suggests a focal correlate.\n5. Provide safety and SUDEP counselling given recent deterioration; reinforce adherence and avoidance of sleep deprivation and alcohol excess.\n6. DVLA advice reiterated: cease driving and notify DVLA due to recurrent events; we provided written guidance today.\n7. Refer to the epilepsy nurse specialist for urgent support with medication changes and adverse-effect management.\n8. Review in six weeks in clinic, sooner via nurse helpline if frequency increases or side effects worsen.\n\nSince the last review, the patient reports several focal seizures last week characterised by brief behavioural arrest, loss of awareness, and post-event confusion, occurring predominantly in the late evening. There has also been one episode with a witnessed fall without convulsive activity. The patient describes increasing fatigue, cognitive slowing, and word-finding difficulties, which they attribute to current polytherapy. Mood irritability has been noted by family members. There is no recent intercurrent illness, but sleep has been fragmented due to early work shifts. Alcohol intake remains minimal. Adherence is reported as good, with pillbox checks supporting this. Overall, these features indicate deterioration in control and tolerability, and today we agreed a staged reduction of Topiramate to mitigate adverse effects while we reassess the regimen and obtain further diagnostic data. No red flags for encephalitis or acute metabolic disturbance were identified on examination today; neurological examination is otherwise non-focal.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1868,
+      "end": 1900,
+      "text": "several focal seizures last week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1868,
+      "end": 1900,
+      "text": "several focal seizures last week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1687,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 09 August 2016 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Aisha Rahman, \n\nSam Taylor, DOB: 22-08-1991, Hospital No: K847210 NHS No. 1039485726  \nFlat 12, 25 Brook Lane, London, SE5 9HT  \n\nDiagnosis: \n\nSeizure disorder with suboptimal control and troublesome treatment-related adverse effects \n\nAetiology: \n\nUndetermined despite prior routine EEG and MRI brain without a clear structural correlate \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms related to health, intermittent migraine without aura, vitamin D insufficiency on replacement \n\nManagement Plan: \n\n1. Rationalise current polytherapy due to adverse effects and limited benefit. Taper Topiramate by 25 mg every 2 weeks from 100 mg twice daily to discontinue, monitoring for breakthrough events and cognitive/word-finding improvement.\n2. Continue Lamotrigine 200 mg twice daily for now; arrange trough level prior to next review to assess adherence and exposure.\n3. Continue Levetiracetam 1,000 mg twice daily; discuss potential future substitution if mood irritability persists after Topiramate withdrawal.\n4. Initiate ambulatory EEG (72-hour) to clarify ictal patterns; repeat MRI brain with epilepsy protocol if EEG suggests a focal correlate.\n5. Provide safety and SUDEP counselling given recent deterioration; reinforce adherence and avoidance of sleep deprivation and alcohol excess.\n6. DVLA advice reiterated: cease driving and notify DVLA due to recurrent events; we provided written guidance today.\n7. Refer to the epilepsy nurse specialist for urgent support with medication changes and adverse-effect management.\n8. Review in six weeks in clinic, sooner via nurse helpline if frequency increases or side effects worsen.\n\nSince the last review, the patient reports several focal seizures last week characterised by brief behavioural arrest, loss of awareness, and post-event confusion, occurring predominantly in the late evening. There has also been one episode with a witnessed fall without convulsive activity. The patient describes increasing fatigue, cognitive slowing, and word-finding difficulties, which they attribute to current polytherapy. Mood irritability has been noted by family members. There is no recent intercurrent illness, but sleep has been fragmented due to early work shifts. Alcohol intake remains minimal. Adherence is reported as good, with pillbox checks supporting this. Overall, these features indicate deterioration in control and tolerability, and today we agreed a staged reduction of Topiramate to mitigate adverse effects while we reassess the regimen and obtain further diagnostic data. No red flags for encephalitis or acute metabolic disturbance were identified on examination today; neurological examination is otherwise non-focal.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'Since the last review, the patient reports several focal seizures last week...' and also mentions 'There has also been one episode with a witnessed fall...' The term 'several' is vague and not numerically specified. It is confined to the timeframe 'last week,' indicating multiple events within one week. No exact count is provided, so we must use 'multiple' per week per the allowed formats.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "several focal seizures last week"
+      ],
+      "reference": [
+        "multiple per week",
+        "several focal seizures last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_3888",
+  "text": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nAlex Morgan, DOB: 15-02-1957, Hospital No: H392740 NHS No. 9045172638  \n12 Riverbank Close, London, SW18 2AB \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification; aetiology under evaluation. \n\nCurrent Medication: \n\nLevetiracetam 500 mg bd  \nVitamin D 1000 IU od (patient-initiated) \n\nPlan: \n\n- Continue Levetiracetam 500 mg twice daily.  \n- Maintain regular sleep schedule and consistent daily routine.  \n- MRI brain already booked for November; routine bloods including U&E, LFT, and Levetiracetam level next week.  \n- Safety advice reinforced; no driving as per DVLA guidance.  \n- Review in clinic in 6 months or sooner if events change. \n\nI reviewed Alex Morgan in clinic today. Since retiring earlier this year, they report a more regular daily structure with improved sleep and reduced stress. Over the past 12 months, the seizure frequency has settled at sz ×eight/yr, which is an improvement compared with prior years according to the patient. Episodes are described as brief unresponsive spells with limb stiffening in some events and preserved awareness in others; there is no consistent prodrome. No injuries or hospital admissions have occurred in the past year. \n\nThe patient feels better overall, citing retirement as the main factor enabling a stable routine and earlier bedtimes. They have not experienced medication side effects of concern, and adherence is good. Neurological examination today is unremarkable. We will proceed with the planned MRI and routine blood tests to continue the work-up. I have advised continuation of current therapy and lifestyle measures while monitoring for further improvement. \n\nI will write again after the MRI report is available. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 979,
+      "end": 1053,
+      "text": "Over the past 12 months, the seizure frequency has settled at sz ×eight/yr",
+      "attributes": {
+        "Label": "8 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1041,
+      "end": 1053,
+      "text": "sz ×eight/yr",
+      "attributes": {
+        "Label": "8 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3888,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt George’s Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nAlex Morgan, DOB: 15-02-1957, Hospital No: H392740 NHS No. 9045172638  \n12 Riverbank Close, London, SW18 2AB \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification; aetiology under evaluation. \n\nCurrent Medication: \n\nLevetiracetam 500 mg bd  \nVitamin D 1000 IU od (patient-initiated) \n\nPlan: \n\n- Continue Levetiracetam 500 mg twice daily.  \n- Maintain regular sleep schedule and consistent daily routine.  \n- MRI brain already booked for November; routine bloods including U&E, LFT, and Levetiracetam level next week.  \n- Safety advice reinforced; no driving as per DVLA guidance.  \n- Review in clinic in 6 months or sooner if events change. \n\nI reviewed Alex Morgan in clinic today. Since retiring earlier this year, they report a more regular daily structure with improved sleep and reduced stress. Over the past 12 months, the seizure frequency has settled at sz ×eight/yr, which is an improvement compared with prior years according to the patient. Episodes are described as brief unresponsive spells with limb stiffening in some events and preserved awareness in others; there is no consistent prodrome. No injuries or hospital admissions have occurred in the past year. \n\nThe patient feels better overall, citing retirement as the main factor enabling a stable routine and earlier bedtimes. They have not experienced medication side effects of concern, and adherence is good. Neurological examination today is unremarkable. We will proceed with the planned MRI and routine blood tests to continue the work-up. I have advised continuation of current therapy and lifestyle measures while monitoring for further improvement. \n\nI will write again after the MRI report is available. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past 12 months, the seizure frequency has settled at sz ×eight/yr\". This denotes 8 seizures per year. No other frequencies are provided. Normalize to allowed format as \"8 per year\".",
+      "seizure_frequency_number": [
+        "8 per year",
+        "Over the past 12 months, the seizure frequency has settled at sz ×eight/yr"
+      ],
+      "reference": [
+        "8 per year",
+        "sz ×eight/yr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

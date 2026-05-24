@@ -1,0 +1,59 @@
+{
+  "id": "gan_14872",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 09 June 2022 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-11-1988, Hospital No: NHS-8475021 NHS No. 1075639842  \nFlat 12, 8 Brookside Way, London, SW9 3LT  \n\nDiagnoses: \n\nSeizure disorder (type not established). \n\nHe works at a busy metro station gate line where prolonged standing and crowd surges are routine. He attended today with his partner. He reports that heat, dehydration during long shifts, and missed breaks have previously coincided with brief absences and post‑event fatigue. He has been adhering to his current antiseizure medication, and occupational health adjustments (hydration prompts, scheduled micro‑breaks, and access to a staff rest area) were discussed. \n\nFollowing two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 09/May the absences diminished after dose escalation. His last episode was recorded on 17/May and he has remained well since. Considering that he has now been free of seizures for two weeks and his overall condition is stable, no immediate action is necessary. \n\nNeurological examination today was unremarkable. No new red‑flag features were elicited. He has a personal seizure action plan at work and carries rescue instructions with supervisor awareness. He is keeping a diary logging shift times, hydration, and any aura‑like sensations; this will be reviewed at follow‑up. Bloods from last month (U&Es, LFTs, FBC) were within normal limits. Pending items: repeat serum drug level prior to next visit to ensure the recent dose change is therapeutic without adverse effects. \n\nPlan:  \n- Continue current medication dose and adherence.  \n- Maintain workplace measures (regular hydration and scheduled breaks where feasible).  \n- Seizure diary to continue; bring to next appointment.  \n- Safety advice reiterated regarding operating near moving crowds; avoid lone working during any prodromal symptoms.  \n- Routine follow‑up in three months, sooner if breakthrough events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1024,
+      "end": 1095,
+      "text": "His last episode was recorded on 17/May and he has remained well since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 861,
+      "end": 1229,
+      "text": "Following two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 09/May the absences diminished after dose escalation. His last episode was recorded on 17/May and he has remained well since. Considering that he has now been free of seizures for two weeks and his overall condition is stable, no immediate action is necessary",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14872,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 09 June 2022 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-11-1988, Hospital No: NHS-8475021 NHS No. 1075639842  \nFlat 12, 8 Brookside Way, London, SW9 3LT  \n\nDiagnoses: \n\nSeizure disorder (type not established). \n\nHe works at a busy metro station gate line where prolonged standing and crowd surges are routine. He attended today with his partner. He reports that heat, dehydration during long shifts, and missed breaks have previously coincided with brief absences and post‑event fatigue. He has been adhering to his current antiseizure medication, and occupational health adjustments (hydration prompts, scheduled micro‑breaks, and access to a staff rest area) were discussed. \n\nFollowing two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 09/May the absences diminished after dose escalation. His last episode was recorded on 17/May and he has remained well since. Considering that he has now been free of seizures for two weeks and his overall condition is stable, no immediate action is necessary. \n\nNeurological examination today was unremarkable. No new red‑flag features were elicited. He has a personal seizure action plan at work and carries rescue instructions with supervisor awareness. He is keeping a diary logging shift times, hydration, and any aura‑like sensations; this will be reviewed at follow‑up. Bloods from last month (U&Es, LFTs, FBC) were within normal limits. Pending items: repeat serum drug level prior to next visit to ensure the recent dose change is therapeutic without adverse effects. \n\nPlan:  \n- Continue current medication dose and adherence.  \n- Maintain workplace measures (regular hydration and scheduled breaks where feasible).  \n- Seizure diary to continue; bring to next appointment.  \n- Safety advice reiterated regarding operating near moving crowds; avoid lone working during any prodromal symptoms.  \n- Routine follow‑up in three months, sooner if breakthrough events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Clinic date is 09 June 2022.\n- The letter explicitly states: \"His last episode was recorded on 17/May and he has remained well since.\"\n- He is not seizure-free by the 6-month criterion (the letter also says he has been free of seizures for about two weeks), so we should estimate a current frequency.\n- Consider the most recent month-long window up to the clinic date (approximately 09 May to 09 June). Within this period, one seizure is documented (on 17 May), and none thereafter.\n- The two episodes of dizziness/headache are not clearly described as seizures and are not counted.\n- Therefore, the observed current frequency over the last month is 1 event in roughly one month → 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "His last episode was recorded on 17/May and he has remained well since."
+      ],
+      "reference": [
+        "1 per month",
+        "Following two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 09/May the absences diminished after dose escalation. His last episode was recorded on 17/May and he has remained well since. Considering that he has now been free of seizures for two weeks and his overall condition is stable, no immediate action is necessary"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

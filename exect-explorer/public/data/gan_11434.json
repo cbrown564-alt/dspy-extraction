@@ -1,0 +1,47 @@
+{
+  "id": "gan_11434",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Hughes  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Hughes,  \n\nDaniel Morgan, DOB: 12-05-1992, Hospital No: H384920 NHS No. 9051734621  \n14 Ashfield Road, London, W11 2QF \n\nDiagnosis: \n- Patient has generalised epilepsy.\n\nRe: Cancellation of Epilepsy Clinic Appointment\n\nThis is to confirm that the scheduled epilepsy clinic appointment for Daniel Morgan has been cancelled at the patient's request due to logistical issues related to splitting time between two households each week. The patient keeps medication at both locations and reports no current concerns requiring urgent review.\n\nPlan: \n- Appointment cancelled and rebooked for the next available routine slot.  \n- Telephone appointment offered if preferred.  \n- Patient advised to contact the service sooner if any problems arise or if they wish to discuss medication supply across both households.\n\nPlease let us know if you would like us to arrange a prescription alignment to ensure continuity at both addresses.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11434,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Hughes  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Hughes,  \n\nDaniel Morgan, DOB: 12-05-1992, Hospital No: H384920 NHS No. 9051734621  \n14 Ashfield Road, London, W11 2QF \n\nDiagnosis: \n- Patient has generalised epilepsy.\n\nRe: Cancellation of Epilepsy Clinic Appointment\n\nThis is to confirm that the scheduled epilepsy clinic appointment for Daniel Morgan has been cancelled at the patient's request due to logistical issues related to splitting time between two households each week. The patient keeps medication at both locations and reports no current concerns requiring urgent review.\n\nPlan: \n- Appointment cancelled and rebooked for the next available routine slot.  \n- Telephone appointment offered if preferred.  \n- Patient advised to contact the service sooner if any problems arise or if they wish to discuss medication supply across both households.\n\nPlease let us know if you would like us to arrange a prescription alignment to ensure continuity at both addresses.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms a cancelled appointment for a patient with generalised epilepsy but contains no mention of seizures, seizure events, counts, timing, or any explicit frequency. There is no statement indicating seizure freedom for at least 6 months or any other time frame. Therefore, there is no seizure frequency information to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter confirming cancellation of an epilepsy clinic appointment"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

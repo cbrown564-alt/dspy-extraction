@@ -1,0 +1,59 @@
+{
+  "id": "gan_16128",
+  "text": "Department of Neurology \n\nClinic Date: 7 October 2019 \n\nDr Amelia Kerr  \nAberdeen Royal Infirmary  \nDepartment of Neurology, Foresterhill, Aberdeen AB25 2ZN  \n\nDear Dr Amelia Kerr,  \n\nSarah Green, DOB: 14-02-1989, Hospital No: A923771 NHS No. 9912047783  \nFlat 5, 27 Marine Parade, Stonehaven, AB39 2RJ \n\nDiagnoses: \n\nFocal epilepsy with probable right temporal onset; MRI brain (July 2019) normal; routine EEG (June 2019) showed intermittent right temporal sharp waves. \n\nCurrent Medication: \n\nLevetiracetam 1,000 mg twice daily  \nClobazam 10 mg nocte (intermittent use for clustering) \n\nPlan: \n\n- Continue levetiracetam 1,000 mg twice daily.  \n- Continue clobazam 10 mg nocte for one week during clusters only, as previously advised.  \n- Optimise sleep hygiene around offshore-onshore transitions; avoid missed doses during crew-change days.  \n- Telephone reviews to be scheduled during onshore weeks every 8–10 weeks; in-person review in 6 months or sooner if events escalate.  \n- Patient to keep a seizure diary noting awake/asleep state, potential triggers, and medication adherence. \n\nI reviewed Sarah Green in clinic today. She works offshore on a rotation (three weeks offshore, three weeks onshore). We have arranged telephone reviews when she is onshore to reduce disruption to her rota. She described focal aware and focal impaired-awareness seizures characterised by a rising epigastric sensation, brief déjà vu, and occasional behavioural arrest with lip smacking lasting 30–90 seconds, followed by fatigue. She noted four seizures in Sep, two in Aug, and 4 in Jul, all from mixed awake/asleep states. She reports that clusters tend to occur within 48 hours of shift transitions and after fragmented sleep offshore. There have been no generalised tonic–clonic seizures. \n\nShe has tolerated levetiracetam with mild irritability, which has improved with regular sleep and exercise when onshore. She has used short courses of clobazam during clustering with good effect and no daytime sedation when taken at night. We discussed adherence measures around crew changes (dose alarms and a spare supply in her travel bag). Safety advice for offshore work was reinforced, including buddy notification after events and avoiding work at height for 24 hours after any impaired-awareness seizure. \n\nI will continue to coordinate telephone reviews during her onshore periods and have provided her with a contact number should the pattern worsen. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1521,
+      "end": 1614,
+      "text": "She noted four seizures in Sep, two in Aug, and 4 in Jul, all from mixed awake/asleep states.",
+      "attributes": {
+        "Label": "10 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1521,
+      "end": 1613,
+      "text": "She noted four seizures in Sep, two in Aug, and 4 in Jul, all from mixed awake/asleep states",
+      "attributes": {
+        "Label": "10 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16128,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 7 October 2019 \n\nDr Amelia Kerr  \nAberdeen Royal Infirmary  \nDepartment of Neurology, Foresterhill, Aberdeen AB25 2ZN  \n\nDear Dr Amelia Kerr,  \n\nSarah Green, DOB: 14-02-1989, Hospital No: A923771 NHS No. 9912047783  \nFlat 5, 27 Marine Parade, Stonehaven, AB39 2RJ \n\nDiagnoses: \n\nFocal epilepsy with probable right temporal onset; MRI brain (July 2019) normal; routine EEG (June 2019) showed intermittent right temporal sharp waves. \n\nCurrent Medication: \n\nLevetiracetam 1,000 mg twice daily  \nClobazam 10 mg nocte (intermittent use for clustering) \n\nPlan: \n\n- Continue levetiracetam 1,000 mg twice daily.  \n- Continue clobazam 10 mg nocte for one week during clusters only, as previously advised.  \n- Optimise sleep hygiene around offshore-onshore transitions; avoid missed doses during crew-change days.  \n- Telephone reviews to be scheduled during onshore weeks every 8–10 weeks; in-person review in 6 months or sooner if events escalate.  \n- Patient to keep a seizure diary noting awake/asleep state, potential triggers, and medication adherence. \n\nI reviewed Sarah Green in clinic today. She works offshore on a rotation (three weeks offshore, three weeks onshore). We have arranged telephone reviews when she is onshore to reduce disruption to her rota. She described focal aware and focal impaired-awareness seizures characterised by a rising epigastric sensation, brief déjà vu, and occasional behavioural arrest with lip smacking lasting 30–90 seconds, followed by fatigue. She noted four seizures in Sep, two in Aug, and 4 in Jul, all from mixed awake/asleep states. She reports that clusters tend to occur within 48 hours of shift transitions and after fragmented sleep offshore. There have been no generalised tonic–clonic seizures. \n\nShe has tolerated levetiracetam with mild irritability, which has improved with regular sleep and exercise when onshore. She has used short courses of clobazam during clustering with good effect and no daytime sedation when taken at night. We discussed adherence measures around crew changes (dose alarms and a spare supply in her travel bag). Safety advice for offshore work was reinforced, including buddy notification after events and avoiding work at height for 24 hours after any impaired-awareness seizure. \n\nI will continue to coordinate telephone reviews during her onshore periods and have provided her with a contact number should the pattern worsen. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists monthly seizure counts: 4 in July, 2 in August, and 4 in September. Summing these gives 4 + 2 + 4 = 10 seizures over the three-month period (July–September). The clinic date is 7 October 2019, so these represent the most recent three months. Using the explicit counts, the normalized frequency is 10 per 3 month.",
+      "seizure_frequency_number": [
+        "10 per 3 month",
+        "She noted four seizures in Sep, two in Aug, and 4 in Jul, all from mixed awake/asleep states."
+      ],
+      "reference": [
+        "10 per 3 month",
+        "She noted four seizures in Sep, two in Aug, and 4 in Jul, all from mixed awake/asleep states"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

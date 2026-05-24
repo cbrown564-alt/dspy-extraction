@@ -1,0 +1,59 @@
+{
+  "id": "gan_13471",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Henry Cole  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Henry Cole,                                                                                                         \n\nJames Porter, DOB: 22-11-1984, Hospital No: H673920 NHS No. 9845612370  \n44 Meadow Lane, Cambridge, CB2 1TR  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine regimen since 2019\n\nLamotrigine 100mg in the morning and 150mg at night; patient uses a weekly pillbox and smartphone reminders to support adherence. \n\nLamotrigine Blood Level: \n\n12th September 2025: 4.8 mg/L (normal range 1.0 to 15.0 mg/L). Dose 100mg AM / 150mg PM. \n\nSeizures: With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over 5 years. \n\nI reviewed him today via face-to-face appointment. He reports feeling well, with improved sleep and fewer missed doses since introducing a colour-coded pillbox and daily phone alerts in early 2024. He also tracks doses on a calendar and confirms no auras, no warnings, and no episodes suggestive of breakthrough events. Family members have noticed steadier mood and no nocturnal disturbances. He denies adverse effects beyond transient dizziness when dehydrated. Bloods and liver profile earlier this month were within expected limits. \n\nOverall, clinical stability has improved substantially, correlating with better adherence; the combination of a pillbox and reminders appears to have reduced missed doses, supporting sustained seizure freedom. No changes to medication are recommended today; we agreed to continue current dosing and routine monitoring. Should any new events emerge, he will contact the service promptly. \n\nNext steps: repeat lamotrigine level and safety bloods in 6–9 months; routine follow-up in 12 months. Ã‚Â· He has our advice sheet regarding maintaining hydration, sleep regularity, and dose timing. Minor formatting artefacts noted in the patient’s app (â€ notes), but his adherence log is clear. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 864,
+      "end": 906,
+      "text": "has not reported seizures for over 5 years",
+      "attributes": {
+        "Label": "seizure free for 5 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 708,
+      "end": 906,
+      "text": "With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over 5 years",
+      "attributes": {
+        "Label": "seizure free for 5 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13471,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Henry Cole  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Henry Cole,                                                                                                         \n\nJames Porter, DOB: 22-11-1984, Hospital No: H673920 NHS No. 9845612370  \n44 Meadow Lane, Cambridge, CB2 1TR  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine regimen since 2019\n\nLamotrigine 100mg in the morning and 150mg at night; patient uses a weekly pillbox and smartphone reminders to support adherence. \n\nLamotrigine Blood Level: \n\n12th September 2025: 4.8 mg/L (normal range 1.0 to 15.0 mg/L). Dose 100mg AM / 150mg PM. \n\nSeizures: With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over 5 years. \n\nI reviewed him today via face-to-face appointment. He reports feeling well, with improved sleep and fewer missed doses since introducing a colour-coded pillbox and daily phone alerts in early 2024. He also tracks doses on a calendar and confirms no auras, no warnings, and no episodes suggestive of breakthrough events. Family members have noticed steadier mood and no nocturnal disturbances. He denies adverse effects beyond transient dizziness when dehydrated. Bloods and liver profile earlier this month were within expected limits. \n\nOverall, clinical stability has improved substantially, correlating with better adherence; the combination of a pillbox and reminders appears to have reduced missed doses, supporting sustained seizure freedom. No changes to medication are recommended today; we agreed to continue current dosing and routine monitoring. Should any new events emerge, he will contact the service promptly. \n\nNext steps: repeat lamotrigine level and safety bloods in 6–9 months; routine follow-up in 12 months. Ã‚Â· He has our advice sheet regarding maintaining hydration, sleep regularity, and dose timing. Minor formatting artefacts noted in the patient’s app (â€ notes), but his adherence log is clear. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been seizure free for a long duration and has not reported seizures for over 5 years. This satisfies the criterion for seizure freedom (no seizures for at least 6 months). No other seizure frequencies are provided. Therefore, the correct normalized label is 'seizure free for 5 year' or more precisely 'seizure free for over 5 years'; per the allowed formats, we use a numeric value without 'over', so 'seizure free for 5 year' aligns with the statement 'over 5 years' as the closest normalized form.",
+      "seizure_frequency_number": [
+        "seizure free for 5 year",
+        "has not reported seizures for over 5 years"
+      ],
+      "reference": [
+        "seizure free for 5 year",
+        "With structural focal epilepsy presenting as focal onset seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over 5 years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

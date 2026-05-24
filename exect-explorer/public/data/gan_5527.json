@@ -1,0 +1,54 @@
+{
+  "id": "gan_5527",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Rahman, \n\nAlex Carter, DOB: 22-03-1987, Hospital No: K847392 NHS No. 1039485726  \nFlat 12, 4 Brookfield Road, London, N16 0DL  \n\nDiagnosis: \n\nSeizure disorder, current classification not established \n\nAetiology: \n\nNo clear structural, genetic, infectious, metabolic, or immune cause identified to date \n\nOther Medical Problems: \n\nIntermittent migraine without aura; mild seasonal allergic rhinitis \n\nManagement Plan: \n\n1) Continue current regimen of Levetiracetam 750 mg twice daily; no brand change requested by patient.  \n2) Arrange routine bloods (U&E, FBC, LFTs) prior to next visit; no historical abnormalities.  \n3) Provide DVLA guidance leaflet; patient reports no events affecting driving since the isolated brief episode described below.  \n4) Follow-up in six months with review of paper seizure calendar and headache diary.  \n\nAt today’s review, Alex Carter brought their paper seizure calendar and accompanying notes, which they maintain daily and bring to each appointment. Over the past year the logs show stable control with only a single, short-lived event in late August occurring after a night shift change and poor sleep. This was described as a fleeting spell with preserved awareness and no injury, settling within seconds. There have been no clusters or prolonged episodes, and no emergency care was required. The patient feels the current medication is well tolerated without mood disturbance or excessive fatigue.\n\nHeadaches have occurred roughly twice per month, responsive to simple analgesia and hydration. There is no photophobia, focal neurology, or red-flag features reported. Sleep hygiene has been a particular focus; they record bedtime and caffeine intake on the calendar, which has helped highlight triggers around irregular shift work.\n\nWe discussed maintaining the paper seizure calendar, as it provides a reliable record and has been helpful in correlating sleep disruption with breakthrough symptoms. I have not advised any medication changes today. The patient understands to seek urgent review should events increase in frequency, duration, or change in character, and to use their established safety plan.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1172,
+      "end": 1257,
+      "text": "Over the past year the logs show stable control with only a single, short-lived event",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5527,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Rahman, \n\nAlex Carter, DOB: 22-03-1987, Hospital No: K847392 NHS No. 1039485726  \nFlat 12, 4 Brookfield Road, London, N16 0DL  \n\nDiagnosis: \n\nSeizure disorder, current classification not established \n\nAetiology: \n\nNo clear structural, genetic, infectious, metabolic, or immune cause identified to date \n\nOther Medical Problems: \n\nIntermittent migraine without aura; mild seasonal allergic rhinitis \n\nManagement Plan: \n\n1) Continue current regimen of Levetiracetam 750 mg twice daily; no brand change requested by patient.  \n2) Arrange routine bloods (U&E, FBC, LFTs) prior to next visit; no historical abnormalities.  \n3) Provide DVLA guidance leaflet; patient reports no events affecting driving since the isolated brief episode described below.  \n4) Follow-up in six months with review of paper seizure calendar and headache diary.  \n\nAt today’s review, Alex Carter brought their paper seizure calendar and accompanying notes, which they maintain daily and bring to each appointment. Over the past year the logs show stable control with only a single, short-lived event in late August occurring after a night shift change and poor sleep. This was described as a fleeting spell with preserved awareness and no injury, settling within seconds. There have been no clusters or prolonged episodes, and no emergency care was required. The patient feels the current medication is well tolerated without mood disturbance or excessive fatigue.\n\nHeadaches have occurred roughly twice per month, responsive to simple analgesia and hydration. There is no photophobia, focal neurology, or red-flag features reported. Sleep hygiene has been a particular focus; they record bedtime and caffeine intake on the calendar, which has helped highlight triggers around irregular shift work.\n\nWe discussed maintaining the paper seizure calendar, as it provides a reliable record and has been helpful in correlating sleep disruption with breakthrough symptoms. I have not advised any medication changes today. The patient understands to seek urgent review should events increase in frequency, duration, or change in character, and to use their established safety plan.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the past year the logs show ... only a single, short-lived event in late August.' This provides a clear numeric frequency of 1 event over the past year. The event occurred in late August 2025 and the clinic date is 02 October 2025, so the patient is not seizure free for ≥6 months. Therefore, the appropriate normalized frequency is 1 per year.",
+      "seizure_frequency_number": [
+        "1 per year",
+        "Over the past year the logs show stable control with only a single, short-lived event"
+      ],
+      "reference": [
+        "unknown",
+        "Rare brief seizure recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per year) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

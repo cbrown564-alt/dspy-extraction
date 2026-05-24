@@ -1,0 +1,59 @@
+{
+  "id": "gan_13064",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n21 Brook Street, London NW1 6AL  \n\nDear Dr Ahmed,  \n\nDaniel Morris, DOB: 12-04-1990, Hospital No: H384920 NHS No. 8592037416  \n14 Garden Mews, Flat 3, London, W1U 5QD \n\nMedication: \n\nLevetiracetam 500 mg twice daily. No adverse effects reported beyond transient morning fatigue in the first fortnight, now resolved. \n\nI reviewed Daniel Morris in follow‑up after his prior surgical history of right temporal lobectomy. He has a known diagnosis of generalised epilepsy, and overall his trajectory is one of improvement since optimising medical therapy post‑operatively. He remained seizure-free for 5 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure two Tuesdays ago, preceded by a cluster of absences. He and his partner report that this breakthrough occurred in the setting of poor sleep over a work deadline and a missed morning dose the day prior. There were no injuries, recovery was within the day, and there have been no further events since. \n\nNeurological examination today is normal. He reports better cognitive stamina compared with pre‑operative baseline, is back to light exercise, and has reduced anxiety around public travel. He is keeping a seizure diary and notes that prior brief absences have become infrequent and shorter in duration over recent months. \n\nWe discussed seizure precipitants, particularly sleep deprivation and medication adherence. He understands DVLA guidance and is observing required restrictions; we reinforced safety advice regarding swimming, heights, and operating machinery. At present I have not altered his regimen given the clear period of remission, plausible triggers, and good tolerability. If further absences recur or another convulsive seizure occurs, we will consider titrating Levetiracetam to 750 mg twice daily. \n\nPlan: \n- Continue Levetiracetam 500 mg twice daily; strict adherence emphasised. \n- Maintain seizure diary and avoid sleep deprivation; partner to note any absences. \n- Bloods today (UE, LFTs) for routine monitoring; no concerns anticipated. \n- Provide clinic contact if further events occur; otherwise review in 4–6 months. \n\nWe will see him back in four months. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 685,
+      "end": 879,
+      "text": "He remained seizure-free for 5 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure two Tuesdays ago, preceded by a cluster of absences.",
+      "attributes": {
+        "Label": "2 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 685,
+      "end": 878,
+      "text": "He remained seizure-free for 5 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure two Tuesdays ago, preceded by a cluster of absences",
+      "attributes": {
+        "Label": "2 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13064,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n21 Brook Street, London NW1 6AL  \n\nDear Dr Ahmed,  \n\nDaniel Morris, DOB: 12-04-1990, Hospital No: H384920 NHS No. 8592037416  \n14 Garden Mews, Flat 3, London, W1U 5QD \n\nMedication: \n\nLevetiracetam 500 mg twice daily. No adverse effects reported beyond transient morning fatigue in the first fortnight, now resolved. \n\nI reviewed Daniel Morris in follow‑up after his prior surgical history of right temporal lobectomy. He has a known diagnosis of generalised epilepsy, and overall his trajectory is one of improvement since optimising medical therapy post‑operatively. He remained seizure-free for 5 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure two Tuesdays ago, preceded by a cluster of absences. He and his partner report that this breakthrough occurred in the setting of poor sleep over a work deadline and a missed morning dose the day prior. There were no injuries, recovery was within the day, and there have been no further events since. \n\nNeurological examination today is normal. He reports better cognitive stamina compared with pre‑operative baseline, is back to light exercise, and has reduced anxiety around public travel. He is keeping a seizure diary and notes that prior brief absences have become infrequent and shorter in duration over recent months. \n\nWe discussed seizure precipitants, particularly sleep deprivation and medication adherence. He understands DVLA guidance and is observing required restrictions; we reinforced safety advice regarding swimming, heights, and operating machinery. At present I have not altered his regimen given the clear period of remission, plausible triggers, and good tolerability. If further absences recur or another convulsive seizure occurs, we will consider titrating Levetiracetam to 750 mg twice daily. \n\nPlan: \n- Continue Levetiracetam 500 mg twice daily; strict adherence emphasised. \n- Maintain seizure diary and avoid sleep deprivation; partner to note any absences. \n- Bloods today (UE, LFTs) for routine monitoring; no concerns anticipated. \n- Provide clinic contact if further events occur; otherwise review in 4–6 months. \n\nWe will see him back in four months. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "From the letter: The patient “remained seizure-free for 5 months … before experiencing a generalised tonic-clonic seizure … preceded by a cluster of absences,” and “there have been no further events since.” Over the referenced 5-month period, there were two seizure events: 1 generalised tonic-clonic seizure and 1 cluster of absences. The number of absences within the cluster is not specified, so the cluster is counted as a single event. Therefore, total = 2 events in 5 months → 2 per 5 month.",
+      "seizure_frequency_number": [
+        "2 per 5 month",
+        "He remained seizure-free for 5 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure two Tuesdays ago, preceded by a cluster of absences."
+      ],
+      "reference": [
+        "2 per 5 month",
+        "He remained seizure-free for 5 months after starting Levetiracetam 500 mg twice daily, before experiencing a generalised tonic-clonic seizure two Tuesdays ago, preceded by a cluster of absences"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

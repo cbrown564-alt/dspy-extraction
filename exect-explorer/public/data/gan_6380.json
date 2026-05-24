@@ -1,0 +1,54 @@
+{
+  "id": "gan_6380",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Smith\nRiverside Medical Centre\n\n221 Riverside Way, London, SE10 3AB\nDear Dr Smith\nAlex Morgan, DOB: 21-11-1982, Hospital No: K938271 NHS No. 7845123690\nFlat 3, Temp Housing Block B, King Street, London, SE10 3AB \n\nI reviewed the above patient in the Neurology Clinic today. He remains on multiple antiseizure medicines without recent changes. He currently takes Levetiracetam 1000 mg twice daily, Valproate 500 mg twice daily, Topiramate 100 mg twice daily and Clobazam 10 mg at night. He reports tolerating these reasonably well, though he notes intermittent daytime fatigue and mild word-finding pauses, which he attributes to the medication burden and poor sleep.\n\nSince my last review in April 2025, he describes a pattern of brief spells and occasional convulsive episodes that seem to cluster on mornings after higher-than-usual coffee intake, especially when combined with short sleep. Over the past three months he recalls two larger events and several shorter episodes that he links to these “strong coffee mornings”. He emphasises that these have tended to occur on busy days when he has grabbed multiple takeaway coffees and slept poorly the night before.\n\nHe is currently awaiting relocation from temporary accommodation. He reports crowded living conditions with variable noise at night, which may be aggravating sleep quality. He denies alcohol or recreational drug use. No new focal neurological symptoms. No injuries from recent events. He is working with housing services and expects an update later this month.\n\nExamination today was unremarkable. Bloods from August 2025 (U&E, LFT, FBC) were within reference ranges. We discussed maintaining stable routines while his housing situation is being resolved. Given the current circumstances and his report that episodes often follow disrupted sleep and heavy coffee consumption, I have not altered medication today. I have arranged a routine EEG and will plan review after this, or sooner if his situation changes. He knows to contact the clinic or emergency services if events escalate, cluster, or result in injury.\n\nI will update you after the EEG. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 956,
+      "end": 1040,
+      "text": "Over the past three months he recalls two larger events and several shorter episodes",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6380,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Smith\nRiverside Medical Centre\n\n221 Riverside Way, London, SE10 3AB\nDear Dr Smith\nAlex Morgan, DOB: 21-11-1982, Hospital No: K938271 NHS No. 7845123690\nFlat 3, Temp Housing Block B, King Street, London, SE10 3AB \n\nI reviewed the above patient in the Neurology Clinic today. He remains on multiple antiseizure medicines without recent changes. He currently takes Levetiracetam 1000 mg twice daily, Valproate 500 mg twice daily, Topiramate 100 mg twice daily and Clobazam 10 mg at night. He reports tolerating these reasonably well, though he notes intermittent daytime fatigue and mild word-finding pauses, which he attributes to the medication burden and poor sleep.\n\nSince my last review in April 2025, he describes a pattern of brief spells and occasional convulsive episodes that seem to cluster on mornings after higher-than-usual coffee intake, especially when combined with short sleep. Over the past three months he recalls two larger events and several shorter episodes that he links to these “strong coffee mornings”. He emphasises that these have tended to occur on busy days when he has grabbed multiple takeaway coffees and slept poorly the night before.\n\nHe is currently awaiting relocation from temporary accommodation. He reports crowded living conditions with variable noise at night, which may be aggravating sleep quality. He denies alcohol or recreational drug use. No new focal neurological symptoms. No injuries from recent events. He is working with housing services and expects an update later this month.\n\nExamination today was unremarkable. Bloods from August 2025 (U&E, LFT, FBC) were within reference ranges. We discussed maintaining stable routines while his housing situation is being resolved. Given the current circumstances and his report that episodes often follow disrupted sleep and heavy coffee consumption, I have not altered medication today. I have arranged a routine EEG and will plan review after this, or sooner if his situation changes. He knows to contact the clinic or emergency services if events escalate, cluster, or result in injury.\n\nI will update you after the EEG. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter reports ongoing seizures. It states: \"Over the past three months he recalls two larger events and several shorter episodes.\" This gives an explicit count for larger events (2 in 3 months) but a vague count for shorter episodes (\"several\"). Per the rule to select the highest frequency, the shorter episodes likely occur more frequently than the larger events, but their exact number is unspecified. Therefore, a precise numeric frequency cannot be determined. The information is insufficient to compute a monthly or weekly rate because \"several\" is not quantified, and there is no confirmation of seizure freedom.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Over the past three months he recalls two larger events and several shorter episodes"
+      ],
+      "reference": [
+        "unknown",
+        "Caffeine-associated seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

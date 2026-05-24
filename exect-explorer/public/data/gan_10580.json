@@ -1,0 +1,59 @@
+{
+  "id": "gan_10580",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. He works on the gate line at a busy metro station, where prolonged standing and occasional crowd surges are part of his daily environment. He reports episodes consistent with generalised epilepsy. Since I last saw him in February 2025, he has continued to experience intermittent clusters characterized by four - six focal impaired-awareness seizures; frequency unclear. These clusters are patient-reported and typically occur over several hours with brief periods of responsiveness between events. He also describes separate, less common events with abrupt loss of awareness and generalised stiffening and shaking witnessed by colleagues on two prior occasions earlier this year; no injuries have been reported.\n\nCurrent antiseizure medicines are as follows: Levetiracetam 1.5 g b.d. and Sodium Valproate 750 mg b.d. He reports good adherence. He notes post-event fatigue and occasional headache but no clear cut medication side effects otherwise. Occupationally, he has adopted practical measures such as stepping back from platform edges during busy periods and alerting a supervisor when he senses early symptoms (described as a sudden blankness and automatisms, per witness account). There is no known trigger, though he suspects sleep disruption after late shifts may precede clusters.\n\nOn balance, the clinical picture remains in keeping with generalised epilepsy. Given the variable reporting of the clusters and the unclear overall frequency, I have arranged ambulatory EEG with event button over 72 hours and requested witness statements from workplace first-aiders to improve characterization. I have not altered therapy today pending results, as current treatment is broadly tolerated. We discussed safety at work in neutral terms, and he will continue to self-monitor and escalate concerns to his line manager as needed.\n\nI will review him in 8–10 weeks or sooner if the EEG captures typical events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 567,
+      "end": 669,
+      "text": "intermittent clusters characterized by four - six focal impaired-awareness seizures; frequency unclear",
+      "attributes": {
+        "Label": "unknown, 4 to 6 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 580,
+      "end": 669,
+      "text": "Clusters characterized by four - six focal impaired-awareness seizures; frequency unclear",
+      "attributes": {
+        "Label": "unknown, 4 to 6 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10580,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. He works on the gate line at a busy metro station, where prolonged standing and occasional crowd surges are part of his daily environment. He reports episodes consistent with generalised epilepsy. Since I last saw him in February 2025, he has continued to experience intermittent clusters characterized by four - six focal impaired-awareness seizures; frequency unclear. These clusters are patient-reported and typically occur over several hours with brief periods of responsiveness between events. He also describes separate, less common events with abrupt loss of awareness and generalised stiffening and shaking witnessed by colleagues on two prior occasions earlier this year; no injuries have been reported.\n\nCurrent antiseizure medicines are as follows: Levetiracetam 1.5 g b.d. and Sodium Valproate 750 mg b.d. He reports good adherence. He notes post-event fatigue and occasional headache but no clear cut medication side effects otherwise. Occupationally, he has adopted practical measures such as stepping back from platform edges during busy periods and alerting a supervisor when he senses early symptoms (described as a sudden blankness and automatisms, per witness account). There is no known trigger, though he suspects sleep disruption after late shifts may precede clusters.\n\nOn balance, the clinical picture remains in keeping with generalised epilepsy. Given the variable reporting of the clusters and the unclear overall frequency, I have arranged ambulatory EEG with event button over 72 hours and requested witness statements from workplace first-aiders to improve characterization. I have not altered therapy today pending results, as current treatment is broadly tolerated. We discussed safety at work in neutral terms, and he will continue to self-monitor and escalate concerns to his line manager as needed.\n\nI will review him in 8–10 weeks or sooner if the EEG captures typical events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes that since the last visit, the patient continues to experience intermittent clusters characterized by four to six focal impaired-awareness seizures per cluster, but explicitly states that the overall frequency of these clusters is unclear. There is no quantification such as per day/week/month/year. Separate generalized events occurred twice earlier this year, but the instruction is to select the highest frequency measure; however, since cluster frequency is unspecified and the per-cluster count is given, the correct normalized output is 'unknown, <value> per cluster'. Therefore, the final label is 'unknown, 4 to 6 per cluster'.",
+      "seizure_frequency_number": [
+        "unknown, 4 to 6 per cluster",
+        "intermittent clusters characterized by four - six focal impaired-awareness seizures; frequency unclear"
+      ],
+      "reference": [
+        "unknown, 4 to 6 per cluster",
+        "Clusters characterized by four - six focal impaired-awareness seizures; frequency unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

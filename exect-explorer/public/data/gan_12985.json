@@ -1,0 +1,48 @@
+{
+  "id": "gan_12985",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 22 May 2020 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with prior head injury (historical, no recent complications)/primary caregiver for young children with interrupted sleep/no current alcohol/non-smoker. \n\nMedication: Levetiracetam 1500 mg twice daily.  \nLamotrigine 100 mg morning and 150 mg evening.  \nVitamin D3 1000 IU daily, Omeprazole 20 mg daily, Sertraline 50 mg daily.  \n\nI reviewed William Harris in clinic today. He attended alone and explained that he is the main caregiver for his two children (ages 4 and 7). Night-time sleep is frequently disrupted due to childcare and early starts. He has been using reminder alarms for medication and reports no missed doses over the past two months. Daytime functioning is satisfactory; he remains independent with activities of daily living. He reports occasional tension-type headaches, likely related to sleep fragmentation, without associated red-flag features. Neurological examination today was non-focal. \n\nSeizures: Since increasing levetiracetam and titrating lamotrigine in January, he and his partner have kept a simple diary on a smartphone. Compared with last year, events are less frequent and shorter. In practical terms, seizure burden has been much lower after the medication adjustments, with three brief episodes of impaired awareness documented this calendar year to date. He denies any convulsions, tongue biting, or injuries. The most recent event occurred six weeks ago, lasting under two minutes, followed by mild fatigue. Triggers noted include nights with multiple awakenings for childcare. No daytime naps are currently feasible given family commitments. \n\nPlan:  \n- Continue current antiseizure regimen without dose change.  \n- Reinforce adherence strategies; advised consistent timing using phone alarms already in place.  \n- Sleep hygiene discussed; patient will trial a rotating bedtime arrangement with his partner to reduce consecutive nights of interrupted sleep where possible.  \n- Provide a personalised seizure action plan for home, including guidance for partner and babysitter; copy to patient.  \n- Safety: advised showering rather than bathing; avoid heights/unguarded water; discuss driving regulations if any further events occur (currently not driving).  \n- Bloods: U&E, LFT, FBC, and vitamin D to be checked at the GP in the next 2–3 weeks; please forward results.  \n- Telephone review with epilepsy nurse in 3 months; clinic review in 6 months or sooner if seizures increase or change in character.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1586,
+      "end": 1666,
+      "text": "three brief episodes of impaired awareness documented this calendar year to date",
+      "attributes": {
+        "Label": "3 per 5 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12985,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 22 May 2020 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with prior head injury (historical, no recent complications)/primary caregiver for young children with interrupted sleep/no current alcohol/non-smoker. \n\nMedication: Levetiracetam 1500 mg twice daily.  \nLamotrigine 100 mg morning and 150 mg evening.  \nVitamin D3 1000 IU daily, Omeprazole 20 mg daily, Sertraline 50 mg daily.  \n\nI reviewed William Harris in clinic today. He attended alone and explained that he is the main caregiver for his two children (ages 4 and 7). Night-time sleep is frequently disrupted due to childcare and early starts. He has been using reminder alarms for medication and reports no missed doses over the past two months. Daytime functioning is satisfactory; he remains independent with activities of daily living. He reports occasional tension-type headaches, likely related to sleep fragmentation, without associated red-flag features. Neurological examination today was non-focal. \n\nSeizures: Since increasing levetiracetam and titrating lamotrigine in January, he and his partner have kept a simple diary on a smartphone. Compared with last year, events are less frequent and shorter. In practical terms, seizure burden has been much lower after the medication adjustments, with three brief episodes of impaired awareness documented this calendar year to date. He denies any convulsions, tongue biting, or injuries. The most recent event occurred six weeks ago, lasting under two minutes, followed by mild fatigue. Triggers noted include nights with multiple awakenings for childcare. No daytime naps are currently feasible given family commitments. \n\nPlan:  \n- Continue current antiseizure regimen without dose change.  \n- Reinforce adherence strategies; advised consistent timing using phone alarms already in place.  \n- Sleep hygiene discussed; patient will trial a rotating bedtime arrangement with his partner to reduce consecutive nights of interrupted sleep where possible.  \n- Provide a personalised seizure action plan for home, including guidance for partner and babysitter; copy to patient.  \n- Safety: advised showering rather than bathing; avoid heights/unguarded water; discuss driving regulations if any further events occur (currently not driving).  \n- Bloods: U&E, LFT, FBC, and vitamin D to be checked at the GP in the next 2–3 weeks; please forward results.  \n- Telephone review with epilepsy nurse in 3 months; clinic review in 6 months or sooner if seizures increase or change in character.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency: The letter states, \"three brief episodes of impaired awareness documented this calendar year to date.\" Clinic date is 22 May 2020, so \"this calendar year to date\" spans from 1 Jan 2020 to 22 May 2020, which is approximately 4 months and 22 days (~4.7 months). The explicit count is 3 events over this period. Normalize to allowed format: express as events per month or per year. Since the period is less than a year and not an integer number of months is required, choose a per-month rate by approximating the period as 5 months (to avoid fractional months) because the letter provides \"to date\" within May. Therefore, 3 per 5 months. No other seizure types/frequencies provided that are more frequent. Not seizure free because only six weeks since last event and not 6 months seizure-free.",
+      "seizure_frequency_number": [
+        "3 per 5 month",
+        "three brief episodes of impaired awareness documented this calendar year to date"
+      ],
+      "reference": [
+        "3 per 5 month",
+        "Seizure burden has been substantially reduced following dose adjustment, with only three focal impaired-awareness seizures reported so far this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

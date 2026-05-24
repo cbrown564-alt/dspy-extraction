@@ -1,0 +1,54 @@
+{
+  "id": "gan_3356",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 July 2024 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Morton (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nThe patient, who has a learning disability, attends with a carer who assists with communication and maintains a seizure log. Over the past three months, the carer’s records indicate brief generalised tonic–clonic seizures occurring exclusively after nights of curtailed sleep, with no events reported when sleep has been adequate.\n\nPlan of Action:\n\nGiven the clear temporal association with reduced sleep and otherwise stable control, we discussed optimising nocturnal coverage and minimising sedative burden during the day. We will maintain sodium valproate at the current dose and introduce a small evening top‑up of clobazam to improve resilience to sleep loss on higher‑risk nights identified by the carer.\n\nPlease adjust clobazam as follows: continue 10 mg at night on routine days; on evenings preceding anticipated short sleep (e.g. travel or early starts as identified by the carer), increase to 15 mg that night only. If morning sedation occurs, revert to 10 mg. No changes to sodium valproate at present.\n\nWe reinforced sleep hygiene measures with the carer (consistent bedtime, limiting late caffeine, keeping the sleep environment quiet) and asked them to continue detailed logging of sleep duration and seizure activity. If seizures begin to occur despite adequate sleep, we will consider transitioning clobazam to an alternative adjunct such as lamotrigine or levetiracetam, balancing tolerability and interaction profile with valproate.\n\nI have arranged follow‑up in four months, sooner if events increase or safety concerns arise. The carer has our clinic contact details for interim advice.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 703,
+      "end": 850,
+      "text": "brief generalised tonic–clonic seizures occurring exclusively after nights of curtailed sleep, with no events reported when sleep has been adequate",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3356,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 July 2024 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Morton (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nThe patient, who has a learning disability, attends with a carer who assists with communication and maintains a seizure log. Over the past three months, the carer’s records indicate brief generalised tonic–clonic seizures occurring exclusively after nights of curtailed sleep, with no events reported when sleep has been adequate.\n\nPlan of Action:\n\nGiven the clear temporal association with reduced sleep and otherwise stable control, we discussed optimising nocturnal coverage and minimising sedative burden during the day. We will maintain sodium valproate at the current dose and introduce a small evening top‑up of clobazam to improve resilience to sleep loss on higher‑risk nights identified by the carer.\n\nPlease adjust clobazam as follows: continue 10 mg at night on routine days; on evenings preceding anticipated short sleep (e.g. travel or early starts as identified by the carer), increase to 15 mg that night only. If morning sedation occurs, revert to 10 mg. No changes to sodium valproate at present.\n\nWe reinforced sleep hygiene measures with the carer (consistent bedtime, limiting late caffeine, keeping the sleep environment quiet) and asked them to continue detailed logging of sleep duration and seizure activity. If seizures begin to occur despite adequate sleep, we will consider transitioning clobazam to an alternative adjunct such as lamotrigine or levetiracetam, balancing tolerability and interaction profile with valproate.\n\nI have arranged follow‑up in four months, sooner if events increase or safety concerns arise. The carer has our clinic contact details for interim advice.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a qualitative pattern: seizures occur only after nights of curtailed sleep over the past three months, and none when sleep is adequate. There is no explicit numeric count or frequency per time unit. Without knowing how often short-sleep nights occurred, we cannot calculate seizures per day/week/month/year. Therefore, the specific frequency cannot be determined and should be labeled as unknown per rule 4.",
+      "seizure_frequency_number": [
+        "unknown",
+        "brief generalised tonic–clonic seizures occurring exclusively after nights of curtailed sleep, with no events reported when sleep has been adequate"
+      ],
+      "reference": [
+        "unknown",
+        "Only with sleep deprivation"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_2652",
+  "text": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 03 February 2024\n\nDr Patel\nSouth London Neurology Service\nNeurosciences Outpatients, 12 Borough High Street, London SE1 1AA\n\nDear Dr Patel,\n\nRe: Anne Taylor, DOB: 09-03-1995, Hospital No: Q784529, NHS No: 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder under review (aetiology and classification not yet determined).\n\nHistory and progress:\n\nAnne Taylor attended today with her mother. Since her last review, she describes brief nocturnal events occurring virtually on a nightly basis, typically in the early hours. These are stereotyped for her, lasting under 2 minutes, with post-event tiredness but no injuries. Daytime episodes remain infrequent and there have been no recent emergency presentations.\n\nMedication and adherence:\n\nShe remains on the same antiseizure regimen as previously. She reported earlier difficulties with missed evening doses; to address this she has set up smartphone alarms and uses NFC tags by her bedside and in the kitchen to confirm dose administration. She feels this has reduced omissions significantly over the past six weeks. No adverse effects reported beyond mild morning grogginess on two occasions per week, which she considers tolerable.\n\nExamination and investigations:\n\nNeurological examination today was unremarkable. No new focal deficits. Routine bloods from last month were within expected limits. We discussed the option of further characterisation of nocturnal events with an ambulatory EEG if the current pattern persists.\n\nPlan:\n\n- Continue current antiseizure medication without change for now, given perceived improvement in adherence and stable daytime profile.\n- Maintain the smartphone alarm and NFC confirmation system; patient finds this practical and reassuring.\n- Provide a seizure diary template within the patient portal to document timing, duration, and any triggers of the nocturnal episodes.\n- Safety counselling reviewed; no new concerns. Rescue medication has not been required and was not prescribed today.\n- Arrange follow-up in three months or sooner if events escalate, injuries occur, or daytime spells become more frequent.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 504,
+      "end": 565,
+      "text": "brief nocturnal events occurring virtually on a nightly basis",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2652,
+    "clinic_date": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 03 February 2024\n\nDr Patel\nSouth London Neurology Service\nNeurosciences Outpatients, 12 Borough High Street, London SE1 1AA\n\nDear Dr Patel,\n\nRe: Anne Taylor, DOB: 09-03-1995, Hospital No: Q784529, NHS No: 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder under review (aetiology and classification not yet determined).\n\nHistory and progress:\n\nAnne Taylor attended today with her mother. Since her last review, she describes brief nocturnal events occurring virtually on a nightly basis, typically in the early hours. These are stereotyped for her, lasting under 2 minutes, with post-event tiredness but no injuries. Daytime episodes remain infrequent and there have been no recent emergency presentations.\n\nMedication and adherence:\n\nShe remains on the same antiseizure regimen as previously. She reported earlier difficulties with missed evening doses; to address this she has set up smartphone alarms and uses NFC tags by her bedside and in the kitchen to confirm dose administration. She feels this has reduced omissions significantly over the past six weeks. No adverse effects reported beyond mild morning grogginess on two occasions per week, which she considers tolerable.\n\nExamination and investigations:\n\nNeurological examination today was unremarkable. No new focal deficits. Routine bloods from last month were within expected limits. We discussed the option of further characterisation of nocturnal events with an ambulatory EEG if the current pattern persists.\n\nPlan:\n\n- Continue current antiseizure medication without change for now, given perceived improvement in adherence and stable daytime profile.\n- Maintain the smartphone alarm and NFC confirmation system; patient finds this practical and reassuring.\n- Provide a seizure diary template within the patient portal to document timing, duration, and any triggers of the nocturnal episodes.\n- Safety counselling reviewed; no new concerns. Rescue medication has not been required and was not prescribed today.\n- Arrange follow-up in three months or sooner if events escalate, injuries occur, or daytime spells become more frequent.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes nocturnal events: 'brief nocturnal events occurring virtually on a nightly basis, typically in the early hours.' This indicates they happen nearly every night. No explicit numeric count is given, but 'virtually on a nightly basis' implies approximately 1 per day. Daytime episodes are infrequent and therefore a lower frequency; per the rule, select the highest frequency. There is no indication of seizure freedom for ≥6 months.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "brief nocturnal events occurring virtually on a nightly basis"
+      ],
+      "reference": [
+        "1 per day",
+        "seizures every night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

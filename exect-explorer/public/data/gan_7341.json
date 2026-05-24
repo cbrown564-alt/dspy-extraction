@@ -1,0 +1,65 @@
+{
+  "id": "gan_7341",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 26 August 2014\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nAlex Turner, DOB: 22-11-1989, Hospital No: H382917 NHS No. 9841203576\nFlat 3, 45 Foundry Lane, Sheffield, S1 2AB\n\nEpilepsy\n\nMedication: No current anti-seizure medication\n\nOccupational context: Metalwork and welding with intermittent arc-light exposure. Uses protective visor in line with workplace routine.\n\nSeizures: Patient reports fluctuating events associated with workdays and fatigue. Initial improvement then relapse after 1 weeks — specifically, after a short period of reduced events following rest and modified shifts, frequency increased again when regular welding duties resumed. No consistent premonitory symptoms reported. No clear diurnal pattern. No reported injuries.\n\nI conducted a telephone review with the patient today. They described periods of visual discomfort after prolonged welding tasks despite protective visor use, and occasional brief episodes of unresponsiveness reported by a colleague on two occasions over the past month. Sleep has been irregular due to early shifts. Alcohol intake minimal. No recent illnesses. The patient has not previously tolerated levetiracetam due to mood changes (patient-reported) and is currently medication-free. They are open to further discussion at face-to-face review and provisionally agree to ambulatory EEG and blood tests (U&E, LFT, bone profile, vitamin D) prior to next appointment.\n\nSafety: Patient avoids working at height and does not operate forklifts. They have informed their line manager of intermittent episodes. Driving status discussed as per standard guidance; patient reports not driving currently.\n\nPlan:\n- Arrange routine EEG with sleep deprivation, with consideration for prolonged ambulatory EEG depending on initial findings.\n- MRI brain (epilepsy protocol) to be booked.\n- Blood tests as above arranged via local phlebotomy.\n- Occupational advice: continue visor use, regular breaks, optimise sleep routine; patient to keep a detailed event diary including work tasks/exposures.\n- Follow-up in clinic in 8–10 weeks, earlier if events escalate or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 469,
+      "end": 651,
+      "text": "Patient reports fluctuating events associated with workdays and fatigue... occasional brief episodes of unresponsiveness reported by a colleague on two occasions over the past month.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 542,
+      "end": 588,
+      "text": "Initial improvement then relapse after 1 weeks",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7341,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 26 August 2014\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nAlex Turner, DOB: 22-11-1989, Hospital No: H382917 NHS No. 9841203576\nFlat 3, 45 Foundry Lane, Sheffield, S1 2AB\n\nEpilepsy\n\nMedication: No current anti-seizure medication\n\nOccupational context: Metalwork and welding with intermittent arc-light exposure. Uses protective visor in line with workplace routine.\n\nSeizures: Patient reports fluctuating events associated with workdays and fatigue. Initial improvement then relapse after 1 weeks — specifically, after a short period of reduced events following rest and modified shifts, frequency increased again when regular welding duties resumed. No consistent premonitory symptoms reported. No clear diurnal pattern. No reported injuries.\n\nI conducted a telephone review with the patient today. They described periods of visual discomfort after prolonged welding tasks despite protective visor use, and occasional brief episodes of unresponsiveness reported by a colleague on two occasions over the past month. Sleep has been irregular due to early shifts. Alcohol intake minimal. No recent illnesses. The patient has not previously tolerated levetiracetam due to mood changes (patient-reported) and is currently medication-free. They are open to further discussion at face-to-face review and provisionally agree to ambulatory EEG and blood tests (U&E, LFT, bone profile, vitamin D) prior to next appointment.\n\nSafety: Patient avoids working at height and does not operate forklifts. They have informed their line manager of intermittent episodes. Driving status discussed as per standard guidance; patient reports not driving currently.\n\nPlan:\n- Arrange routine EEG with sleep deprivation, with consideration for prolonged ambulatory EEG depending on initial findings.\n- MRI brain (epilepsy protocol) to be booked.\n- Blood tests as above arranged via local phlebotomy.\n- Occupational advice: continue visor use, regular breaks, optimise sleep routine; patient to keep a detailed event diary including work tasks/exposures.\n- Follow-up in clinic in 8–10 weeks, earlier if events escalate or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient has seizures/events but does not provide a clear numeric frequency. It mentions 'fluctuating events associated with workdays and fatigue,' initial improvement then relapse after 1 week, and 'occasional brief episodes of unresponsiveness ... on two occasions over the past month.' However, it is unclear whether all seizures are captured by those two reported episodes; the wording suggests variability and additional events that are not quantified. There is no explicit, consistent numeric frequency provided, and the time frame and total count are not definitively established. Therefore, the specific seizure frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Patient reports fluctuating events associated with workdays and fatigue... occasional brief episodes of unresponsiveness reported by a colleague on two occasions over the past month."
+      ],
+      "reference": [
+        "unknown",
+        "Initial improvement then relapse after 1 weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_15620",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Harper\nRiverside Medical Centre\n\n12 Mill Street, London, SE1 3AB\nDear Dr Harper\nMichael Green, DOB: 14-02-1978, Hospital No: H829374 NHS No. 6739201845\n22B Hawthorn Close, London, SE15 4QX \n\nI reviewed the above patient in the Neurology Clinic today regarding his epilepsy. He is also known to have type 2 diabetes managed in primary care, currently on oral agents, and he reports stable glucose logs supplied by the practice nurse.\n\nHe carries a diagnosis of combined generalised and focal epilepsy. He and his partner describe two distinct event types: (1) generalised tonic–clonic seizures occurring without warning roughly every 6–8 weeks, typically on waking; and (2) focal impaired-awareness seizures with behavioural arrest, blank staring and orobuccal automatisms, lasting 1–2 minutes, with brief post-event confusion. Following the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, 3 times per day, whereas previously they only happened once or twice a month. This change followed a down-titration of valproate and an increase in lamotrigine initiated to improve daytime alertness.\n\nCurrent antiepileptic treatment is lamotrigine 200 mg b.d. and valproate 250 mg b.d. He reports good adherence using a pill organiser. Since the change he notes increased daytime sleepiness and intermittent tremor, but no rash, gastrointestinal upset or mood change. He denies alcohol use and has maintained regular sleep. His partner has captured brief video clips of several focal events which are consistent with the semiology above. There have been no injuries, tongue-biting or incontinence with the recent focal events. He is not currently driving and understands DVLA guidance.\n\nNeurological examination today was unremarkable between events. Weight is stable. No signs of diabetic neuropathy on screening today; foot care and HbA1c monitoring continue in primary care.\n\nPlan discussed with the patient and his partner: as the deterioration coincides with the recent regimen change, we agreed to prioritise clarification with EEG and to review antiepileptic optimisation once results are available. We have arranged an urgent routine EEG and placed him on the waiting list for video-EEG telemetry should outpatient EEG be non-diagnostic. We also encouraged continued video capture of events and a seizure diary noting timing, triggers and any missed doses. He will continue current doses meanwhile and contact us promptly if generalised convulsions increase or any adverse effects emerge. We will liaise with the diabetes team if any medication adjustments are required that may interact with glycaemic control.\n\nI will review him in clinic in 6–8 weeks or sooner if needed once investigations are available.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 934,
+      "end": 1015,
+      "text": "focal impaired-awareness seizures have been occurring more often, 3 times per day",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 890,
+      "end": 1076,
+      "text": "Following the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, 3 times per day, whereas previously they only happened once or twice a month",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15620,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Harper\nRiverside Medical Centre\n\n12 Mill Street, London, SE1 3AB\nDear Dr Harper\nMichael Green, DOB: 14-02-1978, Hospital No: H829374 NHS No. 6739201845\n22B Hawthorn Close, London, SE15 4QX \n\nI reviewed the above patient in the Neurology Clinic today regarding his epilepsy. He is also known to have type 2 diabetes managed in primary care, currently on oral agents, and he reports stable glucose logs supplied by the practice nurse.\n\nHe carries a diagnosis of combined generalised and focal epilepsy. He and his partner describe two distinct event types: (1) generalised tonic–clonic seizures occurring without warning roughly every 6–8 weeks, typically on waking; and (2) focal impaired-awareness seizures with behavioural arrest, blank staring and orobuccal automatisms, lasting 1–2 minutes, with brief post-event confusion. Following the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, 3 times per day, whereas previously they only happened once or twice a month. This change followed a down-titration of valproate and an increase in lamotrigine initiated to improve daytime alertness.\n\nCurrent antiepileptic treatment is lamotrigine 200 mg b.d. and valproate 250 mg b.d. He reports good adherence using a pill organiser. Since the change he notes increased daytime sleepiness and intermittent tremor, but no rash, gastrointestinal upset or mood change. He denies alcohol use and has maintained regular sleep. His partner has captured brief video clips of several focal events which are consistent with the semiology above. There have been no injuries, tongue-biting or incontinence with the recent focal events. He is not currently driving and understands DVLA guidance.\n\nNeurological examination today was unremarkable between events. Weight is stable. No signs of diabetic neuropathy on screening today; foot care and HbA1c monitoring continue in primary care.\n\nPlan discussed with the patient and his partner: as the deterioration coincides with the recent regimen change, we agreed to prioritise clarification with EEG and to review antiepileptic optimisation once results are available. We have arranged an urgent routine EEG and placed him on the waiting list for video-EEG telemetry should outpatient EEG be non-diagnostic. We also encouraged continued video capture of events and a seizure diary noting timing, triggers and any missed doses. He will continue current doses meanwhile and contact us promptly if generalised convulsions increase or any adverse effects emerge. We will liaise with the diabetes team if any medication adjustments are required that may interact with glycaemic control.\n\nI will review him in clinic in 6–8 weeks or sooner if needed once investigations are available.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit current seizure frequencies mentioned. The letter describes two event types: (1) generalised tonic–clonic seizures every 6–8 weeks; (2) focal impaired-awareness seizures which, following recent medication adjustment, are now occurring more often, specifically '3 times per day', whereas previously once or twice a month. Current regimen is to continue as is, so current frequency is the increased rate. Apply the multiple-frequency rule: select the highest frequency among types. Compare '3 per day' (focal) vs '1 per 6 to 8 weeks' (generalised); highest is '3 per day'. Convert phrasing to allowed format: '3 per day'.",
+      "seizure_frequency_number": [
+        "3 per day",
+        "focal impaired-awareness seizures have been occurring more often, 3 times per day"
+      ],
+      "reference": [
+        "3 per day",
+        "Following the recent medication adjustment, focal impaired-awareness seizures have been occurring more often, 3 times per day, whereas previously they only happened once or twice a month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

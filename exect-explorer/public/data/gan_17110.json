@@ -1,0 +1,59 @@
+{
+  "id": "gan_17110",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 31 October 2021 \n\nDr Anita Desai\nRiverside Community Health Centre\n\n12 Riverside Way, Southwark, London SE1 5HT\nDear Dr Anita Desai\nMr Michael Turner, DOB: 14-03-1987, Hospital No: H738291 NHS No. 9430021187\nRoom 4, Willow House, 3 Hartwell Street, London SE15 2QF \n\nI reviewed the above patient in the Neurology Clinic today. He attended alone and reports ongoing difficulties associated with recent housing instability. He is currently awaiting relocation from temporary accommodation; crowded living conditions have been noted and he feels this is disrupting sleep and routine. He remains engaged with his medication regimen and brings a diary of events.\n\nSeizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four to five days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently. He reports brief post-event fatigue after clusters, but no new injuries, tongue biting, or prolonged post-ictal confusion. There have been no emergency attendances since the previous review.\n\nCurrent medications as recorded today: Levetiracetam 1500 mg b.d.; Sodium Valproate 500 mg t.d.s.; Lamotrigine 100 mg b.d.; and Clobazam 10 mg nocte. He remains adherent and uses a pill organiser. He describes intermittent daytime tiredness that he attributes partly to broken sleep in the current living situation. No rash, mood deterioration, or gastrointestinal upset reported. Weight and basic observations today are unremarkable.\n\nWe discussed potential seizure triggers. He notes irregular sleep, increased ambient noise at night, and stress linked to the impending move. He has reduced caffeine and is attempting more consistent sleep times where feasible. He continues not to drive and understands DVLA guidance.\n\nGiven the stability of the overall pattern and the imminent change in living circumstances, we agreed not to alter medication today. He will continue the current regimen, maintain the seizure diary, and we will reassess following relocation, when sleep and routines may be more settled. I have provided written advice on sleep hygiene and signposted him to local support services for housing-related stress. He is aware to contact the service or attend A&E if events change in character, become prolonged, or if new daytime convulsions occur.\n\nPlan:\n- Continue current antiepileptic regimen unchanged.\n- Maintain detailed seizure and trigger diary.\n- Reinforce sleep hygiene; continue avoidance of sleep deprivation where possible.\n- Community epilepsy nursing team to check in within 4 weeks.\n- Review in clinic in 3 months, or sooner if there is any deterioration or change in event semiology.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 777,
+      "end": 848,
+      "text": "He suffers clusters of absence seizures on four to five days each week.",
+      "attributes": {
+        "Label": "4 to 5 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 701,
+      "end": 964,
+      "text": "Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four to five days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently",
+      "attributes": {
+        "Label": "4 to 5 cluster per week, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17110,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 31 October 2021 \n\nDr Anita Desai\nRiverside Community Health Centre\n\n12 Riverside Way, Southwark, London SE1 5HT\nDear Dr Anita Desai\nMr Michael Turner, DOB: 14-03-1987, Hospital No: H738291 NHS No. 9430021187\nRoom 4, Willow House, 3 Hartwell Street, London SE15 2QF \n\nI reviewed the above patient in the Neurology Clinic today. He attended alone and reports ongoing difficulties associated with recent housing instability. He is currently awaiting relocation from temporary accommodation; crowded living conditions have been noted and he feels this is disrupting sleep and routine. He remains engaged with his medication regimen and brings a diary of events.\n\nSeizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four to five days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently. He reports brief post-event fatigue after clusters, but no new injuries, tongue biting, or prolonged post-ictal confusion. There have been no emergency attendances since the previous review.\n\nCurrent medications as recorded today: Levetiracetam 1500 mg b.d.; Sodium Valproate 500 mg t.d.s.; Lamotrigine 100 mg b.d.; and Clobazam 10 mg nocte. He remains adherent and uses a pill organiser. He describes intermittent daytime tiredness that he attributes partly to broken sleep in the current living situation. No rash, mood deterioration, or gastrointestinal upset reported. Weight and basic observations today are unremarkable.\n\nWe discussed potential seizure triggers. He notes irregular sleep, increased ambient noise at night, and stress linked to the impending move. He has reduced caffeine and is attempting more consistent sleep times where feasible. He continues not to drive and understands DVLA guidance.\n\nGiven the stability of the overall pattern and the imminent change in living circumstances, we agreed not to alter medication today. He will continue the current regimen, maintain the seizure diary, and we will reassess following relocation, when sleep and routines may be more settled. I have provided written advice on sleep hygiene and signposted him to local support services for housing-related stress. He is aware to contact the service or attend A&E if events change in character, become prolonged, or if new daytime convulsions occur.\n\nPlan:\n- Continue current antiepileptic regimen unchanged.\n- Maintain detailed seizure and trigger diary.\n- Reinforce sleep hygiene; continue avoidance of sleep deprivation where possible.\n- Community epilepsy nursing team to check in within 4 weeks.\n- Review in clinic in 3 months, or sooner if there is any deterioration or change in event semiology.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He suffers clusters of absence seizures on four to five days each week.\" This provides a clear frequency for clustered absence seizures in terms of days per week. It also mentions nocturnal tonic seizures about once per year, but per the rule to choose the highest frequency, the clustered absence seizures dominate. The number of seizures per cluster is not provided, so for the cluster format we must use 'multiple' per cluster. Therefore, the normalized label is '4 to 5 cluster per week, multiple per cluster.'",
+      "seizure_frequency_number": [
+        "4 to 5 cluster per week, multiple per cluster",
+        "He suffers clusters of absence seizures on four to five days each week."
+      ],
+      "reference": [
+        "4 to 5 cluster per week, multiple per cluster",
+        "Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four to five days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

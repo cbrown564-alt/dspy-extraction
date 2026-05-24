@@ -1,0 +1,54 @@
+{
+  "id": "gan_7431",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAmelia Roberts, DOB: 22-11-1992, Hospital No: A374920 NHS No. 9834756210  \nFlat 3, 28 Camden Passage, London, N1 8ED  \n\nEpilepsy \n\nMedication: Lamotrigine maintained since April 2025  \n\nLamotrigine 100mg in the morning and 150mg at night (current regimen confirmed) \n\nLamotrigine Blood Level:  \n\n16th September 2025: 4.8 mg/L (laboratory reference 1.0–15.0 mg/L). Dose at time of test: 100mg AM / 150mg PM  \n\nSeizures: Serum concentration within expected range; intermittent breakthrough events persist. The patient reports two brief episodes over the past eight weeks, each under one minute, with rapid recovery and no injury. No clear prodrome reported. \n\nI conducted a scheduled speakerphone review today with the patient and her sister assisting communication due to hearing difficulty. The patient feels daytime alertness is acceptable and denies adverse effects such as rash, diplopia, or significant dizziness. Sleep is variable due to shift work. She is using a smartphone seizure diary and has recorded the two recent events on 11 August and 21 September 2025. There have been no hospital attendances. \n\nWe discussed practical measures: maintaining a consistent sleep routine where possible, continuing the seizure diary, and arranging future follow-ups via planned speakerphone calls with a family member present to support communication. A safety plan around bathing and cooking was reviewed; the patient reports adherence and no recent injuries. She does not drive. \n\nPlan:  \n- Continue Lamotrigine 100mg AM / 150mg PM without change today.  \n- Repeat Lamotrigine trough level in 8–10 weeks (to be taken pre-morning dose).  \n- Provide written clinic summary and appointment details by post and secure email, as requested, to aid communication.  \n- Arrange a telephone follow-up in 3 months via scheduled speakerphone with her sister assisting.  \n\nPlease let me know if there are any concerns or if additional community support would be helpful. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 768,
+      "end": 832,
+      "text": "The patient reports two brief episodes over the past eight weeks",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7431,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAmelia Roberts, DOB: 22-11-1992, Hospital No: A374920 NHS No. 9834756210  \nFlat 3, 28 Camden Passage, London, N1 8ED  \n\nEpilepsy \n\nMedication: Lamotrigine maintained since April 2025  \n\nLamotrigine 100mg in the morning and 150mg at night (current regimen confirmed) \n\nLamotrigine Blood Level:  \n\n16th September 2025: 4.8 mg/L (laboratory reference 1.0–15.0 mg/L). Dose at time of test: 100mg AM / 150mg PM  \n\nSeizures: Serum concentration within expected range; intermittent breakthrough events persist. The patient reports two brief episodes over the past eight weeks, each under one minute, with rapid recovery and no injury. No clear prodrome reported. \n\nI conducted a scheduled speakerphone review today with the patient and her sister assisting communication due to hearing difficulty. The patient feels daytime alertness is acceptable and denies adverse effects such as rash, diplopia, or significant dizziness. Sleep is variable due to shift work. She is using a smartphone seizure diary and has recorded the two recent events on 11 August and 21 September 2025. There have been no hospital attendances. \n\nWe discussed practical measures: maintaining a consistent sleep routine where possible, continuing the seizure diary, and arranging future follow-ups via planned speakerphone calls with a family member present to support communication. A safety plan around bathing and cooking was reviewed; the patient reports adherence and no recent injuries. She does not drive. \n\nPlan:  \n- Continue Lamotrigine 100mg AM / 150mg PM without change today.  \n- Repeat Lamotrigine trough level in 8–10 weeks (to be taken pre-morning dose).  \n- Provide written clinic summary and appointment details by post and secure email, as requested, to aid communication.  \n- Arrange a telephone follow-up in 3 months via scheduled speakerphone with her sister assisting.  \n\nPlease let me know if there are any concerns or if additional community support would be helpful. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"two brief episodes over the past eight weeks.\" This provides a clear count and timeframe. Calculate frequency: 2 seizures / 8 weeks = 0.25 per week = 1 per 4 weeks ≈ 1 per month. No evidence of 6-month seizure freedom, so not seizure-free. No other higher-frequency figures are mentioned.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "The patient reports two brief episodes over the past eight weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Therapeutic levels documented; seizure events continue"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

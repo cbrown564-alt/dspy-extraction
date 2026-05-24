@@ -1,0 +1,65 @@
+{
+  "id": "gan_14146",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 December 2022 10:25\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Maya Ahmed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Peter Lawson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication optimisation and supply continuity\n\nHi Maya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review. No definitive electroclinical classification assigned to date.\n\nPresent Medication:\n\n1. Clobazam 10 mg at night\n2. Lamotrigine 100 mg twice daily\n3. Midazolam 10 mg buccal as rescue, PRN for prolonged events\n\nPresent Seizure Frequency:\n\nHe noted that since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October. He attributes one of these to missing two consecutive evening doses during a documented pharmacy supply delay; the other two occurred without clear precipitant. No myoclonic jerks or focal aware events reported. Family confirm typical post-ictal confusion lasting 30–40 minutes.\n\nPlan of Action:\n\n- Continue Lamotrigine 100 mg twice daily unchanged for now, as serum levels on 05/12 were within target and he reports good tolerability.\n- Maintain Clobazam 10 mg nocte while we clarify the contribution of recent supply variability. He will keep a seizure and medication diary noting exact dosing times, missed doses, and any triggers.\n- Provide written rescue plan: buccal Midazolam 10 mg for events >5 minutes or clusters; seek emergency care as per standard guidance.\n- Pharmacy and adherence: past variability in pharmacy supply documented; historical adherence impacted at times. We have arranged a 3-month electronic repeat prescription with synchronised collection dates and requested the community pharmacy to dispense in original packs with a 7-day advance reserve maintained. He agreed to SMS reminders and to use a weekly pill organiser.\n- Investigations: arrange repeat EEG with sleep deprivation and an updated MRI brain epilepsy protocol in view of ongoing diagnostic uncertainty. Bloods in 6 weeks to re-check Lamotrigine level and U&E/LFT for safety monitoring.\n- Review: follow-up in clinic in 4 months, or sooner if seizures increase in frequency, duration, or change in character.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 670,
+      "end": 772,
+      "text": "since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 656,
+      "end": 772,
+      "text": "He noted that since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14146,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 December 2022 10:25\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Maya Ahmed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Peter Lawson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication optimisation and supply continuity\n\nHi Maya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review. No definitive electroclinical classification assigned to date.\n\nPresent Medication:\n\n1. Clobazam 10 mg at night\n2. Lamotrigine 100 mg twice daily\n3. Midazolam 10 mg buccal as rescue, PRN for prolonged events\n\nPresent Seizure Frequency:\n\nHe noted that since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October. He attributes one of these to missing two consecutive evening doses during a documented pharmacy supply delay; the other two occurred without clear precipitant. No myoclonic jerks or focal aware events reported. Family confirm typical post-ictal confusion lasting 30–40 minutes.\n\nPlan of Action:\n\n- Continue Lamotrigine 100 mg twice daily unchanged for now, as serum levels on 05/12 were within target and he reports good tolerability.\n- Maintain Clobazam 10 mg nocte while we clarify the contribution of recent supply variability. He will keep a seizure and medication diary noting exact dosing times, missed doses, and any triggers.\n- Provide written rescue plan: buccal Midazolam 10 mg for events >5 minutes or clusters; seek emergency care as per standard guidance.\n- Pharmacy and adherence: past variability in pharmacy supply documented; historical adherence impacted at times. We have arranged a 3-month electronic repeat prescription with synchronised collection dates and requested the community pharmacy to dispense in original packs with a 7-day advance reserve maintained. He agreed to SMS reminders and to use a weekly pill organiser.\n- Investigations: arrange repeat EEG with sleep deprivation and an updated MRI brain epilepsy protocol in view of ongoing diagnostic uncertainty. Bloods in 6 weeks to re-check Lamotrigine level and U&E/LFT for safety monitoring.\n- Review: follow-up in clinic in 4 months, or sooner if seizures increase in frequency, duration, or change in character.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October.\" There is no explicit time interval given for when Clobazam was started or over what duration these 3 seizures occurred. Without a defined time window, a rate (per day/week/month/year) cannot be calculated. The patient is not seizure free. Therefore, per instruction, if seizures are mentioned but specific frequency cannot be determined, return \"unknown.\"",
+      "seizure_frequency_number": [
+        "unknown",
+        "since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October"
+      ],
+      "reference": [
+        "unknown",
+        "He noted that since beginning Clobazam he has had 3 generalised tonic-clonic seizures, the most recent on 13 October"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

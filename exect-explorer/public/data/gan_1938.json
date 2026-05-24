@@ -1,0 +1,59 @@
+{
+  "id": "gan_1938",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Hannah Patel\nSt. Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Hannah Patel,\n\nMr Daniel Cooper, DOB: 14-03-1991, Hospital No: H927541 NHS No. 9042317685\nFlat 3B, 22 Market Row, Brixton, London SW9 8LD\n\nDiagnoses:\n\nPrimary generalised epilepsy with EEG evidence of generalised spike-and-wave activity.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily.\n\nPlan:\n\nContinue current antiepileptic medication and reinforce workplace safety measures in the commercial kitchen. Provide written seizure first-aid advice to employer. Arrange follow-up in six months or sooner if events increase.\n\nI reviewed Mr Daniel Cooper in clinic today. He works as a commercial kitchen line cook in a high-heat, fast-paced environment, where episodes have occurred near hot surfaces and sharp utensils. Over the past four months he reports one drop attacks and four epileptic spasms in the past four months. The drop event was described as a sudden brief loss of postural tone leading to a knee-first collapse without warning, with rapid recovery and no prolonged confusion. The spasms have been brief clustering axial jerks mainly during early-morning prep shifts, occasionally following consecutive late finishes and early starts. There have been no generalised tonic–clonic seizures reported during this interval.\n\nHe states he has been adhering to Lamotrigine 100 mg twice daily and has set reminders to avoid missed doses during service. He recognises that heat stress, dehydration and sleep disruption on double shifts can precipitate events, and he has begun taking scheduled hydration breaks and rotating off the grill during very high temperatures when possible. There is no current alcohol excess and no recreational drug use. No new neurological deficits were reported between episodes.\n\nWe reviewed his diagnosis of generalised epilepsy and discussed practical risk reduction in his workplace, including ensuring colleagues are aware of basic first aid, stepping back from the line if prodromal myoclonic jerks appear, and using protective footwear and positioning to reduce injury risk from hot oil and knives. I have provided a brief letter for his manager outlining reasonable adjustments and seizure first-aid guidance.\n\nGiven the current frequency and the injury risk in the kitchen, I recommend continuing Lamotrigine 100 mg twice daily without change for now, with emphasis on sleep regularity and hydration. If further drop attacks occur or the spasms increase, we will consider optimisation of therapy at the next review. I have arranged a follow-up appointment in six months, with open access for earlier review if required.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 886,
+      "end": 990,
+      "text": "Over the past four months he reports one drop attacks and four epileptic spasms in the past four months.",
+      "attributes": {
+        "Label": "5 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 923,
+      "end": 989,
+      "text": "one drop attacks and four epileptic spasms in the past four months",
+      "attributes": {
+        "Label": "5 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1938,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Hannah Patel\nSt. Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Hannah Patel,\n\nMr Daniel Cooper, DOB: 14-03-1991, Hospital No: H927541 NHS No. 9042317685\nFlat 3B, 22 Market Row, Brixton, London SW9 8LD\n\nDiagnoses:\n\nPrimary generalised epilepsy with EEG evidence of generalised spike-and-wave activity.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily.\n\nPlan:\n\nContinue current antiepileptic medication and reinforce workplace safety measures in the commercial kitchen. Provide written seizure first-aid advice to employer. Arrange follow-up in six months or sooner if events increase.\n\nI reviewed Mr Daniel Cooper in clinic today. He works as a commercial kitchen line cook in a high-heat, fast-paced environment, where episodes have occurred near hot surfaces and sharp utensils. Over the past four months he reports one drop attacks and four epileptic spasms in the past four months. The drop event was described as a sudden brief loss of postural tone leading to a knee-first collapse without warning, with rapid recovery and no prolonged confusion. The spasms have been brief clustering axial jerks mainly during early-morning prep shifts, occasionally following consecutive late finishes and early starts. There have been no generalised tonic–clonic seizures reported during this interval.\n\nHe states he has been adhering to Lamotrigine 100 mg twice daily and has set reminders to avoid missed doses during service. He recognises that heat stress, dehydration and sleep disruption on double shifts can precipitate events, and he has begun taking scheduled hydration breaks and rotating off the grill during very high temperatures when possible. There is no current alcohol excess and no recreational drug use. No new neurological deficits were reported between episodes.\n\nWe reviewed his diagnosis of generalised epilepsy and discussed practical risk reduction in his workplace, including ensuring colleagues are aware of basic first aid, stepping back from the line if prodromal myoclonic jerks appear, and using protective footwear and positioning to reduce injury risk from hot oil and knives. I have provided a brief letter for his manager outlining reasonable adjustments and seizure first-aid guidance.\n\nGiven the current frequency and the injury risk in the kitchen, I recommend continuing Lamotrigine 100 mg twice daily without change for now, with emphasis on sleep regularity and hydration. If further drop attacks occur or the spasms increase, we will consider optimisation of therapy at the next review. I have arranged a follow-up appointment in six months, with open access for earlier review if required.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Over the past four months he reports one drop attacks and four epileptic spasms in the past four months.\" This provides explicit counts within a 4-month interval. Total events = 1 (drop attack) + 4 (epileptic spasms) = 5 over 4 months. No other frequencies contradict or exceed this. Not seizure free. Therefore normalized label: 5 per 4 month.",
+      "seizure_frequency_number": [
+        "5 per 4 month",
+        "Over the past four months he reports one drop attacks and four epileptic spasms in the past four months."
+      ],
+      "reference": [
+        "5 per 4 month",
+        "one drop attacks and four epileptic spasms in the past four months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

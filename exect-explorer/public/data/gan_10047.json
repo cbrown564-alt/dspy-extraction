@@ -1,0 +1,59 @@
+{
+  "id": "gan_10047",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 17 November 2015\n\nDr Aisha Khan\nConsultant Neurologist\nCentre for Epilepsy\nKingsway Clinical Hub, SE5 9RS\n\nDear Dr Aisha Khan,\n\nMr Thomas Reid, DOB: 22-03-1985, Hospital No: R847209 NHS No. 9065127390\nFlat 4, 12 Brookfield Road, London, N16 7AB\n\nDiagnosis:\n\nFocal epilepsy. Previously responsive to Lamotrigine; Levetiracetam not tolerated/effective historically.\n\nAetiology:\n\nPerinatal infarct affecting the right parietal region (longstanding).\n\nOther Medical Problems:\n\nOsteoporosis on maintenance calcium and vitamin D supplementation; no recent fractures reported.\n\nDietary Management:\n\nPatient is following a ketogenic/modified diet under supervision from an external metabolic service. Diet details have been recorded from patient-provided logs (typical macronutrient ratio 3:1, medium-chain triglyceride component at breakfast; carbohydrate limit 25–35 g/day; fluid intake target 2 L/day). No adverse gastrointestinal effects reported; occasional early satiety.\n\nSeizure History This Quarter:\n\nPatient reports two clusters this quarter, both occurring in the context of poor sleep and intercurrent upper respiratory symptoms. Within each cluster, events were brief focal aware seizures with left-hand paraesthesias and speech hesitation lasting 30–60 seconds, without loss of awareness or secondary generalisation. No injuries. Rescue plan not required; clusters self-terminated with rest and hydration.\n\nCurrent Medications:\n\nLamotrigine 150 mg twice daily (single brand). Adcal D3 one tablet daily.\n\nExamination/Investigations:\n\nNeurological examination today is unremarkable. Weight stable; serum bicarbonate and lipid profile requested locally via GP in view of ongoing ketogenic/modified diet; results to be copied to our clinic. Lamotrigine levels not checked today given stability, to be considered if further clusters occur or dose changes contemplated.\n\nManagement Plan:\n\n1) Continue Lamotrigine 150 mg twice daily, same brand.\n2) Continue ketogenic/modified diet as supervised externally; we have documented the current regimen for our records. Patient to maintain seizure and diet diary, noting sleep and illness triggers.\n3) Safety advice reinforced regarding sleep hygiene and illness management; patient understands to seek advice if clusters increase in frequency or characteristics change.\n4) Routine follow-up in six months, earlier if breakthrough events escalate or generalised seizures occur. We will review external blood results when available.\n\nOverall, despite two clusters this quarter, he remains functionally well with preserved awareness during events and no injuries. No changes to antiseizure medication made today.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1060,
+      "end": 1101,
+      "text": "Patient reports two clusters this quarter",
+      "attributes": {
+        "Label": "2 cluster per 3 month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1076,
+      "end": 1101,
+      "text": "two clusters this quarter",
+      "attributes": {
+        "Label": "2 cluster per 3 month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10047,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 17 November 2015\n\nDr Aisha Khan\nConsultant Neurologist\nCentre for Epilepsy\nKingsway Clinical Hub, SE5 9RS\n\nDear Dr Aisha Khan,\n\nMr Thomas Reid, DOB: 22-03-1985, Hospital No: R847209 NHS No. 9065127390\nFlat 4, 12 Brookfield Road, London, N16 7AB\n\nDiagnosis:\n\nFocal epilepsy. Previously responsive to Lamotrigine; Levetiracetam not tolerated/effective historically.\n\nAetiology:\n\nPerinatal infarct affecting the right parietal region (longstanding).\n\nOther Medical Problems:\n\nOsteoporosis on maintenance calcium and vitamin D supplementation; no recent fractures reported.\n\nDietary Management:\n\nPatient is following a ketogenic/modified diet under supervision from an external metabolic service. Diet details have been recorded from patient-provided logs (typical macronutrient ratio 3:1, medium-chain triglyceride component at breakfast; carbohydrate limit 25–35 g/day; fluid intake target 2 L/day). No adverse gastrointestinal effects reported; occasional early satiety.\n\nSeizure History This Quarter:\n\nPatient reports two clusters this quarter, both occurring in the context of poor sleep and intercurrent upper respiratory symptoms. Within each cluster, events were brief focal aware seizures with left-hand paraesthesias and speech hesitation lasting 30–60 seconds, without loss of awareness or secondary generalisation. No injuries. Rescue plan not required; clusters self-terminated with rest and hydration.\n\nCurrent Medications:\n\nLamotrigine 150 mg twice daily (single brand). Adcal D3 one tablet daily.\n\nExamination/Investigations:\n\nNeurological examination today is unremarkable. Weight stable; serum bicarbonate and lipid profile requested locally via GP in view of ongoing ketogenic/modified diet; results to be copied to our clinic. Lamotrigine levels not checked today given stability, to be considered if further clusters occur or dose changes contemplated.\n\nManagement Plan:\n\n1) Continue Lamotrigine 150 mg twice daily, same brand.\n2) Continue ketogenic/modified diet as supervised externally; we have documented the current regimen for our records. Patient to maintain seizure and diet diary, noting sleep and illness triggers.\n3) Safety advice reinforced regarding sleep hygiene and illness management; patient understands to seek advice if clusters increase in frequency or characteristics change.\n4) Routine follow-up in six months, earlier if breakthrough events escalate or generalised seizures occur. We will review external blood results when available.\n\nOverall, despite two clusters this quarter, he remains functionally well with preserved awareness during events and no injuries. No changes to antiseizure medication made today.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Patient reports two clusters this quarter,' and describes that within each cluster there were brief focal aware seizures. The time frame 'this quarter' corresponds to 3 months. The exact number of seizures within each cluster is not specified; only that events were brief focal aware seizures occurred within each cluster. Therefore, we can determine cluster frequency as 2 per 3 months, but the seizures per cluster are unspecified. According to the allowed formats, we should use the cluster frequency with an unknown number per cluster.",
+      "seizure_frequency_number": [
+        "2 cluster per 3 month, multiple per cluster",
+        "Patient reports two clusters this quarter"
+      ],
+      "reference": [
+        "2 cluster per 3 month, multiple per cluster",
+        "two clusters this quarter"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_16220",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 24 March 2024\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\n\nDear Dr Wang\n\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for referring and allowing me to review the above patient in the Neurology Clinic today. She reports ongoing challenges associated with awaiting relocation from temporary accommodation; crowded living conditions noted, which she feels may be impacting sleep quality and stress levels.\n\nDiagnosis and current status: She has focal epilepsy. Her semiology comprises a brief epigastric rising sensation followed by behavioural arrest and right-hand automatisms, occasionally progressing to impaired awareness; no recent generalised convulsions reported. This month so far she has no seizures; earlier 4 in February, 0 in January and 7 in December, over waking hours and sleep. She keeps a seizure diary that aligns with this account.\n\nAntiseizure medications: Currently taking lamotrigine 150 mg twice daily and levetiracetam 1,000 mg twice daily. Previously trialled carbamazepine (discontinued due to rash) and topiramate (stopped for cognitive slowing). She reports mild irritability on levetiracetam but prefers to continue as seizure control has improved. No falls or injuries. No focal neurological complaints between events.\n\nInvestigations and plan: Prior MRI head (2022) reported left mesial temporal sclerosis; EEG (2023) showed left temporal interictal sharp waves. Given recent improvement and stable tolerability, I have not altered medication today. We discussed optimising sleep hygiene within current constraints and continuing her seizure diary. I have provided information on local epilepsy support services, which she may contact if helpful. We agreed to review in three months or sooner if seizures increase, new features emerge, or adverse effects occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 801,
+      "end": 893,
+      "text": "This month so far she has no seizures; earlier 4 in February, 0 in January and 7 in December",
+      "attributes": {
+        "Label": "11 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 801,
+      "end": 922,
+      "text": "This month so far she has no seizures; earlier 4 in February, 0 in January and 7 in December, over waking hours and sleep",
+      "attributes": {
+        "Label": "11 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16220,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 24 March 2024\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\n\nDear Dr Wang\n\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for referring and allowing me to review the above patient in the Neurology Clinic today. She reports ongoing challenges associated with awaiting relocation from temporary accommodation; crowded living conditions noted, which she feels may be impacting sleep quality and stress levels.\n\nDiagnosis and current status: She has focal epilepsy. Her semiology comprises a brief epigastric rising sensation followed by behavioural arrest and right-hand automatisms, occasionally progressing to impaired awareness; no recent generalised convulsions reported. This month so far she has no seizures; earlier 4 in February, 0 in January and 7 in December, over waking hours and sleep. She keeps a seizure diary that aligns with this account.\n\nAntiseizure medications: Currently taking lamotrigine 150 mg twice daily and levetiracetam 1,000 mg twice daily. Previously trialled carbamazepine (discontinued due to rash) and topiramate (stopped for cognitive slowing). She reports mild irritability on levetiracetam but prefers to continue as seizure control has improved. No falls or injuries. No focal neurological complaints between events.\n\nInvestigations and plan: Prior MRI head (2022) reported left mesial temporal sclerosis; EEG (2023) showed left temporal interictal sharp waves. Given recent improvement and stable tolerability, I have not altered medication today. We discussed optimising sleep hygiene within current constraints and continuing her seizure diary. I have provided information on local epilepsy support services, which she may contact if helpful. We agreed to review in three months or sooner if seizures increase, new features emerge, or adverse effects occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists recent monthly seizure counts: 7 in December, 0 in January, 4 in February, and 0 so far in March at the clinic date (24 March 2024). Total over the past 4 months = 7 + 0 + 4 + 0 = 11 seizures in 4 months. She is not seizure-free for 6 months, so we calculate frequency rather than labeling seizure free.",
+      "seizure_frequency_number": [
+        "11 per 4 month",
+        "This month so far she has no seizures; earlier 4 in February, 0 in January and 7 in December"
+      ],
+      "reference": [
+        "11 per 4 month",
+        "This month so far she has no seizures; earlier 4 in February, 0 in January and 7 in December, over waking hours and sleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

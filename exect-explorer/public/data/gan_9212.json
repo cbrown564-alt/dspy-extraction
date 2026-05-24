@@ -1,0 +1,54 @@
+{
+  "id": "gan_9212",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 14-11-1989, Hospital No: H392741 NHS No. 9075316248  \n12 Willow Court, Croydon, CR0 6JP  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Daniel Morris in clinic today. He works as a warehouse picker, moving between tall racking in narrow aisles where lifting demands and pace vary by shift. He reports that since our last contact three months ago there have not been any episodes seen by others or described by himself suggestive of seizures. He has been attentive to sleep, hydration, and regular meals across early, late, and night shifts, and he has not required rescue medication at work or at home. There have been no new injuries, no unexplained tongue-biting, and no post-event confusion reported by colleagues or family. \n\nMedications: no change since last review. He remains on levetiracetam 1 g twice daily with good adherence and no notable side effects beyond occasional transient irritability that settles without intervention. He has not carried buccal midazolam recently, and none has been administered. \n\nWorkplace considerations: he continues to use a buddy system when retrieving loads from higher bays, and his supervisor is aware of our ongoing review. He has maintained a simple log of any concerning events at work and has recorded none. He has not noticed any aura-like symptoms when moving rapidly between aisles or during heavier lifts. \n\nExamination today is unremarkable. Blood pressure and pulse are within normal limits, and neurological examination is non-focal. \n\nPlan: we will continue the current regimen and monitoring. He will keep his event diary and will inform us if there are any changes, particularly if colleagues witness episodes or if he experiences unexplained collapses or confusional spells. No further tests requested today. We will review again in six months, or sooner if events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 533,
+      "end": 667,
+      "text": "since our last contact three months ago there have not been any episodes seen by others or described by himself suggestive of seizures",
+      "attributes": {
+        "Label": "seizure free for 3 months",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9212,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 14-11-1989, Hospital No: H392741 NHS No. 9075316248  \n12 Willow Court, Croydon, CR0 6JP  \n\nDiagnoses: \n\nSeizure disorder under review. \n\nI reviewed Daniel Morris in clinic today. He works as a warehouse picker, moving between tall racking in narrow aisles where lifting demands and pace vary by shift. He reports that since our last contact three months ago there have not been any episodes seen by others or described by himself suggestive of seizures. He has been attentive to sleep, hydration, and regular meals across early, late, and night shifts, and he has not required rescue medication at work or at home. There have been no new injuries, no unexplained tongue-biting, and no post-event confusion reported by colleagues or family. \n\nMedications: no change since last review. He remains on levetiracetam 1 g twice daily with good adherence and no notable side effects beyond occasional transient irritability that settles without intervention. He has not carried buccal midazolam recently, and none has been administered. \n\nWorkplace considerations: he continues to use a buddy system when retrieving loads from higher bays, and his supervisor is aware of our ongoing review. He has maintained a simple log of any concerning events at work and has recorded none. He has not noticed any aura-like symptoms when moving rapidly between aisles or during heavier lifts. \n\nExamination today is unremarkable. Blood pressure and pulse are within normal limits, and neurological examination is non-focal. \n\nPlan: we will continue the current regimen and monitoring. He will keep his event diary and will inform us if there are any changes, particularly if colleagues witness episodes or if he experiences unexplained collapses or confusional spells. No further tests requested today. We will review again in six months, or sooner if events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"since our last contact three months ago there have not been any episodes ... suggestive of seizures.\" The clinic date is 02 October 2025, and the reference period is the last 3 months. This indicates zero seizures over a 3-month interval. Per the rules, seizure-free status requires at least 6 months; therefore, the correct normalized label is seizure free for 3 months.",
+      "seizure_frequency_number": [
+        "seizure free for 3 months",
+        "since our last contact three months ago there have not been any episodes seen by others or described by himself suggestive of seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No witnessed or reported seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 3 months) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_8006",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 25 September 2020 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace considerations and medication review\n\nDear Priya,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nCurrent Seizure Status:\n\nSeizures remain settled without recent breakthrough events, indicating ongoing steady control. The patient reports no blackouts or focal impaired-awareness episodes over the past six months. Colleagues in the stage lighting team have not witnessed any events during rehearsals or live shows.\n\nHistory and Context:\n\nThe patient is a stage lighting technician with routine exposure to strobe and high-intensity fixtures. They report using tinted safety eyewear and planning cues to minimise prolonged direct exposure. No clear strobe-related provocation has been identified; on review of the diary, sleep loss was a prior factor before control stabilised.\n\nPlan of Action:\n\n- Continue lamotrigine and brivaracetam at current doses, given ongoing stability.\n- Maintain sleep hygiene measures and consistent meal timing, which the patient finds helpful.\n- Workplace advice (patient-reported compliance): use pre-show checks to avoid unexpected rapid-frequency strobe bursts; ensure a colleague is present during programming sessions where high-frequency effects are tested; keep hydration and regular breaks.\n- Provide colleagues with a brief witness account template for any suspected events, should they occur, to support future review.\n- Routine follow-up in six months, sooner if any breakthrough focal aware auras (e.g., rising epigastric sensation, brief speech arrest) or impaired-awareness episodes occur.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 643,
+      "end": 717,
+      "text": "no blackouts or focal impaired-awareness episodes over the past six months",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8006,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 25 September 2020 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace considerations and medication review\n\nDear Priya,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nCurrent Seizure Status:\n\nSeizures remain settled without recent breakthrough events, indicating ongoing steady control. The patient reports no blackouts or focal impaired-awareness episodes over the past six months. Colleagues in the stage lighting team have not witnessed any events during rehearsals or live shows.\n\nHistory and Context:\n\nThe patient is a stage lighting technician with routine exposure to strobe and high-intensity fixtures. They report using tinted safety eyewear and planning cues to minimise prolonged direct exposure. No clear strobe-related provocation has been identified; on review of the diary, sleep loss was a prior factor before control stabilised.\n\nPlan of Action:\n\n- Continue lamotrigine and brivaracetam at current doses, given ongoing stability.\n- Maintain sleep hygiene measures and consistent meal timing, which the patient finds helpful.\n- Workplace advice (patient-reported compliance): use pre-show checks to avoid unexpected rapid-frequency strobe bursts; ensure a colleague is present during programming sessions where high-frequency effects are tested; keep hydration and regular breaks.\n- Provide colleagues with a brief witness account template for any suspected events, should they occur, to support future review.\n- Routine follow-up in six months, sooner if any breakthrough focal aware auras (e.g., rising epigastric sensation, brief speech arrest) or impaired-awareness episodes occur.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizures remain settled without recent breakthrough events\" and \"no blackouts or focal impaired-awareness episodes over the past six months.\" This indicates the patient currently has no seizures and has been seizure-free for at least 6 months, satisfying the criterion for being considered seizure free for multiple months (specifically 6 months). No other seizure frequencies are reported. Therefore, the normalized label should be 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no blackouts or focal impaired-awareness episodes over the past six months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable seizure control maintained"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

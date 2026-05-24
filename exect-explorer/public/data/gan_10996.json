@@ -1,0 +1,59 @@
+{
+  "id": "gan_10996",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 July 2018 10:12\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Lewis (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Treatment review and titration plan\n\nDear Dr Patel,\n\nEpilepsy Diagnosis:\n\nCombined generalised and focal epilepsy (patient reports both generalised and focal epilepsy).\n\nBackground and context:\n\nHe cycles to work most days and reports that his routine is relatively consistent; this has been recorded for context. No recent intercurrent illness or sleep deprivation was volunteered.\n\nCurrent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPrevious Anti-Seizure Medications (patient-reported):\n\n- Topiramate (stopped due to cognitive slowing)\n- Sodium valproate (stopped when planning family; weight gain reported)\n\nPresent Seizure Frequency:\n\nMorning clusters one - two×/month; ~four events over 90 min. He describes these as brief focal aware episodes with rising epigastric sensation and speech hesitation, occasionally progressing to generalised convulsions if the cluster is prolonged. There have been no injuries reported during recent events.\n\nAssessment and Plan of Action:\n\nThe pattern suggests persistent focal onset seizures with secondary generalisation within the context of combined generalised and focal epilepsy. Given partial response to lamotrigine and brivaracetam, I propose introducing lacosamide as adjunctive therapy and then reassessing. If tolerated, we will consider rationalising the regimen at follow-up.\n\nLacosamide titration schedule:\n- Week 1: 50 mg at night\n- Week 2: 50 mg twice daily\n- Week 3: 50 mg in the morning and 100 mg at night\n- Week 4: 100 mg twice daily (continue at this dose thereafter pending review)\n\nI have arranged a follow-up appointment in four months. At that visit, if stability is maintained and lacosamide is well tolerated, we will consider gradual reduction of brivaracetam while maintaining lamotrigine.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 983,
+      "end": 1043,
+      "text": "Morning clusters one - two×/month; ~four events over 90 min.",
+      "attributes": {
+        "Label": "1 to 2 cluster per month, 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 983,
+      "end": 1042,
+      "text": "Morning clusters one - two×/month; ~four events over 90 min",
+      "attributes": {
+        "Label": "1 to 2 cluster per month, 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10996,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 July 2018 10:12\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Lewis (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Treatment review and titration plan\n\nDear Dr Patel,\n\nEpilepsy Diagnosis:\n\nCombined generalised and focal epilepsy (patient reports both generalised and focal epilepsy).\n\nBackground and context:\n\nHe cycles to work most days and reports that his routine is relatively consistent; this has been recorded for context. No recent intercurrent illness or sleep deprivation was volunteered.\n\nCurrent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPrevious Anti-Seizure Medications (patient-reported):\n\n- Topiramate (stopped due to cognitive slowing)\n- Sodium valproate (stopped when planning family; weight gain reported)\n\nPresent Seizure Frequency:\n\nMorning clusters one - two×/month; ~four events over 90 min. He describes these as brief focal aware episodes with rising epigastric sensation and speech hesitation, occasionally progressing to generalised convulsions if the cluster is prolonged. There have been no injuries reported during recent events.\n\nAssessment and Plan of Action:\n\nThe pattern suggests persistent focal onset seizures with secondary generalisation within the context of combined generalised and focal epilepsy. Given partial response to lamotrigine and brivaracetam, I propose introducing lacosamide as adjunctive therapy and then reassessing. If tolerated, we will consider rationalising the regimen at follow-up.\n\nLacosamide titration schedule:\n- Week 1: 50 mg at night\n- Week 2: 50 mg twice daily\n- Week 3: 50 mg in the morning and 100 mg at night\n- Week 4: 100 mg twice daily (continue at this dose thereafter pending review)\n\nI have arranged a follow-up appointment in four months. At that visit, if stability is maintained and lacosamide is well tolerated, we will consider gradual reduction of brivaracetam while maintaining lamotrigine.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter includes an explicit seizure frequency under 'Present Seizure Frequency': \"Morning clusters one - two×/month; ~four events over 90 min.\" This indicates clusters occurring 1 to 2 per month, with approximately four events per cluster. Convert to allowed format: '1 to 2 cluster per month, 4 per cluster'. The rule for selecting highest frequency is not needed since only one frequency is provided. The units conform to 'month' and 'per cluster' specifications.",
+      "seizure_frequency_number": [
+        "1 to 2 cluster per month, 4 per cluster",
+        "Morning clusters one - two×/month; ~four events over 90 min."
+      ],
+      "reference": [
+        "1 to 2 cluster per month, 4 per cluster",
+        "Morning clusters one - two×/month; ~four events over 90 min"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

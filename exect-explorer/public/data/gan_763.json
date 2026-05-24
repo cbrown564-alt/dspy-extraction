@@ -1,0 +1,59 @@
+{
+  "id": "gan_763",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Aisha Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Aisha Patel\nConsultant Neurologist,  \n\nDaniel Harris, DOB: 14-03-1986, Hospital No: K742118 NHS No. 9076543321  \n12 Rowan Close, Brixton, London SW2 1AB\n\nThank you for your referral and for forwarding the recent employer occupational health summaries, which were helpful as collateral sources alongside the patient’s own account. I reviewed him today in clinic with his partner present. He describes ongoing events occurring roughly weekly, with brief warning symptoms of unease and difficulty focusing, followed by a lapse in awareness noted by colleagues at work and by his partner at home. Observers report that he becomes still, stops responding, and is slow to re‑engage for several minutes. He is generally fatigued afterwards and reports a mild, non-lateralising headache. He denies clear myoclonic jerks or sustained tonic–clonic movements. There has been no clear pattern with sleep deprivation or alcohol, though he reports occasional poor sleep due to shift work. \n\nThe occupational health summaries corroborate a weekly frequency over the past three months, documenting short episodes leading to temporary removal from safety-critical tasks. No injuries have been recorded. He has kept a basic diary that aligns with the employer reports, and his partner has additionally noted two brief nocturnal arousals with confusion but without witnessed convulsions. There is no consistent aura quality beyond the nonspecific warning of unease, and no clear automatisms have been recorded. \n\nHe is currently taking levetiracetam 500 mg twice daily, started by his GP four months ago, with partial improvement in post-event fatigue but no change in the weekly occurrence of events. He is tolerating the medication but feels more irritable; there is no low mood, suicidal ideation, or psychotic symptoms. Neurological examination today was unremarkable. A prior routine EEG from 2023 was reported as normal; we do not yet have the raw data. MRI brain from 2021 was reported as normal per patient; we will request the images and report for review. \n\nGiven the persistently weekly events and limited detail from routine testing, I have advised further characterisation. I will arrange an ambulatory EEG with video and request updated MRI brain epilepsy protocol if prior imaging cannot be retrieved or is inadequate. I have provided written information on seizure first aid and asked him and his partner to continue a detailed diary, including context, duration, recovery, potential triggers, and any observed movements or vocalisations. He consents to us liaising with employer occupational health to synchronise dates and obtain contemporaneous descriptions, as these summaries have been particularly useful. \n\nWe discussed safety in the workplace and driving regulations; he confirms he is not currently driving. He will contact us via the epilepsy specialist nurse if the frequency increases beyond weekly or if new features emerge such as prolonged confusion, falls, or injury. I will review him after the ambulatory study to plan next steps. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 633,
+      "end": 672,
+      "text": "ongoing events occurring roughly weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 666,
+      "end": 672,
+      "text": "weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 763,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Aisha Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Aisha Patel\nConsultant Neurologist,  \n\nDaniel Harris, DOB: 14-03-1986, Hospital No: K742118 NHS No. 9076543321  \n12 Rowan Close, Brixton, London SW2 1AB\n\nThank you for your referral and for forwarding the recent employer occupational health summaries, which were helpful as collateral sources alongside the patient’s own account. I reviewed him today in clinic with his partner present. He describes ongoing events occurring roughly weekly, with brief warning symptoms of unease and difficulty focusing, followed by a lapse in awareness noted by colleagues at work and by his partner at home. Observers report that he becomes still, stops responding, and is slow to re‑engage for several minutes. He is generally fatigued afterwards and reports a mild, non-lateralising headache. He denies clear myoclonic jerks or sustained tonic–clonic movements. There has been no clear pattern with sleep deprivation or alcohol, though he reports occasional poor sleep due to shift work. \n\nThe occupational health summaries corroborate a weekly frequency over the past three months, documenting short episodes leading to temporary removal from safety-critical tasks. No injuries have been recorded. He has kept a basic diary that aligns with the employer reports, and his partner has additionally noted two brief nocturnal arousals with confusion but without witnessed convulsions. There is no consistent aura quality beyond the nonspecific warning of unease, and no clear automatisms have been recorded. \n\nHe is currently taking levetiracetam 500 mg twice daily, started by his GP four months ago, with partial improvement in post-event fatigue but no change in the weekly occurrence of events. He is tolerating the medication but feels more irritable; there is no low mood, suicidal ideation, or psychotic symptoms. Neurological examination today was unremarkable. A prior routine EEG from 2023 was reported as normal; we do not yet have the raw data. MRI brain from 2021 was reported as normal per patient; we will request the images and report for review. \n\nGiven the persistently weekly events and limited detail from routine testing, I have advised further characterisation. I will arrange an ambulatory EEG with video and request updated MRI brain epilepsy protocol if prior imaging cannot be retrieved or is inadequate. I have provided written information on seizure first aid and asked him and his partner to continue a detailed diary, including context, duration, recovery, potential triggers, and any observed movements or vocalisations. He consents to us liaising with employer occupational health to synchronise dates and obtain contemporaneous descriptions, as these summaries have been particularly useful. \n\nWe discussed safety in the workplace and driving regulations; he confirms he is not currently driving. He will contact us via the epilepsy specialist nurse if the frequency increases beyond weekly or if new features emerge such as prolonged confusion, falls, or injury. I will review him after the ambulatory study to plan next steps. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter repeatedly describes the patient's events as occurring roughly weekly. Specific phrases include 'ongoing events occurring roughly weekly' and corroboration by occupational health summaries of 'a weekly frequency over the past three months.' There are also 'two brief nocturnal arousals' noted, but these do not establish a higher frequency than weekly. Therefore, the highest clear frequency is weekly. Normalize 'roughly weekly' to '1 per week.'",
+      "seizure_frequency_number": [
+        "1 per week",
+        "ongoing events occurring roughly weekly"
+      ],
+      "reference": [
+        "1 per week",
+        "weekly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

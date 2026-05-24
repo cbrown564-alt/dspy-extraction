@@ -1,0 +1,47 @@
+{
+  "id": "gan_11658",
+  "text": "Department of Neurology\n\nClinic Date: 01 April 2018\n\nDr Eleanor Hughes\nSt Anne’s Neurology Centre\nDepartment of Neurology, St Anne’s Hospital, 12 Brook Lane, Manchester M14 6QP\n\nDear Dr Eleanor Hughes,\n\nAlex Morgan, DOB: 23-02-1991, Hospital No: H392517 NHS No. 9402751638\nFlat 3, 28 Riverbank Court, Manchester, M3 4HT\n\nDiagnoses:\n\nLong-term neurological condition under routine follow-up.\n\nCurrent Medication:\n\nAs per current summary care record.\n\nPlan:\n\nRequest verification of legal name change documentation for records update.\n\nI reviewed Alex Morgan today. They have informed the clinic of a legal name change and request that all records be updated accordingly. The patient engages with a peer support group; peer observations may supplement history when appropriate.\n\nTo proceed, please provide one of the following for our medical records: (1) Deed Poll (enrolled or unenrolled), or (2) statutory declaration confirming the name change, together with a valid photo ID reflecting the new name, if available. Photocopies are acceptable initially; originals may be requested for verification by our Medical Records team.\n\nUpon receipt, we will update electronic and paper records, appointment systems, prescription details, and correspondence preferences. No clinical management changes are proposed at this time.\n\nPlease send documentation to the Neurology Records Administrator at the address above or via the secure NHS email provided to the patient. If there are any safeguarding or correspondence preferences linked to the new name and pronouns, kindly notify us so we can apply appropriate communication flags.\n\nWith best wishes,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11658,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 01 April 2018\n\nDr Eleanor Hughes\nSt Anne’s Neurology Centre\nDepartment of Neurology, St Anne’s Hospital, 12 Brook Lane, Manchester M14 6QP\n\nDear Dr Eleanor Hughes,\n\nAlex Morgan, DOB: 23-02-1991, Hospital No: H392517 NHS No. 9402751638\nFlat 3, 28 Riverbank Court, Manchester, M3 4HT\n\nDiagnoses:\n\nLong-term neurological condition under routine follow-up.\n\nCurrent Medication:\n\nAs per current summary care record.\n\nPlan:\n\nRequest verification of legal name change documentation for records update.\n\nI reviewed Alex Morgan today. They have informed the clinic of a legal name change and request that all records be updated accordingly. The patient engages with a peer support group; peer observations may supplement history when appropriate.\n\nTo proceed, please provide one of the following for our medical records: (1) Deed Poll (enrolled or unenrolled), or (2) statutory declaration confirming the name change, together with a valid photo ID reflecting the new name, if available. Photocopies are acceptable initially; originals may be requested for verification by our Medical Records team.\n\nUpon receipt, we will update electronic and paper records, appointment systems, prescription details, and correspondence preferences. No clinical management changes are proposed at this time.\n\nPlease send documentation to the Neurology Records Administrator at the address above or via the secure NHS email provided to the patient. If there are any safeguarding or correspondence preferences linked to the new name and pronouns, kindly notify us so we can apply appropriate communication flags.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the letter carefully. It discusses administrative updates for a legal name change, routine follow-up for a long-term neurological condition, and documentation requirements. There is no mention of epilepsy or seizures, and no numeric or qualitative seizure frequency information is provided. Therefore, there is no seizure frequency reference to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter requesting legal name change documentation for an epilepsy patient’s records"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

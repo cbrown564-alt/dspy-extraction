@@ -1,0 +1,48 @@
+{
+  "id": "gan_978",
+  "text": "Department of Neurology\n\nClinic Date: 09 August 2016\n\nDr Eleanor Fraser\nSt Catherine’s Neurology Centre\nOutpatients, 14 Rosebank Way, Sheffield S11 3HT\n\nDear Dr Eleanor Fraser,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nFocal epilepsy with impairment of awareness, onset in adulthood.\n\nInvestigations:\n\nPrior EEG demonstrating left temporal intermittent epileptiform discharges (date on file). MRI brain previously unremarkable.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Continue lamotrigine at current dose given stable improvement\n- Maintain regular sleep and daily routine, which the patient feels has been beneficial\n- Safety advice reviewed; no changes to current restrictions\n- Follow-up in 12 months, sooner if breakthrough events increase\n\nI reviewed John in clinic today. Since retiring, he has established a more predictable daily schedule and reports clear improvement in seizure control and overall well-being. Before this improvement, his pattern was variable: he could sometimes go nearly a week without seizures, but when they recurred he tended to have several in one day, often between six and eight. Over recent months, he describes a steadying of this pattern, with focal impaired-awareness events now occurring only every other month or so, and importantly without clustering.\n\nHe notes better sleep hygiene and reduced stress since retirement, which he believes has contributed to the change. There have been no injuries, no generalisation, and post-ictal recovery is quicker than previously. He tolerates lamotrigine without adverse effects.\n\nIn summary, his focal epilepsy appears to be improving with a more regular routine and continued medication adherence. We will continue lamotrigine 75 mg twice daily and monitor. He understands to contact us if the frequency increases or if he experiences any new features suggestive of generalisation.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1305,
+      "end": 1390,
+      "text": "events now occurring only every other month or so, and importantly without clustering",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 978,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 09 August 2016\n\nDr Eleanor Fraser\nSt Catherine’s Neurology Centre\nOutpatients, 14 Rosebank Way, Sheffield S11 3HT\n\nDear Dr Eleanor Fraser,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nFocal epilepsy with impairment of awareness, onset in adulthood.\n\nInvestigations:\n\nPrior EEG demonstrating left temporal intermittent epileptiform discharges (date on file). MRI brain previously unremarkable.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Continue lamotrigine at current dose given stable improvement\n- Maintain regular sleep and daily routine, which the patient feels has been beneficial\n- Safety advice reviewed; no changes to current restrictions\n- Follow-up in 12 months, sooner if breakthrough events increase\n\nI reviewed John in clinic today. Since retiring, he has established a more predictable daily schedule and reports clear improvement in seizure control and overall well-being. Before this improvement, his pattern was variable: he could sometimes go nearly a week without seizures, but when they recurred he tended to have several in one day, often between six and eight. Over recent months, he describes a steadying of this pattern, with focal impaired-awareness events now occurring only every other month or so, and importantly without clustering.\n\nHe notes better sleep hygiene and reduced stress since retirement, which he believes has contributed to the change. There have been no injuries, no generalisation, and post-ictal recovery is quicker than previously. He tolerates lamotrigine without adverse effects.\n\nIn summary, his focal epilepsy appears to be improving with a more regular routine and continued medication adherence. We will continue lamotrigine 75 mg twice daily and monitor. He understands to contact us if the frequency increases or if he experiences any new features suggestive of generalisation.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current frequency: \"focal impaired-awareness events now occurring only every other month or so, and importantly without clustering.\" This indicates approximately 1 event every 2 months. Past pattern included clustering (6 to 8 in a day) but is described as prior and now improved without clustering. According to the rule to choose the highest frequency among multiple, we consider the current frequency as it reflects present status. Since there is no confirmation of being seizure-free for 6 months, seizure-free label is not applicable.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "events now occurring only every other month or so, and importantly without clustering"
+      ],
+      "reference": [
+        "1 per 2 month",
+        "bimonthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

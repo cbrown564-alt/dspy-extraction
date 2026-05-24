@@ -1,0 +1,59 @@
+{
+  "id": "gan_17131",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nDaniel Harper, DOB: 22-11-1991, Hospital No: H372910 NHS No. 9843216750\nHolly Farm Cottage, Near Larksfield, Devon EX16 7PA\n\nEpilepsy\n\nMedication: Ongoing treatment with Lamotrigine and Levetiracetam\n\nLamotrigine 100 mg twice daily\nLevetiracetam 750 mg twice daily\n\nLamotrigine Blood Level:\n\n15th September 2025: 3.8 mg/L (normal range 1.0 to 15.0 mg/L). Dose 100 mg twice daily\n\nSeizures: Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently.\n\nI conducted today’s review by video consultation as he lives in a rural area with limited transport; he reports good adherence to medication using a pill organiser and phone reminders. His partner has kept a seizure diary that corresponds with the above description, and they have uploaded short home videos of the absence episodes to our secure portal, which were consistent with brief behavioural arrest and staring lasting 5–15 seconds without post-ictal confusion. No injuries reported. Sleep is variable due to shift work on the farm; he is trialling a more regular sleep schedule and avoiding missed doses. He denies adverse effects from current medication aside from occasional fatigue in the late afternoon, which he finds manageable.\n\nNo intercurrent illness. No recent alcohol or recreational drug use. He does not drive and understands current DVLA guidance remains applicable. We discussed the option of future ambulatory EEG if transport can be arranged through community services; he is agreeable. For now, given stability of the pattern and tolerability of medication, we will continue current dosages and monitoring. A repeat lamotrigine level will be arranged locally via the community phlebotomy service in six months, with results to be forwarded to our clinic.\n\nPlan:\n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily unchanged.\n- Community phlebotomy: lamotrigine trough level in 6 months; send results to clinic.\n- Maintain seizure diary and upload any new event videos via the patient portal.\n- Remote follow-up by telephone in 6 months, sooner if seizure pattern changes, medication side effects emerge, or new injuries occur.\n- Provide letter for employer supporting consistent sleep schedule adjustments.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 617,
+      "end": 680,
+      "text": "He suffers clusters of absence seizures on four days each week.",
+      "attributes": {
+        "Label": "4 cluster per week, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 541,
+      "end": 796,
+      "text": "Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently",
+      "attributes": {
+        "Label": "4 cluster per week, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17131,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nDaniel Harper, DOB: 22-11-1991, Hospital No: H372910 NHS No. 9843216750\nHolly Farm Cottage, Near Larksfield, Devon EX16 7PA\n\nEpilepsy\n\nMedication: Ongoing treatment with Lamotrigine and Levetiracetam\n\nLamotrigine 100 mg twice daily\nLevetiracetam 750 mg twice daily\n\nLamotrigine Blood Level:\n\n15th September 2025: 3.8 mg/L (normal range 1.0 to 15.0 mg/L). Dose 100 mg twice daily\n\nSeizures: Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently.\n\nI conducted today’s review by video consultation as he lives in a rural area with limited transport; he reports good adherence to medication using a pill organiser and phone reminders. His partner has kept a seizure diary that corresponds with the above description, and they have uploaded short home videos of the absence episodes to our secure portal, which were consistent with brief behavioural arrest and staring lasting 5–15 seconds without post-ictal confusion. No injuries reported. Sleep is variable due to shift work on the farm; he is trialling a more regular sleep schedule and avoiding missed doses. He denies adverse effects from current medication aside from occasional fatigue in the late afternoon, which he finds manageable.\n\nNo intercurrent illness. No recent alcohol or recreational drug use. He does not drive and understands current DVLA guidance remains applicable. We discussed the option of future ambulatory EEG if transport can be arranged through community services; he is agreeable. For now, given stability of the pattern and tolerability of medication, we will continue current dosages and monitoring. A repeat lamotrigine level will be arranged locally via the community phlebotomy service in six months, with results to be forwarded to our clinic.\n\nPlan:\n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily unchanged.\n- Community phlebotomy: lamotrigine trough level in 6 months; send results to clinic.\n- Maintain seizure diary and upload any new event videos via the patient portal.\n- Remote follow-up by telephone in 6 months, sooner if seizure pattern changes, medication side effects emerge, or new injuries occur.\n- Provide letter for employer supporting consistent sleep schedule adjustments.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He suffers clusters of absence seizures on four days each week.\" This indicates clustered seizures occurring on 4 days per week. The number of seizures within each cluster is not specified. Another seizure type (nocturnal tonic) occurs around once per year, which is much less frequent, so per the rule to select the highest frequency, the weekly clustered absence seizures determine the label. Normalize \"four days each week\" to \"4 cluster per week\" and use \"multiple per cluster\" because the count per cluster is unspecified.",
+      "seizure_frequency_number": [
+        "4 cluster per week, multiple per cluster",
+        "He suffers clusters of absence seizures on four days each week."
+      ],
+      "reference": [
+        "4 cluster per week, multiple per cluster",
+        "Seizure pattern has remained largely unchanged since the last clinic visit. He suffers clusters of absence seizures on four days each week. Nocturnal tonic seizures continue to occur around once per year. No daytime convulsions have been recorded recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

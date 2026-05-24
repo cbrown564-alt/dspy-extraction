@@ -1,0 +1,65 @@
+{
+  "id": "gan_5974",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Johnson, DOB: 12-05-1990, Hospital No: H584203 NHS No. 5938472610  \n14 Brookside Close, London, W10 5LS \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient-reported adherence is generally good with occasional missed evening doses.\n\nHistory and assessment: \n\nThis patient has focal epilepsy, with semiology of a rising epigastric sensation followed by behavioural arrest and impaired awareness lasting 1–2 minutes, occasionally progressing to right arm posturing. Remote history of mild traumatic brain injury in late adolescence is noted without lasting neurological deficit. Interval reports describe “Seizures with missed ASM doses,” typically occurring within 24–48 hours of a missed levetiracetam dose, most often when evening doses are delayed during shift work. No convulsive events reported in the past year. No new focal neurological symptoms. Sleep disruption and higher caffeine intake during night shifts are described. No alcohol misuse.\n\nExamination (teleclinic history corroborated with prior in-person notes): Alert, oriented, normal speech and language. No reported motor deficits, gait issues, or visual changes. Prior MRI brain (epilepsy protocol, 2019) without clear lesion. Routine EEG (2020) showed intermittent left temporal slowing without definite epileptiform discharges.\n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. Given the clear pattern of “Seizures with missed ASM doses,” we discussed practical adherence supports (alarms and blister packs) and the option of shifting the schedule by one hour earlier to better align with night-shift patterns; patient in agreement to trial this. \n- Patient has a valid UK driving licence and is aware of DVLA guidance; she remains seizure-free when doses are taken and will inform us immediately if any episodes occur despite full adherence. \n- Safety advice reiterated regarding bathing and working at height. \n- No immediate need for medication change as seizures correlate with missed doses; if breakthrough events occur despite full adherence, we will consider adjunctive lacosamide or lamotrigine and repeat EEG. \n\nFollow-up: Review in clinic in six months, sooner if seizures occur despite full adherence.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 776,
+      "end": 905,
+      "text": "Interval reports describe “Seizures with missed ASM doses,” typically occurring within 24–48 hours of a missed levetiracetam dose",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 803,
+      "end": 833,
+      "text": "Seizures with missed ASM doses",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5974,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Johnson, DOB: 12-05-1990, Hospital No: H584203 NHS No. 5938472610  \n14 Brookside Close, London, W10 5LS \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Patient-reported adherence is generally good with occasional missed evening doses.\n\nHistory and assessment: \n\nThis patient has focal epilepsy, with semiology of a rising epigastric sensation followed by behavioural arrest and impaired awareness lasting 1–2 minutes, occasionally progressing to right arm posturing. Remote history of mild traumatic brain injury in late adolescence is noted without lasting neurological deficit. Interval reports describe “Seizures with missed ASM doses,” typically occurring within 24–48 hours of a missed levetiracetam dose, most often when evening doses are delayed during shift work. No convulsive events reported in the past year. No new focal neurological symptoms. Sleep disruption and higher caffeine intake during night shifts are described. No alcohol misuse.\n\nExamination (teleclinic history corroborated with prior in-person notes): Alert, oriented, normal speech and language. No reported motor deficits, gait issues, or visual changes. Prior MRI brain (epilepsy protocol, 2019) without clear lesion. Routine EEG (2020) showed intermittent left temporal slowing without definite epileptiform discharges.\n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. Given the clear pattern of “Seizures with missed ASM doses,” we discussed practical adherence supports (alarms and blister packs) and the option of shifting the schedule by one hour earlier to better align with night-shift patterns; patient in agreement to trial this. \n- Patient has a valid UK driving licence and is aware of DVLA guidance; she remains seizure-free when doses are taken and will inform us immediately if any episodes occur despite full adherence. \n- Safety advice reiterated regarding bathing and working at height. \n- No immediate need for medication change as seizures correlate with missed doses; if breakthrough events occur despite full adherence, we will consider adjunctive lacosamide or lamotrigine and repeat EEG. \n\nFollow-up: Review in clinic in six months, sooner if seizures occur despite full adherence.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient has focal seizures that occur after missed doses, but provides no numerical count or time-based rate of seizures. It notes seizures typically occur within 24–48 hours after a missed levetiracetam dose, yet does not state how often doses are missed or how many seizures occurred over any period. The patient is seizure-free only with full adherence, which does not meet the criterion for being seizure-free for ≥6 months overall. Therefore, a specific frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Interval reports describe “Seizures with missed ASM doses,” typically occurring within 24–48 hours of a missed levetiracetam dose"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures with missed ASM doses"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

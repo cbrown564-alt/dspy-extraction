@@ -1,0 +1,59 @@
+{
+  "id": "gan_14284",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 24 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nJames Turner, DOB: 12-05-1986, Hospital No: H948210 NHS No. 5839201746  \n14 Brookside Road, London, W2 6JP \n\nMedication:  \nNo current regular antiseizure medication. He has a personalised plan documented elsewhere for managing sleep-related triggers and rescue measures as needed.\n\nHistory and progress:  \nHe came off Levetiracetam on 21-Feb. In the following week, he had two to three seizures, one associated with sleep deprivation. No further seizures have occurred since. He reports occasional cluster patterns historically when sleep is curtailed, and he has been proactive in maintaining a strict sleep routine. He keeps a seizure diary and notes that work-related travel can disrupt sleep; he has adjusted his schedule to minimise this risk. He denies medication side effects since discontinuation and is tolerating the current watchful approach well.\n\nPlan:  \n- Continue current strategy with emphasis on sleep regularity, as per his personalised plan held on file.  \n- No change to medication at present. He knows to contact us promptly if further seizures occur or if cluster patterns re-emerge despite adequate sleep.  \n- Provide a brief fit note for his employer to support adjustments around night shifts and long-haul travel.  \n\nFollow-up:  \nWe will review him in clinic in six months, or sooner if there is any recurrence.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 529,
+      "end": 661,
+      "text": "In the following week, he had two to three seizures, one associated with sleep deprivation. No further seizures have occurred since.",
+      "attributes": {
+        "Label": "2 to 3 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 492,
+      "end": 660,
+      "text": "He came off Levetiracetam on 21-Feb. In the following week, he had two to three seizures, one associated with sleep deprivation. No further seizures have occurred since",
+      "attributes": {
+        "Label": "2 to 3 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14284,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 24 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nJames Turner, DOB: 12-05-1986, Hospital No: H948210 NHS No. 5839201746  \n14 Brookside Road, London, W2 6JP \n\nMedication:  \nNo current regular antiseizure medication. He has a personalised plan documented elsewhere for managing sleep-related triggers and rescue measures as needed.\n\nHistory and progress:  \nHe came off Levetiracetam on 21-Feb. In the following week, he had two to three seizures, one associated with sleep deprivation. No further seizures have occurred since. He reports occasional cluster patterns historically when sleep is curtailed, and he has been proactive in maintaining a strict sleep routine. He keeps a seizure diary and notes that work-related travel can disrupt sleep; he has adjusted his schedule to minimise this risk. He denies medication side effects since discontinuation and is tolerating the current watchful approach well.\n\nPlan:  \n- Continue current strategy with emphasis on sleep regularity, as per his personalised plan held on file.  \n- No change to medication at present. He knows to contact us promptly if further seizures occur or if cluster patterns re-emerge despite adequate sleep.  \n- Provide a brief fit note for his employer to support adjustments around night shifts and long-haul travel.  \n\nFollow-up:  \nWe will review him in clinic in six months, or sooner if there is any recurrence.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Timeline from the letter:\n  - Medication stopped on 21-Feb.\n  - \"In the following week\" after 21-Feb, he had two to three seizures.\n  - \"No further seizures have occurred since.\" Clinic date is 24 March 2017.\n- Calculate the observation window relevant to current status: from 21-Feb to 24-Mar is approximately 1 month (~31 days).\n- Total seizures during this ~1-month period = 2 to 3 (all occurred within the first week; none thereafter).\n- Seizure-free designation requires at least 6 months without seizures; here the seizure-free period is <1 month, so do not label as seizure free.\n- Normalize to allowed format based on events over the current ~1-month period: 2 to 3 per month.",
+      "seizure_frequency_number": [
+        "2 to 3 per month",
+        "In the following week, he had two to three seizures, one associated with sleep deprivation. No further seizures have occurred since."
+      ],
+      "reference": [
+        "2 to 3 per month",
+        "He came off Levetiracetam on 21-Feb. In the following week, he had two to three seizures, one associated with sleep deprivation. No further seizures have occurred since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

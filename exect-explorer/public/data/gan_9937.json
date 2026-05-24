@@ -1,0 +1,48 @@
+{
+  "id": "gan_9937",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 06 March 2020 \n\nDr Amelia Kerr \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Kerr, \n\nMr Thomas Gray, DOB: 22-09-1987, Hospital No: A739520 NHS No. 9842165073  \n12 Wharf Close, Deptford, London SE8 3QA  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; current pattern suggests improvement with recent lifestyle changes; medication-responsive features not fully established\n\nAetiology: \n\nNo structural or metabolic cause identified to date; prior routine MRI and EEG unremarkable by report\n\nOther Medical Problems: \n\nMild tension-type headaches, self-limiting; seasonal allergic rhinitis as needed treatment only\n\nManagement Plan: \n\n- Continue current regimen: Levetiracetam 750 mg twice daily. No changes today given improving symptom control.  \n- Maintain consistent sleep schedule and hydration; patient reports these have improved since workload reduction.  \n- Seizure diary to continue; please note pattern description below for ongoing monitoring.  \n- Safety: avoid working at height and operating machinery alone; continue standard workplace adjustments already in place.  \n- Bloods (U&E, FBC) at next visit; no immediate investigations required.  \n- Review in six months; bring updated diary and any witness accounts if available.\n\nSince our last appointment, Mr Thomas Gray notes a clear improvement in day-to-day stability. The peak season at the warehouse has ended, with workload and overtime markedly reduced. He reports better rest, fewer very early starts, and less physical exhaustion, all coinciding with improved seizure control. The current pattern is best described as periodic bursts roughly every few weeks with an imprecise number of events per burst; outside these periods he has extended stretches without symptoms. He has had no injuries, no emergency attendances, and no missed medication doses. There are no new neurological symptoms, and mood and concentration are reported as better. Given the positive trajectory and absence of red flags, we will continue with the present approach and monitor.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1717,
+      "end": 1801,
+      "text": "periodic bursts roughly every few weeks with an imprecise number of events per burst",
+      "attributes": {
+        "Label": "1 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9937,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 06 March 2020 \n\nDr Amelia Kerr \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Amelia Kerr, \n\nMr Thomas Gray, DOB: 22-09-1987, Hospital No: A739520 NHS No. 9842165073  \n12 Wharf Close, Deptford, London SE8 3QA  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; current pattern suggests improvement with recent lifestyle changes; medication-responsive features not fully established\n\nAetiology: \n\nNo structural or metabolic cause identified to date; prior routine MRI and EEG unremarkable by report\n\nOther Medical Problems: \n\nMild tension-type headaches, self-limiting; seasonal allergic rhinitis as needed treatment only\n\nManagement Plan: \n\n- Continue current regimen: Levetiracetam 750 mg twice daily. No changes today given improving symptom control.  \n- Maintain consistent sleep schedule and hydration; patient reports these have improved since workload reduction.  \n- Seizure diary to continue; please note pattern description below for ongoing monitoring.  \n- Safety: avoid working at height and operating machinery alone; continue standard workplace adjustments already in place.  \n- Bloods (U&E, FBC) at next visit; no immediate investigations required.  \n- Review in six months; bring updated diary and any witness accounts if available.\n\nSince our last appointment, Mr Thomas Gray notes a clear improvement in day-to-day stability. The peak season at the warehouse has ended, with workload and overtime markedly reduced. He reports better rest, fewer very early starts, and less physical exhaustion, all coinciding with improved seizure control. The current pattern is best described as periodic bursts roughly every few weeks with an imprecise number of events per burst; outside these periods he has extended stretches without symptoms. He has had no injuries, no emergency attendances, and no missed medication doses. There are no new neurological symptoms, and mood and concentration are reported as better. Given the positive trajectory and absence of red flags, we will continue with the present approach and monitor.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing seizures with a pattern: 'periodic bursts roughly every few weeks with an imprecise number of events per burst.' This indicates clustered seizures occurring approximately every few weeks, but the exact number per cluster is not specified. There's no explicit numeric count or exact interval, only 'every few weeks,' which aligns best with 'per month' as a normalized cadence. Because the number of events per burst is imprecise, we must use 'multiple per cluster.' The patient is not seizure-free, and no precise counts are provided to compute a specific frequency, so we select a cluster-based format with 'multiple per cluster.'",
+      "seizure_frequency_number": [
+        "1 cluster per month, multiple per cluster",
+        "periodic bursts roughly every few weeks with an imprecise number of events per burst"
+      ],
+      "reference": [
+        "1 cluster per month, multiple per cluster",
+        "Monthly clusters; within-cluster count unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

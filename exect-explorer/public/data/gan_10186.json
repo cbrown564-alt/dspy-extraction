@@ -1,0 +1,59 @@
+{
+  "id": "gan_10186",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 August 2019 10:15\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and treatment plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with suspected temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\n\nPresent Seizure Frequency:\n\nClusters occur sporadically; typically three - five events when they happen. The patient reports brief focal aware episodes featuring a rising epigastric sensation, déjà vu, and transient word-finding difficulty, usually over one day, with full recovery between events. No generalised tonic–clonic seizures reported in the past 12 months.\n\n\nPlan of Action:\n\nThe current history is in keeping with focal epilepsy. Despite partial benefit on brivaracetam, the patient continues to experience intermittent cluster days as above. We discussed options and agreed to a cautious titration of lacosamide while maintaining lamotrigine, with a view to reviewing brivaracetam depending on response.\n\nPlease commence lacosamide as follows: 50 mg at night for one week, then 50 mg twice daily in week two, increasing to 100 mg in the morning and 50 mg at night in week three, and 100 mg twice daily from week four onwards. Continue at 100 mg twice daily for three months until review. Maintain current doses of lamotrigine and brivaracetam during titration.\n\nThe patient commutes mainly by bicycle; this was recorded for lifestyle context. They have arranged to keep a brief diary of cluster days, including time of day, associated symptoms, and any potential precipitating factors (sleep pattern, intercurrent illness).\n\nI will review in three months to assess response and tolerability, and will consider tapering brivaracetam if cluster frequency reduces on lacosamide.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 547,
+      "end": 623,
+      "text": "Clusters occur sporadically; typically three - five events when they happen.",
+      "attributes": {
+        "Label": "unknown, 3 to 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 547,
+      "end": 622,
+      "text": "Clusters occur sporadically; typically three - five events when they happen",
+      "attributes": {
+        "Label": "unknown, 3 to 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10186,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 August 2019 10:15\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and treatment plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with suspected temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\n\nPresent Seizure Frequency:\n\nClusters occur sporadically; typically three - five events when they happen. The patient reports brief focal aware episodes featuring a rising epigastric sensation, déjà vu, and transient word-finding difficulty, usually over one day, with full recovery between events. No generalised tonic–clonic seizures reported in the past 12 months.\n\n\nPlan of Action:\n\nThe current history is in keeping with focal epilepsy. Despite partial benefit on brivaracetam, the patient continues to experience intermittent cluster days as above. We discussed options and agreed to a cautious titration of lacosamide while maintaining lamotrigine, with a view to reviewing brivaracetam depending on response.\n\nPlease commence lacosamide as follows: 50 mg at night for one week, then 50 mg twice daily in week two, increasing to 100 mg in the morning and 50 mg at night in week three, and 100 mg twice daily from week four onwards. Continue at 100 mg twice daily for three months until review. Maintain current doses of lamotrigine and brivaracetam during titration.\n\nThe patient commutes mainly by bicycle; this was recorded for lifestyle context. They have arranged to keep a brief diary of cluster days, including time of day, associated symptoms, and any potential precipitating factors (sleep pattern, intercurrent illness).\n\nI will review in three months to assess response and tolerability, and will consider tapering brivaracetam if cluster frequency reduces on lacosamide.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Clusters occur sporadically; typically three - five events when they happen.\" It does not specify how often the clusters occur (e.g., per day/week/month). Therefore, the overall frequency per time unit is unknown, but the number of seizures per cluster is given as a range of three to five. According to the rules, when the occurrence rate is unknown but per-cluster count is provided, we should return the 'unknown, <value> per cluster' format.",
+      "seizure_frequency_number": [
+        "unknown, 3 to 5 per cluster",
+        "Clusters occur sporadically; typically three - five events when they happen."
+      ],
+      "reference": [
+        "unknown, 3 to 5 per cluster",
+        "Clusters occur sporadically; typically three - five events when they happen"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_5305",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nGreenfield Medical Centre  \n42 High Street, London W1A 2BC  \n\nDear Dr Patel,  \n\nAlex Turner, DOB: 12-09-1984, Hospital No: T839204 NHS No. 1045583927  \nFlat 3, 27 Brook Lane, London N5 1AB \n\nSummary/ Diagnoses: Epilepsy/post-concussive symptoms following fall in 2023/mild memory impairment/essential hypertension/generalised anxiety disorder/vitamin D insufficiency/ex-smoker. \n\nMedication: Lamotrigine 150 mg twice daily.  \nSertraline 50 mg once daily.  \nAmlodipine 5 mg once daily.  \nCholecalciferol 1000 IU once daily.  \nOmeprazole 20 mg once daily as required.  \n\nI reviewed Alex in clinic today, accompanied by his partner who helps with reminders for medication and appointments. Since his last review in April 2025, he reports improved routine and sleep. He has returned to part-time work as a bicycle mechanic and finds this manageable with planned rest breaks. He notes occasional brief lapses in short-term recall, particularly under stress, but no new focal neurological symptoms. Neurological examination today was non-focal; gait steady, normal tandem, no cerebellar signs. \n\nSeizures: Alex maintains a seizure diary on his phone. He reports no convulsive events since February 2025 and only two brief episodes in May and July characterised by a short pause in activity and a sense of \"blanking\" without loss of awareness, each under one minute and self-resolving. He attributes these to missed sleep before early shifts. Overall, his current pattern suggests his seizures have remained largely settled over recent months with minimal breakthrough events. He has been fully adherent to lamotrigine with alarms set on his phone. He does not drive. \n\nPlan: \n- Continue lamotrigine at current dose. \n- Bloods via GP: U&Es, LFTs, FBC, vitamin D in 2 weeks (routine monitoring). \n- Reinforce sleep hygiene and medication adherence strategies; patient will continue phone reminders. \n- Provide fit note for part-time duties as needed over next 3 months. \n- Safety: advised to avoid climbing ladders at work and to use protective measures at the workbench. \n- Follow-up in 6 months, sooner if any increase in events or concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1324,
+      "end": 1363,
+      "text": "only two brief episodes in May and July",
+      "attributes": {
+        "Label": "2 per 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5305,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nGreenfield Medical Centre  \n42 High Street, London W1A 2BC  \n\nDear Dr Patel,  \n\nAlex Turner, DOB: 12-09-1984, Hospital No: T839204 NHS No. 1045583927  \nFlat 3, 27 Brook Lane, London N5 1AB \n\nSummary/ Diagnoses: Epilepsy/post-concussive symptoms following fall in 2023/mild memory impairment/essential hypertension/generalised anxiety disorder/vitamin D insufficiency/ex-smoker. \n\nMedication: Lamotrigine 150 mg twice daily.  \nSertraline 50 mg once daily.  \nAmlodipine 5 mg once daily.  \nCholecalciferol 1000 IU once daily.  \nOmeprazole 20 mg once daily as required.  \n\nI reviewed Alex in clinic today, accompanied by his partner who helps with reminders for medication and appointments. Since his last review in April 2025, he reports improved routine and sleep. He has returned to part-time work as a bicycle mechanic and finds this manageable with planned rest breaks. He notes occasional brief lapses in short-term recall, particularly under stress, but no new focal neurological symptoms. Neurological examination today was non-focal; gait steady, normal tandem, no cerebellar signs. \n\nSeizures: Alex maintains a seizure diary on his phone. He reports no convulsive events since February 2025 and only two brief episodes in May and July characterised by a short pause in activity and a sense of \"blanking\" without loss of awareness, each under one minute and self-resolving. He attributes these to missed sleep before early shifts. Overall, his current pattern suggests his seizures have remained largely settled over recent months with minimal breakthrough events. He has been fully adherent to lamotrigine with alarms set on his phone. He does not drive. \n\nPlan: \n- Continue lamotrigine at current dose. \n- Bloods via GP: U&Es, LFTs, FBC, vitamin D in 2 weeks (routine monitoring). \n- Reinforce sleep hygiene and medication adherence strategies; patient will continue phone reminders. \n- Provide fit note for part-time duties as needed over next 3 months. \n- Safety: advised to avoid climbing ladders at work and to use protective measures at the workbench. \n- Follow-up in 6 months, sooner if any increase in events or concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. In the Seizures section: he had \"no convulsive events since February 2025\" and \"only two brief episodes in May and July.\" These two non-convulsive episodes occurred within the interval since his last review in April 2025 up to the current visit in October 2025 (~6 months). He has not been seizure-free for ≥6 months because the last events were in July 2025 (~2 months ago). Therefore, rather than a seizure-free label, the current frequency is 2 events over approximately 6 months. Among different event types, we select the highest frequency (2 in ~6 months vs 0 convulsions).",
+      "seizure_frequency_number": [
+        "2 per 6 month",
+        "only two brief episodes in May and July"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures well-controlled"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

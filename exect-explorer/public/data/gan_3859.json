@@ -1,0 +1,59 @@
+{
+  "id": "gan_3859",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 13 July 2020\n\nDr Patel\nRiverside Health Centre\n\n12 Riverside Way, London SE10 8AB\n\nDear Dr Patel\n\nDaniel Morris, DOB: 14-03-1991, Hospital No: H738920 NHS No. 9432815560\nFlat 3, 27 Millbrook House, Deptford, London SE8 4JL\n\nSummary: Ongoing seizures with learning disability; communication and seizure logging supported by carer.\n\nBackground: I reviewed Daniel Morris in clinic today, accompanied by her full-time carer who assists with communication and maintains the seizure diary. The carer reports consistent recording over the past three months.\n\nSeizure history and current pattern: The diary entries note brief episodes characterised by behavioural arrest, unresponsiveness, and post-event confusion lasting 1–2 minutes. Frequency in the diary is recorded as \"sz *one/d\" on average, with occasional clusters around periods of poor sleep. No clear diurnal pattern. No recent injuries or prolonged events. Triggers suspected by the carer include sleep disruption and intercurrent infections. Rescue medication has not been required in the last 12 months.\n\nInvestigations: Prior routine EEG was non-diagnostic (date not available), and historical neuroimaging is not accessible in our system. The carer has consented to us requesting previous records from the prior trust. Cardiorespiratory review unremarkable; no syncope features described.\n\nMedications and tolerability: Currently on lamotrigine 100 mg twice daily. Past trials per carer recollection include levetiracetam (mood irritability) and sodium valproate (weight gain and sedation). No known drug allergies. Folic acid 5 mg once daily is taken as per prior advice. Adherence is supervised by the carer using a blister pack system.\n\nSocial and safety: Lives in supported accommodation with 24-hour staffing. The carer has implemented seizure first-aid protocols and environmental safety measures. No driving. They use a simple picture-based seizure scale, which has improved consistency of reporting.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily for now while we clarify prior records and confirm current baseline.\n- Arrange ambulatory EEG to capture events and correlate with diary entries; provide carer with instructions to mark events during recording.\n- Bloods: FBC, U&E, LFT, bone profile, vitamin D, and lamotrigine level (for reference only, not for dose targeting).\n- Sleep hygiene advice reinforced with the carer; continue seizure diary using the same format that records \"sz *one/d\" to maintain continuity of data.\n- Provide updated written seizure management plan to supported living staff; ensure PRN midazolam protocol remains available though not recently needed.\n- Follow-up in 3 months, sooner if escalation in frequency, injury, or events lasting >5 minutes.\n\nThank you for your ongoing support with medication administration and monitoring. Please let us know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 769,
+      "end": 829,
+      "text": "Frequency in the diary is recorded as \"sz *one/d\" on average",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 808,
+      "end": 817,
+      "text": "sz *one/d",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3859,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 13 July 2020\n\nDr Patel\nRiverside Health Centre\n\n12 Riverside Way, London SE10 8AB\n\nDear Dr Patel\n\nDaniel Morris, DOB: 14-03-1991, Hospital No: H738920 NHS No. 9432815560\nFlat 3, 27 Millbrook House, Deptford, London SE8 4JL\n\nSummary: Ongoing seizures with learning disability; communication and seizure logging supported by carer.\n\nBackground: I reviewed Daniel Morris in clinic today, accompanied by her full-time carer who assists with communication and maintains the seizure diary. The carer reports consistent recording over the past three months.\n\nSeizure history and current pattern: The diary entries note brief episodes characterised by behavioural arrest, unresponsiveness, and post-event confusion lasting 1–2 minutes. Frequency in the diary is recorded as \"sz *one/d\" on average, with occasional clusters around periods of poor sleep. No clear diurnal pattern. No recent injuries or prolonged events. Triggers suspected by the carer include sleep disruption and intercurrent infections. Rescue medication has not been required in the last 12 months.\n\nInvestigations: Prior routine EEG was non-diagnostic (date not available), and historical neuroimaging is not accessible in our system. The carer has consented to us requesting previous records from the prior trust. Cardiorespiratory review unremarkable; no syncope features described.\n\nMedications and tolerability: Currently on lamotrigine 100 mg twice daily. Past trials per carer recollection include levetiracetam (mood irritability) and sodium valproate (weight gain and sedation). No known drug allergies. Folic acid 5 mg once daily is taken as per prior advice. Adherence is supervised by the carer using a blister pack system.\n\nSocial and safety: Lives in supported accommodation with 24-hour staffing. The carer has implemented seizure first-aid protocols and environmental safety measures. No driving. They use a simple picture-based seizure scale, which has improved consistency of reporting.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily for now while we clarify prior records and confirm current baseline.\n- Arrange ambulatory EEG to capture events and correlate with diary entries; provide carer with instructions to mark events during recording.\n- Bloods: FBC, U&E, LFT, bone profile, vitamin D, and lamotrigine level (for reference only, not for dose targeting).\n- Sleep hygiene advice reinforced with the carer; continue seizure diary using the same format that records \"sz *one/d\" to maintain continuity of data.\n- Provide updated written seizure management plan to supported living staff; ensure PRN midazolam protocol remains available though not recently needed.\n- Follow-up in 3 months, sooner if escalation in frequency, injury, or events lasting >5 minutes.\n\nThank you for your ongoing support with medication administration and monitoring. Please let us know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes diary-recorded seizure frequency: \"Frequency in the diary is recorded as 'sz *one/d' on average\". This indicates an average of one seizure per day. There are occasional clusters, but no explicit number per cluster or change in baseline frequency provided; thus the primary numeric frequency is 1 per day. No evidence of seizure freedom. Apply highest frequency rule: 1 per day is the explicit numeric rate.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "Frequency in the diary is recorded as \"sz *one/d\" on average"
+      ],
+      "reference": [
+        "1 per day",
+        "sz *one/d"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_14581",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 November 2014 \n\nDr James Hart  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr James Hart,\n\nRobert Keller, DOB: 22-03-1982, Hospital No: H3849201 NHS No. 9384756102  \nFlat 5, 27 Marlborough Road, London, N19 4HT  \n\nEpilepsy \n\nMedication: Post-operative prophylaxis with Levetiracetam 500 mg twice daily since late October 2014; now tapering to 250 mg twice daily over the next 2 weeks as discussed in MDT. No adverse effects reported.\n\nAnti-seizure Drug Levels: Not clinically indicated at present. Routine U&Es and LFTs within normal limits on 10 November 2014.\n\nSeizures: His initial event was in July 2014 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following October 2014, once more during the night, lasting four minutes with similar semiology. He has had no further events since surgical intervention and initiation of Levetiracetam.\n\nHistory and Progress: I reviewed Robert Keller today in follow-up after a right temporal surgical procedure performed in late October 2014 abroad, with operative notes confirming a well-circumscribed lesion resected. He reports marked improvement: uninterrupted sleep, no nocturnal motor activity witnessed by his partner, and return to light work duties without cognitive complaints. Headache and incision discomfort have settled; there is no photophobia or phonophobia. Neurological examination today is normal, including facial symmetry and limb power. He remains medically fit to continue graded return to normal activity. We have discussed typical post-operative triggers; he is maintaining good sleep hygiene and reducing caffeine.\n\nPlan: \n- Continue Levetiracetam 250 mg twice daily for 2 weeks, then stop if seizure-free and well; he understands to contact the service immediately if any further events occur.  \n- Community nurse to check wound site next week as routine.  \n- DVLA guidance discussed; he is aware of current restrictions and will refrain from driving until permitted.  \n- Telephone review in 6 weeks, face-to-face if any recurrence or concerns.\n\nOverall Impression: Clinical course is improving following surgery, with no recurrence of nocturnal motor events and steady functional recovery.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 642,
+      "end": 1002,
+      "text": "Seizures: His initial event was in July 2014 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following October 2014, once more during the night, lasting four minutes with similar semiology. He has had no further events since surgical intervention and initiation of Levetiracetam.",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 652,
+      "end": 911,
+      "text": "His initial event was in July 2014 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following October 2014, once more during the night, lasting four minutes with similar semiology",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14581,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 November 2014 \n\nDr James Hart  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr James Hart,\n\nRobert Keller, DOB: 22-03-1982, Hospital No: H3849201 NHS No. 9384756102  \nFlat 5, 27 Marlborough Road, London, N19 4HT  \n\nEpilepsy \n\nMedication: Post-operative prophylaxis with Levetiracetam 500 mg twice daily since late October 2014; now tapering to 250 mg twice daily over the next 2 weeks as discussed in MDT. No adverse effects reported.\n\nAnti-seizure Drug Levels: Not clinically indicated at present. Routine U&Es and LFTs within normal limits on 10 November 2014.\n\nSeizures: His initial event was in July 2014 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following October 2014, once more during the night, lasting four minutes with similar semiology. He has had no further events since surgical intervention and initiation of Levetiracetam.\n\nHistory and Progress: I reviewed Robert Keller today in follow-up after a right temporal surgical procedure performed in late October 2014 abroad, with operative notes confirming a well-circumscribed lesion resected. He reports marked improvement: uninterrupted sleep, no nocturnal motor activity witnessed by his partner, and return to light work duties without cognitive complaints. Headache and incision discomfort have settled; there is no photophobia or phonophobia. Neurological examination today is normal, including facial symmetry and limb power. He remains medically fit to continue graded return to normal activity. We have discussed typical post-operative triggers; he is maintaining good sleep hygiene and reducing caffeine.\n\nPlan: \n- Continue Levetiracetam 250 mg twice daily for 2 weeks, then stop if seizure-free and well; he understands to contact the service immediately if any further events occur.  \n- Community nurse to check wound site next week as routine.  \n- DVLA guidance discussed; he is aware of current restrictions and will refrain from driving until permitted.  \n- Telephone review in 6 weeks, face-to-face if any recurrence or concerns.\n\nOverall Impression: Clinical course is improving following surgery, with no recurrence of nocturnal motor events and steady functional recovery.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify explicit seizure events: The letter states one event in July 2014 and a second event in October 2014, with no further events since surgery in late October 2014.\n2) Count seizures: Total = 2 events.\n3) Determine if seizure-free label applies: Clinic date is 14 November 2014; last event was October 2014, so seizure-free duration is under 6 months. Therefore, do not label as seizure-free; compute frequency instead.\n4) Define observation window for frequency: From first event (July 2014) to second event (October 2014). Month difference = 10 - 7 = 3 months.\n5) Compute frequency: 2 seizures over 3 months → 2 per 3 month.\n6) Check for competing frequencies: Post-operative period shows 0 events but <1 month, not meeting ≥6 months seizure-free; the calculated 2 per 3 month is the applicable frequency.",
+      "seizure_frequency_number": [
+        "2 per 3 month",
+        "Seizures: His initial event was in July 2014 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following October 2014, once more during the night, lasting four minutes with similar semiology. He has had no further events since surgical intervention and initiation of Levetiracetam."
+      ],
+      "reference": [
+        "2 per 3 month",
+        "His initial event was in July 2014 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following October 2014, once more during the night, lasting four minutes with similar semiology"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

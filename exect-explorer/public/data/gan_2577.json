@@ -1,0 +1,59 @@
+{
+  "id": "gan_2577",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Khan, \n\nMs Sarah Thompson, DOB: 12-03-1991, Hospital No: K821473 NHS No. 9432075618  \nFlat 2B, 47 Brookfield Road, London, SE15 4HT  \n\nDiagnosis: \n\nRecurrent unprovoked seizures with variable semiology and timing; a clear epileptic syndrome has not been established \n\nAetiology: \n\nNo structural lesion identified on MRI brain (2024); EEG non-specific with intermittent bilateral theta slowing without unequivocal epileptiform discharges \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms under primary care review; vitamin D insufficiency treated with cholecalciferol 1,000 IU daily; mild intermittent asthma managed with salbutamol inhaler as required \n\nManagement Plan: \n\n- Continue current Levetiracetam 1,000 mg twice daily; patient reports acceptable tolerability with occasional fatigue.  \n- Arrange sleep-deprived EEG and repeat serum Levetiracetam trough level prior to morning dose in 6 weeks.  \n- Safety counselling reinforced regarding bathing, heights, and operating machinery; discussed DVLA guidance and the need to refrain from driving in accordance with current regulations.  \n- Provide seizure diary template; patient reports experiencing \"five or seven focal seizures during the last two months\", noting brief episodes of impaired awareness lasting under two minutes with occasional lip smacking and post-event confusion. We will clarify semiology and triggers with collateral history from partner at next visit.  \n- Consider adjunctive therapy depending on diary, EEG findings, and serum levels; options discussed in principle included Lamotrigine or Lacosamide, pending results and shared decision-making.  \n- Review in clinic in three months or earlier if events escalate, new neurological deficits appear, or adverse effects emerge. \n\nSummary of Current Status: \n\nSince the last review, the patient has kept a partial record of events. They describe variable clustering under stress and sleep deprivation, with no clear prodrome. There have been no injuries, tongue biting is rare, and recovery is typically within 10–15 minutes. Rescue plan agreed: family to monitor, maintain airway safety, and call emergency services if any event exceeds five minutes or clusters occur without recovery between episodes. No changes to background medication today pending investigations. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1345,
+      "end": 1431,
+      "text": "patient reports experiencing \"five or seven focal seizures during the last two months\"",
+      "attributes": {
+        "Label": "5 to 7 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1375,
+      "end": 1430,
+      "text": "five or seven focal seizures during the last two months",
+      "attributes": {
+        "Label": "5 to 7 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2577,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Khan, \n\nMs Sarah Thompson, DOB: 12-03-1991, Hospital No: K821473 NHS No. 9432075618  \nFlat 2B, 47 Brookfield Road, London, SE15 4HT  \n\nDiagnosis: \n\nRecurrent unprovoked seizures with variable semiology and timing; a clear epileptic syndrome has not been established \n\nAetiology: \n\nNo structural lesion identified on MRI brain (2024); EEG non-specific with intermittent bilateral theta slowing without unequivocal epileptiform discharges \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms under primary care review; vitamin D insufficiency treated with cholecalciferol 1,000 IU daily; mild intermittent asthma managed with salbutamol inhaler as required \n\nManagement Plan: \n\n- Continue current Levetiracetam 1,000 mg twice daily; patient reports acceptable tolerability with occasional fatigue.  \n- Arrange sleep-deprived EEG and repeat serum Levetiracetam trough level prior to morning dose in 6 weeks.  \n- Safety counselling reinforced regarding bathing, heights, and operating machinery; discussed DVLA guidance and the need to refrain from driving in accordance with current regulations.  \n- Provide seizure diary template; patient reports experiencing \"five or seven focal seizures during the last two months\", noting brief episodes of impaired awareness lasting under two minutes with occasional lip smacking and post-event confusion. We will clarify semiology and triggers with collateral history from partner at next visit.  \n- Consider adjunctive therapy depending on diary, EEG findings, and serum levels; options discussed in principle included Lamotrigine or Lacosamide, pending results and shared decision-making.  \n- Review in clinic in three months or earlier if events escalate, new neurological deficits appear, or adverse effects emerge. \n\nSummary of Current Status: \n\nSince the last review, the patient has kept a partial record of events. They describe variable clustering under stress and sleep deprivation, with no clear prodrome. There have been no injuries, tongue biting is rare, and recovery is typically within 10–15 minutes. Rescue plan agreed: family to monitor, maintain airway safety, and call emergency services if any event exceeds five minutes or clusters occur without recovery between episodes. No changes to background medication today pending investigations. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter includes a concrete patient-reported frequency: “five or seven focal seizures during the last two months.” This is an explicit numeric range over a specified period. No other differing frequency statements are provided that would supersede this. Therefore, normalize to the allowed format as a range per the same period: '5 to 7 per 2 month'. No indication of 6-month seizure freedom.",
+      "seizure_frequency_number": [
+        "5 to 7 per 2 month",
+        "patient reports experiencing \"five or seven focal seizures during the last two months\""
+      ],
+      "reference": [
+        "5 to 7 per 2 month",
+        "five or seven focal seizures during the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

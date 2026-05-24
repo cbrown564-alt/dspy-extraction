@@ -1,0 +1,48 @@
+{
+  "id": "gan_9946",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 February 2022 10:15\nTo: neurology.clinic@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Ahmed,\n\nDiagnosis summary:\n\nSeizure disorder (aetiology not specified)\n\nCurrent medication:\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg nightly\n\nSeizure pattern:\n\nThe patient reports that episodes tend to gather in bursts about once each month, though the exact number occurring during these short spells is not reliably recalled. Between these flurries there may be several weeks of quiet.\n\nClinic assessment and plan:\n\nOver the last two months the patient has noticed word-finding difficulties and reduced appetite since starting topiramate, without a clear improvement in the clustering pattern. There have been no new medical issues, and sleep hygiene has improved per her account. Given the adverse effects and lack of clear benefit, we will begin a cautious transition away from topiramate while maintaining lamotrigine.\n\nProposed changes:\n- Reduce topiramate to 25 mg nightly for 2 weeks, then stop if tolerated.\n- Maintain lamotrigine 100 mg twice daily during the taper.\n- Introduce brivaracetam 25 mg at night for 1 week, then 25 mg twice daily thereafter, provided no adverse effects emerge. If sedation is problematic, remain at 25 mg nightly and review.\n\nSafety and monitoring:\n- The patient has been advised on rescue measures and to keep a brief diary noting date ranges of the monthly bursts and any potential precipitants (illness, missed doses, alcohol, sleep loss), recognising that the within-burst count remains uncertain.\n- Liver function tests and full blood count at baseline and in 6 weeks.\n- We discussed SUDEP risk factors and the importance of adherence.\n\nFollow-up:\n\nTelephone review in 4 weeks to assess tolerability, then face-to-face in 3 months. If the monthly flurries persist without improvement or if side effects occur, we will consider alternative options or referral for further evaluation including ambulatory EEG.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 549,
+      "end": 690,
+      "text": "episodes tend to gather in bursts about once each month, though the exact number occurring during these short spells is not reliably recalled",
+      "attributes": {
+        "Label": "1 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9946,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 February 2022 10:15\nTo: neurology.clinic@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Ahmed,\n\nDiagnosis summary:\n\nSeizure disorder (aetiology not specified)\n\nCurrent medication:\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg nightly\n\nSeizure pattern:\n\nThe patient reports that episodes tend to gather in bursts about once each month, though the exact number occurring during these short spells is not reliably recalled. Between these flurries there may be several weeks of quiet.\n\nClinic assessment and plan:\n\nOver the last two months the patient has noticed word-finding difficulties and reduced appetite since starting topiramate, without a clear improvement in the clustering pattern. There have been no new medical issues, and sleep hygiene has improved per her account. Given the adverse effects and lack of clear benefit, we will begin a cautious transition away from topiramate while maintaining lamotrigine.\n\nProposed changes:\n- Reduce topiramate to 25 mg nightly for 2 weeks, then stop if tolerated.\n- Maintain lamotrigine 100 mg twice daily during the taper.\n- Introduce brivaracetam 25 mg at night for 1 week, then 25 mg twice daily thereafter, provided no adverse effects emerge. If sedation is problematic, remain at 25 mg nightly and review.\n\nSafety and monitoring:\n- The patient has been advised on rescue measures and to keep a brief diary noting date ranges of the monthly bursts and any potential precipitants (illness, missed doses, alcohol, sleep loss), recognising that the within-burst count remains uncertain.\n- Liver function tests and full blood count at baseline and in 6 weeks.\n- We discussed SUDEP risk factors and the importance of adherence.\n\nFollow-up:\n\nTelephone review in 4 weeks to assess tolerability, then face-to-face in 3 months. If the monthly flurries persist without improvement or if side effects occur, we will consider alternative options or referral for further evaluation including ambulatory EEG.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient's seizures occur in bursts about once each month, and the exact number within each burst is not reliably recalled. This indicates a monthly cluster pattern with an unknown (but more than one) number of seizures per cluster. There are no other conflicting frequencies mentioned. Therefore, normalize to '1 cluster per month, multiple per cluster.'",
+      "seizure_frequency_number": [
+        "1 cluster per month, multiple per cluster",
+        "episodes tend to gather in bursts about once each month, though the exact number occurring during these short spells is not reliably recalled"
+      ],
+      "reference": [
+        "1 cluster per month, multiple per cluster",
+        "Monthly clusters; within-cluster count unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

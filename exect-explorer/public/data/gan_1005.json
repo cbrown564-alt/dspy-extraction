@@ -1,0 +1,54 @@
+{
+  "id": "gan_1005",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nJames Whitaker, DOB: 22-09-1984, Hospital No: U842167 NHS No. 3184592076  \n42 Brookside Close, London, N7 6QL \n\nSummary/ Diagnoses: Focal epilepsy following remote mild traumatic brain injury/possible migraine without aura/insomnia under review/high caffeine intake acknowledged/smoker, attempting reduction. \n\nMedication: Lamotrigine 150 mg twice daily.  \nLacosamide 100 mg twice daily.  \nCholecalciferol 1000 IU daily.  \nOmeprazole 20 mg daily.  \n\nI reviewed James in clinic today. He attended alone and was able to give a coherent history. He reports stable mood, lives with his partner, and works part-time as a delivery coordinator. Sleep is variable, with late bedtimes on work nights. He drinks several caffeinated beverages daily, which he recognises may be contributory to sleep disturbance. Appetite is satisfactory and weight stable. Neurologically he was alert and oriented, speech fluent, extraocular movements full, no dysmetria, and gait normal. There were no focal deficits on examination. \n\nSeizures: James has focal epilepsy. He describes focal aware episodes that begin with a rising epigastric sensation and brief déjà vu, occasionally progressing to behavioural arrest lasting under a minute without loss of awareness. According to his diary, episodes tend to cluster roughly every three months, often after a run of poor sleep; the most recent occurred five weeks ago, and before that in late May. He has not had generalised tonic-clonic seizures. No injuries reported. Triggers he has identified include nights with heavy caffeine use and extended screen time. \n\nInvestigations: Prior MRI head (2023) reported as normal. Routine EEG (2023) showed left temporal sharp transients. No recent bloods on record in the last 9 months. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily and lacosamide 100 mg twice daily with no dose change today. \n- Arrange FBC, U&Es, LFTs, bone profile, vitamin D level, and lamotrigine trough level via practice within the next fortnight. \n- Provide written seizure first-aid information and SUDEP discussion documented; patient understands when to seek urgent care. \n- Safety advice reiterated regarding driving regulations; he confirms he is not currently driving and will inform DVLA if seizure pattern changes. \n- Sleep hygiene and hydration discussed; patient notes high caffeine intake and will consider adjusting timing of consumption earlier in the day to help consolidate sleep. \n- Follow-up in clinic in 6 months, sooner if breakthrough events become more frequent or if impaired awareness develops. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1504,
+      "end": 1555,
+      "text": "episodes tend to cluster roughly every three months",
+      "attributes": {
+        "Label": "multiple per 3 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1005,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 02 October 2025 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nJames Whitaker, DOB: 22-09-1984, Hospital No: U842167 NHS No. 3184592076  \n42 Brookside Close, London, N7 6QL \n\nSummary/ Diagnoses: Focal epilepsy following remote mild traumatic brain injury/possible migraine without aura/insomnia under review/high caffeine intake acknowledged/smoker, attempting reduction. \n\nMedication: Lamotrigine 150 mg twice daily.  \nLacosamide 100 mg twice daily.  \nCholecalciferol 1000 IU daily.  \nOmeprazole 20 mg daily.  \n\nI reviewed James in clinic today. He attended alone and was able to give a coherent history. He reports stable mood, lives with his partner, and works part-time as a delivery coordinator. Sleep is variable, with late bedtimes on work nights. He drinks several caffeinated beverages daily, which he recognises may be contributory to sleep disturbance. Appetite is satisfactory and weight stable. Neurologically he was alert and oriented, speech fluent, extraocular movements full, no dysmetria, and gait normal. There were no focal deficits on examination. \n\nSeizures: James has focal epilepsy. He describes focal aware episodes that begin with a rising epigastric sensation and brief déjà vu, occasionally progressing to behavioural arrest lasting under a minute without loss of awareness. According to his diary, episodes tend to cluster roughly every three months, often after a run of poor sleep; the most recent occurred five weeks ago, and before that in late May. He has not had generalised tonic-clonic seizures. No injuries reported. Triggers he has identified include nights with heavy caffeine use and extended screen time. \n\nInvestigations: Prior MRI head (2023) reported as normal. Routine EEG (2023) showed left temporal sharp transients. No recent bloods on record in the last 9 months. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily and lacosamide 100 mg twice daily with no dose change today. \n- Arrange FBC, U&Es, LFTs, bone profile, vitamin D level, and lamotrigine trough level via practice within the next fortnight. \n- Provide written seizure first-aid information and SUDEP discussion documented; patient understands when to seek urgent care. \n- Safety advice reiterated regarding driving regulations; he confirms he is not currently driving and will inform DVLA if seizure pattern changes. \n- Sleep hygiene and hydration discussed; patient notes high caffeine intake and will consider adjusting timing of consumption earlier in the day to help consolidate sleep. \n- Follow-up in clinic in 6 months, sooner if breakthrough events become more frequent or if impaired awareness develops. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"episodes tend to cluster roughly every three months.\" This provides a clear time interval (every 3 months) but does not specify how many episodes occur within each cluster. The recency note (most recent 5 weeks ago, prior in late May) confirms ongoing seizures and excludes seizure freedom of ≥6 months. Because the exact number of episodes per cluster is not given, the precise count per 3-month period cannot be determined; thus, using 'multiple' is appropriate to reflect vagueness while preserving the 3-month interval.",
+      "seizure_frequency_number": [
+        "multiple per 3 month",
+        "episodes tend to cluster roughly every three months"
+      ],
+      "reference": [
+        "1 per 3 month",
+        "quarterly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per 3 month) disagrees with Reference (1 per 3 month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

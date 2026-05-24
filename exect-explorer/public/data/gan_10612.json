@@ -1,0 +1,54 @@
+{
+  "id": "gan_10612",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Patel\nRiverside NHS Neurology Service\n12 Millbank Wing, Riverside Health Campus, London SW1P 3GE\n\nDear Dr Patel,\n\nOmar Rahman, DOB: 14-02-1988, Hospital No: H528491 NHS No. 9073612458\nFlat 3, 27 Willow Street, London EC2A 4BH\n\nDiagnoses:\n\nSeizure disorder of uncertain classification.\n\nI reviewed Omar Rahman today in clinic, accompanied by his sister. He reports that during the recent religious fasting period, his usual daytime routine and hydration changed, and he noticed a pattern of short-lived episodes clustering after sunset meals. In his words, the spells come in small groups with approximately five very brief occurrences per cluster, predominantly later in the day, often early evening when he breaks the fast. He describes transient unresponsiveness with a blank stare and hand fidgeting, each episode lasting under a minute, followed by quick recovery. There is no recalled tongue biting or incontinence. He has not required emergency treatment, and no rescue medication has been administered. \n\nHe remains on levetiracetam 1 g twice daily; no recent dose adjustments. Adherence is generally good, though he occasionally delays the pre-sunset dose when fasting. Sleep has been fragmented, and fluid intake is lower than usual before dusk. He has been using a simple reminder app and notes a modest reduction in event clusters on days he maintains consistent dosing and pre-dawn hydration. No clear triggers outside the fasting context have been identified. \n\nWitness accounts from his sister corroborate the brief nature of the spells and the tendency to occur after evening meals; there have been no prolonged events or injuries. A recent set of routine bloods was unremarkable. Prior MRI brain (2023) reportedly normal. Interictal EEG (2024) showed non-specific findings without definitive lateralising features. We discussed that the current description does not reliably indicate a focal or generalised onset. \n\nPlan:\n- Continue current antiseizure medication without change for now; emphasis on consistent dosing times through fasting periods.\n- Safety reinforced: avoid heights, unsupervised swimming, and open flames when fatigued. ï¿½\n- Arrange sleep-deprived EEG post-fasting season to improve diagnostic yield. Ã‚Â·\n- Provide a seizure diary template to document timing relative to meals and hydration. â€\n- Consider ambulatory EEG if clusters persist beyond the fasting period. \n\nFollow-up in three months, sooner if there is any escalation or prolonged event (>5 minutes) or repeated events without recovery in between. The patient understands when to seek urgent care. \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 633,
+      "end": 723,
+      "text": "the spells come in small groups with approximately five very brief occurrences per cluster",
+      "attributes": {
+        "Label": "unknown, 5 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10612,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Patel\nRiverside NHS Neurology Service\n12 Millbank Wing, Riverside Health Campus, London SW1P 3GE\n\nDear Dr Patel,\n\nOmar Rahman, DOB: 14-02-1988, Hospital No: H528491 NHS No. 9073612458\nFlat 3, 27 Willow Street, London EC2A 4BH\n\nDiagnoses:\n\nSeizure disorder of uncertain classification.\n\nI reviewed Omar Rahman today in clinic, accompanied by his sister. He reports that during the recent religious fasting period, his usual daytime routine and hydration changed, and he noticed a pattern of short-lived episodes clustering after sunset meals. In his words, the spells come in small groups with approximately five very brief occurrences per cluster, predominantly later in the day, often early evening when he breaks the fast. He describes transient unresponsiveness with a blank stare and hand fidgeting, each episode lasting under a minute, followed by quick recovery. There is no recalled tongue biting or incontinence. He has not required emergency treatment, and no rescue medication has been administered. \n\nHe remains on levetiracetam 1 g twice daily; no recent dose adjustments. Adherence is generally good, though he occasionally delays the pre-sunset dose when fasting. Sleep has been fragmented, and fluid intake is lower than usual before dusk. He has been using a simple reminder app and notes a modest reduction in event clusters on days he maintains consistent dosing and pre-dawn hydration. No clear triggers outside the fasting context have been identified. \n\nWitness accounts from his sister corroborate the brief nature of the spells and the tendency to occur after evening meals; there have been no prolonged events or injuries. A recent set of routine bloods was unremarkable. Prior MRI brain (2023) reportedly normal. Interictal EEG (2024) showed non-specific findings without definitive lateralising features. We discussed that the current description does not reliably indicate a focal or generalised onset. \n\nPlan:\n- Continue current antiseizure medication without change for now; emphasis on consistent dosing times through fasting periods.\n- Safety reinforced: avoid heights, unsupervised swimming, and open flames when fatigued. ï¿½\n- Arrange sleep-deprived EEG post-fasting season to improve diagnostic yield. Ã‚Â·\n- Provide a seizure diary template to document timing relative to meals and hydration. â€\n- Consider ambulatory EEG if clusters persist beyond the fasting period. \n\nFollow-up in three months, sooner if there is any escalation or prolonged event (>5 minutes) or repeated events without recovery in between. The patient understands when to seek urgent care. \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes seizures occurring in clusters after evening meals during a fasting period and specifies approximately five events per cluster. However, it does not state how often these clusters occur per day, week, month, or year. Therefore, the time-based frequency is unknown, but the per-cluster count is about five.",
+      "seizure_frequency_number": [
+        "unknown, 5 per cluster",
+        "the spells come in small groups with approximately five very brief occurrences per cluster"
+      ],
+      "reference": [
+        "unknown",
+        "Per-cluster load around 5 brief events; timing tends to be evenings"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown, 5 per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1790",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 30 August 2015 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow‑up for recurrent seizures. Since I last corresponded, he has continued to keep a detailed diary and has synchronised entries from a menstrual tracking app used by his partner to help contextualise potential catamenial influences noted in his own calendar. Over the past four months he reports six drop attacks and two epileptic spasms in the past four months. These events have tended to cluster around predicted luteal–menses windows based on the shared app entries and his own symptom notes (fatigue, irritability, and premonitory light‑headedness). He denies any prolonged convulsive episodes, tongue‑bite, or injury beyond minor bruising from the drop attacks.\n\nCurrent treatment consists of Levetiracetam 1 g b.d. and Lamotrigine 150 mg b.d., both reportedly well tolerated. He describes intermittent morning lethargy and word‑finding difficulty on busy workdays, but no rash, mood lability beyond baseline, or gastrointestinal upset. Adherence is good; he uses phone reminders and a weekly pill organiser. There are no new intercurrent illnesses, he drinks minimal alcohol, and sleeps 6–7 hours nightly, though he notes sleep fragmentation in the days preceding the clusters.\n\nNeurological examination today was unremarkable. There are no new focal neurological symptoms. Routine bloods from last month (FBC, U&E, LFTs) were within normal limits per GP records. He has arranged to continue cross‑referencing his seizure diary with the menstrual tracking app entries to clarify the temporal pattern over the next cycle set. We discussed the observational nature of this approach and he is agreeable to sharing anonymised app screenshots at the next review to corroborate timing.\n\nAt present I have not altered his medication. I have asked him to maintain strict seizure and trigger documentation, including sleep duration, stressors, and the app‑referenced cycle dates, to help determine whether the apparent catamenial pattern is consistent. If the pattern persists, we can consider options at review. I will also request an updated EEG and arrange a follow‑up in three months, sooner if events escalate or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 582,
+      "end": 685,
+      "text": "Over the past four months he reports six drop attacks and two epileptic spasms in the past four months.",
+      "attributes": {
+        "Label": "8 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 619,
+      "end": 684,
+      "text": "six drop attacks and two epileptic spasms in the past four months",
+      "attributes": {
+        "Label": "8 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1790,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 30 August 2015 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow‑up for recurrent seizures. Since I last corresponded, he has continued to keep a detailed diary and has synchronised entries from a menstrual tracking app used by his partner to help contextualise potential catamenial influences noted in his own calendar. Over the past four months he reports six drop attacks and two epileptic spasms in the past four months. These events have tended to cluster around predicted luteal–menses windows based on the shared app entries and his own symptom notes (fatigue, irritability, and premonitory light‑headedness). He denies any prolonged convulsive episodes, tongue‑bite, or injury beyond minor bruising from the drop attacks.\n\nCurrent treatment consists of Levetiracetam 1 g b.d. and Lamotrigine 150 mg b.d., both reportedly well tolerated. He describes intermittent morning lethargy and word‑finding difficulty on busy workdays, but no rash, mood lability beyond baseline, or gastrointestinal upset. Adherence is good; he uses phone reminders and a weekly pill organiser. There are no new intercurrent illnesses, he drinks minimal alcohol, and sleeps 6–7 hours nightly, though he notes sleep fragmentation in the days preceding the clusters.\n\nNeurological examination today was unremarkable. There are no new focal neurological symptoms. Routine bloods from last month (FBC, U&E, LFTs) were within normal limits per GP records. He has arranged to continue cross‑referencing his seizure diary with the menstrual tracking app entries to clarify the temporal pattern over the next cycle set. We discussed the observational nature of this approach and he is agreeable to sharing anonymised app screenshots at the next review to corroborate timing.\n\nAt present I have not altered his medication. I have asked him to maintain strict seizure and trigger documentation, including sleep duration, stressors, and the app‑referenced cycle dates, to help determine whether the apparent catamenial pattern is consistent. If the pattern persists, we can consider options at review. I will also request an updated EEG and arrange a follow‑up in three months, sooner if events escalate or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past four months he reports six drop attacks and two epileptic spasms in the past four months.\" These are seizure events to be counted together per the rule to sum frequencies of multiple seizure types in the same time window. Calculation: 6 + 2 = 8 events over 4 months. Convert to allowed format: '8 per 4 month'. Not seizure-free as events occurred within the last 4 months.",
+      "seizure_frequency_number": [
+        "8 per 4 month",
+        "Over the past four months he reports six drop attacks and two epileptic spasms in the past four months."
+      ],
+      "reference": [
+        "8 per 4 month",
+        "six drop attacks and two epileptic spasms in the past four months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

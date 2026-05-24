@@ -67,7 +67,7 @@ uv run python scripts/cursor_sdk_workflows.py test-mutations --prompt-only
 # Live mutation: disposable worktree only
 $env:CURSOR_SDK_ALLOW_MUTATING_WORKFLOW = "disposable-worktree"
 uv run python scripts/cursor_sdk_workflows.py test-mutations
-uv run python scripts/cursor_sdk_workflows.py pathway-a-card --card A2D --lane implementation --mission-brief docs/workstreams/cursor_sdk/pathway_a/<brief>.md
+uv run python scripts/cursor_sdk_workflows.py pathway-a-card --card A2I --lane implementation --mission-brief docs/workstreams/cursor_sdk/pathway_a/<brief>.md
 ```
 
 Pathway A live implementation lanes use the same disposable-worktree boundary as

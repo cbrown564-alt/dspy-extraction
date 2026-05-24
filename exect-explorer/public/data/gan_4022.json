@@ -1,0 +1,54 @@
+{
+  "id": "gan_4022",
+  "text": "Epilepsy Clinic\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Eleanor Marsh\nSouth Thames Neurology Clinic\nRiverside Health Centre, 14 Wren Street, London SE11 3AB\n\nDear Dr Eleanor Marsh,\n\nRe: Sophie Carter, DOB: 18-07-2004, Hospital No: H927415, NHS No: 7482105639\nAddress: 56 Larkspur Close, Bromley, BR2 0QL\n\nThank you for asking me to review Sophie Carter in clinic today. She attended with her mother. She is currently following a ketogenic/modified diet programme which is being supervised by a team elsewhere; we have recorded the dietary details provided by the family, including a medium-chain triglyceride emphasis, a target carbohydrate allowance of approximately 20–30 g/day, and use of a digital food diary and urine ketone sticks. They report good adherence with occasional relaxed days for social occasions.\n\nCurrent symptoms and seizure history:\n- The family describe brief behavioural arrest events with unresponsiveness and staring, typically without clear motor features, lasting 10–20 seconds, followed by quick recovery. On their calendar, abs 8 monthly over the past three months. They note occasional clustering with intercurrent illness.\n- No recent use of rescue medication. No clear nocturnal events reported. No tongue biting or incontinence. Post-event fatigue is minimal.\n\nMedication and treatments:\n- No recent antiepileptic drug changes according to the family. They are prioritising dietary therapy; supplements include multivitamin and calcium/vitamin D as advised by the diet team.\n- No device therapy in place. No recent emergency department attendances.\n\nExamination today was unremarkable. Weight is stable compared with the last visit. We reviewed potential diet-related adverse effects (constipation, dyslipidaemia, kidney stones); they deny symptoms. We have arranged baseline lipids and renal profile locally and will share results with the supervising diet service.\n\nPlan:\n- Continue current dietary regimen as supervised externally; we will keep a copy of the diet plan on file.\n- Maintain the seizure calendar; please continue to record abs 8 monthly to aid ongoing assessment.\n- Safety advice reiterated (showers rather than baths, supervision when swimming, and avoiding sleep deprivation).\n- Blood tests today: U&E, bicarbonate, LFTs, fasting lipids, and vitamin D.\n- Follow-up in 4 months, sooner if frequency increases, injuries occur, or prolonged events develop.\n\nI hope this is helpful. Please let me know if you would like any further information or if there are changes from the supervising dietary team that we should incorporate locally.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1052,
+      "end": 1112,
+      "text": "On their calendar, abs 8 monthly over the past three months.",
+      "attributes": {
+        "Label": "8 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4022,
+    "clinic_date": "Epilepsy Clinic\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Eleanor Marsh\nSouth Thames Neurology Clinic\nRiverside Health Centre, 14 Wren Street, London SE11 3AB\n\nDear Dr Eleanor Marsh,\n\nRe: Sophie Carter, DOB: 18-07-2004, Hospital No: H927415, NHS No: 7482105639\nAddress: 56 Larkspur Close, Bromley, BR2 0QL\n\nThank you for asking me to review Sophie Carter in clinic today. She attended with her mother. She is currently following a ketogenic/modified diet programme which is being supervised by a team elsewhere; we have recorded the dietary details provided by the family, including a medium-chain triglyceride emphasis, a target carbohydrate allowance of approximately 20–30 g/day, and use of a digital food diary and urine ketone sticks. They report good adherence with occasional relaxed days for social occasions.\n\nCurrent symptoms and seizure history:\n- The family describe brief behavioural arrest events with unresponsiveness and staring, typically without clear motor features, lasting 10–20 seconds, followed by quick recovery. On their calendar, abs 8 monthly over the past three months. They note occasional clustering with intercurrent illness.\n- No recent use of rescue medication. No clear nocturnal events reported. No tongue biting or incontinence. Post-event fatigue is minimal.\n\nMedication and treatments:\n- No recent antiepileptic drug changes according to the family. They are prioritising dietary therapy; supplements include multivitamin and calcium/vitamin D as advised by the diet team.\n- No device therapy in place. No recent emergency department attendances.\n\nExamination today was unremarkable. Weight is stable compared with the last visit. We reviewed potential diet-related adverse effects (constipation, dyslipidaemia, kidney stones); they deny symptoms. We have arranged baseline lipids and renal profile locally and will share results with the supervising diet service.\n\nPlan:\n- Continue current dietary regimen as supervised externally; we will keep a copy of the diet plan on file.\n- Maintain the seizure calendar; please continue to record abs 8 monthly to aid ongoing assessment.\n- Safety advice reiterated (showers rather than baths, supervision when swimming, and avoiding sleep deprivation).\n- Blood tests today: U&E, bicarbonate, LFTs, fasting lipids, and vitamin D.\n- Follow-up in 4 months, sooner if frequency increases, injuries occur, or prolonged events develop.\n\nI hope this is helpful. Please let me know if you would like any further information or if there are changes from the supervising dietary team that we should incorporate locally.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'On their calendar, abs 8 monthly over the past three months.' Here, 'abs' refers to absence seizures and '8 monthly' indicates about 8 per month. Clustering is mentioned but without quantification, so it does not change the numeric frequency. Therefore, the current highest specified frequency is 8 per month.",
+      "seizure_frequency_number": [
+        "8 per month",
+        "On their calendar, abs 8 monthly over the past three months."
+      ],
+      "reference": [
+        "1 per month",
+        "abs Xmonthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (8 per month) disagrees with Reference (1 per month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_8162",
+  "text": "Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside NHS Neurology Service\nOutpatient Department, Riverside Health Centre, 14 Wharf Lane, Bristol BS1 4QB\n\nDear Dr Patel,\n\nRe: Ella Johnson, DOB: 14-08-1989, Hospital No: H927461, NHS No: 7481592630\nAddress: Mooring 7, Feeder Road Marina, Bristol BS2 0TH\n\nDiagnoses:\n\nRecurrent unprovoked seizures (aetiology not defined).\n\nThank you for reviewing Ella Johnson, who attended today with a friend. She lives on a houseboat and reports occasional power cuts, which sometimes disrupt charging of her wearable seizure alert device. The clinical history is patient-reported.\n\nSeizure history and current status:\n- She describes that there have been no witnessed events for an extended span, stating she “has not had a turn for many months.” Her seizure diary (paper-based) shows no entries since late February 2025. Prior to that, she recorded brief collapses with loss of awareness roughly once every 4–6 weeks.\n- She reports occasional prodromal sensations (a rising internal feeling and brief disorientation) approximately once every 6–8 weeks; these have not progressed to clear events since spring.\n- No emergency rescue medication has been required in the last nine months.\n\nMedication and devices:\n- Current anti-seizure medication: lamotrigine 200 mg twice daily; levetiracetam 1 g twice daily. She reports full adherence.\n- Rescue medication: buccal midazolam 10 mg retained at home; unused for nine months.\n- She wears a commercially available seizure alert/monitor linked to a smartphone; she notes occasional interruption in charging during power outages on the boat. We reiterated keeping the device charged where possible and using a battery pack as needed (information only).\n\nInvestigations and examination:\n- Neurological examination today was non-focal.\n- No new imaging since last year; previous MRI and routine EEG reports were non-diagnostic.\n\nPlan:\n- Continue current anti-seizure medication regimen unchanged.\n- Encourage continued paper diary entries alongside the device app to mitigate the impact of intermittent charging.\n- Safety advice reviewed for living aboard a mobile home, including water safety and cooking precautions; no restrictions were mandated today.\n- We will review in six months, sooner if any further episodes occur or if there are changes in pattern or severity.\n\nSummary:\nThe patient reports a sustained stretch without definitive seizures, with only occasional brief warning symptoms that have not evolved into events since spring 2025. No rescue therapy has been needed, and there are no new red flags on history or examination.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 835,
+      "end": 871,
+      "text": "no entries since late February 2025.",
+      "attributes": {
+        "Label": "seizure free for 7 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8162,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Patel\nRiverside NHS Neurology Service\nOutpatient Department, Riverside Health Centre, 14 Wharf Lane, Bristol BS1 4QB\n\nDear Dr Patel,\n\nRe: Ella Johnson, DOB: 14-08-1989, Hospital No: H927461, NHS No: 7481592630\nAddress: Mooring 7, Feeder Road Marina, Bristol BS2 0TH\n\nDiagnoses:\n\nRecurrent unprovoked seizures (aetiology not defined).\n\nThank you for reviewing Ella Johnson, who attended today with a friend. She lives on a houseboat and reports occasional power cuts, which sometimes disrupt charging of her wearable seizure alert device. The clinical history is patient-reported.\n\nSeizure history and current status:\n- She describes that there have been no witnessed events for an extended span, stating she “has not had a turn for many months.” Her seizure diary (paper-based) shows no entries since late February 2025. Prior to that, she recorded brief collapses with loss of awareness roughly once every 4–6 weeks.\n- She reports occasional prodromal sensations (a rising internal feeling and brief disorientation) approximately once every 6–8 weeks; these have not progressed to clear events since spring.\n- No emergency rescue medication has been required in the last nine months.\n\nMedication and devices:\n- Current anti-seizure medication: lamotrigine 200 mg twice daily; levetiracetam 1 g twice daily. She reports full adherence.\n- Rescue medication: buccal midazolam 10 mg retained at home; unused for nine months.\n- She wears a commercially available seizure alert/monitor linked to a smartphone; she notes occasional interruption in charging during power outages on the boat. We reiterated keeping the device charged where possible and using a battery pack as needed (information only).\n\nInvestigations and examination:\n- Neurological examination today was non-focal.\n- No new imaging since last year; previous MRI and routine EEG reports were non-diagnostic.\n\nPlan:\n- Continue current anti-seizure medication regimen unchanged.\n- Encourage continued paper diary entries alongside the device app to mitigate the impact of intermittent charging.\n- Safety advice reviewed for living aboard a mobile home, including water safety and cooking precautions; no restrictions were mandated today.\n- We will review in six months, sooner if any further episodes occur or if there are changes in pattern or severity.\n\nSummary:\nThe patient reports a sustained stretch without definitive seizures, with only occasional brief warning symptoms that have not evolved into events since spring 2025. No rescue therapy has been needed, and there are no new red flags on history or examination.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter states the seizure diary shows no entries since late February 2025, and there have been no definitive seizures since spring. Assuming the last definite seizure was in late Feb 2025, the seizure-free interval to 02 Oct 2025 is at least March–September inclusive = 7 full months (plus a few days). This meets the ≥6-month seizure-free criterion, so label as seizure free for 7 month.",
+      "seizure_frequency_number": [
+        "seizure free for 7 month",
+        "no entries since late February 2025."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Ongoing seizure-free interval"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 7 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

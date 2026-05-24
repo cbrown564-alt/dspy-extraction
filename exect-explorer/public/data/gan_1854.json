@@ -1,0 +1,59 @@
+{
+  "id": "gan_1854",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophie Bennett, DOB: 12-04-1990, Hospital No: H483920 NHS No. 5839201746  \n14 Brookside Close, London, W10 5RA \n\nDiagnosis and background:\nThis patient has generalised epilepsy. She is the primary caregiver for her young children, and her night-time sleep is frequently interrupted, which she feels may exacerbate seizure susceptibility.\n\nMedication:\n- Current: Lamotrigine 150 mg morning / 200 mg night; Levetiracetam 1000 mg twice daily.\n- Previously tried: Sodium valproate (stopped prior to planning pregnancy), Topiramate (cognitive side effects), Clobazam as rescue (retained for intermittent use during periods of increased seizure risk).\n\nInterval history:\nOver the past six months she reports nine seizures in total: five focal onset seizures and four focal myoclonic in the past six months. The focal episodes typically begin with a brief sense of internal tremor and speech arrest lasting under a minute without loss of awareness, followed by fatigue. The myoclonic events are brief, bilateral upper-limb jerks on waking, sometimes leading to dropping objects. She notes a clear pattern of clustering after nights of fragmented sleep when the children wake repeatedly. There have been no generalised tonic-clonic seizures in this period. She denies injuries, tongue biting, or prolonged post-ictal confusion. No new triggers apart from sleep disruption and occasional missed evening meals.\n\nAssessment and plan:\n- Generalised epilepsy with ongoing breakthrough focal and myoclonic seizures despite dual therapy, likely sleep-fragmentation related. We discussed adherence, dose timing, and maintaining a consistent wake schedule insofar as childcare allows. She will continue Lamotrigine 150 mg AM / 200 mg PM and Levetiracetam 1000 mg BD. If the early-morning myoclonus persists at current rates, we can consider a modest Levetiracetam evening dose increase at the next review.\n- Safety and lifestyle: Reinforced seizure first aid, precautions with bathing the children, and avoiding co-sleeping when overtired. She keeps Clobazam 10 mg for short rescue use during brief clusters; she has used this twice in the last six months with perceived benefit.\n- Family planning: No immediate plans for further pregnancy. We reviewed that current regimen is compatible should circumstances change; folic acid 5 mg/day would be indicated if planning.\n\nFollow-up:\nWe will review in six months, or sooner if the seizure rate increases or if she experiences any generalised tonic-clonic seizure.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 855,
+      "end": 990,
+      "text": "Over the past six months she reports nine seizures in total: five focal onset seizures and four focal myoclonic in the past six months.",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 916,
+      "end": 989,
+      "text": "five focal onset seizures and four focal myoclonic in the past six months",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1854,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophie Bennett, DOB: 12-04-1990, Hospital No: H483920 NHS No. 5839201746  \n14 Brookside Close, London, W10 5RA \n\nDiagnosis and background:\nThis patient has generalised epilepsy. She is the primary caregiver for her young children, and her night-time sleep is frequently interrupted, which she feels may exacerbate seizure susceptibility.\n\nMedication:\n- Current: Lamotrigine 150 mg morning / 200 mg night; Levetiracetam 1000 mg twice daily.\n- Previously tried: Sodium valproate (stopped prior to planning pregnancy), Topiramate (cognitive side effects), Clobazam as rescue (retained for intermittent use during periods of increased seizure risk).\n\nInterval history:\nOver the past six months she reports nine seizures in total: five focal onset seizures and four focal myoclonic in the past six months. The focal episodes typically begin with a brief sense of internal tremor and speech arrest lasting under a minute without loss of awareness, followed by fatigue. The myoclonic events are brief, bilateral upper-limb jerks on waking, sometimes leading to dropping objects. She notes a clear pattern of clustering after nights of fragmented sleep when the children wake repeatedly. There have been no generalised tonic-clonic seizures in this period. She denies injuries, tongue biting, or prolonged post-ictal confusion. No new triggers apart from sleep disruption and occasional missed evening meals.\n\nAssessment and plan:\n- Generalised epilepsy with ongoing breakthrough focal and myoclonic seizures despite dual therapy, likely sleep-fragmentation related. We discussed adherence, dose timing, and maintaining a consistent wake schedule insofar as childcare allows. She will continue Lamotrigine 150 mg AM / 200 mg PM and Levetiracetam 1000 mg BD. If the early-morning myoclonus persists at current rates, we can consider a modest Levetiracetam evening dose increase at the next review.\n- Safety and lifestyle: Reinforced seizure first aid, precautions with bathing the children, and avoiding co-sleeping when overtired. She keeps Clobazam 10 mg for short rescue use during brief clusters; she has used this twice in the last six months with perceived benefit.\n- Family planning: No immediate plans for further pregnancy. We reviewed that current regimen is compatible should circumstances change; folic acid 5 mg/day would be indicated if planning.\n\nFollow-up:\nWe will review in six months, or sooner if the seizure rate increases or if she experiences any generalised tonic-clonic seizure.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past six months she reports nine seizures in total: five focal onset seizures and four focal myoclonic in the past six months.\" This provides a clear numeric count and time window. Calculation: 9 seizures / 6 months = 1.5 per month. There are no other conflicting frequencies given. She is not seizure free. Therefore, normalize to '1.5 per month'.",
+      "seizure_frequency_number": [
+        "9 per 6 month",
+        "Over the past six months she reports nine seizures in total: five focal onset seizures and four focal myoclonic in the past six months."
+      ],
+      "reference": [
+        "9 per 6 month",
+        "five focal onset seizures and four focal myoclonic in the past six months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

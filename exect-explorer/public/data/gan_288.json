@@ -1,0 +1,59 @@
+{
+  "id": "gan_288",
+  "text": "Department of Neurology\n\nClinic Date: 21 September 2025\n\nDr Patel\nSt. George Hospital\nNeurology Department, 29 Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nEmily Carter, DOB: 14-03-1992, Hospital No: NHS384720 NHS No. 9045612378\n12 Brookfield Avenue, London, SW16 2AB\n\nDiagnoses:\n\nRecurrent seizures of uncertain phenotype; ambulatory assessment pending.\n\nCurrent Medication:\n\nLevetiracetam 1000 mg bd\nMidazolam 10 mg buccal PRN prolonged seizure\n\nPlan:\n\n- Increase Levetiracetam to 1500 mg bd with 2-week titration if tolerated.\n- Arrange urgent ambulatory EEG with video and MRI brain with epilepsy protocol.\n- Provide safety advice, SUDEP information, and reinforce seizure first aid with family.\n- Seizure diary app data to continue; share export ahead of EEG appointment.\n- DVLA guidance discussed; patient has stopped driving and will inform DVLA.\n- Follow-up in 4 weeks via urgent clinic, sooner if deterioration.\n\nI reviewed Emily Carter in clinic today after an urgent GP referral due to an escalation in seizure activity. The patient has been using a seizure diary app since July and shared exports from the last fortnight. The logs show several seizures in past day, with clusters predominantly in the late evening and on waking. Events are described as a sudden pause in activity with unresponsiveness lasting 30–60 seconds, sometimes followed by brief confusion and a mild headache. On two occasions this week, the patient’s partner noted right-hand twitching during the spells; there have been no clear tonic–clonic features reported. No tongue bite or urinary incontinence has been recorded. Triggers noted in the diary include sleep deprivation and missed morning doses.\n\nThere is no prior neuroimaging available. A routine EEG has not yet been performed. Neurological examination today was normal. Bloods arranged by the GP last week (FBC, U&E, LFTs, glucose) were within normal limits.\n\nGiven the current frequency and clustering, I advised an increase of Levetiracetam to 1500 mg twice daily using a 250 mg bd incremental titration over two weeks if tolerated, and to continue rescue buccal midazolam as previously instructed for prolonged events (>5 minutes) or repeated clusters without recovery, with emergency services involvement as appropriate. We discussed safety around bathing (showers preferred), heights, operating machinery, and cooking with supervision during periods of high seizure burden. The patient has already self-suspended driving; DVLA rules were reviewed and an information leaflet provided.\n\nI have requested an urgent ambulatory EEG with home video capture and an MRI brain using an epilepsy protocol to better characterise events. The patient will continue to use the seizure diary app and upload annotated entries linked with possible triggers, timing, and medication adherence to assist correlation with forthcoming investigations.\n\nI will review Emily Carter in four weeks or sooner if there is any further escalation or emergence of prolonged events.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1138,
+      "end": 1244,
+      "text": "The logs show several seizures in past day, with clusters predominantly in the late evening and on waking.",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1152,
+      "end": 1180,
+      "text": "several seizures in past day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 288,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 21 September 2025\n\nDr Patel\nSt. George Hospital\nNeurology Department, 29 Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nEmily Carter, DOB: 14-03-1992, Hospital No: NHS384720 NHS No. 9045612378\n12 Brookfield Avenue, London, SW16 2AB\n\nDiagnoses:\n\nRecurrent seizures of uncertain phenotype; ambulatory assessment pending.\n\nCurrent Medication:\n\nLevetiracetam 1000 mg bd\nMidazolam 10 mg buccal PRN prolonged seizure\n\nPlan:\n\n- Increase Levetiracetam to 1500 mg bd with 2-week titration if tolerated.\n- Arrange urgent ambulatory EEG with video and MRI brain with epilepsy protocol.\n- Provide safety advice, SUDEP information, and reinforce seizure first aid with family.\n- Seizure diary app data to continue; share export ahead of EEG appointment.\n- DVLA guidance discussed; patient has stopped driving and will inform DVLA.\n- Follow-up in 4 weeks via urgent clinic, sooner if deterioration.\n\nI reviewed Emily Carter in clinic today after an urgent GP referral due to an escalation in seizure activity. The patient has been using a seizure diary app since July and shared exports from the last fortnight. The logs show several seizures in past day, with clusters predominantly in the late evening and on waking. Events are described as a sudden pause in activity with unresponsiveness lasting 30–60 seconds, sometimes followed by brief confusion and a mild headache. On two occasions this week, the patient’s partner noted right-hand twitching during the spells; there have been no clear tonic–clonic features reported. No tongue bite or urinary incontinence has been recorded. Triggers noted in the diary include sleep deprivation and missed morning doses.\n\nThere is no prior neuroimaging available. A routine EEG has not yet been performed. Neurological examination today was normal. Bloods arranged by the GP last week (FBC, U&E, LFTs, glucose) were within normal limits.\n\nGiven the current frequency and clustering, I advised an increase of Levetiracetam to 1500 mg twice daily using a 250 mg bd incremental titration over two weeks if tolerated, and to continue rescue buccal midazolam as previously instructed for prolonged events (>5 minutes) or repeated clusters without recovery, with emergency services involvement as appropriate. We discussed safety around bathing (showers preferred), heights, operating machinery, and cooking with supervision during periods of high seizure burden. The patient has already self-suspended driving; DVLA rules were reviewed and an information leaflet provided.\n\nI have requested an urgent ambulatory EEG with home video capture and an MRI brain using an epilepsy protocol to better characterise events. The patient will continue to use the seizure diary app and upload annotated entries linked with possible triggers, timing, and medication adherence to assist correlation with forthcoming investigations.\n\nI will review Emily Carter in four weeks or sooner if there is any further escalation or emergence of prolonged events.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"The patient has been using a seizure diary app since July and shared exports from the last fortnight. The logs show several seizures in past day, with clusters predominantly in the late evening and on waking.\" There is no precise count given for the past day, only the vague term \"several,\" and clustering is mentioned without a defined number per cluster. Per rules, when multiple frequencies exist, choose the highest; here the only explicit temporal reference is the past day. Because the exact number is not specified but confirms more than one seizure in a day, the appropriate normalized label is \"multiple per day.\"",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "The logs show several seizures in past day, with clusters predominantly in the late evening and on waking."
+      ],
+      "reference": [
+        "multiple per day",
+        "several seizures in past day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

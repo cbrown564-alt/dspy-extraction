@@ -1,0 +1,59 @@
+{
+  "id": "gan_180",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 28 June 2016 \n\nDr Patel\nBrookside Neurology Clinic\n\n12 Brookside Way, London, SE5 9QT\nDear Dr Patel\nAlex Morgan, DOB: 09-05-1987, Hospital No: NHS847362 NHS No. 7421936581\n22A Elm Court, Brixton, London, SW2 1AB \n\nI reviewed the above patient in the Neurology Clinic today. Since their last appointment, they report predominantly nocturnal events observed by their partner; however, the partner was not present at today’s review. The patient keeps a diary and describes a pattern of seizures every seven days, with post-event morning headaches and tongue soreness on occasion. There is no reported injury, incontinence, or prolonged confusion, and there are no clear daytime triggers identified. They deny alcohol excess and have maintained regular sleep hours, though they note increased events during periods of shift work.\n\nCurrent treatment is Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. They report generally good tolerability, with intermittent irritability that they attribute to stress at work rather than medication. No rashes, visual disturbances, or gastrointestinal side effects are reported. Neurological examination today is unremarkable and observations are within normal limits.\n\nWe discussed strategies for documenting nocturnal events more reliably, including a bedroom audio alarm application and requesting their partner to record brief observations when safe to do so. The patient is agreeable to completing a two-week sleep and event diary to correlate with the seizure pattern. They are keen to avoid medication changes today and prefer to first optimise sleep hygiene and routine, which I have supported. I have requested an outpatient EEG with emphasis on sleep activation and will arrange a follow-up in three months, or sooner if the frequency increases beyond the current seizures every seven days or if any daytime events emerge.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 525,
+      "end": 550,
+      "text": "seizures every seven days",
+      "attributes": {
+        "Label": "1 per 7 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 525,
+      "end": 550,
+      "text": "seizures every seven days",
+      "attributes": {
+        "Label": "1 per 7 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 180,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 28 June 2016 \n\nDr Patel\nBrookside Neurology Clinic\n\n12 Brookside Way, London, SE5 9QT\nDear Dr Patel\nAlex Morgan, DOB: 09-05-1987, Hospital No: NHS847362 NHS No. 7421936581\n22A Elm Court, Brixton, London, SW2 1AB \n\nI reviewed the above patient in the Neurology Clinic today. Since their last appointment, they report predominantly nocturnal events observed by their partner; however, the partner was not present at today’s review. The patient keeps a diary and describes a pattern of seizures every seven days, with post-event morning headaches and tongue soreness on occasion. There is no reported injury, incontinence, or prolonged confusion, and there are no clear daytime triggers identified. They deny alcohol excess and have maintained regular sleep hours, though they note increased events during periods of shift work.\n\nCurrent treatment is Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. They report generally good tolerability, with intermittent irritability that they attribute to stress at work rather than medication. No rashes, visual disturbances, or gastrointestinal side effects are reported. Neurological examination today is unremarkable and observations are within normal limits.\n\nWe discussed strategies for documenting nocturnal events more reliably, including a bedroom audio alarm application and requesting their partner to record brief observations when safe to do so. The patient is agreeable to completing a two-week sleep and event diary to correlate with the seizure pattern. They are keen to avoid medication changes today and prefer to first optimise sleep hygiene and routine, which I have supported. I have requested an outpatient EEG with emphasis on sleep activation and will arrange a follow-up in three months, or sooner if the frequency increases beyond the current seizures every seven days or if any daytime events emerge.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient describes a pattern of seizures every seven days. There are no multiple differing frequencies provided; the clinician also references follow-up if frequency increases beyond the current seizures every seven days, confirming current rate. Convert 'every seven days' to the allowed format: '1 per week'. No need for range or clusters.",
+      "seizure_frequency_number": [
+        "1 per 7 day",
+        "seizures every seven days"
+      ],
+      "reference": [
+        "1 per 7 day",
+        "seizures every seven days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

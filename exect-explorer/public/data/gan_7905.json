@@ -1,0 +1,59 @@
+{
+  "id": "gan_7905",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 11 July 2017\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: Epilepsy following remote head injury; stable cognitive function; osteopenia; hypertension; hyperlipidaemia; retired teacher living alone with regular routine; reduced social contact; former smoker; no current alcohol use.\n\nMedication:\n- Levetiracetam 1000 mg twice daily\n- Carbamazepine MR 400 mg twice daily\n- Topiramate 75 mg morning, 100 mg evening\n- Atorvastatin 20 mg nightly\n- Ramipril 5 mg daily\n- Lansoprazole 30 mg daily\n- Vitamin D3 1000 IU daily\n\nI reviewed William Harris in clinic today. He attended alone and described settling into a predictable daily routine since retiring from teaching last year. He lives independently and reports managing household tasks without difficulty. He walks 30 minutes most mornings, prepares simple meals, and keeps a written day planner to aid organisation. He notes reduced social contact since retirement but remains in touch with former colleagues by telephone and attends a local book group twice a month. Sleep is regular and appetite is stable. He denies low mood but is open to community activities that fit his routine.\n\nSeizures: Seizures under sustained control. He and I reviewed his personal diary and pharmacy refill intervals, which have been consistent, and he reports no events suggestive of seizures in day-to-day activities, including during morning walks, reading sessions, or while cooking. There have been no witnessed episodes reported by neighbours or book group peers. No recent emergency attendances, injuries, or missed medications. He carries his medical ID and maintains adherence with a pill organiser.\n\nExamination: Alert, oriented, conversational. Speech fluent. Cranial nerves intact. No focal motor deficit; gait steady and unaided. Cardiovascular and respiratory examinations unremarkable. No tremor. Weight stable; BMI within healthy range.\n\nInvestigations: He brought recent GP blood results (dated last month) showing normal full blood count and electrolytes, eGFR 78 mL/min/1.73 m², normal liver enzymes, vitamin D at target. Lipids on treatment acceptable. No drug level monitoring indicated at present.\n\nPlan:\n- Continue current anti-seizure medication regimen unchanged.\n- Reinforce adherence and continued use of the pill organiser and medical ID.\n- Encourage gradual increase in structured social activity if desired; patient will explore a local community education class.\n- Routine safety advice revisited (sleep regularity, avoiding missed doses).\n- Follow-up in 9–12 months, or sooner if any change in events, new neurological symptoms, or medication side effects.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1440,
+      "end": 1633,
+      "text": "Seizures under sustained control. He ... reports no events suggestive of seizures ... There have been no witnessed episodes ... No recent emergency attendances, injuries, or missed medications.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1440,
+      "end": 1472,
+      "text": "Seizures under sustained control",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7905,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 11 July 2017\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: Epilepsy following remote head injury; stable cognitive function; osteopenia; hypertension; hyperlipidaemia; retired teacher living alone with regular routine; reduced social contact; former smoker; no current alcohol use.\n\nMedication:\n- Levetiracetam 1000 mg twice daily\n- Carbamazepine MR 400 mg twice daily\n- Topiramate 75 mg morning, 100 mg evening\n- Atorvastatin 20 mg nightly\n- Ramipril 5 mg daily\n- Lansoprazole 30 mg daily\n- Vitamin D3 1000 IU daily\n\nI reviewed William Harris in clinic today. He attended alone and described settling into a predictable daily routine since retiring from teaching last year. He lives independently and reports managing household tasks without difficulty. He walks 30 minutes most mornings, prepares simple meals, and keeps a written day planner to aid organisation. He notes reduced social contact since retirement but remains in touch with former colleagues by telephone and attends a local book group twice a month. Sleep is regular and appetite is stable. He denies low mood but is open to community activities that fit his routine.\n\nSeizures: Seizures under sustained control. He and I reviewed his personal diary and pharmacy refill intervals, which have been consistent, and he reports no events suggestive of seizures in day-to-day activities, including during morning walks, reading sessions, or while cooking. There have been no witnessed episodes reported by neighbours or book group peers. No recent emergency attendances, injuries, or missed medications. He carries his medical ID and maintains adherence with a pill organiser.\n\nExamination: Alert, oriented, conversational. Speech fluent. Cranial nerves intact. No focal motor deficit; gait steady and unaided. Cardiovascular and respiratory examinations unremarkable. No tremor. Weight stable; BMI within healthy range.\n\nInvestigations: He brought recent GP blood results (dated last month) showing normal full blood count and electrolytes, eGFR 78 mL/min/1.73 m², normal liver enzymes, vitamin D at target. Lipids on treatment acceptable. No drug level monitoring indicated at present.\n\nPlan:\n- Continue current anti-seizure medication regimen unchanged.\n- Reinforce adherence and continued use of the pill organiser and medical ID.\n- Encourage gradual increase in structured social activity if desired; patient will explore a local community education class.\n- Routine safety advice revisited (sleep regularity, avoiding missed doses).\n- Follow-up in 9–12 months, or sooner if any change in events, new neurological symptoms, or medication side effects.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures: 'Seizures under sustained control' and provides multiple corroborating details indicating no seizure events in daily activities, no witnessed episodes, no emergency attendances, and adherence. However, there is no explicit numeric time span provided indicating how long he has been seizure-free. The phrase 'under sustained control' implies ongoing control over a period, but the exact duration (in months or years) is not specified. According to the rules, if the patient currently has no seizures and there is insufficient information to confirm at least 6 months, we may consider 'seizure free for multiple months.' Therefore, the appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizures under sustained control. He ... reports no events suggestive of seizures ... There have been no witnessed episodes ... No recent emergency attendances, injuries, or missed medications."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures under sustained control"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

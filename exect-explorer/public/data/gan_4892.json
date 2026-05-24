@@ -1,0 +1,59 @@
+{
+  "id": "gan_4892",
+  "text": "Neurology Clinic\n\nClinic Date: 28 February 2014\n\nDr Patel\nSouthwark Neurology Service\n230 Borough High Street, London SE1 1LL\n\nDear Dr Patel,\n\nRe: Anne Taylor, DOB: 09-03-1995, Hospital No: Q784529, NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder (type not specified).\n\nThank you for reviewing this patient in our clinic. I saw Anne Taylor today with her mother. Since our last contact, she reports a sustained improvement in her pattern of events. She has transitioned to a remote work arrangement over the past year, which she and her family feel has markedly reduced fatigue and improved sleep regularity. In the period before this change, her seizures occurred with a frequency of approximately seizure frequency 1/30. Following the shift to remote working and better pacing of the day, she has been free of seizures for eleven months. She notes improved concentration and fewer near-miss episodes of aura-like sensations, which had previously clustered at the end of the working day when tired.\n\nMedication remains unchanged and is taken reliably; no rescue therapy has been required in this interval. There have been no emergency attendances, and she has had no injuries or falls. She monitors potential triggers using a simple diary, and identifies lack of sleep and extended commuting as past exacerbating factors, both now mitigated by her current routine. There are no adverse medication effects reported, and mood and cognition are stable by her account. Neurological examination today is unremarkable.\n\nPlan:\n- Continue current management without changes, given sustained stability.\n- Maintain sleep hygiene and pacing strategies associated with the current improvement.\n- Routine follow-up in six months, or sooner if any breakthrough events occur.\n\nI am pleased to report the overall positive trajectory, with a clear temporal association between reduced fatigue from remote work and improved seizure control, culminating in her being free of seizures for eleven months.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 827,
+      "end": 874,
+      "text": "she has been free of seizures for eleven months",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 840,
+      "end": 874,
+      "text": "Free of seizures for eleven months",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4892,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 28 February 2014\n\nDr Patel\nSouthwark Neurology Service\n230 Borough High Street, London SE1 1LL\n\nDear Dr Patel,\n\nRe: Anne Taylor, DOB: 09-03-1995, Hospital No: Q784529, NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder (type not specified).\n\nThank you for reviewing this patient in our clinic. I saw Anne Taylor today with her mother. Since our last contact, she reports a sustained improvement in her pattern of events. She has transitioned to a remote work arrangement over the past year, which she and her family feel has markedly reduced fatigue and improved sleep regularity. In the period before this change, her seizures occurred with a frequency of approximately seizure frequency 1/30. Following the shift to remote working and better pacing of the day, she has been free of seizures for eleven months. She notes improved concentration and fewer near-miss episodes of aura-like sensations, which had previously clustered at the end of the working day when tired.\n\nMedication remains unchanged and is taken reliably; no rescue therapy has been required in this interval. There have been no emergency attendances, and she has had no injuries or falls. She monitors potential triggers using a simple diary, and identifies lack of sleep and extended commuting as past exacerbating factors, both now mitigated by her current routine. There are no adverse medication effects reported, and mood and cognition are stable by her account. Neurological examination today is unremarkable.\n\nPlan:\n- Continue current management without changes, given sustained stability.\n- Maintain sleep hygiene and pacing strategies associated with the current improvement.\n- Routine follow-up in six months, or sooner if any breakthrough events occur.\n\nI am pleased to report the overall positive trajectory, with a clear temporal association between reduced fatigue from remote work and improved seizure control, culminating in her being free of seizures for eleven months.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient had prior frequency 'approximately seizure frequency 1/30' (i.e., about 1 per 30 days ≈ 1 per month) before changing to remote work. It then states that following this change, she has been free of seizures for eleven months, with no breakthrough events reported and no rescue therapy needed. The current status is seizure-free, and the duration exceeds 6 months, meeting the criterion for 'seizure free for <value> <month|year>'. Therefore, the appropriate normalized label is 'seizure free for 11 month'. No need to select the earlier, higher frequency since the current frequency is seizure-free and the duration is adequately specified.",
+      "seizure_frequency_number": [
+        "seizure free for 11 month",
+        "she has been free of seizures for eleven months"
+      ],
+      "reference": [
+        "seizure free for 11 month",
+        "Free of seizures for eleven months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_9238",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nEpisodes of transient loss of awareness under investigation. EEG (July 2025) non-diagnostic.\n\nCurrent Medication:\n\nLamotrigine 50 mg twice daily\n\nPlan:\n\nContinue current antiseizure medication and maintain trigger avoidance measures. Safety advice reiterated, including not driving at present as per patient’s self-report.\n\nI reviewed John Smith in clinic today. Since their last assessment earlier this year, there have been no events with clear witnessed convulsions or impaired awareness. Based on the information available, there have been No definite seizures during this period. The patient reports good adherence to medication, consistent sleep, and avoidance of alcohol excess. They also confirm they are currently not driving by self-report.\n\nThe previous EEG and blood tests have not identified a clear cause. We discussed that, in the absence of definite recurrent events, we will continue observation. I have advised maintaining Lamotrigine at 50 mg twice daily for the time being, with monitoring for side effects such as rash or dizziness. We agreed to review again in six months, or sooner if any new stereotyped episodes occur (for example, witnessed loss of awareness, unresponsiveness, or rhythmic jerking). If further events arise, we would consider repeat EEG and possibly prolonged ambulatory monitoring.\n\nI have not made changes to other aspects of care. Lifestyle advice was reinforced, including regular sleep and stress management. The patient knows how to contact the clinic if concerns develop.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 809,
+      "end": 864,
+      "text": "there have been No definite seizures during this period",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 825,
+      "end": 845,
+      "text": "No definite seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9238,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nEpisodes of transient loss of awareness under investigation. EEG (July 2025) non-diagnostic.\n\nCurrent Medication:\n\nLamotrigine 50 mg twice daily\n\nPlan:\n\nContinue current antiseizure medication and maintain trigger avoidance measures. Safety advice reiterated, including not driving at present as per patient’s self-report.\n\nI reviewed John Smith in clinic today. Since their last assessment earlier this year, there have been no events with clear witnessed convulsions or impaired awareness. Based on the information available, there have been No definite seizures during this period. The patient reports good adherence to medication, consistent sleep, and avoidance of alcohol excess. They also confirm they are currently not driving by self-report.\n\nThe previous EEG and blood tests have not identified a clear cause. We discussed that, in the absence of definite recurrent events, we will continue observation. I have advised maintaining Lamotrigine at 50 mg twice daily for the time being, with monitoring for side effects such as rash or dizziness. We agreed to review again in six months, or sooner if any new stereotyped episodes occur (for example, witnessed loss of awareness, unresponsiveness, or rhythmic jerking). If further events arise, we would consider repeat EEG and possibly prolonged ambulatory monitoring.\n\nI have not made changes to other aspects of care. Lifestyle advice was reinforced, including regular sleep and stress management. The patient knows how to contact the clinic if concerns develop.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"there have been No definite seizures during this period.\" The period referenced is since the last assessment earlier this year up to the clinic date (02 October 2025). The exact duration in months is not specified, only that it spans multiple months within the same year. The 6-month criterion for definitive 'seizure free for X months' cannot be confirmed precisely from the text. Therefore, per the rules, when seizure freedom is present but the exact months are uncertain, we label as 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been No definite seizures during this period"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No definite seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_4592",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 09 August 2015 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Miller, DOB: 14-02-1988, Hospital No: H927451 NHS No. 8421673059  \nFlat 5, 28 Harbor View, Aberdeen, AB11 5HT  \n\nDiagnoses: \n\nSeizure disorder. \n\nI reviewed Jordan Miller today via a scheduled telephone consultation, arranged to coincide with his onshore period; he works offshore on a rotational pattern (four weeks offshore, four weeks onshore). He reports brief warning symptoms of light-headedness and a metallic taste, occasionally followed by loss of awareness lasting under two minutes, with post‑event fatigue but no tongue biting. There have been no reported injuries or emergency attendances since the last review. Notably, his seizure timing continues to be irregular; the median inter-seizure interval ≈ two months, with occasional clustering when sleep is restricted offshore. He has been logging events in a mobile diary and cross-checking with his employer’s duty logs. \n\nCurrent treatment is unchanged. He confirms consistent adherence while offshore, storing medication in a dry locker and setting phone reminders. No adverse effects other than intermittent nausea, which he attributes to variable shift patterns. No recent medication interactions declared. Alcohol intake is minimal while offshore and moderate when onshore (≤6 units/week). \n\nOccupational context remains important. Offshore safety protocols are in place and he is not assigned to working at height or heavy vehicle operation. He continues with a buddy system during night shifts. We discussed sleep hygiene and hydration in the offshore environment; he reports adopting staggered rest periods when possible. Work medical clearance is under ongoing review with the company’s occupational health team. \n\nInvestigations: Prior MRI brain and routine EEG (from last year) did not yield definitive correlates; no new red‑flag features were reported today. No change in neurological examination was possible over telephone review, but he denies new focal deficits, persistent headaches, or cognitive decline. \n\nPlan: \n- Continue current regimen without dose change at present. \n- Maintain seizure diary and link entries to shift schedule for pattern analysis. \n- Arrange repeat telephone review during his next onshore window in three months (date to be confirmed based on rota). \n- Provide work letter summarising stability and precautions, as requested. \n- Safety: reinforced first‑aid guidance with colleagues offshore (Ã‚Â· position of safety, Ã© observe timing, ï¿½ avoid restraint, â€ call emergency response if prolonged). \n\nI have advised him to contact our service sooner if there is any increase in frequency beyond his current pattern, particularly if events begin to occur weekly or if any injury occurs. He is aware of the emergency care plan circulated to the offshore medic. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 902,
+      "end": 948,
+      "text": "the median inter-seizure interval ≈ two months",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 906,
+      "end": 948,
+      "text": "Median inter-seizure interval ≈ two months",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4592,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 09 August 2015 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Miller, DOB: 14-02-1988, Hospital No: H927451 NHS No. 8421673059  \nFlat 5, 28 Harbor View, Aberdeen, AB11 5HT  \n\nDiagnoses: \n\nSeizure disorder. \n\nI reviewed Jordan Miller today via a scheduled telephone consultation, arranged to coincide with his onshore period; he works offshore on a rotational pattern (four weeks offshore, four weeks onshore). He reports brief warning symptoms of light-headedness and a metallic taste, occasionally followed by loss of awareness lasting under two minutes, with post‑event fatigue but no tongue biting. There have been no reported injuries or emergency attendances since the last review. Notably, his seizure timing continues to be irregular; the median inter-seizure interval ≈ two months, with occasional clustering when sleep is restricted offshore. He has been logging events in a mobile diary and cross-checking with his employer’s duty logs. \n\nCurrent treatment is unchanged. He confirms consistent adherence while offshore, storing medication in a dry locker and setting phone reminders. No adverse effects other than intermittent nausea, which he attributes to variable shift patterns. No recent medication interactions declared. Alcohol intake is minimal while offshore and moderate when onshore (≤6 units/week). \n\nOccupational context remains important. Offshore safety protocols are in place and he is not assigned to working at height or heavy vehicle operation. He continues with a buddy system during night shifts. We discussed sleep hygiene and hydration in the offshore environment; he reports adopting staggered rest periods when possible. Work medical clearance is under ongoing review with the company’s occupational health team. \n\nInvestigations: Prior MRI brain and routine EEG (from last year) did not yield definitive correlates; no new red‑flag features were reported today. No change in neurological examination was possible over telephone review, but he denies new focal deficits, persistent headaches, or cognitive decline. \n\nPlan: \n- Continue current regimen without dose change at present. \n- Maintain seizure diary and link entries to shift schedule for pattern analysis. \n- Arrange repeat telephone review during his next onshore window in three months (date to be confirmed based on rota). \n- Provide work letter summarising stability and precautions, as requested. \n- Safety: reinforced first‑aid guidance with colleagues offshore (Ã‚Â· position of safety, Ã© observe timing, ï¿½ avoid restraint, â€ call emergency response if prolonged). \n\nI have advised him to contact our service sooner if there is any increase in frequency beyond his current pattern, particularly if events begin to occur weekly or if any injury occurs. He is aware of the emergency care plan circulated to the offshore medic. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing seizures with irregular timing. It provides a quantitative descriptor: 'the median inter-seizure interval ≈ two months.' This implies approximately one seizure every two months. There is mention of occasional clustering when sleep is restricted offshore, but no explicit number of seizures per cluster is given, so we cannot quantify clusters. Applying the highest frequency rule does not change the result because no more frequent quantified rate is provided. Therefore, normalize as 1 per 2 month.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "the median inter-seizure interval ≈ two months"
+      ],
+      "reference": [
+        "1 per 2 month",
+        "Median inter-seizure interval ≈ two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

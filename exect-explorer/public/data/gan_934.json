@@ -1,0 +1,48 @@
+{
+  "id": "gan_934",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophia Ahmed, DOB: 12-03-1992, Hospital No: H938271 NHS No. 5839201746  \nFlat 4, 21 Brookfield Road, London, W11 2DR \n\nMedication: \n\nSodium valproate 500 mg morning / 1000 mg evening. Well tolerated. No dose changes today. \n\nDiagnosis: \n\nShe has generalised epilepsy, with events consistent with generalised tonic–clonic seizures occasionally preceded by brief myoclonic jerks on waking. \n\nHistory since last review: \n\nShe reports seizure activity occurring roughly every fortnight-and-a-bit on average, with some clustering around early mornings. She notes a prodrome of low mood and irritability before a subset of events, which she has started recording in a diary. The diary suggests that mood change begins 12–24 hours before a seizure in about half of the occurrences. No clear sleep deprivation trigger identified, though she recognises that irregular bedtimes may play a role. No alcohol excess. No intercurrent illness. \n\nExamination and tests: \n\nNeurological examination today is unremarkable. Routine bloods last month were within normal limits, including liver function and full blood count. Prior EEG demonstrated generalised spike–wave discharges; MRI brain previously normal. \n\nPlan: \n\n1) Continue sodium valproate at current dosing. We discussed risks and benefits; she is not currently planning pregnancy and is aware to contact us urgently if this changes.  \n2) Continue the seizure and mood diary, noting sleep pattern, stressors, and any menstrual association.  \n3) Provide written guidance on early warning signs and safety around bathing, cooking, and heights.  \n4) Consider lamotrigine add-on if event frequency persists at the present level or increases; we will review diary data before any change.  \n5) DVLA advice reiterated in line with current regulations. \n\nFollow-up: \n\nWe will review her in four months with diary in hand, sooner if events escalate or adverse effects emerge. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 646,
+      "end": 690,
+      "text": "roughly every fortnight-and-a-bit on average",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 934,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSophia Ahmed, DOB: 12-03-1992, Hospital No: H938271 NHS No. 5839201746  \nFlat 4, 21 Brookfield Road, London, W11 2DR \n\nMedication: \n\nSodium valproate 500 mg morning / 1000 mg evening. Well tolerated. No dose changes today. \n\nDiagnosis: \n\nShe has generalised epilepsy, with events consistent with generalised tonic–clonic seizures occasionally preceded by brief myoclonic jerks on waking. \n\nHistory since last review: \n\nShe reports seizure activity occurring roughly every fortnight-and-a-bit on average, with some clustering around early mornings. She notes a prodrome of low mood and irritability before a subset of events, which she has started recording in a diary. The diary suggests that mood change begins 12–24 hours before a seizure in about half of the occurrences. No clear sleep deprivation trigger identified, though she recognises that irregular bedtimes may play a role. No alcohol excess. No intercurrent illness. \n\nExamination and tests: \n\nNeurological examination today is unremarkable. Routine bloods last month were within normal limits, including liver function and full blood count. Prior EEG demonstrated generalised spike–wave discharges; MRI brain previously normal. \n\nPlan: \n\n1) Continue sodium valproate at current dosing. We discussed risks and benefits; she is not currently planning pregnancy and is aware to contact us urgently if this changes.  \n2) Continue the seizure and mood diary, noting sleep pattern, stressors, and any menstrual association.  \n3) Provide written guidance on early warning signs and safety around bathing, cooking, and heights.  \n4) Consider lamotrigine add-on if event frequency persists at the present level or increases; we will review diary data before any change.  \n5) DVLA advice reiterated in line with current regulations. \n\nFollow-up: \n\nWe will review her in four months with diary in hand, sooner if events escalate or adverse effects emerge. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"She reports seizure activity occurring roughly every fortnight-and-a-bit on average.\" A fortnight is 2 weeks; \"and a bit\" implies slight variability but centers around 2 weeks. Prioritizing the explicit numeric concept (fortnight = 2 weeks) and normalizing to allowed formats, the closest label is 1 per 2 week. No other competing frequencies are provided.",
+      "seizure_frequency_number": [
+        "1 per 2 week",
+        "roughly every fortnight-and-a-bit on average"
+      ],
+      "reference": [
+        "1 per 2 week",
+        "biweekly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

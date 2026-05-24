@@ -1,0 +1,65 @@
+{
+  "id": "gan_10123",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Alice Morton\nConsultant Neurologist  \nMaple Street Health Centre  \n12 Maple Street, London W1T 6RF  \n\nDear Dr Alice Morton\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1985, Hospital No: H729514 NHS No. 9076312548  \n22 Brookfield Road, London, N19 4AB\n\nThank you for your referral. I reviewed him today with his partner present. He reports a long-standing history of focal epilepsy. His typical focal seizures begin with a rising epigastric sensation and a sense of déjà vu, followed by behavioural arrest with lip-smacking and right-hand fumbling. There is impaired awareness for 1–2 minutes and he is usually confused for around 15–20 minutes afterwards. He does not describe generalised tonic–clonic activity. \n\nRegarding pattern and frequency, he is currently experiencing relatively infrequent events with a clear tendency to occur in short runs during intercurrent illnesses: he and his partner describe illness-linked brief clusters over one or two days, typically coinciding with febrile colds. Outside those periods he may go several weeks without any events. He denies nocturnal seizures. Known precipitants include missed doses and poor sleep. \n\nHe previously had problems with non-adherence; since July he has implemented smartphone alarms and NFC tag prompts at his medication storage points, which he feels have markedly reduced missed doses. He keeps a digital seizure and medication diary synced to his phone calendar. \n\nExamination today was non-focal. Prior MRI from last year reportedly normal; routine EEG showed left temporal sharp activity. Taken together, these features support a diagnosis of focal epilepsy, likely left temporal onset. We discussed safety, SUDEP awareness, driving regulations, and rescue planning for short clusters associated with viral illnesses. \n\nPlan:  \n- Continue current anti-seizure regimen unchanged for now, given recent improvement with adherence.  \n- Arrange ambulatory EEG if events increase, to capture habitual focal seizures.  \n- Bloods for anti-seizure medication levels, FBC, U&E, LFTs, vitamin D.  \n- Provide written seizure action plan tailored to illness-linked brief clusters over one or two days, including when to seek urgent care.  \n- Follow-up in 4 months, sooner if clusters recur despite adherence. \n\nPlease let me know if there are any concerns in the interim.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 1166,
+      "text": "he is currently experiencing relatively infrequent events with a clear tendency to occur in short runs during intercurrent illnesses: he and his partner describe illness-linked brief clusters over one or two days, typically coinciding with febrile colds. Outside those periods he may go several weeks without any events.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1008,
+      "end": 1058,
+      "text": "Illness-linked brief clusters over one or two days",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10123,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Alice Morton\nConsultant Neurologist  \nMaple Street Health Centre  \n12 Maple Street, London W1T 6RF  \n\nDear Dr Alice Morton\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1985, Hospital No: H729514 NHS No. 9076312548  \n22 Brookfield Road, London, N19 4AB\n\nThank you for your referral. I reviewed him today with his partner present. He reports a long-standing history of focal epilepsy. His typical focal seizures begin with a rising epigastric sensation and a sense of déjà vu, followed by behavioural arrest with lip-smacking and right-hand fumbling. There is impaired awareness for 1–2 minutes and he is usually confused for around 15–20 minutes afterwards. He does not describe generalised tonic–clonic activity. \n\nRegarding pattern and frequency, he is currently experiencing relatively infrequent events with a clear tendency to occur in short runs during intercurrent illnesses: he and his partner describe illness-linked brief clusters over one or two days, typically coinciding with febrile colds. Outside those periods he may go several weeks without any events. He denies nocturnal seizures. Known precipitants include missed doses and poor sleep. \n\nHe previously had problems with non-adherence; since July he has implemented smartphone alarms and NFC tag prompts at his medication storage points, which he feels have markedly reduced missed doses. He keeps a digital seizure and medication diary synced to his phone calendar. \n\nExamination today was non-focal. Prior MRI from last year reportedly normal; routine EEG showed left temporal sharp activity. Taken together, these features support a diagnosis of focal epilepsy, likely left temporal onset. We discussed safety, SUDEP awareness, driving regulations, and rescue planning for short clusters associated with viral illnesses. \n\nPlan:  \n- Continue current anti-seizure regimen unchanged for now, given recent improvement with adherence.  \n- Arrange ambulatory EEG if events increase, to capture habitual focal seizures.  \n- Bloods for anti-seizure medication levels, FBC, U&E, LFTs, vitamin D.  \n- Provide written seizure action plan tailored to illness-linked brief clusters over one or two days, including when to seek urgent care.  \n- Follow-up in 4 months, sooner if clusters recur despite adherence. \n\nPlease let me know if there are any concerns in the interim.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current seizures as 'relatively infrequent' with 'brief clusters over one or two days' during intercurrent illnesses, especially febrile colds. Outside those periods he may go several weeks without events. There is no explicit numeric count of seizures per cluster or how often clusters occur (frequency of illnesses not quantified). Therefore, exact seizure frequency cannot be derived. The presence of clusters is clear, but the number per cluster is not specified; also the interval between clusters is vague ('several weeks'). Since numeric frequency isn't provided, the safest classification per rules is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "he is currently experiencing relatively infrequent events with a clear tendency to occur in short runs during intercurrent illnesses: he and his partner describe illness-linked brief clusters over one or two days, typically coinciding with febrile colds. Outside those periods he may go several weeks without any events."
+      ],
+      "reference": [
+        "unknown",
+        "Illness-linked brief clusters over one or two days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

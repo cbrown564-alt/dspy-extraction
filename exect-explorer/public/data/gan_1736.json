@@ -1,0 +1,59 @@
+{
+  "id": "gan_1736",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 30 December 2024 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and update on seizure control\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\n\nPresent Seizure Frequency:\n\nThe patient reports one focal onset seizure and three focal myoclonic in the past six months.\n\n\nClinical Course and Context:\n\nSince our last review, the patient describes steadier mood and fewer anxiety-related fluctuations. With ongoing psychological support, coping has improved, and they feel more confident recognising early sensory auras and employing grounding strategies. There have been no episodes of loss of awareness or generalisation. Sleep has improved with a more regular routine, and the patient has reduced caffeine intake. No new adverse effects from medication have been reported.\n\n\nPlan of Action:\n\n- Continue current doses of lamotrigine and levetiracetam as above, given improving stability and reduced event burden over the last six months.\n- Maintain psychological support input, as this appears to be contributing to better self-management and reduced trigger reactivity.\n- Encourage ongoing sleep hygiene and avoidance of identified triggers (notably sleep deprivation and excess caffeine), as per patient report.\n- Arrange follow-up in six months, with earlier review if there is any increase in seizure frequency, emergence of new seizure types, or adverse effects.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 517,
+      "end": 610,
+      "text": "The patient reports one focal onset seizure and three focal myoclonic in the past six months.",
+      "attributes": {
+        "Label": "4 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 537,
+      "end": 609,
+      "text": "one focal onset seizure and three focal myoclonic in the past six months",
+      "attributes": {
+        "Label": "4 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1736,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 30 December 2024 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and update on seizure control\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\n\nPresent Seizure Frequency:\n\nThe patient reports one focal onset seizure and three focal myoclonic in the past six months.\n\n\nClinical Course and Context:\n\nSince our last review, the patient describes steadier mood and fewer anxiety-related fluctuations. With ongoing psychological support, coping has improved, and they feel more confident recognising early sensory auras and employing grounding strategies. There have been no episodes of loss of awareness or generalisation. Sleep has improved with a more regular routine, and the patient has reduced caffeine intake. No new adverse effects from medication have been reported.\n\n\nPlan of Action:\n\n- Continue current doses of lamotrigine and levetiracetam as above, given improving stability and reduced event burden over the last six months.\n- Maintain psychological support input, as this appears to be contributing to better self-management and reduced trigger reactivity.\n- Encourage ongoing sleep hygiene and avoidance of identified triggers (notably sleep deprivation and excess caffeine), as per patient report.\n- Arrange follow-up in six months, with earlier review if there is any increase in seizure frequency, emergence of new seizure types, or adverse effects.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports one focal onset seizure and three focal myoclonic in the past six months.' Sum the seizures over the stated period: 1 + 3 = 4 seizures in 6 months. Normalize to allowed format as '4 per 6 month'. No other conflicting frequencies are provided. Not seizure free as events occurred within last 6 months.",
+      "seizure_frequency_number": [
+        "4 per 6 month",
+        "The patient reports one focal onset seizure and three focal myoclonic in the past six months."
+      ],
+      "reference": [
+        "4 per 6 month",
+        "one focal onset seizure and three focal myoclonic in the past six months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

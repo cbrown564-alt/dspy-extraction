@@ -1,0 +1,59 @@
+{
+  "id": "gan_16162",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 24 January 2013 \n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEleanor Brooks, DOB: 14-02-1936, Hospital No: H392847 NHS No. 9081764523  \nFlat 2, 11 Meadow Court, Wandsworth, London SW18 4DL  \n\nDiagnoses: \n\nSeizure disorder of uncertain classification. \n\nI reviewed Eleanor Brooks in the neurology clinic today. She is a bedbound older adult, and most of the history was provided by her live‑in nurse and day carer, who keep a daily log of events and observations. They report that she remains on her current anti‑seizure medication without recent dose changes. There have been no hospital admissions since the last review and no reported injuries.\n\nSeizure history and frequency were derived from the caregivers’ written and electronic records. This month, she has had six convulsions; 0 were in December and 5 in November, across day and night. Events are typically witnessed as whole‑body stiffening followed by rhythmic jerks lasting 60–120 seconds, with post‑ictal confusion and somnolence for up to an hour. There is no consistent prodrome. Caregivers note occasional brief myoclonic‑like jerks not followed by loss of awareness, though these are infrequent and not functionally impairing. There have been no clear focal onset signs described, and no reliable triggers identified beyond sleep disruption and intercurrent urinary symptoms.\n\nExamination today (limited at bedside) shows she is alert to person, communicates in short phrases, with no focal neurological deficit elicited. Cardiorespiratory observations were stable. No pressure areas noted; a turning schedule is in place.\n\nNo device therapy is in situ. Rescue medication is available in the home, and the carers report it has not been required this winter. We discussed ongoing seizure logging, prompt treatment of infections, and maintaining regular sleep and hydration. I have requested community phlebotomy for routine drug levels, FBC, U&E, and LFTs given her frailty and limited mobility. We will not alter medication today pending those results and continued observation of the current pattern. The carers were advised to call emergency services if any convulsion lasts beyond five minutes or clusters occur without recovery.\n\nPlan:  \n- Continue current anti‑seizure regimen unchanged pending blood results.  \n- Community blood tests as above within the next two weeks.  \n- Maintain seizure diary; carers to note duration, recovery time, intercurrent illness, and any potential precipitants.  \n- Continue pressure‑area care and falls precautions during transfers.  \n- Telephone review in six weeks with carers for results and frequency update; face‑to‑face review in clinic in three months or sooner if events escalate.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 844,
+      "end": 944,
+      "text": "This month, she has had six convulsions; 0 were in December and 5 in November, across day and night.",
+      "attributes": {
+        "Label": "11 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 844,
+      "end": 943,
+      "text": "This month, she has had six convulsions; 0 were in December and 5 in November, across day and night",
+      "attributes": {
+        "Label": "11 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16162,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 24 January 2013 \n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEleanor Brooks, DOB: 14-02-1936, Hospital No: H392847 NHS No. 9081764523  \nFlat 2, 11 Meadow Court, Wandsworth, London SW18 4DL  \n\nDiagnoses: \n\nSeizure disorder of uncertain classification. \n\nI reviewed Eleanor Brooks in the neurology clinic today. She is a bedbound older adult, and most of the history was provided by her live‑in nurse and day carer, who keep a daily log of events and observations. They report that she remains on her current anti‑seizure medication without recent dose changes. There have been no hospital admissions since the last review and no reported injuries.\n\nSeizure history and frequency were derived from the caregivers’ written and electronic records. This month, she has had six convulsions; 0 were in December and 5 in November, across day and night. Events are typically witnessed as whole‑body stiffening followed by rhythmic jerks lasting 60–120 seconds, with post‑ictal confusion and somnolence for up to an hour. There is no consistent prodrome. Caregivers note occasional brief myoclonic‑like jerks not followed by loss of awareness, though these are infrequent and not functionally impairing. There have been no clear focal onset signs described, and no reliable triggers identified beyond sleep disruption and intercurrent urinary symptoms.\n\nExamination today (limited at bedside) shows she is alert to person, communicates in short phrases, with no focal neurological deficit elicited. Cardiorespiratory observations were stable. No pressure areas noted; a turning schedule is in place.\n\nNo device therapy is in situ. Rescue medication is available in the home, and the carers report it has not been required this winter. We discussed ongoing seizure logging, prompt treatment of infections, and maintaining regular sleep and hydration. I have requested community phlebotomy for routine drug levels, FBC, U&E, and LFTs given her frailty and limited mobility. We will not alter medication today pending those results and continued observation of the current pattern. The carers were advised to call emergency services if any convulsion lasts beyond five minutes or clusters occur without recovery.\n\nPlan:  \n- Continue current anti‑seizure regimen unchanged pending blood results.  \n- Community blood tests as above within the next two weeks.  \n- Maintain seizure diary; carers to note duration, recovery time, intercurrent illness, and any potential precipitants.  \n- Continue pressure‑area care and falls precautions during transfers.  \n- Telephone review in six weeks with carers for results and frequency update; face‑to‑face review in clinic in three months or sooner if events escalate.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists seizure counts over the recent months: November = 5, December = 0, and 'this month' (January, given clinic date 24 January 2013) = 6. Summing these gives 6 + 0 + 5 = 11 seizures over the past three months (November, December, January). Therefore, the normalized frequency is 11 per 3 month.",
+      "seizure_frequency_number": [
+        "11 per 3 month",
+        "This month, she has had six convulsions; 0 were in December and 5 in November, across day and night."
+      ],
+      "reference": [
+        "11 per 3 month",
+        "This month, she has had six convulsions; 0 were in December and 5 in November, across day and night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1961",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine since February 2025\n\nLamotrigine tablets 100 mg twice a day\n\nLamotrigine Blood Level:\n\n24 September 2025: 4.3 mg/L (normal range 1.0 to 15.0 mg/L). Dose 100 mg twice a day\n\nSeizures: The patient reports one drop attacks and four absence seizures in the past two months. These were partly corroborated by smartwatch fall-detection alerts and activity logs, which the patient shared during review. The drop event triggered an automatic alert at home without injury. Absence episodes were noted by family as brief unresponsiveness with immediate recovery, without clear triggers.\n\nI reviewed Susan Miller today in a face-to-face appointment. They report good adherence to lamotrigine with no rash or notable adverse effects. Sleep has been variable due to shift work, and caffeine intake increased recently; both may be contributing factors per the patient’s account. Alcohol intake is minimal. No recent intercurrent illnesses. The smartwatch’s fall-detection timestamps align with the patient’s diary entries and may help clarify event chronology going forward. We discussed continuing to mark events using both the smartwatch app and a paper diary, including possible auras, duration, and recovery time.\n\nNeurological examination today was non-focal. No tongue biting or tonic–clonic activity has been witnessed during the reported episodes. The patient does not drive and understands current DVLA guidance as discussed. We agreed to maintain the current lamotrigine dose pending further correlation of events and to obtain an updated EEG and routine bloods (U&E, LFT, FBC) alongside repeat lamotrigine levels if further events occur. Safety measures were reinforced, including use of the smartwatch fall alerts and avoiding high-risk situations when alone.\n\nI will review again in three months or sooner if there are additional events. The patient has been asked to send interim updates via the patient portal, including any new smartwatch alert data.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 501,
+      "end": 566,
+      "text": "one drop attacks and four absence seizures in the past two months",
+      "attributes": {
+        "Label": "5 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 501,
+      "end": 566,
+      "text": "one drop attacks and four absence seizures in the past two months",
+      "attributes": {
+        "Label": "5 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1961,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine since February 2025\n\nLamotrigine tablets 100 mg twice a day\n\nLamotrigine Blood Level:\n\n24 September 2025: 4.3 mg/L (normal range 1.0 to 15.0 mg/L). Dose 100 mg twice a day\n\nSeizures: The patient reports one drop attacks and four absence seizures in the past two months. These were partly corroborated by smartwatch fall-detection alerts and activity logs, which the patient shared during review. The drop event triggered an automatic alert at home without injury. Absence episodes were noted by family as brief unresponsiveness with immediate recovery, without clear triggers.\n\nI reviewed Susan Miller today in a face-to-face appointment. They report good adherence to lamotrigine with no rash or notable adverse effects. Sleep has been variable due to shift work, and caffeine intake increased recently; both may be contributing factors per the patient’s account. Alcohol intake is minimal. No recent intercurrent illnesses. The smartwatch’s fall-detection timestamps align with the patient’s diary entries and may help clarify event chronology going forward. We discussed continuing to mark events using both the smartwatch app and a paper diary, including possible auras, duration, and recovery time.\n\nNeurological examination today was non-focal. No tongue biting or tonic–clonic activity has been witnessed during the reported episodes. The patient does not drive and understands current DVLA guidance as discussed. We agreed to maintain the current lamotrigine dose pending further correlation of events and to obtain an updated EEG and routine bloods (U&E, LFT, FBC) alongside repeat lamotrigine levels if further events occur. Safety measures were reinforced, including use of the smartwatch fall alerts and avoiding high-risk situations when alone.\n\nI will review again in three months or sooner if there are additional events. The patient has been asked to send interim updates via the patient portal, including any new smartwatch alert data.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'one drop attacks and four absence seizures in the past two months.' These are seizure events and should be summed as total seizures over the stated period. Calculation: 1 + 4 = 5 seizures over 2 months. Convert to allowed format: '5 per 2 month.' No other conflicting frequency is provided. Patient is not seizure free for 6 months, so seizure-free label does not apply.",
+      "seizure_frequency_number": [
+        "5 per 2 month",
+        "one drop attacks and four absence seizures in the past two months"
+      ],
+      "reference": [
+        "5 per 2 month",
+        "one drop attacks and four absence seizures in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

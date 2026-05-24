@@ -4,6 +4,7 @@ import json
 import os
 import urllib.error
 import urllib.request
+import warnings
 from collections.abc import Callable, Iterable
 from typing import Any, Literal, Protocol
 
@@ -61,6 +62,25 @@ class LLMProviderConfig(FrozenModel):
                 raise ValueError(
                     "Ollama configs with max_tokens > 4096 must set "
                     "extra_body.options.num_ctx."
+                )
+        if self.provider == "ollama":
+            num_ctx = (self.extra_body.get("options") or {}).get("num_ctx")
+            if num_ctx is not None and num_ctx > 8192 and self.timeout_seconds < 120.0:
+                warnings.warn(
+                    f"Ollama config has a large num_ctx ({num_ctx}) with a short timeout ({self.timeout_seconds}s). "
+                    "Large context windows may timeout during local execution.",
+                    UserWarning,
+                    stacklevel=2,
+                )
+        hosted_providers = {"openai", "gemini", "anthropic"}
+        if self.provider in hosted_providers:
+            actual_key = self.api_key or _api_key_from_env(self.api_key_env)
+            if not actual_key:
+                warnings.warn(
+                    f"Hosted provider '{self.provider}' is initialized without a resolved API key. "
+                    "Calls will likely fail.",
+                    UserWarning,
+                    stacklevel=2,
                 )
         return self
 

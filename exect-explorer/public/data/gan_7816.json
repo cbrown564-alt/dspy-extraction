@@ -1,0 +1,48 @@
+{
+  "id": "gan_7816",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and ongoing management\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nNot classified at present\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night (with option of 5 mg in the day as needed for clusters, patient-led plan)\n3. Vagus Nerve Stimulator in situ (baseline settings unchanged; patient uses magnet as instructed)\n\n\nPresent Seizure Frequency:\n\nAt this review, there have been no observed or reported events since the start of last month, and the patient describes being free of episodes during this period. Prior to this improvement, seizures were relatively steady, commonly clustering every two days. Rescue medication was required once in June and once in August. The patient increased VNS swipes during early warning symptoms, and despite this, there had been no overall rise in seizure frequency since the previous review.\n\n\nPlan of Action:\n\nThe patient reports meaningful progress in coping strategies following ongoing psychological support, including structured anxiety management and sleep hygiene. This coincides with the current period without events. We will maintain the present medication doses and VNS settings. The patient will continue using the VNS magnet at onset of prodromal sensations and follow the agreed rescue protocol for clusters. No drug changes are planned today. We discussed maintaining a detailed seizure and trigger diary and continuing psychological sessions, which the patient finds helpful. Safety advice has been reiterated, and the patient feels confident with the current plan.\n\nI have arranged follow-up in four months, with earlier review if breakthroughs occur or if there are concerns about adverse effects or mood.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 707,
+      "end": 852,
+      "text": "there have been no observed or reported events since the start of last month, and the patient describes being free of episodes during this period",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7816,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael Thompson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and ongoing management\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nNot classified at present\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night (with option of 5 mg in the day as needed for clusters, patient-led plan)\n3. Vagus Nerve Stimulator in situ (baseline settings unchanged; patient uses magnet as instructed)\n\n\nPresent Seizure Frequency:\n\nAt this review, there have been no observed or reported events since the start of last month, and the patient describes being free of episodes during this period. Prior to this improvement, seizures were relatively steady, commonly clustering every two days. Rescue medication was required once in June and once in August. The patient increased VNS swipes during early warning symptoms, and despite this, there had been no overall rise in seizure frequency since the previous review.\n\n\nPlan of Action:\n\nThe patient reports meaningful progress in coping strategies following ongoing psychological support, including structured anxiety management and sleep hygiene. This coincides with the current period without events. We will maintain the present medication doses and VNS settings. The patient will continue using the VNS magnet at onset of prodromal sensations and follow the agreed rescue protocol for clusters. No drug changes are planned today. We discussed maintaining a detailed seizure and trigger diary and continuing psychological sessions, which the patient finds helpful. Safety advice has been reiterated, and the patient feels confident with the current plan.\n\nI have arranged follow-up in four months, with earlier review if breakthroughs occur or if there are concerns about adverse effects or mood.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current period: \"there have been no observed or reported events since the start of last month\" and \"the patient describes being free of episodes during this period.\" This indicates seizure freedom for a duration less than 6 months. The exact length is unclear but clearly spans over a month. Per rule 8, if not enough information to confirm 6 months, we may consider 'seizure free for multiple months.' Previous frequency ('commonly clustering every two days') is historical; we must use current status and the highest frequency rule applies only when multiple current frequencies exist. Therefore, the appropriate normalized label is 'seizure free for multiple month.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no observed or reported events since the start of last month, and the patient describes being free of episodes during this period"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Patient remains without seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

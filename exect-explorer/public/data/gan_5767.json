@@ -1,0 +1,54 @@
+{
+  "id": "gan_5767",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Hamilton \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital, Galsworthy Road, KT2 7QB  \n\nDear Dr Sarah Hamilton, \n\nAlex Turner, DOB: 22-06-1991, Hospital No: K842719 NHS No. 3019928476  \nFlat 12, 4 Riverside Walk, Kingston upon Thames, KT1 1AB  \n\nDiagnosis: \n\nRecurrent seizures with increased frequency over recent months; prior partial response to Lamotrigine, limited benefit from Levetiracetam reported previously \n\nAetiology: \n\nNot established at present; no structural lesion identified on prior imaging; further evaluation planned \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms during travel periods; vitamin D insufficiency under community management with colecalciferol 800 IU daily \n\nManagement Plan: \n\n- Reinforce regular dosing of Lamotrigine; maintain single-brand supply. Current regimen: 150 mg mane and 200 mg nocte.  \n- Initiate slow uptitration: increase nocte dose by 25 mg in two weeks if no adverse effects; target 150 mg mane and 225 mg nocte pending tolerability.  \n- Provide a seven-day travel pill organiser and set phone reminders; pharmacy to supply two spare blister strips for carry-on luggage.  \n- Safety advice reiterated, including avoidance of swimming alone, working at heights, and adherence to DVLA guidance following recent events.  \n- Arrange ambulatory EEG and serum Lamotrigine level in six weeks (pre-dose trough).  \n- Bloods today: FBC, U&E, LFT, vitamin D.  \n- Review in eight weeks or sooner if further events. \n\nClinical Summary: \n\nSince the last visit, this patient describes a clear worsening trend. Despite intentions to adhere, travel has become frequent and they admit to occasional missed doses, particularly evening tablets when flights are delayed. In this context, seizure activity has become more regular, with spells now occurring every one to two weeks and two events in the last month accompanied by brief loss of awareness and post-event confusion. There have been no significant injuries, but one episode resulted in a minor fall at a hotel. Sleep disruption and irregular meals during trips appear contributory. Examination today is non-focal. Prior MRI brain (2023) was unremarkable and previous EEG was inconclusive. \n\nI have emphasised the importance of consistent dosing and provided practical strategies tailored to travelling. We will check levels, proceed with ambulatory EEG to capture events, and cautiously adjust medication to improve control while monitoring for side effects. I have advised the patient to inform their employer regarding schedule flexibility to reduce missed doses and sleep deprivation. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1877,
+      "end": 1953,
+      "text": "spells now occurring every one to two weeks and two events in the last month",
+      "attributes": {
+        "Label": "1 per 1 to 2 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5767,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Hamilton \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital, Galsworthy Road, KT2 7QB  \n\nDear Dr Sarah Hamilton, \n\nAlex Turner, DOB: 22-06-1991, Hospital No: K842719 NHS No. 3019928476  \nFlat 12, 4 Riverside Walk, Kingston upon Thames, KT1 1AB  \n\nDiagnosis: \n\nRecurrent seizures with increased frequency over recent months; prior partial response to Lamotrigine, limited benefit from Levetiracetam reported previously \n\nAetiology: \n\nNot established at present; no structural lesion identified on prior imaging; further evaluation planned \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms during travel periods; vitamin D insufficiency under community management with colecalciferol 800 IU daily \n\nManagement Plan: \n\n- Reinforce regular dosing of Lamotrigine; maintain single-brand supply. Current regimen: 150 mg mane and 200 mg nocte.  \n- Initiate slow uptitration: increase nocte dose by 25 mg in two weeks if no adverse effects; target 150 mg mane and 225 mg nocte pending tolerability.  \n- Provide a seven-day travel pill organiser and set phone reminders; pharmacy to supply two spare blister strips for carry-on luggage.  \n- Safety advice reiterated, including avoidance of swimming alone, working at heights, and adherence to DVLA guidance following recent events.  \n- Arrange ambulatory EEG and serum Lamotrigine level in six weeks (pre-dose trough).  \n- Bloods today: FBC, U&E, LFT, vitamin D.  \n- Review in eight weeks or sooner if further events. \n\nClinical Summary: \n\nSince the last visit, this patient describes a clear worsening trend. Despite intentions to adhere, travel has become frequent and they admit to occasional missed doses, particularly evening tablets when flights are delayed. In this context, seizure activity has become more regular, with spells now occurring every one to two weeks and two events in the last month accompanied by brief loss of awareness and post-event confusion. There have been no significant injuries, but one episode resulted in a minor fall at a hotel. Sleep disruption and irregular meals during trips appear contributory. Examination today is non-focal. Prior MRI brain (2023) was unremarkable and previous EEG was inconclusive. \n\nI have emphasised the importance of consistent dosing and provided practical strategies tailored to travelling. We will check levels, proceed with ambulatory EEG to capture events, and cautiously adjust medication to improve control while monitoring for side effects. I have advised the patient to inform their employer regarding schedule flexibility to reduce missed doses and sleep deprivation. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"spells now occurring every one to two weeks\" and also mentions \"two events in the last month\". Convert these to allowed formats: \"every one to two weeks\" -> \"1 per 1 to 2 week\"; \"two events in the last month\" -> \"2 per month\". Applying the rule to select the highest frequency, \"1 per 1 to 2 week\" is equal to or more frequent than \"2 per month\" (range corresponds to approximately 2 to 4 per month). Therefore, the final label is \"1 per 1 to 2 week\".",
+      "seizure_frequency_number": [
+        "1 per 1 to 2 week",
+        "spells now occurring every one to two weeks and two events in the last month"
+      ],
+      "reference": [
+        "unknown",
+        "Seizure events persist"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 1 to 2 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

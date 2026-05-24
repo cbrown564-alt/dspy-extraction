@@ -1,0 +1,65 @@
+{
+  "id": "gan_11272",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 23 March 2017 \n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nSophie Williams, DOB: 14-07-1997, Hospital No: A927451 NHS No. 7482019365  \n12 Riverside Close, London, SW18 2AB  \n\nDiagnoses: \n\n- Generalised epilepsy.  \n- History of migraine (not currently the clinical focus). \n\nThank you for reviewing Sophie Williams in our epilepsy clinic. She attended today with her mother. She reports that her migraine symptoms have been stable over the past year without requiring specific prophylaxis; however, our current focus remains her epilepsy management. She confirms that her last seizure on 20/Dec occurred in the early morning with a brief generalised convulsion lasting approximately 90 seconds, followed by typical post-ictal confusion for 15–20 minutes. There have been no seizures since then, and she has had no injuries or emergency department attendances. \n\nMedication: She remains on sodium valproate 500 mg twice daily with good adherence; no adverse effects reported aside from mild intermittent tremor which she does not find troublesome. She has not required any rescue medication in the past six months. No other antiepileptic drugs are currently prescribed. \n\nSeizure control and triggers: She notes improved sleep hygiene since January and has reduced late-night screen use. There is no clear photic sensitivity. Alcohol intake is minimal. Menses remain regular without clear catamenial pattern. Family report normal cognition and mood, and she is attending college full-time. \n\nExamination: Pulse 74 bpm regular; BP 112/68; weight 63 kg. Neurological examination was unremarkable with no focal deficits. \n\nInvestigations: Last EEG (May 2016) showed generalised spike–wave discharges consistent with generalised epilepsy. MRI brain (2015) was normal. Routine bloods (U&E, LFT, FBC) from February 2017 were within normal limits. \n\nPlan: \n- Continue sodium valproate 500 mg twice daily unchanged. \n- Reinforce adherence and ongoing sleep hygiene, given apparent benefit. \n- Safety advice reviewed, including supervision near water and avoidance of heights when alone. \n- No indication for VNS or medication change at present given stability since the last seizure on 20/Dec. \n- We will review in six months, or sooner if further seizures occur, adverse effects develop, or there are concerns regarding pregnancy planning. \n\nI trust this is helpful. Please do not hesitate to contact me if you require further information. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 854,
+      "end": 892,
+      "text": "There have been no seizures since then",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 671,
+      "end": 693,
+      "text": "Last seizure on 20/Dec",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11272,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 23 March 2017 \n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nSophie Williams, DOB: 14-07-1997, Hospital No: A927451 NHS No. 7482019365  \n12 Riverside Close, London, SW18 2AB  \n\nDiagnoses: \n\n- Generalised epilepsy.  \n- History of migraine (not currently the clinical focus). \n\nThank you for reviewing Sophie Williams in our epilepsy clinic. She attended today with her mother. She reports that her migraine symptoms have been stable over the past year without requiring specific prophylaxis; however, our current focus remains her epilepsy management. She confirms that her last seizure on 20/Dec occurred in the early morning with a brief generalised convulsion lasting approximately 90 seconds, followed by typical post-ictal confusion for 15–20 minutes. There have been no seizures since then, and she has had no injuries or emergency department attendances. \n\nMedication: She remains on sodium valproate 500 mg twice daily with good adherence; no adverse effects reported aside from mild intermittent tremor which she does not find troublesome. She has not required any rescue medication in the past six months. No other antiepileptic drugs are currently prescribed. \n\nSeizure control and triggers: She notes improved sleep hygiene since January and has reduced late-night screen use. There is no clear photic sensitivity. Alcohol intake is minimal. Menses remain regular without clear catamenial pattern. Family report normal cognition and mood, and she is attending college full-time. \n\nExamination: Pulse 74 bpm regular; BP 112/68; weight 63 kg. Neurological examination was unremarkable with no focal deficits. \n\nInvestigations: Last EEG (May 2016) showed generalised spike–wave discharges consistent with generalised epilepsy. MRI brain (2015) was normal. Routine bloods (U&E, LFT, FBC) from February 2017 were within normal limits. \n\nPlan: \n- Continue sodium valproate 500 mg twice daily unchanged. \n- Reinforce adherence and ongoing sleep hygiene, given apparent benefit. \n- Safety advice reviewed, including supervision near water and avoidance of heights when alone. \n- No indication for VNS or medication change at present given stability since the last seizure on 20/Dec. \n- We will review in six months, or sooner if further seizures occur, adverse effects develop, or there are concerns regarding pregnancy planning. \n\nI trust this is helpful. Please do not hesitate to contact me if you require further information. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- The clinic date is 23 March 2017. The letter states: \"She confirms that her last seizure on 20/Dec... There have been no seizures since then.\" This indicates no seizures from 20 December 2016 to 23 March 2017, which is approximately 3 months. \n- To be considered seizure free in the required format, the patient must have no seizures for at least 6 months. This criterion is not met (only ~3 months). \n- With fewer than 6 months seizure-free, we must calculate a frequency. The letter provides only one seizure on 20 December and none since; it does not provide a longer-term rate over a defined period (e.g., per month/year). Therefore, a specific frequency cannot be determined from the available information.\n- According to the rules, if seizures are mentioned but a specific frequency cannot be determined, return \"unknown.\"",
+      "seizure_frequency_number": [
+        "unknown",
+        "There have been no seizures since then"
+      ],
+      "reference": [
+        "unknown",
+        "Last seizure on 20/Dec"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

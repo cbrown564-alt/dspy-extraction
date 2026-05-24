@@ -1,0 +1,59 @@
+{
+  "id": "gan_13487",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Aisha Khan\nConsultant Neurologist\nRiverside Neurology Clinic\n1 Meadow Lane, Bristol BS1 4QZ\n\nDear Dr Aisha Khan,\n\nMr Mark Stevenson, DOB: 22-03-1985, Hospital No: B739204 NHS No. 1083927456\nFlat 5, 12 Queen Street, Bristol, BS8 1AB\n\nDiagnosis:\nGeneralised epilepsy, with stable long-term remission.\n\nAetiology:\nNo clear genetic or structural cause identified from prior MRI and routine EEG (per patient report); no perinatal complications or head injury recalled.\n\nOther Medical Problems:\nMild asthma (inhaled salbutamol PRN), vitamin D insufficiency previously treated.\n\nManagement Plan:\n- Continue current regimen of valproate 500 mg twice daily, single manufacturer brand.\n- Routine follow-up in 9 months; no medication changes today.\n- Safety reinforced: adequate sleep, limit alcohol, and maintain adherence.\n\nClinical Summary:\nWith structural focal epilepsy presenting as simple partial seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years. He describes excellent day-to-day functioning, drives within DVLA guidance timelines, and reports no adverse effects from valproate. Physical examination unremarkable; weight stable; no new neurological concerns.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1033,
+      "end": 1130,
+      "text": "he has been seizure free for a long duration and has not reported seizures for over several years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 923,
+      "end": 1130,
+      "text": "With structural focal epilepsy presenting as simple partial seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13487,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Aisha Khan\nConsultant Neurologist\nRiverside Neurology Clinic\n1 Meadow Lane, Bristol BS1 4QZ\n\nDear Dr Aisha Khan,\n\nMr Mark Stevenson, DOB: 22-03-1985, Hospital No: B739204 NHS No. 1083927456\nFlat 5, 12 Queen Street, Bristol, BS8 1AB\n\nDiagnosis:\nGeneralised epilepsy, with stable long-term remission.\n\nAetiology:\nNo clear genetic or structural cause identified from prior MRI and routine EEG (per patient report); no perinatal complications or head injury recalled.\n\nOther Medical Problems:\nMild asthma (inhaled salbutamol PRN), vitamin D insufficiency previously treated.\n\nManagement Plan:\n- Continue current regimen of valproate 500 mg twice daily, single manufacturer brand.\n- Routine follow-up in 9 months; no medication changes today.\n- Safety reinforced: adequate sleep, limit alcohol, and maintain adherence.\n\nClinical Summary:\nWith structural focal epilepsy presenting as simple partial seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years. He describes excellent day-to-day functioning, drives within DVLA guidance timelines, and reports no adverse effects from valproate. Physical examination unremarkable; weight stable; no new neurological concerns.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been seizure free for a long duration and has not reported seizures for over several years. This satisfies the criterion of at least 6 months seizure freedom. The exact number of years is not specified, so use 'multiple years' per allowed format.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "he has been seizure free for a long duration and has not reported seizures for over several years"
+      ],
+      "reference": [
+        "seizure free for multiple year",
+        "With structural focal epilepsy presenting as simple partial seizures and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

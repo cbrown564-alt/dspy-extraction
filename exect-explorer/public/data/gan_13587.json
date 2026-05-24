@@ -1,0 +1,65 @@
+{
+  "id": "gan_13587",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 14 October 2025\n\nDr Priya Ahmed\nConsultant Neurologist\nRiverside Neurology Clinic\nSt George’s Way, London SW17 0QT\n\nDear Dr Priya Ahmed,\n\nRe: Mr Alan Turner, DOB: 22-03-1985, Hospital No: A947320 NHS No. 1038475921\nFlat 12, 5 Brookside Court, London, SE15 4QA\n\nDiagnosis:\n\nHistory of seizures, current long-term remission. Prior medication trials recorded below.\n\nAetiology:\n\nNo definitive structural, genetic or metabolic cause identified from available records and prior imaging; no clear risk factors elicited in history.\n\nOther Medical Problems:\n\nMild seasonal allergic rhinitis, managed conservatively.\n\nManagement Plan:\n\n- Continue current regimen of Lamotrigine 100 mg twice daily, single consistent brand, as tolerated without adverse effects.\n- Routine bloods (U&E, LFTs) via GP in 6–8 months for general monitoring; no immediate dose changes required.\n- Safety counsel reiterated regarding adequate sleep, alcohol moderation, and adherence to medication.\n- Follow-up in 9 months in clinic, or earlier if any breakthrough events, medication intolerance, or new neurological symptoms arise.\n\nClinical Summary:\n\nHe reports excellent day-to-day functioning, working full time, and driving in accordance with DVLA guidance applicable to prolonged seizure freedom. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 3 times per year, but is currently in long-term remission, having been seizure free for years. There have been no recent triggers, head injuries, or intercurrent illnesses. He denies aura-like symptoms, blackouts, falls, or nocturnal events. Sleep and mood are stable.\n\nMedication history includes prior trials of Levetiracetam (discontinued due to irritability) and Topiramate (ceased for cognitive slowing). Lamotrigine has been well tolerated without rash or dose-limiting side effects. He is not using over-the-counter preparations that would interact.\n\nExamination today was unremarkable with normal cognition, cranial nerves, coordination, gait, and no focal neurological deficits. Prior MRI brain (report from 2019) and routine EEG were non-diagnostic. No features suggestive of a progressive neurological disorder at present.\n\nI will continue routine surveillance. He understands to seek urgent review if there is any recurrence, change in pattern, or concern raised by family/colleagues.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1478,
+      "end": 1546,
+      "text": "currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1337,
+      "end": 1546,
+      "text": "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 3 times per year, but is currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13587,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 14 October 2025\n\nDr Priya Ahmed\nConsultant Neurologist\nRiverside Neurology Clinic\nSt George’s Way, London SW17 0QT\n\nDear Dr Priya Ahmed,\n\nRe: Mr Alan Turner, DOB: 22-03-1985, Hospital No: A947320 NHS No. 1038475921\nFlat 12, 5 Brookside Court, London, SE15 4QA\n\nDiagnosis:\n\nHistory of seizures, current long-term remission. Prior medication trials recorded below.\n\nAetiology:\n\nNo definitive structural, genetic or metabolic cause identified from available records and prior imaging; no clear risk factors elicited in history.\n\nOther Medical Problems:\n\nMild seasonal allergic rhinitis, managed conservatively.\n\nManagement Plan:\n\n- Continue current regimen of Lamotrigine 100 mg twice daily, single consistent brand, as tolerated without adverse effects.\n- Routine bloods (U&E, LFTs) via GP in 6–8 months for general monitoring; no immediate dose changes required.\n- Safety counsel reiterated regarding adequate sleep, alcohol moderation, and adherence to medication.\n- Follow-up in 9 months in clinic, or earlier if any breakthrough events, medication intolerance, or new neurological symptoms arise.\n\nClinical Summary:\n\nHe reports excellent day-to-day functioning, working full time, and driving in accordance with DVLA guidance applicable to prolonged seizure freedom. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 3 times per year, but is currently in long-term remission, having been seizure free for years. There have been no recent triggers, head injuries, or intercurrent illnesses. He denies aura-like symptoms, blackouts, falls, or nocturnal events. Sleep and mood are stable.\n\nMedication history includes prior trials of Levetiracetam (discontinued due to irritability) and Topiramate (ceased for cognitive slowing). Lamotrigine has been well tolerated without rash or dose-limiting side effects. He is not using over-the-counter preparations that would interact.\n\nExamination today was unremarkable with normal cognition, cranial nerves, coordination, gait, and no focal neurological deficits. Prior MRI brain (report from 2019) and routine EEG were non-diagnostic. No features suggestive of a progressive neurological disorder at present.\n\nI will continue routine surveillance. He understands to seek urgent review if there is any recurrence, change in pattern, or concern raised by family/colleagues.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify current seizure status. The letter states the patient is in long-term remission and explicitly “seizure free for years.” This meets the criterion of at least 6 months seizure freedom; specifically, it indicates multiple years. No other current frequencies are provided; past frequencies (e.g., 3 per year and clusters) are historical and not current. Therefore, the current seizure frequency label should be 'seizure free for multiple years.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "currently in long-term remission, having been seizure free for years"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 3 times per year, but is currently in long-term remission, having been seizure free for years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

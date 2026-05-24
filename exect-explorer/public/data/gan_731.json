@@ -1,0 +1,59 @@
+{
+  "id": "gan_731",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nEvelyn Hart, DOB: 22-11-1939, Hospital No: H392771 NHS No. 9812673450  \nFlat 2, 7 Wilton Crescent, London, SW1X 8RN  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine therapy since March 2025.  \n\nCurrent regimen (confirmed with bedside nurse/caregiver): Lamotrigine dispersible 50 mg in the morning and 50 mg in the evening, administered crushed in water due to swallow fatigue. \n\nLamotrigine Blood Level:  \n18 September 2025: 4.2 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 50 mg twice daily. \n\nSeizures: According to the live-in nurse/caregiver, brief episodes occur daily, typically between 06:00–08:00, characterised by a sudden behavioural pause with unresponsiveness lasting 20–40 seconds, followed by rapid return to baseline without confusion. No clear auras or warnings have been observed; the patient does not recall the events. There have been no reported injuries, tongue-biting, or incontinence. A short cluster (three brief spells over 15 minutes) was noted on 26 September 2025 without escalation. No recent intercurrent illness or new medications. \n\nHistory/Context: I conducted a telephone/video review with the nurse at the patient’s bedside, as the patient is bedbound and non-ambulant for transfers. Most event descriptions and medication timings are recorded on a daily log by the caregiving team. Appetite is variable but adequate for medication administration; hydration maintained via oral fluids with assistance. Sleep is fragmented, and events are more frequent on nights with poor sleep, per caregiver notes. \n\nPlan: Continue current monitoring with the caregiver’s seizure diary and time-stamped observations. They will contact us if there is any change in pattern, duration, or recovery profile, or if injuries occur. A routine blood profile (U&Es, LFTs, FBC) will be arranged locally to coincide with the next lamotrigine level in six weeks. I will review again in eight weeks by telemedicine, sooner if concerns arise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 733,
+      "end": 759,
+      "text": "brief episodes occur daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 672,
+      "end": 677,
+      "text": "daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 731,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nEvelyn Hart, DOB: 22-11-1939, Hospital No: H392771 NHS No. 9812673450  \nFlat 2, 7 Wilton Crescent, London, SW1X 8RN  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine therapy since March 2025.  \n\nCurrent regimen (confirmed with bedside nurse/caregiver): Lamotrigine dispersible 50 mg in the morning and 50 mg in the evening, administered crushed in water due to swallow fatigue. \n\nLamotrigine Blood Level:  \n18 September 2025: 4.2 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 50 mg twice daily. \n\nSeizures: According to the live-in nurse/caregiver, brief episodes occur daily, typically between 06:00–08:00, characterised by a sudden behavioural pause with unresponsiveness lasting 20–40 seconds, followed by rapid return to baseline without confusion. No clear auras or warnings have been observed; the patient does not recall the events. There have been no reported injuries, tongue-biting, or incontinence. A short cluster (three brief spells over 15 minutes) was noted on 26 September 2025 without escalation. No recent intercurrent illness or new medications. \n\nHistory/Context: I conducted a telephone/video review with the nurse at the patient’s bedside, as the patient is bedbound and non-ambulant for transfers. Most event descriptions and medication timings are recorded on a daily log by the caregiving team. Appetite is variable but adequate for medication administration; hydration maintained via oral fluids with assistance. Sleep is fragmented, and events are more frequent on nights with poor sleep, per caregiver notes. \n\nPlan: Continue current monitoring with the caregiver’s seizure diary and time-stamped observations. They will contact us if there is any change in pattern, duration, or recovery profile, or if injuries occur. A routine blood profile (U&Es, LFTs, FBC) will be arranged locally to coincide with the next lamotrigine level in six weeks. I will review again in eight weeks by telemedicine, sooner if concerns arise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"brief episodes occur daily\" and describes typical timing between 06:00–08:00. This indicates at least one event each day. No exact count per day is given; a cluster on one day is mentioned but appears exceptional. Applying the rule to choose the highest frequency explicitly stated, \"daily\" corresponds to 1 per day because no higher consistent daily count is specified. No seizure-free period is indicated.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "brief episodes occur daily"
+      ],
+      "reference": [
+        "1 per day",
+        "daily"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

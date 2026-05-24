@@ -1,0 +1,59 @@
+{
+  "id": "gan_14672",
+  "text": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 14 November 2017\n\nDr Emily Carter\nRiverside NHS Neurology Clinic\nRiverside Health Centre, 14 Millbank, London SW1P 4QP\n\nDear Dr Emily Carter,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder under review.\n\nThank you for asking me to review Anne Taylor in clinic today. She attended with her mother and provided a clear update. Since our last correspondence she reports a marked improvement on her current medicines compared with earlier periods, with no emergency medication required and no injuries reported. She is tolerating treatment well and has returned to college part‑time.\n\nHistory and current events:\n- The first seizure was reported in March 2017 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in November 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms. She describes brief post‑event fatigue but rapid recovery without confusion.\n- There have been no further episodes since starting her current regimen; she has maintained regular sleep and hydration and has limited alcohol, which she feels has helped.\n\nExamination today was unremarkable. Observations were stable and neurological examination was non-focal.\n\nInvestigations:\n- Prior MRI brain reported normal structure.\n- EEG earlier this year was non‑diagnostic; no clear epileptiform discharges captured.\n\nTreatment and response:\n- Ongoing antiseizure medication at stable dose with good adherence and no reported adverse effects beyond mild transient dizziness in the first week, now resolved.\n- Safety precautions and seizure first‑aid were reviewed. She carries a seizure alert card and her family is aware of red flags for urgent review.\n\nPlan:\n- Continue present medication and lifestyle measures given the clear improvement.\n- No changes to therapy today.\n- Provide seizure diary to continue documenting any events or auras, particularly from sleep.\n- Routine blood monitoring in three months via GP to check levels and tolerability.\n- Review in clinic in six months, or sooner if she experiences any further events.\n\nOverall, the clinical picture is encouraging, with improvement on current medicines relative to earlier in the year and no recent seizures reported.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 754,
+      "end": 1090,
+      "text": "The first seizure was reported in March 2017 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in November 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms.",
+      "attributes": {
+        "Label": "3 per 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 754,
+      "end": 1089,
+      "text": "The first seizure was reported in March 2017 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in November 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms",
+      "attributes": {
+        "Label": "3 per 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14672,
+    "clinic_date": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 14 November 2017\n\nDr Emily Carter\nRiverside NHS Neurology Clinic\nRiverside Health Centre, 14 Millbank, London SW1P 4QP\n\nDear Dr Emily Carter,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSeizure disorder under review.\n\nThank you for asking me to review Anne Taylor in clinic today. She attended with her mother and provided a clear update. Since our last correspondence she reports a marked improvement on her current medicines compared with earlier periods, with no emergency medication required and no injuries reported. She is tolerating treatment well and has returned to college part‑time.\n\nHistory and current events:\n- The first seizure was reported in March 2017 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in November 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms. She describes brief post‑event fatigue but rapid recovery without confusion.\n- There have been no further episodes since starting her current regimen; she has maintained regular sleep and hydration and has limited alcohol, which she feels has helped.\n\nExamination today was unremarkable. Observations were stable and neurological examination was non-focal.\n\nInvestigations:\n- Prior MRI brain reported normal structure.\n- EEG earlier this year was non‑diagnostic; no clear epileptiform discharges captured.\n\nTreatment and response:\n- Ongoing antiseizure medication at stable dose with good adherence and no reported adverse effects beyond mild transient dizziness in the first week, now resolved.\n- Safety precautions and seizure first‑aid were reviewed. She carries a seizure alert card and her family is aware of red flags for urgent review.\n\nPlan:\n- Continue present medication and lifestyle measures given the clear improvement.\n- No changes to therapy today.\n- Provide seizure diary to continue documenting any events or auras, particularly from sleep.\n- Routine blood monitoring in three months via GP to check levels and tolerability.\n- Review in clinic in six months, or sooner if she experiences any further events.\n\nOverall, the clinical picture is encouraging, with improvement on current medicines relative to earlier in the year and no recent seizures reported.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify documented seizure events: The letter states a first seizure in March 2017, and two further events in November 2017, giving a total of 3 seizures. 2) Determine the observation window: from the first to the last reported event is March 2017 to November 2017. Counting months: March→April (1), April→May (2), May→June (3), June→July (4), July→August (5), August→September (6), September→October (7), October→November (8), so ≈8 months. 3) Assess seizure-free status: The letter says there have been no further episodes since starting the current regimen and no recent seizures, but it does not provide a duration of at least 6 months; therefore, a seizure-free label cannot be confirmed. 4) Calculate frequency over the observed period: 3 seizures per 8 months.",
+      "seizure_frequency_number": [
+        "3 per 8 month",
+        "The first seizure was reported in March 2017 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in November 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms."
+      ],
+      "reference": [
+        "3 per 8 month",
+        "The first seizure was reported in March 2017 while visiting relatives in Canada. It happened during an afternoon nap, with an unusual tingling spreading from the right hand to the shoulder. The second and third event took place in November 2017 in the USA, again from sleep, lasting approximately five minutes, with comparable symptoms"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

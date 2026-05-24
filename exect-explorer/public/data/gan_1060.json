@@ -1,0 +1,59 @@
+{
+  "id": "gan_1060",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 03 July 2022 \n\nDr Amelia Kerr\nElm Grove Medical Centre\n\n12 Elm Grove, Southwark, London SE1 3AB\nDear Dr Amelia Kerr\nMichael Turner, DOB: 21-11-1982, Hospital No: H728391 NHS No. 9430021776\nFlat 3, 51 Norwood High Street, London SE27 9JP \n\nI reviewed the above patient in the Neurology Clinic today. He has a confirmed diagnosis of focal epilepsy. Since our last contact, there has been a clear deterioration in seizure control. The patient reports greater social pressure and higher alcohol exposure lately, and he links this change to the worsening pattern. Previously, his seizure frequency was twice per year. In contrast, he describes 6 or 7 seizures last month, which is a marked increase from baseline.\n\nHe characterises the typical events as focal impaired-awareness seizures beginning with a rising epigastric sensation and brief déjà vu, followed by behavioural arrest, lip-smacking and unresponsiveness lasting 1–2 minutes, with several minutes of post-event confusion. He denies tongue biting or prolonged post-ictal lateralising weakness. No injuries were reported, but he has had near-falls. He notes poor sleep and irregular meals during periods of increased social commitments, and acknowledges alcohol intake has been higher than usual on several weekends.\n\nCurrent treatment (patient-reported): Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. He reports adherence, no missed doses in the last month, and tolerates medication with mild irritability and occasional nausea. He is not driving. There is no history of recent intercurrent illness. Neurological examination today was unremarkable. \n\nGiven the clear deterioration from twice per year to 6 or 7 seizures last month, and the contemporaneous increase in social stress and alcohol exposure, I have strongly advised the patient to moderate alcohol intake and maintain regular sleep, as these factors may be contributory. He is willing to implement these measures. I will arrange an updated EEG and brain MRI (with epilepsy protocol) to re-evaluate the focal epilepsy substrate and to guide further management at follow-up. Safety advice was reinforced, including seizure first-aid, bathing and heights precautions. He understands to seek urgent care if seizures cluster or if a convulsion lasts longer than 5 minutes.\n\nI will review him again after the investigations to consider optimisation of therapy in light of the recent deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 668,
+      "end": 707,
+      "text": "he describes 6 or 7 seizures last month",
+      "attributes": {
+        "Label": "6 to 7 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 681,
+      "end": 707,
+      "text": "6 or 7 seizures last month",
+      "attributes": {
+        "Label": "6 to 7 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1060,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 03 July 2022 \n\nDr Amelia Kerr\nElm Grove Medical Centre\n\n12 Elm Grove, Southwark, London SE1 3AB\nDear Dr Amelia Kerr\nMichael Turner, DOB: 21-11-1982, Hospital No: H728391 NHS No. 9430021776\nFlat 3, 51 Norwood High Street, London SE27 9JP \n\nI reviewed the above patient in the Neurology Clinic today. He has a confirmed diagnosis of focal epilepsy. Since our last contact, there has been a clear deterioration in seizure control. The patient reports greater social pressure and higher alcohol exposure lately, and he links this change to the worsening pattern. Previously, his seizure frequency was twice per year. In contrast, he describes 6 or 7 seizures last month, which is a marked increase from baseline.\n\nHe characterises the typical events as focal impaired-awareness seizures beginning with a rising epigastric sensation and brief déjà vu, followed by behavioural arrest, lip-smacking and unresponsiveness lasting 1–2 minutes, with several minutes of post-event confusion. He denies tongue biting or prolonged post-ictal lateralising weakness. No injuries were reported, but he has had near-falls. He notes poor sleep and irregular meals during periods of increased social commitments, and acknowledges alcohol intake has been higher than usual on several weekends.\n\nCurrent treatment (patient-reported): Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. He reports adherence, no missed doses in the last month, and tolerates medication with mild irritability and occasional nausea. He is not driving. There is no history of recent intercurrent illness. Neurological examination today was unremarkable. \n\nGiven the clear deterioration from twice per year to 6 or 7 seizures last month, and the contemporaneous increase in social stress and alcohol exposure, I have strongly advised the patient to moderate alcohol intake and maintain regular sleep, as these factors may be contributory. He is willing to implement these measures. I will arrange an updated EEG and brain MRI (with epilepsy protocol) to re-evaluate the focal epilepsy substrate and to guide further management at follow-up. Safety advice was reinforced, including seizure first-aid, bathing and heights precautions. He understands to seek urgent care if seizures cluster or if a convulsion lasts longer than 5 minutes.\n\nI will review him again after the investigations to consider optimisation of therapy in light of the recent deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly contrasts prior frequency with the current situation: previously twice per year, but now '6 or 7 seizures last month.' The task requires selecting the highest frequency when multiple are present; the current month figure represents the present deterioration and is higher than the historical baseline. Therefore, the current seizure frequency is a range of 6 to 7 per month.",
+      "seizure_frequency_number": [
+        "6 to 7 per month",
+        "he describes 6 or 7 seizures last month"
+      ],
+      "reference": [
+        "6 to 7 per month",
+        "6 or 7 seizures last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

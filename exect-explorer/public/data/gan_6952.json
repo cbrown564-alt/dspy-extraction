@@ -1,0 +1,54 @@
+{
+  "id": "gan_6952",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 15 September 2019 \n\nDr Patel  \nSt. George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJames Walker, DOB: 14-07-1998, Hospital No: H462013 NHS No. 9081765423  \n12 Oakview Close, London, SW18 3AB  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nJames Walker attended today with a parent. They report that medication adherence has improved since introducing smartphone alarms and NFC tag prompts placed by the pill organiser and bedside table. These were added after several previously missed morning doses, which they had identified as a trigger for breakthrough events. \n\nRegarding seizure burden, clips recorded on the family phone over the last eight weeks indicate brief generalised episodes occurring approximately twice weekly, typically in the late evening; these recordings are consistent with events described by the family and align with the observed post-ictal confusion lasting 10–15 minutes. No injuries reported. There has been no recent use of rescue medication. \n\nCurrent treatment: valproate 500 mg twice daily; levetiracetam 1 g twice daily. No adverse effects volunteered apart from transient morning nausea, which settles with food. Sleep pattern improved since using scheduled reminders and a set bedtime routine. \n\nExamination today was unremarkable. No focal neurological deficits. \n\nPlan: \n- Continue current anti-seizure medications at existing doses. \n- Maintain smartphone alarm schedule and NFC tag prompts as adherence supports; patient finds these cues helpful and non-disruptive. \n- We discussed seizure first aid and SUDEP awareness; family feel confident with current plan. \n- Arrange ambulatory EEG if frequency escalates or events change character; at present, clinical pattern is stable. \n- Review in 4 months, or sooner if there is an increase in event frequency, emergence of new features, or any adverse effects. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 703,
+      "end": 836,
+      "text": "clips recorded on the family phone over the last eight weeks indicate brief generalised episodes occurring approximately twice weekly",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6952,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 15 September 2019 \n\nDr Patel  \nSt. George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJames Walker, DOB: 14-07-1998, Hospital No: H462013 NHS No. 9081765423  \n12 Oakview Close, London, SW18 3AB  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nJames Walker attended today with a parent. They report that medication adherence has improved since introducing smartphone alarms and NFC tag prompts placed by the pill organiser and bedside table. These were added after several previously missed morning doses, which they had identified as a trigger for breakthrough events. \n\nRegarding seizure burden, clips recorded on the family phone over the last eight weeks indicate brief generalised episodes occurring approximately twice weekly, typically in the late evening; these recordings are consistent with events described by the family and align with the observed post-ictal confusion lasting 10–15 minutes. No injuries reported. There has been no recent use of rescue medication. \n\nCurrent treatment: valproate 500 mg twice daily; levetiracetam 1 g twice daily. No adverse effects volunteered apart from transient morning nausea, which settles with food. Sleep pattern improved since using scheduled reminders and a set bedtime routine. \n\nExamination today was unremarkable. No focal neurological deficits. \n\nPlan: \n- Continue current anti-seizure medications at existing doses. \n- Maintain smartphone alarm schedule and NFC tag prompts as adherence supports; patient finds these cues helpful and non-disruptive. \n- We discussed seizure first aid and SUDEP awareness; family feel confident with current plan. \n- Arrange ambulatory EEG if frequency escalates or events change character; at present, clinical pattern is stable. \n- Review in 4 months, or sooner if there is an increase in event frequency, emergence of new features, or any adverse effects. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states seizure frequency: \"approximately twice weekly\" over the last eight weeks. Convert \"twice weekly\" to the allowed format as \"2 per week.\" No other conflicting frequencies are provided, and the patient is not seizure free.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "clips recorded on the family phone over the last eight weeks indicate brief generalised episodes occurring approximately twice weekly"
+      ],
+      "reference": [
+        "unknown",
+        "Home video suggests seizure activity"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6684",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 18 September 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nJames Morton, DOB: 12-03-1985, Hospital No: M483920 NHS No. 9081726345\nFlat 5, 14 Pier Road, Southampton, SO14 3AA\n\nMedication:\n\nLevetiracetam 1 g twice daily. No changes made today. Rescue medication: Buccal midazolam 10 mg as needed for prolonged events (not recently required).\n\nBackground and interval history:\n\nHe works offshore on a two-weeks-on/two-weeks-off rotation. We arranged today’s review by telephone while he is onshore; future telephone appointments are scheduled to coincide with his onshore weeks. He reports three events over the past four months. On two occasions colleagues noted that he had bitten the side of his tongue and there was mention of damp clothing afterwards, which they felt might represent a loss of bladder control. He does not recall the episodes themselves and felt fatigued for several hours afterwards. No clear alcohol excess, sleep deprivation, or intercurrent illness was identified around the time, although the offshore shift pattern can be irregular.\n\nHe has been adherent with levetiracetam without missed doses. No behavioural adverse effects reported. No new neurological symptoms. He is maintaining fitness to work; his employer is aware of the need for rest periods and buddy systems at height. He does not drive.\n\nPlan:\n\n- Continue levetiracetam at current dose; provide repeat prescriptions aligned with his rotation to avoid running short offshore.\n- Safety advice reinforced for offshore duties: avoid unaccompanied work at height or near open water, ensure colleagues are briefed on rescue medication and first aid.\n- He will keep a simple event log, including timing relative to shifts and sleep patterns, and ask coworkers to document witnessed features when possible.\n- Telephone follow-up in three months during an onshore week, with earlier contact if the frequency increases or if prolonged events occur. If further events with injury are reported, we will consider dose adjustment.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 696,
+      "end": 746,
+      "text": "He reports three events over the past four months.",
+      "attributes": {
+        "Label": "3 per 4 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6684,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 18 September 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nJames Morton, DOB: 12-03-1985, Hospital No: M483920 NHS No. 9081726345\nFlat 5, 14 Pier Road, Southampton, SO14 3AA\n\nMedication:\n\nLevetiracetam 1 g twice daily. No changes made today. Rescue medication: Buccal midazolam 10 mg as needed for prolonged events (not recently required).\n\nBackground and interval history:\n\nHe works offshore on a two-weeks-on/two-weeks-off rotation. We arranged today’s review by telephone while he is onshore; future telephone appointments are scheduled to coincide with his onshore weeks. He reports three events over the past four months. On two occasions colleagues noted that he had bitten the side of his tongue and there was mention of damp clothing afterwards, which they felt might represent a loss of bladder control. He does not recall the episodes themselves and felt fatigued for several hours afterwards. No clear alcohol excess, sleep deprivation, or intercurrent illness was identified around the time, although the offshore shift pattern can be irregular.\n\nHe has been adherent with levetiracetam without missed doses. No behavioural adverse effects reported. No new neurological symptoms. He is maintaining fitness to work; his employer is aware of the need for rest periods and buddy systems at height. He does not drive.\n\nPlan:\n\n- Continue levetiracetam at current dose; provide repeat prescriptions aligned with his rotation to avoid running short offshore.\n- Safety advice reinforced for offshore duties: avoid unaccompanied work at height or near open water, ensure colleagues are briefed on rescue medication and first aid.\n- He will keep a simple event log, including timing relative to shifts and sleep patterns, and ask coworkers to document witnessed features when possible.\n- Telephone follow-up in three months during an onshore week, with earlier contact if the frequency increases or if prolonged events occur. If further events with injury are reported, we will consider dose adjustment.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He reports three events over the past four months.\" This provides a direct numeric frequency. The patient is not seizure-free (events occurred within the last 6 months), so we calculate frequency rather than labeling as seizure free. Converting directly to the allowed format yields 3 per 4 month. No other frequencies are given, so no need to apply the multiple frequency rule.",
+      "seizure_frequency_number": [
+        "3 per 4 month",
+        "He reports three events over the past four months."
+      ],
+      "reference": [
+        "unknown",
+        "Tongue biting/incontinence reported with seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per 4 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gan_11734",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nRe: Support for exam access arrangements (non-clinical)\n\nI write to confirm that Emily Carter is under our care in the neurology clinic. As the primary caregiver for young children, her night-time sleep is frequently interrupted, leading to daytime fatigue and reduced concentration. These factors can impact performance in timed assessments.\n\nTo ensure fair access, I recommend the following reasonable adjustments for examinations:\n- A quiet room with minimal disturbance.\n- Rest breaks as required (to be taken under exam conditions and not counted towards exam time).\n- Consideration for an early exam slot where feasible, to mitigate the effects of disrupted sleep.\n\nThese recommendations are non-clinical, proportionate, and seek to optimise performance under standard assessment conditions. Please implement according to institutional policy.\n\nWe remain available to provide further clarification if needed.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11734,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nRe: Support for exam access arrangements (non-clinical)\n\nI write to confirm that Emily Carter is under our care in the neurology clinic. As the primary caregiver for young children, her night-time sleep is frequently interrupted, leading to daytime fatigue and reduced concentration. These factors can impact performance in timed assessments.\n\nTo ensure fair access, I recommend the following reasonable adjustments for examinations:\n- A quiet room with minimal disturbance.\n- Rest breaks as required (to be taken under exam conditions and not counted towards exam time).\n- Consideration for an early exam slot where feasible, to mitigate the effects of disrupted sleep.\n\nThese recommendations are non-clinical, proportionate, and seek to optimise performance under standard assessment conditions. Please implement according to institutional policy.\n\nWe remain available to provide further clarification if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the letter carefully for any explicit or implicit mention of seizures or seizure frequency. The letter discusses exam access arrangements due to disrupted sleep and fatigue, and confirms the patient is under neurology care. However, there is no mention of seizures, epilepsy, or any seizure frequency data. Therefore, per the rules, since seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter supporting exam access arrangements for a student with epilepsy (non-clinical)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

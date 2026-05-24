@@ -1,0 +1,54 @@
+{
+  "id": "gan_9002",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel\nSouth Thames Neurology Service\nNeurology Outpatients, St George’s University Hospitals NHS Foundation Trust, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nLiam Johnson, DOB: 14-08-2008, Hospital No: H6295173 NHS No. 9023476511\n18 Willowbank Close, Croydon, CR0 7HT\n\nDiagnoses:\n\nEpilepsy (classification not specified).\n\nI reviewed Liam Johnson in clinic today accompanied by a parent. They report a clear trend of clinical improvement over the past year. Since commencing ketogenic diet therapy, the family notes a marked reduction in seizure frequency with only seven brief seizures recorded in 2024 so far. Recent months have been particularly encouraging with a pattern approaching durable remission, with prolonged intervals entirely free of events, consistent with a trajectory towards enduring post-therapy seizure quiescence. No rescue medication has been required this year, and there have been no emergency attendances.\n\nThey also describe that recent travel and a period of relaxation appeared to coincide with better sleep regularity and overall wellbeing; this is recorded here for completeness as patient-reported information. There have been no intercurrent illnesses. Adherence to the ketogenic regimen is reported as good, with support from the dietetics team. No adverse effects have been noted beyond occasional constipation, managed conservatively.\n\nNeurological examination today is unchanged and non-focal. Weight and BMI are stable. Routine bloods, including metabolic profile and lipid panel from last month, were within acceptable parameters for ongoing dietary therapy. There have been no medication changes since the previous visit, and no device therapy is in use.\n\nPlan:\n- Continue ketogenic diet therapy with ongoing dietetic oversight.\n- Maintain seizure diary to document any breakthrough events and precipitating factors.\n- Safety advice reinforced, including SUDEP information and nocturnal supervision as previously discussed.\n- Follow-up in six months, sooner if seizure recurrence or concerns arise.\n\nOverall, I am pleased to document continued clinical improvement with a pattern consistent with sustained post-therapy seizure quietude.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 644,
+      "end": 693,
+      "text": "only seven brief seizures recorded in 2024 so far",
+      "attributes": {
+        "Label": "7 per year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9002,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel\nSouth Thames Neurology Service\nNeurology Outpatients, St George’s University Hospitals NHS Foundation Trust, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nLiam Johnson, DOB: 14-08-2008, Hospital No: H6295173 NHS No. 9023476511\n18 Willowbank Close, Croydon, CR0 7HT\n\nDiagnoses:\n\nEpilepsy (classification not specified).\n\nI reviewed Liam Johnson in clinic today accompanied by a parent. They report a clear trend of clinical improvement over the past year. Since commencing ketogenic diet therapy, the family notes a marked reduction in seizure frequency with only seven brief seizures recorded in 2024 so far. Recent months have been particularly encouraging with a pattern approaching durable remission, with prolonged intervals entirely free of events, consistent with a trajectory towards enduring post-therapy seizure quiescence. No rescue medication has been required this year, and there have been no emergency attendances.\n\nThey also describe that recent travel and a period of relaxation appeared to coincide with better sleep regularity and overall wellbeing; this is recorded here for completeness as patient-reported information. There have been no intercurrent illnesses. Adherence to the ketogenic regimen is reported as good, with support from the dietetics team. No adverse effects have been noted beyond occasional constipation, managed conservatively.\n\nNeurological examination today is unchanged and non-focal. Weight and BMI are stable. Routine bloods, including metabolic profile and lipid panel from last month, were within acceptable parameters for ongoing dietary therapy. There have been no medication changes since the previous visit, and no device therapy is in use.\n\nPlan:\n- Continue ketogenic diet therapy with ongoing dietetic oversight.\n- Maintain seizure diary to document any breakthrough events and precipitating factors.\n- Safety advice reinforced, including SUDEP information and nocturnal supervision as previously discussed.\n- Follow-up in six months, sooner if seizure recurrence or concerns arise.\n\nOverall, I am pleased to document continued clinical improvement with a pattern consistent with sustained post-therapy seizure quietude.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter provides one explicit numeric seizure count: \"only seven brief seizures recorded in 2024 so far.\" No numeric frequency is given for 2025; recent months are described qualitatively as improved with prolonged seizure-free intervals but not quantified, and continuous seizure freedom for ≥6 months is not confirmed. Per instructions, prioritize explicit numeric expressions; thus use 7 in a year → 7 per year.",
+      "seizure_frequency_number": [
+        "7 per year",
+        "only seven brief seizures recorded in 2024 so far"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Sustained postoperative seizure freedom"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (7 per year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

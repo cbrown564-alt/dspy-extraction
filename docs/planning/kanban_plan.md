@@ -55,7 +55,7 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
 | A1. Frequency residual audit | Completed | Classified S5 frequency false positives/false negatives after high-recall pre-vocab injection: qualitative over-emission, temporal/current-scope mismatch, evidence mismatch, normalization/range mismatch, and gold-policy ambiguity. | E5 full-validation runs | yes | Inspection note: [exect_s5_frequency_residual_audit_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md), citing run ID `exect_s5_frequency_pre_vocab_full_gpt4_1_mini_20260524T142823Z`, scorer mode, split, and per-document residual categories. |
-| A2. Candidate-constrained frequency verifier | Ready | Test whether verification over high-recall candidate lists improves precision without losing the recall that high-precision pruning lost. | A1 preferred, but not blocking for a cap-25 prototype | yes | Cap-25 config/run; compare against high-recall pre-vocab cap-25 and full-validation baseline; reject/promote as arm only. |
+| A2. Candidate-constrained frequency verifier | Hold pending A2R | Cap-25 verifier arm improved seizure_frequency precision and F1 but dropped recall beyond the preregistered gate: `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini_20260524T193119Z` reached frequency P/R/F1 64.3/72.0/67.9 versus baseline 45.1/92.0/60.5. | A1 complete; A2R critic/regression review before full validation | no | Inspection note: [exect_s5_frequency_verifier_cap25_inspection_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/exect/exect_s5_frequency_verifier_cap25_inspection_20260524.md). Do not promote to full validation until recall-loss source is reviewed. |
 | A3. Frequency prompt/policy refinement | Ready | Add or revise prompt guidance for qualitative/current-frequency selection while keeping candidate density unchanged. | A1 | yes | Cap-25 then full validation only if F1 improves without medication/diagnosis/seizure-type/investigation regressions. |
 | A4. Medication temporal evidence guard | Backlog | Separately test planned/history/future ASM pruning for `annotated_medication`. | AM guard promoted; prereg required | after A1/A2 or independent if medication becomes paper blocker | Cap-25 prereg; no silent scorer change; report annotation-policy residuals. |
 | A5. S2/S3 middle-ladder reruns | Backlog | Refresh intermediate schema-complexity anchors only if paper tables need them. | Paper table needs | yes | Validation runs and registry rows; caveat that family sets differ by schema rung. |
@@ -68,9 +68,9 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
-| B1. Gan data-shape audit for Explorer | Ready | Document the static fields needed for Gan letters, gold frequency labels, model outputs, deterministic candidate inventories, evidence quotes, and scorer outcomes. | Gan audit; operational default run artifacts | yes | Short design note and sample JSON shape checked against `gan_2026_label_audit.md`. |
-| B2. Gan static catalog builder | Ready | Build a generated Gan catalog from primary artifacts and current operational GPT/Qwen runs. | B1 | after B1 | Builder validates required fields and refuses missing gold/prediction/outcome links. |
-| B3. Gan Explorer UI lane | Ready | Add dataset/task switching and render Gan candidates/adjudication/normalization/outcome traces. | B2; existing ExECT model lens | after B2 | `npm run build`; browser smoke check on a Gan note with candidate and scorer trace. |
+| B1. Gan data-shape audit for Explorer | Completed | Mapped clinical note structure, check__Seizure Frequency Number gold fields, and reference fields. | Gan audit; operational default run artifacts | yes | Design note checked against `gan_2026_label_audit.md` in `exect-explorer/scripts/build_manifest_gan.py`. |
+| B2. Gan static catalog builder | Completed | Implemented in `exect-explorer/scripts/build_model_catalog_gan.py`. Compiles GPT-4.1-mini and Qwen3.6:35b run artifacts. | B1 | after B1 | Builder compiles 2 runs into public `model_catalog_gan.json` without missing links. |
+| B3. Gan Explorer UI lane | Completed | Added dataset switcher in `App.jsx` and styling in `styles.css` to toggle between ExECTv2 and Gan 2026. | B2; existing ExECT model lens | after B2 | `npm run build` succeeds; verifies dataset, progress selector, and entity layers load Gan. |
 | B4. Shared catalog schema cleanup | Backlog | Generalize only the minimal shared structures needed by ExECT and Gan. | B2/B3 lessons | no | Build remains stable for both datasets; no source loader semantics changed. |
 
 ### Pathway C - Gan Frequency Residuals
@@ -81,7 +81,7 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
-| C1. Consolidate Gan residual taxonomy | Ready | Merge builder-gap forensics, severe-miss categories, and GEPA failure patterns into a concise residual decision note. | Existing forensics and GEPA inspection | yes | Note distinguishes benchmark-severe vs diagnostic misses and `unknown` vs `no seizure frequency reference`. |
+| C1. Consolidate Gan residual taxonomy | Completed | Consolidated forensics in `docs/experiments/gan/gan_s0_residual_taxonomy_consolidation_20260524.md`. | Existing forensics and GEPA inspection | yes | Distinguishes unknown overuse, pragmatic monthly divergence, multi-type/cluster errors, and temporal scope mismatches. |
 | C2. Unknown-overuse targeted arm design | Ready | Preregister a narrow intervention for unknown-overuse cases if C1 shows a candidate/prompt/scoring-safe path. | C1 | after C1 | Config draft names fixed controls, varied factor, gate, and decision scope. |
 | C3. Pragmatic monthly divergence analysis | Ready | Decide whether pragmatic monthly divergences are fixable extraction failures, gold-policy limitations, or acceptable benchmark residuals. | C1 | yes | Analysis cites examples and does not alter Gan gold semantics. |
 | C4. Compact optimizer hypothesis | Blocked | Reopen GEPA only if there is a design that constrains instruction length or targets a frozen submodule. | New prereg required | no | Cap-25 prereg; prompt-length gate; no G1/G2 rerun. |
@@ -94,7 +94,7 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
-| D1. Freeze operational-default table | Ready | Table of current Gan S0, ExECT S1-S5, and model-suite defaults with dataset/split/model/scorer/run IDs and caveats. | Registry and inspection docs | yes | Every row traces to primary run artifacts or inspection docs. |
+| D1. Freeze operational-default table | Completed | Froze defaults for Gan S0 (GPT-4.1-mini and Qwen35b) and ExECT S1-S5 in `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`. | Registry and inspection docs | yes | Every row traces to primary run artifacts, listing monthly accuracy, F1 scores, and run IDs. |
 | D2. Freeze negative/arm-reject table | Ready | Table of rejected arms with `decision_scope: arm`, comparison group, varied factor, and reason. | Registry and inspections | yes | Avoids mechanism-closure language unless a mechanism review exists. |
 | D3. Draft results narrative | Ready | Paper-facing prose for what current evidence supports and what remains open. | D1/D2 | after D1/D2 | Claims match [core_research_questions_pipeline_review_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/synthesis/core_research_questions_pipeline_review_20260524.md). |
 | D4. Test/benchmark reporting protocol | Backlog | Define if and when held-out or published benchmark reporting should occur. | Only after dev/full-validation arms justify it | no | Explicit protocol; no accidental test-set spend. |
@@ -107,10 +107,10 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
-| E1. Hosted API key preflight | Ready | Add or verify experiment-start checks that report missing hosted-provider API keys before live calls. | Model backlog B2 | yes | Focused runner/config tests; no import-time requirement for keys. |
-| E2. High-context Qwen warning policy | Ready | Warn or require explicit stress-run declaration for Ollama configs with very large `num_ctx` and short timeouts. | Model backlog B3 | yes | Unit tests and docs update; no change to scorer or model outputs. |
+| E1. Hosted API key preflight | Completed | Added start-time preflight check warning for missing hosted-provider keys in `src/clinical_extraction/llms.py`. | Model backlog B2 | yes | Verified by tests in `tests/test_experiment_runner.py` asserting warning and ValueErrors. |
+| E2. High-context Qwen warning policy | Completed | Added warning in `llms.py` for Ollama configs with large `num_ctx` (>8192) and short timeout (<120.0s) unless marked as stress test. | Model backlog B3 | yes | Unit tests in `tests/test_experiment_runner.py` assert warning trigger and stress-test exemption. |
 | E3. Provider smoke ledger discipline | Ready | Before broad model comparisons, record run ID, config, structured-output behavior, schema validity, evidence support, timeout/provider caveats. | Existing smoke docs | yes | Smoke note or registry-compatible ledger entry exists. |
-| E4. Cursor implementation campaign setup | Ready | Use Codex-orchestrated Cursor implementation only for scoped benchmark-facing work with isolated branch/worktree and review gates. | Orchestration skill | yes, with isolation | Mission brief, allowed write surfaces, focused tests, metric review, and Codex diff review before promotion. |
+| E4. Cursor implementation campaign setup | Completed | Added a first-class `pathway-a-card` workflow in `scripts/cursor_sdk_workflows.py` with card, lane, brief, prompt-only, and ledger gates. | Orchestration skill | yes, with isolation | Verified in Pathway A Implementation Campaign plan. Diffs are Codex-reviewed before manual promotion. |
 
 ## Blocked Or Gated
 
@@ -123,11 +123,11 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 ## Recommended Next Pull
 
-1. **A1 - Frequency residual audit.** This is the highest-leverage ExECT step because it decides whether the next S5 lift should be verifier, prompt policy, normalization, or gold-policy caveat.
-2. **B1/B2 - Gan Explorer data-shape audit and catalog builder.** This can run in parallel with A1 and turns existing Gan evidence into an inspectable artifact.
-3. **D1 - Freeze operational-default table.** This prevents drift in paper claims while more experiments continue.
-4. **C1 - Consolidate Gan residual taxonomy.** Pull this before any new Gan model or optimizer arm.
-5. **E1/E2 - Provider preflight and Qwen warning policy.** Useful engineering hygiene before the next live hosted/local comparison batch.
+1. **A2R - A2 regression/critic review.** Analyze recall loss source and verify scorer preservation before any full-validation decision for the frequency verifier.
+2. **A3 - Frequency prompt/policy refinement.** Introduce prompt policy refinements on cap-25 subset to target qualitative and temporal-scope errors.
+3. **C2 - Unknown-overuse targeted arm design.** Preregister a narrow intervention for unknown-overuse cases based on the consolidated residual taxonomy.
+4. **C3 - Pragmatic monthly divergence analysis.** Conduct analysis of pragmatic monthly divergences.
+5. **D2 - Freeze negative/arm-reject table.** Freeze table of rejected arms with decision scope, comparison group, varied factor, and reason.
 
 ## Parallelization Notes
 

@@ -1,0 +1,65 @@
+{
+  "id": "gan_10266",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 10 April 2023 09:20\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Eleanor Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace risk advice and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation; classification not determined at present\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Valproate MR 500 mg at night\n\n\nPresent Seizure Frequency:\n\nUncertain frequency; device logs suggest short clusters without counts\n\nContext: The patient uses a smartwatch and phone diary. They do not consistently record events and are unsure whether brief episodes of staring and loss of awareness correspond to the device alerts. There have been several near-miss incidents reported at work over the past two months.\n\n\nOccupational Context:\n\nThe patient works at height around moving machinery on a construction site. They report variable shifts, heat exposure, and sleep disruption during night rotations. Line manager has requested an updated medical statement regarding fitness for duties involving ladders, scaffolding, and power tools.\n\n\nPlan of Action:\n\n- Medicine: Increase Lamotrigine to 150 mg twice daily over two weeks (increment by 25 mg every 5 days), continue Valproate MR 500 mg at night unchanged for now. The patient previously trialled Levetiracetam up to 1,500 mg/day with irritability and no clear benefit; this was stopped six months ago. Should lamotrigine up-titration be tolerated with no rash or adverse mood, we will review Valproate dose at next visit.\n- Monitoring: Provide workplace-compatible seizure diary guidance and maintain device alerts; bring exported device logs to next clinic. Arrange routine bloods (FBC, U&Es, LFTs) and lamotrigine level after dose stabilisation (approximately four weeks).\n- Safety: Given the reported near-miss incidents at height and around machinery, the patient has been advised to avoid unsupervised work at height and operation of unguarded power tools pending further stability. The patient understands this advice and will liaise with their employer's occupational health.\n- Investigations: Book ambulatory EEG with event button and MRI brain epilepsy protocol (pending). Sleep hygiene advice provided; aim for consistent 7–8 hours/night and avoid missed meals and dehydration on shift work.\n- Follow-up: Review in eight weeks with logs and labs. Patient given contact details for interim advice if clusters recur or adverse effects develop.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 580,
+      "end": 650,
+      "text": "Uncertain frequency; device logs suggest short clusters without counts",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 580,
+      "end": 650,
+      "text": "Uncertain frequency; device logs suggest short clusters without counts",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10266,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 10 April 2023 09:20\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Eleanor Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace risk advice and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation; classification not determined at present\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Valproate MR 500 mg at night\n\n\nPresent Seizure Frequency:\n\nUncertain frequency; device logs suggest short clusters without counts\n\nContext: The patient uses a smartwatch and phone diary. They do not consistently record events and are unsure whether brief episodes of staring and loss of awareness correspond to the device alerts. There have been several near-miss incidents reported at work over the past two months.\n\n\nOccupational Context:\n\nThe patient works at height around moving machinery on a construction site. They report variable shifts, heat exposure, and sleep disruption during night rotations. Line manager has requested an updated medical statement regarding fitness for duties involving ladders, scaffolding, and power tools.\n\n\nPlan of Action:\n\n- Medicine: Increase Lamotrigine to 150 mg twice daily over two weeks (increment by 25 mg every 5 days), continue Valproate MR 500 mg at night unchanged for now. The patient previously trialled Levetiracetam up to 1,500 mg/day with irritability and no clear benefit; this was stopped six months ago. Should lamotrigine up-titration be tolerated with no rash or adverse mood, we will review Valproate dose at next visit.\n- Monitoring: Provide workplace-compatible seizure diary guidance and maintain device alerts; bring exported device logs to next clinic. Arrange routine bloods (FBC, U&Es, LFTs) and lamotrigine level after dose stabilisation (approximately four weeks).\n- Safety: Given the reported near-miss incidents at height and around machinery, the patient has been advised to avoid unsupervised work at height and operation of unguarded power tools pending further stability. The patient understands this advice and will liaise with their employer's occupational health.\n- Investigations: Book ambulatory EEG with event button and MRI brain epilepsy protocol (pending). Sleep hygiene advice provided; aim for consistent 7–8 hours/night and avoid missed meals and dehydration on shift work.\n- Follow-up: Review in eight weeks with logs and labs. Patient given contact details for interim advice if clusters recur or adverse effects develop.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states under 'Present Seizure Frequency': 'Uncertain frequency; device logs suggest short clusters without counts.' There are no explicit numeric frequencies provided. The context mentions near-miss incidents and uncertainty about whether brief episodes correspond to device alerts. No concrete counts per time period or per cluster are given. Therefore, per instruction, when seizures are mentioned but specific frequency cannot be determined, return 'unknown.' No evidence supports seizure freedom.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Uncertain frequency; device logs suggest short clusters without counts"
+      ],
+      "reference": [
+        "unknown",
+        "Uncertain frequency; device logs suggest short clusters without counts"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

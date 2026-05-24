@@ -1,0 +1,59 @@
+{
+  "id": "gan_15396",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 21 February 2016 14:15\nTo: kch.adultneurology@nhs.net\nCc: Dr Michael Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Transition review and medication plan following move to adult services\n\nDear Emma,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy. She describes a rising epigastric sensation and brief speech arrest with preserved awareness, occasionally progressing to impaired awareness. There is no clear nocturnal predominance.\n\nBackground and Transition:\n\nThis was her first appointment in the adult service following transition from paediatrics. A parent attended today and contributed helpful collateral history about earlier episodes and treatment responses during adolescence. She lives independently, is in part‑time employment, and does not drive.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nShe may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day. She reports increased stress and sleep loss in the week preceding these cluster days, though she cannot identify a consistent precipitant on the day itself. There have been no injuries or prolonged post‑ictal confusion.\n\nInvestigations and Summary:\n\nPrevious MRI brain (paediatric protocol) was reported normal. Historic EEGs showed left temporal sharp activity. No new red‑flag features today. Examination is non‑focal.\n\nPlan of Action:\n\n- Continue current lamotrigine and brivaracetam doses unchanged for now while we obtain prior paediatric records and EEG tracings.\n- Provide seizure diary template to document possible triggers, timing within the day, and any evolution to impaired awareness during cluster periods.\n- Discussed SUDEP risk reduction, sleep hygiene, and safety planning on days when clusters occur. She has a reliable family contact plan; her parent is aware of when to seek emergency help if usual pattern changes.\n- We agreed to review in four months in the adult clinic. If clusters persist with the same pattern, we will consider optimisation of focal epilepsy management at that visit, guided by EEG review and diary data.\n\nPlease feel free to contact me if there are any concerns prior to the scheduled review.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1058,
+      "end": 1174,
+      "text": "She may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day.",
+      "attributes": {
+        "Label": "1 cluster per 2 month, 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1058,
+      "end": 1173,
+      "text": "She may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day",
+      "attributes": {
+        "Label": "1 cluster per 2 month, 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15396,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 21 February 2016 14:15\nTo: kch.adultneurology@nhs.net\nCc: Dr Michael Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Transition review and medication plan following move to adult services\n\nDear Emma,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy. She describes a rising epigastric sensation and brief speech arrest with preserved awareness, occasionally progressing to impaired awareness. There is no clear nocturnal predominance.\n\nBackground and Transition:\n\nThis was her first appointment in the adult service following transition from paediatrics. A parent attended today and contributed helpful collateral history about earlier episodes and treatment responses during adolescence. She lives independently, is in part‑time employment, and does not drive.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nShe may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day. She reports increased stress and sleep loss in the week preceding these cluster days, though she cannot identify a consistent precipitant on the day itself. There have been no injuries or prolonged post‑ictal confusion.\n\nInvestigations and Summary:\n\nPrevious MRI brain (paediatric protocol) was reported normal. Historic EEGs showed left temporal sharp activity. No new red‑flag features today. Examination is non‑focal.\n\nPlan of Action:\n\n- Continue current lamotrigine and brivaracetam doses unchanged for now while we obtain prior paediatric records and EEG tracings.\n- Provide seizure diary template to document possible triggers, timing within the day, and any evolution to impaired awareness during cluster periods.\n- Discussed SUDEP risk reduction, sleep hygiene, and safety planning on days when clusters occur. She has a reliable family contact plan; her parent is aware of when to seek emergency help if usual pattern changes.\n- We agreed to review in four months in the adult clinic. If clusters persist with the same pattern, we will consider optimisation of focal epilepsy management at that visit, guided by EEG review and diary data.\n\nPlease feel free to contact me if there are any concerns prior to the scheduled review.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states under Present Seizure Frequency: \"She may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day.\" This indicates a pattern where approximately every 2 months there is one cluster day consisting of 4 seizures. Convert to the allowed cluster format: 1 cluster per 2 month, 4 per cluster. No other frequencies are provided that would be higher. Not seizure free for 6 months, so not seizure-free label.",
+      "seizure_frequency_number": [
+        "1 cluster per 2 month, 4 per cluster",
+        "She may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day."
+      ],
+      "reference": [
+        "1 cluster per 2 month, 4 per cluster",
+        "She may remain seizure-free for up to two month, but then will experience clusters of four seizures in a single day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

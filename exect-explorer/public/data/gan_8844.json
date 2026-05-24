@@ -1,0 +1,59 @@
+{
+  "id": "gan_8844",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 28 July 2024 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nRyan Mitchell, DOB: 05-11-1986, Hospital No: H938471 NHS No. 7812054490  \n12 North Quay Road, London, E14 7PX \n\nMedication: \n\nLevetiracetam 1000 mg twice daily, well tolerated. No adverse effects reported. \n\nSince their last review, the patient reports excellent day-to-day stability with no episodes suggestive of seizures or auras. Wearable/device logs show no seizures since 20/Apr/2023, which is consistent with their own account and with information provided by their partner. They continue to use a paired smartphone app that records step counts, sleep patterns and event markers; there have been no flagged events. \n\nThey work in a manual, safety-sensitive role involving heights and intermittent use of powered machinery. They state they have not had any near-miss incidents at work and have been adhering to workplace safety protocols and regular rest breaks. They are maintaining good sleep hygiene and limiting alcohol to occasional use only. \n\nOn examination today they were alert and oriented with normal speech and gait. No focal neurological deficits were identified. Blood tests from the GP last month (U&E, FBC, LFTs) were within normal limits as per the summary they provided. \n\nI have advised continuation of the current treatment and routine precautions around sleep, hydration and stress management as discussed. They will continue logging wellbeing and potential triggers through their wearable device and app. Driving status and workplace fitness remain governed by current guidance and employer occupational health policies; they have been signposted to contact occupational health if their situation changes. \n\nWe will review again in 9–12 months, or sooner if there are breakthrough events, adverse effects, or any change in circumstances at work. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 517,
+      "end": 572,
+      "text": "Wearable/device logs show no seizures since 20/Apr/2023",
+      "attributes": {
+        "Label": "seizure free for 15 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 517,
+      "end": 572,
+      "text": "Wearable/device logs show no seizures since 20/Apr/2023",
+      "attributes": {
+        "Label": "seizure free for 15 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8844,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 28 July 2024 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nRyan Mitchell, DOB: 05-11-1986, Hospital No: H938471 NHS No. 7812054490  \n12 North Quay Road, London, E14 7PX \n\nMedication: \n\nLevetiracetam 1000 mg twice daily, well tolerated. No adverse effects reported. \n\nSince their last review, the patient reports excellent day-to-day stability with no episodes suggestive of seizures or auras. Wearable/device logs show no seizures since 20/Apr/2023, which is consistent with their own account and with information provided by their partner. They continue to use a paired smartphone app that records step counts, sleep patterns and event markers; there have been no flagged events. \n\nThey work in a manual, safety-sensitive role involving heights and intermittent use of powered machinery. They state they have not had any near-miss incidents at work and have been adhering to workplace safety protocols and regular rest breaks. They are maintaining good sleep hygiene and limiting alcohol to occasional use only. \n\nOn examination today they were alert and oriented with normal speech and gait. No focal neurological deficits were identified. Blood tests from the GP last month (U&E, FBC, LFTs) were within normal limits as per the summary they provided. \n\nI have advised continuation of the current treatment and routine precautions around sleep, hydration and stress management as discussed. They will continue logging wellbeing and potential triggers through their wearable device and app. Driving status and workplace fitness remain governed by current guidance and employer occupational health policies; they have been signposted to contact occupational health if their situation changes. \n\nWe will review again in 9–12 months, or sooner if there are breakthrough events, adverse effects, or any change in circumstances at work. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states no seizures or auras since 20/Apr/2023, consistent with wearable logs and reports. Clinic date is 28 July 2024. Calculate duration seizure-free from 20 Apr 2023 to 28 Jul 2024: from 20 Apr 2023 to 20 Apr 2024 = 12 months; from 20 Apr 2024 to 28 Jul 2024 ≈ 3 months and 8 days. Therefore, the patient has been seizure-free for over 15 months, satisfying the ≥6 months criterion. The appropriate normalized label is 'seizure free for 15 month' (rounding down to whole months).",
+      "seizure_frequency_number": [
+        "seizure free for 15 month",
+        "Wearable/device logs show no seizures since 20/Apr/2023"
+      ],
+      "reference": [
+        "seizure free for 15 month",
+        "Wearable/device logs show no seizures since 20/Apr/2023"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

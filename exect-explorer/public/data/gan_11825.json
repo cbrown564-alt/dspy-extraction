@@ -1,0 +1,47 @@
+{
+  "id": "gan_11825",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 19 September 2014 \n\nDr Helen Morrison  \nRiverside Health Centre  \n42 Riverside Way, London SE1 8AB  \n\nDear Dr Helen Morrison,  \n\nJames O’Connor, DOB: 23-07-1984, Hospital No: U284517 NHS No. 9432081765  \nFlat 3, 15 Brook Lane, London, E2 6HT \n\nSummary: Ongoing neurological follow‑up following multiple recent ED attendances for non‑urgent concerns; social isolation and difficulty navigating community resources noted in nursing documentation. \n\nMedication: No changes made today to current regular prescriptions as per primary care repeat list. \n\nI reviewed James O’Connor in clinic today. Recent ED triage entries were available and nursing notes highlighted frequent presentations related to anxiety about symptoms, challenges with transport to appointments, and limited informal support. Physical examination today was unremarkable and no red‑flag features were identified. \n\nPlan: \n- With James O’Connor’s consent, I have initiated a liaison with the national epilepsy charity for non‑clinical support, including benefits advice, peer support groups, wellbeing resources, and help with appointment planning. \n- I have requested the charity’s local coordinator to contact James O’Connor within 10 working days to arrange an introductory call and provide written information. \n- Provide the patient with a single point of contact (clinic admin line) for signposting and to reduce reliance on ED for non‑urgent issues. \n- Share this plan with the practice social prescriber to coordinate community support and transport guidance. \n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11825,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 19 September 2014 \n\nDr Helen Morrison  \nRiverside Health Centre  \n42 Riverside Way, London SE1 8AB  \n\nDear Dr Helen Morrison,  \n\nJames O’Connor, DOB: 23-07-1984, Hospital No: U284517 NHS No. 9432081765  \nFlat 3, 15 Brook Lane, London, E2 6HT \n\nSummary: Ongoing neurological follow‑up following multiple recent ED attendances for non‑urgent concerns; social isolation and difficulty navigating community resources noted in nursing documentation. \n\nMedication: No changes made today to current regular prescriptions as per primary care repeat list. \n\nI reviewed James O’Connor in clinic today. Recent ED triage entries were available and nursing notes highlighted frequent presentations related to anxiety about symptoms, challenges with transport to appointments, and limited informal support. Physical examination today was unremarkable and no red‑flag features were identified. \n\nPlan: \n- With James O’Connor’s consent, I have initiated a liaison with the national epilepsy charity for non‑clinical support, including benefits advice, peer support groups, wellbeing resources, and help with appointment planning. \n- I have requested the charity’s local coordinator to contact James O’Connor within 10 working days to arrange an introductory call and provide written information. \n- Provide the patient with a single point of contact (clinic admin line) for signposting and to reduce reliance on ED for non‑urgent issues. \n- Share this plan with the practice social prescriber to coordinate community support and transport guidance. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the entire letter and looked for any explicit mention of seizures or seizure frequency, including numeric rates, qualitative terms (e.g., seizure-free), or timeframes. The letter discusses ED attendances for non-urgent concerns, social issues, and a referral to a national epilepsy charity, but it does not mention seizures occurring, their frequency, or a seizure-free period. Since there is no direct mention of seizures at all, the correct label per the rules is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter introducing liaison with an epilepsy charity for non-clinical support"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_4707",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 01 April 2016 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nRoyal Borough Neurology Unit, KCH  \n\nDear Dr Sarah Ahmed, \n\nMs Emily Carter, DOB: 22-03-1997, Hospital No: R784512 NHS No. 1029384756  \nFlat 2, 45 Brook Lane, London, SE5 8QH  \n\nDiagnosis: \n\nGeneralised epilepsy with absence and generalised tonic–clonic seizures; partial response to sodium valproate; levetiracetam discontinued due to behavioural adverse effects \n\nAetiology: \n\nNeurodevelopmental disorder associated with learning disability; no structural lesion on MRI; normal metabolic screen \n\nOther Medical Problems: \n\nLearning disability with communication support needs; mild anxiety managed with community support; vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n1. Continue sodium valproate 500 mg mane and 1000 mg nocte; use single brand.  \n2. Initiate ethosuximide 250 mg nocte for 1 week then 250 mg twice daily if tolerated; counsel carer regarding gastrointestinal side effects and sedation.  \n3. Safety: reinforce supervision during bathing; rescue plan unchanged (buccal midazolam 10 mg for convulsive seizures >5 minutes; call emergency services if two convulsions occur without recovery).  \n4. Sleep hygiene and regular meals emphasised; avoid alcohol.  \n5. DVLA: not driving.  \n6. Arrange ambulatory EEG review in 8 weeks and valproate level/LFTs/full blood count at that time.  \n7. Follow-up in clinic in three months with carer and seizure diary. \n\nThis patient has generalised epilepsy. Communication today was supported by the live-in carer, who assists with daily routines and seizure logging. The carer reports brief staring spells with eyelid fluttering and brief behavioural arrest occurring many times throughout the day, with occasional morning generalised tonic–clonic seizures approximately once weekly. During a recent ambulatory study, electrographic seizures frequent on EEG (~four/h) were captured, correlating with the reported staring episodes. This accords with the carer’s seizure diary entries which note clusters particularly on days with poor sleep. \n\nLevetiracetam was stopped last month due to marked irritability and agitation. On sodium valproate there has been some reduction in convulsive events but the absence seizures persist, hence the addition of ethosuximide targeting these spells. We discussed risks, benefits and the importance of consistent dosing; the carer will administer and record any adverse effects. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1764,
+      "end": 1803,
+      "text": "occurring many times throughout the day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1924,
+      "end": 1973,
+      "text": "Electrographic seizures frequent on EEG (~four/h)",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4707,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 01 April 2016 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nRoyal Borough Neurology Unit, KCH  \n\nDear Dr Sarah Ahmed, \n\nMs Emily Carter, DOB: 22-03-1997, Hospital No: R784512 NHS No. 1029384756  \nFlat 2, 45 Brook Lane, London, SE5 8QH  \n\nDiagnosis: \n\nGeneralised epilepsy with absence and generalised tonic–clonic seizures; partial response to sodium valproate; levetiracetam discontinued due to behavioural adverse effects \n\nAetiology: \n\nNeurodevelopmental disorder associated with learning disability; no structural lesion on MRI; normal metabolic screen \n\nOther Medical Problems: \n\nLearning disability with communication support needs; mild anxiety managed with community support; vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n1. Continue sodium valproate 500 mg mane and 1000 mg nocte; use single brand.  \n2. Initiate ethosuximide 250 mg nocte for 1 week then 250 mg twice daily if tolerated; counsel carer regarding gastrointestinal side effects and sedation.  \n3. Safety: reinforce supervision during bathing; rescue plan unchanged (buccal midazolam 10 mg for convulsive seizures >5 minutes; call emergency services if two convulsions occur without recovery).  \n4. Sleep hygiene and regular meals emphasised; avoid alcohol.  \n5. DVLA: not driving.  \n6. Arrange ambulatory EEG review in 8 weeks and valproate level/LFTs/full blood count at that time.  \n7. Follow-up in clinic in three months with carer and seizure diary. \n\nThis patient has generalised epilepsy. Communication today was supported by the live-in carer, who assists with daily routines and seizure logging. The carer reports brief staring spells with eyelid fluttering and brief behavioural arrest occurring many times throughout the day, with occasional morning generalised tonic–clonic seizures approximately once weekly. During a recent ambulatory study, electrographic seizures frequent on EEG (~four/h) were captured, correlating with the reported staring episodes. This accords with the carer’s seizure diary entries which note clusters particularly on days with poor sleep. \n\nLevetiracetam was stopped last month due to marked irritability and agitation. On sodium valproate there has been some reduction in convulsive events but the absence seizures persist, hence the addition of ethosuximide targeting these spells. We discussed risks, benefits and the importance of consistent dosing; the carer will administer and record any adverse effects. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies mentioned. The letter states: 'brief staring spells ... occurring many times throughout the day' (vague but clearly multiple per day) and 'occasional morning generalised tonic–clonic seizures approximately once weekly' (1 per week). Also, 'electrographic seizures frequent on EEG (~four/h)' refers to EEG during a recent ambulatory study, which is not clearly stated as the ongoing daily clinical frequency, but does indicate high frequency correlated with staring episodes. Per rules, select the highest frequency among reported seizure types. 'Many times throughout the day' is the most frequent but not numerically specified; thus use 'multiple per day'.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "occurring many times throughout the day"
+      ],
+      "reference": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~four/h)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

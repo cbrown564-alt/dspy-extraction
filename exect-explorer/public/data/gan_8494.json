@@ -1,0 +1,48 @@
+{
+  "id": "gan_8494",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSamuel Turner, DOB: 05-11-1991, Hospital No: H384920 NHS No. 5938472016  \n12 Brookside Road, London, W10 5AA \n\nMedication: \n\nLevetiracetam 1 g twice daily. Tolerated without adverse effects. No changes made today. \n\nSince her last review she reports that there have been no breakthrough events; she has remained free of episodes in the interim. She notes occasional brief moments of heightened anxiety under work pressure, but denies associated loss of awareness, motor activity, or post‑event confusion. Sleep is generally good. \n\nShe commutes mainly by bicycle and finds this routine helpful for stress management and fitness. She has not noticed any symptoms while cycling or afterwards, and there have been no unexplained injuries or falls. She does not drink alcohol during the week and has limited caffeine intake to one coffee in the morning. \n\nThere have been no intercurrent illnesses. Mood is stable and she reports good adherence, with no missed doses. We discussed common triggers in general terms; she did not identify any current concerns. \n\nI have arranged routine bloods (U&E, FBC, LFTs) today for treatment monitoring. No imaging or EEG requested at this stage as the clinical picture is unchanged and stable. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Routine blood tests as above; results to be copied to you. \n- Review in clinic in nine months, or earlier if there is any change in her symptoms. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 443,
+      "end": 531,
+      "text": "there have been no breakthrough events; she has remained free of episodes in the interim",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8494,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nSamuel Turner, DOB: 05-11-1991, Hospital No: H384920 NHS No. 5938472016  \n12 Brookside Road, London, W10 5AA \n\nMedication: \n\nLevetiracetam 1 g twice daily. Tolerated without adverse effects. No changes made today. \n\nSince her last review she reports that there have been no breakthrough events; she has remained free of episodes in the interim. She notes occasional brief moments of heightened anxiety under work pressure, but denies associated loss of awareness, motor activity, or post‑event confusion. Sleep is generally good. \n\nShe commutes mainly by bicycle and finds this routine helpful for stress management and fitness. She has not noticed any symptoms while cycling or afterwards, and there have been no unexplained injuries or falls. She does not drink alcohol during the week and has limited caffeine intake to one coffee in the morning. \n\nThere have been no intercurrent illnesses. Mood is stable and she reports good adherence, with no missed doses. We discussed common triggers in general terms; she did not identify any current concerns. \n\nI have arranged routine bloods (U&E, FBC, LFTs) today for treatment monitoring. No imaging or EEG requested at this stage as the clinical picture is unchanged and stable. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Routine blood tests as above; results to be copied to you. \n- Review in clinic in nine months, or earlier if there is any change in her symptoms. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no breakthrough events and has remained free of episodes since the last review. However, the duration since the last review is not specified. Therefore, we cannot confirm a specific number of months or a span ≥6 months. Per instructions, if seizure-free status is present but the exact duration is insufficient to confirm 6 months, we may consider 'seizure free for multiple months' when the period is unspecified. The plan includes a review in nine months but does not date the previous review. Thus, the safest normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no breakthrough events; she has remained free of episodes in the interim"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No interval seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

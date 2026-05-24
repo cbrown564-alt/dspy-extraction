@@ -1,0 +1,54 @@
+{
+  "id": "gan_5714",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nSophie Reynolds, DOB: 11-02-1992, Hospital No: R845210 NHS No. 9834176250  \n24 Brookfield Road, London, W10 6LT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. No reported adverse effects. \n\nThank you for asking me to review Sophie Reynolds. Since the last appointment, episodes have largely occurred during sleep according to her partner’s observations, although he was not present at today’s review. Sophie Reynolds reports waking on several mornings with a bitten tongue and diffuse myalgia, and feels unrefreshed with mild headache. There have been two witnessed nocturnal events over the past eight weeks, each described previously by her partner as brief stiffening followed by shaking and a short period of confusion on waking. Daytime events have been rare. She keeps a sleep and symptom diary and notes that her pattern is variable from fortnight to fortnight rather than steadily improving or worsening. \n\nWe discussed potential precipitating factors. She reports inconsistent sleep duration due to work shifts and occasional alcohol at weekends. She has not noticed a clear link with intercurrent illness. There is no current plan for pregnancy and she is not driving. \n\nNeurological examination today is unremarkable. Routine bloods six months ago were normal by her report; we will request U+Es, LFTs, FBC, vitamin D, and a trough levetiracetam level for completeness. Previous EEG two years ago was non-diagnostic; we will arrange an overnight ambulatory EEG with sleep capture and consider inpatient video telemetry if events remain elusive. \n\nOn balance, the overall burden of episodes appears to rise and fall over time without a consistent trend. Given the predominantly nocturnal pattern and absent partner today, I have encouraged her to obtain videos of any future events where safe and to continue the diary noting sleep hours, alcohol intake, and morning post-event symptoms. \n\nFor now, we will continue levetiracetam 1000 mg twice daily. If the ambulatory EEG suggests frequent nocturnal epileptiform activity or if her diary indicates increasing overnight episodes, we will consider a cautious dose increase. Safety advice regarding bathing, heights, and nocturnal supervision has been reinforced. She understands to seek urgent help after any prolonged event. \n\nWe will review her in four months, sooner if there is clinical deterioration. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 726,
+      "end": 798,
+      "text": "There have been two witnessed nocturnal events over the past eight weeks",
+      "attributes": {
+        "Label": "2 per 8 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5714,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Khan  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Khan,  \n\nSophie Reynolds, DOB: 11-02-1992, Hospital No: R845210 NHS No. 9834176250  \n24 Brookfield Road, London, W10 6LT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. No reported adverse effects. \n\nThank you for asking me to review Sophie Reynolds. Since the last appointment, episodes have largely occurred during sleep according to her partner’s observations, although he was not present at today’s review. Sophie Reynolds reports waking on several mornings with a bitten tongue and diffuse myalgia, and feels unrefreshed with mild headache. There have been two witnessed nocturnal events over the past eight weeks, each described previously by her partner as brief stiffening followed by shaking and a short period of confusion on waking. Daytime events have been rare. She keeps a sleep and symptom diary and notes that her pattern is variable from fortnight to fortnight rather than steadily improving or worsening. \n\nWe discussed potential precipitating factors. She reports inconsistent sleep duration due to work shifts and occasional alcohol at weekends. She has not noticed a clear link with intercurrent illness. There is no current plan for pregnancy and she is not driving. \n\nNeurological examination today is unremarkable. Routine bloods six months ago were normal by her report; we will request U+Es, LFTs, FBC, vitamin D, and a trough levetiracetam level for completeness. Previous EEG two years ago was non-diagnostic; we will arrange an overnight ambulatory EEG with sleep capture and consider inpatient video telemetry if events remain elusive. \n\nOn balance, the overall burden of episodes appears to rise and fall over time without a consistent trend. Given the predominantly nocturnal pattern and absent partner today, I have encouraged her to obtain videos of any future events where safe and to continue the diary noting sleep hours, alcohol intake, and morning post-event symptoms. \n\nFor now, we will continue levetiracetam 1000 mg twice daily. If the ambulatory EEG suggests frequent nocturnal epileptiform activity or if her diary indicates increasing overnight episodes, we will consider a cautious dose increase. Safety advice regarding bathing, heights, and nocturnal supervision has been reinforced. She understands to seek urgent help after any prolonged event. \n\nWe will review her in four months, sooner if there is clinical deterioration. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"There have been two witnessed nocturnal events over the past eight weeks.\" Other mentions (e.g., waking with a bitten tongue, daytime events \"rare\") are non-quantified and cannot be reliably converted to a rate. Therefore, prioritize the explicit numeric frequency. Two events in eight weeks can be directly expressed as 2 per 8 week. No evidence of 6-month seizure freedom.",
+      "seizure_frequency_number": [
+        "2 per 8 week",
+        "There have been two witnessed nocturnal events over the past eight weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Seizure frequency fluctuates / waxing and waning pattern"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 8 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

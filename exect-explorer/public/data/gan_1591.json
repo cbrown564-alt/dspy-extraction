@@ -1,0 +1,59 @@
+{
+  "id": "gan_1591",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Khan  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Amelia Khan,                                                                                                         \n\nKatie Robinson, DOB: 22-11-1993, Hospital No: H627391 NHS No. 9837456210  \nFlat 5, 28 Wenlock Road, London, N1 7TA  \n\nGeneralised Epilepsy \n\nMedication: Ongoing Levetiracetam since March 2024  \n\nLevetiracetam 750 mg twice daily (patient-reported adherence without missed doses)  \n\nLevetiracetam Blood Level:  \n\n15 September 2025: 18 mg/L (laboratory reference 12–46 mg/L). Dose 750 mg twice daily.  \n\nSeizures: The patient reports five focal onset seizures and six focal non-motors in last month. These events were most commonly precipitated during exposure to flicker or bright light, including sun flicker through trees while travelling by bus, and while using a large-screen television in the evening. There were no generalised tonic–clonic seizures reported in the same interval. The focal onset episodes were brief with impaired awareness and lip-smacking observed by family; the focal non-motor events were described as sudden arrest of activity with internal déjà vu sensation and pallor, typically lasting under one minute and followed by mild fatigue. No auras of visual zig-zags or headache were noted. \n\nHistory since last review: Patient has generalised epilepsy with photosensitivity noted during prior EEG (photoparoxysmal response at 15–20 Hz), and she continues to avoid strobe environments where possible. She has started a new job with variable lighting conditions and reports that the onset of the recent cluster coincided with prolonged screen time and commuting on bright days. Sleep has been fair (6–7 hours/night). No alcohol intake. No recent intercurrent illness. \n\nRisk/Safety: She is aware of seizure first aid and avoids swimming alone. No driving currently; she understands DVLA guidance and will maintain a seizure diary. \n\nPlan: Patient will maintain a detailed seizure and trigger log, including light exposure details. She will utilise blue-light reduction and regular rest breaks with screens as tolerated. I have arranged a follow-up EEG with intermittent photic stimulation to reassess photosensitivity under current medication. We discussed general measures to minimise flicker exposure in daily settings. She is satisfied with the plan and will contact the clinic earlier if events change in pattern or severity. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 707,
+      "end": 771,
+      "text": "five focal onset seizures and six focal non-motors in last month",
+      "attributes": {
+        "Label": "11 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 707,
+      "end": 771,
+      "text": "five focal onset seizures and six focal non-motors in last month",
+      "attributes": {
+        "Label": "11 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1591,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Khan  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Amelia Khan,                                                                                                         \n\nKatie Robinson, DOB: 22-11-1993, Hospital No: H627391 NHS No. 9837456210  \nFlat 5, 28 Wenlock Road, London, N1 7TA  \n\nGeneralised Epilepsy \n\nMedication: Ongoing Levetiracetam since March 2024  \n\nLevetiracetam 750 mg twice daily (patient-reported adherence without missed doses)  \n\nLevetiracetam Blood Level:  \n\n15 September 2025: 18 mg/L (laboratory reference 12–46 mg/L). Dose 750 mg twice daily.  \n\nSeizures: The patient reports five focal onset seizures and six focal non-motors in last month. These events were most commonly precipitated during exposure to flicker or bright light, including sun flicker through trees while travelling by bus, and while using a large-screen television in the evening. There were no generalised tonic–clonic seizures reported in the same interval. The focal onset episodes were brief with impaired awareness and lip-smacking observed by family; the focal non-motor events were described as sudden arrest of activity with internal déjà vu sensation and pallor, typically lasting under one minute and followed by mild fatigue. No auras of visual zig-zags or headache were noted. \n\nHistory since last review: Patient has generalised epilepsy with photosensitivity noted during prior EEG (photoparoxysmal response at 15–20 Hz), and she continues to avoid strobe environments where possible. She has started a new job with variable lighting conditions and reports that the onset of the recent cluster coincided with prolonged screen time and commuting on bright days. Sleep has been fair (6–7 hours/night). No alcohol intake. No recent intercurrent illness. \n\nRisk/Safety: She is aware of seizure first aid and avoids swimming alone. No driving currently; she understands DVLA guidance and will maintain a seizure diary. \n\nPlan: Patient will maintain a detailed seizure and trigger log, including light exposure details. She will utilise blue-light reduction and regular rest breaks with screens as tolerated. I have arranged a follow-up EEG with intermittent photic stimulation to reassess photosensitivity under current medication. We discussed general measures to minimise flicker exposure in daily settings. She is satisfied with the plan and will contact the clinic earlier if events change in pattern or severity. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency: The letter states, \"five focal onset seizures and six focal non-motors in last month.\" These are both seizure types occurring within the same period. Per the rule, when multiple frequencies are in the same dimension (per month), sum them. Calculation: 5 + 6 = 11 seizures in the last month. No other conflicting frequency is provided. Not seizure-free, as there are seizures within the last month.",
+      "seizure_frequency_number": [
+        "11 per month",
+        "five focal onset seizures and six focal non-motors in last month"
+      ],
+      "reference": [
+        "11 per month",
+        "five focal onset seizures and six focal non-motors in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

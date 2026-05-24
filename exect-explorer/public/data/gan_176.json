@@ -1,0 +1,59 @@
+{
+  "id": "gan_176",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 31 March 2016 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Care plan and medication review\n\nDear Dr Shah,\n\nEpilepsy diagnosis:\nThe patient has generalised epilepsy. She recently migrated to the UK and is learning to navigate NHS services; she sometimes uses an interpreter for appointments and medication counselling.\n\nCurrent medication:\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters (patient-led use approximately once weekly)\n\nCurrent seizure frequency:\nThe patient reports seizures every 6 - 7 days, generally brief generalised convulsions with post‑ictal tiredness and headache. She has not identified reliable triggers, though she notes that fatigue after shift work and missed meals may precede some events. No recent injuries, hospital admissions, or emergency medication use.\n\nAssessment and plan:\n- The pattern of seizures every 6 - 7 days suggests ongoing suboptimal control. The patient is motivated to improve adherence and understands safety advice around bathing, heights, and driving regulations. She has agreed to keep a seizure and medication diary and to bring it to the next review.\n- We discussed treatment options in general terms, including the potential for optimising her current regimen versus changing to an alternative licensed for generalised epilepsy. She prefers a gradual and clearly explained approach and would value written information in plain English; we have provided this and offered interpreter support for future visits.\n- I will arrange baseline bloods (FBC, U&Es, LFTs) and a medication review with our epilepsy nurse specialist to check concordance and tolerability. We will also request community pharmacy support for pill organisers and reminder prompts, which she feels would help as she adapts to new work patterns in the UK.\n- Seizure first aid and SUDEP information were discussed, and she has been given contact details for our service if frequency worsens or if she experiences prolonged or atypical events.\n\nFollow‑up:\n- Review in clinic in 3 months, or sooner if seizures increase beyond the current pattern of seizures every 6 - 7 days, adverse effects occur, or if she needs further interpreter-assisted education.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 747,
+      "end": 792,
+      "text": "The patient reports seizures every 6 - 7 days",
+      "attributes": {
+        "Label": "1 per 6 to 7 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 767,
+      "end": 792,
+      "text": "seizures every 6 - 7 days",
+      "attributes": {
+        "Label": "1 per 6 to 7 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 176,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 31 March 2016 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Care plan and medication review\n\nDear Dr Shah,\n\nEpilepsy diagnosis:\nThe patient has generalised epilepsy. She recently migrated to the UK and is learning to navigate NHS services; she sometimes uses an interpreter for appointments and medication counselling.\n\nCurrent medication:\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters (patient-led use approximately once weekly)\n\nCurrent seizure frequency:\nThe patient reports seizures every 6 - 7 days, generally brief generalised convulsions with post‑ictal tiredness and headache. She has not identified reliable triggers, though she notes that fatigue after shift work and missed meals may precede some events. No recent injuries, hospital admissions, or emergency medication use.\n\nAssessment and plan:\n- The pattern of seizures every 6 - 7 days suggests ongoing suboptimal control. The patient is motivated to improve adherence and understands safety advice around bathing, heights, and driving regulations. She has agreed to keep a seizure and medication diary and to bring it to the next review.\n- We discussed treatment options in general terms, including the potential for optimising her current regimen versus changing to an alternative licensed for generalised epilepsy. She prefers a gradual and clearly explained approach and would value written information in plain English; we have provided this and offered interpreter support for future visits.\n- I will arrange baseline bloods (FBC, U&Es, LFTs) and a medication review with our epilepsy nurse specialist to check concordance and tolerability. We will also request community pharmacy support for pill organisers and reminder prompts, which she feels would help as she adapts to new work patterns in the UK.\n- Seizure first aid and SUDEP information were discussed, and she has been given contact details for our service if frequency worsens or if she experiences prolonged or atypical events.\n\nFollow‑up:\n- Review in clinic in 3 months, or sooner if seizures increase beyond the current pattern of seizures every 6 - 7 days, adverse effects occur, or if she needs further interpreter-assisted education.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Current seizure frequency: The patient reports seizures every 6 - 7 days.' This provides a clear numeric range for frequency. Convert 'every 6 - 7 days' to the allowed format using 'to' between numbers and 'per' structure: '1 per 6 to 7 day'. No other conflicting frequencies are given. Thus, the final label is '1 per 6 to 7 day'.",
+      "seizure_frequency_number": [
+        "1 per 6 to 7 day",
+        "The patient reports seizures every 6 - 7 days"
+      ],
+      "reference": [
+        "1 per 6 to 7 day",
+        "seizures every 6 - 7 days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

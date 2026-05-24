@@ -1,0 +1,59 @@
+{
+  "id": "gan_12086",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 December 2016 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Louise Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and plan following clinic assessment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nClinical diagnosis of recurrent unprovoked seizures; classification currently under review pending further evaluation.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as needed for clustering events (used approximately once monthly)\n\nPresent Seizure Frequency:\n\nThe patient reports that focal onset seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically five events per year. These patterns have been relatively stable over the past six months.\n\nAdditional Clinical Features:\n\n- Photosensitivity to flicker or bright light is noted; the patient reports eye discomfort and transient visual shimmering when exposed to rapid screen refresh rates and strobe effects in supermarkets or at concerts.\n- Sleep deprivation and prolonged screen use late at night appear to lower the threshold for evening events.\n- No recent head injury, intercurrent infection, or alcohol excess.\n\nInvestigations to Date:\n\n- MRI brain (last year): reported as normal.\n- Routine EEG (8 months ago): non-specific changes; photic stimulation was limited due to patient discomfort.\n- We will proceed with an updated EEG including extended photic stimulation protocol in a controlled setting, and consider ambulatory EEG to sample evening periods when events are most frequent.\n\nPlan of Action:\n\n1. Continue lamotrigine at current dose while we gather further data. The patient feels this has reduced generalised convulsions but has had limited impact on evening focal events.\n2. Provide interim photosensitivity precautions: advise use of high-refresh-rate screens with reduced brightness, enable blue-light filters, and consider polarized or tinted lenses for visually provocative environments. The patient will also trial breaking visual exposure (e.g., looking away during oncoming flicker) and maintaining regular sleep patterns.\n3. Arrange EEG with tailored photic protocol and evening ambulatory monitoring within 6–8 weeks.\n4. Safety counselling reinforced: avoid swimming unsupervised, use shower rather than bath, and adhere to DVLA guidance as applicable.\n5. Follow-up in clinic in three months to review monitoring results and consider medication adjustment based on findings and tolerability.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 707,
+      "end": 757,
+      "text": "focal onset seizures occur several times each week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 707,
+      "end": 862,
+      "text": "focal onset seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically five events per year",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12086,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 December 2016 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Louise Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and plan following clinic assessment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nClinical diagnosis of recurrent unprovoked seizures; classification currently under review pending further evaluation.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as needed for clustering events (used approximately once monthly)\n\nPresent Seizure Frequency:\n\nThe patient reports that focal onset seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically five events per year. These patterns have been relatively stable over the past six months.\n\nAdditional Clinical Features:\n\n- Photosensitivity to flicker or bright light is noted; the patient reports eye discomfort and transient visual shimmering when exposed to rapid screen refresh rates and strobe effects in supermarkets or at concerts.\n- Sleep deprivation and prolonged screen use late at night appear to lower the threshold for evening events.\n- No recent head injury, intercurrent infection, or alcohol excess.\n\nInvestigations to Date:\n\n- MRI brain (last year): reported as normal.\n- Routine EEG (8 months ago): non-specific changes; photic stimulation was limited due to patient discomfort.\n- We will proceed with an updated EEG including extended photic stimulation protocol in a controlled setting, and consider ambulatory EEG to sample evening periods when events are most frequent.\n\nPlan of Action:\n\n1. Continue lamotrigine at current dose while we gather further data. The patient feels this has reduced generalised convulsions but has had limited impact on evening focal events.\n2. Provide interim photosensitivity precautions: advise use of high-refresh-rate screens with reduced brightness, enable blue-light filters, and consider polarized or tinted lenses for visually provocative environments. The patient will also trial breaking visual exposure (e.g., looking away during oncoming flicker) and maintaining regular sleep patterns.\n3. Arrange EEG with tailored photic protocol and evening ambulatory monitoring within 6–8 weeks.\n4. Safety counselling reinforced: avoid swimming unsupervised, use shower rather than bath, and adhere to DVLA guidance as applicable.\n5. Follow-up in clinic in three months to review monitoring results and consider medication adjustment based on findings and tolerability.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides two seizure frequencies: (1) focal onset seizures occur 'several times each week' and (2) generalised convulsions are 'typically five events per year'. Per the rule to select the highest frequency, we choose the focal onset seizure rate. 'Several times each week' is vague without a specific number, so we must use 'multiple per week' according to the allowed formats that permit 'multiple' when the exact number cannot be determined.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "focal onset seizures occur several times each week"
+      ],
+      "reference": [
+        "multiple per week",
+        "focal onset seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically five events per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

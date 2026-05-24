@@ -1,0 +1,59 @@
+{
+  "id": "gan_8423",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 25 September 2021 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nDaniel Wright, DOB: 14-03-1986, Hospital No: K932781 NHS No. 9075613421  \n18 Brookfield Road, London, SE15 3TN\n\nThank you for asking me to review your patient. He attended today with his partner, who has been keeping a diary of events and treatment responses. Since the last adjustment of his antiseizure medicines three months ago, there has been a marked improvement compared with earlier periods. He reports better day-to-day functioning, improved sleep regularity, and no injuries or prolonged recoveries. Prior to this improvement, the seizure frequency was monthly clusters; within-cluster count unclear, but these were disruptive and often required time off work. \n\nAt present he and his partner describe Excellent seizure control. There have been no clearly witnessed events for over 10 weeks, and he has resumed driving only as a passenger, with adherence to safety advice at home and work. He is taking his medication reliably, using a pill organiser and phone reminders, and has not reported adverse effects beyond mild, transient fatigue in the first fortnight after the dose change, which has now settled. He notes that regular sleep and avoidance of missed meals seem helpful; this is framed as his own observation. \n\nExamination today was unremarkable. He was alert and oriented, with normal speech and no focal neurological signs. Blood tests from last month (FBC, U&Es, LFTs) were within expected limits per the GP summary you forwarded. We discussed maintaining the current regimen and continuing the event diary to track any change in pattern. He understands when and how to seek urgent assistance if a prolonged event occurs. \n\nPlan:  \n- Continue current medicines unchanged given Excellent seizure control and overall functional improvement.  \n- Maintain seizure diary and routine sleep schedule (patient-reported benefit).  \n- Safety advice reinforced for bathing, cooking, and heights.  \n- Arrange routine follow-up in 6 months, or sooner if there is any recurrence of clusters or new features.  \n\nPlease note again the historical context: before the recent improvement, the patient experienced monthly clusters; within-cluster count unclear. The current trajectory remains favourable on the present regimen. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1011,
+      "end": 1072,
+      "text": "There have been no clearly witnessed events for over 10 weeks",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 984,
+      "end": 1009,
+      "text": "Excellent seizure control",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8423,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 25 September 2021 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nDaniel Wright, DOB: 14-03-1986, Hospital No: K932781 NHS No. 9075613421  \n18 Brookfield Road, London, SE15 3TN\n\nThank you for asking me to review your patient. He attended today with his partner, who has been keeping a diary of events and treatment responses. Since the last adjustment of his antiseizure medicines three months ago, there has been a marked improvement compared with earlier periods. He reports better day-to-day functioning, improved sleep regularity, and no injuries or prolonged recoveries. Prior to this improvement, the seizure frequency was monthly clusters; within-cluster count unclear, but these were disruptive and often required time off work. \n\nAt present he and his partner describe Excellent seizure control. There have been no clearly witnessed events for over 10 weeks, and he has resumed driving only as a passenger, with adherence to safety advice at home and work. He is taking his medication reliably, using a pill organiser and phone reminders, and has not reported adverse effects beyond mild, transient fatigue in the first fortnight after the dose change, which has now settled. He notes that regular sleep and avoidance of missed meals seem helpful; this is framed as his own observation. \n\nExamination today was unremarkable. He was alert and oriented, with normal speech and no focal neurological signs. Blood tests from last month (FBC, U&Es, LFTs) were within expected limits per the GP summary you forwarded. We discussed maintaining the current regimen and continuing the event diary to track any change in pattern. He understands when and how to seek urgent assistance if a prolonged event occurs. \n\nPlan:  \n- Continue current medicines unchanged given Excellent seizure control and overall functional improvement.  \n- Maintain seizure diary and routine sleep schedule (patient-reported benefit).  \n- Safety advice reinforced for bathing, cooking, and heights.  \n- Arrange routine follow-up in 6 months, or sooner if there is any recurrence of clusters or new features.  \n\nPlease note again the historical context: before the recent improvement, the patient experienced monthly clusters; within-cluster count unclear. The current trajectory remains favourable on the present regimen. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides historical frequency: 'monthly clusters; within-cluster count unclear.' For the current period, it states 'Excellent seizure control' and 'no clearly witnessed events for over 10 weeks.' The current period of no seizures is less than 6 months, so cannot label as seizure free outright. The instruction allows 'seizure free for multiple months' when seizure-free duration is present but insufficient to confirm 6 months. 'Over 10 weeks' ≈ 2.5 months qualifies as multiple months. Therefore, the appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "There have been no clearly witnessed events for over 10 weeks"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Excellent seizure control"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

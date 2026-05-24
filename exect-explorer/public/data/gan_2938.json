@@ -1,0 +1,59 @@
+{
+  "id": "gan_2938",
+  "text": "Department of Neurology\n\nClinic Date: 18 July 2016\n\nDr A. Patel\nSt Cuthbert’s Neurology Clinic\nLevel 3, Outpatients, St Cuthbert’s Hospital, York YO1 7AB\n\nDear Dr A. Patel,\n\nMichael Turner, DOB: 22-03-1987, Hospital No: H392774 NHS No. 9437710256\nFlat 12, 5 Mill Lane, York, YO10 3BG\n\nDiagnoses:\n\nRecurrent unprovoked seizures; aetiology not established. Prior EEG in community reportedly non-diagnostic.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\nContinue current antiepileptic medication. Reinforce sleep hygiene and trigger management. Safety counselling and personalised plan held on record.\n\nI reviewed Michael Turner in clinic today. He reports that he has been Seizure-free since 13-Nov-2015. Prior to that date he described occasional cluster patterns associated with sleep loss, and he has since focused on regular sleep routines and avoiding sleep deprivation. He also confirms that a personalised self-management and safety plan is documented elsewhere in his notes and remains up to date.\n\nOn examination today there are no focal neurological deficits. He is tolerating Lamotrigine 75 mg twice daily without adverse effects. Given the current stability and absence of events since November 2015, I have advised continuing the present regimen and maintaining vigilance around recognised triggers, particularly sleep loss. He has a documented plan for what to do should clusters recur, and he understands the escalation steps.\n\nI have not arranged a routine follow-up; however, I am happy to review him sooner if there are any breakthrough events or medication concerns. Otherwise, we can consider review in due course to reassess treatment duration in the context of ongoing stability.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 657,
+      "end": 716,
+      "text": "He reports that he has been Seizure-free since 13-Nov-2015.",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 685,
+      "end": 715,
+      "text": "Seizure-free since 13-Nov-2015",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2938,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 18 July 2016\n\nDr A. Patel\nSt Cuthbert’s Neurology Clinic\nLevel 3, Outpatients, St Cuthbert’s Hospital, York YO1 7AB\n\nDear Dr A. Patel,\n\nMichael Turner, DOB: 22-03-1987, Hospital No: H392774 NHS No. 9437710256\nFlat 12, 5 Mill Lane, York, YO10 3BG\n\nDiagnoses:\n\nRecurrent unprovoked seizures; aetiology not established. Prior EEG in community reportedly non-diagnostic.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\nContinue current antiepileptic medication. Reinforce sleep hygiene and trigger management. Safety counselling and personalised plan held on record.\n\nI reviewed Michael Turner in clinic today. He reports that he has been Seizure-free since 13-Nov-2015. Prior to that date he described occasional cluster patterns associated with sleep loss, and he has since focused on regular sleep routines and avoiding sleep deprivation. He also confirms that a personalised self-management and safety plan is documented elsewhere in his notes and remains up to date.\n\nOn examination today there are no focal neurological deficits. He is tolerating Lamotrigine 75 mg twice daily without adverse effects. Given the current stability and absence of events since November 2015, I have advised continuing the present regimen and maintaining vigilance around recognised triggers, particularly sleep loss. He has a documented plan for what to do should clusters recur, and he understands the escalation steps.\n\nI have not arranged a routine follow-up; however, I am happy to review him sooner if there are any breakthrough events or medication concerns. Otherwise, we can consider review in due course to reassess treatment duration in the context of ongoing stability.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The clinic date is 18 July 2016. The letter states the patient has been “Seizure-free since 13-Nov-2015.” Calculate duration from 13-Nov-2015 to 18-Jul-2016: from Nov 13 to Dec 13 = 1 month; Dec 13 to Jan 13 = 2; Jan 13 to Feb 13 = 3; Feb 13 to Mar 13 = 4; Mar 13 to Apr 13 = 5; Apr 13 to May 13 = 6; May 13 to Jun 13 = 7; Jun 13 to Jul 13 = 8 months; plus 5 additional days to July 18, which does not change the month count. Therefore ≥8 months seizure-free, satisfying the 6-month criterion. Output as 'seizure free for 8 month' using the allowed format.",
+      "seizure_frequency_number": [
+        "seizure free for 8 month",
+        "He reports that he has been Seizure-free since 13-Nov-2015."
+      ],
+      "reference": [
+        "seizure free for 8 month",
+        "Seizure-free since 13-Nov-2015"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

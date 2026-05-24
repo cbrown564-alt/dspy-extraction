@@ -1,0 +1,54 @@
+{
+  "id": "gan_7712",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nSarah Collins, DOB: 14-08-1992, Hospital No: A927451 NHS No. 7485201936  \n58 Willow Close, Croydon, CR0 7HF  \n\nDiagnoses: \n\nSeizure disorder.\n\nSarah Collins attended today with her father. She has been well in herself with no intercurrent illnesses. She reports a pattern of low mood and irritability occurring the day prior to a subset of events; she has begun documenting this in a paper diary and a smartphone calendar, noting time of onset, duration, and any potential triggers such as poor sleep. Over the past three months she has not had any definite convulsive episodes and, aside from two brief spells of transient unresponsiveness in July, there have been no further attacks reported. She describes the prodromal mood/irritability on approximately four occasions in that period without subsequent progression to an observable event. \n\nHer current anti-seizure medication remains unchanged and she has not required any rescue therapy. There have been no emergency presentations. She has been taking regular exercise and limiting screen time in the evenings, which she feels may be helpful. \n\nOn review of the diary entries brought today, the entries are clear and time-stamped. We discussed continuing this structured diary approach, including noting sleep duration, menstrual cycle, stressors, and any missed doses, to help identify patterns around the prodromal symptoms. Neurological examination today was unremarkable and observations were stable. \n\nPlan: \n- No change to regular medication today as events have not recurred in the last three months and current control appears maintained. \n- Continue detailed diary tracking of mood/irritability prodrome and any subsequent symptoms or episodes. \n- Safety advice reinforced as previously discussed (patient-reported adherence). \n- Routine follow-up in six months, sooner if she experiences a definite event or any change in pattern. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 688,
+      "end": 880,
+      "text": "Over the past three months she has not had any definite convulsive episodes and, aside from two brief spells of transient unresponsiveness in July, there have been no further attacks reported.",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7712,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's Hospital  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nSarah Collins, DOB: 14-08-1992, Hospital No: A927451 NHS No. 7485201936  \n58 Willow Close, Croydon, CR0 7HF  \n\nDiagnoses: \n\nSeizure disorder.\n\nSarah Collins attended today with her father. She has been well in herself with no intercurrent illnesses. She reports a pattern of low mood and irritability occurring the day prior to a subset of events; she has begun documenting this in a paper diary and a smartphone calendar, noting time of onset, duration, and any potential triggers such as poor sleep. Over the past three months she has not had any definite convulsive episodes and, aside from two brief spells of transient unresponsiveness in July, there have been no further attacks reported. She describes the prodromal mood/irritability on approximately four occasions in that period without subsequent progression to an observable event. \n\nHer current anti-seizure medication remains unchanged and she has not required any rescue therapy. There have been no emergency presentations. She has been taking regular exercise and limiting screen time in the evenings, which she feels may be helpful. \n\nOn review of the diary entries brought today, the entries are clear and time-stamped. We discussed continuing this structured diary approach, including noting sleep duration, menstrual cycle, stressors, and any missed doses, to help identify patterns around the prodromal symptoms. Neurological examination today was unremarkable and observations were stable. \n\nPlan: \n- No change to regular medication today as events have not recurred in the last three months and current control appears maintained. \n- Continue detailed diary tracking of mood/irritability prodrome and any subsequent symptoms or episodes. \n- Safety advice reinforced as previously discussed (patient-reported adherence). \n- Routine follow-up in six months, sooner if she experiences a definite event or any change in pattern. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Clinic date: 02 Oct 2025.\n- Letter states: \"Over the past three months she has not had any definite convulsive episodes and, aside from two brief spells of transient unresponsiveness in July, there have been no further attacks reported.\"\n- Past three months from 02 Oct 2025 includes July; thus there were 2 events within this 3‑month window.\n- Not seizure-free for ≥6 months, so do not label as seizure free.\n- Therefore, current frequency over the reported period = 2 events per 3 months.",
+      "seizure_frequency_number": [
+        "2 per 3 month",
+        "Over the past three months she has not had any definite convulsive episodes and, aside from two brief spells of transient unresponsiveness in July, there have been no further attacks reported."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "seizure activity absent"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 3 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

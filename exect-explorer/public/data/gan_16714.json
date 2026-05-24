@@ -1,0 +1,59 @@
+{
+  "id": "gan_16714",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 9 May 2017 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nMateo Alvarez, DOB: 14-03-1986, Hospital No: H938271 NHS No. 5839201746  \n12 Brookfield Road, London, W10 5RA \n\nMedication: \n\nLevetiracetam 500 mg twice daily, commenced following initial assessment in primary care after recent events. Patient reports good adherence, with occasional missed morning doses during shift work. No notable adverse effects beyond mild irritability in the first fortnight, now settled. \n\nHistory and interval events: \n\nMateo Alvarez is a recent migrant to the UK and is still learning how to navigate NHS services; he has occasionally attended with interpreter support. He has received our written safety advice translated into his preferred language and confirms understanding. Since initial review by the GP, the pattern of episodes has been clarified as follows: In November he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In February a nocturnal seizure were noted, and in April a single generalised tonic-clonic seizure occurred (not witnessed by family). No clear precipitants identified; he reports variable sleep due to new employment and some stress around housing paperwork. There is no history of significant head injury, CNS infection, or family history of similar episodes. \n\nExamination today is unremarkable with normal cardiorespiratory and neurological findings. He is oriented, with no focal deficits. \n\nInvestigations: \n\n- Baseline bloods in primary care reported as within reference ranges (U&E, LFT, FBC).  \n- We have arranged a routine EEG and MRI brain with epilepsy protocol; appointments have been requested with attention to interpreter availability.  \n- DVLA guidance and safety precautions (bathing/swimming supervision, heights, machinery) discussed and provided in writing; he confirms he will refrain from driving and has initiated self-notification.  \n\nPlan: \n\n1) Continue levetiracetam 500 mg twice daily for now; we will review dosing after EEG/MRI and in light of any further events.  \n2) Seizure diary provided; he will record sleep patterns, missed doses, and any alcohol intake to help identify triggers.  \n3) Written first aid guidance shared with family; he has consented to us sending a summary to his workplace occupational health.  \n4) Interpreter-supported follow-up booked for 12 weeks, sooner if further seizures occur or adverse effects develop.  \n5) Signposted to local community support and an information session on accessing NHS appointments, including how to request interpreters in advance.  \n\nWe will update you when investigations are available. Please contact us if there are interim concerns or if further events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 976,
+      "end": 1144,
+      "text": "In November he presented with a cluster of three seizures... In February a nocturnal seizure were noted, and in April a single generalised tonic-clonic seizure occurred",
+      "attributes": {
+        "Label": "5 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 976,
+      "end": 1210,
+      "text": "In November he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In February a nocturnal seizure were noted, and in April a single generalised tonic-clonic seizure occurred (not witnessed by family)",
+      "attributes": {
+        "Label": "5 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16714,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 9 May 2017 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nMateo Alvarez, DOB: 14-03-1986, Hospital No: H938271 NHS No. 5839201746  \n12 Brookfield Road, London, W10 5RA \n\nMedication: \n\nLevetiracetam 500 mg twice daily, commenced following initial assessment in primary care after recent events. Patient reports good adherence, with occasional missed morning doses during shift work. No notable adverse effects beyond mild irritability in the first fortnight, now settled. \n\nHistory and interval events: \n\nMateo Alvarez is a recent migrant to the UK and is still learning how to navigate NHS services; he has occasionally attended with interpreter support. He has received our written safety advice translated into his preferred language and confirms understanding. Since initial review by the GP, the pattern of episodes has been clarified as follows: In November he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In February a nocturnal seizure were noted, and in April a single generalised tonic-clonic seizure occurred (not witnessed by family). No clear precipitants identified; he reports variable sleep due to new employment and some stress around housing paperwork. There is no history of significant head injury, CNS infection, or family history of similar episodes. \n\nExamination today is unremarkable with normal cardiorespiratory and neurological findings. He is oriented, with no focal deficits. \n\nInvestigations: \n\n- Baseline bloods in primary care reported as within reference ranges (U&E, LFT, FBC).  \n- We have arranged a routine EEG and MRI brain with epilepsy protocol; appointments have been requested with attention to interpreter availability.  \n- DVLA guidance and safety precautions (bathing/swimming supervision, heights, machinery) discussed and provided in writing; he confirms he will refrain from driving and has initiated self-notification.  \n\nPlan: \n\n1) Continue levetiracetam 500 mg twice daily for now; we will review dosing after EEG/MRI and in light of any further events.  \n2) Seizure diary provided; he will record sleep patterns, missed doses, and any alcohol intake to help identify triggers.  \n3) Written first aid guidance shared with family; he has consented to us sending a summary to his workplace occupational health.  \n4) Interpreter-supported follow-up booked for 12 weeks, sooner if further seizures occur or adverse effects develop.  \n5) Signposted to local community support and an information session on accessing NHS appointments, including how to request interpreters in advance.  \n\nWe will update you when investigations are available. Please contact us if there are interim concerns or if further events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter lists discrete events over recent months: a cluster of three seizures in November, a nocturnal seizure in February, and a single generalized tonic-clonic seizure in April. These are three months with seizure occurrences over a 6-month span from November through April (6 months inclusive: Nov, Dec, Jan, Feb, Mar, Apr). Total seizures = 3 (cluster counted as 3) + 1 (Feb) + 1 (Apr) = 5 seizures over 6 months. Using the rule to select the highest frequency and to sum same-dimension events, the normalized frequency is 5 per 6 month. Not seizure-free for 6 months, as last event was April and the clinic date is May.",
+      "seizure_frequency_number": [
+        "5 per 6 month",
+        "In November he presented with a cluster of three seizures... In February a nocturnal seizure were noted, and in April a single generalised tonic-clonic seizure occurred"
+      ],
+      "reference": [
+        "5 per 6 month",
+        "In November he presented with a cluster of three seizures (self-terminating, fluctuating awareness). In February a nocturnal seizure were noted, and in April a single generalised tonic-clonic seizure occurred (not witnessed by family)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

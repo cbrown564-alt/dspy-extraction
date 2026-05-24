@@ -1,0 +1,65 @@
+{
+  "id": "gan_4732",
+  "text": "Epilepsy Clinic \n\nNeurosciences Division \n\nClinic Date: 08 August 2018 \n\nDr Patel  \nRiverside NHS Neurology Clinic  \nRiverside Health Centre, 12 Mill Lane, Bristol, BS1 4AB  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 14-07-1991, Hospital No: H927451 NHS No. 7482105639  \nFlat 3, 28 Redfern Street, Bristol, BS2 0QJ  \n\nDiagnoses: \n\nSeizure disorder (aetiology not established). \n\nI reviewed Emily Carter in clinic today with her partner present. Over the past three months she reports a clear deterioration in day-to-day stability associated with frequent travel for work and occasional missed doses of her antiseizure medication. She describes increased breakthrough events with reduced confidence in early warning signs, more post-event fatigue, and delayed return to baseline on several occasions. While she previously experienced extended intervals without events, she now notes that seizures happen occasional, often clustering around travel days or after disrupted sleep. She has not required paramedic attendance, but she did attend an urgent treatment centre once for prolonged post-ictal confusion.\n\nCurrent medication as reported: levetiracetam 1 g twice daily. She admits to missing evening doses approximately once per fortnight when flights are delayed or when crossing time zones. No recent rescue medication use. No new concomitant drugs or recreational substances reported. Sleep is fragmented during travel weeks; hydration and nutrition are also inconsistent. She does not drive.\n\nExamination today was unremarkable with normal cardiorespiratory observations and no focal neurological deficits between events. There were no injuries noted. She maintains a paper diary and phone entries which corroborate the recent increase in breakthrough episodes following disrupted routines. \n\nWe discussed practical strategies to minimise missed doses during travel (patient-led reminders, carrying spare doses in hand luggage, and aligning dosing with destination time after arrival). She will trial these self-management approaches and continue her diary. She prefers to defer any medication change until we have two months of more consistent dosing to reassess baseline control. Safety advice was reinforced, particularly around bathing, heights, and operating machinery when sleep-deprived.\n\nGiven the above, I am concerned that her condition is deteriorating in the context of frequently disrupted schedules and occasional non-adherence. I have asked her to contact us promptly if she experiences any increase in duration, injury, or change in pattern. We will arrange a review in eight weeks with an updated diary and, if available, collateral timings from her travel itinerary.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 864,
+      "end": 971,
+      "text": "she now notes that seizures happen occasional, often clustering around travel days or after disrupted sleep",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 883,
+      "end": 909,
+      "text": "seizures happen occasional",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4732,
+    "clinic_date": "Epilepsy Clinic \n\nNeurosciences Division \n\nClinic Date: 08 August 2018 \n\nDr Patel  \nRiverside NHS Neurology Clinic  \nRiverside Health Centre, 12 Mill Lane, Bristol, BS1 4AB  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 14-07-1991, Hospital No: H927451 NHS No. 7482105639  \nFlat 3, 28 Redfern Street, Bristol, BS2 0QJ  \n\nDiagnoses: \n\nSeizure disorder (aetiology not established). \n\nI reviewed Emily Carter in clinic today with her partner present. Over the past three months she reports a clear deterioration in day-to-day stability associated with frequent travel for work and occasional missed doses of her antiseizure medication. She describes increased breakthrough events with reduced confidence in early warning signs, more post-event fatigue, and delayed return to baseline on several occasions. While she previously experienced extended intervals without events, she now notes that seizures happen occasional, often clustering around travel days or after disrupted sleep. She has not required paramedic attendance, but she did attend an urgent treatment centre once for prolonged post-ictal confusion.\n\nCurrent medication as reported: levetiracetam 1 g twice daily. She admits to missing evening doses approximately once per fortnight when flights are delayed or when crossing time zones. No recent rescue medication use. No new concomitant drugs or recreational substances reported. Sleep is fragmented during travel weeks; hydration and nutrition are also inconsistent. She does not drive.\n\nExamination today was unremarkable with normal cardiorespiratory observations and no focal neurological deficits between events. There were no injuries noted. She maintains a paper diary and phone entries which corroborate the recent increase in breakthrough episodes following disrupted routines. \n\nWe discussed practical strategies to minimise missed doses during travel (patient-led reminders, carrying spare doses in hand luggage, and aligning dosing with destination time after arrival). She will trial these self-management approaches and continue her diary. She prefers to defer any medication change until we have two months of more consistent dosing to reassess baseline control. Safety advice was reinforced, particularly around bathing, heights, and operating machinery when sleep-deprived.\n\nGiven the above, I am concerned that her condition is deteriorating in the context of frequently disrupted schedules and occasional non-adherence. I have asked her to contact us promptly if she experiences any increase in duration, injury, or change in pattern. We will arrange a review in eight weeks with an updated diary and, if available, collateral timings from her travel itinerary.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly indicates the patient is having seizures currently, with increased breakthrough events. However, there is no explicit numeric frequency provided. Phrases like 'seizures happen occasional, often clustering around travel days' and mentions of diary corroboration do not quantify how many per unit time or per cluster. No counts per day/week/month or per cluster size are stated. Therefore, the specific frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "she now notes that seizures happen occasional, often clustering around travel days or after disrupted sleep"
+      ],
+      "reference": [
+        "unknown",
+        "seizures happen occasional"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

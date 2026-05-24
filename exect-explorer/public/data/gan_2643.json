@@ -1,0 +1,48 @@
+{
+  "id": "gan_2643",
+  "text": "St George's University Hospitals NHS Foundation Trust\nDepartment of Neurology\nClinic Date: 01 August 2020\n\nDr Priya Shah\nRiverside Health Centre\n12 Bridge Street, London SE1 3AB\n\nDear Dr Priya Shah,\n\nDaniel Carter, DOB: 14-03-1982, Hospital No: SGH-2045893, NHS No: 7421189306\n78 Brookfield Road, London N7 2QL\n\nThank you for your referral and update. I reviewed Daniel Carter in clinic today with his partner present. We discussed a clear recent deterioration from his previous baseline. Historically, prior to this decline, his events tended to occur in weekly clusters, typically five spells over roughly two hours. Polytherapy adverse effects have become increasingly troublesome and, despite adherence, overall control remains suboptimal.\n\nOn current history, Daniel Carter has focal epilepsy. His typical events begin with a brief warning of rising epigastric discomfort and a sense of derealisation, followed by behavioural arrest with rightward head and eye deviation and impaired awareness; automatisms of lip-smacking and fumbling are seen, and he is usually confused for 30–60 minutes afterwards. His partner also reports occasional secondary generalisation. In the past six weeks he has progressed to having episodes on virtually all evenings, often after dusk, with several nights in succession affected. This near-nightly pattern marks a clear departure from his former clustered weekly pattern and is corroborated by his seizure diary entries and partner’s collateral account.\n\nContributing factors to the recent downturn may include poor tolerability of his current multi-drug regimen (daytime somnolence, slowed processing, irritability, and unsteady gait), together with sleep fragmentation. There is no clear infectious or metabolic precipitant reported. He denies missed doses. No alcohol excess. Mood is low but without suicidal ideation; anxiety has increased around bedtime because he anticipates further episodes.\n\nExamination today between events was non-focal neurologically. Cardiovascular observations were stable. Cognitive screening suggested psychomotor slowing consistent with medication burden.\n\nPlan discussed:\n- Admit for urgent video-EEG telemetry to characterise the near-nightly events and capture the evolution from focal onset, with a view to rationalising therapy.\n- Update 3T MRI brain with epilepsy protocol to reassess for a focal structural substrate.\n- Bloods: U&Es, LFTs, FBC, vitamin D, and trough levels where applicable.\n- Review polytherapy once data obtained; aim to streamline to minimise adverse effects while improving control. Rescue plan reinforced for clusters and secondary generalisation.\n- Sleep hygiene and diary continuation; partner provided with event documentation sheet.\n\nI emphasise that the condition is currently worsening: frequency has escalated to events on almost every evening, and function is being adversely affected. Before this deterioration, his seizure frequency was weekly clusters, usually five events within about two hours.\n\nI will update you following telemetry and imaging, and we will bring forward his appointment with our epilepsy nurse specialist for interim support.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1220,
+      "end": 1254,
+      "text": "episodes on virtually all evenings",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2643,
+    "clinic_date": "St George's University Hospitals NHS Foundation Trust\nDepartment of Neurology\nClinic Date: 01 August 2020\n\nDr Priya Shah\nRiverside Health Centre\n12 Bridge Street, London SE1 3AB\n\nDear Dr Priya Shah,\n\nDaniel Carter, DOB: 14-03-1982, Hospital No: SGH-2045893, NHS No: 7421189306\n78 Brookfield Road, London N7 2QL\n\nThank you for your referral and update. I reviewed Daniel Carter in clinic today with his partner present. We discussed a clear recent deterioration from his previous baseline. Historically, prior to this decline, his events tended to occur in weekly clusters, typically five spells over roughly two hours. Polytherapy adverse effects have become increasingly troublesome and, despite adherence, overall control remains suboptimal.\n\nOn current history, Daniel Carter has focal epilepsy. His typical events begin with a brief warning of rising epigastric discomfort and a sense of derealisation, followed by behavioural arrest with rightward head and eye deviation and impaired awareness; automatisms of lip-smacking and fumbling are seen, and he is usually confused for 30–60 minutes afterwards. His partner also reports occasional secondary generalisation. In the past six weeks he has progressed to having episodes on virtually all evenings, often after dusk, with several nights in succession affected. This near-nightly pattern marks a clear departure from his former clustered weekly pattern and is corroborated by his seizure diary entries and partner’s collateral account.\n\nContributing factors to the recent downturn may include poor tolerability of his current multi-drug regimen (daytime somnolence, slowed processing, irritability, and unsteady gait), together with sleep fragmentation. There is no clear infectious or metabolic precipitant reported. He denies missed doses. No alcohol excess. Mood is low but without suicidal ideation; anxiety has increased around bedtime because he anticipates further episodes.\n\nExamination today between events was non-focal neurologically. Cardiovascular observations were stable. Cognitive screening suggested psychomotor slowing consistent with medication burden.\n\nPlan discussed:\n- Admit for urgent video-EEG telemetry to characterise the near-nightly events and capture the evolution from focal onset, with a view to rationalising therapy.\n- Update 3T MRI brain with epilepsy protocol to reassess for a focal structural substrate.\n- Bloods: U&Es, LFTs, FBC, vitamin D, and trough levels where applicable.\n- Review polytherapy once data obtained; aim to streamline to minimise adverse effects while improving control. Rescue plan reinforced for clusters and secondary generalisation.\n- Sleep hygiene and diary continuation; partner provided with event documentation sheet.\n\nI emphasise that the condition is currently worsening: frequency has escalated to events on almost every evening, and function is being adversely affected. Before this deterioration, his seizure frequency was weekly clusters, usually five events within about two hours.\n\nI will update you following telemetry and imaging, and we will bring forward his appointment with our epilepsy nurse specialist for interim support.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify the current highest frequency described. The letter states: 'he has progressed to having episodes on virtually all evenings, often after dusk, with several nights in succession affected.' This implies near-nightly events, i.e., approximately one per day. There is also historical frequency: 'weekly clusters, typically five spells over roughly two hours.' Per the rule to select the highest (more frequent) current frequency, we use the near-nightly pattern. Convert 'virtually all evenings' to 1 per day as the closest explicit normalized rate.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "episodes on virtually all evenings"
+      ],
+      "reference": [
+        "1 per day",
+        "seizures every night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

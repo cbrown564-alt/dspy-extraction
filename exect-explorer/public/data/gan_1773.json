@@ -1,0 +1,59 @@
+{
+  "id": "gan_1773",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 08 October 2017 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nDaniel Roberts, DOB: 14-03-1986, Hospital No: K742918 NHS No. 9065173342  \n12 Brookside Close, London, SE15 8TR\n\nThank you for asking me to review your patient. We discussed his known generalised epilepsy and recent symptom pattern. He described a clear increase in events over the last quarter, noting two drop attacks and nine convulsions in the past three months. His partner corroborates these figures from a seizure diary kept on her phone. There is no consistent diurnal pattern; most convulsions have occurred from wakefulness, with two events out of sleep. Recovery has been uncomplicated, with post‑ictal confusion lasting 15–30 minutes and no focal neurological deficits afterwards. He denies new head injury, alcohol escalation, or intercurrent illness.\n\nHe reports past variability in pharmacy supply, with occasional brand and formulation switches documented in his records; historically this has impacted adherence at times. He states he has made a concerted effort over the last month to maintain regular dosing and has arranged repeat prescriptions earlier to avoid gaps. He is using a pill organiser and has set phone reminders; he feels this has helped, though the diary still records intermittent myoclonic jerks upon awakening once or twice per week without progression to convulsion.\n\nNeurologically, examination today was non-focal. There were no signs of intercurrent infection. Cardiovascular and systemic examination were unremarkable. He is driving abstinent and understands the DVLA regulations as they relate to ongoing seizures. We reviewed basic seizure first aid and SUDEP risk reduction in clinic.\n\nImpression: Generalised epilepsy with recent exacerbation in event count (two drop attacks and nine convulsions in the past three months). Past pharmacy supply variability and previously inconsistent adherence may have contributed. We will continue to reconcile supply to a consistent preparation moving forward.\n\nPlan: \n- Continue present anti‑seizure regimen with brand consistency; community pharmacy has been asked to maintain the same manufacturer for repeat issues.  \n- Bloods today for trough levels and general screen (U&Es, LFTs, FBC, vitamin D).  \n- Seizure diary to continue; partner to witness where possible.  \n- Safety advice reiterated; no driving, swimming only with supervision, and avoidance of heights until stable.  \n- Routine follow‑up in 12 weeks, or sooner if clusters occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 569,
+      "end": 631,
+      "text": "two drop attacks and nine convulsions in the past three months",
+      "attributes": {
+        "Label": "11 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 569,
+      "end": 631,
+      "text": "two drop attacks and nine convulsions in the past three months",
+      "attributes": {
+        "Label": "11 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1773,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 08 October 2017 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nDaniel Roberts, DOB: 14-03-1986, Hospital No: K742918 NHS No. 9065173342  \n12 Brookside Close, London, SE15 8TR\n\nThank you for asking me to review your patient. We discussed his known generalised epilepsy and recent symptom pattern. He described a clear increase in events over the last quarter, noting two drop attacks and nine convulsions in the past three months. His partner corroborates these figures from a seizure diary kept on her phone. There is no consistent diurnal pattern; most convulsions have occurred from wakefulness, with two events out of sleep. Recovery has been uncomplicated, with post‑ictal confusion lasting 15–30 minutes and no focal neurological deficits afterwards. He denies new head injury, alcohol escalation, or intercurrent illness.\n\nHe reports past variability in pharmacy supply, with occasional brand and formulation switches documented in his records; historically this has impacted adherence at times. He states he has made a concerted effort over the last month to maintain regular dosing and has arranged repeat prescriptions earlier to avoid gaps. He is using a pill organiser and has set phone reminders; he feels this has helped, though the diary still records intermittent myoclonic jerks upon awakening once or twice per week without progression to convulsion.\n\nNeurologically, examination today was non-focal. There were no signs of intercurrent infection. Cardiovascular and systemic examination were unremarkable. He is driving abstinent and understands the DVLA regulations as they relate to ongoing seizures. We reviewed basic seizure first aid and SUDEP risk reduction in clinic.\n\nImpression: Generalised epilepsy with recent exacerbation in event count (two drop attacks and nine convulsions in the past three months). Past pharmacy supply variability and previously inconsistent adherence may have contributed. We will continue to reconcile supply to a consistent preparation moving forward.\n\nPlan: \n- Continue present anti‑seizure regimen with brand consistency; community pharmacy has been asked to maintain the same manufacturer for repeat issues.  \n- Bloods today for trough levels and general screen (U&Es, LFTs, FBC, vitamin D).  \n- Seizure diary to continue; partner to witness where possible.  \n- Safety advice reiterated; no driving, swimming only with supervision, and avoidance of heights until stable.  \n- Routine follow‑up in 12 weeks, or sooner if clusters occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'two drop attacks and nine convulsions in the past three months.' These are seizure events and should be summed when they occur in the same timeframe. Calculation: 2 + 9 = 11 seizures over 3 months. There is also mention of 'intermittent myoclonic jerks upon awakening once or twice per week,' but these are described as ongoing symptoms without a clear defined time window comparable to the three-month count, and the explicit quantified period is the past three months. Applying the rule to sum same-dimension events within the same period, the clearest quantifiable frequency is 11 per 3 months.",
+      "seizure_frequency_number": [
+        "11 per 3 month",
+        "two drop attacks and nine convulsions in the past three months"
+      ],
+      "reference": [
+        "11 per 3 month",
+        "two drop attacks and nine convulsions in the past three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

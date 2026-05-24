@@ -1,0 +1,59 @@
+{
+  "id": "gan_854",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-04-1990, Hospital No: H938274 NHS No. 5901847261  \n14 Cedar Grove, London, W10 6PA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Well tolerated with no reported mood changes. \n\nThank you for asking me to review Sophie Turner. She is the primary caregiver for her young children and reports that night-time sleep is often interrupted by childcare demands. Despite this, she describes her seizures as occurring roughly yearly, with the last episode in late January this year after several consecutive nights of poor sleep due to a child’s illness. There were no injuries and recovery was rapid. She did not report any clear warning symptoms in the lead-up to this event. \n\nShe has had no daytime episodes, and there have been no witnessed prolonged events or clusters. She does not drive. She has been taking her medication consistently and uses phone reminders to reduce the risk of missed doses during periods of disrupted sleep. She denies alcohol excess and recreational drug use. There is no new neurological deficit reported. \n\nOn discussion today, she feels the current regimen is acceptable and prefers to avoid any changes while events remain roughly yearly and non-injurious. We discussed practical self-management measures, including ensuring medication access at the bedside, aiming for regular rest where feasible, and maintaining a simple seizure diary to document any events, triggers, or missed doses. She understands standard safety advice around bathing, cooking, and supervising children, particularly when overtired. \n\nI have not requested additional tests at this stage given the stability described, but should the pattern change from yearly to more frequent or prolonged events, we would consider further evaluation and treatment review. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily.  \n- Maintain seizure diary; contact us if frequency increases beyond yearly or if events become prolonged or injurious.  \n- Routine follow-up in 9–12 months, sooner if concerns arise. \n\nWe will see her back in approximately one year. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 585,
+      "end": 639,
+      "text": "she describes her seizures as occurring roughly yearly",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 633,
+      "end": 639,
+      "text": "yearly",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 854,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-04-1990, Hospital No: H938274 NHS No. 5901847261  \n14 Cedar Grove, London, W10 6PA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Well tolerated with no reported mood changes. \n\nThank you for asking me to review Sophie Turner. She is the primary caregiver for her young children and reports that night-time sleep is often interrupted by childcare demands. Despite this, she describes her seizures as occurring roughly yearly, with the last episode in late January this year after several consecutive nights of poor sleep due to a child’s illness. There were no injuries and recovery was rapid. She did not report any clear warning symptoms in the lead-up to this event. \n\nShe has had no daytime episodes, and there have been no witnessed prolonged events or clusters. She does not drive. She has been taking her medication consistently and uses phone reminders to reduce the risk of missed doses during periods of disrupted sleep. She denies alcohol excess and recreational drug use. There is no new neurological deficit reported. \n\nOn discussion today, she feels the current regimen is acceptable and prefers to avoid any changes while events remain roughly yearly and non-injurious. We discussed practical self-management measures, including ensuring medication access at the bedside, aiming for regular rest where feasible, and maintaining a simple seizure diary to document any events, triggers, or missed doses. She understands standard safety advice around bathing, cooking, and supervising children, particularly when overtired. \n\nI have not requested additional tests at this stage given the stability described, but should the pattern change from yearly to more frequent or prolonged events, we would consider further evaluation and treatment review. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily.  \n- Maintain seizure diary; contact us if frequency increases beyond yearly or if events become prolonged or injurious.  \n- Routine follow-up in 9–12 months, sooner if concerns arise. \n\nWe will see her back in approximately one year. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's seizures occur roughly yearly, with the last episode in late January this year. There are no mentions of multiple types with different frequencies, no clusters, and no prolonged events. The clearest numeric interpretation is 1 per year. No evidence supports seizure freedom for ≥6 months as a label because the described pattern is ongoing yearly events rather than confirmed seizure-free status.",
+      "seizure_frequency_number": [
+        "1 per year",
+        "she describes her seizures as occurring roughly yearly"
+      ],
+      "reference": [
+        "1 per year",
+        "yearly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

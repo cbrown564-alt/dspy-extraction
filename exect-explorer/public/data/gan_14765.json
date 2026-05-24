@@ -1,0 +1,59 @@
+{
+  "id": "gan_14765",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 25 February 2022 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: History of seizures with prior episodes of absences and dizziness; post-concussive headaches following a minor fall in late 2021; improving mood and coping with ongoing psychological support; hypertension; hypercholesterolaemia; ex-smoker. \n\nMedication: Levetiracetam 750 mg twice daily.  \nLamotrigine 100 mg twice daily.  \nAmlodipine 5 mg once daily.  \nAtorvastatin 20 mg once nightly.  \nOmeprazole 20 mg once daily.  \nThiamine 100 mg once daily.  \n\nI reviewed Bill in clinic today. He attended alone and was able to give a clear history. He reports improved confidence with day-to-day activities and is now walking 30 minutes most days without unsteadiness. Sleep and appetite are stable. With ongoing psychological support, coping has improved, and he feels less preoccupied by health worries. He has been using a simple diary to record events and medication times, which has helped adherence. Neurological examination today was non-focal, gait steady, and there were no features to suggest adverse effects from current antiseizure therapy. \n\nSeizures: He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 25/Jan his absences improved after medication adjustment. His last event was on 30/Jan and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present. This pattern, combined with better sleep hygiene and consistent dosing, is encouraging and supports the overall impression of improvement. \n\nPlan:  \n- Continue current antiseizure regimen without change.  \n- Maintain seizure and medication diary; bring to next review.  \n- Reinforce sleep routine and hydration, which he finds beneficial.  \n- Continue psychological support sessions as arranged; these appear to be contributing to improved coping and stability.  \n- Safety: advised to avoid swimming alone and to take showers rather than baths; no driving as per DVLA guidance until eligible.  \n- Routine bloods (U&E, LFTs, FBC) to be checked via practice in 8–12 weeks to monitor general health and medications.  \n- Follow-up in neurology clinic in 4 months, sooner if events recur or there are concerns. \n\nOverall, his condition is improving, with better symptom control and enhanced coping, and no additional intervention is required at present. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1587,
+      "end": 1647,
+      "text": "His last event was on 30/Jan and he has remained well since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1427,
+      "end": 1812,
+      "text": "He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 25/Jan his absences improved after medication adjustment. His last event was on 30/Jan and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14765,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 25 February 2022 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: History of seizures with prior episodes of absences and dizziness; post-concussive headaches following a minor fall in late 2021; improving mood and coping with ongoing psychological support; hypertension; hypercholesterolaemia; ex-smoker. \n\nMedication: Levetiracetam 750 mg twice daily.  \nLamotrigine 100 mg twice daily.  \nAmlodipine 5 mg once daily.  \nAtorvastatin 20 mg once nightly.  \nOmeprazole 20 mg once daily.  \nThiamine 100 mg once daily.  \n\nI reviewed Bill in clinic today. He attended alone and was able to give a clear history. He reports improved confidence with day-to-day activities and is now walking 30 minutes most days without unsteadiness. Sleep and appetite are stable. With ongoing psychological support, coping has improved, and he feels less preoccupied by health worries. He has been using a simple diary to record events and medication times, which has helped adherence. Neurological examination today was non-focal, gait steady, and there were no features to suggest adverse effects from current antiseizure therapy. \n\nSeizures: He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 25/Jan his absences improved after medication adjustment. His last event was on 30/Jan and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present. This pattern, combined with better sleep hygiene and consistent dosing, is encouraging and supports the overall impression of improvement. \n\nPlan:  \n- Continue current antiseizure regimen without change.  \n- Maintain seizure and medication diary; bring to next review.  \n- Reinforce sleep routine and hydration, which he finds beneficial.  \n- Continue psychological support sessions as arranged; these appear to be contributing to improved coping and stability.  \n- Safety: advised to avoid swimming alone and to take showers rather than baths; no driving as per DVLA guidance until eligible.  \n- Routine bloods (U&E, LFTs, FBC) to be checked via practice in 8–12 weeks to monitor general health and medications.  \n- Follow-up in neurology clinic in 4 months, sooner if events recur or there are concerns. \n\nOverall, his condition is improving, with better symptom control and enhanced coping, and no additional intervention is required at present. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'His last event was on 30/Jan and he has remained well since.' Clinic date is 25 February 2022, so there have been no seizures for about one month. The 6-month seizure-free criterion is not met, so cannot label as seizure free. The current calculable frequency is approximately 1 event in the past month, which normalizes to '1 per month.'",
+      "seizure_frequency_number": [
+        "1 per month",
+        "His last event was on 30/Jan and he has remained well since."
+      ],
+      "reference": [
+        "1 per month",
+        "He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 25/Jan his absences improved after medication adjustment. His last event was on 30/Jan and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

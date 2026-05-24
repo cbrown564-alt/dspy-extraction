@@ -1,0 +1,47 @@
+{
+  "id": "gan_11748",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Rhodes\nEastborough Neurology Centre\nOutpatient Department, 12 Kingfisher Way, Eastborough EB2 7JP\n\nDear Dr Amelia Rhodes,\n\nMaria Thompson, DOB: 14-03-1991, Hospital No: H392771 NHS No. 9482105736\nFlat 3, 25 Brookside House, Eastborough EB1 3LT\n\nDiagnoses:\n\nEpilepsy — ongoing neurological follow-up.\n\nCurrent Medication:\n\nLamotrigine as per current prescription.\n\nPlan:\n\n- Support housing needs assessment in light of current living circumstances.\n\nI reviewed Maria Thompson in clinic today. They remain in temporary accommodation and report crowded living conditions while awaiting relocation. In the context of their neurological condition, stable and secure housing is important to support adherence to treatment, rest, and safety. I recommend prioritisation for suitable accommodation that allows for a quiet sleeping environment, personal space for medication storage, and safe private facilities.\n\nFor the purposes of a housing needs assessment, I can confirm that improved housing stability would be beneficial for ongoing neurological health and day-to-day self-management. I would be grateful if this letter could be considered as medical support for expedited review.\n\nI will continue routine neurological follow-up. Please contact the department if further information is required.\n\nWith best wishes,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11748,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Rhodes\nEastborough Neurology Centre\nOutpatient Department, 12 Kingfisher Way, Eastborough EB2 7JP\n\nDear Dr Amelia Rhodes,\n\nMaria Thompson, DOB: 14-03-1991, Hospital No: H392771 NHS No. 9482105736\nFlat 3, 25 Brookside House, Eastborough EB1 3LT\n\nDiagnoses:\n\nEpilepsy — ongoing neurological follow-up.\n\nCurrent Medication:\n\nLamotrigine as per current prescription.\n\nPlan:\n\n- Support housing needs assessment in light of current living circumstances.\n\nI reviewed Maria Thompson in clinic today. They remain in temporary accommodation and report crowded living conditions while awaiting relocation. In the context of their neurological condition, stable and secure housing is important to support adherence to treatment, rest, and safety. I recommend prioritisation for suitable accommodation that allows for a quiet sleeping environment, personal space for medication storage, and safe private facilities.\n\nFor the purposes of a housing needs assessment, I can confirm that improved housing stability would be beneficial for ongoing neurological health and day-to-day self-management. I would be grateful if this letter could be considered as medical support for expedited review.\n\nI will continue routine neurological follow-up. Please contact the department if further information is required.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms a diagnosis of epilepsy and discusses housing needs and medication but contains no mention of seizures occurring, their frequency, or seizure-free duration. There are no explicit references to seizure events, counts, timing, or rates. Per instruction 5, when seizures are not mentioned at all, the correct output is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter providing administrative support for a housing needs assessment related to epilepsy"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

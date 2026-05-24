@@ -1,0 +1,48 @@
+{
+  "id": "gan_5430",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended with support from his key worker from the assisted living facility, and I have also reviewed the recent key‑worker notes where available. Since my last review in March 2025, he reports ongoing events that have been assessed as dissociative (non-epileptic) in nature, with no definite epileptic convulsions recorded in this interval. The key‑worker documentation describes brief episodes of unresponsiveness and tremulousness occurring mainly during interpersonal stress or in busy communal areas, typically lasting 2–5 minutes and resolving with reassurance and grounding techniques. There have been no injuries, tongue biting, or post‑event confusion reported, and staff have not observed any clear nocturnal events.\n\nHe remains on Levetiracetam 1000 mg b.d. and Sertraline 50 mg o.d., both well tolerated. He describes intermittent fatigue and low mood, which he attributes to disrupted sleep; the key‑worker notes also highlight variable sleep hygiene. He denies new focal neurological symptoms, headaches, or visual disturbance. Alcohol intake is negligible and he does not drive. Adherence is supported by supervised medications in the residence.\n\nSince June 2025, the frequency of these episodes has averaged two to three per week, clustered during periods of heightened anxiety. There have been no witnessed tonic–clonic events, and no emergency attendances. Staff have implemented a brief de‑escalation plan with positive effect (quiet space, paced breathing, and structured prompts). A community psychology referral was initiated by the support team; initial screening has been completed and he awaits therapy. He and the team have been provided with the first-aid advice sheet for dissociative events and a stepwise plan to minimise unnecessary paramedic activation.\n\nFrom a neurological perspective, there is no current indication to escalate antiseizure therapy. We discussed that the current presentation is best managed with psychological and behavioural strategies alongside consistent routines in the residence. I have supplied the key worker with a copy of the event diary template and a brief trigger checklist to improve event characterisation. If the pattern changes (for example, prolonged unresponsiveness, clear nocturnal events with injuries, or events occurring without identifiable triggers), we would reconsider further investigation with video‑EEG monitoring.\n\nPlan:\n- Continue Levetiracetam 1000 mg b.d. unchanged.\n- Support ongoing community psychology input; key worker to facilitate attendance.\n- Maintain structured event diary and trigger log; residence to provide monthly summaries.\n- Sleep hygiene measures reinforced; consider primary care review for insomnia strategies if needed.\n- Safety advice reiterated; no driving.\n\nI will review him again in approximately four months, sooner if there is a clear change in the pattern of events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 587,
+      "end": 646,
+      "text": "no definite epileptic convulsions recorded in this interval",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5430,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended with support from his key worker from the assisted living facility, and I have also reviewed the recent key‑worker notes where available. Since my last review in March 2025, he reports ongoing events that have been assessed as dissociative (non-epileptic) in nature, with no definite epileptic convulsions recorded in this interval. The key‑worker documentation describes brief episodes of unresponsiveness and tremulousness occurring mainly during interpersonal stress or in busy communal areas, typically lasting 2–5 minutes and resolving with reassurance and grounding techniques. There have been no injuries, tongue biting, or post‑event confusion reported, and staff have not observed any clear nocturnal events.\n\nHe remains on Levetiracetam 1000 mg b.d. and Sertraline 50 mg o.d., both well tolerated. He describes intermittent fatigue and low mood, which he attributes to disrupted sleep; the key‑worker notes also highlight variable sleep hygiene. He denies new focal neurological symptoms, headaches, or visual disturbance. Alcohol intake is negligible and he does not drive. Adherence is supported by supervised medications in the residence.\n\nSince June 2025, the frequency of these episodes has averaged two to three per week, clustered during periods of heightened anxiety. There have been no witnessed tonic–clonic events, and no emergency attendances. Staff have implemented a brief de‑escalation plan with positive effect (quiet space, paced breathing, and structured prompts). A community psychology referral was initiated by the support team; initial screening has been completed and he awaits therapy. He and the team have been provided with the first-aid advice sheet for dissociative events and a stepwise plan to minimise unnecessary paramedic activation.\n\nFrom a neurological perspective, there is no current indication to escalate antiseizure therapy. We discussed that the current presentation is best managed with psychological and behavioural strategies alongside consistent routines in the residence. I have supplied the key worker with a copy of the event diary template and a brief trigger checklist to improve event characterisation. If the pattern changes (for example, prolonged unresponsiveness, clear nocturnal events with injuries, or events occurring without identifiable triggers), we would reconsider further investigation with video‑EEG monitoring.\n\nPlan:\n- Continue Levetiracetam 1000 mg b.d. unchanged.\n- Support ongoing community psychology input; key worker to facilitate attendance.\n- Maintain structured event diary and trigger log; residence to provide monthly summaries.\n- Sleep hygiene measures reinforced; consider primary care review for insomnia strategies if needed.\n- Safety advice reiterated; no driving.\n\nI will review him again in approximately four months, sooner if there is a clear change in the pattern of events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing events assessed as dissociative (non-epileptic) with no definite epileptic convulsions in this interval. The task is to infer seizure frequency; since epileptic seizures are the target, and the letter explicitly states no definite epileptic convulsions recorded since last review, the current epileptic seizure frequency is effectively zero in this interval. However, to be labeled 'seizure free' per rules, there must be at least 6 months of seizure freedom. The interval mentioned is since the last review in March 2025 to clinic date 02 October 2025, which is approximately 7 months. But the letter uses the phrasing 'no definite epileptic convulsions recorded in this interval,' which suggests absence of witnessed/recorded epileptic seizures across that time. This satisfies at least 6 months without epileptic seizures, so 'seizure free for multiple months' is appropriate (since exact months not precisely defined in the format, and the rules allow 'multiple months' when insufficiently specific).",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no definite epileptic convulsions recorded in this interval"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "non-epileptic seizures only"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6377",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Miriam Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Miriam Patel, \n\nMr Daniel Hart, DOB: 22-09-1991, Hospital No: K841203 NHS No. 9083174526  \nFlat 3, 27 Willow Lane, London, SE15 4HT  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; current classification not established \n\nAetiology: \n\nNo structural lesion identified on MRI brain (2024). Screening bloods unremarkable. \n\nOther Medical Problems: \n\nMild anxiety symptoms managed with guided self-help; vitamin D insufficiency treated with cholecalciferol 1000 IU daily. \n\nManagement Plan: \n\n- Continue Levetiracetam 750 mg twice daily; advise remaining on a consistent brand.  \n- Arrange routine EEG with sleep deprivation to aid classification.  \n- Provide seizure first-aid and safety advice; avoid sleep restriction and ensure regular meals and hydration.  \n- DVLA guidance reiterated: no driving until seizure-free in accordance with current regulations.  \n- Follow-up in four months; consider ambulatory EEG if routine EEG non-diagnostic.  \n\nHistory and interval update: \n\nSince last review, Mr Daniel Hart reports three brief seizure episodes over six months, each occurring in the late morning following nights of curtailed sleep and high-stimulant intake. He describes these as “coffee-day episodes,” typically arising after multiple strong coffees and minimal breakfast. There were no tongue bites or injuries, and recovery was rapid (5–10 minutes) with subsequent fatigue. Family members witnessed two events and noted brief behavioural arrest and unresponsiveness without clear lateralising features. \n\nHe has reduced social alcohol use over the past three months and is currently cutting down further; no clear temporal link between alcohol and events is reported. Medication adherence is good, with no missed doses in the last two months. No new neurological symptoms, headaches, or focal deficits. \n\nThe pattern suggests episodes clustering with stimulant overuse and sleep reduction, and we discussed limiting caffeinated beverages, especially on early-start days, and maintaining regular sleep hygiene. He prefers to continue medical management without changes at present; I have supported this given stable frequency and absence of adverse effects. We will re-evaluate after EEG results. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1214,
+      "end": 1266,
+      "text": "reports three brief seizure episodes over six months",
+      "attributes": {
+        "Label": "3 per 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6377,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Miriam Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Miriam Patel, \n\nMr Daniel Hart, DOB: 22-09-1991, Hospital No: K841203 NHS No. 9083174526  \nFlat 3, 27 Willow Lane, London, SE15 4HT  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; current classification not established \n\nAetiology: \n\nNo structural lesion identified on MRI brain (2024). Screening bloods unremarkable. \n\nOther Medical Problems: \n\nMild anxiety symptoms managed with guided self-help; vitamin D insufficiency treated with cholecalciferol 1000 IU daily. \n\nManagement Plan: \n\n- Continue Levetiracetam 750 mg twice daily; advise remaining on a consistent brand.  \n- Arrange routine EEG with sleep deprivation to aid classification.  \n- Provide seizure first-aid and safety advice; avoid sleep restriction and ensure regular meals and hydration.  \n- DVLA guidance reiterated: no driving until seizure-free in accordance with current regulations.  \n- Follow-up in four months; consider ambulatory EEG if routine EEG non-diagnostic.  \n\nHistory and interval update: \n\nSince last review, Mr Daniel Hart reports three brief seizure episodes over six months, each occurring in the late morning following nights of curtailed sleep and high-stimulant intake. He describes these as “coffee-day episodes,” typically arising after multiple strong coffees and minimal breakfast. There were no tongue bites or injuries, and recovery was rapid (5–10 minutes) with subsequent fatigue. Family members witnessed two events and noted brief behavioural arrest and unresponsiveness without clear lateralising features. \n\nHe has reduced social alcohol use over the past three months and is currently cutting down further; no clear temporal link between alcohol and events is reported. Medication adherence is good, with no missed doses in the last two months. No new neurological symptoms, headaches, or focal deficits. \n\nThe pattern suggests episodes clustering with stimulant overuse and sleep reduction, and we discussed limiting caffeinated beverages, especially on early-start days, and maintaining regular sleep hygiene. He prefers to continue medical management without changes at present; I have supported this given stable frequency and absence of adverse effects. We will re-evaluate after EEG results. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"reports three brief seizure episodes over six months.\" This provides a clear numeric frequency over a defined time frame. No other higher or conflicting frequency is given. The patient is not seizure-free for at least 6 months, so seizure-free labeling does not apply. Normalize to allowed format: 3 per 6 month.",
+      "seizure_frequency_number": [
+        "3 per 6 month",
+        "reports three brief seizure episodes over six months"
+      ],
+      "reference": [
+        "unknown",
+        "Caffeine-associated seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per 6 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

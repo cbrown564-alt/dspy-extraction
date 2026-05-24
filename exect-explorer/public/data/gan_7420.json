@@ -1,0 +1,54 @@
+{
+  "id": "gan_7420",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient via a scheduled telephone consultation today, arranged to coincide with his onshore period from offshore work. He reports adherence to his antiepileptic regimen and regular blood test monitoring undertaken by the occupational health team associated with his employer. Recent reports confirm stable medication concentrations, yet he continues to experience intermittent events. In other words, despite documented therapeutic exposure, episodes are still occurring.\n\nSince our last contact in May 2025, he describes two larger events with loss of awareness witnessed by colleagues (June and late August), each followed by several hours of fatigue and headache. In addition, he notes brief spells once or twice a fortnight characterised by a sudden pause in activity and difficulty recalling the immediate moment afterwards; these tend to cluster during the transition back onshore when sleep is irregular. There have been no injuries. He has a current workplace risk assessment in place; he does not engage in work at height or hot work during the week following any event.\n\nCurrent medicines (patient-reported, unchanged for the past three months): Levetiracetam 1,000 mg twice daily, Lamotrigine 150 mg twice daily, and Clobazam 10 mg at night. He denies rash or mood change. He notes mild concentration lapses during long shifts offshore, which he attributes partly to disrupted sleep patterns. He is using a seizure diary app and has shared summary logs that align with the above pattern.\n\nWe discussed practical measures around sleep regularity during rotation changes, hydration, and prompt occupational health notification after any further episodes. Given stable drug levels and ongoing events, I have requested an onshore ambulatory EEG at the earliest opportunity to help characterise the episodes during his typical daily routine, and I will arrange a telephone review to coincide with his next onshore week in approximately eight weeks. If there is escalation in frequency, he will contact us sooner via the epilepsy nurse advice line. Driving advice remains as previously documented. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 953,
+      "end": 991,
+      "text": "brief spells once or twice a fortnight",
+      "attributes": {
+        "Label": "1 to 2 per 2 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7420,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient via a scheduled telephone consultation today, arranged to coincide with his onshore period from offshore work. He reports adherence to his antiepileptic regimen and regular blood test monitoring undertaken by the occupational health team associated with his employer. Recent reports confirm stable medication concentrations, yet he continues to experience intermittent events. In other words, despite documented therapeutic exposure, episodes are still occurring.\n\nSince our last contact in May 2025, he describes two larger events with loss of awareness witnessed by colleagues (June and late August), each followed by several hours of fatigue and headache. In addition, he notes brief spells once or twice a fortnight characterised by a sudden pause in activity and difficulty recalling the immediate moment afterwards; these tend to cluster during the transition back onshore when sleep is irregular. There have been no injuries. He has a current workplace risk assessment in place; he does not engage in work at height or hot work during the week following any event.\n\nCurrent medicines (patient-reported, unchanged for the past three months): Levetiracetam 1,000 mg twice daily, Lamotrigine 150 mg twice daily, and Clobazam 10 mg at night. He denies rash or mood change. He notes mild concentration lapses during long shifts offshore, which he attributes partly to disrupted sleep patterns. He is using a seizure diary app and has shared summary logs that align with the above pattern.\n\nWe discussed practical measures around sleep regularity during rotation changes, hydration, and prompt occupational health notification after any further episodes. Given stable drug levels and ongoing events, I have requested an onshore ambulatory EEG at the earliest opportunity to help characterise the episodes during his typical daily routine, and I will arrange a telephone review to coincide with his next onshore week in approximately eight weeks. If there is escalation in frequency, he will contact us sooner via the epilepsy nurse advice line. Driving advice remains as previously documented. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly reports ongoing seizure-like events. It specifies two larger events since May 2025 (June and late August), which averages well under 1 per month. More importantly, it states the patient has brief spells \"once or twice a fortnight.\" A fortnight is 2 weeks, so the highest frequency to report is 1 to 2 per 2 weeks. The note about clustering lacks quantification, so the cluster format is not applicable.",
+      "seizure_frequency_number": [
+        "1 to 2 per 2 week",
+        "brief spells once or twice a fortnight"
+      ],
+      "reference": [
+        "unknown",
+        "Therapeutic levels documented; seizure events continue"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 to 2 per 2 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

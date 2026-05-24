@@ -1,0 +1,54 @@
+{
+  "id": "gan_7290",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 January 2017 \n\nDr Patel\nRiverside Health Centre\n\n22 Millbank, London, SW1P 3GE\nDear Dr Patel\nMichael Green, DOB: 09-03-1989, Hospital No: Q903774 NHS No. 7745123986\nFlat 4, 12 Brook Lane, London, SE5 9TR \n\nI reviewed the above patient in the Neurology Clinic today. He reports ongoing events consistent with his previous history. He splits each week between two households and keeps identical supplies of medication at both locations to avoid missed doses. He confirms adherence and brings a reconciled list. Current treatment is Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. He denies notable adverse effects apart from occasional light-headedness when overtired. \n\nWe discussed recent episodes. He is not able to quantify how often these occur, and there is no reliable count available from him or family at present. He does feel that episodes tend to cluster around busier periods of the week, particularly when commuting and managing changes of routine between homes. No clear injuries reported; last tongue-bite was over a year ago. No prolonged post-event confusion described recently.\n\nGiven the variability in his schedule and the split living arrangements, I have asked him to maintain a simple calendar-based diary and to enable seizure logging on his smartphone. I have also requested that both households retain identical rescue and contact information. We will obtain community pharmacy dispensing records to corroborate adherence. Routine bloods (U&Es, LFTs) will be checked, and I have arranged an EEG and updated MRI given elapsed time since prior imaging. \n\nFor now I have not altered his medication. We will review in clinic in 3 months with diary data and test results to guide further management. He knows to contact us sooner if events change in character or duration, or if injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 747,
+      "end": 868,
+      "text": "He is not able to quantify how often these occur, and there is no reliable count available from him or family at present.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7290,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 January 2017 \n\nDr Patel\nRiverside Health Centre\n\n22 Millbank, London, SW1P 3GE\nDear Dr Patel\nMichael Green, DOB: 09-03-1989, Hospital No: Q903774 NHS No. 7745123986\nFlat 4, 12 Brook Lane, London, SE5 9TR \n\nI reviewed the above patient in the Neurology Clinic today. He reports ongoing events consistent with his previous history. He splits each week between two households and keeps identical supplies of medication at both locations to avoid missed doses. He confirms adherence and brings a reconciled list. Current treatment is Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. He denies notable adverse effects apart from occasional light-headedness when overtired. \n\nWe discussed recent episodes. He is not able to quantify how often these occur, and there is no reliable count available from him or family at present. He does feel that episodes tend to cluster around busier periods of the week, particularly when commuting and managing changes of routine between homes. No clear injuries reported; last tongue-bite was over a year ago. No prolonged post-event confusion described recently.\n\nGiven the variability in his schedule and the split living arrangements, I have asked him to maintain a simple calendar-based diary and to enable seizure logging on his smartphone. I have also requested that both households retain identical rescue and contact information. We will obtain community pharmacy dispensing records to corroborate adherence. Routine bloods (U&Es, LFTs) will be checked, and I have arranged an EEG and updated MRI given elapsed time since prior imaging. \n\nFor now I have not altered his medication. We will review in clinic in 3 months with diary data and test results to guide further management. He knows to contact us sooner if events change in character or duration, or if injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's ongoing seizure-like events but explicitly states that he is not able to quantify how often these occur and there is no reliable count from him or family. There are no numeric frequencies provided, and no indication of seizure freedom for 6 months or more. Therefore, the specific frequency cannot be determined from the letter, so the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "He is not able to quantify how often these occur, and there is no reliable count available from him or family at present."
+      ],
+      "reference": [
+        "unknown",
+        "Seizure exacerbations noted on work days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

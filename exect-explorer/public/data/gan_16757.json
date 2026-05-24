@@ -1,0 +1,59 @@
+{
+  "id": "gan_16757",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 3 October 2015 \n\nDr Anita Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital NHS Foundation Trust  \n\nDear Dr Anita Shah, \n\nAlex Morgan, DOB: 22-08-1992, Hospital No: K847210 NHS No. 3014729986  \nFlat 12, 9 Riverbank Way, Kingston upon Thames, KT1 2AB  \n\nDiagnosis: \n\nGeneralised epilepsy with recent clusters of brief seizures; valproate responsive but with residual breakthrough episodes\n\nAetiology: \n\nPresumed genetic generalised epilepsy; no structural lesion identified; normal development and no perinatal complications\n\nOther Medical Problems: \n\nGeneralised anxiety and low mood, patient reports intermittent sleep disturbance and health-related worry; no self-harm; currently engaged with GP for talking therapy referral\n\nManagement Plan: \n\n- Continue sodium valproate modified release 500 mg mane and 1000 mg nocte.  \n- Introduce rescue plan for clusters: buccal midazolam 5 mg if three or more brief seizures occur within 30 minutes, or if a seizure lasts longer than 5 minutes; mother instructed and provided written guidance.  \n- Sleep hygiene advice and stress-management strategies discussed; encourage ongoing counselling via IAPT.  \n- Safety advice: avoid sleep deprivation, limit alcohol, and adhere to DVLA guidance for seizures.  \n- Arrange ambulatory EEG and serum valproate level prior to next visit; routine bloods including FBC, LFTs.  \n- Review in four months, earlier if further clusters occur.\n\nThis patient has generalised epilepsy and describes variable brief events without consistent focal onset features. In April he had a run of 6 seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was six further seizures at night, and in September another during physiotherapy (unwitnessed by mother). He did not require emergency care and there has been no associated injury. He links the periods of increased seizure activity to poor sleep and heightened anxiety. Valproate has otherwise reduced background events, and there have been no prolonged generalised tonic–clonic seizures for over a year. We discussed a pragmatic rescue plan for clusters, reinforcement of adherence, and strategies to address anxiety and sleep, as these appear to act as triggers. No adverse effects from valproate reported; weight stable and mood symptoms predate treatment. I will update you following the EEG and blood results.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1614,
+      "end": 1767,
+      "text": "In April he had a run of 6 seizures within half an hour... In June there was six further seizures at night, and in September another during physiotherapy",
+      "attributes": {
+        "Label": "13 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1614,
+      "end": 1880,
+      "text": "In April he had a run of 6 seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was six further seizures at night, and in September another during physiotherapy (unwitnessed by mother)",
+      "attributes": {
+        "Label": "13 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16757,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 3 October 2015 \n\nDr Anita Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital NHS Foundation Trust  \n\nDear Dr Anita Shah, \n\nAlex Morgan, DOB: 22-08-1992, Hospital No: K847210 NHS No. 3014729986  \nFlat 12, 9 Riverbank Way, Kingston upon Thames, KT1 2AB  \n\nDiagnosis: \n\nGeneralised epilepsy with recent clusters of brief seizures; valproate responsive but with residual breakthrough episodes\n\nAetiology: \n\nPresumed genetic generalised epilepsy; no structural lesion identified; normal development and no perinatal complications\n\nOther Medical Problems: \n\nGeneralised anxiety and low mood, patient reports intermittent sleep disturbance and health-related worry; no self-harm; currently engaged with GP for talking therapy referral\n\nManagement Plan: \n\n- Continue sodium valproate modified release 500 mg mane and 1000 mg nocte.  \n- Introduce rescue plan for clusters: buccal midazolam 5 mg if three or more brief seizures occur within 30 minutes, or if a seizure lasts longer than 5 minutes; mother instructed and provided written guidance.  \n- Sleep hygiene advice and stress-management strategies discussed; encourage ongoing counselling via IAPT.  \n- Safety advice: avoid sleep deprivation, limit alcohol, and adhere to DVLA guidance for seizures.  \n- Arrange ambulatory EEG and serum valproate level prior to next visit; routine bloods including FBC, LFTs.  \n- Review in four months, earlier if further clusters occur.\n\nThis patient has generalised epilepsy and describes variable brief events without consistent focal onset features. In April he had a run of 6 seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was six further seizures at night, and in September another during physiotherapy (unwitnessed by mother). He did not require emergency care and there has been no associated injury. He links the periods of increased seizure activity to poor sleep and heightened anxiety. Valproate has otherwise reduced background events, and there have been no prolonged generalised tonic–clonic seizures for over a year. We discussed a pragmatic rescue plan for clusters, reinforcement of adherence, and strategies to address anxiety and sleep, as these appear to act as triggers. No adverse effects from valproate reported; weight stable and mood symptoms predate treatment. I will update you following the EEG and blood results.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes discrete seizure clusters/events on three occasions within the recent months: a run of 6 seizures in April (within 30 minutes), six further seizures in June (at night), and another seizure in September. There is no explicit ongoing regular frequency given beyond these dated episodes. Over the 6-month window surrounding these described months (e.g., April to September inclusive is roughly 6 months), the total number of seizures explicitly mentioned is 6 (April) + 6 (June) + 1 (September) = 13. There is no statement of being seizure-free for ≥6 months. Therefore, infer the frequency as 13 per 6 months. Quote provided from the letter references the counts.",
+      "seizure_frequency_number": [
+        "13 per 6 month",
+        "In April he had a run of 6 seizures within half an hour... In June there was six further seizures at night, and in September another during physiotherapy"
+      ],
+      "reference": [
+        "13 per 6 month",
+        "In April he had a run of 6 seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was six further seizures at night, and in September another during physiotherapy (unwitnessed by mother)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

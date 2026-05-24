@@ -1,0 +1,48 @@
+{
+  "id": "gan_8224",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 18 September 2025 \n\nDr Ahmed  \nGreenbank Medical Centre  \n12 Greenbank Road, London SE15 4QT  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 23-11-1993, Hospital No: H548219 NHS No. 9054731168  \nFlat 4, 29 Brook Street, London W1K 4HE \n\nMedication: \n\nSodium valproate 500 mg twice daily. Tolerated without reported adverse effects. \n\nI reviewed Sophie Williams in clinic today for follow-up of generalised epilepsy. She reports that since her last appointment three months ago, there have been no witnessed convulsive events or absence episodes, and she notes only brief, non-specific moments of inattention under stress that do not resemble her prior seizures. Overall, seizure control appears stable with no interval events recorded. \n\nShe describes regular sleep, consistent medication adherence, and no intercurrent illnesses. She does not drive. There is no new neurological symptomatology, and she denies mood change, weight fluctuation, tremor, or gastrointestinal upset. \n\nExamination today was unremarkable. We discussed ongoing lifestyle measures and the importance of maintaining adherence. We also reviewed potential teratogenic risks associated with valproate; she understands the need for effective contraception and to contact us early if pregnancy is planned or suspected. \n\nPlan: \n- Continue sodium valproate 500 mg twice daily.  \n- Arrange routine bloods (LFTs, FBC) via GP in the next 4–6 weeks.  \n- Provide safety advice regarding generalised epilepsy, including sleep hygiene and avoidance of known personal triggers.  \n- No change to rescue plan as there have been no interval events.  \n\nWe will review her again in six months, or sooner if there is any breakthrough event or adverse effect. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 487,
+      "end": 738,
+      "text": "since her last appointment three months ago, there have been no witnessed convulsive events or absence episodes, and she notes only brief, non-specific moments of inattention... Overall, seizure control appears stable with no interval events recorded.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8224,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 18 September 2025 \n\nDr Ahmed  \nGreenbank Medical Centre  \n12 Greenbank Road, London SE15 4QT  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 23-11-1993, Hospital No: H548219 NHS No. 9054731168  \nFlat 4, 29 Brook Street, London W1K 4HE \n\nMedication: \n\nSodium valproate 500 mg twice daily. Tolerated without reported adverse effects. \n\nI reviewed Sophie Williams in clinic today for follow-up of generalised epilepsy. She reports that since her last appointment three months ago, there have been no witnessed convulsive events or absence episodes, and she notes only brief, non-specific moments of inattention under stress that do not resemble her prior seizures. Overall, seizure control appears stable with no interval events recorded. \n\nShe describes regular sleep, consistent medication adherence, and no intercurrent illnesses. She does not drive. There is no new neurological symptomatology, and she denies mood change, weight fluctuation, tremor, or gastrointestinal upset. \n\nExamination today was unremarkable. We discussed ongoing lifestyle measures and the importance of maintaining adherence. We also reviewed potential teratogenic risks associated with valproate; she understands the need for effective contraception and to contact us early if pregnancy is planned or suspected. \n\nPlan: \n- Continue sodium valproate 500 mg twice daily.  \n- Arrange routine bloods (LFTs, FBC) via GP in the next 4–6 weeks.  \n- Provide safety advice regarding generalised epilepsy, including sleep hygiene and avoidance of known personal triggers.  \n- No change to rescue plan as there have been no interval events.  \n\nWe will review her again in six months, or sooner if there is any breakthrough event or adverse effect. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states: since her last appointment three months ago, there have been no witnessed convulsive events or absence episodes, and overall seizure control appears stable with no interval events recorded. This indicates zero seizures over the past 3 months. To be labeled seizure free, the period must be at least 6 months, which is not met here. Therefore, per rules, we should report the current frequency over time rather than 'seizure free'. With zero events over 3 months, the frequency is 0 per 3 months, but the allowed formats do not include zero. The instruction says to calculate the patient's seizure frequency; commonly, in these tasks, zero over a known interval should be represented as 'seizure free for <value> month' if at least one month, but the rule 8 requires at least 6 months to claim seizure free. It also allows: if insufficient to confirm 6 months, the patient may be considered 'seizure free for multiple months'. Here we know it's 3 months, which is less than 6, so we should not claim 'seizure free' with a specific month value. The rule allows 'seizure free for multiple months' when not meeting the 6-month criterion but currently has no seizures for months. Thus the appropriate normalized label is 'seizure free for multiple month'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "since her last appointment three months ago, there have been no witnessed convulsive events or absence episodes, and she notes only brief, non-specific moments of inattention... Overall, seizure control appears stable with no interval events recorded."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

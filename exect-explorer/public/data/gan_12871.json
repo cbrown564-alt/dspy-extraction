@@ -1,0 +1,59 @@
+{
+  "id": "gan_12871",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 20 February 2015 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Levetiracetam 1,000 mg twice daily (since October 2014); Clobazam 10 mg nocte as rescue for clusters (used twice this year)\n\nLamotrigine Blood Level: \n\nNot applicable (not currently prescribed).\n\nVagus Nerve Stimulator (VNS): Implanted May 2013; generator functioning normally on interrogation today. No parameter changes made at this review; battery status satisfactory and lead impedance within expected range. Patient reports typical brief throat tightness with magnet activation, unchanged from baseline.\n\nSeizures: Seizure burden has been substantially reduced following dose adjustment, with only five focal impaired-awareness seizures reported so far this year. These have been brief (under two minutes), with rapid recovery and no secondary generalisation reported. No injuries, no emergency department attendances.\n\nToday’s review was conducted face-to-face. The patient reports improved daytime alertness after moving the evening levetiracetam dose to 9 pm and introducing consistent sleep hygiene; no mood lability noted on screening questions. Clobazam has been used twice for short-lived clustering with good effect and without sedation the following day. Family continue to use the VNS magnet at onset, which the patient feels shortens events.\n\nGiven the present stability and the absence of adverse effects, I have advised continuing current therapy unchanged. We will repeat VNS interrogation and routine safety bloods (U&E, LFTs) at the next visit or sooner if clinical changes occur. Seizure precautions and DVLA guidance were reiterated; patient confirms not driving.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 995,
+      "end": 1064,
+      "text": "only five focal impaired-awareness seizures reported so far this year",
+      "attributes": {
+        "Label": "5 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 917,
+      "end": 1064,
+      "text": "Seizure burden has been substantially reduced following dose adjustment, with only five focal impaired-awareness seizures reported so far this year",
+      "attributes": {
+        "Label": "5 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12871,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 20 February 2015 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Levetiracetam 1,000 mg twice daily (since October 2014); Clobazam 10 mg nocte as rescue for clusters (used twice this year)\n\nLamotrigine Blood Level: \n\nNot applicable (not currently prescribed).\n\nVagus Nerve Stimulator (VNS): Implanted May 2013; generator functioning normally on interrogation today. No parameter changes made at this review; battery status satisfactory and lead impedance within expected range. Patient reports typical brief throat tightness with magnet activation, unchanged from baseline.\n\nSeizures: Seizure burden has been substantially reduced following dose adjustment, with only five focal impaired-awareness seizures reported so far this year. These have been brief (under two minutes), with rapid recovery and no secondary generalisation reported. No injuries, no emergency department attendances.\n\nToday’s review was conducted face-to-face. The patient reports improved daytime alertness after moving the evening levetiracetam dose to 9 pm and introducing consistent sleep hygiene; no mood lability noted on screening questions. Clobazam has been used twice for short-lived clustering with good effect and without sedation the following day. Family continue to use the VNS magnet at onset, which the patient feels shortens events.\n\nGiven the present stability and the absence of adverse effects, I have advised continuing current therapy unchanged. We will repeat VNS interrogation and routine safety bloods (U&E, LFTs) at the next visit or sooner if clinical changes occur. Seizure precautions and DVLA guidance were reiterated; patient confirms not driving.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- The letter explicitly states: \"only five focal impaired-awareness seizures reported so far this year.\"\n- Clinic date is 20 February 2015, so \"so far this year\" covers approximately Jan 1 to Feb 20, which is about 2 months.\n- Normalize to a rate: 5 seizures over ~2 months → \"5 per 2 month\".\n- No other seizure frequency is higher; cluster information lacks seizures-per-cluster, so it cannot supersede the seizure rate.",
+      "seizure_frequency_number": [
+        "5 per 2 month",
+        "only five focal impaired-awareness seizures reported so far this year"
+      ],
+      "reference": [
+        "5 per 2 month",
+        "Seizure burden has been substantially reduced following dose adjustment, with only five focal impaired-awareness seizures reported so far this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

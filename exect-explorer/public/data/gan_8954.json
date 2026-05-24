@@ -1,0 +1,59 @@
+{
+  "id": "gan_8954",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 January 2022 \n\nDr Ahmed  \nRiverside Medical Centre  \n12 Wharf Road, London N1 7GQ  \n\nDear Dr Ahmed,  \n\nJames O’Neill, DOB: 23-02-1990, Hospital No: H918204 NHS No. 5930174421  \nFlat 5, 31 Mariner Close, London, E3 2LP \n\nMedication: \n\nNone currently. Drug-free remission since 11-05-2021. \n\nThank you for reviewing James O’Neill, who works as a warehouse picker operating between tall racking and narrow aisles where lifting tasks and pace vary by shift. She reports that she last experienced any seizure-like events in early May 2021 and, following careful tapering supervised in clinic, she has remained in Drug-free remission since 11-05-2021. She continues to adhere to workplace safety procedures (use of a spotter during high lifts, scheduled hydration breaks, and avoidance of lone working for stock checks at height) and denies any recent episodes of loss of awareness, auras, or nocturnal events. There have been no injuries, near-misses, or work restrictions required since that date. \n\nTriggers previously suspected by the patient included sleep deprivation during early starts and missed meals during peak season. She has adjusted by using set alarms for breaks and a consistent sleep routine even on rotating shifts. She does not consume alcohol on work nights and has reduced caffeine intake. She does not drive. \n\nNeurological examination today is normal. There are no new medical issues, and she reports good mood and no cognitive concerns. We discussed red flags for relapse and agreed that if any warning symptoms occur (e.g. prodromal sensations, brief unresponsiveness, or witnessed events), she will seek urgent review. She is content to remain off antiseizure medication given maintained remission and absence of precipitating factors in recent months. \n\nWe will follow up in six months, or sooner if problems arise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 312,
+      "end": 349,
+      "text": "Drug-free remission since 11-05-2021.",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 312,
+      "end": 348,
+      "text": "Drug-free remission since 11-05-2021",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8954,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 January 2022 \n\nDr Ahmed  \nRiverside Medical Centre  \n12 Wharf Road, London N1 7GQ  \n\nDear Dr Ahmed,  \n\nJames O’Neill, DOB: 23-02-1990, Hospital No: H918204 NHS No. 5930174421  \nFlat 5, 31 Mariner Close, London, E3 2LP \n\nMedication: \n\nNone currently. Drug-free remission since 11-05-2021. \n\nThank you for reviewing James O’Neill, who works as a warehouse picker operating between tall racking and narrow aisles where lifting tasks and pace vary by shift. She reports that she last experienced any seizure-like events in early May 2021 and, following careful tapering supervised in clinic, she has remained in Drug-free remission since 11-05-2021. She continues to adhere to workplace safety procedures (use of a spotter during high lifts, scheduled hydration breaks, and avoidance of lone working for stock checks at height) and denies any recent episodes of loss of awareness, auras, or nocturnal events. There have been no injuries, near-misses, or work restrictions required since that date. \n\nTriggers previously suspected by the patient included sleep deprivation during early starts and missed meals during peak season. She has adjusted by using set alarms for breaks and a consistent sleep routine even on rotating shifts. She does not consume alcohol on work nights and has reduced caffeine intake. She does not drive. \n\nNeurological examination today is normal. There are no new medical issues, and she reports good mood and no cognitive concerns. We discussed red flags for relapse and agreed that if any warning symptoms occur (e.g. prodromal sensations, brief unresponsiveness, or witnessed events), she will seek urgent review. She is content to remain off antiseizure medication given maintained remission and absence of precipitating factors in recent months. \n\nWe will follow up in six months, or sooner if problems arise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 14 January 2022. The letter states the patient has been in drug-free remission since 11-05-2021 and that she last experienced any seizure-like events in early May 2021, with no recent episodes. Calculate seizure-free duration from 11 May 2021 to 14 January 2022: May 11 to June 11 = 1 month; to July 11 = 2; Aug 11 = 3; Sep 11 = 4; Oct 11 = 5; Nov 11 = 6; Dec 11 = 7; Jan 11 = 8 months, plus 3 additional days to Jan 14. This meets the ≥6 months criterion. Therefore, current status is seizure free for 8 months.",
+      "seizure_frequency_number": [
+        "seizure free for 8 month",
+        "Drug-free remission since 11-05-2021."
+      ],
+      "reference": [
+        "seizure free for 8 month",
+        "Drug-free remission since 11-05-2021"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

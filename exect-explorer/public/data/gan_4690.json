@@ -1,0 +1,59 @@
+{
+  "id": "gan_4690",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 24 March 2017\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI conducted a planned telephone review with the above patient today while he was onshore between offshore rotations. He reports that work patterns are variable, with alternating periods of day and night shifts when at sea, and he has scheduled further telephone follow‑ups for subsequent onshore weeks. He remains on Levetiracetam 1500 mg b.d., Lamotrigine 200 mg b.d., and Clobazam 10 mg nocte. He has not reported clear adverse effects beyond intermittent fatigue, which he attributes partly to shift work and sleep disruption. He denies rashes, mood instability, or diplopia. He notes occasional limb twitching on waking and brief lapses in concentration described by his partner, but no witnessed convulsions since our last contact.\n\nWe reviewed recent investigations arranged through our telemetry unit: prolonged video‑EEG captured multiple events without clear clinical correlate, and the report documented the following: Electrographic seizures frequent on EEG (~ten/h). This pattern was consistent across waking and drowsy states during the recording window. Given the absence of reliable clinical markers reported by him while offshore, this finding is clinically informative and suggests ongoing cortical hyperexcitability despite current treatment.\n\nGiven the constraints of his offshore work and the proximity of his next onshore window, we agreed to maintain his current regimen until an in‑person review can be arranged to reconcile EEG activity with symptom diaries and undertake bloods for therapeutic levels and safety monitoring. He will keep a detailed log of alertness, any brief lapses, and potential triggers (sleep loss, dehydration, workload). Occupationally, he confirms adherence to company fitness‑to‑work procedures, avoiding high‑risk tasks on days of poor sleep. He is aware of maritime medical reporting requirements and will inform us if symptoms change.\n\nPlan:\n- Continue Levetiracetam 1500 mg b.d., Lamotrigine 200 mg b.d., Clobazam 10 mg nocte.\n- Arrange in‑person review at next onshore period for examination, bloods (FBC, U&Es, LFTs), and medication reconciliation.\n- Provide copy of EEG report to patient for occupational health file.\n- Telephone check‑in in four weeks if offshore, or sooner if any clinical deterioration is reported.\n\nI will update you after the next onshore appointment.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1167,
+      "end": 1216,
+      "text": "Electrographic seizures frequent on EEG (~ten/h).",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1167,
+      "end": 1215,
+      "text": "Electrographic seizures frequent on EEG (~ten/h)",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4690,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 24 March 2017\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI conducted a planned telephone review with the above patient today while he was onshore between offshore rotations. He reports that work patterns are variable, with alternating periods of day and night shifts when at sea, and he has scheduled further telephone follow‑ups for subsequent onshore weeks. He remains on Levetiracetam 1500 mg b.d., Lamotrigine 200 mg b.d., and Clobazam 10 mg nocte. He has not reported clear adverse effects beyond intermittent fatigue, which he attributes partly to shift work and sleep disruption. He denies rashes, mood instability, or diplopia. He notes occasional limb twitching on waking and brief lapses in concentration described by his partner, but no witnessed convulsions since our last contact.\n\nWe reviewed recent investigations arranged through our telemetry unit: prolonged video‑EEG captured multiple events without clear clinical correlate, and the report documented the following: Electrographic seizures frequent on EEG (~ten/h). This pattern was consistent across waking and drowsy states during the recording window. Given the absence of reliable clinical markers reported by him while offshore, this finding is clinically informative and suggests ongoing cortical hyperexcitability despite current treatment.\n\nGiven the constraints of his offshore work and the proximity of his next onshore window, we agreed to maintain his current regimen until an in‑person review can be arranged to reconcile EEG activity with symptom diaries and undertake bloods for therapeutic levels and safety monitoring. He will keep a detailed log of alertness, any brief lapses, and potential triggers (sleep loss, dehydration, workload). Occupationally, he confirms adherence to company fitness‑to‑work procedures, avoiding high‑risk tasks on days of poor sleep. He is aware of maritime medical reporting requirements and will inform us if symptoms change.\n\nPlan:\n- Continue Levetiracetam 1500 mg b.d., Lamotrigine 200 mg b.d., Clobazam 10 mg nocte.\n- Arrange in‑person review at next onshore period for examination, bloods (FBC, U&Es, LFTs), and medication reconciliation.\n- Provide copy of EEG report to patient for occupational health file.\n- Telephone check‑in in four weeks if offshore, or sooner if any clinical deterioration is reported.\n\nI will update you after the next onshore appointment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly reports EEG-detected seizures: \"Electrographic seizures frequent on EEG (~ten/h).\" This indicates ongoing seizures occurring many times per hour during the recording window. Units must be normalized to day/week/month/year. Because the provided count is approximate (\"~ten/h\"), an exact daily number would be speculative. Therefore, the safest normalization is to express this as multiple per day rather than a precise daily count. The patient is not seizure-free given ongoing electrographic seizures.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~ten/h)."
+      ],
+      "reference": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~ten/h)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

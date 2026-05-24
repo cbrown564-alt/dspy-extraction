@@ -1,0 +1,47 @@
+{
+  "id": "gan_11706",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emma Richardson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 19 December 2014 10:15\nTo: occupational.health@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace reasonable adjustments\n\nHi HR Team\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\nContext:\n\nThe patient is the primary caregiver for young children, with night-time sleep often interrupted. This can affect daytime alertness and consistency of routine.\n\nEmployer Reasonable Adjustments (non-clinical):\n\n1. Flexible scheduling: Offer a stable start time after 09:30 or a flexible window to accommodate disrupted nights. Allow occasional remote work when sleep has been significantly interrupted.\n2. Breaks and rest periods: Ensure access to a quiet space for short restorative breaks (10–15 minutes) twice daily, with the option for an additional break following a disrupted night.\n3. Workload and task allocation: Prioritise tasks requiring higher concentration earlier in the day; avoid clustering prolonged, uninterrupted tasks. Permit temporary reduction of non-essential duties during periods of increased caregiving demands.\n4. Environmental considerations: Provide consistent lighting, minimise excessive screen glare, and allow the use of anti-glare filters. Maintain a calm workspace with reduced unnecessary noise where feasible.\n5. Predictable rotas: Give at least two weeks’ notice for rota changes. Avoid late-evening shifts and back-to-back early starts following late finishes.\n6. Safety planning: Agree a simple workplace support plan including a named contact, safe access to rest areas, and clear procedures for colleagues to follow if the patient becomes unwell.\n7. Leave and appointments: Permit short-notice compassionate or carer’s leave when childcare issues arise. Support time off for medical appointments without penalising attendance records.\n8. Training and awareness: Provide basic staff guidance on supporting employees with long-term neurological conditions, focusing on respectful communication and privacy.\n\nThese adjustments are intended to support sustained employment, reduce fatigue-related risks, and promote wellbeing for an individual with generalised epilepsy who is also a primary caregiver.\n\nWith best wishes",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11706,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emma Richardson (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 19 December 2014 10:15\nTo: occupational.health@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace reasonable adjustments\n\nHi HR Team\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\nContext:\n\nThe patient is the primary caregiver for young children, with night-time sleep often interrupted. This can affect daytime alertness and consistency of routine.\n\nEmployer Reasonable Adjustments (non-clinical):\n\n1. Flexible scheduling: Offer a stable start time after 09:30 or a flexible window to accommodate disrupted nights. Allow occasional remote work when sleep has been significantly interrupted.\n2. Breaks and rest periods: Ensure access to a quiet space for short restorative breaks (10–15 minutes) twice daily, with the option for an additional break following a disrupted night.\n3. Workload and task allocation: Prioritise tasks requiring higher concentration earlier in the day; avoid clustering prolonged, uninterrupted tasks. Permit temporary reduction of non-essential duties during periods of increased caregiving demands.\n4. Environmental considerations: Provide consistent lighting, minimise excessive screen glare, and allow the use of anti-glare filters. Maintain a calm workspace with reduced unnecessary noise where feasible.\n5. Predictable rotas: Give at least two weeks’ notice for rota changes. Avoid late-evening shifts and back-to-back early starts following late finishes.\n6. Safety planning: Agree a simple workplace support plan including a named contact, safe access to rest areas, and clear procedures for colleagues to follow if the patient becomes unwell.\n7. Leave and appointments: Permit short-notice compassionate or carer’s leave when childcare issues arise. Support time off for medical appointments without penalising attendance records.\n8. Training and awareness: Provide basic staff guidance on supporting employees with long-term neurological conditions, focusing on respectful communication and privacy.\n\nThese adjustments are intended to support sustained employment, reduce fatigue-related risks, and promote wellbeing for an individual with generalised epilepsy who is also a primary caregiver.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter for any explicit mention of seizure events, counts, frequency, or seizure-free duration. The letter provides a diagnosis (primary generalised epilepsy) and detailed workplace adjustments but does not mention seizures occurring, their frequency, or any seizure-free interval. Per instruction #5, when seizures are not mentioned at all, the correct output is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter summarising employer reasonable adjustments related to epilepsy (non-clinical)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

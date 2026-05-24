@@ -1,0 +1,59 @@
+{
+  "id": "gan_2282",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-02-2006, Hospital No: H927451 NHS No. 7482195630  \n12 Willow Close, Tooting, London, SW17 8AB  \n\nDiagnoses: \n\nSeizure disorder of undetermined classification. \n\nThank you for asking me to see Laura Bennett in the adult neurology epilepsy clinic as part of her transition from paediatric services. She attended alone today; her mother occasionally accompanies her and provides collateral history when present. \n\nHistory since transition: Laura Bennett reports a stable pattern of events with eight or nine convulsions per month, typically without a reliable prodrome. She describes brief loss of awareness followed by bilateral stiffening and rhythmic jerking, with tongue biting in roughly a third of episodes and post‑ictal confusion lasting 20–40 minutes. She notes that sleep deprivation and missed meals may precipitate events. There have been no reported injuries requiring hospital treatment in the last year. She has not required rescue medication in the community. \n\nMedication and adherence: She remains on a single antiseizure medicine at a stable dose with good adherence by her account. She uses a phone reminder and blister packs. No adverse effects reported beyond mild morning sleepiness. She has not trialled any device therapy. \n\nExamination and investigations: Neurological examination today was unremarkable. Most recent routine bloods (FBC, U&E, LFTs) from July 2025 were within reference ranges. A prior MRI (paediatric protocol, 2023) was reported as normal. A standard EEG (2024) showed nonspecific changes without clear lateralising or focal features. \n\nFunctioning and safety: She does not drive and is aware of DVLA guidance. She lives with a flat‑mate and has nocturnal supervision arrangements on nights when she feels unwell. She uses a seizure alarm application and a protective mouth guard for bruxism at night. Education/employment: part‑time college course; attendance unaffected aside from occasional post‑ictal fatigue. \n\nPlan: We discussed ongoing monitoring and agreed to continue her present regimen. She will keep a contemporaneous seizure diary to track triggers and timing. We will obtain an updated EEG with sleep deprivation to supplement prior data and will revisit the need for further imaging depending on clinical evolution. Emergency plan and seizure first‑aid advice were reviewed; written information provided. We will invite a parent to attend the next visit to corroborate semiology where helpful. \n\nFollow‑up: Review in six months, sooner if frequency increases or new features emerge. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 678,
+      "end": 743,
+      "text": "stable pattern of events with eight or nine convulsions per month",
+      "attributes": {
+        "Label": "8 to 9 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 708,
+      "end": 743,
+      "text": "eight or nine convulsions per month",
+      "attributes": {
+        "Label": "8 to 9 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2282,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-02-2006, Hospital No: H927451 NHS No. 7482195630  \n12 Willow Close, Tooting, London, SW17 8AB  \n\nDiagnoses: \n\nSeizure disorder of undetermined classification. \n\nThank you for asking me to see Laura Bennett in the adult neurology epilepsy clinic as part of her transition from paediatric services. She attended alone today; her mother occasionally accompanies her and provides collateral history when present. \n\nHistory since transition: Laura Bennett reports a stable pattern of events with eight or nine convulsions per month, typically without a reliable prodrome. She describes brief loss of awareness followed by bilateral stiffening and rhythmic jerking, with tongue biting in roughly a third of episodes and post‑ictal confusion lasting 20–40 minutes. She notes that sleep deprivation and missed meals may precipitate events. There have been no reported injuries requiring hospital treatment in the last year. She has not required rescue medication in the community. \n\nMedication and adherence: She remains on a single antiseizure medicine at a stable dose with good adherence by her account. She uses a phone reminder and blister packs. No adverse effects reported beyond mild morning sleepiness. She has not trialled any device therapy. \n\nExamination and investigations: Neurological examination today was unremarkable. Most recent routine bloods (FBC, U&E, LFTs) from July 2025 were within reference ranges. A prior MRI (paediatric protocol, 2023) was reported as normal. A standard EEG (2024) showed nonspecific changes without clear lateralising or focal features. \n\nFunctioning and safety: She does not drive and is aware of DVLA guidance. She lives with a flat‑mate and has nocturnal supervision arrangements on nights when she feels unwell. She uses a seizure alarm application and a protective mouth guard for bruxism at night. Education/employment: part‑time college course; attendance unaffected aside from occasional post‑ictal fatigue. \n\nPlan: We discussed ongoing monitoring and agreed to continue her present regimen. She will keep a contemporaneous seizure diary to track triggers and timing. We will obtain an updated EEG with sleep deprivation to supplement prior data and will revisit the need for further imaging depending on clinical evolution. Emergency plan and seizure first‑aid advice were reviewed; written information provided. We will invite a parent to attend the next visit to corroborate semiology where helpful. \n\nFollow‑up: Review in six months, sooner if frequency increases or new features emerge. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current frequency: \"a stable pattern of events with eight or nine convulsions per month.\" This provides a numeric range for monthly seizure frequency. According to the rules, use the highest frequency when multiple frequencies exist; thus select 9 per month. No other conflicting frequencies are given. Not seizure free.",
+      "seizure_frequency_number": [
+        "8 to 9 per month",
+        "stable pattern of events with eight or nine convulsions per month"
+      ],
+      "reference": [
+        "8 to 9 per month",
+        "eight or nine convulsions per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

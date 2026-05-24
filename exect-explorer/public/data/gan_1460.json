@@ -1,0 +1,59 @@
+{
+  "id": "gan_1460",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 06 February 2019\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for asking me to review this gentleman in the Neurology Clinic today. He reports that he is currently not driving by self-report. Since his last routine review elsewhere earlier this year, he has continued on his existing antiepileptic regimen without recent changes. He brought a symptom diary, and over the past month he recorded one tonic-clonic and six petit mal in last month. These events were noted to occur without a clear precipitant, although he wonders whether disrupted sleep may have played a role on two occasions. He denies recent head injury, intercurrent infection, or alcohol excess.\n\nCurrent treatment (patient-reported): Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 125 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg twice daily. He feels generally tired by late afternoon and mentions intermittent pruritus of the lower legs, with superficial scratch marks evident today. No rash elsewhere. No new neurological focal symptoms between events. He has not required emergency department attendance this year.\n\nOn examination today, pulse and blood pressure were stable; cardiorespiratory and general examination were unremarkable. Neurological examination was non-focal. Weight is stable compared with last year.\n\nPlan discussed with the patient: we agreed to continue his current medication for now while we obtain updated bloods (FBC, U&E, LFTs) and drug levels where appropriate, given the reported fatigue and pruritus. He is open to non-pharmacological support; I have provided details of our epilepsy specialist nursing service for education and seizure diary review, and signposted to sleep hygiene resources. We will also arrange routine outpatient EEG and consider further monitoring depending on those results. Safety advice was reinforced. He will contact us sooner if the frequency escalates or if any new features emerge.\n\nI will review him again in approximately three months or earlier if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 551,
+      "end": 631,
+      "text": "over the past month he recorded one tonic-clonic and six petit mal in last month",
+      "attributes": {
+        "Label": "7 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 583,
+      "end": 631,
+      "text": "one tonic-clonic and six petit mal in last month",
+      "attributes": {
+        "Label": "7 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1460,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 06 February 2019\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nThank you for asking me to review this gentleman in the Neurology Clinic today. He reports that he is currently not driving by self-report. Since his last routine review elsewhere earlier this year, he has continued on his existing antiepileptic regimen without recent changes. He brought a symptom diary, and over the past month he recorded one tonic-clonic and six petit mal in last month. These events were noted to occur without a clear precipitant, although he wonders whether disrupted sleep may have played a role on two occasions. He denies recent head injury, intercurrent infection, or alcohol excess.\n\nCurrent treatment (patient-reported): Carbamazepine 400 mg twice daily, Levetiracetam 1250 mg twice daily, Topiramate 125 mg twice daily, Sodium Valproate 500 mg twice daily, and Clobazam 10 mg twice daily. He feels generally tired by late afternoon and mentions intermittent pruritus of the lower legs, with superficial scratch marks evident today. No rash elsewhere. No new neurological focal symptoms between events. He has not required emergency department attendance this year.\n\nOn examination today, pulse and blood pressure were stable; cardiorespiratory and general examination were unremarkable. Neurological examination was non-focal. Weight is stable compared with last year.\n\nPlan discussed with the patient: we agreed to continue his current medication for now while we obtain updated bloods (FBC, U&E, LFTs) and drug levels where appropriate, given the reported fatigue and pruritus. He is open to non-pharmacological support; I have provided details of our epilepsy specialist nursing service for education and seizure diary review, and signposted to sleep hygiene resources. We will also arrange routine outpatient EEG and consider further monitoring depending on those results. Safety advice was reinforced. He will contact us sooner if the frequency escalates or if any new features emerge.\n\nI will review him again in approximately three months or earlier if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"over the past month he recorded one tonic-clonic and six petit mal in last month.\" This provides clear counts within a one-month period. Apply the rule to sum frequencies within the same time dimension: 1 + 6 = 7 seizures per month. No other conflicting frequency provided. Not seizure-free.",
+      "seizure_frequency_number": [
+        "7 per month",
+        "over the past month he recorded one tonic-clonic and six petit mal in last month"
+      ],
+      "reference": [
+        "7 per month",
+        "one tonic-clonic and six petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

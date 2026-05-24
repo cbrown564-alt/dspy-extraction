@@ -1,0 +1,48 @@
+{
+  "id": "gan_4217",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Hannah Patel\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, London\n\nDear Dr Hannah Patel,\n\nMr Alan Reeves, DOB: 22-06-1986, Hospital No: K847315 NHS No. 1039485726\n42 Meadow Lane, Bromley, BR2 8QJ\n\nDiagnosis:\n\nFocal epilepsy with variable control; patient-reported seizure occurrence on an alternating-day pattern. History of migraine without aura.\n\nAetiology:\n\nUnclear; MRI brain (2023) reported normal. No prior CNS infection or significant head trauma.\n\nOther Medical Problems:\n\nMigraine without aura, episodic; well controlled with occasional simple analgesia.\n\nCurrent Treatment:\n\nLamotrigine 150 mg twice daily. Levetiracetam discontinued previously due to mood-related adverse effects. Buccal midazolam provided as rescue but not used to date.\n\nClinical Summary:\n\nMr Alan Reeves has focal epilepsy. He describes focal aware seizures characterised by a rising epigastric sensation followed by brief speech arrest and right-hand tingling, each lasting 30–60 seconds, without loss of awareness and no secondary generalisation. Over the past six weeks he has noticed events tending to occur “on one day, then usually a clear day the next,” effectively amounting to seizures on alternate days, most often in the late afternoon when fatigued. There are no clear dietary or caffeine triggers. Sleep restriction and prolonged screen time may contribute. He continues regular employment and has not required emergency care. No injuries reported.\n\nExamination/Investigations:\n\nNeurological examination today is normal. Routine bloods (U&E, LFT, FBC) last month were within reference limits. ECG unremarkable. Prior EEG (2024) showed left temporal intermittent epileptiform discharges.\n\nManagement Plan:\n\n- Optimise lamotrigine: increase to 200 mg twice daily over two weeks as tolerated (50 mg weekly increments). Discussed adverse effects and safety netting.\n- If alternating-day breakthrough events persist after titration, consider adjunctive lacosamide at next review.\n- Rescue plan unchanged; advise use only if events cluster or evolve.\n- Lifestyle: reinforce sleep hygiene, regular meals, and limitation of prolonged screen exposure late in the day. Patient to maintain a seizure and trigger diary, specifically noting the alternating-day pattern and any deviation.\n- Driving: currently not driving; we reiterated DVLA guidance and he understands to remain off driving until seizure control criteria are met and formally reviewed.\n- Review in 3 months; earlier if frequency escalates or if a generalised convulsion occurs.\n\nI have provided written information on focal seizures and headache self-care. His migraines remain infrequent and do not appear to precipitate seizures.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1169,
+      "end": 1293,
+      "text": "events tending to occur “on one day, then usually a clear day the next,” effectively amounting to seizures on alternate days",
+      "attributes": {
+        "Label": "1 per 2 day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4217,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Hannah Patel\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, London\n\nDear Dr Hannah Patel,\n\nMr Alan Reeves, DOB: 22-06-1986, Hospital No: K847315 NHS No. 1039485726\n42 Meadow Lane, Bromley, BR2 8QJ\n\nDiagnosis:\n\nFocal epilepsy with variable control; patient-reported seizure occurrence on an alternating-day pattern. History of migraine without aura.\n\nAetiology:\n\nUnclear; MRI brain (2023) reported normal. No prior CNS infection or significant head trauma.\n\nOther Medical Problems:\n\nMigraine without aura, episodic; well controlled with occasional simple analgesia.\n\nCurrent Treatment:\n\nLamotrigine 150 mg twice daily. Levetiracetam discontinued previously due to mood-related adverse effects. Buccal midazolam provided as rescue but not used to date.\n\nClinical Summary:\n\nMr Alan Reeves has focal epilepsy. He describes focal aware seizures characterised by a rising epigastric sensation followed by brief speech arrest and right-hand tingling, each lasting 30–60 seconds, without loss of awareness and no secondary generalisation. Over the past six weeks he has noticed events tending to occur “on one day, then usually a clear day the next,” effectively amounting to seizures on alternate days, most often in the late afternoon when fatigued. There are no clear dietary or caffeine triggers. Sleep restriction and prolonged screen time may contribute. He continues regular employment and has not required emergency care. No injuries reported.\n\nExamination/Investigations:\n\nNeurological examination today is normal. Routine bloods (U&E, LFT, FBC) last month were within reference limits. ECG unremarkable. Prior EEG (2024) showed left temporal intermittent epileptiform discharges.\n\nManagement Plan:\n\n- Optimise lamotrigine: increase to 200 mg twice daily over two weeks as tolerated (50 mg weekly increments). Discussed adverse effects and safety netting.\n- If alternating-day breakthrough events persist after titration, consider adjunctive lacosamide at next review.\n- Rescue plan unchanged; advise use only if events cluster or evolve.\n- Lifestyle: reinforce sleep hygiene, regular meals, and limitation of prolonged screen exposure late in the day. Patient to maintain a seizure and trigger diary, specifically noting the alternating-day pattern and any deviation.\n- Driving: currently not driving; we reiterated DVLA guidance and he understands to remain off driving until seizure control criteria are met and formally reviewed.\n- Review in 3 months; earlier if frequency escalates or if a generalised convulsion occurs.\n\nI have provided written information on focal seizures and headache self-care. His migraines remain infrequent and do not appear to precipitate seizures.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has focal aware seizures occurring on an alternating-day pattern over the past six weeks, described as “events tending to occur on one day, then usually a clear day the next,” which equates to approximately 1 seizure every 2 days. No other seizure types or additional frequencies are provided that would increase the count. Therefore, normalize to '1 per 2 day'.",
+      "seizure_frequency_number": [
+        "1 per 2 day",
+        "events tending to occur “on one day, then usually a clear day the next,” effectively amounting to seizures on alternate days"
+      ],
+      "reference": [
+        "1 per 2 day",
+        "qod (every other day)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

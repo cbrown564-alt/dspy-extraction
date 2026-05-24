@@ -1,0 +1,59 @@
+{
+  "id": "gan_16645",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 20 February 2024 \n\nDr Helen Carter  \nHighgate Group Practice  \n92 Dartmouth Park Hill, London NW5 1HL  \n\nDear Dr Helen Carter,  \n\nMark Thompson, DOB: 22-07-1984, Hospital No: T948210 NHS No. 3849201756  \nFlat 3, 41 Lyndhurst Road, London, N19 5BQ \n\nSummary/ Diagnoses: Epilepsy with prior periods of variable seizure control; history of low mood under community team follow-up; vitamin D insufficiency on supplementation; ex-smoker. Marked improvement on current medicines compared with earlier periods. \n\nMedication: \n- Levetiracetam 1,500 mg twice daily. \n- Lamotrigine 100 mg twice daily. \n- Vitamin D3 1,000 IU once daily. \n- Omeprazole 20 mg once daily. \n\nI reviewed Mark in clinic today, accompanied by his sister who helps coordinate appointments. Since initiation and careful titration of the above antiepileptic regimen through late 2023, both he and his family report better day-to-day steadiness, improved concentration, and fewer post-event headaches. He is sleeping more regularly, has resumed short daily walks, and has restarted a part-time volunteering role at a local charity shop. Appetite has normalised and weight has been stable. No adverse effects reported beyond occasional morning lethargy, which resolves after breakfast. Blood pressure and pulse were within target in clinic; general neurological examination was unchanged with no new focal signs. \n\nSeizures: We reviewed the carer-kept diary and respite care logs. He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care. This represents a reduction compared with his pattern earlier last year when events were more frequent and recovery slower. There have been no injuries, no status episodes, and no emergency department attendances. Triggers appear to correlate with sleep disruption; alcohol remains abstinent. \n\nPlan: \n- Continue current antiepileptic medicines unchanged given clear clinical improvement. \n- Reinforce sleep hygiene and regular routines; family have a written plan they find helpful. \n- Safety: continue use of a soft headboard and supervised bathing; no driving. \n- Bloods: U&E, LFT, FBC, vitamin D and levetiracetam trough level to be checked at your practice in the next 2–3 weeks; please forward results. \n- Follow-up with our epilepsy nurse by telephone in 3 months, and consultant review in 6 months or sooner if seizure frequency increases or events change in character. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1536,
+      "end": 1697,
+      "text": "He had a cluster of three seizures in August ... In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care.",
+      "attributes": {
+        "Label": "5 per 7 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1536,
+      "end": 1764,
+      "text": "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care",
+      "attributes": {
+        "Label": "5 per 7 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16645,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 20 February 2024 \n\nDr Helen Carter  \nHighgate Group Practice  \n92 Dartmouth Park Hill, London NW5 1HL  \n\nDear Dr Helen Carter,  \n\nMark Thompson, DOB: 22-07-1984, Hospital No: T948210 NHS No. 3849201756  \nFlat 3, 41 Lyndhurst Road, London, N19 5BQ \n\nSummary/ Diagnoses: Epilepsy with prior periods of variable seizure control; history of low mood under community team follow-up; vitamin D insufficiency on supplementation; ex-smoker. Marked improvement on current medicines compared with earlier periods. \n\nMedication: \n- Levetiracetam 1,500 mg twice daily. \n- Lamotrigine 100 mg twice daily. \n- Vitamin D3 1,000 IU once daily. \n- Omeprazole 20 mg once daily. \n\nI reviewed Mark in clinic today, accompanied by his sister who helps coordinate appointments. Since initiation and careful titration of the above antiepileptic regimen through late 2023, both he and his family report better day-to-day steadiness, improved concentration, and fewer post-event headaches. He is sleeping more regularly, has resumed short daily walks, and has restarted a part-time volunteering role at a local charity shop. Appetite has normalised and weight has been stable. No adverse effects reported beyond occasional morning lethargy, which resolves after breakfast. Blood pressure and pulse were within target in clinic; general neurological examination was unchanged with no new focal signs. \n\nSeizures: We reviewed the carer-kept diary and respite care logs. He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care. This represents a reduction compared with his pattern earlier last year when events were more frequent and recovery slower. There have been no injuries, no status episodes, and no emergency department attendances. Triggers appear to correlate with sleep disruption; alcohol remains abstinent. \n\nPlan: \n- Continue current antiepileptic medicines unchanged given clear clinical improvement. \n- Reinforce sleep hygiene and regular routines; family have a written plan they find helpful. \n- Safety: continue use of a soft headboard and supervised bathing; no driving. \n- Bloods: U&E, LFT, FBC, vitamin D and levetiracetam trough level to be checked at your practice in the next 2–3 weeks; please forward results. \n- Follow-up with our epilepsy nurse by telephone in 3 months, and consultant review in 6 months or sooner if seizure frequency increases or events change in character. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure counts and timeframe. The letter lists specific events: a cluster of three seizures in August, one nocturnal seizure in November, and one tonic seizure in February. These are within the span from August to February inclusive, which is 7 months. Total seizures = 3 (cluster counted as 3 individual seizures) + 1 + 1 = 5 seizures over 7 months. No other frequencies given. Apply highest-frequency rule not needed as only one set. Therefore normalize to '5 per 7 month'.",
+      "seizure_frequency_number": [
+        "5 per 7 month",
+        "He had a cluster of three seizures in August ... In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care."
+      ],
+      "reference": [
+        "5 per 7 month",
+        "He had a cluster of three seizures in August (short, not full convulsions, fluctuating awareness, self-terminating). In November he had a nocturnal seizure, and in February a single tonic seizure was recorded during respite care"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

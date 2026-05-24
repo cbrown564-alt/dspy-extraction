@@ -1,0 +1,59 @@
+{
+  "id": "gan_13210",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 07 August 2019 \n\nDr Patel\nRiverside Medical Centre\n\n221 River Street, London, SE1 3AB\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: K784233 NHS No. 9076543321\n12A Brookside Court, London, SE5 9HT \n\nThank you for asking me to review the above patient in the Neurology Clinic today following several recent Emergency Department attendances. Multiple recent ED triage records exist; nursing documentation has been reviewed and summarised where relevant below.\n\nHe reports that adherence to his regular medication has been good, with doses taken at consistent times. He has kept a seizure diary and corroborated events with his partner. On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago. He describes a sudden sense of disconnection with automatisms noted by his partner (lip-smacking and fumbling with keys), associated with brief unresponsiveness lasting approximately 90 seconds, followed by fatigue and a mild headache for several hours. There was no tongue bite, no witnessed tonic–clonic activity, and no incontinence. He attended ED on the day for observation; vitals were stable, point-of-care glucose was normal, and no rescue medication was given. Nursing notes document a gradual return to baseline within 45 minutes.\n\nIn the two weeks prior to that event he had experienced increasing work-related stress and reduced sleep. He denies alcohol or recreational drug use. He does not recall any intercurrent illness, but notes that he had missed lunch on the day of the seizure. He has not driven since and understands DVLA guidance regarding a seizure after a previously stable period.\n\nCurrent medication: Carbamazepine 400 mg twice daily. He reports mild intermittent dizziness in the late afternoon but no rash, visual disturbance or hyponatraemia symptoms. He has not been taking any over-the-counter remedies or herbal supplements. No known drug allergies.\n\nExamination today was unremarkable. Cardiovascular and respiratory examinations were normal. Neurological examination showed no focal deficits, normal gait and coordination. ED bloods (as per nursing summary) showed normal electrolytes and glucose; no hyponatraemia was documented. No imaging was undertaken at the ED visits.\n\nPlan: I have advised continuation of Carbamazepine at the current dose while we obtain updated Carbamazepine trough levels and routine bloods (U&Es, LFTs, FBC) through your practice. We discussed common seizure precipitants; he will prioritise sleep hygiene and regular meals, and continue his seizure diary. I have requested an outpatient EEG and will review once results are available. He is aware of safety advice, including bathing and cooking precautions, and he will refrain from driving in line with DVLA requirements after a seizure.\n\nI will write again once investigations are completed or sooner if there is any clinical change. Please let me know if there are further ED attendances or concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 717,
+      "end": 818,
+      "text": "he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago",
+      "attributes": {
+        "Label": "1 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 688,
+      "end": 818,
+      "text": "On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago",
+      "attributes": {
+        "Label": "1 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13210,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 07 August 2019 \n\nDr Patel\nRiverside Medical Centre\n\n221 River Street, London, SE1 3AB\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: K784233 NHS No. 9076543321\n12A Brookside Court, London, SE5 9HT \n\nThank you for asking me to review the above patient in the Neurology Clinic today following several recent Emergency Department attendances. Multiple recent ED triage records exist; nursing documentation has been reviewed and summarised where relevant below.\n\nHe reports that adherence to his regular medication has been good, with doses taken at consistent times. He has kept a seizure diary and corroborated events with his partner. On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago. He describes a sudden sense of disconnection with automatisms noted by his partner (lip-smacking and fumbling with keys), associated with brief unresponsiveness lasting approximately 90 seconds, followed by fatigue and a mild headache for several hours. There was no tongue bite, no witnessed tonic–clonic activity, and no incontinence. He attended ED on the day for observation; vitals were stable, point-of-care glucose was normal, and no rescue medication was given. Nursing notes document a gradual return to baseline within 45 minutes.\n\nIn the two weeks prior to that event he had experienced increasing work-related stress and reduced sleep. He denies alcohol or recreational drug use. He does not recall any intercurrent illness, but notes that he had missed lunch on the day of the seizure. He has not driven since and understands DVLA guidance regarding a seizure after a previously stable period.\n\nCurrent medication: Carbamazepine 400 mg twice daily. He reports mild intermittent dizziness in the late afternoon but no rash, visual disturbance or hyponatraemia symptoms. He has not been taking any over-the-counter remedies or herbal supplements. No known drug allergies.\n\nExamination today was unremarkable. Cardiovascular and respiratory examinations were normal. Neurological examination showed no focal deficits, normal gait and coordination. ED bloods (as per nursing summary) showed normal electrolytes and glucose; no hyponatraemia was documented. No imaging was undertaken at the ED visits.\n\nPlan: I have advised continuation of Carbamazepine at the current dose while we obtain updated Carbamazepine trough levels and routine bloods (U&Es, LFTs, FBC) through your practice. We discussed common seizure precipitants; he will prioritise sleep hygiene and regular meals, and continue his seizure diary. I have requested an outpatient EEG and will review once results are available. He is aware of safety advice, including bathing and cooking precautions, and he will refrain from driving in line with DVLA requirements after a seizure.\n\nI will write again once investigations are completed or sooner if there is any clinical change. Please let me know if there are further ED attendances or concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency details. The letter states: \"On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago.\" This indicates exactly 1 seizure in the last 5 months, not meeting the 6-month threshold for 'seizure free'. Apply Rule 8: since seizure-free period is less than 6 months and a seizure occurred recently, compute frequency based on available timeframe. Therefore, current frequency = 1 per 5 months. No other seizure counts or clusters are mentioned. By Rule 7 (choose the highest frequency if multiple), there is only one frequency. Thus final label: 1 per 5 month.",
+      "seizure_frequency_number": [
+        "1 per 5 month",
+        "he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago"
+      ],
+      "reference": [
+        "1 per 5 month",
+        "On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred two Thursdays ago"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

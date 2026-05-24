@@ -1,0 +1,59 @@
+{
+  "id": "gan_12772",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 25 March 2022 \n\nDr Patel  \nSt. George’s Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMargaret Wilson, DOB: 14-02-1942, Hospital No: H482019 NHS No. 9076543210  \nFlat 3, 12 Hawthorn Close, London, SW12 8AA  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nI reviewed Margaret Wilson in the neurology clinic via a domiciliary assessment summary provided by her live-in nurse and primary caregiver. She is an older adult who is bedbound following prior cerebrovascular disease and frailty; most seizure observations are recorded on a daily care log and relayed by the nurse. The caregiver reports improved day–night regularity, with consistent positioning and reduced aspiration risk measures. Following introduction of lamotrigine, there has been a clear improvement in control, with just six generalised tonic-clonic seizures documented this year to date. Brief myoclonic jerks are occasionally noted on morning cares but are not prolonged and have not required emergency rescue medication.\n\nShe remains diagnosed with generalised epilepsy. There have been no recent head injuries, intercurrent infections, or metabolic precipitants documented. Medication is administered via crushed tablets in puree; adherence is reported as excellent with nurse double-signing. No rash, ataxia, or diplopia have been observed. The caregiver notes better alertness in the mornings and reduced post-ictal confusion duration (typically under 30 minutes). \n\nCurrent anti-seizure medications: lamotrigine 100 mg twice daily; levetiracetam 500 mg twice daily. There has been no recent use of buccal midazolam; the protocol remains available in the care plan folder at the bedside. Bloods from last month showed stable renal and hepatic function. \n\nPlan: \n- Continue lamotrigine and levetiracetam unchanged in view of improved seizure control.  \n- Maintain seizure diary entries by nursing staff, including duration, post-ictal course, and any triggers.  \n- Routine safety measures to continue: padded bed rails, supervised turns, and suction available if needed.  \n- Arrange repeat blood monitoring (FBC, U&E, LFTs) in three months through community phlebotomy.  \n- Neurology telephone review in four months, sooner if seizure frequency increases or rescue medication is required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 859,
+      "end": 930,
+      "text": "just six generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "6 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 768,
+      "end": 930,
+      "text": "Following introduction of lamotrigine, there has been a clear improvement in control, with just six generalised tonic-clonic seizures documented this year to date",
+      "attributes": {
+        "Label": "6 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12772,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 25 March 2022 \n\nDr Patel  \nSt. George’s Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMargaret Wilson, DOB: 14-02-1942, Hospital No: H482019 NHS No. 9076543210  \nFlat 3, 12 Hawthorn Close, London, SW12 8AA  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nI reviewed Margaret Wilson in the neurology clinic via a domiciliary assessment summary provided by her live-in nurse and primary caregiver. She is an older adult who is bedbound following prior cerebrovascular disease and frailty; most seizure observations are recorded on a daily care log and relayed by the nurse. The caregiver reports improved day–night regularity, with consistent positioning and reduced aspiration risk measures. Following introduction of lamotrigine, there has been a clear improvement in control, with just six generalised tonic-clonic seizures documented this year to date. Brief myoclonic jerks are occasionally noted on morning cares but are not prolonged and have not required emergency rescue medication.\n\nShe remains diagnosed with generalised epilepsy. There have been no recent head injuries, intercurrent infections, or metabolic precipitants documented. Medication is administered via crushed tablets in puree; adherence is reported as excellent with nurse double-signing. No rash, ataxia, or diplopia have been observed. The caregiver notes better alertness in the mornings and reduced post-ictal confusion duration (typically under 30 minutes). \n\nCurrent anti-seizure medications: lamotrigine 100 mg twice daily; levetiracetam 500 mg twice daily. There has been no recent use of buccal midazolam; the protocol remains available in the care plan folder at the bedside. Bloods from last month showed stable renal and hepatic function. \n\nPlan: \n- Continue lamotrigine and levetiracetam unchanged in view of improved seizure control.  \n- Maintain seizure diary entries by nursing staff, including duration, post-ictal course, and any triggers.  \n- Routine safety measures to continue: padded bed rails, supervised turns, and suction available if needed.  \n- Arrange repeat blood monitoring (FBC, U&E, LFTs) in three months through community phlebotomy.  \n- Neurology telephone review in four months, sooner if seizure frequency increases or rescue medication is required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"there has been a clear improvement in control, with just six generalised tonic-clonic seizures documented this year to date.\" Clinic date is 25 March 2022, so \"this year to date\" refers to the period from 1 January 2022 to 25 March 2022, which is approximately just under 3 months. Using the given count of 6 seizures over this period, the normalized frequency is 6 per 3 months (rounding the partial quarter to 3 months as the closest allowed unit). No other explicit frequencies are provided. Patient is not seizure free for ≥6 months, so we compute frequency rather than labeling seizure free.",
+      "seizure_frequency_number": [
+        "6 per 3 month",
+        "just six generalised tonic-clonic seizures documented this year to date"
+      ],
+      "reference": [
+        "6 per 3 month",
+        "Following introduction of lamotrigine, there has been a clear improvement in control, with just six generalised tonic-clonic seizures documented this year to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_446",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening spells and medication review\n\nDear Dr Carter,\n\nClinical summary:\nThe patient reports a clear deterioration in their spells despite adherence and polytherapy. Polytherapy adverse effects are increasingly bothersome (daytime lethargy, slowed thinking, irritability, and intermittent dizziness), yet control remains suboptimal.\n\nBackground frequency before deterioration:\n- In June: five events during sleep and four while awake.\n- In August: five events during sleep and one while awake.\n\nCurrent spell/seizure description and frequency:\nThe spells are described as brief behavioural arrest with loss of awareness on some occasions, and nocturnal events witnessed as sudden arousal with stiffening and post-event confusion. No consistent trigger identified. Over the past month, the overall frequency has been ≤ twice per week, occurring both nocturnally and during wakefulness, with variable clustering. There have been no injuries, but the patient reports prolonged post-event fatigue compared with earlier months, supporting the impression of clinical worsening.\n\nMedication and tolerability:\n- Current regimen: two anti-seizure medicines (ASMs) at stable doses for the past eight weeks.\n- Reported adverse effects on current combination therapy as above, with functional impact on work and sleep quality. No missed doses reported. No recent intercurrent illness or alcohol exposure.\n\nPlan:\nGiven the deterioration in control (now ≤ twice per week) alongside unacceptable adverse effects on polytherapy, we discussed the need for a structured medication review and further diagnostic clarification. The patient is agreeable to:\n- Ambulatory EEG with sleep capture and updated MRI brain protocol to reassess for potential focal onset.\n- Bloods for ASM levels, FBC, U&E, LFTs, vitamin D, and bone profile.\n- Safety advice refreshed, including supervision around water and avoidance of heights; patient has informed employer and will restrict safety-critical tasks pending review.\n- Medication optimisation at next visit once investigations return; patient prefers to avoid further dose escalation due to side effects.\n\nFollow-up:\nI have arranged review in eight weeks or sooner if events escalate. The patient was advised to keep a diary documenting timing (sleep vs awake), duration, triggers, and recovery. If the frequency exceeds twice weekly or if any injury, prolonged recovery, or new neurological deficit occurs, they will contact us or attend urgent care.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1074,
+      "end": 1142,
+      "text": "Over the past month, the overall frequency has been ≤ twice per week",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1126,
+      "end": 1142,
+      "text": "≤ twice per week",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 446,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening spells and medication review\n\nDear Dr Carter,\n\nClinical summary:\nThe patient reports a clear deterioration in their spells despite adherence and polytherapy. Polytherapy adverse effects are increasingly bothersome (daytime lethargy, slowed thinking, irritability, and intermittent dizziness), yet control remains suboptimal.\n\nBackground frequency before deterioration:\n- In June: five events during sleep and four while awake.\n- In August: five events during sleep and one while awake.\n\nCurrent spell/seizure description and frequency:\nThe spells are described as brief behavioural arrest with loss of awareness on some occasions, and nocturnal events witnessed as sudden arousal with stiffening and post-event confusion. No consistent trigger identified. Over the past month, the overall frequency has been ≤ twice per week, occurring both nocturnally and during wakefulness, with variable clustering. There have been no injuries, but the patient reports prolonged post-event fatigue compared with earlier months, supporting the impression of clinical worsening.\n\nMedication and tolerability:\n- Current regimen: two anti-seizure medicines (ASMs) at stable doses for the past eight weeks.\n- Reported adverse effects on current combination therapy as above, with functional impact on work and sleep quality. No missed doses reported. No recent intercurrent illness or alcohol exposure.\n\nPlan:\nGiven the deterioration in control (now ≤ twice per week) alongside unacceptable adverse effects on polytherapy, we discussed the need for a structured medication review and further diagnostic clarification. The patient is agreeable to:\n- Ambulatory EEG with sleep capture and updated MRI brain protocol to reassess for potential focal onset.\n- Bloods for ASM levels, FBC, U&E, LFTs, vitamin D, and bone profile.\n- Safety advice refreshed, including supervision around water and avoidance of heights; patient has informed employer and will restrict safety-critical tasks pending review.\n- Medication optimisation at next visit once investigations return; patient prefers to avoid further dose escalation due to side effects.\n\nFollow-up:\nI have arranged review in eight weeks or sooner if events escalate. The patient was advised to keep a diary documenting timing (sleep vs awake), duration, triggers, and recovery. If the frequency exceeds twice weekly or if any injury, prolonged recovery, or new neurological deficit occurs, they will contact us or attend urgent care.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a current frequency: \"Over the past month, the overall frequency has been ≤ twice per week.\" This is the clearest explicit numeric statement for the current period. Background monthly counts (June/August) are historical and not the current rate. The inequality indicates an upper bound of 2 per week; per instruction to select the highest frequency when ambiguity exists, normalize to 2 per week. Clustering is mentioned but not quantified, so cluster format is not applicable.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "Over the past month, the overall frequency has been ≤ twice per week"
+      ],
+      "reference": [
+        "2 per week",
+        "≤ twice per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

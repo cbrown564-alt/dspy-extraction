@@ -1,0 +1,65 @@
+{
+  "id": "gan_13574",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr James Patel  \nRiverside Medical Practice  \n221 King Street, Hammersmith, London W6 9JU  \n\nDear Dr James Patel,  \n\nDaniel Hughes, DOB: 12-05-1991, Hospital No: H938417 NHS No. 5082164473  \nFlat 3, 14 Brookside Road, London, W4 2BN \n\nMedication:  \n\nLevetiracetam 1000 mg twice daily. No adverse effects reported. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 1 or 2 times per year, but is currently in long-term remission, having been seizure free for years. \n\nHistory and interval events:  \n\nHe reports stable wellbeing and no episodes suggestive of relapse. He commutes mainly by bicycle and notes good daytime alertness with no lapses in attention. Sleep is regular and he avoids missed doses. There have been no emergency presentations or injuries. He denies aura-like symptoms, automatisms, or post-event confusion. Family have not observed any nocturnal events. \n\nExamination:  \n\nNeurological examination today was unremarkable. Cognitive screening normal. No focal deficits. \n\nInvestigations:  \n\nNo new investigations required today. Previous imaging and EEG were non-diagnostic and do not alter current management. \n\nPlan:  \n\n- Continue levetiracetam 1000 mg twice daily.  \n- Routine follow-up in 12 months, or sooner if there are breakthrough events.  \n- We discussed general wellbeing and adherence; he is content with current regimen. \n\nWe will see him back in one year. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 537,
+      "end": 605,
+      "text": "currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 391,
+      "end": 605,
+      "text": "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 1 or 2 times per year, but is currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13574,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr James Patel  \nRiverside Medical Practice  \n221 King Street, Hammersmith, London W6 9JU  \n\nDear Dr James Patel,  \n\nDaniel Hughes, DOB: 12-05-1991, Hospital No: H938417 NHS No. 5082164473  \nFlat 3, 14 Brookside Road, London, W4 2BN \n\nMedication:  \n\nLevetiracetam 1000 mg twice daily. No adverse effects reported. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 1 or 2 times per year, but is currently in long-term remission, having been seizure free for years. \n\nHistory and interval events:  \n\nHe reports stable wellbeing and no episodes suggestive of relapse. He commutes mainly by bicycle and notes good daytime alertness with no lapses in attention. Sleep is regular and he avoids missed doses. There have been no emergency presentations or injuries. He denies aura-like symptoms, automatisms, or post-event confusion. Family have not observed any nocturnal events. \n\nExamination:  \n\nNeurological examination today was unremarkable. Cognitive screening normal. No focal deficits. \n\nInvestigations:  \n\nNo new investigations required today. Previous imaging and EEG were non-diagnostic and do not alter current management. \n\nPlan:  \n\n- Continue levetiracetam 1000 mg twice daily.  \n- Routine follow-up in 12 months, or sooner if there are breakthrough events.  \n- We discussed general wellbeing and adherence; he is content with current regimen. \n\nWe will see him back in one year. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is currently in long-term remission and has been seizure free for years. This indicates no seizures for a duration of multiple years. The historical frequency (myoclonic jerks, absence seizures, and occasional convulsions 1 or 2 per year) is past and not current. The current status meets the seizure-free criterion for at least 6 months, in fact years. Therefore, the correct normalized label is 'seizure free for multiple year'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "currently in long-term remission, having been seizure free for years"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 1 or 2 times per year, but is currently in long-term remission, having been seizure free for years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

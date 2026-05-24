@@ -1,0 +1,59 @@
+{
+  "id": "gan_12114",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Health Centre  \n125 River Road, London SE1 4AB  \n\nDear Dr Patel,  \n\nOliver Bennett, DOB: 05-11-1992, Hospital No: H384920 NHS No. 9081764521  \n14 Crescent Court, Flat 6, London, SE16 2JL \n\nDiagnosis: Focal epilepsy, likely temporal lobe onset. \n\nMedication:  \n- Lamotrigine 150 mg morning / 200 mg evening.  \n- Lacosamide 100 mg twice daily.  \n\nHistory since last review:  \nOliver Bennett reports a consistent pattern of evening events with preserved awareness, described as rising epigastric sensation, brief déjà vu, and tingling in the right hand, each lasting 30–60 seconds without loss of awareness. These are occasionally followed by transient word-finding difficulty. She keeps an assistance dog in training, which has started to alert her family to oncoming events, and she is recording episodes on a seizure diary app. Importantly, focal aware seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically three - five events per year. Triggers she identifies include fatigue after late shifts and missed meals. She denies injuries or tongue biting with the focal events; the rare generalised convulsions have involved brief post-ictal confusion and myalgia without prolonged recovery. \n\nExamination today was unremarkable with normal neurological findings. No adverse effects from medication beyond mild intermittent nausea when taking tablets on an empty stomach. Adherence is good by pill count and electronic reminder review. \n\nPlan:  \n- Continue lamotrigine 150 mg AM / 200 mg PM and lacosamide 100 mg BD for now; we discussed that if evening focal aware seizures persist at the current frequency over the next 6–8 weeks, we will consider a cautious lacosamide increase to 150 mg BD, balancing prior tolerability.  \n- Arrange updated video-EEG and 3T MRI (epilepsy protocol) to further characterise the focal onset given the semiology suggestive of temporal lobe involvement.  \n- Seizure self-management: maintain regular meals, hydration, and sleep routines; continue seizure diary and note any aura-to-event progression. Patient-reported dog alerts will be time-stamped in the diary for correlation with EEG where possible.  \n- Safety: continues to avoid driving in line with DVLA guidance; advised standard precautions in the kitchen and bathroom, and to use the assistance dog’s alerting as an early cue to rest and reduce risk.  \n- Rescue plan unchanged: midazolam oromucosal 5 mg for convulsions lasting >5 minutes, call emergency services if seizure clusters or injury occur. No recent use reported.  \n\nWe will review in clinic in three months or sooner if event frequency escalates or if generalised convulsions cluster. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 941,
+      "end": 991,
+      "text": "focal aware seizures occur several times each week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 941,
+      "end": 1104,
+      "text": "focal aware seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically three - five events per year",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12114,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Health Centre  \n125 River Road, London SE1 4AB  \n\nDear Dr Patel,  \n\nOliver Bennett, DOB: 05-11-1992, Hospital No: H384920 NHS No. 9081764521  \n14 Crescent Court, Flat 6, London, SE16 2JL \n\nDiagnosis: Focal epilepsy, likely temporal lobe onset. \n\nMedication:  \n- Lamotrigine 150 mg morning / 200 mg evening.  \n- Lacosamide 100 mg twice daily.  \n\nHistory since last review:  \nOliver Bennett reports a consistent pattern of evening events with preserved awareness, described as rising epigastric sensation, brief déjà vu, and tingling in the right hand, each lasting 30–60 seconds without loss of awareness. These are occasionally followed by transient word-finding difficulty. She keeps an assistance dog in training, which has started to alert her family to oncoming events, and she is recording episodes on a seizure diary app. Importantly, focal aware seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically three - five events per year. Triggers she identifies include fatigue after late shifts and missed meals. She denies injuries or tongue biting with the focal events; the rare generalised convulsions have involved brief post-ictal confusion and myalgia without prolonged recovery. \n\nExamination today was unremarkable with normal neurological findings. No adverse effects from medication beyond mild intermittent nausea when taking tablets on an empty stomach. Adherence is good by pill count and electronic reminder review. \n\nPlan:  \n- Continue lamotrigine 150 mg AM / 200 mg PM and lacosamide 100 mg BD for now; we discussed that if evening focal aware seizures persist at the current frequency over the next 6–8 weeks, we will consider a cautious lacosamide increase to 150 mg BD, balancing prior tolerability.  \n- Arrange updated video-EEG and 3T MRI (epilepsy protocol) to further characterise the focal onset given the semiology suggestive of temporal lobe involvement.  \n- Seizure self-management: maintain regular meals, hydration, and sleep routines; continue seizure diary and note any aura-to-event progression. Patient-reported dog alerts will be time-stamped in the diary for correlation with EEG where possible.  \n- Safety: continues to avoid driving in line with DVLA guidance; advised standard precautions in the kitchen and bathroom, and to use the assistance dog’s alerting as an early cue to rest and reduce risk.  \n- Rescue plan unchanged: midazolam oromucosal 5 mg for convulsions lasting >5 minutes, call emergency services if seizure clusters or injury occur. No recent use reported.  \n\nWe will review in clinic in three months or sooner if event frequency escalates or if generalised convulsions cluster. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency statements. The letter reports two seizure types with different frequencies: (1) focal aware seizures: 'occur several times each week'; (2) generalised convulsions: 'rare, typically three - five events per year.' Per the rule to select the highest frequency, choose the focal aware seizures. The phrase 'several times each week' is vague without a precise number, so use 'multiple per week' per allowed formats.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "focal aware seizures occur several times each week"
+      ],
+      "reference": [
+        "multiple per week",
+        "focal aware seizures occur several times each week, particularly in the evenings. Generalised convulsions seizures are rare, typically three - five events per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_1023",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nDaniel Fraser, DOB: 14-03-1987, Hospital No: K712345 NHS No. 9012567834  \nFlat 12, Mariners Court, 18 Dock Street, London E1 2AB\n\nThank you for arranging a telephone review while he was briefly onshore between offshore rotations. He works at sea on a fixed rota, and we have coordinated follow‑up calls to coincide with his onshore weeks.\n\nHe has generalised epilepsy. He describes stereotyped events with a brief warning of diffuse internal “rush” and sudden loss of awareness, followed by a generalised tonic–clonic seizure, tongue biting on the lateral aspect, and post‑ictal confusion lasting 30–60 minutes. He reports that these major convulsions are now occurring roughly every three months on average, with occasional clustering around periods of sleep disruption when changing shifts offshore. In between these, he experiences rare myoclonic jerks on waking which he recognises as part of his generalised epilepsy syndrome. There is no clear focal onset history. No clear alcohol excess; he avoids alcohol while offshore and uses minimal caffeine.\n\nMedication: Sodium valproate 500 mg twice daily, levetiracetam 1,000 mg twice daily. He reports good adherence, facilitated by blister packs provided by the offshore medic. No significant adverse effects aside from mild irritability on levetiracetam, which he feels is manageable. He uses a smartwatch seizure alert; the offshore medical team are aware of his diagnosis and keep buccal midazolam available, though it has not been required in the last year.\n\nInvestigations to date: EEG previously showed generalised spike–wave discharges with photic sensitivity. MRI brain (3T, 2023) was normal. Routine bloods last month (shared care) were unremarkable including LFTs and FBC. He holds a Company Fitness to Work at Sea certificate with restrictions to avoid working at height or near open water without a harness for 24 hours after any seizure.\n\nPlan: Given the current pattern of seizures approximately every three months and acceptable tolerability, we agreed to continue present therapy. I have provided written advice on sleep regularity and shift transitions, including a tapering caffeine plan during the handover week. We will maintain telephone reviews during onshore weeks and schedule an in‑person visit if there is any increase in seizure frequency, new injury, or prolonged post‑ictal confusion. Should the convulsions become more frequent or if myoclonic jerks begin to cluster, we would consider incremental valproate titration or the addition of lamotrigine, mindful of interaction and the need for slow titration. He will send copies of his offshore medical logs to our clinic mailbox after each rotation.\n\nSafety: He understands DVLA guidance for generalised epilepsy and confirms he is not driving. Occupational risk assessments remain in place offshore with buddy systems and fall protection. Emergency plan reviewed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 894,
+      "end": 973,
+      "text": "these major convulsions are now occurring roughly every three months on average",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1023,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nDaniel Fraser, DOB: 14-03-1987, Hospital No: K712345 NHS No. 9012567834  \nFlat 12, Mariners Court, 18 Dock Street, London E1 2AB\n\nThank you for arranging a telephone review while he was briefly onshore between offshore rotations. He works at sea on a fixed rota, and we have coordinated follow‑up calls to coincide with his onshore weeks.\n\nHe has generalised epilepsy. He describes stereotyped events with a brief warning of diffuse internal “rush” and sudden loss of awareness, followed by a generalised tonic–clonic seizure, tongue biting on the lateral aspect, and post‑ictal confusion lasting 30–60 minutes. He reports that these major convulsions are now occurring roughly every three months on average, with occasional clustering around periods of sleep disruption when changing shifts offshore. In between these, he experiences rare myoclonic jerks on waking which he recognises as part of his generalised epilepsy syndrome. There is no clear focal onset history. No clear alcohol excess; he avoids alcohol while offshore and uses minimal caffeine.\n\nMedication: Sodium valproate 500 mg twice daily, levetiracetam 1,000 mg twice daily. He reports good adherence, facilitated by blister packs provided by the offshore medic. No significant adverse effects aside from mild irritability on levetiracetam, which he feels is manageable. He uses a smartwatch seizure alert; the offshore medical team are aware of his diagnosis and keep buccal midazolam available, though it has not been required in the last year.\n\nInvestigations to date: EEG previously showed generalised spike–wave discharges with photic sensitivity. MRI brain (3T, 2023) was normal. Routine bloods last month (shared care) were unremarkable including LFTs and FBC. He holds a Company Fitness to Work at Sea certificate with restrictions to avoid working at height or near open water without a harness for 24 hours after any seizure.\n\nPlan: Given the current pattern of seizures approximately every three months and acceptable tolerability, we agreed to continue present therapy. I have provided written advice on sleep regularity and shift transitions, including a tapering caffeine plan during the handover week. We will maintain telephone reviews during onshore weeks and schedule an in‑person visit if there is any increase in seizure frequency, new injury, or prolonged post‑ictal confusion. Should the convulsions become more frequent or if myoclonic jerks begin to cluster, we would consider incremental valproate titration or the addition of lamotrigine, mindful of interaction and the need for slow titration. He will send copies of his offshore medical logs to our clinic mailbox after each rotation.\n\nSafety: He understands DVLA guidance for generalised epilepsy and confirms he is not driving. Occupational risk assessments remain in place offshore with buddy systems and fall protection. Emergency plan reviewed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that his major generalised tonic–clonic convulsions occur roughly every three months on average. It also mentions rare myoclonic jerks on waking but describes them as rare without a quantifiable frequency. Per the rule to select the highest frequency, we compare: major convulsions ~ every 3 months (1 per 3 months) versus myoclonic jerks described as rare without numeric frequency. Since 'rare' is non-quantifiable and cannot be converted to an allowed numeric label, we use the explicit numeric frequency for the convulsions. No other numeric seizure frequencies are provided. Therefore, the normalized label is 1 per 3 month.",
+      "seizure_frequency_number": [
+        "1 per 3 month",
+        "these major convulsions are now occurring roughly every three months on average"
+      ],
+      "reference": [
+        "1 per 3 month",
+        "quarterly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

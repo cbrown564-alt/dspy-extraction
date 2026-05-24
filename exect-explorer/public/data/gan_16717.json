@@ -1,0 +1,59 @@
+{
+  "id": "gan_16717",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 23 August 2010 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nSt. Bartholomew’s Hospital, London  \n\nDear Dr Sarah Ahmed, \n\nEmma Carter, DOB: 12-06-1996, Hospital No: A837462 NHS No. 2045891173  \nFlat 3, 22 Brook Lane, London, SE5 9QH  \n\nDiagnosis: \n\nFocal epilepsy with good response to Lamotrigine; Levetiracetam previously ineffective; Phenytoin not tolerated due to dizziness and cognitive slowing.\n\nAetiology: \n\nPerinatal infarct affecting the right parietal region (radiologically stable on prior imaging).\n\nOther Medical Problems: \n\nVitamin D insufficiency on supplementation; mild migraine without aura; no known drug allergies.\n\nBackground and Recent Events: \n\nShe wears a smartwatch with fall-detection enabled; the device logs have been useful in corroborating the timing of events when available. In Mar she experienced a prolonged focal seizure lasting 8 minutes, resolving without intervention. In May there were three further brief absences, and in Aug a single generalised tonic-clonic seizure was reported at school (not witnessed by family). The school nurse documented a post-ictal phase of approximately 15 minutes; the smartwatch registered a hard fall alert at the corresponding time. There have been no emergency department attendances, and there has been no reported injury.\n\nCurrent Treatment: \n\nLamotrigine 150 mg mane and 200 mg nocte, single brand only. Buccal midazolam rescue pack held at school and home but not administered during the above events.\n\nManagement Plan: \n\n- Continue Lamotrigine at current dosing and maintain single-brand supply to avoid variability.  \n- Arrange serum Lamotrigine level and vitamin D recheck prior to next review.  \n- School has been provided with updated seizure first-aid guidance; smartwatch fall alerts to be printed from the companion app to support event chronology.  \n- No driving. Occupational advice provided regarding graded return to PE participation at school with supervision.\n\nSummary: \n\nThis patient has focal epilepsy attributed to a perinatal parietal infarct. Event chronology over the past six months is as above, with smartwatch data aiding correlation of timings. No medication changes are proposed today given overall tolerability and absence of clustering or status features. I will review in six months or sooner if further generalised events occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 885,
+      "end": 1050,
+      "text": "In Mar she experienced a prolonged focal seizure... In May there were three further brief absences, and in Aug a single generalised tonic-clonic seizure was reported",
+      "attributes": {
+        "Label": "5 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 885,
+      "end": 1134,
+      "text": "In Mar she experienced a prolonged focal seizure lasting 8 minutes, resolving without intervention. In May there were three further brief absences, and in Aug a single generalised tonic-clonic seizure was reported at school (not witnessed by family)",
+      "attributes": {
+        "Label": "5 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16717,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 23 August 2010 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nSt. Bartholomew’s Hospital, London  \n\nDear Dr Sarah Ahmed, \n\nEmma Carter, DOB: 12-06-1996, Hospital No: A837462 NHS No. 2045891173  \nFlat 3, 22 Brook Lane, London, SE5 9QH  \n\nDiagnosis: \n\nFocal epilepsy with good response to Lamotrigine; Levetiracetam previously ineffective; Phenytoin not tolerated due to dizziness and cognitive slowing.\n\nAetiology: \n\nPerinatal infarct affecting the right parietal region (radiologically stable on prior imaging).\n\nOther Medical Problems: \n\nVitamin D insufficiency on supplementation; mild migraine without aura; no known drug allergies.\n\nBackground and Recent Events: \n\nShe wears a smartwatch with fall-detection enabled; the device logs have been useful in corroborating the timing of events when available. In Mar she experienced a prolonged focal seizure lasting 8 minutes, resolving without intervention. In May there were three further brief absences, and in Aug a single generalised tonic-clonic seizure was reported at school (not witnessed by family). The school nurse documented a post-ictal phase of approximately 15 minutes; the smartwatch registered a hard fall alert at the corresponding time. There have been no emergency department attendances, and there has been no reported injury.\n\nCurrent Treatment: \n\nLamotrigine 150 mg mane and 200 mg nocte, single brand only. Buccal midazolam rescue pack held at school and home but not administered during the above events.\n\nManagement Plan: \n\n- Continue Lamotrigine at current dosing and maintain single-brand supply to avoid variability.  \n- Arrange serum Lamotrigine level and vitamin D recheck prior to next review.  \n- School has been provided with updated seizure first-aid guidance; smartwatch fall alerts to be printed from the companion app to support event chronology.  \n- No driving. Occupational advice provided regarding graded return to PE participation at school with supervision.\n\nSummary: \n\nThis patient has focal epilepsy attributed to a perinatal parietal infarct. Event chronology over the past six months is as above, with smartwatch data aiding correlation of timings. No medication changes are proposed today given overall tolerability and absence of clustering or status features. I will review in six months or sooner if further generalised events occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter lists events over the past six months: one prolonged focal seizure in March (1), three brief absences in May (3), and one generalised tonic-clonic seizure in August (1). Total seizures over the past six months = 1 + 3 + 1 = 5. Therefore, frequency is 5 per 6 months. No indication of a longer seizure-free period.",
+      "seizure_frequency_number": [
+        "5 per 6 month",
+        "In Mar she experienced a prolonged focal seizure... In May there were three further brief absences, and in Aug a single generalised tonic-clonic seizure was reported"
+      ],
+      "reference": [
+        "5 per 6 month",
+        "In Mar she experienced a prolonged focal seizure lasting 8 minutes, resolving without intervention. In May there were three further brief absences, and in Aug a single generalised tonic-clonic seizure was reported at school (not witnessed by family)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

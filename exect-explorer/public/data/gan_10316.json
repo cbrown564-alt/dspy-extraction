@@ -1,0 +1,54 @@
+{
+  "id": "gan_10316",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 23 January 2017 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Louise Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace exposure note and antiseizure medicine adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy (primary generalised epilepsy)\n\n\nPresent Medication:\n\n1. Sodium valproate (Epilim chrono) 500 mg twice daily\n2. Clobazam 10 mg at night as adjunct\n\n\nPresent Seizure Frequency:\n\nPatient reports short-lived tonic–clonic events clustering around off-duty days; pattern suspected but not yet corroborated by diary or witness accounts. Weekend-linked groupings remain unconfirmed due to limited documentation.\n\n\nContext and Triggers:\n\nHe works in metal fabrication and welding with intermittent arc-light exposure. He uses a protective auto-darkening visor in accordance with workplace protocols and denies any symptomatic photic sensitivity during shifts. He notes variable sleep on late-early changeovers and occasional missed meals on busy days. No recent alcohol binges; caffeine intake moderate. No recent head injuries.\n\n\nPlan of Action:\n\n- Maintain current valproate dose for now. We will optimise adherence and sleep hygiene and reinforce regular meals at work.\n- Introduce a structured seizure and trigger diary (including shift pattern, sleep duration, visor use, and welding tasks) for at least 8 weeks to clarify the apparent weekend clustering.\n- If clustering is corroborated or breakthrough events persist, consider transitioning from clobazam to lamotrigine add-on in a slow titration while continuing valproate, mindful of interaction and rash risk. We will review suitability at next appointment.\n- Occupational advice: continue using the protective visor; no change to duties at present. If photic sensitivity is suspected on testing, we will provide task-specific adjustments.\n\nFollow-up arranged in 10–12 weeks. He was advised to seek urgent advice if seizures increase in duration, occur in series without recovery, or if any injury occurs at work.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 597,
+      "end": 750,
+      "text": "Patient reports short-lived tonic–clonic events clustering around off-duty days; pattern suspected but not yet corroborated by diary or witness accounts.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10316,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 23 January 2017 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Louise Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace exposure note and antiseizure medicine adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy (primary generalised epilepsy)\n\n\nPresent Medication:\n\n1. Sodium valproate (Epilim chrono) 500 mg twice daily\n2. Clobazam 10 mg at night as adjunct\n\n\nPresent Seizure Frequency:\n\nPatient reports short-lived tonic–clonic events clustering around off-duty days; pattern suspected but not yet corroborated by diary or witness accounts. Weekend-linked groupings remain unconfirmed due to limited documentation.\n\n\nContext and Triggers:\n\nHe works in metal fabrication and welding with intermittent arc-light exposure. He uses a protective auto-darkening visor in accordance with workplace protocols and denies any symptomatic photic sensitivity during shifts. He notes variable sleep on late-early changeovers and occasional missed meals on busy days. No recent alcohol binges; caffeine intake moderate. No recent head injuries.\n\n\nPlan of Action:\n\n- Maintain current valproate dose for now. We will optimise adherence and sleep hygiene and reinforce regular meals at work.\n- Introduce a structured seizure and trigger diary (including shift pattern, sleep duration, visor use, and welding tasks) for at least 8 weeks to clarify the apparent weekend clustering.\n- If clustering is corroborated or breakthrough events persist, consider transitioning from clobazam to lamotrigine add-on in a slow titration while continuing valproate, mindful of interaction and rash risk. We will review suitability at next appointment.\n- Occupational advice: continue using the protective visor; no change to duties at present. If photic sensitivity is suspected on testing, we will provide task-specific adjustments.\n\nFollow-up arranged in 10–12 weeks. He was advised to seek urgent advice if seizures increase in duration, occur in series without recovery, or if any injury occurs at work.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizure frequency under 'Present Seizure Frequency' but provides no numeric rate. It states the patient reports short-lived tonic–clonic events that appear to cluster around off-duty days, yet this pattern is not corroborated and remains unconfirmed due to limited documentation. There is no quantifiable count per day/week/month or per cluster, and not enough detail to construct a cluster frequency with events per cluster. Therefore, per instruction, since seizures are mentioned but specific frequency cannot be determined, the correct output is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Patient reports short-lived tonic–clonic events clustering around off-duty days; pattern suspected but not yet corroborated by diary or witness accounts."
+      ],
+      "reference": [
+        "unknown",
+        "Possible weekend clusters; insufficient data to quantify"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

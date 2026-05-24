@@ -1,0 +1,59 @@
+{
+  "id": "gan_766",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 December 2022 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication review and titration plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nNot classified at present\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters\n\nPresent Seizure Frequency:\n\nPatient reports focal-aware events occurring weekly, often late evening, with brief déjà vu and metallic taste lasting under a minute, occasionally followed by short confusion. No clear precipitant identified despite sleep and caffeine diary.\n\nPlan of Action:\n\nGiven the ongoing weekly events despite stable lamotrigine levels, I discussed options with the patient. They prefer to optimise current therapy before considering further investigations such as inpatient video-EEG. We will cautiously titrate lamotrigine while monitoring mood, rash, and headache. Clobazam to remain for rescue use only, with emphasis on avoiding daily use.\n\nPlease adjust lamotrigine as follows: increase to 125 mg twice daily for 2 weeks, then 150 mg twice daily if tolerated. Maintain for 8 weeks and review seizure diary. If weekly events persist, we will consider ambulatory EEG and MRI review at next visit. Safety advice given on driving, bathing, and operating machinery in line with DVLA guidance; patient confirms they are not driving.\n\nI have arranged follow-up in 10 weeks. Sooner review if increase in frequency, prolonged events, or adverse effects (particularly any rash).\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 544,
+      "end": 595,
+      "text": "Patient reports focal-aware events occurring weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 589,
+      "end": 595,
+      "text": "weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 766,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 December 2022 10:15\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication review and titration plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nNot classified at present\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters\n\nPresent Seizure Frequency:\n\nPatient reports focal-aware events occurring weekly, often late evening, with brief déjà vu and metallic taste lasting under a minute, occasionally followed by short confusion. No clear precipitant identified despite sleep and caffeine diary.\n\nPlan of Action:\n\nGiven the ongoing weekly events despite stable lamotrigine levels, I discussed options with the patient. They prefer to optimise current therapy before considering further investigations such as inpatient video-EEG. We will cautiously titrate lamotrigine while monitoring mood, rash, and headache. Clobazam to remain for rescue use only, with emphasis on avoiding daily use.\n\nPlease adjust lamotrigine as follows: increase to 125 mg twice daily for 2 weeks, then 150 mg twice daily if tolerated. Maintain for 8 weeks and review seizure diary. If weekly events persist, we will consider ambulatory EEG and MRI review at next visit. Safety advice given on driving, bathing, and operating machinery in line with DVLA guidance; patient confirms they are not driving.\n\nI have arranged follow-up in 10 weeks. Sooner review if increase in frequency, prolonged events, or adverse effects (particularly any rash).\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: 'Patient reports focal-aware events occurring weekly'. 'Weekly' maps to 1 per week unless otherwise quantified. No other frequencies mentioned that are higher or additional. Therefore normalize to '1 per week'.",
+      "seizure_frequency_number": [
+        "1 per week",
+        "Patient reports focal-aware events occurring weekly"
+      ],
+      "reference": [
+        "1 per week",
+        "weekly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

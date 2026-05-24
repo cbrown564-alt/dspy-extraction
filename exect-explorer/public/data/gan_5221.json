@@ -1,0 +1,48 @@
+{
+  "id": "gan_5221",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr A. Patel\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr A. Patel,\n\nEmily Carter, DOB: 22-11-1991, Hospital No: H672031 NHS No. 9846153207\nFlat 4, 28 Rosewood Court, London W2 5DN\n\nEpilepsy\n\nMedication: Continuing Lamotrigine since March 2024\n\nCurrent regimen: Lamotrigine 100 mg in the morning and 100 mg in the evening (patient-stated and cross-checked with pharmacy record)\n\nLamotrigine Blood Level:\n\n12th September 2025: 4.8 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 100 mg twice daily.\n\nSeizures: The patient reports no auras, warnings, or witnessed events for an extended period; she cannot recall any episodes since early 2024.\n\nI conducted a scheduled telephone follow-up today. She described good day-to-day functioning without adverse effects from Lamotrigine. She notes a regular routine, including commuting primarily by bicycle and maintaining consistent sleep and meal times, which she finds helpful for overall wellbeing. She denies missed doses and reports setting phone reminders for medication. There have been no emergency presentations, injuries, or concerns raised by family or colleagues.\n\nWe agreed to continue the present dosing and to re-check a trough Lamotrigine level prior to her next review or sooner if any clinical change occurs. She is aware of how to contact the service if she experiences any breakthrough events or medication issues.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 708,
+      "end": 755,
+      "text": "she cannot recall any episodes since early 2024",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5221,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr A. Patel\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr A. Patel,\n\nEmily Carter, DOB: 22-11-1991, Hospital No: H672031 NHS No. 9846153207\nFlat 4, 28 Rosewood Court, London W2 5DN\n\nEpilepsy\n\nMedication: Continuing Lamotrigine since March 2024\n\nCurrent regimen: Lamotrigine 100 mg in the morning and 100 mg in the evening (patient-stated and cross-checked with pharmacy record)\n\nLamotrigine Blood Level:\n\n12th September 2025: 4.8 mg/L (laboratory reference range 1.0–15.0 mg/L). Dose at time of sampling: 100 mg twice daily.\n\nSeizures: The patient reports no auras, warnings, or witnessed events for an extended period; she cannot recall any episodes since early 2024.\n\nI conducted a scheduled telephone follow-up today. She described good day-to-day functioning without adverse effects from Lamotrigine. She notes a regular routine, including commuting primarily by bicycle and maintaining consistent sleep and meal times, which she finds helpful for overall wellbeing. She denies missed doses and reports setting phone reminders for medication. There have been no emergency presentations, injuries, or concerns raised by family or colleagues.\n\nWe agreed to continue the present dosing and to re-check a trough Lamotrigine level prior to her next review or sooner if any clinical change occurs. She is aware of how to contact the service if she experiences any breakthrough events or medication issues.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states: \"The patient reports no auras, warnings, or witnessed events for an extended period; she cannot recall any episodes since early 2024.\" Clinic date is 02 October 2025. Last recalled seizure was early 2024, which is at least ~18 months prior, exceeding the 6-month criterion for seizure freedom. Therefore, she is currently seizure free for more than 6 months; given the phrasing and timeline, the appropriate normalized label is 'seizure free for multiple years' or 'seizure free for multiple months'. Since exact years are not quantified and 'early 2024' to Oct 2025 is more than a year but not precisely specified, use 'seizure free for multiple years' only if clearly 2+ years; here it's roughly 1.5 years, so 'multiple months' fits the allowed wording better while satisfying the 6+ months rule.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "she cannot recall any episodes since early 2024"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure freedom continues"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_15268",
+  "text": "Department of Neurology \n\nClinic Date: 08 August 2016 \n\nDr Amelia Harper  \nSt. Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Amelia Harper,  \n\nMichael Turner, DOB: 23-02-1987, Hospital No: H392741 NHS No. 9056173842  \n12 Brookfield Close, Hackney, London E9 6PT \n\nDiagnoses: \n\nRecurrent seizures of uncertain character; multiple recent ED presentations reviewed via triage notes and nursing documentation. \n\nCurrent Medication: \n\nLevetiracetam 500 mg twice daily  \nVitamin D3 1000 IU once daily \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily without change.  \n- Maintain regular sleep schedule; avoid missed doses and excess alcohol.  \n- Safety advice reinforced regarding baths, heights, and operating machinery.  \n- If new events occur or evolve, obtain eyewitness video where safe and present to next review.  \n- Routine follow-up in 9–12 months, earlier if breakthrough events occur. \n\nI reviewed Michael Turner in clinic today following several emergency department triage attendances over the past six months, during which nursing notes documented brief single jerks without loss of awareness and no witnessed convulsions. The patient confirms good adherence to levetiracetam and a stable sleep routine. No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain. These brief jerks have been sporadic, self-terminating, and have not resulted in injury. There is no current report of tongue biting, incontinence, or prolonged post-event confusion. \n\nWe discussed potential triggers, including sleep deprivation and acute stress, both of which were noted around two of the recent episodes. There is no recent head injury, intercurrent infection, or new medication. ED triage summaries were consistent with the patient’s account; observations were stable and no focal neurological deficit was recorded. \n\nGiven the stability with absence of tonic–clonic events since 2015 and infrequent single jerks, I have advised continuation of the current antiepileptic regimen and reinforced lifestyle measures. I have not arranged routine neuroimaging at this stage; should the semiology change or frequency increase, we would reconsider further investigations. The patient has been provided with written advice on seizure first aid and when to seek urgent care. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1265,
+      "end": 1363,
+      "text": "No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain.",
+      "attributes": {
+        "Label": "3 per 15 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1265,
+      "end": 1362,
+      "text": "No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain",
+      "attributes": {
+        "Label": "3 per 15 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15268,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 08 August 2016 \n\nDr Amelia Harper  \nSt. Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Amelia Harper,  \n\nMichael Turner, DOB: 23-02-1987, Hospital No: H392741 NHS No. 9056173842  \n12 Brookfield Close, Hackney, London E9 6PT \n\nDiagnoses: \n\nRecurrent seizures of uncertain character; multiple recent ED presentations reviewed via triage notes and nursing documentation. \n\nCurrent Medication: \n\nLevetiracetam 500 mg twice daily  \nVitamin D3 1000 IU once daily \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily without change.  \n- Maintain regular sleep schedule; avoid missed doses and excess alcohol.  \n- Safety advice reinforced regarding baths, heights, and operating machinery.  \n- If new events occur or evolve, obtain eyewitness video where safe and present to next review.  \n- Routine follow-up in 9–12 months, earlier if breakthrough events occur. \n\nI reviewed Michael Turner in clinic today following several emergency department triage attendances over the past six months, during which nursing notes documented brief single jerks without loss of awareness and no witnessed convulsions. The patient confirms good adherence to levetiracetam and a stable sleep routine. No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain. These brief jerks have been sporadic, self-terminating, and have not resulted in injury. There is no current report of tongue biting, incontinence, or prolonged post-event confusion. \n\nWe discussed potential triggers, including sleep deprivation and acute stress, both of which were noted around two of the recent episodes. There is no recent head injury, intercurrent infection, or new medication. ED triage summaries were consistent with the patient’s account; observations were stable and no focal neurological deficit was recorded. \n\nGiven the stability with absence of tonic–clonic events since 2015 and infrequent single jerks, I have advised continuation of the current antiepileptic regimen and reinforced lifestyle measures. I have not arranged routine neuroimaging at this stage; should the semiology change or frequency increase, we would reconsider further investigations. The patient has been provided with written advice on seizure first aid and when to seek urgent care. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 08 August 2016. The letter states: \"No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain.\" This indicates a total of 3 seizure events (single jerks) since May 2015 up to the clinic date. Time from May 2015 to 08 August 2016 is approximately 15 months (May 2015 → May 2016 = 12 months; plus June, July, and part of August ≈ 3 months). Therefore, frequency = 3 in 15 months → \"3 per 15 month\". No other explicit numeric frequency is provided.",
+      "seizure_frequency_number": [
+        "3 per 15 month",
+        "No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain."
+      ],
+      "reference": [
+        "3 per 15 month",
+        "No further tonic-clonic seizures have occurred since May/2015, although three single jerks remain"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

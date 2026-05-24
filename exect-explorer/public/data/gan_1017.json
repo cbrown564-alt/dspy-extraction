@@ -1,0 +1,48 @@
+{
+  "id": "gan_1017",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 January 2024 \n\nDr Anita Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Thomas’ Hospital, Westminster Bridge Rd, London SE1 7EH  \n\nDear Dr Anita Shah, \n\nMr Thomas Green, DOB: 22-03-1991, Hospital No: K417203 NHS No. 9384756201  \nFlat 5, 12 Brookside Avenue, London, SW16 3QP  \n\nDiagnosis: \n\nGeneralised epilepsy with improving control following recent dose optimisation of sodium valproate; previous trial of topiramate not tolerated \n\nAetiology: \n\nUnclear; no structural lesion on MRI, normal perinatal history \n\nOther Medical Problems: \n\nMild migraine without aura, managed conservatively; vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n- Continue sodium valproate (same brand) 500 mg mane and 750 mg nocte.  \n- Maintain current lifestyle measures (regular sleep, reduced caffeine).  \n- Arrange serum valproate level and LFTs prior to next review.  \n- Review in six months or sooner if breakthrough events increase.  \n\nSince the minor adjustment we made at the last visit (shifting the evening valproate dose slightly later and a modest dose increase), there has been a clear improvement. He reports brief generalised tonic–clonic seizures occurring roughly once every three months, with shorter post-ictal periods and no injuries. Prior to the change, events were more frequent and recovery slower. He has had no myoclonic jerks in the mornings for several weeks and feels steadier overall. He continues to work full-time and has resumed light exercise without difficulty.\n\nNo adverse effects from medication have been reported beyond mild transient drowsiness in the first week after the adjustment, which has now resolved. I have encouraged him to continue keeping a seizure diary and to alert us if the pattern worsens. No further changes today. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1229,
+      "end": 1270,
+      "text": "occurring roughly once every three months",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1017,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 January 2024 \n\nDr Anita Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Thomas’ Hospital, Westminster Bridge Rd, London SE1 7EH  \n\nDear Dr Anita Shah, \n\nMr Thomas Green, DOB: 22-03-1991, Hospital No: K417203 NHS No. 9384756201  \nFlat 5, 12 Brookside Avenue, London, SW16 3QP  \n\nDiagnosis: \n\nGeneralised epilepsy with improving control following recent dose optimisation of sodium valproate; previous trial of topiramate not tolerated \n\nAetiology: \n\nUnclear; no structural lesion on MRI, normal perinatal history \n\nOther Medical Problems: \n\nMild migraine without aura, managed conservatively; vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n- Continue sodium valproate (same brand) 500 mg mane and 750 mg nocte.  \n- Maintain current lifestyle measures (regular sleep, reduced caffeine).  \n- Arrange serum valproate level and LFTs prior to next review.  \n- Review in six months or sooner if breakthrough events increase.  \n\nSince the minor adjustment we made at the last visit (shifting the evening valproate dose slightly later and a modest dose increase), there has been a clear improvement. He reports brief generalised tonic–clonic seizures occurring roughly once every three months, with shorter post-ictal periods and no injuries. Prior to the change, events were more frequent and recovery slower. He has had no myoclonic jerks in the mornings for several weeks and feels steadier overall. He continues to work full-time and has resumed light exercise without difficulty.\n\nNo adverse effects from medication have been reported beyond mild transient drowsiness in the first week after the adjustment, which has now resolved. I have encouraged him to continue keeping a seizure diary and to alert us if the pattern worsens. No further changes today. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He reports brief generalised tonic–clonic seizures occurring roughly once every three months.\" This provides a clear current seizure frequency. Convert \"once every three months\" to the allowed format: 1 per 3 month. No other seizure type has a higher frequency mentioned (myoclonic jerks have ceased for several weeks), so the highest/current frequency remains 1 per 3 month.",
+      "seizure_frequency_number": [
+        "1 per 3 month",
+        "occurring roughly once every three months"
+      ],
+      "reference": [
+        "1 per 3 month",
+        "quarterly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

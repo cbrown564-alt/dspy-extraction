@@ -1,0 +1,47 @@
+{
+  "id": "gan_11864",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Khan\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Khan,\n\nSophie Miller, DOB: 12-11-1993, Hospital No: H914726 NHS No. 5839201746\n14 Rosebank Court, London, W10 6LP\n\nRe: Administrative response to court request for medical records\n\nThank you for your formal request, received via the Trust Legal Services on 26 September 2025, for disclosure of neurology records relating to Sophie Miller. We acknowledge the request and will coordinate with the Trust’s Information Governance team.\n\nActions and timelines:\n- Records scope: Neurology clinic correspondence, diagnostic test reports, and medication summaries from 01 January 2022 to present.\n- Lawful basis: Disclosure will proceed upon receipt/confirmation of the sealed court order and appropriate identification of the requesting party, as per Trust policy and UK data protection law.\n- Timescale: We aim to complete collation and secure transfer within 10–15 working days of validation.\n- Format and transfer: Encrypted electronic bundle via approved NHS secure email; a printed set can be provided on request.\n\nPlease direct any procedural queries to the Trust Legal Services office, quoting reference NL-H914726-2025. Clinical appointments and care for Sophie Miller remain unaffected by this administrative process.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11864,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Khan\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Khan,\n\nSophie Miller, DOB: 12-11-1993, Hospital No: H914726 NHS No. 5839201746\n14 Rosebank Court, London, W10 6LP\n\nRe: Administrative response to court request for medical records\n\nThank you for your formal request, received via the Trust Legal Services on 26 September 2025, for disclosure of neurology records relating to Sophie Miller. We acknowledge the request and will coordinate with the Trust’s Information Governance team.\n\nActions and timelines:\n- Records scope: Neurology clinic correspondence, diagnostic test reports, and medication summaries from 01 January 2022 to present.\n- Lawful basis: Disclosure will proceed upon receipt/confirmation of the sealed court order and appropriate identification of the requesting party, as per Trust policy and UK data protection law.\n- Timescale: We aim to complete collation and secure transfer within 10–15 working days of validation.\n- Format and transfer: Encrypted electronic bundle via approved NHS secure email; a printed set can be provided on request.\n\nPlease direct any procedural queries to the Trust Legal Services office, quoting reference NL-H914726-2025. Clinical appointments and care for Sophie Miller remain unaffected by this administrative process.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter is purely administrative, discussing legal disclosure of neurology records, timelines, and transfer methods. It contains no clinical information about seizures, seizure occurrences, or seizure-free duration. Therefore, there is no mention from which a seizure frequency could be determined.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging a court or legal request for epilepsy-related records (admin only)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

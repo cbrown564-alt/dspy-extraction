@@ -1,0 +1,54 @@
+{
+  "id": "gan_7541",
+  "text": "Centre for Neurology Services\n\nNeurosciences Outpatient Department\n\nClinic Date: 27 September 2025\n\nDr A. Patel\nRiverside Health Centre\n1 Meadow Lane, Bristol BS1 4QH\n\nDear Dr A. Patel,\n\nEmma Dawson, DOB: 22-11-1991, Hospital No: H384920 NHS No. 9384726150\nFlat 3, 27 Willow Court, Bristol, BS3 2AD\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine since May 2025.\n\nCurrent regimen: Lamotrigine dispersible 50 mg in the morning and 75 mg at night (patient-reported; verified against repeat prescription list). She uses a weekly pill organiser and reports no missed doses over the past month.\n\nLamotrigine blood level:\n\n12 September 2025: 4.3 mg/L (laboratory reference 1.0–15.0 mg/L). Dose at time of sampling: 50 mg AM / 75 mg PM.\n\nSeizures: The patient describes night-time episodes characterised by abrupt arousals from sleep with vigorous limb movements, brief vocalisation, and rapid settling, occurring in short clusters about once every 3–4 weeks; over the last three months she notes that the pattern has subtly shifted to include occasional brief post-event confusion on waking. There are no consistent daytime events and no preceding warning.\n\nI reviewed Emma Dawson today in clinic. She reports improved daytime alertness since moving the larger Lamotrigine dose to the evening, and no adverse rashes or dizziness. Sleep hygiene has been optimised (fixed bedtime, reduced caffeine after midday). Her partner has recorded two nocturnal events on a smartphone video in August and one in early September, consistent with the described night-time vigorous motor spells; we discussed sharing these clips via the secure portal for review. She denies tongue biting or incontinence. There have been no emergency attendances.\n\nWe will maintain the present Lamotrigine dose for now and continue event documentation. I have asked her to track sleep schedules and any triggers (stress, shift work) in a diary. We will arrange a sleep-deprived EEG and consider ambulatory monitoring if the frequency changes. Safety advice around nocturnal supervision and bedroom environment was reinforced. Follow-up planned in 3 months, sooner if clusters increase or daytime episodes emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 892,
+      "end": 946,
+      "text": "occurring in short clusters about once every 3–4 weeks",
+      "attributes": {
+        "Label": "1 cluster per 3 to 4 week, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7541,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Outpatient Department\n\nClinic Date: 27 September 2025\n\nDr A. Patel\nRiverside Health Centre\n1 Meadow Lane, Bristol BS1 4QH\n\nDear Dr A. Patel,\n\nEmma Dawson, DOB: 22-11-1991, Hospital No: H384920 NHS No. 9384726150\nFlat 3, 27 Willow Court, Bristol, BS3 2AD\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine since May 2025.\n\nCurrent regimen: Lamotrigine dispersible 50 mg in the morning and 75 mg at night (patient-reported; verified against repeat prescription list). She uses a weekly pill organiser and reports no missed doses over the past month.\n\nLamotrigine blood level:\n\n12 September 2025: 4.3 mg/L (laboratory reference 1.0–15.0 mg/L). Dose at time of sampling: 50 mg AM / 75 mg PM.\n\nSeizures: The patient describes night-time episodes characterised by abrupt arousals from sleep with vigorous limb movements, brief vocalisation, and rapid settling, occurring in short clusters about once every 3–4 weeks; over the last three months she notes that the pattern has subtly shifted to include occasional brief post-event confusion on waking. There are no consistent daytime events and no preceding warning.\n\nI reviewed Emma Dawson today in clinic. She reports improved daytime alertness since moving the larger Lamotrigine dose to the evening, and no adverse rashes or dizziness. Sleep hygiene has been optimised (fixed bedtime, reduced caffeine after midday). Her partner has recorded two nocturnal events on a smartphone video in August and one in early September, consistent with the described night-time vigorous motor spells; we discussed sharing these clips via the secure portal for review. She denies tongue biting or incontinence. There have been no emergency attendances.\n\nWe will maintain the present Lamotrigine dose for now and continue event documentation. I have asked her to track sleep schedules and any triggers (stress, shift work) in a diary. We will arrange a sleep-deprived EEG and consider ambulatory monitoring if the frequency changes. Safety advice around nocturnal supervision and bedroom environment was reinforced. Follow-up planned in 3 months, sooner if clusters increase or daytime episodes emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the seizures are \"occurring in short clusters about once every 3–4 weeks.\" This gives a clear cluster frequency (approximately one cluster every 3 to 4 weeks) but does not specify the number of seizures within each cluster beyond describing them as \"short.\" Therefore, using the allowed cluster format with a range for the interval and \"multiple\" for the unspecified per-cluster count, the appropriate label is \"1 cluster per 3 to 4 week, multiple per cluster.\" Other mentions (e.g., two events in August and one in early September) are less precise and do not override the explicit cluster-frequency statement.",
+      "seizure_frequency_number": [
+        "1 cluster per 3 to 4 week, multiple per cluster",
+        "occurring in short clusters about once every 3–4 weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Nocturnal hypermotor seizure events—semiology evolving"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 cluster per 3 to 4 week, multiple per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

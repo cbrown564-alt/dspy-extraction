@@ -1,0 +1,59 @@
+{
+  "id": "gan_234",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \n- Levetiracetam 750 mg twice daily  \n- Previously tried: Lamotrigine (discontinued due to rash)  \n\nHistory and interval progress:  \nEmily Carter reports that episodes have settled into a pattern of seizures every two months. She links the most recent significant event to air travel: the preceding episode occurred during a flight, shortly after take-off, and she describes a clear increase in travel anxiety since then. She does not recall a consistent warning, and recovery has been swift with post-event tiredness only. No tongue biting or injuries reported. There have been no emergency department attendances. Sleep has been variable around travel days. Alcohol minimal. \n\nAssessment and plan:  \n- Current pattern is stable at seizures every two months on the present levetiracetam dose. We discussed non-pharmacological measures around flights, including good sleep hygiene before travel, hydration, and planned anxiety-management strategies; she feels these are acceptable to try. She prefers to continue the current medication unchanged for now. We agreed to monitor and reconsider adjustments if the pattern worsens or events begin to cluster around travel. \n- Safety advice and SUDEP discussion previously given; we briefly revisited personalised risk reduction. She does not drive and is aware of DVLA requirements. \n\nFollow-up:  \nWe will review in six months, or sooner if frequency increases or events occur outside the current pattern. \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 508,
+      "end": 533,
+      "text": "seizures every two months",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 508,
+      "end": 533,
+      "text": "seizures every two months",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 234,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \n- Levetiracetam 750 mg twice daily  \n- Previously tried: Lamotrigine (discontinued due to rash)  \n\nHistory and interval progress:  \nEmily Carter reports that episodes have settled into a pattern of seizures every two months. She links the most recent significant event to air travel: the preceding episode occurred during a flight, shortly after take-off, and she describes a clear increase in travel anxiety since then. She does not recall a consistent warning, and recovery has been swift with post-event tiredness only. No tongue biting or injuries reported. There have been no emergency department attendances. Sleep has been variable around travel days. Alcohol minimal. \n\nAssessment and plan:  \n- Current pattern is stable at seizures every two months on the present levetiracetam dose. We discussed non-pharmacological measures around flights, including good sleep hygiene before travel, hydration, and planned anxiety-management strategies; she feels these are acceptable to try. She prefers to continue the current medication unchanged for now. We agreed to monitor and reconsider adjustments if the pattern worsens or events begin to cluster around travel. \n- Safety advice and SUDEP discussion previously given; we briefly revisited personalised risk reduction. She does not drive and is aware of DVLA requirements. \n\nFollow-up:  \nWe will review in six months, or sooner if frequency increases or events occur outside the current pattern. \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's current pattern: 'seizures every two months' and reiterates it in the assessment and plan. There are no other differing frequencies mentioned. Therefore, the current seizure frequency is 1 seizure per 2 months. This is not seizure-free, and no clustering frequency is provided.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "seizures every two months"
+      ],
+      "reference": [
+        "1 per 2 month",
+        "seizures every two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

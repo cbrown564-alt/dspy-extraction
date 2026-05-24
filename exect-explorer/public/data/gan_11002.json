@@ -1,0 +1,59 @@
+{
+  "id": "gan_11002",
+  "text": "Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Patel  \nSouth Thames Neurology Service  \nLevel 3, Riverside Health Centre, 14 Waverley Road, London SE11 3QT  \n\nDear Dr Patel,  \n\nMaya Shah, DOB: 17-08-1998, Hospital No: H629415 NHS No. 9083114726  \nFlat 12, 5 Alder Court, Peckham, London SE15 2DR  \n\nDiagnoses:  \n\nSeizure disorder (aetiology and classification not determined).\n\nI reviewed Maya Shah today in the outpatient neurology clinic with her mother in attendance. Since her last visit, she reports persistent early-day breakthrough episodes occurring in short bursts. Specifically, she describes morning clusters 2 to 4×/month; ~five events over 90 min. These events typically begin shortly after waking and are characterised by a brief behavioural pause, loss of awareness, and manual automatisms, with rapid return to baseline between episodes across the cluster. There have been no witnessed generalised convulsions, no new focal neurological symptoms, and no injuries reported. She keeps a paper diary corroborated by her mother; the pattern has been stable.\n\nTreatment and course: She remains on her existing anti-seizure regimen without recent dose changes. She has a rescue plan (family-held) but has not required emergency medication in the last six months. Lifestyle adjustments (consistent sleep/wake times and avoidance of missed meals) have been emphasised by the patient and family and are felt to reduce day-to-day variability but have not altered the overall pattern of clusters. Following discussion, she preferred no medication changes today; we agreed to continue monitoring. Post-visit plan includes maintenance of a detailed seizure log and provision of an event-timed video if feasible to aid future classification.\n\nExamination today was unremarkable. Routine bloods from last month (FBC, U&E, LFT, bone profile) were within reference limits. Prior MRI (report from 2023) showed no structural lesion; prior routine EEG was non-diagnostic. Given the stable clinical pattern and absence of red flags, we will organise an ambulatory EEG with early-morning capture window to characterise the described events more precisely.\n\nCurrent frequency: As above, morning clusters 2 to 4×/month; ~five events over 90 min. This reflects her established baseline pattern prior to the current treatment approach and has remained unchanged since initiation.\n\nPlan:  \n- Continue current anti-seizure therapy unchanged.  \n- Arrange ambulatory EEG focusing on early-morning period.  \n- Continue seizure diary and obtain caregiver videos where possible.  \n- Safety counselling reinforced (bathroom precautions, hot surfaces, supervised swimming).  \n- Review in 4 months, or earlier if frequency, duration, or event characteristics change.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2155,
+      "end": 2241,
+      "text": "Current frequency: As above, morning clusters 2 to 4×/month; ~five events over 90 min.",
+      "attributes": {
+        "Label": "2 to 4 cluster per month, 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 607,
+      "end": 663,
+      "text": "Morning clusters 2 to 4×/month; ~five events over 90 min",
+      "attributes": {
+        "Label": "2 to 4 cluster per month, 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11002,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 02 October 2025\n\nDr Patel  \nSouth Thames Neurology Service  \nLevel 3, Riverside Health Centre, 14 Waverley Road, London SE11 3QT  \n\nDear Dr Patel,  \n\nMaya Shah, DOB: 17-08-1998, Hospital No: H629415 NHS No. 9083114726  \nFlat 12, 5 Alder Court, Peckham, London SE15 2DR  \n\nDiagnoses:  \n\nSeizure disorder (aetiology and classification not determined).\n\nI reviewed Maya Shah today in the outpatient neurology clinic with her mother in attendance. Since her last visit, she reports persistent early-day breakthrough episodes occurring in short bursts. Specifically, she describes morning clusters 2 to 4×/month; ~five events over 90 min. These events typically begin shortly after waking and are characterised by a brief behavioural pause, loss of awareness, and manual automatisms, with rapid return to baseline between episodes across the cluster. There have been no witnessed generalised convulsions, no new focal neurological symptoms, and no injuries reported. She keeps a paper diary corroborated by her mother; the pattern has been stable.\n\nTreatment and course: She remains on her existing anti-seizure regimen without recent dose changes. She has a rescue plan (family-held) but has not required emergency medication in the last six months. Lifestyle adjustments (consistent sleep/wake times and avoidance of missed meals) have been emphasised by the patient and family and are felt to reduce day-to-day variability but have not altered the overall pattern of clusters. Following discussion, she preferred no medication changes today; we agreed to continue monitoring. Post-visit plan includes maintenance of a detailed seizure log and provision of an event-timed video if feasible to aid future classification.\n\nExamination today was unremarkable. Routine bloods from last month (FBC, U&E, LFT, bone profile) were within reference limits. Prior MRI (report from 2023) showed no structural lesion; prior routine EEG was non-diagnostic. Given the stable clinical pattern and absence of red flags, we will organise an ambulatory EEG with early-morning capture window to characterise the described events more precisely.\n\nCurrent frequency: As above, morning clusters 2 to 4×/month; ~five events over 90 min. This reflects her established baseline pattern prior to the current treatment approach and has remained unchanged since initiation.\n\nPlan:  \n- Continue current anti-seizure therapy unchanged.  \n- Arrange ambulatory EEG focusing on early-morning period.  \n- Continue seizure diary and obtain caregiver videos where possible.  \n- Safety counselling reinforced (bathroom precautions, hot surfaces, supervised swimming).  \n- Review in 4 months, or earlier if frequency, duration, or event characteristics change.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current frequency: 'morning clusters 2 to 4×/month; ~five events over 90 min.' This is reiterated under 'Current frequency' and described as stable. Therefore, frequency is clusters per month with events per cluster. Convert '2 to 4×/month' to '2 to 4 per month' and '~five events' to '5 per cluster'. No other competing frequencies are given. Apply the format '<value1> cluster per <value2> month, <value3> per cluster'.",
+      "seizure_frequency_number": [
+        "2 to 4 cluster per month, 5 per cluster",
+        "Current frequency: As above, morning clusters 2 to 4×/month; ~five events over 90 min."
+      ],
+      "reference": [
+        "2 to 4 cluster per month, 5 per cluster",
+        "Morning clusters 2 to 4×/month; ~five events over 90 min"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_16990",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 14 May 2016 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nThank you for referring the above patient for review in the Neurology Clinic today for pre-conception counselling in the context of an established seizure disorder. I last reviewed him approximately six months ago, at which point we agreed a period of treatment stability while he and his partner considered pregnancy planning.\n\nHe reports stable seizure control since that review. He continues to suffer focal aware seizures four to five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory. He is keeping a diary and his descriptions are consistent across entries.\n\nCurrent medicines: Lamotrigine 150 mg b.d., Levetiracetam 1000 mg b.d., and Clobazam 10 mg nocte. He previously trialled Topiramate (discontinued due to cognitive slowing) and Carbamazepine (stopped because of rash), and has not required rescue medication for over a year. He denies adverse effects from his current regimen other than occasional fatigue late in the day. He does not drive and avoids alcohol. Sleep is generally adequate though he notes that missed meals and late nights can precipitate brief events.\n\nToday’s consultation focused on pre-conception considerations. He and his partner are planning to conceive in the coming year. We discussed medication stability prior to conception, the importance of adherence, and general wellbeing measures. He understands that any medication changes are best avoided close to conception unless clinically necessary, and that optimisation should ideally occur several months in advance. He will continue folic acid as per local guidance, commenced by his GP last month. We also discussed safety planning at home, seizure first aid for his partner, and the value of ongoing seizure diaries. He prefers to defer any dose adjustments for now given the acceptable balance of control and tolerability, and will contact us promptly if there is any change.\n\nPlan:\n- Continue current antiepileptic regimen unchanged for the present, with emphasis on adherence and consistent routines.\n- Maintain folic acid as initiated by primary care and continue general pre-conception health measures.\n- Continue seizure diary; report any increase in frequency, changes in semiology, or emergence of adverse effects.\n- Provide written information about pre-conception and perinatal considerations in the context of a seizure disorder.\n- Arrange follow-up in four months, or sooner if concerns arise.\n\nI will keep you updated following his next review. Please let me know if there are any queries or if further information would be helpful.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 621,
+      "end": 692,
+      "text": "He continues to suffer focal aware seizures four to five times per week",
+      "attributes": {
+        "Label": "4 to 5 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 621,
+      "end": 889,
+      "text": "He continues to suffer focal aware seizures four to five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory",
+      "attributes": {
+        "Label": "4 to 5 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16990,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 14 May 2016 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nThank you for referring the above patient for review in the Neurology Clinic today for pre-conception counselling in the context of an established seizure disorder. I last reviewed him approximately six months ago, at which point we agreed a period of treatment stability while he and his partner considered pregnancy planning.\n\nHe reports stable seizure control since that review. He continues to suffer focal aware seizures four to five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory. He is keeping a diary and his descriptions are consistent across entries.\n\nCurrent medicines: Lamotrigine 150 mg b.d., Levetiracetam 1000 mg b.d., and Clobazam 10 mg nocte. He previously trialled Topiramate (discontinued due to cognitive slowing) and Carbamazepine (stopped because of rash), and has not required rescue medication for over a year. He denies adverse effects from his current regimen other than occasional fatigue late in the day. He does not drive and avoids alcohol. Sleep is generally adequate though he notes that missed meals and late nights can precipitate brief events.\n\nToday’s consultation focused on pre-conception considerations. He and his partner are planning to conceive in the coming year. We discussed medication stability prior to conception, the importance of adherence, and general wellbeing measures. He understands that any medication changes are best avoided close to conception unless clinically necessary, and that optimisation should ideally occur several months in advance. He will continue folic acid as per local guidance, commenced by his GP last month. We also discussed safety planning at home, seizure first aid for his partner, and the value of ongoing seizure diaries. He prefers to defer any dose adjustments for now given the acceptable balance of control and tolerability, and will contact us promptly if there is any change.\n\nPlan:\n- Continue current antiepileptic regimen unchanged for the present, with emphasis on adherence and consistent routines.\n- Maintain folic acid as initiated by primary care and continue general pre-conception health measures.\n- Continue seizure diary; report any increase in frequency, changes in semiology, or emergence of adverse effects.\n- Provide written information about pre-conception and perinatal considerations in the context of a seizure disorder.\n- Arrange follow-up in four months, or sooner if concerns arise.\n\nI will keep you updated following his next review. Please let me know if there are any queries or if further information would be helpful.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"continues to suffer focal aware seizures four to five times per week\" and that there have been no generalised convulsions in the past twelve months. According to the rules, select the highest frequency when multiple are given, but here it's a range. The allowed format supports numeric ranges with 'to'. Therefore, the seizure frequency is '4 to 5 per week'. No need to sum or compare with other frequencies, as only one type with a clear range is provided. The patient is not seizure free.",
+      "seizure_frequency_number": [
+        "4 to 5 per week",
+        "He continues to suffer focal aware seizures four to five times per week"
+      ],
+      "reference": [
+        "4 to 5 per week",
+        "He continues to suffer focal aware seizures four to five times per week, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

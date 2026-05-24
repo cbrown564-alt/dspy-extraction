@@ -1,0 +1,59 @@
+{
+  "id": "gan_13011",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 April 2018 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy – Generalised Epilepsy Type\n\nMedication: Ongoing Sodium Valproate since January 2018\n\nCurrent regimen: Sodium Valproate 250mg in the morning and 500mg at night (modified-release). Minor dose timing adjustment made at last visit in February 2018.\n\nValproate Blood Levels:\n\n12 March 2018: 62 mg/L (laboratory therapeutic reference range 50–100 mg/L) while on current dose.\n\nSeizures: The family feel seizure frequency has decreased markedly since starting medication, with only three seizures so far this year. They report shorter post-ictal recovery and no injuries. No myoclonic jerks on awakening for the past six weeks by patient account.\n\nSummary of review: I spoke with Susan Miller and her mother during today’s telephone follow-up. She has generalised epilepsy with typical generalised tonic–clonic seizures previously occurring monthly. Following a minor adjustment at the last visit (dose timing and adherence prompts), she and her family report clear improvement in control and day-to-day functioning. She remains seizure-aware and is keeping a diary. Sleep hygiene has improved, and she is avoiding missed doses. No adverse effects beyond mild transient nausea in the first week, now resolved. Neurological review between seizures is unremarkable by history.\n\nPlan: Continue Sodium Valproate at the current dosing schedule. Maintain seizure diary and adherence reminders. Safety advice reinforced, including supervision when bathing and avoidance of sleep deprivation. If breakthrough clusters occur, they will contact the service for earlier review. Routine follow-up in three months, or sooner if concerns arise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 888,
+      "text": "with only three seizures so far this year.",
+      "attributes": {
+        "Label": "3 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 887,
+      "text": "The family feel seizure frequency has decreased markedly since starting medication, with only three seizures so far this year",
+      "attributes": {
+        "Label": "3 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13011,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 April 2018 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy – Generalised Epilepsy Type\n\nMedication: Ongoing Sodium Valproate since January 2018\n\nCurrent regimen: Sodium Valproate 250mg in the morning and 500mg at night (modified-release). Minor dose timing adjustment made at last visit in February 2018.\n\nValproate Blood Levels:\n\n12 March 2018: 62 mg/L (laboratory therapeutic reference range 50–100 mg/L) while on current dose.\n\nSeizures: The family feel seizure frequency has decreased markedly since starting medication, with only three seizures so far this year. They report shorter post-ictal recovery and no injuries. No myoclonic jerks on awakening for the past six weeks by patient account.\n\nSummary of review: I spoke with Susan Miller and her mother during today’s telephone follow-up. She has generalised epilepsy with typical generalised tonic–clonic seizures previously occurring monthly. Following a minor adjustment at the last visit (dose timing and adherence prompts), she and her family report clear improvement in control and day-to-day functioning. She remains seizure-aware and is keeping a diary. Sleep hygiene has improved, and she is avoiding missed doses. No adverse effects beyond mild transient nausea in the first week, now resolved. Neurological review between seizures is unremarkable by history.\n\nPlan: Continue Sodium Valproate at the current dosing schedule. Maintain seizure diary and adherence reminders. Safety advice reinforced, including supervision when bathing and avoidance of sleep deprivation. If breakthrough clusters occur, they will contact the service for earlier review. Routine follow-up in three months, or sooner if concerns arise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 21 April 2018. The letter states: \"only three seizures so far this year.\" The observation window is from 1 January 2018 to 21 April 2018, which is approximately 3.7 months. To fit allowed units, normalize to 4 months. Therefore: 3 seizures in ~4 months → 3 per 4 month. Historical frequency (previously monthly) is not current and is ignored.",
+      "seizure_frequency_number": [
+        "3 per 4 month",
+        "with only three seizures so far this year."
+      ],
+      "reference": [
+        "3 per 4 month",
+        "The family feel seizure frequency has decreased markedly since starting medication, with only three seizures so far this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

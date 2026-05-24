@@ -1,0 +1,59 @@
+{
+  "id": "gan_2824",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Ahmed,\n\nJordan Ellis, DOB: 05-02-1992, Hospital No: H384920 NHS No. 9834756102\n12 Brookfield Road, London, W2 6AB\n\nMedication:\n\nLevetiracetam 1500 mg/1500 mg; Lacosamide 200 mg/200 mg; Clobazam 10 mg nocte (recently added for breakthrough events). Polytherapy adverse effects are bothersome; control remains suboptimal.\n\nI reviewed Jordan Ellis in clinic today. Over the past eight weeks there has been a clear deterioration in seizure control and in overall tolerance of treatment. Despite adherence, they report larger convulsive events occurring tonic-clonic daily, often in the early hours, with associated tongue biting and postictal confusion lasting 30–60 minutes. Family witnesses have corroborated these events. Between convulsions, there are frequent brief warning sensations and periods of marked fatigue.\n\nAdverse effects on the current regimen are increasingly troublesome: daytime somnolence, dizziness on standing, reduced concentration, low mood, and intermittent nausea. These have begun to impact employment and daily function. There is no history of recent intercurrent illness, sleep deprivation is variable due to nighttime events, and no alcohol excess is reported. No known triggers beyond stress have been identified.\n\nGiven the worsening pattern, we discussed options. We will obtain updated blood tests (U&E, LFTs) and trough levels where appropriate, and arrange an expedited video-EEG with MRI (epilepsy protocol) to reassess for any remediable focus and to inform rationalisation of therapy. In the interim, I have advised continuing the current regimen until investigations are complete, while we monitor for intolerable side effects. Buccal midazolam has been supplied for prolonged convulsions (>5 minutes) or clusters, with clear rescue instructions shared with the family.\n\nSafety advice has been reinforced regarding supervision during bathing, cooking, and heights; and driving remains not permitted. A work adjustments letter has been offered to support reduced hours temporarily.\n\nWe will bring Jordan Ellis back to the rapid-access review clinic in four weeks or sooner if events escalate further. Please let me know if there are any concerns in the meantime.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 683,
+      "end": 736,
+      "text": "larger convulsive events occurring tonic-clonic daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 718,
+      "end": 736,
+      "text": "tonic-clonic daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2824,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Ahmed,\n\nJordan Ellis, DOB: 05-02-1992, Hospital No: H384920 NHS No. 9834756102\n12 Brookfield Road, London, W2 6AB\n\nMedication:\n\nLevetiracetam 1500 mg/1500 mg; Lacosamide 200 mg/200 mg; Clobazam 10 mg nocte (recently added for breakthrough events). Polytherapy adverse effects are bothersome; control remains suboptimal.\n\nI reviewed Jordan Ellis in clinic today. Over the past eight weeks there has been a clear deterioration in seizure control and in overall tolerance of treatment. Despite adherence, they report larger convulsive events occurring tonic-clonic daily, often in the early hours, with associated tongue biting and postictal confusion lasting 30–60 minutes. Family witnesses have corroborated these events. Between convulsions, there are frequent brief warning sensations and periods of marked fatigue.\n\nAdverse effects on the current regimen are increasingly troublesome: daytime somnolence, dizziness on standing, reduced concentration, low mood, and intermittent nausea. These have begun to impact employment and daily function. There is no history of recent intercurrent illness, sleep deprivation is variable due to nighttime events, and no alcohol excess is reported. No known triggers beyond stress have been identified.\n\nGiven the worsening pattern, we discussed options. We will obtain updated blood tests (U&E, LFTs) and trough levels where appropriate, and arrange an expedited video-EEG with MRI (epilepsy protocol) to reassess for any remediable focus and to inform rationalisation of therapy. In the interim, I have advised continuing the current regimen until investigations are complete, while we monitor for intolerable side effects. Buccal midazolam has been supplied for prolonged convulsions (>5 minutes) or clusters, with clear rescue instructions shared with the family.\n\nSafety advice has been reinforced regarding supervision during bathing, cooking, and heights; and driving remains not permitted. A work adjustments letter has been offered to support reduced hours temporarily.\n\nWe will bring Jordan Ellis back to the rapid-access review clinic in four weeks or sooner if events escalate further. Please let me know if there are any concerns in the meantime.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states current seizure activity. It mentions 'larger convulsive events occurring tonic-clonic daily,' indicating generalized tonic-clonic seizures happen every day. Although there are also 'frequent brief warning sensations,' the explicit numeric/temporal frequency provided is 'daily' for convulsions. Following the rule to choose the highest frequency, daily tonic-clonic seizures represent at least 1 per day. No exact count per day beyond 'daily' is given, so normalize to '1 per day.'",
+      "seizure_frequency_number": [
+        "1 per day",
+        "larger convulsive events occurring tonic-clonic daily"
+      ],
+      "reference": [
+        "1 per day",
+        "tonic-clonic daily"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

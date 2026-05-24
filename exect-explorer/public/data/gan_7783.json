@@ -1,0 +1,48 @@
+{
+  "id": "gan_7783",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 03 November 2015 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Turner, DOB: 14-03-1986, Hospital No: K742913 NHS No. 9076314528  \nFlat 2B, 18 Brookfield Road, London, NW5 1JT\n\nThank you for asking me to review this patient, whom I saw in clinic today. He attends independently and provides most of the history. He divides his week between two households (his partner’s flat and his sister’s home) and confirms that he maintains a full, labelled supply of medication at each address to avoid missed doses.\n\nHe reports that over the past three months there have been no witnessed events suggestive of attacks; he states he has been “settled” with no episodes brought to his or others’ attention during the day or night. He denies any recent injuries, tongue biting, or unexplained urinary incontinence and his partner and sister have not observed nocturnal disturbances. This pattern has been consistent across both living arrangements. He describes occasional brief spells of light-headedness when fatigued, which resolve with rest and have not progressed into any loss of awareness. Sleep is variable due to alternating environments, but he keeps a regular bedtime routine and uses phone reminders for medications in both locations.\n\nCurrent treatment is unchanged, and he demonstrates good practical strategies for adherence: duplicate pill organisers (colour-coded for each household), calendar prompts, and weekly stock checks. He has not noticed adverse effects beyond mild morning lethargy if he sleeps poorly. Alcohol intake is minimal; caffeine is moderate. He does not drive.\n\nOn examination today, he was alert and oriented with normal speech and language. Cranial nerves, tone, power, coordination, and gait were unremarkable. No focal neurological signs were elicited. Cardiovascular and general observations were within normal limits. There were no features to suggest an intercurrent illness.\n\nIn summary, he reports a stable interval with an absence of reported events, and his caregivers corroborate that there have been no recent episodes. The alternating living arrangements appear well managed with separate, clearly organised medication supplies at both addresses, which likely supports adherence. We discussed warning signs that would prompt re-assessment, and he will inform us promptly should there be any change.\n\nPlan:\n- Continue current regimen without alteration; maintain duplicate, clearly labelled medication sets at both residences.\n- Reinforce adherence measures and sleep regularity across both locations.\n- Provide a simple event diary (paper and phone-based) to document any future spells, including context, timing, and recovery, should they occur.\n- Routine follow-up in six months, or sooner if any episodes are observed or suspected.\n\nPlease let me know if there is further information you would find helpful. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 733,
+      "end": 817,
+      "text": "over the past three months there have been no witnessed events suggestive of attacks",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7783,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 03 November 2015 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Turner, DOB: 14-03-1986, Hospital No: K742913 NHS No. 9076314528  \nFlat 2B, 18 Brookfield Road, London, NW5 1JT\n\nThank you for asking me to review this patient, whom I saw in clinic today. He attends independently and provides most of the history. He divides his week between two households (his partner’s flat and his sister’s home) and confirms that he maintains a full, labelled supply of medication at each address to avoid missed doses.\n\nHe reports that over the past three months there have been no witnessed events suggestive of attacks; he states he has been “settled” with no episodes brought to his or others’ attention during the day or night. He denies any recent injuries, tongue biting, or unexplained urinary incontinence and his partner and sister have not observed nocturnal disturbances. This pattern has been consistent across both living arrangements. He describes occasional brief spells of light-headedness when fatigued, which resolve with rest and have not progressed into any loss of awareness. Sleep is variable due to alternating environments, but he keeps a regular bedtime routine and uses phone reminders for medications in both locations.\n\nCurrent treatment is unchanged, and he demonstrates good practical strategies for adherence: duplicate pill organisers (colour-coded for each household), calendar prompts, and weekly stock checks. He has not noticed adverse effects beyond mild morning lethargy if he sleeps poorly. Alcohol intake is minimal; caffeine is moderate. He does not drive.\n\nOn examination today, he was alert and oriented with normal speech and language. Cranial nerves, tone, power, coordination, and gait were unremarkable. No focal neurological signs were elicited. Cardiovascular and general observations were within normal limits. There were no features to suggest an intercurrent illness.\n\nIn summary, he reports a stable interval with an absence of reported events, and his caregivers corroborate that there have been no recent episodes. The alternating living arrangements appear well managed with separate, clearly organised medication supplies at both addresses, which likely supports adherence. We discussed warning signs that would prompt re-assessment, and he will inform us promptly should there be any change.\n\nPlan:\n- Continue current regimen without alteration; maintain duplicate, clearly labelled medication sets at both residences.\n- Reinforce adherence measures and sleep regularity across both locations.\n- Provide a simple event diary (paper and phone-based) to document any future spells, including context, timing, and recovery, should they occur.\n- Routine follow-up in six months, or sooner if any episodes are observed or suspected.\n\nPlease let me know if there is further information you would find helpful. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no witnessed events suggestive of attacks over the past three months, corroborated by partner and sister, and summarized as an absence of reported events. The exact duration of seizure freedom is specified as the past three months, which is less than the 6-month threshold for 'seizure free' per the rules. Therefore, we should label as seizure free for multiple months (since it's clearly several months but under six). Calculation/interpretation: 3 months without events → not enough for 'seizure free for <value> months' with a specific number per the rules, so use 'multiple months'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "over the past three months there have been no witnessed events suggestive of attacks"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Without evidence of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

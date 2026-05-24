@@ -1,0 +1,59 @@
+{
+  "id": "gan_2259",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 04 September 2015\n\nDr Hannah Cole\nElm Park Health Centre\n\n47 Elm Park Road\nBromley\nKent BR2 0SY\nDear Dr Hannah Cole\nJordan Ellis, DOB: 14-03-1991, Hospital No: H938201 NHS No. 7843205591\n12 Willow Close, Bromley, BR1 4HT \n\nDiagnoses/summary: Recurrent seizures of uncertain classification; ongoing review and monitoring\n\nMRI/EEG: No recent studies available in our records; prior community EEG reported as inconclusive (verbal report only). No structural imaging on file since transfer of care.\n\nCurrent medication: None specifically for seizures at present. Regular: ferrous fumarate 210 mg OD (for iron deficiency per GP), omeprazole 20 mg OD. No known drug allergies.\n\nI reviewed Jordan Ellis in clinic today, accompanied by their primary carer who also provides daily support at home. The carer reports notable fatigue in Jordan Ellis, particularly later in the day, and confirms increased need for rest around household and caregiving tasks. In terms of events, they describe about six or eight seizures in the last three months, sometimes clustering after poor sleep. These episodes were said to involve brief behavioural arrest on some occasions and unresponsiveness on others; no consistent warning or clear post-event confusion pattern was identified. There has been no reported tongue biting or incontinence. No clear triggers aside from sleep disruption; no missed medications as none are currently prescribed for seizures.\n\nFunction and safeguarding: The current care arrangement remains stable. The carer has requested written guidance for what to do during events and after prolonged episodes; they currently offer reassurance and ensure a safe environment.\n\nExamination today: Alert and oriented. Cranial nerves intact. No focal motor deficit. Gait steady. Cardiovascular and respiratory examinations unremarkable. Blood pressure 126/74, pulse 72 regular. No peripheral stigmata noted.\n\nPlan:\n- Seizure characterisation: Provide seizure diary template and carer event checklist; encourage contemporaneous notes and, where safe, time-stamped video for review. \n- Safety: Issued general safety advice around bathing, cooking, heights, and fatigue management. Carer given signposting to local support services.\n- Investigations: Arrange routine EEG and MRI brain (epilepsy protocol) to aid classification and exclude structural causes, given limited prior data.\n- Bloods: FBC, U&E, LFT, bone profile, vitamin D, ferritin, B12/folate, and TSH to explore fatigue and general health contributors.\n- Follow-up: Nurse-led telephone review in 6–8 weeks to assess frequency, duration, and any injuries; clinic review in 3 months or sooner if events escalate or if any event lasts over 5 minutes or occurs in rapid succession.\n\nThank you for your ongoing support. I will update you when investigations are complete. Please let me know if there are any concerns in the interim, particularly with regard to increased frequency, injuries, or changes in event semiology.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1023,
+      "end": 1075,
+      "text": "about six or eight seizures in the last three months",
+      "attributes": {
+        "Label": "6 to 8 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1023,
+      "end": 1075,
+      "text": "about six or eight seizures in the last three months",
+      "attributes": {
+        "Label": "6 to 8 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2259,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 04 September 2015\n\nDr Hannah Cole\nElm Park Health Centre\n\n47 Elm Park Road\nBromley\nKent BR2 0SY\nDear Dr Hannah Cole\nJordan Ellis, DOB: 14-03-1991, Hospital No: H938201 NHS No. 7843205591\n12 Willow Close, Bromley, BR1 4HT \n\nDiagnoses/summary: Recurrent seizures of uncertain classification; ongoing review and monitoring\n\nMRI/EEG: No recent studies available in our records; prior community EEG reported as inconclusive (verbal report only). No structural imaging on file since transfer of care.\n\nCurrent medication: None specifically for seizures at present. Regular: ferrous fumarate 210 mg OD (for iron deficiency per GP), omeprazole 20 mg OD. No known drug allergies.\n\nI reviewed Jordan Ellis in clinic today, accompanied by their primary carer who also provides daily support at home. The carer reports notable fatigue in Jordan Ellis, particularly later in the day, and confirms increased need for rest around household and caregiving tasks. In terms of events, they describe about six or eight seizures in the last three months, sometimes clustering after poor sleep. These episodes were said to involve brief behavioural arrest on some occasions and unresponsiveness on others; no consistent warning or clear post-event confusion pattern was identified. There has been no reported tongue biting or incontinence. No clear triggers aside from sleep disruption; no missed medications as none are currently prescribed for seizures.\n\nFunction and safeguarding: The current care arrangement remains stable. The carer has requested written guidance for what to do during events and after prolonged episodes; they currently offer reassurance and ensure a safe environment.\n\nExamination today: Alert and oriented. Cranial nerves intact. No focal motor deficit. Gait steady. Cardiovascular and respiratory examinations unremarkable. Blood pressure 126/74, pulse 72 regular. No peripheral stigmata noted.\n\nPlan:\n- Seizure characterisation: Provide seizure diary template and carer event checklist; encourage contemporaneous notes and, where safe, time-stamped video for review. \n- Safety: Issued general safety advice around bathing, cooking, heights, and fatigue management. Carer given signposting to local support services.\n- Investigations: Arrange routine EEG and MRI brain (epilepsy protocol) to aid classification and exclude structural causes, given limited prior data.\n- Bloods: FBC, U&E, LFT, bone profile, vitamin D, ferritin, B12/folate, and TSH to explore fatigue and general health contributors.\n- Follow-up: Nurse-led telephone review in 6–8 weeks to assess frequency, duration, and any injuries; clinic review in 3 months or sooner if events escalate or if any event lasts over 5 minutes or occurs in rapid succession.\n\nThank you for your ongoing support. I will update you when investigations are complete. Please let me know if there are any concerns in the interim, particularly with regard to increased frequency, injuries, or changes in event semiology.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'they describe about six or eight seizures in the last three months'. This provides a numeric range over a 3-month period. No other conflicting frequencies are provided. Therefore, normalize to the allowed output format as a range per 3 months: '6 to 8 per 3 month'. No need to adjust for seizure-free criteria since the patient is having seizures.",
+      "seizure_frequency_number": [
+        "6 to 8 per 3 month",
+        "about six or eight seizures in the last three months"
+      ],
+      "reference": [
+        "6 to 8 per 3 month",
+        "about six or eight seizures in the last three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_15927",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 March 2023 \n\nDr Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, London  \n\nDear Dr Patel, \n\nMs Sarah Turner, DOB: 22-09-1992, Hospital No: SGH458221 NHS No. 9876543210  \nFlat 12, 4 Willow Court, London, SW17 0AB  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; current pattern under review pending further characterisation\n\nAetiology: \n\nNo established structural, metabolic, or genetic cause to date\n\nOther Medical Problems: \n\nSeasonal allergic rhinitis; intermittent migraine without aura, self-managed with simple analgesia\n\nManagement Plan: \n\n- Continue current antiseizure medicines unchanged: Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily. No adverse effects reported.  \n- Arrange ambulatory EEG with sleep capture and updated brain MRI with epilepsy protocol.  \n- Bloods today: FBC, U&E, LFT, vitamin D; check lamotrigine and levetiracetam trough levels.  \n- Safety counselling reinforced, including bathing supervision, cooking precautions, and work-place risk mitigation. Patient is currently not driving by self-report.  \n- Review in clinic in three months or earlier if events escalate. Provide seizure diary and advise to video events where safe and appropriate.  \n\nToday Ms Sarah Turner reported that the events continue in clusters with some occurring from sleep and others during wakefulness. In January she had five in sleep and five while awake. In Feb she had five in sleep and three while awake. She describes brief loss of awareness with eyelid fluttering on some occasions and post-event confusion lasting a few minutes; no consistent triggers identified. There have been no clear injuries, tongue bites, or incontinence reported. Adherence is good and she uses a phone reminder system. Sleep has been irregular due to shift work, and she plans to discuss rota adjustments with her employer. \n\nI have not made changes to treatment today pending investigations, as she is tolerating current therapy and there is uncertainty regarding the predominant event type. We discussed the importance of maintaining regular sleep, limiting alcohol, and continuing meticulous seizure recording. Emergency plan remains midazolam buccal 10 mg for events exceeding five minutes or for repeated clusters as per prior guidance. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1416,
+      "end": 1522,
+      "text": "In January she had five in sleep and five while awake. In Feb she had five in sleep and three while awake.",
+      "attributes": {
+        "Label": "18 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1416,
+      "end": 1521,
+      "text": "In January she had five in sleep and five while awake. In Feb she had five in sleep and three while awake",
+      "attributes": {
+        "Label": "18 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15927,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 March 2023 \n\nDr Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, London  \n\nDear Dr Patel, \n\nMs Sarah Turner, DOB: 22-09-1992, Hospital No: SGH458221 NHS No. 9876543210  \nFlat 12, 4 Willow Court, London, SW17 0AB  \n\nDiagnosis: \n\nRecurrent unprovoked seizures; current pattern under review pending further characterisation\n\nAetiology: \n\nNo established structural, metabolic, or genetic cause to date\n\nOther Medical Problems: \n\nSeasonal allergic rhinitis; intermittent migraine without aura, self-managed with simple analgesia\n\nManagement Plan: \n\n- Continue current antiseizure medicines unchanged: Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily. No adverse effects reported.  \n- Arrange ambulatory EEG with sleep capture and updated brain MRI with epilepsy protocol.  \n- Bloods today: FBC, U&E, LFT, vitamin D; check lamotrigine and levetiracetam trough levels.  \n- Safety counselling reinforced, including bathing supervision, cooking precautions, and work-place risk mitigation. Patient is currently not driving by self-report.  \n- Review in clinic in three months or earlier if events escalate. Provide seizure diary and advise to video events where safe and appropriate.  \n\nToday Ms Sarah Turner reported that the events continue in clusters with some occurring from sleep and others during wakefulness. In January she had five in sleep and five while awake. In Feb she had five in sleep and three while awake. She describes brief loss of awareness with eyelid fluttering on some occasions and post-event confusion lasting a few minutes; no consistent triggers identified. There have been no clear injuries, tongue bites, or incontinence reported. Adherence is good and she uses a phone reminder system. Sleep has been irregular due to shift work, and she plans to discuss rota adjustments with her employer. \n\nI have not made changes to treatment today pending investigations, as she is tolerating current therapy and there is uncertainty regarding the predominant event type. We discussed the importance of maintaining regular sleep, limiting alcohol, and continuing meticulous seizure recording. Emergency plan remains midazolam buccal 10 mg for events exceeding five minutes or for repeated clusters as per prior guidance. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit counts for January and February: January had 5 in sleep and 5 while awake (total 10), and February had 5 in sleep and 3 while awake (total 8). Over these two months, total seizures = 10 + 8 = 18 over 2 months. No other conflicting frequency given. Following the rule to use explicit numeric expressions and to sum same-dimension counts, the current frequency inferred is 18 per 2 months.",
+      "seizure_frequency_number": [
+        "18 per 2 month",
+        "In January she had five in sleep and five while awake. In Feb she had five in sleep and three while awake."
+      ],
+      "reference": [
+        "18 per 2 month",
+        "In January she had five in sleep and five while awake. In Feb she had five in sleep and three while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1866",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 September 2021 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Fiona Ellis (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening seizure control post-partum\n\nDear Emma,\n\nEpilepsy Diagnosis:\n\nThe patient has generalised epilepsy.\n\nCurrent Concerns and Context:\n\nSince delivering her baby recently, she reports notable low mood and significant fatigue. She perceives that her seizure control has deteriorated in this post-partum period, and her partner corroborates increased episodes of brief behavioural arrest and sudden drops without warning. Sleep is fragmented due to night feeds, and she feels more anxious about caring for the newborn when alone.\n\nPresent Medication:\n\n1. Tegretol Retard 600 mg twice daily\n2. Keppra 500 mg twice daily\n\nPresent Seizure Frequency:\n\nShe reports one drop attacks and seven absence seizures in the past two months. These have clustered around periods of marked sleep deprivation.\n\nAssessment:\n\nThe temporal relationship with the post-partum period, compounded by low mood and fatigue, is consistent with her perceived deterioration. There are no intercurrent illnesses or missed doses reported. No clear provoking factors beyond sleep disruption have been identified.\n\nPlan of Action:\n\n- Safety and support: We have discussed practical safety measures for drop attacks, including avoiding carrying the baby on stairs and using seated changing where possible. She will keep a seizure diary noting sleep, mood, and timing of episodes.\n- Monitoring: We will arrange a follow-up in eight weeks to review seizure burden, mood, and sleep patterns, and to reassess management once the post-partum routine stabilises.\n- Communication: She understands to contact the service promptly if drop attacks increase or injuries occur.\n\nI will keep you updated following her next review.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 960,
+      "end": 1039,
+      "text": "She reports one drop attacks and seven absence seizures in the past two months.",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 972,
+      "end": 1038,
+      "text": "one drop attacks and seven absence seizures in the past two months",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1866,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emma Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 September 2021 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Fiona Ellis (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening seizure control post-partum\n\nDear Emma,\n\nEpilepsy Diagnosis:\n\nThe patient has generalised epilepsy.\n\nCurrent Concerns and Context:\n\nSince delivering her baby recently, she reports notable low mood and significant fatigue. She perceives that her seizure control has deteriorated in this post-partum period, and her partner corroborates increased episodes of brief behavioural arrest and sudden drops without warning. Sleep is fragmented due to night feeds, and she feels more anxious about caring for the newborn when alone.\n\nPresent Medication:\n\n1. Tegretol Retard 600 mg twice daily\n2. Keppra 500 mg twice daily\n\nPresent Seizure Frequency:\n\nShe reports one drop attacks and seven absence seizures in the past two months. These have clustered around periods of marked sleep deprivation.\n\nAssessment:\n\nThe temporal relationship with the post-partum period, compounded by low mood and fatigue, is consistent with her perceived deterioration. There are no intercurrent illnesses or missed doses reported. No clear provoking factors beyond sleep disruption have been identified.\n\nPlan of Action:\n\n- Safety and support: We have discussed practical safety measures for drop attacks, including avoiding carrying the baby on stairs and using seated changing where possible. She will keep a seizure diary noting sleep, mood, and timing of episodes.\n- Monitoring: We will arrange a follow-up in eight weeks to review seizure burden, mood, and sleep patterns, and to reassess management once the post-partum routine stabilises.\n- Communication: She understands to contact the service promptly if drop attacks increase or injuries occur.\n\nI will keep you updated following her next review.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit numeric seizure counts: 'She reports one drop attacks and seven absence seizures in the past two months.' Sum across types because they are within the same overall timeframe and dimension. Calculation: 1 + 7 = 8 seizures over 2 months. Normalize to allowed format: '8 per 2 month'.",
+      "seizure_frequency_number": [
+        "8 per 2 month",
+        "She reports one drop attacks and seven absence seizures in the past two months."
+      ],
+      "reference": [
+        "8 per 2 month",
+        "one drop attacks and seven absence seizures in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

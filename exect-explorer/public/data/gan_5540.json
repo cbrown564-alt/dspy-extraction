@@ -1,0 +1,54 @@
+{
+  "id": "gan_5540",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nBrookview Medical Centre\n\n12 Brookview Lane, London, SE5 9TP\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: K839221 NHS No. 7483920021\nFlat 3, 28 Hartsfield Road, London, SE15 3QL \n\nI reviewed the above patient in the Neurology Clinic today. Since my previous review in May 2025, he reports only a solitary, very short event last month—effectively an isolated fleeting spell—without injury or prolonged post-ictal phase. He otherwise feels stable. He mentions intermittent light-headedness and variable sleep, which may be contributing; stress at work has increased. There are no new focal neurological symptoms. \n\nCurrent medicines: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 5 mg nocte. He is tolerating these with minor daytime fatigue and occasional irritability. No rashes. Routine bloods in August were unremarkable (U&Es, LFTs, FBC). \n\nOn balance, given the near-absent recent activity (Ã‚Â·virtually no events apart from the brief spell), I have not altered therapy today. We discussed adherence, sleep hygiene, and stress management; he will continue a seizure diary. I have arranged an updated EEG and will review the result before considering any adjustment. Safety advice reiterated (including driving guidance already understood). He knows to contact us if the pattern worsens. \n\nFollow-up in 4–6 months, or sooner if needed. â€\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 323,
+      "end": 416,
+      "text": "Since my previous review in May 2025, he reports only a solitary, very short event last month",
+      "attributes": {
+        "Label": "1 per 4 to 5 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5540,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nBrookview Medical Centre\n\n12 Brookview Lane, London, SE5 9TP\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: K839221 NHS No. 7483920021\nFlat 3, 28 Hartsfield Road, London, SE15 3QL \n\nI reviewed the above patient in the Neurology Clinic today. Since my previous review in May 2025, he reports only a solitary, very short event last month—effectively an isolated fleeting spell—without injury or prolonged post-ictal phase. He otherwise feels stable. He mentions intermittent light-headedness and variable sleep, which may be contributing; stress at work has increased. There are no new focal neurological symptoms. \n\nCurrent medicines: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 5 mg nocte. He is tolerating these with minor daytime fatigue and occasional irritability. No rashes. Routine bloods in August were unremarkable (U&Es, LFTs, FBC). \n\nOn balance, given the near-absent recent activity (Ã‚Â·virtually no events apart from the brief spell), I have not altered therapy today. We discussed adherence, sleep hygiene, and stress management; he will continue a seizure diary. I have arranged an updated EEG and will review the result before considering any adjustment. Safety advice reiterated (including driving guidance already understood). He knows to contact us if the pattern worsens. \n\nFollow-up in 4–6 months, or sooner if needed. â€\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter states: 'Since my previous review in May 2025, he reports only a solitary, very short event last month.' That indicates exactly one event over the interval from May 2025 to Oct 2025. The exact day in May is unspecified, so the follow-up interval is approximately 4 to 5 months (June–September fully elapsed). Therefore, frequency = 1 event per 4 to 5 months. He is not seizure free for ≥6 months due to an event in the last month.",
+      "seizure_frequency_number": [
+        "1 per 4 to 5 month",
+        "Since my previous review in May 2025, he reports only a solitary, very short event last month"
+      ],
+      "reference": [
+        "unknown",
+        "Rare brief seizure recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 4 to 5 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

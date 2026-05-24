@@ -1,0 +1,59 @@
+{
+  "id": "gan_2549",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025\n\nDr Patel\nElm Grove Practice\n\n12 Elm Grove, Southwark, London SE15 4QW\nDear Dr Patel\nJordan Ellis, DOB: 14-03-1994, Hospital No: H739205 NHS No. 8421195630\nFlat 3, 29 Camberwell Road, London SE5 0HQ \n\nDiagnoses/summary: Generalised epilepsy with ongoing absence and occasional myoclonic features; no recent admissions. Patient reports commuting mainly by bicycle as part of usual routine.\n\nMRI brain (2021): structurally normal\nEEG (2023): generalised spike-and-wave discharges consistent with a primary generalised epilepsy\n\nPrevious medication: Sodium valproate (effective but stopped due to weight gain and tremor), lamotrigine (partial response), levetiracetam (mood irritability), clonazepam (sedation), ethosuximide (GI upset)\n\nNot taken: topiramate, zonisamide, brivaracetam, perampanel\n\nI reviewed Jordan Ellis in clinic today, who attended alone. They described a stable daily routine and commute mainly by bicycle. Over the last two months, they estimate 7 to 8 focal non-motor during the last two months, typically brief pauses with reduced responsiveness and no convulsions. They also note rare morning myoclonic jerks without injury. No recent generalised tonic–clonic seizures. Sleep is generally adequate; caffeine intake minimal. No new neurological complaints.\n\nCurrent medication:\n- Lamotrigine 200 mg twice daily\n- Vitamin D 1000 IU daily\n\nAdverse effects: Occasional nausea with morning dose; otherwise tolerating medication.\n\nPlan:\n- As patient has generalised epilepsy with persisting absence-type events, discuss trial of ethosuximide re-challenge versus topiramate; patient prefers to consider topiramate due to prior GI intolerance with ethosuximide. I provided written information about topiramate and discussed potential adverse effects (paraesthesia, cognitive slowing, weight loss, mood change) and the need for adequate hydration. We agreed to decide at the next contact after patient review of information.\n- Arrange routine EEG review of previous study and consider ambulatory EEG if frequency increases.\n- Bloods today: FBC, U&E, LFTs, bone profile, vitamin D.\n- Follow-up: Nurse telephone call in 4–6 weeks to confirm decision regarding add-on therapy; clinic review in 4 months, sooner if concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 983,
+      "end": 1072,
+      "text": "Over the last two months, they estimate 7 to 8 focal non-motor during the last two months",
+      "attributes": {
+        "Label": "7 to 8 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1023,
+      "end": 1072,
+      "text": "7 to 8 focal non-motor during the last two months",
+      "attributes": {
+        "Label": "7 to 8 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2549,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025\n\nDr Patel\nElm Grove Practice\n\n12 Elm Grove, Southwark, London SE15 4QW\nDear Dr Patel\nJordan Ellis, DOB: 14-03-1994, Hospital No: H739205 NHS No. 8421195630\nFlat 3, 29 Camberwell Road, London SE5 0HQ \n\nDiagnoses/summary: Generalised epilepsy with ongoing absence and occasional myoclonic features; no recent admissions. Patient reports commuting mainly by bicycle as part of usual routine.\n\nMRI brain (2021): structurally normal\nEEG (2023): generalised spike-and-wave discharges consistent with a primary generalised epilepsy\n\nPrevious medication: Sodium valproate (effective but stopped due to weight gain and tremor), lamotrigine (partial response), levetiracetam (mood irritability), clonazepam (sedation), ethosuximide (GI upset)\n\nNot taken: topiramate, zonisamide, brivaracetam, perampanel\n\nI reviewed Jordan Ellis in clinic today, who attended alone. They described a stable daily routine and commute mainly by bicycle. Over the last two months, they estimate 7 to 8 focal non-motor during the last two months, typically brief pauses with reduced responsiveness and no convulsions. They also note rare morning myoclonic jerks without injury. No recent generalised tonic–clonic seizures. Sleep is generally adequate; caffeine intake minimal. No new neurological complaints.\n\nCurrent medication:\n- Lamotrigine 200 mg twice daily\n- Vitamin D 1000 IU daily\n\nAdverse effects: Occasional nausea with morning dose; otherwise tolerating medication.\n\nPlan:\n- As patient has generalised epilepsy with persisting absence-type events, discuss trial of ethosuximide re-challenge versus topiramate; patient prefers to consider topiramate due to prior GI intolerance with ethosuximide. I provided written information about topiramate and discussed potential adverse effects (paraesthesia, cognitive slowing, weight loss, mood change) and the need for adequate hydration. We agreed to decide at the next contact after patient review of information.\n- Arrange routine EEG review of previous study and consider ambulatory EEG if frequency increases.\n- Bloods today: FBC, U&E, LFTs, bone profile, vitamin D.\n- Follow-up: Nurse telephone call in 4–6 weeks to confirm decision regarding add-on therapy; clinic review in 4 months, sooner if concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Over the last two months, they estimate 7 to 8 focal non-motor during the last two months, typically brief pauses with reduced responsiveness and no convulsions.\" This provides an explicit numeric range over a defined time window. There are also \"rare morning myoclonic jerks\" but without a numeric frequency; per the rule to select the highest frequency, we use the explicit count. Convert '7 to 8 over two months' into the allowed format: '7 to 8 per 2 month'. No other higher frequency with numeric detail is provided. The patient is not seizure free.",
+      "seizure_frequency_number": [
+        "7 to 8 per 2 month",
+        "Over the last two months, they estimate 7 to 8 focal non-motor during the last two months"
+      ],
+      "reference": [
+        "7 to 8 per 2 month",
+        "7 to 8 focal non-motor during the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

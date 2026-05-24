@@ -1,0 +1,47 @@
+{
+  "id": "gan_11787",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 08 May 2017\n\nDr Aisha Karim\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Aisha Karim,\n\nMr Amir Rahman, DOB: 12-03-1992, Hospital No: KCH847563 NHS No. 9432175086\nFlat 3, 27 Brook Street, London, SE15 4DN\n\nSubject: Parking concession eligibility for clinic attendance\n\nDiagnosis:\n\nUnder follow-up in neurology clinic.\n\nContext and Access Needs:\n\nRecent migrant to the UK; occasionally attends with interpreter support. Requires clear guidance on hospital access and costs during appointments.\n\nParking Concession:\n\nThe patient is eligible for parking concessions when attending scheduled neurology appointments at our service. This includes reduced-rate parking for the duration of the appointment and up to 30 minutes post-appointment to allow for check-out and pharmacy collection.\n\nProcess:\n\n- On arrival, the patient should take a parking ticket and bring it to the clinic reception for validation.\n- Clinic staff will stamp the ticket and issue a concession voucher where required.\n- If using the pay-by-phone system, the clinic reception will provide a discount code at check-in.\n- Interpreters attending with the patient can also use the same concession for the duration of the appointment.\n\nEligibility Period:\n\nConcessions apply for all pre-booked neurology clinic visits and urgent nurse-led reviews at our site. They do not apply outside appointment times or for non-clinic visits.\n\nContact and Support:\n\nFor questions about validation or if there are issues at the barrier, the patient should speak to clinic reception. Written guidance is available and can be provided in alternative languages on request.\n\nManagement Plan:\n\n- Provide the patient with a printed, easy-read parking guide today.\n- Note eligibility flag on the clinic booking system for automatic reminder at check-in.\n- Review understanding at next appointment.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11787,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 08 May 2017\n\nDr Aisha Karim\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Aisha Karim,\n\nMr Amir Rahman, DOB: 12-03-1992, Hospital No: KCH847563 NHS No. 9432175086\nFlat 3, 27 Brook Street, London, SE15 4DN\n\nSubject: Parking concession eligibility for clinic attendance\n\nDiagnosis:\n\nUnder follow-up in neurology clinic.\n\nContext and Access Needs:\n\nRecent migrant to the UK; occasionally attends with interpreter support. Requires clear guidance on hospital access and costs during appointments.\n\nParking Concession:\n\nThe patient is eligible for parking concessions when attending scheduled neurology appointments at our service. This includes reduced-rate parking for the duration of the appointment and up to 30 minutes post-appointment to allow for check-out and pharmacy collection.\n\nProcess:\n\n- On arrival, the patient should take a parking ticket and bring it to the clinic reception for validation.\n- Clinic staff will stamp the ticket and issue a concession voucher where required.\n- If using the pay-by-phone system, the clinic reception will provide a discount code at check-in.\n- Interpreters attending with the patient can also use the same concession for the duration of the appointment.\n\nEligibility Period:\n\nConcessions apply for all pre-booked neurology clinic visits and urgent nurse-led reviews at our site. They do not apply outside appointment times or for non-clinic visits.\n\nContact and Support:\n\nFor questions about validation or if there are issues at the barrier, the patient should speak to clinic reception. Written guidance is available and can be provided in alternative languages on request.\n\nManagement Plan:\n\n- Provide the patient with a printed, easy-read parking guide today.\n- Note eligibility flag on the clinic booking system for automatic reminder at check-in.\n- Review understanding at next appointment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Reviewed the entire letter. It is an administrative note about parking concessions for neurology clinic attendance. There is no mention of seizures, seizure events, or any seizure frequency. No implicit or explicit numeric seizure data is provided. Therefore, per instruction, when seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter providing information on parking concession eligibility for epilepsy clinic attendees"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

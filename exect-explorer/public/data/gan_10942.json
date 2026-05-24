@@ -1,0 +1,59 @@
+{
+  "id": "gan_10942",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Outpatient Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJames Walker, DOB: 14-08-1987, Hospital No: H928374 NHS No. 7392015468  \n12 Brookside Close, Wimbledon, London SW19 3DA  \n\nDiagnoses: \n\nRecurrent unprovoked seizures; aetiology and classification under ongoing evaluation. \n\nI reviewed James Walker in clinic today with his partner present. He remains engaged with a local peer support group, and observations from peers have supplemented his history between appointments. He reports increased reliability in tracking events using a seizure diary corroborated by his group facilitator. This month he experienced two clusters this month; each ~five focal impaired-awareness seizures, typically occurring over 24–36 hours, with brief post-ictal confusion and fatigue but no injuries. There have been no witnessed generalised tonic–clonic events, no myoclonic jerks, and no nocturnal tongue biting reported. \n\nPrecipitants noted by the patient and peers include sleep deprivation and high work-related stress. Alcohol intake is minimal and unchanged. He denies missed medication doses. There is no new neurological symptomatology, and no intercurrent illness. \n\nMedication: Levetiracetam 1 g twice daily continued without adverse effects beyond mild irritability, which he manages with scheduled exercise and mindfulness sessions recommended by the peer group. He carries buccal midazolam but has not required its use this year. \n\nInvestigations: Previous MRI brain (2023) non-diagnostic. Interictal EEG (April 2024) showed non-specific changes without definitive lateralising or localising features. We have arranged an ambulatory EEG with event marker to capture a cluster if possible. Routine bloods today (U&E, LFT, FBC) were requested to monitor general health while on therapy. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Proceed with ambulatory EEG; patient instructed to trigger the event marker at aura onset and obtain peer or partner corroboration where feasible. \n- Maintain seizure diary; continue engagement with the peer support group to enhance collateral reporting. \n- Safety advice re-emphasised: supervised bathing, cooking precautions, and avoidance of heights during periods of sleep disruption. Driving status remains suspended in accordance with DVLA guidance; we reviewed the requirements today. \n- Review in clinic in three months, or sooner if cluster frequency increases or if any generalised convulsive event occurs. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 857,
+      "text": "This month he experienced two clusters this month; each ~five focal impaired-awareness seizures",
+      "attributes": {
+        "Label": "2 cluster per month, 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 788,
+      "end": 857,
+      "text": "two clusters this month; each ~five focal impaired-awareness seizures",
+      "attributes": {
+        "Label": "2 cluster per month, 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10942,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Outpatient Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJames Walker, DOB: 14-08-1987, Hospital No: H928374 NHS No. 7392015468  \n12 Brookside Close, Wimbledon, London SW19 3DA  \n\nDiagnoses: \n\nRecurrent unprovoked seizures; aetiology and classification under ongoing evaluation. \n\nI reviewed James Walker in clinic today with his partner present. He remains engaged with a local peer support group, and observations from peers have supplemented his history between appointments. He reports increased reliability in tracking events using a seizure diary corroborated by his group facilitator. This month he experienced two clusters this month; each ~five focal impaired-awareness seizures, typically occurring over 24–36 hours, with brief post-ictal confusion and fatigue but no injuries. There have been no witnessed generalised tonic–clonic events, no myoclonic jerks, and no nocturnal tongue biting reported. \n\nPrecipitants noted by the patient and peers include sleep deprivation and high work-related stress. Alcohol intake is minimal and unchanged. He denies missed medication doses. There is no new neurological symptomatology, and no intercurrent illness. \n\nMedication: Levetiracetam 1 g twice daily continued without adverse effects beyond mild irritability, which he manages with scheduled exercise and mindfulness sessions recommended by the peer group. He carries buccal midazolam but has not required its use this year. \n\nInvestigations: Previous MRI brain (2023) non-diagnostic. Interictal EEG (April 2024) showed non-specific changes without definitive lateralising or localising features. We have arranged an ambulatory EEG with event marker to capture a cluster if possible. Routine bloods today (U&E, LFT, FBC) were requested to monitor general health while on therapy. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Proceed with ambulatory EEG; patient instructed to trigger the event marker at aura onset and obtain peer or partner corroboration where feasible. \n- Maintain seizure diary; continue engagement with the peer support group to enhance collateral reporting. \n- Safety advice re-emphasised: supervised bathing, cooking precautions, and avoidance of heights during periods of sleep disruption. Driving status remains suspended in accordance with DVLA guidance; we reviewed the requirements today. \n- Review in clinic in three months, or sooner if cluster frequency increases or if any generalised convulsive event occurs. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"This month he experienced two clusters this month; each ~five focal impaired-awareness seizures, typically occurring over 24–36 hours.\" This provides an explicit frequency for the current period: 2 clusters per month, with approximately 5 seizures per cluster. No other higher-frequency seizure type is reported. Therefore, per the allowed format, we express as '<value1> cluster per <value2> <month>, <value3> per cluster'.",
+      "seizure_frequency_number": [
+        "2 cluster per month, 5 per cluster",
+        "This month he experienced two clusters this month; each ~five focal impaired-awareness seizures"
+      ],
+      "reference": [
+        "2 cluster per month, 5 per cluster",
+        "two clusters this month; each ~five focal impaired-awareness seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

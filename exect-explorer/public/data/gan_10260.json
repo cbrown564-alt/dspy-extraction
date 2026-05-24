@@ -1,0 +1,54 @@
+{
+  "id": "gan_10260",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 25 November 2015\n\nDr Patel\nRiverside University Health Centre\n\n12 Riverside Walk, London SE1 9XY\n\nDear Dr Patel\n\nAlex Morgan, DOB: 12-02-2004, Hospital No: H8247719 NHS No. 7483926150\nFlat 3, 27 Kingfisher Court, London SE16 4AB\n\nI reviewed the above patient in the Neurology Clinic today. He is a university student approaching his end-of-term examinations and reports long study hours with irregular sleep. The history is primarily patient-reported, supplemented by data from his wrist-worn seizure-alert device linked to his smartphone.\n\nHe has generalised epilepsy, first diagnosed in late adolescence. He is currently taking sodium valproate 500 mg b.d. and lamotrigine 100 mg b.d. He reports good day-to-day tolerance, though notes intermittent concentration lapses during prolonged revision sessions. No clear adverse effects such as rash or gastrointestinal upset were reported. He denies recent head injury, alcohol excess, or intercurrent illness.\n\nRegarding seizure control, he describes occasional brief morning myoclonic jerks when sleep-deprived, with rare episodes of transient unresponsiveness reported by peers during intensive study periods. Uncertain frequency; device logs suggest short clusters without counts. He has not maintained a written seizure diary this term and is unsure how many events have occurred. There have been no hospital attendances or emergency treatments.\n\nExamination today was unremarkable. We discussed optimising sleep hygiene and using his device in conjunction with a simple calendar note to improve event capture. I have requested an updated routine EEG to correlate with his reports during this high-stress academic period. For now, we will continue current treatment while we gather clearer longitudinal data, and I have arranged a follow-up in three months or earlier if concerns arise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1201,
+      "end": 1271,
+      "text": "Uncertain frequency; device logs suggest short clusters without counts",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10260,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 25 November 2015\n\nDr Patel\nRiverside University Health Centre\n\n12 Riverside Walk, London SE1 9XY\n\nDear Dr Patel\n\nAlex Morgan, DOB: 12-02-2004, Hospital No: H8247719 NHS No. 7483926150\nFlat 3, 27 Kingfisher Court, London SE16 4AB\n\nI reviewed the above patient in the Neurology Clinic today. He is a university student approaching his end-of-term examinations and reports long study hours with irregular sleep. The history is primarily patient-reported, supplemented by data from his wrist-worn seizure-alert device linked to his smartphone.\n\nHe has generalised epilepsy, first diagnosed in late adolescence. He is currently taking sodium valproate 500 mg b.d. and lamotrigine 100 mg b.d. He reports good day-to-day tolerance, though notes intermittent concentration lapses during prolonged revision sessions. No clear adverse effects such as rash or gastrointestinal upset were reported. He denies recent head injury, alcohol excess, or intercurrent illness.\n\nRegarding seizure control, he describes occasional brief morning myoclonic jerks when sleep-deprived, with rare episodes of transient unresponsiveness reported by peers during intensive study periods. Uncertain frequency; device logs suggest short clusters without counts. He has not maintained a written seizure diary this term and is unsure how many events have occurred. There have been no hospital attendances or emergency treatments.\n\nExamination today was unremarkable. We discussed optimising sleep hygiene and using his device in conjunction with a simple calendar note to improve event capture. I have requested an updated routine EEG to correlate with his reports during this high-stress academic period. For now, we will continue current treatment while we gather clearer longitudinal data, and I have arranged a follow-up in three months or earlier if concerns arise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses ongoing seizures: 'occasional brief morning myoclonic jerks when sleep-deprived' and 'rare episodes of transient unresponsiveness.' However, there is no explicit numeric frequency. The device logs suggest clusters but without counts, and the patient has not kept a diary and is unsure how many events occurred. No hospital attendances. Because there is mention of seizures but no determinable numeric frequency or time unit, the correct label is 'unknown' per instruction 4.",
+      "seizure_frequency_number": [
+        "unknown",
+        "He describes occasional brief morning myoclonic jerks when sleep-deprived, with rare episodes of transient unresponsiveness… Uncertain frequency; device logs suggest short clusters without counts."
+      ],
+      "reference": [
+        "unknown",
+        "Uncertain frequency; device logs suggest short clusters without counts"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

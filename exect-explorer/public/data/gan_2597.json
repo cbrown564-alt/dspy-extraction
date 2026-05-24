@@ -1,0 +1,48 @@
+{
+  "id": "gan_2597",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr David \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH  \n\nDear Dr David, \n\nJoe Bloggs, DOB: 15-01-1980, Hospital No: H562938 NHS No. 9275810345  \n18 High Street, London, E14 7JL  \n\nDiagnosis: \n\nFocal epilepsy with ongoing focal aware seizures; carbamazepine beneficial, lacosamide partially effective; topiramate previously not tolerated \n\nAetiology: \n\nHistory of childhood febrile seizures; no clear structural lesion on MRI; EEG with left temporal sharp waves \n\nOther Medical Problems: \n\nMild migraine without aura, seasonal allergic rhinitis \n\nManagement Plan: \n\n- Continue carbamazepine modified release 400 mg morning and 600 mg evening.  \n- Maintain lacosamide 100 mg twice daily.  \n- Rescue plan not required at present; no impaired awareness or generalised convulsions reported.  \n- Safety advice reinforced regarding bathing, heights, and sleep hygiene.  \n- DVLA guidance discussed; patient currently meets standards for focal aware seizures only.  \n- Bloods (FBC, U&E, LFTs, carbamazepine trough level) to be checked in 8 weeks via GP.  \n- Review in clinic in six months.  \n\nThis patient reports focal aware sensory auras arising from the left temporal region characterised by a brief metallic taste and epigastric rising sensation without loss of awareness. Over the past three weeks he has noticed these episodes clustering overnight, typically occurring on a pair of occasions during most nights, separated by a few hours. He denies daytime events, automatisms, or secondary generalisation. No injuries, tongue biting, or incontinence. Sleep is somewhat fragmented; caffeine intake is modest and alcohol minimal. He recalls febrile seizures in early childhood; there have been no adult febrile illnesses precipitating recent events. \n\nSince the introduction of lacosamide alongside carbamazepine, daytime auras have abated and overall intensity has diminished, though the nocturnal pattern persists. Blood pressure and weight are stable. Neurological examination today is normal. MRI (2024) was unremarkable; EEG (July 2025) demonstrated intermittent left temporal sharp waves consistent with focal epilepsy. \n\nWe discussed adherence, brand consistency for carbamazepine, and potential future options if nocturnal clustering continues, including cautious dose optimisation versus alternative adjunctive therapy; the patient prefers to maintain the present regimen pending blood results. He will keep a seizure and sleep diary to document timing and potential triggers. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1440,
+      "end": 1491,
+      "text": "occurring on a pair of occasions during most nights",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2597,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr David \nConsultant Neurologist  \nCentre for Epilepsy  \nKCH  \n\nDear Dr David, \n\nJoe Bloggs, DOB: 15-01-1980, Hospital No: H562938 NHS No. 9275810345  \n18 High Street, London, E14 7JL  \n\nDiagnosis: \n\nFocal epilepsy with ongoing focal aware seizures; carbamazepine beneficial, lacosamide partially effective; topiramate previously not tolerated \n\nAetiology: \n\nHistory of childhood febrile seizures; no clear structural lesion on MRI; EEG with left temporal sharp waves \n\nOther Medical Problems: \n\nMild migraine without aura, seasonal allergic rhinitis \n\nManagement Plan: \n\n- Continue carbamazepine modified release 400 mg morning and 600 mg evening.  \n- Maintain lacosamide 100 mg twice daily.  \n- Rescue plan not required at present; no impaired awareness or generalised convulsions reported.  \n- Safety advice reinforced regarding bathing, heights, and sleep hygiene.  \n- DVLA guidance discussed; patient currently meets standards for focal aware seizures only.  \n- Bloods (FBC, U&E, LFTs, carbamazepine trough level) to be checked in 8 weeks via GP.  \n- Review in clinic in six months.  \n\nThis patient reports focal aware sensory auras arising from the left temporal region characterised by a brief metallic taste and epigastric rising sensation without loss of awareness. Over the past three weeks he has noticed these episodes clustering overnight, typically occurring on a pair of occasions during most nights, separated by a few hours. He denies daytime events, automatisms, or secondary generalisation. No injuries, tongue biting, or incontinence. Sleep is somewhat fragmented; caffeine intake is modest and alcohol minimal. He recalls febrile seizures in early childhood; there have been no adult febrile illnesses precipitating recent events. \n\nSince the introduction of lacosamide alongside carbamazepine, daytime auras have abated and overall intensity has diminished, though the nocturnal pattern persists. Blood pressure and weight are stable. Neurological examination today is normal. MRI (2024) was unremarkable; EEG (July 2025) demonstrated intermittent left temporal sharp waves consistent with focal epilepsy. \n\nWe discussed adherence, brand consistency for carbamazepine, and potential future options if nocturnal clustering continues, including cautious dose optimisation versus alternative adjunctive therapy; the patient prefers to maintain the present regimen pending blood results. He will keep a seizure and sleep diary to document timing and potential triggers. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing focal aware sensory auras that have clustered over the past three weeks, occurring \"on a pair of occasions during most nights, separated by a few hours.\" This indicates approximately 2 seizures per night (i.e., per day), with no daytime events. Using the Rule for Handling Multiple Frequencies, we take the highest current frequency described. Convert \"a pair of occasions during most nights\" to 2 per day.",
+      "seizure_frequency_number": [
+        "2 per day",
+        "occurring on a pair of occasions during most nights"
+      ],
+      "reference": [
+        "2 per day",
+        "twice per night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

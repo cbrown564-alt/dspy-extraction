@@ -1,0 +1,59 @@
+{
+  "id": "gan_12836",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nDate: 22 January 2024\nTo: kch.neuroclinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening control in focal epilepsy due to access barriers at workplace; medication plan and follow‑up\n\nDear Dr Rhodes,\n\nEpilepsy Diagnosis:\n- Focal epilepsy\n\nBackground and current concerns:\n- The patient works in a cleanroom/data‑hall environment with strict access controls. They report that retrieving rescue medication and obtaining refills is often delayed, which has led to more frequent missed doses at work. In the past two months, there have been several instances where scheduled doses were taken late or omitted because escort clearance and locker access could not be arranged in time. The patient and family feel this has coincided with a clear deterioration in day‑to‑day seizure control and increased seizure‑related anxiety at work.\n\nSeizure description and frequency:\n- The family feel seizure frequency has decreased markedly since starting medication, with only six seizures so far this year. However, despite this overall improvement on treatment, there is a recent deteriorating trend temporally associated with delayed access to medication in the controlled workplace environment, including two breakthrough focal impaired‑awareness events during shifts when doses were delayed.\n\nPresent medication:\n1) Carbamazepine modified‑release 400 mg twice daily\n2) Levetiracetam 750 mg twice daily\n\nPlan of action:\n- Given the patient’s focal epilepsy and the recent deterioration linked to missed/late doses at work, we will optimise adherence and tolerability while maintaining the current antiseizure regimen. We will:\n  • Adjust levetiracetam to 1,000 mg twice daily over 2 weeks (increase by 250 mg per dose each week) provided no adverse effects emerge.\n  • Continue carbamazepine MR 400 mg twice daily unchanged for now.\n  • Provide an additional small supply of rescue medication in sealed, labelled unit‑dose packaging to be stored both with occupational health and in an approved on‑person carry solution compatible with the cleanroom policy (patient‑reported acceptance by employer pending). The patient will confirm with their employer’s safety officer this week.\n  • Issue a written dosing schedule and a letter for the employer outlining the medical necessity of timely access to regular and rescue medication within restricted areas.\n- We have arranged follow‑up in 4 months to reassess seizure control, side‑effects, and workplace access arrangements. If adherence barriers persist or seizures continue to cluster during shifts, we will consider transitioning from carbamazepine to lacosamide as an alternative focal‑onset agent.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1171,
+      "end": 1210,
+      "text": "with only six seizures so far this year",
+      "attributes": {
+        "Label": "6 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1087,
+      "end": 1210,
+      "text": "The family feel seizure frequency has decreased markedly since starting medication, with only six seizures so far this year",
+      "attributes": {
+        "Label": "6 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12836,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nDate: 22 January 2024\nTo: kch.neuroclinic@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening control in focal epilepsy due to access barriers at workplace; medication plan and follow‑up\n\nDear Dr Rhodes,\n\nEpilepsy Diagnosis:\n- Focal epilepsy\n\nBackground and current concerns:\n- The patient works in a cleanroom/data‑hall environment with strict access controls. They report that retrieving rescue medication and obtaining refills is often delayed, which has led to more frequent missed doses at work. In the past two months, there have been several instances where scheduled doses were taken late or omitted because escort clearance and locker access could not be arranged in time. The patient and family feel this has coincided with a clear deterioration in day‑to‑day seizure control and increased seizure‑related anxiety at work.\n\nSeizure description and frequency:\n- The family feel seizure frequency has decreased markedly since starting medication, with only six seizures so far this year. However, despite this overall improvement on treatment, there is a recent deteriorating trend temporally associated with delayed access to medication in the controlled workplace environment, including two breakthrough focal impaired‑awareness events during shifts when doses were delayed.\n\nPresent medication:\n1) Carbamazepine modified‑release 400 mg twice daily\n2) Levetiracetam 750 mg twice daily\n\nPlan of action:\n- Given the patient’s focal epilepsy and the recent deterioration linked to missed/late doses at work, we will optimise adherence and tolerability while maintaining the current antiseizure regimen. We will:\n  • Adjust levetiracetam to 1,000 mg twice daily over 2 weeks (increase by 250 mg per dose each week) provided no adverse effects emerge.\n  • Continue carbamazepine MR 400 mg twice daily unchanged for now.\n  • Provide an additional small supply of rescue medication in sealed, labelled unit‑dose packaging to be stored both with occupational health and in an approved on‑person carry solution compatible with the cleanroom policy (patient‑reported acceptance by employer pending). The patient will confirm with their employer’s safety officer this week.\n  • Issue a written dosing schedule and a letter for the employer outlining the medical necessity of timely access to regular and rescue medication within restricted areas.\n- We have arranged follow‑up in 4 months to reassess seizure control, side‑effects, and workplace access arrangements. If adherence barriers persist or seizures continue to cluster during shifts, we will consider transitioning from carbamazepine to lacosamide as an alternative focal‑onset agent.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Key explicit statements: (1) \"only six seizures so far this year\"; (2) \"two breakthrough focal impaired‑awareness events\" within the context of the past two months. The letter date is 22 January 2024, so \"so far this year\" spans roughly the first month of the year. Normalising: 6 seizures over ~1 month ≈ 6 per month. The two events over two months ≈ 1 per month. Per the rule to choose the highest frequency when multiple are present, select 6 per month.",
+      "seizure_frequency_number": [
+        "6 per month",
+        "with only six seizures so far this year"
+      ],
+      "reference": [
+        "6 per month",
+        "The family feel seizure frequency has decreased markedly since starting medication, with only six seizures so far this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

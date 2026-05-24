@@ -37,6 +37,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
@@ -67,6 +68,7 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     }
 )
 
@@ -94,6 +96,8 @@ def exect_prompts_data(
             EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         }:
             module_name = "ExectS4FrequencyPreVocabFieldFamilyModule"
+        elif program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT:
+            module_name = "ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule"
         elif program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
             module_name = "ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule"
         elif program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:

@@ -1,0 +1,59 @@
+{
+  "id": "gan_14944",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 05 May 2016 \n\nDr Ahmed  \nRosebank Medical Practice  \n14 Rosebank Road, London E17 9QH  \n\nDear Dr Ahmed,  \n\nHannah Lewis, DOB: 23-11-1990, Hospital No: H948520 NHS No. 5837201946  \nFlat 3, 29 Threadneedle Close, London EC2R 8AH \n\nMedication: \n\nLevetiracetam 500 mg twice daily. Tolerated without adverse effects. \n\nHistory and interval events: \n\nShe works as a warehouse picker in an environment of tall racking and narrow aisles where lifting tasks and walking pace vary by shift. She reports good adherence to her medication without missed doses despite shift changes. She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 04/Mar, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 10/Mar and she has been stable since. Given her stability now, I do not propose further intervention for now. She has not reported any loss of awareness at work since that date, and there have been no observed injuries or falls. \n\nExamination today was unremarkable. Blood pressure and pulse were within normal limits, and no focal neurological signs were elicited. She notes mild sleep disruption on early shifts but denies daytime somnolence. She has been advised to maintain regular sleep where possible within shift constraints and to keep a simple diary of any further events, including potential triggers such as dehydration, missed meals, or abrupt shift transitions. \n\nOccupational considerations: \n\nWe discussed safe working practices in narrow aisles, including ensuring access to colleagues when working at height and taking regular hydration breaks. She is comfortable continuing her current duties and understands to inform her line manager and occupational health if any further episodes occur. \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily without change.  \n- Event diary and routine monitoring only at present.  \n- No further investigations planned unless symptoms recur or new features emerge.  \n- Review in clinic in six months, or earlier if there is any recurrence of episodes, change in pattern, or concerns from occupational health. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 821,
+      "end": 892,
+      "text": "The last such episode occurred on 10/Mar and she has been stable since.",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 629,
+      "end": 963,
+      "text": "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 04/Mar, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 10/Mar and she has been stable since. Given her stability now, I do not propose further intervention for now",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14944,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 05 May 2016 \n\nDr Ahmed  \nRosebank Medical Practice  \n14 Rosebank Road, London E17 9QH  \n\nDear Dr Ahmed,  \n\nHannah Lewis, DOB: 23-11-1990, Hospital No: H948520 NHS No. 5837201946  \nFlat 3, 29 Threadneedle Close, London EC2R 8AH \n\nMedication: \n\nLevetiracetam 500 mg twice daily. Tolerated without adverse effects. \n\nHistory and interval events: \n\nShe works as a warehouse picker in an environment of tall racking and narrow aisles where lifting tasks and walking pace vary by shift. She reports good adherence to her medication without missed doses despite shift changes. She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 04/Mar, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 10/Mar and she has been stable since. Given her stability now, I do not propose further intervention for now. She has not reported any loss of awareness at work since that date, and there have been no observed injuries or falls. \n\nExamination today was unremarkable. Blood pressure and pulse were within normal limits, and no focal neurological signs were elicited. She notes mild sleep disruption on early shifts but denies daytime somnolence. She has been advised to maintain regular sleep where possible within shift constraints and to keep a simple diary of any further events, including potential triggers such as dehydration, missed meals, or abrupt shift transitions. \n\nOccupational considerations: \n\nWe discussed safe working practices in narrow aisles, including ensuring access to colleagues when working at height and taking regular hydration breaks. She is comfortable continuing her current duties and understands to inform her line manager and occupational health if any further episodes occur. \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily without change.  \n- Event diary and routine monitoring only at present.  \n- No further investigations planned unless symptoms recur or new features emerge.  \n- Review in clinic in six months, or earlier if there is any recurrence of episodes, change in pattern, or concerns from occupational health. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter mentions seizure-like events described as 'absences.' It states: 'The last such episode occurred on 10/Mar and she has been stable since.' Clinic date is 05 May 2016. Time from 10/Mar to 05/May is approximately 2 months. She has not reached 6 months seizure-free, so per rule 8 we must calculate frequency. In the most recent ~2-month interval, there is 1 documented episode, yielding 1 per 2 month.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "The last such episode occurred on 10/Mar and she has been stable since."
+      ],
+      "reference": [
+        "1 per 2 month",
+        "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 04/Mar, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 10/Mar and she has been stable since. Given her stability now, I do not propose further intervention for now"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

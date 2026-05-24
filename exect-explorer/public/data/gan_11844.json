@@ -1,0 +1,47 @@
+{
+  "id": "gan_11844",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nThomas Reynolds, DOB: 05-11-1991, Hospital No: H938521 NHS No. 5847201934  \n14 Crescent Row, London, W1B 2QP \n\nSummary: \n\nToday I reviewed Thomas Reynolds in clinic. They commute mainly by bicycle, which is noted for context. There are no medication changes. \n\nNHS App utilisation for appointments and messaging: \n- Appointments: Thomas Reynolds has been shown how to view, confirm, or cancel neurology appointments via the NHS App. Push notifications are enabled to alert them to any schedule changes. \n- Messaging: For non-urgent queries regarding clinic logistics or routine follow-up (e.g., appointment availability, administrative questions), they will use the NHS App Messages function directed to the Neurology Admin Inbox. Clinical queries requiring triage should be submitted via the App’s “Contact your clinic” form; urgent concerns should go through the usual urgent care routes. \n- Documents: Clinic letters and test summaries will be visible under “Messages and documents.” We advised checking within 5 working days after appointments. \n- Results: When results are released, notification will appear in the App; we will add brief clinician notes where appropriate. \n- Preferences: Notifications are set to on; email backup is also enabled. \n\nPlan: Continue routine follow-up; next review in 6 months. No further action required today. \n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11844,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nThomas Reynolds, DOB: 05-11-1991, Hospital No: H938521 NHS No. 5847201934  \n14 Crescent Row, London, W1B 2QP \n\nSummary: \n\nToday I reviewed Thomas Reynolds in clinic. They commute mainly by bicycle, which is noted for context. There are no medication changes. \n\nNHS App utilisation for appointments and messaging: \n- Appointments: Thomas Reynolds has been shown how to view, confirm, or cancel neurology appointments via the NHS App. Push notifications are enabled to alert them to any schedule changes. \n- Messaging: For non-urgent queries regarding clinic logistics or routine follow-up (e.g., appointment availability, administrative questions), they will use the NHS App Messages function directed to the Neurology Admin Inbox. Clinical queries requiring triage should be submitted via the App’s “Contact your clinic” form; urgent concerns should go through the usual urgent care routes. \n- Documents: Clinic letters and test summaries will be visible under “Messages and documents.” We advised checking within 5 working days after appointments. \n- Results: When results are released, notification will appear in the App; we will add brief clinician notes where appropriate. \n- Preferences: Notifications are set to on; email backup is also enabled. \n\nPlan: Continue routine follow-up; next review in 6 months. No further action required today. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the entire clinic letter. It discusses appointment management via the NHS App, push notifications, messaging, documents, results, and preferences. It mentions commuting by bicycle and that there are no medication changes. The plan is routine follow-up in 6 months. There is no mention anywhere of seizures, seizure types, occurrence, or frequency. Therefore, there is no seizure frequency information provided in the letter.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter providing guidance on using the NHS App for epilepsy appointments and messages"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

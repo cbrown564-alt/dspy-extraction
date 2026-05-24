@@ -1,0 +1,59 @@
+{
+  "id": "gan_3638",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Carter\nSt George’s University Hospitals NHS Foundation Trust\nNeurology Outpatients, Blackshaw Road, London SW17 0QT\n\nDear Dr Amelia Carter,\n\nMichael Turner, DOB: 14-03-1987, Hospital No: H392104 NHS No. 9475128306\nFlat 3, 21 Brookfield Avenue, London, SW18 4EN\n\nDiagnoses:\n\nFocal epilepsy with impaired awareness seizures; photosensitivity suspected as a trigger. EEG (September 2025): intermittent left temporal sharp waves with photic stimulation provoking afterdischarges.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Optimise seizure safety at work and review environmental triggers including strong/flickering lighting.\n- Arrange occupational health liaison and provide letter supporting reasonable adjustments.\n- Repeat ambulatory EEG if events persist; consider medication optimisation at next review depending on frequency and tolerability.\n\nI reviewed Michael Turner in clinic today following a recent deterioration. He reports a clear increase in focal impaired-awareness episodes since starting a new job where the workspace features strong and intermittently flickering lights. Prior to this change, he described brief focal auras only a few times per month without progression. Over the past six weeks, however, he has noticed clusters occurring during or shortly after exposure to these lights, with frequency reaching up to 3 in bad weeks. Typical events begin with a rising epigastric sensation and déjà vu, followed by loss of awareness and automatisms lasting 60–90 seconds, with several minutes of post‑event confusion and fatigue. There have been no generalised convulsions reported.\n\nHe remains fully adherent to lamotrigine 75 mg twice daily, with no recent missed doses. Sleep has been reasonable, alcohol intake minimal, and there have been no intercurrent illnesses. He has independently tried using a cap and adjusting his workstation position, which he feels helps somewhat, though events still occur when the overhead lighting flickers.\n\nNeurological examination today is unchanged and non-focal. The recent EEG demonstrated intermittent left temporal sharp waves; photic stimulation elicited afterdischarges without clinical correlate, supporting focal epilepsy with likely light sensitivity as a precipitant in his current environment.\n\nGiven the pattern and the clear workplace trigger, I have advised practical measures and will liaise with occupational health to reduce exposure to flicker (e.g., stable LED lighting, disabling problematic fixtures, screen refresh optimisation). We agreed to continue lamotrigine at the current dose for now while we address triggers, and to re‑evaluate treatment if the frequency remains up to 3 in bad weeks despite environmental modifications. I have provided seizure first-aid guidance and advised reporting of any injuries, prolonged events, or new convulsive activity.\n\nI will review him again in three months or sooner if there is further deterioration.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1396,
+      "end": 1435,
+      "text": "frequency reaching up to 3 in bad weeks",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1415,
+      "end": 1435,
+      "text": "up to 3 in bad weeks",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3638,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Amelia Carter\nSt George’s University Hospitals NHS Foundation Trust\nNeurology Outpatients, Blackshaw Road, London SW17 0QT\n\nDear Dr Amelia Carter,\n\nMichael Turner, DOB: 14-03-1987, Hospital No: H392104 NHS No. 9475128306\nFlat 3, 21 Brookfield Avenue, London, SW18 4EN\n\nDiagnoses:\n\nFocal epilepsy with impaired awareness seizures; photosensitivity suspected as a trigger. EEG (September 2025): intermittent left temporal sharp waves with photic stimulation provoking afterdischarges.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Optimise seizure safety at work and review environmental triggers including strong/flickering lighting.\n- Arrange occupational health liaison and provide letter supporting reasonable adjustments.\n- Repeat ambulatory EEG if events persist; consider medication optimisation at next review depending on frequency and tolerability.\n\nI reviewed Michael Turner in clinic today following a recent deterioration. He reports a clear increase in focal impaired-awareness episodes since starting a new job where the workspace features strong and intermittently flickering lights. Prior to this change, he described brief focal auras only a few times per month without progression. Over the past six weeks, however, he has noticed clusters occurring during or shortly after exposure to these lights, with frequency reaching up to 3 in bad weeks. Typical events begin with a rising epigastric sensation and déjà vu, followed by loss of awareness and automatisms lasting 60–90 seconds, with several minutes of post‑event confusion and fatigue. There have been no generalised convulsions reported.\n\nHe remains fully adherent to lamotrigine 75 mg twice daily, with no recent missed doses. Sleep has been reasonable, alcohol intake minimal, and there have been no intercurrent illnesses. He has independently tried using a cap and adjusting his workstation position, which he feels helps somewhat, though events still occur when the overhead lighting flickers.\n\nNeurological examination today is unchanged and non-focal. The recent EEG demonstrated intermittent left temporal sharp waves; photic stimulation elicited afterdischarges without clinical correlate, supporting focal epilepsy with likely light sensitivity as a precipitant in his current environment.\n\nGiven the pattern and the clear workplace trigger, I have advised practical measures and will liaise with occupational health to reduce exposure to flicker (e.g., stable LED lighting, disabling problematic fixtures, screen refresh optimisation). We agreed to continue lamotrigine at the current dose for now while we address triggers, and to re‑evaluate treatment if the frequency remains up to 3 in bad weeks despite environmental modifications. I have provided seizure first-aid guidance and advised reporting of any injuries, prolonged events, or new convulsive activity.\n\nI will review him again in three months or sooner if there is further deterioration.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter says: prior to job change, only auras a few times per month. Over the past six weeks, he has had clusters during/after exposure, with frequency reaching up to 3 in bad weeks. No generalized convulsions. The highest explicit numeric frequency is 'up to 3 in bad weeks.' According to the rules, choose the highest frequency mentioned. Convert 'up to 3 in bad weeks' to the allowed format as '3 per week.'",
+      "seizure_frequency_number": [
+        "3 per week",
+        "frequency reaching up to 3 in bad weeks"
+      ],
+      "reference": [
+        "3 per week",
+        "up to 3 in bad weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

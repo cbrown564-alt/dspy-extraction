@@ -1,0 +1,59 @@
+{
+  "id": "gan_13416",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr James O’Connor ( (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 October 2025 10:12\nTo: neuro.epilepsy@nhs.net\nCc: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael Evans (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up review and medication rationalisation\n\nHi James\n\nEpilepsy Diagnosis:\n\nUnknown\n\nPresent Medication:\n\n1.  Lamotrigine 100 mg twice daily\n2.  Clobazam 5 mg at night as required for breakthrough events (rarely used)\n\nPresent Seizure Frequency:\n\nHe was diagnosed with epilepsy associated with myoclonic jerks, generalised tonic-clonic seizures and daily absences, but has remained seizure free for a prolonged period, not experiencing any seizures in recent years. He reports good sleep hygiene and no missed doses Ã‚Â· no recent intercurrent illness, alcohol excess, or new triggers.\n\nPlan of Action:\n\n- Continue lamotrigine 100 mg twice daily. No adverse effects reported; mood stable, liver function and FBC within normal limits.\n- Clobazam to remain as a rescue option only; advised not to drive if any recurrence and to inform DVLA if seizures reappear.\n- We discussed SUDEP risk, which is low with sustained remission, and sick day rules. Ã©\n- Arrange annual bloods (U&E, LFT, FBC) and prescription review in 12 months; earlier review if any breakthrough events, medication side effects, or family planning considerations. â€\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 682,
+      "end": 777,
+      "text": "has remained seizure free for a prolonged period, not experiencing any seizures in recent years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 560,
+      "end": 777,
+      "text": "He was diagnosed with epilepsy associated with myoclonic jerks, generalised tonic-clonic seizures and daily absences, but has remained seizure free for a prolonged period, not experiencing any seizures in recent years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13416,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr James O’Connor ( (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 October 2025 10:12\nTo: neuro.epilepsy@nhs.net\nCc: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael Evans (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up review and medication rationalisation\n\nHi James\n\nEpilepsy Diagnosis:\n\nUnknown\n\nPresent Medication:\n\n1.  Lamotrigine 100 mg twice daily\n2.  Clobazam 5 mg at night as required for breakthrough events (rarely used)\n\nPresent Seizure Frequency:\n\nHe was diagnosed with epilepsy associated with myoclonic jerks, generalised tonic-clonic seizures and daily absences, but has remained seizure free for a prolonged period, not experiencing any seizures in recent years. He reports good sleep hygiene and no missed doses Ã‚Â· no recent intercurrent illness, alcohol excess, or new triggers.\n\nPlan of Action:\n\n- Continue lamotrigine 100 mg twice daily. No adverse effects reported; mood stable, liver function and FBC within normal limits.\n- Clobazam to remain as a rescue option only; advised not to drive if any recurrence and to inform DVLA if seizures reappear.\n- We discussed SUDEP risk, which is low with sustained remission, and sick day rules. Ã©\n- Arrange annual bloods (U&E, LFT, FBC) and prescription review in 12 months; earlier review if any breakthrough events, medication side effects, or family planning considerations. â€\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"has remained seizure free for a prolonged period, not experiencing any seizures in recent years.\" This indicates current seizure freedom sustained for more than 6 months, and specifically mentions \"recent years,\" implying multiple years. No numeric seizure occurrences are reported recently. Therefore, the correct normalized label is 'seizure free for multiple year'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "has remained seizure free for a prolonged period, not experiencing any seizures in recent years"
+      ],
+      "reference": [
+        "seizure free for multiple year",
+        "He was diagnosed with epilepsy associated with myoclonic jerks, generalised tonic-clonic seizures and daily absences, but has remained seizure free for a prolonged period, not experiencing any seizures in recent years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

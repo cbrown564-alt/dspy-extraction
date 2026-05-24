@@ -1,0 +1,59 @@
+{
+  "id": "gan_9163",
+  "text": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 22 February 2018\n\nDr Sarah O’Neill\nConsultant Neurologist\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr Sarah O’Neill\nConsultant Neurologist,\n\nDaniel Carter, DOB: 14-03-1983, Hospital No: KCH729184 NHS No. 9065123478\n12 Brookside Close, London, SE15 3AB\n\nThank you for asking me to review your patient. I saw him today in follow‑up with his partner present. He described a period over the last several months in which his routine has stabilised and his medication has been taken more consistently. He attributes this improvement to setting alarms and collecting prescriptions earlier after previous variability in pharmacy supply, which had historically affected adherence at times. At today’s visit, he is Seizure-free by patient report. He denies any nocturnal events, injuries, or witnessed spells in this interval, and his partner has not observed any episodes suggestive of seizures. He also reports no recent emergency attendances or missed doses in the past two months.\n\nThere is no current account of warning symptoms, loss of awareness, automatisms, or prolonged post‑event confusion during this period. Sleep and mood are reported as improved, and he is back to regular daily activities without limitation. He is aware that we rely on his history and collateral history to guide ongoing assessment and is agreeable to continue documenting any changes. He did not wish to make changes to his present medication plan today. He understands to seek urgent advice should there be any return of events, injuries, or concerns about adherence.\n\nOn examination today, he was alert with normal speech and no focal neurological signs. Cardiovascular observations were within expected limits for clinic. No adverse effects from current antiseizure therapy were reported other than mild fatigue on early mornings, which he feels is manageable.\n\nPlan:\n- Continue current management unchanged, with emphasis on maintaining consistent medication supply and adherence given the prior impact of pharmacy variability (patient‑reported).\n- Safety advice reinforced, including documenting any breakthrough events and contacting the team promptly if concerns arise.\n- Routine follow‑up in six months, sooner if there is any change in events or tolerability.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 806,
+      "end": 861,
+      "text": "At today’s visit, he is Seizure-free by patient report.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 830,
+      "end": 860,
+      "text": "Seizure-free by patient report",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9163,
+    "clinic_date": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 22 February 2018\n\nDr Sarah O’Neill\nConsultant Neurologist\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr Sarah O’Neill\nConsultant Neurologist,\n\nDaniel Carter, DOB: 14-03-1983, Hospital No: KCH729184 NHS No. 9065123478\n12 Brookside Close, London, SE15 3AB\n\nThank you for asking me to review your patient. I saw him today in follow‑up with his partner present. He described a period over the last several months in which his routine has stabilised and his medication has been taken more consistently. He attributes this improvement to setting alarms and collecting prescriptions earlier after previous variability in pharmacy supply, which had historically affected adherence at times. At today’s visit, he is Seizure-free by patient report. He denies any nocturnal events, injuries, or witnessed spells in this interval, and his partner has not observed any episodes suggestive of seizures. He also reports no recent emergency attendances or missed doses in the past two months.\n\nThere is no current account of warning symptoms, loss of awareness, automatisms, or prolonged post‑event confusion during this period. Sleep and mood are reported as improved, and he is back to regular daily activities without limitation. He is aware that we rely on his history and collateral history to guide ongoing assessment and is agreeable to continue documenting any changes. He did not wish to make changes to his present medication plan today. He understands to seek urgent advice should there be any return of events, injuries, or concerns about adherence.\n\nOn examination today, he was alert with normal speech and no focal neurological signs. Cardiovascular observations were within expected limits for clinic. No adverse effects from current antiseizure therapy were reported other than mild fatigue on early mornings, which he feels is manageable.\n\nPlan:\n- Continue current management unchanged, with emphasis on maintaining consistent medication supply and adherence given the prior impact of pharmacy variability (patient‑reported).\n- Safety advice reinforced, including documenting any breakthrough events and contacting the team promptly if concerns arise.\n- Routine follow‑up in six months, sooner if there is any change in events or tolerability.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is currently seizure-free by patient report. It also specifies no nocturnal events, injuries, witnessed spells, or emergency attendances in the past two months. However, the duration of seizure freedom is described as 'over the last several months' and 'past two months' with improved adherence; there is no clear confirmation of at least 6 months seizure freedom. Therefore, per rule 8, since he is currently without seizures but it is insufficient to confirm 6 months, the appropriate label is 'seizure free for multiple months.' No other seizure frequencies are provided that would supersede this.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "At today’s visit, he is Seizure-free by patient report."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free by patient report"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

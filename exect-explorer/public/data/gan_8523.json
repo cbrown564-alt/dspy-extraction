@@ -1,0 +1,54 @@
+{
+  "id": "gan_8523",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 19 December 2019 \n\nDr A. Patel  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel,  \n\nSamuel Carter, DOB: 14-03-1985, Hospital No: KCH728519 NHS No. 9476203158  \n12 Maple Close, Bromley, BR2 8HT\n\nThank you for your referral. I reviewed Samuel Carter in the neurology clinic regarding established focal epilepsy. He has a remote history of mild traumatic brain injury in his early twenties, and his seizure semiology has previously been consistent with focal impaired awareness events with behavioural arrest and orofacial automatisms, occasionally followed by brief post‑event confusion. There is no history suggestive of generalised onset.\n\nSince his last appointment six months ago, there have been no breakthrough episodes. He and his partner both report an unbroken period without events, including at night, work, or during physical exertion. There have been no auras, no witnessed ictal behaviours, and no post‑event confusion. He has maintained regular sleep and medication adherence.\n\nCurrent treatment is unchanged and well tolerated, with no cognitive or mood adverse effects reported. He is driving status compliant and remains under routine DVLA guidance. Neurological examination today is unremarkable. Routine bloods from his GP last month, including FBC, U&Es and LFTs, were within reference ranges. We discussed seizure first‑aid and safety; he has not required rescue medication.\n\nImpression: Focal epilepsy, currently stable with sustained remission of clinical events. Remote mild traumatic brain injury noted as a historical risk factor.\n\nPlan:  \n- Continue current anti‑seizure medication at existing dose.  \n- Reinforce adherence and sleep hygiene.  \n- Safety advice reviewed; no restrictions beyond standard guidance.  \n- Routine follow‑up in 9–12 months, or sooner if there is any recurrence of symptoms.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 766,
+      "end": 850,
+      "text": "Since his last appointment six months ago, there have been no breakthrough episodes.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8523,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 19 December 2019 \n\nDr A. Patel  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel,  \n\nSamuel Carter, DOB: 14-03-1985, Hospital No: KCH728519 NHS No. 9476203158  \n12 Maple Close, Bromley, BR2 8HT\n\nThank you for your referral. I reviewed Samuel Carter in the neurology clinic regarding established focal epilepsy. He has a remote history of mild traumatic brain injury in his early twenties, and his seizure semiology has previously been consistent with focal impaired awareness events with behavioural arrest and orofacial automatisms, occasionally followed by brief post‑event confusion. There is no history suggestive of generalised onset.\n\nSince his last appointment six months ago, there have been no breakthrough episodes. He and his partner both report an unbroken period without events, including at night, work, or during physical exertion. There have been no auras, no witnessed ictal behaviours, and no post‑event confusion. He has maintained regular sleep and medication adherence.\n\nCurrent treatment is unchanged and well tolerated, with no cognitive or mood adverse effects reported. He is driving status compliant and remains under routine DVLA guidance. Neurological examination today is unremarkable. Routine bloods from his GP last month, including FBC, U&Es and LFTs, were within reference ranges. We discussed seizure first‑aid and safety; he has not required rescue medication.\n\nImpression: Focal epilepsy, currently stable with sustained remission of clinical events. Remote mild traumatic brain injury noted as a historical risk factor.\n\nPlan:  \n- Continue current anti‑seizure medication at existing dose.  \n- Reinforce adherence and sleep hygiene.  \n- Safety advice reviewed; no restrictions beyond standard guidance.  \n- Routine follow‑up in 9–12 months, or sooner if there is any recurrence of symptoms.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Since his last appointment six months ago, there have been no breakthrough episodes,\" and further confirms no auras, no witnessed ictal behaviours, and no post-event confusion. This establishes a continuous seizure-free period of 6 months up to the clinic date. Per the rule that at least 6 months without seizures qualifies as seizure free, the appropriate normalized label is seizure free for 6 month.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "Since his last appointment six months ago, there have been no breakthrough episodes."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Interval history negative for seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

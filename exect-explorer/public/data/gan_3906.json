@@ -1,0 +1,59 @@
+{
+  "id": "gan_3906",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 August 2014 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up and medication review\n\nDear Dr Shah,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nBackground:\n\nNewly retired teacher living alone with a regular routine and reduced social contact. She reports keeping a diary of episodes and adheres strictly to her medications and sleep schedule.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Gabapentin 300 mg at night for sleep maintenance and neuropathic pain\n\nPresent Seizure Frequency:\n\nShe reports sz ×4/yr, typically brief focal aware episodes with speech arrest and right-hand tingling, often in the early evening when fatigued. No generalised convulsions reported. No clear alcohol or intercurrent illness triggers.\n\nAssessment and Plan:\n\n- The semiology remains focal with preserved awareness and consistent sensory-motor aura. No evidence of secondary generalisation. Bloods (U&E, LFTs) last month were within normal limits. Lamotrigine level pending; she is clinically stable between events.\n- We discussed lifestyle structure; she continues to maintain regular sleep and meals. She feels loneliness may increase perceived stress but declines formal counselling at present; will re-offer if needed.\n- Safety advice reviewed for living alone: kettle and cooker use after rest periods, phone at hand, and neighbour check-ins. She is not driving.\n- Continue Lamotrigine 150 mg twice daily for now. If diary suggests clustering or any progression of symptoms, we will consider optimising dose or adjunctive therapy at next review.\n\nFollow-up:\n\nRoutine review in six months, sooner if frequency increases or new features occur. She will email the seizure diary monthly to this clinic.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 747,
+      "end": 767,
+      "text": "She reports sz ×4/yr",
+      "attributes": {
+        "Label": "4 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 759,
+      "end": 767,
+      "text": "sz ×4/yr",
+      "attributes": {
+        "Label": "4 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3906,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 August 2014 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up and medication review\n\nDear Dr Shah,\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\nBackground:\n\nNewly retired teacher living alone with a regular routine and reduced social contact. She reports keeping a diary of episodes and adheres strictly to her medications and sleep schedule.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Gabapentin 300 mg at night for sleep maintenance and neuropathic pain\n\nPresent Seizure Frequency:\n\nShe reports sz ×4/yr, typically brief focal aware episodes with speech arrest and right-hand tingling, often in the early evening when fatigued. No generalised convulsions reported. No clear alcohol or intercurrent illness triggers.\n\nAssessment and Plan:\n\n- The semiology remains focal with preserved awareness and consistent sensory-motor aura. No evidence of secondary generalisation. Bloods (U&E, LFTs) last month were within normal limits. Lamotrigine level pending; she is clinically stable between events.\n- We discussed lifestyle structure; she continues to maintain regular sleep and meals. She feels loneliness may increase perceived stress but declines formal counselling at present; will re-offer if needed.\n- Safety advice reviewed for living alone: kettle and cooker use after rest periods, phone at hand, and neighbour check-ins. She is not driving.\n- Continue Lamotrigine 150 mg twice daily for now. If diary suggests clustering or any progression of symptoms, we will consider optimising dose or adjunctive therapy at next review.\n\nFollow-up:\n\nRoutine review in six months, sooner if frequency increases or new features occur. She will email the seizure diary monthly to this clinic.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'She reports sz ×4/yr'. This indicates 4 seizures per year. No other conflicting frequencies are mentioned. Therefore, normalize to '4 per year'.",
+      "seizure_frequency_number": [
+        "4 per year",
+        "She reports sz ×4/yr"
+      ],
+      "reference": [
+        "4 per year",
+        "sz ×4/yr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

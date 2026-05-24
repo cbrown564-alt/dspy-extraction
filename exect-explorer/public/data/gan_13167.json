@@ -1,0 +1,59 @@
+{
+  "id": "gan_13167",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 22 September 2025\n\nDr Shah\nConsultant Neurologist\nCentre for Epilepsy\nSt Thomas’ Hospital, Westminster Bridge Road, London SE1 7EH\n\nDear Dr Shah,\n\nMr Andrew Collins, DOB: 12-03-1986, Hospital No: H847392 NHS No. 9384756102\n22 Willow Close, Bromley, BR2 8PA\n\nDiagnosis:\n\nGeneralised epilepsy, currently improving control on Carbamazepine monotherapy.\n\nAetiology:\n\nNo structural lesion identified on MRI; normal perinatal and developmental history by report.\n\nOther Medical Problems:\n\nNone of note. Vitamin D level checked via GP earlier this year and within reference range.\n\nManagement Plan:\n\n- Continue Carbamazepine as monotherapy at current dose; maintain single consistent brand. No changes today given improving control.\n- Reinforce adherence and sleep hygiene; patient reports improved routine with new rota.\n- Safety counselling reviewed (driving restrictions discussed as per DVLA guidance following recent impaired-awareness event).\n- Arrange follow-up in four months; book serum Carbamazepine level and LFTs prior to that visit.\n\nClinical Summary:\n\nSince his last review he has moved to regular daytime shifts with fewer overnight calls. Per plan, control is better now. On Carbamazepine monotherapy he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago. He describes this as a brief pause with automatisms lasting under two minutes, followed by several minutes of confusion; there was no injury. He has otherwise had no generalised tonic–clonic seizures during this interval and no myoclonic jerks in the mornings for over two months. He feels the more regular sleep pattern has helped substantially and his partner corroborates fewer early-morning events.\n\nHe denies adverse effects from Carbamazepine (no rash, diplopia, or dizziness). Mood is stable, appetite normal, and weight unchanged. He remains in employment and reports reduced fatigue since the rota change. Examination today was unremarkable, and there are no new neurological findings.\n\nIn summary, he has generalised epilepsy with overall improving control in the context of better sleep hygiene and a stable Carbamazepine regimen. Given the single recent impaired-awareness seizure, we will monitor levels and maintain the current approach.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1268,
+      "end": 1372,
+      "text": "he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago.",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1239,
+      "end": 1371,
+      "text": "On Carbamazepine monotherapy he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago",
+      "attributes": {
+        "Label": "1 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13167,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 22 September 2025\n\nDr Shah\nConsultant Neurologist\nCentre for Epilepsy\nSt Thomas’ Hospital, Westminster Bridge Road, London SE1 7EH\n\nDear Dr Shah,\n\nMr Andrew Collins, DOB: 12-03-1986, Hospital No: H847392 NHS No. 9384756102\n22 Willow Close, Bromley, BR2 8PA\n\nDiagnosis:\n\nGeneralised epilepsy, currently improving control on Carbamazepine monotherapy.\n\nAetiology:\n\nNo structural lesion identified on MRI; normal perinatal and developmental history by report.\n\nOther Medical Problems:\n\nNone of note. Vitamin D level checked via GP earlier this year and within reference range.\n\nManagement Plan:\n\n- Continue Carbamazepine as monotherapy at current dose; maintain single consistent brand. No changes today given improving control.\n- Reinforce adherence and sleep hygiene; patient reports improved routine with new rota.\n- Safety counselling reviewed (driving restrictions discussed as per DVLA guidance following recent impaired-awareness event).\n- Arrange follow-up in four months; book serum Carbamazepine level and LFTs prior to that visit.\n\nClinical Summary:\n\nSince his last review he has moved to regular daytime shifts with fewer overnight calls. Per plan, control is better now. On Carbamazepine monotherapy he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago. He describes this as a brief pause with automatisms lasting under two minutes, followed by several minutes of confusion; there was no injury. He has otherwise had no generalised tonic–clonic seizures during this interval and no myoclonic jerks in the mornings for over two months. He feels the more regular sleep pattern has helped substantially and his partner corroborates fewer early-morning events.\n\nHe denies adverse effects from Carbamazepine (no rash, diplopia, or dizziness). Mood is stable, appetite normal, and weight unchanged. He remains in employment and reports reduced fatigue since the rota change. Examination today was unremarkable, and there are no new neurological findings.\n\nIn summary, he has generalised epilepsy with overall improving control in the context of better sleep hygiene and a stable Carbamazepine regimen. Given the single recent impaired-awareness seizure, we will monitor levels and maintain the current approach.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure occurrences and timeframe. The letter states: \"he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago.\" Current clinic date is 22 September 2025. \"3 Thursdays ago\" places a single seizure approximately within the last month. Over the last three months, there has been exactly one seizure. Not seizure free for ≥6 months, so we must compute frequency. The highest frequency described is 1 seizure in a 3-month interval. No other seizure types reported in that interval (no GTCs; no myoclonic jerks for over two months). Therefore, label as 1 per 3 month.",
+      "seizure_frequency_number": [
+        "1 per 3 month",
+        "he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago."
+      ],
+      "reference": [
+        "1 per 3 month",
+        "On Carbamazepine monotherapy he was seizure-free for three months, until a focal impaired-awareness seizure occurred 3 Thursdays ago"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

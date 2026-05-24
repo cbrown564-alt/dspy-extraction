@@ -1,0 +1,59 @@
+{
+  "id": "gan_5092",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 31 March 2020\n\nDr Patel\nRiverside Community Health Centre\n12 Riverside Way, Bristol, BS1 4AB\n\nDear Dr Patel,\n\nRe: Jordan Ellis, DOB: 14-07-1990, Hospital No: H392847, NHS No: 8412753096\nAddress: 7 Meadow Lane, Bristol, BS3 2QT\n\nDiagnoses:\n\nNo epilepsy.\n\nThank you for asking me to review Jordan Ellis in the neurology clinic regarding previous concerns about intermittent collapse and possible seizures. After assessment, history review, and discussion of prior investigations, there is no evidence to support a diagnosis of epilepsy. The patient and family report that there have been No clinical seizures observed since the initial referral. They describe episodic light-headedness previously associated with missed meals and poor hydration; these episodes have resolved with lifestyle measures.\n\nExamination today was unremarkable with normal neurological findings. A prior routine EEG and brain MRI (performed externally and provided as copies today) were reported as within normal limits with no epileptiform activity or structural abnormalities. There is no antiseizure medication in use, and none has been required. No rescue medication has ever been administered. There is no implanted neuromodulatory device in situ.\n\nIn summary, Jordan Ellis does not have epilepsy. The presenting symptoms are most consistent with non-epileptic causes (likely vasovagal in context), and there have been No clinical seizures observed. We discussed red flags that would warrant re-referral (e.g., witnessed unresponsive episodes with tonic-clonic activity, post-ictal confusion, injuries, or events during sleep). The patient understands and is reassured. No further neurology follow-up is required unless new features emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 590,
+      "end": 698,
+      "text": "The patient and family report that there have been No clinical seizures observed since the initial referral.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 641,
+      "end": 670,
+      "text": "No clinical seizures observed",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5092,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 31 March 2020\n\nDr Patel\nRiverside Community Health Centre\n12 Riverside Way, Bristol, BS1 4AB\n\nDear Dr Patel,\n\nRe: Jordan Ellis, DOB: 14-07-1990, Hospital No: H392847, NHS No: 8412753096\nAddress: 7 Meadow Lane, Bristol, BS3 2QT\n\nDiagnoses:\n\nNo epilepsy.\n\nThank you for asking me to review Jordan Ellis in the neurology clinic regarding previous concerns about intermittent collapse and possible seizures. After assessment, history review, and discussion of prior investigations, there is no evidence to support a diagnosis of epilepsy. The patient and family report that there have been No clinical seizures observed since the initial referral. They describe episodic light-headedness previously associated with missed meals and poor hydration; these episodes have resolved with lifestyle measures.\n\nExamination today was unremarkable with normal neurological findings. A prior routine EEG and brain MRI (performed externally and provided as copies today) were reported as within normal limits with no epileptiform activity or structural abnormalities. There is no antiseizure medication in use, and none has been required. No rescue medication has ever been administered. There is no implanted neuromodulatory device in situ.\n\nIn summary, Jordan Ellis does not have epilepsy. The presenting symptoms are most consistent with non-epileptic causes (likely vasovagal in context), and there have been No clinical seizures observed. We discussed red flags that would warrant re-referral (e.g., witnessed unresponsive episodes with tonic-clonic activity, post-ictal confusion, injuries, or events during sleep). The patient understands and is reassured. No further neurology follow-up is required unless new features emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no clinical seizures since the initial referral and reiterates no clinical seizures observed. However, no specific timeframe (e.g., months or years since referral) is provided, so it’s not possible to confirm a 6-month seizure-free period. Per the rules, with current seizure freedom but insufficient information to confirm ≥6 months, the appropriate normalization is 'seizure free for multiple month'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "The patient and family report that there have been No clinical seizures observed since the initial referral."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No clinical seizures observed"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_2427",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 26 September 2017 \n\nDr Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel, \n\nAlex Morgan, DOB: 22-09-1993, Hospital No: M483920 NHS No. 9012736458  \nFlat 12, 3 Station Road, Croydon, CR0 2AA  \n\nDiagnosis: \n\nSeizure disorder with generalised tonic-clonic events; seizure type classification not established \n\nAetiology: \n\nUncertain; no structural lesion identified on prior imaging per patient report \n\nOther Medical Problems: \n\nHistory of intermittent migraine without aura; vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n- Continue current anti-seizure regimen as per existing prescription without dose change; patient reports satisfactory tolerability.  \n- Reinforce sleep hygiene and adherence strategies given reported vulnerability to sleep loss.  \n- Safety counselling briefly revisited today (supervised bathing, avoid heights when fatigued, and medication adherence).  \n- DVLA guidance discussed; patient reports not driving.  \n- Arrange follow-up in four months, sooner if escalation occurs.  \n\nSince the last review, the patient describes 3 or 5 tonic-clonic over the past month, occurring in two short clusters after nights of curtailed sleep. There were no reported injuries, tongue bites were brief, and post-ictal recovery was within the usual pattern (30–60 minutes of confusion and fatigue). They note that clusters appear linked to sleep loss and have a personalised plan documented elsewhere, which they have found helpful in managing early warning signs and arranging supervision when unwell. No new triggers beyond sleep disruption were identified. Medication has been taken consistently, with no missed doses acknowledged. The patient prefers not to modify treatment currently, and we agreed to maintain the present regimen while monitoring for any change in frequency or severity. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1177,
+      "end": 1238,
+      "text": "the patient describes 3 or 5 tonic-clonic over the past month",
+      "attributes": {
+        "Label": "3 to 5 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1199,
+      "end": 1238,
+      "text": "3 or 5 tonic-clonic over the past month",
+      "attributes": {
+        "Label": "3 to 5 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2427,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 26 September 2017 \n\nDr Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nSt George’s Hospital, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel, \n\nAlex Morgan, DOB: 22-09-1993, Hospital No: M483920 NHS No. 9012736458  \nFlat 12, 3 Station Road, Croydon, CR0 2AA  \n\nDiagnosis: \n\nSeizure disorder with generalised tonic-clonic events; seizure type classification not established \n\nAetiology: \n\nUncertain; no structural lesion identified on prior imaging per patient report \n\nOther Medical Problems: \n\nHistory of intermittent migraine without aura; vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n- Continue current anti-seizure regimen as per existing prescription without dose change; patient reports satisfactory tolerability.  \n- Reinforce sleep hygiene and adherence strategies given reported vulnerability to sleep loss.  \n- Safety counselling briefly revisited today (supervised bathing, avoid heights when fatigued, and medication adherence).  \n- DVLA guidance discussed; patient reports not driving.  \n- Arrange follow-up in four months, sooner if escalation occurs.  \n\nSince the last review, the patient describes 3 or 5 tonic-clonic over the past month, occurring in two short clusters after nights of curtailed sleep. There were no reported injuries, tongue bites were brief, and post-ictal recovery was within the usual pattern (30–60 minutes of confusion and fatigue). They note that clusters appear linked to sleep loss and have a personalised plan documented elsewhere, which they have found helpful in managing early warning signs and arranging supervision when unwell. No new triggers beyond sleep disruption were identified. Medication has been taken consistently, with no missed doses acknowledged. The patient prefers not to modify treatment currently, and we agreed to maintain the present regimen while monitoring for any change in frequency or severity. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Since the last review, the patient describes 3 or 5 tonic-clonic over the past month, occurring in two short clusters after nights of curtailed sleep.\" This provides a numeric range for the past month. There is no clearer single number, so we normalize to a monthly range. Clustering detail is given but the number per cluster is not precise enough to convert reliably to a cluster-based format, so the overall monthly range is used.",
+      "seizure_frequency_number": [
+        "3 to 5 per month",
+        "the patient describes 3 or 5 tonic-clonic over the past month"
+      ],
+      "reference": [
+        "3 to 5 per month",
+        "3 or 5 tonic-clonic over the past month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_13822",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSouthwark Neurology Service  \nSt Mary’s Health Centre, 14 Riverbank Way, London SE1 3AB  \n\nDear Dr Patel,  \n\nJordan Reed, DOB: 15-07-2002, Hospital No: X927461 NHS No. 8473629150  \n3B Larch Court, Albany Road, London SE5 0HY  \n\nDiagnoses: \n\n— \n\nI reviewed Jordan Reed today in the neurology clinic with his mother present. He has been maintaining a menstrual tracking app for symptom correlation; while that would ordinarily be used to assess cyclical variation in seizure disorders, in his case we have focused on correlating anxiety symptoms and reported events against the recorded dates to explore any pattern that might mirror catamenial fluctuation reported in his family health history. Entries over the past six months show clusters of reported events approximately every 28–32 days; these align with periods of heightened stress noted in the app’s journalling feature rather than any physiological cycle. \n\nEvents at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled. He reports that grounding techniques taught by psychology, alongside regular use of his breathing exercises and a structured sleep routine, have reduced both frequency and intensity of episodes. There have been no witnessed convulsive features, no tongue biting, no prolonged post-event confusion, and no injuries. He has not required rescue medication, and there have been no emergency department attendances since our last review. \n\nHe remains off antiseizure medication; this is in line with our working assessment and his preference. He continues sertraline 75 mg each morning, commenced by his GP, with good tolerability and improved baseline anxiety. No adverse effects reported. He does not drive. \n\nExamination in clinic was unremarkable with normal neurological findings. Routine bloods from August 2025 were within reference ranges. We discussed safety planning, episode first aid, and the importance of ongoing psychological strategies. We also agreed that he will continue to document episodes and context within the app; he has added custom tags for sleep deprivation, caffeine excess, and high-stress days to help refine correlations. \n\nPlan: \n- Continue current anxiety management and psychological strategies. \n- No antiseizure medication indicated at present. \n- Provide episode video if safe to do so for further review. \n- Maintain app-based tracking with contextual tags; bring export to next appointment. \n- Routine follow-up in 6 months, sooner if there is any change such as emergence of unequivocal epileptic features, injury, or prolonged events. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1001,
+      "end": 1047,
+      "text": "Events at present are considered non-epileptic",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1001,
+      "end": 1121,
+      "text": "Events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13822,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSouthwark Neurology Service  \nSt Mary’s Health Centre, 14 Riverbank Way, London SE1 3AB  \n\nDear Dr Patel,  \n\nJordan Reed, DOB: 15-07-2002, Hospital No: X927461 NHS No. 8473629150  \n3B Larch Court, Albany Road, London SE5 0HY  \n\nDiagnoses: \n\n— \n\nI reviewed Jordan Reed today in the neurology clinic with his mother present. He has been maintaining a menstrual tracking app for symptom correlation; while that would ordinarily be used to assess cyclical variation in seizure disorders, in his case we have focused on correlating anxiety symptoms and reported events against the recorded dates to explore any pattern that might mirror catamenial fluctuation reported in his family health history. Entries over the past six months show clusters of reported events approximately every 28–32 days; these align with periods of heightened stress noted in the app’s journalling feature rather than any physiological cycle. \n\nEvents at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled. He reports that grounding techniques taught by psychology, alongside regular use of his breathing exercises and a structured sleep routine, have reduced both frequency and intensity of episodes. There have been no witnessed convulsive features, no tongue biting, no prolonged post-event confusion, and no injuries. He has not required rescue medication, and there have been no emergency department attendances since our last review. \n\nHe remains off antiseizure medication; this is in line with our working assessment and his preference. He continues sertraline 75 mg each morning, commenced by his GP, with good tolerability and improved baseline anxiety. No adverse effects reported. He does not drive. \n\nExamination in clinic was unremarkable with normal neurological findings. Routine bloods from August 2025 were within reference ranges. We discussed safety planning, episode first aid, and the importance of ongoing psychological strategies. We also agreed that he will continue to document episodes and context within the app; he has added custom tags for sleep deprivation, caffeine excess, and high-stress days to help refine correlations. \n\nPlan: \n- Continue current anxiety management and psychological strategies. \n- No antiseizure medication indicated at present. \n- Provide episode video if safe to do so for further review. \n- Maintain app-based tracking with contextual tags; bring export to next appointment. \n- Routine follow-up in 6 months, sooner if there is any change such as emergence of unequivocal epileptic features, injury, or prolonged events. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Step 1: Identify whether the letter describes current epileptic seizures. It states, \"Events at present are considered non-epileptic,\" and lists absence of seizure-typical features (no witnessed convulsive features, no tongue biting, no prolonged post-event confusion). This supports that there are currently no epileptic seizures.\nStep 2: Ignore frequencies of non-epileptic events. The only numeric frequency given (clusters every 28–32 days over six months) refers to non-epileptic events aligned with stress, so it cannot be used as seizure frequency.\nStep 3: Determine seizure-free duration. The letter does not explicitly state a seizure-free duration of at least 6 months. Although the past six months of entries are discussed, they concern non-epileptic events, and there is no explicit statement of seizure-free duration.\nStep 4: Apply the rule for seizure-free labeling when duration is unclear. Since the patient is currently without epileptic seizures but the duration of seizure freedom is not explicitly confirmed as ≥6 months, label as \"seizure free for multiple month.\"",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Events at present are considered non-epileptic"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

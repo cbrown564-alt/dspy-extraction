@@ -1,0 +1,47 @@
+{
+  "id": "gan_11852",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 04 July 2016\n\nDr A. Rahman\nSt George’s University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr A. Rahman,\n\nMichael Turner, DOB: 14-11-1988, Hospital No: H427519 NHS No. 9083174621\n12 Brookside Close, Wimbledon, SW19 3AB\n\nDiagnoses:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nI reviewed Michael Turner in clinic today. We discussed driving and the DVLA notification process. I advised that, as a person living with epilepsy, they must:\n\n- Notify the DVLA promptly using the DVLA “Report your medical condition – epilepsy” online service or the relevant paper form, and inform their motor insurer of their condition.\n- Await DVLA medical review outcomes before resuming or continuing driving, and comply with any licensing restrictions or periodic review requirements.\n- Keep their contact details updated with the DVLA and respond to correspondence in a timely manner.\n- Seek clarification from the DVLA if there is any uncertainty about licence status, categories, or timing of reviews.\n\nI provided the DVLA web link and helpline details and documented that we discussed the legal obligations and practical steps. No treatment changes were made today. We will continue routine follow-up via the neurology clinic.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11852,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 04 July 2016\n\nDr A. Rahman\nSt George’s University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr A. Rahman,\n\nMichael Turner, DOB: 14-11-1988, Hospital No: H427519 NHS No. 9083174621\n12 Brookside Close, Wimbledon, SW19 3AB\n\nDiagnoses:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nI reviewed Michael Turner in clinic today. We discussed driving and the DVLA notification process. I advised that, as a person living with epilepsy, they must:\n\n- Notify the DVLA promptly using the DVLA “Report your medical condition – epilepsy” online service or the relevant paper form, and inform their motor insurer of their condition.\n- Await DVLA medical review outcomes before resuming or continuing driving, and comply with any licensing restrictions or periodic review requirements.\n- Keep their contact details updated with the DVLA and respond to correspondence in a timely manner.\n- Seek clarification from the DVLA if there is any uncertainty about licence status, categories, or timing of reviews.\n\nI provided the DVLA web link and helpline details and documented that we discussed the legal obligations and practical steps. No treatment changes were made today. We will continue routine follow-up via the neurology clinic.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's epilepsy diagnosis and DVLA driving advice. It contains no mention of seizures, seizure frequency, or seizure-free duration. Therefore, there is no seizure frequency information to extract from the letter.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter providing guidance on the DVLA notification process related to epilepsy (non-clinical)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

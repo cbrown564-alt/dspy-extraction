@@ -1,0 +1,59 @@
+{
+  "id": "gan_11197",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 November 2016 \n\nDr Aisha Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital, Galsworthy Road, Kingston upon Thames, KT2 7QB  \n\nDear Dr Aisha Khan, \n\nMs Priya Patel, DOB: 24-03-1992, Hospital No: K847301 NHS No. 2039184756  \nFlat 12, 5 Willow Court, Surbiton, KT6 5NA  \n\nDiagnosis: \n\nGeneralised epilepsy with probable catamenial pattern; 1 Travel-related clusters this month; ~4 - 6 events per episode\n\nAetiology: \n\nNo structural lesion identified on MRI; normal perinatal and developmental history; family history notable for a sibling with adolescent-onset generalised seizures\n\nOther Medical Problems: \n\nMild iron-deficiency anaemia on oral supplementation; intermittent migraine without aura\n\nManagement Plan: \n\n- Patient has generalised epilepsy with suspected catamenial exacerbation. We reviewed her menstrual tracking app entries which show a consistent increase in events during the late luteal phase and first two days of menses. She also reported 1 Travel-related clusters this month; ~4 - 6 events per episode, temporally associated with early-morning flights and sleep disruption.  \n- Continue Sodium Valproate semi-enteric 500 mg mane and 1000 mg nocte; maintain single-brand supply.  \n- Introduce perimenstrual rescue strategy: Clobazam 10 mg nocte starting two days before expected menses and continuing for five days, patient-reported and time-limited use; we will review tolerability.  \n- Reinforce sleep hygiene and travel planning: avoid overnight travel where possible; if unavoidable, schedule rest periods and maintain regular dosing times across time zones.  \n- Arrange serum Valproate level, LFTs, FBC, and serum ferritin in four weeks.  \n- Provide letter for employer to support flexible scheduling around long-haul travel weeks.  \n- Safety counselling updated: SUDEP and driving guidance reviewed as per DVLA standards for generalised epilepsy; patient acknowledges understanding.  \n- Follow-up in three months; earlier review if clusters exceed baseline or adverse effects occur.\n\nThis patient remains otherwise well between episodes with no reported injuries or prolonged post-ictal confusion. App-based logs reviewed in clinic corroborate the cycle-linked increase in frequency and the travel-linked cluster described above. There is no evidence of focal onset features by history or examination today. We discussed medication teratogenicity considerations and contraception; she confirmed ongoing effective contraception and wishes to continue current therapy pending further review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 420,
+      "end": 483,
+      "text": "1 Travel-related clusters this month; ~4 - 6 events per episode",
+      "attributes": {
+        "Label": "1 cluster per month, 4 to 6 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 420,
+      "end": 483,
+      "text": "1 Travel-related clusters this month; ~4 - 6 events per episode",
+      "attributes": {
+        "Label": "1 cluster per month, 4 to 6 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11197,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 November 2016 \n\nDr Aisha Khan \nConsultant Neurologist  \nCentre for Epilepsy  \nKingston Hospital, Galsworthy Road, Kingston upon Thames, KT2 7QB  \n\nDear Dr Aisha Khan, \n\nMs Priya Patel, DOB: 24-03-1992, Hospital No: K847301 NHS No. 2039184756  \nFlat 12, 5 Willow Court, Surbiton, KT6 5NA  \n\nDiagnosis: \n\nGeneralised epilepsy with probable catamenial pattern; 1 Travel-related clusters this month; ~4 - 6 events per episode\n\nAetiology: \n\nNo structural lesion identified on MRI; normal perinatal and developmental history; family history notable for a sibling with adolescent-onset generalised seizures\n\nOther Medical Problems: \n\nMild iron-deficiency anaemia on oral supplementation; intermittent migraine without aura\n\nManagement Plan: \n\n- Patient has generalised epilepsy with suspected catamenial exacerbation. We reviewed her menstrual tracking app entries which show a consistent increase in events during the late luteal phase and first two days of menses. She also reported 1 Travel-related clusters this month; ~4 - 6 events per episode, temporally associated with early-morning flights and sleep disruption.  \n- Continue Sodium Valproate semi-enteric 500 mg mane and 1000 mg nocte; maintain single-brand supply.  \n- Introduce perimenstrual rescue strategy: Clobazam 10 mg nocte starting two days before expected menses and continuing for five days, patient-reported and time-limited use; we will review tolerability.  \n- Reinforce sleep hygiene and travel planning: avoid overnight travel where possible; if unavoidable, schedule rest periods and maintain regular dosing times across time zones.  \n- Arrange serum Valproate level, LFTs, FBC, and serum ferritin in four weeks.  \n- Provide letter for employer to support flexible scheduling around long-haul travel weeks.  \n- Safety counselling updated: SUDEP and driving guidance reviewed as per DVLA standards for generalised epilepsy; patient acknowledges understanding.  \n- Follow-up in three months; earlier review if clusters exceed baseline or adverse effects occur.\n\nThis patient remains otherwise well between episodes with no reported injuries or prolonged post-ictal confusion. App-based logs reviewed in clinic corroborate the cycle-linked increase in frequency and the travel-linked cluster described above. There is no evidence of focal onset features by history or examination today. We discussed medication teratogenicity considerations and contraception; she confirmed ongoing effective contraception and wishes to continue current therapy pending further review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: '1 Travel-related clusters this month; ~4 - 6 events per episode.' This provides a numeric frequency of clusters over a month and the number of events (seizures) per cluster. There is no other competing frequency given. Following the rule to prioritize explicit numeric expressions and to normalize to allowed formats, the frequency is 1 cluster per month with 4 to 6 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per month, 4 to 6 per cluster",
+        "1 Travel-related clusters this month; ~4 - 6 events per episode"
+      ],
+      "reference": [
+        "1 cluster per month, 4 to 6 per cluster",
+        "1 Travel-related clusters this month; ~4 - 6 events per episode"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

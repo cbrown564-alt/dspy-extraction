@@ -1,0 +1,59 @@
+{
+  "id": "gan_4700",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 23 September 2016 \n\nDr A Patel\nRiverside Health Centre\n\n221 Riverside Way, London, SE1 3AB\nDear Dr A Patel\nAlex Morgan, DOB: 21-11-1982, Hospital No: H392774 NHS No. 9472635190\n12 Larch Court, Deptford, London, SE8 4TZ \n\nI reviewed the above patient in the Neurology Clinic today. Since their last visit, they report intermittent brief losses of awareness with occasional sudden startle and post-event fatigue. They have been adherent to their prescribed antiseizure regimen and keep a diary of events. Of note, recent inpatient monitoring demonstrated the following: Electrographic seizures frequent on EEG (~4/h). These were largely subclinical or associated only with brief behavioural arrest according to the ward observations. There was no clear precipitant identified, though the patient feels that poor sleep and missed meals may correlate with clusters.\n\nThe current medication list was verified against the GP summary and patient-supplied blister packs. They remain on long-term antiseizure therapy recorded elsewhere, and bone-health monitoring has been arranged and documented in that record; no changes were made to that plan today. They deny rash, jaundice, visual blurring, or diplopia. They do describe occasional light-headedness late in the afternoon and a mild tremor when anxious. No recent emergency department attendances have occurred. They are working part-time and have self-imposed limits on ladder work and late shifts. They do not drive.\n\nOn examination today, they were alert and oriented, with normal speech and language. Cranial nerves, tone, power, coordination and sensation were within normal limits. Gait was steady. Blood pressure 124/78 mmHg, pulse 72 bpm regular. No peripheral oedema. Weight stable by their report.\n\nGiven the telemetry findings and the frequency of electrographic activity, I have advised continued adherence and regular sleep hygiene. We discussed triggers, stress management, and maintaining a structured routine. They will keep a detailed event diary noting sleep, meals and potential triggers to aid correlation at the next review. Safety advice was reiterated regarding bathing and working at heights. Laboratory monitoring is up to date via primary care. We agreed to maintain the present management while we collate the full EEG report and liaise with the epilepsy nurse specialist for practical support.\n\nI will review them again in approximately 12 weeks, or sooner if their clinical events escalate or if there are concerns raised by primary care. They know to contact the clinic if there are prolonged episodes or injuries.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 610,
+      "end": 657,
+      "text": "Electrographic seizures frequent on EEG (~4/h).",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 610,
+      "end": 656,
+      "text": "Electrographic seizures frequent on EEG (~4/h)",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4700,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 23 September 2016 \n\nDr A Patel\nRiverside Health Centre\n\n221 Riverside Way, London, SE1 3AB\nDear Dr A Patel\nAlex Morgan, DOB: 21-11-1982, Hospital No: H392774 NHS No. 9472635190\n12 Larch Court, Deptford, London, SE8 4TZ \n\nI reviewed the above patient in the Neurology Clinic today. Since their last visit, they report intermittent brief losses of awareness with occasional sudden startle and post-event fatigue. They have been adherent to their prescribed antiseizure regimen and keep a diary of events. Of note, recent inpatient monitoring demonstrated the following: Electrographic seizures frequent on EEG (~4/h). These were largely subclinical or associated only with brief behavioural arrest according to the ward observations. There was no clear precipitant identified, though the patient feels that poor sleep and missed meals may correlate with clusters.\n\nThe current medication list was verified against the GP summary and patient-supplied blister packs. They remain on long-term antiseizure therapy recorded elsewhere, and bone-health monitoring has been arranged and documented in that record; no changes were made to that plan today. They deny rash, jaundice, visual blurring, or diplopia. They do describe occasional light-headedness late in the afternoon and a mild tremor when anxious. No recent emergency department attendances have occurred. They are working part-time and have self-imposed limits on ladder work and late shifts. They do not drive.\n\nOn examination today, they were alert and oriented, with normal speech and language. Cranial nerves, tone, power, coordination and sensation were within normal limits. Gait was steady. Blood pressure 124/78 mmHg, pulse 72 bpm regular. No peripheral oedema. Weight stable by their report.\n\nGiven the telemetry findings and the frequency of electrographic activity, I have advised continued adherence and regular sleep hygiene. We discussed triggers, stress management, and maintaining a structured routine. They will keep a detailed event diary noting sleep, meals and potential triggers to aid correlation at the next review. Safety advice was reiterated regarding bathing and working at heights. Laboratory monitoring is up to date via primary care. We agreed to maintain the present management while we collate the full EEG report and liaise with the epilepsy nurse specialist for practical support.\n\nI will review them again in approximately 12 weeks, or sooner if their clinical events escalate or if there are concerns raised by primary care. They know to contact the clinic if there are prolonged episodes or injuries.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly mentions seizures and provides a quantified rate during inpatient EEG: \"~4/h\". This indicates several seizures each hour. However, the letter does not provide an exact daily count, and the hourly figure is approximate and context-limited to monitoring. Since the allowed output requires day/week/month/year units and an exact daily number cannot be determined from the letter, the most accurate normalization without over-specification is to record the frequency as multiple per day.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~4/h)."
+      ],
+      "reference": [
+        "multiple per day",
+        "Electrographic seizures frequent on EEG (~4/h)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gan_11752",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 31 July 2021\n\nDr Amelia Shah\nRiverside NHS Neurology Service\nNeurosciences Department, Riverside General Hospital, London SE1 8RT\n\nDear Dr Amelia Shah,\n\nJordan Blake, DOB: 14-11-1987, Hospital No: H392847 NHS No. 9081763421\nMoorings 12, Regent’s Canal, London NW1 8AL\n\nDiagnoses:\n\nNeurological condition under ongoing review.\n\nI reviewed Jordan Blake in clinic today to discuss administrative support for disability and benefits forms, including Personal Independence Payment (PIP). The history provided is patient-reported. Jordan Blake currently resides in a houseboat/mobile home and experiences occasional power outages, which can affect device charging and access to documentation.\n\nPlan and administrative process:\n- We can provide a factual medical summary letter to support PIP/benefits applications upon written request. This will outline relevant functional impacts and treatment, based on available records and the patient’s account.\n- For DWP/PIP forms sent directly to our clinic, we will complete the clinician sections limited to objective information held in the record. We cannot complete forms requiring social care or occupational assessments.\n- If time-critical deadlines apply, please email the neurology admin inbox and upload/attach the form via the hospital portal; mark as “Benefits/PIP – urgent” with the due date.\n- Given intermittent power supply affecting device charging and access, we have advised Jordan Blake to keep paper copies of key documents and to notify the team early if extensions are required. We can confirm clinic attendance and treatment dates if requested by the DWP.\n- For supporting evidence from other services (e.g., GP, therapy, social care), requests should be made directly to those providers. We cannot coordinate third‑party reports but will attach any that are sent to us.\n\nNext steps:\n- Await receipt of the specific form or written request from Jordan Blake or the DWP. Turnaround target: 10–15 working days from receipt of complete information.\n- We have supplied the admin contact details to Jordan Blake and encouraged early submission due to living circumstances affecting communications.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11752,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 31 July 2021\n\nDr Amelia Shah\nRiverside NHS Neurology Service\nNeurosciences Department, Riverside General Hospital, London SE1 8RT\n\nDear Dr Amelia Shah,\n\nJordan Blake, DOB: 14-11-1987, Hospital No: H392847 NHS No. 9081763421\nMoorings 12, Regent’s Canal, London NW1 8AL\n\nDiagnoses:\n\nNeurological condition under ongoing review.\n\nI reviewed Jordan Blake in clinic today to discuss administrative support for disability and benefits forms, including Personal Independence Payment (PIP). The history provided is patient-reported. Jordan Blake currently resides in a houseboat/mobile home and experiences occasional power outages, which can affect device charging and access to documentation.\n\nPlan and administrative process:\n- We can provide a factual medical summary letter to support PIP/benefits applications upon written request. This will outline relevant functional impacts and treatment, based on available records and the patient’s account.\n- For DWP/PIP forms sent directly to our clinic, we will complete the clinician sections limited to objective information held in the record. We cannot complete forms requiring social care or occupational assessments.\n- If time-critical deadlines apply, please email the neurology admin inbox and upload/attach the form via the hospital portal; mark as “Benefits/PIP – urgent” with the due date.\n- Given intermittent power supply affecting device charging and access, we have advised Jordan Blake to keep paper copies of key documents and to notify the team early if extensions are required. We can confirm clinic attendance and treatment dates if requested by the DWP.\n- For supporting evidence from other services (e.g., GP, therapy, social care), requests should be made directly to those providers. We cannot coordinate third‑party reports but will attach any that are sent to us.\n\nNext steps:\n- Await receipt of the specific form or written request from Jordan Blake or the DWP. Turnaround target: 10–15 working days from receipt of complete information.\n- We have supplied the admin contact details to Jordan Blake and encouraged early submission due to living circumstances affecting communications.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the LETTER for any mention of seizures, seizure frequency, seizure-free duration, or related terms (e.g., fits, convulsions, episodes). The content focuses on administrative support for benefits forms and notes a general neurological condition under review, but it does not mention seizures or their frequency anywhere. Therefore, there is no seizure frequency information to extract.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter explaining the process for benefits forms (e.g., PIP) related to epilepsy (admin only)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

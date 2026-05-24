@@ -1,0 +1,59 @@
+{
+  "id": "gan_14454",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 April 2014 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-05-1986, Hospital No: H914276 NHS No. 5839201746  \n22 Brookfield Road, London, W10 6JP \n\nMedication: \n\nLevetiracetam 750 mg twice daily, well tolerated. No current adverse effects reported.\n\nBackground and interval history: \n\nShe has a remote history of mild traumatic brain injury in adolescence, without lasting neurological deficit. Sleep pattern has been variable due to shift work. No recent intercurrent illness. \n\nTopiramate was discontinued on 11 Feb. Soon afterwards, she reported two seizures, one after a stressful day. She has had no seizures since then. She attributes the improvement to better sleep hygiene and avoiding missed meals. No injuries, tongue bite, or prolonged post-event confusion were described. There have been no auras or brief warning symptoms reported since the two events in February. \n\nCurrent assessment and plan: \n\n- Continue levetiracetam at the present dose. She prefers to avoid reintroducing topiramate due to previous cognitive slowing, which has now resolved.  \n- We discussed common seizure precipitants and she will maintain a diary documenting sleep, stressors, and menses.  \n- She does not drive and is aware of DVLA guidance regarding seizure recurrence and the requirement to remain off driving until meeting the stipulated seizure-free interval.  \n- Safety advice reinforced: shower rather than bath, avoid heights without supervision, and inform close contacts of first-aid measures. \n\nFollow-up: \n\nWe will review her in four months, or sooner if further events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 669,
+      "end": 775,
+      "text": "Soon afterwards, she reported two seizures, one after a stressful day. She has had no seizures since then.",
+      "attributes": {
+        "Label": "2 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 630,
+      "end": 774,
+      "text": "Topiramate was discontinued on 11 Feb. Soon afterwards, she reported two seizures, one after a stressful day. She has had no seizures since then",
+      "attributes": {
+        "Label": "2 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14454,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 April 2014 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-05-1986, Hospital No: H914276 NHS No. 5839201746  \n22 Brookfield Road, London, W10 6JP \n\nMedication: \n\nLevetiracetam 750 mg twice daily, well tolerated. No current adverse effects reported.\n\nBackground and interval history: \n\nShe has a remote history of mild traumatic brain injury in adolescence, without lasting neurological deficit. Sleep pattern has been variable due to shift work. No recent intercurrent illness. \n\nTopiramate was discontinued on 11 Feb. Soon afterwards, she reported two seizures, one after a stressful day. She has had no seizures since then. She attributes the improvement to better sleep hygiene and avoiding missed meals. No injuries, tongue bite, or prolonged post-event confusion were described. There have been no auras or brief warning symptoms reported since the two events in February. \n\nCurrent assessment and plan: \n\n- Continue levetiracetam at the present dose. She prefers to avoid reintroducing topiramate due to previous cognitive slowing, which has now resolved.  \n- We discussed common seizure precipitants and she will maintain a diary documenting sleep, stressors, and menses.  \n- She does not drive and is aware of DVLA guidance regarding seizure recurrence and the requirement to remain off driving until meeting the stipulated seizure-free interval.  \n- Safety advice reinforced: shower rather than bath, avoid heights without supervision, and inform close contacts of first-aid measures. \n\nFollow-up: \n\nWe will review her in four months, or sooner if further events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 14 April 2014. The letter states Topiramate was stopped on 11 Feb, and soon afterwards she had two seizures, with no seizures since. Time from 11 Feb to 14 April is approximately 2 months. She is not seizure-free for ≥6 months, so we calculate frequency over this interval: 2 seizures in ~2 months → 2 per 2 month.",
+      "seizure_frequency_number": [
+        "2 per 2 month",
+        "Soon afterwards, she reported two seizures, one after a stressful day. She has had no seizures since then."
+      ],
+      "reference": [
+        "2 per 2 month",
+        "Topiramate was discontinued on 11 Feb. Soon afterwards, she reported two seizures, one after a stressful day. She has had no seizures since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

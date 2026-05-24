@@ -1,0 +1,59 @@
+{
+  "id": "gan_2992",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 22 December 2024 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-1991, Hospital No: A937521 NHS No. 7482019365  \nFlat 12, 5 Larkspur Court, London, SW11 2PX  \n\nDiagnoses: \n\nSeizures of undetermined classification. \n\nI reviewed Michael Harris in the clinic today. He works as a stage lighting technician with frequent exposure to strobe and high-intensity lights, and colleagues have occasionally witnessed events at work. He reports that his last seizure on 19-May-2024 occurred during rigging and programming with a rapid strobe sequence; the episode was described by a colleague as a brief behavioural arrest with blank staring, followed by disorientation for several minutes without clear convulsion. He has had no further events since that date and has continued working with adjustments to strobe exposure and scheduled breaks. \n\nMedications: He remains on levetiracetam 1 g twice daily with good tolerance and no dose changes since March 2024. He carries buccal midazolam for emergency use but has not required it in the past year. No known drug allergies. \n\nInvestigations: A routine EEG in February 2024 was non-diagnostic; photic stimulation did not elicit abnormalities. MRI brain (3T) April 2024 reported no focal lesion. Bloods (U&E, LFT, FBC) in September 2024 within reference ranges. \n\nWorkplace context: We discussed occupational triggers. He has coordinated with his employer to limit direct strobe programming duties when fatigued, to preview lighting cues at reduced intensity where feasible, and to ensure colleagues are aware of basic first aid. He uses a wearable alert device as a precaution when working at height and avoids lone working on rigging tasks. \n\nPlan: \n- Continue levetiracetam 1 g twice daily unchanged. \n- No rescue therapy use required since the last clinic; retain current supply within expiry and workplace access plan. \n- Provide a brief written seizure first-aid refresher for his team lead. \n- Liaise with occupational health to document agreed reasonable adjustments around strobe exposure and lone working. \n- Repeat EEG with extended photic protocol only if further episodes occur. \n- Safety counselling reinforced regarding heights, open water, and machinery. \n\nFollow-up: Review in 6 months, sooner if any recurrence or change in event characteristics. He knows to contact the clinic if symptoms return, particularly if events cluster or generalise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 604,
+      "end": 700,
+      "text": "He reports that his last seizure on 19-May-2024... He has had no further events since that date.",
+      "attributes": {
+        "Label": "seizure free for 7 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 624,
+      "end": 651,
+      "text": "Last seizure on 19-May-2024",
+      "attributes": {
+        "Label": "seizure free for 7 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2992,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 22 December 2024 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-1991, Hospital No: A937521 NHS No. 7482019365  \nFlat 12, 5 Larkspur Court, London, SW11 2PX  \n\nDiagnoses: \n\nSeizures of undetermined classification. \n\nI reviewed Michael Harris in the clinic today. He works as a stage lighting technician with frequent exposure to strobe and high-intensity lights, and colleagues have occasionally witnessed events at work. He reports that his last seizure on 19-May-2024 occurred during rigging and programming with a rapid strobe sequence; the episode was described by a colleague as a brief behavioural arrest with blank staring, followed by disorientation for several minutes without clear convulsion. He has had no further events since that date and has continued working with adjustments to strobe exposure and scheduled breaks. \n\nMedications: He remains on levetiracetam 1 g twice daily with good tolerance and no dose changes since March 2024. He carries buccal midazolam for emergency use but has not required it in the past year. No known drug allergies. \n\nInvestigations: A routine EEG in February 2024 was non-diagnostic; photic stimulation did not elicit abnormalities. MRI brain (3T) April 2024 reported no focal lesion. Bloods (U&E, LFT, FBC) in September 2024 within reference ranges. \n\nWorkplace context: We discussed occupational triggers. He has coordinated with his employer to limit direct strobe programming duties when fatigued, to preview lighting cues at reduced intensity where feasible, and to ensure colleagues are aware of basic first aid. He uses a wearable alert device as a precaution when working at height and avoids lone working on rigging tasks. \n\nPlan: \n- Continue levetiracetam 1 g twice daily unchanged. \n- No rescue therapy use required since the last clinic; retain current supply within expiry and workplace access plan. \n- Provide a brief written seizure first-aid refresher for his team lead. \n- Liaise with occupational health to document agreed reasonable adjustments around strobe exposure and lone working. \n- Repeat EEG with extended photic protocol only if further episodes occur. \n- Safety counselling reinforced regarding heights, open water, and machinery. \n\nFollow-up: Review in 6 months, sooner if any recurrence or change in event characteristics. He knows to contact the clinic if symptoms return, particularly if events cluster or generalise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient’s last seizure occurred on 19-May-2024 and that he has had no further events since that date. The clinic date is 22 December 2024. Calculate duration seizure-free: from 19 May 2024 to 22 December 2024 is more than 6 months (approximately 7 months and 3 days). This meets the criterion for seizure-free ≥6 months, so label as seizure free for 7 months.",
+      "seizure_frequency_number": [
+        "seizure free for 7 month",
+        "He reports that his last seizure on 19-May-2024... He has had no further events since that date."
+      ],
+      "reference": [
+        "seizure free for 7 month",
+        "Last seizure on 19-May-2024"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

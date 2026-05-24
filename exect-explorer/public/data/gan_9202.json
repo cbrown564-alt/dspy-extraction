@@ -1,0 +1,59 @@
+{
+  "id": "gan_9202",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSouth London Neurology Service  \nLevel 3, Neurosciences Building, Brixton Road, London SW9 6AA  \n\nDear Dr Patel,  \n\nJulia Morgan, DOB: 14-07-1989, Hospital No: H472915 NHS No. 9081763524  \nFlat 12, 3 Willow Court, Peckham, London SE15 2PX  \n\nDiagnoses: \n\nFocal epilepsy. \n\nI reviewed Julia Morgan in the neurology clinic today, accompanied by a family member. She has a known history of focal epilepsy and has previously practised aura recognition strategies with our epilepsy nurse specialist. She describes her typical warning features in her own words as a brief \"metallic tang in the mouth\", a rising epigastric sensation, and a momentary sense that \"sounds feel slightly far away\". She has been using these cues to pause activity, sit down safely, and perform calm breathing. \n\nSince her last appointment, there have been No witnessed or reported seizures. She keeps a diary and has shared entries confirming absence of events, including during periods of increased work-related stress. There have been no emergency presentations, no nocturnal events reported by her partner, and no unexplained injuries. \n\nMedication is unchanged and well tolerated, with no reported adverse effects such as diplopia, ataxia, or mood decline. Sleep hygiene and regular meals have been maintained. She is not using a magnet device; VNS has never been implanted. Routine bloods from August were within expected ranges. \n\nWe discussed ongoing self-monitoring, and she will continue her previously learned aura recognition strategies in case sensations recur. She understands safety advice regarding bathing, heights, and machinery. Driving status has been reviewed in line with DVLA guidance as applicable. \n\nPlan:  \n- Continue current anti-seizure medication without change.  \n- Maintain seizure diary and report any return of aura or focal aware symptoms.  \n- Routine follow-up in six months, sooner if symptoms recur.  \n\nPlease note occasional characters in her personal journal appear garbled (e.g., Ã‚Â·, Ã©, ï¿½, â€) due to a file encoding issue; the clinical content remains clear. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 868,
+      "end": 946,
+      "text": "Since her last appointment, there have been No witnessed or reported seizures.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 912,
+      "end": 945,
+      "text": "No witnessed or reported seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9202,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSouth London Neurology Service  \nLevel 3, Neurosciences Building, Brixton Road, London SW9 6AA  \n\nDear Dr Patel,  \n\nJulia Morgan, DOB: 14-07-1989, Hospital No: H472915 NHS No. 9081763524  \nFlat 12, 3 Willow Court, Peckham, London SE15 2PX  \n\nDiagnoses: \n\nFocal epilepsy. \n\nI reviewed Julia Morgan in the neurology clinic today, accompanied by a family member. She has a known history of focal epilepsy and has previously practised aura recognition strategies with our epilepsy nurse specialist. She describes her typical warning features in her own words as a brief \"metallic tang in the mouth\", a rising epigastric sensation, and a momentary sense that \"sounds feel slightly far away\". She has been using these cues to pause activity, sit down safely, and perform calm breathing. \n\nSince her last appointment, there have been No witnessed or reported seizures. She keeps a diary and has shared entries confirming absence of events, including during periods of increased work-related stress. There have been no emergency presentations, no nocturnal events reported by her partner, and no unexplained injuries. \n\nMedication is unchanged and well tolerated, with no reported adverse effects such as diplopia, ataxia, or mood decline. Sleep hygiene and regular meals have been maintained. She is not using a magnet device; VNS has never been implanted. Routine bloods from August were within expected ranges. \n\nWe discussed ongoing self-monitoring, and she will continue her previously learned aura recognition strategies in case sensations recur. She understands safety advice regarding bathing, heights, and machinery. Driving status has been reviewed in line with DVLA guidance as applicable. \n\nPlan:  \n- Continue current anti-seizure medication without change.  \n- Maintain seizure diary and report any return of aura or focal aware symptoms.  \n- Routine follow-up in six months, sooner if symptoms recur.  \n\nPlease note occasional characters in her personal journal appear garbled (e.g., Ã‚Â·, Ã©, ï¿½, â€) due to a file encoding issue; the clinical content remains clear. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no witnessed or reported seizures since the last appointment, with a diary confirming absence of events. However, it does not provide an explicit duration (in months) since the last appointment, only that the current clinic date is 02 October 2025. Without a clear time span of at least 6 months explicitly stated, we cannot label as 'seizure free for 6 months or more'. The instruction allows 'seizure free for multiple months' when the exact duration is insufficient to confirm 6 months but ongoing absence is described. Therefore, the appropriate normalized label is 'seizure free for multiple months'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since her last appointment, there have been No witnessed or reported seizures."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No witnessed or reported seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

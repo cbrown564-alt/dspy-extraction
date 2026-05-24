@@ -1,0 +1,47 @@
+{
+  "id": "gan_11590",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Patel\nElm Grove Health Centre\n\n48 Elm Grove, London, SE15 3PX\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: H839204 NHS No. 7483920193\n12 Willow Court, Deptford, London, SE8 4AB\n\nI reviewed the above patient in the Neurology Clinic today. He has a remote history of mild traumatic brain injury. We plan a video-EEG recording as part of an epilepsy assessment pathway. This letter is an administrative request only.\n\nTo avoid delay, could you please arrange for the patient to review and sign the standard hospital video-EEG recording consent form and return it to our department at your earliest convenience? A copy has been sent to your practice via NHS email and given to the patient today. If there are any questions about data handling, transmission, or storage of video/audio during monitoring, our admin team can be contacted on 020 7000 1234.\n\nNo medication changes were made today. Once the signed consent is received, we will schedule the study and inform you of the appointment details.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11590,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Patel\nElm Grove Health Centre\n\n48 Elm Grove, London, SE15 3PX\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: H839204 NHS No. 7483920193\n12 Willow Court, Deptford, London, SE8 4AB\n\nI reviewed the above patient in the Neurology Clinic today. He has a remote history of mild traumatic brain injury. We plan a video-EEG recording as part of an epilepsy assessment pathway. This letter is an administrative request only.\n\nTo avoid delay, could you please arrange for the patient to review and sign the standard hospital video-EEG recording consent form and return it to our department at your earliest convenience? A copy has been sent to your practice via NHS email and given to the patient today. If there are any questions about data handling, transmission, or storage of video/audio during monitoring, our admin team can be contacted on 020 7000 1234.\n\nNo medication changes were made today. Once the signed consent is received, we will schedule the study and inform you of the appointment details.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter is an administrative request to arrange consent for a video-EEG as part of an epilepsy assessment. It does not mention the patient having seizures, any seizure occurrences, or any frequency data. There are no numeric or qualitative descriptions of seizure frequency, and no statement of being seizure free.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter requesting signature on a video-EEG recording consent form for epilepsy assessment (admin only)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

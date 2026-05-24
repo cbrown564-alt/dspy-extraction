@@ -1,0 +1,59 @@
+{
+  "id": "gan_503",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 13 June 2023 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Green, DOB: 14-03-1982, Hospital No: KCH784521 NHS No. 9473165209  \n22 Larkspur Close, London, SE15 3QT\n\nThank you for asking me to review your patient in follow-up. He attended today with his partner. He reports an ongoing pattern of events with variable frequency across the year. Based on his seizure diary and our discussion today, he estimates a range of 11 to 28 per quarter. He feels the variation is most evident around periods of disrupted sleep, and he recognises occasional short-lived cluster patterns when he has consecutive nights of reduced sleep. These clusters typically occur over 24–48 hours and then settle without requiring emergency department attendance. He has a personalised plan for managing these episodes, which is documented elsewhere in his records; he and his partner refer to this plan during periods of increased activity and feel it has been helpful in avoiding unnecessary escalation.\n\nHe describes the events as beginning without a clear warning. Family observers note brief periods of unresponsiveness with purposeless movements and vocalisation, followed by confusion lasting minutes to an hour. He does not recall these fully but notices post-event fatigue and headache. There have been no recent injuries, no new focal neurological symptoms, and no identified medication side effects. He denies new triggers beyond sleep loss; alcohol intake is modest and consistent, and he does not use recreational drugs.\n\nWe discussed practical measures around sleep hygiene and maintaining a stable routine, which he is motivated to continue. He is not currently keen on inpatient recording but is open to further outpatient evaluation if the pattern changes. No safeguarding concerns were raised today. He has not required rescue medication in the last six months and has not presented to urgent care in that period. He remains fit to follow his existing personalised plan and to contact services if events deviate from his usual pattern.\n\nPlan agreed today (patient-reported preferences guiding):\n- Continue current regimen and diary tracking; he will note sleep duration alongside event counts to better map patterns.\n- Reinforce use of his existing personalised plan during cluster periods, as per documentation held elsewhere.\n- Provide contact details for rapid-access advice if frequency exceeds his usual range or if new features emerge.\n- Routine follow-up in six months, sooner if there is any deterioration or change in character.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 624,
+      "end": 668,
+      "text": "he estimates a range of 11 to 28 per quarter",
+      "attributes": {
+        "Label": "11 to 28 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 648,
+      "end": 668,
+      "text": "11 to 28 per quarter",
+      "attributes": {
+        "Label": "11 to 28 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 503,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 13 June 2023 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Green, DOB: 14-03-1982, Hospital No: KCH784521 NHS No. 9473165209  \n22 Larkspur Close, London, SE15 3QT\n\nThank you for asking me to review your patient in follow-up. He attended today with his partner. He reports an ongoing pattern of events with variable frequency across the year. Based on his seizure diary and our discussion today, he estimates a range of 11 to 28 per quarter. He feels the variation is most evident around periods of disrupted sleep, and he recognises occasional short-lived cluster patterns when he has consecutive nights of reduced sleep. These clusters typically occur over 24–48 hours and then settle without requiring emergency department attendance. He has a personalised plan for managing these episodes, which is documented elsewhere in his records; he and his partner refer to this plan during periods of increased activity and feel it has been helpful in avoiding unnecessary escalation.\n\nHe describes the events as beginning without a clear warning. Family observers note brief periods of unresponsiveness with purposeless movements and vocalisation, followed by confusion lasting minutes to an hour. He does not recall these fully but notices post-event fatigue and headache. There have been no recent injuries, no new focal neurological symptoms, and no identified medication side effects. He denies new triggers beyond sleep loss; alcohol intake is modest and consistent, and he does not use recreational drugs.\n\nWe discussed practical measures around sleep hygiene and maintaining a stable routine, which he is motivated to continue. He is not currently keen on inpatient recording but is open to further outpatient evaluation if the pattern changes. No safeguarding concerns were raised today. He has not required rescue medication in the last six months and has not presented to urgent care in that period. He remains fit to follow his existing personalised plan and to contact services if events deviate from his usual pattern.\n\nPlan agreed today (patient-reported preferences guiding):\n- Continue current regimen and diary tracking; he will note sleep duration alongside event counts to better map patterns.\n- Reinforce use of his existing personalised plan during cluster periods, as per documentation held elsewhere.\n- Provide contact details for rapid-access advice if frequency exceeds his usual range or if new features emerge.\n- Routine follow-up in six months, sooner if there is any deterioration or change in character.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states: \"he estimates a range of 11 to 28 per quarter.\" A quarter equals 3 months. Therefore, the seizure frequency should be normalized to '11 to 28 per 3 month' according to the allowed formats. No other explicit frequencies are provided; clusters are described qualitatively without counts per cluster, so the explicit numeric quarterly range is used.",
+      "seizure_frequency_number": [
+        "11 to 28 per 3 month",
+        "he estimates a range of 11 to 28 per quarter"
+      ],
+      "reference": [
+        "11 to 28 per 3 month",
+        "11 to 28 per quarter"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

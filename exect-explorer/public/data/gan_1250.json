@@ -1,0 +1,59 @@
+{
+  "id": "gan_1250",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Alexandra Green\nBrookfield Medical Centre\n\n12 Brookfield Road, London, SE5 3HT\nDear Dr Alexandra Green\nMichael Turner, DOB: 09-03-1987, Hospital No: H8293746 NHS No. 7483926158\nFlat 2, 18 Millbank Court, London, SE5 1LP \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow‑up for recurrent seizures and continues with community monitoring. I last reviewed him on 03 July 2025, when we discussed adherence, potential triggers, and the plan for ambulatory EEG if the pattern persisted.\n\nHe currently takes Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. with good adherence confirmed by his pharmacy records. He reports intermittent morning lethargy but no rash, diplopia, or mood deterioration. Liver function and full blood count in September 2025 were within normal limits. He also uses a smartphone seizure diary, which correlates with collateral reports from his partner.\n\nSince his last visit, the overall pattern is unchanged. Specifically, he describes two or four focal aware seizures this week, characterised by a brief rising epigastric sensation, preserved awareness, and right‑hand tingling lasting 20–40 seconds without post‑event confusion. There have been no injuries, tongue biting, or urinary incontinence. He denies nocturnal events and has maintained full-time employment, though he avoids ladder work as a precaution. He notes that poor sleep and missed meals may precede events. There have been no recent intercurrent illnesses.\n\nGiven the stable clinical picture, I have not altered therapy today. We have re‑issued information on sleep hygiene, meal regularity, and alcohol moderation. He is booked for an ambulatory EEG in four weeks, which should help characterise the events in a typical week; I would prefer to review those results before adjusting medication. He is aware of DVLA guidance and confirms he is not driving. We also discussed workplace safety and the value of sharing a brief safety plan with colleagues.\n\nPlan:\n- Continue Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d.\n- Proceed with ambulatory EEG as scheduled; no medication changes until results available.\n- Maintain seizure diary and note sleep/meals/stressors.\n- Routine bloods again in three months or sooner if adverse effects occur.\n- Follow‑up in clinic eight weeks after the EEG, or earlier if there is any escalation in frequency, change in semiology, or emergence of injuries.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1062,
+      "end": 1104,
+      "text": "two or four focal aware seizures this week",
+      "attributes": {
+        "Label": "2 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1062,
+      "end": 1104,
+      "text": "two or four focal aware seizures this week",
+      "attributes": {
+        "Label": "2 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1250,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Alexandra Green\nBrookfield Medical Centre\n\n12 Brookfield Road, London, SE5 3HT\nDear Dr Alexandra Green\nMichael Turner, DOB: 09-03-1987, Hospital No: H8293746 NHS No. 7483926158\nFlat 2, 18 Millbank Court, London, SE5 1LP \n\nI reviewed the above patient in the Neurology Clinic today. He remains under follow‑up for recurrent seizures and continues with community monitoring. I last reviewed him on 03 July 2025, when we discussed adherence, potential triggers, and the plan for ambulatory EEG if the pattern persisted.\n\nHe currently takes Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d. with good adherence confirmed by his pharmacy records. He reports intermittent morning lethargy but no rash, diplopia, or mood deterioration. Liver function and full blood count in September 2025 were within normal limits. He also uses a smartphone seizure diary, which correlates with collateral reports from his partner.\n\nSince his last visit, the overall pattern is unchanged. Specifically, he describes two or four focal aware seizures this week, characterised by a brief rising epigastric sensation, preserved awareness, and right‑hand tingling lasting 20–40 seconds without post‑event confusion. There have been no injuries, tongue biting, or urinary incontinence. He denies nocturnal events and has maintained full-time employment, though he avoids ladder work as a precaution. He notes that poor sleep and missed meals may precede events. There have been no recent intercurrent illnesses.\n\nGiven the stable clinical picture, I have not altered therapy today. We have re‑issued information on sleep hygiene, meal regularity, and alcohol moderation. He is booked for an ambulatory EEG in four weeks, which should help characterise the events in a typical week; I would prefer to review those results before adjusting medication. He is aware of DVLA guidance and confirms he is not driving. We also discussed workplace safety and the value of sharing a brief safety plan with colleagues.\n\nPlan:\n- Continue Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d.\n- Proceed with ambulatory EEG as scheduled; no medication changes until results available.\n- Maintain seizure diary and note sleep/meals/stressors.\n- Routine bloods again in three months or sooner if adverse effects occur.\n- Follow‑up in clinic eight weeks after the EEG, or earlier if there is any escalation in frequency, change in semiology, or emergence of injuries.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"he describes two or four focal aware seizures this week\". This provides a numeric range for the current week. No other differing frequency is given. Per the rule to select the highest frequency when multiple frequencies exist, we take the higher value in the stated range. Thus, the normalized label is \"4 per week\".",
+      "seizure_frequency_number": [
+        "2 to 4 per week",
+        "two or four focal aware seizures this week"
+      ],
+      "reference": [
+        "2 to 4 per week",
+        "two or four focal aware seizures this week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

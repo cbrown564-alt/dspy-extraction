@@ -1,0 +1,65 @@
+{
+  "id": "gan_10264",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Hughes, DOB: 12-05-1991, Hospital No: H938271 NHS No. 5839201746  \nFlat 3, 14 Rowan Court, London, W2 5JP \n\nMedication: \n\nLevetiracetam 1000 mg twice daily; Midazolam oromucosal solution as rescue medication (held at workplace). \n\nI reviewed Daniel Hughes in clinic today. Since our last contact, there has been a clear deterioration in seizure control associated with her new employment in a cleanroom/data-hall environment where access to personal items is tightly restricted. She reports that retrieval of rescue medication is frequently delayed due to security procedures, and refills are often held in controlled storage pending authorisation. As a result, she has experienced more missed doses and delays in administering rescue therapy. She describes increased breakthrough events with post-ictal fatigue and headaches. Uncertain frequency; device logs suggest short clusters without counts. \n\nHer personal wearable event marker and phone diary entries show irregular capture because devices must be surrendered on entry to the data-hall. Where data are available, they indicate brief runs of events over several days, typically occurring after long shifts or when a scheduled dose was postponed during controlled access periods. She also notes heightened stress and disrupted meal patterns on site. No clear daytime versus nocturnal predominance is established from the records provided. \n\nThere have been no new neurological deficits, tongue biting is intermittently reported, and she has had two witnessed collapses at work requiring on-site first aid; both resolved without emergency department attendance. She remains otherwise well and is motivated to improve reliability of medication access. \n\nGiven the pattern above, the worsening appears temporally linked to the workplace access constraints, missed or delayed dosing, and delayed availability of rescue therapy. We discussed practical measures that she reports are feasible within employer policies, including preparing dose-timing prompts before entry and confirming that an approved staff member can promptly access her rescue medication when needed. She will also continue to record events when off-shift to improve the dataset. \n\nI have not changed her maintenance dose today. She understands to seek urgent medical attention if events generalise, injuries occur, or recovery is prolonged. We will liaise with occupational health (with her consent) to explore safe medication access pathways on site. \n\nWe will review her again in eight weeks to reassess frequency and functional impact. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1022,
+      "end": 1093,
+      "text": "Uncertain frequency; device logs suggest short clusters without counts.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1022,
+      "end": 1092,
+      "text": "Uncertain frequency; device logs suggest short clusters without counts",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10264,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Hughes, DOB: 12-05-1991, Hospital No: H938271 NHS No. 5839201746  \nFlat 3, 14 Rowan Court, London, W2 5JP \n\nMedication: \n\nLevetiracetam 1000 mg twice daily; Midazolam oromucosal solution as rescue medication (held at workplace). \n\nI reviewed Daniel Hughes in clinic today. Since our last contact, there has been a clear deterioration in seizure control associated with her new employment in a cleanroom/data-hall environment where access to personal items is tightly restricted. She reports that retrieval of rescue medication is frequently delayed due to security procedures, and refills are often held in controlled storage pending authorisation. As a result, she has experienced more missed doses and delays in administering rescue therapy. She describes increased breakthrough events with post-ictal fatigue and headaches. Uncertain frequency; device logs suggest short clusters without counts. \n\nHer personal wearable event marker and phone diary entries show irregular capture because devices must be surrendered on entry to the data-hall. Where data are available, they indicate brief runs of events over several days, typically occurring after long shifts or when a scheduled dose was postponed during controlled access periods. She also notes heightened stress and disrupted meal patterns on site. No clear daytime versus nocturnal predominance is established from the records provided. \n\nThere have been no new neurological deficits, tongue biting is intermittently reported, and she has had two witnessed collapses at work requiring on-site first aid; both resolved without emergency department attendance. She remains otherwise well and is motivated to improve reliability of medication access. \n\nGiven the pattern above, the worsening appears temporally linked to the workplace access constraints, missed or delayed dosing, and delayed availability of rescue therapy. We discussed practical measures that she reports are feasible within employer policies, including preparing dose-timing prompts before entry and confirming that an approved staff member can promptly access her rescue medication when needed. She will also continue to record events when off-shift to improve the dataset. \n\nI have not changed her maintenance dose today. She understands to seek urgent medical attention if events generalise, injuries occur, or recovery is prolonged. We will liaise with occupational health (with her consent) to explore safe medication access pathways on site. \n\nWe will review her again in eight weeks to reassess frequency and functional impact. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly indicates ongoing seizures with worsening control but provides no explicit numeric frequency. It states 'Uncertain frequency; device logs suggest short clusters without counts' and that records are irregular due to device surrender at work. There are mentions of 'brief runs of events over several days' and two witnessed collapses, but no quantifiable rate (per day/week/month/year) is provided. Therefore, the specific frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Uncertain frequency; device logs suggest short clusters without counts."
+      ],
+      "reference": [
+        "unknown",
+        "Uncertain frequency; device logs suggest short clusters without counts"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

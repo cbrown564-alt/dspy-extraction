@@ -1,0 +1,64 @@
+{
+  "id": "gan_7688",
+  "text": "Department of Neurology\n\nClinic Date: 07 October 2025\n\nDr Patel  \nSt George’s Hospital  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,\n\nMichael Turner, DOB: 14-02-1987, Hospital No: H392847 NHS No. 9034182756  \n12 Brookfield Avenue, London, SW16 2AB\n\nDiagnoses:\n\nHistory of convulsive events (2009 and March 2022). Prior EEG and MRI reportedly unremarkable per collateral documentation.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\nContinue current anti-seizure therapy. Review annually with earlier review if any further events occur or if adverse effects arise.\n\nI reviewed Michael Turner in clinic today. He reports that since commencing regular follow-up via employer occupational health, there have been no episodes suggestive of seizures; his occupational health summaries (most recent in August 2025) corroborate that event frequency has remained at a stable baseline with no recurrences observed. He describes good adherence to lamotrigine, no dose omissions, and no notable side effects beyond occasional mild dizziness that does not impact work. Sleep and hydration are generally kept consistent, and he avoids night shifts where possible.\n\nThere is no record of emergency attendances, loss of consciousness, myoclonic jerks, or focal neurological symptoms over the past year. Driver status has been self-reported as non-driver. He does not use recreational drugs and consumes minimal alcohol. Family history remains non-contributory.\n\nWe discussed long-term management. Given the sustained period without further events and stable occupational health monitoring, I have advised continuation of lamotrigine 100 mg twice daily for now. I have asked him to notify us promptly if there is any breakthrough event, medication intolerance, or changes in employment duties that might alter risk exposure. I will arrange an annual review, and I am happy to bring this forward if needed. No further investigations are required at present.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 650,
+      "end": 1082,
+      "text": "He reports that since commencing regular follow-up via employer occupational health, there have been no episodes suggestive of seizures; his occupational health summaries (most recent in August 2025) corroborate that event frequency has remained at a stable baseline with no recurrences observed. There is no record of emergency attendances, loss of consciousness, myoclonic jerks, or focal neurological symptoms over the past year.",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7688,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 07 October 2025\n\nDr Patel  \nSt George’s Hospital  \nNeurology Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,\n\nMichael Turner, DOB: 14-02-1987, Hospital No: H392847 NHS No. 9034182756  \n12 Brookfield Avenue, London, SW16 2AB\n\nDiagnoses:\n\nHistory of convulsive events (2009 and March 2022). Prior EEG and MRI reportedly unremarkable per collateral documentation.\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\nContinue current anti-seizure therapy. Review annually with earlier review if any further events occur or if adverse effects arise.\n\nI reviewed Michael Turner in clinic today. He reports that since commencing regular follow-up via employer occupational health, there have been no episodes suggestive of seizures; his occupational health summaries (most recent in August 2025) corroborate that event frequency has remained at a stable baseline with no recurrences observed. He describes good adherence to lamotrigine, no dose omissions, and no notable side effects beyond occasional mild dizziness that does not impact work. Sleep and hydration are generally kept consistent, and he avoids night shifts where possible.\n\nThere is no record of emergency attendances, loss of consciousness, myoclonic jerks, or focal neurological symptoms over the past year. Driver status has been self-reported as non-driver. He does not use recreational drugs and consumes minimal alcohol. Family history remains non-contributory.\n\nWe discussed long-term management. Given the sustained period without further events and stable occupational health monitoring, I have advised continuation of lamotrigine 100 mg twice daily for now. I have asked him to notify us promptly if there is any breakthrough event, medication intolerance, or changes in employment duties that might alter risk exposure. I will arrange an annual review, and I am happy to bring this forward if needed. No further investigations are required at present.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "Seizure Frequency Number",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there have been no episodes suggestive of seizures and no recurrences observed. It also provides a timeframe: over the past year there have been no seizure-related symptoms. This confirms current seizure freedom lasting at least 12 months, satisfying the ≥6-month criterion. Therefore, the normalized label is 'seizure free for 1 year', prioritizing the explicit duration 'over the past year.'",
+      "seizure_frequency_number": [
+        "seizure free for 1 year",
+        "He reports that since commencing regular follow-up via employer occupational health, there have been no episodes suggestive of seizures; his occupational health summaries (most recent in August 2025) corroborate that event frequency has remained at a stable baseline with no recurrences observed. There is no record of emergency attendances, loss of consciousness, myoclonic jerks, or focal neurological symptoms over the past year."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "seizure activity absent"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 1 year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "frequency_quote_issue",
+      "description": "Quote issue flagged for seizure frequency",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

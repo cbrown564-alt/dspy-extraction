@@ -1,0 +1,54 @@
+{
+  "id": "gan_6296",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 December 2024 10:15\nTo: kch.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: VNS review and medication plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nReports three brief generalised convulsive seizures over the past four months, each occurring after prolonged time outdoors during a warm spell with inadequate fluid intake. Otherwise seizure-free between these episodes.\n\n\nVNS Status:\n\nImplanted vagus nerve stimulator in situ. Interrogation today showed stable lead impedance and battery status in the mid-life range. No parameter changes were made at this review. Patient uses the magnet occasionally for prodromal symptoms and finds it reassuring.\n\n\nPlan of Action:\n\n- Continue current doses of sodium valproate and lamotrigine unchanged.\n- Reinforced strategies around warm weather: regular hydration, paced activity, and rest breaks during hot days, as patient notices events clustering after extended time in heat with low fluid intake.\n- No adjustments to VNS settings today given stable control outside of the heat-related episodes and satisfactory device diagnostics. We will reconsider settings if breakthrough events recur independent of these circumstances.\n- Routine bloods (LFTs and FBC) to be checked locally in six weeks for antiepileptic drug monitoring.\n- Follow-up in clinic in six months, or sooner if seizure pattern changes.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 526,
+      "end": 603,
+      "text": "Reports three brief generalised convulsive seizures over the past four months",
+      "attributes": {
+        "Label": "3 per 4 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6296,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 December 2024 10:15\nTo: kch.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: VNS review and medication plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nReports three brief generalised convulsive seizures over the past four months, each occurring after prolonged time outdoors during a warm spell with inadequate fluid intake. Otherwise seizure-free between these episodes.\n\n\nVNS Status:\n\nImplanted vagus nerve stimulator in situ. Interrogation today showed stable lead impedance and battery status in the mid-life range. No parameter changes were made at this review. Patient uses the magnet occasionally for prodromal symptoms and finds it reassuring.\n\n\nPlan of Action:\n\n- Continue current doses of sodium valproate and lamotrigine unchanged.\n- Reinforced strategies around warm weather: regular hydration, paced activity, and rest breaks during hot days, as patient notices events clustering after extended time in heat with low fluid intake.\n- No adjustments to VNS settings today given stable control outside of the heat-related episodes and satisfactory device diagnostics. We will reconsider settings if breakthrough events recur independent of these circumstances.\n- Routine bloods (LFTs and FBC) to be checked locally in six weeks for antiepileptic drug monitoring.\n- Follow-up in clinic in six months, or sooner if seizure pattern changes.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Reports three brief generalised convulsive seizures over the past four months.\" This provides a clear numeric count and time window. The patient is not seizure-free for 6 months, so we calculate frequency as 3 seizures in 4 months. No other seizure frequencies are mentioned that would override this.",
+      "seizure_frequency_number": [
+        "3 per 4 month",
+        "Reports three brief generalised convulsive seizures over the past four months"
+      ],
+      "reference": [
+        "unknown",
+        "Heat/dehydration as precipitants of seizure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (3 per 4 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

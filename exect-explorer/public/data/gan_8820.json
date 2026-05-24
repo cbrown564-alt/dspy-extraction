@@ -1,0 +1,59 @@
+{
+  "id": "gan_8820",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 August 2024 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. She was originally referred with paroxysmal events concerning for seizures. Historical background noted that before improvement she could occasionally manage 4 days without seizures, though this is usually followed by a day of clustering, with multiple events. Since then there has been clear improvement with structured dietetic guidance (ketogenic principles adapted by our dietetics team), better sleep scheduling, and wearable monitoring.\n\nImportantly, wearable/device logs show no seizures since 29-12-2023. This objective record aligns with both her and her partner’s accounts, as well as the absence of emergency presentations. She remains active with graded exercise and has resumed part-time work without functional limitations.\n\nOn review today there are no focal neurological deficits. There are no current red flags (no nocturnal injuries, tongue biting, incontinence, or postictal confusion). She is not taking antiepileptic medication and has not required rescue therapy.\n\nEpilepsy status: None Epilepsy – based on current assessment, she does not have epilepsy. The earlier episodes are now thought to have been non-epileptic in nature, and with lifestyle/dietetic optimisation the events have fully settled. We will continue to observe, but there is no indication for antiseizure pharmacotherapy.\n\nPlan:\n- Continue dietetic regimen and routine sleep/exercise measures.\n- Maintain wearable monitoring; she will notify us of any recurrent events.\n- No antiseizure medication indicated.\n- Routine follow-up in 6 months, sooner if events recur or any new neurological symptoms develop.\n\nOverall, her condition is improving, with sustained remission of events corroborated by device logs and clinical history.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 759,
+      "end": 813,
+      "text": "wearable/device logs show no seizures since 29-12-2023",
+      "attributes": {
+        "Label": "seizure free for 7 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 759,
+      "end": 813,
+      "text": "Wearable/device logs show no seizures since 29-12-2023",
+      "attributes": {
+        "Label": "seizure free for 7 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8820,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 August 2024 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. She was originally referred with paroxysmal events concerning for seizures. Historical background noted that before improvement she could occasionally manage 4 days without seizures, though this is usually followed by a day of clustering, with multiple events. Since then there has been clear improvement with structured dietetic guidance (ketogenic principles adapted by our dietetics team), better sleep scheduling, and wearable monitoring.\n\nImportantly, wearable/device logs show no seizures since 29-12-2023. This objective record aligns with both her and her partner’s accounts, as well as the absence of emergency presentations. She remains active with graded exercise and has resumed part-time work without functional limitations.\n\nOn review today there are no focal neurological deficits. There are no current red flags (no nocturnal injuries, tongue biting, incontinence, or postictal confusion). She is not taking antiepileptic medication and has not required rescue therapy.\n\nEpilepsy status: None Epilepsy – based on current assessment, she does not have epilepsy. The earlier episodes are now thought to have been non-epileptic in nature, and with lifestyle/dietetic optimisation the events have fully settled. We will continue to observe, but there is no indication for antiseizure pharmacotherapy.\n\nPlan:\n- Continue dietetic regimen and routine sleep/exercise measures.\n- Maintain wearable monitoring; she will notify us of any recurrent events.\n- No antiseizure medication indicated.\n- Routine follow-up in 6 months, sooner if events recur or any new neurological symptoms develop.\n\nOverall, her condition is improving, with sustained remission of events corroborated by device logs and clinical history.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Importantly, wearable/device logs show no seizures since 29-12-2023.\" Clinic date is 02 August 2024. Calculate seizure-free duration from 29 December 2023 to 02 August 2024. From Dec 29, 2023 to Jan 29, 2024 = 1 month; then to Aug 2, 2024 adds 6 months and 4 days total ≈ 7 months (over 7 months). This meets the ≥6-month seizure-free criterion. Therefore, label as seizure free for 7 month (rounding to the nearest whole month according to the stated dates).",
+      "seizure_frequency_number": [
+        "seizure free for 7 month",
+        "wearable/device logs show no seizures since 29-12-2023"
+      ],
+      "reference": [
+        "seizure free for 7 month",
+        "Wearable/device logs show no seizures since 29-12-2023"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12963",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 May 2020 \n\nDr Amelia Hart\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Hart\nConsultant Neurologist,  \n\nDaniel Fraser, DOB: 14-03-1986, Hospital No: K917204 NHS No. 7482309156  \n19 Westbrook Lane, London, SE15 2QJ\n\nThank you for your referral and for the accompanying summary. I reviewed Daniel Fraser in clinic today. He describes a history consistent with focal epilepsy, with events typically beginning with a right temporal aura (rising epigastric sensation and brief déjà vu) followed by behavioural arrest and lip-smacking, occasionally progressing to impaired awareness. There has been a steady improvement over recent months. Sleep hygiene measures have been implemented reliably, and his routine bedtime and wake time are now consistent; his partner also reports that the pattern of events appears more stable.\n\nSince optimising Brivaracetam and reinforcing sleep routines, the family report that episodes have become noticeably fewer; to characterise it in their words, they feel the seizures have tailed off substantially this year, with only a small handful recorded so far. He is keeping a seizure diary which corroborates this trend and shows longer seizure-free intervals, particularly over the last 10 weeks.\n\nSemiology remains focal: preserved posture with brief unresponsiveness, oroalimentary automatisms, and post-event confusion lasting 10–15 minutes, without prolonged agitation. There have been no clearly documented nocturnal convulsions. He denies new neurological deficits, and there is no evidence of interictal psychosis or mood disorder at present. He and his partner both feel more confident managing triggers; caffeine has been reduced and adherence to medication is excellent by pill count.\n\nImpression: Focal epilepsy, likely temporal lobe onset, with improving control on current regimen. The overall trajectory is favourable, with better sleep hygiene and a stabilised daily routine likely contributing to fewer events and a more predictable pattern.\n\nPlan: \n- Continue Brivaracetam at current dose; no change today given ongoing improvement. \n- Maintain sleep schedule and seizure diary to document frequency and potential precipitants. \n- Safety advice reinforced (showers rather than baths, avoid sleep deprivation, and continue partner-supervised early night routine). \n- Routine bloods for antiepileptic drug safety monitoring locally via GP in 3 months. \n- Telephone review in 3 months, earlier if breakthrough events increase or new features arise.\n\nThank you again for your helpful letter and ongoing care. Please do not hesitate to contact me if there are any concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1144,
+      "end": 1250,
+      "text": "they feel the seizures have tailed off substantially this year, with only a small handful recorded so far.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12963,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 May 2020 \n\nDr Amelia Hart\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Hart\nConsultant Neurologist,  \n\nDaniel Fraser, DOB: 14-03-1986, Hospital No: K917204 NHS No. 7482309156  \n19 Westbrook Lane, London, SE15 2QJ\n\nThank you for your referral and for the accompanying summary. I reviewed Daniel Fraser in clinic today. He describes a history consistent with focal epilepsy, with events typically beginning with a right temporal aura (rising epigastric sensation and brief déjà vu) followed by behavioural arrest and lip-smacking, occasionally progressing to impaired awareness. There has been a steady improvement over recent months. Sleep hygiene measures have been implemented reliably, and his routine bedtime and wake time are now consistent; his partner also reports that the pattern of events appears more stable.\n\nSince optimising Brivaracetam and reinforcing sleep routines, the family report that episodes have become noticeably fewer; to characterise it in their words, they feel the seizures have tailed off substantially this year, with only a small handful recorded so far. He is keeping a seizure diary which corroborates this trend and shows longer seizure-free intervals, particularly over the last 10 weeks.\n\nSemiology remains focal: preserved posture with brief unresponsiveness, oroalimentary automatisms, and post-event confusion lasting 10–15 minutes, without prolonged agitation. There have been no clearly documented nocturnal convulsions. He denies new neurological deficits, and there is no evidence of interictal psychosis or mood disorder at present. He and his partner both feel more confident managing triggers; caffeine has been reduced and adherence to medication is excellent by pill count.\n\nImpression: Focal epilepsy, likely temporal lobe onset, with improving control on current regimen. The overall trajectory is favourable, with better sleep hygiene and a stabilised daily routine likely contributing to fewer events and a more predictable pattern.\n\nPlan: \n- Continue Brivaracetam at current dose; no change today given ongoing improvement. \n- Maintain sleep schedule and seizure diary to document frequency and potential precipitants. \n- Safety advice reinforced (showers rather than baths, avoid sleep deprivation, and continue partner-supervised early night routine). \n- Routine bloods for antiepileptic drug safety monitoring locally via GP in 3 months. \n- Telephone review in 3 months, earlier if breakthrough events increase or new features arise.\n\nThank you again for your helpful letter and ongoing care. Please do not hesitate to contact me if there are any concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient continues to have seizures but provides no explicit numeric count or rate. Phrases like 'only a small handful recorded so far' and 'longer seizure-free intervals, particularly over the last 10 weeks' are qualitative and lack precise numbers and exact timeframes. There is no indication of being seizure-free for at least 6 months. Therefore, the specific frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "they feel the seizures have tailed off substantially this year, with only a small handful recorded so far."
+      ],
+      "reference": [
+        "7 per 5 month",
+        "The family feel seizure frequency has decreased markedly since starting medication, with only seven seizures so far this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown) disagrees with Reference (7 per 5 month)",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1880",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 05 January 2016 \n\nDr Ahmed\nNorth Thames Medical Centre\n\n114 Wharf Road, London, N1 7GR\nDear Dr Ahmed\nMichael Carter, DOB: 14-03-1986, Hospital No: NHS847201 NHS No. 7483926159\n22B Millbank Court, London, SW1P 3SY \n\nI reviewed the above patient in the Neurology Clinic today. He has Combined Generalised and Focal Epilepsy Type, with a history indicating both generalised and focal epilepsy. Since his last review, his condition has been deteriorating. He reports recent events associated with falls and minor injuries, including a bruised shoulder and abrasions to the knees following unwitnessed collapses at home and while commuting. Prior to this deterioration, his seizure frequency was three clusters this month; each ≈four absences in the morning, which he described as brief staring spells with impaired awareness and rapid recovery.\n\nOver the past two months he has experienced one drop attacks and seven convulsions in the past two months. The convulsions have been predominantly generalised tonic–clonic events occurring without clear warning, twice from sleep, with post-ictal confusion lasting up to an hour. In addition, he describes focal onset events with a rising epigastric sensation, brief speech arrest and right-hand automatisms, occurring several times per week, some evolving into generalised convulsions. His partner has noted eyelid fluttering and brief behavioural arrest consistent with generalised absence phenomena on several mornings. He denies tongue-biting but reports occasional urinary incontinence after the longer convulsions.\n\nMedication at present: Lamotrigine 200 mg b.d., Levetiracetam 1 g b.d., and Lacosamide 150 mg b.d. He is adherent by report, using a pill organiser and smartphone reminders. He notes increased tiredness and occasional light-headedness but no rash or mood change. There is no reported alcohol excess; sleep has been fragmented due to nocturnal events. He remains employed but has missed shifts due to recovery days after convulsions. He does not drive.\n\nNeurological examination today was non-focal. Cardiovascular observations were stable. There is mild tenderness over the right deltoid consistent with recent soft-tissue injury. We reviewed seizure first aid, injury precautions, and safety around bathing and heights. Given the clear increase in event burden and the emergence of drop attacks with injury, I have arranged an expedited video-EEG telemetry admission and an updated MRI brain with epilepsy protocol. I have also requested serum antiepileptic drug levels (where applicable), U&E, LFT, FBC, and vitamin D. We discussed interim strategies including ensuring adequate sleep, stress management, and consistent medication timing. \n\nI will revisit his regimen once we have the telemetry and imaging data, as the mixed semiologies support his known diagnosis of combined generalised and focal epilepsy, and treatment adjustment may be needed. I have provided him with an emergency care plan and advised his employer regarding phased duties to reduce risk pending further evaluation.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 884,
+      "end": 990,
+      "text": "Over the past two months he has experienced one drop attacks and seven convulsions in the past two months.",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 928,
+      "end": 989,
+      "text": "one drop attacks and seven convulsions in the past two months",
+      "attributes": {
+        "Label": "8 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1880,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 05 January 2016 \n\nDr Ahmed\nNorth Thames Medical Centre\n\n114 Wharf Road, London, N1 7GR\nDear Dr Ahmed\nMichael Carter, DOB: 14-03-1986, Hospital No: NHS847201 NHS No. 7483926159\n22B Millbank Court, London, SW1P 3SY \n\nI reviewed the above patient in the Neurology Clinic today. He has Combined Generalised and Focal Epilepsy Type, with a history indicating both generalised and focal epilepsy. Since his last review, his condition has been deteriorating. He reports recent events associated with falls and minor injuries, including a bruised shoulder and abrasions to the knees following unwitnessed collapses at home and while commuting. Prior to this deterioration, his seizure frequency was three clusters this month; each ≈four absences in the morning, which he described as brief staring spells with impaired awareness and rapid recovery.\n\nOver the past two months he has experienced one drop attacks and seven convulsions in the past two months. The convulsions have been predominantly generalised tonic–clonic events occurring without clear warning, twice from sleep, with post-ictal confusion lasting up to an hour. In addition, he describes focal onset events with a rising epigastric sensation, brief speech arrest and right-hand automatisms, occurring several times per week, some evolving into generalised convulsions. His partner has noted eyelid fluttering and brief behavioural arrest consistent with generalised absence phenomena on several mornings. He denies tongue-biting but reports occasional urinary incontinence after the longer convulsions.\n\nMedication at present: Lamotrigine 200 mg b.d., Levetiracetam 1 g b.d., and Lacosamide 150 mg b.d. He is adherent by report, using a pill organiser and smartphone reminders. He notes increased tiredness and occasional light-headedness but no rash or mood change. There is no reported alcohol excess; sleep has been fragmented due to nocturnal events. He remains employed but has missed shifts due to recovery days after convulsions. He does not drive.\n\nNeurological examination today was non-focal. Cardiovascular observations were stable. There is mild tenderness over the right deltoid consistent with recent soft-tissue injury. We reviewed seizure first aid, injury precautions, and safety around bathing and heights. Given the clear increase in event burden and the emergence of drop attacks with injury, I have arranged an expedited video-EEG telemetry admission and an updated MRI brain with epilepsy protocol. I have also requested serum antiepileptic drug levels (where applicable), U&E, LFT, FBC, and vitamin D. We discussed interim strategies including ensuring adequate sleep, stress management, and consistent medication timing. \n\nI will revisit his regimen once we have the telemetry and imaging data, as the mixed semiologies support his known diagnosis of combined generalised and focal epilepsy, and treatment adjustment may be needed. I have provided him with an emergency care plan and advised his employer regarding phased duties to reduce risk pending further evaluation.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequencies mentioned. Current period: 'Over the past two months he has experienced one drop attacks and seven convulsions in the past two months.' That totals 8 seizures in 2 months. Also noted: 'focal onset events ... occurring several times per week' and partner noted absences on several mornings; these imply higher frequency but are vague without exact numbers. Rule requires selecting the highest frequency; when explicit numbers exist versus vague 'several', we must use the explicit numeric expression. Therefore, use 8 per 2 months.",
+      "seizure_frequency_number": [
+        "8 per 2 month",
+        "Over the past two months he has experienced one drop attacks and seven convulsions in the past two months."
+      ],
+      "reference": [
+        "8 per 2 month",
+        "one drop attacks and seven convulsions in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6763",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 14 November 2021 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Harding, DOB: 14-03-1988, Hospital No: KCH728441 NHS No. 9473165820  \n12 Brookfield Road, London, SE15 4JP\n\nThank you for asking me to review your patient in the neurology clinic. He attended with his partner and provided a coherent history. He reports a longstanding diagnosis of generalised epilepsy with typical events described as sudden loss of awareness with generalised stiffening and rhythmic jerks, followed by short post‑ictal confusion. He also experiences brief morning myoclonic jerks on some days. Over the past six months he has noticed clusters of brief episodes that his partner describes as “blanking and unresponsiveness” lasting under a minute without clear warning, which I consider episodes suggestive of brief focal-like impairment of awareness within the context of his generalised epilepsy. These episodes have been fluctuating, recently occurring approximately once weekly, while the generalised tonic–clonic seizures have been about every 2–3 months.\n\nHe confirms social alcohol use and reports that he is actively cutting down; he notes fewer morning myoclonic jerks in the weeks he reduces intake. Sleep deprivation remains a trigger. There have been no injuries, tongue biting is occasional, and recovery is typically rapid. He is adherent to medication and uses a smartphone reminder app. There is no history of dissociative events or prolonged post‑ictal agitation.\n\nPast studies include EEG two years ago demonstrating generalised spike‑wave discharges with photoparoxysmal response, and MRI head reported as normal. Routine bloods (FBC, U&E, LFT, bone profile, Vitamin D) last month were within reference ranges. There is no cardiovascular prodrome and no features to suggest syncope.\n\nOn examination today he was well, alert and fully oriented. Neurological examination was normal. No interictal cognitive or mood disturbance was evident on brief screening; however, he reports mild anxiety around seizure unpredictability, managed with peer support through a patient charity.\n\nIn summary, he has generalised epilepsy with a background of generalised tonic–clonic seizures and myoclonus, and more recent brief spells concerning for episodes akin to focal impaired awareness in description but occurring within a generalised epilepsy syndrome. Given the pattern, I have advised optimising sleep hygiene, continuing the reduction in alcohol, and maintaining a seizure diary to clarify frequency and potential triggers. We discussed safety including driving regulations; he confirms he is not currently driving and is aware of DVLA guidance. I will arrange an updated EEG including hyperventilation and photic stimulation to reassess interictal activity, and check antiseizure medication levels and Vitamin D as part of routine monitoring.\n\nWe agreed to follow up in three months or sooner if frequencies escalate, injuries occur, or rescue treatment becomes necessary. He and his partner have our rapid access contact details.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1146,
+      "end": 1190,
+      "text": "recently occurring approximately once weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6763,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 14 November 2021 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Harding, DOB: 14-03-1988, Hospital No: KCH728441 NHS No. 9473165820  \n12 Brookfield Road, London, SE15 4JP\n\nThank you for asking me to review your patient in the neurology clinic. He attended with his partner and provided a coherent history. He reports a longstanding diagnosis of generalised epilepsy with typical events described as sudden loss of awareness with generalised stiffening and rhythmic jerks, followed by short post‑ictal confusion. He also experiences brief morning myoclonic jerks on some days. Over the past six months he has noticed clusters of brief episodes that his partner describes as “blanking and unresponsiveness” lasting under a minute without clear warning, which I consider episodes suggestive of brief focal-like impairment of awareness within the context of his generalised epilepsy. These episodes have been fluctuating, recently occurring approximately once weekly, while the generalised tonic–clonic seizures have been about every 2–3 months.\n\nHe confirms social alcohol use and reports that he is actively cutting down; he notes fewer morning myoclonic jerks in the weeks he reduces intake. Sleep deprivation remains a trigger. There have been no injuries, tongue biting is occasional, and recovery is typically rapid. He is adherent to medication and uses a smartphone reminder app. There is no history of dissociative events or prolonged post‑ictal agitation.\n\nPast studies include EEG two years ago demonstrating generalised spike‑wave discharges with photoparoxysmal response, and MRI head reported as normal. Routine bloods (FBC, U&E, LFT, bone profile, Vitamin D) last month were within reference ranges. There is no cardiovascular prodrome and no features to suggest syncope.\n\nOn examination today he was well, alert and fully oriented. Neurological examination was normal. No interictal cognitive or mood disturbance was evident on brief screening; however, he reports mild anxiety around seizure unpredictability, managed with peer support through a patient charity.\n\nIn summary, he has generalised epilepsy with a background of generalised tonic–clonic seizures and myoclonus, and more recent brief spells concerning for episodes akin to focal impaired awareness in description but occurring within a generalised epilepsy syndrome. Given the pattern, I have advised optimising sleep hygiene, continuing the reduction in alcohol, and maintaining a seizure diary to clarify frequency and potential triggers. We discussed safety including driving regulations; he confirms he is not currently driving and is aware of DVLA guidance. I will arrange an updated EEG including hyperventilation and photic stimulation to reassess interictal activity, and check antiseizure medication levels and Vitamin D as part of routine monitoring.\n\nWe agreed to follow up in three months or sooner if frequencies escalate, injuries occur, or rescue treatment becomes necessary. He and his partner have our rapid access contact details.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify all seizure-related frequency statements in the letter. The brief “blanking and unresponsiveness” episodes are stated as “recently occurring approximately once weekly,” which provides an explicit numeric frequency (1 per week). Generalised tonic–clonic seizures are “about every 2–3 months” (1 per 2 to 3 months). Morning myoclonic jerks are described as occurring “on some days,” which is non-numeric. Per the rule to prioritize explicit numeric expressions and choose the highest frequency, select the weekly episodes as the seizure frequency number. Clusters are mentioned, but there is no count per cluster, so cluster format cannot be used.",
+      "seizure_frequency_number": [
+        "1 per week",
+        "recently occurring approximately once weekly"
+      ],
+      "reference": [
+        "unknown",
+        "Spells concerning for focal impaired awareness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

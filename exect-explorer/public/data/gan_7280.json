@@ -1,0 +1,54 @@
+{
+  "id": "gan_7280",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He reports a long-standing history of recurrent episodes for which he remains on treatment. Since I last saw him in January 2025, he describes variable control with clear day-to-day fluctuation. He has been taking Levetiracetam 1 g b.d. and Lamotrigine 150 mg b.d., and uses Clonazepam 0.5 mg p.r.n. for clusters (no more than once every two weeks by his account). He reports good adherence, and no recent missed doses. He denies rashes or mood swings, though he notes intermittent headache and mild tremulousness mid-morning.\n\nHe keeps a diary on his phone and notes that episodes have a tendency to bunch at the start of the working week, particularly Monday and Tuesday mornings. He links this pattern to long shifts and early starts. Of note, he acknowledges high caffeine intake (four to six strong coffees before midday on work days) and less on weekends. In September he recorded five convulsive events and several brief spells of unresponsiveness, most occurring within two hours of arrival at work. There have been no injuries, tongue biting, or incontinence reported this month, though he had a shoulder strain in July after a fall.\n\nSleep has been irregular due to shift work. He denies alcohol excess and recreational drug use. He drives neither for work nor socially. He has informed his employer, who is supportive of adjustments.\n\nOn brief examination today he was alert and oriented with normal speech and no focal neurological deficits. Weight stable; blood pressure 122/78. No tremor observed at rest. Medication reconciliation confirms current doses as above with no interacting prescriptions. Recent routine bloods from the GP (August 2025) showed normal FBC, U&Es, and LFTs.\n\nWe discussed strategies to reduce potential precipitants. He is willing to cut down caffeine gradually, especially on early shifts, and to prioritise regular sleep. I have not altered medication today. I have arranged a routine EEG and updated MRI brain (previous imaging was over five years ago). I also requested serum Lamotrigine level to confirm therapeutic range given ongoing events. I have provided a seizure diary template and advised he records time of day, preceding sleep duration, and caffeine quantity to help clarify patterns. We will review in three months, sooner if events escalate or if there is any injury.\n\nSafety advice was reinforced, including bathing supervision, kitchen precautions, and avoidance of working at heights. Occupational health input may be useful; he will explore reasonable adjustments for early starts. He understands when to seek urgent care, particularly for prolonged events or clusters not settling with his rescue plan.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1165,
+      "end": 1212,
+      "text": "In September he recorded five convulsive events",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7280,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He reports a long-standing history of recurrent episodes for which he remains on treatment. Since I last saw him in January 2025, he describes variable control with clear day-to-day fluctuation. He has been taking Levetiracetam 1 g b.d. and Lamotrigine 150 mg b.d., and uses Clonazepam 0.5 mg p.r.n. for clusters (no more than once every two weeks by his account). He reports good adherence, and no recent missed doses. He denies rashes or mood swings, though he notes intermittent headache and mild tremulousness mid-morning.\n\nHe keeps a diary on his phone and notes that episodes have a tendency to bunch at the start of the working week, particularly Monday and Tuesday mornings. He links this pattern to long shifts and early starts. Of note, he acknowledges high caffeine intake (four to six strong coffees before midday on work days) and less on weekends. In September he recorded five convulsive events and several brief spells of unresponsiveness, most occurring within two hours of arrival at work. There have been no injuries, tongue biting, or incontinence reported this month, though he had a shoulder strain in July after a fall.\n\nSleep has been irregular due to shift work. He denies alcohol excess and recreational drug use. He drives neither for work nor socially. He has informed his employer, who is supportive of adjustments.\n\nOn brief examination today he was alert and oriented with normal speech and no focal neurological deficits. Weight stable; blood pressure 122/78. No tremor observed at rest. Medication reconciliation confirms current doses as above with no interacting prescriptions. Recent routine bloods from the GP (August 2025) showed normal FBC, U&Es, and LFTs.\n\nWe discussed strategies to reduce potential precipitants. He is willing to cut down caffeine gradually, especially on early shifts, and to prioritise regular sleep. I have not altered medication today. I have arranged a routine EEG and updated MRI brain (previous imaging was over five years ago). I also requested serum Lamotrigine level to confirm therapeutic range given ongoing events. I have provided a seizure diary template and advised he records time of day, preceding sleep duration, and caffeine quantity to help clarify patterns. We will review in three months, sooner if events escalate or if there is any injury.\n\nSafety advice was reinforced, including bathing supervision, kitchen precautions, and avoidance of working at heights. Occupational health input may be useful; he will explore reasonable adjustments for early starts. He understands when to seek urgent care, particularly for prolonged events or clusters not settling with his rescue plan.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Identify explicit numeric seizure info: The letter states, \"In September he recorded five convulsive events...\". This provides a clear, recent monthly count (clinic is 2 Oct 2025, so September is the most recent full month).\n- Additional events: It also mentions \"several brief spells of unresponsiveness\" in September, but this is non-numeric; cannot be quantified.\n- Cluster/rescue usage: \"no more than once every two weeks\" refers to PRN clonazepam use for clusters, but does not specify number of seizures per cluster, so cannot be converted reliably into a seizure frequency per cluster.\n- Apply rules: Prioritize explicit numeric expressions. With multiple frequencies, select the highest; however, since the non-convulsive spells are not numeric, we cannot compare. Therefore, use the explicit numeric: 5 per month.",
+      "seizure_frequency_number": [
+        "5 per month",
+        "In September he recorded five convulsive events"
+      ],
+      "reference": [
+        "unknown",
+        "Seizure exacerbations noted on work days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (5 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

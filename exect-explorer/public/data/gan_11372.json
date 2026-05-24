@@ -1,0 +1,65 @@
+{
+  "id": "gan_11372",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 07 May 2018 \n\nDr Patel  \nRiverside Medical Practice  \n48 Millbank, London, SW1P 3GE  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-02-1988, Hospital No: A927451 NHS No. 9081726354  \nFlat 12, 7 Kingfisher Court, London, SE10 0AL  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nJordan Evans attended unaccompanied today for routine review. They remain currently not driving by self-report. There have been no hospital admissions since the last appointment. The patient reported a seizure on 6 Apr, described as a brief loss of awareness with subsequent confusion for several minutes, without clear focal onset features. No injuries were sustained. No other definite events have been recalled since the prior visit. There is no clear precipitant identified; sleep pattern had been variable around that time according to the patient. \n\nMedication: The patient continues on levetiracetam 1 g twice daily with good adherence by self-report and no new adverse effects, though intermittent fatigue was noted. No rescue medication has been required since the previous review. \n\nInvestigations: Prior MRI brain (2016) reported as normal. Routine EEG (2017) was non-diagnostic. Given the recent event, we discussed the option of ambulatory EEG; the patient is agreeable and we will arrange this locally. Bloods today: U&E, LFT, FBC sent; results to be reviewed and forwarded to the practice. \n\nPlan: \n- Continue current levetiracetam dose unchanged.  \n- Arrange ambulatory EEG and review results in clinic.  \n- Provide updated seizure diary and safety advice reinforced.  \n- Community pharmacy medication review suggested at next prescription cycle (patient-led).  \n- Follow-up in 4–6 months, earlier if further events occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 515,
+      "end": 624,
+      "text": "The patient reported a seizure on 6 Apr... No other definite events have been recalled since the prior visit.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 515,
+      "end": 554,
+      "text": "The patient reported a seizure on 6 Apr",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11372,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 07 May 2018 \n\nDr Patel  \nRiverside Medical Practice  \n48 Millbank, London, SW1P 3GE  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-02-1988, Hospital No: A927451 NHS No. 9081726354  \nFlat 12, 7 Kingfisher Court, London, SE10 0AL  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nJordan Evans attended unaccompanied today for routine review. They remain currently not driving by self-report. There have been no hospital admissions since the last appointment. The patient reported a seizure on 6 Apr, described as a brief loss of awareness with subsequent confusion for several minutes, without clear focal onset features. No injuries were sustained. No other definite events have been recalled since the prior visit. There is no clear precipitant identified; sleep pattern had been variable around that time according to the patient. \n\nMedication: The patient continues on levetiracetam 1 g twice daily with good adherence by self-report and no new adverse effects, though intermittent fatigue was noted. No rescue medication has been required since the previous review. \n\nInvestigations: Prior MRI brain (2016) reported as normal. Routine EEG (2017) was non-diagnostic. Given the recent event, we discussed the option of ambulatory EEG; the patient is agreeable and we will arrange this locally. Bloods today: U&E, LFT, FBC sent; results to be reviewed and forwarded to the practice. \n\nPlan: \n- Continue current levetiracetam dose unchanged.  \n- Arrange ambulatory EEG and review results in clinic.  \n- Provide updated seizure diary and safety advice reinforced.  \n- Community pharmacy medication review suggested at next prescription cycle (patient-led).  \n- Follow-up in 4–6 months, earlier if further events occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter mentions a single reported seizure on 6 Apr and states \"No other definite events have been recalled since the prior visit.\" There is no explicit timeframe over which to calculate a rate (the interval from prior visit is unspecified), and the 6-month seizure-free criterion is not met or confirmable. Therefore, a precise frequency cannot be determined from the provided information.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The patient reported a seizure on 6 Apr... No other definite events have been recalled since the prior visit."
+      ],
+      "reference": [
+        "unknown",
+        "The patient reported a seizure on 6 Apr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

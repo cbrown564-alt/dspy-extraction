@@ -1,0 +1,59 @@
+{
+  "id": "gan_10794",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 12 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg twice daily.\n\nThank you for asking me to review Emily Carter in clinic today. She attended alone and reports ongoing anxiety and periods of low mood over recent weeks, which she feels are linked to work stress and poor sleep. She is engaging with basic self-care strategies and is open to discussing further support options with you in primary care.\n\nRegarding her events, she has kept a record this month: Seizure diary shows three cluster days this month; sizes unrecorded. She describes these as brief spells with preserved awareness and a sense of internal unease, typically in the late evening. No injuries, tongue-biting, or incontinence reported. She has not required emergency care. There have been no missed doses of medication. Alcohol intake is minimal and she denies recreational drug use. Menses regular; she has not noticed a consistent cyclical pattern to events.\n\nOn examination today, observations were stable and neurological examination was unremarkable. No adverse effects from oxcarbazepine were volunteered, though she notes occasional mild dizziness on standing. We discussed safety, triggers, and the importance of continuing her diary. At present, she prefers to continue on the same dosage while we monitor symptoms alongside mood and sleep. She understands to seek earlier review if the clusters increase in frequency, duration, or if new features emerge.\n\nPlan:  \n- Continue oxcarbazepine 600 mg twice daily.  \n- Maintain detailed event and trigger diary (including sleep, stress, and menstrual timing).  \n- Discuss anxiety/low mood support with you in primary care (consider brief talking therapies and sleep hygiene advice as appropriate).  \n- Routine bloods via GP if not done in the last 6–12 months (U&Es, LFTs) as part of general monitoring.  \n- Provide written information on general safety precautions around episodes.\n\nFollow-up: I will review her in six months, sooner if there is any clinical deterioration.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 750,
+      "end": 818,
+      "text": "Seizure diary shows three cluster days this month; sizes unrecorded.",
+      "attributes": {
+        "Label": "3 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 750,
+      "end": 817,
+      "text": "Seizure diary shows three cluster days this month; sizes unrecorded",
+      "attributes": {
+        "Label": "3 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10794,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 12 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg twice daily.\n\nThank you for asking me to review Emily Carter in clinic today. She attended alone and reports ongoing anxiety and periods of low mood over recent weeks, which she feels are linked to work stress and poor sleep. She is engaging with basic self-care strategies and is open to discussing further support options with you in primary care.\n\nRegarding her events, she has kept a record this month: Seizure diary shows three cluster days this month; sizes unrecorded. She describes these as brief spells with preserved awareness and a sense of internal unease, typically in the late evening. No injuries, tongue-biting, or incontinence reported. She has not required emergency care. There have been no missed doses of medication. Alcohol intake is minimal and she denies recreational drug use. Menses regular; she has not noticed a consistent cyclical pattern to events.\n\nOn examination today, observations were stable and neurological examination was unremarkable. No adverse effects from oxcarbazepine were volunteered, though she notes occasional mild dizziness on standing. We discussed safety, triggers, and the importance of continuing her diary. At present, she prefers to continue on the same dosage while we monitor symptoms alongside mood and sleep. She understands to seek earlier review if the clusters increase in frequency, duration, or if new features emerge.\n\nPlan:  \n- Continue oxcarbazepine 600 mg twice daily.  \n- Maintain detailed event and trigger diary (including sleep, stress, and menstrual timing).  \n- Discuss anxiety/low mood support with you in primary care (consider brief talking therapies and sleep hygiene advice as appropriate).  \n- Routine bloods via GP if not done in the last 6–12 months (U&Es, LFTs) as part of general monitoring.  \n- Provide written information on general safety precautions around episodes.\n\nFollow-up: I will review her in six months, sooner if there is any clinical deterioration.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizure diary shows three cluster days this month; sizes unrecorded.' This indicates clustered events with a known count of cluster days within a one-month period. The number of seizures within each cluster is not specified ('sizes unrecorded'), so per-cluster count is unknown. Following the allowed formats, this maps to a cluster frequency per month with unknown per-cluster quantity.",
+      "seizure_frequency_number": [
+        "3 cluster per month, multiple per cluster",
+        "Seizure diary shows three cluster days this month; sizes unrecorded."
+      ],
+      "reference": [
+        "3 cluster per month, multiple per cluster",
+        "Seizure diary shows three cluster days this month; sizes unrecorded"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_4496",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 February 2022 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Matthew Singh (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Post-partum review and adjustment plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with probable temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 200 mg twice daily\n2. Levetiracetam 250 mg in the morning and 500 mg at night\n\n\nPresent Seizure Frequency:\n\nThe patient reports seven to eight absence seizures this quarter, described as brief staring spells with impaired awareness and automatisms, typically clustering in the late evening. These have occurred in the context of post-partum sleep fragmentation over the last six months. There have been no generalised tonic-clonic seizures.\n\n\nPlan of Action:\n\nThe temporal association with disrupted night-time sleep following childbirth is notable, with the patient reporting frequent awakenings for infant care and overall sleep duration reduced to approximately 4–5 hours per night. She denies medication non-adherence, intercurrent illness, or alcohol intake. Given the pattern of focal impaired awareness events and the absence of clear provoking factors other than sleep disruption, we will aim to optimise therapy while supporting sleep hygiene.\n\n1) Continue lamotrigine 200 mg twice daily.\n2) Adjust levetiracetam to 500 mg twice daily to even out peak–trough variability and reduce evening clustering of focal events. The patient has previously tolerated this dose without mood disturbance.\n3) Non-pharmacological measures (patient-reported goals): partner-assisted night feeds where possible, scheduled daytime nap when support available, and consistent wind-down routine before 21:30 to reduce sleep-onset latency.\n4) Safety counselling reinforced: avoid co-sleeping when drowsy, continue seizure precautions at changing table and bath time, and do not sleep on elevated surfaces with the infant.\n5) Arrange an ambulatory EEG if events persist beyond eight weeks despite dose adjustment, to confirm focal onset. If seizures remain frequent, we will consider introducing lacosamide as adjunctive therapy or rationalising levetiracetam depending on tolerance.\n\nI have scheduled a follow-up in eight weeks, sooner if seizure frequency increases or if adverse effects occur.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 578,
+      "end": 642,
+      "text": "The patient reports seven to eight absence seizures this quarter",
+      "attributes": {
+        "Label": "7 to 8 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 598,
+      "end": 642,
+      "text": "seven to eight absence seizures this quarter",
+      "attributes": {
+        "Label": "7 to 8 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4496,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 08 February 2022 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Matthew Singh (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Post-partum review and adjustment plan\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with probable temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 200 mg twice daily\n2. Levetiracetam 250 mg in the morning and 500 mg at night\n\n\nPresent Seizure Frequency:\n\nThe patient reports seven to eight absence seizures this quarter, described as brief staring spells with impaired awareness and automatisms, typically clustering in the late evening. These have occurred in the context of post-partum sleep fragmentation over the last six months. There have been no generalised tonic-clonic seizures.\n\n\nPlan of Action:\n\nThe temporal association with disrupted night-time sleep following childbirth is notable, with the patient reporting frequent awakenings for infant care and overall sleep duration reduced to approximately 4–5 hours per night. She denies medication non-adherence, intercurrent illness, or alcohol intake. Given the pattern of focal impaired awareness events and the absence of clear provoking factors other than sleep disruption, we will aim to optimise therapy while supporting sleep hygiene.\n\n1) Continue lamotrigine 200 mg twice daily.\n2) Adjust levetiracetam to 500 mg twice daily to even out peak–trough variability and reduce evening clustering of focal events. The patient has previously tolerated this dose without mood disturbance.\n3) Non-pharmacological measures (patient-reported goals): partner-assisted night feeds where possible, scheduled daytime nap when support available, and consistent wind-down routine before 21:30 to reduce sleep-onset latency.\n4) Safety counselling reinforced: avoid co-sleeping when drowsy, continue seizure precautions at changing table and bath time, and do not sleep on elevated surfaces with the infant.\n5) Arrange an ambulatory EEG if events persist beyond eight weeks despite dose adjustment, to confirm focal onset. If seizures remain frequent, we will consider introducing lacosamide as adjunctive therapy or rationalising levetiracetam depending on tolerance.\n\nI have scheduled a follow-up in eight weeks, sooner if seizure frequency increases or if adverse effects occur.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports seven to eight absence seizures this quarter.' A quarter is 3 months. Therefore, the current seizure frequency is 7 to 8 per 3 months. No other seizure types are reported in this period, and there have been no generalised tonic-clonic seizures. Applying the allowed output format, this becomes '7 to 8 per 3 month'.",
+      "seizure_frequency_number": [
+        "7 to 8 per 3 month",
+        "The patient reports seven to eight absence seizures this quarter"
+      ],
+      "reference": [
+        "7 to 8 per 3 month",
+        "seven to eight absence seizures this quarter"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

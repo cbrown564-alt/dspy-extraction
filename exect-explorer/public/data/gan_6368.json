@@ -1,0 +1,54 @@
+{
+  "id": "gan_6368",
+  "text": "Department of Neurology\n\nClinic Date: 18 August 2022\n\nDr Aisha Rahman\nSt George's University Hospitals NHS Foundation Trust\nDepartment of Neurology, Blackshaw Road, London SW17 0QT\n\nDear Dr Aisha Rahman,\n\nRe: Michael Turner, DOB: 14-03-1987, Hospital No: L392847, NHS No: 9045173821\n12 Fernbank Close, Wimbledon, London SW19 3PL\n\nDiagnoses:\n\nRecurrent seizure episodes of uncertain classification. EEG pending review.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Continue lamotrigine 75 mg twice daily without interruption\n- Arrange urgent sleep-deprived EEG and repeat serum lamotrigine level\n- Safety counselling regarding sleep hygiene, jet lag management, and high-risk activities\n- Telephone review in 4 weeks and face-to-face review in 3 months, or sooner if further events occur\n\nI reviewed Michael Turner in clinic today following a period of clinical decline. Since undertaking recent long-haul travel across several time zones, he reports marked circadian disruption with difficulty initiating and maintaining sleep. Over the past six weeks he describes three witnessed convulsive episodes and several brief staring events with loss of awareness. Of note, he identifies a pattern of episodes clustering after intake of strong coffee and energy drinks during periods of sleep loss; he refers to these as \"stimulant-linked attacks\" occurring roughly once every one to two weeks since the travel. Prior to this, he had been stable for a prolonged interval without events.\n\nHe denies intercurrent illness, alcohol excess, or new medications. There has been no head injury. Family report post-event confusion lasting 20–30 minutes and tongue biting on two occasions. No focal neurological deficits were noted today. Blood pressure and systemic examination were unremarkable.\n\nOn discussion, the deterioration appears temporally related to jet lag and sleep deprivation, with perceived worsening since the cross-time-zone journey. Given the recent escalation in frequency and the emergence of events despite ongoing lamotrigine, I have advised strict adherence to regular sleep and avoidance of identified stimulants. We will check his lamotrigine level and consider dose optimisation once results are available. I have also arranged a sleep-deprived EEG to assess for any interictal abnormalities. He has been provided with written safety advice, including not driving and avoiding operating machinery until seizure control is re-established.\n\nI will review him by telephone in four weeks to assess interim stability and blood results, with a scheduled in-person appointment at three months. He and his family are aware to contact us urgently should there be any further convulsive events or injuries.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1044,
+      "end": 1241,
+      "text": "Over the past six weeks he describes three witnessed convulsive episodes and several brief staring events with loss of awareness. ... occurring roughly once every one to two weeks since the travel.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6368,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 18 August 2022\n\nDr Aisha Rahman\nSt George's University Hospitals NHS Foundation Trust\nDepartment of Neurology, Blackshaw Road, London SW17 0QT\n\nDear Dr Aisha Rahman,\n\nRe: Michael Turner, DOB: 14-03-1987, Hospital No: L392847, NHS No: 9045173821\n12 Fernbank Close, Wimbledon, London SW19 3PL\n\nDiagnoses:\n\nRecurrent seizure episodes of uncertain classification. EEG pending review.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\n- Continue lamotrigine 75 mg twice daily without interruption\n- Arrange urgent sleep-deprived EEG and repeat serum lamotrigine level\n- Safety counselling regarding sleep hygiene, jet lag management, and high-risk activities\n- Telephone review in 4 weeks and face-to-face review in 3 months, or sooner if further events occur\n\nI reviewed Michael Turner in clinic today following a period of clinical decline. Since undertaking recent long-haul travel across several time zones, he reports marked circadian disruption with difficulty initiating and maintaining sleep. Over the past six weeks he describes three witnessed convulsive episodes and several brief staring events with loss of awareness. Of note, he identifies a pattern of episodes clustering after intake of strong coffee and energy drinks during periods of sleep loss; he refers to these as \"stimulant-linked attacks\" occurring roughly once every one to two weeks since the travel. Prior to this, he had been stable for a prolonged interval without events.\n\nHe denies intercurrent illness, alcohol excess, or new medications. There has been no head injury. Family report post-event confusion lasting 20–30 minutes and tongue biting on two occasions. No focal neurological deficits were noted today. Blood pressure and systemic examination were unremarkable.\n\nOn discussion, the deterioration appears temporally related to jet lag and sleep deprivation, with perceived worsening since the cross-time-zone journey. Given the recent escalation in frequency and the emergence of events despite ongoing lamotrigine, I have advised strict adherence to regular sleep and avoidance of identified stimulants. We will check his lamotrigine level and consider dose optimisation once results are available. I have also arranged a sleep-deprived EEG to assess for any interictal abnormalities. He has been provided with written safety advice, including not driving and avoiding operating machinery until seizure control is re-established.\n\nI will review him by telephone in four weeks to assess interim stability and blood results, with a scheduled in-person appointment at three months. He and his family are aware to contact us urgently should there be any further convulsive events or injuries.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: over the past six weeks he describes three witnessed convulsive episodes and several brief staring events with loss of awareness. It also says he has 'stimulant-linked attacks' occurring roughly once every one to two weeks since the travel. The 'once every one to two weeks' equates to approximately 0.5 to 1 per week, which is less frequent than the explicit six-week tally of 'three witnessed convulsive episodes' (3 in 6 weeks ≈ 0.5 per week) plus 'several brief staring events' whose exact count is not provided. Because the brief staring events lack a specific numeric frequency, the exact highest frequency cannot be precisely quantified. The presence of events is clear, but a precise frequency cannot be determined from the provided details. Therefore, per rules, return 'unknown' since specific frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Over the past six weeks he describes three witnessed convulsive episodes and several brief staring events with loss of awareness. ... occurring roughly once every one to two weeks since the travel."
+      ],
+      "reference": [
+        "unknown",
+        "Caffeine-associated seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

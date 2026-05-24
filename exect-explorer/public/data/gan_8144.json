@@ -1,0 +1,48 @@
+{
+  "id": "gan_8144",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nLaura Bennett, DOB: 23-11-1991, Hospital No: H948210 NHS No. 5839201746  \n12 Brookfield Road, London, W10 6DR \n\nDiagnosis:\nFocal epilepsy, likely temporal lobe onset, clinically stable.\n\nMedication:\nLamotrigine 150 mg/200 mg daily. Well tolerated with no reported adverse effects.\n\nSince her last review, she describes a sustained spell without clinical events, with no spells of impaired awareness or motor features. She notes occasional brief déjà vu sensations without progression, typically lasting seconds and not followed by confusion; these have become less frequent over the past three months and do not impair function. No nocturnal events reported by her partner.\n\nShe commutes primarily by bicycle to and from work, which she finds beneficial for routine and mood. She reports maintaining regular sleep and hydration, and she has not identified any clear precipitants for the brief auras noted earlier in the year. There have been no emergency presentations and no rescue medication use.\n\nNeurological examination today is unremarkable. Routine bloods from September were within reference limits, including liver function and full blood count. We discussed that her current pattern reflects a continued period without disabling seizures, consistent with good control of focal epilepsy on lamotrigine monotherapy. No dose changes are proposed at present.\n\nPlan:\n- Continue lamotrigine 150 mg morning and 200 mg evening.\n- Repeat safety bloods at annual review or sooner if clinically indicated.\n- Provide clinic contact if any change in pattern, particularly if events evolve to impaired awareness or generalisation.\n\nWe will review her again in nine months, or earlier if there is any clinical deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 493,
+      "end": 626,
+      "text": "she describes a sustained spell without clinical events... her current pattern reflects a continued period without disabling seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8144,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nLaura Bennett, DOB: 23-11-1991, Hospital No: H948210 NHS No. 5839201746  \n12 Brookfield Road, London, W10 6DR \n\nDiagnosis:\nFocal epilepsy, likely temporal lobe onset, clinically stable.\n\nMedication:\nLamotrigine 150 mg/200 mg daily. Well tolerated with no reported adverse effects.\n\nSince her last review, she describes a sustained spell without clinical events, with no spells of impaired awareness or motor features. She notes occasional brief déjà vu sensations without progression, typically lasting seconds and not followed by confusion; these have become less frequent over the past three months and do not impair function. No nocturnal events reported by her partner.\n\nShe commutes primarily by bicycle to and from work, which she finds beneficial for routine and mood. She reports maintaining regular sleep and hydration, and she has not identified any clear precipitants for the brief auras noted earlier in the year. There have been no emergency presentations and no rescue medication use.\n\nNeurological examination today is unremarkable. Routine bloods from September were within reference limits, including liver function and full blood count. We discussed that her current pattern reflects a continued period without disabling seizures, consistent with good control of focal epilepsy on lamotrigine monotherapy. No dose changes are proposed at present.\n\nPlan:\n- Continue lamotrigine 150 mg morning and 200 mg evening.\n- Repeat safety bloods at annual review or sooner if clinically indicated.\n- Provide clinic contact if any change in pattern, particularly if events evolve to impaired awareness or generalisation.\n\nWe will review her again in nine months, or earlier if there is any clinical deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes no clinical seizures with impaired awareness or motor features since the last review. It mentions occasional brief déjà vu sensations that are non-progressive, last seconds, and do not impair function—these are likely auras and not disabling seizures. It states a continued period without disabling seizures and good control on monotherapy. However, the duration is not clearly stated as at least 6 months; it only notes that auras have become less frequent over the past three months. Therefore, we cannot confirm 6-month seizure freedom. The appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "she describes a sustained spell without clinical events... her current pattern reflects a continued period without disabling seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Ongoing seizure-free interval"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_14858",
+  "text": "Department of Neurology\n\nClinic Date: 20 December 2014\n\nDr Amelia Hart\nSt Cuthbert’s Neurology Centre\nOutpatient Department, 12 Brookside Lane, Manchester M3 4HT\n\nDear Dr Amelia Hart,\n\nEmily Carter, DOB: 02-03-1990, Hospital No: H392847 NHS No. 9456103372\nFlat 5, 28 Riverbank Court, Manchester, M15 6QA\n\nDiagnoses:\n\nPrimary generalised epilepsy with generalised spike-and-wave on prior EEG\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\n- Continue Lamotrigine at current dose\n- Routine follow-up in 6 months, sooner if breakthrough events occur\n\nI reviewed Emily Carter in clinic today regarding her known generalised epilepsy. She reports good adherence to Lamotrigine since mid-November, after a brief interruption due to pharmacy supply issues earlier in the month. She had recurrent headaches following her seizures earlier this month, but these have now settled. On 19/Nov the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 26/Nov and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes. She has been maintaining regular sleep, avoiding alcohol, and keeping a simple seizure diary on her phone, which corroborates this period of stability.\n\nOn review, there are no red flags: no injuries, no prolonged events, and no new focal neurological symptoms. Examination today was normal. Given her established diagnosis of generalised epilepsy and current stability on Lamotrigine, I have advised continuation of her present regimen and routine safety measures (adequate sleep, illness management, and avoidance of missed doses). We discussed that driving and lifestyle guidance should continue to follow DVLA recommendations applicable to seizure freedom; she understands to contact us immediately if events recur.\n\nI will plan to see her again in six months, with earlier review if she experiences any further seizures or adverse effects.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 969,
+      "end": 1043,
+      "text": "Her last reported event was on 26/Nov and she has been seizure-free since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 784,
+      "end": 1140,
+      "text": "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 19/Nov the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 26/Nov and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14858,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 20 December 2014\n\nDr Amelia Hart\nSt Cuthbert’s Neurology Centre\nOutpatient Department, 12 Brookside Lane, Manchester M3 4HT\n\nDear Dr Amelia Hart,\n\nEmily Carter, DOB: 02-03-1990, Hospital No: H392847 NHS No. 9456103372\nFlat 5, 28 Riverbank Court, Manchester, M15 6QA\n\nDiagnoses:\n\nPrimary generalised epilepsy with generalised spike-and-wave on prior EEG\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\n- Continue Lamotrigine at current dose\n- Routine follow-up in 6 months, sooner if breakthrough events occur\n\nI reviewed Emily Carter in clinic today regarding her known generalised epilepsy. She reports good adherence to Lamotrigine since mid-November, after a brief interruption due to pharmacy supply issues earlier in the month. She had recurrent headaches following her seizures earlier this month, but these have now settled. On 19/Nov the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 26/Nov and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes. She has been maintaining regular sleep, avoiding alcohol, and keeping a simple seizure diary on her phone, which corroborates this period of stability.\n\nOn review, there are no red flags: no injuries, no prolonged events, and no new focal neurological symptoms. Examination today was normal. Given her established diagnosis of generalised epilepsy and current stability on Lamotrigine, I have advised continuation of her present regimen and routine safety measures (adequate sleep, illness management, and avoidance of missed doses). We discussed that driving and lifestyle guidance should continue to follow DVLA recommendations applicable to seizure freedom; she understands to contact us immediately if events recur.\n\nI will plan to see her again in six months, with earlier review if she experiences any further seizures or adverse effects.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 20 Dec 2014. The letter states: last reported seizure was on 26 Nov and she has been seizure-free since. After restarting Lamotrigine on 19 Nov, episodes reduced significantly, and there has been only that one event since. She is not seizure-free for ≥6 months, so we calculate frequency. Over approximately the last month (mid/late Nov to 20 Dec), there has been 1 seizure, giving an estimated current frequency of 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Her last reported event was on 26/Nov and she has been seizure-free since."
+      ],
+      "reference": [
+        "1 per month",
+        "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 19/Nov the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 26/Nov and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12778",
+  "text": "Department of Neurology\n\nClinic Date: 25 March 2019\n\nDr Hannah Porter\nSt Cuthbert’s Neurology Centre\nNeurology Outpatients, 12 Meadow Lane, Leeds LS2 9AB\n\nDear Dr Hannah Porter,\n\nMichael Turner, DOB: 14-02-1991, Hospital No: L928374 NHS No. 6045172839\nFlat 3, 27 Brookside Court, Leeds, LS6 1HY\n\nDiagnoses:\n\nFocal epilepsy with impaired awareness seizures\nEEG: Left temporal intermittent epileptiform discharges (January 2019)\nMRI brain: No focal structural lesion identified (2018)\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\nRescue: Buccal midazolam held at workplace and home\n\nPlan:\n\n- Continue lamotrigine at current dose\n- Reinforce seizure and rescue plan with employer; ensure access to midazolam is feasible in cold-chain areas\n- Maintain seizure diary; follow-up in 6 months\n\nI reviewed Michael Turner today, who works in a cold-chain warehouse where low ambient temperatures and mandatory gloves can slow access to rescue medication. He reports brief focal impaired awareness episodes characterised by behavioural arrest and lip-smacking, typically lasting 60–90 seconds, followed by several minutes of confusion. His mother usually accompanies him to clinic and keeps a parallel diary. His mother notes an overall improvement compared with previous years, with eight tonic seizures documented in 2019 so far. These have generally occurred in the early morning after disrupted sleep.\n\nThere is no history of generalised tonic–clonic seizures, and the semiology together with EEG findings support a diagnosis of focal epilepsy. Triggers appear to include sleep deprivation and missed meals during shift rotations. He and his employer have implemented a buddy system on the loading line, and temperature-stable storage for rescue medication has been arranged near the dispatch bay; however, donning and doffing gloves delays administration. We discussed keeping a clearly labelled midazolam tube in an inner thermal pocket to improve accessibility and ensuring staff refresher training.\n\nHe has tolerated lamotrigine without rash, mood change, or diplopia. Bloods last month (U&E, LFTs, FBC) were unremarkable. He will continue his current regimen and safety measures at work. I have provided an updated seizure action plan and a letter for his occupational health team. We will review in six months or sooner if the frequency increases or if he experiences any new features suggestive of secondary generalisation.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1281,
+      "end": 1327,
+      "text": "eight tonic seizures documented in 2019 so far",
+      "attributes": {
+        "Label": "8 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1206,
+      "end": 1327,
+      "text": "His mother notes an overall improvement compared with previous years, with eight tonic seizures documented in 2019 so far",
+      "attributes": {
+        "Label": "8 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12778,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 25 March 2019\n\nDr Hannah Porter\nSt Cuthbert’s Neurology Centre\nNeurology Outpatients, 12 Meadow Lane, Leeds LS2 9AB\n\nDear Dr Hannah Porter,\n\nMichael Turner, DOB: 14-02-1991, Hospital No: L928374 NHS No. 6045172839\nFlat 3, 27 Brookside Court, Leeds, LS6 1HY\n\nDiagnoses:\n\nFocal epilepsy with impaired awareness seizures\nEEG: Left temporal intermittent epileptiform discharges (January 2019)\nMRI brain: No focal structural lesion identified (2018)\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\nRescue: Buccal midazolam held at workplace and home\n\nPlan:\n\n- Continue lamotrigine at current dose\n- Reinforce seizure and rescue plan with employer; ensure access to midazolam is feasible in cold-chain areas\n- Maintain seizure diary; follow-up in 6 months\n\nI reviewed Michael Turner today, who works in a cold-chain warehouse where low ambient temperatures and mandatory gloves can slow access to rescue medication. He reports brief focal impaired awareness episodes characterised by behavioural arrest and lip-smacking, typically lasting 60–90 seconds, followed by several minutes of confusion. His mother usually accompanies him to clinic and keeps a parallel diary. His mother notes an overall improvement compared with previous years, with eight tonic seizures documented in 2019 so far. These have generally occurred in the early morning after disrupted sleep.\n\nThere is no history of generalised tonic–clonic seizures, and the semiology together with EEG findings support a diagnosis of focal epilepsy. Triggers appear to include sleep deprivation and missed meals during shift rotations. He and his employer have implemented a buddy system on the loading line, and temperature-stable storage for rescue medication has been arranged near the dispatch bay; however, donning and doffing gloves delays administration. We discussed keeping a clearly labelled midazolam tube in an inner thermal pocket to improve accessibility and ensuring staff refresher training.\n\nHe has tolerated lamotrigine without rash, mood change, or diplopia. Bloods last month (U&E, LFTs, FBC) were unremarkable. He will continue his current regimen and safety measures at work. I have provided an updated seizure action plan and a letter for his occupational health team. We will review in six months or sooner if the frequency increases or if he experiences any new features suggestive of secondary generalisation.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"eight tonic seizures documented in 2019 so far.\" The clinic date is 25 March 2019, so the timeframe \"2019 so far\" spans approximately from 1 January 2019 to 25 March 2019, which is about 3 months. Therefore, the inferred seizure frequency is 8 per 3 months. No other numeric seizure frequency is provided for the focal impaired awareness episodes.",
+      "seizure_frequency_number": [
+        "8 per 3 month",
+        "eight tonic seizures documented in 2019 so far"
+      ],
+      "reference": [
+        "8 per 3 month",
+        "His mother notes an overall improvement compared with previous years, with eight tonic seizures documented in 2019 so far"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

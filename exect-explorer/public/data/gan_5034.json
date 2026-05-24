@@ -1,0 +1,48 @@
+{
+  "id": "gan_5034",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophia Williams, DOB: 23-11-1992, Hospital No: H583920 NHS No. 8091524736  \n12 Brookside Avenue, London, W11 4DA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Tolerating well with no reported adverse effects.\n\nSince her last review, she reports no breakthrough episodes and describes herself as remaining clear of events. She continues to keep a seizure diary, which has had no entries since mid-May, and her partner corroborates an absence of nocturnal disturbance. She has maintained regular sleep, reduced alcohol intake, and has avoided missed doses, which she feels has supported her current stability.\n\nWe discussed potential triggers. She notes that high work-related stress in the past coincided with previous spells; she has implemented routine exercise and brief mindfulness sessions, which she finds helpful. There has been no recent illness, head injury, or medication interaction to report. She denies auras, déjà vu, or awareness changes. There have been no episodes of loss of consciousness, tongue biting, or post-event confusion. Driving status remains unchanged and she understands the need to inform DVLA if any further events occur.\n\nNeurological examination in clinic was unremarkable. No new focal symptoms have emerged. She is comfortable continuing her present regimen without adjustment. We agreed to maintain the current dose and to review again in nine months, or earlier if there is any recurrence, adverse effect, or change in circumstances (e.g. pregnancy planning or intercurrent illness). She is aware to contact us if she misses doses or develops intercurrent infection with fever.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily, no changes today.\n- Maintain seizure diary and adherence strategies.\n- Safety reinforced: avoid sleep deprivation and excessive alcohol; seek advice promptly if any events recur.\n- Routine follow-up in nine months.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 438,
+      "end": 546,
+      "text": "no breakthrough episodes … remaining clear of events … seizure diary, which has had no entries since mid-May",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5034,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophia Williams, DOB: 23-11-1992, Hospital No: H583920 NHS No. 8091524736  \n12 Brookside Avenue, London, W11 4DA \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. Tolerating well with no reported adverse effects.\n\nSince her last review, she reports no breakthrough episodes and describes herself as remaining clear of events. She continues to keep a seizure diary, which has had no entries since mid-May, and her partner corroborates an absence of nocturnal disturbance. She has maintained regular sleep, reduced alcohol intake, and has avoided missed doses, which she feels has supported her current stability.\n\nWe discussed potential triggers. She notes that high work-related stress in the past coincided with previous spells; she has implemented routine exercise and brief mindfulness sessions, which she finds helpful. There has been no recent illness, head injury, or medication interaction to report. She denies auras, déjà vu, or awareness changes. There have been no episodes of loss of consciousness, tongue biting, or post-event confusion. Driving status remains unchanged and she understands the need to inform DVLA if any further events occur.\n\nNeurological examination in clinic was unremarkable. No new focal symptoms have emerged. She is comfortable continuing her present regimen without adjustment. We agreed to maintain the current dose and to review again in nine months, or earlier if there is any recurrence, adverse effect, or change in circumstances (e.g. pregnancy planning or intercurrent illness). She is aware to contact us if she misses doses or develops intercurrent infection with fever.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily, no changes today.\n- Maintain seizure diary and adherence strategies.\n- Safety reinforced: avoid sleep deprivation and excessive alcohol; seek advice promptly if any events recur.\n- Routine follow-up in nine months.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no seizures since mid-May and remains clear of events at the clinic date of 14 October 2025. Calculate duration seizure-free: from mid-May 2025 to mid-October 2025 is approximately 5 months (May→June→July→August→September→mid-October). This is less than 6 months, so cannot label as seizure free for ≥6 months. Therefore, use 'seizure free for multiple months' per rule 8.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no breakthrough episodes … remaining clear of events … seizure diary, which has had no entries since mid-May"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Event-free"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

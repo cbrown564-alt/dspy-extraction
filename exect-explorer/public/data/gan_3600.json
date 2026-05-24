@@ -1,0 +1,54 @@
+{
+  "id": "gan_3600",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nRiverside Health Centre\n\n12 Riverside Way, London, SE1 6AB\nDear Dr Patel\nJane Smith, DOB: 21-11-1982, Hospital No: H392847 NHS No. 7748291930\nFlat 4, 28 Mill Street, London, SE1 2BQ \n\nI reviewed the above patient in the Neurology Clinic today. Since their last appointment, there has been a notable worsening in their overall seizure control. The patient reports increasing unpredictability and more disruptive episodes, particularly clustered around the perimenstrual period, raising concern for a catamenial pattern contributing to this deterioration. Despite adherence, they feel less stable day-to-day and more fatigued post-events.\n\nThey are currently taking Levetiracetam 1000 mg twice daily and Lamotrigine 150 mg twice daily. They report no clear medication side effects aside from intermittent dizziness and increased tiredness, which they associate with the recent escalation in events. We reviewed safety measures and potential triggers; sleep disruption and premenstrual symptoms were highlighted by the patient as potential exacerbating factors.\n\nRegarding seizure counts, the patient is unable to provide a reliable number at present due to variable frequency and unclear recalls, particularly around the perimenstrual window. They will commence a structured diary with menstrual tracking to help clarify patterns and guide management.\n\nGiven the evident deterioration and suspected hormonal influence, I have arranged:\n- Urgent ambulatory EEG within the next 4–6 weeks.\n- Bloods including AED levels, FBC, U&Es, LFTs, and vitamin D.\n- Referral to the epilepsy specialist nurse for counselling on cycle-linked strategies and adherence support.\n- Provision of an updated seizure action plan and advice on rescue medication use if appropriate after EEG review.\n\nI will review the patient in 8–10 weeks with EEG results and diary data to consider targeted adjustments. In the interim, we discussed avoidance of sleep deprivation, alcohol moderation, and maintaining a consistent medication schedule. The patient understands the plan and knows to contact the service if there is any further deterioration, injury, or prolonged events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1157,
+      "end": 1264,
+      "text": "the patient is unable to provide a reliable number at present due to variable frequency and unclear recalls",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3600,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 September 2025 \n\nDr Patel\nRiverside Health Centre\n\n12 Riverside Way, London, SE1 6AB\nDear Dr Patel\nJane Smith, DOB: 21-11-1982, Hospital No: H392847 NHS No. 7748291930\nFlat 4, 28 Mill Street, London, SE1 2BQ \n\nI reviewed the above patient in the Neurology Clinic today. Since their last appointment, there has been a notable worsening in their overall seizure control. The patient reports increasing unpredictability and more disruptive episodes, particularly clustered around the perimenstrual period, raising concern for a catamenial pattern contributing to this deterioration. Despite adherence, they feel less stable day-to-day and more fatigued post-events.\n\nThey are currently taking Levetiracetam 1000 mg twice daily and Lamotrigine 150 mg twice daily. They report no clear medication side effects aside from intermittent dizziness and increased tiredness, which they associate with the recent escalation in events. We reviewed safety measures and potential triggers; sleep disruption and premenstrual symptoms were highlighted by the patient as potential exacerbating factors.\n\nRegarding seizure counts, the patient is unable to provide a reliable number at present due to variable frequency and unclear recalls, particularly around the perimenstrual window. They will commence a structured diary with menstrual tracking to help clarify patterns and guide management.\n\nGiven the evident deterioration and suspected hormonal influence, I have arranged:\n- Urgent ambulatory EEG within the next 4–6 weeks.\n- Bloods including AED levels, FBC, U&Es, LFTs, and vitamin D.\n- Referral to the epilepsy specialist nurse for counselling on cycle-linked strategies and adherence support.\n- Provision of an updated seizure action plan and advice on rescue medication use if appropriate after EEG review.\n\nI will review the patient in 8–10 weeks with EEG results and diary data to consider targeted adjustments. In the interim, we discussed avoidance of sleep deprivation, alcohol moderation, and maintaining a consistent medication schedule. The patient understands the plan and knows to contact the service if there is any further deterioration, injury, or prolonged events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses seizure worsening and possible catamenial pattern. However, it explicitly states that the patient cannot provide a reliable seizure count at present due to variable frequency and unclear recalls, and will start a diary to clarify. No explicit numeric frequency is provided. Therefore, per instruction, if seizures are mentioned but frequency cannot be determined, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "the patient is unable to provide a reliable number at present due to variable frequency and unclear recalls"
+      ],
+      "reference": [
+        "unknown",
+        "similar"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

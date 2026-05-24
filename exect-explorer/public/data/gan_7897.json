@@ -1,0 +1,54 @@
+{
+  "id": "gan_7897",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt Stephen’s Wing, Riverside NHS Trust, London  \n\nDear Dr Amelia Hart, \n\nMr Daniel Price, DOB: 22-09-1975, Hospital No: RX84-2291 NHS No. NHS-8834201976  \nFlat 4, 12 Willow Court, Brixton, London, SW2 1AB  \n\nDiagnosis: \n\nRecurrent unprovoked seizures, currently with sustained absence of episodes over the last 18 months on treatment\n\nAetiology: \n\nNo definitive structural or metabolic cause identified on MRI brain (2024) and routine bloods; ambulatory EEG (2024) non-diagnostic\n\nOther Medical Problems: \n\nBilateral presbycusis with intermittent tinnitus; uses over-the-ear amplification at home. Prefers scheduled speakerphone calls with a family member present to support communication.\n\nManagement Plan: \n\n- Continue sodium valproate 500 mg twice daily. Maintain the same brand and dosing schedule.  \n- Continue vitamin D3 1000 IU once daily and check bone profile and vitamin D at next review.  \n- Driving: patient remains within DVLA guidance given the prolonged absence of events; advised to inform DVLA and insurer as per standard requirements.  \n- Safety: reinforce adherence, regular sleep, avoidance of missed doses, and moderation of alcohol intake.  \n- Investigations: no further neuroimaging needed at present; will repeat trough valproate level and LFTs prior to next visit.  \n- Follow-up: routine review in 9 months. We will arrange appointments as pre-booked speakerphone calls with a nominated family member present, as per the patient’s communication preference. \n\nSince our last review, there have been no witnessed or reported episodes suggestive of seizures. He describes feeling steady on his current regimen with no dose omissions and only mild, transient post-dose nausea in the mornings, which has not limited activities. He remains in full-time employment and has resumed swimming twice weekly without difficulty, adhering to standard water safety advice. Sleep has improved with a regular schedule. No reports of falls, injuries, or auras. Given this ongoing stability, I have not altered therapy.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 399,
+      "end": 480,
+      "text": "currently with sustained absence of episodes over the last 18 months on treatment",
+      "attributes": {
+        "Label": "seizure free for 18 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7897,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Amelia Hart \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt Stephen’s Wing, Riverside NHS Trust, London  \n\nDear Dr Amelia Hart, \n\nMr Daniel Price, DOB: 22-09-1975, Hospital No: RX84-2291 NHS No. NHS-8834201976  \nFlat 4, 12 Willow Court, Brixton, London, SW2 1AB  \n\nDiagnosis: \n\nRecurrent unprovoked seizures, currently with sustained absence of episodes over the last 18 months on treatment\n\nAetiology: \n\nNo definitive structural or metabolic cause identified on MRI brain (2024) and routine bloods; ambulatory EEG (2024) non-diagnostic\n\nOther Medical Problems: \n\nBilateral presbycusis with intermittent tinnitus; uses over-the-ear amplification at home. Prefers scheduled speakerphone calls with a family member present to support communication.\n\nManagement Plan: \n\n- Continue sodium valproate 500 mg twice daily. Maintain the same brand and dosing schedule.  \n- Continue vitamin D3 1000 IU once daily and check bone profile and vitamin D at next review.  \n- Driving: patient remains within DVLA guidance given the prolonged absence of events; advised to inform DVLA and insurer as per standard requirements.  \n- Safety: reinforce adherence, regular sleep, avoidance of missed doses, and moderation of alcohol intake.  \n- Investigations: no further neuroimaging needed at present; will repeat trough valproate level and LFTs prior to next visit.  \n- Follow-up: routine review in 9 months. We will arrange appointments as pre-booked speakerphone calls with a nominated family member present, as per the patient’s communication preference. \n\nSince our last review, there have been no witnessed or reported episodes suggestive of seizures. He describes feeling steady on his current regimen with no dose omissions and only mild, transient post-dose nausea in the mornings, which has not limited activities. He remains in full-time employment and has resumed swimming twice weekly without difficulty, adhering to standard water safety advice. Sleep has improved with a regular schedule. No reports of falls, injuries, or auras. Given this ongoing stability, I have not altered therapy.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states \"sustained absence of episodes over the last 18 months\" and also notes no witnessed or reported episodes since the last review. This confirms current seizure-free status and that it has persisted for at least 6 months. Therefore, normalize to 'seizure free for 18 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 18 month",
+        "currently with sustained absence of episodes over the last 18 months on treatment"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Complete control of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 18 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

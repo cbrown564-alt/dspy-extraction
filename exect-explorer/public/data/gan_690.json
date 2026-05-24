@@ -1,0 +1,59 @@
+{
+  "id": "gan_690",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He works as a stage lighting technician with frequent exposure to strobe and bright lighting, and colleagues may occasionally witness events while on set.\n\nHe reports that his major events occur once a year, typically without a clear prodrome. These have been observed by co-workers on two occasions, described as a sudden pause in activity followed by loss of awareness and a brief convulsive phase, with post-event confusion and fatigue for several hours. Between these annual events he denies further definite episodes, though he has noted rare moments of light-headedness under intense lighting which resolve with brief rest and hydration. There is no consistent aura reported. He does not drive.\n\nSince I first assessed him last year, he has been taking Levetiracetam (Keppra) 1000 mg b.d. He reports good adherence, no mood disturbance beyond mild irritability in the first few weeks (now settled), and no rash or gastrointestinal side effects. Sleep is generally adequate, though shift work can be irregular. Alcohol intake is minimal and he does not use recreational drugs.\n\nGiven the occupational exposure to strobe effects, we discussed practical measures at work, including minimising direct strobe exposure where feasible, stepping back during testing sequences, maintaining good hydration and sleep hygiene, and ensuring colleagues are aware of basic first aid and recovery positioning if an event occurs. He is content with his current plan and understands to seek urgent review if the pattern changes or events become more frequent.\n\nInvestigations to date: routine bloods within normal limits (most recent 08/2025), and prior MRI brain (2023) reported as normal. An outpatient EEG (2023) was non-diagnostic. In view of the low event frequency and stable course, I have not altered medication today. I have arranged a follow-up in 12 months, or sooner if there is any increase in frequency or change in semiology. Should an event occur, he will attempt to obtain a contemporaneous witness account from colleagues and, if safe and appropriate, brief video documentation for clinic review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 479,
+      "end": 509,
+      "text": "major events occur once a year",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 498,
+      "end": 509,
+      "text": "once a year",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 690,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He works as a stage lighting technician with frequent exposure to strobe and bright lighting, and colleagues may occasionally witness events while on set.\n\nHe reports that his major events occur once a year, typically without a clear prodrome. These have been observed by co-workers on two occasions, described as a sudden pause in activity followed by loss of awareness and a brief convulsive phase, with post-event confusion and fatigue for several hours. Between these annual events he denies further definite episodes, though he has noted rare moments of light-headedness under intense lighting which resolve with brief rest and hydration. There is no consistent aura reported. He does not drive.\n\nSince I first assessed him last year, he has been taking Levetiracetam (Keppra) 1000 mg b.d. He reports good adherence, no mood disturbance beyond mild irritability in the first few weeks (now settled), and no rash or gastrointestinal side effects. Sleep is generally adequate, though shift work can be irregular. Alcohol intake is minimal and he does not use recreational drugs.\n\nGiven the occupational exposure to strobe effects, we discussed practical measures at work, including minimising direct strobe exposure where feasible, stepping back during testing sequences, maintaining good hydration and sleep hygiene, and ensuring colleagues are aware of basic first aid and recovery positioning if an event occurs. He is content with his current plan and understands to seek urgent review if the pattern changes or events become more frequent.\n\nInvestigations to date: routine bloods within normal limits (most recent 08/2025), and prior MRI brain (2023) reported as normal. An outpatient EEG (2023) was non-diagnostic. In view of the low event frequency and stable course, I have not altered medication today. I have arranged a follow-up in 12 months, or sooner if there is any increase in frequency or change in semiology. Should an event occur, he will attempt to obtain a contemporaneous witness account from colleagues and, if safe and appropriate, brief video documentation for clinic review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He reports that his major events occur once a year...' These are clearly seizure events with loss of awareness and brief convulsive phase. No other definite episodes between these annual events. According to the rule to choose the highest frequency, the annual major events define the frequency. 'Once a year' normalises to '1 per year'. No evidence of seizure freedom for ≥6 months as he still has about yearly events.",
+      "seizure_frequency_number": [
+        "1 per year",
+        "major events occur once a year"
+      ],
+      "reference": [
+        "1 per year",
+        "once a year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

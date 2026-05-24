@@ -1,0 +1,52 @@
+{
+  "id": "gan_8808",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nNorthgate University Hospital  \nDepartment of Neurology, Northgate Way, Manchester M14 2RT  \n\nDear Dr Aisha Rahman,  \n\nMichael Turner, DOB: 23-02-1990, Hospital No: H392774 NHS No. 9135574201  \nFlat 12, 6 Brookfield Court, Manchester, M13 9QS \n\nDiagnoses: \n\nRecurrent events suggestive of seizures (first noted 2015); aetiology and classification not established. MRI brain (June 2024) normal. Ambulatory EEG (July 2024) non-diagnostic. \n\nCurrent Medication: \n\nLevetiracetam 1000 mg bd  \nMidazolam buccal 10 mg prn prolonged event \n\nPlan: \n\nContinue current regimen; renew prescription. Continue seizure diary and trigger-avoidance measures. Community epilepsy nurse follow-up by phone in 6 months; neurology review in 12 months or sooner if breakthrough events. DVLA guidance reiterated. \n\nI reviewed Michael Turner today with his partner present. Since titrating levetiracetam to the present dose in November 2024, he reports no definite seizures and no witnessed collapses. His wearable device and home seizure-detection app record no abnormal episodes; the dashboard indicates event detection at baseline only, i.e. device-tracked seizure activity remains effectively absent (Ã‚Â· \"zero events logged\" over the past 10 months). Sleep hygiene and alcohol moderation maintained. No adverse effects beyond mild irritability, which he feels is manageable. \n\nWe discussed that, despite reassuring monitoring data, classification remains unresolved and further testing would be considered only if events recur. Safety advice reinforced: avoid sleep deprivation, keep midazolam accessible, and contact services if any prolonged event >5 minutes. He understands DVLA requirements and confirms he is not currently driving. \n\nI have not arranged routine bloods as none are indicated for levetiracetam; please let me know if mood symptoms worsen. If he remains event-free, we will consider cautious dose optimisation at next review; no changes today. \n\nWith best wishes, \n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 8808,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nNorthgate University Hospital  \nDepartment of Neurology, Northgate Way, Manchester M14 2RT  \n\nDear Dr Aisha Rahman,  \n\nMichael Turner, DOB: 23-02-1990, Hospital No: H392774 NHS No. 9135574201  \nFlat 12, 6 Brookfield Court, Manchester, M13 9QS \n\nDiagnoses: \n\nRecurrent events suggestive of seizures (first noted 2015); aetiology and classification not established. MRI brain (June 2024) normal. Ambulatory EEG (July 2024) non-diagnostic. \n\nCurrent Medication: \n\nLevetiracetam 1000 mg bd  \nMidazolam buccal 10 mg prn prolonged event \n\nPlan: \n\nContinue current regimen; renew prescription. Continue seizure diary and trigger-avoidance measures. Community epilepsy nurse follow-up by phone in 6 months; neurology review in 12 months or sooner if breakthrough events. DVLA guidance reiterated. \n\nI reviewed Michael Turner today with his partner present. Since titrating levetiracetam to the present dose in November 2024, he reports no definite seizures and no witnessed collapses. His wearable device and home seizure-detection app record no abnormal episodes; the dashboard indicates event detection at baseline only, i.e. device-tracked seizure activity remains effectively absent (Ã‚Â· \"zero events logged\" over the past 10 months). Sleep hygiene and alcohol moderation maintained. No adverse effects beyond mild irritability, which he feels is manageable. \n\nWe discussed that, despite reassuring monitoring data, classification remains unresolved and further testing would be considered only if events recur. Safety advice reinforced: avoid sleep deprivation, keep midazolam accessible, and contact services if any prolonged event >5 minutes. He understands DVLA requirements and confirms he is not currently driving. \n\nI have not arranged routine bloods as none are indicated for levetiracetam; please let me know if mood symptoms worsen. If he remains event-free, we will consider cautious dose optimisation at next review; no changes today. \n\nWith best wishes, \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "Seizure Frequency Number",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter states: since November 2024 he reports no definite seizures, and the device shows 'zero events logged over the past 10 months.' This explicitly confirms at least 10 months seizure-free, satisfying the ≥6-month criterion for seizure freedom. Therefore, label as seizure free for 10 months, prioritizing the explicit '10 months' statement.",
+      "seizure_frequency_number": [
+        "seizure free for 10 month",
+        "zero events logged over the past 10 months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure burden 0% on device metrics"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 10 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "frequency_quote_issue",
+      "description": "Quote issue flagged for seizure frequency",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

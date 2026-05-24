@@ -1,0 +1,54 @@
+{
+  "id": "gan_6321",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Nair  \nRiverside Health Centre  \n3 Mill Lane, Bridgeford, BD12 4QT  \n\nDear Dr Priya Nair,                                                                                                         \n\nThomas Green, DOB: 22-11-1989, Hospital No: H738201 NHS No. 9842756310  \nLow Meadow Farm Cottage, Hilltop Road, Bridgeford, BD12 7PX  \n\nEpilepsy \n\nMedication: Continuing Levetiracetam since March 2024  \n\nLevetiracetam 750 mg twice daily (patient-reported adherence good) \n\nLevetiracetam Blood Level:  \n\n09 September 2025: 18 µg/mL (local reference 12–46 µg/mL). Dose 750 mg twice daily  \n\nSeizures: The patient reports that spells are uncommon when meals are regular; when they go long hours without food, brief collapses with confusion have occurred on two recent occasions (July and September 2025). No injuries. No reported auras or prolonged events. \n\nI conducted a video follow-up today as the patient resides in a rural area with limited public transport, making in-person appointments difficult. They described two short episodes this summer coinciding with irregular eating on busy farm workdays. Otherwise, daytime alertness is stable and there is no new neurological symptomatology. Sleep has improved since August after adjusting work shifts. No missed doses reported in the last three months. \n\nWe discussed practical measures around maintaining regular meals and hydration during long outdoor work periods, and they have arranged to keep snacks available while working. They will continue to track events in a diary and will contact the service if frequency increases or if there is any evolution in features such as injuries, prolonged confusion, or clustering. A community phlebotomy appointment can be arranged through the district service should repeat levels be needed. \n\nPlan:  \n- Continue current Levetiracetam 750 mg twice daily.  \n- Safety advice reinforced regarding work at heights and operating machinery on days when unwell.  \n- Arrange remote review in 4 months by telephone, with earlier contact if further episodes occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 788,
+      "end": 882,
+      "text": "brief collapses with confusion have occurred on two recent occasions (July and September 2025)",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6321,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Nair  \nRiverside Health Centre  \n3 Mill Lane, Bridgeford, BD12 4QT  \n\nDear Dr Priya Nair,                                                                                                         \n\nThomas Green, DOB: 22-11-1989, Hospital No: H738201 NHS No. 9842756310  \nLow Meadow Farm Cottage, Hilltop Road, Bridgeford, BD12 7PX  \n\nEpilepsy \n\nMedication: Continuing Levetiracetam since March 2024  \n\nLevetiracetam 750 mg twice daily (patient-reported adherence good) \n\nLevetiracetam Blood Level:  \n\n09 September 2025: 18 µg/mL (local reference 12–46 µg/mL). Dose 750 mg twice daily  \n\nSeizures: The patient reports that spells are uncommon when meals are regular; when they go long hours without food, brief collapses with confusion have occurred on two recent occasions (July and September 2025). No injuries. No reported auras or prolonged events. \n\nI conducted a video follow-up today as the patient resides in a rural area with limited public transport, making in-person appointments difficult. They described two short episodes this summer coinciding with irregular eating on busy farm workdays. Otherwise, daytime alertness is stable and there is no new neurological symptomatology. Sleep has improved since August after adjusting work shifts. No missed doses reported in the last three months. \n\nWe discussed practical measures around maintaining regular meals and hydration during long outdoor work periods, and they have arranged to keep snacks available while working. They will continue to track events in a diary and will contact the service if frequency increases or if there is any evolution in features such as injuries, prolonged confusion, or clustering. A community phlebotomy appointment can be arranged through the district service should repeat levels be needed. \n\nPlan:  \n- Continue current Levetiracetam 750 mg twice daily.  \n- Safety advice reinforced regarding work at heights and operating machinery on days when unwell.  \n- Arrange remote review in 4 months by telephone, with earlier contact if further episodes occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes seizures: 'brief collapses with confusion have occurred on two recent occasions (July and September 2025).' This indicates 2 events over a span of July and September 2025. The current clinic date is 02 October 2025, so the recent period is approximately 3 months (July, August, September). However, the letter does not provide a precise time window like 'per month' or 'per year' and only notes two episodes over the summer without standardizable frequency. There is no evidence of 6 months seizure freedom, so 'seizure free' does not apply. Since we cannot convert 'two occasions over the summer' into a specific per day/week/month/year rate, the frequency is considered unknown per instructions.",
+      "seizure_frequency_number": [
+        "unknown",
+        "brief collapses with confusion have occurred on two recent occasions (July and September 2025)"
+      ],
+      "reference": [
+        "unknown",
+        "Skipping meals triggers seizure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

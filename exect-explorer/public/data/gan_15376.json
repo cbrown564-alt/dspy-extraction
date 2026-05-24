@@ -1,0 +1,59 @@
+{
+  "id": "gan_15376",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 December 2021 10:12\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Thomas\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy with probable temporal lobe onset, with occasional secondary generalisation reported by partner)\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nHe can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between 4 and 6. His partner notes brief focal aware auras (epigastric rising sensation and déjà vu) preceding most events, followed by impaired awareness episodes lasting 60–90 seconds. No clear triggers identified aside from poor sleep and missed evening doses on two occasions.\n\nPlan of Action:\n\nThe history and witness accounts are in keeping with focal epilepsy, likely temporal lobe. Adverse mood effects have been mild on brivaracetam, and lamotrigine has been well tolerated. Given the clustering pattern and breakthrough events, I recommend a cautious titration of brivaracetam while maintaining lamotrigine, alongside rescue planning for clusters.\n\nPlease adjust brivaracetam as follows: increase to 75 mg twice daily for two weeks, then to 100 mg twice daily ongoing if tolerated. Continue lamotrigine 150 mg twice daily unchanged. We discussed adherence, sleep hygiene, and safety. I have provided a seizure diary template and advised the patient to record auras and any potential precipitating factors. I have also issued a buccal midazolam 10 mg rescue plan for clusters exceeding three focal impaired-awareness seizures within two hours, as per local protocol.\n\nI will review him in clinic in three months. If seizure control improves without adverse effects, we will consider a slow lamotrigine up-titration or EEG/MRI review if clusters persist. The patient understands DVLA guidance and is currently not driving.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 640,
+      "end": 773,
+      "text": "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between 4 and 6.",
+      "attributes": {
+        "Label": "1 cluster per 2 week, 4 to 6 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 640,
+      "end": 772,
+      "text": "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between 4 and 6",
+      "attributes": {
+        "Label": "1 cluster per 2 week, 4 to 6 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15376,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 December 2021 10:12\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Thomas\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy with probable temporal lobe onset, with occasional secondary generalisation reported by partner)\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nHe can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between 4 and 6. His partner notes brief focal aware auras (epigastric rising sensation and déjà vu) preceding most events, followed by impaired awareness episodes lasting 60–90 seconds. No clear triggers identified aside from poor sleep and missed evening doses on two occasions.\n\nPlan of Action:\n\nThe history and witness accounts are in keeping with focal epilepsy, likely temporal lobe. Adverse mood effects have been mild on brivaracetam, and lamotrigine has been well tolerated. Given the clustering pattern and breakthrough events, I recommend a cautious titration of brivaracetam while maintaining lamotrigine, alongside rescue planning for clusters.\n\nPlease adjust brivaracetam as follows: increase to 75 mg twice daily for two weeks, then to 100 mg twice daily ongoing if tolerated. Continue lamotrigine 150 mg twice daily unchanged. We discussed adherence, sleep hygiene, and safety. I have provided a seizure diary template and advised the patient to record auras and any potential precipitating factors. I have also issued a buccal midazolam 10 mg rescue plan for clusters exceeding three focal impaired-awareness seizures within two hours, as per local protocol.\n\nI will review him in clinic in three months. If seizure control improves without adverse effects, we will consider a slow lamotrigine up-titration or EEG/MRI review if clusters persist. The patient understands DVLA guidance and is currently not driving.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: “He can sometimes go nearly two week without seizures” and that when seizures recur they cluster as “several in one day, often between 4 and 6.” This supports a cluster pattern with an approximate inter-cluster interval of about 2 weeks and a cluster size of 4 to 6 seizures. Normalize to the cluster format: 1 cluster per 2 week, 4 to 6 per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per 2 week, 4 to 6 per cluster",
+        "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between 4 and 6."
+      ],
+      "reference": [
+        "1 cluster per 2 week, 4 to 6 per cluster",
+        "He can sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between 4 and 6"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

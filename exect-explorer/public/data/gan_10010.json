@@ -1,0 +1,54 @@
+{
+  "id": "gan_10010",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 14 January 2022 \n\nDr Priya Shah\nElm Row Medical Centre\n\n12 Elm Row, Cambridge, CB2 3HT\nDear Dr Priya Shah\nMichael Turner, DOB: 14-03-2004, Hospital No: H928374 NHS No. 7482910563\nFlat 4, 29 Willow Court, Cambridge, CB2 1JP \n\nI reviewed the above patient in the Neurology Clinic today. He is the lead of a university esports club and reports prolonged evening screen exposure with irregular sleep times, particularly around tournament schedules. He has generalised epilepsy and is currently treated with Sodium Valproate 750 mg b.d. and Levetiracetam 1000 mg b.d. He reports good day-to-day tolerability, though he mentions intermittent fatigue after late-night practice sessions and mild irritability which he feels is worse after sleep deprivation.\n\nHe describes brief myoclonic jerks most mornings, typically on waking, and occasional absence episodes during intense screen focus. Regarding convulsive events, he notes that in the past six weeks there have been recurring early-morning groupings occurring on a roughly weekly basis; the exact count within each grouping has not been consistently recorded. He associates these episodes with nights of curtailed sleep preceding early scrimmages. No recent injuries or tongue bites, but he did report one fall from a chair without head impact last month.\n\nWe discussed seizure precipitants at length. He recognises that variable sleep patterns, overnight gaming, and high caffeine intake before competitions often precede the morning events. He has begun using blue-light filters after 21:00 and has reduced energy drinks; he is attempting a fixed bedtime on non-competition days. He does not drive. There is no history of alcohol misuse or recreational drugs. He remains in full-time study and club leadership without academic concessions, though he is open to liaising with student wellbeing services about scheduling flexibility.\n\nOn examination today, general and neurological examinations were unremarkable. Weight is stable. Routine bloods three months ago (FBC, U&E, LFTs) were within normal limits. An EEG from last year showed generalised spike-and-wave discharges consistent with his diagnosis of generalised epilepsy. He has not had recent neuroimaging; there is no new focal history to prompt this at present.\n\nPlan:\n- Continue current antiepileptic regimen (Sodium Valproate 750 mg b.d.; Levetiracetam 1000 mg b.d.) without change today.\n- Arrange updated EEG to assess current generalised epileptiform burden, particularly in the context of morning events.\n- Provide written guidance on sleep hygiene and screen-time timing; he will maintain a seizure and sleep diary, explicitly logging the number of events within each morning grouping to allow more precise frequency tracking.\n- Offer referral to the university disability/wellbeing service to support timetable planning around sleep and competition periods, as patient-reported scheduling appears contributory.\n- Safety advice reviewed, including supervision around water and avoidance of heights when fatigued.\n\nI will review him after the EEG in approximately 10–12 weeks or sooner if there is escalation in convulsive activity, injuries, or intolerance of medication.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 806,
+      "end": 862,
+      "text": "brief myoclonic jerks most mornings, typically on waking",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10010,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 14 January 2022 \n\nDr Priya Shah\nElm Row Medical Centre\n\n12 Elm Row, Cambridge, CB2 3HT\nDear Dr Priya Shah\nMichael Turner, DOB: 14-03-2004, Hospital No: H928374 NHS No. 7482910563\nFlat 4, 29 Willow Court, Cambridge, CB2 1JP \n\nI reviewed the above patient in the Neurology Clinic today. He is the lead of a university esports club and reports prolonged evening screen exposure with irregular sleep times, particularly around tournament schedules. He has generalised epilepsy and is currently treated with Sodium Valproate 750 mg b.d. and Levetiracetam 1000 mg b.d. He reports good day-to-day tolerability, though he mentions intermittent fatigue after late-night practice sessions and mild irritability which he feels is worse after sleep deprivation.\n\nHe describes brief myoclonic jerks most mornings, typically on waking, and occasional absence episodes during intense screen focus. Regarding convulsive events, he notes that in the past six weeks there have been recurring early-morning groupings occurring on a roughly weekly basis; the exact count within each grouping has not been consistently recorded. He associates these episodes with nights of curtailed sleep preceding early scrimmages. No recent injuries or tongue bites, but he did report one fall from a chair without head impact last month.\n\nWe discussed seizure precipitants at length. He recognises that variable sleep patterns, overnight gaming, and high caffeine intake before competitions often precede the morning events. He has begun using blue-light filters after 21:00 and has reduced energy drinks; he is attempting a fixed bedtime on non-competition days. He does not drive. There is no history of alcohol misuse or recreational drugs. He remains in full-time study and club leadership without academic concessions, though he is open to liaising with student wellbeing services about scheduling flexibility.\n\nOn examination today, general and neurological examinations were unremarkable. Weight is stable. Routine bloods three months ago (FBC, U&E, LFTs) were within normal limits. An EEG from last year showed generalised spike-and-wave discharges consistent with his diagnosis of generalised epilepsy. He has not had recent neuroimaging; there is no new focal history to prompt this at present.\n\nPlan:\n- Continue current antiepileptic regimen (Sodium Valproate 750 mg b.d.; Levetiracetam 1000 mg b.d.) without change today.\n- Arrange updated EEG to assess current generalised epileptiform burden, particularly in the context of morning events.\n- Provide written guidance on sleep hygiene and screen-time timing; he will maintain a seizure and sleep diary, explicitly logging the number of events within each morning grouping to allow more precise frequency tracking.\n- Offer referral to the university disability/wellbeing service to support timetable planning around sleep and competition periods, as patient-reported scheduling appears contributory.\n- Safety advice reviewed, including supervision around water and avoidance of heights when fatigued.\n\nI will review him after the EEG in approximately 10–12 weeks or sooner if there is escalation in convulsive activity, injuries, or intolerance of medication.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify all seizure types and their stated frequencies:\n- Myoclonic jerks: \"most mornings\" → occurs on many days per week; exact count per day not given. Using allowed vagueness, this supports \"multiple per week\".\n- Absence episodes: described as \"occasional\" → too vague to quantify.\n- Convulsive events: \"recurring early-morning groupings ... on a roughly weekly basis; the exact count within each grouping has not been consistently recorded\" → approximately weekly clusters with unknown number per cluster. This equates to \"1 cluster per week, multiple per cluster\" if chosen.\nApply the rule to select the highest frequency among multiple seizure types: the myoclonic jerks (most mornings) are more frequent than weekly convulsive clusters. Therefore, the final label should reflect the higher frequency: multiple per week.\nNo evidence of 6-month seizure freedom.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "brief myoclonic jerks most mornings, typically on waking"
+      ],
+      "reference": [
+        "1 cluster per week, multiple per cluster",
+        "Weekly morning clusters reported; number per cluster not documented"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per week) disagrees with Reference (1 cluster per week, multiple per cluster)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

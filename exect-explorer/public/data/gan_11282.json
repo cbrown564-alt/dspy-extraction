@@ -1,0 +1,65 @@
+{
+  "id": "gan_11282",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 06 November 2015 \n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-02-1990, Hospital No: H928374 NHS No. 8473629150  \n12 Maple Close, Sutton, SM1 3AB  \n\nDiagnoses:  \n\nSeizures. \n\nI reviewed Laura Bennett today with her mother. She reports improved stability on current medication with no adverse effects. Last seizure on 05-Aug, with none since; no rescue therapy required. She uses a seizure diary and identifies sleep deprivation as a trigger. Neurological examination today was unremarkable. \n\nPlan: continue present regimen and safety advice; bloods for AED level and U&Es next week via GP; follow-up in 6 months or sooner if events recur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 423,
+      "end": 462,
+      "text": "Last seizure on 05-Aug, with none since",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 423,
+      "end": 445,
+      "text": "Last seizure on 05-Aug",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11282,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 06 November 2015 \n\nDr Patel  \nSt George's Hospital  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-02-1990, Hospital No: H928374 NHS No. 8473629150  \n12 Maple Close, Sutton, SM1 3AB  \n\nDiagnoses:  \n\nSeizures. \n\nI reviewed Laura Bennett today with her mother. She reports improved stability on current medication with no adverse effects. Last seizure on 05-Aug, with none since; no rescue therapy required. She uses a seizure diary and identifies sleep deprivation as a trigger. Neurological examination today was unremarkable. \n\nPlan: continue present regimen and safety advice; bloods for AED level and U&Es next week via GP; follow-up in 6 months or sooner if events recur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient had a last seizure on 05-Aug and none since. Clinic date is 06 November 2015. From 05-Aug to 06-Nov is approximately 3 months. The patient is not confirmed seizure free for at least 6 months, so cannot be labeled 'seizure free for X months/years'. There is no explicit rate like per week/month; the only information is last event date and none since. Therefore, a specific frequency cannot be determined from the provided data.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Last seizure on 05-Aug, with none since"
+      ],
+      "reference": [
+        "unknown",
+        "Last seizure on 05-Aug"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

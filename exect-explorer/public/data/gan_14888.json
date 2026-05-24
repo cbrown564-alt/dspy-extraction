@@ -1,0 +1,59 @@
+{
+  "id": "gan_14888",
+  "text": "Department of Neurology\n\nClinic Date: 24 December 2023\n\nDr Priya Malhotra\nSt Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Priya Malhotra,\n\nMichael Turner, DOB: 14-02-1987, Hospital No: H293847 NHS No. 9045127836\n22 Holborn Lane, London EC1N 2JD\n\nDiagnoses:\n\n- Focal epilepsy (temporal lobe features)\n- History of episodic dizziness and headaches, likely peri-ictal phenomena\n- High caffeine intake acknowledged as a potential trigger\n\nInvestigations:\n\n- MRI brain (November 2023): No acute intracranial abnormality; minor nonspecific white matter changes.\n- EEG (November 2023): Intermittent left temporal sharp transients without generalised spike–wave activity.\n\nCurrent Medication:\n\n- Lamotrigine 100 mg twice daily (titrated in late November)\n- Previously trialled: Levetiracetam (discontinued due to mood disturbance)\n\nPlan:\n\n- Continue lamotrigine 100 mg twice daily.\n- Maintain regular sleep pattern and reduce caffeine intake (patient has already begun cutting down energy drinks and strong coffee).\n- Safety counselling provided regarding bathing, swimming, and heights; no driving until standard seizure-free interval criteria are met as per DVLA guidance.\n- Routine follow-up in 4–6 months, or earlier if breakthrough events occur.\n\nClinical summary:\n\nI reviewed Michael Turner in clinic today. He reports a period of irregular sleep and high caffeine consumption prior to his recent events. Following two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 23-Nov the absences diminished after dose escalation. His last episode was recorded on 01-Dec and he has remained well since. Considering that he has now been free of seizures for 3 weeks and his overall condition is stable, no immediate action is necessary. The semiology remains most consistent with focal onset seizures with temporal lobe features, and there is no evidence to suggest a primary generalised epilepsy syndrome.\n\nWe discussed lifestyle factors, particularly caffeine reduction and sleep regularity, which he is motivated to continue. He understands to seek review if there is any recurrence, change in pattern, or development of new neurological symptoms.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1611,
+      "end": 1682,
+      "text": "His last episode was recorded on 01-Dec and he has remained well since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1448,
+      "end": 1814,
+      "text": "Following two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 23-Nov the absences diminished after dose escalation. His last episode was recorded on 01-Dec and he has remained well since. Considering that he has now been free of seizures for 3 weeks and his overall condition is stable, no immediate action is necessary",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14888,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 24 December 2023\n\nDr Priya Malhotra\nSt Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Priya Malhotra,\n\nMichael Turner, DOB: 14-02-1987, Hospital No: H293847 NHS No. 9045127836\n22 Holborn Lane, London EC1N 2JD\n\nDiagnoses:\n\n- Focal epilepsy (temporal lobe features)\n- History of episodic dizziness and headaches, likely peri-ictal phenomena\n- High caffeine intake acknowledged as a potential trigger\n\nInvestigations:\n\n- MRI brain (November 2023): No acute intracranial abnormality; minor nonspecific white matter changes.\n- EEG (November 2023): Intermittent left temporal sharp transients without generalised spike–wave activity.\n\nCurrent Medication:\n\n- Lamotrigine 100 mg twice daily (titrated in late November)\n- Previously trialled: Levetiracetam (discontinued due to mood disturbance)\n\nPlan:\n\n- Continue lamotrigine 100 mg twice daily.\n- Maintain regular sleep pattern and reduce caffeine intake (patient has already begun cutting down energy drinks and strong coffee).\n- Safety counselling provided regarding bathing, swimming, and heights; no driving until standard seizure-free interval criteria are met as per DVLA guidance.\n- Routine follow-up in 4–6 months, or earlier if breakthrough events occur.\n\nClinical summary:\n\nI reviewed Michael Turner in clinic today. He reports a period of irregular sleep and high caffeine consumption prior to his recent events. Following two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 23-Nov the absences diminished after dose escalation. His last episode was recorded on 01-Dec and he has remained well since. Considering that he has now been free of seizures for 3 weeks and his overall condition is stable, no immediate action is necessary. The semiology remains most consistent with focal onset seizures with temporal lobe features, and there is no evidence to suggest a primary generalised epilepsy syndrome.\n\nWe discussed lifestyle factors, particularly caffeine reduction and sleep regularity, which he is motivated to continue. He understands to seek review if there is any recurrence, change in pattern, or development of new neurological symptoms.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 24-Dec-2023. The letter states: \"His last episode was recorded on 01-Dec and he has remained well since\" and \"he has now been free of seizures for 3 weeks.\" He is not seizure-free for ≥6 months, so we must estimate frequency. Within the current month up to the clinic date, there has been 1 seizure (on 01-Dec). Therefore, the current frequency is best represented as 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "His last episode was recorded on 01-Dec and he has remained well since."
+      ],
+      "reference": [
+        "1 per month",
+        "Following two episodes of dizziness and subsequent headaches, his symptoms improved with supportive care. On 23-Nov the absences diminished after dose escalation. His last episode was recorded on 01-Dec and he has remained well since. Considering that he has now been free of seizures for 3 weeks and his overall condition is stable, no immediate action is necessary"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

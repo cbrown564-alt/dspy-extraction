@@ -1,0 +1,48 @@
+{
+  "id": "gan_8354",
+  "text": "St James's University Hospital \n\nDepartment of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n142 Meadow Road, Leeds LS7 2QP  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-11-1992, Hospital No: L983204 NHS No. 7082154639  \n25 Brookside Close, Leeds, LS6 4HT \n\nMedication: \n\nLevetiracetam 750 mg twice daily, continued without adverse effects reported. Vitamin D 1000 IU daily (self-initiated, patient-reported).\n\nSince her last review three months ago, she reports that her typical episodes have not recurred; she describes no further events suggestive of her previous spells, and her partner has observed no nocturnal events. She continues to avoid identified personal triggers (sleep loss and alcohol), and she has not required any urgent care attendance. There has been no change in cognition or mood that she relates to treatment.\n\nShe mentions occasional brief moments of light-headedness when standing quickly, without loss of awareness or automatisms; these are infrequent and resolve on sitting. She is keeping a diary, which shows no entries for events resembling her prior episodes since early June. She has resumed cycling to work and remains mindful of safety guidance.\n\nWe discussed driving regulations and she confirms she is not currently driving and will continue to follow DVLA guidance. She understands SUDEP and general safety advice, including regular medication adherence, sleep hygiene, and limiting alcohol. No new neurological focal symptoms have been reported.\n\nPlan: \n- Continue levetiracetam 750 mg twice daily.  \n- Maintain diary of any further events; if events recur, we will consider dose optimisation and ambulatory EEG.  \n- Routine bloods (FBC, U&E, LFTs) with GP for general monitoring.  \n- Provide patient with seizure first aid leaflet for family/partner reference.  \n\nWe will review her in six months, or sooner if there is any change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 505,
+      "end": 684,
+      "text": "her typical episodes have not recurred; ... her partner has observed no nocturnal events. ... diary ... shows no entries for events resembling her prior episodes since early June.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8354,
+    "clinic_date": "St James's University Hospital \n\nDepartment of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n142 Meadow Road, Leeds LS7 2QP  \n\nDear Dr Ahmed,  \n\nSophie Turner, DOB: 12-11-1992, Hospital No: L983204 NHS No. 7082154639  \n25 Brookside Close, Leeds, LS6 4HT \n\nMedication: \n\nLevetiracetam 750 mg twice daily, continued without adverse effects reported. Vitamin D 1000 IU daily (self-initiated, patient-reported).\n\nSince her last review three months ago, she reports that her typical episodes have not recurred; she describes no further events suggestive of her previous spells, and her partner has observed no nocturnal events. She continues to avoid identified personal triggers (sleep loss and alcohol), and she has not required any urgent care attendance. There has been no change in cognition or mood that she relates to treatment.\n\nShe mentions occasional brief moments of light-headedness when standing quickly, without loss of awareness or automatisms; these are infrequent and resolve on sitting. She is keeping a diary, which shows no entries for events resembling her prior episodes since early June. She has resumed cycling to work and remains mindful of safety guidance.\n\nWe discussed driving regulations and she confirms she is not currently driving and will continue to follow DVLA guidance. She understands SUDEP and general safety advice, including regular medication adherence, sleep hygiene, and limiting alcohol. No new neurological focal symptoms have been reported.\n\nPlan: \n- Continue levetiracetam 750 mg twice daily.  \n- Maintain diary of any further events; if events recur, we will consider dose optimisation and ambulatory EEG.  \n- Routine bloods (FBC, U&E, LFTs) with GP for general monitoring.  \n- Provide patient with seizure first aid leaflet for family/partner reference.  \n\nWe will review her in six months, or sooner if there is any change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's events consistent with seizures. It states that since her last review three months ago, her typical episodes have not recurred. She is keeping a diary with no entries for events resembling her prior episodes since early June. Clinic date is 14 September 2025. From early June to mid-September is approximately 3+ months without events. The letter confirms absence of seizures for multiple months but not up to 6 months, so cannot label as seizure free for 6+ months. Therefore, the appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "her typical episodes have not recurred; ... her partner has observed no nocturnal events. ... diary ... shows no entries for events resembling her prior episodes since early June."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures resolved"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

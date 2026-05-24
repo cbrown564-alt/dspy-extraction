@@ -1,0 +1,59 @@
+{
+  "id": "gan_3082",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 18 December 2018 \n\nDr Patel  \nRiverside Neurology Clinic  \n12a Millbank, London SW1P 3GE  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-07-1988, Hospital No: H529317 NHS No. 8472036159  \n58 Brookside Avenue, London, W6 7DN  \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset. \n\nI reviewed Laura Bennett in the epilepsy clinic today accompanied by her partner. She reports a sustained improvement in seizure control since our last review. Prior to this improvement she experienced about 6 to 7 seizures in the last three months, typically brief focal impaired-awareness events characterised by behavioural arrest, oroalimentary automatisms and post-event fatigue. Over recent months her sleep hygiene has improved considerably; she reports a more regular bedtime, reduction in late-night screen use, and consistent wake times, which has coincided with improved daytime alertness. \n\nShe now reports: No events for 10 months. This includes absence of focal aware auras and no focal impaired-awareness seizures. There have been no injuries, emergency attendances or rescue medication use. She notes better concentration at work and no sedation during the day. \n\nMedication: Lamotrigine 150 mg twice daily. She has been fully adherent without adverse effects such as rash, dizziness or diplopia. No recent changes in formulation or co-prescribed medicines. She does not drive and understands DVLA regulations; she will inform us if any events recur. \n\nExamination today was unremarkable. Neurological examination is normal and there are no new focal deficits. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily. \n- Maintain current sleep routine and stress-management strategies, as these have likely contributed to improved control. \n- Safety advice reinforced; partner is aware of first-aid measures. \n- Routine bloods not required at this stage given stability and tolerability. \n- We will review in 6 months, or sooner if any breakthrough events occur. \n\nOverall, I am pleased to note that her focal epilepsy is currently well controlled with No events for 10 months, against a background of previously about 6 to 7 seizures in the last three months, coinciding with improved sleep hygiene and stable medication. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 965,
+      "end": 1006,
+      "text": "She now reports: No events for 10 months.",
+      "attributes": {
+        "Label": "seizure free for 10 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 982,
+      "end": 1005,
+      "text": "No events for 10 months",
+      "attributes": {
+        "Label": "seizure free for 10 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3082,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 18 December 2018 \n\nDr Patel  \nRiverside Neurology Clinic  \n12a Millbank, London SW1P 3GE  \n\nDear Dr Patel,  \n\nLaura Bennett, DOB: 14-07-1988, Hospital No: H529317 NHS No. 8472036159  \n58 Brookside Avenue, London, W6 7DN  \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset. \n\nI reviewed Laura Bennett in the epilepsy clinic today accompanied by her partner. She reports a sustained improvement in seizure control since our last review. Prior to this improvement she experienced about 6 to 7 seizures in the last three months, typically brief focal impaired-awareness events characterised by behavioural arrest, oroalimentary automatisms and post-event fatigue. Over recent months her sleep hygiene has improved considerably; she reports a more regular bedtime, reduction in late-night screen use, and consistent wake times, which has coincided with improved daytime alertness. \n\nShe now reports: No events for 10 months. This includes absence of focal aware auras and no focal impaired-awareness seizures. There have been no injuries, emergency attendances or rescue medication use. She notes better concentration at work and no sedation during the day. \n\nMedication: Lamotrigine 150 mg twice daily. She has been fully adherent without adverse effects such as rash, dizziness or diplopia. No recent changes in formulation or co-prescribed medicines. She does not drive and understands DVLA regulations; she will inform us if any events recur. \n\nExamination today was unremarkable. Neurological examination is normal and there are no new focal deficits. \n\nPlan: \n- Continue lamotrigine 150 mg twice daily. \n- Maintain current sleep routine and stress-management strategies, as these have likely contributed to improved control. \n- Safety advice reinforced; partner is aware of first-aid measures. \n- Routine bloods not required at this stage given stability and tolerability. \n- We will review in 6 months, or sooner if any breakthrough events occur. \n\nOverall, I am pleased to note that her focal epilepsy is currently well controlled with No events for 10 months, against a background of previously about 6 to 7 seizures in the last three months, coinciding with improved sleep hygiene and stable medication. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit current seizure status: \"She now reports: No events for 10 months.\" This indicates she has had no seizures for a continuous period of 10 months. The 6-month criterion for seizure freedom is met, so the correct normalized label is 'seizure free for 10 month'. Past history (\"about 6 to 7 seizures in the last three months\") is background and not the current frequency; per the rules, we select the current status.",
+      "seizure_frequency_number": [
+        "seizure free for 10 month",
+        "She now reports: No events for 10 months."
+      ],
+      "reference": [
+        "seizure free for 10 month",
+        "No events for 10 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12314",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 11-05-1996, Hospital No: M483920 NHS No. 9081764521  \n14 Brookfield Road, London, W10 5DA \n\nMedication: \n\n- Levetiracetam 1,500 mg twice daily, continued.  \n- Clobazam 10 mg at night, as adjunct.  \n- Previously tried: Sodium valproate (weight gain and tremor), Lamotrigine (rash), Topiramate (cognitive slowing), Carbamazepine (worsened balance), and Perampanel (mood change).  \n\nHistory since last review: \n\nHe attended with his parents, who provide most of the day-to-day observations. Although his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures three nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change. They feel his recovery time after the larger convulsions is shorter on the current combination, and he has had fewer tongue bites. No reported status episodes. \n\nSleep and lifestyle: \n\nHigh caffeine intake was acknowledged; he routinely consumes strong coffee and energy drinks, particularly after lunch and into the evening, which he and his parents suspect may relate to nights with poorer sleep and increased clustering. He reports irregular sleep–wake timing on weekends. No alcohol. No recreational drugs. \n\nExamination and tests: \n\nGeneral and neurological examinations today were unchanged from baseline. No focal deficits noted. Previous MRI reported structurally unremarkable findings. Serial EEGs have shown non-specific abnormalities but without a consistent lateralising pattern. Bloods last month (U&E, LFTs, FBC, vitamin D) were within reference limits. \n\nAssessment and plan: \n\nGiven the stable overall pattern and the family’s perception of modest day-to-day benefit on the present regimen, I have left treatment unaltered. He will continue Levetiracetam 1,500 mg twice daily and Clobazam 10 mg at night. We discussed practical measures around sleep hygiene and stimulant use; he and his parents intend to gradually reduce caffeinated drinks, especially after midday, and to keep a simple seizure and sleep diary to help identify any temporal relationships. They are content with this approach for now. \n\nI have provided a rescue midazolam buccal preparation for prolonged events as previously, with no change to instructions. The family understands to seek urgent help if there is any prolonged convulsion or notable change in pattern. \n\nFollow-up: \n\nWe will review him in six months, or sooner if there is deterioration or problematic adverse effects. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 776,
+      "end": 844,
+      "text": "he still has generalised tonic-clonic seizures three nights per week",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 690,
+      "end": 988,
+      "text": "Although his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures three nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "3 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12314,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,  \n\nDaniel Morris, DOB: 11-05-1996, Hospital No: M483920 NHS No. 9081764521  \n14 Brookfield Road, London, W10 5DA \n\nMedication: \n\n- Levetiracetam 1,500 mg twice daily, continued.  \n- Clobazam 10 mg at night, as adjunct.  \n- Previously tried: Sodium valproate (weight gain and tremor), Lamotrigine (rash), Topiramate (cognitive slowing), Carbamazepine (worsened balance), and Perampanel (mood change).  \n\nHistory since last review: \n\nHe attended with his parents, who provide most of the day-to-day observations. Although his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures three nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change. They feel his recovery time after the larger convulsions is shorter on the current combination, and he has had fewer tongue bites. No reported status episodes. \n\nSleep and lifestyle: \n\nHigh caffeine intake was acknowledged; he routinely consumes strong coffee and energy drinks, particularly after lunch and into the evening, which he and his parents suspect may relate to nights with poorer sleep and increased clustering. He reports irregular sleep–wake timing on weekends. No alcohol. No recreational drugs. \n\nExamination and tests: \n\nGeneral and neurological examinations today were unchanged from baseline. No focal deficits noted. Previous MRI reported structurally unremarkable findings. Serial EEGs have shown non-specific abnormalities but without a consistent lateralising pattern. Bloods last month (U&E, LFTs, FBC, vitamin D) were within reference limits. \n\nAssessment and plan: \n\nGiven the stable overall pattern and the family’s perception of modest day-to-day benefit on the present regimen, I have left treatment unaltered. He will continue Levetiracetam 1,500 mg twice daily and Clobazam 10 mg at night. We discussed practical measures around sleep hygiene and stimulant use; he and his parents intend to gradually reduce caffeinated drinks, especially after midday, and to keep a simple seizure and sleep diary to help identify any temporal relationships. They are content with this approach for now. \n\nI have provided a rescue midazolam buccal preparation for prolonged events as previously, with no change to instructions. The family understands to seek urgent help if there is any prolonged convulsion or notable change in pattern. \n\nFollow-up: \n\nWe will review him in six months, or sooner if there is deterioration or problematic adverse effects. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies mentioned. The letter states: \"he still has generalised tonic-clonic seizures three nights per week\" which is a clear numeric frequency: 3 per week. It also mentions \"drop attacks occurring in batches\" and \"tonic seizures during both day and night\" without numeric counts. According to the rule to select the highest frequency, we compare explicit rates; only 'three nights per week' is quantifiable. The clustered drop attacks lack per-time quantification and the number per cluster is unspecified, so they cannot override the explicit 3 per week figure. Therefore, the inferred seizure frequency is 3 per week.",
+      "seizure_frequency_number": [
+        "3 per week",
+        "he still has generalised tonic-clonic seizures three nights per week"
+      ],
+      "reference": [
+        "3 per week",
+        "Although his seizures fluctuate, his parents consider him reasonably well controlled, he still has generalised tonic-clonic seizures three nights per week, drop attacks occurring in batches, and tonic seizures during both day and night, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

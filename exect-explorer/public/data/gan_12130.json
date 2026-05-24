@@ -1,0 +1,59 @@
+{
+  "id": "gan_12130",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Practice\n\n48 Millstream Road, London, SE10 3PA\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: G784512 NHS No. 7392018456\n12 Beckford Court, Deptford, London, SE8 4NX \n\nI reviewed the above patient in the Neurology Clinic today. He remains under long-term follow-up, with antiseizure therapy and bone-health monitoring arranged and recorded elsewhere. Since his last routine review, he reports that his day-to-day function has been stable with regular work attendance and independent living. Sleep is satisfactory though he notes occasional late evenings due to shift patterns.\n\nWith regard to events, he describes two distinct patterns that have persisted over the past year. Generalised tonic-clonic seizures are rare, typically 3 events per year. focal sensory occur several times each week, particularly in the evenings. He identifies stress and missed meals as potential precipitants for the focal sensory episodes. There is no consistent diurnal pattern for the convulsions, and no reported injuries. Post-event recovery is prompt after the focal episodes; following convulsions he requires several hours of rest with headache and myalgia the next day. He does not drive and remains aware of DVLA guidance.\n\nMedication adherence is good by pill count and pharmacy records. He reports mild intermittent dizziness in the late afternoon and occasional tingling in the fingertips, without rash or visual disturbance. No recent hospital admissions. Weight has been stable. He continues vitamin D and calcium as per previous plan; bone-density surveillance is ongoing via the metabolic bone clinic.\n\nOn examination today: BP 122/74, pulse 72 regular. Neurological examination was unremarkable with normal gait, intact cranial nerves, and no focal deficits. No tremor or nystagmus. Skin clear of rashes.\n\nInvestigations: Routine bloods last month showed normal FBC, renal and liver profiles. Vitamin D is within target range on supplementation. Prior EEGs have been non-diagnostic, and MRI brain (reported previously) showed no structural correlate. A repeat ambulatory EEG has been requested to better sample evening events; scheduling is in progress.\n\nPlan:\n- Continue current antiseizure regimen without change pending ambulatory EEG results.\n- Reinforce regular meals, hydration, and sleep hygiene; he will keep a simple event diary noting timing (especially evenings), potential triggers, and recovery.\n- Safety advice reiterated regarding bathing, heights, and operating machinery.\n- Coordinate with the metabolic bone team to ensure the next bone-density assessment proceeds as planned; results to be copied to this clinic.\n- Follow-up in 4–6 months, or sooner if there is an increase in convulsions, medication intolerance, or injury.\n\nHe understands the above and agrees with the plan. I will write again once the ambulatory EEG has been reported.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 848,
+      "end": 891,
+      "text": "focal sensory occur several times each week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 775,
+      "end": 922,
+      "text": "Generalised tonic-clonic seizures are rare, typically 3 events per year. focal sensory occur several times each week, particularly in the evenings.",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12130,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Practice\n\n48 Millstream Road, London, SE10 3PA\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: G784512 NHS No. 7392018456\n12 Beckford Court, Deptford, London, SE8 4NX \n\nI reviewed the above patient in the Neurology Clinic today. He remains under long-term follow-up, with antiseizure therapy and bone-health monitoring arranged and recorded elsewhere. Since his last routine review, he reports that his day-to-day function has been stable with regular work attendance and independent living. Sleep is satisfactory though he notes occasional late evenings due to shift patterns.\n\nWith regard to events, he describes two distinct patterns that have persisted over the past year. Generalised tonic-clonic seizures are rare, typically 3 events per year. focal sensory occur several times each week, particularly in the evenings. He identifies stress and missed meals as potential precipitants for the focal sensory episodes. There is no consistent diurnal pattern for the convulsions, and no reported injuries. Post-event recovery is prompt after the focal episodes; following convulsions he requires several hours of rest with headache and myalgia the next day. He does not drive and remains aware of DVLA guidance.\n\nMedication adherence is good by pill count and pharmacy records. He reports mild intermittent dizziness in the late afternoon and occasional tingling in the fingertips, without rash or visual disturbance. No recent hospital admissions. Weight has been stable. He continues vitamin D and calcium as per previous plan; bone-density surveillance is ongoing via the metabolic bone clinic.\n\nOn examination today: BP 122/74, pulse 72 regular. Neurological examination was unremarkable with normal gait, intact cranial nerves, and no focal deficits. No tremor or nystagmus. Skin clear of rashes.\n\nInvestigations: Routine bloods last month showed normal FBC, renal and liver profiles. Vitamin D is within target range on supplementation. Prior EEGs have been non-diagnostic, and MRI brain (reported previously) showed no structural correlate. A repeat ambulatory EEG has been requested to better sample evening events; scheduling is in progress.\n\nPlan:\n- Continue current antiseizure regimen without change pending ambulatory EEG results.\n- Reinforce regular meals, hydration, and sleep hygiene; he will keep a simple event diary noting timing (especially evenings), potential triggers, and recovery.\n- Safety advice reiterated regarding bathing, heights, and operating machinery.\n- Coordinate with the metabolic bone team to ensure the next bone-density assessment proceeds as planned; results to be copied to this clinic.\n- Follow-up in 4–6 months, or sooner if there is an increase in convulsions, medication intolerance, or injury.\n\nHe understands the above and agrees with the plan. I will write again once the ambulatory EEG has been reported.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes two seizure patterns over the past year: (1) Generalised tonic-clonic seizures: 'typically 3 events per year.' (2) Focal sensory seizures: 'occur several times each week.' Per the rule to select the highest frequency when multiple exist, 'several times each week' is more frequent than '3 per year.' The exact number for 'several' is not specified, so we must use 'multiple' for the value. Therefore, the normalized label is 'multiple per week.'",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "focal sensory occur several times each week"
+      ],
+      "reference": [
+        "multiple per week",
+        "Generalised tonic-clonic seizures are rare, typically 3 events per year. focal sensory occur several times each week, particularly in the evenings."
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

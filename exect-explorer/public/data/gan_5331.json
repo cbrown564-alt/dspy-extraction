@@ -1,0 +1,54 @@
+{
+  "id": "gan_5331",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nRiverside Health Centre  \n144 Riverside Road, Bristol BS1 4QH  \n\nDear Dr Patel,                                                                                                         \n\nJames O’Connor, DOB: 22-11-1990, Hospital No: B673920 NHS No. 9083456172  \nFlat 3, 27 Harcourt Avenue, Bristol, BS7 9LP  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since March 2024  \n\nLevetiracetam 750mg twice daily (patient-confirmed current regimen) \n\nLevetiracetam Blood Level:  \n\n17 September 2025: 18 µg/mL (laboratory reference range 12–46 µg/mL). Dose 750mg twice daily.  \n\nSeizures: The patient reports no events, warnings, or episodes suggestive of seizures over the past 12 months; they describe their condition as settled with no breakthrough symptoms during this period. \n\nI conducted a routine follow-up via video consultation today. The patient reports excellent adherence, using a weekly pill organiser and setting phone reminders. No adverse effects from levetiracetam were noted, including no mood changes, dizziness, or somnolence. Sleep routine is consistent (7–8 hours/night), and the patient has avoided sleep deprivation and excess alcohol as previously discussed. They are not currently driving and understand to inform the DVLA if any seizure occurs in the future.\n\nNo dose adjustment is needed at present. I advised continuing the current regimen and to obtain a repeat trough level prior to the next review, or earlier if any suspected events occur. We also discussed rescue planning: the patient is aware to seek urgent care if a prolonged convulsive event occurs or if there is clustering of episodes. \n\nPlan:  \n- Continue levetiracetam 750mg twice daily.  \n- Repeat trough level in 6 months or sooner if symptomatic change.  \n- Safety counselling reinforced (sleep hygiene, alcohol moderation, prompt reporting of any episodes).  \n- Routine follow-up in 6–9 months via clinic or sooner if concerns arise. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 689,
+      "end": 768,
+      "text": "no events, warnings, or episodes suggestive of seizures over the past 12 months",
+      "attributes": {
+        "Label": "seizure free for 12 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5331,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nRiverside Health Centre  \n144 Riverside Road, Bristol BS1 4QH  \n\nDear Dr Patel,                                                                                                         \n\nJames O’Connor, DOB: 22-11-1990, Hospital No: B673920 NHS No. 9083456172  \nFlat 3, 27 Harcourt Avenue, Bristol, BS7 9LP  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since March 2024  \n\nLevetiracetam 750mg twice daily (patient-confirmed current regimen) \n\nLevetiracetam Blood Level:  \n\n17 September 2025: 18 µg/mL (laboratory reference range 12–46 µg/mL). Dose 750mg twice daily.  \n\nSeizures: The patient reports no events, warnings, or episodes suggestive of seizures over the past 12 months; they describe their condition as settled with no breakthrough symptoms during this period. \n\nI conducted a routine follow-up via video consultation today. The patient reports excellent adherence, using a weekly pill organiser and setting phone reminders. No adverse effects from levetiracetam were noted, including no mood changes, dizziness, or somnolence. Sleep routine is consistent (7–8 hours/night), and the patient has avoided sleep deprivation and excess alcohol as previously discussed. They are not currently driving and understand to inform the DVLA if any seizure occurs in the future.\n\nNo dose adjustment is needed at present. I advised continuing the current regimen and to obtain a repeat trough level prior to the next review, or earlier if any suspected events occur. We also discussed rescue planning: the patient is aware to seek urgent care if a prolonged convulsive event occurs or if there is clustering of episodes. \n\nPlan:  \n- Continue levetiracetam 750mg twice daily.  \n- Repeat trough level in 6 months or sooner if symptomatic change.  \n- Safety counselling reinforced (sleep hygiene, alcohol moderation, prompt reporting of any episodes).  \n- Routine follow-up in 6–9 months via clinic or sooner if concerns arise. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"no events, warnings, or episodes suggestive of seizures over the past 12 months.\" This provides a clear seizure-free duration of 12 months as of the clinic date (02 October 2025). This meets the criterion of at least 6 months seizure-free, so the normalized label is \"seizure free for 12 month.\" No other seizure frequencies are mentioned.",
+      "seizure_frequency_number": [
+        "seizure free for 12 month",
+        "no events, warnings, or episodes suggestive of seizures over the past 12 months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable without seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 12 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "gan_5200",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today following transition from paediatric to adult services. This was the first dedicated adult clinic review post-handover. A parent may attend and contribute collateral history when present, although on this occasion the patient attended alone and provided the account himself. \n\nHe reports good day-to-day functioning, is working full-time, and is driving in accordance with DVLA guidance. He confirms he remains seizure freedom since late 2023, with no episodes reported by him or noted by family when present. There have been no interim emergency presentations, injuries, or hospital admissions. He denies auras, blackouts, tongue biting, or nocturnal events, and his wearable sleep tracker has not flagged any abnormal nocturnal movements. \n\nHe continues regular medication with good adherence and no missed doses reported in the last six months. Current regimen: Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. He tolerates these well; he notes occasional mild tension-type headaches and intermittent sleep-onset delay, both self-limiting. No mood change, rash, diplopia, or gastrointestinal upset. He does not consume alcohol to excess and has reduced caffeine. \n\nOn examination today he was alert and oriented with normal speech and language. Cranial nerves intact, tone and power full throughout, reflexes symmetrical, coordination normal, and gait steady. Blood pressure 124/78 mmHg, pulse 68 bpm regular. \n\nBackground records from paediatric services have been uploaded to the adult record, including prior EEGs and MRI, which did not identify a clear structural cause. We have not repeated neuroimaging given the stable clinical picture and the fact that he remains seizure freedom. Routine bloods (U&E, LFTs, FBC) were done via primary care in August 2025 and were within reference ranges; I have requested copies for our files. \n\nPlan:\n- Continue Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. with no changes today, given he remains seizure freedom and is tolerating treatment.\n- Annual review in adult epilepsy clinic, sooner if breakthrough events occur.\n- Safety reinforced: adherence, sleep hygiene, and avoidance of precipitants. He is aware to seek urgent assessment if any events recur.\n- Parent may attend future appointments to provide collateral history when available, in line with the transition plan.\n\nI will copy this letter to the patient and to the transition coordinator to ensure continuity. Please let me know if there are any concerns from primary care or if blood results suggest a need for earlier review.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 702,
+      "end": 744,
+      "text": "he remains seizure freedom since late 2023",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 705,
+      "end": 728,
+      "text": "remains seizure freedom",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5200,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today following transition from paediatric to adult services. This was the first dedicated adult clinic review post-handover. A parent may attend and contribute collateral history when present, although on this occasion the patient attended alone and provided the account himself. \n\nHe reports good day-to-day functioning, is working full-time, and is driving in accordance with DVLA guidance. He confirms he remains seizure freedom since late 2023, with no episodes reported by him or noted by family when present. There have been no interim emergency presentations, injuries, or hospital admissions. He denies auras, blackouts, tongue biting, or nocturnal events, and his wearable sleep tracker has not flagged any abnormal nocturnal movements. \n\nHe continues regular medication with good adherence and no missed doses reported in the last six months. Current regimen: Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. He tolerates these well; he notes occasional mild tension-type headaches and intermittent sleep-onset delay, both self-limiting. No mood change, rash, diplopia, or gastrointestinal upset. He does not consume alcohol to excess and has reduced caffeine. \n\nOn examination today he was alert and oriented with normal speech and language. Cranial nerves intact, tone and power full throughout, reflexes symmetrical, coordination normal, and gait steady. Blood pressure 124/78 mmHg, pulse 68 bpm regular. \n\nBackground records from paediatric services have been uploaded to the adult record, including prior EEGs and MRI, which did not identify a clear structural cause. We have not repeated neuroimaging given the stable clinical picture and the fact that he remains seizure freedom. Routine bloods (U&E, LFTs, FBC) were done via primary care in August 2025 and were within reference ranges; I have requested copies for our files. \n\nPlan:\n- Continue Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d. with no changes today, given he remains seizure freedom and is tolerating treatment.\n- Annual review in adult epilepsy clinic, sooner if breakthrough events occur.\n- Safety reinforced: adherence, sleep hygiene, and avoidance of precipitants. He is aware to seek urgent assessment if any events recur.\n- Parent may attend future appointments to provide collateral history when available, in line with the transition plan.\n\nI will copy this letter to the patient and to the transition coordinator to ensure continuity. Please let me know if there are any concerns from primary care or if blood results suggest a need for earlier review.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"remains seizure freedom since late 2023\" and reiterates he remains seizure free. Clinic date is 02 October 2025. From late 2023 to October 2025 is well over 6 months (approximately 22 months if assuming December 2023; even if 'late 2023' is November or December, it exceeds 6 months). Therefore, the patient meets the criterion for seizure free for multiple years. Exact numeric years are not specified; use 'multiple year' per rules when the exact number is not given but clearly exceeds a year.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "he remains seizure freedom since late 2023"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "remains seizure freedom"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

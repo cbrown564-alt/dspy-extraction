@@ -1,0 +1,59 @@
+{
+  "id": "gan_5584",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Hughes, DOB: 12-03-1991, Hospital No: H938271 NHS No. 6051847923  \n14 Fenwick Close, London, W10 6AP \n\nMedication: \n\nLevetiracetam 1,000 mg twice daily. Midazolam buccal solution 10 mg as rescue therapy.\n\nThank you for reviewing this patient who works in a cold-chain warehouse. He describes focal epilepsy with preserved awareness at onset, characterised by a rising epigastric sensation followed by brief speech arrest and right hand automatisms lasting 30–60 seconds, occasionally progressing to impaired awareness. He reports several episodes per week, clustering during early morning shifts when the warehouse floor is at its coldest. He notes that low temperatures and mandatory insulated gloves make locating and deploying the buccal midazolam slower during events, particularly when colleagues are not immediately nearby.\n\nThere has been partial response to levetiracetam, with reduced severity but persistent frequency. No clear triggers apart from cold exposure and sleep restriction before 05:00 starts. No history of generalised tonic–clonic seizures. He carries a medical alert card and has completed workplace safety training; his manager has agreed to a buddy system on high-risk aisles but this has not fully mitigated delays in rescue access.\n\nExamination today is unremarkable. No focal neurological deficits. Bloods including FBC, U&E and LFTs last month were normal. MRI brain (2023) showed no structural lesion. A prior EEG demonstrated left temporal interictal epileptiform discharges consistent with focal epilepsy. He remains fit to work with restrictions already in place and no exposure to working at heights or operating forklifts during or immediately after events.\n\nPlan:\n- Continue levetiracetam 1,000 mg twice daily. We discussed adherence and timing relative to early shifts to reduce morning dips. \n- Provide an additional labelled buccal midazolam unit to be stored at a designated access point near his workstation to reduce delays linked to gloves and low temperatures; employer is aware of storage requirements per policy. \n- Arrange repeat sleep-focused EEG to reassess burden given several episodes per week. \n- Occupational Health letter to formalise the buddy system and permit glove-compatible rescue device packaging and quick-release pouch on his outer layer. \n- Safety: colleagues trained to recognise focal onset episodes and assist with rescue only if progression or prolonged impairment occurs; patient prefers to self-administer when able.\n\nWe will review him in three months or sooner if events escalate in duration, if there is any injury, or if episodes begin to generalise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 716,
+      "end": 752,
+      "text": "He reports several episodes per week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 727,
+      "end": 752,
+      "text": "Several episodes per week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5584,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nDaniel Hughes, DOB: 12-03-1991, Hospital No: H938271 NHS No. 6051847923  \n14 Fenwick Close, London, W10 6AP \n\nMedication: \n\nLevetiracetam 1,000 mg twice daily. Midazolam buccal solution 10 mg as rescue therapy.\n\nThank you for reviewing this patient who works in a cold-chain warehouse. He describes focal epilepsy with preserved awareness at onset, characterised by a rising epigastric sensation followed by brief speech arrest and right hand automatisms lasting 30–60 seconds, occasionally progressing to impaired awareness. He reports several episodes per week, clustering during early morning shifts when the warehouse floor is at its coldest. He notes that low temperatures and mandatory insulated gloves make locating and deploying the buccal midazolam slower during events, particularly when colleagues are not immediately nearby.\n\nThere has been partial response to levetiracetam, with reduced severity but persistent frequency. No clear triggers apart from cold exposure and sleep restriction before 05:00 starts. No history of generalised tonic–clonic seizures. He carries a medical alert card and has completed workplace safety training; his manager has agreed to a buddy system on high-risk aisles but this has not fully mitigated delays in rescue access.\n\nExamination today is unremarkable. No focal neurological deficits. Bloods including FBC, U&E and LFTs last month were normal. MRI brain (2023) showed no structural lesion. A prior EEG demonstrated left temporal interictal epileptiform discharges consistent with focal epilepsy. He remains fit to work with restrictions already in place and no exposure to working at heights or operating forklifts during or immediately after events.\n\nPlan:\n- Continue levetiracetam 1,000 mg twice daily. We discussed adherence and timing relative to early shifts to reduce morning dips. \n- Provide an additional labelled buccal midazolam unit to be stored at a designated access point near his workstation to reduce delays linked to gloves and low temperatures; employer is aware of storage requirements per policy. \n- Arrange repeat sleep-focused EEG to reassess burden given several episodes per week. \n- Occupational Health letter to formalise the buddy system and permit glove-compatible rescue device packaging and quick-release pouch on his outer layer. \n- Safety: colleagues trained to recognise focal onset episodes and assist with rescue only if progression or prolonged impairment occurs; patient prefers to self-administer when able.\n\nWe will review him in three months or sooner if events escalate in duration, if there is any injury, or if episodes begin to generalise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He reports several episodes per week\". This provides a clear current frequency descriptor but without a specific numeric count. No other conflicting or more frequent rate is given. Therefore, per rules, use 'multiple' for vague counts and standardize to per week.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "He reports several episodes per week"
+      ],
+      "reference": [
+        "multiple per week",
+        "Several episodes per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

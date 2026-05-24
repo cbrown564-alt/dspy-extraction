@@ -1,0 +1,59 @@
+{
+  "id": "gan_12422",
+  "text": "Neurology Clinic\n\nClinic Date: 11 May 2019\n\nDr Patel\nRiverside Neurology Service\nOutpatient Department, Riverside Health Centre, 14 Mill Street, Bristol BS1 4AB\n\nDear Dr Patel,\n\nRe: Laura Bennett, DOB: 14-07-1993, Hospital No: H927451, NHS No: 7401928653\nAddress: Flat 3, 22 Brook Lane, Bristol, BS3 2QZ\n\nThank you for asking me to review Laura Bennett in our neurology clinic today, attended with her mother, who is the primary caregiver. We discussed current symptoms, rescue plans and device checks where relevant. There have been no recent hospital admissions, and no injuries reported.\n\nSeizure history and current status:\nSeizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year, this has been her enduring seizure profile for many years. The family keeps a calendar record which corroborates this pattern over the last 12 months. There are no identified new triggers; menses and intercurrent illness can still exacerbate events. No episodes of status epilepticus were reported. Post-ictal recovery remains slow but predictable, with fatigue and transient confusion.\n\nMedications and adherence:\n- No recent changes to regular anti-seizure medicines per caregiver report.\n- Rescue plan remains available; no rescue treatment used in the past three months.\n- Adherence is reported as good; no adverse effects volunteered beyond mild daytime sleepiness.\n\nInvestigations and observations today:\n- Neurological examination: unchanged from prior notes; no new focal deficits.\n- Bloods and drug levels were not repeated today; last routine profile three months ago reportedly unremarkable per GP correspondence.\n- No new imaging since last review; family did not report interval events warranting urgent re-imaging.\n\nCare plan discussed:\n- Continue current management pathway as tolerated, with emphasis on safety measures at night and consistent record-keeping.\n- We reviewed seizure first aid and when to seek emergency help; the caregiver demonstrated good understanding.\n- Community epilepsy nurse contact details were re-confirmed for ongoing support.\n\nFollow-up:\nWe agreed to review Laura Bennett in six months, or sooner if there is an increase in frequency, clusters, injuries, or any change in the established pattern described above.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 705,
+      "end": 819,
+      "text": "she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 628,
+      "end": 878,
+      "text": "Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year, this has been her enduring seizure profile for many years",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12422,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 11 May 2019\n\nDr Patel\nRiverside Neurology Service\nOutpatient Department, Riverside Health Centre, 14 Mill Street, Bristol BS1 4AB\n\nDear Dr Patel,\n\nRe: Laura Bennett, DOB: 14-07-1993, Hospital No: H927451, NHS No: 7401928653\nAddress: Flat 3, 22 Brook Lane, Bristol, BS3 2QZ\n\nThank you for asking me to review Laura Bennett in our neurology clinic today, attended with her mother, who is the primary caregiver. We discussed current symptoms, rescue plans and device checks where relevant. There have been no recent hospital admissions, and no injuries reported.\n\nSeizure history and current status:\nSeizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year, this has been her enduring seizure profile for many years. The family keeps a calendar record which corroborates this pattern over the last 12 months. There are no identified new triggers; menses and intercurrent illness can still exacerbate events. No episodes of status epilepticus were reported. Post-ictal recovery remains slow but predictable, with fatigue and transient confusion.\n\nMedications and adherence:\n- No recent changes to regular anti-seizure medicines per caregiver report.\n- Rescue plan remains available; no rescue treatment used in the past three months.\n- Adherence is reported as good; no adverse effects volunteered beyond mild daytime sleepiness.\n\nInvestigations and observations today:\n- Neurological examination: unchanged from prior notes; no new focal deficits.\n- Bloods and drug levels were not repeated today; last routine profile three months ago reportedly unremarkable per GP correspondence.\n- No new imaging since last review; family did not report interval events warranting urgent re-imaging.\n\nCare plan discussed:\n- Continue current management pathway as tolerated, with emphasis on safety measures at night and consistent record-keeping.\n- We reviewed seizure first aid and when to seek emergency help; the caregiver demonstrated good understanding.\n- Community epilepsy nurse contact details were re-confirmed for ongoing support.\n\nFollow-up:\nWe agreed to review Laura Bennett in six months, or sooner if there is an increase in frequency, clusters, injuries, or any change in the established pattern described above.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year'. 'Nightly' implies 1 seizure per night ≈ 1 per day. There is also an additional frequency of 4 per year for tonic seizures. Per the rule to select the highest frequency when multiple exist, we choose the more frequent one, which is nightly (1 per day). No summation is required because they are different seizure types and the higher frequency dominates the overall frequency label.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year"
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure control is inconsistent and while the caregiver perceives stability, she continues to have nightly generalised convulsions seizures and intermittent tonic seizures four times per year, this has been her enduring seizure profile for many years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

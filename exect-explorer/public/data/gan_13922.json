@@ -1,0 +1,65 @@
+{
+  "id": "gan_13922",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 10 November 2023\n\nDr Patel\nRiverside NHS Neurology Clinic\nRiverside Health Centre, 14 Millbank, London SW1P 3JT\n\nDear Dr Patel,\n\nHelen Morris, DOB: 12-02-1989, Hospital No: H928374 NHS No. 7485129630\nFlat 3, 28 Mariners Way, Aberdeen, AB11 5DL\n\nDiagnoses:\n\nFocal epilepsy.\n\nI conducted a scheduled telephone follow‑up with Helen Morris while she was onshore between offshore rotations. She works offshore on a rotational basis, and we have arranged telephone reviews during her onshore periods to minimise disruption to her employment. She reported that since her medication was increased she has had two seizures, the most recent occurring on 9 Aug. She describes stereotyped focal impaired-awareness episodes with behavioural arrest, oro‑facial automatisms, and brief post‑ictal confusion, without secondary generalisation.\n\nShe denies medication side effects other than mild morning fatigue, which does not impact her ability to meet offshore fitness-to-work requirements. She has not required rescue medication and has not attended emergency services since the dose change. She is maintaining a seizure diary and using a reminder app to support adherence while offshore. No triggers identified beyond irregular sleep during transit days; she plans to adhere to a stable sleep schedule when travelling to and from the rig.\n\nWe discussed safety at work; she confirms that designated tasks during offshore deployment avoid work at height or lone high-risk duties, in line with occupational health guidance. She understands to report any breakthrough events to her employer and to us promptly. Driving advice remains consistent with DVLA regulations for focal epilepsy; she reports she is currently not driving.\n\nPlan:\n- Continue current anti-seizure medication at the present dose, as the reduction in events is satisfactory from her perspective.\n- Maintain seizure diary and submit entries via the patient portal prior to each onshore review.\n- Occupational health correspondence to continue as required; no change to fitness-to-work status today based on her report.\n- Arrange next telephone review for her next onshore window in approximately 3 months, with earlier contact if further events occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 608,
+      "end": 703,
+      "text": "since her medication was increased she has had two seizures, the most recent occurring on 9 Aug",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 590,
+      "end": 703,
+      "text": "She reported that since her medication was increased she has had two seizures, the most recent occurring on 9 Aug",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13922,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 10 November 2023\n\nDr Patel\nRiverside NHS Neurology Clinic\nRiverside Health Centre, 14 Millbank, London SW1P 3JT\n\nDear Dr Patel,\n\nHelen Morris, DOB: 12-02-1989, Hospital No: H928374 NHS No. 7485129630\nFlat 3, 28 Mariners Way, Aberdeen, AB11 5DL\n\nDiagnoses:\n\nFocal epilepsy.\n\nI conducted a scheduled telephone follow‑up with Helen Morris while she was onshore between offshore rotations. She works offshore on a rotational basis, and we have arranged telephone reviews during her onshore periods to minimise disruption to her employment. She reported that since her medication was increased she has had two seizures, the most recent occurring on 9 Aug. She describes stereotyped focal impaired-awareness episodes with behavioural arrest, oro‑facial automatisms, and brief post‑ictal confusion, without secondary generalisation.\n\nShe denies medication side effects other than mild morning fatigue, which does not impact her ability to meet offshore fitness-to-work requirements. She has not required rescue medication and has not attended emergency services since the dose change. She is maintaining a seizure diary and using a reminder app to support adherence while offshore. No triggers identified beyond irregular sleep during transit days; she plans to adhere to a stable sleep schedule when travelling to and from the rig.\n\nWe discussed safety at work; she confirms that designated tasks during offshore deployment avoid work at height or lone high-risk duties, in line with occupational health guidance. She understands to report any breakthrough events to her employer and to us promptly. Driving advice remains consistent with DVLA regulations for focal epilepsy; she reports she is currently not driving.\n\nPlan:\n- Continue current anti-seizure medication at the present dose, as the reduction in events is satisfactory from her perspective.\n- Maintain seizure diary and submit entries via the patient portal prior to each onshore review.\n- Occupational health correspondence to continue as required; no change to fitness-to-work status today based on her report.\n- Arrange next telephone review for her next onshore window in approximately 3 months, with earlier contact if further events occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"since her medication was increased she has had two seizures, the most recent occurring on 9 Aug.\" The clinic date is 10 November 2023. The period \"since her medication was increased\" is not dated, so we cannot determine the time interval over which the two seizures occurred. Without a defined timeframe (day/week/month/year) or confirmation of 6 months seizure freedom, we cannot compute a standardized frequency. Therefore, the frequency is unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since her medication was increased she has had two seizures, the most recent occurring on 9 Aug"
+      ],
+      "reference": [
+        "unknown",
+        "She reported that since her medication was increased she has had two seizures, the most recent occurring on 9 Aug"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

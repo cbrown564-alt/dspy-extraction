@@ -1,0 +1,65 @@
+{
+  "id": "gan_14036",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 April 2023 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Nikhil Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review with ongoing characterisation. No definitive electroclinical classification assigned at present.\n\nPresent Medication:\n\n1. Sodium valproate 300 mg twice daily\n2. Clobazam 5 mg at night\n\nPresent Seizure Frequency:\n\nThe parents state that since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec. They report no clear precipitating triggers; sleep is variable due to the family currently awaiting relocation from temporary accommodation, with crowded living conditions noted and frequent nocturnal disturbances.\n\nPlan of Action:\n\n- Continue ketogenic diet with dietician oversight; parents to maintain seizure and dietary logs and report any concerns regarding hydration or tolerance.\n- Increase clobazam to 5 mg in the morning and 5 mg at night for two weeks, then 10 mg at night thereafter if daytime sedation occurs; maintain sodium valproate at current dose pending review of response and tolerability.\n- Arrange ambulatory EEG within the next 6–8 weeks to assist with classification and to capture typical events if possible.\n- Refer to hospital family liaison for support regarding housing-related stressors that may be impacting sleep and seizure threshold.\n- Safety advice reiterated regarding drop attacks: use of protective headgear during high‑risk activities and avoidance of unsupervised bathing.\n- Follow‑up in three months or sooner if attacks cluster or there is any injury.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 637,
+      "end": 718,
+      "text": "since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 614,
+      "end": 718,
+      "text": "The parents state that since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14036,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 April 2023 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Nikhil Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review with ongoing characterisation. No definitive electroclinical classification assigned at present.\n\nPresent Medication:\n\n1. Sodium valproate 300 mg twice daily\n2. Clobazam 5 mg at night\n\nPresent Seizure Frequency:\n\nThe parents state that since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec. They report no clear precipitating triggers; sleep is variable due to the family currently awaiting relocation from temporary accommodation, with crowded living conditions noted and frequent nocturnal disturbances.\n\nPlan of Action:\n\n- Continue ketogenic diet with dietician oversight; parents to maintain seizure and dietary logs and report any concerns regarding hydration or tolerance.\n- Increase clobazam to 5 mg in the morning and 5 mg at night for two weeks, then 10 mg at night thereafter if daytime sedation occurs; maintain sodium valproate at current dose pending review of response and tolerability.\n- Arrange ambulatory EEG within the next 6–8 weeks to assist with classification and to capture typical events if possible.\n- Refer to hospital family liaison for support regarding housing-related stressors that may be impacting sleep and seizure threshold.\n- Safety advice reiterated regarding drop attacks: use of protective headgear during high‑risk activities and avoidance of unsupervised bathing.\n- Follow‑up in three months or sooner if attacks cluster or there is any injury.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a present seizure frequency: \"since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec.\" No specific time interval is given for the period since starting the ketogenic diet, so the rate per day/week/month/year cannot be calculated. The patient is not seizure free. Therefore, the specific frequency is indeterminable from the provided information and must be labeled as unknown per instruction 4.",
+      "seizure_frequency_number": [
+        "unknown",
+        "since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec"
+      ],
+      "reference": [
+        "unknown",
+        "The parents state that since starting ketogenic diet he has had 4 drop attacks, the latest one on 17 Dec"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

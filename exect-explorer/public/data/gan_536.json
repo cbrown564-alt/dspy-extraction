@@ -1,0 +1,59 @@
+{
+  "id": "gan_536",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 July 2018 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical deterioration and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with impaired awareness, likely temporal lobe onset. The patient has focal epilepsy with recent secondary generalisation on two occasions.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Carbamazepine MR 400 mg twice daily\n\nPresent Seizure Frequency:\n\nThe patient now reports brief focal impaired-awareness seizures occurring every 2 days, often with a rising epigastric sensation, behavioural arrest, lip smacking and subsequent confusion lasting 10–15 minutes. There have been two falls in the past fortnight, one resulting in a minor forehead laceration and another with bruising to the right hip. Family corroborate increasing frequency and longer recovery periods compared with earlier this year.\n\nPlan of Action:\n\nThere is clear clinical deterioration with higher seizure burden and injury risk despite current dual therapy. We discussed safety measures (supervision on stairs, avoiding baths, use of a fall-alert device) and the patient is agreeable. Given the pattern of focal seizures and recent secondary generalisation, I recommend the following medication adjustment:\n\n- Introduce Lacosamide: 50 mg at night for 1 week, then 50 mg twice daily in week 2, 100 mg in the morning and 50 mg at night in week 3, and 100 mg twice daily from week 4 onwards, as tolerated.\n- Continue Lamotrigine 150 mg twice daily unchanged for now.\n- Reduce Carbamazepine MR to 300 mg twice daily from week 3 if sedation or dizziness emerge, otherwise maintain dose until reassessment. The family have been advised to monitor for unsteadiness given the recent falls.\n\nUrgent actions:\n\n- Arrange expedited ambulatory EEG and updated MRI brain with epilepsy protocol given stepwise deterioration and injury history.\n- Community epilepsy nurse to provide interim support and home safety review within 2 weeks.\n- Fit note issued for 4 weeks to reduce work-related risk; patient advised not to drive and confirms they have informed the DVLA.\n\nFollow-up:\n\nI have brought forward the clinic appointment to 6 weeks to review response and adverse effects. If seizures remain at the current rate of every 2 days or worsen, we will discuss further optimisation including Carbamazepine taper, consideration of Brivaracetam, and MDT review for surgical candidacy should imaging/EEG suggest a localisable focus.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 668,
+      "end": 754,
+      "text": "The patient now reports brief focal impaired-awareness seizures occurring every 2 days",
+      "attributes": {
+        "Label": "1 per 2 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 742,
+      "end": 754,
+      "text": "every 2 days",
+      "attributes": {
+        "Label": "1 per 2 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 536,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 20 July 2018 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical deterioration and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with impaired awareness, likely temporal lobe onset. The patient has focal epilepsy with recent secondary generalisation on two occasions.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Carbamazepine MR 400 mg twice daily\n\nPresent Seizure Frequency:\n\nThe patient now reports brief focal impaired-awareness seizures occurring every 2 days, often with a rising epigastric sensation, behavioural arrest, lip smacking and subsequent confusion lasting 10–15 minutes. There have been two falls in the past fortnight, one resulting in a minor forehead laceration and another with bruising to the right hip. Family corroborate increasing frequency and longer recovery periods compared with earlier this year.\n\nPlan of Action:\n\nThere is clear clinical deterioration with higher seizure burden and injury risk despite current dual therapy. We discussed safety measures (supervision on stairs, avoiding baths, use of a fall-alert device) and the patient is agreeable. Given the pattern of focal seizures and recent secondary generalisation, I recommend the following medication adjustment:\n\n- Introduce Lacosamide: 50 mg at night for 1 week, then 50 mg twice daily in week 2, 100 mg in the morning and 50 mg at night in week 3, and 100 mg twice daily from week 4 onwards, as tolerated.\n- Continue Lamotrigine 150 mg twice daily unchanged for now.\n- Reduce Carbamazepine MR to 300 mg twice daily from week 3 if sedation or dizziness emerge, otherwise maintain dose until reassessment. The family have been advised to monitor for unsteadiness given the recent falls.\n\nUrgent actions:\n\n- Arrange expedited ambulatory EEG and updated MRI brain with epilepsy protocol given stepwise deterioration and injury history.\n- Community epilepsy nurse to provide interim support and home safety review within 2 weeks.\n- Fit note issued for 4 weeks to reduce work-related risk; patient advised not to drive and confirms they have informed the DVLA.\n\nFollow-up:\n\nI have brought forward the clinic appointment to 6 weeks to review response and adverse effects. If seizures remain at the current rate of every 2 days or worsen, we will discuss further optimisation including Carbamazepine taper, consideration of Brivaracetam, and MDT review for surgical candidacy should imaging/EEG suggest a localisable focus.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"The patient now reports brief focal impaired-awareness seizures occurring every 2 days.\" This is a clear numeric frequency. There is mention of two falls in the past fortnight, but falls are not necessarily seizures; the explicit seizure frequency is every 2 days. No other competing seizure frequency is given that is higher. Therefore, normalize to '1 per 2 day'.",
+      "seizure_frequency_number": [
+        "1 per 2 day",
+        "The patient now reports brief focal impaired-awareness seizures occurring every 2 days"
+      ],
+      "reference": [
+        "1 per 2 day",
+        "every 2 days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

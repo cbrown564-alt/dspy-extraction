@@ -1,0 +1,59 @@
+{
+  "id": "gan_14973",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 03 March 2023 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSarah Whitfield, DOB: 14-08-1989, Hospital No: K372519 NHS No. 9076315428  \n12 Rowan Close, London, SE15 3QP\n\nThank you for asking me to review your patient, whom I saw in clinic today. She works as a warehouse picker operating between tall racking and narrow aisles where lifting demands and pace vary by shift. She reports intermittent brief absences previously noted by occupational health after near-miss episodes in confined aisles. She has been off the powered pallet truck pending review and has self-adjusted her workflow to minimise sudden head movements and ladder use.\n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 31 January, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 06 February and she has been stable since. Given her stability now, I do not propose further intervention for now. She is keeping a symptom and work-pattern diary, and her supervisor has accommodated regular hydration breaks and aisle buddying during higher-paced periods. She denies tongue biting, witnessed convulsions, or post-event confusion, and there has been no nocturnal disruption noted by her partner. There is no history of head injury, meningitis, or family history of seizures. Sleep is variable on early shifts but has improved with a fixed pre-shift routine.\n\nOn examination today, neurological assessment was unremarkable. Cardiovascular observations were stable. There were no focal deficits. She was alert and oriented with normal speech and gait. We reviewed her current medication and adherence; she reports no adverse effects, and there have been no further absences since early February. She understands and agrees with ongoing workplace safety measures and will avoid lone working at height until three months event-free have elapsed per local policy.\n\nPlan:\n- No changes to medication at present in view of current stability.\n- Continue diary of events, sleep, hydration, and shift patterns; bring to next review.\n- Maintain current workplace adjustments; avoid unsupervised work at height and powered equipment until event-free interval is established by occupational health.\n- Safety advice reinforced regarding swimming alone, operating machinery, and working at height.\n- Routine follow-up in three months, or sooner if events recur, increase in frequency, or new features emerge (injury, prolonged confusion, or nocturnal events).\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1045,
+      "end": 1121,
+      "text": "The last such episode occurred on 06 February and she has been stable since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 849,
+      "end": 1192,
+      "text": "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 31 January, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 06 February and she has been stable since. Given her stability now, I do not propose further intervention for now",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14973,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 03 March 2023 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSarah Whitfield, DOB: 14-08-1989, Hospital No: K372519 NHS No. 9076315428  \n12 Rowan Close, London, SE15 3QP\n\nThank you for asking me to review your patient, whom I saw in clinic today. She works as a warehouse picker operating between tall racking and narrow aisles where lifting demands and pace vary by shift. She reports intermittent brief absences previously noted by occupational health after near-miss episodes in confined aisles. She has been off the powered pallet truck pending review and has self-adjusted her workflow to minimise sudden head movements and ladder use.\n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 31 January, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 06 February and she has been stable since. Given her stability now, I do not propose further intervention for now. She is keeping a symptom and work-pattern diary, and her supervisor has accommodated regular hydration breaks and aisle buddying during higher-paced periods. She denies tongue biting, witnessed convulsions, or post-event confusion, and there has been no nocturnal disruption noted by her partner. There is no history of head injury, meningitis, or family history of seizures. Sleep is variable on early shifts but has improved with a fixed pre-shift routine.\n\nOn examination today, neurological assessment was unremarkable. Cardiovascular observations were stable. There were no focal deficits. She was alert and oriented with normal speech and gait. We reviewed her current medication and adherence; she reports no adverse effects, and there have been no further absences since early February. She understands and agrees with ongoing workplace safety measures and will avoid lone working at height until three months event-free have elapsed per local policy.\n\nPlan:\n- No changes to medication at present in view of current stability.\n- Continue diary of events, sleep, hydration, and shift patterns; bring to next review.\n- Maintain current workplace adjustments; avoid unsupervised work at height and powered equipment until event-free interval is established by occupational health.\n- Safety advice reinforced regarding swimming alone, operating machinery, and working at height.\n- Routine follow-up in three months, or sooner if events recur, increase in frequency, or new features emerge (injury, prolonged confusion, or nocturnal events).\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Identify events: The letter discusses 'absences' consistent with seizure-like episodes.\n- Key temporal details: 'The last such episode occurred on 06 February and she has been stable since.' Clinic date is 03 March 2023.\n- Calculate interval: From 06 Feb to 03 Mar ≈ 25 days (~1 month).\n- Rule 8: Not seizure-free for ≥6 months, so compute frequency rather than label as seizure-free.\n- Frequency over the last month: 1 event in ~1 month ⇒ 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "The last such episode occurred on 06 February and she has been stable since."
+      ],
+      "reference": [
+        "1 per month",
+        "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 31 January, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 06 February and she has been stable since. Given her stability now, I do not propose further intervention for now"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

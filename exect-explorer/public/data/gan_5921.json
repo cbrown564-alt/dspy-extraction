@@ -1,0 +1,54 @@
+{
+  "id": "gan_5921",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Martin Hale  \nRiverside Health Centre  \n22 Millbank, London SW1P 4QP  \n\nDear Dr Martin Hale,                                                                                                         \n\nJames Carter, DOB: 09-11-1992, Hospital No: H732019 NHS No. 9843175620  \nFlat 3B, 47 King Street, Hammersmith, London W6 0QF  \n\nEpilepsy \n\nMedication: Continuing Levetiracetam since March 2025  \n\nLevetiracetam 750mg twice daily (as confirmed with the patient by phone)  \n\nLevetiracetam Blood Level:  \n\n15 September 2025: 14 µg/mL (reference 12–46 µg/mL). Dose 750mg twice daily  \n\nSeizures: Patient reports intermittent events tending to cluster towards the later part of the night, typically occurring in the early hours before dawn, approximately once every 6–8 weeks. No clear warning symptoms; partner occasionally notes brief limb stiffening and a short period of confusion on waking. \n\nI spoke with the patient today during a scheduled telephone review. They describe improved daytime alertness since switching dosing times to 08:00 and 20:00. Sleep has been irregular due to shift work, which may be contributing to the pre-dawn episodes. No tongue biting, injuries, or incontinence reported. Recovery is usually complete within an hour, with mild headache only. They have been adherent to the stated dose, and there have been no missed doses in the last month. \n\nWe discussed practical measures around sleep hygiene and maintaining consistent dosing given variable work patterns. The patient prefers to avoid dose escalation currently while monitoring for any pattern change. I will re-check levels if frequency increases or if further events occur outside the usual early-morning window. Safety advice (driving and bathing) was reiterated; no new triggers identified. \n\nI will arrange a follow-up in three months via telephone, or sooner if the early-morning events increase in frequency or severity. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 814,
+      "end": 849,
+      "text": "approximately once every 6–8 weeks.",
+      "attributes": {
+        "Label": "1 per 6 to 8 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5921,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Martin Hale  \nRiverside Health Centre  \n22 Millbank, London SW1P 4QP  \n\nDear Dr Martin Hale,                                                                                                         \n\nJames Carter, DOB: 09-11-1992, Hospital No: H732019 NHS No. 9843175620  \nFlat 3B, 47 King Street, Hammersmith, London W6 0QF  \n\nEpilepsy \n\nMedication: Continuing Levetiracetam since March 2025  \n\nLevetiracetam 750mg twice daily (as confirmed with the patient by phone)  \n\nLevetiracetam Blood Level:  \n\n15 September 2025: 14 µg/mL (reference 12–46 µg/mL). Dose 750mg twice daily  \n\nSeizures: Patient reports intermittent events tending to cluster towards the later part of the night, typically occurring in the early hours before dawn, approximately once every 6–8 weeks. No clear warning symptoms; partner occasionally notes brief limb stiffening and a short period of confusion on waking. \n\nI spoke with the patient today during a scheduled telephone review. They describe improved daytime alertness since switching dosing times to 08:00 and 20:00. Sleep has been irregular due to shift work, which may be contributing to the pre-dawn episodes. No tongue biting, injuries, or incontinence reported. Recovery is usually complete within an hour, with mild headache only. They have been adherent to the stated dose, and there have been no missed doses in the last month. \n\nWe discussed practical measures around sleep hygiene and maintaining consistent dosing given variable work patterns. The patient prefers to avoid dose escalation currently while monitoring for any pattern change. I will re-check levels if frequency increases or if further events occur outside the usual early-morning window. Safety advice (driving and bathing) was reiterated; no new triggers identified. \n\nI will arrange a follow-up in three months via telephone, or sooner if the early-morning events increase in frequency or severity. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has events \"approximately once every 6–8 weeks.\" No other seizure frequencies are provided. This implies a current frequency of 1 event per 6 to 8 weeks. There is no indication of seizure freedom for 6+ months. The mention of events clustering toward late night refers to timing, not multiple seizures per cluster, so the standard per-time frequency applies.",
+      "seizure_frequency_number": [
+        "1 per 6 to 8 week",
+        "approximately once every 6–8 weeks."
+      ],
+      "reference": [
+        "unknown",
+        "Seizure in second half of the night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 6 to 8 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

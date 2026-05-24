@@ -1,0 +1,59 @@
+{
+  "id": "gan_14551",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 14 July 2016\n\nDr Nadia Rao\nRiverside Neurology Clinic\n2 Millbank, London SW1P 3JA\n\nDear Dr Nadia Rao,\n\nThomas Keane, DOB: 03-11-1990, Hospital No: H384920 NHS No. 8472195306\nFlat 7, 15 Wharf Street, London SE8 4RS\n\nEpilepsy\n\nOccupation and background: He works as a warehouse picker operating between tall racking in narrow aisles. Lifting tasks vary and the work pace changes by shift; he reports fatigue can accumulate after consecutive late finishes.\n\nDiagnosis: He has generalised epilepsy.\n\nSeizure history: His initial event was in April 2016 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following June 2016, once more during the night, lasting four minutes with similar semiology. He denies preceding aura or warning for either event and reports post-event confusion on waking.\n\nCurrent status: Since those nocturnal events he has not described daytime episodes at work, and there have been no witnessed collapses or injuries in the warehouse. He reports occasional brief morning myoclonic jerks of both upper limbs in the context of sleep deprivation following late shifts, which he can recognise and sit down for until they pass.\n\nMedication: He is currently taking lamotrigine dispersible 25 mg twice daily, started by his GP after the June event. He has had no adverse effects such as rash, dizziness, or diplopia. Adherence is good, though he occasionally delays the evening dose when shifts overrun.\n\nLamotrigine blood level:\n- 10 July 2016: <1 mg/L (laboratory reference 1.0–15.0 mg/L) while on 25 mg twice daily.\n\nInvestigations: Routine bloods including FBC, U&E, LFTs were unremarkable by patient report. He has not yet had an EEG or MRI; he is agreeable to outpatient EEG scheduling around shift work.\n\nSafety and work considerations: We discussed sleep regularity given shift variability, avoiding working at height during periods of sleep loss, and informing his supervisor about the potential for brief morning jerks so that tasks in narrow aisles can be paused if needed. He confirms no driving.\n\nPlan discussed with the patient:\n- Continue lamotrigine 25 mg twice daily for now pending EEG scheduling and repeat trough level in two weeks, timed pre-morning dose.\n- Provide seizure first-aid information to his employer occupational health team upon his consent.\n- Arrange EEG and consider further optimisation thereafter in clinic.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 571,
+      "end": 666,
+      "text": "His initial event was in April 2016... A second event occurred in Italy the following June 2016",
+      "attributes": {
+        "Label": "2 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 571,
+      "end": 828,
+      "text": "His initial event was in April 2016 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following June 2016, once more during the night, lasting four minutes with similar semiology",
+      "attributes": {
+        "Label": "2 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14551,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 14 July 2016\n\nDr Nadia Rao\nRiverside Neurology Clinic\n2 Millbank, London SW1P 3JA\n\nDear Dr Nadia Rao,\n\nThomas Keane, DOB: 03-11-1990, Hospital No: H384920 NHS No. 8472195306\nFlat 7, 15 Wharf Street, London SE8 4RS\n\nEpilepsy\n\nOccupation and background: He works as a warehouse picker operating between tall racking in narrow aisles. Lifting tasks vary and the work pace changes by shift; he reports fatigue can accumulate after consecutive late finishes.\n\nDiagnosis: He has generalised epilepsy.\n\nSeizure history: His initial event was in April 2016 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following June 2016, once more during the night, lasting four minutes with similar semiology. He denies preceding aura or warning for either event and reports post-event confusion on waking.\n\nCurrent status: Since those nocturnal events he has not described daytime episodes at work, and there have been no witnessed collapses or injuries in the warehouse. He reports occasional brief morning myoclonic jerks of both upper limbs in the context of sleep deprivation following late shifts, which he can recognise and sit down for until they pass.\n\nMedication: He is currently taking lamotrigine dispersible 25 mg twice daily, started by his GP after the June event. He has had no adverse effects such as rash, dizziness, or diplopia. Adherence is good, though he occasionally delays the evening dose when shifts overrun.\n\nLamotrigine blood level:\n- 10 July 2016: <1 mg/L (laboratory reference 1.0–15.0 mg/L) while on 25 mg twice daily.\n\nInvestigations: Routine bloods including FBC, U&E, LFTs were unremarkable by patient report. He has not yet had an EEG or MRI; he is agreeable to outpatient EEG scheduling around shift work.\n\nSafety and work considerations: We discussed sleep regularity given shift variability, avoiding working at height during periods of sleep loss, and informing his supervisor about the potential for brief morning jerks so that tasks in narrow aisles can be paused if needed. He confirms no driving.\n\nPlan discussed with the patient:\n- Continue lamotrigine 25 mg twice daily for now pending EEG scheduling and repeat trough level in two weeks, timed pre-morning dose.\n- Provide seizure first-aid information to his employer occupational health team upon his consent.\n- Arrange EEG and consider further optimisation thereafter in clinic.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes two nocturnal seizure events: one in April 2016 and a second in June 2016. These are explicitly dated separate events within a roughly two-month span (April to June). There is no indication of additional seizures since June; current status mentions no daytime episodes and occasional brief morning myoclonic jerks (these are not clearly described as full seizures but brief jerks). The most concrete, explicit seizure frequency we can extract from the letter is 2 events over 2 months (April to June). According to the instruction to prioritize explicit numeric expressions and to select the highest frequency when multiple exist, we use 2 per 2 months.",
+      "seizure_frequency_number": [
+        "2 per 2 month",
+        "His initial event was in April 2016... A second event occurred in Italy the following June 2016"
+      ],
+      "reference": [
+        "2 per 2 month",
+        "His initial event was in April 2016 in Germany, arising from sleep. He awoke with jerking of the left arm and facial twitching. A second event occurred in Italy the following June 2016, once more during the night, lasting four minutes with similar semiology"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

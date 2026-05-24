@@ -1,0 +1,59 @@
+{
+  "id": "gan_2536",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 28 November 2019 10:15\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up after travel-related event and medication adjustment\n\nDear Alice,\n\nDiagnosis:\n\nUnder active review.\n\nCurrent Medication:\n1. Carbamazepine (Tegretol Retard) 600 mg twice daily\n2. Levetiracetam (Keppra) 500 mg twice daily\n\nHistory and Current Concerns:\n\nSam reports that the most recent significant event occurred during a long-haul flight, after which she experienced increased travel-related anxiety. She denies sleep deprivation or intercurrent illness around that time. Over the last fortnight she has kept a detailed symptom diary and notes 6 to 7 epileptic spasms during the last two weeks. These have been brief, without clear warning, and not associated with clear focal features by her account. There has been no injury, tongue biting, or prolonged confusion. She wonders whether anticipatory stress about future flights is contributing, though no single consistent trigger has been identified.\n\nExamination/Investigations:\n\nNeurological examination in clinic today was unremarkable. We have requested updated serum levels for carbamazepine, routine bloods (FBC, U&E, LFT, vitamin D), and arranged an outpatient EEG and MRI review to aid further characterisation.\n\nPlan:\n\n- Continue current doses of carbamazepine and levetiracetam for now.\n- Introduce lacosamide cautiously as an adjunct with a gradual titration: 25 mg at night for week 1; 25 mg twice daily in week 2; 25 mg morning and 50 mg night in week 3; then 50 mg twice daily from week 4 onwards. Maintain 50 mg twice daily thereafter until review.\n- We discussed common adverse effects (dizziness, nausea) and advised Sam to report mood changes or worsening events.\n- Safety advice provided regarding air travel: maintain regular sleep, hydration, and take medications as scheduled; seek pre-travel assistance if anxiety escalates. She understands to seek urgent care for any prolonged event or cluster.\n- Follow-up appointment arranged in four months, or earlier if events increase in frequency or change in pattern. Depending on tolerability and event profile, we may consider tapering levetiracetam at that time.\n\nPresent Event Frequency:\n\nSam records 6 to 7 epileptic spasms during the last two weeks, without clear precipitant, though recent air travel and associated anxiety were noted.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2426,
+      "end": 2487,
+      "text": "Sam records 6 to 7 epileptic spasms during the last two weeks",
+      "attributes": {
+        "Label": "6 to 7 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 860,
+      "end": 909,
+      "text": "6 to 7 epileptic spasms during the last two weeks",
+      "attributes": {
+        "Label": "6 to 7 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2536,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 28 November 2019 10:15\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Follow-up after travel-related event and medication adjustment\n\nDear Alice,\n\nDiagnosis:\n\nUnder active review.\n\nCurrent Medication:\n1. Carbamazepine (Tegretol Retard) 600 mg twice daily\n2. Levetiracetam (Keppra) 500 mg twice daily\n\nHistory and Current Concerns:\n\nSam reports that the most recent significant event occurred during a long-haul flight, after which she experienced increased travel-related anxiety. She denies sleep deprivation or intercurrent illness around that time. Over the last fortnight she has kept a detailed symptom diary and notes 6 to 7 epileptic spasms during the last two weeks. These have been brief, without clear warning, and not associated with clear focal features by her account. There has been no injury, tongue biting, or prolonged confusion. She wonders whether anticipatory stress about future flights is contributing, though no single consistent trigger has been identified.\n\nExamination/Investigations:\n\nNeurological examination in clinic today was unremarkable. We have requested updated serum levels for carbamazepine, routine bloods (FBC, U&E, LFT, vitamin D), and arranged an outpatient EEG and MRI review to aid further characterisation.\n\nPlan:\n\n- Continue current doses of carbamazepine and levetiracetam for now.\n- Introduce lacosamide cautiously as an adjunct with a gradual titration: 25 mg at night for week 1; 25 mg twice daily in week 2; 25 mg morning and 50 mg night in week 3; then 50 mg twice daily from week 4 onwards. Maintain 50 mg twice daily thereafter until review.\n- We discussed common adverse effects (dizziness, nausea) and advised Sam to report mood changes or worsening events.\n- Safety advice provided regarding air travel: maintain regular sleep, hydration, and take medications as scheduled; seek pre-travel assistance if anxiety escalates. She understands to seek urgent care for any prolonged event or cluster.\n- Follow-up appointment arranged in four months, or earlier if events increase in frequency or change in pattern. Depending on tolerability and event profile, we may consider tapering levetiracetam at that time.\n\nPresent Event Frequency:\n\nSam records 6 to 7 epileptic spasms during the last two weeks, without clear precipitant, though recent air travel and associated anxiety were noted.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the last fortnight she has kept a detailed symptom diary and notes 6 to 7 epileptic spasms during the last two weeks.\" Also reiterated under Present Event Frequency: \"Sam records 6 to 7 epileptic spasms during the last two weeks.\" A fortnight equals two weeks. Therefore, the current seizure frequency is a range of 6 to 7 per 2 weeks. Normalize to the allowed format: '<value1> per <value2> <week>' with a range for value1 and specifying 2 weeks for value2. No other frequencies are provided that would supersede this.",
+      "seizure_frequency_number": [
+        "6 to 7 per 2 week",
+        "Sam records 6 to 7 epileptic spasms during the last two weeks"
+      ],
+      "reference": [
+        "6 to 7 per 2 week",
+        "6 to 7 epileptic spasms during the last two weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

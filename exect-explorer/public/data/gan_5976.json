@@ -1,0 +1,54 @@
+{
+  "id": "gan_5976",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 September 2025 10:22\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rebecca Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and monitoring plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Sodium valproate 300 mg in the morning and 500 mg at night\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nFrequency currently unclear — episodes tend to occur around times of inconsistent antiepileptic use (patient-reported), with no reliable count available. ï¿½\n\n\nClinical Summary and Plan of Action:\n\nMr H describes brief morning myoclonic jerks and two prior generalised tonic–clonic events historically, consistent with a generalised epilepsy syndrome. No focal features reported. Sleep deprivation and irregular medication timing appear to precede events per diary, though details are patchy and there is no verifiable tally. He denies alcohol excess. Recent MRI normal; EEG previously showed generalised spike–wave discharges.\n\nWe discussed optimising adherence and maintaining a regular sleep routine. No immediate medication changes today as he is tolerating current therapy without adverse effects (no weight change beyond baseline, LFTs within range). I have requested a seizure and trigger log using a smartphone app and provided written advice on structured dosing times. We will reassess in clinic after three months with updated seizure documentation and repeat U&Es/LFTs. If objective data suggests ongoing breakthrough events despite confirmed adherence, we will consider rationalising therapy (e.g. valproate dose consolidation or transition to lamotrigine), but not at this stage. Ã‚Â·\n\nSafety advice reinforced: avoid swimming alone, shower rather than bath, and adhere to DVLA guidance if any further loss-of-consciousness events occur. He has a medic-alert bracelet and agrees to contact us via the epilepsy nurse line if there is any deterioration. â€\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 543,
+      "end": 696,
+      "text": "Frequency currently unclear — episodes tend to occur around times of inconsistent antiepileptic use (patient-reported), with no reliable count available.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5976,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 September 2025 10:22\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rebecca Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and monitoring plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Sodium valproate 300 mg in the morning and 500 mg at night\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nFrequency currently unclear — episodes tend to occur around times of inconsistent antiepileptic use (patient-reported), with no reliable count available. ï¿½\n\n\nClinical Summary and Plan of Action:\n\nMr H describes brief morning myoclonic jerks and two prior generalised tonic–clonic events historically, consistent with a generalised epilepsy syndrome. No focal features reported. Sleep deprivation and irregular medication timing appear to precede events per diary, though details are patchy and there is no verifiable tally. He denies alcohol excess. Recent MRI normal; EEG previously showed generalised spike–wave discharges.\n\nWe discussed optimising adherence and maintaining a regular sleep routine. No immediate medication changes today as he is tolerating current therapy without adverse effects (no weight change beyond baseline, LFTs within range). I have requested a seizure and trigger log using a smartphone app and provided written advice on structured dosing times. We will reassess in clinic after three months with updated seizure documentation and repeat U&Es/LFTs. If objective data suggests ongoing breakthrough events despite confirmed adherence, we will consider rationalising therapy (e.g. valproate dose consolidation or transition to lamotrigine), but not at this stage. Ã‚Â·\n\nSafety advice reinforced: avoid swimming alone, shower rather than bath, and adhere to DVLA guidance if any further loss-of-consciousness events occur. He has a medic-alert bracelet and agrees to contact us via the epilepsy nurse line if there is any deterioration. â€\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that the present seizure frequency is unclear, with no reliable count available. There is mention of historical events and triggers but no quantifiable current rate. According to the rules, if seizures are mentioned but frequency cannot be determined, the correct label is 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "Frequency currently unclear — episodes tend to occur around times of inconsistent antiepileptic use (patient-reported), with no reliable count available."
+      ],
+      "reference": [
+        "unknown",
+        "Seizures with missed ASM doses"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

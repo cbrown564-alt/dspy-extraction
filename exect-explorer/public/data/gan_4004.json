@@ -1,0 +1,59 @@
+{
+  "id": "gan_4004",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nRiverside Health Centre  \n12 Kingfisher Way, London SE15 4QT  \n\nDear Dr Ahmed,  \n\nDaniel Moore, DOB: 23-11-1991, Hospital No: H938420 NHS No. 5839201746  \nFlat 3, 45 Brookfield Road, London E17 6AA \n\nMedication: \n\nLevetiracetam 1 g twice daily; Lamotrigine 100 mg twice daily. No adverse effects reported beyond mild irritability, which the patient considers manageable. \n\nI reviewed Daniel Moore in clinic today for follow-up of focal epilepsy. She reports focal aware sensory episodes described as a rising epigastric sensation with brief right hand paraesthesiae, lasting 30–60 seconds with preserved awareness and no postictal symptoms. Frequency is stable at abs ×monthly, typically occurring in the evening without a clear precipitant. She has not had focal to bilateral tonic–clonic seizures for over two years. \n\nThere has been no recent intercurrent illness, sleep deprivation, or missed doses. She uses a phone alarm to support adherence. She does not drive and understands DVLA regulations for epilepsy; she will inform us of any change in seizure type or frequency. \n\nMRI brain (last year) was unremarkable. Routine EEG previously demonstrated left temporal sharp waves, consistent with focal epilepsy. Given clinical stability and acceptable tolerability, I have not altered her anti-seizure medication today. We discussed potential strategies for stress management and regular sleep, which she will continue. She prefers to avoid medication changes at present. \n\nSafety advice reiterated regarding bathing, heights, and operating machinery. She will keep a seizure diary to document any evolution of symptoms, particularly if the abs ×monthly pattern changes or if events generalise. \n\nPlan: \n- Continue Levetiracetam 1 g bd and Lamotrigine 100 mg bd unchanged.  \n- Maintain seizure diary; contact us if frequency exceeds abs ×monthly or if any loss of awareness, injury, or generalisation occurs.  \n- Routine bloods (U&E, FBC, LFTs) to be checked at your convenience in primary care over the next 6–12 months.  \n- Follow-up in neurology clinic in 9 months, sooner if needed. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 729,
+      "end": 764,
+      "text": "Frequency is stable at abs ×monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 752,
+      "end": 764,
+      "text": "abs ×monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4004,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Ahmed  \nRiverside Health Centre  \n12 Kingfisher Way, London SE15 4QT  \n\nDear Dr Ahmed,  \n\nDaniel Moore, DOB: 23-11-1991, Hospital No: H938420 NHS No. 5839201746  \nFlat 3, 45 Brookfield Road, London E17 6AA \n\nMedication: \n\nLevetiracetam 1 g twice daily; Lamotrigine 100 mg twice daily. No adverse effects reported beyond mild irritability, which the patient considers manageable. \n\nI reviewed Daniel Moore in clinic today for follow-up of focal epilepsy. She reports focal aware sensory episodes described as a rising epigastric sensation with brief right hand paraesthesiae, lasting 30–60 seconds with preserved awareness and no postictal symptoms. Frequency is stable at abs ×monthly, typically occurring in the evening without a clear precipitant. She has not had focal to bilateral tonic–clonic seizures for over two years. \n\nThere has been no recent intercurrent illness, sleep deprivation, or missed doses. She uses a phone alarm to support adherence. She does not drive and understands DVLA regulations for epilepsy; she will inform us of any change in seizure type or frequency. \n\nMRI brain (last year) was unremarkable. Routine EEG previously demonstrated left temporal sharp waves, consistent with focal epilepsy. Given clinical stability and acceptable tolerability, I have not altered her anti-seizure medication today. We discussed potential strategies for stress management and regular sleep, which she will continue. She prefers to avoid medication changes at present. \n\nSafety advice reiterated regarding bathing, heights, and operating machinery. She will keep a seizure diary to document any evolution of symptoms, particularly if the abs ×monthly pattern changes or if events generalise. \n\nPlan: \n- Continue Levetiracetam 1 g bd and Lamotrigine 100 mg bd unchanged.  \n- Maintain seizure diary; contact us if frequency exceeds abs ×monthly or if any loss of awareness, injury, or generalisation occurs.  \n- Routine bloods (U&E, FBC, LFTs) to be checked at your convenience in primary care over the next 6–12 months.  \n- Follow-up in neurology clinic in 9 months, sooner if needed. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has focal aware sensory episodes with a frequency described as 'abs ×monthly'. Context suggests this is intended to mean approximately monthly. There are no other concurrent seizure types currently occurring (no focal to bilateral tonic–clonic seizures for over two years). Applying the rule to choose the highest frequency among types, only the focal aware episodes apply. Normalize 'approximately monthly' to '1 per month' as the closest explicit numeric expression allowed.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Frequency is stable at abs ×monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "abs ×monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

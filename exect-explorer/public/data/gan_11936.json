@@ -1,0 +1,59 @@
+{
+  "id": "gan_11936",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 July 2023 11:20\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Interval review and medication rationalisation\n\nDear Dr Desai,\n\nThank you for seeing Sam in the clinic today for an interval review. She reports that complex partial seizures with retained awareness are experienced 3 or 4 times weekly, sometimes in clusters. Generalised tonic-clonic seizures have been reported only twice in the past five years. She keeps a diary and notes that episodes are more likely later in the evening, occasionally following poor sleep, but she has not identified consistent additional triggers. There have been no emergency department attendances since her last appointment.\n\nCurrent medicines:\n1. Carbamazepine modified-release 400 mg in the morning and 600 mg at night\n2. Levetiracetam 750 mg twice daily\n\nAdverse effects and tolerability: Sam describes intermittent fatigue and mild irritability since the most recent uptitration of levetiracetam six months ago. No rash, diplopia or unsteadiness. She denies missed doses and uses a pill organiser. Long-term antiseizure therapy with bone-health monitoring is recorded elsewhere.\n\nExamination today is unremarkable with stable observations and no new focal neurological findings. Bloods from last month (U&E, LFTs, FBC, vitamin D) were within expected ranges for her.\n\nPlan:\n- Maintain current doses for now while we obtain a two-week home seizure diary correlated with sleep schedule and menstrual pattern. Sam is willing to share data from her wearable device to help time-lock events.\n- Arrange routine bloods (U&E, LFTs, FBC) in six weeks to coincide with follow-up call.\n- Discussed possible future options including gradual levetiracetam dose reduction if mood symptoms persist, or consideration of an alternative adjunct if diary suggests clustering despite adherence. Sam prefers to review after we have the diary summary.\n- Safety advice reinforced regarding bathing/swimming and operating machinery. Emergency care plan reviewed for any prolonged convulsive event.\n\nFollow-up: Telephone review in 8–10 weeks with results and diary; face-to-face review in 4–5 months, or sooner if events escalate.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 453,
+      "end": 537,
+      "text": "complex partial seizures with retained awareness are experienced 3 or 4 times weekly",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 453,
+      "end": 648,
+      "text": "complex partial seizures with retained awareness are experienced 3 or 4 times weekly, sometimes in clusters. Generalised tonic-clonic seizures have been reported only twice in the past five years",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11936,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 01 July 2023 11:20\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Interval review and medication rationalisation\n\nDear Dr Desai,\n\nThank you for seeing Sam in the clinic today for an interval review. She reports that complex partial seizures with retained awareness are experienced 3 or 4 times weekly, sometimes in clusters. Generalised tonic-clonic seizures have been reported only twice in the past five years. She keeps a diary and notes that episodes are more likely later in the evening, occasionally following poor sleep, but she has not identified consistent additional triggers. There have been no emergency department attendances since her last appointment.\n\nCurrent medicines:\n1. Carbamazepine modified-release 400 mg in the morning and 600 mg at night\n2. Levetiracetam 750 mg twice daily\n\nAdverse effects and tolerability: Sam describes intermittent fatigue and mild irritability since the most recent uptitration of levetiracetam six months ago. No rash, diplopia or unsteadiness. She denies missed doses and uses a pill organiser. Long-term antiseizure therapy with bone-health monitoring is recorded elsewhere.\n\nExamination today is unremarkable with stable observations and no new focal neurological findings. Bloods from last month (U&E, LFTs, FBC, vitamin D) were within expected ranges for her.\n\nPlan:\n- Maintain current doses for now while we obtain a two-week home seizure diary correlated with sleep schedule and menstrual pattern. Sam is willing to share data from her wearable device to help time-lock events.\n- Arrange routine bloods (U&E, LFTs, FBC) in six weeks to coincide with follow-up call.\n- Discussed possible future options including gradual levetiracetam dose reduction if mood symptoms persist, or consideration of an alternative adjunct if diary suggests clustering despite adherence. Sam prefers to review after we have the diary summary.\n- Safety advice reinforced regarding bathing/swimming and operating machinery. Emergency care plan reviewed for any prolonged convulsive event.\n\nFollow-up: Telephone review in 8–10 weeks with results and diary; face-to-face review in 4–5 months, or sooner if events escalate.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'complex partial seizures with retained awareness are experienced 3 or 4 times weekly, sometimes in clusters.' It also notes 'Generalised tonic-clonic seizures have been reported only twice in the past five years.' Following the rule to select the highest frequency, the complex partial seizures at 3 or 4 per week are more frequent than the rare GTCs. Clustering is mentioned but without a defined number per cluster, so we use the explicit weekly frequency. Convert '3 or 4 times weekly' to the allowed range format '3 to 4 per week.'",
+      "seizure_frequency_number": [
+        "3 to 4 per week",
+        "complex partial seizures with retained awareness are experienced 3 or 4 times weekly"
+      ],
+      "reference": [
+        "3 to 4 per week",
+        "complex partial seizures with retained awareness are experienced 3 or 4 times weekly, sometimes in clusters. Generalised tonic-clonic seizures have been reported only twice in the past five years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

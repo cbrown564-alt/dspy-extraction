@@ -1,0 +1,59 @@
+{
+  "id": "gan_15203",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 10 March 2020 \n\nDr Priya Menon\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-08-1986, Hospital No: KCH724511 NHS No. 9473165820  \n12 Brookfield Road, London, SE15 3HJ\n\nThank you for asking me to review your patient in clinic today. He attended with his partner, who has been keeping a diary in parallel with the timestamps captured by his smartwatch’s fall‑detection alerts. These have been useful in corroborating the timing of events, particularly when there is limited recall.\n\nHe has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time. He describes these as sudden, startle‑like jerks without loss of awareness, usually in the morning or when fatigued. They last seconds, and he is immediately able to continue his activity. There have been three fall‑detection alerts over the past six months: two were attributed to trips while running for a bus and one to a slip on wet stairs; none were accompanied by loss of consciousness or post‑event confusion according to his diary and his partner’s account. The smartwatch logs have helped confirm that these episodes did not cluster around sleep‑wake transitions, and there were no nocturnal events detected by the device.\n\nHe reports good adherence to his current medication and denies adverse effects other than intermittent tiredness late in the day. Sleep has improved with a regular routine, and he notes that missed meals and excess caffeine seem to precede the brief jumps. There is no history of tongue‑biting, incontinence, or injuries since early 2019. He is currently working part‑time and has reduced shift work, which he feels has been beneficial. Driving status and safety at work were discussed in general terms; he reports self‑restricting high‑risk activities when overtired.\n\nExamination today was unremarkable. Neurological assessment was normal with steady gait and intact coordination. Review of prior blood tests from his GP showed electrolytes, liver function, and full blood count within reference ranges. We reviewed the smartwatch export alongside his partner’s diary; the entries aligned well and supported the reported chronology since late 2019.\n\nPlan: I have asked him to continue the event diary and to export the smartwatch fall‑detection and activity summaries monthly so we can maintain a clear timeline. No change to therapy today given the sustained absence of generalised events and the brief nature of the reported jumps. I have provided guidance on regular sleep, hydration, and limiting triggers as he identifies them. We will arrange routine follow‑up in six months, with earlier review if there are any prolonged losses of awareness, injuries, or a cluster of events. He understands to contact the service sooner should the pattern change.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 697,
+      "end": 809,
+      "text": "He has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time.",
+      "attributes": {
+        "Label": "multiple per 13 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 697,
+      "end": 808,
+      "text": "He has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time",
+      "attributes": {
+        "Label": "multiple per 13 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15203,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 10 March 2020 \n\nDr Priya Menon\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-08-1986, Hospital No: KCH724511 NHS No. 9473165820  \n12 Brookfield Road, London, SE15 3HJ\n\nThank you for asking me to review your patient in clinic today. He attended with his partner, who has been keeping a diary in parallel with the timestamps captured by his smartwatch’s fall‑detection alerts. These have been useful in corroborating the timing of events, particularly when there is limited recall.\n\nHe has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time. He describes these as sudden, startle‑like jerks without loss of awareness, usually in the morning or when fatigued. They last seconds, and he is immediately able to continue his activity. There have been three fall‑detection alerts over the past six months: two were attributed to trips while running for a bus and one to a slip on wet stairs; none were accompanied by loss of consciousness or post‑event confusion according to his diary and his partner’s account. The smartwatch logs have helped confirm that these episodes did not cluster around sleep‑wake transitions, and there were no nocturnal events detected by the device.\n\nHe reports good adherence to his current medication and denies adverse effects other than intermittent tiredness late in the day. Sleep has improved with a regular routine, and he notes that missed meals and excess caffeine seem to precede the brief jumps. There is no history of tongue‑biting, incontinence, or injuries since early 2019. He is currently working part‑time and has reduced shift work, which he feels has been beneficial. Driving status and safety at work were discussed in general terms; he reports self‑restricting high‑risk activities when overtired.\n\nExamination today was unremarkable. Neurological assessment was normal with steady gait and intact coordination. Review of prior blood tests from his GP showed electrolytes, liver function, and full blood count within reference ranges. We reviewed the smartwatch export alongside his partner’s diary; the entries aligned well and supported the reported chronology since late 2019.\n\nPlan: I have asked him to continue the event diary and to export the smartwatch fall‑detection and activity summaries monthly so we can maintain a clear timeline. No change to therapy today given the sustained absence of generalised events and the brief nature of the reported jumps. I have provided guidance on regular sleep, hydration, and limiting triggers as he identifies them. We will arrange routine follow‑up in six months, with earlier review if there are any prolonged losses of awareness, injuries, or a cluster of events. He understands to contact the service sooner should the pattern change.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify clinic date: 10 March 2020. 2) The letter states: 'He has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time.' This indicates ongoing seizure-like events (brief jumps) but without a numeric count. 3) Exclude non-seizure events: Three smartwatch fall-detection alerts in the past six months were attributed to trips/slip and not seizures. 4) Determine timeframe to express frequency: The only explicit timeframe anchoring the current status is 'since Feb 2019' up to the clinic date. 5) Calculate interval: Feb 2019 to Feb 2020 = 12 months; add Feb to March 2020 = +1 month; total = 13 months. 6) Frequency selection: The patient has ongoing brief jumps during this 13-month period, but the exact count is unspecified; therefore use 'multiple' for the numerator. 7) The ongoing brief jumps represent the highest-frequency seizure type compared with generalized seizures (0 in this interval), so report the jumps' frequency. 8) Not seizure-free because ongoing events are present.",
+      "seizure_frequency_number": [
+        "multiple per 13 month",
+        "He has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time."
+      ],
+      "reference": [
+        "multiple per 13 month",
+        "He has had no generalised seizures since Feb 2019, though continues to experience brief jumps from time to time"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

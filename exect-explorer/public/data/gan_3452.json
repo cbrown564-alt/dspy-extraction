@@ -1,0 +1,54 @@
+{
+  "id": "gan_3452",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 04 April 2023 \n\nDr Patel  \nSt. George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-02-1956, Hospital No: A9374512 NHS No. 7842105639  \nFlat 3, 12 Redbridge Court, London, SW12 8PA  \n\nDiagnoses: \n\nSeizure disorder; aetiology and classification not established. \n\nI reviewed Michael Harris in clinic today. He is a newly retired teacher who lives alone and reports a regular daily routine with fewer social interactions since retirement. He keeps a diary and notes that episodes most often cluster shortly after getting out of bed and beginning his morning activities, typically within the first hour of the day. Over the past three months he records 6–8 events per month, with some variability week to week. He describes a brief warning of light-headedness and muffled hearing, followed by loss of awareness and brief involuntary movements of both hands; recovery is rapid, with tiredness for the remainder of the morning. There are no clear triggers other than the early-day timing, and no recent head injury, febrile illness, or alcohol excess. He reports good adherence to his current medications and denies missed doses. \n\nThere have been no emergency department attendances, injuries, or tongue biting. No rescue therapy has been used. Sleep is generally adequate by his report, though he often wakes early and reads for an hour before rising. Caffeine intake is modest (one cup of tea in the morning). He has not been driving. \n\nNeurological examination today was unremarkable. Vital signs were stable. We discussed strategies for documenting events more precisely, including use of his diary and, if feasible, a brief video if a bystander is present. He is agreeable to this. We also discussed the potential impact of reduced social contact on mood and day-to-day structure; he does not feel low in mood but is open to discussing community groups at a later date. \n\nInvestigations and plan: \n- Routine EEG and MRI brain have been requested to aid further characterisation.  \n- Bloods including FBC, U&Es, LFTs, calcium, magnesium, and vitamin D requested today.  \n- We will maintain current medication regimen pending results and further review.  \n- Safety advice and seizure first-aid information were reinforced. \n\nFollow-up: I will review Michael Harris in clinic in 12 weeks or sooner if the morning-onset episodes become more frequent, prolonged, or associated with injury. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 745,
+      "end": 803,
+      "text": "Over the past three months he records 6–8 events per month",
+      "attributes": {
+        "Label": "6 to 8 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3452,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 04 April 2023 \n\nDr Patel  \nSt. George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-02-1956, Hospital No: A9374512 NHS No. 7842105639  \nFlat 3, 12 Redbridge Court, London, SW12 8PA  \n\nDiagnoses: \n\nSeizure disorder; aetiology and classification not established. \n\nI reviewed Michael Harris in clinic today. He is a newly retired teacher who lives alone and reports a regular daily routine with fewer social interactions since retirement. He keeps a diary and notes that episodes most often cluster shortly after getting out of bed and beginning his morning activities, typically within the first hour of the day. Over the past three months he records 6–8 events per month, with some variability week to week. He describes a brief warning of light-headedness and muffled hearing, followed by loss of awareness and brief involuntary movements of both hands; recovery is rapid, with tiredness for the remainder of the morning. There are no clear triggers other than the early-day timing, and no recent head injury, febrile illness, or alcohol excess. He reports good adherence to his current medications and denies missed doses. \n\nThere have been no emergency department attendances, injuries, or tongue biting. No rescue therapy has been used. Sleep is generally adequate by his report, though he often wakes early and reads for an hour before rising. Caffeine intake is modest (one cup of tea in the morning). He has not been driving. \n\nNeurological examination today was unremarkable. Vital signs were stable. We discussed strategies for documenting events more precisely, including use of his diary and, if feasible, a brief video if a bystander is present. He is agreeable to this. We also discussed the potential impact of reduced social contact on mood and day-to-day structure; he does not feel low in mood but is open to discussing community groups at a later date. \n\nInvestigations and plan: \n- Routine EEG and MRI brain have been requested to aid further characterisation.  \n- Bloods including FBC, U&Es, LFTs, calcium, magnesium, and vitamin D requested today.  \n- We will maintain current medication regimen pending results and further review.  \n- Safety advice and seizure first-aid information were reinforced. \n\nFollow-up: I will review Michael Harris in clinic in 12 weeks or sooner if the morning-onset episodes become more frequent, prolonged, or associated with injury. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past three months he records 6–8 events per month.\" These events are the described seizure episodes. No other numeric seizure frequency is provided. The mention of episodes clustering in the morning refers to timing rather than a quantified number per cluster, so the standard frequency form applies. Converting the range to the allowed format yields \"6 to 8 per month.\"",
+      "seizure_frequency_number": [
+        "6 to 8 per month",
+        "Over the past three months he records 6–8 events per month"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures on awakening"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (6 to 8 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_3261",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 03 October 2025\n\nDr A. Karim\nRiverside Neurology Clinic\n1 Willow Quay, Bristol BS1 4AB\n\nDear Dr A. Karim,\n\nEmma Collins, DOB: 22-11-1991, Hospital No: H372019 NHS No. 9841206735\nFlat 3, 27 Harbourside Lane, Bristol, BS8 1QZ\n\nFollow-up Review\n\nMedication: Patient-reported ongoing treatment with lamotrigine since early summer; currently using dispersible tablets. She is confident about taking the morning and evening doses but uses a phone reminder to avoid missed doses. No other regular medicines. No known drug allergies reported to our service.\n\nRecent bloods: She recalls a lamotrigine level being checked by her GP in late August, but results were not available to me at the time of the call. She understands her usual therapeutic range target has previously been discussed but could not quote numbers. We will request the result from primary care for confirmation.\n\nSeizure description and timing: Over the past several weeks she has noticed brief spells of lost awareness after breakfast on workdays, with quick recovery and residual fatigue. She denies tonic-clonic activity, tongue biting or incontinence. Family and colleagues have occasionally noticed she becomes unresponsive for a few seconds and then resumes conversation. She reports two clusters this month; each ≈four absences in the morning. Historically, she has described similar brief events occurring in short runs on busy mornings, and despite medication continuation, the pattern this month appears unchanged compared with her usual frequency prior to this review.\n\nTriggers and context: She associates these morning events with poor sleep and rushing before commuting. No clear menstrual linkage identified. She avoids alcohol during the week and drinks coffee most mornings.\n\nFunction and safety: She is working in an office-based role; no recent injuries. She does not drive and understands the current DVLA guidance as previously discussed at clinic. No safeguarding concerns raised.\n\nPlan discussed today: We agreed to maintain her current routine while we verify the lamotrigine blood level and pharmacy dispensing record. She will keep a simple diary capturing time-of-day, duration, and any missed doses or sleep disruption. I have asked her to contact the clinic sooner if the morning clusters increase, if new features emerge, or if she experiences any prolonged episodes. A non-urgent in-person review will be arranged once results are available, and I will update you with the level and any subsequent recommendations.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1307,
+      "end": 1379,
+      "text": "She reports two clusters this month; each ≈four absences in the morning.",
+      "attributes": {
+        "Label": "2 cluster per month, 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1319,
+      "end": 1378,
+      "text": "two clusters this month; each ≈four absences in the morning",
+      "attributes": {
+        "Label": "2 cluster per month, 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3261,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 03 October 2025\n\nDr A. Karim\nRiverside Neurology Clinic\n1 Willow Quay, Bristol BS1 4AB\n\nDear Dr A. Karim,\n\nEmma Collins, DOB: 22-11-1991, Hospital No: H372019 NHS No. 9841206735\nFlat 3, 27 Harbourside Lane, Bristol, BS8 1QZ\n\nFollow-up Review\n\nMedication: Patient-reported ongoing treatment with lamotrigine since early summer; currently using dispersible tablets. She is confident about taking the morning and evening doses but uses a phone reminder to avoid missed doses. No other regular medicines. No known drug allergies reported to our service.\n\nRecent bloods: She recalls a lamotrigine level being checked by her GP in late August, but results were not available to me at the time of the call. She understands her usual therapeutic range target has previously been discussed but could not quote numbers. We will request the result from primary care for confirmation.\n\nSeizure description and timing: Over the past several weeks she has noticed brief spells of lost awareness after breakfast on workdays, with quick recovery and residual fatigue. She denies tonic-clonic activity, tongue biting or incontinence. Family and colleagues have occasionally noticed she becomes unresponsive for a few seconds and then resumes conversation. She reports two clusters this month; each ≈four absences in the morning. Historically, she has described similar brief events occurring in short runs on busy mornings, and despite medication continuation, the pattern this month appears unchanged compared with her usual frequency prior to this review.\n\nTriggers and context: She associates these morning events with poor sleep and rushing before commuting. No clear menstrual linkage identified. She avoids alcohol during the week and drinks coffee most mornings.\n\nFunction and safety: She is working in an office-based role; no recent injuries. She does not drive and understands the current DVLA guidance as previously discussed at clinic. No safeguarding concerns raised.\n\nPlan discussed today: We agreed to maintain her current routine while we verify the lamotrigine blood level and pharmacy dispensing record. She will keep a simple diary capturing time-of-day, duration, and any missed doses or sleep disruption. I have asked her to contact the clinic sooner if the morning clusters increase, if new features emerge, or if she experiences any prolonged episodes. A non-urgent in-person review will be arranged once results are available, and I will update you with the level and any subsequent recommendations.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current events: \"She reports two clusters this month; each ≈four absences in the morning.\" This provides an explicit numeric frequency for the current period (this month). No other competing frequencies are given that are higher. Therefore, the appropriate normalized label is clusters per month with number per cluster specified. Calculation: 2 clusters in the current month, approximately 4 seizures per cluster.",
+      "seizure_frequency_number": [
+        "2 cluster per month, 4 per cluster",
+        "She reports two clusters this month; each ≈four absences in the morning."
+      ],
+      "reference": [
+        "2 cluster per month, 4 per cluster",
+        "two clusters this month; each ≈four absences in the morning"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

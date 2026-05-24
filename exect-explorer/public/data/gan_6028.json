@@ -1,0 +1,54 @@
+{
+  "id": "gan_6028",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Aisha Karim\nSt Martin’s Neurology Centre\nNeurology Department, 12 Brookfield Way, Manchester M14 5QH\n\nDear Dr Aisha Karim,\n\nMichael Turner, DOB: 23-02-1990, Hospital No: H392781 NHS No. 9045127763\nFlat 3, 27 Larkspur Court, Manchester, M20 6EN\n\nDiagnoses:\n\nPrimary generalised epilepsy with generalised spike–wave discharges on prior EEG\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\n- Continue lamotrigine 100 mg twice daily\n- Reinforce sleep hygiene and intercurrent illness management\n- Safety advice regarding nocturnal events; partner to provide collateral history when available\n- Routine follow-up in 12 months, sooner if events cluster or daytime seizures occur\n\nI reviewed Michael Turner in clinic today. His partner was not present, but he reports that most events, when they occur, are at night and have been described to him afterwards by his partner. He has not had witnessed daytime convulsions. He recalls a brief nocturnal episode approximately three months ago coinciding with a febrile upper respiratory infection, with post-event myalgia and morning confusion. Aside from that, there have been no other clear events reported. This pattern is in keeping with episodes arising predominantly during the night, and he describes that they tend to appear around periods of systemic illness rather than at baseline.\n\nHe confirms good adherence to lamotrigine 100 mg twice daily without dose-limiting adverse effects. He avoids sleep deprivation where possible; however, he acknowledges that recent work-related shift changes have intermittently disrupted his routine. We discussed the importance of maintaining regular sleep and hydration, and taking antipyretics and fluids promptly when unwell to reduce the likelihood of illness-associated exacerbations.\n\nHe previously had EEG evidence of generalised spike–wave activity, and overall the presentation is consistent with generalised epilepsy. There are no new focal neurological symptoms, and examination today was unremarkable. Given the predominantly nocturnal pattern and the apparent tendency for episodes to cluster around intercurrent illnesses, I have advised continuation of his current antiepileptic regimen. We agreed to defer any medication changes until we have collateral information from his partner and, if needed, a repeat ambulatory sleep-deprived EEG.\n\nI have provided seizure safety advice relevant to nocturnal events and recommended the use of a seizure diary, including noting febrile illnesses, missed doses, and sleep duration. We will review in 12 months, or earlier if he experiences daytime events, injury, or an increase in frequency.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 983,
+      "end": 1217,
+      "text": "He recalls a brief nocturnal episode approximately three months ago coinciding with a febrile upper respiratory infection, with post-event myalgia and morning confusion. Aside from that, there have been no other clear events reported.",
+      "attributes": {
+        "Label": "1 per 3 months",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6028,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Aisha Karim\nSt Martin’s Neurology Centre\nNeurology Department, 12 Brookfield Way, Manchester M14 5QH\n\nDear Dr Aisha Karim,\n\nMichael Turner, DOB: 23-02-1990, Hospital No: H392781 NHS No. 9045127763\nFlat 3, 27 Larkspur Court, Manchester, M20 6EN\n\nDiagnoses:\n\nPrimary generalised epilepsy with generalised spike–wave discharges on prior EEG\n\nCurrent Medication:\n\nLamotrigine 100 mg twice daily\n\nPlan:\n\n- Continue lamotrigine 100 mg twice daily\n- Reinforce sleep hygiene and intercurrent illness management\n- Safety advice regarding nocturnal events; partner to provide collateral history when available\n- Routine follow-up in 12 months, sooner if events cluster or daytime seizures occur\n\nI reviewed Michael Turner in clinic today. His partner was not present, but he reports that most events, when they occur, are at night and have been described to him afterwards by his partner. He has not had witnessed daytime convulsions. He recalls a brief nocturnal episode approximately three months ago coinciding with a febrile upper respiratory infection, with post-event myalgia and morning confusion. Aside from that, there have been no other clear events reported. This pattern is in keeping with episodes arising predominantly during the night, and he describes that they tend to appear around periods of systemic illness rather than at baseline.\n\nHe confirms good adherence to lamotrigine 100 mg twice daily without dose-limiting adverse effects. He avoids sleep deprivation where possible; however, he acknowledges that recent work-related shift changes have intermittently disrupted his routine. We discussed the importance of maintaining regular sleep and hydration, and taking antipyretics and fluids promptly when unwell to reduce the likelihood of illness-associated exacerbations.\n\nHe previously had EEG evidence of generalised spike–wave activity, and overall the presentation is consistent with generalised epilepsy. There are no new focal neurological symptoms, and examination today was unremarkable. Given the predominantly nocturnal pattern and the apparent tendency for episodes to cluster around intercurrent illnesses, I have advised continuation of his current antiepileptic regimen. We agreed to defer any medication changes until we have collateral information from his partner and, if needed, a repeat ambulatory sleep-deprived EEG.\n\nI have provided seizure safety advice relevant to nocturnal events and recommended the use of a seizure diary, including noting febrile illnesses, missed doses, and sleep duration. We will review in 12 months, or earlier if he experiences daytime events, injury, or an increase in frequency.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient had a single nocturnal episode about three months prior to the clinic date and otherwise no other clear events. Since an event occurred within the last 6 months, the patient does not meet the ≥6-month seizure-free criterion, so we calculate frequency. With 1 event in the last ~3 months and no others reported, the best quantifiable current rate is 1 per 3 months.",
+      "seizure_frequency_number": [
+        "1 per 3 months",
+        "He recalls a brief nocturnal episode approximately three months ago coinciding with a febrile upper respiratory infection, with post-event myalgia and morning confusion. Aside from that, there have been no other clear events reported."
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during intercurrent illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 3 months) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

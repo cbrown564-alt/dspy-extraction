@@ -1,0 +1,65 @@
+{
+  "id": "gan_14076",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Helen Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 11 December 2014 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Shaw (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical update and workplace-trigger concern\n\nHi Helen\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy. The patient has a history consistent with generalised epilepsy and reports recent worsening of events in the context of environmental triggers.\n\nPresent Medication:\n\n1. Sodium Valproate 500 mg in the morning and 1,000 mg at night\n2. Clobazam 10 mg at night as required for clusters (patient-led use, typically avoided on work days due to sedation)\n\nPresent Seizure Frequency:\n\nShe told me that since her last clinic appointment she has had several myoclonic jerks, the last reported on 10-Oct. She could not quantify the total number of events and feels they are occurring more often at work compared to home.\n\nClinical Summary and Deterioration:\n\nThe patient describes a clear deterioration over recent weeks coinciding with a move to a new workplace where lighting is notably bright with intermittent flicker (e.g. display walls and LED panels). She reports more frequent brief morning myoclonic jerks and occasional startle-like arm twitches during late afternoon meetings under these lights. No clear sleep deprivation or missed doses were identified. There have been no known generalised tonic–clonic seizures reported, but she remains concerned about escalating myoclonic activity in this environment.\n\nPlan of Action:\n\n- We discussed that strong and flickering lights can exacerbate seizures in photosensitive generalised epilepsies. She will liaise with her employer’s occupational health to review lighting (e.g. use of diffusers, stable non-flicker settings) and consider screen filters and regular screen breaks.\n- She will continue to maintain a detailed event and trigger diary, noting time, setting, light exposure, and any missed medication.\n- No immediate medication changes were made today as she wishes to trial environmental adjustments first; we agreed this is reasonable. If events persist or escalate despite mitigation, we will consider medication optimisation at the next review.\n- She was advised on safety at work and during commuting if jerks cluster.\n- Follow-up arranged in eight weeks, sooner if there is any further deterioration.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 845,
+      "end": 960,
+      "text": "she has had several myoclonic jerks, the last reported on 10-Oct. She could not quantify the total number of events",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 794,
+      "end": 909,
+      "text": "She told me that since her last clinic appointment she has had several myoclonic jerks, the last reported on 10-Oct",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14076,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Helen Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 11 December 2014 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Shaw (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical update and workplace-trigger concern\n\nHi Helen\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy. The patient has a history consistent with generalised epilepsy and reports recent worsening of events in the context of environmental triggers.\n\nPresent Medication:\n\n1. Sodium Valproate 500 mg in the morning and 1,000 mg at night\n2. Clobazam 10 mg at night as required for clusters (patient-led use, typically avoided on work days due to sedation)\n\nPresent Seizure Frequency:\n\nShe told me that since her last clinic appointment she has had several myoclonic jerks, the last reported on 10-Oct. She could not quantify the total number of events and feels they are occurring more often at work compared to home.\n\nClinical Summary and Deterioration:\n\nThe patient describes a clear deterioration over recent weeks coinciding with a move to a new workplace where lighting is notably bright with intermittent flicker (e.g. display walls and LED panels). She reports more frequent brief morning myoclonic jerks and occasional startle-like arm twitches during late afternoon meetings under these lights. No clear sleep deprivation or missed doses were identified. There have been no known generalised tonic–clonic seizures reported, but she remains concerned about escalating myoclonic activity in this environment.\n\nPlan of Action:\n\n- We discussed that strong and flickering lights can exacerbate seizures in photosensitive generalised epilepsies. She will liaise with her employer’s occupational health to review lighting (e.g. use of diffusers, stable non-flicker settings) and consider screen filters and regular screen breaks.\n- She will continue to maintain a detailed event and trigger diary, noting time, setting, light exposure, and any missed medication.\n- No immediate medication changes were made today as she wishes to trial environmental adjustments first; we agreed this is reasonable. If events persist or escalate despite mitigation, we will consider medication optimisation at the next review.\n- She was advised on safety at work and during commuting if jerks cluster.\n- Follow-up arranged in eight weeks, sooner if there is any further deterioration.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has had several myoclonic jerks since the last clinic appointment but cannot quantify the total number. No explicit numeric frequency (per day/week/month) is provided, and the timing since the last appointment isn't specified to convert 'several' into a rate. Therefore, the exact frequency cannot be determined from the information given. As per instructions, when seizures are mentioned but specific frequency cannot be determined, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "she has had several myoclonic jerks, the last reported on 10-Oct. She could not quantify the total number of events"
+      ],
+      "reference": [
+        "unknown",
+        "She told me that since her last clinic appointment she has had several myoclonic jerks, the last reported on 10-Oct"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

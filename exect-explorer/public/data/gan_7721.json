@@ -1,0 +1,59 @@
+{
+  "id": "gan_7721",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Currently taking Levetiracetam 500mg twice daily; previously trialled Carbamazepine and Topiramate with documented adverse effects.  \n\nAdverse effects history:  \n- Carbamazepine: maculopapular rash (resolved on cessation).  \n- Topiramate: GI upset and dysgeusia; discontinued due to intolerance.  \n\nLevetiracetam Blood Level:  \n- 10 September 2025: 16 mg/L (local reference range 12–46 mg/L). Dose 500mg twice daily at time of sampling.  \n\nSeizures: No seizure recurrence noted since restarting regular dosing in May 2025; patient reports no auras or events, and family corroborate absence of nocturnal behaviours. \n\nI reviewed Susan Miller today in person following a period of medication stabilisation. They described improved sleep hygiene and reduced alcohol intake over the summer, which coincided with better adherence. No missed doses reported in the last eight weeks. Mood is stable; no irritability on Levetiracetam. Weight stable. Driving remains on hold by patient preference pending our routine follow‑up. \n\nExamination: Neurological examination unremarkable today; no cutaneous findings suggestive of recurrent drug reaction. Vitals within normal limits. \n\nPlan: Continue Levetiracetam 500mg twice daily. Routine monitoring only; patient has an emergency advice plan and understands when to seek help. Bloods (U&E, FBC, LFTs) checked today for baseline surveillance given prior side‑effects on other agents; we will inform the patient of results by phone. Next review by telephone in 4–6 months unless concerns arise. \n\nAdditional notes: The patient brought pharmacy records confirming dispensing regularity since May 2025. We discussed potential future options if tolerability changes, noting prior rash and GI intolerance with other medicines. Patient is content with current management. â€¡ Ã‚Â· ï¿½ \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 917,
+      "text": "No seizure recurrence noted since restarting regular dosing in May 2025",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 873,
+      "text": "No seizure recurrence noted",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7721,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Currently taking Levetiracetam 500mg twice daily; previously trialled Carbamazepine and Topiramate with documented adverse effects.  \n\nAdverse effects history:  \n- Carbamazepine: maculopapular rash (resolved on cessation).  \n- Topiramate: GI upset and dysgeusia; discontinued due to intolerance.  \n\nLevetiracetam Blood Level:  \n- 10 September 2025: 16 mg/L (local reference range 12–46 mg/L). Dose 500mg twice daily at time of sampling.  \n\nSeizures: No seizure recurrence noted since restarting regular dosing in May 2025; patient reports no auras or events, and family corroborate absence of nocturnal behaviours. \n\nI reviewed Susan Miller today in person following a period of medication stabilisation. They described improved sleep hygiene and reduced alcohol intake over the summer, which coincided with better adherence. No missed doses reported in the last eight weeks. Mood is stable; no irritability on Levetiracetam. Weight stable. Driving remains on hold by patient preference pending our routine follow‑up. \n\nExamination: Neurological examination unremarkable today; no cutaneous findings suggestive of recurrent drug reaction. Vitals within normal limits. \n\nPlan: Continue Levetiracetam 500mg twice daily. Routine monitoring only; patient has an emergency advice plan and understands when to seek help. Bloods (U&E, FBC, LFTs) checked today for baseline surveillance given prior side‑effects on other agents; we will inform the patient of results by phone. Next review by telephone in 4–6 months unless concerns arise. \n\nAdditional notes: The patient brought pharmacy records confirming dispensing regularity since May 2025. We discussed potential future options if tolerability changes, noting prior rash and GI intolerance with other medicines. Patient is content with current management. â€¡ Ã‚Â· ï¿½ \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizures: No seizure recurrence noted since restarting regular dosing in May 2025\" and the clinic date is 02 October 2025. Calculate duration seizure-free: from May 2025 to October 2025 is approximately 5 months (May→June 1, June→July 2, July→August 3, August→September 4, September→October 5). This is less than 6 months, so cannot be labeled as fully 'seizure free' per the 6‑month rule. Therefore, the appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No seizure recurrence noted since restarting regular dosing in May 2025"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizure recurrence noted"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

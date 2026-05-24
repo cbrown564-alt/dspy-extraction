@@ -1,0 +1,59 @@
+{
+  "id": "gan_14706",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 October 2019 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Meera Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Patrick O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Telephone review and travel-related considerations\n\nDear Thomas\n\nEpilepsy Diagnosis:\n\nPatient has generalised epilepsy.\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night as needed for jet-lag periods (patient-reported intermittent use)\n\nPresent Seizure Frequency:\n\nTwo events over the last five months.\n\nHistory and Context:\n\nThis is a follow-up conducted by telephone as he is a frequent business traveller with irregular sleep and time zones. He reports adherence to valproate on most days but occasionally misses doses during long-haul flights. His first seizure occurred in May 2019 in Ireland, at night while asleep. He woke with rhythmic twitching of the right arm and a sense of déjà vu. The second event was in October 2019 in Scotland, also during sleep, lasting five minutes with a similar pattern of symptoms. He denies daytime collapses, injuries, or prolonged postictal confusion. No alcohol excess reported; significant sleep disruption around both events.\n\nPlan of Action:\n\n- Reinforced general measures for generalised epilepsy with emphasis on strict medication adherence when crossing time zones; advised use of alarms and written dosing plans for flights.\n- Continue sodium valproate 500 mg twice daily. He prefers no change at present given infrequency of events and travel schedule.\n- May use clobazam 10 mg at night for up to three nights around major time-zone shifts if sleep disruption is expected, as previously advised.\n- Arrange routine EEG at next in-person visit when in London; if logistics difficult, consider ambulatory EEG coordinated around his travel.\n- Safety counselling provided (no driving until compliant with DVLA guidance; avoid sleep deprivation, swimming alone, or climbing heights).\n- Next review by telephone in three months or sooner if further seizures occur.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 609,
+      "end": 646,
+      "text": "Two events over the last five months.",
+      "attributes": {
+        "Label": "2 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 892,
+      "end": 1163,
+      "text": "His first seizure occurred in May 2019 in Ireland, at night while asleep. He woke with rhythmic twitching of the right arm and a sense of déjà vu. The second event was in October 2019 in Scotland, also during sleep, lasting five minutes with a similar pattern of symptoms",
+      "attributes": {
+        "Label": "2 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14706,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Reid (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 14 October 2019 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Meera Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Patrick O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Telephone review and travel-related considerations\n\nDear Thomas\n\nEpilepsy Diagnosis:\n\nPatient has generalised epilepsy.\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night as needed for jet-lag periods (patient-reported intermittent use)\n\nPresent Seizure Frequency:\n\nTwo events over the last five months.\n\nHistory and Context:\n\nThis is a follow-up conducted by telephone as he is a frequent business traveller with irregular sleep and time zones. He reports adherence to valproate on most days but occasionally misses doses during long-haul flights. His first seizure occurred in May 2019 in Ireland, at night while asleep. He woke with rhythmic twitching of the right arm and a sense of déjà vu. The second event was in October 2019 in Scotland, also during sleep, lasting five minutes with a similar pattern of symptoms. He denies daytime collapses, injuries, or prolonged postictal confusion. No alcohol excess reported; significant sleep disruption around both events.\n\nPlan of Action:\n\n- Reinforced general measures for generalised epilepsy with emphasis on strict medication adherence when crossing time zones; advised use of alarms and written dosing plans for flights.\n- Continue sodium valproate 500 mg twice daily. He prefers no change at present given infrequency of events and travel schedule.\n- May use clobazam 10 mg at night for up to three nights around major time-zone shifts if sleep disruption is expected, as previously advised.\n- Arrange routine EEG at next in-person visit when in London; if logistics difficult, consider ambulatory EEG coordinated around his travel.\n- Safety counselling provided (no driving until compliant with DVLA guidance; avoid sleep deprivation, swimming alone, or climbing heights).\n- Next review by telephone in three months or sooner if further seizures occur.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency: \"Two events over the last five months.\" This provides a clear numeric frequency over a defined period. No other conflicting frequencies are given. Therefore, normalize to the allowed format as 2 per 5 month.",
+      "seizure_frequency_number": [
+        "2 per 5 month",
+        "Two events over the last five months."
+      ],
+      "reference": [
+        "2 per 5 month",
+        "His first seizure occurred in May 2019 in Ireland, at night while asleep. He woke with rhythmic twitching of the right arm and a sense of déjà vu. The second event was in October 2019 in Scotland, also during sleep, lasting five minutes with a similar pattern of symptoms"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

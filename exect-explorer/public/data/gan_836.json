@@ -1,0 +1,59 @@
+{
+  "id": "gan_836",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 23 March 2022 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Louise Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and monitoring plan\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nHistory of childhood febrile seizures. Adult-onset seizures under active review. Classification not established at this time.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters\n\nPresent Seizure Frequency:\n\nyearly seizures, typically brief loss of awareness with rapid recovery, most commonly occurring in late autumn according to patient and partner report.\n\nPlan of Action:\n\nThe patient reports stable control overall, with yearly seizures despite adherence to lamotrigine, good sleep hygiene, and moderated alcohol intake. No clear precipitant identified; partner notes occasional prodromal irritability and interrupted sleep the night prior. Neurological examination today is normal. Routine bloods (including FBC, U&Es, LFTs) last month were within reference ranges. ECG is normal. Given the current pattern and the absence of safety incidents, we agreed to continue lamotrigine at the present dose. We discussed SUDEP awareness, seizure first aid, and the importance of consistent medication timing. The patient will maintain a seizure diary and has consented to share event videos if further episodes occur.\n\nInvestigations: I have requested an updated MRI brain (epilepsy protocol) and a prolonged ambulatory EEG (72-hour) to aid classification. We will also screen for potential sleep-related factors (questionnaire and optional home oximetry) given the nocturnal pattern before some events.\n\nSafety and lifestyle: The patient does not drive and understands DVLA requirements; we reviewed restrictions and when to notify the DVLA should events recur. Work duties remain unchanged with appropriate risk assessment. We advised continuation of regular exercise, avoidance of sleep deprivation, and moderation of alcohol. The family has been provided with written seizure first-aid guidance and instructed on when to seek emergency help.\n\nFollow-up: I have arranged a follow-up appointment in six months, or sooner if there is any change in frequency, intensity, or characteristics. If investigations assist classification or if events cluster, we will consider dose optimisation of lamotrigine or alternative therapy after discussion in the multidisciplinary meeting.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 602,
+      "end": 645,
+      "text": "Present Seizure Frequency:\n\nyearly seizures",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 630,
+      "end": 645,
+      "text": "yearly seizures",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 836,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 23 March 2022 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Louise Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and monitoring plan\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nHistory of childhood febrile seizures. Adult-onset seizures under active review. Classification not established at this time.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night as needed for clusters\n\nPresent Seizure Frequency:\n\nyearly seizures, typically brief loss of awareness with rapid recovery, most commonly occurring in late autumn according to patient and partner report.\n\nPlan of Action:\n\nThe patient reports stable control overall, with yearly seizures despite adherence to lamotrigine, good sleep hygiene, and moderated alcohol intake. No clear precipitant identified; partner notes occasional prodromal irritability and interrupted sleep the night prior. Neurological examination today is normal. Routine bloods (including FBC, U&Es, LFTs) last month were within reference ranges. ECG is normal. Given the current pattern and the absence of safety incidents, we agreed to continue lamotrigine at the present dose. We discussed SUDEP awareness, seizure first aid, and the importance of consistent medication timing. The patient will maintain a seizure diary and has consented to share event videos if further episodes occur.\n\nInvestigations: I have requested an updated MRI brain (epilepsy protocol) and a prolonged ambulatory EEG (72-hour) to aid classification. We will also screen for potential sleep-related factors (questionnaire and optional home oximetry) given the nocturnal pattern before some events.\n\nSafety and lifestyle: The patient does not drive and understands DVLA requirements; we reviewed restrictions and when to notify the DVLA should events recur. Work duties remain unchanged with appropriate risk assessment. We advised continuation of regular exercise, avoidance of sleep deprivation, and moderation of alcohol. The family has been provided with written seizure first-aid guidance and instructed on when to seek emergency help.\n\nFollow-up: I have arranged a follow-up appointment in six months, or sooner if there is any change in frequency, intensity, or characteristics. If investigations assist classification or if events cluster, we will consider dose optimisation of lamotrigine or alternative therapy after discussion in the multidisciplinary meeting.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency as 'yearly seizures'. This indicates approximately one seizure per year. There are no additional frequencies mentioned that would override this. No need to sum or select between multiple frequencies. Therefore, normalize 'yearly seizures' to '1 per year'.",
+      "seizure_frequency_number": [
+        "1 per year",
+        "Present Seizure Frequency:\n\nyearly seizures"
+      ],
+      "reference": [
+        "1 per year",
+        "yearly seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

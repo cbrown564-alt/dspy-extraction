@@ -1,0 +1,59 @@
+{
+  "id": "gan_13513",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 23 March 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSarah Whitfield, DOB: 14-03-1988, Hospital No: KCH-372114 NHS No. 9876543210  \n22 Brookside Close, London, SE15 3AB\n\nThank you for your recent correspondence and for arranging the follow‑up. I reviewed her in clinic today, accompanied by her partner. Overall, the picture is encouraging with sustained improvement reported over the last year and a half. She has been engaging well with routine, and there have been no emergency presentations or interim concerns from primary care.\n\nShe has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 4 times per year, but seizure control has been excellent, and she has now been seizure free for one and a half years. This improvement coincides with the introduction of regular night‑time childcare support, which has allowed her sleep to consolidate. Since this change, she and her partner describe much better daytime alertness, stable mood, and no witnessed events, injuries or prolonged post‑event confusion. She has resumed light exercise and short periods of part‑time work without any incident. She has not required rescue medication during this period.\n\nThere are no new neurological red flags reported. She denies new focal symptoms, persistent headaches, visual change or speech disturbance. Cognitively, she feels clearer and less fatigued. She continues to adhere to her medication as prescribed, with no problematic adverse effects reported, and has maintained good hydration and a consistent bedtime routine. She does not drive and remains fully aware of the safety advice previously given.\n\nOn examination today, her observations were stable. General neurological examination was unremarkable. She was oriented and engaged, with appropriate affect. There were no signs of intoxication or intercurrent illness. Review of prior investigations did not reveal any new concerns.\n\nPlan: given the current stability, I have recommended continuation of her present regimen and sleep routine, with ongoing attention to triggers. We discussed that night‑time childcare support has been valuable in maintaining consolidated sleep and overall stability, and she wishes to continue this arrangement. She will monitor for any breakthrough events, and her partner will keep a simple diary should any changes occur. We agreed on routine review in six months, with earlier contact via your practice or our service if there is any recurrence of events, medication intolerance, or change in circumstances.\n\nI am pleased to note the sustained improvement, and I will keep you updated following the next review. Please let me know if there are any queries or if further information would be helpful.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 902,
+      "end": 956,
+      "text": "she has now been seizure free for one and a half years",
+      "attributes": {
+        "Label": "seizure free for 1.5 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 746,
+      "end": 956,
+      "text": "She has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 4 times per year, but seizure control has been excellent, and she has now been seizure free for one and a half years",
+      "attributes": {
+        "Label": "seizure free for 1.5 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13513,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 23 March 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSarah Whitfield, DOB: 14-03-1988, Hospital No: KCH-372114 NHS No. 9876543210  \n22 Brookside Close, London, SE15 3AB\n\nThank you for your recent correspondence and for arranging the follow‑up. I reviewed her in clinic today, accompanied by her partner. Overall, the picture is encouraging with sustained improvement reported over the last year and a half. She has been engaging well with routine, and there have been no emergency presentations or interim concerns from primary care.\n\nShe has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 4 times per year, but seizure control has been excellent, and she has now been seizure free for one and a half years. This improvement coincides with the introduction of regular night‑time childcare support, which has allowed her sleep to consolidate. Since this change, she and her partner describe much better daytime alertness, stable mood, and no witnessed events, injuries or prolonged post‑event confusion. She has resumed light exercise and short periods of part‑time work without any incident. She has not required rescue medication during this period.\n\nThere are no new neurological red flags reported. She denies new focal symptoms, persistent headaches, visual change or speech disturbance. Cognitively, she feels clearer and less fatigued. She continues to adhere to her medication as prescribed, with no problematic adverse effects reported, and has maintained good hydration and a consistent bedtime routine. She does not drive and remains fully aware of the safety advice previously given.\n\nOn examination today, her observations were stable. General neurological examination was unremarkable. She was oriented and engaged, with appropriate affect. There were no signs of intoxication or intercurrent illness. Review of prior investigations did not reveal any new concerns.\n\nPlan: given the current stability, I have recommended continuation of her present regimen and sleep routine, with ongoing attention to triggers. We discussed that night‑time childcare support has been valuable in maintaining consolidated sleep and overall stability, and she wishes to continue this arrangement. She will monitor for any breakthrough events, and her partner will keep a simple diary should any changes occur. We agreed on routine review in six months, with earlier contact via your practice or our service if there is any recurrence of events, medication intolerance, or change in circumstances.\n\nI am pleased to note the sustained improvement, and I will keep you updated following the next review. Please let me know if there are any queries or if further information would be helpful.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit statements about current seizure activity. The letter states: past history included seizures '4 times per year' but now 'seizure control has been excellent, and she has now been seizure free for one and a half years.' This meets the ≥6 months criterion for seizure freedom. No conflicting higher frequency is reported. Therefore, the normalized label is 'seizure free for 1.5 year'.",
+      "seizure_frequency_number": [
+        "seizure free for 1.5 year",
+        "she has now been seizure free for one and a half years"
+      ],
+      "reference": [
+        "seizure free for 1.5 year",
+        "She has a past history of atonic seizures, drop attacks and generalised tonic-clonic seizures 4 times per year, but seizure control has been excellent, and she has now been seizure free for one and a half years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

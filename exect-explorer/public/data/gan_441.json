@@ -1,0 +1,59 @@
+{
+  "id": "gan_441",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Neurology Clinic  \n14 Torrington Place, London WC1E 7JL  \n\nDear Dr Patel,\n\nAmelia Johnson, DOB: 22-03-1991, Hospital No: H382915 NHS No. 9842157630  \nFlat 3, 27 Green Park Road, London, W1J 7AL  \n\nEpilepsy: Combined generalised and focal\n\nMedication: Lamotrigine 100 mg twice daily; Levetiracetam 500 mg twice daily\n\nOverview and progress:\nI conducted a scheduled review with Amelia Johnson today by telephone. She reports a clear improvement in seizure control since transitioning to a remote work arrangement, which has reduced fatigue and irregular sleep. Her pattern has improved and she now experiences focal aware episodes and occasional brief generalised events. Overall, the trajectory is positive with better daytime functioning and fewer post-ictal symptoms.\n\nEpilepsy classification:\n- Combined generalised and focal epilepsy: patient has both generalised and focal epilepsy, with focal aware sensory episodes and separate brief generalised tonic–clonic events as described below.\n\nCurrent seizure history:\n- Frequency: twice per month on average over the last three months, with clustering no longer reported.\n- Semiologies reported:\n  • Focal aware events: tingling rising from the left hand to forearm with transient speech hesitation, lasting 30–60 seconds, preserved awareness, minimal post-event fatigue.\n  • Generalised events: rare brief generalised tonic–clonic seizures, typically upon waking after poor sleep, with rapid recovery.\n- Triggers: sleep loss previously prominent; now improved with remote work schedule.\n\nInvestigations/monitoring:\n- Lamotrigine level (August 2025): 4.8 mg/L (reference 1.0–15.0 mg/L) while on current dosing. Patient confirms adherence with use of a weekly pill organiser.\n- No adverse effects reported from lamotrigine or levetiracetam.\n\nFunctional status and safety:\n- Fatigue has lessened and she feels more consistent in daily activities. No recent injuries or hospital attendances. She avoids known triggers and adheres to safety guidance for bathing and heights.\n\nPlan discussed today:\n- Continue current regimen and sleep hygiene. Patient will keep a seizure diary to monitor for any further reduction in events. We will review again in three months or sooner if the pattern changes.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1130,
+      "end": 1194,
+      "text": "Frequency: twice per month on average over the last three months",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1141,
+      "end": 1156,
+      "text": "twice per month",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 441,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Neurology Clinic  \n14 Torrington Place, London WC1E 7JL  \n\nDear Dr Patel,\n\nAmelia Johnson, DOB: 22-03-1991, Hospital No: H382915 NHS No. 9842157630  \nFlat 3, 27 Green Park Road, London, W1J 7AL  \n\nEpilepsy: Combined generalised and focal\n\nMedication: Lamotrigine 100 mg twice daily; Levetiracetam 500 mg twice daily\n\nOverview and progress:\nI conducted a scheduled review with Amelia Johnson today by telephone. She reports a clear improvement in seizure control since transitioning to a remote work arrangement, which has reduced fatigue and irregular sleep. Her pattern has improved and she now experiences focal aware episodes and occasional brief generalised events. Overall, the trajectory is positive with better daytime functioning and fewer post-ictal symptoms.\n\nEpilepsy classification:\n- Combined generalised and focal epilepsy: patient has both generalised and focal epilepsy, with focal aware sensory episodes and separate brief generalised tonic–clonic events as described below.\n\nCurrent seizure history:\n- Frequency: twice per month on average over the last three months, with clustering no longer reported.\n- Semiologies reported:\n  • Focal aware events: tingling rising from the left hand to forearm with transient speech hesitation, lasting 30–60 seconds, preserved awareness, minimal post-event fatigue.\n  • Generalised events: rare brief generalised tonic–clonic seizures, typically upon waking after poor sleep, with rapid recovery.\n- Triggers: sleep loss previously prominent; now improved with remote work schedule.\n\nInvestigations/monitoring:\n- Lamotrigine level (August 2025): 4.8 mg/L (reference 1.0–15.0 mg/L) while on current dosing. Patient confirms adherence with use of a weekly pill organiser.\n- No adverse effects reported from lamotrigine or levetiracetam.\n\nFunctional status and safety:\n- Fatigue has lessened and she feels more consistent in daily activities. No recent injuries or hospital attendances. She avoids known triggers and adheres to safety guidance for bathing and heights.\n\nPlan discussed today:\n- Continue current regimen and sleep hygiene. Patient will keep a seizure diary to monitor for any further reduction in events. We will review again in three months or sooner if the pattern changes.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency: \"Frequency: twice per month on average over the last three months\". There is no indication of seizure freedom for 6 months. No clustering currently. Therefore, normalise 'twice per month' to '2 per month'.",
+      "seizure_frequency_number": [
+        "2 per month",
+        "Frequency: twice per month on average over the last three months"
+      ],
+      "reference": [
+        "2 per month",
+        "twice per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

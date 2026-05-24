@@ -1,0 +1,59 @@
+{
+  "id": "gan_2242",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSouth Thames Neurology Service\nNeurosciences Outpatients, St George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nMichael Johnson, DOB: 14-07-1988, Hospital No: H392774 NHS No. 8475201936\nFlat 3, 12 Parkview Terrace, London SE15 3AL\n\nDiagnoses:\n\nFocal epilepsy.\n\nThank you for reviewing Michael Johnson in the VNS follow‑up clinic. He attended with his partner. He has focal epilepsy with seizures arising from the left temporal region, confirmed previously on EEG, and he underwent implantation of a vagus nerve stimulator in 2021. He reports that since his last appointment he has experienced about six to eight seizures in the last three months. These have been brief focal impaired awareness episodes with behavioural arrest, lip smacking, and post‑ictal fatigue lasting 10–15 minutes. He denies generalised tonic–clonic activity, injuries, or emergency attendances over this period.\n\nHe feels the magnet aborts some events when used promptly; he typically swipes at aura onset (déjà vu and rising epigastric sensation). There have been no changes to his regular anti‑seizure medicines since the previous visit. Sleep and stress were noted as occasional precipitating factors by the patient.\n\nVNS review today showed satisfactory normal‑mode diagnostics with acceptable lead impedance and no elective replacement indicators. In line with the plan and given his stable course, no parameter changes were made at this review. He was reminded regarding consistent magnet use at the earliest aura and to keep a contemporaneous seizure diary so we can further quantify response.\n\nPlan:\n- Continue current anti‑seizure treatment and VNS parameters unchanged.\n- Continue magnet use at aura onset and maintain seizure and magnet‑use log.\n- Routine VNS check and clinical review in four months, or sooner if seizure pattern worsens.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 671,
+      "end": 742,
+      "text": "he has experienced about six to eight seizures in the last three months",
+      "attributes": {
+        "Label": "6 to 8 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 690,
+      "end": 742,
+      "text": "about six to eight seizures in the last three months",
+      "attributes": {
+        "Label": "6 to 8 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2242,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSouth Thames Neurology Service\nNeurosciences Outpatients, St George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nMichael Johnson, DOB: 14-07-1988, Hospital No: H392774 NHS No. 8475201936\nFlat 3, 12 Parkview Terrace, London SE15 3AL\n\nDiagnoses:\n\nFocal epilepsy.\n\nThank you for reviewing Michael Johnson in the VNS follow‑up clinic. He attended with his partner. He has focal epilepsy with seizures arising from the left temporal region, confirmed previously on EEG, and he underwent implantation of a vagus nerve stimulator in 2021. He reports that since his last appointment he has experienced about six to eight seizures in the last three months. These have been brief focal impaired awareness episodes with behavioural arrest, lip smacking, and post‑ictal fatigue lasting 10–15 minutes. He denies generalised tonic–clonic activity, injuries, or emergency attendances over this period.\n\nHe feels the magnet aborts some events when used promptly; he typically swipes at aura onset (déjà vu and rising epigastric sensation). There have been no changes to his regular anti‑seizure medicines since the previous visit. Sleep and stress were noted as occasional precipitating factors by the patient.\n\nVNS review today showed satisfactory normal‑mode diagnostics with acceptable lead impedance and no elective replacement indicators. In line with the plan and given his stable course, no parameter changes were made at this review. He was reminded regarding consistent magnet use at the earliest aura and to keep a contemporaneous seizure diary so we can further quantify response.\n\nPlan:\n- Continue current anti‑seizure treatment and VNS parameters unchanged.\n- Continue magnet use at aura onset and maintain seizure and magnet‑use log.\n- Routine VNS check and clinical review in four months, or sooner if seizure pattern worsens.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"he has experienced about six to eight seizures in the last three months.\" This provides a numeric range and a time window. Following the allowed formats, convert this to a normalized frequency: '6 to 8 per 3 month'. No other conflicting frequencies are provided. Not seizure-free as there are seizures in the last 3 months.",
+      "seizure_frequency_number": [
+        "6 to 8 per 3 month",
+        "he has experienced about six to eight seizures in the last three months"
+      ],
+      "reference": [
+        "6 to 8 per 3 month",
+        "about six to eight seizures in the last three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

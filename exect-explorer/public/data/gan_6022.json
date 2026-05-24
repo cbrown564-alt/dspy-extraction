@@ -1,0 +1,54 @@
+{
+  "id": "gan_6022",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-11-1988, Hospital No: S936512 NHS No. 8426159730  \nTemporary Accommodation, Flat 3B, 12 Riverbank House, London SE8 3PL  \n\nDiagnoses: \n\nRecurrent unprovoked seizures. \n\nI reviewed Jordan Evans in the neurology clinic today. They attended with a family member. They report ongoing instability in housing, currently residing in temporary accommodation with multiple occupants while awaiting relocation; they describe disturbed sleep and increased stress due to crowded living conditions. \n\nSeizure history since last review: episodes have been largely clustered around periods of systemic upset, for example during colds and low-grade fevers, with a tendency for events to be precipitated when unwell. Outside of these periods, only isolated brief events are described. They estimate approximately 2–4 events in the past six weeks, of which three occurred over a short interval when they had a febrile upper respiratory infection. No injuries, no prolonged post-ictal confusion beyond 20–30 minutes, and no emergency attendances. \n\nCurrent treatment: remains on levetiracetam 1 g twice daily, with good adherence reported. No recent changes in dose. Buccal midazolam 10 mg is held as rescue but has not been required since the last visit. No known drug allergies. \n\nExamination today was unremarkable. Neurological assessment was within normal limits. Routine bloods from last month (FBC, U&Es, LFTs) were within reference ranges. An MRI brain performed in 2023 showed no focal lesion. Ambulatory EEG is pending; the patient is on the waiting list and is agreeable to proceed after their housing move is finalised. \n\nWe discussed seizure precautions, the importance of sleep regularity, and maintaining a consistent medication schedule, especially during intercurrent illnesses. Jordan Evans feels the events are manageable at present and does not wish to change medication while awaiting relocation. We agreed to continue current therapy. I provided a replacement seizure diary to help document triggers, especially around periods of illness or sleep disruption. Safety advice was reviewed, including bath and cooking precautions. Driving advice as per DVLA regulations remains in place. \n\nPlan: \n- Continue levetiracetam 1 g twice daily.  \n- No change to rescue medication; not routinely required.  \n- Proceed with ambulatory EEG when scheduled.  \n- Seizure diary to track events, particularly when unwell.  \n- Review in clinic in 4 months, or sooner if events increase in frequency, exceed 5 minutes, occur in repeated clusters without recovery, or lead to injury. \n\nPlease let me know if there are any concerns in the interim. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1009,
+      "end": 1069,
+      "text": "They estimate approximately 2–4 events in the past six weeks",
+      "attributes": {
+        "Label": "2 to 4 per 6 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6022,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Evans, DOB: 14-11-1988, Hospital No: S936512 NHS No. 8426159730  \nTemporary Accommodation, Flat 3B, 12 Riverbank House, London SE8 3PL  \n\nDiagnoses: \n\nRecurrent unprovoked seizures. \n\nI reviewed Jordan Evans in the neurology clinic today. They attended with a family member. They report ongoing instability in housing, currently residing in temporary accommodation with multiple occupants while awaiting relocation; they describe disturbed sleep and increased stress due to crowded living conditions. \n\nSeizure history since last review: episodes have been largely clustered around periods of systemic upset, for example during colds and low-grade fevers, with a tendency for events to be precipitated when unwell. Outside of these periods, only isolated brief events are described. They estimate approximately 2–4 events in the past six weeks, of which three occurred over a short interval when they had a febrile upper respiratory infection. No injuries, no prolonged post-ictal confusion beyond 20–30 minutes, and no emergency attendances. \n\nCurrent treatment: remains on levetiracetam 1 g twice daily, with good adherence reported. No recent changes in dose. Buccal midazolam 10 mg is held as rescue but has not been required since the last visit. No known drug allergies. \n\nExamination today was unremarkable. Neurological assessment was within normal limits. Routine bloods from last month (FBC, U&Es, LFTs) were within reference ranges. An MRI brain performed in 2023 showed no focal lesion. Ambulatory EEG is pending; the patient is on the waiting list and is agreeable to proceed after their housing move is finalised. \n\nWe discussed seizure precautions, the importance of sleep regularity, and maintaining a consistent medication schedule, especially during intercurrent illnesses. Jordan Evans feels the events are manageable at present and does not wish to change medication while awaiting relocation. We agreed to continue current therapy. I provided a replacement seizure diary to help document triggers, especially around periods of illness or sleep disruption. Safety advice was reviewed, including bath and cooking precautions. Driving advice as per DVLA regulations remains in place. \n\nPlan: \n- Continue levetiracetam 1 g twice daily.  \n- No change to rescue medication; not routinely required.  \n- Proceed with ambulatory EEG when scheduled.  \n- Seizure diary to track events, particularly when unwell.  \n- Review in clinic in 4 months, or sooner if events increase in frequency, exceed 5 minutes, occur in repeated clusters without recovery, or lead to injury. \n\nPlease let me know if there are any concerns in the interim. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"They estimate approximately 2–4 events in the past six weeks.\" This provides a clear numeric range over a defined period. No other explicit, higher-frequency metric with a clear time unit is given; the mention of clusters (\"three occurred over a short interval\") lacks a specified time unit, so it cannot be normalized to the allowed formats. The patient is not seizure-free in the past 6 months. Therefore, normalize the explicit statement to the allowed format as a range per 6 week.",
+      "seizure_frequency_number": [
+        "2 to 4 per 6 week",
+        "They estimate approximately 2–4 events in the past six weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during intercurrent illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 to 4 per 6 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

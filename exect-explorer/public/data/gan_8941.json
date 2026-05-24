@@ -1,0 +1,59 @@
+{
+  "id": "gan_8941",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 April 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nFocal Epilepsy \n\nMedication: Off antiseizure medications (ASMs) since July 2024 by mutual agreement after stable period. No current regular ASMs.\n\nASM history (patient-reported): Previously trialled Levetiracetam (mood adverse effects) and Carbamazepine (dose-related dizziness); both discontinued prior to July 2024. No rescue medication prescribed; patient prefers non-pharmacological measures and has a personalised plan documented elsewhere.\n\nSeizures: Seizure-free off ASMs since 23/Jul/2024. Prior to that, patient reported occasional cluster patterns linked to sleep loss, typically brief focal aware events with déjà vu and rising epigastric sensation, sometimes progressing to impaired awareness if sleep debt was significant. No generalised tonic–clonic seizures reported for several years.\n\nI reviewed Susan Miller today in clinic. They report good overall wellbeing and adherence to lifestyle measures in their personalised plan (sleep regularity, caffeine moderation, and stress pacing). They continue to identify sleep deprivation as the principal trigger; on weeks of adequate sleep they note no auras or warnings. No injuries, hospital attendances, or missed work due to seizures over the past nine months. They have informed DVLA previously and are aware to update if circumstances change.\n\nExamination today was unremarkable. No new neurological symptoms. Last EEG (2023) showed left temporal interictal discharges; MRI (2019) non-lesional. Taken together with the semiology, this is consistent with focal epilepsy.\n\nPlan:\n- Continue current non-pharmacological management with emphasis on sleep hygiene as per personalised plan (documented elsewhere).\n- No routine bloods required at present as patient remains off ASMs and clinically stable.\n- Safety: reiterated seizure first aid and cluster action steps per personalised plan; patient declines rescue benzodiazepine but knows when to seek urgent care.\n- Follow-up: telephone review in 6 months, or sooner if any recurrence of auras, impaired awareness events, injuries, or if lifestyle triggers cannot be mitigated.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 828,
+      "end": 868,
+      "text": "Seizure-free off ASMs since 23/Jul/2024.",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 828,
+      "end": 867,
+      "text": "Seizure-free off ASMs since 23/Jul/2024",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8941,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 April 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nFocal Epilepsy \n\nMedication: Off antiseizure medications (ASMs) since July 2024 by mutual agreement after stable period. No current regular ASMs.\n\nASM history (patient-reported): Previously trialled Levetiracetam (mood adverse effects) and Carbamazepine (dose-related dizziness); both discontinued prior to July 2024. No rescue medication prescribed; patient prefers non-pharmacological measures and has a personalised plan documented elsewhere.\n\nSeizures: Seizure-free off ASMs since 23/Jul/2024. Prior to that, patient reported occasional cluster patterns linked to sleep loss, typically brief focal aware events with déjà vu and rising epigastric sensation, sometimes progressing to impaired awareness if sleep debt was significant. No generalised tonic–clonic seizures reported for several years.\n\nI reviewed Susan Miller today in clinic. They report good overall wellbeing and adherence to lifestyle measures in their personalised plan (sleep regularity, caffeine moderation, and stress pacing). They continue to identify sleep deprivation as the principal trigger; on weeks of adequate sleep they note no auras or warnings. No injuries, hospital attendances, or missed work due to seizures over the past nine months. They have informed DVLA previously and are aware to update if circumstances change.\n\nExamination today was unremarkable. No new neurological symptoms. Last EEG (2023) showed left temporal interictal discharges; MRI (2019) non-lesional. Taken together with the semiology, this is consistent with focal epilepsy.\n\nPlan:\n- Continue current non-pharmacological management with emphasis on sleep hygiene as per personalised plan (documented elsewhere).\n- No routine bloods required at present as patient remains off ASMs and clinically stable.\n- Safety: reiterated seizure first aid and cluster action steps per personalised plan; patient declines rescue benzodiazepine but knows when to seek urgent care.\n- Follow-up: telephone review in 6 months, or sooner if any recurrence of auras, impaired awareness events, injuries, or if lifestyle triggers cannot be mitigated.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizure-free off ASMs since 23/Jul/2024.\" Clinic date is 28 April 2025. Calculate duration seizure-free: from 23 July 2024 to 28 April 2025 is over 9 months (Jul 23–Aug 23: 1 month; to Sep 23: 2; Oct 23: 3; Nov 23: 4; Dec 23: 5; Jan 23: 6; Feb 23: 7; Mar 23: 8; Apr 23: 9; plus 5 additional days to Apr 28). This meets the ≥6 months criterion for seizure-free status. Therefore, label: seizure free for 9 month (rounding to whole months based on the clear text indicating past nine months without events is consistent).",
+      "seizure_frequency_number": [
+        "seizure free for 9 month",
+        "Seizure-free off ASMs since 23/Jul/2024."
+      ],
+      "reference": [
+        "seizure free for 9 month",
+        "Seizure-free off ASMs since 23/Jul/2024"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

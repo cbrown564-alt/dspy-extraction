@@ -1,0 +1,59 @@
+{
+  "id": "gan_4574",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmina Hassan, DOB: 12-03-1991, Hospital No: H983520 NHS No. 5938471026  \nFlat 2, 14 Brook Street, London, W1T 3AB \n\nMedication: \n\nLevetiracetam 500 mg morning / 1000 mg night. Patient reports good tolerability overall, with occasional fatigue late afternoon. No mood change noted by patient or partner.\n\nHistory since first attendance at our service: The patient is a recent migrant to the UK and is becoming familiar with NHS pathways. Interpreter support was used for part of the consultation and a family member assisted with collateral history. They described brief events featuring loss of awareness with blank staring and subsequent confusion lasting several minutes, sometimes preceded by a rising internal sensation and palpitations. No clear triggers identified, though sleep disruption during shift work was noted. There has been no tongue biting or urinary incontinence reported. Median inter-seizure interval ≈ four weeks, with one shorter gap during a period of significant sleep loss. No injuries to date. \n\nExamination today was non-focal. Cardiovascular and systemic review unremarkable. Basic bloods earlier this month (FBC, U&E, LFT, glucose) were within reference ranges. Routine EEG and brain MRI are scheduled locally; dates and attendance instructions were provided in the patient’s preferred language. \n\nManagement plan discussed with the patient using plain language and written information:  \n- Continue current levetiracetam dosing as above.  \n- Emphasised sleep regularity and avoidance of missed doses as patient-reported lapses coincided with the one shorter interval.  \n- Provided a seizure diary template (translated) to document date/time, features, possible precipitants, recovery, and impact on work.  \n- Safety guidance given regarding bathing/swimming, heights, and operating machinery. Driving advice provided in line with DVLA regulations; patient confirmed they do not currently drive.  \n- Signposted to local community support and GP-led interpreter booking for future appointments.  \n\nWe will review after the EEG and MRI results, or sooner if events cluster, injuries occur, or there is any prolonged confusion. The patient understands how to seek urgent care if a convulsive episode lasts more than five minutes or repeats without full recovery. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1079,
+      "end": 1121,
+      "text": "Median inter-seizure interval ≈ four weeks",
+      "attributes": {
+        "Label": "1 per 4 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1079,
+      "end": 1121,
+      "text": "Median inter-seizure interval ≈ four weeks",
+      "attributes": {
+        "Label": "1 per 4 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4574,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmina Hassan, DOB: 12-03-1991, Hospital No: H983520 NHS No. 5938471026  \nFlat 2, 14 Brook Street, London, W1T 3AB \n\nMedication: \n\nLevetiracetam 500 mg morning / 1000 mg night. Patient reports good tolerability overall, with occasional fatigue late afternoon. No mood change noted by patient or partner.\n\nHistory since first attendance at our service: The patient is a recent migrant to the UK and is becoming familiar with NHS pathways. Interpreter support was used for part of the consultation and a family member assisted with collateral history. They described brief events featuring loss of awareness with blank staring and subsequent confusion lasting several minutes, sometimes preceded by a rising internal sensation and palpitations. No clear triggers identified, though sleep disruption during shift work was noted. There has been no tongue biting or urinary incontinence reported. Median inter-seizure interval ≈ four weeks, with one shorter gap during a period of significant sleep loss. No injuries to date. \n\nExamination today was non-focal. Cardiovascular and systemic review unremarkable. Basic bloods earlier this month (FBC, U&E, LFT, glucose) were within reference ranges. Routine EEG and brain MRI are scheduled locally; dates and attendance instructions were provided in the patient’s preferred language. \n\nManagement plan discussed with the patient using plain language and written information:  \n- Continue current levetiracetam dosing as above.  \n- Emphasised sleep regularity and avoidance of missed doses as patient-reported lapses coincided with the one shorter interval.  \n- Provided a seizure diary template (translated) to document date/time, features, possible precipitants, recovery, and impact on work.  \n- Safety guidance given regarding bathing/swimming, heights, and operating machinery. Driving advice provided in line with DVLA regulations; patient confirmed they do not currently drive.  \n- Signposted to local community support and GP-led interpreter booking for future appointments.  \n\nWe will review after the EEG and MRI results, or sooner if events cluster, injuries occur, or there is any prolonged confusion. The patient understands how to seek urgent care if a convulsive episode lasts more than five minutes or repeats without full recovery. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes the patient's events consistent with seizures and provides an explicit frequency: \"Median inter-seizure interval ≈ four weeks.\" This indicates approximately one seizure every four weeks. There is mention of one shorter gap during sleep loss, but the instruction is to select the highest frequency if multiple are given; however, the shorter gap is not quantified, so we rely on the explicit median interval. Therefore, normalize to 1 per 4 week.",
+      "seizure_frequency_number": [
+        "1 per 4 week",
+        "Median inter-seizure interval ≈ four weeks"
+      ],
+      "reference": [
+        "1 per 4 week",
+        "Median inter-seizure interval ≈ four weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

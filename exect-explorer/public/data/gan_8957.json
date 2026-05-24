@@ -1,0 +1,59 @@
+{
+  "id": "gan_8957",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 11 March 2017 \n\nDr Priya Menon \nConsultant Neurologist  \nNorth Thames Neurosciences Centre  \nRoyal Borough Hospital, 12 Kingfisher Way, London W6 3AB  \n\nDear Dr Priya Menon, \n\nMr Adam Whitfield, DOB: 22-09-1983, Hospital No: RBH203944 NHS No. NHS-4482196701  \nFlat 4, 27 Willow Court, Hammersmith, London W6 8PL  \n\nDiagnosis: \n\nNone Epilepsy – patient does not have epilepsy; previous events now considered non-epileptic and resolved. Seizure-free off ASMs since 06/07/2016. \n\nAetiology: \n\nNo structural, genetic, metabolic or immune cause identified. Prior episodes were consistent with stress-related non-epileptic events; no evidence of epileptiform activity on repeated EEGs and normal brain MRI. \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms markedly improved with guided self-help and sleep hygiene; mild seasonal allergic rhinitis. \n\nManagement Plan: \n\n- No anti-seizure medications indicated. Seizure-free off ASMs since 06/07/2016.  \n- Continue non-pharmacological strategies (sleep regularity, stress management).  \n- No driving restrictions from a neurological/epilepsy perspective given current status, in line with guidance; advise to inform licensing authority if any new attacks occur.  \n- Routine follow-up open appointment; patient to contact service if symptoms recur.  \n\nClinical Summary: \n\nSince a minor adjustment at the last visit—specifically focusing on regularising sleep and hydration while discontinuing a low-dose PRN benzodiazepine—the patient reports sustained improvement. Before this improvement, the recorded seizure frequency was fourteen/30, but careful review suggests these were non-epileptic stress-related episodes rather than epileptic seizures. There have been no further events, and the patient has been Seizure-free off ASMs since 06/07/2016. He reports normal work functioning, resumed exercise, and no episodes suggestive of syncope or dissociation. Neurological examination today is normal. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 494,
+      "end": 533,
+      "text": "Seizure-free off ASMs since 06/07/2016.",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 494,
+      "end": 532,
+      "text": "Seizure-free off ASMs since 06/07/2016",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8957,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 11 March 2017 \n\nDr Priya Menon \nConsultant Neurologist  \nNorth Thames Neurosciences Centre  \nRoyal Borough Hospital, 12 Kingfisher Way, London W6 3AB  \n\nDear Dr Priya Menon, \n\nMr Adam Whitfield, DOB: 22-09-1983, Hospital No: RBH203944 NHS No. NHS-4482196701  \nFlat 4, 27 Willow Court, Hammersmith, London W6 8PL  \n\nDiagnosis: \n\nNone Epilepsy – patient does not have epilepsy; previous events now considered non-epileptic and resolved. Seizure-free off ASMs since 06/07/2016. \n\nAetiology: \n\nNo structural, genetic, metabolic or immune cause identified. Prior episodes were consistent with stress-related non-epileptic events; no evidence of epileptiform activity on repeated EEGs and normal brain MRI. \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms markedly improved with guided self-help and sleep hygiene; mild seasonal allergic rhinitis. \n\nManagement Plan: \n\n- No anti-seizure medications indicated. Seizure-free off ASMs since 06/07/2016.  \n- Continue non-pharmacological strategies (sleep regularity, stress management).  \n- No driving restrictions from a neurological/epilepsy perspective given current status, in line with guidance; advise to inform licensing authority if any new attacks occur.  \n- Routine follow-up open appointment; patient to contact service if symptoms recur.  \n\nClinical Summary: \n\nSince a minor adjustment at the last visit—specifically focusing on regularising sleep and hydration while discontinuing a low-dose PRN benzodiazepine—the patient reports sustained improvement. Before this improvement, the recorded seizure frequency was fourteen/30, but careful review suggests these were non-epileptic stress-related episodes rather than epileptic seizures. There have been no further events, and the patient has been Seizure-free off ASMs since 06/07/2016. He reports normal work functioning, resumed exercise, and no episodes suggestive of syncope or dissociation. Neurological examination today is normal. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 11 March 2017. The letter repeatedly states the patient has been seizure-free off anti-seizure medications since 06/07/2016. Calculate duration from 06 July 2016 to 11 March 2017: July 6 to August 6 = 1 month, August 6 to September 6 = 2, September 6 to October 6 = 3, October 6 to November 6 = 4, November 6 to December 6 = 5, December 6 to January 6 = 6, January 6 to February 6 = 7, February 6 to March 6 = 8, plus 5 more days to March 11. Thus ≥8 months seizure-free. This meets the ≥6-month criterion for 'seizure free'.",
+      "seizure_frequency_number": [
+        "seizure free for 8 month",
+        "Seizure-free off ASMs since 06/07/2016."
+      ],
+      "reference": [
+        "seizure free for 8 month",
+        "Seizure-free off ASMs since 06/07/2016"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gan_11889",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 30 June 2017\n\nDr A. Patel\nWestgate Medical Practice\n\n12 Westgate Road\nLeeds\nLS1 4AB\nDear Dr A. Patel\nMr Tomasz Kowalski, DOB: 17-03-1989, Hospital No: H738421 NHS No. 8021459973\nFlat 3, 25 Beech Grove, Leeds, LS6 2LU\n\nDiagnoses/summary: Generalised epilepsy. Recent migrant to the UK, learning NHS pathways; occasional interpreter support.\n\nI reviewed Mr Tomasz Kowalski today. This letter is to acknowledge receipt and verification of the registered Lasting Power of Attorney (LPA) for Health and Welfare relating to epilepsy care decisions. Copies of the LPA document and certification have been scanned to the hospital record and cross-referenced in the electronic care plan. The appointed attorneys have consented to be contacted for treatment discussions and best-interest decisions when required.\n\nPlan:\n- Update Summary Care Record with additional information noting active LPA for Health and Welfare (copy shared with GP).\n- Provide patient and attorneys with NHS guidance on accessing services and 111/999 pathways; interpreter to be arranged for future appointments as needed.\n- Confirm attorney contact details at next review and ensure inclusion in clinic correspondence with patient consent.\n\nPlease contact me if you need copies of the LPA or confirmation of verification steps completed.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11889,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 30 June 2017\n\nDr A. Patel\nWestgate Medical Practice\n\n12 Westgate Road\nLeeds\nLS1 4AB\nDear Dr A. Patel\nMr Tomasz Kowalski, DOB: 17-03-1989, Hospital No: H738421 NHS No. 8021459973\nFlat 3, 25 Beech Grove, Leeds, LS6 2LU\n\nDiagnoses/summary: Generalised epilepsy. Recent migrant to the UK, learning NHS pathways; occasional interpreter support.\n\nI reviewed Mr Tomasz Kowalski today. This letter is to acknowledge receipt and verification of the registered Lasting Power of Attorney (LPA) for Health and Welfare relating to epilepsy care decisions. Copies of the LPA document and certification have been scanned to the hospital record and cross-referenced in the electronic care plan. The appointed attorneys have consented to be contacted for treatment discussions and best-interest decisions when required.\n\nPlan:\n- Update Summary Care Record with additional information noting active LPA for Health and Welfare (copy shared with GP).\n- Provide patient and attorneys with NHS guidance on accessing services and 111/999 pathways; interpreter to be arranged for future appointments as needed.\n- Confirm attorney contact details at next review and ensure inclusion in clinic correspondence with patient consent.\n\nPlease contact me if you need copies of the LPA or confirmation of verification steps completed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses administrative matters (verification of a Health and Welfare LPA) and lists a diagnosis of generalised epilepsy. It contains no statements about current seizure occurrence, frequency, or seizure freedom. There are no numeric frequency details, no qualitative frequency descriptors, and no timeframes related to being seizure free. Therefore, there is no seizure frequency reference in the letter.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging receipt of Lasting Power of Attorney documentation related to epilepsy care"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

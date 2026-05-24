@@ -1,0 +1,59 @@
+{
+  "id": "gan_1223",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 07 March 2018 \n\nDr Amelia Carter\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Carter\nConsultant Neurologist,  \n\nDaniel Fraser, DOB: 14-03-1985, Hospital No: K721903 NHS No. 9076543215  \n12 Brookfield Close, London, SE15 7QT\n\nThank you for your referral regarding ongoing episodes and associated mood symptoms. I reviewed him in clinic today with his partner present. He reports longstanding anxiety and periods of low mood, and over the last fortnight he has noticed worsening sleep and increased daytime stress at work. This week he has had 3 or 4 focal impaired awareness seizures, each lasting a few minutes with subsequent confusion and fatigue for up to an hour. He describes automatisms with lip-smacking and brief unresponsiveness, and his partner notes that he appears vacant and does not respond to simple questions during the events. There has been no clear injury or incontinence. He denies prolonged clusters, new neurological deficits, or prolonged post-event agitation.\n\nHe has been generally adherent with medication per his account, though he missed one morning dose earlier in the week due to a disrupted routine. He denies alcohol or recreational drug use. He has identified stress and sleep disruption as likely precipitants. There is no clear nocturnal pattern reported this month. Headaches have not changed, and there is no report of new focal symptoms between events.\n\nWe discussed strategies to reduce triggers, including regular sleep timing and support for mood and anxiety. He is open to brief self-monitoring of symptoms and to keeping a seizure and mood diary to track potential associations. He understands general safety advice around bathing, heights, and cooking, and he is aware of driving regulations and current restrictions in the context of recent events. He prefers community follow-up and is agreeable to telephone check-in while we continue to monitor the pattern.\n\nPlan:  \n- Continue current anti-seizure medication as prescribed; he will liaise with his GP for routine bloods and prescription continuity.  \n- Seizure and mood diary to capture timing, triggers, and recovery.  \n- Referral to local talking therapies for anxiety/low mood as he is keen to explore this.  \n- Provide written information on sleep hygiene and stress management.  \n- Arrange follow-up in clinic in 8–10 weeks, or sooner if there is an escalation in frequency, prolonged events, or injuries.  \n\nThank you for your ongoing care. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 683,
+      "end": 744,
+      "text": "This week he has had 3 or 4 focal impaired awareness seizures",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 704,
+      "end": 754,
+      "text": "3 or 4 focal impaired awareness seizures this week",
+      "attributes": {
+        "Label": "3 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1223,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 07 March 2018 \n\nDr Amelia Carter\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Carter\nConsultant Neurologist,  \n\nDaniel Fraser, DOB: 14-03-1985, Hospital No: K721903 NHS No. 9076543215  \n12 Brookfield Close, London, SE15 7QT\n\nThank you for your referral regarding ongoing episodes and associated mood symptoms. I reviewed him in clinic today with his partner present. He reports longstanding anxiety and periods of low mood, and over the last fortnight he has noticed worsening sleep and increased daytime stress at work. This week he has had 3 or 4 focal impaired awareness seizures, each lasting a few minutes with subsequent confusion and fatigue for up to an hour. He describes automatisms with lip-smacking and brief unresponsiveness, and his partner notes that he appears vacant and does not respond to simple questions during the events. There has been no clear injury or incontinence. He denies prolonged clusters, new neurological deficits, or prolonged post-event agitation.\n\nHe has been generally adherent with medication per his account, though he missed one morning dose earlier in the week due to a disrupted routine. He denies alcohol or recreational drug use. He has identified stress and sleep disruption as likely precipitants. There is no clear nocturnal pattern reported this month. Headaches have not changed, and there is no report of new focal symptoms between events.\n\nWe discussed strategies to reduce triggers, including regular sleep timing and support for mood and anxiety. He is open to brief self-monitoring of symptoms and to keeping a seizure and mood diary to track potential associations. He understands general safety advice around bathing, heights, and cooking, and he is aware of driving regulations and current restrictions in the context of recent events. He prefers community follow-up and is agreeable to telephone check-in while we continue to monitor the pattern.\n\nPlan:  \n- Continue current anti-seizure medication as prescribed; he will liaise with his GP for routine bloods and prescription continuity.  \n- Seizure and mood diary to capture timing, triggers, and recovery.  \n- Referral to local talking therapies for anxiety/low mood as he is keen to explore this.  \n- Provide written information on sleep hygiene and stress management.  \n- Arrange follow-up in clinic in 8–10 weeks, or sooner if there is an escalation in frequency, prolonged events, or injuries.  \n\nThank you for your ongoing care. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"This week he has had 3 or 4 focal impaired awareness seizures.\" This provides a clear numeric range over a defined period of one week. No other contradictory or higher frequency is given. Therefore, normalize to the allowed format as a range per week: '3 to 4 per week.'",
+      "seizure_frequency_number": [
+        "3 to 4 per week",
+        "This week he has had 3 or 4 focal impaired awareness seizures"
+      ],
+      "reference": [
+        "3 to 4 per week",
+        "3 or 4 focal impaired awareness seizures this week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

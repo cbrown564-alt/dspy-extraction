@@ -1,0 +1,59 @@
+{
+  "id": "gan_17273",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 17 October 2016 \n\nDr Amelia Brooks\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Brooks\nConsultant Neurologist,  \n\nSarah Thompson, DOB: 14-03-1991, Hospital No: KCH729184 NHS No. 9462817359  \nTemporary Accommodation, Flat 3B, 28 Riverside Walk, London SE15 2QH\n\nThank you for referring this patient to our service. I reviewed her today in clinic, accompanied by her partner. She is currently awaiting relocation from temporary accommodation and describes crowded living conditions, which she feels may be affecting her sleep quality. Despite this, she reports that overall seizure control has been reasonably stable in recent months. Seizure activity is infrequent. She reports one absence seizure every 2 day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function. She has not identified specific precipitants beyond poor sleep and occasional missed meals, which she is working to avoid. There have been no injuries or emergency attendances since her last review. \n\nShe remains adherent to her current anti-seizure medication regimen and has had no notable adverse effects beyond mild fatigue. She monitors episodes using a diary and her partner corroborates the pattern described above. There is no report of nocturnal events, tongue biting, or incontinence. She denies prolonged post-event confusion and is generally able to resume activities quickly after brief lapses. Cognitively she reports some word-finding difficulty on busy days, which she attributes to disrupted rest in the current living situation. Mood is stable, and she denies symptoms of anxiety or low mood beyond understandable stress related to housing uncertainty. \n\nNeurological examination today was unremarkable. Cardiovascular observations were normal. There are no new focal neurological symptoms. Previous MRI brain and routine EEG have not identified a clear diagnostic substrate, and the clinical picture remains indeterminate at present. We discussed the value of maintaining good sleep hygiene and regular meals, particularly while awaiting rehousing. She is agreeable to continuing her current medication and to ongoing monitoring with her seizure diary. I have requested copies of her recent community bloods to confirm therapeutic levels and basic biochemistry; she is asymptomatic and well hydrated. \n\nGiven the current stability and absence of red flags, I have not arranged urgent further investigations today. If the frequency of events changes, or if features suggestive of a different pattern emerge, we can consider ambulatory EEG monitoring to aid further characterisation. She has my clinic contact details and understands to seek urgent advice if prolonged episodes, injury, or a cluster of events occur. We will review her in clinic in four months or sooner if needed, and I will liaise with housing advocacy services attached to the trust to provide a short supporting note regarding the impact of overcrowding on sleep and health, as requested by the patient. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 827,
+      "end": 870,
+      "text": "She reports one absence seizure every 2 day",
+      "attributes": {
+        "Label": "1 per 2 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 795,
+      "end": 1056,
+      "text": "Seizure activity is infrequent. She reports one absence seizure every 2 day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function",
+      "attributes": {
+        "Label": "1 per 2 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17273,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 17 October 2016 \n\nDr Amelia Brooks\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Brooks\nConsultant Neurologist,  \n\nSarah Thompson, DOB: 14-03-1991, Hospital No: KCH729184 NHS No. 9462817359  \nTemporary Accommodation, Flat 3B, 28 Riverside Walk, London SE15 2QH\n\nThank you for referring this patient to our service. I reviewed her today in clinic, accompanied by her partner. She is currently awaiting relocation from temporary accommodation and describes crowded living conditions, which she feels may be affecting her sleep quality. Despite this, she reports that overall seizure control has been reasonably stable in recent months. Seizure activity is infrequent. She reports one absence seizure every 2 day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function. She has not identified specific precipitants beyond poor sleep and occasional missed meals, which she is working to avoid. There have been no injuries or emergency attendances since her last review. \n\nShe remains adherent to her current anti-seizure medication regimen and has had no notable adverse effects beyond mild fatigue. She monitors episodes using a diary and her partner corroborates the pattern described above. There is no report of nocturnal events, tongue biting, or incontinence. She denies prolonged post-event confusion and is generally able to resume activities quickly after brief lapses. Cognitively she reports some word-finding difficulty on busy days, which she attributes to disrupted rest in the current living situation. Mood is stable, and she denies symptoms of anxiety or low mood beyond understandable stress related to housing uncertainty. \n\nNeurological examination today was unremarkable. Cardiovascular observations were normal. There are no new focal neurological symptoms. Previous MRI brain and routine EEG have not identified a clear diagnostic substrate, and the clinical picture remains indeterminate at present. We discussed the value of maintaining good sleep hygiene and regular meals, particularly while awaiting rehousing. She is agreeable to continuing her current medication and to ongoing monitoring with her seizure diary. I have requested copies of her recent community bloods to confirm therapeutic levels and basic biochemistry; she is asymptomatic and well hydrated. \n\nGiven the current stability and absence of red flags, I have not arranged urgent further investigations today. If the frequency of events changes, or if features suggestive of a different pattern emerge, we can consider ambulatory EEG monitoring to aid further characterisation. She has my clinic contact details and understands to seek urgent advice if prolonged episodes, injury, or a cluster of events occur. We will review her in clinic in four months or sooner if needed, and I will liaise with housing advocacy services attached to the trust to provide a short supporting note regarding the impact of overcrowding on sleep and health, as requested by the patient. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizure activity is infrequent. She reports one absence seizure every 2 day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild...' The only explicit numeric frequency is 'one absence seizure every 2 day.' Tonic-clonic seizures are absent for >9 months (does not contribute to current frequency). Myoclonic jerks are noted as occasional without a numeric frequency, so cannot be quantified. Per the rule to choose the highest frequency and prioritize explicit numeric expressions, the label is 1 per 2 day.",
+      "seizure_frequency_number": [
+        "1 per 2 day",
+        "She reports one absence seizure every 2 day"
+      ],
+      "reference": [
+        "1 per 2 day",
+        "Seizure activity is infrequent. She reports one absence seizure every 2 day and has been free of tonic-clonic seizures for over nine months. Occasional morning myoclonic jerks continue, though they are mild and do not interfere significantly with daily function"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

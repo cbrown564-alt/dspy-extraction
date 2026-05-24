@@ -1,0 +1,59 @@
+{
+  "id": "gan_3791",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nAlex Green, DOB: 22-11-1991, Hospital No: Q274619 NHS No. 9817564203\nFlat 3, 7 Market Row, London, SE1 9AB\n\nEpilepsy\n\nMedication: No regular anti-seizure medication at present.\n\nPrevious therapy: Trial of Levetiracetam in 2023 for 3 months, discontinued due to mood change; no subsequent maintenance therapy.\n\nLamotrigine Blood Level:\n\nNot applicable (no current prescription).\n\nSeizures: Patient reports “TC ×ten/yr” over the past 12 months, usually occurring in the late evening without clear precipitant. No consistent aura reported. Post-ictal confusion lasts approximately 15–30 minutes per event. No injuries described in the past year. Events witnessed on two occasions by a colleague, who described generalised stiffening followed by rhythmic jerking lasting under two minutes with prompt recovery.\n\nHistory and review: I conducted an in-person review today. The patient commutes mainly by bicycle to work and keeps a simple calendar record of events, which aligns with the reported frequency “TC ×ten/yr”. Sleep pattern is variable during peak workload periods; caffeine intake is moderate. No recent intercurrent illness.\n\nPlan discussed: The patient wishes to consider re-trial of a different medication at a later date and will keep a seizure diary. We agreed to obtain routine bloods and arrange a follow-up discussion after results are available.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 540,
+      "end": 592,
+      "text": "Patient reports “TC ×ten/yr” over the past 12 months",
+      "attributes": {
+        "Label": "10 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 557,
+      "end": 567,
+      "text": "TC ×ten/yr",
+      "attributes": {
+        "Label": "10 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3791,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nAlex Green, DOB: 22-11-1991, Hospital No: Q274619 NHS No. 9817564203\nFlat 3, 7 Market Row, London, SE1 9AB\n\nEpilepsy\n\nMedication: No regular anti-seizure medication at present.\n\nPrevious therapy: Trial of Levetiracetam in 2023 for 3 months, discontinued due to mood change; no subsequent maintenance therapy.\n\nLamotrigine Blood Level:\n\nNot applicable (no current prescription).\n\nSeizures: Patient reports “TC ×ten/yr” over the past 12 months, usually occurring in the late evening without clear precipitant. No consistent aura reported. Post-ictal confusion lasts approximately 15–30 minutes per event. No injuries described in the past year. Events witnessed on two occasions by a colleague, who described generalised stiffening followed by rhythmic jerking lasting under two minutes with prompt recovery.\n\nHistory and review: I conducted an in-person review today. The patient commutes mainly by bicycle to work and keeps a simple calendar record of events, which aligns with the reported frequency “TC ×ten/yr”. Sleep pattern is variable during peak workload periods; caffeine intake is moderate. No recent intercurrent illness.\n\nPlan discussed: The patient wishes to consider re-trial of a different medication at a later date and will keep a seizure diary. We agreed to obtain routine bloods and arrange a follow-up discussion after results are available.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: Patient reports “TC ×ten/yr” over the past 12 months, and elsewhere confirms the calendar record aligns with the reported frequency “TC ×ten/yr”. This indicates 10 tonic-clonic seizures per year. No other differing frequencies are provided. Therefore, the normalized label is 10 per year.",
+      "seizure_frequency_number": [
+        "10 per year",
+        "Patient reports “TC ×ten/yr” over the past 12 months"
+      ],
+      "reference": [
+        "10 per year",
+        "TC ×ten/yr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

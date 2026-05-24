@@ -1,0 +1,48 @@
+{
+  "id": "gan_3711",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A. Rahman,\n\nJamie Patel, DOB: 22-11-2006, Hospital No: H739204 NHS No. 9843201765  \nFlat 3, 28 York Way, London N1 9AB  \n\nEpilepsy\n\nDiagnosis: Generalised epilepsy (transitioned from paediatric to adult services)\n\nMedication: Valproate 500 mg twice daily; rescue buccal midazolam 10 mg as required (not used in the last month)\n\nSeizure Frequency: TC ten/wk (patient-reported tonic–clonic events averaging ten per week over the past month; clusters mainly in early mornings). Parent sometimes attends and corroborates frequency when present.\n\nInvestigations:\n- EEG (July 2025): Generalised spike-and-wave discharges consistent with generalised epilepsy.\n- MRI brain (June 2024): Reported normal.\n\nHistory since transition: This was Jamie Patel’s first adult clinic visit following handover from paediatric services. When present, a parent provides collateral history, which aligns with the reported TC ten/wk pattern, noting brief post-ictal confusion lasting 10–15 minutes. No known focal onset features. Triggers suspected by the patient include sleep deprivation and missed morning doses. No recent injuries; one tongue bite last week; no prolonged events.\n\nAdverse effects: Reports mild tremor and weight gain on valproate; no mood change or sedation. No hepatic symptoms.\n\nLifestyle and safety: Patient avoids bathing unsupervised, uses a shower chair, and has been counselled previously regarding driving regulations; not driving. Adherence supported with phone reminders; parent occasionally supervises morning dosing when available.\n\nPlan: Continue current regimen pending review of historical paediatric notes and pharmacy adherence data supplied at transition. We will arrange repeat routine EEG to document current burden and consider optimisation at next review once collateral documentation is fully reconciled. Emergency plan reiterated; patient understands when to use rescue medication. Follow-up in 8 weeks in the adult epilepsy clinic; earlier if increase above TC ten/wk baseline, injury, or prolonged events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 483,
+      "end": 629,
+      "text": "Seizure Frequency: TC ten/wk (patient-reported tonic–clonic events averaging ten per week over the past month; clusters mainly in early mornings).",
+      "attributes": {
+        "Label": "10 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3711,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr A. Rahman,\n\nJamie Patel, DOB: 22-11-2006, Hospital No: H739204 NHS No. 9843201765  \nFlat 3, 28 York Way, London N1 9AB  \n\nEpilepsy\n\nDiagnosis: Generalised epilepsy (transitioned from paediatric to adult services)\n\nMedication: Valproate 500 mg twice daily; rescue buccal midazolam 10 mg as required (not used in the last month)\n\nSeizure Frequency: TC ten/wk (patient-reported tonic–clonic events averaging ten per week over the past month; clusters mainly in early mornings). Parent sometimes attends and corroborates frequency when present.\n\nInvestigations:\n- EEG (July 2025): Generalised spike-and-wave discharges consistent with generalised epilepsy.\n- MRI brain (June 2024): Reported normal.\n\nHistory since transition: This was Jamie Patel’s first adult clinic visit following handover from paediatric services. When present, a parent provides collateral history, which aligns with the reported TC ten/wk pattern, noting brief post-ictal confusion lasting 10–15 minutes. No known focal onset features. Triggers suspected by the patient include sleep deprivation and missed morning doses. No recent injuries; one tongue bite last week; no prolonged events.\n\nAdverse effects: Reports mild tremor and weight gain on valproate; no mood change or sedation. No hepatic symptoms.\n\nLifestyle and safety: Patient avoids bathing unsupervised, uses a shower chair, and has been counselled previously regarding driving regulations; not driving. Adherence supported with phone reminders; parent occasionally supervises morning dosing when available.\n\nPlan: Continue current regimen pending review of historical paediatric notes and pharmacy adherence data supplied at transition. We will arrange repeat routine EEG to document current burden and consider optimisation at next review once collateral documentation is fully reconciled. Emergency plan reiterated; patient understands when to use rescue medication. Follow-up in 8 weeks in the adult epilepsy clinic; earlier if increase above TC ten/wk baseline, injury, or prolonged events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizure Frequency: TC ten/wk (patient-reported tonic–clonic events averaging ten per week over the past month; clusters mainly in early mornings).' This provides a clear numeric frequency of 10 per week over the past month. No other frequencies are given that would be higher; clusters are mentioned but without a separate per-cluster count overriding the weekly total. Therefore the normalized label is 10 per week.",
+      "seizure_frequency_number": [
+        "10 per week",
+        "Seizure Frequency: TC ten/wk (patient-reported tonic–clonic events averaging ten per week over the past month; clusters mainly in early mornings)."
+      ],
+      "reference": [
+        "10 per week",
+        "TC *ten/wk"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

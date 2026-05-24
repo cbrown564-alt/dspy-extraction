@@ -1,0 +1,65 @@
+{
+  "id": "gan_13608",
+  "text": "Department of Neurology \n\nClinic Date: 22 September 2025 \n\nDr A. Rahman  \nSt. George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr A. Rahman,  \n\nMichael Turner, DOB: 14-02-1991, Hospital No: H472903 NHS No. 9938475621  \n27 Briar Grove, Wimbledon, London SW19 3LX \n\nDiagnoses: \n\nParoxysmal events consistent with a seizure disorder; prior abnormal events now in sustained remission. \n\nCurrent Medication: \n\nNone (no regular antiseizure medication). \n\nPlan: \n\n- Continue current dietetic regimen under dietitian supervision.  \n- Maintain seizure precautions as per DVLA guidance should symptoms recur; patient already aware.  \n- No routine follow-up required; open access back to clinic if any breakthrough events, medication changes, or concerns.  \n\nI reviewed Michael Turner in clinic today for routine follow-up. He reports excellent overall wellbeing and no adverse neurological symptoms. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 2 times per year, but is currently in long-term remission, having been seizure free for years. He attributes much of the improvement to sustained adherence to dietetic guidance (a ketogenic-style plan devised with our specialist dietitian), improved sleep hygiene, regular physical activity, and consistent hydration. He has had no emergency attendances, no injuries, and no postictal phenomena for several years.\n\nThere is no current antiseizure therapy in place; he self-discontinued medication over three years ago in a stepwise manner after discussion with his previous clinician, and there has been no recurrence. He monitors for potential triggers (sleep deprivation, intercurrent illness, missed meals) and keeps a simple diary; there have been no entries for events. Neurological examination today is normal. Routine bloods through his GP earlier this year (including metabolic profile and vitamin D) were satisfactory per patient report; I have requested copies for our records.\n\nGiven the durable remission and good tolerability of the nutritional strategy, I have advised he continue the current plan with periodic review by the dietitian to ensure adequate micronutrient intake and to consider gradual liberalisation if desired. We discussed red flags and a pragmatic plan should any events recur, including prompt GP contact and re-referral to our service for reassessment and consideration of therapy. He is comfortable with an open follow-up arrangement rather than scheduled appointments.\n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1098,
+      "end": 1166,
+      "text": "currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 957,
+      "end": 1166,
+      "text": "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 2 times per year, but is currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13608,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 22 September 2025 \n\nDr A. Rahman  \nSt. George’s University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr A. Rahman,  \n\nMichael Turner, DOB: 14-02-1991, Hospital No: H472903 NHS No. 9938475621  \n27 Briar Grove, Wimbledon, London SW19 3LX \n\nDiagnoses: \n\nParoxysmal events consistent with a seizure disorder; prior abnormal events now in sustained remission. \n\nCurrent Medication: \n\nNone (no regular antiseizure medication). \n\nPlan: \n\n- Continue current dietetic regimen under dietitian supervision.  \n- Maintain seizure precautions as per DVLA guidance should symptoms recur; patient already aware.  \n- No routine follow-up required; open access back to clinic if any breakthrough events, medication changes, or concerns.  \n\nI reviewed Michael Turner in clinic today for routine follow-up. He reports excellent overall wellbeing and no adverse neurological symptoms. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 2 times per year, but is currently in long-term remission, having been seizure free for years. He attributes much of the improvement to sustained adherence to dietetic guidance (a ketogenic-style plan devised with our specialist dietitian), improved sleep hygiene, regular physical activity, and consistent hydration. He has had no emergency attendances, no injuries, and no postictal phenomena for several years.\n\nThere is no current antiseizure therapy in place; he self-discontinued medication over three years ago in a stepwise manner after discussion with his previous clinician, and there has been no recurrence. He monitors for potential triggers (sleep deprivation, intercurrent illness, missed meals) and keeps a simple diary; there have been no entries for events. Neurological examination today is normal. Routine bloods through his GP earlier this year (including metabolic profile and vitamin D) were satisfactory per patient report; I have requested copies for our records.\n\nGiven the durable remission and good tolerability of the nutritional strategy, I have advised he continue the current plan with periodic review by the dietitian to ensure adequate micronutrient intake and to consider gradual liberalisation if desired. We discussed red flags and a pragmatic plan should any events recur, including prompt GP contact and re-referral to our service for reassessment and consideration of therapy. He is comfortable with an open follow-up arrangement rather than scheduled appointments.\n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is currently in long-term remission and has been seizure free for years, with no entries for events in his diary and no emergency attendances or postictal phenomena for several years. This satisfies the criterion of at least 6 months seizure-free; indeed, it's years. Past history mentions seizures 2 per year previously, but current status is seizure-free for years. Therefore, the correct normalized label is 'seizure free for multiple years'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "currently in long-term remission, having been seizure free for years"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events 2 times per year, but is currently in long-term remission, having been seizure free for years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

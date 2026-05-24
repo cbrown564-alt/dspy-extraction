@@ -1,0 +1,65 @@
+{
+  "id": "gan_3514",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nRiverside Medical Practice\n14 Queensway, London W2 4QF\n\nDear Dr Ahmed,\n\nRe: Amina Rahman, DOB: 12-05-1993, Hospital No: N583021 NHS No. 9054173268\nFlat 3, 22 Brook Street, London W1K 5DE\n\nDiagnosis: Generalised epilepsy\n\nMedication:\n– Sodium valproate 500 mg morning / 1000 mg evening\n\nSince her last review, she reports that the frequency of her generalised events has improved following the recent upward adjustment of the evening dose. Specifically, she states: \"Frequency reduced by ~30% after dose increase.\" There have been no focal warning symptoms, and her partner notes shorter post-ictal confusion when episodes occur. No emergency attendances. She denies new adverse effects beyond mild transient tremor in the mornings, which she feels is tolerable.\n\nShe is preparing for a forthcoming religious fasting period. She reports typically delaying breakfast until after sunrise and compressing fluid intake into evening hours. We discussed, in general terms, that dehydration and sleep restriction can be seizure precipitants in generalised epilepsy. She intends to maintain regular sleep timing, keep evening hydration adequate, and continue her usual doses at the established times; she will monitor for any change in pattern during the fasting month and contact us via the advice line if episodes increase or clusters occur. She understands DVLA expectations remain unchanged.\n\nInvestigations: Prior EEG demonstrated generalised spike–wave discharges consistent with generalised epilepsy; MRI brain previously reported normal.\n\nPlan:\n– Continue sodium valproate at current dosing, given reported improvement and tolerability.\n– Patient to keep a seizure and sleep diary around the fasting period to document any pattern change.\n– Routine bloods (FBC, LFTs) before next visit, as previously scheduled.\n– Review in six months, sooner if frequency worsens, injuries occur, or medication side effects develop.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 549,
+      "end": 595,
+      "text": "Frequency reduced by ~30% after dose increase.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 549,
+      "end": 594,
+      "text": "Frequency reduced by ~30% after dose increase",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3514,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Ahmed\nRiverside Medical Practice\n14 Queensway, London W2 4QF\n\nDear Dr Ahmed,\n\nRe: Amina Rahman, DOB: 12-05-1993, Hospital No: N583021 NHS No. 9054173268\nFlat 3, 22 Brook Street, London W1K 5DE\n\nDiagnosis: Generalised epilepsy\n\nMedication:\n– Sodium valproate 500 mg morning / 1000 mg evening\n\nSince her last review, she reports that the frequency of her generalised events has improved following the recent upward adjustment of the evening dose. Specifically, she states: \"Frequency reduced by ~30% after dose increase.\" There have been no focal warning symptoms, and her partner notes shorter post-ictal confusion when episodes occur. No emergency attendances. She denies new adverse effects beyond mild transient tremor in the mornings, which she feels is tolerable.\n\nShe is preparing for a forthcoming religious fasting period. She reports typically delaying breakfast until after sunrise and compressing fluid intake into evening hours. We discussed, in general terms, that dehydration and sleep restriction can be seizure precipitants in generalised epilepsy. She intends to maintain regular sleep timing, keep evening hydration adequate, and continue her usual doses at the established times; she will monitor for any change in pattern during the fasting month and contact us via the advice line if episodes increase or clusters occur. She understands DVLA expectations remain unchanged.\n\nInvestigations: Prior EEG demonstrated generalised spike–wave discharges consistent with generalised epilepsy; MRI brain previously reported normal.\n\nPlan:\n– Continue sodium valproate at current dosing, given reported improvement and tolerability.\n– Patient to keep a seizure and sleep diary around the fasting period to document any pattern change.\n– Routine bloods (FBC, LFTs) before next visit, as previously scheduled.\n– Review in six months, sooner if frequency worsens, injuries occur, or medication side effects develop.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient continues to have generalised seizure events but provides no explicit numeric frequency or time unit. It only states a relative change: “Frequency reduced by ~30% after dose increase,” and mentions shorter post-ictal confusion and no emergency attendances. There is no quantification such as per week/month/day, nor a seizure-free duration. Therefore, the specific current frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Frequency reduced by ~30% after dose increase."
+      ],
+      "reference": [
+        "unknown",
+        "Frequency reduced by ~30% after dose increase"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

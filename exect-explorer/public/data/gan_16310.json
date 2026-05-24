@@ -1,0 +1,59 @@
+{
+  "id": "gan_16310",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 1 October 2021 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended with his partner and brought smartwatch fall-detection logs and symptom notes. He describes intermittent blackouts with variable warning, occasionally waking with tongue soreness and morning headache. He has been using the smartwatch consistently for the past three months; its alert timestamps appear to support the chronology of events he and his partner recorded.\n\nHe has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul, including nocturnal and daytime periods. Several of these were associated with brief confusion and one resulted in a minor elbow bruise; there have been no significant injuries. He denies alcohol excess and reports regular sleep, though he acknowledges increased stress at work in early September. No clear triggers have been identified. There is no new focal neurological complaint between episodes.\n\nCurrent medications: Levetiracetam 1000 mg b.d., Lamotrigine 100 mg b.d., and Clobazam 5 mg nocte. He reports generally good adherence, with one missed evening dose in mid-September. He notes occasional dizziness and mild fatigue in the late afternoon but no rash, mood lability, or diplopia. Routine bloods in July were unremarkable. MRI brain (2020) was reported as normal. An outpatient EEG in 2019 showed non-specific findings.\n\nOn examination today he was alert and oriented. Cranial nerves intact, no focal motor deficit, coordination normal, and gait unremarkable. Blood pressure 128/78, pulse 72 regular. No tongue laceration or limb tenderness today.\n\nPlan:\n- I have asked him to continue the current regimen for now while we verify the smartwatch and phone diary timelines against any collateral reports from his partner.\n- We will arrange a repeat routine EEG with sleep deprivation to improve yield, followed by consideration of ambulatory EEG if non-diagnostic.\n- Safety advice and seizure first-aid reinforced; he will continue to use the smartwatch fall-detection feature and export monthly PDFs of alerts to the clinic email for review.\n- DVLA guidance reiterated as previously discussed. He understands driving restrictions and confirms he is not driving.\n- Follow-up in 10–12 weeks, sooner if events escalate or new features emerge.\n\nI will update you when the EEG is completed and once we have correlated the wearable data with the clinical history. Please let me know if there are any concerns from primary care in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 682,
+      "end": 748,
+      "text": "He has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul",
+      "attributes": {
+        "Label": "10 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 682,
+      "end": 789,
+      "text": "He has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul, including nocturnal and daytime periods",
+      "attributes": {
+        "Label": "10 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16310,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 1 October 2021 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended with his partner and brought smartwatch fall-detection logs and symptom notes. He describes intermittent blackouts with variable warning, occasionally waking with tongue soreness and morning headache. He has been using the smartwatch consistently for the past three months; its alert timestamps appear to support the chronology of events he and his partner recorded.\n\nHe has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul, including nocturnal and daytime periods. Several of these were associated with brief confusion and one resulted in a minor elbow bruise; there have been no significant injuries. He denies alcohol excess and reports regular sleep, though he acknowledges increased stress at work in early September. No clear triggers have been identified. There is no new focal neurological complaint between episodes.\n\nCurrent medications: Levetiracetam 1000 mg b.d., Lamotrigine 100 mg b.d., and Clobazam 5 mg nocte. He reports generally good adherence, with one missed evening dose in mid-September. He notes occasional dizziness and mild fatigue in the late afternoon but no rash, mood lability, or diplopia. Routine bloods in July were unremarkable. MRI brain (2020) was reported as normal. An outpatient EEG in 2019 showed non-specific findings.\n\nOn examination today he was alert and oriented. Cranial nerves intact, no focal motor deficit, coordination normal, and gait unremarkable. Blood pressure 128/78, pulse 72 regular. No tongue laceration or limb tenderness today.\n\nPlan:\n- I have asked him to continue the current regimen for now while we verify the smartwatch and phone diary timelines against any collateral reports from his partner.\n- We will arrange a repeat routine EEG with sleep deprivation to improve yield, followed by consideration of ambulatory EEG if non-diagnostic.\n- Safety advice and seizure first-aid reinforced; he will continue to use the smartwatch fall-detection feature and export monthly PDFs of alerts to the clinic email for review.\n- DVLA guidance reiterated as previously discussed. He understands driving restrictions and confirms he is not driving.\n- Follow-up in 10–12 weeks, sooner if events escalate or new features emerge.\n\nI will update you when the EEG is completed and once we have correlated the wearable data with the clinical history. Please let me know if there are any concerns from primary care in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit counts and timeframe. The letter states: 'He has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul'. These are within the last three months (July, August, September). Total seizures over that 3-month period = 7 + 1 + 2 = 10. Normalize to allowed format as a rate: 10 per 3 months.",
+      "seizure_frequency_number": [
+        "10 per 3 month",
+        "He has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul"
+      ],
+      "reference": [
+        "10 per 3 month",
+        "He has recorded 7 seizures to date in Sep, 1 in Aug and two in Jul, including nocturnal and daytime periods"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

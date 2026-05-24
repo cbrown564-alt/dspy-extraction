@@ -1,0 +1,65 @@
+{
+  "id": "gan_11221",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 01 October 2020 \n\nDr A. Patel  \nRiverside Health Centre  \n22 Mill Lane, Bristol BS1 4AB  \n\nDear Dr A. Patel,                                                                                                         \n\nThomas Greene, DOB: 03-11-1989, Hospital No: H728456 NHS No. 9134756201  \nFlat 5, 8 Wren Court, Bristol, BS3 2JG  \n\nFocal Epilepsy \n\nMedication: Maintained on Lamotrigine since March 2019; no recent changes reported.  \n\nCurrent regimen: Lamotrigine 100 mg twice daily (patient reports full adherence; doses scheduled around shift work).  \n\nLamotrigine Blood Level:  \n15 September 2020: 4.8 mg/L (therapeutic range 1.0–15.0 mg/L). Dose 100 mg twice daily.  \n\nSeizures: Patient has focal epilepsy. Last seizure on 30/5/2020. He describes brief focal aware episodes with right-hand paraesthesias and jaw tightness lasting ~30–45 seconds without loss of awareness. The 30/5/2020 event progressed to a focal impaired-awareness seizure with behavioural arrest and lip smacking, lasting approximately 2 minutes, followed by 10 minutes of confusion. No further events since, including during recent night shifts. No auras since June 2020.\n\nWork and safety context: He works in a cold-chain warehouse where low ambient temperatures (−18°C in certain zones) and mandatory gloves can slow access to rescue medications and phone use. He keeps his rescue midazolam in an insulated pocket outside freezer bays and has informed his supervisor of his care plan. He reports avoiding lone working and heavy machinery tasks when overtired. He has not required rescue therapy to date. \n\nToday’s review was conducted by telephone. He feels well, with good sleep on most weeks, and denies missed doses. He notes that colder environments make handling his rescue device slower; he has arranged a pocket warmer to maintain device pliability. No side-effects from Lamotrigine (no rash, diplopia, or dizziness). Weight stable. \n\nPlan: Continue current Lamotrigine 100 mg twice daily. Reinforce seizure first-aid with workplace team and maintain midazolam access outside deep-freeze areas. Annual blood level unless clinical change. He will contact the clinic if he experiences any recurrence of focal aware auras, any impaired-awareness events, or difficulties with medication access at work. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 770,
+      "end": 796,
+      "text": "Last seizure on 30/5/2020.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 770,
+      "end": 795,
+      "text": "Last seizure on 30/5/2020",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11221,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 01 October 2020 \n\nDr A. Patel  \nRiverside Health Centre  \n22 Mill Lane, Bristol BS1 4AB  \n\nDear Dr A. Patel,                                                                                                         \n\nThomas Greene, DOB: 03-11-1989, Hospital No: H728456 NHS No. 9134756201  \nFlat 5, 8 Wren Court, Bristol, BS3 2JG  \n\nFocal Epilepsy \n\nMedication: Maintained on Lamotrigine since March 2019; no recent changes reported.  \n\nCurrent regimen: Lamotrigine 100 mg twice daily (patient reports full adherence; doses scheduled around shift work).  \n\nLamotrigine Blood Level:  \n15 September 2020: 4.8 mg/L (therapeutic range 1.0–15.0 mg/L). Dose 100 mg twice daily.  \n\nSeizures: Patient has focal epilepsy. Last seizure on 30/5/2020. He describes brief focal aware episodes with right-hand paraesthesias and jaw tightness lasting ~30–45 seconds without loss of awareness. The 30/5/2020 event progressed to a focal impaired-awareness seizure with behavioural arrest and lip smacking, lasting approximately 2 minutes, followed by 10 minutes of confusion. No further events since, including during recent night shifts. No auras since June 2020.\n\nWork and safety context: He works in a cold-chain warehouse where low ambient temperatures (−18°C in certain zones) and mandatory gloves can slow access to rescue medications and phone use. He keeps his rescue midazolam in an insulated pocket outside freezer bays and has informed his supervisor of his care plan. He reports avoiding lone working and heavy machinery tasks when overtired. He has not required rescue therapy to date. \n\nToday’s review was conducted by telephone. He feels well, with good sleep on most weeks, and denies missed doses. He notes that colder environments make handling his rescue device slower; he has arranged a pocket warmer to maintain device pliability. No side-effects from Lamotrigine (no rash, diplopia, or dizziness). Weight stable. \n\nPlan: Continue current Lamotrigine 100 mg twice daily. Reinforce seizure first-aid with workplace team and maintain midazolam access outside deep-freeze areas. Annual blood level unless clinical change. He will contact the clinic if he experiences any recurrence of focal aware auras, any impaired-awareness events, or difficulties with medication access at work. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 01 October 2020. The letter states the last seizure occurred on 30/5/2020 and that there have been no further events since. Time since last seizure at the clinic date is approximately 4 months (30 May to 1 October). Per the rule, seizure-free status requires at least 6 months, which is not met. The letter does not provide an explicit numeric seizure rate (e.g., per month/week), and past focal aware episodes lack frequency details. Therefore, the current seizure frequency cannot be determined from the letter, so the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Last seizure on 30/5/2020."
+      ],
+      "reference": [
+        "unknown",
+        "Last seizure on 30/5/2020"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

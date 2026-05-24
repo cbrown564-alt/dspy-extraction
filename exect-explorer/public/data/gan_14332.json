@@ -1,0 +1,59 @@
+{
+  "id": "gan_14332",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 December 2017 \n\nDr Amelia Shah  \nSt Cuthbert University Hospital  \nDepartment of Neurology, 4 Wren Street, Brighton BN2 1QP  \n\nDear Dr Amelia Shah,  \n\nMargaret Collins, DOB: 14-07-1954, Hospital No: H927461 NHS No. 9081763542  \nFlat 3, 12 Queen’s Parade, Brighton BN1 3EX  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nMs Margaret Collins attended review today. She is a newly retired teacher living alone, with a regular daily routine and reduced social contact since retirement. She reports adherence to her current care plan and has been maintaining a seizure diary. Lamotrigine was stopped on 01-Oct. Around that period, she had five seizures, one following alcohol intake. She has not had any further events since. She denies intercurrent illness, sleep deprivation, or new stressors around the time of the cluster, though she acknowledges a couple of late nights around social engagements, including the evening with alcohol intake. No injuries, tongue-biting only once, and no prolonged events were described. \n\nMedication history and tolerability were reviewed. She discontinued lamotrigine because of perceived mood lability and skin sensitivity; no rash was documented. She is currently not taking regular anti-seizure medication and prefers monitoring before considering re-initiation, given the remission in events since early October. She keeps midazolam oromucosal at home but has not needed to use it. She has set reminders for sleep regularity and hydration and keeps an activity log. \n\nExamination today was unremarkable. Cardiovascular observations were stable. Neurological examination showed no focal deficits and normal gait. \n\nPlan: \n- Continue seizure diary and trigger avoidance (particularly alcohol and sleep disruption) as discussed. \n- No immediate pharmacological changes today given absence of further events since October; we will keep low threshold to restart treatment if seizures recur. \n- Safety counselling was reinforced for lone living, including kettle and cooker timing devices, shower rather than bath, and keeping a charged phone accessible. \n- Community support options and local peer groups were discussed; patient will consider. \n- Arrange ambulatory EEG if further events occur, and consider MRI review if pattern changes. \n- DVLA advice reiterated: to follow current guidance relevant to her recent events; she confirms she is not driving at present. \n\nFollow-up: \nWe agreed to review in three months, or sooner if further seizures occur. She will contact the clinic if there is any recurrence or escalation. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 678,
+      "end": 792,
+      "text": "Around that period, she had five seizures, one following alcohol intake. She has not had any further events since.",
+      "attributes": {
+        "Label": "5 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 643,
+      "end": 791,
+      "text": "Lamotrigine was stopped on 01-Oct. Around that period, she had five seizures, one following alcohol intake. She has not had any further events since",
+      "attributes": {
+        "Label": "5 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14332,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 December 2017 \n\nDr Amelia Shah  \nSt Cuthbert University Hospital  \nDepartment of Neurology, 4 Wren Street, Brighton BN2 1QP  \n\nDear Dr Amelia Shah,  \n\nMargaret Collins, DOB: 14-07-1954, Hospital No: H927461 NHS No. 9081763542  \nFlat 3, 12 Queen’s Parade, Brighton BN1 3EX  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nMs Margaret Collins attended review today. She is a newly retired teacher living alone, with a regular daily routine and reduced social contact since retirement. She reports adherence to her current care plan and has been maintaining a seizure diary. Lamotrigine was stopped on 01-Oct. Around that period, she had five seizures, one following alcohol intake. She has not had any further events since. She denies intercurrent illness, sleep deprivation, or new stressors around the time of the cluster, though she acknowledges a couple of late nights around social engagements, including the evening with alcohol intake. No injuries, tongue-biting only once, and no prolonged events were described. \n\nMedication history and tolerability were reviewed. She discontinued lamotrigine because of perceived mood lability and skin sensitivity; no rash was documented. She is currently not taking regular anti-seizure medication and prefers monitoring before considering re-initiation, given the remission in events since early October. She keeps midazolam oromucosal at home but has not needed to use it. She has set reminders for sleep regularity and hydration and keeps an activity log. \n\nExamination today was unremarkable. Cardiovascular observations were stable. Neurological examination showed no focal deficits and normal gait. \n\nPlan: \n- Continue seizure diary and trigger avoidance (particularly alcohol and sleep disruption) as discussed. \n- No immediate pharmacological changes today given absence of further events since October; we will keep low threshold to restart treatment if seizures recur. \n- Safety counselling was reinforced for lone living, including kettle and cooker timing devices, shower rather than bath, and keeping a charged phone accessible. \n- Community support options and local peer groups were discussed; patient will consider. \n- Arrange ambulatory EEG if further events occur, and consider MRI review if pattern changes. \n- DVLA advice reiterated: to follow current guidance relevant to her recent events; she confirms she is not driving at present. \n\nFollow-up: \nWe agreed to review in three months, or sooner if further seizures occur. She will contact the clinic if there is any recurrence or escalation. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02-Dec-2017. The letter states lamotrigine was stopped on 01-Oct and \"around that period\" she had five seizures, with no further events since. This places five seizures within approximately the last two months. She has not been seizure-free for 6 months, so we must calculate a frequency rather than label seizure-free. Therefore: 5 seizures over ~2 months → 5 per 2 month.",
+      "seizure_frequency_number": [
+        "5 per 2 month",
+        "Around that period, she had five seizures, one following alcohol intake. She has not had any further events since."
+      ],
+      "reference": [
+        "5 per 2 month",
+        "Lamotrigine was stopped on 01-Oct. Around that period, she had five seizures, one following alcohol intake. She has not had any further events since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

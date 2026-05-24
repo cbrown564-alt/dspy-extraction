@@ -1,0 +1,48 @@
+{
+  "id": "gan_9942",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 20 June 2024 \n\nDr Raj Mehta  \nNorthbrook NHS Neurology Clinic  \nOutpatient Department, Northbrook General Hospital, Westmere Road, Leeds LS12 4QT  \n\nDear Dr Raj Mehta,  \n\nJordan Ellis, DOB: 14-07-1998, Hospital No: H6294153 NHS No. 9075632184  \nFlat 3, 12 Brookside Lane, Leeds, LS5 3AP  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Jordan Ellis in clinic today with their mother. Since the last appointment, they report intermittent periods of increased seizure activity occurring roughly once each month; during these periods events arise over several days, but the exact number per episode has not been reliably captured. Outside these flurries, they may go a week or more without events. Witnesses describe brief behavioural arrest with lip smacking and subsequent fatigue; there has been no clear convulsive activity reported. No injuries have occurred. \n\nMedication adherence had previously been inconsistent with several missed evening doses noted over the summer. In response, Jordan Ellis has implemented smartphone alarms alongside strategically placed NFC tags at the bedside and by the kettle to log doses in real time. They demonstrate the app record, which shows near-complete adherence over the past six weeks, with two late (but not omitted) evening doses. They feel more confident using this system and report fewer episodes during the most recent monthly surge, though documentation remains incomplete. \n\nNeurological examination today was unremarkable. No new focal symptoms, no headaches, and sleep reported as variable but improving. There have been no emergency presentations, and rescue medication has not been required. \n\nPlan: \n- Continue current anti-seizure medication at existing dose. \n- Maintain the smartphone alarm and NFC tag routine for dose confirmation; patient to export monthly adherence summaries to share at follow-up. \n- Provide a simple event log within the same app: date, approximate time, brief description, and post-event recovery, to clarify event count within the monthly surges. \n- No changes to safety advice; driving not applicable. \n- Arrange routine bloods (U&Es, LFTs) locally before next review. \n- Follow-up in three months, sooner if event pattern changes or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 503,
+      "end": 706,
+      "text": "intermittent periods of increased seizure activity occurring roughly once each month; during these periods events arise over several days, but the exact number per episode has not been reliably captured.",
+      "attributes": {
+        "Label": "1 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9942,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 20 June 2024 \n\nDr Raj Mehta  \nNorthbrook NHS Neurology Clinic  \nOutpatient Department, Northbrook General Hospital, Westmere Road, Leeds LS12 4QT  \n\nDear Dr Raj Mehta,  \n\nJordan Ellis, DOB: 14-07-1998, Hospital No: H6294153 NHS No. 9075632184  \nFlat 3, 12 Brookside Lane, Leeds, LS5 3AP  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Jordan Ellis in clinic today with their mother. Since the last appointment, they report intermittent periods of increased seizure activity occurring roughly once each month; during these periods events arise over several days, but the exact number per episode has not been reliably captured. Outside these flurries, they may go a week or more without events. Witnesses describe brief behavioural arrest with lip smacking and subsequent fatigue; there has been no clear convulsive activity reported. No injuries have occurred. \n\nMedication adherence had previously been inconsistent with several missed evening doses noted over the summer. In response, Jordan Ellis has implemented smartphone alarms alongside strategically placed NFC tags at the bedside and by the kettle to log doses in real time. They demonstrate the app record, which shows near-complete adherence over the past six weeks, with two late (but not omitted) evening doses. They feel more confident using this system and report fewer episodes during the most recent monthly surge, though documentation remains incomplete. \n\nNeurological examination today was unremarkable. No new focal symptoms, no headaches, and sleep reported as variable but improving. There have been no emergency presentations, and rescue medication has not been required. \n\nPlan: \n- Continue current anti-seizure medication at existing dose. \n- Maintain the smartphone alarm and NFC tag routine for dose confirmation; patient to export monthly adherence summaries to share at follow-up. \n- Provide a simple event log within the same app: date, approximate time, brief description, and post-event recovery, to clarify event count within the monthly surges. \n- No changes to safety advice; driving not applicable. \n- Arrange routine bloods (U&Es, LFTs) locally before next review. \n- Follow-up in three months, sooner if event pattern changes or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has intermittent periods of increased seizure activity occurring roughly once each month. These are cluster-like surges over several days, and the exact number of events within each surge is not reliably captured. Outside these flurries they may go a week or more without events. Therefore, this is best represented as 1 cluster per month with an unknown/multiple number of events per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per month, multiple per cluster",
+        "intermittent periods of increased seizure activity occurring roughly once each month; during these periods events arise over several days, but the exact number per episode has not been reliably captured."
+      ],
+      "reference": [
+        "1 cluster per month, multiple per cluster",
+        "Monthly clusters; within-cluster count unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

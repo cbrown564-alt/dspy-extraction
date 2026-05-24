@@ -1,0 +1,59 @@
+{
+  "id": "gan_7834",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Singh  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Singh,  \n\nOlivia Bennett, DOB: 12-04-1992, Hospital No: H583920 NHS No. 5837469201  \n24 Maple Grove, London, W10 6AB \n\nMedication: \n\nLevetiracetam (Keppra) 750 mg/1000 mg. Tolerated without adverse effects. No further seizure episodes. \n\nSince our last review, she reports a steady improvement in day-to-day functioning with better sleep routine and reduced anxiety. With ongoing psychological support, coping has improved, and she has developed a consistent strategy for early warning symptoms such as brief moments of internal unease and difficulty focusing, which previously preceded events. She now notes these are markedly less frequent and shorter in duration. Importantly, there have been no further seizure episodes. \n\nShe has kept a diary showing improved concentration at work and no interruptions in daily activities. She denies injuries, tongue biting, or loss of awareness since the last appointment. Family members also note improved confidence and fewer avoidance behaviours. She has continued with regular exercise and reduced alcohol intake, which she feels is helpful. \n\nWe discussed safety, driving regulations, and adherence. She understands to continue taking medication as prescribed and to contact us if there are breakthrough symptoms, adverse effects, or any change in pattern. \n\nPlan: \n- Continue levetiracetam 750 mg morning / 1000 mg evening unchanged.  \n- Maintain psychological support sessions as they appear beneficial for coping and stress reduction.  \n- Keep seizure diary and note any potential triggers or premonitory symptoms.  \n- Routine bloods with GP in three months for general health monitoring as agreed.  \n\nWe will see her back in six months, or earlier if there are any concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 385,
+      "end": 413,
+      "text": "No further seizure episodes.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 385,
+      "end": 412,
+      "text": "No further seizure episodes",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7834,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Singh  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Singh,  \n\nOlivia Bennett, DOB: 12-04-1992, Hospital No: H583920 NHS No. 5837469201  \n24 Maple Grove, London, W10 6AB \n\nMedication: \n\nLevetiracetam (Keppra) 750 mg/1000 mg. Tolerated without adverse effects. No further seizure episodes. \n\nSince our last review, she reports a steady improvement in day-to-day functioning with better sleep routine and reduced anxiety. With ongoing psychological support, coping has improved, and she has developed a consistent strategy for early warning symptoms such as brief moments of internal unease and difficulty focusing, which previously preceded events. She now notes these are markedly less frequent and shorter in duration. Importantly, there have been no further seizure episodes. \n\nShe has kept a diary showing improved concentration at work and no interruptions in daily activities. She denies injuries, tongue biting, or loss of awareness since the last appointment. Family members also note improved confidence and fewer avoidance behaviours. She has continued with regular exercise and reduced alcohol intake, which she feels is helpful. \n\nWe discussed safety, driving regulations, and adherence. She understands to continue taking medication as prescribed and to contact us if there are breakthrough symptoms, adverse effects, or any change in pattern. \n\nPlan: \n- Continue levetiracetam 750 mg morning / 1000 mg evening unchanged.  \n- Maintain psychological support sessions as they appear beneficial for coping and stress reduction.  \n- Keep seizure diary and note any potential triggers or premonitory symptoms.  \n- Routine bloods with GP in three months for general health monitoring as agreed.  \n\nWe will see her back in six months, or earlier if there are any concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter repeatedly states there have been no further seizure episodes since the last appointment. It does not provide the exact date of the last appointment or explicitly confirm a seizure-free duration of at least 6 months. Therefore, we cannot assert 'seizure free for 6 months or more.' However, it clearly indicates ongoing seizure freedom over a period described as 'since our last review,' implying multiple months could be plausible but not guaranteed. Per instruction 8, if insufficient information to confirm the 6-month criterion but currently no seizures, we may classify as 'seizure free for multiple months.' No other seizure frequencies are provided. No conflicting higher-frequency entries to reconcile.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No further seizure episodes."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No further seizure episodes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

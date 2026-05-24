@@ -1,0 +1,54 @@
+{
+  "id": "gan_7202",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 18 September 2025\n\nDr Patel\nRiverside Neurology Clinic\n2nd Floor, Riverside Health Centre, 48 Mill Lane, Manchester M3 5QL\n\nDear Dr Patel,\n\nLaura Bennett, DOB: 14-07-1992, Hospital No: H629184, NHS No. 8475103269\nFlat 3, 12 Park Terrace, Manchester M14 6JP\n\nDiagnoses:\n\nSeizure disorder (aetiology not established).\n\nI reviewed Laura Bennett in clinic today accompanied by her partner. Since giving birth earlier this year, she describes a clear uptick in the number of events, noting that the spells have become more frequent during the months following delivery compared with her baseline prior to pregnancy. She attributes this to sleep disruption and routine changes with the newborn. At present she reports clusters on some weeks, with an overall count of approximately 10–16 events per month, whereas she had typically experienced fewer episodes before the baby arrived. Rescue medication has not been necessary in the past two months.\n\nHer current medicines are unchanged per her report. She uses a smartwatch to log events, and her entries correlate with family observations. There is no obvious diurnal pattern, though episodes are more likely on nights after curtailed sleep. She has not identified specific triggers other than fatigue. There is no history of new neurological deficits, head injury, or intercurrent illness.\n\nNeurological examination today was unremarkable. We discussed lifestyle measures focusing on sleep hygiene and support at home. She prefers to continue with her present regimen until we have updated investigations. I have requested serum levels of her regular medications, a metabolic screen, and an EEG. We will also schedule an MRI brain with epilepsy protocol to reassess structural causes. Safety counselling was reinforced, including supervision when bathing and guidance regarding driving in line with DVLA regulations due to ongoing events.\n\nPlan:\n- Continue current medications without change pending results.\n- Arrange EEG and MRI brain (epilepsy protocol).\n- Bloods: full profile including drug levels, U&E, LFT, FBC, vitamin D, and thyroid function.\n- Provide written advice on sleep optimisation and seizure first aid.\n- Follow-up in 3 months, sooner if events escalate or if prolonged episodes occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 791,
+      "end": 852,
+      "text": "with an overall count of approximately 10–16 events per month",
+      "attributes": {
+        "Label": "10 to 16 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7202,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 18 September 2025\n\nDr Patel\nRiverside Neurology Clinic\n2nd Floor, Riverside Health Centre, 48 Mill Lane, Manchester M3 5QL\n\nDear Dr Patel,\n\nLaura Bennett, DOB: 14-07-1992, Hospital No: H629184, NHS No. 8475103269\nFlat 3, 12 Park Terrace, Manchester M14 6JP\n\nDiagnoses:\n\nSeizure disorder (aetiology not established).\n\nI reviewed Laura Bennett in clinic today accompanied by her partner. Since giving birth earlier this year, she describes a clear uptick in the number of events, noting that the spells have become more frequent during the months following delivery compared with her baseline prior to pregnancy. She attributes this to sleep disruption and routine changes with the newborn. At present she reports clusters on some weeks, with an overall count of approximately 10–16 events per month, whereas she had typically experienced fewer episodes before the baby arrived. Rescue medication has not been necessary in the past two months.\n\nHer current medicines are unchanged per her report. She uses a smartwatch to log events, and her entries correlate with family observations. There is no obvious diurnal pattern, though episodes are more likely on nights after curtailed sleep. She has not identified specific triggers other than fatigue. There is no history of new neurological deficits, head injury, or intercurrent illness.\n\nNeurological examination today was unremarkable. We discussed lifestyle measures focusing on sleep hygiene and support at home. She prefers to continue with her present regimen until we have updated investigations. I have requested serum levels of her regular medications, a metabolic screen, and an EEG. We will also schedule an MRI brain with epilepsy protocol to reassess structural causes. Safety counselling was reinforced, including supervision when bathing and guidance regarding driving in line with DVLA regulations due to ongoing events.\n\nPlan:\n- Continue current medications without change pending results.\n- Arrange EEG and MRI brain (epilepsy protocol).\n- Bloods: full profile including drug levels, U&E, LFT, FBC, vitamin D, and thyroid function.\n- Provide written advice on sleep optimisation and seizure first aid.\n- Follow-up in 3 months, sooner if events escalate or if prolonged episodes occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure/event frequency: \"an overall count of approximately 10–16 events per month.\" No other numeric frequency is provided. Mentions of clusters lack quantification (no number per cluster or number of clusters per period), so the monthly count is the most precise and highest-frequency information available. Normalize the range with 'to' per format rules.",
+      "seizure_frequency_number": [
+        "10 to 16 per month",
+        "with an overall count of approximately 10–16 events per month"
+      ],
+      "reference": [
+        "unknown",
+        "Postpartum increase in seizure frequency"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (10 to 16 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

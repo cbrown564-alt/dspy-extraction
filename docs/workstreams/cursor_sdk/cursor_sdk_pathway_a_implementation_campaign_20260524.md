@@ -73,6 +73,8 @@ Not yet ready:
   - `docs/workstreams/cursor_sdk/pathway_a/a2_verifier_mission_brief_20260524.md`
   - `docs/workstreams/cursor_sdk/pathway_a/a3_prompt_policy_mission_brief_20260524.md`
 - Generated an A2 implementation prompt rehearsal from the accepted mission brief for disposable-worktree handoff.
+- Ran A2I as a disposable Cursor implementation lane, but the SDK report omitted the full diff; Codex therefore implemented and reviewed the source patch manually in the shared workspace.
+- A2I cap-25 run completed: `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini_20260524T193119Z`. Frequency precision/F1 improved versus the AM-guard cap-25 baseline, but recall fell from 92.0% to 72.0%, so the arm is on hold pending A2R rather than promoted to full validation.
 
 ## Pathway A Mission Brief
 
@@ -270,8 +272,8 @@ Validation:
 | A0. Add Pathway A Cursor workflow template | Completed | Codex + Cursor SDK | Existing wrapper | no | `pathway-a-card` supports prompt-only and disposable-worktree implementation lanes with ledger metadata. |
 | A1R. Retrospective A1 Cursor review | Completed | Cursor review lane, Codex reviewer | A1 audit exists | yes | Review confirmed A1 and promoted one source-backed table correction. |
 | A2D. A2 verifier design brief | Completed | Codex | A1 audit | yes | Mission brief names hypothesis, controls, files, stop rules, and cap-25 gate. |
-| A2I. A2 verifier implementation pilot | Ready after A0/A2D | Cursor implementation lane | A0, A2D | no | Disposable-worktree diff, tests, cap-25 config/run or dry-run report. |
-| A2R. A2 regression/critic review | Ready after A2I | Cursor critic + Codex | A2I | yes after implementation | Report verifies scorer preservation and guard-family stability. |
+| A2I. A2 verifier implementation pilot | Completed; hold as arm | Cursor implementation lane + Codex manual promotion/review | A0, A2D | no | Implemented verifier config and run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini_20260524T193119Z`; F1 improved but recall gate failed. |
+| A2R. A2 regression/critic review | Ready | Cursor critic + Codex | A2I | yes after implementation | Explain recall loss and verify scorer preservation before any full-validation decision. |
 | A3D. A3 prompt-policy design brief | Completed | Codex | A1 audit | yes | Brief names exact policy knobs and examples from A1. |
 | A3I. A3 prompt-policy pilot | Ready after A0/A3D | Cursor implementation lane | A0, A3D | no if touching same prompts as A2 | Cap-25 artifact and comparison report. |
 | A4P. A4 medication guard prereg | Backlog | Cursor draft + Codex reviewer | AM guard inspection | yes, separate from frequency | Prereg accepted or rejected before code changes. |

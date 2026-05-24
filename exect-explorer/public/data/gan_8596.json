@@ -1,0 +1,59 @@
+{
+  "id": "gan_8596",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Shaw (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 09 March 2017 10:20\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Interval update and ongoing monitoring\n\nHi Emily\n\nEpilepsy Diagnosis:\n\n[Classification not specified in this correspondence]\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 250 mg in the morning and 500 mg at night\n\n\nPresent Seizure Frequency:\n\nSeizure-free interval extends to eleven months. Patient reports no nocturnal events, no witnessed absences, and no new aura-like symptoms. Family confirms no episodes of unresponsiveness or injuries. There have been no emergency presentations during this period.\n\n\nPlan of Action:\n\n- Continue current antiseizure regimen without dose change, given sustained clinical stability and absence of adverse neuropsychiatric effects.\n- Patient reports good adherence using a weekly pill organiser and phone reminders; no missed doses in the past three months per diary.\n- Long-term antiseizure therapy with bone-health monitoring recorded elsewhere; we will reference existing results at the next review and ensure the schedule remains aligned with Trust guidance.\n- Safety: Reinforced seizure first-aid with family; no driving given ongoing statutory requirements until seizure-free period and licensing criteria are fully met—patient states they are not currently driving.\n- Triggers and wellbeing: No sleep disruption, alcohol minimal, and stress currently well managed with workplace adjustments. Advised to maintain regular sleep and hydration, and to continue keeping a brief seizure and side-effect diary.\n- Follow-up: Routine clinic review in 4 months, sooner if any breakthrough events, medication side effects, pregnancy planning, or intercurrent illness requiring interacting medications.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 575,
+      "end": 622,
+      "text": "Seizure-free interval extends to eleven months.",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 575,
+      "end": 621,
+      "text": "Seizure-free interval extends to eleven months",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8596,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Shaw (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 09 March 2017 10:20\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael Grant (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Interval update and ongoing monitoring\n\nHi Emily\n\nEpilepsy Diagnosis:\n\n[Classification not specified in this correspondence]\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 250 mg in the morning and 500 mg at night\n\n\nPresent Seizure Frequency:\n\nSeizure-free interval extends to eleven months. Patient reports no nocturnal events, no witnessed absences, and no new aura-like symptoms. Family confirms no episodes of unresponsiveness or injuries. There have been no emergency presentations during this period.\n\n\nPlan of Action:\n\n- Continue current antiseizure regimen without dose change, given sustained clinical stability and absence of adverse neuropsychiatric effects.\n- Patient reports good adherence using a weekly pill organiser and phone reminders; no missed doses in the past three months per diary.\n- Long-term antiseizure therapy with bone-health monitoring recorded elsewhere; we will reference existing results at the next review and ensure the schedule remains aligned with Trust guidance.\n- Safety: Reinforced seizure first-aid with family; no driving given ongoing statutory requirements until seizure-free period and licensing criteria are fully met—patient states they are not currently driving.\n- Triggers and wellbeing: No sleep disruption, alcohol minimal, and stress currently well managed with workplace adjustments. Advised to maintain regular sleep and hydration, and to continue keeping a brief seizure and side-effect diary.\n- Follow-up: Routine clinic review in 4 months, sooner if any breakthrough events, medication side effects, pregnancy planning, or intercurrent illness requiring interacting medications.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizure-free interval extends to eleven months.\" This indicates the patient has had no seizures for 11 months. The criterion for seizure-free status (at least 6 months without seizures) is met, so the normalized label should be 'seizure free for 11 month'. No other seizure frequencies are mentioned that would override this.",
+      "seizure_frequency_number": [
+        "seizure free for 11 month",
+        "Seizure-free interval extends to eleven months."
+      ],
+      "reference": [
+        "seizure free for 11 month",
+        "Seizure-free interval extends to eleven months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

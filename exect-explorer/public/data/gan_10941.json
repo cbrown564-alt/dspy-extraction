@@ -1,0 +1,59 @@
+{
+  "id": "gan_10941",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nRiverside Health Centre\n14 Willow Lane, Oxford OX1 2AB\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: H483920 NHS No. 9073625148\n22 Fern Close, Oxford, OX2 7LG\n\nEpilepsy\n\nMedication: Currently taking Levetiracetam 750 mg twice daily; previously trialled Carbamazepine (self-stopped due to dizziness). No known drug allergies. Reports good adherence and uses a smartphone reminder app.\n\nSeizures: The patient describes 6 clusters this month; each ~5 focal impaired-awareness seizures. These episodes are reported as brief spells with behavioural arrest and lip-smacking, lasting approximately 1–2 minutes, followed by several minutes of confusion. No convulsions, tongue-biting, or incontinence reported. Triggers noted by the patient include sleep deprivation and high work-related stress. No recent auras described.\n\nHistory and review: I conducted a routine follow-up video consultation today. Susan Miller reports that the clustering pattern has been more apparent over the past eight weeks, often occurring in the late evening. Family members have witnessed the events and corroborate the impaired awareness and post-event confusion. There have been no injuries. The patient is using a seizure diary application which documents dates and times consistent with the above pattern.\n\nInvestigations: Prior MRI brain (2023) reported as non-lesional; routine EEG last year showed non-specific findings without clear epileptiform discharges. We have arranged a repeat ambulatory EEG to better characterise events and to correlate with diary entries.\n\nPlan discussed today (patient-reported preferences recorded):\n- Continue current Levetiracetam dose pending review of ambulatory EEG results.\n- Maintain seizure diary and include potential triggers, sleep duration, and clustering details.\n- Provide workplace safety letter upon request; patient to liaise with occupational health.\n- Safety advice reinforced regarding bathing, heights, and operating machinery when unwell or sleep-deprived.\n- Follow-up in 8–10 weeks via clinic, with earlier contact if event pattern changes or injuries occur.\n\nPlease let me know if you would like any further details from today’s consultation.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 504,
+      "end": 591,
+      "text": "The patient describes 6 clusters this month; each ~5 focal impaired-awareness seizures.",
+      "attributes": {
+        "Label": "6 cluster per month, 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 526,
+      "end": 590,
+      "text": "6 clusters this month; each ~5 focal impaired-awareness seizures",
+      "attributes": {
+        "Label": "6 cluster per month, 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10941,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nRiverside Health Centre\n14 Willow Lane, Oxford OX1 2AB\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: H483920 NHS No. 9073625148\n22 Fern Close, Oxford, OX2 7LG\n\nEpilepsy\n\nMedication: Currently taking Levetiracetam 750 mg twice daily; previously trialled Carbamazepine (self-stopped due to dizziness). No known drug allergies. Reports good adherence and uses a smartphone reminder app.\n\nSeizures: The patient describes 6 clusters this month; each ~5 focal impaired-awareness seizures. These episodes are reported as brief spells with behavioural arrest and lip-smacking, lasting approximately 1–2 minutes, followed by several minutes of confusion. No convulsions, tongue-biting, or incontinence reported. Triggers noted by the patient include sleep deprivation and high work-related stress. No recent auras described.\n\nHistory and review: I conducted a routine follow-up video consultation today. Susan Miller reports that the clustering pattern has been more apparent over the past eight weeks, often occurring in the late evening. Family members have witnessed the events and corroborate the impaired awareness and post-event confusion. There have been no injuries. The patient is using a seizure diary application which documents dates and times consistent with the above pattern.\n\nInvestigations: Prior MRI brain (2023) reported as non-lesional; routine EEG last year showed non-specific findings without clear epileptiform discharges. We have arranged a repeat ambulatory EEG to better characterise events and to correlate with diary entries.\n\nPlan discussed today (patient-reported preferences recorded):\n- Continue current Levetiracetam dose pending review of ambulatory EEG results.\n- Maintain seizure diary and include potential triggers, sleep duration, and clustering details.\n- Provide workplace safety letter upon request; patient to liaise with occupational health.\n- Safety advice reinforced regarding bathing, heights, and operating machinery when unwell or sleep-deprived.\n- Follow-up in 8–10 weeks via clinic, with earlier contact if event pattern changes or injuries occur.\n\nPlease let me know if you would like any further details from today’s consultation.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient describes 6 clusters this month; each ~5 focal impaired-awareness seizures.' This provides both the number of clusters per month and the number of seizures per cluster. No other conflicting frequencies are provided. Therefore, the normalized label should be in the cluster format with month as the time unit and seizures per cluster specified.",
+      "seizure_frequency_number": [
+        "6 cluster per month, 5 per cluster",
+        "The patient describes 6 clusters this month; each ~5 focal impaired-awareness seizures."
+      ],
+      "reference": [
+        "6 cluster per month, 5 per cluster",
+        "6 clusters this month; each ~5 focal impaired-awareness seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

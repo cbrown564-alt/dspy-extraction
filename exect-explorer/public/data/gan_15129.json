@@ -1,0 +1,54 @@
+{
+  "id": "gan_15129",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 08 June 2016\n\nDr Patel\nElm Grove Health Centre\n\n12 Elm Grove, Southwark\nLondon SE5 9AB\nDear Dr Patel\nMargaret Lewis, DOB: 14-02-1952, Hospital No: H739201 NHS No. 8074315269\nFlat 3, 29 College Mews, London SE5 0QG \n\nDiagnoses/summary: Recurrent seizures of uncertain classification; long history of episodic events with inconsistent semiology; no clear structural lesion identified on prior imaging per patient report\n\nPrevious medication: carbamazepine (sedation), valproate (weight gain), levetiracetam (irritability), lamotrigine (ineffective beyond 200 mg/day), clonazepam PRN (helpful for sleep but groggy), zonisamide (paresthesia), topiramate (word-finding difficulty), pregabalin (dizziness)\n\nNot taken: lacosamide, perampanel, tiagabine, oxcarbazepine, rufinamide, vigabatrin\n\nRelevant history: Newly retired secondary school teacher living alone with a regular routine and reduced social contact. No recent head injury; no family history volunteered. Sleeps 6–7 hours but reports early morning stiffness and rare startle phenomena.\n\nI reviewed Margaret Lewis in clinic today, attending alone. She described good adherence to medication and a stable daily routine since retirement. She keeps a seizure and wellness diary. She reports that the last clearly witnessed tonic–clonic seizure was in 3/2015, with four morning jerks since then. These were brief, occurred upon waking, and did not generalise or cause injury. She denies recent loss of awareness, tongue biting, or incontinence. No emergency attendances since 2015. Overall, she feels more in control but remains anxious about living alone.\n\nCurrent medication:\n- Lamotrigine 100 mg twice daily\n- Propranolol 10 mg twice daily (for tremor/anxiety)\n- Folic acid 5 mg daily\n\nExamination: Alert, oriented, speech fluent, cranial nerves intact. No focal motor deficit. Gait normal. No tremor at rest; mild enhanced physiological tremor on posture. BP 126/78, pulse 68 regular.\n\nInvestigations: She brought prior correspondence stating a normal MRI brain (2012, external provider) and routine EEG without epileptiform discharges (2014). No recent bloods available today; we will repeat.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily as tolerated; no recent generalised events and only four brief morning jerks since 3/2015 as per diary.\n- Check U&E, LFT, FBC, lamotrigine level for baseline; thyroid profile given fatigue.\n- Safety advice reinforced regarding bathing, cooking, and lone activities; encouraged maintenance of a consistent sleep schedule.\n- Discussed community support and social engagement options given reduced social contact; patient will consider local groups.\n- Routine follow-up in 6 months, earlier if events change in character, frequency, duration, or lead to injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2287,
+      "end": 2343,
+      "text": "only four brief morning jerks since 3/2015 as per diary.",
+      "attributes": {
+        "Label": "4 per 15 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15129,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 08 June 2016\n\nDr Patel\nElm Grove Health Centre\n\n12 Elm Grove, Southwark\nLondon SE5 9AB\nDear Dr Patel\nMargaret Lewis, DOB: 14-02-1952, Hospital No: H739201 NHS No. 8074315269\nFlat 3, 29 College Mews, London SE5 0QG \n\nDiagnoses/summary: Recurrent seizures of uncertain classification; long history of episodic events with inconsistent semiology; no clear structural lesion identified on prior imaging per patient report\n\nPrevious medication: carbamazepine (sedation), valproate (weight gain), levetiracetam (irritability), lamotrigine (ineffective beyond 200 mg/day), clonazepam PRN (helpful for sleep but groggy), zonisamide (paresthesia), topiramate (word-finding difficulty), pregabalin (dizziness)\n\nNot taken: lacosamide, perampanel, tiagabine, oxcarbazepine, rufinamide, vigabatrin\n\nRelevant history: Newly retired secondary school teacher living alone with a regular routine and reduced social contact. No recent head injury; no family history volunteered. Sleeps 6–7 hours but reports early morning stiffness and rare startle phenomena.\n\nI reviewed Margaret Lewis in clinic today, attending alone. She described good adherence to medication and a stable daily routine since retirement. She keeps a seizure and wellness diary. She reports that the last clearly witnessed tonic–clonic seizure was in 3/2015, with four morning jerks since then. These were brief, occurred upon waking, and did not generalise or cause injury. She denies recent loss of awareness, tongue biting, or incontinence. No emergency attendances since 2015. Overall, she feels more in control but remains anxious about living alone.\n\nCurrent medication:\n- Lamotrigine 100 mg twice daily\n- Propranolol 10 mg twice daily (for tremor/anxiety)\n- Folic acid 5 mg daily\n\nExamination: Alert, oriented, speech fluent, cranial nerves intact. No focal motor deficit. Gait normal. No tremor at rest; mild enhanced physiological tremor on posture. BP 126/78, pulse 68 regular.\n\nInvestigations: She brought prior correspondence stating a normal MRI brain (2012, external provider) and routine EEG without epileptiform discharges (2014). No recent bloods available today; we will repeat.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily as tolerated; no recent generalised events and only four brief morning jerks since 3/2015 as per diary.\n- Check U&E, LFT, FBC, lamotrigine level for baseline; thyroid profile given fatigue.\n- Safety advice reinforced regarding bathing, cooking, and lone activities; encouraged maintenance of a consistent sleep schedule.\n- Discussed community support and social engagement options given reduced social contact; patient will consider local groups.\n- Routine follow-up in 6 months, earlier if events change in character, frequency, duration, or lead to injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 08 June 2016. The letter states there have been “only four brief morning jerks since 3/2015.” Calculate the time span from March 2015 to June 2016 = 15 months (March 2015 to March 2016 = 12 months, plus April, May, June = 3 months). Therefore, frequency = 4 events in 15 months. No other higher-frequency seizure type is reported.",
+      "seizure_frequency_number": [
+        "4 per 15 month",
+        "only four brief morning jerks since 3/2015 as per diary."
+      ],
+      "reference": [
+        "5 per 15 month",
+        "Last tonic-clonic seizure was in 3/2015, with four morning jerks since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (4 per 15 month) disagrees with Reference (5 per 15 month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

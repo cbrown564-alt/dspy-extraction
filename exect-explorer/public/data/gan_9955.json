@@ -1,0 +1,48 @@
+{
+  "id": "gan_9955",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 02 October 2025\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: History of seizures after head injury; cognitive slowing reported by family; vitamin D deficiency on supplementation; smoker; works as a stage lighting technician with frequent exposure to bright and strobe lighting. Currently residing independently with support from colleagues on event days.\n\nMedication:\n- Levetiracetam 1500 mg twice daily\n- Lamotrigine 100 mg twice daily\n- Thiamine 100 mg once daily\n- Vitamin D3 1000 IU once daily\n- Omeprazole 20 mg once daily\n\nI saw Bill in clinic today. He attended alone but provided a written note from his production manager describing several episodes observed during rehearsals and live events. He reports good adherence to medication, no recent intercurrent illness, and no alcohol use. Sleep is variable due to late finishes after shows. Appetite stable. No new neurological complaints. He remains concerned about the effect of strobe lighting and rapid scene changes at work.\n\nSeizures: Bill and his team keep a basic events log. Over the past six months he describes that his events tend to gather into bursts roughly once each month, with several episodes over a few days and quieter periods between, but the exact number within those bursts is not clearly documented. Colleagues occasionally witness these at the venue; descriptions vary and do not permit a firm classification. There have been no reported injuries. He has not required emergency care since the spring.\n\nWorkplace and safety: He has discussed adjustments with his employer, including stepping off the lighting desk during high-intensity strobe testing and ensuring a colleague is present during rig checks. He wears a smartwatch alert set up by his team, which has been helpful for prompt support.\n\nExamination: Alert and oriented. Speech normal. Cranial nerves intact. Motor and coordination normal. Gait steady. No focal deficits. Cardiovascular and respiratory exams unremarkable.\n\nInvestigations: Most recent bloods (August 2025) showed normal FBC, U&E, LFTs; vitamin D low–normal on supplementation. No drug levels available. MRI brain (2023) unchanged from prior, with post-traumatic changes in left frontal region.\n\nPlan:\n- Continue current anti-seizure medication without change.\n- Arrange serum vitamin D recheck and routine U&E/LFTs in three months or sooner if clinically indicated.\n- Provide a simple episode log template to improve documentation of event counts within each burst.\n- Occupational guidance: continue existing workplace adjustments; advise regular hydration, breaks, and avoidance of sleep deprivation around show days.\n- Follow-up in 6 months, sooner if events escalate or injuries occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1382,
+      "end": 1478,
+      "text": "events tend to gather into bursts roughly once each month, with several episodes over a few days",
+      "attributes": {
+        "Label": "1 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9955,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 02 October 2025\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: History of seizures after head injury; cognitive slowing reported by family; vitamin D deficiency on supplementation; smoker; works as a stage lighting technician with frequent exposure to bright and strobe lighting. Currently residing independently with support from colleagues on event days.\n\nMedication:\n- Levetiracetam 1500 mg twice daily\n- Lamotrigine 100 mg twice daily\n- Thiamine 100 mg once daily\n- Vitamin D3 1000 IU once daily\n- Omeprazole 20 mg once daily\n\nI saw Bill in clinic today. He attended alone but provided a written note from his production manager describing several episodes observed during rehearsals and live events. He reports good adherence to medication, no recent intercurrent illness, and no alcohol use. Sleep is variable due to late finishes after shows. Appetite stable. No new neurological complaints. He remains concerned about the effect of strobe lighting and rapid scene changes at work.\n\nSeizures: Bill and his team keep a basic events log. Over the past six months he describes that his events tend to gather into bursts roughly once each month, with several episodes over a few days and quieter periods between, but the exact number within those bursts is not clearly documented. Colleagues occasionally witness these at the venue; descriptions vary and do not permit a firm classification. There have been no reported injuries. He has not required emergency care since the spring.\n\nWorkplace and safety: He has discussed adjustments with his employer, including stepping off the lighting desk during high-intensity strobe testing and ensuring a colleague is present during rig checks. He wears a smartwatch alert set up by his team, which has been helpful for prompt support.\n\nExamination: Alert and oriented. Speech normal. Cranial nerves intact. Motor and coordination normal. Gait steady. No focal deficits. Cardiovascular and respiratory exams unremarkable.\n\nInvestigations: Most recent bloods (August 2025) showed normal FBC, U&E, LFTs; vitamin D low–normal on supplementation. No drug levels available. MRI brain (2023) unchanged from prior, with post-traumatic changes in left frontal region.\n\nPlan:\n- Continue current anti-seizure medication without change.\n- Arrange serum vitamin D recheck and routine U&E/LFTs in three months or sooner if clinically indicated.\n- Provide a simple episode log template to improve documentation of event counts within each burst.\n- Occupational guidance: continue existing workplace adjustments; advise regular hydration, breaks, and avoidance of sleep deprivation around show days.\n- Follow-up in 6 months, sooner if events escalate or injuries occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses current seizures. It states: \"Over the past six months he describes that his events tend to gather into bursts roughly once each month, with several episodes over a few days and quieter periods between, but the exact number within those bursts is not clearly documented.\" This indicates clustered events occurring about once per month, with multiple episodes per cluster, but the exact count per cluster is unknown. Therefore, the appropriate normalized label is a cluster frequency of 1 per month with an unknown/multiple number per cluster.",
+      "seizure_frequency_number": [
+        "1 cluster per month, multiple per cluster",
+        "events tend to gather into bursts roughly once each month, with several episodes over a few days"
+      ],
+      "reference": [
+        "1 cluster per month, multiple per cluster",
+        "Monthly clusters; within-cluster count unclear"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

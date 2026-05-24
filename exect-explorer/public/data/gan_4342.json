@@ -1,0 +1,59 @@
+{
+  "id": "gan_4342",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 3 September 2024 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMaya Collins, DOB: 14-11-1992, Hospital No: H928374 NHS No. 7482106359  \n12 Brookside Close, London, SW12 8JP  \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset.\n\nI reviewed Maya Collins in clinic today. She works as an early-years childcare worker in a high-noise, multitasking setting, and reports that midday rest breaks are frequently interrupted. She describes brief focal seizures characterised by an abrupt pause, loss of track of tasks, a rising epigastric sensation, and automatisms of lip-smacking lasting 30–60 seconds, followed by several minutes of fatigue and word-finding difficulty. She denies generalised tonic–clonic activity and there is no injury history. Known triggers include cumulative sleep disruption and sensory overload during busy classroom transitions.\n\nSeizure frequency has been captured from her calendar and workplace incident logs: “Seizure events on 05-02, 05-09, 05-18, 06-30, 08-19.” She reports that these dates reflect typical clustering around weeks with disrupted lunch breaks and end-of-term noise peaks. She has not required rescue medication and has continued to work with informal adjustments (step-back time and colleague cover during episodes).\n\nMedication: Lamotrigine 150 mg twice daily; Levetiracetam 500 mg twice daily. She reports good adherence, no rash, and only mild irritability in late afternoons. No current neuromodulation device in place. Last MRI head (2022) was structurally normal; prior EEG (2022) showed left temporal intermittent rhythmic delta with rare sharp transients. A repeat ambulatory EEG has been arranged for correlation with diary and occupational schedule.\n\nWe discussed workplace context and patient-reported triggers. She will continue to maintain a detailed seizure and sleep log and coordinate with her line manager for protected midday breaks where feasible. Safety advice around heat exposure during outdoor play and stepwise re-orientation after episodes was reinforced. She does not drive and understands DVLA guidance for focal seizures with impaired awareness.\n\nPlan: \n- Continue Lamotrigine 150 mg BD and Levetiracetam 500 mg BD.  \n- Ambulatory EEG booked within 6–8 weeks.  \n- Bloods: Lamotrigine and Levetiracetam trough levels, U&Es, LFTs, FBC, Vitamin D.  \n- Occupational letter (patient copy) summarising the need for predictable rest breaks and a quiet recovery space after episodes.  \n- Review in clinic in 3 months or sooner if frequency increases or episodes generalise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1118,
+      "end": 1170,
+      "text": "Seizure events on 05-02, 05-09, 05-18, 06-30, 08-19.",
+      "attributes": {
+        "Label": "5 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1118,
+      "end": 1169,
+      "text": "Seizure events on 05-02, 05-09, 05-18, 06-30, 08-19",
+      "attributes": {
+        "Label": "5 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4342,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 3 September 2024 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nNeurology Outpatients, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMaya Collins, DOB: 14-11-1992, Hospital No: H928374 NHS No. 7482106359  \n12 Brookside Close, London, SW12 8JP  \n\nDiagnoses: \n\nFocal epilepsy with impaired awareness, likely temporal lobe onset.\n\nI reviewed Maya Collins in clinic today. She works as an early-years childcare worker in a high-noise, multitasking setting, and reports that midday rest breaks are frequently interrupted. She describes brief focal seizures characterised by an abrupt pause, loss of track of tasks, a rising epigastric sensation, and automatisms of lip-smacking lasting 30–60 seconds, followed by several minutes of fatigue and word-finding difficulty. She denies generalised tonic–clonic activity and there is no injury history. Known triggers include cumulative sleep disruption and sensory overload during busy classroom transitions.\n\nSeizure frequency has been captured from her calendar and workplace incident logs: “Seizure events on 05-02, 05-09, 05-18, 06-30, 08-19.” She reports that these dates reflect typical clustering around weeks with disrupted lunch breaks and end-of-term noise peaks. She has not required rescue medication and has continued to work with informal adjustments (step-back time and colleague cover during episodes).\n\nMedication: Lamotrigine 150 mg twice daily; Levetiracetam 500 mg twice daily. She reports good adherence, no rash, and only mild irritability in late afternoons. No current neuromodulation device in place. Last MRI head (2022) was structurally normal; prior EEG (2022) showed left temporal intermittent rhythmic delta with rare sharp transients. A repeat ambulatory EEG has been arranged for correlation with diary and occupational schedule.\n\nWe discussed workplace context and patient-reported triggers. She will continue to maintain a detailed seizure and sleep log and coordinate with her line manager for protected midday breaks where feasible. Safety advice around heat exposure during outdoor play and stepwise re-orientation after episodes was reinforced. She does not drive and understands DVLA guidance for focal seizures with impaired awareness.\n\nPlan: \n- Continue Lamotrigine 150 mg BD and Levetiracetam 500 mg BD.  \n- Ambulatory EEG booked within 6–8 weeks.  \n- Bloods: Lamotrigine and Levetiracetam trough levels, U&Es, LFTs, FBC, Vitamin D.  \n- Occupational letter (patient copy) summarising the need for predictable rest breaks and a quiet recovery space after episodes.  \n- Review in clinic in 3 months or sooner if frequency increases or episodes generalise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists seizure dates: “05-02, 05-09, 05-18, 06-30, 08-19,” which are five events. Interpreting the format as month-day (since 05-09 as day-month would be after the clinic date), the observation window spans from May 2, 2024 to August 19, 2024 (~109 days ≈ 3.6 months). Normalising to a standard clinical window in months, this corresponds to 5 seizures over roughly 3 months.",
+      "seizure_frequency_number": [
+        "5 per 3 month",
+        "Seizure events on 05-02, 05-09, 05-18, 06-30, 08-19."
+      ],
+      "reference": [
+        "5 per 3 month",
+        "Seizure events on 05-02, 05-09, 05-18, 06-30, 08-19"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

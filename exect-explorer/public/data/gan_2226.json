@@ -1,0 +1,59 @@
+{
+  "id": "gan_2226",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical deterioration and treatment review\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy. The patient has a history consistent with focal aware and focal to bilateral tonic–clonic seizures.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Carbamazepine MR 400 mg twice daily\n\nRecent Clinical Course and Present Seizure Frequency:\n\nThe patient had been seizure-free since 29/09/2017. Following a recent viral illness two weeks ago, there has been a clear deterioration with breakthrough events despite adherence and no identifiable lifestyle triggers. The patient reports about three - ten seizures in the last two weeks, described as brief focal aware episodes with déjà vu and epigastric rising sensations, some progressing to impaired awareness; two events were witnessed by family with right arm posturing and head deviation to the right. No injuries reported, but marked post-ictal fatigue and reduced confidence in daily activities.\n\nContext and Triggers:\n\n- Viral illness 14 days ago with fever, myalgia, and poor sleep for 3–4 nights.\n- No missed doses reported; pharmacy refill history corroborates adherence.\n- No alcohol intake; maintains regular meals and hydration; no new medications other than paracetamol during the illness.\n\nPlan of Action:\n\nGiven the deterioration after a prolonged remission, we will optimise antiseizure therapy and arrange urgent investigations:\n\n- Increase Lamotrigine to 175 mg twice daily for 1 week, then 200 mg twice daily thereafter, provided no rash or adverse effects develop.\n- Continue Carbamazepine MR 400 mg twice daily for now; we will review levels and consider reduction or switch if adverse effects or interactions are suspected.\n- Bloods this week: full blood count, U&E, LFTs, CRP, lamotrigine and carbamazepine trough levels.\n- EEG with sleep deprivation requested; repeat MRI brain (epilepsy protocol) as last imaging was over five years ago.\n- Provide safety advice: avoid heights, open water, and unsupervised bathing; advise no driving and to inform DVLA due to recurrence of seizures.\n- If seizure clusters persist (more than two focal impaired awareness events in 24 hours), patient to attend ED for assessment and consideration of rescue therapy.\n\nFollow-up:\n\nI have arranged an urgent review in clinic in 4–6 weeks. We will reassess frequency, tolerability, and results. If seizures continue despite the above, we will consider adding lacosamide or levetiracetam as adjunctive therapy and discuss referral to the surgical work-up pathway if focal onset is further localised.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 875,
+      "end": 943,
+      "text": "The patient reports about three - ten seizures in the last two weeks",
+      "attributes": {
+        "Label": "3 to 10 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 895,
+      "end": 943,
+      "text": "about three - ten seizures in the last two weeks",
+      "attributes": {
+        "Label": "3 to 10 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2226,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinical deterioration and treatment review\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy. The patient has a history consistent with focal aware and focal to bilateral tonic–clonic seizures.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Carbamazepine MR 400 mg twice daily\n\nRecent Clinical Course and Present Seizure Frequency:\n\nThe patient had been seizure-free since 29/09/2017. Following a recent viral illness two weeks ago, there has been a clear deterioration with breakthrough events despite adherence and no identifiable lifestyle triggers. The patient reports about three - ten seizures in the last two weeks, described as brief focal aware episodes with déjà vu and epigastric rising sensations, some progressing to impaired awareness; two events were witnessed by family with right arm posturing and head deviation to the right. No injuries reported, but marked post-ictal fatigue and reduced confidence in daily activities.\n\nContext and Triggers:\n\n- Viral illness 14 days ago with fever, myalgia, and poor sleep for 3–4 nights.\n- No missed doses reported; pharmacy refill history corroborates adherence.\n- No alcohol intake; maintains regular meals and hydration; no new medications other than paracetamol during the illness.\n\nPlan of Action:\n\nGiven the deterioration after a prolonged remission, we will optimise antiseizure therapy and arrange urgent investigations:\n\n- Increase Lamotrigine to 175 mg twice daily for 1 week, then 200 mg twice daily thereafter, provided no rash or adverse effects develop.\n- Continue Carbamazepine MR 400 mg twice daily for now; we will review levels and consider reduction or switch if adverse effects or interactions are suspected.\n- Bloods this week: full blood count, U&E, LFTs, CRP, lamotrigine and carbamazepine trough levels.\n- EEG with sleep deprivation requested; repeat MRI brain (epilepsy protocol) as last imaging was over five years ago.\n- Provide safety advice: avoid heights, open water, and unsupervised bathing; advise no driving and to inform DVLA due to recurrence of seizures.\n- If seizure clusters persist (more than two focal impaired awareness events in 24 hours), patient to attend ED for assessment and consideration of rescue therapy.\n\nFollow-up:\n\nI have arranged an urgent review in clinic in 4–6 weeks. We will reassess frequency, tolerability, and results. If seizures continue despite the above, we will consider adding lacosamide or levetiracetam as adjunctive therapy and discuss referral to the surgical work-up pathway if focal onset is further localised.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"The patient had been seizure-free since 29/09/2017.\" but then describes recent deterioration: \"The patient reports about three - ten seizures in the last two weeks.\" This is an explicit numeric range over a two-week period, which should be normalized to the allowed format. No other higher-frequency figure is provided. Therefore the seizure frequency is a range of 3 to 10 per 2 weeks.",
+      "seizure_frequency_number": [
+        "3 to 10 per 2 week",
+        "The patient reports about three - ten seizures in the last two weeks"
+      ],
+      "reference": [
+        "3 to 10 per 2 week",
+        "about three - ten seizures in the last two weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

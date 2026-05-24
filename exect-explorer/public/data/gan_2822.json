@@ -1,0 +1,59 @@
+{
+  "id": "gan_2822",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 May 2019 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Ellis, DOB: 14-02-1992, Hospital No: H829451 NHS No. 9081726354  \n12 Rosebank Court, Tooting, London SW17 8AB  \n\nDiagnoses: \n\nSeizure disorder; history of childhood febrile seizures. \n\nI reviewed Jordan Ellis in the adult epilepsy clinic today. They were accompanied by their partner. They report a longstanding history of febrile seizures in early childhood without neurological sequelae, with no documented convulsive events through adolescence. Over the past 18 months, they describe intermittent brief events characterised by sudden startle-like muscle twitches predominantly in the upper limbs on waking, with preserved awareness and no post-ictal confusion. On specific questioning, they report a myoclonic jerk daily, occasionally clustering in the morning, and very rarely occurring later in the day during periods of sleep deprivation or stress. There have been no witnessed prolonged convulsions, no tongue bite, and no incontinence. \n\nMedication history: no current regular anti-seizure medicines. They have trialled lifestyle measures (improved sleep routine, reduced caffeine) with partial benefit. They deny alcohol excess or recreational drug use. No current use of rescue medication. \n\nInvestigations: Routine EEG performed externally six months ago was reported as normal; copy requested for review. MRI brain (3T, epilepsy protocol) two weeks ago was reported as structurally unremarkable with no mesial temporal signal change or cortical malformation identified. Basic bloods (FBC, U&E, LFT, calcium, magnesium, glucose) within normal limits. \n\nExamination today was non-focal with normal gait and coordination. \n\nPlan: \n- Arrange sleep-deprived EEG to increase diagnostic yield for brief morning events. \n- Provide seizure diary to document timing, potential precipitants, and any progression from single jerks to clusters. \n- Safety advice discussed, including avoiding sleep deprivation, cautious approach with heights and hot surfaces, and guidance regarding driving in line with DVLA regulations; patient has self-reported and is not currently driving. \n- No antiepileptic medication commenced today; we will review after the sleep-deprived EEG and diary data. If events escalate (e.g. multiple clusters or functional impairment), we discussed the option of initiating first-line therapy; patient is aware and will contact the clinic if this occurs. \n- Provided written information on first aid for brief myoclonic events and when to seek urgent care. \n\nFollow-up: 3 months in clinic, sooner if any convulsive event, injury, or change in pattern. The patient understands and agrees with the plan. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 908,
+      "end": 942,
+      "text": "they report a myoclonic jerk daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 922,
+      "end": 942,
+      "text": "myoclonic jerk daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2822,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 May 2019 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nJordan Ellis, DOB: 14-02-1992, Hospital No: H829451 NHS No. 9081726354  \n12 Rosebank Court, Tooting, London SW17 8AB  \n\nDiagnoses: \n\nSeizure disorder; history of childhood febrile seizures. \n\nI reviewed Jordan Ellis in the adult epilepsy clinic today. They were accompanied by their partner. They report a longstanding history of febrile seizures in early childhood without neurological sequelae, with no documented convulsive events through adolescence. Over the past 18 months, they describe intermittent brief events characterised by sudden startle-like muscle twitches predominantly in the upper limbs on waking, with preserved awareness and no post-ictal confusion. On specific questioning, they report a myoclonic jerk daily, occasionally clustering in the morning, and very rarely occurring later in the day during periods of sleep deprivation or stress. There have been no witnessed prolonged convulsions, no tongue bite, and no incontinence. \n\nMedication history: no current regular anti-seizure medicines. They have trialled lifestyle measures (improved sleep routine, reduced caffeine) with partial benefit. They deny alcohol excess or recreational drug use. No current use of rescue medication. \n\nInvestigations: Routine EEG performed externally six months ago was reported as normal; copy requested for review. MRI brain (3T, epilepsy protocol) two weeks ago was reported as structurally unremarkable with no mesial temporal signal change or cortical malformation identified. Basic bloods (FBC, U&E, LFT, calcium, magnesium, glucose) within normal limits. \n\nExamination today was non-focal with normal gait and coordination. \n\nPlan: \n- Arrange sleep-deprived EEG to increase diagnostic yield for brief morning events. \n- Provide seizure diary to document timing, potential precipitants, and any progression from single jerks to clusters. \n- Safety advice discussed, including avoiding sleep deprivation, cautious approach with heights and hot surfaces, and guidance regarding driving in line with DVLA regulations; patient has self-reported and is not currently driving. \n- No antiepileptic medication commenced today; we will review after the sleep-deprived EEG and diary data. If events escalate (e.g. multiple clusters or functional impairment), we discussed the option of initiating first-line therapy; patient is aware and will contact the clinic if this occurs. \n- Provided written information on first aid for brief myoclonic events and when to seek urgent care. \n\nFollow-up: 3 months in clinic, sooner if any convulsive event, injury, or change in pattern. The patient understands and agrees with the plan. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes current events: 'On specific questioning, they report a myoclonic jerk daily, occasionally clustering in the morning, and very rarely occurring later in the day during periods of sleep deprivation or stress.' This provides an explicit daily frequency of myoclonic jerks. Clustering occurs occasionally, but no specific number per cluster is given; per the rule for multiple frequencies, select the highest frequency—daily jerks. Therefore, the normalized label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "they report a myoclonic jerk daily"
+      ],
+      "reference": [
+        "1 per day",
+        "myoclonic jerk daily"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "gan_11523",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 16 November 2017 \n\nDr Priya Menon\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1982, Hospital No: K739205 NHS No. 9045573321  \n12 Rowan Works, Flat 3, Deptford, London, SE8 3HT\n\nThank you for your request for a second opinion regarding ongoing epilepsy care. I reviewed Daniel Carter in clinic today. He works in a manual, safety‑sensitive environment at height and around machinery; we discussed interim risk mitigation at work given his role, including supervisor notification, temporary duty modification, and avoidance of lone working. \n\nCurrent treatment and history were reviewed, and there is partial response but persistent functional impact. No acute red flags were identified during today’s review. I will obtain prior records, imaging, and EEG reports from your practice and the original treating team to clarify the longitudinal course. I have arranged updated blood monitoring, medication tolerance review, and a focused occupational health liaison. \n\nPending receipt of past documentation, I will schedule a multidisciplinary review to consider optimisation of therapy and work‑focused adjustments. I will keep you informed; a detailed plan will follow within 4–6 weeks. In the meantime, employer restrictions should remain in place to minimise foreseeable risk. Please advise if there are incidents at work or medication issues; early notice would be helpful. \n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11523,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 16 November 2017 \n\nDr Priya Menon\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1982, Hospital No: K739205 NHS No. 9045573321  \n12 Rowan Works, Flat 3, Deptford, London, SE8 3HT\n\nThank you for your request for a second opinion regarding ongoing epilepsy care. I reviewed Daniel Carter in clinic today. He works in a manual, safety‑sensitive environment at height and around machinery; we discussed interim risk mitigation at work given his role, including supervisor notification, temporary duty modification, and avoidance of lone working. \n\nCurrent treatment and history were reviewed, and there is partial response but persistent functional impact. No acute red flags were identified during today’s review. I will obtain prior records, imaging, and EEG reports from your practice and the original treating team to clarify the longitudinal course. I have arranged updated blood monitoring, medication tolerance review, and a focused occupational health liaison. \n\nPending receipt of past documentation, I will schedule a multidisciplinary review to consider optimisation of therapy and work‑focused adjustments. I will keep you informed; a detailed plan will follow within 4–6 weeks. In the meantime, employer restrictions should remain in place to minimise foreseeable risk. Please advise if there are incidents at work or medication issues; early notice would be helpful. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses ongoing epilepsy care, work risk mitigation, and plans for obtaining records and optimizing therapy. It does not contain any explicit mention of seizures, seizure events, counts, timing, or frequency. There is no indication of being seizure free, nor any numeric or qualitative frequency description. Therefore, per instructions, since seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging a request for a second opinion regarding epilepsy care"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

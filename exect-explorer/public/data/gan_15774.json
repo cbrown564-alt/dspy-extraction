@@ -1,0 +1,59 @@
+{
+  "id": "gan_15774",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nRe: James Thornton, DOB: 12-05-1992, Hospital No: H983421, NHS No. 6057391842\n14 Brookside Avenue, London, W10 6JP\n\nMedication:\n\nLevetiracetam 1000 mg twice daily. Folic acid 5 mg once daily (pre-conception). No adverse effects reported apart from occasional fatigue.\n\nI reviewed James Thornton in clinic today for pre-conception counselling. He and his partner are planning to try for a pregnancy in the next 6–12 months. We discussed general optimisation of seizure control, medication safety, and practical planning around conception and early pregnancy. He reports good adherence to medication and regular sleep patterns. He does not drive.\n\nHis absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks. He notices brief lapses of awareness lasting a few seconds without warning and without clear triggers; there has been no injury, tongue biting, or incontinence. He and his partner have started keeping a seizure diary to help track any change in frequency or potential associations such as sleep disruption or intercurrent illness.\n\nFrom a pre-conception perspective, we discussed:\n- Continuing folic acid 5 mg daily until at least the end of the first trimester.\n- The importance of consistent medication adherence and sleep hygiene.\n- Avoiding abrupt medication changes during attempts to conceive and in early pregnancy unless clinically necessary; any changes would be made gradually and with monitoring.\n- Liaison with the obstetric team for shared care once pregnancy is confirmed.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily and folic acid 5 mg daily.\n- Maintain seizure diary and bring to the next review.\n- Bloods today: U&Es, LFTs, FBC; arrange trough levetiracetam level for baseline reference.\n- Provide pre-conception information leaflet and safety advice (including bathing/showering, heights, and machinery).\n- If he or his partner suspect pregnancy, he will contact us promptly so we can coordinate care with antenatal services.\n- Review in 3 months, or earlier if seizure frequency escalates or any concerns arise.\n\nPlease do not hesitate to contact me if you would like to discuss any of the above.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 823,
+      "end": 883,
+      "text": "His absence seizures are now occurring on 2 days of the week",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 823,
+      "end": 954,
+      "text": "His absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15774,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nRe: James Thornton, DOB: 12-05-1992, Hospital No: H983421, NHS No. 6057391842\n14 Brookside Avenue, London, W10 6JP\n\nMedication:\n\nLevetiracetam 1000 mg twice daily. Folic acid 5 mg once daily (pre-conception). No adverse effects reported apart from occasional fatigue.\n\nI reviewed James Thornton in clinic today for pre-conception counselling. He and his partner are planning to try for a pregnancy in the next 6–12 months. We discussed general optimisation of seizure control, medication safety, and practical planning around conception and early pregnancy. He reports good adherence to medication and regular sleep patterns. He does not drive.\n\nHis absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks. He notices brief lapses of awareness lasting a few seconds without warning and without clear triggers; there has been no injury, tongue biting, or incontinence. He and his partner have started keeping a seizure diary to help track any change in frequency or potential associations such as sleep disruption or intercurrent illness.\n\nFrom a pre-conception perspective, we discussed:\n- Continuing folic acid 5 mg daily until at least the end of the first trimester.\n- The importance of consistent medication adherence and sleep hygiene.\n- Avoiding abrupt medication changes during attempts to conceive and in early pregnancy unless clinically necessary; any changes would be made gradually and with monitoring.\n- Liaison with the obstetric team for shared care once pregnancy is confirmed.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily and folic acid 5 mg daily.\n- Maintain seizure diary and bring to the next review.\n- Bloods today: U&Es, LFTs, FBC; arrange trough levetiracetam level for baseline reference.\n- Provide pre-conception information leaflet and safety advice (including bathing/showering, heights, and machinery).\n- If he or his partner suspect pregnancy, he will contact us promptly so we can coordinate care with antenatal services.\n- Review in 3 months, or earlier if seizure frequency escalates or any concerns arise.\n\nPlease do not hesitate to contact me if you would like to discuss any of the above.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'His absence seizures are now occurring on 2 days of the week'. This gives a frequency in terms of days with seizures per week, not number of seizures per day. The instruction requires selecting the highest frequency and normalizing to allowed formats. The closest allowed format is '<value> per <period>'. '2 days of the week' corresponds to '2 per week' as days with seizures per week. No other seizure frequencies are provided that are higher. Therefore, the normalized label is '2 per week'.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "His absence seizures are now occurring on 2 days of the week"
+      ],
+      "reference": [
+        "2 per week",
+        "His absence seizures are now occurring on 2 days of the week, whereas previously they were restricted to once every couple of weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

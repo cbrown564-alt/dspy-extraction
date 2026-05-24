@@ -1,0 +1,54 @@
+{
+  "id": "gan_7316",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 28 November 2020 10:12\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Treatment update and monitoring plan\n\nHi Alice\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Sodium Valproate (Epilim Chrono) 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nDespite overall improvement on current anti-seizure medication, they continue to experience occasional brief absence episodes, typically 1–2 per month, without identifiable precipitating factors. This pattern suggests an incomplete response to therapy with ongoing intermittent events.\n\n\nPlan of Action:\n\nThe patient reports better daytime alertness and reduced tremor since the valproate dose was optimised three months ago. However, the persisting brief absences indicate that further refinement of therapy may be beneficial. We will maintain current doses for the next eight weeks to consolidate gains and to observe stability during a period of consistent sleep and reduced caffeine intake (patient-reported triggers previously included irregular sleep and high caffeine, which have been addressed).\n\nIf events continue at the current rate after this consolidation period, we will consider a cautious lamotrigine up-titration to 125 mg twice daily, provided no rash or mood change emerges. In the interim, we have advised the patient to keep a seizure and trigger diary, including menses, stress, and sleep duration, and to avoid missed doses. They have been counselled on SUDEP risk reduction strategies, including adherence and nocturnal safety measures.\n\nI have arranged a follow-up video consultation in eight weeks. If there is any escalation in event frequency, new myoclonic jerks on waking, or emergence of generalised tonic–clonic seizures, please let us know and we will bring the review forward.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 611,
+      "end": 697,
+      "text": "they continue to experience occasional brief absence episodes, typically 1–2 per month",
+      "attributes": {
+        "Label": "1 to 2 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7316,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 28 November 2020 10:12\nTo: neuro.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Treatment update and monitoring plan\n\nHi Alice\n\nEpilepsy Diagnosis:\n\nPrimary generalised epilepsy\n\n\nPresent Medication:\n\n1. Sodium Valproate (Epilim Chrono) 500 mg twice daily\n2. Lamotrigine 100 mg twice daily\n\n\nPresent Seizure Frequency:\n\nDespite overall improvement on current anti-seizure medication, they continue to experience occasional brief absence episodes, typically 1–2 per month, without identifiable precipitating factors. This pattern suggests an incomplete response to therapy with ongoing intermittent events.\n\n\nPlan of Action:\n\nThe patient reports better daytime alertness and reduced tremor since the valproate dose was optimised three months ago. However, the persisting brief absences indicate that further refinement of therapy may be beneficial. We will maintain current doses for the next eight weeks to consolidate gains and to observe stability during a period of consistent sleep and reduced caffeine intake (patient-reported triggers previously included irregular sleep and high caffeine, which have been addressed).\n\nIf events continue at the current rate after this consolidation period, we will consider a cautious lamotrigine up-titration to 125 mg twice daily, provided no rash or mood change emerges. In the interim, we have advised the patient to keep a seizure and trigger diary, including menses, stress, and sleep duration, and to avoid missed doses. They have been counselled on SUDEP risk reduction strategies, including adherence and nocturnal safety measures.\n\nI have arranged a follow-up video consultation in eight weeks. If there is any escalation in event frequency, new myoclonic jerks on waking, or emergence of generalised tonic–clonic seizures, please let us know and we will bring the review forward.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the present seizure frequency as “typically 1–2 per month.” There are ongoing brief absence episodes, so the patient is not seizure free. No other competing frequencies are provided, so normalize the stated range to the allowed format using 'to'. Final label: 1 to 2 per month.",
+      "seizure_frequency_number": [
+        "1 to 2 per month",
+        "they continue to experience occasional brief absence episodes, typically 1–2 per month"
+      ],
+      "reference": [
+        "unknown",
+        "Partial response to ASM; residual events persist"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 to 2 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

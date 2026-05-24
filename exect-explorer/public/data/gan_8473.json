@@ -1,0 +1,59 @@
+{
+  "id": "gan_8473",
+  "text": "City General Hospital \n\nNeurosciences Outpatient Clinic \n\nClinic Date: 02 October 2025 \n\nDr Priya Shah  \nRiverside Medical Centre  \n12 Market Street, Norwood, London SE24 1AB  \n\nDear Dr Priya Shah,  \n\nDaniel Carter, DOB: 14-03-1982, Hospital No: H763920 NHS No. 9076543312  \n78 Brookfield Road, London, N7 2QL\n\nThank you for asking me to review your patient. I saw him today with his partner in attendance. He reports a steady clinical improvement over recent months on his current regimen, with better day-to-day confidence and no functional limitations at home or work. He now keeps a structured event diary and has shown me detailed entries confirming the background course prior to the current improvement: he documented seizure events on 04-06, 07-04, 07-08. Since medication optimisation in late summer, he reports Seizure freedom to date. There have been no witnessed nocturnal events, no injuries, and no emergency attendances. He describes only brief non-specific spells of fatigue after poor sleep, without impaired awareness, automatisms, or confusion.\n\nCurrent management (patient-reported): he is taking a stable dose of two anti-seizure medicines and has been fully adherent for the last eight weeks. He avoids missed doses by using a phone reminder and weekly pill organiser. He has reduced caffeine, maintains a regular sleep schedule, and has limited alcohol intake to occasional single units at weekends. He has not driven and remains aware of standard safety advice around heights, water, and machinery.\n\nExamination today was unremarkable. He was alert, oriented, and engaging, with normal speech and affect. Cranial nerves, tone, power, coordination, sensation, and gait were within normal limits. Observations were stable. There were no focal neurological findings.\n\nPlan discussed with the patient:  \n- Continue current anti-seizure medicines unchanged given Seizure freedom to date.  \n- Continue event diary and trigger management; he will contact the clinic if any new episodes occur.  \n- Routine follow-up in three months, or sooner if there is any recurrence or adverse effects.  \n\nIn summary, there has been a marked improvement on current medicines compared with earlier periods, with Seizure freedom to date following previously recorded events on 04-06, 07-04, and 07-08. I will keep you updated after the next review.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 821,
+      "end": 844,
+      "text": "Seizure freedom to date",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 821,
+      "end": 844,
+      "text": "Seizure freedom to date",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8473,
+    "clinic_date": "City General Hospital \n\nNeurosciences Outpatient Clinic \n\nClinic Date: 02 October 2025 \n\nDr Priya Shah  \nRiverside Medical Centre  \n12 Market Street, Norwood, London SE24 1AB  \n\nDear Dr Priya Shah,  \n\nDaniel Carter, DOB: 14-03-1982, Hospital No: H763920 NHS No. 9076543312  \n78 Brookfield Road, London, N7 2QL\n\nThank you for asking me to review your patient. I saw him today with his partner in attendance. He reports a steady clinical improvement over recent months on his current regimen, with better day-to-day confidence and no functional limitations at home or work. He now keeps a structured event diary and has shown me detailed entries confirming the background course prior to the current improvement: he documented seizure events on 04-06, 07-04, 07-08. Since medication optimisation in late summer, he reports Seizure freedom to date. There have been no witnessed nocturnal events, no injuries, and no emergency attendances. He describes only brief non-specific spells of fatigue after poor sleep, without impaired awareness, automatisms, or confusion.\n\nCurrent management (patient-reported): he is taking a stable dose of two anti-seizure medicines and has been fully adherent for the last eight weeks. He avoids missed doses by using a phone reminder and weekly pill organiser. He has reduced caffeine, maintains a regular sleep schedule, and has limited alcohol intake to occasional single units at weekends. He has not driven and remains aware of standard safety advice around heights, water, and machinery.\n\nExamination today was unremarkable. He was alert, oriented, and engaging, with normal speech and affect. Cranial nerves, tone, power, coordination, sensation, and gait were within normal limits. Observations were stable. There were no focal neurological findings.\n\nPlan discussed with the patient:  \n- Continue current anti-seizure medicines unchanged given Seizure freedom to date.  \n- Continue event diary and trigger management; he will contact the clinic if any new episodes occur.  \n- Routine follow-up in three months, or sooner if there is any recurrence or adverse effects.  \n\nIn summary, there has been a marked improvement on current medicines compared with earlier periods, with Seizure freedom to date following previously recorded events on 04-06, 07-04, and 07-08. I will keep you updated after the next review.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had 'Seizure freedom to date' since medication optimisation in late summer. Clinic date is 02 October 2025, and the duration of seizure freedom is only described as 'to date' since late summer, which is less than 6 months and not quantified precisely. Therefore, cannot label as 6+ months seizure-free. The appropriate normalised label is 'seizure free for multiple months' as the exact number of months is not specified but spans multiple months since late summer up to early October. Prior events listed (04-06, 07-04, 07-08) are historical and do not define current frequency.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizure freedom to date"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure freedom to date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

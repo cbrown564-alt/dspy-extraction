@@ -1,0 +1,59 @@
+{
+  "id": "gan_13327",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 08 May 2023 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nSarah Thompson, DOB: 22-08-1994, Hospital No: K784233 NHS No. 1029384756  \nFlat 3, 25 Brook Street, London, W1K 4HB  \n\nDiagnosis: \n\nSeizure disorder with marked clinical improvement following VNS optimisation at a prior visit. With a history of Lennox–Gastaut syndrome, previously experiencing convulsions, atonic drop attacks and atypical absences, she has now been seizure free for several years. \n\nAetiology: \n\nNot established. \n\nOther Medical Problems: \n\nMild hypothyroidism on stable Levothyroxine; intermittent tension-type headaches managed with simple analgesia as needed. \n\nManagement Plan: \n\n- Continue current VNS settings as per last optimisation; patient and carer trained in magnet use and report reduced need for activation since the last review.  \n- Maintain current anti-seizure medication regimen unchanged, as per stability over several years.  \n- Routine bloods for general health monitoring via GP: FBC, U&Es, LFTs and thyroid profile in 6 months.  \n- Annual VNS device interrogation and battery longevity check at our device clinic; earlier review if there is any change in seizure pattern or VNS-related discomfort.  \n- Safety and lifestyle: patient reports improved alertness and has gradually increased community activities; continue standard seizure first aid education for carers though no recent use required.  \n- Follow-up in 9–12 months, sooner if breakthrough events occur or if any adverse effects emerge. \n\nSince VNS optimisation at her previous appointment, the patient and her mother report sustained improvements in alertness, sleep regularity and day-to-day confidence. There have been no emergency presentations, no injuries, and no episodes suggestive of nocturnal events. Appetite and weight remain stable, and there are no concerns regarding mood or behaviour. Examination today is unremarkable; the VNS generator site is well-healed with no tenderness, and device cycling is comfortable. Given the excellent stability, we will maintain the current plan and continue to monitor device parameters at scheduled intervals. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 568,
+      "end": 616,
+      "text": "she has now been seizure free for several years.",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 445,
+      "end": 615,
+      "text": "With a history of Lennox–Gastaut syndrome, previously experiencing convulsions, atonic drop attacks and atypical absences, she has now been seizure free for several years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13327,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 08 May 2023 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nSarah Thompson, DOB: 22-08-1994, Hospital No: K784233 NHS No. 1029384756  \nFlat 3, 25 Brook Street, London, W1K 4HB  \n\nDiagnosis: \n\nSeizure disorder with marked clinical improvement following VNS optimisation at a prior visit. With a history of Lennox–Gastaut syndrome, previously experiencing convulsions, atonic drop attacks and atypical absences, she has now been seizure free for several years. \n\nAetiology: \n\nNot established. \n\nOther Medical Problems: \n\nMild hypothyroidism on stable Levothyroxine; intermittent tension-type headaches managed with simple analgesia as needed. \n\nManagement Plan: \n\n- Continue current VNS settings as per last optimisation; patient and carer trained in magnet use and report reduced need for activation since the last review.  \n- Maintain current anti-seizure medication regimen unchanged, as per stability over several years.  \n- Routine bloods for general health monitoring via GP: FBC, U&Es, LFTs and thyroid profile in 6 months.  \n- Annual VNS device interrogation and battery longevity check at our device clinic; earlier review if there is any change in seizure pattern or VNS-related discomfort.  \n- Safety and lifestyle: patient reports improved alertness and has gradually increased community activities; continue standard seizure first aid education for carers though no recent use required.  \n- Follow-up in 9–12 months, sooner if breakthrough events occur or if any adverse effects emerge. \n\nSince VNS optimisation at her previous appointment, the patient and her mother report sustained improvements in alertness, sleep regularity and day-to-day confidence. There have been no emergency presentations, no injuries, and no episodes suggestive of nocturnal events. Appetite and weight remain stable, and there are no concerns regarding mood or behaviour. Examination today is unremarkable; the VNS generator site is well-healed with no tenderness, and device cycling is comfortable. Given the excellent stability, we will maintain the current plan and continue to monitor device parameters at scheduled intervals. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"has now been seizure free for several years.\" Additional context supports ongoing seizure freedom: no emergency presentations, no injuries, no episodes suggestive of nocturnal events, and reduced need for VNS magnet activation. The phrasing \"several years\" satisfies the criterion of at least 6 months of seizure freedom and indicates a multi-year duration, but without a specific number of years. Therefore, the normalized label should be \"seizure free for multiple years.\"",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "she has now been seizure free for several years."
+      ],
+      "reference": [
+        "seizure free for multiple year",
+        "With a history of Lennox–Gastaut syndrome, previously experiencing convulsions, atonic drop attacks and atypical absences, she has now been seizure free for several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

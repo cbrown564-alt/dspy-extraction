@@ -1,0 +1,65 @@
+{
+  "id": "gan_9912",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 16 September 2024\n\nDr Patel\nSouth London Neurology Clinic\nLevel 3, Willow House, 120 Brixton Road, London SW9 6AB\n\nDear Dr Patel,\n\nJames Rowe, DOB: 14-07-1988, Hospital No: H392847 NHS No. 9075316428\nFlat 5, 28 Larkspur Close, London, SE15 3JD\n\nDiagnoses:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nI reviewed James Rowe today in the neurology clinic, accompanied by a family member. They report that, compared with last year, daily functioning has been stable and there have been no hospital admissions related to seizures. Importantly, they describe Sporadic simple partial seizures this year, typically brief sensory auras without loss of awareness, occurring unpredictably and resolving spontaneously. These have not required emergency medication. In addition, they recall rare generalised episodes in prior years, but none reported this year.\n\nMedication adherence has been good with no recent adverse effects volunteered. Sleep hygiene and stress management strategies are being applied, which the patient feels may be helpful. There has been no use of rescue therapy in the past 12 months. No neuromodulation device is in place.\n\nNeurological examination today was unremarkable, and there are no new focal deficits. We discussed seizure first aid and the importance of maintaining a diary to document triggers, semiology, and any evolution from focal aware symptoms to impaired awareness or bilateral convulsive activity. Red flag advice was reiterated.\n\nPlan:\n- Continue current antiseizure regimen without change, given stability and patient preference.\n- Arrange routine bloods for medication monitoring and vitamin D as per protocol.\n- Provide updated written seizure action guidance and driving safety counselling as per DVLA regulations given the epilepsy history.\n- Follow-up in 6 months, sooner if events increase in frequency, duration, or evolve beyond the currently described focal aware features.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 656,
+      "end": 698,
+      "text": "Sporadic simple partial seizures this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 656,
+      "end": 698,
+      "text": "Sporadic simple partial seizures this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9912,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 16 September 2024\n\nDr Patel\nSouth London Neurology Clinic\nLevel 3, Willow House, 120 Brixton Road, London SW9 6AB\n\nDear Dr Patel,\n\nJames Rowe, DOB: 14-07-1988, Hospital No: H392847 NHS No. 9075316428\nFlat 5, 28 Larkspur Close, London, SE15 3JD\n\nDiagnoses:\n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy).\n\nI reviewed James Rowe today in the neurology clinic, accompanied by a family member. They report that, compared with last year, daily functioning has been stable and there have been no hospital admissions related to seizures. Importantly, they describe Sporadic simple partial seizures this year, typically brief sensory auras without loss of awareness, occurring unpredictably and resolving spontaneously. These have not required emergency medication. In addition, they recall rare generalised episodes in prior years, but none reported this year.\n\nMedication adherence has been good with no recent adverse effects volunteered. Sleep hygiene and stress management strategies are being applied, which the patient feels may be helpful. There has been no use of rescue therapy in the past 12 months. No neuromodulation device is in place.\n\nNeurological examination today was unremarkable, and there are no new focal deficits. We discussed seizure first aid and the importance of maintaining a diary to document triggers, semiology, and any evolution from focal aware symptoms to impaired awareness or bilateral convulsive activity. Red flag advice was reiterated.\n\nPlan:\n- Continue current antiseizure regimen without change, given stability and patient preference.\n- Arrange routine bloods for medication monitoring and vitamin D as per protocol.\n- Provide updated written seizure action guidance and driving safety counselling as per DVLA regulations given the epilepsy history.\n- Follow-up in 6 months, sooner if events increase in frequency, duration, or evolve beyond the currently described focal aware features.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient had 'Sporadic simple partial seizures this year' that are brief and unpredictable, and 'rare generalised episodes in prior years, but none reported this year.' There is no explicit numeric frequency provided for the current year, only qualitative terms ('sporadic'). The rule says to prioritize explicit numeric expressions and, if seizures are mentioned but specific frequency cannot be determined, return 'unknown.' The patient is not seizure-free because focal aware seizures occurred this year.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Sporadic simple partial seizures this year"
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic simple partial seizures this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

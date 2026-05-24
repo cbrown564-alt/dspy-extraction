@@ -1,0 +1,48 @@
+{
+  "id": "gan_8540",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 13 September 2022 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact three months ago, he reports a steady improvement in day-to-day stability and general energy levels. He has been following dietetic guidance provided by our nutrition team, with a structured modified ketogenic approach, and he feels this has helped his symptoms and overall wellbeing. He has been keeping a seizure diary and, over this interval, there have been no recorded or witnessed events suggestive of epileptic activity. In other words, there have been no episodes to document during this period, and he has required no emergency interventions.\n\nCurrent medicines are unchanged and well tolerated, with no new adverse effects volunteered. He describes clearer concentration in the mornings and less post-lunch fatigue. Sleep has been more regular since he began planning meals within the dietary framework, and he has maintained adequate hydration. He remains active, walking most days, and has not described any blackouts, tongue biting, or unwitnessed nocturnal events. His partner has not observed any nocturnal jerks or confusion on waking.\n\nWe discussed ongoing risk reduction and maintaining a consistent dietary plan. He will continue to work with our dietitian to ensure nutritional adequacy while preserving the current regimen that appears to be associated with clinical stability. I have not made changes to his medication today in view of the recent improvement, and I have asked him to continue the seizure diary. We agreed on routine bloods (FBC, U&E, LFTs, vitamin D) through the GP over the next fortnight as a baseline for ongoing monitoring. He understands common red flags and will contact us promptly should any episodes occur.\n\nI will review him again in four months or sooner if there is any clinical change. Overall, I am pleased to note that there have been no events to record over this review interval, aligning with his reported improvement coinciding with dietetic guidance.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 674,
+      "end": 754,
+      "text": "there have been no recorded or witnessed events suggestive of epileptic activity",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8540,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 13 September 2022 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact three months ago, he reports a steady improvement in day-to-day stability and general energy levels. He has been following dietetic guidance provided by our nutrition team, with a structured modified ketogenic approach, and he feels this has helped his symptoms and overall wellbeing. He has been keeping a seizure diary and, over this interval, there have been no recorded or witnessed events suggestive of epileptic activity. In other words, there have been no episodes to document during this period, and he has required no emergency interventions.\n\nCurrent medicines are unchanged and well tolerated, with no new adverse effects volunteered. He describes clearer concentration in the mornings and less post-lunch fatigue. Sleep has been more regular since he began planning meals within the dietary framework, and he has maintained adequate hydration. He remains active, walking most days, and has not described any blackouts, tongue biting, or unwitnessed nocturnal events. His partner has not observed any nocturnal jerks or confusion on waking.\n\nWe discussed ongoing risk reduction and maintaining a consistent dietary plan. He will continue to work with our dietitian to ensure nutritional adequacy while preserving the current regimen that appears to be associated with clinical stability. I have not made changes to his medication today in view of the recent improvement, and I have asked him to continue the seizure diary. We agreed on routine bloods (FBC, U&E, LFTs, vitamin D) through the GP over the next fortnight as a baseline for ongoing monitoring. He understands common red flags and will contact us promptly should any episodes occur.\n\nI will review him again in four months or sooner if there is any clinical change. Overall, I am pleased to note that there have been no events to record over this review interval, aligning with his reported improvement coinciding with dietetic guidance.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter covers the interval since the last contact three months ago. It explicitly states there have been no recorded or witnessed events suggestive of epileptic activity during this period, and reiterates no events to record over this review interval. This confirms zero seizures over a 3-month period. The criterion for full 'seizure free' requires at least 6 months; here we only have 3 months, so we should label as 'seizure free for multiple months' per the instruction that if insufficient to confirm 6 months but currently no seizures for months, use 'multiple months'.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "there have been no recorded or witnessed events suggestive of epileptic activity"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Interval history negative for seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

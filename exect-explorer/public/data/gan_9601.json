@@ -1,0 +1,59 @@
+{
+  "id": "gan_9601",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Lamotrigine continued without change.\n\nCurrent regimen: Lamotrigine dispersible 25 mg twice daily (patient-reported adherence consistent; no missed doses in the past month).\n\nLamotrigine blood levels:\n- 12 September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 25 mg twice daily.\n\nClinical summary:\nSince retiring in early summer, Susan Miller has adopted a regular routine with consistent sleep and mealtimes, and he reports a clear improvement in day-to-day stability and confidence. He remains well, with no adverse effects from medication.\n\nSeizure history prior to improvement (patient- and caregiver-reported): He has experienced ongoing focal impaired-awareness seizures, typically three episodes daily. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable.\n\nCurrent status (since retirement and routine regularisation): focal aware seizures freedom achieved. There have been no witnessed episodes of impaired awareness, no auras or warnings, and no generalised convulsions. He notes improved concentration and steadier mood, and his partner has not observed any blank spells or automatisms over the past two months.\n\nPlan:\n- Continue Lamotrigine 25 mg twice daily.\n- Routine safety advice reiterated (sleep hygiene, alcohol moderation, and medication adherence).\n- Arrange repeat Lamotrigine level and routine bloods in 3 months.\n- Telephone review in 3–4 months, earlier if any breakthrough events occur.\n\nOverall, the condition is improving with sustained stability since lifestyle changes, and he is functioning well without limitations in daily activities.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1538,
+      "end": 1562,
+      "text": "over the past two months",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1268,
+      "end": 1305,
+      "text": "focal aware seizures freedom achieved",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9601,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Lamotrigine continued without change.\n\nCurrent regimen: Lamotrigine dispersible 25 mg twice daily (patient-reported adherence consistent; no missed doses in the past month).\n\nLamotrigine blood levels:\n- 12 September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 25 mg twice daily.\n\nClinical summary:\nSince retiring in early summer, Susan Miller has adopted a regular routine with consistent sleep and mealtimes, and he reports a clear improvement in day-to-day stability and confidence. He remains well, with no adverse effects from medication.\n\nSeizure history prior to improvement (patient- and caregiver-reported): He has experienced ongoing focal impaired-awareness seizures, typically three episodes daily. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable.\n\nCurrent status (since retirement and routine regularisation): focal aware seizures freedom achieved. There have been no witnessed episodes of impaired awareness, no auras or warnings, and no generalised convulsions. He notes improved concentration and steadier mood, and his partner has not observed any blank spells or automatisms over the past two months.\n\nPlan:\n- Continue Lamotrigine 25 mg twice daily.\n- Routine safety advice reiterated (sleep hygiene, alcohol moderation, and medication adherence).\n- Arrange repeat Lamotrigine level and routine bloods in 3 months.\n- Telephone review in 3–4 months, earlier if any breakthrough events occur.\n\nOverall, the condition is improving with sustained stability since lifestyle changes, and he is functioning well without limitations in daily activities.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes prior frequency: 'typically three episodes daily' for focal impaired-awareness seizures. It then states current status since retirement and routine regularisation: seizure freedom for focal aware and no witnessed impaired awareness episodes, no auras, no convulsions. The duration of this seizure-free period is 'over the past two months.' According to the rules, to be considered seizure free, the patient must have at least 6 months without seizures; here it's only about two months. Therefore, we cannot label as seizure free. We must provide the current seizure frequency. With no seizures for approximately two months, the current frequency is 0; however, the allowed formats do not include '0 per ...'. In such cases where the patient currently has no seizures but has not met the 6-month criterion, we should provide a calculated frequency based on the described current period: effectively 0 per month, but this is not an allowed format. The instructions instead say if insufficient to confirm 6 months, the patient may be considered 'seizure free for multiple months.' Since the letter evidences around two months seizure freedom, we should use 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "over the past two months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "focal aware seizures freedom achieved"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

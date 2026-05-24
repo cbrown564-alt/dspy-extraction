@@ -1,0 +1,54 @@
+{
+  "id": "gan_5866",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 30 April 2019 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 200 mg at night\n\n\nPresent Seizure Frequency:\n\nPatient describes brief events most commonly clustering as they are drifting off to sleep, particularly on evenings following power interruptions on their houseboat when phone and rescue medication are not fully charged. Over the past six weeks, four episodes have occurred, each lasting under two minutes with quick recovery and no clear daytime precipitants. History is entirely patient-reported; no witness account available.\n\n\nPlan of Action:\n\nRecent episodes appear temporally associated with irregular sleep routines and inconsistent device charging due to intermittent electricity supply on the mobile home/houseboat. The patient reports good adherence to current dosing but occasional delays to evening doses when charging alarms are missed. To improve consistency, please:\n\n- Maintain current lamotrigine at 150 mg twice daily.\n- Increase sodium valproate to 200 mg in the morning and 200 mg at night from today, provided no adverse effects (nausea, tremor, sedation). The patient understands to contact us if side effects occur.\n- Encourage use of a non–mains-dependent reminder (e.g., wind-up alarm or battery-powered timer) and a small power bank for phone/medical device charging. Patient reports these are feasible within current living arrangements.\n- Provide a seizure diary template and request entries focusing on timing relative to lights-out, missed/late doses, caffeine/alcohol, and power outages.\n\nI have arranged a follow-up in eight weeks. If nocturnal-onset events persist despite the above, we will consider ambulatory EEG with sleep capture and review the valproate dose further. The patient has been advised regarding safety on board during potential episodes (avoiding locks/shore transitions when drowsy and ensuring a neighbour contact is aware).\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 761,
+      "end": 900,
+      "text": "Over the past six weeks, four episodes have occurred, each lasting under two minutes with quick recovery and no clear daytime precipitants.",
+      "attributes": {
+        "Label": "4 per 6 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5866,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 30 April 2019 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under evaluation\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 200 mg at night\n\n\nPresent Seizure Frequency:\n\nPatient describes brief events most commonly clustering as they are drifting off to sleep, particularly on evenings following power interruptions on their houseboat when phone and rescue medication are not fully charged. Over the past six weeks, four episodes have occurred, each lasting under two minutes with quick recovery and no clear daytime precipitants. History is entirely patient-reported; no witness account available.\n\n\nPlan of Action:\n\nRecent episodes appear temporally associated with irregular sleep routines and inconsistent device charging due to intermittent electricity supply on the mobile home/houseboat. The patient reports good adherence to current dosing but occasional delays to evening doses when charging alarms are missed. To improve consistency, please:\n\n- Maintain current lamotrigine at 150 mg twice daily.\n- Increase sodium valproate to 200 mg in the morning and 200 mg at night from today, provided no adverse effects (nausea, tremor, sedation). The patient understands to contact us if side effects occur.\n- Encourage use of a non–mains-dependent reminder (e.g., wind-up alarm or battery-powered timer) and a small power bank for phone/medical device charging. Patient reports these are feasible within current living arrangements.\n- Provide a seizure diary template and request entries focusing on timing relative to lights-out, missed/late doses, caffeine/alcohol, and power outages.\n\nI have arranged a follow-up in eight weeks. If nocturnal-onset events persist despite the above, we will consider ambulatory EEG with sleep capture and review the valproate dose further. The patient has been advised regarding safety on board during potential episodes (avoiding locks/shore transitions when drowsy and ensuring a neighbour contact is aware).\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter's Present Seizure Frequency section states: \"Over the past six weeks, four episodes have occurred.\" This provides an explicit count and time window. No other numeric seizure frequencies are given, and while clustering is mentioned, no numbers per cluster are provided. Therefore, normalize directly to 4 per 6 week (unit must be singular as per rules). No seizure-free status applies because seizures occurred within the last 6 weeks.",
+      "seizure_frequency_number": [
+        "4 per 6 week",
+        "Over the past six weeks, four episodes have occurred, each lasting under two minutes with quick recovery and no clear daytime precipitants."
+      ],
+      "reference": [
+        "unknown",
+        "Seizures at sleep onset (sleep initiation)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (4 per 6 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

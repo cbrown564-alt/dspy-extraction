@@ -1,0 +1,59 @@
+{
+  "id": "gan_735",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 14 September 2025\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: Epilepsy with prior head injury in youth; sleep disturbance; vitamin D deficiency on treatment; mild anxiety symptoms under community support; lives with partner; ex-smoker; no current alcohol use.\n\nMedication:\n- Levetiracetam 750 mg twice daily\n- Lamotrigine 150 mg twice daily\n- Vitamin D3 1000 IU daily\n- Omeprazole 20 mg daily as required for dyspepsia\n\nI reviewed William Harris in clinic today. He attended alone but brought a written symptom diary and a video recording from his partner. He reports good adherence to medication, no recent intercurrent illness, and improved sleep hygiene over the past month. Neurologically he was alert, oriented, with fluent speech and intact cranial nerves. Motor exam was normal tone and power throughout, no tremor. Gait narrow-based and steady; Romberg negative.\n\nSeizures: William Harris describes brief events occurring daily, typically late afternoon, characterised by a sudden pause in activity with non-specific awareness of \"switching off\" for several seconds, followed by rapid recovery and mild fatigue. There have been no injuries or tongue biting, and he remains continent. The partner’s video shows a short pause with blank staring and immediate resumption of conversation. There is no consistent precipitant identified, though he notes that missed meals and poor sleep may make episodes more noticeable. He has not required emergency care, and there is no clear pattern suggesting clustering beyond the daily occurrence described.\n\nInvestigations: Routine bloods in July 2025 were within reference ranges including U&E, LFT, FBC, and vitamin D now replete. MRI brain (2022) unchanged from prior with no acute lesions. Prior EEG (2023) was non-diagnostic. He is agreeable to repeat ambulatory EEG for event capture.\n\nPlan:\n- No immediate change to antiseizure medication today given daily events are brief and without injury; patient prefers to avoid side effects while further characterisation proceeds.\n- Arrange 48–72 hour ambulatory EEG to attempt capture of the daily episodes.\n- Safety advice reinforced regarding bathing, cooking with care, and driving regulations discussed; he confirms he is not driving.\n- Continue sleep hygiene measures and regular meals; diary to be maintained given daily frequency.\n- Follow-up in 3 months, earlier if events escalate or new features emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1202,
+      "end": 1230,
+      "text": "brief events occurring daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 597,
+      "end": 602,
+      "text": "daily",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 735,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 14 September 2025\n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/Diagnoses: Epilepsy with prior head injury in youth; sleep disturbance; vitamin D deficiency on treatment; mild anxiety symptoms under community support; lives with partner; ex-smoker; no current alcohol use.\n\nMedication:\n- Levetiracetam 750 mg twice daily\n- Lamotrigine 150 mg twice daily\n- Vitamin D3 1000 IU daily\n- Omeprazole 20 mg daily as required for dyspepsia\n\nI reviewed William Harris in clinic today. He attended alone but brought a written symptom diary and a video recording from his partner. He reports good adherence to medication, no recent intercurrent illness, and improved sleep hygiene over the past month. Neurologically he was alert, oriented, with fluent speech and intact cranial nerves. Motor exam was normal tone and power throughout, no tremor. Gait narrow-based and steady; Romberg negative.\n\nSeizures: William Harris describes brief events occurring daily, typically late afternoon, characterised by a sudden pause in activity with non-specific awareness of \"switching off\" for several seconds, followed by rapid recovery and mild fatigue. There have been no injuries or tongue biting, and he remains continent. The partner’s video shows a short pause with blank staring and immediate resumption of conversation. There is no consistent precipitant identified, though he notes that missed meals and poor sleep may make episodes more noticeable. He has not required emergency care, and there is no clear pattern suggesting clustering beyond the daily occurrence described.\n\nInvestigations: Routine bloods in July 2025 were within reference ranges including U&E, LFT, FBC, and vitamin D now replete. MRI brain (2022) unchanged from prior with no acute lesions. Prior EEG (2023) was non-diagnostic. He is agreeable to repeat ambulatory EEG for event capture.\n\nPlan:\n- No immediate change to antiseizure medication today given daily events are brief and without injury; patient prefers to avoid side effects while further characterisation proceeds.\n- Arrange 48–72 hour ambulatory EEG to attempt capture of the daily episodes.\n- Safety advice reinforced regarding bathing, cooking with care, and driving regulations discussed; he confirms he is not driving.\n- Continue sleep hygiene measures and regular meals; diary to be maintained given daily frequency.\n- Follow-up in 3 months, earlier if events escalate or new features emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that the patient has brief seizure-like events occurring daily. There is no indication of multiple different frequencies or clustering beyond daily occurrence. Therefore, the highest/only frequency is daily. Convert 'daily' to the allowed format '1 per day'.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "brief events occurring daily"
+      ],
+      "reference": [
+        "1 per day",
+        "daily"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

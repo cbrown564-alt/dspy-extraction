@@ -1,0 +1,59 @@
+{
+  "id": "gan_12060",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 25 October 2023\n\nDr Priya Menon\nRiverside Medical Practice\n\n12 Wharf Street, Southwark, London SE1 2AB\nDear Dr Priya Menon\nMr Alan Griffiths, DOB: 04-02-1991, Hospital No: H729331 NHS No. 6074558832\nFlat 3, 28 Mill Lane, London SE15 4QR\n\nI reviewed the above patient in the Neurology Clinic today. He is a rotating shift worker, including nights, and reports considerable disruption to his circadian rhythm. He has a confirmed diagnosis of generalised epilepsy. Since our last contact he has maintained good adherence with medication and has kept a detailed diary correlating sleep pattern, shifts, and events.\n\nHe describes two event types. First, epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. These are brief, predominantly axial flexor jerks with momentary arrest of activity, occasionally clustering during the early morning following night shifts. Second, generalised convulsions occur once every nine - eleven months, typically without a clear prodrome, and have resulted in two minor soft‑tissue injuries over the past three years. There is no prolonged post‑ictal confusion beyond 30–40 minutes, and no episodes suggestive of focal onset.\n\nCurrent therapy comprises sodium valproate 500 mg twice daily and levetiracetam 1 g twice daily. He reports acceptable tolerability overall, with intermittent fatigue and reduced concentration after consecutive night shifts. He does not drive. There is no recent history of status epilepticus. He uses a smartphone alarm to assist adherence when switching between day and night duty and has begun sleep‑hygiene strategies, which he finds helpful. He has not required emergency medication in the past year.\n\nExamination today was unremarkable, with normal neurological findings and stable weight. We discussed the role of circadian disruption as a potential precipitant in generalised epilepsy and the importance of consistent dosing intervals. He is open to occupational health input regarding roster adjustments if feasible. For now, I have advised continued diary keeping, particularly noting shift patterns, caffeine intake, and sleep duration, to inform future management.\n\nI will arrange ambulatory EEG with sleep capture to characterise interictal generalised epileptiform activity across different shifts and will review him in three months with results. He knows to contact us sooner if the convulsions increase in frequency or severity.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 690,
+      "end": 805,
+      "text": "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging.",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 690,
+      "end": 867,
+      "text": "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every nine - eleven months",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12060,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 25 October 2023\n\nDr Priya Menon\nRiverside Medical Practice\n\n12 Wharf Street, Southwark, London SE1 2AB\nDear Dr Priya Menon\nMr Alan Griffiths, DOB: 04-02-1991, Hospital No: H729331 NHS No. 6074558832\nFlat 3, 28 Mill Lane, London SE15 4QR\n\nI reviewed the above patient in the Neurology Clinic today. He is a rotating shift worker, including nights, and reports considerable disruption to his circadian rhythm. He has a confirmed diagnosis of generalised epilepsy. Since our last contact he has maintained good adherence with medication and has kept a detailed diary correlating sleep pattern, shifts, and events.\n\nHe describes two event types. First, epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. These are brief, predominantly axial flexor jerks with momentary arrest of activity, occasionally clustering during the early morning following night shifts. Second, generalised convulsions occur once every nine - eleven months, typically without a clear prodrome, and have resulted in two minor soft‑tissue injuries over the past three years. There is no prolonged post‑ictal confusion beyond 30–40 minutes, and no episodes suggestive of focal onset.\n\nCurrent therapy comprises sodium valproate 500 mg twice daily and levetiracetam 1 g twice daily. He reports acceptable tolerability overall, with intermittent fatigue and reduced concentration after consecutive night shifts. He does not drive. There is no recent history of status epilepticus. He uses a smartphone alarm to assist adherence when switching between day and night duty and has begun sleep‑hygiene strategies, which he finds helpful. He has not required emergency medication in the past year.\n\nExamination today was unremarkable, with normal neurological findings and stable weight. We discussed the role of circadian disruption as a potential precipitant in generalised epilepsy and the importance of consistent dosing intervals. He is open to occupational health input regarding roster adjustments if feasible. For now, I have advised continued diary keeping, particularly noting shift patterns, caffeine intake, and sleep duration, to inform future management.\n\nI will arrange ambulatory EEG with sleep capture to characterise interictal generalised epileptiform activity across different shifts and will review him in three months with results. He knows to contact us sooner if the convulsions increase in frequency or severity.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states two event types. First: 'epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging.' This indicates very frequent daily events but without a precise count; the frequency is higher than the second type. Second: 'generalised convulsions occur once every nine - eleven months,' which is far less frequent. Per the rule to select the highest frequency, we choose the spasms. Because the exact number per day is not quantifiable ('sometimes dozens in a day' and 'near-daily'), the correct normalized label uses 'multiple per day.'",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging."
+      ],
+      "reference": [
+        "multiple per day",
+        "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every nine - eleven months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

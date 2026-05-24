@@ -1,0 +1,54 @@
+{
+  "id": "gan_6330",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Anita Shah\nRiverside Medical Practice\n\n22 Riverside Walk, London, SE10 4BF\nDear Dr Anita Shah\nMichael Carter, DOB: 09-03-1991, Hospital No: H392874 NHS No. 8473629150\n12A Brookfield Court, Deptford, London, SE8 3JP \n\nI reviewed the above patient in the Neurology Clinic today. He has generalised epilepsy. I last saw him on 18 June 2025. Since then he reports brief morning myoclonic jerks most weeks and two generalised tonic–clonic seizures in the past three months, both occurring on days when he delayed breakfast; he notes that postponing food in the morning tends to precipitate events.\n\nCurrent medication: Sodium Valproate 750 mg b.d. and Levetiracetam 1000 mg b.d. He is tolerating treatment without significant adverse effects, though he mentions mild lethargy by late afternoon. No rashes, no mood change, and no cognitive complaints. Neurological examination today was unremarkable.\n\nWe discussed adherence, sleep regularity, and consistent morning meals, as he links seizure occurrence with missed or delayed breakfast. He prefers no dose changes presently. I have arranged routine EEG and updated safety advice. I will review him after results or sooner if seizures cluster or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 423,
+      "end": 463,
+      "text": "brief morning myoclonic jerks most weeks",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6330,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Anita Shah\nRiverside Medical Practice\n\n22 Riverside Walk, London, SE10 4BF\nDear Dr Anita Shah\nMichael Carter, DOB: 09-03-1991, Hospital No: H392874 NHS No. 8473629150\n12A Brookfield Court, Deptford, London, SE8 3JP \n\nI reviewed the above patient in the Neurology Clinic today. He has generalised epilepsy. I last saw him on 18 June 2025. Since then he reports brief morning myoclonic jerks most weeks and two generalised tonic–clonic seizures in the past three months, both occurring on days when he delayed breakfast; he notes that postponing food in the morning tends to precipitate events.\n\nCurrent medication: Sodium Valproate 750 mg b.d. and Levetiracetam 1000 mg b.d. He is tolerating treatment without significant adverse effects, though he mentions mild lethargy by late afternoon. No rashes, no mood change, and no cognitive complaints. Neurological examination today was unremarkable.\n\nWe discussed adherence, sleep regularity, and consistent morning meals, as he links seizure occurrence with missed or delayed breakfast. He prefers no dose changes presently. I have arranged routine EEG and updated safety advice. I will review him after results or sooner if seizures cluster or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly reports two seizure patterns since the last visit: (1) “brief morning myoclonic jerks most weeks” and (2) “two generalised tonic–clonic seizures in the past three months.” For the GTCs, an explicit numeric frequency is 2 per 3 months. For the myoclonic jerks, the phrasing “most weeks” indicates a recurring pattern across the majority of weeks but without a precise count; this supports at least multiple events per month, though the exact number per week/month is not specified. Applying the rule to select the highest frequency across seizure types, the myoclonic jerks represent a higher frequency than 2 per 3 months. Because the exact count is vague, use “multiple” with a suitable time unit. “Multiple per month” accurately reflects “most weeks” without over-specifying.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "brief morning myoclonic jerks most weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Skipping meals triggers seizure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

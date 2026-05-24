@@ -1,0 +1,48 @@
+{
+  "id": "gan_8346",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Benjamin Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Matthew O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication optimisation\n\nHi Benjamin\n\nEpilepsy Diagnosis:\n\nHistory of episodic loss of awareness with remote mild traumatic brain injury noted. A definitive epilepsy classification has not been assigned at this stage pending further correlation with investigations and clinical evolution.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night (as adjunct)\n\nPresent Seizure Frequency:\n\nNo breakthrough events have occurred since late February this year according to the patient and family diary. He reports stable sleep, consistent medication adherence, and no alcohol intake. There have been no emergency presentations, injuries, or auras reported during this interval.\n\nPlan of Action:\n\n- Continue Lamotrigine 100 mg twice daily and Clobazam 10 mg at night without change for now, given the sustained period without attacks and good tolerability (no rash, mood stable, no diplopia or ataxia reported).\n- Arrange ambulatory EEG within the next 8–10 weeks to assess background and any subclinical activity, given the prior head injury history and previously equivocal routine EEG.\n- Order serum lamotrigine level with next set of bloods to document a baseline trough concentration while clinically stable.\n- Maintain seizure diary and lifestyle measures (regular sleep, hydration, avoidance of excess caffeine and alcohol). The patient reports good adherence; we reinforced timed dosing using a phone reminder.\n- Safety advice reiterated: driving restrictions remain in accordance with DVLA guidance; he has not been driving and understands to inform us and DVLA if any episodes recur.\n- Follow-up: video consultation in four months, or earlier if any possible events recur, adverse effects emerge, or there are concerns from the family.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 743,
+      "end": 809,
+      "text": "No breakthrough events have occurred since late February this year",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8346,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Benjamin Clarke (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Matthew O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication optimisation\n\nHi Benjamin\n\nEpilepsy Diagnosis:\n\nHistory of episodic loss of awareness with remote mild traumatic brain injury noted. A definitive epilepsy classification has not been assigned at this stage pending further correlation with investigations and clinical evolution.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night (as adjunct)\n\nPresent Seizure Frequency:\n\nNo breakthrough events have occurred since late February this year according to the patient and family diary. He reports stable sleep, consistent medication adherence, and no alcohol intake. There have been no emergency presentations, injuries, or auras reported during this interval.\n\nPlan of Action:\n\n- Continue Lamotrigine 100 mg twice daily and Clobazam 10 mg at night without change for now, given the sustained period without attacks and good tolerability (no rash, mood stable, no diplopia or ataxia reported).\n- Arrange ambulatory EEG within the next 8–10 weeks to assess background and any subclinical activity, given the prior head injury history and previously equivocal routine EEG.\n- Order serum lamotrigine level with next set of bloods to document a baseline trough concentration while clinically stable.\n- Maintain seizure diary and lifestyle measures (regular sleep, hydration, avoidance of excess caffeine and alcohol). The patient reports good adherence; we reinforced timed dosing using a phone reminder.\n- Safety advice reiterated: driving restrictions remain in accordance with DVLA guidance; he has not been driving and understands to inform us and DVLA if any episodes recur.\n- Follow-up: video consultation in four months, or earlier if any possible events recur, adverse effects emerge, or there are concerns from the family.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"No breakthrough events have occurred since late February this year.\" The letter date is 02 October 2025. We need to determine if the patient is seizure free for at least 6 months to use the 'seizure free for <value> <month|year>' format. From late February to early October of the same year is more than 6 months (March–September is 7 months, plus part of February and October). Therefore, the patient meets the criterion for seizure free ≥6 months. Since the exact number of months isn't precisely specified beyond 'late February', we can conservatively label as 'seizure free for multiple months' per instruction 8 when precise duration is not explicitly quantified.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No breakthrough events have occurred since late February this year"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures resolved"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

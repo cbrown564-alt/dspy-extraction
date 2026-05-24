@@ -1,0 +1,59 @@
+{
+  "id": "gan_2116",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 19 January 2020 10:15\nTo: neurology.coordination@kch.nhs.uk\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication management and follow‑up\n\nDear Dr Rhodes,\n\nDiagnosis:\n- Seizure disorder, classification not established at present.\n\nBackground and current situation:\n- The patient splits time evenly each week between two households and keeps identical sets of medication at both locations to avoid missed doses. They use a phone alarm and a paper log kept in each home to record dosing and events.\n\nCurrent medication:\n1. Carbamazepine (Tegretol Retard) 400 mg twice daily\n2. Levetiracetam (Keppra) 750 mg twice daily\n\nSeizure history and recent frequency:\n- Over the past week, the patient reports several petit mal in the past week, described as brief episodes of blank staring with momentary unresponsiveness and immediate recovery, each lasting under a minute, with no clear trigger identified. No recent generalised convulsive events have been reported. These episodes occurred in both households despite consistent dosing, and there has been no associated intercurrent illness, sleep deprivation beyond baseline, or alcohol intake.\n\nExamination and investigations:\n- Neurological examination today was non-focal. Routine bloods from last month were within normal limits (including electrolytes and LFTs). Prior EEG and imaging are being retrieved for review; the patient has consented to share external results. We will arrange an updated EEG to characterise events further.\n\nPlan of action:\n- Maintain a unified dosing schedule at both homes, with medication boxes labelled by day and time to reduce any risk of duplication or omission. The patient will continue the current prescribed doses listed above for now and will keep a detailed seizure and trigger diary across both locations to help with correlation to routine, stress, or sleep pattern changes.\n- We discussed possible future adjustments to therapy pending EEG findings and diary review. The patient understands to contact the clinic or urgent care if events evolve in duration, frequency, or if any injuries occur.\n- Follow-up in clinic in 12 weeks, or earlier if there is escalation of events.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 872,
+      "end": 946,
+      "text": "Over the past week, the patient reports several petit mal in the past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 912,
+      "end": 946,
+      "text": "several petit mal in the past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2116,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 19 January 2020 10:15\nTo: neurology.coordination@kch.nhs.uk\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication management and follow‑up\n\nDear Dr Rhodes,\n\nDiagnosis:\n- Seizure disorder, classification not established at present.\n\nBackground and current situation:\n- The patient splits time evenly each week between two households and keeps identical sets of medication at both locations to avoid missed doses. They use a phone alarm and a paper log kept in each home to record dosing and events.\n\nCurrent medication:\n1. Carbamazepine (Tegretol Retard) 400 mg twice daily\n2. Levetiracetam (Keppra) 750 mg twice daily\n\nSeizure history and recent frequency:\n- Over the past week, the patient reports several petit mal in the past week, described as brief episodes of blank staring with momentary unresponsiveness and immediate recovery, each lasting under a minute, with no clear trigger identified. No recent generalised convulsive events have been reported. These episodes occurred in both households despite consistent dosing, and there has been no associated intercurrent illness, sleep deprivation beyond baseline, or alcohol intake.\n\nExamination and investigations:\n- Neurological examination today was non-focal. Routine bloods from last month were within normal limits (including electrolytes and LFTs). Prior EEG and imaging are being retrieved for review; the patient has consented to share external results. We will arrange an updated EEG to characterise events further.\n\nPlan of action:\n- Maintain a unified dosing schedule at both homes, with medication boxes labelled by day and time to reduce any risk of duplication or omission. The patient will continue the current prescribed doses listed above for now and will keep a detailed seizure and trigger diary across both locations to help with correlation to routine, stress, or sleep pattern changes.\n- We discussed possible future adjustments to therapy pending EEG findings and diary review. The patient understands to contact the clinic or urgent care if events evolve in duration, frequency, or if any injuries occur.\n- Follow-up in clinic in 12 weeks, or earlier if there is escalation of events.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'Over the past week, the patient reports several petit mal in the past week...' This provides a time window (past week) and a vague count ('several'), indicating more than one event within one week, but no exact number. No generalized convulsions recently. According to rules, when the number is vague, use 'multiple'. The appropriate normalized format is therefore 'multiple per week'. No other frequency statements conflict or provide a higher frequency. Not seizure free, as events occurred within the past week.",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "Over the past week, the patient reports several petit mal in the past week"
+      ],
+      "reference": [
+        "multiple per week",
+        "several petit mal in the past week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

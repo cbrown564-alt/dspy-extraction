@@ -1,0 +1,59 @@
+{
+  "id": "gan_14635",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 14 December 2016 \n\nDr Sarah Ahmed  \nRiverside Medical Centre  \n45 Millbank, London SW1P 3JA  \n\nDear Dr Sarah Ahmed,  \n\nEmily Carter, DOB: 23-09-1988, Hospital No: U917452 NHS No. 6382017459  \n12 Brook Lane, London, N7 6QD \n\nSummary/ Diagnoses: Generalised epilepsy with recent-onset nocturnal seizures; marked clinical improvement on current anti-seizure regimen; mild anxiety symptoms; otherwise well. \n\nMedication: Sodium valproate 500 mg twice daily.  \nClobazam 10 mg at night.  \nFolic acid 5 mg once daily.  \n\nI reviewed Ms Emily Carter in clinic today, accompanied by her partner. Since initiating sodium valproate and night-time clobazam in late November, she reports a clear and sustained improvement. Daytime alertness has improved, morning myoclonus has diminished, and she has resumed light exercise without limitation. There have been no adverse effects beyond mild transient nausea in the first week, now resolved. \n\nSeizures: She first experienced a seizure in July 2016 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2016 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology. Since commencing the current regimen at the end of November, there have been no further events reported by the patient or her partner, and her sleep quality has improved. Overall, the pattern and evolution are consistent with generalised epilepsy, predominantly nocturnal in presentation. \n\nNeurological examination today was normal. Cardiovascular and general examination were unremarkable. She is eating well, maintaining weight, and feels more confident about independent activities. \n\nPlan: \n- Diagnosis: Generalised epilepsy. Marked improvement on current medicines compared with earlier periods.  \n- Continue sodium valproate 500 mg twice daily and clobazam 10 mg nocte without change.  \n- Arrange routine blood monitoring in primary care (LFTs, FBC) in 6–8 weeks.  \n- Provide safety advice regarding sleep hygiene and seizure precautions; driving advice reiterated per DVLA guidance.  \n- Follow-up in neurology clinic in 3 months, sooner if any breakthrough seizures occur.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1033,
+      "end": 1312,
+      "text": "She first experienced a seizure in July 2016 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2016 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology.",
+      "attributes": {
+        "Label": "5 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1033,
+      "end": 1311,
+      "text": "She first experienced a seizure in July 2016 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2016 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology",
+      "attributes": {
+        "Label": "5 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14635,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 14 December 2016 \n\nDr Sarah Ahmed  \nRiverside Medical Centre  \n45 Millbank, London SW1P 3JA  \n\nDear Dr Sarah Ahmed,  \n\nEmily Carter, DOB: 23-09-1988, Hospital No: U917452 NHS No. 6382017459  \n12 Brook Lane, London, N7 6QD \n\nSummary/ Diagnoses: Generalised epilepsy with recent-onset nocturnal seizures; marked clinical improvement on current anti-seizure regimen; mild anxiety symptoms; otherwise well. \n\nMedication: Sodium valproate 500 mg twice daily.  \nClobazam 10 mg at night.  \nFolic acid 5 mg once daily.  \n\nI reviewed Ms Emily Carter in clinic today, accompanied by her partner. Since initiating sodium valproate and night-time clobazam in late November, she reports a clear and sustained improvement. Daytime alertness has improved, morning myoclonus has diminished, and she has resumed light exercise without limitation. There have been no adverse effects beyond mild transient nausea in the first week, now resolved. \n\nSeizures: She first experienced a seizure in July 2016 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2016 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology. Since commencing the current regimen at the end of November, there have been no further events reported by the patient or her partner, and her sleep quality has improved. Overall, the pattern and evolution are consistent with generalised epilepsy, predominantly nocturnal in presentation. \n\nNeurological examination today was normal. Cardiovascular and general examination were unremarkable. She is eating well, maintaining weight, and feels more confident about independent activities. \n\nPlan: \n- Diagnosis: Generalised epilepsy. Marked improvement on current medicines compared with earlier periods.  \n- Continue sodium valproate 500 mg twice daily and clobazam 10 mg nocte without change.  \n- Arrange routine blood monitoring in primary care (LFTs, FBC) in 6–8 weeks.  \n- Provide safety advice regarding sleep hygiene and seizure precautions; driving advice reiterated per DVLA guidance.  \n- Follow-up in neurology clinic in 3 months, sooner if any breakthrough seizures occur.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "From the letter: there was 1 seizure in July 2016 and 4 seizures in November 2016, totaling 5 seizures. The last reported seizures occurred in November 2016. The clinic date is 14 December 2016, and the patient has had no seizures since starting medication at the end of November, which is less than 6 months, so she cannot be labeled seizure free. To calculate frequency over the documented observation window from first to last seizure: July 2016 to November 2016 is approximately 4 months. Therefore, 5 seizures over ~4 months yields 5 per 4 month.",
+      "seizure_frequency_number": [
+        "5 per 4 month",
+        "She first experienced a seizure in July 2016 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2016 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology."
+      ],
+      "reference": [
+        "5 per 4 month",
+        "She first experienced a seizure in July 2016 while living in Australia. It occurred during sleep, with sudden jerks of the left leg. Her next 4 seizure came in November 2016 the same year in New Zealand, once more from sleep, lasting three minutes and showing the same semiology"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

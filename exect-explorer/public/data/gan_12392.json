@@ -1,0 +1,59 @@
+{
+  "id": "gan_12392",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 12 February 2014 \n\nDr Patel  \nNorthborough NHS Neurology Service  \nNeurology Outpatients, Northborough General Hospital, NG3 5HL  \n\nDear Dr Patel,  \n\nMichael Davies, DOB: 14-08-1990, Hospital No: H629415 NHS No. 8421596730  \n12 Hawthorn Close, Northborough, NG2 4BD  \n\nDiagnoses: \n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy). Learning disability.\n\nI reviewed him today in the epilepsy clinic with his carer present, who assists with communication and maintains a seizure log. He remains on his established anti-seizure medication regimen without recent dose adjustments according to the carer, and there have been no intercurrent illnesses or identifiable new seizure precipitants reported. He still has focal seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change. The carer’s written diary corroborates this pattern over the past six months.\n\nFrom a functional standpoint, he attends a supported day programme on three days per week. The carer notes that morning routines are generally stable, but clusters of drop attacks tend to occur in the late afternoon, sometimes after periods of sensory overstimulation. There have been no injuries requiring hospital attendance since the last review, though he has had two minor forehead bruises from drop attacks; he wears a soft protective helmet during community activities. Rescue medication has not been required in the last three months.\n\nNeurological examination today was unchanged from baseline. Cardiovascular and respiratory observations were within normal limits. There were no adverse effects reported from medication apart from intermittent daytime somnolence, which the carer describes as mild and not interfering with activities.\n\nWe discussed ongoing risk management for sudden drop attacks and reinforced the current safety plan at home and during transport. The carer will continue to provide detailed seizure logs and note any potential triggers. Given the stable clinical picture and consistent documentation, we agreed to continue the present management and to monitor for any evolution in seizure type or frequency. We will arrange routine follow-up in six months, with earlier review if there is an increase in seizure clusters, prolonged events, or any injuries.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 794,
+      "end": 840,
+      "text": "He still has focal seizures four times per day",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 794,
+      "end": 983,
+      "text": "He still has focal seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change",
+      "attributes": {
+        "Label": "4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12392,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 12 February 2014 \n\nDr Patel  \nNorthborough NHS Neurology Service  \nNeurology Outpatients, Northborough General Hospital, NG3 5HL  \n\nDear Dr Patel,  \n\nMichael Davies, DOB: 14-08-1990, Hospital No: H629415 NHS No. 8421596730  \n12 Hawthorn Close, Northborough, NG2 4BD  \n\nDiagnoses: \n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy). Learning disability.\n\nI reviewed him today in the epilepsy clinic with his carer present, who assists with communication and maintains a seizure log. He remains on his established anti-seizure medication regimen without recent dose adjustments according to the carer, and there have been no intercurrent illnesses or identifiable new seizure precipitants reported. He still has focal seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change. The carer’s written diary corroborates this pattern over the past six months.\n\nFrom a functional standpoint, he attends a supported day programme on three days per week. The carer notes that morning routines are generally stable, but clusters of drop attacks tend to occur in the late afternoon, sometimes after periods of sensory overstimulation. There have been no injuries requiring hospital attendance since the last review, though he has had two minor forehead bruises from drop attacks; he wears a soft protective helmet during community activities. Rescue medication has not been required in the last three months.\n\nNeurological examination today was unchanged from baseline. Cardiovascular and respiratory observations were within normal limits. There were no adverse effects reported from medication apart from intermittent daytime somnolence, which the carer describes as mild and not interfering with activities.\n\nWe discussed ongoing risk management for sudden drop attacks and reinforced the current safety plan at home and during transport. The carer will continue to provide detailed seizure logs and note any potential triggers. Given the stable clinical picture and consistent documentation, we agreed to continue the present management and to monitor for any evolution in seizure type or frequency. We will arrange routine follow-up in six months, with earlier review if there is an increase in seizure clusters, prolonged events, or any injuries.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He still has focal seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month'. We must choose the highest frequency among multiple seizure types. The focal seizures are 4 per day, which is more frequent than drop attacks (frequency not quantified, only 'occurring in batches') and tonic-clonic seizures (2 per month). Therefore, the highest explicit numeric frequency is 4 per day. No need to sum as they are different types; rule says select the highest frequency.",
+      "seizure_frequency_number": [
+        "4 per day",
+        "He still has focal seizures four times per day"
+      ],
+      "reference": [
+        "4 per day",
+        "He still has focal seizures four times per day, drop attacks occurring in batches, and tonic-clonic seizures 2 times per month, this long-standing pattern has persisted without major change"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

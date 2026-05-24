@@ -1,0 +1,59 @@
+{
+  "id": "gan_2854",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 15 September 2025 \n\nDr Hall\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Hall,\n\nSophie Williams, DOB: 12-04-1991, Hospital No: H428019 NHS No. 9834712056\n14 Crescent Road, London, W10 6AB\n\nMedication:\n\nLevetiracetam 750 mg twice daily. No adverse effects reported. Folic acid 5 mg once daily commenced three months ago in preparation for pregnancy.\n\nThank you for seeing Sophie Williams for pre-conception counselling. She reports a stable pattern of events which she describes as epileptic spasms twice a month, typically brief clusters on waking from sleep, without clear triggers. She notes that stress and missed meals can occasionally precede an episode, and she is keeping a symptom diary to monitor patterns. There is no clear warning, no sustained confusion afterwards, and no injuries reported. She does not drive.\n\nWe discussed pre-conception planning at length, including medication adherence, avoidance of sleep deprivation, and general wellness measures. She has already switched to a pregnancy-safe multivitamin (without vitamin A) and is using folic acid 5 mg daily. She understands that abrupt medication changes are not advised in the lead-up to conception and that any future adjustments will be considered gradually and with monitoring. She plans to continue her symptom diary and will inform us promptly of any increase in frequency or change in semiology.\n\nRoutine bloods (U&E, LFTs) are within normal limits. Pre-conception safety counselling covered the importance of consistent contraception until a plan is agreed, the use of the NHS pregnancy and epilepsy care pathway once pregnant, and early referral to obstetric services. We also discussed the value of vitamin D supplementation per local guidance and the preparation of a written seizure action plan for home and work, which she will review with her partner.\n\nPlan:\n- Continue levetiracetam 750 mg twice daily and folic acid 5 mg once daily.\n- Maintain seizure diary; current frequency described as epileptic spasms twice a month.\n- Provide written pre-conception information leaflet and contact details for the epilepsy specialist nurse.\n- Arrange early obstetric referral once pregnancy is confirmed.\n- Review in clinic in 4 months, or sooner if frequency increases or features change.\n\nWe will keep you updated on progress.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 2049,
+      "end": 2110,
+      "text": "current frequency described as epileptic spasms twice a month",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 581,
+      "end": 611,
+      "text": "epileptic spasms twice a month",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2854,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 15 September 2025 \n\nDr Hall\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Hall,\n\nSophie Williams, DOB: 12-04-1991, Hospital No: H428019 NHS No. 9834712056\n14 Crescent Road, London, W10 6AB\n\nMedication:\n\nLevetiracetam 750 mg twice daily. No adverse effects reported. Folic acid 5 mg once daily commenced three months ago in preparation for pregnancy.\n\nThank you for seeing Sophie Williams for pre-conception counselling. She reports a stable pattern of events which she describes as epileptic spasms twice a month, typically brief clusters on waking from sleep, without clear triggers. She notes that stress and missed meals can occasionally precede an episode, and she is keeping a symptom diary to monitor patterns. There is no clear warning, no sustained confusion afterwards, and no injuries reported. She does not drive.\n\nWe discussed pre-conception planning at length, including medication adherence, avoidance of sleep deprivation, and general wellness measures. She has already switched to a pregnancy-safe multivitamin (without vitamin A) and is using folic acid 5 mg daily. She understands that abrupt medication changes are not advised in the lead-up to conception and that any future adjustments will be considered gradually and with monitoring. She plans to continue her symptom diary and will inform us promptly of any increase in frequency or change in semiology.\n\nRoutine bloods (U&E, LFTs) are within normal limits. Pre-conception safety counselling covered the importance of consistent contraception until a plan is agreed, the use of the NHS pregnancy and epilepsy care pathway once pregnant, and early referral to obstetric services. We also discussed the value of vitamin D supplementation per local guidance and the preparation of a written seizure action plan for home and work, which she will review with her partner.\n\nPlan:\n- Continue levetiracetam 750 mg twice daily and folic acid 5 mg once daily.\n- Maintain seizure diary; current frequency described as epileptic spasms twice a month.\n- Provide written pre-conception information leaflet and contact details for the epilepsy specialist nurse.\n- Arrange early obstetric referral once pregnancy is confirmed.\n- Review in clinic in 4 months, or sooner if frequency increases or features change.\n\nWe will keep you updated on progress.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'current frequency described as epileptic spasms twice a month' and earlier mentions 'epileptic spasms twice a month, typically brief clusters on waking from sleep.' There is no indication of seizure freedom. 'Twice a month' maps to 2 per month. No multiple different frequencies are provided that would require choosing the highest or summing.",
+      "seizure_frequency_number": [
+        "2 per month",
+        "current frequency described as epileptic spasms twice a month"
+      ],
+      "reference": [
+        "2 per month",
+        "epileptic spasms twice a month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

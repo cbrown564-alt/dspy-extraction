@@ -1,0 +1,59 @@
+{
+  "id": "gan_2356",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 March 2021 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace context and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Carbamazepine MR 400 mg twice daily\n\n\nPresent Seizure Frequency:\n\nThe patient reports six or seven seizures over the past week, predominantly brief focal impaired-awareness episodes with behavioural arrest and oral automatisms, each lasting under two minutes and followed by several minutes of confusion.\n\n\nWork and Safety Context:\n\nHe is employed as a warehouse picker working between tall racking and narrow aisles where lifting tasks and pace vary by shift. He notes that faster-paced evening shifts with frequent lifting and navigating tight aisles appear to precede clusters of focal events, especially when he has skipped breaks or is dehydrated. No clear nocturnal generalised events reported. No recent head injury. Sleep was reduced on two nights prior to the cluster.\n\n\nPlan of Action:\n\n- Given the recent escalation in focal seizures despite dual therapy, we will cautiously optimise carbamazepine and monitor for dizziness or diplopia, particularly relevant in narrow-aisle work. Increase carbamazepine MR to 500 mg twice daily for two weeks, then 600 mg twice daily if tolerated.\n- Continue lamotrigine 150 mg twice daily for now. If seizure burden persists beyond four weeks, we will consider introducing lacosamide and tapering carbamazepine accordingly.\n- The patient will track seizures, sleep, hydration, and shift pattern to help identify workplace-related triggers. He will also arrange regular breaks for fluids where feasible.\n- We have provided a fit note advising temporary restriction from lone working at height and avoidance of climbing on racking or operating moving equipment until seizure control improves.\n- Bloods: U&E, LFTs, FBC in two weeks after dose change. Trough carbamazepine level at three weeks.\n- Follow-up in six weeks in clinic; earlier review if further clustering or any injury.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 521,
+      "end": 581,
+      "text": "The patient reports six or seven seizures over the past week",
+      "attributes": {
+        "Label": "6 to 7 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 541,
+      "end": 581,
+      "text": "six or seven seizures over the past week",
+      "attributes": {
+        "Label": "6 to 7 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2356,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 03 March 2021 10:15\nTo: neuro.epilepsy@nhs.net\nCc: Dr Naveen Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Laura Bennett (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace context and medication adjustment\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nFocal epilepsy\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Carbamazepine MR 400 mg twice daily\n\n\nPresent Seizure Frequency:\n\nThe patient reports six or seven seizures over the past week, predominantly brief focal impaired-awareness episodes with behavioural arrest and oral automatisms, each lasting under two minutes and followed by several minutes of confusion.\n\n\nWork and Safety Context:\n\nHe is employed as a warehouse picker working between tall racking and narrow aisles where lifting tasks and pace vary by shift. He notes that faster-paced evening shifts with frequent lifting and navigating tight aisles appear to precede clusters of focal events, especially when he has skipped breaks or is dehydrated. No clear nocturnal generalised events reported. No recent head injury. Sleep was reduced on two nights prior to the cluster.\n\n\nPlan of Action:\n\n- Given the recent escalation in focal seizures despite dual therapy, we will cautiously optimise carbamazepine and monitor for dizziness or diplopia, particularly relevant in narrow-aisle work. Increase carbamazepine MR to 500 mg twice daily for two weeks, then 600 mg twice daily if tolerated.\n- Continue lamotrigine 150 mg twice daily for now. If seizure burden persists beyond four weeks, we will consider introducing lacosamide and tapering carbamazepine accordingly.\n- The patient will track seizures, sleep, hydration, and shift pattern to help identify workplace-related triggers. He will also arrange regular breaks for fluids where feasible.\n- We have provided a fit note advising temporary restriction from lone working at height and avoidance of climbing on racking or operating moving equipment until seizure control improves.\n- Bloods: U&E, LFTs, FBC in two weeks after dose change. Trough carbamazepine level at three weeks.\n- Follow-up in six weeks in clinic; earlier review if further clustering or any injury.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports six or seven seizures over the past week.' This provides a numeric range over a one-week period. No other seizure frequency is given that is higher or conflicts. According to the formatting rules, convert this to '<range> per week' using 'to' between numbers. Therefore, the normalized label is '6 to 7 per week'.",
+      "seizure_frequency_number": [
+        "6 to 7 per week",
+        "The patient reports six or seven seizures over the past week"
+      ],
+      "reference": [
+        "6 to 7 per week",
+        "six or seven seizures over the past week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

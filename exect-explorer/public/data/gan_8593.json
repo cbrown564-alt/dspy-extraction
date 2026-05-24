@@ -1,0 +1,59 @@
+{
+  "id": "gan_8593",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 15 July 2018 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH772194 NHS No. 9462013857  \n12 Brookside Close, London, SE15 3PL\n\nThank you for asking me to review your patient in the neurology clinic. He attended today with his partner and brought his seizure diary and VNS card. He reports that his overall stability has been good since his last review and he is engaging well with routine follow-up. Seizure-free period now 14 months. He attributes this improvement to consistent medication adherence and the implanted vagus nerve stimulator (VNS). He has an implanted VNS; there were no parameter changes at this review. He uses the magnet rarely and only for reassurance; there have been no magnet-triggered events in the past year. He denies any nocturnal events, tongue biting, injuries, or emergency attendances. There has been no loss of awareness reported by him or observed by family over this period. \n\nHe describes occasional brief spells of light-headedness when overtired, without behavioural change, automatisms, or post-event confusion; these are infrequent and self-limiting, and he has not associated them with triggers aside from sleep deprivation. He has not driven and remains compliant with DVLA guidance. Sleep and mood are reported as stable, with mild anticipatory anxiety around anniversaries of previous episodes, managed through simple relaxation strategies. There is no current concern for cognitive decline, and he has returned to part-time work without difficulties. \n\nExamination today was unremarkable. Cardiovascular and neurological examinations were within normal limits. VNS generator site is well healed without tenderness or skin breakdown. Device interrogation confirmed satisfactory battery status and lead impedance within expected range. No adjustments were made to stimulation parameters. \n\nPlan: \n- Continue current antiseizure medication at existing doses (unchanged today) and maintain VNS parameters.  \n- Reinforce sleep hygiene and ongoing seizure diary entries.  \n- Routine follow-up in 6 months, or sooner if any events recur or adverse effects arise.  \n- Patient is aware to contact the epilepsy specialist nurse should there be any change in pattern or concerns about the device. \n\nThank you for your continued care. Please let me know if there is anything further you would like me to address. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 654,
+      "end": 688,
+      "text": "Seizure-free period now 14 months.",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 654,
+      "end": 687,
+      "text": "Seizure-free period now 14 months",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8593,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 15 July 2018 \n\nDr Priya Nair\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Nair\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH772194 NHS No. 9462013857  \n12 Brookside Close, London, SE15 3PL\n\nThank you for asking me to review your patient in the neurology clinic. He attended today with his partner and brought his seizure diary and VNS card. He reports that his overall stability has been good since his last review and he is engaging well with routine follow-up. Seizure-free period now 14 months. He attributes this improvement to consistent medication adherence and the implanted vagus nerve stimulator (VNS). He has an implanted VNS; there were no parameter changes at this review. He uses the magnet rarely and only for reassurance; there have been no magnet-triggered events in the past year. He denies any nocturnal events, tongue biting, injuries, or emergency attendances. There has been no loss of awareness reported by him or observed by family over this period. \n\nHe describes occasional brief spells of light-headedness when overtired, without behavioural change, automatisms, or post-event confusion; these are infrequent and self-limiting, and he has not associated them with triggers aside from sleep deprivation. He has not driven and remains compliant with DVLA guidance. Sleep and mood are reported as stable, with mild anticipatory anxiety around anniversaries of previous episodes, managed through simple relaxation strategies. There is no current concern for cognitive decline, and he has returned to part-time work without difficulties. \n\nExamination today was unremarkable. Cardiovascular and neurological examinations were within normal limits. VNS generator site is well healed without tenderness or skin breakdown. Device interrogation confirmed satisfactory battery status and lead impedance within expected range. No adjustments were made to stimulation parameters. \n\nPlan: \n- Continue current antiseizure medication at existing doses (unchanged today) and maintain VNS parameters.  \n- Reinforce sleep hygiene and ongoing seizure diary entries.  \n- Routine follow-up in 6 months, or sooner if any events recur or adverse effects arise.  \n- Patient is aware to contact the epilepsy specialist nurse should there be any change in pattern or concerns about the device. \n\nThank you for your continued care. Please let me know if there is anything further you would like me to address. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizure-free period now 14 months.\" It also reports no magnet-triggered events, no nocturnal events, no loss of awareness, and no injuries or emergency attendances over this period. This fulfills the criterion of being seizure free for at least 6 months. Therefore, the normalized label is 'seizure free for 14 month'. No other seizure frequencies are provided that would override this. No calculations beyond reading the explicit duration are needed.",
+      "seizure_frequency_number": [
+        "seizure free for 14 month",
+        "Seizure-free period now 14 months."
+      ],
+      "reference": [
+        "seizure free for 14 month",
+        "Seizure-free period now 14 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

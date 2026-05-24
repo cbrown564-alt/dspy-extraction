@@ -1,0 +1,47 @@
+{
+  "id": "gan_11585",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 13 August 2016 \n\nDr Helen Carter\nRiverside Medical Practice\n14 Brook Lane, London SE15 3QD\n\nDear Dr Helen Carter,\n\nMichael Turner, DOB: 22-07-1974, Hospital No: U284731 NHS No. 6048291753\n52 Alder Grove, London, N19 4PA\n\nSummary: Appointment rearrangement due to temporary equipment maintenance. Past variability in community pharmacy supply noted with occasional impact on adherence.\n\nMedication: Current antiepileptic regimen unchanged.\n\nI am writing to reschedule the planned diagnostic test for Michael Turner. Our neurophysiology equipment is undergoing scheduled maintenance this week, and we are unable to perform the study on the original date.\n\nNew appointment details:\n- Location: National Hospital for Neurology and Neurosurgery, Neurophysiology Unit\n- Date/Time: To be confirmed within 7 days; our booking team will contact the patient directly\n\nPlan:\n- Rearrange test at the earliest available slot.\n- Please advise the patient to continue regular medication without interruption.\n- Given the history of variable pharmacy supply, kindly ensure prescription continuity and consider issuing an interim supply if needed prior to the new date.\n\nWe apologise for any inconvenience and appreciate your assistance in maintaining medication continuity.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11585,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 13 August 2016 \n\nDr Helen Carter\nRiverside Medical Practice\n14 Brook Lane, London SE15 3QD\n\nDear Dr Helen Carter,\n\nMichael Turner, DOB: 22-07-1974, Hospital No: U284731 NHS No. 6048291753\n52 Alder Grove, London, N19 4PA\n\nSummary: Appointment rearrangement due to temporary equipment maintenance. Past variability in community pharmacy supply noted with occasional impact on adherence.\n\nMedication: Current antiepileptic regimen unchanged.\n\nI am writing to reschedule the planned diagnostic test for Michael Turner. Our neurophysiology equipment is undergoing scheduled maintenance this week, and we are unable to perform the study on the original date.\n\nNew appointment details:\n- Location: National Hospital for Neurology and Neurosurgery, Neurophysiology Unit\n- Date/Time: To be confirmed within 7 days; our booking team will contact the patient directly\n\nPlan:\n- Rearrange test at the earliest available slot.\n- Please advise the patient to continue regular medication without interruption.\n- Given the history of variable pharmacy supply, kindly ensure prescription continuity and consider issuing an interim supply if needed prior to the new date.\n\nWe apologise for any inconvenience and appreciate your assistance in maintaining medication continuity.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses rescheduling a diagnostic test and maintaining antiepileptic medication continuity due to equipment maintenance and prior pharmacy supply variability. It does not mention seizures, seizure events, or any explicit or implicit seizure frequency, nor seizure-free duration.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter rescheduling an epilepsy-related test due to equipment maintenance"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

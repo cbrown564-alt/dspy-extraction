@@ -1,0 +1,65 @@
+{
+  "id": "gan_11389",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 February 2017\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n Staffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD \n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe origin. Prior EEG/telemetry on more than one occasion. MRI brain (2006) reported no clear epileptogenic lesion. \n\nBackground: Newly retired teacher living alone with a regular routine and reduced social contact. She reports keeping a seizure diary and adhering to medication. \n\nCurrent presentation: The patient gave a history of seizure on 21 December, described as a typical focal event with behavioural arrest and lip-smacking, followed by confusion lasting approximately 15 minutes. No secondary generalisation was reported. She has otherwise remained well and describes stable sleep and nutrition, though she notes low mood at times related to social isolation since retirement. She denies recent head injury, febrile illness, or new neurological symptoms. \n\nMedication history:\n- Previously tried: levetiracetam (partial response, fatigue and irritability), clobazam (PRN and regular), gabapentin, carbamazepine, phenobarbital, phenytoin, valproate, vigabatrin, lacosamide. \n- Not previously taken: pregabalin, zonisamide, tiagabine, acetazolamide, primidone, perampanel, retigabine, rufinamide. \n\nCurrent medications: \n- Lamotrigine 150 mg morning, 100 mg afternoon, 100 mg evening. \n- Folic acid 5 mg once daily. \n- Metoclopramide as needed for nausea. \n- Over-the-counter multivitamin. \n\nExamination (today): Vitals stable. Cardiovascular exam normal heart sounds; past note of aortic murmur but previous echocardiogram (2008) essentially normal. Neurological examination non-focal. Weight stable. \n\nImpression: Focal epilepsy with low-frequency breakthrough seizures; temporal lobe semiology likely. MRI in 2006 without lesion. Psychosocial factors (isolation after retirement) may contribute to perceived wellbeing but no direct precipitant identified. \n\nPlan:\n- Continue current lamotrigine dosing; adherence reinforced. \n- Discussed options including zonisamide and lifestyle measures. She prefers to defer adding medication for now given single recent event and otherwise good control. \n- Safety advice and seizure first-aid reviewed; encouraged ongoing diary and to report any increase in frequency or new features. \n- Offer support signposting for local epilepsy group and social engagement resources; patient agreeable. \n- Routine follow-up in 6 months, sooner if further seizures occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 638,
+      "end": 754,
+      "text": "The patient gave a history of seizure on 21 December... low-frequency breakthrough seizures; ... single recent event",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 638,
+      "end": 690,
+      "text": "The patient gave a history of seizure on 21 December",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11389,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 21 February 2017\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n Staffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD \n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe origin. Prior EEG/telemetry on more than one occasion. MRI brain (2006) reported no clear epileptogenic lesion. \n\nBackground: Newly retired teacher living alone with a regular routine and reduced social contact. She reports keeping a seizure diary and adhering to medication. \n\nCurrent presentation: The patient gave a history of seizure on 21 December, described as a typical focal event with behavioural arrest and lip-smacking, followed by confusion lasting approximately 15 minutes. No secondary generalisation was reported. She has otherwise remained well and describes stable sleep and nutrition, though she notes low mood at times related to social isolation since retirement. She denies recent head injury, febrile illness, or new neurological symptoms. \n\nMedication history:\n- Previously tried: levetiracetam (partial response, fatigue and irritability), clobazam (PRN and regular), gabapentin, carbamazepine, phenobarbital, phenytoin, valproate, vigabatrin, lacosamide. \n- Not previously taken: pregabalin, zonisamide, tiagabine, acetazolamide, primidone, perampanel, retigabine, rufinamide. \n\nCurrent medications: \n- Lamotrigine 150 mg morning, 100 mg afternoon, 100 mg evening. \n- Folic acid 5 mg once daily. \n- Metoclopramide as needed for nausea. \n- Over-the-counter multivitamin. \n\nExamination (today): Vitals stable. Cardiovascular exam normal heart sounds; past note of aortic murmur but previous echocardiogram (2008) essentially normal. Neurological examination non-focal. Weight stable. \n\nImpression: Focal epilepsy with low-frequency breakthrough seizures; temporal lobe semiology likely. MRI in 2006 without lesion. Psychosocial factors (isolation after retirement) may contribute to perceived wellbeing but no direct precipitant identified. \n\nPlan:\n- Continue current lamotrigine dosing; adherence reinforced. \n- Discussed options including zonisamide and lifestyle measures. She prefers to defer adding medication for now given single recent event and otherwise good control. \n- Safety advice and seizure first-aid reviewed; encouraged ongoing diary and to report any increase in frequency or new features. \n- Offer support signposting for local epilepsy group and social engagement resources; patient agreeable. \n- Routine follow-up in 6 months, sooner if further seizures occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter documents a single recent seizure: \"history of seizure on 21 December\" and otherwise indicates good control with \"low-frequency breakthrough seizures\" and a plan to defer adding medication given a \"single recent event\". There is no explicit quantitative frequency (e.g., per week/month/year), nor a clear timeframe establishing seizure freedom for at least 6 months. Therefore, although seizures are mentioned, the specific current frequency cannot be determined from the letter.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The patient gave a history of seizure on 21 December... low-frequency breakthrough seizures; ... single recent event"
+      ],
+      "reference": [
+        "unknown",
+        "The patient gave a history of seizure on 21 December"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

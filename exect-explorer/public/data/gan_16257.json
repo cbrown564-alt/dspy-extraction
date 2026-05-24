@@ -1,0 +1,59 @@
+{
+  "id": "gan_16257",
+  "text": "Centre for Neurology Services\n\nNeurosciences Division \n\nClinic Date: 21 September 2021 \n\nDr Catherine Moore \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt Anne’s Health Park, Oxford  \n\nDear Dr Catherine Moore, \n\nMr Thomas Green, DOB: 22-03-1984, Hospital No: X918273 NHS No. 4567732019  \nFlat 3, 12 Meadow Lane, Oxford, OX1 3QA  \n\nDiagnosis: \n\nAdult epilepsy under ongoing assessment; current seizure semiology and classification remain under review.\n\nAetiology: \n\nHistory notable for childhood febrile seizures; no definitive structural, genetic or metabolic cause identified to date.\n\nOther Medical Problems: \n\nMild generalised anxiety symptoms managed with non‑pharmacological strategies; vitamin D insufficiency on supplementation.\n\nManagement Plan: \n\n- Continue current anti‑seizure medication regimen as tolerated without changes today; maintain single‑brand supply to support consistency.  \n- Arrange ambulatory EEG and updated MRI brain with epilepsy protocol to aid classification.  \n- Provide seizure diary template and safety advice (including sleep hygiene and adherence).  \n- Bloods today for therapeutic drug levels, FBC, U&E, LFTs and vitamin D recheck.  \n- Follow‑up in three months or sooner if events escalate.  \n\nClinical Summary:\n\nI reviewed this gentleman in clinic with a background of childhood febrile seizures. He reports fluctuating event frequency over the summer. He has recorded no seizures to date in September, 2 in August and 5 in July, including nocturnal and daytime periods. He describes brief episodes with impaired awareness, occasional tongue biting on waking, and post‑event fatigue; his partner has noted nocturnal jerks on two occasions. There have been no injuries, no identified medication adverse effects, and adherence is reported as good. He continues full‑time employment, though he has self‑limited high‑risk activities and maintains a seizure diary. Sleep deprivation appears to precede some events; alcohol intake is minimal. Driving advice remains in accordance with DVLA guidance and has been discussed today.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1403,
+      "end": 1478,
+      "text": "He has recorded no seizures to date in September, 2 in August and 5 in July",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1403,
+      "end": 1519,
+      "text": "He has recorded no seizures to date in September, 2 in August and 5 in July, including nocturnal and daytime periods",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16257,
+    "clinic_date": "Centre for Neurology Services\n\nNeurosciences Division \n\nClinic Date: 21 September 2021 \n\nDr Catherine Moore \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt Anne’s Health Park, Oxford  \n\nDear Dr Catherine Moore, \n\nMr Thomas Green, DOB: 22-03-1984, Hospital No: X918273 NHS No. 4567732019  \nFlat 3, 12 Meadow Lane, Oxford, OX1 3QA  \n\nDiagnosis: \n\nAdult epilepsy under ongoing assessment; current seizure semiology and classification remain under review.\n\nAetiology: \n\nHistory notable for childhood febrile seizures; no definitive structural, genetic or metabolic cause identified to date.\n\nOther Medical Problems: \n\nMild generalised anxiety symptoms managed with non‑pharmacological strategies; vitamin D insufficiency on supplementation.\n\nManagement Plan: \n\n- Continue current anti‑seizure medication regimen as tolerated without changes today; maintain single‑brand supply to support consistency.  \n- Arrange ambulatory EEG and updated MRI brain with epilepsy protocol to aid classification.  \n- Provide seizure diary template and safety advice (including sleep hygiene and adherence).  \n- Bloods today for therapeutic drug levels, FBC, U&E, LFTs and vitamin D recheck.  \n- Follow‑up in three months or sooner if events escalate.  \n\nClinical Summary:\n\nI reviewed this gentleman in clinic with a background of childhood febrile seizures. He reports fluctuating event frequency over the summer. He has recorded no seizures to date in September, 2 in August and 5 in July, including nocturnal and daytime periods. He describes brief episodes with impaired awareness, occasional tongue biting on waking, and post‑event fatigue; his partner has noted nocturnal jerks on two occasions. There have been no injuries, no identified medication adverse effects, and adherence is reported as good. He continues full‑time employment, though he has self‑limited high‑risk activities and maintains a seizure diary. Sleep deprivation appears to precede some events; alcohol intake is minimal. Driving advice remains in accordance with DVLA guidance and has been discussed today.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit counts by month: 0 seizures in September (to date), 2 in August, and 5 in July. These three consecutive months give a total of 7 seizures over a 3-month period. No evidence of 6 months seizure freedom, so not seizure free. According to the rules, use the highest frequency or compute an overall rate; here, the clearest normalized label is 7 per 3 months based on the provided monthly counts.",
+      "seizure_frequency_number": [
+        "7 per 3 month",
+        "He has recorded no seizures to date in September, 2 in August and 5 in July"
+      ],
+      "reference": [
+        "7 per 3 month",
+        "He has recorded no seizures to date in September, 2 in August and 5 in July, including nocturnal and daytime periods"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

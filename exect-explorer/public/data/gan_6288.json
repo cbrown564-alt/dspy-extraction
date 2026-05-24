@@ -1,0 +1,54 @@
+{
+  "id": "gan_6288",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nPrimary generalised epilepsy with prior generalised tonic–clonic seizures (2006 and August 2018). EEG (October 2018): generalised spike-and-wave discharges consistent with generalised epilepsy.\n\nCurrent medication:\n\nLamotrigine 75 mg twice daily\n\nClinical update and assessment:\n\nI reviewed John Smith in clinic today. Unfortunately, his condition appears to be deteriorating over recent months. He reports two unequivocal generalised tonic–clonic seizures in the last 10 weeks, both occurring in the context of increased social demands and higher alcohol exposure. He describes feeling drained and light-headed after long evenings in warm, crowded venues where he had limited fluid intake, and on both occasions a convulsive event followed within hours. He also notes a rise in brief morning myoclonic jerks on days after social events. There have been no focal features reported.\n\nHe continues Lamotrigine 75 mg twice daily with good adherence by his account, and he has not missed doses. Sleep has been irregular due to work and social pressures. He denies recreational drug use. No new neurological deficits on examination today. Weight and systemic observations are within normal limits.\n\nEpilepsy type:\n\nThe overall picture remains that of generalised epilepsy, supported by the historical EEG demonstrating generalised spike-and-wave activity. The recent breakthrough events are plausibly linked to situational factors: prolonged time in warm environments with insufficient hydration appears to have acted as a catalyst for seizures in the setting of increased alcohol intake and sleep disruption.\n\nPlan:\n\n- Continue Lamotrigine at the current dose for now while we arrange urgent review of serum lamotrigine level, liver function, and U&Es.\n- Provide written advice on mitigation of situational precipitants: ensure adequate fluids and cooling strategies during social events; avoid heavy alcohol exposure; prioritise regular sleep.\n- Issue a rescue care plan and safety guidance after convulsive seizures; discuss driving and DVLA regulations as applicable.\n- Arrange an expedited follow-up in 6 weeks to evaluate seizure control and consider dose optimisation or adjunctive therapy if further events occur.\n\nI have asked John Smith to contact us promptly if he experiences any additional seizures or adverse effects.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 688,
+      "end": 758,
+      "text": "two unequivocal generalised tonic–clonic seizures in the last 10 weeks",
+      "attributes": {
+        "Label": "2 per 10 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6288,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr William\nRoyal London Hospital\nDepartment of Neurology, Whitechapel Road, London E1 1FR\n\nDear Dr William,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nPrimary generalised epilepsy with prior generalised tonic–clonic seizures (2006 and August 2018). EEG (October 2018): generalised spike-and-wave discharges consistent with generalised epilepsy.\n\nCurrent medication:\n\nLamotrigine 75 mg twice daily\n\nClinical update and assessment:\n\nI reviewed John Smith in clinic today. Unfortunately, his condition appears to be deteriorating over recent months. He reports two unequivocal generalised tonic–clonic seizures in the last 10 weeks, both occurring in the context of increased social demands and higher alcohol exposure. He describes feeling drained and light-headed after long evenings in warm, crowded venues where he had limited fluid intake, and on both occasions a convulsive event followed within hours. He also notes a rise in brief morning myoclonic jerks on days after social events. There have been no focal features reported.\n\nHe continues Lamotrigine 75 mg twice daily with good adherence by his account, and he has not missed doses. Sleep has been irregular due to work and social pressures. He denies recreational drug use. No new neurological deficits on examination today. Weight and systemic observations are within normal limits.\n\nEpilepsy type:\n\nThe overall picture remains that of generalised epilepsy, supported by the historical EEG demonstrating generalised spike-and-wave activity. The recent breakthrough events are plausibly linked to situational factors: prolonged time in warm environments with insufficient hydration appears to have acted as a catalyst for seizures in the setting of increased alcohol intake and sleep disruption.\n\nPlan:\n\n- Continue Lamotrigine at the current dose for now while we arrange urgent review of serum lamotrigine level, liver function, and U&Es.\n- Provide written advice on mitigation of situational precipitants: ensure adequate fluids and cooling strategies during social events; avoid heavy alcohol exposure; prioritise regular sleep.\n- Issue a rescue care plan and safety guidance after convulsive seizures; discuss driving and DVLA regulations as applicable.\n- Arrange an expedited follow-up in 6 weeks to evaluate seizure control and consider dose optimisation or adjunctive therapy if further events occur.\n\nI have asked John Smith to contact us promptly if he experiences any additional seizures or adverse effects.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"two unequivocal generalised tonic–clonic seizures in the last 10 weeks.\" This provides a clear numeric frequency. Other seizure types (morning myoclonic jerks) are mentioned but without a quantifiable frequency, so they cannot be used to set a higher frequency. Therefore, use the explicit numeric rate: 2 seizures over 10 weeks.",
+      "seizure_frequency_number": [
+        "2 per 10 week",
+        "two unequivocal generalised tonic–clonic seizures in the last 10 weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Heat/dehydration as precipitants of seizure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 10 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

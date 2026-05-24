@@ -1,0 +1,59 @@
+{
+  "id": "gan_16962",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 10 April 2024\n\nDr Patel\nSouth London Neurology Clinic\nFirst Floor, Riverside Health Centre, 14 Millbank, London SW1P 3GE\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 1995-03-09, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nCombined generalised and focal epilepsy.\n\nThank you for asking me to review Anne Taylor in our neurology clinic. She attended with her mother and keyworker today. She describes both generalised and focal epilepsy, with focal impaired-awareness events characterised by brief behavioural arrest and right arm automatisms, alongside a separate history of generalised seizures.\n\nOver the past year seizure control has been relatively stable. She experiences 2 to 3 generalised tonic-clonic seizures every three months. Absence seizures remain infrequent, usually no more than twice weekly, and myoclonic jerks are reported only occasionally in the mornings. In addition, she continues to report episodic focal seizures approximately once to twice per month, typically lasting under two minutes and followed by several minutes of confusion; there have been no injuries.\n\nMedication adherence has been good by her account and that of her family. No adverse effects are reported beyond mild morning fatigue. She uses a seizure diary app which corroborates the above frequencies. There have been no recent hospital attendances, and rescue medication has not been required in the last six months.\n\nOn examination today she was well, with no focal neurological deficits. Routine bloods taken last month by primary care were unremarkable. We discussed ongoing safety measures, including supervision when bathing and the importance of consistent sleep. She prefers to continue her current management plan given stability and absence of troublesome side effects.\n\nPlan:\n- Continue current antiseizure regimen unchanged, as patient-reported control is stable and tolerability acceptable.\n- Maintain seizure diary and bring entries to next review.\n- Provide updated written seizure first-aid guidance to family and support staff (supplied today).\n- Routine follow-up in six months, sooner if there is an increase in either the generalised or focal seizure frequency, emergence of clusters, or any injuries.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 825,
+      "end": 894,
+      "text": "Absence seizures remain infrequent, usually no more than twice weekly",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 685,
+      "end": 962,
+      "text": "Over the past year seizure control has been relatively stable. She experiences 2 to 3 generalised tonic-clonic seizures every three months. Absence seizures remain infrequent, usually no more than twice weekly, and myoclonic jerks are reported only occasionally in the mornings",
+      "attributes": {
+        "Label": "2 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16962,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 10 April 2024\n\nDr Patel\nSouth London Neurology Clinic\nFirst Floor, Riverside Health Centre, 14 Millbank, London SW1P 3GE\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 1995-03-09, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nCombined generalised and focal epilepsy.\n\nThank you for asking me to review Anne Taylor in our neurology clinic. She attended with her mother and keyworker today. She describes both generalised and focal epilepsy, with focal impaired-awareness events characterised by brief behavioural arrest and right arm automatisms, alongside a separate history of generalised seizures.\n\nOver the past year seizure control has been relatively stable. She experiences 2 to 3 generalised tonic-clonic seizures every three months. Absence seizures remain infrequent, usually no more than twice weekly, and myoclonic jerks are reported only occasionally in the mornings. In addition, she continues to report episodic focal seizures approximately once to twice per month, typically lasting under two minutes and followed by several minutes of confusion; there have been no injuries.\n\nMedication adherence has been good by her account and that of her family. No adverse effects are reported beyond mild morning fatigue. She uses a seizure diary app which corroborates the above frequencies. There have been no recent hospital attendances, and rescue medication has not been required in the last six months.\n\nOn examination today she was well, with no focal neurological deficits. Routine bloods taken last month by primary care were unremarkable. We discussed ongoing safety measures, including supervision when bathing and the importance of consistent sleep. She prefers to continue her current management plan given stability and absence of troublesome side effects.\n\nPlan:\n- Continue current antiseizure regimen unchanged, as patient-reported control is stable and tolerability acceptable.\n- Maintain seizure diary and bring entries to next review.\n- Provide updated written seizure first-aid guidance to family and support staff (supplied today).\n- Routine follow-up in six months, sooner if there is an increase in either the generalised or focal seizure frequency, emergence of clusters, or any injuries.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify all explicit seizure frequencies in the letter:\n- Generalised tonic-clonic: \"2 to 3 ... every three months\" => 2 to 3 per 3 months.\n- Absence seizures: \"no more than twice weekly\" => up to 2 per week.\n- Myoclonic jerks: \"only occasionally in the mornings\" => vague, not quantifiable per rules.\n- Focal seizures: \"approximately once to twice per month\" => 1 to 2 per month.\nApply Rule for Handling Multiple Frequencies: choose the highest frequency (most frequent). Compare:\n- 2 per week (absence) vs 1 to 2 per month (focal) vs 2 to 3 per 3 months (GTC). The highest frequency is 2 per week.\nThus final label: 2 per week. Provide a verbatim quote supporting this.",
+      "seizure_frequency_number": [
+        "2 per week",
+        "Absence seizures remain infrequent, usually no more than twice weekly"
+      ],
+      "reference": [
+        "2 per week",
+        "Over the past year seizure control has been relatively stable. She experiences 2 to 3 generalised tonic-clonic seizures every three months. Absence seizures remain infrequent, usually no more than twice weekly, and myoclonic jerks are reported only occasionally in the mornings"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

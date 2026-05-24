@@ -1,0 +1,59 @@
+{
+  "id": "gan_1281",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nDaniel Harper, DOB: 22-11-1991, Hospital No: H604219 NHS No. 9842157630  \nFlat 3, 27 Russell Square, London, WC1B 5HP  \n\nEpilepsy \n\nSurgical history: Left temporal lobectomy performed March 2024; reports functional recovery and improved seizure control since surgery.\n\nMedication: Ongoing Levetiracetam 1g twice daily; Clobazam 10mg at night as needed for clusters (rarely required). No adverse effects reported. \n\nLevetiracetam Blood Level:\n\n16th September 2025: 19 mg/L (reference range 12–46 mg/L). Dose 1g twice a day. \n\nSeizures: Patient reports a clear reduction in events post-surgery. Specifically, 5 or 7 epileptic spasms this year, all brief (under 10 seconds), with rapid recovery and no injuries. No clear triggers identified. Family corroborate fewer events and improved day-to-day confidence. No auras or prolonged post-ictal confusion described.\n\nI reviewed Daniel Harper today in face-to-face clinic. Since the temporal lobectomy in March 2024, they describe steady improvement in frequency and severity of episodes, better sleep, and return to part-time work without difficulties. They have maintained excellent adherence to Levetiracetam and have not required rescue Clobazam in the past three months. We discussed ongoing monitoring and agreed to continue current therapy without change. Safety advice and seizure diary use were reinforced; patient continues to avoid known personal precipitants and has informed their employer of their care plan. \n\nPlan:\n- Continue Levetiracetam 1g twice daily.\n- Clobazam 10mg nocte PRN for clusters; no routine use required at present.\n- Maintain seizure diary; repeat medication review in six months.\n- Routine bloods and Levetiracetam level prior to next appointment.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 752,
+      "end": 799,
+      "text": "Specifically, 5 or 7 epileptic spasms this year",
+      "attributes": {
+        "Label": "5 to 7 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 766,
+      "end": 799,
+      "text": "5 or 7 epileptic spasms this year",
+      "attributes": {
+        "Label": "5 to 7 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1281,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nDaniel Harper, DOB: 22-11-1991, Hospital No: H604219 NHS No. 9842157630  \nFlat 3, 27 Russell Square, London, WC1B 5HP  \n\nEpilepsy \n\nSurgical history: Left temporal lobectomy performed March 2024; reports functional recovery and improved seizure control since surgery.\n\nMedication: Ongoing Levetiracetam 1g twice daily; Clobazam 10mg at night as needed for clusters (rarely required). No adverse effects reported. \n\nLevetiracetam Blood Level:\n\n16th September 2025: 19 mg/L (reference range 12–46 mg/L). Dose 1g twice a day. \n\nSeizures: Patient reports a clear reduction in events post-surgery. Specifically, 5 or 7 epileptic spasms this year, all brief (under 10 seconds), with rapid recovery and no injuries. No clear triggers identified. Family corroborate fewer events and improved day-to-day confidence. No auras or prolonged post-ictal confusion described.\n\nI reviewed Daniel Harper today in face-to-face clinic. Since the temporal lobectomy in March 2024, they describe steady improvement in frequency and severity of episodes, better sleep, and return to part-time work without difficulties. They have maintained excellent adherence to Levetiracetam and have not required rescue Clobazam in the past three months. We discussed ongoing monitoring and agreed to continue current therapy without change. Safety advice and seizure diary use were reinforced; patient continues to avoid known personal precipitants and has informed their employer of their care plan. \n\nPlan:\n- Continue Levetiracetam 1g twice daily.\n- Clobazam 10mg nocte PRN for clusters; no routine use required at present.\n- Maintain seizure diary; repeat medication review in six months.\n- Routine bloods and Levetiracetam level prior to next appointment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Specifically, 5 or 7 epileptic spasms this year.\" This provides a numeric range for total seizures over the current year. No other conflicting frequency is given. According to the rules, use explicit numeric expressions and normalize to allowed formats, preserving ranges with 'to'. Therefore, the seizure frequency is 5 to 7 per year.",
+      "seizure_frequency_number": [
+        "5 to 7 per year",
+        "Specifically, 5 or 7 epileptic spasms this year"
+      ],
+      "reference": [
+        "5 to 7 per year",
+        "5 or 7 epileptic spasms this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

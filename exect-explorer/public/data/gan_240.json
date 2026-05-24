@@ -1,0 +1,59 @@
+{
+  "id": "gan_240",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 05 February 2014 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He has a diagnosis of generalised epilepsy. I last saw him six months ago. Since that time he has reduced his workload, and he reports feeling a greater sense of control over his routine and triggers. He notes a clear improvement in seizure stability and confidence in self-management.\n\nCurrently he describes brief absence episodes occurring every 2 - 3 months, usually during periods of sleep disruption, with no tonic-clonic seizures in the same interval. He denies new neurological symptoms, injuries, or emergency attendances. He is sleeping more regularly and has resumed light exercise twice weekly. He is keeping a seizure diary which corroborates the above frequency and shows shorter post-ictal fatigue when events do occur.\n\nMedication: Valproate 500 mg b.d. and Levetiracetam 1 g b.d., both well tolerated. He reports no mood change, weight gain is minimal and stable, and there are no rash, tremor, or gastrointestinal adverse effects. He is using a phone reminder and weekly pill box, which has improved adherence.\n\nExamination today was unremarkable with no focal neurological deficits. He remains fit to continue current duties within his adjusted hours. We discussed lifestyle measures; he feels the workload change has been pivotal to improvement and wishes to maintain the present arrangement. No changes to therapy are planned at this stage given the improvement and the pattern of events every 2 - 3 months.\n\nPlan:\n- Continue Valproate 500 mg b.d. and Levetiracetam 1 g b.d.\n- Maintain seizure diary and sleep hygiene; avoid sleep deprivation where possible.\n- Routine follow-up in 6 months, or earlier if seizure frequency increases, injuries occur, or medication side effects emerge.\n\nIn summary, he has generalised epilepsy with improved control since reducing workload, with brief absence episodes every 2 - 3 months and no recent tonic-clonic seizures. We will continue conservative management given the encouraging trajectory.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 591,
+      "end": 665,
+      "text": "Currently he describes brief absence episodes occurring every 2 - 3 months",
+      "attributes": {
+        "Label": "1 per 2 to 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 647,
+      "end": 665,
+      "text": "every 2 - 3 months",
+      "attributes": {
+        "Label": "1 per 2 to 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 240,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 05 February 2014 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He has a diagnosis of generalised epilepsy. I last saw him six months ago. Since that time he has reduced his workload, and he reports feeling a greater sense of control over his routine and triggers. He notes a clear improvement in seizure stability and confidence in self-management.\n\nCurrently he describes brief absence episodes occurring every 2 - 3 months, usually during periods of sleep disruption, with no tonic-clonic seizures in the same interval. He denies new neurological symptoms, injuries, or emergency attendances. He is sleeping more regularly and has resumed light exercise twice weekly. He is keeping a seizure diary which corroborates the above frequency and shows shorter post-ictal fatigue when events do occur.\n\nMedication: Valproate 500 mg b.d. and Levetiracetam 1 g b.d., both well tolerated. He reports no mood change, weight gain is minimal and stable, and there are no rash, tremor, or gastrointestinal adverse effects. He is using a phone reminder and weekly pill box, which has improved adherence.\n\nExamination today was unremarkable with no focal neurological deficits. He remains fit to continue current duties within his adjusted hours. We discussed lifestyle measures; he feels the workload change has been pivotal to improvement and wishes to maintain the present arrangement. No changes to therapy are planned at this stage given the improvement and the pattern of events every 2 - 3 months.\n\nPlan:\n- Continue Valproate 500 mg b.d. and Levetiracetam 1 g b.d.\n- Maintain seizure diary and sleep hygiene; avoid sleep deprivation where possible.\n- Routine follow-up in 6 months, or earlier if seizure frequency increases, injuries occur, or medication side effects emerge.\n\nIn summary, he has generalised epilepsy with improved control since reducing workload, with brief absence episodes every 2 - 3 months and no recent tonic-clonic seizures. We will continue conservative management given the encouraging trajectory.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Currently he describes brief absence episodes occurring every 2 - 3 months, ... with no tonic-clonic seizures in the same interval.\" This gives a clear frequency for current seizures. No other higher-frequency seizure type is mentioned; tonic-clonic seizures are absent in this period. Therefore, the seizure frequency is a range of 1 event every 2 to 3 months. Convert to allowed format: \"1 per 2 to 3 month.\"",
+      "seizure_frequency_number": [
+        "1 per 2 to 3 month",
+        "Currently he describes brief absence episodes occurring every 2 - 3 months"
+      ],
+      "reference": [
+        "1 per 2 to 3 month",
+        "every 2 - 3 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6986",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 27 May 2015 10:12\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication adjustment and titration plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with presumed temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nThe patient describes intermittent focal aware episodes of déjà vu and epigastric rising sensations lasting 30–60 seconds. They keep a diary but note that entries have been irregular due to work travel; as such, the timing of the most recent spell is unclear to them, though they recall at least one episode occurring sometime in the past few weeks. No generalised convulsions reported.\n\n\nPlan of Action:\n\nCurrent history suggests breakthrough focal aware seizures despite therapeutic dosing of lamotrigine. Given daytime sedation on clobazam, we will aim to introduce lacosamide and reduce reliance on clobazam if tolerated.\n\nPlease initiate Lacosamide as follows:\n• Week 1: 50 mg at night\n• Week 2: 50 mg twice daily\n• Week 3: 100 mg in the morning and 50 mg at night\n• Week 4: 100 mg twice daily (continue thereafter for three months)\n\nMaintain lamotrigine at 150 mg twice daily. Continue clobazam 10 mg at night for now; if lacosamide is well tolerated without increase in events, we will consider a gradual clobazam taper at the next review.\n\nThe patient has been advised to:\n• Resume a consistent seizure diary (include date, time, description, potential triggers)\n• Avoid sleep deprivation and excessive alcohol\n• Report any dizziness, visual blurring, or cardiac symptoms on lacosamide\n\nI have arranged a follow‑up appointment in three months. Please contact us earlier if there is any increase in seizure severity, emergence of focal impaired awareness events, or any adverse effects.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 545,
+      "end": 785,
+      "text": "The patient describes intermittent focal aware episodes of déjà vu and epigastric rising sensations... the timing of the most recent spell is unclear to them, though they recall at least one episode occurring sometime in the past few weeks.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6986,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 27 May 2015 10:12\nTo: epilepsy.clinic@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helena Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication adjustment and titration plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with presumed temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nThe patient describes intermittent focal aware episodes of déjà vu and epigastric rising sensations lasting 30–60 seconds. They keep a diary but note that entries have been irregular due to work travel; as such, the timing of the most recent spell is unclear to them, though they recall at least one episode occurring sometime in the past few weeks. No generalised convulsions reported.\n\n\nPlan of Action:\n\nCurrent history suggests breakthrough focal aware seizures despite therapeutic dosing of lamotrigine. Given daytime sedation on clobazam, we will aim to introduce lacosamide and reduce reliance on clobazam if tolerated.\n\nPlease initiate Lacosamide as follows:\n• Week 1: 50 mg at night\n• Week 2: 50 mg twice daily\n• Week 3: 100 mg in the morning and 50 mg at night\n• Week 4: 100 mg twice daily (continue thereafter for three months)\n\nMaintain lamotrigine at 150 mg twice daily. Continue clobazam 10 mg at night for now; if lacosamide is well tolerated without increase in events, we will consider a gradual clobazam taper at the next review.\n\nThe patient has been advised to:\n• Resume a consistent seizure diary (include date, time, description, potential triggers)\n• Avoid sleep deprivation and excessive alcohol\n• Report any dizziness, visual blurring, or cardiac symptoms on lacosamide\n\nI have arranged a follow‑up appointment in three months. Please contact us earlier if there is any increase in seizure severity, emergence of focal impaired awareness events, or any adverse effects.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has intermittent focal aware episodes but does not provide a numeric frequency. It mentions diary entries have been irregular and the timing of the most recent spell is unclear, with recall of at least one episode sometime in the past few weeks. There is no explicit numeric rate (per day/week/month/year) that can be derived. Therefore, per instruction, if seizures are mentioned but specific frequency cannot be determined, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The patient describes intermittent focal aware episodes of déjà vu and epigastric rising sensations... the timing of the most recent spell is unclear to them, though they recall at least one episode occurring sometime in the past few weeks."
+      ],
+      "reference": [
+        "unknown",
+        "Patient unsure of last event date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

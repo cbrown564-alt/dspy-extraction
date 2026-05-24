@@ -1,0 +1,59 @@
+{
+  "id": "gan_13843",
+  "text": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 14 September 2025\n\nDr Priya Desai\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr Priya Desai,\n\nDaniel Carter, DOB: 17-03-1982, Hospital No: KCH902311 NHS No. 9483726150\n12 Brookfield Road, London, SE15 2HQ\n\nThank you for asking me to review your patient, whom I saw in clinic today with his partner. He described a long history of intermittent episodes that have varied over the years. The current concerns relate to brief spells of behavioural arrest with a sense of pressure in the chest and a tendency to pace or fidget, usually lasting a few minutes, without clear loss of awareness, and without tongue biting or incontinence. He can feel unsettled afterwards but returns to baseline within 10–15 minutes. He has not reported injuries or nocturnal events in recent months.\n\nHe had previously been referred after a period of frequent episodes during a stressful time at work. Since engaging with psychological support and using relaxation techniques advised by our liaison psychology team, his day-to-day anxiety has eased. In that context, events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled. He and his partner keep a simple diary which shows fewer episodes over the past six weeks, and they both feel more confident about identifying triggers and using breathing strategies early.\n\nThere is no clear history to suggest a specific seizure phenotype, and prior routine EEG and MRI from last year were unremarkable. He remains on a stable dose of Brivaracetam initiated previously by another service; he has not had adverse effects and prefers no change at this stage. We discussed the potential value of further characterisation should the picture alter, including ambulatory EEG or admission for video-EEG telemetry if clinically indicated, but for now he is content to continue with self-management and follow-up.\n\nOn examination today, he was oriented, with normal speech and language, and no focal neurological deficits. Mood appeared steadier than at his last review according to his partner. There were no red flags suggestive of acute risk.\n\nPlan:\n- Continue current medication without adjustment at present.\n- Maintain psychological strategies and the episode diary; they will record context, duration, and recovery features.\n- Safety advice reinforced, including avoidance of high-risk situations during episodes.\n- Open access to clinic if the pattern changes, new features emerge (loss of awareness, injuries, nocturnal events), or frequency escalates.\n- Routine review in 4–6 months, sooner if needed.\n\nThank you for your ongoing care. Please let me know if there are any concerns you would like us to address in the interim.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1166,
+      "end": 1212,
+      "text": "events at present are considered non-epileptic",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1166,
+      "end": 1286,
+      "text": "Events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13843,
+    "clinic_date": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 14 September 2025\n\nDr Priya Desai\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr Priya Desai,\n\nDaniel Carter, DOB: 17-03-1982, Hospital No: KCH902311 NHS No. 9483726150\n12 Brookfield Road, London, SE15 2HQ\n\nThank you for asking me to review your patient, whom I saw in clinic today with his partner. He described a long history of intermittent episodes that have varied over the years. The current concerns relate to brief spells of behavioural arrest with a sense of pressure in the chest and a tendency to pace or fidget, usually lasting a few minutes, without clear loss of awareness, and without tongue biting or incontinence. He can feel unsettled afterwards but returns to baseline within 10–15 minutes. He has not reported injuries or nocturnal events in recent months.\n\nHe had previously been referred after a period of frequent episodes during a stressful time at work. Since engaging with psychological support and using relaxation techniques advised by our liaison psychology team, his day-to-day anxiety has eased. In that context, events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled. He and his partner keep a simple diary which shows fewer episodes over the past six weeks, and they both feel more confident about identifying triggers and using breathing strategies early.\n\nThere is no clear history to suggest a specific seizure phenotype, and prior routine EEG and MRI from last year were unremarkable. He remains on a stable dose of Brivaracetam initiated previously by another service; he has not had adverse effects and prefers no change at this stage. We discussed the potential value of further characterisation should the picture alter, including ambulatory EEG or admission for video-EEG telemetry if clinically indicated, but for now he is content to continue with self-management and follow-up.\n\nOn examination today, he was oriented, with normal speech and language, and no focal neurological deficits. Mood appeared steadier than at his last review according to his partner. There were no red flags suggestive of acute risk.\n\nPlan:\n- Continue current medication without adjustment at present.\n- Maintain psychological strategies and the episode diary; they will record context, duration, and recovery features.\n- Safety advice reinforced, including avoidance of high-risk situations during episodes.\n- Open access to clinic if the pattern changes, new features emerge (loss of awareness, injuries, nocturnal events), or frequency escalates.\n- Routine review in 4–6 months, sooner if needed.\n\nThank you for your ongoing care. Please let me know if there are any concerns you would like us to address in the interim.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify whether current events are epileptic: The letter explicitly states, \"events at present are considered non-epileptic,\" and also notes \"There is no clear history to suggest a specific seizure phenotype,\" indicating no confirmed epileptic seizures currently. 2) Check for any explicit seizure counts or frequencies: None are provided; the only quantified reference is to non-epileptic episodes being fewer over the past six weeks. 3) Assess duration of seizure-free status: While an exact duration is not stated, the letter references time spans such as \"over the past six weeks\" and \"in recent months.\" Given current events are non-epileptic, there is no evidence of epileptic seizures in recent months. However, the text does not confirm a full 6-month seizure-free period. 4) Apply rule for seizure-free labelling: Since the patient currently has no seizures and the duration is not confirmed to be ≥6 months, classify as seizure free for multiple months per the guidance allowing this when 6-month confirmation is insufficient.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "events at present are considered non-epileptic"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Events at present are considered non-epileptic and have become more manageable now that his anxiety is better controlled"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

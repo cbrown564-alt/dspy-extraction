@@ -1,0 +1,59 @@
+{
+  "id": "gan_3892",
+  "text": "Neurology Clinic\n\nClinic Date: 07 July 2015\n\nDr Patel\nRiverside Neurology Clinic\nLevel 3, Riverside Health Centre, 14 Millbank, London SW1P 3GP\n\nDear Dr Patel,\n\nEmily Roberts, DOB: 12-07-1998, Hospital No: H284559 NHS No. 9473510268\nFlat 5, 22 Brookside Avenue, London W6 8PL\n\nThank you for reviewing Emily Roberts in our neurology clinic today. She attended with her mother and keyworker. There is a remote history of mild traumatic brain injury in adolescence, without documented intracranial complications. No other relevant medical comorbidities were reported.\n\nCurrent status:\n- Seizure frequency: sz x3/yr, typically brief episodes with loss of awareness and subsequent fatigue. Family notes occasional tongue biting but no clear lateralising features. No injuries reported this year.\n- Triggers: Patient-reported poor sleep and intercurrent illness may precede events.\n- Rescue therapy: Not required in the past 12 months.\n- Antiseizure medicines: No recent changes; tolerating current regimen without adverse effects as per patient report.\n\nExamination today was unremarkable with no focal neurological deficits. Routine bloods from the GP last month were reportedly within reference ranges. We discussed basic safety measures around bathing, cooking, and heights, and the family confirmed they already follow common-sense precautions. The DVLA position was reviewed in general terms as per standard guidance, and they are aware to contact licensing authorities as appropriate should circumstances change.\n\nPlan:\n- Continue current management given stability at sz x3/yr and absence of medication side effects.\n- Provide written seizure first-aid advice for school and home.\n- Arrange routine follow-up in 9–12 months, or sooner if frequency increases, new semiology emerges, or injuries occur.\n\nPlease do not hesitate to contact me if you require further information.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 584,
+      "end": 611,
+      "text": "Seizure frequency: sz x3/yr",
+      "attributes": {
+        "Label": "3 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 603,
+      "end": 611,
+      "text": "sz x3/yr",
+      "attributes": {
+        "Label": "3 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3892,
+    "clinic_date": "Neurology Clinic\n\nClinic Date: 07 July 2015\n\nDr Patel\nRiverside Neurology Clinic\nLevel 3, Riverside Health Centre, 14 Millbank, London SW1P 3GP\n\nDear Dr Patel,\n\nEmily Roberts, DOB: 12-07-1998, Hospital No: H284559 NHS No. 9473510268\nFlat 5, 22 Brookside Avenue, London W6 8PL\n\nThank you for reviewing Emily Roberts in our neurology clinic today. She attended with her mother and keyworker. There is a remote history of mild traumatic brain injury in adolescence, without documented intracranial complications. No other relevant medical comorbidities were reported.\n\nCurrent status:\n- Seizure frequency: sz x3/yr, typically brief episodes with loss of awareness and subsequent fatigue. Family notes occasional tongue biting but no clear lateralising features. No injuries reported this year.\n- Triggers: Patient-reported poor sleep and intercurrent illness may precede events.\n- Rescue therapy: Not required in the past 12 months.\n- Antiseizure medicines: No recent changes; tolerating current regimen without adverse effects as per patient report.\n\nExamination today was unremarkable with no focal neurological deficits. Routine bloods from the GP last month were reportedly within reference ranges. We discussed basic safety measures around bathing, cooking, and heights, and the family confirmed they already follow common-sense precautions. The DVLA position was reviewed in general terms as per standard guidance, and they are aware to contact licensing authorities as appropriate should circumstances change.\n\nPlan:\n- Continue current management given stability at sz x3/yr and absence of medication side effects.\n- Provide written seizure first-aid advice for school and home.\n- Arrange routine follow-up in 9–12 months, or sooner if frequency increases, new semiology emerges, or injuries occur.\n\nPlease do not hesitate to contact me if you require further information.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency as 'sz x3/yr' and reiterates stability at this frequency in the plan. 'sz x3/yr' converts to '3 per year' per the allowed output formats. No other conflicting frequencies are provided, and the patient is not seizure free.",
+      "seizure_frequency_number": [
+        "3 per year",
+        "Seizure frequency: sz x3/yr"
+      ],
+      "reference": [
+        "3 per year",
+        "sz x3/yr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

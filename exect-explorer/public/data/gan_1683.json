@@ -1,0 +1,59 @@
+{
+  "id": "gan_1683",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 18 April 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nJordan Reeves, DOB: 14-03-1986, Hospital No: KCH472910 NHS No. 9983124576  \n12 Willow Park Mews, London, SE15 2QT\n\nThank you for asking me to review Jordan Reeves. He attended today with his assistance dog in training and his trainer, who provided helpful collateral information about recent events at home and in public settings. \n\nHe reports fluctuating health over the past two months with increased fatigue and difficulty concentrating after his typical episodes. Importantly, he and the trainer describe several focal seizures last month, some occurring in the late afternoon after busy training sessions and missed meals. These were characterised by a sudden pause in activity, brief vocalisation, rocking of the torso, and a period of confusion and emotional lability lasting up to 45 minutes. There has been no witnessed generalised tonic–clonic activity, tongue biting, or incontinence. He recalls fragments from some episodes and reports prominent tiredness afterwards. Night-time events have not been witnessed recently.\n\nHe remains engaged with his assistance dog programme; however, the trainer noted that the episodes occasionally interrupt conditioning tasks and public access training. There have been no injuries reported. He is keeping a paper diary, and I have encouraged him to pair this with a smartphone calendar so that we can better correlate events with sleep, stress, and missed meals. He prefers to avoid inpatient monitoring at present but is open to ambulatory EEG if we feel it would add value. Medication adherence was discussed; he states he has not missed doses to his knowledge.\n\nOn examination today he was alert, oriented, and cooperative. Speech, language, and cranial nerve examination were unremarkable. There were no lateralising motor or sensory deficits. Cardiovascular and respiratory examinations were normal. No abnormal movements were observed during the appointment.\n\nPlan discussed with the patient and trainer:  \n- Continue current antiseizure regimen unchanged for now while we gather better event data.  \n- Arrange routine EEG and consider ambulatory recording depending on those results and diary correlation.  \n- Request updated bloods including antiseizure medication levels, FBC, U&E, LFTs, and vitamin D.  \n- Provide a seizure action plan summary for the assistance dog training team to standardise responses during sessions.  \n- Safety advice reinforced regarding cooking, bathing, heights, and public travel; he already uses the trainer’s checklists.  \n- Follow-up in 8–10 weeks, sooner if the frequency increases or new features emerge.\n\nI will write again once we have the investigations and a more complete diary. Please do let me know if there is additional background that would assist, especially any prior imaging or EEG reports not yet on our system.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 795,
+      "text": "several focal seizures last month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 795,
+      "text": "several focal seizures last month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1683,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 18 April 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nJordan Reeves, DOB: 14-03-1986, Hospital No: KCH472910 NHS No. 9983124576  \n12 Willow Park Mews, London, SE15 2QT\n\nThank you for asking me to review Jordan Reeves. He attended today with his assistance dog in training and his trainer, who provided helpful collateral information about recent events at home and in public settings. \n\nHe reports fluctuating health over the past two months with increased fatigue and difficulty concentrating after his typical episodes. Importantly, he and the trainer describe several focal seizures last month, some occurring in the late afternoon after busy training sessions and missed meals. These were characterised by a sudden pause in activity, brief vocalisation, rocking of the torso, and a period of confusion and emotional lability lasting up to 45 minutes. There has been no witnessed generalised tonic–clonic activity, tongue biting, or incontinence. He recalls fragments from some episodes and reports prominent tiredness afterwards. Night-time events have not been witnessed recently.\n\nHe remains engaged with his assistance dog programme; however, the trainer noted that the episodes occasionally interrupt conditioning tasks and public access training. There have been no injuries reported. He is keeping a paper diary, and I have encouraged him to pair this with a smartphone calendar so that we can better correlate events with sleep, stress, and missed meals. He prefers to avoid inpatient monitoring at present but is open to ambulatory EEG if we feel it would add value. Medication adherence was discussed; he states he has not missed doses to his knowledge.\n\nOn examination today he was alert, oriented, and cooperative. Speech, language, and cranial nerve examination were unremarkable. There were no lateralising motor or sensory deficits. Cardiovascular and respiratory examinations were normal. No abnormal movements were observed during the appointment.\n\nPlan discussed with the patient and trainer:  \n- Continue current antiseizure regimen unchanged for now while we gather better event data.  \n- Arrange routine EEG and consider ambulatory recording depending on those results and diary correlation.  \n- Request updated bloods including antiseizure medication levels, FBC, U&E, LFTs, and vitamin D.  \n- Provide a seizure action plan summary for the assistance dog training team to standardise responses during sessions.  \n- Safety advice reinforced regarding cooking, bathing, heights, and public travel; he already uses the trainer’s checklists.  \n- Follow-up in 8–10 weeks, sooner if the frequency increases or new features emerge.\n\nI will write again once we have the investigations and a more complete diary. Please do let me know if there is additional background that would assist, especially any prior imaging or EEG reports not yet on our system.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states \"several focal seizures last month\" and provides no other numeric frequency. \"Several\" is a vague quantity, so per the rules this maps to \"multiple.\" Since the timing is \"last month,\" the normalized frequency is multiple per month. No other higher-frequency (e.g., weekly or daily) data are provided. The patient is not seizure-free.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "several focal seizures last month"
+      ],
+      "reference": [
+        "multiple per month",
+        "several focal seizures last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

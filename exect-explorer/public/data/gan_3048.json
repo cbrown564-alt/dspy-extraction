@@ -1,0 +1,59 @@
+{
+  "id": "gan_3048",
+  "text": "Department of Neurology\n\nClinic Date: 13 April 2020\n\nDr Eleanor Patel\nSt. George’s University Hospitals NHS Foundation Trust\nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT\n\nDear Dr Eleanor Patel,\n\nAlex Turner, DOB: 14-03-1990, Hospital No: G382719 NHS No. 9012765432\n12 Brookside Close, Wimbledon, London SW19 3QA\n\nDiagnoses:\n\nRecurrent unprovoked seizures, aetiology unconfirmed\nMultiple recent ED triage records reviewed; nursing documentation summarised below\n\nCurrent Medication:\n\nLevetiracetam 500 mg twice daily\nRescue medication: Buccal midazolam 10 mg for prolonged events (patient reports never used)\n\nPlan:\n\n- Continue Levetiracetam 500 mg twice daily\n- Routine bloods (FBC, U&E, LFTs) in 6 months via GP\n- Seizure first aid reviewed; continue avoidance of recognised triggers\n- Safety advice reinforced regarding driving, swimming alone, and heights\n- No routine follow-up booked; patient-initiated follow-up if new events or adverse effects\n\nI reviewed Alex Turner in my clinic today following multiple recent ED attendances recorded over the past two years, where triage notes and nursing documentation were available for review. These ED visits were largely precautionary and did not confirm new seizure activity. The patient reports improved sleep hygiene, reduced alcohol intake, and consistent medication adherence.\n\nImportantly, there have been No events for 16 months. This interval was clearly corroborated by the patient’s account and absence of ED documentation indicating witnessed events during this period. The patient denies nocturnal injuries, tongue biting, or prolonged post-event confusion since the last recorded episode. Headaches are occasional and non-progressive. There is no new focal neurological symptomatology.\n\nThe initial work-up (standard bloods and past imaging as reported by the patient) did not identify a clear cause. Prior ECG in ED was normal; there is no history suggestive of cardiac syncope. Given the current stability and tolerability of Levetiracetam without mood disturbance or somnolence, I have advised continuation at the present dose. I discussed common triggers and reinforced safety measures. We also agreed that laboratory monitoring can be coordinated in primary care.\n\nI have not arranged a routine follow-up appointment; however, I would be happy to review Alex Turner sooner should there be any breakthrough events, medication side effects, or new concerns. Please feel free to refer back with any updates from primary care or if further investigations become appropriate.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1341,
+      "end": 1394,
+      "text": "Importantly, there have been No events for 16 months.",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1370,
+      "end": 1393,
+      "text": "No events for 16 months",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3048,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 13 April 2020\n\nDr Eleanor Patel\nSt. George’s University Hospitals NHS Foundation Trust\nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT\n\nDear Dr Eleanor Patel,\n\nAlex Turner, DOB: 14-03-1990, Hospital No: G382719 NHS No. 9012765432\n12 Brookside Close, Wimbledon, London SW19 3QA\n\nDiagnoses:\n\nRecurrent unprovoked seizures, aetiology unconfirmed\nMultiple recent ED triage records reviewed; nursing documentation summarised below\n\nCurrent Medication:\n\nLevetiracetam 500 mg twice daily\nRescue medication: Buccal midazolam 10 mg for prolonged events (patient reports never used)\n\nPlan:\n\n- Continue Levetiracetam 500 mg twice daily\n- Routine bloods (FBC, U&E, LFTs) in 6 months via GP\n- Seizure first aid reviewed; continue avoidance of recognised triggers\n- Safety advice reinforced regarding driving, swimming alone, and heights\n- No routine follow-up booked; patient-initiated follow-up if new events or adverse effects\n\nI reviewed Alex Turner in my clinic today following multiple recent ED attendances recorded over the past two years, where triage notes and nursing documentation were available for review. These ED visits were largely precautionary and did not confirm new seizure activity. The patient reports improved sleep hygiene, reduced alcohol intake, and consistent medication adherence.\n\nImportantly, there have been No events for 16 months. This interval was clearly corroborated by the patient’s account and absence of ED documentation indicating witnessed events during this period. The patient denies nocturnal injuries, tongue biting, or prolonged post-event confusion since the last recorded episode. Headaches are occasional and non-progressive. There is no new focal neurological symptomatology.\n\nThe initial work-up (standard bloods and past imaging as reported by the patient) did not identify a clear cause. Prior ECG in ED was normal; there is no history suggestive of cardiac syncope. Given the current stability and tolerability of Levetiracetam without mood disturbance or somnolence, I have advised continuation at the present dose. I discussed common triggers and reinforced safety measures. We also agreed that laboratory monitoring can be coordinated in primary care.\n\nI have not arranged a routine follow-up appointment; however, I would be happy to review Alex Turner sooner should there be any breakthrough events, medication side effects, or new concerns. Please feel free to refer back with any updates from primary care or if further investigations become appropriate.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no seizure events for 16 months. This meets the criterion for being seizure free for at least 6 months. No other conflicting frequencies are provided. Therefore, the correct normalized label is 'seizure free for 16 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 16 month",
+        "Importantly, there have been No events for 16 months."
+      ],
+      "reference": [
+        "seizure free for 16 month",
+        "No events for 16 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

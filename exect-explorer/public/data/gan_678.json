@@ -1,0 +1,59 @@
+{
+  "id": "gan_678",
+  "text": "Department of Neurology\n\nClinic Date: 31 May 2020\n\nDr Amelia Hart  \nSt. Cuthbert’s Neurology Centre  \nOutpatient Neurology, 12 Mortimer Street, Manchester M1 4DL  \n\nDear Dr Amelia Hart,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610  \n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nRecurrent seizures of unclear classification.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily.\n\nPlan:\n\n- Continue current dose of Lamotrigine.  \n- Maintain psychological support and sleep hygiene strategies.  \n- Safety advice reinforced; no changes to driving status discussed today.  \n- Routine follow‑up in 9–12 months, or sooner if events increase or change in character.\n\nI reviewed John in clinic today. Since commencing regular psychological support, he reports better coping and fewer anxiety‑related triggers, and overall his condition is improving. He describes a more settled pattern of events in recent months: at present he is experiencing seizures twice every 4 months. This is a notable improvement compared to his prior pattern, where he could sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six.\n\nHe has had no injuries, no prolonged confusional episodes, and no hospital attendances since the last review. Sleep routine and adherence are good. He notes clearer prodromal feelings and is more confident using pacing and relaxation techniques provided through ongoing psychological support. Examination today is unremarkable, and no new neurological symptoms were reported.\n\nWe discussed continuing Lamotrigine at the current dose alongside the psychological strategies that appear to be contributing to the improved stability. He will keep a diary of events and contact us if there is any clustering, change in semiology, or functional impairment. No additional investigations are requested today.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 932,
+      "end": 991,
+      "text": "at present he is experiencing seizures twice every 4 months",
+      "attributes": {
+        "Label": "2 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 962,
+      "end": 991,
+      "text": "seizures twice every 4 months",
+      "attributes": {
+        "Label": "2 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 678,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 31 May 2020\n\nDr Amelia Hart  \nSt. Cuthbert’s Neurology Centre  \nOutpatient Neurology, 12 Mortimer Street, Manchester M1 4DL  \n\nDear Dr Amelia Hart,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610  \n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nRecurrent seizures of unclear classification.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily.\n\nPlan:\n\n- Continue current dose of Lamotrigine.  \n- Maintain psychological support and sleep hygiene strategies.  \n- Safety advice reinforced; no changes to driving status discussed today.  \n- Routine follow‑up in 9–12 months, or sooner if events increase or change in character.\n\nI reviewed John in clinic today. Since commencing regular psychological support, he reports better coping and fewer anxiety‑related triggers, and overall his condition is improving. He describes a more settled pattern of events in recent months: at present he is experiencing seizures twice every 4 months. This is a notable improvement compared to his prior pattern, where he could sometimes go nearly two week without seizures, but when they recur he tends to have several in one day, often between three and six.\n\nHe has had no injuries, no prolonged confusional episodes, and no hospital attendances since the last review. Sleep routine and adherence are good. He notes clearer prodromal feelings and is more confident using pacing and relaxation techniques provided through ongoing psychological support. Examination today is unremarkable, and no new neurological symptoms were reported.\n\nWe discussed continuing Lamotrigine at the current dose alongside the psychological strategies that appear to be contributing to the improved stability. He will keep a diary of events and contact us if there is any clustering, change in semiology, or functional impairment. No additional investigations are requested today.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current frequency: \"at present he is experiencing seizures twice every 4 months.\" Convert 'twice every 4 months' to the allowed format: 2 per 4 month. There is also historical information about clustering (three to six in one day) but that is prior pattern and not the current state, so we should not select the cluster format. No indication of seizure freedom. Therefore, the current seizure frequency is 2 per 4 month.",
+      "seizure_frequency_number": [
+        "2 per 4 month",
+        "at present he is experiencing seizures twice every 4 months"
+      ],
+      "reference": [
+        "2 per 4 month",
+        "seizures twice every 4 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

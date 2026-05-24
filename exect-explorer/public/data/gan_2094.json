@@ -1,0 +1,59 @@
+{
+  "id": "gan_2094",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAisha Khan, DOB: 12-05-1991, Hospital No: H483920 NHS No. 9056723411  \nFlat 12, 3 Jubilee Court, London, NW1 4AB \n\nMedication: \n\nLevetiracetam 500 mg twice daily. Tolerated without reported mood changes; mild daytime fatigue noted. \n\nHistory since last review: \n\nAisha Khan works at a busy metro station gate line where prolonged standing and intermittent crowd surges are common. Over the past month, she reports several absence seizures in the past month, typically brief lapses in awareness lasting under 10 seconds, with immediate recovery and no post-event confusion. Colleagues have noticed brief “blank spells” during peak commuter flow, particularly in the early evening. No convulsive events, tongue biting, or injuries reported. She denies clear triggers but notes poor sleep following late shifts and increased stress during service disruptions. Hydration is sometimes suboptimal while on duty. \n\nExamination today is unremarkable. Neurological assessment is normal between events. \n\nPlan: \n\n- Continue Levetiracetam 500 mg twice daily for now. I have advised a symptom and shift diary (noting sleep hours, hydration, and crowd surge periods) to correlate events. If the brief lapses persist at current frequency, we will consider a cautious dose increase after reviewing the diary and tolerability. \n- Occupational advice: discussed practical measures to reduce risk at the gate line during peak flow, including brief scheduled hydration breaks, rotating to a less crowded position where feasible, and ensuring a colleague is aware during higher-risk periods. Patient will discuss this with her line manager. \n- Safety: she reports no driving. We reiterated standard safety precautions around railway platforms and crowd control duties, and agreed she will step back from front-line surge management if she senses prodromal inattention. \n- Investigations: arrange an EEG with hyperventilation and photic stimulation. No new bloods required today. \n\nFollow-up in three months or sooner if the frequency of brief lapses increases, there is any injury, or a change in event character. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 602,
+      "end": 644,
+      "text": "several absence seizures in the past month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 602,
+      "end": 644,
+      "text": "several absence seizures in the past month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2094,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAisha Khan, DOB: 12-05-1991, Hospital No: H483920 NHS No. 9056723411  \nFlat 12, 3 Jubilee Court, London, NW1 4AB \n\nMedication: \n\nLevetiracetam 500 mg twice daily. Tolerated without reported mood changes; mild daytime fatigue noted. \n\nHistory since last review: \n\nAisha Khan works at a busy metro station gate line where prolonged standing and intermittent crowd surges are common. Over the past month, she reports several absence seizures in the past month, typically brief lapses in awareness lasting under 10 seconds, with immediate recovery and no post-event confusion. Colleagues have noticed brief “blank spells” during peak commuter flow, particularly in the early evening. No convulsive events, tongue biting, or injuries reported. She denies clear triggers but notes poor sleep following late shifts and increased stress during service disruptions. Hydration is sometimes suboptimal while on duty. \n\nExamination today is unremarkable. Neurological assessment is normal between events. \n\nPlan: \n\n- Continue Levetiracetam 500 mg twice daily for now. I have advised a symptom and shift diary (noting sleep hours, hydration, and crowd surge periods) to correlate events. If the brief lapses persist at current frequency, we will consider a cautious dose increase after reviewing the diary and tolerability. \n- Occupational advice: discussed practical measures to reduce risk at the gate line during peak flow, including brief scheduled hydration breaks, rotating to a less crowded position where feasible, and ensuring a colleague is aware during higher-risk periods. Patient will discuss this with her line manager. \n- Safety: she reports no driving. We reiterated standard safety precautions around railway platforms and crowd control duties, and agreed she will step back from front-line surge management if she senses prodromal inattention. \n- Investigations: arrange an EEG with hyperventilation and photic stimulation. No new bloods required today. \n\nFollow-up in three months or sooner if the frequency of brief lapses increases, there is any injury, or a change in event character. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient had 'several absence seizures in the past month.' 'Several' is a vague quantifier without a specific count. It clearly indicates seizures occurred within the last month but does not provide a precise number or rate per unit time. According to the rules, when the exact number cannot be determined but seizures are occurring, we should use 'multiple' with the appropriate time unit. Therefore, the normalized label is 'multiple per month.'",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "several absence seizures in the past month"
+      ],
+      "reference": [
+        "multiple per month",
+        "several absence seizures in the past month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

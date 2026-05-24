@@ -1,0 +1,59 @@
+{
+  "id": "gan_3102",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s Hospital  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Reynolds, DOB: 14-11-1991, Hospital No: H927451 NHS No. 8473026159  \n12 Brookfield Close, London, SW12 8AX  \n\nDiagnoses: \n\nSeizure disorder (aetiology not established). \n\nI reviewed Michael Reynolds in the neurology clinic today. He attended with his partner and brought his seizure diary app, which he has been using consistently for the past two years. The app data were exported and reviewed in clinic. Entries show regular medication reminders and monthly wellbeing notes, with clear timestamps confirming adherence. Importantly, the log documents \"No events for 14 months,\" with the last recorded event occurring in early August 2024. He reports no interim auras, blackouts, myoclonic jerks, absence-type episodes, or nocturnal events, and there have been no injuries or emergency attendances. \n\nMedications remain unchanged over the past year. He denies adverse effects, including daytime somnolence or cognitive slowing, and there is no reported mood disturbance. Sleep has been regular, alcohol intake minimal, and there have been no recent intercurrent illnesses. Driving status and safety advice were discussed; he confirms he is following DVLA guidance and has maintained the seizure diary app as corroborative evidence. \n\nOn examination today, observations were within normal limits. Neurological examination was unremarkable with normal gait, coordination and cranial nerve assessment. No tongue bite scarring or limb injuries were noted. \n\nInvestigations: Previous MRI brain (2023) reported no focal abnormalities. Prior routine EEG (2023) was non-diagnostic. No new investigations were arranged today given the stable period and the app-verified record of \"No events for 14 months.\" \n\nPlan: \n- Continue current antiseizure medication without change.  \n- Maintain the seizure diary app with monthly symptom and adherence entries.  \n- Reinforce general seizure safety and DVLA compliance; patient is aware and in agreement.  \n- Routine follow-up in 6 months, sooner if any events recur or new symptoms develop. \n\nPlease do not hesitate to contact me if you need further information. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 723,
+      "end": 746,
+      "text": "No events for 14 months",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 723,
+      "end": 746,
+      "text": "No events for 14 months",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3102,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George’s Hospital  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Reynolds, DOB: 14-11-1991, Hospital No: H927451 NHS No. 8473026159  \n12 Brookfield Close, London, SW12 8AX  \n\nDiagnoses: \n\nSeizure disorder (aetiology not established). \n\nI reviewed Michael Reynolds in the neurology clinic today. He attended with his partner and brought his seizure diary app, which he has been using consistently for the past two years. The app data were exported and reviewed in clinic. Entries show regular medication reminders and monthly wellbeing notes, with clear timestamps confirming adherence. Importantly, the log documents \"No events for 14 months,\" with the last recorded event occurring in early August 2024. He reports no interim auras, blackouts, myoclonic jerks, absence-type episodes, or nocturnal events, and there have been no injuries or emergency attendances. \n\nMedications remain unchanged over the past year. He denies adverse effects, including daytime somnolence or cognitive slowing, and there is no reported mood disturbance. Sleep has been regular, alcohol intake minimal, and there have been no recent intercurrent illnesses. Driving status and safety advice were discussed; he confirms he is following DVLA guidance and has maintained the seizure diary app as corroborative evidence. \n\nOn examination today, observations were within normal limits. Neurological examination was unremarkable with normal gait, coordination and cranial nerve assessment. No tongue bite scarring or limb injuries were noted. \n\nInvestigations: Previous MRI brain (2023) reported no focal abnormalities. Prior routine EEG (2023) was non-diagnostic. No new investigations were arranged today given the stable period and the app-verified record of \"No events for 14 months.\" \n\nPlan: \n- Continue current antiseizure medication without change.  \n- Maintain the seizure diary app with monthly symptom and adherence entries.  \n- Reinforce general seizure safety and DVLA compliance; patient is aware and in agreement.  \n- Routine follow-up in 6 months, sooner if any events recur or new symptoms develop. \n\nPlease do not hesitate to contact me if you need further information. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that the seizure diary app documents \"No events for 14 months,\" with the last recorded event in early August 2024. The patient reports no interim seizure-like symptoms. This meets the criterion for being seizure free for at least 6 months. Therefore, normalize to 'seizure free for 14 month'. No other frequencies are given that would override this.",
+      "seizure_frequency_number": [
+        "seizure free for 14 month",
+        "No events for 14 months"
+      ],
+      "reference": [
+        "seizure free for 14 month",
+        "No events for 14 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

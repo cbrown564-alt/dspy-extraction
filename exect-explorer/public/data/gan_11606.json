@@ -1,0 +1,47 @@
+{
+  "id": "gan_11606",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 April 2023 10:30\nTo: epilepsy.centre@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Lewis (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Easy-read information resources\n\nHi Emily\n\nPatient update: Currently not driving by self-report.\n\nI am writing to let you know that our service has produced new easy-read materials covering clinic pathways, appointment expectations, medication monitoring, and how to contact the team. These are designed to support shared decision-making and improve accessibility for patients and carers.\n\nAccess options:\n- Printed copies available at reception on request\n- PDF and large-print versions via our service email\n- Audio versions available upon request\n\nIf you or your patients would like copies, please reply to this email indicating preferred format and language. We can also provide summaries for care coordinators and community teams.\n\nWith best wishes",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11606,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Emily Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 April 2023 10:30\nTo: epilepsy.centre@nhs.net\nCc: Dr Ravi Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Lewis (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Easy-read information resources\n\nHi Emily\n\nPatient update: Currently not driving by self-report.\n\nI am writing to let you know that our service has produced new easy-read materials covering clinic pathways, appointment expectations, medication monitoring, and how to contact the team. These are designed to support shared decision-making and improve accessibility for patients and carers.\n\nAccess options:\n- Printed copies available at reception on request\n- PDF and large-print versions via our service email\n- Audio versions available upon request\n\nIf you or your patients would like copies, please reply to this email indicating preferred format and language. We can also provide summaries for care coordinators and community teams.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter for any mention of seizures or seizure frequency, including explicit numbers, ranges, or qualitative descriptions. The content focuses on easy-read information resources and includes a note that the patient is currently not driving, but there is no mention of seizures or their frequency. Since seizures are not referenced at all, per the rules, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter notifying availability of easy-read materials about epilepsy services"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

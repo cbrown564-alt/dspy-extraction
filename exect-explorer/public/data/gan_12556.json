@@ -1,0 +1,59 @@
+{
+  "id": "gan_12556",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 05 December 2020 10:15\nTo: adult.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Post-transition review and ongoing management\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nThe patient has recently transitioned from paediatric to adult neurology services. A parent may attend future appointments and provide collateral history when present.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 500 mg in the morning and 1000 mg at night\n3. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nSeizure frequency remains unchanged over the last six months; he continues to have up to 2 - 3 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review.\n\nPlan of Action:\n\n- We discussed his recent transition to adult services and the importance of consistent medication adherence, rescue plans, and liaison with community services. He reports good adherence; his parent, when present, corroborates the history of cluster patterns following sleep deprivation and intercurrent illness.\n- No immediate drug changes today, as he has had no events since the most recent review and is tolerating current therapy without reported adverse effects (no rash, mood change, or weight concerns). We agreed to maintain the current regimen for stability during the early transition period.\n- Safety advice reinforced, including supervision during bathing, avoidance of heights and open water, and SUDEP risk discussion with emphasis on sleep hygiene and adherence.\n- We have provided an updated seizure diary template and encouraged documentation of potential triggers and post-ictal recovery times; parent may add observations when attending.\n- Community epilepsy nurse contact provided for rescue medication review and support at home and college. We will also request historic paediatric EEG/MRI reports to complete the adult record set.\n- Follow-up arranged in four months, sooner if seizure burden increases, medication side effects emerge, or injuries occur.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 931,
+      "end": 962,
+      "text": "He also has daily drop attacks.",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 730,
+      "end": 1120,
+      "text": "Seizure frequency remains unchanged over the last six months; he continues to have up to 2 - 3 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12556,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 05 December 2020 10:15\nTo: adult.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Post-transition review and ongoing management\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nThe patient has recently transitioned from paediatric to adult neurology services. A parent may attend future appointments and provide collateral history when present.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 500 mg in the morning and 1000 mg at night\n3. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nSeizure frequency remains unchanged over the last six months; he continues to have up to 2 - 3 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review.\n\nPlan of Action:\n\n- We discussed his recent transition to adult services and the importance of consistent medication adherence, rescue plans, and liaison with community services. He reports good adherence; his parent, when present, corroborates the history of cluster patterns following sleep deprivation and intercurrent illness.\n- No immediate drug changes today, as he has had no events since the most recent review and is tolerating current therapy without reported adverse effects (no rash, mood change, or weight concerns). We agreed to maintain the current regimen for stability during the early transition period.\n- Safety advice reinforced, including supervision during bathing, avoidance of heights and open water, and SUDEP risk discussion with emphasis on sleep hygiene and adherence.\n- We have provided an updated seizure diary template and encouraged documentation of potential triggers and post-ictal recovery times; parent may add observations when attending.\n- Community epilepsy nurse contact provided for rescue medication review and support at home and college. We will also request historic paediatric EEG/MRI reports to complete the adult record set.\n- Follow-up arranged in four months, sooner if seizure burden increases, medication side effects emerge, or injuries occur.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly provides multiple seizure frequencies: 'up to 2 to 3 generalised tonic-clonic seizures per week', 'daily drop attacks', and 'focal impaired-awareness seizures every four to six weeks'. Per the rule to select the highest frequency when multiple exist, 'daily drop attacks' represent the most frequent seizures. Therefore, the normalized label is '1 per day'. The note 'No events have occurred since his most recent review' does not establish 6 months seizure freedom, so it does not change the frequency assessment.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "He also has daily drop attacks."
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure frequency remains unchanged over the last six months; he continues to have up to 2 - 3 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

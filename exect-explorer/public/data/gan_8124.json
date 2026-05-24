@@ -1,0 +1,59 @@
+{
+  "id": "gan_8124",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \nLevetiracetam 1000 mg twice daily, well tolerated without notable side effects. No changes made today. \n\nHistory and progress:  \nSince her last review, the patient reports sustained improvement in her episodes. Notably, she confirms: \"No seizures for the past thirteen months.\" She attributes this improvement to consistent medication adherence and a conscious reduction in alcohol intake, as well as avoiding late nights which she had previously noticed could be a trigger. She has not required rescue medication and there have been no emergency attendances. \n\nCurrent status:  \n- Seizure frequency: No seizures for the past thirteen months.  \n- Auras/warning symptoms: None reported in this interval.  \n- Triggers: Patient-reported reduction in alcohol and better sleep routine; she feels this has helped overall stability.  \n- Adverse effects: Denies mood change, sedation, dizziness, or cognitive concerns on current dose. \n\nPlan:  \n- Continue levetiracetam 1000 mg twice daily without change.  \n- Maintain current lifestyle measures, as the patient feels they have been beneficial.  \n- We have discussed routine safety advice and she is aware to contact the service if there is any recurrence.  \n\nFollow-up:  \nWe will review her again in nine months, or sooner if there is any change. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 890,
+      "end": 950,
+      "text": "Seizure frequency: No seizures for the past thirteen months.",
+      "attributes": {
+        "Label": "seizure free for 13 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 543,
+      "end": 583,
+      "text": "No seizures for the past thirteen months",
+      "attributes": {
+        "Label": "seizure free for 13 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8124,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 October 2025 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication:  \nLevetiracetam 1000 mg twice daily, well tolerated without notable side effects. No changes made today. \n\nHistory and progress:  \nSince her last review, the patient reports sustained improvement in her episodes. Notably, she confirms: \"No seizures for the past thirteen months.\" She attributes this improvement to consistent medication adherence and a conscious reduction in alcohol intake, as well as avoiding late nights which she had previously noticed could be a trigger. She has not required rescue medication and there have been no emergency attendances. \n\nCurrent status:  \n- Seizure frequency: No seizures for the past thirteen months.  \n- Auras/warning symptoms: None reported in this interval.  \n- Triggers: Patient-reported reduction in alcohol and better sleep routine; she feels this has helped overall stability.  \n- Adverse effects: Denies mood change, sedation, dizziness, or cognitive concerns on current dose. \n\nPlan:  \n- Continue levetiracetam 1000 mg twice daily without change.  \n- Maintain current lifestyle measures, as the patient feels they have been beneficial.  \n- We have discussed routine safety advice and she is aware to contact the service if there is any recurrence.  \n\nFollow-up:  \nWe will review her again in nine months, or sooner if there is any change. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current status: 'Seizure frequency: No seizures for the past thirteen months.' This confirms the patient has had no seizures and the duration exceeds the 6-month threshold for seizure freedom. Therefore, the normalized label should be 'seizure free for 13 month'. No other conflicting frequencies are mentioned, so no need to apply the multiple-frequency rule.",
+      "seizure_frequency_number": [
+        "seizure free for 13 month",
+        "Seizure frequency: No seizures for the past thirteen months."
+      ],
+      "reference": [
+        "seizure free for 13 month",
+        "No seizures for the past thirteen months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

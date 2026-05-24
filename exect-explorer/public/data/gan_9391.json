@@ -1,0 +1,59 @@
+{
+  "id": "gan_9391",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nFocal Epilepsy \n\nMedication: Lamotrigine ongoing since March 2024; Levetiracetam added August 2025 for breakthrough events.  \n\nCurrent regimen:  \n- Lamotrigine 100 mg twice daily (patient-reported adherence good)  \n- Levetiracetam 500 mg twice daily (initiated by local team; no reported mood change)  \n\nLamotrigine Blood Level:  \n- 12 September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 100 mg twice daily.  \n\nSeizures: The patient describes complex partial seizure monthly, characterised by a rising epigastric sensation, behavioural arrest, and impaired awareness lasting 1–2 minutes, with brief post-event confusion and no generalisation reported. No clear nocturnal events. Triggers uncertain; patient notes episodes more likely with poor sleep. Social alcohol use reported and currently reducing; patient feels this has modestly improved recovery after events. \n\nI reviewed Susan Miller today in clinic. History and semiology are in keeping with focal epilepsy. MRI brain (March 2023) reported normal. Routine EEG (July 2025) showed left temporal intermittent rhythmic slowing without definite epileptiform discharges. The clinical picture supports focal epilepsy with temporal lobe features. We discussed lifestyle factors, and the patient is actively reducing alcohol intake and maintaining regular sleep. No driving at present in line with DVLA guidance; the patient understands the need for a period seizure-free before resumption. \n\nPlan: Continue lamotrigine 100 mg twice daily and levetiracetam 500 mg twice daily. Repeat lamotrigine level in 8–10 weeks. Arrange ambulatory EEG if events persist at the same rate over the next two months. Safety advice reinforced (supervised bathing, avoid heights/open water). We agreed telephone follow-up in 12 weeks, sooner if frequency increases beyond complex partial seizure monthly or if any secondary generalisation occurs. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 842,
+      "end": 873,
+      "text": "complex partial seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 842,
+      "end": 873,
+      "text": "complex partial seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9391,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nFocal Epilepsy \n\nMedication: Lamotrigine ongoing since March 2024; Levetiracetam added August 2025 for breakthrough events.  \n\nCurrent regimen:  \n- Lamotrigine 100 mg twice daily (patient-reported adherence good)  \n- Levetiracetam 500 mg twice daily (initiated by local team; no reported mood change)  \n\nLamotrigine Blood Level:  \n- 12 September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 100 mg twice daily.  \n\nSeizures: The patient describes complex partial seizure monthly, characterised by a rising epigastric sensation, behavioural arrest, and impaired awareness lasting 1–2 minutes, with brief post-event confusion and no generalisation reported. No clear nocturnal events. Triggers uncertain; patient notes episodes more likely with poor sleep. Social alcohol use reported and currently reducing; patient feels this has modestly improved recovery after events. \n\nI reviewed Susan Miller today in clinic. History and semiology are in keeping with focal epilepsy. MRI brain (March 2023) reported normal. Routine EEG (July 2025) showed left temporal intermittent rhythmic slowing without definite epileptiform discharges. The clinical picture supports focal epilepsy with temporal lobe features. We discussed lifestyle factors, and the patient is actively reducing alcohol intake and maintaining regular sleep. No driving at present in line with DVLA guidance; the patient understands the need for a period seizure-free before resumption. \n\nPlan: Continue lamotrigine 100 mg twice daily and levetiracetam 500 mg twice daily. Repeat lamotrigine level in 8–10 weeks. Arrange ambulatory EEG if events persist at the same rate over the next two months. Safety advice reinforced (supervised bathing, avoid heights/open water). We agreed telephone follow-up in 12 weeks, sooner if frequency increases beyond complex partial seizure monthly or if any secondary generalisation occurs. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'The patient describes complex partial seizure monthly...' and later: '...sooner if frequency increases beyond complex partial seizure monthly...' This provides a clear current frequency of 1 seizure per month. No other seizure types/frequencies are reported that would be more frequent. Therefore, the normalized label is '1 per month'.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "complex partial seizure monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "complex partial seizure monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

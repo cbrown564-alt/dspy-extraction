@@ -1,0 +1,65 @@
+{
+  "id": "gan_4731",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Patient reports ongoing use of levetiracetam 750mg twice daily since March 2024. No recent changes to dose or formulation. \n\nPast adverse effects: Historical intolerance to antiseizure medicines noted in prior records, including a pruritic rash with carbamazepine (date not specified) and gastrointestinal upset with sodium valproate (nausea and dyspepsia, previously self-limited after discontinuation). No current cutaneous or GI symptoms. \n\nSeizures: Patient states that “seizures happen rare,” typically brief episodes with impaired awareness lasting under two minutes, without a clear trigger. Last event reportedly occurred in late May 2025 while watching television; recovery was spontaneous with post-event fatigue only. No reported tongue-biting, head injury, or emergency department attendance. No auras or consistent warnings identified. No convulsive events described by partner during sleep. \n\nInterim history: Since the previous review in January 2025, the patient has maintained regular sleep and hydration and has not missed medication doses to their knowledge. Alcohol intake remains minimal (1–2 units/week). They continue to avoid known personal precipitants such as sleep deprivation. They have not driven and are aware of DVLA guidance regarding seizure-free intervals. \n\nInvestigations: No recent drug levels requested as not routinely indicated for levetiracetam. Prior MRI brain (2023) reported as non-diagnostic with no focal lesion. EEG from 2023 noted non-specific background changes without clear epileptiform discharges. \n\nPlan discussed today: \n- Continue current levetiracetam 750mg twice daily as tolerated. \n- Reinforced adherence and seizure first-aid education. \n- Patient prefers to defer medication changes given that “seizures happen rare” and side effect concerns from past agents; they understand to contact us if frequency or severity changes. \n- Safety: advised to continue avoiding identified triggers where possible and to maintain DVLA restrictions. \n- Follow-up: routine telephone review in 6 months, or earlier if breakthrough events cluster or new adverse effects occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 870,
+      "end": 945,
+      "text": "“seizures happen rare,” ... Last event reportedly occurred in late May 2025",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 871,
+      "end": 891,
+      "text": "seizures happen rare",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4731,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Patient reports ongoing use of levetiracetam 750mg twice daily since March 2024. No recent changes to dose or formulation. \n\nPast adverse effects: Historical intolerance to antiseizure medicines noted in prior records, including a pruritic rash with carbamazepine (date not specified) and gastrointestinal upset with sodium valproate (nausea and dyspepsia, previously self-limited after discontinuation). No current cutaneous or GI symptoms. \n\nSeizures: Patient states that “seizures happen rare,” typically brief episodes with impaired awareness lasting under two minutes, without a clear trigger. Last event reportedly occurred in late May 2025 while watching television; recovery was spontaneous with post-event fatigue only. No reported tongue-biting, head injury, or emergency department attendance. No auras or consistent warnings identified. No convulsive events described by partner during sleep. \n\nInterim history: Since the previous review in January 2025, the patient has maintained regular sleep and hydration and has not missed medication doses to their knowledge. Alcohol intake remains minimal (1–2 units/week). They continue to avoid known personal precipitants such as sleep deprivation. They have not driven and are aware of DVLA guidance regarding seizure-free intervals. \n\nInvestigations: No recent drug levels requested as not routinely indicated for levetiracetam. Prior MRI brain (2023) reported as non-diagnostic with no focal lesion. EEG from 2023 noted non-specific background changes without clear epileptiform discharges. \n\nPlan discussed today: \n- Continue current levetiracetam 750mg twice daily as tolerated. \n- Reinforced adherence and seizure first-aid education. \n- Patient prefers to defer medication changes given that “seizures happen rare” and side effect concerns from past agents; they understand to contact us if frequency or severity changes. \n- Safety: advised to continue avoiding identified triggers where possible and to maintain DVLA restrictions. \n- Follow-up: routine telephone review in 6 months, or earlier if breakthrough events cluster or new adverse effects occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient continues to have seizures described as rare, with the last reported event in late May 2025. The clinic date is 02 October 2025, which is approximately 4 months after the last event, so the patient cannot be considered seizure free for 6 months. There is no explicit numeric frequency provided, only the vague descriptor “seizures happen rare.” No other quantifiable frequency information is given. Therefore, per instructions, if seizures are mentioned but frequency cannot be determined, the result should be 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "“seizures happen rare,” ... Last event reportedly occurred in late May 2025"
+      ],
+      "reference": [
+        "unknown",
+        "seizures happen rare"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

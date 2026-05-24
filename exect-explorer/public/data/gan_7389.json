@@ -1,0 +1,54 @@
+{
+  "id": "gan_7389",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 September 2025\n\nDr Helen Morton\nElm Park Medical Centre\n\n27 Elm Park Road\nMaidstone\nKent ME15 7XY\nDear Dr Helen Morton\nDaniel Cooper, DOB: 14-03-1990, Hospital No: H937524 NHS No. 8427163905\n12 Oak View, Flat 2, Maidstone, ME14 2AB\n\nDiagnoses/summary: Recurrent unprovoked seizures with uncertain classification; prior routine EEG unremarkable; historical MRI normal by report.\n\nPrevious medication: Levetiracetam (sedation, irritability), Sodium valproate (weight gain), Carbamazepine (dizziness), Lamotrigine (rash at low dose), Clobazam PRN.\n\nNot taken: Topiramate, Zonisamide, Lacosamide, Perampanel, Brivaracetam, Rufinamide.\n\nOther relevant: Thyroid function normal in 2024; no history of head injury; sleep irregularity reported.\n\nI reviewed Daniel Cooper in clinic today accompanied by a friend. Seizure burden could not be reliably quantified, and events continue despite attempts to escalate therapy, with tolerability restricting dose increases. He reports occasional brief warnings of \"feeling off\" but no consistent pattern. No new neurological symptoms. He works part-time and is seeking occupational advice.\n\nCurrent medication:\n- Brivaracetam 50 mg twice daily (initiated by local team; mild benefit, low mood noted)\n- Folic acid 5 mg daily (self-initiated)\n\nPlan:\n- Continue brivaracetam at current dose for now; monitor mood and energy. If adverse effects persist, consider switch rather than up-titration.\n- Arrange sleep and seizure diary; partner to capture descriptions if safe.\n- Request repeat MRI brain (epilepsy protocol) and ambulatory EEG to aid further decision-making.\n- DVLA guidance reiterated; safety around water/heights reviewed.\n- Nurse phone review in 6 weeks; routine follow-up in 4 months, sooner if deterioration.\n\nPlease continue shared care arrangements. I am happy to see him earlier if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 849,
+      "end": 896,
+      "text": "Seizure burden could not be reliably quantified",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7389,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 12 September 2025\n\nDr Helen Morton\nElm Park Medical Centre\n\n27 Elm Park Road\nMaidstone\nKent ME15 7XY\nDear Dr Helen Morton\nDaniel Cooper, DOB: 14-03-1990, Hospital No: H937524 NHS No. 8427163905\n12 Oak View, Flat 2, Maidstone, ME14 2AB\n\nDiagnoses/summary: Recurrent unprovoked seizures with uncertain classification; prior routine EEG unremarkable; historical MRI normal by report.\n\nPrevious medication: Levetiracetam (sedation, irritability), Sodium valproate (weight gain), Carbamazepine (dizziness), Lamotrigine (rash at low dose), Clobazam PRN.\n\nNot taken: Topiramate, Zonisamide, Lacosamide, Perampanel, Brivaracetam, Rufinamide.\n\nOther relevant: Thyroid function normal in 2024; no history of head injury; sleep irregularity reported.\n\nI reviewed Daniel Cooper in clinic today accompanied by a friend. Seizure burden could not be reliably quantified, and events continue despite attempts to escalate therapy, with tolerability restricting dose increases. He reports occasional brief warnings of \"feeling off\" but no consistent pattern. No new neurological symptoms. He works part-time and is seeking occupational advice.\n\nCurrent medication:\n- Brivaracetam 50 mg twice daily (initiated by local team; mild benefit, low mood noted)\n- Folic acid 5 mg daily (self-initiated)\n\nPlan:\n- Continue brivaracetam at current dose for now; monitor mood and energy. If adverse effects persist, consider switch rather than up-titration.\n- Arrange sleep and seizure diary; partner to capture descriptions if safe.\n- Request repeat MRI brain (epilepsy protocol) and ambulatory EEG to aid further decision-making.\n- DVLA guidance reiterated; safety around water/heights reviewed.\n- Nurse phone review in 6 weeks; routine follow-up in 4 months, sooner if deterioration.\n\nPlease continue shared care arrangements. I am happy to see him earlier if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly mentions that the patient continues to have seizures but explicitly states that the seizure burden could not be reliably quantified. There are no numeric frequencies or time-based rates provided, nor evidence of seizure freedom for 6 months or more. Therefore, per the rules, since seizures are mentioned but the specific frequency cannot be determined, the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Seizure burden could not be reliably quantified"
+      ],
+      "reference": [
+        "unknown",
+        "Tolerability-limited dosing with ongoing seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

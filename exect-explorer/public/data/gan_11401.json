@@ -1,0 +1,47 @@
+{
+  "id": "gan_11401",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 19 June 2021\n\nDr A. Patel\nRiverside Medical Practice\n48 Bridge Lane, Oxford OX2 0AG\n\nDear Dr A. Patel,\n\nJames Whitfield, DOB: 22-11-1984, Hospital No: H573920 NHS No. 9034512768\nFlat 5, 21 Arundel Court, London SW1P 3EA\n\nEpilepsy\n\nReason for contact: Appointment request for review in context of frequent international travel and irregular sleep pattern.\n\nBackground: Patient is a frequent business traveller across multiple time zones and has variable sleep routine. Appointments are often conducted by telephone due to travel commitments.\n\nMedication: Currently prescribed Lamotrigine 100 mg twice daily. No recent changes reported. No adverse effects reported.\n\nPlan:\n- Arrange a telephone clinic review within 4 weeks to discuss adherence strategies around time-zone changes and to confirm dosing schedule while travelling.\n- Provide written guidance on medication timing during long-haul flights.\n- Coordinate with GP for repeat prescription alignment and to ensure availability of sufficient supply for extended trips.\n- Offer flexible early-morning or late-evening telephone slots to accommodate travel schedule.\n\nPlease let us know suitable dates/times for a remote review, or if an in-person visit is preferred when the patient is next in London.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11401,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 19 June 2021\n\nDr A. Patel\nRiverside Medical Practice\n48 Bridge Lane, Oxford OX2 0AG\n\nDear Dr A. Patel,\n\nJames Whitfield, DOB: 22-11-1984, Hospital No: H573920 NHS No. 9034512768\nFlat 5, 21 Arundel Court, London SW1P 3EA\n\nEpilepsy\n\nReason for contact: Appointment request for review in context of frequent international travel and irregular sleep pattern.\n\nBackground: Patient is a frequent business traveller across multiple time zones and has variable sleep routine. Appointments are often conducted by telephone due to travel commitments.\n\nMedication: Currently prescribed Lamotrigine 100 mg twice daily. No recent changes reported. No adverse effects reported.\n\nPlan:\n- Arrange a telephone clinic review within 4 weeks to discuss adherence strategies around time-zone changes and to confirm dosing schedule while travelling.\n- Provide written guidance on medication timing during long-haul flights.\n- Coordinate with GP for repeat prescription alignment and to ensure availability of sufficient supply for extended trips.\n- Offer flexible early-morning or late-evening telephone slots to accommodate travel schedule.\n\nPlease let us know suitable dates/times for a remote review, or if an in-person visit is preferred when the patient is next in London.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Reviewed the letter for any explicit mention of seizures, last seizure date, seizure-free duration, or numeric frequency. The document discusses epilepsy management, travel-related adherence, and medication but does not mention seizures at all. With no reference to seizures or their frequency, the correct classification is 'no seizure frequency reference'. The seizure-free for 6 months rule cannot be applied because there is no information about seizure occurrence.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter about a new epilepsy clinic appointment request"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

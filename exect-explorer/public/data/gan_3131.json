@@ -1,0 +1,48 @@
+{
+  "id": "gan_3131",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAyesha Khan, DOB: 22-11-1990, Hospital No: H392741 NHS No. 9034182765  \nFlat 4, 28 Rose Lane, London, SE1 3DF  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine (no recent adjustments)  \n\nLamotrigine tablets 100 mg twice daily (patient confirms adherence) \n\nLamotrigine Blood Level:  \n\n24th September 2025: 4.8 mg/L (therapeutic reference 1.0–15.0 mg/L). Dose at sampling: 100 mg twice daily.  \n\nSeizures: Patient reports no events, auras, or warnings since the prior review; she states she has remained event-free throughout this interval. \n\nI reviewed Ayesha Khan today by telephone. She works in metal fabrication and welding with intermittent arc-light exposure. She uses a protective visor and follows workplace safety protocols consistently. She has not noticed any light sensitivity, visual disturbance, or premonitory symptoms in relation to welding tasks. Sleep is generally good, with no recent intercurrent illness or missed doses. No side effects from Lamotrigine reported (no rash, dizziness, or diplopia). \n\nPlan: Continue current Lamotrigine dose. Routine blood level today is satisfactory and concordant with dosing history. She will contact the clinic promptly if any episodes occur or if occupational exposures change. I have advised continued use of standard eye and face protection per workplace policy; patient reports compliance. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 668,
+      "end": 802,
+      "text": "Patient reports no events, auras, or warnings since the prior review; she states she has remained event-free throughout this interval.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3131,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAyesha Khan, DOB: 22-11-1990, Hospital No: H392741 NHS No. 9034182765  \nFlat 4, 28 Rose Lane, London, SE1 3DF  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine (no recent adjustments)  \n\nLamotrigine tablets 100 mg twice daily (patient confirms adherence) \n\nLamotrigine Blood Level:  \n\n24th September 2025: 4.8 mg/L (therapeutic reference 1.0–15.0 mg/L). Dose at sampling: 100 mg twice daily.  \n\nSeizures: Patient reports no events, auras, or warnings since the prior review; she states she has remained event-free throughout this interval. \n\nI reviewed Ayesha Khan today by telephone. She works in metal fabrication and welding with intermittent arc-light exposure. She uses a protective visor and follows workplace safety protocols consistently. She has not noticed any light sensitivity, visual disturbance, or premonitory symptoms in relation to welding tasks. Sleep is generally good, with no recent intercurrent illness or missed doses. No side effects from Lamotrigine reported (no rash, dizziness, or diplopia). \n\nPlan: Continue current Lamotrigine dose. Routine blood level today is satisfactory and concordant with dosing history. She will contact the clinic promptly if any episodes occur or if occupational exposures change. I have advised continued use of standard eye and face protection per workplace policy; patient reports compliance. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"no events ... since the prior review\" and that she has \"remained event-free throughout this interval.\" This confirms zero seizures in the current interval. However, the duration since the prior review is not specified, so we cannot confirm ≥6 months of seizure freedom. Per the rules, when seizure-free status is clear but the ≥6-month criterion cannot be confirmed, classify as seizure free for multiple months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Patient reports no events, auras, or warnings since the prior review; she states she has remained event-free throughout this interval."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures since last visit"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

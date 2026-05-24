@@ -1,0 +1,54 @@
+{
+  "id": "gan_7328",
+  "text": "Department of Neurology\n\nClinic Date: 22 February 2024\n\nDr Amelia Foster\nSt Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Amelia Foster,\n\nRe: Daniel Green, DOB: 14-02-1990, Hospital No: H392774, NHS No: 9034471182\nAddress: Flat 3, 27 Brook Lane, London, SE5 8QJ\n\nDiagnoses:\n- Generalised epilepsy\n- Historical EEG with generalised spike–wave discharges consistent with a primary generalised epilepsy syndrome\n\nCurrent Medication:\n- Lamotrigine 100 mg twice daily\n- Levetiracetam 500 mg twice daily\n\nHistory and Progress:\nI reviewed Daniel Green in clinic today. He reports good adherence to his current antiseizure regimen and uses a seizure diary. Since our last contact, he has experienced occasional brief absence episodes, mainly under conditions of sleep deprivation or heightened stress. He has not reported any generalised tonic–clonic seizures in the past 18 months. Functionally, he is training an assistance dog, which he finds helpful for routine, prompting rest, and confidence in community settings. From a seizure control perspective, he has had a meaningful reduction in event burden on combination therapy; however, a small number of short events continue to occur. In summary, there is a partial response to current antiseizure medicines with persisting residual episodes.\n\nExamination:\nNeurological examination today was unremarkable. No adverse effects from medication were reported beyond mild, intermittent fatigue.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily and levetiracetam 500 mg twice daily without change.\n- Reinforce sleep hygiene and stress-management strategies, as these appear to be relevant precipitants.\n- No driving as per DVLA guidance should any further generalised tonic–clonic seizure occur; he currently meets advice applicable to brief absence episodes only, and we discussed the need to inform DVLA if event pattern changes.\n- Seizure diary to be maintained; consider ambulatory EEG if absence frequency increases or if events cluster.\n- Follow-up in 9–12 months, sooner if events escalate or new features emerge.\n\nSummary:\nDaniel Green has generalised epilepsy with sustained reduction in convulsive seizures on dual therapy. Nonetheless, some brief absence episodes persist, representing an incomplete but meaningful therapeutic response.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 717,
+      "end": 769,
+      "text": "he has experienced occasional brief absence episodes",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7328,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 22 February 2024\n\nDr Amelia Foster\nSt Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Amelia Foster,\n\nRe: Daniel Green, DOB: 14-02-1990, Hospital No: H392774, NHS No: 9034471182\nAddress: Flat 3, 27 Brook Lane, London, SE5 8QJ\n\nDiagnoses:\n- Generalised epilepsy\n- Historical EEG with generalised spike–wave discharges consistent with a primary generalised epilepsy syndrome\n\nCurrent Medication:\n- Lamotrigine 100 mg twice daily\n- Levetiracetam 500 mg twice daily\n\nHistory and Progress:\nI reviewed Daniel Green in clinic today. He reports good adherence to his current antiseizure regimen and uses a seizure diary. Since our last contact, he has experienced occasional brief absence episodes, mainly under conditions of sleep deprivation or heightened stress. He has not reported any generalised tonic–clonic seizures in the past 18 months. Functionally, he is training an assistance dog, which he finds helpful for routine, prompting rest, and confidence in community settings. From a seizure control perspective, he has had a meaningful reduction in event burden on combination therapy; however, a small number of short events continue to occur. In summary, there is a partial response to current antiseizure medicines with persisting residual episodes.\n\nExamination:\nNeurological examination today was unremarkable. No adverse effects from medication were reported beyond mild, intermittent fatigue.\n\nPlan:\n- Continue lamotrigine 100 mg twice daily and levetiracetam 500 mg twice daily without change.\n- Reinforce sleep hygiene and stress-management strategies, as these appear to be relevant precipitants.\n- No driving as per DVLA guidance should any further generalised tonic–clonic seizure occur; he currently meets advice applicable to brief absence episodes only, and we discussed the need to inform DVLA if event pattern changes.\n- Seizure diary to be maintained; consider ambulatory EEG if absence frequency increases or if events cluster.\n- Follow-up in 9–12 months, sooner if events escalate or new features emerge.\n\nSummary:\nDaniel Green has generalised epilepsy with sustained reduction in convulsive seizures on dual therapy. Nonetheless, some brief absence episodes persist, representing an incomplete but meaningful therapeutic response.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient continues to have 'occasional brief absence episodes' and 'a small number of short events continue to occur.' There is no explicit numeric frequency or time unit provided. While it notes no generalised tonic–clonic seizures in 18 months, absence episodes are ongoing without a quantifiable rate. Per instructions, if seizures are mentioned but frequency cannot be determined, return 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "he has experienced occasional brief absence episodes"
+      ],
+      "reference": [
+        "unknown",
+        "Partial response to ASM; residual events persist"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

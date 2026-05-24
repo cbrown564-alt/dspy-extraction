@@ -1,0 +1,59 @@
+{
+  "id": "gan_15168",
+  "text": "Department of Neurology \n\nClinic Date: 10 December 2019 \n\nDr Priya Shah  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Priya Shah,  \n\nAlex Turner, DOB: 14-02-1990, Hospital No: H392845 NHS No. 9075634211  \n12 Brookfield Lane, Wimbledon, London SW19 3QT \n\nDiagnoses: \n\nCombined generalised and focal epilepsy – patient has both generalised and focal epilepsy.  \nEEG (November 2018): generalised spike-and-wave discharges with occasional left temporal sharp waves. \n\nCurrent Medication: \n\nLamotrigine 100 mg bd  \nLevetiracetam 500 mg bd \n\nPlan: \n\n- Continue current antiepileptic regimen unchanged.  \n- Reinforce sleep hygiene; consider graded support for nocturnal infant care to reduce sleep fragmentation.  \n- Safety advice reiterated regarding sleep deprivation as a seizure trigger.  \n- Arrange routine follow-up in 6 months, or earlier if any breakthrough generalised or focal impaired-awareness seizures occur. \n\nI reviewed Alex Turner in my clinic today. He is now within six months post-partum and reports that night-time sleep is fragmented due to infant care. He has had no generalised seizures since 9 - 2018, though continues to experience brief jumps from time to time. He describes these as sudden myoclonic jerks predominantly in the early morning after disrupted sleep. In addition, he reports occasional brief focal auras characterised by a rising epigastric sensation and momentary derealisation without loss of awareness; there has been no progression to focal impaired-awareness or convulsive seizures. \n\nHe remains adherent to lamotrigine and levetiracetam without notable adverse effects. We discussed the impact of sleep deprivation on seizure threshold and explored practical measures to improve consolidated sleep where feasible. Driving status and standard safety guidance were reviewed in line with DVLA advice; he is aware to report any recurrence of generalised or impaired-awareness events. \n\nI will see him again in approximately six months for reassessment. He will contact us sooner if there is any deterioration. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1206,
+      "end": 1259,
+      "text": "continues to experience brief jumps from time to time",
+      "attributes": {
+        "Label": "multiple per 15 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1148,
+      "end": 1259,
+      "text": "He has had no generalised seizures since 9 - 2018, though continues to experience brief jumps from time to time",
+      "attributes": {
+        "Label": "multiple per 15 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15168,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 10 December 2019 \n\nDr Priya Shah  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Priya Shah,  \n\nAlex Turner, DOB: 14-02-1990, Hospital No: H392845 NHS No. 9075634211  \n12 Brookfield Lane, Wimbledon, London SW19 3QT \n\nDiagnoses: \n\nCombined generalised and focal epilepsy – patient has both generalised and focal epilepsy.  \nEEG (November 2018): generalised spike-and-wave discharges with occasional left temporal sharp waves. \n\nCurrent Medication: \n\nLamotrigine 100 mg bd  \nLevetiracetam 500 mg bd \n\nPlan: \n\n- Continue current antiepileptic regimen unchanged.  \n- Reinforce sleep hygiene; consider graded support for nocturnal infant care to reduce sleep fragmentation.  \n- Safety advice reiterated regarding sleep deprivation as a seizure trigger.  \n- Arrange routine follow-up in 6 months, or earlier if any breakthrough generalised or focal impaired-awareness seizures occur. \n\nI reviewed Alex Turner in my clinic today. He is now within six months post-partum and reports that night-time sleep is fragmented due to infant care. He has had no generalised seizures since 9 - 2018, though continues to experience brief jumps from time to time. He describes these as sudden myoclonic jerks predominantly in the early morning after disrupted sleep. In addition, he reports occasional brief focal auras characterised by a rising epigastric sensation and momentary derealisation without loss of awareness; there has been no progression to focal impaired-awareness or convulsive seizures. \n\nHe remains adherent to lamotrigine and levetiracetam without notable adverse effects. We discussed the impact of sleep deprivation on seizure threshold and explored practical measures to improve consolidated sleep where feasible. Driving status and standard safety guidance were reviewed in line with DVLA advice; he is aware to report any recurrence of generalised or impaired-awareness events. \n\nI will see him again in approximately six months for reassessment. He will contact us sooner if there is any deterioration. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 10 December 2019. The letter states the patient has had no generalised seizures since 9-2018, but still has seizures: brief myoclonic jerks ('brief jumps') from time to time and occasional focal auras. Therefore, the patient is not seizure-free overall. No numeric rate is given for these ongoing seizures, but the wording implies recurrent events ('from time to time', 'occasional'). The clearest explicit time span available to anchor these ongoing events is from September 2018 to the clinic date. Calculating this interval: Sep 2018 to Dec 2018 = 3 months; Jan 2019 to Dec 2019 = 12 months; total ≈ 15 months to the clinic date. Thus, the frequency can be expressed as multiple events over a 15-month period.",
+      "seizure_frequency_number": [
+        "multiple per 15 month",
+        "continues to experience brief jumps from time to time"
+      ],
+      "reference": [
+        "multiple per 15 month",
+        "He has had no generalised seizures since 9 - 2018, though continues to experience brief jumps from time to time"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

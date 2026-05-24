@@ -1,0 +1,59 @@
+{
+  "id": "gan_14824",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 August 2023 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Bennett, DOB: 12-05-1991, Hospital No: N384209 NHS No. 9054173268  \n14 Brookfield Road, London, W11 2PA \n\nMedication: \n\nLamotrigine 100 mg/100 mg, restarted in July following a brief lapse in supply; well tolerated without rash or dizziness. \n\nI reviewed her today in our neurology clinic. Communication was supported via scheduled speakerphone with her sister present, as she has chronic hearing difficulty and prefers this arrangement for clarity. She reports a history of focal epilepsy, with prior sensory auras and brief behavioural arrest. She had recurrent headaches following her seizures earlier this month, but these have now settled. On 14/Jul the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 21/Jul and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes.\n\nFrom an epilepsy perspective, the semiology remains consistent with focal onset events, and there have been no new focal neurological symptoms. Sleep and hydration have improved after adjusting her work schedule. She denies missed doses since resuming medication and has set phone reminders, which her sister also monitors during our speakerphone check-ins. There are no features to suggest secondary generalisation. \n\nGiven her stability and the focal epilepsy diagnosis, I have recommended continuation of Lamotrigine at the current dose and adherence to regular dosing times. She will let us know if any breakthrough events occur, especially if associated with illness, sleep deprivation, or stress. We discussed routine safety advice relevant to focal seizures. She is content with ongoing telephone follow-up with a family member assisting communication due to her hearing difficulty. \n\nWe will see her back in four months, or sooner if seizures recur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 925,
+      "end": 1043,
+      "text": "Her last reported event was on 21/Jul and she has been seizure-free since. As she has now been stable for over 4 weeks",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 740,
+      "end": 1094,
+      "text": "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 14/Jul the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 21/Jul and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14824,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 August 2023 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Bennett, DOB: 12-05-1991, Hospital No: N384209 NHS No. 9054173268  \n14 Brookfield Road, London, W11 2PA \n\nMedication: \n\nLamotrigine 100 mg/100 mg, restarted in July following a brief lapse in supply; well tolerated without rash or dizziness. \n\nI reviewed her today in our neurology clinic. Communication was supported via scheduled speakerphone with her sister present, as she has chronic hearing difficulty and prefers this arrangement for clarity. She reports a history of focal epilepsy, with prior sensory auras and brief behavioural arrest. She had recurrent headaches following her seizures earlier this month, but these have now settled. On 14/Jul the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 21/Jul and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes.\n\nFrom an epilepsy perspective, the semiology remains consistent with focal onset events, and there have been no new focal neurological symptoms. Sleep and hydration have improved after adjusting her work schedule. She denies missed doses since resuming medication and has set phone reminders, which her sister also monitors during our speakerphone check-ins. There are no features to suggest secondary generalisation. \n\nGiven her stability and the focal epilepsy diagnosis, I have recommended continuation of Lamotrigine at the current dose and adherence to regular dosing times. She will let us know if any breakthrough events occur, especially if associated with illness, sleep deprivation, or stress. We discussed routine safety advice relevant to focal seizures. She is content with ongoing telephone follow-up with a family member assisting communication due to her hearing difficulty. \n\nWe will see her back in four months, or sooner if seizures recur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 14 Aug 2023. The letter states: last reported seizure was on 21 Jul and she has been seizure-free since, with stability for over 4 weeks. This is less than 6 months, so she cannot be labeled seizure-free per the rule. Over approximately the past month there has been 1 seizure, so the current frequency is best represented as 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Her last reported event was on 21/Jul and she has been seizure-free since. As she has now been stable for over 4 weeks"
+      ],
+      "reference": [
+        "1 per month",
+        "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 14/Jul the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 21/Jul and she has been seizure-free since. As she has now been stable for over 4 weeks, I am reassured and see no need for urgent changes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

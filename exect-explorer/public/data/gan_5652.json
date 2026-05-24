@@ -1,0 +1,59 @@
+{
+  "id": "gan_5652",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 March 2016 \n\nDr Amelia Grant  \nSt. Cuthbert’s NHS Neurology Clinic  \nNeurosciences Department, St. Cuthbert’s Hospital, Old Mill Road, York YO1 7AB  \n\nDear Dr Amelia Grant,  \n\nMr Daniel Reeves, DOB: 14-02-1990, Hospital No: YH4829301 NHS No. 9081764523  \nFlat 3, 12 Wharf Lane, York YO10 3DT  \n\nDiagnoses: \n\nFocal epilepsy. \n\nI reviewed Mr Daniel Reeves in clinic today. He works as a stage lighting technician with frequent exposure to strobe and bright lighting. He reports that colleagues may occasionally witness events during rig checks and rehearsals. He describes brief focal aware episodes with a rising epigastric sensation, a momentary pause, and lip smacking; awareness is usually preserved and he can often resume tasks within minutes. There is no generalisation reported. \n\nEvent pattern: Every 8 days on average. He and his manager have been keeping a log, which aligns with this frequency across show weeks and dark periods. There is no clear clustering, but he notes that high-intensity strobe programming sessions and sleep deprivation may precede events. No tongue biting, incontinence, or prolonged post-ictal confusion has been reported. \n\nMedication and safety: No recent medication changes. He has not required emergency treatment and has not attended A&E. He uses agreed workplace strategies (colleague check-ins, stepping away from strobe programming when prodromal symptoms occur) and reports that these have reduced workplace disruption. \n\nExamination today was unremarkable. We discussed seizure first-aid with emphasis on maintaining a safe environment around lighting rigs. He prefers to continue current management while we complete an updated occupational risk assessment in collaboration with his employer. We will also liaise with his EEG appointment to include photic stimulation protocol, given the reported light exposure at work. \n\nPlan:  \n- Continue current antiseizure therapy and seizure diary.  \n- Workplace liaison letter to support scheduled breaks from intense strobe testing.  \n- Routine EEG with photic stimulation and consider sleep-deprived EEG if diary suggests sleep triggers.  \n- Review in three months or sooner if frequency increases or events evolve. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 846,
+      "end": 885,
+      "text": "Event pattern: Every 8 days on average.",
+      "attributes": {
+        "Label": "1 per 8 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 861,
+      "end": 884,
+      "text": "Every 8 days on average",
+      "attributes": {
+        "Label": "1 per 8 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5652,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 08 March 2016 \n\nDr Amelia Grant  \nSt. Cuthbert’s NHS Neurology Clinic  \nNeurosciences Department, St. Cuthbert’s Hospital, Old Mill Road, York YO1 7AB  \n\nDear Dr Amelia Grant,  \n\nMr Daniel Reeves, DOB: 14-02-1990, Hospital No: YH4829301 NHS No. 9081764523  \nFlat 3, 12 Wharf Lane, York YO10 3DT  \n\nDiagnoses: \n\nFocal epilepsy. \n\nI reviewed Mr Daniel Reeves in clinic today. He works as a stage lighting technician with frequent exposure to strobe and bright lighting. He reports that colleagues may occasionally witness events during rig checks and rehearsals. He describes brief focal aware episodes with a rising epigastric sensation, a momentary pause, and lip smacking; awareness is usually preserved and he can often resume tasks within minutes. There is no generalisation reported. \n\nEvent pattern: Every 8 days on average. He and his manager have been keeping a log, which aligns with this frequency across show weeks and dark periods. There is no clear clustering, but he notes that high-intensity strobe programming sessions and sleep deprivation may precede events. No tongue biting, incontinence, or prolonged post-ictal confusion has been reported. \n\nMedication and safety: No recent medication changes. He has not required emergency treatment and has not attended A&E. He uses agreed workplace strategies (colleague check-ins, stepping away from strobe programming when prodromal symptoms occur) and reports that these have reduced workplace disruption. \n\nExamination today was unremarkable. We discussed seizure first-aid with emphasis on maintaining a safe environment around lighting rigs. He prefers to continue current management while we complete an updated occupational risk assessment in collaboration with his employer. We will also liaise with his EEG appointment to include photic stimulation protocol, given the reported light exposure at work. \n\nPlan:  \n- Continue current antiseizure therapy and seizure diary.  \n- Workplace liaison letter to support scheduled breaks from intense strobe testing.  \n- Routine EEG with photic stimulation and consider sleep-deprived EEG if diary suggests sleep triggers.  \n- Review in three months or sooner if frequency increases or events evolve. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the event pattern: 'Every 8 days on average.' This provides a clear numeric seizure frequency. No other differing frequencies are provided. Convert 'every 8 days' to the allowed format: '1 per 8 day.'",
+      "seizure_frequency_number": [
+        "1 per 8 day",
+        "Event pattern: Every 8 days on average."
+      ],
+      "reference": [
+        "1 per 8 day",
+        "Every 8 days on average"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

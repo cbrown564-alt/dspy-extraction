@@ -1,0 +1,59 @@
+{
+  "id": "gan_16181",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 25 September 2014 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nAva Thompson, DOB: 22-11-1989, Hospital No: H374920 NHS No. 9182736450  \nFlat 4, 28 Charing Cross Road, London WC2H 0DB  \n\nEpilepsy \n\nMedication: No regular anti-seizure medication at present; previously trialled sodium valproate in 2012 (self-discontinued due to perceived cognitive slowing). Uses over-the-counter paracetamol intermittently for post-event headache. No known drug allergies reported.  \n\nLamotrigine Blood Level:  \nNot applicable (not currently prescribed).  \n\nSeizures: As of this month she reports four seizure events; 3 in August, three in July and five in June during both sleep and wakefulness. Events sometimes occur at work where she is a stage lighting technician with frequent exposure to strobe and bright lights; colleagues may occasionally witness events and have noted brief unresponsiveness with eyelid fluttering followed by disorientation lasting several minutes. She also describes nocturnal events noted by waking with tongue soreness and myalgia. No consistent aura is reported. She denies recent head injury, alcohol excess, or recreational drug use. Sleep is irregular around show days, with variable meal times.  \n\nI reviewed her today in clinic following an occupational health prompt. We discussed potential exacerbating factors in the lighting environment; she has negotiated temporary reduction in strobe programming duties and will trial consistent sleep and hydration strategies over the next month. She has consented to proceed with further investigations. I have requested: routine EEG with photic stimulation, sleep-deprived EEG, and MRI brain (epilepsy protocol). She will maintain a seizure and trigger diary including timing relative to lighting exposures, sleep, and caffeine intake. She has been provided with written first-aid guidance for colleagues and advised not to work at heights or operate lifting equipment until further review, per local safety policy. No driving reported.  \n\nPlan discussed with patient and she is agreeable. Follow-up in 8 weeks by telephone to review investigations and event frequency.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 649,
+      "end": 777,
+      "text": "As of this month she reports four seizure events; 3 in August, three in July and five in June during both sleep and wakefulness.",
+      "attributes": {
+        "Label": "15 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 649,
+      "end": 776,
+      "text": "As of this month she reports four seizure events; 3 in August, three in July and five in June during both sleep and wakefulness",
+      "attributes": {
+        "Label": "15 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16181,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 25 September 2014 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nAva Thompson, DOB: 22-11-1989, Hospital No: H374920 NHS No. 9182736450  \nFlat 4, 28 Charing Cross Road, London WC2H 0DB  \n\nEpilepsy \n\nMedication: No regular anti-seizure medication at present; previously trialled sodium valproate in 2012 (self-discontinued due to perceived cognitive slowing). Uses over-the-counter paracetamol intermittently for post-event headache. No known drug allergies reported.  \n\nLamotrigine Blood Level:  \nNot applicable (not currently prescribed).  \n\nSeizures: As of this month she reports four seizure events; 3 in August, three in July and five in June during both sleep and wakefulness. Events sometimes occur at work where she is a stage lighting technician with frequent exposure to strobe and bright lights; colleagues may occasionally witness events and have noted brief unresponsiveness with eyelid fluttering followed by disorientation lasting several minutes. She also describes nocturnal events noted by waking with tongue soreness and myalgia. No consistent aura is reported. She denies recent head injury, alcohol excess, or recreational drug use. Sleep is irregular around show days, with variable meal times.  \n\nI reviewed her today in clinic following an occupational health prompt. We discussed potential exacerbating factors in the lighting environment; she has negotiated temporary reduction in strobe programming duties and will trial consistent sleep and hydration strategies over the next month. She has consented to proceed with further investigations. I have requested: routine EEG with photic stimulation, sleep-deprived EEG, and MRI brain (epilepsy protocol). She will maintain a seizure and trigger diary including timing relative to lighting exposures, sleep, and caffeine intake. She has been provided with written first-aid guidance for colleagues and advised not to work at heights or operate lifting equipment until further review, per local safety policy. No driving reported.  \n\nPlan discussed with patient and she is agreeable. Follow-up in 8 weeks by telephone to review investigations and event frequency.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The clinic date is 25 September 2014. The letter states: \"As of this month she reports four seizure events; 3 in August, three in July and five in June.\" This gives monthly counts for June through September (to date). Summing: June 5 + July 3 + August 3 + September 4 = 15 seizures over 4 months. Therefore the frequency can be expressed as 15 per 4 months.",
+      "seizure_frequency_number": [
+        "15 per 4 month",
+        "As of this month she reports four seizure events; 3 in August, three in July and five in June during both sleep and wakefulness."
+      ],
+      "reference": [
+        "15 per 4 month",
+        "As of this month she reports four seizure events; 3 in August, three in July and five in June during both sleep and wakefulness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

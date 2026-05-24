@@ -1,0 +1,48 @@
+{
+  "id": "gan_8577",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Patel, \n\nAlex Morgan, DOB: 12-08-1991, Hospital No: K847320 NHS No. 1039485721  \nFlat 12, 28 Riverside Walk, London, SE10 9AB  \n\nDiagnosis: \n\nSeizure disorder under review; treatment-effective stability on current regimen\n\nAetiology: \n\nUnclear; no definitive structural, genetic, or metabolic cause identified to date\n\nOther Medical Problems: \n\nGeneralised anxiety symptoms well-managed with CBT techniques; vitamin D insufficiency previously noted, corrected; seasonal allergic rhinitis\n\nManagement Plan: \n\nContinue Lamotrigine 150 mg mane, 150 mg nocte, single brand. Maintain seizure diary app logging as currently used; app export reviewed today shows no entries for events or auras since 09 March 2024. Safety guidance reinforced (sleep hygiene, adherence, and sick-day rules). Routine bloods (U&E, LFT) to be checked with GP in six months. DVLA advice unchanged. Review in nine months; earlier if any breakthrough events or side effects.\n\nThis patient has been consistently well and reports feeling steady on the present medication without cognitive adverse effects or mood change. They rely on a smartphone seizure diary app, which syncs to the clinic portal; the audit trail confirms regular check-ins and no flagged activity or rescue-med prompts over the last 18 months. There have been no collapses, no blackouts, and no warning sensations; in short, there have been no event-like symptoms at all. Work routines and sleep schedule are now consistent, and stress triggers have been mitigated through pacing and structured exercise. No changes to therapy are proposed today. A brief discussion covered vaccination, travel planning, and medication supply over bank holidays; a spare supply has been arranged. \n\nPlease contact me if there are any concerns or if community teams notice any change in pattern. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 857,
+      "end": 907,
+      "text": "no entries for events or auras since 09 March 2024",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8577,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 21 September 2025 \n\nDr Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Patel, \n\nAlex Morgan, DOB: 12-08-1991, Hospital No: K847320 NHS No. 1039485721  \nFlat 12, 28 Riverside Walk, London, SE10 9AB  \n\nDiagnosis: \n\nSeizure disorder under review; treatment-effective stability on current regimen\n\nAetiology: \n\nUnclear; no definitive structural, genetic, or metabolic cause identified to date\n\nOther Medical Problems: \n\nGeneralised anxiety symptoms well-managed with CBT techniques; vitamin D insufficiency previously noted, corrected; seasonal allergic rhinitis\n\nManagement Plan: \n\nContinue Lamotrigine 150 mg mane, 150 mg nocte, single brand. Maintain seizure diary app logging as currently used; app export reviewed today shows no entries for events or auras since 09 March 2024. Safety guidance reinforced (sleep hygiene, adherence, and sick-day rules). Routine bloods (U&E, LFT) to be checked with GP in six months. DVLA advice unchanged. Review in nine months; earlier if any breakthrough events or side effects.\n\nThis patient has been consistently well and reports feeling steady on the present medication without cognitive adverse effects or mood change. They rely on a smartphone seizure diary app, which syncs to the clinic portal; the audit trail confirms regular check-ins and no flagged activity or rescue-med prompts over the last 18 months. There have been no collapses, no blackouts, and no warning sensations; in short, there have been no event-like symptoms at all. Work routines and sleep schedule are now consistent, and stress triggers have been mitigated through pacing and structured exercise. No changes to therapy are proposed today. A brief discussion covered vaccination, travel planning, and medication supply over bank holidays; a spare supply has been arranged. \n\nPlease contact me if there are any concerns or if community teams notice any change in pattern. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter repeatedly states there have been no seizures or event-like symptoms. It specifies: the seizure diary app export reviewed today (clinic date 21 September 2025) shows no entries for events or auras since 09 March 2024. That implies continuous seizure freedom from 09 March 2024 up to 21 September 2025. Calculate duration: from 09 Mar 2024 to 09 Mar 2025 = 12 months; from 09 Mar 2025 to 21 Sep 2025 ≈ 6 months and 12 days, totaling approximately 18.4 months. This exceeds 6 months, so the appropriate normalized label is 'seizure free for multiple months' or 'seizure free for <value> months/years'. Since exact month count isn't required and rounding isn't specified, using 'seizure free for multiple months' fits the allowed formats and reflects the duration clearly beyond 6 months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no entries for events or auras since 09 March 2024"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizure-like episodes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

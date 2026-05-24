@@ -1,0 +1,54 @@
+{
+  "id": "gan_5507",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Alice Bennett \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Alice Bennett, \n\nMr Daniel Harris, DOB: 22-09-1991, Hospital No: K847521 NHS No. 1039482756  \nFlat 3, 12 Market Lane, London, SE15 4QP  \n\nDiagnosis: \n\nRecurrent episodes compatible with seizures; antiseizure medication trials ongoing; topiramate ceased due to cognitive side effects; carbamazepine not initiated pending further clarification. \n\nAetiology: \n\nNo structural cause identified to date. MRI brain (Aug 2025) unremarkable. Routine EEG (Jul 2025) non-diagnostic. \n\nOther Medical Problems: \n\nMild asthma on as-needed salbutamol inhaler. No known drug allergies. \n\nManagement Plan: \n\n- Initiate levetiracetam 500 mg twice daily, with counselling regarding mood changes and somnolence; aim to titrate according to response.  \n- Arrange ambulatory EEG with event marker during working hours to capture typical kitchen events.  \n- Bloods today: U&E, LFT, vitamin D, FBC.  \n- Occupational advice provided: patient reports episodes occurring in a high-heat commercial kitchen during peak service; advised, from a safety perspective, to liaise with employer regarding temporary duty modification away from open flames, deep-fat fryers, and high surfaces until further review.  \n- Follow-up in 8 weeks; if events persist, consider video telemetry.  \n\nThis chef describes brief collapses without warning while at the stove line on three separate occasions since June, described as sudden loss of postural control with rapid recovery and no clear prodrome; colleagues noted brief unresponsiveness lasting under a minute on one occasion. He has experienced scattered sudden falls over the past months, clustered around busy evening service, with no consistent trigger identified. There is no tongue biting or urinary incontinence reported. Post-event confusion is short-lived. He does not drive. Hydration and sleep can be inconsistent due to shift patterns, which he believes may contribute. We discussed risk mitigation in the kitchen environment, and he will provide his employer with this letter to support adjustments. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1739,
+      "end": 1782,
+      "text": "scattered sudden falls over the past months",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5507,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Alice Bennett \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Alice Bennett, \n\nMr Daniel Harris, DOB: 22-09-1991, Hospital No: K847521 NHS No. 1039482756  \nFlat 3, 12 Market Lane, London, SE15 4QP  \n\nDiagnosis: \n\nRecurrent episodes compatible with seizures; antiseizure medication trials ongoing; topiramate ceased due to cognitive side effects; carbamazepine not initiated pending further clarification. \n\nAetiology: \n\nNo structural cause identified to date. MRI brain (Aug 2025) unremarkable. Routine EEG (Jul 2025) non-diagnostic. \n\nOther Medical Problems: \n\nMild asthma on as-needed salbutamol inhaler. No known drug allergies. \n\nManagement Plan: \n\n- Initiate levetiracetam 500 mg twice daily, with counselling regarding mood changes and somnolence; aim to titrate according to response.  \n- Arrange ambulatory EEG with event marker during working hours to capture typical kitchen events.  \n- Bloods today: U&E, LFT, vitamin D, FBC.  \n- Occupational advice provided: patient reports episodes occurring in a high-heat commercial kitchen during peak service; advised, from a safety perspective, to liaise with employer regarding temporary duty modification away from open flames, deep-fat fryers, and high surfaces until further review.  \n- Follow-up in 8 weeks; if events persist, consider video telemetry.  \n\nThis chef describes brief collapses without warning while at the stove line on three separate occasions since June, described as sudden loss of postural control with rapid recovery and no clear prodrome; colleagues noted brief unresponsiveness lasting under a minute on one occasion. He has experienced scattered sudden falls over the past months, clustered around busy evening service, with no consistent trigger identified. There is no tongue biting or urinary incontinence reported. Post-event confusion is short-lived. He does not drive. Hydration and sleep can be inconsistent due to shift patterns, which he believes may contribute. We discussed risk mitigation in the kitchen environment, and he will provide his employer with this letter to support adjustments. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms ongoing seizure-like episodes. It states an explicit count of three collapses at the stove since June, but also mentions additional unquantified events: “scattered sudden falls over the past months,” suggesting more episodes beyond the three. The exact total number and a clear time-normalized frequency cannot be determined. Therefore, per instruction, return 'unknown' rather than approximating a rate over an imprecise interval.",
+      "seizure_frequency_number": [
+        "unknown",
+        "scattered sudden falls over the past months"
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic drop attacks this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

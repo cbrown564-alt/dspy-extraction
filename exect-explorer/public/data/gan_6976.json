@@ -1,0 +1,54 @@
+{
+  "id": "gan_6976",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 05 October 2025 10:22\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Patel\n\nDiagnosis:\n\nSeizure disorder of uncertain classification\n\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\n\nRecent Seizure History:\n\nThe patient reports intermittent brief episodes concerning for seizures but is unable to provide a clear timing of the most recent event; they stated that the last episode could have been “some time in the past few months,” and no exact date was recalled despite reviewing their phone calendar.\n\n\nPlan:\n\n- We discussed adherence and potential triggers. The patient denies sleep deprivation and alcohol use but notes increased stress at work.\n- To improve tolerability and simplify the regimen, please taper Topiramate and introduce Zonisamide as below:\n  • Week 1: Start Zonisamide 25 mg at night.\n  • Week 2: Increase Zonisamide to 25 mg twice daily.\n  • Week 3: Increase Zonisamide to 50 mg at night and 25 mg in the morning.\n  • Week 4: Zonisamide 50 mg twice daily and reduce Topiramate to 25 mg at night.\n  • Week 5: Stop Topiramate; continue Zonisamide 50 mg twice daily alongside Lamotrigine.\n- No driving until 12 months event-free per DVLA guidance and pending further clarification of event pattern.\n- Please encourage use of a seizure diary or smartphone log to capture dates, durations, and potential precipitants.\n- Arrange routine bloods (U&Es, bicarbonate, FBC) at Week 4 to monitor tolerability.\n- Follow-up appointment has been booked for three months’ time, sooner if there is any increase in events or adverse effects.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 527,
+      "end": 750,
+      "text": "The patient reports intermittent brief episodes concerning for seizures but is unable to provide a clear timing of the most recent event; they stated that the last episode could have been “some time in the past few months,”",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6976,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 05 October 2025 10:22\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and medication adjustment\n\nDear Dr Patel\n\nDiagnosis:\n\nSeizure disorder of uncertain classification\n\n\nCurrent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\n\nRecent Seizure History:\n\nThe patient reports intermittent brief episodes concerning for seizures but is unable to provide a clear timing of the most recent event; they stated that the last episode could have been “some time in the past few months,” and no exact date was recalled despite reviewing their phone calendar.\n\n\nPlan:\n\n- We discussed adherence and potential triggers. The patient denies sleep deprivation and alcohol use but notes increased stress at work.\n- To improve tolerability and simplify the regimen, please taper Topiramate and introduce Zonisamide as below:\n  • Week 1: Start Zonisamide 25 mg at night.\n  • Week 2: Increase Zonisamide to 25 mg twice daily.\n  • Week 3: Increase Zonisamide to 50 mg at night and 25 mg in the morning.\n  • Week 4: Zonisamide 50 mg twice daily and reduce Topiramate to 25 mg at night.\n  • Week 5: Stop Topiramate; continue Zonisamide 50 mg twice daily alongside Lamotrigine.\n- No driving until 12 months event-free per DVLA guidance and pending further clarification of event pattern.\n- Please encourage use of a seizure diary or smartphone log to capture dates, durations, and potential precipitants.\n- Arrange routine bloods (U&Es, bicarbonate, FBC) at Week 4 to monitor tolerability.\n- Follow-up appointment has been booked for three months’ time, sooner if there is any increase in events or adverse effects.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient has seizure-like episodes but provides no explicit count or interval. It states the patient reports intermittent brief episodes and cannot recall the exact timing, only that the last episode could have been some time in the past few months. There is no numeric frequency (per day/week/month/year) and not enough information to establish seizure freedom for 6 months. Therefore, per rules, when seizures are mentioned but specific frequency cannot be determined, the label should be 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The patient reports intermittent brief episodes concerning for seizures but is unable to provide a clear timing of the most recent event; they stated that the last episode could have been “some time in the past few months,”"
+      ],
+      "reference": [
+        "unknown",
+        "Patient unsure of last event date"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

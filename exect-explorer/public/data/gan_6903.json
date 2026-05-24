@@ -1,0 +1,54 @@
+{
+  "id": "gan_6903",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 18 February 2014 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH729518 NHS No. 9074513268  \nFlat 3, Willow Supported Living, 12 Brookside Lane, London SE15 2AB\n\nThank you for asking me to review this patient. He was seen today accompanied by a support worker from his residence. He lives in supported accommodation where rotating staff maintain daily seizure logs; these records were brought to clinic. Unfortunately, the entries are inconsistent between shifts and there are conflicting descriptions of events. Given this variability, and the lack of a single key informant who has witnessed multiple episodes, I am unable to determine a reliable current seizure frequency.\n\nThe patient describes brief episodes of loss of awareness with subsequent fatigue, but he struggles to provide detail regarding onset or recovery. Staff reports vary from “staring and unresponsive” to “shaking in bed,” yet timings and circumstances are not corroborated across the chart. A recent outpatient EEG was reported to show sporadic sharp activity between events, without any recorded attacks during monitoring and no electrographic change at the time of button presses. This makes it difficult to correlate the recorded diary events with definite seizures. \n\nThere are no clear nocturnal patterns on the home logs, and no evident triggers have been consistently documented. He denies new neurological deficits. Medication adherence is supervised, but due to staff rotation, exact timing of administration is not consistently annotated in the charts. No recent injuries or tongue biting have been recorded. \n\nExamination today was unremarkable. I do not have sufficient convergent information to characterise the events further or to quantify frequency. I have asked the team to standardise the observation sheets with time-stamped entries, witness identity, semiology descriptors, duration, recovery profile, and any potential precipitants. I have also requested a copy of the drug administration record aligned to the event log. If uncertainty persists, admission for prolonged video-EEG with concurrent staff-filled diaries would be the next step, subject to patient agreement. \n\nI will review him again once we have at least six weeks of consistent logs. Please let me know if there are concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 867,
+      "end": 929,
+      "text": "I am unable to determine a reliable current seizure frequency.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6903,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 18 February 2014 \n\nDr Priya Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Shah\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: KCH729518 NHS No. 9074513268  \nFlat 3, Willow Supported Living, 12 Brookside Lane, London SE15 2AB\n\nThank you for asking me to review this patient. He was seen today accompanied by a support worker from his residence. He lives in supported accommodation where rotating staff maintain daily seizure logs; these records were brought to clinic. Unfortunately, the entries are inconsistent between shifts and there are conflicting descriptions of events. Given this variability, and the lack of a single key informant who has witnessed multiple episodes, I am unable to determine a reliable current seizure frequency.\n\nThe patient describes brief episodes of loss of awareness with subsequent fatigue, but he struggles to provide detail regarding onset or recovery. Staff reports vary from “staring and unresponsive” to “shaking in bed,” yet timings and circumstances are not corroborated across the chart. A recent outpatient EEG was reported to show sporadic sharp activity between events, without any recorded attacks during monitoring and no electrographic change at the time of button presses. This makes it difficult to correlate the recorded diary events with definite seizures. \n\nThere are no clear nocturnal patterns on the home logs, and no evident triggers have been consistently documented. He denies new neurological deficits. Medication adherence is supervised, but due to staff rotation, exact timing of administration is not consistently annotated in the charts. No recent injuries or tongue biting have been recorded. \n\nExamination today was unremarkable. I do not have sufficient convergent information to characterise the events further or to quantify frequency. I have asked the team to standardise the observation sheets with time-stamped entries, witness identity, semiology descriptors, duration, recovery profile, and any potential precipitants. I have also requested a copy of the drug administration record aligned to the event log. If uncertainty persists, admission for prolonged video-EEG with concurrent staff-filled diaries would be the next step, subject to patient agreement. \n\nI will review him again once we have at least six weeks of consistent logs. Please let me know if there are concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses seizure-like events but explicitly states the clinician is unable to determine a reliable current seizure frequency due to inconsistent logs and lack of convergent information. There are no explicit numeric frequencies provided, and the clinician plans to gather standardized logs before quantifying frequency. Therefore, the frequency is unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "I am unable to determine a reliable current seizure frequency."
+      ],
+      "reference": [
+        "unknown",
+        "Interictal discharges on EEG; no ictal correlate"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

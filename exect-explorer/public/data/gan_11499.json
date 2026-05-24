@@ -1,0 +1,47 @@
+{
+  "id": "gan_11499",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Ahmed Khan\nRiverside Family Practice\n\n12 Wharf Street, Southwark, London SE1 2AB\nDear Dr Ahmed Khan\nLaura Peterson, DOB: 14-03-1990, Hospital No: H738291 NHS No. 9475201863\nFlat 3, 21 Mill Court, London SE16 4BT\n\nSummary: Referral rejected pending missing administrative information for ongoing specialist epilepsy care. Past variability in pharmacy supply documented; historical adherence impacted at times.\n\nThank you for your recent referral for Laura Peterson. We are unable to proceed at this time because the referral lacks the following mandatory items:\n- Completed neurology referral proforma (current version) with referral priority indicated\n- Up-to-date primary care medication summary (including current doses and prescribers)\n- Community pharmacy dispensing history for the past 12 months (to clarify supply variability)\n- Recent basic bloods (FBC, U&Es, LFTs) within the last 3 months\n- Confirmed safeguarding and transport/access needs (if any)\n\nAction required: Please resend the referral with the above documents attached. On receipt, we will triage to the next available appropriate clinic. If urgent review is required, kindly telephone the neurology referrals line on the day of resubmission.\n\nThis decision is administrative only and does not reflect clinical prioritisation. We appreciate your assistance in ensuring the required information accompanies the referral to avoid further delay.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11499,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 02 October 2025\n\nDr Ahmed Khan\nRiverside Family Practice\n\n12 Wharf Street, Southwark, London SE1 2AB\nDear Dr Ahmed Khan\nLaura Peterson, DOB: 14-03-1990, Hospital No: H738291 NHS No. 9475201863\nFlat 3, 21 Mill Court, London SE16 4BT\n\nSummary: Referral rejected pending missing administrative information for ongoing specialist epilepsy care. Past variability in pharmacy supply documented; historical adherence impacted at times.\n\nThank you for your recent referral for Laura Peterson. We are unable to proceed at this time because the referral lacks the following mandatory items:\n- Completed neurology referral proforma (current version) with referral priority indicated\n- Up-to-date primary care medication summary (including current doses and prescribers)\n- Community pharmacy dispensing history for the past 12 months (to clarify supply variability)\n- Recent basic bloods (FBC, U&Es, LFTs) within the last 3 months\n- Confirmed safeguarding and transport/access needs (if any)\n\nAction required: Please resend the referral with the above documents attached. On receipt, we will triage to the next available appropriate clinic. If urgent review is required, kindly telephone the neurology referrals line on the day of resubmission.\n\nThis decision is administrative only and does not reflect clinical prioritisation. We appreciate your assistance in ensuring the required information accompanies the referral to avoid further delay.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the entire letter. It is an administrative rejection of a referral for epilepsy care and requests missing documents. There is no mention of the patient’s seizures, occurrence, or frequency. No explicit or implicit seizure count or timeframe is provided. Therefore, there is no seizure frequency reference in the letter.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter explaining a referral rejection due to missing administrative information for epilepsy care"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

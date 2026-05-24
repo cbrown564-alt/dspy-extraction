@@ -1,0 +1,59 @@
+{
+  "id": "gan_2440",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 27 April 2020 \n\nDr Patel\nRiverside Health Centre\n\n22 Riverside Way, London, SE1 3AB\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: H827461 NHS No. 7438291056\nFlat 4, 16 Mill Street, London, SE1 2XR \n\nI reviewed the above patient in the Neurology Clinic today. He has a confirmed diagnosis of generalised epilepsy. Since our last contact, he has implemented smartphone-based alarms and NFC tag prompts to support adherence after previously missed doses, which he reports have been helpful in keeping to his regimen.\n\nHe states that he has had five or seven seizures during the last two months. He describes these as sudden loss of awareness followed by generalised tonic–clonic activity witnessed by his partner on two occasions; on the other occasions he awoke with tongue biting and post-ictal myalgia. He denies clear focal warning features. There have been no injuries beyond minor abrasions, and no hospital admissions. He reports better consistency with morning doses since setting multiple staggered alarms and scanning an NFC tag kept by his toothbrush and another at his bedside.\n\nCurrent treatment, as reported, is Sodium Valproate 500 mg b.d. and Levetiracetam 1000 mg b.d. He has tolerated these reasonably well. He notes occasional fatigue in the late afternoon and mild irritability, which he feels is manageable. He reports no new rash, abdominal pain, or tremor. He does not drive. Sleep has improved with a set schedule aligned to his reminder system, and he has reduced missed doses to one known omission over the past month.\n\nWe discussed typical precipitants for generalised seizures including sleep loss and intercurrent illness. He links two of the recent events to a viral upper respiratory infection and one to a late night at work. He has begun using his phone’s medication log to document any missed doses and seizure times, which should improve accuracy of future reviews.\n\nExamination today was unremarkable with no focal neurological deficits. Weight and blood pressure are stable. Recent routine bloods supplied by primary care were within expected ranges.\n\nPlan: I have advised him to continue his current antiepileptic regimen and to maintain the alarm/NFC adherence supports, as these appear to have reduced missed doses. I have arranged an outpatient EEG to reassess generalised epileptiform activity and will review him with results in approximately three months. He will continue to record seizures and any missed doses in his app. He knows to contact us sooner if frequency escalates, if he sustains injury, or if there are concerns about medication tolerance. No changes to work or safety advice beyond standard precautions for generalised epilepsy were required today.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 570,
+      "end": 646,
+      "text": "He states that he has had five or seven seizures during the last two months.",
+      "attributes": {
+        "Label": "5 to 7 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 596,
+      "end": 645,
+      "text": "five or seven seizures during the last two months",
+      "attributes": {
+        "Label": "5 to 7 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2440,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 27 April 2020 \n\nDr Patel\nRiverside Health Centre\n\n22 Riverside Way, London, SE1 3AB\nDear Dr Patel\nMichael Green, DOB: 21-11-1982, Hospital No: H827461 NHS No. 7438291056\nFlat 4, 16 Mill Street, London, SE1 2XR \n\nI reviewed the above patient in the Neurology Clinic today. He has a confirmed diagnosis of generalised epilepsy. Since our last contact, he has implemented smartphone-based alarms and NFC tag prompts to support adherence after previously missed doses, which he reports have been helpful in keeping to his regimen.\n\nHe states that he has had five or seven seizures during the last two months. He describes these as sudden loss of awareness followed by generalised tonic–clonic activity witnessed by his partner on two occasions; on the other occasions he awoke with tongue biting and post-ictal myalgia. He denies clear focal warning features. There have been no injuries beyond minor abrasions, and no hospital admissions. He reports better consistency with morning doses since setting multiple staggered alarms and scanning an NFC tag kept by his toothbrush and another at his bedside.\n\nCurrent treatment, as reported, is Sodium Valproate 500 mg b.d. and Levetiracetam 1000 mg b.d. He has tolerated these reasonably well. He notes occasional fatigue in the late afternoon and mild irritability, which he feels is manageable. He reports no new rash, abdominal pain, or tremor. He does not drive. Sleep has improved with a set schedule aligned to his reminder system, and he has reduced missed doses to one known omission over the past month.\n\nWe discussed typical precipitants for generalised seizures including sleep loss and intercurrent illness. He links two of the recent events to a viral upper respiratory infection and one to a late night at work. He has begun using his phone’s medication log to document any missed doses and seizure times, which should improve accuracy of future reviews.\n\nExamination today was unremarkable with no focal neurological deficits. Weight and blood pressure are stable. Recent routine bloods supplied by primary care were within expected ranges.\n\nPlan: I have advised him to continue his current antiepileptic regimen and to maintain the alarm/NFC adherence supports, as these appear to have reduced missed doses. I have arranged an outpatient EEG to reassess generalised epileptiform activity and will review him with results in approximately three months. He will continue to record seizures and any missed doses in his app. He knows to contact us sooner if frequency escalates, if he sustains injury, or if there are concerns about medication tolerance. No changes to work or safety advice beyond standard precautions for generalised epilepsy were required today.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He states that he has had five or seven seizures during the last two months.\" This provides a numeric range over a defined time period. Convert to allowed format: range value over 2 months becomes \"5 to 7 per 2 month\". No other conflicting frequencies are provided. Not seizure-free.",
+      "seizure_frequency_number": [
+        "5 to 7 per 2 month",
+        "He states that he has had five or seven seizures during the last two months."
+      ],
+      "reference": [
+        "5 to 7 per 2 month",
+        "five or seven seizures during the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

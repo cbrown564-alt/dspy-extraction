@@ -1,0 +1,59 @@
+{
+  "id": "gan_3774",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 12 September 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n12 Wharf Road, London N1 7SZ  \n\nDear Dr Ahmed,  \n\nSophie Miller, DOB: 04-02-1992, Hospital No: H384920 NHS No. 9054731186  \nFlat 3, 22 Brookside Street, London, SE15 4JP \n\nMedication: \n\nLevetiracetam 750 mg twice daily. Previously noted adverse effects to antiseizure therapies documented historically, including rash and gastrointestinal upset. No current adverse effects reported with present regimen. \n\nSince the last review she describes intermittent episodes of brief loss of awareness with rapid recovery and occasional tongue soreness on waking. She reports that her typical convulsive events are infrequent; she estimates TC Xnine/yr based on entries in her symptom diary and partner observations. A recent work rota change with earlier starts appears to have coincided with two nocturnal events in the past quarter, though she feels daytime functioning remains satisfactory. \n\nShe has maintained good adherence and has introduced a consistent sleep schedule over the past month, which she feels has helped. She denies new neurological symptoms, injuries, or emergency attendances. There has been no clear trigger apart from the shift pattern, and alcohol intake remains minimal. \n\nGiven the historically recorded sensitivity to several antiseizure medications with rash and gastrointestinal upset, she is keen to avoid changes at present. We discussed general measures around sleep regularity and recording of spells; she will continue to use her diary and share copies with us before the next visit. \n\nI have arranged routine bloods (U&E, LFTs) locally via your practice and will review the results when available. She is content with the current plan and knows to contact us sooner if frequency increases, injuries occur, or if there are any concerns. \n\nWe will see her again in four months. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 735,
+      "end": 824,
+      "text": "she estimates TC Xnine/yr based on entries in her symptom diary and partner observations.",
+      "attributes": {
+        "Label": "9 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 749,
+      "end": 760,
+      "text": "TC Xnine/yr",
+      "attributes": {
+        "Label": "9 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3774,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 12 September 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n12 Wharf Road, London N1 7SZ  \n\nDear Dr Ahmed,  \n\nSophie Miller, DOB: 04-02-1992, Hospital No: H384920 NHS No. 9054731186  \nFlat 3, 22 Brookside Street, London, SE15 4JP \n\nMedication: \n\nLevetiracetam 750 mg twice daily. Previously noted adverse effects to antiseizure therapies documented historically, including rash and gastrointestinal upset. No current adverse effects reported with present regimen. \n\nSince the last review she describes intermittent episodes of brief loss of awareness with rapid recovery and occasional tongue soreness on waking. She reports that her typical convulsive events are infrequent; she estimates TC Xnine/yr based on entries in her symptom diary and partner observations. A recent work rota change with earlier starts appears to have coincided with two nocturnal events in the past quarter, though she feels daytime functioning remains satisfactory. \n\nShe has maintained good adherence and has introduced a consistent sleep schedule over the past month, which she feels has helped. She denies new neurological symptoms, injuries, or emergency attendances. There has been no clear trigger apart from the shift pattern, and alcohol intake remains minimal. \n\nGiven the historically recorded sensitivity to several antiseizure medications with rash and gastrointestinal upset, she is keen to avoid changes at present. We discussed general measures around sleep regularity and recording of spells; she will continue to use her diary and share copies with us before the next visit. \n\nI have arranged routine bloods (U&E, LFTs) locally via your practice and will review the results when available. She is content with the current plan and knows to contact us sooner if frequency increases, injuries occur, or if there are any concerns. \n\nWe will see her again in four months. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit numeric seizure frequency. The letter states: 'she estimates TC Xnine/yr based on entries in her symptom diary and partner observations.' 'TC' likely refers to tonic-clonic events. The phrase 'Xnine/yr' appears to be a typographical rendering of '9/yr' (nine per year). No other explicit numeric frequencies are provided for other seizure types; brief losses of awareness are mentioned without count. Apply the rule to select the highest frequency provided; only one numeric frequency is present. Normalize to allowed format as '9 per year'.",
+      "seizure_frequency_number": [
+        "9 per year",
+        "she estimates TC Xnine/yr based on entries in her symptom diary and partner observations."
+      ],
+      "reference": [
+        "9 per year",
+        "TC Xnine/yr"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

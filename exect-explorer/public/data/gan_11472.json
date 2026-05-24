@@ -1,0 +1,47 @@
+{
+  "id": "gan_11472",
+  "text": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt George's University Hospitals NHS Foundation Trust\nBlackshaw Road, London, SW17 0QT\n\nDear Dr Patel,\n\nMichael Brown, DOB: 14-06-1988, Hospital No: H629517 NHS No. 9482756310\n12 Station Parade, London, W5 3PT\n\nRe: Rearranged appointment due to consultant annual leave\n\nI am writing to inform you that Michael Brown’s planned neurology appointment has been rescheduled as the consultant is on annual leave. Given the patient’s role working at a busy metro station gate line with prolonged standing and potential crowd surges, we have prioritised an early alternative slot to minimise impact on work and symptom management.\n\nNew appointment details:\n- Date/Time: 21 October 2025, 10:30\n- Location: Neurology Outpatients, St George's University Hospitals NHS Foundation Trust\n- Consultant: Dr A. Reid\n\nIf this time is unsuitable, please contact the clinic bookings team on 0207 555 1234. No changes to current management are proposed pending the review. A workplace letter can be provided on request.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11472,
+    "clinic_date": "Neurology Clinic\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt George's University Hospitals NHS Foundation Trust\nBlackshaw Road, London, SW17 0QT\n\nDear Dr Patel,\n\nMichael Brown, DOB: 14-06-1988, Hospital No: H629517 NHS No. 9482756310\n12 Station Parade, London, W5 3PT\n\nRe: Rearranged appointment due to consultant annual leave\n\nI am writing to inform you that Michael Brown’s planned neurology appointment has been rescheduled as the consultant is on annual leave. Given the patient’s role working at a busy metro station gate line with prolonged standing and potential crowd surges, we have prioritised an early alternative slot to minimise impact on work and symptom management.\n\nNew appointment details:\n- Date/Time: 21 October 2025, 10:30\n- Location: Neurology Outpatients, St George's University Hospitals NHS Foundation Trust\n- Consultant: Dr A. Reid\n\nIf this time is unsuitable, please contact the clinic bookings team on 0207 555 1234. No changes to current management are proposed pending the review. A workplace letter can be provided on request.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I reviewed the letter for any mention of seizures or seizure frequency. The content solely concerns a rescheduled neurology appointment due to consultant annual leave, work considerations, and contact details. There is no mention of seizures, seizure events, or frequency. Therefore, per the rule that if the letter does not mention seizures at all, the output should be 'no seizure frequency reference', this is the appropriate label.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter rearranging an epilepsy appointment due to consultant annual leave"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

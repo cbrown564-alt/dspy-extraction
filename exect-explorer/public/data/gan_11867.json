@@ -1,0 +1,47 @@
+{
+  "id": "gan_11867",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Priya Menon\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Priya Menon,\n\nMr Alex Turner, DOB: 22-08-1991, Hospital No: KCH372914 NHS No. 9430028176\nFlat 5, 12 Market Row, Brixton, London SW9 8LD\n\nAdministrative Summary:\n\nThank you for your recent insurance enquiry regarding the above-named patient, a commercial kitchen line cook working in a high-heat, fast-paced setting. We confirm that the patient is under our clinic’s care and has been reviewed regularly. There have been no recent hospital admissions from kitchen incidents, and no restrictions have been advised that preclude ongoing employment in their current role from our clinic’s standpoint.\n\nWe can confirm the patient’s treatment remains stable with good adherence. There is no change to fitness for work advice since the last review. Standard workplace precautions—adequate rest breaks, hydration, heat safety measures, and avoidance of prolonged lone working near open flames—have been discussed with the patient and communicated as general good-practice guidance.\n\nManagement Plan:\n\n- Continue current treatment and routine follow-up as scheduled.\n- No new occupational limitations recommended at this time.\n- We are able to provide a factual medical report to the insurer upon receipt of patient consent and standard fees, if applicable.\n\nPlease contact the clinic administration team with the insurer’s reference number and a signed consent form to proceed with a detailed report.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11867,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Priya Menon\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London SE5 9RS\n\nDear Dr Priya Menon,\n\nMr Alex Turner, DOB: 22-08-1991, Hospital No: KCH372914 NHS No. 9430028176\nFlat 5, 12 Market Row, Brixton, London SW9 8LD\n\nAdministrative Summary:\n\nThank you for your recent insurance enquiry regarding the above-named patient, a commercial kitchen line cook working in a high-heat, fast-paced setting. We confirm that the patient is under our clinic’s care and has been reviewed regularly. There have been no recent hospital admissions from kitchen incidents, and no restrictions have been advised that preclude ongoing employment in their current role from our clinic’s standpoint.\n\nWe can confirm the patient’s treatment remains stable with good adherence. There is no change to fitness for work advice since the last review. Standard workplace precautions—adequate rest breaks, hydration, heat safety measures, and avoidance of prolonged lone working near open flames—have been discussed with the patient and communicated as general good-practice guidance.\n\nManagement Plan:\n\n- Continue current treatment and routine follow-up as scheduled.\n- No new occupational limitations recommended at this time.\n- We are able to provide a factual medical report to the insurer upon receipt of patient consent and standard fees, if applicable.\n\nPlease contact the clinic administration team with the insurer’s reference number and a signed consent form to proceed with a detailed report.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter is an administrative/occupational summary and does not mention seizures or any seizure frequency, status, or timeframe. There is no explicit or implicit quantification of seizure occurrence, and no statement of seizure freedom duration. Therefore, per rule 5, since seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter providing a standard administrative response to an insurance enquiry related to epilepsy"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

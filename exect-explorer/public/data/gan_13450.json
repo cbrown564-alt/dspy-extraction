@@ -1,0 +1,59 @@
+{
+  "id": "gan_13450",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 16 August 2017 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nThank you for asking me to review this patient in the Neurology Clinic today. Since his last contact with our service, he has engaged with practical self-management strategies focusing on light and screen exposure. He reports adopting blue-light filtering, scheduled screen breaks, and maintaining a consistent sleep routine. He feels these measures have been beneficial and his partner corroborates the improvement.\n\nWith structural focal epilepsy presenting as focal non-motor and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over one years. He specifically attributes a perceived improvement to adjusting evening screen brightness and limiting late-night device use. There have been no emergency attendances, no injuries, and no treatment-limiting adverse effects. Mood is steady; he notes reduced health-related anxiety compared with last year.\n\nCurrent medication: Levetiracetam 1000 mg b.d., Valproate 500 mg b.d., and Clobazam 10 mg nocte. He previously trialled Topiramate and Carbamazepine but these were discontinued several years ago due to cognitive slowing and rash respectively. He is now tolerating the present regimen well, with only mild intermittent tiredness that he feels is manageable. No new dermatological issues, weight stable, and no tremor. He denies diplopia, ataxia, or new neurological symptoms. Bloods from his GP two months ago (FBC/U&E/LFT) were within reference limits.\n\nWe discussed ongoing self-management. He plans to continue his light/screen strategies and sleep regularity, which appear helpful. He will also keep a simple digital diary to capture any breakthrough auras or triggers; none have been recorded for over a year. Driving status remains unchanged and he is aware of DVLA guidance. We agreed no medication changes today given sustained stability and perceived improvement. Should he notice any breakthrough events, he will contact the clinic or his GP promptly. A routine review in 9–12 months is planned, with earlier review if concerns arise.\n\nOverall, he is doing well, reporting steady improvement and confidence in his routine. â€; ï¿½ He expressed satisfaction with the current plan. Ã‚Â·\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 811,
+      "end": 855,
+      "text": "has not reported seizures for over one years",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 660,
+      "end": 855,
+      "text": "With structural focal epilepsy presenting as focal non-motor and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over one years",
+      "attributes": {
+        "Label": "seizure free for 1 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13450,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 16 August 2017 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nThank you for asking me to review this patient in the Neurology Clinic today. Since his last contact with our service, he has engaged with practical self-management strategies focusing on light and screen exposure. He reports adopting blue-light filtering, scheduled screen breaks, and maintaining a consistent sleep routine. He feels these measures have been beneficial and his partner corroborates the improvement.\n\nWith structural focal epilepsy presenting as focal non-motor and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over one years. He specifically attributes a perceived improvement to adjusting evening screen brightness and limiting late-night device use. There have been no emergency attendances, no injuries, and no treatment-limiting adverse effects. Mood is steady; he notes reduced health-related anxiety compared with last year.\n\nCurrent medication: Levetiracetam 1000 mg b.d., Valproate 500 mg b.d., and Clobazam 10 mg nocte. He previously trialled Topiramate and Carbamazepine but these were discontinued several years ago due to cognitive slowing and rash respectively. He is now tolerating the present regimen well, with only mild intermittent tiredness that he feels is manageable. No new dermatological issues, weight stable, and no tremor. He denies diplopia, ataxia, or new neurological symptoms. Bloods from his GP two months ago (FBC/U&E/LFT) were within reference limits.\n\nWe discussed ongoing self-management. He plans to continue his light/screen strategies and sleep regularity, which appear helpful. He will also keep a simple digital diary to capture any breakthrough auras or triggers; none have been recorded for over a year. Driving status remains unchanged and he is aware of DVLA guidance. We agreed no medication changes today given sustained stability and perceived improvement. Should he notice any breakthrough events, he will contact the clinic or his GP promptly. A routine review in 9–12 months is planned, with earlier review if concerns arise.\n\nOverall, he is doing well, reporting steady improvement and confidence in his routine. â€; ï¿½ He expressed satisfaction with the current plan. Ã‚Â·\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has been seizure free for a long duration and has not reported seizures for over one year. It also notes no breakthrough auras recorded for over a year. This satisfies the criterion of at least 6 months seizure freedom. Therefore, normalize to 'seizure free for 1 year' (since the allowed format requires a numeric value; 'over one year' maps to 1 year as the closest explicit numeric duration). No other frequencies are provided.",
+      "seizure_frequency_number": [
+        "seizure free for 1 year",
+        "has not reported seizures for over one years"
+      ],
+      "reference": [
+        "seizure free for 1 year",
+        "With structural focal epilepsy presenting as focal non-motor and secondarily generalised convulsions, he has been seizure free for a long duration and has not reported seizures for over one years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_16907",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 24 August 2012 \n\nDr Helen Morris \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Helen Morris, \n\nMichael Turner, DOB: 22-03-1957, Hospital No: K837461 NHS No. 9083442176  \nFlat 2, 14 Brook Lane, London, SE15 3QX  \n\nDiagnosis:\n\nSeizure disorder under active follow‑up; current pattern improving with recent lifestyle changes. Medication response mixed to date.\n\nAetiology:\n\nNo definitive structural cause identified on prior records; historical imaging and bloods unremarkable per patient report. We will verify past results at next review.\n\nOther Medical Problems:\n\nReports intermittent low back pain related to previous workplace posture; managed with physiotherapy exercises. Vitamin D sufficiency maintained with over‑the‑counter supplementation per GP.\n\nManagement Plan:\n\n- Continue current regimen of Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily as tolerated; no brand change requested.  \n- Maintain new regular daily routine, with consistent sleep–wake times, which the patient feels has contributed to improvement since retirement.  \n- Safety advice reinforced regarding bathing, heights, and operating machinery; driving not undertaken.  \n- Arrange serum levels and routine bloods at next visit; consider cautious dose rationalisation if stability persists.  \n- Review in six months or sooner if relapse.\n\nClinical Summary:\n\nSince retiring earlier this year, he has adopted a more regular routine with fixed sleep and meal times, and he reports a noticeable improvement in overall stability, energy, and recovery after episodes. In March he had a run of six seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was two further seizures at night, and in August another during physiotherapy (unwitnessed by mother). He describes these as shorter and less disruptive than prior years, with quicker return to baseline and no injuries. There have been no emergency department visits, no use of rescue medication, and no missed doses. He and his family feel the new routine post‑retirement has helped.\n\nExamination today was unremarkable with stable observations. Mood and sleep quality have improved, and he is engaging in light exercise under physiotherapy guidance without post‑event sequelae. We discussed that while episodes have occurred, the trend appears favourable, and we will aim for continued stability before contemplating any medication adjustments.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1684,
+      "end": 1836,
+      "text": "In March he had a run of six seizures within half an hour... In June there was two further seizures at night, and in August another during physiotherapy",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1684,
+      "end": 1949,
+      "text": "In March he had a run of six seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was two further seizures at night, and in August another during physiotherapy (unwitnessed by mother)",
+      "attributes": {
+        "Label": "9 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16907,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 24 August 2012 \n\nDr Helen Morris \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Helen Morris, \n\nMichael Turner, DOB: 22-03-1957, Hospital No: K837461 NHS No. 9083442176  \nFlat 2, 14 Brook Lane, London, SE15 3QX  \n\nDiagnosis:\n\nSeizure disorder under active follow‑up; current pattern improving with recent lifestyle changes. Medication response mixed to date.\n\nAetiology:\n\nNo definitive structural cause identified on prior records; historical imaging and bloods unremarkable per patient report. We will verify past results at next review.\n\nOther Medical Problems:\n\nReports intermittent low back pain related to previous workplace posture; managed with physiotherapy exercises. Vitamin D sufficiency maintained with over‑the‑counter supplementation per GP.\n\nManagement Plan:\n\n- Continue current regimen of Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily as tolerated; no brand change requested.  \n- Maintain new regular daily routine, with consistent sleep–wake times, which the patient feels has contributed to improvement since retirement.  \n- Safety advice reinforced regarding bathing, heights, and operating machinery; driving not undertaken.  \n- Arrange serum levels and routine bloods at next visit; consider cautious dose rationalisation if stability persists.  \n- Review in six months or sooner if relapse.\n\nClinical Summary:\n\nSince retiring earlier this year, he has adopted a more regular routine with fixed sleep and meal times, and he reports a noticeable improvement in overall stability, energy, and recovery after episodes. In March he had a run of six seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was two further seizures at night, and in August another during physiotherapy (unwitnessed by mother). He describes these as shorter and less disruptive than prior years, with quicker return to baseline and no injuries. There have been no emergency department visits, no use of rescue medication, and no missed doses. He and his family feel the new routine post‑retirement has helped.\n\nExamination today was unremarkable with stable observations. Mood and sleep quality have improved, and he is engaging in light exercise under physiotherapy guidance without post‑event sequelae. We discussed that while episodes have occurred, the trend appears favourable, and we will aim for continued stability before contemplating any medication adjustments.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter details specific seizure occurrences in the year prior to the clinic date (24 August 2012):\n- March: \"a run of six seizures within half an hour\" (interpret as 1 cluster with 6 seizures)\n- June: \"two further seizures at night\"\n- August: \"another during physiotherapy\" (1 seizure)\nThese events fall within a 6-month window from March to August inclusive. Counting total seizures in that period: 6 (March) + 2 (June) + 1 (August) = 9 seizures over approximately 6 months. There is no indication of additional seizures beyond these, and the letter does not establish 6 months seizure-free. Therefore, the current frequency is normalized to 9 per 6 months. Because a cluster is explicitly described in March, but the overall frequency can be represented simply as total seizures per 6 months, we use the standard per-time format.",
+      "seizure_frequency_number": [
+        "9 per 6 month",
+        "In March he had a run of six seizures within half an hour... In June there was two further seizures at night, and in August another during physiotherapy"
+      ],
+      "reference": [
+        "9 per 6 month",
+        "In March he had a run of six seizures within half an hour (not full generalised tonic-clonic, fluctuating in intensity, resolved without medication). In June there was two further seizures at night, and in August another during physiotherapy (unwitnessed by mother)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

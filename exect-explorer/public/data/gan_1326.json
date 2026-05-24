@@ -1,0 +1,48 @@
+{
+  "id": "gan_1326",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 February 2022 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brown (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening seizure control and workplace sleep disruption\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 300 mg in the morning and 600 mg at night\n\n\nPresent Seizure Frequency:\n\nOver the past week there have been multiple brief events across a single day, with additional isolated episodes on two subsequent nights. The patient reports that these clusters align with recent night-shift duties and curtailed sleep.\n\n\nPlan of Action:\n\nThe patient describes a clear temporal association between night shifts, reduced total sleep time (approximately 4–5 hours), and a noticeable deterioration in seizure control. They note increased morning grogginess and difficulty with concentration on days following overnight duties. No intercurrent illness, alcohol use, or missed medication doses were reported. Workplace demands have recently changed to include consecutive night shifts, which coincide with the reported decline. \n\nI have arranged an expedited follow-up in six weeks to reassess control and tolerability. In the interim, the patient will maintain a detailed seizure and sleep diary, including shift patterns, perceived auras, and any injuries. I have also requested routine bloods (U&E, LFTs) and a trough lamotrigine level prior to the next appointment. A review of safety at work and driving guidance has been discussed, and written information was provided. Should further clustering occur, the patient has been advised to contact the service promptly for earlier review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 616,
+      "end": 657,
+      "text": "multiple brief events across a single day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1326,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 February 2022 10:15\nTo: kch.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brown (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Worsening seizure control and workplace sleep disruption\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Sodium valproate 300 mg in the morning and 600 mg at night\n\n\nPresent Seizure Frequency:\n\nOver the past week there have been multiple brief events across a single day, with additional isolated episodes on two subsequent nights. The patient reports that these clusters align with recent night-shift duties and curtailed sleep.\n\n\nPlan of Action:\n\nThe patient describes a clear temporal association between night shifts, reduced total sleep time (approximately 4–5 hours), and a noticeable deterioration in seizure control. They note increased morning grogginess and difficulty with concentration on days following overnight duties. No intercurrent illness, alcohol use, or missed medication doses were reported. Workplace demands have recently changed to include consecutive night shifts, which coincide with the reported decline. \n\nI have arranged an expedited follow-up in six weeks to reassess control and tolerability. In the interim, the patient will maintain a detailed seizure and sleep diary, including shift patterns, perceived auras, and any injuries. I have also requested routine bloods (U&E, LFTs) and a trough lamotrigine level prior to the next appointment. A review of safety at work and driving guidance has been discussed, and written information was provided. Should further clustering occur, the patient has been advised to contact the service promptly for earlier review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter’s Present Seizure Frequency states: over the past week there was a day with multiple brief events (a cluster) and two other nights with isolated episodes. Applying the rule to pick the highest frequency, the cluster day reflects the highest rate, i.e., multiple events within a single day. Therefore, normalize to 'multiple per day'.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "multiple brief events across a single day"
+      ],
+      "reference": [
+        "multiple per day",
+        "various seizures yesterday"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

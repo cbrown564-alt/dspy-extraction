@@ -1,0 +1,59 @@
+{
+  "id": "gan_5624",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nLevetiracetam 1000 mg twice daily; Vitamin D3 1000 IU daily.\n\nThank you for reviewing Emily Carter. She reports that her brief warning sensations and occasional impaired awareness episodes currently occur every ten days on average. These events are commonly preceded by a sense of unease and a metallic taste lasting seconds, and on roughly one in three occasions progress to a short period of unresponsiveness with post-event fatigue for 30–60 minutes. She denies convulsions, tongue-biting, or injuries. Triggers noted by the patient include poor sleep and high work-related stress. There is no consistent morning predominance. She has had no hospital attendances since her last review.\n\nShe has been adherent to levetiracetam without missed doses and has not experienced mood disturbance beyond mild irritability, which she feels is manageable. She prefers to avoid a change in medication at present while we continue to observe the pattern and address sleep and stress. She is not driving and understands DVLA guidance regarding seizure precautions and the need to inform the DVLA should circumstances change.\n\nWe discussed general safety measures at home and strategies to improve sleep hygiene. She will keep a structured diary to document events, potential triggers, and catamenial variation, and will bring this to her next appointment. She consented to an updated EEG and MRI review to ensure no interval changes; these have been requested. Blood tests for routine monitoring (U&E, FBC, LFTs, vitamin D) have been arranged through your surgery.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily.\n- Lifestyle measures and event diary as above; frequency currently every ten days on average.\n- Arrange EEG and MRI review; routine bloods via primary care.\n- Safety counselling reinforced; not driving.\n- Review in clinic in 4–6 months, or sooner if the frequency increases or features change.\n\nPlease feel free to contact me if there are any concerns before her next review.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1947,
+      "end": 1993,
+      "text": "frequency currently every ten days on average.",
+      "attributes": {
+        "Label": "1 per 10 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 498,
+      "end": 523,
+      "text": "Every ten days on average",
+      "attributes": {
+        "Label": "1 per 10 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5624,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nLevetiracetam 1000 mg twice daily; Vitamin D3 1000 IU daily.\n\nThank you for reviewing Emily Carter. She reports that her brief warning sensations and occasional impaired awareness episodes currently occur every ten days on average. These events are commonly preceded by a sense of unease and a metallic taste lasting seconds, and on roughly one in three occasions progress to a short period of unresponsiveness with post-event fatigue for 30–60 minutes. She denies convulsions, tongue-biting, or injuries. Triggers noted by the patient include poor sleep and high work-related stress. There is no consistent morning predominance. She has had no hospital attendances since her last review.\n\nShe has been adherent to levetiracetam without missed doses and has not experienced mood disturbance beyond mild irritability, which she feels is manageable. She prefers to avoid a change in medication at present while we continue to observe the pattern and address sleep and stress. She is not driving and understands DVLA guidance regarding seizure precautions and the need to inform the DVLA should circumstances change.\n\nWe discussed general safety measures at home and strategies to improve sleep hygiene. She will keep a structured diary to document events, potential triggers, and catamenial variation, and will bring this to her next appointment. She consented to an updated EEG and MRI review to ensure no interval changes; these have been requested. Blood tests for routine monitoring (U&E, FBC, LFTs, vitamin D) have been arranged through your surgery.\n\nPlan:\n- Continue levetiracetam 1000 mg twice daily.\n- Lifestyle measures and event diary as above; frequency currently every ten days on average.\n- Arrange EEG and MRI review; routine bloods via primary care.\n- Safety counselling reinforced; not driving.\n- Review in clinic in 4–6 months, or sooner if the frequency increases or features change.\n\nPlease feel free to contact me if there are any concerns before her next review.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"frequency currently every ten days on average.\" This indicates one event occurs every 10 days on average. No other conflicting frequencies are given. Therefore, normalize to the allowed format as 1 per 10 day.",
+      "seizure_frequency_number": [
+        "1 per 10 day",
+        "frequency currently every ten days on average."
+      ],
+      "reference": [
+        "1 per 10 day",
+        "Every ten days on average"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

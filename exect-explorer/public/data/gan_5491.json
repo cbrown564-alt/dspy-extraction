@@ -1,0 +1,65 @@
+{
+  "id": "gan_5491",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine, reintroduced March 2025\n\nCurrent dose: Lamotrigine standard tablets 50mg in the morning and 100mg at night (patient-reported adherence variable during recent assessment period)\n\nLamotrigine Blood Level:\n\n22 September 2025: 1.2 mg/L (therapeutic range 1.0–15.0 mg/L). Dose at time of sample: 50mg AM / 100mg PM\n\nSeizures: Sporadic jerks this year, particularly during the recent exam and professional assessment season. Patient reports brief myoclonic-like jerks of the upper limbs on waking and during late-night study sessions, with two episodes of momentary loss of awareness reported by peers over the last six weeks. No injuries but increasing frequency from baseline earlier in the year.\n\nI reviewed Susan Miller today via video consultation. They describe heightened stress, reduced sleep (averaging 4–5 hours/night) and increased caffeine intake over the past two months. They have noted a clear temporal association between stress peaks and the onset of the sporadic jerks this year, with clustering during deadlines. No new focal neurological symptoms, but mounting anxiety about control and performance. There have been no emergency department attendances. Family observations corroborate brief pauses and startle-like movements in the mornings.\n\nThere is evidence of deterioration compared with prior stability earlier in 2025: increased event frequency, sleep deprivation, and reduced medication adherence during high-stress weeks. We discussed safety (sleep hygiene, alcohol moderation, and avoiding late-night driving or swimming alone) and the plan to re-establish consistent dosing and regular sleep. I will arrange a repeat lamotrigine trough level in three weeks after adherence stabilises, together with a sleep-deprived EEG to assess interictal activity, and will review urgently if further events occur. The patient consented to referral to our epilepsy nurse specialist for stress-management strategies and adherence support. They will maintain a seizure diary (including caffeine and sleep) to help clarify triggers and frequency.\n\nI will update you following results. Please encourage continued consistent dosing and prompt reporting if episodes escalate or generalise.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 620,
+      "end": 739,
+      "text": "Sporadic jerks this year... with two episodes of momentary loss of awareness reported by peers over the last six weeks.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 620,
+      "end": 644,
+      "text": "Sporadic jerks this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5491,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine, reintroduced March 2025\n\nCurrent dose: Lamotrigine standard tablets 50mg in the morning and 100mg at night (patient-reported adherence variable during recent assessment period)\n\nLamotrigine Blood Level:\n\n22 September 2025: 1.2 mg/L (therapeutic range 1.0–15.0 mg/L). Dose at time of sample: 50mg AM / 100mg PM\n\nSeizures: Sporadic jerks this year, particularly during the recent exam and professional assessment season. Patient reports brief myoclonic-like jerks of the upper limbs on waking and during late-night study sessions, with two episodes of momentary loss of awareness reported by peers over the last six weeks. No injuries but increasing frequency from baseline earlier in the year.\n\nI reviewed Susan Miller today via video consultation. They describe heightened stress, reduced sleep (averaging 4–5 hours/night) and increased caffeine intake over the past two months. They have noted a clear temporal association between stress peaks and the onset of the sporadic jerks this year, with clustering during deadlines. No new focal neurological symptoms, but mounting anxiety about control and performance. There have been no emergency department attendances. Family observations corroborate brief pauses and startle-like movements in the mornings.\n\nThere is evidence of deterioration compared with prior stability earlier in 2025: increased event frequency, sleep deprivation, and reduced medication adherence during high-stress weeks. We discussed safety (sleep hygiene, alcohol moderation, and avoiding late-night driving or swimming alone) and the plan to re-establish consistent dosing and regular sleep. I will arrange a repeat lamotrigine trough level in three weeks after adherence stabilises, together with a sleep-deprived EEG to assess interictal activity, and will review urgently if further events occur. The patient consented to referral to our epilepsy nurse specialist for stress-management strategies and adherence support. They will maintain a seizure diary (including caffeine and sleep) to help clarify triggers and frequency.\n\nI will update you following results. Please encourage continued consistent dosing and prompt reporting if episodes escalate or generalise.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly states the patient is having seizures/events currently but does not provide a precise numeric frequency. It mentions 'Sporadic jerks this year' and 'two episodes of momentary loss of awareness reported by peers over the last six weeks.' However, there is no total count of all seizure-like events (jerks plus loss of awareness) over a defined period, and 'sporadic' is vague. The only explicit number is 'two episodes ... over the last six weeks,' but these are a subset (loss of awareness) and the jerks are unspecified in number and frequency, making overall seizure frequency indeterminable. Given instruction to select the highest frequency and prioritize explicit numeric expressions, we still cannot derive a comprehensive frequency because the jerks are not quantified. Therefore, per rules, if seizures are mentioned but specific frequency cannot be determined, return 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "Sporadic jerks this year... with two episodes of momentary loss of awareness reported by peers over the last six weeks."
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic jerks this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

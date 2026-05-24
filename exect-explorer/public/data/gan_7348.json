@@ -1,0 +1,65 @@
+{
+  "id": "gan_7348",
+  "text": "Department of Neurology\n\nClinic Date: 06 August 2017\n\nDr Aisha Rahman\nSt. Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Aisha Rahman,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nHistory of seizures (pattern currently under evaluation). Remote history of mild traumatic brain injury noted.\n\nCurrent Medication:\n\nNo regular antiseizure medication currently prescribed.\n\nPlan:\n\n- Arrange outpatient EEG and MRI brain to aid further characterisation.\n- Advise seizure first aid and avoidance of hazardous activities pending clarification.\n- Provide rescue plan: Buccal midazolam 10 mg for seizures >5 minutes (carer instructed).\n- Follow-up in neurology clinic in 3 months, or sooner if events escalate.\n\nI reviewed John in clinic today via face-to-face appointment. He reports intermittent episodes over the past three months consisting of brief unresponsiveness with lip-smacking and post-event confusion lasting 10–15 minutes. He also describes two early morning events witnessed by his partner with stiffening followed by rhythmic shaking, tongue bite, and myalgia afterwards. He denies consistent prodrome but notes poor sleep and intercurrent stress prior to several events.\n\nRegarding recent course, he reports initial improvement then relapse after one weeks. Specifically, after adopting regular sleep and reducing alcohol, there were no events for approximately seven days, followed by a return of brief unresponsive episodes on two occasions over the subsequent fortnight. He has not had injuries from the recent episodes. There is no clear familial history of seizures. He recalls a mild head injury at university (no loss of consciousness, managed conservatively) and wonders if this is relevant; we have documented this as a remote history of mild traumatic brain injury.\n\nExamination today was unremarkable with normal neurological findings. Routine bloods from the GP (FBC, U&E, LFTs, glucose, B12/folate, TFTs) are within reference ranges. He is not currently driving and has informed the DVLA of recent events; we discussed continuing to follow statutory guidance.\n\nAt this stage, in the absence of definitive classification, we will proceed with EEG and MRI to assist further evaluation. Given the variable frequency and his preference to avoid daily medication until we have completed investigations, we agreed to defer starting regular therapy today, with safety counselling provided. Written information on triggers, seizure first aid, and escalation steps has been given, and his partner has been trained in the use of buccal midazolam should a prolonged event occur.\n\nI will review John after the tests or earlier if there is any clinical deterioration. Please feel free to contact me if you require further information.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1447,
+      "end": 1596,
+      "text": "there were no events for approximately seven days, followed by a return of brief unresponsive episodes on two occasions over the subsequent fortnight",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1332,
+      "end": 1380,
+      "text": "Initial improvement then relapse after one weeks",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7348,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 06 August 2017\n\nDr Aisha Rahman\nSt. Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Aisha Rahman,\n\nJohn Smith, DOB: 11-07-1984, Hospital No: S845921 NHS No. 7823495610\n34 Kensington Road, London, W8 5NP\n\nDiagnoses:\n\nHistory of seizures (pattern currently under evaluation). Remote history of mild traumatic brain injury noted.\n\nCurrent Medication:\n\nNo regular antiseizure medication currently prescribed.\n\nPlan:\n\n- Arrange outpatient EEG and MRI brain to aid further characterisation.\n- Advise seizure first aid and avoidance of hazardous activities pending clarification.\n- Provide rescue plan: Buccal midazolam 10 mg for seizures >5 minutes (carer instructed).\n- Follow-up in neurology clinic in 3 months, or sooner if events escalate.\n\nI reviewed John in clinic today via face-to-face appointment. He reports intermittent episodes over the past three months consisting of brief unresponsiveness with lip-smacking and post-event confusion lasting 10–15 minutes. He also describes two early morning events witnessed by his partner with stiffening followed by rhythmic shaking, tongue bite, and myalgia afterwards. He denies consistent prodrome but notes poor sleep and intercurrent stress prior to several events.\n\nRegarding recent course, he reports initial improvement then relapse after one weeks. Specifically, after adopting regular sleep and reducing alcohol, there were no events for approximately seven days, followed by a return of brief unresponsive episodes on two occasions over the subsequent fortnight. He has not had injuries from the recent episodes. There is no clear familial history of seizures. He recalls a mild head injury at university (no loss of consciousness, managed conservatively) and wonders if this is relevant; we have documented this as a remote history of mild traumatic brain injury.\n\nExamination today was unremarkable with normal neurological findings. Routine bloods from the GP (FBC, U&E, LFTs, glucose, B12/folate, TFTs) are within reference ranges. He is not currently driving and has informed the DVLA of recent events; we discussed continuing to follow statutory guidance.\n\nAt this stage, in the absence of definitive classification, we will proceed with EEG and MRI to assist further evaluation. Given the variable frequency and his preference to avoid daily medication until we have completed investigations, we agreed to defer starting regular therapy today, with safety counselling provided. Written information on triggers, seizure first aid, and escalation steps has been given, and his partner has been trained in the use of buccal midazolam should a prolonged event occur.\n\nI will review John after the tests or earlier if there is any clinical deterioration. Please feel free to contact me if you require further information.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient is having seizure-like events but does not provide a clear, consistent current frequency over a standard time unit. Details: Over the past three months he has intermittent episodes. Recent course: after lifestyle changes there were no events for approximately seven days, then two brief unresponsive episodes over the subsequent fortnight. There are also two early morning convulsive events in the period but no precise timing beyond 'over the past three months'. The instruction requires selecting the highest frequency when multiple are given, but here the only concrete count tied to a time window is 'two occasions over the subsequent fortnight' (≈ 2 per 2 weeks = 1 per week). However, this is framed as a short recent window following a week with zero events, and overall the letter states the pattern is under evaluation with variable frequency. Because the broader current frequency cannot be determined confidently and the timeframe is limited/variable, the safest label per rules is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "there were no events for approximately seven days, followed by a return of brief unresponsive episodes on two occasions over the subsequent fortnight"
+      ],
+      "reference": [
+        "unknown",
+        "Initial improvement then relapse after one weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

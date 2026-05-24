@@ -1,0 +1,59 @@
+{
+  "id": "gan_2681",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy – Focal Epilepsy Type\n\nMedication: Lamotrigine 100 mg twice daily; Levetiracetam 500 mg twice daily (patient-reported adherence, no recent changes)\n\nLamotrigine Blood Level:\n19 September 2025: 3.2 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 100 mg twice daily\n\nSeizures: Prior to recent deterioration, seizure frequency characterised by periods of clustering followed by quiescence. Over the past 6 weeks, there has been clear worsening with an absence seizure every night, often preceded by evening fatigue and followed by morning headache and reduced concentration. No generalised tonic–clonic seizures reported. Partner has observed brief behavioural arrest with staring and unresponsiveness lasting 10–20 seconds, sometimes with right-hand fumbling.\n\nI reviewed Susan Miller today in clinic. She works in a care setting with irregular breaks and frequent patient transfers. She reports cumulative fatigue across shifts with perceived worsening of events and functional decline at work. She notes that previously she experienced clusters of focal impaired-awareness seizures interspersed with quiescent periods, but now describes an absence seizure every night, which marks a deterioration from her baseline. Events are more predictable in the late evening after back-to-back shifts. No new precipitants identified other than sleep disruption and physical exhaustion. No missed doses declared. No injuries reported.\n\nNeurological examination today was non-focal. BP 118/72, pulse 72 regular. No postictal deficits. \n\nPlan discussed today:\n- Safety counselling reinforced around nocturnal events and work fatigue management (patient to discuss rota adjustments and protected breaks with employer).\n- Arrange ambulatory EEG with sleep capture to better characterise nocturnal events and confirm focal onset with secondary generalisation excluded.\n- Serum Levetiracetam level to be checked with next bloods; repeat Lamotrigine level in 2–3 weeks to confirm stability.\n- Sleep hygiene advice provided; patient will keep a seizure/sleep/workload diary.\n- Follow-up in 6–8 weeks or sooner if escalation (injury, daytime clusters, or generalised convulsions).\n\nI will update you once investigations are available. Please let us know if work accommodations are feasible, as cumulative fatigue appears contributory to this deterioration.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 713,
+      "end": 743,
+      "text": "an absence seizure every night",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 716,
+      "end": 743,
+      "text": "absence seizure every night",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2681,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812\n12 Baker Street, London, NW1 6XE\n\nEpilepsy – Focal Epilepsy Type\n\nMedication: Lamotrigine 100 mg twice daily; Levetiracetam 500 mg twice daily (patient-reported adherence, no recent changes)\n\nLamotrigine Blood Level:\n19 September 2025: 3.2 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 100 mg twice daily\n\nSeizures: Prior to recent deterioration, seizure frequency characterised by periods of clustering followed by quiescence. Over the past 6 weeks, there has been clear worsening with an absence seizure every night, often preceded by evening fatigue and followed by morning headache and reduced concentration. No generalised tonic–clonic seizures reported. Partner has observed brief behavioural arrest with staring and unresponsiveness lasting 10–20 seconds, sometimes with right-hand fumbling.\n\nI reviewed Susan Miller today in clinic. She works in a care setting with irregular breaks and frequent patient transfers. She reports cumulative fatigue across shifts with perceived worsening of events and functional decline at work. She notes that previously she experienced clusters of focal impaired-awareness seizures interspersed with quiescent periods, but now describes an absence seizure every night, which marks a deterioration from her baseline. Events are more predictable in the late evening after back-to-back shifts. No new precipitants identified other than sleep disruption and physical exhaustion. No missed doses declared. No injuries reported.\n\nNeurological examination today was non-focal. BP 118/72, pulse 72 regular. No postictal deficits. \n\nPlan discussed today:\n- Safety counselling reinforced around nocturnal events and work fatigue management (patient to discuss rota adjustments and protected breaks with employer).\n- Arrange ambulatory EEG with sleep capture to better characterise nocturnal events and confirm focal onset with secondary generalisation excluded.\n- Serum Levetiracetam level to be checked with next bloods; repeat Lamotrigine level in 2–3 weeks to confirm stability.\n- Sleep hygiene advice provided; patient will keep a seizure/sleep/workload diary.\n- Follow-up in 6–8 weeks or sooner if escalation (injury, daytime clusters, or generalised convulsions).\n\nI will update you once investigations are available. Please let us know if work accommodations are feasible, as cumulative fatigue appears contributory to this deterioration.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Over the past 6 weeks, there has been clear worsening with an absence seizure every night.' This indicates a current frequency of 1 seizure per day (nightly). No other concurrent frequency higher than daily is provided. Therefore, per the rule to select the highest frequency, the label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "an absence seizure every night"
+      ],
+      "reference": [
+        "1 per day",
+        "absence seizure every night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

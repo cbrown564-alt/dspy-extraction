@@ -1,0 +1,54 @@
+{
+  "id": "gan_4027",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 11 December 2022 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nGuy’s and St Thomas’ NHS Foundation Trust, London  \n\nDear Dr Sarah Ahmed, \n\nEmily Carter, DOB: 12-06-1993, Hospital No: G847392 NHS No. 1038459726  \nFlat 2B, 41 Brook Lane, London, SE1 3AB  \n\nDiagnosis: \n\nRecurrent episodes suggestive of seizures; classification not established at this stage\n\nAetiology: \n\nUnclear. No prior neurological history. Post-partum within the last six months with fragmented night-time sleep reported.\n\nOther Medical Problems: \n\nIron-deficiency anaemia in pregnancy, now improving on oral ferrous fumarate. No known drug allergies. Currently breastfeeding.\n\nManagement Plan: \n\n- Seizure frequency currently described by the patient as “occurring roughly every three to four weeks,” often in the small hours after disrupted sleep. She notes two events in the past eight weeks; prior to pregnancy there were no similar episodes.  \n- We discussed the temporal association with sleep fragmentation and post-partum fatigue. She will continue sleep hygiene measures as circumstances allow (partner support for night feeds where possible, scheduled rest periods).  \n- Start ambulatory EEG with sleep capture and arrange MRI brain (epilepsy protocol) to evaluate further.  \n- Safety advice provided regarding childcare, bathing the infant, heights, and use of hot surfaces; written information supplied.  \n- Driving: advised to follow DVLA guidance; she has not been driving since the first episode and will continue to refrain until further review.  \n- For now, no antiseizure medication is initiated pending EEG/MRI results and further characterisation; we discussed rescue management should events cluster—she will present to ED if events last >5 minutes or recur without recovery.  \n- Follow-up in eight weeks, earlier if events increase in frequency or severity.\n\nInterim Summary: \n\nThis new mother reports night-time events with brief loss of awareness and a short post-event phase, typically following multiple awakenings for feeds. There is no clear focal onset described, no history of head injury or CNS infection, and no family history of epilepsy. The pattern aligns with episodes recurring about monthly, often coinciding with cumulative sleep disruption. She is motivated to proceed with investigations before considering medication, mindful of breastfeeding.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 803,
+      "end": 849,
+      "text": "“occurring roughly every three to four weeks,”",
+      "attributes": {
+        "Label": "1 per 3 to 4 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4027,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 11 December 2022 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nGuy’s and St Thomas’ NHS Foundation Trust, London  \n\nDear Dr Sarah Ahmed, \n\nEmily Carter, DOB: 12-06-1993, Hospital No: G847392 NHS No. 1038459726  \nFlat 2B, 41 Brook Lane, London, SE1 3AB  \n\nDiagnosis: \n\nRecurrent episodes suggestive of seizures; classification not established at this stage\n\nAetiology: \n\nUnclear. No prior neurological history. Post-partum within the last six months with fragmented night-time sleep reported.\n\nOther Medical Problems: \n\nIron-deficiency anaemia in pregnancy, now improving on oral ferrous fumarate. No known drug allergies. Currently breastfeeding.\n\nManagement Plan: \n\n- Seizure frequency currently described by the patient as “occurring roughly every three to four weeks,” often in the small hours after disrupted sleep. She notes two events in the past eight weeks; prior to pregnancy there were no similar episodes.  \n- We discussed the temporal association with sleep fragmentation and post-partum fatigue. She will continue sleep hygiene measures as circumstances allow (partner support for night feeds where possible, scheduled rest periods).  \n- Start ambulatory EEG with sleep capture and arrange MRI brain (epilepsy protocol) to evaluate further.  \n- Safety advice provided regarding childcare, bathing the infant, heights, and use of hot surfaces; written information supplied.  \n- Driving: advised to follow DVLA guidance; she has not been driving since the first episode and will continue to refrain until further review.  \n- For now, no antiseizure medication is initiated pending EEG/MRI results and further characterisation; we discussed rescue management should events cluster—she will present to ED if events last >5 minutes or recur without recovery.  \n- Follow-up in eight weeks, earlier if events increase in frequency or severity.\n\nInterim Summary: \n\nThis new mother reports night-time events with brief loss of awareness and a short post-event phase, typically following multiple awakenings for feeds. There is no clear focal onset described, no history of head injury or CNS infection, and no family history of epilepsy. The pattern aligns with episodes recurring about monthly, often coinciding with cumulative sleep disruption. She is motivated to proceed with investigations before considering medication, mindful of breastfeeding.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states two frequency indicators: (1) “occurring roughly every three to four weeks,” and (2) “two events in the past eight weeks.” Both reflect about monthly events. Per rule to prioritize explicit numeric expressions, use the 3–4 week interval. Normalized to allowed format as a range: 1 per 3 to 4 week.",
+      "seizure_frequency_number": [
+        "1 per 3 to 4 week",
+        "“occurring roughly every three to four weeks,”"
+      ],
+      "reference": [
+        "1 per month",
+        "abs Xmonthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 3 to 4 week) disagrees with Reference (1 per month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

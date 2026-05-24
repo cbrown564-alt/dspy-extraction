@@ -1,0 +1,59 @@
+{
+  "id": "gan_10074",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nLevetiracetam 1 g twice daily. No adverse effects reported. Patient using standard safety precautions at work.\n\nHistory since last review:\n\nEmily Carter works in metal fabrication with intermittent exposure to arc-light; she reports consistent use of a protective visor and adherence to workplace safety protocols. She keeps a diary and notes Nocturnal clusters 5×/month, typically over 2–3 consecutive nights, each cluster comprising brief episodes of arousal from sleep with metallic taste and a sense of déjà vu, followed by fatigue the next day. There are no witnessed daytime events at work, no injuries, and no loss of awareness reported while operating machinery. Triggers she wonders about include poor sleep after late shifts and occasional skipped meals; she does not consume alcohol during the working week and drinks one coffee in the morning. She has noticed no clear relation to arc-light exposure, as events are confined to nights at home.\n\nExamination today was unremarkable. She is fit for continued work duties from a neurological perspective based on the absence of daytime events and preserved awareness; we have discussed standard safety measures and the importance of sleep hygiene. She will continue her visor use and routine breaks, and she will keep detailed logs of any nocturnal symptoms, highlighting dates relative to shift changes.\n\nPlan:\n- Continue levetiracetam 1 g twice daily.\n- Maintain sleep regularity and meal timing where possible around shifts.\n- Keep seizure diary and bring to next visit; if nocturnal clusters change in character or become daytime, she will contact us promptly.\n- We will review in six months, or sooner if needed.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 636,
+      "end": 742,
+      "text": "Nocturnal clusters 5×/month, typically over 2–3 consecutive nights, each cluster comprising brief episodes",
+      "attributes": {
+        "Label": "5 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 636,
+      "end": 663,
+      "text": "Nocturnal clusters 5×/month",
+      "attributes": {
+        "Label": "5 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10074,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nLevetiracetam 1 g twice daily. No adverse effects reported. Patient using standard safety precautions at work.\n\nHistory since last review:\n\nEmily Carter works in metal fabrication with intermittent exposure to arc-light; she reports consistent use of a protective visor and adherence to workplace safety protocols. She keeps a diary and notes Nocturnal clusters 5×/month, typically over 2–3 consecutive nights, each cluster comprising brief episodes of arousal from sleep with metallic taste and a sense of déjà vu, followed by fatigue the next day. There are no witnessed daytime events at work, no injuries, and no loss of awareness reported while operating machinery. Triggers she wonders about include poor sleep after late shifts and occasional skipped meals; she does not consume alcohol during the working week and drinks one coffee in the morning. She has noticed no clear relation to arc-light exposure, as events are confined to nights at home.\n\nExamination today was unremarkable. She is fit for continued work duties from a neurological perspective based on the absence of daytime events and preserved awareness; we have discussed standard safety measures and the importance of sleep hygiene. She will continue her visor use and routine breaks, and she will keep detailed logs of any nocturnal symptoms, highlighting dates relative to shift changes.\n\nPlan:\n- Continue levetiracetam 1 g twice daily.\n- Maintain sleep regularity and meal timing where possible around shifts.\n- Keep seizure diary and bring to next visit; if nocturnal clusters change in character or become daytime, she will contact us promptly.\n- We will review in six months, or sooner if needed.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Nocturnal clusters 5×/month, typically over 2–3 consecutive nights, each cluster comprising brief episodes...\" This provides an explicit numeric frequency of clusters per month (5 per month) and describes multiple brief episodes within each cluster without giving an exact count per cluster. According to the rules, we normalize to the cluster format with known cluster frequency and unknown per-cluster count: \"<value1> cluster per <value2> month, <value3> per cluster\" where <value3> is unknown.",
+      "seizure_frequency_number": [
+        "5 cluster per month, multiple per cluster",
+        "Nocturnal clusters 5×/month, typically over 2–3 consecutive nights, each cluster comprising brief episodes"
+      ],
+      "reference": [
+        "5 cluster per month, multiple per cluster",
+        "Nocturnal clusters 5×/month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

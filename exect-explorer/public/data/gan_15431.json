@@ -1,0 +1,59 @@
+{
+  "id": "gan_15431",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAmelia Hart, DOB: 22-11-1991, Hospital No: Q572639 NHS No. 9182736450  \nFlat 3, 28 Rosemead Road, London, SW12 9JP  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since March 2025  \n\nLevetiracetam 500 mg twice a day (patient-reported adherence, no missed doses in the last 8 weeks) \n\nLevetiracetam Blood Level:  \n\n20 September 2025: 14 µg/mL (laboratory therapeutic reference 12–46 µg/mL). Dose 500 mg twice a day.  \n\nSeizures: She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day. These clusters have reduced in intensity and recovery time over the last two episodes, with no injuries or prolonged post-ictal confusion reported. No clear auras or focal features described. \n\nI reviewed Amelia Hart today in follow-up. Since relocating at work from the hot cookline to a prep area with improved ventilation, she reports fewer heat and fume triggers, better sleep continuity, and reduced daytime fatigue. She has maintained occupational stability for three consecutive months and has not required emergency attendance during this period. Family observations corroborate shorter events and faster return to baseline. \n\nWe discussed ongoing self-monitoring, hydration, and maintaining regular sleep. She prefers to continue with her current regimen given recent improvement and lack of adverse effects (no mood change, dizziness, or rash). Safety advice around bathing and working near sharp implements was reiterated. I will continue to track cluster frequency and duration using her seizure diary and request repeat serum level if any breakthrough outside the pattern occurs. \n\nPlan:  \n- Continue Levetiracetam 500 mg twice daily.  \n- Maintain seizure diary with specific note of potential heat or exertion triggers.  \n- Workplace adjustments to remain in place; no further changes needed currently.  \n- Telephone review in 3 months, sooner if clusters increase or if injuries occur. \n\nOverall, there is a positive trend with sustained stability in recent months, likely supported by improved work environment and consistent medication adherence. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 692,
+      "end": 803,
+      "text": "She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day.",
+      "attributes": {
+        "Label": "1 cluster per 4 month, 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 692,
+      "end": 802,
+      "text": "She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day",
+      "attributes": {
+        "Label": "1 cluster per 4 month, 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15431,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAmelia Hart, DOB: 22-11-1991, Hospital No: Q572639 NHS No. 9182736450  \nFlat 3, 28 Rosemead Road, London, SW12 9JP  \n\nEpilepsy \n\nMedication: Ongoing Levetiracetam since March 2025  \n\nLevetiracetam 500 mg twice a day (patient-reported adherence, no missed doses in the last 8 weeks) \n\nLevetiracetam Blood Level:  \n\n20 September 2025: 14 µg/mL (laboratory therapeutic reference 12–46 µg/mL). Dose 500 mg twice a day.  \n\nSeizures: She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day. These clusters have reduced in intensity and recovery time over the last two episodes, with no injuries or prolonged post-ictal confusion reported. No clear auras or focal features described. \n\nI reviewed Amelia Hart today in follow-up. Since relocating at work from the hot cookline to a prep area with improved ventilation, she reports fewer heat and fume triggers, better sleep continuity, and reduced daytime fatigue. She has maintained occupational stability for three consecutive months and has not required emergency attendance during this period. Family observations corroborate shorter events and faster return to baseline. \n\nWe discussed ongoing self-monitoring, hydration, and maintaining regular sleep. She prefers to continue with her current regimen given recent improvement and lack of adverse effects (no mood change, dizziness, or rash). Safety advice around bathing and working near sharp implements was reiterated. I will continue to track cluster frequency and duration using her seizure diary and request repeat serum level if any breakthrough outside the pattern occurs. \n\nPlan:  \n- Continue Levetiracetam 500 mg twice daily.  \n- Maintain seizure diary with specific note of potential heat or exertion triggers.  \n- Workplace adjustments to remain in place; no further changes needed currently.  \n- Telephone review in 3 months, sooner if clusters increase or if injuries occur. \n\nOverall, there is a positive trend with sustained stability in recent months, likely supported by improved work environment and consistent medication adherence. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Key sentence: \"She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day.\" This provides a pattern: a cluster occurs after up to 4 months of being seizure-free, and each cluster contains 5 seizures in a day. There is no exact shorter interval stated that would imply more frequent clusters, and no alternative frequency is provided. Applying the format for clusters: 1 cluster per 4 months, 5 per cluster. Since 'up to 4 month' suggests the interval can be as long as 4 months and no more frequent regularity is specified, we use 4 months as the interval.",
+      "seizure_frequency_number": [
+        "1 cluster per 4 month, 5 per cluster",
+        "She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day."
+      ],
+      "reference": [
+        "1 cluster per 4 month, 5 per cluster",
+        "She may remain seizure-free for up to 4 month, but then will experience clusters of 5 seizures in a single day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

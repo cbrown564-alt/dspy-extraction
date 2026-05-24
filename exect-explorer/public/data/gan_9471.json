@@ -1,0 +1,59 @@
+{
+  "id": "gan_9471",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 7 April 2015 \n\nDr Jonathan Rees\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Jonathan Rees,\n\nAmelia Roberts, DOB: 22-08-1989, Hospital No: H327519 NHS No. 9142756301\nFlat 5, 28 Cartwright Gardens, London, WC1H 9EH\n\nGeneralised Epilepsy Type\n\nMedication: Valproate commenced October 2014 and continued\n\nValproate EC 250 mg in the morning and 500 mg at night (patient-reported adherence >95%)\n\nValproate Blood Level:\n\n18 March 2015: 62 mg/L (lab therapeutic range 50–100 mg/L). Dose 250 mg AM / 500 mg PM at time of sampling\n\nSeizures: Patient has generalised epilepsy with a history of focal-onset features reported prior to generalisation. Frequency over the past months is as follows: Focal seizure: 2014: May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0. 2015: Jan x1, Feb x0, Mar x0. There have been no generalised tonic–clonic events since November 2014. The patient reports improving stability of daily routine.\n\nI reviewed Amelia Roberts in clinic today. Since reinforcing sleep hygiene measures in January 2015, the patient reports a more regular sleep–wake cycle with consistent bedtimes and reduced nocturnal awakenings. The pattern appears more stable, and there has been a clear reduction in breakthrough events since the end of 2014. Headaches that previously followed poor sleep have diminished, and no injuries, tongue biting or incontinence have been reported. No new neurological symptoms. The patient’s partner corroborates the absence of nocturnal convulsions.\n\nExamination today was unremarkable. Weight stable. No tremor or ataxia. Mood is improved, with the patient describing less daytime fatigue since establishing a wind-down routine and avoiding late caffeine. No reported adverse effects from valproate beyond mild transient nausea in the mornings, now resolved with doses taken after breakfast and evening meal.\n\nPlan:\n- Continue current valproate dose (250 mg AM / 500 mg PM).\n- Maintain sleep hygiene measures; patient to continue a regular bedtime and morning wake time schedule.\n- Safety advice reinforced; patient has not been driving and understands current DVLA guidance.\n- Arrange follow-up in three months with repeat trough valproate level and seizure diary review.\n\nOverall impression: The condition is improving. Sleep hygiene improved; pattern appears more stable, with seizure frequency declining and no generalised events since November 2014.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 759,
+      "end": 873,
+      "text": "Focal seizure: 2014: May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0. 2015: Jan x1, Feb x0, Mar x0.",
+      "attributes": {
+        "Label": "7 per 11 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 759,
+      "end": 872,
+      "text": "Focal seizure: 2014: May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0. 2015: Jan x1, Feb x0, Mar x0",
+      "attributes": {
+        "Label": "7 per 11 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9471,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 7 April 2015 \n\nDr Jonathan Rees\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Jonathan Rees,\n\nAmelia Roberts, DOB: 22-08-1989, Hospital No: H327519 NHS No. 9142756301\nFlat 5, 28 Cartwright Gardens, London, WC1H 9EH\n\nGeneralised Epilepsy Type\n\nMedication: Valproate commenced October 2014 and continued\n\nValproate EC 250 mg in the morning and 500 mg at night (patient-reported adherence >95%)\n\nValproate Blood Level:\n\n18 March 2015: 62 mg/L (lab therapeutic range 50–100 mg/L). Dose 250 mg AM / 500 mg PM at time of sampling\n\nSeizures: Patient has generalised epilepsy with a history of focal-onset features reported prior to generalisation. Frequency over the past months is as follows: Focal seizure: 2014: May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0. 2015: Jan x1, Feb x0, Mar x0. There have been no generalised tonic–clonic events since November 2014. The patient reports improving stability of daily routine.\n\nI reviewed Amelia Roberts in clinic today. Since reinforcing sleep hygiene measures in January 2015, the patient reports a more regular sleep–wake cycle with consistent bedtimes and reduced nocturnal awakenings. The pattern appears more stable, and there has been a clear reduction in breakthrough events since the end of 2014. Headaches that previously followed poor sleep have diminished, and no injuries, tongue biting or incontinence have been reported. No new neurological symptoms. The patient’s partner corroborates the absence of nocturnal convulsions.\n\nExamination today was unremarkable. Weight stable. No tremor or ataxia. Mood is improved, with the patient describing less daytime fatigue since establishing a wind-down routine and avoiding late caffeine. No reported adverse effects from valproate beyond mild transient nausea in the mornings, now resolved with doses taken after breakfast and evening meal.\n\nPlan:\n- Continue current valproate dose (250 mg AM / 500 mg PM).\n- Maintain sleep hygiene measures; patient to continue a regular bedtime and morning wake time schedule.\n- Safety advice reinforced; patient has not been driving and understands current DVLA guidance.\n- Arrange follow-up in three months with repeat trough valproate level and seizure diary review.\n\nOverall impression: The condition is improving. Sleep hygiene improved; pattern appears more stable, with seizure frequency declining and no generalised events since November 2014.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists focal seizure counts by month: 2014 May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0; 2015 Jan x1, Feb x0, Mar x0. Summing seizures: 1+1+1+0+1+2+0+0+1+0+0 = 7 seizures. Counting months from May 2014 through March 2015 gives 11 months. Therefore, the frequency over the documented period is 7 per 11 months. While generalized seizures are reported as absent since November 2014, focal seizures occurred in January 2015, so the patient is not seizure-free by the ≥6-month criterion. Per the multiple frequency rule, we select the higher frequency (focal) over generalized (zero).",
+      "seizure_frequency_number": [
+        "7 per 11 month",
+        "Focal seizure: 2014: May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0. 2015: Jan x1, Feb x0, Mar x0."
+      ],
+      "reference": [
+        "7 per 11 month",
+        "Focal seizure: 2014: May x1, Jun x1, Jul x1, Aug x0, Sep x1, Oct x2, Nov x0, Dec x0. 2015: Jan x1, Feb x0, Mar x0"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_10542",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 13 August 2014\n\nDr Patel\nSouthwark Community Neurology Clinic\nGround Floor, 18 Borough High Street, London SE1 1XU\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 1995-03-09, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nGeneralised epilepsy.\n\nI reviewed Anne Taylor in clinic today, accompanied by her mother. She has been using a seizure diary app consistently over the past three months, and the entries were available for review. She reports occasional brief staring spells with loss of awareness and immediate recovery, sometimes with a subtle eyelid flutter, without falls or injury. Based on the diary, episodes tend to cluster on days with poor sleep or higher stress.\n\nFrom the app logs and her account: When clusters occur, typically two to four absences over ~1 h; frequency not tracked. She has not recorded clear generalised tonic–clonic seizures in this interval, and there have been no emergency attendances. She has a personalised rescue plan but has not required rescue medication.\n\nMedication remains unchanged. She is adherent and has set app reminders, which she finds helpful. No adverse effects are reported. There is no vagus nerve stimulator in situ. She does not drive and understands DVLA guidance.\n\nNeurological examination in clinic today was unremarkable. There are no new comorbid concerns. We discussed optimising sleep hygiene and continuing structured app logging to improve characterisation of day-to-day variability. She prefers to defer any medication adjustments until we have a fuller three-month dataset including triggers and menstrual correlation; this is reasonable given current stability and absence of injuries.\n\nPlan:\n- Continue current antiseizure medication regimen unchanged.\n- Continue seizure diary app logging (including potential triggers, menses, and missed doses).\n- Safety advice reinforced; rescue plan unchanged and rescue medication not currently required.\n- Routine bloods at next visit for monitoring.\n- Follow-up in 3 months, sooner if events change in character, duration, or result in injury.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 796,
+      "end": 881,
+      "text": "When clusters occur, typically two to four absences over ~1 h; frequency not tracked.",
+      "attributes": {
+        "Label": "unknown, 2 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 796,
+      "end": 880,
+      "text": "When clusters occur, typically two to four absences over ~1 h; frequency not tracked",
+      "attributes": {
+        "Label": "unknown, 2 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10542,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 13 August 2014\n\nDr Patel\nSouthwark Community Neurology Clinic\nGround Floor, 18 Borough High Street, London SE1 1XU\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 1995-03-09, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nGeneralised epilepsy.\n\nI reviewed Anne Taylor in clinic today, accompanied by her mother. She has been using a seizure diary app consistently over the past three months, and the entries were available for review. She reports occasional brief staring spells with loss of awareness and immediate recovery, sometimes with a subtle eyelid flutter, without falls or injury. Based on the diary, episodes tend to cluster on days with poor sleep or higher stress.\n\nFrom the app logs and her account: When clusters occur, typically two to four absences over ~1 h; frequency not tracked. She has not recorded clear generalised tonic–clonic seizures in this interval, and there have been no emergency attendances. She has a personalised rescue plan but has not required rescue medication.\n\nMedication remains unchanged. She is adherent and has set app reminders, which she finds helpful. No adverse effects are reported. There is no vagus nerve stimulator in situ. She does not drive and understands DVLA guidance.\n\nNeurological examination in clinic today was unremarkable. There are no new comorbid concerns. We discussed optimising sleep hygiene and continuing structured app logging to improve characterisation of day-to-day variability. She prefers to defer any medication adjustments until we have a fuller three-month dataset including triggers and menstrual correlation; this is reasonable given current stability and absence of injuries.\n\nPlan:\n- Continue current antiseizure medication regimen unchanged.\n- Continue seizure diary app logging (including potential triggers, menses, and missed doses).\n- Safety advice reinforced; rescue plan unchanged and rescue medication not currently required.\n- Routine bloods at next visit for monitoring.\n- Follow-up in 3 months, sooner if events change in character, duration, or result in injury.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms ongoing seizures: 'occasional brief staring spells' and describes clusters: 'When clusters occur, typically two to four absences over ~1 h; frequency not tracked.' There is no explicit numeric frequency over a day/week/month/year. Because the number of seizures within a cluster is given (2 to 4 per cluster) but the cluster frequency is not tracked, we cannot compute an overall rate. Per the rules, when seizures are present but frequency cannot be determined and only per-cluster count is known, return 'unknown, <value> per cluster.'",
+      "seizure_frequency_number": [
+        "unknown, 2 to 4 per cluster",
+        "When clusters occur, typically two to four absences over ~1 h; frequency not tracked."
+      ],
+      "reference": [
+        "unknown, 2 to 4 per cluster",
+        "When clusters occur, typically two to four absences over ~1 h; frequency not tracked"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

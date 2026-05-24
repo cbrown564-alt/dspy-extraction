@@ -1,0 +1,59 @@
+{
+  "id": "gan_2953",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 January 2022 \n\nDr Priya Sharma\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Sharma\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1985, Hospital No: KCH829104 NHS No. 9473105628  \n12 Brook Mews, London, SE15 4BQ\n\nThank you for asking me to review your patient. He attended today in a settled state and we were able to have a clear discussion. He reports that he has been Seizure-free since 2 July 2021, and there have been no witnessed episodes by family or colleagues during this period. He commutes mainly by bicycle and notes no events or near-misses, with day-to-day activities unchanged from baseline.\n\nFrom the available history and prior investigations, there is no current evidence to support a diagnosis of epilepsy. Earlier episodes previously labelled as “seizures” appear to have resolved, and he has not required antiseizure medication for several months. On balance, my impression is that he does not have epilepsy at present. We discussed this openly, including the importance of continuing routine care and monitoring symptoms should anything new arise; he understood and agreed with the plan. There are no nocturnal events, no post-event confusion, and no injuries reported.\n\nNeurological examination today was unremarkable. Cognitive function, speech, and gait were within normal limits. He reports stable mood and good sleep. No psychotic or dissociative phenomena were described. Given sustained remission of episodes and lack of features suggestive of an epileptic disorder, I have advised that no further epilepsy-specific investigations are required at this time.\n\nI will discharge him from the epilepsy pathway with the understanding that he can be re-referred if new symptoms develop. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 513,
+      "end": 571,
+      "text": "He reports that he has been Seizure-free since 2 July 2021",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 541,
+      "end": 571,
+      "text": "Seizure-free since 2 July 2021",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2953,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 January 2022 \n\nDr Priya Sharma\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Sharma\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1985, Hospital No: KCH829104 NHS No. 9473105628  \n12 Brook Mews, London, SE15 4BQ\n\nThank you for asking me to review your patient. He attended today in a settled state and we were able to have a clear discussion. He reports that he has been Seizure-free since 2 July 2021, and there have been no witnessed episodes by family or colleagues during this period. He commutes mainly by bicycle and notes no events or near-misses, with day-to-day activities unchanged from baseline.\n\nFrom the available history and prior investigations, there is no current evidence to support a diagnosis of epilepsy. Earlier episodes previously labelled as “seizures” appear to have resolved, and he has not required antiseizure medication for several months. On balance, my impression is that he does not have epilepsy at present. We discussed this openly, including the importance of continuing routine care and monitoring symptoms should anything new arise; he understood and agreed with the plan. There are no nocturnal events, no post-event confusion, and no injuries reported.\n\nNeurological examination today was unremarkable. Cognitive function, speech, and gait were within normal limits. He reports stable mood and good sleep. No psychotic or dissociative phenomena were described. Given sustained remission of episodes and lack of features suggestive of an epileptic disorder, I have advised that no further epilepsy-specific investigations are required at this time.\n\nI will discharge him from the epilepsy pathway with the understanding that he can be re-referred if new symptoms develop. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He reports that he has been Seizure-free since 2 July 2021.\" The clinic date is 04 January 2022. Calculate duration from 2 July 2021 to 4 January 2022: July 2 to August 2 = 1 month; to September 2 = 2 months; to October 2 = 3 months; to November 2 = 4 months; to December 2 = 5 months; to January 2 = 6 months; plus 2 additional days. Therefore, the patient has been seizure-free for at least 6 months at the time of the clinic visit, meeting the criterion for 'seizure free for <value> <month>'.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "He reports that he has been Seizure-free since 2 July 2021"
+      ],
+      "reference": [
+        "seizure free for 6 month",
+        "Seizure-free since 2 July 2021"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

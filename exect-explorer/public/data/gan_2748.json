@@ -1,0 +1,59 @@
+{
+  "id": "gan_2748",
+  "text": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Eleanor Wright\nSt. George’s University Hospitals NHS Foundation Trust\nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT\n\nDear Dr Eleanor Wright,\n\nMichael Turner, DOB: 15-03-1986, Hospital No: H392847 NHS No. 9034756128\n22 Brookfield Avenue, Balham, London SW12 0NN\n\nDiagnoses:\n\nFocal epilepsy with focal impaired-awareness seizures (onset 2017)\nMRI brain (2021) unremarkable; interictal EEG (2022) left temporal sharp waves\n\nCurrent Medication:\n\nLevetiracetam 1,000 mg twice daily\nLacosamide 100 mg twice daily\n\nPlan:\n\nContinue current antiepileptic regimen; maintain seizure diary and reminders\nReinforce sleep hygiene and regular medication timing\nTelephone review in 6 months, earlier if breakthrough events increase\n\nI reviewed Michael Turner in clinic today. He reports a clear improvement in seizure control over the past year, which he attributes to using consistent seizure diary/reminders that have markedly improved adherence. Seizure burden has been substantially reduced following dose adjustment, with only seven focal impaired-awareness seizures reported so far this year. At present, his typical pattern is a focal seizure monthly, usually brief (1–2 minutes) with automatisms and post-event fatigue, and without generalisation.\n\nHe has not reported any medication side effects beyond transient dizziness when doses were first increased; these have settled. Sleep has been more regular, and he is avoiding missed doses using phone alarms. There have been no emergency department attendances, injuries, or prolonged events.\n\nGiven this sustained improvement and the current frequency of a focal seizure monthly, I have advised continuing levetiracetam 1,000 mg twice daily and lacosamide 100 mg twice daily without change. We discussed red flags (increase in seizure frequency, events clustering, or any evolution to bilateral tonic–clonic seizures) and he will contact the service promptly if these occur. He will continue his seizure diary and bring it to the next review. Driving advice remains in line with DVLA guidance for focal epilepsy; we reiterated the need to report any change that would affect eligibility.\n\nI have arranged a telephone follow-up in six months. Please feel free to contact me if there are any concerns or if earlier review is required.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1149,
+      "end": 1207,
+      "text": "At present, his typical pattern is a focal seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1186,
+      "end": 1207,
+      "text": "focal seizure monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2748,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 02 October 2025\n\nDr Eleanor Wright\nSt. George’s University Hospitals NHS Foundation Trust\nAtkinson Morley Wing, Blackshaw Road, London SW17 0QT\n\nDear Dr Eleanor Wright,\n\nMichael Turner, DOB: 15-03-1986, Hospital No: H392847 NHS No. 9034756128\n22 Brookfield Avenue, Balham, London SW12 0NN\n\nDiagnoses:\n\nFocal epilepsy with focal impaired-awareness seizures (onset 2017)\nMRI brain (2021) unremarkable; interictal EEG (2022) left temporal sharp waves\n\nCurrent Medication:\n\nLevetiracetam 1,000 mg twice daily\nLacosamide 100 mg twice daily\n\nPlan:\n\nContinue current antiepileptic regimen; maintain seizure diary and reminders\nReinforce sleep hygiene and regular medication timing\nTelephone review in 6 months, earlier if breakthrough events increase\n\nI reviewed Michael Turner in clinic today. He reports a clear improvement in seizure control over the past year, which he attributes to using consistent seizure diary/reminders that have markedly improved adherence. Seizure burden has been substantially reduced following dose adjustment, with only seven focal impaired-awareness seizures reported so far this year. At present, his typical pattern is a focal seizure monthly, usually brief (1–2 minutes) with automatisms and post-event fatigue, and without generalisation.\n\nHe has not reported any medication side effects beyond transient dizziness when doses were first increased; these have settled. Sleep has been more regular, and he is avoiding missed doses using phone alarms. There have been no emergency department attendances, injuries, or prolonged events.\n\nGiven this sustained improvement and the current frequency of a focal seizure monthly, I have advised continuing levetiracetam 1,000 mg twice daily and lacosamide 100 mg twice daily without change. We discussed red flags (increase in seizure frequency, events clustering, or any evolution to bilateral tonic–clonic seizures) and he will contact the service promptly if these occur. He will continue his seizure diary and bring it to the next review. Driving advice remains in line with DVLA guidance for focal epilepsy; we reiterated the need to report any change that would affect eligibility.\n\nI have arranged a telephone follow-up in six months. Please feel free to contact me if there are any concerns or if earlier review is required.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states two indicators of current frequency: (1) 'only seven focal impaired-awareness seizures reported so far this year' and (2) 'At present, his typical pattern is a focal seizure monthly.' Rule prioritizes explicit numeric expressions and highest frequency when multiple exist. 'Seven so far this year' averages <1 per month but spans partial year and is cumulative; the 'current pattern' explicitly states ongoing frequency: 'a focal seizure monthly.' Therefore, the current seizure frequency is 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "At present, his typical pattern is a focal seizure monthly"
+      ],
+      "reference": [
+        "1 per month",
+        "focal seizure monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

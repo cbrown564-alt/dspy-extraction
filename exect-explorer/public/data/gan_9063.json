@@ -1,0 +1,59 @@
+{
+  "id": "gan_9063",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 November 2017 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSarah Williams, DOB: 14-02-1982, Hospital No: KCH482913 NHS No. 9075612345  \nBryn Farm Cottage, Llangadog, Carmarthenshire SA19 9XX\n\nThank you for referring the patient for review. We conducted today’s follow-up by telephone as access to hospital is challenging from their rural location and public transport is limited. The patient and spouse contributed to the history and have been keeping a simple seizure diary to support remote monitoring.\n\nThey report sustained stability with no episodes suggestive of evolving motor activity, loss of awareness, or nocturnal events. Importantly, they volunteered a clear timepoint: No focal clonic since 19-Mar-2017. There have been no emergency presentations, no injuries, and no witnessed convulsive activity. Speech, memory, and mood are described as stable, with no post-event confusion reported in the period under review.\n\nMedication adherence is said to be good, with no recent changes and no problematic adverse effects beyond mild intermittent fatigue. Sleep is regular and they avoid known personal triggers. They are comfortable to continue with remote reviews given the travel constraints, but understand that in-person assessment or home EEG may be arranged if the situation changes.\n\nPlan:\n- Continue current anti-seizure regimen without change.\n- Maintain the seizure diary; they will update us promptly if any events recur.\n- Arrange telephone review in 4 months, with the option to advance the appointment if there are breakthrough events or new concerns.\n- Provide written information on safety and SUDEP awareness; patient confirms understanding.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 891,
+      "end": 924,
+      "text": "No focal clonic since 19-Mar-2017",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 891,
+      "end": 924,
+      "text": "No focal clonic since 19-Mar-2017",
+      "attributes": {
+        "Label": "seizure free for 8 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9063,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 November 2017 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSarah Williams, DOB: 14-02-1982, Hospital No: KCH482913 NHS No. 9075612345  \nBryn Farm Cottage, Llangadog, Carmarthenshire SA19 9XX\n\nThank you for referring the patient for review. We conducted today’s follow-up by telephone as access to hospital is challenging from their rural location and public transport is limited. The patient and spouse contributed to the history and have been keeping a simple seizure diary to support remote monitoring.\n\nThey report sustained stability with no episodes suggestive of evolving motor activity, loss of awareness, or nocturnal events. Importantly, they volunteered a clear timepoint: No focal clonic since 19-Mar-2017. There have been no emergency presentations, no injuries, and no witnessed convulsive activity. Speech, memory, and mood are described as stable, with no post-event confusion reported in the period under review.\n\nMedication adherence is said to be good, with no recent changes and no problematic adverse effects beyond mild intermittent fatigue. Sleep is regular and they avoid known personal triggers. They are comfortable to continue with remote reviews given the travel constraints, but understand that in-person assessment or home EEG may be arranged if the situation changes.\n\nPlan:\n- Continue current anti-seizure regimen without change.\n- Maintain the seizure diary; they will update us promptly if any events recur.\n- Arrange telephone review in 4 months, with the option to advance the appointment if there are breakthrough events or new concerns.\n- Provide written information on safety and SUDEP awareness; patient confirms understanding.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter date is 22 November 2017. It explicitly states: \"No focal clonic since 19-Mar-2017\" and also reports no other episodes suggestive of seizures during the period under review (no motor activity, loss of awareness, nocturnal events, emergency presentations, injuries, or convulsive activity). Therefore, the patient has been seizure free from 19 March 2017 up to 22 November 2017. Calculate duration: from 19-Mar-2017 to 22-Nov-2017 is approximately 8 months and 3 days, which satisfies the ≥6-month seizure-free criterion. Hence, label as seizure free for 8 month.",
+      "seizure_frequency_number": [
+        "seizure free for 8 month",
+        "No focal clonic since 19-Mar-2017"
+      ],
+      "reference": [
+        "seizure free for 8 month",
+        "No focal clonic since 19-Mar-2017"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

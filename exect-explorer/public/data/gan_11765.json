@@ -1,0 +1,47 @@
+{
+  "id": "gan_11765",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 23 June 2014\n\nDr Priya Malhotra\nRosebank Medical Centre\n12 Rosebank Road, London E17 8AB\n\nDear Dr Priya Malhotra,\n\nAmina Rahman, DOB: 21-07-1998, Hospital No: U473920 NHS No. 9842176503\nFlat 3, 48 Brook Street, London W1K 5DL\n\nSummary/Reason for letter: Confirmation of neurology clinic attendance for employer/education purposes. Religious fasting periods may alter routine.\n\nMedication: Levetiracetam 1000 mg twice daily. Carbamazepine MR 400 mg twice daily. Vitamin D3 1000 units daily. Omeprazole 20 mg daily.\n\nI reviewed Amina Rahman in the epilepsy clinic today. They are well and report that upcoming religious fasting may affect meal timing and sleep routine. We discussed maintaining regular medication timing through the fasting period, using alarms, and coordinating dose times with pre-dawn and post-sunset meals. Hydration and adequate rest were emphasised. No safeguarding or occupational safety concerns were identified at this visit. Fit notes are not required; this letter serves as confirmation of routine specialist follow‑up.\n\nPlan:\n- Continue current medication regimen without change.\n- Provide employer/education contact details for adjustments to shift, exam, or placement schedules during fasting periods if needed.\n- Liaise with GP for routine bloods (U&E/LFT/Vit D) within 3 months.\n- Issue clinic contact for advice if medication timing becomes difficult during fasting.\n\nYours sincerely,",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11765,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 23 June 2014\n\nDr Priya Malhotra\nRosebank Medical Centre\n12 Rosebank Road, London E17 8AB\n\nDear Dr Priya Malhotra,\n\nAmina Rahman, DOB: 21-07-1998, Hospital No: U473920 NHS No. 9842176503\nFlat 3, 48 Brook Street, London W1K 5DL\n\nSummary/Reason for letter: Confirmation of neurology clinic attendance for employer/education purposes. Religious fasting periods may alter routine.\n\nMedication: Levetiracetam 1000 mg twice daily. Carbamazepine MR 400 mg twice daily. Vitamin D3 1000 units daily. Omeprazole 20 mg daily.\n\nI reviewed Amina Rahman in the epilepsy clinic today. They are well and report that upcoming religious fasting may affect meal timing and sleep routine. We discussed maintaining regular medication timing through the fasting period, using alarms, and coordinating dose times with pre-dawn and post-sunset meals. Hydration and adequate rest were emphasised. No safeguarding or occupational safety concerns were identified at this visit. Fit notes are not required; this letter serves as confirmation of routine specialist follow‑up.\n\nPlan:\n- Continue current medication regimen without change.\n- Provide employer/education contact details for adjustments to shift, exam, or placement schedules during fasting periods if needed.\n- Liaise with GP for routine bloods (U&E/LFT/Vit D) within 3 months.\n- Issue clinic contact for advice if medication timing becomes difficult during fasting.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter documents a routine epilepsy clinic visit, medication regimen, and considerations for fasting. It does not explicitly mention seizures, seizure events, counts, timing, or seizure freedom. There are no numeric or qualitative descriptors of seizure frequency. Therefore, per instruction, since seizures are not mentioned at all, the correct label is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter confirming epilepsy clinic attendance for employer or education purposes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

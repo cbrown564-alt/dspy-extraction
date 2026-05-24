@@ -1,0 +1,59 @@
+{
+  "id": "gan_4411",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 27 May 2016 \n\nDr Helen Carter  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Helen Carter,\n\nAmelia Roberts, DOB: 22-11-1989, Hospital No: H284617 NHS No. 9045217763  \nFlat 3, 18 Larkspur Road, London, SE15 4QA  \n\nEpilepsy\n\nMedication: Patient reports taking Lamotrigine dispersible 25 mg twice daily since early 2016. No other antiepileptic medicines noted. No adverse effects volunteered.\n\nLamotrigine Blood Level:\n- 10 May 2016: 3.2 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 25 mg twice daily. \n\nSeizure history and current status:\n- Seizure: 2015: Sep x0, Oct x2, Nov x0, Dec x0. 2016: Jan x1, Feb x2, Mar x1, Apr x0, May x1. The patient describes these as brief events with preserved recall of the surrounding circumstances and no consistent precipitant identified. There are no reliable auras reported. No injuries or tongue biting described. Recovery is typically rapid, and she feels able to resume routine activities soon afterwards.\n\nContext from today’s review:\nI conducted a scheduled review by telephone. Amelia Roberts reports commuting mainly by bicycle and otherwise walking short distances; this is noted for lifestyle context. Sleep routine has been regular, and she has not identified missed medication doses around the time points listed above. She has kept a diary correlating dates with episodes, which aligns with the frequency summary stated. There is no recent intercurrent illness and she denies alcohol excess. Family history is non-contributory by her account.\n\nPlan:\n- Continue Lamotrigine 25 mg twice daily pending next review. \n- Repeat trough Lamotrigine level prior to the next appointment for comparison. \n- We will arrange follow-up in three months or sooner if there is a change in pattern or frequency.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 629,
+      "end": 721,
+      "text": "Seizure: 2015: Sep x0, Oct x2, Nov x0, Dec x0. 2016: Jan x1, Feb x2, Mar x1, Apr x0, May x1.",
+      "attributes": {
+        "Label": "7 per 9 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 629,
+      "end": 720,
+      "text": "Seizure: 2015: Sep x0, Oct x2, Nov x0, Dec x0. 2016: Jan x1, Feb x2, Mar x1, Apr x0, May x1",
+      "attributes": {
+        "Label": "7 per 9 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4411,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 27 May 2016 \n\nDr Helen Carter  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Helen Carter,\n\nAmelia Roberts, DOB: 22-11-1989, Hospital No: H284617 NHS No. 9045217763  \nFlat 3, 18 Larkspur Road, London, SE15 4QA  \n\nEpilepsy\n\nMedication: Patient reports taking Lamotrigine dispersible 25 mg twice daily since early 2016. No other antiepileptic medicines noted. No adverse effects volunteered.\n\nLamotrigine Blood Level:\n- 10 May 2016: 3.2 mg/L (reference 1.0–15.0 mg/L). Dose at time of sampling: 25 mg twice daily. \n\nSeizure history and current status:\n- Seizure: 2015: Sep x0, Oct x2, Nov x0, Dec x0. 2016: Jan x1, Feb x2, Mar x1, Apr x0, May x1. The patient describes these as brief events with preserved recall of the surrounding circumstances and no consistent precipitant identified. There are no reliable auras reported. No injuries or tongue biting described. Recovery is typically rapid, and she feels able to resume routine activities soon afterwards.\n\nContext from today’s review:\nI conducted a scheduled review by telephone. Amelia Roberts reports commuting mainly by bicycle and otherwise walking short distances; this is noted for lifestyle context. Sleep routine has been regular, and she has not identified missed medication doses around the time points listed above. She has kept a diary correlating dates with episodes, which aligns with the frequency summary stated. There is no recent intercurrent illness and she denies alcohol excess. Family history is non-contributory by her account.\n\nPlan:\n- Continue Lamotrigine 25 mg twice daily pending next review. \n- Repeat trough Lamotrigine level prior to the next appointment for comparison. \n- We will arrange follow-up in three months or sooner if there is a change in pattern or frequency.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter lists monthly seizure counts for 2015 and 2016 up to May 2016: 2015 Sep 0, Oct 2, Nov 0, Dec 0; 2016 Jan 1, Feb 2, Mar 1, Apr 0, May 1. Counting total seizures from Sep 2015 through May 2016 gives 0+2+0+0+1+2+1+0+1 = 7 seizures over 9 months. There is no indication of a different current rate than this diary-based summary. Using the highest available explicit frequency, normalize as 7 per 9 months. Note unit must be singular, so convert to 'month' with numeric value 9.",
+      "seizure_frequency_number": [
+        "7 per 9 month",
+        "Seizure: 2015: Sep x0, Oct x2, Nov x0, Dec x0. 2016: Jan x1, Feb x2, Mar x1, Apr x0, May x1."
+      ],
+      "reference": [
+        "7 per 9 month",
+        "Seizure: 2015: Sep x0, Oct x2, Nov x0, Dec x0. 2016: Jan x1, Feb x2, Mar x1, Apr x0, May x1"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

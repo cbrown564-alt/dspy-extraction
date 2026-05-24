@@ -1,0 +1,59 @@
+{
+  "id": "gan_16663",
+  "text": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 5 December 2013\n\nDr A. Spencer\nConsultant Neurologist\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr A. Spencer\nConsultant Neurologist,\n\nSamuel Carter, DOB: 14-03-1981, Hospital No: K917204 NHS No. 7023451189\nRose Cottage, Mill Lane, Hawthorn Vale, North Yorkshire, YO18 3QX\n\nThank you for asking me to review your patient. He lives in a rural area with limited transport and we have been conducting much of the follow‑up by telephone/video, which he and his partner find easier to manage. Today’s review was conducted via video with his partner present to help clarify the recent events.\n\nIn terms of his current spell pattern, there have been several distinct episodes over recent months. In Jul a prolonged focal seizure (~10 minutes) settled spontaneously. In Oct three tonic seizures were recorded, and in Nov another during physiotherapy. Between these episodes he reports variable confidence and some fatigue, but no clear new triggers. Night‑time events have not been witnessed recently, and there is no history of injury. He is taking his usual medicines as prescribed and has not reported adverse effects beyond mild lethargy.\n\nWe do not yet have contemporaneous EEG or video‑EEG correlation for the above events. Given the rural setting and the difficulties attending in person, I have suggested we arrange an ambulatory recording when feasible and to continue remote monitoring calls with event logs submitted by the family. He is agreeable to sharing brief phone videos of any future events where safe to do so. No medication changes were made today pending further corroboration.\n\nHe and his partner are coping reasonably but describe intermittent anxiety around travelling to hospital. I have provided our epilepsy nurse telephone contact for advice after events and discussed basic safety measures at home. We will schedule a remote follow‑up in eight weeks or sooner if there are further prolonged episodes or clustering.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 813,
+      "end": 966,
+      "text": "In Jul a prolonged focal seizure (~10 minutes) settled spontaneously. In Oct three tonic seizures were recorded, and in Nov another during physiotherapy.",
+      "attributes": {
+        "Label": "5 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 813,
+      "end": 965,
+      "text": "In Jul a prolonged focal seizure (~10 minutes) settled spontaneously. In Oct three tonic seizures were recorded, and in Nov another during physiotherapy",
+      "attributes": {
+        "Label": "5 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16663,
+    "clinic_date": "King's College Hospital\n\nDepartment of Neurosciences\n\nClinic Date: 5 December 2013\n\nDr A. Spencer\nConsultant Neurologist\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr A. Spencer\nConsultant Neurologist,\n\nSamuel Carter, DOB: 14-03-1981, Hospital No: K917204 NHS No. 7023451189\nRose Cottage, Mill Lane, Hawthorn Vale, North Yorkshire, YO18 3QX\n\nThank you for asking me to review your patient. He lives in a rural area with limited transport and we have been conducting much of the follow‑up by telephone/video, which he and his partner find easier to manage. Today’s review was conducted via video with his partner present to help clarify the recent events.\n\nIn terms of his current spell pattern, there have been several distinct episodes over recent months. In Jul a prolonged focal seizure (~10 minutes) settled spontaneously. In Oct three tonic seizures were recorded, and in Nov another during physiotherapy. Between these episodes he reports variable confidence and some fatigue, but no clear new triggers. Night‑time events have not been witnessed recently, and there is no history of injury. He is taking his usual medicines as prescribed and has not reported adverse effects beyond mild lethargy.\n\nWe do not yet have contemporaneous EEG or video‑EEG correlation for the above events. Given the rural setting and the difficulties attending in person, I have suggested we arrange an ambulatory recording when feasible and to continue remote monitoring calls with event logs submitted by the family. He is agreeable to sharing brief phone videos of any future events where safe to do so. No medication changes were made today pending further corroboration.\n\nHe and his partner are coping reasonably but describe intermittent anxiety around travelling to hospital. I have provided our epilepsy nurse telephone contact for advice after events and discussed basic safety measures at home. We will schedule a remote follow‑up in eight weeks or sooner if there are further prolonged episodes or clustering.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure counts mentioned: July: 1 prolonged focal seizure; October: 3 tonic seizures; November: 1 seizure during physiotherapy. Total = 1 + 3 + 1 = 5 seizures. Observation window inferred from the months specified (July through November) equals 5 months. Therefore, seizure frequency = 5 per 5 months.",
+      "seizure_frequency_number": [
+        "5 per 5 month",
+        "In Jul a prolonged focal seizure (~10 minutes) settled spontaneously. In Oct three tonic seizures were recorded, and in Nov another during physiotherapy."
+      ],
+      "reference": [
+        "5 per 5 month",
+        "In Jul a prolonged focal seizure (~10 minutes) settled spontaneously. In Oct three tonic seizures were recorded, and in Nov another during physiotherapy"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

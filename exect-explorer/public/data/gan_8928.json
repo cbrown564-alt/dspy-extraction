@@ -1,0 +1,48 @@
+{
+  "id": "gan_8928",
+  "text": "Department of Neurology\n\nClinic Date: 19 November 2015\n\nDr Patel\nCity General Hospital\nDepartment of Neurology, 12 Bridge Street, Manchester M1 4AB\n\nDear Dr Patel,\n\nAleksandar Petrov, DOB: 17-03-1991, Hospital No: M938472 NHS No. 9045612378\nFlat 3B, 22 Brookside Court, Manchester, M14 6QP\n\nDiagnoses:\n\nRecurrent seizures of uncertain aetiology under investigation.\n\nCurrent Medication:\n\nLevetiracetam 1,000 mg twice daily\nVitamin D 1,000 IU daily\n\nPlan:\n\n- Continue current dose of levetiracetam\n- Safety counselling reinforced; provide written seizure first aid materials in preferred language\n- Arrange routine bloods (U&E, FBC, LFTs) and levetiracetam level if clinically indicated\n- Community epilepsy nurse to support with education and NHS service navigation\n- Interpreter to be booked for future appointments as needed\n- Follow up in 6 months, sooner if any events recur\n\nI reviewed Aleksandar Petrov in clinic today with interpreter support. They report no further episodes since the medication dose was adjusted several months ago, and there have been no blackouts, injuries, or witnessed events during this period. Sleep has been more regular and they have reduced alcohol intake. They are settling into local services and learning how to access NHS urgent and routine care; they find written information helpful when provided in their preferred language.\n\nNeurological examination today was unremarkable. Previous basic bloods were within reference limits; further investigations will be guided by clinical course. We discussed SUDEP awareness, driving regulations, and lifestyle triggers. There are no current red flags. Given stable control and good adherence, I recommend continuing levetiracetam at the present dose. If they remain well, we will review again in six months. They were advised to contact us via the epilepsy nurse line if any events recur or for medication concerns.\n\nWith best wishes,\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 963,
+      "end": 1040,
+      "text": "no further episodes since the medication dose was adjusted several months ago",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8928,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 19 November 2015\n\nDr Patel\nCity General Hospital\nDepartment of Neurology, 12 Bridge Street, Manchester M1 4AB\n\nDear Dr Patel,\n\nAleksandar Petrov, DOB: 17-03-1991, Hospital No: M938472 NHS No. 9045612378\nFlat 3B, 22 Brookside Court, Manchester, M14 6QP\n\nDiagnoses:\n\nRecurrent seizures of uncertain aetiology under investigation.\n\nCurrent Medication:\n\nLevetiracetam 1,000 mg twice daily\nVitamin D 1,000 IU daily\n\nPlan:\n\n- Continue current dose of levetiracetam\n- Safety counselling reinforced; provide written seizure first aid materials in preferred language\n- Arrange routine bloods (U&E, FBC, LFTs) and levetiracetam level if clinically indicated\n- Community epilepsy nurse to support with education and NHS service navigation\n- Interpreter to be booked for future appointments as needed\n- Follow up in 6 months, sooner if any events recur\n\nI reviewed Aleksandar Petrov in clinic today with interpreter support. They report no further episodes since the medication dose was adjusted several months ago, and there have been no blackouts, injuries, or witnessed events during this period. Sleep has been more regular and they have reduced alcohol intake. They are settling into local services and learning how to access NHS urgent and routine care; they find written information helpful when provided in their preferred language.\n\nNeurological examination today was unremarkable. Previous basic bloods were within reference limits; further investigations will be guided by clinical course. We discussed SUDEP awareness, driving regulations, and lifestyle triggers. There are no current red flags. Given stable control and good adherence, I recommend continuing levetiracetam at the present dose. If they remain well, we will review again in six months. They were advised to contact us via the epilepsy nurse line if any events recur or for medication concerns.\n\nWith best wishes,\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no further episodes since the medication dose was adjusted several months ago. There is no precise start date for seizure freedom and no confirmation that it has been at least 6 months. Therefore, per the rules, when seizure-free duration is present but the 6-month criterion cannot be confirmed, label as 'seizure free for multiple months.' No other seizure frequencies are provided.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no further episodes since the medication dose was adjusted several months ago"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free after dose escalation of ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

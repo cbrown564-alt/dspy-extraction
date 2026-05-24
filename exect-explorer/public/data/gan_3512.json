@@ -1,0 +1,65 @@
+{
+  "id": "gan_3512",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nNorth Thames Neurology Service  \nOutpatient Department, Riverside Health Centre, London, W6 2JL  \n\nDear Dr Patel,  \n\nMaya Johnson, DOB: 14-07-2010, Hospital No: H529317 NHS No. 9482103576  \n12 Brookside Close, London, W4 1AB  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Maya Johnson in clinic today with her mother. She remains on a ketogenic/modified diet programme that is being supervised by a paediatric metabolic team elsewhere; diet details were recorded in our notes for reference. She reports good adherence to the prescribed carbohydrate ratio and maintains a stable weight with no reported gastrointestinal adverse effects. Home blood ketone logs were shown and appear within the target range documented by the external team.\n\nSince her last neurology review, medication was adjusted by the referring team with a modest dose increase of her maintenance antiseizure medicine four weeks ago. In the month following that change, she and her mother have noticed that the overall pattern of events has shifted: Frequency increased by ~20% after dose increase. Events remain brief, typically seconds to under a minute, with preserved awareness in some but not all instances; there has been no associated injury, and there is no new focal neurological deficit reported. She denies medication side effects beyond mild morning fatigue over the past fortnight.\n\nThere have been no emergency department attendances, no use of rescue medication, and no status events. Triggers continue to include poor sleep and intercurrent illness as previously described. A seizure diary was reviewed and corroborates the above pattern.\n\nOn examination today, general and neurological examinations were unremarkable. Vital signs were stable. No cutaneous stigmata or focal signs were elicited. \n\nInvestigations: No new imaging since last MRI (unchanged). Prior EEGs remain non-diagnostic with non-specific changes. Routine bloods last month were within reference limits, including bicarbonate and lipid profile as monitored for dietary therapy.\n\nPlan: \n- We will collate and share today’s seizure frequency data and the diet log with the supervising dietary team to ensure coordinated care. \n- No immediate medication changes were made today; we will seek clarification from the referring prescriber regarding the rationale for the recent dose increase given the reported change in frequency. \n- Safety advice and seizure first aid were reinforced. She will continue the seizure diary and bring home ketone readings to the next review. \n- We will arrange a follow-up in 8–10 weeks, or sooner if there is any escalation in event duration, clustering, injury, or concerns from the family or school. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1128,
+      "end": 1176,
+      "text": "Frequency increased by ~20% after dose increase.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1128,
+      "end": 1175,
+      "text": "Frequency increased by ~20% after dose increase",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3512,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nNorth Thames Neurology Service  \nOutpatient Department, Riverside Health Centre, London, W6 2JL  \n\nDear Dr Patel,  \n\nMaya Johnson, DOB: 14-07-2010, Hospital No: H529317 NHS No. 9482103576  \n12 Brookside Close, London, W4 1AB  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nI reviewed Maya Johnson in clinic today with her mother. She remains on a ketogenic/modified diet programme that is being supervised by a paediatric metabolic team elsewhere; diet details were recorded in our notes for reference. She reports good adherence to the prescribed carbohydrate ratio and maintains a stable weight with no reported gastrointestinal adverse effects. Home blood ketone logs were shown and appear within the target range documented by the external team.\n\nSince her last neurology review, medication was adjusted by the referring team with a modest dose increase of her maintenance antiseizure medicine four weeks ago. In the month following that change, she and her mother have noticed that the overall pattern of events has shifted: Frequency increased by ~20% after dose increase. Events remain brief, typically seconds to under a minute, with preserved awareness in some but not all instances; there has been no associated injury, and there is no new focal neurological deficit reported. She denies medication side effects beyond mild morning fatigue over the past fortnight.\n\nThere have been no emergency department attendances, no use of rescue medication, and no status events. Triggers continue to include poor sleep and intercurrent illness as previously described. A seizure diary was reviewed and corroborates the above pattern.\n\nOn examination today, general and neurological examinations were unremarkable. Vital signs were stable. No cutaneous stigmata or focal signs were elicited. \n\nInvestigations: No new imaging since last MRI (unchanged). Prior EEGs remain non-diagnostic with non-specific changes. Routine bloods last month were within reference limits, including bicarbonate and lipid profile as monitored for dietary therapy.\n\nPlan: \n- We will collate and share today’s seizure frequency data and the diet log with the supervising dietary team to ensure coordinated care. \n- No immediate medication changes were made today; we will seek clarification from the referring prescriber regarding the rationale for the recent dose increase given the reported change in frequency. \n- Safety advice and seizure first aid were reinforced. She will continue the seizure diary and bring home ketone readings to the next review. \n- We will arrange a follow-up in 8–10 weeks, or sooner if there is any escalation in event duration, clustering, injury, or concerns from the family or school. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms ongoing seizures and notes a change: 'Frequency increased by ~20% after dose increase.' However, it does not provide any explicit baseline numeric frequency (e.g., per day/week/month), nor a current numeric count post-increase. There are no quantifiable figures in the seizure diary summary, only qualitative descriptors (brief duration, preserved awareness in some). Without a numeric frequency, we cannot normalize to per day/week/month, nor determine seizure freedom criteria.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Frequency increased by ~20% after dose increase."
+      ],
+      "reference": [
+        "unknown",
+        "Frequency increased by ~20% after dose increase"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

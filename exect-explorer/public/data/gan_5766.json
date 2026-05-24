@@ -1,0 +1,54 @@
+{
+  "id": "gan_5766",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 11 September 2022 10:15\nTo: adult.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Transition to adult services and medication plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with presumed temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n\n2. Clobazam 10 mg at night as needed for clusters (used approximately once per month)\n\n\nPresent Seizure Frequency:\n\nOngoing focal-aware and focal-impaired awareness episodes continue to occur, averaging one focal-impaired awareness event every 3–4 weeks, with brief déjà vu auras several times per week, more often under examination stress. Parent sometimes attends and provides collateral history when present, noting automatisms and brief post-event confusion lasting 5–10 minutes.\n\n\nPlan of Action:\n\nThe patient has recently transitioned from paediatric to adult neurology services. They report increased academic demands and sleep variability since starting college; no alcohol or recreational drug use. Current lamotrigine level last month was within therapeutic range and well tolerated (no rash, no mood concerns). Given that events are still occurring and are temporally associated with reduced sleep and missed meals, we discussed optimising baseline therapy and supporting self-management.\n\n- Optimise lamotrigine: increase to 175 mg twice daily for 2 weeks, then 200 mg twice daily thereafter, provided no adverse effects (rash, dizziness, diplopia). If any rash develops, stop lamotrigine and seek urgent medical advice.\n- Continue clobazam 10 mg nocte as rescue for clusters only; avoid regular nightly use to prevent tolerance.\n- Lifestyle advice: regular sleep schedule, consistent meals, and hydration; keep a seizure and trigger diary. Parent may attend appointments and contribute collateral history when available.\n- Safety discussed: bathing with door unlocked, avoid heights and open water without supervision, and driving not applicable at present; DVLA guidance reinforced should eligibility change in future.\n- Investigations: arrange updated MRI brain epilepsy protocol (previous paediatric MRI age 12 was non-diagnostic) and a routine EEG with sleep deprivation to characterise ongoing events.\n- Follow-up in adult epilepsy clinic in 4 months. If seizure burden increases after dose adjustment, we will consider adding lacosamide as an adjunct at next review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 758,
+      "end": 800,
+      "text": "brief déjà vu auras several times per week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5766,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 11 September 2022 10:15\nTo: adult.epilepsy@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Transition to adult services and medication plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy with presumed temporal lobe onset\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n\n2. Clobazam 10 mg at night as needed for clusters (used approximately once per month)\n\n\nPresent Seizure Frequency:\n\nOngoing focal-aware and focal-impaired awareness episodes continue to occur, averaging one focal-impaired awareness event every 3–4 weeks, with brief déjà vu auras several times per week, more often under examination stress. Parent sometimes attends and provides collateral history when present, noting automatisms and brief post-event confusion lasting 5–10 minutes.\n\n\nPlan of Action:\n\nThe patient has recently transitioned from paediatric to adult neurology services. They report increased academic demands and sleep variability since starting college; no alcohol or recreational drug use. Current lamotrigine level last month was within therapeutic range and well tolerated (no rash, no mood concerns). Given that events are still occurring and are temporally associated with reduced sleep and missed meals, we discussed optimising baseline therapy and supporting self-management.\n\n- Optimise lamotrigine: increase to 175 mg twice daily for 2 weeks, then 200 mg twice daily thereafter, provided no adverse effects (rash, dizziness, diplopia). If any rash develops, stop lamotrigine and seek urgent medical advice.\n- Continue clobazam 10 mg nocte as rescue for clusters only; avoid regular nightly use to prevent tolerance.\n- Lifestyle advice: regular sleep schedule, consistent meals, and hydration; keep a seizure and trigger diary. Parent may attend appointments and contribute collateral history when available.\n- Safety discussed: bathing with door unlocked, avoid heights and open water without supervision, and driving not applicable at present; DVLA guidance reinforced should eligibility change in future.\n- Investigations: arrange updated MRI brain epilepsy protocol (previous paediatric MRI age 12 was non-diagnostic) and a routine EEG with sleep deprivation to characterise ongoing events.\n- Follow-up in adult epilepsy clinic in 4 months. If seizure burden increases after dose adjustment, we will consider adding lacosamide as an adjunct at next review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states two seizure frequencies: (1) focal-impaired awareness events averaging one every 3 to 4 weeks, and (2) focal-aware déjà vu auras occurring several times per week. Per rule 7, select the highest frequency. \"Several times per week\" is more frequent than \"1 per 3 to 4 weeks\". The mention of clobazam use approximately once per month for clusters does not exceed the aura frequency and lacks per-cluster counts, so the highest frequency remains the auras. As the phrase is vague, normalise to \"multiple per week.\"",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "brief déjà vu auras several times per week"
+      ],
+      "reference": [
+        "unknown",
+        "Seizure events persist"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

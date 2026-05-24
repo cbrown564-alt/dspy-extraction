@@ -1,0 +1,59 @@
+{
+  "id": "gan_386",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 12 March 2024 10:15\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication timing advice around fasting and monitoring plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as required for clusters (patient-reported use approximately once weekly)\n\nPresent Seizure Frequency:\n\nPatient reports brief focal-aware events occurring once per day, typically late afternoon, with preserved awareness but transient speech arrest lasting 10–20 seconds. No recent generalised convulsions reported. Family has noted subtle right-hand pausing during episodes.\n\nPlan of Action:\n\nThe patient is entering a period of religious fasting and is concerned about dose timing and hydration. They note that missed or delayed afternoon doses during prior fasts coincided with increased episode clustering. To minimise variability in serum levels during fasting periods:\n- Maintain total daily lamotrigine dose but, during fasting days only, shift the morning dose to pre-dawn meal (Suhoor) and the evening dose to immediately after sunset (Iftar).\n- Emphasise adequate hydration and consistent caffeine intake patterns during non-fasting hours, as variability appears to correlate with afternoon events.\n- Clobazam to remain as previously used for short clusters; no change unless sedation becomes problematic.\n\nMonitoring and safety:\n- Patient to keep a simple diary noting dose times, fasting vs non-fasting days, and any events. Please document whether events persist once per day when doses are taken exactly at Suhoor and Iftar for two consecutive weeks.\n- If once per day events continue despite stable timing, please arrange serum lamotrigine level (12-hour trough where practical) and an updated 24–48 h ambulatory EEG to capture the afternoon episodes.\n- Red flags discussed: prolonged loss of awareness, injury, or any convulsive seizure lasting >5 minutes — advise urgent medical attention.\n\nFollow-up:\n- Telephone review in 4 weeks to assess diary, tolerability, and frequency (currently once per day by report). If frequency reduces with stable dosing, we will continue current plan; if not, we will consider cautious dose optimisation or an alternative add-on at that time.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 585,
+      "end": 648,
+      "text": "Patient reports brief focal-aware events occurring once per day",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 636,
+      "end": 648,
+      "text": "once per day",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 386,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 12 March 2024 10:15\nTo: neuro.epilepsy@kch.nhs.uk\nCc: Dr Michael Green (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Medication timing advice around fasting and monitoring plan\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as required for clusters (patient-reported use approximately once weekly)\n\nPresent Seizure Frequency:\n\nPatient reports brief focal-aware events occurring once per day, typically late afternoon, with preserved awareness but transient speech arrest lasting 10–20 seconds. No recent generalised convulsions reported. Family has noted subtle right-hand pausing during episodes.\n\nPlan of Action:\n\nThe patient is entering a period of religious fasting and is concerned about dose timing and hydration. They note that missed or delayed afternoon doses during prior fasts coincided with increased episode clustering. To minimise variability in serum levels during fasting periods:\n- Maintain total daily lamotrigine dose but, during fasting days only, shift the morning dose to pre-dawn meal (Suhoor) and the evening dose to immediately after sunset (Iftar).\n- Emphasise adequate hydration and consistent caffeine intake patterns during non-fasting hours, as variability appears to correlate with afternoon events.\n- Clobazam to remain as previously used for short clusters; no change unless sedation becomes problematic.\n\nMonitoring and safety:\n- Patient to keep a simple diary noting dose times, fasting vs non-fasting days, and any events. Please document whether events persist once per day when doses are taken exactly at Suhoor and Iftar for two consecutive weeks.\n- If once per day events continue despite stable timing, please arrange serum lamotrigine level (12-hour trough where practical) and an updated 24–48 h ambulatory EEG to capture the afternoon episodes.\n- Red flags discussed: prolonged loss of awareness, injury, or any convulsive seizure lasting >5 minutes — advise urgent medical attention.\n\nFollow-up:\n- Telephone review in 4 weeks to assess diary, tolerability, and frequency (currently once per day by report). If frequency reduces with stable dosing, we will continue current plan; if not, we will consider cautious dose optimisation or an alternative add-on at that time.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current seizure frequency under 'Present Seizure Frequency': the patient has brief focal-aware events occurring once per day. There are no other seizure types reported currently (no recent generalised convulsions). The monitoring/plan sections reiterate 'currently once per day by report,' confirming the frequency. Therefore, the highest/current frequency is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "Patient reports brief focal-aware events occurring once per day"
+      ],
+      "reference": [
+        "1 per day",
+        "once per day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_12046",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Hawthorne (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 July 2016 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and medication plan following telephone review\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nCombined Generalised and Focal Epilepsy Type (patient has both generalised and focal epilepsy)\n\nPresent Medication:\n\n1. Lamotrigine 200 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nepileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 months\n\nContext and Triggers (patient-reported):\n\nThe patient is a frequent international business traveller with irregular sleep patterns, multiple time zone shifts, and variable meal times. They report that long-haul flights, sleep deprivation, and missed or delayed doses around airport security and meetings are common precipitants. Appointments are often by phone due to travel commitments; today’s review was conducted via telephone while the patient was in transit between time zones.\n\nPlan of Action:\n\n- Maintain lamotrigine 200 mg twice daily to provide baseline coverage for both focal and generalised seizure types.\n- Optimise clobazam dosing for spasms: increase to 10 mg in the morning and 10 mg at night for two weeks, then review tolerability. If daytime sedation is minimal and spasms persist, consider 10 mg in the morning and 15 mg at night thereafter.\n- Provide a travel dosing strategy: advise carrying a one-week reserve supply split across two bags, use phone alarms anchored to home time for the first 48 hours after long-haul flights, then switch to local time dosing within 2–3 days to minimise missed doses.\n- Prescribe a rescue plan for prolonged clusters of spasms: buccal midazolam 10 mg as needed for clusters lasting >20 minutes or where functional impairment prevents safe travel, with clear airline/airport documentation provided.\n- Arrange an MRI brain with epilepsy protocol (if not performed within last 3 years) and a repeat prolonged EEG (ambulatory preferred to capture daily spasms), to further delineate focal features alongside generalised activity.\n- Occupational guidance: provide a fit note confirming active epilepsy with near-daily spasms; advise avoidance of lone swimming, working at height, and operating heavy machinery; air travel permissible with adherence to the above medication plan and rescue protocol.\n- Follow-up: telephone clinic in 8 weeks to assess response to clobazam optimisation and review investigation results. Earlier review if escalation in convulsions, increased injury risk, new neurological deficits, or unacceptable sedation.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 613,
+      "end": 728,
+      "text": "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging.",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 613,
+      "end": 779,
+      "text": "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 months",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12046,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Hawthorne (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 July 2016 10:15\nTo: epilepsy.centre@kch.nhs.uk\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and medication plan following telephone review\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nCombined Generalised and Focal Epilepsy Type (patient has both generalised and focal epilepsy)\n\nPresent Medication:\n\n1. Lamotrigine 200 mg twice daily\n2. Clobazam 10 mg at night\n\nPresent Seizure Frequency:\n\nepileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 months\n\nContext and Triggers (patient-reported):\n\nThe patient is a frequent international business traveller with irregular sleep patterns, multiple time zone shifts, and variable meal times. They report that long-haul flights, sleep deprivation, and missed or delayed doses around airport security and meetings are common precipitants. Appointments are often by phone due to travel commitments; today’s review was conducted via telephone while the patient was in transit between time zones.\n\nPlan of Action:\n\n- Maintain lamotrigine 200 mg twice daily to provide baseline coverage for both focal and generalised seizure types.\n- Optimise clobazam dosing for spasms: increase to 10 mg in the morning and 10 mg at night for two weeks, then review tolerability. If daytime sedation is minimal and spasms persist, consider 10 mg in the morning and 15 mg at night thereafter.\n- Provide a travel dosing strategy: advise carrying a one-week reserve supply split across two bags, use phone alarms anchored to home time for the first 48 hours after long-haul flights, then switch to local time dosing within 2–3 days to minimise missed doses.\n- Prescribe a rescue plan for prolonged clusters of spasms: buccal midazolam 10 mg as needed for clusters lasting >20 minutes or where functional impairment prevents safe travel, with clear airline/airport documentation provided.\n- Arrange an MRI brain with epilepsy protocol (if not performed within last 3 years) and a repeat prolonged EEG (ambulatory preferred to capture daily spasms), to further delineate focal features alongside generalised activity.\n- Occupational guidance: provide a fit note confirming active epilepsy with near-daily spasms; advise avoidance of lone swimming, working at height, and operating heavy machinery; air travel permissible with adherence to the above medication plan and rescue protocol.\n- Follow-up: telephone clinic in 8 weeks to assess response to clobazam optimisation and review investigation results. Earlier review if escalation in convulsions, increased injury risk, new neurological deficits, or unacceptable sedation.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states two seizure types with frequencies: (1) 'epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging.' This indicates very frequent events with vague counts, at least daily and potentially multiple per day, but not a precise number; thus use 'multiple per day'. (2) 'Generalised convulsions occur once every 11 months' which is far less frequent. Per the rule to select the highest frequency across types, we choose the spasms' frequency. Because the exact number is not quantifiable and described vaguely, use 'multiple per day' per allowed formats.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging."
+      ],
+      "reference": [
+        "multiple per day",
+        "epileptic spasm occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every 11 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

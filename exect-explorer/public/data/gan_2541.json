@@ -1,0 +1,59 @@
+{
+  "id": "gan_2541",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 19 October 2015 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Patient reports taking Lamotrigine 100 mg in the morning and 150 mg at night; no recent changes reported. No other regular antiseizure medicines. Occasional over-the-counter ibuprofen for headaches.\n\nLamotrigine Blood Level: \n\nPatient declined phlebotomy at last visit due to time constraints; level not available. Plan to arrange local sampling if agreeable.\n\nSeizures: Over the past fortnight there has been a clear deterioration. The patient describes eight or nine drop attacks during the last two weeks, typically occurring in the late afternoon or shortly after waking from unplanned naps. No consistent prodrome or aura reported. Witness accounts (partner) describe sudden loss of tone with brief unresponsiveness lasting seconds, followed by rapid reorientation with fatigue and mild headache. Two events led to minor knee abrasions; no head injury reported. No tongue biting or incontinence described. The patient notes increased frequency compared with earlier this year, when events were sporadic and separated by several weeks.\n\nHistory since last contact: We conducted a video consultation today. The patient has recently become unemployed from a banking role and reports significant stress related to financial uncertainty. Sleep has been disrupted with variable bedtimes, early awakenings, and occasional nights with less than four hours of sleep. Caffeine intake has increased to 4–5 cups daily on some days. No alcohol binges; occasional social drinking only. No recent intercurrent illness. Adherence to medication is stated to be good, though two late evening doses were admitted. The partner has started keeping a simple diary of events and sleep patterns.\n\nSafety and impact: The increase in falls is concerning. The patient has avoided driving and heavy lifting. Home environment reviewed during video call; simple fall risk measures discussed (keeping floors clear, using shower mat). The patient and partner are aware of first aid guidance and when to seek emergency help.\n\nPlan discussed with the patient: \n- Arrange urgent bloods including Lamotrigine level, U&E, LFTs, FBC and vitamin D via GP surgery if acceptable.  \n- Provide seizure diary template and sleep hygiene advice; patient to log bedtime, awakenings, caffeine, and events.  \n- Offer referral to our epilepsy specialist nurse for telephone support around stress management and practical safety.  \n- Provide fit note as requested given the current increase in events.  \n- Schedule earlier review in 4 weeks, with interim telephone check if further injuries occur.  \n\nI will update you following receipt of blood results and diary review. The overall picture is of deterioration in seizure control temporally associated with heightened stress and sleep disruption. The patient understands red flag features and will seek urgent care if events cluster, injuries occur, or recovery is prolonged.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 851,
+      "end": 903,
+      "text": "eight or nine drop attacks during the last two weeks",
+      "attributes": {
+        "Label": "8 to 9 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 851,
+      "end": 903,
+      "text": "eight or nine drop attacks during the last two weeks",
+      "attributes": {
+        "Label": "8 to 9 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2541,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 19 October 2015 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE  \n\nEpilepsy \n\nMedication: Patient reports taking Lamotrigine 100 mg in the morning and 150 mg at night; no recent changes reported. No other regular antiseizure medicines. Occasional over-the-counter ibuprofen for headaches.\n\nLamotrigine Blood Level: \n\nPatient declined phlebotomy at last visit due to time constraints; level not available. Plan to arrange local sampling if agreeable.\n\nSeizures: Over the past fortnight there has been a clear deterioration. The patient describes eight or nine drop attacks during the last two weeks, typically occurring in the late afternoon or shortly after waking from unplanned naps. No consistent prodrome or aura reported. Witness accounts (partner) describe sudden loss of tone with brief unresponsiveness lasting seconds, followed by rapid reorientation with fatigue and mild headache. Two events led to minor knee abrasions; no head injury reported. No tongue biting or incontinence described. The patient notes increased frequency compared with earlier this year, when events were sporadic and separated by several weeks.\n\nHistory since last contact: We conducted a video consultation today. The patient has recently become unemployed from a banking role and reports significant stress related to financial uncertainty. Sleep has been disrupted with variable bedtimes, early awakenings, and occasional nights with less than four hours of sleep. Caffeine intake has increased to 4–5 cups daily on some days. No alcohol binges; occasional social drinking only. No recent intercurrent illness. Adherence to medication is stated to be good, though two late evening doses were admitted. The partner has started keeping a simple diary of events and sleep patterns.\n\nSafety and impact: The increase in falls is concerning. The patient has avoided driving and heavy lifting. Home environment reviewed during video call; simple fall risk measures discussed (keeping floors clear, using shower mat). The patient and partner are aware of first aid guidance and when to seek emergency help.\n\nPlan discussed with the patient: \n- Arrange urgent bloods including Lamotrigine level, U&E, LFTs, FBC and vitamin D via GP surgery if acceptable.  \n- Provide seizure diary template and sleep hygiene advice; patient to log bedtime, awakenings, caffeine, and events.  \n- Offer referral to our epilepsy specialist nurse for telephone support around stress management and practical safety.  \n- Provide fit note as requested given the current increase in events.  \n- Schedule earlier review in 4 weeks, with interim telephone check if further injuries occur.  \n\nI will update you following receipt of blood results and diary review. The overall picture is of deterioration in seizure control temporally associated with heightened stress and sleep disruption. The patient understands red flag features and will seek urgent care if events cluster, injuries occur, or recovery is prolonged.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"eight or nine drop attacks during the last two weeks.\" This provides a clear numeric range and a time frame. Convert this to the allowed format as a range per 2 weeks. No other higher-frequency metric is given. Therefore, the seizure frequency is 8 to 9 per 2 weeks.",
+      "seizure_frequency_number": [
+        "8 to 9 per 2 week",
+        "eight or nine drop attacks during the last two weeks"
+      ],
+      "reference": [
+        "8 to 9 per 2 week",
+        "eight or nine drop attacks during the last two weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

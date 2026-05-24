@@ -1,0 +1,59 @@
+{
+  "id": "gan_16820",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 October 2011 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. As you know, he is followed here for focal epilepsy in the context of a background of anxiety and low mood, which he reports tend to fluctuate with work-related stress. He denies alcohol or recreational drug use. Sleep has been irregular over the past few months, which he believes has contributed to breakthrough events.\n\nCurrent treatment consists of Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. He reports good adherence and no rashes. He notes occasional irritability and reduced appetite since dose titration, but no clear cognitive adverse effects. He does not drive.\n\nSeizure history since mid-summer was discussed in detail. In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded. He relates the August cluster to a particularly stressful period at work and poor sleep hygiene. There have been no injuries beyond minor bruising, and no emergency attendances. His typical focal seizures begin with a rising epigastric sensation, brief behavioural arrest, and impaired awareness for under one minute; rare secondary generalisation has been documented previously.\n\nExamination today was unremarkable with no focal neurological deficit. Prior MRI (2010) showed no clear structural lesion. An EEG from earlier this year demonstrated left temporal epileptiform discharges consistent with focal onset. Mood screening today suggests mild depressive symptoms without suicidality; he is open to psychological support.\n\nPlan:\n- Continue Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. for now while we clarify patterns and possible precipitants.\n- Arrange repeat sleep-deprived EEG and update serum levels for Lamotrigine and Levetiracetam to exclude under-dosing.\n- Refer to epilepsy specialist nurse for seizure diary optimisation and safety advice regarding drop attacks.\n- Offer referral to clinical psychology for anxiety/low mood management and sleep hygiene strategies.\n- Provide SUDEP and first-aid counselling; reinforce avoidance of sleep deprivation and alcohol.\n- Review in clinic in 12 weeks, sooner if further clusters or any injury occur.\n\nI will keep you informed of the investigation results. Please let me know if you have any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 941,
+      "end": 1060,
+      "text": "In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded.",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 941,
+      "end": 1059,
+      "text": "In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16820,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 8 October 2011 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. As you know, he is followed here for focal epilepsy in the context of a background of anxiety and low mood, which he reports tend to fluctuate with work-related stress. He denies alcohol or recreational drug use. Sleep has been irregular over the past few months, which he believes has contributed to breakthrough events.\n\nCurrent treatment consists of Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. He reports good adherence and no rashes. He notes occasional irritability and reduced appetite since dose titration, but no clear cognitive adverse effects. He does not drive.\n\nSeizure history since mid-summer was discussed in detail. In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded. He relates the August cluster to a particularly stressful period at work and poor sleep hygiene. There have been no injuries beyond minor bruising, and no emergency attendances. His typical focal seizures begin with a rising epigastric sensation, brief behavioural arrest, and impaired awareness for under one minute; rare secondary generalisation has been documented previously.\n\nExamination today was unremarkable with no focal neurological deficit. Prior MRI (2010) showed no clear structural lesion. An EEG from earlier this year demonstrated left temporal epileptiform discharges consistent with focal onset. Mood screening today suggests mild depressive symptoms without suicidality; he is open to psychological support.\n\nPlan:\n- Continue Lamotrigine 150 mg b.d. and Levetiracetam 1 g b.d. for now while we clarify patterns and possible precipitants.\n- Arrange repeat sleep-deprived EEG and update serum levels for Lamotrigine and Levetiracetam to exclude under-dosing.\n- Refer to epilepsy specialist nurse for seizure diary optimisation and safety advice regarding drop attacks.\n- Offer referral to clinical psychology for anxiety/low mood management and sleep hygiene strategies.\n- Provide SUDEP and first-aid counselling; reinforce avoidance of sleep deprivation and alcohol.\n- Review in clinic in 12 weeks, sooner if further clusters or any injury occur.\n\nI will keep you informed of the investigation results. Please let me know if you have any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides specific counts over recent months: \"In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded.\" This totals 1 (July) + 5 (August) + 1 (September) = 7 seizures over a 3-month period. No other frequencies are given that would be higher. Therefore, normalize to 7 per 3 month.",
+      "seizure_frequency_number": [
+        "7 per 3 month",
+        "In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded."
+      ],
+      "reference": [
+        "7 per 3 month",
+        "In Jul a brief absence were reported. In Aug five drop attacks occurred, and in Sep another tonic seizure was recorded"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

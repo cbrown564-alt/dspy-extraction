@@ -1,0 +1,59 @@
+{
+  "id": "gan_14187",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 August 2019 \n\nDr Priya Nair \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Nair,\n\nMs Amelia Carter, DOB: 22-03-1991, Hospital No: K874203 NHS No. 9385217046  \nFlat 12, 4 Mill Wharf, Dock Road, London, E16 2JP  \n\nDiagnosis: \n\nGeneralised epilepsy with improved control on current regimen; prior valproate exposure discontinued \n\nAetiology: \n\nPresumed genetic generalised epilepsy; no structural lesion identified on prior MRI; normal perinatal and developmental history \n\nOther Medical Problems: \n\nIntermittent mechanical low back pain related to manual handling at work; no red flags \n\nManagement Plan: \n\nContinue Lamotrigine 100 mg mane, 100 mg nocte, same brand. Maintain Levetiracetam 500 mg mane, 1,000 mg nocte. Reinforce adherence and maintain supply in weekly organiser. Occupational health letter provided to support consistent shift pattern and access to regular hydration breaks. Seizure safety discussed for warehouse setting (avoid working at height or on powered machinery unless seizure-free as per DVLA-equivalent safety guidance and employer policy). Arrange follow-up in six months with trough Lamotrigine level and U&E/LFT monitoring.\n\nShe reports a demanding role as a warehouse picker working between tall racking and narrow aisles, with variable lifting tasks and shift pace. She discontinued Valproate on 10 Jul. Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then. She attributes improvement to stricter adherence, better sleep on late shifts, and reduction in caffeine. There have been no injuries, no myoclonic jerks on waking in the last month, and no absence episodes witnessed by colleagues.\n\nWe reviewed common precipitants, including missed doses and sleep deprivation, and she has implemented reminders and uses a pill organiser. She understands to avoid operating pallet stackers and working at height until a sustained seizure-free interval is confirmed per employer policy. No adverse effects from current medication besides transient nausea with morning dose, which is manageable with food.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1469,
+      "end": 1599,
+      "text": "Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then.",
+      "attributes": {
+        "Label": "2 to 3 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1431,
+      "end": 1598,
+      "text": "She discontinued Valproate on 10 Jul. Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then",
+      "attributes": {
+        "Label": "2 to 3 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14187,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 10 August 2019 \n\nDr Priya Nair \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Nair,\n\nMs Amelia Carter, DOB: 22-03-1991, Hospital No: K874203 NHS No. 9385217046  \nFlat 12, 4 Mill Wharf, Dock Road, London, E16 2JP  \n\nDiagnosis: \n\nGeneralised epilepsy with improved control on current regimen; prior valproate exposure discontinued \n\nAetiology: \n\nPresumed genetic generalised epilepsy; no structural lesion identified on prior MRI; normal perinatal and developmental history \n\nOther Medical Problems: \n\nIntermittent mechanical low back pain related to manual handling at work; no red flags \n\nManagement Plan: \n\nContinue Lamotrigine 100 mg mane, 100 mg nocte, same brand. Maintain Levetiracetam 500 mg mane, 1,000 mg nocte. Reinforce adherence and maintain supply in weekly organiser. Occupational health letter provided to support consistent shift pattern and access to regular hydration breaks. Seizure safety discussed for warehouse setting (avoid working at height or on powered machinery unless seizure-free as per DVLA-equivalent safety guidance and employer policy). Arrange follow-up in six months with trough Lamotrigine level and U&E/LFT monitoring.\n\nShe reports a demanding role as a warehouse picker working between tall racking and narrow aisles, with variable lifting tasks and shift pace. She discontinued Valproate on 10 Jul. Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then. She attributes improvement to stricter adherence, better sleep on late shifts, and reduction in caffeine. There have been no injuries, no myoclonic jerks on waking in the last month, and no absence episodes witnessed by colleagues.\n\nWe reviewed common precipitants, including missed doses and sleep deprivation, and she has implemented reminders and uses a pill organiser. She understands to avoid operating pallet stackers and working at height until a sustained seizure-free interval is confirmed per employer policy. No adverse effects from current medication besides transient nausea with morning dose, which is manageable with food.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit statements about seizure frequency. The letter states: 'Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then.' Clinic date is 10 August 2019. Valproate discontinued on 10 Jul (one month prior). There is no explicit time unit for the '2 to 3 seizures' other than that they occurred shortly after stopping valproate, within the past month. Since seizure-free duration is less than 6 months, she cannot be labeled seizure free. The only numeric frequency provided is 2 to 3 seizures in approximately the last month, so normalize to '2 to 3 per month' as the highest current frequency described.",
+      "seizure_frequency_number": [
+        "2 to 3 per month",
+        "Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then."
+      ],
+      "reference": [
+        "2 to 3 per month",
+        "She discontinued Valproate on 10 Jul. Shortly afterwards, she experienced 2 to 3 seizures, one triggered by missed medication. She has remained seizure-free since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_13336",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 March 2016 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Leila Hussain (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Occupational considerations and medication consolidation\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy (Lennox–Gastaut syndrome phenotype)\n\nPresent Medication:\n\n1. Valproate modified‑release 750 mg twice daily\n2. Clobazam 10 mg at night\n3. Rescue: Buccal midazolam 10 mg as per community protocol (not used in the last two years)\n\nPresent Seizure Frequency:\n\nWith a history of Lennox–Gastaut syndrome, previously experiencing tonic seizures, atonic drop attacks and atypical absences, she has now been seizure free for one and a half years.\n\nBackground and Occupational Context:\n\nShe works full‑time in gardening/groundskeeping, mainly outdoors. She reports seasonal variation in workload with prolonged exertion during summer months and occasional heat exposure. She remains meticulous with hydration and medication timing, and uses a phone reminder for her evening dose when overtime is required. No episodes of presyncope, injuries, or missed doses reported. Sleep averages 7–8 hours and caffeine intake is moderate.\n\nPlan of Action:\n\n- Continue current anti‑seizure regimen (valproate MR 750 mg twice daily and clobazam 10 mg at night) given sustained seizure freedom and good tolerability.\n- Occupational advice (patient‑reported understanding and agreed): maintain regular dosing schedules during peak summer shifts; carry water and electrolytes; schedule brief shaded rest breaks to mitigate heat stress; avoid lone working on laddered pruning; and continue to wear head protection when using powered equipment.\n- Monitoring: arrange annual bloods (FBC, LFTs, U&E) and valproate level prior to morning dose in 3 months to coincide with routine occupational health review.\n- Rescue plan: retain buccal midazolam in first‑aid kit at depot; colleagues aware of protocol though not required in the last two years.\n- Follow‑up: review in 9–12 months or earlier if breakthrough events, medication side effects, or changes in work pattern (e.g., extended heat exposure) occur.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 800,
+      "end": 854,
+      "text": "she has now been seizure free for one and a half years",
+      "attributes": {
+        "Label": "seizure free for 1.5 year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 674,
+      "end": 854,
+      "text": "With a history of Lennox–Gastaut syndrome, previously experiencing tonic seizures, atonic drop attacks and atypical absences, she has now been seizure free for one and a half years",
+      "attributes": {
+        "Label": "seizure free for 1.5 year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13336,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 March 2016 10:15\nTo: epilepsy.centre@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Leila Hussain (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Occupational considerations and medication consolidation\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nGeneralised epilepsy (Lennox–Gastaut syndrome phenotype)\n\nPresent Medication:\n\n1. Valproate modified‑release 750 mg twice daily\n2. Clobazam 10 mg at night\n3. Rescue: Buccal midazolam 10 mg as per community protocol (not used in the last two years)\n\nPresent Seizure Frequency:\n\nWith a history of Lennox–Gastaut syndrome, previously experiencing tonic seizures, atonic drop attacks and atypical absences, she has now been seizure free for one and a half years.\n\nBackground and Occupational Context:\n\nShe works full‑time in gardening/groundskeeping, mainly outdoors. She reports seasonal variation in workload with prolonged exertion during summer months and occasional heat exposure. She remains meticulous with hydration and medication timing, and uses a phone reminder for her evening dose when overtime is required. No episodes of presyncope, injuries, or missed doses reported. Sleep averages 7–8 hours and caffeine intake is moderate.\n\nPlan of Action:\n\n- Continue current anti‑seizure regimen (valproate MR 750 mg twice daily and clobazam 10 mg at night) given sustained seizure freedom and good tolerability.\n- Occupational advice (patient‑reported understanding and agreed): maintain regular dosing schedules during peak summer shifts; carry water and electrolytes; schedule brief shaded rest breaks to mitigate heat stress; avoid lone working on laddered pruning; and continue to wear head protection when using powered equipment.\n- Monitoring: arrange annual bloods (FBC, LFTs, U&E) and valproate level prior to morning dose in 3 months to coincide with routine occupational health review.\n- Rescue plan: retain buccal midazolam in first‑aid kit at depot; colleagues aware of protocol though not required in the last two years.\n- Follow‑up: review in 9–12 months or earlier if breakthrough events, medication side effects, or changes in work pattern (e.g., extended heat exposure) occur.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient \"has now been seizure free for one and a half years.\" This meets the criterion of at least 6 months of seizure freedom, so the normalized label should be 'seizure free for 1.5 year'. No other conflicting frequencies are provided.",
+      "seizure_frequency_number": [
+        "seizure free for 1.5 year",
+        "she has now been seizure free for one and a half years"
+      ],
+      "reference": [
+        "seizure free for 1.5 year",
+        "With a history of Lennox–Gastaut syndrome, previously experiencing tonic seizures, atonic drop attacks and atypical absences, she has now been seizure free for one and a half years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

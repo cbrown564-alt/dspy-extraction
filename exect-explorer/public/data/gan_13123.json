@@ -1,0 +1,59 @@
+{
+  "id": "gan_13123",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 01 March 2022 \n\nDr Amelia Carter  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Carter,  \n\nSarah Bennett, DOB: 14-03-1986, Hospital No: KCH-482193 NHS No. 9432175601  \n12 Rosemary Close, London, SE15 4JP\n\nThank you for referring this patient back to clinic for routine follow-up. She attended with her partner and reported a generally stable period since her last review. She has a background of focal epilepsy and has an implanted vagus nerve stimulator (VNS). On this occasion, we reviewed the device but made no parameter changes, as impedances were satisfactory and she reported no adverse effects from stimulation.\n\nIn terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago. She described a typical focal onset with awareness of a brief internal \"rising\" sensation and right facial twitching before generalisation on that occasion. Recovery was uncomplicated and she was back to baseline within several hours without prolonged post-ictal confusion. There have been no nocturnal events reported and no injuries.\n\nCurrent anti-seizure medication: Valproate 500 mg twice daily, which she is tolerating well without notable gastrointestinal or mood-related side effects. She remains abstinent from alcohol and has maintained regular sleep, which she feels helps. She has not required magnet swipes in the past few months and has not noticed VNS-related cough or dysphonia.\n\nNeurological examination today was normal. There were no features suggestive of progressive focal deficits. Bloods from her GP last month, including FBC and LFTs, were unremarkable by report. We discussed red flags for escalation and reinforced seizure first aid. Given the long period of good control and the isolated breakthrough event with myoclonus precipitating a tonic seizure, I propose continued observation without immediate medication or VNS adjustments. She is happy with this plan. We will arrange an EEG only if further similar events occur or if semiology changes.\n\nPlan:  \n- Continue Valproate 500 mg twice daily.  \n- VNS: no parameter changes today; continue routine checks.  \n- Safety counselling reviewed; driving guidance reiterated as per DVLA regulations after a tonic seizure.  \n- If further events occur, consider ambulatory EEG and discussion of incremental VNS adjustments.  \n- Follow-up in 6 months, sooner if recurrence.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 795,
+      "end": 937,
+      "text": "no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 787,
+      "end": 937,
+      "text": "She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago",
+      "attributes": {
+        "Label": "1 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13123,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 01 March 2022 \n\nDr Amelia Carter  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Carter,  \n\nSarah Bennett, DOB: 14-03-1986, Hospital No: KCH-482193 NHS No. 9432175601  \n12 Rosemary Close, London, SE15 4JP\n\nThank you for referring this patient back to clinic for routine follow-up. She attended with her partner and reported a generally stable period since her last review. She has a background of focal epilepsy and has an implanted vagus nerve stimulator (VNS). On this occasion, we reviewed the device but made no parameter changes, as impedances were satisfactory and she reported no adverse effects from stimulation.\n\nIn terms of seizure control, She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago. She described a typical focal onset with awareness of a brief internal \"rising\" sensation and right facial twitching before generalisation on that occasion. Recovery was uncomplicated and she was back to baseline within several hours without prolonged post-ictal confusion. There have been no nocturnal events reported and no injuries.\n\nCurrent anti-seizure medication: Valproate 500 mg twice daily, which she is tolerating well without notable gastrointestinal or mood-related side effects. She remains abstinent from alcohol and has maintained regular sleep, which she feels helps. She has not required magnet swipes in the past few months and has not noticed VNS-related cough or dysphonia.\n\nNeurological examination today was normal. There were no features suggestive of progressive focal deficits. Bloods from her GP last month, including FBC and LFTs, were unremarkable by report. We discussed red flags for escalation and reinforced seizure first aid. Given the long period of good control and the isolated breakthrough event with myoclonus precipitating a tonic seizure, I propose continued observation without immediate medication or VNS adjustments. She is happy with this plan. We will arrange an EEG only if further similar events occur or if semiology changes.\n\nPlan:  \n- Continue Valproate 500 mg twice daily.  \n- VNS: no parameter changes today; continue routine checks.  \n- Safety counselling reviewed; driving guidance reiterated as per DVLA regulations after a tonic seizure.  \n- If further events occur, consider ambulatory EEG and discussion of incremental VNS adjustments.  \n- Follow-up in 6 months, sooner if recurrence.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient had no seizures for nearly a year after starting Valproate, then had myoclonic jerks leading to a tonic seizure three Saturdays ago. There is no indication of additional seizures since that event. Current period is thus not seizure-free for ≥6 months due to a recent seizure. With only one seizure in the recent timeframe mentioned (approximately the past year), the best explicit numeric inference is 1 seizure in about a year. Select the highest frequency if multiple are present—only one event is reported. Therefore, normalize to '1 per year.'",
+      "seizure_frequency_number": [
+        "1 per year",
+        "no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago"
+      ],
+      "reference": [
+        "1 per year",
+        "She had no seizures for nearly a year following initiation of Valproate, then developed myoclonic jerks leading to a tonic seizure three Saturdays ago"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

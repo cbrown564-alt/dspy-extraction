@@ -1,0 +1,59 @@
+{
+  "id": "gan_22",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 20 February 2024 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-2002, Hospital No: H928345 NHS No. 8475162039  \n12 Ashfield Court, Guildford, GU1 4TB  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nMichael Harris attended the neurology clinic today, accompanied by a colleague from the university esports club. He reports episodes consistent with focal or generalised onset being unclear at present, with a current frequency of ≤ 3 per day on days with prolonged screen exposure and irregular sleep. He links these episodes to late-night practice sessions, competitive matches that overrun, and variable sleep times. On days with structured breaks and earlier bedtimes, he reports either no events or brief auras without progression. There have been no witnessed injuries, tongue biting, or incontinence. Post-event fatigue and brief confusion have been described on several occasions.\n\nThere has been no recent change in prescribed medication; he is not currently on an anti-seizure medicine and has not used rescue therapy. He has not required emergency department attendance since the last review. No new neurological deficits are reported. He denies alcohol or recreational drug use; caffeine intake varies with tournament schedules. We discussed maintaining a consistent sleep window, hydration, and routine breaks from screens, which he acknowledges may be challenging during training cycles. He will keep a detailed seizure and trigger diary, including start times of gaming sessions, screen-on duration, sleep onset/offset, and any missed meals, to help refine the temporal association.\n\nExamination today was unremarkable; cardiovascular and neurological examinations were within normal limits. No photic sensitivity was provoked on brief in-clinic exposure. Routine bloods from last month (FBC, U&E, LFTs, glucose) were normal. An outpatient EEG and brain MRI have been requested to further characterise the events. Safety counselling was provided regarding unsupervised swimming, climbing, and operating at heights. Driving advice has been discussed in line with DVLA regulations given the ongoing episodes.\n\nPlan:  \n- Arrange routine EEG with activation procedures; consider sleep-deprived EEG depending on initial findings.  \n- MRI brain with epilepsy protocol.  \n- Maintain seizure/trigger diary to quantify frequency (currently reported as ≤ 3 per day on high-exposure days) and capture context.  \n- Review in clinic in 10–12 weeks, sooner if events cluster or change in character.  \n- No medication initiated today; will reconsider after investigations and diary review.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 579,
+      "end": 670,
+      "text": "current frequency of ≤ 3 per day on days with prolonged screen exposure and irregular sleep",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 600,
+      "end": 611,
+      "text": "≤ 3 per day",
+      "attributes": {
+        "Label": "3 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 22,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 20 February 2024 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-08-2002, Hospital No: H928345 NHS No. 8475162039  \n12 Ashfield Court, Guildford, GU1 4TB  \n\nDiagnoses: \n\nSeizure disorder under ongoing evaluation. \n\nMichael Harris attended the neurology clinic today, accompanied by a colleague from the university esports club. He reports episodes consistent with focal or generalised onset being unclear at present, with a current frequency of ≤ 3 per day on days with prolonged screen exposure and irregular sleep. He links these episodes to late-night practice sessions, competitive matches that overrun, and variable sleep times. On days with structured breaks and earlier bedtimes, he reports either no events or brief auras without progression. There have been no witnessed injuries, tongue biting, or incontinence. Post-event fatigue and brief confusion have been described on several occasions.\n\nThere has been no recent change in prescribed medication; he is not currently on an anti-seizure medicine and has not used rescue therapy. He has not required emergency department attendance since the last review. No new neurological deficits are reported. He denies alcohol or recreational drug use; caffeine intake varies with tournament schedules. We discussed maintaining a consistent sleep window, hydration, and routine breaks from screens, which he acknowledges may be challenging during training cycles. He will keep a detailed seizure and trigger diary, including start times of gaming sessions, screen-on duration, sleep onset/offset, and any missed meals, to help refine the temporal association.\n\nExamination today was unremarkable; cardiovascular and neurological examinations were within normal limits. No photic sensitivity was provoked on brief in-clinic exposure. Routine bloods from last month (FBC, U&E, LFTs, glucose) were normal. An outpatient EEG and brain MRI have been requested to further characterise the events. Safety counselling was provided regarding unsupervised swimming, climbing, and operating at heights. Driving advice has been discussed in line with DVLA regulations given the ongoing episodes.\n\nPlan:  \n- Arrange routine EEG with activation procedures; consider sleep-deprived EEG depending on initial findings.  \n- MRI brain with epilepsy protocol.  \n- Maintain seizure/trigger diary to quantify frequency (currently reported as ≤ 3 per day on high-exposure days) and capture context.  \n- Review in clinic in 10–12 weeks, sooner if events cluster or change in character.  \n- No medication initiated today; will reconsider after investigations and diary review.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly reports a current frequency described as '≤ 3 per day on days with prolonged screen exposure and irregular sleep.' There are also days with 'either no events or brief auras without progression.' Per the rule to select the highest frequency when multiple are provided, the maximum stated frequency is 3 per day (the '≤ 3 per day' implies up to 3 per day). There is no evidence of 6 months seizure freedom. Therefore, normalize to '3 per day.'",
+      "seizure_frequency_number": [
+        "3 per day",
+        "current frequency of ≤ 3 per day on days with prolonged screen exposure and irregular sleep"
+      ],
+      "reference": [
+        "3 per day",
+        "≤ 3 per day"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

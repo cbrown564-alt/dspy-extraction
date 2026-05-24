@@ -1,0 +1,59 @@
+{
+  "id": "gan_1182",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 14 January 2020 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Turner, DOB: 14-07-1998, Hospital No: H392847 NHS No. 8473629150  \n12 Willow Close, London, SW12 8DF  \n\nDiagnoses: \n\nGeneralised epilepsy. \n\nI reviewed Emily Turner in clinic today with her mother in attendance. She reports an overall deterioration in seizure control over the past three months, with increased events associated with falls and minor injuries. Specifically, she describes 6 to 14 petit mal in three months, often occurring without a clear prodrome. These episodes are reported as brief staring spells with loss of awareness and occasional eyelid fluttering, now more frequently leading to unsteadiness and near-collisions, including one kitchen fall causing a superficial elbow abrasion and a separate episode resulting in a bruised hip. There have been no prolonged convulsions, but family note slower post-event recovery and greater fatigue. \n\nMedication has remained unchanged since the previous visit; adherence is reported and no recent intercurrent illness or sleep deprivation beyond baseline. There is no current use of buccal midazolam and no rescue interventions have been required. There is no VNS device in situ. Neurological examination today is unchanged; cardiopulmonary observations are normal. No tongue-bite or incontinence has been documented in these recent events. \n\nGiven the pattern of deterioration and the emerging risk of injury, we discussed maintaining a seizure diary with particular attention to time of day, potential triggers, and any association with menses. I will arrange an updated EEG to assess for ongoing generalised epileptiform activity and a serum anti-seizure medication level check to corroborate adherence. We also discussed general safety measures in the home (avoiding heights and unsupervised bathing) in the interim. \n\nPlan: \n- Order routine EEG and bloods (U&E, LFT, ASM trough level) within 2 weeks.  \n- Provide written guidance on seizure first-aid and injury prevention.  \n- Review in 8 weeks, sooner if further falls or injuries occur.  \n\nI will update you with results when available. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 574,
+      "end": 621,
+      "text": "she describes 6 to 14 petit mal in three months",
+      "attributes": {
+        "Label": "6 to 14 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 588,
+      "end": 621,
+      "text": "6 to 14 petit mal in three months",
+      "attributes": {
+        "Label": "6 to 14 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1182,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 14 January 2020 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Turner, DOB: 14-07-1998, Hospital No: H392847 NHS No. 8473629150  \n12 Willow Close, London, SW12 8DF  \n\nDiagnoses: \n\nGeneralised epilepsy. \n\nI reviewed Emily Turner in clinic today with her mother in attendance. She reports an overall deterioration in seizure control over the past three months, with increased events associated with falls and minor injuries. Specifically, she describes 6 to 14 petit mal in three months, often occurring without a clear prodrome. These episodes are reported as brief staring spells with loss of awareness and occasional eyelid fluttering, now more frequently leading to unsteadiness and near-collisions, including one kitchen fall causing a superficial elbow abrasion and a separate episode resulting in a bruised hip. There have been no prolonged convulsions, but family note slower post-event recovery and greater fatigue. \n\nMedication has remained unchanged since the previous visit; adherence is reported and no recent intercurrent illness or sleep deprivation beyond baseline. There is no current use of buccal midazolam and no rescue interventions have been required. There is no VNS device in situ. Neurological examination today is unchanged; cardiopulmonary observations are normal. No tongue-bite or incontinence has been documented in these recent events. \n\nGiven the pattern of deterioration and the emerging risk of injury, we discussed maintaining a seizure diary with particular attention to time of day, potential triggers, and any association with menses. I will arrange an updated EEG to assess for ongoing generalised epileptiform activity and a serum anti-seizure medication level check to corroborate adherence. We also discussed general safety measures in the home (avoiding heights and unsupervised bathing) in the interim. \n\nPlan: \n- Order routine EEG and bloods (U&E, LFT, ASM trough level) within 2 weeks.  \n- Provide written guidance on seizure first-aid and injury prevention.  \n- Review in 8 weeks, sooner if further falls or injuries occur.  \n\nI will update you with results when available. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly quantifies recent seizure frequency: \"she describes 6 to 14 petit mal in three months.\" These are current events over the past three months, indicating a range. Convert to the allowed format using numbers and the unit 'month'. The highest frequency rule isn't needed beyond adopting the stated range. No other competing frequencies are given. Therefore, the normalized label is '6 to 14 per 3 month'.",
+      "seizure_frequency_number": [
+        "6 to 14 per 3 month",
+        "she describes 6 to 14 petit mal in three months"
+      ],
+      "reference": [
+        "6 to 14 per 3 month",
+        "6 to 14 petit mal in three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

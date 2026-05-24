@@ -1,0 +1,59 @@
+{
+  "id": "gan_1914",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 12 September 2025\n\nDr Shah\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Shah,\n\nRe: Amelia Thompson, DOB: 22-11-1990, Hospital No: H938420, NHS No. 6842951730\n14 Brookside Avenue, London, W2 5JP\n\nDiagnosis and history:\nAmelia Thompson is followed in our service for focal epilepsy. She reports that over the past three months she has experienced two drop attacks and five tonic-clonic in the past three months. This frequency reflects her typical pattern over the preceding quarters, and remains unchanged following the most recent treatment adjustments.\n\nCurrent medication:\n• Lamotrigine 150 mg twice daily.\n• Levetiracetam 1,000 mg twice daily.\nShe reports good adherence without notable adverse effects beyond occasional irritability and mild insomnia, which she attributes to stress at work. No rashes, no cognitive complaints, and no new neurological symptoms were reported.\n\nAssessment:\nHer description of brief focal aware episodes (epigastric rising sensation and déjà vu) occasionally progressing to bilateral tonic–clonic seizures is in keeping with focal epilepsy, likely temporal lobe onset. Despite optimised adherence, the overall seizure burden has not changed; specifically, she has had two drop attacks and five tonic-clonic in the past three months. There is no clear diurnal pattern. She denies alcohol excess and recreational drug use. Sleep is variable due to shift work, which may be a contributory factor.\n\nPlan:\n• Continue current antiseizure medications at the present doses, as there has been no deterioration but also no improvement in the count of two drop attacks and five tonic-clonic in the past three months.\n• Arrange MRI brain with epilepsy protocol (3T) and repeat EEG with sleep deprivation to refine localisation.\n• Provide written advice on sleep hygiene and seizure triggers; patient will review feasibility of reducing night shifts with her employer.\n• Safety counselled regarding drop attacks and convulsive seizures at home and in public; discussed SUDEP awareness and first-aid guidance with her and her partner.\n• Driving: she has already informed the DVLA and is not driving.\n\nFollow-up:\nWe will review her in clinic in four months or sooner if events escalate, injuries occur, or medication side effects emerge.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 443,
+      "end": 506,
+      "text": "two drop attacks and five tonic-clonic in the past three months",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 443,
+      "end": 506,
+      "text": "two drop attacks and five tonic-clonic in the past three months",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1914,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 12 September 2025\n\nDr Shah\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Shah,\n\nRe: Amelia Thompson, DOB: 22-11-1990, Hospital No: H938420, NHS No. 6842951730\n14 Brookside Avenue, London, W2 5JP\n\nDiagnosis and history:\nAmelia Thompson is followed in our service for focal epilepsy. She reports that over the past three months she has experienced two drop attacks and five tonic-clonic in the past three months. This frequency reflects her typical pattern over the preceding quarters, and remains unchanged following the most recent treatment adjustments.\n\nCurrent medication:\n• Lamotrigine 150 mg twice daily.\n• Levetiracetam 1,000 mg twice daily.\nShe reports good adherence without notable adverse effects beyond occasional irritability and mild insomnia, which she attributes to stress at work. No rashes, no cognitive complaints, and no new neurological symptoms were reported.\n\nAssessment:\nHer description of brief focal aware episodes (epigastric rising sensation and déjà vu) occasionally progressing to bilateral tonic–clonic seizures is in keeping with focal epilepsy, likely temporal lobe onset. Despite optimised adherence, the overall seizure burden has not changed; specifically, she has had two drop attacks and five tonic-clonic in the past three months. There is no clear diurnal pattern. She denies alcohol excess and recreational drug use. Sleep is variable due to shift work, which may be a contributory factor.\n\nPlan:\n• Continue current antiseizure medications at the present doses, as there has been no deterioration but also no improvement in the count of two drop attacks and five tonic-clonic in the past three months.\n• Arrange MRI brain with epilepsy protocol (3T) and repeat EEG with sleep deprivation to refine localisation.\n• Provide written advice on sleep hygiene and seizure triggers; patient will review feasibility of reducing night shifts with her employer.\n• Safety counselled regarding drop attacks and convulsive seizures at home and in public; discussed SUDEP awareness and first-aid guidance with her and her partner.\n• Driving: she has already informed the DVLA and is not driving.\n\nFollow-up:\nWe will review her in clinic in four months or sooner if events escalate, injuries occur, or medication side effects emerge.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient had two drop attacks and five tonic-clonic seizures in the past three months. Following the rule to sum frequencies in the same time dimension, total seizures over 3 months = 2 + 5 = 7. Therefore, the normalized label is 7 per 3 month.",
+      "seizure_frequency_number": [
+        "7 per 3 month",
+        "two drop attacks and five tonic-clonic in the past three months"
+      ],
+      "reference": [
+        "7 per 3 month",
+        "two drop attacks and five tonic-clonic in the past three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

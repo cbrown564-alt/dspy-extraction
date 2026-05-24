@@ -1,0 +1,59 @@
+{
+  "id": "gan_9109",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 12 October 2022\n\nDr Patel\nOakfield Medical Practice\n\n23 Oakfield Road, London, SE15 3HT\n\nDear Dr Patel\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: History of recurrent seizures; prior investigations including EEG on more than one occasion. MRI (2006) described no clear structural correlate. Medication history includes trials of several antiseizure medicines with variable benefit and tolerability. No specific epilepsy syndrome assigned.\n\nInterval history: I reviewed Wendy Brown in clinic today; she attended alone. Since retiring earlier this year, she reports a more consistent daily routine, regular sleep, and reduced overall stress. She feels this has had a positive impact on her seizure control and general wellbeing. She describes fewer daytime episodes and, notably, she has had undisturbed nights for several weeks, which is a change from her previous pattern. Energy levels are improving and she is engaging in light exercise and structured activities. No new neurological complaints, and no emergency attendances.\n\nCurrent medication (patient-reported):\n- Lamotrigine 100 mg twice daily\n- Folic acid 5 mg once daily\n- Metoclopramide as required for nausea\n\nPrevious medication trials (historical): levetiracetam, carbamazepine, valproate, phenytoin, phenobarbital, gabapentin, vigabatrin, lacosamide, clobazam. She has not previously tried topiramate, zonisamide, pregabalin, tiagabine, acetazolamide, perampanel, retigabine, or rufinamide.\n\nExamination: Observations stable. Neurological examination today was unremarkable. Weight stable; mood brighter by her account.\n\nInvestigations: Historical EEGs documented epileptiform activity without a definitive lateralising focus. MRI brain in 2006 reported no epileptogenic lesion. No new tests requested today.\n\nAssessment: Wendy Brown reports meaningful improvement in seizure pattern and daily function, coinciding with retirement and a more regular routine. Night-time rest has been uninterrupted recently, and daytime events are less frequent by her description. While the exact seizure classification remains undesignated, the clinical trajectory is encouraging.\n\nPlan:\n- Continue current lamotrigine dose, as tolerated, given recent improvement.\n- Reinforce sleep hygiene and regular routine, which she feels has helped.\n- Provide seizure diary to document frequency, timing, and potential triggers.\n- Arrange nurse-led telephone check-in in 6–8 weeks to review progress and diary entries.\n- Routine follow-up in 4 months, with earlier review if there is any deterioration or concern.\n\nThank you for your ongoing care. Please let me know if there are any issues you would like us to address prior to follow-up.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 871,
+      "end": 907,
+      "text": "She describes fewer daytime episodes",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9109,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 12 October 2022\n\nDr Patel\nOakfield Medical Practice\n\n23 Oakfield Road, London, SE15 3HT\n\nDear Dr Patel\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: History of recurrent seizures; prior investigations including EEG on more than one occasion. MRI (2006) described no clear structural correlate. Medication history includes trials of several antiseizure medicines with variable benefit and tolerability. No specific epilepsy syndrome assigned.\n\nInterval history: I reviewed Wendy Brown in clinic today; she attended alone. Since retiring earlier this year, she reports a more consistent daily routine, regular sleep, and reduced overall stress. She feels this has had a positive impact on her seizure control and general wellbeing. She describes fewer daytime episodes and, notably, she has had undisturbed nights for several weeks, which is a change from her previous pattern. Energy levels are improving and she is engaging in light exercise and structured activities. No new neurological complaints, and no emergency attendances.\n\nCurrent medication (patient-reported):\n- Lamotrigine 100 mg twice daily\n- Folic acid 5 mg once daily\n- Metoclopramide as required for nausea\n\nPrevious medication trials (historical): levetiracetam, carbamazepine, valproate, phenytoin, phenobarbital, gabapentin, vigabatrin, lacosamide, clobazam. She has not previously tried topiramate, zonisamide, pregabalin, tiagabine, acetazolamide, perampanel, retigabine, or rufinamide.\n\nExamination: Observations stable. Neurological examination today was unremarkable. Weight stable; mood brighter by her account.\n\nInvestigations: Historical EEGs documented epileptiform activity without a definitive lateralising focus. MRI brain in 2006 reported no epileptogenic lesion. No new tests requested today.\n\nAssessment: Wendy Brown reports meaningful improvement in seizure pattern and daily function, coinciding with retirement and a more regular routine. Night-time rest has been uninterrupted recently, and daytime events are less frequent by her description. While the exact seizure classification remains undesignated, the clinical trajectory is encouraging.\n\nPlan:\n- Continue current lamotrigine dose, as tolerated, given recent improvement.\n- Reinforce sleep hygiene and regular routine, which she feels has helped.\n- Provide seizure diary to document frequency, timing, and potential triggers.\n- Arrange nurse-led telephone check-in in 6–8 weeks to review progress and diary entries.\n- Routine follow-up in 4 months, with earlier review if there is any deterioration or concern.\n\nThank you for your ongoing care. Please let me know if there are any issues you would like us to address prior to follow-up.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's seizure control qualitatively with improvement but does not provide any explicit numeric frequency. It states she has had undisturbed nights for several weeks but still has daytime events that are less frequent. Since seizures are ongoing and no specific count or rate is given, the current seizure frequency cannot be determined numerically. This fails the criterion for seizure-free status (no seizures for at least 6 months), and there is insufficient data to convert to a per-time-unit rate.",
+      "seizure_frequency_number": [
+        "unknown",
+        "She describes fewer daytime episodes"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No nocturnal seizures reported"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

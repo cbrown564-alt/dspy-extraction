@@ -1,0 +1,59 @@
+{
+  "id": "gan_2486",
+  "text": "Epilepsy Clinic\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 October 2014 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Kumar (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and communication plan\n\nDear Priya,\n\nDiagnosis:\n\nSeizure disorder, aetiology currently uncharacterised. We are continuing diagnostic work-up.\n\nBackground and communication needs:\n\nThe patient reports longstanding hearing difficulty and has asked that clinic discussions occur via scheduled speakerphone calls with a family member present to assist with communication. We will use this approach for follow-up and urgent queries.\n\nCurrent medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-reported use on no more than two nights per month)\n\nSeizure history and current frequency:\n\nSince the last review, the patient reports two to three seizures during the last three months. These were brief episodes of impaired awareness with confusion afterwards, occurring without clear precipitant. No injuries reported. Family member corroborated the account during a speakerphone call.\n\nInvestigations to date:\n\n- MRI brain (last month): no acute lesion; non-specific white matter changes, unchanged from prior scan.\n- Routine EEG: non-diagnostic. Prolonged ambulatory EEG has been arranged.\n- Bloods (U&E, LFTs, FBC): within reference ranges; lamotrigine level pending.\n\nPlan:\n\n- Continue lamotrigine 100 mg twice daily for now pending ambulatory EEG and serum level.\n- Provide rescue plan: if a seizure lasts >5 minutes or there is a repeat without recovery, attend ED.\n- Seizure diary: patient and family to log dates, duration, potential triggers, and recovery features.\n- Safety advice reinforced: avoid swimming unsupervised, take showers rather than baths, and review kitchen and ladder safety.\n- Follow-up: telephone/speakerphone review with family member assisting communication in 8 weeks, or sooner if frequency worsens.\n- Depending on EEG and lamotrigine level, we will consider dose optimisation or an alternative agent at next review.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 948,
+      "end": 1042,
+      "text": "Since the last review, the patient reports two to three seizures during the last three months.",
+      "attributes": {
+        "Label": "2 to 3 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 991,
+      "end": 1041,
+      "text": "two to three seizures during the last three months",
+      "attributes": {
+        "Label": "2 to 3 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2486,
+    "clinic_date": "Epilepsy Clinic\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 04 October 2014 10:15\nTo: kch.neuroclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Kumar (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and communication plan\n\nDear Priya,\n\nDiagnosis:\n\nSeizure disorder, aetiology currently uncharacterised. We are continuing diagnostic work-up.\n\nBackground and communication needs:\n\nThe patient reports longstanding hearing difficulty and has asked that clinic discussions occur via scheduled speakerphone calls with a family member present to assist with communication. We will use this approach for follow-up and urgent queries.\n\nCurrent medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as needed for clusters (patient-reported use on no more than two nights per month)\n\nSeizure history and current frequency:\n\nSince the last review, the patient reports two to three seizures during the last three months. These were brief episodes of impaired awareness with confusion afterwards, occurring without clear precipitant. No injuries reported. Family member corroborated the account during a speakerphone call.\n\nInvestigations to date:\n\n- MRI brain (last month): no acute lesion; non-specific white matter changes, unchanged from prior scan.\n- Routine EEG: non-diagnostic. Prolonged ambulatory EEG has been arranged.\n- Bloods (U&E, LFTs, FBC): within reference ranges; lamotrigine level pending.\n\nPlan:\n\n- Continue lamotrigine 100 mg twice daily for now pending ambulatory EEG and serum level.\n- Provide rescue plan: if a seizure lasts >5 minutes or there is a repeat without recovery, attend ED.\n- Seizure diary: patient and family to log dates, duration, potential triggers, and recovery features.\n- Safety advice reinforced: avoid swimming unsupervised, take showers rather than baths, and review kitchen and ladder safety.\n- Follow-up: telephone/speakerphone review with family member assisting communication in 8 weeks, or sooner if frequency worsens.\n- Depending on EEG and lamotrigine level, we will consider dose optimisation or an alternative agent at next review.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Since the last review, the patient reports two to three seizures during the last three months.' This provides a numeric range and a time window. Normalize to the allowed format as '<range> per <period>'. Therefore: '2 to 3 per 3 month'. No other conflicting frequencies are provided, and the 6-month seizure-free criterion is not met.",
+      "seizure_frequency_number": [
+        "2 to 3 per 3 month",
+        "Since the last review, the patient reports two to three seizures during the last three months."
+      ],
+      "reference": [
+        "2 to 3 per 3 month",
+        "two to three seizures during the last three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_14954",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 June 2022 \n\nDr Ahmed  \nRiverside Medical Centre  \n45 Riverbank Road, London SE1 8JP  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 12-11-1992, Hospital No: H483920 NHS No. 9051746321  \nFlat 2, 19 Brook Street, London W1K 4HE \n\nMedication: \n\nLevetiracetam 500 mg twice daily. Past adverse effects to antiseizure medicines recorded historically include a pruritic rash on carbamazepine and gastrointestinal upset with topiramate; these agents are avoided. She tolerates levetiracetam without current side effects and reports good adherence. \n\nInterval history and current status: \n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 20-Apr, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 26-Apr and she has been stable since. Given her stability now, I do not propose further intervention for now. \n\nShe reports maintaining regular sleep, limiting alcohol, and using a seizure diary app; no clear precipitant was identified for the brief symptom cluster. There is no history of recent intercurrent illness. Family observed no witnessed convulsions, injuries, or prolonged post-event confusion. She continues to drive only in accordance with DVLA guidance and understands to report any recurrence or change in events. \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily.  \n- Avoid previously implicated agents given prior rash and GI intolerance, documented in her record.  \n- Routine bloods not required at present; no red flag features elicited.  \n- Safety advice reinforced including adherence, sleep hygiene, and avoidance of missed doses.  \n- We will review in clinic in six months, or sooner if there is any recurrence of events, adverse effects, or change in pattern. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 830,
+      "end": 901,
+      "text": "The last such episode occurred on 26-Apr and she has been stable since.",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 638,
+      "end": 972,
+      "text": "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 20-Apr, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 26-Apr and she has been stable since. Given her stability now, I do not propose further intervention for now",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14954,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 21 June 2022 \n\nDr Ahmed  \nRiverside Medical Centre  \n45 Riverbank Road, London SE1 8JP  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 12-11-1992, Hospital No: H483920 NHS No. 9051746321  \nFlat 2, 19 Brook Street, London W1K 4HE \n\nMedication: \n\nLevetiracetam 500 mg twice daily. Past adverse effects to antiseizure medicines recorded historically include a pruritic rash on carbamazepine and gastrointestinal upset with topiramate; these agents are avoided. She tolerates levetiracetam without current side effects and reports good adherence. \n\nInterval history and current status: \n\nShe presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 20-Apr, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 26-Apr and she has been stable since. Given her stability now, I do not propose further intervention for now. \n\nShe reports maintaining regular sleep, limiting alcohol, and using a seizure diary app; no clear precipitant was identified for the brief symptom cluster. There is no history of recent intercurrent illness. Family observed no witnessed convulsions, injuries, or prolonged post-event confusion. She continues to drive only in accordance with DVLA guidance and understands to report any recurrence or change in events. \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily.  \n- Avoid previously implicated agents given prior rash and GI intolerance, documented in her record.  \n- Routine bloods not required at present; no red flag features elicited.  \n- Safety advice reinforced including adherence, sleep hygiene, and avoidance of missed doses.  \n- We will review in clinic in six months, or sooner if there is any recurrence of events, adverse effects, or change in pattern. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the last absence episode occurred on 26-Apr and she has been stable since. The clinic date is 21 June 2022, which is approximately 2 months after 26-Apr. Because seizure-free status requires at least 6 months without events and only ~2 months have elapsed, we should calculate a frequency. With one episode in the roughly 2-month interval leading up to the review, this corresponds to approximately 1 per 2 months.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "The last such episode occurred on 26-Apr and she has been stable since."
+      ],
+      "reference": [
+        "1 per 2 month",
+        "She presented with dizziness and headaches on consecutive days, but these resolved spontaneously. On 20-Apr, following the use of her prescribed medication, the absences became less frequent. The last such episode occurred on 26-Apr and she has been stable since. Given her stability now, I do not propose further intervention for now"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

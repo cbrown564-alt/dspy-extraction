@@ -1,0 +1,59 @@
+{
+  "id": "gan_12296",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:12\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and monitoring plan\n\nHi Dr Shah\n\nEpilepsy Diagnosis:\n\nUndifferentiated at present pending further characterisation\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nHer seizure control is variable, she continues to experience drop attack on three - four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years.\n\n\nAdditional Context:\n\n- She wears a smartwatch with fall-detection enabled; the alert timestamps have been useful in corroborating the timing of her drop attacks. Over the past eight weeks, device alerts align with her paper diary on most days.\n- No clear trigger identified; she notes sleep deprivation and intercurrent illness may worsen morning jerks. No recent medication omissions reported. Family reports brief post-event confusion after the larger convulsions, with tongue biting on two occasions in the last six months.\n- MRI brain (2021) reportedly normal; routine EEG (2022) was non-diagnostic. We have requested copies of those reports for our records.\n\n\nPlan of Action:\n\n- Continue current medication regimen unchanged while we complete further evaluation to avoid confounding factors.\n- Arrange ambulatory EEG with video correlation and request device data export (fall alerts and heart rate) for the same period to support event chronology.\n- Encourage ongoing use of the smartwatch fall-detection and maintenance of a detailed seizure diary noting time, pre-event context, and recovery features.\n- Safety advice reinforced regarding bathing, cooking with supervision where feasible, and use of protective headgear outdoors as previously agreed with the patient.\n- Follow-up in 3 months, sooner if event pattern escalates or injuries occur. We will review investigations and consider rationalisation of therapy thereafter.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 590,
+      "end": 653,
+      "text": "she continues to experience drop attack on three - four per day",
+      "attributes": {
+        "Label": "3 to 4 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 557,
+      "end": 795,
+      "text": "Her seizure control is variable, she continues to experience drop attack on three - four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years",
+      "attributes": {
+        "Label": "3 to 4 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12296,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:12\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Hannah Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and monitoring plan\n\nHi Dr Shah\n\nEpilepsy Diagnosis:\n\nUndifferentiated at present pending further characterisation\n\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nHer seizure control is variable, she continues to experience drop attack on three - four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years.\n\n\nAdditional Context:\n\n- She wears a smartwatch with fall-detection enabled; the alert timestamps have been useful in corroborating the timing of her drop attacks. Over the past eight weeks, device alerts align with her paper diary on most days.\n- No clear trigger identified; she notes sleep deprivation and intercurrent illness may worsen morning jerks. No recent medication omissions reported. Family reports brief post-event confusion after the larger convulsions, with tongue biting on two occasions in the last six months.\n- MRI brain (2021) reportedly normal; routine EEG (2022) was non-diagnostic. We have requested copies of those reports for our records.\n\n\nPlan of Action:\n\n- Continue current medication regimen unchanged while we complete further evaluation to avoid confounding factors.\n- Arrange ambulatory EEG with video correlation and request device data export (fall alerts and heart rate) for the same period to support event chronology.\n- Encourage ongoing use of the smartwatch fall-detection and maintenance of a detailed seizure diary noting time, pre-event context, and recovery features.\n- Safety advice reinforced regarding bathing, cooking with supervision where feasible, and use of protective headgear outdoors as previously agreed with the patient.\n- Follow-up in 3 months, sooner if event pattern escalates or injuries occur. We will review investigations and consider rationalisation of therapy thereafter.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'she continues to experience drop attack on three - four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters.' We must choose the highest frequency across seizure types. Explicit numeric frequency is only given for drop attacks: 'three - four per day.' Occasional GTCs and myoclonic jerks in clusters are not numerically specified. Therefore, the highest determinable frequency is 3 to 4 per day. Convert hyphenated range to 'to' per format rules.",
+      "seizure_frequency_number": [
+        "3 to 4 per day",
+        "she continues to experience drop attack on three - four per day"
+      ],
+      "reference": [
+        "3 to 4 per day",
+        "Her seizure control is variable, she continues to experience drop attack on three - four per day, occasional generalised tonic-clonic seizures, and myoclonic jerks in morning clusters, this pattern has remained unchanged for several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6930",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 17 December 2024 \n\nDr Green\nRiverside Medical Practice\n\n12 Riverside Way, London, SE1 3AB\nDear Dr Green\nEmily Carter, DOB: 14-02-1989, Hospital No: H8293746 NHS No. 7483926159\nFlat 4, 27 Millbank Court, London, SE1 8QT \n\nI reviewed the above patient in the Neurology Clinic today. She has focal epilepsy, with events characterised by a rising epigastric sensation, brief behavioural arrest and lip-smacking, occasionally followed by post-event confusion lasting a few minutes. A catamenial pattern is suspected; she has been logging symptoms on a menstrual tracking app which appears to show clustering around the late luteal and early menstrual phases.\n\nSince I have not yet received consistent counts from her diary, the overall seizure frequency remains unclear at present. The patient and her partner have captured short smartphone clips that hint at typical episodes but do not allow a precise tally. We will corroborate with updated app entries and collateral reports.\n\nShe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d., tolerated without rash or mood destabilisation. She reports intermittent fatigue and mild irritability but no dose-limiting adverse effects. No recent head injury, infection, or medication non-adherence. Sleep is variable around menses.\n\nPlan:\n- Continue Lamotrigine and Levetiracetam unchanged pending further data.\n- Request ambulatory EEG to sample across the late luteal/early menstrual window where possible.\n- Ask patient to export cycle logs from her app and annotate any events, aiming to clarify periodicity.\n- Provide information on catamenial seizure patterns and lifestyle measures; patient will consider keeping a combined seizure–cycle diary.\n- Review in clinic in three months or sooner if events escalate.\n\nI will update you once we have the ambulatory EEG and a clearer correlation with her cycle. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 761,
+      "end": 817,
+      "text": "the overall seizure frequency remains unclear at present",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6930,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 17 December 2024 \n\nDr Green\nRiverside Medical Practice\n\n12 Riverside Way, London, SE1 3AB\nDear Dr Green\nEmily Carter, DOB: 14-02-1989, Hospital No: H8293746 NHS No. 7483926159\nFlat 4, 27 Millbank Court, London, SE1 8QT \n\nI reviewed the above patient in the Neurology Clinic today. She has focal epilepsy, with events characterised by a rising epigastric sensation, brief behavioural arrest and lip-smacking, occasionally followed by post-event confusion lasting a few minutes. A catamenial pattern is suspected; she has been logging symptoms on a menstrual tracking app which appears to show clustering around the late luteal and early menstrual phases.\n\nSince I have not yet received consistent counts from her diary, the overall seizure frequency remains unclear at present. The patient and her partner have captured short smartphone clips that hint at typical episodes but do not allow a precise tally. We will corroborate with updated app entries and collateral reports.\n\nShe is currently taking Lamotrigine 150 mg b.d. and Levetiracetam 1000 mg b.d., tolerated without rash or mood destabilisation. She reports intermittent fatigue and mild irritability but no dose-limiting adverse effects. No recent head injury, infection, or medication non-adherence. Sleep is variable around menses.\n\nPlan:\n- Continue Lamotrigine and Levetiracetam unchanged pending further data.\n- Request ambulatory EEG to sample across the late luteal/early menstrual window where possible.\n- Ask patient to export cycle logs from her app and annotate any events, aiming to clarify periodicity.\n- Provide information on catamenial seizure patterns and lifestyle measures; patient will consider keeping a combined seizure–cycle diary.\n- Review in clinic in three months or sooner if events escalate.\n\nI will update you once we have the ambulatory EEG and a clearer correlation with her cycle. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes that the patient has focal epilepsy with typical events, but explicitly states that consistent counts from her diary have not been received and that the overall seizure frequency remains unclear. There are no explicit numeric frequencies provided, and no timeframe suggesting seizure freedom for 6 months. Therefore, the correct normalized label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "the overall seizure frequency remains unclear at present"
+      ],
+      "reference": [
+        "unknown",
+        "Home video suggests seizure activity"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

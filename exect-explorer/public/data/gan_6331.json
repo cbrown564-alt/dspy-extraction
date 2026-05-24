@@ -1,0 +1,54 @@
+{
+  "id": "gan_6331",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAlex Turner, DOB: 22-11-1990, Hospital No: Q572019 NHS No. 9841206735  \nFlat 3B, 14 Willow Estate, London, SE8 3PL  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since April 2025  \n\nLamotrigine dispersible 50mg twice a day (patient-reported adherence variable around mealtimes) \n\nLamotrigine Blood Level:  \n\n24th September 2025: 2.8 mg/L (reference range 1.0 to 15.0 mg/L). Dose 50mg twice a day  \n\nSeizures: The patient reports episodes tend to occur on days when food intake is delayed; they describe brief loss of awareness with rapid recovery, approximately two events over the past six weeks amidst unsettled living arrangements. No injuries or tongue-biting reported. \n\nContext: I conducted a telephone review today. Alex Turner is awaiting relocation from temporary accommodation and notes overcrowded conditions with disrupted routines. They report irregular meal timing and poor sleep due to noise at night. They feel events have clustered on days when they miss or significantly delay meals, and they are trying to keep snacks available. No new neurological symptoms. \n\nPlan:  \n- Continue current Lamotrigine 50mg twice daily.  \n- Patient will keep a seizure and trigger diary, noting meal timing, sleep quality, and stressors related to housing.  \n- Provided advice (patient-reported understanding) on maintaining regular nutrition and hydration within current constraints.  \n- Arranged repeat Lamotrigine level and U&E/LFTs in 8 weeks via GP.  \n- Will review again in 3 months by telephone, sooner if events increase in frequency or severity. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 811,
+      "end": 859,
+      "text": "approximately two events over the past six weeks",
+      "attributes": {
+        "Label": "2 per 6 weeks",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6331,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAlex Turner, DOB: 22-11-1990, Hospital No: Q572019 NHS No. 9841206735  \nFlat 3B, 14 Willow Estate, London, SE8 3PL  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since April 2025  \n\nLamotrigine dispersible 50mg twice a day (patient-reported adherence variable around mealtimes) \n\nLamotrigine Blood Level:  \n\n24th September 2025: 2.8 mg/L (reference range 1.0 to 15.0 mg/L). Dose 50mg twice a day  \n\nSeizures: The patient reports episodes tend to occur on days when food intake is delayed; they describe brief loss of awareness with rapid recovery, approximately two events over the past six weeks amidst unsettled living arrangements. No injuries or tongue-biting reported. \n\nContext: I conducted a telephone review today. Alex Turner is awaiting relocation from temporary accommodation and notes overcrowded conditions with disrupted routines. They report irregular meal timing and poor sleep due to noise at night. They feel events have clustered on days when they miss or significantly delay meals, and they are trying to keep snacks available. No new neurological symptoms. \n\nPlan:  \n- Continue current Lamotrigine 50mg twice daily.  \n- Patient will keep a seizure and trigger diary, noting meal timing, sleep quality, and stressors related to housing.  \n- Provided advice (patient-reported understanding) on maintaining regular nutrition and hydration within current constraints.  \n- Arranged repeat Lamotrigine level and U&E/LFTs in 8 weeks via GP.  \n- Will review again in 3 months by telephone, sooner if events increase in frequency or severity. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'approximately two events over the past six weeks.' This provides a clear numeric frequency. No other conflicting frequencies are given. The patient is not seizure free, as events occurred within the last six weeks. Normalize to the allowed format as 2 per 6 weeks.",
+      "seizure_frequency_number": [
+        "2 per 6 weeks",
+        "approximately two events over the past six weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Skipping meals triggers seizure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 6 weeks) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

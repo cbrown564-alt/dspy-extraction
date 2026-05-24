@@ -1,0 +1,65 @@
+{
+  "id": "gan_13584",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\n Dr Patel   \n St Mary's Hospital   \n Institute of Neurology, St Mary's Hospital, London W2 1NY   \n\nDear  Dr Patel ,  \n\n Daniel Hughes , DOB:  12-03-2002 , Hospital No:  H938271  NHS No.  5842037719   \n 14 Brookfield Close, London, W10 6AR \n\nDiagnosis and current status:\n- The patient does not have epilepsy. He transitioned from paediatric to adult services last year for historical review of possible epilepsy, but on longitudinal assessment, he is in sustained remission without ongoing features of an epileptic disorder. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events four times per year, but is currently in long-term remission, having been seizure free for years. This history arose in childhood and early adolescence, and no events have occurred in adult life.\n\nHistory and collateral:\n- Today he attended with a parent, who provided collateral history consistent with the above. Both report no episodes of loss of awareness, no myoclonic jerks, and no convulsive events since mid-adolescence. There have been no emergency attendances, injuries, or triggers reported. Sleep patterns, stress, and alcohol exposure have not precipitated any events. No concerns have been raised by school or work supervisors.\n\nExamination and investigations:\n- Neurological examination today is normal. Prior paediatric notes document normal MRI and no progressive neurological disorder. Historic EEGs in childhood showed generalised discharges during the symptomatic period, but there has been no clinical correlate in many years. Given long-term remission and current absence of symptoms, no further investigations are indicated.\n\nMedications:\n- He is taking no anti-seizure medications. He discontinued treatment in late adolescence under paediatric supervision and has remained well without recurrence.\n\nSafety, driving and lifestyle:\n- He reports full adherence to general wellbeing measures and no restrictions are required at present. He meets the standard for non-epileptic status given long-term remission and absence of ongoing seizures. We advised routine health maintenance and to re-contact services only if new neurological symptoms appear.\n\nPlan:\n- No diagnosis of active epilepsy.\n- No anti-seizure therapy required.\n- Discharge to primary care with open access back to clinic if needed. A parent may attend future appointments to provide collateral if any new concerns arise.\n\nWe are happy to review again if there are any changes or if you would like us to reassess.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 517,
+      "end": 667,
+      "text": "he is in sustained remission without ongoing features of an epileptic disorder... currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 597,
+      "end": 809,
+      "text": "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events four times per year, but is currently in long-term remission, having been seizure free for years",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13584,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\n Dr Patel   \n St Mary's Hospital   \n Institute of Neurology, St Mary's Hospital, London W2 1NY   \n\nDear  Dr Patel ,  \n\n Daniel Hughes , DOB:  12-03-2002 , Hospital No:  H938271  NHS No.  5842037719   \n 14 Brookfield Close, London, W10 6AR \n\nDiagnosis and current status:\n- The patient does not have epilepsy. He transitioned from paediatric to adult services last year for historical review of possible epilepsy, but on longitudinal assessment, he is in sustained remission without ongoing features of an epileptic disorder. He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events four times per year, but is currently in long-term remission, having been seizure free for years. This history arose in childhood and early adolescence, and no events have occurred in adult life.\n\nHistory and collateral:\n- Today he attended with a parent, who provided collateral history consistent with the above. Both report no episodes of loss of awareness, no myoclonic jerks, and no convulsive events since mid-adolescence. There have been no emergency attendances, injuries, or triggers reported. Sleep patterns, stress, and alcohol exposure have not precipitated any events. No concerns have been raised by school or work supervisors.\n\nExamination and investigations:\n- Neurological examination today is normal. Prior paediatric notes document normal MRI and no progressive neurological disorder. Historic EEGs in childhood showed generalised discharges during the symptomatic period, but there has been no clinical correlate in many years. Given long-term remission and current absence of symptoms, no further investigations are indicated.\n\nMedications:\n- He is taking no anti-seizure medications. He discontinued treatment in late adolescence under paediatric supervision and has remained well without recurrence.\n\nSafety, driving and lifestyle:\n- He reports full adherence to general wellbeing measures and no restrictions are required at present. He meets the standard for non-epileptic status given long-term remission and absence of ongoing seizures. We advised routine health maintenance and to re-contact services only if new neurological symptoms appear.\n\nPlan:\n- No diagnosis of active epilepsy.\n- No anti-seizure therapy required.\n- Discharge to primary care with open access back to clinic if needed. A parent may attend future appointments to provide collateral if any new concerns arise.\n\nWe are happy to review again if there are any changes or if you would like us to reassess.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is in long-term remission and has been seizure free for years, with no events in adult life and no episodes since mid-adolescence. This confirms current status is seizure-free and exceeds the 6-month criterion. Therefore, the normalized label should be 'seizure free for multiple years' since an exact number of years is not specified, but 'years' is explicit. No need to compute historical childhood frequencies because current highest applicable frequency is zero with sustained remission.",
+      "seizure_frequency_number": [
+        "seizure free for multiple year",
+        "he is in sustained remission without ongoing features of an epileptic disorder... currently in long-term remission, having been seizure free for years"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "He previously suffered from frequent clusters of myoclonic jerks, absence seizures and occasional convulsive events four times per year, but is currently in long-term remission, having been seizure free for years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for multiple year) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

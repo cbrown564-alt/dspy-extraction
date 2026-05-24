@@ -1,0 +1,59 @@
+{
+  "id": "gan_7911",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 March 2021 \n\nDr Helen Carter  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Helen Carter,                                                                                                         \n\nDaniel Harris, DOB: 22-11-1989, Hospital No: H738204 NHS No. 9842156730  \nFlat 3, 19 Shipwright Lane, London, SE16 4TZ  \n\nEpilepsy \n\nMedication: No recent changes reported. Patient confirms adherence to a stable regimen without adverse effects.  \n\nMonitoring/Lifestyle: Patient works in metal fabrication with intermittent arc-light exposure and uses a full protective visor and standard PPE consistently. No reported photic sensitivity, headaches, or near-miss events at work. Sleep routine and hydration reported as stable. \n\nSeizures: Seizures under sustained control. No auras, warnings, blackouts, or witnessed episodes since last clinic contact. Patient remains well and continues usual activities including full-time work. \n\nToday’s review was conducted by telephone. The patient denies new neurological symptoms, maintains steady mood and energy, and has not required emergency care. No driving or occupational safety concerns raised. No blood monitoring indicated at present. Safety advice regarding consistent PPE use around welding arcs was reiterated, and the patient feels confident with current workplace protocols.\n\nPlan: Continue current approach; routine follow-up as scheduled unless concerns arise. The patient will contact the service promptly if any changes occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 814,
+      "end": 927,
+      "text": "Seizures under sustained control. No auras, warnings, blackouts, or witnessed episodes since last clinic contact.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 814,
+      "end": 846,
+      "text": "Seizures under sustained control",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7911,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 March 2021 \n\nDr Helen Carter  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Helen Carter,                                                                                                         \n\nDaniel Harris, DOB: 22-11-1989, Hospital No: H738204 NHS No. 9842156730  \nFlat 3, 19 Shipwright Lane, London, SE16 4TZ  \n\nEpilepsy \n\nMedication: No recent changes reported. Patient confirms adherence to a stable regimen without adverse effects.  \n\nMonitoring/Lifestyle: Patient works in metal fabrication with intermittent arc-light exposure and uses a full protective visor and standard PPE consistently. No reported photic sensitivity, headaches, or near-miss events at work. Sleep routine and hydration reported as stable. \n\nSeizures: Seizures under sustained control. No auras, warnings, blackouts, or witnessed episodes since last clinic contact. Patient remains well and continues usual activities including full-time work. \n\nToday’s review was conducted by telephone. The patient denies new neurological symptoms, maintains steady mood and energy, and has not required emergency care. No driving or occupational safety concerns raised. No blood monitoring indicated at present. Safety advice regarding consistent PPE use around welding arcs was reiterated, and the patient feels confident with current workplace protocols.\n\nPlan: Continue current approach; routine follow-up as scheduled unless concerns arise. The patient will contact the service promptly if any changes occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly addresses seizures: \"Seizures under sustained control. No auras, warnings, blackouts, or witnessed episodes since last clinic contact.\" This confirms no seizures since last contact, but does not provide the exact time interval since the last clinic contact. Therefore, we know the patient has been seizure-free for some period, but cannot confirm it is at least 6 months. According to the rules, when seizure-free duration is not clearly 6 months or more, we can consider 'seizure free for multiple months' if insufficient information to confirm or refute the 6-month criterion. The phrasing 'sustained control' and no events since last contact implies at least months, but not necessarily a full 6 months. Thus, 'seizure free for multiple months' is the best normalized label.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizures under sustained control. No auras, warnings, blackouts, or witnessed episodes since last clinic contact."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures under sustained control"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

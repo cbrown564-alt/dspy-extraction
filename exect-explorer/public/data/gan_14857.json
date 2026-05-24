@@ -1,0 +1,59 @@
+{
+  "id": "gan_14857",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 June 2017 \n\nDr Sarah Whitfield \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Bartholomew’s Hospital, West Smithfield, London EC1A 7BE  \n\nDear Dr Sarah Whitfield, \n\nMs Emma Carter, DOB: 22-09-1989, Hospital No: K847261 NHS No. 1039485726  \nFlat 12, 44 Alderbrook Road, London, SW12 8AG  \n\nDiagnosis: \n\nCombined generalised and focal epilepsy with marked improvement on current medicines compared with earlier periods. The patient has both generalised and focal epilepsy. \n\nAetiology: \n\nUnclear aetiology; MRI brain (2016) without structural lesion; no history of CNS infection or significant head injury; perinatal history unremarkable. Family history notable for migraines in mother. \n\nOther Medical Problems: \n\nIntermittent migraine without aura; mild iron-deficiency anaemia under GP monitoring; no known drug allergies. \n\nManagement Plan: \n\n- Continue Lamotrigine (single brand) 100 mg mane and 200 mg nocte.  \n- Continue Levetiracetam 1,000 mg twice daily.  \n- Maintain a seizure and headache diary; avoid missed doses and sleep deprivation.  \n- No driving until in accordance with DVLA guidance; patient understands current requirements.  \n- Arrange routine bloods (FBC, U&E, LFT) via GP in 3 months; no dose change today given stability.  \n- Follow-up review in four months; earlier review if breakthrough events recur.  \n\nProgress since last review: \n\nShe had recurrent headaches following her seizures earlier this month, but these have now settled. On 18/May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 25/May and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes. She reports improved alertness and fewer cognitive lapses on the current regimen and has returned to part-time work. Medication adherence has been good and she has implemented regular sleep and hydration strategies.\n\nOverall, there has been a clear and sustained improvement on the present combination therapy compared with earlier periods, with better control of both brief generalised absence episodes and focal impaired-awareness seizures. We will continue to monitor for any mood or sleep effects attributable to Levetiracetam; she currently denies low mood or irritability.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1611,
+      "end": 1685,
+      "text": "Her last reported event was on 25/May and she has been seizure-free since.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1426,
+      "end": 1782,
+      "text": "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 18/May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 25/May and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14857,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 18 June 2017 \n\nDr Sarah Whitfield \nConsultant Neurologist  \nCentre for Epilepsy  \nSt Bartholomew’s Hospital, West Smithfield, London EC1A 7BE  \n\nDear Dr Sarah Whitfield, \n\nMs Emma Carter, DOB: 22-09-1989, Hospital No: K847261 NHS No. 1039485726  \nFlat 12, 44 Alderbrook Road, London, SW12 8AG  \n\nDiagnosis: \n\nCombined generalised and focal epilepsy with marked improvement on current medicines compared with earlier periods. The patient has both generalised and focal epilepsy. \n\nAetiology: \n\nUnclear aetiology; MRI brain (2016) without structural lesion; no history of CNS infection or significant head injury; perinatal history unremarkable. Family history notable for migraines in mother. \n\nOther Medical Problems: \n\nIntermittent migraine without aura; mild iron-deficiency anaemia under GP monitoring; no known drug allergies. \n\nManagement Plan: \n\n- Continue Lamotrigine (single brand) 100 mg mane and 200 mg nocte.  \n- Continue Levetiracetam 1,000 mg twice daily.  \n- Maintain a seizure and headache diary; avoid missed doses and sleep deprivation.  \n- No driving until in accordance with DVLA guidance; patient understands current requirements.  \n- Arrange routine bloods (FBC, U&E, LFT) via GP in 3 months; no dose change today given stability.  \n- Follow-up review in four months; earlier review if breakthrough events recur.  \n\nProgress since last review: \n\nShe had recurrent headaches following her seizures earlier this month, but these have now settled. On 18/May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 25/May and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes. She reports improved alertness and fewer cognitive lapses on the current regimen and has returned to part-time work. Medication adherence has been good and she has implemented regular sleep and hydration strategies.\n\nOverall, there has been a clear and sustained improvement on the present combination therapy compared with earlier periods, with better control of both brief generalised absence episodes and focal impaired-awareness seizures. We will continue to monitor for any mood or sleep effects attributable to Levetiracetam; she currently denies low mood or irritability.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- Clinic date: 18 June 2017.\n- The letter gives a specific last seizure date: \"Her last reported event was on 25/May and she has been seizure-free since.\"\n- Time from last seizure to clinic: 25 May to 18 June = 24 days (~0.8 months), which is < 6 months; therefore, she cannot be classified as seizure free per the 6‑month rule.\n- No explicit numeric frequency is stated. However, within the roughly one-month interval preceding the clinic, exactly one seizure is documented and none thereafter up to the clinic date.\n- Therefore, infer a current frequency of approximately 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Her last reported event was on 25/May and she has been seizure-free since."
+      ],
+      "reference": [
+        "1 per month",
+        "She had recurrent headaches following her seizures earlier this month, but these have now settled. On 18/May the absence episodes reduced significantly after she restarted Lamotrigine. Her last reported event was on 25/May and she has been seizure-free since. As she has now been stable for over two weeks, I am reassured and see no need for urgent changes"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

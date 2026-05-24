@@ -1,0 +1,65 @@
+{
+  "id": "gan_7491",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nEmily Carter, DOB: 22-11-1990, Hospital No: Q573920 NHS No. 8812034679  \nFlat 3, 47 Willow Road, London, NW3 1TL  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since April 2025  \n\nLamotrigine standard tablets 75mg twice a day (patient-reported adherence) \n\nLamotrigine Blood Level:  \n\n15th September 2025: 3.4 mg/L (reference 1.0 to 15.0 mg/L). Dose 75mg twice a day  \n\nSeizures: Seizures primarily focal motor from sleep—frequency varies. Patient reports that events tend to occur after nights of interrupted sleep while caring for young children. Typically brief right arm jerks with vocalisation from sleep; occasional post-event confusion lasting a few minutes. No daytime events volunteered. No injuries reported. \n\nI conducted a video consultation today. The patient describes increased night-time awakenings due to childcare responsibilities, with perceived clustering of nocturnal events during weeks of poorer sleep. She has not identified other specific triggers. She has not missed doses and denies adverse effects to Lamotrigine. We discussed maintaining a simple sleep routine where possible and continuing a brief event diary noting sleep disruption, time of event, and semiology as described. \n\nGiven the current pattern and absence of daytime episodes, we agreed to continue present management and monitor. She will arrange a morning trough Lamotrigine level if further clusters occur. Safety measures for night-time were reviewed (low bed height, clear floor area). She consents to share a short smartphone audio/video of events if feasible for semiology review. \n\nA follow-up telephone review in three months is planned, or sooner if frequency or character changes, new daytime impairment emerges, or injury occurs. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 538,
+      "end": 597,
+      "text": "Seizures primarily focal motor from sleep—frequency varies.",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 538,
+      "end": 596,
+      "text": "Seizures primarily focal motor from sleep—frequency varies",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7491,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nEmily Carter, DOB: 22-11-1990, Hospital No: Q573920 NHS No. 8812034679  \nFlat 3, 47 Willow Road, London, NW3 1TL  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since April 2025  \n\nLamotrigine standard tablets 75mg twice a day (patient-reported adherence) \n\nLamotrigine Blood Level:  \n\n15th September 2025: 3.4 mg/L (reference 1.0 to 15.0 mg/L). Dose 75mg twice a day  \n\nSeizures: Seizures primarily focal motor from sleep—frequency varies. Patient reports that events tend to occur after nights of interrupted sleep while caring for young children. Typically brief right arm jerks with vocalisation from sleep; occasional post-event confusion lasting a few minutes. No daytime events volunteered. No injuries reported. \n\nI conducted a video consultation today. The patient describes increased night-time awakenings due to childcare responsibilities, with perceived clustering of nocturnal events during weeks of poorer sleep. She has not identified other specific triggers. She has not missed doses and denies adverse effects to Lamotrigine. We discussed maintaining a simple sleep routine where possible and continuing a brief event diary noting sleep disruption, time of event, and semiology as described. \n\nGiven the current pattern and absence of daytime episodes, we agreed to continue present management and monitor. She will arrange a morning trough Lamotrigine level if further clusters occur. Safety measures for night-time were reviewed (low bed height, clear floor area). She consents to share a short smartphone audio/video of events if feasible for semiology review. \n\nA follow-up telephone review in three months is planned, or sooner if frequency or character changes, new daytime impairment emerges, or injury occurs. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing seizures: 'Seizures primarily focal motor from sleep—frequency varies' and mentions 'perceived clustering of nocturnal events during weeks of poorer sleep.' There is no explicit numeric frequency provided (no counts per day/week/month, nor number per cluster). The presence of seizures is clear, but the specific frequency cannot be determined. Therefore, per instructions, return 'unknown.'",
+      "seizure_frequency_number": [
+        "unknown",
+        "Seizures primarily focal motor from sleep—frequency varies."
+      ],
+      "reference": [
+        "unknown",
+        "Seizures primarily focal motor from sleep—frequency varies"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

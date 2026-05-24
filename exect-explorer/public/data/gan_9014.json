@@ -1,0 +1,59 @@
+{
+  "id": "gan_9014",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 08 April 2022 \n\nDr Sharma  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Sharma,  \n\nOliver Bennett, DOB: 12-03-1986, Hospital No: H928451 NHS No. 5938274410  \n14 Rowan Court, London, W10 6PT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. No adverse effects reported. \n\nSince her last review, she reports a clear and sustained improvement in day-to-day stability. Notably, she confirms: \"No drop attacks since 2/5/2021.\" She has also had a marked reduction in brief warning sensations and no episodes requiring emergency assistance. \n\nShe attributes much of this improvement to adherence to dietetic guidance, specifically a structured ketogenic approach undertaken with community dietetic support. She has maintained good hydration, regular meal timing, and careful monitoring of ketone levels as advised by her dietitian. Energy levels have been steady and she notes better sleep continuity. \n\nThere have been no new neurological symptoms, no injuries, and no hospital presentations. Family have observed improved alertness and fewer interrupted activities. She continues to avoid identified personal triggers (sleep deprivation and missed meals). She is keeping a seizure and symptom diary, which corroborates the improvement. \n\nOn current assessment there is no indication to adjust medication. We discussed continuing the present regimen alongside the dietetic plan, with attention to adequate micronutrient intake as per dietetic advice. She understands DVLA guidance and will continue to follow safety precautions for bathing and working at heights. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. \n- Maintain ketogenic dietary plan under dietetic supervision. \n- Continue seizure diary and report any breakthrough events. \n- Routine bloods via GP if clinically indicated (including nutritional monitoring per dietetic protocol). \n- Review in six months, or earlier if there is any deterioration. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 495,
+      "end": 526,
+      "text": "No drop attacks since 2/5/2021.",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 495,
+      "end": 525,
+      "text": "No drop attacks since 2/5/2021",
+      "attributes": {
+        "Label": "seizure free for 11 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9014,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 08 April 2022 \n\nDr Sharma  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Sharma,  \n\nOliver Bennett, DOB: 12-03-1986, Hospital No: H928451 NHS No. 5938274410  \n14 Rowan Court, London, W10 6PT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. No adverse effects reported. \n\nSince her last review, she reports a clear and sustained improvement in day-to-day stability. Notably, she confirms: \"No drop attacks since 2/5/2021.\" She has also had a marked reduction in brief warning sensations and no episodes requiring emergency assistance. \n\nShe attributes much of this improvement to adherence to dietetic guidance, specifically a structured ketogenic approach undertaken with community dietetic support. She has maintained good hydration, regular meal timing, and careful monitoring of ketone levels as advised by her dietitian. Energy levels have been steady and she notes better sleep continuity. \n\nThere have been no new neurological symptoms, no injuries, and no hospital presentations. Family have observed improved alertness and fewer interrupted activities. She continues to avoid identified personal triggers (sleep deprivation and missed meals). She is keeping a seizure and symptom diary, which corroborates the improvement. \n\nOn current assessment there is no indication to adjust medication. We discussed continuing the present regimen alongside the dietetic plan, with attention to adequate micronutrient intake as per dietetic advice. She understands DVLA guidance and will continue to follow safety precautions for bathing and working at heights. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. \n- Maintain ketogenic dietary plan under dietetic supervision. \n- Continue seizure diary and report any breakthrough events. \n- Routine bloods via GP if clinically indicated (including nutritional monitoring per dietetic protocol). \n- Review in six months, or earlier if there is any deterioration. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 08 April 2022. The letter states: \"No drop attacks since 2/5/2021.\" Assuming day/month/year format common in UK clinical letters, last drop attack was 02 May 2021. Calculate duration of seizure freedom up to clinic date: from 02 May 2021 to 08 April 2022 is 11 months and 6 days, i.e., at least 11 months. The letter also notes no episodes requiring emergency assistance and overall improvement, with no other seizures described. Therefore, the patient meets the criterion of seizure-free for at least 6 months. Normalize to \"seizure free for 11 month\" per allowed formats.",
+      "seizure_frequency_number": [
+        "seizure free for 11 month",
+        "No drop attacks since 2/5/2021."
+      ],
+      "reference": [
+        "seizure free for 11 month",
+        "No drop attacks since 2/5/2021"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

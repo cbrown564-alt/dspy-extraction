@@ -1,0 +1,59 @@
+{
+  "id": "gan_12641",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 19 April 2021 \n\nDr Ahmed Khan  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Ahmed Khan,\n\nJames Porter, DOB: 22-11-1992, Hospital No: H384920 NHS No. 9471205683  \nFlat 4, 28 Arundel Road, London, N1 7TX  \n\nEpilepsy – Combined Generalised and Focal Epilepsy Type\n\nBackground: He has a history of both generalised and focal epilepsy, with prior documentation of antiseizure medication side effects including rash and gastrointestinal upset. He reports good adherence to current therapy and uses a seizure diary app, which we reviewed during today’s face-to-face consultation. There have been no recent hospital admissions for seizures or injury.\n\nMedication: Currently on lamotrigine 100 mg twice daily and levetiracetam 1,000 mg twice daily. He previously experienced rash on carbamazepine and gastrointestinal upset on valproate; these agents are avoided. He denies current adverse effects beyond mild intermittent fatigue.\n\nSeizure history since last review: Seizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per week, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal sensory with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported.\n\nContext and assessment: His description and diary entries remain consistent with a combined generalised and focal epilepsy syndrome, given the coexistence of generalised tonic–clonic seizures and absence episodes alongside focal sensory seizures with disorientation. He identifies sleep deprivation and missed meals as potential triggers. No new neurological deficits are reported. A recent routine EEG (patient-reported) showed generalised spike–wave activity with occasional focal discharges; we await the official report for confirmation. Bloods last month (U&E/LFT) were within normal limits; antiseizure drug levels were not requested.\n\nPlan: We discussed ongoing safety measures, SUDEP risk education, and adherence strategies. He declined medication changes today due to work commitments and prior side effects on alternative agents; he prefers to continue current doses while we obtain the EEG report and consider ambulatory monitoring. He will continue seizure diary and avoidance of known triggers. We will review again in three months or sooner if events escalate or injuries occur.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1249,
+      "end": 1271,
+      "text": "He has daily absences.",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1037,
+      "end": 1456,
+      "text": "Seizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per week, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal sensory with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12641,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 19 April 2021 \n\nDr Ahmed Khan  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Ahmed Khan,\n\nJames Porter, DOB: 22-11-1992, Hospital No: H384920 NHS No. 9471205683  \nFlat 4, 28 Arundel Road, London, N1 7TX  \n\nEpilepsy – Combined Generalised and Focal Epilepsy Type\n\nBackground: He has a history of both generalised and focal epilepsy, with prior documentation of antiseizure medication side effects including rash and gastrointestinal upset. He reports good adherence to current therapy and uses a seizure diary app, which we reviewed during today’s face-to-face consultation. There have been no recent hospital admissions for seizures or injury.\n\nMedication: Currently on lamotrigine 100 mg twice daily and levetiracetam 1,000 mg twice daily. He previously experienced rash on carbamazepine and gastrointestinal upset on valproate; these agents are avoided. He denies current adverse effects beyond mild intermittent fatigue.\n\nSeizure history since last review: Seizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per week, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal sensory with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported.\n\nContext and assessment: His description and diary entries remain consistent with a combined generalised and focal epilepsy syndrome, given the coexistence of generalised tonic–clonic seizures and absence episodes alongside focal sensory seizures with disorientation. He identifies sleep deprivation and missed meals as potential triggers. No new neurological deficits are reported. A recent routine EEG (patient-reported) showed generalised spike–wave activity with occasional focal discharges; we await the official report for confirmation. Bloods last month (U&E/LFT) were within normal limits; antiseizure drug levels were not requested.\n\nPlan: We discussed ongoing safety measures, SUDEP risk education, and adherence strategies. He declined medication changes today due to work commitments and prior side effects on alternative agents; he prefers to continue current doses while we obtain the EEG report and consider ambulatory monitoring. He will continue seizure diary and avoidance of known triggers. We will review again in three months or sooner if events escalate or injuries occur.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequencies: (1) 'one to two generalised tonic-clonic seizures per week' → 1 to 2 per week. (2) 'He has daily absences.' → daily = 1 per day. (3) 'focal sensory with disorientation every three to four weeks' → 1 per 3 to 4 weeks. (4) 'drop attacks' frequency not quantified. Apply Rule for Multiple Frequencies: choose the highest frequency. Daily absences (1 per day) are more frequent than 1–2 per week and 1 per 3–4 weeks. The note 'Since the last clinic visit, no further seizures have been reported.' conflicts with earlier paragraph but appears to refer to the interval since the visit; however, overall section header is 'Seizure history since last review' stating ongoing daily absences. Not seizure-free ≥6 months. Final label: 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "He has daily absences."
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure frequency has not altered significantly over the past six months; he continues to suffer one to two generalised tonic-clonic seizures per week, with a longest seizure-free interval of around three weeks. He has daily absences. In addition, he experiences focal sensory with disorientation every three to four weeks, together with drop attacks. Since the last clinic visit, no further seizures have been reported"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

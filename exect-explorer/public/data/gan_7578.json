@@ -1,0 +1,54 @@
+{
+  "id": "gan_7578",
+  "text": "Department of Neurology \n\nClinic Date: 04 October 2021 \n\nDr Patel  \nSouth Thames Neurology Service  \nOutpatient Suite, St George’s Way, London SW17 0QT  \n\nDear Dr Patel,  \n\nAlice Brown, DOB: 23-02-1976, Hospital No: H392774 NHS No. 9912046673  \nFlat 2, 14 Beckenham Close, London SE6 3LP \n\nDiagnoses: \n\nRecurrent episodes with pallor, queasiness, and clamminess; events are being evaluated for possible seizure disorder. \n\nCurrent Medication: \n\nNo regular antiseizure treatment prescribed. \n\nPlan: \n\n- Arrange routine EEG and bloods (FBC, U&E, LFTs, glucose, ferritin, thyroid profile).  \n- Provide safety advice regarding sudden unwell spells; avoid heights, unsupervised bathing, and operating machinery until clarified.  \n- Discussed sleep hygiene and hydration.  \n- Follow-up in 3–4 months, sooner if events escalate. \n\nI reviewed Alice Brown in clinic today accompanied by the primary carer, who reports increased fatigue and strain related to caregiving responsibilities at home. Over recent months there have been intermittent brief spells described as sudden facial blanching with a wave of nausea, mild lightheadedness, and a need to sit down. There is no consistent prodrome beyond a vague sense of heat and queasiness; recovery is generally quick, though tiredness may linger for several hours. There have been no clear witnessed convulsions, tongue biting, or prolonged post-event confusion. On other occasions, the carer has noted that Alice Brown becomes quiet and slightly glazed for under a minute before returning to baseline. \n\nThe exact frequency of these episodes is not firmly established at present; records kept so far are incomplete, and timings vary. We have therefore asked the household to maintain a detailed contemporaneous diary of events, potential precipitants, and any injuries or triggers. The description of pallor with queasiness and clamminess raises concern for a possible paroxysmal neurological cause, though non-neurological differentials remain, including vasovagal episodes, autonomic dysfunction, or metabolic contributors. \n\nNeurological examination today was non-focal. Cardiovascular observations were stable. We discussed interim precautions and the importance of adequate rest, particularly given the caregiving context and the primary carer’s reported fatigue. \n\nNo antiseizure medication is initiated at this stage pending further information and investigations. We will review results and the symptom diary at follow-up. Should there be any prolonged loss of awareness, injury, or cluster of events, the family is advised to seek urgent assessment. \n\nWith best wishes, \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1546,
+      "end": 1656,
+      "text": "The exact frequency of these episodes is not firmly established at present; records kept so far are incomplete",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7578,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 04 October 2021 \n\nDr Patel  \nSouth Thames Neurology Service  \nOutpatient Suite, St George’s Way, London SW17 0QT  \n\nDear Dr Patel,  \n\nAlice Brown, DOB: 23-02-1976, Hospital No: H392774 NHS No. 9912046673  \nFlat 2, 14 Beckenham Close, London SE6 3LP \n\nDiagnoses: \n\nRecurrent episodes with pallor, queasiness, and clamminess; events are being evaluated for possible seizure disorder. \n\nCurrent Medication: \n\nNo regular antiseizure treatment prescribed. \n\nPlan: \n\n- Arrange routine EEG and bloods (FBC, U&E, LFTs, glucose, ferritin, thyroid profile).  \n- Provide safety advice regarding sudden unwell spells; avoid heights, unsupervised bathing, and operating machinery until clarified.  \n- Discussed sleep hygiene and hydration.  \n- Follow-up in 3–4 months, sooner if events escalate. \n\nI reviewed Alice Brown in clinic today accompanied by the primary carer, who reports increased fatigue and strain related to caregiving responsibilities at home. Over recent months there have been intermittent brief spells described as sudden facial blanching with a wave of nausea, mild lightheadedness, and a need to sit down. There is no consistent prodrome beyond a vague sense of heat and queasiness; recovery is generally quick, though tiredness may linger for several hours. There have been no clear witnessed convulsions, tongue biting, or prolonged post-event confusion. On other occasions, the carer has noted that Alice Brown becomes quiet and slightly glazed for under a minute before returning to baseline. \n\nThe exact frequency of these episodes is not firmly established at present; records kept so far are incomplete, and timings vary. We have therefore asked the household to maintain a detailed contemporaneous diary of events, potential precipitants, and any injuries or triggers. The description of pallor with queasiness and clamminess raises concern for a possible paroxysmal neurological cause, though non-neurological differentials remain, including vasovagal episodes, autonomic dysfunction, or metabolic contributors. \n\nNeurological examination today was non-focal. Cardiovascular observations were stable. We discussed interim precautions and the importance of adequate rest, particularly given the caregiving context and the primary carer’s reported fatigue. \n\nNo antiseizure medication is initiated at this stage pending further information and investigations. We will review results and the symptom diary at follow-up. Should there be any prolonged loss of awareness, injury, or cluster of events, the family is advised to seek urgent assessment. \n\nWith best wishes, \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses intermittent brief spells being evaluated for a possible seizure disorder. It explicitly states that the exact frequency is not established and records are incomplete. No numeric frequency or clear interval is provided. Therefore, per instructions, since seizures/events are mentioned but specific frequency cannot be determined, the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "The exact frequency of these episodes is not firmly established at present; records kept so far are incomplete"
+      ],
+      "reference": [
+        "unknown",
+        "Autonomic spells (pallor/nausea) concerning for seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

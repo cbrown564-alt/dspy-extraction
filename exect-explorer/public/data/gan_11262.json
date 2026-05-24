@@ -1,0 +1,65 @@
+{
+  "id": "gan_11262",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 13 August 2021\n\nDr Patel\nSt George's University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSymptomatic generalised epilepsy.\n\nI reviewed Anne Taylor in clinic today with her mother present. She has a known diagnosis of generalised epilepsy and reports a recent deterioration in control following cross-time-zone travel. She describes marked circadian disruption over the past three weeks with fragmented sleep and early-morning awakenings coinciding with an increase in brief absence episodes and several myoclonic jerks on waking. She specifically notes perceived worsening since the travel, despite adherence to her regular antiepileptic regimen. Last seizure on 12-Jun, which was a generalised tonic–clonic event occurring in the early morning after a night of poor sleep during the return journey. There have been no emergency department attendances, and no rescue medication was required on that occasion.\n\nShe denies new focal neurological symptoms. She and her mother feel the pattern of events is linked to ongoing sleep instability and late-night work patterns since returning. Caffeine and screen exposure in the late evening have also increased according to her report. There have been no recent intercurrent illnesses, and no alcohol use. She is otherwise well.\n\nOn examination today, she was alert with normal speech and no focal deficits. Cardiovascular and respiratory examinations were unremarkable. No injuries were reported from the 12-Jun event.\n\nPlan discussed today with Anne Taylor and her mother:\n- We will continue to monitor seizure frequency closely in the context of the circadian disruption she reports. She will keep a detailed diary of sleep, time-zone adjustments, and events.\n- She will maintain current prescribed antiepileptic therapy as previously agreed with our service; no dose changes were made today.\n- We provided written information on sleep–wake regularity, morning light exposure, and consistent bed/wake times, as patient-reported strategies that may help stabilise circadian rhythm.\n- We arranged an earlier follow-up within 6–8 weeks to reassess control given the recent deterioration and to consider further investigations if the pattern persists.\n\nI have encouraged Anne Taylor to contact the clinic urgently if she experiences any further generalised tonic–clonic seizures, clusters, or injuries.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 667,
+      "end": 739,
+      "text": "increase in brief absence episodes and several myoclonic jerks on waking",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 858,
+      "end": 880,
+      "text": "Last seizure on 12-Jun",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11262,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nClinic Date: 13 August 2021\n\nDr Patel\nSt George's University Hospitals NHS Foundation Trust\nBlackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nAnne Taylor, DOB: 09-03-1995, Hospital No: Q784529 NHS No. 6352987410\n24 Greenfield Road, London, N1 5QT\n\nDiagnoses:\n\nSymptomatic generalised epilepsy.\n\nI reviewed Anne Taylor in clinic today with her mother present. She has a known diagnosis of generalised epilepsy and reports a recent deterioration in control following cross-time-zone travel. She describes marked circadian disruption over the past three weeks with fragmented sleep and early-morning awakenings coinciding with an increase in brief absence episodes and several myoclonic jerks on waking. She specifically notes perceived worsening since the travel, despite adherence to her regular antiepileptic regimen. Last seizure on 12-Jun, which was a generalised tonic–clonic event occurring in the early morning after a night of poor sleep during the return journey. There have been no emergency department attendances, and no rescue medication was required on that occasion.\n\nShe denies new focal neurological symptoms. She and her mother feel the pattern of events is linked to ongoing sleep instability and late-night work patterns since returning. Caffeine and screen exposure in the late evening have also increased according to her report. There have been no recent intercurrent illnesses, and no alcohol use. She is otherwise well.\n\nOn examination today, she was alert with normal speech and no focal deficits. Cardiovascular and respiratory examinations were unremarkable. No injuries were reported from the 12-Jun event.\n\nPlan discussed today with Anne Taylor and her mother:\n- We will continue to monitor seizure frequency closely in the context of the circadian disruption she reports. She will keep a detailed diary of sleep, time-zone adjustments, and events.\n- She will maintain current prescribed antiepileptic therapy as previously agreed with our service; no dose changes were made today.\n- We provided written information on sleep–wake regularity, morning light exposure, and consistent bed/wake times, as patient-reported strategies that may help stabilise circadian rhythm.\n- We arranged an earlier follow-up within 6–8 weeks to reassess control given the recent deterioration and to consider further investigations if the pattern persists.\n\nI have encouraged Anne Taylor to contact the clinic urgently if she experiences any further generalised tonic–clonic seizures, clusters, or injuries.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly indicates ongoing seizures: increased brief absence episodes and several myoclonic jerks over the past three weeks, plus a generalized tonic–clonic seizure on 12-Jun. However, no numeric rate (per day/week/month/year) is provided for any seizure type. Because seizures are present but the frequency is not quantified, the correct label under the rules is 'unknown' rather than a calculated rate or seizure-free status.",
+      "seizure_frequency_number": [
+        "unknown",
+        "increase in brief absence episodes and several myoclonic jerks on waking"
+      ],
+      "reference": [
+        "unknown",
+        "Last seizure on 12-Jun"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

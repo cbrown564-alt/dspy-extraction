@@ -1,0 +1,48 @@
+{
+  "id": "gan_7935",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 29 November 2024 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with history of variable seizure burden following head injury in the distant past/low mood now improved on support strategies/mild balance difficulties with physiotherapy input/smoker reducing intake.\n\nMedication: Levetiracetam 1000 mg twice daily.  \nTegretol Retard 400 mg twice daily.  \nTopiramate 75 mg each morning and 100 mg each evening.  \nVitamin B compound, Thiamine, Atorvastatin, Lansoprazole, Bisoprolol, Ramipril, Calcichew, Aqueous cream.\n\nI reviewed Bill in clinic today, accompanied by his sister who has been attending appointments regularly. He reports noticeably better energy and concentration, and his family have observed that his speech is clearer and he is more engaged in day‑to‑day routines. He has resumed short walks to the local shop and is keeping a regular sleep schedule. Appetite is steady and weight is unchanged. On examination he mobilised independently with a careful gait; Romberg was steady, and no focal limb weakness was elicited. There is no report of adverse effects from his antiseizure medications.\n\nSeizures: Since the vagus nerve stimulator was optimised at his previous visit, he and his family perceive a meaningful benefit. He describes only brief warning sensations without progression, and no events requiring recovery time or external assistance in recent weeks. In the two months before this improvement, he experienced 5 or 7 seizures in total. At present, the pattern is stable with episodes largely held in check and without functional disruption, consistent with a sustained settling of seizure activity.\n\nPlan:  \n- Continue current antiseizure regimen unchanged.  \n- Maintain the current VNS settings; patient knows how to use the magnet and reports confidence in doing so.  \n- Encourage ongoing seizure diary entries to corroborate the perceived gains.  \n- Routine bloods (U&Es, LFTs, FBC, bone profile) to be checked at the practice if not done in the last 6 months.  \n- Continue community physiotherapy and sleep hygiene measures.  \n- Review in 6 months, sooner if any breakthrough events or concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1553,
+      "end": 1861,
+      "text": "He describes only brief warning sensations without progression, and no events requiring recovery time or external assistance in recent weeks. ... At present, the pattern is stable with episodes largely held in check and without functional disruption, consistent with a sustained settling of seizure activity.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7935,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 29 November 2024 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with history of variable seizure burden following head injury in the distant past/low mood now improved on support strategies/mild balance difficulties with physiotherapy input/smoker reducing intake.\n\nMedication: Levetiracetam 1000 mg twice daily.  \nTegretol Retard 400 mg twice daily.  \nTopiramate 75 mg each morning and 100 mg each evening.  \nVitamin B compound, Thiamine, Atorvastatin, Lansoprazole, Bisoprolol, Ramipril, Calcichew, Aqueous cream.\n\nI reviewed Bill in clinic today, accompanied by his sister who has been attending appointments regularly. He reports noticeably better energy and concentration, and his family have observed that his speech is clearer and he is more engaged in day‑to‑day routines. He has resumed short walks to the local shop and is keeping a regular sleep schedule. Appetite is steady and weight is unchanged. On examination he mobilised independently with a careful gait; Romberg was steady, and no focal limb weakness was elicited. There is no report of adverse effects from his antiseizure medications.\n\nSeizures: Since the vagus nerve stimulator was optimised at his previous visit, he and his family perceive a meaningful benefit. He describes only brief warning sensations without progression, and no events requiring recovery time or external assistance in recent weeks. In the two months before this improvement, he experienced 5 or 7 seizures in total. At present, the pattern is stable with episodes largely held in check and without functional disruption, consistent with a sustained settling of seizure activity.\n\nPlan:  \n- Continue current antiseizure regimen unchanged.  \n- Maintain the current VNS settings; patient knows how to use the magnet and reports confidence in doing so.  \n- Encourage ongoing seizure diary entries to corroborate the perceived gains.  \n- Routine bloods (U&Es, LFTs, FBC, bone profile) to be checked at the practice if not done in the last 6 months.  \n- Continue community physiotherapy and sleep hygiene measures.  \n- Review in 6 months, sooner if any breakthrough events or concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit current seizure frequency. The letter states: after VNS optimisation, he has only brief warning sensations without progression and no events requiring recovery time or external assistance in recent weeks. That suggests no actual seizures in recent weeks, but not clearly for 6 months. It also mentions that in the two months before this improvement, he experienced 5 or 7 seizures in total. Current pattern described as stable with episodes held in check. There is insufficient information to confirm 6 months seizure freedom. Therefore, classify as seizure free for multiple months (i.e., seizure-free currently over a period of months but not necessarily 6 months confirmed).",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "He describes only brief warning sensations without progression, and no events requiring recovery time or external assistance in recent weeks. ... At present, the pattern is stable with episodes largely held in check and without functional disruption, consistent with a sustained settling of seizure activity."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures under sustained control"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

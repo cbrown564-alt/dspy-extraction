@@ -1,0 +1,54 @@
+{
+  "id": "gan_7141",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Ahmed  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Sarah Ahmed,                                                                                                         \n\nEmily Carter, DOB: 22-11-1992, Hospital No: H384920 NHS No. 9045127836  \nFlat 3, 27 Red Lion Street, London, WC1R 4PS  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine monotherapy since March 2024 \n\nLamotrigine 100mg in the morning and 150mg at night (patient-reported adherence) \n\nLamotrigine Blood Level: \n\n12th September 2025: 3.8 mg/L (laboratory reference range 1.0 to 15.0 mg/L). Dose at time of sampling: 100mg AM / 150mg PM.  \n\nSeizures: Based on her paper seizure diary, there is a recurring mid‑cycle clustering of brief focal-aware episodes and two recent early-morning convulsions in August and September. She reports that the diary shows a pattern of increased events around the middle of her cycle, settling thereafter, with few events in the late luteal phase. No reported missed doses. No injuries. Recovery is rapid, with post‑event fatigue lasting up to 2 hours. \n\nI reviewed Emily Carter in clinic today. She prefers a paper calendar to track events and brought her printed logs spanning January–September 2025. Entries are dated, include approximate time, and note potential triggers (sleep loss and stress). She has marked a consistent mid‑cycle rise in event counts on at least 6 of the past 9 cycles, which aligns with her reported pattern. She has not used a seizure app and is comfortable continuing with the paper method; she has asked for replacement calendar sheets, which were provided. \n\nShe denies new neurological symptoms, has no episodes of status, and has not driven. She reports good sleep hygiene but occasional early starts for work. She is taking folic acid 400mcg daily as previously advised. We discussed maintaining her current dosing schedule and continuing detailed paper logs, bringing them to the next appointment. We also discussed blood level timing for future samples (pre‑morning dose where feasible) to improve consistency of interpretation. \n\nPlan: \n- Continue current Lamotrigine dose.  \n- Maintain paper seizure calendar; bring to next review.  \n- Repeat lamotrigine level in 3 months (pre‑dose, morning).  \n- Safety advice and SUDEP counselling previously provided; patient retains written materials. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 755,
+      "end": 891,
+      "text": "there is a recurring mid‑cycle clustering of brief focal-aware episodes and two recent early-morning convulsions in August and September",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7141,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Sarah Ahmed  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Sarah Ahmed,                                                                                                         \n\nEmily Carter, DOB: 22-11-1992, Hospital No: H384920 NHS No. 9045127836  \nFlat 3, 27 Red Lion Street, London, WC1R 4PS  \n\nEpilepsy \n\nMedication: Continuing Lamotrigine monotherapy since March 2024 \n\nLamotrigine 100mg in the morning and 150mg at night (patient-reported adherence) \n\nLamotrigine Blood Level: \n\n12th September 2025: 3.8 mg/L (laboratory reference range 1.0 to 15.0 mg/L). Dose at time of sampling: 100mg AM / 150mg PM.  \n\nSeizures: Based on her paper seizure diary, there is a recurring mid‑cycle clustering of brief focal-aware episodes and two recent early-morning convulsions in August and September. She reports that the diary shows a pattern of increased events around the middle of her cycle, settling thereafter, with few events in the late luteal phase. No reported missed doses. No injuries. Recovery is rapid, with post‑event fatigue lasting up to 2 hours. \n\nI reviewed Emily Carter in clinic today. She prefers a paper calendar to track events and brought her printed logs spanning January–September 2025. Entries are dated, include approximate time, and note potential triggers (sleep loss and stress). She has marked a consistent mid‑cycle rise in event counts on at least 6 of the past 9 cycles, which aligns with her reported pattern. She has not used a seizure app and is comfortable continuing with the paper method; she has asked for replacement calendar sheets, which were provided. \n\nShe denies new neurological symptoms, has no episodes of status, and has not driven. She reports good sleep hygiene but occasional early starts for work. She is taking folic acid 400mcg daily as previously advised. We discussed maintaining her current dosing schedule and continuing detailed paper logs, bringing them to the next appointment. We also discussed blood level timing for future samples (pre‑morning dose where feasible) to improve consistency of interpretation. \n\nPlan: \n- Continue current Lamotrigine dose.  \n- Maintain paper seizure calendar; bring to next review.  \n- Repeat lamotrigine level in 3 months (pre‑dose, morning).  \n- Safety advice and SUDEP counselling previously provided; patient retains written materials. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter confirms the patient is having seizures, including \"recurring mid‑cycle clustering of brief focal-aware episodes\" and \"two recent early-morning convulsions in August and September.\" However, it does not provide explicit counts per unit time for the clusters or the number of episodes within clusters, nor a clear overall frequency per day/week/month. It mentions a pattern across cycles with increased events mid‑cycle on at least 6 of the past 9 cycles, but does not quantify events per cluster or per month. Therefore, a precise numeric frequency cannot be determined from the provided information.",
+      "seizure_frequency_number": [
+        "unknown",
+        "there is a recurring mid‑cycle clustering of brief focal-aware episodes and two recent early-morning convulsions in August and September"
+      ],
+      "reference": [
+        "unknown",
+        "Peri-ovulatory increase in seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

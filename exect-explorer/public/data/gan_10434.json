@@ -1,0 +1,54 @@
+{
+  "id": "gan_10434",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n12 Wharf Street, London SE1 3AB  \n\nDear Dr Ahmed,  \n\nDaniel Morton, DOB: 04-11-1991, Hospital No: NHS773520 NHS No. 9081763452  \nFlat 3, 29 Forge Court, London, SE16 2LP \n\nMedication: \n\nLevetiracetam 1 g twice daily. He reports good adherence and tolerates this without notable side effects. \n\nSince his last review, he continues working in metal fabrication and welding. He uses an auto-darkening visor and follows workplace safety protocols. Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30–60 seconds, without loss of awareness, sometimes repeating two or three times within the same morning. He has not had any injuries or prolonged events. There is no clear association with missed doses, alcohol, illness, or sleep deprivation. He wonders whether intermittent exposure to arc light is relevant; he keeps the visor down consistently but occasionally steps into the welding bay where others are working. \n\nWe discussed practical measures around work. He will continue visor use and is arranging with his supervisor to minimise exposure to simultaneous welding by colleagues at close range, and to take scheduled breaks if he experiences prodromal symptoms. He does not drive. \n\nFor the moment I have not altered his medication. If these morning groupings become more frequent or start to impact safety at work, we could consider a cautious increase of levetiracetam to 1.25 g twice daily, or the addition of a second agent such as lamotrigine after discussion of risks and benefits. He has been given a seizure diary template to document timing, potential triggers (including arc-light exposure, sleep patterns, and stress), and any associated features. \n\nPlease could you check routine bloods (FBC, U&E, LFTs) at your convenience and let us know if there are any abnormalities. He is otherwise well, with stable mood and no cognitive concerns. \n\nWe will review him again in four months, sooner if the morning episodes escalate or if there are any safety concerns at work. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 666,
+      "end": 952,
+      "text": "occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30–60 seconds, without loss of awareness, sometimes repeating two or three times within the same morning.",
+      "attributes": {
+        "Label": "multiple cluster per week, 2 to 3 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10434,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nRiverside Medical Practice  \n12 Wharf Street, London SE1 3AB  \n\nDear Dr Ahmed,  \n\nDaniel Morton, DOB: 04-11-1991, Hospital No: NHS773520 NHS No. 9081763452  \nFlat 3, 29 Forge Court, London, SE16 2LP \n\nMedication: \n\nLevetiracetam 1 g twice daily. He reports good adherence and tolerates this without notable side effects. \n\nSince his last review, he continues working in metal fabrication and welding. He uses an auto-darkening visor and follows workplace safety protocols. Over the past six weeks he has noticed that brief episodes are tending to bunch together after he wakes, occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30–60 seconds, without loss of awareness, sometimes repeating two or three times within the same morning. He has not had any injuries or prolonged events. There is no clear association with missed doses, alcohol, illness, or sleep deprivation. He wonders whether intermittent exposure to arc light is relevant; he keeps the visor down consistently but occasionally steps into the welding bay where others are working. \n\nWe discussed practical measures around work. He will continue visor use and is arranging with his supervisor to minimise exposure to simultaneous welding by colleagues at close range, and to take scheduled breaks if he experiences prodromal symptoms. He does not drive. \n\nFor the moment I have not altered his medication. If these morning groupings become more frequent or start to impact safety at work, we could consider a cautious increase of levetiracetam to 1.25 g twice daily, or the addition of a second agent such as lamotrigine after discussion of risks and benefits. He has been given a seizure diary template to document timing, potential triggers (including arc-light exposure, sleep patterns, and stress), and any associated features. \n\nPlease could you check routine bloods (FBC, U&E, LFTs) at your convenience and let us know if there are any abnormalities. He is otherwise well, with stable mood and no cognitive concerns. \n\nWe will review him again in four months, sooner if the morning episodes escalate or if there are any safety concerns at work. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing focal-aware episodes that cluster in the mornings. Frequency of clusters: \"on several mornings each week\" (vague, so use \"multiple\"). Size of cluster: \"sometimes repeating two or three times within the same morning\" (so 2 to 3 per cluster). Over the past six weeks, so not seizure-free. Applying the cluster format yields: multiple cluster per week, 2 to 3 per cluster.",
+      "seizure_frequency_number": [
+        "multiple cluster per week, 2 to 3 per cluster",
+        "occurring on several mornings each week despite taking his tablets as prescribed. He describes these as short spells of disorientation with a metallic taste and a need to pause for 30–60 seconds, without loss of awareness, sometimes repeating two or three times within the same morning."
+      ],
+      "reference": [
+        "unknown",
+        "More frequent morning clusters despite adherence"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple cluster per week, 2 to 3 per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

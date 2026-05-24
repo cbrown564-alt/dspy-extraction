@@ -1,0 +1,59 @@
+{
+  "id": "gan_12562",
+  "text": "Neurology Service\nNHS Trust\n\nClinic Date: 02 January 2015\n\nDr Ahmed\nNorthgate Community Health Centre\n42 Northgate Lane, Sheffield, S3 7QA\n\nDear Dr Ahmed,\n\nRe: Yusuf Khan, DOB: 14-11-2007, Hospital No: H392774, NHS No: 8475621930\n8 Willow Court, Sheffield, S2 4DN\n\nThank you for reviewing Yusuf Khan in our follow‑up clinic today, accompanied by his mother. Since our last visit, the family report that religious fasting periods may alter routine, particularly morning and evening dosing times, and they have been keeping a diary to track any temporal associations with events. They remain vigilant about maintaining hydration and sleep where possible during these periods.\n\nSeizure frequency remains unchanged over the last six months; he continues to have up to 3 or 4 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review. His mother feels the recent quiet spell coincided with stricter adherence to evening routines during the non-fasting days; they plan to continue the seizure diary to clarify patterns.\n\nThere have been no changes to prescribed medications since the previous appointment, and no emergency rescue treatment has been required in the interim. He continues to tolerate current therapy without new adverse effects, and there have been no hospital admissions. Examination today was unremarkable and baseline observations were stable. We discussed safety around bathing, heights, and use of public transport during periods of increased frequency as documented in the diary.\n\nWe agreed to maintain the current management plan. The family will continue to document potential triggers, including sleep disruption and meal timing around religious observance, and will contact our team if any cluster of events occurs or if there is a sustained increase above his recorded baseline. We will review him again in three months, or sooner if concerns arise.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 877,
+      "end": 908,
+      "text": "He also has daily drop attacks.",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 675,
+      "end": 1066,
+      "text": "Seizure frequency remains unchanged over the last six months; he continues to have up to 3 or 4 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12562,
+    "clinic_date": "Neurology Service\nNHS Trust\n\nClinic Date: 02 January 2015\n\nDr Ahmed\nNorthgate Community Health Centre\n42 Northgate Lane, Sheffield, S3 7QA\n\nDear Dr Ahmed,\n\nRe: Yusuf Khan, DOB: 14-11-2007, Hospital No: H392774, NHS No: 8475621930\n8 Willow Court, Sheffield, S2 4DN\n\nThank you for reviewing Yusuf Khan in our follow‑up clinic today, accompanied by his mother. Since our last visit, the family report that religious fasting periods may alter routine, particularly morning and evening dosing times, and they have been keeping a diary to track any temporal associations with events. They remain vigilant about maintaining hydration and sleep where possible during these periods.\n\nSeizure frequency remains unchanged over the last six months; he continues to have up to 3 or 4 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review. His mother feels the recent quiet spell coincided with stricter adherence to evening routines during the non-fasting days; they plan to continue the seizure diary to clarify patterns.\n\nThere have been no changes to prescribed medications since the previous appointment, and no emergency rescue treatment has been required in the interim. He continues to tolerate current therapy without new adverse effects, and there have been no hospital admissions. Examination today was unremarkable and baseline observations were stable. We discussed safety around bathing, heights, and use of public transport during periods of increased frequency as documented in the diary.\n\nWe agreed to maintain the current management plan. The family will continue to document potential triggers, including sleep disruption and meal timing around religious observance, and will contact our team if any cluster of events occurs or if there is a sustained increase above his recorded baseline. We will review him again in three months, or sooner if concerns arise.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequencies: (1) \"up to 3 or 4 generalised tonic-clonic seizures per week\"; (2) \"daily drop attacks\"; (3) focal impaired-awareness seizures every four to six weeks. Apply the rule to select the highest frequency. Daily drop attacks are more frequent than 3–4 per week. Therefore, the overall seizure frequency is driven by the daily drop attacks. No evidence of 6-month seizure freedom (indeed ongoing seizures), so not seizure-free. Normalize to allowed format: '1 per day' for daily events.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "He also has daily drop attacks."
+      ],
+      "reference": [
+        "1 per day",
+        "Seizure frequency remains unchanged over the last six months; he continues to have up to 3 or 4 generalised tonic-clonic seizures per week, rarely achieving more than ten consecutive seizure-free days. He also has daily drop attacks. Furthermore, focal impaired-awareness seizures with disorientation are reported every four to six weeks. No events have occurred since his most recent review"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

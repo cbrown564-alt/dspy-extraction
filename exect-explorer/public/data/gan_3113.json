@@ -1,0 +1,59 @@
+{
+  "id": "gan_3113",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 October 2016 \n\nDr Amelia Clarke\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Clarke\nConsultant Neurologist,  \n\nDaniel Ahmed, DOB: 14-03-1986, Hospital No: K912347 NHS No. 7842103569  \n12 Rosebank Court, Brixton, London SW2 1LG\n\nThank you for your referral letter and for the accompanying summary. I reviewed him today in clinic with his partner present. He reports a sustained period of stability on his current medication regimen with clear functional gains at home and work. Specifically, he states there have been No events for fourteen months, including during periods of travel and mild intercurrent illness, which previously were associated with breakthrough episodes. This improvement is corroborated by his partner and by the absence of emergency contacts or unscheduled attendances over the same interval.\n\nHe feels his concentration and energy have improved, and he has resumed regular cycling and part‑time employment. He uses a digital seizure diary which shows no entries since the last documented episode fourteen months ago. Sleep has been regular, with no witnessed nocturnal behaviours. He has not noticed warning symptoms, injuries, tongue biting, or prolonged post‑event confusion in this period. There have been no medication side‑effects of concern beyond occasional mild fatigue on early dosing, which he manages by adjusting timing within the day (without missing doses). Alcohol intake is minimal and caffeine use is moderate; he denies recreational drug use. Mood is stable and he reports no new cognitive complaints.\n\nExamination today was unremarkable. Cardiovascular and general neurological examinations were within normal limits. Review of prior investigations shows no interval changes. Given the marked improvement on current medicines compared with earlier periods, and in the context of No events for fourteen months, I have advised continuation of the present regimen and routine safety precautions as previously discussed. We agreed to maintain community monitoring via his GP and to arrange a routine follow‑up in twelve months, with earlier review should there be any recurrence or new features. He understands how to access urgent advice if needed.\n\nThank you again for your detailed correspondence and ongoing care.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 682,
+      "end": 711,
+      "text": "No events for fourteen months",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 682,
+      "end": 711,
+      "text": "No events for fourteen months",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3113,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 04 October 2016 \n\nDr Amelia Clarke\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Clarke\nConsultant Neurologist,  \n\nDaniel Ahmed, DOB: 14-03-1986, Hospital No: K912347 NHS No. 7842103569  \n12 Rosebank Court, Brixton, London SW2 1LG\n\nThank you for your referral letter and for the accompanying summary. I reviewed him today in clinic with his partner present. He reports a sustained period of stability on his current medication regimen with clear functional gains at home and work. Specifically, he states there have been No events for fourteen months, including during periods of travel and mild intercurrent illness, which previously were associated with breakthrough episodes. This improvement is corroborated by his partner and by the absence of emergency contacts or unscheduled attendances over the same interval.\n\nHe feels his concentration and energy have improved, and he has resumed regular cycling and part‑time employment. He uses a digital seizure diary which shows no entries since the last documented episode fourteen months ago. Sleep has been regular, with no witnessed nocturnal behaviours. He has not noticed warning symptoms, injuries, tongue biting, or prolonged post‑event confusion in this period. There have been no medication side‑effects of concern beyond occasional mild fatigue on early dosing, which he manages by adjusting timing within the day (without missing doses). Alcohol intake is minimal and caffeine use is moderate; he denies recreational drug use. Mood is stable and he reports no new cognitive complaints.\n\nExamination today was unremarkable. Cardiovascular and general neurological examinations were within normal limits. Review of prior investigations shows no interval changes. Given the marked improvement on current medicines compared with earlier periods, and in the context of No events for fourteen months, I have advised continuation of the present regimen and routine safety precautions as previously discussed. We agreed to maintain community monitoring via his GP and to arrange a routine follow‑up in twelve months, with earlier review should there be any recurrence or new features. He understands how to access urgent advice if needed.\n\nThank you again for your detailed correspondence and ongoing care.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter repeatedly states there have been no seizure events for fourteen months. Examples: \"No events for fourteen months\" and \"no entries since the last documented episode fourteen months ago.\" This confirms seizure freedom for a duration greater than 6 months. Therefore, the normalized label is 'seizure free for 14 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 14 month",
+        "No events for fourteen months"
+      ],
+      "reference": [
+        "seizure free for 14 month",
+        "No events for fourteen months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

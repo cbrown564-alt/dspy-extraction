@@ -1,0 +1,59 @@
+{
+  "id": "gan_8079",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 05 August 2020\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n Staffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Generalised epilepsy; Sustained remission since 25 Jan 2019. Prior EEGs consistent with generalised spike–wave activity. No known structural brain abnormality on prior imaging.\n\nPrevious medication: Valproate (historically effective but stopped due to patient preference and weight gain), levetiracetam (mood symptoms), carbamazepine (worsened generalised pattern), lamotrigine (current), clobazam PRN in the past, topiramate (paraesthesia and cognitive slowing), lacosamide (trialled briefly pre-2018 without clear benefit), gabapentin (ineffective). Not taken: zonisamide, perampanel, ethosuximide, rufinamide, pregabalin, tiagabine, retigabine, primidone.\n\nCo-morbidities/procedures: Reported childhood heart murmur; adult echocardiogram 2008 normal. No VNS; not indicated.\n\nI reviewed Wendy Brown in clinic today. She attended alone and brought her paper seizure calendar, which she uses consistently and brings to all appointments. Her calendar shows no seizures recorded since 25 Jan 2019, and she reports feeling confident identifying and logging any events. We discussed lifestyle, sleep, and stress management; she continues regular exercise and keeps caffeine intake modest. There is no history of myoclonic jerks or absences since remission began. She drives but remains aware of DVLA guidance and will inform us of any relapse.\n\nCurrent treatment:\n- Lamotrigine 100 mg twice daily (well tolerated; no rash, dizziness, or diplopia)\n- Folic acid 5 mg daily\n- Multivitamin (self-initiated)\n\nAdherence is good; she uses a weekly pill organiser and crosschecks against her paper calendar notes. No new adverse effects. Weight stable, mood stable, and no cognitive complaints. No pregnancies planned.\n\nPlan:\n- Continue lamotrigine at current dose given sustained seizure remission and tolerability.\n- Routine follow-up in 12 months with earlier review if any breakthrough events, adverse effects, or pregnancy planning.\n- She will continue to maintain her paper seizure calendar and bring it to future appointments; she prefers this to digital apps.\n- No further investigations required at present in view of stable generalised epilepsy and sustained remission since 25 Jan 2019.\n\nPlease do not hesitate to contact me if there are any concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1234,
+      "end": 1291,
+      "text": "Her calendar shows no seizures recorded since 25 Jan 2019",
+      "attributes": {
+        "Label": "seizure free for 18 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 319,
+      "end": 356,
+      "text": "Sustained remission since 25 Jan 2019",
+      "attributes": {
+        "Label": "seizure free for 18 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8079,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 05 August 2020\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n Staffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Generalised epilepsy; Sustained remission since 25 Jan 2019. Prior EEGs consistent with generalised spike–wave activity. No known structural brain abnormality on prior imaging.\n\nPrevious medication: Valproate (historically effective but stopped due to patient preference and weight gain), levetiracetam (mood symptoms), carbamazepine (worsened generalised pattern), lamotrigine (current), clobazam PRN in the past, topiramate (paraesthesia and cognitive slowing), lacosamide (trialled briefly pre-2018 without clear benefit), gabapentin (ineffective). Not taken: zonisamide, perampanel, ethosuximide, rufinamide, pregabalin, tiagabine, retigabine, primidone.\n\nCo-morbidities/procedures: Reported childhood heart murmur; adult echocardiogram 2008 normal. No VNS; not indicated.\n\nI reviewed Wendy Brown in clinic today. She attended alone and brought her paper seizure calendar, which she uses consistently and brings to all appointments. Her calendar shows no seizures recorded since 25 Jan 2019, and she reports feeling confident identifying and logging any events. We discussed lifestyle, sleep, and stress management; she continues regular exercise and keeps caffeine intake modest. There is no history of myoclonic jerks or absences since remission began. She drives but remains aware of DVLA guidance and will inform us of any relapse.\n\nCurrent treatment:\n- Lamotrigine 100 mg twice daily (well tolerated; no rash, dizziness, or diplopia)\n- Folic acid 5 mg daily\n- Multivitamin (self-initiated)\n\nAdherence is good; she uses a weekly pill organiser and crosschecks against her paper calendar notes. No new adverse effects. Weight stable, mood stable, and no cognitive complaints. No pregnancies planned.\n\nPlan:\n- Continue lamotrigine at current dose given sustained seizure remission and tolerability.\n- Routine follow-up in 12 months with earlier review if any breakthrough events, adverse effects, or pregnancy planning.\n- She will continue to maintain her paper seizure calendar and bring it to future appointments; she prefers this to digital apps.\n- No further investigations required at present in view of stable generalised epilepsy and sustained remission since 25 Jan 2019.\n\nPlease do not hesitate to contact me if there are any concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states sustained remission since 25 Jan 2019 and that her calendar shows no seizures recorded since that date. Clinic date is 05 August 2020. Calculate duration of seizure freedom from 25 Jan 2019 to 05 Aug 2020: from 25 Jan 2019 to 25 Jan 2020 = 12 months; from 25 Jan 2020 to 05 Aug 2020 ≈ 6 months and 11 days. Total ≈ 18.5 months. This exceeds 6 months, so classify as seizure free, and express as months or years. Using allowed format, round to months: seizure free for 18 month.",
+      "seizure_frequency_number": [
+        "seizure free for 18 month",
+        "Her calendar shows no seizures recorded since 25 Jan 2019"
+      ],
+      "reference": [
+        "seizure free for 18 month",
+        "Sustained remission since 25 Jan 2019"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

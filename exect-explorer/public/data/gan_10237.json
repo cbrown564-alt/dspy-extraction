@@ -1,0 +1,59 @@
+{
+  "id": "gan_10237",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 22 July 2023 \n\nDr Asha Patel \nConsultant Neurologist  \nSouth Thames Centre for Epilepsy  \nSt Bartholomew’s Wing, Queen Charlotte Hospital, London  \n\nDear Dr Asha Patel, \n\nMs Rebecca Turner, DOB: 22-09-1991, Hospital No: Q847205 NHS No. 9083517264  \n12 Meadow View, Croydon, CR0 8JP  \n\nDiagnosis: \n\nFocal epilepsy with focal onset seizures and focal to bilateral tonic–clonic seizures. Partial response to Carbamazepine; Brivaracetam added with early improvement. \n\nAetiology: \n\nLeft temporal cortical dysplasia suspected on prior MRI; updated MRI and EEG pending. \n\nOther Medical Problems: \n\nMigraine without aura (infrequent, patient-managed with simple analgesia). Mild asthma (salbutamol PRN). \n\nManagement Plan: \n\n- Continue Carbamazepine modified-release 400 mg mane and 600 mg nocte, single manufacturer brand.  \n- Continue Brivaracetam 75 mg twice daily; consider up-titration to 100 mg twice daily if tolerated after bloods and discussion at next review.  \n- Arrange MRI brain epilepsy protocol and sleep-deprived EEG; bloods today (FBC, U&E, LFTs, Carbamazepine level).  \n- Provide seizure first aid and SUDEP risk counselling; patient given DVLA guidance and confirms not driving.  \n- Review in clinic in 10 weeks or sooner if deterioration.  \n\nThis patient has focal epilepsy, presenting with brief epigastric rising sensations and speech arrest, occasionally progressing to bilateral tonic–clonic seizures, typically from sleep. Cluster frequency unclear this month; last month ≈4 clusters. The patient reports increased occupational stress and variable sleep, which may be contributing. No recent injuries, tongues bites occasional, and post-ictal confusion lasting up to 20 minutes when generalised. No alcohol binges; adherent to current medication and prefers to remain on consistent brands due to prior variability in response. \n\nOn examination today, neurological assessment was non-focal with stable observations. There are no dose-limiting adverse effects reported on Brivaracetam to date; mild fatigue only in the first week of initiation has resolved. We discussed safety planning, seizure triggers, and the importance of regular sleep. I have provided a work letter supporting temporary shift adjustments to minimise overnight starts given the nocturnal seizure tendency. \n\nI will update you following investigation results and will consider medication optimisation based on seizure diary trends and tolerability. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1500,
+      "end": 1561,
+      "text": "Cluster frequency unclear this month; last month ≈4 clusters.",
+      "attributes": {
+        "Label": "4 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1500,
+      "end": 1560,
+      "text": "Cluster frequency unclear this month; last month ≈4 clusters",
+      "attributes": {
+        "Label": "4 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10237,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 22 July 2023 \n\nDr Asha Patel \nConsultant Neurologist  \nSouth Thames Centre for Epilepsy  \nSt Bartholomew’s Wing, Queen Charlotte Hospital, London  \n\nDear Dr Asha Patel, \n\nMs Rebecca Turner, DOB: 22-09-1991, Hospital No: Q847205 NHS No. 9083517264  \n12 Meadow View, Croydon, CR0 8JP  \n\nDiagnosis: \n\nFocal epilepsy with focal onset seizures and focal to bilateral tonic–clonic seizures. Partial response to Carbamazepine; Brivaracetam added with early improvement. \n\nAetiology: \n\nLeft temporal cortical dysplasia suspected on prior MRI; updated MRI and EEG pending. \n\nOther Medical Problems: \n\nMigraine without aura (infrequent, patient-managed with simple analgesia). Mild asthma (salbutamol PRN). \n\nManagement Plan: \n\n- Continue Carbamazepine modified-release 400 mg mane and 600 mg nocte, single manufacturer brand.  \n- Continue Brivaracetam 75 mg twice daily; consider up-titration to 100 mg twice daily if tolerated after bloods and discussion at next review.  \n- Arrange MRI brain epilepsy protocol and sleep-deprived EEG; bloods today (FBC, U&E, LFTs, Carbamazepine level).  \n- Provide seizure first aid and SUDEP risk counselling; patient given DVLA guidance and confirms not driving.  \n- Review in clinic in 10 weeks or sooner if deterioration.  \n\nThis patient has focal epilepsy, presenting with brief epigastric rising sensations and speech arrest, occasionally progressing to bilateral tonic–clonic seizures, typically from sleep. Cluster frequency unclear this month; last month ≈4 clusters. The patient reports increased occupational stress and variable sleep, which may be contributing. No recent injuries, tongues bites occasional, and post-ictal confusion lasting up to 20 minutes when generalised. No alcohol binges; adherent to current medication and prefers to remain on consistent brands due to prior variability in response. \n\nOn examination today, neurological assessment was non-focal with stable observations. There are no dose-limiting adverse effects reported on Brivaracetam to date; mild fatigue only in the first week of initiation has resolved. We discussed safety planning, seizure triggers, and the importance of regular sleep. I have provided a work letter supporting temporary shift adjustments to minimise overnight starts given the nocturnal seizure tendency. \n\nI will update you following investigation results and will consider medication optimisation based on seizure diary trends and tolerability. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes the patient's seizures and mentions: \"Cluster frequency unclear this month; last month ≈4 clusters.\" There is no explicit count of seizures per cluster, only that clusters occur and frequency last month was approximately 4 clusters. For the current period (this month), frequency is unclear. According to the rules, when frequency is mentioned but exact number cannot be determined for seizures per cluster, we can use a cluster format with 'multiple per cluster' if clusters are quantified but per-cluster count is not. The highest explicit frequency available is last month ≈4 clusters, and '≈4' can be normalized to '4' in the allowed format. Therefore, output \"4 cluster per month, multiple per cluster.\"",
+      "seizure_frequency_number": [
+        "4 cluster per month, multiple per cluster",
+        "Cluster frequency unclear this month; last month ≈4 clusters."
+      ],
+      "reference": [
+        "4 cluster per month, multiple per cluster",
+        "Cluster frequency unclear this month; last month ≈4 clusters"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

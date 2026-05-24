@@ -1,0 +1,48 @@
+{
+  "id": "gan_8221",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Helena Ortiz  \nNorthborough Health Centre  \n18 Marefield Road, Northborough, PE6 9AU  \n\nDear Dr Helena Ortiz,                                                                                                         \n\nAmelia Carter, DOB: 22-11-1991, Hospital No: NHS-77492031 NHS No. 4018837265  \nFlat 2, 5 Wellstone Court, Peterborough, PE1 2BT  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since March 2025\n\nCurrent regimen (patient-reported): Lamotrigine 100 mg each morning and 150 mg at night. She confirms adherence with the evening dose using a phone reminder. Ã‚Â· Occasional missed morning dose (about once every 3–4 weeks) acknowledged. \n\nLamotrigine Blood Level:\n\n17 September 2025: 4.8 mg/L (reference range 1.0–15.0 mg/L). Dose at time of sampling: 100 mg AM / 150 mg PM. Sample taken pre-dose in the morning. \n\nSeizures: During today’s face-to-face review, the patient stated there have been no witnessed events or subjective spells since late June. She keeps a diary and has not logged any episodes over the last three months. \n\nInterim history: She reports improved sleep hygiene and reduced caffeine intake after our nurse specialist’s advice in July. No episodes of loss of awareness while commuting; no morning confusion reported by her partner. She has not required rescue medication. Family confirm no nocturnal phenomena suggestive of seizures. There have been a few transient headaches with screen use, settling with rest and fluids. \n\nExamination: Alert and oriented; speech fluent; cranial nerves intact; no focal motor deficit; gait steady. BP 118/74, pulse 72 regular. \n\nInvestigations: Routine bloods from September within acceptable limits (U&E, LFTs, FBC). ECG in March normal sinus rhythm. MRI previously performed with no acute intracranial findings per prior report. \n\nPlan: \n- Continue current lamotrigine regimen. Patient understands not to make any changes without discussion. \n- Reinforced adherence strategies; she will set a duplicate morning alarm. \n- Safety: standard seizure first-aid advice reiterated; no driving until DVLA guidance confirms eligibility remains appropriate; she is aware of the need to report any recurrence. \n- We provided written information on sleep hygiene and stress management. \n- Follow-up in 4–6 months via telephone unless concerns arise sooner. She will contact the epilepsy nurse line if she experiences any episodes, new adverse effects, or is planning pregnancy. \n\nI discussed the above with the patient and answered questions. She agrees with the plan. â€ Minor typographical errors in her diary were clarified today and corrected. ï¿½ \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 984,
+      "end": 1119,
+      "text": "no witnessed events or subjective spells since late June. She keeps a diary and has not logged any episodes over the last three months.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8221,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Helena Ortiz  \nNorthborough Health Centre  \n18 Marefield Road, Northborough, PE6 9AU  \n\nDear Dr Helena Ortiz,                                                                                                         \n\nAmelia Carter, DOB: 22-11-1991, Hospital No: NHS-77492031 NHS No. 4018837265  \nFlat 2, 5 Wellstone Court, Peterborough, PE1 2BT  \n\nEpilepsy \n\nMedication: Ongoing Lamotrigine since March 2025\n\nCurrent regimen (patient-reported): Lamotrigine 100 mg each morning and 150 mg at night. She confirms adherence with the evening dose using a phone reminder. Ã‚Â· Occasional missed morning dose (about once every 3–4 weeks) acknowledged. \n\nLamotrigine Blood Level:\n\n17 September 2025: 4.8 mg/L (reference range 1.0–15.0 mg/L). Dose at time of sampling: 100 mg AM / 150 mg PM. Sample taken pre-dose in the morning. \n\nSeizures: During today’s face-to-face review, the patient stated there have been no witnessed events or subjective spells since late June. She keeps a diary and has not logged any episodes over the last three months. \n\nInterim history: She reports improved sleep hygiene and reduced caffeine intake after our nurse specialist’s advice in July. No episodes of loss of awareness while commuting; no morning confusion reported by her partner. She has not required rescue medication. Family confirm no nocturnal phenomena suggestive of seizures. There have been a few transient headaches with screen use, settling with rest and fluids. \n\nExamination: Alert and oriented; speech fluent; cranial nerves intact; no focal motor deficit; gait steady. BP 118/74, pulse 72 regular. \n\nInvestigations: Routine bloods from September within acceptable limits (U&E, LFTs, FBC). ECG in March normal sinus rhythm. MRI previously performed with no acute intracranial findings per prior report. \n\nPlan: \n- Continue current lamotrigine regimen. Patient understands not to make any changes without discussion. \n- Reinforced adherence strategies; she will set a duplicate morning alarm. \n- Safety: standard seizure first-aid advice reiterated; no driving until DVLA guidance confirms eligibility remains appropriate; she is aware of the need to report any recurrence. \n- We provided written information on sleep hygiene and stress management. \n- Follow-up in 4–6 months via telephone unless concerns arise sooner. She will contact the epilepsy nurse line if she experiences any episodes, new adverse effects, or is planning pregnancy. \n\nI discussed the above with the patient and answered questions. She agrees with the plan. â€ Minor typographical errors in her diary were clarified today and corrected. ï¿½ \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure information: The letter states, \"no witnessed events or subjective spells since late June\" and \"has not logged any episodes over the last three months.\" Clinic date is 02 October 2025. From late June to early October is approximately just over 3 months, which is less than 6 months. Rule 8 requires at least 6 months to label as seizure free; otherwise, use 'seizure free for multiple months' if insufficient to confirm 6 months. Therefore, the appropriate normalized label is 'seizure free for multiple months.' No other seizure frequencies are provided, and no recent events are reported, so no need to compute per-time frequencies.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "no witnessed events or subjective spells since late June. She keeps a diary and has not logged any episodes over the last three months."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures documented during follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

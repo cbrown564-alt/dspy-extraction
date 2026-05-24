@@ -1,0 +1,59 @@
+{
+  "id": "gan_8286",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 May 2014 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace-trigger review and medication adjustment plan\n\nDear Priya,\n\nDiagnosis:\n\nSeizure disorder under ongoing evaluation.\n\nOccupational context:\n\nPatient works as a commercial kitchen line cook in a high‑heat, fast‑paced setting with prolonged standing, rapid task switching, and frequent exposure to heat lamps and steam. Shifts are typically 10–12 hours with minimal rest breaks.\n\nCurrent Medication:\n\n1. Carbamazepine modified‑release 400 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nRecent Course and Seizure Frequency:\n\nThe patient reports intermittent episodes of light‑headedness and brief visual blurring near the fryers during peak service, usually when dehydrated or after missed meals. There has been prompt recovery without impaired awareness or abnormal movements witnessed by colleagues. No clinical seizure events observed during the last three months at work or outside the workplace. No emergency attendances. Sleep is variable on split shifts.\n\nAssessment:\n\nGiven the demanding thermal environment and fluid loss risk, the described episodes are more consistent with heat and hydration fluctuations rather than definitive epileptic events. Mood and irritability on levetiracetam have been intermittently noted by the patient and the kitchen supervisor, but without behavioural incidents. No documented adverse effects from carbamazepine at current dose; levels previously therapeutic.\n\nPlan of Action:\n\n- Maintain current carbamazepine dose unchanged pending further review and trough level at next visit.\n- Implement a structured hydration and meal routine aligned with pre‑service, mid‑shift, and post‑service checkpoints, as discussed with the patient and line manager.\n- Provide a workplace note recommending access to water, brief cooling breaks when safe, and consistent breaks to avoid missed meals.\n- Given the mood symptoms possibly related to levetiracetam, we will trial a cautious down‑titration while monitoring for breakthrough events: reduce levetiracetam to 250 mg in the morning and 500 mg at night for 2 weeks, then 250 mg twice daily for 2 weeks, and maintain at 250 mg twice daily thereafter until review, provided no clinical events occur.\n- If any definite events are witnessed, the patient will notify us immediately; otherwise, follow‑up in four months with seizure diary and workplace observations.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1120,
+      "end": 1218,
+      "text": "No clinical seizure events observed during the last three months at work or outside the workplace.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1120,
+      "end": 1155,
+      "text": "No clinical seizure events observed",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8286,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 15 May 2014 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Elena Rossi (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace-trigger review and medication adjustment plan\n\nDear Priya,\n\nDiagnosis:\n\nSeizure disorder under ongoing evaluation.\n\nOccupational context:\n\nPatient works as a commercial kitchen line cook in a high‑heat, fast‑paced setting with prolonged standing, rapid task switching, and frequent exposure to heat lamps and steam. Shifts are typically 10–12 hours with minimal rest breaks.\n\nCurrent Medication:\n\n1. Carbamazepine modified‑release 400 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nRecent Course and Seizure Frequency:\n\nThe patient reports intermittent episodes of light‑headedness and brief visual blurring near the fryers during peak service, usually when dehydrated or after missed meals. There has been prompt recovery without impaired awareness or abnormal movements witnessed by colleagues. No clinical seizure events observed during the last three months at work or outside the workplace. No emergency attendances. Sleep is variable on split shifts.\n\nAssessment:\n\nGiven the demanding thermal environment and fluid loss risk, the described episodes are more consistent with heat and hydration fluctuations rather than definitive epileptic events. Mood and irritability on levetiracetam have been intermittently noted by the patient and the kitchen supervisor, but without behavioural incidents. No documented adverse effects from carbamazepine at current dose; levels previously therapeutic.\n\nPlan of Action:\n\n- Maintain current carbamazepine dose unchanged pending further review and trough level at next visit.\n- Implement a structured hydration and meal routine aligned with pre‑service, mid‑shift, and post‑service checkpoints, as discussed with the patient and line manager.\n- Provide a workplace note recommending access to water, brief cooling breaks when safe, and consistent breaks to avoid missed meals.\n- Given the mood symptoms possibly related to levetiracetam, we will trial a cautious down‑titration while monitoring for breakthrough events: reduce levetiracetam to 250 mg in the morning and 500 mg at night for 2 weeks, then 250 mg twice daily for 2 weeks, and maintain at 250 mg twice daily thereafter until review, provided no clinical events occur.\n- If any definite events are witnessed, the patient will notify us immediately; otherwise, follow‑up in four months with seizure diary and workplace observations.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit statements about seizures. The letter states: \"No clinical seizure events observed during the last three months at work or outside the workplace.\" This indicates zero seizures in the last three months. To classify as seizure free under the rules, at least 6 months of seizure freedom are required. Here we only have 3 months explicitly. Therefore, cannot label as fully seizure free. The best normalized label is seizure free for multiple months (since exact months <6 and only 3 months are specified; per rule 8, if insufficient to confirm 6 months, may consider seizure free for multiple months). No other seizure frequencies are given. Hence select 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No clinical seizure events observed during the last three months at work or outside the workplace."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No clinical seizure events observed"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_4956",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and adjustment around fasting period\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n[Diagnosis recorded; classification not assigned]\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as required for clusters (patient uses infrequently)\n\n\nPresent Seizure Frequency:\n\nThe patient reports being free of events for the past seven months, with no witnessed episodes, auras, or nocturnal disturbances reported by the household. This stability has been consistent since early March, including during periods of increased work stress. There were two brief faint-like episodes in previous years associated with missed meals, but none recently. No emergency attendances.\n\n\nPlan of Action:\n\nThe patient plans to observe a forthcoming religious fasting period, during which daytime oral intake will be restricted. We discussed strategies to maintain steady antiepileptic drug exposure and minimise missed doses:\n\n- Continue Lamotrigine 100 mg twice daily, timing doses with the pre-dawn and post-sunset meals. Use phone alarms as reminders.\n- Maintain usual hydration and salt intake during non-fasting hours; patient understands this is supportive rather than a treatment change.\n- Clobazam 5 mg at night remains available for clusters should clear breakthrough events occur; the patient has not needed it during the current stable period.\n- No dose changes today. If warning symptoms, altered awareness, or definite events recur during fasting, the patient will contact the clinic or urgent care for earlier review.\n\nI have arranged a follow-up in four months, or sooner if there is any deterioration, particularly during or shortly after the fasting interval. We also reviewed general safety: adherence, adequate sleep, and avoiding missed doses. The patient voiced understanding and agrees with the plan.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 625,
+      "end": 665,
+      "text": "free of events for the past seven months",
+      "attributes": {
+        "Label": "seizure free for 7 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4956,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Emily Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and adjustment around fasting period\n\nHi Priya\n\nEpilepsy Diagnosis:\n\n[Diagnosis recorded; classification not assigned]\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 5 mg at night as required for clusters (patient uses infrequently)\n\n\nPresent Seizure Frequency:\n\nThe patient reports being free of events for the past seven months, with no witnessed episodes, auras, or nocturnal disturbances reported by the household. This stability has been consistent since early March, including during periods of increased work stress. There were two brief faint-like episodes in previous years associated with missed meals, but none recently. No emergency attendances.\n\n\nPlan of Action:\n\nThe patient plans to observe a forthcoming religious fasting period, during which daytime oral intake will be restricted. We discussed strategies to maintain steady antiepileptic drug exposure and minimise missed doses:\n\n- Continue Lamotrigine 100 mg twice daily, timing doses with the pre-dawn and post-sunset meals. Use phone alarms as reminders.\n- Maintain usual hydration and salt intake during non-fasting hours; patient understands this is supportive rather than a treatment change.\n- Clobazam 5 mg at night remains available for clusters should clear breakthrough events occur; the patient has not needed it during the current stable period.\n- No dose changes today. If warning symptoms, altered awareness, or definite events recur during fasting, the patient will contact the clinic or urgent care for earlier review.\n\nI have arranged a follow-up in four months, or sooner if there is any deterioration, particularly during or shortly after the fasting interval. We also reviewed general safety: adherence, adequate sleep, and avoiding missed doses. The patient voiced understanding and agrees with the plan.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter includes a 'Present Seizure Frequency' section stating the patient has been 'free of events for the past seven months,' with no witnessed episodes, auras, or nocturnal disturbances. This explicitly indicates no seizures for 7 months, which meets the ≥6-month criterion for being considered seizure-free. No other current seizure frequencies are provided that would override this.",
+      "seizure_frequency_number": [
+        "seizure free for 7 month",
+        "free of events for the past seven months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure remission"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 7 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

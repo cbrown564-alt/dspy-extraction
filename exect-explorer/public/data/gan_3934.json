@@ -1,0 +1,59 @@
+{
+  "id": "gan_3934",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Bennett, DOB: 12-04-1991, Hospital No: H384920 NHS No. 9054721163  \nMooring 14, Regents Canal, London, NW1 8YZ \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. No adverse effects reported; adherence occasionally disrupted when charging reminders lapse during power cuts on the houseboat/mobile home.\n\nHistory is patient-reported. She lives on a houseboat/mobile home and notes intermittent power outages that sometimes prevent timely device charging (phone and pill dispenser). She has set a manual back-up routine, though she acknowledges this is not always reliable during longer outages. She describes ongoing events with preserved awareness, brief behavioural arrest on some occasions, and rare post-event fatigue. Frequency presently recorded in her diary as \"sz *nine/wk\" over the past month, with clustering after nights of poor sleep and during periods of higher stress. No clear injury, tongue-biting, or incontinence reported. She denies alcohol excess and recreational drugs. She does not drive. \n\nExamination today unremarkable. No focal neurological deficits. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. She prefers not to alter dose today while she improves non-pharmacological supports. \n- Encourage consistent diary entries; she will continue to log as per current notation, including \"sz *nine/wk\" and potential triggers (sleep loss, stress). \n- Practical supports discussed: placing a non-powered alarm clock for dosing times; keeping a small battery pack charged when shore power is available; and positioning medications in a visible location to reduce missed doses during outages. These were agreed as patient-led strategies. \n- Safety advice reiterated regarding bathing on the boat, use of heat sources, and working near open water when alone; she reports she already avoids solo deck work during periods of increased events. \n- Routine bloods (U&E, FBC, LFT) arranged through your surgery for medication surveillance; if any concerns arise we will review sooner. \n\nWe will review her again in four months, or earlier if the frequency increases, if injuries occur, or if there are changes in event characteristics. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 916,
+      "end": 994,
+      "text": "Frequency presently recorded in her diary as \"sz *nine/wk\" over the past month",
+      "attributes": {
+        "Label": "9 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 962,
+      "end": 973,
+      "text": "sz *nine/wk",
+      "attributes": {
+        "Label": "9 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3934,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Bennett, DOB: 12-04-1991, Hospital No: H384920 NHS No. 9054721163  \nMooring 14, Regents Canal, London, NW1 8YZ \n\nMedication: \n\nLevetiracetam 1000 mg twice daily. No adverse effects reported; adherence occasionally disrupted when charging reminders lapse during power cuts on the houseboat/mobile home.\n\nHistory is patient-reported. She lives on a houseboat/mobile home and notes intermittent power outages that sometimes prevent timely device charging (phone and pill dispenser). She has set a manual back-up routine, though she acknowledges this is not always reliable during longer outages. She describes ongoing events with preserved awareness, brief behavioural arrest on some occasions, and rare post-event fatigue. Frequency presently recorded in her diary as \"sz *nine/wk\" over the past month, with clustering after nights of poor sleep and during periods of higher stress. No clear injury, tongue-biting, or incontinence reported. She denies alcohol excess and recreational drugs. She does not drive. \n\nExamination today unremarkable. No focal neurological deficits. \n\nPlan: \n- Continue levetiracetam 1000 mg twice daily. She prefers not to alter dose today while she improves non-pharmacological supports. \n- Encourage consistent diary entries; she will continue to log as per current notation, including \"sz *nine/wk\" and potential triggers (sleep loss, stress). \n- Practical supports discussed: placing a non-powered alarm clock for dosing times; keeping a small battery pack charged when shore power is available; and positioning medications in a visible location to reduce missed doses during outages. These were agreed as patient-led strategies. \n- Safety advice reiterated regarding bathing on the boat, use of heat sources, and working near open water when alone; she reports she already avoids solo deck work during periods of increased events. \n- Routine bloods (U&E, FBC, LFT) arranged through your surgery for medication surveillance; if any concerns arise we will review sooner. \n\nWe will review her again in four months, or earlier if the frequency increases, if injuries occur, or if there are changes in event characteristics. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter says: “Frequency presently recorded in her diary as 'sz *nine/wk' over the past month.” This is a clear numeric expression indicating 9 seizures per week. No other conflicting frequencies are provided. Therefore, select the highest/only stated frequency and normalize it to the required format as 9 per week.",
+      "seizure_frequency_number": [
+        "9 per week",
+        "Frequency presently recorded in her diary as \"sz *nine/wk\" over the past month"
+      ],
+      "reference": [
+        "9 per week",
+        "sz *nine/wk"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_1190",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He lives in supported accommodation and is assisted by a key worker; key-worker notes were reviewed where available and were consistent with the history provided. He has generalised epilepsy and remains engaged with his care plan. I last saw him on 18 June 2025.\n\nSince the last review, he reports brief staring episodes with interruption of activity, sometimes accompanied by eyelid fluttering but no falls or convulsions. According to both his account and the key-worker logs, he has had 5 to 12 absence seizures in three months. Events typically last under 10 seconds and cluster more in the late afternoon when he is fatigued. There have been no tonic–clonic seizures, injuries, or emergency presentations. No clear triggers are identified beyond sleep disruption.\n\nMedication at present: Sodium Valproate 500 mg b.d., Levetiracetam 1000 mg b.d., and Lamotrigine 50 mg b.d. He takes medication reliably with key-worker oversight. He describes mild morning nausea that settles with breakfast and intermittent fine hand tremor, but no rash, mood change, or cognitive decline noted by staff. Weight has been stable and liver function tests in August 2025 were within normal limits.\n\nNeurological examination today was non-focal. Cardiovascular and general examination unremarkable. He remains independent in personal care within the assisted-living setting and attends day activities three times weekly. Sleep hygiene is variable; his key worker notes late bedtime on days preceding clusters.\n\nPlan: We discussed optimising sleep and maintaining a regular routine. I have arranged an EEG to characterise current generalised discharge burden and a serum drug level check for valproate and lamotrigine in 2 weeks. I have not changed medication today pending these results, given the relatively brief nature of events and the absence of convulsions or functional deterioration. We agreed that, should absence frequency increase beyond the current pattern of 5 to 12 absence seizures in three months, he or his key worker will contact the clinic sooner via the epilepsy nurse specialist. Written information on absence seizure recognition and logging has been provided for the care team. Follow-up is planned in 3 months.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 782,
+      "end": 833,
+      "text": "he has had 5 to 12 absence seizures in three months",
+      "attributes": {
+        "Label": "5 to 12 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 793,
+      "end": 833,
+      "text": "5 to 12 absence seizures in three months",
+      "attributes": {
+        "Label": "5 to 12 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1190,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He lives in supported accommodation and is assisted by a key worker; key-worker notes were reviewed where available and were consistent with the history provided. He has generalised epilepsy and remains engaged with his care plan. I last saw him on 18 June 2025.\n\nSince the last review, he reports brief staring episodes with interruption of activity, sometimes accompanied by eyelid fluttering but no falls or convulsions. According to both his account and the key-worker logs, he has had 5 to 12 absence seizures in three months. Events typically last under 10 seconds and cluster more in the late afternoon when he is fatigued. There have been no tonic–clonic seizures, injuries, or emergency presentations. No clear triggers are identified beyond sleep disruption.\n\nMedication at present: Sodium Valproate 500 mg b.d., Levetiracetam 1000 mg b.d., and Lamotrigine 50 mg b.d. He takes medication reliably with key-worker oversight. He describes mild morning nausea that settles with breakfast and intermittent fine hand tremor, but no rash, mood change, or cognitive decline noted by staff. Weight has been stable and liver function tests in August 2025 were within normal limits.\n\nNeurological examination today was non-focal. Cardiovascular and general examination unremarkable. He remains independent in personal care within the assisted-living setting and attends day activities three times weekly. Sleep hygiene is variable; his key worker notes late bedtime on days preceding clusters.\n\nPlan: We discussed optimising sleep and maintaining a regular routine. I have arranged an EEG to characterise current generalised discharge burden and a serum drug level check for valproate and lamotrigine in 2 weeks. I have not changed medication today pending these results, given the relatively brief nature of events and the absence of convulsions or functional deterioration. We agreed that, should absence frequency increase beyond the current pattern of 5 to 12 absence seizures in three months, he or his key worker will contact the clinic sooner via the epilepsy nurse specialist. Written information on absence seizure recognition and logging has been provided for the care team. Follow-up is planned in 3 months.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has had 5 to 12 absence seizures in three months since the last review. No other seizure type frequency is reported; tonic–clonic seizures are explicitly absent. According to the rules, select the explicit numeric expression and normalize to the allowed format. Three months is the time unit, so the normalized label is '5 to 12 per 3 month'. No need to convert to per month; use the exact phrasing aligned with allowed format.",
+      "seizure_frequency_number": [
+        "5 to 12 per 3 month",
+        "he has had 5 to 12 absence seizures in three months"
+      ],
+      "reference": [
+        "5 to 12 per 3 month",
+        "5 to 12 absence seizures in three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

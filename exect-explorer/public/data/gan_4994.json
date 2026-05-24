@@ -1,0 +1,59 @@
+{
+  "id": "gan_4994",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 28 December 2021\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nBackground and occupation:\nShe works offshore on a rotation, with telephone reviews scheduled when she is onshore. We arranged today’s review accordingly, and she joined the call from home following her latest return from the rig.\n\nDiagnosis:\nShe has generalised epilepsy, with a prior history of generalised tonic–clonic seizures and brief morning myoclonic jerks reported before treatment optimisation.\n\nCurrent status and seizure control:\nShe reports excellent stability with a seizure-free interval since 25/06/2021. She denies any myoclonic jerks on waking, no absence episodes, and no nocturnal events according to her partner. There have been no witnessed injuries, emergency attendances, or missed workdays related to seizures during this period.\n\nMedication:\nValproate 500 mg twice daily. She has tolerated this well without weight change, tremor, or mood disturbance. No issues with supply while offshore; she maintains a spare course on the platform.\n\nTriggers and lifestyle:\nShe is adhering to sleep hygiene recommendations during offshore night shifts and has limited caffeine intake. Alcohol intake is minimal when onshore. She uses a seizure diary app synced to her phone and the last recorded event precedes the seizure-free interval as above.\n\nInvestigations and safety:\nPrevious EEG showed generalised spike–wave discharges consistent with generalised epilepsy; MRI brain was unremarkable. She has completed workplace safety documentation with her employer, who are aware of her condition and rota planning. She confirms no driving given current regulations and will seek advice if circumstances change.\n\nPlan:\n- Continue valproate 500 mg twice daily unchanged.\n- Maintain seizure diary and offshore medication contingency.\n- Telephone review in six months to coincide with her next onshore rotation, or earlier if breakthrough events occur.\n\nPlease let me know if there are any concerns from your side.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 800,
+      "text": "seizure-free interval since 25/06/2021",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 762,
+      "end": 800,
+      "text": "Seizure-free interval since 25/06/2021",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4994,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 28 December 2021\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nBackground and occupation:\nShe works offshore on a rotation, with telephone reviews scheduled when she is onshore. We arranged today’s review accordingly, and she joined the call from home following her latest return from the rig.\n\nDiagnosis:\nShe has generalised epilepsy, with a prior history of generalised tonic–clonic seizures and brief morning myoclonic jerks reported before treatment optimisation.\n\nCurrent status and seizure control:\nShe reports excellent stability with a seizure-free interval since 25/06/2021. She denies any myoclonic jerks on waking, no absence episodes, and no nocturnal events according to her partner. There have been no witnessed injuries, emergency attendances, or missed workdays related to seizures during this period.\n\nMedication:\nValproate 500 mg twice daily. She has tolerated this well without weight change, tremor, or mood disturbance. No issues with supply while offshore; she maintains a spare course on the platform.\n\nTriggers and lifestyle:\nShe is adhering to sleep hygiene recommendations during offshore night shifts and has limited caffeine intake. Alcohol intake is minimal when onshore. She uses a seizure diary app synced to her phone and the last recorded event precedes the seizure-free interval as above.\n\nInvestigations and safety:\nPrevious EEG showed generalised spike–wave discharges consistent with generalised epilepsy; MRI brain was unremarkable. She has completed workplace safety documentation with her employer, who are aware of her condition and rota planning. She confirms no driving given current regulations and will seek advice if circumstances change.\n\nPlan:\n- Continue valproate 500 mg twice daily unchanged.\n- Maintain seizure diary and offshore medication contingency.\n- Telephone review in six months to coincide with her next onshore rotation, or earlier if breakthrough events occur.\n\nPlease let me know if there are any concerns from your side.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"She reports excellent stability with a seizure-free interval since 25/06/2021.\" The clinic date is 28 December 2021. Calculate the interval: from 25 June 2021 to 28 December 2021 is approximately 6 months and 3 days. This meets the criterion of at least 6 months seizure-free, so classify as seizure free for 6 month (using the allowed format).",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "seizure-free interval since 25/06/2021"
+      ],
+      "reference": [
+        "seizure free for 6 month",
+        "Seizure-free interval since 25/06/2021"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

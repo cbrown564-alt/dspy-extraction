@@ -1,0 +1,54 @@
+{
+  "id": "gan_4243",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 07 December 2017 \n\nDr Priya Menon\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nSarah Thompson, DOB: 14-03-1982, Hospital No: KCH728311 NHS No. 9472201356  \n12 Brookfield Road, London, SE15 3HT\n\nThank you for referring Sarah Thompson. He is known to have type 2 diabetes managed within primary care and reports stable glycaemic control; today’s consultation focused on his ongoing episodes suggestive of seizures.\n\nHe describes two patterns. The first comprises brief unresponsiveness with rocking movements and vocalisation, followed by prolonged confusion lasting up to an hour. These have been present for many years. He recalls that after starting brivaracetam some time ago, the interval between events lengthened; at present, he and his partner estimate they occur every two to three weeks. The second pattern involves sudden tearfulness and marked emotionality without clear loss of awareness; these episodes have been noted by his partner and appear to cluster. He and his partner also report events occurring predominantly when settling for the night, with episodes tending to happen around bedtime and in the early hours. He feels more subdued the following morning on days after these overnight occurrences.\n\nHe has not required recent emergency attendance. There is no clear diurnal trigger outside the evening and overnight pattern, and no consistent relationship with intercurrent illness or missed medication by his account. Alcohol intake is minimal and sleep is variable due to shift work. He denies current hallucinations or formal thought disorder. Mood is described as anxious around the time of the episodes, with occasional irritability in the recovery period; there is no current safeguarding concern.\n\nExamination today was unremarkable with normal conversational language and orientation. Neurological examination was non-focal. Capillary glucose brought by the patient from his home monitoring appears within his usual range. Current anti-seizure therapy is brivaracetam 100 mg twice daily, which he takes reliably; no recent dose changes are reported. We discussed further characterisation with admission for video-EEG monitoring to capture the events, particularly those occurring in the late evening/overnight window, to clarify their nature and guide ongoing management. He is open to this plan and would like dates as soon as feasible. In the interim, I have advised continuation of his existing medication regimen and to keep a diary noting timing (especially evening/overnight), semiology, and recovery features.\n\nI will also request a routine EEG and updated MRI brain (previous imaging was several years ago), and liaise with his GP regarding continued diabetes management, ensuring any future anti-seizure medication adjustments consider his metabolic profile. We will review following investigations or sooner if there is a change in frequency or new features such as injury, prolonged confusion, or clustering.\n\nThank you for your ongoing care and for forwarding any relevant community notes.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 913,
+      "end": 989,
+      "text": "at present, he and his partner estimate they occur every two to three weeks.",
+      "attributes": {
+        "Label": "1 per 2 to 3 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4243,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 07 December 2017 \n\nDr Priya Menon\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Priya Menon\nConsultant Neurologist,  \n\nSarah Thompson, DOB: 14-03-1982, Hospital No: KCH728311 NHS No. 9472201356  \n12 Brookfield Road, London, SE15 3HT\n\nThank you for referring Sarah Thompson. He is known to have type 2 diabetes managed within primary care and reports stable glycaemic control; today’s consultation focused on his ongoing episodes suggestive of seizures.\n\nHe describes two patterns. The first comprises brief unresponsiveness with rocking movements and vocalisation, followed by prolonged confusion lasting up to an hour. These have been present for many years. He recalls that after starting brivaracetam some time ago, the interval between events lengthened; at present, he and his partner estimate they occur every two to three weeks. The second pattern involves sudden tearfulness and marked emotionality without clear loss of awareness; these episodes have been noted by his partner and appear to cluster. He and his partner also report events occurring predominantly when settling for the night, with episodes tending to happen around bedtime and in the early hours. He feels more subdued the following morning on days after these overnight occurrences.\n\nHe has not required recent emergency attendance. There is no clear diurnal trigger outside the evening and overnight pattern, and no consistent relationship with intercurrent illness or missed medication by his account. Alcohol intake is minimal and sleep is variable due to shift work. He denies current hallucinations or formal thought disorder. Mood is described as anxious around the time of the episodes, with occasional irritability in the recovery period; there is no current safeguarding concern.\n\nExamination today was unremarkable with normal conversational language and orientation. Neurological examination was non-focal. Capillary glucose brought by the patient from his home monitoring appears within his usual range. Current anti-seizure therapy is brivaracetam 100 mg twice daily, which he takes reliably; no recent dose changes are reported. We discussed further characterisation with admission for video-EEG monitoring to capture the events, particularly those occurring in the late evening/overnight window, to clarify their nature and guide ongoing management. He is open to this plan and would like dates as soon as feasible. In the interim, I have advised continuation of his existing medication regimen and to keep a diary noting timing (especially evening/overnight), semiology, and recovery features.\n\nI will also request a routine EEG and updated MRI brain (previous imaging was several years ago), and liaise with his GP regarding continued diabetes management, ensuring any future anti-seizure medication adjustments consider his metabolic profile. We will review following investigations or sooner if there is a change in frequency or new features such as injury, prolonged confusion, or clustering.\n\nThank you for your ongoing care and for forwarding any relevant community notes.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes two event patterns suggestive of seizures. Only the first pattern has an explicit numeric frequency: \"at present, he and his partner estimate they occur every two to three weeks.\" The second pattern is said to \"appear to cluster\" without quantifiable frequency (no clusters per time or events per cluster provided). Per the rule to prioritize explicit numeric expressions and select the highest frequency when multiple exist, the only quantifiable current frequency is 1 event every 2 to 3 weeks. This normalizes to \"1 per 2 to 3 week.\"",
+      "seizure_frequency_number": [
+        "1 per 2 to 3 week",
+        "at present, he and his partner estimate they occur every two to three weeks."
+      ],
+      "reference": [
+        "unknown",
+        "qhs (at night)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 to 3 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

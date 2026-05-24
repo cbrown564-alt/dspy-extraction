@@ -1,0 +1,54 @@
+{
+  "id": "gan_7327",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 24 October 2018 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nMs Hannah Clarke, DOB: 23-07-1994, Hospital No: KCH829174 NHS No. 9430027816  \nFlat 3, 12 Brookfield Road, London, SE22 0AN  \n\nDiagnosis: \n\nGeneralised epilepsy with tonic–clonic seizures and myoclonic jerks; good tolerability to Valproate and adjunctive Levetiracetam, but breakthrough events continue on current regimen \n\nAetiology: \n\nNo structural lesion identified; normal MRI brain; likely genetic generalised epilepsy phenotype based on history and EEG (generalised spike–wave) \n\nOther Medical Problems: \n\nMigraine without aura managed with propranolol PRN; vitamin D insufficiency on supplementation; no known drug allergies \n\nManagement Plan: \n\nContinue Sodium Valproate 500 mg mane and 1000 mg nocte. Maintain Levetiracetam 1000 mg twice daily. I have advised adherence to a consistent brand for both medications. Arrange trough levels for Valproate and routine bloods (FBC, LFTs) prior to next visit. We discussed lifestyle measures (sleep hygiene, alcohol moderation). DVLA guidance reiterated: patient not driving. Review in six months in clinic; earlier review if events escalate.\n\nThis patient reports a clear reduction in convulsive episodes since initiation of combined therapy; however, they describe intermittent early-morning myoclonic jerks and two brief generalised tonic–clonic seizures over the past four months, indicating that while medication has helped, occasional seizures still occur. There are no red flags of status epilepticus, injuries, or prolonged post-ictal confusion. Triggers appear to include sleep deprivation preceding shift work and missed evening doses on two occasions. EEG demonstrates generalised spike–wave discharges consistent with generalised epilepsy. MRI brain remains unremarkable.\n\nWe discussed the benefits and risks of dose optimisation versus adding an alternative ASM in the future. For now, we will consolidate adherence, address modifiable triggers, and reassess after drug levels are available. The patient is agreeable to this plan. A seizure diary will be kept to document frequency and context of any further events.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1487,
+      "end": 1556,
+      "text": "two brief generalised tonic–clonic seizures over the past four months",
+      "attributes": {
+        "Label": "2 per 4 months",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7327,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 24 October 2018 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Aisha Rahman, \n\nMs Hannah Clarke, DOB: 23-07-1994, Hospital No: KCH829174 NHS No. 9430027816  \nFlat 3, 12 Brookfield Road, London, SE22 0AN  \n\nDiagnosis: \n\nGeneralised epilepsy with tonic–clonic seizures and myoclonic jerks; good tolerability to Valproate and adjunctive Levetiracetam, but breakthrough events continue on current regimen \n\nAetiology: \n\nNo structural lesion identified; normal MRI brain; likely genetic generalised epilepsy phenotype based on history and EEG (generalised spike–wave) \n\nOther Medical Problems: \n\nMigraine without aura managed with propranolol PRN; vitamin D insufficiency on supplementation; no known drug allergies \n\nManagement Plan: \n\nContinue Sodium Valproate 500 mg mane and 1000 mg nocte. Maintain Levetiracetam 1000 mg twice daily. I have advised adherence to a consistent brand for both medications. Arrange trough levels for Valproate and routine bloods (FBC, LFTs) prior to next visit. We discussed lifestyle measures (sleep hygiene, alcohol moderation). DVLA guidance reiterated: patient not driving. Review in six months in clinic; earlier review if events escalate.\n\nThis patient reports a clear reduction in convulsive episodes since initiation of combined therapy; however, they describe intermittent early-morning myoclonic jerks and two brief generalised tonic–clonic seizures over the past four months, indicating that while medication has helped, occasional seizures still occur. There are no red flags of status epilepticus, injuries, or prolonged post-ictal confusion. Triggers appear to include sleep deprivation preceding shift work and missed evening doses on two occasions. EEG demonstrates generalised spike–wave discharges consistent with generalised epilepsy. MRI brain remains unremarkable.\n\nWe discussed the benefits and risks of dose optimisation versus adding an alternative ASM in the future. For now, we will consolidate adherence, address modifiable triggers, and reassess after drug levels are available. The patient is agreeable to this plan. A seizure diary will be kept to document frequency and context of any further events.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'two brief generalised tonic–clonic seizures over the past four months.' This provides a clear numeric frequency. There is also mention of 'intermittent early-morning myoclonic jerks' without a quantifiable rate, so it cannot be used to calculate frequency. Applying the rule to select the highest available numeric frequency, I use the GTC count: 2 seizures in 4 months. This is not seizure-free (events occurred within the last 6 months). Therefore, the normalized label is '2 per 4 months.'",
+      "seizure_frequency_number": [
+        "2 per 4 months",
+        "two brief generalised tonic–clonic seizures over the past four months"
+      ],
+      "reference": [
+        "unknown",
+        "Partial response to ASM; residual events persist"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (2 per 4 months) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

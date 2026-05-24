@@ -1,0 +1,59 @@
+{
+  "id": "gan_16204",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 8 October 2021 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nOliver Bennett, DOB: 12-03-1990, Hospital No: H482019 NHS No. 9842103576  \nFlat 5, 14 Station Approach, London, W2 6AB \n\nMedication: \n\nLevetiracetam 1 g twice daily. Lamotrigine 100 mg twice daily. He reports good adherence and no notable adverse effects beyond mild irritability on stressful shifts. \n\nHistory and current status: \n\nHe has focal epilepsy with secondary generalisation, with typical focal aware auras of a rising epigastric sensation and brief speech arrest preceding some events. He experienced a generalised tonic-clonic seizure so far in Sep, 1 in Aug, and three in Jul, occurring during both wakefulness and sleep. He works on the gate line at a busy metro station, where prolonged standing, crowd surges, and heat at peak times are common. He notes that seizures in Jul coincided with consecutive early shifts and missed meals. Since implementing more regular breaks and hydration in late Aug, frequency has reduced. No recent head injuries. No alcohol misuse. Sleep is variable on rotating shifts.\n\nExamination today was unremarkable. No focal neurological deficits. Weight stable. Blood pressure within normal range. \n\nPlan: \n\n- Continue current doses of levetiracetam and lamotrigine for now given recent improvement. He will keep a seizure diary, noting sleep duration, meal timing, and shift patterns.  \n- Workplace: he will discuss with his line manager the option of avoiding consecutive early starts where possible and ensuring access to regular breaks and water, given probable trigger of sleep deprivation and missed meals within his focal epilepsy.  \n- Safety: he understands standard seizure safety at work and at home, including avoiding working at platform edges during postictal recovery, and notifying colleagues of his condition as per occupational health guidance.  \n- Investigations: routine bloods (U&Es, LFTs) and lamotrigine level arranged to check baseline; MRI brain from last year showed no structural lesion; EEG previously showed left temporal interictal discharges consistent with focal onset.  \n\nWe will review him in three months, sooner if seizures cluster or if he has any change in aura pattern or prolonged postictal confusion. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 684,
+      "end": 775,
+      "text": "He experienced a generalised tonic-clonic seizure so far in Sep, 1 in Aug, and three in Jul",
+      "attributes": {
+        "Label": "5 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 684,
+      "end": 820,
+      "text": "He experienced a generalised tonic-clonic seizure so far in Sep, 1 in Aug, and three in Jul, occurring during both wakefulness and sleep",
+      "attributes": {
+        "Label": "5 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16204,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 8 October 2021 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nOliver Bennett, DOB: 12-03-1990, Hospital No: H482019 NHS No. 9842103576  \nFlat 5, 14 Station Approach, London, W2 6AB \n\nMedication: \n\nLevetiracetam 1 g twice daily. Lamotrigine 100 mg twice daily. He reports good adherence and no notable adverse effects beyond mild irritability on stressful shifts. \n\nHistory and current status: \n\nHe has focal epilepsy with secondary generalisation, with typical focal aware auras of a rising epigastric sensation and brief speech arrest preceding some events. He experienced a generalised tonic-clonic seizure so far in Sep, 1 in Aug, and three in Jul, occurring during both wakefulness and sleep. He works on the gate line at a busy metro station, where prolonged standing, crowd surges, and heat at peak times are common. He notes that seizures in Jul coincided with consecutive early shifts and missed meals. Since implementing more regular breaks and hydration in late Aug, frequency has reduced. No recent head injuries. No alcohol misuse. Sleep is variable on rotating shifts.\n\nExamination today was unremarkable. No focal neurological deficits. Weight stable. Blood pressure within normal range. \n\nPlan: \n\n- Continue current doses of levetiracetam and lamotrigine for now given recent improvement. He will keep a seizure diary, noting sleep duration, meal timing, and shift patterns.  \n- Workplace: he will discuss with his line manager the option of avoiding consecutive early starts where possible and ensuring access to regular breaks and water, given probable trigger of sleep deprivation and missed meals within his focal epilepsy.  \n- Safety: he understands standard seizure safety at work and at home, including avoiding working at platform edges during postictal recovery, and notifying colleagues of his condition as per occupational health guidance.  \n- Investigations: routine bloods (U&Es, LFTs) and lamotrigine level arranged to check baseline; MRI brain from last year showed no structural lesion; EEG previously showed left temporal interictal discharges consistent with focal onset.  \n\nWe will review him in three months, sooner if seizures cluster or if he has any change in aura pattern or prolonged postictal confusion. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists generalized tonic-clonic seizures: 3 in July, 1 in August, and 1 in September. These are within a 3-month span (July–September). Total seizures in that period = 3 + 1 + 1 = 5 over 3 months. The instruction says to prioritize explicit numeric expressions and, when multiple frequencies exist, choose the highest frequency or sum if same dimension; here a summed count over a defined period is available. There is no indication of complete seizure freedom for ≥6 months. Therefore, normalize to '5 per 3 month'.",
+      "seizure_frequency_number": [
+        "5 per 3 month",
+        "He experienced a generalised tonic-clonic seizure so far in Sep, 1 in Aug, and three in Jul"
+      ],
+      "reference": [
+        "5 per 3 month",
+        "He experienced a generalised tonic-clonic seizure so far in Sep, 1 in Aug, and three in Jul, occurring during both wakefulness and sleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

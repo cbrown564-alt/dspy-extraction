@@ -1,0 +1,59 @@
+{
+  "id": "gan_816",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and ongoing management\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nType not specified in current records\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nCurrently reporting monthly seizures, typically brief focal-onset episodes with rapid recovery as described by the family. Since commencing ketogenic diet therapy, the family notes a marked reduction in seizure frequency with only four brief seizures recorded in 2017 so far. This improvement has continued, and there have been no prolonged events or injuries this year.\n\n\nPlan of Action:\n\nAt the last visit we made a minor adjustment by consolidating clobazam to night-time dosing while maintaining the lamotrigine dose. The patient and family report better sleep, improved alertness, and fewer breakthrough events, aligning with the pattern of monthly seizures only. No adverse effects have been noted from the ketogenic diet or current medications. We will:\n- Continue lamotrigine 100 mg twice daily and clobazam 10 mg nocte unchanged.\n- Maintain ketogenic diet therapy with ongoing dietetic support.\n- Provide a rescue plan with buccal midazolam as previously prescribed for any seizure exceeding 5 minutes (not required to date).\n- Monitor mood, sleep, and adherence; family to continue seizure diary and record any missed doses or intercurrent illness.\n- Arrange routine bloods (U&E, LFTs, bicarbonate, lipid profile) and weight/BMI at the next nurse-led review in 3 months given the ongoing diet therapy.\n\nThe trajectory is clearly improving compared with previous years, with fewer and shorter events and stable cognition reported by school and parents. I will review again in 4 months, or sooner if the monthly seizures increase in duration, cluster, or result in injury.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 528,
+      "end": 650,
+      "text": "Currently reporting monthly seizures, typically brief focal-onset episodes with rapid recovery as described by the family.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 548,
+      "end": 564,
+      "text": "monthly seizures",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 816,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emily Carter (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Michael Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and ongoing management\n\nHi Emily\n\nEpilepsy Diagnosis:\n\nType not specified in current records\n\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Clobazam 10 mg at night\n\n\nPresent Seizure Frequency:\n\nCurrently reporting monthly seizures, typically brief focal-onset episodes with rapid recovery as described by the family. Since commencing ketogenic diet therapy, the family notes a marked reduction in seizure frequency with only four brief seizures recorded in 2017 so far. This improvement has continued, and there have been no prolonged events or injuries this year.\n\n\nPlan of Action:\n\nAt the last visit we made a minor adjustment by consolidating clobazam to night-time dosing while maintaining the lamotrigine dose. The patient and family report better sleep, improved alertness, and fewer breakthrough events, aligning with the pattern of monthly seizures only. No adverse effects have been noted from the ketogenic diet or current medications. We will:\n- Continue lamotrigine 100 mg twice daily and clobazam 10 mg nocte unchanged.\n- Maintain ketogenic diet therapy with ongoing dietetic support.\n- Provide a rescue plan with buccal midazolam as previously prescribed for any seizure exceeding 5 minutes (not required to date).\n- Monitor mood, sleep, and adherence; family to continue seizure diary and record any missed doses or intercurrent illness.\n- Arrange routine bloods (U&E, LFTs, bicarbonate, lipid profile) and weight/BMI at the next nurse-led review in 3 months given the ongoing diet therapy.\n\nThe trajectory is clearly improving compared with previous years, with fewer and shorter events and stable cognition reported by school and parents. I will review again in 4 months, or sooner if the monthly seizures increase in duration, cluster, or result in injury.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit current frequency statements. The letter states: 'Present Seizure Frequency: Currently reporting monthly seizures...' and later: 'aligning with the pattern of monthly seizures only.' These indicate an ongoing rate of approximately 1 seizure per month. Mentions of 'only four brief seizures recorded in 2017 so far' are historical/annual and not current. No evidence of 6+ months seizure freedom; thus not seizure-free. Highest frequency mentioned is monthly seizures.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "Currently reporting monthly seizures, typically brief focal-onset episodes with rapid recovery as described by the family."
+      ],
+      "reference": [
+        "1 per month",
+        "monthly seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

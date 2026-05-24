@@ -1,0 +1,54 @@
+{
+  "id": "gan_5534",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily, continued.\n\nMrs Emily Carter is known to have generalised epilepsy. She reports a very infrequent, short event a fortnight ago, described as a sudden pause with eyelid fluttering and brief unresponsiveness lasting under 10 seconds, with immediate recovery and no injury. This is the first such occurrence in several months and represents an isolated, fleeting episode on an otherwise stable background.\n\nShe commutes mainly by bicycle and notes that the event did not occur in relation to exertion; she was at home in the evening after dinner. Sleep has been regular. She denies missed doses and has had no intercurrent illness. There is no new headache, focal neurological symptom, or change in cognition. Mood is stable and she feels the current regimen is well tolerated without irritability or sedation.\n\nExamination today was unremarkable with normal neurological findings. No myoclonic jerks were observed or reported in the mornings, and there have been no generalised tonic–clonic seizures since last year.\n\nPlan: I have made no changes to treatment at this stage given ongoing overall control and good tolerability. Should brief absences become more frequent or clusters emerge, we would consider dose optimisation of levetiracetam versus adjunctive therapy such as lamotrigine, guided by EEG if indicated. We will arrange a routine follow-up EEG only if further events occur. She will continue her usual routines as reported.\n\nWe will review her in six months, or sooner if there is any change in pattern.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 612,
+      "end": 663,
+      "text": "This is the first such occurrence in several months",
+      "attributes": {
+        "Label": "1 per multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5534,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nLevetiracetam 1000 mg twice daily, continued.\n\nMrs Emily Carter is known to have generalised epilepsy. She reports a very infrequent, short event a fortnight ago, described as a sudden pause with eyelid fluttering and brief unresponsiveness lasting under 10 seconds, with immediate recovery and no injury. This is the first such occurrence in several months and represents an isolated, fleeting episode on an otherwise stable background.\n\nShe commutes mainly by bicycle and notes that the event did not occur in relation to exertion; she was at home in the evening after dinner. Sleep has been regular. She denies missed doses and has had no intercurrent illness. There is no new headache, focal neurological symptom, or change in cognition. Mood is stable and she feels the current regimen is well tolerated without irritability or sedation.\n\nExamination today was unremarkable with normal neurological findings. No myoclonic jerks were observed or reported in the mornings, and there have been no generalised tonic–clonic seizures since last year.\n\nPlan: I have made no changes to treatment at this stage given ongoing overall control and good tolerability. Should brief absences become more frequent or clusters emerge, we would consider dose optimisation of levetiracetam versus adjunctive therapy such as lamotrigine, guided by EEG if indicated. We will arrange a routine follow-up EEG only if further events occur. She will continue her usual routines as reported.\n\nWe will review her in six months, or sooner if there is any change in pattern.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "- The letter reports one absence-like event: \"a very infrequent, short event a fortnight ago\".\n- It states: \"This is the first such occurrence in several months,\" implying one event over a vague multi-month period.\n- Other seizure types are less frequent: \"no generalised tonic–clonic seizures since last year\" and \"No myoclonic jerks\".\n- Per the rule to choose the highest frequency among multiple types, the absence-like events are the most frequent.\n- Since \"several months\" is vague, use 'multiple' for the denominator. Therefore, the inferred frequency is 1 per multiple month.",
+      "seizure_frequency_number": [
+        "1 per multiple month",
+        "This is the first such occurrence in several months"
+      ],
+      "reference": [
+        "unknown",
+        "Rare brief seizure recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per multiple month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

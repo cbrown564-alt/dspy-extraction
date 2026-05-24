@@ -1,0 +1,54 @@
+{
+  "id": "gan_8342",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's Hospital  \nNeurosciences Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nDaniel Morgan, DOB: 14-02-1990, Hospital No: H562918 NHS No. 9021347765  \nFlat 12, 48 Junction Street, London, SE1 3AB  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nI reviewed Daniel Morgan in clinic today. He works on the gate line at a busy metropolitan station, where prolonged standing, variable shift patterns, and occasional crowd surges are part of his routine environment. He reports that over the past nine months there have been no witnessed events and he has experienced no episodes suggestive of loss of awareness or convulsive activity. In short, his seizure activity has been quiescent during this period, including while at work under the above conditions. \n\nHe confirms excellent adherence to levetiracetam 1 g twice daily with no adverse effects beyond mild irritability early on, which has now settled. There have been no emergency department attendances, no injuries, and no use of rescue medication. He is sleeping more regularly since moving to a fixed early shift and has reduced caffeine intake. Alcohol intake is minimal. He carries his medical alert card and his line manager is aware of his condition and the agreed workplace safety plan (step-back protocol during crowd surges, ready access to a seated rest area, and colleague observation if he feels unwell). \n\nNeurological examination in clinic was unremarkable. Routine bloods from last month (U&E, LFT, FBC) were within normal ranges. We discussed generalised epilepsy triggers and workplace considerations; he feels confident with the current plan and does not wish to change medication. Given the sustained absence of events and good tolerability, we agreed to continue the present regimen without alteration. \n\nDriving status and safety were reviewed according to DVLA guidance; he remains compliant and has reported appropriately. We will arrange a routine follow-up in six months, with earlier review if there is any recurrence of symptoms, adverse effects, or concerns from his workplace risk assessment. He knows to seek urgent help should any unprovoked loss of awareness or convulsive episode occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 590,
+      "end": 651,
+      "text": "over the past nine months there have been no witnessed events",
+      "attributes": {
+        "Label": "seizure free for 9 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8342,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Patel  \nSt George's Hospital  \nNeurosciences Department, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nDaniel Morgan, DOB: 14-02-1990, Hospital No: H562918 NHS No. 9021347765  \nFlat 12, 48 Junction Street, London, SE1 3AB  \n\nDiagnoses: \n\nSymptomatic generalised epilepsy. \n\nI reviewed Daniel Morgan in clinic today. He works on the gate line at a busy metropolitan station, where prolonged standing, variable shift patterns, and occasional crowd surges are part of his routine environment. He reports that over the past nine months there have been no witnessed events and he has experienced no episodes suggestive of loss of awareness or convulsive activity. In short, his seizure activity has been quiescent during this period, including while at work under the above conditions. \n\nHe confirms excellent adherence to levetiracetam 1 g twice daily with no adverse effects beyond mild irritability early on, which has now settled. There have been no emergency department attendances, no injuries, and no use of rescue medication. He is sleeping more regularly since moving to a fixed early shift and has reduced caffeine intake. Alcohol intake is minimal. He carries his medical alert card and his line manager is aware of his condition and the agreed workplace safety plan (step-back protocol during crowd surges, ready access to a seated rest area, and colleague observation if he feels unwell). \n\nNeurological examination in clinic was unremarkable. Routine bloods from last month (U&E, LFT, FBC) were within normal ranges. We discussed generalised epilepsy triggers and workplace considerations; he feels confident with the current plan and does not wish to change medication. Given the sustained absence of events and good tolerability, we agreed to continue the present regimen without alteration. \n\nDriving status and safety were reviewed according to DVLA guidance; he remains compliant and has reported appropriately. We will arrange a routine follow-up in six months, with earlier review if there is any recurrence of symptoms, adverse effects, or concerns from his workplace risk assessment. He knows to seek urgent help should any unprovoked loss of awareness or convulsive episode occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states that over the past nine months there have been no witnessed events or episodes suggestive of seizures. This indicates the patient is currently seizure-free and has maintained this for 9 months, which meets the ≥6-month criterion for a 'seizure free for <value> month' label. No other seizure frequencies are mentioned to override this.",
+      "seizure_frequency_number": [
+        "seizure free for 9 month",
+        "over the past nine months there have been no witnessed events"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizures resolved"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 9 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

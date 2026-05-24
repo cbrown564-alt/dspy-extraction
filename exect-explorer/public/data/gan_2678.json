@@ -1,0 +1,59 @@
+{
+  "id": "gan_2678",
+  "text": "Department of Neurology\n\nClinic Date: 22 July 2022\n\nDr Aisha Rahman\nSouthbank Neurology Clinic\n3rd Floor, Riverside Health Centre, 22 Albert Embankment, London SE1 7TL\n\nDear Dr Aisha Rahman,\n\nMr Karim Hassan, DOB: 14-03-1992, Hospital No: H928374 NHS No. 9932847562\nFlat 12, 48 Meadow Court, London, SE11 5AB\n\nDiagnoses:\n\nRecurrent seizures of uncertain aetiology and classification.\n\nCurrent Medication:\n\nLevetiracetam 500 mg twice daily\nFolic acid 5 mg once daily (patient-reported from prior country of care)\n\nPlan:\n\n- Urgent MRI brain with epilepsy protocol\n- Repeat routine EEG with sleep deprivation where feasible\n- Increase Levetiracetam to 750 mg twice daily if tolerated; supply written titration plan in the patient’s preferred language\n- Seizure diary provided; community pharmacy new-medicine service referral\n- Driving and safety advice discussed; patient confirms not driving\n- Arrange joint review with epilepsy specialist nurse and interpreter support\n- Follow-up in 6 weeks\n\nI reviewed Mr Karim Hassan in clinic today. He is a recent migrant to the UK and is still learning how to access NHS services; an interpreter was available by telephone for parts of the consultation. He reports episodes that he and his family describe as “tonic-clonic every night,” typically occurring in the early hours, with whole-body stiffening and shaking, a bitten tongue on two occasions, and morning confusion. There is no consistent daytime trigger noted. He has not had prior prolonged admissions here. He previously received treatment overseas but arrives without records.\n\nOn current Levetiracetam 500 mg twice daily he continues to experience these nocturnal events most nights. He denies current alcohol use and is attempting regular sleep, though he reports irregular shift work at a warehouse since arriving in the UK. He has no known drug allergies. Neurological examination today was unremarkable. Routine blood tests requested via primary care include FBC, U&E, LFT, bone profile, vitamin D, B12/folate, and thyroid function.\n\nGiven the ongoing events described as tonic-clonic every night and the absence of prior UK investigations, we will proceed with MRI and EEG to clarify the diagnosis and inform management. We discussed interim safety measures including supervision near water, avoiding heights and open flames, and ensuring a safe sleep environment. Emergency management and when to call 999 were explained.\n\nWe provided written information on NHS pathways for urgent and routine epilepsy care, including how to contact the epilepsy specialist nurse and how to request an interpreter for future appointments. A translated titration plan and seizure first-aid leaflet were accepted. He confirms he does not currently drive and understands the legal restrictions should seizures continue.\n\nI will review him in 6 weeks or sooner if there is deterioration. Please let me know if there are concerns in the interim.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1248,
+      "end": 1275,
+      "text": "“tonic-clonic every night,”",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1249,
+      "end": 1273,
+      "text": "tonic-clonic every night",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2678,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 22 July 2022\n\nDr Aisha Rahman\nSouthbank Neurology Clinic\n3rd Floor, Riverside Health Centre, 22 Albert Embankment, London SE1 7TL\n\nDear Dr Aisha Rahman,\n\nMr Karim Hassan, DOB: 14-03-1992, Hospital No: H928374 NHS No. 9932847562\nFlat 12, 48 Meadow Court, London, SE11 5AB\n\nDiagnoses:\n\nRecurrent seizures of uncertain aetiology and classification.\n\nCurrent Medication:\n\nLevetiracetam 500 mg twice daily\nFolic acid 5 mg once daily (patient-reported from prior country of care)\n\nPlan:\n\n- Urgent MRI brain with epilepsy protocol\n- Repeat routine EEG with sleep deprivation where feasible\n- Increase Levetiracetam to 750 mg twice daily if tolerated; supply written titration plan in the patient’s preferred language\n- Seizure diary provided; community pharmacy new-medicine service referral\n- Driving and safety advice discussed; patient confirms not driving\n- Arrange joint review with epilepsy specialist nurse and interpreter support\n- Follow-up in 6 weeks\n\nI reviewed Mr Karim Hassan in clinic today. He is a recent migrant to the UK and is still learning how to access NHS services; an interpreter was available by telephone for parts of the consultation. He reports episodes that he and his family describe as “tonic-clonic every night,” typically occurring in the early hours, with whole-body stiffening and shaking, a bitten tongue on two occasions, and morning confusion. There is no consistent daytime trigger noted. He has not had prior prolonged admissions here. He previously received treatment overseas but arrives without records.\n\nOn current Levetiracetam 500 mg twice daily he continues to experience these nocturnal events most nights. He denies current alcohol use and is attempting regular sleep, though he reports irregular shift work at a warehouse since arriving in the UK. He has no known drug allergies. Neurological examination today was unremarkable. Routine blood tests requested via primary care include FBC, U&E, LFT, bone profile, vitamin D, B12/folate, and thyroid function.\n\nGiven the ongoing events described as tonic-clonic every night and the absence of prior UK investigations, we will proceed with MRI and EEG to clarify the diagnosis and inform management. We discussed interim safety measures including supervision near water, avoiding heights and open flames, and ensuring a safe sleep environment. Emergency management and when to call 999 were explained.\n\nWe provided written information on NHS pathways for urgent and routine epilepsy care, including how to contact the epilepsy specialist nurse and how to request an interpreter for future appointments. A translated titration plan and seizure first-aid leaflet were accepted. He confirms he does not currently drive and understands the legal restrictions should seizures continue.\n\nI will review him in 6 weeks or sooner if there is deterioration. Please let me know if there are concerns in the interim.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing nocturnal events: “tonic-clonic every night,” and “he continues to experience these nocturnal events most nights.” The explicit numeric-like phrase is “every night,” which implies approximately 1 per day. There are no multiple different frequencies; the highest frequency indicated is nightly. Therefore, normalize to 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "“tonic-clonic every night,”"
+      ],
+      "reference": [
+        "1 per day",
+        "tonic-clonic every night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

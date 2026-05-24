@@ -1,0 +1,59 @@
+{
+  "id": "gan_4563",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 21 September 2025 \n\nDr Priya Nair  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Nair,  \n\nDaniel Hart, DOB: 14-03-1986, Hospital No: KCH-1029384 NHS No. 7482019365  \n12 Brookfield Mews, London, SE15 3HQ\n\nThank you for referring this patient for review. I saw him in clinic with his partner. He reports a clear improvement over the past year, coinciding with a change to remote work that has reduced commute-related fatigue and allowed more consistent sleep. He has a diagnosis of generalised epilepsy, with typical events described as an abrupt loss of awareness followed by generalised stiffening and rhythmic jerks, brief cyanosis, and a short post-ictal period of confusion. There is no consistent focal onset history. Neurological examination in clinic today was unremarkable and he was calm and engaged throughout. \n\nCurrent seizure control: the pattern has stabilised and improved. Median inter-seizure interval ≈ four months, with the last two events spaced at roughly this interval. No nocturnal clusters, no injuries, and no recent need for rescue medication. He continues to adhere to treatment and has minimised alcohol and preserved regular sleep. \n\nBackground to improvement: he transitioned to a remote work arrangement that reduces fatigue; pattern improved. Prior to this, the seizure frequency before improvement was: Seizure pattern appears largely unchanged, with events clustering approximately every four to five days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September. This historical description contrasts with his current, substantially better control. \n\nInvestigations: Prior EEGs have shown generalised spike–wave discharges consistent with generalised epilepsy. No new imaging has been required since the last normal MRI. \n\nPlan: continue current anti-seizure therapy without change; maintain sleep routine and remote work structure as tolerated. We discussed safety and SUDEP information; he understands and is compliant with medication. He will keep a diary to corroborate the sustained extension of inter-seizure intervals. Follow-up in 6–9 months, sooner if there is any breakthrough activity or adverse effects. \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1038,
+      "end": 1140,
+      "text": "Median inter-seizure interval ≈ four months, with the last two events spaced at roughly this interval.",
+      "attributes": {
+        "Label": "1 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1038,
+      "end": 1081,
+      "text": "Median inter-seizure interval ≈ four months",
+      "attributes": {
+        "Label": "1 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4563,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 21 September 2025 \n\nDr Priya Nair  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr Priya Nair,  \n\nDaniel Hart, DOB: 14-03-1986, Hospital No: KCH-1029384 NHS No. 7482019365  \n12 Brookfield Mews, London, SE15 3HQ\n\nThank you for referring this patient for review. I saw him in clinic with his partner. He reports a clear improvement over the past year, coinciding with a change to remote work that has reduced commute-related fatigue and allowed more consistent sleep. He has a diagnosis of generalised epilepsy, with typical events described as an abrupt loss of awareness followed by generalised stiffening and rhythmic jerks, brief cyanosis, and a short post-ictal period of confusion. There is no consistent focal onset history. Neurological examination in clinic today was unremarkable and he was calm and engaged throughout. \n\nCurrent seizure control: the pattern has stabilised and improved. Median inter-seizure interval ≈ four months, with the last two events spaced at roughly this interval. No nocturnal clusters, no injuries, and no recent need for rescue medication. He continues to adhere to treatment and has minimised alcohol and preserved regular sleep. \n\nBackground to improvement: he transitioned to a remote work arrangement that reduces fatigue; pattern improved. Prior to this, the seizure frequency before improvement was: Seizure pattern appears largely unchanged, with events clustering approximately every four to five days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September. This historical description contrasts with his current, substantially better control. \n\nInvestigations: Prior EEGs have shown generalised spike–wave discharges consistent with generalised epilepsy. No new imaging has been required since the last normal MRI. \n\nPlan: continue current anti-seizure therapy without change; maintain sleep routine and remote work structure as tolerated. We discussed safety and SUDEP information; he understands and is compliant with medication. He will keep a diary to corroborate the sustained extension of inter-seizure intervals. Follow-up in 6–9 months, sooner if there is any breakthrough activity or adverse effects. \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify the current frequency. The letter states: 'Current seizure control: ... Median inter-seizure interval ≈ four months, with the last two events spaced at roughly this interval.' This provides an explicit numeric interval for current seizures. Convert median inter-seizure interval of approximately four months to frequency: 1 event per 4 months. Past history with higher frequency is not current; per rule, use current frequency unless multiple current frequencies are given. No evidence of seizure freedom ≥6 months, so not seizure free.",
+      "seizure_frequency_number": [
+        "1 per 4 month",
+        "Median inter-seizure interval ≈ four months, with the last two events spaced at roughly this interval."
+      ],
+      "reference": [
+        "1 per 4 month",
+        "Median inter-seizure interval ≈ four months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

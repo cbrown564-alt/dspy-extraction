@@ -1,0 +1,59 @@
+{
+  "id": "gan_13190",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 10 June 2023\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\n\nDear Dr Wang\n\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact, he has adopted a pillbox with phone reminders and reports that this has markedly reduced missed doses and improved his day-to-day stability. He feels more confident managing his medications and describes better energy levels with fewer fluctuations during the week.\n\nOn Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago. He recovered without injury and did not require hospital attendance. There were no witnessed convulsions, tongue biting or incontinence, and he reports an aura of brief disorientation followed by several minutes of confusion. He attributes the breakthrough event to a particularly disrupted week of sleep and work stress, though he did not miss any medication doses. He remains otherwise well and continues to use the adherence aids reliably.\n\nExamination today is unremarkable and there are no new adverse effects reported beyond occasional mild tiredness on late clinic days, which he feels is manageable. He denies rash, pruritus or mood change. We discussed ongoing self-management, the importance of sleep regularity, and continuing the current adherence strategy. Given the overall improvement, the prolonged seizure-free interval, and the isolated breakthrough event, I have not made any changes to his current Carbamazepine regimen today. We agreed to continue observation with the present plan and to review if there are any further events.\n\nI will follow up in three months, or sooner should he experience additional seizures or any concerns.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 619,
+      "end": 722,
+      "text": "he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago",
+      "attributes": {
+        "Label": "1 per 5 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 590,
+      "end": 722,
+      "text": "On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago",
+      "attributes": {
+        "Label": "1 per 5 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13190,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 10 June 2023\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\n\nDear Dr Wang\n\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact, he has adopted a pillbox with phone reminders and reports that this has markedly reduced missed doses and improved his day-to-day stability. He feels more confident managing his medications and describes better energy levels with fewer fluctuations during the week.\n\nOn Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago. He recovered without injury and did not require hospital attendance. There were no witnessed convulsions, tongue biting or incontinence, and he reports an aura of brief disorientation followed by several minutes of confusion. He attributes the breakthrough event to a particularly disrupted week of sleep and work stress, though he did not miss any medication doses. He remains otherwise well and continues to use the adherence aids reliably.\n\nExamination today is unremarkable and there are no new adverse effects reported beyond occasional mild tiredness on late clinic days, which he feels is manageable. He denies rash, pruritus or mood change. We discussed ongoing self-management, the importance of sleep regularity, and continuing the current adherence strategy. Given the overall improvement, the prolonged seizure-free interval, and the isolated breakthrough event, I have not made any changes to his current Carbamazepine regimen today. We agreed to continue observation with the present plan and to review if there are any further events.\n\nI will follow up in three months, or sooner should he experience additional seizures or any concerns.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago.\" This indicates exactly 1 seizure in the past 5 months, not yet meeting 6 months to be considered seizure-free. Therefore, current measurable frequency is 1 per 5 months. No other seizure frequencies are mentioned. Apply highest frequency rule not needed as there's only one. Normalize to allowed format: '1 per 5 month'.",
+      "seizure_frequency_number": [
+        "1 per 5 month",
+        "he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago"
+      ],
+      "reference": [
+        "1 per 5 month",
+        "On Carbamazepine monotherapy he was seizure-free for 5 months, until a focal impaired-awareness seizure occurred three Thursdays ago"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

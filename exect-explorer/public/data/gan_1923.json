@@ -1,0 +1,59 @@
+{
+  "id": "gan_1923",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Anita Bains\nRiverside Medical Practice  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Anita Bains\nRiverside Medical Practice,  \n\nLiam Carter, DOB: 14-03-1991, Hospital No: KCH1029384 NHS No. 9432275619  \n12 Brookfield Road, London, SE15 3HT\n\nThank you for referring this patient to the neurology clinic. I reviewed him today with his partner present. He reports a longstanding history of generalised epilepsy, with onset in late adolescence, previously managed in secondary care. Over the past six months he describes two drop attacks and five epileptic spasms. The drop attacks have occurred without clear warning, are brief, and have resulted in minor abrasions only; recovery has been rapid. The epileptic spasms are usually clustered in the morning shortly after waking, each lasting only a few seconds with brief trunk flexion and arm abduction, without prolonged confusion. He denies any focal onset symptoms. There is no consistent sleep deprivation or intercurrent illness preceding events. He commutes mainly by bicycle and continues his usual work as a graphic designer.\n\nHe has a past diagnosis of generalised epilepsy based on prior EEG demonstrating generalised spike–wave discharges and a normal structural MRI (2019). There is a family history of epilepsy in a maternal cousin. Current treatment is sodium valproate 1 g twice daily with good tolerability; he reports occasional mild tremor but no weight change or mood disturbance. Adherence appears reliable. He has not required emergency medication in the past year and has had no hospital admissions. There is no history of psychosis, and mood is reported as stable. He does not drink to excess and denies recreational drug use.\n\nNeurological examination today was unremarkable. Cardiovascular and general examination were within normal limits. Routine bloods from his GP in May 2025 (FBC, U&E, LFTs, glucose, B12, folate, TFTs) were normal by report. We discussed monitoring and documentation of events. Given the recurrence profile of two drop attacks and five epileptic spasms in the past six months, and the established generalised epilepsy diagnosis, I suggested we obtain an updated routine EEG to reassess interictal activity and a serum valproate trough level to confirm therapeutic range. We also discussed possible future adjustment to therapy should spasms persist, including consideration of lamotrigine in combination, though he prefers no change today pending results. He will continue to record events on a simple calendar and bring this to the next review.\n\nPlan agreed with the patient:\n- Arrange routine EEG within 6–8 weeks.\n- Check valproate trough level and LFTs via GP surgery.\n- No immediate medication change; review after investigations with results to be shared.\n- Provide a brief work note confirming attendance at hospital clinic today, as requested.\n\nI will write again once results are available. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 631,
+      "end": 712,
+      "text": "Over the past six months he describes two drop attacks and five epileptic spasms.",
+      "attributes": {
+        "Label": "7 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 2156,
+      "end": 2221,
+      "text": "two drop attacks and five epileptic spasms in the past six months",
+      "attributes": {
+        "Label": "7 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1923,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr Anita Bains\nRiverside Medical Practice  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Anita Bains\nRiverside Medical Practice,  \n\nLiam Carter, DOB: 14-03-1991, Hospital No: KCH1029384 NHS No. 9432275619  \n12 Brookfield Road, London, SE15 3HT\n\nThank you for referring this patient to the neurology clinic. I reviewed him today with his partner present. He reports a longstanding history of generalised epilepsy, with onset in late adolescence, previously managed in secondary care. Over the past six months he describes two drop attacks and five epileptic spasms. The drop attacks have occurred without clear warning, are brief, and have resulted in minor abrasions only; recovery has been rapid. The epileptic spasms are usually clustered in the morning shortly after waking, each lasting only a few seconds with brief trunk flexion and arm abduction, without prolonged confusion. He denies any focal onset symptoms. There is no consistent sleep deprivation or intercurrent illness preceding events. He commutes mainly by bicycle and continues his usual work as a graphic designer.\n\nHe has a past diagnosis of generalised epilepsy based on prior EEG demonstrating generalised spike–wave discharges and a normal structural MRI (2019). There is a family history of epilepsy in a maternal cousin. Current treatment is sodium valproate 1 g twice daily with good tolerability; he reports occasional mild tremor but no weight change or mood disturbance. Adherence appears reliable. He has not required emergency medication in the past year and has had no hospital admissions. There is no history of psychosis, and mood is reported as stable. He does not drink to excess and denies recreational drug use.\n\nNeurological examination today was unremarkable. Cardiovascular and general examination were within normal limits. Routine bloods from his GP in May 2025 (FBC, U&E, LFTs, glucose, B12, folate, TFTs) were normal by report. We discussed monitoring and documentation of events. Given the recurrence profile of two drop attacks and five epileptic spasms in the past six months, and the established generalised epilepsy diagnosis, I suggested we obtain an updated routine EEG to reassess interictal activity and a serum valproate trough level to confirm therapeutic range. We also discussed possible future adjustment to therapy should spasms persist, including consideration of lamotrigine in combination, though he prefers no change today pending results. He will continue to record events on a simple calendar and bring this to the next review.\n\nPlan agreed with the patient:\n- Arrange routine EEG within 6–8 weeks.\n- Check valproate trough level and LFTs via GP surgery.\n- No immediate medication change; review after investigations with results to be shared.\n- Provide a brief work note confirming attendance at hospital clinic today, as requested.\n\nI will write again once results are available. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past six months he describes two drop attacks and five epileptic spasms.\" Total seizures in 6 months = 2 + 5 = 7. No other frequencies given. Apply rule to sum same-dimension events over the period. Therefore frequency is 7 per 6 months.",
+      "seizure_frequency_number": [
+        "7 per 6 month",
+        "Over the past six months he describes two drop attacks and five epileptic spasms."
+      ],
+      "reference": [
+        "7 per 6 month",
+        "two drop attacks and five epileptic spasms in the past six months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

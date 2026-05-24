@@ -1,0 +1,54 @@
+{
+  "id": "gan_7196",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 September 2022 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Management update and safety advice\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy, likely temporal lobe onset, with occasional secondary generalisation reported historically but none in the last 18 months.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nPatient reports a noticeable rise in focal aware and focal impaired-awareness events since the postpartum period, with clustering over the past six weeks (four focal impaired-awareness episodes and two focal aware auras). No convulsions. Sleep disruption and increased stress related to infant care noted as potential contributing factors. Currently not driving by self-report.\n\nPlan of Action:\n\n- We will uptitrate Brivaracetam from 50 mg twice daily to 75 mg twice daily for two weeks, then to 100 mg twice daily if tolerated and seizures persist. Maintain Lamotrigine at the current dose for now.\n- If sedation or mood change emerges with the Brivaracetam increase, revert to the last tolerated dose and inform us.\n- Patient-reported triggers include sleep deprivation and missed meals; she will continue sleep hygiene measures, arrange overnight feeding support when possible, and set medication alarms.\n- Safety: remains off driving; we have reiterated DVLA guidance and will review fitness to drive once seizure control is re-established.\n- Bloods: check FBC, U&Es, LFTs, and Lamotrigine trough level in 2–3 weeks after dose stabilisation.\n- Follow-up: video review in six weeks, face-to-face in three months. If seizures generalise or frequency accelerates, she will contact the epilepsy nurse line for expedited review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 756,
+      "end": 857,
+      "text": "clustering over the past six weeks (four focal impaired-awareness episodes and two focal aware auras)",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7196,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 September 2022 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Fraser (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Management update and safety advice\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nFocal epilepsy, likely temporal lobe onset, with occasional secondary generalisation reported historically but none in the last 18 months.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nPatient reports a noticeable rise in focal aware and focal impaired-awareness events since the postpartum period, with clustering over the past six weeks (four focal impaired-awareness episodes and two focal aware auras). No convulsions. Sleep disruption and increased stress related to infant care noted as potential contributing factors. Currently not driving by self-report.\n\nPlan of Action:\n\n- We will uptitrate Brivaracetam from 50 mg twice daily to 75 mg twice daily for two weeks, then to 100 mg twice daily if tolerated and seizures persist. Maintain Lamotrigine at the current dose for now.\n- If sedation or mood change emerges with the Brivaracetam increase, revert to the last tolerated dose and inform us.\n- Patient-reported triggers include sleep deprivation and missed meals; she will continue sleep hygiene measures, arrange overnight feeding support when possible, and set medication alarms.\n- Safety: remains off driving; we have reiterated DVLA guidance and will review fitness to drive once seizure control is re-established.\n- Bloods: check FBC, U&Es, LFTs, and Lamotrigine trough level in 2–3 weeks after dose stabilisation.\n- Follow-up: video review in six weeks, face-to-face in three months. If seizures generalise or frequency accelerates, she will contact the epilepsy nurse line for expedited review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'clustering over the past six weeks (four focal impaired-awareness episodes and two focal aware auras)'. That totals 6 seizures in 6 weeks. Normalising to a rate gives 6 ÷ 6 = 1 per week. No other conflicting or higher frequency is provided, and cluster details are insufficient to express per-cluster metrics.",
+      "seizure_frequency_number": [
+        "1 per week",
+        "clustering over the past six weeks (four focal impaired-awareness episodes and two focal aware auras)"
+      ],
+      "reference": [
+        "unknown",
+        "Postpartum increase in seizure frequency"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

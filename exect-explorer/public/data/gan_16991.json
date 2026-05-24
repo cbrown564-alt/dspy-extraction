@@ -1,0 +1,59 @@
+{
+  "id": "gan_16991",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Harrington\nRiverside Family Practice\n14 Willow Lane, Oxford OX2 7AB\n\nDear Dr Harrington,\n\nJames Porter, DOB: 22-11-1987, Hospital No: OX9483221 NHS No. NHS-7392015846\n8 Chestnut Grove, Oxford, OX3 9DL\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine therapy since March 2024\n\nCurrent regimen: Lamotrigine 100 mg in the morning and 150 mg at night (patient-reported adherence good). No other anti-seizure medicines.\n\nLamotrigine Blood Level:\n\n12 September 2025: 4.3 mg/L (reference 1.0–15.0 mg/L), on 100 mg AM / 150 mg PM dosing.\n\nSeizures: He continues to suffer focal aware seizures few times per month, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory.\n\nI conducted a telephone follow-up today. He reports being the primary caregiver for his two young children. Night-time sleep is frequently interrupted by childcare needs, and he feels this can occasionally precipitate his evening events. Despite the sleep disruption, he and his partner feel the episodes remain manageable and have not led to injuries or emergency attendances. There have been no new neurological symptoms, no medication side effects reported (no rash, diplopia, ataxia, or mood change), and no recent intercurrent illnesses.\n\nHe maintains seizure precautions at home. Driving status is self-reported as not driving currently. We discussed sleep hygiene and practical strategies for evening routines, which he will try. He does not wish to change medication at present given acceptable control from the family perspective, and we agreed to continue current therapy and monitoring.\n\nPlan:\n- Continue Lamotrigine 100 mg AM / 150 mg PM.\n- Routine blood level check in 6 months, or sooner if clinical change.\n- Telephone review in 6 months, with earlier contact if seizure pattern worsens or if generalised events occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 613,
+      "end": 676,
+      "text": "He continues to suffer focal aware seizures few times per month",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 613,
+      "end": 873,
+      "text": "He continues to suffer focal aware seizures few times per month, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory",
+      "attributes": {
+        "Label": "multiple per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16991,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Harrington\nRiverside Family Practice\n14 Willow Lane, Oxford OX2 7AB\n\nDear Dr Harrington,\n\nJames Porter, DOB: 22-11-1987, Hospital No: OX9483221 NHS No. NHS-7392015846\n8 Chestnut Grove, Oxford, OX3 9DL\n\nEpilepsy\n\nMedication: Ongoing Lamotrigine therapy since March 2024\n\nCurrent regimen: Lamotrigine 100 mg in the morning and 150 mg at night (patient-reported adherence good). No other anti-seizure medicines.\n\nLamotrigine Blood Level:\n\n12 September 2025: 4.3 mg/L (reference 1.0–15.0 mg/L), on 100 mg AM / 150 mg PM dosing.\n\nSeizures: He continues to suffer focal aware seizures few times per month, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory.\n\nI conducted a telephone follow-up today. He reports being the primary caregiver for his two young children. Night-time sleep is frequently interrupted by childcare needs, and he feels this can occasionally precipitate his evening events. Despite the sleep disruption, he and his partner feel the episodes remain manageable and have not led to injuries or emergency attendances. There have been no new neurological symptoms, no medication side effects reported (no rash, diplopia, ataxia, or mood change), and no recent intercurrent illnesses.\n\nHe maintains seizure precautions at home. Driving status is self-reported as not driving currently. We discussed sleep hygiene and practical strategies for evening routines, which he will try. He does not wish to change medication at present given acceptable control from the family perspective, and we agreed to continue current therapy and monitoring.\n\nPlan:\n- Continue Lamotrigine 100 mg AM / 150 mg PM.\n- Routine blood level check in 6 months, or sooner if clinical change.\n- Telephone review in 6 months, with earlier contact if seizure pattern worsens or if generalised events occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He continues to suffer focal aware seizures few times per month\". This provides a qualitative frequency without a specific number. No other frequency statements contradict or quantify further. There are no generalized convulsions in the past twelve months, but focal aware seizures occur. Therefore, per rules, use 'multiple' when the exact number cannot be determined and normalize to 'multiple per month'.",
+      "seizure_frequency_number": [
+        "multiple per month",
+        "He continues to suffer focal aware seizures few times per month"
+      ],
+      "reference": [
+        "multiple per month",
+        "He continues to suffer focal aware seizures few times per month, mostly in the evenings, though they are brief and self-terminating. No generalised convulsions have been documented in the past twelve months. The family consider his current control satisfactory"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

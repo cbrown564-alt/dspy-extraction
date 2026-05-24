@@ -1,0 +1,59 @@
+{
+  "id": "gan_13266",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Eleanor Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 August 2022 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Menon (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Claire Donovan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following dietary therapy and recent events\n\nDear Dr Menon,\n\nDiagnosis:\nSeizure disorder under ongoing evaluation.\n\nBackground and interim history:\nShe reports ongoing follow‑up elsewhere for a ketogenic/modified diet; copies of the dietitian’s plan were provided and we have recorded macronutrient targets and supplement use in the notes. No intercurrent illness, sleep deprivation, or missed medication reported. Mood stable; no recent head injuries.\n\nCurrent medication:\n1. Clobazam 10 mg nocte\n2. Carbamazepine MR 400 mg twice daily\n3. Vitamin D3 1000 IU daily (as part of diet protocol)\n\nSeizure chronology and frequency:\nAfter commencing Clobazam 10 mg nocte, she had a 3 month remission, then sustained a drop attack two Mondays ago, preceded by myoclonic jerks. In discussion today, she recalls one further similar event approximately eleven weeks prior to this clinic visit. On that basis, the present seizure frequency is two events over the last three months.\n\nExamination and tests:\nNeurological examination unremarkable today. Routine bloods last month including U&E, LFTs, and bicarbonate were within range for dietary therapy. We have requested an updated bone profile and fasting lipid panel per ketogenic monitoring protocol. Prior EEG/MRI reports are pending transfer from the external centre.\n\nPlan:\n- Continue current medications unchanged for now while we obtain external records and correlate with dietary data.\n- Maintain the documented ketogenic/modified diet as supervised by the external team; no changes from our side today.\n- Provide a seizure diary template aligned to diet logs to improve event–trigger correlation.\n- Safety advice reinforced regarding drop attacks, including use of soft‑fall strategies and avoidance of heights.\n- Follow‑up in 3–4 months, sooner if further drop attacks occur.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1218,
+      "end": 1288,
+      "text": "the present seizure frequency is two events over the last three months",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 946,
+      "end": 1087,
+      "text": "After commencing Clobazam 10 mg nocte, she had a 3 month remission, then sustained a drop attack two Mondays ago, preceded by myoclonic jerks",
+      "attributes": {
+        "Label": "2 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 13266,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Eleanor Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 07 August 2022 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Ravi Menon (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Claire Donovan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following dietary therapy and recent events\n\nDear Dr Menon,\n\nDiagnosis:\nSeizure disorder under ongoing evaluation.\n\nBackground and interim history:\nShe reports ongoing follow‑up elsewhere for a ketogenic/modified diet; copies of the dietitian’s plan were provided and we have recorded macronutrient targets and supplement use in the notes. No intercurrent illness, sleep deprivation, or missed medication reported. Mood stable; no recent head injuries.\n\nCurrent medication:\n1. Clobazam 10 mg nocte\n2. Carbamazepine MR 400 mg twice daily\n3. Vitamin D3 1000 IU daily (as part of diet protocol)\n\nSeizure chronology and frequency:\nAfter commencing Clobazam 10 mg nocte, she had a 3 month remission, then sustained a drop attack two Mondays ago, preceded by myoclonic jerks. In discussion today, she recalls one further similar event approximately eleven weeks prior to this clinic visit. On that basis, the present seizure frequency is two events over the last three months.\n\nExamination and tests:\nNeurological examination unremarkable today. Routine bloods last month including U&E, LFTs, and bicarbonate were within range for dietary therapy. We have requested an updated bone profile and fasting lipid panel per ketogenic monitoring protocol. Prior EEG/MRI reports are pending transfer from the external centre.\n\nPlan:\n- Continue current medications unchanged for now while we obtain external records and correlate with dietary data.\n- Maintain the documented ketogenic/modified diet as supervised by the external team; no changes from our side today.\n- Provide a seizure diary template aligned to diet logs to improve event–trigger correlation.\n- Safety advice reinforced regarding drop attacks, including use of soft‑fall strategies and avoidance of heights.\n- Follow‑up in 3–4 months, sooner if further drop attacks occur.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"On that basis, the present seizure frequency is two events over the last three months.\" This gives a clear numeric frequency. Convert to the allowed format: 2 events over 3 months corresponds to \"2 per 3 month\". No other higher-frequency figures are provided that would override this.",
+      "seizure_frequency_number": [
+        "2 per 3 month",
+        "the present seizure frequency is two events over the last three months"
+      ],
+      "reference": [
+        "2 per 3 month",
+        "After commencing Clobazam 10 mg nocte, she had a 3 month remission, then sustained a drop attack two Mondays ago, preceded by myoclonic jerks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

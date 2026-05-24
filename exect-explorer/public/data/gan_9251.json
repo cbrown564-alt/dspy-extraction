@@ -1,0 +1,48 @@
+{
+  "id": "gan_9251",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Michael Hart  \nRiverside Health Centre  \n221 King Street, Manchester M3 5FS  \n\nDear Dr Michael Hart,                                                                                                         \n\nEmma Clarke, DOB: 22-11-1992, Hospital No: H372640 NHS No. 9432017856  \nFlat 4, 18 Willow Road, Manchester, M14 5AB  \n\nNone Epilepsy \n\nMedication: No anti-seizure medicines currently prescribed or required. \n\nSeizure Description and Frequency: The patient reports no episodes suggestive of epileptic seizures; there have been no recognised events, auras, or witnessed convulsions, and no features raising concern for epilepsy since our last contact. She has occasionally experienced brief light-headedness on standing, which is consistent with postural dizziness and not epileptic in nature. \n\nEpilepsy Status: The patient does not have epilepsy. Historical concerns for possible seizures were reviewed with collateral information; the events were more consistent with vasovagal syncope and have resolved with hydration and postural measures. There is no clinical or investigative evidence supporting a diagnosis of epilepsy. \n\nInvestigations: Prior routine EEG (June 2024) normal. ECG and lying/standing blood pressure (GP, April 2024) showed postural drop; corrected with fluid and salt advice. No neuroimaging indicated at present. \n\nPlan: \n- No anti-seizure treatment indicated. \n- Continue general measures for postural symptoms as needed (hydration, slow positional changes), patient-reported adherence good. \n- Safety advice reiterated regarding driving only if symptom-free from syncope; patient reports no further episodes for over 12 months. \n- No routine neurology follow-up required; open appointment if new neurological symptoms arise. \n\nI spoke with the patient today during a scheduled review. She remains well, is working full-time without restrictions, and confirms no events suggestive of epilepsy. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 531,
+      "end": 736,
+      "text": "The patient reports no episodes suggestive of epileptic seizures; there have been no recognised events, auras, or witnessed convulsions, and no features raising concern for epilepsy since our last contact.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9251,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Michael Hart  \nRiverside Health Centre  \n221 King Street, Manchester M3 5FS  \n\nDear Dr Michael Hart,                                                                                                         \n\nEmma Clarke, DOB: 22-11-1992, Hospital No: H372640 NHS No. 9432017856  \nFlat 4, 18 Willow Road, Manchester, M14 5AB  \n\nNone Epilepsy \n\nMedication: No anti-seizure medicines currently prescribed or required. \n\nSeizure Description and Frequency: The patient reports no episodes suggestive of epileptic seizures; there have been no recognised events, auras, or witnessed convulsions, and no features raising concern for epilepsy since our last contact. She has occasionally experienced brief light-headedness on standing, which is consistent with postural dizziness and not epileptic in nature. \n\nEpilepsy Status: The patient does not have epilepsy. Historical concerns for possible seizures were reviewed with collateral information; the events were more consistent with vasovagal syncope and have resolved with hydration and postural measures. There is no clinical or investigative evidence supporting a diagnosis of epilepsy. \n\nInvestigations: Prior routine EEG (June 2024) normal. ECG and lying/standing blood pressure (GP, April 2024) showed postural drop; corrected with fluid and salt advice. No neuroimaging indicated at present. \n\nPlan: \n- No anti-seizure treatment indicated. \n- Continue general measures for postural symptoms as needed (hydration, slow positional changes), patient-reported adherence good. \n- Safety advice reiterated regarding driving only if symptom-free from syncope; patient reports no further episodes for over 12 months. \n- No routine neurology follow-up required; open appointment if new neurological symptoms arise. \n\nI spoke with the patient today during a scheduled review. She remains well, is working full-time without restrictions, and confirms no events suggestive of epilepsy. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient reports no episodes suggestive of epileptic seizures since the last contact, with no auras or witnessed convulsions. It further confirms the patient does not have epilepsy and that prior concerning events were vasovagal syncope and have resolved. Safety advice notes no further syncope for over 12 months, and the patient confirms no events suggestive of epilepsy at this review. To label as seizure free, the patient must have no seizures for at least 6 months. The letter indicates ongoing absence of epileptic events since last contact, and also mentions over 12 months without syncope; while syncope is non-epileptic, there is no evidence of epileptic seizures during this period. Therefore, it is reasonable to consider seizure free for multiple months (conservative) or years if ≥12 months were explicitly tied to seizures. Since the 12 months explicitly refers to syncope, not seizures, and the exact last contact date isn't given, we should select 'seizure free for multiple months' based on the clear current absence and ongoing lack since last contact.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "The patient reports no episodes suggestive of epileptic seizures; there have been no recognised events, auras, or witnessed convulsions, and no features raising concern for epilepsy since our last contact."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No definite seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

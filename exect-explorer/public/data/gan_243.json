@@ -1,0 +1,59 @@
+{
+  "id": "gan_243",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 January 2023 \n\nDr Asha Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Asha Patel\nConsultant Neurologist,  \n\nDaniel Reeves, DOB: 14-03-1986, Hospital No: R928153 NHS No. 7712045693  \n12 Calder Wharf, Deptford, London SE8 3LP\n\nThank you for asking me to review this patient regarding his established epilepsy and occupational considerations. He works in a cold-chain warehouse where prolonged exposure to low temperatures and the need for thick gloves can slow access to rescue devices. He attended with his partner who corroborated the history. \n\nHe has a diagnosis of generalised epilepsy. His typical events are described as an abrupt loss of awareness with generalised stiffening followed by rhythmic jerking, brief vocalisation at onset in some episodes, and a post-ictal phase of confusion and headache. There are no consistent focal features reported before or after the events. He and his partner report that the seizures occur every four months, with the last event taking place on site in the loading area. On that occasion, colleagues followed the workplace plan and kept him safe. There was no injury. \n\nKnown triggers are sleep deprivation and missed meals during busy shifts; he denies alcohol overuse. He wears a smartwatch that flags elevated heart rate around exertion but there has been no reliable prodrome. He does not drive. He reports excellent adherence to his medication and brings pharmacy records aligned with this. He stores his rescue midazolam at work; however, he notes that cold-room conditions and gloves make unfastening the case slower, a point corroborated by the warehouse first-aid lead via the patient’s written report. \n\nExamination today is unremarkable. Neurological exam is normal between events. No features to suggest a progressive process. \n\nPlan:\n- Continue current anti-seizure regimen as tolerability is good and seizure burden is low at every four months.\n- Provide a duplicate, easy-open rescue pack for use outside the cold rooms and signpost the employer to review access within their safety protocol, as per patient-reported concerns.\n- Reinforce sleep and meal regularity around shifts.\n- Issue an updated individual seizure management plan for the workplace with clear timings and roles.\n- Routine follow-up with seizure diary review in 6–9 months, or sooner if frequency increases or injuries occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1077,
+      "end": 1113,
+      "text": "the seizures occur every four months",
+      "attributes": {
+        "Label": "1 per 4 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1096,
+      "end": 1113,
+      "text": "every four months",
+      "attributes": {
+        "Label": "1 per 4 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 243,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 22 January 2023 \n\nDr Asha Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Asha Patel\nConsultant Neurologist,  \n\nDaniel Reeves, DOB: 14-03-1986, Hospital No: R928153 NHS No. 7712045693  \n12 Calder Wharf, Deptford, London SE8 3LP\n\nThank you for asking me to review this patient regarding his established epilepsy and occupational considerations. He works in a cold-chain warehouse where prolonged exposure to low temperatures and the need for thick gloves can slow access to rescue devices. He attended with his partner who corroborated the history. \n\nHe has a diagnosis of generalised epilepsy. His typical events are described as an abrupt loss of awareness with generalised stiffening followed by rhythmic jerking, brief vocalisation at onset in some episodes, and a post-ictal phase of confusion and headache. There are no consistent focal features reported before or after the events. He and his partner report that the seizures occur every four months, with the last event taking place on site in the loading area. On that occasion, colleagues followed the workplace plan and kept him safe. There was no injury. \n\nKnown triggers are sleep deprivation and missed meals during busy shifts; he denies alcohol overuse. He wears a smartwatch that flags elevated heart rate around exertion but there has been no reliable prodrome. He does not drive. He reports excellent adherence to his medication and brings pharmacy records aligned with this. He stores his rescue midazolam at work; however, he notes that cold-room conditions and gloves make unfastening the case slower, a point corroborated by the warehouse first-aid lead via the patient’s written report. \n\nExamination today is unremarkable. Neurological exam is normal between events. No features to suggest a progressive process. \n\nPlan:\n- Continue current anti-seizure regimen as tolerability is good and seizure burden is low at every four months.\n- Provide a duplicate, easy-open rescue pack for use outside the cold rooms and signpost the employer to review access within their safety protocol, as per patient-reported concerns.\n- Reinforce sleep and meal regularity around shifts.\n- Issue an updated individual seizure management plan for the workplace with clear timings and roles.\n- Routine follow-up with seizure diary review in 6–9 months, or sooner if frequency increases or injuries occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"the seizures occur every four months\" and reiterates in the plan \"seizure burden is low at every four months.\" This provides a clear frequency. No other conflicting frequencies are given. Convert \"every four months\" to the allowed format as \"1 per 4 month.\"",
+      "seizure_frequency_number": [
+        "1 per 4 month",
+        "the seizures occur every four months"
+      ],
+      "reference": [
+        "1 per 4 month",
+        "every four months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

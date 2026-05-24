@@ -1,0 +1,65 @@
+{
+  "id": "gan_7346",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Martin O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rebecca Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following workplace-related seizure relapses\n\nHi Priya\n\nDiagnosis context:\nThe patient works as a warehouse picker navigating tall racking and narrow aisles. Tasks involve variable lifting and pace depending on shift demands. No definitive seizure classification has been established to date.\n\nCurrent medication:\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\nSeizure history and frequency update:\nAfter recent adjustments at the last clinic visit, the patient reported an initial improvement then relapse after 3 weeks. Specifically, there were no events for the first three weeks following the dose optimisation, after which brief losses of awareness recurred on two separate late shifts. The patient reports no clear precipitant, though faster picking targets and more frequent bending/lifting were noted on those shifts. No myoclonic jerks or convulsions were described. No injuries have occurred; colleagues assisted the patient to a safe seated position each time.\n\nWorkplace context (patient-reported):\n- Narrow aisle work with frequent head turns scanning shelves.\n- Variable shift pace; late shifts often require quicker turnaround and heavier items.\n- Hydration may be inconsistent on busy days; the patient is trialling scheduled water breaks.\n\nPlan of action:\n- Maintain current doses of lamotrigine and topiramate for now while we complete further characterisation with ambulatory EEG and an updated serum lamotrigine level in two weeks.\n- The patient will keep a detailed event and activity diary noting shift type, lifting load, heat exposure, hydration, sleep duration, and any aura-like symptoms.\n- Occupational advice provided: continue buddy system for aisle work, avoid lone working on upper racking, and take regular hydration breaks; patient will discuss these with the line manager. These measures are patient-reported plans pending formal occupational health review.\n- Follow-up in 8 weeks or sooner if events cluster or injuries occur. If tolerability remains good and events persist, we will consider a cautious lamotrigine up-titration at review.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 949,
+      "end": 1023,
+      "text": "after which brief losses of awareness recurred on two separate late shifts",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 807,
+      "end": 853,
+      "text": "Initial improvement then relapse after 3 weeks",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7346,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Priya Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: neuro.clinic@kch.nhs.uk\nCc: Dr Martin O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Rebecca Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review following workplace-related seizure relapses\n\nHi Priya\n\nDiagnosis context:\nThe patient works as a warehouse picker navigating tall racking and narrow aisles. Tasks involve variable lifting and pace depending on shift demands. No definitive seizure classification has been established to date.\n\nCurrent medication:\n1. Lamotrigine 100 mg twice daily\n2. Topiramate 50 mg at night\n\nSeizure history and frequency update:\nAfter recent adjustments at the last clinic visit, the patient reported an initial improvement then relapse after 3 weeks. Specifically, there were no events for the first three weeks following the dose optimisation, after which brief losses of awareness recurred on two separate late shifts. The patient reports no clear precipitant, though faster picking targets and more frequent bending/lifting were noted on those shifts. No myoclonic jerks or convulsions were described. No injuries have occurred; colleagues assisted the patient to a safe seated position each time.\n\nWorkplace context (patient-reported):\n- Narrow aisle work with frequent head turns scanning shelves.\n- Variable shift pace; late shifts often require quicker turnaround and heavier items.\n- Hydration may be inconsistent on busy days; the patient is trialling scheduled water breaks.\n\nPlan of action:\n- Maintain current doses of lamotrigine and topiramate for now while we complete further characterisation with ambulatory EEG and an updated serum lamotrigine level in two weeks.\n- The patient will keep a detailed event and activity diary noting shift type, lifting load, heat exposure, hydration, sleep duration, and any aura-like symptoms.\n- Occupational advice provided: continue buddy system for aisle work, avoid lone working on upper racking, and take regular hydration breaks; patient will discuss these with the line manager. These measures are patient-reported plans pending formal occupational health review.\n- Follow-up in 8 weeks or sooner if events cluster or injuries occur. If tolerability remains good and events persist, we will consider a cautious lamotrigine up-titration at review.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter reports that after dose optimisation there were no events for the first three weeks, then brief losses of awareness recurred on two separate late shifts. No further timeframe is specified beyond those two events. There is no explicit period (e.g., per week or per month) over which these two events occurred, only that they happened after three weeks of being event-free. Since the duration over which the two events occurred is not defined, a precise frequency (per day/week/month/year) cannot be calculated. The patient is not seizure-free for ≥6 months. Therefore, the frequency is unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "after which brief losses of awareness recurred on two separate late shifts"
+      ],
+      "reference": [
+        "unknown",
+        "Initial improvement then relapse after 3 weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

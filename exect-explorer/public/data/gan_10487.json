@@ -1,0 +1,59 @@
+{
+  "id": "gan_10487",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 January 2020 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nGuy’s and St Thomas’ NHS Foundation Trust, London  \n\nDear Dr Sarah Ahmed, \n\nMr Daniel Kerr, DOB: 22-09-1987, Hospital No: G8475203 NHS No. 9012756483  \n42 Brookfield Road, London, SE15 3AB  \n\nDiagnosis: \n\nEpilepsy with current deterioration in seizure control; precise classification remains unconfirmed \n\nAetiology: \n\nNo definite structural, genetic, metabolic, infectious, or immune cause identified to date; investigations ongoing \n\nOther Medical Problems: \n\nMild anxiety related to recent relapse; seasonal allergic rhinitis managed with over‑the‑counter antihistamine as needed \n\nManagement Plan: \n\n- Safety advice reinforced, including supervision around water, avoidance of sleep deprivation, and limiting alcohol; patient‑reported triggers include stress and irregular sleep.\n- Medication: continue current Levetiracetam 1 g twice daily pending serum level and side‑effect review; no immediate dose change today as adherence is being verified and bloods are pending.\n- Investigations: arrange repeat EEG with sleep deprivation and ambulatory recording; request MRI brain epilepsy protocol to reassess for subtle lesions; check U&E, LFT, FBC, vitamin D, and Levetiracetam level.\n- Seizure diary: patient to maintain detailed record of events, auras, clusters, and potential triggers.\n- Driving: advised to cease driving and inform DVLA in line with current guidance following recent relapse.\n- Follow‑up: urgent review in 6 weeks to consider add‑on therapy (e.g., Lamotrigine or Lacosamide) if control not improving, and to discuss rescue plan if clusters persist.\n\nSince his last review, he describes a clear deterioration in control. Previously monthly; now four clusters this month. He notes brief warning sensations of unease on some occasions, but not consistently, with episodes typically occurring in the late evening after several nights of poor sleep. His partner reports occasional confused behaviour post‑event lasting several minutes, with no clear limb jerking or tongue biting observed; there has been one minor fall without head injury. He denies missed doses but acknowledges variable timing of evening medication due to shift work. No intercurrent illness or new prescribed drugs; he started a gym routine and energy drinks in the past month. There is no history suggestive of syncope. \n\nIn view of the relapse, we have prioritised further evaluation and emphasised modifiable lifestyle factors while we confirm adherence and medication levels. We also discussed the potential introduction of a rescue medication for clusters at the next visit depending on investigation results and diary documentation. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1783,
+      "end": 1832,
+      "text": "Previously monthly; now four clusters this month.",
+      "attributes": {
+        "Label": "4 cluster per month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1783,
+      "end": 1831,
+      "text": "Previously monthly; now four clusters this month",
+      "attributes": {
+        "Label": "4 cluster per month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10487,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 January 2020 \n\nDr Sarah Ahmed \nConsultant Neurologist  \nCentre for Epilepsy  \nGuy’s and St Thomas’ NHS Foundation Trust, London  \n\nDear Dr Sarah Ahmed, \n\nMr Daniel Kerr, DOB: 22-09-1987, Hospital No: G8475203 NHS No. 9012756483  \n42 Brookfield Road, London, SE15 3AB  \n\nDiagnosis: \n\nEpilepsy with current deterioration in seizure control; precise classification remains unconfirmed \n\nAetiology: \n\nNo definite structural, genetic, metabolic, infectious, or immune cause identified to date; investigations ongoing \n\nOther Medical Problems: \n\nMild anxiety related to recent relapse; seasonal allergic rhinitis managed with over‑the‑counter antihistamine as needed \n\nManagement Plan: \n\n- Safety advice reinforced, including supervision around water, avoidance of sleep deprivation, and limiting alcohol; patient‑reported triggers include stress and irregular sleep.\n- Medication: continue current Levetiracetam 1 g twice daily pending serum level and side‑effect review; no immediate dose change today as adherence is being verified and bloods are pending.\n- Investigations: arrange repeat EEG with sleep deprivation and ambulatory recording; request MRI brain epilepsy protocol to reassess for subtle lesions; check U&E, LFT, FBC, vitamin D, and Levetiracetam level.\n- Seizure diary: patient to maintain detailed record of events, auras, clusters, and potential triggers.\n- Driving: advised to cease driving and inform DVLA in line with current guidance following recent relapse.\n- Follow‑up: urgent review in 6 weeks to consider add‑on therapy (e.g., Lamotrigine or Lacosamide) if control not improving, and to discuss rescue plan if clusters persist.\n\nSince his last review, he describes a clear deterioration in control. Previously monthly; now four clusters this month. He notes brief warning sensations of unease on some occasions, but not consistently, with episodes typically occurring in the late evening after several nights of poor sleep. His partner reports occasional confused behaviour post‑event lasting several minutes, with no clear limb jerking or tongue biting observed; there has been one minor fall without head injury. He denies missed doses but acknowledges variable timing of evening medication due to shift work. No intercurrent illness or new prescribed drugs; he started a gym routine and energy drinks in the past month. There is no history suggestive of syncope. \n\nIn view of the relapse, we have prioritised further evaluation and emphasised modifiable lifestyle factors while we confirm adherence and medication levels. We also discussed the potential introduction of a rescue medication for clusters at the next visit depending on investigation results and diary documentation. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Previously monthly; now four clusters this month.' This gives a current frequency of four clusters within the past month. There is no explicit count of seizures per cluster, only that clusters occurred. Therefore, the appropriate normalized label is in cluster form with unknown events per cluster.",
+      "seizure_frequency_number": [
+        "4 cluster per month, multiple per cluster",
+        "Previously monthly; now four clusters this month."
+      ],
+      "reference": [
+        "4 cluster per month, multiple per cluster",
+        "Previously monthly; now four clusters this month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

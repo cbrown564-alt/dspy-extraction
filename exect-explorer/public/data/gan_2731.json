@@ -1,0 +1,59 @@
+{
+  "id": "gan_2731",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nDaniel Harper, DOB: 22-11-1989, Hospital No: H672934 NHS No. 9842613570\nFlat 5, 28 Crown Lane, London, SW16 3AB\n\nFocal Epilepsy\n\nMedication: Carbamazepine modified-release 200 mg twice daily\n\nCarbamazepine Level:\n\n28 September 2025: 6.8 mg/L (therapeutic range 4–12 mg/L). Dose 200 mg twice a day\n\nSeizures: Patient reports an absence seizure every other week, typically brief (5–10 seconds) episodes of behavioural arrest with impaired awareness and a short period of post-event confusion. No convulsions reported. Events often occur late morning during work breaks.\n\nI reviewed Daniel Harper today in clinic. He describes a 9-month history of focal seizures with impaired awareness consistent with focal epilepsy, likely temporal onset given automatisms (lip-smacking) noted by a colleague on two occasions. He works in a manual/safety-sensitive environment involving heights and machinery. He denies missed doses and uses a pill organiser. Sleep has been reduced due to early shifts. Alcohol intake minimal. No recent head injury. Family history negative for epilepsy.\n\nNeurological examination today was unremarkable. There are no focal deficits and gait is normal. He is tolerating carbamazepine without notable adverse effects aside from mild morning dizziness that settles within 20 minutes.\n\nGiven the ongoing pattern of an absence seizure every other week and the occupational risks, I have advised strict adherence to workplace safety protocols and to avoid working at height or operating machinery if there has been any episode in the preceding 48 hours, as discussed with him today. We have arranged an EEG and MRI brain with epilepsy protocol to further characterise focal onset, and I have asked him to maintain a seizure diary and bring any witness accounts. We discussed potential optimisation of anti-seizure medication pending results.\n\nI will review him in 6–8 weeks or sooner if events increase in frequency or change in character. He knows to contact the epilepsy nurse specialist for interim advice.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 459,
+      "end": 510,
+      "text": "Patient reports an absence seizure every other week",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 478,
+      "end": 510,
+      "text": "absence seizure every other week",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2731,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona\nCentre for Epilepsy\nQueen Square, London WC1N 3BG\n\nDear Dr Fiona,\n\nDaniel Harper, DOB: 22-11-1989, Hospital No: H672934 NHS No. 9842613570\nFlat 5, 28 Crown Lane, London, SW16 3AB\n\nFocal Epilepsy\n\nMedication: Carbamazepine modified-release 200 mg twice daily\n\nCarbamazepine Level:\n\n28 September 2025: 6.8 mg/L (therapeutic range 4–12 mg/L). Dose 200 mg twice a day\n\nSeizures: Patient reports an absence seizure every other week, typically brief (5–10 seconds) episodes of behavioural arrest with impaired awareness and a short period of post-event confusion. No convulsions reported. Events often occur late morning during work breaks.\n\nI reviewed Daniel Harper today in clinic. He describes a 9-month history of focal seizures with impaired awareness consistent with focal epilepsy, likely temporal onset given automatisms (lip-smacking) noted by a colleague on two occasions. He works in a manual/safety-sensitive environment involving heights and machinery. He denies missed doses and uses a pill organiser. Sleep has been reduced due to early shifts. Alcohol intake minimal. No recent head injury. Family history negative for epilepsy.\n\nNeurological examination today was unremarkable. There are no focal deficits and gait is normal. He is tolerating carbamazepine without notable adverse effects aside from mild morning dizziness that settles within 20 minutes.\n\nGiven the ongoing pattern of an absence seizure every other week and the occupational risks, I have advised strict adherence to workplace safety protocols and to avoid working at height or operating machinery if there has been any episode in the preceding 48 hours, as discussed with him today. We have arranged an EEG and MRI brain with epilepsy protocol to further characterise focal onset, and I have asked him to maintain a seizure diary and bring any witness accounts. We discussed potential optimisation of anti-seizure medication pending results.\n\nI will review him in 6–8 weeks or sooner if events increase in frequency or change in character. He knows to contact the epilepsy nurse specialist for interim advice.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Patient reports an absence seizure every other week.' 'Every other week' means one seizure per two weeks. No other seizure frequencies are provided that would be higher. Therefore, normalize to '1 per 2 week'.",
+      "seizure_frequency_number": [
+        "1 per 2 week",
+        "Patient reports an absence seizure every other week"
+      ],
+      "reference": [
+        "1 per 2 week",
+        "absence seizure every other week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,54 @@
+{
+  "id": "gan_6661",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman  \nRiverside Health Centre  \n114 Millbank, London SW1P 4QP  \n\nDear Dr A. Rahman,                                                                                                         \n\nDaniel Hughes, DOB: 22-11-1991, Hospital No: H738225 NHS No. 9483726150  \nFlat 3, 9 Wren Street, London, WC1X 0HF  \n\nEpilepsy \n\nMedication: Initiated Levetiracetam August 2025\n\nLevetiracetam 500 mg twice daily (patient confirms adherence; no missed doses in the past month)\n\nLevetiracetam Level: \n\n28 September 2025: 14 µg/mL (reference 6–46 µg/mL). Dose 500 mg twice daily\n\nSeizures: Patient reports three brief events over six weeks, each with lateral tongue soreness on waking and damp nightwear consistent with possible nocturnal episodes. No clear auras or recalls; partner notes brief nocturnal stiffening and post-event fatigue.\n\nI conducted a video consultation today. Sleep deprivation appears a trigger. We discussed safety, SUDEP awareness, and seizure first aid. I have requested an EEG and ambulatory sleep-deprived study, and arranged an MRI brain with epilepsy protocol. We will maintain current dose pending results and review in eight weeks. The patient has been advised on DVLA guidance and to avoid swimming alone and heights. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 661,
+      "end": 710,
+      "text": "Patient reports three brief events over six weeks",
+      "attributes": {
+        "Label": "0.5 per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6661,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr A. Rahman  \nRiverside Health Centre  \n114 Millbank, London SW1P 4QP  \n\nDear Dr A. Rahman,                                                                                                         \n\nDaniel Hughes, DOB: 22-11-1991, Hospital No: H738225 NHS No. 9483726150  \nFlat 3, 9 Wren Street, London, WC1X 0HF  \n\nEpilepsy \n\nMedication: Initiated Levetiracetam August 2025\n\nLevetiracetam 500 mg twice daily (patient confirms adherence; no missed doses in the past month)\n\nLevetiracetam Level: \n\n28 September 2025: 14 µg/mL (reference 6–46 µg/mL). Dose 500 mg twice daily\n\nSeizures: Patient reports three brief events over six weeks, each with lateral tongue soreness on waking and damp nightwear consistent with possible nocturnal episodes. No clear auras or recalls; partner notes brief nocturnal stiffening and post-event fatigue.\n\nI conducted a video consultation today. Sleep deprivation appears a trigger. We discussed safety, SUDEP awareness, and seizure first aid. I have requested an EEG and ambulatory sleep-deprived study, and arranged an MRI brain with epilepsy protocol. We will maintain current dose pending results and review in eight weeks. The patient has been advised on DVLA guidance and to avoid swimming alone and heights. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"three brief events over six weeks.\" This provides a count and a time window. Compute frequency: 3 events / 6 weeks = 0.5 per week. No other seizure frequencies are given, and the patient is not seizure-free. Therefore, the current seizure frequency is 0.5 per week.",
+      "seizure_frequency_number": [
+        "0.5 per week",
+        "Patient reports three brief events over six weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Tongue biting/incontinence reported with seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (0.5 per week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

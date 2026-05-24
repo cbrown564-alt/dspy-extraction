@@ -34,6 +34,7 @@ const LENSES = [
   { id: "model", label: "Model", icon: BrainCircuit, desc: "Run outputs and pipeline trace" },
 ];
 
+
 const VIEWS = [
   { id: "reader", label: "Reader", icon: LayoutList },
   { id: "timeline", label: "Timeline", icon: Clock },
@@ -42,6 +43,21 @@ const VIEWS = [
 
 function appReducer(state, action) {
   switch (action.type) {
+    case "SET_DATASET": {
+      const defaultId = action.payload === "gan" ? "gan_0" : "EA0001";
+      const layers = action.payload === "gan" ? ["SeizureFrequency"] : ENTITY_TYPES;
+      return {
+        ...state,
+        dataset: action.payload,
+        letterId: defaultId,
+        letterData: null,
+        selectedEntity: null,
+        visibleLayers: new Set(layers),
+        modelCatalog: null,
+        selectedTask: null,
+        selectedRunId: null,
+      };
+    }
     case "SET_LETTER":
       return { ...state, letterId: action.payload, letterData: null, selectedEntity: null };
     case "SET_LETTER_DATA":
@@ -64,13 +80,20 @@ function appReducer(state, action) {
       return { ...state, selectedEntity: action.payload };
     case "SET_INDEX":
       return { ...state, index: action.payload };
+    case "CLEAR_MODEL_CATALOG":
+      return {
+        ...state,
+        modelCatalog: null,
+        selectedTask: null,
+        selectedRunId: null,
+      };
     case "SET_MODEL_CATALOG": {
       const firstTask = action.payload?.tasks?.[0];
       return {
         ...state,
         modelCatalog: action.payload,
-        selectedTask: state.selectedTask || firstTask?.id || "S1",
-        selectedRunId: state.selectedRunId || firstTask?.default_run_id || null,
+        selectedTask: firstTask?.id || null,
+        selectedRunId: firstTask?.default_run_id || null,
       };
     }
     case "SET_MODEL_TASK": {
@@ -105,6 +128,7 @@ function appReducer(state, action) {
 }
 
 const initialState = {
+  dataset: "exect",
   letterId: "EA0001",
   letterData: null,
   lens: "annotator",
@@ -155,7 +179,9 @@ function AppContent() {
 
   // Load index
   useEffect(() => {
-    fetch("/data/index.json")
+    setLoading(true);
+    const indexPath = state.dataset === "gan" ? "/data/index_gan.json" : "/data/index.json";
+    fetch(indexPath)
       .then((r) => r.json())
       .then((data) => {
         dispatch({ type: "SET_INDEX", payload: data });
@@ -165,16 +191,19 @@ function AppContent() {
         setError(e.message);
         setLoading(false);
       });
-  }, []);
+  }, [state.dataset]);
 
+  // Load model catalog
   useEffect(() => {
-    fetch("/data/model_catalog.json")
+    dispatch({ type: "CLEAR_MODEL_CATALOG" });
+    const catalogPath = state.dataset === "gan" ? "/data/model_catalog_gan.json" : "/data/model_catalog.json";
+    fetch(catalogPath)
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
         if (data) dispatch({ type: "SET_MODEL_CATALOG", payload: data });
       })
       .catch((e) => console.warn("Failed to load model catalog:", e));
-  }, []);
+  }, [state.dataset]);
 
   // Load letter data when letterId changes
   useEffect(() => {
@@ -215,7 +244,11 @@ function AppContent() {
       <div className="loading-screen">
         <div className="load-spinner" />
         <p className="load-title">Preparing the clinical theatre</p>
-        <p className="load-sub">Loading annotations and indexing 200 letters…</p>
+        <p className="load-sub">
+          {state.dataset === "gan"
+            ? "Loading annotations and indexing 1,500 Gan records…"
+            : "Loading annotations and indexing 200 ExECT letters…"}
+        </p>
       </div>
     );
   }
@@ -241,6 +274,20 @@ function AppContent() {
           <Microscope size={18} />
           <span>ExECT Explorer</span>
         </div>
+        <div className="dataset-switcher">
+          <button
+            className={state.dataset === "exect" ? "is-active" : ""}
+            onClick={() => dispatch({ type: "SET_DATASET", payload: "exect" })}
+          >
+            ExECTv2
+          </button>
+          <button
+            className={state.dataset === "gan" ? "is-active" : ""}
+            onClick={() => dispatch({ type: "SET_DATASET", payload: "gan" })}
+          >
+            Gan 2026
+          </button>
+        </div>
         <AnnotationProgress letters={state.index?.letters || []} />
         <LetterSelector
           letters={state.index?.letters || []}
@@ -248,7 +295,7 @@ function AppContent() {
           onSelect={(id) => dispatch({ type: "SET_LETTER", payload: id })}
         />
         <EntityLayers
-          types={ENTITY_TYPES}
+          types={state.dataset === "gan" ? ["SeizureFrequency"] : ENTITY_TYPES}
           colours={state.index?.entity_colours || {}}
           visible={state.visibleLayers}
           onToggle={(t) => dispatch({ type: "TOGGLE_LAYER", payload: t })}

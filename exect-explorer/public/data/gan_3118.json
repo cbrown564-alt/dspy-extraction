@@ -1,0 +1,59 @@
+{
+  "id": "gan_3118",
+  "text": "Department of Neurology \n\nClinic Date: 26 August 2023 \n\nDr Eleanor Hughes  \nSt Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Eleanor Hughes,  \n\nMichael Turner, DOB: 14-03-1990, Hospital No: H3928471 NHS No. 9012735648  \n22 Brookfield Avenue, Ilford, IG5 0NR \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification; previous EEG and MRI non-diagnostic \n\nCurrent Medication: \n\nLevetiracetam 500 mg bd \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily  \n- Maintain seizure diary and adherence to sleep hygiene  \n- Bloods (U&E, FBC, LFTs) arranged today to monitor general health  \n- Safety advice reinforced (driving regulations, bathing/showering precautions, ladder/heights avoidance)  \n- Follow-up in 12 months, sooner if events recur or adverse effects emerge \n\nI reviewed Michael Turner in clinic today. The patient reports No seizures since last visit. They have been taking levetiracetam regularly without missed doses and have not noticed mood change, irritability, or sedation. They are avoiding sleep deprivation and excessive alcohol, and their partner has not observed nocturnal events or tongue biting. \n\nThere is a documented history of antiseizure medication side effects in the past, including a rash on carbamazepine and gastrointestinal upset on valproate, both of which led to discontinuation at the time. These issues have not recurred on levetiracetam. We discussed the importance of promptly reporting any new adverse effects such as mood disturbance, rash, or gastrointestinal symptoms. \n\nGiven the current stability, I have advised continuation of levetiracetam at the present dose. There is no indication for repeat neuroimaging or EEG at this stage in the absence of clinical change. Should any breakthrough events occur, we would reconsider investigations and treatment strategy. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 884,
+      "end": 913,
+      "text": "No seizures since last visit.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 884,
+      "end": 912,
+      "text": "No seizures since last visit",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3118,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 26 August 2023 \n\nDr Eleanor Hughes  \nSt Bartholomew’s Hospital  \nDepartment of Neurology, West Smithfield, London EC1A 7BE  \n\nDear Dr Eleanor Hughes,  \n\nMichael Turner, DOB: 14-03-1990, Hospital No: H3928471 NHS No. 9012735648  \n22 Brookfield Avenue, Ilford, IG5 0NR \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification; previous EEG and MRI non-diagnostic \n\nCurrent Medication: \n\nLevetiracetam 500 mg bd \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily  \n- Maintain seizure diary and adherence to sleep hygiene  \n- Bloods (U&E, FBC, LFTs) arranged today to monitor general health  \n- Safety advice reinforced (driving regulations, bathing/showering precautions, ladder/heights avoidance)  \n- Follow-up in 12 months, sooner if events recur or adverse effects emerge \n\nI reviewed Michael Turner in clinic today. The patient reports No seizures since last visit. They have been taking levetiracetam regularly without missed doses and have not noticed mood change, irritability, or sedation. They are avoiding sleep deprivation and excessive alcohol, and their partner has not observed nocturnal events or tongue biting. \n\nThere is a documented history of antiseizure medication side effects in the past, including a rash on carbamazepine and gastrointestinal upset on valproate, both of which led to discontinuation at the time. These issues have not recurred on levetiracetam. We discussed the importance of promptly reporting any new adverse effects such as mood disturbance, rash, or gastrointestinal symptoms. \n\nGiven the current stability, I have advised continuation of levetiracetam at the present dose. There is no indication for repeat neuroimaging or EEG at this stage in the absence of clinical change. Should any breakthrough events occur, we would reconsider investigations and treatment strategy. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"No seizures since last visit.\" There is no exact date for the prior visit provided, so the duration of seizure freedom cannot be confirmed to be at least 6 months. Therefore, per the rules, when seizure-free status is reported but the 6-month criterion cannot be confirmed or refuted, the appropriate normalized label is \"seizure free for multiple months.\" No other seizure frequencies are provided, and there are no conflicting frequencies mentioned.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "No seizures since last visit."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No seizures since last visit"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

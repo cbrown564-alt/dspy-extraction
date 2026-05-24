@@ -1,0 +1,59 @@
+{
+  "id": "gan_15847",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 17 November 2016 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Aisha Rahman, \n\nMr Daniel Hargreaves, DOB: 22-03-1991, Hospital No: K847392 NHS No. 1039485726  \n12 Wharf Lane, Deptford, London, SE8 3QT  \n\nDiagnosis: \n\nSeizure disorder; classification currently under ongoing evaluation \n\nAetiology: \n\nNo definitive structural or genetic cause identified to date; investigations ongoing \n\nOther Medical Problems: \n\nMild allergic rhinitis (seasonal); vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n- Continue current maintenance Levetiracetam at 1,000 mg twice daily; patient reports acceptable tolerability (mild irritability only).  \n- Buccal midazolam retained as rescue; discussed strategies for access and warming in cold-chain environment.  \n- Arrange ambulatory EEG with event marker within four weeks; repeat MRI brain with epilepsy protocol scheduled for next available slot.  \n- Occupational advice provided regarding safe storage and accessibility of rescue medication at work, including insulated pouch and designated colleague awareness.  \n- DVLA guidance reiterated; patient confirms no driving.  \n- Follow-up in eight weeks; earlier review if events escalate or new features emerge. \n\nThis patient works in a cold-chain warehouse where sub-zero temperatures and the need for gloves are standard. He describes two distinct event types. First, brief sudden losses of postural tone without clear warning, typically resulting in a knee-bend or a controlled descent if near racking; recovery is rapid without confusion. Drop attacks are now reported six times weekly, having previously occurred only sporadically, once every few weeks. He denies clear triggers but notes that episodes are more frequent during rapid task switching and when moving between freezer aisles. There is no associated tongue biting or incontinence reported. Second, he experiences occasional brief staring with unresponsiveness, lasting 10–15 seconds, about once every two weeks, sometimes followed by a mild frontal headache. Colleagues have observed pallor but no convulsive activity. \n\nHe carries buccal midazolam; however, he reports that low ambient temperatures and the necessity for insulated gloves increase the time to retrieve and administer the device. We discussed practical measures: keeping the prefilled syringes in a pocketed insulated pouch within recommended storage parameters, positioning a second kit at the end of the aisle where he most frequently works, and ensuring two trained colleagues are consistently rostered nearby. He will undertake an updated workplace risk assessment with his manager. \n\nThere have been no recent head injuries. Sleep is fragmented due to early shifts; he will aim for more regular sleep where feasible. Alcohol intake is minimal. No recreational drugs. Family history is non-contributory. Basic bloods last month were within reference ranges apart from low vitamin D now supplemented. \n\nI will update you following the ambulatory EEG and MRI results. Please let me know if further occupational health input is required. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1666,
+      "end": 1712,
+      "text": "Drop attacks are now reported six times weekly",
+      "attributes": {
+        "Label": "6 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1666,
+      "end": 1780,
+      "text": "Drop attacks are now reported six times weekly, having previously occurred only sporadically, once every few weeks",
+      "attributes": {
+        "Label": "6 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15847,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 17 November 2016 \n\nDr Aisha Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr Aisha Rahman, \n\nMr Daniel Hargreaves, DOB: 22-03-1991, Hospital No: K847392 NHS No. 1039485726  \n12 Wharf Lane, Deptford, London, SE8 3QT  \n\nDiagnosis: \n\nSeizure disorder; classification currently under ongoing evaluation \n\nAetiology: \n\nNo definitive structural or genetic cause identified to date; investigations ongoing \n\nOther Medical Problems: \n\nMild allergic rhinitis (seasonal); vitamin D insufficiency on supplementation \n\nManagement Plan: \n\n- Continue current maintenance Levetiracetam at 1,000 mg twice daily; patient reports acceptable tolerability (mild irritability only).  \n- Buccal midazolam retained as rescue; discussed strategies for access and warming in cold-chain environment.  \n- Arrange ambulatory EEG with event marker within four weeks; repeat MRI brain with epilepsy protocol scheduled for next available slot.  \n- Occupational advice provided regarding safe storage and accessibility of rescue medication at work, including insulated pouch and designated colleague awareness.  \n- DVLA guidance reiterated; patient confirms no driving.  \n- Follow-up in eight weeks; earlier review if events escalate or new features emerge. \n\nThis patient works in a cold-chain warehouse where sub-zero temperatures and the need for gloves are standard. He describes two distinct event types. First, brief sudden losses of postural tone without clear warning, typically resulting in a knee-bend or a controlled descent if near racking; recovery is rapid without confusion. Drop attacks are now reported six times weekly, having previously occurred only sporadically, once every few weeks. He denies clear triggers but notes that episodes are more frequent during rapid task switching and when moving between freezer aisles. There is no associated tongue biting or incontinence reported. Second, he experiences occasional brief staring with unresponsiveness, lasting 10–15 seconds, about once every two weeks, sometimes followed by a mild frontal headache. Colleagues have observed pallor but no convulsive activity. \n\nHe carries buccal midazolam; however, he reports that low ambient temperatures and the necessity for insulated gloves increase the time to retrieve and administer the device. We discussed practical measures: keeping the prefilled syringes in a pocketed insulated pouch within recommended storage parameters, positioning a second kit at the end of the aisle where he most frequently works, and ensuring two trained colleagues are consistently rostered nearby. He will undertake an updated workplace risk assessment with his manager. \n\nThere have been no recent head injuries. Sleep is fragmented due to early shifts; he will aim for more regular sleep where feasible. Alcohol intake is minimal. No recreational drugs. Family history is non-contributory. Basic bloods last month were within reference ranges apart from low vitamin D now supplemented. \n\nI will update you following the ambulatory EEG and MRI results. Please let me know if further occupational health input is required. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes two event types. Type 1: \"Drop attacks are now reported six times weekly\" – explicit current frequency. Type 2: \"brief staring with unresponsiveness ... about once every two weeks\" – lower frequency. Per the rule to select the highest frequency, we choose 6 per week. No other frequencies need summing as they are different event types with different rates.",
+      "seizure_frequency_number": [
+        "6 per week",
+        "Drop attacks are now reported six times weekly"
+      ],
+      "reference": [
+        "6 per week",
+        "Drop attacks are now reported six times weekly, having previously occurred only sporadically, once every few weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

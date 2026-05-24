@@ -1,0 +1,59 @@
+{
+  "id": "gan_15242",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 09 June 2023 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, Tooting, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 14-11-1992, Hospital No: H726391 NHS No. 8420175639  \n58 Alderbrook Avenue, Surbiton, KT6 7QF  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nI reviewed Emily Carter in the outpatient neurology clinic today accompanied by her partner. She describes intermittent brief morning jerks and occasional transient lapses in awareness. Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting. There have been no emergency department attendances over the past 12 months and no reported injuries. She identifies sleep deprivation and missed doses as potential triggers. She does not drive and has informed DVLA previously; she remains abstinent from driving pending stability and follow‑up guidance.\n\nCurrent medication is levetiracetam 1 g twice daily, well tolerated aside from mild irritability which she manages with sleep hygiene and regular exercise. She uses a seizure diary app, which corroborates the above pattern, and her partner has video recordings of typical events. Buccal midazolam is held for prolonged convulsions but has not been required since 2022. There is no implanted device. Neurological examination today was unremarkable.\n\nInvestigations to date include a routine EEG in 2021 showing non‑specific findings and a brain MRI (3T) in 2020 reported as normal. Given the persisting myoclonic clusters and the historical convulsion, I have arranged an ambulatory EEG with activation procedures and repeat MRI with epilepsy protocol to clarify the electroclinical picture. Bloods today (U&E, LFT, vitamin D, FBC) were requested to screen for reversible contributors and to establish a baseline.\n\nWe discussed lifestyle measures (sleep regularity, alcohol moderation, adherence) and maintaining a detailed seizure log. A rescue plan was reiterated to her partner should a convulsion recur (recovery position, timed observation, emergency escalation if >5 minutes or recurrent without recovery). Safety around water, heights, and operating machinery was reviewed. She consented to share clinic outcomes with her GP and community epilepsy nurse.\n\nPlan:\n- Continue levetiracetam 1 g twice daily without change.\n- Arrange ambulatory EEG and MRI epilepsy protocol; we will contact her with dates.\n- Continue seizure diary and submit videos of typical events via secure portal.\n- Blood tests as above; we will review results and update her if action is required.\n- Follow‑up in 4 months, sooner if convulsive seizures recur or events escalate.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 555,
+      "end": 663,
+      "text": "Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting.",
+      "attributes": {
+        "Label": "multiple cluster per 15 month, multiple per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 555,
+      "end": 662,
+      "text": "Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting",
+      "attributes": {
+        "Label": "multiple cluster per 15 month, multiple per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15242,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 09 June 2023 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, Tooting, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 14-11-1992, Hospital No: H726391 NHS No. 8420175639  \n58 Alderbrook Avenue, Surbiton, KT6 7QF  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nI reviewed Emily Carter in the outpatient neurology clinic today accompanied by her partner. She describes intermittent brief morning jerks and occasional transient lapses in awareness. Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting. There have been no emergency department attendances over the past 12 months and no reported injuries. She identifies sleep deprivation and missed doses as potential triggers. She does not drive and has informed DVLA previously; she remains abstinent from driving pending stability and follow‑up guidance.\n\nCurrent medication is levetiracetam 1 g twice daily, well tolerated aside from mild irritability which she manages with sleep hygiene and regular exercise. She uses a seizure diary app, which corroborates the above pattern, and her partner has video recordings of typical events. Buccal midazolam is held for prolonged convulsions but has not been required since 2022. There is no implanted device. Neurological examination today was unremarkable.\n\nInvestigations to date include a routine EEG in 2021 showing non‑specific findings and a brain MRI (3T) in 2020 reported as normal. Given the persisting myoclonic clusters and the historical convulsion, I have arranged an ambulatory EEG with activation procedures and repeat MRI with epilepsy protocol to clarify the electroclinical picture. Bloods today (U&E, LFT, vitamin D, FBC) were requested to screen for reversible contributors and to establish a baseline.\n\nWe discussed lifestyle measures (sleep regularity, alcohol moderation, adherence) and maintaining a detailed seizure log. A rescue plan was reiterated to her partner should a convulsion recur (recovery position, timed observation, emergency escalation if >5 minutes or recurrent without recovery). Safety around water, heights, and operating machinery was reviewed. She consented to share clinic outcomes with her GP and community epilepsy nurse.\n\nPlan:\n- Continue levetiracetam 1 g twice daily without change.\n- Arrange ambulatory EEG and MRI epilepsy protocol; we will contact her with dates.\n- Continue seizure diary and submit videos of typical events via secure portal.\n- Blood tests as above; we will review results and update her if action is required.\n- Follow‑up in 4 months, sooner if convulsive seizures recur or events escalate.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify clinic date and ongoing events: Clinic Date is 09 June 2023. The letter states ongoing seizures: \"intermittent brief morning jerks,\" \"occasional transient lapses in awareness,\" and specifically \"occasional clusters of myoclonic jerks persisting.\" 2) Determine seizure-free status: Not seizure-free because myoclonic jerks (in clusters) are persisting. 3) Establish a time window tied to the events: The letter links current status to a past reference point: \"Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting.\" This implies clusters have been occurring up to the clinic date since at least 03/2022. 4) Calculate the time interval: From 03/2022 to 09 June 2023 ≈ 15 months (March 2022 to March 2023 = 12 months; plus April, May, and part of June 2023 ≈ 3 more months). 5) Quantify cluster frequency: The term \"clusters\" (plural) indicates more than one cluster in this 15-month period, but the exact count is not given, so use \"multiple cluster per 15 month.\" 6) Quantify events per cluster: By definition, a cluster contains more than one event; exact number not given, so use \"multiple per cluster.\" 7) Other seizure types (intermittent morning jerks, lapses) lack quantifiable frequency; the cluster description provides the most concrete structure for frequency. 8) Final label reflects the above.",
+      "seizure_frequency_number": [
+        "multiple cluster per 15 month, multiple per cluster",
+        "Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting."
+      ],
+      "reference": [
+        "multiple cluster per 15 month, multiple per cluster",
+        "Her last convulsive seizure was recorded in 03/2022, with occasional clusters of myoclonic jerks persisting"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

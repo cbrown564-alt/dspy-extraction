@@ -1,0 +1,59 @@
+{
+  "id": "gan_1378",
+  "text": "Department of Neurology\n\nClinic Date: 24 April 2017\n\nDr Amelia Rhodes\nSt. Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Amelia Rhodes,\n\nMichael Turner, DOB: 23-02-1991, Hospital No: B4926174 NHS No. 9073645128\nTemporary Accommodation, Flat 3B, 18 Redbridge Lane, Ilford, IG4 5BQ\n\nDiagnoses:\n\nSeizure disorder under investigation\n\nCurrent Medication:\n\nLevetiracetam 500 mg twice daily\n\nPlan:\n\n- Continue Levetiracetam 500 mg twice daily\n- Seizure first-aid and safety advice reinforced; avoid sleep deprivation and alcohol\n- Community epilepsy nurse contact provided; interim telephone review in 6 weeks\n- MRI brain with epilepsy protocol and routine EEG arranged\n- Letter to local housing team supporting need for stable accommodation due to seizures\n\nI reviewed Michael Turner in clinic today following a recent increase in seizure activity. The patient reports one tonic-clonic and four petit mal in last month. These events have occurred against a backdrop of disrupted sleep and stress while awaiting relocation from temporary accommodation; crowded living conditions were noted and the patient feels this has made it harder to maintain routine sleep and regular meals. There is no history of head injury, febrile seizures, or family history of seizures. No focal neurological symptoms were reported between events.\n\nThe tonic-clonic episode was described as a sudden loss of awareness with generalised stiffening and rhythmic jerking lasting approximately 90 seconds, followed by post-ictal confusion and fatigue for several hours. The shorter episodes described as “petit mal” involved brief staring with impaired responsiveness lasting 10–15 seconds, occurring in clusters on two separate days, with rapid return to baseline and no injury. No clear daytime triggers were identified aside from poor sleep and stress. There is no current driving, and DVLA guidance was discussed.\n\nOn examination today, general and neurological examinations were unremarkable. Vital signs were stable. No tongue lacerations were observed; minor bruising to the right forearm was healing.\n\nGiven the recent pattern of seizures, I have advised continuing Levetiracetam at the current dose while we complete diagnostic work-up. I have arranged an MRI brain with an epilepsy protocol and an EEG to help characterise the events. We discussed adherence, dosing times, and potential side effects; the patient reports good adherence with no adverse effects to date. Seizure first-aid and risk reduction were reviewed, including sleep hygiene, avoidance of alcohol, and supervision when bathing. I have also provided a clinic letter to support the patient’s ongoing housing application, emphasising the importance of stable, uncrowded accommodation to reduce seizure risk.\n\nFollow-up will be via telephone in six weeks to review seizure frequency and test results, with earlier contact if there is any deterioration. The patient knows to seek urgent help for prolonged seizures (>5 minutes), repeated seizures without recovery, or significant injury.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 887,
+      "end": 957,
+      "text": "The patient reports one tonic-clonic and four petit mal in last month.",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 907,
+      "end": 956,
+      "text": "one tonic-clonic and four petit mal in last month",
+      "attributes": {
+        "Label": "5 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1378,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 24 April 2017\n\nDr Amelia Rhodes\nSt. Bartholomew’s Hospital\nDepartment of Neurology, West Smithfield, London EC1A 7BE\n\nDear Dr Amelia Rhodes,\n\nMichael Turner, DOB: 23-02-1991, Hospital No: B4926174 NHS No. 9073645128\nTemporary Accommodation, Flat 3B, 18 Redbridge Lane, Ilford, IG4 5BQ\n\nDiagnoses:\n\nSeizure disorder under investigation\n\nCurrent Medication:\n\nLevetiracetam 500 mg twice daily\n\nPlan:\n\n- Continue Levetiracetam 500 mg twice daily\n- Seizure first-aid and safety advice reinforced; avoid sleep deprivation and alcohol\n- Community epilepsy nurse contact provided; interim telephone review in 6 weeks\n- MRI brain with epilepsy protocol and routine EEG arranged\n- Letter to local housing team supporting need for stable accommodation due to seizures\n\nI reviewed Michael Turner in clinic today following a recent increase in seizure activity. The patient reports one tonic-clonic and four petit mal in last month. These events have occurred against a backdrop of disrupted sleep and stress while awaiting relocation from temporary accommodation; crowded living conditions were noted and the patient feels this has made it harder to maintain routine sleep and regular meals. There is no history of head injury, febrile seizures, or family history of seizures. No focal neurological symptoms were reported between events.\n\nThe tonic-clonic episode was described as a sudden loss of awareness with generalised stiffening and rhythmic jerking lasting approximately 90 seconds, followed by post-ictal confusion and fatigue for several hours. The shorter episodes described as “petit mal” involved brief staring with impaired responsiveness lasting 10–15 seconds, occurring in clusters on two separate days, with rapid return to baseline and no injury. No clear daytime triggers were identified aside from poor sleep and stress. There is no current driving, and DVLA guidance was discussed.\n\nOn examination today, general and neurological examinations were unremarkable. Vital signs were stable. No tongue lacerations were observed; minor bruising to the right forearm was healing.\n\nGiven the recent pattern of seizures, I have advised continuing Levetiracetam at the current dose while we complete diagnostic work-up. I have arranged an MRI brain with an epilepsy protocol and an EEG to help characterise the events. We discussed adherence, dosing times, and potential side effects; the patient reports good adherence with no adverse effects to date. Seizure first-aid and risk reduction were reviewed, including sleep hygiene, avoidance of alcohol, and supervision when bathing. I have also provided a clinic letter to support the patient’s ongoing housing application, emphasising the importance of stable, uncrowded accommodation to reduce seizure risk.\n\nFollow-up will be via telephone in six weeks to review seizure frequency and test results, with earlier contact if there is any deterioration. The patient knows to seek urgent help for prolonged seizures (>5 minutes), repeated seizures without recovery, or significant injury.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'The patient reports one tonic-clonic and four petit mal in last month.' This provides a clear numeric total over a month. Sum different seizure types for total frequency in the same period: 1 + 4 = 5 in the last month. No other conflicting or higher-frequency interval is provided. Therefore, the normalized label is 5 per month.",
+      "seizure_frequency_number": [
+        "5 per month",
+        "The patient reports one tonic-clonic and four petit mal in last month."
+      ],
+      "reference": [
+        "5 per month",
+        "one tonic-clonic and four petit mal in last month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

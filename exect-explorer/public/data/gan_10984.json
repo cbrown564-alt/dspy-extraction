@@ -1,0 +1,59 @@
+{
+  "id": "gan_10984",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nRe: Emily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night.\n\nHistory since last review:\n\nEmily Carter works rotating shifts including nights, and reports that her sleep pattern is frequently disrupted. Over the past three months she has noticed a consistent pattern of Morning clusters 3×/month; ~three - four events over 90 min. These episodes tend to occur after a week of night shifts or following abrupt transition back to early starts. She describes brief sensory warning symptoms with preserved awareness, without progression to convulsive events, and no injuries. Recovery is spontaneous and she is able to continue routine activities later the same day, though she feels fatigued.\n\nShe has not missed doses, but occasionally takes the night dose later than intended when finishing night duty. No new medical issues, no alcohol or recreational drug use, and caffeine intake varies with shift demands. She notes that regular sleep on non-shift weeks correlates with fewer morning events.\n\nExamination today was unremarkable. No adverse effects from oxcarbazepine reported (no rash, hyponatraemia symptoms, or dizziness). Weight stable.\n\nPlan:\n- Continue oxcarbazepine 600 mg twice daily. We discussed timing strategies around shift transitions to maintain consistent dosing intervals, and she will set reminders to avoid delayed night doses.\n- Seizure diary focusing on sleep schedule, shift patterns, and morning events to better characterise triggers and response.\n- Safety advice reinforced regarding bathing, heights, and driving regulations as applicable.\n- Bloods arranged locally (U&Es including sodium) in 4–6 weeks given ongoing oxcarbazepine therapy.\n\nFollow-up in six months, or earlier if the morning clusters escalate in frequency or evolve in character.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 563,
+      "end": 623,
+      "text": "Morning clusters 3×/month; ~three - four events over 90 min.",
+      "attributes": {
+        "Label": "3 cluster per month, 3 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 563,
+      "end": 622,
+      "text": "Morning clusters 3×/month; ~three - four events over 90 min",
+      "attributes": {
+        "Label": "3 cluster per month, 3 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10984,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nRe: Emily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night.\n\nHistory since last review:\n\nEmily Carter works rotating shifts including nights, and reports that her sleep pattern is frequently disrupted. Over the past three months she has noticed a consistent pattern of Morning clusters 3×/month; ~three - four events over 90 min. These episodes tend to occur after a week of night shifts or following abrupt transition back to early starts. She describes brief sensory warning symptoms with preserved awareness, without progression to convulsive events, and no injuries. Recovery is spontaneous and she is able to continue routine activities later the same day, though she feels fatigued.\n\nShe has not missed doses, but occasionally takes the night dose later than intended when finishing night duty. No new medical issues, no alcohol or recreational drug use, and caffeine intake varies with shift demands. She notes that regular sleep on non-shift weeks correlates with fewer morning events.\n\nExamination today was unremarkable. No adverse effects from oxcarbazepine reported (no rash, hyponatraemia symptoms, or dizziness). Weight stable.\n\nPlan:\n- Continue oxcarbazepine 600 mg twice daily. We discussed timing strategies around shift transitions to maintain consistent dosing intervals, and she will set reminders to avoid delayed night doses.\n- Seizure diary focusing on sleep schedule, shift patterns, and morning events to better characterise triggers and response.\n- Safety advice reinforced regarding bathing, heights, and driving regulations as applicable.\n- Bloods arranged locally (U&Es including sodium) in 4–6 weeks given ongoing oxcarbazepine therapy.\n\nFollow-up in six months, or earlier if the morning clusters escalate in frequency or evolve in character.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"Over the past three months she has noticed a consistent pattern of Morning clusters 3×/month; ~three - four events over 90 min.\" This explicitly gives a frequency of clusters per month and the number of events per cluster. No other seizure frequencies are provided that are higher or conflicting. Therefore, the normalized label should reflect clusters per month and events per cluster. Convert \"3×/month\" to \"3 per month\" and \"three - four\" to the allowed range format \"3 to 4\".",
+      "seizure_frequency_number": [
+        "3 cluster per month, 3 to 4 per cluster",
+        "Morning clusters 3×/month; ~three - four events over 90 min."
+      ],
+      "reference": [
+        "3 cluster per month, 3 to 4 per cluster",
+        "Morning clusters 3×/month; ~three - four events over 90 min"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

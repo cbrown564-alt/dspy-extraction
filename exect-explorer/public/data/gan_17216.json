@@ -1,0 +1,59 @@
+{
+  "id": "gan_17216",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 11:20\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Martin O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Felicity Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and monitoring update\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nNot specified\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\nPresent Seizure Frequency:\n\nHe has experienced ongoing focal impaired-awareness seizures, typically 2 episodes daily. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable.\n\nContext and Monitoring:\n\nHe wears a smartwatch with fall-detection enabled. The family has shared alert timestamps from the device, which broadly align with the reported brief episodes and assist in establishing chronology. No alerts suggestive of convulsive activity were recorded over the last six months. He reports adequate sleep and regular meals; no clear illness, medication non-adherence, or alcohol use was identified. Care staff continue to maintain a diary, cross-referencing smartwatch alerts with observed events.\n\nPlan of Action:\n\n- Continue current doses of lamotrigine and levetiracetam unchanged for now, as caregivers consider current control acceptable and there have been no recent generalised tonic-clonic events.\n- Encourage ongoing use of the smartwatch fall-detection feature and retention of alert logs; please bring exported timestamps to the next review to support event correlation.\n- Maintain the seizure diary documenting time of day, potential triggers, duration, awareness, and post-event recovery, alongside the smartwatch alert data.\n- Routine bloods (U&E, LFTs) and lamotrigine level to be checked via GP in the next 2–3 weeks for baseline monitoring.\n- Safety advice reinforced: supervised bathing, kitchen precautions, and ensuring the smartwatch remains charged and worn during waking hours.\n- Follow-up in clinic in 4 months, sooner if event pattern changes, injuries occur, or any prolonged episodes are noted.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 581,
+      "end": 607,
+      "text": "typically 2 episodes daily",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 519,
+      "end": 808,
+      "text": "He has experienced ongoing focal impaired-awareness seizures, typically 2 episodes daily. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable",
+      "attributes": {
+        "Label": "2 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 17216,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 11:20\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Martin O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Felicity Rhodes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and monitoring update\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nNot specified\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Levetiracetam 750 mg twice daily\n\nPresent Seizure Frequency:\n\nHe has experienced ongoing focal impaired-awareness seizures, typically 2 episodes daily. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable.\n\nContext and Monitoring:\n\nHe wears a smartwatch with fall-detection enabled. The family has shared alert timestamps from the device, which broadly align with the reported brief episodes and assist in establishing chronology. No alerts suggestive of convulsive activity were recorded over the last six months. He reports adequate sleep and regular meals; no clear illness, medication non-adherence, or alcohol use was identified. Care staff continue to maintain a diary, cross-referencing smartwatch alerts with observed events.\n\nPlan of Action:\n\n- Continue current doses of lamotrigine and levetiracetam unchanged for now, as caregivers consider current control acceptable and there have been no recent generalised tonic-clonic events.\n- Encourage ongoing use of the smartwatch fall-detection feature and retention of alert logs; please bring exported timestamps to the next review to support event correlation.\n- Maintain the seizure diary documenting time of day, potential triggers, duration, awareness, and post-event recovery, alongside the smartwatch alert data.\n- Routine bloods (U&E, LFTs) and lamotrigine level to be checked via GP in the next 2–3 weeks for baseline monitoring.\n- Safety advice reinforced: supervised bathing, kitchen precautions, and ensuring the smartwatch remains charged and worn during waking hours.\n- Follow-up in clinic in 4 months, sooner if event pattern changes, injuries occur, or any prolonged episodes are noted.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'He has experienced ongoing focal impaired-awareness seizures, typically 2 episodes daily.' This provides a clear numeric frequency. No other higher frequency is mentioned. There are no current generalized tonic-clonic seizures, but that is not relevant as the focal seizures occur daily. Therefore normalize '2 episodes daily' to '2 per day.'",
+      "seizure_frequency_number": [
+        "2 per day",
+        "typically 2 episodes daily"
+      ],
+      "reference": [
+        "2 per day",
+        "He has experienced ongoing focal impaired-awareness seizures, typically 2 episodes daily. These are occasionally accompanied by brief disorientation but resolve spontaneously. No generalised tonic-clonic seizures have occurred since last year. Caregivers feel overall control is acceptable"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

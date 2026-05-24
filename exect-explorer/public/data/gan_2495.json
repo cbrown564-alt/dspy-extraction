@@ -1,0 +1,59 @@
+{
+  "id": "gan_2495",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 22 December 2015 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with recent clinical deterioration; history notable for medication non-adherence linked to frequent travelling; reports of increasing anxiety around seizure recurrence; current smoker; no alcohol use reported. \n\nMedication: Levetiracetam 1000 mg twice daily.  \nCarbamazepine MR 400 mg twice daily.  \nTopiramate 50 mg twice daily.  \nCholecalciferol, Omeprazole, Atorvastatin.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a detailed account of the past two months. He has been travelling frequently for work, including early flights and irregular schedules, during which he reports occasional missed doses of his regular medication. Prior to this change in routine he was free of seizures for two year, and had been stable without rescue presentations. Over the past month he has become increasingly fatigued, has experienced poor sleep, and feels less confident going out unaccompanied. \n\nSeizures: Over the last three weeks there has been a clear escalation in events, with 5 to 7 seizures during the last three weeks by his report and corroborated by timestamps on his phone diary. He describes sudden behavioural arrest with loss of awareness, brief confusion afterwards, and occasional tongue biting, with no consistent warning. Two events occurred during travel when he believed a dose was missed or significantly delayed. No new head injury, fever, or intercurrent illness reported. No rescue medication used. Prior to this deterioration, he was free of seizures for two year. \n\nExamination: He was alert and oriented. Speech fluent. Cranial nerves intact. Motor and sensory examination normal. Gait steady. Blood pressure 128/78 mmHg, pulse 72 bpm regular. No focal neurological deficits identified today. \n\nPlan:  \n- Emphasise strict medication adherence; discussed strategies for travel (pill organiser, phone alarms, carry-on supply, written schedule aligned to time zones).  \n- No immediate dose changes today pending blood tests and levels: arrange U&E, LFT, FBC, vitamin D, and carbamazepine level via practice within one week.  \n- Safety counselling provided regarding bathing, heights, and driving advice reiterated per standard guidance following recurrent seizures.  \n- Request seizure diary entries and any witness descriptions; provided clinic email for secure submission.  \n- Arrange routine EEG and updated brain MRI given clinical deterioration.  \n- Epilepsy nurse to call within 72 hours to reinforce adherence plan and discuss rescue protocol if events cluster.  \n- Follow-up in 6 weeks, sooner if further escalation or injury.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1381,
+      "end": 1429,
+      "text": "with 5 to 7 seizures during the last three weeks",
+      "attributes": {
+        "Label": "5 to 7 per 3 week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1386,
+      "end": 1429,
+      "text": "5 to 7 seizures during the last three weeks",
+      "attributes": {
+        "Label": "5 to 7 per 3 week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2495,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 22 December 2015 \n\nDr Susan  \nUniversity College Hospital  \nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG  \n\nDear Dr Susan,  \n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810  \n10 Meadow Park, London, EC1V 9BT \n\nSummary/ Diagnoses: Epilepsy with recent clinical deterioration; history notable for medication non-adherence linked to frequent travelling; reports of increasing anxiety around seizure recurrence; current smoker; no alcohol use reported. \n\nMedication: Levetiracetam 1000 mg twice daily.  \nCarbamazepine MR 400 mg twice daily.  \nTopiramate 50 mg twice daily.  \nCholecalciferol, Omeprazole, Atorvastatin.  \n\nI reviewed William Harris in clinic today. He attended alone and provided a detailed account of the past two months. He has been travelling frequently for work, including early flights and irregular schedules, during which he reports occasional missed doses of his regular medication. Prior to this change in routine he was free of seizures for two year, and had been stable without rescue presentations. Over the past month he has become increasingly fatigued, has experienced poor sleep, and feels less confident going out unaccompanied. \n\nSeizures: Over the last three weeks there has been a clear escalation in events, with 5 to 7 seizures during the last three weeks by his report and corroborated by timestamps on his phone diary. He describes sudden behavioural arrest with loss of awareness, brief confusion afterwards, and occasional tongue biting, with no consistent warning. Two events occurred during travel when he believed a dose was missed or significantly delayed. No new head injury, fever, or intercurrent illness reported. No rescue medication used. Prior to this deterioration, he was free of seizures for two year. \n\nExamination: He was alert and oriented. Speech fluent. Cranial nerves intact. Motor and sensory examination normal. Gait steady. Blood pressure 128/78 mmHg, pulse 72 bpm regular. No focal neurological deficits identified today. \n\nPlan:  \n- Emphasise strict medication adherence; discussed strategies for travel (pill organiser, phone alarms, carry-on supply, written schedule aligned to time zones).  \n- No immediate dose changes today pending blood tests and levels: arrange U&E, LFT, FBC, vitamin D, and carbamazepine level via practice within one week.  \n- Safety counselling provided regarding bathing, heights, and driving advice reiterated per standard guidance following recurrent seizures.  \n- Request seizure diary entries and any witness descriptions; provided clinic email for secure submission.  \n- Arrange routine EEG and updated brain MRI given clinical deterioration.  \n- Epilepsy nurse to call within 72 hours to reinforce adherence plan and discuss rescue protocol if events cluster.  \n- Follow-up in 6 weeks, sooner if further escalation or injury.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the last three weeks there has been a clear escalation in events, with 5 to 7 seizures during the last three weeks.\" This provides a numeric range over a defined period. Normalize to allowed format as a range per 3 weeks: \"5 to 7 per 3 week.\" No other concurrent frequency is higher. Although he was seizure free for two years prior, current status is 5–7 in 3 weeks, which should be used.",
+      "seizure_frequency_number": [
+        "5 to 7 per 3 week",
+        "with 5 to 7 seizures during the last three weeks"
+      ],
+      "reference": [
+        "5 to 7 per 3 week",
+        "5 to 7 seizures during the last three weeks"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

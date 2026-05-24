@@ -1,0 +1,59 @@
+{
+  "id": "gan_2762",
+  "text": "Neurology Outpatient Clinic\n\nClinic Date: 04 March 2021\n\nDr Patel\nRiverside NHS Neurology Clinic\n12 Wharf Street, London, SE1 3AB\n\nDear Dr Patel,\n\nRe: Emily Carter, DOB: 14-07-1992, Hospital No: H938472, NHS No: 7483916250\nFlat 3, 27 Brook Lane, London, E2 6RF\n\nThank you for reviewing Emily Carter in our neurology clinic today, accompanied by her support worker. She describes ongoing events characterised by brief pauses, reduced responsiveness, and subsequent confusion without clear motor features. Based on her seizure diary prior to current therapy, the pattern has been focal cognitive monthly in frequency. Since commencing her current management plan, the frequency has remained unchanged.\n\nCurrent treatment and response:\n- She continues on levetiracetam 1 g twice daily. No adverse effects reported.\n- Rescue medication: buccal midazolam is prescribed but has not been required in the past six months.\n- She uses a wrist-worn event button to mark episodes; downloads correlate with diary entries.\n\nRecent review and investigations:\n- Neurological examination today was unremarkable.\n- No new imaging or EEG was performed at this visit; previous EEGs have been non-diagnostic and do not localise onset. Bloods (U&E, LFTs) last month were within normal limits.\n\nPlan agreed today:\n- Continue current medication unchanged.\n- Maintain detailed seizure diary to further characterise semiology and timing.\n- Safety advice reinforced, particularly around bathing and cooking.\n- We will reassess with an ambulatory EEG if the pattern evolves or if events increase in frequency or duration.\n\nI will review Emily Carter in four months, or sooner if there is any deterioration.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 557,
+      "end": 699,
+      "text": "the pattern has been focal cognitive monthly in frequency. Since commencing her current management plan, the frequency has remained unchanged.",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 578,
+      "end": 601,
+      "text": "focal cognitive monthly",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2762,
+    "clinic_date": "Neurology Outpatient Clinic\n\nClinic Date: 04 March 2021\n\nDr Patel\nRiverside NHS Neurology Clinic\n12 Wharf Street, London, SE1 3AB\n\nDear Dr Patel,\n\nRe: Emily Carter, DOB: 14-07-1992, Hospital No: H938472, NHS No: 7483916250\nFlat 3, 27 Brook Lane, London, E2 6RF\n\nThank you for reviewing Emily Carter in our neurology clinic today, accompanied by her support worker. She describes ongoing events characterised by brief pauses, reduced responsiveness, and subsequent confusion without clear motor features. Based on her seizure diary prior to current therapy, the pattern has been focal cognitive monthly in frequency. Since commencing her current management plan, the frequency has remained unchanged.\n\nCurrent treatment and response:\n- She continues on levetiracetam 1 g twice daily. No adverse effects reported.\n- Rescue medication: buccal midazolam is prescribed but has not been required in the past six months.\n- She uses a wrist-worn event button to mark episodes; downloads correlate with diary entries.\n\nRecent review and investigations:\n- Neurological examination today was unremarkable.\n- No new imaging or EEG was performed at this visit; previous EEGs have been non-diagnostic and do not localise onset. Bloods (U&E, LFTs) last month were within normal limits.\n\nPlan agreed today:\n- Continue current medication unchanged.\n- Maintain detailed seizure diary to further characterise semiology and timing.\n- Safety advice reinforced, particularly around bathing and cooking.\n- We will reassess with an ambulatory EEG if the pattern evolves or if events increase in frequency or duration.\n\nI will review Emily Carter in four months, or sooner if there is any deterioration.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes Emily's events and explicitly states: \"Based on her seizure diary prior to current therapy, the pattern has been focal cognitive monthly in frequency. Since commencing her current management plan, the frequency has remained unchanged.\" This indicates her current frequency is still monthly. No other frequencies are provided. 'Monthly in frequency' corresponds to 1 per month under the normalization rules.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "the pattern has been focal cognitive monthly in frequency. Since commencing her current management plan, the frequency has remained unchanged."
+      ],
+      "reference": [
+        "1 per month",
+        "focal cognitive monthly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

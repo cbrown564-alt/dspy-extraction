@@ -1,0 +1,59 @@
+{
+  "id": "gan_409",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n Staffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe onset. Marked clinical improvement on current regimen.\n\nNeuroimaging/EEG: Prior MRIs without a clear epileptogenic lesion; historical EEGs consistent with focal epileptiform discharges. No new red-flag features reported.\n\nMedication history (abridged): Previous exposure to sodium valproate, carbamazepine, levetiracetam, phenytoin, lacosamide, clobazam; mixed tolerability and incomplete control. No history of topiramate or zonisamide use. Currently tolerating dual therapy without notable adverse effects.\n\nCurrent medicines:\n- Lamotrigine 100 mg twice daily\n- Brivaracetam 100 mg twice daily\n- Folic acid 5 mg once daily\n\nClinical progress: I reviewed Wendy Brown in clinic today. They attended unaccompanied and brought a detailed seizure diary. Compared with earlier periods, there has been a marked improvement. Previously, the seizure frequency was weekly clusters, usually three events within approximately two hours. Over the past five months on the present regimen, events have reduced to ≤ once per month, typically brief focal impaired awareness episodes without generalisation, with faster post-ictal recovery and minimal injury risk. Wendy Brown reports better sleep regularity and has re-started light exercise. No new neurological symptoms, mood has been stable, and there are no concerns regarding medication adherence.\n\nSafety/counselling: We discussed seizure first aid, triggers, and SUDEP risk in general terms; no driving per DVLA guidance until standard criteria are met. Wendy Brown is using a phone-based seizure log and finds reminders helpful. They deny adverse effects such as diplopia, rash, suicidal ideation, or significant cognitive slowing. Hydration and routine bloods through primary care were acknowledged; no abnormalities reported by the patient.\n\nPlan:\n- Continue current antiseizure medications unchanged given sustained benefit and frequency now ≤ once per month.\n- Maintain seizure diary and sleep hygiene. Patient to contact the epilepsy nurse if any increase in frequency or new features occur.\n- Routine follow-up in 6 months, sooner if breakthrough clusters recur.\n- No immediate need for repeat MRI or EEG in view of stability, but will reconsider if clinical pattern changes.\n\nThank you for your ongoing care of Wendy Brown. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1313,
+      "end": 1352,
+      "text": "events have reduced to ≤ once per month",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1336,
+      "end": 1352,
+      "text": "≤ once per month",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 409,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025\n\nDr Kate\nHealth Centre\n\nKeele University, Keele, Newcastle\n\n Staffordshire ST5 5BG\nDear Dr Kate\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nDiagnoses/summary: Focal epilepsy, likely temporal lobe onset. Marked clinical improvement on current regimen.\n\nNeuroimaging/EEG: Prior MRIs without a clear epileptogenic lesion; historical EEGs consistent with focal epileptiform discharges. No new red-flag features reported.\n\nMedication history (abridged): Previous exposure to sodium valproate, carbamazepine, levetiracetam, phenytoin, lacosamide, clobazam; mixed tolerability and incomplete control. No history of topiramate or zonisamide use. Currently tolerating dual therapy without notable adverse effects.\n\nCurrent medicines:\n- Lamotrigine 100 mg twice daily\n- Brivaracetam 100 mg twice daily\n- Folic acid 5 mg once daily\n\nClinical progress: I reviewed Wendy Brown in clinic today. They attended unaccompanied and brought a detailed seizure diary. Compared with earlier periods, there has been a marked improvement. Previously, the seizure frequency was weekly clusters, usually three events within approximately two hours. Over the past five months on the present regimen, events have reduced to ≤ once per month, typically brief focal impaired awareness episodes without generalisation, with faster post-ictal recovery and minimal injury risk. Wendy Brown reports better sleep regularity and has re-started light exercise. No new neurological symptoms, mood has been stable, and there are no concerns regarding medication adherence.\n\nSafety/counselling: We discussed seizure first aid, triggers, and SUDEP risk in general terms; no driving per DVLA guidance until standard criteria are met. Wendy Brown is using a phone-based seizure log and finds reminders helpful. They deny adverse effects such as diplopia, rash, suicidal ideation, or significant cognitive slowing. Hydration and routine bloods through primary care were acknowledged; no abnormalities reported by the patient.\n\nPlan:\n- Continue current antiseizure medications unchanged given sustained benefit and frequency now ≤ once per month.\n- Maintain seizure diary and sleep hygiene. Patient to contact the epilepsy nurse if any increase in frequency or new features occur.\n- Routine follow-up in 6 months, sooner if breakthrough clusters recur.\n- No immediate need for repeat MRI or EEG in view of stability, but will reconsider if clinical pattern changes.\n\nThank you for your ongoing care of Wendy Brown. Please let me know if there are any concerns in the interim.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the current frequency: \"Over the past five months on the present regimen, events have reduced to ≤ once per month,\" and the plan reiterates \"frequency now ≤ once per month.\" This indicates at most one seizure per month. Per the instruction to prioritize explicit numeric expressions and to select the highest frequency when given ranges or bounds, '≤ once per month' is normalized to '1 per month' as the highest plausible frequency within that bound. Not seizure free, since events are still occurring monthly.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "events have reduced to ≤ once per month"
+      ],
+      "reference": [
+        "1 per month",
+        "≤ once per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

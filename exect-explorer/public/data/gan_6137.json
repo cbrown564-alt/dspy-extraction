@@ -1,0 +1,54 @@
+{
+  "id": "gan_6137",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 30 June 2017 \n\nDr Amelia Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London SE5 9RS  \n\nDear Dr Amelia Shah, \n\nAlex Morgan, DOB: 22-07-1991, Hospital No: K847215 NHS No. 1039485726  \nMooring 12, Riverside Quay, London, SE16 5XY  \n\nDiagnosis: \n\nSeizure disorder with variable control; patient reports light-triggered events and intermittent breakthrough episodes despite adherence\n\nAetiology: \n\nUnclear; no confirmed structural or genetic cause to date (history primarily patient-reported)\n\nOther Medical Problems: \n\nIron deficiency previously treated with oral supplementation; seasonal allergic rhinitis; no known drug allergies\n\nManagement Plan: \n\n- Continue current Levetiracetam 1 g twice daily; ensure single manufacturer supply due to prior sensitivity to switching formulations.  \n- Trial of blue-light and flicker avoidance strategies; patient provided written guidance on lighting and screen settings.  \n- Arrange 24-hour ambulatory EEG and updated MRI brain with epilepsy protocol.  \n- Bloods today: FBC, U&E, LFT, ferritin, vitamin D.  \n- Safety: we discussed strategies for maintaining medication adherence and device charging given residence on a houseboat with occasional power outages (backup battery pack and blister-pack calendar).  \n- Review in four months, earlier if events cluster or injuries occur.\n\nHistory: \n\nAlex Morgan lives on a houseboat/mobile home and notes occasional power cuts that have disrupted phone and alarm charging, leading to two missed evening doses in the past six weeks. They describe brief events predominantly when exposed to rapid flicker from LED strip lighting or when scrolling on high-refresh-rate screens in dim environments. These are characterised by a sudden sense of visual shimmering followed by a short period of unresponsiveness lasting under a minute, with rapid recovery and no tongue biting or incontinence. Frequency over the last three months is reported as approximately one every two to three weeks, typically in settings with bright modulated light. They avoid nightclubs and strobe environments. There is no consistent aura otherwise and no clear diurnal pattern beyond the light context. No recent head injuries. Driving advice provided according to DVLA guidance.\n\nComment: \n\nPatient-reported episodes are consistent with light-sensitive seizure-like events precipitated by flicker exposure, though definitive classification remains pending further investigations. No red flags for progressive neurological deficit today. We discussed the importance of regular dosing and practical solutions around power reliability for alarms and emergency contacts.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1962,
+      "end": 2056,
+      "text": "Frequency over the last three months is reported as approximately one every two to three weeks",
+      "attributes": {
+        "Label": "1 per 2 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6137,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 30 June 2017 \n\nDr Amelia Shah \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London SE5 9RS  \n\nDear Dr Amelia Shah, \n\nAlex Morgan, DOB: 22-07-1991, Hospital No: K847215 NHS No. 1039485726  \nMooring 12, Riverside Quay, London, SE16 5XY  \n\nDiagnosis: \n\nSeizure disorder with variable control; patient reports light-triggered events and intermittent breakthrough episodes despite adherence\n\nAetiology: \n\nUnclear; no confirmed structural or genetic cause to date (history primarily patient-reported)\n\nOther Medical Problems: \n\nIron deficiency previously treated with oral supplementation; seasonal allergic rhinitis; no known drug allergies\n\nManagement Plan: \n\n- Continue current Levetiracetam 1 g twice daily; ensure single manufacturer supply due to prior sensitivity to switching formulations.  \n- Trial of blue-light and flicker avoidance strategies; patient provided written guidance on lighting and screen settings.  \n- Arrange 24-hour ambulatory EEG and updated MRI brain with epilepsy protocol.  \n- Bloods today: FBC, U&E, LFT, ferritin, vitamin D.  \n- Safety: we discussed strategies for maintaining medication adherence and device charging given residence on a houseboat with occasional power outages (backup battery pack and blister-pack calendar).  \n- Review in four months, earlier if events cluster or injuries occur.\n\nHistory: \n\nAlex Morgan lives on a houseboat/mobile home and notes occasional power cuts that have disrupted phone and alarm charging, leading to two missed evening doses in the past six weeks. They describe brief events predominantly when exposed to rapid flicker from LED strip lighting or when scrolling on high-refresh-rate screens in dim environments. These are characterised by a sudden sense of visual shimmering followed by a short period of unresponsiveness lasting under a minute, with rapid recovery and no tongue biting or incontinence. Frequency over the last three months is reported as approximately one every two to three weeks, typically in settings with bright modulated light. They avoid nightclubs and strobe environments. There is no consistent aura otherwise and no clear diurnal pattern beyond the light context. No recent head injuries. Driving advice provided according to DVLA guidance.\n\nComment: \n\nPatient-reported episodes are consistent with light-sensitive seizure-like events precipitated by flicker exposure, though definitive classification remains pending further investigations. No red flags for progressive neurological deficit today. We discussed the importance of regular dosing and practical solutions around power reliability for alarms and emergency contacts.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Frequency over the last three months is reported as approximately one every two to three weeks.\" This provides a numeric frequency range. Per the instruction to select the highest frequency when multiple frequencies exist, choose the more frequent end of the range (1 every 2 weeks). Convert to the allowed format as \"1 per 2 week\" (unit in singular). No other numeric seizure frequency is provided.",
+      "seizure_frequency_number": [
+        "1 per 2 week",
+        "Frequency over the last three months is reported as approximately one every two to three weeks"
+      ],
+      "reference": [
+        "unknown",
+        "Photosensitive seizure episodes with flicker exposure"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

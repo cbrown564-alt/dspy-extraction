@@ -1,0 +1,59 @@
+{
+  "id": "gan_11988",
+  "text": "Department of Neurology \n\nClinic Date: 25 September 2017 \n\nDr Amelia Rhodes  \nSt. Cuthbert’s Hospital  \nDepartment of Neurology, 12 Hartley Lane, Manchester M13 2QP  \n\nDear Dr Amelia Rhodes,  \n\nMr Peter Lang, DOB: 09-03-1989, Hospital No: M472118 NHS No. 9045127783  \nFlat 2B, 18 Brookside Terrace, Salford, M6 7AL \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification. Further characterisation pending. \n\nCurrent Medication: \n\nLevetiracetam 1 g bd  \nClobazam 10 mg nocte (patient-directed titration during clusters as previously advised) \n\nPlan: \n\n- Continue current anti-seizure medications without change pending further evaluation  \n- Arrange ambulatory EEG with video and repeat MRI brain (epilepsy protocol)  \n- Seizure diary to quantify daily events and identify triggers related to heat and prolonged exertion  \n- Occupational advice: maintain hydration, regular shaded rest breaks, and buddy system during high-heat gardening tasks; avoid lone work during periods of frequent clusters  \n- Safety counselling reinforced regarding working at heights, operating heavy machinery, and water hazards  \n- Follow-up in clinic in 8 weeks or sooner if events escalate \n\nI reviewed Mr Peter Lang in clinic today. He works in gardening and groundskeeping outdoors, noting that heat and prolonged exertion vary seasonally and may influence symptoms, particularly during mid-day summer shifts. Convulsions seizures have been reported only twice in the last year. focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters. He describes these as brief unilateral hand or forearm jerks with preserved awareness, occasionally progressing to involve the face, each lasting 20–60 seconds, with post-event fatigue but no confusion. Events are more frequent on hot days and after prolonged physical activity. No recent head injury, alcohol excess, or intercurrent illness. \n\nHe is adherent with levetiracetam and uses clobazam as previously instructed during periods of clustering, which he feels shortens runs of events but does not eliminate daily episodes. No adverse effects reported beyond mild daytime sleepiness. There is no witnessed nocturnal event. A workplace risk assessment has been completed; he avoids ladder work and power saws, and colleagues are aware of basic first-aid measures. \n\nNeurological examination today was normal between events. Prior routine EEG (18 months ago) was non-diagnostic and MRI at that time was unremarkable. Given the current frequency and potential seasonal exacerbation, we will proceed with ambulatory EEG capture and updated MRI. He will continue to record events in a structured diary, noting temperature, hydration, and exertion levels. \n\nI have not altered medication today. We discussed red flags warranting urgent contact, including increased duration, injury, or escalation in convulsive events. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1466,
+      "end": 1556,
+      "text": "focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters.",
+      "attributes": {
+        "Label": "6 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1397,
+      "end": 1556,
+      "text": "Convulsions seizures have been reported only twice in the last year. focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters.",
+      "attributes": {
+        "Label": "6 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11988,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 25 September 2017 \n\nDr Amelia Rhodes  \nSt. Cuthbert’s Hospital  \nDepartment of Neurology, 12 Hartley Lane, Manchester M13 2QP  \n\nDear Dr Amelia Rhodes,  \n\nMr Peter Lang, DOB: 09-03-1989, Hospital No: M472118 NHS No. 9045127783  \nFlat 2B, 18 Brookside Terrace, Salford, M6 7AL \n\nDiagnoses: \n\nRecurrent seizures of uncertain classification. Further characterisation pending. \n\nCurrent Medication: \n\nLevetiracetam 1 g bd  \nClobazam 10 mg nocte (patient-directed titration during clusters as previously advised) \n\nPlan: \n\n- Continue current anti-seizure medications without change pending further evaluation  \n- Arrange ambulatory EEG with video and repeat MRI brain (epilepsy protocol)  \n- Seizure diary to quantify daily events and identify triggers related to heat and prolonged exertion  \n- Occupational advice: maintain hydration, regular shaded rest breaks, and buddy system during high-heat gardening tasks; avoid lone work during periods of frequent clusters  \n- Safety counselling reinforced regarding working at heights, operating heavy machinery, and water hazards  \n- Follow-up in clinic in 8 weeks or sooner if events escalate \n\nI reviewed Mr Peter Lang in clinic today. He works in gardening and groundskeeping outdoors, noting that heat and prolonged exertion vary seasonally and may influence symptoms, particularly during mid-day summer shifts. Convulsions seizures have been reported only twice in the last year. focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters. He describes these as brief unilateral hand or forearm jerks with preserved awareness, occasionally progressing to involve the face, each lasting 20–60 seconds, with post-event fatigue but no confusion. Events are more frequent on hot days and after prolonged physical activity. No recent head injury, alcohol excess, or intercurrent illness. \n\nHe is adherent with levetiracetam and uses clobazam as previously instructed during periods of clustering, which he feels shortens runs of events but does not eliminate daily episodes. No adverse effects reported beyond mild daytime sleepiness. There is no witnessed nocturnal event. A workplace risk assessment has been completed; he avoids ladder work and power saws, and colleagues are aware of basic first-aid measures. \n\nNeurological examination today was normal between events. Prior routine EEG (18 months ago) was non-diagnostic and MRI at that time was unremarkable. Given the current frequency and potential seasonal exacerbation, we will proceed with ambulatory EEG capture and updated MRI. He will continue to record events in a structured diary, noting temperature, hydration, and exertion levels. \n\nI have not altered medication today. We discussed red flags warranting urgent contact, including increased duration, injury, or escalation in convulsive events. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequencies: The letter states: 'Convulsions seizures have been reported only twice in the last year.' and 'focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters.' Following the rule to choose the highest frequency across types, 6 per day (for focal clonic events) is higher than 2 per year (convulsions). Therefore, the current seizure frequency is 6 per day. No need to consider seizure-free criteria as patient has ongoing daily seizures.",
+      "seizure_frequency_number": [
+        "6 per day",
+        "focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters."
+      ],
+      "reference": [
+        "6 per day",
+        "Convulsions seizures have been reported only twice in the last year. focal clonic with retained awareness are experienced 6 times daily, sometimes in clusters."
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

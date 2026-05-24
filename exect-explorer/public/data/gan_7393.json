@@ -1,0 +1,54 @@
+{
+  "id": "gan_7393",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 01 January 2017 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH902134 NHS No. 4478902165  \n12 Brook Lane, London, SE15 3AB\n\nThank you for asking me to review your patient. We met in clinic today with his partner present. He remains on long-term antiseizure therapy, and I note from prior correspondence that bone-health surveillance is being managed elsewhere.\n\nHe describes ongoing episodes over the last year that continue despite treatment. Doses have been constrained by side effects, and he reports that events still occur, typically clustering every few weeks with occasional breakthrough episodes in between. He experiences a brief warning of rising internal tension and loss of focus, followed by a pause in responsiveness with manual automatisms and subsequent fatigue for several hours. He does not recall clear convulsive activity and there is no consistent injury history. His partner has observed two nocturnal events in the past three months characterised by groaning and restlessness, with confusion on waking. He reports that higher doses have previously led to troublesome dizziness and cognitive slowing, limiting further escalation. \n\nHe volunteers that poor sleep and missed meals seem to precede some episodes, though this is not invariable. There is no consistent alcohol trigger. He does not drive. He keeps a paper diary which broadly aligns with his description. No recent emergency department attendances. \n\nExamination today was non-focal. Speech and language were fluent with intact comprehension. No meningeal signs. Cardiovascular and respiratory examinations were unremarkable. \n\nGiven the persistence of events on therapy and the constraints imposed by tolerability, I have recommended the following next steps for clarification of the current events and to guide management: \n- Ambulatory EEG with video capture to sample typical events if possible. \n- Serum drug levels, U&E, LFTs, FBC, vitamin D and calcium (noting that bone-health monitoring is already being overseen elsewhere). \n- Review of his seizure diary alongside any wearable device data he is comfortable sharing. \n\nWe discussed safety planning, including supervision around water and avoidance of heights and open flames during periods of increased event frequency. He and his partner understand and agree. He remains registered with the DVLA as not driving; no change is indicated.\n\nI will see him back after the ambulatory EEG or sooner if the frequency or character of events changes, or if there are any new injuries. A copy of this letter has been shared with him and his partner at their request.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 760,
+      "end": 865,
+      "text": "events still occur, typically clustering every few weeks with occasional breakthrough episodes in between",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7393,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 01 January 2017 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1982, Hospital No: KCH902134 NHS No. 4478902165  \n12 Brook Lane, London, SE15 3AB\n\nThank you for asking me to review your patient. We met in clinic today with his partner present. He remains on long-term antiseizure therapy, and I note from prior correspondence that bone-health surveillance is being managed elsewhere.\n\nHe describes ongoing episodes over the last year that continue despite treatment. Doses have been constrained by side effects, and he reports that events still occur, typically clustering every few weeks with occasional breakthrough episodes in between. He experiences a brief warning of rising internal tension and loss of focus, followed by a pause in responsiveness with manual automatisms and subsequent fatigue for several hours. He does not recall clear convulsive activity and there is no consistent injury history. His partner has observed two nocturnal events in the past three months characterised by groaning and restlessness, with confusion on waking. He reports that higher doses have previously led to troublesome dizziness and cognitive slowing, limiting further escalation. \n\nHe volunteers that poor sleep and missed meals seem to precede some episodes, though this is not invariable. There is no consistent alcohol trigger. He does not drive. He keeps a paper diary which broadly aligns with his description. No recent emergency department attendances. \n\nExamination today was non-focal. Speech and language were fluent with intact comprehension. No meningeal signs. Cardiovascular and respiratory examinations were unremarkable. \n\nGiven the persistence of events on therapy and the constraints imposed by tolerability, I have recommended the following next steps for clarification of the current events and to guide management: \n- Ambulatory EEG with video capture to sample typical events if possible. \n- Serum drug levels, U&E, LFTs, FBC, vitamin D and calcium (noting that bone-health monitoring is already being overseen elsewhere). \n- Review of his seizure diary alongside any wearable device data he is comfortable sharing. \n\nWe discussed safety planning, including supervision around water and avoidance of heights and open flames during periods of increased event frequency. He and his partner understand and agree. He remains registered with the DVLA as not driving; no change is indicated.\n\nI will see him back after the ambulatory EEG or sooner if the frequency or character of events changes, or if there are any new injuries. A copy of this letter has been shared with him and his partner at their request.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes ongoing seizures: 'events still occur, typically clustering every few weeks with occasional breakthrough episodes in between.' There is no explicit numeric count per time unit. It also mentions 'two nocturnal events in the past three months,' but these are a subset/observation type and do not define overall frequency. Because the overall frequency is described qualitatively (clustering every few weeks with occasional breakthroughs) without specific numbers, we cannot compute a precise frequency. Therefore, per rules, return 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "events still occur, typically clustering every few weeks with occasional breakthrough episodes in between"
+      ],
+      "reference": [
+        "unknown",
+        "Tolerability-limited dosing with ongoing seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

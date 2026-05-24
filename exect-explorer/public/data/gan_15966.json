@@ -1,0 +1,59 @@
+{
+  "id": "gan_15966",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nDate: 13 January 2024\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and update\n\nDear Alice,\n\nDiagnosis overview:\nThe working classification of seizures remains under review.\n\nCurrent medication:\n1. Carbamazepine (modified release) 600 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nRecent course and seizure description:\nSince our last contact, the patient has implemented light and screen management strategies (reduced evening screen exposure, blue‑light filtering, and regular sleep timing). He reports feeling more stable and believes these changes have contributed to improvement. Specifically, the recent pattern has been as follows: In October he had two seizures during sleep and none while awake. In December he had three in sleep and no while awake. No clear daytime precipitants have been identified, and there have been no injuries, tongue bites, or prolonged post‑ictal confusional states. Mood and energy are reported as better overall, with fewer interrupted nights.\n\nAssessment:\nOn balance he perceives improvement, particularly with respect to daytime functioning and reduced concern about wakeful episodes. There is no evidence of new adverse effects from current medication. Light/screen management appears to be a helpful component of his routine.\n\nPlan:\n- Continue current doses of carbamazepine (modified release) and levetiracetam unchanged for now.\n- Maintain the light and screen hygiene measures (blue‑light filters after sunset, regular bedtime, breaks from screens in the evening), which he feels are beneficial.\n- Keep a seizure and sleep diary noting timing (sleep vs wake), potential triggers, and recovery times.\n- Safety advice reinforced regarding nocturnal events (use of padded bed edges where appropriate, and sleeping position guidance as discussed).\n- Follow‑up in four months; sooner if events change in character, occur when awake, or cluster.\n\nPlease let me know if there are any concerns before the next review.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 883,
+      "end": 1002,
+      "text": "In October he had two seizures during sleep and none while awake. In December he had three in sleep and no while awake.",
+      "attributes": {
+        "Label": "5 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 883,
+      "end": 1001,
+      "text": "In October he had two seizures during sleep and none while awake. In December he had three in sleep and no while awake",
+      "attributes": {
+        "Label": "5 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 15966,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr Alice Morgan (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nDate: 13 January 2024\nTo: neurology.team@nhs.net\nCc: Dr John Williams (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Sarah Patel (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Review and update\n\nDear Alice,\n\nDiagnosis overview:\nThe working classification of seizures remains under review.\n\nCurrent medication:\n1. Carbamazepine (modified release) 600 mg twice daily\n2. Levetiracetam 500 mg twice daily\n\nRecent course and seizure description:\nSince our last contact, the patient has implemented light and screen management strategies (reduced evening screen exposure, blue‑light filtering, and regular sleep timing). He reports feeling more stable and believes these changes have contributed to improvement. Specifically, the recent pattern has been as follows: In October he had two seizures during sleep and none while awake. In December he had three in sleep and no while awake. No clear daytime precipitants have been identified, and there have been no injuries, tongue bites, or prolonged post‑ictal confusional states. Mood and energy are reported as better overall, with fewer interrupted nights.\n\nAssessment:\nOn balance he perceives improvement, particularly with respect to daytime functioning and reduced concern about wakeful episodes. There is no evidence of new adverse effects from current medication. Light/screen management appears to be a helpful component of his routine.\n\nPlan:\n- Continue current doses of carbamazepine (modified release) and levetiracetam unchanged for now.\n- Maintain the light and screen hygiene measures (blue‑light filters after sunset, regular bedtime, breaks from screens in the evening), which he feels are beneficial.\n- Keep a seizure and sleep diary noting timing (sleep vs wake), potential triggers, and recovery times.\n- Safety advice reinforced regarding nocturnal events (use of padded bed edges where appropriate, and sleeping position guidance as discussed).\n- Follow‑up in four months; sooner if events change in character, occur when awake, or cluster.\n\nPlease let me know if there are any concerns before the next review.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides explicit monthly counts: \"In October he had two seizures during sleep\" and \"In December he had three in sleep\" with none while awake. Summing: 2 (October) + 3 (December) = 5 seizures. These months fall within a three-month span (October through December). Therefore, the frequency can be expressed as 5 per 3 months.",
+      "seizure_frequency_number": [
+        "5 per 3 month",
+        "In October he had two seizures during sleep and none while awake. In December he had three in sleep and no while awake."
+      ],
+      "reference": [
+        "5 per 3 month",
+        "In October he had two seizures during sleep and none while awake. In December he had three in sleep and no while awake"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

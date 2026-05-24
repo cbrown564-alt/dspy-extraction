@@ -1,0 +1,59 @@
+{
+  "id": "gan_4424",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 27 June 2014 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJordan Ellis, DOB: 12-11-1986, Hospital No: H938521 NHS No. 5938472016  \n14 Southbank Close, London, W2 6JP \n\nMedication: \n\nNo regular antiepileptic medication at present. Uses a smartwatch with fall-detection enabled; patient has kept exported alert logs as supporting documentation. \n\nThank you for reviewing this patient in our clinic. They report sporadic episodes this year with improving stability since March. The smartwatch has generated automated fall alerts on two occasions in February that correspond closely with the patient’s recollection of events. There have been no injury-related attendances to A&E, and there is no current driving. Sleep deprivation and missed meals were noted preceding the February events; none since March after lifestyle adjustments (earlier bedtimes and scheduled meals). \n\nSeizure: 2014: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0 \n\nThe alert timestamps from the smartwatch align with the above chronology and have been helpful in corroborating the patient’s diary. The patient understands that fall-detection alerts are not diagnostic and can produce false positives; however, in this case the pattern appears consistent with the patient’s description. No reports of tongue biting or incontinence. Post-event fatigue lasted several hours after the January and February episodes. No known triggers identified since March. \n\nWe discussed options for watch-based event tagging and encouragement to continue maintaining a diary, including exporting monthly summaries for our records. Bloods today for general screening (FBC, U&E, LFTs, glucose) and resting ECG arranged; we will review results by post. The patient has opted to remain off medication for now given the absence of further episodes since February, and will contact us promptly if new events occur. \n\nWe will see them back in three months, or sooner if there is any recurrence. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1000,
+      "end": 1061,
+      "text": "Seizure: 2014: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0",
+      "attributes": {
+        "Label": "3 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1000,
+      "end": 1061,
+      "text": "Seizure: 2014: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0",
+      "attributes": {
+        "Label": "3 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4424,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 27 June 2014 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJordan Ellis, DOB: 12-11-1986, Hospital No: H938521 NHS No. 5938472016  \n14 Southbank Close, London, W2 6JP \n\nMedication: \n\nNo regular antiepileptic medication at present. Uses a smartwatch with fall-detection enabled; patient has kept exported alert logs as supporting documentation. \n\nThank you for reviewing this patient in our clinic. They report sporadic episodes this year with improving stability since March. The smartwatch has generated automated fall alerts on two occasions in February that correspond closely with the patient’s recollection of events. There have been no injury-related attendances to A&E, and there is no current driving. Sleep deprivation and missed meals were noted preceding the February events; none since March after lifestyle adjustments (earlier bedtimes and scheduled meals). \n\nSeizure: 2014: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0 \n\nThe alert timestamps from the smartwatch align with the above chronology and have been helpful in corroborating the patient’s diary. The patient understands that fall-detection alerts are not diagnostic and can produce false positives; however, in this case the pattern appears consistent with the patient’s description. No reports of tongue biting or incontinence. Post-event fatigue lasted several hours after the January and February episodes. No known triggers identified since March. \n\nWe discussed options for watch-based event tagging and encouragement to continue maintaining a diary, including exporting monthly summaries for our records. Bloods today for general screening (FBC, U&E, LFTs, glucose) and resting ECG arranged; we will review results by post. The patient has opted to remain off medication for now given the absence of further episodes since February, and will contact us promptly if new events occur. \n\nWe will see them back in three months, or sooner if there is any recurrence. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides a month-by-month count: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0. Summing seizures Jan–Jun gives 1 + 2 + 0 + 0 + 0 + 0 = 3 over a 6-month period. Since the last seizure was in February and it's now June, the patient has not been seizure-free for 6 months, so we calculate frequency rather than labeling as seizure-free.",
+      "seizure_frequency_number": [
+        "3 per 6 month",
+        "Seizure: 2014: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0"
+      ],
+      "reference": [
+        "3 per 6 month",
+        "Seizure: 2014: Jan x1, Feb x2, Mar x0, Apr x0, May x0, Jun x0"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

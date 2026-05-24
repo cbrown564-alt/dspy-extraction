@@ -1,0 +1,59 @@
+{
+  "id": "gan_9300",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 22 November 2023 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended alone and provided a detailed account of his current spells, having actively practised aura recognition strategies since our last contact. He describes warning features in his own words as a “brief wave of tightness rising from the stomach with a metallic taste and a sense that sounds are slightly distant”, typically lasting 20–40 seconds. On this basis, he reports 2 to 4 focal non-motor per week, usually clustering in the late afternoon, and notes that missing lunch or poor sleep may precede them. He denies loss of awareness or convulsions during these brief events. There have been no injuries, tongue biting, or incontinence.\n\nHe is currently taking Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d., with good adherence by his report and no recent dose changes. He experiences occasional dizziness for a few minutes after morning medication and mild afternoon fatigue; he has not noticed mood disturbance or rash. He has not used rescue medication and has not required emergency services since his last review. He has ceased driving and remains aware of standard safety advice at home and work, which he reports is manageable with planned rest and hydration.\n\nSince his previous appointment, he has kept a diary capturing the onset cues, duration, and context of each event. His descriptions have become more consistent, and he can now pause conversation and sit down promptly when a warning occurs. He states that controlled breathing and grounding techniques appear to shorten the experience in some instances. He has not identified a clear menstrual or alcohol link and reports stable caffeine intake. Sleep quality is variable due to early starts for shift work.\n\nNeurological examination today was unremarkable. Vital signs were stable. There is no new focal neurological deficit. We reviewed blood results from last month, which were within expected ranges, including liver function and U&Es. No recent neuroimaging has been performed; he last underwent MRI three years ago, reported as structurally normal at that time. \n\nPlan discussed with the patient: continue the current diary with particular attention to sleep duration and meal timing; no immediate medication change today given the relatively brief and non-injurious nature of the current events and his improved self-management with aura recognition. We agreed that if frequency increases beyond his present pattern or if there is evolution with impaired awareness or convulsion, he will contact the clinic promptly for expedited review. I have requested a routine EEG to correlate with his reported events, and we will arrange follow-up in three months, sooner if needed. He is agreeable to this plan.\n\nI will update you after the EEG or earlier should there be any significant change.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 673,
+      "end": 715,
+      "text": "he reports 2 to 4 focal non-motor per week",
+      "attributes": {
+        "Label": "2 to 4 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 684,
+      "end": 715,
+      "text": "2 to 4 focal non-motor per week",
+      "attributes": {
+        "Label": "2 to 4 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9300,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 22 November 2023 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. He attended alone and provided a detailed account of his current spells, having actively practised aura recognition strategies since our last contact. He describes warning features in his own words as a “brief wave of tightness rising from the stomach with a metallic taste and a sense that sounds are slightly distant”, typically lasting 20–40 seconds. On this basis, he reports 2 to 4 focal non-motor per week, usually clustering in the late afternoon, and notes that missing lunch or poor sleep may precede them. He denies loss of awareness or convulsions during these brief events. There have been no injuries, tongue biting, or incontinence.\n\nHe is currently taking Levetiracetam 1000 mg b.d. and Lamotrigine 150 mg b.d., with good adherence by his report and no recent dose changes. He experiences occasional dizziness for a few minutes after morning medication and mild afternoon fatigue; he has not noticed mood disturbance or rash. He has not used rescue medication and has not required emergency services since his last review. He has ceased driving and remains aware of standard safety advice at home and work, which he reports is manageable with planned rest and hydration.\n\nSince his previous appointment, he has kept a diary capturing the onset cues, duration, and context of each event. His descriptions have become more consistent, and he can now pause conversation and sit down promptly when a warning occurs. He states that controlled breathing and grounding techniques appear to shorten the experience in some instances. He has not identified a clear menstrual or alcohol link and reports stable caffeine intake. Sleep quality is variable due to early starts for shift work.\n\nNeurological examination today was unremarkable. Vital signs were stable. There is no new focal neurological deficit. We reviewed blood results from last month, which were within expected ranges, including liver function and U&Es. No recent neuroimaging has been performed; he last underwent MRI three years ago, reported as structurally normal at that time. \n\nPlan discussed with the patient: continue the current diary with particular attention to sleep duration and meal timing; no immediate medication change today given the relatively brief and non-injurious nature of the current events and his improved self-management with aura recognition. We agreed that if frequency increases beyond his present pattern or if there is evolution with impaired awareness or convulsion, he will contact the clinic promptly for expedited review. I have requested a routine EEG to correlate with his reported events, and we will arrange follow-up in three months, sooner if needed. He is agreeable to this plan.\n\nI will update you after the EEG or earlier should there be any significant change.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly describes the patient's current seizure-like events: \"On this basis, he reports 2 to 4 focal non-motor per week\". These are seizures (focal non-motor) and the frequency is clearly quantified. No other conflicting frequencies are provided. Following the rule to use explicit numeric expressions and select the highest frequency if multiple exist, the label should be the stated range per week.",
+      "seizure_frequency_number": [
+        "2 to 4 per week",
+        "he reports 2 to 4 focal non-motor per week"
+      ],
+      "reference": [
+        "2 to 4 per week",
+        "2 to 4 focal non-motor per week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

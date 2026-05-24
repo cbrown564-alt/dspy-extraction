@@ -1,0 +1,54 @@
+{
+  "id": "gan_5996",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 06 March 2023 10:15\nTo: kch.epilepsyservice@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Megan O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review; classification not determined at present.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as required for clusters (patient-led use, no more than 2–3 nights per week)\n\nPresent Seizure Frequency:\n\nRecent breakthrough events predominantly following lapses in prescribed antiseizure medication, corroborated by entries in the patient’s pill diary and feedback from their peer support group facilitator.\n\nHistory and Context:\n\nThe patient engages actively with a local peer support group and has authorised us to consider observations shared in that setting as adjunctive history. Group peers have noted that the patient appears well when medication is taken regularly, with episodes occurring most often after busy shift work days when doses are delayed or omitted. The patient reports no consistent sleep deprivation beyond these occasions and no clear alcohol-related triggers. No injuries sustained; brief confusion post-event, typically under 5 minutes.\n\nPlan of Action:\n\n- Reinforce adherence strategies: we discussed using a smartphone medication schedule with two-step reminders and a seven-day compartment pill organiser. The patient felt this would be feasible.\n- Adjust lamotrigine to 175 mg twice daily to improve protection against breakthrough events associated with dosing variability. Increase by 25 mg per dose starting in one week if no rash or adverse effects. If adverse effects occur (e.g., rash, dizziness, diplopia), maintain the current dose and contact our team.\n- Clobazam: continue as needed for brief clusters only, with a maximum of 10 mg nocte on no more than three nights per week.\n- Safety advice: continue standard seizure precautions, including bathing with door unlocked, avoiding heights without supervision, and avoiding swimming alone. Driving advice remains unchanged based on recent episodes; the patient understands current regulations and responsibilities.\n- Monitoring: the patient will share weekly adherence logs (pill diary screenshots) and, with consent, brief summaries from the peer support facilitator to support pattern recognition.\n- Investigations: arrange ambulatory EEG (48 hours) within the next 6–8 weeks to aid classification, noting variable timing of events relative to dosing.\n\nFollow-up:\n\nReview in clinic in 4 months, sooner if there is any increase in frequency, new features, or adverse medication effects. The patient has contact details for the epilepsy nurse specialist for interim support.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 642,
+      "end": 736,
+      "text": "Recent breakthrough events predominantly following lapses in prescribed antiseizure medication",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5996,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Emma Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 06 March 2023 10:15\nTo: kch.epilepsyservice@nhs.net\nCc: Dr Ravi Desai (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Megan O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and medication adjustment\n\nHi Emma\n\nEpilepsy Diagnosis:\n\nDiagnosis remains under review; classification not determined at present.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Clobazam 10 mg at night as required for clusters (patient-led use, no more than 2–3 nights per week)\n\nPresent Seizure Frequency:\n\nRecent breakthrough events predominantly following lapses in prescribed antiseizure medication, corroborated by entries in the patient’s pill diary and feedback from their peer support group facilitator.\n\nHistory and Context:\n\nThe patient engages actively with a local peer support group and has authorised us to consider observations shared in that setting as adjunctive history. Group peers have noted that the patient appears well when medication is taken regularly, with episodes occurring most often after busy shift work days when doses are delayed or omitted. The patient reports no consistent sleep deprivation beyond these occasions and no clear alcohol-related triggers. No injuries sustained; brief confusion post-event, typically under 5 minutes.\n\nPlan of Action:\n\n- Reinforce adherence strategies: we discussed using a smartphone medication schedule with two-step reminders and a seven-day compartment pill organiser. The patient felt this would be feasible.\n- Adjust lamotrigine to 175 mg twice daily to improve protection against breakthrough events associated with dosing variability. Increase by 25 mg per dose starting in one week if no rash or adverse effects. If adverse effects occur (e.g., rash, dizziness, diplopia), maintain the current dose and contact our team.\n- Clobazam: continue as needed for brief clusters only, with a maximum of 10 mg nocte on no more than three nights per week.\n- Safety advice: continue standard seizure precautions, including bathing with door unlocked, avoiding heights without supervision, and avoiding swimming alone. Driving advice remains unchanged based on recent episodes; the patient understands current regulations and responsibilities.\n- Monitoring: the patient will share weekly adherence logs (pill diary screenshots) and, with consent, brief summaries from the peer support facilitator to support pattern recognition.\n- Investigations: arrange ambulatory EEG (48 hours) within the next 6–8 weeks to aid classification, noting variable timing of events relative to dosing.\n\nFollow-up:\n\nReview in clinic in 4 months, sooner if there is any increase in frequency, new features, or adverse medication effects. The patient has contact details for the epilepsy nurse specialist for interim support.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly indicates ongoing seizures but does not provide any explicit numeric frequency. The 'Present Seizure Frequency' section states that recent breakthrough events occur predominantly after lapses in medication, without quantifying how often. No counts per day/week/month or duration of seizure freedom are given. Therefore, the specific frequency cannot be determined.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Recent breakthrough events predominantly following lapses in prescribed antiseizure medication"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures with missed ASM doses"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

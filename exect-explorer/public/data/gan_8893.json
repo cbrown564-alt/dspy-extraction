@@ -1,0 +1,59 @@
+{
+  "id": "gan_8893",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 11 December 2014 \n\nDr Amelia Carter  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Carter,  \n\nDaniel Roberts, DOB: 14-03-1991, Hospital No: KCH728114 NHS No. 9432765108  \n12 Beechwood Close, London, SE15 3QX\n\nThank you for asking me to see Daniel Roberts for pre‑conception counselling in the context of established focal epilepsy. He attended today with his partner. He describes a longstanding diagnosis of focal epilepsy, with habitual focal impaired‑awareness seizures previously characterised by a rising epigastric sensation, right arm posturing and brief speech arrest, followed by several minutes of confusion. There has been no history of generalised tonic–clonic seizures for several years, and there are no dissociative or nocturnal events reported. \n\nFollowing a recent review in which his anti‑seizure medication was optimised, he is now Seizure-free after dose escalation of ASM. Specifically, a gradual increase in his current regimen over the past four months has led to complete cessation of his focal events with no interim breakthroughs. He reports improved alertness and only mild, transient dizziness during the titration phase, now resolved. There is no current concern about mood or cognition, and sleep is regular. \n\nWe discussed pre‑conception considerations in detail, including the importance of maintaining seizure control throughout the pre‑conception period and pregnancy, the need for adherence, avoidance of abrupt medication changes, and planning shared care with obstetrics once pregnancy is established. He understands the rationale for continuing his present, effective regimen. He does not drive and is aware to notify DVLA should circumstances change. Folic acid at a high dose was discussed as per standard guidance; he and his partner will liaise with primary care to arrange this. He will continue to use a seizure diary app to document any changes, though none have occurred since the dose escalation. \n\nIn summary: focal epilepsy; Seizure-free after dose escalation of ASM; currently well with good tolerance of treatment; attending for pre‑conception counselling. I have provided written information and contact details for our epilepsy nurse specialist should they have further questions. I will review him in six months or sooner if needed. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 977,
+      "end": 1172,
+      "text": "Seizure-free after dose escalation of ASM; ... a gradual increase in his current regimen over the past four months has led to complete cessation of his focal events with no interim breakthroughs.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 977,
+      "end": 1018,
+      "text": "Seizure-free after dose escalation of ASM",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8893,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 11 December 2014 \n\nDr Amelia Carter  \nKing's College Hospital  \nDepartment of Neurosciences, Denmark Hill, London SE5 9RS  \n\nDear Dr Amelia Carter,  \n\nDaniel Roberts, DOB: 14-03-1991, Hospital No: KCH728114 NHS No. 9432765108  \n12 Beechwood Close, London, SE15 3QX\n\nThank you for asking me to see Daniel Roberts for pre‑conception counselling in the context of established focal epilepsy. He attended today with his partner. He describes a longstanding diagnosis of focal epilepsy, with habitual focal impaired‑awareness seizures previously characterised by a rising epigastric sensation, right arm posturing and brief speech arrest, followed by several minutes of confusion. There has been no history of generalised tonic–clonic seizures for several years, and there are no dissociative or nocturnal events reported. \n\nFollowing a recent review in which his anti‑seizure medication was optimised, he is now Seizure-free after dose escalation of ASM. Specifically, a gradual increase in his current regimen over the past four months has led to complete cessation of his focal events with no interim breakthroughs. He reports improved alertness and only mild, transient dizziness during the titration phase, now resolved. There is no current concern about mood or cognition, and sleep is regular. \n\nWe discussed pre‑conception considerations in detail, including the importance of maintaining seizure control throughout the pre‑conception period and pregnancy, the need for adherence, avoidance of abrupt medication changes, and planning shared care with obstetrics once pregnancy is established. He understands the rationale for continuing his present, effective regimen. He does not drive and is aware to notify DVLA should circumstances change. Folic acid at a high dose was discussed as per standard guidance; he and his partner will liaise with primary care to arrange this. He will continue to use a seizure diary app to document any changes, though none have occurred since the dose escalation. \n\nIn summary: focal epilepsy; Seizure-free after dose escalation of ASM; currently well with good tolerance of treatment; attending for pre‑conception counselling. I have provided written information and contact details for our epilepsy nurse specialist should they have further questions. I will review him in six months or sooner if needed. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient is seizure-free after anti-seizure medication dose escalation. It notes a gradual increase over the past four months led to complete cessation of focal events with no interim breakthroughs, and that none have occurred since the dose escalation. This confirms current seizure freedom but only documents approximately four months without seizures. The rule requires at least six months to label as simply 'seizure free'; otherwise, use 'seizure free for multiple months.' Therefore, the appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizure-free after dose escalation of ASM; ... a gradual increase in his current regimen over the past four months has led to complete cessation of his focal events with no interim breakthroughs."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure-free after dose escalation of ASM"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

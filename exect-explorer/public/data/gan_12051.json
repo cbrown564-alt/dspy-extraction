@@ -1,0 +1,59 @@
+{
+  "id": "gan_12051",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 21 April 2022\n\nDr Priya Nair\nRiverside Medical Practice\n48 Mill Lane, Oxford OX2 0AD\n\nDear Dr Priya Nair,\n\nDaniel Harper, DOB: 22-11-1991, Hospital No: Q783421 NHS No. 9842115763\nFlat 3, 19 Meadow Row, Oxford, OX1 4AB\n\nEpilepsy – Generalised\n\nCurrent management: Patient-reported adherence to a ketogenic/modified diet programme supervised externally by a specialist dietitian; details recorded below. No recent changes to prescribed anti-seizure medicines were reported today. The patient is maintaining a seizure diary and sharing summaries from the diet clinic.\n\nDietary therapy: The patient describes a modified ketogenic approach with a fat-to-carbohydrate-plus-protein ratio generally between 2:1 and 3:1, daily carbohydrate allowance approximately 20–30 g, medium-chain triglyceride oil added to meals twice daily, and regular home blood ketone monitoring targeting 1.5–3.0 mmol/L. Diet is reportedly overseen by an external metabolic/ketogenic team with monthly virtual reviews.\n\nSeizures: The patient has generalised epilepsy. As per diary review and history today, myoclonic jerk occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every eight months. Triggers noted by the patient include sleep deprivation and missed meals. There is no consistent prodrome. No recent injuries reported.\n\nReview summary: I conducted a scheduled telephone review with Daniel Harper. They report good engagement with the supervised diet programme and are keen to continue tracking outcomes. No medication side effects volunteered. They plan to send the external diet clinic’s latest summary to our records team for scanning. We discussed maintaining sleep hygiene and continuing the seizure diary, particularly around periods of dietary adjustment.\n\nPlan: Continue current arrangements with externally supervised ketogenic/modified diet and ongoing diary tracking. We will review again in three months or sooner if there is a sustained change in frequency or severity.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1133,
+      "end": 1202,
+      "text": "myoclonic jerk occur on a near-daily basis, sometimes dozens in a day",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1133,
+      "end": 1301,
+      "text": "myoclonic jerk occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every eight months",
+      "attributes": {
+        "Label": "multiple per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12051,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 21 April 2022\n\nDr Priya Nair\nRiverside Medical Practice\n48 Mill Lane, Oxford OX2 0AD\n\nDear Dr Priya Nair,\n\nDaniel Harper, DOB: 22-11-1991, Hospital No: Q783421 NHS No. 9842115763\nFlat 3, 19 Meadow Row, Oxford, OX1 4AB\n\nEpilepsy – Generalised\n\nCurrent management: Patient-reported adherence to a ketogenic/modified diet programme supervised externally by a specialist dietitian; details recorded below. No recent changes to prescribed anti-seizure medicines were reported today. The patient is maintaining a seizure diary and sharing summaries from the diet clinic.\n\nDietary therapy: The patient describes a modified ketogenic approach with a fat-to-carbohydrate-plus-protein ratio generally between 2:1 and 3:1, daily carbohydrate allowance approximately 20–30 g, medium-chain triglyceride oil added to meals twice daily, and regular home blood ketone monitoring targeting 1.5–3.0 mmol/L. Diet is reportedly overseen by an external metabolic/ketogenic team with monthly virtual reviews.\n\nSeizures: The patient has generalised epilepsy. As per diary review and history today, myoclonic jerk occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every eight months. Triggers noted by the patient include sleep deprivation and missed meals. There is no consistent prodrome. No recent injuries reported.\n\nReview summary: I conducted a scheduled telephone review with Daniel Harper. They report good engagement with the supervised diet programme and are keen to continue tracking outcomes. No medication side effects volunteered. They plan to send the external diet clinic’s latest summary to our records team for scanning. We discussed maintaining sleep hygiene and continuing the seizure diary, particularly around periods of dietary adjustment.\n\nPlan: Continue current arrangements with externally supervised ketogenic/modified diet and ongoing diary tracking. We will review again in three months or sooner if there is a sustained change in frequency or severity.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly reports two seizure types with frequencies: (1) myoclonic jerks occur on a near-daily basis, sometimes dozens in a day, and (2) generalized convulsions occur once every eight months. Per instruction to select the highest frequency across multiple types, the myoclonic jerks represent the highest frequency. The phrase 'near-daily' and 'sometimes dozens in a day' indicates multiple per day, but no precise numeric value can be determined. Therefore, normalize to 'multiple per day' per allowed formats.",
+      "seizure_frequency_number": [
+        "multiple per day",
+        "myoclonic jerk occur on a near-daily basis, sometimes dozens in a day"
+      ],
+      "reference": [
+        "multiple per day",
+        "myoclonic jerk occur on a near-daily basis, sometimes dozens in a day, making accurate quantification challenging. Generalised convulsions occur once every eight months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

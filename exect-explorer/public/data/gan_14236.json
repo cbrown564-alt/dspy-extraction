@@ -1,0 +1,59 @@
+{
+  "id": "gan_14236",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Eleanor Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 March 2021 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Mark Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace considerations and treatment adjustment\n\nHi Eleanor\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy), likely temporal onset based on semiology and prior EEG with left temporal sharp waves. No history of generalised tonic–clonic seizures without focal onset reported since 2019.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Levetiracetam 750 mg twice daily\n3. Buccal midazolam 10 mg (rescue) to carry while at work\n\nPresent Seizure Frequency:\n\nShe discontinued Valproate on 21/Feb. Shortly afterwards, she experienced 4 seizures, one triggered by missed medication. She has remained seizure-free since then. These events occurred during the transition period and resolved after consolidating the lamotrigine dose. She reports no new focal aware auras.\n\nContext and Workplace Factors:\n\nShe works in a cold-chain warehouse where sub-zero temperatures and mandatory gloves can make handling rescue devices slower. She now keeps the buccal midazolam in an inner pocket to reduce cooling and has practised opening the device with insulated liners, which she finds helpful. Her supervisor is aware of her care plan and has arranged a buddy system during night shifts. No injuries reported.\n\nPlan of Action:\n\n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily without change for stability over the next 3 months.\n- Rescue plan: retain buccal midazolam 10 mg for prolonged seizures as per existing care plan. Occupational health to ensure accessibility in low temperatures and availability in both the loading bay and office areas per shift.\n- Adherence: reinforce strict dosing schedule; she has set phone reminders and pillbox use has been reliable since early March.\n- Monitoring: keep a seizure and trigger diary, including any missed doses, sleep disruption, or prolonged cold exposure. If further focal impaired-awareness seizures occur, we will consider incremental titration of lamotrigine to 125 mg twice daily.\n- Follow-up: review in 12 weeks. She will contact us sooner if any recurrent seizures, adverse effects, or issues with rescue medication access at work arise.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 786,
+      "end": 949,
+      "text": "She discontinued Valproate on 21/Feb. Shortly afterwards, she experienced 4 seizures, one triggered by missed medication. She has remained seizure-free since then.",
+      "attributes": {
+        "Label": "4 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 786,
+      "end": 948,
+      "text": "She discontinued Valproate on 21/Feb. Shortly afterwards, she experienced 4 seizures, one triggered by missed medication. She has remained seizure-free since then",
+      "attributes": {
+        "Label": "4 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14236,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Eleanor Hughes (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 March 2021 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Mark Chen (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Priya Nair (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Workplace considerations and treatment adjustment\n\nHi Eleanor\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy), likely temporal onset based on semiology and prior EEG with left temporal sharp waves. No history of generalised tonic–clonic seizures without focal onset reported since 2019.\n\nPresent Medication:\n\n1. Lamotrigine 100 mg twice daily\n2. Levetiracetam 750 mg twice daily\n3. Buccal midazolam 10 mg (rescue) to carry while at work\n\nPresent Seizure Frequency:\n\nShe discontinued Valproate on 21/Feb. Shortly afterwards, she experienced 4 seizures, one triggered by missed medication. She has remained seizure-free since then. These events occurred during the transition period and resolved after consolidating the lamotrigine dose. She reports no new focal aware auras.\n\nContext and Workplace Factors:\n\nShe works in a cold-chain warehouse where sub-zero temperatures and mandatory gloves can make handling rescue devices slower. She now keeps the buccal midazolam in an inner pocket to reduce cooling and has practised opening the device with insulated liners, which she finds helpful. Her supervisor is aware of her care plan and has arranged a buddy system during night shifts. No injuries reported.\n\nPlan of Action:\n\n- Continue Lamotrigine 100 mg twice daily and Levetiracetam 750 mg twice daily without change for stability over the next 3 months.\n- Rescue plan: retain buccal midazolam 10 mg for prolonged seizures as per existing care plan. Occupational health to ensure accessibility in low temperatures and availability in both the loading bay and office areas per shift.\n- Adherence: reinforce strict dosing schedule; she has set phone reminders and pillbox use has been reliable since early March.\n- Monitoring: keep a seizure and trigger diary, including any missed doses, sleep disruption, or prolonged cold exposure. If further focal impaired-awareness seizures occur, we will consider incremental titration of lamotrigine to 125 mg twice daily.\n- Follow-up: review in 12 weeks. She will contact us sooner if any recurrent seizures, adverse effects, or issues with rescue medication access at work arise.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure data: The letter states, \"Shortly afterwards, she experienced 4 seizures ... She has remained seizure-free since then.\" The relevant timeframe is from 21 Feb to the letter date 24 Mar (~1 month). Per rule 8, seizure-free status requires ≥6 months, which is not met, so we calculate frequency. With 4 seizures occurring within the approximately one-month interval (and none thereafter), the best normalized label is 4 per month. No other higher-frequency period is specified.",
+      "seizure_frequency_number": [
+        "4 per month",
+        "She discontinued Valproate on 21/Feb. Shortly afterwards, she experienced 4 seizures, one triggered by missed medication. She has remained seizure-free since then."
+      ],
+      "reference": [
+        "4 per month",
+        "She discontinued Valproate on 21/Feb. Shortly afterwards, she experienced 4 seizures, one triggered by missed medication. She has remained seizure-free since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

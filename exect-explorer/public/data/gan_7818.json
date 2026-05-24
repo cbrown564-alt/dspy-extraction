@@ -1,0 +1,54 @@
+{
+  "id": "gan_7818",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Priya Mehta  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Priya Mehta,  \n\nMichael Turner, DOB: 14-02-1990, Hospital No: H392744 NHS No. 9034182756  \nFlat 12, 5 Bracken Close, London SW19 3AB \n\nDiagnoses: \n\nRecurrent unprovoked seizures of uncertain classification (onset 2023). MRI brain (June 2023) unremarkable. Routine EEG (July 2023) non-specific. \n\nCurrent Medication: \n\nLevetiracetam 1000 mg twice daily  \nVitamin D3 1000 IU daily \n\nPlan: \n\n- Continue levetiracetam 1000 mg twice daily.  \n- Safety advice reinforced including sleep hygiene, alcohol moderation, and adherence.  \n- DVLA guidance reiterated; patient reports not driving.  \n- Arrange scheduled telephone review in 12 months via speakerphone with nominated family member to assist communication, sooner if any recurrence.  \n\nI reviewed Michael Turner in clinic today. Communication was supported by a pre-arranged speakerphone connection with his sister present to assist, in line with his hearing difficulties and expressed preference. He reports that since titration to levetiracetam 1000 mg twice daily in August 2023, there have been no further events suggestive of seizures. He describes good sleep, consistent medication adherence, and no adverse effects beyond occasional mild irritability, which he does not find troublesome. He has avoided alcohol binges and high sleep debt, which he previously identified as potential triggers. \n\nNeurological examination today is unremarkable. Review of prior investigations shows a normal MRI brain and a routine EEG without epileptiform discharges. Given the sustained period without episodes and good tolerability, I have advised continuation of current therapy and routine safety measures. We discussed the importance of contacting our service promptly should there be any breakthrough events, medication issues, or concerns raised by family observers. \n\nFollow-up will be arranged as a scheduled speakerphone consultation at 12 months with his sister assisting communication, in keeping with his preference. No routine face-to-face appointment is required at present; however, I remain happy to see him sooner if concerns arise. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1161,
+      "end": 1286,
+      "text": "since titration to levetiracetam 1000 mg twice daily in August 2023, there have been no further events suggestive of seizures",
+      "attributes": {
+        "Label": "seizure free for 2 years",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7818,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Priya Mehta  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Priya Mehta,  \n\nMichael Turner, DOB: 14-02-1990, Hospital No: H392744 NHS No. 9034182756  \nFlat 12, 5 Bracken Close, London SW19 3AB \n\nDiagnoses: \n\nRecurrent unprovoked seizures of uncertain classification (onset 2023). MRI brain (June 2023) unremarkable. Routine EEG (July 2023) non-specific. \n\nCurrent Medication: \n\nLevetiracetam 1000 mg twice daily  \nVitamin D3 1000 IU daily \n\nPlan: \n\n- Continue levetiracetam 1000 mg twice daily.  \n- Safety advice reinforced including sleep hygiene, alcohol moderation, and adherence.  \n- DVLA guidance reiterated; patient reports not driving.  \n- Arrange scheduled telephone review in 12 months via speakerphone with nominated family member to assist communication, sooner if any recurrence.  \n\nI reviewed Michael Turner in clinic today. Communication was supported by a pre-arranged speakerphone connection with his sister present to assist, in line with his hearing difficulties and expressed preference. He reports that since titration to levetiracetam 1000 mg twice daily in August 2023, there have been no further events suggestive of seizures. He describes good sleep, consistent medication adherence, and no adverse effects beyond occasional mild irritability, which he does not find troublesome. He has avoided alcohol binges and high sleep debt, which he previously identified as potential triggers. \n\nNeurological examination today is unremarkable. Review of prior investigations shows a normal MRI brain and a routine EEG without epileptiform discharges. Given the sustained period without episodes and good tolerability, I have advised continuation of current therapy and routine safety measures. We discussed the importance of contacting our service promptly should there be any breakthrough events, medication issues, or concerns raised by family observers. \n\nFollow-up will be arranged as a scheduled speakerphone consultation at 12 months with his sister assisting communication, in keeping with his preference. No routine face-to-face appointment is required at present; however, I remain happy to see him sooner if concerns arise. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 October 2025. The letter states: \"since titration ... in August 2023, there have been no further events suggestive of seizures.\" From August 2023 to October 2025 is approximately 26 months (>6 months), so the patient is currently seizure free. Normalizing to allowed formats, a conservative accurate expression is 2 years.",
+      "seizure_frequency_number": [
+        "seizure free for 2 years",
+        "since titration to levetiracetam 1000 mg twice daily in August 2023, there have been no further events suggestive of seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Patient remains without seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 2 years) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

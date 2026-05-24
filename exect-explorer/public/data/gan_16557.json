@@ -1,0 +1,59 @@
+{
+  "id": "gan_16557",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Sarah Nguyen\nConsultant Neurologist\nCentre for Epilepsy\nSt Thomas’ Hospital, London\n\nDear Dr Sarah Nguyen,\n\nMr Alex Turner, DOB: 22-03-1991, Hospital No: A784210 NHS No. 9083774219\nFlat 12, 45 Riverside Walk, London, SE1 7DG\n\nDiagnosis:\n\nGeneralised epilepsy with a partial response to Valproate; Topiramate discontinued due to cognitive side effects; currently on Valproate with adjunctive Clobazam as needed.\n\nAetiology:\n\nIdiopathic generalised epilepsy phenotype; no structural lesion identified on MRI; normal metabolic screen; family history negative for epilepsy.\n\nOther Medical Problems:\n\nMild asthma, well controlled with infrequent salbutamol use. Vitamin D insufficiency corrected; latest level within range.\n\nManagement Plan:\n\nContinue Sodium Valproate 500 mg mane and 1000 mg nocte. Maintain single-brand supply. Clobazam 10 mg as rescue per existing plan. I will arrange serum valproate and LFTs prior to next review. Follow-up in six months, sooner if clinically required.\n\nClinical Summary:\n\nMr Alex Turner reports that seizures are occurring with a clustering pattern, most often every 2 - 3 days, with occasional short periods of increased frequency. Rescue medication has been needed on 3 occasions this year. No clear progression compared to previous follow-up. He describes typical events as brief generalised myoclonic jerks in the mornings and occasional absence episodes later in the day; there have been no generalised tonic–clonic seizures for over 18 months. Sleep regularity and hydration appear to influence symptom fluctuation. He commutes mainly by bicycle and notes that clusters tend to occur on weeks with heavier training rides, although this is patient-reported and not yet systematically tracked. No recent hospital admissions.\n\nInvestigations:\n\nEEG (May 2025) demonstrated generalised 3–4 Hz spike-and-wave discharges consistent with generalised epilepsy. MRI brain (2024) unremarkable. Routine blood tests in June 2025 normal including LFTs, FBC, and U&E.\n\nDiscussion:\n\nWe discussed ongoing generalised epilepsy management. Given the stable pattern without clear progression and acceptable tolerability of Valproate, I have not altered baseline therapy. He will continue to use Clobazam as rescue under the established plan. I encouraged continued seizure diary recording, particularly around cycling intensity, sleep, and caffeine intake, to help inform future optimisation.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1115,
+      "end": 1192,
+      "text": "seizures are occurring with a clustering pattern, most often every 2 - 3 days",
+      "attributes": {
+        "Label": "1 per 2 to 3 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1115,
+      "end": 1359,
+      "text": "Seizures are occurring with a clustering pattern, most often every 2 - 3 days, with occasional short periods of increased frequency. Rescue medication has been needed on 3 occasions this year. No clear progression compared to previous follow-up",
+      "attributes": {
+        "Label": "1 per 2 to 3 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16557,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 12 September 2025\n\nDr Sarah Nguyen\nConsultant Neurologist\nCentre for Epilepsy\nSt Thomas’ Hospital, London\n\nDear Dr Sarah Nguyen,\n\nMr Alex Turner, DOB: 22-03-1991, Hospital No: A784210 NHS No. 9083774219\nFlat 12, 45 Riverside Walk, London, SE1 7DG\n\nDiagnosis:\n\nGeneralised epilepsy with a partial response to Valproate; Topiramate discontinued due to cognitive side effects; currently on Valproate with adjunctive Clobazam as needed.\n\nAetiology:\n\nIdiopathic generalised epilepsy phenotype; no structural lesion identified on MRI; normal metabolic screen; family history negative for epilepsy.\n\nOther Medical Problems:\n\nMild asthma, well controlled with infrequent salbutamol use. Vitamin D insufficiency corrected; latest level within range.\n\nManagement Plan:\n\nContinue Sodium Valproate 500 mg mane and 1000 mg nocte. Maintain single-brand supply. Clobazam 10 mg as rescue per existing plan. I will arrange serum valproate and LFTs prior to next review. Follow-up in six months, sooner if clinically required.\n\nClinical Summary:\n\nMr Alex Turner reports that seizures are occurring with a clustering pattern, most often every 2 - 3 days, with occasional short periods of increased frequency. Rescue medication has been needed on 3 occasions this year. No clear progression compared to previous follow-up. He describes typical events as brief generalised myoclonic jerks in the mornings and occasional absence episodes later in the day; there have been no generalised tonic–clonic seizures for over 18 months. Sleep regularity and hydration appear to influence symptom fluctuation. He commutes mainly by bicycle and notes that clusters tend to occur on weeks with heavier training rides, although this is patient-reported and not yet systematically tracked. No recent hospital admissions.\n\nInvestigations:\n\nEEG (May 2025) demonstrated generalised 3–4 Hz spike-and-wave discharges consistent with generalised epilepsy. MRI brain (2024) unremarkable. Routine blood tests in June 2025 normal including LFTs, FBC, and U&E.\n\nDiscussion:\n\nWe discussed ongoing generalised epilepsy management. Given the stable pattern without clear progression and acceptable tolerability of Valproate, I have not altered baseline therapy. He will continue to use Clobazam as rescue under the established plan. I encouraged continued seizure diary recording, particularly around cycling intensity, sleep, and caffeine intake, to help inform future optimisation.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency statements. The Clinical Summary states: 'seizures are occurring with a clustering pattern, most often every 2 - 3 days, with occasional short periods of increased frequency.' This provides a clear numeric range for occurrence frequency. No other higher-frequency figure is provided. There are no generalised tonic–clonic seizures for over 18 months, but myoclonic jerks and absence episodes are ongoing, so not seizure-free. Apply the rule to select the highest frequency; the explicit range 'every 2 - 3 days' maps to '1 per 2 to 3 day'. No need to convert to cluster format as per allowed forms unless cluster size is specified, which it isn't.",
+      "seizure_frequency_number": [
+        "1 per 2 to 3 day",
+        "seizures are occurring with a clustering pattern, most often every 2 - 3 days"
+      ],
+      "reference": [
+        "1 per 2 to 3 day",
+        "Seizures are occurring with a clustering pattern, most often every 2 - 3 days, with occasional short periods of increased frequency. Rescue medication has been needed on 3 occasions this year. No clear progression compared to previous follow-up"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

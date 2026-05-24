@@ -1,0 +1,48 @@
+{
+  "id": "gan_5345",
+  "text": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 27 May 2019\n\nDr Aisha Rahman\nRiverside Medical Practice\n14 Wharf Street, London SE8 3JG\n\nDear Dr Aisha Rahman,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/ Diagnoses: Epilepsy with history of head injury in the distant past/persistent attention and memory difficulties/osteopenia under GP monitoring/previous alcohol misuse now abstinent/lives in supported housing/smoker.\n\nMedication: Levetiracetam 1000 mg twice daily.\nCarbamazepine MR 400 mg twice daily.\nTopiramate 75 mg morning and 100 mg evening.\nThiamine, Vitamin B compound, Calcium/Vitamin D, Atorvastatin, Lansoprazole, Bisoprolol, Ramipril, Carbocisteine, Emollient cream.\n\nI saw Bill in clinic today with his key worker, who reports that he has been attending community activities regularly and sleeping better. Appetite varies slightly during fasting periods associated with religious observance; he spaces meals to coincide with pre-dawn and evening times on those days and reports maintaining hydration when allowed. Weight is stable compared with last review. On examination he mobilises independently with a slow but safe gait; tone is mildly increased on the right but joints are comfortable and there are no pressure areas on the feet today. Cognitive profile unchanged; he manages day-to-day tasks with prompts.\n\nSeizures: Bill maintains a simple calendar record. He and his key worker report he has been free of events for several months, with no witnessed episodes or post-event confusion. This pattern has been consistent despite intermittent fasting days, and there have been no emergency contacts or medication omissions recorded by the carers.\n\nPlan:\n- Continue current anti-seizure regimen unchanged; adherence good and no adverse effects reported.\n- Provide written advice for managing medication timing during religious fasts (patient to continue usual dosing with food at permitted times; avoid missed doses; carers to document any changes).\n- Routine blood tests (U&E, LFTs, FBC, vitamin D) via GP in the next 4–6 weeks as part of ongoing monitoring.\n- Community team to continue seizure diary review; return earlier if any breakthrough events or concerns.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1527,
+      "end": 1572,
+      "text": "he has been free of events for several months",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5345,
+    "clinic_date": "University College Hospital\n\nNational Hospital for Neurology and Neurosurgery\n\nClinic Date: 27 May 2019\n\nDr Aisha Rahman\nRiverside Medical Practice\n14 Wharf Street, London SE8 3JG\n\nDear Dr Aisha Rahman,\n\nWilliam Harris, DOB: 15-02-1965, Hospital No: H563829 NHS No. 9273645810\n10 Meadow Park, London, EC1V 9BT\n\nSummary/ Diagnoses: Epilepsy with history of head injury in the distant past/persistent attention and memory difficulties/osteopenia under GP monitoring/previous alcohol misuse now abstinent/lives in supported housing/smoker.\n\nMedication: Levetiracetam 1000 mg twice daily.\nCarbamazepine MR 400 mg twice daily.\nTopiramate 75 mg morning and 100 mg evening.\nThiamine, Vitamin B compound, Calcium/Vitamin D, Atorvastatin, Lansoprazole, Bisoprolol, Ramipril, Carbocisteine, Emollient cream.\n\nI saw Bill in clinic today with his key worker, who reports that he has been attending community activities regularly and sleeping better. Appetite varies slightly during fasting periods associated with religious observance; he spaces meals to coincide with pre-dawn and evening times on those days and reports maintaining hydration when allowed. Weight is stable compared with last review. On examination he mobilises independently with a slow but safe gait; tone is mildly increased on the right but joints are comfortable and there are no pressure areas on the feet today. Cognitive profile unchanged; he manages day-to-day tasks with prompts.\n\nSeizures: Bill maintains a simple calendar record. He and his key worker report he has been free of events for several months, with no witnessed episodes or post-event confusion. This pattern has been consistent despite intermittent fasting days, and there have been no emergency contacts or medication omissions recorded by the carers.\n\nPlan:\n- Continue current anti-seizure regimen unchanged; adherence good and no adverse effects reported.\n- Provide written advice for managing medication timing during religious fasts (patient to continue usual dosing with food at permitted times; avoid missed doses; carers to document any changes).\n- Routine blood tests (U&E, LFTs, FBC, vitamin D) via GP in the next 4–6 weeks as part of ongoing monitoring.\n- Community team to continue seizure diary review; return earlier if any breakthrough events or concerns.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states that the patient \"has been free of events for several months\" with no witnessed episodes or post-event confusion, and no emergency contacts or medication omissions. There is no exact count, but it indicates ongoing seizure freedom spanning several months. The criterion for definitive 'seizure free' requires at least 6 months; the letter only says \"several months\" without specifying ≥6 months, so the appropriate normalized label is 'seizure free for multiple months.' No other frequency is provided, and no conflicting higher frequency is mentioned.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "he has been free of events for several months"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable without seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

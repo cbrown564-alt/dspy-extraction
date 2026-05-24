@@ -1,0 +1,54 @@
+{
+  "id": "gan_6034",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg evening. \n\nHistory and current status: \n\nSince her last visit she has continued working rotating shifts, including nights, and reports that her sleep pattern is highly irregular. She notes that brief nocturnal warning sensations have recurred mainly after several consecutive night shifts and when sleep has been curtailed. Overall, episodes have clustered during periods of disrupted routine, in a pattern akin to what we commonly observe when patients face short-term systemic stressors, rather than occurring randomly. Daytime events have not been described, and there have been no injuries or prolonged losses of awareness reported. \n\nPlan: \n\n1) Medication: We will maintain Oxcarbazepine at 600 mg twice daily for now. If the night-time warnings become more frequent or start to generalise, we discussed a cautious increase of the evening dose to 900 mg, while keeping the morning dose at 600 mg; she will contact us if required. \n\n2) Sleep and shifts: She will attempt to regularise sleep opportunity on switch days (earplugs/eye mask, consistent wind-down routine) and avoid missed doses during schedule changes. She keeps a diary linking work pattern, sleep duration and any episodes; this will guide further adjustments. \n\n3) Safety: Usual seizure first-aid reviewed; she is not driving. No history of status epilepticus. \n\nFollow-up: We will review her in six months, or sooner if frequency escalates or new features emerge. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 550,
+      "end": 644,
+      "text": "brief nocturnal warning sensations have recurred mainly after several consecutive night shifts",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6034,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg evening. \n\nHistory and current status: \n\nSince her last visit she has continued working rotating shifts, including nights, and reports that her sleep pattern is highly irregular. She notes that brief nocturnal warning sensations have recurred mainly after several consecutive night shifts and when sleep has been curtailed. Overall, episodes have clustered during periods of disrupted routine, in a pattern akin to what we commonly observe when patients face short-term systemic stressors, rather than occurring randomly. Daytime events have not been described, and there have been no injuries or prolonged losses of awareness reported. \n\nPlan: \n\n1) Medication: We will maintain Oxcarbazepine at 600 mg twice daily for now. If the night-time warnings become more frequent or start to generalise, we discussed a cautious increase of the evening dose to 900 mg, while keeping the morning dose at 600 mg; she will contact us if required. \n\n2) Sleep and shifts: She will attempt to regularise sleep opportunity on switch days (earplugs/eye mask, consistent wind-down routine) and avoid missed doses during schedule changes. She keeps a diary linking work pattern, sleep duration and any episodes; this will guide further adjustments. \n\n3) Safety: Usual seizure first-aid reviewed; she is not driving. No history of status epilepticus. \n\nFollow-up: We will review her in six months, or sooner if frequency escalates or new features emerge. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses ‘brief nocturnal warning sensations’ that recur mainly after several consecutive night shifts and when sleep is curtailed. It notes clustering during disrupted routine, with no daytime events and no injuries or prolonged losses of awareness. However, there is no explicit count or timeframe (per day/week/month) provided. The description indicates presence of episodes but does not quantify frequency, making it impossible to convert to a numeric rate or cluster size/frequency per the allowed formats.",
+      "seizure_frequency_number": [
+        "unknown",
+        "brief nocturnal warning sensations have recurred mainly after several consecutive night shifts"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during intercurrent illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

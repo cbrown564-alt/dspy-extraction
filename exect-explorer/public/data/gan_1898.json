@@ -1,0 +1,59 @@
+{
+  "id": "gan_1898",
+  "text": "Department of Neurology \n\nClinic Date: 21 July 2014 \n\nDr Eleanor Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Eleanor Patel,  \n\nAlex Turner, DOB: 14-02-1992, Hospital No: H593024 NHS No. 9081773342  \n12 Beechwood Close, Merton, London SW20 8JD \n\nDiagnoses: \n\n- History of seizures; remote history of mild traumatic brain injury\n- Seizure frequency over the past six months: three drop attacks and one petit mal\n\nCurrent Medication: \n\n- Levetiracetam 500 mg twice daily\n- Vitamin D 1000 IU once daily (patient-initiated supplement)\n\nPlan: \n\n- Continue Levetiracetam 500 mg twice daily\n- Arrange MRI brain with epilepsy protocol (given remote mild traumatic brain injury and ongoing events)\n- Routine bloods including U&E, LFTs, FBC; Levetiracetam level not routinely required unless concern about adherence or toxicity\n- Seizure first-aid reinforced; provide written safety advice regarding bathing, cooking, heights, and operating machinery\n- Discussed DVLA guidance: patient has been advised not to drive and to notify DVLA as applicable\n- Consider video EEG if further events occur despite current dose or if diagnostic clarification is needed\n- Follow-up in 6 months, sooner if escalation in frequency or injury\n\nI reviewed Alex Turner in the neurology clinic today. They report three drop attacks and one petit mal in the past six months. The drop episodes were described as abrupt loss of posture with brief unresponsiveness lasting seconds and rapid recovery, without clear warning, tongue biting, or prolonged confusion. The petit mal event was reported as a brief staring spell with impaired awareness, lasting under 20 seconds, witnessed by a family member. There have been no clearly provoked events, though they note increased stress and occasional missed meals preceding two of the episodes. Sleep has been variable. \n\nThere is a remote history of mild traumatic brain injury (no neurosurgical intervention, no prolonged loss of consciousness). There is no known family history of seizures. Neurological examination today was unremarkable. We discussed the importance of sleep hygiene, medication adherence, and avoidance of precipitants such as alcohol excess. Safety precautions were reviewed in detail. \n\nGiven the ongoing events, I have recommended continuation of Levetiracetam 500 mg twice daily and will arrange an MRI brain with an epilepsy protocol to assess for any structural contributors in the context of the prior head injury. If further events occur, we will consider prolonged video EEG monitoring to characterise the spells and guide management. I have advised the patient regarding driving regulations and notification requirements. \n\nI will review Alex Turner again in six months. Please do not hesitate to contact me sooner if there are concerns. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 417,
+      "end": 497,
+      "text": "Seizure frequency over the past six months: three drop attacks and one petit mal",
+      "attributes": {
+        "Label": "4 per 6 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1369,
+      "end": 1428,
+      "text": "three drop attacks and one petit mal in the past six months",
+      "attributes": {
+        "Label": "4 per 6 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1898,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 21 July 2014 \n\nDr Eleanor Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Eleanor Patel,  \n\nAlex Turner, DOB: 14-02-1992, Hospital No: H593024 NHS No. 9081773342  \n12 Beechwood Close, Merton, London SW20 8JD \n\nDiagnoses: \n\n- History of seizures; remote history of mild traumatic brain injury\n- Seizure frequency over the past six months: three drop attacks and one petit mal\n\nCurrent Medication: \n\n- Levetiracetam 500 mg twice daily\n- Vitamin D 1000 IU once daily (patient-initiated supplement)\n\nPlan: \n\n- Continue Levetiracetam 500 mg twice daily\n- Arrange MRI brain with epilepsy protocol (given remote mild traumatic brain injury and ongoing events)\n- Routine bloods including U&E, LFTs, FBC; Levetiracetam level not routinely required unless concern about adherence or toxicity\n- Seizure first-aid reinforced; provide written safety advice regarding bathing, cooking, heights, and operating machinery\n- Discussed DVLA guidance: patient has been advised not to drive and to notify DVLA as applicable\n- Consider video EEG if further events occur despite current dose or if diagnostic clarification is needed\n- Follow-up in 6 months, sooner if escalation in frequency or injury\n\nI reviewed Alex Turner in the neurology clinic today. They report three drop attacks and one petit mal in the past six months. The drop episodes were described as abrupt loss of posture with brief unresponsiveness lasting seconds and rapid recovery, without clear warning, tongue biting, or prolonged confusion. The petit mal event was reported as a brief staring spell with impaired awareness, lasting under 20 seconds, witnessed by a family member. There have been no clearly provoked events, though they note increased stress and occasional missed meals preceding two of the episodes. Sleep has been variable. \n\nThere is a remote history of mild traumatic brain injury (no neurosurgical intervention, no prolonged loss of consciousness). There is no known family history of seizures. Neurological examination today was unremarkable. We discussed the importance of sleep hygiene, medication adherence, and avoidance of precipitants such as alcohol excess. Safety precautions were reviewed in detail. \n\nGiven the ongoing events, I have recommended continuation of Levetiracetam 500 mg twice daily and will arrange an MRI brain with an epilepsy protocol to assess for any structural contributors in the context of the prior head injury. If further events occur, we will consider prolonged video EEG monitoring to characterise the spells and guide management. I have advised the patient regarding driving regulations and notification requirements. \n\nI will review Alex Turner again in six months. Please do not hesitate to contact me sooner if there are concerns. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states seizure counts over the past six months: \"three drop attacks and one petit mal\". Total events over 6 months = 3 + 1 = 4. Convert to allowed format: 4 per 6 month.",
+      "seizure_frequency_number": [
+        "4 per 6 month",
+        "Seizure frequency over the past six months: three drop attacks and one petit mal"
+      ],
+      "reference": [
+        "4 per 6 month",
+        "three drop attacks and one petit mal in the past six months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

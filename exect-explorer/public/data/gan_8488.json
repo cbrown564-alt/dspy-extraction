@@ -1,0 +1,59 @@
+{
+  "id": "gan_8488",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nSouth Thames Neurology Centre  \nNeurology Outpatients, 12 Kingfisher Way, London SE10 3AB  \n\nDear Dr Aisha Rahman,  \n\nMichael Turner, DOB: 23-02-1991, Hospital No: H392715 NHS No. 9182736450  \nFlat 7, 28 Willow Street, London EC2A 4BH \n\nDiagnoses:  \n\nFocal epilepsy with impaired awareness; prior nocturnal and daytime focal to bilateral tonic–clonic evolution reported in March  \n\nCurrent Medication: \n\nLevetiracetam 1,000 mg twice daily  \nClobazam 10 mg at night as needed for clusters (not recently required) \n\nPlan: \n\n- Continue levetiracetam at current dose  \n- Maintain adherence supports (pillbox and phone reminders)  \n- Safety advice reinforced; no driving until formally cleared per DVLA guidance  \n- Routine follow-up in 6 months, sooner if any breakthrough events \n\nI reviewed Michael Turner in clinic today. He reports a sustained improvement in seizure control since adopting adherence supports (pillbox and smartphone reminders), which have markedly reduced missed doses and improved day-to-day stability. For context, before this improvement: in March he had 5 seizures during sleep and 5 while awake; in April he had none in sleep and one while awake. Since then, there have been no events suggestive of seizures, and he has not experienced aura-like symptoms, automatisms, or post-event confusion. He has also not required rescue clobazam. \n\nHe describes satisfactory sleep, reduced stress at work, and consistent medication timing aided by the pillbox and reminders. Neurological examination today is unremarkable, and there are no adverse effects from levetiracetam. Based on the current trajectory and the absence of events, I have advised continuation of the present regimen and adherence measures. We discussed seizure first-aid and lifestyle precautions. He understands to contact us promptly if there is any recurrence or change in semiology. \n\nWith best wishes,  ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1244,
+      "end": 1304,
+      "text": "Since then, there have been no events suggestive of seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1272,
+      "end": 1304,
+      "text": "No events suggestive of seizures",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8488,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nSouth Thames Neurology Centre  \nNeurology Outpatients, 12 Kingfisher Way, London SE10 3AB  \n\nDear Dr Aisha Rahman,  \n\nMichael Turner, DOB: 23-02-1991, Hospital No: H392715 NHS No. 9182736450  \nFlat 7, 28 Willow Street, London EC2A 4BH \n\nDiagnoses:  \n\nFocal epilepsy with impaired awareness; prior nocturnal and daytime focal to bilateral tonic–clonic evolution reported in March  \n\nCurrent Medication: \n\nLevetiracetam 1,000 mg twice daily  \nClobazam 10 mg at night as needed for clusters (not recently required) \n\nPlan: \n\n- Continue levetiracetam at current dose  \n- Maintain adherence supports (pillbox and phone reminders)  \n- Safety advice reinforced; no driving until formally cleared per DVLA guidance  \n- Routine follow-up in 6 months, sooner if any breakthrough events \n\nI reviewed Michael Turner in clinic today. He reports a sustained improvement in seizure control since adopting adherence supports (pillbox and smartphone reminders), which have markedly reduced missed doses and improved day-to-day stability. For context, before this improvement: in March he had 5 seizures during sleep and 5 while awake; in April he had none in sleep and one while awake. Since then, there have been no events suggestive of seizures, and he has not experienced aura-like symptoms, automatisms, or post-event confusion. He has also not required rescue clobazam. \n\nHe describes satisfactory sleep, reduced stress at work, and consistent medication timing aided by the pillbox and reminders. Neurological examination today is unremarkable, and there are no adverse effects from levetiracetam. Based on the current trajectory and the absence of events, I have advised continuation of the present regimen and adherence measures. We discussed seizure first-aid and lifestyle precautions. He understands to contact us promptly if there is any recurrence or change in semiology. \n\nWith best wishes,  ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 October 2025. The letter provides explicit counts earlier in the year: March had 10 seizures total (5 during sleep and 5 while awake), April had 1 while awake and none in sleep. It then states: \"Since then, there have been no events suggestive of seizures,\" indicating zero seizures from some time after April up to the clinic date. We must determine if seizure-free duration is at least 6 months. From end of April to 02 October is approximately 5 months, not reaching 6 months. Therefore, the patient is currently seizure-free but for less than 6 months, so they cannot be labeled as seizure free for ≥6 months. The instruction allows 'seizure free for multiple months' when there is insufficient information to confirm the 6-month criterion; here, it is clear it is under 6 months. The appropriate normalized label is 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since then, there have been no events suggestive of seizures"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "No events suggestive of seizures"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

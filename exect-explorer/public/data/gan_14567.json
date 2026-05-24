@@ -1,0 +1,70 @@
+{
+  "id": "gan_14567",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 February 2018 \n\nDr A. Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel, \n\nMs Clara Moreau, DOB: 24-06-1989, Hospital No: K847320 NHS No. 1039284756  \nFlat 12, 5 Brook Street, London, W1K 4HR  \n\nDiagnosis: \n\nSeizure disorder; classification not established. \n\nAetiology: \n\nNo definitive structural or metabolic cause identified to date; investigations ongoing. \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms related to travel; mild iron deficiency under GP review. \n\nManagement Plan: \n\n- Start Levetiracetam 250 mg twice daily for one week, then increase to 500 mg twice daily if tolerated; supply provided and side effects counselled.  \n- MRI brain with epilepsy protocol and routine EEG arranged; safety-net advice given.  \n- Seizure first aid discussed; advised to avoid sleep deprivation and limit alcohol.  \n- Driving advice provided in line with DVLA guidance: not to drive and to inform the DVLA.  \n- Discussed graded exposure strategies for travel-related anxiety; patient signposted to IAPT and provided written resources.  \n- Review in clinic in 12 weeks or sooner if further events occur.\n\nHistory and Current Status: \n\nShe experienced her first seizure in October 2017 while on holiday in Spain. It occurred in the early morning hours. She described sudden stiffness in both legs. Her second and third seizure was in January 2018 back home in France, again during sleep, lasting around three minutes with the same clinical features. There was no clear trigger recalled, though she reports poor sleep and significant travel-related stress preceding the first episode. Post-event fatigue lasted several hours without tongue biting or urinary incontinence. No preceding aura was identified. She reports increasing anxiety about flying following the initial event during travel, and she is concerned about future international work commitments. There is no history of head injury, meningitis, or febrile convulsions. Family history is negative for seizures. Current medications include a combined oral contraceptive and ferrous fumarate. Neurological examination today is normal. Basic bloods from her GP show mild iron deficiency; thyroid function normal. She has not driven since January 2018. We discussed medication options, risks in pregnancy, and the importance of contraception while on antiseizure medication.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1281,
+      "end": 1509,
+      "text": "She experienced her first seizure in October 2017 while on holiday in Spain. Her second and third seizure was in January 2018 back home in France, again during sleep, lasting around three minutes with the same clinical features.",
+      "attributes": {
+        "Label": "3 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1281,
+      "end": 1593,
+      "text": "She experienced her first seizure in October 2017 while on holiday in Spain. It occurred in the early morning hours. She described sudden stiffness in both legs. Her second and third seizure was in January 2018 back home in France, again during sleep, lasting around three minutes with the same clinical features",
+      "attributes": {
+        "Label": "3 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14567,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 14 February 2018 \n\nDr A. Patel \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, Denmark Hill, London SE5 9RS  \n\nDear Dr A. Patel, \n\nMs Clara Moreau, DOB: 24-06-1989, Hospital No: K847320 NHS No. 1039284756  \nFlat 12, 5 Brook Street, London, W1K 4HR  \n\nDiagnosis: \n\nSeizure disorder; classification not established. \n\nAetiology: \n\nNo definitive structural or metabolic cause identified to date; investigations ongoing. \n\nOther Medical Problems: \n\nGeneralised anxiety symptoms related to travel; mild iron deficiency under GP review. \n\nManagement Plan: \n\n- Start Levetiracetam 250 mg twice daily for one week, then increase to 500 mg twice daily if tolerated; supply provided and side effects counselled.  \n- MRI brain with epilepsy protocol and routine EEG arranged; safety-net advice given.  \n- Seizure first aid discussed; advised to avoid sleep deprivation and limit alcohol.  \n- Driving advice provided in line with DVLA guidance: not to drive and to inform the DVLA.  \n- Discussed graded exposure strategies for travel-related anxiety; patient signposted to IAPT and provided written resources.  \n- Review in clinic in 12 weeks or sooner if further events occur.\n\nHistory and Current Status: \n\nShe experienced her first seizure in October 2017 while on holiday in Spain. It occurred in the early morning hours. She described sudden stiffness in both legs. Her second and third seizure was in January 2018 back home in France, again during sleep, lasting around three minutes with the same clinical features. There was no clear trigger recalled, though she reports poor sleep and significant travel-related stress preceding the first episode. Post-event fatigue lasted several hours without tongue biting or urinary incontinence. No preceding aura was identified. She reports increasing anxiety about flying following the initial event during travel, and she is concerned about future international work commitments. There is no history of head injury, meningitis, or febrile convulsions. Family history is negative for seizures. Current medications include a combined oral contraceptive and ferrous fumarate. Neurological examination today is normal. Basic bloods from her GP show mild iron deficiency; thyroid function normal. She has not driven since January 2018. We discussed medication options, risks in pregnancy, and the importance of contraception while on antiseizure medication.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "Seizure Frequency Number",
+    "check__Seizure Frequency Number": {
+      "analysis": "1) Identify total seizures from the letter: first seizure in October 2017; second and third seizures in January 2018 → total = 3 seizures. 2) Determine the observation window: earliest event October 2017; latest event January 2018. 3) Convert to months between first and last events: Oct→Nov = 1 month, Nov→Dec = 1 month, Dec→Jan = 1 month → approximately 3 months. 4) Check seizure-free criterion: clinic date is 14 February 2018; last seizure January 2018 → less than 6 months seizure-free, so not seizure-free. 5) No other frequencies or clusters are given. 6) Therefore, current seizure frequency = 3 per 3 month.",
+      "seizure_frequency_number": [
+        "3 per 3 month",
+        "She experienced her first seizure in October 2017 while on holiday in Spain. Her second and third seizure was in January 2018 back home in France, again during sleep, lasting around three minutes with the same clinical features."
+      ],
+      "reference": [
+        "3 per 3 month",
+        "She experienced her first seizure in October 2017 while on holiday in Spain. It occurred in the early morning hours. She described sudden stiffness in both legs. Her second and third seizure was in January 2018 back home in France, again during sleep, lasting around three minutes with the same clinical features"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "frequency_quote_issue",
+      "description": "Quote issue flagged for seizure frequency",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

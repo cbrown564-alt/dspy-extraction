@@ -1,0 +1,47 @@
+{
+  "id": "gan_11763",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 25 April 2020 \n\nDr Aisha Rahman\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr Aisha Rahman,\n\nSophie Carter, DOB: 14-03-1991, Hospital No: KCH-729184 NHS No. 9876543210\n12 Hawthorn Close, Bromley, BR2 8JP\n\nThank you for your recent enquiry from the childcare setting regarding support arrangements for Sophie Carter. I understand that Sophie Carter is the primary caregiver for young children and that night-time sleep can be interrupted, which may affect day-to-day wellbeing and reliability of routines.\n\nWith the patient’s consent, I can confirm that we have provided general advice focusing on consistent sleep hygiene where possible, clear morning routines, and agreed lines of communication between the childcare staff and the family for any concerns about fatigue or reduced alertness. We recommend that the setting keeps a brief log of notable daytime tiredness and any factors that may impact safe participation in activities, and that any urgent concerns are shared with the family promptly. No specific restrictions are required for usual nursery or school activities, but additional rest breaks should be permitted if needed.\n\nIf the setting requires a written support plan, we are happy to review a draft and add clinical guidance as appropriate. Please direct further queries to our clinic coordination team, and ensure any documents include the identifiers above.\n\nYours sincerely",
+  "entities": [],
+  "json_export": {
+    "source_row_index": 11763,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 25 April 2020 \n\nDr Aisha Rahman\nKing's College Hospital\nDepartment of Neurosciences, King's College Hospital, London SE5 9RS\n\nDear Dr Aisha Rahman,\n\nSophie Carter, DOB: 14-03-1991, Hospital No: KCH-729184 NHS No. 9876543210\n12 Hawthorn Close, Bromley, BR2 8JP\n\nThank you for your recent enquiry from the childcare setting regarding support arrangements for Sophie Carter. I understand that Sophie Carter is the primary caregiver for young children and that night-time sleep can be interrupted, which may affect day-to-day wellbeing and reliability of routines.\n\nWith the patient’s consent, I can confirm that we have provided general advice focusing on consistent sleep hygiene where possible, clear morning routines, and agreed lines of communication between the childcare staff and the family for any concerns about fatigue or reduced alertness. We recommend that the setting keeps a brief log of notable daytime tiredness and any factors that may impact safe participation in activities, and that any urgent concerns are shared with the family promptly. No specific restrictions are required for usual nursery or school activities, but additional rest breaks should be permitted if needed.\n\nIf the setting requires a written support plan, we are happy to review a draft and add clinical guidance as appropriate. Please direct further queries to our clinic coordination team, and ensure any documents include the identifiers above.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "I read the clinical letter carefully for any mention of seizures or seizure frequency. The letter discusses childcare support, sleep hygiene, communication with staff, logs of daytime tiredness, and participation in activities. There is no mention of seizures, epilepsy, or any explicit or implicit seizure frequency. According to the rules, when the letter does not mention seizures at all, the correct output is 'no seizure frequency reference'.",
+      "seizure_frequency_number": [
+        "no seizure frequency reference",
+        null
+      ],
+      "reference": [
+        "no seizure frequency reference",
+        "Create a reasonable NHS letter acknowledging an information request from a childcare setting regarding epilepsy support"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 0
+  },
+  "flaws": [
+    {
+      "category": "no_seizure_frequency_reference",
+      "description": "No seizure frequency referenced in gold",
+      "oracle_impact": null
+    },
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

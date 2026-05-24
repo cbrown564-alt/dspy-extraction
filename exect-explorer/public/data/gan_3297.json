@@ -1,0 +1,59 @@
+{
+  "id": "gan_3297",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 20 November 2015 \n\nDr A. Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr A. Rahman, \n\nMr Thomas Green, DOB: 04-09-2003, Hospital No: K847129 NHS No. 9384756102  \nFlat 12, 27 Campus Road, London, SE5 9AB  \n\nDiagnosis: \n\nFocal epilepsy with stress- and sleep-loss-related breakthrough events; improved consistency on Lamotrigine; Levetiracetam previously associated with irritability and discontinued\n\nAetiology: \n\nNo structural lesion identified on MRI; normal perinatal and developmental history\n\nOther Medical Problems: \n\nIntermittent tension-type headache; myopia corrected with lenses\n\nManagement Plan: \n\nContinue Lamotrigine (single brand) 200 mg twice daily. Maintain a seizure and sleep diary. I have advised timing doses strictly 12 hours apart and taking evening dose before prolonged gaming sessions. We will arrange a 24-hour ambulatory EEG if events persist beyond next review. Review in four months; check trough Lamotrigine level at that visit.\n\nThis patient is the lead of a university esports club with prolonged evening screen time and irregular sleep during tournament weeks. He reports brief focal aware seizures characterised by a rising epigastric sensation, left-hand paraesthesias, and transient word-finding difficulty lasting 30–60 seconds without loss of awareness or postictal confusion. Seizure days: six/30 this month, clustering after late-night practice sessions extending past 01:00 and on days following <5 hours of sleep. There have been no convulsions, no injuries, and no episodes while driving; he is not currently driving. Caffeine intake is moderate (2–3 energy drinks on event days). Alcohol minimal. No missed doses reported in the past month; he previously tried Levetiracetam but stopped due to mood change. We discussed non-prescriptive strategies he reports finding acceptable, including scheduling earlier scrims, using blue-light filters, and setting a device curfew to preserve sleep. No other medication changes today.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1423,
+      "end": 1454,
+      "text": "Seizure days: six/30 this month",
+      "attributes": {
+        "Label": "6 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1423,
+      "end": 1454,
+      "text": "Seizure days: six/30 this month",
+      "attributes": {
+        "Label": "6 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3297,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 20 November 2015 \n\nDr A. Rahman \nConsultant Neurologist  \nCentre for Epilepsy  \nKing’s College Hospital, London  \n\nDear Dr A. Rahman, \n\nMr Thomas Green, DOB: 04-09-2003, Hospital No: K847129 NHS No. 9384756102  \nFlat 12, 27 Campus Road, London, SE5 9AB  \n\nDiagnosis: \n\nFocal epilepsy with stress- and sleep-loss-related breakthrough events; improved consistency on Lamotrigine; Levetiracetam previously associated with irritability and discontinued\n\nAetiology: \n\nNo structural lesion identified on MRI; normal perinatal and developmental history\n\nOther Medical Problems: \n\nIntermittent tension-type headache; myopia corrected with lenses\n\nManagement Plan: \n\nContinue Lamotrigine (single brand) 200 mg twice daily. Maintain a seizure and sleep diary. I have advised timing doses strictly 12 hours apart and taking evening dose before prolonged gaming sessions. We will arrange a 24-hour ambulatory EEG if events persist beyond next review. Review in four months; check trough Lamotrigine level at that visit.\n\nThis patient is the lead of a university esports club with prolonged evening screen time and irregular sleep during tournament weeks. He reports brief focal aware seizures characterised by a rising epigastric sensation, left-hand paraesthesias, and transient word-finding difficulty lasting 30–60 seconds without loss of awareness or postictal confusion. Seizure days: six/30 this month, clustering after late-night practice sessions extending past 01:00 and on days following <5 hours of sleep. There have been no convulsions, no injuries, and no episodes while driving; he is not currently driving. Caffeine intake is moderate (2–3 energy drinks on event days). Alcohol minimal. No missed doses reported in the past month; he previously tried Levetiracetam but stopped due to mood change. We discussed non-prescriptive strategies he reports finding acceptable, including scheduling earlier scrims, using blue-light filters, and setting a device curfew to preserve sleep. No other medication changes today.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Seizure days: six/30 this month\". This indicates seizures occurred on 6 days in the past 30 days. No other numeric seizure frequency is provided that is higher. There is mention of clustering after late-night sessions, but no number of seizures per cluster is given. Therefore, the best normalized frequency is 6 per month, interpreting 'six/30 this month' as 6 in a month.",
+      "seizure_frequency_number": [
+        "6 per month",
+        "Seizure days: six/30 this month"
+      ],
+      "reference": [
+        "6 per month",
+        "Seizure days: six/30 this month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

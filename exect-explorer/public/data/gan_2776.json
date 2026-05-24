@@ -1,0 +1,59 @@
+{
+  "id": "gan_2776",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: kch.neuroepilepsy@nhs.net\nCc: Dr Martin O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Care plan update and practical adjustments\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nPatient has generalised epilepsy (history patient-reported). There is no clear precipitant identified beyond environmental factors related to living circumstances.\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night as required for clusters (patient uses intermittently, approximately once every 6–8 weeks)\n\nPresent Seizure Frequency:\n\nPatient reports a drop attack weekly. These have been brief with rapid recovery and occur without warning, typically indoors. No injuries reported to date.\n\nContext and Relevant History (patient-reported):\n\n- Lives alone on a houseboat/mobile home. Intermittent power outages affect the ability to keep devices charged (phone, seizure alarm, and wearable reminder for medication).\n- Sleep is occasionally disrupted by generator noise and mooring changes. Alcohol intake minimal, no recreational drugs. Adheres to medication but occasionally delays doses during outages when reminders fail.\n- No recent intercurrent illness. No known missed doses in the week preceding the most recent event.\n\nPlan of Action:\n\n- No immediate antiepileptic drug change today, given tolerability and lack of injuries; continue sodium valproate 500 mg twice daily. Continue clobazam 10 mg at night as needed for clusters only.\n- Practical safety measures agreed: patient to use a battery backup (patient-provided) for phone and seizure alarm; written dosing schedule placed visibly in living area as a non-digital prompt during outages.\n- Liaise with Epilepsy Specialist Nurse to assist with a low-cost portable charging solution and to review safety at mooring (non-slip matting, clear floor space, and shower chair).\n- Arrange ambulatory ECG patch and routine bloods (FBC, U&E, LFTs, valproate trough level) to exclude metabolic contributors.\n- Education reinforced: adherence strategies during outages, sleep regularity, and injury prevention indoors. Patient consented to share care plan with mooring manager for welfare checks if alarms fail.\n- Follow-up in three months in clinic, sooner if frequency escalates, injuries occur, or there is any prolonged confusion. Patient provided urgent advice line details.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 757,
+      "end": 794,
+      "text": "Patient reports a drop attack weekly.",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 775,
+      "end": 793,
+      "text": "drop attack weekly",
+      "attributes": {
+        "Label": "1 per week",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2776,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 02 October 2025 10:15\nTo: kch.neuroepilepsy@nhs.net\nCc: Dr Martin O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Helen Brooks (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Care plan update and practical adjustments\n\nHi Priya\n\nEpilepsy Diagnosis:\n\nPatient has generalised epilepsy (history patient-reported). There is no clear precipitant identified beyond environmental factors related to living circumstances.\n\nPresent Medication:\n\n1. Sodium valproate 500 mg twice daily\n2. Clobazam 10 mg at night as required for clusters (patient uses intermittently, approximately once every 6–8 weeks)\n\nPresent Seizure Frequency:\n\nPatient reports a drop attack weekly. These have been brief with rapid recovery and occur without warning, typically indoors. No injuries reported to date.\n\nContext and Relevant History (patient-reported):\n\n- Lives alone on a houseboat/mobile home. Intermittent power outages affect the ability to keep devices charged (phone, seizure alarm, and wearable reminder for medication).\n- Sleep is occasionally disrupted by generator noise and mooring changes. Alcohol intake minimal, no recreational drugs. Adheres to medication but occasionally delays doses during outages when reminders fail.\n- No recent intercurrent illness. No known missed doses in the week preceding the most recent event.\n\nPlan of Action:\n\n- No immediate antiepileptic drug change today, given tolerability and lack of injuries; continue sodium valproate 500 mg twice daily. Continue clobazam 10 mg at night as needed for clusters only.\n- Practical safety measures agreed: patient to use a battery backup (patient-provided) for phone and seizure alarm; written dosing schedule placed visibly in living area as a non-digital prompt during outages.\n- Liaise with Epilepsy Specialist Nurse to assist with a low-cost portable charging solution and to review safety at mooring (non-slip matting, clear floor space, and shower chair).\n- Arrange ambulatory ECG patch and routine bloods (FBC, U&E, LFTs, valproate trough level) to exclude metabolic contributors.\n- Education reinforced: adherence strategies during outages, sleep regularity, and injury prevention indoors. Patient consented to share care plan with mooring manager for welfare checks if alarms fail.\n- Follow-up in three months in clinic, sooner if frequency escalates, injuries occur, or there is any prolonged confusion. Patient provided urgent advice line details.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter includes a 'Present Seizure Frequency' section stating: 'Patient reports a drop attack weekly.' This explicitly provides a numeric temporal frequency. No other seizure frequencies are listed that would be higher or require summation. Therefore, normalize 'weekly' to '1 per week' per formatting rules.",
+      "seizure_frequency_number": [
+        "1 per week",
+        "Patient reports a drop attack weekly."
+      ],
+      "reference": [
+        "1 per week",
+        "drop attack weekly"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

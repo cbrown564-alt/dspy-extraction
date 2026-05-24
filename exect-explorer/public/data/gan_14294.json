@@ -1,0 +1,59 @@
+{
+  "id": "gan_14294",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 17 March 2015 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Brooks, DOB: 12-05-1986, Hospital No: H938421 NHS No. 5839201746  \n14 Chestnut Court, London, W10 6DL \n\nMedication: \n\nLevetiracetam 1 g twice daily. Vagus Nerve Stimulator (VNS) in situ; no parameter changes at this review. \n\nI reviewed Amelia Brooks in clinic today regarding her focal epilepsy. She reports overall improved stability since her last appointment. Lamotrigine was stopped on 14 January. Around that period, she had two to three seizures, one following alcohol intake. She has not had any further events since. She feels her current regimen with levetiracetam is well tolerated, with occasional mild irritability that does not impact daily activities. Sleep has been adequate and she has been avoiding known triggers. \n\nShe has a functioning implanted VNS. Interrogation today showed normal lead impedance and battery status; there were no alerts. Given the recent seizure freedom and good tolerance, we made no parameter changes at this review. She continues to use the magnet as instructed and has not needed to swipe it in recent weeks. \n\nNeurological examination today was unremarkable. There are no new focal neurological symptoms and no adverse effects suggestive of medication toxicity. She is not currently driving and understands the DVLA guidance regarding seizure-free intervals. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Maintain current VNS settings; routine follow-up interrogation at next visit unless clinical change. \n- Reinforce lifestyle measures, including sleep regularity and minimising alcohol intake given the temporally related event. \n- Safety and SUDEP information previously provided; patient reports understanding. \n\nWe will see her back in six months, or earlier if there is any recurrence of seizures or concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 596,
+      "end": 690,
+      "text": "Around that period, she had two to three seizures... She has not had any further events since.",
+      "attributes": {
+        "Label": "2 to 3 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 557,
+      "end": 717,
+      "text": "Lamotrigine was stopped on 14 January. Around that period, she had two to three seizures, one following alcohol intake. She has not had any further events since",
+      "attributes": {
+        "Label": "2 to 3 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14294,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 17 March 2015 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nAmelia Brooks, DOB: 12-05-1986, Hospital No: H938421 NHS No. 5839201746  \n14 Chestnut Court, London, W10 6DL \n\nMedication: \n\nLevetiracetam 1 g twice daily. Vagus Nerve Stimulator (VNS) in situ; no parameter changes at this review. \n\nI reviewed Amelia Brooks in clinic today regarding her focal epilepsy. She reports overall improved stability since her last appointment. Lamotrigine was stopped on 14 January. Around that period, she had two to three seizures, one following alcohol intake. She has not had any further events since. She feels her current regimen with levetiracetam is well tolerated, with occasional mild irritability that does not impact daily activities. Sleep has been adequate and she has been avoiding known triggers. \n\nShe has a functioning implanted VNS. Interrogation today showed normal lead impedance and battery status; there were no alerts. Given the recent seizure freedom and good tolerance, we made no parameter changes at this review. She continues to use the magnet as instructed and has not needed to swipe it in recent weeks. \n\nNeurological examination today was unremarkable. There are no new focal neurological symptoms and no adverse effects suggestive of medication toxicity. She is not currently driving and understands the DVLA guidance regarding seizure-free intervals. \n\nPlan: \n- Continue levetiracetam 1 g twice daily. \n- Maintain current VNS settings; routine follow-up interrogation at next visit unless clinical change. \n- Reinforce lifestyle measures, including sleep regularity and minimising alcohol intake given the temporally related event. \n- Safety and SUDEP information previously provided; patient reports understanding. \n\nWe will see her back in six months, or earlier if there is any recurrence of seizures or concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states that around the time lamotrigine was stopped (14 January) she had \"two to three seizures,\" with one after alcohol. It also states, as of the clinic date 17 March 2015, \"She has not had any further events since.\" To classify current seizure frequency: she has been event-free from mid-January to mid-March (~2 months). The seizure-free criterion requires at least 6 months to label as seizure free; this is not yet met. Therefore, we should express the recent frequency over the observed period: 2 to 3 seizures over approximately 2 months. No other frequencies are provided. Thus, the normalized label is \"2 to 3 per 2 month.\"",
+      "seizure_frequency_number": [
+        "2 to 3 per 2 month",
+        "Around that period, she had two to three seizures... She has not had any further events since."
+      ],
+      "reference": [
+        "2 to 3 per 2 month",
+        "Lamotrigine was stopped on 14 January. Around that period, she had two to three seizures, one following alcohol intake. She has not had any further events since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

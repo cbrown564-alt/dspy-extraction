@@ -1,0 +1,59 @@
+{
+  "id": "gan_1722",
+  "text": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 21 September 2024\n\nDr Patel\nSouth Thames Neurology Service\nSt George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nRe: Charlotte Green, DOB: 14-02-1992, Hospital No: H928374, NHS No. 8473625190\n12 Wharfside Close, London, E16 2AB\n\nThank you for reviewing Charlotte Green following her move to a cold‑chain warehouse role. She attended today with her line manager’s written notes about workplace adjustments. She reports that low temperatures and mandatory gloves can make accessing and operating her rescue medication slower, particularly when zips and blister seals are stiff in the cold.\n\nSeizure history and current status:\n- Over the past two months she has had two drop attacks and one epileptic spasm. She feels these occurred after long shifts in the colder sections of the warehouse. There have been no reported convulsive episodes, injuries were limited to minor bruising, and recovery has been rapid.\n- She has not required emergency services and has continued working with self‑imposed rest breaks in warmer areas when prodromal symptoms occur.\n\nMedications and supports:\n- No change in her regular antiseizure medication since her last primary care repeat prescription review. She carries buccal midazolam as rescue therapy; one pre‑filled syringe remains in date. She reports that donning and doffing thick gloves slows administration practice during drills.\n- She uses a personal seizure‑alert wearable; logs correlate the three events with colder ambient conditions and missed hydration targets.\n\nExamination and review today:\n- Observations stable; neurological examination unremarkable between events. No injuries noted today. No medication adverse effects volunteered beyond mild morning fatigue.\n\nPlan discussed with the patient (patient‑reported preferences):\n- She intends to speak with her employer about storing a duplicate rescue device in an easily accessible warm cabinet at her workstation and practising glove‑on opening techniques during safety drills.\n- She will continue her current medication as prescribed by primary care and maintain a seizure diary noting temperature, shift duration, hydration, and PPE worn.\n- She will arrange an occupational health review through her employer to consider practical adjustments around cold exposure and break scheduling.\n\nFollow‑up:\n- We will review her in three months or sooner if events increase in frequency or severity. She knows to seek urgent help if rescue medication is required or recovery is prolonged.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 698,
+      "end": 776,
+      "text": "Over the past two months she has had two drop attacks and one epileptic spasm.",
+      "attributes": {
+        "Label": "3 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 735,
+      "end": 798,
+      "text": "two drop attacks and one epileptic spasm in the past two months",
+      "attributes": {
+        "Label": "3 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1722,
+    "clinic_date": "Epilepsy Clinic\n\nNeurosciences Division\n\nClinic Date: 21 September 2024\n\nDr Patel\nSouth Thames Neurology Service\nSt George’s Hospital, Blackshaw Road, London SW17 0QT\n\nDear Dr Patel,\n\nRe: Charlotte Green, DOB: 14-02-1992, Hospital No: H928374, NHS No. 8473625190\n12 Wharfside Close, London, E16 2AB\n\nThank you for reviewing Charlotte Green following her move to a cold‑chain warehouse role. She attended today with her line manager’s written notes about workplace adjustments. She reports that low temperatures and mandatory gloves can make accessing and operating her rescue medication slower, particularly when zips and blister seals are stiff in the cold.\n\nSeizure history and current status:\n- Over the past two months she has had two drop attacks and one epileptic spasm. She feels these occurred after long shifts in the colder sections of the warehouse. There have been no reported convulsive episodes, injuries were limited to minor bruising, and recovery has been rapid.\n- She has not required emergency services and has continued working with self‑imposed rest breaks in warmer areas when prodromal symptoms occur.\n\nMedications and supports:\n- No change in her regular antiseizure medication since her last primary care repeat prescription review. She carries buccal midazolam as rescue therapy; one pre‑filled syringe remains in date. She reports that donning and doffing thick gloves slows administration practice during drills.\n- She uses a personal seizure‑alert wearable; logs correlate the three events with colder ambient conditions and missed hydration targets.\n\nExamination and review today:\n- Observations stable; neurological examination unremarkable between events. No injuries noted today. No medication adverse effects volunteered beyond mild morning fatigue.\n\nPlan discussed with the patient (patient‑reported preferences):\n- She intends to speak with her employer about storing a duplicate rescue device in an easily accessible warm cabinet at her workstation and practising glove‑on opening techniques during safety drills.\n- She will continue her current medication as prescribed by primary care and maintain a seizure diary noting temperature, shift duration, hydration, and PPE worn.\n- She will arrange an occupational health review through her employer to consider practical adjustments around cold exposure and break scheduling.\n\nFollow‑up:\n- We will review her in three months or sooner if events increase in frequency or severity. She knows to seek urgent help if rescue medication is required or recovery is prolonged.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the past two months she has had two drop attacks and one epileptic spasm.\" This totals 3 seizure events in 2 months. There are no other frequencies provided that are higher or conflicting. She is not seizure-free. Therefore, normalize to '3 per 2 month'.",
+      "seizure_frequency_number": [
+        "3 per 2 month",
+        "Over the past two months she has had two drop attacks and one epileptic spasm."
+      ],
+      "reference": [
+        "3 per 2 month",
+        "two drop attacks and one epileptic spasm in the past two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

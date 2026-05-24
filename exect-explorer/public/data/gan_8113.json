@@ -1,0 +1,59 @@
+{
+  "id": "gan_8113",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 29 February 2020 \n\nDr Amelia Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Shah\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: D762991 NHS No. 9075314826  \n12 Brookside Close, London, SE15 3AB\n\nThank you for your referral. I reviewed the patient in clinic today accompanied by his partner. He described a period of clinical stability over the last year, reporting that there have been no events suggestive of seizures since his final episode early last summer. In his own words: \"No seizures for the past 14 months.\" He keeps a diary and this account is corroborated by his partner. He has continued his usual routines without interruption and feels his concentration and energy have improved compared with the preceding years. \n\nThere is a long-standing history of episodic events previously characterised only by witness descriptions of brief unresponsiveness with subsequent fatigue, though without a consistent prodrome or clear motor features. Historical investigations were non-diagnostic and there is no record of focal neurological deficits. He has not required emergency care during this seizure-free interval and has had no injuries. Sleep and mood are reported as steady. He commutes mainly by bicycle and notes that this has been unchanged for some time; this lifestyle context is recorded for completeness. Alcohol intake is minimal and caffeine use is moderate. There is no recreational drug use. \n\nCurrent medications have been stable for over a year with satisfactory tolerance and no reported adverse cognitive or mood effects. He has not missed doses in the period covered by his diary. Examination today was unremarkable with normal speech, cranial nerves, tone, power, coordination and gait. There are no new comorbidities documented. \n\nGiven the sustained seizure-free interval and the absence of red-flag features, I have arranged routine follow-up in 9–12 months with advice to contact the service earlier if there are any breakthrough events, prolonged episodes of confusion, or notable changes in pattern. I will also request an updated serum profile to confirm therapeutic steadiness and a copy of his prior imaging for our archive, as these are not currently available on the local system. \n\nI will keep you updated following receipt of the outstanding records. Please do not hesitate to get in touch if further information would be helpful. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 670,
+      "end": 707,
+      "text": "\"No seizures for the past 14 months.\"",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 671,
+      "end": 705,
+      "text": "No seizures for the past 14 months",
+      "attributes": {
+        "Label": "seizure free for 14 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8113,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 29 February 2020 \n\nDr Amelia Shah\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr Amelia Shah\nConsultant Neurologist,  \n\nDaniel Carter, DOB: 14-03-1986, Hospital No: D762991 NHS No. 9075314826  \n12 Brookside Close, London, SE15 3AB\n\nThank you for your referral. I reviewed the patient in clinic today accompanied by his partner. He described a period of clinical stability over the last year, reporting that there have been no events suggestive of seizures since his final episode early last summer. In his own words: \"No seizures for the past 14 months.\" He keeps a diary and this account is corroborated by his partner. He has continued his usual routines without interruption and feels his concentration and energy have improved compared with the preceding years. \n\nThere is a long-standing history of episodic events previously characterised only by witness descriptions of brief unresponsiveness with subsequent fatigue, though without a consistent prodrome or clear motor features. Historical investigations were non-diagnostic and there is no record of focal neurological deficits. He has not required emergency care during this seizure-free interval and has had no injuries. Sleep and mood are reported as steady. He commutes mainly by bicycle and notes that this has been unchanged for some time; this lifestyle context is recorded for completeness. Alcohol intake is minimal and caffeine use is moderate. There is no recreational drug use. \n\nCurrent medications have been stable for over a year with satisfactory tolerance and no reported adverse cognitive or mood effects. He has not missed doses in the period covered by his diary. Examination today was unremarkable with normal speech, cranial nerves, tone, power, coordination and gait. There are no new comorbidities documented. \n\nGiven the sustained seizure-free interval and the absence of red-flag features, I have arranged routine follow-up in 9–12 months with advice to contact the service earlier if there are any breakthrough events, prolonged episodes of confusion, or notable changes in pattern. I will also request an updated serum profile to confirm therapeutic steadiness and a copy of his prior imaging for our archive, as these are not currently available on the local system. \n\nI will keep you updated following receipt of the outstanding records. Please do not hesitate to get in touch if further information would be helpful. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient has had no seizures for the past 14 months. This exceeds the 6-month threshold to be considered seizure free. No other conflicting frequencies are given. Therefore, normalize to 'seizure free for 14 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 14 month",
+        "\"No seizures for the past 14 months.\""
+      ],
+      "reference": [
+        "seizure free for 14 month",
+        "No seizures for the past 14 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_16132",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 6 April 2019 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-11-1988, Hospital No: A937451 NHS No. 8420195536  \n12 Brookside Close, London, SW12 8JP  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nI reviewed Michael Harris in clinic today with his partner in attendance. He remains on a ketogenic/modified diet programme initiated and supervised at another centre; he brought a summary of his current macronutrient targets and typical meal plan, which I have scanned to our records. He reports consistent adherence, with occasional adjustments advised by the dietetic team following periodic ketone monitoring. \n\nHe has recorded 2 seizures to date in March, 7 in February and six in January, including nocturnal and daytime periods. He describes brief behavioural arrest with eyelid fluttering on two occasions in February, and several longer episodes with loss of awareness in January, one of which occurred after a missed meal. No recent use of rescue medication. There is no clear precipitant apart from occasional sleep restriction. No new focal neurological symptoms between events. \n\nCurrent medicines (patient-reported): lamotrigine 150 mg twice daily; levetiracetam 1 g twice daily. No recent dose changes. No adverse effects volunteered beyond mild irritability on levetiracetam; he declines a change at present. \n\nExamination today was unremarkable. Weight stable compared to last visit; hydration satisfactory. Routine bloods from last month (arranged by the diet team) reportedly normal, including bicarbonate and lipid profile; we have requested copies. \n\nPlan: \n- Continue current antiepileptic regimen without change for now. \n- Maintain the externally supervised ketogenic/modified diet; we will liaise with the supervising team to share seizure logs and request periodic metabolic panels (including lipids, LFTs, FBC, U&Es). \n- He will continue daily seizure recording with date, time, context (sleep, meals, stress), and any magnet/rescue use; he will bring logs to next review. \n- Provide written information on sleep hygiene and illness-management strategies as potential modifiers of event frequency. \n- Safety counselling reviewed today (driving not applicable, swimming with supervision only, avoidance of heights and open flames during periods of increased events). \n- Arrange follow-up in three months, or sooner if frequency increases or events change in character. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 776,
+      "end": 853,
+      "text": "He has recorded 2 seizures to date in March, 7 in February and six in January",
+      "attributes": {
+        "Label": "15 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 776,
+      "end": 894,
+      "text": "He has recorded 2 seizures to date in March, 7 in February and six in January, including nocturnal and daytime periods",
+      "attributes": {
+        "Label": "15 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16132,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 6 April 2019 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nBlackshaw Road, London, SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Harris, DOB: 14-11-1988, Hospital No: A937451 NHS No. 8420195536  \n12 Brookside Close, London, SW12 8JP  \n\nDiagnoses: \n\nSeizure disorder under investigation. \n\nI reviewed Michael Harris in clinic today with his partner in attendance. He remains on a ketogenic/modified diet programme initiated and supervised at another centre; he brought a summary of his current macronutrient targets and typical meal plan, which I have scanned to our records. He reports consistent adherence, with occasional adjustments advised by the dietetic team following periodic ketone monitoring. \n\nHe has recorded 2 seizures to date in March, 7 in February and six in January, including nocturnal and daytime periods. He describes brief behavioural arrest with eyelid fluttering on two occasions in February, and several longer episodes with loss of awareness in January, one of which occurred after a missed meal. No recent use of rescue medication. There is no clear precipitant apart from occasional sleep restriction. No new focal neurological symptoms between events. \n\nCurrent medicines (patient-reported): lamotrigine 150 mg twice daily; levetiracetam 1 g twice daily. No recent dose changes. No adverse effects volunteered beyond mild irritability on levetiracetam; he declines a change at present. \n\nExamination today was unremarkable. Weight stable compared to last visit; hydration satisfactory. Routine bloods from last month (arranged by the diet team) reportedly normal, including bicarbonate and lipid profile; we have requested copies. \n\nPlan: \n- Continue current antiepileptic regimen without change for now. \n- Maintain the externally supervised ketogenic/modified diet; we will liaise with the supervising team to share seizure logs and request periodic metabolic panels (including lipids, LFTs, FBC, U&Es). \n- He will continue daily seizure recording with date, time, context (sleep, meals, stress), and any magnet/rescue use; he will bring logs to next review. \n- Provide written information on sleep hygiene and illness-management strategies as potential modifiers of event frequency. \n- Safety counselling reviewed today (driving not applicable, swimming with supervision only, avoidance of heights and open flames during periods of increased events). \n- Arrange follow-up in three months, or sooner if frequency increases or events change in character. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter provides monthly counts: 6 in January, 7 in February, and 2 in March. These are discrete monthly totals over the last three months. To determine a current seizure frequency as a rate, convert to per month over the same period: 6 + 7 + 2 = 15 seizures over 3 months → 15 per 3 months. There is no higher frequency specified (e.g., per week/day). No indication of seizure freedom.",
+      "seizure_frequency_number": [
+        "15 per 3 month",
+        "He has recorded 2 seizures to date in March, 7 in February and six in January"
+      ],
+      "reference": [
+        "15 per 3 month",
+        "He has recorded 2 seizures to date in March, 7 in February and six in January, including nocturnal and daytime periods"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

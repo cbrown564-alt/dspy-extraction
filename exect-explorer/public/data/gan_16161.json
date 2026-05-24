@@ -1,0 +1,59 @@
+{
+  "id": "gan_16161",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 September 2016 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAmelia Carter, DOB: 22-11-1990, Hospital No: H382917 NHS No. 9182736450  \nFlat 4, 28 King Street, London, WC2E 8JD  \n\nEpilepsy \n\nMedication: Patient reports current use of sodium valproate 500 mg twice daily; adherence variable around night shifts. No recorded allergies.\n\nValproate Blood Level:\n\nNo recent serum level available; patient states last bloods were over a year ago at her GP surgery.\n\nSeizures: This month, she has had seven convulsions; seven were in Aug and four in Jul, across day and night. She attributes variability to rotating night duties and disrupted sleep. No consistent aura reported; brief post‑ictal confusion lasting 10–15 minutes, with myalgia the following day. No tongue‑bite recalled this month; two events associated with urinary incontinence. Bystander accounts describe bilateral tonic–clonic movements lasting approximately 1–2 minutes. \n\nHistory and context:\n\nI conducted a face‑to‑face review today. She is a rotating shift worker, including nights, and reports that circadian disruption and missed meals are common on back‑to‑back shifts. She occasionally delays her evening dose when on nights and sometimes doubles the following morning if she believes a dose was missed. She denies alcohol misuse; caffeine intake increases during night blocks. No recent head injury, intercurrent infection, or new medications. She is able to identify that seizures cluster after two or more consecutive night shifts.\n\nPlan discussed today (patient‑reported actions and preferences):\n\n- She plans to use phone alarms aligned to rostered shifts to improve dosing regularity.  \n- She will keep a seizure and sleep diary for the next 8 weeks, noting shift pattern, missed doses, and triggers.  \n- She intends to discuss with her employer the possibility of limiting consecutive night shifts.  \n- She will organise a blood test for valproate level, LFTs, FBC, and bone profile via her GP.  \n\nFollow‑up: Telephone review in 10–12 weeks to correlate seizure frequency with shift pattern and blood results. She knows to contact us sooner if frequency escalates or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 674,
+      "end": 773,
+      "text": "This month, she has had seven convulsions; seven were in Aug and four in Jul, across day and night.",
+      "attributes": {
+        "Label": "18 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 674,
+      "end": 772,
+      "text": "This month, she has had seven convulsions; seven were in Aug and four in Jul, across day and night",
+      "attributes": {
+        "Label": "18 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16161,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 29 September 2016 \n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,                                                                                                         \n\nAmelia Carter, DOB: 22-11-1990, Hospital No: H382917 NHS No. 9182736450  \nFlat 4, 28 King Street, London, WC2E 8JD  \n\nEpilepsy \n\nMedication: Patient reports current use of sodium valproate 500 mg twice daily; adherence variable around night shifts. No recorded allergies.\n\nValproate Blood Level:\n\nNo recent serum level available; patient states last bloods were over a year ago at her GP surgery.\n\nSeizures: This month, she has had seven convulsions; seven were in Aug and four in Jul, across day and night. She attributes variability to rotating night duties and disrupted sleep. No consistent aura reported; brief post‑ictal confusion lasting 10–15 minutes, with myalgia the following day. No tongue‑bite recalled this month; two events associated with urinary incontinence. Bystander accounts describe bilateral tonic–clonic movements lasting approximately 1–2 minutes. \n\nHistory and context:\n\nI conducted a face‑to‑face review today. She is a rotating shift worker, including nights, and reports that circadian disruption and missed meals are common on back‑to‑back shifts. She occasionally delays her evening dose when on nights and sometimes doubles the following morning if she believes a dose was missed. She denies alcohol misuse; caffeine intake increases during night blocks. No recent head injury, intercurrent infection, or new medications. She is able to identify that seizures cluster after two or more consecutive night shifts.\n\nPlan discussed today (patient‑reported actions and preferences):\n\n- She plans to use phone alarms aligned to rostered shifts to improve dosing regularity.  \n- She will keep a seizure and sleep diary for the next 8 weeks, noting shift pattern, missed doses, and triggers.  \n- She intends to discuss with her employer the possibility of limiting consecutive night shifts.  \n- She will organise a blood test for valproate level, LFTs, FBC, and bone profile via her GP.  \n\nFollow‑up: Telephone review in 10–12 weeks to correlate seizure frequency with shift pattern and blood results. She knows to contact us sooner if frequency escalates or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 29 September 2016. The letter specifies seizure counts for three consecutive months: 'This month' (i.e., September) = 7, August = 7, July = 4. These represent the observation window July–September 2016. Summing the explicit counts: 7 + 7 + 4 = 18 seizures over approximately 3 months. Therefore, the frequency can be expressed as 18 per 3 months.",
+      "seizure_frequency_number": [
+        "18 per 3 month",
+        "This month, she has had seven convulsions; seven were in Aug and four in Jul, across day and night."
+      ],
+      "reference": [
+        "18 per 3 month",
+        "This month, she has had seven convulsions; seven were in Aug and four in Jul, across day and night"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

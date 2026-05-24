@@ -1,0 +1,70 @@
+{
+  "id": "gan_1207",
+  "text": "Centre for Neurology\n\nNeurosciences Division\n\nClinic Date: 17 September 2025\n\nDr Aisha Rahman\nConsultant Neurologist\nRiverside Neurology Centre\n12 Millbank, London SW1P 3GE\n\nDear Dr Aisha Rahman,\n\nMr Thomas Green, DOB: 22-11-1985, Hospital No: G784512 NHS No. 3019928476\nFlat 3, 45 Willow Road, London NW3 1TJ\n\nDiagnosis:\n\nRecurrent paroxysmal events; current phenomenology and classification remain under review pending further investigations.\n\nAetiology:\n\nNo confirmed structural, genetic, metabolic, or infectious cause identified to date; historical head injury at age 16 without sequelae (patient‑reported).\n\nOther Medical Problems:\n\nMild asthma using salbutamol inhaler as required; vitamin D insufficiency treated with colecalciferol 1,000 IU daily.\n\nManagement Plan:\n\n- Continue current medication regimen as tolerated: Lamotrigine 100 mg twice daily. No change today.\n- Arrange ambulatory EEG and sleep‑deprived EEG within the next 6–8 weeks; MRI brain (epilepsy protocol) already requested, awaiting appointment.\n- Bloods today: FBC, U&Es, LFTs, vitamin D, and lamotrigine trough level.\n- Safety advice reinforced regarding bathing, swimming with supervision, and working at heights; patient reports no current driving.\n- Review in clinic in four months, or sooner if event pattern escalates or new features emerge.\n\nClinical Summary:\n\nMr Thomas Green describes brief, sudden episodes occurring without a clear trigger and sometimes clustering in the late evening. Over the last three months, he has recorded “21 to 28 epileptic spasms in three months,” characterised by abrupt flexion of the trunk with bilateral arm adduction and a sensation of a rapid internal jolt, each lasting a few seconds and occasionally occurring in short runs. There has been no clear post‑event confusion, tongue biting, or incontinence. He notes increased likelihood when sleep‑deprived or after missed meals. A previous trial of levetiracetam 500 mg twice daily was stopped due to irritability without clear benefit. Lamotrigine at the current dose has been well tolerated; he perceives a modest reduction in clustering but events persist at the stated frequency. There is no family history of similar events and no developmental concerns. Neurological examination today was normal.\n\nGiven the persisting events and the described spasms, we will prioritise further neurophysiological testing to aid classification and guide treatment decisions at follow‑up.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1519,
+      "end": 1562,
+      "text": "“21 to 28 epileptic spasms in three months”",
+      "attributes": {
+        "Label": "21 to 28 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1520,
+      "end": 1561,
+      "text": "21 to 28 epileptic spasms in three months",
+      "attributes": {
+        "Label": "21 to 28 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1207,
+    "clinic_date": "Centre for Neurology\n\nNeurosciences Division\n\nClinic Date: 17 September 2025\n\nDr Aisha Rahman\nConsultant Neurologist\nRiverside Neurology Centre\n12 Millbank, London SW1P 3GE\n\nDear Dr Aisha Rahman,\n\nMr Thomas Green, DOB: 22-11-1985, Hospital No: G784512 NHS No. 3019928476\nFlat 3, 45 Willow Road, London NW3 1TJ\n\nDiagnosis:\n\nRecurrent paroxysmal events; current phenomenology and classification remain under review pending further investigations.\n\nAetiology:\n\nNo confirmed structural, genetic, metabolic, or infectious cause identified to date; historical head injury at age 16 without sequelae (patient‑reported).\n\nOther Medical Problems:\n\nMild asthma using salbutamol inhaler as required; vitamin D insufficiency treated with colecalciferol 1,000 IU daily.\n\nManagement Plan:\n\n- Continue current medication regimen as tolerated: Lamotrigine 100 mg twice daily. No change today.\n- Arrange ambulatory EEG and sleep‑deprived EEG within the next 6–8 weeks; MRI brain (epilepsy protocol) already requested, awaiting appointment.\n- Bloods today: FBC, U&Es, LFTs, vitamin D, and lamotrigine trough level.\n- Safety advice reinforced regarding bathing, swimming with supervision, and working at heights; patient reports no current driving.\n- Review in clinic in four months, or sooner if event pattern escalates or new features emerge.\n\nClinical Summary:\n\nMr Thomas Green describes brief, sudden episodes occurring without a clear trigger and sometimes clustering in the late evening. Over the last three months, he has recorded “21 to 28 epileptic spasms in three months,” characterised by abrupt flexion of the trunk with bilateral arm adduction and a sensation of a rapid internal jolt, each lasting a few seconds and occasionally occurring in short runs. There has been no clear post‑event confusion, tongue biting, or incontinence. He notes increased likelihood when sleep‑deprived or after missed meals. A previous trial of levetiracetam 500 mg twice daily was stopped due to irritability without clear benefit. Lamotrigine at the current dose has been well tolerated; he perceives a modest reduction in clustering but events persist at the stated frequency. There is no family history of similar events and no developmental concerns. Neurological examination today was normal.\n\nGiven the persisting events and the described spasms, we will prioritise further neurophysiological testing to aid classification and guide treatment decisions at follow‑up.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": false,
+    "row_ok": false,
+    "mismatch_categories": "",
+    "quote_issue_categories": "Seizure Frequency Number",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the last three months, he has recorded '21 to 28 epileptic spasms in three months'\". This provides a numeric range over a three-month period. No other frequency statements contradict or provide a higher frequency. Therefore, normalize to the allowed format as a range per 3 months.",
+      "seizure_frequency_number": [
+        "21 to 28 per 3 month",
+        "“21 to 28 epileptic spasms in three months”"
+      ],
+      "reference": [
+        "21 to 28 per 3 month",
+        "21 to 28 epileptic spasms in three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "row_not_ok",
+      "description": "Row marked as not OK in raw dataset",
+      "oracle_impact": "scoring_ambiguity"
+    },
+    {
+      "category": "frequency_quote_issue",
+      "description": "Quote issue flagged for seizure frequency",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

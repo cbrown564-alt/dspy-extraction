@@ -1,0 +1,59 @@
+{
+  "id": "gan_16450",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Centre\n\n12 Wharf Street, London, SE1 9XX\nDear Dr Patel\nMichael Harris, DOB: 08-05-1987, Hospital No: K839204 NHS No. 7483920012\n22 Forge Lane, Flat 3, London, SE8 3QP \n\nI reviewed the above patient in the Neurology Clinic today following ongoing management of generalised epilepsy. He works in metal fabrication and welding, with intermittent exposure to arc light; he reports consistent use of a protective visor and adherence to workplace safety routines. He does not report clear photic-provocation in day-to-day environments, and there have been no definite light-triggered events on site to date.\n\nSeizure pattern appears largely unchanged, with events approximately every several days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September. He and his partner describe typical generalised tonic–clonic seizures without a focal onset aura, occasionally preceded by brief behavioural arrest and subtle myoclonic jerks in the early morning. There is post-ictal confusion and fatigue lasting several hours. No injuries since the last review, and no episodes at the workplace in the past month. Sleep disruption and missed evening doses have coincided with the periods of clustering.\n\nHe is currently taking Sodium Valproate 1 g b.d., Levetiracetam 1.5 g b.d., and Clobazam 10 mg nocte. He reports satisfactory tolerability overall, with mild daytime somnolence and intermittent low mood but no rash, diplopia, or gastrointestinal upset. Weight stable. He rarely uses buccal midazolam as a rescue medication per prior plan, administered by his partner when clusters emerge.\n\nWe discussed generalised epilepsy self-management and the importance of sleep regularity and strict medication adherence. He confirms that his employer accommodates regular breaks and that he uses a full-face auto-darkening visor and gloves for welding tasks; he also avoids working alone. He has informed occupational health of his diagnosis. He does not drive. \n\nI have requested an updated EEG with photic stimulation given his occupational exposure, and routine bloods (FBC, U&Es, LFTs) to monitor therapy. He prefers not to adjust medication today; given tolerability and the overall stability outside the brief clusters, I agreed to continue current doses pending the EEG and blood results. We also reviewed the rescue plan and thresholds for seeking urgent care.\n\nI will see him again in three months, or earlier if there is an increase in seizure-related injury, change in semiology, or further need for rescue therapy.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 738,
+      "end": 777,
+      "text": "events approximately every several days",
+      "attributes": {
+        "Label": "1 per multiple day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 690,
+      "end": 877,
+      "text": "Seizure pattern appears largely unchanged, with events approximately every several days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September",
+      "attributes": {
+        "Label": "1 per multiple day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16450,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 02 October 2025 \n\nDr Patel\nRiverside Medical Centre\n\n12 Wharf Street, London, SE1 9XX\nDear Dr Patel\nMichael Harris, DOB: 08-05-1987, Hospital No: K839204 NHS No. 7483920012\n22 Forge Lane, Flat 3, London, SE8 3QP \n\nI reviewed the above patient in the Neurology Clinic today following ongoing management of generalised epilepsy. He works in metal fabrication and welding, with intermittent exposure to arc light; he reports consistent use of a protective visor and adherence to workplace safety routines. He does not report clear photic-provocation in day-to-day environments, and there have been no definite light-triggered events on site to date.\n\nSeizure pattern appears largely unchanged, with events approximately every several days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September. He and his partner describe typical generalised tonic–clonic seizures without a focal onset aura, occasionally preceded by brief behavioural arrest and subtle myoclonic jerks in the early morning. There is post-ictal confusion and fatigue lasting several hours. No injuries since the last review, and no episodes at the workplace in the past month. Sleep disruption and missed evening doses have coincided with the periods of clustering.\n\nHe is currently taking Sodium Valproate 1 g b.d., Levetiracetam 1.5 g b.d., and Clobazam 10 mg nocte. He reports satisfactory tolerability overall, with mild daytime somnolence and intermittent low mood but no rash, diplopia, or gastrointestinal upset. Weight stable. He rarely uses buccal midazolam as a rescue medication per prior plan, administered by his partner when clusters emerge.\n\nWe discussed generalised epilepsy self-management and the importance of sleep regularity and strict medication adherence. He confirms that his employer accommodates regular breaks and that he uses a full-face auto-darkening visor and gloves for welding tasks; he also avoids working alone. He has informed occupational health of his diagnosis. He does not drive. \n\nI have requested an updated EEG with photic stimulation given his occupational exposure, and routine bloods (FBC, U&Es, LFTs) to monitor therapy. He prefers not to adjust medication today; given tolerability and the overall stability outside the brief clusters, I agreed to continue current doses pending the EEG and blood results. We also reviewed the rescue plan and thresholds for seeking urgent care.\n\nI will see him again in three months, or earlier if there is an increase in seizure-related injury, change in semiology, or further need for rescue therapy.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'events approximately every several days.' This describes the typical ongoing frequency. It also notes 'Occasionally, frequency escalates to daily,' indicating transient clusters rather than the sustained pattern. There is no evidence of 6-month seizure freedom (rescue medication in July and September), so not seizure-free. 'Several days' is vague, so normalise to '1 per multiple day' per allowed formats.",
+      "seizure_frequency_number": [
+        "1 per multiple day",
+        "events approximately every several days"
+      ],
+      "reference": [
+        "1 per multiple day",
+        "Seizure pattern appears largely unchanged, with events approximately every several days. Occasionally, frequency escalates to daily, and he required midazolam rescue in July and September"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

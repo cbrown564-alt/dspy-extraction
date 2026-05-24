@@ -1,0 +1,65 @@
+{
+  "id": "gan_11350",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 23 October 2022\n\nDr Patel\nRiverside Medical Practice\n\n221 Kingfisher Way, London, SE1 8JP\n\nDear Dr Patel\n\nMichael Carter, DOB: 21-11-1982, Hospital No: H908233 NHS No. 7745123098\nFlat 4, 12 Brookfield Court, London, SE5 9LD\n\nI reviewed the above patient in the Neurology Clinic today. He has a diagnosis of combined generalised and focal epilepsy, with both generalised seizures and focal impaired-awareness events reported. Since our last contact, his condition has deteriorated. He describes increasing clusters of events particularly on busy workdays, which he attributes to a persistently high workload and long hours.\n\nThe patient reported a seizure on 22/Aug, occurring at his workplace during a high-stress period; colleagues witnessed a generalised convulsion preceded by several days of focal episodes characterised by a rising epigastric sensation, right arm tingling and brief speech arrest. He also reports more frequent brief morning myoclonic jerks over the past two months and several focal impaired-awareness spells per week, often clustering Monday to Thursday, with relative respite on days off. There have been no clear triggers other than work-related stress and sleep curtailment per his account.\n\nCurrent anti-seizure therapy: Levetiracetam 1.5 g b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte, which he has tolerated without rash or mood destabilisation, though he notes fatigue and reduced concentration by late afternoon. Previously he trialled Sodium Valproate (discontinued due to weight gain and tremor) and Topiramate (stopped for cognitive slowing). He has been generally adherent and uses phone alarms to support dosing.\n\nNeurologically he is non-focal on examination today. There are no new injuries, but he describes tongue biting and post-ictal confusion after the August generalised event. He does not currently drive. Workplace stress remains high; events appear to cluster on workdays per his report. We discussed standard safety advice and seizure documentation. I have requested updated EEG with sleep deprivation and repeat MRI epilepsy protocol to reassess both generalised and focal features, given the mixed semiology and the recent deterioration. I will also arrange a referral to our epilepsy nurse specialist for education and workplace liaison, at the patient’s discretion.\n\nI will review him with results to consider rationalisation or escalation of therapy based on combined generalised and focal epilepsy management principles. In the interim he will continue his current regimen and maintain a seizure diary, noting work patterns, sleep, and potential precipitants.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1033,
+      "end": 1081,
+      "text": "several focal impaired-awareness spells per week",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 665,
+      "end": 705,
+      "text": "The patient reported a seizure on 22/Aug",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11350,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 23 October 2022\n\nDr Patel\nRiverside Medical Practice\n\n221 Kingfisher Way, London, SE1 8JP\n\nDear Dr Patel\n\nMichael Carter, DOB: 21-11-1982, Hospital No: H908233 NHS No. 7745123098\nFlat 4, 12 Brookfield Court, London, SE5 9LD\n\nI reviewed the above patient in the Neurology Clinic today. He has a diagnosis of combined generalised and focal epilepsy, with both generalised seizures and focal impaired-awareness events reported. Since our last contact, his condition has deteriorated. He describes increasing clusters of events particularly on busy workdays, which he attributes to a persistently high workload and long hours.\n\nThe patient reported a seizure on 22/Aug, occurring at his workplace during a high-stress period; colleagues witnessed a generalised convulsion preceded by several days of focal episodes characterised by a rising epigastric sensation, right arm tingling and brief speech arrest. He also reports more frequent brief morning myoclonic jerks over the past two months and several focal impaired-awareness spells per week, often clustering Monday to Thursday, with relative respite on days off. There have been no clear triggers other than work-related stress and sleep curtailment per his account.\n\nCurrent anti-seizure therapy: Levetiracetam 1.5 g b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte, which he has tolerated without rash or mood destabilisation, though he notes fatigue and reduced concentration by late afternoon. Previously he trialled Sodium Valproate (discontinued due to weight gain and tremor) and Topiramate (stopped for cognitive slowing). He has been generally adherent and uses phone alarms to support dosing.\n\nNeurologically he is non-focal on examination today. There are no new injuries, but he describes tongue biting and post-ictal confusion after the August generalised event. He does not currently drive. Workplace stress remains high; events appear to cluster on workdays per his report. We discussed standard safety advice and seizure documentation. I have requested updated EEG with sleep deprivation and repeat MRI epilepsy protocol to reassess both generalised and focal features, given the mixed semiology and the recent deterioration. I will also arrange a referral to our epilepsy nurse specialist for education and workplace liaison, at the patient’s discretion.\n\nI will review him with results to consider rationalisation or escalation of therapy based on combined generalised and focal epilepsy management principles. In the interim he will continue his current regimen and maintain a seizure diary, noting work patterns, sleep, and potential precipitants.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly describes ongoing seizures with varying types and frequencies. Specific phrases: \"several focal impaired-awareness spells per week\" (weekly frequency, but not a precise number), and \"more frequent brief morning myoclonic jerks over the past two months\" (indicates increased frequency but gives no numeric rate). It also mentions a single generalised convulsion on 22 Aug. Per the rule to choose the highest frequency, myoclonic jerks likely occur more often than weekly, but the letter provides no numeric frequency for them. The only explicit numeric-like frequency is \"several ... per week\" for focal impaired-awareness spells, which is vague. Therefore, according to the allowed formats, when frequency is mentioned but cannot be determined numerically, the output should be \"unknown\". A verbatim quote is provided to show seizure occurrence without precise frequency.",
+      "seizure_frequency_number": [
+        "unknown",
+        "several focal impaired-awareness spells per week"
+      ],
+      "reference": [
+        "unknown",
+        "The patient reported a seizure on 22/Aug"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

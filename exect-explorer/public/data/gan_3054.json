@@ -1,0 +1,59 @@
+{
+  "id": "gan_3054",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,\n\nRe: Emily Carter, DOB: 17-08-1989, Hospital No: C672154, NHS No. 4728395612  \nAddress: 78 Willow Lane, London, W9 3HT\n\nMedication:\n- Oxcarbazepine (Trileptal) 600 mg twice daily. She reports excellent tolerance and no adverse effects.\n\nHistory since last review:\n- She describes a sustained period of stability with No events for sixteen months, which we verified against her seizure diary and pharmacy refill timeline. This represents a clear improvement compared with her earlier pattern.\n- Prior to this improvement, her baseline pattern was: She can occasionally manage six days without seizures, though this is usually followed by a day of clustering, with two to four events. She specifically recalls that the clusters tended to occur in proximity to menstruation.\n- She has noted that the previously menstrual-related pattern has improved under the existing approach, and she has not observed perimenstrual triggering during this seizure-free interval.\n\nCurrent status:\n- Energy, mood, concentration, and sleep are reported as good. No aura-like symptoms, nocturnal events, or injuries. She is driving only within standard guidance and has maintained a seizure diary which remains blank for the past sixteen months.\n- No new neurological symptoms, no falls, and no medication side-effects.\n\nPlan:\n- Continue oxcarbazepine 600 mg twice daily unchanged.\n- Maintain seizure diary and usual safety measures. She will contact the service if any events recur or if there are concerns around menstruation-related symptoms returning.\n- Routine follow-up in six months, sooner if needed.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 499,
+      "end": 527,
+      "text": "No events for sixteen months",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 499,
+      "end": 527,
+      "text": "No events for sixteen months",
+      "attributes": {
+        "Label": "seizure free for 16 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3054,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 October 2025\n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,\n\nRe: Emily Carter, DOB: 17-08-1989, Hospital No: C672154, NHS No. 4728395612  \nAddress: 78 Willow Lane, London, W9 3HT\n\nMedication:\n- Oxcarbazepine (Trileptal) 600 mg twice daily. She reports excellent tolerance and no adverse effects.\n\nHistory since last review:\n- She describes a sustained period of stability with No events for sixteen months, which we verified against her seizure diary and pharmacy refill timeline. This represents a clear improvement compared with her earlier pattern.\n- Prior to this improvement, her baseline pattern was: She can occasionally manage six days without seizures, though this is usually followed by a day of clustering, with two to four events. She specifically recalls that the clusters tended to occur in proximity to menstruation.\n- She has noted that the previously menstrual-related pattern has improved under the existing approach, and she has not observed perimenstrual triggering during this seizure-free interval.\n\nCurrent status:\n- Energy, mood, concentration, and sleep are reported as good. No aura-like symptoms, nocturnal events, or injuries. She is driving only within standard guidance and has maintained a seizure diary which remains blank for the past sixteen months.\n- No new neurological symptoms, no falls, and no medication side-effects.\n\nPlan:\n- Continue oxcarbazepine 600 mg twice daily unchanged.\n- Maintain seizure diary and usual safety measures. She will contact the service if any events recur or if there are concerns around menstruation-related symptoms returning.\n- Routine follow-up in six months, sooner if needed.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify current status: The letter states she has had no seizures for sixteen months, verified by diary and refills. This meets the criterion for seizure free for at least 6 months. Historical baseline frequency (clusters 2 to 4 events after up to six seizure-free days) is not current and should not override the present status per rule: choose current frequency and highest frequency only if multiple current frequencies exist. Therefore, label is 'seizure free for 16 month'.",
+      "seizure_frequency_number": [
+        "seizure free for 16 month",
+        "No events for sixteen months"
+      ],
+      "reference": [
+        "seizure free for 16 month",
+        "No events for sixteen months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

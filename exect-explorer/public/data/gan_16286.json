@@ -1,0 +1,59 @@
+{
+  "id": "gan_16286",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr James O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 September 2012 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and symptom tracking\n\nDear Dr Shah,\n\nHistory and current concerns:\nHe reports noting a pattern of prodromal mood change and irritability before some events, which he has begun to document systematically in a diary alongside sleep hours, caffeine, and stress levels. He experienced 6 generalised tonic-clonic seizures so far in September, two in August, and 5 in July, occurring during both wakefulness and sleep. He feels the pre-event mood shift can precede an event by several hours, though it is not present before every episode.\n\nMedications at present:\n1. Carbamazepine modified‑release 400 mg twice daily (self-reported long-term therapy)\n2. Levetiracetam 500 mg twice daily (introduced earlier this year; no clear reduction in events per his diary)\n\nInterim notes:\n- No consistent association with missed doses reported.\n- Sleep variability and higher stress weeks appear to coincide with clusters in his diary, though this is patient-reported and not yet corroborated.\n- No new neurological deficits between events. Postictal confusion and myalgia continue to be typical.\n\nPlan:\n- Continue current doses for now while we complete correlation of diary entries with events; he will bring the paper diary and a copy of his phone calendar to the next visit.\n- Arrange routine bloods (FBC, U&E, LFTs) and carbamazepine level prior to morning dose next week.\n- Provide seizure first‑aid reinforcement and discuss safety around water, heights, and operating machinery.\n- Book routine EEG and consider sleep‑deprived EEG depending on scheduling; MRI brain already on waiting list.\n- Review in 3 months, sooner if clusters escalate or injuries occur. He will continue to record mood/irritability prodrome, sleep hours, and any missed doses to refine potential temporal associations.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 594,
+      "end": 740,
+      "text": "He experienced 6 generalised tonic-clonic seizures so far in September, two in August, and 5 in July, occurring during both wakefulness and sleep.",
+      "attributes": {
+        "Label": "13 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 594,
+      "end": 739,
+      "text": "He experienced 6 generalised tonic-clonic seizures so far in September, two in August, and 5 in July, occurring during both wakefulness and sleep",
+      "attributes": {
+        "Label": "13 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16286,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\nFrom: Dr James O’Neill (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 24 September 2012 10:15\nTo: neuro.epilepsyclinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael Turner (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic review and symptom tracking\n\nDear Dr Shah,\n\nHistory and current concerns:\nHe reports noting a pattern of prodromal mood change and irritability before some events, which he has begun to document systematically in a diary alongside sleep hours, caffeine, and stress levels. He experienced 6 generalised tonic-clonic seizures so far in September, two in August, and 5 in July, occurring during both wakefulness and sleep. He feels the pre-event mood shift can precede an event by several hours, though it is not present before every episode.\n\nMedications at present:\n1. Carbamazepine modified‑release 400 mg twice daily (self-reported long-term therapy)\n2. Levetiracetam 500 mg twice daily (introduced earlier this year; no clear reduction in events per his diary)\n\nInterim notes:\n- No consistent association with missed doses reported.\n- Sleep variability and higher stress weeks appear to coincide with clusters in his diary, though this is patient-reported and not yet corroborated.\n- No new neurological deficits between events. Postictal confusion and myalgia continue to be typical.\n\nPlan:\n- Continue current doses for now while we complete correlation of diary entries with events; he will bring the paper diary and a copy of his phone calendar to the next visit.\n- Arrange routine bloods (FBC, U&E, LFTs) and carbamazepine level prior to morning dose next week.\n- Provide seizure first‑aid reinforcement and discuss safety around water, heights, and operating machinery.\n- Book routine EEG and consider sleep‑deprived EEG depending on scheduling; MRI brain already on waiting list.\n- Review in 3 months, sooner if clusters escalate or injuries occur. He will continue to record mood/irritability prodrome, sleep hours, and any missed doses to refine potential temporal associations.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"He experienced 6 ... in September, two in August, and 5 in July.\" Calculate total seizures over the stated period: 6 + 2 + 5 = 13. The timeframe spans July, August, and (so far) September, which is 3 months. Therefore, the seizure frequency can be expressed as 13 per 3 months.",
+      "seizure_frequency_number": [
+        "13 per 3 month",
+        "He experienced 6 generalised tonic-clonic seizures so far in September, two in August, and 5 in July, occurring during both wakefulness and sleep."
+      ],
+      "reference": [
+        "13 per 3 month",
+        "He experienced 6 generalised tonic-clonic seizures so far in September, two in August, and 5 in July, occurring during both wakefulness and sleep"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

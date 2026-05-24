@@ -1,0 +1,59 @@
+{
+  "id": "gan_419",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 29 October 2022\n\nDr Patel\nMaple Grove Health Centre\n\n12 Crescent Way, Bromley, Kent BR1 2AB\n\nDear Dr Patel\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nSummary: Longstanding seizures; prior investigations and treatments reviewed. Lives between two households weekly and keeps medication sets at both locations.\n\nI reviewed Wendy Brown in clinic today. She attended alone and reported that her current pattern of seizures is stable at approximately twice per year. She describes brief loss of awareness with confusion afterwards, with no clear warning and occasional tongue biting. There has been no clear precipitant, though she wonders if disrupted sleep during weeks when moving between homes might contribute. She reports good adherence, noting she keeps duplicate medication supplies at each household to avoid missed doses.\n\nPrevious investigations: She recalls prior EEGs and an MRI many years ago; she does not have reports to hand. No history of head injury, CNS infection, or febrile convulsions. No family history of epilepsy known.\n\nPast and current treatments (patient-reported):\n- Lamotrigine in the past (somnolence, discontinued). \n- Levetiracetam previously (mood irritability, stopped). \n- Currently not taking regular antiseizure medication by preference given low event rate, but remains open to discussion if frequency increases beyond twice per year or if injuries occur. \n- Takes folic acid 5 mg daily and a general multivitamin by choice.\n\nLifestyle/social: She splits time each week between two homes (partner’s and her own). She has arranged pill organisers at both addresses and sets phone reminders. She does not drive. No alcohol misuse; avoids night shifts. She is considering future pregnancy and sought pre-conception advice.\n\nExamination today: Observations within normal limits. Neurological examination non-focal. No injuries noted. Mood euthymic.\n\nPlan:\n- Safety: Reinforced first aid advice and importance of maintaining consistent sleep schedule during weekly moves between households. She will continue to keep medications at both locations and use reminders.\n- Records: We will request prior EEG/MRI reports from previous hospitals where possible to consolidate her history.\n- Monitoring: She will keep a seizure diary and notify us promptly if the frequency exceeds twice per year or if there is a change in semiology, duration, or recovery. \n- Medication options: We discussed that, given her current pattern of approximately twice per year, she prefers to defer routine daily antiseizure medication for now. We outlined potential future options should treatment be reconsidered; she will contact the clinic if her situation changes.\n- Pre-conception: Provided general information on folate continuation and advised to inform us early if planning pregnancy so we can review risk–benefit considerations and monitoring.\n\nFollow-up: Routine review in 9–12 months, with open appointment for earlier review if events increase beyond twice per year or if any injuries or prolonged episodes occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 516,
+      "end": 585,
+      "text": "current pattern of seizures is stable at approximately twice per year",
+      "attributes": {
+        "Label": "2 per year",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 571,
+      "end": 585,
+      "text": "twice per year",
+      "attributes": {
+        "Label": "2 per year",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 419,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 29 October 2022\n\nDr Patel\nMaple Grove Health Centre\n\n12 Crescent Way, Bromley, Kent BR1 2AB\n\nDear Dr Patel\n\nWendy Brown, DOB: 21-11-1982, Hospital No: K482715 NHS No. 6592841037\nFlat 7 Brookside Avenue, Newcastle-under-Lyme, ST5 2QD\n\nSummary: Longstanding seizures; prior investigations and treatments reviewed. Lives between two households weekly and keeps medication sets at both locations.\n\nI reviewed Wendy Brown in clinic today. She attended alone and reported that her current pattern of seizures is stable at approximately twice per year. She describes brief loss of awareness with confusion afterwards, with no clear warning and occasional tongue biting. There has been no clear precipitant, though she wonders if disrupted sleep during weeks when moving between homes might contribute. She reports good adherence, noting she keeps duplicate medication supplies at each household to avoid missed doses.\n\nPrevious investigations: She recalls prior EEGs and an MRI many years ago; she does not have reports to hand. No history of head injury, CNS infection, or febrile convulsions. No family history of epilepsy known.\n\nPast and current treatments (patient-reported):\n- Lamotrigine in the past (somnolence, discontinued). \n- Levetiracetam previously (mood irritability, stopped). \n- Currently not taking regular antiseizure medication by preference given low event rate, but remains open to discussion if frequency increases beyond twice per year or if injuries occur. \n- Takes folic acid 5 mg daily and a general multivitamin by choice.\n\nLifestyle/social: She splits time each week between two homes (partner’s and her own). She has arranged pill organisers at both addresses and sets phone reminders. She does not drive. No alcohol misuse; avoids night shifts. She is considering future pregnancy and sought pre-conception advice.\n\nExamination today: Observations within normal limits. Neurological examination non-focal. No injuries noted. Mood euthymic.\n\nPlan:\n- Safety: Reinforced first aid advice and importance of maintaining consistent sleep schedule during weekly moves between households. She will continue to keep medications at both locations and use reminders.\n- Records: We will request prior EEG/MRI reports from previous hospitals where possible to consolidate her history.\n- Monitoring: She will keep a seizure diary and notify us promptly if the frequency exceeds twice per year or if there is a change in semiology, duration, or recovery. \n- Medication options: We discussed that, given her current pattern of approximately twice per year, she prefers to defer routine daily antiseizure medication for now. We outlined potential future options should treatment be reconsidered; she will contact the clinic if her situation changes.\n- Pre-conception: Provided general information on folate continuation and advised to inform us early if planning pregnancy so we can review risk–benefit considerations and monitoring.\n\nFollow-up: Routine review in 9–12 months, with open appointment for earlier review if events increase beyond twice per year or if any injuries or prolonged episodes occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's current pattern of seizures is stable at approximately twice per year. This is reiterated in the plan and monitoring sections, which reference frequency exceeding twice per year as a trigger for action. 'Twice per year' maps to '2 per year' in the allowed format.",
+      "seizure_frequency_number": [
+        "2 per year",
+        "current pattern of seizures is stable at approximately twice per year"
+      ],
+      "reference": [
+        "2 per year",
+        "twice per year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

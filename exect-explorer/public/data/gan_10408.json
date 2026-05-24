@@ -1,0 +1,59 @@
+{
+  "id": "gan_10408",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Eleanor Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Eleanor Patel,  \n\nAlex Turner, DOB: 14-03-1992, Hospital No: H674205 NHS No. 9134758206  \n12 Willowbank Close, Tooting, London SW17 8PA \n\nDiagnoses: \n\nPrimary generalised epilepsy – patient has generalised epilepsy.  \nHistory of anxiety and low mood.  \n\nCurrent Medication: \n\nSodium Valproate 500 mg bd  \nSertraline 50 mg od \n\nPlan: \n\n- Continue sodium valproate 500 mg twice daily.  \n- Maintain sertraline 50 mg once daily; patient to continue liaising with GP for mood monitoring.  \n- Refer to clinical psychology for anxiety/low mood support and seizure self-management strategies.  \n- Safety advice reinforced: sleep hygiene, alcohol moderation, and adherence.  \n- EEG and drug level check arranged; follow-up in 6 months or sooner if deterioration. \n\nI reviewed Alex Turner in the neurology clinic today. They report increasing episodic events consistent with their established primary generalised epilepsy. Notably, Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster. These clusters are described as brief spells of impaired awareness with eyelid flutter and limb stiffening, occasionally progressing to brief generalised convulsions, typically occurring in the late evening after work. There are no identified new precipitants beyond poor sleep and stress. No injuries or status epilepticus reported. \n\nBackground mood symptoms remain pertinent. The patient describes persistent anxiety with intermittent low mood, particularly anticipatory worry before bed. They feel sertraline has offered partial benefit without adverse effects. They deny suicidal ideation. Sleep is fragmented, averaging 5–6 hours/night. \n\nOn examination today, neurological assessment was unremarkable. Observed medication adherence is good; no adverse effects such as tremor, weight change, or hair loss reported. We discussed optimising seizure control alongside psychological support. Given the recent increase in cluster frequency and the established diagnosis of generalised epilepsy, I have recommended continuing valproate at the current dose while we obtain an updated EEG and trough valproate level to guide any future dose adjustment. We also agreed on referral to clinical psychology to address anxiety/low mood and to implement cognitive-behavioural strategies around sleep and seizure anxiety. \n\nI have provided written information regarding safety and triggers, including the importance of regular sleep, alcohol moderation, and strict medication adherence. We will review in 6 months, with earlier review if cluster frequency further increases, if generalised tonic–clonic seizures recur, or if there are medication side effects. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1122,
+      "end": 1203,
+      "text": "Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster.",
+      "attributes": {
+        "Label": "1 cluster per week, 3 to 5 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1122,
+      "end": 1202,
+      "text": "Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster",
+      "attributes": {
+        "Label": "1 cluster per week, 3 to 5 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10408,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Eleanor Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Eleanor Patel,  \n\nAlex Turner, DOB: 14-03-1992, Hospital No: H674205 NHS No. 9134758206  \n12 Willowbank Close, Tooting, London SW17 8PA \n\nDiagnoses: \n\nPrimary generalised epilepsy – patient has generalised epilepsy.  \nHistory of anxiety and low mood.  \n\nCurrent Medication: \n\nSodium Valproate 500 mg bd  \nSertraline 50 mg od \n\nPlan: \n\n- Continue sodium valproate 500 mg twice daily.  \n- Maintain sertraline 50 mg once daily; patient to continue liaising with GP for mood monitoring.  \n- Refer to clinical psychology for anxiety/low mood support and seizure self-management strategies.  \n- Safety advice reinforced: sleep hygiene, alcohol moderation, and adherence.  \n- EEG and drug level check arranged; follow-up in 6 months or sooner if deterioration. \n\nI reviewed Alex Turner in the neurology clinic today. They report increasing episodic events consistent with their established primary generalised epilepsy. Notably, Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster. These clusters are described as brief spells of impaired awareness with eyelid flutter and limb stiffening, occasionally progressing to brief generalised convulsions, typically occurring in the late evening after work. There are no identified new precipitants beyond poor sleep and stress. No injuries or status epilepticus reported. \n\nBackground mood symptoms remain pertinent. The patient describes persistent anxiety with intermittent low mood, particularly anticipatory worry before bed. They feel sertraline has offered partial benefit without adverse effects. They deny suicidal ideation. Sleep is fragmented, averaging 5–6 hours/night. \n\nOn examination today, neurological assessment was unremarkable. Observed medication adherence is good; no adverse effects such as tremor, weight change, or hair loss reported. We discussed optimising seizure control alongside psychological support. Given the recent increase in cluster frequency and the established diagnosis of generalised epilepsy, I have recommended continuing valproate at the current dose while we obtain an updated EEG and trough valproate level to guide any future dose adjustment. We also agreed on referral to clinical psychology to address anxiety/low mood and to implement cognitive-behavioural strategies around sleep and seizure anxiety. \n\nI have provided written information regarding safety and triggers, including the importance of regular sleep, alcohol moderation, and strict medication adherence. We will review in 6 months, with earlier review if cluster frequency further increases, if generalised tonic–clonic seizures recur, or if there are medication side effects. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency statements. The letter states: 'Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster.' This provides both the cluster frequency (weekly) and the number of seizures per cluster (three to five). Convert to allowed format: '<value1> cluster per <value2> <unit>, <value3> per cluster'. 'Weekly' becomes 'per week'. 'three - five' is normalized to '3 to 5'. No other higher-frequency figures are provided. Therefore final label is '1 cluster per week, 3 to 5 per cluster.'",
+      "seizure_frequency_number": [
+        "1 cluster per week, 3 to 5 per cluster",
+        "Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster."
+      ],
+      "reference": [
+        "1 cluster per week, 3 to 5 per cluster",
+        "Cluster burden increased since 02/Jan/2024; now weekly, three - five per cluster"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

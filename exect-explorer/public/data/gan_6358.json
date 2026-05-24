@@ -1,0 +1,54 @@
+{
+  "id": "gan_6358",
+  "text": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Amelia Carter  \nSt. Augustine Neurology Centre  \nOutpatients, 12 Brookfield Road, Manchester M14 6DN  \n\nDear Dr Amelia Carter,  \n\nEmily Turner, DOB: 23-02-1992, Hospital No: M937521 NHS No. 6045128739  \nFlat 3, 45 Oak Street, Manchester, M1 7AB \n\nDiagnoses: \n\nTwo unprovoked convulsive episodes (2017, May 2024). MRI brain normal (June 2024). EEG normal (July 2024). \n\nSeizure Pattern: \n\nPatient-reported rare episodes temporally linked with high-caffeine intake (e.g., strong coffee/energy drinks) and sleep restriction; no events since June 2024 after moderating caffeine and improving sleep. \n\nCurrent Medication: \n\nLevetiracetam 500 mg twice daily. \n\nPlan: \n\n- Continue levetiracetam 500 mg bd; supply repeat prescription for 12 months.  \n- Lifestyle reinforcement: maintain reduced caffeine use and regular sleep.  \n- Seizure safety advice provided (including driving regulations discussed; patient currently meets advice to notify DVLA if further events occur).  \n- No routine follow-up booked; open return via GP if breakthrough events, adverse effects, or pregnancy planning. \n\nI reviewed Emily Turner today. They report good adherence, no further episodes, and improved alertness after cutting down caffeinated beverages. No adverse effects from levetiracetam. Neurological examination is unremarkable. We discussed risk minimisation and agreed to continue current management. \n\nWith best wishes, ",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 582,
+      "end": 607,
+      "text": "no events since June 2024",
+      "attributes": {
+        "Label": "seizure free for 15 to 16 months",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6358,
+    "clinic_date": "Department of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Amelia Carter  \nSt. Augustine Neurology Centre  \nOutpatients, 12 Brookfield Road, Manchester M14 6DN  \n\nDear Dr Amelia Carter,  \n\nEmily Turner, DOB: 23-02-1992, Hospital No: M937521 NHS No. 6045128739  \nFlat 3, 45 Oak Street, Manchester, M1 7AB \n\nDiagnoses: \n\nTwo unprovoked convulsive episodes (2017, May 2024). MRI brain normal (June 2024). EEG normal (July 2024). \n\nSeizure Pattern: \n\nPatient-reported rare episodes temporally linked with high-caffeine intake (e.g., strong coffee/energy drinks) and sleep restriction; no events since June 2024 after moderating caffeine and improving sleep. \n\nCurrent Medication: \n\nLevetiracetam 500 mg twice daily. \n\nPlan: \n\n- Continue levetiracetam 500 mg bd; supply repeat prescription for 12 months.  \n- Lifestyle reinforcement: maintain reduced caffeine use and regular sleep.  \n- Seizure safety advice provided (including driving regulations discussed; patient currently meets advice to notify DVLA if further events occur).  \n- No routine follow-up booked; open return via GP if breakthrough events, adverse effects, or pregnancy planning. \n\nI reviewed Emily Turner today. They report good adherence, no further episodes, and improved alertness after cutting down caffeinated beverages. No adverse effects from levetiracetam. Neurological examination is unremarkable. We discussed risk minimisation and agreed to continue current management. \n\nWith best wishes, ",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 02 Oct 2025. The letter states, \"no events since June 2024.\" Therefore, the patient has had zero seizures from June 2024 up to the clinic date. Without the exact day in June, the seizure-free duration ranges between approximately 15 months (if last event was late June 2024) and 16 months (if early June 2024). This exceeds the 6-month criterion for seizure freedom.",
+      "seizure_frequency_number": [
+        "seizure free for 15 to 16 months",
+        "no events since June 2024"
+      ],
+      "reference": [
+        "unknown",
+        "Caffeine-associated seizure events"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 15 to 16 months) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

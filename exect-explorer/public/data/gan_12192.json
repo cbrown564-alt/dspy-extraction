@@ -1,0 +1,59 @@
+{
+  "id": "gan_12192",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 30 November 2016 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmma Rogers, DOB: 14-07-1992, Hospital No: H629415 NHS No. 9472501836  \n58 Larchmere Avenue, London, SW16 4PN  \n\nDiagnoses: \n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy). \n\nI reviewed Emma Rogers in clinic today accompanied by her partner. She reports ongoing efforts to reduce social alcohol use, which she states has gradually decreased over the past three months without any apparent change in seizure burden. Her seizure control is variable but the family feels it is acceptable, she continues to experience drop attack on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years. In addition, there are brief focal aware episodes with speech arrest and right-hand automatisms occurring approximately twice weekly; these typically last under one minute and do not generalise. There have been no recent injuries, hospital admissions or use of rescue medication. \n\nCurrent treatment is levetiracetam 1500 mg twice daily and lamotrigine 200 mg twice daily. She reports full adherence, and no significant dose-limiting adverse effects beyond intermittent irritability on levetiracetam that is manageable. No changes to anti-seizure medication were made today, as she and her family are satisfied that the present balance between efficacy and tolerability is acceptable. We discussed that her ongoing reduction in social alcohol intake is sensible; she will continue this and keep a seizure and alcohol diary to help clarify any temporal association. \n\nNeurological examination today was unchanged from baseline and non-focal. Routine bloods from last month (U&Es, LFTs, FBC) were within local reference ranges. She does not drive and is aware of DVLA regulations. We reviewed general safety advice regarding drop attacks, including use of a bath rather than shower when unattended, padded headboard, and consideration of soft head protection during household chores; she will consider these and discuss with occupational therapy if needed. \n\nPlan: \n- Continue levetiracetam and lamotrigine at current doses.  \n- Maintain seizure/alcohol diary to document frequency and any triggers.  \n- No rescue medication required at present; to contact us if generalised tonic–clonic seizures increase.  \n- Consider ambulatory EEG if focal events change in character or increase.  \n- Review in six months, earlier if clinical situation changes. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 750,
+      "end": 806,
+      "text": "she continues to experience drop attack on a daily basis",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 679,
+      "end": 948,
+      "text": "Her seizure control is variable but the family feels it is acceptable, she continues to experience drop attack on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years",
+      "attributes": {
+        "Label": "1 per day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 12192,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 30 November 2016 \n\nDr Patel  \nSt George's University Hospitals NHS Foundation Trust  \nDepartment of Neurology, Blackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nEmma Rogers, DOB: 14-07-1992, Hospital No: H629415 NHS No. 9472501836  \n58 Larchmere Avenue, London, SW16 4PN  \n\nDiagnoses: \n\nCombined generalised and focal epilepsy (patient has both generalised and focal epilepsy). \n\nI reviewed Emma Rogers in clinic today accompanied by her partner. She reports ongoing efforts to reduce social alcohol use, which she states has gradually decreased over the past three months without any apparent change in seizure burden. Her seizure control is variable but the family feels it is acceptable, she continues to experience drop attack on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years. In addition, there are brief focal aware episodes with speech arrest and right-hand automatisms occurring approximately twice weekly; these typically last under one minute and do not generalise. There have been no recent injuries, hospital admissions or use of rescue medication. \n\nCurrent treatment is levetiracetam 1500 mg twice daily and lamotrigine 200 mg twice daily. She reports full adherence, and no significant dose-limiting adverse effects beyond intermittent irritability on levetiracetam that is manageable. No changes to anti-seizure medication were made today, as she and her family are satisfied that the present balance between efficacy and tolerability is acceptable. We discussed that her ongoing reduction in social alcohol intake is sensible; she will continue this and keep a seizure and alcohol diary to help clarify any temporal association. \n\nNeurological examination today was unchanged from baseline and non-focal. Routine bloods from last month (U&Es, LFTs, FBC) were within local reference ranges. She does not drive and is aware of DVLA regulations. We reviewed general safety advice regarding drop attacks, including use of a bath rather than shower when unattended, padded headboard, and consideration of soft head protection during household chores; she will consider these and discuss with occupational therapy if needed. \n\nPlan: \n- Continue levetiracetam and lamotrigine at current doses.  \n- Maintain seizure/alcohol diary to document frequency and any triggers.  \n- No rescue medication required at present; to contact us if generalised tonic–clonic seizures increase.  \n- Consider ambulatory EEG if focal events change in character or increase.  \n- Review in six months, earlier if clinical situation changes. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequencies mentioned. The letter lists multiple seizure types with frequencies: 'drop attack on a daily basis' implies at least 1 per day; 'myoclonic jerks in morning clusters' gives clusters without a clear per-day count; 'occasional generalised tonic-clonic seizures' not quantified; 'brief focal aware episodes ... approximately twice weekly' equals 2 per week. Applying the rule to choose the highest frequency: 1 per day (drop attacks) is more frequent than 2 per week. Clustered myoclonic jerks lack a numeric per-period frequency, so cannot supersede 1 per day. Therefore, final label is 1 per day.",
+      "seizure_frequency_number": [
+        "1 per day",
+        "she continues to experience drop attack on a daily basis"
+      ],
+      "reference": [
+        "1 per day",
+        "Her seizure control is variable but the family feels it is acceptable, she continues to experience drop attack on a daily basis, myoclonic jerks in morning clusters, and occasional generalised tonic-clonic seizures, this pattern has remained unchanged for several years"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

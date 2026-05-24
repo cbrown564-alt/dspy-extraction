@@ -1,0 +1,54 @@
+{
+  "id": "gan_6701",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Harriet Jones  \nRiverside Health Centre  \n22 The Quay, Bristol BS1 4RB  \n\nDear Dr Harriet Jones,                                                                                                         \n\nDaniel Roberts, DOB: 09-11-1991, Hospital No: H726451 NHS No. 9382746150  \nFlat 3, 7 Clifton Vale, Bristol, BS8 4PT  \n\nEpilepsy \n\nMedication: Lamotrigine maintained since March 2025  \n\nCurrent dose: Lamotrigine dispersible 100 mg morning and 125 mg evening (self-reported adherence ≥95% over the past month)  \n\nLamotrigine Blood Level:  \n\n24 September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 100 mg AM / 125 mg PM  \n\nSeizures: Patient describes a recent escalation in events following east–west and subsequent return west–east travel across multiple time zones for work in mid-September. Reports circadian rhythm disruption with shortened sleep opportunity and fragmented nights. Over the last three weeks, there have been four brief episodes featuring impaired awareness and post-event fatigue, compared with one suspected episode over the preceding three months. Notably, there has been a near-miss on stairs with knee bruising sustained during a sudden collapse-like episode at home, consistent with harm occurring in association with seizure activity. No tongue bite reported; intermittent morning headaches and myalgia noted after episodes. No clear alcohol excess; caffeine slightly increased during flights.  \n\nI spoke with Daniel Roberts today during a telephone review. They report reliable medication use, but significant jet lag and variable sleep times since the travel. They have resumed a fixed bedtime/wake time over the last five days, using phone alarms to stabilise routines. They have also re-implemented avoidance of evening screens after 21:00, as previously discussed. Family corroborates two of the episodes with observed brief unresponsiveness and delayed response to questions. No new focal neurological complaints.  \n\nGiven the recent pattern and the context of cross-time-zone travel with circadian disruption, I am concerned that the overall control has deteriorated over the last month. I have advised ongoing adherence to sleep regularisation strategies and structured stimulus-control measures as patient-led steps. I will review the case with the supervising consultant this week to determine if a dose adjustment or further investigation is warranted. We will arrange an updated serum lamotrigine level in two weeks alongside U&E/LFTs, and schedule an ambulatory EEG if episodes persist despite stabilised sleep. Safety advice was reinforced, particularly around heights, bathing, and operating machinery, pending reassessment. Patient agrees to maintain a simple event diary capturing time-zone status, sleep duration, and any precipitating factors.  \n\nI will update you following consultant discussion and once repeat levels are available.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 983,
+      "end": 1097,
+      "text": "Over the last three weeks, there have been four brief episodes featuring impaired awareness and post-event fatigue",
+      "attributes": {
+        "Label": "4 per 3 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6701,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Harriet Jones  \nRiverside Health Centre  \n22 The Quay, Bristol BS1 4RB  \n\nDear Dr Harriet Jones,                                                                                                         \n\nDaniel Roberts, DOB: 09-11-1991, Hospital No: H726451 NHS No. 9382746150  \nFlat 3, 7 Clifton Vale, Bristol, BS8 4PT  \n\nEpilepsy \n\nMedication: Lamotrigine maintained since March 2025  \n\nCurrent dose: Lamotrigine dispersible 100 mg morning and 125 mg evening (self-reported adherence ≥95% over the past month)  \n\nLamotrigine Blood Level:  \n\n24 September 2025: 3.8 mg/L (reference 1.0–15.0 mg/L). Dose at sampling: 100 mg AM / 125 mg PM  \n\nSeizures: Patient describes a recent escalation in events following east–west and subsequent return west–east travel across multiple time zones for work in mid-September. Reports circadian rhythm disruption with shortened sleep opportunity and fragmented nights. Over the last three weeks, there have been four brief episodes featuring impaired awareness and post-event fatigue, compared with one suspected episode over the preceding three months. Notably, there has been a near-miss on stairs with knee bruising sustained during a sudden collapse-like episode at home, consistent with harm occurring in association with seizure activity. No tongue bite reported; intermittent morning headaches and myalgia noted after episodes. No clear alcohol excess; caffeine slightly increased during flights.  \n\nI spoke with Daniel Roberts today during a telephone review. They report reliable medication use, but significant jet lag and variable sleep times since the travel. They have resumed a fixed bedtime/wake time over the last five days, using phone alarms to stabilise routines. They have also re-implemented avoidance of evening screens after 21:00, as previously discussed. Family corroborates two of the episodes with observed brief unresponsiveness and delayed response to questions. No new focal neurological complaints.  \n\nGiven the recent pattern and the context of cross-time-zone travel with circadian disruption, I am concerned that the overall control has deteriorated over the last month. I have advised ongoing adherence to sleep regularisation strategies and structured stimulus-control measures as patient-led steps. I will review the case with the supervising consultant this week to determine if a dose adjustment or further investigation is warranted. We will arrange an updated serum lamotrigine level in two weeks alongside U&E/LFTs, and schedule an ambulatory EEG if episodes persist despite stabilised sleep. Safety advice was reinforced, particularly around heights, bathing, and operating machinery, pending reassessment. Patient agrees to maintain a simple event diary capturing time-zone status, sleep duration, and any precipitating factors.  \n\nI will update you following consultant discussion and once repeat levels are available.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: \"Over the last three weeks, there have been four brief episodes...\" This provides a clear count and time window for current seizures. Normalize this to the allowed format as 4 per 3 week. Another figure is \"one suspected episode over the preceding three months,\" but per the rule to choose the highest frequency, 4 in 3 weeks is higher, so we select that. The patient is not seizure free.",
+      "seizure_frequency_number": [
+        "4 per 3 week",
+        "Over the last three weeks, there have been four brief episodes featuring impaired awareness and post-event fatigue"
+      ],
+      "reference": [
+        "unknown",
+        "Injury related to seizure episodes (e.g., falls)"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (4 per 3 week) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

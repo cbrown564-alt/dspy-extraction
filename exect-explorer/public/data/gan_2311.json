@@ -1,0 +1,59 @@
+{
+  "id": "gan_2311",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Lamotrigine dispersible, currently recorded as 25 mg twice daily. Patient reports occasional missed evening doses during periods of late working.\n\nLamotrigine Blood Level:\n- 12 September 2025: 1.2 mg/L (reference range 1.0–15.0 mg/L). Sample taken at 09:15, approximately 11 hours post-dose.\n\nClinical update and deterioration:\nSince mid‑summer, Susan Miller describes a clear deterioration in day‑to‑day control. She reports increased workload with longer hours and deadlines; events tend to cluster on workdays, particularly Tuesday to Thursday, and are less common at weekends. Prior to this change, seizure activity was infrequent: she reported one absence seizure every several weeks and had been free of tonic‑clonic seizures for over nine months; occasional morning myoclonic jerks continued but were mild and did not significantly interfere with daily function.\n\nOver the last eight weeks, however, she now estimates experiencing 5 or 7 petit mal per month. These are brief lapses of awareness without convulsion, often preceded by mounting work stress or poor sleep, and colleagues have noticed brief pauses in conversation. She denies tonic‑clonic events in this interval, and morning myoclonic jerks remain occasional and mild. There have been no injuries, tongue‑biting, or incontinence. She reports no clear prodrome and no consistent post‑event headache, though she feels subjectively more fatigued on high‑load workdays.\n\nAdherence and triggers:\n- Patient‑reported triggers: cumulative workload, sleep curtailment, late meals, and back‑to‑back meetings.  \n- Adherence: generally good, but acknowledges 1–2 missed evening doses per fortnight during heavy work periods. She is open to strategies to support adherence and stress mitigation.\n\nPlan discussed today (patient‑reported understanding):\n- She will keep a seizure and workload diary for the next 6–8 weeks, noting sleep duration and missed doses, and will arrange a repeat trough lamotrigine level if events increase further.  \n- She prefers to continue current dose pending diary review and will set phone reminders for evening doses.  \n- Occupational adjustments: she will discuss staged breaks and limiting consecutive late finishes with her manager.\n\nI will review her diary and level once available and update you. Please let me know if you would like any further information from our side.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1157,
+      "end": 1251,
+      "text": "Over the last eight weeks, however, she now estimates experiencing 5 or 7 petit mal per month.",
+      "attributes": {
+        "Label": "5 to 7 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1224,
+      "end": 1250,
+      "text": "5 or 7 petit mal per month",
+      "attributes": {
+        "Label": "5 to 7 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2311,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Fiona  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Fiona,\n\nSusan Miller, DOB: 14-05-1986, Hospital No: P948572 NHS No. 7623549812  \n12 Baker Street, London, NW1 6XE\n\nEpilepsy\n\nMedication: Lamotrigine dispersible, currently recorded as 25 mg twice daily. Patient reports occasional missed evening doses during periods of late working.\n\nLamotrigine Blood Level:\n- 12 September 2025: 1.2 mg/L (reference range 1.0–15.0 mg/L). Sample taken at 09:15, approximately 11 hours post-dose.\n\nClinical update and deterioration:\nSince mid‑summer, Susan Miller describes a clear deterioration in day‑to‑day control. She reports increased workload with longer hours and deadlines; events tend to cluster on workdays, particularly Tuesday to Thursday, and are less common at weekends. Prior to this change, seizure activity was infrequent: she reported one absence seizure every several weeks and had been free of tonic‑clonic seizures for over nine months; occasional morning myoclonic jerks continued but were mild and did not significantly interfere with daily function.\n\nOver the last eight weeks, however, she now estimates experiencing 5 or 7 petit mal per month. These are brief lapses of awareness without convulsion, often preceded by mounting work stress or poor sleep, and colleagues have noticed brief pauses in conversation. She denies tonic‑clonic events in this interval, and morning myoclonic jerks remain occasional and mild. There have been no injuries, tongue‑biting, or incontinence. She reports no clear prodrome and no consistent post‑event headache, though she feels subjectively more fatigued on high‑load workdays.\n\nAdherence and triggers:\n- Patient‑reported triggers: cumulative workload, sleep curtailment, late meals, and back‑to‑back meetings.  \n- Adherence: generally good, but acknowledges 1–2 missed evening doses per fortnight during heavy work periods. She is open to strategies to support adherence and stress mitigation.\n\nPlan discussed today (patient‑reported understanding):\n- She will keep a seizure and workload diary for the next 6–8 weeks, noting sleep duration and missed doses, and will arrange a repeat trough lamotrigine level if events increase further.  \n- She prefers to continue current dose pending diary review and will set phone reminders for evening doses.  \n- Occupational adjustments: she will discuss staged breaks and limiting consecutive late finishes with her manager.\n\nI will review her diary and level once available and update you. Please let me know if you would like any further information from our side.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit current frequency. The letter states: \"Over the last eight weeks, however, she now estimates experiencing 5 or 7 petit mal per month.\" This is a clear numeric range for current absence (petit mal) seizures. No other current seizure type has a higher frequency: tonic-clonic are denied in this interval; myoclonic jerks are described as occasional and mild without a numeric rate. Per rule to select the highest frequency, use the stated 5 to 7 per month. Normalize to allowed format as a range.",
+      "seizure_frequency_number": [
+        "5 to 7 per month",
+        "Over the last eight weeks, however, she now estimates experiencing 5 or 7 petit mal per month."
+      ],
+      "reference": [
+        "5 to 7 per month",
+        "5 or 7 petit mal per month"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

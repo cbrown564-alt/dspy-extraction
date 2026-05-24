@@ -1,0 +1,59 @@
+{
+  "id": "gan_2007",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 April 2019 \n\nDr A. Ritchie \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt. Cuthbert’s Hospital, Newcastle upon Tyne  \n\nDear Dr A. Ritchie, \n\nMs Hannah Keane, DOB: 22-10-1987, Hospital No: NHS8472631 NHS No. RM30291476  \n12 Orchard Mews, Jesmond, Newcastle upon Tyne, NE2 3AB  \n\nDiagnosis: \n\nRecurrent episodes under review; classification not established. \n\nAetiology: \n\nNo structural lesion identified on prior imaging; further evaluation planned. \n\nOther Medical Problems: \n\nVitamin D insufficiency previously noted; bone-health monitoring is being coordinated separately as part of long-term antiseizure therapy. \n\nManagement Plan: \n\n- Continue current antiseizure regimen unchanged for now: Lamotrigine 150 mg twice daily and Levetiracetam 1 g twice daily (patient-reported stable adherence, no recent adverse effects).  \n- Ambulatory EEG arranged within 6–8 weeks; consider inpatient video-EEG if events remain frequent.  \n- Repeat serum AED levels and routine labs today; DEXA and bone profile are recorded and scheduled elsewhere.  \n- Safety advice reinforced: adequate sleep, regular meals, avoid binge alcohol; continue seizure diary and bring to next visit.  \n- Driving: patient has already self-reported cessation; we have reiterated DVLA guidance.  \n- Review in three months, earlier if escalation occurs. \n\nInterim Clinical Course: \n\nSince the last review, the patient reports three focal onset seizures and three focal clonic in the past three months, typically occurring in the late evening, lasting 1–2 minutes, with preserved awareness in some episodes and brief right upper limb clonic activity in others. No injuries or emergency attendances. Triggers suspected include sleep deprivation and work-related stress. Family observed brief post-event fatigue without confusion. Medication adherence is described as consistent; no missed doses reported. \n\nWe will proceed with ambulatory EEG to clarify semiology and correlate with diary entries. Given the pattern and frequency, we have not altered medication today pending investigation results, and will reconsider adjustments once data are available. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1420,
+      "end": 1537,
+      "text": "Since the last review, the patient reports three focal onset seizures and three focal clonic in the past three months",
+      "attributes": {
+        "Label": "6 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1463,
+      "end": 1537,
+      "text": "three focal onset seizures and three focal clonic in the past three months",
+      "attributes": {
+        "Label": "6 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2007,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 28 April 2019 \n\nDr A. Ritchie \nConsultant Neurologist  \nRiverside Neurology Clinic  \nSt. Cuthbert’s Hospital, Newcastle upon Tyne  \n\nDear Dr A. Ritchie, \n\nMs Hannah Keane, DOB: 22-10-1987, Hospital No: NHS8472631 NHS No. RM30291476  \n12 Orchard Mews, Jesmond, Newcastle upon Tyne, NE2 3AB  \n\nDiagnosis: \n\nRecurrent episodes under review; classification not established. \n\nAetiology: \n\nNo structural lesion identified on prior imaging; further evaluation planned. \n\nOther Medical Problems: \n\nVitamin D insufficiency previously noted; bone-health monitoring is being coordinated separately as part of long-term antiseizure therapy. \n\nManagement Plan: \n\n- Continue current antiseizure regimen unchanged for now: Lamotrigine 150 mg twice daily and Levetiracetam 1 g twice daily (patient-reported stable adherence, no recent adverse effects).  \n- Ambulatory EEG arranged within 6–8 weeks; consider inpatient video-EEG if events remain frequent.  \n- Repeat serum AED levels and routine labs today; DEXA and bone profile are recorded and scheduled elsewhere.  \n- Safety advice reinforced: adequate sleep, regular meals, avoid binge alcohol; continue seizure diary and bring to next visit.  \n- Driving: patient has already self-reported cessation; we have reiterated DVLA guidance.  \n- Review in three months, earlier if escalation occurs. \n\nInterim Clinical Course: \n\nSince the last review, the patient reports three focal onset seizures and three focal clonic in the past three months, typically occurring in the late evening, lasting 1–2 minutes, with preserved awareness in some episodes and brief right upper limb clonic activity in others. No injuries or emergency attendances. Triggers suspected include sleep deprivation and work-related stress. Family observed brief post-event fatigue without confusion. Medication adherence is described as consistent; no missed doses reported. \n\nWe will proceed with ambulatory EEG to clarify semiology and correlate with diary entries. Given the pattern and frequency, we have not altered medication today pending investigation results, and will reconsider adjustments once data are available. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Since the last review, the patient reports three focal onset seizures and three focal clonic in the past three months.' This provides a clear numeric count over a defined time period. Summing the two seizure types: 3 + 3 = 6 seizures in 3 months. Convert to allowed format: '6 per 3 month'. No other conflicting frequencies are given.",
+      "seizure_frequency_number": [
+        "6 per 3 month",
+        "Since the last review, the patient reports three focal onset seizures and three focal clonic in the past three months"
+      ],
+      "reference": [
+        "6 per 3 month",
+        "three focal onset seizures and three focal clonic in the past three months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

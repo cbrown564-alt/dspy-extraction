@@ -1,0 +1,59 @@
+{
+  "id": "gan_10200",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 07 November 2024\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. He has a diagnosis of generalised epilepsy. Since our last routine contact he undertook intercontinental travel across multiple time zones for work. He reports significant circadian disruption following this trip, with perceived worsening of seizure control compared with his recent baseline.\n\nHe describes that events now come in brief runs rather than isolated occurrences. Clusters occur sporadically; typically two to four events when they happen. He and his partner note that these are predominantly generalised tonic–clonic seizures from sleep in the early morning after short nights, preceded at times by a sense of internal restlessness and myoclonic jerks on awakening. There have also been scattered mornings with myoclonic clusters without clear loss of awareness. No focal warning, head version or post‑ictal focal weakness is reported. There has been one fall with minor facial bruising and increased post‑ictal fatigue over the past month. \n\nMedication adherence is reported as good. He is currently taking Levetiracetam 1250 mg b.d., Sodium Valproate 500 mg b.d., Topiramate 100 mg b.d., and Clobazam 10 mg nocte. He previously trialled Carbamazepine but this was discontinued several years ago due to worsening generalised seizures. He denies new rash, jaundice, diplopia or mood lability; however, he does report increased tiredness, which he attributes to both poor sleep during travel and the recent escalation in seizure burden. \n\nGiven the temporal relationship to cross‑time‑zone travel, the pattern is most consistent with sleep and circadian disruption lowering seizure threshold in the context of generalised epilepsy. Overall, compared with his prior stable period, I consider his condition to be deteriorating due to the emergence of intermittent clustering and injury risk. We reviewed practical measures including strict sleep hygiene, avoidance of further long‑haul travel in the immediate term if possible, consistent morning dosing times, and ensuring supervision around bathing during the current unstable period. He is carrying his rescue buccal midazolam and understands when to use it should a prolonged convulsion occur or if clusters fail to abate.\n\nI have requested an urgent ambulatory EEG with sleep capture and updated serum levels for valproate and topiramate, together with routine FBC, U&E, LFTs, and vitamin D. I will also refer him to our epilepsy specialist nurse for support around jet‑lag management strategies and to reinforce seizure first‑aid. We agreed to review promptly once results are available, and sooner if clusters increase in frequency, duration, or are associated with further injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 677,
+      "end": 752,
+      "text": "Clusters occur sporadically; typically two to four events when they happen.",
+      "attributes": {
+        "Label": "unknown, 2 to 4 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 677,
+      "end": 751,
+      "text": "Clusters occur sporadically; typically two to four events when they happen",
+      "attributes": {
+        "Label": "unknown, 2 to 4 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10200,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 07 November 2024\n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL\n\nI reviewed the above patient in the Neurology Clinic today. He has a diagnosis of generalised epilepsy. Since our last routine contact he undertook intercontinental travel across multiple time zones for work. He reports significant circadian disruption following this trip, with perceived worsening of seizure control compared with his recent baseline.\n\nHe describes that events now come in brief runs rather than isolated occurrences. Clusters occur sporadically; typically two to four events when they happen. He and his partner note that these are predominantly generalised tonic–clonic seizures from sleep in the early morning after short nights, preceded at times by a sense of internal restlessness and myoclonic jerks on awakening. There have also been scattered mornings with myoclonic clusters without clear loss of awareness. No focal warning, head version or post‑ictal focal weakness is reported. There has been one fall with minor facial bruising and increased post‑ictal fatigue over the past month. \n\nMedication adherence is reported as good. He is currently taking Levetiracetam 1250 mg b.d., Sodium Valproate 500 mg b.d., Topiramate 100 mg b.d., and Clobazam 10 mg nocte. He previously trialled Carbamazepine but this was discontinued several years ago due to worsening generalised seizures. He denies new rash, jaundice, diplopia or mood lability; however, he does report increased tiredness, which he attributes to both poor sleep during travel and the recent escalation in seizure burden. \n\nGiven the temporal relationship to cross‑time‑zone travel, the pattern is most consistent with sleep and circadian disruption lowering seizure threshold in the context of generalised epilepsy. Overall, compared with his prior stable period, I consider his condition to be deteriorating due to the emergence of intermittent clustering and injury risk. We reviewed practical measures including strict sleep hygiene, avoidance of further long‑haul travel in the immediate term if possible, consistent morning dosing times, and ensuring supervision around bathing during the current unstable period. He is carrying his rescue buccal midazolam and understands when to use it should a prolonged convulsion occur or if clusters fail to abate.\n\nI have requested an urgent ambulatory EEG with sleep capture and updated serum levels for valproate and topiramate, together with routine FBC, U&E, LFTs, and vitamin D. I will also refer him to our epilepsy specialist nurse for support around jet‑lag management strategies and to reinforce seizure first‑aid. We agreed to review promptly once results are available, and sooner if clusters increase in frequency, duration, or are associated with further injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes that seizures are occurring in clusters: \"events now come in brief runs\" and \"Clusters occur sporadically; typically two to four events when they happen.\" However, there is no explicit temporal frequency (per day/week/month) provided—only the number of events within a cluster. Without a clear rate over time, we cannot compute a per-time frequency. Therefore, the appropriate normalized label is 'unknown, 2 to 4 per cluster'.",
+      "seizure_frequency_number": [
+        "unknown, 2 to 4 per cluster",
+        "Clusters occur sporadically; typically two to four events when they happen."
+      ],
+      "reference": [
+        "unknown, 2 to 4 per cluster",
+        "Clusters occur sporadically; typically two to four events when they happen"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

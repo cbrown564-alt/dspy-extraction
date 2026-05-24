@@ -1,0 +1,65 @@
+{
+  "id": "gan_6164",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nSodium valproate 500 mg twice daily. Patient reports good tolerability with no noted adverse effects.\n\nHistory and update:\n\nEmily Carter splits time equally each week between two households and keeps a full medication supply at both locations to avoid missed doses. She uses a pill organiser in each home and has enabled phone reminders to support adherence.\n\nShe has a diagnosis of generalised epilepsy. Since her last review she has remained largely stable with a clear pattern of \"Seizures after prolonged screen time\". She describes brief generalised absence events with occasional myoclonic jerks after several hours of continuous laptop or mobile use, particularly in the evenings. There have been no generalised tonic–clonic seizures reported in the past six months. Sleep is generally regular; caffeine intake minimal. No alcohol misuse. She denies intercurrent illness or missed doses.\n\nExamination today was unremarkable. No focal neurological deficits. Weight and blood pressure within normal limits.\n\nPlan:\n- Continue sodium valproate 500 mg twice daily as currently effective and well tolerated.\n- She will continue practical strategies to limit prolonged screen exposure in the evenings, especially when studying or working late, as she has noted this precipitant herself. She keeps blue‑light filters enabled and takes regular breaks; she finds these measures helpful.\n- She will maintain identical medication sets at both households and continue using reminders to support adherence.\n- Safety and SUDEP information previously provided; she confirms understanding. Driving guidance unchanged.\n\nWe will review again in six months, or sooner if events increase in frequency or change in character.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 816,
+      "end": 949,
+      "text": "She describes brief generalised absence events with occasional myoclonic jerks after several hours of continuous laptop or mobile use",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 777,
+      "end": 813,
+      "text": "Seizures after prolonged screen time",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6164,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 14 October 2025\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nSodium valproate 500 mg twice daily. Patient reports good tolerability with no noted adverse effects.\n\nHistory and update:\n\nEmily Carter splits time equally each week between two households and keeps a full medication supply at both locations to avoid missed doses. She uses a pill organiser in each home and has enabled phone reminders to support adherence.\n\nShe has a diagnosis of generalised epilepsy. Since her last review she has remained largely stable with a clear pattern of \"Seizures after prolonged screen time\". She describes brief generalised absence events with occasional myoclonic jerks after several hours of continuous laptop or mobile use, particularly in the evenings. There have been no generalised tonic–clonic seizures reported in the past six months. Sleep is generally regular; caffeine intake minimal. No alcohol misuse. She denies intercurrent illness or missed doses.\n\nExamination today was unremarkable. No focal neurological deficits. Weight and blood pressure within normal limits.\n\nPlan:\n- Continue sodium valproate 500 mg twice daily as currently effective and well tolerated.\n- She will continue practical strategies to limit prolonged screen exposure in the evenings, especially when studying or working late, as she has noted this precipitant herself. She keeps blue‑light filters enabled and takes regular breaks; she finds these measures helpful.\n- She will maintain identical medication sets at both households and continue using reminders to support adherence.\n- Safety and SUDEP information previously provided; she confirms understanding. Driving guidance unchanged.\n\nWe will review again in six months, or sooner if events increase in frequency or change in character.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states the patient has generalised absence events with occasional myoclonic jerks triggered by several hours of continuous screen use, especially in the evenings. It confirms no generalised tonic–clonic seizures in the past six months. However, there is no explicit numeric frequency (per day/week/month/year) provided for the absence or myoclonic events. Without a quantifiable rate, we cannot determine a specific frequency. The patient is not seizure-free because events are occurring, and only GTCs are absent for six months. Therefore, the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "She describes brief generalised absence events with occasional myoclonic jerks after several hours of continuous laptop or mobile use"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures after prolonged screen time"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

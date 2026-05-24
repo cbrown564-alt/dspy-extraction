@@ -1,0 +1,54 @@
+{
+  "id": "gan_10630",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 13 September 2018 \n\nDr Amelia Grant\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Amelia Grant\nYusuf Khan, DOB: 21-11-1982, Hospital No: K839204 NHS No. 7749285610\n12B Harcourt Road, London, E14 6QP \n\nI reviewed the above patient in the Neurology Clinic today. He has a longstanding seizure disorder and I last saw him six months ago. Since then he has continued his usual medication regimen without missed doses, and reports no new adverse effects beyond intermittent fatigue which he associates with disrupted sleep.\n\nHe describes that his episodes tend to occur in small clusters, most often later in the day, typically after his evening meal. On average, each cluster involves roughly five short-lived spells with brief recovery between them, and these clusters arise on several evenings per fortnight. He and his partner have noted that these patterns become more evident when routines are irregular.\n\nHe is currently in a period of religious fasting which he observes annually. He reports that adjusting meal times has led to later bedtimes and variable hydration. He also notes earlier morning wake times for prayer. He is keen to maintain his observance and has been spacing his medication doses to align with pre-dawn and post-sunset meals. He feels this schedule has been manageable but believes the evening clustering of events has become more apparent during this period. He denies injuries, tongue biting, or prolonged post-event confusion. There have been no emergency presentations.\n\nMedications at present are unchanged from the previous review: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He tolerates these reasonably well; he denies rash, mood change, or diplopia. Routine bloods in primary care last month were within reference ranges.\n\nWe discussed practical steps to support consistency during fasting, including maintaining adequate fluid intake between sunset and pre-dawn, regular sleep where possible, and keeping a simple record of dose timing alongside events so we can better correlate timing effects at the next review. He will continue with his current medications for now. I have arranged an ambulatory EEG for after the fasting period to capture typical evening events in a more settled routine, and I will see him in clinic six weeks thereafter. He understands to seek urgent care if any event is prolonged, repeated without recovery, or associated with injury.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 704,
+      "end": 863,
+      "text": "On average, each cluster involves roughly five short-lived spells with brief recovery between them, and these clusters arise on several evenings per fortnight.",
+      "attributes": {
+        "Label": "multiple cluster per 2 week, 5 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 10630,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 13 September 2018 \n\nDr Amelia Grant\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Amelia Grant\nYusuf Khan, DOB: 21-11-1982, Hospital No: K839204 NHS No. 7749285610\n12B Harcourt Road, London, E14 6QP \n\nI reviewed the above patient in the Neurology Clinic today. He has a longstanding seizure disorder and I last saw him six months ago. Since then he has continued his usual medication regimen without missed doses, and reports no new adverse effects beyond intermittent fatigue which he associates with disrupted sleep.\n\nHe describes that his episodes tend to occur in small clusters, most often later in the day, typically after his evening meal. On average, each cluster involves roughly five short-lived spells with brief recovery between them, and these clusters arise on several evenings per fortnight. He and his partner have noted that these patterns become more evident when routines are irregular.\n\nHe is currently in a period of religious fasting which he observes annually. He reports that adjusting meal times has led to later bedtimes and variable hydration. He also notes earlier morning wake times for prayer. He is keen to maintain his observance and has been spacing his medication doses to align with pre-dawn and post-sunset meals. He feels this schedule has been manageable but believes the evening clustering of events has become more apparent during this period. He denies injuries, tongue biting, or prolonged post-event confusion. There have been no emergency presentations.\n\nMedications at present are unchanged from the previous review: Levetiracetam 1000 mg b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He tolerates these reasonably well; he denies rash, mood change, or diplopia. Routine bloods in primary care last month were within reference ranges.\n\nWe discussed practical steps to support consistency during fasting, including maintaining adequate fluid intake between sunset and pre-dawn, regular sleep where possible, and keeping a simple record of dose timing alongside events so we can better correlate timing effects at the next review. He will continue with his current medications for now. I have arranged an ambulatory EEG for after the fasting period to capture typical evening events in a more settled routine, and I will see him in clinic six weeks thereafter. He understands to seek urgent care if any event is prolonged, repeated without recovery, or associated with injury.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the events occur in clusters and quantifies both the number of spells per cluster and the frequency of clusters over time: \"On average, each cluster involves roughly five short-lived spells... and these clusters arise on several evenings per fortnight.\" A fortnight equals 2 weeks. \"Several\" is vague, so per the rules use \"multiple\". Therefore, normalize to the cluster format as: multiple cluster per 2 week, 5 per cluster.",
+      "seizure_frequency_number": [
+        "multiple cluster per 2 week, 5 per cluster",
+        "On average, each cluster involves roughly five short-lived spells with brief recovery between them, and these clusters arise on several evenings per fortnight."
+      ],
+      "reference": [
+        "unknown",
+        "Per-cluster load around 5 brief events; timing tends to be evenings"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (multiple cluster per 2 week, 5 per cluster) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

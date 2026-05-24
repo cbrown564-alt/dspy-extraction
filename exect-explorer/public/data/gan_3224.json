@@ -1,0 +1,59 @@
+{
+  "id": "gan_3224",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night. Patient reports tolerating current dose without notable adverse effects; occasional mild dizziness on waking has reduced over the last fortnight. \n\nHistory since last review: \n\nHer partner is usually the principal observer of nocturnal events; today the partner was not present at review. Predominantly nocturnal events are described second-hand by the partner, with occasional morning post-event confusion and bilateral limb ache reported by the patient. She keeps a calendar and phone log to reconcile dates with her partner’s observations. On this basis she describes: Monthly clusters, typically 6 to 7 seizures over 24 h. These clusters are said to occur mainly at night, often beginning in the early morning hours (around 03:00–05:00), with brief periods of lucidity between events. Daytime events are rare and she does not recall clear auras. \n\nShe notes variable sleep quality in the week preceding clusters, and increased work-related stress. No consistent alcohol trigger. Caffeine limited to one cup of tea daily. She denies missed doses but occasionally takes the night dose later than intended when working late. There is no current pregnancy planning. \n\nExamination today was unremarkable. Blood pressure and basic observations within normal range. No new neurological focal signs. \n\nPlan: \n\n- Continue Oxcarbazepine 600 mg morning / 600 mg night for now. We discussed adherence and keeping the night dose at a consistent time.  \n- She will continue her event diary, adding approximate start times and any pre-event symptoms where recalled.  \n- We have asked her partner to attend or provide a brief written account before the next review to clarify nocturnal semiology.  \n- Routine safety counselling reinforced (no swimming alone, caution with heights). Driving advice unchanged as previously documented.  \n\nFollow‑up: \n\nWe will review her in approximately six months, sooner if the pattern changes or clusters intensify. She will contact the clinic if there is any escalation or if new daytime events emerge. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 935,
+      "end": 989,
+      "text": "Monthly clusters, typically 6 to 7 seizures over 24 h.",
+      "attributes": {
+        "Label": "1 cluster per month, 6 to 7 per cluster",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 935,
+      "end": 988,
+      "text": "Monthly clusters, typically 6 to 7 seizures over 24 h",
+      "attributes": {
+        "Label": "1 cluster per month, 6 to 7 per cluster",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3224,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 March 2017 \n\nDr Patel  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Patel,  \n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612  \n78 Willow Lane, London, W9 3HT \n\nMedication: \n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night. Patient reports tolerating current dose without notable adverse effects; occasional mild dizziness on waking has reduced over the last fortnight. \n\nHistory since last review: \n\nHer partner is usually the principal observer of nocturnal events; today the partner was not present at review. Predominantly nocturnal events are described second-hand by the partner, with occasional morning post-event confusion and bilateral limb ache reported by the patient. She keeps a calendar and phone log to reconcile dates with her partner’s observations. On this basis she describes: Monthly clusters, typically 6 to 7 seizures over 24 h. These clusters are said to occur mainly at night, often beginning in the early morning hours (around 03:00–05:00), with brief periods of lucidity between events. Daytime events are rare and she does not recall clear auras. \n\nShe notes variable sleep quality in the week preceding clusters, and increased work-related stress. No consistent alcohol trigger. Caffeine limited to one cup of tea daily. She denies missed doses but occasionally takes the night dose later than intended when working late. There is no current pregnancy planning. \n\nExamination today was unremarkable. Blood pressure and basic observations within normal range. No new neurological focal signs. \n\nPlan: \n\n- Continue Oxcarbazepine 600 mg morning / 600 mg night for now. We discussed adherence and keeping the night dose at a consistent time.  \n- She will continue her event diary, adding approximate start times and any pre-event symptoms where recalled.  \n- We have asked her partner to attend or provide a brief written account before the next review to clarify nocturnal semiology.  \n- Routine safety counselling reinforced (no swimming alone, caution with heights). Driving advice unchanged as previously documented.  \n\nFollow‑up: \n\nWe will review her in approximately six months, sooner if the pattern changes or clusters intensify. She will contact the clinic if there is any escalation or if new daytime events emerge. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter describes seizure occurrence patterns based on the patient's and partner's logs. It states: 'Monthly clusters, typically 6 to 7 seizures over 24 h.' This provides both the frequency of clusters (monthly = 1 per month) and the number of seizures within each cluster (6 to 7 per cluster). No other conflicting frequencies are given. Therefore, the normalized label should be '1 cluster per month, 6 to 7 per cluster'.",
+      "seizure_frequency_number": [
+        "1 cluster per month, 6 to 7 per cluster",
+        "Monthly clusters, typically 6 to 7 seizures over 24 h."
+      ],
+      "reference": [
+        "1 cluster per month, 6 to 7 per cluster",
+        "Monthly clusters, typically 6 to 7 seizures over 24 h"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

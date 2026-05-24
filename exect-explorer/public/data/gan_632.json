@@ -1,0 +1,59 @@
+{
+  "id": "gan_632",
+  "text": "Neurology Service\n\nClinic Date: 21 October 2013\n\nDr Patel\nRiverside Neurology Clinic\n12 Millbank, London, SW1P 4QP\n\nDear Dr Patel,\n\nRe: Michael Harris, DOB: 14-02-1988, Hospital No: H629441, NHS No. 9023347716\nAddress: Flat 3, 28 Willow Street, London, EC2A 4BH\n\nThank you for reviewing Michael Harris in our follow‑up clinic. He attended today with his partner. There has been a sustained improvement in his overall seizure control since his work rota was changed to regular daytime shifts with fewer overnight calls; as planned, control is better now. On direct questioning he reports seizures once every 1 - 2 months, typically brief events without injury, with faster recovery. He has not required emergency rescue medication in the last three months.\n\nFor context, prior to this improvement his seizure burden was substantially higher: Seizures in 2019: September: 2 days; October: 6 days with more severe seizures; November: 2 days, most of them at sleep time; December: 1 days with more severe seizures; January: 9 days, most of them at sleep time; February: 6 days, most of them at sleep time; March: 1 days with seizures; April: 1 days, most of them at sleep time; May: 2 days; June: 2 days, most of them at sleep time; July: 6 days with more severe seizures; August: 8 days with seizures. He still has a >60% improvement in seizure frequency relative to that period. ï¿½\n\nMedication adherence is good by pill count and pharmacy refill history. No recent dose changes were made, and he denies notable adverse effects beyond occasional morning lethargy on busy weeks. Sleep hygiene is improved, and alcohol intake remains minimal. Auras have become infrequent and less intrusive. There have been no new focal neurological symptoms. Workplace adjustments continue; he avoids lone working at height and his employer has documented a safety plan. Ã‚Â·\n\nObservations today were unremarkable. Neurological examination was non-focal. We discussed trigger management, including consistent sleep timing and stress pacing. He maintains a seizure diary, now corroborated by his phone reminders and a wearable alert; no nocturnal clusters were recorded in the past quarter. He has not required emergency department attendance, and family are confident with first‑aid measures. â€\n\nPlan:\n- Continue current anti‑seizure regimen without change; reinforce adherence and morning dosing window. \n- Maintain daytime shift pattern; occupational health letter provided to support ongoing rota stability.\n- Rescue plan unchanged; family retain supply in date. \n- Routine bloods next visit; no immediate investigations indicated given improvement and stability. \n- Follow‑up in 6 months, sooner if events increase beyond seizures once every 1 - 2 months, there is injury, or new features emerge. Ã©\n\nOverall, the trajectory is favourable with clear improvement in frequency and impact on daily life.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 576,
+      "end": 619,
+      "text": "he reports seizures once every 1 - 2 months",
+      "attributes": {
+        "Label": "1 per 1 to 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 587,
+      "end": 619,
+      "text": "seizures once every 1 - 2 months",
+      "attributes": {
+        "Label": "1 per 1 to 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 632,
+    "clinic_date": "Neurology Service\n\nClinic Date: 21 October 2013\n\nDr Patel\nRiverside Neurology Clinic\n12 Millbank, London, SW1P 4QP\n\nDear Dr Patel,\n\nRe: Michael Harris, DOB: 14-02-1988, Hospital No: H629441, NHS No. 9023347716\nAddress: Flat 3, 28 Willow Street, London, EC2A 4BH\n\nThank you for reviewing Michael Harris in our follow‑up clinic. He attended today with his partner. There has been a sustained improvement in his overall seizure control since his work rota was changed to regular daytime shifts with fewer overnight calls; as planned, control is better now. On direct questioning he reports seizures once every 1 - 2 months, typically brief events without injury, with faster recovery. He has not required emergency rescue medication in the last three months.\n\nFor context, prior to this improvement his seizure burden was substantially higher: Seizures in 2019: September: 2 days; October: 6 days with more severe seizures; November: 2 days, most of them at sleep time; December: 1 days with more severe seizures; January: 9 days, most of them at sleep time; February: 6 days, most of them at sleep time; March: 1 days with seizures; April: 1 days, most of them at sleep time; May: 2 days; June: 2 days, most of them at sleep time; July: 6 days with more severe seizures; August: 8 days with seizures. He still has a >60% improvement in seizure frequency relative to that period. ï¿½\n\nMedication adherence is good by pill count and pharmacy refill history. No recent dose changes were made, and he denies notable adverse effects beyond occasional morning lethargy on busy weeks. Sleep hygiene is improved, and alcohol intake remains minimal. Auras have become infrequent and less intrusive. There have been no new focal neurological symptoms. Workplace adjustments continue; he avoids lone working at height and his employer has documented a safety plan. Ã‚Â·\n\nObservations today were unremarkable. Neurological examination was non-focal. We discussed trigger management, including consistent sleep timing and stress pacing. He maintains a seizure diary, now corroborated by his phone reminders and a wearable alert; no nocturnal clusters were recorded in the past quarter. He has not required emergency department attendance, and family are confident with first‑aid measures. â€\n\nPlan:\n- Continue current anti‑seizure regimen without change; reinforce adherence and morning dosing window. \n- Maintain daytime shift pattern; occupational health letter provided to support ongoing rota stability.\n- Rescue plan unchanged; family retain supply in date. \n- Routine bloods next visit; no immediate investigations indicated given improvement and stability. \n- Follow‑up in 6 months, sooner if events increase beyond seizures once every 1 - 2 months, there is injury, or new features emerge. Ã©\n\nOverall, the trajectory is favourable with clear improvement in frequency and impact on daily life.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify current frequency statements. The letter states: 'There has been a sustained improvement...' and explicitly: 'On direct questioning he reports seizures once every 1 - 2 months...'. This is a clear numeric range describing current frequency. Historical 2019 monthly seizure days are context and not current; per rule, select the current explicit frequency. Convert 'once every 1 - 2 months' to allowed format: '1 per 1 to 2 month'. No need to consider seizure‑free status because he is not seizure‑free.",
+      "seizure_frequency_number": [
+        "1 per 1 to 2 month",
+        "he reports seizures once every 1 - 2 months"
+      ],
+      "reference": [
+        "1 per 1 to 2 month",
+        "seizures once every 1 - 2 months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

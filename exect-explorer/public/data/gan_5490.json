@@ -1,0 +1,65 @@
+{
+  "id": "gan_5490",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 12 July 2021\n\nDr Patel\nRiverside Community Health Centre\n\n221 Riverside Way, London, SE10 3AB\nDear Dr Patel\nMichael Green, DOB: 04-05-1986, Hospital No: H728394 NHS No. 9736245810\n12 Meadow View, Deptford, London, SE8 4QL\n\nThank you for asking me to review this gentleman in the Neurology Clinic. I last saw him in late spring. Since then he has continued his outdoors employment in gardening and grounds maintenance, and he notes that heat and prolonged exertion can be variable over the seasons.\n\nHe remains on his current anti-seizure regimen without recent dose changes: Levetiracetam 1 g b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He reports tolerating these reasonably well, though he describes intermittent daytime fatigue after prolonged shifts and occasional light-headedness when working in high temperatures. He denies rash, mood instability, or new focal neurological symptoms. He does not drive.\n\nWith regard to his events, he was unable to quantify a clear pattern or monthly rate. He specifically described “Sporadic drop attacks this year,” typically without warning and with rapid recovery, and could not provide a reliable count over recent months. There have been no witnessed prolonged convulsions, and no injuries beyond minor bruising. Given the absence of a consistent diary and the variability of his workload and weather exposure, the overall seizure frequency remains unclear.\n\nWe discussed practical measures around hydration, rest pauses during hot weather, and the importance of a simple event diary to help us correlate timing with occupational and environmental factors. He is agreeable to this, and I have provided a template. I have arranged a routine EEG and updated bloods (including antiseizure drug levels where appropriate, FBC, U&E, LFTs) to coincide with his next clinic window. Pending those results and a clearer record of events, I do not propose medication changes today.\n\nI will review him in 3 months, sooner if there is escalation or injury. He knows to seek urgent care for prolonged loss of awareness or head trauma.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1411,
+      "end": 1456,
+      "text": "the overall seizure frequency remains unclear",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1078,
+      "end": 1109,
+      "text": "Sporadic drop attacks this year",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5490,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\nClinic Date: 12 July 2021\n\nDr Patel\nRiverside Community Health Centre\n\n221 Riverside Way, London, SE10 3AB\nDear Dr Patel\nMichael Green, DOB: 04-05-1986, Hospital No: H728394 NHS No. 9736245810\n12 Meadow View, Deptford, London, SE8 4QL\n\nThank you for asking me to review this gentleman in the Neurology Clinic. I last saw him in late spring. Since then he has continued his outdoors employment in gardening and grounds maintenance, and he notes that heat and prolonged exertion can be variable over the seasons.\n\nHe remains on his current anti-seizure regimen without recent dose changes: Levetiracetam 1 g b.d., Lamotrigine 150 mg b.d., and Clobazam 10 mg nocte. He reports tolerating these reasonably well, though he describes intermittent daytime fatigue after prolonged shifts and occasional light-headedness when working in high temperatures. He denies rash, mood instability, or new focal neurological symptoms. He does not drive.\n\nWith regard to his events, he was unable to quantify a clear pattern or monthly rate. He specifically described “Sporadic drop attacks this year,” typically without warning and with rapid recovery, and could not provide a reliable count over recent months. There have been no witnessed prolonged convulsions, and no injuries beyond minor bruising. Given the absence of a consistent diary and the variability of his workload and weather exposure, the overall seizure frequency remains unclear.\n\nWe discussed practical measures around hydration, rest pauses during hot weather, and the importance of a simple event diary to help us correlate timing with occupational and environmental factors. He is agreeable to this, and I have provided a template. I have arranged a routine EEG and updated bloods (including antiseizure drug levels where appropriate, FBC, U&E, LFTs) to coincide with his next clinic window. Pending those results and a clearer record of events, I do not propose medication changes today.\n\nI will review him in 3 months, sooner if there is escalation or injury. He knows to seek urgent care for prolonged loss of awareness or head trauma.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter discusses the patient's seizure events but explicitly states that the patient could not quantify a clear pattern or monthly rate. It mentions \"Sporadic drop attacks this year\" and that the overall seizure frequency remains unclear due to lack of a consistent diary and variability. There is no explicit numeric frequency provided, nor sufficient detail to convert to a standard rate. The patient is not seizure-free. Therefore, per rules, when seizures are mentioned but frequency cannot be determined, the correct label is 'unknown'.",
+      "seizure_frequency_number": [
+        "unknown",
+        "the overall seizure frequency remains unclear"
+      ],
+      "reference": [
+        "unknown",
+        "Sporadic drop attacks this year"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

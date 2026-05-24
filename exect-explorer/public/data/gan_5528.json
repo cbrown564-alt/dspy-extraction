@@ -1,0 +1,54 @@
+{
+  "id": "gan_5528",
+  "text": "Department of Neurology\n\nClinic Date: 10 November 2015\n\nDr Patel\nCity Neurology Centre\n2nd Floor, Riverside Health Park, Manchester M1 4AB\n\nDear Dr Patel,\n\nMichael Green, DOB: 14-03-1988, Hospital No: M938472 NHS No. 4092581376\nFlat 12, 8 Mill Street, Manchester, M4 1AX\n\nDiagnoses:\n\nEpisodes of loss of awareness with convulsive features; a recent isolated short event reported.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\nMaintain current antiepileptic regimen; reinforce sleep hygiene and shift-work mitigation strategies; review if further events occur.\n\nI reviewed Michael Green in clinic today. He works rotating shifts, including nights, and reports that his sleep-wake cycle is frequently disrupted. He described a single very brief event last month occurring after consecutive night duties and minimal sleep, characterised by a sudden collapse witnessed by a colleague, with brief limb stiffening and jerking, followed by quick recovery and mild headache. There were no tongue bites or injuries, and no prolonged post-event confusion. He has otherwise been well and there have been no additional episodes. This pattern is consistent with what he termed a very infrequent short episode recently, seemingly linked to sleep deprivation associated with night shifts.\n\nOn examination today, observations were unremarkable and neurological examination was normal. He remains adherent to Lamotrigine 75 mg twice daily without adverse effects. He has been trialling practical strategies to stabilise sleep during shift rotations (dark room, consistent pre-sleep routine, limiting caffeine late in the shift), and he is discussing roster adjustments with his manager to reduce consecutive nights where possible.\n\nWe discussed that irregular sleep and circadian misalignment can lower seizure threshold. Given the isolated nature of the recent brief event and his good tolerance of medication, I advised continuing Lamotrigine at the current dose. I encouraged ongoing attention to sleep regularity, hydration, and avoidance of missed doses. He knows to contact the clinic or his GP should further events occur, particularly if they cluster, lengthen, or differ in character. I have arranged an open appointment pathway and will review sooner if there is any recurrence; otherwise, a routine review in 12 months is reasonable.\n\nWith best wishes,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 737,
+      "end": 773,
+      "text": "a single very brief event last month",
+      "attributes": {
+        "Label": "1 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5528,
+    "clinic_date": "Department of Neurology\n\nClinic Date: 10 November 2015\n\nDr Patel\nCity Neurology Centre\n2nd Floor, Riverside Health Park, Manchester M1 4AB\n\nDear Dr Patel,\n\nMichael Green, DOB: 14-03-1988, Hospital No: M938472 NHS No. 4092581376\nFlat 12, 8 Mill Street, Manchester, M4 1AX\n\nDiagnoses:\n\nEpisodes of loss of awareness with convulsive features; a recent isolated short event reported.\n\nCurrent Medication:\n\nLamotrigine 75 mg twice daily\n\nPlan:\n\nMaintain current antiepileptic regimen; reinforce sleep hygiene and shift-work mitigation strategies; review if further events occur.\n\nI reviewed Michael Green in clinic today. He works rotating shifts, including nights, and reports that his sleep-wake cycle is frequently disrupted. He described a single very brief event last month occurring after consecutive night duties and minimal sleep, characterised by a sudden collapse witnessed by a colleague, with brief limb stiffening and jerking, followed by quick recovery and mild headache. There were no tongue bites or injuries, and no prolonged post-event confusion. He has otherwise been well and there have been no additional episodes. This pattern is consistent with what he termed a very infrequent short episode recently, seemingly linked to sleep deprivation associated with night shifts.\n\nOn examination today, observations were unremarkable and neurological examination was normal. He remains adherent to Lamotrigine 75 mg twice daily without adverse effects. He has been trialling practical strategies to stabilise sleep during shift rotations (dark room, consistent pre-sleep routine, limiting caffeine late in the shift), and he is discussing roster adjustments with his manager to reduce consecutive nights where possible.\n\nWe discussed that irregular sleep and circadian misalignment can lower seizure threshold. Given the isolated nature of the recent brief event and his good tolerance of medication, I advised continuing Lamotrigine at the current dose. I encouraged ongoing attention to sleep regularity, hydration, and avoidance of missed doses. He knows to contact the clinic or his GP should further events occur, particularly if they cluster, lengthen, or differ in character. I have arranged an open appointment pathway and will review sooner if there is any recurrence; otherwise, a routine review in 12 months is reasonable.\n\nWith best wishes,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states there was 'a single very brief event last month' and no additional episodes. Since the patient is not seizure-free for 6 months, we use the explicit count within the past month to determine frequency: 1 event in the last month → 1 per month.",
+      "seizure_frequency_number": [
+        "1 per month",
+        "a single very brief event last month"
+      ],
+      "reference": [
+        "unknown",
+        "Rare brief seizure recently"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,59 @@
+{
+  "id": "gan_5174",
+  "text": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night\n\nI reviewed Emily Carter in follow‑up today. She works in a cold‑chain warehouse where sub‑zero temperatures and mandatory insulated gloves occasionally make fine motor tasks slower. She carries a rescue device when on shift and reports no difficulty accessing it during drills, though she notes it takes longer to remove gloves. She has therefore adopted a practice of keeping the device in an easy‑open outer pocket with a pull‑tab, which her line manager is aware of.\n\nSince her last appointment, she has maintained seizure-free on the current dose without adverse effects beyond intermittent mild dizziness in the first week of a new batch, which resolved spontaneously. Sleep is regular, alcohol intake minimal, and she avoids missed doses by using a phone alarm at shift changes.\n\nWe discussed workplace safety. She has informed occupational health of her diagnosis and they have arranged buddy checks during lone‑zone tasks. She requested a brief note confirming that her current stability does not preclude her duties; I have provided a generic statement and advised her employer to continue existing risk assessments. She understands DVLA guidance and confirms no driving at present.\n\nNo changes to treatment are proposed today. She prefers to remain on the existing regimen and to contact us if any breakthrough symptoms occur. We will review again in six months, or sooner if there is any loss of control or concerns about access to rescue medication in the cold environment.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 819,
+      "end": 898,
+      "text": "Since her last appointment, she has maintained seizure-free on the current dose",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 855,
+      "end": 878,
+      "text": "maintained seizure-free",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5174,
+    "clinic_date": "St Mary's Hospital\n\nInstitute of Neurology\n\nClinic Date: 02 March 2017\n\nDr Patel\nSt Mary's Hospital\nInstitute of Neurology, St Mary's Hospital, London W2 1NY\n\nDear Dr Patel,\n\nEmily Carter, DOB: 17-08-1989, Hospital No: C672154 NHS No. 4728395612\n78 Willow Lane, London, W9 3HT\n\nMedication:\n\nOxcarbazepine (Trileptal) 600 mg morning / 600 mg night\n\nI reviewed Emily Carter in follow‑up today. She works in a cold‑chain warehouse where sub‑zero temperatures and mandatory insulated gloves occasionally make fine motor tasks slower. She carries a rescue device when on shift and reports no difficulty accessing it during drills, though she notes it takes longer to remove gloves. She has therefore adopted a practice of keeping the device in an easy‑open outer pocket with a pull‑tab, which her line manager is aware of.\n\nSince her last appointment, she has maintained seizure-free on the current dose without adverse effects beyond intermittent mild dizziness in the first week of a new batch, which resolved spontaneously. Sleep is regular, alcohol intake minimal, and she avoids missed doses by using a phone alarm at shift changes.\n\nWe discussed workplace safety. She has informed occupational health of her diagnosis and they have arranged buddy checks during lone‑zone tasks. She requested a brief note confirming that her current stability does not preclude her duties; I have provided a generic statement and advised her employer to continue existing risk assessments. She understands DVLA guidance and confirms no driving at present.\n\nNo changes to treatment are proposed today. She prefers to remain on the existing regimen and to contact us if any breakthrough symptoms occur. We will review again in six months, or sooner if there is any loss of control or concerns about access to rescue medication in the cold environment.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Since her last appointment, she has maintained seizure-free on the current dose...' This confirms current seizure freedom. However, the duration of seizure freedom since the last appointment is not specified. The review is scheduled again in six months, but that is a future plan, not the elapsed duration. There is insufficient information to confirm at least 6 months seizure freedom. According to the rules, if insufficient to confirm 6 months, we may label as 'seizure free for multiple months.'",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Since her last appointment, she has maintained seizure-free on the current dose"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "maintained seizure-free"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

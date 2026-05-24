@@ -1,0 +1,65 @@
+{
+  "id": "gan_9704",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJames Holloway, DOB: 12-04-1985, Hospital No: H903214 NHS No. 9834175206  \n22 Brookfield Road, London, W6 7LP \n\nMedication:  \n\nLamotrigine 150 mg twice daily. Patient-reported good adherence with no rash or cognitive adverse effects. Long-term antiseizure therapy with bone-health monitoring recorded elsewhere.  \n\nHistory since last review:  \n\nHe describes brief sensory episodes occurring predominantly in the late afternoon, often after a day of intensive screen work. Typical focal seizures event duration fourteen seconds. He notes a rising epigastric sensation with transient speech arrest and preserved awareness, followed by a short phase of fatigue lasting a few minutes. There have been no witnessed generalised events, tongue-biting, or incontinence. He has not required emergency services or rescue medication. Sleep routine is regular; alcohol intake limited to weekends. He has observed that missed meals and prolonged screen exposure may precipitate events.\n\nExamination (today):  \n\nAlert and oriented. Speech fluent. Cranial nerves normal. No focal motor or sensory deficits. Gait steady. No tremor or ataxia. Cardiovascular and blood pressure within normal limits. \n\nInvestigations:  \n\nEEG and MRI findings previously reviewed and unchanged; no new investigations requested today. Vitamin D and bone-health surveillance are being coordinated separately as part of long-term therapy; results to be filed in the shared record when available.\n\nPlan:  \n\n1) Continue lamotrigine 150 mg twice daily, given stable control and tolerability.  \n2) Maintain seizure diary, including triggers (screen exposure, missed meals) and timing, to help correlate with daily patterns.  \n3) Safety: he remains aware of DVLA guidance regarding seizure events and will continue to follow existing advice.  \n4) Lifestyle: patient intends to trial scheduled screen breaks and regular meal timings; he will report any change in pattern.  \n5) Follow-up in six months, or sooner if there is any escalation in event frequency, change in semiology, or emergence of new features such as loss of awareness, injuries, or nocturnal events.\n\nWe will see him back in six months.  \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 535,
+      "end": 616,
+      "text": "He describes brief sensory episodes occurring predominantly in the late afternoon",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 662,
+      "end": 716,
+      "text": "Typical focal seizures event duration fourteen seconds",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 9704,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 14 September 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nJames Holloway, DOB: 12-04-1985, Hospital No: H903214 NHS No. 9834175206  \n22 Brookfield Road, London, W6 7LP \n\nMedication:  \n\nLamotrigine 150 mg twice daily. Patient-reported good adherence with no rash or cognitive adverse effects. Long-term antiseizure therapy with bone-health monitoring recorded elsewhere.  \n\nHistory since last review:  \n\nHe describes brief sensory episodes occurring predominantly in the late afternoon, often after a day of intensive screen work. Typical focal seizures event duration fourteen seconds. He notes a rising epigastric sensation with transient speech arrest and preserved awareness, followed by a short phase of fatigue lasting a few minutes. There have been no witnessed generalised events, tongue-biting, or incontinence. He has not required emergency services or rescue medication. Sleep routine is regular; alcohol intake limited to weekends. He has observed that missed meals and prolonged screen exposure may precipitate events.\n\nExamination (today):  \n\nAlert and oriented. Speech fluent. Cranial nerves normal. No focal motor or sensory deficits. Gait steady. No tremor or ataxia. Cardiovascular and blood pressure within normal limits. \n\nInvestigations:  \n\nEEG and MRI findings previously reviewed and unchanged; no new investigations requested today. Vitamin D and bone-health surveillance are being coordinated separately as part of long-term therapy; results to be filed in the shared record when available.\n\nPlan:  \n\n1) Continue lamotrigine 150 mg twice daily, given stable control and tolerability.  \n2) Maintain seizure diary, including triggers (screen exposure, missed meals) and timing, to help correlate with daily patterns.  \n3) Safety: he remains aware of DVLA guidance regarding seizure events and will continue to follow existing advice.  \n4) Lifestyle: patient intends to trial scheduled screen breaks and regular meal timings; he will report any change in pattern.  \n5) Follow-up in six months, or sooner if there is any escalation in event frequency, change in semiology, or emergence of new features such as loss of awareness, injuries, or nocturnal events.\n\nWe will see him back in six months.  \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly describes ongoing brief focal seizures (“brief sensory episodes… Typical focal seizures event duration fourteen seconds”) but provides no numeric count or cadence (no per day/week/month stated). There is no statement of complete seizure freedom. Therefore, per instructions, if seizures are present but specific frequency cannot be determined, return 'unknown'. A supporting verbatim quote is included.",
+      "seizure_frequency_number": [
+        "unknown",
+        "He describes brief sensory episodes occurring predominantly in the late afternoon"
+      ],
+      "reference": [
+        "unknown",
+        "Typical focal seizures event duration fourteen seconds"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

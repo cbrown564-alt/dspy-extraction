@@ -1,0 +1,59 @@
+{
+  "id": "gan_4831",
+  "text": "Centre for Neurological Health\n\nNeurosciences Division\n\nClinic Date: 07 October 2025\n\nDr A. Rahman\nCentre for Neurological Health\n1 Waverley Road, Bristol BS8 1AB\n\nDear Dr A. Rahman,\n\nElena Carter, DOB: 23-11-1992, Hospital No: H473920 NHS No. 9812465730\nFlat 4, 29 Greenbank Avenue, Bristol, BS5 6EP\n\nEpilepsy\n\nMedication: Continuing Lamotrigine since March 2025.\n\nCurrent regimen: Lamotrigine dispersible 50 mg in the morning and 50 mg in the evening (self-administered consistently; timing cross-checked with patient’s pill diary app entries).\n\nLamotrigine Blood Level:\n\n22 September 2025: 4.8 mg/L (laboratory therapeutic reference 1.0–15.0 mg/L). Dose at time of sampling: 50 mg twice daily.\n\nSeizures: Seizure freedom achieved. The patient reports no auras, warnings, or witnessed events since early April 2025. Family members corroborate absence of nocturnal events, and she has had no injuries, tongue biting, or post-event confusion.\n\nToday’s review was conducted face-to-face. The patient describes stable sleep, regular medication adherence, and no intercurrent illness. She has resumed light exercise and short commutes without incident. She has not identified any triggers recently and denies adverse effects from Lamotrigine (no rash, dizziness, diplopia, or mood change). She tracks doses with alarms and brings a printed adherence log covering the past three months with no missed doses recorded.\n\nPlan: Continue current Lamotrigine dose. Routine safety advice reiterated as patient-reported. We agreed on repeat serum level at the next blood draw for ongoing reference. She will contact the clinic if any breakthrough events or concerning symptoms arise. Follow-up review in six months or sooner if needed.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 708,
+      "end": 817,
+      "text": "Seizure freedom achieved. The patient reports no auras, warnings, or witnessed events since early April 2025.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 708,
+      "end": 732,
+      "text": "Seizure freedom achieved",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4831,
+    "clinic_date": "Centre for Neurological Health\n\nNeurosciences Division\n\nClinic Date: 07 October 2025\n\nDr A. Rahman\nCentre for Neurological Health\n1 Waverley Road, Bristol BS8 1AB\n\nDear Dr A. Rahman,\n\nElena Carter, DOB: 23-11-1992, Hospital No: H473920 NHS No. 9812465730\nFlat 4, 29 Greenbank Avenue, Bristol, BS5 6EP\n\nEpilepsy\n\nMedication: Continuing Lamotrigine since March 2025.\n\nCurrent regimen: Lamotrigine dispersible 50 mg in the morning and 50 mg in the evening (self-administered consistently; timing cross-checked with patient’s pill diary app entries).\n\nLamotrigine Blood Level:\n\n22 September 2025: 4.8 mg/L (laboratory therapeutic reference 1.0–15.0 mg/L). Dose at time of sampling: 50 mg twice daily.\n\nSeizures: Seizure freedom achieved. The patient reports no auras, warnings, or witnessed events since early April 2025. Family members corroborate absence of nocturnal events, and she has had no injuries, tongue biting, or post-event confusion.\n\nToday’s review was conducted face-to-face. The patient describes stable sleep, regular medication adherence, and no intercurrent illness. She has resumed light exercise and short commutes without incident. She has not identified any triggers recently and denies adverse effects from Lamotrigine (no rash, dizziness, diplopia, or mood change). She tracks doses with alarms and brings a printed adherence log covering the past three months with no missed doses recorded.\n\nPlan: Continue current Lamotrigine dose. Routine safety advice reiterated as patient-reported. We agreed on repeat serum level at the next blood draw for ongoing reference. She will contact the clinic if any breakthrough events or concerning symptoms arise. Follow-up review in six months or sooner if needed.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 07 October 2025. The letter states no seizures since \"early April 2025\" and explicitly says \"Seizure freedom achieved.\" Calculating the duration from early April to 07 October is approximately around 6 months, but the exact last-seizure date is not specified; it could be slightly under 6 months if the date was later in the \"early\" period. Since the 6-month threshold cannot be confirmed with certainty, classify as seizure free for multiple months.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizure freedom achieved. The patient reports no auras, warnings, or witnessed events since early April 2025."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure freedom achieved"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

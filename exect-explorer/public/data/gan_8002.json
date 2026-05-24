@@ -1,0 +1,54 @@
+{
+  "id": "gan_8002",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 10 November 2016 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Fraser, DOB: 14-07-1988, Hospital No: H927415 NHS No. 8741036592  \n12 Brookside Close, Wimbledon, London SW19 3AB  \n\nDiagnoses: \n\nSeizure disorder. \n\nI reviewed Michael Fraser today in clinic. He attended alone and works in a manual, safety-critical setting involving heights and intermittent use of powered machinery. He reports that over the past six months his seizure pattern has been steady without any increase in events. He describes brief episodes occurring roughly once every 6–8 weeks, typically in the late evening after consecutive early shifts. There have been no injuries, no prolonged episodes, and no requirement for emergency rescue medication. He identifies sleep disruption and missed meals on shift-change weeks as potential triggers. \n\nMedication adherence has been good by his account, with no recent dose changes and no adverse effects beyond mild morning grogginess on early starts. He has not required paramedic or emergency department input since his last appointment. There are no new neurological symptoms, and he denies aura evolution, new focal features, or post-event confusion lasting beyond 10–15 minutes. Family history remains non-contributory. \n\nWe discussed workplace safety. Michael Fraser confirms that his employer is aware of his condition and that he has been allocated tasks that avoid unsupervised work at height and solo operation of heavy machinery. He keeps regular breaks, maintains hydration, and is trialling consistent pre-shift meals on rotation weeks. He carries an ID card and colleagues are familiar with basic first aid. No driving is undertaken. \n\nExamination today was unremarkable. Observations were within normal limits. Neurological examination showed no focal deficits. \n\nPlan: \n- Continue current antiseizure regimen without change.  \n- Reinforce sleep hygiene and regular nutrition around shift transitions.  \n- Maintain current workplace adjustments and buddy system for tasks near heights or moving equipment.  \n- Provide updated seizure action plan to share with occupational health.  \n- Routine follow-up in six months, or sooner if event frequency rises, events cluster, injuries occur, or features change.  \n\nPlease let me know if you would like to discuss further. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 644,
+      "end": 697,
+      "text": "brief episodes occurring roughly once every 6–8 weeks",
+      "attributes": {
+        "Label": "1 per 6 to 8 week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8002,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 10 November 2016 \n\nDr Patel  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Patel,  \n\nMichael Fraser, DOB: 14-07-1988, Hospital No: H927415 NHS No. 8741036592  \n12 Brookside Close, Wimbledon, London SW19 3AB  \n\nDiagnoses: \n\nSeizure disorder. \n\nI reviewed Michael Fraser today in clinic. He attended alone and works in a manual, safety-critical setting involving heights and intermittent use of powered machinery. He reports that over the past six months his seizure pattern has been steady without any increase in events. He describes brief episodes occurring roughly once every 6–8 weeks, typically in the late evening after consecutive early shifts. There have been no injuries, no prolonged episodes, and no requirement for emergency rescue medication. He identifies sleep disruption and missed meals on shift-change weeks as potential triggers. \n\nMedication adherence has been good by his account, with no recent dose changes and no adverse effects beyond mild morning grogginess on early starts. He has not required paramedic or emergency department input since his last appointment. There are no new neurological symptoms, and he denies aura evolution, new focal features, or post-event confusion lasting beyond 10–15 minutes. Family history remains non-contributory. \n\nWe discussed workplace safety. Michael Fraser confirms that his employer is aware of his condition and that he has been allocated tasks that avoid unsupervised work at height and solo operation of heavy machinery. He keeps regular breaks, maintains hydration, and is trialling consistent pre-shift meals on rotation weeks. He carries an ID card and colleagues are familiar with basic first aid. No driving is undertaken. \n\nExamination today was unremarkable. Observations were within normal limits. Neurological examination showed no focal deficits. \n\nPlan: \n- Continue current antiseizure regimen without change.  \n- Reinforce sleep hygiene and regular nutrition around shift transitions.  \n- Maintain current workplace adjustments and buddy system for tasks near heights or moving equipment.  \n- Provide updated seizure action plan to share with occupational health.  \n- Routine follow-up in six months, or sooner if event frequency rises, events cluster, injuries occur, or features change.  \n\nPlease let me know if you would like to discuss further. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states the patient's seizure frequency: \"brief episodes occurring roughly once every 6–8 weeks.\" This indicates approximately one seizure per 6 to 8 weeks. There are no other conflicting frequencies mentioned. Normalize 'once every 6–8 weeks' to '1 per 6 to 8 week' per the allowed format (using a numeric range for the interval and singular unit).",
+      "seizure_frequency_number": [
+        "1 per 6 to 8 week",
+        "brief episodes occurring roughly once every 6–8 weeks"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable seizure control maintained"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 6 to 8 week) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

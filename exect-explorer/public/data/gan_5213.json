@@ -1,0 +1,59 @@
+{
+  "id": "gan_5213",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 07 November 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSarah Thompson, DOB: 14-03-1982, Hospital No: KCH472198 NHS No. 9912045876  \n12 Rowan Close, Bromley, BR2 8QP\n\nThank you for your referral. I reviewed the patient in clinic today, accompanied by his primary carer who provides day-to-day support at home, including assistance with medications and routine activities. The main concern raised was significant fatigue over recent months, particularly in the late afternoon, which the carer feels has been affecting motivation and participation in usual activities. Sleep is reportedly fragmented by early morning awakenings, though there is no loud snoring or witnessed apnoeas reported by the carer. Appetite is steady and there has been no unintentional weight change.\n\nSeizure freedom continues, and both the patient and carer confirm there have been no events suggestive of seizures since his last review. There have been no episodes of unresponsiveness, automatisms, nocturnal events, injuries, tongue biting, or post-event confusion reported. He is taking his current antiseizure medication reliably with the carer’s support, without missed doses. There is no recent intercurrent illness, no alcohol use, and caffeine intake is modest. Driving status remains unchanged and compliant with guidance.\n\nOn examination today, he was alert and oriented, with fluent speech and no focal neurological deficits. Cardiovascular and general observations were unremarkable. Mental state was calm and cooperative; no psychotic or mood-congruent features were evident during the consultation. The carer corroborated that day-to-day cognition is stable, though they note the fatigue tends to reduce concentration by late afternoon.\n\nIn discussion, we focused on practical strategies around fatigue management in the caregiving context. The carer reports they are the sole regular caregiver, and that structured rest periods have helped to some extent. They are open to exploring brief scheduled daytime rests, pacing of activities, hydration, and gentle graded physical activity as tolerated. They will also try a consistent sleep–wake routine with wind-down time in the evenings. The patient will continue his current medication regimen without changes for now. We will arrange routine bloods (FBC, U&E, LFT, vitamin D, thyroid profile, and B12/folate) through the GP to screen for reversible contributors to fatigue. No urgent investigations are indicated at present.\n\nSafety planning was reviewed with both the patient and carer, including medication adherence and when to seek urgent help should any concerning neurological symptoms occur. They have the clinic contact details and understand the plan to maintain the current approach given ongoing stability. I have not requested any inpatient monitoring or imaging at this stage. We agreed to follow up in six months, or earlier should there be any change in symptoms or new concerns raised by the carer.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 985,
+      "end": 1122,
+      "text": "Seizure freedom continues, and both the patient and carer confirm there have been no events suggestive of seizures since his last review.",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 985,
+      "end": 1010,
+      "text": "Seizure freedom continues",
+      "attributes": {
+        "Label": "seizure free for multiple month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 5213,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 07 November 2023 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSarah Thompson, DOB: 14-03-1982, Hospital No: KCH472198 NHS No. 9912045876  \n12 Rowan Close, Bromley, BR2 8QP\n\nThank you for your referral. I reviewed the patient in clinic today, accompanied by his primary carer who provides day-to-day support at home, including assistance with medications and routine activities. The main concern raised was significant fatigue over recent months, particularly in the late afternoon, which the carer feels has been affecting motivation and participation in usual activities. Sleep is reportedly fragmented by early morning awakenings, though there is no loud snoring or witnessed apnoeas reported by the carer. Appetite is steady and there has been no unintentional weight change.\n\nSeizure freedom continues, and both the patient and carer confirm there have been no events suggestive of seizures since his last review. There have been no episodes of unresponsiveness, automatisms, nocturnal events, injuries, tongue biting, or post-event confusion reported. He is taking his current antiseizure medication reliably with the carer’s support, without missed doses. There is no recent intercurrent illness, no alcohol use, and caffeine intake is modest. Driving status remains unchanged and compliant with guidance.\n\nOn examination today, he was alert and oriented, with fluent speech and no focal neurological deficits. Cardiovascular and general observations were unremarkable. Mental state was calm and cooperative; no psychotic or mood-congruent features were evident during the consultation. The carer corroborated that day-to-day cognition is stable, though they note the fatigue tends to reduce concentration by late afternoon.\n\nIn discussion, we focused on practical strategies around fatigue management in the caregiving context. The carer reports they are the sole regular caregiver, and that structured rest periods have helped to some extent. They are open to exploring brief scheduled daytime rests, pacing of activities, hydration, and gentle graded physical activity as tolerated. They will also try a consistent sleep–wake routine with wind-down time in the evenings. The patient will continue his current medication regimen without changes for now. We will arrange routine bloods (FBC, U&E, LFT, vitamin D, thyroid profile, and B12/folate) through the GP to screen for reversible contributors to fatigue. No urgent investigations are indicated at present.\n\nSafety planning was reviewed with both the patient and carer, including medication adherence and when to seek urgent help should any concerning neurological symptoms occur. They have the clinic contact details and understand the plan to maintain the current approach given ongoing stability. I have not requested any inpatient monitoring or imaging at this stage. We agreed to follow up in six months, or earlier should there be any change in symptoms or new concerns raised by the carer.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly discusses seizures. It states: 'Seizure freedom continues' and confirms 'no events suggestive of seizures since his last review.' However, it does not specify the date of the last review, so we cannot confirm a seizure-free duration of at least 6 months. According to the rules, if seizure-free status is present but the 6-month criterion cannot be confirmed or refuted, we may consider 'seizure free for multiple months.' There are no other seizure frequencies mentioned.",
+      "seizure_frequency_number": [
+        "seizure free for multiple month",
+        "Seizure freedom continues, and both the patient and carer confirm there have been no events suggestive of seizures since his last review."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Seizure freedom continues"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

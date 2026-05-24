@@ -1,0 +1,59 @@
+{
+  "id": "gan_14806",
+  "text": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 June 2020 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and current management\n\nHi Thomas\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy), likely temporal lobe onset based on semiology and prior EEG with left temporal sharp waves.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nAt today’s review, he described a recent short-lived cluster of aura-like events. He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28/Apr his absences improved after medication adjustment. His last event was on 03/May and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present.\n\nAdditional Context:\n\n- He reports good adherence to medication and no adverse effects beyond mild morning nausea, which is improving.\n- Sleep has been more regular since adopting fixed bedtimes; he denies alcohol or recreational drug use.\n- Currently not driving by self-report; he understands to remain off driving until he meets DVLA requirements and will notify us before resuming.\n- No recent hospital admissions, injuries, or emergency medication use.\n\nPlan of Action:\n\n1. Continue lamotrigine 150 mg twice daily and brivaracetam 50 mg twice daily without change.\n2. Reinforce seizure diary keeping and to report any return of focal aware auras, automatisms, or impaired awareness events.\n3. Safety advice reviewed, including medication adherence, sleep hygiene, and avoidance of sleep deprivation.\n4. No further investigations required at this stage given current stability; will reconsider ambulatory EEG if events recur.\n5. Follow-up in 4 months, or sooner if he experiences any breakthrough seizures or concerning side effects.\n\nWith best wishes",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 874,
+      "end": 934,
+      "text": "His last event was on 03/May and he has remained well since.",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 714,
+      "end": 1099,
+      "text": "He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28/Apr his absences improved after medication adjustment. His last event was on 03/May and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14806,
+    "clinic_date": "Epilepsy Centre\n\nNeurosciences Division\n\n\nFrom: Dr Thomas Reed (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSent: 29 June 2020 10:15\nTo: epilepsy.clinic@nhs.net\nCc: Dr Priya Shah (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST); Dr Michael O’Connor (KING'S COLLEGE HOSPITAL NHS FOUNDATION TRUST)\nSubject: Clinic summary and current management\n\nHi Thomas\n\nEpilepsy Diagnosis:\n\nFocal epilepsy (patient has focal epilepsy), likely temporal lobe onset based on semiology and prior EEG with left temporal sharp waves.\n\nPresent Medication:\n\n1. Lamotrigine 150 mg twice daily\n2. Brivaracetam 50 mg twice daily\n\nPresent Seizure Frequency:\n\nAt today’s review, he described a recent short-lived cluster of aura-like events. He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28/Apr his absences improved after medication adjustment. His last event was on 03/May and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present.\n\nAdditional Context:\n\n- He reports good adherence to medication and no adverse effects beyond mild morning nausea, which is improving.\n- Sleep has been more regular since adopting fixed bedtimes; he denies alcohol or recreational drug use.\n- Currently not driving by self-report; he understands to remain off driving until he meets DVLA requirements and will notify us before resuming.\n- No recent hospital admissions, injuries, or emergency medication use.\n\nPlan of Action:\n\n1. Continue lamotrigine 150 mg twice daily and brivaracetam 50 mg twice daily without change.\n2. Reinforce seizure diary keeping and to report any return of focal aware auras, automatisms, or impaired awareness events.\n3. Safety advice reviewed, including medication adherence, sleep hygiene, and avoidance of sleep deprivation.\n4. No further investigations required at this stage given current stability; will reconsider ambulatory EEG if events recur.\n5. Follow-up in 4 months, or sooner if he experiences any breakthrough seizures or concerning side effects.\n\nWith best wishes",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: \"His last event was on 03/May and he has remained well since\" and it was sent on 29 June 2020. That places the most recent seizure approximately 57 days (~1.9 months) before review. There have been \"no further episodes in the past month,\" so he is not seizure-free for 6 months. While a \"recent short-lived cluster\" is mentioned, no counts or timing are provided to quantify a cluster frequency. Therefore, using the interval from the last event to the review date, the current frequency is approximated as 1 per 2 months.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "His last event was on 03/May and he has remained well since."
+      ],
+      "reference": [
+        "1 per 2 month",
+        "He experienced several brief dizzy spells followed by headaches, but these settled with treatment. On 28/Apr his absences improved after medication adjustment. His last event was on 03/May and he has remained well since. Given that there have been no further episodes in the past month and his epilepsy is otherwise stable, I do not think additional intervention is required at present"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

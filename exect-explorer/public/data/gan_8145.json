@@ -1,0 +1,54 @@
+{
+  "id": "gan_8145",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Family Practice  \n22 Brook Street, London SW1A 1AB  \n\nDear Dr Patel,  \n\nEmma Collins, DOB: 03-04-1993, Hospital No: U908311 NHS No. 4432117765  \nFlat 5, 12 Hawthorn Court, London N7 8QP \n\nSummary/ Diagnoses: Epilepsy of uncertain characteristics/post-partum within the last six months/fragmented night-time sleep/iron deficiency under GP care/no alcohol/non-smoker. \n\nMedication: Lamotrigine 150 mg twice daily.  \nFolic acid 5 mg daily (ongoing).  \nFerrous fumarate 210 mg once daily. \n\nI reviewed Emma Collins in clinic today. She attended with her partner and their infant. She is six months post-partum and reports disrupted nocturnal sleep due to infant care but is otherwise well. Mood stable; no red flags for post-natal depression. She is breastfeeding; supply adequate and she has had counselling regarding lamotrigine monitoring in breastfeeding. No intercurrent illnesses. \n\nSeizures: She and her partner keep a shared digital record. They report no seizures since the late third trimester, and none at all since delivery. She describes the current phase as a continued period without events, despite sleep fragmentation. No auras, blackouts, or witnessed episodes. There have been no injuries and no emergency attendances. \n\nExamination: Observations normal. Neurological examination unremarkable. No focal deficits. \n\nPlan:  \n- Continue lamotrigine at current dose; no changes today.  \n- Routine safety advice reiterated regarding sleep management and adherence.  \n- Bloods: check lamotrigine level and FBC/UE/LFTs via GP in 2–3 weeks, as breastfeeding continues.  \n- Follow-up in 6 months, sooner if any events occur. \n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1080,
+      "end": 1167,
+      "text": "They report no seizures since the late third trimester, and none at all since delivery.",
+      "attributes": {
+        "Label": "seizure free for 6 month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 8145,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 21 September 2025 \n\nDr Patel  \nRiverside Family Practice  \n22 Brook Street, London SW1A 1AB  \n\nDear Dr Patel,  \n\nEmma Collins, DOB: 03-04-1993, Hospital No: U908311 NHS No. 4432117765  \nFlat 5, 12 Hawthorn Court, London N7 8QP \n\nSummary/ Diagnoses: Epilepsy of uncertain characteristics/post-partum within the last six months/fragmented night-time sleep/iron deficiency under GP care/no alcohol/non-smoker. \n\nMedication: Lamotrigine 150 mg twice daily.  \nFolic acid 5 mg daily (ongoing).  \nFerrous fumarate 210 mg once daily. \n\nI reviewed Emma Collins in clinic today. She attended with her partner and their infant. She is six months post-partum and reports disrupted nocturnal sleep due to infant care but is otherwise well. Mood stable; no red flags for post-natal depression. She is breastfeeding; supply adequate and she has had counselling regarding lamotrigine monitoring in breastfeeding. No intercurrent illnesses. \n\nSeizures: She and her partner keep a shared digital record. They report no seizures since the late third trimester, and none at all since delivery. She describes the current phase as a continued period without events, despite sleep fragmentation. No auras, blackouts, or witnessed episodes. There have been no injuries and no emergency attendances. \n\nExamination: Observations normal. Neurological examination unremarkable. No focal deficits. \n\nPlan:  \n- Continue lamotrigine at current dose; no changes today.  \n- Routine safety advice reiterated regarding sleep management and adherence.  \n- Bloods: check lamotrigine level and FBC/UE/LFTs via GP in 2–3 weeks, as breastfeeding continues.  \n- Follow-up in 6 months, sooner if any events occur. \n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 21 September 2025. The letter states she is six months post-partum and has had no seizures since delivery. Therefore, she has been seizure-free for approximately 6 months, meeting the ≥6-month criterion for seizure-free status. No other seizure frequencies are given.",
+      "seizure_frequency_number": [
+        "seizure free for 6 month",
+        "They report no seizures since the late third trimester, and none at all since delivery."
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Ongoing seizure-free interval"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (seizure free for 6 month) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

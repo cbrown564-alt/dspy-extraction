@@ -1,0 +1,54 @@
+{
+  "id": "gan_7993",
+  "text": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1986, Hospital No: KCH764512 NHS No. 9473620158  \n22 Brookfield Road, London, SE15 4DN\n\nThank you for asking me to review your patient in follow‑up. He attended today with his partner. Since his last appointment, he reports that day‑to‑day seizure occurrence has remained largely unchanged, with no clear escalation in routine frequency. However, he describes occasional short bursts of events that tend to cluster after nights of curtailed sleep, particularly when work demands require early starts. He and his partner feel these clusters are predictable when sleep is disrupted and settle once sleep regularity is restored. Outside of these periods, he and his partner perceive that episodes are infrequent and broadly similar to the pattern reported over the past year.\n\nHe keeps a diary and notes that when he averages fewer than six hours of sleep for two or more consecutive nights, he may experience two to three events over 24–48 hours, sometimes accompanied by brief confusion and a need to rest the following day. There have been no injuries, tongue biting, or incontinence reported recently. He denies new focal neurological symptoms. He has not required emergency department attendance since his last review. \n\nHe brings a personalised management plan which is documented elsewhere and shared with his GP and local urgent care services. This plan outlines early warning signs, agreed steps for rest and hydration during high‑risk periods, and communication arrangements with his family. He feels this plan has been helpful in preventing unnecessary hospital visits, and his partner confirms they have been able to implement it effectively. He also reports that adherence to regular bedtime and limiting late caffeine are perceived to reduce the likelihood of clusters.\n\nMedications: unchanged from prior review by report; he confirms regular dosing and no recent side‑effects. No recent intercurrent illness, alcohol excess, or new psychosocial stressors beyond intermittent work‑related sleep disruption. Mood and anxiety symptoms are stable by his account, with no recent episodes of significant distress. He remains in employment and is driving only in accordance with previous advice; he states he has not driven following any event or when sleep‑deprived.\n\nExamination today was unremarkable. He was alert, oriented, and cooperative. Speech and language were normal in conversation. Cranial nerve, motor, coordination, and gait assessments were within normal limits. \n\nIn summary, routine seizure pattern appears steady without a general increase in baseline frequency, with intermittent cluster patterns linked to sleep loss. He is using a personalised plan (held elsewhere) to good effect, and he recognises sleep regulation as a key factor. He will continue with his current approach and keep a detailed diary to capture timing, potential triggers, and any evolving features. Should the cluster pattern change in character or occur without a preceding sleep trigger, we can revisit further investigations.\n\nI will arrange a routine follow‑up in six months, with earlier review if there is any notable change as above. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1181,
+      "end": 1235,
+      "text": "he may experience two to three events over 24–48 hours",
+      "attributes": {
+        "Label": "unknown, 2 to 3 per cluster",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 7993,
+    "clinic_date": "King's College Hospital \n\nDepartment of Neurosciences \n\nClinic Date: 02 October 2025 \n\nDr A. Patel\nConsultant Neurologist  \nKing's College Hospital  \nDepartment of Neurosciences, King's College Hospital, London SE5 9RS  \n\nDear Dr A. Patel\nConsultant Neurologist,  \n\nSamuel Carter, DOB: 14-03-1986, Hospital No: KCH764512 NHS No. 9473620158  \n22 Brookfield Road, London, SE15 4DN\n\nThank you for asking me to review your patient in follow‑up. He attended today with his partner. Since his last appointment, he reports that day‑to‑day seizure occurrence has remained largely unchanged, with no clear escalation in routine frequency. However, he describes occasional short bursts of events that tend to cluster after nights of curtailed sleep, particularly when work demands require early starts. He and his partner feel these clusters are predictable when sleep is disrupted and settle once sleep regularity is restored. Outside of these periods, he and his partner perceive that episodes are infrequent and broadly similar to the pattern reported over the past year.\n\nHe keeps a diary and notes that when he averages fewer than six hours of sleep for two or more consecutive nights, he may experience two to three events over 24–48 hours, sometimes accompanied by brief confusion and a need to rest the following day. There have been no injuries, tongue biting, or incontinence reported recently. He denies new focal neurological symptoms. He has not required emergency department attendance since his last review. \n\nHe brings a personalised management plan which is documented elsewhere and shared with his GP and local urgent care services. This plan outlines early warning signs, agreed steps for rest and hydration during high‑risk periods, and communication arrangements with his family. He feels this plan has been helpful in preventing unnecessary hospital visits, and his partner confirms they have been able to implement it effectively. He also reports that adherence to regular bedtime and limiting late caffeine are perceived to reduce the likelihood of clusters.\n\nMedications: unchanged from prior review by report; he confirms regular dosing and no recent side‑effects. No recent intercurrent illness, alcohol excess, or new psychosocial stressors beyond intermittent work‑related sleep disruption. Mood and anxiety symptoms are stable by his account, with no recent episodes of significant distress. He remains in employment and is driving only in accordance with previous advice; he states he has not driven following any event or when sleep‑deprived.\n\nExamination today was unremarkable. He was alert, oriented, and cooperative. Speech and language were normal in conversation. Cranial nerve, motor, coordination, and gait assessments were within normal limits. \n\nIn summary, routine seizure pattern appears steady without a general increase in baseline frequency, with intermittent cluster patterns linked to sleep loss. He is using a personalised plan (held elsewhere) to good effect, and he recognises sleep regulation as a key factor. He will continue with his current approach and keep a detailed diary to capture timing, potential triggers, and any evolving features. Should the cluster pattern change in character or occur without a preceding sleep trigger, we can revisit further investigations.\n\nI will arrange a routine follow‑up in six months, with earlier review if there is any notable change as above. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter clearly mentions ongoing seizures that occur in clusters triggered by sleep deprivation. The only explicit numeric detail is that during these clusters he has \"two to three events over 24–48 hours.\" There is no information on how often these clusters occur (per week/month/year), and baseline frequency outside clusters is described only as \"infrequent\" without numbers. Therefore, a specific overall frequency cannot be determined. Since cluster details are provided but cluster rate is unknown, the correct normalization is the cluster-unknown format: \"unknown, 2 to 3 per cluster.\" The patient is not seizure-free because recent events are reported.",
+      "seizure_frequency_number": [
+        "unknown, 2 to 3 per cluster",
+        "he may experience two to three events over 24–48 hours"
+      ],
+      "reference": [
+        "seizure free for multiple month",
+        "Stable seizure control maintained"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (unknown, 2 to 3 per cluster) disagrees with Reference (seizure free for multiple month)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

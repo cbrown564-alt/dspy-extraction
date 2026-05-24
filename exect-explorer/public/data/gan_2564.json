@@ -1,0 +1,59 @@
+{
+  "id": "gan_2564",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 23-11-1994, Hospital No: H938421 NHS No. 9056731184  \nHilltop Farm Cottage, Aylesford Lane, Kent ME20 7QZ \n\nMedication: \n\nSodium valproate 500 mg twice daily. Patient-reported good tolerability; mild weight gain and intermittent hand tremor not functionally limiting. \n\nHistory since last review: \n\nSophie Williams lives in a rural area with limited transport; follow-up has therefore been by phone/video. She has a known diagnosis of generalised epilepsy, with prior absence seizures and occasional generalised tonic–clonic seizures, confirmed on EEG with generalised spike–wave discharges. Over the last two months she describes three or five focal clonic during the last two months, consisting of brief, unilateral facial twitching and thumb jerks without loss of awareness, usually in the evening after long farm shifts. These focal clonic episodes have been self-terminating within 30–60 seconds and are followed by mild fatigue but no confusion. She has had no generalised tonic–clonic seizures for over a year and no recent absence episodes. No triggers identified beyond sleep restriction and missed meals. She denies alcohol excess and reports good medication adherence with a phone alarm system. \n\nExamination (video): \n\nAlert, oriented, fluent speech. Cranial nerves grossly intact on video assessment. No visible tremor during rest; fine postural tremor noted when holding a cup. Gait previously normal at in-person visit; no concerns raised currently. \n\nPlan: \n\n1) Continue sodium valproate 500 mg twice daily. We discussed that the brief focal clonic events are likely related to her underlying generalised epilepsy; she prefers to continue current therapy given the absence of generalised convulsions and the minimal impact of the brief events.  \n2) Seizure diary: she will document time of day, sleep duration, stress, and missed meals to clarify potential triggers.  \n3) Lifestyle: she reports variable sleep due to early farm duties; she plans earlier bedtime and scheduled snacks to avoid hypoglycaemia.  \n4) Safety: no driving; she is aware of DVLA regulations and confirms she is not currently driving.  \n5) Monitoring: arrange local community phlebotomy for LFTs and FBC in the next two weeks given ongoing valproate use.  \n6) Rescue plan: if clusters of jerks evolve, or if any generalised tonic–clonic seizure occurs, she will contact the clinic via the advice line; emergency services if prolonged or repeated events. \n\nFollow-up: \n\nGiven the transport limitations, we will review her by video in four months, with the option of phone earlier if the diary shows escalation or if generalised seizures recur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 802,
+      "end": 894,
+      "text": "Over the last two months she describes three or five focal clonic during the last two months",
+      "attributes": {
+        "Label": "3 to 5 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 841,
+      "end": 894,
+      "text": "three or five focal clonic during the last two months",
+      "attributes": {
+        "Label": "3 to 5 per 2 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 2564,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 02 October 2025 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nSophie Williams, DOB: 23-11-1994, Hospital No: H938421 NHS No. 9056731184  \nHilltop Farm Cottage, Aylesford Lane, Kent ME20 7QZ \n\nMedication: \n\nSodium valproate 500 mg twice daily. Patient-reported good tolerability; mild weight gain and intermittent hand tremor not functionally limiting. \n\nHistory since last review: \n\nSophie Williams lives in a rural area with limited transport; follow-up has therefore been by phone/video. She has a known diagnosis of generalised epilepsy, with prior absence seizures and occasional generalised tonic–clonic seizures, confirmed on EEG with generalised spike–wave discharges. Over the last two months she describes three or five focal clonic during the last two months, consisting of brief, unilateral facial twitching and thumb jerks without loss of awareness, usually in the evening after long farm shifts. These focal clonic episodes have been self-terminating within 30–60 seconds and are followed by mild fatigue but no confusion. She has had no generalised tonic–clonic seizures for over a year and no recent absence episodes. No triggers identified beyond sleep restriction and missed meals. She denies alcohol excess and reports good medication adherence with a phone alarm system. \n\nExamination (video): \n\nAlert, oriented, fluent speech. Cranial nerves grossly intact on video assessment. No visible tremor during rest; fine postural tremor noted when holding a cup. Gait previously normal at in-person visit; no concerns raised currently. \n\nPlan: \n\n1) Continue sodium valproate 500 mg twice daily. We discussed that the brief focal clonic events are likely related to her underlying generalised epilepsy; she prefers to continue current therapy given the absence of generalised convulsions and the minimal impact of the brief events.  \n2) Seizure diary: she will document time of day, sleep duration, stress, and missed meals to clarify potential triggers.  \n3) Lifestyle: she reports variable sleep due to early farm duties; she plans earlier bedtime and scheduled snacks to avoid hypoglycaemia.  \n4) Safety: no driving; she is aware of DVLA regulations and confirms she is not currently driving.  \n5) Monitoring: arrange local community phlebotomy for LFTs and FBC in the next two weeks given ongoing valproate use.  \n6) Rescue plan: if clusters of jerks evolve, or if any generalised tonic–clonic seizure occurs, she will contact the clinic via the advice line; emergency services if prolonged or repeated events. \n\nFollow-up: \n\nGiven the transport limitations, we will review her by video in four months, with the option of phone earlier if the diary shows escalation or if generalised seizures recur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit seizure frequency details. The letter states: \"Over the last two months she describes three or five focal clonic during the last two months\" (clearly a typo but conveys a range of 3 to 5 episodes in a two-month period). Other seizure types: no generalised tonic–clonic for over a year, no recent absence episodes. Apply the rule to select the highest frequency among multiple types; only focal clonic seizures occurred. Normalize to allowed format: range over a two-month interval → \"3 to 5 per 2 month\". This is within the allowed units and uses 'to' for range.",
+      "seizure_frequency_number": [
+        "3 to 5 per 2 month",
+        "Over the last two months she describes three or five focal clonic during the last two months"
+      ],
+      "reference": [
+        "3 to 5 per 2 month",
+        "three or five focal clonic during the last two months"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

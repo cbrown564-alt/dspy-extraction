@@ -1,0 +1,65 @@
+{
+  "id": "gan_11334",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 24 August 2015 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nPeter Lawson, DOB: 14-02-1950, Hospital No: H381026 NHS No. 9081763452  \n12 Fernbank Close, London, W2 5DL \n\nMedication: \n\nLevetiracetam 500 mg twice daily, continued without change. The patient reports tolerating this with occasional tiredness in the late afternoon. \n\nBackground and current status: \n\nSince retiring from teaching earlier this year, he has settled into a predictable daily routine at home and notes reduced social contact. He keeps a simple diary of events and sleep. The patient stated that he had a seizure on 23-Jun, described by him as a brief loss of awareness with subsequent confusion lasting approximately 15 minutes, occurring in the early evening after a missed lunch and poor sleep the night before. No injuries were reported. He denies other clear-cut events since that date and has not required emergency care. \n\nHe reports regular sleep of 6–7 hours most nights but acknowledges occasional early waking. Appetite is fair; fluid intake is adequate by his account. He has begun short daily walks and has arranged a weekly visit from a neighbour for company. He does not drive and is aware of DVLA guidance. \n\nExamination today was unremarkable with normal observations. No focal neurological signs. Adherence to medication appears good by report; no recent intercurrent illnesses. \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily as presently tolerated.  \n- Maintain the event and sleep diary; he will bring entries to the next review.  \n- Community support and routine: he is considering a local retirees’ group; he will let us know if increased social engagement affects wellbeing or sleep.  \n- Safety advice reinforced for bathing and cooking when alone, and to seek help should events recur, cluster, or change in character. \n\nWe will review him in four months, or sooner if there are further events or concerns. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 697,
+      "end": 775,
+      "text": "he had a seizure on 23-Jun... He denies other clear-cut events since that date",
+      "attributes": {
+        "Label": "1 per 2 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 673,
+      "end": 727,
+      "text": "The patient stated that he/she had a seizure on 23-Jun",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 11334,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 24 August 2015 \n\nDr Ahmed  \nSt Mary's Hospital  \nInstitute of Neurology, St Mary's Hospital, London W2 1NY  \n\nDear Dr Ahmed,  \n\nPeter Lawson, DOB: 14-02-1950, Hospital No: H381026 NHS No. 9081763452  \n12 Fernbank Close, London, W2 5DL \n\nMedication: \n\nLevetiracetam 500 mg twice daily, continued without change. The patient reports tolerating this with occasional tiredness in the late afternoon. \n\nBackground and current status: \n\nSince retiring from teaching earlier this year, he has settled into a predictable daily routine at home and notes reduced social contact. He keeps a simple diary of events and sleep. The patient stated that he had a seizure on 23-Jun, described by him as a brief loss of awareness with subsequent confusion lasting approximately 15 minutes, occurring in the early evening after a missed lunch and poor sleep the night before. No injuries were reported. He denies other clear-cut events since that date and has not required emergency care. \n\nHe reports regular sleep of 6–7 hours most nights but acknowledges occasional early waking. Appetite is fair; fluid intake is adequate by his account. He has begun short daily walks and has arranged a weekly visit from a neighbour for company. He does not drive and is aware of DVLA guidance. \n\nExamination today was unremarkable with normal observations. No focal neurological signs. Adherence to medication appears good by report; no recent intercurrent illnesses. \n\nPlan: \n\n- Continue levetiracetam 500 mg twice daily as presently tolerated.  \n- Maintain the event and sleep diary; he will bring entries to the next review.  \n- Community support and routine: he is considering a local retirees’ group; he will let us know if increased social engagement affects wellbeing or sleep.  \n- Safety advice reinforced for bathing and cooking when alone, and to seek help should events recur, cluster, or change in character. \n\nWe will review him in four months, or sooner if there are further events or concerns. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 24 August 2015. The letter states the patient had a seizure on 23-Jun and denies other events since that date. Therefore, from 23-Jun to 24-Aug is approximately 2 months (about 62 days). This yields a current frequency of 1 seizure per 2 months.",
+      "seizure_frequency_number": [
+        "1 per 2 month",
+        "he had a seizure on 23-Jun... He denies other clear-cut events since that date"
+      ],
+      "reference": [
+        "unknown",
+        "The patient stated that he/she had a seizure on 23-Jun"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "label_reference_disagreement",
+      "description": "Gold (1 per 2 month) disagrees with Reference (unknown)",
+      "oracle_impact": "scoring_ambiguity"
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

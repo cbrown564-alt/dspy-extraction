@@ -1,0 +1,59 @@
+{
+  "id": "gan_14250",
+  "text": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 03 April 2018 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact he has engaged with dietetic services and has been following ketogenic-style dietary guidance under supervision. He reports improved energy stability during the day and better sleep hygiene, and his family have noticed a clearer pattern to his triggers and improved overall wellbeing. \n\nHe came off Levetiracetam on 03-Mar. In the following week, he had 2 seizures, one associated with sleep deprivation. No further seizures have occurred since. He feels steadier in himself and has not required any emergency attendance. \n\nCurrent anti-seizure therapy has otherwise remained unchanged, and he has tolerated the regimen without new adverse effects. He reports no rashes, no mood deterioration, and only mild intermittent fatigue that has improved since optimising his diet and sleep routine. He is keeping a seizure and trigger diary and has found this helpful alongside the dietary plan. \n\nOn examination today he was well, with normal observations and no new neurological signs. We discussed ongoing lifestyle measures, including maintaining regular sleep, hydration, and adherence to the dietetic plan, as these appear to be contributing to his recent improvement. He prefers to continue with the current approach and monitoring, given the recent stability. \n\nPlan:\n- Continue current regimen and supervised dietetic programme.\n- Maintain seizure/trigger diary and sleep routine; family to continue to witness and document events if any recur.\n- Safety advice reiterated, including avoidance of sleep deprivation and excess alcohol.\n- Routine follow-up in three months, earlier if there is any recurrence or change in pattern. \n\nOverall, his condition is improving, with no seizures since the first week after discontinuing Levetiracetam and subjective gains in daytime alertness and consistency of routine under dietetic guidance. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 648,
+      "end": 769,
+      "text": "In the following week, he had 2 seizures, one associated with sleep deprivation. No further seizures have occurred since.",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 611,
+      "end": 768,
+      "text": "He came off Levetiracetam on 03-Mar. In the following week, he had 2 seizures, one associated with sleep deprivation. No further seizures have occurred since",
+      "attributes": {
+        "Label": "2 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14250,
+    "clinic_date": "KINGS NEUROSCIENCES CENTRE\n\n\nClinic Date: 03 April 2018 \n\nDr Wang\nSaffron Park Hospital\n\nSaffron Park, London, E14 7JL\nDear Dr Wang\nJohn Doe, DOB: 21-11-1982, Hospital No: P546484 NHS No. 5484656746\nFlat 15 Roundwood Road, London, E14 7JL \n\nI reviewed the above patient in the Neurology Clinic today. Since our last contact he has engaged with dietetic services and has been following ketogenic-style dietary guidance under supervision. He reports improved energy stability during the day and better sleep hygiene, and his family have noticed a clearer pattern to his triggers and improved overall wellbeing. \n\nHe came off Levetiracetam on 03-Mar. In the following week, he had 2 seizures, one associated with sleep deprivation. No further seizures have occurred since. He feels steadier in himself and has not required any emergency attendance. \n\nCurrent anti-seizure therapy has otherwise remained unchanged, and he has tolerated the regimen without new adverse effects. He reports no rashes, no mood deterioration, and only mild intermittent fatigue that has improved since optimising his diet and sleep routine. He is keeping a seizure and trigger diary and has found this helpful alongside the dietary plan. \n\nOn examination today he was well, with normal observations and no new neurological signs. We discussed ongoing lifestyle measures, including maintaining regular sleep, hydration, and adherence to the dietetic plan, as these appear to be contributing to his recent improvement. He prefers to continue with the current approach and monitoring, given the recent stability. \n\nPlan:\n- Continue current regimen and supervised dietetic programme.\n- Maintain seizure/trigger diary and sleep routine; family to continue to witness and document events if any recur.\n- Safety advice reiterated, including avoidance of sleep deprivation and excess alcohol.\n- Routine follow-up in three months, earlier if there is any recurrence or change in pattern. \n\nOverall, his condition is improving, with no seizures since the first week after discontinuing Levetiracetam and subjective gains in daytime alertness and consistency of routine under dietetic guidance. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Clinic date is 03 April 2018. Patient stopped Levetiracetam on 03-Mar. In the following week, he had 2 seizures. The letter states \"No further seizures have occurred since,\" implying from roughly mid-March to 03-Apr there were no additional events. He is not seizure-free for ≥6 months, so we must compute frequency. Over approximately the past month (03-Mar to 03-Apr), there were 2 seizures, yielding 2 per month.",
+      "seizure_frequency_number": [
+        "2 per month",
+        "In the following week, he had 2 seizures, one associated with sleep deprivation. No further seizures have occurred since."
+      ],
+      "reference": [
+        "2 per month",
+        "He came off Levetiracetam on 03-Mar. In the following week, he had 2 seizures, one associated with sleep deprivation. No further seizures have occurred since"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

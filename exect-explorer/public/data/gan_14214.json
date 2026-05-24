@@ -1,0 +1,59 @@
+{
+  "id": "gan_14214",
+  "text": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 28 December 2020 \n\nDr Khan  \nRiverside Health Centre  \n12 Brook Street, London SE1 3AB  \n\nDear Dr Khan,  \n\nSophie Bennett, DOB: 05-11-1991, Hospital No: H384920 NHS No. 9837451206  \nFlat 4, 22 Elm Court, London, SE16 2JP \n\nMedication: \n\nLevetiracetam 1 g twice daily, continued. Midazolam 10 mg buccal, rescue supply held by family. No current adverse effects reported.\n\nThank you for reviewing her progress. She reported that she self-discontinued Valproate on 27/Nov following a discussion about future family planning and concerns around adverse effects. She then transitioned to Levetiracetam monotherapy as above. She discontinued Valproate on 27/Nov. Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then. She attributes improved stability to establishing a strict dosing routine with phone reminders and better sleep hygiene. There have been no further injuries, no tongue biting, and no prolonged post-ictal confusion since early December.\n\nShe notes occasional brief light-headed spells when meals are delayed, without loss of awareness or automatisms, lasting under a minute and resolving spontaneously. She denies new focal neurological symptoms. Family members have been trained in the use of buccal midazolam but have not needed to administer it. She has not been driving and understands to follow DVLA guidance regarding required seizure-free intervals before considering resumption.\n\nWe discussed general measures including adherence, sleep regularity, alcohol moderation, and the importance of avoiding missed doses. She prefers to remain on Levetiracetam monotherapy for now and will let us know if mood changes or irritability emerge; currently she feels stable. No changes to treatment today.\n\nPlan:\n- Continue Levetiracetam 1 g twice daily; ensure timely repeat prescriptions.\n- Maintain seizure diary and record any potential triggers.\n- Safety advice reinforced; rescue midazolam to remain in date and accessible to carers.\n- Routine bloods via GP only if clinically indicated; none required today.\n- Follow-up in four months, sooner if breakthrough events occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 716,
+      "end": 851,
+      "text": "Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then.",
+      "attributes": {
+        "Label": "2 to 4 per month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 678,
+      "end": 850,
+      "text": "She discontinued Valproate on 27/Nov. Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then",
+      "attributes": {
+        "Label": "2 to 4 per month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 14214,
+    "clinic_date": "St Mary's Hospital \n\nInstitute of Neurology \n\nClinic Date: 28 December 2020 \n\nDr Khan  \nRiverside Health Centre  \n12 Brook Street, London SE1 3AB  \n\nDear Dr Khan,  \n\nSophie Bennett, DOB: 05-11-1991, Hospital No: H384920 NHS No. 9837451206  \nFlat 4, 22 Elm Court, London, SE16 2JP \n\nMedication: \n\nLevetiracetam 1 g twice daily, continued. Midazolam 10 mg buccal, rescue supply held by family. No current adverse effects reported.\n\nThank you for reviewing her progress. She reported that she self-discontinued Valproate on 27/Nov following a discussion about future family planning and concerns around adverse effects. She then transitioned to Levetiracetam monotherapy as above. She discontinued Valproate on 27/Nov. Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then. She attributes improved stability to establishing a strict dosing routine with phone reminders and better sleep hygiene. There have been no further injuries, no tongue biting, and no prolonged post-ictal confusion since early December.\n\nShe notes occasional brief light-headed spells when meals are delayed, without loss of awareness or automatisms, lasting under a minute and resolving spontaneously. She denies new focal neurological symptoms. Family members have been trained in the use of buccal midazolam but have not needed to administer it. She has not been driving and understands to follow DVLA guidance regarding required seizure-free intervals before considering resumption.\n\nWe discussed general measures including adherence, sleep regularity, alcohol moderation, and the importance of avoiding missed doses. She prefers to remain on Levetiracetam monotherapy for now and will let us know if mood changes or irritability emerge; currently she feels stable. No changes to treatment today.\n\nPlan:\n- Continue Levetiracetam 1 g twice daily; ensure timely repeat prescriptions.\n- Maintain seizure diary and record any potential triggers.\n- Safety advice reinforced; rescue midazolam to remain in date and accessible to carers.\n- Routine bloods via GP only if clinically indicated; none required today.\n- Follow-up in four months, sooner if breakthrough events occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: the patient stopped Valproate on 27 Nov 2020, then 'shortly afterwards' had 'two to four seizures' and has been seizure-free since early December. Clinic date is 28 Dec 2020, so the relevant observation window is approximately one month. Because seizure-free status requires at least 6 months and this is less than that, we must calculate frequency. Two to four seizures over about one month equates to 2 to 4 per month.",
+      "seizure_frequency_number": [
+        "2 to 4 per month",
+        "Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then."
+      ],
+      "reference": [
+        "2 to 4 per month",
+        "She discontinued Valproate on 27/Nov. Shortly afterwards, she experienced two to four seizures, one triggered by missed medication. She has remained seizure-free since then"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

@@ -1,0 +1,48 @@
+{
+  "id": "gan_3682",
+  "text": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Shah  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Priya Shah,  \n\nJacob Reynolds, DOB: 14-11-1987, Hospital No: H392774 NHS No. 9473162058  \n82 Larkspur Close, Croydon, CR0 4AN  \n\nDiagnoses: \n\nSeizure disorder, aetiology under investigation. \n\nI reviewed Jacob Reynolds in clinic today accompanied by his partner. He reports intermittent episodes consistent with generalised convulsive seizures occurring without a clear warning. Over the last three months he has tracked events in a diary and describes TC six/mo, with post‑ictal confusion and myalgia lasting several hours. There have been no known triggers identified, though poor sleep appears to precede some events. No injuries have been reported in the last month. He has not required emergency rescue medication since August. \n\nCurrent medication: levetiracetam 1 g twice daily, vitamin D supplementation. He reports mild irritability since dose escalation but prefers to continue for now. No other neurological symptoms reported. \n\nInvestigations: MRI brain (May 2025) reported as structurally normal. Routine EEG (June 2025) showed non‑specific findings without definite epileptiform activity. Bloods (September 2025): U&E, LFT, FBC within reference ranges. \n\nPlan discussed and agreed with the patient: \n- Continue levetiracetam at current dose for the time being; monitor mood and sleep.  \n- Seizure diary to be maintained with exact timings and any potential precipitants.  \n- Arrange sleep‑deprived EEG within the next 8 weeks.  \n- Provide updated seizure first‑aid advice and safety precautions for bathing, heights, and machinery; patient acknowledges understanding.  \n- DVLA guidance reiterated; patient reports he has already ceased driving.  \n- Review in clinic in three months, or earlier if frequency increases or adverse effects occur. \n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 632,
+      "end": 651,
+      "text": "describes TC six/mo",
+      "attributes": {
+        "Label": "6 per month",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 3682,
+    "clinic_date": "Epilepsy Centre \n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Priya Shah  \nSt George’s University Hospitals NHS Foundation Trust  \nBlackshaw Road, London SW17 0QT  \n\nDear Dr Priya Shah,  \n\nJacob Reynolds, DOB: 14-11-1987, Hospital No: H392774 NHS No. 9473162058  \n82 Larkspur Close, Croydon, CR0 4AN  \n\nDiagnoses: \n\nSeizure disorder, aetiology under investigation. \n\nI reviewed Jacob Reynolds in clinic today accompanied by his partner. He reports intermittent episodes consistent with generalised convulsive seizures occurring without a clear warning. Over the last three months he has tracked events in a diary and describes TC six/mo, with post‑ictal confusion and myalgia lasting several hours. There have been no known triggers identified, though poor sleep appears to precede some events. No injuries have been reported in the last month. He has not required emergency rescue medication since August. \n\nCurrent medication: levetiracetam 1 g twice daily, vitamin D supplementation. He reports mild irritability since dose escalation but prefers to continue for now. No other neurological symptoms reported. \n\nInvestigations: MRI brain (May 2025) reported as structurally normal. Routine EEG (June 2025) showed non‑specific findings without definite epileptiform activity. Bloods (September 2025): U&E, LFT, FBC within reference ranges. \n\nPlan discussed and agreed with the patient: \n- Continue levetiracetam at current dose for the time being; monitor mood and sleep.  \n- Seizure diary to be maintained with exact timings and any potential precipitants.  \n- Arrange sleep‑deprived EEG within the next 8 weeks.  \n- Provide updated seizure first‑aid advice and safety precautions for bathing, heights, and machinery; patient acknowledges understanding.  \n- DVLA guidance reiterated; patient reports he has already ceased driving.  \n- Review in clinic in three months, or earlier if frequency increases or adverse effects occur. \n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "Identify explicit frequency statements. The letter says: \"Over the last three months he has tracked events in a diary and describes TC six/mo\". TC indicates tonic-clonic seizures. \"six/mo\" is an explicit numeric frequency meaning 6 per month. No other conflicting frequencies are provided. He is not seizure free. Therefore, the final label is 6 per month.",
+      "seizure_frequency_number": [
+        "6 per month",
+        "describes TC six/mo"
+      ],
+      "reference": [
+        "6 per month",
+        "TC *six/mo"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

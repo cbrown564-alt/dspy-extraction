@@ -1,0 +1,59 @@
+{
+  "id": "gan_16335",
+  "text": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 6 October 2017 \n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nEmily Carter, DOB: 07-11-1996, Hospital No: H784231 NHS No. 1029384756\nFlat 3, 21 Brookside Lane, London, WC1E 6BT\n\nSummary/ Diagnoses: History of traumatic insomnia and lifestyle-related sleep disruption; prolonged screen exposure related to university esports leadership; migraine without aura; low vitamin D previously; smoker (social); no current alcohol misuse; living in shared student accommodation.\n\nMedication: Levetiracetam 1000 mg twice daily.\nPropranolol 40 mg twice daily.\nVitamin D3 1000 IU once daily.\nSumatriptan 50 mg as required for migraine (maximum 2 in 24 hours).\n\nI reviewed Emily Carter in clinic today. She is the lead for her university esports club and reports extended evening practice sessions and competitive fixtures that often run past midnight. She describes inconsistent sleep with frequent phase delay, sometimes sleeping 4–5 hours on weeknights and then oversleeping at weekends. She denies recent intercurrent illness, head injury or alcohol binges. Caffeine intake is high during tournaments but otherwise moderate. Nutritional intake is variable on competition days. Examination today was unremarkable with no focal neurological deficits; gait and coordination were normal. \n\nSeizures: We discussed her event record. She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states. She reports that these clustered around periods of consecutive late-night scrims and pre-exam weeks with particularly irregular sleep. There were no clear daytime precipitants other than sleep loss and screen exposure late at night; no missed doses reported. No injuries, tongue-biting, or urinary incontinence were recalled, and post-event fatigue lasted a few hours. No ambulance attendances.\n\nPlan: \n- Continue current levetiracetam dose; no change today.\n- Reinforce adherence and sleep regularity; she will trial a fixed wind-down window before late sessions and avoid overnight play during exam weeks.\n- Blood tests via GP: U&E, LFT, FBC, vitamin D, and bone profile within the next month if not checked in the last 6 months.\n- Seizure diary to continue; esports schedule to be noted alongside events to assess temporal association.\n- Safety advice reiterated regarding bathing/swimming alone and heights; she confirms she does not drive.\n- Review in 4–6 months, sooner if events increase or injuries occur.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1486,
+      "end": 1539,
+      "text": "She noted a seizure in Sep, 2 in Aug, and four in Jul",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 1486,
+      "end": 1575,
+      "text": "She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states",
+      "attributes": {
+        "Label": "7 per 3 month",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 16335,
+    "clinic_date": "University College Hospital \n\nNational Hospital for Neurology and Neurosurgery \n\nClinic Date: 6 October 2017 \n\nDr Susan\nUniversity College Hospital\nNational Hospital for Neurology and Neurosurgery, London WC1N 3BG\n\nDear Dr Susan,\n\nEmily Carter, DOB: 07-11-1996, Hospital No: H784231 NHS No. 1029384756\nFlat 3, 21 Brookside Lane, London, WC1E 6BT\n\nSummary/ Diagnoses: History of traumatic insomnia and lifestyle-related sleep disruption; prolonged screen exposure related to university esports leadership; migraine without aura; low vitamin D previously; smoker (social); no current alcohol misuse; living in shared student accommodation.\n\nMedication: Levetiracetam 1000 mg twice daily.\nPropranolol 40 mg twice daily.\nVitamin D3 1000 IU once daily.\nSumatriptan 50 mg as required for migraine (maximum 2 in 24 hours).\n\nI reviewed Emily Carter in clinic today. She is the lead for her university esports club and reports extended evening practice sessions and competitive fixtures that often run past midnight. She describes inconsistent sleep with frequent phase delay, sometimes sleeping 4–5 hours on weeknights and then oversleeping at weekends. She denies recent intercurrent illness, head injury or alcohol binges. Caffeine intake is high during tournaments but otherwise moderate. Nutritional intake is variable on competition days. Examination today was unremarkable with no focal neurological deficits; gait and coordination were normal. \n\nSeizures: We discussed her event record. She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states. She reports that these clustered around periods of consecutive late-night scrims and pre-exam weeks with particularly irregular sleep. There were no clear daytime precipitants other than sleep loss and screen exposure late at night; no missed doses reported. No injuries, tongue-biting, or urinary incontinence were recalled, and post-event fatigue lasted a few hours. No ambulance attendances.\n\nPlan: \n- Continue current levetiracetam dose; no change today.\n- Reinforce adherence and sleep regularity; she will trial a fixed wind-down window before late sessions and avoid overnight play during exam weeks.\n- Blood tests via GP: U&E, LFT, FBC, vitamin D, and bone profile within the next month if not checked in the last 6 months.\n- Seizure diary to continue; esports schedule to be noted alongside events to assess temporal association.\n- Safety advice reiterated regarding bathing/swimming alone and heights; she confirms she does not drive.\n- Review in 4–6 months, sooner if events increase or injuries occur.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly lists recent seizures: 'a seizure in Sep, 2 in Aug, and four in Jul.' Count over three months: Jul (4) + Aug (2) + Sep (1) = 7 seizures in 3 months. No other frequencies are provided. Therefore, normalize to '7 per 3 month' per allowed formats.",
+      "seizure_frequency_number": [
+        "7 per 3 month",
+        "She noted a seizure in Sep, 2 in Aug, and four in Jul"
+      ],
+      "reference": [
+        "7 per 3 month",
+        "She noted a seizure in Sep, 2 in Aug, and four in Jul, all from mixed awake/asleep states"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

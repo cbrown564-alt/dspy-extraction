@@ -1,0 +1,48 @@
+{
+  "id": "gan_1707",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 01 October 2020\n\nDr Aisha Karim\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London\n\nDear Dr Aisha Karim,\n\nMr Samir Khan, DOB: 12-03-1987, Hospital No: KCH482917 NHS No. 9430025719\n22 Brookfield Road, London, SE5 9AB\n\nDiagnosis:\n\nSeizure disorder with fluctuating control; prior trials of Levetiracetam not beneficial; good tolerability and stability on Lamotrigine to date\n\nAetiology:\n\nNo definitive structural or genetic cause identified from available records\n\nOther Medical Problems:\n\nVitamin D insufficiency previously treated; on maintenance cholecalciferol\n\nManagement Plan:\n\n1) Continue Lamotrigine at current dosing: 100 mg morning, 100 mg midday, 300 mg night, maintaining the same brand. 2) Provide rescue medication plan discussed for prolonged events; patient has declined changes today but will consider if patterns persist. 3) Arrange bloods (FBC, U&Es, LFTs, vitamin D) and Lamotrigine trough level prior to next visit. 4) Review in four months, with earlier contact if events cluster again.\n\nClinical Summary:\n\nSince the last review, the patient describes a brief cluster of events occurring on multiple days within the past week, coinciding with early starts and altered meal times. He reports brief episodes of reduced awareness and a sense of internal \"check out\" lasting under a minute, without clear precipitant other than disrupted sleep and inconsistent hydration. There was no generalised convulsion, injury, or emergency attendance. He self-rested afterwards and resumed normal activities. He remains in employment and is driving not applicable as he is not currently driving.\n\nWe discussed that forthcoming religious fasting periods may alter routine, including sleep and medication timing. He plans to maintain medication at the usual clock times with water, avoid missed doses, and prioritise adequate hydration and rest during non-fasting hours. He will keep a diary capturing sleep, dose timing, and any events so that we can correlate patterns and consider adjustments if needed. He prefers to avoid medication changes today given overall stability outside the recent cluster.\n\nI have provided a work note to support temporary flexibility around early morning shifts during the fasting period. Safety advice was reinforced, including avoiding heights, open water, and operating machinery if unwell or sleep-deprived. No other changes made.\n\nYours sincerely,",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 1168,
+      "end": 1241,
+      "text": "a brief cluster of events occurring on multiple days within the past week",
+      "attributes": {
+        "Label": "multiple per week",
+        "Type": "gold"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 1707,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 01 October 2020\n\nDr Aisha Karim\nConsultant Neurologist\nCentre for Epilepsy\nKing’s College Hospital, Denmark Hill, London\n\nDear Dr Aisha Karim,\n\nMr Samir Khan, DOB: 12-03-1987, Hospital No: KCH482917 NHS No. 9430025719\n22 Brookfield Road, London, SE5 9AB\n\nDiagnosis:\n\nSeizure disorder with fluctuating control; prior trials of Levetiracetam not beneficial; good tolerability and stability on Lamotrigine to date\n\nAetiology:\n\nNo definitive structural or genetic cause identified from available records\n\nOther Medical Problems:\n\nVitamin D insufficiency previously treated; on maintenance cholecalciferol\n\nManagement Plan:\n\n1) Continue Lamotrigine at current dosing: 100 mg morning, 100 mg midday, 300 mg night, maintaining the same brand. 2) Provide rescue medication plan discussed for prolonged events; patient has declined changes today but will consider if patterns persist. 3) Arrange bloods (FBC, U&Es, LFTs, vitamin D) and Lamotrigine trough level prior to next visit. 4) Review in four months, with earlier contact if events cluster again.\n\nClinical Summary:\n\nSince the last review, the patient describes a brief cluster of events occurring on multiple days within the past week, coinciding with early starts and altered meal times. He reports brief episodes of reduced awareness and a sense of internal \"check out\" lasting under a minute, without clear precipitant other than disrupted sleep and inconsistent hydration. There was no generalised convulsion, injury, or emergency attendance. He self-rested afterwards and resumed normal activities. He remains in employment and is driving not applicable as he is not currently driving.\n\nWe discussed that forthcoming religious fasting periods may alter routine, including sleep and medication timing. He plans to maintain medication at the usual clock times with water, avoid missed doses, and prioritise adequate hydration and rest during non-fasting hours. He will keep a diary capturing sleep, dose timing, and any events so that we can correlate patterns and consider adjustments if needed. He prefers to avoid medication changes today given overall stability outside the recent cluster.\n\nI have provided a work note to support temporary flexibility around early morning shifts during the fasting period. Safety advice was reinforced, including avoiding heights, open water, and operating machinery if unwell or sleep-deprived. No other changes made.\n\nYours sincerely,",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states: 'Since the last review, the patient describes a brief cluster of events occurring on multiple days within the past week.' This indicates events happened on more than one day within a single week, but does not specify the exact number of days or the number of events per day. There is mention of brief episodes lasting under a minute and no generalized convulsions. Because the exact count is not provided, we must use 'multiple' as per the rules. The highest frequency dimension available is at the week level with clusters on multiple days, but without a clear number of events per cluster. Therefore, the best normalized label is 'multiple per week.'",
+      "seizure_frequency_number": [
+        "multiple per week",
+        "a brief cluster of events occurring on multiple days within the past week"
+      ],
+      "reference": [
+        "multiple per week",
+        "several focal seizures last week"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 1
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

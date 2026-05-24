@@ -1,0 +1,65 @@
+{
+  "id": "gan_6011",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Aisha Rahman,                                                                                                         \n\nDaniel Thompson, DOB: 22-11-1990, Hospital No: H7385204 NHS No. 9842157630  \nFlat 3, 27 Fenchurch Street, London, EC3M 5AD  \n\nEpilepsy – Generalised Epilepsy Type\n\nMedication: Sodium Valproate initiated March 2025\n\nSodium Valproate 500mg twice daily (patient-reported adherence variable over the past month)\n\nValproate Blood Level:\n\n24 September 2025: 38 mg/L (laboratory therapeutic range 50–100 mg/L). Dose at time of sampling: 500mg twice daily\n\nSeizures: Seizures during intercurrent illness. The patient reports a marked increase in generalised tonic–clonic events over the past six weeks, temporally associated with a viral upper respiratory infection and subsequent sleep disruption. Prior to this, he had been seizure-free for approximately four months. He also describes brief morning myoclonic jerks on three occasions in the last fortnight, typically following nights of poor sleep.\n\nI reviewed Daniel Thompson today via a planned video consultation. He has recently become unemployed from his previous role in banking and reports significant stress, irregular routines, and fragmented sleep since mid-August. He volunteered that missed evening doses occurred on two separate occasions during this period. There is no history of head injury, alcohol excess, or recreational drug use. He denies new focal neurological symptoms. Family observations corroborate convulsive episodes occurring predominantly in the early morning during his intercurrent viral illness.\n\nWe discussed generalised epilepsy and the recognised tendency for seizures to cluster with sleep deprivation, psychological stress, and illness. He acknowledges the need to re-establish a consistent sleep schedule and to maintain strict medication adherence. He will keep a seizure diary noting sleep, stressors, and any further illnesses to help correlate triggers with events. No driving is undertaken.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 737,
+      "end": 963,
+      "text": "Seizures during intercurrent illness. The patient reports a marked increase in generalised tonic–clonic events over the past six weeks... He also describes brief morning myoclonic jerks on three occasions in the last fortnight",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 737,
+      "end": 773,
+      "text": "Seizures during intercurrent illness",
+      "attributes": {
+        "Label": "unknown",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 6011,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division \n\nClinic Date: 02 October 2025 \n\nDr Aisha Rahman  \nCentre for Epilepsy  \nQueen Square, London WC1N 3BG  \n\nDear Dr Aisha Rahman,                                                                                                         \n\nDaniel Thompson, DOB: 22-11-1990, Hospital No: H7385204 NHS No. 9842157630  \nFlat 3, 27 Fenchurch Street, London, EC3M 5AD  \n\nEpilepsy – Generalised Epilepsy Type\n\nMedication: Sodium Valproate initiated March 2025\n\nSodium Valproate 500mg twice daily (patient-reported adherence variable over the past month)\n\nValproate Blood Level:\n\n24 September 2025: 38 mg/L (laboratory therapeutic range 50–100 mg/L). Dose at time of sampling: 500mg twice daily\n\nSeizures: Seizures during intercurrent illness. The patient reports a marked increase in generalised tonic–clonic events over the past six weeks, temporally associated with a viral upper respiratory infection and subsequent sleep disruption. Prior to this, he had been seizure-free for approximately four months. He also describes brief morning myoclonic jerks on three occasions in the last fortnight, typically following nights of poor sleep.\n\nI reviewed Daniel Thompson today via a planned video consultation. He has recently become unemployed from his previous role in banking and reports significant stress, irregular routines, and fragmented sleep since mid-August. He volunteered that missed evening doses occurred on two separate occasions during this period. There is no history of head injury, alcohol excess, or recreational drug use. He denies new focal neurological symptoms. Family observations corroborate convulsive episodes occurring predominantly in the early morning during his intercurrent viral illness.\n\nWe discussed generalised epilepsy and the recognised tendency for seizures to cluster with sleep deprivation, psychological stress, and illness. He acknowledges the need to re-establish a consistent sleep schedule and to maintain strict medication adherence. He will keep a seizure diary noting sleep, stressors, and any further illnesses to help correlate triggers with events. No driving is undertaken.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter states there has been a marked increase in generalized tonic–clonic events over the past six weeks, associated with illness and sleep disruption. It also mentions three brief morning myoclonic jerks in the last fortnight. However, no explicit numeric count of generalized tonic–clonic seizures over the six weeks is provided, only that there was an increase and clustering. Prior to that, he was seizure-free for approximately four months, which does not meet the 6‑month seizure‑free criterion. Because the exact current frequency cannot be determined from the provided text and no precise numbers are given for the events in the recent period, the frequency is unknown.",
+      "seizure_frequency_number": [
+        "unknown",
+        "Seizures during intercurrent illness. The patient reports a marked increase in generalised tonic–clonic events over the past six weeks... He also describes brief morning myoclonic jerks on three occasions in the last fortnight"
+      ],
+      "reference": [
+        "unknown",
+        "Seizures during intercurrent illness"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [
+    {
+      "category": "unknown",
+      "description": "Gold label is unknown",
+      "oracle_impact": null
+    }
+  ],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}

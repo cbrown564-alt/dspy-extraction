@@ -1,0 +1,59 @@
+{
+  "id": "gan_4631",
+  "text": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Arun Patel\nRiverside Medical Practice\n48 Mill Street, Oxford OX2 0AL\n\nDear Dr Arun Patel,\n\nLayla Rahman, DOB: 22-11-1992, Hospital No: H374920 NHS No. 9438201756\nFlat 3, 19 Kingfisher Court, Oxford, OX1 5AB\n\nEpilepsy\n\nMedication: Currently using Lamotrigine tablets supplied by GP; patient-reported adherence variable during recent relocation.\n\nLamotrigine Blood Level:\n\nNo recent serum level available. Patient agrees to attend local phlebotomy when booked via GP.\n\nSeizures: Patient reports events occurring with intervals ranging 14 - 21 days. Episodes are described as brief losses of awareness with uncertainty about duration; no consistent preceding sensations reported. Post-event fatigue noted. No injuries reported.\n\nConsultation summary: I conducted a face-to-face review with an interpreter available by phone on request. The patient is a recent migrant to the UK and is learning NHS pathways, including how to arrange repeat prescriptions and blood tests. They brought a medication list from their previous country but were unsure of exact dosing transitions. They believe they are currently taking Lamotrigine 25 mg in the morning and 50 mg at night, though this has not been verified against dispensing records. They are motivated to stabilise treatment and to understand when to seek urgent care.\n\nPlan discussed with the patient:\n- Confirm current Lamotrigine dose via GP prescription history and community pharmacy records.\n- Arrange Lamotrigine level once dose is verified; patient consented and understands where to attend for bloods.\n- Provide written information (translated where possible) on seizure first aid and how to access the NHS 111 service and emergency services.\n- Encourage a simple seizure diary to document date, time, features, and any potential triggers; frequency currently described as intervals ranging 14 - 21 days.\n- Coordinate with GP for medication review and to ensure continuity of supply.\n\nI will update you once we have dose verification and blood results. The patient was given our clinic contact details and the hospital interpreting service number for future appointments.\n\nYours sincerely",
+  "entities": [
+    {
+      "id": "T_gold",
+      "type": "SeizureFrequency",
+      "start": 555,
+      "end": 624,
+      "text": "Patient reports events occurring with intervals ranging 14 - 21 days.",
+      "attributes": {
+        "Label": "1 per 14 to 21 day",
+        "Type": "gold"
+      }
+    },
+    {
+      "id": "T_ref",
+      "type": "SeizureFrequency",
+      "start": 593,
+      "end": 623,
+      "text": "Intervals ranging 14 - 21 days",
+      "attributes": {
+        "Label": "1 per 14 to 21 day",
+        "Type": "reference"
+      }
+    }
+  ],
+  "json_export": {
+    "source_row_index": 4631,
+    "clinic_date": "Centre for Epilepsy\n\nNeurosciences Division\n\nClinic Date: 02 October 2025\n\nDr Arun Patel\nRiverside Medical Practice\n48 Mill Street, Oxford OX2 0AL\n\nDear Dr Arun Patel,\n\nLayla Rahman, DOB: 22-11-1992, Hospital No: H374920 NHS No. 9438201756\nFlat 3, 19 Kingfisher Court, Oxford, OX1 5AB\n\nEpilepsy\n\nMedication: Currently using Lamotrigine tablets supplied by GP; patient-reported adherence variable during recent relocation.\n\nLamotrigine Blood Level:\n\nNo recent serum level available. Patient agrees to attend local phlebotomy when booked via GP.\n\nSeizures: Patient reports events occurring with intervals ranging 14 - 21 days. Episodes are described as brief losses of awareness with uncertainty about duration; no consistent preceding sensations reported. Post-event fatigue noted. No injuries reported.\n\nConsultation summary: I conducted a face-to-face review with an interpreter available by phone on request. The patient is a recent migrant to the UK and is learning NHS pathways, including how to arrange repeat prescriptions and blood tests. They brought a medication list from their previous country but were unsure of exact dosing transitions. They believe they are currently taking Lamotrigine 25 mg in the morning and 50 mg at night, though this has not been verified against dispensing records. They are motivated to stabilise treatment and to understand when to seek urgent care.\n\nPlan discussed with the patient:\n- Confirm current Lamotrigine dose via GP prescription history and community pharmacy records.\n- Arrange Lamotrigine level once dose is verified; patient consented and understands where to attend for bloods.\n- Provide written information (translated where possible) on seizure first aid and how to access the NHS 111 service and emergency services.\n- Encourage a simple seizure diary to document date, time, features, and any potential triggers; frequency currently described as intervals ranging 14 - 21 days.\n- Coordinate with GP for medication review and to ensure continuity of supply.\n\nI will update you once we have dose verification and blood results. The patient was given our clinic contact details and the hospital interpreting service number for future appointments.\n\nYours sincerely",
+    "labels_match_all_categories": true,
+    "quotes_ok_all_categories": true,
+    "row_ok": true,
+    "mismatch_categories": "",
+    "quote_issue_categories": "",
+    "check__Seizure Frequency Number": {
+      "analysis": "The letter explicitly states: 'Seizures: Patient reports events occurring with intervals ranging 14 - 21 days.' This indicates one seizure approximately every 14 to 21 days. Convert interval to frequency as a range: 1 per 14 to 21 days. No other frequencies are provided. Not seizure free.",
+      "seizure_frequency_number": [
+        "1 per 14 to 21 day",
+        "Patient reports events occurring with intervals ranging 14 - 21 days."
+      ],
+      "reference": [
+        "1 per 14 to 21 day",
+        "Intervals ranging 14 - 21 days"
+      ]
+    }
+  },
+  "overlaps": [],
+  "temporal_sparse": [],
+  "incomplete_meds": [],
+  "timeline_events": [],
+  "type_counts": {
+    "SeizureFrequency": 2
+  },
+  "flaws": [],
+  "negated_entities": [],
+  "low_certainty": [],
+  "has_unknown_seizure": false
+}
