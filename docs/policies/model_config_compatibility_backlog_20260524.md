@@ -3,11 +3,14 @@
 Date: 2026-05-24  
 Status: Source-backed backlog note  
 Decision scope: operational / test-only  
-Source draft: `docs/workstreams/cursor_sdk/archive/compatibility/20260523T164950Z_model_compatibility_report.md`
+Source drafts:
+
+- `docs/workstreams/cursor_sdk/archive/compatibility/20260523T164950Z_model_compatibility_report.md`
+- `docs/workstreams/cursor_sdk/compatibility/20260524T131358Z_model_compatibility_report.md`
 
 ## Purpose
 
-This note promotes verified, still-current findings from the archived Cursor SDK model compatibility report into a source-backed backlog. It does not change provider configs, adapter behavior, experiment configs, scorer semantics, or registry rows.
+This note promotes verified, still-current findings from Cursor SDK model compatibility reports into a source-backed backlog. It does not change provider configs, adapter behavior, experiment configs, scorer semantics, or registry rows.
 
 The draft was useful as a review lead, but SDK prose is not authority. Findings below were checked against:
 
@@ -131,6 +134,36 @@ Hosted configs currently rely on provider defaults for some output budgets:
 - Claude Sonnet 4.6 sets `max_tokens=8192`.
 
 This is acceptable for recorded smokes, but not proof that long ExECT S4/S5 full-validation outputs will fit. Any broad hosted-provider comparison should record token budgets, timeout behavior, schema validity, and evidence support in run artifacts.
+
+### B6 - Add Config-Level Coverage For The Production DSPy Path
+
+Status: `open`  
+Scope: `mechanism`
+
+The 2026-05-24 stale-check report correctly identified that `tests/test_model_comparison_configs.py` loads all model JSON files through `build_chat_adapter`, while production experiment execution uses `build_dspy_lm`.
+
+This is partly covered by targeted tests in `tests/test_llm_adapters.py`, but there is no parametrized test that walks every file in `configs/models/*.json` through `build_dspy_lm` and asserts the provider-specific kwargs that matter for live runs.
+
+Candidate test coverage:
+
+- Ollama configs resolve to `ollama_chat/{model}` and include `extra_body.think == False`.
+- Gemini configs resolve to `gemini/{model}` and make `reasoning_effort` behavior explicit.
+- Anthropic configs resolve to `anthropic/{model}` and preserve configured `extra_body` nesting.
+- GPT-5-family OpenAI configs continue to omit `temperature` when the config sets `temperature: null`.
+
+Keep this as offline unit coverage; do not require API keys or live provider calls.
+
+### B7 - Revisit Gemini Reasoning Default Matching
+
+Status: `open`  
+Scope: `stale_check`
+
+`build_dspy_lm` currently defaults `reasoning_effort="minimal"` when `"gemini-3"` appears anywhere in the model id. That means both `gemini-3-flash-preview` and `gemini-3.1-flash-lite` receive the default when the config omits `reasoning_effort`.
+
+This behavior is code-backed, but whether `gemini-3.1-flash-lite` should receive that parameter is provider/LiteLLM-specific and was not verified in this review. Before broad Gemini comparisons, either:
+
+- make the intended reasoning behavior explicit in config and tests, or
+- replace substring matching with an allowlist of provider-verified model ids.
 
 ## Findings Not Promoted
 

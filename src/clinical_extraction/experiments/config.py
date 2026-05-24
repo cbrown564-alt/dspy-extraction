@@ -99,6 +99,7 @@ class OptimizerConfig(FrozenModel):
         "pragmatic_category",
         "semantic_frequency_with_evidence",
         "semantic_frequency_with_evidence_feedback",
+        "gan_s0_stage_attributed_frequency_feedback",
         "synthesis_exact_with_evidence",
         "synthesis_exact_with_evidence_feedback",
         "exect_field_family_micro_f1",
@@ -131,6 +132,7 @@ class OptimizerConfig(FrozenModel):
                 )
             if self.metric_name in {
                 "semantic_frequency_with_evidence_feedback",
+                "gan_s0_stage_attributed_frequency_feedback",
                 "synthesis_exact_with_evidence_feedback",
             }:
                 raise ValueError(
@@ -145,6 +147,7 @@ class OptimizerConfig(FrozenModel):
                 )
             if self.metric_name in {
                 "semantic_frequency_with_evidence_feedback",
+                "gan_s0_stage_attributed_frequency_feedback",
                 "synthesis_exact_with_evidence_feedback",
             }:
                 raise ValueError(
@@ -154,6 +157,7 @@ class OptimizerConfig(FrozenModel):
 
         if self.metric_name not in {
             "semantic_frequency_with_evidence_feedback",
+            "gan_s0_stage_attributed_frequency_feedback",
             "synthesis_exact_with_evidence_feedback",
         }:
             raise ValueError("GEPA optimizer configs must use a feedback metric.")

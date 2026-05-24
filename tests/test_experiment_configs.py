@@ -61,6 +61,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_SCHEMA_LEVEL,
     GAN_FREQUENCY_S0_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
     GAN_FREQUENCY_S0_REACT_TEMPORAL_TOOLS_VARIANT,
     GAN_FREQUENCY_S0_TEMPORAL_EVENT_TABLE_VERIFY_REPAIR_VARIANT,
     GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT,
@@ -1405,6 +1406,73 @@ def test_gan_s0_semantic_gepa_cap25_config_records_semantic_feedback_metric():
     caveats = " ".join(config.metric_caveats).lower()
     assert "optimizer-facing only" in caveats
     assert "verify-repair v2" in caveats
+
+
+def test_gan_s0_multistage_gepa_gpt_validation_v1_configs_record_contract():
+    control = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_multistage_gepa_g0_control_cap25_gpt4_1_mini.json"
+        )
+    )
+    adjudicator = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_multistage_gepa_g1_adjudicator_cap25_gpt4_1_mini.json"
+        )
+    )
+    verify_repair = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "gan_s0_multistage_gepa_g2_verify_repair_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    for config in (control, adjudicator, verify_repair):
+        assert config.taxonomy is not None
+        assert (
+            config.taxonomy.comparison_group
+            == "gan_s0_multistage_gepa_gpt_validation_v1"
+        )
+        assert config.taxonomy.varied_factor == "optimizer_strategy"
+        assert config.taxonomy.implementation_variant == "gan_s0_candidate_builder_gap_v1"
+        assert config.taxonomy.schema_complexity == "gan_s0"
+        assert config.taxonomy.clinical_task_family == "frequency"
+        assert config.max_records == 25
+        assert config.split_name == "gan_2026_fixed_v1:validation"
+        caveats = " ".join(config.metric_caveats).lower()
+        assert "seizure_frequency_number[0]" in caveats
+        assert "not published gan benchmark reproduction" in caveats
+
+    assert control.optimizer is None
+    assert control.program_variant == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT
+    assert control.taxonomy.stage_graph_id == "g2_candidates_adjudicate"
+    assert control.taxonomy.stage_executor == "det_candidates_llm_adjudicate"
+
+    for config in (adjudicator, verify_repair):
+        assert config.optimizer is not None
+        assert config.optimizer.name == "GEPA"
+        assert (
+            config.optimizer.metric_name
+            == "gan_s0_stage_attributed_frequency_feedback"
+        )
+        assert config.optimizer.max_metric_calls == 64
+        assert config.optimizer.trainset_size == 50
+        assert config.optimizer.track_stats
+        assert config.optimizer.track_best_outputs
+        assert config.optimizer.use_cloudpickle
+        assert "optimizer-facing only" in " ".join(config.metric_caveats).lower()
+
+    assert adjudicator.program_variant == (
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT
+    )
+    assert adjudicator.taxonomy.program_architecture == "temporal_candidates_single_pass"
+    assert verify_repair.program_variant == (
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_VERIFY_REPAIR_VARIANT
+    )
+    assert verify_repair.taxonomy.program_architecture == "temporal_candidates_verify_repair"
+    assert verify_repair.taxonomy.stage_graph_id == "g3_candidates_extract_repair"
+    assert verify_repair.taxonomy.stage_executor == "det_candidates_llm_adjudicate_llm_vr"
 
 
 def test_qwen35b_verify_repair_regression_slice_config_uses_v2_4_and_record_ids():

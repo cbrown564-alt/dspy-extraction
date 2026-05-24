@@ -74,6 +74,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     build_gan_s0_module,
     compile_gan_s0_module,
     compile_gan_s0_module_gepa,
+    gan_frequency_s0_stage_attributed_feedback_metric,
     gan_frequency_s0_semantic_evidence_feedback_metric,
     gan_frequency_s0_semantic_evidence_metric,
     gan_frequency_s0_synthesis_feedback_metric,
@@ -1075,6 +1076,75 @@ def test_gan_frequency_s0_semantic_evidence_feedback_metric_reports_partial_cred
 
     assert result.score == 0.65
     assert "[purist-category]" in result.feedback
+
+
+def test_gan_frequency_s0_stage_attributed_feedback_metric_names_adjudicator_stage():
+    example = dspy.Example(
+        note_text="Events happen after sleep deprivation, but no frequency is given.",
+        seizure_frequency_number="unknown",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="no seizure frequency reference",
+        evidence_text="Events happen after sleep deprivation",
+    )
+
+    result = gan_frequency_s0_stage_attributed_feedback_metric(example, pred)
+
+    assert result.score < 1.0
+    assert "[stage:adjudicator]" in result.feedback
+    assert "[frequency-semantics]" in result.feedback
+
+
+def test_gan_frequency_s0_stage_attributed_feedback_metric_uses_candidate_schema():
+    example = dspy.Example(
+        note_text="He has daily absences.",
+        seizure_frequency_number="1 per day",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="unknown",
+        evidence_text="He has daily absences.",
+    )
+
+    result = gan_frequency_s0_stage_attributed_feedback_metric(example, pred)
+
+    assert result.score < 1.0
+    assert "[stage:adjudicator]" in result.feedback
+    assert "[stage:candidate_surface]" not in result.feedback
+
+
+def test_gan_frequency_s0_stage_attributed_feedback_metric_names_verifier_stage():
+    example = dspy.Example(
+        note_text="He reports 4 focal seizures per week despite medication.",
+        seizure_frequency_number="4 per week",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="unknown",
+        evidence_text="4 focal seizures per week",
+        verifier_decision="repair",
+        verifier_reason="Changed the initial label to unknown.",
+    )
+
+    result = gan_frequency_s0_stage_attributed_feedback_metric(example, pred)
+
+    assert result.score < 1.0
+    assert "[stage:verifier]" in result.feedback
+
+
+def test_gan_frequency_s0_stage_attributed_feedback_metric_names_evidence_stage():
+    example = dspy.Example(
+        note_text="The patient has two seizures per month.",
+        seizure_frequency_number="2 per month",
+    ).with_inputs("note_text")
+    pred = dspy.Prediction(
+        seizure_frequency_number="2 per month",
+        evidence_text="two monthly seizures",
+    )
+
+    result = gan_frequency_s0_stage_attributed_feedback_metric(example, pred)
+
+    assert result.score == 0.0
+    assert "[stage:evidence]" in result.feedback
+    assert "unsupported-quote" in result.feedback
 
 
 def test_gan_frequency_s0_synthesis_metric_requires_quote_when_gold_evidence_is_paraphrased():

@@ -2883,6 +2883,9 @@ def gan_frequency_s0_synthesis_feedback_metric(
     gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
     note_text = getattr(example, "note_text", "") or ""
 
+    if not gold:
+        return base
+
     if not predicted:
         return ScoreWithFeedback(
             score=0.0,
@@ -3100,6 +3103,126 @@ def gan_frequency_s0_semantic_evidence_feedback_metric(
     return ScoreWithFeedback(score=metric_score, feedback=feedback)
 
 
+def gan_frequency_s0_stage_attributed_feedback_metric(
+    example: dspy.Example,
+    pred: dspy.Prediction,
+    trace=None,
+    pred_name=None,
+    pred_trace=None,
+):
+    """GEPA feedback metric that names the Gan S0 pipeline stage at fault.
+
+    This is optimizer-facing only. It keeps benchmark scoring unchanged while
+    making GEPA feedback usable for multi-stage programs whose failures may sit
+    in candidate generation, adjudication, verifier/repair, evidence, or format.
+    """
+    from dspy.teleprompt.gepa.gepa_utils import ScoreWithFeedback
+
+    from clinical_extraction.gan.scoring import score_gan_frequency_prediction
+    from clinical_extraction.gan.temporal_candidates import (
+        build_temporal_frequency_candidates_from_note,
+    )
+
+    base = gan_frequency_s0_semantic_evidence_feedback_metric(
+        example,
+        pred,
+        trace=trace,
+        pred_name=pred_name,
+        pred_trace=pred_trace,
+    )
+    predicted = getattr(pred, GAN_FREQUENCY_S0_FIELD, None)
+    gold = getattr(example, GAN_FREQUENCY_S0_FIELD, None)
+    note_text = getattr(example, "note_text", "") or ""
+
+    stage_feedback: list[str] = []
+    if not predicted:
+        stage_feedback.append(
+            "[stage:adjudicator] The LLM did not select a canonical Gan label."
+        )
+        return ScoreWithFeedback(
+            score=base.score,
+            feedback=" ".join(stage_feedback + [base.feedback]),
+        )
+
+    try:
+        score = score_gan_frequency_prediction(
+            gold_label=gold,
+            predicted_label=predicted,
+        )
+    except ValueError:
+        stage_feedback.append(
+            "[stage:format] The emitted label is malformed before benchmark "
+            "scoring can compare frequency semantics."
+        )
+        return ScoreWithFeedback(
+            score=base.score,
+            feedback=" ".join(stage_feedback + [base.feedback]),
+        )
+
+    candidate_labels = {
+        candidate.canonical_label
+        for candidate in build_temporal_frequency_candidates_from_note(note_text)
+    }
+    normalized_candidate_labels = {
+        score_gan_frequency_prediction(gold_label=label, predicted_label=label)
+        .normalized_gold_label
+        for label in candidate_labels
+    }
+    gold_candidate_missing = (
+        gold not in {"unknown", "no seizure frequency reference"}
+        and score.normalized_gold_label not in normalized_candidate_labels
+    )
+    if gold_candidate_missing:
+        stage_feedback.append(
+            "[stage:candidate_surface] The deterministic temporal-candidate "
+            "surface did not include the normalized gold label; do not treat this "
+            "as an adjudicator-only failure."
+        )
+
+    evidence_feedback = _evidence_policy_feedback(
+        gold_label=gold,
+        predicted_evidence=getattr(pred, "evidence_text", None),
+        note_text=note_text,
+    )
+    if evidence_feedback is not None:
+        stage_feedback.append(
+            "[stage:evidence] The label/evidence pair failed the source-quote "
+            "support contract."
+        )
+
+    if not score.exact_normalized_match:
+        if getattr(pred, "verifier_decision", None) or getattr(pred, "verifier_reason", None):
+            stage_feedback.append(
+                "[stage:verifier] The verify/repair stage returned a residual "
+                "frequency error after seeing the initial label."
+            )
+        elif not gold_candidate_missing:
+            stage_feedback.append(
+                "[stage:adjudicator] The gold-compatible candidate surface was "
+                "available or not disproven, but the selected label missed the "
+                "Gan frequency semantics."
+            )
+        if (
+            _looks_like_cluster_failure(score.predicted_label)
+            or "cluster" in score.normalized_gold_label
+        ):
+            stage_feedback.append(
+                "[stage:format] Preserve canonical cluster structure and "
+                "per-cluster counts."
+            )
+
+    if not stage_feedback:
+        stage_feedback.append(
+            "[stage:all] Candidate surface, adjudication, evidence, and format "
+            "matched the optimizer-facing contract."
+        )
+
+    return ScoreWithFeedback(
+        score=base.score,
+        feedback=" ".join(stage_feedback + [base.feedback]),
+    )
+
+
 def _semantic_frequency_reward(score) -> float:
     if score.exact_normalized_match:
         return 1.0
@@ -3300,6 +3423,9 @@ GAN_FREQUENCY_S0_OPTIMIZER_METRICS = {
     "semantic_frequency_with_evidence_feedback": (
         gan_frequency_s0_semantic_evidence_feedback_metric
     ),
+    "gan_s0_stage_attributed_frequency_feedback": (
+        gan_frequency_s0_stage_attributed_feedback_metric
+    ),
     "synthesis_exact_with_evidence": gan_frequency_s0_synthesis_metric,
     "synthesis_exact_with_evidence_feedback": gan_frequency_s0_synthesis_feedback_metric,
 }
@@ -3313,6 +3439,7 @@ def _gan_s0_optimizer_trainset(
     if optimizer_metric in {
         "semantic_frequency_with_evidence",
         "semantic_frequency_with_evidence_feedback",
+        "gan_s0_stage_attributed_frequency_feedback",
         "synthesis_exact_with_evidence",
         "synthesis_exact_with_evidence_feedback",
     }:

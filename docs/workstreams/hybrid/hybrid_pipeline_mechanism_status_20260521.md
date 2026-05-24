@@ -63,6 +63,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Bootstrap optimizer (ExECT S1) | **arm-reject** | cap-25 −5.1pp |
 | DSPy optimizers (general) | **open** | ExECT stripped L0/L1 compile **arm-reject** for policy substitution (best 71.7% cap-25) — `docs/experiments/exect/exect_s1_ladder_optimizer_automation_inspection_20260521.md` |
 | GEPA (Gan) | **arm-reject** | historical full |
+| Multi-stage GEPA over Gan candidate/adjudicator or verify-repair skeleton | **open** | Newly preregistered workstream distinguishes this from historical direct GEPA arm reject; see `docs/workstreams/optimizer/gan_s0_multistage_gepa_workstream_20260524.md` |
 | ReAct interface (Gan) | **arm-reject** | one implementation |
 | Candidate table vs JSON vs prose (Gan) | **open** | Cap-25: +4pp table vs prose; **cap-50 confirm null** (62% tie) — `docs/experiments/gan/gan_s0_implementation_variant_gpt_cap50_v1_inspection_20260521.md` |
 | Canonical format examples (Gan adjudicate) | **open** | Cap-25 C1 +4pp exact (arm hold); residual 30-record replay null — `docs/experiments/gan/gan_s0_canonical_format_residual_slice_replay_20260521.md` |
