@@ -10,7 +10,7 @@ Scorer: `gan_frequency_deterministic_v1`
 
 ## Summary
 
-Current deterministic temporal builders contain the exact gold label for **23/25** records (92.0%). The pre-G13 baseline was 5/25 in `docs/experiments/gan/gan_s0_policy_pipeline_synthesis_20260523.md`.
+Current deterministic temporal builders contain the exact gold label for **25/25** records (100.0%). The pre-G13 baseline was 5/25 in `docs/experiments/gan/gan_s0_policy_pipeline_synthesis_20260523.md`.
 
 The v1.4 GPT control has 16 monthly-frequency misses on the same slice. Candidate absence is therefore a concrete upstream bottleneck, especially for records where v1.4 predicted `unknown` or a nearby but wrong window label.
 
@@ -22,7 +22,7 @@ The v1.4 GPT control has 16 monthly-frequency misses on the same slice. Candidat
 | `counted_window_no_further_events_over_unknown` | 2 | 2 | 100.0% |
 | `frequent_quantified_over_unknown` | 3 | 3 | 100.0% |
 | `infrequent_quantified_over_unknown` | 15 | 15 | 100.0% |
-| `seizure_free_over_unknown` | 2 | 0 | 0.0% |
+| `seizure_free_over_unknown` | 2 | 2 | 100.0% |
 | `vague_multiple_over_unknown` | 2 | 2 | 100.0% |
 
 ## Record-Level Audit
@@ -33,8 +33,8 @@ The v1.4 GPT control has 16 monthly-frequency misses on the same slice. Candidat
 | `gan_13123` | `infrequent_quantified_over_unknown` | `1 per year` | `1 per year` | yes | `1 per year` |
 | `gan_13149` | `infrequent_quantified_over_unknown` | `3 per year` | `1 per year` | yes | `3 per year` |
 | `gan_13190` | `infrequent_quantified_over_unknown` | `1 per 5 month` | `1 per 5 month` | yes | `1 per 5 month` |
-| `gan_13574` | `seizure_free_over_unknown` | `seizure free for multiple year` | `seizure free for year` | no | `none` |
-| `gan_13598` | `seizure_free_over_unknown` | `seizure free for multiple year` | `seizure free for years` | no | `none` |
+| `gan_13574` | `seizure_free_over_unknown` | `seizure free for multiple year` | `seizure free for year` | yes | `seizure free for multiple year` |
+| `gan_13598` | `seizure_free_over_unknown` | `seizure free for multiple year` | `seizure free for years` | yes | `seizure free for multiple year` |
 | `gan_14214` | `frequent_quantified_over_unknown` | `2 to 4 per month` | `2 to 4 per month` | yes | `2 to 4 per month` |
 | `gan_14250` | `counted_window_no_further_events_over_unknown` | `2 per month` | `2 per month` | yes | `2 per month` |
 | `gan_14485` | `counted_window_no_further_events_over_unknown` | `2 per 3 month` | `2 per 3 month` | yes | `2 per 3 month` |
@@ -59,7 +59,6 @@ The v1.4 GPT control has 16 monthly-frequency misses on the same slice. Candidat
 
 | Family | Records | Candidate-builder implication |
 | --- | --- | --- |
-| `seizure_free_over_unknown` | `gan_13574`, `gan_13598` | Preregister seizure-free/no-current-seizure boundary rules before implementation. |
 
 ## Implementation Notes For G12/G13
 

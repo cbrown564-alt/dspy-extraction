@@ -441,4 +441,13 @@ def test_enriched_gap_slice_gold_label_coverage_improves():
         record = _record(record_id)
         if record.gold_label in _labels(record_id):
             covered += 1
-    assert covered >= 23
+    assert covered >= 25
+
+
+def test_temporal_candidates_represent_multi_year_seizure_free_remission():
+    candidates_13574 = build_temporal_frequency_candidates(_record("gan_13574"))
+    assert "seizure free for multiple year" in {c.canonical_label for c in candidates_13574}
+    
+    candidates_13598 = build_temporal_frequency_candidates(_record("gan_13598"))
+    assert "seizure free for multiple year" in {c.canonical_label for c in candidates_13598}
+

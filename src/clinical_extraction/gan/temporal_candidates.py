@@ -118,6 +118,7 @@ def build_temporal_frequency_candidates_from_note(
     candidates.extend(_last_seizure_with_since_jerks(note_text))
     candidates.extend(_no_major_seizures_since_but_minor_continues(note_text))
     candidates.extend(_interval_spacing_candidates(note_text))
+    candidates.extend(_seizure_free_for_multiple_year(note_text))
     return _dedupe_candidates(candidates)
 
 
@@ -1412,6 +1413,35 @@ def _interval_spacing_candidates(
         )
         
     return candidates
+
+
+def _seizure_free_for_multiple_year(
+    note_text: str,
+) -> list[GanTemporalFrequencyCandidate]:
+    """Emit canonical multi-year seizure-free label when duration is explicitly vague-multi-year."""
+    match = re.search(
+        r"(?P<evidence>[^.]*\b(?:has been |having been |remains |is )?"
+        r"seizure[- ]free(?: for)?(?: the past)? "
+        r"(?:for )?(?:multiple|several|a number of )?years?[^.]*)",
+        note_text,
+        flags=re.IGNORECASE,
+    )
+    if match is None:
+        return []
+    evidence = match.group("evidence").strip()
+    return [
+        GanTemporalFrequencyCandidate(
+            canonical_label="seizure free for multiple year",
+            event_count="0",
+            window_count="multiple",
+            window_unit="year",
+            evidence_text=evidence,
+            derivation=(
+                "explicit multi-year seizure freedom; emit policy canonical "
+                "'seizure free for multiple year' without inferring N"
+            ),
+        )
+    ]
 
 
 def _clinic_date(note_text: str) -> date | None:
