@@ -89,6 +89,7 @@ Skills:
 Read:
 
 - `docs/policies/model_config_smoke_tests.md`
+- `docs/policies/provider_smoke_ledger_20260524.md`
 - `docs/policies/qwen_dspy_latency_policy.md`
 - `docs/planning/kanban_plan.md`
 

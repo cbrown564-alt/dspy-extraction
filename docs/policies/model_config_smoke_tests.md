@@ -1,6 +1,6 @@
 # Gan S0 Model-Config Smoke Tests
 
-Last updated: 2026-05-22
+Last updated: 2026-05-24
 
 ## Purpose
 
@@ -12,6 +12,9 @@ estimates, model comparisons, or published Gan benchmark reproduction.
 
 For hosted model quality, latency, and billing comparisons on Gan S0, read
 `docs/experiments/gan/gan_s0_hosted_model_comparison_matrix.md`.
+
+Canonical run IDs, gate status, and structured-output fields for model-suite tracks:
+[provider_smoke_ledger_20260524.md](provider_smoke_ledger_20260524.md).
 
 For local Qwen scaling decisions, also read
 `docs/policies/qwen_dspy_latency_policy.md`. In particular, Qwen3.6:35b should not use
@@ -121,5 +124,5 @@ uv run python scripts/run_experiment.py --experiment configs/experiments/exect_s
 uv run python scripts/run_experiment.py --experiment configs/experiments/gan_s0_smoke_qwen9b_ollama.json --env-file .env
 ```
 
-Record the resulting run IDs in `docs/planning/kanban_plan.md` and keep the caveat that
-these capped runs validate runtime compatibility only.
+Record the resulting run IDs in [provider_smoke_ledger_20260524.md](provider_smoke_ledger_20260524.md)
+and keep the caveat that these capped runs validate runtime compatibility only.

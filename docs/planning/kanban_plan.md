@@ -20,9 +20,8 @@
 
 ## Current Priorities
 
-1. **Provider smoke discipline (E3).** Record run ID, config, structured-output, schema validity, evidence support before broad model comparisons.
-2. **ExECT S5 seizure frequency iteration.** Paper freeze is 72.3% freq F1 (verifier + A3 stack). High-precision candidate pruning and temporal medication guard are **rejected arms** (D2). Next mechanism work: residual-driven verifier/policy tuning — not candidate narrowing.
-3. **Gan S0 — hold new arms.** Builder-gap v1 stays the default (80.6% monthly). Residual map is documented; unknown-overuse prompt and GEPA G1/G2 are rejected (D2). Any new Gan work needs preregistration (builder extension for no-candidate records is the highest-upside deferred item).
+1. **ExECT S5 seizure frequency iteration.** Paper freeze is 72.3% freq F1 (verifier + A3 stack). High-precision candidate pruning and temporal medication guard are **rejected arms** (D2). Next mechanism work: residual-driven verifier/policy tuning — not candidate narrowing.
+2. **Gan S0 — hold new arms.** Builder-gap v1 stays the default (80.6% monthly). Residual map is documented; unknown-overuse prompt and GEPA G1/G2 are rejected (D2). Any new Gan work needs preregistration (builder extension for no-candidate records is the highest-upside deferred item).
 
 ---
 
@@ -38,7 +37,7 @@ Condensed outcomes from completed pathways. Full detail in linked walkthroughs a
 | **Explorer** | ExECT + Gan share `explorer_model_catalog` schema; Model panel uses dataset-specific metric labels. | Inspection surface ready for paper review — no new Explorer work required. |
 | **Rejected mechanisms** | High-precision ExECT freq candidates, Gan unknown-overuse v1.5, GEPA multi-stage G1/G2, ExECT A4 temporal med guard, Gan C2 prompt variants. | Capture in D2 arm-reject table with `decision_scope: arm`. |
 
-**Completed pathway walkthroughs:** [Pathway A (A4 rejected)](../experiments/exect/exect_s5_medication_temporal_guard_walkthrough_20260524.md) · [Pathway B](../experiments/exect/exect_explorer_pathway_b_completion_walkthrough_20260524.md) · [Pathway C](../experiments/gan/gan_s0_pathway_c_completion_walkthrough_20260524.md) · [Pathway D](../experiments/synthesis/pathway_d_paper_evidence_freeze_walkthrough_20260524.md)
+**Completed pathway walkthroughs:** [Pathway A (A4 rejected)](../experiments/exect/exect_s5_medication_temporal_guard_walkthrough_20260524.md) · [Pathway B](../experiments/exect/exect_explorer_pathway_b_completion_walkthrough_20260524.md) · [Pathway C](../experiments/gan/gan_s0_pathway_c_completion_walkthrough_20260524.md) · [Pathway D](../experiments/synthesis/pathway_d_paper_evidence_freeze_walkthrough_20260524.md) · [Pathway E](../experiments/synthesis/pathway_e_workflow_readiness_completion_walkthrough_20260524.md)
 
 ---
 
@@ -59,7 +58,7 @@ Condensed outcomes from completed pathways. Full detail in linked walkthroughs a
 | --- | --- | --- |
 | E1. API key preflight | Done | — |
 | E2. Qwen high-context warning | Done | — |
-| E3. Provider smoke ledger | **Ready** | Record run ID, config, structured-output, schema validity, evidence support before model comparisons |
+| E3. Provider smoke ledger | **Done** | [provider_smoke_ledger_20260524.md](../policies/provider_smoke_ledger_20260524.md) |
 | E4. Cursor implementation workflow | Done | — |
 
 ---
@@ -94,8 +93,6 @@ Require new preregistration. Do not pull unless paper or benchmark gates justify
 
 - Gan builder extension for no-candidate `other_semantic_mismatch` records
 - Gan multi-type highest-frequency or window-priority prompt arms
-- Provider smoke ledger entries (E3)
-
 ---
 
 ## Standing Guardrails
