@@ -471,6 +471,39 @@ def run_experiment(
     emit(f"Split:      {config.split_name}")
     emit(f"Model:      {config.model_config_path}")
 
+    model_config = LLMProviderConfig.model_validate_json(
+        config.model_config_path.read_text(encoding="utf-8")
+    )
+
+    # B2 check: Add Runtime Environment Checks Before Live Provider Runs
+    if model_config.provider not in ("ollama", "mock"):
+        api_key_env = model_config.api_key_env
+        if api_key_env:
+            if not os.environ.get(api_key_env):
+                emit(f"Warning: required API key environment variable {api_key_env!r} is not set in the current process or env file.")
+                if not dry_run:
+                    raise ValueError(f"Required API key environment variable {api_key_env!r} is not set.")
+        elif not model_config.api_key:
+            emit("Warning: no api_key or api_key_env configured for hosted provider.")
+            if not dry_run:
+                raise ValueError("No api_key or api_key_env configured for hosted provider.")
+
+    # B3 check: Keep Qwen Context And Timeout Pairing Explicit
+    if model_config.provider == "ollama":
+        num_ctx = (model_config.extra_body.get("options") or {}).get("num_ctx")
+        if num_ctx is not None and num_ctx >= 131072:
+            is_stress_test = any(
+                "stress" in caveat.lower() or "latency" in caveat.lower()
+                for caveat in config.metric_caveats
+            ) or "stress" in config.experiment_id.lower() or "latency" in config.experiment_id.lower()
+            
+            if model_config.timeout_seconds < 1800 and not is_stress_test:
+                emit(
+                    f"Warning: high-context Ollama model run (num_ctx={num_ctx}) is paired with "
+                    f"a timeout of {model_config.timeout_seconds}s (recommended >= 1800s). "
+                    "Stress or latency tests must declare this in metric_caveats or experiment_id."
+                )
+
     all_records = backend.load_records_by_id()
     records, missing_from_dataset = load_split_records(config, all_records)
     if missing_from_dataset:
@@ -486,9 +519,6 @@ def run_experiment(
         emit("\nDry run — exiting before model calls.")
         return 0
 
-    model_config = LLMProviderConfig.model_validate_json(
-        config.model_config_path.read_text(encoding="utf-8")
-    )
     lm = build_dspy_lm(model_config)
     dspy.configure(lm=lm)
     reflection_lm = None
