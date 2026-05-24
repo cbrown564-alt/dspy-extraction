@@ -110,6 +110,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSIO
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_UNKNOWN_OVERUSE_GUARD_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_5_unknown_overuse_guard"
+)
 GAN_FREQUENCY_S0_LLM_TEMPORAL_CANDIDATES_PROMPT_VERSION = (
     "gan_frequency_s0_llm_temporal_candidates_v1_1"
 )
@@ -889,6 +892,55 @@ GAN_FREQUENCY_S0_TARGETED_EXAMPLES_MIN7_ADDENDUM = """
 """
 
 
+GAN_FREQUENCY_S0_UNKNOWN_OVERUSE_GUARD_ADDENDUM = """
+    Unknown-overuse guard policy (v1.5 unknown_overuse_guard; C2 arm):
+    Layered on top of the v1.4 error-taxonomy policy. Apply all existing v1.4
+    rules first, then apply the following refinements for unknown/no-reference
+    boundary cases:
+
+    1. Quantified-window preservation: If the note gives a count of events in
+       an explicit calendar window (e.g. 'N seizures in the past M months',
+       'N per M weeks'), preserve the rate label even if the note also says
+       'no further events since'. Override to 'unknown' ONLY if the window is
+       trigger-conditioned (e.g. after medication withdrawal, following a
+       single febrile episode), explicitly stated as exceptional, or shorter
+       than two weeks with no follow-up window.
+
+    2. Seizure-free vs unknown boundary: Use 'seizure free for N unit' when
+       the note states documented freedom for at least 6 months with no
+       intercurrent breakthrough event. Use 'unknown' when the note mentions
+       seizure activity but no usable frequency denominator is available. If
+       the note says 'no further events' without a duration, and no prior
+       window count is available, use 'unknown'.
+
+    3. No seizure frequency reference vs unknown: Use 'no seizure frequency
+       reference' ONLY when the note has no current or recent epileptic
+       seizure events at all (only remote history, childhood events, or
+       non-epileptic episodes). Use 'unknown' when seizure activity is
+       described but frequency cannot be quantified. Do NOT use 'unknown' as
+       a fallback for notes with zero seizure context.
+       Examples:
+       - Admin/scheduling-only letter -> 'no seizure frequency reference'
+       - 'clusters after poor sleep' with no counts -> 'unknown'
+       - 'last seizure on DATE' without an ongoing rate -> 'unknown'
+       - Childhood febrile seizures only, no current events -> check whether
+         seizure freedom for many years applies ('seizure free for multiple
+         year') rather than 'unknown'.
+
+    4. Candidate-override discipline: If a deterministic temporal candidate
+       is present, either accept it as the answer or emit a structured
+       override reason. Valid override reasons:
+       - 'no_current_evidence': candidate evidence is historical, not current.
+       - 'historical_only': note clearly marks the event as past, not active.
+       - 'trigger_conditioned_only': event was tied to a medication change
+         or acute provocation only.
+       Do NOT emit 'unknown' simply because the candidate rate seems
+       low-frequency; override only when one of the above reasons applies.
+       Worked example: candidate 'multiple per day' from an EEG window is
+       current evidence and must be accepted, not overridden to 'unknown'.
+"""
+
+
 def default_gan_frequency_s0_prompt_version(program_variant: str) -> str:
     if program_variant == GAN_FREQUENCY_S0_VERIFY_REPAIR_VARIANT:
         return GAN_FREQUENCY_S0_VERIFY_REPAIR_PROMPT_VERSION
@@ -1090,6 +1142,21 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateTargetedExamplesMin7ExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_UNKNOWN_OVERUSE_GUARD_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_UNKNOWN_OVERUSE_GUARD_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateUnknownOveruseGuardExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )

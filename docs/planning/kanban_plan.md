@@ -2,7 +2,7 @@
 
 **Active steering doc** - current execution board for the DSPy clinical extraction research system. Detailed historical ledgers stay in experiment inspections, synthesis notes, Cursor SDK ledgers, and [kanban_frozen_threads_history.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/planning/kanban_frozen_threads_history.md).
 
-**Last refreshed:** 2026-05-24 (C2/C3 complete)
+**Last refreshed:** 2026-05-24 (C2 run → rejected; C3 complete)
 
 ## Steering References
 
@@ -82,7 +82,7 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
 | C1. Consolidate Gan residual taxonomy | Completed | Consolidated forensics in `docs/experiments/gan/gan_s0_residual_taxonomy_consolidation_20260524.md`. | Existing forensics and GEPA inspection | yes | Distinguishes unknown overuse, pragmatic monthly divergence, multi-type/cluster errors, and temporal scope mismatches. |
-| C2. Unknown-overuse targeted arm design | Completed | Preregistered a narrow prompt-only intervention (`v1.5_unknown_overuse_guard`) targeting abstention-boundary, seizure-free/no-reference disambiguation, and candidate-override discipline. Config draft and slice selection defined. Gate: cap-25 monthly ≥ 84% before full-validation spend. | C1 | after C1 | Preregistration: [gan_s0_unknown_overuse_arm_preregistration_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/gan/gan_s0_unknown_overuse_arm_preregistration_20260524.md); config draft: [gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini.json](file:///c:/Users/cbrow/Code/dspy-extraction/configs/experiments/gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini.json). |
+| C2. Unknown-overuse targeted arm — execution | **DONE (rejected)** | Ran v1.5 unknown-overuse guard prompt on enriched cap-25 slice. **Monthly accuracy: 16.0%** — gate (≥ 84%) not met by 68 pp. Arm rejected. Two root causes: (1) Rule 1 (quantified-window preservation) over-fires on ambiguous notes and hallucinates specific rates where `unknown` is correct; (2) `other_semantic_mismatch` records with no deterministic candidates are unaffected because Rule 4 is conditioned on candidates being present. Neither sub-problem was resolved. | C1 | after C1 | Run: `runs/gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini_20260524T201746Z`, rejection report: [gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini_rejection_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/gan/gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini_rejection_20260524.md). |
 | C3. Pragmatic monthly divergence analysis | Completed | Classified 16 GPT full-validation `pragmatic_match_monthly_divergence` records: ~6 are fixable extraction failures (count underestimation, multi-type selector), ~5 are window-selection mismatches (moderate fixability), ~5 are scorer-surface boundary artifacts (range-to-point collapse, vague-multiple). Paper-facing: monthly accuracy is primary; pragmatic accuracy (88.6%) should accompany it as a supporting metric with a documented attribution. | C1 | yes | Analysis: [gan_s0_pragmatic_monthly_divergence_analysis_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/gan/gan_s0_pragmatic_monthly_divergence_analysis_20260524.md). No scorer or gold change. |
 | C4. Compact optimizer hypothesis | Blocked | Reopen GEPA only if there is a design that constrains instruction length or targets a frozen submodule. | New prereg required | no | Cap-25 prereg; prompt-length gate; no G1/G2 rerun. |
 
@@ -123,11 +123,11 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 ## Recommended Next Pull
 
-1. **C2 execution - Run the unknown-overuse guard arm.** The preregistration (C2) and config are complete. Next step is to build the cap-25 enriched slice fixture and run `gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini` against the cap-25 gate (≥ 84% monthly accuracy).
-2. **D2 - Freeze negative/arm-reject table.** Freeze table of rejected arms with decision scope, comparison group, varied factor, and reason.
-3. **D3 - Draft results narrative.** Paper-facing prose for what current evidence supports and what remains open (depends on D1/D2).
-4. **A4 - Medication temporal evidence guard.** Separately test planned/history/future ASM pruning for `annotated_medication` if medication becomes a paper blocker.
-5. **Post-C2: Multi-type highest-frequency arm.** If C2 clears its gate, preregister a prompt-only arm adding examples where a less-severe but more-frequent seizure type determines the gold label (targets 7 `frequent_undercalled` + 2-3 `pragmatic_match_monthly_divergence` records).
+1. **D2 - Freeze negative/arm-reject table.** Freeze table of rejected arms (now including C2) with decision scope, comparison group, varied factor, and reason. C2 adds a new rejected arm.
+2. **D3 - Draft results narrative.** Paper-facing prose for what current evidence supports and what remains open (depends on D1/D2).
+3. **Post-C2 Gan: builder extension for `other_semantic_mismatch` records.** C2 forensics confirm that 7/25 enriched-slice failures are records with no deterministic candidates where Rule 4 is inert. The highest-value Gan fix is extending the deterministic builder to produce candidates for these records (infrequent-rate notes where the builder currently returns nothing). This would benefit all future prompt arms, not just unknown-overuse.
+4. **Post-C2 Gan: soften Rule 1 and retry.** If the builder extension is not the next pull, a softened v1.5 prompt (Rule 1 restricted to explicit calendar-window phrasing; add hedging for ambiguous notes) could be preregistered as C2b. Do not retry without fixing the root cause.
+5. **A4 - Medication temporal evidence guard.** Separately test planned/history/future ASM pruning for `annotated_medication` if medication becomes a paper blocker.
 
 ## Parallelization Notes
 

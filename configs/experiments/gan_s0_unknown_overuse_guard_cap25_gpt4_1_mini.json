@@ -13,7 +13,7 @@
   "metric_caveats": [
     "Cap-25 enriched slice; results are not full-validation claims.",
     "Comparison group: gan_s0_candidate_builder_gap_v1 on v1.4 prompt.",
-    "Varied factor: prompt_version only. All other controls frozen.",
+    "Varied factor: prompt_policy (prompt version) only. All other controls frozen.",
     "Scorer semantics unchanged: gold is seizure_frequency_number[0].",
     "Evidence support is diagnostic only.",
     "Slice is enriched for unknown-overuse patterns; accuracy on this slice is not generalizable to full validation without separate confirmation."
@@ -22,7 +22,33 @@
   "output_root": "runs",
   "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
   "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_5_unknown_overuse_guard",
-  "record_ids": null,
+  "record_ids": [
+    "gan_14081",
+    "gan_6077",
+    "gan_14146",
+    "gan_11216",
+    "gan_7894",
+    "gan_4709",
+    "gan_12465",
+    "gan_4100",
+    "gan_15771",
+    "gan_3623",
+    "gan_3630",
+    "gan_6094",
+    "gan_16883",
+    "gan_16780",
+    "gan_4602",
+    "gan_1914",
+    "gan_16938",
+    "gan_1883",
+    "gan_12871",
+    "gan_15997",
+    "gan_16041",
+    "gan_1463",
+    "gan_9424",
+    "gan_12218",
+    "gan_9943"
+  ],
   "report_on_test_split": false,
   "schema_level": "gan_frequency_s0",
   "scorer_mode": "gan_frequency_deterministic_v1",
@@ -47,6 +73,6 @@
     "schema_complexity": "gan_s0",
     "stage_executor": "det_candidates_llm_adjudicate",
     "stage_graph_id": "g2_candidates_adjudicate",
-    "varied_factor": "prompt_version"
+    "varied_factor": "prompt_policy"
   }
 }

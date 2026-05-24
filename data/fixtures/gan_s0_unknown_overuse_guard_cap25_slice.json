@@ -1,0 +1,64 @@
+{
+  "description": "Cap-25 enriched slice for C2 unknown-overuse guard arm (gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini). Slice enriched for unknown-overuse failure patterns per preregistration Section 7.",
+  "source_run": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+  "slice_composition": {
+    "direct_unknown_overuse": [
+      "gan_14081 (unknown_as_quantified_rate: gold=unknown, pred=1 to 3 per 3 month)",
+      "gan_6077 (unknown_as_quantified_rate: gold=unknown, pred=1 per 8 month)",
+      "gan_14146 (unknown_as_high_rate: gold=unknown, pred=3 per 2 month)",
+      "gan_11216 (unknown_vs_seizure_free: gold=unknown, pred=seizure free for 4 month)",
+      "gan_7894 (seizure_free_to_no_reference_monthly_match: gold=seizure free for multiple year, pred=no seizure frequency reference)"
+    ],
+    "other_semantic_mismatch_unknown_emission": [
+      "gan_4709 (gold=multiple per day, pred=unknown)",
+      "gan_12465 (gold=1 per day, pred=unknown)",
+      "gan_4100 (gold=1 per 2 to 3 week, pred=unknown)",
+      "gan_15771 (gold=3 per week, pred=unknown)",
+      "gan_3623 (gold=7 per week, pred=unknown)",
+      "gan_3630 (gold=7 per week, pred=unknown)",
+      "gan_6094 (gold=3 per month, pred=unknown)",
+      "gan_16883 (gold=4 per 3 month, pred=unknown)",
+      "gan_16780 (gold=3 per 7 month, pred=unknown)",
+      "gan_4602 (gold=1 per 7 to 10 day, pred=unknown)"
+    ],
+    "general_coverage": [
+      "gan_1914 (frequent_undercalled: gold=7 per 3 month, pred=2 per 3 month)",
+      "gan_16938 (frequent_undercalled: gold=2 per week, pred=2 per 2 month)",
+      "gan_1883 (frequent_undercalled: gold=4 per 3 month, pred=3 per 3 month)",
+      "gan_12871 (frequent_undercalled: gold=5 per 2 month, pred=5 per year)",
+      "gan_15997 (pragmatic_match_monthly_divergence: gold=10 per 3 month, pred=6 per 3 month)",
+      "gan_16041 (pragmatic_match_monthly_divergence: gold=9 per 3 month, pred=2 per month)",
+      "gan_1463 (pragmatic_match_monthly_divergence: gold=3 per month, pred=2 per month)",
+      "gan_9424 (pragmatic_match_monthly_divergence: gold=10 per 9 month, pred=2 per month)",
+      "gan_12218 (pragmatic_match_monthly_divergence: gold=1 per day, pred=multiple per day)",
+      "gan_9943 (cluster_collapsed_to_rate: gold=1 cluster per 4 to 5 week multiple per cluster, pred=unknown)"
+    ]
+  },
+  "record_ids": [
+    "gan_14081",
+    "gan_6077",
+    "gan_14146",
+    "gan_11216",
+    "gan_7894",
+    "gan_4709",
+    "gan_12465",
+    "gan_4100",
+    "gan_15771",
+    "gan_3623",
+    "gan_3630",
+    "gan_6094",
+    "gan_16883",
+    "gan_16780",
+    "gan_4602",
+    "gan_1914",
+    "gan_16938",
+    "gan_1883",
+    "gan_12871",
+    "gan_15997",
+    "gan_16041",
+    "gan_1463",
+    "gan_9424",
+    "gan_12218",
+    "gan_9943"
+  ]
+}
