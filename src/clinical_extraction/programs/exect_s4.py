@@ -39,7 +39,9 @@ from clinical_extraction.programs.exect_s3 import (
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.exect.primitives import (
     build_exect_frequency_pre_vocab_labels as build_precomputed_seizure_frequency_candidates,
+    build_exect_frequency_pre_vocab_labels_high_precision as build_precomputed_seizure_frequency_candidates_high_precision,
     format_exect_frequency_pre_vocab_note as format_note_with_precomputed_seizure_frequency_candidates,
+    format_exect_frequency_pre_vocab_note_high_precision as format_note_with_precomputed_seizure_frequency_candidates_high_precision,
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
     recover_exect_frequency_benchmark_values_with_multi_label_retention as _recover_s4_seizure_frequency_multi_label_retention_raw_values,
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
@@ -64,6 +66,9 @@ EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT = (
 EXECT_S4_VARIANT = EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT
 EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT = (
     "exect_s4_field_family_frequency_pre_vocab_single_pass"
+)
+EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT = (
+    "exect_s4_field_family_frequency_pre_vocab_high_precision_single_pass"
 )
 EXECT_S4_FREQUENCY_POST_MERGE_VARIANT = (
     "exect_s4_field_family_frequency_post_merge_single_pass"
@@ -364,6 +369,21 @@ class ExectS4FrequencyPreVocabFieldFamilyModule(dspy.Module):
         )
 
 
+class ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule(dspy.Module):
+    """Single-pass S4 extractor with seizure-frequency-only high-precision pre-vocabulary hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS4FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_note_with_precomputed_seizure_frequency_candidates_high_precision(
+                note_text
+            )
+        )
+
+
 class ExectS4FrequencyStructuredSlotsFieldFamilyModule(dspy.Module):
     """Single-pass S4 extractor with ExECT structured frequency slot hints."""
 
@@ -390,6 +410,8 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
         return ExectS4FieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
         return ExectS4FrequencyPreVocabFieldFamilyModule()
+    if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
+        return ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
         return ExectS4FrequencyStructuredSlotsFieldFamilyModule()
     raise ValueError(f"Unsupported ExECT S4 program variant: {program_variant!r}")
@@ -456,6 +478,12 @@ def _predict_s4_record(
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
         metadata["precomputed_candidates"] = {
             "seizure_frequency": build_precomputed_seizure_frequency_candidates(
+                record.text
+            )
+        }
+    if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
+        metadata["precomputed_candidates"] = {
+            "seizure_frequency": build_precomputed_seizure_frequency_candidates_high_precision(
                 record.text
             )
         }

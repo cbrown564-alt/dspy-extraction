@@ -1488,6 +1488,28 @@ def format_exect_frequency_pre_vocab_note(note_text: str) -> str:
     return "\n".join(lines)
 
 
+def build_exect_frequency_pre_vocab_labels_high_precision(note_text: str) -> list[str]:
+    """Build sorted high-precision benchmark-facing seizure-frequency labels for H2 pre-vocab probes."""
+
+    return sorted(_build_exect_frequency_label_set_high_precision(note_text))
+
+
+def format_exect_frequency_pre_vocab_note_high_precision(note_text: str) -> str:
+    """Inject seizure-frequency-only high-precision audited candidates before the clinical note."""
+
+    frequency_candidates = build_exect_frequency_pre_vocab_labels_high_precision(note_text)
+    lines = [
+        "Precomputed benchmark-facing candidates (soft hints; emit only when note-supported):",
+        f"seizure_frequency: {', '.join(frequency_candidates)}",
+        "",
+        "---",
+        "",
+        note_text,
+    ]
+    return "\n".join(lines)
+
+
+
 def repair_exect_frequency_surface(canonical: str) -> tuple[str, list[str]]:
     """Repair near-miss quantified rates and qualitative frequency-change synonyms."""
 
@@ -1882,15 +1904,142 @@ def _build_exect_frequency_label_set(note_text: str) -> set[str]:
 
     return candidates
 
-    # 8. Legacy temporal candidates
-    for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
+def _build_exect_frequency_label_set_high_precision(note_text: str) -> set[str]:
+    candidates: set[str] = set()
+    note_lower = note_text.lower()
+
+    # 1. Qualitative cues are completely omitted for high-precision.
+
+    # 2. Seizure free since year with alternative phrasings
+    for match in _SEIZURE_FREE_SINCE_YEAR_RE.finditer(note_text):
         accepted = _accept_exect_frequency_candidate_label(
-            temporal_candidate.canonical_label
+            f"seizure free since {match.group('year')}"
         )
         if accepted:
             candidates.add(accepted)
 
+    for match in _LAST_EVENT_YEAR_RE.finditer(note_text):
+        accepted = _accept_exect_frequency_candidate_label(
+            f"seizure free since {match.group('year')}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    # 3. Generic seizure-free word boundary and negation/return guards are completely omitted for high-precision.
+
+    # Helper function to parse period_count with list options for several
+    def get_period_count_options(raw_count_str: str | None) -> list[str]:
+        if not raw_count_str:
+            return ["1"]
+        clean = raw_count_str.strip().lower()
+        if not clean:
+            return ["1"]
+        clean_first = clean.split()[0]
+        if clean_first == "several":
+            return ["2", "3"]
+        return [_COUNT_WORDS.get(clean_first, clean_first)]
+
+    def get_count_options(raw_count_str: str | None) -> list[str]:
+        if not raw_count_str:
+            return ["1"]
+        clean = raw_count_str.strip().lower()
+        if clean == "several":
+            return ["2", "3"]
+        return [_COUNT_WORDS.get(clean, clean)]
+
+    # 4. Standard and Extended Quantified Rates
+    for match in _QUANTIFIED_FREQUENCY_EX_RE.finditer(note_text):
+        counts = get_count_options(match.group("count"))
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for count in counts:
+            for period_count in period_counts:
+                accepted = _accept_exect_frequency_candidate_label(
+                    f"{count} per {period_count} {period}"
+                )
+                if accepted:
+                    candidates.add(accepted)
+
+    # 5. Implicit Quantified Rates
+    for match in _IMPLICIT_QUANTIFIED_FREQUENCY_RE.finditer(note_text):
+        start_idx = match.start()
+        preceding_text = note_text[max(0, start_idx - 15) : start_idx].strip().lower()
+        preceding_words = preceding_text.split()
+        if preceding_words:
+            last_word = preceding_words[-1].strip("-,.(): ")
+            if last_word in _COUNT_WORDS or last_word.isdigit():
+                continue
+        
+        counts = ["1"]
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for count in counts:
+            for period_count in period_counts:
+                accepted = _accept_exect_frequency_candidate_label(
+                    f"{count} per {period_count} {period}"
+                )
+                if accepted:
+                    candidates.add(accepted)
+
+    # 6. Section-List Adverbial Rates
+    for match in _ADVERB_FREQUENCY_RE.finditer(note_text):
+        counts = get_count_options(match.group("count"))
+        adverb = match.group("adverb").lower()
+        period = _ADVERB_TO_PERIOD.get(adverb, "week")
+        for count in counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"{count} per 1 {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    # 7. Zero-Rate Windows
+    for match in _ZERO_RATE_WINDOW_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"0 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    for match in _ZERO_RATE_FREE_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"0 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    for match in _AGO_ZERO_RATE_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"0 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    # 7c. Breakthrough after period
+    for match in _BREAKTHROUGH_AFTER_PERIOD_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"1 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    # 8. Note-anchored Gan candidates filtered for ExECT
+    # In high-precision mode, we do NOT pull Gan temporal candidates because they are heavily tuned for monthly rates and may contain qualitative/other noise.
+
     return candidates
+
 
 
 def _accept_exect_frequency_candidate_label(label: str) -> str | None:
