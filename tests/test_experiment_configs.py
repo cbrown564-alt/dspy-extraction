@@ -345,6 +345,37 @@ def test_exect_s4_validation_full_config_removes_precheck_cap():
     assert "full fixed ExECTv2 validation split" in " ".join(config.metric_caveats)
 
 
+def test_exect_s5_validation_full_config_removes_precheck_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s5_validation_full_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s5_validation_full_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert config.program_variant == "exect_s4_field_family_cause_bridge_k0_k1_single_pass"
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.prompt_version == "exect_s4_field_family_v1_2_label_policy"
+
+
+def test_exect_s5_frequency_pre_vocab_full_config_removes_precheck_cap():
+    config = load_experiment_config(
+        Path("configs/experiments/exect_s5_frequency_pre_vocab_full_gpt4_1_mini.json")
+    )
+
+    assert config.experiment_id == "exect_s5_frequency_pre_vocab_full_gpt4_1_mini"
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert config.program_variant == "exect_s4_field_family_frequency_pre_vocab_single_pass"
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.prompt_version == "exect_s4_field_family_v1_2_label_policy"
+
+
+
 def test_exect_s2_validation_cap25_config_records_s2_diagnostic_cap_contract():
     config = load_experiment_config(
         Path("configs/experiments/exect_s2_validation_cap25_gpt4_1_mini.json")
