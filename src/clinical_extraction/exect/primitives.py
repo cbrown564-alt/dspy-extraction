@@ -1486,7 +1486,7 @@ def recover_exect_frequency_benchmark_values_with_post_merge(
         if label == "seizure free" and "seizure free" not in note_lower:
             flags.append("s4_bridge:spurious_seizure_free_removed")
             continue
-        if label.startswith("seizure free since ") and not _SEIZURE_FREE_SINCE_RE.search(
+        if label.startswith("seizure free since ") and not _SEIZURE_FREE_SINCE_YEAR_RE.search(
             note_text
         ):
             flags.append("s4_bridge:spurious_seizure_free_removed")
@@ -1531,7 +1531,7 @@ def recover_exect_frequency_benchmark_values_with_multi_label_retention(
         if label == "seizure free" and "seizure free" not in note_lower:
             flags.append("s4_bridge:spurious_seizure_free_removed")
             continue
-        if label.startswith("seizure free since ") and not _SEIZURE_FREE_SINCE_RE.search(
+        if label.startswith("seizure free since ") and not _SEIZURE_FREE_SINCE_YEAR_RE.search(
             note_text
         ):
             flags.append("s4_bridge:spurious_seizure_free_removed")

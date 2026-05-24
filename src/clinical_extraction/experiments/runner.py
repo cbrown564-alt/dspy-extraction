@@ -507,6 +507,7 @@ def run_experiment(
         extra={
             "experiment_id": config.experiment_id,
             "structured_output_strategy": config.structured_output_strategy,
+            "schema_level": config.schema_level,
         },
     )
     metadata = metadata.model_copy(update={"metric_caveats": config.metric_caveats})
@@ -567,6 +568,7 @@ def run_experiment(
         progress_callback=lambda index, total, record_id: print_prediction_progress(
             index, total, record_id, file=out
         ),
+        schema_level=config.schema_level,
     )
     prediction_duration_seconds = perf_counter() - prediction_started
     paths["predictions"].write_text(

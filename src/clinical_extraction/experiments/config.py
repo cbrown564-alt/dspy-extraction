@@ -46,6 +46,9 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
 )
+from clinical_extraction.evaluation.exect import EXECT_S5_SCORER
+
+EXECT_S5_SCHEMA_LEVEL = "exect_s5_core_field_family"
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
     GAN_FREQUENCY_S0_HYBRID_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
@@ -204,6 +207,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s2_field_family",
         "exect_s3_field_family",
         "exect_s4_field_family",
+        "exect_s5_core_field_family",
     ] = GAN_FREQUENCY_S0_SCHEMA_LEVEL
     program_variant: Literal[
         "gan_frequency_s0_single_pass",
@@ -255,6 +259,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s2_field_family_deterministic_v1",
         "exect_s3_field_family_deterministic_v1",
         "exect_s4_field_family_deterministic_v1",
+        "exect_s5_core_field_family_deterministic_v1",
     ] = GAN_FREQUENCY_S0_SCORER
     prompt_version: str
     controls: ExperimentControls
@@ -369,6 +374,20 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
                     },
                     EXECT_S4_SCORER,
+                ),
+                (
+                    EXECT_S5_SCHEMA_LEVEL,
+                    {
+                        EXECT_S4_VARIANT,
+                        EXECT_S4_L1_VARIANT,
+                        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+                        EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
+                        EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
+                        EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
+                        EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+                        EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+                    },
+                    EXECT_S5_SCORER,
                 ),
             ],
         }

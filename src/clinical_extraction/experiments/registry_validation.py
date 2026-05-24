@@ -41,6 +41,7 @@ SINGLE_CONTROLLED_FIELDS: dict[str, frozenset[str]] = {
             "exect_s2",
             "exect_s3",
             "exect_s4",
+            "exect_s5",
             PENDING_BACKFILL,
         }
     ),

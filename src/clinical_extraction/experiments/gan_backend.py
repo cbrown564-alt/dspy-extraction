@@ -75,8 +75,9 @@ class GanExperimentBackend:
         program_variant: str,
         repair_policy: str,
         progress_callback: Callable[[int, int, str], None] | None,
+        schema_level: str | None = None,
     ) -> Any:
-        del repair_policy
+        del repair_policy, schema_level
         return predict_gan_records(
             module,
             records,

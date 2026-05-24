@@ -13,6 +13,7 @@ from clinical_extraction.evaluation.exect import (
     score_exect_s2_prediction_set,
     score_exect_s3_prediction_set,
     score_exect_s4_prediction_set,
+    score_exect_s5_prediction_set,
 )
 from clinical_extraction.experiments.config import ExperimentConfig, OptimizerConfig
 from clinical_extraction.experiments.exect_prompts import exect_prompts_data
@@ -55,6 +56,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     predict_exect_records,
 )
 from clinical_extraction.runs import RunMetadata
+
+EXECT_S5_SCHEMA_LEVEL = "exect_s5_core_field_family"
 
 _EXECT_S2_PROGRAM_VARIANTS = frozenset(
     {
@@ -125,6 +128,7 @@ class ExectExperimentBackend:
                 prompt_version=prompt_version,
                 program_variant=program_variant,
                 extra=extra,
+                schema_level=extra.get("schema_level", EXECT_S4_SCHEMA_LEVEL),
             )
         if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
             return exect_s3_run_metadata(
@@ -167,6 +171,7 @@ class ExectExperimentBackend:
         program_variant: str,
         repair_policy: str,
         progress_callback: Callable[[int, int, str], None] | None,
+        schema_level: str | None = None,
     ) -> Any:
         if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
             return predict_exect_s4_records(
@@ -177,6 +182,7 @@ class ExectExperimentBackend:
                 prompt_version=prompt_version,
                 program_variant=program_variant,
                 progress_callback=progress_callback,
+                schema_level=schema_level or EXECT_S4_SCHEMA_LEVEL,
             )
         if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
             return predict_exect_s3_records(
@@ -210,6 +216,8 @@ class ExectExperimentBackend:
         )
 
     def evaluate_predictions(self, prediction_set: Any) -> dict[str, Any]:
+        if prediction_set.schema_level == EXECT_S5_SCHEMA_LEVEL:
+            return score_exect_s5_prediction_set(prediction_set)
         if prediction_set.schema_level == EXECT_S4_SCHEMA_LEVEL:
             return score_exect_s4_prediction_set(prediction_set)
         if prediction_set.schema_level == EXECT_S3_SCHEMA_LEVEL:

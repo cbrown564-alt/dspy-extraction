@@ -18,6 +18,7 @@ SchemaComplexityValue = Literal[
     "exect_s2",
     "exect_s3",
     "exect_s4",
+    "exect_s5",
 ]
 ProgramArchitectureValue = Literal[
     "single_pass",

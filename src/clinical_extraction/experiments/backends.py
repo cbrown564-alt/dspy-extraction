@@ -49,6 +49,7 @@ class ExperimentBackend(Protocol):
         program_variant: str,
         repair_policy: str,
         progress_callback: Callable[[int, int, str], None] | None,
+        schema_level: str | None = None,
     ) -> Any: ...
 
     def evaluate_predictions(self, prediction_set: Any) -> dict[str, Any]: ...

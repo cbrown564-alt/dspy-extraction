@@ -12,7 +12,7 @@ from clinical_extraction.datasets.exect import (
     format_medication_temporality_label,
     infer_prescription_temporality,
 )
-from clinical_extraction.evaluation.exect import EXECT_S4_SCORER
+from clinical_extraction.evaluation.exect import EXECT_S4_SCORER, EXECT_S5_SCORER
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_DATASET,
     EXECT_S0_S1_PROMPT_VERSION,
@@ -405,23 +405,24 @@ def predict_exect_s4_records(
     prompt_version: str = EXECT_S4_PROMPT_VERSION,
     program_variant: str = EXECT_S4_VARIANT,
     progress_callback: Callable[[int, int, str], None] | None = None,
+    schema_level: str = EXECT_S4_SCHEMA_LEVEL,
 ) -> PredictionSet:
     predictions = []
     total = len(records)
     for index, record in enumerate(records, start=1):
-        predictions.append(_predict_s4_record(module, record, program_variant=program_variant))
+        predictions.append(_predict_s4_record(module, record, program_variant=program_variant, schema_level=schema_level))
         if progress_callback is not None:
             progress_callback(index, total, record.document_id)
     return PredictionSet(
         dataset=EXECT_DATASET,
-        schema_level=EXECT_S4_SCHEMA_LEVEL,
+        schema_level=schema_level,
         predictions=predictions,
         metadata={
             "program_variant": program_variant,
             "model_provider": model_provider,
             "model_name": model_name,
             "prompt_version": prompt_version,
-            "scorer_mode": EXECT_S4_SCORER,
+            "scorer_mode": EXECT_S5_SCORER if schema_level == "exect_s5_core_field_family" else EXECT_S4_SCORER,
             "s3_prompt_anchor": EXECT_S3_PROMPT_VERSION,
             "s2_prompt_anchor": EXECT_S2_PROMPT_VERSION,
         },
@@ -433,6 +434,7 @@ def _predict_s4_record(
     record: ExectGoldDocument,
     *,
     program_variant: str,
+    schema_level: str = EXECT_S4_SCHEMA_LEVEL,
 ) -> DocumentPrediction:
     pred = module(note_text=record.text)
     values = _s2_field_values_from_prediction(pred, record)
@@ -478,7 +480,7 @@ def _predict_s4_record(
     return DocumentPrediction(
         document_id=record.document_id,
         dataset=EXECT_DATASET,
-        schema_level=EXECT_S4_SCHEMA_LEVEL,
+        schema_level=schema_level,
         values=values,
         quality_flags=record.quality_flags,
         metadata=metadata,
@@ -714,6 +716,7 @@ def exect_s4_run_metadata(
     prompt_version: str = EXECT_S4_PROMPT_VERSION,
     program_variant: str = EXECT_S4_VARIANT,
     extra: dict | None = None,
+    schema_level: str = EXECT_S4_SCHEMA_LEVEL,
 ) -> RunMetadata:
     return RunMetadata(
         run_id=run_id,
@@ -721,9 +724,9 @@ def exect_s4_run_metadata(
         split_name=split_name,
         model_provider=model_provider,
         model_name=model_name,
-        schema_level=EXECT_S4_SCHEMA_LEVEL,
+        schema_level=schema_level,
         program_variant=program_variant,
-        scorer_mode=EXECT_S4_SCORER,
+        scorer_mode=EXECT_S5_SCORER if schema_level == "exect_s5_core_field_family" else EXECT_S4_SCORER,
         metric_caveats=[
             "These are partial ExECT S4 diagnostics (S3 + seizure frequency + Rx temporality), not published ExECTv2 Table 1 reproduction.",
             "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families without editing exect_s3.py.",
