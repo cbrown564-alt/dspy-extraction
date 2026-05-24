@@ -46,6 +46,7 @@ Use these values in the draft index and, when manually editing JSONL rows or der
 | `canonical_for_review` | Preferred draft for a workflow/topic review queue. |
 | `superseded` | Replaced by a later draft or promoted source document. |
 | `promoted_to_source` | Specific claims were manually promoted into source docs; the draft itself remains non-authoritative. |
+| `promote_specific_claims` | Source-claim status used when only verified claims, not draft prose, were promoted. |
 | `rejected` | Do not use except as negative evidence or incident context. |
 
 ## Guardrails

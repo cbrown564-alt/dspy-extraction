@@ -160,7 +160,8 @@ Memory warning:
 
 Read:
 
-- `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md`
+- `docs/workstreams/cursor_sdk/README.md`
+- `docs/workstreams/cursor_sdk/cursor_sdk_review_queue_20260524.md`
 - `docs/workstreams/cursor_sdk/cursor_sdk_run_ledger_20260524.md`
 - `docs/workstreams/cursor_sdk/cursor_sdk_draft_index_20260524.md`
 - `scripts/cursor_sdk_workflows.py`

@@ -1140,6 +1140,7 @@ _FREQUENCY_MARKERS = (
     "frequency increased",
     "frequency decreased",
     "infrequent",
+    "frequency same",
 )
 _NEAR_MISS_QUANTIFIED_FREQUENCY = re.compile(
     r"^(?P<count>\d+) per (?P<period>week|month|day|year)$"
@@ -1177,15 +1178,76 @@ _FREQUENCY_CO_LABEL_CUES = {
         "frequency increased",
         "frequency has increased",
         "increased frequency",
+        "seizures have returned",
+        "seizures returned",
+        "seizures have worsened",
+        "seizures worsened",
+        "returned seizures",
+        "having more",
+        "getting more",
+        "more seizures",
+        "another seizure",
+        "had another seizure",
+        "seizures returning",
+        "increasing seizures",
+        "seizures increasing",
+        "seizures have increased",
+        "seizures have been worse",
+        "seizures worse",
+        "more frequent",
+        "worse in the last year",
     ),
     "frequency decreased": (
         "frequency decreased",
         "frequency has decreased",
         "decreased frequency",
+        "seizures have improved",
+        "seizures improved",
+        "epilepsy has improved",
+        "epilepsy improved",
+        "seizures have reduced",
+        "seizures reduced",
+        "improved seizures",
     ),
-    "infrequent": ("infrequent",),
+    "infrequent": (
+        "infrequent",
+        "occasional",
+        "occasionally",
+        "rare",
+        "rarely",
+        "well controlled",
+        "controlled",
+        "reasonably controlled",
+    ),
+    "frequency same": (
+        "frequency same",
+        "remains the same",
+        "remain the same",
+        "no change",
+        "remain well controlled",
+        "remains well controlled",
+        "remain controlled",
+        "remains controlled",
+        "continue to get",
+        "continues to get",
+        "continue to have",
+        "continues to have",
+        "not really helped",
+        "hasn't really helped",
+        "haven't really helped",
+        "stable",
+        "remain stable",
+        "remains stable",
+        "stable frequency",
+        "seizures remain",
+        "well controlled",
+        "controlled",
+    ),
 }
 _COUNT_WORDS = {
+    "once": "1",
+    "twice": "2",
+    "thrice": "3",
     "one": "1",
     "two": "2",
     "three": "3",
@@ -1196,27 +1258,63 @@ _COUNT_WORDS = {
     "eight": "8",
     "nine": "9",
     "ten": "10",
+    "several": "3",
 }
 _PERIOD_UNIT = r"weeks?|months?|days?|years?"
-_QUANTIFIED_FREQUENCY_NOTE_RE = re.compile(
-    rf"\b(?P<count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
-    rf"(?:seizures?\s+)?(?:every|per)\s+(?P<period_count>\d+\s+)?"
+_QUANTIFIED_FREQUENCY_EX_RE = re.compile(
+    rf"\b(?P<count>once|twice|thrice|one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)\s+"
+    rf"(?:(?:[a-zA-Z-]+)\s+){{0,3}}?(?:seizures?|convulsions|episodes|events)?\s*(?:times?\s+)?(?:every|per|a|over|in|during|within|for)(?:\s+the\s+(?:last|past))?\s+"
+    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_IMPLICIT_QUANTIFIED_FREQUENCY_RE = re.compile(
+    rf"\b(?:every|per|a|over|in|during|within|for)(?:\s+the\s+(?:last|past))?\s+(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*"
     rf"(?P<period>{_PERIOD_UNIT})\b",
     flags=re.IGNORECASE,
 )
-_ZERO_RATE_FREQUENCY_NOTE_RE = re.compile(
-    rf"\b(?:no|zero|0)\s+seizures?\s+per\s+(?P<period_count>\d+)\s+"
-    rf"(?P<period>{_PERIOD_UNIT})\b",
+_ADVERB_FREQUENCY_RE = re.compile(
+    rf"\b(?P<count>once|twice|thrice|one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*"
+    rf"(?:times?\s+)?(?P<adverb>daily|weekly|monthly|yearly|annually)\b",
     flags=re.IGNORECASE,
 )
-_SEIZURE_EVERY_N_PERIOD_RE = re.compile(
-    rf"seizures?\s+every\s+"
-    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|\d+)\s+"
-    rf"(?P<period>{_PERIOD_UNIT})\b",
+_ZERO_RATE_WINDOW_RE = re.compile(
+    rf"\b(?:no|zero|0|not had|not happen|not happened)\s+(?:[a-zA-Z-]+\s+){{0,5}}?(?:seizures?|convulsions|episodes|events)?\s*"
+    rf"(?:now\s+)?(?:for|in|over|since|per|every|a)\s+(?:the\s+last|the\s+past|at\s+least|more\s+than|over)?\s*"
+    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*(?P<period>{_PERIOD_UNIT})\b",
     flags=re.IGNORECASE,
 )
-_SEIZURE_FREE_SINCE_RE = re.compile(
-    r"seizure[- ]free since (\d{4})",
+_ZERO_RATE_FREE_RE = re.compile(
+    rf"\bseizure[- ]free\s+(?:for|in|over)\s+(?:the\s+last|the\s+past|at\s+least|more\s+than|over)?\s*"
+    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*(?P<period>{_PERIOD_UNIT})\b",
+    flags=re.IGNORECASE,
+)
+_SEIZURE_FREE_CURRENT_RE = re.compile(
+    rf"\b(?:no|zero|0|not had|not happen|not happened)\s+(?:[a-zA-Z-]+\s+){{0,3}}?(?:seizures?|convulsions|episodes|events)\b",
+    flags=re.IGNORECASE,
+)
+_AGO_ZERO_RATE_RE = re.compile(
+    rf"\b(?:(?:last|most recent)\s*(?:one|seizure|event|episode|convulsion|seizures|convulsions|episodes|events)?|(?:her|his|the)?\s*(?:seizure|event|episode|convulsion|seizures|convulsions|episodes|events))\s*(?:of\s+these\s+)?(?:was|happened|occurred|occur|ocured|occurd|happend)?\s*(?:around|about|at\s+least|more\s+than|greater\s+than|over)?\s*"
+    rf"(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)\s+(?P<period>{_PERIOD_UNIT})\s+ago\b",
+    flags=re.IGNORECASE,
+)
+_SEIZURE_FREE_SINCE_YEAR_RE = re.compile(
+    rf"\b(?:seizure[- ]free|free of seizures)\s+since\s+"
+    rf"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)?\s*"
+    rf"(?P<year>\d{{4}})\b",
+    flags=re.IGNORECASE,
+)
+_LAST_EVENT_YEAR_RE = re.compile(
+    rf"\blast\s+(?:seizure|event|episode|convulsion)\s+(?:was\s+)?(?:in\s+)?"
+    rf"(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)?\s*"
+    rf"(?P<year>\d{{4}})\b",
+    flags=re.IGNORECASE,
+)
+_LAST_SEIZURE_DATE_RE = re.compile(
+    rf"\blast\s+(?:seizure|event|episode|convulsion|seizures|convulsions|episodes|events)\s+(?:was\s+)?(?:on\s+the\s+|on\s+|in\s+)?(?:\d{{1,2}}(?:st|nd|rd|th)?\s+)?(?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sept|oct|nov|dec)\b",
+    flags=re.IGNORECASE,
+)
+_BREAKTHROUGH_AFTER_PERIOD_RE = re.compile(
+    rf"\b(?P<period_count>one|two|three|four|five|six|seven|eight|nine|ten|several|\d+)?\s*(?P<period>{_PERIOD_UNIT})\s+(?:without\s+having|without|free of|no)\s+seizures?\s+(?:[a-zA-Z-]+\s+){{0,10}}?(?P<event>cluster|seizure|episode|event|convulsion|convulsions)\b",
     flags=re.IGNORECASE,
 )
 _AUDITED_QUALITATIVE_FREQUENCY_LABELS = frozenset(
@@ -1225,8 +1323,16 @@ _AUDITED_QUALITATIVE_FREQUENCY_LABELS = frozenset(
         "frequency decreased",
         "infrequent",
         "seizure free",
+        "frequency same",
     }
 )
+_ADVERB_TO_PERIOD = {
+    "daily": "day",
+    "weekly": "week",
+    "monthly": "month",
+    "yearly": "year",
+    "annually": "year",
+}
 
 
 def build_exect_frequency_candidate_payloads(note_text: str) -> list[PrimitiveCandidate]:
@@ -1306,6 +1412,8 @@ def repair_exect_frequency_surface(canonical: str) -> tuple[str, list[str]]:
         flags.append("s4_bridge:frequency_missing_time_period_inserted")
 
     if canonical.startswith("seizure free") and canonical != "seizure free":
+        if re.match(r"seizure free since \d{4}$", canonical):
+            return canonical, flags
         return "seizure free", [*flags, "s4_bridge:seizure_free_prose_collapsed"]
 
     return repaired, flags
@@ -1491,53 +1599,196 @@ def _build_exect_frequency_label_set(note_text: str) -> set[str]:
     candidates: set[str] = set()
     note_lower = note_text.lower()
 
+    # 1. Qualitative cues (including the new "frequency same" category)
     for label, cues in _FREQUENCY_CO_LABEL_CUES.items():
         if any(cue in note_lower for cue in cues):
             accepted = _accept_exect_frequency_candidate_label(label)
             if accepted:
                 candidates.add(accepted)
 
-    if "seizure free" in note_lower:
-        since_match = _SEIZURE_FREE_SINCE_RE.search(note_text)
-        if since_match:
-            accepted = _accept_exect_frequency_candidate_label(
-                f"seizure free since {since_match.group(1)}"
-            )
-        else:
+    # 2. Seizure free since year with alternative phrasings
+    for match in _SEIZURE_FREE_SINCE_YEAR_RE.finditer(note_text):
+        accepted = _accept_exect_frequency_candidate_label(
+            f"seizure free since {match.group('year')}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    for match in _LAST_EVENT_YEAR_RE.finditer(note_text):
+        accepted = _accept_exect_frequency_candidate_label(
+            f"seizure free since {match.group('year')}"
+        )
+        if accepted:
+            candidates.add(accepted)
+
+    # 3. Seizure-free word boundary and negation/return guards
+    # We only add "seizure free" if it's explicitly mentioned (with boundary)
+    # or if current seizure-free status is matched, AND there's no mention of seizures returning.
+    seizures_returned = (
+        "seizures have returned" in note_lower
+        or "seizures returned" in note_lower
+        or "returned seizures" in note_lower
+        or "seizures recurred" in note_lower
+        or "seizures recur" in note_lower
+        or "seizures have worsened" in note_lower
+        or "seizures worsened" in note_lower
+        or "seizures are worse" in note_lower
+        or "seizures have been worse" in note_lower
+        or "worse in the last" in note_lower
+        or "worse recently" in note_lower
+    )
+    
+    if not seizures_returned:
+        if re.search(r"\bseizure[- ]free\b", note_lower):
             accepted = _accept_exect_frequency_candidate_label("seizure free")
-        if accepted:
-            candidates.add(accepted)
+            if accepted:
+                candidates.add(accepted)
+        elif _SEIZURE_FREE_CURRENT_RE.search(note_text):
+            accepted = _accept_exect_frequency_candidate_label("seizure free")
+            if accepted:
+                candidates.add(accepted)
 
-    for match in _QUANTIFIED_FREQUENCY_NOTE_RE.finditer(note_text):
-        count_token = match.group("count").lower()
-        count = _COUNT_WORDS.get(count_token, count_token)
-        period_count = (match.group("period_count") or "1 ").strip().split()[0]
+    # Helper function to parse period_count with list options for several
+    def get_period_count_options(raw_count_str: str | None) -> list[str]:
+        if not raw_count_str:
+            return ["1"]
+        clean = raw_count_str.strip().lower()
+        if not clean:
+            return ["1"]
+        clean_first = clean.split()[0]
+        if clean_first == "several":
+            return ["2", "3"]
+        return [_COUNT_WORDS.get(clean_first, clean_first)]
+
+    def get_count_options(raw_count_str: str | None) -> list[str]:
+        if not raw_count_str:
+            return ["1"]
+        clean = raw_count_str.strip().lower()
+        if clean == "several":
+            return ["2", "3"]
+        return [_COUNT_WORDS.get(clean, clean)]
+
+    # 4. Standard and Extended Quantified Rates
+    for match in _QUANTIFIED_FREQUENCY_EX_RE.finditer(note_text):
+        counts = get_count_options(match.group("count"))
+        period_counts = get_period_count_options(match.group("period_count"))
         period = _normalize_period_unit(match.group("period"))
+        for count in counts:
+            for period_count in period_counts:
+                accepted = _accept_exect_frequency_candidate_label(
+                    f"{count} per {period_count} {period}"
+                )
+                if accepted:
+                    candidates.add(accepted)
+
+    # 5. Implicit Quantified Rates
+    for match in _IMPLICIT_QUANTIFIED_FREQUENCY_RE.finditer(note_text):
+        # Prevent matching standard quantified rate twice if it was already matched
+        # (check if a count word precedes the match)
+        start_idx = match.start()
+        preceding_text = note_text[max(0, start_idx - 15) : start_idx].strip().lower()
+        # if preceding text ends with any count word or digit, skip this to avoid duplication
+        preceding_words = preceding_text.split()
+        if preceding_words:
+            last_word = preceding_words[-1].strip("-,.(): ")
+            if last_word in _COUNT_WORDS or last_word.isdigit():
+                continue
+        
+        counts = ["1"]
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for count in counts:
+            for period_count in period_counts:
+                accepted = _accept_exect_frequency_candidate_label(
+                    f"{count} per {period_count} {period}"
+                )
+                if accepted:
+                    candidates.add(accepted)
+
+    # 6. Section-List Adverbial Rates
+    for match in _ADVERB_FREQUENCY_RE.finditer(note_text):
+        counts = get_count_options(match.group("count"))
+        adverb = match.group("adverb").lower()
+        period = _ADVERB_TO_PERIOD.get(adverb, "week")
+        for count in counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"{count} per 1 {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    # 7. Zero-Rate Windows
+    for match in _ZERO_RATE_WINDOW_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"0 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+            if not seizures_returned:
+                accepted_sf = _accept_exect_frequency_candidate_label("seizure free")
+                if accepted_sf:
+                    candidates.add(accepted_sf)
+
+    for match in _ZERO_RATE_FREE_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"0 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+            if not seizures_returned:
+                accepted_sf = _accept_exect_frequency_candidate_label("seizure free")
+                if accepted_sf:
+                    candidates.add(accepted_sf)
+
+    for match in _AGO_ZERO_RATE_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"0 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+            if not seizures_returned:
+                accepted_sf = _accept_exect_frequency_candidate_label("seizure free")
+                if accepted_sf:
+                    candidates.add(accepted_sf)
+
+    # 7b. Last Seizure Date to Seizure Free
+    if not seizures_returned:
+        for match in _LAST_SEIZURE_DATE_RE.finditer(note_text):
+            accepted = _accept_exect_frequency_candidate_label("seizure free")
+            if accepted:
+                candidates.add(accepted)
+
+    # 7c. Breakthrough after period
+    for match in _BREAKTHROUGH_AFTER_PERIOD_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            accepted = _accept_exect_frequency_candidate_label(
+                f"1 per {period_count} {period}"
+            )
+            if accepted:
+                candidates.add(accepted)
+
+    # 8. Legacy temporal candidates
+    for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
         accepted = _accept_exect_frequency_candidate_label(
-            f"{count} per {period_count} {period}"
+            temporal_candidate.canonical_label
         )
         if accepted:
             candidates.add(accepted)
 
-    for match in _ZERO_RATE_FREQUENCY_NOTE_RE.finditer(note_text):
-        period_count = match.group("period_count")
-        period = _normalize_period_unit(match.group("period"))
-        accepted = _accept_exect_frequency_candidate_label(
-            f"0 per {period_count} {period}"
-        )
-        if accepted:
-            candidates.add(accepted)
+    return candidates
 
-    for match in _SEIZURE_EVERY_N_PERIOD_RE.finditer(note_text):
-        period_token = match.group("period_count").lower()
-        period_count = _COUNT_WORDS.get(period_token, period_token)
-        period = _normalize_period_unit(match.group("period"))
-        accepted = _accept_exect_frequency_candidate_label(
-            f"1 per {period_count} {period}"
-        )
-        if accepted:
-            candidates.add(accepted)
-
+    # 8. Legacy temporal candidates
     for temporal_candidate in build_temporal_frequency_candidates_from_note(note_text):
         accepted = _accept_exect_frequency_candidate_label(
             temporal_candidate.canonical_label
@@ -1657,23 +1908,102 @@ def _normalize_period_unit(period: str) -> str:
 
 
 def _frequency_label_span(note_text: str, label: str) -> str | None:
-    if label == "frequency increased":
-        for cue in _FREQUENCY_CO_LABEL_CUES["frequency increased"]:
+    # 1. First check qualitative cues
+    if label in _FREQUENCY_CO_LABEL_CUES:
+        for cue in _FREQUENCY_CO_LABEL_CUES[label]:
             index = note_text.lower().find(cue)
             if index >= 0:
                 return note_text[index : index + len(cue)]
-    if label == "frequency decreased":
-        for cue in _FREQUENCY_CO_LABEL_CUES["frequency decreased"]:
-            index = note_text.lower().find(cue)
-            if index >= 0:
-                return note_text[index : index + len(cue)]
-    if label.startswith("seizure free"):
-        index = note_text.lower().find("seizure free")
-        if index >= 0:
-            return note_text[index : index + len("seizure free")]
-    match = _QUANTIFIED_FREQUENCY_NOTE_RE.search(note_text)
-    if match and label.startswith(match.group("count").lower()[:1]):
-        return match.group(0)
+                
+    # 2. Check year since / last event matches
+    for match in _SEIZURE_FREE_SINCE_YEAR_RE.finditer(note_text):
+        if f"seizure free since {match.group('year')}" == label:
+            return match.group(0)
+            
+    for match in _LAST_EVENT_YEAR_RE.finditer(note_text):
+        if f"seizure free since {match.group('year')}" == label:
+            return match.group(0)
+            
+    # 3. Check current seizure free
+    if label == "seizure free":
+        # check seizure[- ]free
+        match = re.search(r"\bseizure[- ]free\b", note_text, re.IGNORECASE)
+        if match:
+            return match.group(0)
+        match = _SEIZURE_FREE_CURRENT_RE.search(note_text)
+        if match:
+            return match.group(0)
+
+    # Helper function to parse count & period_count with list options for several
+    def get_period_count_options(raw_count_str: str | None) -> list[str]:
+        if not raw_count_str:
+            return ["1"]
+        clean = raw_count_str.strip().lower()
+        if not clean:
+            return ["1"]
+        clean_first = clean.split()[0]
+        if clean_first == "several":
+            return ["2", "3"]
+        return [_COUNT_WORDS.get(clean_first, clean_first)]
+
+    def get_count_options(raw_count_str: str | None) -> list[str]:
+        if not raw_count_str:
+            return ["1"]
+        clean = raw_count_str.strip().lower()
+        if clean == "several":
+            return ["2", "3"]
+        return [_COUNT_WORDS.get(clean, clean)]
+
+    # 4. Standard and Extended Quantified Rates
+    for match in _QUANTIFIED_FREQUENCY_EX_RE.finditer(note_text):
+        counts = get_count_options(match.group("count"))
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for count in counts:
+            for period_count in period_counts:
+                if f"{count} per {period_count} {period}" == label:
+                    return match.group(0)
+
+    # 5. Implicit Quantified Rates
+    for match in _IMPLICIT_QUANTIFIED_FREQUENCY_RE.finditer(note_text):
+        count = "1"
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            if f"{count} per {period_count} {period}" == label:
+                return match.group(0)
+
+    # 6. Section-List Adverbial Rates
+    for match in _ADVERB_FREQUENCY_RE.finditer(note_text):
+        counts = get_count_options(match.group("count"))
+        adverb = match.group("adverb").lower()
+        period = _ADVERB_TO_PERIOD.get(adverb, "week")
+        for count in counts:
+            if f"{count} per 1 {period}" == label:
+                return match.group(0)
+
+    # 7. Zero-Rate Windows
+    for match in _ZERO_RATE_WINDOW_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            if f"0 per {period_count} {period}" == label:
+                return match.group(0)
+
+    for match in _ZERO_RATE_FREE_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            if f"0 per {period_count} {period}" == label:
+                return match.group(0)
+
+    for match in _AGO_ZERO_RATE_RE.finditer(note_text):
+        period_counts = get_period_count_options(match.group("period_count"))
+        period = _normalize_period_unit(match.group("period"))
+        for period_count in period_counts:
+            if f"0 per {period_count} {period}" == label:
+                return match.group(0)
+
     return None
 
 

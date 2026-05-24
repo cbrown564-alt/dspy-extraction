@@ -1,0 +1,68 @@
+# Cursor SDK Review Queue
+
+Date: 2026-05-24  
+Status: Active review queue after documentation consolidation  
+Authority: triage and review process only; no source-of-truth claims
+
+## Review Status Vocabulary
+
+| Status | Meaning |
+| --- | --- |
+| `active_review` | Worth reviewing now because it can support the current Kanban pull. |
+| `keep_as_lead` | Contains potentially useful leads, but no immediate source promotion. |
+| `defer` | Preserve for a later workstream; do not review now. |
+| `archive_no_action` | Archived because it is superseded, prompt-only, duplicated, or resolved. |
+| `reject` | Do not use except as incident context or negative evidence. |
+| `promote_specific_claims` | Specific claims were verified against primary sources and manually promoted elsewhere. |
+
+## Active Review
+
+| Item | Archived source | Status | Review action |
+| --- | --- | --- | --- |
+| Paper Narrative Synthesis | [20260524T093308Z_paper_synthesis_draft.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/cursor_sdk_drafts/20260524T093308Z_paper_synthesis_draft.md) | `active_review` | Triage and map current paper claims from `experiment_registry.json`. |
+| Documentation Hygiene Scan | [20260524T093256Z_hygiene_scan.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/workstreams/cursor_sdk/hygiene_scans/20260524T093256Z_hygiene_scan.md) | `active_review` | Resolve uncommitted consolidation files, update stale `session_brief.md`, and clean routing paths. |
+
+## Reviewed In This Pass
+
+| Item | Archived source | Status | Review outcome |
+| --- | --- | --- | --- |
+| ExECT S4/S5 frequency audit guidance | `archive/experiments_cursor_sdk_drafts/20260524T083058Z_inspection_draft.md` | `promote_specific_claims` | The draft was used only as checklist/taxonomy support for `docs/experiments/exect/exect_s4_s5_frequency_gold_template_audit_20260524.md`. The promoted audit cites primary sources and the machine-readable artifact `artifacts/audits/exect_s4_s5_frequency_gold_template_audit_20260524.json`. Headline validation counts were checked against the JSON summary: 40 validation docs, 24 docs with frequency gold, 43 gold labels, 11 candidate labels, 5 matched labels, 38 misses, 6 extras, 11.6% gold coverage, 45.5% candidate precision, and 2/24 gold-bearing docs fully covered. |
+| Model compatibility report | `archive/compatibility/20260523T164950Z_model_compatibility_report.md` | `promote_specific_claims` | Verified current adapter/config findings were promoted to `docs/policies/model_config_compatibility_backlog_20260524.md`. Focused validation passed: `uv run pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py` = 43 passed. Stale/unverified claims were explicitly not promoted. |
+| Disposable mutation pilot report | External: `C:/Users/cbrow/Code/dspy-extraction-cursor-pilot-artifacts/20260524T082000Z_mutation_test_report.md`; historical shared-workspace incident: `archive/experiments_cursor_sdk_drafts/20260523T161218Z_mutation_test_report.md` | `promote_specific_claims` | Reviewed in `docs/experiments/gan/gan_s0_cursor_sdk_mutation_pilot_review_20260524.md`. Promoted only the disposable-worktree safety lesson and the narrow `seizure free for multiple year` Gan backlog lead for `gan_13574`/`gan_13598`; no source code was promoted. Current baseline validation passed: `uv run pytest tests/test_gan_temporal_candidates.py` = 49 passed. |
+| Adapter mutation proposal | `archive/experiments_cursor_sdk_drafts/20260523T160319Z_adapter_mutation_draft.md` | `promote_specific_claims` | Used only alongside the disposable pilot review. Non-multi-year helper families were not promoted because they overlapped existing candidate builders or crossed risky frequency-policy boundaries. |
+| Paper narrative synthesis draft: pipeline decomposition and deterministic versus LLM placement | `archive/experiments_cursor_sdk_drafts/20260524T084403Z_paper_synthesis_draft.md` | `promote_specific_claims` | Reviewed-through-promotion into `docs/experiments/synthesis/core_research_questions_pipeline_review_20260524.md` with `docs/experiments/synthesis/core_research_questions_experiment_source_index_20260524.md` as a generated registry appendix. A registry sanity check confirmed 204 rows and matched the report's headline claims for Gan builder-gap GPT/Qwen and ExECT S1-S4 GPT ladder metrics. Manuscript tables still require primary artifact pulls before publication. |
+
+## Deferred Leads
+
+| Item | Archived source | Status | Review action |
+| --- | --- | --- | --- |
+| G16 stale-check inspection draft | `archive/experiments_cursor_sdk_drafts/20260523T164636Z_inspection_draft.md` | `defer` | Historical Gan reconciliation lead. Prefer promoted Gan inspection/synthesis docs and the active Kanban over this draft. |
+
+## Archived With No Current Review
+
+| Group | Archive path | Reason |
+| --- | --- | --- |
+| Prompt rehearsals | `archive/**/**/*prompt*`, plus explicitly indexed files in `cursor_sdk_draft_index_20260524.md` | Prompt text only; not live SDK output. |
+| Earlier duplicate inspection drafts | `archive/experiments_cursor_sdk_drafts/20260523T101127Z_inspection_draft.md`, `20260523T163121Z_inspection_draft.md` | Superseded by canonical or promoted source docs. |
+| Earlier paper-synthesis drafts | `archive/experiments_cursor_sdk_drafts/20260523T160219Z_paper_synthesis_draft.md`, `20260523T164746Z_paper_synthesis_draft.md`, `20260523T173227Z_paper_synthesis_draft.md` | Do not use for paper claims; paper table freeze must cite primary artifacts and promoted syntheses. |
+| Memory pass candidates | `archive/memory_dreams/` | Useful historically; selected updates have already been absorbed into memory/workflow routing or current Kanban. |
+| Hygiene scans | `archive/hygiene_scans/` | Findings either resolved, superseded by current Kanban, or represented in this review queue. |
+| Old workstream synthesis docs | `archive/workstream_docs/` | Replaced by `README.md`, `cursor_sdk_review_queue_20260524.md`, and current guardrail docs. |
+
+## Review Process Started
+
+The first review pull was the ExECT S4/S5 frequency audit guidance because it was aligned with the current Kanban. It is now reviewed-through-promotion. Future review outcomes should be one of:
+
+| Outcome | Meaning |
+| --- | --- |
+| `promote_specific_claims` | A verified checklist or taxonomy is moved into a real ExECT audit plan. |
+| `keep_as_lead` | The draft remains useful but not yet verified. |
+| `archive_no_action` | The active audit proceeds from primary docs without using SDK wording. |
+
+Minimum review checklist:
+
+- Every cited source path exists.
+- Every claim is traceable to primary docs or code, not to SDK prose.
+- Dataset, split, scorer, and evidence caveats are preserved.
+- No scorer, loader, schema, registry, or Kanban behavior changes are made as part of review.
+- If promoted, wording is applied through a normal patch to the target source document.

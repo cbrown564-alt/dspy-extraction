@@ -178,3 +178,91 @@ def test_exect_frequency_post_merge_unions_model_and_note_labels():
     assert "s4_bridge:frequency_co_label_augmented" in flags or (
         "s4_bridge:note_anchored_frequency_merged" in flags
     )
+
+
+def test_e6_frequency_candidate_recall_improvements():
+    # 1. Section-list adverbial rates
+    labels_weekly = build_exect_frequency_pre_vocab_labels("Myoclonic jerks weekly.")
+    assert "1 per 1 week" in labels_weekly
+
+    labels_twice_weekly = build_exect_frequency_pre_vocab_labels("He gets jerks twice weekly.")
+    assert "2 per 1 week" in labels_twice_weekly
+
+    labels_three_monthly = build_exect_frequency_pre_vocab_labels("Seizures occur three times monthly.")
+    assert "3 per 1 month" in labels_three_monthly
+
+    # 2. Extended quantified rates
+    labels_once_month = build_exect_frequency_pre_vocab_labels("About once a month she has a seizure.")
+    assert "1 per 1 month" in labels_once_month
+
+    labels_twice_week = build_exect_frequency_pre_vocab_labels("She gets focal seizures twice a week.")
+    assert "2 per 1 week" in labels_twice_week
+
+    labels_every_3_weeks = build_exect_frequency_pre_vocab_labels("Focal seizures with altered awareness every 3 weeks.")
+    assert "1 per 3 week" in labels_every_3_weeks
+
+    # 3. Zero-rate windows
+    labels_several_years = build_exect_frequency_pre_vocab_labels("He has not had any generalised convulsions now for several years.")
+    assert "0 per 3 year" in labels_several_years
+
+    labels_free_5_years = build_exect_frequency_pre_vocab_labels("He has been seizure free for 5 years.")
+    assert "0 per 5 year" in labels_free_5_years
+
+    labels_no_sz_2_years = build_exect_frequency_pre_vocab_labels("No seizures in the last 2 years.")
+    assert "0 per 2 year" in labels_no_sz_2_years
+
+    labels_not_happen_5_years = build_exect_frequency_pre_vocab_labels("They have not happen now for at least 5 years.")
+    assert "0 per 5 year" in labels_not_happen_5_years
+
+    # 4. Qualitative frequency same cues
+    labels_well_controlled = build_exect_frequency_pre_vocab_labels("Richard's seizures remain well controlled.")
+    assert "frequency same" in labels_well_controlled
+
+    labels_remains_same = build_exect_frequency_pre_vocab_labels("Her seizure frequency remains the same.")
+    assert "frequency same" in labels_remains_same
+
+    labels_no_change = build_exect_frequency_pre_vocab_labels("There has been no change in her seizure frequency.")
+    assert "frequency same" in labels_no_change
+
+    # 5. Alternative seizure free since year phrasings
+    labels_last_event = build_exect_frequency_pre_vocab_labels("last event 2015")
+    assert "seizure free since 2015" in labels_last_event
+
+    labels_last_sz_nov = build_exect_frequency_pre_vocab_labels("last seizure was November 2015")
+    assert "seizure free since 2015" in labels_last_sz_nov
+
+    # 6. Seizure-free word boundary and negation/return guards
+    labels_returned = build_exect_frequency_pre_vocab_labels("after the period of seizure freedom the seizures have returned")
+    assert "seizure free" not in labels_returned
+    assert "frequency increased" in labels_returned
+
+    labels_no_more = build_exect_frequency_pre_vocab_labels("since February 6th he has not had any more seizures.")
+    assert "seizure free" in labels_no_more
+
+    # 7. Breakthrough after period
+    labels_breakthrough = build_exect_frequency_pre_vocab_labels("After around 6 months without having seizures he had a cluster of seizures.")
+    assert "1 per 6 month" in labels_breakthrough
+
+    # 8. Date/month ago zero-rate mappings to seizure free
+    labels_ago = build_exect_frequency_pre_vocab_labels("Her seizure was about 2 months ago.")
+    assert "0 per 2 month" in labels_ago
+    assert "seizure free" in labels_ago
+
+    labels_last_occurred = build_exect_frequency_pre_vocab_labels("the last occurred three years ago.")
+    assert "0 per 3 year" in labels_last_occurred
+
+    # 9. Last seizure date to seizure free
+    labels_date = build_exect_frequency_pre_vocab_labels("last seizure was on the 15th April")
+    assert "seizure free" in labels_date
+
+    # 10. Qualitative cues expansion
+    labels_increasing = build_exect_frequency_pre_vocab_labels("Many thanks for referring for increasing seizures.")
+    assert "frequency increased" in labels_increasing
+
+    labels_more_frequent = build_exect_frequency_pre_vocab_labels("Huw has had more frequent seizures.")
+    assert "frequency increased" in labels_more_frequent
+
+    labels_worse_year = build_exect_frequency_pre_vocab_labels("seizures have been worse in the last year.")
+    assert "frequency increased" in labels_worse_year
+
+
