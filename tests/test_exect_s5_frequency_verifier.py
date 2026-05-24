@@ -129,3 +129,46 @@ def test_frequency_verify_wrapper_is_reject_only_and_preserves_am_guard():
     assert prediction_set.predictions[0].metadata["frequency_verifier"][
         "primitive_id"
     ] == "exect.frequency.evidence_verify_policy.v1"
+
+
+def test_frequency_verifier_guard_allows_seizures_improved_with_medication():
+    guarded = _apply_exect_s5_frequency_verifier_guards(
+        note_text="I was pleased to hear that his seizures have improved since reducing the lamotrigine.",
+        initial_frequency=["frequency decreased"],
+        verified=dspy.Prediction(
+            seizure_frequency=["frequency decreased"],
+            seizure_frequency_evidence=[
+                "seizures have improved since reducing the lamotrigine"
+            ],
+            verifier_decision="confirm",
+            verifier_reason="valid frequency decrease indicator",
+        ),
+    )
+
+    assert guarded.seizure_frequency == ["frequency decreased"]
+    assert guarded.seizure_frequency_evidence == [
+        "seizures have improved since reducing the lamotrigine"
+    ]
+    assert "medication_control_not_frequency_change" not in guarded.frequency_verifier_flags
+
+
+def test_frequency_verifier_guard_case_insensitive_and_recovery():
+    guarded = _apply_exect_s5_frequency_verifier_guards(
+        note_text="She thinks that she has about one a week.",
+        initial_frequency=["1 per 1 week"],
+        verified=dspy.Prediction(
+            seizure_frequency=["1 per 1 week"],
+            seizure_frequency_evidence=[
+                "she thinks that she has about one a week"  # lowercased 'she'
+            ],
+            verifier_decision="confirm",
+            verifier_reason="case insensitive match",
+        ),
+    )
+
+    assert guarded.seizure_frequency == ["1 per 1 week"]
+    assert guarded.seizure_frequency_evidence == [
+        "She thinks that she has about one a week"  # recovered capitalized 'She'
+    ]
+    assert "evidence_not_in_note" not in guarded.frequency_verifier_flags
+

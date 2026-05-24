@@ -433,7 +433,11 @@ class ExectS5SeizureFrequencyVerifierSignature(dspy.Signature):
         desc="Confirmed subset of initial seizure_frequency labels; add no labels."
     )
     seizure_frequency_evidence: list[str] = dspy.OutputField(
-        desc="Exact note quotes supporting each confirmed label, aligned by index."
+        desc=(
+            "Exact, verbatim note quotes supporting each confirmed label, aligned by index. "
+            "Do NOT paraphrase, summarize, or alter capitalization/punctuation. "
+            "Each evidence element MUST exist as an exact case-sensitive or case-insensitive substring within note_text."
+        )
     )
     verifier_decision: str = dspy.OutputField(
         desc="confirm when all initial labels are supported; repair when any are dropped."
@@ -980,9 +984,14 @@ def _apply_exect_s5_frequency_verifier_guards(
         if _evidence_looks_like_frequency_candidate_block(evidence_text):
             flags.append("candidate_block_echo")
             continue
-        if evidence_text not in note_text:
+        evidence_lower = evidence_text.lower()
+        note_lower = note_text.lower()
+        if evidence_lower not in note_lower:
             flags.append("evidence_not_in_note")
             continue
+        # Recover exact-cased substring from the note to prevent any downstream case-sensitivity issues
+        idx = note_lower.find(evidence_lower)
+        evidence_text = note_text[idx : idx + len(evidence_text)]
         if _frequency_change_from_medication_control(raw_value, evidence_text):
             flags.append("medication_control_not_frequency_change")
             continue
@@ -1021,7 +1030,7 @@ def _frequency_change_from_medication_control(raw_value: str, evidence_text: str
         "dose",
         "treatment",
     )
-    control_markers = ("control", "controlled", "improved", "better")
+    control_markers = ("control", "controlled")
     seizure_frequency_markers = ("frequency", "seizure frequency", "seizures per")
     return (
         any(marker in evidence for marker in medication_markers)
