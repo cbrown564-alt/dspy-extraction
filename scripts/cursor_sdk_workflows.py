@@ -8,6 +8,7 @@ artifacts.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import queue
 import subprocess
@@ -22,6 +23,38 @@ from cursor_sdk.errors import CursorSDKError
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL = "composer-2.5"
+LEDGER_PATH = REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "cursor_sdk_runs.jsonl"
+DISPOSABLE_WORKTREE_MARKER = ".cursor-sdk-disposable-worktree"
+
+LIVE_OUTPUT_SUFFIXES = {
+    "memory-pass": "cursor_sdk_memory_pass_candidate",
+    "inspection-draft": "inspection_draft",
+    "hygiene-scan": "hygiene_scan",
+    "paper-synthesis": "paper_synthesis_draft",
+    "adapter-mutation": "adapter_mutation_draft",
+    "model-compatibility": "model_compatibility_report",
+    "test-mutations": "mutation_test_report",
+}
+
+PROMPT_REHEARSAL_SUFFIXES = {
+    "memory-pass": "cursor_sdk_memory_pass_prompt_rehearsal",
+    "inspection-draft": "inspection_draft_prompt_rehearsal",
+    "hygiene-scan": "hygiene_scan_prompt_rehearsal",
+    "paper-synthesis": "paper_synthesis_prompt_rehearsal",
+    "adapter-mutation": "adapter_mutation_prompt_rehearsal",
+    "model-compatibility": "model_compatibility_prompt_rehearsal",
+    "test-mutations": "mutation_test_prompt_rehearsal",
+}
+
+OUTPUT_FOLDERS = {
+    "memory-pass": REPO_ROOT / "docs" / "memory" / "dreams",
+    "inspection-draft": REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts",
+    "hygiene-scan": REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "hygiene_scans",
+    "paper-synthesis": REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts",
+    "adapter-mutation": REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts",
+    "model-compatibility": REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "compatibility",
+    "test-mutations": REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts",
+}
 
 
 def _install_windows_cursor_bridge_patch() -> None:
@@ -97,6 +130,25 @@ def _utc_stamp() -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
+def _relative_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(REPO_ROOT).as_posix()
+    except ValueError:
+        return path.resolve().as_posix()
+
+
+def _default_output_path(workflow: str, run_id: str, prompt_only: bool) -> Path:
+    folder = OUTPUT_FOLDERS[workflow]
+    suffixes = PROMPT_REHEARSAL_SUFFIXES if prompt_only else LIVE_OUTPUT_SUFFIXES
+    return folder / f"{run_id}_{suffixes[workflow]}.md"
+
+
+def _append_ledger_entry(entry: dict[str, object]) -> None:
+    LEDGER_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with LEDGER_PATH.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(entry, sort_keys=True) + "\n")
+
+
 def _write_prompt(prompt: str, output: Path) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(prompt, encoding="utf-8")
@@ -114,7 +166,7 @@ def _run_cursor(prompt: str, output: Path, model: str) -> None:
         output.write_text(run.text(), encoding="utf-8")
 
 
-def _ensure_mutating_workflow_allowed() -> None:
+def _ensure_mutating_workflow_allowed(workspace_root: Path = REPO_ROOT) -> None:
     """Block live mutation workflows unless the operator asserts a disposable worktree."""
 
     if os.environ.get("CURSOR_SDK_ALLOW_MUTATING_WORKFLOW") != "disposable-worktree":
@@ -123,9 +175,17 @@ def _ensure_mutating_workflow_allowed() -> None:
             "Use --prompt-only for review drafts, or run from a disposable clone/worktree "
             "with CURSOR_SDK_ALLOW_MUTATING_WORKFLOW=disposable-worktree."
         )
+    workspace_root = workspace_root.resolve()
+    marker = workspace_root / DISPOSABLE_WORKTREE_MARKER
+    if not marker.exists():
+        raise SystemExit(
+            "Refusing live Cursor SDK mutation workflow because the disposable "
+            f"workspace marker is missing: {marker}. Create this marker only "
+            "inside a throwaway clone or git worktree."
+        )
     status = subprocess.run(
         ["git", "status", "--short"],
-        cwd=REPO_ROOT,
+        cwd=workspace_root,
         check=True,
         capture_output=True,
         text=True,
@@ -400,14 +460,14 @@ Repository root: {REPO_ROOT}
 
 CRITICAL RULES FOR COMMAND EXECUTION:
 1. You are running as an agent in the repository workspace. You have the ability to read, edit files, and execute terminal commands.
-2. Before making any modifications, you MUST verify that you are on a clean git working directory. Run `git status` to verify.
+2. This workflow may run only in a disposable workspace with a `.cursor-sdk-disposable-worktree` marker. Before making any modifications, you MUST verify that you are on a clean git working directory. Run `git status` to verify.
 3. Read the latest adapter mutation draft file in `docs/experiments/cursor_sdk_drafts/*_adapter_mutation_draft.md`.
 4. Implement the drafted helper functions (like `_seizure_free_for_multiple_year`, `_seizure_free_for_multiple_month`, etc.) and register them in `src/clinical_extraction/gan/temporal_candidates.py`.
 5. Run `uv run pytest tests/test_gan_temporal_candidates.py` to check for regressions.
 6. Diagnose any failures, modify the code, and rerun the tests until all 49+ tests pass.
 7. Verify if the coverage on the pragmatics slice (`test_enriched_gap_slice_gold_label_coverage_improves` or `test_residual_slice_gold_label_coverage_improves`) changes or passes.
 8. Run `git diff` to capture all your modifications.
-9. CRITICAL RESTORATION: You MUST undo all your modifications to `src/clinical_extraction/gan/temporal_candidates.py` before ending your turn. Run `git checkout -- src/clinical_extraction/gan/temporal_candidates.py` and verify with `git status` that the workspace is completely clean. Do not leave the workspace dirty.
+9. CRITICAL RESTORATION: Because this is a disposable workspace, you MUST undo all modifications before ending your turn. After capturing the diff, run `git restore --staged --worktree .` and verify with `git status` that the disposable workspace is completely clean. Do not leave the workspace dirty.
 10. Write the final report detailing your steps, outcomes, and the captured git diff.
 
 Output shape:
@@ -466,46 +526,71 @@ def main() -> int:
 
     if args.workflow == "memory-pass":
         prompt = memory_pass_prompt()
-        default_output = REPO_ROOT / "docs" / "memory" / "dreams" / f"{_utc_stamp()}_cursor_sdk_memory_pass_candidate.md"
     elif args.workflow == "inspection-draft":
         prompt = inspection_draft_prompt(args.run_dir, args.topic)
-        default_output = REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts" / f"{_utc_stamp()}_inspection_draft.md"
     elif args.workflow == "hygiene-scan":
         prompt = hygiene_scan_prompt()
-        default_output = REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "hygiene_scans" / f"{_utc_stamp()}_hygiene_scan.md"
     elif args.workflow == "paper-synthesis":
         prompt = paper_synthesis_prompt()
-        default_output = REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts" / f"{_utc_stamp()}_paper_synthesis_draft.md"
     elif args.workflow == "adapter-mutation":
         prompt = adapter_mutation_prompt()
-        default_output = REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts" / f"{_utc_stamp()}_adapter_mutation_draft.md"
     elif args.workflow == "model-compatibility":
         prompt = model_compatibility_prompt()
-        default_output = REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "compatibility" / f"{_utc_stamp()}_model_compatibility_report.md"
     elif args.workflow == "test-mutations":
         prompt = test_mutations_prompt()
-        default_output = REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts" / f"{_utc_stamp()}_mutation_test_report.md"
     else:
         raise ValueError(f"Unknown workflow: {args.workflow}")
 
+    run_id = _utc_stamp()
+    default_output = _default_output_path(args.workflow, run_id, args.prompt_only)
     output = args.output or default_output
     if not output.is_absolute():
         output = REPO_ROOT / output
 
-    if args.prompt_only:
-        _write_prompt(prompt, output)
-        print(f"Wrote prompt to {output}")
+    started_at = datetime.now(timezone.utc)
+    status = "success"
+    error: str | None = None
+    try:
+        if args.prompt_only:
+            _write_prompt(prompt, output)
+            print(f"Wrote prompt to {output}")
+            return 0
+
+        if args.workflow == "test-mutations":
+            _ensure_mutating_workflow_allowed()
+
+        if not os.environ.get("CURSOR_API_KEY"):
+            raise SystemExit("CURSOR_API_KEY is not set in the environment or .env file.")
+
+        _run_cursor(prompt, output, args.model)
+        print(f"Wrote Cursor SDK draft to {output}")
         return 0
-
-    if args.workflow == "test-mutations":
-        _ensure_mutating_workflow_allowed()
-
-    if not os.environ.get("CURSOR_API_KEY"):
-        raise SystemExit("CURSOR_API_KEY is not set in the environment or .env file.")
-
-    _run_cursor(prompt, output, args.model)
-    print(f"Wrote Cursor SDK draft to {output}")
-    return 0
+    except BaseException as exc:
+        status = "failed"
+        error = f"{type(exc).__name__}: {exc}"
+        raise
+    finally:
+        ended_at = datetime.now(timezone.utc)
+        entry = {
+            "run_id": run_id,
+            "workflow": args.workflow,
+            "model": args.model,
+            "prompt_only": args.prompt_only,
+            "output_kind": "prompt_rehearsal" if args.prompt_only else "live_draft",
+            "output_path": _relative_path(output),
+            "started_at": started_at.isoformat(),
+            "ended_at": ended_at.isoformat(),
+            "duration_seconds": round((ended_at - started_at).total_seconds(), 3),
+            "status": status,
+            "topic": args.topic,
+            "run_dir": args.run_dir,
+            "command": " ".join(sys.argv),
+            "human_review_status": "needs_review",
+            "source_claim_status": "unchecked",
+        }
+        if error:
+            entry["error"] = error
+        _append_ledger_entry(entry)
 
 
 if __name__ == "__main__":

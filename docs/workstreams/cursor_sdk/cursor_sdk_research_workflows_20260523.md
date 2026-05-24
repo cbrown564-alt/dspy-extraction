@@ -48,6 +48,20 @@ The runner loads `.env`, verifies only that `CURSOR_API_KEY` is present, and doe
 
 Windows note: `scripts/cursor_sdk_workflows.py` installs a local Windows-only bridge-discovery patch before live SDK calls because `cursor-sdk` 0.1.5 uses `selectors` on the bridge stderr pipe, which fails on Windows pipe handles. The patch is scoped to this runner and does not modify the installed SDK package.
 
+## Instrumentation
+
+Every prompt rehearsal or live draft run appends operational metadata to:
+
+```text
+docs/workstreams/cursor_sdk/cursor_sdk_runs.jsonl
+```
+
+The human-readable ledger contract is `docs/workstreams/cursor_sdk/cursor_sdk_run_ledger_20260524.md`. Existing outputs are indexed in `docs/workstreams/cursor_sdk/cursor_sdk_draft_index_20260524.md`.
+
+Default prompt-only outputs now include `_prompt_rehearsal` in the filename. Live outputs keep the existing draft/report suffixes.
+
+The disposable mutation protocol is `docs/workstreams/cursor_sdk/cursor_sdk_disposable_worktree_protocol_20260524.md`.
+
 ## Shared Guardrails
 
 - Drafts are review artifacts, not source-of-truth updates.
@@ -90,7 +104,19 @@ Promotion requires a reviewer to:
 $env:CURSOR_SDK_ALLOW_MUTATING_WORKFLOW="disposable-worktree"
 ```
 
-The runner also refuses live mutation workflows when that disposable workspace is dirty. This boundary exists because the earlier active mutation workflow rolled back `src/clinical_extraction/gan/temporal_candidates.py` and erased uncommitted Gan candidate-builder code.
+The disposable workspace must also contain a `.cursor-sdk-disposable-worktree` marker file at its root. The runner refuses live mutation workflows when the marker is missing or the disposable workspace is dirty. This boundary exists because the earlier active mutation workflow rolled back `src/clinical_extraction/gan/temporal_candidates.py` and erased uncommitted Gan candidate-builder code.
+
+Disposable worktree setup:
+
+```powershell
+git worktree add --detach ..\dspy-extraction-cursor-disposable HEAD
+Set-Content -Path ..\dspy-extraction-cursor-disposable\.cursor-sdk-disposable-worktree -Value "Disposable Cursor SDK mutation workspace"
+cd ..\dspy-extraction-cursor-disposable
+$env:CURSOR_SDK_ALLOW_MUTATING_WORKFLOW = "disposable-worktree"
+uv run python scripts/cursor_sdk_workflows.py test-mutations
+```
+
+Mutation reports remain review artifacts. Source promotion still requires a separate reviewed Codex or human patch in the shared repository.
 
 ## Workflow 1: Automated Research-Memory Passes
 

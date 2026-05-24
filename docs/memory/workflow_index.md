@@ -161,6 +161,8 @@ Memory warning:
 Read:
 
 - `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md`
+- `docs/workstreams/cursor_sdk/cursor_sdk_run_ledger_20260524.md`
+- `docs/workstreams/cursor_sdk/cursor_sdk_draft_index_20260524.md`
 - `scripts/cursor_sdk_workflows.py`
 - the source artifacts named by the specific workflow prompt
 
@@ -175,6 +177,8 @@ Commands:
 
 Validate:
 
+- Check `docs/workstreams/cursor_sdk/cursor_sdk_runs.jsonl` for run attribution after live or prompt-only SDK runs.
+- Check `docs/workstreams/cursor_sdk/cursor_sdk_draft_index_20260524.md` before reviewing older SDK outputs.
 - Treat every SDK output as `needs_review` until a reviewer checks source paths and promotes specific wording.
 - Do not use SDK drafts as paper evidence, benchmark evidence, registry rows, or source-of-truth updates.
 - Live mutation workflow `test-mutations` is blocked in the shared workspace. Use `--prompt-only` for prompt review; live execution requires a disposable clone/worktree and `CURSOR_SDK_ALLOW_MUTATING_WORKFLOW=disposable-worktree`.

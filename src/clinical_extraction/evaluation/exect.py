@@ -24,6 +24,7 @@ EXECT_SCORER = "exect_field_family_deterministic_v1"
 EXECT_S2_SCORER = "exect_s2_field_family_deterministic_v1"
 EXECT_S3_SCORER = "exect_s3_field_family_deterministic_v1"
 EXECT_S4_SCORER = "exect_s4_field_family_deterministic_v1"
+EXECT_S5_SCORER = "exect_s5_core_field_family_deterministic_v1"
 
 FIELD_FAMILIES = ("diagnosis", "seizure_type", "annotated_medication")
 S2_FIELD_FAMILIES = (
@@ -44,6 +45,13 @@ S4_FIELD_FAMILIES = (
     *S3_FIELD_FAMILIES,
     "seizure_frequency",
     "medication_temporality",
+)
+S5_FIELD_FAMILIES = (
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication",
+    "investigation",
+    "seizure_frequency",
 )
 
 _FIELD_ALIASES = {
@@ -91,6 +99,12 @@ _S4_FIELD_ALIASES = {
     "current_seizure_frequency": "seizure_frequency",
     "medication_temporality": "medication_temporality",
     "medication_temporalities": "medication_temporality",
+}
+
+_S5_FIELD_ALIASES = {
+    alias: family
+    for alias, family in _S4_FIELD_ALIASES.items()
+    if family in S5_FIELD_FAMILIES
 }
 
 
@@ -169,6 +183,19 @@ def score_exect_s4_document(
         prediction=prediction,
         field_families=S4_FIELD_FAMILIES,
         field_aliases=_S4_FIELD_ALIASES,
+    )
+
+
+def score_exect_s5_document(
+    *,
+    gold: ExectGoldDocument,
+    prediction: DocumentPrediction,
+) -> ExectDocumentScore:
+    return _score_exect_document_for_families(
+        gold=gold,
+        prediction=prediction,
+        field_families=S5_FIELD_FAMILIES,
+        field_aliases=_S5_FIELD_ALIASES,
     )
 
 
@@ -312,6 +339,32 @@ def score_exect_s4_prediction_set(
             "Overlapping phrases across families are scored independently per family.",
             "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
             "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
+        ],
+    )
+
+
+def score_exect_s5_prediction_set(
+    prediction_set: PredictionSet,
+    *,
+    gold_documents: Iterable[ExectGoldDocument] | None = None,
+) -> dict[str, Any]:
+    return _score_exect_prediction_set_for_families(
+        prediction_set,
+        gold_documents=gold_documents,
+        field_families=S5_FIELD_FAMILIES,
+        field_aliases=_S5_FIELD_ALIASES,
+        scorer=EXECT_S5_SCORER,
+        caveats=[
+            "ExECT S5 is a reporting/experiment surface, not a broader schema than S4.",
+            "S5 scores diagnosis, seizure type, annotated medication, investigation, "
+            "and seizure frequency.",
+            "Medication temporality is excluded from S5 because ExECT prescription "
+            "gold has no native temporality column.",
+            "Seizure-frequency gold uses ExECT annotation-facing surfaces, not Gan "
+            "monthly-frequency normalization.",
+            "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
+            "Evidence metrics are diagnostic source-grounding checks and are not "
+            "part of benchmark-facing field-family F1.",
         ],
     )
 
