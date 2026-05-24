@@ -129,6 +129,9 @@ EXECT_S4_FREQUENCY_LABEL_POLICY_GUIDANCE = (
     "in seizure_frequency; those belong in seizure_type.",
     "Do not emit clinical prose (seizure free for more than five years) — use benchmark "
     "surfaces only.",
+    "A patient can experience temporary seizure freedom in the past but have increased "
+    "frequency currently. Extract BOTH (e.g. seizure free + frequency increased or 4 per 3 week) "
+    "if the note mentions both.",
 )
 EXECT_S4_INVESTIGATION_LABEL_POLICY_GUIDANCE = (
     "Investigation labels are performed modality+result pairs only "
@@ -417,6 +420,30 @@ class ExectS5SeizureFrequencyVerifierSignature(dspy.Signature):
 
     Evidence must be an exact quote from the clinical note, not from the injected
     precomputed-candidate block.
+
+    Verification Policy Rules:
+    1. Synonyms of Seizure Freedom: Phrases indicating no seizures since an event or review
+       (e.g., "no further seizures", "seizure free since last review", "remains clear") are
+       valid and sufficient support for the "seizure free" label. Do not reject them.
+    2. Zero-rate Intervals: Statements specifying the timing of the last seizure (e.g.,
+       "last event was 3 weeks ago", "last seizure in April") support a zero-rate label
+       (e.g., "0 per 3 week" or "0 per 1 month"). Do not reject zero-rate labels due to
+       boundary interpretation.
+    3. Diagnostic Modifiers: A patient's current status (e.g., "seizure free") can coexist
+       with a general diagnostic history (e.g., "infrequent focal seizures"). Confirm the
+       current status label if supported by the note text, even if a diagnostic category
+       seems to conflict.
+    4. Seizure Free Since Year: A statement specifying that the last seizure occurred in a
+       given year (e.g., "last event September 2019", "last seizure in 2017") directly
+       supports the label "seizure free since YEAR". Do not reject it.
+    5. Frequency Changes: "frequency increased" and "frequency decreased" are valid benchmark
+       qualitative change labels. If the note mentions seizures happening "more frequently",
+       "worse", "less frequently", or "improved", confirm these labels even if they appear in
+       the context of treatment adjustments or diagnostic summaries.
+    6. Coexisting Labels: ExECT gold annotations routinely allow multiple qualitative and
+       quantified labels to coexist (e.g., "infrequent" and "seizure free" can both be confirmed
+       if both are supported by phrases in the note). Do not drop one label just because you
+       think another label is "more accurate" or "contradicts" it logically.
     """
 
     note_text: str = dspy.InputField(desc="Clinical note text without candidate block")
