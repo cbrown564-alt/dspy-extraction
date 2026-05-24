@@ -55,7 +55,7 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 | Card | Status | Outcome | Dependencies | Parallelizable | Validation |
 | --- | --- | --- | --- | --- | --- |
 | A1. Frequency residual audit | Completed | Classified S5 frequency false positives/false negatives after high-recall pre-vocab injection: qualitative over-emission, temporal/current-scope mismatch, evidence mismatch, normalization/range mismatch, and gold-policy ambiguity. | E5 full-validation runs | yes | Inspection note: [exect_s5_frequency_residual_audit_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md), citing run ID `exect_s5_frequency_pre_vocab_full_gpt4_1_mini_20260524T142823Z`, scorer mode, split, and per-document residual categories. |
-| A2. Candidate-constrained frequency verifier | Completed | Case-insensitive matching, casing recovery, relaxed medication control guard, and paraphrasing-prevention instructions improved seizure_frequency F1 to 71.7% on cap-25 (+11.2pp vs baseline, +3.8pp vs buggy verifier). Runs completed and unit tests added. | A1 complete; A2R review complete | no | Run ID: `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini_20260524T194925Z`, walkthrough: [walkthrough.md](file:///C:/Users/cbrow/.gemini/antigravity/brain/6b549eb8-1960-448a-a6ff-feb9b3abc6c3/walkthrough.md). |
+| A2. Candidate-constrained frequency verifier | Completed | Case-insensitive matching, casing recovery, relaxed medication control guard, and paraphrasing-prevention instructions improved seizure_frequency F1 to 71.7% on cap-25 (+11.2pp vs baseline, +3.8pp vs buggy verifier). Runs completed and unit tests added. | A1 complete; A2R review complete | no | Run ID: `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_cap25_gpt4_1_mini_20260524T194925Z`, walkthrough: [walkthrough.md](file:///C:/Users/cbrow/.gemini/antigravity/brain/6b549eb8-1960-448a-a6ff-feb9b3abc6c3/walkthrough.md), critic review: [exect_s5_frequency_verifier_a2r_regression_review_20260524.md](file:///c:/Users/cbrow/Code/dspy-extraction/docs/experiments/exect/exect_s5_frequency_verifier_a2r_regression_review_20260524.md). |
 | A3. Frequency prompt/policy refinement | Ready | Add or revise prompt guidance for qualitative/current-frequency selection while keeping candidate density unchanged. | A1 | yes | Cap-25 then full validation only if F1 improves without medication/diagnosis/seizure-type/investigation regressions. |
 | A4. Medication temporal evidence guard | Backlog | Separately test planned/history/future ASM pruning for `annotated_medication`. | AM guard promoted; prereg required | after A1/A2 or independent if medication becomes paper blocker | Cap-25 prereg; no silent scorer change; report annotation-policy residuals. |
 | A5. S2/S3 middle-ladder reruns | Backlog | Refresh intermediate schema-complexity anchors only if paper tables need them. | Paper table needs | yes | Validation runs and registry rows; caveat that family sets differ by schema rung. |
@@ -123,11 +123,10 @@ The current priority is to turn recent ExECT and Gan improvements into clearer n
 
 ## Recommended Next Pull
 
-1. **A2R - A2 regression/critic review.** Analyze recall loss source and verify scorer preservation before any full-validation decision for the frequency verifier.
-2. **A3 - Frequency prompt/policy refinement.** Introduce prompt policy refinements on cap-25 subset to target qualitative and temporal-scope errors.
-3. **C2 - Unknown-overuse targeted arm design.** Preregister a narrow intervention for unknown-overuse cases based on the consolidated residual taxonomy.
-4. **C3 - Pragmatic monthly divergence analysis.** Conduct analysis of pragmatic monthly divergences.
-5. **D2 - Freeze negative/arm-reject table.** Freeze table of rejected arms with decision scope, comparison group, varied factor, and reason.
+1. **A3 - Frequency prompt/policy refinement.** Introduce prompt policy refinements on cap-25 subset to target qualitative and temporal-scope errors.
+2. **C2 - Unknown-overuse targeted arm design.** Preregister a narrow intervention for unknown-overuse cases based on the consolidated residual taxonomy.
+3. **C3 - Pragmatic monthly divergence analysis.** Conduct analysis of pragmatic monthly divergences.
+4. **D2 - Freeze negative/arm-reject table.** Freeze table of rejected arms with decision scope, comparison group, varied factor, and reason.
 
 ## Parallelization Notes
 
