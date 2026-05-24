@@ -1,7 +1,7 @@
 # ExECT S4 Medication Precision Guard GPT Full Validation v1 — Pre-Registration
 
 Date: 2026-05-21  
-Status: **Done** — inspection `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_full_validation_v1_inspection_20260521.md`  
+Status: **Done; G0G2 addendum completed 2026-05-24** - inspections `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_full_validation_v1_inspection_20260521.md`, `docs/experiments/exect/exect_s4_mt_guard_g0g2_dose_current_gpt_inspection_20260524.md`  
 Comparison group: `exect_s4_medication_precision_guard_gpt_full_validation_v1`  
 Cap-25 inspection: `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_cap25_v1_inspection_20260521.md`  
 Design: `docs/experiments/exect/exect_s4_medication_precision_guard_design_20260521.md`  
@@ -44,8 +44,11 @@ Triggered after cap-25 hold: G0 MT precision **+11.2pp**, MT F1 **+9.7pp** vs L1
 | --- | --- | --- | --- |
 | L1 | `mt_guard_l1_control` | `exect_s4_field_family_single_pass` | `exect_s4_mt_guard_l1_baseline_full_gpt4_1_mini.json` |
 | G0 | `mt_guard_non_asm_only_v1` | `exect_s4_field_family_mt_guard_non_asm_single_pass` | `exect_s4_mt_guard_g0_non_asm_full_gpt4_1_mini.json` |
+| G0G2 | `mt_guard_non_asm_dose_current_v1` | `exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass` | `exect_s4_mt_guard_g0g2_dose_current_full_gpt4_1_mini.json` |
 
 Primitive: G0 applies `exect.medication_temporality.non_asm_guard.v1` — drops non-ASM / unlisted medications; preserves model `medication|status`; does not drop dose-only `current` ASM rows.
+
+Primitive: G0G2 applies `exect.medication_temporality.non_asm_dose_current_guard.v1` after cap-25 clearance; it keeps G0 non-ASM removal, preserves `current` ASM labels on prescription-style dose evidence, and prunes unsupported planned/previous labels.
 
 ## Primary and guardrail metrics
 
@@ -77,7 +80,7 @@ External anchor (not in-session control): GPT S4 v1.2 full `runs/exect_s4_valida
 
 ## Open cells
 
-- G0+G2 dose-current fallback
+- G0+G2 dose-current fallback - complete in 2026-05-24 addendum
 - G1 planned/previous evidence gate
 - G3 brand alias map
 - Annotated-medication coupled guard

@@ -64,6 +64,19 @@ def test_build_dspy_lm_defaults_gemini_3_reasoning_effort_to_minimal():
     assert lm.kwargs["reasoning_effort"] == "minimal"
 
 
+def test_build_dspy_lm_does_not_default_non_allowlisted_gemini():
+    config = LLMProviderConfig(
+        provider="gemini",
+        model="gemini-3.1-flash-lite",
+        api_key="test-key",
+    )
+
+    lm = build_dspy_lm(config)
+
+    assert lm.model == "gemini/gemini-3.1-flash-lite"
+    assert "reasoning_effort" not in lm.kwargs
+
+
 def test_build_dspy_lm_passes_ollama_extra_body_with_thinking_disabled():
     config = LLMProviderConfig(
         provider="ollama",

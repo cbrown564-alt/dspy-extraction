@@ -137,6 +137,21 @@ def test_exect_backend_prompts_data_matches_s1_smoke_contract():
     assert prompts["label_policy_guidance"]
 
 
+def test_exect_backend_routes_s4_g0g2_guard_variant_to_s4_builder():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s4_mt_guard_g0g2_dose_current_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    module = get_backend("exect_v2").build_module(
+        config, prompt_version=config.prompt_version
+    )
+
+    assert type(module).__name__ == "ExectS4FieldFamilyModule"
+
+
 @pytest.mark.parametrize(
     ("config_path", "fixture_name"),
     [

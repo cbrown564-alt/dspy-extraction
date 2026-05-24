@@ -1,7 +1,7 @@
 # ExECT S4 Medication Precision Guard GPT Cap-25 v1 — Pre-Registration
 
 Date: 2026-05-21  
-Status: **G0 complete; G0G2 scaffold ready**  
+Status: **G0G2 complete; full-validation follow-up completed 2026-05-24**  
 Comparison group: `exect_s4_medication_precision_guard_gpt_cap25_v1`  
 Design: `docs/experiments/exect/exect_s4_medication_precision_guard_design_20260521.md`  
 Parent plan: `docs/workstreams/hybrid/hybrid_pipeline_exploration_implementation_plan_20260521.md` (item 20)
@@ -78,7 +78,7 @@ External anchor (not in-session control): GPT S4 v1.2 full `runs/exect_s4_valida
 
 ## Open cells
 
-- G0+G2 dose-current fallback arm scaffolded; model-backed cap-25 result pending
+- G0+G2 dose-current fallback arm completed; see `docs/experiments/exect/exect_s4_mt_guard_g0g2_dose_current_gpt_inspection_20260524.md`
 - G1 planned/previous evidence-gated drop
 - G3 brand alias map
 - Annotated-medication coupled guard

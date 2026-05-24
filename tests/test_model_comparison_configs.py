@@ -8,6 +8,7 @@ from clinical_extraction.llms import (
     MockChatAdapter,
     OpenAICompatibleChatAdapter,
     build_chat_adapter,
+    build_dspy_lm,
 )
 
 MODEL_CONFIGS_DIR = Path("configs/models")
@@ -52,6 +53,35 @@ def test_model_config_file_resolves_to_openai_compatible_adapter(
     assert adapter.provider == provider
     assert adapter.model == model
     assert adapter.base_url == base_url
+
+
+@pytest.mark.parametrize("filename,provider,model,base_url", MODEL_CONFIG_FILES)
+def test_model_config_file_resolves_to_dspy_lm(filename, provider, model, base_url):
+    import dspy
+    path = MODEL_CONFIGS_DIR / filename
+    config = LLMProviderConfig.model_validate_json(path.read_text(encoding="utf-8"))
+    lm = build_dspy_lm(config)
+
+    assert isinstance(lm, dspy.LM)
+    assert lm.model.endswith(model)
+
+    if provider == "ollama":
+        assert lm.model.startswith("ollama_chat/")
+        assert lm.kwargs["extra_body"].get("think") is False
+    elif provider == "gemini":
+        assert lm.model.startswith("gemini/")
+        if model == "gemini-3-flash-preview":
+            assert lm.kwargs.get("reasoning_effort") == "minimal"
+        elif model == "gemini-3.1-flash-lite":
+            assert "reasoning_effort" not in lm.kwargs
+    elif provider == "anthropic":
+        assert lm.model.startswith("anthropic/")
+        if config.extra_body:
+            assert lm.kwargs.get("extra_body") == config.extra_body
+    elif provider == "openai":
+        assert lm.model.startswith("openai/")
+        if model.startswith("gpt-5"):
+            assert lm.kwargs.get("temperature") is None
 
 
 def test_all_model_configs_are_parametrized():

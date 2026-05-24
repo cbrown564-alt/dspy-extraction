@@ -4,7 +4,8 @@ Date: 2026-05-21
 Preregistration: `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_full_validation_v1_preregistration_20260521.md`  
 Cap-25 inspection: `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_cap25_v1_inspection_20260521.md`  
 Design: `docs/experiments/exect/exect_s4_medication_precision_guard_design_20260521.md`  
-Comparison group: `exect_s4_medication_precision_guard_gpt_full_validation_v1`
+Comparison group: `exect_s4_medication_precision_guard_gpt_full_validation_v1`  
+2026-05-24 addendum: G0G2 follow-up completed in `docs/experiments/exect/exect_s4_mt_guard_g0g2_dose_current_gpt_inspection_20260524.md`; it supersedes G0 as the best tested medication-temporality precision guard arm, while leaving mechanism closure open.
 
 ## Taxonomy
 
@@ -68,12 +69,12 @@ Directional read:
 
 - **Promote (arm):** use `exect_s4_field_family_mt_guard_non_asm_single_pass` as the GPT S4 operational default for medication-temporality scoring runs, replacing bare `exect_s4_field_family_single_pass` for new ExECT S4 GPT configs.
 - **Do not** mechanism-close precision-guard class from G0 alone.
-- **Next:** G0+G2 dose-current fallback cap-25, then G1 planned/previous evidence gate if G0+G2 passes F1 guard.
+- **Next:** G0+G2 dose-current fallback is complete; inspect G3 brand alias or annotated-medication coupling only if medication-temporality remains paper-relevant.
 - **Do not** rerun H1 post-classifier.
 
 ## Open cells
 
-- G0+G2 dose-current fallback
+- G0+G2 dose-current fallback - complete in 2026-05-24 addendum
 - G1 planned/previous evidence gate
 - G3 brand alias map
 - Annotated-medication coupled guard

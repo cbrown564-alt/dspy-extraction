@@ -21,6 +21,8 @@ ProviderName = Literal[
     "openai_compatible",
 ]
 
+GEMINI_REASONING_MODELS = {"gemini-3-flash-preview"}
+
 
 class ChatMessage(FrozenModel):
     role: Literal["system", "user", "assistant"]
@@ -245,7 +247,7 @@ def build_dspy_lm(config: LLMProviderConfig) -> dspy.LM:
         if config.max_tokens is not None:
             kwargs["max_tokens"] = config.max_tokens
         reasoning_effort = config.reasoning_effort
-        if reasoning_effort is None and "gemini-3" in config.model:
+        if reasoning_effort is None and config.model in GEMINI_REASONING_MODELS:
             reasoning_effort = "minimal"
         if reasoning_effort is not None:
             kwargs["reasoning_effort"] = reasoning_effort
