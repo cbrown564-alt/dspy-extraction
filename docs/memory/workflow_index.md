@@ -1,7 +1,7 @@
 # Workflow Index
 
-Last reviewed: 2026-05-22
-Status: Pilot memory seed
+Last reviewed: 2026-05-23
+Status: Promoted routing map
 
 Use this as a routing map. It does not replace the skills or source docs.
 
@@ -154,7 +154,35 @@ Validate:
 Memory warning:
 
 - Memory files are derived review surfaces. Do not rewrite audits, scorers, registry rows, or Kanban from a memory consolidation pass unless the user explicitly asks for that source-doc edit.
-- Cursor SDK pilot (C1–C4): outputs under `docs/memory/dreams/` are review-only artifacts. Pilot validated on 2026-05-23 (C1–C3 completed successfully with zero SDK-agent edits to source-of-truth docs).
+- Cursor SDK outputs are review-only artifacts. Memory candidates live under `docs/memory/dreams/`; experiment and paper drafts live under `docs/experiments/cursor_sdk_drafts/`; hygiene scans live under `docs/workstreams/cursor_sdk/hygiene_scans/`; compatibility reports live under `docs/workstreams/cursor_sdk/compatibility/`.
+
+## Cursor SDK Review-Only Operations
+
+Read:
+
+- `docs/workstreams/cursor_sdk/cursor_sdk_research_workflows_20260523.md`
+- `scripts/cursor_sdk_workflows.py`
+- the source artifacts named by the specific workflow prompt
+
+Commands:
+
+- Check SDK availability: `uv run python scripts/cursor_sdk_workflows.py check`
+- Draft memory: `uv run python scripts/cursor_sdk_workflows.py memory-pass`
+- Draft inspection: `uv run python scripts/cursor_sdk_workflows.py inspection-draft --topic "<topic>" --run-dir runs/<run_id>`
+- Draft hygiene scan: `uv run python scripts/cursor_sdk_workflows.py hygiene-scan`
+- Draft paper synthesis: `uv run python scripts/cursor_sdk_workflows.py paper-synthesis`
+- Draft compatibility report: `uv run python scripts/cursor_sdk_workflows.py model-compatibility`
+
+Validate:
+
+- Treat every SDK output as `needs_review` until a reviewer checks source paths and promotes specific wording.
+- Do not use SDK drafts as paper evidence, benchmark evidence, registry rows, or source-of-truth updates.
+- Live mutation workflow `test-mutations` is blocked in the shared workspace. Use `--prompt-only` for prompt review; live execution requires a disposable clone/worktree and `CURSOR_SDK_ALLOW_MUTATING_WORKFLOW=disposable-worktree`.
+
+Memory warning:
+
+- The SDK is an operations assistant, not a model-comparison track.
+- Mutating SDK workflows must not run against the shared working tree or any workspace containing uncommitted source work.
 
 ## Frontend Review Tooling
 

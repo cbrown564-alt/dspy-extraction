@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import os
 import queue
+import subprocess
 import sys
 import threading
 from datetime import datetime, timezone
@@ -111,6 +112,29 @@ def _run_cursor(prompt: str, output: Path, model: str) -> None:
     ) as agent:
         run = agent.send(prompt)
         output.write_text(run.text(), encoding="utf-8")
+
+
+def _ensure_mutating_workflow_allowed() -> None:
+    """Block live mutation workflows unless the operator asserts a disposable worktree."""
+
+    if os.environ.get("CURSOR_SDK_ALLOW_MUTATING_WORKFLOW") != "disposable-worktree":
+        raise SystemExit(
+            "Live Cursor SDK mutation workflows are blocked in the shared workspace. "
+            "Use --prompt-only for review drafts, or run from a disposable clone/worktree "
+            "with CURSOR_SDK_ALLOW_MUTATING_WORKFLOW=disposable-worktree."
+        )
+    status = subprocess.run(
+        ["git", "status", "--short"],
+        cwd=REPO_ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    if status.stdout.strip():
+        raise SystemExit(
+            "Refusing live Cursor SDK mutation workflow because the disposable "
+            "workspace is not clean:\n" + status.stdout
+        )
 
 
 def _source_header(workflow: str) -> str:
@@ -472,6 +496,9 @@ def main() -> int:
         _write_prompt(prompt, output)
         print(f"Wrote prompt to {output}")
         return 0
+
+    if args.workflow == "test-mutations":
+        _ensure_mutating_workflow_allowed()
 
     if not os.environ.get("CURSOR_API_KEY"):
         raise SystemExit("CURSOR_API_KEY is not set in the environment or .env file.")

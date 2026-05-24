@@ -1,19 +1,28 @@
-# Cursor SDK Research Workflow Pilot
+# Cursor SDK Research Workflows
 
 Date: 2026-05-23
-Status: Pilot setup
-Decision scope: open
-Confidence: inferred_from_sources
+Status: Promoted review-only operating mode
+Decision scope: operational
+Confidence: direct_source
 
 ## Purpose
 
 Use the Cursor Python SDK as a review-only research operations assistant for this repository. The SDK should help draft memory, inspection, and hygiene artifacts, but it should not become part of the clinical extraction pipeline, scorer, benchmark model set, or DSPy optimizer evidence.
 
-This pilot is intentionally limited to three workflows that can be tested in separate sessions:
+The promoted operating mode is intentionally narrow:
+
+- SDK outputs are drafts for Codex or human review.
+- Source-of-truth edits happen only through the normal repo workflow after review.
+- Mutating SDK workflows are blocked in the shared workspace.
+
+The reviewed read-only workflows are:
 
 - automated research-memory passes
 - experiment-inspection draft worker
 - background repo hygiene
+- paper narrative synthesis drafts
+- model compatibility reports
+- adapter/prompt mutation drafts that do not edit files
 
 ## Setup
 
@@ -49,6 +58,39 @@ Windows note: `scripts/cursor_sdk_workflows.py` installs a local Windows-only br
 - Clinical extraction results must keep dataset, split, schema level, model/provider, program variant, scorer mode, normalization rules, and evidence policy explicit.
 - Do not treat Cursor/Composer output as a benchmark result or model-comparison track for clinical extraction.
 - Use the existing GBP 15 spend limit as a budget guard for the pilot.
+
+## Canonical Draft Folders
+
+| Draft type | Canonical folder |
+| --- | --- |
+| Memory consolidation candidates | `docs/memory/dreams/` |
+| Experiment-inspection drafts | `docs/experiments/cursor_sdk_drafts/` |
+| Paper-synthesis drafts | `docs/experiments/cursor_sdk_drafts/` |
+| Adapter/prompt mutation drafts | `docs/experiments/cursor_sdk_drafts/` |
+| Hygiene scans | `docs/workstreams/cursor_sdk/hygiene_scans/` |
+| Model compatibility reports | `docs/workstreams/cursor_sdk/compatibility/` |
+
+Drafts in these folders are not registry rows, inspection docs, paper claims, or Kanban updates until a reviewer promotes specific claims into source docs.
+
+## Draft-To-Source Promotion Boundary
+
+Promotion requires a reviewer to:
+
+1. Check every cited source path exists.
+2. Confirm dataset, split, model/provider, program variant, scorer mode, normalization rules, and evidence policy when an experiment is discussed.
+3. Preserve decision scope labels: `operational`, `arm`, `mechanism`, `open`, `blocked`, or `stale_check`.
+4. Reject claims that rely on SDK prose instead of primary artifacts.
+5. Apply source edits through normal Codex/human patches, not by asking the SDK agent to rewrite source-of-truth files directly.
+
+## Mutating Workflow Block
+
+`scripts/cursor_sdk_workflows.py test-mutations` is not approved for live use in the shared repository. It may be used with `--prompt-only` to inspect the planned mutation-test prompt, but live execution is blocked unless the operator is in a disposable clone or worktree and explicitly sets:
+
+```powershell
+$env:CURSOR_SDK_ALLOW_MUTATING_WORKFLOW="disposable-worktree"
+```
+
+The runner also refuses live mutation workflows when that disposable workspace is dirty. This boundary exists because the earlier active mutation workflow rolled back `src/clinical_extraction/gan/temporal_candidates.py` and erased uncommitted Gan candidate-builder code.
 
 ## Workflow 1: Automated Research-Memory Passes
 
@@ -201,4 +243,4 @@ All three workflows were tested and evaluated in separate runs:
 
 ## Status
 
-**Completed & Promoted.** The pilot succeeded on 2026-05-23. The Cursor Python SDK remains in place as a review-only research operations assistant. All memory and registry updates identified in the pilot have been manually promoted/resolved.
+**Completed & Promoted.** The pilot succeeded on 2026-05-23. The Cursor Python SDK remains in place as a review-only research operations assistant. All memory and registry updates identified in the pilot have been manually promoted/resolved. Live mutating workflows remain blocked outside disposable worktrees.

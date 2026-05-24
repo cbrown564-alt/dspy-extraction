@@ -15,7 +15,7 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps."
   ],
-  "row_count": 185,
+  "row_count": 204,
   "experiments": [
     {
       "experiment_id": "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_4_slice",
@@ -91,7 +91,7 @@
         "secondary": {
           "pragmatic_category_accuracy": 0.56,
           "schema_valid_prediction_rate": 1.0,
-          "prediction_seconds_per_record": 1.20
+          "prediction_seconds_per_record": 1.2
         }
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
@@ -183,11 +183,189 @@
       },
       "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
       "config_paths": "configs/experiments/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_slice.json",
-      "notes": "decision_scope: arm. Promoted to slice-gate. Broader validation pending in G16.",
+      "notes": "decision_scope: arm. Promoted to slice-gate. Broader validation completed by verified rerun gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z.",
       "comparison_groups": [
         "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1"
       ],
       "comparison_caveat": "Axis 3 implementation variant on enriched slice; no Qwen transfer."
+    },
+    {
+      "experiment_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "gpt4_1_mini",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "temporal_candidate_generation",
+        "frequency_normalization",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "evidence_quote_generation",
+        "candidate_selection"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "temporal_rules",
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "deterministic_mapping",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_candidate_builder_gap_v1",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "implementation_variant",
+      "run_scope": "full_validation",
+      "canonical_run_id": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+      "outcome": "promote",
+      "decision_doc": "docs/experiments/gan/gan_s0_candidate_builder_gap_v1_gpt_full_validation_rerun_inspection_20260523.md",
+      "metric_caveats": [
+        "Gan synthetic validation, not published benchmark reproduction.",
+        "Verified rerun after preserving recovered candidate-builder state; supersedes stale G16 artifact.",
+        "decision_scope arm; operational default and Qwen transfer require separate promotion/preregistration decisions."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.8060200668896321,
+        "secondary": {
+          "purist_category_accuracy": 0.8595317725752508,
+          "pragmatic_category_accuracy": 0.8862876254180602,
+          "schema_valid_prediction_rate": 1.0,
+          "evidence_quote_support_rate": 1.0,
+          "prediction_seconds_per_record": 1.6892830725752648
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "config_paths": "configs/experiments/gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation.json",
+      "notes": "decision_scope: arm. Verified full-validation result; registry/paper evidence may cite this row with synthetic-validation caveat, but operational default remains separate.",
+      "comparison_groups": [
+        "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1"
+      ],
+      "comparison_caveat": "Axis 3 implementation variant on full validation; compared against fixed v1.4 control and prior F0 only with architecture/prompt caveats."
+    },
+    {
+      "experiment_id": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation",
+      "dataset": "gan_2026",
+      "schema_complexity": "gan_s0",
+      "clinical_task_family": [
+        "frequency"
+      ],
+      "model_track": "qwen35b",
+      "program_architecture": "temporal_candidates_single_pass",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "temporal_candidate_generation",
+        "frequency_normalization",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "benchmark_policy_application",
+        "evidence_quote_generation",
+        "candidate_selection"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during"
+      ],
+      "knowledge_sources": [
+        "temporal_rules",
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "hard_constraint",
+        "soft_hint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note_plus_deterministic_temporal_candidates",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "deterministic_mapping",
+      "verification_strategy": "none",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "zero_shot_or_prompt_only",
+      "comparison_group": "gan_s0_candidate_builder_gap_v1_model_comparison",
+      "fixed_controls": {
+        "schema_level": "gan_frequency_s0",
+        "scorer": "gan_frequency_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_qwen35b_ollama.json",
+        "split": "gan_2026_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/gan/gan_s0_candidate_builder_gap_v1_qwen35b_full_validation_inspection_20260523.md",
+      "metric_caveats": [
+        "Gan synthetic validation, not published benchmark reproduction.",
+        "Validation of Qwen3.6:35b Ollama transferability under the candidate-builder gap v1 surface.",
+        "decision_scope arm; not operational promotion."
+      ],
+      "artifact_paths": [
+        "runs/gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z"
+      ],
+      "headline_metric": {
+        "name": "monthly_frequency_accuracy",
+        "value": 0.7070707070707071,
+        "secondary": {
+          "purist_category_accuracy": 0.8316498316498316,
+          "pragmatic_category_accuracy": 0.9057239057239057,
+          "schema_valid_prediction_rate": 0.9933110367892977,
+          "evidence_quote_support_rate": 0.9966329966329966,
+          "prediction_seconds_per_record": 10.903010033444817
+        }
+      },
+      "prompt_versions": "gan_frequency_s0_temporal_candidates_single_pass_v1_4_error_taxonomy_policy",
+      "config_paths": "configs/experiments/gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation.json",
+      "notes": "decision_scope: arm. Qwen transfer validation completed; unblocked for potential promotion.",
+      "comparison_groups": [
+        "gan_s0_candidate_builder_gap_v1_model_comparison"
+      ],
+      "comparison_caveat": "Axis 3 model track comparison on full validation under builder-gap v1 surface."
     },
     {
       "experiment_id": "gan_s0_gpt4_1_mini_targeted_examples_min7_slice",
@@ -1163,7 +1341,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1 with GPT); treat as schema and drift signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1 with GPT); treat as schema and drift signal only.",
         "Do not compare this run to GPT cap-25 or full validation as the same experiment.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs.",
@@ -1370,7 +1548,7 @@
         "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
         "GPT 4.1-mini frozen dev anchor: runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z (92.3% micro F1).",
         "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
-        "Prior Qwen ExECT themes (seizure granularity, diagnosis specificity) may differ from GPT v4.10 residuals — see docs/archive/prior-context/previous_exect_error_analysis.md.",
+        "Prior Qwen ExECT themes (seizure granularity, diagnosis specificity) may differ from GPT v4.10 residuals \u2014 see docs/archive/prior-context/previous_exect_error_analysis.md.",
         "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
         "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
         "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
@@ -1543,7 +1721,7 @@
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported both overall and split between exact model quotes and ellipsis bridge repairs.",
         "ExECT benchmark-facing fields are limited to audited diagnosis, seizure type, and annotated medication.",
-        "Frozen prompt exect_s0_s1_field_family_v4_10_label_policy — compare to dev validation anchor 92.3% (runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z) with full partial-view caveats.",
+        "Frozen prompt exect_s0_s1_field_family_v4_10_label_policy \u2014 compare to dev validation anchor 92.3% (runs/exect_s0_s1_validation_full_gpt4_1_mini_20260519T221944Z) with full partial-view caveats.",
         "Medication scoring uses annotated prescriptions only; planned/current status is not benchmark-facing.",
         "Medication temporality is intentionally excluded from benchmark-facing metrics for this baseline.",
         "Raw diagnoses and gold quality flags are diagnostic context and are not scored as extra benchmark labels.",
@@ -1878,7 +2056,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); treat as schema/gate signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
         "Comorbidity labels come from affirmed PatientHistory annotations excluding seizure-history phrases.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
@@ -2054,7 +2232,7 @@
       "outcome": "freeze",
       "decision_doc": "docs/experiments/exect/exect_s2_validation_full_gpt4_1_mini_inspection_20260520.md",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); compare cap-25 and full with family breakdown, not pooled micro vs S1-only cap-25.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with family breakdown, not pooled micro vs S1-only cap-25.",
         "Comorbidity labels come from affirmed PatientHistory annotations excluding seizure-history phrases.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
@@ -2405,7 +2583,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); treat as schema/gate signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S3 benchmark-facing fields extend frozen S2 with birth history, onset, epilepsy cause, and when diagnosed.",
@@ -2582,7 +2760,7 @@
       "outcome": "freeze",
       "decision_doc": "docs/experiments/exect/exect_s3_validation_full_gpt4_1_mini_inspection_20260520.md",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S2-only cap-25.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S2-only cap-25.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S3 benchmark-facing fields extend frozen S2 with birth history, onset, epilepsy cause, and when diagnosed.",
@@ -2590,7 +2768,7 @@
         "Onset and when_diagnosed gold are CUIPhrase surfaces; temporal age/year attributes are not benchmark labels.",
         "Overlapping phrases across families (for example meningitis as cause vs comorbidity) are scored independently per family.",
         "Pooled micro F1 across nine families is not comparable to frozen S2 five-family headlines.",
-        "Report per-family F1 and monitor frozen S2 families for regression vs S2 v1.3 full anchor (…231223Z).",
+        "Report per-family F1 and monitor frozen S2 families for regression vs S2 v1.3 full anchor (\u2026231223Z).",
         "S2 label-policy bridges from frozen v1.3 are reused for S1 and S2 families; see docs/experiments/exect/exect_s3_phase1_overlap_policy.md.",
         "S3 gold uses affirmed BirthHistory, Onset, EpilepsyCause, and WhenDiagnosed JSON entities only.",
         "These are partial ExECT S3 diagnostics (nine families), not CUI-aware all-family benchmark reproduction.",
@@ -2777,7 +2955,7 @@
         "Overlapping phrases across families are scored independently per family.",
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
-        "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families; see docs/experiments/exect/exect_s4_gold_policy.md.",
+        "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (S3 + seizure frequency + Rx temporality), not published ExECTv2 Table 1 reproduction.",
         "This capped smoke run validates the ExECT S4 eleven-family program contract only; it is not a performance estimate.",
@@ -2941,7 +3119,7 @@
       "outcome": "exploratory",
       "decision_doc": "pending_backfill",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); treat as schema/gate signal only.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); treat as schema/gate signal only.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S4 benchmark-facing fields extend frozen S3 with seizure frequency and medication temporality.",
@@ -2950,7 +3128,7 @@
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
         "Report per-family F1 and monitor frozen S3 families (diagnosis, seizure, medication, investigation, comorbidity, birth/onset/cause/when-diagnosed).",
-        "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families; see docs/experiments/exect/exect_s4_gold_policy.md.",
+        "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
         "This diagnostic validation cap is a gating check for ExECT S4 field expansion; it is not a performance estimate.",
@@ -3041,7 +3219,7 @@
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family headlines.",
         "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
-        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (…235439Z).",
+        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (\u2026235439Z).",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
         "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
@@ -3131,7 +3309,7 @@
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family headlines.",
         "Record local Ollama GPU residency or RAM offload when inspecting artifacts.",
-        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (…235439Z).",
+        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 GPT anchor (\u2026235439Z).",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not published ExECTv2 Table 1 reproduction.",
         "This config intentionally avoids ChainOfThought, BootstrapFewShot, and GEPA per docs/policies/qwen_dspy_latency_policy.md.",
@@ -3299,7 +3477,7 @@
       "outcome": "freeze",
       "decision_doc": "docs/experiments/exect/exect_s4_validation_full_v1_2_gpt4_1_mini_inspection_20260520.md",
       "metric_caveats": [
-        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7–9pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S3-only cap-25.",
+        "Cap-25 ExECT runs are systematically optimistic vs full validation (~7\u20139pp on S1); compare cap-25 and full with per-family breakdown, not pooled micro vs S3-only cap-25.",
         "Evidence metrics are diagnostic source-grounding checks and are not part of benchmark-facing field-family F1.",
         "Evidence quote support should be reported separately from field-family precision, recall, and F1.",
         "ExECT S4 benchmark-facing fields extend frozen S3 with seizure frequency and medication temporality.",
@@ -3307,8 +3485,8 @@
         "Overlapping phrases across families are scored independently per family.",
         "Planned medications mentioned in letters but not tagged as Prescription are absent from gold.",
         "Pooled micro F1 across eleven families is not comparable to frozen S3 nine-family or S2 five-family headlines.",
-        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 full anchor (…235439Z).",
-        "S3 label-policy bridges from frozen v1.2 are reused for S1–S3 families; see docs/experiments/exect/exect_s4_gold_policy.md.",
+        "Report per-family F1 and monitor frozen S3 families for regression vs S3 v1.2 full anchor (\u2026235439Z).",
+        "S3 label-policy bridges from frozen v1.2 are reused for S1\u2013S3 families; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "Seizure-frequency gold uses SeizureFrequency JSON entities; see docs/experiments/exect/exect_s4_gold_policy.md.",
         "These are partial ExECT S4 diagnostics (eleven families), not CUI-aware all-family benchmark reproduction.",
         "This is a partial ExECTv2 diagnostic view, not CUI-aware Table 1 reproduction.",
@@ -3330,7 +3508,7 @@
         "exect_s4_field_family_v1_2_label_policy"
       ],
       "config_paths": null,
-      "notes": "decision_scope: operational. Historical ExECT S4 GPT v1.2 full-validation anchor (L1 single_pass, …071248Z). Operational default moved to cause-bridge K0+K1 2026-05-21; new runs use exect_s4_field_family_cause_bridge_k0_k1_single_pass.",
+      "notes": "decision_scope: operational. Historical ExECT S4 GPT v1.2 full-validation anchor (L1 single_pass, \u2026071248Z). Operational default moved to cause-bridge K0+K1 2026-05-21; new runs use exect_s4_field_family_cause_bridge_k0_k1_single_pass.",
       "comparison_groups": [
         "exect_schema_complexity_gpt_validation_v1"
       ],
@@ -9100,7 +9278,7 @@
           "annotated_medication_f1": 0.9473684210526316
         }
       },
-      "notes": "decision_scope: arm. Cap-25 reject: diagnosis +2.4pp vs v4_10 cap but seizure +0pp (tied 66.7%); −11.6pp vs v4_11 cap seizure. Full validation blocked.",
+      "notes": "decision_scope: arm. Cap-25 reject: diagnosis +2.4pp vs v4_10 cap but seizure +0pp (tied 66.7%); \u221211.6pp vs v4_11 cap seizure. Full validation blocked.",
       "comparison_groups": [
         "exect_s1_qwen_diagnosis_stabilized_v1"
       ],
@@ -9138,7 +9316,7 @@
         "configs/experiments/exect_s1_qwen_v4_12_diagnosis_stabilized_full_qwen35b_ollama.json"
       ],
       "decision_doc": "docs/experiments/exect/exect_s1_qwen_v4_12_diagnosis_stabilized_cap25_inspection_20260521.md",
-      "notes": "decision_scope: arm. Blocked — Qwen cap-25 gate failed (seizure +0pp vs v4_10 cap anchor).",
+      "notes": "decision_scope: arm. Blocked \u2014 Qwen cap-25 gate failed (seizure +0pp vs v4_10 cap anchor).",
       "comparison_groups": [
         "exect_s1_qwen_diagnosis_stabilized_v1"
       ],
@@ -14734,7 +14912,7 @@
       },
       "prompt_versions": "exect_s0_s1_field_family_v4_10_label_policy",
       "config_paths": "configs/experiments/exect_s1_prompt_graph_pg1_parallel_cap25_gpt4_1_mini.json",
-      "notes": "decision_scope: arm. PG1 parallel per-family; 86.5% micro; −9.3pp vs PG0.",
+      "notes": "decision_scope: arm. PG1 parallel per-family; 86.5% micro; \u22129.3pp vs PG0.",
       "comparison_groups": [
         "exect_s1_field_family_prompt_graph_gpt_cap25_v1"
       ]
@@ -15160,7 +15338,7 @@
       "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_cap25_v1_inspection_20260522.md",
       "metric_caveats": [
         "Cap-25 gate only; not a full-validation performance claim.",
-        "Duplicate replay …104242Z matched metrics via DSPy cache; canonical run is …091442Z.",
+        "Duplicate replay \u2026104242Z matched metrics via DSPy cache; canonical run is \u2026091442Z.",
         "decision_scope: arm."
       ],
       "artifact_paths": [
@@ -15214,7 +15392,7 @@
         "configs/experiments/gan_s0_expanded_builders_prose_full_validation_qwen35b_ollama.json"
       ],
       "decision_doc": "docs/experiments/gan/gan_s0_expanded_builders_prose_qwen_full_validation_v1_preregistration_20260521.md",
-      "notes": "decision_scope: arm. Qwen F0 full validation — cap-25 gates cleared 2026-05-22; ready for detached launcher.",
+      "notes": "decision_scope: arm. Qwen F0 full validation \u2014 cap-25 gates cleared 2026-05-22; ready for detached launcher.",
       "comparison_groups": [
         "gan_s0_expanded_builders_prose_model_comparison_v1"
       ],
@@ -15461,7 +15639,7 @@
       },
       "prompt_versions": "exect_s4_field_family_v1_2_label_policy",
       "config_paths": "configs/experiments/exect_s4_frequency_surface_r1_post_merge_cap25_gpt4_1_mini.json",
-      "notes": "decision_scope: arm. R1 post-merge; 48.1% seizure_frequency F1; −2.9pp vs R0.",
+      "notes": "decision_scope: arm. R1 post-merge; 48.1% seizure_frequency F1; \u22122.9pp vs R0.",
       "comparison_groups": [
         "exect_s4_frequency_surface_repair_gpt_cap25_v1"
       ]
@@ -15908,7 +16086,7 @@
       "decision_doc": "docs/experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md",
       "metric_caveats": [
         "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
-        "GPT anchor 92.3% micro; Claude 81.8% (−10.5pp); seizure_type dominant gap.",
+        "GPT anchor 92.3% micro; Claude 81.8% (\u221210.5pp); seizure_type dominant gap.",
         "decision_scope arm; not mechanism closure."
       ],
       "artifact_paths": [
@@ -15960,7 +16138,7 @@
       "decision_doc": "docs/experiments/synthesis/model_suite_claude_sonnet_4_6_full_validation_v1_inspection_20260522.md",
       "metric_caveats": [
         "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
-        "GPT anchor 65.5% micro; Claude 65.1% (−0.4pp); per-family profile mixed.",
+        "GPT anchor 65.5% micro; Claude 65.1% (\u22120.4pp); per-family profile mixed.",
         "decision_scope arm; not mechanism closure."
       ],
       "artifact_paths": [
@@ -16067,7 +16245,7 @@
       "decision_doc": "docs/experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md",
       "metric_caveats": [
         "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
-        "GPT anchor 92.3% micro; Gemini 3 Flash 89.9% (−2.4pp); near Gemini 3.1 90.3%.",
+        "GPT anchor 92.3% micro; Gemini 3 Flash 89.9% (\u22122.4pp); near Gemini 3.1 90.3%.",
         "decision_scope arm; not mechanism closure."
       ],
       "artifact_paths": [
@@ -16119,7 +16297,7 @@
       "decision_doc": "docs/experiments/synthesis/model_suite_gemini3_flash_full_validation_v1_inspection_20260522.md",
       "metric_caveats": [
         "Comparison group model_suite_frozen_architecture_v1; varied_factor model_track.",
-        "GPT anchor 65.5% micro; Gemini 3 Flash 63.2% (−2.3pp); precision-heavy FP profile.",
+        "GPT anchor 65.5% micro; Gemini 3 Flash 63.2% (\u22122.3pp); precision-heavy FP profile.",
         "decision_scope arm; not mechanism closure."
       ],
       "artifact_paths": [
