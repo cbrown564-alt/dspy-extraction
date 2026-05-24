@@ -36,6 +36,8 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
+    EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
@@ -63,6 +65,8 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
         EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+        EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
     }
 )
 
@@ -85,7 +89,10 @@ def exect_prompts_data(
     structured_output_strategy: str,
 ) -> dict[str, Any]:
     if program_variant in _EXECT_S4_PROGRAM_VARIANTS:
-        if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
+        if program_variant in {
+            EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+            EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+        }:
             module_name = "ExectS4FrequencyPreVocabFieldFamilyModule"
         elif program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
             module_name = "ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule"

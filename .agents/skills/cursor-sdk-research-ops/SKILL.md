@@ -1,13 +1,15 @@
 ---
 name: cursor-sdk-research-ops
-description: Use when planning, running, reviewing, or promoting Cursor SDK workflows in this repo, including review-only agent swarms, paper-synthesis drafts, experiment-inspection drafts, memory passes, hygiene scans, model-compatibility reviews, adapter/mutation proposals, disposable-worktree mutation pilots, or any task that mentions the Cursor SDK as a research-operations assistant.
+description: Use when planning, running, reviewing, or promoting bounded Cursor SDK research-operations workflows in this repo, including review-only agent swarms, paper-synthesis drafts, experiment-inspection drafts, memory passes, hygiene scans, model-compatibility reviews, adapter/mutation proposals, disposable-worktree mutation pilots, or any task that mentions the Cursor SDK as a research-operations assistant. For supervised Cursor implementation workstreams that may write core project files, use cursor-implementation-orchestration instead.
 ---
 
 # Cursor SDK Research Ops
 
 ## Overview
 
-Use Cursor SDK as a bounded research-operations assistant: useful for parallel drafting, contradiction discovery, source mapping, and proposal generation; not authoritative for benchmark evidence, scorer semantics, registry rows, dataset policy, or source-of-truth edits.
+Use Cursor SDK as a bounded research-operations assistant: useful for parallel drafting, contradiction discovery, source mapping, stale checks, and proposal generation; not authoritative for benchmark evidence, scorer semantics, registry rows, dataset policy, or source-of-truth edits.
+
+For ambitious implementation campaigns where Cursor is allowed to write source, tests, configs, or promoted docs under Codex/GPT-5.5 supervision, switch to `cursor-implementation-orchestration`. Keep this skill for review-only or proposal-first workflows.
 
 Primary project docs:
 
@@ -26,6 +28,7 @@ Read `references/source-map.md` when choosing a workflow or designing a swarm.
 - Do not cite SDK drafts as paper evidence, benchmark evidence, registry evidence, scorer evidence, or dataset-policy evidence.
 - Do not promote SDK prose directly. Apply any verified claim through a separate Codex or human patch.
 - Do not allow live mutation in the shared workspace.
+- Do not use this skill to authorize core-file mutation. If the workstream needs Cursor to implement in source, tests, configs, or canonical docs, use `cursor-implementation-orchestration` with branch/worktree isolation and Codex review gates.
 - Do not run high-volume SDK swarms without checking the JSONL ledger and draft index first.
 - Keep `decision_scope` explicit: `operational`, `arm`, `mechanism`, `open`, `blocked`, or `stale_check`.
 - If a workflow touches loaders, scorers, schemas, splits, gold labels, experiment configs, or model runs, also use the relevant project skill before acting on any SDK output.

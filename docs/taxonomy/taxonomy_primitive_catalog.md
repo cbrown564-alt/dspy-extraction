@@ -64,6 +64,8 @@ Sparse S2–S4 families sketched for catalog review. Implementation waits until 
 | `exect.medication_temporality.post_classifier.v1` | ExECTv2 | medication | post/eval_only | posthoc correction/diagnostic_only | implemented | rejected_for_current_arm | Redesigned S4 medication-temporality fallback only | Full-validation H1 rejected because broad abstention over-pruned dose-only current ASM evidence; a dose-only fallback would be a new preregistered mechanism. |
 | `exect.medication_temporality.non_asm_guard.v1` | ExECTv2 | medication | post/eval_only | posthoc correction/diagnostic_only | implemented | open | G0 tier: non-ASM removal only; preserves model ASM status | Cap-25 grid `exect_s4_medication_precision_guard_gpt_cap25_v1`; see `docs/experiments/exect/exect_s4_medication_precision_guard_design_20260521.md`. |
 | `exect.medication_temporality.non_asm_dose_current_guard.v1` | ExECTv2 | medication | post/eval_only | posthoc correction/diagnostic_only | implemented | open | G0G2 tier: non-ASM removal plus dose-current preservation and unsupported planned/previous pruning | Cap-25 config `exect_s4_mt_guard_g0g2_dose_current_cap25_gpt4_1_mini.json`; narrow follow-up to the H1 recall-collapse diagnosis, not a default until model-backed gates pass. |
+| `exect.medication.am_guard_non_asm_brand_alias.v1` | ExECTv2 | medication | post/eval_only | posthoc correction/diagnostic_only | implemented | promoted_for_s5_guard_arm | ExECT S5 annotated medication precision validation | Drops non-ASMs, repairs spelling surfaces (eplim/eplim chrono), preserves benchmark-facing Epilim/Lamictal surfaces, and dedupes same-canonical medications. |
+
 
 ## Fixtures And Inspection
 

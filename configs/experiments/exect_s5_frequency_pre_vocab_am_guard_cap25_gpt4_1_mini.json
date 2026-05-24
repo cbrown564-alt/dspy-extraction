@@ -1,0 +1,44 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note_plus_precomputed_seizure_frequency_candidates",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "none",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s5_frequency_pre_vocab_am_guard_cap25_gpt4_1_mini",
+  "hypothesis": "H1_post arm: post-prediction medication guard (drops non-ASMs, repairs spelling/brand surfaces, dedupes) improves ExECT S5 annotated_medication precision and F1 on cap-25 validation split without regressing other families.",
+  "max_records": 25,
+  "metric_caveats": [
+    "This diagnostic validation cap is a gating check for ExECT S5 medication guard; it is not a performance estimate.",
+    "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+    "Pooled micro F1 across five families is not comparable to frozen S4 eleven-family or S3 nine-family headlines.",
+    "Only seizure_frequency candidates are injected; S1–S3 and medication_temporality pre-vocab lists are omitted.",
+    "Cap-25 ExECT runs are systematically optimistic vs full validation; treat as schema/gate signal only.",
+    "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+    "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1",
+  "prompt_version": "exect_s4_field_family_v1_2_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s5_core_field_family",
+  "scorer_mode": "exect_s5_core_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["frequency", "medication"],
+    "comparison_group": "exect_s5_axis1_axis2_decomposition_gpt_cap25_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["H2_pre_deterministic", "H1_post_deterministic"],
+    "intended_decision": "pending",
+    "interleaving_positions": ["pre", "during", "post"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s5",
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "varied_factor": "interleaving_position"
+  }
+}

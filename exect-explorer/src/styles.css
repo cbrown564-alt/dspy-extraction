@@ -1058,30 +1058,52 @@ body {
 .inv-result.abnormal { background: #fee2e2; color: #991b1b; }
 
 /* ── Model Panel ──────────────────────────────────────────────────────────── */
-.coming-soon-badge {
+.model-control-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.55rem;
+}
+.model-control-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.model-control-grid label > span {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
+  gap: 0.3rem;
+  font-size: 0.68rem;
   font-weight: 600;
+  color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  background: var(--text);
-  color: #fff;
-  padding: 4px 10px;
+}
+.model-control-grid select {
+  width: 100%;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  align-self: flex-start;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  outline: none;
+}
+.model-control-grid select:focus {
+  border-color: var(--text-faint);
 }
 
-.model-candidate {
+.model-run-card {
   padding: 0.75rem;
   background: var(--bg-sidebar);
   border-radius: var(--radius);
   border-left: 3px solid var(--blue);
 }
-.model-candidate.alt {
-  border-left-color: var(--text-faint);
-  opacity: 0.85;
+.run-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 .candidate-name {
   font-family: var(--font-mono);
@@ -1094,6 +1116,27 @@ body {
   color: var(--text-dim);
   margin-top: 0.2rem;
   line-height: 1.4;
+  word-break: break-word;
+}
+.run-status {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.run-status.workspace_candidate {
+  color: #854d0e;
+  background: #fef9c3;
+  border-color: #f3df88;
+}
+.run-status.paper_frozen {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #a7e7bd;
 }
 .candidate-scores {
   display: grid;
@@ -1113,6 +1156,31 @@ body {
   color: var(--text);
 }
 
+.surface-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.surface-list div {
+  display: grid;
+  grid-template-columns: 4.2rem 1fr;
+  gap: 0.5rem;
+  padding: 0.45rem 0.5rem;
+  background: var(--bg-sidebar);
+  border-radius: var(--radius-sm);
+}
+.surface-list span {
+  color: var(--text-faint);
+  font-size: 0.7rem;
+}
+.surface-list strong {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  word-break: break-word;
+}
+
 .challenge-box {
   display: flex;
   gap: 0.5rem;
@@ -1124,52 +1192,122 @@ body {
   color: var(--text-dim);
 }
 .challenge-box p { margin: 0; }
-
-.challenge-list {
-  margin: 0;
-  padding-left: 1.2rem;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  line-height: 1.6;
+.challenge-box.compact {
+  margin-top: 0.4rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.75rem;
 }
-.challenge-list li { margin-bottom: 0.2rem; }
 
-.design-preview {
-  padding: 0.75rem;
-  background: var(--bg-sidebar);
-  border-radius: var(--radius);
-}
-.preview-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  margin-bottom: 0.6rem;
-}
-.preview-gold { color: var(--amber); font-weight: 600; }
-.preview-model { color: var(--blue); font-weight: 600; }
-.preview-arrow { color: var(--text-faint); }
-
-.preview-legend {
+.pipeline-list {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.6rem;
 }
-.legend-item {
+.pipeline-step {
+  padding: 0.7rem;
+  background: var(--bg-sidebar);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--green);
+}
+.pipeline-step.warn { border-left-color: var(--amber); }
+.pipeline-step.bad { border-left-color: var(--red); }
+.pipeline-step-head {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.75rem;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.pipeline-step-head span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.pipeline-step-head strong {
+  font-size: 0.64rem;
+  font-weight: 600;
   color: var(--text-dim);
 }
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.pipeline-value {
+  margin-top: 0.35rem;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
-.dot.match { background: var(--green); }
-.dot.partial { background: var(--amber); }
-.dot.miss { background: var(--red); }
+.pipeline-flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+.pipeline-flow div {
+  padding: 0.45rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+}
+.pipeline-flow span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pipeline-flow p {
+  margin: 0.25rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  word-break: break-word;
+}
+.pipeline-evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+.pipeline-evidence q {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.field-f1-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.field-f1-row {
+  display: grid;
+  grid-template-columns: 5.8rem 1fr 2.7rem;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+}
+.field-f1-row span {
+  color: var(--text-dim);
+}
+.field-f1-row div {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--bg-sidebar);
+  overflow: hidden;
+}
+.field-f1-row i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--blue);
+}
+.field-f1-row strong {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text);
+  text-align: right;
+}
 
 /* ── Annotate View ────────────────────────────────────────────────────────── */
 .annotate-view {

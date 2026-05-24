@@ -31,7 +31,7 @@ const LENSES = [
   { id: "annotator", label: "Annotator", icon: BookOpen, desc: "The gold-standard layers" },
   { id: "oracle", label: "Oracle", icon: Microscope, desc: "Hard ceilings & flaws" },
   { id: "clinician", label: "Clinician", icon: Stethoscope, desc: "Clinical utility view" },
-  { id: "model", label: "Model", icon: BrainCircuit, desc: "Later stage", disabled: true },
+  { id: "model", label: "Model", icon: BrainCircuit, desc: "Run outputs and pipeline trace" },
 ];
 
 const VIEWS = [
@@ -64,6 +64,25 @@ function appReducer(state, action) {
       return { ...state, selectedEntity: action.payload };
     case "SET_INDEX":
       return { ...state, index: action.payload };
+    case "SET_MODEL_CATALOG": {
+      const firstTask = action.payload?.tasks?.[0];
+      return {
+        ...state,
+        modelCatalog: action.payload,
+        selectedTask: state.selectedTask || firstTask?.id || "S1",
+        selectedRunId: state.selectedRunId || firstTask?.default_run_id || null,
+      };
+    }
+    case "SET_MODEL_TASK": {
+      const task = state.modelCatalog?.tasks?.find((item) => item.id === action.payload);
+      return {
+        ...state,
+        selectedTask: action.payload,
+        selectedRunId: task?.default_run_id || state.selectedRunId,
+      };
+    }
+    case "SET_MODEL_RUN":
+      return { ...state, selectedRunId: action.payload };
     case "NEXT_LETTER": {
       if (!state.index) return state;
       const ids = state.index.letters.map((l) => l.id);
@@ -94,6 +113,9 @@ const initialState = {
   hoveredEntity: null,
   selectedEntity: null,
   index: null,
+  modelCatalog: null,
+  selectedTask: "S1",
+  selectedRunId: null,
   showShortcuts: false,
 };
 
@@ -143,6 +165,15 @@ function AppContent() {
         setError(e.message);
         setLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    fetch("/data/model_catalog.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data) dispatch({ type: "SET_MODEL_CATALOG", payload: data });
+      })
+      .catch((e) => console.warn("Failed to load model catalog:", e));
   }, []);
 
   // Load letter data when letterId changes
@@ -200,6 +231,8 @@ function AppContent() {
   }
 
   const currentMeta = state.index?.letters.find((l) => l.id === state.letterId);
+  const selectedRun = state.modelCatalog?.runs?.find((run) => run.run_id === state.selectedRunId) || null;
+  const selectedPipeline = selectedRun?.documents?.[state.letterId] || null;
 
   return (
     <div className="app-shell">
@@ -262,6 +295,7 @@ function AppContent() {
               visibleLayers={state.visibleLayers}
               hoveredEntity={state.hoveredEntity}
               selectedEntity={state.selectedEntity}
+              modelPipeline={state.lens === "model" ? selectedPipeline : null}
               onHover={(id) => dispatch({ type: "SET_HOVERED", payload: id })}
               onSelect={(id) => dispatch({ type: "SET_SELECTED", payload: id })}
             />
@@ -286,7 +320,18 @@ function AppContent() {
           {state.view === "reader" && state.lens === "clinician" && state.letterData && (
             <ClinicianPanel data={state.letterData} onSelectEntity={(id) => dispatch({ type: "SET_SELECTED", payload: id })} />
           )}
-          {state.view === "reader" && state.lens === "model" && <ModelPanel />}
+          {state.view === "reader" && state.lens === "model" && (
+            <ModelPanel
+              catalog={state.modelCatalog}
+              letterId={state.letterId}
+              selectedTask={state.selectedTask}
+              selectedRunId={state.selectedRunId}
+              selectedRun={selectedRun}
+              pipeline={selectedPipeline}
+              onSelectTask={(id) => dispatch({ type: "SET_MODEL_TASK", payload: id })}
+              onSelectRun={(id) => dispatch({ type: "SET_MODEL_RUN", payload: id })}
+            />
+          )}
         </div>
 
         <footer className="statusbar">

@@ -54,6 +54,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_SCORER,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_DIRECT_VARIANT,
@@ -373,6 +374,41 @@ def test_exect_s5_frequency_pre_vocab_full_config_removes_precheck_cap():
     assert config.program_variant == "exect_s4_field_family_frequency_pre_vocab_single_pass"
     assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
     assert config.prompt_version == "exect_s4_field_family_v1_2_label_policy"
+
+
+@pytest.mark.parametrize(
+    ("config_path", "expected_max_records"),
+    [
+        (
+            "configs/experiments/exect_s5_frequency_pre_vocab_am_guard_cap25_gpt4_1_mini.json",
+            25,
+        ),
+        (
+            "configs/experiments/exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini.json",
+            None,
+        ),
+    ],
+)
+def test_exect_s5_frequency_pre_vocab_am_guard_configs_record_contract(
+    config_path: str,
+    expected_max_records: int | None,
+):
+    config = load_experiment_config(Path(config_path))
+
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records == expected_max_records
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert config.program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.prompt_version == "exect_s4_field_family_v1_2_label_policy"
+    assert config.taxonomy is not None
+    assert set(config.taxonomy.clinical_task_family) == {"frequency", "medication"}
+    assert set(config.taxonomy.hybrid_balance_class) == {
+        "H1_post_deterministic",
+        "H2_pre_deterministic",
+    }
+    assert set(config.taxonomy.interleaving_positions) == {"pre", "during", "post"}
 
 
 

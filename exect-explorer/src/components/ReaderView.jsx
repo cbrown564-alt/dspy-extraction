@@ -8,8 +8,8 @@ const ORACLE_RATES_BY_TYPE = {
   SeizureFrequency: 0.292,
 };
 
-function buildSegments(text, entities, visibleLayers) {
-  const active = entities.filter((e) => visibleLayers.has(e.type));
+function buildSegments(text, entities, visibleLayers, includeVirtual = false) {
+  const active = entities.filter((e) => includeVirtual || visibleLayers.has(e.type));
   if (active.length === 0) {
     return [{ start: 0, end: text.length, text, entities: [] }];
   }
@@ -77,7 +77,10 @@ function SegmentSpan({ segment, colours, lens, onHover, onSelect, hoveredId, sel
   };
 
   // Build underline shadows for each entity type
-  const shadows = typeColours.map((c, i) => `0 ${2 + i * 3}px 0 0 ${c}99`);
+  const shadowColours = entities
+    .filter((e) => e.type !== "ModelEvidence")
+    .map((e) => colours[e.type] || "#999");
+  const shadows = shadowColours.map((c, i) => `0 ${2 + i * 3}px 0 0 ${c}99`);
   if (shadows.length > 0 && lens !== "oracle") {
     style.boxShadow = shadows.join(", ");
   }
@@ -116,6 +119,7 @@ export default function ReaderView({
   visibleLayers,
   hoveredEntity,
   selectedEntity,
+  modelPipeline,
   onHover,
   onSelect,
 }) {
@@ -133,17 +137,31 @@ export default function ReaderView({
     Onset: "#8a5cb8",
     EpilepsyCause: "#5c8ab8",
     WhenDiagnosed: "#b85c7d",
+    ModelEvidence: "#9ca3af",
   };
 
   const displayEntities = useMemo(() => {
     if (!data) return [];
-    return showGold ? data.entities.filter((e) => visibleLayers.has(e.type)) : [];
-  }, [data, visibleLayers, showGold]);
+    const gold = showGold ? data.entities.filter((e) => visibleLayers.has(e.type)) : [];
+    if (lens !== "model" || !modelPipeline?.pipeline) return gold;
+    const modelEvidence = modelPipeline.pipeline.flatMap((step, idx) =>
+      (step.evidence || [])
+        .filter((span) => Number.isFinite(span.start) && Number.isFinite(span.end) && span.end > span.start)
+        .map((span, spanIdx) => ({
+          id: `model-${idx}-${spanIdx}`,
+          type: "ModelEvidence",
+          start: span.start,
+          end: span.end,
+          text: span.text,
+        }))
+    );
+    return [...gold, ...modelEvidence];
+  }, [data, visibleLayers, showGold, lens, modelPipeline]);
 
   const segments = useMemo(() => {
     if (!data) return [];
-    return buildSegments(data.text, displayEntities, visibleLayers);
-  }, [data, displayEntities, visibleLayers]);
+    return buildSegments(data.text, displayEntities, visibleLayers, lens === "model");
+  }, [data, displayEntities, visibleLayers, lens]);
 
   const selectedEntityData = useMemo(() => {
     if (!data || !selectedEntity) return null;

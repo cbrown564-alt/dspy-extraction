@@ -88,3 +88,67 @@ def test_exect_medication_pack_primitives_are_registered():
         registry["exect.medication_temporality.post_classifier.v1"].status
         == "implemented"
     )
+    assert (
+        registry["exect.medication.am_guard_non_asm_brand_alias.v1"].status
+        == "implemented"
+    )
+
+
+def test_exect_annotated_medication_non_asm_brand_alias_guard():
+    from clinical_extraction.exect.primitives import (
+        recover_exect_annotated_medication_non_asm_brand_alias_guard,
+    )
+    # Test spelling repair, non-ASM drop, and deduplication
+    note = (
+        "Current medication: Eplim Chrono 500mg BD, Simvastatin 40mg nocte, "
+        "and sodium valproate."
+    )
+    raw_values = ["Eplim Chrono", "Simvastatin", "sodium valproate"]
+    evidence_values = ["Eplim Chrono 500mg BD", "Simvastatin 40mg nocte", "sodium valproate"]
+
+    recovered, flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+        raw_values,
+        evidence_values,
+        note,
+    )
+
+    # Simvastatin should be dropped (non-ASM).
+    # Eplim Chrono should be repaired, but the explicit generic same-canonical
+    # prediction should win because gold often uses the generic surface.
+    assert recovered == ["sodium valproate"]
+    assert "benchmark_bridge:medication_surface_repaired" in flags
+    assert "benchmark_bridge:non_asm_medication_rejected" in flags
+    assert "benchmark_bridge:medication_deduplicated" in flags
+
+
+def test_exect_annotated_medication_non_asm_brand_alias_guard_eplim_repair():
+    from clinical_extraction.exect.primitives import (
+        recover_exect_annotated_medication_non_asm_brand_alias_guard,
+    )
+    note = "She is taking eplim and lamotrigine."
+    # Eplim should be repaired to epilim chrono.
+    # lamotrigine is Generic, but the note does not contain lamictal, so it stays lamotrigine.
+    raw_values = ["eplim", "lamotrigine"]
+    evidence_values = ["taking eplim", "lamotrigine"]
+
+    recovered, flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+        raw_values,
+        evidence_values,
+        note,
+    )
+    assert recovered == ["epilim chrono", "lamotrigine"]
+    assert "benchmark_bridge:medication_surface_repaired" in flags
+
+
+def test_exect_annotated_medication_guard_preserves_benchmark_brand_policy():
+    from clinical_extraction.exect.primitives import (
+        recover_exect_annotated_medication_non_asm_brand_alias_guard,
+    )
+
+    recovered, _flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+        raw_values=["Epilim", "lamotrigine"],
+        evidence_values=["Epilim 400 mg twice a day", "Lamictal 100mg BD"],
+        note_text="Medication: Epilim 400 mg twice a day. Lamictal 100mg BD.",
+    )
+
+    assert recovered == ["sodium valproate", "lamictal"]

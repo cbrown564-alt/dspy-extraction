@@ -48,6 +48,7 @@ from clinical_extraction.exect.primitives import (
     recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
+    recover_exect_annotated_medication_non_asm_brand_alias_guard,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
 )
 from clinical_extraction.exect.slot_payload import format_exect_frequency_slot_payload_for_prompt
@@ -87,6 +88,12 @@ EXECT_S4_MT_GUARD_NON_ASM_VARIANT = (
 )
 EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT = (
     "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass"
+)
+EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT = (
+    "exect_s5_am_guard_non_asm_brand_alias_v1"
+)
+EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT = (
+    "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1"
 )
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
@@ -406,9 +413,13 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
         EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
+        EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
     }:
         return ExectS4FieldFamilyModule()
-    if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
+    if program_variant in {
+        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    }:
         return ExectS4FrequencyPreVocabFieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
         return ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule()
@@ -474,8 +485,75 @@ def _predict_s4_record(
     )
     values = _replace_s4_investigation_values(values, pred, record)
     values.extend(_s4_field_values_from_prediction(pred, record, program_variant))
+
+    # Apply medication precision guard for the designated S5 variants
+    if program_variant in {
+        EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    }:
+        from clinical_extraction.programs.exect_s0_s1 import (
+            _augment_current_prescription_medications,
+            _values_for_family,
+        )
+        # Filter out existing un-guarded medications
+        values = [val for val in values if val.field_name != "annotated_medication"]
+
+        pred_meds = _as_list(getattr(pred, "annotated_medication", []))
+        pred_evidence = _as_list(getattr(pred, "annotated_medication_evidence", []))
+
+        medication_raw, medication_evidence, medication_augmented = (
+            _augment_current_prescription_medications(
+                pred_meds,
+                pred_evidence,
+                record.text,
+            )
+        )
+
+        guarded_meds, guard_flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+            medication_raw,
+            medication_evidence,
+            record.text,
+        )
+
+        guarded_values = []
+        for med in guarded_meds:
+            # Map canonical name back to original raw surface and evidence
+            canon_med = canonical_medication_name(med)
+            orig_raw = med
+            orig_evidence = ""
+            is_augmented = False
+
+            for idx, raw_val in enumerate(medication_raw):
+                clean_raw = raw_val.strip().lower()
+                if clean_raw in {"eplim", "eplim chrono", "epilim", "epilim chrono"}:
+                    clean_raw = "epilim chrono"
+                if canonical_medication_name(clean_raw) == canon_med:
+                    orig_raw = raw_val
+                    orig_evidence = medication_evidence[idx] if idx < len(medication_evidence) else ""
+                    if raw_val in medication_augmented:
+                        is_augmented = True
+                    break
+
+            augmented_set = {orig_raw} if is_augmented else set()
+
+            guarded_values.extend(
+                _values_for_family(
+                    record=record,
+                    field_name="annotated_medication",
+                    raw_values=[orig_raw],
+                    evidence_values=[orig_evidence],
+                    fixed_normalized=med,
+                    fixed_bridge_flags=guard_flags,
+                    augmented_values=augmented_set,
+                )
+            )
+        values.extend(guarded_values)
+
     metadata: dict[str, object] = {"program_variant": program_variant}
-    if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT:
+    if program_variant in {
+        EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    }:
         metadata["precomputed_candidates"] = {
             "seizure_frequency": build_precomputed_seizure_frequency_candidates(
                 record.text
@@ -511,6 +589,13 @@ def _predict_s4_record(
             "medication_temporality": (
                 "exect.medication_temporality.non_asm_dose_current_guard.v1"
             )
+        }
+    if program_variant in {
+        EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    }:
+        metadata["post_guard"] = {
+            "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
         }
     if program_variant in {EXECT_S4_VARIANT, EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT}:
         metadata["post_bridge"] = {
