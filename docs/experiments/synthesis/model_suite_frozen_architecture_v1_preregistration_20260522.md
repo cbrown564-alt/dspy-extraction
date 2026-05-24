@@ -12,6 +12,8 @@ On **three frozen comparison surfaces** (ExECT S1, ExECT S4, Gan S0 F0), how do 
 
 This is **model-comparison evidence only** (`decision_scope: arm`). It does not mechanism-close hybrid placement, swap operational defaults, or promote hosted arms from leaderboard position alone.
 
+Adapter-policy caveat after the 2026-05-24 model-compatibility review: broad hosted comparisons should preserve `docs/policies/model_config_compatibility_backlog_20260524.md` B6/B7. In particular, config-level checks should exercise the production `build_dspy_lm` path, and Gemini `reasoning_effort` behavior should be explicit in config/tests or backed by a provider-verified allowlist before treating Gemini 3 Flash and Gemini 3.1 Flash-Lite as adapter-policy comparable.
+
 ## Hypothesis
 
 - **Hosted tracks** (Gemini 3 Flash, Gemini 3.1 Flash-Lite, GPT 5.5, Claude Sonnet 4.6) may diverge from GPT 4.1-mini on evidence support, sparse families, and billing-adjusted cost.
@@ -107,6 +109,7 @@ All execution on **one Windows laptop** unless noted.
 | Gate | Rule |
 | --- | --- |
 | Smoke | Provider/runtime compatibility; standard artifacts; no performance claim |
+| Adapter policy | Production `build_dspy_lm` kwargs and Gemini `reasoning_effort` policy must be checked before broad hosted replay claims |
 | Cap-25 (local Qwen) | Schema ≥ 90%, evidence ≥ 85% before full (Gan F0); detached launchers only |
 | Full validation | Same split/scorer as GPT anchor; write inspection before Kanban update |
 | S4 reporting | **Per-family F1 required** — pooled micro alone insufficient |

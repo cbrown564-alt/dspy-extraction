@@ -40,6 +40,7 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
     EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
     EXECT_S4_L1_VARIANT,
+    EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_SCHEMA_LEVEL,
     EXECT_S4_SCORER,
@@ -255,6 +256,7 @@ class ExperimentConfig(FrozenModel):
         "exect_s4_field_family_frequency_structured_slots_single_pass",
         "exect_s4_field_family_temporality_post_classifier_single_pass",
         "exect_s4_field_family_mt_guard_non_asm_single_pass",
+        "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass",
         "exect_s4_field_family_cause_bridge_k0_k1_single_pass",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
@@ -375,6 +377,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
                         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
                         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+                        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
                         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
                     },
                     EXECT_S4_SCORER,
@@ -389,6 +392,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT,
                         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
                         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+                        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
                         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
                     },
                     EXECT_S5_SCORER,

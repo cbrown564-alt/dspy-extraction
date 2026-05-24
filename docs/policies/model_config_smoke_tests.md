@@ -77,6 +77,18 @@ starting Ollama:
 uv run --extra dev pytest tests/test_llm_adapters.py tests/test_model_comparison_configs.py tests/test_experiment_configs.py
 ```
 
+Compatibility backlog B6 adds a stricter offline guard: when model/provider
+config work resumes, add or run config-level coverage that exercises
+`build_dspy_lm` for every `configs/models/*.json` file, not only
+`build_chat_adapter`. The check should stay offline and assert provider kwargs
+such as Ollama `think: False`, Gemini `reasoning_effort`, Anthropic
+`extra_body`, and GPT-5-family null-temperature handling.
+
+Compatibility backlog B7 also gates broad Gemini comparisons: make the intended
+Gemini `reasoning_effort` behavior explicit in config/tests, or replace the
+current substring default with a provider-verified allowlist, before treating
+Gemini 3 Flash and Gemini 3.1 Flash-Lite runs as adapter-policy comparable.
+
 Check that Ollama sees the required model tags:
 
 ```powershell

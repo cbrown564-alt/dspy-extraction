@@ -48,6 +48,16 @@ This index records where prior Cursor SDK outputs went after consolidation. The 
 | `docs/workstreams/cursor_sdk/compatibility/20260523T160418Z_model_compatibility_report.md` | `docs/workstreams/cursor_sdk/archive/compatibility/20260523T160418Z_model_compatibility_report.md` | `archive_no_action` | Superseded compatibility draft. |
 | `docs/workstreams/cursor_sdk/compatibility/20260523T164950Z_model_compatibility_report.md` | `docs/workstreams/cursor_sdk/archive/compatibility/20260523T164950Z_model_compatibility_report.md` | `promote_specific_claims` | Verified current adapter/config findings promoted to `docs/policies/model_config_compatibility_backlog_20260524.md`; stale/unverified claims were not promoted. |
 
+## Current Generated Outputs Not Yet Archived
+
+| Path | Status | Note |
+| --- | --- | --- |
+| `docs/experiments/cursor_sdk_drafts/20260524T093308Z_paper_synthesis_draft.md` | `keep_as_lead` | Superseded for table-freeze work by `20260524T131249Z`; broad paper-outline lead only. |
+| `docs/workstreams/cursor_sdk/hygiene_scans/20260524T093256Z_hygiene_scan.md` | `keep_as_lead` | Cleanup lead only; accepted fixes require separate patches. |
+| `docs/experiments/cursor_sdk_drafts/20260524T125735Z_inspection_draft.md` | `reject` | Zero-byte GEPA inspection stub despite successful runner completion. |
+| `docs/experiments/cursor_sdk_drafts/20260524T131249Z_paper_synthesis_draft.md` | `keep_as_lead` | Paper result-table source map only; no metric or operational-default claim promoted. |
+| `docs/workstreams/cursor_sdk/compatibility/20260524T131358Z_model_compatibility_report.md` | `promote_specific_claims` | Promoted B6/B7 into `docs/policies/model_config_compatibility_backlog_20260524.md`; draft wrapper code and unverified provider-behavior claims were not promoted. |
+
 ## Archived Workstream Docs
 
 | Original path | Archived path | Status | Replacement |

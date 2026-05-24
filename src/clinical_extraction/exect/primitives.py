@@ -23,6 +23,9 @@ EXECT_MEDICATION_TEMPORALITY_PRIMITIVE_ID = (
 EXECT_MEDICATION_TEMPORALITY_NON_ASM_GUARD_PRIMITIVE_ID = (
     "exect.medication_temporality.non_asm_guard.v1"
 )
+EXECT_MEDICATION_TEMPORALITY_NON_ASM_DOSE_CURRENT_GUARD_PRIMITIVE_ID = (
+    "exect.medication_temporality.non_asm_dose_current_guard.v1"
+)
 EXECT_SEIZURE_TYPE_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
     "exect.seizure_type.benchmark_bridge.v1"
 )
@@ -100,6 +103,11 @@ _CURRENT_MARKERS = (
     "currently taking",
     "currently she is taking",
     "currently he is taking",
+    "continue to take",
+    "does continue to take",
+    "continues to take",
+    "now taking",
+    "is now taking",
 )
 
 _PLANNED_MARKERS = (
@@ -131,6 +139,14 @@ _TAPER_OR_STOP_MARKERS = (
     "taper",
     "stop over",
     "every week until",
+)
+
+_DOSE_LINE_RE = re.compile(
+    r"\b(?:\d+(?:\.\d+)?\s*)?"
+    r"(?:mg|mgs|milligram|milligrams|milligrammes|mcg|micrograms)\b"
+    r"|"
+    r"\b(?:bd|od|tds|qds|nocte|twice a day|once a day|daily|morning|evening)\b",
+    re.IGNORECASE,
 )
 
 _REJECTED_GRANULAR_SEIZURE_TYPES = frozenset(
@@ -552,6 +568,80 @@ def recover_exect_medication_temporality_non_asm_guard(
             label = format_medication_temporality_label(medication_name, status)
             flags.append("s4_bridge:medication_temporality_status_inferred")
 
+        if label in seen:
+            continue
+        seen.add(label)
+        recovered.append(label)
+
+    return recovered, flags
+
+
+def recover_exect_medication_temporality_non_asm_dose_current_guard(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Prune unsupported MT labels while preserving dose-only current ASM rows.
+
+    This is narrower than the rejected broad post-classifier: it removes non-ASM
+    labels, keeps explicit planned/previous evidence, and preserves model current
+    status when the aligned evidence is a prescription-style dose line.
+    """
+
+    flags: list[str] = []
+    recovered: list[str] = []
+    seen: set[str] = set()
+
+    for index, raw in enumerate(raw_values):
+        if not raw.strip():
+            continue
+        if "|" not in raw:
+            flags.append("s4_bridge:medication_temporality_invalid_pipe")
+            continue
+
+        medication_part, status_part = raw.split("|", 1)
+        medication_name = canonical_medication_name(medication_part)
+        model_status = canonical_clinical_phrase(status_part)
+        if not medication_name:
+            flags.append("s4_bridge:medication_temporality_unrecognized")
+            continue
+        if (
+            medication_name in _NON_ASM_MEDICATIONS
+            or medication_name not in _ASM_CANONICAL_MEDICATIONS
+        ):
+            flags.append("s4_bridge:medication_temporality_non_asm_removed")
+            continue
+        if model_status not in _VALID_RX_TEMPORALITIES:
+            flags.append("s4_bridge:medication_temporality_invalid_status_removed")
+            continue
+
+        evidence = (
+            evidence_values[index].strip()
+            if index < len(evidence_values) and evidence_values[index]
+            else ""
+        )
+        context = evidence or note_text
+        inferred_status = infer_exect_medication_temporality(context).canonical_value
+
+        status = model_status
+        if inferred_status in _VALID_RX_TEMPORALITIES:
+            if model_status in {"planned", "previous"} and inferred_status != model_status:
+                flags.append(
+                    "s4_bridge:medication_temporality_unsupported_planned_previous_removed"
+                )
+                continue
+            if model_status == "current" and inferred_status != "current":
+                flags.append("s4_bridge:medication_temporality_status_reclassified")
+                status = inferred_status
+        elif model_status == "current" and _is_prescription_dose_line(context):
+            flags.append("s4_bridge:medication_temporality_dose_current_preserved")
+        elif model_status in {"planned", "previous"}:
+            flags.append(
+                "s4_bridge:medication_temporality_unsupported_planned_previous_removed"
+            )
+            continue
+
+        label = format_medication_temporality_label(medication_name, status)
         if label in seen:
             continue
         seen.add(label)
@@ -1132,6 +1222,10 @@ def _has_current_prescription_marker(text: str) -> bool:
     return any(marker in text for marker in _CURRENT_MARKERS) or bool(
         re.search(r"^medications?\s*[:\s-]", text)
     )
+
+
+def _is_prescription_dose_line(text: str) -> bool:
+    return bool(_DOSE_LINE_RE.search(text or ""))
 
 
 _FREQUENCY_MARKERS = (

@@ -105,6 +105,8 @@ Full validation (40): same gates; H1 showed cap-25 can be optimistic.
 
 Configs and program hook: post-bridge in `exect_s4_field_family` artifact path (same position as H1), new function beside `recover_exect_medication_temporality_with_post_classifier`.
 
+Implementation note (2026-05-24): G0 exists as `exect.medication_temporality.non_asm_guard.v1`. The next cap-25 arm is scaffolded as `exect.medication_temporality.non_asm_dose_current_guard.v1` / `mt_guard_non_asm_dose_current_v1`; it keeps the G0 non-ASM removal, preserves `current` ASM labels on dose-line evidence, and prunes planned/previous labels when aligned evidence lacks the corresponding cue. Config: `configs/experiments/exect_s4_mt_guard_g0g2_dose_current_cap25_gpt4_1_mini.json`.
+
 ## Open cells
 
 - Annotated-medication coupled guard (separate prereg)
@@ -114,9 +116,9 @@ Configs and program hook: post-bridge in `exect_s4_field_family` artifact path (
 
 ## Recommended next steps
 
-1. Implement G0 + tests (`tdd`) mirroring `test_recover_exect_medication_temporality_*`.
-2. Preregister `docs/experiments/exect/exect_s4_medication_precision_guard_gpt_cap25_v1_preregistration_20260521.md`.
-3. Cap-25 L1 vs G0 vs G0G2 grid; inspection with `decision_scope: arm`.
-4. Full validation only for cap-25 winner that passes F1 guard.
+1. G0 implemented and full-validation promoted as an arm; keep it as the current medication-temporality guard reference.
+2. Run the G0G2 cap-25 scaffold only under the existing `exect_s4_medication_precision_guard_gpt_cap25_v1` gates.
+3. Inspect with `decision_scope: arm`; do not infer mechanism closure from a single guard variant.
+4. Full validation only for a cap-25 winner that improves precision and passes the F1 guard.
 
 **Do not** rerun H1 or broad post-classifier configs.

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from clinical_extraction.exect.primitives import (
+    recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
 )
@@ -70,6 +71,39 @@ def test_recover_medication_temporality_non_asm_guard_keeps_dose_only_current():
 
     assert recovered == ["lamotrigine|current"]
     assert "s4_bridge:medication_temporality_unknown_removed" not in flags
+
+
+def test_recover_medication_temporality_non_asm_dose_current_guard_keeps_dose_current():
+    recovered, flags = recover_exect_medication_temporality_non_asm_dose_current_guard(
+        ["lamotrigine|current"],
+        ["lamotrigine 150 milligrams twice a day"],
+        "Discussed lamotrigine options at clinic.",
+    )
+
+    assert recovered == ["lamotrigine|current"]
+    assert "s4_bridge:medication_temporality_dose_current_preserved" in flags
+
+
+def test_recover_medication_temporality_non_asm_dose_current_guard_drops_unsupported_planned():
+    recovered, flags = recover_exect_medication_temporality_non_asm_dose_current_guard(
+        ["lamotrigine|planned"],
+        ["lamotrigine 150 milligrams twice a day"],
+        "Current anti-epileptic medication: lamotrigine.",
+    )
+
+    assert recovered == []
+    assert "s4_bridge:medication_temporality_unsupported_planned_previous_removed" in flags
+
+
+def test_recover_medication_temporality_non_asm_dose_current_guard_keeps_explicit_planned():
+    recovered, flags = recover_exect_medication_temporality_non_asm_dose_current_guard(
+        ["levetiracetam|planned"],
+        ["To start levetiracetam 250mg nocte if seizures recur."],
+        "Current medication: lamotrigine.",
+    )
+
+    assert recovered == ["levetiracetam|planned"]
+    assert "s4_bridge:medication_temporality_unsupported_planned_previous_removed" not in flags
 
 
 def test_recover_medication_temporality_post_classifier_drops_unknown_without_cues():

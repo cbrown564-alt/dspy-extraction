@@ -43,6 +43,7 @@ from clinical_extraction.exect.primitives import (
     recover_exect_frequency_benchmark_values as _recover_s4_seizure_frequency_raw_values,
     recover_exect_frequency_benchmark_values_with_multi_label_retention as _recover_s4_seizure_frequency_multi_label_retention_raw_values,
     recover_exect_frequency_benchmark_values_with_post_merge as _recover_s4_seizure_frequency_post_merge_raw_values,
+    recover_exect_medication_temporality_non_asm_dose_current_guard,
     recover_exect_medication_temporality_non_asm_guard,
     recover_exect_medication_temporality_with_post_classifier,
     repair_exect_frequency_surface as _repair_s4_seizure_frequency_surface,
@@ -78,6 +79,9 @@ EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT = (
 )
 EXECT_S4_MT_GUARD_NON_ASM_VARIANT = (
     "exect_s4_field_family_mt_guard_non_asm_single_pass"
+)
+EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT = (
+    "exect_s4_field_family_mt_guard_non_asm_dose_current_single_pass"
 )
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
@@ -379,6 +383,7 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
         EXECT_S4_L1_VARIANT,
         EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
         EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
+        EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
         EXECT_S4_FREQUENCY_POST_MERGE_VARIANT,
         EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT,
     }:
@@ -473,6 +478,12 @@ def _predict_s4_record(
         metadata["post_guard"] = {
             "medication_temporality": "exect.medication_temporality.non_asm_guard.v1"
         }
+    if program_variant == EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT:
+        metadata["post_guard"] = {
+            "medication_temporality": (
+                "exect.medication_temporality.non_asm_dose_current_guard.v1"
+            )
+        }
     if program_variant in {EXECT_S4_VARIANT, EXECT_S4_CAUSE_BRIDGE_K0_K1_VARIANT}:
         metadata["post_bridge"] = {
             "epilepsy_cause": "exect.epilepsy_cause.cui_phrase_bridge.v1:k0_k1"
@@ -551,6 +562,14 @@ def _s4_field_values_from_prediction(
             temporality_predictions,
             temporality_evidence,
             record.text,
+        )
+    elif program_variant == EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT:
+        temporality_raw, _ = (
+            recover_exect_medication_temporality_non_asm_dose_current_guard(
+                temporality_predictions,
+                temporality_evidence,
+                record.text,
+            )
         )
     else:
         temporality_raw, _ = _recover_s4_medication_temporality_raw_values(

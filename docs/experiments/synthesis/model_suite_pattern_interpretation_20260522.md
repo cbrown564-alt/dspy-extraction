@@ -5,6 +5,8 @@ Status: Complete frozen-suite synthesis
 Comparison group: `model_suite_frozen_architecture_v1`
 Decision scope: `arm` - model-comparison evidence only; no mechanism closure or operational promotion
 
+Adapter-policy caveat: after the 2026-05-24 model-compatibility review, treat Gemini 3 Flash vs Gemini 3.1 Flash-Lite comparisons as model-profile evidence, but do not use them to claim provider-policy equivalence until `docs/policies/model_config_compatibility_backlog_20260524.md` B6/B7 are resolved. The production `build_dspy_lm` path must be covered for configs, and Gemini `reasoning_effort` behavior must be explicit or allowlisted.
+
 ## Research Question
 
 The frozen model suite does not produce a simple leaderboard: different models win on different extraction surfaces. The useful question is therefore not "which model is best?", but:
@@ -113,7 +115,7 @@ The Gemini pair is especially useful because provider family is partly controlle
 | Gemini 3.1 Flash-Lite | 90.3% | 66.8% | 72.6% |
 | Gemini 3 Flash | 89.9% | 63.2% | 75.3% |
 
-Gemini 3.1 Flash-Lite is more stable on ExECT, especially S4. Gemini 3 Flash is stronger on Gan F0. This argues against provider-level explanations such as "Gemini is good at this project" or "Gemini is bad at benchmark policy." The model ID itself changes the precision/recall and temporal-adjudication profile.
+Gemini 3.1 Flash-Lite is more stable on ExECT, especially S4. Gemini 3 Flash is stronger on Gan F0. This argues against provider-level explanations such as "Gemini is good at this project" or "Gemini is bad at benchmark policy." The model ID itself changes the precision/recall and temporal-adjudication profile. Because the adapter currently defaults Gemini reasoning settings by model-id substring, this within-provider comparison should also carry the B7 adapter-policy caveat until the intended `reasoning_effort` behavior is explicit in config/tests or provider-verified allowlist logic.
 
 ### 6. Claude is not simply weak; it is mismatched to S1
 

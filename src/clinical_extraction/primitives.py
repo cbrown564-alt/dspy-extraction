@@ -475,6 +475,37 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         implementation_refs=["src/clinical_extraction/exect/primitives.py"],
     ),
     PrimitiveMetadata(
+        primitive_id="exect.medication_temporality.non_asm_dose_current_guard.v1",
+        name="ExECT medication temporality non-ASM dose-current guard",
+        dataset="exect_v2",
+        field_families=["medication"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=[
+            "temporal_rules",
+            "regex_rules",
+            "benchmark_label_policy",
+            "gold_audit_policy",
+        ],
+        hybrid_balance_class=["H1_post_deterministic"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract=(
+            "Raw medication|status labels from S4 extraction plus aligned evidence quotes."
+        ),
+        output_contract=(
+            "ASM medication temporality labels with non-ASM labels removed, explicit "
+            "planned/previous evidence required, and dose-line current ASM labels preserved."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        caveats=[
+            "Medication temporality gold is span-inferred because ExECT prescription JSON has no temporality column.",
+            "This is a narrow follow-up to the rejected broad post-classifier; it should not be treated as default behavior without a model-backed gate.",
+            "Dose-line current fallback applies only to ASM labels already emitted as current by the model.",
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
         primitive_id="exect.seizure_type.benchmark_bridge.v1",
         name="ExECT seizure-type benchmark bridge",
         dataset="exect_v2",
