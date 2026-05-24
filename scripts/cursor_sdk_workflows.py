@@ -2,7 +2,8 @@
 
 The workflows in this script deliberately draft Markdown for review. They do
 not edit source-of-truth docs, experiment registry rows, scorers, or run
-artifacts.
+artifacts, except for explicitly gated implementation workflows that must run
+inside a disposable worktree.
 """
 
 from __future__ import annotations
@@ -34,6 +35,7 @@ LIVE_OUTPUT_SUFFIXES = {
     "adapter-mutation": "adapter_mutation_draft",
     "model-compatibility": "model_compatibility_report",
     "test-mutations": "mutation_test_report",
+    "pathway-a-card": "pathway_a_card_report",
 }
 
 PROMPT_REHEARSAL_SUFFIXES = {
@@ -44,6 +46,7 @@ PROMPT_REHEARSAL_SUFFIXES = {
     "adapter-mutation": "adapter_mutation_prompt_rehearsal",
     "model-compatibility": "model_compatibility_prompt_rehearsal",
     "test-mutations": "mutation_test_prompt_rehearsal",
+    "pathway-a-card": "pathway_a_card_prompt_rehearsal",
 }
 
 OUTPUT_FOLDERS = {
@@ -54,7 +57,61 @@ OUTPUT_FOLDERS = {
     "adapter-mutation": REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts",
     "model-compatibility": REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "compatibility",
     "test-mutations": REPO_ROOT / "docs" / "experiments" / "cursor_sdk_drafts",
+    "pathway-a-card": REPO_ROOT / "docs" / "workstreams" / "cursor_sdk" / "pathway_a",
 }
+
+PATHWAY_A_CARD_BRIEFS = {
+    "A1R": {
+        "title": "Retrospective A1 Cursor review",
+        "role": "review-only retrospective critic/source-map lane",
+        "sources": [
+            "docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md",
+            "runs/exect_s5_frequency_pre_vocab_full_gpt4_1_mini_20260524T142823Z/errors.json",
+            "runs/exect_s5_frequency_pre_vocab_full_gpt4_1_mini_20260524T142823Z/predictions.json",
+            "src/clinical_extraction/datasets/exect.py",
+            "docs/datasets/exect/exect_gold_label_audit.md",
+            "docs/policies/deterministic_scorer_semantics.md",
+        ],
+        "allowed": "Review draft only; no source edits.",
+        "forbidden": "No edits to raw data, gold labels, split definitions, scorers, configs, registry rows, Kanban, or paper claims.",
+        "validation": "Check residual categories and per-document claims against primary artifacts and load_exect_gold_documents() where useful.",
+        "stop": "Stop at discrepancies or missing evidence; do not rewrite the promoted A1 note.",
+    },
+    "A2D": {
+        "title": "A2 verifier design brief",
+        "role": "design brief lane",
+        "sources": [
+            "docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md",
+            "docs/planning/kanban_plan.md",
+            "docs/taxonomy/taxonomy_primitive_catalog.md",
+            "docs/workstreams/cursor_sdk/cursor_sdk_pathway_a_implementation_campaign_20260524.md",
+            "configs/experiments/",
+            "src/clinical_extraction/programs/",
+            "src/clinical_extraction/experiments/",
+        ],
+        "allowed": "Design/report draft only unless run in a disposable implementation lane later.",
+        "forbidden": "No scorer, gold, split, raw data, registry, or operational-default changes.",
+        "validation": "Mission brief must name cap-25 gate, fixed scorer mode, baseline comparison, guarded-family regression threshold, allowed files, tests, and stop rules.",
+        "stop": "Do not propose high-precision pruning as the arm; that candidate narrowing arm is already rejected.",
+    },
+    "A3D": {
+        "title": "A3 prompt-policy design brief",
+        "role": "design brief lane",
+        "sources": [
+            "docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md",
+            "docs/planning/kanban_plan.md",
+            "docs/workstreams/cursor_sdk/cursor_sdk_pathway_a_implementation_campaign_20260524.md",
+            "configs/experiments/",
+            "src/clinical_extraction/programs/",
+        ],
+        "allowed": "Design/report draft only unless run in a disposable implementation lane later.",
+        "forbidden": "No scorer, gold, split, raw data, registry, or operational-default changes.",
+        "validation": "Mission brief must isolate one prompt-policy factor and preserve candidate density, scorer mode, model/provider, split, and S5 guarded families.",
+        "stop": "Do not encode clinical corrections as benchmark gold policy or compare cap-25 metrics as full-validation evidence.",
+    },
+}
+
+PATHWAY_A_MUTATING_LANES = {"implementation"}
 
 
 def _install_windows_cursor_bridge_patch() -> None:
@@ -127,7 +184,7 @@ def _load_env_file(path: Path) -> None:
 
 
 def _utc_stamp() -> str:
-    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
 
 
 def _relative_path(path: Path) -> str:
@@ -212,6 +269,118 @@ Hard rules:
 - Include concrete source paths for every claim.
 - Flag missing context instead of guessing.
 """
+
+
+def _pathway_a_header(card: str, lane: str) -> str:
+    if lane in PATHWAY_A_MUTATING_LANES:
+        edit_rule = """- You may edit only the allowed write surfaces named in the card brief.
+- You must first verify the workspace marker `.cursor-sdk-disposable-worktree`, `CURSOR_SDK_ALLOW_MUTATING_WORKFLOW=disposable-worktree`, and clean `git status --short`.
+- Capture changed files, focused test output, and `git diff` in the final report.
+- Restore the disposable worktree before ending, then report the final clean status."""
+    else:
+        edit_rule = "- Do not edit files."
+    return f"""You are running a Cursor SDK Pathway A card lane for the dspy-extraction research repo.
+
+Workflow: Pathway A ExECT S5 card
+Card: {card}
+Lane: {lane}
+Repository root: {REPO_ROOT}
+
+Hard rules:
+{edit_rule}
+- Cursor output is not source-of-truth evidence. It is a review artifact for Codex/human inspection.
+- Preserve ExECT audit guidance, fixed split definitions, and scorer semantics.
+- Do not change raw data, gold labels, split definitions, scorer denominators, normalization rules, paper claims, or operational defaults unless the card explicitly authorizes that exact change.
+- Every metric claim must include run ID, config, split, model/provider, scorer mode, denominator, and caveat.
+- Flag missing context instead of guessing.
+"""
+
+
+def pathway_a_card_prompt(
+    card: str | None,
+    lane: str | None,
+    mission_brief_path: Path | None,
+) -> str:
+    card_id = card or "A1R"
+    lane_name = lane or "review"
+    brief = PATHWAY_A_CARD_BRIEFS.get(card_id)
+    if brief is None:
+        known = ", ".join(sorted(PATHWAY_A_CARD_BRIEFS))
+        raise SystemExit(f"Unknown Pathway A card '{card_id}'. Known cards: {known}.")
+
+    mission_brief_text = ""
+    if mission_brief_path is not None:
+        path = mission_brief_path
+        if not path.is_absolute():
+            path = REPO_ROOT / path
+        if not path.exists():
+            raise SystemExit(f"Mission brief path does not exist: {path}")
+        mission_brief_text = path.read_text(encoding="utf-8")
+
+    sources = "\n".join(f"- {source}" for source in brief["sources"])
+    extra = (
+        "\nOperator-supplied mission brief:\n\n"
+        + mission_brief_text
+        if mission_brief_text
+        else ""
+    )
+    return (
+        _pathway_a_header(card_id, lane_name)
+        + f"""
+Card title: {brief["title"]}
+Cursor role: {brief["role"]}
+
+Dataset and split:
+- Dataset: ExECTv2
+- Split: exectv2_fixed_v1:validation for validation work; use cap-25 before full validation.
+- Surface: S5 core families only: diagnosis, seizure_type, annotated_medication, investigation, seizure_frequency.
+- Current baseline: exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini; full validation seizure_frequency F1 60.2%, annotated-medication F1 88.7%, micro F1 81.4%.
+- Scorer mode: exect_s5_core_field_family_deterministic_v1.
+
+Primary sources:
+{sources}
+
+Allowed write surfaces:
+{brief["allowed"]}
+
+Forbidden changes:
+{brief["forbidden"]}
+
+Validation gate:
+{brief["validation"]}
+
+Stop rules:
+{brief["stop"]}
+{extra}
+
+Output shape:
+# Cursor SDK Pathway A Card Report
+
+## Card
+Card ID, title, lane, and whether the run was review-only or disposable mutation.
+
+## Sources Read
+List concrete source paths and any missing paths.
+
+## Changes Proposed Or Made
+For review/design lanes, list proposed changes only. For implementation lanes, list changed files.
+
+## Tests / Runs
+Commands run, test output summary, run IDs, or reason no execution was appropriate.
+
+## Metric Claims
+Only source-backed claims with config, split, model/provider, scorer mode, denominator, and caveat.
+
+## Scorer / Dataset Semantics Check
+Explicitly state whether raw data, gold labels, split definitions, scorer normalization, and denominator semantics were preserved.
+
+## Risks
+Residual risks, failure modes, and missing evidence.
+
+## Promotion Recommendation
+Use one of: reject, keep_as_lead, promote_specific_claims_after_review, implementation_ready_after_brief_review, or needs_more_source_context.
+"""
+    )
 
 
 def memory_pass_prompt() -> str:
@@ -503,6 +672,7 @@ def build_parser() -> argparse.ArgumentParser:
             "adapter-mutation",
             "model-compatibility",
             "test-mutations",
+            "pathway-a-card",
         ],
     )
     parser.add_argument("--env-file", type=Path, default=REPO_ROOT / ".env")
@@ -511,6 +681,20 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--prompt-only", action="store_true")
     parser.add_argument("--run-dir")
     parser.add_argument("--topic")
+    parser.add_argument(
+        "--card",
+        help="Pathway A card ID for pathway-a-card, such as A1R, A2D, or A3D.",
+    )
+    parser.add_argument(
+        "--lane",
+        choices=["review", "design", "implementation", "regression", "critic", "runner"],
+        help="Pathway A lane type for pathway-a-card.",
+    )
+    parser.add_argument(
+        "--mission-brief",
+        type=Path,
+        help="Optional Pathway A mission brief file to append to the generated prompt.",
+    )
     return parser
 
 
@@ -538,6 +722,8 @@ def main() -> int:
         prompt = model_compatibility_prompt()
     elif args.workflow == "test-mutations":
         prompt = test_mutations_prompt()
+    elif args.workflow == "pathway-a-card":
+        prompt = pathway_a_card_prompt(args.card, args.lane, args.mission_brief)
     else:
         raise ValueError(f"Unknown workflow: {args.workflow}")
 
@@ -556,7 +742,9 @@ def main() -> int:
             print(f"Wrote prompt to {output}")
             return 0
 
-        if args.workflow == "test-mutations":
+        if args.workflow == "test-mutations" or (
+            args.workflow == "pathway-a-card" and args.lane in PATHWAY_A_MUTATING_LANES
+        ):
             _ensure_mutating_workflow_allowed()
 
         if not os.environ.get("CURSOR_API_KEY"):
@@ -588,6 +776,12 @@ def main() -> int:
             "human_review_status": "needs_review",
             "source_claim_status": "unchecked",
         }
+        if args.workflow == "pathway-a-card":
+            entry["pathway"] = "A"
+            entry["card"] = args.card
+            entry["lane"] = args.lane
+            entry["mission_brief"] = _relative_path(args.mission_brief) if args.mission_brief else None
+            entry["promotion_decision"] = "pending_review"
         if error:
             entry["error"] = error
         _append_ledger_entry(entry)

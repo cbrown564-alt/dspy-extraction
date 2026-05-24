@@ -57,7 +57,8 @@ False-positive concentration:
 | `frequency same` | 8 |
 | `frequency increased` | 4 |
 | `seizure free` | 3 |
-| Quantified-rate labels | 16 |
+| `frequency decreased` | 1 |
+| Quantified-rate labels | 15 |
 
 False-negative concentration:
 

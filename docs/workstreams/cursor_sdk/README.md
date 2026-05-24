@@ -18,6 +18,7 @@ The prior pilot and evening queue generated useful leads, but also created revie
 | `cursor_sdk_run_ledger_20260524.md` | Human-readable contract for `cursor_sdk_runs.jsonl`. |
 | `cursor_sdk_runs.jsonl` | Machine ledger for SDK workflow attempts. |
 | `cursor_sdk_disposable_worktree_protocol_20260524.md` | Required boundary for live mutating workflows. |
+| `cursor_sdk_pathway_a_implementation_campaign_20260524.md` | Failure writeup and implementation-campaign plan for using Cursor SDK across ExECT S5 Pathway A. |
 | `archive/` | Superseded drafts, prompt rehearsals, old reports, and historical workstream docs. |
 
 ## Operating Rules
@@ -46,12 +47,15 @@ uv run python scripts/cursor_sdk_workflows.py hygiene-scan
 uv run python scripts/cursor_sdk_workflows.py paper-synthesis
 uv run python scripts/cursor_sdk_workflows.py model-compatibility
 uv run python scripts/cursor_sdk_workflows.py adapter-mutation
+uv run python scripts/cursor_sdk_workflows.py pathway-a-card --card A1R --lane review
 ```
 
 Prompt rehearsal:
 
 ```powershell
 uv run python scripts/cursor_sdk_workflows.py <workflow> --prompt-only
+uv run python scripts/cursor_sdk_workflows.py pathway-a-card --card A2D --lane design --prompt-only
+uv run python scripts/cursor_sdk_workflows.py pathway-a-card --card A3D --lane design --prompt-only
 ```
 
 Mutation testing:
@@ -63,7 +67,13 @@ uv run python scripts/cursor_sdk_workflows.py test-mutations --prompt-only
 # Live mutation: disposable worktree only
 $env:CURSOR_SDK_ALLOW_MUTATING_WORKFLOW = "disposable-worktree"
 uv run python scripts/cursor_sdk_workflows.py test-mutations
+uv run python scripts/cursor_sdk_workflows.py pathway-a-card --card A2D --lane implementation --mission-brief docs/workstreams/cursor_sdk/pathway_a/<brief>.md
 ```
+
+Pathway A live implementation lanes use the same disposable-worktree boundary as
+`test-mutations`. Review, design, regression, critic, and runner lanes are
+review artifacts by default and may run in the shared workspace because they do
+not edit files.
 
 ## Review Flow
 
