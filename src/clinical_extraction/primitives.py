@@ -531,6 +531,33 @@ PRIMITIVE_REGISTRY: tuple[PrimitiveMetadata, ...] = (
         implementation_refs=["src/clinical_extraction/exect/primitives.py"],
     ),
     PrimitiveMetadata(
+        primitive_id="exect.medication.am_guard_temporal_evidence.v1",
+        name="ExECT annotated medication temporal evidence guard",
+        dataset="exect_v2",
+        field_families=["medication"],
+        clinical_operation="benchmark_bridge",
+        knowledge_sources=["controlled_vocabulary", "benchmark_label_policy", "gold_audit_policy", "temporal_rules"],
+        hybrid_balance_class=["H1_post_deterministic"],
+        interleaving_positions=["post", "eval_only"],
+        control_modes=["posthoc_correction", "diagnostic_only"],
+        input_contract="Raw medication labels from LLM extraction plus aligned evidence quotes.",
+        output_contract=(
+            "ASM medication labels with non-ASM medications removed, eplim/eplim chrono repaired, "
+            "non-current (planned/previous) medications pruned unless a note-wide current candidate exists, "
+            "and duplicate same-canonical medications deduplicated."
+        ),
+        compatible_experiment_arms=["H1", "D1"],
+        status="implemented",
+        normalization_scope="benchmark_bridge",
+        caveats=[
+            "Prunes non-ASM medications from ExECT annotated medication output.",
+            "Repairs spelling variations eplim/eplim chrono and preserves benchmark-facing brand policy.",
+            "Deduplicates same-canonical medications while preserving explicit generic predictions.",
+            "Prunes planned/previous/history ASM mentions unless the note contains a current medication candidate."
+        ],
+        implementation_refs=["src/clinical_extraction/exect/primitives.py"],
+    ),
+    PrimitiveMetadata(
         primitive_id="exect.seizure_type.benchmark_bridge.v1",
         name="ExECT seizure-type benchmark bridge",
         dataset="exect_v2",

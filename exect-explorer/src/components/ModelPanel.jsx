@@ -15,6 +15,13 @@ const STATUS_LABEL = {
   workspace_candidate: "workspace candidate",
 };
 
+const DEFAULT_METRIC_LABELS = {
+  micro_f1: "Micro F1",
+  micro_precision: "Precision",
+  micro_recall: "Recall",
+  evidence_support: "Evidence",
+};
+
 function formatValue(value) {
   if (value === null || value === undefined || value === "") return "not stated";
   return String(value);
@@ -40,6 +47,7 @@ export default function ModelPanel({
   const task = tasks.find((item) => item.id === selectedTask);
   const taskRuns = (catalog?.runs || []).filter((run) => run.task === selectedTask);
   const metrics = selectedRun?.metrics || {};
+  const metricLabels = catalog?.metric_labels || DEFAULT_METRIC_LABELS;
   const steps = pipeline?.pipeline || [];
 
   return (
@@ -87,19 +95,19 @@ export default function ModelPanel({
             </div>
             <div className="candidate-scores">
               <div className="c-score">
-                <span className="c-label">Micro F1</span>
+                <span className="c-label">{metricLabels.micro_f1}</span>
                 <span className="c-val">{formatValue(metrics.micro_f1)}%</span>
               </div>
               <div className="c-score">
-                <span className="c-label">Precision</span>
+                <span className="c-label">{metricLabels.micro_precision}</span>
                 <span className="c-val">{formatValue(metrics.micro_precision)}%</span>
               </div>
               <div className="c-score">
-                <span className="c-label">Recall</span>
+                <span className="c-label">{metricLabels.micro_recall}</span>
                 <span className="c-val">{formatValue(metrics.micro_recall)}%</span>
               </div>
               <div className="c-score">
-                <span className="c-label">Evidence</span>
+                <span className="c-label">{metricLabels.evidence_support}</span>
                 <span className="c-val">{formatValue(metrics.evidence_support)}%</span>
               </div>
             </div>

@@ -152,3 +152,47 @@ def test_exect_annotated_medication_guard_preserves_benchmark_brand_policy():
     )
 
     assert recovered == ["sodium valproate", "lamictal"]
+
+
+def test_exect_annotated_medication_temporal_evidence_guard():
+    from clinical_extraction.exect.primitives import (
+        recover_exect_annotated_medication_temporal_evidence_guard,
+    )
+
+    # Case 1: Planned medication without any current mention in the note -> should be pruned.
+    note_1 = "Plan: to start levetiracetam 500mg BD. Current: none."
+    raw_values_1 = ["levetiracetam"]
+    evidence_values_1 = ["to start levetiracetam"]
+    recovered_1, flags_1 = recover_exect_annotated_medication_temporal_evidence_guard(
+        raw_values_1,
+        evidence_values_1,
+        note_1,
+    )
+    assert recovered_1 == []
+    assert "benchmark_bridge:medication_temporality_pruned" in flags_1
+
+    # Case 2: Planned medication but there is a current mention of the same drug in the note -> should NOT be pruned.
+    note_2 = "Current medication: levetiracetam 500mg bd. Plan: to start levetiracetam 1000mg bd."
+    raw_values_2 = ["levetiracetam"]
+    evidence_values_2 = ["to start levetiracetam 1000mg"]
+    recovered_2, flags_2 = recover_exect_annotated_medication_temporal_evidence_guard(
+        raw_values_2,
+        evidence_values_2,
+        note_2,
+    )
+    assert recovered_2 == ["levetiracetam"]
+    assert "benchmark_bridge:medication_temporality_pruned" not in flags_2
+
+    # Case 3: Standard spelling repair, non-ASM drop, and deduplication should still work
+    note_3 = "Current medication: Eplim Chrono 500mg BD and Simvastatin 40mg nocte."
+    raw_values_3 = ["Eplim Chrono", "Simvastatin"]
+    evidence_values_3 = ["Eplim Chrono 500mg BD", "Simvastatin 40mg nocte"]
+    recovered_3, flags_3 = recover_exect_annotated_medication_temporal_evidence_guard(
+        raw_values_3,
+        evidence_values_3,
+        note_3,
+    )
+    assert recovered_3 == ["epilim chrono"]
+    assert "benchmark_bridge:medication_surface_repaired" in flags_3
+    assert "benchmark_bridge:non_asm_medication_rejected" in flags_3
+

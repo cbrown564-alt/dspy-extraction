@@ -29,6 +29,9 @@ EXECT_MEDICATION_TEMPORALITY_NON_ASM_DOSE_CURRENT_GUARD_PRIMITIVE_ID = (
 EXECT_ANNOTATED_MEDICATION_NON_ASM_BRAND_ALIAS_GUARD_PRIMITIVE_ID = (
     "exect.medication.am_guard_non_asm_brand_alias.v1"
 )
+EXECT_ANNOTATED_MEDICATION_TEMPORAL_EVIDENCE_GUARD_PRIMITIVE_ID = (
+    "exect.medication.am_guard_temporal_evidence.v1"
+)
 EXECT_SEIZURE_TYPE_BENCHMARK_BRIDGE_PRIMITIVE_ID = (
     "exect.seizure_type.benchmark_bridge.v1"
 )
@@ -65,6 +68,8 @@ _SURFACE_REPAIRS = {
     "brivitiracetam": "brivaracetam",
     "eslicarbazine": "eslicarbazepine",
     "zonismaide": "zonisamide",
+    "eplim": "epilim chrono",
+    "eplim chrono": "epilim chrono",
 }
 
 _BRAND_SURFACES = {
@@ -732,6 +737,130 @@ def recover_exect_annotated_medication_non_asm_brand_alias_guard(
             flags.append("benchmark_bridge:medication_brand_surface_preserved")
 
         # 6. Deduplicate same-canonical medications.
+        # Prefer an explicit generic prediction when present; use the repaired
+        # brand surface only when it is the only available same-canonical label.
+        if canonical in canonical_to_surface:
+            existing = canonical_to_surface[canonical]
+            if existing in {"epilim chrono", "lamictal"} and benchmark_val == canonical:
+                canonical_to_surface[canonical] = benchmark_val
+            flags.append("benchmark_bridge:medication_deduplicated")
+        else:
+            canonical_to_surface[canonical] = benchmark_val
+
+    # Second pass: preserve insertion order of unique canonicals
+    seen_canonicals = set()
+    for raw in raw_values:
+        cleaned_raw = raw.strip().lower()
+        if cleaned_raw in {"eplim", "eplim chrono", "epilim", "epilim chrono"}:
+            cleaned_raw = "epilim chrono"
+        canonical = canonical_medication_name(cleaned_raw)
+        canonical = _BRAND_SURFACES.get(canonical, canonical)
+        if canonical in canonical_to_surface and canonical not in seen_canonicals:
+            seen_canonicals.add(canonical)
+            recovered.append(canonical_to_surface[canonical])
+
+    return recovered, sorted(list(set(flags)))
+
+
+def recover_exect_annotated_medication_temporal_evidence_guard(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Prune non-ASM medications, repair brand aliases, prune non-current status labels,
+    and deduplicate same-canonical.
+
+    This is for ExECT S5 annotated_medication (A4 card) to address the temporal precision deficit.
+    """
+    flags: list[str] = []
+    recovered: list[str] = []
+
+    # Get all candidate payloads to check for note-wide current prescription evidence
+    candidates = build_exect_medication_candidate_payloads(note_text)
+
+    # Track the best surface for each canonical medication to deduplicate
+    canonical_to_surface: dict[str, str] = {}
+
+    # First pass: analyze, verify temporality, and select best surface for each unique canonical medication
+    for index, raw in enumerate(raw_values):
+        if not raw.strip():
+            continue
+
+        evidence = (
+            evidence_values[index].strip()
+            if index < len(evidence_values) and evidence_values[index]
+            else ""
+        )
+
+        # 1. Clean the raw value
+        cleaned_raw = raw.strip().lower()
+
+        # 2. Repair "eplim" / "eplim chrono" spelling errors.
+        eplim_spelling_repaired = cleaned_raw in {"eplim", "eplim chrono"}
+        if eplim_spelling_repaired:
+            cleaned_raw = "epilim chrono"
+            flags.append("benchmark_bridge:medication_surface_repaired")
+
+        # 3. Get canonical medication name and resolve brand surface to generic canonical
+        raw_canonical = canonical_medication_name(cleaned_raw)
+        canonical = _BRAND_SURFACES.get(raw_canonical, raw_canonical)
+
+        # 4. Check if it's ASM
+        if canonical in _NON_ASM_MEDICATIONS or canonical not in _ASM_CANONICAL_MEDICATIONS:
+            flags.append("benchmark_bridge:non_asm_medication_rejected")
+            continue
+
+        # 5. Check medication temporality (A4 temporal evidence guard)
+        context = evidence or note_text
+        inferred_status = infer_exect_medication_temporality(context).canonical_value
+        if inferred_status not in _VALID_RX_TEMPORALITIES:
+            inferred_status = "unknown"
+
+        if inferred_status != "current":
+            # Check if there is any candidate for the same canonical medication in the note that is current
+            has_current_candidate = any(
+                c.normalized_value == canonical and c.metadata.get("temporality") == "current"
+                for c in candidates
+            )
+            if not has_current_candidate:
+                flags.append("benchmark_bridge:medication_temporality_pruned")
+                continue
+
+        # 6. Resolve brand/benchmark surface
+        # Repair eplim spelling in note/evidence text so _brand_surface_from_text can match epilim chrono
+        repaired_note = re.sub(r"eplim", "epilim", note_text, flags=re.IGNORECASE)
+        repaired_evidence = re.sub(r"eplim", "epilim", evidence, flags=re.IGNORECASE)
+
+        if raw_canonical == canonical and cleaned_raw in {canonical, "epilim"}:
+            benchmark_val = (
+                _brand_surface_from_text(
+                    canonical=canonical,
+                    note_text=repaired_note,
+                    evidence_text=repaired_evidence,
+                )
+                if canonical == "lamotrigine"
+                else canonical
+            )
+        else:
+            benchmark_val = _brand_surface_from_text(
+                canonical=canonical,
+                note_text=repaired_note,
+                evidence_text=repaired_evidence,
+            )
+            if eplim_spelling_repaired and benchmark_val == "epilim":
+                benchmark_val = "epilim chrono"
+
+        if benchmark_val is None:
+            # If the prediction was already a brand name like "epilim chrono" or "lamictal",
+            # preserve it if it maps to this canonical ASM.
+            if cleaned_raw in {"epilim chrono", "lamictal"}:
+                benchmark_val = cleaned_raw
+            else:
+                benchmark_val = canonical
+        else:
+            flags.append("benchmark_bridge:medication_brand_surface_preserved")
+
+        # 7. Deduplicate same-canonical medications.
         # Prefer an explicit generic prediction when present; use the repaired
         # brand surface only when it is the only available same-canonical label.
         if canonical in canonical_to_surface:

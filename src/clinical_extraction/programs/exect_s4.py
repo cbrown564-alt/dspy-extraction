@@ -99,6 +99,9 @@ EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT = (
 EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT = (
     "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1"
 )
+EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT = (
+    "exect_s5_frequency_pre_vocab_am_guard_temporal_frequency_verify_v1"
+)
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
 EXECT_S4_FIELD_FAMILIES = (
     *EXECT_S3_FIELD_FAMILIES,
@@ -579,7 +582,10 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
     }:
         return ExectS4FrequencyPreVocabFieldFamilyModule()
-    if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT:
+    if program_variant in {
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
+    }:
         return ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
         return ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule()
@@ -651,6 +657,7 @@ def _predict_s4_record(
         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         from clinical_extraction.programs.exect_s0_s1 import (
             _augment_current_prescription_medications,
@@ -670,11 +677,21 @@ def _predict_s4_record(
             )
         )
 
-        guarded_meds, guard_flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
-            medication_raw,
-            medication_evidence,
-            record.text,
-        )
+        if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT:
+            from clinical_extraction.exect.primitives import (
+                recover_exect_annotated_medication_temporal_evidence_guard,
+            )
+            guarded_meds, guard_flags = recover_exect_annotated_medication_temporal_evidence_guard(
+                medication_raw,
+                medication_evidence,
+                record.text,
+            )
+        else:
+            guarded_meds, guard_flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+                medication_raw,
+                medication_evidence,
+                record.text,
+            )
 
         guarded_values = []
         for med in guarded_meds:
@@ -715,6 +732,7 @@ def _predict_s4_record(
         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         metadata["precomputed_candidates"] = {
             "seizure_frequency": build_precomputed_seizure_frequency_candidates(
@@ -756,11 +774,20 @@ def _predict_s4_record(
         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
-        metadata["post_guard"] = {
-            "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
-        }
-    if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT:
+        if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT:
+            metadata["post_guard"] = {
+                "annotated_medication": "exect.medication.am_guard_temporal_evidence.v1"
+            }
+        else:
+            metadata["post_guard"] = {
+                "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+            }
+    if program_variant in {
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
+    }:
         metadata["frequency_verifier"] = {
             "primitive_id": "exect.frequency.evidence_verify_policy.v1",
             "policy": "reject_only",
@@ -962,7 +989,10 @@ def _recover_s4_seizure_frequency_values(
             raw_values, note_text
         )
     recovered, flags = _recover_s4_seizure_frequency_raw_values(raw_values, note_text)
-    if program_variant != EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT:
+    if program_variant not in {
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
+    }:
         return recovered, flags
 
     allowed = _verified_frequency_allowed_keys(raw_values)

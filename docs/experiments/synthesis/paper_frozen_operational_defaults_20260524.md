@@ -34,12 +34,20 @@ All runs are evaluated on the 40-record ExECTv2 validation split using `gpt-4.1-
 | **S2** | S1 + Investigation, Comorbidity | `exect_s2_validation_full_gpt4_1_mini_20260519T231223Z` | S2 v1.3 single-pass | `exect_s2_field_family_deterministic_v1` | 80.9% | Investigation: 90.0%<br>Comorbidity: 69.3% | Comorbidity is a known weaker family in this rung. |
 | **S3** | S2 + Onset, Birth Hist., Cause, When Diag. | `exect_s3_validation_full_gpt4_1_mini_20260519T235439Z` | S3 v1.2 single-pass | `exect_s3_field_family_deterministic_v1` | 72.1% | Added sparse families are weak; comorbidity remains weak. | S3 comparison anchor. |
 | **S4** | S3 + Seizure Freq., Medication Temporality | `exect_s4_validation_full_gpt4_1_mini_20260520T071248Z` | S4 v1.2 single-pass | `exect_s4_field_family_deterministic_v1` | 65.5% | Seizure Freq.: 45.7%<br>Med. Temporality: 62.5% | S4 baseline. Seizure frequency is extremely challenging at this stage. |
-| **S5** | S5 Core (S1-S4 Core Families + Seizure Freq. under new core alignment) | `exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini_20260524T182142Z` | `exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1` | `exect_s5_core_field_family_deterministic_v1` | 81.4% | Diagnosis: 90.0%<br>Seizure Type: 84.0%<br>Medication: 88.7%<br>Investigation: 96.7%<br>Seizure Freq.: 60.2% | **Current S5 Baseline.** Integrates pre-vocab frequency injection and narrow annotated-medication guard to restore S5 medication F1. Seizure frequency F1 is 60.2% (active bottleneck). |
+| **S5** | S5 Core (diagnosis, seizure type, annotated medication, investigation, seizure frequency) | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_full_gpt4_1_mini_20260524T195813Z` | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1` | `exect_s5_core_field_family_deterministic_v1` | **85.5%** | Diagnosis: 90.0%<br>Seizure Type: 84.0%<br>Medication: 88.7%<br>Investigation: 96.7%<br>Seizure Freq.: **72.3%** | **Current S5 paper freeze.** High-recall pre-vocab candidates + AM guard + reject-only frequency verifier with A3 prompt policy. Supersedes AM-guard-only row (81.4% micro / 60.2% freq). Seizure frequency remains weakest family. |
+
+**Superseded S5 anchor (historical):**
+
+| Run ID | Program | Micro F1 | Seizure Freq. F1 | Notes |
+| --- | --- | ---: | ---: | --- |
+| `exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini_20260524T182142Z` | `exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1` | 81.4% | 60.2% | AM guard promotion without frequency verifier |
 
 **Primary Sources:**
-- `runs/exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini_20260524T182142Z/metrics.json`
+- `runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_full_gpt4_1_mini_20260524T195813Z/metrics.json`
+- `configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_full_gpt4_1_mini.json`
+- `docs/experiments/exect/exect_s5_frequency_verifier_full_validation_promotion_review_20260524.md`
+- `docs/experiments/exect/exect_s5_frequency_verifier_a2r_regression_review_20260524.md`
 - `docs/experiments/exect/exect_s5_annotated_medication_guard_gpt_inspection_20260524.md`
-- `docs/experiments/exect/exect_s5_frequency_residual_audit_20260524.md`
 
 ---
 
@@ -59,5 +67,5 @@ Replication of the ExECT schema ladder using local model `Qwen3.6:35b` via Ollam
 ## 4. Standing Research Caveats
 
 1. **Benchmark Claims**: No claims of beating published clinical benchmarks (ExECTv2 or Gan 2026) are supported on these synthetic validation splits. Comparison against published work is blocked until official CUI-aware reproduction and Real clinical dataset access is unlocked.
-2. **Medication Temporality**: High-precision temporal pruning (e.g. distinguishing previous/suggested/planned ASMs) is deliberately excluded from the S5 baseline and remains an active research workstream.
-3. **Seizure Frequency Scorer**: Do not change deterministic scorer semantics. All frequency comparisons must use identical metric denominators and raw label normalizations.
+2. **Medication Temporality**: High-precision temporal pruning (e.g. distinguishing previous/suggested/planned ASMs) is deliberately excluded from the S5 baseline and remains an active research workstream. The promoted S5 stack includes a reject-only **seizure-frequency** verifier (second LLM pass), not medication-temporality extraction.
+3. **Seizure Frequency Scorer**: Do not change deterministic scorer semantics. All frequency comparisons must use identical metric denominators and raw label normalizations. The promoted S5 frequency F1 (72.3%) is not comparable to Gan monthly-frequency metrics.
