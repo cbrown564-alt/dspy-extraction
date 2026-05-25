@@ -949,6 +949,9 @@ GAN_FREQUENCY_S0_QWEN_SCHEMA_VALIDITY_ADDENDUM = """
       "nights", "hour", "quarter", or "fortnight" as units. Convert nightly
       to day, e.g. "1 per night" → "1 per day"; convert fortnight to
       "2 week" and quarter to "3 month".
+    - "unknown, N per cluster" is the only valid "unknown, ..." suffix. Do not
+      emit "unknown, 6 per hour" or "unknown, N per day/week/month/year"; if a
+      rate is quantifiable, return the rate in canonical units.
     - Final self-check: if the label is not exactly one of the Gan formats
       listed above, repair the surface to a canonical Gan label before returning.
 """
@@ -4272,6 +4275,9 @@ _EVIDENCE_PROMPT_FOOTER_MARKERS = (
     "In adhering to this structure",
 )
 _PER_HOUR_RATE_RE = re.compile(r"^(?P<count>\d+(?:\.\d+)?) per hour$")
+_UNKNOWN_PER_HOUR_RATE_RE = re.compile(
+    r"^unknown, (?P<count>\d+(?:\.\d+)?) per hours?$"
+)
 _MALFORMED_CLUSTER_SUFFIX_RE = re.compile(
     r"^(?P<rate>.+?) per (?P<unit>day|week|month|year), "
     r"(?P<per_cluster>.+?) per cluster$"
@@ -4280,6 +4286,11 @@ _MALFORMED_CLUSTER_SUFFIX_RE = re.compile(
 
 def _repair_forbidden_hour_rate(label: str) -> str:
     """Convert forbidden per-hour rates to per-day before scorer validation."""
+    unknown_match = _UNKNOWN_PER_HOUR_RATE_RE.match(label)
+    if unknown_match is not None:
+        daily = float(unknown_match.group("count")) * 24
+        return f"{_format_number(daily)} per day"
+
     match = _PER_HOUR_RATE_RE.match(label)
     if match is None:
         return label

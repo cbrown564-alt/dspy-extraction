@@ -12,6 +12,7 @@ UNIT_FACTORS_PER_MONTH = {
 
 UNKNOWN_VALUE = 1000.0
 NO_REFERENCE_VALUE = 0.0
+UNKNOWN_CLUSTER_LABEL_RE = re.compile(r"^unknown, .+? per cluster$")
 
 
 def normalize_label(label: str) -> str:
@@ -26,8 +27,10 @@ def label_to_monthly_frequency(label: str) -> float:
 
     if normalized == "no seizure frequency reference":
         return NO_REFERENCE_VALUE
-    if normalized == "unknown" or normalized.startswith("unknown,"):
+    if normalized == "unknown" or UNKNOWN_CLUSTER_LABEL_RE.fullmatch(normalized):
         return UNKNOWN_VALUE
+    if normalized.startswith("unknown,"):
+        raise ValueError(f"Unsupported Gan frequency label: {label!r}")
     if normalized.startswith("seizure free for "):
         return NO_REFERENCE_VALUE
 
@@ -61,7 +64,7 @@ def label_to_monthly_frequency(label: str) -> float:
 
 def purist_category(label: str) -> str:
     normalized = normalize_label(label)
-    if normalized == "unknown" or normalized.startswith("unknown,"):
+    if normalized == "unknown" or UNKNOWN_CLUSTER_LABEL_RE.fullmatch(normalized):
         return "unknown"
     if normalized == "no seizure frequency reference":
         return "no_seizure_information"
@@ -92,7 +95,7 @@ def purist_category(label: str) -> str:
 
 def pragmatic_category(label: str) -> str:
     normalized = normalize_label(label)
-    if normalized == "unknown" or normalized.startswith("unknown,"):
+    if normalized == "unknown" or UNKNOWN_CLUSTER_LABEL_RE.fullmatch(normalized):
         return "unknown"
     if normalized == "no seizure frequency reference":
         return "no_seizure_information"

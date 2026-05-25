@@ -740,6 +740,7 @@ def test_gan_s0_module_repairs_cap25_schema_invalid_surfaces(
         ("1 per fortnight", "1 per 2 week"),
         ("fortnightly", "1 per 2 week"),
         ("many per month", "multiple per month"),
+        ("unknown, 6 per hour", "multiple per day"),
     ],
 )
 def test_gan_s0_module_repairs_local_qwen_canonicalization_surfaces(
@@ -1654,6 +1655,7 @@ def test_build_gan_frequency_s0_extractor_signature_adds_qwen_schema_validity_pa
     assert "Qwen schema-validity patch" in prompt_doc
     assert "many per month" in prompt_doc
     assert "unknown, 4 to 6 per cluster" in prompt_doc
+    assert "unknown, 6 per hour" in prompt_doc
     assert "1 per night" in prompt_doc
     assert "1 per day" in prompt_doc
     assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)

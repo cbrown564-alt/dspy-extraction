@@ -25,8 +25,24 @@ def test_cluster_label_multiplies_cluster_rate_by_seizures_per_cluster():
 
 def test_unknown_and_no_reference_stay_distinct_categories():
     assert label_to_monthly_frequency("unknown") == pytest.approx(1000)
+    assert label_to_monthly_frequency("unknown, 2 to 3 per cluster") == pytest.approx(1000)
     assert label_to_monthly_frequency("no seizure frequency reference") == pytest.approx(0)
     assert purist_category("unknown") == "unknown"
+    assert purist_category("unknown, 2 to 3 per cluster") == "unknown"
     assert purist_category("no seizure frequency reference") == "no_seizure_information"
     assert pragmatic_category("unknown") == "unknown"
+    assert pragmatic_category("unknown, 2 to 3 per cluster") == "unknown"
     assert pragmatic_category("no seizure frequency reference") == "no_seizure_information"
+
+
+@pytest.mark.parametrize(
+    "label",
+    [
+        "unknown, 6 per hour",
+        "unknown, 3 per week",
+        "unknown, 2 per month",
+    ],
+)
+def test_unknown_suffix_must_be_per_cluster(label: str):
+    with pytest.raises(ValueError, match="Unsupported Gan frequency label"):
+        label_to_monthly_frequency(label)

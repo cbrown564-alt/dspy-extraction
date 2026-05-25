@@ -28,9 +28,9 @@
 ### R1.1 - Gan L2 Qwen Exact-Policy Full Validation
 
 - **Outcome:** Full validation (299 records) of the exact-policy Qwen prompt patch.
-- **Dependencies:** Cap-25 Validation Gate rerun with schema-validity patch.
-- **Status:** Ready for cap-25 re-gate.
-- **Notes:** v1.8 schema-validity prompt patch added after the v1.7 slice/cap-25 showed non-canonical outputs (`many per month`, `4 to 6 per cluster`, `1 per night`). The configs now use `gan_frequency_s0_temporal_candidates_single_pass_v1_8_qwen_schema_validity`; dry-runs pass for slice, cap-25, and full validation. Do not launch full validation until the cap-25 rerun clears schema validity.
+- **Dependencies:** v1.8 cap-25 schema gate.
+- **Status:** Ready for full-validation launch when Ollama is free.
+- **Notes:** v1.8 schema-validity prompt patch added after the v1.7 slice/cap-25 showed non-canonical outputs (`many per month`, `4 to 6 per cluster`, `1 per night`). Completed v1.8 cap-25 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T171037Z` plus deterministic post-hoc re-evaluation under the tightened validator has 100% schema validity, 100% evidence support, 72.0% monthly accuracy, 80.0% Purist, and 88.0% Pragmatic. See [gan_s0_l2_qwen_exact_policy_v1_8_cap25_schema_gate_20260525.md](../experiments/gan/gan_s0_l2_qwen_exact_policy_v1_8_cap25_schema_gate_20260525.md). A later clean cap-25 relaunch stalled after 1/25 and was stopped; premature full-validation processes were stopped before completion and are not evidence.
 
 ### R2 - Write Current Results Table Pack
 
@@ -148,7 +148,7 @@ No active card remains in backlog. New backlog items should be useful but not re
 | Gan G0 builder-gap v1 | Frozen operational default; GPT 80.6%, Qwen 70.7% monthly. |
 | Gan L2 Qwen forensics | Done; enables only the narrow exact-policy slice or surface-repair tests. |
 | Gan L2 Qwen exact-policy slice | Done; run `gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama_20260525T160918Z` has 82.4% monthly accuracy but failed schema/canonical gate (94.4% schema, "many per month" non-canonical). Decision: Hold/Redesign; v1.8 schema-validity patch is now ready for rerun. |
-| Gan L2 Qwen exact-policy cap-25 follow-up | Done but superseded for full-validation gating; run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T162702Z` has 69.6% monthly accuracy (beating baseline 40% and GPT E1 52%) and 92% schema validity. Decision: re-gate with v1.8 before any full validation. |
+| Gan L2 Qwen exact-policy cap-25 follow-up | Done but superseded for full-validation gating; v1.7 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T162702Z` has 69.6% monthly accuracy and 92% schema validity. v1.8 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T171037Z`, post-hoc re-evaluated under the tightened validator, has 72.0% monthly and 100% schema validity. Decision: proceed to full validation when local Ollama is free. |
 | Paper result table pack refresh | Done; [paper_result_table_pack_20260525.md](../experiments/synthesis/paper_result_table_pack_20260525.md) supersedes the 2026-05-24 table pack for current manuscript tables. |
 | Manuscript claims/caveats draft | Done; [paper_claims_caveats_20260525.md](../experiments/synthesis/paper_claims_caveats_20260525.md) separates supported, plausible, risky, and unsupported claims. |
 | S5 per-family parallel ceiling | Rejected after cap-25; no full validation. |
@@ -168,7 +168,7 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 ## Dependency Notes
 
-- R1.1 is the only model-backed follow-through candidate; it now requires a cap-25 v1.8 schema-validity re-gate before full validation. Keep local Ollama free before restarting it.
+- R1.1 is the only model-backed follow-through candidate; the v1.8 cap-25 schema gate is cleared with the caveat documented in the schema-gate note. Keep local Ollama free before full validation.
 - R2 and R3 are complete; use the May 25 table pack and claims/caveats note for paper drafting.
 - R5 can proceed independently, but should remain a test-backed surface-normalization task.
 - A1 depends strictly on R1 passing the preregistered slice gate.
@@ -189,7 +189,7 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 1. **R4 - Refresh Experiment Registry For Current Defaults.**
 2. **R5 - Test Narrow Gan Invalid-Surface Repairs.**
-3. **R1.1 - Rerun the Gan exact-policy cap-25 gate with the v1.8 schema-validity patch before full validation.**
+3. **R1.1 - Launch Gan exact-policy v1.8 full validation when local Ollama is free.**
 4. **A5 - Establish Test/Holdout Reporting Protocol and prepare overnight runs.**
 
 This pull keeps documentation traceability moving, starts the narrow test-backed Gan repair thread, runs R1.1 gate checks, and kicks off the test/holdout protocol and scripting.
