@@ -1,0 +1,81 @@
+{
+  "description": "18-record L2 local-gap policy slice from GPT-correct/Qwen-failed builder-gap v1 validation records. It emphasizes exact count/window preservation, cluster structure preservation, unknown fallback boundaries, and two invalid/canonical-surface cases.",
+  "name": "gan_s0_l2_qwen_policy_slice_v1",
+  "source_qwen_run": "gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z",
+  "source_gpt_run": "gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z",
+  "records": [
+    {
+      "failure_mode": "cluster_collapsed_to_rate",
+      "record_id": "gan_10052"
+    },
+    {
+      "failure_mode": "cluster_collapsed_to_rate",
+      "record_id": "gan_10993"
+    },
+    {
+      "failure_mode": "cluster_collapsed_to_rate",
+      "record_id": "gan_15442"
+    },
+    {
+      "failure_mode": "cluster_collapsed_to_rate",
+      "record_id": "gan_10031"
+    },
+    {
+      "failure_mode": "cluster_semantic_mismatch",
+      "record_id": "gan_3246"
+    },
+    {
+      "failure_mode": "cluster_semantic_mismatch",
+      "record_id": "gan_11207"
+    },
+    {
+      "failure_mode": "pragmatic_match_monthly_divergence",
+      "record_id": "gan_714"
+    },
+    {
+      "failure_mode": "pragmatic_match_monthly_divergence",
+      "record_id": "gan_2513"
+    },
+    {
+      "failure_mode": "pragmatic_match_monthly_divergence",
+      "record_id": "gan_15876"
+    },
+    {
+      "failure_mode": "pragmatic_match_monthly_divergence",
+      "record_id": "gan_12296"
+    },
+    {
+      "failure_mode": "purist_bin_boundary_within_pragmatic",
+      "record_id": "gan_13123"
+    },
+    {
+      "failure_mode": "purist_bin_boundary_within_pragmatic",
+      "record_id": "gan_9365"
+    },
+    {
+      "failure_mode": "other_semantic_mismatch",
+      "record_id": "gan_22"
+    },
+    {
+      "failure_mode": "other_semantic_mismatch",
+      "record_id": "gan_4597"
+    },
+    {
+      "failure_mode": "unknown_vs_seizure_free",
+      "record_id": "gan_6131"
+    },
+    {
+      "failure_mode": "unknown_as_quantified_rate",
+      "record_id": "gan_14036"
+    },
+    {
+      "failure_mode": "invalid_predicted_label",
+      "record_id": "gan_338"
+    },
+    {
+      "failure_mode": "invalid_predicted_label",
+      "record_id": "gan_3225"
+    }
+  ],
+  "split_name": "gan_2026_fixed_v1:validation"
+}

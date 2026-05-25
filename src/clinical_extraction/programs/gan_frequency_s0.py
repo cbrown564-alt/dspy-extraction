@@ -110,6 +110,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSIO
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_6_targeted_examples_min7"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_EXACT_POLICY_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_7_qwen_exact_policy"
+)
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_UNKNOWN_OVERUSE_GUARD_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_5_unknown_overuse_guard"
 )
@@ -892,6 +895,39 @@ GAN_FREQUENCY_S0_TARGETED_EXAMPLES_MIN7_ADDENDUM = """
 """
 
 
+GAN_FREQUENCY_S0_QWEN_EXACT_POLICY_ADDENDUM = """
+    Qwen exact-frequency policy slice (v1.7; L2 local-gap follow-up):
+    Apply the v1.4 error-taxonomy policy first. This addendum narrows Qwen's
+    residual tendency to replace exact note-supported labels with coarser labels.
+
+    - Exact numeric preservation: if the note gives a specific count, range, or
+      denominator, preserve it in the label. Do not replace "2 per day" with
+      "multiple per day", "6 per week" with "multiple per week", "1 per 2 week"
+      with "2 per month", or "10 per 6 month" with "10 per 5 month".
+    - Explicit ranges remain ranges. Use "to" and the note's denominator:
+      "2 to 3 per 2 week" remains "2 to 3 per 2 week"; do not compress it to
+      "2 to 3 per week" or "multiple per week".
+    - Cluster structure has priority over a simple rate whenever the note says
+      seizures occur in clusters. Preserve both slots: cluster frequency and
+      per-cluster count. Do not output a non-cluster rate if the note supports
+      "N cluster per unit, M per cluster".
+    - Per-cluster specificity: when the note states a per-cluster value, use
+      that value instead of "multiple per cluster". Use "multiple per cluster"
+      only when the per-cluster count is not stated.
+    - Unknown is not a fallback for difficult arithmetic. Use "unknown" only
+      when seizure frequency cannot be quantified from the note. If GPT-style
+      exact arithmetic is possible from a count and window, emit the arithmetic
+      label rather than "unknown".
+    - Unknown/seizure-free boundary: do not convert unknown to seizure-free
+      unless the note explicitly supports seizure freedom for at least 6 months.
+      Do not convert seizure-free remission language to unknown when a qualifying
+      seizure-free duration is stated.
+    - Canonical surface discipline: never emit synonyms or shorthand such as
+      "many per month", "monthly", or "q2-3wk". Convert them to the canonical
+      Gan surface only when the note directly supports that surface.
+"""
+
+
 GAN_FREQUENCY_S0_UNKNOWN_OVERUSE_GUARD_ADDENDUM = """
     Unknown-overuse guard policy (v1.5 unknown_overuse_guard; C2 arm):
     Layered on top of the v1.4 error-taxonomy policy. Apply all existing v1.4
@@ -1142,6 +1178,21 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateTargetedExamplesMin7ExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_EXACT_POLICY_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_QWEN_EXACT_POLICY_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateQwenExactPolicyExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )

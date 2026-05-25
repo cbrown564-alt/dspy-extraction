@@ -19,9 +19,9 @@
 
 ## Current Priorities
 
-1. **Local model transfer (P0).** S5 Qwen true-v2b transfer is accepted and the clean Qwen ladder now has a monotonic S1→S4 shape after S1 clean v2: S1 85.9%, S2 84.4%, S3 75.3%, S4 67.5%.
-2. **Clean schema ladder comparison (P1).** S2/S3 now incorporate transferable S5 lessons (AM non-ASM/brand guard) plus middle-rung guards (I0 investigation, C0/C1 comorbidity, K0/K1 cause). Keep rejected or frequency-only S5 techniques out of S2/S3.
-3. **S5 decomposition ceiling (P2).** **Closed (arm reject).** Per-family parallel cap-25: 83.6% micro (−4.6pp vs v2b), ~14× slower — single-pass v2b remains quality/efficiency anchor. See [C-track inspection](../experiments/exect/exect_s5_per_family_parallel_ceiling_gpt_cap25_v1_inspection_20260524.md).
+1. **Local model transfer evidence is now consolidated.** S5 Qwen true-v2b transfer is accepted and the clean Qwen ladder now has a monotonic S1→S4 shape after S1 clean v2: S1 85.9%, S2 84.4%, S3 75.3%, S4 67.5%.
+2. **Gan G0 local-gap forensics is complete.** L2 shows the Qwen gap is mostly exact-frequency calibration under sparse deterministic-candidate coverage, not a scorer/data issue. Next Gan work must be a preregistered Qwen policy slice or a narrow surface-repair test, not broad mechanism search.
+3. **Clean schema ladder comparison is frozen for current paper defaults.** S2/S3 include transferable S5 lessons (AM non-ASM/brand guard) plus middle-rung guards (I0 investigation, C0/C1 comorbidity, K0/K1 cause). Keep rejected or frequency-only S5 techniques out of S2/S3.
 
 S5 frequency v2b is **promoted** (73.9% freq F1, 85.8% micro). Further frequency work only via **preregistered verifier/policy tuning** — not candidate narrowing or v1.3+strict-qualitative stacking.
 
@@ -41,7 +41,8 @@ Pathways **A–E closed**; paper evidence frozen (D1–D3); workflow readiness c
 | **L1.1/L1.2 S5 Qwen true-v2b full-validation** | 85.4% micro F1 (−0.4pp vs GPT v2b). Freq F1 **71.4%** (−2.5pp). Diagnosis +2.5pp. Seizure type −1.5pp. Evidence support 95.5% raw / 100% post-repair. **Accepted local transfer / near-parity — not Qwen-leading.** |
 | **S2/S3 clean-ladder GPT completion** | Transferable S5 AM guard integrated into S2/S3; frequency-only/rejected S5 techniques excluded. GPT full validation: S2 **82.7%** (+1.8pp vs frozen v1.3), S3 **74.4%** (+2.3pp vs frozen v1.2). Inspection: [S2/S3 clean ladder](../experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md). |
 | **S1 clean-ladder Qwen correction** | S1 v4.10 anchor was not comparable to clean S2/S3. S1 clean v2 routes v4.10 diagnosis + v4.11 seizure/medication with the promoted AM guard: **85.9%** micro, restoring monotonic Qwen ladder over S2/S3/S4. Inspection: [S1 Qwen inspection](../experiments/exect/exect_s1_clean_ladder_qwen_validation_v1_inspection_20260525.md). |
-| Local gap (prior) | G0 −9.9pp, S1 −13.3pp vs GPT on same programs; S2–S4 local competitive or leading. S5 now resolved. |
+| **L2 Gan G0 Qwen forensics** | Qwen builder-gap v1 has 87 valid monthly mismatches plus 2 invalid labels. Paired analysis: GPT/Qwen both correct 186, GPT-only correct 55, Qwen-only correct 24, both miss 34. Main Qwen residuals are rate/window calibration, cluster collapse, and overuse of coarse labels under sparse candidate coverage. Inspection: [L2 forensics](../experiments/gan/gan_s0_qwen35b_builder_gap_l2_error_forensics_20260525.md). |
+| Local gap status | G0 remains −9.9pp monthly vs GPT but is now characterized; S1 clean v2 reduces the earlier local ladder anomaly; S2–S4 local competitive or leading; S5 resolved as near-parity. |
 
 Detail: [24h review](../experiments/synthesis/24h_progress_and_local_model_gap_review_20260524.md) · [Pathway D walkthrough](../experiments/synthesis/pathway_d_paper_evidence_freeze_walkthrough_20260524.md) · [L1.2 comparison](../experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md)
 
@@ -57,8 +58,9 @@ Detail: [24h review](../experiments/synthesis/24h_progress_and_local_model_gap_r
 | L1.2 S5 local vs closed comparison | **Done** | Per-family table updated after true v2b rerun: [l1_2_comparison](../experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md) |
 | L1.3 S2/S3 clean-ladder Qwen replay | **Done** | S2 clean Qwen `exect_s2_clean_ladder_v1_full_qwen35b_ollama_20260525T075449Z`: 84.4% micro. S3 clean Qwen `exect_s3_clean_ladder_v1_full_qwen35b_ollama_20260525T075453Z`: 75.3% micro. |
 | L1.4 S1 clean-ladder Qwen correction | **Done** | S1 clean v2 `exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z`: 85.9% micro; restores expected S1>S2>S3>S4 relationship. |
-| L2 G0 Qwen error forensics | Backlog | 87 monthly mismatches on builder-gap v1 |
-| L3 S1 Qwen seizure-type arm | Backlog | v4_12 configs exist; verify full-validation run |
+| L2 G0 Qwen error forensics | **Done** | [L2 inspection](../experiments/gan/gan_s0_qwen35b_builder_gap_l2_error_forensics_20260525.md): 87 valid monthly mismatches + 2 invalid labels; next Gan arm should be preregistered Qwen policy slice, not broader builder expansion. |
+| L2.1 G0 Qwen exact-policy slice | Ready | Preregistered narrow 18-record GPT-correct/Qwen-failed policy slice: [prereg](../experiments/gan/gan_s0_l2_qwen_exact_policy_slice_preregistration_20260525.md), config `configs/experiments/gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama.json`, fixture `data/fixtures/gan_s0_l2_qwen_policy_slice.json`. Run only when Ollama is free; do not expand builders. |
+| L3 S1 Qwen seizure-type arm | Backlog | v4_12 was superseded for ladder purposes by S1 clean v2; pull only if the paper needs a dedicated seizure-type local-gap analysis. |
 | L4 Best-closed S4/S5 anchors | Backlog | GPT 5.5 S4; closed S5 suite untested |
 
 ### S2/S3 Clean Schema Ladder (GPT complete)
@@ -114,10 +116,10 @@ Authoritative numbers: [paper_frozen_operational_defaults_20260524.md](../experi
 | S5 local deployment claims | **Use cautious wording** — true v2b Qwen full-validation complete (85.4% micro near-parity); synthetic validation only, not deployment readiness |
 | ExECTv2 Table 1 reproduction | CUI-aware scorer + explicit reproduction workstream |
 | Gan Real(300)/Real(150) | Dataset access + preregistered reporting plan |
-| Gan S0 / GEPA arms | Frozen; prereg + cap-25 gate ([Thread G](kanban_frozen_threads_history.md#thread-g---gan-s0-pathway-c-frozen-2026-05-24)) |
+| Gan S0 / GEPA arms | Frozen; L2 forensics permits only a preregistered Qwen policy slice or narrow invalid-label surface-repair test before any new full validation ([Thread G](kanban_frozen_threads_history.md#thread-g---gan-s0-pathway-c-frozen-2026-05-24)) |
 | Test/holdout reporting | Explicit protocol (D4 backlog) |
 
-**Deferred follow-ons** (not active): Gan builder extension for no-candidate mismatches; Gan multi-type/window-priority prompts; C-track beyond C1 if P0 clears.
+**Deferred follow-ons** (not active): Gan builder extension for no-candidate mismatches; Gan multi-type/window-priority prompts; C-track beyond C1.
 
 ---
 

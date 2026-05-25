@@ -1,0 +1,72 @@
+{
+  "controls": {
+    "abstention_policy": "allow_explicit_abstain_flag_with_error_taxonomy_policy_patch",
+    "context_policy": "full_note_plus_deterministic_temporal_candidates",
+    "few_shot_policy": "none",
+    "repair_policy": "artifact_bridge_surface_normalization_only",
+    "verifier_policy": "none"
+  },
+  "dataset": "gan_2026",
+  "experiment_id": "gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama",
+  "hypothesis": "A narrow Qwen3.6:35b exact-frequency policy patch on top of builder-gap v1 improves L2 paired local-gap records by preserving explicit counts, windows, ranges, and cluster structure instead of replacing them with coarser labels such as multiple, unknown, or non-cluster rates.",
+  "max_records": null,
+  "metric_caveats": [
+    "This 18-record slice uses record_ids from data/fixtures/gan_s0_l2_qwen_policy_slice.json.",
+    "All records come from GPT-correct/Qwen-failed paired builder-gap v1 validation outcomes; this is a targeted policy gate, not full-validation evidence.",
+    "The varied factor is prompt policy only: program variant, candidate builder implementation, scorer, split, model, context policy, and repair policy remain fixed against the Qwen builder-gap v1 full-validation run.",
+    "Monthly-frequency, Purist category, and Pragmatic category metrics are benchmark-facing on this slice only.",
+    "Normalized-label exact, schema validity, abstention, evidence support, and candidate coverage remain diagnostic.",
+    "Do not extrapolate slice metrics to the full validation split.",
+    "This is not published Gan benchmark reproduction."
+  ],
+  "model_config_path": "configs/models/gan_s0_qwen35b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "gan_frequency_s0_temporal_candidates_single_pass",
+  "prompt_version": "gan_frequency_s0_temporal_candidates_single_pass_v1_7_qwen_exact_policy",
+  "record_ids": [
+    "gan_10052",
+    "gan_10993",
+    "gan_15442",
+    "gan_10031",
+    "gan_3246",
+    "gan_11207",
+    "gan_714",
+    "gan_2513",
+    "gan_15876",
+    "gan_12296",
+    "gan_13123",
+    "gan_9365",
+    "gan_22",
+    "gan_4597",
+    "gan_6131",
+    "gan_14036",
+    "gan_338",
+    "gan_3225"
+  ],
+  "report_on_test_split": false,
+  "schema_level": "gan_frequency_s0",
+  "scorer_mode": "gan_frequency_deterministic_v1",
+  "split_file": "data/splits/gan_2026_splits.json",
+  "split_name": "gan_2026_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": "frequency",
+    "comparison_group": "gan_s0_l2_qwen_exact_policy_v1",
+    "dataset": "gan_2026",
+    "hybrid_balance_class": [
+      "H2_pre_deterministic",
+      "H4_deterministic_first_llm_adjudicates"
+    ],
+    "implementation_variant": "gan_s0_candidate_builder_gap_v1",
+    "intended_decision": "pending",
+    "interleaving_positions": [
+      "pre",
+      "during"
+    ],
+    "program_architecture": "temporal_candidates_single_pass",
+    "schema_complexity": "gan_s0",
+    "stage_executor": "det_candidates_llm_adjudicate",
+    "stage_graph_id": "g2_candidates_adjudicate",
+    "varied_factor": "prompt_policy"
+  }
+}
