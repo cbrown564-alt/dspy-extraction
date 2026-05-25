@@ -21,6 +21,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_VERIFY_REPAIR_VARIANT,
 )
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_CLEAN_LADDER_V1_VARIANT,
     EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
     EXECT_S2_COMORBIDITY_C0_VARIANT,
     EXECT_S2_INV_GUARD_I0_VARIANT,
@@ -30,6 +31,7 @@ from clinical_extraction.programs.exect_s2 import (
 )
 from clinical_extraction.programs.exect_s3 import (
     EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+    EXECT_S3_CLEAN_LADDER_V1_VARIANT,
     EXECT_S3_SCHEMA_LEVEL,
     EXECT_S3_SCORER,
     EXECT_S3_VARIANT,
@@ -49,8 +51,11 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_VARIANT,
     EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
 )
 from clinical_extraction.evaluation.exect import EXECT_S5_SCORER
 
@@ -253,8 +258,10 @@ class ExperimentConfig(FrozenModel):
         "exect_s2_field_family_comorbidity_c0_single_pass",
         "exect_s2_field_family_comorbidity_c0_c1_single_pass",
         "exect_s2_field_family_inv_guard_i0_single_pass",
+        "exect_s2_field_family_clean_ladder_v1_single_pass",
         "exect_s3_field_family_single_pass",
         "exect_s3_field_family_cause_bridge_k0_k1_single_pass",
+        "exect_s3_field_family_clean_ladder_v1_single_pass",
         "exect_s4_field_family_single_pass",
         "exect_s4_field_family_frequency_pre_vocab_single_pass",
         "exect_s4_field_family_frequency_pre_vocab_high_precision_single_pass",
@@ -267,7 +274,10 @@ class ExperimentConfig(FrozenModel):
         "exect_s5_am_guard_non_asm_brand_alias_v1",
         "exect_s5_frequency_pre_vocab_am_guard_non_asm_brand_alias_v1",
         "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1",
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2",
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b",
         "exect_s5_frequency_pre_vocab_am_guard_temporal_frequency_verify_v1",
+        "exect_s5_core_field_family_parallel_v2b",
     ] = GAN_FREQUENCY_S0_VARIANT
     scorer_mode: Literal[
         "gan_frequency_deterministic_v1",
@@ -366,6 +376,7 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S2_COMORBIDITY_C0_VARIANT,
                         EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
                         EXECT_S2_INV_GUARD_I0_VARIANT,
+                        EXECT_S2_CLEAN_LADDER_V1_VARIANT,
                     },
                     EXECT_S2_SCORER,
                 ),
@@ -374,6 +385,7 @@ class ExperimentConfig(FrozenModel):
                     {
                         EXECT_S3_VARIANT,
                         EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+                        EXECT_S3_CLEAN_LADDER_V1_VARIANT,
                     },
                     EXECT_S3_SCORER,
                 ),
@@ -409,7 +421,10 @@ class ExperimentConfig(FrozenModel):
                         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
                         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
                         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+                        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
                         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
+                        EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
                     },
                     EXECT_S5_SCORER,
                 ),

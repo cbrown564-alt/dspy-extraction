@@ -1,0 +1,42 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "post_prediction_clean_ladder_v1",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s2_clean_ladder_v1_full_qwen35b_ollama",
+  "hypothesis": "Local Qwen3.6:35b full-validation replay of the S2 clean-ladder stack tests transfer of the middle-rung post guards after GPT confirmation.",
+  "max_records": null,
+  "metric_caveats": [
+    "Full fixed ExECTv2 validation split with local Qwen3.6:35b; not published Table 1 reproduction.",
+    "The variant combines I0 ECG investigation removal, C0/C1 comorbidity surface bridges, and the S5 non-ASM/brand annotated-medication guard.",
+    "Run detached or from an external PowerShell window per local Qwen latency policy.",
+    "Compare against GPT clean-ladder full validation and prior Qwen S2 v1.3 full validation."
+  ],
+  "model_config_path": "configs/models/exect_qwen35b_ollama.json",
+  "output_root": "runs",
+  "program_variant": "exect_s2_field_family_clean_ladder_v1_single_pass",
+  "prompt_version": "exect_s2_field_family_v1_3_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s2_field_family",
+  "scorer_mode": "exect_s2_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["investigation", "comorbidity", "medication"],
+    "comparison_group": "exect_s2_s3_clean_ladder_qwen_full_validation_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["H1_post_deterministic"],
+    "implementation_variant": "clean_ladder_v1_i0_c0_c1_am_guard",
+    "intended_decision": "pending",
+    "interleaving_positions": ["post"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s2",
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "varied_factor": "model_track"
+  }
+}

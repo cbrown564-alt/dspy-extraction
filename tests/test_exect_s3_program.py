@@ -4,6 +4,7 @@ from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s3 import (
+    EXECT_S3_CLEAN_LADDER_V1_VARIANT,
     EXECT_S3_FIELD_FAMILIES,
     EXECT_S3_LABEL_POLICY_GUIDANCE,
     EXECT_S3_PROMPT_VERSION,
@@ -154,3 +155,34 @@ def test_s3_s2_field_values_apply_i0_investigation_guard():
     ]
     assert investigation == ["ct abnormal"]
     assert "ecg normal" not in investigation
+
+
+def test_s3_clean_ladder_applies_s2_medication_guard_to_inherited_fields():
+    from clinical_extraction.programs.exect_s3 import _s2_field_values_from_prediction
+
+    record = load_exect_gold_document("EA0007")
+    pred = dspy.Prediction(
+        diagnosis=[],
+        diagnosis_evidence=[],
+        seizure_type=[],
+        seizure_type_evidence=[],
+        annotated_medication=["lamotrigine", "aspirin"],
+        annotated_medication_evidence=["lamotrigine", "aspirin"],
+        investigation=[],
+        investigation_evidence=[],
+        comorbidity=[],
+        comorbidity_evidence=[],
+    )
+    values = _s2_field_values_from_prediction(
+        pred,
+        record,
+        program_variant=EXECT_S3_CLEAN_LADDER_V1_VARIANT,
+    )
+    medication = [
+        value.normalized_value
+        for value in values
+        if value.field_name == "annotated_medication"
+    ]
+
+    assert "lamotrigine" in medication
+    assert "aspirin" not in medication

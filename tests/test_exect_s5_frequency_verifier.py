@@ -4,8 +4,17 @@ from dspy.utils import DummyLM
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s4 import (
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule,
+    ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+    ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule,
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
+    ExectS5CoreFieldFamilyParallelV2bModule,
+    build_exect_s5_core_family_specific_signature,
+    stage_graph_id_for_s5_program_variant,
     _apply_exect_s5_frequency_verifier_guards,
+    _qualitative_label_supported_by_evidence,
     build_exect_s4_module,
     predict_exect_s4_records,
 )
@@ -57,6 +66,53 @@ def test_build_exect_s4_module_returns_frequency_verify_wrapper():
     )
 
     assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule)
+
+
+def test_build_exect_s4_module_returns_frequency_verify_v2_wrapper():
+    module = build_exect_s4_module(
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT
+    )
+
+    assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module)
+
+
+def test_build_exect_s4_module_returns_frequency_verify_v2b_wrapper():
+    module = build_exect_s4_module(
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT
+    )
+
+    assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule)
+
+
+def test_frequency_verifier_v2_strict_qualitative_guard_blocks_unsupported_label():
+    guarded = _apply_exect_s5_frequency_verifier_guards(
+        note_text="Current seizures occur one per month.",
+        initial_frequency=["1 per 1 month", "infrequent"],
+        verified=dspy.Prediction(
+            seizure_frequency=["1 per 1 month", "infrequent"],
+            seizure_frequency_evidence=[
+                "Current seizures occur one per month",
+                "Current seizures occur one per month",
+            ],
+            verifier_decision="repair",
+            verifier_reason="drop unsupported infrequent",
+        ),
+        strict_qualitative=True,
+    )
+
+    assert guarded.seizure_frequency == ["1 per 1 month"]
+    assert "qualitative_without_note_support" in guarded.frequency_verifier_flags
+
+
+def test_qualitative_label_supported_by_evidence_accepts_explicit_wording():
+    assert _qualitative_label_supported_by_evidence(
+        "infrequent",
+        "She continues to have infrequent focal seizures.",
+    )
+    assert _qualitative_label_supported_by_evidence(
+        "frequency decreased",
+        "seizures have improved since reducing the lamotrigine",
+    )
 
 
 def test_frequency_verify_wrapper_is_reject_only_and_preserves_am_guard():
@@ -171,4 +227,89 @@ def test_frequency_verifier_guard_case_insensitive_and_recovery():
         "She thinks that she has about one a week"  # recovered capitalized 'She'
     ]
     assert "evidence_not_in_note" not in guarded.frequency_verifier_flags
+
+
+def test_build_exect_s5_core_family_signature_includes_policy_examples():
+    signature = build_exect_s5_core_family_specific_signature("seizure_frequency")
+    doc = signature.__doc__ or ""
+    assert "Boundary examples:" in doc
+    assert "s4_seizure_frequency_dual_cardinal_template" in doc
+
+
+def test_build_exect_s4_module_returns_s5_core_parallel_wrapper():
+    module = build_exect_s4_module(EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT)
+    assert isinstance(module, ExectS5CoreFieldFamilyParallelV2bModule)
+
+
+def test_s5_core_parallel_module_uses_full_note_context_and_six_calls():
+    record = load_exect_gold_document("EA0008")
+    dspy.configure(
+        lm=DummyLM(
+            answers=[
+                {
+                    "reasoning": "Diagnosis explicit.",
+                    "diagnosis": ["symptomatic structural focal epilepsy"],
+                    "diagnosis_evidence": ["Diagnosis: symptomatic structural focal epilepsy"],
+                },
+                {
+                    "reasoning": "Seizure type explicit.",
+                    "seizure_type": ["focal-seizures-with-altered-awareness"],
+                    "seizure_type_evidence": ["focal-seizures-with-altered-awareness"],
+                },
+                {
+                    "reasoning": "Medication explicit.",
+                    "annotated_medication": ["Lamotrigine"],
+                    "annotated_medication_evidence": ["lamotrigine"],
+                },
+                {
+                    "reasoning": "Investigation explicit.",
+                    "investigation": ["mri abnormal"],
+                    "investigation_evidence": ["MRI brain showed mesial temporal sclerosis"],
+                },
+                {
+                    "reasoning": "Frequency explicit.",
+                    "seizure_frequency": ["1 per 3 week"],
+                    "seizure_frequency_evidence": ["every 3 weeks"],
+                },
+                {
+                    "seizure_frequency": ["1 per 3 week"],
+                    "seizure_frequency_evidence": ["every 3 weeks"],
+                    "verifier_decision": "confirm",
+                    "verifier_reason": "supported",
+                },
+            ]
+        )
+    )
+
+    prediction_set = predict_exect_s4_records(
+        build_exect_s4_module(EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
+        schema_level="exect_s5_core_field_family",
+    )
+
+    assert (
+        stage_graph_id_for_s5_program_variant(EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT)
+        == "g2_s5_core_family_parallel"
+    )
+    assert len(dspy.settings.lm.history) == 6
+    for call in dspy.settings.lm.history[:5]:
+        prompt = call["messages"][-1]["content"]
+        assert record.text in prompt
+        assert "Prior extractions from earlier prompt-graph stages:" not in prompt
+
+    metadata = prediction_set.predictions[0].metadata
+    assert metadata["frequency_verifier"]["primitive_id"] == (
+        "exect.frequency.evidence_verify_policy.v2b"
+    )
+    field_names = {value.field_name for value in prediction_set.predictions[0].values}
+    assert field_names <= {
+        "diagnosis",
+        "seizure_type",
+        "annotated_medication",
+        "investigation",
+        "seizure_frequency",
+    }
 

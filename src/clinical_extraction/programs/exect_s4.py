@@ -99,10 +99,30 @@ EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT = (
 EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT = (
     "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1"
 )
+EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT = (
+    "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2"
+)
+EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT = (
+    "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b"
+)
 EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT = (
     "exect_s5_frequency_pre_vocab_am_guard_temporal_frequency_verify_v1"
 )
+EXECT_S5_CORE_FIELD_FAMILIES = (
+    "diagnosis",
+    "seizure_type",
+    "annotated_medication",
+    "investigation",
+    "seizure_frequency",
+)
+EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT = (
+    "exect_s5_core_field_family_parallel_v2b"
+)
+EXECT_S5_STAGE_GRAPH_BY_VARIANT = {
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT: "g2_s5_core_family_parallel",
+}
 EXECT_S4_PROMPT_VERSION = "exect_s4_field_family_v1_2_label_policy"
+EXECT_S4_PROMPT_VERSION_V1_3 = "exect_s4_field_family_v1_3_qualitative_evidence_gate"
 EXECT_S4_FIELD_FAMILIES = (
     *EXECT_S3_FIELD_FAMILIES,
     "seizure_frequency",
@@ -135,6 +155,17 @@ EXECT_S4_FREQUENCY_LABEL_POLICY_GUIDANCE = (
     "A patient can experience temporary seizure freedom in the past but have increased "
     "frequency currently. Extract BOTH (e.g. seizure free + frequency increased or 4 per 3 week) "
     "if the note mentions both.",
+)
+EXECT_S4_FREQUENCY_QUALITATIVE_EVIDENCE_GATE_GUIDANCE = (
+    "Qualitative labels (infrequent, frequency same, frequency increased, frequency decreased) "
+    "require explicit supporting wording in the clinical note — precomputed candidate hints alone "
+    "are insufficient.",
+    "Do not emit a qualitative label whose sole rationale is presence in the injected candidate "
+    "line; evidence quotes must come from the note body below the --- separator.",
+    "Medication control, rescue-medication use, or seizure-type descriptions do not justify "
+    "qualitative frequency labels unless frequency change is explicitly stated.",
+    "Prefer abstaining over weak qualitative inference; do not invent frequency labels in "
+    "gold-empty notes.",
 )
 EXECT_S4_INVESTIGATION_LABEL_POLICY_GUIDANCE = (
     "Investigation labels are performed modality+result pairs only "
@@ -236,6 +267,30 @@ EXECT_S4_POLICY_EXAMPLES = (
         "policy": "Emit eeg unknown when results are explicitly unavailable.",
     },
 )
+EXECT_S4_V1_3_POLICY_EXAMPLES = (
+    {
+        "case": "s4_qual_no_infrequent_without_wording",
+        "note_fragment": (
+            "He has about one focal seizure every three weeks and the frequency has increased."
+        ),
+        "benchmark_output": {
+            "seizure_frequency": ["1 per 3 week", "frequency increased"],
+        },
+        "policy": "Do not add infrequent without explicit infrequent/rare wording in the note.",
+    },
+    {
+        "case": "s4_qual_med_control_not_freq_decreased",
+        "note_fragment": "Seizures are well controlled on current lamotrigine dose.",
+        "benchmark_output": {"seizure_frequency": []},
+        "policy": "Medication-control language alone does not justify frequency decreased.",
+    },
+    {
+        "case": "s4_qual_infrequent_when_stated",
+        "note_fragment": "She continues to have infrequent focal seizures.",
+        "benchmark_output": {"seizure_frequency": ["infrequent"]},
+        "policy": "Emit infrequent when the note explicitly uses infrequent or equivalent wording.",
+    },
+)
 
 _VALID_RX_TEMPORALITIES = frozenset({"current", "planned", "previous"})
 _INVESTIGATION_MODALITIES = ("eeg", "mri", "ct")
@@ -249,6 +304,19 @@ _PLANNED_INVESTIGATION_MARKERS = (
     "arrange a",
     "which i will request",
 )
+
+
+def resolve_exect_s4_frequency_label_policy(
+    prompt_version: str,
+) -> tuple[tuple[str, ...], tuple[dict[str, object], ...]]:
+    """Return frequency label-policy guidance and examples for the requested prompt version."""
+    if prompt_version == EXECT_S4_PROMPT_VERSION_V1_3:
+        guidance = (
+            *EXECT_S4_FREQUENCY_LABEL_POLICY_GUIDANCE,
+            *EXECT_S4_FREQUENCY_QUALITATIVE_EVIDENCE_GATE_GUIDANCE,
+        )
+        return guidance, (*EXECT_S4_POLICY_EXAMPLES, *EXECT_S4_V1_3_POLICY_EXAMPLES)
+    return EXECT_S4_FREQUENCY_LABEL_POLICY_GUIDANCE, EXECT_S4_POLICY_EXAMPLES
 
 
 class ExectS4FieldFamilySignature(dspy.Signature):
@@ -360,6 +428,19 @@ class ExectS4FieldFamilySignature(dspy.Signature):
     )
 
 
+class ExectS4FieldFamilyV13Signature(ExectS4FieldFamilySignature):
+    """Extract audited ExECT S4 benchmark-facing field families (v1.3 qualitative evidence gate).
+
+    Same eleven-family pass as v1.2, plus qualitative evidence-gate rules for seizure frequency:
+    - Emit infrequent, frequency same, frequency increased, or frequency decreased only when
+      the note contains explicit supporting wording; candidate hints alone are insufficient.
+    - Do not cite the injected candidate block as evidence; quotes must come from the note body.
+    - Medication-control or seizure-type wording does not justify qualitative frequency labels
+      unless frequency change is explicitly stated.
+    - Prefer abstaining over weak qualitative inference.
+    """
+
+
 class ExectS4FieldFamilyModule(dspy.Module):
     """Single-pass ExECT S4 field-family extractor."""
 
@@ -377,6 +458,21 @@ class ExectS4FrequencyPreVocabFieldFamilyModule(dspy.Module):
     def __init__(self) -> None:
         super().__init__()
         self.extract = dspy.ChainOfThought(ExectS4FieldFamilySignature)
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        return self.extract(
+            note_text=format_note_with_precomputed_seizure_frequency_candidates(
+                note_text
+            )
+        )
+
+
+class ExectS4FrequencyPreVocabV13FieldFamilyModule(dspy.Module):
+    """Single-pass S4 extractor with v1.3 qualitative evidence gate and pre-vocab hints."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract = dspy.ChainOfThought(ExectS4FieldFamilyV13Signature)
 
     def forward(self, note_text: str) -> dspy.Prediction:
         return self.extract(
@@ -477,12 +573,106 @@ class ExectS5SeizureFrequencyVerifierSignature(dspy.Signature):
     )
 
 
+class ExectS5SeizureFrequencyVerifierV2Signature(dspy.Signature):
+    """Verify ExECT S5 seizure-frequency labels (v2 residual-tuned policy).
+
+    Confirm-first reject-only verifier extending v1 A3 rules with residual-driven policies
+    for qualitative evidence and temporal/current scope (A1 categories 1 and 3).
+
+    Verification Policy Rules:
+    1. Synonyms of Seizure Freedom: Phrases indicating no seizures since an event or review
+       (e.g., "no further seizures", "seizure free since last review", "remains clear") are
+       valid and sufficient support for the "seizure free" label. Do not reject them.
+    2. Zero-rate Intervals: Statements specifying the timing of the last seizure (e.g.,
+       "last event was 3 weeks ago", "last seizure in April") support a zero-rate label
+       (e.g., "0 per 3 week" or "0 per 1 month"). Do not reject zero-rate labels due to
+       boundary interpretation.
+    3. Diagnostic Modifiers: A patient's current status (e.g., "seizure free") can coexist
+       with a general diagnostic history (e.g., "infrequent focal seizures"). Confirm the
+       current status label if supported by the note text, even if a diagnostic category
+       seems to conflict.
+    4. Seizure Free Since Year: A statement specifying that the last seizure occurred in a
+       given year (e.g., "last event September 2019", "last seizure in 2017") directly
+       supports the label "seizure free since YEAR". Do not reject it.
+    5. Frequency Changes: "frequency increased" and "frequency decreased" are valid benchmark
+       qualitative change labels. If the note mentions seizures happening "more frequently",
+       "worse", "less frequently", or "improved", confirm these labels even if they appear in
+       the context of treatment adjustments or diagnostic summaries.
+    6. Coexisting Labels: ExECT gold annotations routinely allow multiple qualitative and
+       quantified labels to coexist (e.g., "infrequent" and "seizure free" can both be confirmed
+       if both are supported by phrases in the note). Do not drop one label just because you
+       think another label is "more accurate" or "contradicts" it logically.
+    7. Historical vs Current Scope: When the note states both a historical quantified rate and a
+       current status (e.g., current weekly seizures plus a past historical rate), reject historical
+       quantified rates that are not supported as current benchmark-facing labels. Limited past
+       seizure-free intervals (e.g., "up to five weeks seizure free") do not support generic
+       "seizure free" when the note also states current ongoing seizures.
+    8. Qualitative Evidence Requirement: Reject infrequent, frequency same, frequency increased,
+       and frequency decreased unless the confirming evidence quote contains explicit
+       frequency-change or qualitative wording from the note — not medication-control-only or
+       seizure-type-only context.
+    9. Unsupported Quantified Inference: Reject quantified rates inferred only from vague temporal
+       anchors (e.g., "most recent seizure September 2019" alone) when the note supports only
+       qualitative change or seizure-free-since-year labels.
+    """
+
+    note_text: str = dspy.InputField(desc="Clinical note text without candidate block")
+    candidate_labels: list[str] = dspy.InputField(
+        desc="Precomputed frequency candidates used as soft hints by the extractor."
+    )
+    initial_seizure_frequency: list[str] = dspy.InputField(
+        desc="Initial seizure_frequency labels from the extraction pass."
+    )
+    initial_seizure_frequency_evidence: list[str] = dspy.InputField(
+        desc="Initial evidence quotes, aligned by index."
+    )
+    seizure_frequency: list[str] = dspy.OutputField(
+        desc="Confirmed subset of initial seizure_frequency labels; add no labels."
+    )
+    seizure_frequency_evidence: list[str] = dspy.OutputField(
+        desc=(
+            "Exact, verbatim note quotes supporting each confirmed label, aligned by index. "
+            "Do NOT paraphrase, summarize, or alter capitalization/punctuation. "
+            "Each evidence element MUST exist as an exact case-sensitive or case-insensitive substring within note_text."
+        )
+    )
+    verifier_decision: str = dspy.OutputField(
+        desc="confirm when all initial labels are supported; repair when any are dropped."
+    )
+    verifier_reason: str = dspy.OutputField(
+        desc="Brief evidence-based explanation for dropped labels."
+    )
+
+
 class ExectS5SeizureFrequencyVerifierModule(dspy.Module):
     """Confirm-first reject-only verifier for ExECT S5 seizure frequency."""
 
     def __init__(self) -> None:
         super().__init__()
         self.verify = dspy.Predict(ExectS5SeizureFrequencyVerifierSignature)
+
+    def forward(
+        self,
+        note_text: str,
+        *,
+        candidate_labels: list[str],
+        initial_seizure_frequency: list[str],
+        initial_seizure_frequency_evidence: list[str],
+    ) -> dspy.Prediction:
+        return self.verify(
+            note_text=note_text,
+            candidate_labels=candidate_labels,
+            initial_seizure_frequency=initial_seizure_frequency,
+            initial_seizure_frequency_evidence=initial_seizure_frequency_evidence,
+        )
+
+
+class ExectS5SeizureFrequencyVerifierV2Module(dspy.Module):
+    """Confirm-first reject-only verifier with v2 residual-tuned policy."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.verify = dspy.Predict(ExectS5SeizureFrequencyVerifierV2Signature)
 
     def forward(
         self,
@@ -565,6 +755,339 @@ class ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule(dspy.Module):
         )
 
 
+class ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module(dspy.Module):
+    """S5 v1.3 extractor + v2 residual-tuned reject-only frequency verification."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extractor = ExectS4FrequencyPreVocabV13FieldFamilyModule()
+        self.verifier = ExectS5SeizureFrequencyVerifierV2Module()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        initial = self.extractor(note_text=note_text)
+        initial_frequency = _as_list(getattr(initial, "seizure_frequency", []))
+        initial_frequency_evidence = _as_list(
+            getattr(initial, "seizure_frequency_evidence", [])
+        )
+        candidates = build_precomputed_seizure_frequency_candidates(note_text)
+        verified = self.verifier(
+            note_text=note_text,
+            candidate_labels=candidates,
+            initial_seizure_frequency=initial_frequency,
+            initial_seizure_frequency_evidence=initial_frequency_evidence,
+        )
+        guarded = _apply_exect_s5_frequency_verifier_guards(
+            note_text=note_text,
+            initial_frequency=initial_frequency,
+            verified=verified,
+            strict_qualitative=True,
+        )
+        return dspy.Prediction(
+            diagnosis=_as_list(getattr(initial, "diagnosis", [])),
+            diagnosis_evidence=_as_list(getattr(initial, "diagnosis_evidence", [])),
+            seizure_type=_as_list(getattr(initial, "seizure_type", [])),
+            seizure_type_evidence=_as_list(getattr(initial, "seizure_type_evidence", [])),
+            annotated_medication=_as_list(getattr(initial, "annotated_medication", [])),
+            annotated_medication_evidence=_as_list(
+                getattr(initial, "annotated_medication_evidence", [])
+            ),
+            investigation=_as_list(getattr(initial, "investigation", [])),
+            investigation_evidence=_as_list(getattr(initial, "investigation_evidence", [])),
+            comorbidity=_as_list(getattr(initial, "comorbidity", [])),
+            comorbidity_evidence=_as_list(getattr(initial, "comorbidity_evidence", [])),
+            birth_history=_as_list(getattr(initial, "birth_history", [])),
+            birth_history_evidence=_as_list(getattr(initial, "birth_history_evidence", [])),
+            onset=_as_list(getattr(initial, "onset", [])),
+            onset_evidence=_as_list(getattr(initial, "onset_evidence", [])),
+            epilepsy_cause=_as_list(getattr(initial, "epilepsy_cause", [])),
+            epilepsy_cause_evidence=_as_list(getattr(initial, "epilepsy_cause_evidence", [])),
+            when_diagnosed=_as_list(getattr(initial, "when_diagnosed", [])),
+            when_diagnosed_evidence=_as_list(getattr(initial, "when_diagnosed_evidence", [])),
+            seizure_frequency=_as_list(getattr(guarded, "seizure_frequency", [])),
+            seizure_frequency_evidence=_as_list(
+                getattr(guarded, "seizure_frequency_evidence", [])
+            ),
+            medication_temporality=_as_list(getattr(initial, "medication_temporality", [])),
+            medication_temporality_evidence=_as_list(
+                getattr(initial, "medication_temporality_evidence", [])
+            ),
+            frequency_verifier_flags=_as_list(
+                getattr(guarded, "frequency_verifier_flags", [])
+            ),
+            frequency_verifier_decision=getattr(guarded, "verifier_decision", None),
+            frequency_verifier_reason=getattr(guarded, "verifier_reason", None),
+            initial_seizure_frequency=initial_frequency,
+            precomputed_seizure_frequency_candidates=candidates,
+        )
+
+
+class ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule(dspy.Module):
+    """S5 v1.2 extractor + v2 verifier rules only (no v1.3 prompt, no strict qualitative guard)."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extractor = ExectS4FrequencyPreVocabFieldFamilyModule()
+        self.verifier = ExectS5SeizureFrequencyVerifierV2Module()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        initial = self.extractor(note_text=note_text)
+        initial_frequency = _as_list(getattr(initial, "seizure_frequency", []))
+        initial_frequency_evidence = _as_list(
+            getattr(initial, "seizure_frequency_evidence", [])
+        )
+        candidates = build_precomputed_seizure_frequency_candidates(note_text)
+        verified = self.verifier(
+            note_text=note_text,
+            candidate_labels=candidates,
+            initial_seizure_frequency=initial_frequency,
+            initial_seizure_frequency_evidence=initial_frequency_evidence,
+        )
+        guarded = _apply_exect_s5_frequency_verifier_guards(
+            note_text=note_text,
+            initial_frequency=initial_frequency,
+            verified=verified,
+            strict_qualitative=False,
+        )
+        return dspy.Prediction(
+            diagnosis=_as_list(getattr(initial, "diagnosis", [])),
+            diagnosis_evidence=_as_list(getattr(initial, "diagnosis_evidence", [])),
+            seizure_type=_as_list(getattr(initial, "seizure_type", [])),
+            seizure_type_evidence=_as_list(getattr(initial, "seizure_type_evidence", [])),
+            annotated_medication=_as_list(getattr(initial, "annotated_medication", [])),
+            annotated_medication_evidence=_as_list(
+                getattr(initial, "annotated_medication_evidence", [])
+            ),
+            investigation=_as_list(getattr(initial, "investigation", [])),
+            investigation_evidence=_as_list(getattr(initial, "investigation_evidence", [])),
+            comorbidity=_as_list(getattr(initial, "comorbidity", [])),
+            comorbidity_evidence=_as_list(getattr(initial, "comorbidity_evidence", [])),
+            birth_history=_as_list(getattr(initial, "birth_history", [])),
+            birth_history_evidence=_as_list(getattr(initial, "birth_history_evidence", [])),
+            onset=_as_list(getattr(initial, "onset", [])),
+            onset_evidence=_as_list(getattr(initial, "onset_evidence", [])),
+            epilepsy_cause=_as_list(getattr(initial, "epilepsy_cause", [])),
+            epilepsy_cause_evidence=_as_list(getattr(initial, "epilepsy_cause_evidence", [])),
+            when_diagnosed=_as_list(getattr(initial, "when_diagnosed", [])),
+            when_diagnosed_evidence=_as_list(getattr(initial, "when_diagnosed_evidence", [])),
+            seizure_frequency=_as_list(getattr(guarded, "seizure_frequency", [])),
+            seizure_frequency_evidence=_as_list(
+                getattr(guarded, "seizure_frequency_evidence", [])
+            ),
+            medication_temporality=_as_list(getattr(initial, "medication_temporality", [])),
+            medication_temporality_evidence=_as_list(
+                getattr(initial, "medication_temporality_evidence", [])
+            ),
+            frequency_verifier_flags=_as_list(
+                getattr(guarded, "frequency_verifier_flags", [])
+            ),
+            frequency_verifier_decision=getattr(guarded, "verifier_decision", None),
+            frequency_verifier_reason=getattr(guarded, "verifier_reason", None),
+            initial_seizure_frequency=initial_frequency,
+            precomputed_seizure_frequency_candidates=candidates,
+        )
+
+
+_S5_CORE_FAMILY_POLICY_OUTPUT_KEYS = {
+    "diagnosis": frozenset({"diagnosis"}),
+    "seizure_type": frozenset({"seizure_type"}),
+    "annotated_medication": frozenset({"annotated_medication"}),
+    "investigation": frozenset({"investigation"}),
+    "seizure_frequency": frozenset({"seizure_frequency"}),
+}
+
+
+def _s5_core_policy_examples_for_family(
+    examples: tuple[dict[str, object], ...],
+    field_name: str,
+) -> tuple[dict[str, object], ...]:
+    keys = _S5_CORE_FAMILY_POLICY_OUTPUT_KEYS[field_name]
+    return tuple(
+        example
+        for example in examples
+        if any(key in example.get("benchmark_output", {}) for key in keys)
+    )
+
+
+def _format_s5_core_family_policy_examples_block(
+    examples: tuple[dict[str, object], ...],
+) -> str:
+    if not examples:
+        return ""
+    lines = ["", "Boundary examples:"]
+    for example in examples:
+        case = example.get("case", "example")
+        fragment = example.get("note_fragment", "")
+        output = example.get("benchmark_output", {})
+        policy = example.get("policy", "")
+        lines.append(f'- {case}: "{fragment}" -> {output}. {policy}')
+    return "\n".join(lines)
+
+
+class ExectS5CoreInvestigationSignature(dspy.Signature):
+    """Extract benchmark-facing ExECT investigation labels only."""
+
+    note_text: str = dspy.InputField(desc="Full clinical note text for investigation extraction")
+    investigation: list[str] = dspy.OutputField(
+        desc=(
+            "Performed investigation results as modality+result labels "
+            "(e.g. eeg normal, mri abnormal). Do not emit unknown for planned scans."
+        )
+    )
+    investigation_evidence: list[str] = dspy.OutputField(
+        desc="Exact source quotes supporting each investigation label, aligned by index."
+    )
+
+
+class ExectS5CoreSeizureFrequencySignature(dspy.Signature):
+    """Extract benchmark-facing ExECT seizure frequency labels only."""
+
+    note_text: str = dspy.InputField(
+        desc="Clinical note text, optionally with injected pre-vocabulary frequency candidates"
+    )
+    seizure_frequency: list[str] = dspy.OutputField(
+        desc=(
+            "Seizure frequency benchmark labels: N per N week/month/day/year quantified rates, "
+            "zero rates, frequency increased/decreased, infrequent, seizure free, "
+            "seizure free since YEAR — not seizure-type names."
+        )
+    )
+    seizure_frequency_evidence: list[str] = dspy.OutputField(
+        desc="Exact source quotes supporting each seizure-frequency label, aligned by index."
+    )
+
+
+def build_exect_s5_core_family_specific_signature(
+    field_name: str,
+    prompt_version: str = EXECT_S4_PROMPT_VERSION,
+) -> type[dspy.Signature]:
+    """Build a per-family S5-core signature enriched with v1.2 label-policy examples."""
+    from clinical_extraction.programs.exect_s0_s1 import (
+        ExectS0S1DiagnosisSignature,
+        ExectS0S1MedicationSignature,
+        ExectS0S1SeizureTypeSignature,
+    )
+    from clinical_extraction.programs.exect_s2 import EXECT_S2_POLICY_EXAMPLES
+
+    if field_name not in _S5_CORE_FAMILY_POLICY_OUTPUT_KEYS:
+        raise ValueError(f"Unsupported ExECT S5 core field family: {field_name!r}")
+
+    base_by_field = {
+        "diagnosis": ExectS0S1DiagnosisSignature,
+        "seizure_type": ExectS0S1SeizureTypeSignature,
+        "annotated_medication": ExectS0S1MedicationSignature,
+        "investigation": ExectS5CoreInvestigationSignature,
+        "seizure_frequency": ExectS5CoreSeizureFrequencySignature,
+    }
+    policy_examples = (*EXECT_S4_POLICY_EXAMPLES, *EXECT_S2_POLICY_EXAMPLES)
+    if prompt_version == EXECT_S4_PROMPT_VERSION_V1_3:
+        policy_examples = (*policy_examples, *EXECT_S4_V1_3_POLICY_EXAMPLES)
+    family_examples = _s5_core_policy_examples_for_family(policy_examples, field_name)
+    base_signature = base_by_field[field_name]
+    doc = (base_signature.__doc__ or "") + _format_s5_core_family_policy_examples_block(
+        family_examples
+    )
+    suffix = {
+        "diagnosis": "Diagnosis",
+        "seizure_type": "SeizureType",
+        "annotated_medication": "Medication",
+        "investigation": "Investigation",
+        "seizure_frequency": "SeizureFrequency",
+    }[field_name]
+    class_name = f"ExectS5Core{suffix}PolicySignature"
+    return type(class_name, (base_signature,), {"__doc__": doc})
+
+
+class ExectS5CoreFieldFamilyParallelV2bModule(dspy.Module):
+    """Full-note parallel per-family S5-core extraction with v2b frequency post-stack."""
+
+    def __init__(
+        self,
+        *,
+        prompt_version: str = EXECT_S4_PROMPT_VERSION,
+    ) -> None:
+        super().__init__()
+        self.extract_diagnosis = dspy.ChainOfThought(
+            build_exect_s5_core_family_specific_signature("diagnosis", prompt_version)
+        )
+        self.extract_seizure_type = dspy.ChainOfThought(
+            build_exect_s5_core_family_specific_signature("seizure_type", prompt_version)
+        )
+        self.extract_medication = dspy.ChainOfThought(
+            build_exect_s5_core_family_specific_signature(
+                "annotated_medication",
+                prompt_version,
+            )
+        )
+        self.extract_investigation = dspy.ChainOfThought(
+            build_exect_s5_core_family_specific_signature("investigation", prompt_version)
+        )
+        self.extract_seizure_frequency = dspy.ChainOfThought(
+            build_exect_s5_core_family_specific_signature(
+                "seizure_frequency",
+                prompt_version,
+            )
+        )
+        self.verifier = ExectS5SeizureFrequencyVerifierV2Module()
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        diagnosis = self.extract_diagnosis(note_text=note_text)
+        seizure_type = self.extract_seizure_type(note_text=note_text)
+        medication = self.extract_medication(note_text=note_text)
+        investigation = self.extract_investigation(note_text=note_text)
+        frequency_note = format_note_with_precomputed_seizure_frequency_candidates(note_text)
+        frequency = self.extract_seizure_frequency(note_text=frequency_note)
+        initial_frequency = _as_list(getattr(frequency, "seizure_frequency", []))
+        initial_frequency_evidence = _as_list(
+            getattr(frequency, "seizure_frequency_evidence", [])
+        )
+        candidates = build_precomputed_seizure_frequency_candidates(note_text)
+        verified = self.verifier(
+            note_text=note_text,
+            candidate_labels=candidates,
+            initial_seizure_frequency=initial_frequency,
+            initial_seizure_frequency_evidence=initial_frequency_evidence,
+        )
+        guarded = _apply_exect_s5_frequency_verifier_guards(
+            note_text=note_text,
+            initial_frequency=initial_frequency,
+            verified=verified,
+            strict_qualitative=False,
+        )
+        return dspy.Prediction(
+            diagnosis=_as_list(getattr(diagnosis, "diagnosis", [])),
+            diagnosis_evidence=_as_list(getattr(diagnosis, "diagnosis_evidence", [])),
+            seizure_type=_as_list(getattr(seizure_type, "seizure_type", [])),
+            seizure_type_evidence=_as_list(
+                getattr(seizure_type, "seizure_type_evidence", [])
+            ),
+            annotated_medication=_as_list(
+                getattr(medication, "annotated_medication", [])
+            ),
+            annotated_medication_evidence=_as_list(
+                getattr(medication, "annotated_medication_evidence", [])
+            ),
+            investigation=_as_list(getattr(investigation, "investigation", [])),
+            investigation_evidence=_as_list(
+                getattr(investigation, "investigation_evidence", [])
+            ),
+            seizure_frequency=_as_list(getattr(guarded, "seizure_frequency", [])),
+            seizure_frequency_evidence=_as_list(
+                getattr(guarded, "seizure_frequency_evidence", [])
+            ),
+            frequency_verifier_flags=_as_list(
+                getattr(guarded, "frequency_verifier_flags", [])
+            ),
+            frequency_verifier_decision=getattr(guarded, "verifier_decision", None),
+            frequency_verifier_reason=getattr(guarded, "verifier_reason", None),
+            initial_seizure_frequency=initial_frequency,
+            precomputed_seizure_frequency_candidates=candidates,
+        )
+
+
+def stage_graph_id_for_s5_program_variant(program_variant: str) -> str | None:
+    return EXECT_S5_STAGE_GRAPH_BY_VARIANT.get(program_variant)
+
+
 def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Module:
     if program_variant in {
         EXECT_S4_VARIANT,
@@ -587,6 +1110,12 @@ def build_exect_s4_module(program_variant: str = EXECT_S4_VARIANT) -> dspy.Modul
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         return ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule()
+    if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT:
+        return ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module()
+    if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT:
+        return ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule()
+    if program_variant == EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT:
+        return ExectS5CoreFieldFamilyParallelV2bModule()
     if program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
         return ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule()
     if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
@@ -633,6 +1162,186 @@ def predict_exect_s4_records(
     )
 
 
+def _build_s5_core_parallel_field_values(
+    pred: dspy.Prediction,
+    record: ExectGoldDocument,
+    *,
+    program_variant: str,
+) -> list[ExtractedValue]:
+    from clinical_extraction.programs.exect_s0_s1 import (
+        _augment_current_prescription_medications,
+        _augment_diagnosis_co_lists,
+        _filter_diagnosis_for_seizure_descriptor_header,
+        _normalize_diagnoses,
+        _seizure_type_values_for_record,
+        _values_for_family,
+    )
+    from clinical_extraction.programs.exect_s2 import (
+        _normalize_investigation_surface,
+        _recover_s2_investigation_raw_values,
+        _recover_s2_seizure_raw_values,
+        _s2_values_for_family,
+    )
+    from clinical_extraction.programs.exect_s3 import _recover_s3_investigation_raw_values
+
+    values: list[ExtractedValue] = []
+
+    diagnosis_inputs = _as_list(getattr(pred, "diagnosis", []))
+    diagnosis_inputs, diagnosis_header_flags = _filter_diagnosis_for_seizure_descriptor_header(
+        diagnosis_inputs,
+        record.text,
+    )
+    diagnosis_raw, diagnosis_augmented, specificity_collapse_augmented = (
+        _augment_diagnosis_co_lists(diagnosis_inputs, record.text)
+    )
+    diagnoses, collapsed = _normalize_diagnoses(diagnosis_raw)
+    values.extend(
+        _values_for_family(
+            record=record,
+            field_name="diagnosis",
+            raw_values=diagnoses,
+            evidence_values=_as_list(getattr(pred, "diagnosis_evidence", [])),
+            collapsed_values=collapsed,
+            augmented_values=diagnosis_augmented,
+            specificity_collapse_augmented=specificity_collapse_augmented,
+            extra_quality_flags=diagnosis_header_flags,
+        )
+    )
+
+    seizure_raw, _ = _recover_s2_seizure_raw_values(
+        _as_list(getattr(pred, "seizure_type", [])),
+        record.text,
+    )
+    values.extend(
+        _seizure_type_values_for_record(
+            record=record,
+            raw_values=seizure_raw,
+            evidence_values=_as_list(getattr(pred, "seizure_type_evidence", [])),
+        )
+    )
+
+    pred_meds = _as_list(getattr(pred, "annotated_medication", []))
+    pred_evidence = _as_list(getattr(pred, "annotated_medication_evidence", []))
+    medication_raw, medication_evidence, medication_augmented = (
+        _augment_current_prescription_medications(
+            pred_meds,
+            pred_evidence,
+            record.text,
+        )
+    )
+    guarded_meds, guard_flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+        medication_raw,
+        medication_evidence,
+        record.text,
+    )
+    for med in guarded_meds:
+        canon_med = canonical_medication_name(med)
+        orig_raw = med
+        orig_evidence = ""
+        is_augmented = False
+        for idx, raw_val in enumerate(medication_raw):
+            clean_raw = raw_val.strip().lower()
+            if clean_raw in {"eplim", "eplim chrono", "epilim", "epilim chrono"}:
+                clean_raw = "epilim chrono"
+            if canonical_medication_name(clean_raw) == canon_med:
+                orig_raw = raw_val
+                orig_evidence = medication_evidence[idx] if idx < len(medication_evidence) else ""
+                if raw_val in medication_augmented:
+                    is_augmented = True
+                break
+        augmented_set = {orig_raw} if is_augmented else set()
+        values.extend(
+            _values_for_family(
+                record=record,
+                field_name="annotated_medication",
+                raw_values=[orig_raw],
+                evidence_values=[orig_evidence],
+                fixed_normalized=med,
+                fixed_bridge_flags=guard_flags,
+                augmented_values=augmented_set,
+            )
+        )
+
+    investigation_raw, _ = _recover_s2_investigation_raw_values(
+        _as_list(getattr(pred, "investigation", [])),
+        record.text,
+        bridge_tiers=ladder_investigation_guard_bridge_tiers(),
+    )
+    investigation_raw, _ = _recover_s3_investigation_raw_values(
+        investigation_raw,
+        record.text,
+    )
+    investigation_raw, _ = _recover_s4_investigation_raw_values(
+        investigation_raw,
+        record.text,
+    )
+    values.extend(
+        _s2_values_for_family(
+            record=record,
+            field_name="investigation",
+            raw_values=investigation_raw,
+            evidence_values=_as_list(getattr(pred, "investigation_evidence", [])),
+            normalize=_normalize_investigation_surface,
+        )
+    )
+
+    frequency_raw, _ = _recover_s4_seizure_frequency_values(
+        _as_list(getattr(pred, "seizure_frequency", [])),
+        record.text,
+        program_variant=program_variant,
+    )
+    values.extend(
+        _s2_values_for_family(
+            record=record,
+            field_name="seizure_frequency",
+            raw_values=frequency_raw,
+            evidence_values=_as_list(getattr(pred, "seizure_frequency_evidence", [])),
+            normalize=canonical_clinical_phrase,
+        )
+    )
+    return values
+
+
+def _predict_s5_core_parallel_record(
+    module: dspy.Module,
+    record: ExectGoldDocument,
+    *,
+    program_variant: str,
+    schema_level: str,
+) -> DocumentPrediction:
+    pred = module(note_text=record.text)
+    values = _build_s5_core_parallel_field_values(
+        pred,
+        record,
+        program_variant=program_variant,
+    )
+    metadata: dict[str, object] = {
+        "program_variant": program_variant,
+        "stage_graph_id": stage_graph_id_for_s5_program_variant(program_variant),
+        "precomputed_candidates": {
+            "seizure_frequency": build_precomputed_seizure_frequency_candidates(record.text)
+        },
+        "post_guard": {
+            "annotated_medication": "exect.medication.am_guard_non_asm_brand_alias.v1"
+        },
+        "frequency_verifier": {
+            "primitive_id": "exect.frequency.evidence_verify_policy.v2b",
+            "policy": "reject_only",
+            "flags": _as_list(getattr(pred, "frequency_verifier_flags", [])),
+            "decision": getattr(pred, "frequency_verifier_decision", None),
+            "reason": getattr(pred, "frequency_verifier_reason", None),
+        },
+    }
+    return DocumentPrediction(
+        document_id=record.document_id,
+        dataset=EXECT_DATASET,
+        schema_level=schema_level,
+        values=values,
+        quality_flags=record.quality_flags,
+        metadata=metadata,
+    )
+
+
 def _predict_s4_record(
     module: dspy.Module,
     record: ExectGoldDocument,
@@ -640,6 +1349,13 @@ def _predict_s4_record(
     program_variant: str,
     schema_level: str = EXECT_S4_SCHEMA_LEVEL,
 ) -> DocumentPrediction:
+    if program_variant == EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT:
+        return _predict_s5_core_parallel_record(
+            module,
+            record,
+            program_variant=program_variant,
+            schema_level=schema_level,
+        )
     pred = module(note_text=record.text)
     values = _s2_field_values_from_prediction(pred, record)
     values.extend(
@@ -657,6 +1373,8 @@ def _predict_s4_record(
         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         from clinical_extraction.programs.exect_s0_s1 import (
@@ -732,6 +1450,8 @@ def _predict_s4_record(
         EXECT_S4_FREQUENCY_PRE_VOCAB_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         metadata["precomputed_candidates"] = {
@@ -774,6 +1494,8 @@ def _predict_s4_record(
         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         if program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT:
@@ -786,10 +1508,20 @@ def _predict_s4_record(
             }
     if program_variant in {
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
+        policy_id = {
+            EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT: (
+                "exect.frequency.evidence_verify_policy.v2"
+            ),
+            EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT: (
+                "exect.frequency.evidence_verify_policy.v2b"
+            ),
+        }.get(program_variant, "exect.frequency.evidence_verify_policy.v1")
         metadata["frequency_verifier"] = {
-            "primitive_id": "exect.frequency.evidence_verify_policy.v1",
+            "primitive_id": policy_id,
             "policy": "reject_only",
             "flags": _as_list(getattr(pred, "frequency_verifier_flags", [])),
             "decision": getattr(pred, "frequency_verifier_decision", None),
@@ -991,6 +1723,8 @@ def _recover_s4_seizure_frequency_values(
     recovered, flags = _recover_s4_seizure_frequency_raw_values(raw_values, note_text)
     if program_variant not in {
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     }:
         return recovered, flags
@@ -1018,6 +1752,7 @@ def _apply_exect_s5_frequency_verifier_guards(
     note_text: str,
     initial_frequency: list[str],
     verified: dspy.Prediction,
+    strict_qualitative: bool = False,
 ) -> dspy.Prediction:
     """Apply reject-only frequency verifier guards without changing scorer policy."""
     initial_keys = _verified_frequency_allowed_keys(initial_frequency)
@@ -1051,6 +1786,11 @@ def _apply_exect_s5_frequency_verifier_guards(
         evidence_text = note_text[idx : idx + len(evidence_text)]
         if _frequency_change_from_medication_control(raw_value, evidence_text):
             flags.append("medication_control_not_frequency_change")
+            continue
+        if strict_qualitative and not _qualitative_label_supported_by_evidence(
+            raw_value, evidence_text
+        ):
+            flags.append("qualitative_without_note_support")
             continue
 
         frequency.append(raw_value.strip())
@@ -1094,6 +1834,48 @@ def _frequency_change_from_medication_control(raw_value: str, evidence_text: str
         and any(marker in evidence for marker in control_markers)
         and not any(marker in evidence for marker in seizure_frequency_markers)
     )
+
+
+_QUALITATIVE_FREQUENCY_LABELS = frozenset(
+    {"infrequent", "frequency same", "frequency increased", "frequency decreased"}
+)
+_QUALITATIVE_NOTE_MARKERS: dict[str, tuple[str, ...]] = {
+    "infrequent": ("infrequent", "rarely", "occasional", "occasionally", "rare"),
+    "frequency same": (
+        "same frequency",
+        "unchanged",
+        "frequency remains",
+        "stable frequency",
+        "frequency is the same",
+    ),
+    "frequency increased": (
+        "frequency increased",
+        "increased frequency",
+        "more frequent",
+        "more often",
+        "worsening",
+        "worse frequency",
+        "having more",
+        "more generalised",
+        "more generalized",
+    ),
+    "frequency decreased": (
+        "frequency decreased",
+        "decreased frequency",
+        "less frequent",
+        "less often",
+        "improved",
+        "fewer seizures",
+    ),
+}
+
+
+def _qualitative_label_supported_by_evidence(raw_value: str, evidence_text: str) -> bool:
+    label = canonical_clinical_phrase(raw_value)
+    if label not in _QUALITATIVE_FREQUENCY_LABELS:
+        return True
+    evidence = evidence_text.lower()
+    return any(marker in evidence for marker in _QUALITATIVE_NOTE_MARKERS.get(label, ()))
 
 
 def _normalize_medication_temporality_surface(value: str) -> str:

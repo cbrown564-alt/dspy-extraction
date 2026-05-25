@@ -55,6 +55,9 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
@@ -444,6 +447,150 @@ def test_exect_s5_frequency_verify_cap25_config_records_contract():
     }
     assert set(config.taxonomy.interleaving_positions) == {"pre", "during", "post"}
 
+
+def test_exect_s5_frequency_verify_v2_cap25_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2_cap25_gpt4_1_mini"
+    )
+    assert config.max_records == 25
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT
+    )
+    assert config.prompt_version == "exect_s4_field_family_v1_3_qualitative_evidence_gate"
+    assert config.controls.verifier_policy == "frequency_evidence_verify_reject_only_v2"
+
+
+def test_exect_s5_frequency_verify_v2b_cap25_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_cap25_gpt4_1_mini"
+    )
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT
+    )
+    assert config.prompt_version == "exect_s4_field_family_v1_2_label_policy"
+    assert config.controls.verifier_policy == "frequency_evidence_verify_reject_only_v2b"
+
+
+def test_exect_s5_core_parallel_cap25_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_core_field_family_parallel_v2b_cap25_gpt4_1_mini.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_core_field_family_parallel_v2b_cap25_gpt4_1_mini"
+    )
+    assert config.program_variant == EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.max_records == 25
+    assert config.prompt_version == "exect_s4_field_family_v1_2_label_policy"
+    assert config.taxonomy.comparison_group == (
+        "exect_s5_per_family_parallel_ceiling_gpt_cap25_v1"
+    )
+    assert config.taxonomy.stage_graph_id == "g2_s5_core_family_parallel"
+    assert config.taxonomy.varied_factor == "pipeline_stage_graph"
+
+
+def test_exect_s5_frequency_verify_full_qwen35b_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_full_qwen35b_ollama.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_full_qwen35b_ollama"
+    )
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.model_config_path == Path("configs/models/exect_qwen35b_ollama.json")
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT
+    )
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.controls.verifier_policy == (
+        "frequency_evidence_verify_reject_only_v1"
+    )
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == (
+        "exect_s5_frequency_verify_v1_model_comparison"
+    )
+    assert config.taxonomy.varied_factor == "model_track"
+
+
+def test_exect_s5_frequency_verify_v2b_full_qwen35b_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama"
+    )
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.model_config_path == Path("configs/models/exect_qwen35b_ollama.json")
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT
+    )
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.controls.verifier_policy == (
+        "frequency_evidence_verify_reject_only_v2b"
+    )
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == (
+        "exect_s5_frequency_verify_v2b_model_comparison"
+    )
+    assert config.taxonomy.varied_factor == "model_track"
+
+
+def test_exect_s5_frequency_verify_smoke_qwen35b_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_smoke_qwen35b_ollama.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_smoke_qwen35b_ollama"
+    )
+    assert config.max_records == 3
+    assert config.model_config_path == Path("configs/models/exect_qwen35b_ollama.json")
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT
+    )
+    assert config.taxonomy is not None
+    assert config.taxonomy.varied_factor == "model_track"
 
 
 def test_exect_s2_validation_cap25_config_records_s2_diagnostic_cap_contract():

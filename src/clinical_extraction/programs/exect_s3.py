@@ -27,14 +27,17 @@ from clinical_extraction.programs.exect_s0_s1 import (
     _values_for_family,
 )
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_CLEAN_LADDER_V1_VARIANT,
     EXECT_S2_LABEL_POLICY_GUIDANCE,
     EXECT_S2_POLICY_EXAMPLES,
     EXECT_S2_PROMPT_VERSION,
     EXECT_S2_S1_FIELD_PRIORITY_GUIDANCE,
     _augment_s2_comorbidity_from_note,
+    _recover_s2_annotated_medication_raw_values,
     _recover_s2_comorbidity_raw_values,
     _recover_s2_investigation_raw_values,
     _recover_s2_seizure_raw_values,
+    _s2_bridge_tiers,
     _s2_values_for_family,
     canonical_comorbidity_label,
     ladder_investigation_guard_bridge_tiers,
@@ -53,10 +56,12 @@ EXECT_S3_VARIANT = "exect_s3_field_family_single_pass"
 EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT = (
     "exect_s3_field_family_cause_bridge_k0_k1_single_pass"
 )
+EXECT_S3_CLEAN_LADDER_V1_VARIANT = "exect_s3_field_family_clean_ladder_v1_single_pass"
 _EXECT_S3_PROGRAM_VARIANTS = frozenset(
     {
         EXECT_S3_VARIANT,
         EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+        EXECT_S3_CLEAN_LADDER_V1_VARIANT,
     }
 )
 EXECT_S3_V1_0_PROMPT_VERSION = "exect_s3_field_family_v1_0_label_policy"
@@ -294,9 +299,18 @@ class ExectS3FieldFamilyModule(dspy.Module):
 
 
 def _s3_bridge_tiers(program_variant: str) -> frozenset[str]:
-    if program_variant == EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT:
+    if program_variant in {
+        EXECT_S3_CAUSE_BRIDGE_K0_K1_VARIANT,
+        EXECT_S3_CLEAN_LADDER_V1_VARIANT,
+    }:
         return frozenset({"cause_synonym_plural_v1", "cause_modifier_strip_v1"})
     return frozenset()
+
+
+def _s3_s2_bridge_tiers(program_variant: str) -> frozenset[str]:
+    if program_variant == EXECT_S3_CLEAN_LADDER_V1_VARIANT:
+        return _s2_bridge_tiers(EXECT_S2_CLEAN_LADDER_V1_VARIANT)
+    return ladder_investigation_guard_bridge_tiers()
 
 
 def build_exect_s3_module(program_variant: str = EXECT_S3_VARIANT) -> dspy.Module:
@@ -343,7 +357,7 @@ def _predict_s3_record(
     program_variant: str,
 ) -> DocumentPrediction:
     pred = module(note_text=record.text)
-    values = _s2_field_values_from_prediction(pred, record)
+    values = _s2_field_values_from_prediction(pred, record, program_variant=program_variant)
     values.extend(_s3_field_values_from_prediction(pred, record, program_variant=program_variant))
     return DocumentPrediction(
         document_id=record.document_id,
@@ -358,6 +372,8 @@ def _predict_s3_record(
 def _s2_field_values_from_prediction(
     pred: dspy.Prediction,
     record: ExectGoldDocument,
+    *,
+    program_variant: str = EXECT_S3_VARIANT,
 ) -> list[ExtractedValue]:
     """Build frozen S2 field values from one model prediction (no extra LM call)."""
     values: list[ExtractedValue] = []
@@ -399,6 +415,12 @@ def _s2_field_values_from_prediction(
         _as_list(getattr(pred, "annotated_medication_evidence", [])),
         record.text,
     )
+    medication_raw, medication_guard_flags = _recover_s2_annotated_medication_raw_values(
+        medication_raw,
+        medication_evidence,
+        record.text,
+        bridge_tiers=_s3_s2_bridge_tiers(program_variant),
+    )
     values.extend(
         _values_for_family(
             record=record,
@@ -406,12 +428,13 @@ def _s2_field_values_from_prediction(
             raw_values=medication_raw,
             evidence_values=medication_evidence,
             augmented_values=medication_augmented,
+            extra_quality_flags=medication_guard_flags,
         )
     )
     investigation_raw, _ = _recover_s2_investigation_raw_values(
         _as_list(getattr(pred, "investigation", [])),
         record.text,
-        bridge_tiers=ladder_investigation_guard_bridge_tiers(),
+        bridge_tiers=_s3_s2_bridge_tiers(program_variant),
     )
     investigation_raw, _ = _recover_s3_investigation_raw_values(
         investigation_raw,
@@ -429,6 +452,7 @@ def _s2_field_values_from_prediction(
     comorbidity_raw, _ = _recover_s2_comorbidity_raw_values(
         _as_list(getattr(pred, "comorbidity", [])),
         record.text,
+        bridge_tiers=_s3_s2_bridge_tiers(program_variant),
     )
     comorbidity_raw, _ = _augment_s2_comorbidity_from_note(comorbidity_raw, record.text)
     values.extend(

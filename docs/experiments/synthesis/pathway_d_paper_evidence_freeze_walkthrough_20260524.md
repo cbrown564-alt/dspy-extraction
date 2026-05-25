@@ -18,11 +18,11 @@ Pathway D froze manuscript-ready evidence from primary run artifacts: operationa
 
 ## D2 Summary
 
-Compiled **23 rejected arms** across four tiers:
+Compiled **25 rejected arms** across four tiers after the C-track per-family parallel ceiling row was added:
 
 | Tier | Scope | Row count |
 | --- | --- | --- |
-| 1 | 2026-05-24 Pathway A/C closures | 5 |
+| 1 | 2026-05-24 Pathway A/C closures + S5 v2 combined reject + C-track per-family ceiling | 7 |
 | 2 | ExECT S5 frequency/medication arms | 4 |
 | 3 | Gan S0 mechanism search | 6 |
 | 4 | ExECT S1/S4 historical probes | 8 |
@@ -35,7 +35,7 @@ Drafted manuscript-facing narrative inheriting D1 metrics:
 
 - **Gan:** 80.6% monthly operational default; Qwen transfer at 70.7%; negative C2/GEPA arms.
 - **ExECT ladder:** S1 92.3% → S4 65.5% breadth-pressure story; Qwen surface-dependent transfer.
-- **ExECT S5:** Paper-frozen 85.5% micro / 72.3% freq (verifier + A3 stack); negative C2/GEPA arms.
+- **ExECT S5:** Paper-frozen **85.8% micro / 73.9% freq** (v2b verifier stack, promoted 2026-05-24); superseded v1 at 85.5% / 72.3%; combined v2 rejected (D2 Tier 1).
 - **Cross-dataset:** Task-dependent hybrid placement thesis with claim-readiness matrix.
 
 Companion table pack ([paper_result_table_pack_20260524.md](paper_result_table_pack_20260524.md)) remains the compact numeric source; D3 is the prose layer.

@@ -4,6 +4,7 @@ from dspy.utils import DummyLM
 
 from clinical_extraction.datasets.exect import load_exect_gold_document
 from clinical_extraction.programs.exect_s2 import (
+    EXECT_S2_CLEAN_LADDER_V1_VARIANT,
     EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
     EXECT_S2_COMORBIDITY_C0_VARIANT,
     EXECT_S2_FIELD_FAMILIES,
@@ -247,3 +248,12 @@ def test_recover_s2_investigation_i0_drops_ecg():
     )
     assert recovered == ["eeg normal"]
     assert "s2_bridge:investigation_ecg_removed" in flags
+
+
+def test_exect_s2_clean_ladder_variant_combines_low_risk_guards():
+    tiers = _s2_bridge_tiers(EXECT_S2_CLEAN_LADDER_V1_VARIANT)
+
+    assert "comorbidity_atomization_tbi_v1" in tiers
+    assert "comorbidity_surface_plural_v1" in tiers
+    assert "inv_guard_drop_ecg_v1" in tiers
+    assert "annotated_medication_non_asm_brand_alias_v1" in tiers

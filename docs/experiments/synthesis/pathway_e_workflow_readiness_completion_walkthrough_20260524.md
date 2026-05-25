@@ -14,7 +14,7 @@ Pathway E established workflow gates for safe experiment execution. E3 closes th
 | E1. API key preflight | **Done** (pre-existing) | `.env` preflight discipline |
 | E2. Qwen high-context warning | **Done** (pre-existing) | [qwen_dspy_latency_policy.md](../../policies/qwen_dspy_latency_policy.md) |
 | E3. Provider smoke ledger | **Done** | [provider_smoke_ledger_20260524.md](../../policies/provider_smoke_ledger_20260524.md) |
-| E4. Cursor implementation workflow | **Done** (pre-existing) | Cursor SDK orchestration skills + workstream docs |
+| E4. Cursor implementation workflow | **Retired** (historical) | Cursor SDK workstream archived; project-local Cursor skills removed after discount expiry |
 
 ## E3 Summary
 

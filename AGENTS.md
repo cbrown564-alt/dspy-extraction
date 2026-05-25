@@ -30,8 +30,6 @@ Available project skills:
 - `dspy-experiment-design`: use when creating or changing DSPy programs, experiment configs, optimizer runs, ablations, model comparisons, or run tracking.
 - `hybrid-pipeline-exploration`: use when designing stage-count / det-vs-LLM placement grids, writing outcomes with arm-vs-mechanism scope, or updating Kanban mechanism status (pivot: `docs/workstreams/hybrid/hybrid_pipeline_research_pivot_20260521.md`).
 - `experiment-run-lifecycle`: use when running, reviewing, or scaling model-backed experiments from configs, including dry runs, capped runs, and artifact inspection.
-- `cursor-implementation-orchestration`: use when Codex/GPT-5.5 should orchestrate and review ambitious Cursor SDK implementation workstreams that may write core project files under branch/worktree isolation.
-- `cursor-sdk-research-ops`: use when Cursor SDK should stay in bounded research-operations mode: review-only swarms, source maps, drafts, hygiene scans, stale checks, or disposable mutation pilots.
 - `exect-label-policy-alignment`: use when designing, prompting, scoring, or evaluating ExECT benchmark-facing S0/S1 field-family extraction.
 - `gan-frequency-error-forensics`: use when inspecting Gan seizure-frequency run artifacts or deciding the next Gan S0 improvement.
 - `model-config-compatibility`: use when creating, reviewing, or debugging model/provider configs and DSPy adapters.

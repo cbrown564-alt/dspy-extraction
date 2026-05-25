@@ -83,27 +83,33 @@ S5 scores five families on the same 40-record validation split: diagnosis, seizu
 
 ### Paper-frozen baseline (D1)
 
-Program `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v1`, run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_full_gpt4_1_mini_20260524T195813Z`:
+Program `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b`, run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z`:
 
 | Family | F1 |
 | --- | ---: |
-| Pooled micro | **85.5%** |
+| Pooled micro | **85.8%** |
 | Diagnosis | 90.0% |
 | Seizure type | 84.0% |
 | Annotated medication | **88.7%** |
 | Investigation | 96.7% |
-| Seizure frequency | **72.3%** |
+| Seizure frequency | **73.9%** |
 
-Stack: high-recall pre-vocab frequency candidates → S5 extraction → reject-only frequency verifier (A3 prompt policy) → AM guard (`am_guard_non_asm_brand_alias.v1`). Promoted 2026-05-24 per [exect_s5_frequency_verifier_full_validation_promotion_review_20260524.md](../exect/exect_s5_frequency_verifier_full_validation_promotion_review_20260524.md).
+Stack: high-recall pre-vocab frequency candidates → S5 extraction (v1.2 field-family prompt) → reject-only v2 frequency verifier (rules 7–9 temporal/scope + retained A3 rules 1–6) → AM guard (`am_guard_non_asm_brand_alias.v1`). Promoted 2026-05-24 per [exect_s5_frequency_verifier_v2b_full_validation_promotion_review_20260524.md](../exect/exect_s5_frequency_verifier_v2b_full_validation_promotion_review_20260524.md).
 
-**Superseded anchor:** AM-guard-only run `exect_s5_frequency_pre_vocab_am_guard_full_gpt4_1_mini_20260524T182142Z` (81.4% micro, 60.2% freq F1).
+**Superseded anchors:**
+
+| Run | Program | Micro | Freq F1 | Notes |
+| --- | --- | ---: | ---: | --- |
+| `...frequency_verify_full..._20260524T195813Z` | v1 verifier + A3 | 85.5% | 72.3% | Prior D1 default |
+| `...am_guard_full..._20260524T182142Z` | AM guard only | 81.4% | 60.2% | Pre-verifier anchor |
 
 ### S5 negative arms (recent)
 
+- **Combined v2** (v1.3 extractor + strict qualitative guard + v2 verifier) rejected at cap-25: recall −16.0pp; factor isolation → v2b isolates v2 verifier rules as the promotable gain.
 - **High-precision candidate pruning** rejected: recall −12.0pp on cap-25 without precision gain — keep high-recall candidates.
 - **Temporal medication guard (A4)** rejected: 100% precision but −20.7pp recall on cap-25 — brand/non-ASM guard stays promoted; temporal pruning deferred.
 
-Seizure frequency remains the active S5 bottleneck despite verifier gains: residual errors are precision-dominated qualitative false positives (`infrequent`, `frequency same`, unsupported quantified rates). Full-validation recall is 79.1% (−6.9pp vs AM-guard-only 86.0%); high-recall candidate injection is retained pre-verifier.
+Seizure frequency remains the active S5 bottleneck despite verifier gains: residual errors are precision-dominated qualitative false positives. Full-validation recall is 79.1% (unchanged vs v1 promotion); high-recall candidate injection is retained pre-verifier.
 
 ---
 
@@ -131,8 +137,8 @@ This supports the hybrid-pipeline pivot thesis: identical doctrine (decompose, p
 | Schema breadth increases difficulty S1→S4 | **Supported with caveat** | Field-family scope changes each rung |
 | Qwen transfers Gan builder-gap; not hosted parity | **Supported** | Report 297 valid-scored denominator |
 | Qwen viable on some ExECT surfaces, not universal | **Supported** | Emphasize S1 seizure-type gap |
-| S5 paper-frozen stack (verifier + A3) | **Supported** | D1 operational default; cite promotion review + run ID |
-| S5 frequency verifier reaches 72.3% F1 full validation | **Supported** | Paper-frozen 2026-05-24; not Gan monthly metric |
+| S5 paper-frozen stack (v2b verifier) | **Supported** | D1 operational default; cite v2b promotion review + run ID |
+| S5 frequency verifier reaches 73.9% F1 full validation | **Supported** | Paper-frozen 2026-05-24; +1.6pp vs superseded v1; not Gan monthly metric |
 | S5 medication guard repairs annotated_medication F1 | **Supported** | Component of promoted D1 stack; temporality still open |
 | High-precision freq candidates or temporal med guard should be defaults | **Rejected (arm)** | D2 Tier 1 |
 | Project beats published ExECT/Gan benchmarks | **Unsupported / blocked** | Real data + CUI-aware scorer gates |
@@ -153,7 +159,7 @@ This supports the hybrid-pipeline pivot thesis: identical doctrine (decompose, p
 
 1. Schema ladder table (D1 §2 or Table 3).
 2. Qwen replication table (D1 §3 or Table 4) with S1 caveat.
-3. S5 subsection: promoted verifier stack (85.5% micro, 72.3% freq) + residual frequency errors + superseded 60.2% anchor as historical comparison.
+3. S5 subsection: promoted v2b verifier stack (85.8% micro, 73.9% freq) + residual frequency errors + superseded v1 (72.3%) and AM-guard-only (60.2%) anchors as historical comparison.
 4. Negative decomposition paragraph citing D2 Tier 4.
 
 ### Discussion hooks
@@ -167,7 +173,7 @@ This supports the hybrid-pipeline pivot thesis: identical doctrine (decompose, p
 
 ## Remaining Risks Before Submission
 
-1. **S5 frequency residual iteration:** Verifier stack is paper-frozen at 72.3% F1; further gains need preregistered arms (not candidate narrowing).
+1. **S5 frequency residual iteration:** Verifier stack is paper-frozen at 73.9% F1 (v2b); combined v2 rejected; further gains need preregistered arms (not candidate narrowing).
 2. **Registry staleness:** Verify headline rows against `metrics.json` at copy-edit time (noted in paper_synthesis_update).
 3. **Cap-25 optimism:** ExECT cap-25 systematically optimistic (~+3.5pp vs full on S1); never mix scopes in one table without annotation.
 4. **Evidence support:** Diagnostic grounding metric, not human evidence quality.

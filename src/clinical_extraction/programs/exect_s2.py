@@ -11,6 +11,9 @@ from clinical_extraction.datasets.exect import (
     normalize_investigation_phrase,
 )
 from clinical_extraction.evaluation.exect import EXECT_S2_SCORER
+from clinical_extraction.exect.primitives import (
+    recover_exect_annotated_medication_non_asm_brand_alias_guard,
+)
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_DATASET,
     EXECT_S0_S1_LABEL_POLICY_GUIDANCE,
@@ -40,6 +43,7 @@ EXECT_S2_COMORBIDITY_C0_C1_VARIANT = (
     "exect_s2_field_family_comorbidity_c0_c1_single_pass"
 )
 EXECT_S2_INV_GUARD_I0_VARIANT = "exect_s2_field_family_inv_guard_i0_single_pass"
+EXECT_S2_CLEAN_LADDER_V1_VARIANT = "exect_s2_field_family_clean_ladder_v1_single_pass"
 INVESTIGATION_GUARD_DROP_ECG_TIER = "inv_guard_drop_ecg_v1"
 _EXECT_S2_PROGRAM_VARIANTS = frozenset(
     {
@@ -47,6 +51,7 @@ _EXECT_S2_PROGRAM_VARIANTS = frozenset(
         EXECT_S2_COMORBIDITY_C0_VARIANT,
         EXECT_S2_COMORBIDITY_C0_C1_VARIANT,
         EXECT_S2_INV_GUARD_I0_VARIANT,
+        EXECT_S2_CLEAN_LADDER_V1_VARIANT,
     }
 )
 EXECT_S2_PROMPT_VERSION = "exect_s2_field_family_v1_3_label_policy"
@@ -295,6 +300,15 @@ def _s2_bridge_tiers(program_variant: str) -> frozenset[str]:
         tiers.add("comorbidity_surface_plural_v1")
     if program_variant == EXECT_S2_INV_GUARD_I0_VARIANT:
         tiers.add(INVESTIGATION_GUARD_DROP_ECG_TIER)
+    if program_variant == EXECT_S2_CLEAN_LADDER_V1_VARIANT:
+        tiers.update(
+            {
+                "comorbidity_atomization_tbi_v1",
+                "comorbidity_surface_plural_v1",
+                INVESTIGATION_GUARD_DROP_ECG_TIER,
+                "annotated_medication_non_asm_brand_alias_v1",
+            }
+        )
     return frozenset(tiers)
 
 
@@ -381,6 +395,12 @@ def _predict_s2_record(
         _as_list(getattr(pred, "annotated_medication_evidence", [])),
         record.text,
     )
+    medication_raw, medication_guard_flags = _recover_s2_annotated_medication_raw_values(
+        medication_raw,
+        medication_evidence,
+        record.text,
+        bridge_tiers=_s2_bridge_tiers(program_variant),
+    )
     values.extend(
         _values_for_family(
             record=record,
@@ -388,6 +408,7 @@ def _predict_s2_record(
             raw_values=medication_raw,
             evidence_values=medication_evidence,
             augmented_values=medication_augmented,
+            extra_quality_flags=medication_guard_flags,
         )
     )
     investigation_raw, _ = _recover_s2_investigation_raw_values(
@@ -460,6 +481,24 @@ def _s2_values_for_family(
             )
         )
     return values
+
+
+def _recover_s2_annotated_medication_raw_values(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+    *,
+    bridge_tiers: frozenset[str] | None = None,
+) -> tuple[list[str], list[str]]:
+    tiers = bridge_tiers or frozenset()
+    if "annotated_medication_non_asm_brand_alias_v1" not in tiers:
+        return raw_values, []
+    recovered, flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+        raw_values,
+        evidence_values,
+        note_text,
+    )
+    return recovered, [f"s2_bridge:{flag}" for flag in flags]
 
 
 def _normalize_investigation_surface(value: str) -> str:

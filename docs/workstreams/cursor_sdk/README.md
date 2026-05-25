@@ -1,14 +1,20 @@
 # Cursor SDK Workstream
 
-Status: Active review-only operations surface  
-Last consolidated: 2026-05-24  
+Status: Retired / archival after discount expiry  
+Last consolidated: 2026-05-25  
 Decision scope: operational tooling only
+
+## Retirement Note
+
+The Cursor SDK discount period has expired and the project-local Cursor skills have been removed. Do not start new SDK workflows from this repo by default. Preserve this directory as historical traceability for reviewed outputs, rejected outputs, ledger rows, and the disposable-worktree safety lesson.
+
+Final value summary: `cursor_sdk_final_value_report_20260525.md`.
 
 ## Current Position
 
-Cursor SDK is approved only as a review-only research-operations assistant. It may draft memory candidates, experiment inspections, hygiene scans, compatibility reports, paper-claim maps, and mutation proposals. It is not part of the clinical extraction pipeline, not benchmark evidence, not a model-comparison track, and not an authority for scorer, loader, registry, schema, or dataset-policy edits.
+Cursor SDK is no longer an active project workflow. Historical SDK outputs remain review leads only. They are not part of the clinical extraction pipeline, not benchmark evidence, not a model-comparison track, and not an authority for scorer, loader, registry, schema, or dataset-policy edits.
 
-The prior pilot and evening queue generated useful leads, but also created review burden. This directory is now the small active surface:
+The prior pilot and evening queue generated useful leads, but also created review burden. This directory is now the archival surface:
 
 | File | Purpose |
 | --- | --- |
@@ -30,9 +36,11 @@ The prior pilot and evening queue generated useful leads, but also created revie
 - Use the active Kanban, audits, policies, run artifacts, configs, and promoted inspection docs as the source of truth.
 - Live mutation is blocked in the shared workspace. It is allowed only in a clean disposable clone or git worktree with `.cursor-sdk-disposable-worktree` and `CURSOR_SDK_ALLOW_MUTATING_WORKFLOW=disposable-worktree`.
 
-## Commands
+## Historical Commands
 
-Sanity check:
+These commands are retained only to explain old ledger entries. Do not run them unless the Cursor SDK workstream is explicitly reopened with a new review gate.
+
+Historical sanity check:
 
 ```powershell
 uv run python scripts/cursor_sdk_workflows.py check
@@ -84,12 +92,12 @@ not edit files.
 5. Decide one of: `promote_specific_claims`, `keep_as_lead`, `defer`, `reject`, or `archive_no_action`.
 6. Record the decision in the review queue or a promoted source document.
 
-## Current Review Priorities
+## Historical Review Outcomes
 
-1. Use the promoted model compatibility backlog through `docs/policies/model_config_compatibility_backlog_20260524.md`, not the archived or active SDK reports. The current promoted follow-ups are B6 (`build_dspy_lm` config-level coverage) and B7 (explicit Gemini `reasoning_effort` policy before broad Gemini comparisons).
+1. Use the promoted model compatibility backlog through `docs/policies/model_config_compatibility_backlog_20260524.md`, not the archived or active SDK reports. The promoted follow-ups are B6 (`build_dspy_lm` config-level coverage) and B7 (explicit Gemini `reasoning_effort` policy before broad Gemini comparisons).
 2. Use the reviewed Gan mutation-pilot outcome only through `docs/experiments/gan/gan_s0_cursor_sdk_mutation_pilot_review_20260524.md`. No mutation diff is promoted; the only technical lead is the narrow `seizure free for multiple year` candidate gap for `gan_13574`/`gan_13598`.
 3. Use the reviewed paper/core-research-question synthesis through `docs/experiments/synthesis/core_research_questions_pipeline_review_20260524.md` and its generated registry appendix, not the archived SDK paper draft.
 4. Treat the fresh paper result-table source map `docs/experiments/cursor_sdk_drafts/20260524T131249Z_paper_synthesis_draft.md` as `keep_as_lead` only. It can guide table assembly, but no paper metric or operational-default wording was promoted from it.
 5. Use the reviewed ExECT S4/S5 frequency audit promotion only through its promoted audit doc and machine-readable artifact, not the archived SDK draft.
 6. Keep remaining Gan, paper-synthesis, memory, and hygiene drafts archived unless a current source task explicitly reopens them.
-7. Do not run cloud/PR experiments until there is a specific operational need and the same review-only boundary is preserved.
+7. Do not run cloud/PR experiments unless the workstream is explicitly reactivated and the same review-only boundary is preserved.

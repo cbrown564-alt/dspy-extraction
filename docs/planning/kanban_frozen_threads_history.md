@@ -194,3 +194,63 @@ Run IDs below use the `…` prefix for the timestamp suffix under `runs/` (e.g. 
 | Gan G16 full-validation artifact | Reconciled as stale-check / rerun-risk evidence because candidate-emission parity failed inside the full run | `docs/experiments/gan/gan_s0_candidate_builder_gap_v1_gpt_full_validation_reconciliation_20260523.md` |
 | Cursor SDK pilot and evening queue | Promoted only as review-only research-operations guidance; SDK drafts remain non-authoritative until manually promoted | `docs/workstreams/cursor_sdk/README.md`, `docs/workstreams/cursor_sdk/cursor_sdk_review_queue_20260524.md`; archived historical docs under `docs/workstreams/cursor_sdk/archive/workstream_docs/` |
 | Frozen model suite | Planned hosted/local tracks complete; model-suite outputs remain model-profile evidence, not operational defaults | `docs/experiments/synthesis/model_suite_pattern_interpretation_20260522.md`, `docs/experiments/synthesis/model_suite_qwen27b_full_validation_v1_inspection_20260523.md` |
+
+---
+
+## Thread G - Gan S0 Pathway C (frozen 2026-05-24)
+
+**Status:** Pathway C (Gan frequency residuals) complete. Mechanism search frozen for the paper. Operational default unchanged. No active Kanban cards; deferred follow-ons require new preregistration.
+
+**Walkthrough:** `docs/experiments/gan/gan_s0_pathway_c_completion_walkthrough_20260524.md`
+
+| Card | Status | Artifact |
+| --- | --- | --- |
+| C1. Residual taxonomy | Done | `docs/experiments/gan/gan_s0_residual_taxonomy_consolidation_20260524.md` |
+| C2. Unknown-overuse arm | Rejected | `docs/experiments/gan/gan_s0_unknown_overuse_guard_cap25_gpt4_1_mini_rejection_20260524.md` |
+| C3. Pragmatic monthly divergence | Done | `docs/experiments/gan/gan_s0_pragmatic_monthly_divergence_analysis_20260524.md` |
+| C4. Compact optimizer (GEPA G3/G4) | Closed | `docs/experiments/gan/gan_s0_multistage_gepa_gpt_cap25_v1_inspection_20260524.md` |
+
+**Operational default (paper-frozen):**
+
+| Field | Value |
+| --- | --- |
+| Program | `gan_s0_candidate_builder_gap_v1` |
+| Model | GPT 4.1-mini |
+| Split | `gan_2026_fixed_v1:validation` (299 records) |
+| Scorer | `gan_frequency_deterministic_v1` |
+| Gold | `seizure_frequency_number[0]` |
+| Full-validation monthly | **80.6%** |
+| Pragmatic category | **88.6%** |
+| Run ID | `gan_s0_candidate_builder_gap_v1_gpt4_1_mini_full_validation_20260523T170527Z` |
+
+**Local transfer anchor:** Qwen3.6:35b builder-gap v1 — 70.7% monthly, 90.6% pragmatic — `gan_s0_candidate_builder_gap_v1_qwen35b_ollama_full_validation_20260523T215727Z`
+
+**Rejected arms (Pathway C + D2):**
+
+| Arm | Run | Result | decision_scope |
+| --- | --- | --- | --- |
+| Unknown-overuse guard v1.5 (C2) | `…201746Z` | 16.0% monthly cap-25 (gate ≥84%) | arm |
+| GEPA G1 adjudicator | `…131719Z` | 60.0% monthly (−16.0pp vs G0) | arm |
+| GEPA G2 verify-repair | `…131744Z` | 48.0% monthly (−28.0pp vs G0) | arm |
+
+**Consolidated residual map (benchmark-severe, GPT full-val):**
+
+| Residual class | Approx. count | Pathway C outcome |
+| --- | ---: | --- |
+| `other_semantic_mismatch` | 17 | C2 rejected; no-candidate builder gap remains root cause |
+| `pragmatic_match_monthly_divergence` | 16 | C3 documented; partially fixable |
+| `frequent_undercalled` | 7 | Deferred |
+| `purist_bin_boundary_within_pragmatic` | 7 | Scorer boundary; document only |
+| Other singleton classes | ≤3 each | Low priority |
+
+**Deferred follow-ons (not active — require prereg + cap-25 ≥84%):**
+
+1. Builder extension for no-candidate `other_semantic_mismatch` records (highest upside; includes narrow multi-year seizure-free lead for `gan_13574` / `gan_13598` from mutation pilot review).
+2. Multi-type highest-frequency prompt arm (~7–10 records).
+3. Window-priority policy arm (~3–5 records).
+4. Softened C2b unknown-overuse retry — only after RC1/RC2 fixes.
+
+**Paper-facing claims:** Hybrid deterministic→LLM placement wins on Gan S0; monthly–pragmatic gap (8.0pp) is attributable; negative arms captured in D2. Synthetic validation only — not Gan Real reproduction.
+
+**Promotion review:** `docs/experiments/gan/gan_s0_operational_default_promotion_review_20260523.md`  
+**Paper defaults:** `docs/experiments/synthesis/paper_frozen_operational_defaults_20260524.md`

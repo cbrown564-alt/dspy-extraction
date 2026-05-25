@@ -1,0 +1,43 @@
+{
+  "controls": {
+    "abstention_policy": "empty_lists_for_no_supported_field_values",
+    "context_policy": "full_note",
+    "few_shot_policy": "embedded benchmark-facing label-policy examples",
+    "repair_policy": "post_prediction_clean_ladder_v1_plus_cause_k0_k1",
+    "verifier_policy": "none"
+  },
+  "dataset": "exect_v2",
+  "experiment_id": "exect_s3_clean_ladder_v1_full_gpt4_1_mini",
+  "hypothesis": "Full-validation confirmation of the S3 clean-ladder stack tests whether inherited S2 guards plus K0/K1 cause bridges produce a cleaner S3 middle rung for schema ladder comparison.",
+  "max_records": null,
+  "metric_caveats": [
+    "Full fixed ExECTv2 validation split; not published Table 1 reproduction.",
+    "The variant inherits S2 clean-ladder I0/C0/C1/AM guards and adds K0/K1 epilepsy-cause post bridges.",
+    "No scorer semantics change; all changes are post-prediction benchmark-facing bridges or guards.",
+    "Report per-family F1 and compare against frozen S3 v1.2 and S3 K0/K1 full validation before using this as the ladder default.",
+    "S3-only family support is sparse on validation; pooled micro must be interpreted with family-scope caveats."
+  ],
+  "model_config_path": "configs/models/gan_s0_gpt4_1_mini.json",
+  "output_root": "runs",
+  "program_variant": "exect_s3_field_family_clean_ladder_v1_single_pass",
+  "prompt_version": "exect_s3_field_family_v1_2_label_policy",
+  "report_on_test_split": false,
+  "schema_level": "exect_s3_field_family",
+  "scorer_mode": "exect_s3_field_family_deterministic_v1",
+  "split_file": "data/splits/exectv2_splits.json",
+  "split_name": "exectv2_fixed_v1:validation",
+  "structured_output_strategy": "provider_json_schema_with_pydantic_validation",
+  "taxonomy": {
+    "clinical_task_family": ["multi_family"],
+    "comparison_group": "exect_s2_s3_clean_ladder_gpt_validation_v1",
+    "dataset": "exect_v2",
+    "hybrid_balance_class": ["H1_post_deterministic"],
+    "implementation_variant": "clean_ladder_v1_s2_guards_plus_cause_k0_k1",
+    "intended_decision": "pending",
+    "interleaving_positions": ["post"],
+    "program_architecture": "single_pass",
+    "schema_complexity": "exect_s3",
+    "stage_graph_id": "g1_l1_policy_bridges",
+    "varied_factor": "implementation_variant"
+  }
+}

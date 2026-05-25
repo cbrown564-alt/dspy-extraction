@@ -32,14 +32,21 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_LABEL_POLICY_GUIDANCE,
     EXECT_S4_POLICY_EXAMPLES,
     EXECT_S4_PROMPT_VERSION,
+    EXECT_S4_PROMPT_VERSION_V1_3,
     EXECT_S4_MT_GUARD_NON_ASM_DOSE_CURRENT_VARIANT,
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
     EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
+    EXECT_S5_CORE_FIELD_FAMILIES,
+    EXECT_S4_FREQUENCY_QUALITATIVE_EVIDENCE_GATE_GUIDANCE,
+    EXECT_S4_V1_3_POLICY_EXAMPLES,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
@@ -70,7 +77,10 @@ _EXECT_S4_PROGRAM_VARIANTS = frozenset(
         EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+        EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
         EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
+        EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     }
 )
 
@@ -103,28 +113,55 @@ def exect_prompts_data(
             EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
         }:
             module_name = "ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule"
+        elif program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT:
+            module_name = "ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module"
+        elif program_variant == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT:
+            module_name = "ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule"
+        elif program_variant == EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT:
+            module_name = "ExectS5CoreFieldFamilyParallelV2bModule"
         elif program_variant == EXECT_S4_FREQUENCY_PRE_VOCAB_HIGH_PRECISION_VARIANT:
             module_name = "ExectS4FrequencyPreVocabHighPrecisionFieldFamilyModule"
         elif program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT:
             module_name = "ExectS4FrequencyStructuredSlotsFieldFamilyModule"
         else:
             module_name = "ExectS4FieldFamilyModule"
+        resolved_prompt_version = (
+            prompt_version
+            or (
+                EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_PROMPT_VERSION
+                if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT
+                else EXECT_S4_PROMPT_VERSION
+            )
+        )
+        label_policy_guidance = EXECT_S4_LABEL_POLICY_GUIDANCE
+        label_policy_examples = EXECT_S4_POLICY_EXAMPLES
+        if resolved_prompt_version == EXECT_S4_PROMPT_VERSION_V1_3:
+            label_policy_guidance = (
+                *EXECT_S4_LABEL_POLICY_GUIDANCE,
+                *EXECT_S4_FREQUENCY_QUALITATIVE_EVIDENCE_GATE_GUIDANCE,
+            )
+            label_policy_examples = (
+                *EXECT_S4_POLICY_EXAMPLES,
+                *EXECT_S4_V1_3_POLICY_EXAMPLES,
+            )
+        field_families = EXECT_S4_FIELD_FAMILIES
+        signature = (
+            "ExectS4FieldFamilyV13Signature"
+            if resolved_prompt_version == EXECT_S4_PROMPT_VERSION_V1_3
+            else "ExectS4FieldFamilySignature"
+        )
+        if program_variant == EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT:
+            field_families = EXECT_S5_CORE_FIELD_FAMILIES
+            signature = "ExectS5CoreFieldFamilyParallelV2bModule"
         return {
-            "signature": "ExectS4FieldFamilySignature",
+            "signature": signature,
             "module": module_name,
             "predictor": "dspy.ChainOfThought",
             "program_variant": program_variant,
-            "prompt_version": (
-                prompt_version
-                or (
-                    EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_PROMPT_VERSION
-                    if program_variant == EXECT_S4_FREQUENCY_STRUCTURED_SLOTS_VARIANT
-                    else EXECT_S4_PROMPT_VERSION
-                )
-            ),
-            "field_families": _json_prompt_value(EXECT_S4_FIELD_FAMILIES),
-            "label_policy_guidance": _json_prompt_value(EXECT_S4_LABEL_POLICY_GUIDANCE),
-            "label_policy_examples": _json_prompt_value(EXECT_S4_POLICY_EXAMPLES),
+            "prompt_version": resolved_prompt_version,
+            "field_families": _json_prompt_value(field_families),
+            "label_policy_guidance": _json_prompt_value(label_policy_guidance),
+            "label_policy_examples": _json_prompt_value(label_policy_examples),
             "structured_output_strategy": structured_output_strategy,
         }
     if program_variant in _EXECT_S3_PROGRAM_VARIANTS:
