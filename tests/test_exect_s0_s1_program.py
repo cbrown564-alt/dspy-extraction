@@ -18,6 +18,8 @@ from clinical_extraction.programs.exect_s0_s1 import (
     EXECT_S0_S1_V4_10_EVIDENCE_STRICT_PROMPT_VERSION,
     EXECT_S0_S1_VERIFY_REPAIR_PROMPT_VERSION,
     EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
     EXECT_S0_S1_D1_PROMPT_VERSION,
     EXECT_S0_S1_L0_PROMPT_VERSION,
     EXECT_S0_S1_L1_SCHEMA_PROMPT_VERSION,
@@ -42,6 +44,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     ExectS0S1VerifyRepairModule,
     ExectS0S1FieldFamilySignature,
     ExectS0S1FieldFamilyModule,
+    ExectS1CleanLadderDiagnosisStableEnsembleModule,
     ExectS0S1SectionAwareFieldFamilyModule,
     ExectS0S1FieldFamilyPromptGraphParallelModule,
     ExectS0S1FieldFamilyPromptGraphSequentialModule,
@@ -63,6 +66,7 @@ from clinical_extraction.programs.exect_s0_s1 import (
     build_precomputed_seizure_type_candidates,
     make_exect_s0_s1_dspy_examples,
     predict_exect_records,
+    _recover_s1_clean_annotated_medication_raw_values,
 )
 
 
@@ -2198,6 +2202,96 @@ def test_exect_s0_s1_field_family_micro_f1_metric_returns_1_on_exact_match():
     score = exect_s0_s1_field_family_micro_f1_metric(example, pred)
 
     assert score == 1.0
+
+
+def test_exect_s1_clean_ladder_variant_applies_annotated_medication_guard():
+    record = load_exect_gold_document("EA0008")
+    _configure_dummy(
+        [
+            {
+                "reasoning": "The model over-emits aspirin and misspells Epilim.",
+                "diagnosis": [],
+                "diagnosis_evidence": [],
+                "seizure_type": [],
+                "seizure_type_evidence": [],
+                "annotated_medication": ["aspirin", "eplim chrono", "lamotrigine"],
+                "annotated_medication_evidence": ["aspirin", "Epilim Chrono", "lamotrigine"],
+            }
+        ]
+    )
+
+    prediction_set = predict_exect_records(
+        ExectS0S1FieldFamilyModule(prompt_version=EXECT_S0_S1_V4_11_PROMPT_VERSION),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        prompt_version=EXECT_S0_S1_V4_11_PROMPT_VERSION,
+        program_variant=EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+    )
+
+    medication_values = [
+        value
+        for value in prediction_set.predictions[0].values
+        if value.field_name == "annotated_medication"
+    ]
+    normalized = [value.normalized_value for value in medication_values]
+    assert "aspirin" not in normalized
+    assert "epilim chrono" in normalized
+    assert "lamotrigine" in normalized
+    assert any(
+        flag.startswith("s1_clean_bridge:")
+        for value in medication_values
+        for flag in value.quality_flags
+    )
+
+
+def test_exect_s1_clean_ladder_v2_routes_diagnosis_from_stable_policy():
+    _configure_dummy(
+        [
+            {
+                "reasoning": "v4.10 keeps generic diagnosis stable.",
+                "diagnosis": ["epilepsy"],
+                "diagnosis_evidence": ["Diagnosis: epilepsy"],
+                "seizure_type": ["focal seizure"],
+                "seizure_type_evidence": ["focal seizure"],
+                "annotated_medication": ["lamotrigine"],
+                "annotated_medication_evidence": ["lamotrigine"],
+            },
+            {
+                "reasoning": "v4.11 improves seizure policy but drifts diagnosis.",
+                "diagnosis": ["focal epilepsy"],
+                "diagnosis_evidence": ["focal seizures"],
+                "seizure_type": ["generalized tonic clonic seizures"],
+                "seizure_type_evidence": ["generalized tonic clonic seizures"],
+                "annotated_medication": ["lamotrigine"],
+                "annotated_medication_evidence": ["lamotrigine"],
+            },
+        ]
+    )
+
+    pred = ExectS1CleanLadderDiagnosisStableEnsembleModule()(note_text="test note")
+
+    assert pred.diagnosis == ["epilepsy"]
+    assert pred.seizure_type == ["generalized tonic clonic seizures"]
+    assert pred.annotated_medication == ["lamotrigine"]
+
+
+def test_build_exect_s0_s1_module_returns_clean_ladder_v2_ensemble():
+    module = build_exect_s0_s1_module(
+        EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT
+    )
+    assert isinstance(module, ExectS1CleanLadderDiagnosisStableEnsembleModule)
+
+
+def test_recover_s1_clean_annotated_medication_raw_values_reuses_promoted_guard():
+    recovered, flags = _recover_s1_clean_annotated_medication_raw_values(
+        ["aspirin", "eplim chrono", "lamotrigine"],
+        ["aspirin", "Epilim Chrono", "lamotrigine"],
+        "Current medication: Epilim Chrono and lamotrigine. Aspirin for migraine.",
+    )
+
+    assert recovered == ["epilim chrono", "lamotrigine"]
+    assert "s1_clean_bridge:benchmark_bridge:non_asm_medication_rejected" in flags
 
 
 def test_exect_s0_s1_field_family_micro_f1_metric_penalizes_wrong_labels():

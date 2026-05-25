@@ -19,7 +19,7 @@
 
 ## Current Priorities
 
-1. **Local model transfer (P0).** S5 Qwen true-v2b transfer is accepted (near-parity, not Qwen-leading); next local gap is the newly promoted **S2/S3 clean ladder**. Target: replay the GPT-confirmed middle-rung stacks on Qwen3.6:35b without overlapping local Ollama jobs.
+1. **Local model transfer (P0).** S5 Qwen true-v2b transfer is accepted and the clean Qwen ladder now has a monotonic S1→S4 shape after S1 clean v2: S1 85.9%, S2 84.4%, S3 75.3%, S4 67.5%.
 2. **Clean schema ladder comparison (P1).** S2/S3 now incorporate transferable S5 lessons (AM non-ASM/brand guard) plus middle-rung guards (I0 investigation, C0/C1 comorbidity, K0/K1 cause). Keep rejected or frequency-only S5 techniques out of S2/S3.
 3. **S5 decomposition ceiling (P2).** **Closed (arm reject).** Per-family parallel cap-25: 83.6% micro (−4.6pp vs v2b), ~14× slower — single-pass v2b remains quality/efficiency anchor. See [C-track inspection](../experiments/exect/exect_s5_per_family_parallel_ceiling_gpt_cap25_v1_inspection_20260524.md).
 
@@ -40,6 +40,7 @@ Pathways **A–E closed**; paper evidence frozen (D1–D3); workflow readiness c
 | S5 per-family parallel (C-track) | 83.6% micro vs 88.2% v2b single-pass cap-25 — **arm reject**; seizure_type −11.9pp; ~14× latency. |
 | **L1.1/L1.2 S5 Qwen true-v2b full-validation** | 85.4% micro F1 (−0.4pp vs GPT v2b). Freq F1 **71.4%** (−2.5pp). Diagnosis +2.5pp. Seizure type −1.5pp. Evidence support 95.5% raw / 100% post-repair. **Accepted local transfer / near-parity — not Qwen-leading.** |
 | **S2/S3 clean-ladder GPT completion** | Transferable S5 AM guard integrated into S2/S3; frequency-only/rejected S5 techniques excluded. GPT full validation: S2 **82.7%** (+1.8pp vs frozen v1.3), S3 **74.4%** (+2.3pp vs frozen v1.2). Inspection: [S2/S3 clean ladder](../experiments/exect/exect_s2_s3_clean_ladder_gpt_validation_v1_inspection_20260525.md). |
+| **S1 clean-ladder Qwen correction** | S1 v4.10 anchor was not comparable to clean S2/S3. S1 clean v2 routes v4.10 diagnosis + v4.11 seizure/medication with the promoted AM guard: **85.9%** micro, restoring monotonic Qwen ladder over S2/S3/S4. Inspection: [S1 Qwen inspection](../experiments/exect/exect_s1_clean_ladder_qwen_validation_v1_inspection_20260525.md). |
 | Local gap (prior) | G0 −9.9pp, S1 −13.3pp vs GPT on same programs; S2–S4 local competitive or leading. S5 now resolved. |
 
 Detail: [24h review](../experiments/synthesis/24h_progress_and_local_model_gap_review_20260524.md) · [Pathway D walkthrough](../experiments/synthesis/pathway_d_paper_evidence_freeze_walkthrough_20260524.md) · [L1.2 comparison](../experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md)
@@ -54,7 +55,8 @@ Detail: [24h review](../experiments/synthesis/24h_progress_and_local_model_gap_r
 | --- | --- | --- |
 | L1.1 S5 Qwen full-validation (true v2b stack) | **Done** | 85.4% micro / 71.4% freq F1 — accepted local transfer, near-parity with GPT. Run `…v2b_full_qwen35b_ollama_20260525T072245Z`. |
 | L1.2 S5 local vs closed comparison | **Done** | Per-family table updated after true v2b rerun: [l1_2_comparison](../experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md) |
-| L1.3 S2/S3 clean-ladder Qwen replay | **Ready** | GPT clean-ladder promoted as operational rung: S2 82.7%, S3 74.4%. Run `exect_s2_clean_ladder_v1_full_qwen35b_ollama.json` and `exect_s3_clean_ladder_v1_full_qwen35b_ollama.json` detached/external PowerShell **after the current local Qwen S5 job is clear**. Away-run queue available: `scripts/run_exect_qwen35b_s1_s5_ladder_today.ps1`. |
+| L1.3 S2/S3 clean-ladder Qwen replay | **Done** | S2 clean Qwen `exect_s2_clean_ladder_v1_full_qwen35b_ollama_20260525T075449Z`: 84.4% micro. S3 clean Qwen `exect_s3_clean_ladder_v1_full_qwen35b_ollama_20260525T075453Z`: 75.3% micro. |
+| L1.4 S1 clean-ladder Qwen correction | **Done** | S1 clean v2 `exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama_20260525T103640Z`: 85.9% micro; restores expected S1>S2>S3>S4 relationship. |
 | L2 G0 Qwen error forensics | Backlog | 87 monthly mismatches on builder-gap v1 |
 | L3 S1 Qwen seizure-type arm | Backlog | v4_12 configs exist; verify full-validation run |
 | L4 Best-closed S4/S5 anchors | Backlog | GPT 5.5 S4; closed S5 suite untested |
@@ -66,7 +68,7 @@ Detail: [24h review](../experiments/synthesis/24h_progress_and_local_model_gap_r
 | M1 S2 clean-ladder GPT validation | **Done** | Run `exect_s2_clean_ladder_v1_full_gpt4_1_mini_20260525T073213Z`: 82.7% micro, 92.9% medication, 93.1% investigation, 72.5% comorbidity. |
 | M2 S3 clean-ladder GPT validation | **Done** | Run `exect_s3_clean_ladder_v1_full_gpt4_1_mini_20260525T073224Z`: 74.4% micro, 89.5% medication, 93.1% investigation, 22.2% cause. |
 | M3 S5 technique transfer audit | **Done** | Integrated transferable AM guard; kept frequency pre-vocab/verifier, high-precision pruning, temporal medication guard, and per-family parallel out of S2/S3 because they are frequency-only or rejected. |
-| M4 Qwen middle-rung replay | **Ready** | Depends on no local Ollama contention. Use L1.3 configs and compare against GPT clean-ladder plus prior Qwen S2/S3 anchors. |
+| M4 Qwen middle-rung replay | **Done** | Qwen replay complete: S2 84.4% and S3 75.3%, both above GPT clean-ladder anchors. S1 clean v2 follow-up resolves the ladder-shape anomaly. |
 
 ### C-track — S5 Decomposition Ceiling (GPT only)
 
@@ -100,7 +102,7 @@ Authoritative numbers: [paper_frozen_operational_defaults_20260524.md](../experi
 | Track | Default | Headline | Qwen3.6:35b | Caveat |
 | --- | --- | --- | --- | --- |
 | Gan S0 | builder-gap v1 / GPT 4.1-mini | 80.6% monthly | 70.7% monthly | Synthetic validation only |
-| ExECT S1–S4 | Clean GPT ladder | S1 92.3% → S2 82.7% → S3 74.4% → S4 65.5% micro | S1 79.0%, S2/S3 clean-ladder Qwen pending, S4 67.5% | S2/S3 use transferable S5 guard lessons; S1 seizure_type gap remains |
+| ExECT S1–S4 | Clean GPT ladder | S1 92.3% → S2 82.7% → S3 74.4% → S4 65.5% micro | **S1 clean v2 85.9%** → S2 clean 84.4% → S3 clean 75.3% → S4 67.5% | S1 clean v2 restores monotonic Qwen ladder by routing v4.10 diagnosis + v4.11 seizure/medication; see [S1 Qwen inspection](../experiments/exect/exect_s1_clean_ladder_qwen_validation_v1_inspection_20260525.md) |
 | ExECT S5 | pre-vocab + AM guard + v2b freq / GPT | 85.8% micro; freq 73.9% F1 | **85.4% micro; freq 71.4% F1** | Accepted local transfer; Qwen frequency trails GPT |
 
 ---

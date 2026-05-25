@@ -12,6 +12,9 @@ from clinical_extraction.datasets.exect import (
     canonical_medication_name,
     collapse_diagnoses_to_most_specific,
 )
+from clinical_extraction.exect.primitives import (
+    recover_exect_annotated_medication_non_asm_brand_alias_guard,
+)
 from clinical_extraction.pipeline.sectioning import select_context
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.schemas import (
@@ -31,6 +34,10 @@ EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT = (
 )
 EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT = (
     "exect_s0_s1_field_family_seizure_pre_vocab_single_pass"
+)
+EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT = "exect_s1_clean_ladder_v1_single_pass"
+EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT = (
+    "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble"
 )
 EXECT_S0_S1_SECTION_AWARE_VARIANT = "exect_s0_s1_field_family_section_aware"
 EXECT_S0_S1_PROMPT_GRAPH_PARALLEL_VARIANT = (
@@ -1619,6 +1626,39 @@ class ExectS0S1VerifyRepairModule(dspy.Module):
         )
 
 
+class ExectS1CleanLadderDiagnosisStableEnsembleModule(dspy.Module):
+    """Two-pass S1 arm: stable v4.10 diagnosis + v4.11 seizure/medication policy."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.extract_stable_diagnosis = ExectS0S1FieldFamilyModule(
+            prompt_version=EXECT_S0_S1_PROMPT_VERSION
+        )
+        self.extract_seizure_policy = ExectS0S1FieldFamilyModule(
+            prompt_version=EXECT_S0_S1_V4_11_PROMPT_VERSION
+        )
+
+    def forward(self, note_text: str) -> dspy.Prediction:
+        stable = self.extract_stable_diagnosis(note_text=note_text)
+        seizure_policy = self.extract_seizure_policy(note_text=note_text)
+        return dspy.Prediction(
+            diagnosis=_as_list(getattr(stable, "diagnosis", [])),
+            diagnosis_evidence=_as_list(getattr(stable, "diagnosis_evidence", [])),
+            seizure_type=_as_list(getattr(seizure_policy, "seizure_type", [])),
+            seizure_type_evidence=_as_list(
+                getattr(seizure_policy, "seizure_type_evidence", [])
+            ),
+            annotated_medication=_as_list(
+                getattr(seizure_policy, "annotated_medication", [])
+            ),
+            annotated_medication_evidence=_as_list(
+                getattr(seizure_policy, "annotated_medication_evidence", [])
+            ),
+            diagnosis_source_prompt_version=EXECT_S0_S1_PROMPT_VERSION,
+            seizure_medication_source_prompt_version=EXECT_S0_S1_V4_11_PROMPT_VERSION,
+        )
+
+
 class ExectS0S1SectionAwareFieldFamilyModule(dspy.Module):
     """Section-aware ExECT S0/S1 field-family extractor."""
 
@@ -1874,7 +1914,9 @@ def build_exect_s0_s1_module(
         return ExectS0S1SeizurePreVocabFieldFamilyModule()
     if program_variant == EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT:
         return ExectS0S1DeterministicOnlyModule()
-    if program_variant == EXECT_S0_S1_VARIANT:
+    if program_variant == EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT:
+        return ExectS1CleanLadderDiagnosisStableEnsembleModule()
+    if program_variant in {EXECT_S0_S1_VARIANT, EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT}:
         return ExectS0S1FieldFamilyModule(prompt_version=prompt_version)
     raise ValueError(f"Unsupported ExECT S0/S1 program variant: {program_variant!r}")
 
@@ -2063,6 +2105,8 @@ def _s1_single_pass_variants() -> frozenset[str]:
             EXECT_S0_S1_MEDICATION_PRE_VOCAB_VARIANT,
             EXECT_S0_S1_SEIZURE_PRE_VOCAB_VARIANT,
             EXECT_S0_S1_DETERMINISTIC_ONLY_VARIANT,
+            EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+            EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
         }
     )
 
@@ -2166,6 +2210,7 @@ def _predict_record(
             record,
             pred,
             apply_benchmark_bridges=apply_benchmark_bridges,
+            program_variant=program_variant,
         )
         metadata = {
             "program_variant": program_variant,
@@ -2279,6 +2324,7 @@ def _build_s1_field_family_values(
     pred: dspy.Prediction,
     *,
     apply_benchmark_bridges: bool = True,
+    program_variant: str = EXECT_S0_S1_VARIANT,
 ) -> list[ExtractedValue]:
     """Map a single-pass model prediction to scored S1 field-family values."""
     values: list[ExtractedValue] = []
@@ -2351,6 +2397,18 @@ def _build_s1_field_family_values(
                 record.text,
             )
         )
+    medication_guard_flags: list[str] = []
+    if apply_benchmark_bridges and program_variant in {
+        EXECT_S0_S1_CLEAN_LADDER_V1_VARIANT,
+        EXECT_S0_S1_CLEAN_LADDER_V2_DIAGNOSIS_STABLE_VARIANT,
+    }:
+        medication_raw, medication_guard_flags = (
+            _recover_s1_clean_annotated_medication_raw_values(
+                medication_raw,
+                medication_evidence,
+                record.text,
+            )
+        )
     values.extend(
         _values_for_family(
             record=record,
@@ -2358,10 +2416,25 @@ def _build_s1_field_family_values(
             raw_values=medication_raw,
             evidence_values=medication_evidence,
             augmented_values=medication_augmented,
+            extra_quality_flags=medication_guard_flags,
             apply_benchmark_bridges=apply_benchmark_bridges,
         )
     )
     return values
+
+
+def _recover_s1_clean_annotated_medication_raw_values(
+    raw_values: list[str],
+    evidence_values: list[str],
+    note_text: str,
+) -> tuple[list[str], list[str]]:
+    """Apply the promoted S5/S2 annotated-medication guard to S1 clean-ladder arms."""
+    recovered, flags = recover_exect_annotated_medication_non_asm_brand_alias_guard(
+        raw_values,
+        evidence_values,
+        note_text,
+    )
+    return recovered, [f"s1_clean_bridge:{flag}" for flag in flags]
 
 
 def _family_context(note_text: str, *, target_field: str, max_sections: int) -> str:
