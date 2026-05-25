@@ -113,6 +113,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_V
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_EXACT_POLICY_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_7_qwen_exact_policy"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_8_qwen_schema_validity"
+)
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_UNKNOWN_OVERUSE_GUARD_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_5_unknown_overuse_guard"
 )
@@ -928,6 +931,29 @@ GAN_FREQUENCY_S0_QWEN_EXACT_POLICY_ADDENDUM = """
 """
 
 
+GAN_FREQUENCY_S0_QWEN_SCHEMA_VALIDITY_ADDENDUM = """
+    Qwen schema-validity patch (v1.8; R1.1 restart gate):
+    Apply v1.7 first, then enforce this canonical surface gate before emitting
+    seizure_frequency_number. This patch targets schema validity only; it does
+    not change Gan gold labels, scorer semantics, or the candidate-builder surface.
+
+    - Multiplicity words: never emit "many per month", "many per week", or
+      similar prose. Use the canonical keyword "multiple": "many per month" →
+      "multiple per month".
+    - Per-cluster-only surfaces are incomplete. If the note gives events per
+      cluster but no cluster spacing, output "unknown, N per cluster"; e.g.
+      "4 to 6 per cluster" → "unknown, 4 to 6 per cluster". If spacing is
+      known, output the full two-slot cluster label:
+      "N cluster per unit, M per cluster".
+    - Canonical units are only day, week, month, and year. Do not emit "night",
+      "nights", "hour", "quarter", or "fortnight" as units. Convert nightly
+      to day, e.g. "1 per night" → "1 per day"; convert fortnight to
+      "2 week" and quarter to "3 month".
+    - Final self-check: if the label is not exactly one of the Gan formats
+      listed above, repair the surface to a canonical Gan label before returning.
+"""
+
+
 GAN_FREQUENCY_S0_UNKNOWN_OVERUSE_GUARD_ADDENDUM = """
     Unknown-overuse guard policy (v1.5 unknown_overuse_guard; C2 arm):
     Layered on top of the v1.4 error-taxonomy policy. Apply all existing v1.4
@@ -1193,6 +1219,22 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateQwenExactPolicyExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_QWEN_EXACT_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_QWEN_SCHEMA_VALIDITY_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateQwenSchemaValidityExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )
@@ -4311,7 +4353,7 @@ def _apply_canonical_surface_repairs(label: str) -> str:
     if normalized in _ADJECTIVE_RATE_LABELS:
         return _ADJECTIVE_RATE_LABELS[normalized]
 
-    normalized = re.sub(r"\b(few|several)\b", "multiple", normalized)
+    normalized = re.sub(r"\b(few|several|many)\b", "multiple", normalized)
     normalized = re.sub(
         r"(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)",
         r"\1 to \2",

@@ -64,6 +64,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION,
     GanFrequencyS0TemporalAdjudicateSignature,
     select_gan_multiple_answer_option,
@@ -738,6 +739,7 @@ def test_gan_s0_module_repairs_cap25_schema_invalid_surfaces(
         ("11 to 28 per quarter", "11 to 28 per 3 month"),
         ("1 per fortnight", "1 per 2 week"),
         ("fortnightly", "1 per 2 week"),
+        ("many per month", "multiple per month"),
     ],
 )
 def test_gan_s0_module_repairs_local_qwen_canonicalization_surfaces(
@@ -762,6 +764,35 @@ def test_gan_s0_module_repairs_local_qwen_canonicalization_surfaces(
     assert value.raw_value == raw_label
     assert value.normalized_value == normalized_label
     assert "normalized_label_repaired" in value.quality_flags
+
+
+@pytest.mark.parametrize(
+    "raw_label",
+    [
+        "4 to 6 per cluster",
+        "1 per cluster",
+    ],
+)
+def test_gan_s0_module_does_not_repair_incomplete_per_cluster_surfaces(raw_label: str):
+    record = load_gan_records()[0]
+    _configure_dummy([{
+        "seizure_frequency_number": raw_label,
+        "evidence_text": "dummy evidence",
+    }])
+
+    module = GanFrequencyS0DirectModule()
+    prediction_set = predict_gan_records(
+        module,
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_DIRECT_VARIANT,
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == raw_label
+    assert value.normalized_value == raw_label
+    assert "normalized_label_repaired" not in value.quality_flags
 
 
 def test_gan_s0_module_strips_prompt_footer_from_evidence():
@@ -1611,6 +1642,21 @@ def test_build_gan_frequency_s0_extractor_signature_adds_canonical_format_exampl
     assert "Canonical-format worked examples (v3/v5 port" not in control_doc
     assert "11 to 28 events per quarter" in canonical_doc
     assert len(canonical_doc) > len(control_doc)
+
+
+def test_build_gan_frequency_s0_extractor_signature_adds_qwen_schema_validity_patch():
+    signature_cls = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION
+    )
+
+    prompt_doc = signature_cls.__doc__ or ""
+
+    assert "Qwen schema-validity patch" in prompt_doc
+    assert "many per month" in prompt_doc
+    assert "unknown, 4 to 6 per cluster" in prompt_doc
+    assert "1 per night" in prompt_doc
+    assert "1 per day" in prompt_doc
+    assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
 
 
 def test_build_gan_frequency_s0_extractor_signature_adds_slot_payload_policy():

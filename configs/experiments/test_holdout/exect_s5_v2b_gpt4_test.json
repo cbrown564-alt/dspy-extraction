@@ -1,0 +1,52 @@
+{
+    "controls":  {
+                     "abstention_policy":  "empty_lists_for_no_supported_field_values",
+                     "context_policy":  "full_note_plus_precomputed_seizure_frequency_candidates",
+                     "few_shot_policy":  "embedded benchmark-facing label-policy examples",
+                     "repair_policy":  "none",
+                     "verifier_policy":  "frequency_evidence_verify_reject_only_v2b"
+                 },
+    "dataset":  "exect_v2",
+    "experiment_id":  "test_holdout_exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini",
+    "hypothesis":  "[test-holdout validation] v2b full validation: isolated v2 verifier temporal/scope rules on v1.2 extractor improve seizure_frequency F1 vs paper-frozen v1 (72.3% full-val) without guard-family regression.",
+    "metric_caveats":  [
+                           "These are partial ExECT S5 diagnostics (five core families), not published ExECTv2 Table 1 reproduction.",
+                           "Cap-25 v2b gate passed (+4.7pp freq F1 vs v1 cap-25); this run confirms on 40 validation records.",
+                           "Only verifier policy v2b varies vs paper-frozen v1; extractor remains v1.2.",
+                           "Report per-family F1 and monitor guard families (diagnosis, seizure type, annotated medication, investigation).",
+                           "Evidence quote support should be reported separately from field-family precision, recall, and F1."
+                       ],
+    "model_config_path":  "configs/models/gan_s0_gpt4_1_mini.json",
+    "output_root":  "runs",
+    "program_variant":  "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b",
+    "prompt_version":  "exect_s4_field_family_v1_2_label_policy",
+    "report_on_test_split":  true,
+    "schema_level":  "exect_s5_core_field_family",
+    "scorer_mode":  "exect_s5_core_field_family_deterministic_v1",
+    "split_file":  "data/splits/exectv2_splits.json",
+    "split_name":  "exectv2_fixed_v1:test",
+    "structured_output_strategy":  "provider_json_schema_with_pydantic_validation",
+    "taxonomy":  {
+                     "clinical_task_family":  [
+                                                  "frequency",
+                                                  "medication"
+                                              ],
+                     "comparison_group":  "exect_s5_axis1_axis2_decomposition_gpt_full_validation_v1",
+                     "dataset":  "exect_v2",
+                     "hybrid_balance_class":  [
+                                                  "H2_pre_deterministic",
+                                                  "H1_post_deterministic",
+                                                  "H4_deterministic_first_llm_adjudicates"
+                                              ],
+                     "intended_decision":  "pending",
+                     "interleaving_positions":  [
+                                                    "pre",
+                                                    "during",
+                                                    "post"
+                                                ],
+                     "program_architecture":  "verify_repair",
+                     "schema_complexity":  "exect_s5",
+                     "stage_graph_id":  "g2_extract_verify",
+                     "varied_factor":  "verification_strategy"
+                 }
+}

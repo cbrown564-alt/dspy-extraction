@@ -1,0 +1,51 @@
+{
+    "controls":  {
+                     "abstention_policy":  "empty_lists_for_no_supported_field_values",
+                     "context_policy":  "full_note_two_pass_family_routing",
+                     "few_shot_policy":  "embedded benchmark-facing label-policy examples",
+                     "repair_policy":  "post_prediction_clean_ladder_v1",
+                     "verifier_policy":  "none"
+                 },
+    "dataset":  "exect_v2",
+    "experiment_id":  "test_holdout_exect_s1_clean_ladder_v2_diagnosis_stable_full_qwen35b_ollama",
+    "hypothesis":  "[test-holdout validation] Local Qwen3.6:35b S1 full validation tests whether family-routed clean-ladder S1 restores the expected monotonic schema-ladder relationship.",
+    "metric_caveats":  [
+                           "Full fixed ExECTv2 validation split with local Qwen3.6:35b; not published ExECTv2 benchmark reproduction.",
+                           "S1 fields only: diagnosis, seizure_type, annotated_medication.",
+                           "Two extraction calls per record route diagnosis from v4.10 and seizure/medication from v4.11; scorer semantics are unchanged.",
+                           "Annotated-medication non-ASM/brand guard is applied post prediction.",
+                           "Compare against S1 v4.10 Qwen full, S1 v4.11 Qwen full, S2/S3 clean-ladder Qwen full, and S5 v2b Qwen full."
+                       ],
+    "model_config_path":  "configs/models/exect_qwen35b_ollama.json",
+    "output_root":  "runs",
+    "program_variant":  "exect_s1_clean_ladder_v2_diagnosis_stable_ensemble",
+    "prompt_version":  "exect_s0_s1_field_family_v4_11_label_policy",
+    "report_on_test_split":  true,
+    "schema_level":  "exect_s0_s1_field_family",
+    "scorer_mode":  "exect_field_family_deterministic_v1",
+    "split_file":  "data/splits/exectv2_splits.json",
+    "split_name":  "exectv2_fixed_v1:test",
+    "structured_output_strategy":  "provider_json_schema_with_pydantic_validation",
+    "taxonomy":  {
+                     "clinical_task_family":  [
+                                                  "diagnosis",
+                                                  "seizure_type",
+                                                  "medication"
+                                              ],
+                     "comparison_group":  "exect_s1_clean_ladder_qwen_validation_v1",
+                     "dataset":  "exect_v2",
+                     "hybrid_balance_class":  [
+                                                  "H1_post_deterministic"
+                                              ],
+                     "implementation_variant":  "v4_10_diagnosis_v4_11_seizure_medication_am_guard",
+                     "intended_decision":  "pending",
+                     "interleaving_positions":  [
+                                                    "during",
+                                                    "post"
+                                                ],
+                     "program_architecture":  "field_family_prompt_graph",
+                     "schema_complexity":  "exect_s1",
+                     "stage_graph_id":  "g2_field_family_prompt_graph",
+                     "varied_factor":  "implementation_variant"
+                 }
+}
