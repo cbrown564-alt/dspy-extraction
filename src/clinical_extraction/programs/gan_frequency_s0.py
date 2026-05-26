@@ -120,6 +120,9 @@ GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_EXACT_POLICY_PROMPT_VERSIO
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_8_qwen_schema_validity"
 )
+GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_HYBRID_RESOLUTION_PROMPT_VERSION = (
+    "gan_frequency_s0_temporal_candidates_single_pass_v1_9_qwen_hybrid_resolution"
+)
 GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_UNKNOWN_OVERUSE_GUARD_PROMPT_VERSION = (
     "gan_frequency_s0_temporal_candidates_single_pass_v1_5_unknown_overuse_guard"
 )
@@ -961,6 +964,19 @@ GAN_FREQUENCY_S0_QWEN_SCHEMA_VALIDITY_ADDENDUM = """
 """
 
 
+GAN_FREQUENCY_S0_QWEN_HYBRID_RESOLUTION_ADDENDUM = """
+    Qwen hybrid-resolution patch (v1.9; R9 hybrid resolution):
+    Apply v1.8 first, then enforce this hybrid prevention gate:
+    - Never prefix a canonical rate label with 'unknown,' (e.g. 'unknown, 2 per month',
+      'unknown, multiple per day', 'unknown, 1 per week' are strictly invalid and forbidden).
+    - If a rate is quantifiable from the note or candidates, output ONLY the canonical rate
+      label (e.g., '2 per month'). If the rate cannot be quantified or is completely unknown,
+      output ONLY 'unknown'.
+    - Do not mix uncertainty prefixes with rate expressions. The only allowed comma-separated
+      'unknown' suffix is 'unknown, N per cluster' (for cluster timing cases only).
+"""
+
+
 GAN_FREQUENCY_S0_UNKNOWN_OVERUSE_GUARD_ADDENDUM = """
     Unknown-overuse guard policy (v1.5 unknown_overuse_guard; C2 arm):
     Layered on top of the v1.4 error-taxonomy policy. Apply all existing v1.4
@@ -1242,6 +1258,23 @@ def build_gan_frequency_s0_extractor_signature(
         )
         return type(
             "GanFrequencyS0TemporalAdjudicateQwenSchemaValidityExtractorSignature",
+            (GanFrequencyS0TemporalAdjudicateSignature,),
+            {"__doc__": doc},
+        )
+    if (
+        prompt_version
+        == GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_HYBRID_RESOLUTION_PROMPT_VERSION
+    ):
+        doc = (
+            (GanFrequencyS0Signature.__doc__ or "")
+            + GAN_FREQUENCY_S0_TEMPORAL_ADJUDICATE_EXTRACTOR_ADDENDUM
+            + GAN_FREQUENCY_S0_ERROR_TAXONOMY_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_QWEN_EXACT_POLICY_ADDENDUM
+            + GAN_FREQUENCY_S0_QWEN_SCHEMA_VALIDITY_ADDENDUM
+            + GAN_FREQUENCY_S0_QWEN_HYBRID_RESOLUTION_ADDENDUM
+        )
+        return type(
+            "GanFrequencyS0TemporalAdjudicateQwenHybridResolutionExtractorSignature",
             (GanFrequencyS0TemporalAdjudicateSignature,),
             {"__doc__": doc},
         )
@@ -3855,13 +3888,21 @@ def predict_gan_records(
     model_name: str,
     prompt_version: str = "gan_frequency_s0_v1",
     program_variant: str = GAN_FREQUENCY_S0_VARIANT,
+    repair_policy: str = "none",
     progress_callback: Callable[[int, int, str], None] | None = None,
 ) -> PredictionSet:
     """Run ``module`` on each Gan record and return a ``PredictionSet`` artifact."""
     predictions = []
     total = len(records)
     for index, record in enumerate(records, start=1):
-        predictions.append(_predict_record(module, record, program_variant=program_variant))
+        predictions.append(
+            _predict_record(
+                module,
+                record,
+                program_variant=program_variant,
+                repair_policy=repair_policy,
+            )
+        )
         if progress_callback is not None:
             progress_callback(index, total, record.record_id)
     return PredictionSet(
@@ -3874,6 +3915,7 @@ def predict_gan_records(
             "model_name": model_name,
             "prompt_version": prompt_version,
             "scorer_mode": GAN_FREQUENCY_S0_SCORER,
+            "repair_policy": repair_policy,
         },
     )
 
@@ -4188,6 +4230,7 @@ def _predict_record(
     record: GanRecord,
     *,
     program_variant: str,
+    repair_policy: str = "none",
 ) -> DocumentPrediction:
     pred = module(note_text=record.note_text)
     label: str | None = pred.seizure_frequency_number
@@ -4226,6 +4269,35 @@ def _predict_record(
             failure_class = None
             if "normalized_label_repaired" not in quality_flags:
                 quality_flags.append("normalized_label_repaired")
+
+    if failure_class in _FINAL_LABEL_REJECT_FAILURE_CLASSES:
+        if repair_policy == "artifact_bridge_surface_normalization_only":
+            # Apply recovery logic to prevent schema invalidity by converting to clean canonical fallbacks.
+            # We preserve the fact that the original label was rejected in the metadata.
+            recovered_label = None
+            if failure_class == "unknown_quantified_hybrid":
+                recovered_label = "unknown"
+            elif failure_class in ("multiple_frequency_labels", "prose_appended_label"):
+                if normalized_label is not None and "," in normalized_label:
+                    parts = [p.strip() for p in normalized_label.split(",")]
+                    first_part = parts[0]
+                    if gan_label_policy_failure_class(first_part) is None:
+                        recovered_label = first_part
+                if recovered_label is None:
+                    recovered_label = "unknown"
+            elif failure_class == "malformed_cluster_unknown_slot":
+                recovered_label = "unknown"
+
+            if recovered_label is not None:
+                rejected_raw_label = label
+                rejected_failure_class = failure_class
+                normalized_label = recovered_label
+                label = recovered_label
+                failure_class = None
+                if "normalized_label_repaired" not in quality_flags:
+                    quality_flags.append("normalized_label_repaired")
+                quality_flags.append(f"recovered_from_rejected:{rejected_failure_class}")
+
     if failure_class in _FINAL_LABEL_REJECT_FAILURE_CLASSES:
         rejected_raw_label = label
         rejected_failure_class = failure_class

@@ -66,6 +66,7 @@ from clinical_extraction.programs.gan_frequency_s0 import (
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_ERROR_TAXONOMY_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_SCHEMA_VALIDITY_PROMPT_VERSION,
+    GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_HYBRID_RESOLUTION_PROMPT_VERSION,
     GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_TARGETED_EXAMPLES_MIN7_PROMPT_VERSION,
     GanFrequencyS0TemporalAdjudicateSignature,
     select_gan_multiple_answer_option,
@@ -306,6 +307,17 @@ def test_gan_s0_error_taxonomy_prompt_patch_adds_candidate_override_policy():
     assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
 
 
+def test_gan_s0_hybrid_resolution_prompt_adds_prevention_policy():
+    signature_cls = build_gan_frequency_s0_extractor_signature(
+        GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_QWEN_HYBRID_RESOLUTION_PROMPT_VERSION
+    )
+    prompt_doc = signature_cls.__doc__ or ""
+    assert "Qwen hybrid-resolution patch" in prompt_doc
+    assert "Never prefix a canonical rate label with 'unknown,'" in prompt_doc
+    assert "Do not mix uncertainty prefixes with rate expressions." in prompt_doc
+    assert issubclass(signature_cls, GanFrequencyS0TemporalAdjudicateSignature)
+
+
 def test_gan_s0_compact_hierarchy_prompt_adds_policy_density_arm():
     from clinical_extraction.programs.gan_frequency_s0 import (
         GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_COMPACT_HIERARCHY_PROMPT_VERSION,
@@ -453,6 +465,60 @@ def test_gan_s0_prediction_bridge_rejects_noncanonical_final_label():
     assert "final_label_rejected:unknown_quantified_hybrid" in value.quality_flags
     assert pred.metadata["rejected_raw_label"] == "unknown, 2 per month"
     assert pred.metadata["rejected_label_failure_class"] == "unknown_quantified_hybrid"
+
+
+
+def test_gan_s0_prediction_bridge_recovers_hybrid_and_multiple_under_policy():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    # Test hybrid recovery to 'unknown'
+    _configure_dummy(
+        [
+            {
+                "seizure_frequency_number": "unknown, 2 per month",
+                "evidence_text": "no seizures for nearly a year",
+            }
+        ]
+    )
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesSinglePassModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        repair_policy="artifact_bridge_surface_normalization_only",
+    )
+    pred = prediction_set.predictions[0]
+    value = pred.values[0]
+    assert value.raw_value == "unknown"
+    assert value.normalized_value == "unknown"
+    assert "recovered_from_rejected:unknown_quantified_hybrid" in value.quality_flags
+    assert pred.metadata["rejected_raw_label"] == "unknown, 2 per month"
+    assert pred.metadata["rejected_label_failure_class"] == "unknown_quantified_hybrid"
+
+    # Test multiple frequency labels recovery to first valid part
+    _configure_dummy(
+        [
+            {
+                "seizure_frequency_number": "2 per week, 2 per 8 week",
+                "evidence_text": "two seizures per week",
+            }
+        ]
+    )
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesSinglePassModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+        repair_policy="artifact_bridge_surface_normalization_only",
+    )
+    pred = prediction_set.predictions[0]
+    value = pred.values[0]
+    assert value.raw_value == "2 per week"
+    assert value.normalized_value == "2 per week"
+    assert "recovered_from_rejected:multiple_frequency_labels" in value.quality_flags
+    assert pred.metadata["rejected_raw_label"] == "2 per week, 2 per 8 week"
+    assert pred.metadata["rejected_label_failure_class"] == "multiple_frequency_labels"
 
 
 def test_gan_s0_prediction_bridge_keeps_narrow_inequality_repair():
