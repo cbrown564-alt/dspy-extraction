@@ -6,9 +6,9 @@
 
 ## Current Priorities
 
-1. **Refresh registry references after the R9/Gan policy decision.** R4 should mark current defaults and superseded R1.1/R5-R9 artifacts now that the final Gan validation candidate (v1.8 + active recovery policy) is selected.
-2. **Keep Gan holdout blocked until promotion review.** The Gan test candidate should not be selected from raw validation metrics alone; require an explicit promotion/hold note before creating or running a Gan test config.
-3. **Run ExECT S5 v2b test holdout as the immediate A5 confirmation pair.** GPT 4.1-mini and Qwen3.6:35b S5 v2b are frozen validation defaults with matching test configs; report them as one-shot confirmation, not tuning feedback.
+1. **Launch the overnight test-holdout queue.** R10 selected the Gan builder-gap v1 GPT/Qwen pair for holdout, and ExECT S5 v2b remains the immediate confirmation pair; run the queue as one-shot reporting only.
+2. **Report holdout artifacts without tuning feedback.** After launch, capture the new overnight log path, first active experiment, run IDs, and final metrics; do not modify prompts, scorers, or loaders from test results.
+3. **Keep Gan R9 out of holdout.** R9 is held as schema-recovery validation evidence, not promoted to test-holdout.
 4. **Preserve reproducibility and scorer semantics.** No scorer, loader, gold-label, or test-holdout behavior changes without explicit tests and documentation.
 
 ## Recent Findings To Carry Forward
@@ -20,21 +20,23 @@
 | Gan R1.1 full validation had useful category scores but failed schema validity: 70.3% monthly, 78.4% Purist, 83.3% Pragmatic, 90.0% schema validity. | Do not promote R1.1 as-is. R5-R8 added tested guards for null no-reference outputs, final-slot noncanonical labels, and narrow inequality repair. |
 | R5-R8 preserve scorer semantics: invalid hybrids/concatenations/prose are rejected with metadata; leading inequality repair is allowed only when the stripped label is already canonical. | The guarded replay improved contract behavior, but R9 must decide whether quantified unknown hybrids are prevented upstream or handled by a verifier before any Gan test selection. |
 | Gan R1.1 schema-guard replay is complete but not yet the final policy. | Treat `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T092508Z` as validation evidence for R9/promotion review, not as an automatic holdout candidate. |
-| Gan R9 recovery run is successful: v1.8 prompt + active recovery policy is the final choice. | Delivering 99.7% schema validity rate (1 invalid abstention) and 69.1% monthly accuracy (206 correct predictions, an absolute match increase of +7 over baseline). |
-| GPT-4.1-mini exact policy validation run is successful. | Delivered 99.7% schema validity (1 invalid natural abstention) and 78.5% monthly frequency accuracy on the full validation split (299 records). |
+| Experiment registry is refreshed for current defaults and late R9 evidence. | `experiment_registry.json` now includes curated rows for ExECT clean-ladder/S5 defaults, Gan R9 Qwen recovery, GPT exact-policy comparison, and superseded Gan hybrid-resolution/F0 artifacts. |
+| Gan R10 promotion/holdout review is complete. | R10 selects builder-gap v1 GPT as the primary Gan test-holdout candidate and builder-gap v1 Qwen as local-transfer companion; R9 Qwen recovery is held as schema-recovery evidence, not promoted to holdout. |
+| Gan R9 recovery run is successful: v1.8 prompt + active recovery policy is the current Qwen validation candidate. | Run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T122351Z` delivered 99.7% schema validity rate (1 invalid abstention), 69.1% monthly accuracy, and 298 valid predictions. |
+| GPT-4.1-mini exact policy validation run is successful. | Run `gan_s0_l2_exact_policy_full_gpt4_1_mini_20260526T123247Z` delivered 99.7% schema validity (1 invalid natural abstention) and 78.5% monthly frequency accuracy on the full validation split (299 records). |
 | Rejected arms remain rejected: S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms. | Keep them out of active planning unless a new preregistration changes the decision question. |
 
 
 ## Ready
 
-### R4 - Refresh Experiment Registry For Current Defaults
+### A6 - Report Overnight Test-Holdout Queue
 
-- **Outcome:** Registry and synthesis references identify the current default runs for Gan G0 and ExECT S1-S5, with superseded runs marked clearly.
-- **Dependencies:** preferably after R9 determines the final Gan validation/promotion policy.
-- **Parallelizable:** yes.
+- **Outcome:** The overnight queue launch and completion are summarized with log path, first active experiment, run IDs, metrics, and caveats.
+- **Dependencies:** `scripts/run_overnight_test_queue.ps1` launch.
+- **Parallelizable:** yes after queue starts; do not run competing Ollama jobs.
 - **Owner:** unassigned.
-- **Validation:** Registry entries agree with this board and frozen operational defaults; superseded S5 Qwen v1/A3 comparison is not treated as v2b evidence; Gan R1.1/R9 artifacts are clearly marked promoted, held, or superseded.
-- **Notes:** Documentation hygiene only unless registry schema changes are required. Include R5-R9 and R1.1c artifacts when refreshing Gan entries.
+- **Validation:** Report cites `runs/overnight_test_logs/test_holdout_overnight_queue_*.log` and each produced run directory; no prompt/scorer/loader changes are made from holdout outcomes.
+- **Notes:** First post-launch status should report the new log path and first active experiment.
 
 ## In Progress
 
@@ -74,11 +76,11 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 ### A5 - Test/Holdout Reporting Protocol and Runs (formerly B3)
 
 - **Outcome:** Clear policy for when validation findings can move to test/holdout reporting, plus one-shot holdout runs for frozen defaults once eligible.
-- **Dependencies:** ExECT S5 v2b GPT/Qwen can proceed now as a paired confirmation set; Gan holdout is blocked until R9 completes and a promotion/hold review selects the final Gan policy.
+- **Dependencies:** ExECT S5 v2b GPT/Qwen can proceed now as a paired confirmation set; Gan builder-gap v1 GPT/Qwen holdout is unblocked by R10.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
 - **Validation:** Protocol prevents exploratory tuning from leaking into final reporting; test configs must match frozen validation configs except for `split_name`, `report_on_test_split`, and test-prefixed IDs/output paths.
-- **Notes:** Do not tune from ExECT S5 holdout results. Do not create or run a Gan test config from raw R1.1/R9 metrics alone; require promotion review first.
+- **Notes:** Tonight's planned launch is `scripts/run_overnight_test_queue.ps1` detached with `Start-Process` from `C:\Users\cbrow\Code\dspy-extraction`. After launch, report the new `runs/overnight_test_logs/test_holdout_overnight_queue_*.log` path and the first active experiment. Do not tune from ExECT S5 or Gan holdout results. Do not create or run a Gan R1.1/R9 test config from raw metrics; R10 selected builder-gap v1 only.
 
 ## Blocked
 
@@ -107,7 +109,9 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 | Area | Status |
 | --- | --- |
-| Gan R9 - Address Gan Quantified Unknown Hybrids Upstream | Done; v1.8 prompt paired with prediction-bridge recovery policy is chosen as final Gan S0 configuration (99.7% schema validity, 69.1% monthly accuracy, 298 valid predictions). |
+| R10 - Write Gan Promotion/Holdout Selection Review | Done; [gan_s0_r10_promotion_holdout_selection_review_20260526.md](../experiments/gan/gan_s0_r10_promotion_holdout_selection_review_20260526.md) selects builder-gap v1 GPT/Qwen for Gan test-holdout reporting and holds R9 as schema-recovery validation evidence. |
+| R4 - Refresh Experiment Registry For Current Defaults | Done; registry row count is 214, with current ExECT clean-ladder/S5 defaults, Gan builder-gap defaults, late R9 recovery evidence, GPT exact-policy comparison, and superseded F0/hybrid-resolution artifacts marked. |
+| Gan R9 - Address Gan Quantified Unknown Hybrids Upstream | Done; v1.8 prompt paired with prediction-bridge recovery policy improved schema validity (99.7%, 298 valid predictions) but is held after R10, not promoted to holdout. |
 | Gan R1.1 schema-guard cap-25 (R1.1c) | Done; run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260526T092006Z` has 100% schema validity, 100% evidence support, 68.0% monthly accuracy, 76.0% Purist, and 84.0% Pragmatic accuracy. Decision: Pass; proceed to full R1.1 replay. |
 | Gan R1.1 schema-guard full validation replay | Done; run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T092508Z` completed with 93.3% schema validity, 98.9% evidence support, 71.3% monthly, 79.2% Purist, and 83.9% Pragmatic accuracy. Clean rejections (20 records) successfully converted to abstentions; inequality operator bug fixed. |
 | ExECT S5 v2b verifier + AM guard | Promoted for current operational default. |
@@ -139,32 +143,30 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 ## Dependency Notes
 
-- R1.1 full validation and schema-guard replay are complete; R9 is the active Gan policy thread because quantified unknown hybrids remain semantic/policy failures.
-- R5-R8 are complete; they repaired adapter contract behavior without changing scorer semantics, but they do not solve Qwen's unknown-prefix quantified-hybrid failures.
+- R1.1 full validation, schema-guard replay, R9 recovery, GPT exact-policy comparison, and R10 holdout selection are complete; Gan builder-gap v1 GPT/Qwen is unblocked for synthetic test-holdout reporting.
+- R5-R8 are complete; they repaired adapter contract behavior without changing scorer semantics, and the late R9 recovery row is held as schema-recovery evidence after R10.
 - R2 and R3 are complete; use the May 25 table pack and claims/caveats note for paper drafting.
-- R4 is documentation hygiene and should follow the R9/Gan promotion-review decision unless someone specifically needs registry cleanup first.
+- R4 is complete; registry rows now distinguish current defaults, held validation candidates, and superseded arms.
 - A2 should pull only if a closed-model anchor would materially strengthen a paper claim.
 - A3 depends on paper narrative need and should not consume local model capacity during R9.
 - A4 requires a new preregistration and cap-25 gate before any full validation.
-- A5 ExECT S5 GPT/Qwen holdout is unblocked as a one-shot paired confirmation set; A5 Gan holdout is blocked until R9 plus promotion review.
+- A5 ExECT S5 GPT/Qwen holdout is unblocked as a one-shot paired confirmation set; A5 Gan builder-gap v1 GPT/Qwen holdout is unblocked by R10.
 - B1 and B2 require explicit protocol decisions before implementation.
 
 ## Parallelization Opportunities
 
-- **Safe now:** ExECT S5 v2b GPT/Qwen test-holdout preparation can proceed under the frozen-config protocol; R4 can proceed only if it records current defaults without pre-deciding R9.
-- **Single-threaded:** R9 and any renewed Gan Qwen/Ollama validation job.
+- **Safe now:** Overnight holdout queue launch and reporting can proceed under the frozen-config protocol.
+- **Single-threaded:** Any renewed Gan Qwen/Ollama validation job or any new Gan test-config creation outside the R10-selected builder-gap v1 pair.
 - **Blocked together:** B1 and B2 depend on reporting/scorer protocol decisions.
-- **Proceed after gates:** Gan holdout only after R9 validation evidence and promotion review; A2 is unblocked for prioritization by the May 25 paper pack; A3 after paper-need confirmation; A4 after preregistration.
+- **Proceed after gates:** A2 is unblocked for prioritization by the May 25 paper pack; A3 after paper-need confirmation; A4 after preregistration.
 
 ## Recommended Next Pull
 
-1. **R9 - Address Gan Quantified Unknown Hybrids Upstream.**
-2. **Run/inspect the R9 cap-25 gate under unchanged scorer semantics.**
-3. **A5 - Run ExECT S5 v2b GPT/Qwen test holdout as a paired one-shot confirmation set.**
-4. **Gan promotion review - decide whether R9/R1.1 becomes the final Gan test candidate.**
-5. **R4 - Refresh Experiment Registry For Current Defaults.**
+1. **A5 - Launch `scripts/run_overnight_test_queue.ps1` detached tonight with `Start-Process` from `C:\Users\cbrow\Code\dspy-extraction`; report the new `runs/overnight_test_logs/test_holdout_overnight_queue_*.log` path and first active experiment.**
+2. **A6 - Report the overnight test-holdout queue results with run IDs, metrics, and no tuning recommendations based on test outcomes.**
+3. **A2 - Pull only the closed-model anchor that directly supports a paper claim, if the manuscript still needs it.**
 
-This pull tests whether Gan's remaining quantified-unknown hybrid failures can be prevented upstream before any final Gan policy or holdout candidate is selected, while allowing ExECT S5 holdout confirmation to proceed independently.
+This pull moves from validation-candidate selection into frozen holdout reporting.
 
 ## Standing Guardrails
 
