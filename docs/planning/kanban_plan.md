@@ -2,73 +2,45 @@
 
 **Active steering doc** - future work only. Closed pathways, rejected arms, and detailed walkthroughs live in [kanban_frozen_threads_history.md](kanban_frozen_threads_history.md) and the linked experiment notes.
 
-**Last refreshed:** 2026-05-25
+**Last refreshed:** 2026-05-26
 
 ## Current Priorities
 
-1. **Resolve the Gan L2 Qwen exact-policy follow-through.** L2 forensics narrowed the local Gan gap to Qwen calibration and canonical-label selection under sparse candidate coverage. The slice and cap-25 follow-up are complete; the next empirical decision is whether to redesign the full-validation patch or rerun the promoted full-validation config.
-2. **Keep manuscript evidence current.** ExECT S5 local transfer, the clean schema ladder, Gan G0 limits, and rejected mechanism arms now have a refreshed table pack and claims/caveats draft; future paper edits should cite those artifacts rather than older narrative-only drafts.
-3. **Promote the former backlog into active gated threads.** Gan L2 cap-25, invalid-surface repair tests, best-closed anchors, S1 Qwen seizure-type analysis, and S5 frequency policy iteration should proceed once their listed dependencies or gates are complete.
-4. **Keep new mechanism search tightly gated.** Pull only preregistered, narrow arms that answer a decision question. Avoid replaying closed pathways or stacking rejected techniques.
+1. **Gate the R1.1 schema-guard patch on cap-25.** R5-R8 converted the invalid-schema read into tested adapter behavior; the next decision is whether the guarded R1.1 stack restores schema validity without collapsing monthly accuracy, unknown/no-reference handling, or evidence support.
+2. **Keep Gan repair claims modest until rerun evidence exists.** The schema guard is a contract repair, not proof that Qwen's semantic frequency errors are solved; unknown-prefix hybrids and exact rate/window drift remain model/policy failures.
+3. **Refresh registry references after the Gan cap-25 decision.** R4 should mark current defaults and superseded R1.1/R5-R8 artifacts once the capped gate says whether the guarded patch is worth full validation.
+4. **Use paper artifacts as the current manuscript evidence base.** The May 25 table pack and claims/caveats note remain the source for ExECT S5 transfer, clean ladder, Gan G0 limits, and rejected mechanism arms.
 5. **Preserve reproducibility and scorer semantics.** No scorer, loader, or gold-label behavior changes without explicit tests and documentation.
 
 ## Recent Findings To Carry Forward
 
 | Finding | Implication |
 | --- | --- |
-| ExECT S5 v2b is the current promoted stack: GPT 4.1-mini 85.8% micro / 73.9% frequency F1; Qwen3.6:35b 85.4% micro / 71.4% frequency F1. | Local S5 transfer is accepted as near-parity on synthetic validation, but the paper should not claim Qwen leads or deployment readiness. |
-| The clean ExECT ladder is now coherent for Qwen after the S1 clean v2 correction: S1 85.9%, S2 84.4%, S3 75.3%, S4 67.5% micro. | Use the clean ladder for current local-model breadth claims; treat older S1 v4.10-only comparisons as superseded for ladder shape. |
-| S2/S3 clean GPT anchors improved after transferable S5 lessons: S2 82.7%, S3 74.4% micro. | AM brand/non-ASM guard transferred; frequency-only and rejected S5 techniques stay out of S2/S3. |
-| Gan G0 builder-gap v1 remains GPT-led: 80.6% monthly GPT vs 70.7% Qwen. L2 found 55 GPT-correct/Qwen-failed records and 24 Qwen-correct/GPT-failed records. | The local Gan gap is real but not uniform. Target Qwen policy calibration before any new full validation. |
-| Gan residuals are dominated by exact rate/window drift, cluster collapse, and coarse-label fallback, mostly when deterministic candidates are absent. | Do not treat this as a scorer/data bug or a simple candidate-builder coverage issue. |
-| S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms are rejected. | Keep these out of active planning unless a new preregistration changes the decision question. |
+| ExECT current paper defaults are stable: S5 v2b is promoted; Qwen S1-S4 clean ladder is coherent; S2/S3 GPT anchors include only transferable S5 lessons. | Use the May 25 table pack and claims/caveats note for manuscript numbers; do not reopen ExECT defaults unless a paper claim requires it. |
+| Gan G0 remains GPT-led: 80.6% monthly GPT vs 70.7% Qwen; Qwen errors are mixed, not a uniform local-model failure. | Target narrow Qwen policy/calibration gates rather than broad mechanism search. |
+| Gan R1.1 full validation had useful category scores but failed schema validity: 70.3% monthly, 78.4% Purist, 83.3% Pragmatic, 90.0% schema validity. | Do not promote R1.1 as-is. R5-R8 added tested guards for null no-reference outputs, final-slot noncanonical labels, and narrow inequality repair. |
+| R5-R8 preserve scorer semantics: invalid hybrids/concatenations/prose are rejected with metadata; leading inequality repair is allowed only when the stripped label is already canonical. | The next cap-25 must inspect schema validity, no-reference repair precision, invalid-label rejection counts, monthly accuracy, and evidence support before any full replay. |
+| Rejected arms remain rejected: S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms. | Keep them out of active planning unless a new preregistration changes the decision question. |
 
 ## Ready
 
-### R1.1 - Gan L2 Qwen Exact-Policy Full Validation
+### R9 - Address Gan Quantified Unknown Hybrids Upstream or via Verifier
 
-- **Outcome:** Full validation (299 records) of the exact-policy Qwen prompt patch.
-- **Dependencies:** v1.8 cap-25 schema gate.
-- **Status:** Ready for full-validation launch when Ollama is free.
-- **Notes:** v1.8 schema-validity prompt patch added after the v1.7 slice/cap-25 showed non-canonical outputs (`many per month`, `4 to 6 per cluster`, `1 per night`). Completed v1.8 cap-25 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T171037Z` plus deterministic post-hoc re-evaluation under the tightened validator has 100% schema validity, 100% evidence support, 72.0% monthly accuracy, 80.0% Purist, and 88.0% Pragmatic. See [gan_s0_l2_qwen_exact_policy_v1_8_cap25_schema_gate_20260525.md](../experiments/gan/gan_s0_l2_qwen_exact_policy_v1_8_cap25_schema_gate_20260525.md). A later clean cap-25 relaunch stalled after 1/25 and was stopped; premature full-validation processes were stopped before completion and are not evidence.
-
-### R2 - Write Current Results Table Pack
-
-- **Outcome:** Paper-facing table pack that separates operational defaults, local-vs-closed comparisons, arm rejects, and synthetic-validation caveats.
-- **Dependencies:** none.
+- **Outcome:** Prevent/recover the 13 `unknown_quantified_hybrid` rejections on Gan S0 Qwen validation, either by refining the prompt policy upstream (preventing Qwen from emitting hybrid labels like `unknown, 3 per cluster` when a frequency rate is actually present) or introducing a Stage-2 verifier module.
+- **Dependencies:** registry refresh (R4) and prioritization against active paper claims.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
-- **Validation:** Tables trace each number to run IDs or frozen inspection docs; no metric copied from narrative-only sources.
-- **Status:** Done.
-- **Notes:** Completed as [paper_result_table_pack_20260525.md](../experiments/synthesis/paper_result_table_pack_20260525.md), using [paper_frozen_operational_defaults_20260524.md](../experiments/synthesis/paper_frozen_operational_defaults_20260524.md), [l1_2_s5_local_vs_closed_comparison_20260525.md](../experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md), S1/S2/S3 clean-ladder inspections, [gan_s0_qwen35b_builder_gap_l2_error_forensics_20260525.md](../experiments/gan/gan_s0_qwen35b_builder_gap_l2_error_forensics_20260525.md), and the Gan exact-policy cap-25 inspection.
-
-### R3 - Draft Manuscript Caveats And Claims
-
-- **Outcome:** Short claims/caveats section covering synthetic validation, local-model transfer, Gan benchmark limits, scorer semantics, and rejected mechanism arms.
-- **Dependencies:** none; benefits from R2 but can start in parallel.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Each claim is tied to a primary artifact; no deployment, real-world, or benchmark-reproduction claim exceeds current evidence.
-- **Status:** Done.
-- **Notes:** Completed as [paper_claims_caveats_20260525.md](../experiments/synthesis/paper_claims_caveats_20260525.md). Keeps "accepted local transfer" distinct from "deployment ready" and arm rejection distinct from mechanism rejection.
+- **Validation:** Rerun cap-25/full validation; check that invalid/abstained rejections drop below 20 without re-introducing schema invalidity.
+- **Notes:** Upstream policy option: clarify in S0 prompt that when a specific number and period are mentioned, they must NOT be combined with "unknown" in the final slot. Verifier option: design a deterministic verifier that adjudicates or resolves hybrid labels to their canonical quantified rates before adapter-level rejection.
 
 ### R4 - Refresh Experiment Registry For Current Defaults
 
 - **Outcome:** Registry and synthesis references identify the current default runs for Gan G0 and ExECT S1-S5, with superseded runs marked clearly.
-- **Dependencies:** none.
+- **Dependencies:** preferably after R1.1c cap-25 decision.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
 - **Validation:** Registry entries agree with this board and frozen operational defaults; superseded S5 Qwen v1/A3 comparison is not treated as v2b evidence.
-- **Notes:** This is documentation hygiene only unless registry schema changes are required.
-
-### R5 - Test Narrow Gan Invalid-Surface Repairs
-
-- **Outcome:** Regression tests for one-to-one canonical surface repairs such as `many per month` -> `multiple per month` and `q2 - 3wk` -> `1 per 2 to 3 week`, if pursued.
-- **Dependencies:** none.
-- **Parallelizable:** yes.
-- **Owner:** unassigned.
-- **Validation:** Tests prove repairs do not alter broader cluster, unknown, or temporal-window semantics.
-- **Notes:** This is surface normalization only, not a substitute for R1.
+- **Notes:** Documentation hygiene only unless registry schema changes are required. Include R5-R8 and R1.1c artifacts when refreshing Gan entries.
 
 ## In Progress
 
@@ -81,7 +53,7 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 ### A2 - Run Best-Closed Comparison Anchors
 
 - **Outcome:** One controlled comparison per hard surface where a stronger closed model may matter.
-- **Dependencies:** R2/R3 clarify which comparison would change the paper.
+- **Dependencies:** paper-claim prioritization from the May 25 table pack and claims/caveats note.
 - **Parallelizable:** after prioritization.
 - **Owner:** unassigned.
 - **Validation:** Preregistered config, fixed scorer, explicit comparison group.
@@ -108,7 +80,7 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 ### A5 - Test/Holdout Reporting Protocol and Runs (formerly B3)
 
 - **Outcome:** Clear policy for when validation findings can move to test/holdout reporting, and overnight runs for frozen defaults.
-- **Dependencies:** R1.1 completed/run, and protocol design.
+- **Dependencies:** protocol design; local-capacity check after R1.1c if a Gan rerun is active.
 - **Parallelizable:** yes.
 - **Owner:** unassigned.
 - **Validation:** Protocol prevents exploratory tuning from leaking into final reporting.
@@ -141,6 +113,8 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 | Area | Status |
 | --- | --- |
+| Gan R1.1 schema-guard cap-25 (R1.1c) | Done; run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260526T092006Z` has 100% schema validity, 100% evidence support, 68.0% monthly accuracy, 76.0% Purist, and 84.0% Pragmatic accuracy. Decision: Pass; proceed to full R1.1 replay. |
+| Gan R1.1 schema-guard full validation replay | Done; run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T092508Z` completed with 93.3% schema validity, 98.9% evidence support, 71.3% monthly, 79.2% Purist, and 83.9% Pragmatic accuracy. Clean rejections (20 records) successfully converted to abstentions; inequality operator bug fixed. |
 | ExECT S5 v2b verifier + AM guard | Promoted for current operational default. |
 | ExECT S5 Qwen true-v2b transfer | Done; accepted near-parity, not Qwen-leading. |
 | ExECT S1/S2/S3 clean-ladder Qwen correction/replay | Done; use clean ladder for current breadth story. |
@@ -148,7 +122,9 @@ No active card remains in backlog. New backlog items should be useful but not re
 | Gan G0 builder-gap v1 | Frozen operational default; GPT 80.6%, Qwen 70.7% monthly. |
 | Gan L2 Qwen forensics | Done; enables only the narrow exact-policy slice or surface-repair tests. |
 | Gan L2 Qwen exact-policy slice | Done; run `gan_s0_l2_qwen_exact_policy_slice_qwen35b_ollama_20260525T160918Z` has 82.4% monthly accuracy but failed schema/canonical gate (94.4% schema, "many per month" non-canonical). Decision: Hold/Redesign; v1.8 schema-validity patch is now ready for rerun. |
-| Gan L2 Qwen exact-policy cap-25 follow-up | Done but superseded for full-validation gating; v1.7 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T162702Z` has 69.6% monthly accuracy and 92% schema validity. v1.8 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T171037Z`, post-hoc re-evaluated under the tightened validator, has 72.0% monthly and 100% schema validity. Decision: proceed to full validation when local Ollama is free. |
+| Gan L2 Qwen exact-policy cap-25 follow-up | Done and superseded by R1.1 full validation; v1.7 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T162702Z` has 69.6% monthly accuracy and 92% schema validity. v1.8 run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260525T171037Z`, post-hoc re-evaluated under the tightened validator, has 72.0% monthly and 100% schema validity. |
+| Gan R1.1 exact-policy full validation | Done; run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T054752Z` has 70.3% monthly, 78.4% Purist, 83.3% Pragmatic, 90.0% schema validity, 58.0% normalized-label accuracy, and 98.9% evidence quote support over 299 validation records. Invalid-schema error report completed in [gan_s0_r1_1_invalid_schema_error_report_20260526.md](../experiments/gan/gan_s0_r1_1_invalid_schema_error_report_20260526.md). Decision: do not promote as-is; pursue R5-R8 schema-validity follow-ups. |
+| Gan R1.1 schema-guard follow-up R5-R8 | Done; regression fixtures, no-reference abstention repair, final-label canonical guard, and narrow inequality repair are implemented/tested. Decision note: [gan_s0_r1_1_schema_guard_followup_20260526.md](../experiments/gan/gan_s0_r1_1_schema_guard_followup_20260526.md). |
 | Paper result table pack refresh | Done; [paper_result_table_pack_20260525.md](../experiments/synthesis/paper_result_table_pack_20260525.md) supersedes the 2026-05-24 table pack for current manuscript tables. |
 | Manuscript claims/caveats draft | Done; [paper_claims_caveats_20260525.md](../experiments/synthesis/paper_claims_caveats_20260525.md) separates supported, plausible, risky, and unsupported claims. |
 | S5 per-family parallel ceiling | Rejected after cap-25; no full validation. |
@@ -168,31 +144,30 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 ## Dependency Notes
 
-- R1.1 is the only model-backed follow-through candidate; the v1.8 cap-25 schema gate is cleared with the caveat documented in the schema-gate note. Keep local Ollama free before full validation.
+- R1.1 full validation is complete and should not be promoted as-is because schema validity fell to 90.0%.
+- R5-R8 are complete; the next empirical gate is R1.1c cap-25 under unchanged scorer semantics.
 - R2 and R3 are complete; use the May 25 table pack and claims/caveats note for paper drafting.
-- R5 can proceed independently, but should remain a test-backed surface-normalization task.
-- A1 depends strictly on R1 passing the preregistered slice gate.
-- A2 should wait until R2/R3 show which closed-model anchor would materially strengthen the paper.
-- A3 depends on paper narrative need and should not consume local model capacity during R1.
+- R4 is documentation hygiene and should follow the R1.1c cap-25 decision unless someone specifically needs registry cleanup first.
+- A2 should pull only if a closed-model anchor would materially strengthen a paper claim.
+- A3 depends on paper narrative need and should not consume local model capacity during R1.1c.
 - A4 requires a new preregistration and cap-25 gate before any full validation.
-- A5 depends on R1.1 completion to isolate local model capacity, and establishing the protocol.
+- A5 is unblocked by R1.1 completion, but should not consume local model capacity at the same time as R1.1c.
 - B1 and B2 require explicit protocol decisions before implementation.
 
 ## Parallelization Opportunities
 
-- **Safe now:** R4 and R5.
-- **Single-threaded:** any renewed R1.1/Qwen/Ollama job.
+- **Safe now:** R4 can proceed in parallel if it only records current defaults and does not depend on R1.1c.
+- **Single-threaded:** R1.1c and any renewed Gan Qwen/Ollama validation job.
 - **Blocked together:** B1 and B2 depend on reporting/scorer protocol decisions.
-- **Proceed after gates:** R1.1 after explicit restart/redesign decision; A5 sequentially after R1.1 completes; A2 is now unblocked for prioritization by the May 25 paper pack; A3 after paper-need confirmation; A4 after preregistration.
+- **Proceed after gates:** guarded R1.1 full replay only after R1.1c passes; A5 after protocol confirmation and local-capacity check; A2 is unblocked for prioritization by the May 25 paper pack; A3 after paper-need confirmation; A4 after preregistration.
 
 ## Recommended Next Pull
 
-1. **R4 - Refresh Experiment Registry For Current Defaults.**
-2. **R5 - Test Narrow Gan Invalid-Surface Repairs.**
-3. **R1.1 - Launch Gan exact-policy v1.8 full validation when local Ollama is free.**
-4. **A5 - Establish Test/Holdout Reporting Protocol and prepare overnight runs.**
+1. **R1.1c - Run Gan Schema-Guard Cap-25.**
+2. **Inspect R1.1c failures and decide pass/hold/redesign.**
+3. **R4 - Refresh Experiment Registry For Current Defaults.**
 
-This pull keeps documentation traceability moving, starts the narrow test-backed Gan repair thread, runs R1.1 gate checks, and kicks off the test/holdout protocol and scripting.
+This pull tests whether the R5-R8 schema-guard implementation is strong enough to justify a full R1.1 replay.
 
 ## Standing Guardrails
 

@@ -9,6 +9,10 @@ from typing import Any, Optional
 
 import dspy
 
+from clinical_extraction.gan.frequency import (
+    canonicalize_leading_inequality_label,
+    gan_label_policy_failure_class,
+)
 from clinical_extraction.runs import RunMetadata
 from clinical_extraction.schemas import (
     DocumentPrediction,
@@ -3875,6 +3879,35 @@ def predict_gan_records(
 
 
 _ABSTAIN_STRINGS = frozenset({"none", "null", ""})
+_FINAL_LABEL_REJECT_FAILURE_CLASSES = frozenset(
+    {
+        "unknown_quantified_hybrid",
+        "multiple_frequency_labels",
+        "prose_appended_label",
+        "malformed_cluster_unknown_slot",
+    }
+)
+_NO_REFERENCE_NOTE_RE = re.compile(
+    r"\b("
+    r"administrative|admin|appointment|appointments|cancellation|cancelled|"
+    r"triage request|urgent referral|supporting information|exam access|"
+    r"access arrangements|support housing|housing needs|temporary access|"
+    r"site access|building works|childcare setting|caregiver support|"
+    r"non-clinical|reasonable adjustment|reasonable adjustments"
+    r")\b",
+    re.IGNORECASE,
+)
+_FREQUENCY_CONTEXT_RE = re.compile(
+    r"\b("
+    r"\d+\s+(?:seizures?|fits?|episodes?|events?)|"
+    r"(?:one|two|three|four|five|six|seven|eight|nine|ten|multiple|several|few|many)\s+"
+    r"(?:seizures?|fits?|episodes?|events?)|"
+    r"per\s+(?:day|week|month|year|night|hour|fortnight|quarter)|"
+    r"daily|weekly|monthly|yearly|nightly|"
+    r"seizure free|seizure-free|last seizure|clusters?"
+    r")\b",
+    re.IGNORECASE,
+)
 _SHORT_SEIZURE_FREE_RE = re.compile(
     r"^seizure free for (?P<count>\d+(?:\.\d+)?) (?P<unit>week|month|year)s?$"
 )
@@ -3884,6 +3917,14 @@ def _is_unknown_or_abstain_label(label: str | None) -> bool:
     if label is None:
         return True
     return label.strip().lower() in _ABSTAIN_STRINGS | {"unknown"}
+
+
+def _looks_like_no_reference_note(note_text: str) -> bool:
+    """Detect administrative/no-frequency Gan notes without consulting gold labels."""
+
+    return bool(_NO_REFERENCE_NOTE_RE.search(note_text)) and not bool(
+        _FREQUENCY_CONTEXT_RE.search(note_text)
+    )
 
 
 def _seizure_free_window_in_months(label: str) -> float | None:
@@ -4159,10 +4200,42 @@ def _predict_record(
     if isinstance(evidence_text, str) and evidence_text.strip().lower() in _ABSTAIN_STRINGS:
         evidence_text = None
 
+    rejected_raw_label: str | None = None
+    rejected_failure_class: str | None = None
+    final_guard_flags: list[str] = []
+    if label is None and _looks_like_no_reference_note(record.note_text):
+        label = "no seizure frequency reference"
+        evidence_text = None
+        final_guard_flags.append("abstention_repaired:no_reference_policy")
+
     normalized_label = _normalize_predicted_label(label)
     quality_flags = ["abstained"] if label is None else []
     if label != normalized_label:
         quality_flags.append("normalized_label_repaired")
+    quality_flags.extend(final_guard_flags)
+
+    failure_class = (
+        gan_label_policy_failure_class(normalized_label)
+        if normalized_label is not None
+        else None
+    )
+    if failure_class == "inequality_operator" and normalized_label is not None:
+        repaired_label = canonicalize_leading_inequality_label(normalized_label)
+        if repaired_label is not None:
+            normalized_label = repaired_label
+            failure_class = None
+            if "normalized_label_repaired" not in quality_flags:
+                quality_flags.append("normalized_label_repaired")
+    if failure_class in _FINAL_LABEL_REJECT_FAILURE_CLASSES:
+        rejected_raw_label = label
+        rejected_failure_class = failure_class
+        label = None
+        normalized_label = None
+        quality_flags = [
+            flag for flag in quality_flags if flag != "normalized_label_repaired"
+        ]
+        quality_flags.extend(["abstained", f"final_label_rejected:{failure_class}"])
+        evidence_text = None
 
     fallback_evidence_texts: list[str] = []
     if hasattr(pred, "temporal_candidate_records") and pred.temporal_candidate_records:
@@ -4222,6 +4295,10 @@ def _predict_record(
         metadata["prompt_note_text_char_count"] = pred.prompt_note_text_char_count
     if hasattr(pred, "source_note_text_char_count"):
         metadata["source_note_text_char_count"] = pred.source_note_text_char_count
+    if rejected_raw_label is not None:
+        metadata["rejected_raw_label"] = rejected_raw_label
+    if rejected_failure_class is not None:
+        metadata["rejected_label_failure_class"] = rejected_failure_class
 
     value = ExtractedValue(
         field_name=GAN_FREQUENCY_S0_FIELD,

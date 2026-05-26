@@ -13,13 +13,74 @@ UNIT_FACTORS_PER_MONTH = {
 UNKNOWN_VALUE = 1000.0
 NO_REFERENCE_VALUE = 0.0
 UNKNOWN_CLUSTER_LABEL_RE = re.compile(r"^unknown, .+? per cluster$")
+LEADING_INEQUALITY_RE = re.compile(r"^(?:<=|>=|<|>|≤|≥|at most|at least|up to)\s*")
+RATE_LABEL_RE = re.compile(
+    r"(?P<count>.+?) per (?:(?P<period>.+?) )?(?P<unit>day|week|month|year)$"
+)
+CLUSTER_LABEL_RE = re.compile(
+    r"(?P<clusters>.+?) cluster per (?:(?P<period>.+?) )?(?P<unit>day|week|month|year), "
+    r"(?P<per_cluster>.+?) per cluster$"
+)
 
 
 def normalize_label(label: str) -> str:
     normalized = re.sub(r"\s+", " ", label.strip().lower())
+    normalized = normalized.replace("≤", "<=").replace("≥", ">=")
     normalized = normalized.replace("months", "month").replace("years", "year")
     normalized = normalized.replace("weeks", "week").replace("days", "day")
     return normalized
+
+
+def gan_label_policy_failure_class(label: str | None) -> str | None:
+    """Classify non-canonical Gan final-label surfaces without repairing them."""
+
+    if label is None or not str(label).strip():
+        return "abstention_or_missing_value"
+
+    normalized = normalize_label(str(label))
+    if _is_supported_label(normalized):
+        return None
+    if LEADING_INEQUALITY_RE.match(normalized):
+        return "inequality_operator"
+    if normalized.startswith("unknown,") and not UNKNOWN_CLUSTER_LABEL_RE.fullmatch(
+        normalized
+    ):
+        if "cluster per" in normalized and "unknown," in normalized:
+            return "malformed_cluster_unknown_slot"
+        return "unknown_quantified_hybrid"
+    if "cluster per" in normalized and "unknown," in normalized:
+        return "malformed_cluster_unknown_slot"
+    if "," in normalized and not CLUSTER_LABEL_RE.fullmatch(normalized):
+        head, tail = [part.strip() for part in normalized.split(",", maxsplit=1)]
+        if _is_supported_label(head) and " per " in tail:
+            return "multiple_frequency_labels"
+        if _is_supported_label(head):
+            return "prose_appended_label"
+        if " per " in tail:
+            return "multiple_frequency_labels"
+    return "invalid_label"
+
+
+def canonicalize_leading_inequality_label(label: str) -> str | None:
+    """Return a canonical label after stripping a leading inequality operator.
+
+    This is intentionally narrow: only a leading operator is removed, and the
+    stripped value must already satisfy the audited Gan label taxonomy.
+    """
+
+    normalized = normalize_label(label)
+    if LEADING_INEQUALITY_RE.match(normalized) is None:
+        return None
+    candidate = LEADING_INEQUALITY_RE.sub("", normalized).strip()
+    return candidate if _is_supported_label(candidate) else None
+
+
+def _is_supported_label(label: str) -> bool:
+    try:
+        label_to_monthly_frequency(label)
+    except (TypeError, ValueError):
+        return False
+    return True
 
 
 def label_to_monthly_frequency(label: str) -> float:
@@ -34,11 +95,7 @@ def label_to_monthly_frequency(label: str) -> float:
     if normalized.startswith("seizure free for "):
         return NO_REFERENCE_VALUE
 
-    cluster_match = re.fullmatch(
-        r"(?P<clusters>.+?) cluster per (?:(?P<period>.+?) )?(?P<unit>day|week|month|year), "
-        r"(?P<per_cluster>.+?) per cluster",
-        normalized,
-    )
+    cluster_match = CLUSTER_LABEL_RE.fullmatch(normalized)
     if cluster_match:
         clusters_per_month = _rate_to_monthly(
             cluster_match.group("clusters"),
@@ -48,10 +105,7 @@ def label_to_monthly_frequency(label: str) -> float:
         per_cluster = _parse_quantity(cluster_match.group("per_cluster"))
         return clusters_per_month * per_cluster
 
-    rate_match = re.fullmatch(
-        r"(?P<count>.+?) per (?:(?P<period>.+?) )?(?P<unit>day|week|month|year)",
-        normalized,
-    )
+    rate_match = RATE_LABEL_RE.fullmatch(normalized)
     if rate_match:
         return _rate_to_monthly(
             rate_match.group("count"),

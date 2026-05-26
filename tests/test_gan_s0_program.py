@@ -9,6 +9,7 @@ from clinical_extraction.gan.temporal_candidates import (
 )
 from clinical_extraction.programs.gan_frequency_s0 import (
     _guard_evidence_text,
+    _looks_like_no_reference_note,
     _prompt_note_text_for_context_policy,
     GAN_CONTEXT_POLICY_DETERMINISTIC_TEMPORAL_CANDIDATES_ONLY,
     GAN_CONTEXT_POLICY_FULL_NOTE_PLUS_DETERMINISTIC_TEMPORAL_CANDIDATES,
@@ -406,6 +407,78 @@ def test_gan_s0_temporal_candidates_single_pass_injects_candidates_without_verif
     assert "verifier_decision" not in pred.metadata
     assert pred.metadata["temporal_candidate_labels"] == ["1 per year"]
     assert pred.values[0].raw_value == "1 per year"
+
+
+def test_gan_s0_prediction_bridge_repairs_admin_null_to_no_reference():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_11748")
+    _configure_dummy([{"seizure_frequency_number": None, "evidence_text": None}])
+
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesSinglePassModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == "no seizure frequency reference"
+    assert value.normalized_value == "no seizure frequency reference"
+    assert "abstention_repaired:no_reference_policy" in value.quality_flags
+
+
+def test_gan_s0_prediction_bridge_rejects_noncanonical_final_label():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_13123")
+    _configure_dummy(
+        [
+            {
+                "seizure_frequency_number": "unknown, 2 per month",
+                "evidence_text": "no seizures for nearly a year",
+            }
+        ]
+    )
+
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesSinglePassModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    )
+
+    pred = prediction_set.predictions[0]
+    value = pred.values[0]
+    assert value.raw_value is None
+    assert value.normalized_value is None
+    assert "final_label_rejected:unknown_quantified_hybrid" in value.quality_flags
+    assert pred.metadata["rejected_raw_label"] == "unknown, 2 per month"
+    assert pred.metadata["rejected_label_failure_class"] == "unknown_quantified_hybrid"
+
+
+def test_gan_s0_prediction_bridge_keeps_narrow_inequality_repair():
+    record = next(r for r in load_gan_records() if r.record_id == "gan_17")
+    _configure_dummy(
+        [{"seizure_frequency_number": "≤ 2 per day", "evidence_text": "2 per day"}]
+    )
+
+    prediction_set = predict_gan_records(
+        GanFrequencyS0TemporalCandidatesSinglePassModule(),
+        [record],
+        model_provider="mock",
+        model_name="dummy-fixture",
+        program_variant=GAN_FREQUENCY_S0_TEMPORAL_CANDIDATES_SINGLE_PASS_VARIANT,
+    )
+
+    value = prediction_set.predictions[0].values[0]
+    assert value.raw_value == "≤ 2 per day"
+    assert value.normalized_value == "2 per day"
+    assert "normalized_label_repaired" in value.quality_flags
+
+
+def test_gan_no_reference_note_heuristic_does_not_collapse_unknown_context():
+    assert not _looks_like_no_reference_note(
+        "The patient has epilepsy and reports clusters after poor sleep."
+    )
 
 
 def test_gan_s0_llm_temporal_candidates_single_pass_uses_llm_candidates():
