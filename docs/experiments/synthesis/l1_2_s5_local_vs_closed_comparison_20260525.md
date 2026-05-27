@@ -1,7 +1,7 @@
 # L1.2 ExECT S5 Local vs Closed Model Comparison
 
 Date: 2026-05-25
-Status: Complete after true v2b Qwen rerun
+Status: Updated 2026-05-26 after A2 GPT 5.5 closed-model anchor
 Decision scope: L-track local transfer assessment for ExECT S5; no scorer or loader changes
 Comparison group: `exect_s5_frequency_verify_v2b_model_comparison`; varied factor: `model_track`
 
@@ -15,28 +15,31 @@ Current comparison:
 | --- | --- | --- | --- |
 | GPT 4.1-mini | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z` | `configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini.json` | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b` |
 | Qwen3.6:35b / Ollama | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z` | `configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama.json` | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b` |
+| GPT 5.5 | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z` | `configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai.json` | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b` |
 
-Both runs use `exectv2_fixed_v1:validation` (n=40), scorer `exect_s5_core_field_family_deterministic_v1`, no ChainOfThought, no BootstrapFewShot, and no GEPA.
+All runs use `exectv2_fixed_v1:validation` (n=40), scorer `exect_s5_core_field_family_deterministic_v1`, no ChainOfThought, no BootstrapFewShot, and no GEPA.
 
 ## Headline Metrics
 
-| Metric | GPT 4.1-mini v2b | Qwen3.6:35b v2b | Delta (Qwen - GPT) |
-| --- | ---: | ---: | ---: |
-| Micro F1 | **85.8%** | 85.4% | -0.4pp |
-| Micro precision | 82.1% | **83.9%** | +1.8pp |
-| Micro recall | **90.0%** | 87.1% | -2.9pp |
+| Metric | GPT 4.1-mini v2b | Qwen3.6:35b v2b | GPT 5.5 v2b | Delta (Qwen - GPT 4.1-mini) |
+| --- | ---: | ---: | ---: | ---: |
+| Micro F1 | **85.8%** | 85.4% | 82.6% | -0.4pp |
+| Micro precision | 82.1% | **83.9%** | 77.4% | +1.8pp |
+| Micro recall | **90.0%** | 87.1% | 88.5% | -2.9pp |
 
 Verdict: **accepted local transfer / near-parity, not a Qwen lead.** Qwen v2b is within 0.4pp micro F1 of the GPT v2b anchor, but the frequency family drops below GPT because v2b is more recall-suppressing on Qwen than the earlier v1/A3 run.
 
+A2 closed-model anchor: GPT 5.5 did not improve the overall S5 headline under the fixed v2b stack. It slightly improved seizure-frequency F1, but pooled micro F1 fell to 82.6% because seizure-type F1 dropped to 73.7%. Keep GPT 4.1-mini as the S5 hosted anchor.
+
 ## Per-Family Metrics
 
-| Family | GPT F1 | GPT P | GPT R | Qwen F1 | Qwen P | Qwen R | Delta F1 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| annotated_medication | 88.7% | 79.7% | 100.0% | 88.7% | 79.7% | 100.0% | 0.0pp |
-| diagnosis | 90.0% | 94.7% | 85.7% | **92.5%** | 97.4% | 88.1% | +2.5pp |
-| investigation | **96.7%** | 96.7% | 96.7% | 94.9% | 96.6% | 93.3% | -1.8pp |
-| seizure_frequency | **73.9%** | 71.4% | 69.4% | 73.2% | **79.1%** | 69.8% | -2.5pp |
-| seizure_type | **84.0%** | 79.2% | 89.4% | 82.5% | 80.0% | 85.1% | -1.5pp |
+| Family | GPT 4.1-mini F1 | Qwen F1 | GPT 5.5 F1 | Delta Qwen - GPT 4.1-mini |
+| --- | ---: | ---: | ---: | ---: |
+| annotated_medication | 88.7% | 88.7% | 88.5% | 0.0pp |
+| diagnosis | 90.0% | **92.5%** | 88.3% | +2.5pp |
+| investigation | **96.7%** | 94.9% | 94.9% | -1.8pp |
+| seizure_frequency | 73.9% | 71.4% | **74.5%** | -2.5pp |
+| seizure_type | **84.0%** | 82.5% | 73.7% | -1.5pp |
 
 Qwen remains strong on diagnosis and identical on annotated medication. The local transfer risk is concentrated in seizure_frequency recall and, secondarily, seizure_type recall.
 
@@ -78,7 +81,7 @@ L1.1/L1.2 should be marked **complete as accepted local transfer**, with the cav
 | Card | Status | Notes |
 | --- | --- | --- |
 | L1.1 S5 Qwen true v2b full-validation | Done | Run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z` |
-| L1.2 S5 local vs closed comparison | Done | This document |
+| L1.2 S5 local vs closed comparison | Done | This document; A2 GPT 5.5 anchor added in [exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md](../exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md). |
 | L1.3 S2/S3 clean-ladder Qwen replay | Ready | Do not overlap with another local Ollama job |
 | L2 G0 Qwen error forensics | Backlog | 87 monthly mismatches |
 | L3 S1 Qwen seizure-type arm | Backlog | Largest remaining local gap |
@@ -92,4 +95,5 @@ L1.1/L1.2 should be marked **complete as accepted local transfer**, with the cav
 | Qwen v2b config | `configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama.json` |
 | Qwen detached log | `runs/overnight_logs/exect_s5_v2b_full_qwen35b_20260525_082242.log` |
 | GPT v2b anchor run | `runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z/` |
+| GPT 5.5 A2 anchor run | `runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z/` |
 | S5 v2b promotion review | `docs/experiments/exect/exect_s5_frequency_verifier_v2b_full_validation_promotion_review_20260524.md` |

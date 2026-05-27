@@ -572,6 +572,37 @@ def test_exect_s5_frequency_verify_v2b_full_qwen35b_config_records_contract():
     assert config.taxonomy.varied_factor == "model_track"
 
 
+def test_exect_s5_frequency_verify_v2b_full_gpt5_5_config_records_contract():
+    config = load_experiment_config(
+        Path(
+            "configs/experiments/"
+            "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai.json"
+        )
+    )
+
+    assert config.experiment_id == (
+        "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai"
+    )
+    assert config.dataset == "exect_v2"
+    assert config.split_name == "exectv2_fixed_v1:validation"
+    assert config.max_records is None
+    assert config.model_config_path == Path("configs/models/gan_s0_gpt5_5_openai.json")
+    assert config.schema_level == "exect_s5_core_field_family"
+    assert (
+        config.program_variant
+        == EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT
+    )
+    assert config.scorer_mode == "exect_s5_core_field_family_deterministic_v1"
+    assert config.controls.verifier_policy == (
+        "frequency_evidence_verify_reject_only_v2b"
+    )
+    assert config.taxonomy is not None
+    assert config.taxonomy.comparison_group == (
+        "exect_s5_frequency_verify_v2b_model_comparison"
+    )
+    assert config.taxonomy.varied_factor == "model_track"
+
+
 def test_exect_s5_frequency_verify_smoke_qwen35b_config_records_contract():
     config = load_experiment_config(
         Path(

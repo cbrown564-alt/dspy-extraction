@@ -2,14 +2,15 @@
 
 **Active steering doc** - future work only. Closed pathways, rejected arms, and detailed walkthroughs live in [kanban_frozen_threads_history.md](kanban_frozen_threads_history.md) and the linked experiment notes.
 
-**Last refreshed:** 2026-05-26
+**Last refreshed:** 2026-05-28
 
 ## Current Priorities
 
-1. **Launch the overnight test-holdout queue.** R10 selected the Gan builder-gap v1 GPT/Qwen pair for holdout, and ExECT S5 v2b remains the immediate confirmation pair; run the queue as one-shot reporting only.
-2. **Report holdout artifacts without tuning feedback.** After launch, capture the new overnight log path, first active experiment, run IDs, and final metrics; do not modify prompts, scorers, or loaders from test results.
-3. **Keep Gan R9 out of holdout.** R9 is held as schema-recovery validation evidence, not promoted to test-holdout.
-4. **Preserve reproducibility and scorer semantics.** No scorer, loader, gold-label, or test-holdout behavior changes without explicit tests and documentation.
+1. **Preregister the next Gan temporal/date-stage ablation grid.** The holdout queue is complete; the next research value is cleaner ablation of temporal reasoning, not additional default polishing.
+2. **Test CLINES-inspired decomposition as a real stage-graph hypothesis.** Specifically: entity tagging with offsets/context before normalization/date processing and final schema attribute extraction.
+3. **Add self-consistency as a controlled compute-allocation ablation.** Measure both accuracy and response variance before considering more complex multi-agent systems.
+4. **Reopen tool-during and GEPA only through scoped preregistrations.** Prior ReAct and GEPA outcomes are arm rejects, not mechanism closures; new work must isolate tool interface, optimizer objective, and model track.
+5. **Preserve reproducibility and scorer semantics.** No scorer, loader, gold-label, or test-holdout behavior changes without explicit tests and documentation.
 
 ## Recent Findings To Carry Forward
 
@@ -24,19 +25,46 @@
 | Gan R10 promotion/holdout review is complete. | R10 selects builder-gap v1 GPT as the primary Gan test-holdout candidate and builder-gap v1 Qwen as local-transfer companion; R9 Qwen recovery is held as schema-recovery evidence, not promoted to holdout. |
 | Gan R9 recovery run is successful: v1.8 prompt + active recovery policy is the current Qwen validation candidate. | Run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T122351Z` delivered 99.7% schema validity rate (1 invalid abstention), 69.1% monthly accuracy, and 298 valid predictions. |
 | GPT-4.1-mini exact policy validation run is successful. | Run `gan_s0_l2_exact_policy_full_gpt4_1_mini_20260526T123247Z` delivered 99.7% schema validity (1 invalid natural abstention) and 78.5% monthly frequency accuracy on the full validation split (299 records). |
+| A2 ExECT S5 GPT 5.5 closed-model anchor is complete. | Run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z` delivered 82.6% micro F1 and 74.5% seizure-frequency F1 under the fixed v2b stack; it does not displace GPT 4.1-mini as the S5 headline anchor. |
 | Rejected arms remain rejected: S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms. | Keep them out of active planning unless a new preregistration changes the decision question. |
+| Retrospective review updated the research focus. | [experimentation_retrospective_report.md](../experiments/synthesis/experimentation_retrospective_report.md) now emphasizes cleaner ablations, holdout split sensitivity, CLINES-style date/entity stages, self-consistency, proper tool-during tests, and GEPA postmortem work. |
+| CLINES suggests two underexplored skeletons. | Specialist date processing and entity-first tagging should be tested as explicit stage graph/executor hypotheses, not folded into prompt tweaks. |
+| Holdout wins are selective, not broad local-model superiority. | Qwen wins some ExECT S5 and Gan category metrics, but GPT still leads Gan monthly accuracy; future claims need per-surface wording. |
 
 
 ## Ready
 
-### A6 - Report Overnight Test-Holdout Queue
+### R11 - Preregister Gan Temporal/Date-Stage Ablation Grid
 
-- **Outcome:** The overnight queue launch and completion are summarized with log path, first active experiment, run IDs, metrics, and caveats.
-- **Dependencies:** `scripts/run_overnight_test_queue.ps1` launch.
-- **Parallelizable:** yes after queue starts; do not run competing Ollama jobs.
-- **Owner:** unassigned.
-- **Validation:** Report cites `runs/overnight_test_logs/test_holdout_overnight_queue_*.log` and each produced run directory; no prompt/scorer/loader changes are made from holdout outcomes.
-- **Notes:** First post-launch status should report the new log path and first active experiment.
+- **Outcome:** A preregistration and config plan for comparing specialist date/event extraction strategies under the same Gan S0 downstream adjudicator and scorer.
+- **Axis:** 1/2 first; stage graph and stage executor placement.
+- **Candidate arms:** deterministic date extractor, LLM date extractor, hybrid deterministic+LLM merge, tool-during date resolver.
+- **Dependencies:** none; use GPT 4.1-mini cap-25 before any Qwen/full validation.
+- **Validation:** cap-25 gate with monthly, Purist, Pragmatic, schema validity, evidence support, and temporal-error slice reporting.
+- **Notes:** Do not change Gan scorer semantics; gold remains `seizure_frequency_number[0]`.
+
+### R12 - Design CLINES-Style Entity-First Pipeline Gate
+
+- **Outcome:** A small preregistered cap-25 gate for `note -> entity tags with offsets/context -> normalization/date processing -> attribute extraction -> schema aggregation`.
+- **Axis:** 1 first, then 2; tests whether entity recall and schema filling should be disentangled.
+- **Candidate first target:** Gan S0 if the date-stage grid needs entity/event candidates, otherwise ExECT S5 to test broad core-field extraction.
+- **Dependencies:** inspect CLINES pipeline notes and map the skeleton to existing primitives/contracts.
+- **Validation:** compare against promoted default on the same split/cap without scorer changes.
+
+### R13 - Self-Consistency Variance Probe
+
+- **Outcome:** A controlled repeated-sampling protocol for Gan S0 and/or ExECT S5 that reports accuracy, response variance, cost, and latency.
+- **Axis:** 3 implementation variant / compute allocation.
+- **Candidate arms:** single pass, majority vote over repeated runs, confidence-weighted vote, deterministic tie-break.
+- **Dependencies:** choose one promoted surface and one capped split; avoid tuning prompts from holdout results.
+- **Validation:** cap-25 first; report record-level disagreement and whether variance predicts errors.
+
+### R14 - GEPA Failure Postmortem And Qwen Gate Design
+
+- **Outcome:** A short optimizer postmortem explaining GPT G1/G2 failure modes and defining whether a compact Qwen GEPA gate is justified.
+- **Axis:** 3 implementation variant / optimizer strategy.
+- **Dependencies:** inspect generated GEPA instructions, metric objective, output length/cost, and failure examples.
+- **Validation:** no new model run until the postmortem defines a smaller benchmark-contract-aligned objective.
 
 ## In Progress
 
@@ -45,15 +73,6 @@
 ## Active Threads
 
 These threads are no longer backlog. Keep them visible and proceed as soon as their dependencies or gates clear.
-
-### A2 - Run Best-Closed Comparison Anchors
-
-- **Outcome:** One controlled comparison per hard surface where a stronger closed model may matter.
-- **Dependencies:** paper-claim prioritization from the May 25 table pack and claims/caveats note.
-- **Parallelizable:** after prioritization.
-- **Owner:** unassigned.
-- **Validation:** Preregistered config, fixed scorer, explicit comparison group.
-- **Notes:** Candidate anchors: GPT 5.5 on S4; GPT 5.5 or Gemini on S5 promoted stack; Gemini on Gan builder-gap v1.
 
 ### A3 - Analyze S1 Qwen Seizure-Type Local Gap
 
@@ -73,14 +92,14 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 - **Validation:** Cap-25 before full validation; preserve high-recall candidate baseline.
 - **Notes:** Out of scope: v1.3 + strict qualitative stacking and high-precision pruning.
 
-### A5 - Test/Holdout Reporting Protocol and Runs (formerly B3)
+### A7 - Tool-During Agent Tool Suite Design
 
-- **Outcome:** Clear policy for when validation findings can move to test/holdout reporting, plus one-shot holdout runs for frozen defaults once eligible.
-- **Dependencies:** ExECT S5 v2b GPT/Qwen can proceed now as a paired confirmation set; Gan builder-gap v1 GPT/Qwen holdout is unblocked by R10.
-- **Parallelizable:** yes.
+- **Outcome:** Define a proper tool-during ablation suite for date resolution, current/past event status, canonical frequency validation, medication/entity normalization, and rate/cluster calculation.
+- **Dependencies:** R11 should define the first temporal tool interface before broader tools are built.
+- **Parallelizable:** design can proceed with R12; model execution should wait for R11.
 - **Owner:** unassigned.
-- **Validation:** Protocol prevents exploratory tuning from leaking into final reporting; test configs must match frozen validation configs except for `split_name`, `report_on_test_split`, and test-prefixed IDs/output paths.
-- **Notes:** Tonight's planned launch is `scripts/run_overnight_test_queue.ps1` detached with `Start-Process` from `C:\Users\cbrow\Code\dspy-extraction`. After launch, report the new `runs/overnight_test_logs/test_holdout_overnight_queue_*.log` path and the first active experiment. Do not tune from ExECT S5 or Gan holdout results. Do not create or run a Gan R1.1/R9 test config from raw metrics; R10 selected builder-gap v1 only.
+- **Validation:** tool-during arms must be compared against equivalent pre/post deterministic helpers so the varied factor is genuinely agent-loop tool use.
+- **Notes:** Prior ReAct remains an arm reject only; do not describe tool-during as mechanism-rejected.
 
 ## Blocked
 
@@ -103,14 +122,100 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 
 ## Backlog
 
-No active card remains in backlog. New backlog items should be useful but not ready or not urgent; otherwise place them in Ready or Active Threads with explicit dependencies.
+### R15 - Bridges Vs Prompt Policy Causal Split
+
+- **Outcome:** ExECT ablation separating benchmark prompt policy from deterministic post-bridges.
+- **Dependencies:** lower priority than Gan temporal/date ablations.
+- **Validation:** cap-25 before full validation; same scorer and field-family support.
+
+### R16 - Medication Temporality Recovery Outside S5 Default
+
+- **Outcome:** A safer medication-temporality arm that does not repeat the over-pruning S5 temporal guard.
+- **Dependencies:** new preregistration and a clear benchmark-facing vs clinically-facing target.
+- **Validation:** recall guard must be explicit; do not promote if benchmark medication recall collapses.
+
+### R17 - Optimal Stage Count for Gan S0 (Axis 1)
+
+- **Outcome:** Ablation grid testing 1-stage vs 2-stage vs 3-stage graphs under a fixed candidate source.
+- **Dependencies:** R11 date/event extraction baseline.
+- **Validation:** Cap-25 comparison on the monthly target to confirm if A3 (g2_candidates_adjudicate) holds its lead.
+
+### R18 - Optimal Stage Count for ExECT S1 (Axis 1)
+
+- **Outcome:** Controlled comparison of D1→L0→L1→L1+policy stage decompositions.
+- **Dependencies:** ExECT clean ladder baseline.
+- **Validation:** Compare F1 performance across S1 families.
+
+### R19 - Gan Single-Stage vs Three-Stage Necessity (Axis 1)
+
+- **Outcome:** Direct comparison isolating the candidate generation source to determine if/why three-stage (candidates + VR) is necessary vs single-stage.
+- **Dependencies:** R17.
+
+### R20 - LLM vs Deterministic Temporal Candidate Generation (Axis 2)
+
+- **Outcome:** Controlled comparison of deterministic candidate builders against LLM-based (JSON path or other) candidate generators.
+- **Dependencies:** R11 baselines.
+
+### R21 - Gan Verify-Repair as Second Stage (Axis 2)
+
+- **Outcome:** Re-evaluation of the verify-repair module (V0-V7) to isolate why det-evidence front-ends were harmful in prior runs.
+- **Dependencies:** R11.
+
+### R22 - ExECT S2 Comorbidity Atomization Bridge (Axis 2)
+
+- **Outcome:** Test C0/C1 comorbidity bridges beyond the current cap-25 null results.
+- **Dependencies:** ExECT S2 baseline.
+
+### R23 - ExECT S2 Investigation ECG Drop Guard (Axis 2)
+
+- **Outcome:** Validate the I0 investigation drop guard to see if the +5.6pp F1 improvement holds on broader validation.
+- **Dependencies:** ExECT S2 baseline.
+
+### R24 - General ExECT Pre-Context/Candidate Presentation (Axis 2)
+
+- **Outcome:** Sweep other context and candidate presentation formats across ExECT families (S1–S5) to identify non-harmful designs.
+- **Dependencies:** None.
+
+### R25 - ExECT Post-Bridge Only Intervention (Axis 2)
+
+- **Outcome:** Ablated comparison of post-bridge logic separately from the policy decomposition to check for interaction effects.
+- **Dependencies:** None.
+
+### R26 - DSPy General Optimizers Compile Sweep (Axis 3)
+
+- **Outcome:** Controlled compile sweep of basic DSPy optimizers (Bootstrap, MIPRO, etc.) on stripped L0/L1 pipelines to diagnose the policy substitution drop.
+- **Dependencies:** None.
+
+### R27 - Multi-Stage GEPA over Gan Skeletons (Axis 3)
+
+- **Outcome:** Implement and evaluate the multistage GEPA strategy over candidate/adjudicator or verify-repair skeletons as proposed in the workstream doc.
+- **Dependencies:** `docs/workstreams/optimizer/gan_s0_multistage_gepa_workstream_20260524.md`
+- **Validation:** Compare against direct single-stage GEPA baseline.
+
+### R28 - Gan Candidate Presentation format (Axis 3)
+
+- **Outcome:** Resolve the cap-50 null results for candidate presentation format (Table vs JSON vs Prose).
+- **Dependencies:** None.
+
+### R29 - Gan Canonical Format Examples Residual Sweep (Axis 3)
+
+- **Outcome:** Residual analysis of canonical format examples (C1) on the 30-record slice where replay was null.
+- **Dependencies:** `docs/experiments/gan/gan_s0_canonical_format_residual_slice_replay_20260521.md`.
+
+### R30 - ExECT S4 Frequency Structured Slots (Axis 3)
+
+- **Outcome:** Sweep structured slots configuration for S4 frequency to improve on the cap-25 null S2 arm.
+- **Dependencies:** None.
 
 ## Done Or Frozen
 
 | Area | Status |
 | --- | --- |
+| A5 - Test/Holdout Runs | Done; test-holdout queue completed successfully. |
+| A6 - Report Overnight Test-Holdout Queue | Done; test-holdout evaluation report completed in [test_holdout_evaluation_report_20260527.md](../experiments/synthesis/test_holdout_evaluation_report_20260527.md). |
 | R10 - Write Gan Promotion/Holdout Selection Review | Done; [gan_s0_r10_promotion_holdout_selection_review_20260526.md](../experiments/gan/gan_s0_r10_promotion_holdout_selection_review_20260526.md) selects builder-gap v1 GPT/Qwen for Gan test-holdout reporting and holds R9 as schema-recovery validation evidence. |
-| R4 - Refresh Experiment Registry For Current Defaults | Done; registry row count is 214, with current ExECT clean-ladder/S5 defaults, Gan builder-gap defaults, late R9 recovery evidence, GPT exact-policy comparison, and superseded F0/hybrid-resolution artifacts marked. |
+| A2 - Run Best-Closed Comparison Anchors | Done; [exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md](../experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md) adds the S5 GPT 5.5 fixed-stack anchor. S4 GPT 5.5 already existed; S5 GPT 5.5 did not improve the overall headline, so no further A2 anchor is pulled without a new paper claim need. |
+| R4 - Refresh Experiment Registry For Current Defaults | Done; registry row count is 215, with current ExECT clean-ladder/S5 defaults including the A2 GPT 5.5 S5 anchor, Gan builder-gap defaults, late R9 recovery evidence, GPT exact-policy comparison, and superseded F0/hybrid-resolution artifacts marked. |
 | Gan R9 - Address Gan Quantified Unknown Hybrids Upstream | Done; v1.8 prompt paired with prediction-bridge recovery policy improved schema validity (99.7%, 298 valid predictions) but is held after R10, not promoted to holdout. |
 | Gan R1.1 schema-guard cap-25 (R1.1c) | Done; run `gan_s0_l2_qwen_exact_policy_cap25_qwen35b_ollama_20260526T092006Z` has 100% schema validity, 100% evidence support, 68.0% monthly accuracy, 76.0% Purist, and 84.0% Pragmatic accuracy. Decision: Pass; proceed to full R1.1 replay. |
 | Gan R1.1 schema-guard full validation replay | Done; run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T092508Z` completed with 93.3% schema validity, 98.9% evidence support, 71.3% monthly, 79.2% Purist, and 83.9% Pragmatic accuracy. Clean rejections (20 records) successfully converted to abstentions; inequality operator bug fixed. |
@@ -143,30 +248,32 @@ No active card remains in backlog. New backlog items should be useful but not re
 
 ## Dependency Notes
 
-- R1.1 full validation, schema-guard replay, R9 recovery, GPT exact-policy comparison, and R10 holdout selection are complete; Gan builder-gap v1 GPT/Qwen is unblocked for synthetic test-holdout reporting.
+- R1.1 full validation, schema-guard replay, R9 recovery, GPT exact-policy comparison, R10 holdout selection, and A5/A6 holdout reporting are complete; future work should not tune from test outcomes.
 - R5-R8 are complete; they repaired adapter contract behavior without changing scorer semantics, and the late R9 recovery row is held as schema-recovery evidence after R10.
 - R2 and R3 are complete; use the May 25 table pack and claims/caveats note for paper drafting.
 - R4 is complete; registry rows now distinguish current defaults, held validation candidates, and superseded arms.
-- A2 should pull only if a closed-model anchor would materially strengthen a paper claim.
+- A2 is complete for the currently material paper claim: the S5 GPT 5.5 anchor did not improve the fixed-stack headline, and further closed-model anchors should require a new explicit claim need.
 - A3 depends on paper narrative need and should not consume local model capacity during R9.
 - A4 requires a new preregistration and cap-25 gate before any full validation.
-- A5 ExECT S5 GPT/Qwen holdout is unblocked as a one-shot paired confirmation set; A5 Gan builder-gap v1 GPT/Qwen holdout is unblocked by R10.
+- R11 should be pulled before R12/R13 model execution because it addresses the highest-value unsolved Gan bottleneck: temporal/date reasoning.
+- R12 and R13 can be designed in parallel with R11, but their first model runs should be capped and should not overlap with local Qwen jobs.
+- R14 is analysis-only until it justifies a new compact optimizer gate.
 - B1 and B2 require explicit protocol decisions before implementation.
 
 ## Parallelization Opportunities
 
-- **Safe now:** Overnight holdout queue launch and reporting can proceed under the frozen-config protocol.
-- **Single-threaded:** Any renewed Gan Qwen/Ollama validation job or any new Gan test-config creation outside the R10-selected builder-gap v1 pair.
+- **Safe now:** R11 preregistration, R12 skeleton design, R13 aggregation protocol design, and R14 GEPA postmortem can proceed without model calls.
+- **Single-threaded:** Any Qwen/Ollama model execution, especially self-consistency or GEPA gates.
 - **Blocked together:** B1 and B2 depend on reporting/scorer protocol decisions.
-- **Proceed after gates:** A2 is unblocked for prioritization by the May 25 paper pack; A3 after paper-need confirmation; A4 after preregistration.
+- **Proceed after gates:** A3 after paper-need confirmation; A4 after preregistration; A7 after R11 defines the first temporal tool interface.
 
 ## Recommended Next Pull
 
-1. **A5 - Launch `scripts/run_overnight_test_queue.ps1` detached tonight with `Start-Process` from `C:\Users\cbrow\Code\dspy-extraction`; report the new `runs/overnight_test_logs/test_holdout_overnight_queue_*.log` path and first active experiment.**
-2. **A6 - Report the overnight test-holdout queue results with run IDs, metrics, and no tuning recommendations based on test outcomes.**
-3. **A2 - Pull only the closed-model anchor that directly supports a paper claim, if the manuscript still needs it.**
+1. **R11 - Preregister the Gan temporal/date-stage ablation grid.** Make the comparison group, axis, stage graph IDs, varied factor, cap-25 gates, and scorer caveats explicit.
+2. **R12 - Draft the CLINES-style entity-first skeleton after R11 names the first date/event interface.** Keep it capped and scorer-stable.
+3. **R13/R14 - In parallel, design the self-consistency aggregation protocol and write the GEPA failure postmortem.** Do not launch model runs until the protocols are reviewed.
 
-This pull moves from validation-candidate selection into frozen holdout reporting.
+This pull moves from frozen holdout reporting into a cleaner ablation program.
 
 ## Standing Guardrails
 
@@ -176,6 +283,9 @@ This pull moves from validation-candidate selection into frozen holdout reportin
 - Keep arm rejection separate from mechanism rejection; name `decision_scope` in inspection docs.
 - ExECT S5 families are diagnosis, seizure type, annotated medication, investigation, and seizure frequency.
 - High-recall ExECT frequency candidates remain the baseline; high-precision pruning is rejected.
+- CLINES-style entity-first and date-processing stages are open mechanisms, not defaults.
+- Self-consistency is a compute-allocation ablation; report variance, latency, and cost, not only accuracy.
+- Tool-during and GEPA remain open mechanisms with prior arm rejects; new work needs preregistered comparison groups.
 - S2/S3 clean-ladder ports include only transferable promoted S5 techniques.
 - Do not overlap local Qwen jobs on the same Ollama instance.
 - Cursor SDK drafts are leads, not evidence, until promoted from primary artifacts.

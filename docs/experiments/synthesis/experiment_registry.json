@@ -11,6 +11,7 @@
     "docs/experiments/gan/gan_s0_r9_recovery_and_exact_policy_summary_20260526.md",
     "docs/experiments/synthesis/paper_result_table_pack_20260525.md",
     "docs/experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md",
+    "docs/experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md",
     "docs/experiments/gan/gan_s0_r10_promotion_holdout_selection_review_20260526.md"
   ],
   "caveats": [
@@ -20,9 +21,10 @@
     "Step 4 added comparison_groups arrays for curated rows that legitimately participate in more than one analysis; comparison_group remains the primary group for simple consumers.",
     "This is the Step 1 registry seed; controlled vocabularies and validation are planned in later steps.",
     "2026-05-26 refresh added curated rows for current ExECT clean-ladder/S5 defaults and late Gan R9 recovery artifacts; these rows are documentation hygiene and do not change scorer semantics.",
-    "Gan R9 recovery rows identify validation candidates only; Gan test-holdout selection still requires an explicit promotion/holdout review."
+    "Gan R9 recovery rows identify validation candidates only; Gan test-holdout selection still requires an explicit promotion/holdout review.",
+    "2026-05-26 A2 added the ExECT S5 GPT 5.5 fixed-stack anchor as closed-model comparison evidence; it does not change the S5 operational default."
   ],
-  "row_count": 214,
+  "row_count": 215,
   "experiments": [
     {
       "experiment_id": "gan_s0_gpt4_1_mini_error_taxonomy_policy_v1_4_slice",
@@ -17249,6 +17251,96 @@
       },
       "config_paths": "configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama.json",
       "notes": "decision_scope: operational. Accepted Qwen true-v2b local transfer / near-parity evidence; supersedes prior v1/A3 Qwen comparison."
+    },
+    {
+      "experiment_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai",
+      "dataset": "exect_v2",
+      "schema_complexity": "exect_s5",
+      "clinical_task_family": [
+        "multi_family"
+      ],
+      "model_track": "gpt5_5",
+      "program_architecture": "verify_repair",
+      "hybrid_balance_class": [
+        "H2_pre_deterministic",
+        "H1_post_deterministic",
+        "H4_deterministic_first_llm_adjudicates"
+      ],
+      "deterministic_roles": [
+        "temporal_candidate_generation",
+        "controlled_vocabulary_filter",
+        "field_family_scoring",
+        "json_schema_constraint",
+        "pydantic_validation"
+      ],
+      "llm_roles": [
+        "clinical_field_extraction",
+        "verification",
+        "evidence_quote_generation"
+      ],
+      "interleaving_positions": [
+        "pre",
+        "during",
+        "post"
+      ],
+      "knowledge_sources": [
+        "benchmark_label_policy",
+        "gold_audit_policy",
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "control_modes": [
+        "soft_hint",
+        "hard_constraint",
+        "posthoc_correction"
+      ],
+      "context_strategy": "full_note_plus_exect_frequency_structured_slots",
+      "evidence_strategy": "model_quote_with_diagnostic_span_check",
+      "normalization_strategy": "benchmark_bridge",
+      "verification_strategy": "llm_verifier",
+      "schema_integrity_strategy": [
+        "json_schema",
+        "pydantic_validation"
+      ],
+      "example_strategy": "manual_few_shot_or_policy_examples",
+      "comparison_group": "exect_s5_frequency_verify_v2b_model_comparison",
+      "comparison_groups": [
+        "exect_s5_frequency_verify_v2b_model_comparison"
+      ],
+      "fixed_controls": {
+        "schema_level": "exect_s5",
+        "scorer": "exect_s5_core_field_family_deterministic_v1",
+        "model_config_path": "configs/models/gan_s0_gpt5_5_openai.json",
+        "split": "exectv2_fixed_v1:validation"
+      },
+      "varied_factor": "model_track",
+      "run_scope": "full_validation",
+      "canonical_run_id": "exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z",
+      "outcome": "hold",
+      "decision_doc": "docs/experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md",
+      "metric_caveats": [
+        "Fixed ExECTv2 validation split; not published ExECTv2 benchmark reproduction.",
+        "A2 closed-model anchor under the fixed S5 v2b stack; did not improve the overall S5 headline."
+      ],
+      "artifact_paths": [
+        "runs/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z"
+      ],
+      "headline_metric": {
+        "name": "micro_f1",
+        "value": 0.825892857142857,
+        "secondary": {
+          "micro_precision": 0.7740585774058577,
+          "micro_recall": 0.8851674641148325,
+          "diagnosis_f1": 0.8831168831168832,
+          "seizure_type_f1": 0.7368421052631579,
+          "annotated_medication_f1": 0.8846153846153846,
+          "investigation_f1": 0.9491525423728815,
+          "seizure_frequency_f1": 0.7446808510638299,
+          "evidence_quote_support_rate": 0.9954337899543378
+        }
+      },
+      "config_paths": "configs/experiments/exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai.json",
+      "notes": "decision_scope: arm. A2 best-closed S5 anchor: GPT 5.5 slightly improved seizure-frequency F1 but lowered pooled micro F1 and seizure-type F1, so it does not displace the GPT 4.1-mini S5 headline anchor."
     }
   ]
 }

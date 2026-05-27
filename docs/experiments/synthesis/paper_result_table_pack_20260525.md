@@ -56,8 +56,9 @@ Primary sources: `docs/experiments/exect/exect_s1_clean_ladder_qwen_validation_v
 | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | --- |
 | GPT 4.1-mini | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt4_1_mini_20260524T211229Z` | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b` | validation / 40 | `exect_s5_core_field_family_deterministic_v1` | **85.8%** | 82.1% | **90.0%** | **73.9%** | Current S5 operational default. |
 | Qwen3.6:35b / Ollama | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_qwen35b_ollama_20260525T072245Z` | same true-v2b stack | validation / 40 | same | 85.4% | **83.9%** | 87.1% | 71.4% | Accepted local transfer / near-parity; not a Qwen lead and not deployment readiness. |
+| GPT 5.5 | `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z` | same true-v2b stack | validation / 40 | same | 82.6% | 77.4% | 88.5% | 74.5% | A2 closed-model anchor; does not displace GPT 4.1-mini as S5 headline anchor despite slightly higher frequency F1. |
 
-Primary source: `docs/experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md`.
+Primary sources: `docs/experiments/synthesis/l1_2_s5_local_vs_closed_comparison_20260525.md`; `docs/experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md`.
 
 ## Table 5 - Rejected Or Superseded Arms For Narrative Control
 
@@ -79,6 +80,7 @@ Primary source: `docs/experiments/synthesis/paper_frozen_arm_reject_table_202605
 | Gan Qwen local transfer remains weaker than GPT on monthly accuracy, but L2 exact-policy cap-25 suggests a targeted improvement path. | Supported with gate caveat | Keep the 69.6% exact-policy result as cap-25 only until full validation completes. |
 | ExECT clean ladder now supports a coherent local Qwen breadth story across S1-S4. | Supported with caveat | State that field-family scope changes across rungs and S3 sparse families remain weak. |
 | ExECT S5 v2b has accepted Qwen local transfer near GPT performance. | Supported | Say near-parity on synthetic validation, not Qwen-leading and not deployment-ready. |
+| GPT 5.5 improves the promoted ExECT S5 overall headline. | Unsupported by A2 | GPT 5.5 slightly improves seizure-frequency F1 but lowers pooled micro F1 and seizure-type F1 under the fixed v2b stack. |
 | The project beats published ExECTv2 or Gan benchmarks. | Unsupported / blocked | Requires CUI-aware ExECT reproduction and Gan Real reporting protocol/access. |
 
 ## Verification Notes
