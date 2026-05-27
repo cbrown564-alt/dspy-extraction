@@ -6,65 +6,95 @@
 
 ## Current Priorities
 
-1. **Preregister the next Gan temporal/date-stage ablation grid.** The holdout queue is complete; the next research value is cleaner ablation of temporal reasoning, not additional default polishing.
-2. **Test CLINES-inspired decomposition as a real stage-graph hypothesis.** Specifically: entity tagging with offsets/context before normalization/date processing and final schema attribute extraction.
-3. **Add self-consistency as a controlled compute-allocation ablation.** Measure both accuracy and response variance before considering more complex multi-agent systems.
-4. **Reopen tool-during and GEPA only through scoped preregistrations.** Prior ReAct and GEPA outcomes are arm rejects, not mechanism closures; new work must isolate tool interface, optimizer objective, and model track.
+1. **Run and analyze the preregistered Gan cap-25 gates.** R11/R12/R13 designs are complete; the next value is executing the capped GPT 4.1-mini experiments and writing decision notes, not designing more arms.
+2. **Promote only from explicit decision reports.** Each run needs a short artifact that states pass/hold/reject, temporal/date error findings, variance/cost caveats where relevant, and whether a full-validation or Qwen-transfer follow-up is justified.
+3. **Keep optimizer work gated by the R14 postmortem.** Prior GEPA failures are arm rejects; Qwen GEPA is blocked until a hosted compact-delta instruction first clears a cap gate.
+4. **Add paper-reproduction scorer infrastructure before comparing to Gan 2026 paper numbers.** Keep canonical Gan metrics separate from author-evaluator compatibility metrics.
 5. **Preserve reproducibility and scorer semantics.** No scorer, loader, gold-label, or test-holdout behavior changes without explicit tests and documentation.
 
-## Recent Findings To Carry Forward
+## Carry-Forward Signals
 
 | Finding | Implication |
 | --- | --- |
-| ExECT current paper defaults are stable: S5 v2b is promoted; Qwen S1-S4 clean ladder is coherent; S2/S3 GPT anchors include only transferable S5 lessons. | Use the May 25 table pack and claims/caveats note for manuscript numbers; do not reopen ExECT defaults unless a paper claim requires it. |
-| Gan G0 remains GPT-led: 80.6% monthly GPT vs 70.7% Qwen; Qwen errors are mixed, not a uniform local-model failure. | Target narrow Qwen policy/calibration gates rather than broad mechanism search. |
-| Gan R1.1 full validation had useful category scores but failed schema validity: 70.3% monthly, 78.4% Purist, 83.3% Pragmatic, 90.0% schema validity. | Do not promote R1.1 as-is. R5-R8 added tested guards for null no-reference outputs, final-slot noncanonical labels, and narrow inequality repair. |
-| R5-R8 preserve scorer semantics: invalid hybrids/concatenations/prose are rejected with metadata; leading inequality repair is allowed only when the stripped label is already canonical. | The guarded replay improved contract behavior, but R9 must decide whether quantified unknown hybrids are prevented upstream or handled by a verifier before any Gan test selection. |
-| Gan R1.1 schema-guard replay is complete but not yet the final policy. | Treat `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T092508Z` as validation evidence for R9/promotion review, not as an automatic holdout candidate. |
-| Experiment registry is refreshed for current defaults and late R9 evidence. | `experiment_registry.json` now includes curated rows for ExECT clean-ladder/S5 defaults, Gan R9 Qwen recovery, GPT exact-policy comparison, and superseded Gan hybrid-resolution/F0 artifacts. |
-| Gan R10 promotion/holdout review is complete. | R10 selects builder-gap v1 GPT as the primary Gan test-holdout candidate and builder-gap v1 Qwen as local-transfer companion; R9 Qwen recovery is held as schema-recovery evidence, not promoted to holdout. |
-| Gan R9 recovery run is successful: v1.8 prompt + active recovery policy is the current Qwen validation candidate. | Run `gan_s0_l2_qwen_exact_policy_full_qwen35b_ollama_20260526T122351Z` delivered 99.7% schema validity rate (1 invalid abstention), 69.1% monthly accuracy, and 298 valid predictions. |
-| GPT-4.1-mini exact policy validation run is successful. | Run `gan_s0_l2_exact_policy_full_gpt4_1_mini_20260526T123247Z` delivered 99.7% schema validity (1 invalid natural abstention) and 78.5% monthly frequency accuracy on the full validation split (299 records). |
-| A2 ExECT S5 GPT 5.5 closed-model anchor is complete. | Run `exect_s5_frequency_pre_vocab_am_guard_frequency_verify_v2b_full_gpt5_5_openai_20260526T130247Z` delivered 82.6% micro F1 and 74.5% seizure-frequency F1 under the fixed v2b stack; it does not displace GPT 4.1-mini as the S5 headline anchor. |
-| Rejected arms remain rejected: S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms. | Keep them out of active planning unless a new preregistration changes the decision question. |
-| Retrospective review updated the research focus. | [experimentation_retrospective_report.md](../experiments/synthesis/experimentation_retrospective_report.md) now emphasizes cleaner ablations, holdout split sensitivity, CLINES-style date/entity stages, self-consistency, proper tool-during tests, and GEPA postmortem work. |
-| CLINES suggests two underexplored skeletons. | Specialist date processing and entity-first tagging should be tested as explicit stage graph/executor hypotheses, not folded into prompt tweaks. |
-| Holdout wins are selective, not broad local-model superiority. | Qwen wins some ExECT S5 and Gan category metrics, but GPT still leads Gan monthly accuracy; future claims need per-surface wording. |
+| ExECT paper defaults are stable. | Use the May 25 table pack and claims/caveats note; reopen ExECT only for a concrete paper claim or targeted S5 frequency iteration. |
+| Gan default remains GPT-led. | Builder-gap v1 is the operational default: GPT 80.6% monthly vs Qwen 70.7%; Qwen work should be narrow transfer/calibration, not broad mechanism search. |
+| Gan R9/Qwen recovery improved schema validity but did not become the holdout candidate. | Keep R9 as schema-recovery evidence after R10; do not tune from test-holdout outcomes. |
+| R11/R12/R13 are preregistered but not run. | Pull implementation, capped execution, and analysis cards before designing additional Gan S0 mechanisms. |
+| R14 GEPA postmortem is complete. | Qwen GEPA is not justified now; reopen only through a hosted compact-delta gate with instruction-length, semantic-label, schema, evidence, and token/cost controls. |
+| Rejected arms remain rejected. | S5 per-family parallel decomposition, S1 family-split probes, Gan unknown-overuse, GEPA G1/G2, high-precision frequency pruning, and medication temporal guard arms need new preregistrations to reopen. |
+| Tool-during and GEPA remain open mechanisms with prior failed arms. | New work must isolate interface/objective/model track and compare against equivalent pre/post deterministic helpers. |
+| Gan scorer comparison found a paper-reproduction mismatch. | Current canonical metrics must not be compared to Gan 2026 paper numbers without an explicit `gan2026_paper_reproduction` scorer mode. |
 
 
 ## Ready
 
-### R11 - Preregister Gan Temporal/Date-Stage Ablation Grid
+### R32 - Implement And Run R11 Gan Temporal/Date Cap-25 Gate
 
-- **Outcome:** A preregistration and config plan for comparing specialist date/event extraction strategies under the same Gan S0 downstream adjudicator and scorer.
-- **Axis:** 1/2 first; stage graph and stage executor placement.
-- **Candidate arms:** deterministic date extractor, LLM date extractor, hybrid deterministic+LLM merge, tool-during date resolver.
-- **Dependencies:** none; use GPT 4.1-mini cap-25 before any Qwen/full validation.
-- **Validation:** cap-25 gate with monthly, Purist, Pragmatic, schema validity, evidence support, and temporal-error slice reporting.
-- **Notes:** Do not change Gan scorer semantics; gold remains `seizure_frequency_number[0]`.
+- **Outcome:** Configs/adapters and GPT 4.1-mini cap-25 runs for the R11 D0-D4 temporal/date-stage grid.
+- **Axis:** Gan S0 temporal/date reasoning stage graph.
+- **Dependencies:** [R11 preregistration](../experiments/gan/gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md); fixed canonical Gan scorer semantics.
+- **Parallelizable:** implementation can overlap with R33 template setup; model execution should be one run queue at a time.
+- **Owner:** unassigned.
+- **Validation:** run artifacts for each preregistered arm, scorer report, schema-validity/evidence-support checks, and temporal-error slice export.
+- **Notes:** Do not add new arms while executing R11. The purpose is to test the date/event payload interface and D0-D4 comparison group as written.
 
-### R12 - Design CLINES-Style Entity-First Pipeline Gate
+### R33 - Analyze R11 Temporal/Date Results
 
-- **Outcome:** A small preregistered cap-25 gate for `note -> entity tags with offsets/context -> normalization/date processing -> attribute extraction -> schema aggregation`.
-- **Axis:** 1 first, then 2; tests whether entity recall and schema filling should be disentangled.
-- **Candidate first target:** Gan S0 if the date-stage grid needs entity/event candidates, otherwise ExECT S5 to test broad core-field extraction.
-- **Dependencies:** inspect CLINES pipeline notes and map the skeleton to existing primitives/contracts.
-- **Validation:** compare against promoted default on the same split/cap without scorer changes.
+- **Outcome:** Short decision report with pass/hold/reject for the R11 date-stage mechanism and a recommendation on full-validation, Qwen-transfer, or redesign.
+- **Axis:** analysis / promotion decision.
+- **Dependencies:** R32 run artifacts.
+- **Parallelizable:** after R32; can overlap with R34 implementation if model execution is idle.
+- **Owner:** unassigned.
+- **Validation:** report links run IDs, cap-25 metrics, schema validity, evidence support, temporal-error findings, scorer mode, and decision caveats.
+- **Notes:** This is where R11 results should be interpreted; do not bury analysis in the Kanban itself.
 
-### R13 - Self-Consistency Variance Probe
+### R34 - Implement And Run R12 CLINES Entity-First Cap-25 Gate
 
-- **Outcome:** A controlled repeated-sampling protocol for Gan S0 and/or ExECT S5 that reports accuracy, response variance, cost, and latency.
-- **Axis:** 3 implementation variant / compute allocation.
-- **Candidate arms:** single pass, majority vote over repeated runs, confidence-weighted vote, deterministic tie-break.
-- **Dependencies:** choose one promoted surface and one capped split; avoid tuning prompts from holdout results.
-- **Validation:** cap-25 first; report record-level disagreement and whether variance predicts errors.
+- **Outcome:** Configs/adapters and GPT 4.1-mini cap-25 runs for the R12 C0-C2 entity-first stage graph.
+- **Axis:** Gan S0 entity-first decomposition / CLINES-inspired stage graph.
+- **Dependencies:** [R12 preregistration](../experiments/gan/gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md), accepted R11 payload interface, fixed canonical Gan scorer semantics.
+- **Parallelizable:** implementation can overlap with R32/R33; launch after R11 execution unless explicitly testing independent queue behavior.
+- **Owner:** unassigned.
+- **Validation:** run artifacts for C0-C2, offset/context entity-tag inspection sample, scorer report, schema-validity/evidence-support checks.
+- **Notes:** Keep the entity tag interface stable enough that R12 can be compared to R11 instead of becoming a separate prompt experiment.
 
-### R14 - GEPA Failure Postmortem And Qwen Gate Design
+### R35 - Analyze R12 Entity-First Results
 
-- **Outcome:** A short optimizer postmortem explaining GPT G1/G2 failure modes and defining whether a compact Qwen GEPA gate is justified.
-- **Axis:** 3 implementation variant / optimizer strategy.
-- **Dependencies:** inspect generated GEPA instructions, metric objective, output length/cost, and failure examples.
-- **Validation:** no new model run until the postmortem defines a smaller benchmark-contract-aligned objective.
+- **Outcome:** Decision report stating whether entity-first decomposition improves temporal/frequency extraction, whether the entity interface should be retained, and whether a combined R11+R12 follow-up is justified.
+- **Axis:** analysis / mechanism decision.
+- **Dependencies:** R34 run artifacts and R33 R11 decision report.
+- **Parallelizable:** after R34; can overlap with R36 implementation planning.
+- **Owner:** unassigned.
+- **Validation:** report links run IDs, cap-25 metrics, entity-offset error findings, temporal/frequency error slices, scorer mode, and integration decision.
+- **Notes:** Compare mechanism behavior, not only headline monthly accuracy.
+
+### R36 - Implement And Run R13 Self-Consistency Variance Probe
+
+- **Outcome:** GPT 4.1-mini cap-25 repeated-sampling runs and aggregation reports for the R13 S0-S4 compute-allocation arms.
+- **Axis:** compute allocation / response variance.
+- **Dependencies:** [R13 preregistration](../experiments/gan/gan_s0_self_consistency_variance_probe_preregistration_20260528.md); frozen builder-gap v1 surface; cost/latency logging.
+- **Parallelizable:** implementation can proceed now; execution should wait until R11/R12 cap-25 jobs are not competing for attention.
+- **Owner:** unassigned.
+- **Validation:** per-arm accuracy, response variance, disagreement examples, schema validity, latency, cost, and deterministic tie-break behavior.
+- **Notes:** This is not a multi-agent claim. Treat it as a controlled compute-allocation ablation.
+
+### R37 - Analyze R13 Self-Consistency Results
+
+- **Outcome:** Decision report stating whether self-consistency improves Gan S0 enough to justify additional compute, and whether any unstable examples should seed future error analysis.
+- **Axis:** analysis / compute-allocation decision.
+- **Dependencies:** R36 run artifacts.
+- **Parallelizable:** after R36.
+- **Owner:** unassigned.
+- **Validation:** report links run IDs, aggregation method, variance/cost/latency metrics, scorer mode, and pass/hold/reject recommendation.
+- **Notes:** Accuracy without variance and cost is not sufficient evidence.
+
+### R31 - Implement Gan 2026 Paper-Reproduction Scorer Mode
+
+- **Outcome:** Add an explicit `gan2026_paper_reproduction` scorer mode alongside the current canonical Gan scorer, reproducing Yujian Gan's author-provided evaluator semantics for comparison to paper results.
+- **Axis:** scorer/reproducibility infrastructure; not a model-performance arm.
+- **Dependencies:** `docs/datasets/gan/gan_scorer_comparison_report.md`, `data/Gan (2026)/previous_paper_scorer/`, and a Gan audit caveat update distinguishing paper-reproduction from clinical/canonical scorer semantics.
+- **Validation:** focused regression tests for no-reference vs unknown, seizure-free, dynamic `multiple`, range midpoint math, cluster labels, optional repair, and tolerance flags; generated reports must state scorer mode and options.
+- **Notes:** Do not silently rewrite existing Gan metrics. Existing experiment comparisons remain under their recorded scorer semantics until explicitly replayed.
 
 ## In Progress
 
@@ -95,7 +125,7 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 ### A7 - Tool-During Agent Tool Suite Design
 
 - **Outcome:** Define a proper tool-during ablation suite for date resolution, current/past event status, canonical frequency validation, medication/entity normalization, and rate/cluster calculation.
-- **Dependencies:** R11 should define the first temporal tool interface before broader tools are built.
+- **Dependencies:** R11 has defined the first date/event payload and optional tool-during resolver interface; broader tools should reuse that interface rather than inventing a parallel surface.
 - **Parallelizable:** design can proceed with R12; model execution should wait for R11.
 - **Owner:** unassigned.
 - **Validation:** tool-during arms must be compared against equivalent pre/post deterministic helpers so the varied factor is genuinely agent-loop tool use.
@@ -213,6 +243,10 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 | --- | --- |
 | A5 - Test/Holdout Runs | Done; test-holdout queue completed successfully. |
 | A6 - Report Overnight Test-Holdout Queue | Done; test-holdout evaluation report completed in [test_holdout_evaluation_report_20260527.md](../experiments/synthesis/test_holdout_evaluation_report_20260527.md). |
+| R12 - Design CLINES-Style Entity-First Pipeline Gate | Done; [gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md](../experiments/gan/gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md) defines `gan_s0_entity_first_stage_graph_gpt_cap25_v1`, C0-C2 arms, entity tag interface, gates, and R11 integration decision rules. |
+| R11 - Preregister Gan Temporal/Date-Stage Ablation Grid | Done; [gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md](../experiments/gan/gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md) defines `gan_s0_temporal_date_stage_gpt_cap25_v1`, `g3_date_events_candidates_adjudicate`, D0-D4 arms, config plan, gates, and temporal-error slice reporting. |
+| R13 - Self-Consistency Variance Probe | Done; [gan_s0_self_consistency_variance_probe_preregistration_20260528.md](../experiments/gan/gan_s0_self_consistency_variance_probe_preregistration_20260528.md) defines `gan_s0_self_consistency_compute_allocation_gpt_cap25_v1` over frozen Gan builder-gap v1, S0-S4 aggregation arms, variance diagnostics, cost/latency reporting, and cap-25 gates. No model runs launched. |
+| R14 - GEPA Failure Postmortem And Qwen Gate Design | Done; [gan_s0_r14_gepa_failure_postmortem_qwen_gate_design_20260528.md](../experiments/gan/gan_s0_r14_gepa_failure_postmortem_qwen_gate_design_20260528.md) concludes compact Qwen GEPA is not justified now; Qwen GEPA stays blocked until a hosted compact-delta instruction clears a cap gate. No model runs launched. |
 | R10 - Write Gan Promotion/Holdout Selection Review | Done; [gan_s0_r10_promotion_holdout_selection_review_20260526.md](../experiments/gan/gan_s0_r10_promotion_holdout_selection_review_20260526.md) selects builder-gap v1 GPT/Qwen for Gan test-holdout reporting and holds R9 as schema-recovery validation evidence. |
 | A2 - Run Best-Closed Comparison Anchors | Done; [exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md](../experiments/exect/exect_s5_best_closed_gpt5_5_anchor_inspection_20260526.md) adds the S5 GPT 5.5 fixed-stack anchor. S4 GPT 5.5 already existed; S5 GPT 5.5 did not improve the overall headline, so no further A2 anchor is pulled without a new paper claim need. |
 | R4 - Refresh Experiment Registry For Current Defaults | Done; registry row count is 215, with current ExECT clean-ladder/S5 defaults including the A2 GPT 5.5 S5 anchor, Gan builder-gap defaults, late R9 recovery evidence, GPT exact-policy comparison, and superseded F0/hybrid-resolution artifacts marked. |
@@ -248,38 +282,37 @@ These threads are no longer backlog. Keep them visible and proceed as soon as th
 
 ## Dependency Notes
 
-- R1.1 full validation, schema-guard replay, R9 recovery, GPT exact-policy comparison, R10 holdout selection, and A5/A6 holdout reporting are complete; future work should not tune from test outcomes.
-- R5-R8 are complete; they repaired adapter contract behavior without changing scorer semantics, and the late R9 recovery row is held as schema-recovery evidence after R10.
-- R2 and R3 are complete; use the May 25 table pack and claims/caveats note for paper drafting.
-- R4 is complete; registry rows now distinguish current defaults, held validation candidates, and superseded arms.
-- A2 is complete for the currently material paper claim: the S5 GPT 5.5 anchor did not improve the fixed-stack headline, and further closed-model anchors should require a new explicit claim need.
-- A3 depends on paper narrative need and should not consume local model capacity during R9.
-- A4 requires a new preregistration and cap-25 gate before any full validation.
-- R11 should be pulled before R12/R13 model execution because it addresses the highest-value unsolved Gan bottleneck: temporal/date reasoning.
-- R12 and R13 can be designed in parallel with R11, but their first model runs should be capped and should not overlap with local Qwen jobs.
-- R14 is analysis-only until it justifies a new compact optimizer gate.
+- R11/R12/R13 design cards are done; R32-R37 are the active execution and analysis chain.
+- R32 should run before R34 so the R11 date/event payload is tested before the CLINES entity-first gate depends on it.
+- R33 should be written before any full-validation or Qwen-transfer follow-up from R11.
+- R35 should compare against R33, not only against historical builder-gap metrics.
+- R36/R37 can proceed after the R11/R12 run queue because self-consistency competes mainly for execution attention and cost tracking, not interface design.
+- R14 is complete; Qwen GEPA stays blocked unless a hosted compact-delta gate first produces a short passing instruction.
+- R31 is scorer infrastructure and should be completed before making any direct claim against Gan 2026 paper metrics.
+- A3 depends on paper narrative need; A4 requires a new preregistration and cap-25 gate before full validation.
 - B1 and B2 require explicit protocol decisions before implementation.
 
 ## Parallelization Opportunities
 
-- **Safe now:** R11 preregistration, R12 skeleton design, R13 aggregation protocol design, and R14 GEPA postmortem can proceed without model calls.
-- **Single-threaded:** Any Qwen/Ollama model execution, especially self-consistency or GEPA gates.
+- **Safe now:** R32 implementation, R33 report scaffold, R34 implementation planning, R36 aggregation harness planning, and R31 scorer-mode design.
+- **Run queue:** Execute R11 first (R32), analyze it (R33), then execute R12 (R34) and analyze it (R35). Run R13 (R36) after those unless there is a deliberate reason to spend compute earlier.
+- **Single-threaded:** Any Qwen/Ollama model execution, self-consistency batches, and future GEPA gates.
 - **Blocked together:** B1 and B2 depend on reporting/scorer protocol decisions.
-- **Proceed after gates:** A3 after paper-need confirmation; A4 after preregistration; A7 after R11 defines the first temporal tool interface.
+- **Proceed after gates:** A7 after reviewing R11/R12 interfaces; A3 after paper-need confirmation; A4 after a new preregistration.
 
 ## Recommended Next Pull
 
-1. **R11 - Preregister the Gan temporal/date-stage ablation grid.** Make the comparison group, axis, stage graph IDs, varied factor, cap-25 gates, and scorer caveats explicit.
-2. **R12 - Draft the CLINES-style entity-first skeleton after R11 names the first date/event interface.** Keep it capped and scorer-stable.
-3. **R13/R14 - In parallel, design the self-consistency aggregation protocol and write the GEPA failure postmortem.** Do not launch model runs until the protocols are reviewed.
+1. **R32 - Implement and run the R11 Gan temporal/date cap-25 gate.** This is the first missing execution step after the completed design.
+2. **R33 - Analyze R11 temporal/date results.** Decide whether the date/event interface deserves full validation, Qwen transfer, or redesign.
+3. **R34 - Implement and run the R12 CLINES entity-first cap-25 gate.** Launch after R11 has produced enough evidence that the shared payload interface is usable.
 
-This pull moves from frozen holdout reporting into a cleaner ablation program.
+This pull moves the board from preregistered designs into executable Gan S0 evidence.
 
 ## Standing Guardrails
 
 - Do not silently change scorer semantics; update tests and document interpretation.
 - Gan gold is `seizure_frequency_number[0]`; `reference[0]` is diagnostic only.
-- Distinguish `unknown` from `no seizure frequency reference`.
+- Distinguish `unknown` from `no seizure frequency reference` in canonical Gan diagnostics; collapse no-reference into unknown only in an explicitly named Gan 2026 paper-reproduction scorer mode.
 - Keep arm rejection separate from mechanism rejection; name `decision_scope` in inspection docs.
 - ExECT S5 families are diagnosis, seizure type, annotated medication, investigation, and seizure frequency.
 - High-recall ExECT frequency candidates remain the baseline; high-precision pruning is rejected.

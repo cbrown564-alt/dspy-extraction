@@ -24,7 +24,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | --- | --- | --- |
 | Optimal stage count for Gan S0 | **open** | Cap-25 grid complete; A3 (`g2_candidates_adjudicate`) leads at 52% monthly — see `docs/experiments/gan/gan_s0_pipeline_stage_graph_gpt_cap25_v1_inspection_20260521.md` |
 | Optimal stage count for ExECT S1 | **open** | D1→L0→L1→L1+policy confounds stages with policy |
-| CLINES-style entity-first stage graph | **open** | Not yet tested as `note -> entity tags with offsets/context -> normalization/date processing -> attribute extraction -> schema aggregation`; added to Kanban as R12 on 2026-05-28 |
+| CLINES-style entity-first stage graph | **open** | R12 preregistered Gan S0 gate `gan_s0_entity_first_stage_graph_gpt_cap25_v1`: `note -> entity tags with offsets/context -> date/event payload -> candidate labels -> adjudication`; see `docs/experiments/gan/gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md`; no model runs yet |
 | Single-stage sufficient for Gan | **open** | — |
 | Three-stage (candidates+VR) necessary for Gan | **open** | Promoted arm is 2–3 stage; Phase 2 isolates stage graph while holding candidate source deterministic |
 
@@ -37,7 +37,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | Det temporal candidate generation (Gan) | **operational-freeze** | Expanded builders default 2026-05-21; cap-50 **68%** (+6pp) — `docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_cap50_v1_inspection_20260521.md`; full-val F0 **68.1%** (+3.0pp vs VR 65.1%) — **promote operational (arm)** `docs/experiments/gan/gan_s0_expanded_builders_prose_gpt_full_validation_v1_inspection_20260521.md`; mechanism class still **open** |
 | LLM temporal candidate generation (Gan) | **open** | Cap-25 JSON path rejected as arm (E2/E5 29.2% vs E1 52%); presentation not swept — `docs/experiments/gan/gan_s0_stage_executor_gpt_cap25_v1_inspection_20260521.md` |
 | LLM vs det for candidate stage (Gan) | **open** | Directional det > hybrid > LLM on cap-25; mechanism not closed (one LLM format) |
-| Specialist date/event extraction stage (Gan) | **open** | CLINES-style date processing has not been isolated; Kanban R11 will compare deterministic, LLM, hybrid, and tool-during date/event extraction under fixed downstream adjudication |
+| Specialist date/event extraction stage (Gan) | **open** | R11 preregistered `gan_s0_temporal_date_stage_gpt_cap25_v1` with D0-D4 deterministic, LLM, hybrid, and tool-during date/event arms under fixed downstream adjudication; see `docs/experiments/gan/gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md`; no model runs yet |
 | Verify-repair as second stage (Gan) | **open** | Cap-25 null on monthly; V6≡V0 (52%); det-evidence front-end harmful (V3–V5) — `docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
 | Verify-repair (ExECT S1) | **arm-reject** | `exect_s1_verification_verify_repair_cap25` −9.4pp micro |
 | Tool-during temporal (Gan H3) | **arm-reject** | `gan_s0_qwen35b_react_temporal_tools` slice — one tool surface |
@@ -60,7 +60,7 @@ Update when an inspection doc with `decision_scope: mechanism` closes a class, o
 | --- | --- | --- |
 | Prompt v4_11 (GPT S1) | **arm-reject** | cap-25 seizure −1.5pp |
 | Prompt v4_11 (Qwen S1) | **operational-freeze** | Hold promote blocked; seizure +18.5pp full |
-| Self-consistency / repeated sampling | **open** | Not yet tested; Kanban R13 proposes a controlled compute-allocation and variance probe before multi-agent escalation |
+| Self-consistency / repeated sampling | **open** | R13 preregistered Gan S0 compute-allocation probe `gan_s0_self_consistency_compute_allocation_gpt_cap25_v1` over frozen builder-gap v1; see `docs/experiments/gan/gan_s0_self_consistency_variance_probe_preregistration_20260528.md`; no model runs yet |
 | Evidence soft (ExECT S1) | **arm-reject** | cap-25 |
 | Evidence span-check (Gan) | **arm-reject** | V7 + Lane A on g2 skeleton; 9/25 abstentions cap-25 — `docs/experiments/gan/gan_s0_validation_ladder_gpt_cap25_v1_inspection_20260521.md` |
 | Bootstrap optimizer (ExECT S1) | **arm-reject** | cap-25 −5.1pp |
@@ -94,4 +94,7 @@ These are **arm-reject**, not mechanism-reject for the rows in that doc.
 - ExECT S4 medication precision guard full-validation L1/G0 pair
 - Gan deterministic candidate-builder gap analysis on enriched slice (G11–G15) — **Done** on 2026-05-23
 - G16 broader GPT validation of candidate-builder gap v1 on full validation split
+- Execute or implement R11 Gan temporal/date-stage cap-25 grid after reviewing the date/event payload interface: `docs/experiments/gan/gan_s0_temporal_date_stage_ablation_grid_preregistration_20260528.md`
+- Execute or implement R12 Gan entity-first cap-25 gate after reviewing entity-tag to R11 date/event adapter semantics: `docs/experiments/gan/gan_s0_clines_entity_first_pipeline_gate_preregistration_20260528.md`
+- Implement R13 self-consistency sample-batch runner and aggregation reports only after accepting the compute-allocation protocol: `docs/experiments/gan/gan_s0_self_consistency_variance_probe_preregistration_20260528.md`
 - Targeted builder gaps: seizure-type priority, long-window cluster phrasing
