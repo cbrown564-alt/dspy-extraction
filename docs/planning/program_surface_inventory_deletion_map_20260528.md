@@ -1,6 +1,6 @@
 # Program Surface Inventory And Deletion Map
 
-Status: active guidance
+Status: active guidance / C19 archive pass applied
 Date: 2026-05-28
 Kanban card: C2 - Program Surface Inventory And Deletion Map
 Depends on: `docs/planning/thermo_nuclear_codebase_architecture_audit_20260528.md`
@@ -21,15 +21,17 @@ Inputs inspected:
 - `docs/experiments/exect/README.md`
 - `docs/experiments/synthesis/README.md`
 - active experiment configs under `configs/experiments/`
+- archived replay configs under `archive/configs/`
 - active program modules under `src/clinical_extraction/programs/`
 - scripts under `scripts/` and `archive/scripts/`
 
 Observed surface counts:
 
-- 59 live experiment config JSON files under `configs/experiments/`
-- 45 archived run launcher scripts under `archive/scripts/`
+- 35 live experiment config JSON files under `configs/experiments/`
+- 307 archived experiment config JSON files under `archive/configs/`
+- 49 archived run launcher or utility scripts under `archive/scripts/`
 - 5 active program modules under `src/clinical_extraction/programs/`
-- 30 live scripts under `scripts/`
+- 35 live Python/PowerShell scripts under `scripts/`
 
 ## Active Surfaces To Preserve
 
@@ -65,36 +67,53 @@ provenance.
 | Candidate | Current status | Replacement / retained source | Required gate before archive/delete |
 | --- | --- | --- | --- |
 | Gan entity-first configs: `gan_s0_entity_first_c0_*`, `gan_s0_entity_first_c1_*` | R12 rejected arm; C1 severely regressed. | `docs/experiments/gan/gan_s0_r12_clines_entity_first_pipeline_gate_decision_20260528.md`; run IDs in that decision doc. | Config inventory row links each file to R12 and confirms no active Kanban card depends on rerunning it. |
-| Gan self-consistency configs and `scripts/run_self_consistency.py` | R13 rejected for current compute allocation. | `docs/experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md`. | Preserve script/configs in archive unless a new instability hypothesis reopens mechanism. |
-| Gan D2/D3 LLM/hybrid date-event configs | Diagnostic/rejected relative to D1 mechanism baseline. | R11/R15 date-stage decisions; D1 v1.2b config remains active. | Archive only after D1 v1.2b is represented in a typed program registry. |
-| Gan v1.2 broad guardrail configs | R15 showed broad relative-anchor/arithmetic guardrails regress. | `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md`; keep D1 v1.2b schema-guard-only. | Ensure reports label arithmetic/broad guardrails as diagnostic or rejected arms. |
+| Gan self-consistency configs and `archive/scripts/run_self_consistency.py` | R13 rejected for current compute allocation; archived in C19. | `docs/experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md`. | Preserve script/configs in archive unless a new instability hypothesis reopens mechanism. |
+| Gan D2/D3 LLM/hybrid date-event configs | Diagnostic/rejected relative to D1 mechanism baseline; archived in C19. | R11/R15 date-stage decisions; D1 v1.2b config remains active. | Keep archive rows loadable and labeled replay/provenance; do not rerun without a new preregistered mechanism hypothesis. |
+| Gan v1.2 broad guardrail configs | R15 showed broad relative-anchor/arithmetic guardrails regress; archived in C19. | `gan_s0_r15_d1_guardrail_ablation_decision_20260528.md`; keep D1 v1.2b schema-guard-only. | Ensure reports label arithmetic/broad guardrails as diagnostic or rejected arms. |
 | ExECT S4/S5 non-v2b stack variants with no live config | Rejected, diagnostic, or stale implementation branches inside `exect_s4.py`. | ExECT deep review plus S5 v2b config set. | Split S5 core first; then remove unreachable branches with S4/S5 tests green. |
 | `scripts/backfill_hybrid_cap25_registry.py` | Hard-coded historical registry backfill, 1k+ lines. | Current registry JSON plus decision docs; future generated views from typed program registry. | Registry validation/export tests pass; each hard-coded row has provenance in archive or registry. |
-| `scripts/register_gan_lane_a_cap25_registry.py` | One-off old registry registration. | Same registry-generation replacement as above. | Confirm no active docs instruct use of this script. |
+| `archive/scripts/register_gan_lane_a_cap25_registry.py` | One-off old registry registration; archived in C19. | Same registry-generation replacement as above. | Keep only as provenance; no active docs should instruct use of this script. |
 | Registry-derived matrix outputs predating May 28 | Superseded navigation. | `docs/experiments/synthesis/README.md` says registry exports must wait for May 28 statuses. | X1 component registry backfill complete before X3 matrix regeneration. Obsolete research atlas has been permanently removed. |
-| `scripts/generate_qwen_configs.py` | Likely one-off config generator. | Model/config compatibility docs if still needed. | Keep only if C2 inventory finds an active model-config workflow using it. |
+| `archive/scripts/generate_qwen_configs.py` | One-off config generator; archived in C19. | Model/config compatibility docs if still needed. | Keep only as provenance unless a current model-config workflow explicitly reopens it. |
 | Cursor SDK workflow scripts/docs in active tree | Useful provenance but outside current decomposition priority. | `docs/workstreams/cursor_sdk/` index/archive. | Do not delete; file under workstream/archive unless active docs still cite it. |
 
 ## Live Config Summary
 
-The live config tree currently contains 59 experiment configs. Grouped by
-dataset/schema/variant/scorer, the largest surfaces are:
+After C19, the live config tree contains 35 current-authority experiment
+configs. Rejected, historical, and replay/provenance configs moved to
+`archive/configs/` and remain loadable through `resolve_config_path` by
+basename.
 
 | Count | Surface |
 | ---: | --- |
-| 12 | Gan S0 temporal-candidates single-pass with canonical scorer |
 | 9 | ExECT S4 cause-bridge K0/K1 with S4 deterministic scorer |
-| 8 | Gan S0 date-events candidate single-pass with canonical scorer |
 | 6 | ExECT S5 v2b with S5 deterministic scorer |
+| 6 | Gan builder-gap v1 promoted baseline with canonical scorer |
 | 5 | ExECT S3 clean ladder with S3 deterministic scorer |
 | 4 | ExECT S2 clean ladder with S2 deterministic scorer |
 | 3 | ExECT S1 clean ladder v2 diagnosis-stable with S1 deterministic scorer |
-| 3 | ExECT S4 single-pass with S4 deterministic scorer |
+| 1 | Gan D1 v1.2b schema-guard-only mechanism baseline |
+| 1 | Gan G2 candidate-constrained diagnostic model slice |
 
-Immediate implication: the live config tree is mostly historical/diagnostic
-surface area. It should not be pruned blindly, but it can be moved behind an
-active/historical registry once the promoted baselines and rejected arms are
-encoded.
+Immediate implication: `configs/experiments/` is now a current-authority
+surface, not a broad historical inventory. The generated
+`docs/experiments/synthesis/program_variant_registry.md` is the active map for
+both live and archived config rows; archive rows are replay/provenance even when
+they match a current-authority variant family.
+
+## C19 Completion Notes
+
+C19 applied this map without changing scorer, loader, split, benchmark bridge,
+or metric semantics:
+
+- Archived rejected/historical/replay configs from `configs/experiments/` into
+  `archive/configs/`.
+- Archived one-off or historical scripts into `archive/scripts/`.
+- Kept archived configs loadable through the shared `resolve_config_path`
+  helper.
+- Regenerated the program variant report with separate active and archived
+  config inventory sections.
+- Deleted the obsolete generated research atlas surfaces and exporter.
 
 ## Cleanup Gates
 
@@ -114,19 +133,30 @@ Before any deletion or archive move:
 
 ## Recommended Next Cleanup Pull
 
-Start with a behavior-preserving program variant registry:
+The behavior-preserving program variant registry and first archive/delete pass
+are complete. The next cleanup pull is C20:
 
-1. Add a typed `ProgramVariantSpec` contract with dataset, schema level, variant,
-   scorer modes, prompt default, stage graph, status, replacement target, and
-   decision doc.
-2. Populate rows for the promoted Gan builder-gap v1, Gan D1 v1.2b, ExECT clean
-   ladder diagnostic surfaces, and ExECT S5 v2b.
-3. Generate a script/report from that registry that reproduces this C2 inventory.
-4. Only then start moving rejected configs/scripts into archive folders.
+1. Re-run the strict architecture/modularity review against the C12-C19 end
+   state.
+2. Update the architecture audit status with closed risks, intentionally
+   retained replay-provenance surfaces, and any residual P1/P2 findings.
+3. Keep any further archive movement tied to a decision doc, registry row, and
+   replay validation.
 
 ## Validation Run For This Inventory
 
-No code tests were run because this card produced an inventory artifact only.
-The inventory parsed live experiment configs with PowerShell `ConvertFrom-Json`,
-counted script/config surfaces, and cross-checked statuses against the active
-May 28 steering docs.
+The original C2 inventory parsed live experiment configs with PowerShell
+`ConvertFrom-Json`, counted script/config surfaces, and cross-checked statuses
+against the active May 28 steering docs.
+
+C19 then validated the archive move with:
+
+- `uv run pytest tests/test_program_variant_registry.py tests/test_experiment_configs.py tests/test_experiment_registry_validation.py tests/test_export_registry_matrix.py tests/test_run_self_consistency.py -q` passed, 236 tests.
+- `uv run pytest tests/test_experiment_runner.py tests/test_run_experiment_runtime.py -q` passed, 28 tests.
+- `uv run python scripts/validate_experiment_taxonomy.py --errors-only` exited
+  0 with the documented `canonical_run_missing_documented` warning and optional
+  provider preload warnings.
+- `uv run pytest -q` passed, 1002 tests.
+
+The taxonomy validator should remain part of future archive moves because it
+catches missing provenance and stale decision links.

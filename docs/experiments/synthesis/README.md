@@ -27,8 +27,10 @@ evidence, not active steering. Use this map before citing any synthesis doc.
 
 ## Registry Status
 
-`program_variant_registry.md` is the C4 current-authority/loadable-replay status
-view for program variants and live experiment configs.
+`program_variant_registry.md` is the C4/C19 current-authority/loadable-replay
+status view for program variants. After C19 it separates active config inventory
+from archived config inventory; `configs/experiments/` is the live
+current-authority config surface, while `archive/configs/` is replay/provenance.
 
 `experiment_registry_matrix_20260520.md` was refreshed by X3 after the May 28
 component pivot, R11-R15 Gan decisions, X1 component-ceiling backfill, C4

@@ -1,13 +1,27 @@
 from __future__ import annotations
 
+import importlib.util
 import json
+import sys
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
 
 import dspy
-from scripts.run_self_consistency import main
+
+SCRIPT_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "archive"
+    / "scripts"
+    / "run_self_consistency.py"
+)
+SPEC = importlib.util.spec_from_file_location("archived_run_self_consistency", SCRIPT_PATH)
+assert SPEC and SPEC.loader
+archived_run_self_consistency = importlib.util.module_from_spec(SPEC)
+sys.modules["archived_run_self_consistency"] = archived_run_self_consistency
+SPEC.loader.exec_module(archived_run_self_consistency)
+main = archived_run_self_consistency.main
 
 
 def test_run_self_consistency_disables_dspy_cache(tmp_path, capsys):
@@ -89,12 +103,12 @@ def test_run_self_consistency_disables_dspy_cache(tmp_path, capsys):
     mock_lm = MagicMock(spec=dspy.LM)
     mock_lm.cache = True  # starts as True
 
-    # Mock all the external calls in run_self_consistency.py
-    with patch("scripts.run_self_consistency.get_backend", return_value=mock_backend), \
-         patch("scripts.run_self_consistency.build_dspy_lm", return_value=mock_lm) as mock_build_lm, \
+    # Mock all the external calls in the archived replay script.
+    with patch("archived_run_self_consistency.get_backend", return_value=mock_backend), \
+         patch("archived_run_self_consistency.build_dspy_lm", return_value=mock_lm) as mock_build_lm, \
          patch("clinical_extraction.experiments.runner.load_split_records", return_value=([mock_record], [])), \
-         patch("scripts.run_self_consistency._predict_record", return_value=mock_doc), \
-         patch("scripts.run_self_consistency.score_gan_frequency_prediction", return_value={}):
+         patch("archived_run_self_consistency._predict_record", return_value=mock_doc), \
+         patch("archived_run_self_consistency.score_gan_frequency_prediction", return_value={}):
 
         # We also need to patch output files to avoid writing to actual runs/ directory
         with patch("pathlib.Path.mkdir"), patch("pathlib.Path.write_text"):

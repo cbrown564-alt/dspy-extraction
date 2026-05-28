@@ -39,8 +39,8 @@ Source artifacts reviewed:
 - Added a generated config inventory in
   `docs/experiments/synthesis/program_variant_registry.md`; every live config is
   resolved to exactly one variant row and one explicit status.
-- Reworded the generated report so "Loadable Config Count" is explicitly a
-  replay/provenance count, not an active experiment count.
+- Reworded the generated report so config counts are not active experiment
+  counts. C19 later split this into explicit active and archived config counts.
 
 ## Classification Summary
 
@@ -56,7 +56,7 @@ Typed registry rows: 76.
 | `mechanism_baseline` | 1 |
 | `operational_baseline` | 1 |
 
-Live config rows: 59.
+C4 snapshot live config rows: 59.
 
 | Status | Config rows |
 | --- | ---: |
@@ -68,7 +68,7 @@ Live config rows: 59.
 | `historical_arm` | 4 |
 | `mechanism_baseline` | 1 |
 
-Authority classes for live configs:
+C4 snapshot authority classes for live configs:
 
 | Authority class | Config rows |
 | --- | ---: |
@@ -78,6 +78,23 @@ Authority classes for live configs:
 Current-authority config rows are not a queue of experiments to rerun. They are
 configs attached to rows that current docs still cite as baselines, diagnostic
 comparators, or one-shot holdout/residual evidence.
+
+## C19 Follow-Up
+
+C19 applied this classification to the filesystem:
+
+- `configs/experiments/` now contains 35 current-authority JSON configs.
+- Rejected, historical, and replay/provenance configs moved to
+  `archive/configs/`; `resolve_config_path` keeps archived configs resolvable by
+  basename for replay.
+- Historical or one-off launch utilities moved from `scripts/` to
+  `archive/scripts/`.
+- `docs/experiments/synthesis/program_variant_registry.md` now separates
+  `Active Config Inventory` from `Archived Config Inventory`.
+
+Archive rows remain provenance surfaces even when their payload matches a
+current-authority variant family. Use the active inventory, not the archived
+inventory, when counting current configs.
 
 ## Status Decisions
 
@@ -113,24 +130,25 @@ comparators, or one-shot holdout/residual evidence.
 
 ## Validation
 
+Original C4 validation:
+
 - `uv run pytest tests/test_program_variant_registry.py -q`
 - `uv run python scripts/validate_primitives.py --errors-only`
 
-Additional check attempted:
+C19 follow-up validation:
 
-- `uv run python scripts/validate_experiment_taxonomy.py --errors-only` still
-  fails on pre-existing provenance gaps in `experiment_registry.json` (missing
-  archived run directories and decision-doc paths). This C4 change did not edit
-  the JSON registry or scorer semantics.
-
-The taxonomy registry needs a separate provenance cleanup before it can be used
-as a hard gate for archive movement.
+- `uv run pytest tests/test_program_variant_registry.py tests/test_experiment_configs.py tests/test_experiment_registry_validation.py tests/test_export_registry_matrix.py tests/test_run_self_consistency.py -q` passed, 236 tests.
+- `uv run pytest tests/test_experiment_runner.py tests/test_run_experiment_runtime.py -q` passed, 28 tests.
+- `uv run python scripts/validate_experiment_taxonomy.py --errors-only` exited
+  0 with the documented `canonical_run_missing_documented` warning and optional
+  provider preload warnings.
+- `uv run pytest -q` passed, 1002 tests.
 
 ## Next Steps
 
-1. Use the registry report's config inventory as the guardrail before any C2
-   archive/delete movement.
-2. Start E1 or G1 without describing `configs/experiments` loadability as active
-   experiment volume.
-3. Defer registry-derived matrix regeneration until X1 backfills component
-   ceiling rows and C4 statuses are consumed by the export scripts.
+1. Use the registry report's active inventory as the current config surface and
+   the archived inventory as replay/provenance.
+2. Keep describing holdout and diagnostic rows as caveated evidence, not tuning
+   targets or active experiment volume.
+3. For C20, review whether any remaining program/config/script surface still
+   blurs current authority with archive provenance.

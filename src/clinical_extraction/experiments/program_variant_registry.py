@@ -473,8 +473,8 @@ PROGRAM_VARIANT_REGISTRY: tuple[ProgramVariantSpec, ...] = (
         decision_doc="docs/experiments/gan/gan_s0_r13_self_consistency_variance_probe_decision_20260528.md",
         replacement_target="gan.s0.d1_v1_2b_schema_guard_only",
         config_examples=(
-            "configs/experiments/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json",
-            "configs/experiments/gan_s0_self_consistency_sample5_cap25_qwen35b.json",
+            "archive/configs/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json",
+            "archive/configs/gan_s0_self_consistency_sample5_cap25_qwen35b.json",
         ),
     ),
     _exect_spec(
@@ -941,21 +941,36 @@ def active_program_variant_specs() -> tuple[ProgramVariantSpec, ...]:
     return current_authority_program_variant_specs()
 
 
-def _iter_config_payloads(repo_root: Path) -> list[tuple[Path, dict]]:
-    config_root = repo_root / "configs" / "experiments"
+ConfigInventorySource = Literal["active", "archive", "all"]
+
+
+def _config_roots(repo_root: Path, source: ConfigInventorySource) -> tuple[Path, ...]:
+    active_root = repo_root / "configs" / "experiments"
+    archive_root = repo_root / "archive" / "configs"
+    if source == "active":
+        return (active_root,)
+    if source == "archive":
+        return (archive_root,)
+    return (active_root, archive_root)
+
+
+def _iter_config_payloads(
+    repo_root: Path, *, source: ConfigInventorySource = "active"
+) -> list[tuple[Path, dict]]:
     payloads: list[tuple[Path, dict]] = []
-    if not config_root.exists():
-        return payloads
-    for path in sorted(config_root.rglob("*.json")):
-        try:
-            payloads.append(
-                (
-                    path.relative_to(repo_root),
-                    json.loads(path.read_text(encoding="utf-8")),
-                )
-            )
-        except json.JSONDecodeError:
+    for config_root in _config_roots(repo_root, source):
+        if not config_root.exists():
             continue
+        for path in sorted(config_root.rglob("*.json")):
+            try:
+                payloads.append(
+                    (
+                        path.relative_to(repo_root),
+                        json.loads(path.read_text(encoding="utf-8")),
+                    )
+                )
+            except json.JSONDecodeError:
+                continue
     return payloads
 
 
@@ -1018,7 +1033,18 @@ def resolve_program_variant_spec_for_config(
 
 
 def config_count_for_spec(spec: ProgramVariantSpec, *, repo_root: Path) -> int:
-    payloads = _iter_config_payloads(repo_root)
+    payloads = _iter_config_payloads(repo_root, source="active")
+    return sum(
+        1
+        for path, payload in payloads
+        if resolve_program_variant_spec_for_config(payload, config_path=path) == spec
+    )
+
+
+def archived_config_count_for_spec(
+    spec: ProgramVariantSpec, *, repo_root: Path
+) -> int:
+    payloads = _iter_config_payloads(repo_root, source="archive")
     return sum(
         1
         for path, payload in payloads
@@ -1054,9 +1080,21 @@ def _config_run_scope(payload: dict) -> str:
     return "full_validation"
 
 
-def experiment_config_inventory(*, repo_root: Path) -> tuple[ExperimentConfigInventoryRow, ...]:
+def _config_authority_class(path: Path, spec: ProgramVariantSpec) -> str:
+    if (
+        len(path.parts) >= 2
+        and path.parts[0] == "archive"
+        and path.parts[1] == "configs"
+    ):
+        return "loadable_replay"
+    return spec.authority_class
+
+
+def experiment_config_inventory(
+    *, repo_root: Path, source: ConfigInventorySource = "active"
+) -> tuple[ExperimentConfigInventoryRow, ...]:
     rows: list[ExperimentConfigInventoryRow] = []
-    for path, payload in _iter_config_payloads(repo_root):
+    for path, payload in _iter_config_payloads(repo_root, source=source):
         spec = resolve_program_variant_spec_for_config(payload, config_path=path)
         if spec is None:
             continue
@@ -1067,7 +1105,7 @@ def experiment_config_inventory(*, repo_root: Path) -> tuple[ExperimentConfigInv
                 variant_id=spec.variant_id,
                 dataset=spec.dataset_label,
                 status=spec.status,
-                authority_class=spec.authority_class,
+                authority_class=_config_authority_class(path, spec),
                 split_name=str(payload.get("split_name", "")),
                 run_scope=_config_run_scope(payload),
                 scorer_mode=str(payload.get("scorer_mode", "")),
@@ -1101,10 +1139,14 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
         "- `rejected_arm` is loadable only to preserve failed-arm provenance.",
         "- `blocked` is not a loadable experiment contract.",
         "",
+        "C19 archive rule: rows under `Archived Config Inventory` are",
+        "replay/provenance rows by path, even when they replay a variant family",
+        "whose status is current authority.",
+        "",
         "## Variant Status",
         "",
-        "| Variant ID | Dataset | Status | Authority Class | Schema Level | Program Variant | Prompt Default | Stage Graph | Scorers | Loadable Config Count | Decision Doc |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- |",
+        "| Variant ID | Dataset | Status | Authority Class | Schema Level | Program Variant | Prompt Default | Stage Graph | Scorers | Active Config Count | Archived Config Count | Decision Doc |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | ---: | --- |",
     ]
     for spec in PROGRAM_VARIANT_REGISTRY:
         decision_doc = spec.decision_doc or ""
@@ -1124,6 +1166,7 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
                     stage_graph,
                     scorers,
                     str(config_count_for_spec(spec, repo_root=root)),
+                    str(archived_config_count_for_spec(spec, repo_root=root)),
                     decision_doc,
                 ]
             )
@@ -1132,13 +1175,40 @@ def render_program_variant_registry_markdown(repo_root: Path | None = None) -> s
     lines.extend(
         [
             "",
-            "## Config Inventory",
+            "## Active Config Inventory",
             "",
             "| Config Path | Experiment ID | Variant ID | Status | Authority Class | Split | Run Scope | Scorer | Prompt Version |",
             "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
         ]
     )
-    for row in experiment_config_inventory(repo_root=root):
+    for row in experiment_config_inventory(repo_root=root, source="active"):
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    row.config_path,
+                    row.experiment_id,
+                    row.variant_id,
+                    row.status,
+                    row.authority_class,
+                    row.split_name,
+                    row.run_scope,
+                    row.scorer_mode,
+                    row.prompt_version,
+                ]
+            )
+            + " |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Archived Config Inventory",
+            "",
+            "| Config Path | Experiment ID | Variant ID | Status | Authority Class | Split | Run Scope | Scorer | Prompt Version |",
+            "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    for row in experiment_config_inventory(repo_root=root, source="archive"):
         lines.append(
             "| "
             + " | ".join(

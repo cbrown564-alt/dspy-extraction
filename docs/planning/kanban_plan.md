@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 X3 complete; C19 partial
+Last refreshed: 2026-05-28 C19 complete; C20 ready
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -21,8 +21,8 @@ or `component_ceiling_registry.md` explicitly promotes them.
 ## Current Priorities
 
 1. **Finish the architecture/modularity cleanup before new broad model work.**
-   The remaining audit gap is no longer an umbrella task: C18 is complete; pull
-   C19-C20 in order until archive/delete work and final review are complete.
+   The remaining audit gap is no longer an umbrella task: C12-C19 are complete;
+   pull C20 to close or explicitly reclassify the residual architecture risks.
 2. **Keep behavior-preserving cleanup separate from research claims.** Each
    architecture card must preserve scorer, loader, split, benchmark bridge, and
    replay semantics unless a focused policy/test change explicitly says
@@ -40,33 +40,28 @@ or `component_ceiling_registry.md` explicitly promotes them.
    `gan2026_paper_reproduction`; canonical Gan metrics remain diagnostic.
    ExECT Table 1 reproduction remains blocked until CUI-aware all-family
    scoring exists. Holdout is for residual analysis, not tuning.
-6. **Separate loadable config count from active experiment count.** The 59 JSON
-   configs that currently load now have C4 authority classes; use those statuses
-   before calling a config current, historical, rejected, blocked, or diagnostic.
+6. **Separate active configs from replay configs.** After C19, the 35 JSON
+   configs under `configs/experiments/` are current-authority rows; historical,
+   rejected, and replay/provenance configs live under `archive/configs/` and are
+   still resolvable by basename for reproducibility.
 
 ## Ready
 
-### C19 - Archive And Delete Obsolete Program Surfaces
+### C20 - Modularity Completion Review
 
-- **Outcome:** Rejected and historical configs/scripts/branches identified by
-  the C2 inventory are archived, removed, or wrapped behind explicit replay
-  paths, and generated registry/navigation outputs no longer present stale arms
-  as current work.
-- **Dependencies:** C12 path resolution; C15-C18 behavior-preserving extraction;
-  X3 registry matrix refresh now consumes the same status classes.
-- **Parallelizable:** yes for doc-only archive maps; code deletion should stay
-  sequenced with replay-provenance checks.
+- **Outcome:** A final review updates the architecture audit status with what
+  was addressed, what remains intentionally retained, file-size/module boundary
+  evidence, validation commands, and any residual risk accepted for
+  reproducibility.
+- **Dependencies:** C12-C19 complete.
+- **Parallelizable:** no.
 - **Owner:** unassigned.
-- **Validation:** `uv run pytest tests/test_program_variant_registry.py tests/test_experiment_configs.py tests/test_experiment_registry_validation.py -q`;
-  `uv run python scripts/validate_experiment_taxonomy.py --errors-only` or
-  document any remaining provenance gaps.
-- **Notes:** Do not delete any path needed to trace active metrics to run ID,
-  config, model/provider, split, scorer mode, and caveat. Archive by decision
-  boundary, not age. C18 is complete, so C19 is now the primary architecture
-  pull. A first C19 slice removed the obsolete generated research atlas,
-  exporter script, and exporter test. X3 regenerated the registry matrix as a
-  post-pivot methods/provenance view; rejected/historical config and script
-  movement remains open.
+- **Validation:** Re-run the focused architecture validation matrix from
+  C12-C19 plus the full test suite if feasible; update docs only after the
+  result is known.
+- **Notes:** Completion means the P1 monolith risks are closed or explicitly
+  reclassified with rationale. It does not require deleting replay-provenance
+  contracts that are still needed for historical runs.
 
 ### E5 - Medication Lifecycle Target Policy Decision
 
@@ -180,22 +175,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
   can be compared to synthetic validation.
 
 ## Backlog
-
-### C20 - Modularity Completion Review
-
-- **Outcome:** A final review updates the architecture audit status with what
-  was addressed, what remains intentionally retained, file-size/module boundary
-  evidence, validation commands, and any residual risk accepted for
-  reproducibility.
-- **Dependencies:** C12-C19 complete.
-- **Parallelizable:** no.
-- **Owner:** unassigned.
-- **Validation:** Re-run the focused architecture validation matrix from C12-C19
-  plus the full test suite if feasible; update docs only after the result is
-  known.
-- **Notes:** Completion means the P1 monolith risks are closed or explicitly
-  reclassified with rationale. It does not require deleting replay-provenance
-  contracts that are still needed for historical runs.
 
 ### X2 - Pairwise ExECT Interaction Plan
 
@@ -319,15 +298,16 @@ artifacts, and git history; this section only keeps the steering implications.
 | G3 Gan unknown vs no-reference policy probe, 2026-05-28 | Post-adjudication rules simulated on G2 predictions shows that checking option ambiguity flags successfully isolates policy choices (e.g. abstaining on uncertain denominators), trading off category accuracy for conservative precision. |
 | X1 component ceiling registry backfill, 2026-05-28 | `component_ceiling_registry.md` now preserves row-level model/provider, split, scorer, config/run or artifact, bridge/normalization policy, classification, and caveat metadata for promoted baselines, diagnostic substrates, rejected arms, active risks, and blocked benchmark claims. |
 | X3 registry matrix refresh, 2026-05-28 | `experiment_registry_matrix_20260520.md` is regenerated as a post-pivot registry-derived methods/provenance view with explicit R11-R15, X1, C4, C10, and May 28 component-pivot caveats. The obsolete research atlas exporter, tests, and generated outputs are removed. The matrix is not current steering authority without `component_ceiling_registry.md` and `program_variant_registry.md`. |
+| C19 archive and obsolete-surface deletion, 2026-05-28 | Rejected, historical, and replay/provenance configs moved from `configs/experiments/` to `archive/configs/`, while `resolve_config_path` keeps basename replay working. Historical one-off scripts moved from `scripts/` to `archive/scripts/`, the program variant report now separates active and archived config inventory, and the live config tree contains current-authority rows only. Full suite validation passed (1002 tests). |
 | Gan rejected or blocked arms, 2026-05-28 | CLINES-style entity-first prompting, self-consistency, broad relative-anchor guardrails, and Qwen GEPA without compact-delta clearance are not active pulls. |
 | ExECT S5 v2b and holdout report | S5 v2b remains the operational stacked baseline. Holdout drops are residual-analysis triggers, not tuning targets or component-ceiling evidence. |
 
 ## Dependency Notes
 
 - C1-C4 are complete enough to guide cleanup, but the modularity review shows
-  the core program monoliths are still open. C18 is complete; treat C19-C20 as
-  the active architecture completion lane until C20 reclassifies or closes the
-  P1 risks.
+  the core program monoliths are still open. C12-C19 are complete; C20 is the
+  active architecture completion gate that should reclassify or close the P1
+  risks.
 - C12 is complete and should be reused before archive moves or path-sensitive
   cleanup. It centralizes config/run fallback behavior so future file movement
   does not create path drift across loaders, registry validation, residual
@@ -354,12 +334,12 @@ artifacts, and git history; this section only keeps the steering implications.
   replacement surfaces have been retired from the Gan S0, ExECT S0/S1, and
   ExECT S4 parity tests. The retained monolithic tests are now compatibility
   and integration parity nets rather than blockers for module extraction.
-- C19 is the first broad archive/delete pass. It depends on C12 path helpers and
-  enough C15-C18 extraction to avoid deleting code that still carries active
-  behavior.
-- C20 is the completion gate: rerun a strict architecture review and update the
-  audit status only after the code, tests, registry, and archive/delete path are
-  actually settled.
+- C19 is complete: archived configs now live under `archive/configs/`, archived
+  scripts live under `archive/scripts/`, and generated program-variant
+  navigation separates active and archived config inventory.
+- C20 is now the completion gate: rerun a strict architecture review and update
+  the audit status only after the code, tests, registry, and archive/delete path
+  are actually settled.
 - The typed program variant registry preserves loadable contracts and classifies
   registry/config rows as current-authority, replay/provenance, historical,
   rejected, blocked, or diagnostic.
@@ -401,22 +381,21 @@ artifacts, and git history; this section only keeps the steering implications.
   paper-reproduction options explicitly.
 - X3 is complete: the registry matrix is refreshed as a post-pivot
   methods/provenance view with explicit authority caveats. Future regenerations
-  should still coordinate with C19 so archived or deleted surfaces do not make
-  navigation stale again.
+  should use the C19 active/archive inventory split so archived surfaces do not
+  make navigation stale again.
 
 ## Parallelization Opportunities
 
-- **Safe now:** C19 archive/delete inventory and doc-only archive maps as the
-  next architecture pull; G5
-  paper-scorer rescore if needed for a paper table; E5 medication lifecycle
-  policy decision. These should preserve scorer, loader, split, and benchmark
-  bridge semantics.
-- **Architecture lane now in progress:** C19 archive/delete follows now that
-  path resolution and replacement test surfaces make replay provenance safer.
+- **Safe now:** C20 architecture completion review; G5 paper-scorer rescore if
+  needed for a paper table; E5 medication lifecycle policy decision. These
+  should preserve scorer, loader, split, and benchmark bridge semantics.
+- **Architecture lane now in progress:** C20 should review the completed C12-C19
+  extraction/archive lane, update residual risks, and decide whether any P1
+  monolith concerns remain active.
 - **Research lane still safe, but secondary:** E6, E8, E10, G4, and E11 remain
   valid work, but new broad model/prompt changes should wait until the current
   architecture lane is no longer the bottleneck.
-- **Single-threaded or carefully sequenced:** C19 archive/delete, future
+- **Single-threaded or carefully sequenced:** C20 completion review, future
   registry/archive regeneration, and any change to scorer, loader, split,
   benchmark bridge, or shared primitive contracts.
 - **Blocked together:** B1 waits on ExECT component ceilings.
@@ -429,12 +408,9 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. **C19 - Archive And Delete Obsolete Program Surfaces** should use C2/C4
-   status classes and C12 path helpers to move stale arms without losing replay
-   provenance.
-2. **C20 - Modularity Completion Review** should close the architecture lane by
+1. **C20 - Modularity Completion Review** should close the architecture lane by
    updating audit status, residual risks, and validation evidence.
-3. **Then resume research-lane pulls** such as G5, E5, E6, E10, and E8
+2. **Then resume research-lane pulls** such as G5, E5, E6, E10, and E8
     according to paper/experiment need.
 
 ## Standing Guardrails
@@ -448,8 +424,9 @@ artifacts, and git history; this section only keeps the steering implications.
   except inside explicitly named paper-reproduction scorer views.
 - Treat ExECT clean ladder results as diagnostic baselines, not component
   ceilings.
-- Do not describe `configs/experiments` loadability counts as active experiment
-  counts; use the C4 authority classes in the generated registry report.
+- Do not describe `archive/configs` loadability as active experiment count;
+  active config authority lives in `configs/experiments` and the generated
+  registry report's active inventory.
 - Treat rejected arms as rejected arms unless a mechanism-level review closes
   the mechanism.
 - Holdout metrics trigger residual analysis only; do not tune from holdout.

@@ -100,8 +100,10 @@ def test_registry_markdown_report_labels_loadable_config_counts_as_replay():
     assert (
         "| gan.s0.self_consistency | Gan 2026 | rejected_arm | loadable_replay |"
     ) in report
-    assert "Loadable Config Count" in report
+    assert "Active Config Count" in report
+    assert "Archived Config Count" in report
     assert "loadable configs are replay/provenance contracts" in report
+    assert "rows under `Archived Config Inventory` are" in report
 
 
 def test_experiment_config_inventory_assigns_one_explicit_status_per_config():
@@ -110,18 +112,37 @@ def test_experiment_config_inventory_assigns_one_explicit_status_per_config():
 
     assert len(rows) == len(list(Path("configs/experiments").rglob("*.json")))
     assert len(paths) == len(set(paths))
-    assert {row.authority_class for row in rows} == {
-        "current_authority",
-        "loadable_replay",
-    }
-    assert any(row.status == "replay_provenance" for row in rows)
-    assert any(row.status == "rejected_arm" for row in rows)
+    assert {row.authority_class for row in rows} == {"current_authority"}
+    assert all(not row.config_path.startswith("archive/") for row in rows)
+
+
+def test_archived_replay_config_inventory_preserves_rejected_and_historical_rows():
+    rows = experiment_config_inventory(repo_root=Path.cwd(), source="archive")
+    paths = {row.config_path: row for row in rows}
+
+    assert {row.authority_class for row in rows} == {"loadable_replay"}
+    assert (
+        paths[
+            "archive/configs/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"
+        ].status
+        == "rejected_arm"
+    )
+    assert (
+        paths[
+            "archive/configs/gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
+        ].status
+        == "replay_provenance"
+    )
+    assert (
+        paths["archive/configs/exect_s4_validation_full_qwen35b_ollama.json"].status
+        == "historical_arm"
+    )
 
 
 def test_config_inventory_resolves_ambiguous_gan_program_surfaces():
     rows = {
         row.config_path: row
-        for row in experiment_config_inventory(repo_root=Path.cwd())
+        for row in experiment_config_inventory(repo_root=Path.cwd(), source="all")
     }
 
     assert (
@@ -132,13 +153,13 @@ def test_config_inventory_resolves_ambiguous_gan_program_surfaces():
     )
     assert (
         rows[
-            "configs/experiments/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"
+            "archive/configs/gan_s0_self_consistency_sample5_cap25_gpt4_1_mini.json"
         ].status
         == "rejected_arm"
     )
     assert (
         rows[
-            "configs/experiments/"
+            "archive/configs/"
             "gan_s0_date_stage_d0_baseline_det_candidates_cap25_gpt4_1_mini.json"
         ].status
         == "replay_provenance"
