@@ -1,7 +1,7 @@
 # Clinical Extraction Kanban Plan
 
 Status: active steering doc
-Last refreshed: 2026-05-28 C15 completion
+Last refreshed: 2026-05-28 C16 completion
 Supersedes: the pre-pivot R/A backlog as active priority guidance
 
 This board is current-first. Completed work is summarized only where it changes
@@ -21,8 +21,8 @@ or `component_ceiling_registry.md` explicitly promotes them.
 ## Current Priorities
 
 1. **Finish the architecture/modularity cleanup before new broad model work.**
-   The remaining audit gap is no longer an umbrella task: pull C16-C20 in order
-   until ExECT S5, primitive modules, tests,
+   The remaining audit gap is no longer an umbrella task: C16 is complete; pull
+   C17-C20 in order until primitive modules, tests,
    archive/delete work, and final review are complete.
 2. **Keep behavior-preserving cleanup separate from research claims.** Each
    architecture card must preserve scorer, loader, split, benchmark bridge, and
@@ -47,19 +47,22 @@ or `component_ceiling_registry.md` explicitly promotes them.
 
 ## Ready
 
-### C16 - ExECT S5 Core Split From S4
+### C17 - ExECT Primitive Family Module Split
 
-- **Outcome:** S5 operational stack signatures, modules, medication guards,
-  frequency verifier wiring, and stack metadata are separated from S4 family
-  component logic while existing S4/S5 config variants remain loadable.
-- **Dependencies:** C9 S5 stack surface complete; C13 complete.
-- **Parallelizable:** yes; coordinate with E7 and any medication/frequency
-  isolated component work.
+- **Outcome:** `src/clinical_extraction/exect/primitives.py` is split into
+  family-owned primitive/bridge modules for diagnosis, seizure type,
+  medication, and frequency while primitive IDs, registry metadata, and
+  compatibility imports remain stable.
+- **Dependencies:** C15 complete so S0/S1 bridge imports have settled; C8
+  frequency payload complete. C16 is complete, so S5 stack imports no longer
+  need to move in parallel.
+- **Parallelizable:** yes after C16; frequency-only cleanup can proceed in
+  parallel if it does not change primitive registry contracts.
 - **Owner:** unassigned.
-- **Validation:** `uv run pytest tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py tests/test_exect_s5_frequency_verifier.py -q`;
-  parity on the current S5 v2b artifact shape before any new component run.
-- **Notes:** S5 v2b remains an operational stacked baseline, not an isolated
-  family ceiling. Do not use this split to report a new component result.
+- **Validation:** `uv run pytest tests/test_exect_diagnosis_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_frequency_primitives.py tests/test_exect_frequency_slot_payload.py -q`;
+  `uv run python scripts/validate_primitives.py --errors-only`.
+- **Notes:** This is a modularity cleanup, not a policy change. Preserve raw
+  values, normalized values, evidence, flags, and benchmark bridge behavior.
 
 ### C11 - Stage-Level Test Surface Split
 
@@ -67,7 +70,7 @@ or `component_ceiling_registry.md` explicitly promotes them.
   stage-level characterization tests for candidate inventory, target selection,
   label construction, bridge policy, evidence guards, and artifact assembly.
 - **Dependencies:** C6, C7, C8, and C9 stage surfaces should exist before
-  retiring old helper assertions; C15 is complete and C16-C17 should land
+  retiring old helper assertions; C15 and C16 are complete, and C17 should land
   before the largest private-helper assertions are removed.
 - **Parallelizable:** after each extracted surface exists.
 - **Owner:** unassigned.
@@ -209,22 +212,6 @@ or `component_ceiling_registry.md` explicitly promotes them.
   can be compared to synthetic validation.
 
 ## Backlog
-
-### C17 - ExECT Primitive Family Module Split
-
-- **Outcome:** `src/clinical_extraction/exect/primitives.py` is split into
-  family-owned primitive/bridge modules for diagnosis, seizure type,
-  medication, and frequency while primitive IDs, registry metadata, and
-  compatibility imports remain stable.
-- **Dependencies:** C15 complete so S0/S1 bridge imports have settled; C8
-  frequency payload complete.
-- **Parallelizable:** yes after C15; frequency-only cleanup can proceed in parallel
-  if it does not change primitive registry contracts.
-- **Owner:** unassigned.
-- **Validation:** `uv run pytest tests/test_exect_diagnosis_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_frequency_primitives.py tests/test_exect_frequency_slot_payload.py -q`;
-  `uv run python scripts/validate_primitives.py --errors-only`.
-- **Notes:** This is a modularity cleanup, not a policy change. Preserve raw
-  values, normalized values, evidence, flags, and benchmark bridge behavior.
 
 ### C18 - Monolithic Test Retirement
 
@@ -384,6 +371,7 @@ artifacts, and git history; this section only keeps the steering implications.
 | C13 program metric surface migration, 2026-05-28 | Gan S0 optimizer and feedback metrics now live in `clinical_extraction.gan.s0.metrics`; ExECT S0/S1 field-family optimizer metrics now live in `clinical_extraction.exect.s0_s1.metrics`. The program files re-export legacy imports for config/artifact compatibility. Validation: `uv run pytest tests/test_gan_s0_program.py tests/test_gan_scoring.py tests/test_gan_paper_reproduction_scoring.py tests/test_exect_s0_s1_program.py tests/test_exect_scoring.py -q` passed. Scorer semantics and benchmark caveats were preserved. |
 | C14 Gan S0 program package decomposition, 2026-05-28 | `programs/gan_frequency_s0.py` is now a compatibility facade over `clinical_extraction.gan.s0.signatures`, `date_events`, `modules`, `optimizer_setup`, existing routing/candidate/target-selection/bridge modules, and metric surfaces. Builder-gap v1 and D1 v1.2b fixed-record parity tests were added. Validation: `uv run pytest tests/test_gan_s0_package_decomposition.py tests/test_gan_s0_program.py tests/test_gan_temporal_candidates.py tests/test_gan_slot_payload.py tests/test_gan_s0_stage_surfaces.py tests/test_gan_scoring.py tests/test_gan_paper_reproduction_scoring.py -q`; config/registry import validation also passed. Scorer semantics, Gan gold policy, and `unknown`/`no seizure frequency reference` separation were preserved. |
 | C15 ExECT S0/S1 program package decomposition, 2026-05-28 | `programs/exect_s0_s1.py` is now an import-compatible facade over `clinical_extraction.exect.s0_s1` modules for constants, prompt/repair routing, signatures, DSPy modules, prediction artifact assembly, optimizer setup, and metric surfaces. Optimizer metrics now use the domain artifact assembly directly, and a facade parity characterization test locks the compatibility boundary. Validation: pre-refactor S0/S1 boundary suite passed; post-refactor `uv run pytest tests/test_exect_s0_s1_program.py tests/test_exect_s1_boundary_surfaces.py tests/test_exect_diagnosis_primitives.py tests/test_exect_medication_primitives.py tests/test_exect_scoring.py tests/test_exect_loader.py -q` passed; `uv run pytest tests/test_experiment_configs.py tests/test_experiment_arm_templates.py tests/test_exect_s1_split_audit.py -q` passed; `uv run pytest tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py tests/test_exect_s5_frequency_verifier.py -q` passed. ExECT JSON gold policy, diagnosis specificity collapse, seizure-type bridge behavior, medication CUIPhrase/brand normalization, scorer semantics, loader behavior, and split contracts were preserved. |
+| C16 ExECT S5 core split from S4, 2026-05-28 | S5 verifier signatures, verifier modules, pre-vocab/AM-guard/frequency-verify wrappers, and parallel S5-core module now live under `clinical_extraction.exect.s5_signatures` and `clinical_extraction.exect.s5_modules`, with stack metadata and guards retained in `clinical_extraction.exect.s5_stack`. `programs/exect_s4.py` remains an import-compatible facade and still routes legacy S4/S5 variants. Validation: `uv run pytest tests/test_exect_s4_program.py tests/test_exect_s5_scoring.py tests/test_exect_s5_frequency_verifier.py -q` passed; `uv run pytest tests/test_experiment_configs.py tests/test_experiment_registry_validation.py tests/test_experiment_runner.py -q` passed. This was behavior-preserving architecture work only; S5 v2b remains an operational stacked baseline, not an isolated component ceiling. |
 | C5/C8 ExECT frequency substrate, 2026-05-28 | Broad frequency payload covers 43/43 validation gold labels and 24/24 gold-bearing documents, but broad precision is 22.2%; selection/adjudication is the active problem. |
 | C6/C7/C9 boundary splits, 2026-05-28 | Gan S0 routing/bridge, ExECT S1 boundary metadata, and ExECT S5 stack surfaces were extracted as behavior-preserving architecture work. Use them for stage attribution; do not infer new metric claims. |
 | E2 S1 raw/bridge/prompt split, 2026-05-28 | S1 validation strength depends heavily on benchmark bridges; holdout transfer drops keep diagnosis and seizure-type mechanisms open. |
@@ -398,7 +386,7 @@ artifacts, and git history; this section only keeps the steering implications.
 ## Dependency Notes
 
 - C1-C4 are complete enough to guide cleanup, but the modularity review shows
-  the core program monoliths are still open. Treat C16-C20 as the active
+  the core program monoliths are still open. Treat C17-C20 as the active
   architecture completion lane until C20 reclassifies or closes the P1 risks.
 - C12 is complete and should be reused before archive moves or path-sensitive
   cleanup. It centralizes config/run fallback behavior so future file movement
@@ -413,14 +401,15 @@ artifacts, and git history; this section only keeps the steering implications.
 - C15 is complete: ExECT S0/S1 constants, prompt/repair routing, signatures,
   DSPy modules, prediction artifact assembly, optimizer setup, and metric
   surfaces now live under `clinical_extraction.exect.s0_s1`, while the legacy
-  program path remains an import-compatible facade. C16 is the next architecture
-  pull.
-- C16 can proceed after the existing C9 S5 stack surface, but it should
-  coordinate with ExECT medication/frequency follow-ups so operational-stack
-  cleanup is not mistaken for isolated component progress.
-- C17 now follows the completed C15 package boundary for most ExECT family
-  primitive movement; frequency-only work can proceed earlier only if primitive
-  IDs and registry contracts stay stable.
+  program path remains an import-compatible facade.
+- C16 is complete: ExECT S5 verifier signatures/modules and S5-core parallel
+  stack wiring now live under `clinical_extraction.exect.s5_signatures` and
+  `clinical_extraction.exect.s5_modules`, while `programs/exect_s4.py` remains
+  an import-compatible facade. Do not interpret this architecture cleanup as a
+  new S5 component result.
+- C17 now follows the completed C15 and C16 package boundaries for ExECT family
+  primitive movement; frequency-only work can proceed if primitive IDs and
+  registry contracts stay stable.
 - C18 is intentionally late. Monolithic tests are still useful parity nets until
   C16-C17 expose public module surfaces with replacement characterization tests
   on top of the completed C15 package boundary.
@@ -436,7 +425,7 @@ artifacts, and git history; this section only keeps the steering implications.
 - C6-C9 completed the first behavior-preserving architecture extractions: Gan
   S0 routing/bridge surfaces, ExECT S1 boundary metadata, ExECT frequency
   payload/bridge surfaces, and the ExECT S5 stack boundary. These remain inputs
-  to C16-C18, not proof that the monolith problem is finished.
+  to C17-C18, not proof that the monolith problem is finished.
 - E2, E3, and E4 are complete as no-model/artifact-only ExECT decomposition
   audits, and G1 is complete as a no-model Gan candidate-inventory coverage
   report. ExECT frequency candidate-selection design can now consume C8; E3/E4
@@ -475,21 +464,21 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Parallelization Opportunities
 
-- **Safe now:** C16 ExECT S5 core split as the next architecture pull; X3
-  doc-only prep if it does not regenerate stale navigation; G5
+- **Safe now:** C17 ExECT primitive family module split as the next architecture
+  pull; X3 doc-only prep if it does not regenerate stale navigation; G5
   paper-scorer rescore if needed for a paper table; E5 medication lifecycle
   policy decision. These should preserve scorer, loader, split, and benchmark
   bridge semantics.
-- **Architecture lane now eligible:** C16 ExECT S5 split is unblocked and should
-  be single-threaded within its file cluster. C17 can follow the completed C15
-  boundary once C16 coordination risks are clear.
+- **Architecture lane now eligible:** C17 ExECT primitive split is unblocked and
+  should be single-threaded within its file cluster because primitive registry
+  IDs and compatibility imports are shared contracts.
 - **After C15-C17:** C18 monolithic test retirement can proceed stage by stage.
   C19 archive/delete follows once path resolution and replacement surfaces make
   replay provenance safe.
 - **Research lane still safe, but secondary:** E6, E8, E10, G4, and E11 remain
   valid work, but new broad model/prompt changes should wait until the current
   architecture lane is no longer the bottleneck.
-- **Single-threaded or carefully sequenced:** C16-C17 import-moving refactors,
+- **Single-threaded or carefully sequenced:** C17 import-moving refactors,
   C19 archive/delete, registry/archive regeneration in X3, and any change to
   scorer, loader, split, benchmark bridge, or shared primitive contracts.
 - **Blocked together:** B1 waits on ExECT component ceilings.
@@ -502,18 +491,16 @@ artifacts, and git history; this section only keeps the steering implications.
 
 ## Recommended Next Pull
 
-1. **C16 - ExECT S5 Core Split From S4** should separate the operational stack
-   from S4 component logic before more stack-interference work.
-2. **C17 - ExECT Primitive Family Module Split** should retire the remaining
+1. **C17 - ExECT Primitive Family Module Split** should retire the remaining
    over-bundled primitive module while preserving registry IDs.
-3. **C18 - Monolithic Test Retirement** should remove private-helper coupling
+2. **C18 - Monolithic Test Retirement** should remove private-helper coupling
    only after the replacement public surfaces are covered.
-4. **C19 - Archive And Delete Obsolete Program Surfaces** should use C2/C4
+3. **C19 - Archive And Delete Obsolete Program Surfaces** should use C2/C4
    status classes and C12 path helpers to move stale arms without losing replay
    provenance.
-5. **C20 - Modularity Completion Review** should close the architecture lane by
+4. **C20 - Modularity Completion Review** should close the architecture lane by
    updating audit status, residual risks, and validation evidence.
-6. **Then resume research-lane pulls** such as X3, G5, E5, E6, E10, and E8
+5. **Then resume research-lane pulls** such as X3, G5, E5, E6, E10, and E8
     according to paper/experiment need.
 
 ## Standing Guardrails

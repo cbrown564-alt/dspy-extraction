@@ -9,16 +9,22 @@ from clinical_extraction.exect.s5_stack import (
     qualitative_label_supported_by_evidence,
     stage_graph_id_for_s5_program_variant,
 )
-from clinical_extraction.programs.exect_s4 import (
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+from clinical_extraction.exect.s5_modules import (
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule,
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2Module,
-    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     ExectS5FrequencyPreVocabAmGuardFrequencyVerifyV2bModule,
-    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     ExectS5CoreFieldFamilyParallelV2bModule,
+)
+from clinical_extraction.exect.s5_signatures import (
     build_exect_s5_core_family_specific_signature,
+)
+from clinical_extraction.exect.s5_stack import (
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
+    EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
+)
+from clinical_extraction.programs.exect_s4 import (
     build_exect_s4_module,
     predict_exect_s4_records,
 )
@@ -71,6 +77,19 @@ def test_build_exect_s4_module_returns_frequency_verify_wrapper():
     )
 
     assert isinstance(module, ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule)
+
+
+def test_exect_s4_facade_reexports_s5_module_classes():
+    from clinical_extraction.programs import exect_s4
+
+    assert (
+        exect_s4.ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule
+        is ExectS5FrequencyPreVocabAmGuardFrequencyVerifyModule
+    )
+    assert (
+        exect_s4.ExectS5CoreFieldFamilyParallelV2bModule
+        is ExectS5CoreFieldFamilyParallelV2bModule
+    )
 
 
 def test_build_exect_s4_module_returns_frequency_verify_v2_wrapper():

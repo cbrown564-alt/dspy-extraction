@@ -49,16 +49,18 @@ from clinical_extraction.programs.exect_s4 import (
     EXECT_S4_MT_GUARD_NON_ASM_VARIANT,
     EXECT_S4_TEMPORALITY_POST_CLASSIFIER_VARIANT,
     EXECT_S4_VARIANT,
+    build_exect_s4_module,
+    exect_s4_run_metadata,
+    predict_exect_s4_records,
+)
+from clinical_extraction.exect.s5_stack import (
     EXECT_S5_AM_GUARD_NON_ASM_BRAND_ALIAS_VARIANT,
+    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_FREQUENCY_VERIFY_V2B_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_TEMPORAL_FREQUENCY_VERIFY_VARIANT,
     EXECT_S5_FREQUENCY_PRE_VOCAB_AM_GUARD_VARIANT,
-    EXECT_S5_CORE_FIELD_FAMILY_PARALLEL_V2B_VARIANT,
-    build_exect_s4_module,
-    exect_s4_run_metadata,
-    predict_exect_s4_records,
 )
 from clinical_extraction.programs.exect_s0_s1 import (
     build_exect_s0_s1_module,
